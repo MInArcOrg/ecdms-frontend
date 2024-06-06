@@ -8,14 +8,14 @@ import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const userApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest('/users', params)
+    buildGetRequest('/departments/users', params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw new Error(error);
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/users/${idx}`, params)
+    buildGetRequest(`/departments/users/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw new Error(error);
@@ -23,21 +23,21 @@ const userApiService = {
 
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
-      .delete(`/users/${idx}`)
+      .delete(`/departments/users/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw new Error(error);
       }),
 
   create: (body: { data: User; files: any[] }): Promise<IApiResponse> =>
-    buildPostRequest('/users', body, false)
+    buildPostRequest('/departments/users', body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw new Error(error);
       }),
 
   update: (id: string, body: { data: User; files: any[] }): Promise<IApiResponse> =>
-    buildPutRequest(`/users/${id}`, body)
+    buildPutRequest(`/departments/users/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw new Error(error);
