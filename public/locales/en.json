@@ -1,0 +1,29 @@
+{
+  "greating":{
+    "good-morning":"Good Morning",
+    "good-evening":"God Evening",
+    "good-afternoon":"Good Afternoon"
+  },
+  "login": {
+    "welcome-message": "Welcome to {{templateName}}! 👋🏻",
+    "sign-in-message": "Please sign-in to your account and start the adventure",
+    "remember-me": "Remember Me",
+    "forgot-password": "Forgot Password?",
+    "new-on-platform": "New on our platform?",
+    "create-account": "Create an account",
+    "input-labels": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "validation-messages": {
+      "email": {
+        "required": "Email is required",
+        "email": "Please enter a valid email address"
+      },
+      "password": {
+        "required": "Password is required",
+        "min": "Password must be at least {{min}} characters long"
+      }
+    }
+  }
+}

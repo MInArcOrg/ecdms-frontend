@@ -1,0 +1,19 @@
+// src/types/users.ts
+type User = {
+  id: string;
+  first_name: string;
+  middle_name: string;
+  name: string;
+  full_name: string;
+  last_name: string;
+  gender: string;
+  marital_status: string | null;
+  partner_name: string | null;
+  birth_date: string;
+  lang: string;
+  is_activated: boolean;
+  createdAt: string;
+  updatedAt: string;
+  access_token?: string; // Include access_token for JWT
+};
+export default User;
