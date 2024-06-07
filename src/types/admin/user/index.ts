@@ -10,6 +10,7 @@ type User = {
   marital_status: string | null;
   partner_name: string | null;
   birth_date: string;
+  position_name?: string;
   lang: string;
   is_activated: boolean;
   createdAt: string;

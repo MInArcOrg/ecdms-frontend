@@ -4,6 +4,11 @@ export function formatDate(date: any, format = 'YYYY-MM-DD') {
   return moment(date).format(format);
 }
 
+// Function to format a created at
+export function formatCreatedAt(date: any, format = 'MMM D, YYYY, HH:MM') {
+  return moment(date).format(format);
+}
+
 // Function to format a date as a human-readable string (e.g., "3 days ago")
 export function formatRelative(date: any) {
   return moment(date).fromNow();

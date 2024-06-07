@@ -1,4 +1,11 @@
 {
+  "department":{
+    "user-columns": {
+      "user": "User",
+      "role": "Role",
+      "phone": "Phone"
+    }
+  },
   "greating":{
     "good-morning":"Good Morning",
     "good-evening":"God Evening",
@@ -25,5 +32,13 @@
         "min": "Password must be at least {{min}} characters long"
       }
     }
+  },
+  "common":{
+     "table-columns":{
+      "created-at": "Created At",
+      "updated-at": "update At",
+      "status": "Status",
+      "actions": "Actions"
+     }
   }
 }
