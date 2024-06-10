@@ -3,7 +3,7 @@ import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import useDepartment from 'src/hooks/team/department-hook';
 import teamMemberApiService from 'src/services/team/team-member-service';
 import TeamMember from 'src/types/team/team-member';
-import Department from 'src/types/team/department';
+import Department from 'src/types/department/department';
 import DeleteConfirmationDialog from 'src/views/shared/dialog/delete-confirmation-dialog';
 import ItemsListing from 'src/views/shared/listing';
 import DepartmentMemberDrawer from './add/department-member-drawer';

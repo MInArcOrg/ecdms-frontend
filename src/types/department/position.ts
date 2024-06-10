@@ -5,5 +5,6 @@ interface Position {
   description: string;
   department_id: string;
   createdAt: Date | string;
+  quantity_needed: number;
 }
 export default Position;

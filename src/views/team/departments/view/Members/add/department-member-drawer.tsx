@@ -5,7 +5,7 @@ import useDepartment from 'src/hooks/team/department-hook';
 import usePosition from 'src/hooks/team/position-hook';
 import Member from 'src/types/member/member';
 import TeamMember from 'src/types/team/team-member';
-import Department from 'src/types/team/department';
+import Department from 'src/types/department/department';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import DepartmentMemberForm from './department-member-form';

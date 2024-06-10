@@ -2,7 +2,7 @@ import { FormikProps } from 'formik';
 import { useTranslation } from 'react-i18next';
 import Member from 'src/types/member/member';
 import TeamMember from 'src/types/team/team-member';
-import Position from 'src/types/team/position';
+import Position from 'src/types/department/position';
 import MemberAutocomplete from 'src/views/member/members/list/member-selector';
 import CustomSwitch from 'src/views/shared/form/custom-switch';
 

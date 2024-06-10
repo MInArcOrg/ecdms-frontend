@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 // ** Demo Components Imports
 import DepartmentViewLeft from './DepartmentViewLeft';
 import DepartmentViewRight from './DepartmentViewRight';
-import Department from 'src/types/team/department';
+import Department from 'src/types/department/department';
 import Page from 'src/views/components/page/page';
 
 type Props = {

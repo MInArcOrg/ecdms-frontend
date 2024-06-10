@@ -16,7 +16,7 @@ import { styled } from '@mui/material/styles';
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon';
-import Department from 'src/types/team/department';
+import Department from 'src/types/department/department';
 import SubDepartmentView from './SubDepartments';
 import DepartmentMembersView from './Members';
 import PositionList from './Positions';

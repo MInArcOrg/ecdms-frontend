@@ -2,7 +2,7 @@ import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Link from 'next/link';
 import Member from 'src/types/member/member';
-import Position from 'src/types/team/position';
+import Position from 'src/types/department/position';
 import UserAvatar from 'src/views/admin/user/user-avatar';
 
 const MemberProfileSmall = ({ member, position, readonly = false }: { member: Member; position?: Position; readonly?: boolean }) => {

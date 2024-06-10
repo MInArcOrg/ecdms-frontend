@@ -4,7 +4,7 @@ import { FormikProps } from 'formik';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import PositionForm from './position-form';
-import Position from 'src/types/team/position';
+import Position from 'src/types/department/position';
 import usePosition from 'src/hooks/team/position-hook';
 
 interface PositionDrawerType {

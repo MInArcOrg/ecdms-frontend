@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import Department from 'src/types/team/department';
+import Department from 'src/types/department/department';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import axiosServices from 'src/utils/axios';
 import { buildGetRequest } from 'src/utils/requests/get-request';

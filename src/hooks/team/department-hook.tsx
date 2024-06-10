@@ -5,7 +5,7 @@ import { defaultGetRequestParam } from 'src/types/requests';
 import { GetRequestParam } from 'src/types/requests';
 import { Pagination } from 'src/types/requests/pagination';
 import TeamMember from 'src/types/team/team-member';
-import Department from 'src/types/team/department';
+import Department from 'src/types/department/department';
 
 const useDepartment = (initialQueryParams: GetRequestParam = defaultGetRequestParam, parentDepartmentId: string = '') => {
   const queryClient = useQueryClient();

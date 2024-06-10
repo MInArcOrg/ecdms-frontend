@@ -19,7 +19,7 @@ import Icon from 'src/@core/components/icon';
 // ** Custom Table Components Imports
 import moment from 'moment';
 import DeleteConfirmationDialog from 'src/views/shared/dialog/delete-confirmation-dialog';
-import Department from 'src/types/team/department';
+import Department from 'src/types/department/department';
 
 interface CellType {
   row: Department;

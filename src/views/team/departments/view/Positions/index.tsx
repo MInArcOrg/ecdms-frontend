@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePosition from 'src/hooks/team/position-hook';
 import { defaultGetRequestParam } from 'src/types/requests';
-import Position from 'src/types/team/position';
+import Position from 'src/types/department/position';
 
 import ItemsListing from 'src/views/shared/listing';
 import { positionColumns } from './position-row-column';
 import PositionDrawer from './add/position-drawer';
-import Department from 'src/types/team/department';
+import Department from 'src/types/department/department';
 
 const PositionList = ({ department }: { department: Department }) => {
   const [positionsDrawerOpen, setAddPositionOpen] = useState<boolean>(false);

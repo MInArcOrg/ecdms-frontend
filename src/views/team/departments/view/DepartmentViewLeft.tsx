@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 import CustomAvatar from 'src/@core/components/mui/avatar';
 import { getInitials } from 'src/@core/utils/get-initials';
 import { availableColors } from 'src/configs/app-constants';
-import Department from 'src/types/team/department';
+import Department from 'src/types/department/department';
 
 const DepartmentViewLeft = ({ department }: { department: Department }) => {
   if (department) {

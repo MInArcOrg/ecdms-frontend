@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import useDepartment from 'src/hooks/team/department-hook';
 import { defaultGetRequestParam } from 'src/types/requests';
-import Department from 'src/types/team/department';
+import Department from 'src/types/department/department';
 
 import ItemsListing from 'src/views/shared/listing';
 import DepartmentDrawer from 'src/views/team/departments/add/department-drawer';

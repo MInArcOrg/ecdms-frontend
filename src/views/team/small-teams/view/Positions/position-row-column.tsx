@@ -19,7 +19,7 @@ import Icon from 'src/@core/components/icon';
 // ** Custom Table Components Imports
 import moment from 'moment';
 import DeleteConfirmationDialog from 'src/views/shared/dialog/delete-confirmation-dialog';
-import Position from 'src/types/team/position';
+import Position from 'src/types/department/position';
 import CustomAvatar from 'src/@core/components/mui/avatar';
 
 interface CellType {

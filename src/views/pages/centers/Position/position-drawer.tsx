@@ -5,15 +5,14 @@ import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import PositionForm from './position-form';
 import Position from 'src/types/department/position';
-import usePosition from 'src/hooks/team/position-hook';
+import positionApiService from 'src/services/department/position-service';
 
 interface PositionDrawerType {
   open: boolean;
   toggle: () => void;
-  addNewPosition: (body: { data: Position; files: [] }) => Promise<void>;
+  Position: (body: { data: Position; files: [] }) => Promise<void>;
   refetch: () => void;
   position: Position;
-  departmentId?: string;
 }
 
 const validationSchema = yup.object().shape({
@@ -23,19 +22,23 @@ const validationSchema = yup.object().shape({
 
 const PositionDrawer = (props: PositionDrawerType) => {
   // ** Props
-  const { open, toggle, position, departmentId } = props;
-
-  const { addNewPosition, updatePosition } = usePosition() as ReturnType<typeof usePosition>;
+  const { open, toggle, refetch, position } = props;
+  console.log('editable position', position);
 
   const isEdit = position?.id ? true : false;
+  const createPosition = async (body: { data: Position; files: [] }) => {
+    await positionApiService.create(body);
+  };
+  const editPosition = async (body: { data: Position; files: [] }) => {
+    await positionApiService.update(position.id, body);
+  };
 
   const getPayload = (values: Position) => {
     const payload = {
       data: {
         id: position?.id,
         name: values.name,
-        description: values.description,
-        department_id: departmentId
+        description: values.description
       },
       files: []
     };
@@ -47,19 +50,20 @@ const PositionDrawer = (props: PositionDrawerType) => {
   };
   const onActionSuccess = () => {
     toggle();
+    refetch();
     handleClose();
   };
   return (
-    <CustomSideDrawer title={isEdit ? 'edit-position' : 'create-position'} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`department.position.${isEdit ? 'edit-position' : 'create-position'}`} handleClose={handleClose} open={open}>
       {() =>
         position && (
           <FormPageWrapper
             edit={isEdit}
-            title="position"
+            title="department.position.title"
             getPayload={getPayload}
             validationSchema={validationSchema}
             initialValues={position as Position}
-            createActionFunc={isEdit ? updatePosition : addNewPosition}
+            createActionFunc={isEdit ? editPosition : createPosition}
             onActionSuccess={onActionSuccess}
             onCancel={handleClose}
           >

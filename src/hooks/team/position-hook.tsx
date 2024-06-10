@@ -4,7 +4,7 @@ import positionApiService from 'src/services/team/position-service';
 import { defaultGetRequestParam } from 'src/types/requests';
 import { GetRequestParam } from 'src/types/requests';
 import { Pagination } from 'src/types/requests/pagination';
-import Position from 'src/types/team/position';
+import Position from 'src/types/department/position';
 
 const usePosition = (initialQueryParams: GetRequestParam = defaultGetRequestParam, departmentId: string = '') => {
   const queryClient = useQueryClient();

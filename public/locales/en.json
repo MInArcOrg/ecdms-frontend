@@ -14,10 +14,24 @@
         "gender":"Gender",
         "phone":"Phone"
       },
+      "title":"User",
       "male":"Male",
       "female":"Female",
       "edit-user":"Edit User",
       "create-user":"Create User"
+    },
+    "position":{
+      "form":{
+        "name":"Name",
+        "description":"Description"
+      },
+      "column":{
+        "name":"Name",
+        "description":"Description"
+      },
+      "title":"Position",
+      "create-position":"Create Position",
+      "edit-position":"Edit Position"
     }
   },
   "greating":{

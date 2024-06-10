@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import departmentApiService from 'src/services/team/department-service';
 import { defaultGetRequestParam } from 'src/types/requests';
-import Department from 'src/types/team/department';
+import Department from 'src/types/department/department';
 import OrgChartComponent from 'src/views/components/org-chart';
 import Page from 'src/views/components/page/page';
 

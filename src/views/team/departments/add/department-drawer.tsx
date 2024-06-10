@@ -4,7 +4,7 @@ import { FormikProps } from 'formik';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import DepartmentForm from './department-form';
-import Department from 'src/types/team/department';
+import Department from 'src/types/department/department';
 import useDepartment from 'src/hooks/team/department-hook';
 
 interface DepartmentDrawerType {
