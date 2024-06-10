@@ -3,13 +3,16 @@ type User = {
   id: string;
   first_name: string;
   middle_name: string;
-  name: string;
-  full_name: string;
   last_name: string;
+  full_name: string;
+  name: string;
+  email: string;
+  phone: string;
   gender: string;
   marital_status: string | null;
   partner_name: string | null;
   birth_date: string;
+  position_name?: string;
   lang: string;
   is_activated: boolean;
   createdAt: string;

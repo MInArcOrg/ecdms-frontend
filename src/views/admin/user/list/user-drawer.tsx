@@ -39,9 +39,9 @@ const UserDrawer = (props: UserDrawerType) => {
         id: user?.id,
         first_name: values.first_name,
         last_name: values.last_name,
+        middle_name: values.middle_name,
         phone: values.phone,
-        email: values.email,
-        password: values.password
+        email: values.email
       },
       files: []
     };
@@ -57,7 +57,7 @@ const UserDrawer = (props: UserDrawerType) => {
     handleClose();
   };
   return (
-    <CustomSideDrawer title={isEdit ? 'edit-user' : 'create-user'} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`department.user.${isEdit ? 'edit-user' : 'create-user'}`} handleClose={handleClose} open={open}>
       {() =>
         user && (
           <FormPageWrapper

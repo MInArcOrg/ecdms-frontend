@@ -1,4 +1,25 @@
 {
+  "department":{
+    "user-columns": {
+      "user": "User",
+      "role": "Role",
+      "phone": "Phone"
+    },
+    "user":{
+      "form":{
+        "first_name":"First Name",
+        "last_name":"Last Name",
+        "middle_name":"Middle Name",
+        "email":"Email",
+        "gender":"Gender",
+        "phone":"Phone"
+      },
+      "male":"Male",
+      "female":"Female",
+      "edit-user":"Edit User",
+      "create-user":"Create User"
+    }
+  },
   "greating":{
     "good-morning":"Good Morning",
     "good-evening":"God Evening",
@@ -25,5 +46,13 @@
         "min": "Password must be at least {{min}} characters long"
       }
     }
+  },
+  "common":{
+     "table-columns":{
+      "created-at": "Created At",
+      "updated-at": "update At",
+      "status": "Status",
+      "actions": "Actions"
+     }
   }
 }
