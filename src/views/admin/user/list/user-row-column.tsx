@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
-import moment from 'moment';
 import Icon from 'src/@core/components/icon';
 import CustomAvatar from 'src/@core/components/mui/avatar';
 import CustomChip from 'src/@core/components/mui/chip';
@@ -37,8 +36,6 @@ const userStatusObj: UserStatusType = {
   pending: 'warning',
   inactive: 'secondary'
 };
-
-
 
 export const userColumns = (onEdit: (user: User) => void, onDelete: (id: string) => void, t: any) =>
   [
@@ -120,19 +117,21 @@ export const userColumns = (onEdit: (user: User) => void, onDelete: (id: string)
       sortable: false,
       field: 'actions',
       headerName: t('common.table-columns.status'),
-      renderCell: ({ row }: CellType) => <RowOptions
-        onEdit={onEdit}
-        onDelete={() => onDelete(row.id)}
-        item={row}
-        options={[
-          {
-            icon: 'fds',
-            name: 'Assign',
-            onClick: () => {
-              console.log('assign clicked');
+      renderCell: ({ row }: CellType) => (
+        <RowOptions
+          onEdit={onEdit}
+          onDelete={() => onDelete(row.id)}
+          item={row}
+          options={[
+            {
+              icon: 'fds',
+              name: 'Assign',
+              onClick: () => {
+                console.log('assign clicked');
+              }
             }
-          }
-        ]}
-      />
+          ]}
+        />
+      )
     }
   ] as GridColDef[];

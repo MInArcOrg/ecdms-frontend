@@ -29,7 +29,6 @@ const GuestGuard = (props: GuestGuardProps) => {
   }, [router.route]);
 
   if (auth.loading || (!auth.loading && auth.user !== null)) {
-    
     return fallback;
   }
 
