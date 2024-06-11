@@ -9,7 +9,7 @@ import { CircularProgress, Divider, IconButton, Tooltip } from '@mui/material'
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import { Fragment, useState } from 'react'
-import CentersDrawer from './SubDepartment/SubdepartmentDrawer'
+import CentersDrawer from './sub-department/sub-department-drawer'
 import { useTranslation } from 'react-i18next'
 
 const ProfileCard = ({ department, departmentHead, refetch, loading }) => {

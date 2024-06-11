@@ -3,7 +3,7 @@ import { TabPanel } from '@mui/lab';
 import TabsRoute from './tab-routes';
 import UserLayout from 'src/layouts/UserLayout';
 import Department from 'src/types/department/department';
-import CentersLayout from 'src/views/pages/centers/CentersLayout';
+import CentersLayout from 'src/views/pages/centers/centers-layout';
 import PositionTable from 'src/views/pages/centers/Position/position-list';
 
 const Positions = ({ parentDepartment }: { parentDepartment: Department }) => {

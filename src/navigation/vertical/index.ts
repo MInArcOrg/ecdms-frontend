@@ -4,36 +4,44 @@ import { VerticalNavItemsType } from 'src/@core/layouts/types';
 const navigation = (): VerticalNavItemsType => {
   return [
     {
-      title: 'Dashboards',
+      title: 'navigation.dashboard',
       icon: 'tabler:smart-home',
       path: '/dashboard'
     },
     {
-      sectionTitle: 'admin-module'
+      sectionTitle: 'navigation.admin-module'
     },
     {
-      title: 'User',
+      title: 'navigation.user',
       icon: 'tabler:user',
       children: [
         {
-          title: 'List',
+          title: 'navigation.user-list',
           path: '/admin/users'
         }
       ]
     },
     {
-      title: 'Roles & Permissions',
+      title: 'navigation.roles-and-permissions',
       icon: 'tabler:settings',
       children: [
         {
-          title: 'Roles',
+          title: 'navigation.roles',
           path: '/admin/roles'
         },
         {
-          title: 'Permissions',
+          title: 'navigation.permissions',
           path: '/admin/permissions'
         }
       ]
+    },
+    {
+      sectionTitle: 'navigation.department-module'
+    },
+    {
+      title: 'navigation.department',
+      icon: 'tabler:smart-home',
+      path: '/departments'
     }
   ];
 };

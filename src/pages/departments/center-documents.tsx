@@ -4,7 +4,7 @@ import TabsRoute from './tab-routes';
 import UserLayout from 'src/layouts/UserLayout';
 import { ReactNode } from 'react';
 import Document from 'src/views/pages/centers/Document';
-import CentersLayout from 'src/views/pages/centers/CentersLayout';
+import CentersLayout from 'src/views/pages/centers/centers-layout';
 
 const centerDocuments = () => {
   return (

@@ -5,24 +5,23 @@ import axiosServices from 'src/utils/axios';
 import { buildGetRequest } from 'src/utils/requests/get-request';
 import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
-import TeamMember from 'src/types/team/team-member';
 
 const departmentApiService = {
   getAll: (params: GetRequestParam, parentDepartmentId: string): Promise<IApiResponse> =>
-    buildGetRequest(`/auth/teams-module/departments?parentId=${parentDepartmentId}`, params)
+    buildGetRequest(`/departments?parentId=${parentDepartmentId}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw new Error(error);
       }),
 
-  getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/auth/teams-module/departments/${idx}`, params)
+  getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse<Department>> =>
+    buildGetRequest(`/departments/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw new Error(error);
       }),
   getDepartmentStructure: (departmentId: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/auth/teams-module/departments-structure/${departmentId}`, params)
+    buildGetRequest(`/departments-structure/${departmentId}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw new Error(error);
@@ -30,43 +29,38 @@ const departmentApiService = {
 
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
-      .delete(`/auth/teams-module/departments/${idx}`)
+      .delete(`/departments/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw new Error(error);
       }),
 
   create: (body: { data: Department; files: any[] }): Promise<IApiResponse> =>
-    buildPostRequest('/auth/teams-module/departments', body, false)
+    buildPostRequest('/departments', body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw new Error(error);
       }),
 
   update: (id: string, body: { data: Department; files: any[] }): Promise<IApiResponse> =>
-    buildPutRequest(`/auth/teams-module/departments/${id}`, body)
+    buildPutRequest(`/departments/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw new Error(error);
       }),
-  getDepartmentMembers: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/auth/teams-module/department-members/${idx}`, params)
+  getDepartmentHead: (idx?: string, params?: GetRequestParam): Promise<IApiResponse<Department>> =>
+    buildGetRequest(`/departments/department-head/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw new Error(error);
       }),
-  createDepartmentMember: (body: { data: TeamMember; files: any[] }): Promise<IApiResponse> =>
-    buildPostRequest('/auth/teams-module/team/members', body, false)
+  getAllParentDepartmentsTree: (idx?: string, params?: GetRequestParam): Promise<IApiResponse<Department[]>> =>
+    buildGetRequest(`/departments/department-structure/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw new Error(error);
       }),
-  updateDepartmentMember: (idx: string, body: { data: TeamMember; files: any[] }): Promise<IApiResponse> =>
-    buildPutRequest(`/auth/teams-module/team/members/${idx}`, body)
-      .then((response: AxiosResponse<IApiResponse>) => response.data)
-      .catch((error: any) => {
-        throw new Error(error);
-      })
+    
 };
 
 export default departmentApiService;

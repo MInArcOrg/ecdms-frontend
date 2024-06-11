@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
-import departmentApiService from 'src/services/team/department-service';
+import departmentApiService from 'src/services/department/department-service';
 import { defaultGetRequestParam } from 'src/types/requests';
 import { GetRequestParam } from 'src/types/requests';
 import { Pagination } from 'src/types/requests/pagination';

@@ -5,24 +5,21 @@ import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import Department from 'src/types/department/department';
 import ItemsListing from 'src/views/shared/listing';
-import PositionDrawer from './position-drawer';
-import positionApiService from 'src/services/department/position-service';
-import Position from 'src/types/department/position';
-import { positionColumns } from 'src/views/team/departments/view/Positions/position-row-column';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import SubDepartment from 'src/types/department/position';
+import { positionColumns } from 'src/views/team/departments/view/SubDepartments/position-row-column';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
 
-function PositionTable({ parentDepartment }: { parentDepartment: Department }) {
+function SubDepartmentTable({ parentDepartment }: { parentDepartment: Department }) {
   const [showDrawer, setShowDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<Position | null>(null);
+  const [selectedRow, setSelectedRow] = useState<SubDepartment | null>(null);
   const { t } = useTranslation();
 
   const toggleDrawer = () => {
     setShowDrawer(!showDrawer);
   };
 
-  const fetchPositions = (params: GetRequestParam): Promise<IApiResponse<Position[]>> => {
-    return positionApiService.getPositionByDepartmentId(parentDepartment.id, params);
+  const fetchSubDepartments = (params: GetRequestParam): Promise<IApiResponse<SubDepartment[]>> => {
+    return positionApiService.getSubDepartmentByDepartmentId(parentDepartment.id, params);
   };
 
   const {
@@ -31,16 +28,16 @@ function PositionTable({ parentDepartment }: { parentDepartment: Department }) {
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<Position[]>({
+  } = usePaginatedFetch<SubDepartment[]>({
     queryKey: 'positions',
-    fetchFunction: fetchPositions
+    fetchFunction: fetchSubDepartments
   });
 
   const handleDelete = (positionId: string) => {
     // Handle delete logic
   };
 
-  const handleEdit = (position: Position) => {
+  const handleEdit = (position: SubDepartment) => {
     setSelectedRow(position);
     toggleDrawer();
   };
@@ -54,11 +51,11 @@ function PositionTable({ parentDepartment }: { parentDepartment: Department }) {
       }}
     >
       {showDrawer && (
-        <PositionDrawer
+        <SubDepartmentDrawer
           open={showDrawer}
           toggle={toggleDrawer}
           departmentId={parentDepartment?.id}
-          position={selectedRow as Position}
+          position={selectedRow as SubDepartment}
           refetch={refetch}
         />
       )}
@@ -77,4 +74,4 @@ function PositionTable({ parentDepartment }: { parentDepartment: Department }) {
   );
 }
 
-export default PositionTable;
+export default SubDepartmentTable;

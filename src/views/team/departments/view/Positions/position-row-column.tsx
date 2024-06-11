@@ -101,7 +101,7 @@ const RowOptions = ({
   );
 };
 
-export const positionColumns = (onEdit: (position: Position) => void, onDelete: (id: string) => void) =>
+export const positionColumns = (onEdit: (position: Position) => void, onDelete: (id: string) => void, t: (word: string) => void) =>
   [
     {
       flex: 0.25,

@@ -10,8 +10,8 @@ import positionApiService from 'src/services/department/position-service';
 interface PositionDrawerType {
   open: boolean;
   toggle: () => void;
-  Position: (body: { data: Position; files: [] }) => Promise<void>;
   refetch: () => void;
+  departmentId: string;
   position: Position;
 }
 
@@ -23,14 +23,13 @@ const validationSchema = yup.object().shape({
 const PositionDrawer = (props: PositionDrawerType) => {
   // ** Props
   const { open, toggle, refetch, position } = props;
-  console.log('editable position', position);
 
   const isEdit = position?.id ? true : false;
   const createPosition = async (body: { data: Position; files: [] }) => {
     await positionApiService.create(body);
   };
   const editPosition = async (body: { data: Position; files: [] }) => {
-    await positionApiService.update(position.id, body);
+    await positionApiService.update(position?.id || '', body);
   };
 
   const getPayload = (values: Position) => {

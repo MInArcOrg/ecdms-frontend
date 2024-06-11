@@ -1,4 +1,15 @@
 {
+  "navigation":{
+    "dashboard":"Dashboard",
+    "admin-module":"Admin Module",
+    "depamrtent-module":"Department Module",
+    "department":"Department",
+    "user":"User",
+    "user-list":"User List",
+    "roles-and-permissions":"Roles & Permissions",
+    "roles":"Roles",
+    "permissions":"Permissions"
+  },
   "department":{
     "user-columns": {
       "user": "User",

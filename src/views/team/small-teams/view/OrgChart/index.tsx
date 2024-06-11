@@ -1,6 +1,6 @@
 // pages/index.tsx
 import React, { useEffect, useState } from 'react';
-import departmentApiService from 'src/services/team/department-service';
+import departmentApiService from 'src/services/department/department-service';
 import { defaultGetRequestParam } from 'src/types/requests';
 import Department from 'src/types/department/department';
 import OrgChartComponent from 'src/views/components/org-chart';

@@ -1,4 +1,3 @@
-import User from '../admin/user';
 import type { Pagination } from './pagination';
 
 export type GetRequestParam = {
@@ -48,14 +47,14 @@ export interface IAuthLogin {
   accessToken: IAccessToken;
 }
 
-export interface IApiResponse {
+export interface IApiResponse<T = any> {
   [x: string]: any;
   _links: any[] | null;
   _warning: any[] | null;
   _attributes: any | IAttributePagination | null;
   _errors?: string | string[] | { [key: string]: string[] };
   _generated: string | null;
-  payload: IAuthLogin | User | any;
+  payload: T;
 }
 
 export interface IAttributePagination {

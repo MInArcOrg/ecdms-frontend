@@ -1,4 +1,4 @@
-const TabsRoute = (id: string) => [
+const TabsRoute = (id?: string) => [
   {
     path: '/departments/sub-departements'
   },

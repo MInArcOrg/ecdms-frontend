@@ -1,19 +1,21 @@
 // ** React Imports
-import { ReactNode, cloneElement, useContext } from 'react';
+import { ReactElement, cloneElement, useContext } from 'react';
 
 // ** MUI Imports
 import Tab from '@mui/material/Tab';
 import TabList from '@mui/lab/TabList';
 import TabContext from '@mui/lab/TabContext';
 import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
-import CompanyCard from './CentersCard';
-import ProfileCard from './ProfileCard';
+import CompanyCard from './centers-card';
+import ProfileCard from './profile-card';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { getAllParentDepartmentsTree, getDepartmentById, getDepartmentHead } from 'src/services/department/department-service';
 import { AbilityContext } from 'src/layouts/components/acl/Can';
 import { useTranslation } from 'react-i18next';
 import TabsRoute from 'src/pages/departments/tab-routes';
+import { useQuery } from '@tanstack/react-query';
+import departmentApiService from 'src/services/department/department-service';
+import Department from 'src/types/department/department';
 
 const CentersLayout = ({ children, value, routes }: { children: ReactElement; value: string; routes: typeof TabsRoute }) => {
   // ** State
@@ -24,15 +26,26 @@ const CentersLayout = ({ children, value, routes }: { children: ReactElement; va
 
   // routes(id)[0]
 
-  const currentRoutes = id ? routes(id) : routes();
-  const [{ data: department, loading, error }, refetch] = getDepartmentById(id);
-  const [{ data: departmentsTree }] = getAllParentDepartmentsTree(id);
-  const [{ data: departmentHead }] = getDepartmentHead(id);
+  const currentRoutes = id ? routes(String(id)) : routes();
+  // const [{ data: department, loading, error }, refetch] = getDepartmentById(id);
+  const { data: department,isLoading } = useQuery({
+    queryKey: ['department-tree',id],
+    queryFn: () => departmentApiService.getOne(String(id), {})
+  });
+  const { data: departmentsTree } = useQuery({
+    queryKey: ['department-tree',id],
+    queryFn: () => departmentApiService.getAllParentDepartmentsTree(String(id), {})
+  });
+  const { data: departmentHead, refetch } = useQuery({
+    queryKey: ['head-department',id],
+    queryFn: () => departmentApiService.getDepartmentHead(String(id), {})
+  });
+  // useQuery(['head-department'],
 
   return (
     <Box display="flex" flexDirection="column" paddingTop={1}>
       <Typography variant="subtitle1" sx={{ alignSelf: 'end', textDecoration: 'none' }} paddingBottom={7} fontSize={13}>
-        {departmentsTree?.map((item, index) => {
+        {departmentsTree?.map((item: Department, index: number) => {
           return (
             <span key={index}>
               <Typography component={Link} href={item?.id} sx={{ textDecoration: 'none' }}>
@@ -46,7 +59,7 @@ const CentersLayout = ({ children, value, routes }: { children: ReactElement; va
 
       <Grid container spacing={5}>
         <Grid item xs={12} md={4}>
-          <ProfileCard departmentHead={departmentHead} refetch={refetch} department={department} loading={loading} />
+          <ProfileCard departmentHead={departmentHead} refetch={refetch} department={department} loading={isLoading} />
         </Grid>
         <Grid item xs={12} md={8}>
           <Grid container spacing={3}>
