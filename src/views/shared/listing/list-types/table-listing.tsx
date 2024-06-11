@@ -1,4 +1,3 @@
-import { Card } from '@mui/material';
 import { DataGrid, GridColDef, GridPaginationModel, GridRowId } from '@mui/x-data-grid';
 import React, { useState } from 'react';
 import { Pagination } from 'src/types/requests/pagination';
@@ -28,24 +27,22 @@ const TableListing: React.FC<TableListingProps> = ({ columns, items, pagination,
   };
 
   return (
-    <Card>
-      <DataGrid
-        rows={items} // Use items from state
-        pageSizeOptions={[5, 10, 25]}
-        autoHeight
-        pagination
-        rowHeight={62}
-        rowCount={pagination?.total}
-        columns={columns}
-        paginationMode="server"
-        checkboxSelection
-        disableRowSelectionOnClick
-        paginationModel={paginationModel}
-        onPaginationModelChange={handlePaginationModelChange}
-        onRowSelectionModelChange={(rows) => setSelectedRows(rows)}
-        loading={isLoading}
-      />
-    </Card>
+    <DataGrid
+      rows={items} // Use items from state
+      pageSizeOptions={[5, 10, 25]}
+      autoHeight
+      pagination
+      rowHeight={62}
+      rowCount={pagination?.total}
+      columns={columns}
+      paginationMode="server"
+      checkboxSelection
+      disableRowSelectionOnClick
+      paginationModel={paginationModel}
+      onPaginationModelChange={handlePaginationModelChange}
+      onRowSelectionModelChange={(rows) => setSelectedRows(rows)}
+      loading={isLoading}
+    />
   );
 };
 

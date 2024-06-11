@@ -1,44 +1,46 @@
-import { Box } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import Department from 'src/types/department/department';
 import ItemsListing from 'src/views/shared/listing';
-import SubDepartment from 'src/types/department/position';
-import { positionColumns } from 'src/views/team/departments/view/SubDepartments/position-row-column';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import SubDepartmentDrawer from './sub-department-drawer';
+import departmentApiService from 'src/services/department/department-service';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { subDepartmentColumns } from './sub-department-row';
 
-function SubDepartmentTable({ parentDepartment }: { parentDepartment: Department }) {
+function SubDepartmentList({ parentDepartment }: { parentDepartment: Department }) {
   const [showDrawer, setShowDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<SubDepartment | null>(null);
+  const [selectedRow, setSelectedRow] = useState<Department | null>(null);
   const { t } = useTranslation();
 
   const toggleDrawer = () => {
     setShowDrawer(!showDrawer);
   };
 
-  const fetchSubDepartments = (params: GetRequestParam): Promise<IApiResponse<SubDepartment[]>> => {
-    return positionApiService.getSubDepartmentByDepartmentId(parentDepartment.id, params);
+  const fetchSubDepartments = (params: GetRequestParam): Promise<IApiResponse<Department[]>> => {
+    return departmentApiService.getSubDeparmtnetByDepartmentId(parentDepartment.id, params);
   };
 
   const {
-    data: positions,
+    data: subDepartments,
     isLoading,
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<SubDepartment[]>({
-    queryKey: 'positions',
+  } = usePaginatedFetch<Department[]>({
+    queryKey: 'subDepartments',
     fetchFunction: fetchSubDepartments
   });
 
-  const handleDelete = (positionId: string) => {
+  const handleDelete = (subDepartmentId: string) => {
     // Handle delete logic
   };
 
-  const handleEdit = (position: SubDepartment) => {
-    setSelectedRow(position);
+  const handleEdit = (subDepartment: Department) => {
+    setSelectedRow(subDepartment);
     toggleDrawer();
   };
 
@@ -55,23 +57,24 @@ function SubDepartmentTable({ parentDepartment }: { parentDepartment: Department
           open={showDrawer}
           toggle={toggleDrawer}
           departmentId={parentDepartment?.id}
-          position={selectedRow as SubDepartment}
+          subDepartment={selectedRow as Department}
           refetch={refetch}
         />
       )}
-
-      <ItemsListing
-        pagination={pagination}
-        type={ITEMS_LISTING_TYPE.table.value}
-        isLoading={isLoading}
-        onCreateClick={toggleDrawer}
-        fetchDataFunction={refetch}
-        tableProps={{ headers: positionColumns(handleEdit, handleDelete, t) }}
-        items={positions || []}
-        onPaginationChange={handlePageChange}
-      />
+      <Container>
+        <ItemsListing
+          pagination={pagination}
+          type={ITEMS_LISTING_TYPE.table.value}
+          isLoading={isLoading}
+          onCreateClick={toggleDrawer}
+          fetchDataFunction={refetch}
+          tableProps={{ headers: subDepartmentColumns(handleEdit, handleDelete, t) }}
+          items={subDepartments || []}
+          onPaginationChange={handlePageChange}
+        />
+      </Container>
     </Box>
   );
 }
 
-export default SubDepartmentTable;
+export default SubDepartmentList;

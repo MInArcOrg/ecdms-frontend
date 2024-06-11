@@ -1,12 +1,12 @@
 import { FormikProps } from 'formik';
 import { useTranslation } from 'react-i18next';
-import SubDepartment from 'src/types/department/department';
+import Department from 'src/types/department/department';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface SubDepartmentFormProps {
-  formik: FormikProps<SubDepartment>;
+  formik: FormikProps<Department>;
   isLocaleEdit?: boolean;
-  defaultLocaleData?: SubDepartment;
+  defaultLocaleData?: Department;
 }
 
 const SubDepartmentForm: React.FC<SubDepartmentFormProps> = ({ formik, isLocaleEdit = false, defaultLocaleData }) => {
@@ -15,8 +15,8 @@ const SubDepartmentForm: React.FC<SubDepartmentFormProps> = ({ formik, isLocaleE
     <>
       <CustomTextBox
         fullWidth
-        label={transl('department.department.form.name')}
-        placeholder={transl('department.department.form.name')}
+        label={transl('department.sub-department.form.name')}
+        placeholder={transl('department.sub-department.form.name')}
         name="name"
         size="sm"
         sx={{ mb: 2 }}
@@ -24,8 +24,8 @@ const SubDepartmentForm: React.FC<SubDepartmentFormProps> = ({ formik, isLocaleE
 
       <CustomTextBox
         fullWidth
-        label={transl('department.department.form.name')}
-        placeholder={transl('department.department.form.name')}
+        label={transl('department.sub-department.form.name')}
+        placeholder={transl('department.sub-department.form.name')}
         name="name"
         multiline={true}
         row="4"

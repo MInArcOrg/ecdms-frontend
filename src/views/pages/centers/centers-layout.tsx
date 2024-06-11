@@ -16,6 +16,7 @@ import TabsRoute from 'src/pages/departments/tab-routes';
 import { useQuery } from '@tanstack/react-query';
 import departmentApiService from 'src/services/department/department-service';
 import Department from 'src/types/department/department';
+import User from 'src/types/admin/user';
 
 const CentersLayout = ({ children, value, routes }: { children: ReactElement; value: string; routes: typeof TabsRoute }) => {
   // ** State
@@ -28,24 +29,24 @@ const CentersLayout = ({ children, value, routes }: { children: ReactElement; va
 
   const currentRoutes = id ? routes(String(id)) : routes();
   // const [{ data: department, loading, error }, refetch] = getDepartmentById(id);
-  const { data: department,isLoading } = useQuery({
-    queryKey: ['department-tree',id],
-    queryFn: () => departmentApiService.getOne(String(id), {})
+  const { data: department, isLoading } = useQuery({
+    queryKey: ['department-tree', id],
+    queryFn: () => departmentApiService.getById(id ? String(id) : undefined, {})
   });
   const { data: departmentsTree } = useQuery({
-    queryKey: ['department-tree',id],
-    queryFn: () => departmentApiService.getAllParentDepartmentsTree(String(id), {})
+    queryKey: ['department-tree', id],
+    queryFn: () => departmentApiService.getAllParentDepartmentsTree(id ? String(id) : undefined, {})
   });
   const { data: departmentHead, refetch } = useQuery({
-    queryKey: ['head-department',id],
-    queryFn: () => departmentApiService.getDepartmentHead(String(id), {})
+    queryKey: ['head-department', id],
+    queryFn: () => departmentApiService.getDepartmentHead(id ? String(id) : undefined, {})
   });
   // useQuery(['head-department'],
 
   return (
     <Box display="flex" flexDirection="column" paddingTop={1}>
       <Typography variant="subtitle1" sx={{ alignSelf: 'end', textDecoration: 'none' }} paddingBottom={7} fontSize={13}>
-        {departmentsTree?.map((item: Department, index: number) => {
+        {departmentsTree?.payload?.map((item: Department, index: number) => {
           return (
             <span key={index}>
               <Typography component={Link} href={item?.id} sx={{ textDecoration: 'none' }}>
@@ -59,7 +60,12 @@ const CentersLayout = ({ children, value, routes }: { children: ReactElement; va
 
       <Grid container spacing={5}>
         <Grid item xs={12} md={4}>
-          <ProfileCard departmentHead={departmentHead} refetch={refetch} department={department} loading={isLoading} />
+          <ProfileCard
+            departmentHead={departmentHead?.payload as User}
+            refetch={refetch}
+            department={department?.payload as Department}
+            loading={isLoading}
+          />
         </Grid>
         <Grid item xs={12} md={8}>
           <Grid container spacing={3}>

@@ -1,33 +1,45 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Avatar from '@mui/material/Avatar'
-import CardMedia from '@mui/material/CardMedia'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
-import { CircularProgress, Divider, IconButton, Tooltip } from '@mui/material'
-import { Icon } from '@iconify/react'
-import Link from 'next/link'
-import { Fragment, useState } from 'react'
-import CentersDrawer from './sub-department/sub-department-drawer'
-import { useTranslation } from 'react-i18next'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Avatar from '@mui/material/Avatar';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
+import { CircularProgress, Divider, IconButton, Tooltip } from '@mui/material';
+import { Icon } from '@iconify/react';
+import Link from 'next/link';
+import { Fragment, useState } from 'react';
+// import CentersDrawer from './sub-department/sub-department-drawer';
+import { useTranslation } from 'react-i18next';
+import Department from 'src/types/department/department';
+import User from 'src/types/admin/user';
 
-const ProfileCard = ({ department, departmentHead, refetch, loading }) => {
-  const [showDrawer, setShowDrawer] = useState(false)
+const ProfileCard = ({
+  department,
+  departmentHead,
+  refetch,
+  loading
+}: {
+  department: Department;
+  departmentHead: User;
+  refetch: () => void;
+  loading: boolean;
+}) => {
+  const [showDrawer, setShowDrawer] = useState(false);
 
   const handleDrawer = () => {
-    setShowDrawer(!showDrawer)
-  }
-
-  const { t } = useTranslation()
+    setShowDrawer(!showDrawer);
+  };
+  console.log('department subdepartment',department)
+  const { t } = useTranslation();
 
   return (
     <Card sx={{ position: 'relative' }}>
-      {showDrawer && (
+      {/* {showDrawer && (
         <CentersDrawer
           show={showDrawer}
           toggleDrawer={() => {
-            handleDrawer()
+            handleDrawer();
           }}
           refetch={refetch}
           editableData={department}
@@ -36,21 +48,21 @@ const ProfileCard = ({ department, departmentHead, refetch, loading }) => {
             description: department?.description
           }}
           handleFormSubmit={() => {}}
-          title='Departement'
+          title="Departement"
         />
-      )}
-      <input id='upload-cover-pic' type='file' hidden />
-      <Tooltip title='Upload Cover Picture' placement='top' arrow>
-        <label htmlFor='upload-cover-pic'>
-          <CardMedia sx={{ height: '6rem', cursor: 'pointer' }} image='/images/cards/background-user.png' />
+      )} */}
+      <input id="upload-cover-pic" type="file" hidden />
+      <Tooltip title="Upload Cover Picture" placement="top" arrow>
+        <label htmlFor="upload-cover-pic">
+          <CardMedia sx={{ height: '6rem', cursor: 'pointer' }} image="/images/cards/background-user.png" />
         </label>
       </Tooltip>
-      <input id='upload-avatar-pic' type='file' hidden />
-      <label htmlFor='upload-avatar-pic'>
-        <Tooltip title='Upload Profile Picture' placement='top' arrow>
+      <input id="upload-avatar-pic" type="file" hidden />
+      <label htmlFor="upload-avatar-pic">
+        <Tooltip title="Upload Profile Picture" placement="top" arrow>
           <Avatar
-            alt='Robert Meyer'
-            src='/images/avatars/1.png'
+            alt="Robert Meyer"
+            src="/images/avatars/1.png"
             sx={{
               width: 90,
               height: 90,
@@ -58,7 +70,7 @@ const ProfileCard = ({ department, departmentHead, refetch, loading }) => {
               top: '-1.5rem',
               cursor: 'pointer',
 
-              border: theme => `solid ${theme.palette.common.white}`
+              border: (theme) => `solid ${theme.palette.common.white}`
             }}
           />
         </Tooltip>
@@ -71,7 +83,7 @@ const ProfileCard = ({ department, departmentHead, refetch, loading }) => {
           </Box>
         ) : (
           <Box>
-            <Typography variant='h6' sx={{ color: 'text.primary', mt: 0 }}>
+            <Typography variant="h6" sx={{ color: 'text.primary', mt: 0 }}>
               {department?.name}
             </Typography>
             <IconButton
@@ -83,10 +95,10 @@ const ProfileCard = ({ department, departmentHead, refetch, loading }) => {
               }}
               onClick={handleDrawer}
             >
-              <Icon icon='tabler:edit' fontSize={19} />
+              <Icon icon="tabler:edit" fontSize={19} />
             </IconButton>
             <Typography
-              href='/department-structure'
+              href="/department-structure"
               component={Link}
               sx={{
                 textDecoration: 'none',
@@ -98,19 +110,19 @@ const ProfileCard = ({ department, departmentHead, refetch, loading }) => {
               {t('Company Structure')}
             </Typography>
 
-            <Typography variant='body2' sx={{ color: 'text.secondary' }} mb={3}>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }} mb={3}>
               {department?.description}
             </Typography>
             {departmentHead?.full_name && (
               <Fragment>
                 <Divider />
-                <Box display='flex' alignItems='center' gap={3} py={2}>
+                <Box display="flex" alignItems="center" gap={3} py={2}>
                   <Avatar sx={{ backgroundColor: 'primary.light', color: '#fff' }}>{departmentHead?.full_name}</Avatar>
                   <Box>
-                    <Typography variant='subtitle1' mt={3.5}>
+                    <Typography variant="subtitle1" mt={3.5}>
                       {departmentHead?.full_name}
                     </Typography>
-                    <Typography variant='subtitle2' mb={3.5}>
+                    <Typography variant="subtitle2" mb={3.5}>
                       {departmentHead?.position_name}
                     </Typography>
                   </Box>
@@ -122,7 +134,7 @@ const ProfileCard = ({ department, departmentHead, refetch, loading }) => {
         )}
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default ProfileCard
+export default ProfileCard;
