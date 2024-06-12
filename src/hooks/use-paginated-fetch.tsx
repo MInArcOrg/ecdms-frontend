@@ -4,7 +4,7 @@ import { defaultGetRequestParam, GetRequestParam, IApiResponse } from 'src/types
 import { Pagination } from 'src/types/requests/pagination';
 
 interface UsePaginatedFetchProps<T> {
-  queryKey: string;
+  queryKey: string[];
   fetchFunction: (params: GetRequestParam) => Promise<IApiResponse<T>>;
   initialQueryParams?: GetRequestParam;
 }

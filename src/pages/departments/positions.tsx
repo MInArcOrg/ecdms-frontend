@@ -8,7 +8,7 @@ import PositionTable from 'src/views/pages/centers/Position/position-list';
 
 const Positions = ({ parentDepartment }: { parentDepartment: Department }) => {
   return (
-    <TabPanel value="2">
+    <TabPanel value="2" sx={{ margin: 0, padding: 0 }}>
       <PositionTable parentDepartment={parentDepartment} />
     </TabPanel>
   );

@@ -2,7 +2,6 @@
 import CentersLayout from 'src/views/components/centers/CentersLayout';
 import { TabPanel } from '@mui/lab';
 import TabsRoute from './tab-routes';
-import ProfessionalTable from 'src/views/components/centers/Professional/ProfessionalTable';
 import UserLayout from 'src/layouts/UserLayout';
 import { ReactNode } from 'react';
 import Department from 'src/types/department/department';

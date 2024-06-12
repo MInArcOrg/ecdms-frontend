@@ -1,18 +1,18 @@
-import { Icon } from '@iconify/react'
-import { CardContent, Typography, Card } from '@mui/material'
-import { Box } from '@mui/system'
-import { useTranslation } from 'react-i18next'
+import { Icon } from '@iconify/react';
+import { CardContent, Typography, Card } from '@mui/material';
+import { Box } from '@mui/system';
+import { useTranslation } from 'react-i18next';
 
 function CompanyCard(props) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <Card>
       <CardContent>
-        <Box display='flex' justifyContent='space-between'>
+        <Box display="flex" justifyContent="space-between">
           <Box>
-            <Typography variant='subtitle2'>{t(props?.name)}</Typography>
-            <Typography variant='subtitile1' fontSize={16}>
+            <Typography variant="subtitle2">{t(props?.name)}</Typography>
+            <Typography variant="subtitile1" fontSize={16}>
               {props.count}
             </Typography>
           </Box>
@@ -21,7 +21,7 @@ function CompanyCard(props) {
         </Box>
       </CardContent>
     </Card>
-  )
+  );
 }
 
-export default CompanyCard
+export default CompanyCard;

@@ -52,24 +52,22 @@ const DepartmentDrawer = (props: DepartmentDrawerType) => {
   };
   return (
     <CustomSideDrawer title={isEdit ? 'edit-department' : 'create-department'} handleClose={handleClose} open={open}>
-      {() =>
-        department && (
-          <FormPageWrapper
-            edit={isEdit}
-            title="department"
-            getPayload={getPayload}
-            validationSchema={validationSchema}
-            initialValues={department as Department}
-            createActionFunc={isEdit ? updateDepartment : addNewDepartment}
-            onActionSuccess={onActionSuccess}
-            onCancel={handleClose}
-          >
-            {(formik: FormikProps<Department>) => {
-              return <DepartmentForm formik={formik} defaultLocaleData={{} as Department} />;
-            }}
-          </FormPageWrapper>
-        )
-      }
+      {() => (
+        <FormPageWrapper
+          edit={isEdit}
+          title="department"
+          getPayload={getPayload}
+          validationSchema={validationSchema}
+          initialValues={department as Department}
+          createActionFunc={isEdit ? updateDepartment : addNewDepartment}
+          onActionSuccess={onActionSuccess}
+          onCancel={handleClose}
+        >
+          {(formik: FormikProps<Department>) => {
+            return <DepartmentForm formik={formik} defaultLocaleData={{} as Department} />;
+          }}
+        </FormPageWrapper>
+      )}
     </CustomSideDrawer>
   );
 };

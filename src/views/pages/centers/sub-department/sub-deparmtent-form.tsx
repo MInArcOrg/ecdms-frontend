@@ -24,9 +24,9 @@ const SubDepartmentForm: React.FC<SubDepartmentFormProps> = ({ formik, isLocaleE
 
       <CustomTextBox
         fullWidth
-        label={transl('department.sub-department.form.name')}
-        placeholder={transl('department.sub-department.form.name')}
-        name="name"
+        label={transl('department.sub-department.form.description')}
+        placeholder={transl('department.sub-department.form.description')}
+        name="description"
         multiline={true}
         row="4"
         size="sm"

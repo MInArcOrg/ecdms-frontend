@@ -2,21 +2,21 @@
 import { ReactElement, cloneElement, useContext } from 'react';
 
 // ** MUI Imports
-import Tab from '@mui/material/Tab';
-import TabList from '@mui/lab/TabList';
 import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
 import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
-import CompanyCard from './centers-card';
-import ProfileCard from './profile-card';
+import Tab from '@mui/material/Tab';
+import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { AbilityContext } from 'src/layouts/components/acl/Can';
 import { useTranslation } from 'react-i18next';
+import { AbilityContext } from 'src/layouts/components/acl/Can';
 import TabsRoute from 'src/pages/departments/tab-routes';
-import { useQuery } from '@tanstack/react-query';
 import departmentApiService from 'src/services/department/department-service';
-import Department from 'src/types/department/department';
 import User from 'src/types/admin/user';
+import Department from 'src/types/department/department';
+import CompanyCard from './centers-card';
+import ProfileCard from './profile-card';
 
 const CentersLayout = ({ children, value, routes }: { children: ReactElement; value: string; routes: typeof TabsRoute }) => {
   // ** State
@@ -30,7 +30,7 @@ const CentersLayout = ({ children, value, routes }: { children: ReactElement; va
   const currentRoutes = id ? routes(String(id)) : routes();
   // const [{ data: department, loading, error }, refetch] = getDepartmentById(id);
   const { data: department, isLoading } = useQuery({
-    queryKey: ['department-tree', id],
+    queryKey: ['department', id],
     queryFn: () => departmentApiService.getById(id ? String(id) : undefined, {})
   });
   const { data: departmentsTree } = useQuery({
@@ -41,22 +41,22 @@ const CentersLayout = ({ children, value, routes }: { children: ReactElement; va
     queryKey: ['head-department', id],
     queryFn: () => departmentApiService.getDepartmentHead(id ? String(id) : undefined, {})
   });
-  // useQuery(['head-department'],
-
   return (
     <Box display="flex" flexDirection="column" paddingTop={1}>
-      <Typography variant="subtitle1" sx={{ alignSelf: 'end', textDecoration: 'none' }} paddingBottom={7} fontSize={13}>
-        {departmentsTree?.payload?.map((item: Department, index: number) => {
-          return (
-            <span key={index}>
-              <Typography component={Link} href={item?.id} sx={{ textDecoration: 'none' }}>
-                {item.name}/
-              </Typography>
-              &nbsp;&nbsp;
-            </span>
-          );
-        })}
-      </Typography>
+      {departmentsTree?.payload && (
+        <Typography variant="subtitle1" sx={{ alignSelf: 'end', textDecoration: 'none' }} paddingBottom={7} fontSize={13}>
+          {departmentsTree?.payload?.map((item: Department, index: number) => {
+            return (
+              <span key={index}>
+                <Typography component={Link} href={item?.id} sx={{ textDecoration: 'none' }}>
+                  {item.name}/
+                </Typography>
+                &nbsp;&nbsp;
+              </span>
+            );
+          })}
+        </Typography>
+      )}
 
       <Grid container spacing={5}>
         <Grid item xs={12} md={4}>
@@ -82,7 +82,7 @@ const CentersLayout = ({ children, value, routes }: { children: ReactElement; va
               <Card>
                 <CardContent>
                   <TabContext value={value}>
-                    <TabList variant="fullWidth">
+                    <TabList variant="fullWidth" >
                       {ability.can('view_department', 'department') && (
                         <Tab value="1" component={Link} label={t('Sub departemnts')} href={currentRoutes[0].path} />
                       )}
@@ -95,7 +95,7 @@ const CentersLayout = ({ children, value, routes }: { children: ReactElement; va
                       <Tab value="4" component={Link} label={t('Documnets')} href={currentRoutes[3].path} />
                       <Tab value="5" component={Link} label={t('Structure')} href={currentRoutes[4].path} />
                     </TabList>
-                    {cloneElement(children, { parentDepartment: department })}
+                    {cloneElement(children, { parentDepartment: department?.payload })}
                   </TabContext>
                 </CardContent>
               </Card>

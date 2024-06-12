@@ -11,6 +11,7 @@ import Position from 'src/types/department/position';
 import { positionColumns } from 'src/views/team/departments/view/Positions/position-row-column';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import { Container } from '@mui/system';
 
 function PositionTable({ parentDepartment }: { parentDepartment: Department }) {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -32,7 +33,7 @@ function PositionTable({ parentDepartment }: { parentDepartment: Department }) {
     handlePageChange,
     refetch
   } = usePaginatedFetch<Position[]>({
-    queryKey: 'positions',
+  queryKey: ['positions',parentDepartment?.id],
     fetchFunction: fetchPositions
   });
 
@@ -62,17 +63,18 @@ function PositionTable({ parentDepartment }: { parentDepartment: Department }) {
           refetch={refetch}
         />
       )}
-
-      <ItemsListing
-        pagination={pagination}
-        type={ITEMS_LISTING_TYPE.table.value}
-        isLoading={isLoading}
-        onCreateClick={toggleDrawer}
-        fetchDataFunction={refetch}
-        tableProps={{ headers: positionColumns(handleEdit, handleDelete, t) }}
-        items={positions || []}
-        onPaginationChange={handlePageChange}
-      />
+      <Container>
+        <ItemsListing
+          pagination={pagination}
+          type={ITEMS_LISTING_TYPE.table.value}
+          isLoading={isLoading}
+          onCreateClick={toggleDrawer}
+          fetchDataFunction={refetch}
+          tableProps={{ headers: positionColumns(handleEdit, handleDelete, t) }}
+          items={positions || []}
+          onPaginationChange={handlePageChange}
+        />
+      </Container>
     </Box>
   );
 }

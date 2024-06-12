@@ -1,14 +1,14 @@
-import { Box, Container } from '@mui/material';
-import { useState } from 'react';
+import { Container } from '@mui/material';
+import { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import Department from 'src/types/department/department';
-import ItemsListing from 'src/views/shared/listing';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import SubDepartmentDrawer from './sub-department-drawer';
 import departmentApiService from 'src/services/department/department-service';
+import Department from 'src/types/department/department';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import ItemsListing from 'src/views/shared/listing';
+import SubDepartmentDrawer from './sub-department-drawer';
 import { subDepartmentColumns } from './sub-department-row';
 
 function SubDepartmentList({ parentDepartment }: { parentDepartment: Department }) {
@@ -17,6 +17,7 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
   const { t } = useTranslation();
 
   const toggleDrawer = () => {
+    setSelectedRow({} as Department);
     setShowDrawer(!showDrawer);
   };
 
@@ -31,10 +32,10 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
     handlePageChange,
     refetch
   } = usePaginatedFetch<Department[]>({
-    queryKey: 'subDepartments',
+    queryKey: ['subDepartments', parentDepartment?.id],
     fetchFunction: fetchSubDepartments
   });
-
+  console.log('subDepartments', subDepartments);
   const handleDelete = (subDepartmentId: string) => {
     // Handle delete logic
   };
@@ -45,13 +46,7 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
   };
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'end'
-      }}
-    >
+    <Fragment>
       {showDrawer && (
         <SubDepartmentDrawer
           open={showDrawer}
@@ -68,12 +63,12 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
           isLoading={isLoading}
           onCreateClick={toggleDrawer}
           fetchDataFunction={refetch}
-          tableProps={{ headers: subDepartmentColumns(handleEdit, handleDelete, t) }}
+          tableProps={{ headers: subDepartmentColumns(handleEdit, handleDelete, t,refetch) }}
           items={subDepartments || []}
           onPaginationChange={handlePageChange}
         />
       </Container>
-    </Box>
+    </Fragment>
   );
 }
 

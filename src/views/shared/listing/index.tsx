@@ -1,4 +1,4 @@
-import { Box, Card } from '@mui/material';
+import { Box, Button, Card } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
 import { isArray } from 'lodash';
 import { useRouter } from 'next/router';
@@ -122,7 +122,7 @@ const ItemsListing = <T extends {}>({
       ) : (
         isArray(items) && (
           <Fragment>
-            <Box>{listingComponents[type] || listingComponents.default}</Box>
+            <Box sx={{borderColor:'red',borderWidth:1}}>{listingComponents[type] || listingComponents.default}</Box>
             <></>
             {type !== ITEMS_LISTING_TYPE.table.value && pagination && (
               <Card>

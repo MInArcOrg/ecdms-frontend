@@ -43,6 +43,19 @@
       "title":"Position",
       "create-position":"Create Position",
       "edit-position":"Edit Position"
+    },
+    "sub-department":{
+      "form":{
+        "name":"Name",
+        "description":"Description"
+      },
+      "column":{
+        "name":"Name",
+        "description":"Description"
+      },
+      "title":"Sub Department",
+      "create-sub-department":"Create Sub Department",
+      "edit-sub-department":"Edit Sub Department"
     }
   },
   "greating":{

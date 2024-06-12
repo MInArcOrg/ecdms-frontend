@@ -58,24 +58,22 @@ const SubDepartmentDrawer = (props: SubDepartmentDrawerType) => {
       handleClose={handleClose}
       open={open}
     >
-      {() =>
-        subDepartment && (
-          <FormPageWrapper
-            edit={isEdit}
-            title="department.sub-department.title"
-            getPayload={getPayload}
-            validationSchema={validationSchema}
-            initialValues={subDepartment as Department}
-            createActionFunc={isEdit ? editSubDepartment : createSubDepartment}
-            onActionSuccess={onActionSuccess}
-            onCancel={handleClose}
-          >
-            {(formik: FormikProps<Department>) => {
-              return <SubDepartmentForm formik={formik} defaultLocaleData={{} as Department} />;
-            }}
-          </FormPageWrapper>
-        )
-      }
+      {() => (
+        <FormPageWrapper
+          edit={isEdit}
+          title="department.sub-department.title"
+          getPayload={getPayload}
+          validationSchema={validationSchema}
+          initialValues={subDepartment as Department}
+          createActionFunc={isEdit ? editSubDepartment : createSubDepartment}
+          onActionSuccess={onActionSuccess}
+          onCancel={handleClose}
+        >
+          {(formik: FormikProps<Department>) => {
+            return <SubDepartmentForm formik={formik} defaultLocaleData={{} as Department} />;
+          }}
+        </FormPageWrapper>
+      )}
     </CustomSideDrawer>
   );
 };
