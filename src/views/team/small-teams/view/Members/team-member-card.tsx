@@ -3,7 +3,7 @@ import Icon from 'src/@core/components/icon';
 import CustomAvatar from 'src/@core/components/mui/avatar';
 import Member from 'src/types/member/member';
 import Attendance from 'src/types/team/attendance';
-import MemberProfileSmall from 'src/views/member/members/member-profile-small';
+import MemberProfileSmall from 'src/views/admin/user/user-profile-md';
 
 const SmallTeamMemberCard = ({
   smallTeamMember,

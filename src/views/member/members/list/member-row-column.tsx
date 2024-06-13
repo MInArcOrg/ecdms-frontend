@@ -33,7 +33,7 @@ import { ThemeColor } from 'src/@core/layouts/types';
 import moment from 'moment';
 import Member from 'src/types/member/member';
 import DeleteConfirmationDialog from 'src/views/shared/dialog/delete-confirmation-dialog';
-import MemberProfileSmall from '../member-profile-small';
+import MemberProfileSmall from '../../../admin/user/user-profile-md';
 
 interface MemberStatusType {
   [key: string]: ThemeColor;

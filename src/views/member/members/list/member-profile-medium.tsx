@@ -1,6 +1,6 @@
 import { Box, Button } from '@mui/material';
 import Member from 'src/types/member/member';
-import MemberProfileSmall from '../member-profile-small';
+import MemberProfileSmall from '../../../admin/user/user-profile-md';
 import Icon from 'src/@core/components/icon';
 
 const MemberProfileMedium = ({

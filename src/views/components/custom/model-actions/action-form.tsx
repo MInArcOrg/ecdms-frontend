@@ -1,13 +1,10 @@
 import { Backdrop, Button, FormControl, FormHelperText, FormLabel, OutlinedInput } from '@mui/material';
-import { AxiosResponse } from 'axios';
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { REQUEST_REJECT } from 'src/configs/action-status';
-import modelActionApiService, { performCAActions } from 'src/services/model-action/model-action-service';
+import modelActionApiService from 'src/services/model-action/model-action-service';
 import { ModelAction } from 'src/types/general/model-action';
 import { Note } from 'src/types/general/note';
-import { IApiResponse } from 'src/types/requests';
-import { buildPutRequest } from 'src/utils/requests/put-request';
 import * as Yup from 'yup';
 
 interface ActionFormProps {
@@ -22,8 +19,6 @@ const ActionForm: React.FC<ActionFormProps> = ({ actionType, model_id, model, re
   const [actionData, setActionData] = useState<any>();
   const [actionLoading, setActionLoading] = useState(false);
   actionData;
-  const performAction = (action_type = actionType) => buildPutRequest(performCAActions(model_id, model, action_type), { data: {} as Note });
-
   const validation = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -35,17 +30,28 @@ const ActionForm: React.FC<ActionFormProps> = ({ actionType, model_id, model, re
     onSubmit: async (values) => {
       setActionLoading(true);
       try {
-        performAction().then(async (res: AxiosResponse<IApiResponse<ModelAction>>) => {
-          const data: ModelAction = res.data.payload;
-          setActionData(data);
-          if (values.description.length > 0) {
-            await modelActionApiService.addCAActionNote({
-              data: { ...values, model: 'actionstate', model_id: data.id } as Note,
+        modelActionApiService
+          .performCAActions(
+            {
+              data: {
+                model_id,
+                model
+              } as ModelAction,
               files: []
-            });
-          }
-          refetchAction();
-        });
+            },
+            actionType
+          )
+          .then(async (res) => {
+            const data: ModelAction = res.payload;
+            setActionData(data);
+            if (values.description.length > 0) {
+              await modelActionApiService.addCAActionNote({
+                data: { ...values, model: 'actionstate', model_id: data.id } as Note,
+                files: []
+              });
+            }
+            refetchAction();
+          });
       } catch (error) {
         console.log('error', error);
       } finally {
@@ -61,7 +67,16 @@ const ActionForm: React.FC<ActionFormProps> = ({ actionType, model_id, model, re
   const rejectModel = async () => {
     setActionLoading(true);
     try {
-      const res = await performAction(REQUEST_REJECT);
+      const res = await modelActionApiService.performCAActions(
+        {
+          data: {
+            model_id,
+            model
+          } as ModelAction,
+          files: []
+        },
+        REQUEST_REJECT
+      );
       setActionData(res);
       refetchAction();
     } catch (error) {

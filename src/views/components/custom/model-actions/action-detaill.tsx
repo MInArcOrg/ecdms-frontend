@@ -16,8 +16,9 @@ import {
   isAllowedToCheck
 } from 'src/configs/action-status';
 import ActionForm from './action-form';
-import ActionItem from './actionI-tem';
-import { AuthorizationResponse } from 'src/types/general/model-action';
+import ActionItem from './action-item';
+import { ActionReply, AuthorizationResponse } from 'src/types/general/model-action';
+import User from 'src/types/admin/user';
 
 interface StatusSidebarProps {
   actions: AuthorizationResponse;
@@ -59,67 +60,69 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
             }}
           >
             <Typography variant="body1">{t(title)}</Typography>
-            <Icon icon="tabler:x"  cursor="pointer" onClick={toggleDrawer} />
+            <Icon icon="tabler:x" cursor="pointer" onClick={toggleDrawer} />
           </Box>
           <CardContent>
             <ActionItem
-              replyData={{ type: ACTION_REGISTERED, action_id: actions?.authorization_data?.registered_data?.by }}
+              replyData={{ type: ACTION_REGISTERED, actionstate_id: actions?.authorization_data?.registered_data?.user_id } as ActionReply}
               refetchAction={refetchModel}
               title={t('Registered Data')}
-              user={actions?.authorization_data?.registered_data?.user}
-              action={actions?.authorization_data?.registered_data}
+              user={actions?.authorization_data?.registered_data?.user as User}
+              actionData={actions?.authorization_data?.registered_data}
             />
 
-            {actions?.authorization_data?.checked_data?.by && (
+            {actions?.authorization_data?.checked_data?.user_id && (
               <div>
                 <ActionItem
-                  replyData={{ type: ACTION_CHECKED, action_id: actions?.authorization_data?.checked_data?.by }}
+                  replyData={{ type: ACTION_CHECKED, actionstate_id: actions?.authorization_data?.checked_data?.user_id } as ActionReply}
                   refetchAction={refetchModel}
                   title={t('Checked Data')}
-                  user={actions?.authorization_data?.checked_data?.user}
-                  action={actions?.authorization_data?.checked_data}
+                  user={actions?.authorization_data?.checked_data?.user as User}
+                  actionData={actions?.authorization_data?.checked_data}
                 />
               </div>
             )}
 
-            {actions?.authorization_data?.approved_data?.by && (
+            {actions?.authorization_data?.approved_data?.user_id && (
               <div>
                 <ActionItem
-                  replyData={{ type: ACTION_APPROVED, action_id: actions?.authorization_data?.approved_data?.by }}
+                  replyData={{ type: ACTION_APPROVED, actionstate_id: actions?.authorization_data?.approved_data?.user_id } as ActionReply}
                   refetchAction={refetchModel}
                   title={t('Approved Data')}
-                  user={actions?.authorization_data?.approved_data?.user}
-                  action={actions?.authorization_data?.approved_data}
+                  user={actions?.authorization_data?.approved_data?.user as User}
+                  actionData={actions?.authorization_data?.approved_data}
                 />
               </div>
             )}
 
-            {actions?.authorization_data?.authorized_data?.by && (
+            {actions?.authorization_data?.authorized_data?.user_id && (
               <div>
                 <ActionItem
-                  replyData={{ type: ACTION_AUTHORIZED, action_id: actions?.authorization_data?.authorized_data?.by }}
+                  replyData={
+                    { type: ACTION_AUTHORIZED, actionstate_id: actions?.authorization_data?.authorized_data?.user_id } as ActionReply
+                  }
                   refetchAction={refetchModel}
                   title={t('Authorized Data')}
-                  user={actions?.authorization_data?.authorized_data?.user}
-                  action={actions?.authorization_data?.authorized_data}
+                  user={actions?.authorization_data?.authorized_data?.user as User}
+                  actionData={actions?.authorization_data?.authorized_data}
                 />
               </div>
             )}
 
-            {actions?.authorization_data?.rejected_data?.by && (
+            {actions?.authorization_data?.rejected_data?.user_id && (
               <div>
                 <ActionItem
-                  replyData={{ type: ACTION_REJECTED, action_id: actions?.authorization_data?.rejected_data?.by }}
+                  replyData={{ type: ACTION_REJECTED, actionstate_id: actions?.authorization_data?.rejected_data?.user_id } as ActionReply}
                   refetchAction={refetchModel}
                   title={t('Rejected Data')}
-                  user={actions?.authorization_data?.rejected_data?.user}
-                  action={actions?.authorization_data?.rejected_data}
+                  user={actions?.authorization_data?.rejected_data?.user as User}
+                  actionData={actions?.authorization_data?.rejected_data}
                 />
               </div>
             )}
 
             <Box sx={{ marginTop: '10px' }}>
-              {isAllowedToCheck(actions?.status, actions?.authorization_data?.registered_data?.by) && (
+              {isAllowedToCheck(actions?.status, actions?.authorization_data?.registered_data?.user_id) && (
                 <ActionForm
                   actionType={REQUEST_CHECK}
                   toggleDrawer={toggleDrawer}
@@ -130,8 +133,8 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
               )}
               {isAllowedToApprove(
                 actions?.status,
-                actions?.authorization_data?.registered_data?.by,
-                actions?.authorization_data?.checked_data?.by
+                actions?.authorization_data?.registered_data?.user_id,
+                actions?.authorization_data?.checked_data?.user_id
               ) && (
                 <ActionForm
                   actionType={REQUEST_APPROVE}
@@ -143,9 +146,9 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
               )}
               {isAllowedToAuthorize(
                 actions?.status,
-                actions?.authorization_data?.registered_data?.by,
-                actions?.authorization_data?.checked_data?.by,
-                actions?.authorization_data?.approved_data?.by
+                actions?.authorization_data?.registered_data?.user_id,
+                actions?.authorization_data?.checked_data?.user_id,
+                actions?.authorization_data?.approved_data?.user_id
               ) && (
                 <ActionForm
                   actionType={REQUEST_AUTHORIZE}

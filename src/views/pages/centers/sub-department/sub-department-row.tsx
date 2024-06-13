@@ -45,7 +45,7 @@ export const subDepartmentColumns = (
       renderCell: ({ row }: CellType) => (
         <Fragment>
           <ModelAction
-            model="department"
+            model="Department"
             model_id={row.id}
             refetchModel={refetch}
             resubmit={function (): void {

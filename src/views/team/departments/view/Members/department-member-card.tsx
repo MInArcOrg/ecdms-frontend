@@ -2,7 +2,7 @@ import { Box, Button } from '@mui/material';
 import Icon from 'src/@core/components/icon';
 import CustomAvatar from 'src/@core/components/mui/avatar';
 import TeamMember from 'src/types/team/team-member';
-import MemberProfileSmall from 'src/views/member/members/member-profile-small';
+import MemberProfileSmall from 'src/views/admin/user/user-profile-md';
 
 const DepartmentMemberCard = ({
   departmentMember,

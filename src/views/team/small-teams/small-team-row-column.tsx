@@ -20,7 +20,7 @@ import Icon from 'src/@core/components/icon';
 import { Box } from '@mui/material';
 import moment from 'moment';
 import SmallTeam from 'src/types/team/small-team';
-import MemberProfileSmall from 'src/views/member/members/member-profile-small';
+import MemberProfileSmall from 'src/views/admin/user/user-profile-md';
 import DeleteConfirmationDialog from 'src/views/shared/dialog/delete-confirmation-dialog';
 
 interface CellType {

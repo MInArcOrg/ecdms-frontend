@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import useWeeklyReport from 'src/hooks/team/weekly-report-hook';
 import Member from 'src/types/member/member';
 import { formatCalendar } from 'src/utils/formatter/date';
-import MemberProfileSmall from 'src/views/member/members/member-profile-small';
+import MemberProfileSmall from 'src/views/admin/user/user-profile-md';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomWeekPicker from 'src/views/shared/form/week-picker';
 

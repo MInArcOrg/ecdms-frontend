@@ -17,7 +17,7 @@ import MaritalStatus, { MaritalStatusType } from 'src/types/member/marital-statu
 import MemberMaritalStatusDrawer from './edit';
 import Page from 'src/views/components/page/page';
 import { formatCalendar } from 'src/utils/formatter/date';
-import MemberProfileSmall from '../../member-profile-small';
+import MemberProfileSmall from '../../../../admin/user/user-profile-md';
 
 const MemberMaritalStatus = ({ member }: { member: Member }) => {
   const { data: maritalStatus, refetch } = useQuery({
