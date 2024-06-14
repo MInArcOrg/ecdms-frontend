@@ -67,6 +67,6 @@ const Error401 = () => {
   );
 };
 
-Error401.getLayout = (page: ReactNode) => <BlankLayout>{page}</BlankLayout>;
+Error401.getLayout = (page: ReactElement) => <BlankLayout>{page}</BlankLayout>;
 
 export default Error401;

@@ -1,4 +1,4 @@
-const TabsRoute = (id?: string) => [
+const CentersTabsRoute = (id?: string) => [
   {
     path: '/departments/sub-departements'
   },
@@ -16,4 +16,4 @@ const TabsRoute = (id?: string) => [
   }
 ];
 
-export default TabsRoute;
+export default CentersTabsRoute;

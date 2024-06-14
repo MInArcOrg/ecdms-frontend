@@ -11,14 +11,14 @@ const roleApiService = {
     buildGetRequest('/roles', params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`/roles/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   delete: (idx: string): Promise<IApiResponse> =>
@@ -26,28 +26,28 @@ const roleApiService = {
       .delete(`/roles/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   create: (body: { data: Role; files: any[] }): Promise<IApiResponse> =>
     buildPostRequest('/roles', body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   update: (id: string, body: { data: Role; files: any[] }): Promise<IApiResponse> =>
     buildPutRequest(`/roles/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   getMe: (params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest('/me', params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       })
 };
 

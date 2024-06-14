@@ -63,6 +63,7 @@ import 'src/iconify-bundle/icons-bundle-react';
 // ** Global css styles
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import '../../styles/globals.css';
+import useAxiosInterceptors from 'src/@core/utils/use-axios-interceptor';
 // ** Extend App Props with Emotion
 type ExtendedAppProps = AppProps & {
   Component: NextPage;
@@ -102,6 +103,7 @@ const Guard = ({ children, authGuard, guestGuard }: GuardProps) => {
 
 // ** Configure JSS & ClassName
 const App = (props: ExtendedAppProps) => {
+  useAxiosInterceptors();
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   // Variables
@@ -136,14 +138,14 @@ const App = (props: ExtendedAppProps) => {
                 {({ settings }) => {
                   return (
                     <ThemeComponent settings={settings}>
+                      <ReactHotToast>
+                        <Toaster position={settings.toastPosition} toastOptions={{ className: 'react-hot-toast' }} />
+                      </ReactHotToast>
                       <Guard authGuard={authGuard} guestGuard={guestGuard}>
                         <AclGuard aclAbilities={aclAbilities} guestGuard={guestGuard} authGuard={authGuard}>
                           {getLayout(<Component {...pageProps} />)}
                         </AclGuard>
                       </Guard>
-                      <ReactHotToast>
-                        <Toaster position={settings.toastPosition} toastOptions={{ className: 'react-hot-toast' }} />
-                      </ReactHotToast>
                     </ThemeComponent>
                   );
                 }}

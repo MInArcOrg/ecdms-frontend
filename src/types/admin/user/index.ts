@@ -15,7 +15,7 @@ type User = {
   position_name?: string;
   lang: string;
   is_activated: boolean;
-  createdAt: string;
+  created_at: string;
   updatedAt: string;
   access_token?: string; // Include access_token for JWT
 };

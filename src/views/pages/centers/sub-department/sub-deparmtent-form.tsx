@@ -27,8 +27,8 @@ const SubDepartmentForm: React.FC<SubDepartmentFormProps> = ({ formik, isLocaleE
         label={transl('department.sub-department.form.description')}
         placeholder={transl('department.sub-department.form.description')}
         name="description"
-        multiline={true}
-        row="4"
+        multiline
+        rows={3}
         size="sm"
         sx={{ mb: 2 }}
       />

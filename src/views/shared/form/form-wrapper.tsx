@@ -54,7 +54,7 @@ const FormPageWrapper = ({
       } else {
         onCancel();
       }
-      console.log(`${intl(title)} ${intl(edit ? 'success-updated' : 'success-created')}`, 'success');
+      toast.success(`${intl(title)} ${intl(edit ? 'common.form.success-updated' : 'common.form.success-created')}`);
     } catch (err: any) {
       console.log('error', err);
       const apiError = err as IApiResponse;

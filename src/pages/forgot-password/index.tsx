@@ -168,7 +168,7 @@ const ForgotPassword = () => {
   );
 };
 
-ForgotPassword.getLayout = (page: ReactNode) => <BlankLayout>{page}</BlankLayout>;
+ForgotPassword.getLayout = (page: ReactElement) => <BlankLayout>{page}</BlankLayout>;
 
 ForgotPassword.guestGuard = true;
 

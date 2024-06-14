@@ -49,7 +49,7 @@
         "name":"Name",
         "description":"Description"
       },
-      "column":{
+      "columns":{
         "name":"Name",
         "description":"Description"
       },
@@ -91,6 +91,10 @@
       "updated-at": "update At",
       "status": "Status",
       "actions": "Actions"
+     },
+     "form":{
+      "success-created":"Successfully Created!",
+      "success-updated":"Successfully updated!"
      }
   }
 }

@@ -1,7 +1,7 @@
 // ** MUI Imports
 import { TabPanel } from '@mui/lab';
 
-import TabsRoute from './tab-routes';
+import TabRoutesWithId from '../../tab-routes-with-id';
 import UserLayout from 'src/layouts/UserLayout';
 import StructureComponent from 'src/views/pages/centers/structure-component';
 import CentersLayout from 'src/views/pages/centers/centers-layout';
@@ -23,7 +23,7 @@ const SubDepartemnts = ({ parentDepartment }: { parentDepartment: Department }) 
 
 SubDepartemnts.getLayout = (page: ReactElement) => (
   <UserLayout>
-    <CentersLayout value="5" routes={TabsRoute}>
+    <CentersLayout value="5" routes={TabRoutesWithId}>
       {page}
     </CentersLayout>
   </UserLayout>

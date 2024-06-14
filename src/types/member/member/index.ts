@@ -16,7 +16,7 @@ type Member = {
   name?: string;
   church_service_history?: string[];
   church_service_wish?: string[];
-  createdAt: string;
+  created_at: string;
   updatedAt: string;
   primaryContact?: MemberContact;
   status: MemberStatusType;

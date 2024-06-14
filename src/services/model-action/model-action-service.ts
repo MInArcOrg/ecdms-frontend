@@ -10,31 +10,31 @@ const modelActionApiService = {
     buildPostRequest(`/generics/${type}`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   getByModelId: (model_id: string, params: GetRequestParam): Promise<IApiResponse<AuthorizationResponse>> =>
     buildGetRequest(`/generics/model-action-data/${model_id}`, params)
       .then((response: AxiosResponse<IApiResponse<AuthorizationResponse>>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   addCAActionNote: (body: { data: Note; files: any[] }): Promise<IApiResponse> =>
     buildPostRequest('/generics/notes', body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   getActionReplies: (model_id: string, params: GetRequestParam): Promise<IApiResponse<ActionReply[]>> =>
     buildGetRequest('/generics/action-replies/' + model_id, params)
       .then((response: AxiosResponse<IApiResponse<ActionReply[]>>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   createActionReply: (body: { data: ActionReply; files: [] }): Promise<IApiResponse> =>
     buildPostRequest('/generics/replies', body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       })
 };
 

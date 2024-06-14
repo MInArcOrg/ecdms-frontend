@@ -23,7 +23,6 @@ const validationSchema = yup.object().shape({
 const SubDepartmentDrawer = (props: SubDepartmentDrawerType) => {
   // ** Props
   const { open, toggle, refetch, subDepartment } = props;
-
   const isEdit = subDepartment?.id ? true : false;
   const createSubDepartment = async (body: { data: Department; files: [] }) => {
     await departmentApiService.create(body);
@@ -37,7 +36,8 @@ const SubDepartmentDrawer = (props: SubDepartmentDrawerType) => {
       data: {
         id: subDepartment?.id,
         name: values.name,
-        description: values.description
+        description: values.description,
+        parent_department_id: values.parent_department_id
       },
       files: []
     };

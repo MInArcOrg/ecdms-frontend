@@ -8,51 +8,51 @@ import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const positionApiService = {
   getAll: (params: GetRequestParam, parentPositionId: string): Promise<IApiResponse> =>
-    buildGetRequest(`/departments/user-positions/positions?parentId=${parentPositionId}`, params)
+    buildGetRequest(`/departments/positions?parentId=${parentPositionId}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/departments/user-positions/positions/${idx}`, params)
+    buildGetRequest(`/departments/positions/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   getPositionStructure: (positionId: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/departments/user-positions/positions-structure/${positionId}`, params)
+    buildGetRequest(`/departments/positions-structure/${positionId}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
-      .delete(`/departments/user-positions/positions/${idx}`)
+      .delete(`/departments/positions/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   create: (body: { data: Position; files: any[] }): Promise<IApiResponse> =>
-    buildPostRequest('/departments/user-positions/positions', body, false)
+    buildPostRequest('/departments/positions', body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   update: (idx: string, body: { data: Position; files: any[] }): Promise<IApiResponse> =>
-    buildPutRequest(`/departments/user-positions/positions/${idx}`, body)
+    buildPutRequest(`/departments/positions/${idx}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   getPositionByDepartmentId: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/departments/user-positions/position-members/${idx}`, params)
+    buildGetRequest(`/departments/department-positions/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       })
 };
 

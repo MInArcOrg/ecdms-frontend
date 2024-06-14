@@ -17,8 +17,17 @@ import User from 'src/types/admin/user';
 import Department from 'src/types/department/department';
 import CompanyCard from './centers-card';
 import ProfileCard from './profile-card';
+import CentersTabRoutesWithId from 'src/pages/departments/tab-routes-with-id';
 
-const CentersLayout = ({ children, value, routes }: { children: ReactElement; value: string; routes: typeof TabsRoute }) => {
+const CentersLayout = ({
+  children,
+  value,
+  routes
+}: {
+  children: ReactElement;
+  value: string;
+  routes: typeof CentersTabRoutesWithId | typeof TabsRoute;
+}) => {
   // ** State
   const router = useRouter();
   const { id } = router.query;
@@ -82,7 +91,7 @@ const CentersLayout = ({ children, value, routes }: { children: ReactElement; va
               <Card>
                 <CardContent>
                   <TabContext value={value}>
-                    <TabList variant="fullWidth" >
+                    <TabList variant="fullWidth">
                       {ability.can('view_department', 'department') && (
                         <Tab value="1" component={Link} label={t('Sub departemnts')} href={currentRoutes[0].path} />
                       )}

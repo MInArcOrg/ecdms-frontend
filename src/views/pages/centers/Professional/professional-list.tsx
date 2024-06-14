@@ -5,45 +5,45 @@ import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import Department from 'src/types/department/department';
 import ItemsListing from 'src/views/shared/listing';
-import PositionDrawer from './position-drawer';
-import positionApiService from 'src/services/department/position-service';
-import Position from 'src/types/department/position';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
 import { Container } from '@mui/system';
-import { positionColumns } from './position-row';
+import User from 'src/types/admin/user';
+import { userColumns } from 'src/views/admin/user/list/user-row-column';
+import UserDrawer from 'src/views/admin/user/list/user-drawer';
+import userApiService from 'src/services/admin/user-service';
 
-function PositionList({ parentDepartment }: { parentDepartment: Department }) {
+function ProfessionalList({ parentDepartment }: { parentDepartment: Department }) {
   const [showDrawer, setShowDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<Position | null>(null);
+  const [selectedRow, setSelectedRow] = useState<User | null>(null);
   const { t } = useTranslation();
 
   const toggleDrawer = () => {
     setShowDrawer(!showDrawer);
   };
 
-  const fetchPositions = (params: GetRequestParam): Promise<IApiResponse<Position[]>> => {
-    return positionApiService.getPositionByDepartmentId(parentDepartment.id, params);
+  const fetchProfessionals = (params: GetRequestParam): Promise<IApiResponse<User[]>> => {
+    return userApiService.getProfessionalByDepartmentId(parentDepartment.id, params);
   };
 
   const {
-    data: positions,
+    data: professionals,
     isLoading,
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<Position[]>({
-    queryKey: ['positions', parentDepartment?.id],
-    fetchFunction: fetchPositions
+  } = usePaginatedFetch<User[]>({
+    queryKey: ['professionals', parentDepartment?.id],
+    fetchFunction: fetchProfessionals
   });
 
-  const handleDelete = (positionId: string) => {
+  const handleDelete = (professionalId: string) => {
     // Handle delete logic
   };
 
-  const handleEdit = (position: Position) => {
+  const handleEdit = (professional: User) => {
     toggleDrawer();
-    setSelectedRow(position);
+    setSelectedRow(professional);
   };
 
   return (
@@ -55,11 +55,11 @@ function PositionList({ parentDepartment }: { parentDepartment: Department }) {
       }}
     >
       {showDrawer && (
-        <PositionDrawer
+        <UserDrawer
           open={showDrawer}
           toggle={toggleDrawer}
           departmentId={parentDepartment?.id}
-          position={selectedRow as Position}
+          user={selectedRow as User}
           refetch={refetch}
         />
       )}
@@ -70,8 +70,8 @@ function PositionList({ parentDepartment }: { parentDepartment: Department }) {
           isLoading={isLoading}
           onCreateClick={toggleDrawer}
           fetchDataFunction={refetch}
-          tableProps={{ headers: positionColumns(handleEdit, handleDelete, t, refetch) }}
-          items={positions || []}
+          tableProps={{ headers: userColumns(handleEdit, handleDelete, t, refetch) }}
+          items={professionals || []}
           onPaginationChange={handlePageChange}
         />
       </Container>
@@ -79,4 +79,4 @@ function PositionList({ parentDepartment }: { parentDepartment: Department }) {
   );
 }
 
-export default PositionList;
+export default ProfessionalList;

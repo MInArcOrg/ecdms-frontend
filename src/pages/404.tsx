@@ -64,6 +64,6 @@ const Error404 = () => {
   );
 };
 
-Error404.getLayout = (page: ReactNode) => <BlankLayout>{page}</BlankLayout>;
+Error404.getLayout = (page: ReactElement) => <BlankLayout>{page}</BlankLayout>;
 
 export default Error404;

@@ -1,10 +1,14 @@
+import { LoadingButton } from '@mui/lab';
 import { Backdrop, Button, FormControl, FormHelperText, FormLabel, OutlinedInput } from '@mui/material';
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { REQUEST_REJECT } from 'src/configs/action-status';
 import modelActionApiService from 'src/services/model-action/model-action-service';
 import { ModelAction } from 'src/types/general/model-action';
 import { Note } from 'src/types/general/note';
+import { IApiResponse } from 'src/types/requests';
+import { parseError } from 'src/utils/parse/clean-error';
 import * as Yup from 'yup';
 
 interface ActionFormProps {
@@ -50,7 +54,14 @@ const ActionForm: React.FC<ActionFormProps> = ({ actionType, model_id, model, re
                 files: []
               });
             }
+            toast.success(`${model} 'successfully' ${actionType}!`);
             refetchAction();
+          })
+          .catch((error) => {
+            const backendErrors = parseError(error as IApiResponse);
+            if (backendErrors?.message) {
+              toast.error(backendErrors.message);
+            }
           });
       } catch (error) {
         console.log('error', error);
@@ -131,10 +142,16 @@ const ActionForm: React.FC<ActionFormProps> = ({ actionType, model_id, model, re
             <FormHelperText error>{validation.errors.description}</FormHelperText>
           )}
         </FormControl>
-
-        <Button variant="outlined" color="primary" type="submit" sx={{ mr: 2 }}>
+        <LoadingButton
+          variant="outlined"
+          color="primary"
+          type="submit"
+          sx={{ mr: 2 }}
+          disabled={validation.isSubmitting}
+          loading={validation.isSubmitting}
+        >
           {actionType}
-        </Button>
+        </LoadingButton>
         <Button variant="outlined" color="error" onClick={rejectModel}>
           Reject
         </Button>

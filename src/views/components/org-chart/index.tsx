@@ -4,8 +4,8 @@ import StructureCard from './card';
 
 const Obs = (props: any) => {
   const d3Container = useRef<HTMLDivElement>(null);
-
-  const [data, setData] = useState<any>(null);
+  console.log('parent node id', props.data?.map((item: any) => ({ ...item, parentNodeId: item?.parent_node_id })));
+  const [data, setData] = useState<any>(props.data?.map((item: any) => ({ ...item, parentNodeId: item?.parent_node_id })));
   const [chart, setChart] = useState<any>(null);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const Obs = (props: any) => {
       setChart(new OrgChart<any>());
     };
 
-    setData(props.data);
+    setData(props.data?.map((item: any) => ({ ...item, parentNodeId: item?.parent_node_id })));
 
     if (data && d3Container.current) {
       if (!chart) {
@@ -49,7 +49,13 @@ const Obs = (props: any) => {
         // For example: chart.destroy();
       }
     };
-  }, [data, d3Container.current, chart, props.data, props.showAvatar]);
+  }, [
+    data,
+    d3Container.current,
+    chart,
+    props.data?.map((item: any) => ({ ...item, parentNodeId: item?.parent_node_id })),
+    props.showAvatar
+  ]);
 
   return <div ref={d3Container} />;
 };

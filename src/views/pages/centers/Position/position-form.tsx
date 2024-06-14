@@ -24,11 +24,11 @@ const PositionForm: React.FC<PositionFormProps> = ({ formik, isLocaleEdit = fals
 
       <CustomTextBox
         fullWidth
-        label={transl('department.position.form.name')}
-        placeholder={transl('department.position.form.name')}
-        name="name"
+        label={transl('department.position.form.description')}
+        placeholder={transl('department.position.form.description')}
+        name="description"
         multiline={true}
-        row="4"
+        rows="4"
         size="sm"
         sx={{ mb: 2 }}
       />

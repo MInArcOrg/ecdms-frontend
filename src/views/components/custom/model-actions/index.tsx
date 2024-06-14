@@ -16,7 +16,7 @@ interface ModelActionProps {
   postAction: () => void;
 }
 
-const ModelAction: React.FC<ModelActionProps> = ({ model, model_id, refetchModel, resubmit, title, postAction }) => {
+const ModelActionComponent: React.FC<ModelActionProps> = ({ model, model_id, refetchModel, resubmit, title, postAction }) => {
   const [show, setShowDrawer] = useState(false);
   const { data: actions, refetch } = useQuery({
     queryKey: ['model-action', model_id],
@@ -76,4 +76,4 @@ const ModelAction: React.FC<ModelActionProps> = ({ model, model_id, refetchModel
   );
 };
 
-export default ModelAction;
+export default ModelActionComponent;

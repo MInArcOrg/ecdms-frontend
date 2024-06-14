@@ -12,65 +12,83 @@ const departmentApiService = {
     buildGetRequest(`/departments?parentId=${parentDepartmentId}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse<Department>> =>
     buildGetRequest(`/departments/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
-  getById: (idx?: string, params?: GetRequestParam): Promise<IApiResponse<Department>> =>
+
+  searchDepartment: (idx?: string, params?: GetRequestParam): Promise<IApiResponse<Department>> =>
     buildGetRequest(`/departments/search-department/${idx || ''}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
-  getDepartmentStructure: (departmentId: string, params: GetRequestParam): Promise<IApiResponse> =>
+
+  getStructure: (departmentId: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`/departments-structure/${departmentId}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
-  getSubDeparmtnetByDepartmentId: (idx: string, params: GetRequestParam): Promise<IApiResponse<Department[]>> =>
+
+  getSubDepartmentsByDepartmentId: (idx: string, params: GetRequestParam): Promise<IApiResponse<Department[]>> =>
     buildGetRequest(`/departments/sub-departments/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
+
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
       .delete(`/departments/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   create: (body: { data: Department; files: any[] }): Promise<IApiResponse> =>
-    buildPostRequest('/departments', body, false)
+    buildPostRequest('/departments/departments', body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   update: (id: string, body: { data: Department; files: any[] }): Promise<IApiResponse> =>
-    buildPutRequest(`/departments/${id}`, body)
+    buildPutRequest(`/departments/departments/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
+
   getDepartmentHead: (idx?: string, params?: GetRequestParam): Promise<IApiResponse<User>> =>
     buildGetRequest(`/departments/department-head/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
-  getAllParentDepartmentsTree: (idx?: string, params?: GetRequestParam): Promise<IApiResponse<Department[]>> =>
-    buildGetRequest(`/departments/all-parents/${idx}`, params)
+  getById: (idx?: string, params?: GetRequestParam): Promise<IApiResponse<Department>> =>
+    buildGetRequest(`/departments/search-department/${idx || ''}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
+      }),
+  getDepartmentStructure: (departmentId?: string, params?: GetRequestParam): Promise<IApiResponse> =>
+    buildGetRequest(`/departments/department-structure${departmentId?'/'+departmentId:''}`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
+
+  getAllParentDepartmentsTree: (params?: GetRequestParam): Promise<IApiResponse<Department[]>> =>
+    buildGetRequest(`/departments/all-parents`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
       })
 };
 

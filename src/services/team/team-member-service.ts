@@ -11,14 +11,14 @@ const teamMemberApiService = {
     buildGetRequest(`/auth/teams-module/team/members?parentId=${parentTeamMemberId}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`/auth/teams-module/team/members/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   delete: (idx: string): Promise<IApiResponse> =>
@@ -26,27 +26,27 @@ const teamMemberApiService = {
       .delete(`/auth/teams-module/team/members/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   create: (body: { data: TeamMember; files: any[] }): Promise<IApiResponse> =>
     buildPostRequest('/auth/teams-module/team/members', body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   update: (id: string, body: { data: TeamMember; files: any[] }): Promise<IApiResponse> =>
     buildPutRequest(`/auth/teams-module/team/members/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   getTeamMemberMembers: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`/auth/teams-module/team-member-members/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       })
 };
 

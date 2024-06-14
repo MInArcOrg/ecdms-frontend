@@ -10,9 +10,9 @@ import UserForm from './user-form';
 interface UserDrawerType {
   open: boolean;
   toggle: () => void;
-  addNewUser: (body: { data: User; files: [] }) => Promise<void>;
   refetch: () => void;
   user: User;
+  departmentId: string;
 }
 
 const validationSchema = yup.object().shape({
@@ -40,7 +40,8 @@ const UserDrawer = (props: UserDrawerType) => {
         last_name: values.last_name,
         middle_name: values.middle_name,
         phone: values.phone,
-        email: values.email
+        email: values.email,
+        department_id: props.departmentId
       },
       files: []
     };

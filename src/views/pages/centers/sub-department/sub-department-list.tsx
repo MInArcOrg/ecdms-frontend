@@ -22,7 +22,7 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
   };
 
   const fetchSubDepartments = (params: GetRequestParam): Promise<IApiResponse<Department[]>> => {
-    return departmentApiService.getSubDeparmtnetByDepartmentId(parentDepartment.id, params);
+    return departmentApiService.getSubDepartmentsByDepartmentId(parentDepartment.id, params);
   };
 
   const {
@@ -41,8 +41,8 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
   };
 
   const handleEdit = (subDepartment: Department) => {
-    setSelectedRow(subDepartment);
     toggleDrawer();
+    setSelectedRow(subDepartment);
   };
 
   return (

@@ -17,41 +17,41 @@ const memberApiService = {
     buildGetRequest(`${memberUrl}/members`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`${memberUrl}/members/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   searchMember: (params: GetRequestParam) =>
     buildGetRequest(`${memberUrl}/members-search`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as Member[])
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
       .delete(`${memberUrl}/members/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   create: (body: { data: Member; files: any[] }): Promise<IApiResponse> =>
     buildPostRequest(`${memberUrl}/members`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   update: (id: string, body: { data: Member; files: any[] }): Promise<IApiResponse> =>
     buildPutRequest(`${memberUrl}/members/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   //Contacts
@@ -59,90 +59,90 @@ const memberApiService = {
     buildGetRequest(`${memberUrl}/contacts/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   createMemberContact: (body: { data: MemberContact; files: any[] }): Promise<IApiResponse> =>
     buildPostRequest(`${memberUrl}/contacts`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   updateMemberContact: (id: string, body: { data: MemberContact; files: any[] }): Promise<IApiResponse> =>
     buildPutRequest(`${memberUrl}/contacts/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   // academic status
   getAcademicInformations: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`${memberUrl}/academic-informations/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   createAcademicInformation: (body: { data: AcademicInformation; files: any[] }): Promise<IApiResponse> =>
     buildPostRequest(`${memberUrl}/academic-informations`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   updateAcademicInformation: (id: string, body: { data: AcademicInformation; files: any[] }): Promise<IApiResponse> =>
     buildPutRequest(`${memberUrl}/academic-informations/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   //professional status
   getProfessionalStatuses: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`${memberUrl}/professional-statuses/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   //Marital status
   getMaritalStatus: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`${memberUrl}/marital-status/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   updateMemberStatus: (id: string, body: { data: MaritalStatus; files: any[] }): Promise<IApiResponse> =>
     buildPutRequest(`${memberUrl}/marital-status/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   createProfessionalStatus: (body: { data: ProfessionalStatus; files: any[] }): Promise<IApiResponse> =>
     buildPostRequest(`${memberUrl}/professional-statuses`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   updateProfessionalStatus: (id: string, body: { data: ProfessionalStatus; files: any[] }): Promise<IApiResponse> =>
     buildPutRequest(`${memberUrl}/professional-statuses/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   getMemberFamily: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`${memberUrl}/family/member/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   getMemberLifeTestimoney: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`${memberUrl}/life-tistimoney/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   updateMemberLifeTestimoney: (id: string, body: { data: LifeTestimoney; files: any[] }): Promise<IApiResponse> =>
     buildPutRequest(`${memberUrl}/life-tistimoney/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       })
 };
 

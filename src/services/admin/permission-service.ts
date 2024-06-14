@@ -11,14 +11,14 @@ const permissionApiService = {
     buildGetRequest('/permissions', params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`/permissions/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   delete: (idx: string): Promise<IApiResponse> =>
@@ -26,28 +26,28 @@ const permissionApiService = {
       .delete(`/permissions/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   create: (body: { data: permission; files: any[] }): Promise<IApiResponse> =>
     buildPostRequest('/permissions', body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   update: (id: string, body: { data: permission; files: any[] }): Promise<IApiResponse> =>
     buildPutRequest(`/permissions/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   getMe: (params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest('/me', params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       })
 };
 

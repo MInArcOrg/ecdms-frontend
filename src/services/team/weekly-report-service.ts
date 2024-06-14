@@ -11,42 +11,42 @@ const weeklyReportApiService = {
     buildGetRequest(`/auth/teams-module/small-team/weekly-reports`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`/auth/teams-module/small-team/weekly-reports/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   prepareAttendance: (teamId: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`/auth/teams-module/small-team/weekly-reports/attendance/prepare/web/${teamId}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
       .delete(`/auth/teams-module/small-team/weekly-reports/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   create: (body: { data: SmallTeam; files: any[] }): Promise<IApiResponse> =>
     buildPostRequest('/auth/teams-module/small-team/weekly-reports', body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   update: (id: string, body: { data: SmallTeam; files: any[] }): Promise<IApiResponse> =>
     buildPutRequest(`/auth/teams-module/small-team/weekly-reports/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       })
 };
 

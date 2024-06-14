@@ -2,9 +2,9 @@
 import { TabPanel } from '@mui/lab';
 import TabsRoute from './tab-routes';
 import UserLayout from 'src/layouts/UserLayout';
-import { ReactNode } from 'react';
-import Document from 'src/views/pages/centers/Document';
+import { ReactElement} from 'react';
 import CentersLayout from 'src/views/pages/centers/centers-layout';
+import Document from 'src/views/pages/centers/document';
 
 const centerDocuments = () => {
   return (
@@ -14,7 +14,7 @@ const centerDocuments = () => {
   );
 };
 
-centerDocuments.getLayout = (page: ReactNode) => (
+centerDocuments.getLayout = (page: ReactElement) => (
   <UserLayout>
     <CentersLayout value="4" routes={TabsRoute}>
       {page}

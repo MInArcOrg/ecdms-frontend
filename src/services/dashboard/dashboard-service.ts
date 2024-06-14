@@ -7,13 +7,13 @@ const dashboardApiService = {
     buildGetRequest(`/auth/dashboard/age-based-analysis`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   getGeneralStats: (params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`/auth/dashboard/general-stats`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       })
 };
 
