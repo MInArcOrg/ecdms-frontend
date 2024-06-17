@@ -11,20 +11,20 @@ const addressApiService = {
     buildGetRequest(`/auth/general/address?parentId=${parentAddressId}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`/auth/general/address/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   getByModel: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`/auth/general/address/model/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   delete: (idx: string): Promise<IApiResponse> =>
@@ -32,21 +32,21 @@ const addressApiService = {
       .delete(`/auth/general/address/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   create: (body: { data: Address; files: any[] }): Promise<IApiResponse> =>
     buildPostRequest('/auth/general/address', body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
 
   update: (id: string, body: { data: Address; files: any[] }): Promise<IApiResponse> =>
     buildPutRequest(`/auth/general/address/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       })
 };
 

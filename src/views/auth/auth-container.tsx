@@ -92,6 +92,6 @@ const AuthContainer = ({ children, illustrationName }: AuthContainerProps) => {
   );
 };
 
-AuthContainer.getLayout = (page: ReactNode) => <BlankLayout>{page}</BlankLayout>;
+AuthContainer.getLayout = (page: ReactElement) => <BlankLayout>{page}</BlankLayout>;
 
 export default AuthContainer;

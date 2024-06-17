@@ -98,6 +98,7 @@ const useUser = (initialQueryParams: GetRequestParam = defaultGetRequestParam) =
   };
 
   return {
+    refetch,
     updateUser,
     pagination,
     allUsers,

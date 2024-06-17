@@ -11,32 +11,32 @@ const noticeBoardService = {
     buildPostRequest('/auth/teams-module/small-team/notice-board', body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   getAll: (params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`/auth/teams-module/small-team/notice-board`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`/auth/teams-module/small-team/notice-board/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   update: (id: string, body: { data: Notice; files: any[] }): Promise<IApiResponse> =>
     buildPutRequest(`/auth/teams-module/small-team/notice-board/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       }),
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
       .delete(`/auth/teams-module/small-team/notice-board/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
-        throw new Error(error);
+        throw error;
       })
 };
 export default noticeBoardService;

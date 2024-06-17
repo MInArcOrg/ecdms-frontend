@@ -1,12 +1,15 @@
-import React, { useState, MouseEvent } from 'react';
+import React, { useState, MouseEvent, useContext } from 'react';
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import { Icon } from '@iconify/react';
 import DeleteConfirmationDialog from '../dialog/delete-confirmation-dialog';
+import { AbilityRule } from 'src/types/general/permission';
+import { AbilityContext } from 'src/layouts/components/acl/Can';
 
 interface RowOption {
   name: string;
   icon: string;
   onClick: () => void;
+  permission: AbilityRule;
 }
 
 interface RowOptionsProps<T> {
@@ -14,11 +17,14 @@ interface RowOptionsProps<T> {
   options?: RowOption[];
   onEdit?: (item: T) => void;
   onDelete?: () => void;
+  deletePermissionRule?: AbilityRule;
+  editPermissionRule?: AbilityRule;
 }
 
-const RowOptions = <T,>({ item, options, onEdit, onDelete }: RowOptionsProps<T>) => {
+const RowOptions = <T,>({ item, options, onEdit, onDelete, deletePermissionRule, editPermissionRule }: RowOptionsProps<T>) => {
   const [isDeleteDialogOpen, setDeleteDialogOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const ability = useContext(AbilityContext);
 
   const handleOpenDeleteDialog = () => setDeleteDialogOpen(true);
   const handleCloseDeleteDialog = () => setDeleteDialogOpen(false);
@@ -69,13 +75,13 @@ const RowOptions = <T,>({ item, options, onEdit, onDelete }: RowOptionsProps<T>)
             {option.name}
           </MenuItem>
         ))}
-        {onEdit && (
+        {onEdit && ability.can(editPermissionRule?.action, editPermissionRule?.subject) && (
           <MenuItem onClick={handleEdit} sx={{ '& svg': { mr: 2 } }}>
             <Icon icon="tabler:edit" fontSize={20} />
             Edit
           </MenuItem>
         )}
-        {onDelete && (
+        {onDelete && ability.can(deletePermissionRule?.action, deletePermissionRule?.subject) && (
           <MenuItem onClick={handleOpenDeleteDialog} sx={{ '& svg': { mr: 2 } }}>
             <Icon icon="tabler:trash" fontSize={20} />
             Delete

@@ -1,4 +1,15 @@
 {
+  "navigation":{
+    "dashboard":"Dashboard",
+    "admin-module":"Admin Module",
+    "depamrtent-module":"Department Module",
+    "department":"Department",
+    "user":"User",
+    "user-list":"User List",
+    "roles-and-permissions":"Roles & Permissions",
+    "roles":"Roles",
+    "permissions":"Permissions"
+  },
   "department":{
     "user-columns": {
       "user": "User",
@@ -12,13 +23,42 @@
         "middle_name":"Middle Name",
         "email":"Email",
         "gender":"Gender",
-        "phone":"Phone"
+        "phone":"Phone",
+        "birth_data":"Birth Date"
       },
+      "title":"User",
       "male":"Male",
       "female":"Female",
       "edit-user":"Edit User",
       "create-user":"Create User"
-    }
+    },
+    "position":{
+      "form":{
+        "name":"Name",
+        "description":"Description"
+      },
+      "columns":{
+        "name":"Name",
+        "description":"Description"
+      },
+      "title":"Position",
+      "create-position":"Create Position",
+      "edit-position":"Edit Position"
+    },
+    "sub-department":{
+      "form":{
+        "name":"Name",
+        "description":"Description"
+      },
+      "columns":{
+        "name":"Name",
+        "description":"Description"
+      },
+      "title":"Sub Department",
+      "create-sub-department":"Create Sub Department",
+      "edit-sub-department":"Edit Sub Department"
+    },
+    "department-structure":"department-structure"
   },
   "greating":{
     "good-morning":"Good Morning",
@@ -53,6 +93,10 @@
       "updated-at": "update At",
       "status": "Status",
       "actions": "Actions"
+     },
+     "form":{
+      "success-created":"Successfully Created!",
+      "success-updated":"Successfully updated!"
      }
   }
 }

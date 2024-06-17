@@ -1,10 +1,10 @@
 import { Box, Card } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
 import { isArray } from 'lodash';
-import { useRouter } from 'next/router';
 import { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import { CreateActionConfig, defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, defaultGetRequestParam } from 'src/types/requests';
 import { Pagination } from 'src/types/requests/pagination';
 import Loader from 'src/views/components/loader';
@@ -15,6 +15,7 @@ import GridListing from './list-types/grid-listing';
 import ListListing from './list-types/list-listing';
 import MasonryListing from './list-types/masonry-listing';
 import TableListing from './list-types/table-listing';
+
 const ItemsListing = <T extends {}>({
   items,
   pagination,
@@ -26,15 +27,14 @@ const ItemsListing = <T extends {}>({
   type = ITEMS_LISTING_TYPE.grid.value,
   onPaginationChange,
   additionalParams = {},
-  onCreateClick,
   tableProps,
   hasListHeader = true,
-  hasCreate = true,
   hasFilter = false,
   hasSearch = false,
   hasExport = false,
   FilterComponentItems,
-  searchKeys = []
+  searchKeys = [],
+  createActionConfig = defaultCreateActionConfig
 }: {
   items: T[];
   pagination?: Pagination | null;
@@ -57,8 +57,8 @@ const ItemsListing = <T extends {}>({
   FilterComponentItems?: React.ComponentType<any>;
   searchKeys?: string[];
   hasListHeader?: boolean;
+  createActionConfig: CreateActionConfig;
 }) => {
-  const router = useRouter();
   const { i18n } = useTranslation();
 
   const [fetchRequestParams, setFetchRequestParams] = useState<GetRequestParam>(defaultGetRequestParam);
@@ -92,21 +92,14 @@ const ItemsListing = <T extends {}>({
     ),
     default: ItemViewComponent && <GridListing ItemViewComponent={ItemViewComponent} items={items} />
   };
-  const handleCreate = () => {
-    if (onCreateClick) {
-      onCreateClick();
-    } else {
-      router.push(`${baseUrl}/create`);
-    }
-  };
+
   return (
     <Page titleId={title}>
       {hasListHeader && (
         <ListHeader
-          hasCreate={hasCreate}
+          createActionConfig={createActionConfig}
           hasFilter={hasFilter}
           FilterComponentItems={FilterComponentItems}
-          createAction={handleCreate}
           handleFilter={handleFilter}
           hasExport={hasExport}
           hasSearch={hasSearch}
@@ -122,7 +115,7 @@ const ItemsListing = <T extends {}>({
       ) : (
         isArray(items) && (
           <Fragment>
-            <Box>{listingComponents[type] || listingComponents.default}</Box>
+            <Box sx={{ borderColor: 'red', borderWidth: 1 }}>{listingComponents[type] || listingComponents.default}</Box>
             <></>
             {type !== ITEMS_LISTING_TYPE.table.value && pagination && (
               <Card>

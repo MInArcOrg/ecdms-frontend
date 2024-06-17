@@ -4,7 +4,7 @@ type Permission = {
   model: string;
   module: string;
   description: string;
-  createdAt: string;
+  created_at: string;
   updatedAt: string;
 };
 export const appModules = ['member', 'admin', 'team'];

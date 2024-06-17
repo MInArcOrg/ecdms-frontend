@@ -27,7 +27,9 @@ const defaultProvider: AuthValuesType = {
   setLoading: () => Boolean,
   setAuthLoading: () => Boolean,
   login: () => Promise.resolve(),
-  logout: () => Promise.resolve()
+  logout: () => Promise.resolve(),
+  setIsGuestGuard: (isGuestGuard: boolean) => null,
+  isGuestGuard: false
 };
 
 const AuthContext = createContext(defaultProvider);
@@ -41,7 +43,7 @@ const AuthProvider = ({ children }: Props) => {
   const [user, setUser] = useState<User | null>(defaultProvider.user);
   const [loading, setLoading] = useState<boolean>(defaultProvider.loading);
   const [authLoading, setAuthLoading] = useState<boolean>(false);
-  console.log('user', user);
+  const [isGuestGuard, setIsGuestGuard] = useState<boolean>(defaultProvider.isGuestGuard);
   // ** Hooks
   const router = useRouter();
 
@@ -120,7 +122,9 @@ const AuthProvider = ({ children }: Props) => {
     setLoading,
     setAuthLoading,
     login: handleLogin,
-    logout: handleLogout
+    logout: handleLogout,
+    setIsGuestGuard,
+    isGuestGuard
   };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;

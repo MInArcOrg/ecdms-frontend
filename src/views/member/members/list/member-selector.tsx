@@ -5,7 +5,7 @@ import { useField, useFormikContext } from 'formik';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import memberApiService from 'src/services/member/member-service';
 import Member from 'src/types/member/member';
-import MemberProfileSmall from '../member-profile-small';
+import MemberProfileSmall from '../../../admin/user/user-profile-md';
 
 interface MemberAutocompleteProps {
   name: string;

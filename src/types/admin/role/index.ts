@@ -2,7 +2,7 @@ export type Role = {
   id: string;
   name: string;
   description: string;
-  createdAt: string;
+  created_at: string;
   updatedAt: string;
 };
 
