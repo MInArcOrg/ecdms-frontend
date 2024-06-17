@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import Icon from 'src/@core/components/icon';
 
 // ** Third Party Import
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 
 // ** Custom Components Imports
 import OptionsMenu from 'src/@core/components/option-menu';
