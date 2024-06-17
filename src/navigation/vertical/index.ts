@@ -40,7 +40,7 @@ const navigation = (): VerticalNavItemsType => {
     },
     {
       title: 'navigation.department',
-      icon: 'tabler:smart-home',
+      icon: 'tabler:building',
       path: '/departments'
     }
   ];

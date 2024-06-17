@@ -38,15 +38,19 @@ const CentersLayout = ({
 
   const currentRoutes = id ? routes(String(id)) : routes();
   // const [{ data: department, loading, error }, refetch] = getDepartmentById(id);
-  const { data: department, isLoading } = useQuery({
+  const {
+    data: department,
+    isLoading,
+    refetch
+  } = useQuery({
     queryKey: ['department', id],
     queryFn: () => departmentApiService.getById(id ? String(id) : undefined, {})
   });
   const { data: departmentsTree } = useQuery({
     queryKey: ['department-tree', id],
-    queryFn: () => departmentApiService.getAllParentDepartmentsTree(id ? String(id) : undefined, {})
+    queryFn: () => departmentApiService.getAllParentDepartmentsTree(id ? String(id) : '')
   });
-  const { data: departmentHead, refetch } = useQuery({
+  const { data: departmentHead } = useQuery({
     queryKey: ['head-department', id],
     queryFn: () => departmentApiService.getDepartmentHead(id ? String(id) : undefined, {})
   });
@@ -57,7 +61,7 @@ const CentersLayout = ({
           {departmentsTree?.payload?.map((item: Department, index: number) => {
             return (
               <span key={index}>
-                <Typography component={Link} href={item?.id} sx={{ textDecoration: 'none' }}>
+                <Typography component={Link} href={`/departments/sub-departements/${item.id}`} sx={{ textDecoration: 'none' }}>
                   {item.name}/
                 </Typography>
                 &nbsp;&nbsp;
@@ -92,13 +96,13 @@ const CentersLayout = ({
                 <CardContent>
                   <TabContext value={value}>
                     <TabList variant="fullWidth">
-                      {ability.can('view_department', 'department') && (
+                      {ability.can('view', 'department') && (
                         <Tab value="1" component={Link} label={t('Sub departemnts')} href={currentRoutes[0].path} />
                       )}
-                      {ability.can('view_position', 'position') && (
+                      {ability.can('view', 'position') && (
                         <Tab value="2" component={Link} label={t('Positions')} href={currentRoutes[1].path} />
                       )}
-                      {ability.can('view_professional', 'professional') && (
+                      {ability.can('view', 'professional') && (
                         <Tab value="3" component={Link} label={t('Professionals')} href={currentRoutes[2].path} />
                       )}
                       <Tab value="4" component={Link} label={t('Documnets')} href={currentRoutes[3].path} />

@@ -9,7 +9,7 @@ import CentersLayout from 'src/views/pages/centers/centers-layout';
 
 const Positions = ({ parentDepartment }: { parentDepartment: Department }) => {
   return (
-    <TabPanel value="2">
+    <TabPanel value="2" sx={{ margin: 0, padding: 0 }}>
       <PositionList parentDepartment={parentDepartment} />
     </TabPanel>
   );

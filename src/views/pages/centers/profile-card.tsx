@@ -13,7 +13,7 @@ import { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Department from 'src/types/department/department';
 import User from 'src/types/admin/user';
-
+import SubDepartmentDrawer from './sub-department/sub-department-drawer';
 const ProfileCard = ({
   department,
   departmentHead,
@@ -30,27 +30,19 @@ const ProfileCard = ({
   const handleDrawer = () => {
     setShowDrawer(!showDrawer);
   };
-  console.log('department subdepartment',department)
   const { t } = useTranslation();
 
   return (
     <Card sx={{ position: 'relative' }}>
-      {/* {showDrawer && (
-        <CentersDrawer
-          show={showDrawer}
-          toggleDrawer={() => {
-            handleDrawer();
-          }}
+      {showDrawer && (
+        <SubDepartmentDrawer
+          open={showDrawer}
+          toggle={handleDrawer}
           refetch={refetch}
-          editableData={department}
-          data={{
-            title: department?.name,
-            description: department?.description
-          }}
-          handleFormSubmit={() => {}}
-          title="Departement"
+          subDepartment={department as Department}
+          departmentId={department.parent_department_id}
         />
-      )} */}
+      )}
       <input id="upload-cover-pic" type="file" hidden />
       <Tooltip title="Upload Cover Picture" placement="top" arrow>
         <label htmlFor="upload-cover-pic">
@@ -107,7 +99,7 @@ const ProfileCard = ({
               }}
               mb={2}
             >
-              {t('Company Structure')}
+              {t('department.department-structure')}
             </Typography>
 
             <Typography variant="body2" sx={{ color: 'text.secondary' }} mb={3}>

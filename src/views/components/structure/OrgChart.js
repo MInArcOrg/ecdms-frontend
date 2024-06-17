@@ -1,51 +1,49 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react';
 
 // import { jsonData } from "./data.js";
 
 // import { OrgChart } from 'd3-org-chart'
-import ReactDOMServer from 'react-dom/server'
-import { useTheme } from '@mui/material/styles'
-import StructureCard from './card'
+import ReactDOMServer from 'react-dom/server';
+import StructureCard from './card';
 
-const Obs = props => {
-  const theme = useTheme()
-  const d3Container = useRef(null)
+const Obs = (props) => {
+  const d3Container = useRef(null);
 
-  const [data, setData] = useState(null)
-  const [chart, setChart] = useState(null)
+  const [data, setData] = useState(null);
+  const [chart, setChart] = useState(null);
 
   const first = async () => {
-    const { OrgChart } = await import('d3-org-chart')
+    const { OrgChart } = await import('d3-org-chart');
 
-    setChart(new OrgChart())
-  }
+    setChart(new OrgChart());
+  };
 
   useEffect(
     () => {
-      setData(props.data)
+      setData(props.data);
       if (data && d3Container.current) {
         if (!chart) {
-          first()
+          first();
 
-          return
+          return;
         }
         chart
           .container(d3Container.current)
           .data(data)
-          .nodeWidth(d => 225)
-          .nodeHeight(d => 110)
+          .nodeWidth((d) => 225)
+          .nodeHeight((d) => 110)
           .initialZoom(0.7)
-          .siblingsMargin(d => 50)
-          .childrenMargin(d => 75)
+          .siblingsMargin((d) => 50)
+          .childrenMargin((d) => 75)
           .neightbourMargin((n1, n2) => 100)
-          .childrenMargin(d => 60)
-          .compactMarginBetween(d => 35)
-          .compactMarginPair(d => 80)
-          .onNodeClick(d => {
-            console.log(d, 'Id of clicked node ')
+          .childrenMargin((d) => 60)
+          .compactMarginBetween((d) => 35)
+          .compactMarginPair((d) => 80)
+          .onNodeClick((d) => {
+            console.log(d, 'Id of clicked node ');
           })
           .nodeContent(function (d) {
-            return ReactDOMServer.renderToStaticMarkup(<StructureCard d={d} showAvatar={props.showAvatar} />)
+            return ReactDOMServer.renderToStaticMarkup(<StructureCard d={d} showAvatar={props.showAvatar} />);
             // return renderToString(
             //   <div
             //     style={{
@@ -130,12 +128,12 @@ const Obs = props => {
             //   </div>
             // )
           })
-          .render()
+          .render();
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [data, d3Container.current, chart]
-  )
+  );
 
   // function addNodeWithData(nodeData) {
   //   //this function should get that values from the formik and add them as a new node
@@ -174,7 +172,7 @@ const Obs = props => {
     <>
       <div ref={d3Container} />
     </>
-  )
+  );
 
   {
     /* <Grid container>
@@ -268,6 +266,6 @@ const Obs = props => {
 
   //   </Grid>
   // </Grid>
-}
+};
 
-export default Obs
+export default Obs;

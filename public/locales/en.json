@@ -23,7 +23,8 @@
         "middle_name":"Middle Name",
         "email":"Email",
         "gender":"Gender",
-        "phone":"Phone"
+        "phone":"Phone",
+        "birth_data":"Birth Date"
       },
       "title":"User",
       "male":"Male",
@@ -36,7 +37,7 @@
         "name":"Name",
         "description":"Description"
       },
-      "column":{
+      "columns":{
         "name":"Name",
         "description":"Description"
       },
@@ -56,7 +57,8 @@
       "title":"Sub Department",
       "create-sub-department":"Create Sub Department",
       "edit-sub-department":"Edit Sub Department"
-    }
+    },
+    "department-structure":"department-structure"
   },
   "greating":{
     "good-morning":"Good Morning",

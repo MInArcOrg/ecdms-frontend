@@ -13,7 +13,9 @@ const SubDepartemnts = ({ parentDepartment }: { parentDepartment: Department }) 
     <TabPanel
       value="5"
       sx={{
-        backgroundColor: '#EFF2F7'
+        backgroundColor: '#EFF2F7',
+        margin: 0,
+        padding: 0
       }}
     >
       <StructureComponent viewAll={true} parentDepartment={parentDepartment} />

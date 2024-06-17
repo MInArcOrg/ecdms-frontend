@@ -19,18 +19,16 @@ const validationSchema = yup.object().shape({
   first_name: yup.string().required(),
   last_name: yup.string().required(),
   email: yup.string().email().required(),
-  phone: yup.number().typeError('Contact Number field is required').min(10).required(),
+  phone: yup.number().typeError('Contact Number field is required').min(10).required()
 });
 
 const UserDrawer = (props: UserDrawerType) => {
   // ** Props
   const { open, toggle, refetch, user } = props;
-  console.log('editable user', user);
 
   const { addNewUser, updateUser } = userHook() as ReturnType<typeof userHook>;
 
   const isEdit = user?.id ? true : false;
-  console.log('is edit', isEdit);
 
   const getPayload = (values: User) => {
     const payload = {
@@ -41,7 +39,8 @@ const UserDrawer = (props: UserDrawerType) => {
         middle_name: values.middle_name,
         phone: values.phone,
         email: values.email,
-        department_id: props.departmentId
+        department_id: props.departmentId,
+        gender: values.gender
       },
       files: []
     };
@@ -58,24 +57,22 @@ const UserDrawer = (props: UserDrawerType) => {
   };
   return (
     <CustomSideDrawer title={`department.user.${isEdit ? 'edit-user' : 'create-user'}`} handleClose={handleClose} open={open}>
-      {() =>
-        user && (
-          <FormPageWrapper
-            edit={isEdit}
-            title="department.user.title"
-            getPayload={getPayload}
-            validationSchema={validationSchema}
-            initialValues={user as User}
-            createActionFunc={isEdit ? updateUser : addNewUser}
-            onActionSuccess={onActionSuccess}
-            onCancel={handleClose}
-          >
-            {(formik: FormikProps<User>) => {
-              return <UserForm formik={formik} defaultLocaleData={{} as User} />;
-            }}
-          </FormPageWrapper>
-        )
-      }
+      {() => (
+        <FormPageWrapper
+          edit={isEdit}
+          title="department.user.title"
+          getPayload={getPayload}
+          validationSchema={validationSchema}
+          initialValues={user as User}
+          createActionFunc={isEdit ? updateUser : addNewUser}
+          onActionSuccess={onActionSuccess}
+          onCancel={handleClose}
+        >
+          {(formik: FormikProps<User>) => {
+            return <UserForm formik={formik} defaultLocaleData={{} as User} />;
+          }}
+        </FormPageWrapper>
+      )}
     </CustomSideDrawer>
   );
 };

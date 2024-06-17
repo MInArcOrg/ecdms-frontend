@@ -1,35 +1,33 @@
-import Paper from '@mui/material/Paper'
-import Table from '@mui/material/Table'
-import TableRow from '@mui/material/TableRow'
-import TableHead from '@mui/material/TableHead'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
-import { Icon } from '@iconify/react'
-import { Box, Button, Typography } from '@mui/material'
-import CustomChip from 'src/@core/components/mui/chip'
-
-import { useState } from 'react'
+import { Icon } from '@iconify/react';
+import { Box, Button, Typography } from '@mui/material';
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import CustomChip from 'src/@core/components/mui/chip';
 
 // import CentersDrawer from 'src/views/components/centers/CentersDrawer'
-import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
+import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
-const createData = (title, description, role, Action) => {
-  return { title, description, role, Action }
-}
+const createData = (title: any, description: any, role: any, Action: any) => {
+  return { title, description, role, Action };
+};
 
 const rows = [
   createData('Frozen yoghurt', 159, 'admin', 24),
   createData('Ice cream sandwich', 237, 'notadmin', 37),
   createData('Eclair', 262, 'admin', 24),
   createData('Cupcake', 305, 'superadmin', 67)
-]
+];
 function Document() {
-  const [selectedRow, setSelectedRow] = useState(undefined)
-  const [showDrawer, setShowDrawer] = useState(false)
+  // const [selectedRow, setSelectedRow] = useState(undefined);
+  // const [showDrawer, setShowDrawer] = useState(false);
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <Box
@@ -40,12 +38,12 @@ function Document() {
       }}
     >
       <Icon
-        sx={{ alignSelf: 'end' }}
-        fontSize='1.45rem'
-        icon='tabler:plus'
-        cursor='pointer'
+        // sx={{ alignSelf: 'end' }}
+        fontSize="1.45rem"
+        icon="tabler:plus"
+        cursor="pointer"
         onClick={() => {
-          setShowDrawer(true)
+          // setShowDrawer(true);
         }}
       />
       {/* <CentersDrawer
@@ -56,17 +54,17 @@ function Document() {
         title={'Document'}
       /> */}
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 50 }} aria-label='simple table'>
+        <Table sx={{ minWidth: 50 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>{t('Name')}</TableCell>
-              <TableCell align='right'>{t('Description')}</TableCell>
-              <TableCell align='center'>{t('Status')}</TableCell>
-              <TableCell align='right'>{t('Action')}</TableCell>
+              <TableCell align="right">{t('Description')}</TableCell>
+              <TableCell align="center">{t('Status')}</TableCell>
+              <TableCell align="right">{t('Action')}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(row => (
+            {rows.map((row) => (
               <TableRow
                 key={row.title}
                 sx={{
@@ -75,7 +73,7 @@ function Document() {
                   }
                 }}
               >
-                <TableCell component='th' scope='row'>
+                <TableCell component="th" scope="row">
                   <Typography
                     href={`/centers/subDepartements/${row.description}`}
                     component={Link}
@@ -88,32 +86,32 @@ function Document() {
                     {row.title}
                   </Typography>
                 </TableCell>
-                <TableCell align='right'>{row.description}</TableCell>
-                <TableCell align='right'>
-                  <Box display='flex' alignItems='end' justifyContent='end'>
+                <TableCell align="right">{row.description}</TableCell>
+                <TableCell align="right">
+                  <Box display="flex" alignItems="end" justifyContent="end">
                     <CustomChip
                       rounded
-                      size='small'
-                      label='Authorized'
-                      color='success'
+                      size="small"
+                      label="Authorized"
+                      color="success"
                       sx={{ mr: 1 }}
                       onClick={() => {
-                        console.log(row)
+                        console.log(row);
                       }}
                     />
-                    <Button variant='text' size='small' color='secondary'>
+                    <Button variant="text" size="small" color="secondary">
                       Task
                     </Button>
                   </Box>
                 </TableCell>
-                <TableCell align='right'>
+                <TableCell align="right">
                   <Icon
-                    fontSize='1.25rem'
-                    icon='tabler:edit'
-                    cursor='pointer'
+                    fontSize="1.25rem"
+                    icon="tabler:edit"
+                    cursor="pointer"
                     onClick={() => {
-                      setSelectedRow(row)
-                      setShowDrawer(true)
+                      // setSelectedRow(row);
+                      // setShowDrawer(true);
                     }}
                   />
                 </TableCell>
@@ -123,7 +121,7 @@ function Document() {
         </Table>
       </TableContainer>
     </Box>
-  )
+  );
 }
 
-export default Document
+export default Document;

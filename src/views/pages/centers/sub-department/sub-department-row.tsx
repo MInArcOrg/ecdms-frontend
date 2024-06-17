@@ -27,7 +27,7 @@ export const subDepartmentColumns = (
         return (
           <Typography
             component={Link}
-            href={`${row.id}`}
+            href={`/departments/sub-departements/${row.id}`}
             sx={{ textDecoration: 'none', color: 'text.secondary', '&:hover': { color: 'primary.main' } }}
           >
             {row?.name}

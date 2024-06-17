@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const StructureCard = ({ d, showAvatar }) => {
   return (
@@ -30,7 +30,7 @@ const StructureCard = ({ d, showAvatar }) => {
           ></div>
           <img
             src={d.data.imageUrl || '/images/avatars/no-image.png'}
-            alt='avatar'
+            alt="avatar"
             style={{
               position: 'absolute',
               marginTop: '-20px',
@@ -51,7 +51,7 @@ const StructureCard = ({ d, showAvatar }) => {
           fontSize: '10px'
         }}
       >
-        <i className='fas fa-ellipsis-h'></i>
+        <i className="fas fa-ellipsis-h"></i>
       </div>
       <div
         style={{
@@ -87,7 +87,7 @@ const StructureCard = ({ d, showAvatar }) => {
         {d.data.positionName}{' '}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default StructureCard
+export default StructureCard;

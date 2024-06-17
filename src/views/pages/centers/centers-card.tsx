@@ -3,7 +3,7 @@ import { CardContent, Typography, Card } from '@mui/material';
 import { Box } from '@mui/system';
 import { useTranslation } from 'react-i18next';
 
-function CompanyCard(props) {
+function CompanyCard(props: any) {
   const { t } = useTranslation();
 
   return (
@@ -12,7 +12,7 @@ function CompanyCard(props) {
         <Box display="flex" justifyContent="space-between">
           <Box>
             <Typography variant="subtitle2">{t(props?.name)}</Typography>
-            <Typography variant="subtitile1" fontSize={16}>
+            <Typography variant="subtitle1" fontSize={16}>
               {props.count}
             </Typography>
           </Box>

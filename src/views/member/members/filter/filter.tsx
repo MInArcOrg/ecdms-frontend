@@ -52,14 +52,7 @@ const MemberFilterItems: React.FC<MemberFilterItemsProps> = ({ formik }) => {
 
         <CustomTextBox fullWidth label={transl('last_name')} placeholder={transl('last_name')} name="last_name" size="sm" sx={{ mb: 2 }} />
 
-        <CustomRadioBox
-          label={'gender'}
-          name="gender"
-          options={[
-            { label: 'Male', value: 'male' },
-            { label: 'Female', value: 'female' }
-          ]}
-        />
+        <CustomRadioBox label={'gender'} name="gender" options={[]} />
         <CustomNumberRangeInput name="ageRange" min={5} max={100} defaultValue={[18, 60]} />
         <CustomTextBox
           fullWidth

@@ -12,15 +12,12 @@ import User from 'src/types/admin/user';
 import { userColumns } from 'src/views/admin/user/list/user-row-column';
 import UserDrawer from 'src/views/admin/user/list/user-drawer';
 import userApiService from 'src/services/admin/user-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
 
 function ProfessionalList({ parentDepartment }: { parentDepartment: Department }) {
   const [showDrawer, setShowDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<User | null>(null);
   const { t } = useTranslation();
-
-  const toggleDrawer = () => {
-    setShowDrawer(!showDrawer);
-  };
 
   const fetchProfessionals = (params: GetRequestParam): Promise<IApiResponse<User[]>> => {
     return userApiService.getProfessionalByDepartmentId(parentDepartment.id, params);
@@ -41,11 +38,15 @@ function ProfessionalList({ parentDepartment }: { parentDepartment: Department }
     // Handle delete logic
   };
 
-  const handleEdit = (professional: User) => {
-    toggleDrawer();
-    setSelectedRow(professional);
+  const toggleDrawer = () => {
+    setSelectedRow({} as User);
+    setShowDrawer(!showDrawer);
   };
 
+  const handleEdit = (user: User) => {
+    toggleDrawer();
+    setSelectedRow(user);
+  };
   return (
     <Box
       sx={{
@@ -68,7 +69,12 @@ function ProfessionalList({ parentDepartment }: { parentDepartment: Department }
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
-          onCreateClick={toggleDrawer}
+          createActionConfig={{
+            ...defaultCreateActionConfig,
+            onClick: toggleDrawer,
+            onlyIcon: true,
+            permission: { action: 'create', subject: 'user' }
+          }}
           fetchDataFunction={refetch}
           tableProps={{ headers: userColumns(handleEdit, handleDelete, t, refetch) }}
           items={professionals || []}

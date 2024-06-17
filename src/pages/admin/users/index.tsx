@@ -20,6 +20,7 @@ const UserList = ({}) => {
 
   const toggleUserDrawer = () => {
     setEditableUser({} as User);
+    console.log('editable user', editableUser);
     setAddUserOpen(!userDrawerOpen);
   };
   function handleDelete(id: string): void {

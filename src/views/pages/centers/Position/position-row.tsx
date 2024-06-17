@@ -15,7 +15,7 @@ export const positionColumns = (onEdit: (user: Position) => void, onDelete: (id:
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('department.user-columns.name'),
+      headerName: t('department.position.columns.name'),
       field: 'name',
       renderCell: ({ row }: CellType) => {
         return <Typography sx={{ color: 'text.secondary' }}>{row?.name}</Typography>;

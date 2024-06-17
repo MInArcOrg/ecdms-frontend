@@ -10,8 +10,9 @@ function StructureComponent({ parentDepartment, viewAll }: { parentDepartment: D
     queryFn: () =>
       viewAll ? departmentApiService.getDepartmentStructure() : departmentApiService.getDepartmentStructure(parentDepartment?.id)
   });
-  console.log('data?.payload', data?.payload);
-  return data?.payload ? <Obs data={data.payload} /> : null;
+  return data?.payload ? (
+    <Obs data={data?.payload ? data?.payload?.map((item: any) => ({ ...item, parentNodeId: item?.parent_node_id })) : []} />
+  ) : null;
 }
 
 export default StructureComponent;

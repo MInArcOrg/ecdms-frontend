@@ -78,14 +78,14 @@ const departmentApiService = {
         throw error;
       }),
   getDepartmentStructure: (departmentId?: string, params?: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/departments/department-structure${departmentId?'/'+departmentId:''}`, params)
+    buildGetRequest(`/departments/department-structure${departmentId ? '/' + departmentId : ''}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
-  getAllParentDepartmentsTree: (params?: GetRequestParam): Promise<IApiResponse<Department[]>> =>
-    buildGetRequest(`/departments/all-parents`, params)
+  getAllParentDepartmentsTree: (idx: string, params?: GetRequestParam): Promise<IApiResponse<Department[]>> =>
+    buildGetRequest(`/departments/all-parents${idx ? '/' + idx : ''}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;

@@ -1,43 +1,15 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
-import Icon from 'src/@core/components/icon';
-import CustomAvatar from 'src/@core/components/mui/avatar';
-import CustomChip from 'src/@core/components/mui/chip';
-import { ThemeColor } from 'src/@core/layouts/types';
+import { Fragment } from 'react';
 import User from 'src/types/admin/user';
+import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import UserProfileSmall from '../user-profile-small';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import { Fragment } from 'react';
-import ModelActionComponent from 'src/views/components/custom/model-actions';
-
-interface UserRoleType {
-  [key: string]: { icon: string; color: string };
-}
-
-interface UserStatusType {
-  [key: string]: ThemeColor;
-}
 
 interface CellType {
   row: User;
 }
-
-// ** renders client column
-const userRoleObj: UserRoleType = {
-  admin: { icon: 'tabler:device-laptop', color: 'secondary' },
-  author: { icon: 'tabler:circle-check', color: 'success' },
-  editor: { icon: 'tabler:edit', color: 'info' },
-  maintainer: { icon: 'tabler:chart-pie-2', color: 'primary' },
-  subscriber: { icon: 'tabler:user', color: 'warning' }
-};
-
-const userStatusObj: UserStatusType = {
-  active: 'success',
-  pending: 'warning',
-  inactive: 'secondary'
-};
 
 export const userColumns = (onEdit: (user: User) => void, onDelete: (id: string) => void, t: any, refetch: () => void) =>
   [
@@ -69,6 +41,7 @@ export const userColumns = (onEdit: (user: User) => void, onDelete: (id: string)
       sortable: false,
       field: 'status',
       headerName: t('common.table-columns.status'),
+      align: 'right',
       renderCell: ({ row }: CellType) => (
         <Fragment>
           <ModelActionComponent

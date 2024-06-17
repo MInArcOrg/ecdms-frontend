@@ -12,15 +12,12 @@ import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
 import { Container } from '@mui/system';
 import { positionColumns } from './position-row';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
 
 function PositionList({ parentDepartment }: { parentDepartment: Department }) {
   const [showDrawer, setShowDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<Position | null>(null);
   const { t } = useTranslation();
-
-  const toggleDrawer = () => {
-    setShowDrawer(!showDrawer);
-  };
 
   const fetchPositions = (params: GetRequestParam): Promise<IApiResponse<Position[]>> => {
     return positionApiService.getPositionByDepartmentId(parentDepartment.id, params);
@@ -39,6 +36,11 @@ function PositionList({ parentDepartment }: { parentDepartment: Department }) {
 
   const handleDelete = (positionId: string) => {
     // Handle delete logic
+  };
+
+  const toggleDrawer = () => {
+    setSelectedRow({} as Position);
+    setShowDrawer(!showDrawer);
   };
 
   const handleEdit = (position: Position) => {
@@ -68,7 +70,15 @@ function PositionList({ parentDepartment }: { parentDepartment: Department }) {
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
-          onCreateClick={toggleDrawer}
+          createActionConfig={{
+            ...defaultCreateActionConfig,
+            onClick: toggleDrawer,
+            onlyIcon: true,
+            permission: {
+              action: 'create',
+              subject: 'position'
+            }
+          }}
           fetchDataFunction={refetch}
           tableProps={{ headers: positionColumns(handleEdit, handleDelete, t, refetch) }}
           items={positions || []}

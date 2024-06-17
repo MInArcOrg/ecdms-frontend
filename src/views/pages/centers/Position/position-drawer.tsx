@@ -37,7 +37,8 @@ const PositionDrawer = (props: PositionDrawerType) => {
       data: {
         id: position?.id,
         name: values.name,
-        description: values.description
+        description: values.description,
+        department_id: props.departmentId
       },
       files: []
     };
@@ -54,24 +55,22 @@ const PositionDrawer = (props: PositionDrawerType) => {
   };
   return (
     <CustomSideDrawer title={`department.position.${isEdit ? 'edit-position' : 'create-position'}`} handleClose={handleClose} open={open}>
-      {() =>
-        position && (
-          <FormPageWrapper
-            edit={isEdit}
-            title="department.position.title"
-            getPayload={getPayload}
-            validationSchema={validationSchema}
-            initialValues={position as Position}
-            createActionFunc={isEdit ? editPosition : createPosition}
-            onActionSuccess={onActionSuccess}
-            onCancel={handleClose}
-          >
-            {(formik: FormikProps<Position>) => {
-              return <PositionForm formik={formik} defaultLocaleData={{} as Position} />;
-            }}
-          </FormPageWrapper>
-        )
-      }
+      {() => (
+        <FormPageWrapper
+          edit={isEdit}
+          title="department.position.title"
+          getPayload={getPayload}
+          validationSchema={validationSchema}
+          initialValues={position as Position}
+          createActionFunc={isEdit ? editPosition : createPosition}
+          onActionSuccess={onActionSuccess}
+          onCancel={handleClose}
+        >
+          {(formik: FormikProps<Position>) => {
+            return <PositionForm formik={formik} defaultLocaleData={{} as Position} />;
+          }}
+        </FormPageWrapper>
+      )}
     </CustomSideDrawer>
   );
 };

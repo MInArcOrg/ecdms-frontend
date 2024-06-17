@@ -32,13 +32,13 @@ const usePaginatedFetch = <T,>({ queryKey, fetchFunction, initialQueryParams = d
       })
   });
 
-  const handlePageChange = (newPage: number) => {
+  const handlePageChange = (pageSize: number, newPage: number) => {
     setQueryParams((prevParams) => ({
       ...prevParams,
       pagination: {
         ...prevParams.pagination,
         page: newPage,
-        pageSize: prevParams.pagination?.pageSize || pagination.pageSize
+        pageSize: pageSize
       }
     }));
   };

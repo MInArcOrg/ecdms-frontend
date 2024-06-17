@@ -10,16 +10,12 @@ import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
 import SubDepartmentDrawer from './sub-department-drawer';
 import { subDepartmentColumns } from './sub-department-row';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
 
 function SubDepartmentList({ parentDepartment }: { parentDepartment: Department }) {
   const [showDrawer, setShowDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<Department | null>(null);
   const { t } = useTranslation();
-
-  const toggleDrawer = () => {
-    setSelectedRow({} as Department);
-    setShowDrawer(!showDrawer);
-  };
 
   const fetchSubDepartments = (params: GetRequestParam): Promise<IApiResponse<Department[]>> => {
     return departmentApiService.getSubDepartmentsByDepartmentId(parentDepartment.id, params);
@@ -38,6 +34,10 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
   console.log('subDepartments', subDepartments);
   const handleDelete = (subDepartmentId: string) => {
     // Handle delete logic
+  };
+  const toggleDrawer = () => {
+    setSelectedRow({} as Department);
+    setShowDrawer(!showDrawer);
   };
 
   const handleEdit = (subDepartment: Department) => {
@@ -61,11 +61,16 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
-          onCreateClick={toggleDrawer}
           fetchDataFunction={refetch}
-          tableProps={{ headers: subDepartmentColumns(handleEdit, handleDelete, t,refetch) }}
+          tableProps={{ headers: subDepartmentColumns(handleEdit, handleDelete, t, refetch) }}
           items={subDepartments || []}
           onPaginationChange={handlePageChange}
+          createActionConfig={{
+            ...defaultCreateActionConfig,
+            onClick: toggleDrawer,
+            onlyIcon: true,
+            permission: { action: 'create', subject: 'department' }
+          }}
         />
       </Container>
     </Fragment>

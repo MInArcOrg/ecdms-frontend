@@ -56,14 +56,12 @@ const FormPageWrapper = ({
       }
       toast.success(`${intl(title)} ${intl(edit ? 'common.form.success-updated' : 'common.form.success-created')}`);
     } catch (err: any) {
-      console.log('error', err);
       const apiError = err as IApiResponse;
-      console.log(parseError(apiError));
       setStatus({ success: false });
       setErrors(parseError(apiError));
       setSubmitting(false);
 
-      if (apiError._errors && isString(apiError._errors[0])) {
+      if (apiError._errors && isString(apiError._errors)) {
         toast.error(apiError._errors[0]);
       } else if (apiError._errors) {
         toast.error(`${intl(edit ? 'error-update' : 'error-create')} ${intl(title)}`);
