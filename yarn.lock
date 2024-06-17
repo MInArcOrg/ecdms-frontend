@@ -4351,7 +4351,7 @@ react-hot-toast@2.4.1:
   dependencies:
     goober "^2.1.10"
 
-"react-i18next@>= 13.5.0":
+react-i18next@^14.1.2, "react-i18next@>= 13.5.0":
   version "14.1.2"
   resolved "https://registry.npmjs.org/react-i18next/-/react-i18next-14.1.2.tgz"
   integrity sha512-FSIcJy6oauJbGEXfhUgVeLzvWBhIBIS+/9c6Lj4niwKZyGaGb4V4vUbATXSlsHJDXXB+ociNxqFNiFuV1gmoqg==

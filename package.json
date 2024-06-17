@@ -78,6 +78,7 @@
     "react-flags-select": "^2.2.3",
     "react-hook-form": "7.43.9",
     "react-hot-toast": "2.4.1",
+    "react-i18next": "^14.1.2",
     "react-international-phone": "^4.0.4",
     "react-leaflet": "^4.2.1",
     "react-perfect-scrollbar": "1.5.8",
