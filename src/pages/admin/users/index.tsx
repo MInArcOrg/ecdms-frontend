@@ -6,6 +6,7 @@ import UserDrawer from 'src/views/admin/user/list/user-drawer';
 import { userColumns } from 'src/views/admin/user/list/user-row-column';
 import ItemsListing from 'src/views/shared/listing';
 import { useTranslation } from 'react-i18next';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
 
 const UserList = ({}) => {
   const [userDrawerOpen, setAddUserOpen] = useState<boolean>(false);
@@ -37,6 +38,12 @@ const UserList = ({}) => {
         fetchDataFunction={fetchUsers}
         tableProps={{ headers: userColumns(handleEdit, handleDelete, t, refetch) }}
         items={allUsers}
+        createActionConfig={{
+          ...defaultCreateActionConfig,
+          onClick: toggleUserDrawer,
+          onlyIcon: true,
+          permission: { action: 'create', subject: 'user' }
+        }}
       />
 
       {userDrawerOpen && (
