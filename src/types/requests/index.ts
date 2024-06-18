@@ -4,15 +4,12 @@ export type GetRequestParam = {
   pagination?: { pageSize: number; page: number } | null;
   filter?: any;
   sorting?: { property: string; direction: string } | null;
-  includes?: string[] | null;
-  position?: string | null;
 };
 
 export const defaultGetRequestParam: GetRequestParam = {
   pagination: null,
   filter: undefined,
   sorting: undefined,
-  includes: ['']
 };
 
 export type PostRequestParam = {
@@ -20,10 +17,9 @@ export type PostRequestParam = {
   data?: any | null;
 };
 export type DeleteRequestParam = {
-  locale: string | null;
 };
-export type PutRequestParam = {
-  data?: any | null;
+export type PutRequestParam<T> = {
+  data?: T | null;
   published?: any | null;
   archived?: any | null;
 };
