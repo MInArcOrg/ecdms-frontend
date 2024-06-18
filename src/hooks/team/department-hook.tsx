@@ -4,7 +4,6 @@ import departmentApiService from 'src/services/department/department-service';
 import { defaultGetRequestParam } from 'src/types/requests';
 import { GetRequestParam } from 'src/types/requests';
 import { Pagination } from 'src/types/requests/pagination';
-import TeamMember from 'src/types/team/team-member';
 import Department from 'src/types/department/department';
 
 const useDepartment = (initialQueryParams: GetRequestParam = defaultGetRequestParam, parentDepartmentId: string = '') => {
@@ -87,23 +86,13 @@ const useDepartment = (initialQueryParams: GetRequestParam = defaultGetRequestPa
     setNewDepartment(undefined);
     invalidateDepartmentsQuery();
   };
-  const addDepartmentMember = async (body: { data: TeamMember; files: any[] }) => {
-    await departmentApiService.createDepartmentMember(body);
-  };
-  const updateDepartmentMember = async (body: { data: TeamMember; files: any[] }) => {
-    await departmentApiService.updateDepartmentMember(body.data.id, body);
-  };
+  
 
   const deleteDepartment = async (departmentId: string) => {
     await departmentApiService.delete(departmentId);
     invalidateDepartmentsQuery();
   };
-  const useGetDepartmentMembers = (departmentId: string) => {
-    return useQuery({
-      queryKey: ['department-users', departmentId],
-      queryFn: () => departmentApiService.getDepartmentMembers(departmentId, defaultGetRequestParam).then((response) => response)
-    });
-  };
+
   return {
     updateDepartment,
     pagination,
@@ -120,9 +109,7 @@ const useDepartment = (initialQueryParams: GetRequestParam = defaultGetRequestPa
     pageSize,
     handlePageChange,
     handlePageSizeChange,
-    useGetDepartmentMembers,
-    addDepartmentMember,
-    updateDepartmentMember
+
   };
 };
 
