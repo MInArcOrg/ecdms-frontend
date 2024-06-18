@@ -9,15 +9,14 @@ export type GetRequestParam = {
 export const defaultGetRequestParam: GetRequestParam = {
   pagination: null,
   filter: undefined,
-  sorting: undefined,
+  sorting: undefined
 };
 
 export type PostRequestParam = {
   files?: { type: string; file: File }[] | null;
   data?: any | null;
 };
-export type DeleteRequestParam = {
-};
+export type DeleteRequestParam = {};
 export type PutRequestParam<T> = {
   data?: T | null;
   published?: any | null;

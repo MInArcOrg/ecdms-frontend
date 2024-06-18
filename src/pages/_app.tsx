@@ -41,7 +41,7 @@ import Spinner from 'src/@core/components/spinner';
 
 // ** Contexts
 import { SettingsConsumer, SettingsProvider } from 'src/@core/context/settingsContext';
-import { AuthProvider } from 'src/context/AuthContext';
+import { AuthProvider } from 'src/context/auth-context';
 
 // ** Styled Components
 import ReactHotToast from 'src/@core/styles/libs/react-hot-toast';

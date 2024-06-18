@@ -8,7 +8,15 @@
     "user-list":"User List",
     "roles-and-permissions":"Roles & Permissions",
     "roles":"Roles",
-    "permissions":"Permissions"
+    "permissions":"Permissions",
+    "master-data":{
+      "master-data":"Master Data",
+      "stakeholder":"Stakeholder"
+    }
+  },
+  "master-data":{
+    "master-data":"Master Data",
+    "stakeholder":"Stakeholder"    
   },
   "department":{
     "user-columns": {

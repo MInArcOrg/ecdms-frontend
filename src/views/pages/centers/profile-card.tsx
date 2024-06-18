@@ -1,32 +1,26 @@
 // ** MUI Imports
+import { Icon } from '@iconify/react';
+import { CircularProgress, Divider, IconButton, Tooltip } from '@mui/material';
+import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import Avatar from '@mui/material/Avatar';
+import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import CardContent from '@mui/material/CardContent';
-import { CircularProgress, Divider, IconButton, Tooltip } from '@mui/material';
-import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
 // import CentersDrawer from './sub-department/sub-department-drawer';
+import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
+import departmentApiService from 'src/services/department/department-service';
 import Department from 'src/types/department/department';
-import User from 'src/types/admin/user';
 import SubDepartmentDrawer from './sub-department/sub-department-drawer';
-const ProfileCard = ({
-  department,
-  departmentHead,
-  refetch,
-  loading
-}: {
-  department: Department;
-  departmentHead: User;
-  refetch: () => void;
-  loading: boolean;
-}) => {
+const ProfileCard = ({ department, refetch, loading }: { department: Department; refetch: () => void; loading: boolean }) => {
   const [showDrawer, setShowDrawer] = useState(false);
-
+  const { data: departmentHead } = useQuery({
+    queryKey: ['head-department', department?.id],
+    queryFn: () => departmentApiService.getDepartmentHead(department?.id, {})
+  });
   const handleDrawer = () => {
     setShowDrawer(!showDrawer);
   };

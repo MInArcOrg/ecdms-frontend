@@ -9,6 +9,19 @@ const navigation = (): VerticalNavItemsType => {
       path: '/dashboard'
     },
     {
+      sectionTitle: 'navigation.master-data.master-data'
+    },
+    {
+      title: 'navigation.master-data.master-data',
+      icon: 'tabler:database',
+      children: [
+        {
+          title: 'navigation.master-data.stakeholder',
+          path: '/master-data/stakeholder'
+        }
+      ]
+    },
+    {
       sectionTitle: 'navigation.admin-module'
     },
     {
@@ -36,7 +49,7 @@ const navigation = (): VerticalNavItemsType => {
       ]
     },
     {
-      sectionTitle: 'navigation.department-module'
+      sectionTitle: 'navigation.depamrtent-module'
     },
     {
       title: 'navigation.department',
