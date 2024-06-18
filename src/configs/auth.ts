@@ -4,5 +4,6 @@ export default {
   loginEndpoint: '/auth/login',
   registerEndpoint: '/auth/register',
   storageTokenKeyName: 'accessToken',
+  storageUserKeyName: 'userData',
   onTokenExpiration: 'refreshToken' // logout | refreshToken
 };

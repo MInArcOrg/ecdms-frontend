@@ -12,12 +12,11 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import { AbilityContext } from 'src/layouts/components/acl/Can';
 import TabsRoute from 'src/pages/departments/tab-routes';
+import CentersTabRoutesWithId from 'src/pages/departments/tab-routes-with-id';
 import departmentApiService from 'src/services/department/department-service';
-import User from 'src/types/admin/user';
 import Department from 'src/types/department/department';
 import CompanyCard from './centers-card';
 import ProfileCard from './profile-card';
-import CentersTabRoutesWithId from 'src/pages/departments/tab-routes-with-id';
 
 const CentersLayout = ({
   children,
@@ -50,10 +49,7 @@ const CentersLayout = ({
     queryKey: ['department-tree', id],
     queryFn: () => departmentApiService.getAllParentDepartmentsTree(id ? String(id) : '')
   });
-  const { data: departmentHead } = useQuery({
-    queryKey: ['head-department', id],
-    queryFn: () => departmentApiService.getDepartmentHead(id ? String(id) : undefined, {})
-  });
+
   return (
     <Box display="flex" flexDirection="column" paddingTop={1}>
       {departmentsTree?.payload && (
@@ -73,12 +69,7 @@ const CentersLayout = ({
 
       <Grid container spacing={5}>
         <Grid item xs={12} md={4}>
-          <ProfileCard
-            departmentHead={departmentHead?.payload as User}
-            refetch={refetch}
-            department={department?.payload as Department}
-            loading={isLoading}
-          />
+          <ProfileCard refetch={refetch} department={department?.payload as Department} loading={isLoading} />
         </Grid>
         <Grid item xs={12} md={8}>
           <Grid container spacing={3}>

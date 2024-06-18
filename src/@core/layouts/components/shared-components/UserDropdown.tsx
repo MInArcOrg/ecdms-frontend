@@ -52,6 +52,7 @@ const UserDropdown = (props: Props) => {
   // ** Hooks
   const router = useRouter();
   const { logout, user } = useAuth();
+  console.log('user auth', user);
   // ** Vars
   const { direction } = settings;
 
@@ -98,7 +99,7 @@ const UserDropdown = (props: Props) => {
           horizontal: 'right'
         }}
       >
-        <UserAvatar user={user as unknown as User} onClick={handleDropdownOpen} sx={{ width: 38, height: 38 }} />
+        <UserAvatar user={user as User} onClick={handleDropdownOpen} sx={{ width: 38, height: 38 }} />
       </Badge>
       <Menu
         anchorEl={anchorEl}

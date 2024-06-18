@@ -58,7 +58,7 @@ const AuthProvider = ({ children }: Props) => {
           })
           .catch((error) => {
             console.log('error', error);
-            localStorage.removeItem('userData');
+            localStorage.removeItem(authConfig.storageUserKeyName);
             localStorage.removeItem('refreshToken');
             localStorage.removeItem('accessToken');
             setUser(null);
@@ -90,8 +90,10 @@ const AuthProvider = ({ children }: Props) => {
         params.rememberMe ? window.localStorage.setItem(authConfig.storageTokenKeyName, loginResponse.payload.access_token) : null;
         const returnUrl = router.query.returnUrl;
 
-        setUser({ ...response.data.userData });
-        params.rememberMe ? window.localStorage.setItem('userData', JSON.stringify(loginResponse.payload.user_data)) : null;
+        setUser({ ...loginResponse.payload.user_data });
+        params.rememberMe
+          ? window.localStorage.setItem(authConfig.storageUserKeyName, JSON.stringify(loginResponse.payload.user_data))
+          : null;
 
         const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : getHomeRoute('admin');
 
@@ -109,7 +111,7 @@ const AuthProvider = ({ children }: Props) => {
 
   const handleLogout = () => {
     setUser(null);
-    window.localStorage.removeItem('userData');
+    window.localStorage.removeItem(authConfig.storageUserKeyName);
     window.localStorage.removeItem(authConfig.storageTokenKeyName);
     router.push('/auth/login');
   };
