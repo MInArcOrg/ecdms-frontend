@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import TablePagination from '@mui/material/TablePagination';
 import Typography from '@mui/material/Typography';
 
@@ -35,6 +35,7 @@ const CustomTablePagination: React.FC<CustomTablePaginationProps> = ({ onPaginat
   const totalRows = pagination?.total || 0;
 
   return (
+    totalRows>=rowsPerPage?
     <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
       <Typography sx={{ mr: 2, whiteSpace: 'nowrap' }}>
         <TablePagination
@@ -47,7 +48,7 @@ const CustomTablePagination: React.FC<CustomTablePaginationProps> = ({ onPaginat
           labelRowsPerPage="Items per page"
         />
       </Typography>
-    </div>
+    </div>:<Fragment></Fragment>
   );
 };
 

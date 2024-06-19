@@ -15,6 +15,7 @@ import GridListing from './list-types/grid-listing';
 import ListListing from './list-types/list-listing';
 import MasonryListing from './list-types/masonry-listing';
 import TableListing from './list-types/table-listing';
+import { Container } from '@mui/system';
 
 const ItemsListing = <T extends {}>({
   items,
@@ -115,12 +116,12 @@ const ItemsListing = <T extends {}>({
       ) : (
         isArray(items) && (
           <Fragment>
-            <Box sx={{ borderColor: 'red', borderWidth: 1 }}>{listingComponents[type] || listingComponents.default}</Box>
+            {listingComponents[type] || listingComponents.default}
             <></>
             {type !== ITEMS_LISTING_TYPE.table.value && pagination && (
-              <Card>
+              <Container>
                 <PaginationComponent onPaginationChange={onPagination} pagination={pagination}></PaginationComponent>
-              </Card>
+              </Container>
             )}
           </Fragment>
         )

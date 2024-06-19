@@ -18,7 +18,7 @@ function MasterTypeDetailCard({ masterType, isLoading = false }: { masterType?: 
             <Box display="flex" justifyContent="space-between">
               <Typography variant="h6">
                 <strong>{t('Title')}: </strong>
-                {masterType?.name}
+                {masterType?.title}
               </Typography>
             </Box>
 

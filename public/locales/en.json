@@ -16,7 +16,27 @@
   },
   "master-data":{
     "master-data":"Master Data",
-    "stakeholder":"Stakeholder"    
+    "master-type":"Type",
+    "stakeholder":"Stakeholder",
+    "form":{
+      "title":"Title",
+      "description":"Description"
+    },
+    "create-master-type":"Create Type",
+    "edit-master-type":"Edit Type",
+    "master-category":{
+      "master-category":"Category",
+      "columns":{
+        "title":"Title",
+        "description":"Description"
+      },
+      "form":{
+          "title":"Title",
+          "description":"Description"
+      }
+    },
+    "create-master-category":"Create Master Category",
+    "edit-master-category":"Edit Master Category"
   },
   "department":{
     "user-columns": {

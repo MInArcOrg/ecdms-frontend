@@ -12,7 +12,7 @@ import { Fragment, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CreateActionConfig } from 'src/types/general/listing';
 import { AbilityContext } from 'src/layouts/components/acl/Can';
-import { IconButton } from '@mui/material';
+import { IconButton, Typography } from '@mui/material';
 
 interface ListHeaderProps {
   createActionConfig: CreateActionConfig;
@@ -84,11 +84,7 @@ const ListHeader = (props: ListHeaderProps) => {
         }}
       >
         <Box>
-          {props.hasExport && (
-            <Button color="secondary" variant="tonal" startIcon={<Icon icon="tabler:upload" />}>
-              Export
-            </Button>
-          )}
+          <Typography variant="h5">{transl(props.title)}</Typography>
         </Box>
         <Box
           sx={{

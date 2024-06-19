@@ -1,11 +1,17 @@
 export interface MasterCategory {
   id: string;
-  name: string;
+  title: string;
   description: string;
+  created_at: string; 
+  updated_at: string;
 }
 
 export interface MasterType {
+  created_at: string;   description: string;
+  file_id: string | null;
   id: string;
-  name: string;
-  description: string;
+  title:string;
+  parent_id: string | null;
+  revision_no: string | null;
+  updated_at: string; 
 }
