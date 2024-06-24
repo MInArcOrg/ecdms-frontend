@@ -1,33 +1,33 @@
-// components/MasterCategoryList.tsx
+// components/MasterSubCategoryList.tsx
 import { Card, CardContent, ListItemButton, ListItemText } from "@mui/material";
 import React, { Fragment, useState } from "react";
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
 import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import { MasterCategory, MasterType } from "src/types/master/master-types";
+import { MasterCategory, MasterSubCategory } from "src/types/master/master-types";
 import { GetRequestParam, IApiResponse } from "src/types/requests";
 import ItemsListing from "src/views/shared/listing";
-import MasterCategoryDrawer from "./master-category-drawer";
-import masterCategoryApiService from "src/services/master-data/master-category-service";
+import MasterSubCategoryDrawer from "./master-sub-category-drawer";
+import masterSubCategoryApiService from "src/services/master-data/master-sub-category-service";
 import { defaultCreateActionConfig } from "src/types/general/listing";
-import { masterCategoryRowColumns } from "./master-category-row";
+import { masterSubCategoryRowColumns } from "./master-sub-category-row";
 import { useTranslation } from "react-i18next";
-interface MasterCategoryListProps {
+interface MasterSubCategoryListProps {
   model: string;
-  selectedType: MasterType | null;
+  selectedCategory: MasterCategory | null;
 }
 
-const MasterCategoryList: React.FC<MasterCategoryListProps> = ({
+const MasterSubCategoryList: React.FC<MasterSubCategoryListProps> = ({
   model,
-  selectedType,
+  selectedCategory,
 }) => {
-  const dynamicVarName = `${model}type_id`;
-  const fetchMasterCategory = (
+  const dynamicVarName = `${model}category_id`;
+  const fetchMasterSubCategory = (
     params: GetRequestParam
-  ): Promise<IApiResponse<MasterCategory[]>> => {
-    return masterCategoryApiService.getAll(model, {...params,filter:{...params.filter,[dynamicVarName]:selectedType?.id}});
+  ): Promise<IApiResponse<MasterSubCategory[]>> => {
+    return masterSubCategoryApiService.getAll(model, {...params,filter:{...params.filter,[dynamicVarName]:selectedCategory?.id}});
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
-  const [selectedRow, setSelectedRow] = useState<MasterCategory | null>(null);
+  const [selectedRow, setSelectedRow] = useState<MasterSubCategory | null>(null);
   const { t } = useTranslation();
 
   const toggleDrawer = () => {
@@ -39,35 +39,36 @@ const MasterCategoryList: React.FC<MasterCategoryListProps> = ({
     pagination,
     handlePageChange,
     refetch,
-  } = usePaginatedFetch<MasterCategory[]>({
-    queryKey: ["masterCategory", model],
-    fetchFunction: fetchMasterCategory,
+  } = usePaginatedFetch<MasterSubCategory[]>({
+    queryKey: ["masterSubCategory", model],
+    fetchFunction: fetchMasterSubCategory,
   });
 
-  const handleDelete = (masterCategoryId: string) => {
+  const handleDelete = (masterSubCategoryId: string) => {
 
   };
-  const handleEdit = (masterCategory: MasterCategory) => {
+  const handleEdit = (masterSubCategory: MasterSubCategory) => {
     toggleDrawer();
-    setSelectedRow(masterCategory);
+    setSelectedRow(masterSubCategory);
   };
   return (
     <Fragment>
       {showDrawer && (
-        <MasterCategoryDrawer
+        <MasterSubCategoryDrawer
           model={model}
           open={showDrawer}
           toggle={toggleDrawer}
-          masterData={selectedRow as MasterCategory}
+          masterData={selectedRow as MasterSubCategory}
           refetch={refetch}
+          categoryId={selectedCategory?.id||""}
+          typeId={selectedCategory?.[`${model}type_id`] || ""}
         />
       )}
-      <Card>
-        <CardContent>
+
           <ItemsListing
             pagination={pagination}
             type={ITEMS_LISTING_TYPE.table.value}
-            title="master-data.master-category.master-category"
+            title="master-data.master-sub-category.master-sub-category"
             isLoading={isLoading}
             createActionConfig={{
               ...defaultCreateActionConfig,
@@ -78,15 +79,14 @@ const MasterCategoryList: React.FC<MasterCategoryListProps> = ({
                 subject: "position",
               },
             }}
-            tableProps={{ headers: masterCategoryRowColumns(handleEdit, handleDelete, t, refetch) }}
+            tableProps={{ headers: masterSubCategoryRowColumns(handleEdit, handleDelete, t, refetch) }}
             fetchDataFunction={refetch}
             items={categorys || []}
             onPaginationChange={handlePageChange}
           />
-        </CardContent>
-      </Card>
+        
     </Fragment>
   );
 };
 
-export default MasterCategoryList;
+export default MasterSubCategoryList;

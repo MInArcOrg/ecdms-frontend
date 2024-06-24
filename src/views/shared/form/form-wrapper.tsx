@@ -1,68 +1,68 @@
 import { LoadingButton } from '@mui/lab';
 import { Box, Button, Grid } from '@mui/material';
-import { Formik, FormikProps, isString } from 'formik';
+import { Formik, FormikProps, FormikHelpers, FormikValues, FormikErrors } from 'formik';
 import { useRouter } from 'next/router';
 import { toast } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import Translations from 'src/layouts/components/Translations';
-import { IApiResponse } from 'src/types/requests';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
 import { parseError } from 'src/utils/parse/clean-error';
 import Page from 'src/views/components/page/page';
 
-const FormPageWrapper = ({
+interface FormPageWrapperProps<T extends FormikValues> {
+  children: (formik: FormikProps<T>) => JSX.Element;
+  validationSchema: any;
+  initialValues: T;
+  edit?: boolean;
+  title?: string;
+  showTitle?: boolean;
+  onCancel?: () => void;
+  getPayload: (values: T) => IApiPayload<T>;
+  createActionFunc: (payload: IApiPayload<T>) => Promise<IApiResponse<T>>;
+  fullLayout?: boolean;
+  baseUrl?: string;
+  headerActions?: any[];
+  onActionSuccess?: (response: IApiResponse<T>,payload:{data:T,files:any[]}) => void;
+}
+
+const FormPageWrapper = <T extends FormikValues>({
   validationSchema,
   initialValues,
   children,
   edit = false,
   title = '',
-  getPayload,
+  showTitle = true,
   onCancel,
+  getPayload,
   createActionFunc,
   fullLayout = false,
   baseUrl = '',
   headerActions = [],
-  onActionSuccess = () => {},
-  showTitle = true
-}: {
-  children: (formik: FormikProps<any>) => JSX.Element;
-  validationSchema: any;
-  initialValues: any;
-  edit: boolean;
-  title: string;
-  showTitle?: boolean;
-  onCancel?: any;
-  getPayload: (values: any) => { data: any; files: any[] };
-  createActionFunc: any;
-  fullLayout?: boolean;
-  baseUrl?: string;
-  headerActions?: any[];
-  onActionSuccess?: () => void;
-}) => {
+  onActionSuccess,
+}: FormPageWrapperProps<T>) => {
   const { t: intl } = useTranslation();
   const router = useRouter();
 
-  const onSubmit = async (values: any, { setErrors, setStatus, setSubmitting }: any) => {
+  const onSubmit = async (values: T, { setErrors, setStatus, setSubmitting }: FormikHelpers<T>) => {
     const payload = getPayload(values);
-    console.log('form data payload', payload);
-
     try {
-      await createActionFunc(payload);
+      const res = await createActionFunc(payload);
       setStatus({ success: true });
-      onActionSuccess();
-      if (!onCancel) {
-        void router.push(baseUrl);
-      } else {
+      if (onActionSuccess) onActionSuccess(res,payload);
+      if (onCancel) {
         onCancel();
+      } else {
+        router.push(baseUrl);
       }
       toast.success(`${intl(title)} ${intl(edit ? 'common.form.success-updated' : 'common.form.success-created')}`);
     } catch (err: any) {
       const apiError = err as IApiResponse;
       setStatus({ success: false });
-      setErrors(parseError(apiError));
+      setErrors(parseError(apiError) as FormikErrors<T>);
       setSubmitting(false);
 
-      if (apiError._errors && isString(apiError._errors)) {
-        toast.error(apiError._errors[0]);
+      if (apiError._errors && typeof apiError._errors === 'string') {
+        toast.error(apiError._errors);
       } else if (apiError._errors) {
         toast.error(`${intl(edit ? 'error-update' : 'error-create')} ${intl(title)}`);
       }
@@ -76,7 +76,7 @@ const FormPageWrapper = ({
   return (
     <Page titleId={`${edit ? 'edit' : 'create'}-${title}`}>
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-        {(formik) => (
+        {(formik: FormikProps<T>) => (
           <form onSubmit={formik.handleSubmit}>
             <Grid container>
               <Grid item xs={12}>
@@ -91,9 +91,7 @@ const FormPageWrapper = ({
                   variant="contained"
                   color="primary"
                 >
-                  <span>
-                    <Translations text={edit ? 'save' : 'submit'} />
-                  </span>
+                  <Translations text={edit ? 'save' : 'submit'} />
                 </LoadingButton>
                 <Button
                   onClick={() => {
@@ -104,7 +102,7 @@ const FormPageWrapper = ({
                   variant="contained"
                   color="secondary"
                 >
-                  <Translations text={'cancel'} />
+                  <Translations text="cancel" />
                 </Button>
               </Grid>
             </Grid>

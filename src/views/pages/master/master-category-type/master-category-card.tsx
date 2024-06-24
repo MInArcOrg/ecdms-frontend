@@ -13,17 +13,20 @@ import Icon from "src/@core/components/icon";
 import { MasterCategory } from "src/types/master/master-types";
 import ModelActionComponent from "src/views/components/custom/model-actions";
 import RowOptions from "src/views/shared/listing/row-options";
+import MasterSubCategoryList from "../master-subcategory-type/master-sub-category-list";
 
 const MasterCategoryCard = ({
   masterCategory,
+  model,
   onEdit,
   onDelete,
   refetch
 }: {
   masterCategory: MasterCategory;
+  model:string
   onEdit: (category: MasterCategory) => void;
   onDelete: (id: string) => void;t: any;
-  refetch: () => void
+  refetch: () => void,
 }) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -84,11 +87,7 @@ const MasterCategoryCard = ({
       </CardContent>
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <Typography paragraph>
-          This is the expanded content of the card. You can put any additional
-          information or components here.          This is the expanded content of the card. You can put any additional
-          information or components here.
-        </Typography>
+        <MasterSubCategoryList model={model} selectedCategory={masterCategory}/>
       </Collapse>
     </Fragment>
   );

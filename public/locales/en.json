@@ -35,8 +35,19 @@
           "description":"Description"
       }
     },
-    "create-master-category":"Create Master Category",
-    "edit-master-category":"Edit Master Category"
+    "master-sub-category":{
+      "master-sub-category":"Category",
+      "columns":{
+        "title":"Title",
+        "description":"Description"
+      },
+      "form":{
+          "title":"Title",
+          "description":"Description"
+      }
+    },
+    "create-master-sub-category":"Create Master Category",
+    "edit-master-sub-category":"Edit Master Category"
   },
   "department":{
     "user-columns": {

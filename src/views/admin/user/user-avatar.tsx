@@ -3,7 +3,7 @@ import { FC, ForwardedRef, forwardRef } from 'react';
 import CustomAvatar from 'src/@core/components/mui/avatar';
 import { getInitials } from 'src/@core/utils/get-initials';
 import { availableColors } from 'src/configs/app-constants';
-import { getProfilePictureURL } from 'src/services/utils/file';
+// import { getProfilePictureURL } from 'src/services/utils/file';
 import User from 'src/types/admin/user';
 import Member from 'src/types/member/member';
 
@@ -18,7 +18,7 @@ const UserAvatar: FC<UserAvatarProps> = forwardRef(({ user, alt, photoSrc, ...ot
     <CustomAvatar
       skin="light"
       color={availableColors[Math.floor(Math.random() * availableColors.length)] as any}
-      src={photoSrc ? photoSrc : getProfilePictureURL(user?.id)}
+      src={'photoSrc ? photoSrc : getProfilePictureURL(user?.id)'}
       sx={{
         mr: 2.5,
         width: 38,

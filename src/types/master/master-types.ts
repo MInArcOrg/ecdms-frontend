@@ -4,6 +4,14 @@ export interface MasterCategory {
   description: string;
   created_at: string; 
   updated_at: string;
+  [key: string]: string | undefined;
+}
+export interface MasterSubCategory {
+  id: string;
+  title: string;
+  description: string;
+  created_at: string; 
+  updated_at: string;
 }
 
 export interface MasterType {
@@ -15,3 +23,4 @@ export interface MasterType {
   revision_no: string | null;
   updated_at: string; 
 }
+
