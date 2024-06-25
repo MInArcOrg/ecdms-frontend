@@ -11,7 +11,9 @@
     "permissions":"Permissions",
     "master-data":{
       "master-data":"Master Data",
-      "stakeholder":"Stakeholder"
+      "stakeholder":"Stakeholder",
+      "project":"project"
+
     }
   },
   "master-data":{
@@ -20,8 +22,10 @@
     "stakeholder":"Stakeholder",
     "form":{
       "title":"Title",
-      "description":"Description"
+      "description":"Description",
+      "stakeholder-type-specific-models":"Stakeholder type Specific models"
     },
+    
     "create-master-type":"Create Type",
     "edit-master-type":"Edit Type",
     "master-category":{

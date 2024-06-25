@@ -1,7 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import authConfig from 'src/configs/auth';
 
-
 const baseURL = process.env.NEXT_PUBLIC_BASE_API_URL || 'http://localhost:3010/';
 
 // Define types and interfaces
@@ -93,7 +92,7 @@ export const deleteFile = (id: string | number): Promise<AxiosResponse<FileUploa
 };
 
 // Get image by type
-export const getImageByType = (type: string, id: string | number): string => 
+export const getImageByType = (type: string, id: string | number): string =>
   `${process.env.NEXT_PUBLIC_API_URL}/generics/files/${id}/${type}`;
 
 // Get project file selector
@@ -104,11 +103,7 @@ export const getImageByType = (type: string, id: string | number): string =>
 //   });
 
 // Upload profile picture
-export const uploadProfilePicture = (
-  user_id: string | number,
-  type: string,
-  file: File
-): Promise<AxiosResponse<FileUploadResponse>> => {
+export const uploadProfilePicture = (user_id: string | number, type: string, file: File): Promise<AxiosResponse<FileUploadResponse>> => {
   const formData = new FormData();
   formData.append('upload', file);
   formData.append('type', type);
@@ -121,8 +116,7 @@ export const uploadProfilePicture = (
 };
 
 // Get photo
-export const getPhoto = (id: string | number, type: string): string => 
-  `${process.env.NEXT_PUBLIC_API_URL}/api/photo/${type}/${id}`;
+export const getPhoto = (id: string | number, type: string): string => `${process.env.NEXT_PUBLIC_API_URL}/api/photo/${type}/${id}`;
 
 // Get multiple photos
 // export const getMultiplePhotos = (id: string | number) =>
@@ -132,8 +126,7 @@ export const getPhoto = (id: string | number, type: string): string =>
 //   });
 
 // Delete photo
-export const deletePhoto = (id: string | number): Promise<AxiosResponse<FileUploadResponse>> => 
-  customAxios.delete(`/photo/${id}`);
+export const deletePhoto = (id: string | number): Promise<AxiosResponse<FileUploadResponse>> => customAxios.delete(`/photo/${id}`);
 
 // Handle user profile picture error
 export const handleUserProfilePictureError = (event: React.SyntheticEvent<HTMLImageElement, Event>, gender: string) => {

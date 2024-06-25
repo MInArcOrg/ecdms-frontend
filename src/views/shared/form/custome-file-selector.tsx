@@ -14,21 +14,12 @@ const CustomFileUpload: React.FC<CustomFileUploadProps> = ({ label, file, onFile
 
   return (
     <FormControl fullWidth variant="outlined" sx={{ mb: 3 }}>
-      <FormLabel component="legend">
-        {t(label)}
-      </FormLabel>
+      <FormLabel component="legend">{t(label)}</FormLabel>
       {file && (
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, my: 2 }}>
           <Icon icon="mdi:file-document-outline" color="#ffcc00" width={25} height={25} />
           <Typography variant="body1">{file.name}</Typography>
-          <Icon
-            icon="tabler:trash"
-            color="#f33"
-            width={20}
-            height={20}
-            style={{ cursor: 'pointer' }}
-            onClick={() => onFileChange(null)}
-          />
+          <Icon icon="tabler:trash" color="#f33" width={20} height={20} style={{ cursor: 'pointer' }} onClick={() => onFileChange(null)} />
         </Box>
       )}
       <Button variant="outlined" component="label" size="large" color="secondary">
@@ -36,9 +27,8 @@ const CustomFileUpload: React.FC<CustomFileUploadProps> = ({ label, file, onFile
         <input
           type="file"
           hidden
-          onChange={e => {
+          onChange={(e) => {
             if (e.target.files && e.target.files[0]) {
-              
               onFileChange(e.target.files[0]);
             }
           }}

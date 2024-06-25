@@ -22,7 +22,7 @@ interface FormPageWrapperProps<T extends FormikValues> {
   fullLayout?: boolean;
   baseUrl?: string;
   headerActions?: any[];
-  onActionSuccess?: (response: IApiResponse<T>,payload:{data:T,files:any[]}) => void;
+  onActionSuccess?: (response: IApiResponse<T>, payload: { data: T; files: any[] }) => void;
 }
 
 const FormPageWrapper = <T extends FormikValues>({
@@ -38,7 +38,7 @@ const FormPageWrapper = <T extends FormikValues>({
   fullLayout = false,
   baseUrl = '',
   headerActions = [],
-  onActionSuccess,
+  onActionSuccess
 }: FormPageWrapperProps<T>) => {
   const { t: intl } = useTranslation();
   const router = useRouter();
@@ -48,7 +48,7 @@ const FormPageWrapper = <T extends FormikValues>({
     try {
       const res = await createActionFunc(payload);
       setStatus({ success: true });
-      if (onActionSuccess) onActionSuccess(res,payload);
+      if (onActionSuccess) onActionSuccess(res, payload);
       if (onCancel) {
         onCancel();
       } else {

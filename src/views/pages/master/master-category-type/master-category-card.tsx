@@ -1,19 +1,11 @@
 // components/MasterCategoryList.tsx
-import {
-  Box,
-  CardActions,
-  CardContent,
-  Collapse,
-  Grid,
-  IconButton,
-  Typography
-} from "@mui/material";
-import { Fragment, useState } from "react";
-import Icon from "src/@core/components/icon";
-import { MasterCategory } from "src/types/master/master-types";
-import ModelActionComponent from "src/views/components/custom/model-actions";
-import RowOptions from "src/views/shared/listing/row-options";
-import MasterSubCategoryList from "../master-subcategory-type/master-sub-category-list";
+import { Box, CardActions, CardContent, Collapse, Grid, IconButton, Typography } from '@mui/material';
+import { Fragment, useState } from 'react';
+import Icon from 'src/@core/components/icon';
+import { MasterCategory } from 'src/types/master/master-types';
+import ModelActionComponent from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
+import MasterSubCategoryList from '../master-subcategory-type/master-sub-category-list';
 
 const MasterCategoryCard = ({
   masterCategory,
@@ -23,10 +15,11 @@ const MasterCategoryCard = ({
   refetch
 }: {
   masterCategory: MasterCategory;
-  model:string
+  model: string;
   onEdit: (category: MasterCategory) => void;
-  onDelete: (id: string) => void;t: any;
-  refetch: () => void,
+  onDelete: (id: string) => void;
+  t: any;
+  refetch: () => void;
 }) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -39,14 +32,10 @@ const MasterCategoryCard = ({
       <CardContent>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-            <Box sx={{ display: "flex" }}>
+            <Box sx={{ display: 'flex' }}>
               <Box mr={2}>
                 <IconButton onClick={handleExpandClick}>
-                  {expanded ? (
-                    <Icon icon="tabler:chevron-up" fontSize={20} />
-                  ) : (
-                    <Icon icon="tabler:chevron-down" fontSize={20} />
-                  )}
+                  {expanded ? <Icon icon="tabler:chevron-up" fontSize={20} /> : <Icon icon="tabler:chevron-down" fontSize={20} />}
                 </IconButton>
               </Box>
               <Box>
@@ -60,26 +49,21 @@ const MasterCategoryCard = ({
             </Box>
           </Grid>
           <Grid item>
-            <CardActions style={{ justifyContent: "flex-end" }}>
+            <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
                 <ModelActionComponent
                   model="Position"
                   model_id={masterCategory.id}
                   refetchModel={refetch}
                   resubmit={function (): void {
-                    throw new Error("Function not implemented.");
+                    throw new Error('Function not implemented.');
                   }}
-                  title={""}
+                  title={''}
                   postAction={function (): void {
-                    throw new Error("Function not implemented.");
+                    throw new Error('Function not implemented.');
                   }}
                 />
-                <RowOptions
-                  onEdit={onEdit}
-                  onDelete={() => onDelete(masterCategory.id)}
-                  item={masterCategory}
-                  options={[]}
-                />
+                <RowOptions onEdit={onEdit} onDelete={() => onDelete(masterCategory.id)} item={masterCategory} options={[]} />
               </Fragment>
             </CardActions>
           </Grid>
@@ -87,9 +71,9 @@ const MasterCategoryCard = ({
       </CardContent>
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <MasterSubCategoryList model={model} selectedCategory={masterCategory}/>
+        <MasterSubCategoryList model={model} selectedCategory={masterCategory} />
       </Collapse>
     </Fragment>
   );
 };
-export default MasterCategoryCard
+export default MasterCategoryCard;

@@ -8,6 +8,8 @@ import MasterTypeForm from './master-type-form';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
 import { uploadFile } from 'src/services/utils/file-service';
 import { SetStateAction, useState } from 'react';
+import ModelSpecificMenus from './model-specific-menus';
+import modelMenuApiService from 'src/services/general/model-menu-service';
 
 interface MasterTypeDrawerType {
   open: boolean;
@@ -24,12 +26,13 @@ const validationSchema = yup.object().shape({
 
 const MasterTypeDrawer = (props: MasterTypeDrawerType) => {
   const { open, toggle, refetch, masterData, model } = props;
+  const [switchStates, setSwitchStates] = useState<{ model: string; status: boolean }[]>([]);
 
   const isEdit = Boolean(masterData?.id);
-  const [uploadableFile,setUploadableFile]=useState<File|null>(null)
-  const onFileChange=(file: File | null) => {
+  const [uploadableFile, setUploadableFile] = useState<File | null>(null);
+  const onFileChange = (file: File | null) => {
     setUploadableFile(file);
-};
+  };
   const createMasterType = async (body: IApiPayload<MasterType>) => {
     return await masterTypeApiService.create(model, body);
   };
@@ -41,10 +44,10 @@ const MasterTypeDrawer = (props: MasterTypeDrawerType) => {
   const getPayload = (values: MasterType) => {
     const payload = {
       data: {
-        ...values,  
+        ...values,
         id: masterData?.id
       },
-      files: uploadableFile?[uploadableFile]:[]
+      files: uploadableFile ? [uploadableFile] : []
     };
     return payload;
   };
@@ -53,20 +56,24 @@ const MasterTypeDrawer = (props: MasterTypeDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = (response:IApiResponse<MasterType>,payload:IApiPayload<MasterType>) => {
-    if(payload.files.length>0){
-      uploadFile(payload.files[0],`${model.toLocaleUpperCase()}_TYPE`,response.payload.id,"","");
+  const onActionSuccess = async (response: IApiResponse<MasterType>, payload: IApiPayload<MasterType>) => {
+    if (payload.files.length > 0) {
+      uploadFile(payload.files[0], `${model.toLocaleUpperCase()}_TYPE`, response.payload.id, '', '');
     }
+
+    await modelMenuApiService.updateModelsbyType(response.payload.id, {
+      data: {
+        models: switchStates,
+        module: model
+      },
+      files: []
+    });
     refetch();
     handleClose();
   };
 
   return (
-    <CustomSideDrawer
-      title={`master-data.${isEdit ? 'edit-master-type' : 'create-master-type'}`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`master-data.${isEdit ? 'edit-master-type' : 'create-master-type'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper<MasterType>
           edit={isEdit}
@@ -79,7 +86,12 @@ const MasterTypeDrawer = (props: MasterTypeDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<MasterType>) => {
-            return <MasterTypeForm file={uploadableFile} onFileChange={onFileChange} formik={formik} defaultLocaleData={{} as MasterType} />;
+            return (
+              <>
+                <MasterTypeForm file={uploadableFile} onFileChange={onFileChange} formik={formik} defaultLocaleData={{} as MasterType} />
+                <ModelSpecificMenus setSwitchStates={setSwitchStates} switchStates={switchStates} module={model} typeId={masterData?.id} />
+              </>
+            );
           }}
         </FormPageWrapper>
       )}

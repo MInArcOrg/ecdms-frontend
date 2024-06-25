@@ -6,6 +6,7 @@ import FormPageWrapper from "src/views/shared/form/form-wrapper";
 import { MasterCategory } from "src/types/master/master-types";
 import MasterCategoryForm from "./master-category-form";
 import masterCategoryApiService from "src/services/master-data/master-category-service";
+import { IApiPayload } from "src/types/requests";
 
 interface MasterCategoryDrawerType {
   open: boolean;
@@ -26,29 +27,20 @@ const MasterCategoryDrawer = (props: MasterCategoryDrawerType) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = masterData?.id ? true : false;
-  const createMasterCategory = async (body: {
-    data: MasterCategory;
-    files: [];
-  }) => {
-    await masterCategoryApiService.create(props.model, body);
+  const createMasterCategory = async (body:IApiPayload<MasterCategory>) => {
+    return await masterCategoryApiService.create(props.model, body);
   };
-  const editMasterCategory = async (body: {
-    data: MasterCategory;
-    files: [];
-  }) => {
-    await masterCategoryApiService.update(
+  const editMasterCategory = async (body:IApiPayload<MasterCategory>) => {
+    return  await masterCategoryApiService.update(
       props.model,
-      masterData?.id || "",
-      body
-    );
+      masterData?.id || "",body);
   };
 
-  const getPayload = (values: MasterCategory) => {
+  const getPayload = (values: MasterCategory): IApiPayload<MasterCategory> => {
     const payload = {
       data: {
+        ...values,
         id: masterData?.id,
-        title: values.title,
-        description: values.description,
         [`${props.model}type_id`]: props.typeId,
       },
       files: [],

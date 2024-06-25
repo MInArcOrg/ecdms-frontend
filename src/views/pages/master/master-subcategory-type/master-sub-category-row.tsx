@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import {  MasterSubCategory } from 'src/types/master/master-types';
+import { MasterSubCategory } from 'src/types/master/master-types';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
@@ -10,7 +10,12 @@ interface CellType {
   row: MasterSubCategory;
 }
 
-export const masterSubCategoryRowColumns = (onEdit: (category: MasterSubCategory) => void, onDelete: (id: string) => void, t: any, refetch: () => void) =>
+export const masterSubCategoryRowColumns = (
+  onEdit: (category: MasterSubCategory) => void,
+  onDelete: (id: string) => void,
+  t: any,
+  refetch: () => void
+) =>
   [
     {
       flex: 0.15,
@@ -22,14 +27,14 @@ export const masterSubCategoryRowColumns = (onEdit: (category: MasterSubCategory
       }
     },
     {
-        flex: 0.15,
-        minWidth: 120,
-        headerName: t('master-data.master-category.columns.description'),
-        field: 'Description',
-        renderCell: ({ row }: CellType) => {
-          return <Typography sx={{ color: 'text.secondary' }}>{row?.title}</Typography>;
-        }
-      },
+      flex: 0.15,
+      minWidth: 120,
+      headerName: t('master-data.master-category.columns.description'),
+      field: 'Description',
+      renderCell: ({ row }: CellType) => {
+        return <Typography sx={{ color: 'text.secondary' }}>{row?.title}</Typography>;
+      }
+    },
     {
       flex: 0.15,
       minWidth: 120,

@@ -11,7 +11,6 @@ import Translations from 'src/layouts/components/Translations';
 import masterTypeApiService from 'src/services/master-data/master-type-service';
 import { useQuery } from '@tanstack/react-query';
 
-
 interface MasterDataDetailProps {
   model: string;
 }
@@ -19,10 +18,10 @@ interface MasterDataDetailProps {
 const MasterDataDetail: React.FC<MasterDataDetailProps> = ({ model }) => {
   const router = useRouter();
   const { id } = router.query;
-  const { data: selectedType } = useQuery({
+  const { data: selectedType, refetch } = useQuery({
     queryKey: ['type', model, id],
     queryFn: () =>
-      masterTypeApiService.getOne(model, id ? String(id) : "", {}).then((response) => {
+      masterTypeApiService.getOne(model, id ? String(id) : '', {}).then((response) => {
         return response.payload;
       })
   });
@@ -30,7 +29,7 @@ const MasterDataDetail: React.FC<MasterDataDetailProps> = ({ model }) => {
   const theme = useTheme();
 
   const handleSelectType = (type: string) => {
-    router.push(`/master-data/stakeholder/${type}`);
+    router.push(`/master-data/${model}/${type}`);
   };
 
   return (
@@ -45,11 +44,11 @@ const MasterDataDetail: React.FC<MasterDataDetailProps> = ({ model }) => {
         <Grid item xs={12} sm={8} md={9}>
           <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>
-              <MasterTypeDetailCard masterType={selectedType} isLoading={false} />
+              <MasterTypeDetailCard masterType={selectedType} isLoading={false} model={model} refetch={refetch} />
             </Grid>
             <Grid item xs={12}>
               {selectedType ? (
-                <MasterCategoryList model={model} selectedType={selectedType}  />
+                <MasterCategoryList model={model} selectedType={selectedType} />
               ) : (
                 <Typography>Select a type to see categories</Typography>
               )}

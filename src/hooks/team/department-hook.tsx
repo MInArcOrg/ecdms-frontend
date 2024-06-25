@@ -86,7 +86,6 @@ const useDepartment = (initialQueryParams: GetRequestParam = defaultGetRequestPa
     setNewDepartment(undefined);
     invalidateDepartmentsQuery();
   };
-  
 
   const deleteDepartment = async (departmentId: string) => {
     await departmentApiService.delete(departmentId);
@@ -108,8 +107,7 @@ const useDepartment = (initialQueryParams: GetRequestParam = defaultGetRequestPa
     currentPage: queryParams.pagination?.page || 1,
     pageSize,
     handlePageChange,
-    handlePageSizeChange,
-
+    handlePageSizeChange
   };
 };
 

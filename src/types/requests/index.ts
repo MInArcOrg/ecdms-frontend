@@ -51,9 +51,9 @@ export interface IApiResponse<T = any> {
   _generated: string | null;
   payload: T;
 }
-export interface IApiPayload<T=any>{
-  data:T,
-  files:any[]
+export interface IApiPayload<T = any> {
+  data: T;
+  files: any[];
 }
 export interface IAttributePagination {
   pagination: Pagination;
