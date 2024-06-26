@@ -1,12 +1,12 @@
-import * as yup from "yup";
+import * as yup from 'yup';
 
-import { FormikProps } from "formik";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import { MasterCategory } from "src/types/master/master-types";
-import MasterCategoryForm from "./master-category-form";
-import masterCategoryApiService from "src/services/master-data/master-category-service";
-import { IApiPayload } from "src/types/requests";
+import { FormikProps } from 'formik';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import { MasterCategory } from 'src/types/master/master-types';
+import MasterCategoryForm from './master-category-form';
+import masterCategoryApiService from 'src/services/master-data/master-category-service';
+import { IApiPayload } from 'src/types/requests';
 
 interface MasterCategoryDrawerType {
   open: boolean;
@@ -19,7 +19,7 @@ interface MasterCategoryDrawerType {
 
 const validationSchema = yup.object().shape({
   title: yup.string().required(),
-  description: yup.string().required(),
+  description: yup.string().required()
 });
 
 const MasterCategoryDrawer = (props: MasterCategoryDrawerType) => {
@@ -27,13 +27,11 @@ const MasterCategoryDrawer = (props: MasterCategoryDrawerType) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = masterData?.id ? true : false;
-  const createMasterCategory = async (body:IApiPayload<MasterCategory>) => {
+  const createMasterCategory = async (body: IApiPayload<MasterCategory>) => {
     return await masterCategoryApiService.create(props.model, body);
   };
-  const editMasterCategory = async (body:IApiPayload<MasterCategory>) => {
-    return  await masterCategoryApiService.update(
-      props.model,
-      masterData?.id || "",body);
+  const editMasterCategory = async (body: IApiPayload<MasterCategory>) => {
+    return await masterCategoryApiService.update(props.model, masterData?.id || '', body);
   };
 
   const getPayload = (values: MasterCategory): IApiPayload<MasterCategory> => {
@@ -41,9 +39,9 @@ const MasterCategoryDrawer = (props: MasterCategoryDrawerType) => {
       data: {
         ...values,
         id: masterData?.id,
-        [`${props.model}type_id`]: props.typeId,
+        [`${props.model}type_id`]: props.typeId
       },
-      files: [],
+      files: []
     };
     return payload;
   };
@@ -58,9 +56,7 @@ const MasterCategoryDrawer = (props: MasterCategoryDrawerType) => {
   };
   return (
     <CustomSideDrawer
-      title={`master-data.${
-        isEdit ? "edit-master-category" : "create-master-category"
-      }`}
+      title={`master-data.${isEdit ? 'edit-master-category' : 'create-master-category'}`}
       handleClose={handleClose}
       open={open}
     >
@@ -76,12 +72,7 @@ const MasterCategoryDrawer = (props: MasterCategoryDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<MasterCategory>) => {
-            return (
-              <MasterCategoryForm
-                formik={formik}
-                defaultLocaleData={{} as MasterCategory}
-              />
-            );
+            return <MasterCategoryForm formik={formik} defaultLocaleData={{} as MasterCategory} />;
           }}
         </FormPageWrapper>
       )}

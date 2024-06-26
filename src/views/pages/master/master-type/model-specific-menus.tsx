@@ -1,4 +1,4 @@
-import { FormControlLabel, FormGroup, Switch, Typography, Button } from '@mui/material';
+import { FormControlLabel, FormGroup, Switch, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -21,7 +21,7 @@ const ModelSpecificMenus = ({
   switchStates: SwitchState[];
   setSwitchStates: (switchStates: SwitchState[]) => void;
 }) => {
-  const {t}=useTranslation()
+  const { t } = useTranslation();
   const { data: moduleModels, isLoading: isModuleLoading } = useQuery({
     queryKey: ['module-models', module],
     queryFn: () => modelMenuApiService.getModelsByModule(module, {})

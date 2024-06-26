@@ -1,16 +1,15 @@
 // components/MasterSubCategoryList.tsx
-import { Card, CardContent, ListItemButton, ListItemText } from '@mui/material';
 import React, { Fragment, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import masterSubCategoryApiService from 'src/services/master-data/master-sub-category-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { MasterCategory, MasterSubCategory } from 'src/types/master/master-types';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
 import MasterSubCategoryDrawer from './master-sub-category-drawer';
-import masterSubCategoryApiService from 'src/services/master-data/master-sub-category-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { masterSubCategoryRowColumns } from './master-sub-category-row';
-import { useTranslation } from 'react-i18next';
 interface MasterSubCategoryListProps {
   model: string;
   selectedCategory: MasterCategory | null;

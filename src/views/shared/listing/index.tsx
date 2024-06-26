@@ -1,4 +1,4 @@
-import { Box, Card } from '@mui/material';
+import { Container } from '@mui/system';
 import { GridColDef } from '@mui/x-data-grid';
 import { isArray } from 'lodash';
 import { Fragment, useState } from 'react';
@@ -15,7 +15,6 @@ import GridListing from './list-types/grid-listing';
 import ListListing from './list-types/list-listing';
 import MasonryListing from './list-types/masonry-listing';
 import TableListing from './list-types/table-listing';
-import { Container } from '@mui/system';
 
 const ItemsListing = <T extends {}>({
   items,

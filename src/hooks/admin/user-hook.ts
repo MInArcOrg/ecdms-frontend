@@ -64,13 +64,13 @@ const useUser = (initialQueryParams: GetRequestParam = defaultGetRequestParam) =
   };
 
   const addNewUser = async (body: { data: User; files: any[] }) => {
-    await userApiService.create(body);
+    return await userApiService.create(body);
     setNewUser(undefined);
     invalidateUsersQuery();
   };
 
   const updateUser = async (body: { data: User; files: any[] }) => {
-    await userApiService.update(body.data.id, body);
+    return await userApiService.update(body.data.id, body);
     setNewUser(undefined);
     invalidateUsersQuery();
   };

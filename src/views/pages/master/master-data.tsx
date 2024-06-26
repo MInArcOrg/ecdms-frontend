@@ -1,15 +1,15 @@
 // components/MasterDataDetail.tsx
-import React from 'react';
-import { Container, Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
-import { MasterCategory, MasterType } from 'src/types/master/master-types';
-import MasterTypeList from 'src/views/pages/master/master-type/master-type-list';
-import MasterCategoryList from 'src/views/pages/master/master-category-type/master-category-list';
-import MasterTypeDetailCard from './master-type/master-type-detail-card';
+import React from 'react';
 import { gridSpacing } from 'src/configs/app-constants';
 import Translations from 'src/layouts/components/Translations';
 import masterTypeApiService from 'src/services/master-data/master-type-service';
-import { useQuery } from '@tanstack/react-query';
+import { MasterType } from 'src/types/master/master-types';
+import MasterCategoryList from 'src/views/pages/master/master-category-type/master-category-list';
+import MasterTypeList from 'src/views/pages/master/master-type/master-type-list';
+import MasterTypeDetailCard from './master-type/master-type-detail-card';
 
 interface MasterDataDetailProps {
   model: string;
@@ -25,8 +25,6 @@ const MasterDataDetail: React.FC<MasterDataDetailProps> = ({ model }) => {
         return response.payload;
       })
   });
-
-  const theme = useTheme();
 
   const handleSelectType = (type: string) => {
     router.push(`/master-data/${model}/${type}`);

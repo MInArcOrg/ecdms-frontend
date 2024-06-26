@@ -1,9 +1,5 @@
-import { FormControlLabel, FormGroup, Switch, Typography } from '@mui/material';
-import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
-import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import modelMenuApiService from 'src/services/general/model-menu-service';
 import { MasterType } from 'src/types/master/master-types';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';

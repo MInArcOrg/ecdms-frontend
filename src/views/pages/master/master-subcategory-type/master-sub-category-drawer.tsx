@@ -5,7 +5,7 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import { MasterSubCategory } from 'src/types/master/master-types';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
 import { uploadFile } from 'src/services/utils/file-service';
-import { SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import MasterSubCategoryForm from './master-sub-category-form';
 import masterSubCategoryApiService from 'src/services/master-data/master-sub-category-service';
 

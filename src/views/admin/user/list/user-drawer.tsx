@@ -33,12 +33,9 @@ const UserDrawer = (props: UserDrawerType) => {
   const getPayload = (values: User) => {
     const payload = {
       data: {
+        ...values,
         id: user?.id,
-        first_name: values.first_name,
-        last_name: values.last_name,
-        middle_name: values.middle_name,
         phone: values.phone,
-        email: values.email,
         department_id: props.departmentId,
         gender: values.gender
       },

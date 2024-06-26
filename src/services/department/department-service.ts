@@ -51,14 +51,14 @@ const departmentApiService = {
         throw error;
       }),
 
-  create: (body: { data: Department; files: any[] }): Promise<IApiResponse> =>
+  create: (body: { data: Department; files: any[] }): Promise<IApiResponse<Department>> =>
     buildPostRequest('/departments/departments', body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
-  update: (id: string, body: { data: Department; files: any[] }): Promise<IApiResponse> =>
+  update: (id: string, body: { data: Department; files: any[] }): Promise<IApiResponse<Department>> =>
     buildPutRequest(`/departments/departments/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {

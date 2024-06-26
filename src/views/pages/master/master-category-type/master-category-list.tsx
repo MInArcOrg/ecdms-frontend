@@ -1,31 +1,16 @@
 // components/MasterCategoryList.tsx
-import {
-  CardActions,
-  Button,
-  Collapse,
-  Typography,
-  Card,
-  CardContent,
-  ListItemButton,
-  ListItemText,
-  IconButton,
-  Grid,
-  Box
-} from '@mui/material';
+import { Card, CardContent } from '@mui/material';
 import React, { Fragment, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import masterCategoryApiService from 'src/services/master-data/master-category-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { MasterCategory, MasterType } from 'src/types/master/master-types';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
-import MasterCategoryDrawer from './master-category-drawer';
-import masterCategoryApiService from 'src/services/master-data/master-category-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { useTranslation } from 'react-i18next';
-import Icon from 'src/@core/components/icon';
-import ModelActionComponent from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
 import MasterCategoryCard from './master-category-card';
+import MasterCategoryDrawer from './master-category-drawer';
 
 interface MasterCategoryListProps {
   model: string;

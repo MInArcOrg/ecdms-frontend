@@ -1,15 +1,15 @@
-import * as yup from 'yup';
 import { FormikProps } from 'formik';
+import { useState } from 'react';
+import modelMenuApiService from 'src/services/general/model-menu-service';
+import masterTypeApiService from 'src/services/master-data/master-type-service';
+import { uploadFile } from 'src/services/utils/file-service';
+import { MasterType } from 'src/types/master/master-types';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import { MasterType } from 'src/types/master/master-types';
-import masterTypeApiService from 'src/services/master-data/master-type-service';
+import * as yup from 'yup';
 import MasterTypeForm from './master-type-form';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import { uploadFile } from 'src/services/utils/file-service';
-import { SetStateAction, useState } from 'react';
 import ModelSpecificMenus from './model-specific-menus';
-import modelMenuApiService from 'src/services/general/model-menu-service';
 
 interface MasterTypeDrawerType {
   open: boolean;
