@@ -18,6 +18,10 @@ const navigation = (): VerticalNavItemsType => {
         {
           title: 'navigation.master-data.stakeholder',
           path: '/master-data/stakeholder'
+        },
+        {
+          title: 'navigation.master-data.project',
+          path: '/master-data/project'
         }
       ]
     },

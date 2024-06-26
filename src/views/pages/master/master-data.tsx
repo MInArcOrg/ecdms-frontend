@@ -1,67 +1,52 @@
 // components/MasterDataDetail.tsx
-import React, { useEffect, useState } from 'react';
 import { Container, Grid, Typography } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
-import { MasterCategory, MasterType } from 'src/types/master/master-types';
-import MasterTypeList from 'src/views/pages/master/master-type/master-type-list';
-import MasterCategoryList from 'src/views/pages/master/master-category-type/master-category-type-list';
-import MasterTypeDetailCard from './master-type/master-type-detail-card';
+import React from 'react';
 import { gridSpacing } from 'src/configs/app-constants';
 import Translations from 'src/layouts/components/Translations';
+import masterTypeApiService from 'src/services/master-data/master-type-service';
+import { MasterType } from 'src/types/master/master-types';
+import MasterCategoryList from 'src/views/pages/master/master-category-type/master-category-list';
+import MasterTypeList from 'src/views/pages/master/master-type/master-type-list';
+import MasterTypeDetailCard from './master-type/master-type-detail-card';
 
-const types: MasterType[] = [
-  { id: '1', name: 'Type1', description: 'some description' },
-  { id: '2', name: 'Type2', description: 'some description' },
-  { id: '3', name: 'Type3', description: 'some description' }
-];
-
-const categoriesData: Record<string, MasterCategory[]> = {
-  '1': [
-    { id: '1', name: 'Category1', description: 'Description1' },
-    { id: '2', name: 'Category2', description: 'Description2' }
-  ],
-  '2': [
-    { id: '3', name: 'Category3', description: 'Description3' },
-    { id: '4', name: 'Category4', description: 'Description4' }
-  ],
-  '3': [
-    { id: '5', name: 'Category5', description: 'Description5' },
-    { id: '6', name: 'Category6', description: 'Description6' }
-  ]
-};
 interface MasterDataDetailProps {
   model: string;
 }
+
 const MasterDataDetail: React.FC<MasterDataDetailProps> = ({ model }) => {
   const router = useRouter();
   const { id } = router.query;
-  const [selectedType, setSelectedType] = useState<MasterType>();
-
-  useEffect(() => {
-    setSelectedType(types.find((type) => type.id === String(id)) || ({} as MasterType));
-  }, [id]);
+  const { data: selectedType, refetch } = useQuery({
+    queryKey: ['type', model, id],
+    queryFn: () =>
+      masterTypeApiService.getOne(model, id ? String(id) : '', {}).then((response) => {
+        return response.payload;
+      })
+  });
 
   const handleSelectType = (type: string) => {
-    router.push(`/master-data/stakeholder/${type}`);
+    router.push(`/master-data/${model}/${type}`);
   };
 
   return (
     <Container>
-      <Typography variant="inherit" gutterBottom>
+      <Typography variant="h5" gutterBottom>
         <Translations text={`master-data.${model}`} /> <Translations text={'master-data.master-data'} />
       </Typography>
       <Grid container spacing={gridSpacing}>
-        <Grid item xs={3}>
-          <MasterTypeList types={types} selectedType={selectedType as MasterType} onTypeSelect={handleSelectType} />
+        <Grid item xs={12} sm={4} md={3}>
+          <MasterTypeList model={model} selectedType={selectedType as MasterType} onTypeSelect={handleSelectType} />
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={12} sm={8} md={9}>
           <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>
-              <MasterTypeDetailCard masterType={selectedType} isLoading={false} />
+              <MasterTypeDetailCard masterType={selectedType} isLoading={false} model={model} refetch={refetch} />
             </Grid>
             <Grid item xs={12}>
               {selectedType ? (
-                <MasterCategoryList categories={categoriesData[selectedType.id]} />
+                <MasterCategoryList model={model} selectedType={selectedType} />
               ) : (
                 <Typography>Select a type to see categories</Typography>
               )}

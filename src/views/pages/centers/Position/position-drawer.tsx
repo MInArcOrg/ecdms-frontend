@@ -6,6 +6,7 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import PositionForm from './position-form';
 import Position from 'src/types/department/position';
 import positionApiService from 'src/services/department/position-service';
+import { IApiPayload } from 'src/types/requests';
 
 interface PositionDrawerType {
   open: boolean;
@@ -25,19 +26,18 @@ const PositionDrawer = (props: PositionDrawerType) => {
   const { open, toggle, refetch, position } = props;
 
   const isEdit = position?.id ? true : false;
-  const createPosition = async (body: { data: Position; files: [] }) => {
-    await positionApiService.create(body);
+  const createPosition = async (body: IApiPayload<Position>) => {
+    return await positionApiService.create(body);
   };
-  const editPosition = async (body: { data: Position; files: [] }) => {
-    await positionApiService.update(position?.id || '', body);
+  const editPosition = async (body: IApiPayload<Position>) => {
+    return await positionApiService.update(position?.id || '', body);
   };
 
   const getPayload = (values: Position) => {
     const payload = {
       data: {
+        ...values,
         id: position?.id,
-        name: values.name,
-        description: values.description,
         department_id: props.departmentId
       },
       files: []

@@ -1,4 +1,4 @@
-import { Box, Card } from '@mui/material';
+import { Container } from '@mui/system';
 import { GridColDef } from '@mui/x-data-grid';
 import { isArray } from 'lodash';
 import { Fragment, useState } from 'react';
@@ -115,12 +115,12 @@ const ItemsListing = <T extends {}>({
       ) : (
         isArray(items) && (
           <Fragment>
-            <Box sx={{ borderColor: 'red', borderWidth: 1 }}>{listingComponents[type] || listingComponents.default}</Box>
+            {listingComponents[type] || listingComponents.default}
             <></>
             {type !== ITEMS_LISTING_TYPE.table.value && pagination && (
-              <Card>
+              <Container>
                 <PaginationComponent onPaginationChange={onPagination} pagination={pagination}></PaginationComponent>
-              </Card>
+              </Container>
             )}
           </Fragment>
         )

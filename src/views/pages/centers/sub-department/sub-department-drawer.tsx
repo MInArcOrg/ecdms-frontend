@@ -6,6 +6,7 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import SubDepartmentForm from './sub-deparmtent-form';
 import Department from 'src/types/department/department';
 import departmentApiService from 'src/services/department/department-service';
+import { IApiPayload } from 'src/types/requests';
 
 interface SubDepartmentDrawerType {
   open: boolean;
@@ -24,20 +25,18 @@ const SubDepartmentDrawer = (props: SubDepartmentDrawerType) => {
   // ** Props
   const { open, toggle, refetch, subDepartment } = props;
   const isEdit = subDepartment?.id ? true : false;
-  const createSubDepartment = async (body: { data: Department; files: [] }) => {
-    await departmentApiService.create(body);
+  const createSubDepartment = async (body: IApiPayload<Department>) => {
+    return await departmentApiService.create(body);
   };
-  const editSubDepartment = async (body: { data: Department; files: [] }) => {
-    await departmentApiService.update(subDepartment?.id || '', body);
+  const editSubDepartment = async (body: IApiPayload<Department>) => {
+    return await departmentApiService.update(subDepartment?.id || '', body);
   };
 
   const getPayload = (values: Department) => {
     const payload = {
       data: {
-        id: subDepartment?.id,
-        name: values.name,
-        description: values.description,
-        parent_department_id: values.parent_department_id
+        ...values,
+        id: subDepartment?.id
       },
       files: []
     };

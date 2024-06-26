@@ -11,10 +11,7 @@ import { defaultCreateActionConfig } from 'src/types/general/listing';
 const UserList = ({}) => {
   const [userDrawerOpen, setAddUserOpen] = useState<boolean>(false);
   const [editableUser, setEditableUser] = useState<User>();
-  const handleEdit = (user: User) => {
-    toggleUserDrawer();
-    setEditableUser(user);
-  };
+
   const { t } = useTranslation();
   // Access the hook methods and state
   const { pagination, allUsers, isLoading, deleteUser, fetchUsers, refetch } = userHook() as ReturnType<typeof userHook>;
@@ -27,7 +24,10 @@ const UserList = ({}) => {
   function handleDelete(id: string): void {
     deleteUser(id);
   }
-
+  const handleEdit = (user: User) => {
+    toggleUserDrawer();
+    setEditableUser(user);
+  };
   return (
     <>
       <ItemsListing

@@ -1,53 +1,52 @@
 import { AxiosResponse } from 'axios';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import TeamMember from 'src/types/team/team-member';
+import { MasterType } from 'src/types/master/master-types';
+import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
 import axiosServices from 'src/utils/axios';
 import { buildGetRequest } from 'src/utils/requests/get-request';
 import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
-const teamMemberApiService = {
-  getAll: (params: GetRequestParam, parentTeamMemberId: string): Promise<IApiResponse> =>
-    buildGetRequest(`/auth/teams-module/team/members?parentId=${parentTeamMemberId}`, params)
+const masterTypeApiService = {
+  getAll: (model: string, params: GetRequestParam): Promise<IApiResponse> =>
+    buildGetRequest(`/masterdata/${model}-types`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
-  getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/auth/teams-module/team/members/${idx}`, params)
+  getOne: (model: string, idx: string, params: GetRequestParam): Promise<IApiResponse> =>
+    buildGetRequest(`/masterdata/${model}-types/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
-
-  delete: (idx: string): Promise<IApiResponse> =>
+  delete: (model: string, idx: string): Promise<IApiResponse> =>
     axiosServices
-      .delete(`/auth/teams-module/team/members/${idx}`)
+      .delete(`/masterdata/${model}-types/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
-  create: (body: { data: TeamMember; files: any[] }): Promise<IApiResponse> =>
-    buildPostRequest('/auth/teams-module/team/members', body, false)
+  create: (model: string, body: IApiPayload<MasterType>): Promise<IApiResponse<MasterType>> =>
+    buildPostRequest(`/masterdata/${model}-types`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
-  update: (id: string, body: { data: TeamMember; files: any[] }): Promise<IApiResponse> =>
-    buildPutRequest(`/auth/teams-module/team/members/${id}`, body)
+  update: (model: string, id: string, body: IApiPayload<MasterType>): Promise<IApiResponse<MasterType>> =>
+    buildPutRequest(`/masterdata/${model}-types/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
-  getTeamMemberMembers: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/auth/teams-module/team-member-members/${idx}`, params)
+  getOnee: (model: string, idx: string, params: GetRequestParam): Promise<IApiResponse> =>
+    buildGetRequest(`/masterdata/${model}-types/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       })
 };
 
-export default teamMemberApiService;
+export default masterTypeApiService;
