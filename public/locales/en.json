@@ -12,14 +12,19 @@
     "master-data":{
       "master-data":"Master Data",
       "stakeholder":"Stakeholder",
-      "project":"project",
-      "resource":"resource"
+      "project":"Project",
+      "resource":"Resource",
+      "document":"Document"
     }
   },
   "master-data":{
     "master-data":"Master Data",
     "master-type":"Type",
     "stakeholder":"Stakeholder",
+    "project":"Project",
+    "document":"Document",
+    "resource":"Resource",
+
     "form":{
       "title":"Title",
       "description":"Description",
