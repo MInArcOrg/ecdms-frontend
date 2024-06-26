@@ -22,6 +22,10 @@ const navigation = (): VerticalNavItemsType => {
         {
           title: 'navigation.master-data.project',
           path: '/master-data/project'
+        },
+        {
+          title: 'navigation.master-data.resource',
+          path: '/master-data/resource'
         }
       ]
     },

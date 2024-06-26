@@ -1,5 +1,5 @@
 // components/MasterDataDetail.tsx
-import { Container, Grid, Typography } from '@mui/material';
+import { Container, Grid, Typography, CircularProgress } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -18,17 +18,24 @@ interface MasterDataDetailProps {
 const MasterDataDetail: React.FC<MasterDataDetailProps> = ({ model }) => {
   const router = useRouter();
   const { id } = router.query;
-  const { data: selectedType, refetch } = useQuery({
-    queryKey: ['type', model, id],
+  const {
+    data: selectedType,
+    refetch,
+    error,
+    isLoading
+  } = useQuery({
+    queryKey: ['masterdata-type', model, id],
     queryFn: () =>
       masterTypeApiService.getOne(model, id ? String(id) : '', {}).then((response) => {
         return response.payload;
-      })
+      }),
+    enabled: !!id
   });
 
   const handleSelectType = (type: string) => {
     router.push(`/master-data/${model}/${type}`);
   };
+  console.log('selectedType selectedType', selectedType);
 
   return (
     <Container>
@@ -42,7 +49,13 @@ const MasterDataDetail: React.FC<MasterDataDetailProps> = ({ model }) => {
         <Grid item xs={12} sm={8} md={9}>
           <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>
-              <MasterTypeDetailCard masterType={selectedType} isLoading={false} model={model} refetch={refetch} />
+              {isLoading ? (
+                <CircularProgress />
+              ) : error ? (
+                <Typography>Error loading master type data.</Typography>
+              ) : (
+                <MasterTypeDetailCard masterType={selectedType} isLoading={false} model={model} refetch={refetch} />
+              )}
             </Grid>
             <Grid item xs={12}>
               {selectedType ? (

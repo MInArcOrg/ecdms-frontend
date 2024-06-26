@@ -41,7 +41,6 @@ const ModelSpecificMenus = ({
           status: typeModel ? typeModel.model === model : false
         };
       });
-      console.log('intial state', initialStates, typeModels);
       setSwitchStates(initialStates);
     }
   }, [moduleModels, typeModels, setSwitchStates]);
