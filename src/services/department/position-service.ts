@@ -7,14 +7,14 @@ import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const positionApiService = {
-  getAll: (params: GetRequestParam, parentPositionId: string): Promise<IApiResponse> =>
+  getAll: (params: GetRequestParam, parentPositionId: string): Promise<IApiResponse<Position[]>> =>
     buildGetRequest(`/departments/positions?parentId=${parentPositionId}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
-  getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
+  getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse<Position>> =>
     buildGetRequest(`/departments/positions/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -48,7 +48,7 @@ const positionApiService = {
         throw error;
       }),
 
-  getPositionByDepartmentId: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
+  getPositionByDepartmentId: (idx: string, params: GetRequestParam): Promise<IApiResponse<Position[]>> =>
     buildGetRequest(`/departments/department-positions/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
