@@ -41,15 +41,7 @@ export const roleColumns = (onEdit: (role: Role) => void, onDelete: (id: string)
           onEdit={onEdit}
           onDelete={() => onDelete(row.id)}
           item={row}
-          options={[
-            {
-              icon: 'fds',
-              name: 'Assign',
-              onClick: () => {
-                console.log('assign clicked');
-              }
-            }
-          ]}
+
         />
       )
     }
