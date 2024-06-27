@@ -1,22 +1,19 @@
-import { CircularProgress, useMediaQuery, useTheme } from '@mui/material'
-import { Fragment, useState } from 'react'
-import GeneralLayout from '../GeneralLayout'
-import { useTranslation } from 'react-i18next'
+import { useTheme } from '@mui/material';
+import { Fragment } from 'react';
+import GeneralMasterType from 'src/views/pages/master/general/general-master/general-master-list';
+import GeneralLayout from '../GeneralLayout';
 
 function AgeLevels() {
-
-  const theme = useTheme()
-  const desktop = useMediaQuery(theme.breakpoints.up('md'))
-  const { t } = useTranslation()
 
   return (
     <div>
       <GeneralLayout>
         <Fragment>
+          <GeneralMasterType module="stakeholders" />
         </Fragment>
       </GeneralLayout>
     </div>
-  )
+  );
 }
 
-export default AgeLevels
+export default AgeLevels;

@@ -38,7 +38,10 @@ const MasterSubCategoryList: React.FC<MasterSubCategoryListProps> = ({ model, se
     fetchFunction: fetchMasterSubCategory
   });
 
-  const handleDelete = (masterSubCategoryId: string) => {};
+  const handleDelete = async (masterSubCategoryId: string) => {
+    await masterSubCategoryApiService.delete(model, masterSubCategoryId);
+    refetch();
+  };
   const handleEdit = (masterSubCategory: MasterSubCategory) => {
     toggleDrawer();
     setSelectedRow(masterSubCategory);

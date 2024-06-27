@@ -34,10 +34,6 @@ function PositionList({ parentDepartment }: { parentDepartment: Department }) {
     fetchFunction: fetchPositions
   });
 
-  const handleDelete = (positionId: string) => {
-    // Handle delete logic
-  };
-
   const toggleDrawer = () => {
     setSelectedRow({} as Position);
     setShowDrawer(!showDrawer);
@@ -46,6 +42,9 @@ function PositionList({ parentDepartment }: { parentDepartment: Department }) {
   const handleEdit = (position: Position) => {
     toggleDrawer();
     setSelectedRow(position);
+  };
+  const handleDelete = (positionId: string) => {
+    // Handle delete logic
   };
 
   return (

@@ -1,20 +1,21 @@
 import { FormikProps } from 'formik';
 import { useState } from 'react';
-import modelMenuApiService from 'src/services/general/model-menu-service';
+import generalMasterDataApiService from 'src/services/general/general-master-data-service';
 import { uploadFile } from 'src/services/utils/file-service';
+import { GeneralMaster } from 'src/types/general/general-master';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import GeneralMasterForm from './general-master-form';
-import { GeneralMaster } from 'src/types/general/general-master';
 
 interface GeneralMasterDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
   masterData: GeneralMaster;
-  model: string;
+  module: string;
+  type: string;
 }
 
 const validationSchema = yup.object().shape({
@@ -23,8 +24,7 @@ const validationSchema = yup.object().shape({
 });
 
 const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
-  const { open, toggle, refetch, masterData, model } = props;
-  const [switchStates, setSwitchStates] = useState<{ model: string; status: boolean }[]>([]);
+  const { open, toggle, refetch, masterData, module, type } = props;
 
   const isEdit = Boolean(masterData?.id);
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
@@ -32,11 +32,11 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
     setUploadableFile(file);
   };
   const createGeneralMaster = async (body: IApiPayload<GeneralMaster>) => {
-    return await generalMasterDataApiService.create(model, body);
+    return await generalMasterDataApiService.create(module, type, body);
   };
 
   const editGeneralMaster = async (body: IApiPayload<GeneralMaster>) => {
-    return await generalMasterDataApiService.update(model, masterData?.id || '', body);
+    return await generalMasterDataApiService.update(module, type, masterData?.id || '', body);
   };
 
   const getPayload = (values: GeneralMaster) => {
@@ -56,14 +56,18 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
 
   const onActionSuccess = async (response: IApiResponse<GeneralMaster>, payload: IApiPayload<GeneralMaster>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `${model.toLocaleUpperCase()}_TYPE`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `${type.toLocaleUpperCase().replace(/-/g, '_')}`, response.payload.id, '', '');
     }
     refetch();
     handleClose();
   };
 
   return (
-    <CustomSideDrawer title={`master-data.${isEdit ? 'edit-general-master' : 'create-general-master'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={`master-data.general-master.${isEdit ? 'edit-' + type : 'create-' + type}`}
+      handleClose={handleClose}
+      open={open}
+    >
       {() => (
         <FormPageWrapper<GeneralMaster>
           edit={isEdit}
@@ -78,7 +82,13 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
           {(formik: FormikProps<GeneralMaster>) => {
             return (
               <>
-                <GeneralMasterForm file={uploadableFile} onFileChange={onFileChange} formik={formik} defaultLocaleData={{} as GeneralMaster} />
+                <GeneralMasterForm
+                  type={type}
+                  file={uploadableFile}
+                  onFileChange={onFileChange}
+                  formik={formik}
+                  defaultLocaleData={{} as GeneralMaster}
+                />
               </>
             );
           }}

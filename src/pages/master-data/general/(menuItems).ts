@@ -1,44 +1,44 @@
-const baseUrl = '/master-data/general'
+const baseUrl = '/master-data/general';
 
-const menuItems = () => [
+const menuItems = (t: (item: string) => void) => [
   {
     id: 1,
-    title: 'Stakeholder',
+    title: t('master-data.stakeholder'),
     children: [
       {
         id: 1,
-        title: 'OwnerShip Type',
-        path: `${baseUrl}/stakeholder/ownershiptype`
+        title: t('master-data.general-master.ownerships'),
+        path: `${baseUrl}/stakeholder/ownerships/`
       },
       {
         id: 2,
-        title: 'Field of Busesiness',
-        path: `${baseUrl}/stakeholder/businessFields/`
+        title: t('master-data.general-master.business-fields'),
+        path: `${baseUrl}/stakeholder/business-fields/`
       },
       {
         id: 3,
-        title: 'Levels of Study',
-        path: `${baseUrl}/stakeholder/studyLevels/`
+        title: t('master-data.general-master.study-levels'),
+        path: `${baseUrl}/stakeholder/study-levels/`
       },
       {
         id: 4,
-        title: 'Study Programs',
-        path: `${baseUrl}/stakeholder/studyPrograms/`
+        title: t('master-data.general-master.study-programs'),
+        path: `${baseUrl}/stakeholder/study-programs/`
       },
       {
         id: 5,
-        title: 'Feilds of Study',
-        path: `${baseUrl}/stakeholder/studyFields/`
+        title: t('master-data.general-master.study-fields'),
+        path: `${baseUrl}/stakeholder/study-fields/`
       },
       {
         id: 6,
-        title: 'Age Groups',
-        path: `${baseUrl}/stakeholder/ageLevels/`
+        title: t('master-data.general-master.age-levels'),
+        path: `${baseUrl}/stakeholder/age-levels/`
       },
       {
         id: 7,
-        title: 'Work Experience',
-        path: `${baseUrl}/stakeholder/workExperience/`
+        title: t('master-data.general-master.work-experiences'),
+        path: `${baseUrl}/stakeholder/work-experiences/`
       }
     ]
   },
@@ -65,6 +65,6 @@ const menuItems = () => [
       }
     ]
   }
-]
+];
 
-export default menuItems
+export default menuItems;

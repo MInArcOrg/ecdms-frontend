@@ -1,52 +1,77 @@
-// components/MasterTypeList.tsx
-import { Card, CardContent, ListItemButton, ListItemText } from '@mui/material';
+// components/GeneralGeneralMaster.tsx
+import { Card, CardContent } from '@mui/material';
+import { useRouter } from 'next/router';
 import React, { Fragment, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import masterTypeApiService from 'src/services/master-data/master-type-service';
+import generalMasterDataApiService from 'src/services/general/general-master-data-service';
+import { GeneralMaster } from 'src/types/general/general-master';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { MasterType } from 'src/types/master/master-types';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
-import MasterTypeDrawer from './general-master-drawer';
+import GeneralMasterCard from './general-master-card';
+import GeneralMasterDrawer from './general-master-drawer';
 
-interface MasterTypeListProps {
-  model: string;
-  selectedType: MasterType | null;
-  onTypeSelect: (id: string) => void;
+interface GeneralGeneralMasterProps {
+  module: string;
 }
 
-const MasterTypeList: React.FC<MasterTypeListProps> = ({ model, selectedType, onTypeSelect }) => {
-  const fetchMasterType = (params: GetRequestParam): Promise<IApiResponse<MasterType[]>> => {
-    return masterTypeApiService.getAll(model, params);
+const GeneralGeneralMaster: React.FC<GeneralGeneralMasterProps> = ({ module }) => {
+  const [selectedRow, setSelectedRow] = useState<GeneralMaster | null>(null);
+  const router = useRouter();
+  const { type } = router.query;
+  const { t } = useTranslation();
+  const fetchGeneralMaster = (params: GetRequestParam): Promise<IApiResponse<GeneralMaster[]>> => {
+    return generalMasterDataApiService.getAll(module, String(type), params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
-  const toggleDrawer = () => {
-    setShowDrawer(!showDrawer);
-  };
+
   const {
     data: types,
     isLoading,
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<MasterType[]>({
-    queryKey: ['masterType', model],
-    fetchFunction: fetchMasterType
+  } = usePaginatedFetch<GeneralMaster[]>({
+    queryKey: ['general-master', module, String(type)],
+    fetchFunction: fetchGeneralMaster
   });
+  const handleDelete = async (masterSubCategoryId: string) => {
+    await generalMasterDataApiService.delete(module, String(type), masterSubCategoryId);
+    refetch();
+  };
 
+  const toggleDrawer = () => {
+    setSelectedRow({} as GeneralMaster);
+    setShowDrawer(!showDrawer);
+  };
+
+  const handleEdit = (generalMaster: GeneralMaster) => {
+    toggleDrawer();
+    setSelectedRow(generalMaster);
+  };
   return (
     <Fragment>
       {showDrawer && (
-        <MasterTypeDrawer model={model} open={showDrawer} toggle={toggleDrawer} masterData={{} as MasterType} refetch={refetch} />
+        <GeneralMasterDrawer
+          module={module}
+          open={showDrawer}
+          toggle={toggleDrawer}
+          masterData={selectedRow as GeneralMaster}
+          refetch={refetch}
+          type={String(type)}
+        />
       )}
       <Card>
         <CardContent>
           <ItemsListing
             pagination={pagination}
             type={ITEMS_LISTING_TYPE.list.value}
-            title="master-data.master-type"
-            ItemViewComponent={({ data }) => <ListItemView type={data} onTypeSelect={onTypeSelect} selectedType={selectedType} />}
+            title={t(`master-data.general-master.${type}`)}
+            ItemViewComponent={({ data }) => (
+              <GeneralMasterCard generalMaster={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
+            )}
             isLoading={isLoading}
             createActionConfig={{
               ...defaultCreateActionConfig,
@@ -54,7 +79,7 @@ const MasterTypeList: React.FC<MasterTypeListProps> = ({ model, selectedType, on
               onlyIcon: true,
               permission: {
                 action: 'create',
-                subject: `${model}type`
+                subject: `${module}type`
               }
             }}
             fetchDataFunction={refetch}
@@ -67,34 +92,4 @@ const MasterTypeList: React.FC<MasterTypeListProps> = ({ model, selectedType, on
   );
 };
 
-export default MasterTypeList;
-const ListItemView = ({
-  type,
-  onTypeSelect,
-  selectedType
-}: {
-  type: MasterType;
-  onTypeSelect: (id: string) => void;
-  selectedType: MasterType | null;
-}) => {
-  return (
-    <ListItemButton
-      sx={{
-        borderRadius: '0.5rem'
-      }}
-      selected={type.id === selectedType?.id}
-      onClick={() => onTypeSelect(type.id)}
-    >
-      <ListItemText
-        primaryTypographyProps={{
-          style: {
-            color: `${type?.id === selectedType?.id ? '#fff' : ''}`,
-            wordWrap: 'break-word',
-            maxWidth: '95%'
-          }
-        }}
-        primary={type.title}
-      />
-    </ListItemButton>
-  );
-};
+export default GeneralGeneralMaster;
