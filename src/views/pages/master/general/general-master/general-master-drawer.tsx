@@ -14,7 +14,6 @@ interface GeneralMasterDrawerType {
   toggle: () => void;
   refetch: () => void;
   masterData: GeneralMaster;
-  module: string;
   type: string;
 }
 
@@ -24,7 +23,7 @@ const validationSchema = yup.object().shape({
 });
 
 const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
-  const { open, toggle, refetch, masterData, module, type } = props;
+  const { open, toggle, refetch, masterData, type } = props;
 
   const isEdit = Boolean(masterData?.id);
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
@@ -32,11 +31,11 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
     setUploadableFile(file);
   };
   const createGeneralMaster = async (body: IApiPayload<GeneralMaster>) => {
-    return await generalMasterDataApiService.create(module, type, body);
+    return await generalMasterDataApiService.create(type, body);
   };
 
   const editGeneralMaster = async (body: IApiPayload<GeneralMaster>) => {
-    return await generalMasterDataApiService.update(module, type, masterData?.id || '', body);
+    return await generalMasterDataApiService.update(type, masterData?.id || '', body);
   };
 
   const getPayload = (values: GeneralMaster) => {

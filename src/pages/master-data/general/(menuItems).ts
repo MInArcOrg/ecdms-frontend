@@ -49,8 +49,8 @@ const menuItems = (t: (item: string) => void) => [
     children: [
       {
         id: 1,
-        title: 'Project Status',
-        path: `${baseUrl}/project/`
+        title: t('master-data.general-master.project-progress-statuses'),
+        path: `${baseUrl}/stakeholder/project-progress-statuses/`
       }
     ]
   },

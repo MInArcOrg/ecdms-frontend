@@ -7,35 +7,35 @@ import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const generalMasterDataApiService = {
-  getAll: (module: string, type: string, params: GetRequestParam): Promise<IApiResponse<GeneralMaster[]>> =>
-    buildGetRequest(`/${module}/${type}`, params)
+  getAll: (type: string, params: GetRequestParam): Promise<IApiResponse<GeneralMaster[]>> =>
+    buildGetRequest(`/masterdata/${type}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   getOne: (idx: string, module: string, type: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/${module}/${type}/${idx}`, params)
+    buildGetRequest(`/masterdata/${type}/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
-  delete: (module: string, type: string, idx: string): Promise<IApiResponse> =>
+  delete: (type: string, idx: string): Promise<IApiResponse> =>
     axiosServices
-      .delete(`/${module}/${type}/${idx}`)
+      .delete(`/masterdata/${type}/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
-  create: (module: string, type: string, body: IApiPayload<GeneralMaster>): Promise<IApiResponse<GeneralMaster>> =>
-    buildPostRequest(`/${module}/${type}`, body, false)
+  create: (type: string, body: IApiPayload<GeneralMaster>): Promise<IApiResponse<GeneralMaster>> =>
+    buildPostRequest(`/masterdata/${type}`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
-  update: (module: string, type: string, idx: string, body: IApiPayload<GeneralMaster>): Promise<IApiResponse<GeneralMaster>> =>
-    buildPutRequest(`/${module}/${type}/${idx}`, body)
+  update: (type: string, idx: string, body: IApiPayload<GeneralMaster>): Promise<IApiResponse<GeneralMaster>> =>
+    buildPutRequest(`/masterdata/${type}/${idx}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;

@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import GeneralMasterType from 'src/views/pages/master/general/general-master/general-master-list';
 import GeneralLayout from '../GeneralLayout';
 
-function GeneralStakeholderMasterData() {
+function GeneralProjectMasterData() {
   return (
     <div>
       <GeneralLayout>
@@ -14,4 +14,4 @@ function GeneralStakeholderMasterData() {
   );
 }
 
-export default GeneralStakeholderMasterData;
+export default GeneralProjectMasterData;

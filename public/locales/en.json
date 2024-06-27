@@ -14,7 +14,8 @@
       "stakeholder":"Stakeholder",
       "project":"Project",
       "resource":"Resource",
-      "document":"Document"
+      "document":"Document",
+      "general":"General"
     }
   },
   "master-data": {
@@ -45,7 +46,10 @@
       "edit-age-levels": "Edit Age Level",
       "work-experiences": "Work Experiences",
       "create-work-experiences": "Create Work Experience",
-      "edit-work-experiences": "Edit Work Experience"
+      "edit-work-experiences": "Edit Work Experience",
+      "project-progress-statuses": "Project Progress Status",
+      "create-project-progress-statuses": "Create Project Progress Status",
+      "edit-project-progress-statuses": "Edit Project Progress Status"
     },
     "form":{
       "title":"Title",

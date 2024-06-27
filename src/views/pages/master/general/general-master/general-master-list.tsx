@@ -14,16 +14,15 @@ import GeneralMasterCard from './general-master-card';
 import GeneralMasterDrawer from './general-master-drawer';
 
 interface GeneralGeneralMasterProps {
-  module: string;
 }
 
-const GeneralGeneralMaster: React.FC<GeneralGeneralMasterProps> = ({ module }) => {
+const GeneralGeneralMaster: React.FC<GeneralGeneralMasterProps> = () => {
   const [selectedRow, setSelectedRow] = useState<GeneralMaster | null>(null);
   const router = useRouter();
   const { type } = router.query;
   const { t } = useTranslation();
   const fetchGeneralMaster = (params: GetRequestParam): Promise<IApiResponse<GeneralMaster[]>> => {
-    return generalMasterDataApiService.getAll(module, String(type), params);
+    return generalMasterDataApiService.getAll(String(type), params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
 
@@ -34,11 +33,11 @@ const GeneralGeneralMaster: React.FC<GeneralGeneralMasterProps> = ({ module }) =
     handlePageChange,
     refetch
   } = usePaginatedFetch<GeneralMaster[]>({
-    queryKey: ['general-master', module, String(type)],
+    queryKey: ['general-master', String(type)],
     fetchFunction: fetchGeneralMaster
   });
   const handleDelete = async (masterSubCategoryId: string) => {
-    await generalMasterDataApiService.delete(module, String(type), masterSubCategoryId);
+    await generalMasterDataApiService.delete(String(type), masterSubCategoryId);
     refetch();
   };
 
@@ -55,7 +54,6 @@ const GeneralGeneralMaster: React.FC<GeneralGeneralMasterProps> = ({ module }) =
     <Fragment>
       {showDrawer && (
         <GeneralMasterDrawer
-          module={module}
           open={showDrawer}
           toggle={toggleDrawer}
           masterData={selectedRow as GeneralMaster}
