@@ -10,7 +10,6 @@ import RoleForm from './role-form';
 interface RoleDrawerType {
   open: boolean;
   toggle: () => void;
-  addNewRole: (body: { data: Role; files: [] }) => Promise<void>;
   refetch: () => void;
   role: Role;
 }

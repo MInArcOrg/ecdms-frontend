@@ -16,7 +16,7 @@ const PermissionList = ({}) => {
     setEditablePermission(permission);
   };
   // Access the hook methods and state
-  const { pagination, allPermissions, isLoading, addNewPermission, fetchPermissions, deletePermission } = usePermission() as ReturnType<
+  const { pagination, allPermissions, isLoading, fetchPermissions, deletePermission } = usePermission() as ReturnType<
     typeof usePermission
   >;
 
@@ -48,7 +48,6 @@ const PermissionList = ({}) => {
       {permissionDrawerOpen && (
         <PermissionDrawer
           refetch={fetchPermissions}
-          addNewPermission={addNewPermission}
           open={permissionDrawerOpen}
           toggle={togglePermissionDrawer}
           permission={editablePermission as Permission}

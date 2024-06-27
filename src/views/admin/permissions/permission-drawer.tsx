@@ -10,7 +10,6 @@ import Permission from 'src/types/admin/role/permission';
 interface PermissionDrawerType {
   open: boolean;
   toggle: () => void;
-  addNewPermission: (body: { data: Permission; files: [] }) => Promise<void>;
   refetch: () => void;
   permission: Permission;
 }

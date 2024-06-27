@@ -16,7 +16,7 @@ const RoleList = ({}) => {
     setEditableRole(role);
   };
   // Access the hook methods and state
-  const { pagination, allRoles, isLoading, addNewRole, fetchRoles, deleteRole } = useRole() as ReturnType<typeof useRole>;
+  const { pagination, allRoles, isLoading, fetchRoles, deleteRole } = useRole() as ReturnType<typeof useRole>;
 
   const toggleRoleDrawer = () => {
     setEditableRole({} as Role);
@@ -47,7 +47,6 @@ const RoleList = ({}) => {
       {roleDrawerOpen && (
         <RoleDrawer
           refetch={fetchRoles}
-          addNewRole={addNewRole}
           open={roleDrawerOpen}
           toggle={toggleRoleDrawer}
           role={editableRole as Role}
