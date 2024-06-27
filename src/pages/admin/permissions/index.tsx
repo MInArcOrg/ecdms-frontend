@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePermission from 'src/hooks/admin/permission-hook';
 import Permission from 'src/types/admin/role/permission';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
 import PermissionDrawer from 'src/views/admin/permissions/permission-drawer';
 import { permissionColumns } from 'src/views/admin/permissions/permission-row-column';
 
@@ -33,11 +34,16 @@ const PermissionList = ({}) => {
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         isLoading={isLoading}
-        onCreateClick={togglePermissionDrawer}
         fetchDataFunction={fetchPermissions}
         tableProps={{ headers: permissionColumns(handleEdit, handleDelete) }}
-        items={allPermissions}
-      />
+        items={allPermissions} 
+        createActionConfig={{
+          ...defaultCreateActionConfig,
+          onClick: togglePermissionDrawer,
+          onlyIcon: true,
+          permission: { action: 'create', subject: 'permission' }
+        }}      
+        />
 
       {permissionDrawerOpen && (
         <PermissionDrawer
