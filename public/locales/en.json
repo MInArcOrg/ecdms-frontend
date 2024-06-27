@@ -17,18 +17,45 @@
       "document":"Document"
     }
   },
-  "master-data":{
-    "master-data":"Master Data",
-    "master-type":"Type",
-    "stakeholder":"Stakeholder",
-    "project":"Project",
-    "document":"Document",
-    "resource":"Resource",
-
+  "master-data": {
+    "master-data": "Master Data",
+    "master-type": "Type",
+    "stakeholder": "Stakeholder",
+    "project": "Project",
+    "document": "Document",
+    "resource": "Resource",
+    "general-master": {
+      "ownerships": "Ownership Types",
+      "create-ownerships": "Create Ownership Type",
+      "edit-ownerships": "Edit Ownership Type",
+      "business-fields": "Business Fields",
+      "create-business-fields": "Create Business Field",
+      "edit-business-fields": "Edit Business Field",
+      "study-levels": "Study Levels",
+      "create-study-levels": "Create Study Level",
+      "edit-study-levels": "Edit Study Level",
+      "study-programs": "Study Programs",
+      "create-study-programs": "Create Study Program",
+      "edit-study-programs": "Edit Study Program",
+      "study-fields": "Study Fields",
+      "create-study-fields": "Create Study Field",
+      "edit-study-fields": "Edit Study Field",
+      "age-levels": "Age Levels",
+      "create-age-levels": "Create Age Level",
+      "edit-age-levels": "Edit Age Level",
+      "work-experiences": "Work Experiences",
+      "create-work-experiences": "Create Work Experience",
+      "edit-work-experiences": "Edit Work Experience"
+    },
     "form":{
       "title":"Title",
       "description":"Description",
-      "stakeholder-type-specific-models":"Stakeholder type Specific models"
+      "study-program":"Study Program",
+      "study-level":"Study Level",
+      "stakeholder-type-specific-models":"Stakeholder type Specific models",
+      "project-type-specific-models":"Project type Specific models",
+      "document-type-specific-models":"Document type Specific models",
+      "resource-type-specific-models":"Resource type Specific models"
     },
     
     "create-master-type":"Create Type",
@@ -58,6 +85,7 @@
     "create-master-sub-category":"Create Master Category",
     "edit-master-sub-category":"Edit Master Category"
   },
+  
   "department":{
     "user-columns": {
       "user": "User",
@@ -136,6 +164,8 @@
     }
   },
   "common":{
+      "edit":"Edit",
+      "create":"Create",
      "table-columns":{
       "created-at": "Created At",
       "updated-at": "update At",

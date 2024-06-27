@@ -1,0 +1,19 @@
+import { useTheme } from '@mui/material';
+import { Fragment } from 'react';
+import GeneralMasterType from 'src/views/pages/master/general/general-master/general-master-list';
+import GeneralLayout from '../GeneralLayout';
+
+function AgeLevels() {
+
+  return (
+    <div>
+      <GeneralLayout>
+        <Fragment>
+          <GeneralMasterType module="stakeholders" />
+        </Fragment>
+      </GeneralLayout>
+    </div>
+  );
+}
+
+export default AgeLevels;
