@@ -1,5 +1,5 @@
 // ** React Imports
-import { ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
 // ** Next Imports
 
