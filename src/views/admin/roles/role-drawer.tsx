@@ -32,6 +32,7 @@ const RoleDrawer = (props: RoleDrawerType) => {
   const getPayload = (values: Role) => {
     const payload = {
       data: {
+        ...values,
         id: role?.id,
         name: values.name,
         description: values.description

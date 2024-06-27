@@ -23,7 +23,6 @@ const validationSchema = yup.object().shape({
 const PermissionDrawer = (props: PermissionDrawerType) => {
   // ** Props
   const { open, toggle, refetch, permission } = props;
-  console.log('editable permission', permission);
 
   const { addNewPermission, updatePermission } = usePermission() as ReturnType<typeof usePermission>;
 
@@ -32,9 +31,8 @@ const PermissionDrawer = (props: PermissionDrawerType) => {
   const getPayload = (values: Permission) => {
     const payload = {
       data: {
+        ...values,
         id: permission?.id,
-        name: values.name,
-        description: values.description
       },
       files: []
     };

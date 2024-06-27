@@ -77,12 +77,12 @@ const usePermission = (initialQueryParams: GetRequestParam = defaultGetRequestPa
   };
 
   const addNewPermission = async (body: { data: Permission; files: any[] }) => {
-    await permissionApiService.create(body);
+    return await permissionApiService.create(body);
     setNewPermission(undefined);
     invalidatePermissionsQuery();
   };
   const updatePermission = async (body: { data: Permission; files: any[] }) => {
-    await permissionApiService.update(body.data.id, body);
+    return await permissionApiService.update(body.data.id, body);
     setNewPermission(undefined);
     invalidatePermissionsQuery();
   };

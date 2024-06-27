@@ -77,13 +77,14 @@ const useRole = (initialQueryParams: GetRequestParam = defaultGetRequestParam) =
   };
 
   const addNewRole = async (body: { data: Role; files: any[] }) => {
-    await roleApiService.create(body);
     setNewRole(undefined);
+    return await roleApiService.create(body);
     invalidateRolesQuery();
   };
   const updateRole = async (body: { data: Role; files: any[] }) => {
-    await roleApiService.update(body.data.id, body);
     setNewRole(undefined);
+
+    return await roleApiService.update(body.data.id, body);
     invalidateRolesQuery();
   };
 
