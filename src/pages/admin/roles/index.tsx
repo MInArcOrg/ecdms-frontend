@@ -41,7 +41,7 @@ const RoleList = ({}) => {
           onClick: toggleRoleDrawer,
           onlyIcon: true,
           permission: { action: 'create', subject: 'role' }
-        }}     
+        }}
       />
 
       {roleDrawerOpen && (

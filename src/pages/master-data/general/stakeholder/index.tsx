@@ -3,7 +3,6 @@ import GeneralMasterType from 'src/views/pages/master/general/general-master/gen
 import GeneralLayout from '../GeneralLayout';
 
 function AgeLevels() {
-
   return (
     <div>
       <GeneralLayout>

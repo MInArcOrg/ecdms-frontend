@@ -107,7 +107,7 @@ const usePosition = (initialQueryParams: GetRequestParam = defaultGetRequestPara
     currentPage: queryParams.pagination?.page || 1,
     pageSize,
     handlePageChange,
-    handlePageSizeChange,
+    handlePageSizeChange
   };
 };
 

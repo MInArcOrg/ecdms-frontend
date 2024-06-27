@@ -36,14 +36,14 @@ const PermissionList = ({}) => {
         isLoading={isLoading}
         fetchDataFunction={fetchPermissions}
         tableProps={{ headers: permissionColumns(handleEdit, handleDelete) }}
-        items={allPermissions} 
+        items={allPermissions}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: togglePermissionDrawer,
           onlyIcon: true,
           permission: { action: 'create', subject: 'permission' }
-        }}      
-        />
+        }}
+      />
 
       {permissionDrawerOpen && (
         <PermissionDrawer
