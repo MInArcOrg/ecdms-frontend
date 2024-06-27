@@ -35,15 +35,12 @@ const UserViewLeft = ({ user }: { user: User }) => {
                 flexDirection: 'column'
               }}
             >
-              {user.avatar ? (
-                <UserAvatar variant="rounded" sx={{ width: 200, height: 200, mb: 4, fontSize: '3rem' }} user={user} />
-              ) : (
+             
                 <UserAvatar variant="rounded" sx={{ width: 100, height: 100, mb: 4, fontSize: '3rem' }} user={user} />
-              )}
               <Typography variant="h4" sx={{ mb: 3 }}>
                 {user.name}
               </Typography>
-              <CustomChip rounded skin="light" size="small" label={user.role} sx={{ textTransform: 'capitalize' }} />
+              <CustomChip rounded skin="light" size="small"  sx={{ textTransform: 'capitalize' }} />
             </CardContent>
 
             <Divider sx={{ my: '0 !important', mx: 6 }} />
@@ -66,7 +63,6 @@ const UserViewLeft = ({ user }: { user: User }) => {
                       textTransform: 'capitalize'
                     }}
                   >
-                    {user.role}
                   </Typography>
                 </Box>
 
