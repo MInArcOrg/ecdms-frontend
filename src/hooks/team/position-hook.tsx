@@ -1,10 +1,10 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
-import positionApiService from 'src/services/team/position-service';
 import { defaultGetRequestParam } from 'src/types/requests';
 import { GetRequestParam } from 'src/types/requests';
 import { Pagination } from 'src/types/requests/pagination';
 import Position from 'src/types/department/position';
+import positionApiService from 'src/services/department/position-service';
 
 const usePosition = (initialQueryParams: GetRequestParam = defaultGetRequestParam, departmentId: string = '') => {
   const queryClient = useQueryClient();
@@ -91,12 +91,7 @@ const usePosition = (initialQueryParams: GetRequestParam = defaultGetRequestPara
     await positionApiService.delete(positionId);
     invalidatePositionsQuery();
   };
-  const useGetPositionMembers = (positionId: string) => {
-    return useQuery({
-      queryKey: ['position-users', positionId],
-      queryFn: () => positionApiService.getPositionMembers(positionId, defaultGetRequestParam).then((response) => response.payload)
-    });
-  };
+
   return {
     updatePosition,
     pagination,
@@ -113,7 +108,6 @@ const usePosition = (initialQueryParams: GetRequestParam = defaultGetRequestPara
     pageSize,
     handlePageChange,
     handlePageSizeChange,
-    useGetPositionMembers
   };
 };
 
