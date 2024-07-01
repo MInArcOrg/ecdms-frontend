@@ -36,13 +36,6 @@ export const roleColumns = (onEdit: (role: Role) => void, onDelete: (id: string)
       sortable: false,
       field: 'actions',
       headerName: 'Actions',
-      renderCell: ({ row }: CellType) => (
-        <RowOptions
-          onEdit={onEdit}
-          onDelete={() => onDelete(row.id)}
-          item={row}
-
-        />
-      )
+      renderCell: ({ row }: CellType) => <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} />
     }
   ] as GridColDef[];

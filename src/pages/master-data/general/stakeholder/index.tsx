@@ -7,7 +7,7 @@ function GeneralStakeholderMasterData() {
     <div>
       <GeneralLayout>
         <Fragment>
-          <GeneralMasterType module="stakeholders" />
+          <GeneralMasterType />
         </Fragment>
       </GeneralLayout>
     </div>

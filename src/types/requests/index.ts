@@ -17,7 +17,7 @@ export type PostRequestParam = {
   data?: any | null;
 };
 export type DeleteRequestParam = {};
-export type PutRequestParam<T=any> = {
+export type PutRequestParam<T = any> = {
   data?: T | null;
   published?: any | null;
   archived?: any | null;

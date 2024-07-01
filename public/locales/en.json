@@ -49,7 +49,10 @@
       "edit-work-experiences": "Edit Work Experience",
       "project-progress-statuses": "Project Progress Status",
       "create-project-progress-statuses": "Create Project Progress Status",
-      "edit-project-progress-statuses": "Edit Project Progress Status"
+      "edit-project-progress-statuses": "Edit Project Progress Status",
+      "construction-related-services":"Construction Related Service",
+      "edit-construction-related-services":"Edit Construction Related Service",
+      "create-construction-related-services":"Create Construction Related Service"
     },
     "form":{
       "title":"Title",
@@ -59,7 +62,10 @@
       "stakeholder-type-specific-models":"Stakeholder type Specific models",
       "project-type-specific-models":"Project type Specific models",
       "document-type-specific-models":"Document type Specific models",
-      "resource-type-specific-models":"Resource type Specific models"
+      "resource-type-specific-models":"Resource type Specific models",
+      "service_type": "Service Type",
+      "specification_detail": "Specification Detail",
+      "measurement_unit": "Measurement Unit"
     },
     
     "create-master-type":"Create Type",

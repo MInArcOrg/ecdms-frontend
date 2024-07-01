@@ -1,4 +1,4 @@
-// components/GeneralGeneralMaster.tsx
+// components/GeneralMasterResourceList.tsx
 import { Card, CardContent } from '@mui/material';
 import { useRouter } from 'next/router';
 import React, { Fragment, useState } from 'react';
@@ -6,22 +6,22 @@ import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
 import generalMasterDataApiService from 'src/services/general/general-master-data-service';
-import { GeneralMaster } from 'src/types/general/general-master';
+import { GeneralMasterResource } from 'src/types/general/general-master';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
-import GeneralMasterCard from './general-master-card';
-import GeneralMasterDrawer from './general-master-drawer';
+import GeneralMasterResourceCard from './general-master-resource-card';
+import GeneralMasterResourceDrawer from './general-master-resource-drawer';
 
-interface GeneralGeneralMasterProps {}
+interface GeneralMasterResourceListProps {}
 
-const GeneralGeneralMaster: React.FC<GeneralGeneralMasterProps> = () => {
-  const [selectedRow, setSelectedRow] = useState<GeneralMaster | null>(null);
+const GeneralMasterResourceList: React.FC<GeneralMasterResourceListProps> = () => {
+  const [selectedRow, setSelectedRow] = useState<GeneralMasterResource | null>(null);
   const router = useRouter();
   const { type } = router.query;
   const { t } = useTranslation();
-  const fetchGeneralMaster = (params: GetRequestParam): Promise<IApiResponse<GeneralMaster[]>> => {
-    return generalMasterDataApiService.getAll(String(type), params);
+  const fetchGeneralMasterResource = (params: GetRequestParam): Promise<IApiResponse<GeneralMasterResource[]>> => {
+    return generalMasterDataApiService.getAllResourceGeneralMaster(String(type), params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
 
@@ -31,9 +31,9 @@ const GeneralGeneralMaster: React.FC<GeneralGeneralMasterProps> = () => {
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<GeneralMaster[]>({
+  } = usePaginatedFetch<GeneralMasterResource[]>({
     queryKey: ['general-master', String(type)],
-    fetchFunction: fetchGeneralMaster
+    fetchFunction: fetchGeneralMasterResource
   });
   const handleDelete = async (masterSubCategoryId: string) => {
     await generalMasterDataApiService.delete(String(type), masterSubCategoryId);
@@ -41,21 +41,21 @@ const GeneralGeneralMaster: React.FC<GeneralGeneralMasterProps> = () => {
   };
 
   const toggleDrawer = () => {
-    setSelectedRow({} as GeneralMaster);
+    setSelectedRow({} as GeneralMasterResource);
     setShowDrawer(!showDrawer);
   };
 
-  const handleEdit = (generalMaster: GeneralMaster) => {
+  const handleEdit = (generalMaster: GeneralMasterResource) => {
     toggleDrawer();
     setSelectedRow(generalMaster);
   };
   return (
     <Fragment>
       {showDrawer && (
-        <GeneralMasterDrawer
+        <GeneralMasterResourceDrawer
           open={showDrawer}
           toggle={toggleDrawer}
-          masterData={selectedRow as GeneralMaster}
+          masterData={selectedRow as GeneralMasterResource}
           refetch={refetch}
           type={String(type)}
         />
@@ -67,7 +67,7 @@ const GeneralGeneralMaster: React.FC<GeneralGeneralMasterProps> = () => {
             type={ITEMS_LISTING_TYPE.list.value}
             title={t(`master-data.general-master.${type}`)}
             ItemViewComponent={({ data }) => (
-              <GeneralMasterCard generalMaster={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
+              <GeneralMasterResourceCard generalMaster={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
             )}
             isLoading={isLoading}
             createActionConfig={{
@@ -89,4 +89,4 @@ const GeneralGeneralMaster: React.FC<GeneralGeneralMasterProps> = () => {
   );
 };
 
-export default GeneralGeneralMaster;
+export default GeneralMasterResourceList;

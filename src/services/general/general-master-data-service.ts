@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { GeneralMaster } from 'src/types/general/general-master';
+import { GeneralMaster, GeneralMasterResource } from 'src/types/general/general-master';
 import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
 import axiosServices from 'src/utils/axios';
 import { buildGetRequest } from 'src/utils/requests/get-request';
@@ -8,6 +8,12 @@ import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const generalMasterDataApiService = {
   getAll: (type: string, params: GetRequestParam): Promise<IApiResponse<GeneralMaster[]>> =>
+    buildGetRequest(`/masterdata/${type}`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
+  getAllResourceGeneralMaster: (type: string, params: GetRequestParam): Promise<IApiResponse<GeneralMasterResource[]>> =>
     buildGetRequest(`/masterdata/${type}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -35,6 +41,22 @@ const generalMasterDataApiService = {
         throw error;
       }),
   update: (type: string, idx: string, body: IApiPayload<GeneralMaster>): Promise<IApiResponse<GeneralMaster>> =>
+    buildPutRequest(`/masterdata/${type}/${idx}`, body)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
+  createResourceGeneralMaster: (type: string, body: IApiPayload<GeneralMasterResource>): Promise<IApiResponse<GeneralMasterResource>> =>
+    buildPostRequest(`/masterdata/${type}`, body, false)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
+  updateResourceGeneralMaster: (
+    type: string,
+    idx: string,
+    body: IApiPayload<GeneralMasterResource>
+  ): Promise<IApiResponse<GeneralMasterResource>> =>
     buildPutRequest(`/masterdata/${type}/${idx}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {

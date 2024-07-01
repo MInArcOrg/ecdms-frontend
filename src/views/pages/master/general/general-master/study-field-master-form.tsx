@@ -9,11 +9,11 @@ const StudyFieldMasterForm = () => {
   const { t: transl } = useTranslation();
   const { data: studyFields } = useQuery({
     queryKey: ['study-field'],
-    queryFn: () => generalMasterDataApiService.getAll('stakeholders', 'study-programs', {})
+    queryFn: () => generalMasterDataApiService.getAll('study-programs', {})
   });
   const { data: studyLevels } = useQuery({
     queryKey: ['study-level'],
-    queryFn: () => generalMasterDataApiService.getAll('stakeholders', 'study-levels', {})
+    queryFn: () => generalMasterDataApiService.getAll('study-levels', {})
   });
   return (
     <Fragment>
