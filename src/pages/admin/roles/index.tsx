@@ -44,14 +44,7 @@ const RoleList = ({}) => {
         }}
       />
 
-      {roleDrawerOpen && (
-        <RoleDrawer
-          refetch={fetchRoles}
-          open={roleDrawerOpen}
-          toggle={toggleRoleDrawer}
-          role={editableRole as Role}
-        />
-      )}
+      {roleDrawerOpen && <RoleDrawer refetch={fetchRoles} open={roleDrawerOpen} toggle={toggleRoleDrawer} role={editableRole as Role} />}
     </>
   );
 };

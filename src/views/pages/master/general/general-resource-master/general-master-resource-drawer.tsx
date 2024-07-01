@@ -2,18 +2,18 @@ import { FormikProps } from 'formik';
 import { useState } from 'react';
 import generalMasterDataApiService from 'src/services/general/general-master-data-service';
 import { uploadFile } from 'src/services/utils/file-service';
-import { GeneralMaster } from 'src/types/general/general-master';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import GeneralMasterForm from './general-master-form';
+import GeneralMasterResourceForm from './general-master-resource-form';
+import { GeneralMasterResource } from 'src/types/general/general-master';
 
-interface GeneralMasterDrawerType {
+interface GeneralMasterResourceDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  masterData: GeneralMaster;
+  masterData: GeneralMasterResource;
   type: string;
 }
 
@@ -22,7 +22,7 @@ const validationSchema = yup.object().shape({
   description: yup.string().required('Description is required')
 });
 
-const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
+const GeneralMasterResourceDrawer = (props: GeneralMasterResourceDrawerType) => {
   const { open, toggle, refetch, masterData, type } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -30,15 +30,15 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createGeneralMaster = async (body: IApiPayload<GeneralMaster>) => {
-    return await generalMasterDataApiService.create(type, body);
+  const createGeneralMasterResource = async (body: IApiPayload<GeneralMasterResource>) => {
+    return await generalMasterDataApiService.createResourceGeneralMaster(type, body);
   };
 
-  const editGeneralMaster = async (body: IApiPayload<GeneralMaster>) => {
-    return await generalMasterDataApiService.update(type, masterData?.id || '', body);
+  const editGeneralMasterResource = async (body: IApiPayload<GeneralMasterResource>) => {
+    return await generalMasterDataApiService.updateResourceGeneralMaster(type, masterData?.id || '', body);
   };
 
-  const getPayload = (values: GeneralMaster) => {
+  const getPayload = (values: GeneralMasterResource) => {
     const payload = {
       data: {
         ...values,
@@ -53,7 +53,7 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<GeneralMaster>, payload: IApiPayload<GeneralMaster>) => {
+  const onActionSuccess = async (response: IApiResponse<GeneralMasterResource>, payload: IApiPayload<GeneralMasterResource>) => {
     if (payload.files.length > 0) {
       uploadFile(payload.files[0], `${type.toLocaleUpperCase().replace(/-/g, '_')}`, response.payload.id, '', '');
     }
@@ -68,25 +68,25 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
       open={open}
     >
       {() => (
-        <FormPageWrapper<GeneralMaster>
+        <FormPageWrapper<GeneralMasterResource>
           edit={isEdit}
           title="master-data.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editGeneralMaster : createGeneralMaster}
+          createActionFunc={isEdit ? editGeneralMasterResource : createGeneralMasterResource}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<GeneralMaster>) => {
+          {(formik: FormikProps<GeneralMasterResource>) => {
             return (
               <>
-                <GeneralMasterForm
+                <GeneralMasterResourceForm
                   type={type}
                   file={uploadableFile}
                   onFileChange={onFileChange}
                   formik={formik}
-                  defaultLocaleData={{} as GeneralMaster}
+                  defaultLocaleData={{} as GeneralMasterResource}
                 />
               </>
             );
@@ -97,4 +97,4 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
   );
 };
 
-export default GeneralMasterDrawer;
+export default GeneralMasterResourceDrawer;

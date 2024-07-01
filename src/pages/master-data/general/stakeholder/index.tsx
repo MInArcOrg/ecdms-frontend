@@ -2,16 +2,16 @@ import { Fragment } from 'react';
 import GeneralMasterType from 'src/views/pages/master/general/general-master/general-master-list';
 import GeneralLayout from '../GeneralLayout';
 
-function AgeLevels() {
+function GeneralStakeholderMasterData() {
   return (
     <div>
       <GeneralLayout>
         <Fragment>
-          <GeneralMasterType module="stakeholders" />
+          <GeneralMasterType />
         </Fragment>
       </GeneralLayout>
     </div>
   );
 }
 
-export default AgeLevels;
+export default GeneralStakeholderMasterData;

@@ -31,7 +31,7 @@ const PermissionDrawer = (props: PermissionDrawerType) => {
     const payload = {
       data: {
         ...values,
-        id: permission?.id,
+        id: permission?.id
       },
       files: []
     };

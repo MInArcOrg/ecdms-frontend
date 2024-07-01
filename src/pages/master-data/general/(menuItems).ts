@@ -45,23 +45,23 @@ const menuItems = (t: (item: string) => void) => [
 
   {
     id: 2,
-    title: 'Project',
+    title: t('master-data.project'),
     children: [
       {
         id: 1,
-        title: 'Project Status',
-        path: `${baseUrl}/project/`
+        title: t('master-data.general-master.project-progress-statuses'),
+        path: `${baseUrl}/stakeholder/project-progress-statuses/`
       }
     ]
   },
   {
     id: 3,
-    title: 'Resource',
+    title: t('master-data.resource'),
     children: [
       {
         id: 1,
-        title: 'Construction Related Services',
-        path: `${baseUrl}/resource/`
+        title: t('master-data.general-master.construction-related-services'),
+        path: `${baseUrl}/resource/construction-related-services/`
       }
     ]
   }
