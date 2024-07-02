@@ -1,5 +1,4 @@
 import React from 'react';
-import { getProfilePictureURL } from 'src/services/utils/file';
 
 const StructureCard = ({ d }: { d: any }) => {
   const color = '#fff'; // Adjust the color as needed
@@ -60,7 +59,7 @@ const StructureCard = ({ d }: { d: any }) => {
         {d.data?.head && (
           <div style={avatarContainerStyle}>
             <img
-              src={getProfilePictureURL(d.data?.head?.id)}
+              src={""}
               alt="avatar"
               style={{
                 width: '100%', // occupy 100% of the container width
