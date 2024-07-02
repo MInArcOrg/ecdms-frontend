@@ -11,7 +11,7 @@ import ReplyItemComponent from './reply-item';
 const ActionReplyComponent = ({ replyData, actionData }: { replyData: ActionReply; actionData: ModelAction }) => {
   const { data, refetch } = useQuery({
     queryKey: ['action-replies', actionData?.id],
-    queryFn: () => modelActionApiService.getActionReplies(actionData?.id, {})
+    queryFn: () => modelActionApiService.getActionReplies(String(actionData?.id), {})
   });
 
   const validation = useFormik({
