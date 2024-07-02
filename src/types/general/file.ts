@@ -1,7 +1,13 @@
-export type FileModelUpload = {
-  file: File;
+export interface FileModel {
+  created_at: string;
+  id: string;
+  parentId?: string;
+  title: string;
+  url?: string;
   type: string;
-  fileable_type: string;
-  fileable_id: string;
-  file_description: string;
-};
+  description?: string;
+  extension?: string;
+  reference_id?: string;
+  size: number;
+  revisionNo: number;
+}

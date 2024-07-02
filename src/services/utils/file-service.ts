@@ -1,5 +1,8 @@
 import axios, { AxiosResponse } from 'axios';
 import authConfig from 'src/configs/auth';
+import { FileModel } from 'src/types/general/file';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { buildGetRequest } from 'src/utils/requests/get-request';
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_API_URL || 'http://localhost:3010/';
 
@@ -60,7 +63,13 @@ export const uploadFile = (
   });
 };
 
-// // Get files by model
+// Get files by model
+export const getFilesByModel = (idx: string, params: GetRequestParam): Promise<IApiResponse<FileModel[]>> =>
+  buildGetRequest(`/generics/files`, params)
+    .then((response: AxiosResponse<IApiResponse>) => response.data)
+    .catch((error: any) => {
+      throw error;
+    });
 // export const getFilesByModel = (model_id: string | number, type: string,params:GetRequestParam): Promise<IApiResponse> =>
 //     buildGetRequest(`/masterdata/${model}-types/${idx}`, params)
 //       .then((response: AxiosResponse<IApiResponse>) => response.data)

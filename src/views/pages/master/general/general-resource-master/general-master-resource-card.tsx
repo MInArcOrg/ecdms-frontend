@@ -2,15 +2,18 @@
 import { Box, CardActions, CardContent, Grid, Typography } from '@mui/material';
 import { Fragment } from 'react';
 import { GeneralMasterResource } from 'src/types/general/general-master';
+import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
 const GeneralMasterResourceCard = ({
+  type,
   generalMaster,
   onEdit,
   onDelete,
   refetch
 }: {
+  type: string;
   generalMaster: GeneralMasterResource;
   onEdit: (category: GeneralMasterResource) => void;
   onDelete: (id: string) => void;
@@ -36,6 +39,7 @@ const GeneralMasterResourceCard = ({
           <Grid item>
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
+                <FileDrawer id={generalMaster.id} type={`${type.toLocaleUpperCase().replace(/-/g, '_')}`} /> &nbsp;
                 <ModelActionComponent
                   model="Position"
                   model_id={generalMaster.id}

@@ -9,6 +9,7 @@ import { capitalizeFirstLetter } from 'src/utils/string';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import MasterTypeDrawer from './master-type-drawer';
+import FileDrawer from 'src/views/components/custom/files-drawer';
 
 interface MasterTypeDetailCardProps {
   masterType: MasterType;
@@ -61,6 +62,8 @@ const MasterTypeDetailCard: React.FC<MasterTypeDetailCardProps> = ({ masterType,
               <DetailRow label={`${t('Reference')} ${t('File')}`} value={masterType?.file_id} />
 
               <Box sx={{ display: 'flex', justifyContent: 'end' }}>
+              <FileDrawer id={masterType?.id} type={`${model.toLocaleUpperCase()}_TYPE`} /> &nbsp;
+
                 <ModelActionComponent
                   model={`${capitalizeFirstLetter(model)}type`}
                   model_id={masterType?.id}
