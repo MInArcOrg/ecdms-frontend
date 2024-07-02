@@ -97,7 +97,7 @@ const Login = () => {
 
   return (
     <AuthContainer illustrationName={`auth-v2-login-illustration`}>
-      <Logo width="80px" height="80px" />
+      <Logo width="60px" height="60px" />
       <Box sx={{ my: 6 }}>
         <Typography variant="h3" sx={{ mb: 1.5 }}>
           {t('login.welcome-message', { templateName: themeConfig.templateName })}

@@ -71,6 +71,11 @@ const navigation = (): VerticalNavItemsType => {
       title: 'navigation.department',
       icon: 'tabler:building',
       path: '/departments'
+    },
+    {
+      title: 'navigation.resources',
+      icon: 'tabler:calendar',
+      path: '/resources'
     }
   ];
 };

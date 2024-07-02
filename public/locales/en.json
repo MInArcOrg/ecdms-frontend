@@ -9,6 +9,7 @@
     "roles-and-permissions":"Roles & Permissions",
     "roles":"Roles",
     "permissions":"Permissions",
+    "resources":"Resources",
     "master-data":{
       "master-data":"Master Data",
       "stakeholder":"Stakeholder",
@@ -150,6 +151,12 @@
     "good-morning":"Good Morning",
     "good-evening":"God Evening",
     "good-afternoon":"Good Afternoon"
+  },
+  "resource":{
+    "columns":{
+      "title":"Title",
+      "description":"Description"
+    }
   },
   "login": {
     "welcome-message": "Welcome to {{templateName}}! 👋🏻",

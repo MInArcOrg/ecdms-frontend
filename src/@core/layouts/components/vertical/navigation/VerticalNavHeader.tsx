@@ -94,7 +94,7 @@ const VerticalNavHeader = (props: Props) => {
         userNavMenuBranding(props)
       ) : (
         <LinkStyled href="/">
-          <Logo width="50px" height="50px" />
+          <Logo width="35px" height="35px" />
 
           <HeaderTitle
             variant="h4"
