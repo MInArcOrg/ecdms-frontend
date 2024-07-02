@@ -4,8 +4,8 @@ import EthioCalendar from './ethio-calendar';
 import EthiopianDate from './ethiopian-date';
 
 interface DynamicDatePickerProps {
-  value: Date|EthiopianDate;
-  onChange: (date: Date|EthiopianDate) => void;
+  value: Date | EthiopianDate;
+  onChange: (date: Date | EthiopianDate) => void;
   [key: string]: any; // To allow any additional props
 }
 

@@ -62,8 +62,7 @@ const MasterTypeDetailCard: React.FC<MasterTypeDetailCardProps> = ({ masterType,
               <DetailRow label={`${t('Reference')} ${t('File')}`} value={masterType?.file_id} />
 
               <Box sx={{ display: 'flex', justifyContent: 'end' }}>
-              <FileDrawer id={masterType?.id} type={`${model.toLocaleUpperCase()}_TYPE`} /> &nbsp;
-
+                <FileDrawer id={masterType?.id} type={`${model.toLocaleUpperCase()}_TYPE`} /> &nbsp;
                 <ModelActionComponent
                   model={`${capitalizeFirstLetter(model)}type`}
                   model_id={masterType?.id}

@@ -59,7 +59,7 @@ const StructureCard = ({ d }: { d: any }) => {
         {d.data?.head && (
           <div style={avatarContainerStyle}>
             <img
-              src={""}
+              src={''}
               alt="avatar"
               style={{
                 width: '100%', // occupy 100% of the container width
