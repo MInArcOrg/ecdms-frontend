@@ -114,7 +114,7 @@ const Login = () => {
                 autoFocus
                 label={t('login.input-labels.email')}
                 name="email"
-                placeholder="admin@vuexy.com"
+                placeholder=""
                 error={Boolean(touched.email && errors.email)}
                 helperText={touched.email && errors.email}
                 onChange={handleChange}
