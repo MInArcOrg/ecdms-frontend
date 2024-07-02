@@ -9,14 +9,12 @@ import MasterSubCategoryList from '../master-subcategory-type/master-sub-categor
 import FileDrawer from 'src/views/components/custom/files-drawer';
 
 const MasterCategoryCard = ({
-  type,
   masterCategory,
   model,
   onEdit,
   onDelete,
   refetch
 }: {
-  type: string;
   masterCategory: MasterCategory;
   model: string;
   onEdit: (category: MasterCategory) => void;
@@ -54,7 +52,7 @@ const MasterCategoryCard = ({
           <Grid item>
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
-                <FileDrawer id={masterCategory.id} type={`${type.toLocaleUpperCase().replace(/-/g, '_')}`} /> &nbsp;
+                <FileDrawer id={masterCategory.id} type={`${model.toLocaleUpperCase().replace(/-/g, '_')}`} /> &nbsp;
                 <ModelActionComponent
                   model="Position"
                   model_id={masterCategory.id}

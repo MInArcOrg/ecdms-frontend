@@ -77,7 +77,8 @@ const MasterCategoryList: React.FC<MasterCategoryListProps> = ({ model, selected
               }
             }}
             ItemViewComponent={({ data }) => (
-              <MasterCategoryCard model={model} masterCategory={data} onDelete={handleDelete} onEdit={handleEdit} refetch={refetch} t={t} />
+              <MasterCategoryCard
+               model={model} masterCategory={data} onDelete={handleDelete} onEdit={handleEdit} refetch={refetch} t={t} />
             )}
             fetchDataFunction={refetch}
             items={categorys || []}
