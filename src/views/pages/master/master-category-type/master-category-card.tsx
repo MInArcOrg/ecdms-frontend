@@ -6,14 +6,17 @@ import { MasterCategory } from 'src/types/master/master-types';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import MasterSubCategoryList from '../master-subcategory-type/master-sub-category-list';
+import FileDrawer from 'src/views/components/custom/files-drawer';
 
 const MasterCategoryCard = ({
+  type,
   masterCategory,
   model,
   onEdit,
   onDelete,
   refetch
 }: {
+  type: string;
   masterCategory: MasterCategory;
   model: string;
   onEdit: (category: MasterCategory) => void;
@@ -51,6 +54,7 @@ const MasterCategoryCard = ({
           <Grid item>
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
+                <FileDrawer id={masterCategory.id} type={`${type.toLocaleUpperCase().replace(/-/g, '_')}`} /> &nbsp;
                 <ModelActionComponent
                   model="Position"
                   model_id={masterCategory.id}

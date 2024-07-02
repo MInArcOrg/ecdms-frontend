@@ -67,7 +67,14 @@ const GeneralMasterResourceList: React.FC<GeneralMasterResourceListProps> = () =
             type={ITEMS_LISTING_TYPE.list.value}
             title={t(`master-data.general-master.${type}`)}
             ItemViewComponent={({ data }) => (
-              <GeneralMasterResourceCard generalMaster={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
+              <GeneralMasterResourceCard
+                type={String(type)}
+                generalMaster={data}
+                onDelete={handleDelete}
+                onEdit={handleEdit}
+                t={t}
+                refetch={refetch}
+              />
             )}
             isLoading={isLoading}
             createActionConfig={{
