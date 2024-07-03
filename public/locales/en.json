@@ -155,6 +155,9 @@
     "good-afternoon":"Good Afternoon"
   },
   "resource":{
+    "create-resource":"Create Resource",
+    "edit-resource":"Edit Resource",
+    "title":"Resource",
     "columns":{
       "title":"Title",
       "description":"Description",

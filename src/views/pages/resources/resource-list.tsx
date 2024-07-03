@@ -52,11 +52,7 @@ function ResourceList() {
 
   return (
     <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'end'
-      }}
+      
     >
       {showDrawer && (
         <ResourceDrawer
@@ -67,7 +63,6 @@ function ResourceList() {
           typeId={String(typeId)}
         />
       )}
-      <Container>
         <Card>
           <ItemsListing
             pagination={pagination}
@@ -93,7 +88,6 @@ function ResourceList() {
             onPaginationChange={handlePageChange}
           />
         </Card>
-      </Container>
     </Box>
   );
 }

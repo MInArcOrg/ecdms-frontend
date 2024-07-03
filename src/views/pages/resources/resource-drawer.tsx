@@ -57,11 +57,11 @@ const ResourceDrawer = (props: ResourceDrawerType) => {
     handleClose();
   };
   return (
-    <CustomSideDrawer title={`department.resource.${isEdit ? 'edit-resource' : 'create-resource'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`resource.${isEdit ? 'edit-resource' : 'create-resource'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title="department.resource.title"
+          title="resource.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={resource as Resource}
