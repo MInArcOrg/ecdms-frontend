@@ -3,12 +3,15 @@
     "dashboard":"Dashboard",
     "admin-module":"Admin Module",
     "depamrtent-module":"Department Module",
+    "main-modules":"Main Modules",
     "department":"Department",
     "user":"User",
     "user-list":"User List",
     "roles-and-permissions":"Roles & Permissions",
     "roles":"Roles",
     "permissions":"Permissions",
+    "resources":"Resources",
+    "stakeholder":"Stakeholder",
     "master-data":{
       "master-data":"Master Data",
       "stakeholder":"Stakeholder",
@@ -150,6 +153,21 @@
     "good-morning":"Good Morning",
     "good-evening":"God Evening",
     "good-afternoon":"Good Afternoon"
+  },
+  "resource":{
+    "columns":{
+      "title":"Title",
+      "description":"Description",
+      "sub-category":"Sub Category",
+      "category":"Category"
+    },
+    "form":{
+      "title":"Title",
+      "description":"Description",
+      "category":"Category",
+      "sub_category":"Sub Category",
+      "measurement_unit":"Measurement Unit"
+    }
   },
   "login": {
     "welcome-message": "Welcome to {{templateName}}! 👋🏻",

@@ -1,4 +1,4 @@
-import { Container } from '@mui/system';
+import { Container, useMediaQuery } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
 import { isArray } from 'lodash';
 import { Fragment, useState } from 'react';
@@ -60,6 +60,7 @@ const ItemsListing = <T extends {}>({
   createActionConfig: CreateActionConfig;
 }) => {
   const { i18n } = useTranslation();
+  const isSmallScreen = useMediaQuery('(max-width:600px)');
 
   const [fetchRequestParams, setFetchRequestParams] = useState<GetRequestParam>(defaultGetRequestParam);
   const onPagination =
@@ -78,6 +79,9 @@ const ItemsListing = <T extends {}>({
     setFetchRequestParams({ ...fetchRequestParams, filter: values });
     fetchDataFunction({ ...fetchRequestParams, filter: values });
   };
+
+  const adjustedType = getAdjustedListingType(type, isSmallScreen);
+
   const listingComponents = {
     [ITEMS_LISTING_TYPE.masonry.value]: ItemViewComponent && <MasonryListing ItemViewComponent={ItemViewComponent} items={items} />,
     [ITEMS_LISTING_TYPE.list.value]: ItemViewComponent && <ListListing ItemViewComponent={ItemViewComponent} items={items} />,
@@ -115,9 +119,9 @@ const ItemsListing = <T extends {}>({
       ) : (
         isArray(items) && (
           <Fragment>
-            {listingComponents[type] || listingComponents.default}
+            {listingComponents[adjustedType] || listingComponents.default}
             <></>
-            {type !== ITEMS_LISTING_TYPE.table.value && pagination && (
+            {adjustedType !== ITEMS_LISTING_TYPE.table.value && pagination && (
               <Container>
                 <PaginationComponent onPaginationChange={onPagination} pagination={pagination}></PaginationComponent>
               </Container>
@@ -128,4 +132,12 @@ const ItemsListing = <T extends {}>({
     </Page>
   );
 };
+
+const getAdjustedListingType = (type: string, isSmallScreen: boolean) => {
+  if (type === ITEMS_LISTING_TYPE.table.value && isSmallScreen) {
+    return ITEMS_LISTING_TYPE.list.value;
+  }
+  return type;
+};
+
 export default ItemsListing;

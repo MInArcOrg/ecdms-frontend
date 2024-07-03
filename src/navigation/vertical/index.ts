@@ -17,23 +17,28 @@ const navigation = (): VerticalNavItemsType => {
       children: [
         {
           title: 'navigation.master-data.stakeholder',
-          path: '/master-data/stakeholder'
+          path: '/master-data/stakeholder',
+          icon: 'tabler:users'
         },
         {
           title: 'navigation.master-data.project',
-          path: '/master-data/project'
+          path: '/master-data/project',
+          icon: 'tabler:box-multiple'
         },
         {
           title: 'navigation.master-data.resource',
-          path: '/master-data/resource'
+          path: '/master-data/resource',
+          icon: 'tabler:calendar'
         },
         {
           title: 'navigation.master-data.document',
-          path: '/master-data/document'
+          path: '/master-data/document',
+          icon: 'tabler:file'
         },
         {
           title: 'navigation.master-data.general',
-          path: '/master-data/general'
+          path: '/master-data/general',
+          icon: 'tabler:tools'
         }
       ]
     },
@@ -71,6 +76,9 @@ const navigation = (): VerticalNavItemsType => {
       title: 'navigation.department',
       icon: 'tabler:building',
       path: '/departments'
+    },
+    {
+      sectionTitle: 'navigation.main-module'
     }
   ];
 };
