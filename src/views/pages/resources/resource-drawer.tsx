@@ -13,16 +13,20 @@ interface ResourceDrawerType {
   toggle: () => void;
   refetch: () => void;
   resource: Resource;
+  typeId: string;
 }
 
 const validationSchema = yup.object().shape({
-  name: yup.string().required(),
-  description: yup.string().required()
+  title: yup.string().required(),
+  description: yup.string().required(),
+  resourcecategory_id: yup.string().required(),
+  resourcesubcategory_id: yup.string(),
+  measurement_unit: yup.string()
 });
 
 const ResourceDrawer = (props: ResourceDrawerType) => {
   // ** Props
-  const { open, toggle, refetch, resource } = props;
+  const { open, toggle, refetch, resource, typeId } = props;
 
   const isEdit = resource?.id ? true : false;
   const createResource = async (body: IApiPayload<Resource>) => {
@@ -37,6 +41,7 @@ const ResourceDrawer = (props: ResourceDrawerType) => {
       data: {
         ...values,
         id: resource?.id,
+        resourcetype_id: typeId
       },
       files: []
     };
@@ -65,7 +70,7 @@ const ResourceDrawer = (props: ResourceDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<Resource>) => {
-            return <ResourceForm formik={formik} />;
+            return <ResourceForm typeId={typeId} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

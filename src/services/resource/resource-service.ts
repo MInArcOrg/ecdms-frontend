@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
-import { Resource } from 'i18next';
 import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
+import { Resource } from 'src/types/resource';
 import axiosServices from 'src/utils/axios';
 import { buildGetRequest } from 'src/utils/requests/get-request';
 import { buildPostRequest } from 'src/utils/requests/post-request';
@@ -46,8 +46,7 @@ const resourceApiService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      }),
-
+      })
 };
 
 export default resourceApiService;

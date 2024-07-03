@@ -1,5 +1,6 @@
 import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
+import Link from 'next/link';
 import { Fragment } from 'react';
 import { Resource } from 'src/types/resource';
 import { formatCreatedAt } from 'src/utils/formatter/date';
@@ -10,7 +11,13 @@ interface CellType {
   row: Resource;
 }
 
-export const resourceColumns = (onEdit: (resource: Resource) => void, onDelete: (id: string) => void, t: any, refetch: () => void) =>
+export const resourceColumns = (
+  onEdit: (resource: Resource) => void,
+  onDelete: (id: string) => void,
+  t: any,
+  refetch: () => void,
+  typeId: string
+) =>
   [
     {
       flex: 0.15,
@@ -18,7 +25,29 @@ export const resourceColumns = (onEdit: (resource: Resource) => void, onDelete: 
       headerName: t('resource.columns.title'),
       field: 'title',
       renderCell: ({ row }: CellType) => {
-        return <Typography sx={{ color: 'text.secondary' }}>{row?.title}</Typography>;
+        return (
+          <Typography
+            component={Link}
+            href={`/resources/${typeId}/${row.id}`}
+            sx={{
+              fontWeight: 500,
+              textDecoration: 'none',
+              color: 'text.secondary',
+              '&:hover': { color: 'primary.main' }
+            }}
+          >
+            {row?.title}
+          </Typography>
+        );
+      }
+    },
+    {
+      flex: 0.15,
+      minWidth: 120,
+      headerName: t('resource.columns.description'),
+      field: 'description',
+      renderCell: ({ row }: CellType) => {
+        return <Typography sx={{ color: 'text.secondary' }}>{row?.description}</Typography>;
       }
     },
     {
@@ -36,7 +65,7 @@ export const resourceColumns = (onEdit: (resource: Resource) => void, onDelete: 
       minWidth: 100,
       sortable: false,
       field: 'actions',
-      headerName: t('common.table-columns.action'),
+      headerName: t('common.table-columns.actions'),
       renderCell: ({ row }: CellType) => (
         <Fragment>
           <ModelAction

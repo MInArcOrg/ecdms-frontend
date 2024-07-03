@@ -7,7 +7,7 @@ import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const masterCategoryApiService = {
-  getAll: (model: string, params: GetRequestParam): Promise<IApiResponse> =>
+  getAll: (model: string, params: GetRequestParam): Promise<IApiResponse<MasterCategory[]>> =>
     buildGetRequest(`/masterdata/${model}-categories`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {

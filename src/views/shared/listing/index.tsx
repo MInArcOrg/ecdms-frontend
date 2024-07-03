@@ -60,6 +60,7 @@ const ItemsListing = <T extends {}>({
   createActionConfig: CreateActionConfig;
 }) => {
   const { i18n } = useTranslation();
+  const isSmallScreen = useMediaQuery('(max-width:600px)');
 
   const [fetchRequestParams, setFetchRequestParams] = useState<GetRequestParam>(defaultGetRequestParam);
   const onPagination =
@@ -79,7 +80,7 @@ const ItemsListing = <T extends {}>({
     fetchDataFunction({ ...fetchRequestParams, filter: values });
   };
 
-  const adjustedType = getAdjustedListingType(type);
+  const adjustedType = getAdjustedListingType(type, isSmallScreen);
 
   const listingComponents = {
     [ITEMS_LISTING_TYPE.masonry.value]: ItemViewComponent && <MasonryListing ItemViewComponent={ItemViewComponent} items={items} />,
@@ -132,14 +133,10 @@ const ItemsListing = <T extends {}>({
   );
 };
 
-
-const getAdjustedListingType = (type: string) => {
-  const isSmallScreen = useMediaQuery('(max-width:600px)');
-
+const getAdjustedListingType = (type: string, isSmallScreen: boolean) => {
   if (type === ITEMS_LISTING_TYPE.table.value && isSmallScreen) {
     return ITEMS_LISTING_TYPE.list.value;
   }
-
   return type;
 };
 
