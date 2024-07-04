@@ -11,3 +11,11 @@ export interface FileModel {
   size: number;
   revisionNo: number;
 }
+export interface ImageModel {
+  created_at: string;
+  id: string;
+  model_id: string;
+  type: string;
+  updated_at: string;
+  url: string;
+}

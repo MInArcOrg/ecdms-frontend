@@ -1,6 +1,7 @@
+import { useQuery } from '@tanstack/react-query';
 import axios, { AxiosResponse } from 'axios';
 import authConfig from 'src/configs/auth';
-import { FileModel } from 'src/types/general/file';
+import { FileModel, ImageModel } from 'src/types/general/file';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { buildGetRequest } from 'src/utils/requests/get-request';
 
@@ -57,6 +58,22 @@ export const uploadFile = (
   formData.append('description', file_description ?? '');
 
   return customAxios.post('/generics/files', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  });
+};
+export const uploadImage = (
+  file: File,
+  type: string,
+  ownerObjectID: string | number
+): Promise<AxiosResponse<FileUploadResponse>> => {
+  const formData = new FormData();
+  formData.append('type', type);
+  formData.append('model_id', ownerObjectID.toString());
+  formData.append('upload', file);
+
+  return customAxios.post('/generics/photos', formData, {
     headers: {
       'Content-Type': 'multipart/form-data'
     }
@@ -128,11 +145,15 @@ export const uploadProfilePicture = (user_id: string | number, type: string, fil
 export const getPhoto = (id: string | number, type: string): string => `${process.env.NEXT_PUBLIC_API_URL}/api/photo/${type}/${id}`;
 
 // Get multiple photos
-// export const getMultiplePhotos = (id: string | number) =>
-//   useAxios({
-//     method: 'get',
-//     url: `/multiple/photo/${id}`
-//   });
+export const getMultiplePhotos = (params:GetRequestParam) => useQuery({
+    queryKey:['multiple-photo',params],
+    queryFn:()=>
+      buildGetRequest(`/generics/photos`, params)
+        .then((response: AxiosResponse<IApiResponse<ImageModel[]>>) => response.data)
+        .catch((error: any) => {
+          throw error;
+        }),
+  });
 
 // Delete photo
 export const deletePhoto = (id: string | number): Promise<AxiosResponse<FileUploadResponse>> => customAxios.delete(`/photo/${id}`);
