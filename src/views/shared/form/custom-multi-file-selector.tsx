@@ -1,12 +1,13 @@
 import React from 'react';
-import { Box, Button, FormControl, FormLabel, Typography } from '@mui/material';
+import { Box, Button, FormControl, FormLabel, Typography, IconButton } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { Icon } from '@iconify/react';
+import { FileWithId } from 'src/types/general/file';
 
 interface CustomMultiFileUploadProps {
   label: string;
-  files: File[];
-  onFilesChange: (files: File[]) => void;
+  files: FileWithId[];
+  onFilesChange: (files: FileWithId[]) => void;
 }
 
 const CustomMultiFileUpload: React.FC<CustomMultiFileUploadProps> = ({ label, files, onFilesChange }) => {
@@ -14,12 +15,16 @@ const CustomMultiFileUpload: React.FC<CustomMultiFileUploadProps> = ({ label, fi
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      onFilesChange(Array.from(event.target.files));
+      const newFiles: FileWithId[] = Array.from(event.target.files).map((file) => ({
+        id: `temp_${Date.now()}`,
+        file
+      }));
+      onFilesChange([...files, ...newFiles]);
     }
   };
 
-  const handleRemoveFile = (index: number) => {
-    const newFiles = files.filter((_, i) => i !== index);
+  const handleRemoveFile = (id: string) => {
+    const newFiles = files.filter((file) => file.id !== id);
     onFilesChange(newFiles);
   };
 
@@ -29,29 +34,19 @@ const CustomMultiFileUpload: React.FC<CustomMultiFileUploadProps> = ({ label, fi
       {files.length > 0 && (
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, my: 2 }}>
           {files.map((file, index) => (
-            <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Box key={file.id} sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
               <Icon icon="mdi:file-document-outline" color="#ffcc00" width={25} height={25} />
-              <Typography variant="body1">{file.name}</Typography>
-              <Icon
-                icon="tabler:trash"
-                color="#f33"
-                width={20}
-                height={20}
-                style={{ cursor: 'pointer' }}
-                onClick={() => handleRemoveFile(index)}
-              />
+              <Typography variant="body1">{file.file.name}</Typography>
+              <IconButton onClick={() => handleRemoveFile(file.id)}>
+                <Icon icon="tabler:trash" width={20} height={20} />
+              </IconButton>
             </Box>
           ))}
         </Box>
       )}
       <Button variant="outlined" component="label" size="large" color="secondary">
         <Icon icon="tabler:paperclip" width={20} height={20} /> {t('Upload File')}
-        <input
-          type="file"
-          multiple
-          hidden
-          onChange={handleFileChange}
-        />
+        <input type="file" multiple hidden onChange={handleFileChange} />
       </Button>
     </FormControl>
   );

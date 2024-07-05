@@ -4,19 +4,19 @@ import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import DescCollapse from '../desc-collapse';
-import { ResourceSpecification } from 'src/types/resource';
+import { ResourceBrand } from 'src/types/resource';
 
-interface ResourceSpecificationCardProps {
-  resourceSpecification: ResourceSpecification;
-  onEdit: (category: ResourceSpecification) => void;
+interface ResourceBrandCardProps {
+  resourceBrand: ResourceBrand;
+  onEdit: (category: ResourceBrand) => void;
   onDelete: (id: string) => void;
   refetch: () => void;
   t: any;
   children: ReactElement;
 }
 
-const ResourceSpecificationCard: React.FC<ResourceSpecificationCardProps> = ({
-  resourceSpecification,
+const ResourceBrandCard: React.FC<ResourceBrandCardProps> = ({
+  resourceBrand,
   onEdit,
   onDelete,
   refetch,
@@ -28,10 +28,10 @@ const ResourceSpecificationCard: React.FC<ResourceSpecificationCardProps> = ({
       <CardContent>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <CardHeader title={resourceSpecification.title} />
+            <CardHeader title={resourceBrand.title} />
             <Box mt={2}>
               <Typography variant="body1" component="div">
-                <DescCollapse desc={resourceSpecification.description} />
+                <DescCollapse desc={resourceBrand.description} />
               </Typography>
             </Box>
           </Grid>
@@ -41,7 +41,7 @@ const ResourceSpecificationCard: React.FC<ResourceSpecificationCardProps> = ({
           <Grid item xs={12}>
             <Box display="flex" alignItems="center">
               <Typography variant="subtitle1">
-                <strong>{t('resource.resource-specification.form.datasource')}:</strong> {resourceSpecification.datasource}
+                <strong>{t('resource.resource-brand.form.datasource')}:</strong> {resourceBrand.datasource}
               </Typography>
             </Box>
           </Grid>
@@ -50,17 +50,17 @@ const ResourceSpecificationCard: React.FC<ResourceSpecificationCardProps> = ({
       <Box sx={{ flexGrow: 1 }} />
       <CardActions sx={{ justifyContent: 'flex-end' }}>
         <Box>
-          <FileDrawer id={resourceSpecification.id} type="" />
+          <FileDrawer id={resourceBrand.id} type="" />
           <Box display="flex" alignItems="end">
             <ModelActionComponent
-              model="ResourceSpecification"
-              model_id={resourceSpecification.id}
+              model="ResourceBrand"
+              model_id={resourceBrand.id}
               refetchModel={refetch}
               resubmit={() => {}}
               title=""
               postAction={() => {}}
             />
-            <RowOptions onEdit={onEdit} onDelete={() => onDelete(resourceSpecification.id)} item={resourceSpecification} options={[]} />
+            <RowOptions onEdit={onEdit} onDelete={() => onDelete(resourceBrand.id)} item={resourceBrand} options={[]} />
           </Box>
         </Box>
       </CardActions>
@@ -68,4 +68,4 @@ const ResourceSpecificationCard: React.FC<ResourceSpecificationCardProps> = ({
   );
 };
 
-export default ResourceSpecificationCard;
+export default ResourceBrandCard;

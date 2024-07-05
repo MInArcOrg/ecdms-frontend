@@ -1,19 +1,19 @@
 import { FormikProps } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { FileWithId } from 'src/types/general/file';
-import { ResourceSpecification } from 'src/types/resource';
+import { ResourceBrand } from 'src/types/resource';
 import CustomMultiFileUpload from 'src/views/shared/form/custom-multi-file-selector';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
-interface ResourceSpecificationFormProps {
-  formik: FormikProps<ResourceSpecification>;
+interface ResourceBrandFormProps {
+  formik: FormikProps<ResourceBrand>;
   isLocaleEdit?: boolean;
-  defaultLocaleData?: ResourceSpecification;
+  defaultLocaleData?: ResourceBrand;
   files: FileWithId[];
   onFilesChange: (files: FileWithId[]) => void;
 }
 
-const ResourceSpecificationForm: React.FC<ResourceSpecificationFormProps> = ({
+const ResourceBrandForm: React.FC<ResourceBrandFormProps> = ({
   formik,
   isLocaleEdit = false,
   defaultLocaleData,
@@ -25,16 +25,16 @@ const ResourceSpecificationForm: React.FC<ResourceSpecificationFormProps> = ({
     <>
       <CustomTextBox
         fullWidth
-        label={transl('resource.resource-specification.form.title')}
-        placeholder={transl('resource.resource-specification.form.title')}
+        label={transl('resource.resource-brand.form.title')}
+        placeholder={transl('resource.resource-brand.form.title')}
         name="title"
         size="sm"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
         fullWidth
-        label={transl('resource.resource-specification.form.datasource')}
-        placeholder={transl('resource.resource-specification.form.datasource')}
+        label={transl('resource.resource-brand.form.datasource')}
+        placeholder={transl('resource.resource-brand.form.datasource')}
         name="datasource"
         size="sm"
         sx={{ mb: 2 }}
@@ -42,8 +42,8 @@ const ResourceSpecificationForm: React.FC<ResourceSpecificationFormProps> = ({
 
       <CustomTextBox
         fullWidth
-        label={transl('resource.resource-specification.form.description')}
-        placeholder={transl('resource.resource-specification.form.description')}
+        label={transl('resource.resource-brand.form.description')}
+        placeholder={transl('resource.resource-brand.form.description')}
         name="description"
         multiline={true}
         rows="4"
@@ -54,4 +54,4 @@ const ResourceSpecificationForm: React.FC<ResourceSpecificationFormProps> = ({
     </>
   );
 };
-export default ResourceSpecificationForm;
+export default ResourceBrandForm;

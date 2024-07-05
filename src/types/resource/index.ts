@@ -26,3 +26,15 @@ export interface ResourceSpecification {
   created_at: string;
   updated_at: string;
 }
+export interface ResourceBrand {
+  id: string;
+  parent_id: string | null;
+  resource_id: string;
+  title: string;
+  description: string;
+  image: string;
+  datasource: string;
+  revision_no: number | null;
+  created_at: string;
+  updated_at: string;
+}

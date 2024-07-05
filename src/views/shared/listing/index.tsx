@@ -1,4 +1,4 @@
-import { Container, useMediaQuery } from '@mui/material';
+import { Container, GridProps, useMediaQuery } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
 import { isArray } from 'lodash';
 import { Fragment, useState } from 'react';
@@ -34,7 +34,8 @@ const ItemsListing = <T extends {}>({
   hasExport = false,
   FilterComponentItems,
   searchKeys = [],
-  createActionConfig = defaultCreateActionConfig
+  createActionConfig = defaultCreateActionConfig,
+  breakpoints
 }: {
   items: T[];
   pagination?: Pagination | null;
@@ -58,6 +59,13 @@ const ItemsListing = <T extends {}>({
   searchKeys?: string[];
   hasListHeader?: boolean;
   createActionConfig: CreateActionConfig;
+  breakpoints?: {
+    xs?: GridProps['xs'];
+    sm?: GridProps['sm'];
+    md?: GridProps['md'];
+    lg?: GridProps['lg'];
+    xl?: GridProps['xl'];
+  };
 }) => {
   const { i18n } = useTranslation();
   const isSmallScreen = useMediaQuery('(max-width:600px)');
@@ -85,6 +93,9 @@ const ItemsListing = <T extends {}>({
   const listingComponents = {
     [ITEMS_LISTING_TYPE.masonry.value]: ItemViewComponent && <MasonryListing ItemViewComponent={ItemViewComponent} items={items} />,
     [ITEMS_LISTING_TYPE.list.value]: ItemViewComponent && <ListListing ItemViewComponent={ItemViewComponent} items={items} />,
+    [ITEMS_LISTING_TYPE.grid.value]: ItemViewComponent && (
+      <GridListing ItemViewComponent={ItemViewComponent} items={items} breakpoints={breakpoints} />
+    ),
     [ITEMS_LISTING_TYPE.table.value]: tableProps?.headers && (
       <TableListing
         isLoading={isLoading}

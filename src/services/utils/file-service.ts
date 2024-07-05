@@ -63,11 +63,7 @@ export const uploadFile = (
     }
   });
 };
-export const uploadImage = (
-  file: File,
-  type: string,
-  ownerObjectID: string | number
-): Promise<AxiosResponse<FileUploadResponse>> => {
+export const uploadImage = (file: File, type: string, ownerObjectID: string | number): Promise<AxiosResponse<FileUploadResponse>> => {
   const formData = new FormData();
   formData.append('type', type);
   formData.append('model_id', ownerObjectID.toString());
@@ -143,20 +139,22 @@ export const uploadProfilePicture = (user_id: string | number, type: string, fil
 
 // Get photo
 export const getPhoto = (id: string | number, type: string): string => `${process.env.NEXT_PUBLIC_API_URL}/api/photo/${type}/${id}`;
-
+export const getStaticPhoto = (path: string) => `${process.env.NEXT_PUBLIC_API_URL}${path}`;
 // Get multiple photos
-export const getMultiplePhotos = (params:GetRequestParam) => useQuery({
-    queryKey:['multiple-photo',params],
-    queryFn:()=>
-      buildGetRequest(`/generics/photos`, params)
-        .then((response: AxiosResponse<IApiResponse<ImageModel[]>>) => response.data)
-        .catch((error: any) => {
-          throw error;
-        }),
+export const useGetMultiplePhotos = (params: GetRequestParam) => {
+  return useQuery({
+    queryKey: ['multiple-photo', params],
+    queryFn: async () => {
+      const response: AxiosResponse<IApiResponse<ImageModel[]>> = await buildGetRequest(`/generics/photos`, params);
+      return response.data; // Assuming response.data is of type ImageModel[]
+    }
   });
+};
+
 
 // Delete photo
-export const deletePhoto = (id: string | number): Promise<AxiosResponse<FileUploadResponse>> => customAxios.delete(`/photo/${id}`);
+export const deletePhoto = (id: string | number): Promise<AxiosResponse<FileUploadResponse>> =>
+  customAxios.delete(`/generics/photos/${id}`);
 
 // Handle user profile picture error
 export const handleUserProfilePictureError = (event: React.SyntheticEvent<HTMLImageElement, Event>, gender: string) => {

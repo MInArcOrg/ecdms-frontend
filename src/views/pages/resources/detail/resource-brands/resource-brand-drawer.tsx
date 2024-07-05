@@ -1,21 +1,21 @@
 import { FormikProps } from 'formik';
 import React, { useEffect, useState } from 'react';
-import resourceSpecificationApiService from 'src/services/resource/resource-specification-service';
+import resourceBrandApiService from 'src/services/resource/resource-brand-service';
 import { deletePhoto, useGetMultiplePhotos, uploadImage } from 'src/services/utils/file-service';
 import { FileWithId } from 'src/types/general/file';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
-import { ResourceSpecification } from 'src/types/resource';
+import { ResourceBrand } from 'src/types/resource';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import ResourceSpecificationForm from './resource-specification-form';
+import ResourceBrandForm from './resource-brand-form';
 
-interface ResourceSpecificationDrawerType {
+interface ResourceBrandDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
   resourceId: string;
-  resourceSpecification: ResourceSpecification;
+  resourceBrand: ResourceBrand;
 }
 
 const validationSchema = yup.object().shape({
@@ -24,21 +24,21 @@ const validationSchema = yup.object().shape({
   description: yup.string().required()
 });
 
-const ResourceSpecificationDrawer: React.FC<ResourceSpecificationDrawerType> = (props) => {
-  const { open, toggle, refetch, resourceSpecification, resourceId } = props;
+const ResourceBrandDrawer: React.FC<ResourceBrandDrawerType> = (props) => {
+  const { open, toggle, refetch, resourceBrand, resourceId } = props;
 
-  const { data: fetchedImages } = useGetMultiplePhotos({ filter: { model_id: resourceSpecification?.id || '' } });
+  const { data: fetchedImages } = useGetMultiplePhotos({ filter: { model_id: resourceBrand?.id || '' } });
   const [uploadableFiles, setUploadableFiles] = useState<FileWithId[]>([]);
   const [fetchedImageIds, setFetchedImageIds] = useState<string[]>([]);
 
-  const isEdit = resourceSpecification?.id ? true : false;
+  const isEdit = resourceBrand?.id ? true : false;
 
-  const createResourceSpecification = async (body: IApiPayload<ResourceSpecification>) => {
-    return await resourceSpecificationApiService.create(body);
+  const createResourceBrand = async (body: IApiPayload<ResourceBrand>) => {
+    return await resourceBrandApiService.create(body);
   };
 
-  const editResourceSpecification = async (body: IApiPayload<ResourceSpecification>) => {
-    return await resourceSpecificationApiService.update(resourceSpecification?.id || '', body);
+  const editResourceBrand = async (body: IApiPayload<ResourceBrand>) => {
+    return await resourceBrandApiService.update(resourceBrand?.id || '', body);
   };
 
   useEffect(() => {
@@ -66,10 +66,10 @@ const ResourceSpecificationDrawer: React.FC<ResourceSpecificationDrawerType> = (
     }
   };
 
-  const getPayload = (values: ResourceSpecification) => ({
+  const getPayload = (values: ResourceBrand) => ({
     data: {
       ...values,
-      id: resourceSpecification?.id,
+      id: resourceBrand?.id,
       resource_id: resourceId
     },
     files: []
@@ -80,9 +80,9 @@ const ResourceSpecificationDrawer: React.FC<ResourceSpecificationDrawerType> = (
     setUploadableFiles([]);
   };
 
-  const onActionSuccess = async (response: IApiResponse<ResourceSpecification>, payload: IApiPayload<ResourceSpecification>) => {
+  const onActionSuccess = async (response: IApiResponse<ResourceBrand>, payload: IApiPayload<ResourceBrand>) => {
     const uploadableFilesToUpload = uploadableFiles.filter((file) => !file.isFetched);
-    const uploadPromises = uploadableFilesToUpload.map((file) => uploadImage(file.file, 'resourcespecification', response.payload.id));
+    const uploadPromises = uploadableFilesToUpload.map((file) => uploadImage(file.file, 'RESOURCE_BRAND', response.payload.id));
     await Promise.all(uploadPromises);
 
     const uploadableFileIds = uploadableFiles.map((file) => file.id);
@@ -98,28 +98,28 @@ const ResourceSpecificationDrawer: React.FC<ResourceSpecificationDrawerType> = (
 
   return (
     <CustomSideDrawer
-      title={`resource.resource-specification.${isEdit ? 'edit-resource-specification' : 'create-resource-specification'}`}
+      title={`resource.resource-brand.${isEdit ? 'edit-resource-brand' : 'create-resource-brand'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title="resource.resource-specification.title"
+          title="resource.resource-brand.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={resourceSpecification as ResourceSpecification}
-          createActionFunc={isEdit ? editResourceSpecification : createResourceSpecification}
+          initialValues={resourceBrand as ResourceBrand}
+          createActionFunc={isEdit ? editResourceBrand : createResourceBrand}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<ResourceSpecification>) => {
+          {(formik: FormikProps<ResourceBrand>) => {
             return (
-              <ResourceSpecificationForm
+              <ResourceBrandForm
                 files={uploadableFiles}
                 onFilesChange={onFilesChange}
                 formik={formik}
-                defaultLocaleData={{} as ResourceSpecification}
+                defaultLocaleData={{} as ResourceBrand}
               />
             );
           }}
@@ -129,4 +129,4 @@ const ResourceSpecificationDrawer: React.FC<ResourceSpecificationDrawerType> = (
   );
 };
 
-export default ResourceSpecificationDrawer;
+export default ResourceBrandDrawer;

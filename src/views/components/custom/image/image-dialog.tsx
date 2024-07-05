@@ -1,10 +1,6 @@
-import Dialog from '@mui/material/Dialog'
-import DialogTitle from '@mui/material/DialogTitle'
-import DialogContent from '@mui/material/DialogContent'
-import { Icon } from '@iconify/react'
-import IconButton from '@mui/material/IconButton'
+import Dialog from '@mui/material/Dialog';
 
-function ShowImageDialog({ open, setOpen, image }:{open:boolean,setOpen:(item:boolean)=>void,image:any}) {
+function ShowImageDialog({ open, setOpen, image }: { open: boolean; setOpen: (item: boolean) => void; image: any }) {
   return (
     <Dialog open={open} onClose={() => setOpen(false)} fullWidth>
       {/* <DialogTitle>
@@ -30,12 +26,12 @@ function ShowImageDialog({ open, setOpen, image }:{open:boolean,setOpen:(item:bo
             maxHeight: '500px'
           }}
           src={image}
-          alt='Selected Image'
+          alt="Selected Image"
         />
       )}
       {/* </DialogContent> */}
     </Dialog>
-  )
+  );
 }
 
-export default ShowImageDialog
+export default ShowImageDialog;

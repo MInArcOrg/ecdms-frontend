@@ -1,65 +1,49 @@
 import { Icon } from '@iconify/react';
-import {
-  Box,
-  Card,
-  CardContent,
-  CircularProgress,
-  Grid,
-  List,
-  ListItemButton,
-  Tooltip,
-  Typography
-} from '@mui/material';
+import { Box, Card, CardContent, CircularProgress, Grid, List, ListItemButton, Tooltip, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import DescCollapse from './desc-collapse';
-// import ReactCropImage from './react-crop-image';
 import { useRouter } from 'next/router';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import { useTranslation } from 'react-i18next';
-import { uploadableResourceFileTypes } from 'src/services/utils/file-service';
+import { getStaticPhoto, uploadImage, uploadableResourceFileTypes, useGetMultiplePhotos } from 'src/services/utils/file-service';
 import { useQuery } from '@tanstack/react-query';
 import modelMenuApiService from 'src/services/general/model-menu-service';
-
+import ReactCropImage from 'src/views/components/custom/react-crop-image';
+import { buildGetRequest } from 'src/utils/requests/get-request';
 
 interface ResourceLayoutProps {
   children: React.ReactNode;
   id: string;
   data: any;
   goBack: () => void;
-  uploadImage: (croppedImage: any) => Promise<void>;
   baseRoute: string;
   typeId?: string;
   isProject?: boolean;
 }
 
-const ResourceLayout: React.FC<ResourceLayoutProps> = ({
-  children,
-  id,
-  data,
-  goBack,
-  uploadImage,
-  baseRoute,
-  typeId,
-  isProject
-}) => {
+const ResourceLayout: React.FC<ResourceLayoutProps> = ({ children, id, data, goBack, baseRoute, typeId, isProject }) => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
-  const [randNum, setRandNum] = useState(Math.random());
   const [routes, setRoutes] = useState<Array<{ title: string; route: string }>>([]);
   const router = useRouter();
   const { t, i18n } = useTranslation();
   const { data: typeModels, isLoading: isTypeLoading } = useQuery({
     queryKey: ['type-models', typeId],
-    queryFn: () => modelMenuApiService.getByTypeId(typeId||"", {})
+    queryFn: () => modelMenuApiService.getByTypeId(typeId || '', {})
   });
-  console.log('typeModels',typeModels)
+  const {data:profilePicture,refetch:refetchProfilePicture}=useGetMultiplePhotos({
+    filter:{
+      model_id:typeId,
+      type:'RESOURCE_PICTURE'
+    }
+  })
 
   const handleCropComplete = (croppedImage: any) => {
     setLoading(true);
-    uploadImage(croppedImage).then(() => {
-      setRandNum(Math.random());
+    uploadImage(croppedImage, 'RESOURCE_PICTURE', String(typeId)).then(() => {
+      refetchProfilePicture();
       setLoading(false);
     });
   };
@@ -67,7 +51,12 @@ const ResourceLayout: React.FC<ResourceLayoutProps> = ({
   useEffect(() => {
     if (typeModels) {
       const arr = typeModels?.sort((a: any, b: any) => {
-        const order = [t('resource.columns.specification'), t('resource.columns.brand'), t('resource.columns.resourcetype'), t('resource.columns.resourcequantityandprice')];
+        const order = [
+          t('resource.columns.specification'),
+          t('resource.columns.brand'),
+          t('resource.columns.resourcetype'),
+          t('resource.columns.resourcequantityandprice')
+        ];
         return order.indexOf(a.model) - order.indexOf(b.model);
       });
 
@@ -76,33 +65,29 @@ const ResourceLayout: React.FC<ResourceLayoutProps> = ({
           module.model === 'specification'
             ? t('resource.columns.specification')
             : module.model === 'brand'
-            ? t('resource.columns.brand')
-            : module.model === 'resourcetype'
-            ? t('resource.columns.resourcetype')
-            : module.model === 'resourcequantityandprice'
-            ? t('resource.columns.resourcequantityandprice')
-            : module.model === 'studyfield'
-            ? t('resource.columns.studyfield')
-            : module.model === 'studylevel'
-            ? t('resource.columns.studylevel')
-            : module.model === 'workexperience'
-            ? t('resource.columns.workexperience')
-            : module.model === 'salary'
-            ? t('resource.columns.salary')
-            : '';
+              ? t('resource.columns.brand')
+              : module.model === 'resourcetype'
+                ? t('resource.columns.resourcetype')
+                : module.model === 'resourcequantityandprice'
+                  ? t('resource.columns.resourcequantityandprice')
+                  : module.model === 'studyfield'
+                    ? t('resource.columns.studyfield')
+                    : module.model === 'studylevel'
+                      ? t('resource.columns.studylevel')
+                      : module.model === 'workexperience'
+                        ? t('resource.columns.workexperience')
+                        : module.model === 'salary'
+                          ? t('resource.columns.salary')
+                          : '';
 
         return {
           title: title,
           route: `${baseRoute}/${
-            module.model === 'resourcequantityandprice'
-              ? 'priceandquantity'
-              : module.model === 'resourcetype'
-              ? 'type'
-              : module.model
+            module.model === 'resourcequantityandprice' ? 'priceandquantity' : module.model === 'resourcetype' ? 'type' : module.model
           }/`
         };
       });
-      console.log('routes',routes)
+      console.log('routes', routes);
 
       setRoutes(routes);
     }
@@ -110,7 +95,7 @@ const ResourceLayout: React.FC<ResourceLayoutProps> = ({
 
   return (
     <Box display="flex" flexDirection="column" gap={5}>
-      {/* <ReactCropImage open={open} setOpen={setOpen} onCropComplete={handleCropComplete} /> */}
+      <ReactCropImage open={open} setOpen={setOpen} onCropComplete={handleCropComplete} />
       <Card sx={{ p: 5 }}>
         <Box
           sx={{
@@ -121,7 +106,7 @@ const ResourceLayout: React.FC<ResourceLayoutProps> = ({
           }}
         >
           <Icon icon="mdi:arrow-left" fontSize={20} cursor="pointer" onClick={goBack} />
-          <Typography variant="body2" color="primary" sx={{ cursor: 'pointer' }}>
+          <Typography variant="body2" sx={{ cursor: 'pointer' }}>
             #{id?.substr(0, 8)}
           </Typography>
         </Box>
@@ -138,11 +123,7 @@ const ResourceLayout: React.FC<ResourceLayoutProps> = ({
                   sx={{ height: 160, width: '100%', cursor: isProject ? 'default' : 'pointer' }}
                   onClick={() => setOpen(isProject ? false : true)}
                   key={data?.image_id}
-                  src={
-                    data?.image_id
-                      ? `${getResourceImageUrl(data.id)}?${randNum ? `rand=${randNum}` : ''}`
-                      : 'https://via.placeholder.com/300x300'
-                  }
+                  src={profilePicture?.payload[0]?getStaticPhoto(profilePicture?.payload[0].url):'https://via.placeholder.com/300x300'}
                   alt="resource image"
                 />
               )}
