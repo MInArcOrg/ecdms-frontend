@@ -1,24 +1,24 @@
 {
-  "navigation":{
-    "dashboard":"Dashboard",
-    "admin-module":"Admin Module",
-    "depamrtent-module":"Department Module",
-    "main-modules":"Main Modules",
-    "department":"Department",
-    "user":"User",
-    "user-list":"User List",
-    "roles-and-permissions":"Roles & Permissions",
-    "roles":"Roles",
-    "permissions":"Permissions",
-    "resources":"Resources",
-    "stakeholder":"Stakeholder",
-    "master-data":{
-      "master-data":"Master Data",
-      "stakeholder":"Stakeholder",
-      "project":"Project",
-      "resource":"Resource",
-      "document":"Document",
-      "general":"General"
+  "navigation": {
+    "dashboard": "Dashboard",
+    "admin-module": "Admin Module",
+    "depamrtent-module": "Department Module",
+    "main-modules": "Main Modules",
+    "department": "Department",
+    "user": "User",
+    "user-list": "User List",
+    "roles-and-permissions": "Roles & Permissions",
+    "roles": "Roles",
+    "permissions": "Permissions",
+    "resources": "Resources",
+    "stakeholder": "Stakeholder",
+    "master-data": {
+      "master-data": "Master Data",
+      "stakeholder": "Stakeholder",
+      "project": "Project",
+      "resource": "Resource",
+      "document": "Document",
+      "general": "General"
     }
   },
   "master-data": {
@@ -53,124 +53,208 @@
       "project-progress-statuses": "Project Progress Status",
       "create-project-progress-statuses": "Create Project Progress Status",
       "edit-project-progress-statuses": "Edit Project Progress Status",
-      "construction-related-services":"Construction Related Service",
-      "edit-construction-related-services":"Edit Construction Related Service",
-      "create-construction-related-services":"Create Construction Related Service"
+      "construction-related-services": "Construction Related Service",
+      "edit-construction-related-services": "Edit Construction Related Service",
+      "create-construction-related-services": "Create Construction Related Service"
     },
-    "form":{
-      "title":"Title",
-      "description":"Description",
-      "study-program":"Study Program",
-      "study-level":"Study Level",
-      "stakeholder-type-specific-models":"Stakeholder type Specific models",
-      "project-type-specific-models":"Project type Specific models",
-      "document-type-specific-models":"Document type Specific models",
-      "resource-type-specific-models":"Resource type Specific models",
+    "form": {
+      "title": "Title",
+      "description": "Description",
+      "study-program": "Study Program",
+      "study-level": "Study Level",
+      "stakeholder-type-specific-models": "Stakeholder type Specific models",
+      "project-type-specific-models": "Project type Specific models",
+      "document-type-specific-models": "Document type Specific models",
+      "resource-type-specific-models": "Resource type Specific models",
       "service_type": "Service Type",
       "specification_detail": "Specification Detail",
       "measurement_unit": "Measurement Unit"
     },
-    
-    "create-master-type":"Create Type",
-    "edit-master-type":"Edit Type",
-    "master-category":{
-      "master-category":"Category",
-      "columns":{
-        "title":"Title",
-        "description":"Description"
+
+    "create-master-type": "Create Type",
+    "edit-master-type": "Edit Type",
+    "master-category": {
+      "master-category": "Category",
+      "columns": {
+        "title": "Title",
+        "description": "Description"
       },
-      "form":{
-          "title":"Title",
-          "description":"Description"
+      "form": {
+        "title": "Title",
+        "description": "Description"
       }
     },
-    "master-sub-category":{
-      "master-sub-category":"Category",
-      "columns":{
-        "title":"Title",
-        "description":"Description"
+    "master-sub-category": {
+      "master-sub-category": "Category",
+      "columns": {
+        "title": "Title",
+        "description": "Description"
       },
-      "form":{
-          "title":"Title",
-          "description":"Description"
+      "form": {
+        "title": "Title",
+        "description": "Description"
       }
     },
-    "create-master-sub-category":"Create Master Category",
-    "edit-master-sub-category":"Edit Master Category"
+    "create-master-sub-category": "Create Master Category",
+    "edit-master-sub-category": "Edit Master Category"
   },
-  
-  "department":{
+
+  "department": {
     "user-columns": {
       "user": "User",
       "role": "Role",
       "phone": "Phone"
     },
-    "user":{
-      "form":{
-        "first_name":"First Name",
-        "last_name":"Last Name",
-        "middle_name":"Middle Name",
-        "email":"Email",
-        "gender":"Gender",
-        "phone":"Phone",
-        "birth_data":"Birth Date"
+    "user": {
+      "form": {
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "middle_name": "Middle Name",
+        "email": "Email",
+        "gender": "Gender",
+        "phone": "Phone",
+        "birth_data": "Birth Date"
       },
-      "title":"User",
-      "male":"Male",
-      "female":"Female",
-      "edit-user":"Edit User",
-      "create-user":"Create User"
+      "title": "User",
+      "male": "Male",
+      "female": "Female",
+      "edit-user": "Edit User",
+      "create-user": "Create User"
     },
-    "position":{
-      "form":{
-        "name":"Name",
-        "description":"Description"
+    "position": {
+      "form": {
+        "name": "Name",
+        "description": "Description"
       },
-      "columns":{
-        "name":"Name",
-        "description":"Description"
+      "columns": {
+        "name": "Name",
+        "description": "Description"
       },
-      "title":"Position",
-      "create-position":"Create Position",
-      "edit-position":"Edit Position"
+      "title": "Position",
+      "create-position": "Create Position",
+      "edit-position": "Edit Position"
     },
-    "sub-department":{
-      "form":{
-        "name":"Name",
-        "description":"Description"
+    "sub-department": {
+      "form": {
+        "name": "Name",
+        "description": "Description"
       },
-      "columns":{
-        "name":"Name",
-        "description":"Description"
+      "columns": {
+        "name": "Name",
+        "description": "Description"
       },
-      "title":"Sub Department",
-      "create-sub-department":"Create Sub Department",
-      "edit-sub-department":"Edit Sub Department"
+      "title": "Sub Department",
+      "create-sub-department": "Create Sub Department",
+      "edit-sub-department": "Edit Sub Department"
     },
-    "department-structure":"department-structure"
+    "department-structure": "department-structure"
   },
-  "greating":{
-    "good-morning":"Good Morning",
-    "good-evening":"God Evening",
-    "good-afternoon":"Good Afternoon"
+  "greating": {
+    "good-morning": "Good Morning",
+    "good-evening": "God Evening",
+    "good-afternoon": "Good Afternoon"
   },
   "resource":{
-    "create-resource":"Create Resource",
-    "edit-resource":"Edit Resource",
-    "title":"Resource",
-    "columns":{
-      "title":"Title",
-      "description":"Description",
-      "sub-category":"Sub Category",
-      "category":"Category"
+    "create-resource": "Create Resource",
+    "edit-resource": "Edit Resource",
+    "title": "Resource",
+    "columns": {
+      "title": "Title",
+      "description": "Description",
+      "sub-category": "Sub Category",
+      "category": "Category",
+      "specification": "Specifications",
+      "brand": "Brands",
+      "resourcetype": "Types",
+      "resourcequantityandprice": "Unit Price & Quantity",
+      "studyfield": "Field of Study",
+      "studylevel": "Study Level",
+      "workexperience": "Work Experience",
+      "salary": "Salary",
+      "reference_files": "Reference Files"
     },
-    "form":{
-      "title":"Title",
-      "description":"Description",
-      "category":"Category",
-      "sub_category":"Sub Category",
-      "measurement_unit":"Measurement Unit"
+    "form": {
+      "title": "Title",
+      "description": "Description",
+      "category": "Category",
+      "sub_category": "Sub Category",
+      "measurement_unit": "Measurement Unit",
+      "upload_image": "Upload Resource Picture"
+    },
+    "resource-specification":{
+      "title":"Resource Specification",
+      "create-resource-specification":"Create Resource Specification",
+      "edit-resource-specification":"Edit Resource Specification",
+      "form":{
+        "title":"Title",
+        "description":"Description",
+        "datasource":"Data Source"
+      }
+    },
+    "resource-brand":{
+      "title":"Resource Brand",
+      "create-resource-brand":"Create Resource Brand",
+      "edit-resource-brand":"Edit Resource Brand",
+      "form":{
+        "title":"Title",
+        "description":"Description",
+        "datasource":"Data Source"
+      }
+    },
+    "resource-study-field":{
+      "title":"Filed of Study",
+      "create-resource-study-field":"Create Filed of Study",
+      "edit-resource-study-field":"Edit Filed of Study",
+      "form":{
+        "studyfield":"Study Field",
+        "description":"Description"
+      }
+    },
+    "resource-study-level":{
+      "title":"Study Level",
+      "create-resource-study-level":"Create Study Level",
+      "edit-resource-study-level":"Edit Study Level",
+      "form":{
+        "studylevel":"Study Field",
+        "description":"Description"
+      }
+    },
+    "resource-salary":{
+      "title":"Salary",
+      "create-resource-salary":"Create Salary",
+      "edit-resource-salary":"Edit Salary",
+      "form":{
+        "max_pay": "Max Pay",
+        "min_pay": "Min Pay",
+        "salary_type": "Salary Type",
+        "year": "Year"
+      }
+    },
+    "detail-resource-type":{
+      "title":"Resource Brand",
+      "create-resource-brand":"Create Resource Brand",
+      "edit-resource-brand":"Edit Resource Brand",
+      "form":{
+        "title":"Title",
+        "description":"Description",
+        "datasource":"Data Source"
+      }
+    },
+    "resource-quantity-price":{
+      "title":"Unit Price & Quantity",
+      "create-resource-quantity-price":"Create Unit Price & Quantity",
+      "edit-resource-quantity-price":"Edit Unit Price & Quantity",
+      "form":{
+        "brand":"Brand",
+        "type":"Type",
+        "unit-price":"Unit Price",
+        "quantity":"Quantity",
+        "store-address":"Store Address",
+        "date":"Date",
+        "datasource":"Data Source"
+      }
     }
+    
   },
   "login": {
     "welcome-message": "Welcome to {{templateName}}! 👋🏻",
@@ -194,18 +278,20 @@
       }
     }
   },
-  "common":{
-      "edit":"Edit",
-      "create":"Create",
-     "table-columns":{
+  "common": {
+    "edit": "Edit",
+    "create": "Create",
+    "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",
       "status": "Status",
       "actions": "Actions"
-     },
-     "form":{
-      "success-created":"Successfully Created!",
-      "success-updated":"Successfully updated!"
-     }
+    },
+    "form": {
+      "file-upload":"File Upload",
+  
+      "success-created": "Successfully Created!",
+      "success-updated": "Successfully updated!"
+    }
   }
 }

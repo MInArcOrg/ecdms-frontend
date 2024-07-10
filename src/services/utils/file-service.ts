@@ -1,6 +1,7 @@
+import { useQuery } from '@tanstack/react-query';
 import axios, { AxiosResponse } from 'axios';
 import authConfig from 'src/configs/auth';
-import { FileModel } from 'src/types/general/file';
+import { FileModel, ImageModel } from 'src/types/general/file';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { buildGetRequest } from 'src/utils/requests/get-request';
 
@@ -62,9 +63,21 @@ export const uploadFile = (
     }
   });
 };
+export const uploadImage = (file: File, type: string, ownerObjectID: string | number): Promise<AxiosResponse<FileUploadResponse>> => {
+  const formData = new FormData();
+  formData.append('type', type);
+  formData.append('model_id', ownerObjectID.toString());
+  formData.append('upload', file);
+
+  return customAxios.post('/generics/photos', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  });
+};
 
 // Get files by model
-export const getFilesByModel = (idx: string, params: GetRequestParam): Promise<IApiResponse<FileModel[]>> =>
+export const getFilesByModel = (params: GetRequestParam): Promise<IApiResponse<FileModel[]>> =>
   buildGetRequest(`/generics/files`, params)
     .then((response: AxiosResponse<IApiResponse>) => response.data)
     .catch((error: any) => {
@@ -126,16 +139,21 @@ export const uploadProfilePicture = (user_id: string | number, type: string, fil
 
 // Get photo
 export const getPhoto = (id: string | number, type: string): string => `${process.env.NEXT_PUBLIC_API_URL}/api/photo/${type}/${id}`;
-
+export const getStaticPhoto = (path: string) => `${process.env.NEXT_PUBLIC_BASE_URL}${path}`;
 // Get multiple photos
-// export const getMultiplePhotos = (id: string | number) =>
-//   useAxios({
-//     method: 'get',
-//     url: `/multiple/photo/${id}`
-//   });
+export const useGetMultiplePhotos = (params: GetRequestParam) => {
+  return useQuery({
+    queryKey: ['multiple-photo', params],
+    queryFn: async () => {
+      const response: AxiosResponse<IApiResponse<ImageModel[]>> = await buildGetRequest(`/generics/photos`, params);
+      return response.data; // Assuming response.data is of type ImageModel[]
+    }
+  });
+};
 
 // Delete photo
-export const deletePhoto = (id: string | number): Promise<AxiosResponse<FileUploadResponse>> => customAxios.delete(`/photo/${id}`);
+export const deletePhoto = (id: string | number): Promise<AxiosResponse<FileUploadResponse>> =>
+  customAxios.delete(`/generics/photos/${id}`);
 
 // Handle user profile picture error
 export const handleUserProfilePictureError = (event: React.SyntheticEvent<HTMLImageElement, Event>, gender: string) => {

@@ -47,6 +47,12 @@ const resourceApiService = {
       .catch((error: any) => {
         throw error;
       })
+  // uploadImage: (id:string) =>
+  //   customAxios.post('/generics/files', formData, {
+  //     headers: {
+  //       'Content-Type': 'multipart/form-data'
+  //     }
+  //   })
 };
 
 export default resourceApiService;

@@ -27,6 +27,7 @@ const useAxiosInterceptors = () => {
       (response) => response,
       (error) => {
         if (error.response) {
+          console.log('API UNAUTHORIZED: ' + error.response);
           if (error.response.status === 401 && !isGuestGuard) {
             const currentUrl = window.location.pathname;
             if (!currentUrl.includes('login') && !currentUrl.includes('check-profile')) {

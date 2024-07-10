@@ -11,7 +11,6 @@ interface CustomFileUploadProps {
 
 const CustomFileUpload: React.FC<CustomFileUploadProps> = ({ label, file, onFileChange }) => {
   const { t } = useTranslation();
-
   return (
     <FormControl fullWidth variant="outlined" sx={{ mb: 3 }}>
       <FormLabel component="legend">{t(label)}</FormLabel>

@@ -2,7 +2,6 @@ import { Box, Card } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Container } from '@mui/system';
 import { useRouter } from 'next/router';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
@@ -22,7 +21,7 @@ function ResourceList() {
   const router = useRouter();
   const { typeId } = router.query;
   const fetchResources = (params: GetRequestParam): Promise<IApiResponse<Resource[]>> => {
-    return resourceApiService.getAll(params);
+    return resourceApiService.getAll({ ...params, filter: { ...params.filter, resourcetype_id: typeId } });
   };
 
   const {
@@ -47,13 +46,11 @@ function ResourceList() {
   };
   const handleDelete = async (resourceId: string) => {
     await resourceApiService.delete(resourceId);
-    refetch()
+    refetch();
   };
 
   return (
-    <Box
-      
-    >
+    <Box>
       {showDrawer && (
         <ResourceDrawer
           open={showDrawer}
@@ -63,31 +60,31 @@ function ResourceList() {
           typeId={String(typeId)}
         />
       )}
-        <Card>
-          <ItemsListing
-            pagination={pagination}
-            type={ITEMS_LISTING_TYPE.table.value}
-            isLoading={isLoading}
-            ItemViewComponent={({ data }) => (
-              <ResourceCard resource={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
-            )}
-            createActionConfig={{
-              ...defaultCreateActionConfig,
-              onClick: toggleDrawer,
-              onlyIcon: false,
-              permission: {
-                action: 'create',
-                subject: 'resource'
-              }
-            }}
-            fetchDataFunction={refetch}
-            tableProps={{
-              headers: resourceColumns(handleEdit, handleDelete, t, refetch, String(typeId))
-            }}
-            items={resources || []}
-            onPaginationChange={handlePageChange}
-          />
-        </Card>
+      <Card>
+        <ItemsListing
+          pagination={pagination}
+          type={ITEMS_LISTING_TYPE.table.value}
+          isLoading={isLoading}
+          ItemViewComponent={({ data }) => (
+            <ResourceCard resource={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
+          )}
+          createActionConfig={{
+            ...defaultCreateActionConfig,
+            onClick: toggleDrawer,
+            onlyIcon: false,
+            permission: {
+              action: 'create',
+              subject: 'resource'
+            }
+          }}
+          fetchDataFunction={refetch}
+          tableProps={{
+            headers: resourceColumns(handleEdit, handleDelete, t, refetch, String(typeId))
+          }}
+          items={resources || []}
+          onPaginationChange={handlePageChange}
+        />
+      </Card>
     </Box>
   );
 }

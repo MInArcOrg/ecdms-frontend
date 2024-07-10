@@ -63,7 +63,7 @@ import 'src/iconify-bundle/icons-bundle-react';
 // ** Global css styles
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import '../../styles/globals.css';
-import useAxiosInterceptors from 'src/@core/utils/use-axios-interceptor';
+import useAxiosInterceptors from 'src/utils/use-axios-interceptor';
 // ** Extend App Props with Emotion
 type ExtendedAppProps = AppProps & {
   Component: NextPage;

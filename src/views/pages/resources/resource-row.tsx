@@ -28,7 +28,7 @@ export const resourceColumns = (
         return (
           <Typography
             component={Link}
-            href={`/resources/${typeId}/${row.id}`}
+            href={`/resources/${typeId}/details/${row.id}`}
             sx={{
               fontWeight: 500,
               textDecoration: 'none',
