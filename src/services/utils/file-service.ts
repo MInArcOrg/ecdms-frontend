@@ -77,7 +77,7 @@ export const uploadImage = (file: File, type: string, ownerObjectID: string | nu
 };
 
 // Get files by model
-export const getFilesByModel = (idx: string, params: GetRequestParam): Promise<IApiResponse<FileModel[]>> =>
+export const getFilesByModel = (params: GetRequestParam): Promise<IApiResponse<FileModel[]>> =>
   buildGetRequest(`/generics/files`, params)
     .then((response: AxiosResponse<IApiResponse>) => response.data)
     .catch((error: any) => {
@@ -139,7 +139,7 @@ export const uploadProfilePicture = (user_id: string | number, type: string, fil
 
 // Get photo
 export const getPhoto = (id: string | number, type: string): string => `${process.env.NEXT_PUBLIC_API_URL}/api/photo/${type}/${id}`;
-export const getStaticPhoto = (path: string) => `${process.env.NEXT_PUBLIC_API_URL}${path}`;
+export const getStaticPhoto = (path: string) => `${process.env.NEXT_PUBLIC_BASE_URL}${path}`;
 // Get multiple photos
 export const useGetMultiplePhotos = (params: GetRequestParam) => {
   return useQuery({
@@ -150,7 +150,6 @@ export const useGetMultiplePhotos = (params: GetRequestParam) => {
     }
   });
 };
-
 
 // Delete photo
 export const deletePhoto = (id: string | number): Promise<AxiosResponse<FileUploadResponse>> =>

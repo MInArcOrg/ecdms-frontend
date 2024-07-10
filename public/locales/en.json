@@ -190,7 +190,71 @@
         "description":"Description",
         "datasource":"Data Source"
       }
+    },
+    "resource-brand":{
+      "title":"Resource Brand",
+      "create-resource-brand":"Create Resource Brand",
+      "edit-resource-brand":"Edit Resource Brand",
+      "form":{
+        "title":"Title",
+        "description":"Description",
+        "datasource":"Data Source"
+      }
+    },
+    "resource-study-field":{
+      "title":"Filed of Study",
+      "create-resource-study-field":"Create Filed of Study",
+      "edit-resource-study-field":"Edit Filed of Study",
+      "form":{
+        "studyfield":"Study Field",
+        "description":"Description"
+      }
+    },
+    "resource-study-level":{
+      "title":"Study Level",
+      "create-resource-study-level":"Create Study Level",
+      "edit-resource-study-level":"Edit Study Level",
+      "form":{
+        "studylevel":"Study Field",
+        "description":"Description"
+      }
+    },
+    "resource-salary":{
+      "title":"Salary",
+      "create-resource-salary":"Create Salary",
+      "edit-resource-salary":"Edit Salary",
+      "form":{
+        "max_pay": "Max Pay",
+        "min_pay": "Min Pay",
+        "salary_type": "Salary Type",
+        "year": "Year"
+      }
+    },
+    "detail-resource-type":{
+      "title":"Resource Brand",
+      "create-resource-brand":"Create Resource Brand",
+      "edit-resource-brand":"Edit Resource Brand",
+      "form":{
+        "title":"Title",
+        "description":"Description",
+        "datasource":"Data Source"
+      }
+    },
+    "resource-quantity-price":{
+      "title":"Unit Price & Quantity",
+      "create-resource-quantity-price":"Create Unit Price & Quantity",
+      "edit-resource-quantity-price":"Edit Unit Price & Quantity",
+      "form":{
+        "brand":"Brand",
+        "type":"Type",
+        "unit-price":"Unit Price",
+        "quantity":"Quantity",
+        "store-address":"Store Address",
+        "date":"Date",
+        "datasource":"Data Source"
+      }
     }
+    
   },
   "login": {
     "welcome-message": "Welcome to {{templateName}}! 👋🏻",
@@ -225,6 +289,7 @@
     },
     "form": {
       "file-upload":"File Upload",
+  
       "success-created": "Successfully Created!",
       "success-updated": "Successfully updated!"
     }

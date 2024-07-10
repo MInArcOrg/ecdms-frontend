@@ -1,17 +1,15 @@
 import { Icon } from '@iconify/react';
 import { Box, Card, CardContent, CircularProgress, Grid, List, ListItemButton, Tooltip, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import DescCollapse from './desc-collapse';
-import { useRouter } from 'next/router';
-import FileDrawer from 'src/views/components/custom/files-drawer';
-import { useTranslation } from 'react-i18next';
-import { getStaticPhoto, uploadImage, uploadableResourceFileTypes, useGetMultiplePhotos } from 'src/services/utils/file-service';
 import { useQuery } from '@tanstack/react-query';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import modelMenuApiService from 'src/services/general/model-menu-service';
+import { getStaticPhoto, uploadImage, uploadableResourceFileTypes, useGetMultiplePhotos } from 'src/services/utils/file-service';
+import FileDrawer from 'src/views/components/custom/files-drawer';
 import ReactCropImage from 'src/views/components/custom/react-crop-image';
-import { buildGetRequest } from 'src/utils/requests/get-request';
+import DescCollapse from './desc-collapse';
 
 interface ResourceLayoutProps {
   children: React.ReactNode;
@@ -28,17 +26,17 @@ const ResourceLayout: React.FC<ResourceLayoutProps> = ({ children, id, data, goB
   const [open, setOpen] = useState(false);
   const [routes, setRoutes] = useState<Array<{ title: string; route: string }>>([]);
   const router = useRouter();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { data: typeModels, isLoading: isTypeLoading } = useQuery({
     queryKey: ['type-models', typeId],
     queryFn: () => modelMenuApiService.getByTypeId(typeId || '', {})
   });
-  const {data:profilePicture,refetch:refetchProfilePicture}=useGetMultiplePhotos({
-    filter:{
-      model_id:typeId,
-      type:'RESOURCE_PICTURE'
+  const { data: profilePicture, refetch: refetchProfilePicture } = useGetMultiplePhotos({
+    filter: {
+      model_id: typeId,
+      type: 'RESOURCE_PICTURE'
     }
-  })
+  });
 
   const handleCropComplete = (croppedImage: any) => {
     setLoading(true);
@@ -123,7 +121,7 @@ const ResourceLayout: React.FC<ResourceLayoutProps> = ({ children, id, data, goB
                   sx={{ height: 160, width: '100%', cursor: isProject ? 'default' : 'pointer' }}
                   onClick={() => setOpen(isProject ? false : true)}
                   key={data?.image_id}
-                  src={profilePicture?.payload[0]?getStaticPhoto(profilePicture?.payload[0].url):'https://via.placeholder.com/300x300'}
+                  src={profilePicture?.payload[0] ? getStaticPhoto(profilePicture?.payload[0].url) : 'https://via.placeholder.com/300x300'}
                   alt="resource image"
                 />
               )}

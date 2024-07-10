@@ -1,13 +1,13 @@
 import { useState, useRef } from 'react';
 import ReactCrop, { centerCrop, makeAspectCrop } from 'react-image-crop';
-import { canvasPreview } from './canvasPreview';
-import { useDebounceEffect } from './useDebounceEffect';
 import 'react-image-crop/dist/ReactCrop.css';
 import { Box, Button, IconButton, Paper } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import { Icon } from '@iconify/react';
+import { canvasPreview } from './canvasPreview';
+import { useDebounceEffect } from './useDebounceEffect';
 
 function centerAspectCrop(mediaWidth, mediaHeight) {
   return centerCrop(
@@ -64,33 +64,28 @@ export default function ReactCropImage({ open, setOpen, onCropComplete }) {
       throw new Error('Crop canvas does not exist');
     }
 
-    const file = async () =>
-      new Promise((resolve, reject) => {
-        previewCanvasRef.current.toBlob(
-          (blob) => {
-            if (!blob) {
-              reject(new Error('Failed to crop image'));
+    const dataUrl = previewCanvasRef.current.toDataURL('image/jpeg', 0.8); // Adjust the quality parameter here (0 to 1)
 
-              return;
-            }
-            blob.name = 'resourceImg.jpeg';
-            resolve(new File([blob], blob.name, { type: 'image/jpeg' }));
-          },
-          'image/jpeg',
-          1
-        );
-      });
+    // Convert data URL to file
+    const arr = dataUrl.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
 
-    file().then((file) => {
-      onCropComplete(file);
-      handleClose();
-    });
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    const file = new File([u8arr], 'resourceImg.jpeg', { type: mime });
+
+    onCropComplete(file);
+    handleClose();
   }
 
   useDebounceEffect(
     async () => {
       if (completedCrop?.width && completedCrop?.height && imgRef.current && previewCanvasRef.current) {
-        // We use canvasPreview as it's much faster than imgPreview.
         canvasPreview(imgRef.current, previewCanvasRef.current, completedCrop);
       }
     },

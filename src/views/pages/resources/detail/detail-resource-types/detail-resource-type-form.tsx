@@ -1,34 +1,40 @@
 import { FormikProps } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { FileWithId } from 'src/types/general/file';
-import { ResourceBrand } from 'src/types/resource';
+import { DetailResourceType } from 'src/types/resource';
 import CustomMultiFileUpload from 'src/views/shared/form/custom-multi-file-selector';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
-interface ResourceBrandFormProps {
-  formik: FormikProps<ResourceBrand>;
+interface DetailResourceTypeFormProps {
+  formik: FormikProps<DetailResourceType>;
   isLocaleEdit?: boolean;
-  defaultLocaleData?: ResourceBrand;
+  defaultLocaleData?: DetailResourceType;
   files: FileWithId[];
   onFilesChange: (files: FileWithId[]) => void;
 }
 
-const ResourceBrandForm: React.FC<ResourceBrandFormProps> = ({ formik, isLocaleEdit = false, defaultLocaleData, files, onFilesChange }) => {
+const DetailResourceTypeForm: React.FC<DetailResourceTypeFormProps> = ({
+  formik,
+  isLocaleEdit = false,
+  defaultLocaleData,
+  files,
+  onFilesChange
+}) => {
   const { t: transl } = useTranslation();
   return (
     <>
       <CustomTextBox
         fullWidth
-        label={transl('resource.resource-brand.form.title')}
-        placeholder={transl('resource.resource-brand.form.title')}
+        label={transl('resource.detail-resource-type.form.title')}
+        placeholder={transl('resource.detail-resource-type.form.title')}
         name="title"
         size="sm"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
         fullWidth
-        label={transl('resource.resource-brand.form.datasource')}
-        placeholder={transl('resource.resource-brand.form.datasource')}
+        label={transl('resource.detail-resource-type.form.datasource')}
+        placeholder={transl('resource.detail-resource-type.form.datasource')}
         name="datasource"
         size="sm"
         sx={{ mb: 2 }}
@@ -36,8 +42,8 @@ const ResourceBrandForm: React.FC<ResourceBrandFormProps> = ({ formik, isLocaleE
 
       <CustomTextBox
         fullWidth
-        label={transl('resource.resource-brand.form.description')}
-        placeholder={transl('resource.resource-brand.form.description')}
+        label={transl('resource.detail-resource-type.form.description')}
+        placeholder={transl('resource.detail-resource-type.form.description')}
         name="description"
         multiline={true}
         rows="4"
@@ -48,4 +54,4 @@ const ResourceBrandForm: React.FC<ResourceBrandFormProps> = ({ formik, isLocaleE
     </>
   );
 };
-export default ResourceBrandForm;
+export default DetailResourceTypeForm;

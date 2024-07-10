@@ -4,27 +4,27 @@ import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import DescCollapse from '../desc-collapse';
-import { ResourceBrand } from 'src/types/resource';
+import { DetailResourceType } from 'src/types/resource';
 
-interface ResourceBrandCardProps {
-  resourceBrand: ResourceBrand;
-  onEdit: (category: ResourceBrand) => void;
+interface DetailResourceTypeCardProps {
+  detailResourceType: DetailResourceType;
+  onEdit: (category: DetailResourceType) => void;
   onDelete: (id: string) => void;
   refetch: () => void;
   t: any;
   children: ReactElement;
 }
 
-const ResourceBrandCard: React.FC<ResourceBrandCardProps> = ({ resourceBrand, onEdit, onDelete, refetch, t, children }) => {
+const DetailResourceTypeCard: React.FC<DetailResourceTypeCardProps> = ({ detailResourceType, onEdit, onDelete, refetch, t, children }) => {
   return (
     <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <CardContent>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <CardHeader title={resourceBrand.title} />
+            <CardHeader title={detailResourceType.title} />
             <Box mt={2}>
               <Typography variant="body1" component="div">
-                <DescCollapse desc={resourceBrand.description} />
+                <DescCollapse desc={detailResourceType.description} />
               </Typography>
             </Box>
           </Grid>
@@ -34,7 +34,7 @@ const ResourceBrandCard: React.FC<ResourceBrandCardProps> = ({ resourceBrand, on
           <Grid item xs={12}>
             <Box display="flex" alignItems="center">
               <Typography variant="subtitle1">
-                <strong>{t('resource.resource-brand.form.datasource')}:</strong> {resourceBrand.datasource}
+                <strong>{t('resource.detail-resource-type.form.datasource')}:</strong> {detailResourceType.datasource}
               </Typography>
             </Box>
           </Grid>
@@ -43,17 +43,17 @@ const ResourceBrandCard: React.FC<ResourceBrandCardProps> = ({ resourceBrand, on
       <Box sx={{ flexGrow: 1 }} />
       <CardActions sx={{ justifyContent: 'flex-end' }}>
         <Box>
-          <FileDrawer id={resourceBrand.id} type="" />
+          <FileDrawer id={detailResourceType.id} type="" />
           <Box display="flex" alignItems="end">
             <ModelActionComponent
-              model="ResourceBrand"
-              model_id={resourceBrand.id}
+              model="DetailResourceType"
+              model_id={detailResourceType.id}
               refetchModel={refetch}
               resubmit={() => {}}
               title=""
               postAction={() => {}}
             />
-            <RowOptions onEdit={onEdit} onDelete={() => onDelete(resourceBrand.id)} item={resourceBrand} options={[]} />
+            <RowOptions onEdit={onEdit} onDelete={() => onDelete(detailResourceType.id)} item={detailResourceType} options={[]} />
           </Box>
         </Box>
       </CardActions>
@@ -61,4 +61,4 @@ const ResourceBrandCard: React.FC<ResourceBrandCardProps> = ({ resourceBrand, on
   );
 };
 
-export default ResourceBrandCard;
+export default DetailResourceTypeCard;

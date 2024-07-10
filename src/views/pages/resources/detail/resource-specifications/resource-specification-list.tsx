@@ -50,8 +50,9 @@ function ResourceSpecificationList({ resourceId }: { resourceId: string }) {
     toggleDrawer();
     setSelectedRow(resourceSpecification);
   };
-  const handleDelete = (resourceSpecificationId: string) => {
-    // Handle delete logic
+  const handleDelete = async (resourceSpecificationId: string) => {
+    await resourceSpecificationApiService.delete(resourceSpecificationId);
+    refetch();
   };
 
   return (

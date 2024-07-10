@@ -10,7 +10,7 @@ function FileDrawer({ id, type }: { id: string; type: string }) {
   const [show, setShow] = useState(false);
   const { data, isLoading, refetch } = useQuery({
     queryKey: ['model-file', id, type],
-    queryFn: () => getFilesByModel(id, { filter: { type } })
+    queryFn: () => getFilesByModel({ filter: { type, reference_id: id } })
   });
   const { t } = useTranslation();
 

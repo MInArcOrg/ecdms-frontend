@@ -1,33 +1,29 @@
 import { useRouter } from 'next/router';
-// import Brand from 'src/views/pages/resources/detail/Brand'
-// import Type from 'src/views/pages/resources/detail/Type'
-// import Price from 'src/views/pages/resources/detail/Price'
 import { Fragment } from 'react';
-// import StudyField from 'src/views/pages/resources/detail/StudyField'
-// import StudyLevel from 'src/views/pages/resources/detail/StudyLevel'
-// import Workexperience from 'src/views/pages/resources/detail/Workexperience'
-// import Salary from 'src/views/pages/resources/detail/Salary'
-import ResourceLayout from 'src/views/pages/resources/detail/resource-layout';
-import resourceApiService from 'src/services/resource/resource-service';
 import { useQuery } from '@tanstack/react-query';
-import ResourceSpecificationList from 'src/views/pages/resources/detail/resource-specifications/resource-specification-list';
-import { uploadImage } from 'src/services/utils/file-service';
+import resourceApiService from 'src/services/resource/resource-service';
+import DetailResourceTypeList from 'src/views/pages/resources/detail/detail-resource-types/detail-resource-type-list';
 import ResourceBrandList from 'src/views/pages/resources/detail/resource-brands/resource-brand-list';
+import ResourceLayout from 'src/views/pages/resources/detail/resource-layout';
+import ResourceQuantityPriceList from 'src/views/pages/resources/detail/resource-quantity-price/resource-quantity-price-list';
+import ResourceSalaryList from 'src/views/pages/resources/detail/resource-salary/resource-salary-list';
+import ResourceSpecificationList from 'src/views/pages/resources/detail/resource-specifications/resource-specification-list';
+import ResourceStudyFieldList from 'src/views/pages/resources/detail/resource-study-field/resource-study-field-list';
+import ResourceStudyLevelList from 'src/views/pages/resources/detail/resource-study-level/resource-study-level-list';
+import ResourceWorkExperienceList from 'src/views/pages/resources/detail/resource-work-experience/resource-work-experience-list';
+
+function LoadingSpinner() {
+  return <div>Loading...</div>;
+}
 
 function Index() {
   const router = useRouter();
   const { id, typeId, all } = router.query;
   const baseRoute = `/resources/${typeId}/details/${id}`;
-  const {
-    data,
-    isLoading,
-    error,
-    refetch: refetchResource
-  } = useQuery({
-    queryKey: [],
+  const { data, isLoading } = useQuery({
+    queryKey: ['resource', id],
     queryFn: () => resourceApiService.getOne(String(id), {})
   });
-  // const [{ loading: imageLoading, error: imageError }, uploadFile] = uploadImage(id)
 
   const activeRoute = () => {
     if (all?.includes('specification')) {
@@ -60,19 +56,26 @@ function Index() {
         goBack={() => router.replace(`/resources/${String(typeId)}`)}
         data={data?.payload}
       >
-        {activeRoute() == 0 && <div />}
-        {activeRoute() == 1 && <ResourceSpecificationList resourceId={String(id)} />}
-        {activeRoute() == 2 && <ResourceBrandList resourceId={String(id)} />}
-        {/* {activeRoute() == 3 && <Type id={id} isProject={false}/>} */}
-        {/* {activeRoute() == 4 && <Price id={id} isProject={false} resourceId={''}/>} */}
-        {/* {activeRoute() == 5 && <StudyField id={id} isProject={false}/>} */}
-        {/* {activeRoute() == 6 && <StudyLevel id={id} isProject={false}/>} */}
-        {/* {activeRoute() == 7 && <Workexperience id={id} isProject={false}/>} */}
-        {/* {activeRoute() == 8 && <Salary id={id} isProject={false}/>} */}
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <>
+            {activeRoute() == 0 && <div />}
+            {activeRoute() == 1 && <ResourceSpecificationList resourceId={String(id)} />}
+            {activeRoute() == 2 && <ResourceBrandList resourceId={String(id)} />}
+            {activeRoute() == 3 && <DetailResourceTypeList resourceId={String(id)} />}
+            {activeRoute() == 4 && <ResourceQuantityPriceList resourceId={String(id)} />}
+            {activeRoute() == 5 && <ResourceStudyFieldList resourceId={String(id)} />}
+            {activeRoute() == 6 && <ResourceStudyLevelList resourceId={String(id)} />}
+            {activeRoute() == 7 && <ResourceWorkExperienceList resourceId={String(id)} />}
+            {activeRoute() == 8 && <ResourceSalaryList resourceId={String(id)} />}
+          </>
+        )}
       </ResourceLayout>
     </Fragment>
   );
 }
+
 Index.acl = {
   action: 'view_resources',
   subject: 'resources'

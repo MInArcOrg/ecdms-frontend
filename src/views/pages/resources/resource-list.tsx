@@ -21,7 +21,7 @@ function ResourceList() {
   const router = useRouter();
   const { typeId } = router.query;
   const fetchResources = (params: GetRequestParam): Promise<IApiResponse<Resource[]>> => {
-    return resourceApiService.getAll(params);
+    return resourceApiService.getAll({ ...params, filter: { ...params.filter, resourcetype_id: typeId } });
   };
 
   const {

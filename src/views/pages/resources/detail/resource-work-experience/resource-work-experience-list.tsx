@@ -5,24 +5,22 @@ import { useTranslation } from 'react-i18next';
 import { Container } from '@mui/system';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import resourceBrandApiService from 'src/services/resource/resource-brand-service';
+import resourceWorkExperienceApiService from 'src/services/resource/resource-work-experience-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { ResourceBrand } from 'src/types/resource';
+import { ResourceWorkExperience } from 'src/types/resource';
 import ItemsListing from 'src/views/shared/listing';
-import ResourceBrandCard from './resource-brand-card';
-import ResourceBrandDrawer from './resource-brand-drawer';
-import ImageSwiper from 'src/views/components/custom/image/image-swiper';
+import ResourceWorkExperienceCard from './resource-work-experience-card';
+import ResourceWorkExperienceDrawer from './resource-work-experience-drawer';
 
-function ResourceBrandList({ resourceId }: { resourceId: string }) {
+function ResourceWorkExperienceList({ resourceId }: { resourceId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
-  const [refetchImages, setRefetchImages] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<ResourceBrand | null>(null);
+  const [selectedRow, setSelectedRow] = useState<ResourceWorkExperience | null>(null);
 
   const { t } = useTranslation();
 
-  const fetchResourceBrands = (params: GetRequestParam): Promise<IApiResponse<ResourceBrand[]>> => {
-    return resourceBrandApiService.getAll({
+  const fetchResourceWorkExperiences = (params: GetRequestParam): Promise<IApiResponse<ResourceWorkExperience[]>> => {
+    return resourceWorkExperienceApiService.getAll({
       ...params,
       filter: {
         resource_id: resourceId
@@ -31,27 +29,27 @@ function ResourceBrandList({ resourceId }: { resourceId: string }) {
   };
 
   const {
-    data: resourceBrands,
+    data: resourceWorkExperiences,
     isLoading,
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<ResourceBrand[]>({
-    queryKey: ['resourceBrands', resourceId],
-    fetchFunction: fetchResourceBrands
+  } = usePaginatedFetch<ResourceWorkExperience[]>({
+    queryKey: ['resourceWorkExperiences', resourceId],
+    fetchFunction: fetchResourceWorkExperiences
   });
 
   const toggleDrawer = () => {
-    setSelectedRow({} as ResourceBrand);
+    setSelectedRow({} as ResourceWorkExperience);
     setShowDrawer(!showDrawer);
   };
 
-  const handleEdit = (resourceBrand: ResourceBrand) => {
+  const handleEdit = (resourceWorkExperience: ResourceWorkExperience) => {
     toggleDrawer();
-    setSelectedRow(resourceBrand);
+    setSelectedRow(resourceWorkExperience);
   };
-  const handleDelete = async (resourceBrandId: string) => {
-    await resourceBrandApiService.delete(resourceBrandId);
+  const handleDelete = async (resourceWorkExperienceId: string) => {
+    await resourceWorkExperienceApiService.delete(resourceWorkExperienceId);
     refetch();
   };
 
@@ -64,14 +62,13 @@ function ResourceBrandList({ resourceId }: { resourceId: string }) {
       }}
     >
       {showDrawer && (
-        <ResourceBrandDrawer
+        <ResourceWorkExperienceDrawer
           open={showDrawer}
           toggle={toggleDrawer}
           resourceId={resourceId}
-          resourceBrand={selectedRow as ResourceBrand}
+          resourceWorkExperience={selectedRow as ResourceWorkExperience}
           refetch={() => {
             refetch();
-            setRefetchImages(true);
           }}
         />
       )}
@@ -82,9 +79,7 @@ function ResourceBrandList({ resourceId }: { resourceId: string }) {
           isLoading={isLoading}
           breakpoints={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 4 }}
           ItemViewComponent={({ data }) => (
-            <ResourceBrandCard resourceBrand={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch}>
-              <ImageSwiper id={data.id} refetch={refetchImages} />
-            </ResourceBrandCard>
+            <ResourceWorkExperienceCard resourceWorkExperience={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
           )}
           createActionConfig={{
             ...defaultCreateActionConfig,
@@ -92,11 +87,11 @@ function ResourceBrandList({ resourceId }: { resourceId: string }) {
             onlyIcon: true,
             permission: {
               action: 'create',
-              subject: 'resourceBrand'
+              subject: 'detailresourcetype'
             }
           }}
           fetchDataFunction={refetch}
-          items={resourceBrands || []}
+          items={resourceWorkExperiences || []}
           onPaginationChange={handlePageChange}
         />
       </Container>
@@ -104,4 +99,4 @@ function ResourceBrandList({ resourceId }: { resourceId: string }) {
   );
 }
 
-export default ResourceBrandList;
+export default ResourceWorkExperienceList;

@@ -1,40 +1,43 @@
 import { Box, Card, CardActions, CardContent, CardHeader, Grid, Typography } from '@mui/material';
-import { ReactElement } from 'react';
+import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
+import { ResourceWorkExperience } from 'src/types/resource';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import DescCollapse from '../desc-collapse';
-import { ResourceBrand } from 'src/types/resource';
 
-interface ResourceBrandCardProps {
-  resourceBrand: ResourceBrand;
-  onEdit: (category: ResourceBrand) => void;
+interface ResourceWorkExperienceCardProps {
+  resourceWorkExperience: ResourceWorkExperience;
+  onEdit: (category: ResourceWorkExperience) => void;
   onDelete: (id: string) => void;
   refetch: () => void;
   t: any;
-  children: ReactElement;
 }
 
-const ResourceBrandCard: React.FC<ResourceBrandCardProps> = ({ resourceBrand, onEdit, onDelete, refetch, t, children }) => {
+const ResourceWorkExperienceCard: React.FC<ResourceWorkExperienceCardProps> = ({
+  resourceWorkExperience,
+  onEdit,
+  onDelete,
+  refetch,
+  t
+}) => {
   return (
     <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <CardContent>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <CardHeader title={resourceBrand.title} />
+            <CardHeader title={resourceWorkExperience?.workexperience?.title} />
             <Box mt={2}>
               <Typography variant="body1" component="div">
-                <DescCollapse desc={resourceBrand.description} />
+                <DescCollapse desc={resourceWorkExperience.description} />
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12}>
-            {children}
-          </Grid>
+
           <Grid item xs={12}>
             <Box display="flex" alignItems="center">
               <Typography variant="subtitle1">
-                <strong>{t('resource.resource-brand.form.datasource')}:</strong> {resourceBrand.datasource}
+                <strong>{t('resource.resource-study-field.form.description')}:</strong> {resourceWorkExperience.description}
               </Typography>
             </Box>
           </Grid>
@@ -43,17 +46,17 @@ const ResourceBrandCard: React.FC<ResourceBrandCardProps> = ({ resourceBrand, on
       <Box sx={{ flexGrow: 1 }} />
       <CardActions sx={{ justifyContent: 'flex-end' }}>
         <Box>
-          <FileDrawer id={resourceBrand.id} type="" />
+          <FileDrawer id={resourceWorkExperience.id} type={uploadableResourceFileTypes.resourceWorkExperience} />
           <Box display="flex" alignItems="end">
             <ModelActionComponent
-              model="ResourceBrand"
-              model_id={resourceBrand.id}
+              model="ResourceWorkExperience"
+              model_id={resourceWorkExperience.id}
               refetchModel={refetch}
               resubmit={() => {}}
               title=""
               postAction={() => {}}
             />
-            <RowOptions onEdit={onEdit} onDelete={() => onDelete(resourceBrand.id)} item={resourceBrand} options={[]} />
+            <RowOptions onEdit={onEdit} onDelete={() => onDelete(resourceWorkExperience.id)} item={resourceWorkExperience} options={[]} />
           </Box>
         </Box>
       </CardActions>
@@ -61,4 +64,4 @@ const ResourceBrandCard: React.FC<ResourceBrandCardProps> = ({ resourceBrand, on
   );
 };
 
-export default ResourceBrandCard;
+export default ResourceWorkExperienceCard;
