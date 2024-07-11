@@ -252,9 +252,32 @@
         "store-address":"Store Address",
         "date":"Date",
         "datasource":"Data Source"
+      },
+      "columns": {
+        "title": "Title",
+        "description": "Description"
       }
     }
     
+  },
+  "document": {
+    "resource":{
+      "create-resource": "Create Resource",
+      "edit-resource": "Edit Resource",
+      "title": "Resource",
+      "columns": {},
+    "form": {
+      "category": "Category",
+      "sub-category": "Sub-category",
+      "title": "Title",
+      "measurement_unit": "Measurement Unit",
+      "description": "Description",
+      "author": "Author",
+      "copy_right_notice": "Copyright Notice",
+      "edition": "Edition",
+      "isbn": "ISBN",
+      "publication_date": "Publication Date"
+    }
   },
   "login": {
     "welcome-message": "Welcome to {{templateName}}! 👋🏻",
