@@ -85,7 +85,7 @@
       }
     },
     "master-sub-category": {
-      "master-sub-category": "Category",
+      "master-sub-category": "SubCategory",
       "columns": {
         "title": "Title",
         "description": "Description"
@@ -95,8 +95,8 @@
         "description": "Description"
       }
     },
-    "create-master-sub-category": "Create Master Category",
-    "edit-master-sub-category": "Edit Master Category"
+    "create-master-sub-category": "Create Master SubCategory",
+    "edit-master-sub-category": "Edit Master SubCategory"
   },
 
   "department": {
@@ -252,7 +252,30 @@
         "store-address":"Store Address",
         "date":"Date",
         "datasource":"Data Source"
+      },
+      "columns": {
+        "title": "Title",
+        "description": "Description"
       }
+    }
+    
+  },
+  "document": {
+      "create-document": "Create Document",
+      "edit-document": "Edit Document",
+      "title": "Document",
+      "columns": {},
+    "form": {
+      "category": "Category",
+      "sub-category": "Sub-category",
+      "title": "Title",
+      "measurement_unit": "Measurement Unit",
+      "description": "Description",
+      "author": "Author",
+      "copy_right_notice": "Copyright Notice",
+      "edition": "Edition",
+      "isbn": "ISBN",
+      "publication_date": "Publication Date"
     }
     
   },
