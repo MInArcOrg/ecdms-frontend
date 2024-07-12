@@ -129,12 +129,14 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = fals
       />
       <CustomDateSelector
         fullWidth
+        type="date"
         label={transl('document.form.publication_date')}
         placeholder={transl('document.form.publication_date')}
         name="publication_date"
         size="sm"
         sx={{ mb: 2 }}
       />
+
     </>
   );
 };

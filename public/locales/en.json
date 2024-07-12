@@ -261,10 +261,9 @@
     
   },
   "document": {
-    "resource":{
-      "create-resource": "Create Resource",
-      "edit-resource": "Edit Resource",
-      "title": "Resource",
+      "create-document": "Create Document",
+      "edit-document": "Edit Document",
+      "title": "Document",
       "columns": {},
     "form": {
       "category": "Category",
@@ -278,6 +277,7 @@
       "isbn": "ISBN",
       "publication_date": "Publication Date"
     }
+    
   },
   "login": {
     "welcome-message": "Welcome to {{templateName}}! 👋🏻",
@@ -317,5 +317,4 @@
       "success-updated": "Successfully updated!"
     }
   }
-}
 }

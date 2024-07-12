@@ -7,6 +7,7 @@ import DocumentForm from './document-form';
 import { IApiPayload } from 'src/types/requests';
 import documentApiService from 'src/services/document/document-service';
 import { Document } from 'src/types/document';
+import moment from 'moment';
 
 interface DocumentDrawerType {
   open: boolean;
@@ -67,7 +68,7 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
           title="document.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={document as Document}
+          initialValues={{ ...document as Document, publication_date: moment(document.publication_date).toDate() }}
           createActionFunc={isEdit ? editDocument : createDocument}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

@@ -36,10 +36,10 @@ export const documentColumns = (
               fontWeight: 500,
               textDecoration: 'none',
               color: 'text.secondary',
-              '&:hover': { color: 'primary.main' }
+              '&:hover': { color: 'primary.main' },
             }}
           >
-            {document.title}
+            {row.title}
           </Typography>
         );
       }

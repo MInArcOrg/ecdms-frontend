@@ -11,7 +11,7 @@ export interface Document {
     id: string;
     isbn: number;
     parent_id: string | null;
-    publication_date: string;
+    publication_date: string | Date;
     revision_no: string | null;
     title: string;
     updated_at: string;
