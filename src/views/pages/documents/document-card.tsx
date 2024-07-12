@@ -1,5 +1,5 @@
 // components/DocumentList.tsx
-import { Box, Card, CardActions, CardContent, Grid, Typography } from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, Grid, Typography } from '@mui/material';
 import { Fragment } from 'react';
 import { Document } from 'src/types/document';
 import FileDrawer from 'src/views/components/custom/files-drawer';
@@ -8,12 +8,14 @@ import RowOptions from 'src/views/shared/listing/row-options';
 
 const DocumentCard = ({
   document,
+  onDetail,
   onEdit,
   onDelete,
   refetch
 }: {
   document: Document;
-  onEdit: (category: Document) => void;
+  onDetail: (document: Document) => void;
+  onEdit: (document: Document) => void;
   onDelete: (id: string) => void;
   t: any;
   refetch: () => void;
@@ -25,7 +27,17 @@ const DocumentCard = ({
           <Grid item>
             <Box sx={{ display: 'flex' }}>
               <Box>
-                <Typography variant="h5" component="div">
+                <Typography
+                  noWrap
+                  component={Button}
+                  onClick={() => onDetail(document)}
+                  sx={{
+                    fontWeight: 500,
+                    textDecoration: 'none',
+                    color: 'text.secondary',
+                    '&:hover': { color: 'primary.main' }
+                  }}
+                >
                   {document.title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">

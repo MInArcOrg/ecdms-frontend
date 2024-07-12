@@ -7,13 +7,13 @@ import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import DescCollapse from '../resources/detail/desc-collapse';
 
-interface DepartmentDetailsSidebarProps {
+interface DocumentDetailProps {
     show: boolean;
     toggleDetail: () => void;
     documentId: string;
 }
 
-function DepartmentDetailsSidebar({ show, toggleDetail, documentId }: DepartmentDetailsSidebarProps) {
+function DocumentDetail({ show, toggleDetail, documentId }: DocumentDetailProps) {
     const { t, i18n } = useTranslation();
 
     const { data, isLoading, error } = useQuery({
@@ -130,4 +130,4 @@ function DepartmentDetailsSidebar({ show, toggleDetail, documentId }: Department
     );
 }
 
-export default DepartmentDetailsSidebar;
+export default DocumentDetail;

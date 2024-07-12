@@ -85,7 +85,7 @@
       }
     },
     "master-sub-category": {
-      "master-sub-category": "Category",
+      "master-sub-category": "SubCategory",
       "columns": {
         "title": "Title",
         "description": "Description"
@@ -95,8 +95,8 @@
         "description": "Description"
       }
     },
-    "create-master-sub-category": "Create Master Category",
-    "edit-master-sub-category": "Edit Master Category"
+    "create-master-sub-category": "Create Master SubCategory",
+    "edit-master-sub-category": "Edit Master SubCategory"
   },
 
   "department": {
@@ -317,4 +317,5 @@
       "success-updated": "Successfully updated!"
     }
   }
+}
 }

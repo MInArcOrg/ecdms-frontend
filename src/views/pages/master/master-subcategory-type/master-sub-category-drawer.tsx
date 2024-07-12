@@ -26,7 +26,7 @@ const validationSchema = yup.object().shape({
 
 const MasterSubCategoryDrawer = (props: MasterSubCategoryDrawerType) => {
   const { open, toggle, refetch, masterData, model } = props;
-
+  console.log('master sub cattegory', masterData)
   const isEdit = Boolean(masterData?.id);
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
@@ -66,7 +66,7 @@ const MasterSubCategoryDrawer = (props: MasterSubCategoryDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`master-data.${isEdit ? 'edit-master-type' : 'create-master-type'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`master-data.${isEdit ? 'edit-master-sub-category' : 'create-master-sub-category'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper<MasterSubCategory>
           edit={isEdit}

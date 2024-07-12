@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
 import Link from 'next/link';
@@ -12,6 +13,7 @@ interface CellType {
 }
 
 export const documentColumns = (
+  onDetail: (document: Document) => void,
   onEdit: (document: Document) => void,
   onDelete: (id: string) => void,
   t: any,
@@ -27,8 +29,9 @@ export const documentColumns = (
       renderCell: ({ row }: CellType) => {
         return (
           <Typography
-            component={Link}
-            href={`/documents/${typeId}/details/${row.id}`}
+            noWrap
+            component={Button}
+            onClick={() => onDetail(row)}
             sx={{
               fontWeight: 500,
               textDecoration: 'none',
@@ -36,7 +39,7 @@ export const documentColumns = (
               '&:hover': { color: 'primary.main' }
             }}
           >
-            {row?.title}
+            {document.title}
           </Typography>
         );
       }

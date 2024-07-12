@@ -13,9 +13,12 @@ import ItemsListing from 'src/views/shared/listing';
 import DocumentCard from './document-card';
 import DocumentDrawer from './document-drawer';
 import { documentColumns } from './document-row';
+import DocumentDetail from './document-detail';
 
 function DocumentList() {
   const [showDrawer, setShowDrawer] = useState(false);
+  const [showDetailDrawer, setShowDetailDrawer] = useState(false);
+
   const [selectedRow, setSelectedRow] = useState<Document | null>(null);
   const { t } = useTranslation();
   const router = useRouter();
@@ -39,6 +42,10 @@ function DocumentList() {
     setSelectedRow({} as Document);
     setShowDrawer(!showDrawer);
   };
+  const toggleDetailDrawer = () => {
+    setSelectedRow({} as Document);
+    setShowDetailDrawer(!showDetailDrawer);
+  };
 
   const handleEdit = (document: Document) => {
     toggleDrawer();
@@ -48,7 +55,10 @@ function DocumentList() {
     await documentApiService.delete(documentId);
     refetch();
   };
-
+  const hanldeClickDetail = (document: Document) => {
+    toggleDetailDrawer()
+    setSelectedRow(document)
+  }
   return (
     <Box>
       {showDrawer && (
@@ -66,7 +76,7 @@ function DocumentList() {
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
           ItemViewComponent={({ data }) => (
-            <DocumentCard document={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
+            <DocumentCard onDetail={hanldeClickDetail} document={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
           )}
           createActionConfig={{
             ...defaultCreateActionConfig,
@@ -79,13 +89,15 @@ function DocumentList() {
           }}
           fetchDataFunction={refetch}
           tableProps={{
-            headers: documentColumns(handleEdit, handleDelete, t, refetch, String(typeId))
+            headers: documentColumns(hanldeClickDetail, handleEdit, handleDelete, t, refetch, String(typeId))
           }}
           items={documents || []}
           onPaginationChange={handlePageChange}
         />
       </Card>
-      <DetailsSidebar >
+      {showDetailDrawer && (
+        <DocumentDetail documentId={String(selectedRow?.id)} show={showDetailDrawer} toggleDetail={toggleDetailDrawer} />)}
+
     </Box>
   );
 }

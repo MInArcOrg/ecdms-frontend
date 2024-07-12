@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
+import { isArray } from 'lodash';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import masterCategoryApiService from 'src/services/master-data/master-category-service';
@@ -29,6 +30,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = fals
         }
       })
   });
+
 
   const { data: documentSubCategories, refetch: refetchSubCategories } = useQuery({
     queryKey: ['masterSubCategory', 'document'],
@@ -66,10 +68,11 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = fals
           name="documentsubcategory_id"
           label={transl('document.form.sub-category')}
           options={
-            documentSubCategories?.payload?.map((documentSubCategory) => ({
-              value: documentSubCategory.id,
-              label: documentSubCategory.title
-            })) || []
+            isArray(documentSubCategories?.payload) ?
+              documentSubCategories?.payload?.map((documentSubCategory) => ({
+                value: documentSubCategory.id,
+                label: documentSubCategory.title
+              })) : [] || []
           }
         />
       </Box>

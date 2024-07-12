@@ -10,6 +10,7 @@ import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
 import MasterSubCategoryDrawer from './master-sub-category-drawer';
 import { masterSubCategoryRowColumns } from './master-sub-category-row';
+import MasterSubCategoryCard from './master-sub-category-card';
 interface MasterSubCategoryListProps {
   model: string;
   selectedCategory: MasterCategory | null;
@@ -18,13 +19,14 @@ interface MasterSubCategoryListProps {
 const MasterSubCategoryList: React.FC<MasterSubCategoryListProps> = ({ model, selectedCategory }) => {
   const dynamicVarName = `${model}category_id`;
   const fetchMasterSubCategory = (params: GetRequestParam): Promise<IApiResponse<MasterSubCategory[]>> => {
-    return masterSubCategoryApiService.getAll(model, { ...params, filter: { ...params.filter, [dynamicVarName]: selectedCategory?.id } });
+    return masterSubCategoryApiService.getAll(model, { ...params });
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
   const [selectedRow, setSelectedRow] = useState<MasterSubCategory | null>(null);
   const { t } = useTranslation();
 
   const toggleDrawer = () => {
+    setSelectedRow({} as MasterSubCategory);
     setShowDrawer(!showDrawer);
   };
   const {
@@ -74,6 +76,8 @@ const MasterSubCategoryList: React.FC<MasterSubCategoryListProps> = ({ model, se
             subject: 'position'
           }
         }}
+        ItemViewComponent={({ data }) => <MasterSubCategoryCard model={model} masterSubCategory={data} onDelete={handleDelete} onEdit={handleEdit}
+          refetch={refetch} t={t} />}
         tableProps={{ headers: masterSubCategoryRowColumns(handleEdit, handleDelete, t, refetch) }}
         fetchDataFunction={refetch}
         items={categorys || []}
