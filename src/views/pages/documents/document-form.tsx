@@ -53,6 +53,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = fals
     <>
       <Box mb={2}>
         <CustomSelect
+  size="small"
           name="documentcategory_id"
           label={transl('document.form.category')}
           options={
@@ -65,6 +66,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = fals
       </Box>
       <Box mb={2}>
         <CustomSelect
+  size="small"
           name="documentsubcategory_id"
           label={transl('document.form.sub-category')}
           options={
@@ -81,7 +83,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = fals
         label={transl('document.form.title')}
         placeholder={transl('document.form.title')}
         name="title"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
 
@@ -92,7 +94,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = fals
         name="description"
         multiline={true}
         rows="4"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
@@ -100,7 +102,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = fals
         label={transl('document.form.author')}
         placeholder={transl('document.form.author')}
         name="author"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
@@ -108,7 +110,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = fals
         label={transl('document.form.copy_right_notice')}
         placeholder={transl('document.form.copy_right_notice')}
         name="copy_right_notice"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
@@ -116,7 +118,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = fals
         label={transl('document.form.edition')}
         placeholder={transl('document.form.edition')}
         name="edition"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
@@ -124,7 +126,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = fals
         label={transl('document.form.isbn')}
         placeholder={transl('document.form.isbn')}
         name="isbn"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomDateSelector
@@ -133,7 +135,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = fals
         label={transl('document.form.publication_date')}
         placeholder={transl('document.form.publication_date')}
         name="publication_date"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
 

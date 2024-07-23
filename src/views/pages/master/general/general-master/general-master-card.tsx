@@ -2,6 +2,7 @@
 import { Box, CardActions, CardContent, Grid, Typography } from '@mui/material';
 import { Fragment } from 'react';
 import { GeneralMaster } from 'src/types/general/general-master';
+import { capitalizeEveryLetterWithDash, changeToPascalCase } from 'src/utils/string';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
@@ -39,9 +40,9 @@ const GeneralMasterCard = ({
           <Grid item>
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id} type={`${type.toLocaleUpperCase().replace(/-/g, '_')}`} /> &nbsp;
+                <FileDrawer id={generalMaster.id} type={capitalizeEveryLetterWithDash(type)} /> &nbsp;
                 <ModelActionComponent
-                  model="Position"
+                  model={changeToPascalCase(type)}
                   model_id={generalMaster.id}
                   refetchModel={refetch}
                   resubmit={function (): void {

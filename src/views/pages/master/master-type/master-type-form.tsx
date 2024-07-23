@@ -24,7 +24,7 @@ const MasterTypeForm: React.FC<MasterTypeFormProps> = ({ formik, isLocaleEdit = 
         label={transl('master-data.form.title')}
         placeholder={transl('master-data.form.title')}
         name="title"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
 
@@ -35,7 +35,7 @@ const MasterTypeForm: React.FC<MasterTypeFormProps> = ({ formik, isLocaleEdit = 
         name="description"
         multiline={true}
         rows="4"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
 

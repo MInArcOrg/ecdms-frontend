@@ -279,6 +279,26 @@
     }
     
   },
+  "project": {
+    "create-project":"Create Project",
+    "edit-project":"Edit Project",
+    "form": {
+      "category": "Category",
+      "sub-category": "Sub-category",
+      "name": "Project Name",
+      "contract-no": "Contract Number",
+      "budget-code": "Budget Code",
+      "procurement-number": "Procurement Number",
+      "remark": "Remark",
+      "status":"Status"
+    },
+    "columns": {
+      "title": "Title",
+      "elapsed-time": "Elapsed Time",
+      "cpi": "CPI",
+      "spi": "SPI"
+    }
+  },
   "login": {
     "welcome-message": "Welcome to {{templateName}}! 👋🏻",
     "sign-in-message": "Please sign-in to your account and start the adventure",

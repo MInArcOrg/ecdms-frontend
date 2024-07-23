@@ -8,6 +8,7 @@ import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import GeneralMasterForm from './general-master-form';
+import { capitalizeEveryLetterWithDash } from 'src/utils/string';
 
 interface GeneralMasterDrawerType {
   open: boolean;
@@ -55,7 +56,7 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
 
   const onActionSuccess = async (response: IApiResponse<GeneralMaster>, payload: IApiPayload<GeneralMaster>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `${type.toLocaleUpperCase().replace(/-/g, '_')}`, response.payload.id, '', '');
+      uploadFile(payload.files[0], capitalizeEveryLetterWithDash(type), response.payload.id, '', '');
     }
     refetch();
     handleClose();

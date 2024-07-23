@@ -19,6 +19,7 @@ const CustomSelect: React.FC<any> = (props) => {
         onChange={field.onChange}
         onBlur={field.onBlur}
         disabled={props.disabled || isSubmitting}
+        size={props?.size}
       >
         {props.options.map((option: any) => (
           <MenuItem key={option.value} value={option.value}>

@@ -8,6 +8,7 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import GeneralMasterResourceForm from './general-master-resource-form';
 import { GeneralMasterResource } from 'src/types/general/general-master';
+import { capitalizeEveryLetterWithDash } from 'src/utils/string';
 
 interface GeneralMasterResourceDrawerType {
   open: boolean;
@@ -55,7 +56,7 @@ const GeneralMasterResourceDrawer = (props: GeneralMasterResourceDrawerType) => 
 
   const onActionSuccess = async (response: IApiResponse<GeneralMasterResource>, payload: IApiPayload<GeneralMasterResource>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `${type.toLocaleUpperCase().replace(/-/g, '_')}`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `${capitalizeEveryLetterWithDash(type)}_type`, response.payload.id, '', '');
     }
     refetch();
     handleClose();

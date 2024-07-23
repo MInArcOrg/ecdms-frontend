@@ -33,7 +33,7 @@ const GeneralMasterForm: React.FC<GeneralMasterFormProps> = ({
         label={transl('master-data.form.title')}
         placeholder={transl('master-data.form.title')}
         name="title"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
 
@@ -44,7 +44,7 @@ const GeneralMasterForm: React.FC<GeneralMasterFormProps> = ({
         name="description"
         multiline={true}
         rows="4"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       {type === 'study-fields' && <StudyFieldMasterForm />}

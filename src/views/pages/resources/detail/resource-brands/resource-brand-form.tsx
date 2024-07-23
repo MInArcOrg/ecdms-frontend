@@ -22,7 +22,7 @@ const ResourceBrandForm: React.FC<ResourceBrandFormProps> = ({ formik, isLocaleE
         label={transl('resource.resource-brand.form.title')}
         placeholder={transl('resource.resource-brand.form.title')}
         name="title"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
@@ -30,7 +30,7 @@ const ResourceBrandForm: React.FC<ResourceBrandFormProps> = ({ formik, isLocaleE
         label={transl('resource.resource-brand.form.datasource')}
         placeholder={transl('resource.resource-brand.form.datasource')}
         name="datasource"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
 
@@ -41,7 +41,7 @@ const ResourceBrandForm: React.FC<ResourceBrandFormProps> = ({ formik, isLocaleE
         name="description"
         multiline={true}
         rows="4"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomMultiFileUpload label={transl('common.form.image-upload')} files={files} onFilesChange={onFilesChange} />

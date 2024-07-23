@@ -32,7 +32,7 @@ const GeneralMasterResourceForm: React.FC<GeneralMasterResourceFormProps> = ({
         label={transl('master-data.form.service_type')}
         placeholder={transl('master-data.form.service_type')}
         name="service_type"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
 
@@ -43,7 +43,7 @@ const GeneralMasterResourceForm: React.FC<GeneralMasterResourceFormProps> = ({
         name="specification_detail"
         multiline={true}
         rows="4"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
@@ -51,7 +51,7 @@ const GeneralMasterResourceForm: React.FC<GeneralMasterResourceFormProps> = ({
         label={transl('master-data.form.measurement_unit')}
         placeholder={transl('master-data.form.measurement_unit')}
         name="measurement_unit"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomFileUpload label={'File Upload'} file={file} onFileChange={onFileChange} />

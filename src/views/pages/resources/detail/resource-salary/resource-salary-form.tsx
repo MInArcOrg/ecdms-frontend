@@ -25,7 +25,7 @@ const ResourceSalaryForm: React.FC<ResourceSalaryFormProps> = ({ formik, isLocal
         label={transl('resource.resource-salary.form.max_pay')}
         placeholder={transl('resource.resource-salary.form.max_pay')}
         name="max_pay"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
@@ -34,7 +34,7 @@ const ResourceSalaryForm: React.FC<ResourceSalaryFormProps> = ({ formik, isLocal
         label={transl('resource.resource-salary.form.min_pay')}
         placeholder={transl('resource.resource-salary.form.min_pay')}
         name="min_pay"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
@@ -42,7 +42,7 @@ const ResourceSalaryForm: React.FC<ResourceSalaryFormProps> = ({ formik, isLocal
         label={transl('resource.resource-salary.form.salary_type')}
         placeholder={transl('resource.resource-salary.form.salary_type')}
         name="salary_type"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomDateSelector
@@ -50,7 +50,7 @@ const ResourceSalaryForm: React.FC<ResourceSalaryFormProps> = ({ formik, isLocal
         label={transl('resource.resource-salary.form.year')}
         placeholder={transl('resource.resource-salary.form.year')}
         name="year"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />

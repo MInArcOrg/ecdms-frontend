@@ -18,7 +18,7 @@ const PositionForm: React.FC<PositionFormProps> = ({ formik, isLocaleEdit = fals
         label={transl('department.position.form.name')}
         placeholder={transl('department.position.form.name')}
         name="name"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
 
@@ -29,7 +29,7 @@ const PositionForm: React.FC<PositionFormProps> = ({ formik, isLocaleEdit = fals
         name="description"
         multiline={true}
         rows="4"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
     </>

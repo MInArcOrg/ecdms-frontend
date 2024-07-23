@@ -20,7 +20,7 @@ const MasterSubCategoryForm: React.FC<MasterSubCategoryFormProps> = ({ formik, i
         label={transl('master-data.master-sub-category.form.title')}
         placeholder={transl('master-data.master-sub-category.form.title')}
         name="title"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
 
@@ -31,7 +31,7 @@ const MasterSubCategoryForm: React.FC<MasterSubCategoryFormProps> = ({ formik, i
         name="description"
         multiline={true}
         rows="4"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
     </>

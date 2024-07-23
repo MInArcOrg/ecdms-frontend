@@ -43,6 +43,7 @@ const ResourceForm: React.FC<ResourceFormProps> = ({ formik, isLocaleEdit = fals
     <>
       <Box mb={2}>
         <CustomSelect
+  size="small"
           name="resourcecategory_id"
           label={transl('resource.form.category')}
           options={
@@ -55,6 +56,7 @@ const ResourceForm: React.FC<ResourceFormProps> = ({ formik, isLocaleEdit = fals
       </Box>
       <Box mb={2}>
         <CustomSelect
+  size="small"
           name="resourcesubcategory_id"
           label={transl('resource.form.sub-category')}
           options={
@@ -70,7 +72,7 @@ const ResourceForm: React.FC<ResourceFormProps> = ({ formik, isLocaleEdit = fals
         label={transl('resource.form.title')}
         placeholder={transl('resource.form.title')}
         name="title"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
@@ -78,7 +80,7 @@ const ResourceForm: React.FC<ResourceFormProps> = ({ formik, isLocaleEdit = fals
         label={transl('resource.form.measurement_unit')}
         placeholder={transl('resource.form.measurement_unit')}
         name="measurement_unit"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
 
@@ -89,7 +91,7 @@ const ResourceForm: React.FC<ResourceFormProps> = ({ formik, isLocaleEdit = fals
         name="description"
         multiline={true}
         rows="4"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
     </>
