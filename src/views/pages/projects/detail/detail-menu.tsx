@@ -4,24 +4,19 @@ import Icon from 'src/@core/components/icon';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Can from 'src/layouts/components/acl/Can';
-import ProjectInfo from './project-info';
+import ProjectInfo from './project-info-drawer';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ProjectMenuItem } from './project-menu-items';
 
-interface MenuItem {
-  id: string;
-  path: string;
-  title: string;
-  subject?: string;
-}
 
 interface DetailMenuProps {
   id: string;
-  menuItems: MenuItem[];
-  activeMenu: string;
+  menuItems: ProjectMenuItem;
+  activeMenu: number;
   setActiveMenu: (path: string) => void;
   goBack: () => void;
-  typeid: string;
+  typeId: string;
   isProject?: boolean;
 }
 
@@ -31,7 +26,7 @@ const DetailMenu: React.FC<DetailMenuProps> = ({
   activeMenu,
   setActiveMenu,
   goBack,
-  typeid,
+  typeId,
   isProject = false
 }) => {
   const theme = useTheme();

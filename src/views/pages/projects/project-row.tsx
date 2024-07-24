@@ -30,7 +30,7 @@ export const projectColumns = (
           <Typography
             noWrap
             component={Link}
-            href={`/projects/${typeId}/details/${row.id}`}
+            href={`/projects/${typeId}/details/${row.id}/general`}
             sx={{
               fontWeight: 500,
               textDecoration: 'none',
@@ -100,7 +100,7 @@ export const projectColumns = (
               throw new Error('Function not implemented.');
             }}
           />
-                    <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
+          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
 
         </Fragment>
       )

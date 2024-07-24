@@ -292,6 +292,51 @@
       "remark": "Remark",
       "status":"Status"
     },
+    "general-information": {
+      "client": "Client",
+      "contractor": "Contractor",
+      "consultant": "Consultant",
+      "please-add-client": "Please add client",
+      "please-add-contractor": "Please add contractor",
+      "please-add-consultant": "Please add consultant",
+      "contractPrice": "Contract Price",
+      "projectStatus": "Project Status",
+      "please-add-main-contract-price": "Please add Main Contract Price",
+      "upload-cover-profile": "Upload Cover Profile",
+      "upload-profile-picture": "Upload Profile Picture",
+      "please-fill-contract-signing-date": "Please fill contract signing date",
+      "from": "from" 
+    },
+    "finance": {
+      "information": "Finance Information",
+      "total-contract-amount": "Total Contract Amount",
+      "paid-ipc": "Paid IPC",
+      "remaining-ipc": "Remaining IPC"
+    },
+    "earned-value-analysis": {
+      "earned-value-analysis": "Earned Value Analysis",
+
+      "planned-value": "Planned Value",
+      "earned-value": "Earned Value",
+      "actual-cost": "Actual Cost",
+      "cpi": "CPI",
+      "cv": "CV",
+      "spi": "SPI",
+      "sv": "SV"
+    },
+    "time": {
+      "information": "Time Information",
+      "commencement-date": "Commencement Date",
+      "completion-date": "Completion Date",
+      "total-duration": "Total Duration",
+      "elapsed-time": "Elapsed Time"
+    },
+    "stakeholder": {
+      "information": "Stakeholder Information",
+      "client": "Client",
+      "consultant": "Consultant",
+      "contractor": "Contractor"
+    },
     "columns": {
       "title": "Title",
       "elapsed-time": "Elapsed Time",

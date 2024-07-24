@@ -1,4 +1,4 @@
-const subMenuItems = (id:string, typeid:string) => [
+const subMenuItems = (id: string, typeid: string) => [
   {
     id: 1,
     title: 'General Info',

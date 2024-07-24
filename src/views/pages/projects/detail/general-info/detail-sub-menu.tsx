@@ -3,14 +3,14 @@ import { useTranslation } from 'react-i18next';
 import Icon from 'src/@core/components/icon';
 
 interface SubMenuItem {
-  id: string;
+  id: number;
   path: string;
   title: string;
 }
 
 interface DetailSubMenuProps {
   subMenuItems: SubMenuItem[];
-  activeSubMenu: string;
+  activeSubMenu: number;
   setActiveSubMenu: (path: string) => void;
 }
 

@@ -1,41 +1,38 @@
 import { Box, Card, Grid } from '@mui/material';
 import { useRouter } from 'next/router';
-import DetailSubMenu from './detail-sub-menu';
+import DetailSubMenu from './general-info/detail-sub-menu';
 import menuTabs from './project-menu-items';
 import DetailMenu from './detail-menu';
 import { ReactNode } from 'react';
 
 interface ProjectLayoutProps {
-  toggleForm: () => void;
   activeMenu: number;
   activeSubMenu: number;
-  subMenuItems: Array<{ id: string; label: string; path: string }>;
+  subMenuItems: Array<{ id: number; title: string; path: string }>;
   children: ReactNode;
 }
 
 const ProjectLayout: React.FC<ProjectLayoutProps> = ({
-  toggleForm,
   activeMenu,
   activeSubMenu,
   subMenuItems,
   children,
 }) => {
   const router = useRouter();
-  const { id, typeid } = router.query;
+  const { id, typeId } = router.query;
   const isProject = true;
 
   return (
     <Box>
       <DetailMenu
         id={id as string}
-        menuItems={menuTabs(id as string, typeid as string)}
-        activeMenu={menuTabs(id as string, typeid as string)[activeMenu].id}
+        menuItems={menuTabs(id as string, typeId as string)}
+        activeMenu={menuTabs(id as string, typeId as string)[activeMenu].id}
         setActiveMenu={(path) => {
           router.push(path);
         }}
-        goBack={() => router.replace(`/projects/${typeid}`)}
-        isProject={isProject}
-      />
+        goBack={() => router.replace(`/projects/${typeId}`)}
+        isProject={isProject} typeId={String(typeId)} />
       <Box display="flex" flexDirection="column" gap={1} paddingTop={5}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={3}>

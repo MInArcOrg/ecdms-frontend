@@ -46,13 +46,20 @@ const projectApiService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
-  // uploadImage: (id:string) =>
-  //   customAxios.post('/generics/files', formData, {
-  //     headers: {
-  //       'Content-Type': 'multipart/form-data'
-  //     }
-  //   })
+      }),
+
+  getProjectGeneralInformation: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
+    buildGetRequest(`/projects/project-general-information/${idx}`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
+  getProjectDetailInformation: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
+    buildGetRequest(`/projects/project-detail/${idx}`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
 };
 
 export default projectApiService;

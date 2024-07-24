@@ -80,9 +80,8 @@ const ResourceLayout: React.FC<ResourceLayoutProps> = ({ children, id, data, goB
 
         return {
           title: title,
-          route: `${baseRoute}/${
-            module.model === 'resourcequantityandprice' ? 'priceandquantity' : module.model === 'resourcetype' ? 'type' : module.model
-          }/`
+          route: `${baseRoute}/${module.model === 'resourcequantityandprice' ? 'priceandquantity' : module.model === 'resourcetype' ? 'type' : module.model
+            }/`
         };
       });
       console.log('routes', routes);
