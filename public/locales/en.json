@@ -344,6 +344,19 @@
       "spi": "SPI"
     }
   },
+  "location": {
+    "form": {
+      "country": "Country",
+      "state-region": "State/Region",
+      "city": "City",
+      "subcity": "Subcity",
+      "street": "Street",
+      "block_number": "Block Number",
+      "house_number": "House Number",
+      "northing": "Northing",
+      "easting": "Easting"
+    }
+  },
   "login": {
     "welcome-message": "Welcome to {{templateName}}! 👋🏻",
     "sign-in-message": "Please sign-in to your account and start the adventure",

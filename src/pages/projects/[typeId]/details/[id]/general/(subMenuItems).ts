@@ -11,8 +11,8 @@ const subMenuItems = (id: string, typeid: string) => [
   },
   {
     id: 3,
-    title: 'Location',
-    path: `/projects/${typeid}/details/${id}/general/location`
+    title: 'Address',
+    path: `/projects/${typeid}/details/${id}/general/address`
   },
   {
     id: 4,
