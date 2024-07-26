@@ -22,7 +22,7 @@ export interface Project {
   }
  
   export interface ProjectStatus {
-    createdAt: string; // ISO 8601 date-time string
+    created_at: string; // ISO 8601 date-time string
     description: string | null;
     id: string;
     parent_id: string | null;
@@ -30,5 +30,5 @@ export interface Project {
     revision_no: string | null;
     status: GeneralMaster;
     status_id: string;
-    updatedAt: string; // ISO 8601 date-time string
+    updated_at: string; // ISO 8601 date-time string
   }

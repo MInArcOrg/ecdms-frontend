@@ -12,18 +12,18 @@ interface ProjectStatusDrawerType {
   toggle: () => void;
   refetch: () => void;
   projectStatus: ProjectStatus;
-  modelId:string;
+  projectId:string;
 }
 
 const validationSchema = yup.object().shape({
-  status: yup.string().required(),
+  status_id: yup.string().required(),
   description: yup.string(),
 
 });
 
 const ProjectStatusDrawer = (props: ProjectStatusDrawerType) => {
   // ** Props
-  const { open, toggle, refetch, projectStatus, modelId } = props;
+  const { open, toggle, refetch, projectStatus, projectId } = props;
 
   const isEdit = projectStatus?.id ? true : false;
   
@@ -31,17 +31,14 @@ const ProjectStatusDrawer = (props: ProjectStatusDrawerType) => {
     return await projectStatusApiService.create(body);
   };
   
-  const editProjectStatus = async (body: IApiPayload<ProjectStatus>) => {
-    return await projectStatusApiService.update(projectStatus?.id || '', body);
-  };
-
+  
   const getPayload = (values: ProjectStatus) => {
     const payload = {
       data: {
-        ...values,
-        id: projectStatus?.id,
-        model_id:modelId
-      },
+        description:values.description,
+        status_id:values.status_id,
+        project_id:projectId 
+      } as ProjectStatus,
       files: [] // Adjust if you need to handle files
     };
     return payload;
@@ -58,15 +55,15 @@ const ProjectStatusDrawer = (props: ProjectStatusDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`project-status.${isEdit ? 'edit-project-status' : 'create-project-status'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`project.project-status.${isEdit ? 'edit-project-status' : 'create-project-status'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title="projectStatus.title" // Adjust the title key if necessary
+          title="project.project-status.project-status" // Adjust the title key if necessary
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{ ...projectStatus as ProjectStatus }}
-          createActionFunc={isEdit ? editProjectStatus : createProjectStatus}
+          createActionFunc={createProjectStatus}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

@@ -331,6 +331,14 @@
       "total-duration": "Total Duration",
       "elapsed-time": "Elapsed Time"
     },
+    "project-status":{
+      "project-status":"Project Status",
+      "edit-project-status":"Edit Project Status",
+      "form":{
+        "status":"Status",
+        "description":"Description"
+      }
+    },
     "stakeholder": {
       "information": "Stakeholder Information",
       "client": "Client",
@@ -378,6 +386,13 @@
         "min": "Password must be at least {{min}} characters long"
       }
     }
+  },
+  "model-action":{
+    "registered-data":"Registered Data",
+    "checked-data":"Checked Data",
+    "approved-data":"Approved Data",
+    "authorized-data":"Authorized Data",
+    "rejected-data":"Rejected Data"
   },
   "common": {
     "edit": "Edit",

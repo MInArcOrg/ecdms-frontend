@@ -1,88 +1,30 @@
-import { Box, CardContent, Grid, Typography } from '@mui/material'
-import CustomChip from 'src/@core/components/mui/chip'
+import React from 'react';
+import CustomChip from 'src/@core/components/mui/chip';
+import { STATUS_COLORS, STATUS_LABELS, StatusKey } from 'src/constants/status-constants';
 
-function ProjectStatusChip({ data, onClick }: { data: string, onClick: () => void }) {
-    if (data === 'Active') {
-        return (
-            <CustomChip
-                label='Active'
-                color='info'
-                rounded
-                size='small'
-                skin='light'
-                sx={{
-                    '& .MuiChip-label': { textTransform: 'capitalize' },
-                    // '&:hover': { color: '#fff' },
-                    cursor: 'pointer',
-                    height: 15
-                }}
-                onClick={onClick}
-            />
-        )
-    } else if (data === 'Terminated') {
-        return (
-            <CustomChip
-                label='Terminated'
-                color='error'
-                rounded
-                size='small'
-                skin='light'
-                sx={{
-                    '& .MuiChip-label': { textTransform: 'capitalize' },
-                    height: 15,
-                    cursor: 'pointer'
-                }}
-                onClick={onClick}
-            />
-        )
-    } else if (data === 'Pending') {
-        return (
-            <CustomChip
-                label='Pending'
-                color='warning'
-                rounded
-                size='small'
-                skin='light'
-                sx={{
-                    '& .MuiChip-label': { textTransform: 'capitalize' },
-                    height: 15,
-                    cursor: 'pointer'
-                }}
-                onClick={onClick}
-            />
-        )
-    } else if (data === 'Completed') {
-        return (
-            <CustomChip
-                label='Completed'
-                color='success'
-                rounded
-                size='small'
-                skin='light'
-                sx={{
-                    '& .MuiChip-label': { textTransform: 'capitalize' },
-                    height: 15,
-                    cursor: 'pointer'
-                }}
-                onClick={onClick}
-            />
-        )
-    }
-
-    return (
-        <CustomChip
-            label='No Status'
-            color='primary'
-            rounded
-            size='small'
-            skin='light'
-            sx={{
-                '& .MuiChip-label': { textTransform: 'capitalize' },
-                height: 15,
-                cursor: 'pointer'
-            }}
-        />
-    )
+interface ProjectStatusChipProps {
+  data: string;
+  onClick?: () => void;
 }
 
-export default ProjectStatusChip
+const ProjectStatusChip: React.FC<ProjectStatusChipProps> = ({ data, onClick }) => {
+  const status = (data in STATUS_COLORS ? data : 'NoStatus') as StatusKey;
+
+  return (
+    <CustomChip
+      label={STATUS_LABELS[status]}
+      color={STATUS_COLORS[status]}
+      rounded
+      size='small'
+      skin='light'
+      sx={{
+        '& .MuiChip-label': { textTransform: 'capitalize' },
+        height: 15,
+        cursor: 'pointer'
+      }}
+      onClick={onClick}
+    />
+  );
+};
+
+export default ProjectStatusChip;

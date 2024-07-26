@@ -1,28 +1,28 @@
-const subMenuItems = (id: string, typeid: string) => [
+const subMenuItems = (id: string, typeId: string) => [
   {
     id: 1,
     title: 'General Info',
-    path: `/projects/${typeid}/details/${id}/general/detail`
+    path: `/projects/${typeId}/details/${id}/general/detail`
   },
   {
     id: 2,
     title: 'To Date Status',
-    path: `/projects/${typeid}/details/${id}/general/to-date-status`
+    path: `/projects/${typeId}/details/${id}/general/to-date-status`
   },
   {
     id: 3,
     title: 'Address',
-    path: `/projects/${typeid}/details/${id}/general/address`
+    path: `/projects/${typeId}/details/${id}/general/address`
   },
   {
     id: 4,
     title: 'Project Status',
-    path: `/projects/${typeid}/details/${id}/general/projectStatus`
+    path: `/projects/${typeId}/details/${id}/general/project-status`
   }
   // {
   //   id: 5,
   //   title: 'Road Location',
-  //   path: `/projects/${typeid}/details/${id}/general/roadLocation`
+  //   path: `/projects/${typeId}/details/${id}/general/roadLocation`
   // }
 ]
 

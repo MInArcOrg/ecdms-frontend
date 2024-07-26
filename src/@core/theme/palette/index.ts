@@ -1,3 +1,4 @@
+import { ThemeOptions } from '@mui/material';
 // ** Type Imports
 import { Palette } from '@mui/material';
 import { Skin } from 'src/@core/layouts/types';
@@ -50,6 +51,7 @@ const DefaultPalette = (mode: Palette['mode'], skin: Skin): Palette => {
       contrastText: whiteColor
     },
     error: {
+      
       light: '#ED6F70',
       main: '#EA5455',
       dark: '#CE4A4B',

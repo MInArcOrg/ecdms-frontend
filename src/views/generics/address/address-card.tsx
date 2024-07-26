@@ -53,7 +53,7 @@ const AddressCard = ({
                   <FileDrawer id={address.id} type={'RESOURCE'} /> &nbsp;
                   <Box sx={{ display: 'flex' }}>
                     <ModelActionComponent
-                      model="Position"
+                      model="Address"
                       model_id={address.id}
                       refetchModel={refetch}
                       resubmit={function (): void {

@@ -7,6 +7,8 @@ import { TimelineConnector, TimelineContent, TimelineDot, TimelineItem, Timeline
 import { useTranslation } from 'react-i18next';
 import ProjectStatusChip from '../general-info/project-status-chip';
 import { ProjectStatus } from 'src/types/project';
+import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
+import i18n from 'src/configs/i18n';
 
 const Timeline = styled(MuiTimeline)({
   paddingLeft: 0,
@@ -31,24 +33,26 @@ const TimelineSection: React.FC<TimelineSectionProps> = ({ data, onStatusClick }
     <Timeline>
       {data.map((item, index) => (
         <TimelineItem key={item.id}>
-          <TimelineSeparator>
-            <TimelineDot color='primary' variant={`${index === 0 ? 'filled' : 'outlined'}`} />
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent sx={{ '& svg': { verticalAlign: 'bottom' } }}>
-            <Box display='flex' alignContent='center' alignItems='center'>
-              <Typography variant='body2' sx={{ color: 'text.primary' }}>
-                <span>{t('date_format', { date: new Date(item.createdAt).toDateString() })}</span>
-                <Icon icon='tabler:arrow-right' fontSize={20} />{' '}
-              </Typography>
+        <TimelineSeparator>
+          <TimelineDot color='primary' variant={`${index === 0 ? 'filled' : 'outlined'}`} />
+          <TimelineConnector />
+        </TimelineSeparator>
+        <TimelineContent sx={{ '& svg': { verticalAlign: 'bottom' } }}>
+          <Box display='flex' alignContent='center' alignItems='center'>
+            <Typography variant='body2' sx={{ color: 'text.primary' }}>
+              <span>{getDynamicDate(i18n, item?.created_at).toDateString()}</span>
+              <Icon icon='tabler:arrow-right' fontSize={20} />{' '}
+            </Typography>
 
-              <ProjectStatusChip
-                data={item.status.title}
-                onClick={() => onStatusClick(item)}
-              />
-            </Box>
-          </TimelineContent>
-        </TimelineItem>
+            <ProjectStatusChip
+              data={item.status.title}
+              onClick={() => {
+                onStatusClick(item)
+              }}
+            />
+          </Box>
+        </TimelineContent>
+      </TimelineItem>
       ))}
     </Timeline>
   );

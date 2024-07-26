@@ -6,52 +6,52 @@ interface MenuItem {
   subject: string;
 }
 
-const menuItems = (id: string, typeid: string): MenuItem[] => [{
+const menuItems = (id: string, typeId: string): MenuItem[] => [{
   id: 1,
   title: 'General Info',
-  path: `/projects/${typeid}/details/${id}/general/detail`,
+  path: `/projects/${typeId}/details/${id}/general/detail`,
   action: 'view_projectinfo',
   subject: 'projectinfo'
 },
 {
   id: 2,
   title: 'Financial',
-  path: `/projects/${typeid}/details/${id}/financial/MainContractPrice`,
+  path: `/projects/${typeId}/details/${id}/financial/MainContractPrice`,
   action: 'view_projectfinance',
   subject: 'projectfinance'
 },
 {
   id: 3,
   title: 'Time',
-  path: `/projects/${typeid}/details/${id}/time/timeline`,
+  path: `/projects/${typeId}/details/${id}/time/timeline`,
   action: 'view_projecttime',
   subject: 'projecttime'
 },
 {
   id: 4,
   title: 'Stakeholder',
-  path: `/projects/${typeid}/details/${id}/stakeholder`,
+  path: `/projects/${typeId}/details/${id}/stakeholder`,
   action: 'view_projectstakeholder',
   subject: 'projectstakeholder'
 },
 {
   id: 5,
   title: 'Project File',
-  path: `/projects/${typeid}/details/${id}/projectFile/initiation`,
+  path: `/projects/${typeId}/details/${id}/projectFile/initiation`,
   action: 'view_projectfile',
   subject: 'projectfile'
 },
 {
   id: 6,
   title: 'Plan',
-  path: `/projects/${typeid}/details/${id}/plan`,
+  path: `/projects/${typeId}/details/${id}/plan`,
   action: 'view_projectplan',
   subject: 'projectplan'
 },
 {
   id: 7,
   title: 'Resource',
-  path: `/projects/${typeid}/details/${id}/resource`,
+  path: `/projects/${typeId}/details/${id}/resource`,
   action: 'view_projectresource',
   subject: 'projectresource'
 },
@@ -59,14 +59,14 @@ const menuItems = (id: string, typeid: string): MenuItem[] => [{
 {
   id: 8,
   title: 'Report',
-  path: `/projects/${typeid}/details/${id}/report/summary`,
+  path: `/projects/${typeId}/details/${id}/report/summary`,
   action: 'view_projectreport',
   subject: 'projectreport'
 },
 {
   id: 9,
   title: 'Other',
-  path: `/projects/${typeid}/details/${id}/other/`,
+  path: `/projects/${typeId}/details/${id}/other/`,
   action: 'view_other',
   subject: 'other'
 }

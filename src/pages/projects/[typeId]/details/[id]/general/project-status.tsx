@@ -4,10 +4,11 @@ import { Box, Card, CardContent, CircularProgress } from '@mui/material';
 import subMenuItems from './(subMenuItems)';
 import { useTranslation } from 'react-i18next';
 import ProjectLayout from 'src/views/pages/projects/detail/project-layout';
+import ProjectStatusComponent from 'src/views/pages/projects/detail/project-status/project-status-component';
 
 const ProjectStatus = () => {
   const router = useRouter();
-  const { id, typeid } = router.query;
+  const { id, typeId } = router.query;
 
 
 
@@ -16,10 +17,10 @@ const ProjectStatus = () => {
     <ProjectLayout
       activeMenu={0}
       activeSubMenu={3}
-      subMenuItems={subMenuItems(id as string, typeid as string)}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       
-      <ProjectStatusComponent/>
+      <ProjectStatusComponent projectId={String(id)}/>
     </ProjectLayout>
   );
 };

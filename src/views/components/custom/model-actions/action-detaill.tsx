@@ -66,7 +66,7 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
             <ActionItem
               replyData={{ type: ACTION_REGISTERED, actionstate_id: actions?.authorization_data?.registered_data?.user_id } as ActionReply}
               refetchAction={refetchModel}
-              title={t('Registered Data')}
+              title={t('model-action.registered-data')}
               user={actions?.authorization_data?.registered_data?.user as User}
               actionData={actions?.authorization_data?.registered_data}
             />
@@ -76,7 +76,7 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
                 <ActionItem
                   replyData={{ type: ACTION_CHECKED, actionstate_id: actions?.authorization_data?.checked_data?.user_id } as ActionReply}
                   refetchAction={refetchModel}
-                  title={t('Checked Data')}
+                  title={t('model-action.checked-data')}
                   user={actions?.authorization_data?.checked_data?.user as User}
                   actionData={actions?.authorization_data?.checked_data}
                 />
@@ -88,7 +88,7 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
                 <ActionItem
                   replyData={{ type: ACTION_APPROVED, actionstate_id: actions?.authorization_data?.approved_data?.user_id } as ActionReply}
                   refetchAction={refetchModel}
-                  title={t('Approved Data')}
+                  title={t('model-action.approved-data')}
                   user={actions?.authorization_data?.approved_data?.user as User}
                   actionData={actions?.authorization_data?.approved_data}
                 />
@@ -102,7 +102,7 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
                     { type: ACTION_AUTHORIZED, actionstate_id: actions?.authorization_data?.authorized_data?.user_id } as ActionReply
                   }
                   refetchAction={refetchModel}
-                  title={t('Authorized Data')}
+                  title={t('model-action.authorized-data')}
                   user={actions?.authorization_data?.authorized_data?.user as User}
                   actionData={actions?.authorization_data?.authorized_data}
                 />
@@ -114,7 +114,7 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
                 <ActionItem
                   replyData={{ type: ACTION_REJECTED, actionstate_id: actions?.authorization_data?.rejected_data?.user_id } as ActionReply}
                   refetchAction={refetchModel}
-                  title={t('Rejected Data')}
+                  title={t('model-action.rejected-data')}
                   user={actions?.authorization_data?.rejected_data?.user as User}
                   actionData={actions?.authorization_data?.rejected_data}
                 />
