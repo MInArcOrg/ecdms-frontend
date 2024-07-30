@@ -6,6 +6,7 @@ import documentApiService from 'src/services/document/document-service';
 import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import DescCollapse from '../resources/detail/desc-collapse';
+import Icon from 'src/@core/components/icon';
 
 interface DocumentDetailProps {
   show: boolean;
@@ -101,7 +102,7 @@ function DocumentDetail({ show, toggleDetail, documentId }: DocumentDetailProps)
 
                 <FormControl fullWidth variant="outlined" sx={{ mt: 1 }}>
                   <Box sx={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-                    <strong variant="body1">{t('Attachment')}:</strong>
+                    <Typography variant="h5">{t('Attachment')}:</Typography>
                     <Box>
                       <Button
                         component="a"
@@ -113,7 +114,6 @@ function DocumentDetail({ show, toggleDetail, documentId }: DocumentDetailProps)
                           p: 1.5
                         }}
                       >
-                        <Typography component={Icon} icon="mdi:download" color="primary" size="25" />
                         {data.attachement?.substr(data.attachement?.lastIndexOf('.') + 1)}
                       </Button>
                     </Box>
