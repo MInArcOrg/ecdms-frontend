@@ -53,6 +53,7 @@ const ResourceQuantityPriceForm: React.FC<ResourceQuantityPriceFormProps> = ({
     <>
       <Box mb={2}>
         <CustomSelect
+          size="small"
           name="resourcebrand_id"
           label={transl('resource.resource-quantity-price.form.brand')}
           options={
@@ -65,6 +66,7 @@ const ResourceQuantityPriceForm: React.FC<ResourceQuantityPriceFormProps> = ({
       </Box>
       <Box mb={2}>
         <CustomSelect
+          size="small"
           name="detailresourcetype_id"
           label={transl('resource.resource-quantity-price.form.type')}
           options={
@@ -82,7 +84,7 @@ const ResourceQuantityPriceForm: React.FC<ResourceQuantityPriceFormProps> = ({
         placeholder={transl('resource.resource-quantity-price.form.unit-price')}
         name="unit_price"
         rows="4"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
@@ -99,7 +101,7 @@ const ResourceQuantityPriceForm: React.FC<ResourceQuantityPriceFormProps> = ({
         label={transl('resource.resource-quantity-price.form.store-address')}
         placeholder={transl('resource.resource-quantity-price.form.store-address')}
         name="store_address"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomDateSelector
@@ -107,7 +109,7 @@ const ResourceQuantityPriceForm: React.FC<ResourceQuantityPriceFormProps> = ({
         label={transl('resource.resource-quantity-price.form.date')}
         placeholder={transl('resource.resource-quantity-price.form.date')}
         name="date"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
@@ -115,7 +117,7 @@ const ResourceQuantityPriceForm: React.FC<ResourceQuantityPriceFormProps> = ({
         label={transl('resource.resource-quantity-price.form.datasource')}
         placeholder={transl('resource.resource-quantity-price.form.datasource')}
         name="datasource"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />

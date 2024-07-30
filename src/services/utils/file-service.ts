@@ -166,16 +166,6 @@ export const handleProfilePictureError = (event: React.SyntheticEvent<HTMLImageE
 };
 
 // Uploadable photo types
-export const uploadablePhotoTypes = {
-  stakeholder_profile_photo: 'STAKEHOLDER_PROFILE_PHOTO',
-  project_profile_photo: 'PROJECT_PROFILE_PHOTO',
-  user_profile_photo: 'USER_PROFILE_PHOTO',
-  resource: 'RESOURCE',
-  resourceBrand: 'RESOURCE_BRAND',
-  resourceSpecification: 'RESOURCE_SPECIFICATION',
-  resourceType: 'RESOURCE_TYPE',
-  user_cover_photo: 'USER_COVER_PHOTO'
-} as const;
 
 // Uploadable stakeholder file types
 export const uploadableStakeholderFileTypes = {

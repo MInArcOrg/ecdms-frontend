@@ -34,6 +34,7 @@ const ResourceStudyFieldForm: React.FC<ResourceStudyFieldFormProps> = ({
     <>
       <Box mb={2}>
         <CustomSelect
+          size="small"
           name="studyfield_id"
           label={transl('resource.resource-study-field.form.studyfield')}
           options={
@@ -52,7 +53,7 @@ const ResourceStudyFieldForm: React.FC<ResourceStudyFieldFormProps> = ({
         name="description"
         multiline={true}
         rows="4"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />

@@ -22,7 +22,7 @@ const RoleForm: React.FC<RoleFormProps> = ({ formik, isLocaleEdit = false, defau
         name="description"
         multiline
         rows={3}
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
     </>

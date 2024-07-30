@@ -28,7 +28,7 @@ const DetailResourceTypeForm: React.FC<DetailResourceTypeFormProps> = ({
         label={transl('resource.detail-resource-type.form.title')}
         placeholder={transl('resource.detail-resource-type.form.title')}
         name="title"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
@@ -36,7 +36,7 @@ const DetailResourceTypeForm: React.FC<DetailResourceTypeFormProps> = ({
         label={transl('resource.detail-resource-type.form.datasource')}
         placeholder={transl('resource.detail-resource-type.form.datasource')}
         name="datasource"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
 
@@ -47,7 +47,7 @@ const DetailResourceTypeForm: React.FC<DetailResourceTypeFormProps> = ({
         name="description"
         multiline={true}
         rows="4"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
       <CustomMultiFileUpload label={transl('common.form.image-upload')} files={files} onFilesChange={onFilesChange} />

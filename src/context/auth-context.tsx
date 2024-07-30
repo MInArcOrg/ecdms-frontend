@@ -62,7 +62,6 @@ const AuthProvider = ({ children }: Props) => {
             // localStorage.removeItem('accessToken');
             // setUser(null);
             // setLoading(false);
-
             // if (authConfig.onTokenExpiration === 'logout' && !router.pathname.includes('login')) {
             //   router.replace('/auth/login');
             // }

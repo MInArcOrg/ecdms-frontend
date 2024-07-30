@@ -1,22 +1,22 @@
-// material-ui
-import LinearProgress from '@mui/material/LinearProgress';
-import { styled } from '@mui/material/styles';
+// src/components/LoadingPlaceholder.tsx
+import React from 'react';
+import { Box, CircularProgress, Typography, CircularProgressProps } from '@mui/material';
 
-// styles
-const LoaderWrapper = styled('div')({
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  zIndex: 1301,
-  width: '100%'
-});
+// Define props for the LoadingPlaceholder component, including CircularProgressProps
+interface LoadingPlaceholderProps {
+  message?: string;
+  circularProgressProps?: CircularProgressProps; // Add optional CircularProgressProps
+}
 
-// ==============================|| LOADER ||============================== //
+const LoadingPlaceholder: React.FC<LoadingPlaceholderProps> = ({ message = 'Loading...', circularProgressProps }) => {
+  return (
+    <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="100%">
+      <CircularProgress {...circularProgressProps} /> {/* Apply props to CircularProgress */}
+      <Typography variant="subtitle1" mt={2}>
+        {message}
+      </Typography>
+    </Box>
+  );
+};
 
-const Loader = () => (
-  <LoaderWrapper>
-    <LinearProgress color="primary" />
-  </LoaderWrapper>
-);
-
-export default Loader;
+export default LoadingPlaceholder;

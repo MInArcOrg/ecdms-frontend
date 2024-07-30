@@ -1,7 +1,7 @@
 import DocumentList from 'src/views/pages/documents/document-list';
 
 const DocumentPage = () => {
-    return <DocumentList />;
+  return <DocumentList />;
 };
 
 export default DocumentPage;

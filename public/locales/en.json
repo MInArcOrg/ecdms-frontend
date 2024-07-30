@@ -279,6 +279,92 @@
     }
     
   },
+  "project": {
+    "create-project":"Create Project",
+    "edit-project":"Edit Project",
+    "form": {
+      "category": "Category",
+      "sub-category": "Sub-category",
+      "name": "Project Name",
+      "contract-no": "Contract Number",
+      "budget-code": "Budget Code",
+      "procurement-number": "Procurement Number",
+      "remark": "Remark",
+      "status":"Status"
+    },
+    "general-information": {
+      "client": "Client",
+      "contractor": "Contractor",
+      "consultant": "Consultant",
+      "please-add-client": "Please add client",
+      "please-add-contractor": "Please add contractor",
+      "please-add-consultant": "Please add consultant",
+      "contractPrice": "Contract Price",
+      "projectStatus": "Project Status",
+      "please-add-main-contract-price": "Please add Main Contract Price",
+      "upload-cover-profile": "Upload Cover Profile",
+      "upload-profile-picture": "Upload Profile Picture",
+      "please-fill-contract-signing-date": "Please fill contract signing date",
+      "from": "from" 
+    },
+    "finance": {
+      "information": "Finance Information",
+      "total-contract-amount": "Total Contract Amount",
+      "paid-ipc": "Paid IPC",
+      "remaining-ipc": "Remaining IPC"
+    },
+    "earned-value-analysis": {
+      "earned-value-analysis": "Earned Value Analysis",
+
+      "planned-value": "Planned Value",
+      "earned-value": "Earned Value",
+      "actual-cost": "Actual Cost",
+      "cpi": "CPI",
+      "cv": "CV",
+      "spi": "SPI",
+      "sv": "SV"
+    },
+    "time": {
+      "information": "Time Information",
+      "commencement-date": "Commencement Date",
+      "completion-date": "Completion Date",
+      "total-duration": "Total Duration",
+      "elapsed-time": "Elapsed Time"
+    },
+    "project-status":{
+      "project-status":"Project Status",
+      "edit-project-status":"Edit Project Status",
+      "form":{
+        "status":"Status",
+        "description":"Description"
+      }
+    },
+    "stakeholder": {
+      "information": "Stakeholder Information",
+      "client": "Client",
+      "consultant": "Consultant",
+      "contractor": "Contractor"
+    },
+    "columns": {
+      "title": "Title",
+      "elapsed-time": "Elapsed Time",
+      "cpi": "CPI",
+      "spi": "SPI"
+    }
+  },
+  "location": {
+    "form": {
+      "country": "Country",
+      "state-region": "State/Region",
+      "city": "City",
+      "subcity": "Subcity",
+      "street": "Street",
+      "block_number": "Block Number",
+      "house_number": "House Number",
+      "northing": "Northing",
+      "easting": "Easting"
+    }
+  },
   "login": {
     "welcome-message": "Welcome to {{templateName}}! 👋🏻",
     "sign-in-message": "Please sign-in to your account and start the adventure",
@@ -300,6 +386,13 @@
         "min": "Password must be at least {{min}} characters long"
       }
     }
+  },
+  "model-action":{
+    "registered-data":"Registered Data",
+    "checked-data":"Checked Data",
+    "approved-data":"Approved Data",
+    "authorized-data":"Authorized Data",
+    "rejected-data":"Rejected Data"
   },
   "common": {
     "edit": "Edit",

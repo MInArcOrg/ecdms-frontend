@@ -18,7 +18,7 @@ const SubDepartmentForm: React.FC<SubDepartmentFormProps> = ({ formik, isLocaleE
         label={transl('department.sub-department.form.name')}
         placeholder={transl('department.sub-department.form.name')}
         name="name"
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
 
@@ -29,7 +29,7 @@ const SubDepartmentForm: React.FC<SubDepartmentFormProps> = ({ formik, isLocaleE
         name="description"
         multiline
         rows={3}
-        size="sm"
+        size="small"
         sx={{ mb: 2 }}
       />
     </>
