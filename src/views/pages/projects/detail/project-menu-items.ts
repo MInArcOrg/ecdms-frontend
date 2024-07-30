@@ -17,7 +17,7 @@ const menuItems = (id: string, typeId: string): MenuItem[] => [
   {
     id: 2,
     title: 'Financial',
-    path: `/projects/${typeId}/details/${id}/financial/MainContractPrice`,
+    path: `/projects/${typeId}/details/${id}/financial/main-contract-price`,
     action: 'view_projectfinance',
     subject: 'projectfinance'
   },
