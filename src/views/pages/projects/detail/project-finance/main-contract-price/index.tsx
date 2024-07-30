@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react';
-import { Box, CircularProgress, IconButton } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import Can from 'src/layouts/components/acl/Can';
@@ -52,7 +52,9 @@ const MainContractPriceComponent = ({ projectId }: { projectId: string }) => {
           </Box>
         </Can>
       )}
+      <Box>
       <MainContractPriceCard mainContractPrice={mainContractPrice} rebate={rebate} />
+      </Box>
     </Box>
   );
 };
