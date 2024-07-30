@@ -5,7 +5,7 @@
  * @param currency - The currency code to use (e.g., 'USD', 'EUR').
  * @returns The formatted currency string.
  */
-export function formatCurrency(amount: number, locale: string = 'et', currency: string = 'ETB'): string {
+export function formatCurrency(amount: number, locale: string = 'en', currency: string = 'ETB'): string {
   return new Intl.NumberFormat(locale, {
     style: 'currency',
     currency: currency

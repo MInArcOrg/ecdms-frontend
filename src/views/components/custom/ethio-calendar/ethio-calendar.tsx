@@ -1,7 +1,8 @@
-import { useRef, useState, FC } from 'react';
-import { Box, Typography, IconButton, Grid, TextField, ClickAwayListener, useTheme, Menu } from '@mui/material';
 import { Icon } from '@iconify/react';
+import { Box, ClickAwayListener, Grid, IconButton, Menu, Typography, useTheme } from '@mui/material';
 import { EtDatetime } from 'abushakir';
+import { FC, useRef, useState } from 'react';
+import CustomTextField from 'src/@core/components/mui/text-field';
 import CalendarDropdownBtn from './calendar-dropdown-btn';
 import EthiopianDate from './ethiopian-date';
 
@@ -16,9 +17,10 @@ interface EthioCalendarProps {
   onChange: (date: EthiopianDate) => void;
   placeholderText?: string;
   disabled?: boolean;
+  [key: string]: any; 
 }
 
-const EthioCalendar: FC<EthioCalendarProps> = ({ value, onChange, placeholderText, disabled }) => {
+const EthioCalendar: FC<EthioCalendarProps> = ({ value, onChange, placeholderText, disabled,...rest }) => {
   const [isOpen, setIsOpen] = useState(false);
   const theme = useTheme();
   const textFieldRef = useRef<HTMLDivElement>(null);
@@ -245,8 +247,7 @@ const EthioCalendar: FC<EthioCalendarProps> = ({ value, onChange, placeholderTex
   return (
     <ClickAwayListener onClickAway={handleTextFieldBlur}>
       <Box ref={textFieldRef}>
-        <TextField
-          size="small"
+        <CustomTextField
           variant="outlined"
           autoComplete="off"
           placeholder={placeholderText || 'Select Date'}
@@ -257,6 +258,7 @@ const EthioCalendar: FC<EthioCalendarProps> = ({ value, onChange, placeholderTex
             style: { cursor: 'pointer' }
           }}
           disabled={disabled}
+          {...rest}
         />
         <Menu keepMounted anchorEl={anchorEl} onClose={() => setIsOpen(false)} open={isOpen} sx={{ maxWidth: '100%' }}>
           <Box sx={{ width: '240px' }}>

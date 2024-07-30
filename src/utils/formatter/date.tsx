@@ -1,4 +1,7 @@
 import moment from 'moment';
+import i18n from 'src/configs/i18n';
+import { convertToGC } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
+import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
 // Function to format a date
 export function formatDate(date: any, format = 'YYYY-MM-DD') {
   return moment(date).format(format);
@@ -91,4 +94,14 @@ export const timeGreating = (date: string | Date): { greating: string; greatingN
     greatingName = 'evening';
   }
   return { greating: newGreeting, greatingName };
+};
+
+
+export const convertDateToLocaleDate = (date: EthiopianDate | Date | string|undefined) => {
+  if (i18n.language === 'am') {
+    if (date instanceof EthiopianDate) {
+      return convertToGC(date);
+    }
+  }
+  return date;
 };

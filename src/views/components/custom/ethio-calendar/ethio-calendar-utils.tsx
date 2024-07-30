@@ -18,7 +18,7 @@ export const convertToEC = (date: Date | string): EthiopianDate => {
   return new EthiopianDate(convertedDate.year, convertedDate.month, convertedDate.day);
 };
 
-export const getDynamicDate = (i18n: any, date: Date | string): Date | EthiopianDate => {
+export const getDynamicDate = (i18n: any, date: Date | string |undefined): Date | EthiopianDate => {
   const newDate = new Date(
     typeof date === 'string'
       ? new Date(date.length > 10 ? date.substring(0, 10) : date).toISOString().slice(0, -1)

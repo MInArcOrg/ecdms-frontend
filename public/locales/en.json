@@ -350,6 +350,17 @@
       "elapsed-time": "Elapsed Time",
       "cpi": "CPI",
       "spi": "SPI"
+    },
+    "main-contract-price": {
+      "price-details": "Price Details",
+      "title": "Main Contract Price",
+      "edit-main-contract-price":"Edit Main Contract Price",
+      "create-main-contract-price":"Create Main Contract Price",
+      "form": {
+        "main-contract-price": "Main Contract Price",
+        "rebate": "Rebate",
+        "remark":"Remark"
+      }
     }
   },
   "location": {
