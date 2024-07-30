@@ -5,10 +5,9 @@ import { getInitials } from 'src/@core/utils/get-initials';
 import { availableColors } from 'src/configs/app-constants';
 // import { getProfilePictureURL } from 'src/services/utils/file';
 import User from 'src/types/admin/user';
-import Member from 'src/types/member/member';
 
 type UserAvatarProps = AvatarProps & {
-  user?: User | Member;
+  user?: User;
   alt?: string;
   photoSrc?: string | null;
 };
