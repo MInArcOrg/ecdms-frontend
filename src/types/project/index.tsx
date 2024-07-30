@@ -32,3 +32,13 @@ export interface ProjectStatus {
   status_id: string;
   updated_at: string; // ISO 8601 date-time string
 }
+export interface ProjectFinance{
+  id: string;
+  parent_id?: string;
+  project_id: string;
+  main_contract_price_amount?: number;
+  rebate?: number;
+  remark?: string;
+  revision_no?: number;
+  price_after_rebate?: number;
+}
