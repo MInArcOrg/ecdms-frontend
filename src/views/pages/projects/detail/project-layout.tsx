@@ -12,12 +12,7 @@ interface ProjectLayoutProps {
   children: ReactNode;
 }
 
-const ProjectLayout: React.FC<ProjectLayoutProps> = ({
-  activeMenu,
-  activeSubMenu,
-  subMenuItems,
-  children,
-}) => {
+const ProjectLayout: React.FC<ProjectLayoutProps> = ({ activeMenu, activeSubMenu, subMenuItems, children }) => {
   const router = useRouter();
   const { id, typeId } = router.query;
   const isProject = true;
@@ -32,7 +27,9 @@ const ProjectLayout: React.FC<ProjectLayoutProps> = ({
           router.push(path);
         }}
         goBack={() => router.replace(`/projects/${typeId}`)}
-        isProject={isProject} typeId={String(typeId)} />
+        isProject={isProject}
+        typeId={String(typeId)}
+      />
       <Box display="flex" flexDirection="column" gap={1} paddingTop={5}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={3}>

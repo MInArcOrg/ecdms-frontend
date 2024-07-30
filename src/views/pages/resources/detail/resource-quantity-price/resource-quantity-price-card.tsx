@@ -60,9 +60,9 @@ const ResourceQuantityPriceCard: React.FC<ResourceQuantityPriceCardProps> = ({ r
               model="ResourceQuantityAndPrice"
               model_id={resourceQuantityPrice.id}
               refetchModel={refetch}
-              resubmit={() => { }}
+              resubmit={() => {}}
               title=""
-              postAction={() => { }}
+              postAction={() => {}}
             />
             <RowOptions onEdit={onEdit} onDelete={() => onDelete(resourceQuantityPrice.id)} item={resourceQuantityPrice} options={[]} />
           </Box>

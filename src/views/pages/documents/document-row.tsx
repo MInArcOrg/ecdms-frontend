@@ -1,7 +1,6 @@
 import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
-import Link from 'next/link';
 import { Fragment } from 'react';
 import { Document } from 'src/types/document';
 import { formatCreatedAt } from 'src/utils/formatter/date';
@@ -36,7 +35,7 @@ export const documentColumns = (
               fontWeight: 500,
               textDecoration: 'none',
               color: 'text.secondary',
-              '&:hover': { color: 'primary.main' },
+              '&:hover': { color: 'primary.main' }
             }}
           >
             {row.title}

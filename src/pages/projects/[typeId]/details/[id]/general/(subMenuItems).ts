@@ -24,6 +24,6 @@ const subMenuItems = (id: string, typeId: string) => [
   //   title: 'Road Location',
   //   path: `/projects/${typeId}/details/${id}/general/roadLocation`
   // }
-]
+];
 
-export default subMenuItems
+export default subMenuItems;

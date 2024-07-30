@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActions, CardContent, Grid, Link, Typography } from '@mui/material';
+import { Box, Card, CardActions, CardContent, Grid, Typography } from '@mui/material';
 import dynamic from 'next/dynamic';
 import { Fragment } from 'react';
 import Address from 'src/types/general/address';
@@ -30,21 +30,22 @@ const AddressCard = ({
       <CardContent>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-          <CardContent>
-                  <Box display='flex' alignItems='center' justifyContent='space-between'>
-                    <Typography variant='h6'>
-                      {transl('Project')} {transl('Location')}
-                    </Typography>
-                  </Box>
-                  <Box mt={3}>
-                    <MapView position={[address.northing, address.easting]} />
-                  </Box>
-                  <Box mt={3} display='flex' gap={3}>
-                    <Typography variant='body1'>
-                      <strong>{transl('Address')}:</strong> {address.country}, {address.city}, {address.region}, {address.subcity}, {address.street}, {address.block_number}, {address.house_number}
-                    </Typography>
-                  </Box>
-                </CardContent>
+            <CardContent>
+              <Box display="flex" alignItems="center" justifyContent="space-between">
+                <Typography variant="h6">
+                  {transl('Project')} {transl('Location')}
+                </Typography>
+              </Box>
+              <Box mt={3}>
+                <MapView position={[address.northing, address.easting]} />
+              </Box>
+              <Box mt={3} display="flex" gap={3}>
+                <Typography variant="body1">
+                  <strong>{transl('Address')}:</strong> {address.country}, {address.city}, {address.region}, {address.subcity},{' '}
+                  {address.street}, {address.block_number}, {address.house_number}
+                </Typography>
+              </Box>
+            </CardContent>
           </Grid>
           <Grid item>
             <CardActions style={{ justifyContent: 'flex-end' }}>

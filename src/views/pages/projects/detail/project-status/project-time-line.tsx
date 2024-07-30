@@ -1,14 +1,13 @@
-import React from 'react';
-import { Box, Typography } from '@mui/material';
 import { Icon } from '@iconify/react';
-import MuiTimeline from '@mui/lab/Timeline';
-import { styled } from '@mui/system';
 import { TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator } from '@mui/lab';
-import { useTranslation } from 'react-i18next';
-import ProjectStatusChip from '../general-info/project-status-chip';
+import MuiTimeline from '@mui/lab/Timeline';
+import { Box, Typography } from '@mui/material';
+import { styled } from '@mui/system';
+import React from 'react';
+import i18n from 'src/configs/i18n';
 import { ProjectStatus } from 'src/types/project';
 import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
-import i18n from 'src/configs/i18n';
+import ProjectStatusChip from '../general-info/project-status-chip';
 
 const Timeline = styled(MuiTimeline)({
   paddingLeft: 0,
@@ -27,32 +26,30 @@ interface TimelineSectionProps {
 }
 
 const TimelineSection: React.FC<TimelineSectionProps> = ({ data, onStatusClick }) => {
-  const { t } = useTranslation();
-
   return (
     <Timeline>
       {data.map((item, index) => (
         <TimelineItem key={item.id}>
-        <TimelineSeparator>
-          <TimelineDot color='primary' variant={`${index === 0 ? 'filled' : 'outlined'}`} />
-          <TimelineConnector />
-        </TimelineSeparator>
-        <TimelineContent sx={{ '& svg': { verticalAlign: 'bottom' } }}>
-          <Box display='flex' alignContent='center' alignItems='center'>
-            <Typography variant='body2' sx={{ color: 'text.primary' }}>
-              <span>{getDynamicDate(i18n, item?.created_at).toDateString()}</span>
-              <Icon icon='tabler:arrow-right' fontSize={20} />{' '}
-            </Typography>
+          <TimelineSeparator>
+            <TimelineDot color="primary" variant={`${index === 0 ? 'filled' : 'outlined'}`} />
+            <TimelineConnector />
+          </TimelineSeparator>
+          <TimelineContent sx={{ '& svg': { verticalAlign: 'bottom' } }}>
+            <Box display="flex" alignContent="center" alignItems="center">
+              <Typography variant="body2" sx={{ color: 'text.primary' }}>
+                <span>{getDynamicDate(i18n, item?.created_at).toDateString()}</span>
+                <Icon icon="tabler:arrow-right" fontSize={20} />{' '}
+              </Typography>
 
-            <ProjectStatusChip
-              data={item.status.title}
-              onClick={() => {
-                onStatusClick(item)
-              }}
-            />
-          </Box>
-        </TimelineContent>
-      </TimelineItem>
+              <ProjectStatusChip
+                data={item.status.title}
+                onClick={() => {
+                  onStatusClick(item);
+                }}
+              />
+            </Box>
+          </TimelineContent>
+        </TimelineItem>
       ))}
     </Timeline>
   );

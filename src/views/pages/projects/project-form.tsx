@@ -22,10 +22,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, isLocaleEdit = false,
 
   const { data: projectStatus } = useQuery({
     queryKey: ['general-master', 'project-progress-statuses'],
-    queryFn: () =>
-      generalMasterDataApiService.getAll('project-progress-statuses', {
-
-      })
+    queryFn: () => generalMasterDataApiService.getAll('project-progress-statuses', {})
   });
   const { data: projectCategories } = useQuery({
     queryKey: ['masterCategory', 'project'],
@@ -58,7 +55,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, isLocaleEdit = false,
     <>
       <Box mb={2}>
         <CustomSelect
-  size="small"
+          size="small"
           name="projectcategory_id"
           label={transl('project.form.category')}
           options={
@@ -71,29 +68,31 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, isLocaleEdit = false,
       </Box>
       <Box mb={2}>
         <CustomSelect
-  size="small"
+          size="small"
           name="projectsubcategory_id"
           label={transl('project.form.sub-category')}
           options={
-            isArray(projectSubCategories?.payload) ?
-              projectSubCategories?.payload?.map((projectSubCategory) => ({
-                value: projectSubCategory.id,
-                label: projectSubCategory.title
-              })) : [] || []
+            isArray(projectSubCategories?.payload)
+              ? projectSubCategories?.payload?.map((projectSubCategory) => ({
+                  value: projectSubCategory.id,
+                  label: projectSubCategory.title
+                }))
+              : [] || []
           }
         />
       </Box>
       <Box mb={2}>
         <CustomSelect
-  size="small"
+          size="small"
           name="status_id"
           label={transl('project.form.status')}
           options={
-            isArray(projectStatus?.payload) ?
-              projectStatus?.payload?.map((projectSubCategory) => ({
-                value: projectSubCategory.id,
-                label: projectSubCategory.title
-              })) : [] || []
+            isArray(projectStatus?.payload)
+              ? projectStatus?.payload?.map((projectSubCategory) => ({
+                  value: projectSubCategory.id,
+                  label: projectSubCategory.title
+                }))
+              : [] || []
           }
         />
       </Box>

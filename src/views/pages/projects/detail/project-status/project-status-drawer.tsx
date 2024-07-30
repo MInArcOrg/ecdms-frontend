@@ -12,13 +12,12 @@ interface ProjectStatusDrawerType {
   toggle: () => void;
   refetch: () => void;
   projectStatus: ProjectStatus;
-  projectId:string;
+  projectId: string;
 }
 
 const validationSchema = yup.object().shape({
   status_id: yup.string().required(),
-  description: yup.string(),
-
+  description: yup.string()
 });
 
 const ProjectStatusDrawer = (props: ProjectStatusDrawerType) => {
@@ -26,18 +25,17 @@ const ProjectStatusDrawer = (props: ProjectStatusDrawerType) => {
   const { open, toggle, refetch, projectStatus, projectId } = props;
 
   const isEdit = projectStatus?.id ? true : false;
-  
+
   const createProjectStatus = async (body: IApiPayload<ProjectStatus>) => {
     return await projectStatusApiService.create(body);
   };
-  
-  
+
   const getPayload = (values: ProjectStatus) => {
     const payload = {
       data: {
-        description:values.description,
-        status_id:values.status_id,
-        project_id:projectId 
+        description: values.description,
+        status_id: values.status_id,
+        project_id: projectId
       } as ProjectStatus,
       files: [] // Adjust if you need to handle files
     };
@@ -55,14 +53,18 @@ const ProjectStatusDrawer = (props: ProjectStatusDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`project.project-status.${isEdit ? 'edit-project-status' : 'create-project-status'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={`project.project-status.${isEdit ? 'edit-project-status' : 'create-project-status'}`}
+      handleClose={handleClose}
+      open={open}
+    >
       {() => (
         <FormPageWrapper
           edit={isEdit}
           title="project.project-status.project-status" // Adjust the title key if necessary
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{ ...projectStatus as ProjectStatus }}
+          initialValues={{ ...(projectStatus as ProjectStatus) }}
           createActionFunc={createProjectStatus}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

@@ -53,7 +53,7 @@ const ResourceQuantityPriceForm: React.FC<ResourceQuantityPriceFormProps> = ({
     <>
       <Box mb={2}>
         <CustomSelect
-  size="small"
+          size="small"
           name="resourcebrand_id"
           label={transl('resource.resource-quantity-price.form.brand')}
           options={
@@ -66,7 +66,7 @@ const ResourceQuantityPriceForm: React.FC<ResourceQuantityPriceFormProps> = ({
       </Box>
       <Box mb={2}>
         <CustomSelect
-  size="small"
+          size="small"
           name="detailresourcetype_id"
           label={transl('resource.resource-quantity-price.form.type')}
           options={

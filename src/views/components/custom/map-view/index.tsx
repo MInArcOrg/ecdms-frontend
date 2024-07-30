@@ -19,18 +19,13 @@ const customIcon = new L.Icon({
 
 const MapView: React.FC<MapViewProps> = ({ position, width = '100%', height = '300px' }) => {
   return (
-    <MapContainer
-      center={position}
-      zoom={13}
-      scrollWheelZoom={true}
-      style={{ height, width }}
-    >
-      <TileLayer
-        url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-      />
+    <MapContainer center={position} zoom={13} scrollWheelZoom={true} style={{ height, width }}>
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <Marker position={position} icon={customIcon}>
         <Popup>
-          <span>Location: {position[0]}, {position[1]}</span>
+          <span>
+            Location: {position[0]}, {position[1]}
+          </span>
         </Popup>
       </Marker>
     </MapContainer>

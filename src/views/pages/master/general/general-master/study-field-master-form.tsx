@@ -19,7 +19,7 @@ const StudyFieldMasterForm = () => {
     <Fragment>
       <Box sx={{ mt: 4 }}>
         <CustomSelect
-  size="small"
+          size="small"
           name="study_program_id"
           label={transl('master-data.form.study-program')}
           options={
@@ -32,7 +32,7 @@ const StudyFieldMasterForm = () => {
       </Box>
       <Box sx={{ mt: 4 }}>
         <CustomSelect
-  size="small"
+          size="small"
           name="studylevel_id"
           label={transl('master-data.form.study-level')}
           options={

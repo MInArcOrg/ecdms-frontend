@@ -1,13 +1,12 @@
 import * as yup from 'yup';
 
 import { FormikProps } from 'formik';
+import projectApiService from 'src/services/project/project-service';
+import { Project } from 'src/types/project';
+import { IApiPayload } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import ProjectForm from './project-form';
-import { IApiPayload } from 'src/types/requests';
-import projectApiService from 'src/services/project/project-service';
-import { Project } from 'src/types/project';
-import moment from 'moment';
 
 interface ProjectDrawerType {
   open: boolean;
@@ -16,7 +15,6 @@ interface ProjectDrawerType {
   project: Project;
   typeId: string;
 }
-
 
 const validationSchema = yup.object().shape({
   projectcategory_id: yup.string().required('Project category is required'),
@@ -28,8 +26,6 @@ const validationSchema = yup.object().shape({
   procurement_no: yup.string().required('Procurement number is required'),
   remark: yup.string().nullable()
 });
-
-
 
 const ProjectDrawer = (props: ProjectDrawerType) => {
   // ** Props
@@ -70,7 +66,7 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
           title="project.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{ ...project as Project}}
+          initialValues={{ ...(project as Project) }}
           createActionFunc={isEdit ? editProject : createProject}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

@@ -14,80 +14,84 @@ import EarnedValueAnalysis from './earned-value-analysis';
 import i18n from 'src/configs/i18n';
 
 interface ProjectInfoProps {
-    show: boolean;
-    toggleDrawer: () => void;
-    id: string;
-    title: string;
+  show: boolean;
+  toggleDrawer: () => void;
+  id: string;
+  title: string;
 }
 
 const ProjectInfo: React.FC<ProjectInfoProps> = ({ show, toggleDrawer, id, title }) => {
-    const { data: projectGeneralInformation, isLoading, refetch } = useQuery({
-        queryKey: ['project-general-information', id],
-        queryFn: () => projectApiService.getProjectDetailInformation(id, {}),
-    });
+  const {
+    data: projectGeneralInformation,
+    isLoading,
+    refetch
+  } = useQuery({
+    queryKey: ['project-general-information', id],
+    queryFn: () => projectApiService.getProjectDetailInformation(id, {})
+  });
 
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
-    useEffect(() => {
-        if (id) {
-            refetch();
-        }
-    }, [id, refetch]);
+  useEffect(() => {
+    if (id) {
+      refetch();
+    }
+  }, [id, refetch]);
 
-    return (
-        <Fragment>
-            <Drawer
-                anchor='right'
-                open={show}
-                sx={{
-                    '& .MuiDrawer-paper': {
-                        width: {
-                            xs: '100%',
-                            md: '36%',
-                            lg: '30%',
-                        },
-                        boxSizing: 'border-box',
-                    },
-                }}
-            >
-                <Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            boxShadow: 1,
-                            p: 3,
-                        }}
-                    >
-                        <Typography variant='h6'>{t(title)}</Typography>
-                        <Icon icon='tabler:x' fontSize='20' cursor='pointer' onClick={toggleDrawer} />
-                    </Box>
-                </Box>
-                <CardContent>
-                    {isLoading && (
-                        <Box display='flex' justifyContent='center' alignItems='center' mt={2}>
-                            <CircularProgress />
-                        </Box>
-                    )}
-                    {!isLoading && projectGeneralInformation?.payload && (
-                        <Box alignContent='center' justifyContent='space-between'>
-                            <Typography variant='subtitle1' fontWeight='light' fontSize='16px'>
-                                <strong>{projectGeneralInformation?.payload?.name}</strong>
-                            </Typography>
-                            <Divider />
-                            <StakeholderInformation data={projectGeneralInformation?.payload} />
-                            <Divider />
-                            <TimeInformation data={projectGeneralInformation?.payload} i18n={i18n} />
-                            <Divider />
-                            <FinanceInformation data={projectGeneralInformation?.payload} />
-                            <Divider />
-                            <EarnedValueAnalysis data={projectGeneralInformation?.payload} />
-                        </Box>
-                    )}
-                </CardContent>
-            </Drawer>
-        </Fragment>
-    );
+  return (
+    <Fragment>
+      <Drawer
+        anchor="right"
+        open={show}
+        sx={{
+          '& .MuiDrawer-paper': {
+            width: {
+              xs: '100%',
+              md: '36%',
+              lg: '30%'
+            },
+            boxSizing: 'border-box'
+          }
+        }}
+      >
+        <Box>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              boxShadow: 1,
+              p: 3
+            }}
+          >
+            <Typography variant="h6">{t(title)}</Typography>
+            <Icon icon="tabler:x" fontSize="20" cursor="pointer" onClick={toggleDrawer} />
+          </Box>
+        </Box>
+        <CardContent>
+          {isLoading && (
+            <Box display="flex" justifyContent="center" alignItems="center" mt={2}>
+              <CircularProgress />
+            </Box>
+          )}
+          {!isLoading && projectGeneralInformation?.payload && (
+            <Box alignContent="center" justifyContent="space-between">
+              <Typography variant="subtitle1" fontWeight="light" fontSize="16px">
+                <strong>{projectGeneralInformation?.payload?.name}</strong>
+              </Typography>
+              <Divider />
+              <StakeholderInformation data={projectGeneralInformation?.payload} />
+              <Divider />
+              <TimeInformation data={projectGeneralInformation?.payload} i18n={i18n} />
+              <Divider />
+              <FinanceInformation data={projectGeneralInformation?.payload} />
+              <Divider />
+              <EarnedValueAnalysis data={projectGeneralInformation?.payload} />
+            </Box>
+          )}
+        </CardContent>
+      </Drawer>
+    </Fragment>
+  );
 };
 
 export default ProjectInfo;

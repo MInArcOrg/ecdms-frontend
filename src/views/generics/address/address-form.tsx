@@ -15,37 +15,35 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
   const [country, setCountry] = useState<{ value: string; label: string } | null>(null);
 
   useEffect(() => {
-    const selectedCountry = countriesList.find(c => c.title === formik.values.country);
+    const selectedCountry = countriesList.find((c) => c.title === formik.values.country);
     if (selectedCountry) {
       setCountry({ value: selectedCountry.title, label: selectedCountry.title });
     } else {
-      setCountry(null); 
+      setCountry(null);
     }
   }, [formik.values.country]);
 
   return (
     <>
-    <Box mb={2}>
-      <FormControl fullWidth variant='outlined' sx={{ mb: 3 }}>
-        <FormLabel>{transl('location.form.country')}</FormLabel>
-        <Autocomplete
-          options={countriesList.map(country => ({ value: country.title, label: country.title }))}
-          size='small'
-          disableClearable
-          id='autocomplete-outlined'
-          value={country||{value:"",label:""}}
-          isOptionEqualToValue={(option, value) => option.value === value.value}
-          onChange={(event, newValue) => {
-            setCountry(newValue);
-            formik.setFieldValue('country', newValue?.value || '');
-          }}
-          renderInput={params => <TextField {...params} />}
-          onBlur={formik.handleBlur}
-        />
-        {formik.touched.country && formik.errors.country ? (
-          <FormHelperText error>{formik.errors.country}</FormHelperText>
-        ) : null}
-      </FormControl>
+      <Box mb={2}>
+        <FormControl fullWidth variant="outlined" sx={{ mb: 3 }}>
+          <FormLabel>{transl('location.form.country')}</FormLabel>
+          <Autocomplete
+            options={countriesList.map((country) => ({ value: country.title, label: country.title }))}
+            size="small"
+            disableClearable
+            id="autocomplete-outlined"
+            value={country || { value: '', label: '' }}
+            isOptionEqualToValue={(option, value) => option.value === value.value}
+            onChange={(event, newValue) => {
+              setCountry(newValue);
+              formik.setFieldValue('country', newValue?.value || '');
+            }}
+            renderInput={(params) => <TextField {...params} />}
+            onBlur={formik.handleBlur}
+          />
+          {formik.touched.country && formik.errors.country ? <FormHelperText error>{formik.errors.country}</FormHelperText> : null}
+        </FormControl>
       </Box>
 
       <Grid container columnSpacing={5} rowSpacing={3}>

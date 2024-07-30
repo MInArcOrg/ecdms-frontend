@@ -30,9 +30,9 @@ const DetailSubMenu: React.FC<DetailSubMenuProps> = ({ subMenuItems, activeSubMe
               color: '#fff',
 
               '&:hover': {
-                backgroundColor: 'primary.light',
-              },
-            },
+                backgroundColor: 'primary.light'
+              }
+            }
           }}
           selected={activeSubMenu === item.id}
         >
@@ -40,7 +40,7 @@ const DetailSubMenu: React.FC<DetailSubMenuProps> = ({ subMenuItems, activeSubMe
           <ListItemText
             primaryTypographyProps={{
               style: { color: `${activeSubMenu === item.id ? '#fff' : ''}` },
-              fontSize: '0.9rem',
+              fontSize: '0.9rem'
             }}
             primary={t(item.title)}
           />

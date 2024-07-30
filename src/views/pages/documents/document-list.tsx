@@ -56,9 +56,9 @@ function DocumentList() {
     refetch();
   };
   const hanldeClickDetail = (document: Document) => {
-    toggleDetailDrawer()
-    setSelectedRow(document)
-  }
+    toggleDetailDrawer();
+    setSelectedRow(document);
+  };
   return (
     <Box>
       {showDrawer && (
@@ -76,7 +76,14 @@ function DocumentList() {
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
           ItemViewComponent={({ data }) => (
-            <DocumentCard onDetail={hanldeClickDetail} document={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
+            <DocumentCard
+              onDetail={hanldeClickDetail}
+              document={data}
+              onDelete={handleDelete}
+              onEdit={handleEdit}
+              t={t}
+              refetch={refetch}
+            />
           )}
           createActionConfig={{
             ...defaultCreateActionConfig,
@@ -96,8 +103,8 @@ function DocumentList() {
         />
       </Card>
       {showDetailDrawer && (
-        <DocumentDetail documentId={String(selectedRow?.id)} show={showDetailDrawer} toggleDetail={toggleDetailDrawer} />)}
-
+        <DocumentDetail documentId={String(selectedRow?.id)} show={showDetailDrawer} toggleDetail={toggleDetailDrawer} />
+      )}
     </Box>
   );
 }

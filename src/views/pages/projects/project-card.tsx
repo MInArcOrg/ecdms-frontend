@@ -1,5 +1,5 @@
 // components/ProjectList.tsx
-import { Box, Button, Card, CardActions, CardContent, Grid, Link, Typography } from '@mui/material';
+import { Box, Card, CardActions, CardContent, Grid, Link, Typography } from '@mui/material';
 import { Fragment } from 'react';
 import { Project } from 'src/types/project';
 import FileDrawer from 'src/views/components/custom/files-drawer';
@@ -30,7 +30,7 @@ const ProjectCard = ({
                 <Typography
                   noWrap
                   component={Link}
-                  href=''
+                  href=""
                   sx={{
                     fontWeight: 500,
                     textDecoration: 'none',

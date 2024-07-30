@@ -34,7 +34,7 @@ const ResourceStudyLevelForm: React.FC<ResourceStudyLevelFormProps> = ({
     <>
       <Box mb={2}>
         <CustomSelect
-  size="small"
+          size="small"
           name="studylevel_id"
           label={transl('resource.resource-study-level.form.studylevel')}
           options={

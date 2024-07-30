@@ -26,7 +26,7 @@ const validationSchema = yup.object().shape({
   documentcategory_id: yup.string().required(),
   edition: yup.string().required(),
   isbn: yup.string().required(),
-  publication_date: yup.string().required(),
+  publication_date: yup.string().required()
 });
 
 const DocumentDrawer = (props: DocumentDrawerType) => {
@@ -68,7 +68,7 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
           title="document.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{ ...document as Document, publication_date: moment(document.publication_date).toDate() }}
+          initialValues={{ ...(document as Document), publication_date: moment(document.publication_date).toDate() }}
           createActionFunc={isEdit ? editDocument : createDocument}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

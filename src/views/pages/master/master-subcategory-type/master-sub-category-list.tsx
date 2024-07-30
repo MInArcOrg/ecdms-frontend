@@ -17,7 +17,6 @@ interface MasterSubCategoryListProps {
 }
 
 const MasterSubCategoryList: React.FC<MasterSubCategoryListProps> = ({ model, selectedCategory }) => {
-  const dynamicVarName = `${model}category_id`;
   const fetchMasterSubCategory = (params: GetRequestParam): Promise<IApiResponse<MasterSubCategory[]>> => {
     return masterSubCategoryApiService.getAll(model, { ...params });
   };
@@ -76,8 +75,16 @@ const MasterSubCategoryList: React.FC<MasterSubCategoryListProps> = ({ model, se
             subject: 'position'
           }
         }}
-        ItemViewComponent={({ data }) => <MasterSubCategoryCard model={model} masterSubCategory={data} onDelete={handleDelete} onEdit={handleEdit}
-          refetch={refetch} t={t} />}
+        ItemViewComponent={({ data }) => (
+          <MasterSubCategoryCard
+            model={model}
+            masterSubCategory={data}
+            onDelete={handleDelete}
+            onEdit={handleEdit}
+            refetch={refetch}
+            t={t}
+          />
+        )}
         tableProps={{ headers: masterSubCategoryRowColumns(handleEdit, handleDelete, t, refetch) }}
         fetchDataFunction={refetch}
         items={categorys || []}

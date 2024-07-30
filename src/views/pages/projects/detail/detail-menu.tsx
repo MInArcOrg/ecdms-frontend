@@ -9,7 +9,6 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ProjectMenuItem } from './project-menu-items';
 
-
 interface DetailMenuProps {
   id: string;
   menuItems: ProjectMenuItem;
@@ -20,15 +19,7 @@ interface DetailMenuProps {
   isProject?: boolean;
 }
 
-const DetailMenu: React.FC<DetailMenuProps> = ({
-  id,
-  menuItems,
-  activeMenu,
-  setActiveMenu,
-  goBack,
-  typeId,
-  isProject = false
-}) => {
+const DetailMenu: React.FC<DetailMenuProps> = ({ id, menuItems, activeMenu, setActiveMenu, goBack, typeId, isProject = false }) => {
   const theme = useTheme();
   const desktop = useMediaQuery(theme.breakpoints.up('md'));
   const { t } = useTranslation();

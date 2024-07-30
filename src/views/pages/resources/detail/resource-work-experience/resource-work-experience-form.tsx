@@ -34,7 +34,7 @@ const ResourceWorkExperienceForm: React.FC<ResourceWorkExperienceFormProps> = ({
     <>
       <Box mb={2}>
         <CustomSelect
-  size="small"
+          size="small"
           name="workexperience_id"
           label={transl('resource.resource-study-field.form.workexperience')}
           options={

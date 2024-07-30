@@ -15,8 +15,8 @@ const ProjectStatusChip: React.FC<ProjectStatusChipProps> = ({ data, onClick }) 
       label={STATUS_LABELS[status]}
       color={STATUS_COLORS[status]}
       rounded
-      size='small'
-      skin='light'
+      size="small"
+      skin="light"
       sx={{
         '& .MuiChip-label': { textTransform: 'capitalize' },
         height: 15,

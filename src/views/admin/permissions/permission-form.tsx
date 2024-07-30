@@ -17,7 +17,7 @@ const PermissionForm: React.FC<PermissionFormProps> = ({ formik, isLocaleEdit = 
       <CustomTextBox fullWidth label={transl('name')} placeholder={transl('name')} name="name" size="sm" sx={{ mb: 2 }} />
       <CustomTextBox fullWidth label={transl('model')} placeholder={transl('model')} name="model" size="sm" sx={{ mb: 2 }} />
       <CustomSelect
-  size="small"
+        size="small"
         name="module"
         label={transl('module')}
         options={appModules.map((type) => ({

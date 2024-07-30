@@ -12,7 +12,7 @@ interface AddressDrawerType {
   toggle: () => void;
   refetch: () => void;
   address: Address;
-  modelId:string;
+  modelId: string;
 }
 
 const validationSchema = yup.object().shape({
@@ -24,7 +24,7 @@ const validationSchema = yup.object().shape({
   block_number: yup.string(),
   house_number: yup.string(),
   northing: yup.number().required(),
-  easting: yup.number().required(),
+  easting: yup.number().required()
 });
 
 const AddressDrawer = (props: AddressDrawerType) => {
@@ -32,11 +32,11 @@ const AddressDrawer = (props: AddressDrawerType) => {
   const { open, toggle, refetch, address, modelId } = props;
 
   const isEdit = address?.id ? true : false;
-  
+
   const createAddress = async (body: IApiPayload<Address>) => {
     return await addressApiService.create(body);
   };
-  
+
   const editAddress = async (body: IApiPayload<Address>) => {
     return await addressApiService.update(address?.id || '', body);
   };
@@ -46,7 +46,7 @@ const AddressDrawer = (props: AddressDrawerType) => {
       data: {
         ...values,
         id: address?.id,
-        model_id:modelId
+        model_id: modelId
       },
       files: [] // Adjust if you need to handle files
     };
@@ -71,7 +71,7 @@ const AddressDrawer = (props: AddressDrawerType) => {
           title="address.title" // Adjust the title key if necessary
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{ ...address as Address }}
+          initialValues={{ ...(address as Address) }}
           createActionFunc={isEdit ? editAddress : createAddress}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

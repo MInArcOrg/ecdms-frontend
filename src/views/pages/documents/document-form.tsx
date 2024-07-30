@@ -10,7 +10,6 @@ import { Document } from 'src/types/document';
 import CustomDateSelector from 'src/views/shared/form/custom-date-box';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import * as yup from 'yup';
 
 interface DocumentFormProps {
   formik: FormikProps<Document>;
@@ -30,7 +29,6 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = fals
         }
       })
   });
-
 
   const { data: documentSubCategories, refetch: refetchSubCategories } = useQuery({
     queryKey: ['masterSubCategory', 'document'],
@@ -53,7 +51,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = fals
     <>
       <Box mb={2}>
         <CustomSelect
-  size="small"
+          size="small"
           name="documentcategory_id"
           label={transl('document.form.category')}
           options={
@@ -66,15 +64,16 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = fals
       </Box>
       <Box mb={2}>
         <CustomSelect
-  size="small"
+          size="small"
           name="documentsubcategory_id"
           label={transl('document.form.sub-category')}
           options={
-            isArray(documentSubCategories?.payload) ?
-              documentSubCategories?.payload?.map((documentSubCategory) => ({
-                value: documentSubCategory.id,
-                label: documentSubCategory.title
-              })) : [] || []
+            isArray(documentSubCategories?.payload)
+              ? documentSubCategories?.payload?.map((documentSubCategory) => ({
+                  value: documentSubCategory.id,
+                  label: documentSubCategory.title
+                }))
+              : [] || []
           }
         />
       </Box>
@@ -138,7 +137,6 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = fals
         size="small"
         sx={{ mb: 2 }}
       />
-
     </>
   );
 };

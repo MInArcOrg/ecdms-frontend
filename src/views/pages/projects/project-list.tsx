@@ -40,7 +40,6 @@ function ProjectList() {
     setSelectedRow({} as Project);
     setShowDrawer(!showDrawer);
   };
- 
 
   const handleEdit = (project: Project) => {
     toggleDrawer();
@@ -53,23 +52,22 @@ function ProjectList() {
 
   return (
     <Box>
-      
       <Card>
-      {showDrawer && (
-        <ProjectDrawer
-          open={showDrawer}
-          toggle={toggleDrawer}
-          project={selectedRow as Project}
-          refetch={refetch}
-          typeId={String(typeId)}
-        />
-      )}
+        {showDrawer && (
+          <ProjectDrawer
+            open={showDrawer}
+            toggle={toggleDrawer}
+            project={selectedRow as Project}
+            refetch={refetch}
+            typeId={String(typeId)}
+          />
+        )}
         <ItemsListing
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
           ItemViewComponent={({ data }) => (
-            <ProjectCard onDetail={()=>{}} project={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
+            <ProjectCard onDetail={() => {}} project={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
           )}
           createActionConfig={{
             ...defaultCreateActionConfig,
@@ -88,7 +86,6 @@ function ProjectList() {
           onPaginationChange={handlePageChange}
         />
       </Card>
-      
     </Box>
   );
 }

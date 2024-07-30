@@ -76,7 +76,6 @@ export const uploadImage = (file: File, type: string, ownerObjectID: string | nu
   });
 };
 
-
 // Get files by model
 export const getFilesByModel = (params: GetRequestParam): Promise<IApiResponse<FileModel[]>> =>
   buildGetRequest(`/generics/files`, params)
@@ -167,7 +166,6 @@ export const handleProfilePictureError = (event: React.SyntheticEvent<HTMLImageE
 };
 
 // Uploadable photo types
-
 
 // Uploadable stakeholder file types
 export const uploadableStakeholderFileTypes = {
