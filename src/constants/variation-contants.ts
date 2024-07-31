@@ -3,7 +3,7 @@ export const variationConstants = {
     AMENDMENT: {
         label: 'Amendment',
         value: 'AMENDMENT',
-        percenet:30
+        percent:30
     },
     VARIATION: {
         label: 'Variation',

@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
 import CustomChip from 'src/@core/components/mui/chip';
-import { formatCurrency } from 'src/utils/formatter/money';
+import { formatCurrency } from 'src/utils/formatter/currency';
 
 interface FinanceInformationProps {
   data: any;

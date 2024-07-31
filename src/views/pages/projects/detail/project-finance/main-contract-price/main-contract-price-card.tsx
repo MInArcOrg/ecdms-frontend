@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Card, CardContent, Typography, Box, Divider, CardActions } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { formatCurrency } from "src/utils/formatter/money";
+import { formatCurrency } from "src/utils/formatter/currency";
 import { formatPercent } from "src/utils/formatter/number";
 import FileDrawer from "src/views/components/custom/files-drawer";
 import { ProjectFinance } from 'src/types/project';
@@ -34,9 +34,9 @@ const MainContractPriceCard = ({
             {t("project.main-contract-price.title")}:
           </Typography>
           <Typography variant="h6" color="primary">
-            {projectFinance.main_contract_price_amount !== undefined
+            {projectFinance?.main_contract_price_amount !== undefined
               ? formatCurrency(projectFinance.main_contract_price_amount)
-              : t("project.main-contract-price.form.main-contract-price")}
+              : t("project.main-contract-price.add-main-contract-price")}
           </Typography>
         </Box>
         <Divider />
@@ -50,18 +50,21 @@ const MainContractPriceCard = ({
             {t("project.main-contract-price.form.rebate")}:
           </Typography>
           <Typography variant="h6" color="secondary">
-            {formatPercent(10,true)}
-          </Typography>
+          {projectFinance?.rebate !== undefined
+              ? formatCurrency(projectFinance.rebate)
+              : ""}          </Typography>
         </Box>
       </CardContent>
+      {
+        projectFinance&&
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
                 <Box>
-                  <FileDrawer id={projectFinance.id} type={'RESOURCE'} /> &nbsp;
+                  <FileDrawer id={projectFinance?.id} type={'RESOURCE'} /> &nbsp;
                   <Box sx={{ display: 'flex' }}>
                     <ModelActionComponent
                       model="Address"
-                      model_id={projectFinance.id}
+                      model_id={projectFinance?.id}
                       refetchModel={refetch}
                       resubmit={function (): void {
                         throw new Error('Function not implemented.');
@@ -76,6 +79,8 @@ const MainContractPriceCard = ({
                 </Box>
               </Fragment>
             </CardActions>
+      }
+
     </Card>
   );
 };

@@ -8,6 +8,7 @@ export interface ProjectVariation {
     approval_date?: string|Date|EthiopianDate;
     justification?: string;
     amount: number;
+    percentage:number;
     extension_time?: number;
     extension_time_id?: string;
     remark?: string;
@@ -15,3 +16,13 @@ export interface ProjectVariation {
     updated_at: string;
     created_at: string;
   }
+export interface ProjectGeneralFinance {
+    main_contract_price_amount: number;
+    rebate: number;
+    price_after_rebate: number;
+    variation_total: number;
+    supplement_total: number;
+    special_total: number;
+    omission_total: number;
+  }
+  

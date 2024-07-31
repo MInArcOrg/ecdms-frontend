@@ -3,15 +3,36 @@ import { useField, useFormikContext } from 'formik';
 import React from 'react';
 import CustomTextField from 'src/@core/components/mui/text-field';
 
-const CustomTextBox: React.FC<any> = (props) => {
-  const [field, meta] = useField(props);
+interface CustomTextBoxProps {
+  name: string;
+  onValueChange?: (value: string | number) => void; // Allow string or number
+  type?: string; // Optional type to handle different input types
+  [key: string]: any; // To allow any additional props
+}
+
+const CustomTextBox: React.FC<CustomTextBoxProps> = ({ name, onValueChange, type = 'text', ...props }) => {
+  const [field, meta, helpers] = useField(name);
   const { isSubmitting } = useFormikContext();
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = type === 'number' ? (event.target.value ? Number(event.target.value) : 0) : event.target.value;
+    if (onValueChange) onValueChange(value);
+    helpers.setValue(value);
+  };
 
   return (
     <>
-      <CustomTextField fullWidth {...field} {...props} disabled={props?.disabled || isSubmitting} />
+      <CustomTextField
+        fullWidth
+        {...field}
+        {...props}
+        type={type}
+        disabled={props?.disabled || isSubmitting}
+        onChange={handleChange}
+        value={field.value || ''}
+      />
       {meta.touched && meta.error && (
-        <FormHelperText error id="standard-weight-helper-text-user-title">
+        <FormHelperText error id={`helper-text-${name}`}>
           {meta.error}
         </FormHelperText>
       )}

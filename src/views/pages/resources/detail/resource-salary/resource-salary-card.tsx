@@ -1,7 +1,7 @@
 import { Box, Card, CardActions, CardContent, CardHeader, Grid, Typography } from '@mui/material';
 import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
 import { ResourceSalary } from 'src/types/resource';
-import { formatCurrency } from 'src/utils/formatter/money';
+import { formatCurrency } from 'src/utils/formatter/currency';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';

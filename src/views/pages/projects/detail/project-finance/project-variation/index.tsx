@@ -9,14 +9,15 @@ import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
 import ProjectVariationCard from './project-variation-card';
 import ProjectVariationDrawer from './project-variation-drawer';
-import { ProjectVariation } from 'src/types/project/project-finance';
-import projectVariationApiService from 'src/services/project/projecct-variation-service';
+import { ProjectGeneralFinance, ProjectVariation } from 'src/types/project/project-finance';
+import projectVariationApiService from 'src/services/project/project-variation-service';
+import projectFinanceApiService from 'src/services/project/project-finance-service';
+import { useQuery } from '@tanstack/react-query';
 
 function ProjectVariationList({ type,projectId }: { type: string,projectId:string }) {
   const [showDrawer, setShowDrawer] = useState(false);
 
   const [selectedRow, setSelectedRow] = useState<ProjectVariation | null>(null);
-  const { t: transl } = useTranslation();
   const fetchProjectVariations = (params: GetRequestParam): Promise<IApiResponse<ProjectVariation[]>> => {
     return projectVariationApiService.getAll({ ...params, filter: { ...params.filter, type: type } });
   };
@@ -46,11 +47,22 @@ function ProjectVariationList({ type,projectId }: { type: string,projectId:strin
     refetch();
   };
 
+  const {
+    data: projectGeneralFinance,
+    error,
+  } = useQuery({
+    queryKey: ["projectFinanceData", projectId],
+    queryFn: () =>
+      projectFinanceApiService.getProjectGeneralFinance(projectId,{}), // Replace with your API call
+  });
+
+
   return (
     <Box>
       <Card>
         {showDrawer && (
-          <ProjectVariationDrawer 
+          <ProjectVariationDrawer
+          projectGeneralFinance={projectGeneralFinance?.payload as ProjectGeneralFinance} 
           open={showDrawer}
           toggle={toggleDrawer}
           projectVariation={selectedRow as ProjectVariation} 

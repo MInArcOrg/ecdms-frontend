@@ -2,16 +2,20 @@ import * as yup from "yup";
 import { FormikProps } from "formik";
 import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
 import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import ProjectVariationForm from "./project-variation-form"; // Import your project form component
+import ProjectVariationForm from "./project-variation-form";
 import { IApiPayload } from "src/types/requests";
-import projectVariationApiService from "src/services/project/project-finance-service";
-import { ProjectVariation } from "src/types/project/project-finance";
+import {
+  ProjectGeneralFinance,
+  ProjectVariation,
+} from "src/types/project/project-finance";
 import { getDynamicDate } from "src/views/components/custom/ethio-calendar/ethio-calendar-utils";
 import i18n from "src/configs/i18n";
 import moment from "moment";
 import { convertDateToLocaleDate } from "src/utils/formatter/date";
 import { variationConstants } from "src/constants/variation-contants";
 import { useTranslation } from "react-i18next";
+import projectVariationApiService from "src/services/project/project-variation-service";
+import { useEffect } from "react";
 
 interface ProjectVariationDrawerType {
   open: boolean;
@@ -20,104 +24,102 @@ interface ProjectVariationDrawerType {
   projectVariation: ProjectVariation;
   projectId: string;
   type: string;
+  projectGeneralFinance: ProjectGeneralFinance;
 }
 
-
-
 const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
-  // ** Props
-  const { open, toggle, refetch, projectVariation, projectId, type } = props;
-  const {t}=useTranslation();
-  
-  // console.log('totalVara tion', totalVariation)
+  const {
+    open,
+    toggle,
+    refetch,
+    projectVariation,
+    projectId,
+    type,
+    projectGeneralFinance,
+  } = props;
+  const { t } = useTranslation();
+  console.log('projectGeneralFinance ',projectGeneralFinance)
+  const selectedVariationType =
+    variationConstants[type as keyof typeof variationConstants];
 
-  const percentagetCalculator = event => {
-    return (event / projectFinance?.price_after_rebate) * 100
-  }
+  const percentagetCalculator = (value: number) =>
+    (value / projectGeneralFinance?.price_after_rebate) * 100;
 
-  const calculateAmount = e => {
-    const { value } = e.target
-    formik.setFieldValue('percentage', value)
-    formik.setFieldValue('amount', amountCalculator(value))
-  }
+  const amountCalculator = (value: number) =>
+    projectGeneralFinance?.price_after_rebate * (value / 100);
 
-  const calculatePercentage = e => {
-    const { value } = e.target
+  const percentOf = (value: number) =>
+    (projectGeneralFinance?.price_after_rebate * value) / 100;
 
-    formik.setFieldValue('amount', value)
-    formik.setFieldValue('percentage', percentagetCalculator(value))
-  }
+  const variationTotal = () => {
+    switch (type) {
+      case variationConstants.VARIATION.value:
+        return projectGeneralFinance.variation_total;
+      case variationConstants.SUPPLEMENT.value:
+        return projectGeneralFinance.supplement_total;
+      case variationConstants.OMISSION.value:
+        return projectGeneralFinance.omission_total;
+      case variationConstants.AMENDMENT.value:
+        return projectGeneralFinance.special_total;
+      default:
+        return 0;
+    }
+  };
 
-  const amountCalculator = event => {
-    return projectFinance?.price_after_rebate * (event / 100)
-  }
-
-  const percentOf = value => {
-    return (projectFinance?.price_after_rebate * value) / 100
-  }
-
-  const totalVariationPercent = percentagetCalculator(totalVariation)
-  const allowedVariation = percentOf(projectFinanceMinPercent[type]?.percent)
-  const remainingVariation = allowedVariation - totalVariation
-  const remainingVariationPercent = percentagetCalculator(remainingVariation)
+  const totalVariationPercent = percentagetCalculator(variationTotal());
+  const allowedVariation = percentOf(selectedVariationType?.percent ?? 0);
+  const remainingVariation = allowedVariation - variationTotal();
+  const remainingVariationPercent = percentagetCalculator(remainingVariation);
+  console.log('remaining variation percent',remainingVariation,remainingVariationPercent)
   const validationSchema = yup.object().shape({
     extension_time: yup
       .number()
       .required(`${t("Extension Time")} ${t("is required")}`),
-    approval_date: yup.date().required(`${t("Approval Date")} ${t("is required")}`),
+    approval_date: yup
+      .date()
+      .required(`${t("Approval Date")} ${t("is required")}`),
     amount: yup
       .number()
       .required(`${t("Amount")} ${t("is required")}`)
       .when("type", {
-        is: variationConstants.SUPPLEMENT.value || variationConstants.VARIATION.value,
-
-        then: yup.number().max(remainingVariation),
+        is: (value: string) =>
+          value === variationConstants.SUPPLEMENT.value ||
+          value === variationConstants.VARIATION.value,
+        then: (schema) => schema.max(remainingVariation),
       })
       .moreThan(0),
-  
     percentage: yup
       .number()
       .required(`${t("Percentage")} ${t("is required")}`)
       .moreThan(0)
       .when("type", {
-        is:
-          projectFinanceMinPercent.SUPPLMENT.name ||
-          projectFinanceMinPercent.VARIATION.name,
-        then: yup.number().max(remainingVariationPercent),
+        is: (value: string) =>
+          value === variationConstants.SUPPLEMENT.value ||
+          value === variationConstants.VARIATION.value,
+        then: (schema) => schema.max(remainingVariationPercent),
       }),
   });
-  const isEdit = projectVariation?.id ? true : false;
 
-  const createProjectVariation = async (
-    body: IApiPayload<ProjectVariation>
-  ) => {
-    return await projectVariationApiService.create(body);
-  };
+  const isEdit = Boolean(projectVariation?.id);
 
-  const editProjectVariation = async (body: IApiPayload<ProjectVariation>) => {
-    return await projectVariationApiService.update(
-      projectVariation?.id || "",
-      body
-    );
-  };
+  const createProjectVariation = async (body: IApiPayload<ProjectVariation>) =>
+    projectVariationApiService.create(body);
 
-  const getPayload = (values: ProjectVariation) => {
-    const payload = {
-      data: {
-        ...values,
-        approval_date: convertDateToLocaleDate(values.approval_date),
-        id: projectVariation?.id,
-        project_id: projectId,
-        type,
-      },
-      files: [], // Adjust if you need to handle files
-    };
-    return payload;
-  };
+  const editProjectVariation = async (body: IApiPayload<ProjectVariation>) =>
+    projectVariationApiService.update(projectVariation?.id || "", body);
 
-  const handleClose = () => {
-    toggle();
-  };
+  const getPayload = (values: ProjectVariation) => ({
+    data: {
+      ...values,
+      approval_date: convertDateToLocaleDate(values.approval_date),
+      id: projectVariation?.id,
+      project_id: projectId,
+      type,
+    },
+    files: [], // Adjust if you need to handle files
+  });
+
+  const handleClose = () => toggle();
 
   const onActionSuccess = () => {
     toggle();
@@ -125,6 +127,7 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
     handleClose();
   };
 
+ 
   return (
     <CustomSideDrawer
       title={`project.project-variation.${
@@ -140,7 +143,10 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
+            type,
+            
             ...(projectVariation as ProjectVariation),
+            percentage:percentagetCalculator(projectVariation?.amount),
             approval_date: projectVariation?.approval_date
               ? getDynamicDate(
                   i18n,
@@ -155,7 +161,16 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<ProjectVariation>) => {
-            return <ProjectVariationForm formik={formik} />;
+        
+        
+         
+            return (
+              <ProjectVariationForm
+                amountCalculator={amountCalculator}
+                percentagetCalculator={percentagetCalculator}
+                formik={formik}
+              />
+            );
           }}
         </FormPageWrapper>
       )}

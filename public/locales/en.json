@@ -339,6 +339,19 @@
         "description":"Description"
       }
     },
+    "project-variation": {
+      "edit-project-variation": "Edit Project Variation",
+      "create-project-variation": "Create Project Variation",
+      "title": "Project Variation",
+      "form": {
+        "amount": "Amount",
+        "amount-percent": "Amount (%)",
+        "approval-date": "Approval Date",
+        "extension-time": "Extension Time",
+        "justification": "Justification",
+        "remark": "Remark"
+      }
+    },
     "stakeholder": {
       "information": "Stakeholder Information",
       "client": "Client",
@@ -356,6 +369,7 @@
       "title": "Main Contract Price",
       "edit-main-contract-price":"Edit Main Contract Price",
       "create-main-contract-price":"Create Main Contract Price",
+      "add-main-contract-price":"Please Add Main Contract Price",
       "form": {
         "main-contract-price": "Main Contract Price",
         "rebate": "Rebate",

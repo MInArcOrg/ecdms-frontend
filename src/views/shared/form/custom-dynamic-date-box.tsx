@@ -26,7 +26,7 @@ const CustomDynamicDatePicker: React.FC<CustomDynamicDatePickerProps> = ({ name,
   };
 
   const renderPicker = () => {
-    if (i18n.language === 'en') {
+    if (i18n.language === 'am') {
       return (
         <EthioCalendar
           value={field.value as EthiopianDate}

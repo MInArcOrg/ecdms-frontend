@@ -17,12 +17,12 @@ const subMenuItems = (id: string, typeId: string) => [
   {
     id: 4,
     title: 'Omission',
-    path: `/projects/${typeId}/details/${id}/financial/Omission`
+    path: `/projects/${typeId}/details/${id}/financial/omission`
   },
   {
     id: 5,
-    title: 'Amandment',
-    path: `/projects/${typeId}/details/${id}/financial/Amandment`
+    title: 'Amendment',
+    path: `/projects/${typeId}/details/${id}/financial/amendment`
   },
   {
     id: 6,

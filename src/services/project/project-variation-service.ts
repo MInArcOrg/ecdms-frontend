@@ -8,14 +8,14 @@ import { ProjectVariation } from 'src/types/project/project-finance';
 
 const projectVariationApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<ProjectVariation[]>> =>
-    buildGetRequest(`/projects/variations`, params)
+    buildGetRequest(`/projects/project-variations`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/projects/variations/${idx}`, params)
+    buildGetRequest(`/projects/project-variations/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
@@ -23,21 +23,21 @@ const projectVariationApiService = {
 
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
-      .delete(`/projects/variations/${idx}`)
+      .delete(`/projects/project-variations/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   create: (body: IApiPayload<ProjectVariation>): Promise<IApiResponse> =>
-    buildPostRequest(`/projects/variations`, body, false)
+    buildPostRequest(`/projects/project-variations`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   update: (id: string, body: IApiPayload<ProjectVariation>): Promise<IApiResponse> =>
-    buildPutRequest(`/projects/variations/${id}`, body)
+    buildPutRequest(`/projects/project-variations/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
