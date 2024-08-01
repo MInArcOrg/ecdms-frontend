@@ -5,19 +5,17 @@ import {
   CardContent,
   CardHeader,
   Divider,
-  IconButton,
-  Typography,
+  Typography
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
+import i18n from "src/configs/i18n";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
 import { ProjectBond } from "src/types/project/project-finance";
 import { formatCurrency } from "src/utils/formatter/currency";
-import FileDrawer from "src/views/components/custom/files-drawer";
-import RowOptions from "src/views/shared/listing/row-options";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
 import { formatPercent } from "src/utils/formatter/number";
 import { getDynamicDate } from "src/views/components/custom/ethio-calendar/ethio-calendar-utils";
-import i18n from "src/configs/i18n";
+import FileDrawer from "src/views/components/custom/files-drawer";
 
 const ProjectBondCard = ({
   projectBond,
@@ -77,7 +75,7 @@ const ProjectBondCard = ({
             {t("project.project-bond.form.issue-date")}
           </Typography>
           <Typography variant="h6">
-            {getDynamicDate(i18n, projectBond?.issue_date) || t("project.project-bond.form.no-date")}
+            {getDynamicDate(i18n, projectBond?.issue_date).toLocaleDateString() || t("project.project-bond.form.no-date")}
           </Typography>
         </Box>
         <Box
@@ -90,7 +88,7 @@ const ProjectBondCard = ({
             {t("project.project-bond.form.expiration-date")}
           </Typography>
           <Typography variant="h6">
-            {getDynamicDate(i18n, projectBond?.issue_date) || t("project.project-bond.form.no-date")}
+            {getDynamicDate(i18n, projectBond?.issue_date).toLocaleDateString() || t("project.project-bond.form.no-date")}
           </Typography>
         </Box>
       </CardContent>
