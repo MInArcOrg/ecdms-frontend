@@ -29,11 +29,11 @@ const ResourceSalaryDrawer: React.FC<ResourceSalaryDrawerType> = (props) => {
   const { open, toggle, refetch, resourceSalary, resourceId } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
-
-  const isEdit = resourceSalary?.id ? true : false;
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
+  const isEdit = resourceSalary?.id ? true : false;
+ 
   const createResourceSalary = async (body: IApiPayload<ResourceSalary>) => {
     return await resourceSalaryApiService.create(body);
   };

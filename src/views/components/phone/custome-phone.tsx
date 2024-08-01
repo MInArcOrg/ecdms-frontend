@@ -39,6 +39,7 @@ export const MuiPhone: React.FC<MUIPhoneProps> = ({ value, onChange, ...restProp
               onChange={(e) => setCountry(e.target.value as CountryIso2)}
               renderValue={(value) => <FlagImage iso2={value} style={{ display: 'flex' }} />}
               sx={{ maxWidth: '75px' }}
+              size={restProps.size}
             >
               {defaultCountries.map((c) => {
                 const country = parseCountry(c);

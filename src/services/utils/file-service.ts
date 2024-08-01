@@ -194,21 +194,7 @@ export const uploadableStakeholderFileTypes = {
 } as const;
 
 // Uploadable project file types
-export const uploadableProjectFileTypes = {
-  time: 'TIME',
-  plan: 'PROJECT_PLAN',
-  report: 'PROJECT_REPORT',
-  building_envelope_material: 'BUILDING_ENVELOPE_MATERIAL',
-  building_dimension_detail: 'BUILDING_DIMENSION_DETAIL',
-  solar_energy: 'SOLAR_ENERGY',
-  wind_energy: 'WIND_ENERGY',
-  transformer_type: 'TRANSFORMER_TYPE',
-  extension_time: 'EXTENSION_TIME',
-  projectType: 'PROJECT_TYPE',
-  projectCategory: 'PROJECT_CATEGORY',
-  projectSubCategory: 'PROJECT_SUB_CATEGORY',
-  masterStatus: 'MASTER_STATUS'
-} as const;
+
 
 // Uploadable resource file types
 export const uploadableResourceFileTypes = {

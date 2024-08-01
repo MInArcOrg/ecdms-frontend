@@ -1,43 +1,34 @@
-import {
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  Divider,
-  Typography,
-} from "@mui/material";
+import { Box, Card, CardActions, CardContent, Typography } from "@mui/material";
 import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import { ProjectVariation } from "src/types/project/project-finance";
 import { formatCurrency } from "src/utils/formatter/currency";
-import { formatPercent } from "src/utils/formatter/number";
 import FileDrawer from "src/views/components/custom/files-drawer";
 import ModelActionComponent from "src/views/components/custom/model-actions";
 import RowOptions from "src/views/shared/listing/row-options";
 
 import Icon from "src/@core/components/icon";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
 
-const MainContractPriceCard = ({
+const ProjectVariationCard = ({
   projectVariation,
   refetch,
   onEdit,
+  onDelete,
   type,
 }: {
   type: string;
   projectVariation: ProjectVariation;
   refetch: () => void;
   onEdit: (projectVariation: ProjectVariation) => void;
+  onDelete: (id: string) => void;
 }) => {
   const { t } = useTranslation();
 
   return (
-    <Fragment>
+    <Card>
       <CardContent>
-        <Box
-          justifyContent="space-between"
-          alignItems="center"
-          mb={2}
-        >
+        <Box justifyContent="space-between" alignItems="center" mb={2}>
           <Typography variant="h6">
             {t(type)} {1}
           </Typography>
@@ -56,25 +47,38 @@ const MainContractPriceCard = ({
         </Box>
       </CardContent>
       <CardActions style={{ justifyContent: "flex-end" }}>
-          <FileDrawer id={projectVariation.id} type={"RESOURCE"} /> &nbsp;
-          <Box sx={{ display: "flex" }}>
-            <ModelActionComponent
-              model="Address"
-              model_id={projectVariation.id}
-              refetchModel={refetch}
-              resubmit={function (): void {
-                throw new Error("Function not implemented.");
-              }}
-              title={""}
-              postAction={function (): void {
-                throw new Error("Function not implemented.");
-              }}
-            />
-            <RowOptions onEdit={onEdit} item={projectVariation} options={[]} />
-          </Box>
+        <FileDrawer id={projectVariation.id} type={uploadableProjectFileTypes.variation} /> &nbsp;
+        <Box sx={{ display: "flex" }}>
+          <ModelActionComponent
+            model="Variation"
+            model_id={projectVariation.id}
+            refetchModel={refetch}
+            resubmit={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+            title={""}
+            postAction={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          />
+          <RowOptions
+            onEdit={onEdit}
+            onDelete={() => onDelete(projectVariation.id)}
+            deletePermissionRule={{
+              action: "delete",
+              subject: "variation",
+            }}
+            editPermissionRule={{
+              action: "edit",
+              subject: "variation",
+            }}
+            item={projectVariation}
+            options={[]}
+          />
+        </Box>
       </CardActions>
-    </Fragment>
+    </Card>
   );
 };
 
-export default MainContractPriceCard;
+export default ProjectVariationCard;

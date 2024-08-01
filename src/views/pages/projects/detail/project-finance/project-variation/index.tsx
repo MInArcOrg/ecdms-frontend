@@ -49,7 +49,6 @@ function ProjectVariationList({ type,projectId }: { type: string,projectId:strin
 
   const {
     data: projectGeneralFinance,
-    error,
   } = useQuery({
     queryKey: ["projectFinanceData", projectId],
     queryFn: () =>
@@ -59,7 +58,6 @@ function ProjectVariationList({ type,projectId }: { type: string,projectId:strin
 
   return (
     <Box>
-      <Card>
         {showDrawer && (
           <ProjectVariationDrawer
           projectGeneralFinance={projectGeneralFinance?.payload as ProjectGeneralFinance} 
@@ -69,11 +67,12 @@ function ProjectVariationList({ type,projectId }: { type: string,projectId:strin
           refetch={refetch} type={type} projectId={projectId} />
         )}
         <ItemsListing
+          title={`project.project-${type.toLocaleLowerCase()}.title`}
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.list.value}
           isLoading={isLoading}
           ItemViewComponent={({ data }) => (
-            <ProjectVariationCard type={type} projectVariation={data}  onEdit={handleEdit} refetch={refetch} />
+            <ProjectVariationCard  type={type} projectVariation={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
           )}
           createActionConfig={{
             ...defaultCreateActionConfig,
@@ -88,7 +87,6 @@ function ProjectVariationList({ type,projectId }: { type: string,projectId:strin
           items={projectVariations || []}
           onPaginationChange={handlePageChange}
         />
-      </Card>
     </Box>
   );
 }

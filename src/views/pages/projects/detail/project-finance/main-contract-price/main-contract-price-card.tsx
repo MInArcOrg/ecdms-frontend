@@ -51,7 +51,7 @@ const MainContractPriceCard = ({
           </Typography>
           <Typography variant="h6" color="secondary">
           {projectFinance?.rebate !== undefined
-              ? formatCurrency(projectFinance.rebate)
+              ? formatPercent(projectFinance.rebate)
               : ""}          </Typography>
         </Box>
       </CardContent>

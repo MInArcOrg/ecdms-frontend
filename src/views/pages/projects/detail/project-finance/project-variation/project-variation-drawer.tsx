@@ -3,7 +3,7 @@ import { FormikProps } from "formik";
 import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
 import FormPageWrapper from "src/views/shared/form/form-wrapper";
 import ProjectVariationForm from "./project-variation-form";
-import { IApiPayload } from "src/types/requests";
+import { IApiPayload, IApiResponse } from "src/types/requests";
 import {
   ProjectGeneralFinance,
   ProjectVariation,
@@ -12,10 +12,12 @@ import { getDynamicDate } from "src/views/components/custom/ethio-calendar/ethio
 import i18n from "src/configs/i18n";
 import moment from "moment";
 import { convertDateToLocaleDate } from "src/utils/formatter/date";
-import { variationConstants } from "src/constants/variation-contants";
+import { variationConstants } from "src/constants/variation-constants";
 import { useTranslation } from "react-i18next";
 import projectVariationApiService from "src/services/project/project-variation-service";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { uploadFile } from "src/services/utils/file-service";
 
 interface ProjectVariationDrawerType {
   open: boolean;
@@ -38,7 +40,10 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
     projectGeneralFinance,
   } = props;
   const { t } = useTranslation();
-  console.log('projectGeneralFinance ',projectGeneralFinance)
+  const [uploadableFile, setUploadableFile] = useState<File | null>(null);
+  const onFileChange = (file: File | null) => {
+    setUploadableFile(file);
+  };
   const selectedVariationType =
     variationConstants[type as keyof typeof variationConstants];
 
@@ -66,11 +71,14 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
     }
   };
 
-  const totalVariationPercent = percentagetCalculator(variationTotal());
   const allowedVariation = percentOf(selectedVariationType?.percent ?? 0);
   const remainingVariation = allowedVariation - variationTotal();
   const remainingVariationPercent = percentagetCalculator(remainingVariation);
-  console.log('remaining variation percent',remainingVariation,remainingVariationPercent)
+  console.log(
+    "remaining variation percent",
+    remainingVariation,
+    remainingVariationPercent
+  );
   const validationSchema = yup.object().shape({
     extension_time: yup
       .number()
@@ -116,22 +124,34 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
       project_id: projectId,
       type,
     },
-    files: [], // Adjust if you need to handle files
+    files: uploadableFile ? [uploadableFile] : [],
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = () => {
-    toggle();
+  const onActionSuccess = async (
+    response: IApiResponse<ProjectVariation>,
+    payload: IApiPayload<ProjectVariation>
+  ) => {
+    if (payload.files.length > 0) {
+      uploadFile(
+        payload.files[0],
+        uploadableProjectFileTypes.variation,
+        response.payload.id,
+        "",
+        ""
+      );
+    }
     refetch();
     handleClose();
   };
 
- 
   return (
     <CustomSideDrawer
-      title={`project.project-variation.${
-        isEdit ? "edit-project-variation" : "create-project-variation"
+      title={`project.project-${type.toLocaleLowerCase()}.${
+        isEdit
+          ? `edit-project-${type.toLocaleLowerCase()}`
+          : `create-project-${type.toLocaleLowerCase()}`
       }`}
       handleClose={handleClose}
       open={open}
@@ -139,14 +159,14 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title="project.project-variation.title" // Adjust the title key if necessary
+          title={`project.project-${type.toLocaleLowerCase()}.title`} // Adjust the title key if necessary
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
             type,
-            
+
             ...(projectVariation as ProjectVariation),
-            percentage:percentagetCalculator(projectVariation?.amount),
+            percentage: percentagetCalculator(projectVariation?.amount),
             approval_date: projectVariation?.approval_date
               ? getDynamicDate(
                   i18n,
@@ -161,11 +181,10 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<ProjectVariation>) => {
-        
-        
-         
             return (
               <ProjectVariationForm
+                file={uploadableFile}
+                onFileChange={onFileChange}
                 amountCalculator={amountCalculator}
                 percentagetCalculator={percentagetCalculator}
                 formik={formik}

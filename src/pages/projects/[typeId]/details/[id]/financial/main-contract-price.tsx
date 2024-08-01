@@ -4,7 +4,7 @@ import MainConctractPriceComponent from 'src/views/pages/projects/detail/project
 import ProjectLayout from 'src/views/pages/projects/detail/project-layout';
 import subMenuItems from './(subMenuItems)';
 
-function ProjectMainContractPrice() {
+function ProjectVariation() {
   const router = useRouter();
   const { id, typeId } = router.query;
 
@@ -17,8 +17,8 @@ function ProjectMainContractPrice() {
   );
 }
 
-ProjectMainContractPrice.acl = {
-  action: 'view_projectfinance',
+ProjectVariation.acl = {
+  action: 'view',
   subject: 'projectfinance'
 };
-export default ProjectMainContractPrice;
+export default ProjectVariation;

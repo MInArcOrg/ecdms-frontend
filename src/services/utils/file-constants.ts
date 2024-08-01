@@ -24,3 +24,22 @@ export const uploadablePhotoTypes = {
   resourceType: 'RESOURCE_TYPE',
   user_cover_photo: 'USER_COVER_PHOTO'
 } as const;
+
+export const uploadableProjectFileTypes = {
+  time: 'TIME',
+  plan: 'PROJECT_PLAN',
+  report: 'PROJECT_REPORT',
+  building_envelope_material: 'BUILDING_ENVELOPE_MATERIAL',
+  building_dimension_detail: 'BUILDING_DIMENSION_DETAIL',
+  solar_energy: 'SOLAR_ENERGY',
+  wind_energy: 'WIND_ENERGY',
+  transformer_type: 'TRANSFORMER_TYPE',
+  extension_time: 'EXTENSION_TIME',
+  variation:'VARIATION_TYPE',
+  payment:'PAYMENT_TYPE',
+  bond:'BOND',
+  projectType: 'PROJECT_TYPE',
+  projectCategory: 'PROJECT_CATEGORY',
+  projectSubCategory: 'PROJECT_SUB_CATEGORY',
+  masterStatus: 'MASTER_STATUS'
+} as const;

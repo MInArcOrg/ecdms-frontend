@@ -25,4 +25,32 @@ export interface ProjectGeneralFinance {
     special_total: number;
     omission_total: number;
   }
-  
+export interface ProjectPayment {
+  id: string;
+  parent_id?: string;
+  project_id: string;
+  type?: string;
+  title: string;
+  description?: string;
+  amount: number;
+  retention?: number;
+  reference_number?: string;
+}
+
+export interface ProjectBond {
+  id: string;
+  parent_id?: string;
+  project_id: string;
+  type?: string;
+  issue_date?: string|Date|EthiopianDate;
+  expiration_date?: string|Date|EthiopianDate;
+  issuing_institute?: string;
+  institute_branch?: string;
+  branch_address?: string;
+  percent?: number;
+  institution_type?: string;
+  phone?: string;
+  amount?: number;
+  remark?: string;
+  revision_no?: number;
+}

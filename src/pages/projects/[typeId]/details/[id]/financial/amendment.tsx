@@ -1,15 +1,13 @@
 import { Box } from '@mui/material';
 import { useRouter } from 'next/router';
-import MainConctractPriceComponent from 'src/views/pages/projects/detail/project-finance/main-contract-price';
+import { variationConstants } from 'src/constants/variation-constants';
+import ProjectVariationList from 'src/views/pages/projects/detail/project-finance/project-variation';
 import ProjectLayout from 'src/views/pages/projects/detail/project-layout';
 import subMenuItems from './(subMenuItems)';
-import ProjectVariationList from 'src/views/pages/projects/detail/project-finance/project-variation';
-import { variationConstants } from 'src/constants/variation-contants';
 
-function ProjectMainContractPrice() {
+function ProjectVariation() {
   const router = useRouter();
   const { id, typeId } = router.query;
-
   return (
     <Box>
       <ProjectLayout activeMenu={0} activeSubMenu={4} subMenuItems={subMenuItems(id as string, String(typeId))}>
@@ -19,8 +17,8 @@ function ProjectMainContractPrice() {
   );
 }
 
-ProjectMainContractPrice.acl = {
-  action: 'view_variation',
+ProjectVariation.acl = {
+  action: 'view',
   subject: 'variation'
 };
-export default ProjectMainContractPrice;
+export default ProjectVariation;

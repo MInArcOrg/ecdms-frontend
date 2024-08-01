@@ -352,6 +352,90 @@
         "remark": "Remark"
       }
     },
+    "project-supplement": {
+      "edit-project-supplement": "Edit Project Supplement",
+      "create-project-supplement": "Create Project Supplement",
+      "title": "Project Supplement",
+      "form": {
+        "amount": "Amount",
+        "amount-percent": "Amount (%)",
+        "approval-date": "Approval Date",
+        "extension-time": "Extension Time",
+        "justification": "Justification",
+        "remark": "Remark"
+      }
+    },
+    "project-amendment": {
+      "edit-project-amendment": "Edit Project Amendment",
+      "create-project-amendment": "Create Project Amendment",
+      "title": "Project Amendment",
+      "form": {
+        "amount": "Amount",
+        "amount-percent": "Amount (%)",
+        "approval-date": "Approval Date",
+        "extension-time": "Extension Time",
+        "justification": "Justification",
+        "remark": "Remark"
+      }
+    },
+    "project-omission": {
+      "edit-project-omission": "Edit Project Omission",
+      "create-project-omission": "Create Project Omission",
+      "title": "Project Omission",
+      "form": {
+        "amount": "Amount",
+        "amount-percent": "Amount (%)",
+        "approval-date": "Approval Date",
+        "extension-time": "Extension Time",
+        "justification": "Justification",
+        "remark": "Remark"
+      }
+    },
+    "project-interim_payment": {
+      "edit-project-interim_payment": "Edit Project Interim Payment",
+      "create-project-interim_payment": "Create Project Interim Payment",
+      "title": "Project Interim Payment",
+      "form": {
+        "title":"Title",
+        "amount": "Amount",
+        "retention": "Retention",
+        "description": "Description"
+      }
+    },
+    "project-advance_payment": {
+      "edit-project-advance_payment": "Edit Project Advance Payment",
+      "create-project-advance_payment": "Create Project Advance Payment",
+      "title": "Project Advance Payment",
+      "form": {
+        "title":"Title",
+        "amount": "Amount",
+        "retention": "Retention",
+        "description": "Description"
+      }
+    },
+    "project-bond": {
+      "project-performance_bond":"Performance Bond",
+      "edit-project-performance_bond":"Edit Performance Bond",
+      "create-project-performance_bond":"Create Performance Bond",
+      "project-advance_bond":"Advance Bond",
+      "edit-project-advance_bond":"Edit Advance Bond",
+      "create-project-advance_bond":"Create Advance Bond",
+      "project-bid_bond":"Bid Bond",
+      "edit-project-bid_bond":"Edit Bid Bond",
+      "create-project-bid_bond":"Create Bid Bond",
+      "form": {
+        "amount": "Amount",
+        "amount-percent": "Amount Percentage",
+        "issue-date": "Issue Date",
+        "expiration-date": "Expiration Date",
+        "institution-type":"Institution Type",
+        "issuing-institute": "Issuing Institute",
+        "institute-branch": "Institute Branch",
+        "branch-address": "Branch Address",
+        "phone": "Phone",
+        "remark": "Remark"
+      }
+    },
     "stakeholder": {
       "information": "Stakeholder Information",
       "client": "Client",

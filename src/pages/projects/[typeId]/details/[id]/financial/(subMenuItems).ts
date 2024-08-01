@@ -27,17 +27,17 @@ const subMenuItems = (id: string, typeId: string) => [
   {
     id: 6,
     title: 'Interim Payment',
-    path: `/projects/${typeId}/details/${id}/financial/InterimPayment`
+    path: `/projects/${typeId}/details/${id}/financial/interim-payment`
   },
   {
     id: 7,
     title: 'Advance Payment',
-    path: `/projects/${typeId}/details/${id}/financial/AdvancePayment`
+    path: `/projects/${typeId}/details/${id}/financial/advance-payment`
   },
   {
     id: 8,
     title: 'Performance Bond',
-    path: `/projects/${typeId}/details/${id}/financial/PerformanceBond`
+    path: `/projects/${typeId}/details/${id}/financial/performance-bond`
   },
   {
     id: 9,
