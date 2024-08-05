@@ -409,5 +409,29 @@
       "success-created": "Successfully Created!",
       "success-updated": "Successfully updated!"
     }
+  },
+   "stakeholders":{
+    "create-stakeholders":"Create Stakeholder",
+    "edit-stakeholders":"Edit Stakeholder",
+    "title":"Stakeholder",
+    "columns":{
+      "title":"Title",
+      "description":"Description",
+      "sub-category":"Sub Category",
+      "category":"Category"
+    },
+    "form":{
+      "title":"Title",
+      "description":"Description",
+      "category":"Category",
+      "sub_category":"Sub Category",
+      "field_of_business":"Field of Business",
+      "location":"Location",
+      "ownership_type":"Ownership Type",
+      "trade_name":"Trade Name",
+      "tin_number":"TIN Number",
+      "phone":"Phone Number",
+      "licence_issue_date":"Licence Issue Date"
+    }
   }
 }
