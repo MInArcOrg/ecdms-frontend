@@ -3,111 +3,77 @@ import {
   Card,
   CardActions,
   CardContent,
-  CardHeader,
-  Divider,
-  Typography
+  Divider
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-import i18n from "src/configs/i18n";
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
 import { ProjectStakeholder } from "src/types/project/project-stakeholder";
-import { getDynamicDate } from "src/views/components/custom/ethio-calendar/ethio-calendar-utils";
+import { Stakeholder } from "src/types/stakeholders";
 import FileDrawer from "src/views/components/custom/files-drawer";
+import ModelActionComponent from "src/views/components/custom/model-actions";
+import StakeholderProfileCardComponent from "src/views/pages/stakeholders/stakeholder-profile";
 import RowOptions from "src/views/shared/listing/row-options";
 
-const StakeholderCard = ({
+const ProjectStakeholderCard = ({
   projectStakeholder,
+  refetch,
   onEdit,
+  type,
   onDelete,
 }: {
+  type: string;
   projectStakeholder: ProjectStakeholder;
+  refetch: () => void;
   onEdit: (projectStakeholder: ProjectStakeholder) => void;
   onDelete: (id: string) => void;
 }) => {
+  console.log('stakeholder', projectStakeholder.stakeholder)
   const { t } = useTranslation();
-
+  console.log
   return (
     <Card>
-      <CardHeader
-        title={projectStakeholder?.trade_name || t("project.project-stakeholder.form.no-title")}
-        subheader={projectStakeholder?.stakeholdertype_id ? t(`stakeholderType.${projectStakeholder.stakeholdertype_id}`) : t("project.project-stakeholder.form.no-subtitle")}
-      />
-      <Divider />
       <CardContent>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          mb={2}
-        >
-          <Typography variant="h6" color="textSecondary">
-            {t("project.project-stakeholder.form.tin")}
-          </Typography>
-          <Typography variant="h6">
-            {projectStakeholder?.tin}
-          </Typography>
-        </Box>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          mb={2}
-        >
-          <Typography variant="h6" color="textSecondary">
-            {t("project.project-stakeholder.form.origin")}
-          </Typography>
-          <Typography variant="h6">
-            {projectStakeholder?.origin}
-          </Typography>
-        </Box>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          mb={2}
-        >
-          <Typography variant="h6" color="textSecondary">
-            {t("project.project-stakeholder.form.license-issued-date")}
-          </Typography>
-          <Typography variant="h6">
-            {/* {getDynamicDate(i18n, projectStakeholder?.license_issued_date).toLocaleDateString() || t("project.project-stakeholder.form.no-date")} */}
-          </Typography>
-        </Box>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          mb={2}
-        >
-          <Typography variant="h6" color="textSecondary">
-            {t("project.project-stakeholder.form.revision-no")}
-          </Typography>
-          <Typography variant="h6">
-            {projectStakeholder?.revision_no}
-          </Typography>
-        </Box>
+        <StakeholderProfileCardComponent stakeholder={projectStakeholder?.stakeholder as Stakeholder }/>
       </CardContent>
       <Divider />
-      <CardActions style={{ justifyContent: "space-between" }}>
-        <FileDrawer id={projectStakeholder.id} type={uploadableProjectFileTypes.payment} />
-        <RowOptions 
-          deletePermissionRule={{
-            action: 'delete',
-            subject: 'project-stakeholder'
-          }} 
-          editPermissionRule={{
-            action: 'edit',
-            subject: 'project-stakeholder'
-          }}
-          onEdit={onEdit} 
-          onDelete={() => onDelete(projectStakeholder.id)} 
-          item={projectStakeholder} 
-          options={[]} 
-        />
+      <CardActions style={{ justifyContent: "flex-end" }}>
+        <FileDrawer
+          id={projectStakeholder.id}
+          type={uploadableProjectFileTypes.stakeholder}
+        />{" "}
+        &nbsp;
+        <Box sx={{ display: "flex" }}>
+          <ModelActionComponent
+            model="Position"
+            model_id={projectStakeholder.id}
+            refetchModel={refetch}
+            resubmit={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+            title={""}
+            postAction={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          />
+          <RowOptions
+            deletePermissionRule={{
+              action: "delete",
+              subject: "projectstakeholder",
+            }}
+            editPermissionRule={{
+              action: "edit",
+              subject: "projectstakeholder",
+            }}
+            onEdit={onEdit}
+            onDelete={() => onDelete(projectStakeholder.id)}
+            item={projectStakeholder}
+            options={[]}
+          />
+        </Box>
       </CardActions>
     </Card>
   );
 };
 
-export default StakeholderCard;
+export default ProjectStakeholderCard;

@@ -1,11 +1,12 @@
 import EthiopianDate from "src/views/components/custom/ethio-calendar/ethiopian-date";
+import { Stakeholder } from "../stakeholders";
 
 export interface ProjectStakeholder {
     id: string;
     parent_id?: string;
     project_id: string;
     stakeholder_id: string;
-    stakeholder: Stake
+    stakeholder?: Stakeholder
     title: string;
     description?: string;
     remark?: string;
