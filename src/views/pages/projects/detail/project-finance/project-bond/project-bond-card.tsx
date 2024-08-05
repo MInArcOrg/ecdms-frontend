@@ -5,7 +5,7 @@ import {
   CardContent,
   CardHeader,
   Divider,
-  Typography
+  Typography,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
@@ -16,26 +16,36 @@ import { formatCurrency } from "src/utils/formatter/currency";
 import { formatPercent } from "src/utils/formatter/number";
 import { getDynamicDate } from "src/views/components/custom/ethio-calendar/ethio-calendar-utils";
 import FileDrawer from "src/views/components/custom/files-drawer";
+import ModelActionComponent from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
 
 const ProjectBondCard = ({
   projectBond,
   refetch,
   onEdit,
   type,
+  onDelete,
 }: {
   type: string;
   projectBond: ProjectBond;
   refetch: () => void;
   onEdit: (projectBond: ProjectBond) => void;
+  onDelete: (id: string) => void;
 }) => {
   const { t } = useTranslation();
 
   return (
     <Card>
       <CardHeader
-        title={projectBond?.issuing_institute || t("project.project-bond.form.no-title")}
-        subheader={projectBond?.institution_type ? t(`institution.${projectBond.institution_type}`) : t("project.project-bond.form.no-subtitle")}
-       
+        title={
+          projectBond?.issuing_institute ||
+          t("project.project-bond.form.no-title")
+        }
+        subheader={
+          projectBond?.institution_type
+            ? t(`institution.${projectBond.institution_type}`)
+            : t("project.project-bond.form.no-subtitle")
+        }
       />
       <Divider />
       <CardContent>
@@ -75,7 +85,10 @@ const ProjectBondCard = ({
             {t("project.project-bond.form.issue-date")}
           </Typography>
           <Typography variant="h6">
-            {getDynamicDate(i18n, projectBond?.issue_date).toLocaleDateString() || t("project.project-bond.form.no-date")}
+            {getDynamicDate(
+              i18n,
+              projectBond?.issue_date
+            ).toLocaleDateString() || t("project.project-bond.form.no-date")}
           </Typography>
         </Box>
         <Box
@@ -88,14 +101,48 @@ const ProjectBondCard = ({
             {t("project.project-bond.form.expiration-date")}
           </Typography>
           <Typography variant="h6">
-            {getDynamicDate(i18n, projectBond?.issue_date).toLocaleDateString() || t("project.project-bond.form.no-date")}
+            {getDynamicDate(
+              i18n,
+              projectBond?.issue_date
+            ).toLocaleDateString() || t("project.project-bond.form.no-date")}
           </Typography>
         </Box>
       </CardContent>
       <Divider />
-      <CardActions style={{ justifyContent: "space-between" }}>
-        <FileDrawer id={projectBond.id} type={uploadableProjectFileTypes.payment} />
-        
+      <CardActions style={{ justifyContent: "flex-end" }}>
+          <FileDrawer
+            id={projectBond.id}
+            type={uploadableProjectFileTypes.bond}
+          />{" "}
+          &nbsp;
+          <Box sx={{ display: "flex" }}>
+            <ModelActionComponent
+              model="Position"
+              model_id={projectBond.id}
+              refetchModel={refetch}
+              resubmit={function (): void {
+                throw new Error("Function not implemented.");
+              }}
+              title={""}
+              postAction={function (): void {
+                throw new Error("Function not implemented.");
+              }}
+            />
+            <RowOptions
+              deletePermissionRule={{
+                action: "delete",
+                subject: "projectbond",
+              }}
+              editPermissionRule={{
+                action: "edit",
+                subject: "projectbond",
+              }}
+              onEdit={onEdit}
+              onDelete={() => onDelete(projectBond.id)}
+              item={projectBond}
+              options={[]}
+            />
+        </Box>
       </CardActions>
     </Card>
   );

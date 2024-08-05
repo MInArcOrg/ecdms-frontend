@@ -1,17 +1,25 @@
 // components/ProjectList.tsx
-import { Box, Card, CardActions, CardContent, Grid, Link, Typography } from '@mui/material';
-import { Fragment } from 'react';
-import { Project } from 'src/types/project';
-import FileDrawer from 'src/views/components/custom/files-drawer';
-import ModelActionComponent from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
+import {
+  Box,
+  Card,
+  CardActions,
+  CardContent,
+  Grid,
+  Link,
+  Typography,
+} from "@mui/material";
+import { Fragment } from "react";
+import { Project } from "src/types/project";
+import FileDrawer from "src/views/components/custom/files-drawer";
+import ModelActionComponent from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
 
 const ProjectCard = ({
   project,
   onDetail,
   onEdit,
   onDelete,
-  refetch
+  refetch,
 }: {
   project: Project;
   onDetail: (project: Project) => void;
@@ -25,7 +33,7 @@ const ProjectCard = ({
       <CardContent>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: "flex" }}>
               <Box>
                 <Typography
                   noWrap
@@ -33,9 +41,9 @@ const ProjectCard = ({
                   href=""
                   sx={{
                     fontWeight: 500,
-                    textDecoration: 'none',
-                    color: 'text.secondary',
-                    '&:hover': { color: 'primary.main' }
+                    textDecoration: "none",
+                    color: "text.secondary",
+                    "&:hover": { color: "primary.main" },
                   }}
                 >
                   {project.name}
@@ -47,24 +55,37 @@ const ProjectCard = ({
             </Box>
           </Grid>
           <Grid item>
-            <CardActions style={{ justifyContent: 'flex-end' }}>
+            <CardActions style={{ justifyContent: "flex-end" }}>
               <Fragment>
                 <Box>
-                  <FileDrawer id={project.id} type={'RESOURCE'} /> &nbsp;
-                  <Box sx={{ display: 'flex' }}>
+                  <FileDrawer id={project.id} type={"RESOURCE"} /> &nbsp;
+                  <Box sx={{ display: "flex" }}>
                     <ModelActionComponent
                       model="Position"
                       model_id={project.id}
                       refetchModel={refetch}
                       resubmit={function (): void {
-                        throw new Error('Function not implemented.');
+                        throw new Error("Function not implemented.");
                       }}
-                      title={''}
+                      title={""}
                       postAction={function (): void {
-                        throw new Error('Function not implemented.');
+                        throw new Error("Function not implemented.");
                       }}
                     />
-                    <RowOptions onEdit={onEdit} onDelete={() => onDelete(project.id)} item={project} options={[]} />
+                    <RowOptions
+                      onEdit={onEdit}
+                      onDelete={() => onDelete(project.id)}
+                      item={project}
+                      deletePermissionRule={{
+                        action: "delete",
+                        subject: "project",
+                      }}
+                      editPermissionRule={{
+                        action: "edit",
+                        subject: "project",
+                      }}
+                      options={[]}
+                    />
                   </Box>
                 </Box>
               </Fragment>

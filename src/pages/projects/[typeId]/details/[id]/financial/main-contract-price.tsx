@@ -10,7 +10,7 @@ function ProjectVariation() {
 
   return (
     <Box>
-      <ProjectLayout activeMenu={0} activeSubMenu={0} subMenuItems={subMenuItems(id as string, String(typeId))}>
+      <ProjectLayout activeMenu={1} activeSubMenu={0} subMenuItems={subMenuItems(id as string, String(typeId))}>
         <MainConctractPriceComponent projectId={String(id)} />
       </ProjectLayout>
     </Box>

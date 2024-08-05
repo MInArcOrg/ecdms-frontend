@@ -10,7 +10,7 @@ function ProjectVariation() {
   const { id, typeId } = router.query;
   return (
     <Box>
-      <ProjectLayout activeMenu={0} activeSubMenu={4} subMenuItems={subMenuItems(id as string, String(typeId))}>
+      <ProjectLayout activeMenu={1} activeSubMenu={4} subMenuItems={subMenuItems(id as string, String(typeId))}>
         <ProjectVariationList projectId={String(id)} type={variationConstants.AMENDMENT.value} />
       </ProjectLayout>
     </Box>

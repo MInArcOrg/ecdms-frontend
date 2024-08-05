@@ -11,7 +11,7 @@ function ProjectVariation() {
 
   return (
     <Box>
-      <ProjectLayout activeMenu={0} activeSubMenu={2} subMenuItems={subMenuItems(id as string, String(typeId))}>
+      <ProjectLayout activeMenu={1} activeSubMenu={2} subMenuItems={subMenuItems(id as string, String(typeId))}>
         <ProjectVariationList projectId={String(id)} type={variationConstants.SUPPLEMENT.value} />
       </ProjectLayout>
     </Box>
