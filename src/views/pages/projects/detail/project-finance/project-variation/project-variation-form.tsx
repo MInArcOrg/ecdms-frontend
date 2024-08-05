@@ -64,7 +64,7 @@ const ProjectVariationForm: React.FC<ProjectVariationFormProps> = ({
       </Grid>
       <Grid item xs={12}>
         <CustomDynamicDatePicker
-        fullWidth
+          fullWidth
           label={transl("project.project-variation.form.approval-date")}
           name="approval_date"
           required
@@ -108,7 +108,7 @@ const ProjectVariationForm: React.FC<ProjectVariationFormProps> = ({
       </Grid>
       <Grid item xs={12}>
 
-      <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
+        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

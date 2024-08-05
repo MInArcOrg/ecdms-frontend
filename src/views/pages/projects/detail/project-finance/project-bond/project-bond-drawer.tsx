@@ -78,8 +78,8 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
         is: (value: string) => value === institutionType.insurance.value,
         then: (schema) => schema.max(institutionType.insurance.percent).min(0),
       }),
-      institute_branch:yup.string().required(),
-      branch_address:yup.string().required(),
+    institute_branch: yup.string().required(),
+    branch_address: yup.string().required(),
   });
 
   const isEdit = Boolean(projectBond?.id);
@@ -125,18 +125,17 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.project-bond.${
-        isEdit
+      title={`project.project-bond.${isEdit
           ? `edit-project-${type.toLocaleLowerCase()}`
           : `create-project-${type.toLocaleLowerCase()}`
-      }`}
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.project-bond.${type.toLocaleLowerCase()}`} // Adjust the title key if necessary
+          title={`project.project-bond.project-${type.toLocaleLowerCase()}`} // Adjust the title key if necessary
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
@@ -144,15 +143,15 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
             ...(projectBond as ProjectBond),
             issue_date: projectBond?.issue_date
               ? getDynamicDate(
-                  i18n,
-                  moment(String(projectBond?.issue_date)).toDate()
-                )
+                i18n,
+                moment(String(projectBond?.issue_date)).toDate()
+              )
               : undefined,
             expiration_date: projectBond?.expiration_date
               ? getDynamicDate(
-                  i18n,
-                  moment(String(projectBond?.expiration_date)).toDate()
-                )
+                i18n,
+                moment(String(projectBond?.expiration_date)).toDate()
+              )
               : undefined,
           }}
           createActionFunc={isEdit ? editProjectBond : createProjectBond}

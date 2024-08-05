@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import Icon from 'src/@core/components/icon';
 import { Box, IconButton } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";

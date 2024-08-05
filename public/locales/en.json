@@ -425,7 +425,7 @@
       "create-project-bid_bond":"Create Bid Bond",
       "form": {
         "amount": "Amount",
-        "amount-percent": "Amount Percentage",
+        "percent": "Amount Percentage",
         "issue-date": "Issue Date",
         "expiration-date": "Expiration Date",
         "institution-type":"Institution Type",

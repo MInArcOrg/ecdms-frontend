@@ -42,12 +42,12 @@ const subMenuItems = (id: string, typeId: string) => [
   {
     id: 9,
     title: 'Advanced Bond',
-    path: `/projects/${typeId}/details/${id}/financial/AdvancedBond`
+    path: `/projects/${typeId}/details/${id}/financial/advance-bond`
   },
   {
     id: 10,
     title: 'Bid Bond',
-    path: `/projects/${typeId}/details/${id}/financial/BidBond`
+    path: `/projects/${typeId}/details/${id}/financial/bid-bond`
   }
 ];
 
