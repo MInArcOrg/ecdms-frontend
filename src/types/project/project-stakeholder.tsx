@@ -1,4 +1,3 @@
-import EthiopianDate from "src/views/components/custom/ethio-calendar/ethiopian-date";
 import { Stakeholder } from "../stakeholders";
 
 export interface ProjectStakeholder {

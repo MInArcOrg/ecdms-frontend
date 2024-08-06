@@ -9,19 +9,19 @@ import {
   Typography,
 } from "@mui/material";
 import { Fragment } from "react";
-import { Stakeholders } from "src/types/stakeholders";
+import { Stakeholder } from "src/types/stakeholders";
 import FileDrawer from "src/views/components/custom/files-drawer";
 import ModelActionComponent from "src/views/components/custom/model-actions";
 import RowOptions from "src/views/shared/listing/row-options";
 
-const StakeholdersCard = ({
+const StakeholderCard = ({
   stakeholders,
   onEdit,
   onDelete,
   refetch,
 }: {
-  stakeholders: Stakeholders;
-  onEdit: (category: Stakeholders) => void;
+  stakeholders: Stakeholder;
+  onEdit: (category: Stakeholder) => void;
   onDelete: (id: string) => void;
   t: any;
   refetch: () => void;
@@ -34,7 +34,7 @@ const StakeholdersCard = ({
             <Box sx={{ display: "flex" }}>
               <Box>
                 <Typography variant="h5" component="div">
-                  {stakeholders.title}
+                  {stakeholders.trade_name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {stakeholders.description}
@@ -76,4 +76,4 @@ const StakeholdersCard = ({
     </Card>
   );
 };
-export default StakeholdersCard;
+export default StakeholderCard;

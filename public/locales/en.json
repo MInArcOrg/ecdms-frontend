@@ -437,10 +437,19 @@
       }
     },
     "stakeholder": {
+      "title":"Project Stakeholders",
+      "edit-project-stakeholder":"Edit Project Stakeholder",
+      "create-project-stakeholder":"Create Project Stakeholder",
       "information": "Stakeholder Information",
       "client": "Client",
       "consultant": "Consultant",
-      "contractor": "Contractor"
+      "contractor": "Contractor",
+      "form": {
+          "stakeholder": "Stakeholder",
+          "title": "Title",
+          "description": "Description",
+          "remark": "Remark"
+      }
     },
     "columns": {
       "title": "Title",

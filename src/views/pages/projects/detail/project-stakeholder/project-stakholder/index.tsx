@@ -66,15 +66,16 @@ function ProjectStakeholderList({
         />
       )}
       <ItemsListing
-        title={`project.project-stakeholder.project-stakeholder`}
+        title={`project.stakeholder.title`}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.grid.value}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
           <ProjectStakeholderCard
             onEdit={handleEdit}
-            projectStakeholder={data} onDelete={handleDelete}          
-          />
+            projectStakeholder={data}
+            onDelete={handleDelete} 
+            refetch={refetch}          />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
