@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import projectStakeholderApiService from "src/services/project/project-stakeholder-service";
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-service";
+import { uploadFile } from "src/services/utils/file-utils";
 
 import { IApiPayload, IApiResponse } from "src/types/requests";
 import CustomSideDrawer from "src/views/shared/drawer/side-drawer";

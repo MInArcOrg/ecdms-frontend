@@ -17,7 +17,7 @@ import {
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getDynamicDate } from '../ethio-calendar/ethio-calendar-utils';
-import { deleteFile } from 'src/services/utils/file-service';
+import { deleteFile } from 'src/services/utils/file-utils';
 import { FileModel } from 'src/types/general/file';
 import RowOptions from 'src/views/shared/listing/row-options';
 

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import projectBondApiService from "src/services/project/project-bond-service";
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-service";
+import { uploadFile } from "src/services/utils/file-utils";
 import {
   ProjectBond,
   ProjectGeneralFinance,

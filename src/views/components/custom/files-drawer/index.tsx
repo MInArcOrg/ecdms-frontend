@@ -3,7 +3,7 @@ import { CircularProgress, Typography } from '@mui/material';
 import { Fragment, useState } from 'react';
 import FileDetail from './file-detail';
 import { useTranslation } from 'react-i18next';
-import { getFilesByModel } from 'src/services/utils/file-service';
+import { getFilesByModel } from 'src/services/utils/file-utils';
 import { useQuery } from '@tanstack/react-query';
 
 function FileDrawer({ id, type }: { id: string; type: string }) {

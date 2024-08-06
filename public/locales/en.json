@@ -451,6 +451,26 @@
           "remark": "Remark"
       }
     },
+    "project-file":{
+      "project-initiation":"Intiation File",
+      "project-planning":"Planning File",
+      "project-execution":"Execution File",
+      "project-monitoring":"Monitoring File",
+      "project-closing":"Closing File",
+      "create-project-initiation":"Create Intiation File",
+      "create-project-planning":"Create Planning File",
+      "create-project-execution":"Create Execution File",
+      "create-project-monitoring":"Create Monitoring File",
+      "create-project-closing":"Create Closing File",
+      "edit-project-initiation":"Edit Intiation File",
+      "edit-project-planning":"Edit Planning File",
+      "edit-project-execution":"Edit Execution File",
+      "edit-project-monitoring":"Edit Monitoring File",
+      "edit-project-closing":"Edit Closing File",
+      "form":{
+        "description":"Description"
+      }
+    },
     "columns": {
       "title": "Title",
       "elapsed-time": "Elapsed Time",

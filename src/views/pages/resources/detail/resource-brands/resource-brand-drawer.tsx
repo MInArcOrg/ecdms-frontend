@@ -1,7 +1,7 @@
 import { FormikProps } from 'formik';
 import React, { useEffect, useState } from 'react';
 import resourceBrandApiService from 'src/services/resource/resource-brand-service';
-import { deletePhoto, useGetMultiplePhotos, uploadImage } from 'src/services/utils/file-service';
+import { deletePhoto, useGetMultiplePhotos, uploadImage } from 'src/services/utils/file-utils';
 import { FileWithId } from 'src/types/general/file';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
 import { ResourceBrand } from 'src/types/resource';

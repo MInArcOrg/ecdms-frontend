@@ -43,7 +43,7 @@ const ProjectStakeholderCard = ({
         &nbsp;
         <Box sx={{ display: "flex" }}>
           <ModelActionComponent
-            model="Position"
+            model="Stakeholder"
             model_id={projectStakeholder.id}
             refetchModel={refetch}
             resubmit={function (): void {
