@@ -38,6 +38,7 @@ export const uploadableProjectFileTypes = {
   variation:'VARIATION_TYPE',
   payment:'PAYMENT_TYPE',
   bond:'BOND',
+  stakeholder:'STAKEHOLDER',
   projectType: 'PROJECT_TYPE',
   projectCategory: 'PROJECT_CATEGORY',
   projectSubCategory: 'PROJECT_SUB_CATEGORY',

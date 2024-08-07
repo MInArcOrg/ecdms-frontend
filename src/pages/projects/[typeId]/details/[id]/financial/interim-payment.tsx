@@ -10,7 +10,7 @@ function ProjectInterimPayment() {
   const { id, typeId } = router.query;
   return (
     <Box>
-      <ProjectLayout activeMenu={0} activeSubMenu={5} subMenuItems={subMenuItems(id as string, String(typeId))}>
+      <ProjectLayout activeMenu={1} activeSubMenu={5} subMenuItems={subMenuItems(id as string, String(typeId))}>
         <ProjectPaymentList projectId={String(id)} type={paymentConstants.INTERIM_PAYMENT.value} />
       </ProjectLayout>
     </Box>

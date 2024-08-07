@@ -10,7 +10,7 @@ function ProjectAdvanceBond() {
   const { id, typeId } = router.query;
   return (
     <Box>
-      <ProjectLayout activeMenu={0} activeSubMenu={9} subMenuItems={subMenuItems(id as string, String(typeId))}>
+      <ProjectLayout activeMenu={1} activeSubMenu={9} subMenuItems={subMenuItems(id as string, String(typeId))}>
         <ProjectBondList projectId={String(id)} type={bondConstants.BID_BOND.value} />
       </ProjectLayout>
     </Box>

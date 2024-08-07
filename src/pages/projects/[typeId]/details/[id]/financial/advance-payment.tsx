@@ -10,7 +10,7 @@ function ProjectAdvancePayment() {
   const { id, typeId } = router.query;
   return (
     <Box>
-      <ProjectLayout activeMenu={0} activeSubMenu={6} subMenuItems={subMenuItems(id as string, String(typeId))}>
+      <ProjectLayout activeMenu={1} activeSubMenu={6} subMenuItems={subMenuItems(id as string, String(typeId))}>
         <ProjectPaymentList projectId={String(id)} type={paymentConstants.ADVANCE_PAYMENT.value} />
       </ProjectLayout>
     </Box>

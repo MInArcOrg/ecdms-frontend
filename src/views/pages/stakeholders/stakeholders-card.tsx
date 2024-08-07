@@ -1,29 +1,27 @@
-// components/ProjectList.tsx
+/* eslint-disable prettier/prettier */
+
 import {
   Box,
   Card,
   CardActions,
   CardContent,
   Grid,
-  Link,
   Typography,
 } from "@mui/material";
 import { Fragment } from "react";
-import { Project } from "src/types/project";
+import { Stakeholders } from "src/types/stakeholders";
 import FileDrawer from "src/views/components/custom/files-drawer";
 import ModelActionComponent from "src/views/components/custom/model-actions";
 import RowOptions from "src/views/shared/listing/row-options";
 
-const ProjectCard = ({
-  project,
-  onDetail,
+const StakeholdersCard = ({
+  stakeholders,
   onEdit,
   onDelete,
   refetch,
 }: {
-  project: Project;
-  onDetail: (project: Project) => void;
-  onEdit: (project: Project) => void;
+  stakeholders: Stakeholders;
+  onEdit: (category: Stakeholders) => void;
   onDelete: (id: string) => void;
   t: any;
   refetch: () => void;
@@ -35,22 +33,12 @@ const ProjectCard = ({
           <Grid item>
             <Box sx={{ display: "flex" }}>
               <Box>
-                <Typography
-                  noWrap
-                  component={Link}
-                  href=""
-                  sx={{
-                    fontWeight: 500,
-                    textDecoration: "none",
-                    color: "text.secondary",
-                    "&:hover": { color: "primary.main" },
-                  }}
-                >
-                  {project.name}
+                <Typography variant="h5" component="div">
+                  {stakeholders.title}
                 </Typography>
-                {/* <Typography variant="body2" color="text.secondary">
-                  {project.description}
-                </Typography> */}
+                <Typography variant="body2" color="text.secondary">
+                  {stakeholders.description}
+                </Typography>
               </Box>
             </Box>
           </Grid>
@@ -58,11 +46,11 @@ const ProjectCard = ({
             <CardActions style={{ justifyContent: "flex-end" }}>
               <Fragment>
                 <Box>
-                  <FileDrawer id={project.id} type={"RESOURCE"} /> &nbsp;
+                  <FileDrawer id={stakeholders.id} type={"RESOURCE"} /> &nbsp;
                   <Box sx={{ display: "flex" }}>
                     <ModelActionComponent
                       model="Position"
-                      model_id={project.id}
+                      model_id={stakeholders.id}
                       refetchModel={refetch}
                       resubmit={function (): void {
                         throw new Error("Function not implemented.");
@@ -74,16 +62,8 @@ const ProjectCard = ({
                     />
                     <RowOptions
                       onEdit={onEdit}
-                      onDelete={() => onDelete(project.id)}
-                      item={project}
-                      deletePermissionRule={{
-                        action: "delete",
-                        subject: "project",
-                      }}
-                      editPermissionRule={{
-                        action: "edit",
-                        subject: "project",
-                      }}
+                      onDelete={() => onDelete(stakeholders.id)}
+                      item={stakeholders}
                       options={[]}
                     />
                   </Box>
@@ -96,4 +76,4 @@ const ProjectCard = ({
     </Card>
   );
 };
-export default ProjectCard;
+export default StakeholdersCard;
