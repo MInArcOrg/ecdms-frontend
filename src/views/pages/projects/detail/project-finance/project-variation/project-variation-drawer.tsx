@@ -17,7 +17,7 @@ import { useTranslation } from "react-i18next";
 import projectVariationApiService from "src/services/project/project-variation-service";
 import { useEffect, useState } from "react";
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-service";
+import { uploadFile } from "src/services/utils/file-utils";
 
 interface ProjectVariationDrawerType {
   open: boolean;

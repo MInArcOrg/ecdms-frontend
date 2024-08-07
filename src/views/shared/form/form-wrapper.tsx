@@ -74,7 +74,7 @@ const FormPageWrapper = <T extends FormikValues>({
   };
 
   return (
-    <Page titleId={`${edit ? 'edit' : 'create'}-${title}`}>
+    <Page titleId={title}>
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
         {(formik: FormikProps<T>) => (
           <form onSubmit={formik.handleSubmit}>

@@ -1,7 +1,9 @@
 import { Grid } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
 import { FormikProps } from "formik";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import stakeholdersApiService from "src/services/stakeholders/stakeholders-service";
 import { ProjectStakeholder } from "src/types/project/project-stakeholder";
 import CustomDynamicDatePicker from "src/views/shared/form/custom-dynamic-date-box";
 import CustomPhoneInput from "src/views/shared/form/custom-phone-box";
@@ -21,28 +23,32 @@ const ProjectStakeholderForm: React.FC<ProjectStakeholderFormProps> = ({
   onFileChange,
 }) => {
   const { t: transl } = useTranslation();
-
-  const institutionOptions = [
-    { label: transl("institution.option1"), value: "option1" },
-    { label: transl("institution.option2"), value: "option2" },
-  ];
-
+  console.log('formik error',formik.errors)
+  const {data:stakeholders}=useQuery({
+    queryKey:['stakeholders'],
+    queryFn:()=> stakeholdersApiService.getAll({})
+  })
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} md={12} lg={12}>
         <CustomSelect
           size="small"
-          name="stakeholder.stakeholdertype_id"
-          label={transl("project.project-stakeholder.form.stakeholder-type")}
-          options={institutionOptions}
+          name="stakeholder_id"
+          label={transl("project.stakeholder.form.stakeholder")}
+          options={
+            stakeholders?.payload?.map((stakeholder) => ({
+              value: stakeholder.id,
+              label: stakeholder.trade_name
+            })) || []
+          }
         />
       </Grid>
 
-      <Grid item xs={12} md={6} lg={6}>
+      <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl("project.project-stakeholder.form.title")}
-          placeholder={transl("project.project-stakeholder.form.title")}
+          label={transl("project.stakeholder.form.title")}
+          placeholder={transl("project.stakeholder.form.title")}
           name="title"
           size="small"
           value={formik.values.title}
@@ -53,8 +59,8 @@ const ProjectStakeholderForm: React.FC<ProjectStakeholderFormProps> = ({
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl("project.project-stakeholder.form.description")}
-          placeholder={transl("project.project-stakeholder.form.description")}
+          label={transl("project.stakeholder.form.description")}
+          placeholder={transl("project.stakeholder.form.description")}
           name="description"
           multiline
           rows={4}
@@ -66,8 +72,8 @@ const ProjectStakeholderForm: React.FC<ProjectStakeholderFormProps> = ({
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl("project.project-stakeholder.form.remark")}
-          placeholder={transl("project.project-stakeholder.form.remark")}
+          label={transl("project.stakeholder.form.remark")}
+          placeholder={transl("project.stakeholder.form.remark")}
           name="remark"
           multiline
           rows={2}

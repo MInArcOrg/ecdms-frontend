@@ -18,5 +18,5 @@ export const bondConstants = {
     insurance: { name: "Insurance", value: "insurance", percent: 10 },
   };
   // Type for the variation constants
-  export type VariationConstants =
+  export type BondConstants =
     (typeof bondConstants)[keyof typeof bondConstants];

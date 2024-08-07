@@ -38,7 +38,7 @@ const menuItems = (id: string, typeId: string): MenuItem[] => [
   {
     id: 5,
     title: 'Project File',
-    path: `/projects/${typeId}/details/${id}/projectFile/initiation`,
+    path: `/projects/${typeId}/details/${id}/project-file/initiation`,
     action: 'view_projectfile',
     subject: 'projectfile'
   },

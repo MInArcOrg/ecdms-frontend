@@ -1,7 +1,7 @@
 import { FormikProps } from 'formik';
 import React, { useEffect, useState } from 'react';
 import detailResourceTypeApiService from 'src/services/resource/resource-detail-type-service';
-import { deletePhoto, useGetMultiplePhotos, uploadImage } from 'src/services/utils/file-service';
+import { deletePhoto, useGetMultiplePhotos, uploadImage } from 'src/services/utils/file-utils';
 import { FileWithId } from 'src/types/general/file';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
 import { DetailResourceType } from 'src/types/resource';

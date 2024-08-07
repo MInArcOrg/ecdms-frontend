@@ -7,7 +7,7 @@ import { ChangeEvent, Fragment } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { uploadablePhotoTypes } from 'src/services/utils/file-constants';
-import { getStaticPhoto, handleProfilePictureError, uploadImage, useGetMultiplePhotos } from 'src/services/utils/file-service';
+import { getStaticPhoto, handleProfilePictureError, uploadImage, useGetMultiplePhotos } from 'src/services/utils/file-utils';
 import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
 
 // Define types for project info and time props

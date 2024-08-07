@@ -2,7 +2,7 @@ import { FormikProps } from 'formik';
 import { useState } from 'react';
 import modelMenuApiService from 'src/services/general/model-menu-service';
 import masterTypeApiService from 'src/services/master-data/master-type-service';
-import { uploadFile } from 'src/services/utils/file-service';
+import { uploadFile } from 'src/services/utils/file-utils';
 import { MasterType } from 'src/types/master/master-types';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';

@@ -113,18 +113,6 @@ export const deleteFile = (id: string | number): Promise<AxiosResponse<FileUploa
   return customAxios.delete(`/file/${id}`);
 };
 
-// Get image by type
-export const getImageByType = (type: string, id: string | number): string =>
-  `${process.env.NEXT_PUBLIC_API_URL}/generics/files/${id}/${type}`;
-
-// Get project file selector
-// export const getProjectFileSelector = (project_id: string | number, type: string) =>
-//   useAxios({
-//     method: 'get',
-//     url: `/projects/project-file-selector/${project_id}/${type}`
-//   });
-
-// Upload profile picture
 export const uploadProfilePicture = (user_id: string | number, type: string, file: File): Promise<AxiosResponse<FileUploadResponse>> => {
   const formData = new FormData();
   formData.append('upload', file);
@@ -140,6 +128,8 @@ export const uploadProfilePicture = (user_id: string | number, type: string, fil
 // Get photo
 export const getPhoto = (id: string | number, type: string): string => `${process.env.NEXT_PUBLIC_API_URL}/api/photo/${type}/${id}`;
 export const getStaticPhoto = (path: string) => `${process.env.NEXT_PUBLIC_BASE_URL}${path}`;
+export const getStaticFile = (path: string) => `${process.env.NEXT_PUBLIC_BASE_URL}${path}`;
+
 // Get multiple photos
 export const useGetMultiplePhotos = (params: GetRequestParam) => {
   return useQuery({

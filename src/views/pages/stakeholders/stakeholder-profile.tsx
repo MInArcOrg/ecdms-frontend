@@ -30,10 +30,10 @@ import addressApiService from "src/services/general/address-service";
   
   const StakeholderProfileCardComponent = ({
     stakeholder,
-
+    projectStakeholder
   }: {
     stakeholder: Stakeholder;
- 
+    projectStakeholder?:ProjectStakeholder
   }) => {
     const stakeholderId = stakeholder?.id;
     // const type = uploadablePhotoTypes.stakeholder_profile_photo;
@@ -88,7 +88,7 @@ import addressApiService from "src/services/general/address-service";
                 fontWeight: 400,
               }}
             >
-              {stakeholder?.trade_name}
+              {projectStakeholder?.title ||""}
             </Typography>
           </Typography>
         </Box>

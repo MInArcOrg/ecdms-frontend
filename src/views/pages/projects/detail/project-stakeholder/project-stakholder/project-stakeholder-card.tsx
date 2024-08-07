@@ -19,10 +19,8 @@ const ProjectStakeholderCard = ({
   projectStakeholder,
   refetch,
   onEdit,
-  type,
   onDelete,
 }: {
-  type: string;
   projectStakeholder: ProjectStakeholder;
   refetch: () => void;
   onEdit: (projectStakeholder: ProjectStakeholder) => void;
@@ -34,7 +32,7 @@ const ProjectStakeholderCard = ({
   return (
     <Card>
       <CardContent>
-        <StakeholderProfileCardComponent stakeholder={projectStakeholder?.stakeholder as Stakeholder }/>
+        <StakeholderProfileCardComponent projectStakeholder={projectStakeholder} stakeholder={projectStakeholder?.stakeholder as Stakeholder }/>
       </CardContent>
       <Divider />
       <CardActions style={{ justifyContent: "flex-end" }}>
@@ -45,7 +43,7 @@ const ProjectStakeholderCard = ({
         &nbsp;
         <Box sx={{ display: "flex" }}>
           <ModelActionComponent
-            model="Position"
+            model="Stakeholder"
             model_id={projectStakeholder.id}
             refetchModel={refetch}
             resubmit={function (): void {

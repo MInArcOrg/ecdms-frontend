@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import projectStakeholderApiService from "src/services/project/project-stakeholder-service";
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-service";
+import { uploadFile } from "src/services/utils/file-utils";
 
 import { IApiPayload, IApiResponse } from "src/types/requests";
 import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
@@ -40,33 +40,10 @@ const ProjectStakeholderDrawer = (props: ProjectStakeholderDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
-    amount: yup
-      .number()
-      .required(`${t("Amount")} ${t("is required")}`)
-      .when("institution_type", {
-        is: (value: string) => value === institutionType.bank.value,
-        then: (schema) =>
-          schema.max(amountCalculator(institutionType.bank.percent)).min(0),
-      })
-      .when("institution_type", {
-        is: (value: string) => value === institutionType.insurance.value,
-        then: (schema) =>
-          schema
-            .max(amountCalculator(institutionType.insurance.percent))
-            .min(0),
-      }),
-    percent: yup
-      .number()
-      .when("institution_type", {
-        is: (value: string) => value === institutionType.bank.value,
-        then: (schema) => schema.max(institutionType.bank.percent).min(0),
-      })
-      .when("institution_type", {
-        is: (value: string) => value === institutionType.insurance.value,
-        then: (schema) => schema.max(institutionType.insurance.percent).min(0),
-      }),
-      institute_branch:yup.string().required(),
-      branch_address:yup.string().required(),
+    stakeholder_id: yup.string().required(),
+    title: yup.string().required(),
+    description: yup.string().required(),
+    remark: yup.string().required(),
   });
 
   const isEdit = Boolean(projectStakeholder?.id);
@@ -81,9 +58,7 @@ const ProjectStakeholderDrawer = (props: ProjectStakeholderDrawerType) => {
     data: {
       ...values,
       id: projectStakeholder?.id,
-      project_id: projectId,
-      expiration_date: convertDateToLocaleDate(values.expiration_date),
-      issue_date: convertDateToLocaleDate(values.issue_date),
+      project_id: projectId
     },
     files: uploadableFile ? [uploadableFile] : [],
   });
@@ -111,10 +86,10 @@ const ProjectStakeholderDrawer = (props: ProjectStakeholderDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.project-stakeholder.${
+      title={`project.stakeholder.${
         isEdit
-          ? `edit-project-${type.toLocaleLowerCase()}`
-          : `create-project-${type.toLocaleLowerCase()}`
+          ? `edit-project-stakeholder`
+          : `create-project-stakeholder`
       }`}
       handleClose={handleClose}
       open={open}
@@ -122,8 +97,11 @@ const ProjectStakeholderDrawer = (props: ProjectStakeholderDrawerType) => {
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.project-stakeholder.${type.toLocaleLowerCase()}`} // Adjust the title key if necessary
-          getPayload={getPayload}
+          title={`project.stakeholder.${
+            isEdit
+              ? `edit-project-stakeholder`
+              : `create-project-stakeholder`
+          }`}          getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
             ...(projectStakeholder as ProjectStakeholder),

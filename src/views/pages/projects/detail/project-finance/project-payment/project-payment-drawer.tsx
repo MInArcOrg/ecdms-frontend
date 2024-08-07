@@ -16,7 +16,7 @@ import FormPageWrapper from "src/views/shared/form/form-wrapper";
 import * as yup from "yup";
 import ProjectPaymentForm from "./project-payment-form";
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-service";
+import { uploadFile } from "src/services/utils/file-utils";
 import { useState } from "react";
 
 interface ProjectPaymentDrawerType {

@@ -42,5 +42,6 @@ export const uploadableProjectFileTypes = {
   projectType: 'PROJECT_TYPE',
   projectCategory: 'PROJECT_CATEGORY',
   projectSubCategory: 'PROJECT_SUB_CATEGORY',
-  masterStatus: 'MASTER_STATUS'
+  masterStatus: 'MASTER_STATUS',
+  file: 'File'
 } as const;

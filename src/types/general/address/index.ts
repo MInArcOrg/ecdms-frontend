@@ -1,7 +1,7 @@
 interface Address {
   id: string;
   parent_id?: string;
-  model_id: string;
+model_id: string;
   country: string;
   region?: string;
   city?: string;
