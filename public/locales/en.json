@@ -324,12 +324,23 @@
       "spi": "SPI",
       "sv": "SV"
     },
-    "time": {
+    "project-time": {
       "information": "Time Information",
       "commencement-date": "Commencement Date",
       "completion-date": "Completion Date",
       "total-duration": "Total Duration",
-      "elapsed-time": "Elapsed Time"
+      "elapsed-time": "Elapsed Time",
+      "edit-project-time" :"Edit Project Time",
+       "create-project-time":"Create Project Time",
+        "form": {
+          "contract-signing-date": "Contract Signing Date",
+          "site-handover-date": "Site Handover Date",
+          "mobilization-days-no": "Number of Mobilization Days",
+          "commencement-date": "Commencement Date",
+          "original-contract-duration": "Original Contract Duration",
+          "project-completion-date": "Project Completion Date",
+          "remark":"Remark"
+      }
     },
     "project-status":{
       "project-status":"Project Status",

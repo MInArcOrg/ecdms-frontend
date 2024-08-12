@@ -13,16 +13,22 @@ import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker';
 interface CustomDynamicDatePickerProps {
   name: string;
   label: string;
+  onChange?: (date: Date | EthiopianDate) => void; // Optional onChange prop
   [key: string]: any; // To allow any additional props
 }
 
-const CustomDynamicDatePicker: React.FC<CustomDynamicDatePickerProps> = ({ name, label, ...rest }) => {
+const CustomDynamicDatePicker: React.FC<CustomDynamicDatePickerProps> = ({ name, label, onChange, ...rest }) => {
   const { i18n } = useTranslation();
   const [field, meta, helpers] = useField(name);
   const { isSubmitting } = useFormikContext();
 
   const handleChange = (date: Date | EthiopianDate) => {
     helpers.setValue(date);
+
+    // Trigger the optional onChange prop if provided
+    if (onChange) {
+      onChange(date);
+    }
   };
 
   const renderPicker = () => {
@@ -46,26 +52,26 @@ const CustomDynamicDatePicker: React.FC<CustomDynamicDatePickerProps> = ({ name,
 
     return (
       <DatePickerWrapper>
-      <DatePicker
-        selected={field.value as Date}
-        onChange={handleChange as (date: Date) => void}
-        dateFormat="dd/MM/yyyy"
-        customInput={
-          <CustomTextField
-            {...field}
-            {...rest}
-            label={label}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <Icon fontSize="1.25rem" icon={'tabler:calendar'} />
-                </InputAdornment>
-              ),
-            }}
-            disabled={rest?.disabled || isSubmitting}
-          />
-        }
-      />
+        <DatePicker
+          selected={field.value as Date}
+          onChange={handleChange as (date: Date) => void}
+          dateFormat="dd/MM/yyyy"
+          customInput={
+            <CustomTextField
+              {...field}
+              {...rest}
+              label={label}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <Icon fontSize="1.25rem" icon={'tabler:calendar'} />
+                  </InputAdornment>
+                ),
+              }}
+              disabled={rest?.disabled || isSubmitting}
+            />
+          }
+        />
       </DatePickerWrapper>
     );
   };

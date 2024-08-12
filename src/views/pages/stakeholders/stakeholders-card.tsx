@@ -15,12 +15,12 @@ import ModelActionComponent from "src/views/components/custom/model-actions";
 import RowOptions from "src/views/shared/listing/row-options";
 
 const StakeholderCard = ({
-  stakeholders,
+  stakeholder,
   onEdit,
   onDelete,
   refetch,
 }: {
-  stakeholders: Stakeholder;
+  stakeholder: Stakeholder;
   onEdit: (category: Stakeholder) => void;
   onDelete: (id: string) => void;
   t: any;
@@ -34,10 +34,10 @@ const StakeholderCard = ({
             <Box sx={{ display: "flex" }}>
               <Box>
                 <Typography variant="h5" component="div">
-                  {stakeholders.trade_name}
+                  {stakeholder.trade_name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {stakeholders.description}
+                  {stakeholder.description}
                 </Typography>
               </Box>
             </Box>
@@ -46,11 +46,11 @@ const StakeholderCard = ({
             <CardActions style={{ justifyContent: "flex-end" }}>
               <Fragment>
                 <Box>
-                  <FileDrawer id={stakeholders.id} type={"RESOURCE"} /> &nbsp;
+                  <FileDrawer id={stakeholder.id} type={"RESOURCE"} /> &nbsp;
                   <Box sx={{ display: "flex" }}>
                     <ModelActionComponent
                       model="Position"
-                      model_id={stakeholders.id}
+                      model_id={stakeholder.id}
                       refetchModel={refetch}
                       resubmit={function (): void {
                         throw new Error("Function not implemented.");
@@ -62,8 +62,8 @@ const StakeholderCard = ({
                     />
                     <RowOptions
                       onEdit={onEdit}
-                      onDelete={() => onDelete(stakeholders.id)}
-                      item={stakeholders}
+                      onDelete={() => onDelete(stakeholder.id)}
+                      item={stakeholder}
                       options={[]}
                     />
                   </Box>
