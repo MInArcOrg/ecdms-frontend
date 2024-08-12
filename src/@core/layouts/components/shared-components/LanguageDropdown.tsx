@@ -22,7 +22,7 @@ const LanguageDropdown = ({ settings, saveSettings }: Props) => {
   // ** Hook
   const { i18n } = useTranslation();
 
-  const handleLangItemClick = (lang: 'en' | 'fr' | 'ar') => {
+  const handleLangItemClick = (lang: 'en' | 'am') => {
     i18n.changeLanguage(lang);
   };
 
@@ -49,24 +49,13 @@ const LanguageDropdown = ({ settings, saveSettings }: Props) => {
           }
         },
         {
-          text: 'French',
+          text: 'Amharic',
           menuItemProps: {
             sx: { py: 2 },
-            selected: i18n.language === 'fr',
+            selected: i18n.language === 'am',
             onClick: () => {
-              handleLangItemClick('fr');
+              handleLangItemClick('am');
               saveSettings({ ...settings, direction: 'ltr' });
-            }
-          }
-        },
-        {
-          text: 'Arabic',
-          menuItemProps: {
-            sx: { py: 2 },
-            selected: i18n.language === 'ar',
-            onClick: () => {
-              handleLangItemClick('ar');
-              saveSettings({ ...settings, direction: 'rtl' });
             }
           }
         }

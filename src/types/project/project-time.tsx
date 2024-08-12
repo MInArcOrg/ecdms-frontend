@@ -8,6 +8,7 @@ export interface ProjectTime {
     site_handover_date?: string | Date | EthiopianDate;
     mobilization_days_no?: number;
     commencement_date?: string | Date | EthiopianDate;
+    project_completion_date?: string | Date | EthiopianDate;
     original_contract_duration?: number;
     revision_no?: number;
     current_date: Date;

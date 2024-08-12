@@ -1,54 +1,59 @@
 import { Box } from '@mui/material';
 import CustomChip from 'src/@core/components/mui/chip';
 import Can from 'src/layouts/components/acl/Can';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { ProjectTime } from 'src/types/project/project-time';
+import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 const ProjectTimeAction = ({
   projectTime,
   refetch,
-  onStatusChangeClick
+  onDelete,
+  onEdit
 }: {
   projectTime: ProjectTime;
   refetch: () => void;
-  onStatusChangeClick: () => void;
+  onEdit: (projectTime: ProjectTime) => void;
+  onDelete: (id: string) => void;
 }) => {
   return (
     <Box display="flex" justifyContent="end" alignItems="end">
       <Box display="flex" gap={2}>
-        <Can do={'register_projectstatus'} on={'projectstatus'}>
-          <CustomChip
-            label="Change Status"
-            color="primary"
-            rounded
-            size="small"
-            skin="light"
-            sx={{
-              '& .MuiChip-label': { textTransform: 'capitalize' },
-              '&:hover': { color: '#fff' },
-              cursor: 'pointer',
-              height: 20
+        <FileDrawer
+          id={projectTime.id}
+          type={uploadableProjectFileTypes.time}
+        />{" "}
+        &nbsp;
+        <Box sx={{ display: "flex" }}>
+          <ModelActionComponent
+            model="ProjectTime"
+            model_id={projectTime.id}
+            refetchModel={refetch}
+            resubmit={function (): void {
+              throw new Error("Function not implemented.");
             }}
-            onClick={() => {
-              onStatusChangeClick();
-              //   setSelectedData(data?.data[0])
-              //   setShow(true)
+            title={""}
+            postAction={function (): void {
+              throw new Error("Function not implemented.");
             }}
           />
-        </Can>
-
-        <ModelActionComponent
-          model="ProjectTime"
-          model_id={projectTime.id}
-          refetchModel={refetch}
-          resubmit={function (): void {
-            throw new Error('Function not implemented.');
-          }}
-          title={'project.project-status.project-status'}
-          postAction={function (): void {
-            throw new Error('Function not implemented.');
-          }}
-        />
+          <RowOptions
+            deletePermissionRule={{
+              action: "delete",
+              subject: "projecttime",
+            }}
+            editPermissionRule={{
+              action: "edit",
+              subject: "projecttime",
+            }}
+            onEdit={onEdit}
+            onDelete={() => onDelete(projectTime.id)}
+            item={projectTime}
+            options={[]}
+          />
+        </Box>
       </Box>
     </Box>
   );

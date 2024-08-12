@@ -26,20 +26,20 @@ const ProjectTimeComponent: React.FC<ProjectTimeComponentProps> = ({ projectId }
     select: (data) => data.payload?.[0] ?? null, // Extract the first item from the array
   });
 
-  const handleDrawerClose = () => {
-    setShowDrawer(false);
-    setSelectedRow(null);
+  const toggleDrawer = () => {
+    setSelectedRow({} as ProjectTime);
+    setShowDrawer(!showDrawer);
   };
 
-  const handleDetailDrawerClose = () => {
-    setShowDetailDrawer(false);
-    setSelectedRow(null);
+  const handleEdit = (projectTime: ProjectTime) => {
+    toggleDrawer();
+    setSelectedRow(projectTime);
   };
-
-  const handleChangeStatusClick = () => {
-    // Handle status change logic here
+  const handleDelete = async (projectTimeId: string) => {
+    await projectTimeApiService.delete(projectTimeId);
+    refetch();
   };
-
+  console.log('project time updated', projectTime)
   return isLoading ? (
     <LoadingPlaceholder />
   ) : (
@@ -57,7 +57,7 @@ const ProjectTimeComponent: React.FC<ProjectTimeComponentProps> = ({ projectId }
         {showDrawer && (
           <ProjectTimeDrawer
             open={showDrawer}
-            toggle={handleDrawerClose}
+            toggle={toggleDrawer}
             projectTime={projectTime as ProjectTime}
             refetch={refetch}
             projectId={projectId}
@@ -71,8 +71,8 @@ const ProjectTimeComponent: React.FC<ProjectTimeComponentProps> = ({ projectId }
               <ProjectTimeAction
                 refetch={refetch}
                 projectTime={projectTime}
-                onStatusChangeClick={handleChangeStatusClick}
-              />
+                onDelete={handleDelete}
+                onEdit={handleEdit} />
             )}
           </CardContent>
         </Card>
