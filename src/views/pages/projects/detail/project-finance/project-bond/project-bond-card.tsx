@@ -87,7 +87,7 @@ const ProjectBondCard = ({
           <Typography variant="h6">
             {getDynamicDate(
               i18n,
-              projectBond?.issue_date
+              String(projectBond?.issue_date)
             ).toLocaleDateString() || t("project.project-bond.form.no-date")}
           </Typography>
         </Box>
@@ -103,7 +103,7 @@ const ProjectBondCard = ({
           <Typography variant="h6">
             {getDynamicDate(
               i18n,
-              projectBond?.issue_date
+              projectBond?.issue_date as string
             ).toLocaleDateString() || t("project.project-bond.form.no-date")}
           </Typography>
         </Box>

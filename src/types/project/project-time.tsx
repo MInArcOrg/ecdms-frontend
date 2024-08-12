@@ -15,3 +15,13 @@ export interface ProjectTime {
     created_at: string;
     updated_at: string;
 }
+export interface ProjectExtensionTime {
+    id: string;
+    title?: string;
+    parent_id?: string;
+    project_id: string;
+    number_of_days: number;
+    reason: string;
+    created_at?: Date;
+    updated_at?: Date;
+  }

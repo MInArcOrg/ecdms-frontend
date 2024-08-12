@@ -342,6 +342,15 @@
           "remark":"Remark"
       }
     },
+    "project-extension-time":{
+      "title":"Project Extension Time",
+      "edit-project-extension-time":"Edit Project Extension Time",
+      "create-project-extension-time":"Create Project Extension Time",
+      "form":{
+        "number-of-days":"Number of days",
+        "reason":"Reason"
+      }      
+    },
     "project-status":{
       "project-status":"Project Status",
       "edit-project-status":"Edit Project Status",
@@ -463,21 +472,34 @@
       }
     },
     "plan": {
+      "title":"Project Plan",
+      "edit-project-plan":"Edit Project Plan",
+      "create-project-plan":"Create Project Plan",
       "form": {
         "type": "Type",
         "year": "Year",
+        "project-expense":"Project Expense",
         "quarter": "Quarter",
         "manpower": "Manpower",
-        "direct_labour": "Direct Labour",
-        "indirect_labour": "Indirect Labour",
+        "direct-labour": "Direct Labour",
+        "indirect-labour": "Indirect Labour",
         "material": "Material",
         "machinery": "Machinery",
-        "other_expense": "Other Expense",
-        "sub_contractor_cost": "Sub Contractor Cost",
-        "financial_performance": "Financial Performance",
-        "physical_performance": "Physical Performance",
-        "cost_due_to_rework": "Cost Due to Rework",
-        "over_head_cost": "Over Head Cost"
+        "other-expense": "Other Expense",
+        "sub-contractor-cost": "Sub Contractor Cost",
+        "financial-performance": "Financial Performance",
+        "physical-performance": "Physical Performance",
+        "cost -due-to-rework": "Cost Due to Rework",
+        "over-head-cost": "Over Head Cost",
+        "total-cost":"Total Cost",
+        "subtotal":"Sub Total",
+        "profit":"Profit"
+      },
+      "columns": {
+        "type": "Type",
+        "financial-performance": "Financial Performance",
+        "physical-performance": "Physical Performance",
+        "project-expense": "Project Expense"
       }
     },
     "project-file":{

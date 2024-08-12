@@ -1,4 +1,7 @@
 export interface ProjectPlan {
+    sub_total_expense: number|null;
+    subtotal: number|null;
+    title: string;
     id: string;
     parent_id?: string | null;
     project_id: string;
@@ -15,11 +18,13 @@ export interface ProjectPlan {
     physical_performance?: number | null;
     cost_due_to_rework?: number | null;
     over_head_cost?: number | null;
-    year?: string | null;
+    year?: string | null|{label:string,value:string};
     quarter?: string | null;
     start: Date;
     end?: Date | null;
+    profit_or_loss?: number | null;
     profit?: number | null;
     file_id?: string | null;
     remark?: string | null;
+    created_at:String
   }

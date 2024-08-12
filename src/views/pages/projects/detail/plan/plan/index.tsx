@@ -11,6 +11,9 @@ import { GetRequestParam, IApiResponse } from "src/types/requests";
 import ItemsListing from "src/views/shared/listing";
 import ProjectPlanCard from "./project-plan-card";
 import ProjectPlanDrawer from "./project-plan-drawer";
+import { projectPlanColumns } from "./project-plan-row";
+import { useTranslation } from "react-i18next";
+import PlanDetail from "./project-plan-detail";
 
 function ProjectPlanList({
   projectId,
@@ -18,6 +21,7 @@ function ProjectPlanList({
   projectId: string;
 }) {
   const [showDrawer, setShowDrawer] = useState(false);
+  const [showDetailDrawer, setShowDetailDrawer] = useState(false);
 
   const [selectedRow, setSelectedRow] = useState<ProjectPlan | null>(null);
   const fetchProjectPlans = (
@@ -28,7 +32,11 @@ function ProjectPlanList({
       filter: { ...params.filter },
     });
   };
-
+  const toggleDetailDrawer = () => {
+    setSelectedRow({} as ProjectPlan);
+    setShowDetailDrawer(!showDetailDrawer);
+  };
+  const {t}=useTranslation()
   const {
     data: projectPlans,
     isLoading,
@@ -40,6 +48,7 @@ function ProjectPlanList({
     fetchFunction: fetchProjectPlans,
   });
 
+  
   const toggleDrawer = () => {
     setSelectedRow({} as ProjectPlan);
     setShowDrawer(!showDrawer);
@@ -53,9 +62,15 @@ function ProjectPlanList({
     await projectPlanApiService.delete(projectPlanId);
     refetch();
   };
-
+  const hanldeClickDetail = (projectPlan: ProjectPlan) => {
+    toggleDetailDrawer();
+    setSelectedRow(projectPlan);
+  };
   return (
     <Box>
+       {showDetailDrawer && (
+        <PlanDetail projectPlan={selectedRow as ProjectPlan} show={showDetailDrawer} toggleDetail={toggleDetailDrawer} />
+      )}
       {showDrawer && (
         <ProjectPlanDrawer
           open={showDrawer}
@@ -68,15 +83,22 @@ function ProjectPlanList({
       <ItemsListing
         title={`project.plan.title`}
         pagination={pagination}
-        type={ITEMS_LISTING_TYPE.grid.value}
+        type={ITEMS_LISTING_TYPE.table.value}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
           <ProjectPlanCard
+          onDetail={hanldeClickDetail}
+
             onEdit={handleEdit}
             projectPlan={data}
-            onDelete={handleDelete} 
-            refetch={refetch}          />
+            onDelete={handleDelete}
+            refetch={refetch} 
+                      />
         )}
+        tableProps={{
+          headers: projectPlanColumns(hanldeClickDetail,handleEdit, handleDelete,t,refetch,)
+        }}
+
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,

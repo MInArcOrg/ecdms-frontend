@@ -1,5 +1,5 @@
 import { FormikProps } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import projectPlanApiService from "src/services/project/project-plan-service";
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
@@ -11,7 +11,7 @@ import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
 import FormPageWrapper from "src/views/shared/form/form-wrapper";
 import * as yup from "yup";
 import ProjectPlanForm from "./project-plan-form";
-import { planReportTypeConstant } from "src/constants/project-plan-constants";
+import { planReportTypeConstant, yearListOptions } from "src/constants/project-plan-constants";
 
 interface ProjectPlanDrawerType {
   open: boolean;
@@ -35,14 +35,46 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-
-  const validationSchema = yup.object().shape({
-    plan_id: yup.string().required(),
-    title: yup.string().required(),
-    description: yup.string().required(),
-    remark: yup.string().required(),
+  const [viewSections, setViewSections] = useState({
+    manpower: true,
+    subtotal: true,
   });
 
+  const toggleSection = (section: 'manpower' | 'subtotal') => {
+    setViewSections((prevState) => ({
+      ...prevState,
+      [section]: !prevState[section],
+    }));
+  };
+  const validationSchema = yup.object().shape({
+    quarter: yup.number().required(`${('Quarter')} ${('is required')}`),
+    financial_performance: yup.number().required(`${('Financial Performance')} ${('is required')}`),
+    physical_performance: yup.number().required(`${('Physical Performance')} ${('is required')}`),
+    direct_labour: viewSections.manpower 
+      ? yup.number().required(`${('Direct Labour')} ${('is required')}`)
+      : yup.mixed().notRequired(),
+    indirect_labour: viewSections.manpower 
+      ? yup.number().required(`${('Indirect Labour')} ${('is required')}`)
+      : yup.mixed().notRequired(),
+    material: viewSections.subtotal 
+      ? yup.number().required(`${('Material')} ${('is required')}`)
+      : yup.mixed().notRequired(),
+    machinery: viewSections.subtotal 
+      ? yup.number().required(`${('Machinery')} ${('is required')}`)
+      : yup.mixed().notRequired(),
+    other_expense: viewSections.subtotal 
+      ? yup.number().required(`${('Other Expense')} ${('is required')}`)
+      : yup.mixed().notRequired(),
+    sub_contractor_cost: viewSections.subtotal 
+      ? yup.number().required(`${('Subcontractor Cost')} ${('is required')}`)
+      : yup.mixed().notRequired(),
+    cost_due_to_rework: viewSections.subtotal 
+      ? yup.number().required(`${('Cost due to rework')} ${('is required')}`)
+      : yup.mixed().notRequired(),
+    over_head_cost: yup.number().required(`${('Over Head Cost')} ${('is required')}`),
+    subtotal: yup.number().required(`${('Subtotal')} ${('is required')}`)
+  });
+  
   const isEdit = Boolean(projectPlan?.id);
 
   const createProjectPlan = async (body: IApiPayload<ProjectPlan>) =>
@@ -55,7 +87,8 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
     data: {
       ...values,
       id: projectPlan?.id,
-      project_id: projectId
+      project_id: projectId,
+      year: typeof values?.year === 'object' && values?.year !== null ? values.year.value : values?.year || ""
     },
     files: uploadableFile ? [uploadableFile] : [],
   });
@@ -104,17 +137,59 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
           initialValues={{
             ...(projectPlan as ProjectPlan),
             type:planReportTypeConstant.QUARTERLY.value,
+            year:yearListOptions.find(year=>year.value===projectPlan.year)||null
           }}
           createActionFunc={isEdit ? editProjectPlan : createProjectPlan}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<ProjectPlan>) => {
+              useEffect(() => {
+                const indirectLabour = formik.values.indirect_labour ?? 0;
+                const directLabour = formik.values.direct_labour ?? 0;
+                formik.setFieldValue('manpower', Number(indirectLabour + directLabour));
+              }, [formik.values.indirect_labour, formik.values.direct_labour]);
+            
+              useEffect(() => {
+                const material = formik.values.material ?? 0;
+                const machinery = formik.values.machinery ?? 0;
+                const otherExpense = formik.values.other_expense ?? 0;
+                const subContractorCost = formik.values.sub_contractor_cost ?? 0;
+                const manpower = formik.values.manpower ?? 0;
+                const subtotal = manpower + material + machinery + otherExpense + subContractorCost;
+                formik.setFieldValue('subtotal', subtotal);
+              }, [
+                formik.values.manpower,
+                formik.values.material,
+                formik.values.machinery,
+                formik.values.other_expense,
+                formik.values.sub_contractor_cost,
+              ]);
+            
+              useEffect(() => {
+                const overHeadCost = formik.values.over_head_cost ?? 0;
+                const financialPerformance = formik.values.financial_performance ?? 0;
+                const total = overHeadCost + financialPerformance;
+                formik.setFieldValue('total', total);
+              }, [formik.values.over_head_cost, formik.values.financial_performance]);
+              useEffect(() => {
+                const subtotal=formik.values?.subtotal||0;
+                const percentOf = (value:number) => {
+                  return (value * subtotal) / 100
+                }
+                formik.setFieldValue(
+                  'project_expense',
+                  Number(subtotal + percentOf(formik.values.over_head_cost||0))
+                )
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+              }, [formik.values.subtotal, formik.values.over_head_cost])  
             return (
               <ProjectPlanForm
                 file={uploadableFile}
                 onFileChange={onFileChange}
                 formik={formik}
+                toggleSection={toggleSection}
+                viewSections={viewSections}
               />
             );
           }}
