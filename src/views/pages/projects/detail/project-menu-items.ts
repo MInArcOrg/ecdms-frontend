@@ -45,8 +45,8 @@ const menuItems = (id: string, typeId: string): MenuItem[] => [
   {
     id: 6,
     title: 'Plan',
-    path: `/projects/${typeId}/details/${id}/plan`,
-    action: 'view_projectplan',
+    path: `/projects/${typeId}/details/${id}/plan/plan`,
+    action: 'view',
     subject: 'projectplan'
   },
   {

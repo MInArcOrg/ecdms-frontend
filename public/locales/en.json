@@ -451,6 +451,24 @@
           "remark": "Remark"
       }
     },
+    "plan": {
+      "form": {
+        "type": "Type",
+        "year": "Year",
+        "quarter": "Quarter",
+        "manpower": "Manpower",
+        "direct_labour": "Direct Labour",
+        "indirect_labour": "Indirect Labour",
+        "material": "Material",
+        "machinery": "Machinery",
+        "other_expense": "Other Expense",
+        "sub_contractor_cost": "Sub Contractor Cost",
+        "financial_performance": "Financial Performance",
+        "physical_performance": "Physical Performance",
+        "cost_due_to_rework": "Cost Due to Rework",
+        "over_head_cost": "Over Head Cost"
+      }
+    },
     "project-file":{
       "project-initiation":"Intiation File",
       "project-planning":"Planning File",

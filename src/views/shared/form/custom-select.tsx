@@ -1,35 +1,60 @@
-import React from 'react';
-import { useField, useFormikContext } from 'formik';
-import { FormControl, InputLabel, MenuItem, Select, FormHelperText } from '@mui/material';
+import { FormHelperText, MenuItem } from "@mui/material";
+import { useField, useFormikContext } from "formik";
+import React from "react";
+import CustomTextField from "src/@core/components/mui/text-field";
 
-const CustomSelect: React.FC<any> = (props) => {
-  const [field, meta] = useField(props);
+interface CustomSelectBoxProps {
+  name: string;
+  onValueChange?: (value: string | number) => void; // Allow string or number
+  type?: string; // Optional type to handle different input types
+  [key: string]: any; // To allow any additional props
+}
+
+const CustomSelectBox: React.FC<CustomSelectBoxProps> = ({
+  name,
+  onValueChange,
+  type = "text",
+  ...props
+}) => {
+  const [field, meta, helpers] = useField(name);
   const { isSubmitting } = useFormikContext();
-  const hasError = !!(meta.touched && meta.error);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value =
+      type === "number"
+        ? event.target.value
+          ? Number(event.target.value)
+          : 0
+        : event.target.value;
+    if (onValueChange) onValueChange(value);
+    helpers.setValue(value);
+  };
 
   return (
-    <FormControl fullWidth error={hasError}>
-      <InputLabel id={`${props.name}-label`}>{props.label}</InputLabel>
-      <Select
-        id={props.name} // Add this line
-        name={props.name} // Add this line
-        labelId={`${props.name}-label`}
-        label={props.label}
-        value={field.value || ''} // Ensure a default value if field.value is undefined
-        onChange={field.onChange}
-        onBlur={field.onBlur}
-        disabled={props.disabled || isSubmitting}
+    <>
+      <CustomTextField
+        select
+        fullWidth
+        {...field}
         {...props}
+        type={type}
+        disabled={props?.disabled || isSubmitting}
+        onChange={handleChange}
+        value={field.value || ""}
       >
         {props.options.map((option: any) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
           </MenuItem>
         ))}
-      </Select>
-      {meta.touched && meta.error && <FormHelperText>{meta.error}</FormHelperText>}
-    </FormControl>
+      </CustomTextField>
+      {meta.touched && meta.error && (
+        <FormHelperText error id={`helper-text-${name}`}>
+          {meta.error}
+        </FormHelperText>
+      )}
+    </>
   );
 };
 
-export default CustomSelect;
+export default CustomSelectBox;
