@@ -1,33 +1,34 @@
 import { FormikProps } from "formik";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import projectPlanApiService from "src/services/project/project-plan-service";
+import projectReportApiService from "src/services/project/project-report-service";
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
 import { uploadFile } from "src/services/utils/file-utils";
 
-import { ProjectPlan } from "src/types/project/project-plan";
+import { ProjectReport } from "src/types/project/project-report";
 import { IApiPayload, IApiResponse } from "src/types/requests";
 import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
 import FormPageWrapper from "src/views/shared/form/form-wrapper";
 import * as yup from "yup";
-import ProjectPlanForm from "./project-plan-form";
+import ProjectReportForm from "./project-report-form";
 import { planReportTypeConstant, yearListOptions } from "src/constants/project-plan-report-constants";
+import { ProjectPlan } from "src/types/project/project-plan";
 
-interface ProjectPlanDrawerType {
-  open: boolean;
+interface ProjectReportFormWrapperType {
   toggle: () => void;
   refetch: () => void;
-  projectPlan: ProjectPlan;
+  projectReport: ProjectReport;
   projectId: string;
+  projectPlan: ProjectPlan
 }
 
-const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
+const ProjectReportFormWrapper = (props: ProjectReportFormWrapperType) => {
   const {
-    open,
     toggle,
     refetch,
-    projectPlan,
+    projectReport,
     projectId,
+    projectPlan
   } = props;
   const { t } = useTranslation();
 
@@ -75,18 +76,18 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
     subtotal: yup.number().required(`${('Subtotal')} ${('is required')}`)
   });
   
-  const isEdit = Boolean(projectPlan?.id);
+  const isEdit = Boolean(projectReport?.id);
 
-  const createProjectPlan = async (body: IApiPayload<ProjectPlan>) =>
-    projectPlanApiService.create(body);
+  const createProjectReport = async (body: IApiPayload<ProjectReport>) =>
+    projectReportApiService.create(body);
 
-  const editProjectPlan = async (body: IApiPayload<ProjectPlan>) =>
-    projectPlanApiService.update(projectPlan?.id || "", body);
+  const editProjectReport = async (body: IApiPayload<ProjectReport>) =>
+    projectReportApiService.update(projectReport?.id || "", body);
 
-  const getPayload = (values: ProjectPlan) => ({
+  const getPayload = (values: ProjectReport) => ({
     data: {
       ...values,
-      id: projectPlan?.id,
+      id: projectReport?.id,
       project_id: projectId,
       year: typeof values?.year === 'object' && values?.year !== null ? values.year.value : values?.year || ""
     },
@@ -96,13 +97,13 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
   const handleClose = () => toggle();
 
   const onActionSuccess = async (
-    response: IApiResponse<ProjectPlan>,
-    payload: IApiPayload<ProjectPlan>
+    response: IApiResponse<ProjectReport>,
+    payload: IApiPayload<ProjectReport>
   ) => {
     if (payload.files.length > 0) {
       uploadFile(
         payload.files[0],
-        uploadableProjectFileTypes.plan,
+        uploadableProjectFileTypes.report,
         response.payload.id,
         "",
         ""
@@ -115,35 +116,25 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer
-      title={`project.plan.${
-        isEdit
-          ? `edit-project-plan`
-          : `create-project-plan`
-      }`}
-      handleClose={handleClose}
-      open={open}
-      width={700}
-    >
-      {() => (
+
         <FormPageWrapper
           edit={isEdit}
-          title={`project.plan.${
+          title={`project.report.${
             isEdit
-              ? `edit-project-plan`
-              : `create-project-plan`
+            ? `edit-project-report`
+              : `create-project-report`
           }`}          getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(projectPlan as ProjectPlan),
+            ...(projectReport as ProjectReport),
             type:planReportTypeConstant.QUARTERLY.value,
-            year:yearListOptions.find(year=>year.value===projectPlan.year)||null
+            year:yearListOptions.find(year=>year.value===projectReport.year)||null
           }}
-          createActionFunc={isEdit ? editProjectPlan : createProjectPlan}
+          createActionFunc={isEdit ? editProjectReport : createProjectReport}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<ProjectPlan>) => {
+          {(formik: FormikProps<ProjectReport>) => {
               useEffect(() => {
                 const indirectLabour = formik.values.indirect_labour ?? 0;
                 const directLabour = formik.values.direct_labour ?? 0;
@@ -184,7 +175,8 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
                 // eslint-disable-next-line react-hooks/exhaustive-deps
               }, [formik.values.subtotal, formik.values.over_head_cost])  
             return (
-              <ProjectPlanForm
+              <ProjectReportForm
+                projectPlan={projectPlan}
                 file={uploadableFile}
                 onFileChange={onFileChange}
                 formik={formik}
@@ -194,9 +186,8 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
             );
           }}
         </FormPageWrapper>
-      )}
-    </CustomSideDrawer>
+
   );
 };
 
-export default ProjectPlanDrawer;
+export default ProjectReportFormWrapper;

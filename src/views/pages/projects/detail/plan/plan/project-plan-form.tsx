@@ -10,7 +10,7 @@ import {
   planReportTypeConstant,
   yearListOptions,
   yearQuarterConstant,
-} from "src/constants/project-plan-constants";
+} from "src/constants/project-plan-report-constants";
 import Icon from "src/@core/components/icon";
 import CustomAutocomplete from "src/views/shared/form/custom-autocomplete";
 

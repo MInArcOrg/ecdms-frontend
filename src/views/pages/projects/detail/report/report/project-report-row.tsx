@@ -1,21 +1,20 @@
-import { Autocomplete, Box, Button, TextField } from "@mui/material";
+import { Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { GridColDef, GridColumnHeaderParams } from "@mui/x-data-grid";
-import Link from "next/link";
+import { GridColDef } from "@mui/x-data-grid";
 import { Fragment, useState } from "react";
-import { ProjectPlan } from "src/types/project/project-plan";
+import { ProjectReport } from "src/types/project/project-report";
 import { formatCurrency } from "src/utils/formatter/currency";
-import { formatCreatedAt, formatDate } from "src/utils/formatter/date";
+import { formatDate } from "src/utils/formatter/date";
 import ModelAction from "src/views/components/custom/model-actions";
 import RowOptions from "src/views/shared/listing/row-options";
 
 interface CellType {
-  row: ProjectPlan;
+  row: ProjectReport;
 }
 
-export const projectPlanColumns = (
-  onDetail: (projectPlan: ProjectPlan) => void,
-  onEdit: (projectPlan: ProjectPlan) => void,
+export const projectReportColumns = (
+  onDetail: (projectReport: ProjectReport) => void,
+  onEdit: (projectReport: ProjectReport) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void
@@ -97,7 +96,7 @@ export const projectPlanColumns = (
       renderCell: ({ row }: CellType) => (
         <Fragment>
           <ModelAction
-            model="ProjectPlan"
+            model="ProjectReport"
             model_id={row.id}
             refetchModel={refetch}
             resubmit={() => {}}

@@ -5,18 +5,18 @@ import { buildGetRequest } from "src/utils/requests/get-request";
 import { buildPostRequest } from "src/utils/requests/post-request";
 import { buildPutRequest } from "src/utils/requests/put-request";
 import { ProjectGeneralFinance } from "src/types/project/project-finance";
-import { ProjectPlan } from "src/types/project/project-plan";
+import { ProjectReport } from "src/types/project/project-report";
 
 const projectPlanApiService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<ProjectPlan[]>> =>
-    buildGetRequest(`/projects/project-plans`, params)
+  getAll: (params: GetRequestParam): Promise<IApiResponse<ProjectReport[]>> =>
+    buildGetRequest(`/projects/project-reports`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/projects/project-plans/${idx}`, params)
+    buildGetRequest(`/projects/project-reports/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
@@ -24,14 +24,14 @@ const projectPlanApiService = {
 
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
-      .delete(`/projects/project-plans/${idx}`)
+      .delete(`/projects/project-reports/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
-  create: (body: IApiPayload<ProjectPlan>): Promise<IApiResponse> =>
-    buildPostRequest(`/projects/project-plans`, body, false)
+  create: (body: IApiPayload<ProjectReport>): Promise<IApiResponse> =>
+    buildPostRequest(`/projects/project-reports`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
@@ -39,9 +39,9 @@ const projectPlanApiService = {
 
   update: (
     id: string,
-    body: IApiPayload<ProjectPlan>
+    body: IApiPayload<ProjectReport>
   ): Promise<IApiResponse> =>
-    buildPutRequest(`/projects/project-plans/${id}`, body)
+    buildPutRequest(`/projects/project-reports/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;

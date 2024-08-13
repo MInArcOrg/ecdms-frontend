@@ -487,6 +487,7 @@
         "machinery": "Machinery",
         "other-expense": "Other Expense",
         "sub-contractor-cost": "Sub Contractor Cost",
+        "cost-due-to-rework":"Cost Due To Rework",
         "financial-performance": "Financial Performance",
         "physical-performance": "Physical Performance",
         "cost -due-to-rework": "Cost Due to Rework",
@@ -494,6 +495,41 @@
         "total-cost":"Total Cost",
         "subtotal":"Sub Total",
         "profit":"Profit"
+      },
+      "columns": {
+        "type": "Type",
+        "financial-performance": "Financial Performance",
+        "physical-performance": "Physical Performance",
+        "project-expense": "Project Expense"
+      }
+    },
+    "report": {
+      "title":"Project Report",
+      "edit-project-report":"Edit Project Report",
+      "create-project-report":"Create Project Report",
+      "form": {
+        "type": "Type",
+        "year": "Year",
+        "project-expense":"Project Expense",
+        "quarter": "Quarter",
+        "manpower": "Manpower",
+        "direct-labour": "Direct Labour",
+        "indirect-labour": "Indirect Labour",
+        "material": "Material",
+        "machinery": "Machinery",
+        "other-expense": "Other Expense",
+        "cost-due-to-rework":"Cost Due To Rework",
+        "sub-contractor-cost": "Sub Contractor Cost",
+        "financial-performance": "Financial Performance",
+        "physical-performance": "Physical Performance",
+        "cost -due-to-rework": "Cost Due to Rework",
+        "over-head-cost": "Over Head Cost",
+        "total-cost":"Total Cost",
+        "subtotal":"Sub Total",
+        "profit":"Profit",
+        "header":"Header",
+        "report":"Report",
+        "plan":"Plan"
       },
       "columns": {
         "type": "Type",
