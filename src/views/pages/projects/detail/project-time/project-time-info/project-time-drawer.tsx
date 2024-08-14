@@ -47,7 +47,7 @@ const ProjectTimeDrawer = (props: ProjectTimeDrawerType) => {
         contract_signing_date: convertDateToLocaleDate(values.contract_signing_date),
         commencement_date: convertDateToLocaleDate(values.commencement_date)
       } as ProjectTime,
-      files: uploadableFile ? [uploadableFile] : [],
+      files: uploadableFile ? [uploadableFile] : []
     };
     return payload;
   };
@@ -56,19 +56,9 @@ const ProjectTimeDrawer = (props: ProjectTimeDrawerType) => {
     toggle();
   };
 
-
-  const onActionSuccess = async (
-    response: IApiResponse<ProjectTime>,
-    payload: IApiPayload<ProjectTime>
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<ProjectTime>, payload: IApiPayload<ProjectTime>) => {
     if (payload.files.length > 0) {
-      uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.time,
-        response.payload.id,
-        "",
-        ""
-      );
+      uploadFile(payload.files[0], uploadableProjectFileTypes.time, response.payload.id, '', '');
     }
     toggle();
     refetch();
@@ -90,34 +80,23 @@ const ProjectTimeDrawer = (props: ProjectTimeDrawerType) => {
           initialValues={{
             ...(projectTime as ProjectTime),
             contract_signing_date: projectTime?.contract_signing_date
-              ? getDynamicDate(
-                i18n,
-                moment(String(projectTime?.contract_signing_date)).toDate()
-              )
+              ? getDynamicDate(i18n, moment(String(projectTime?.contract_signing_date)).toDate())
               : undefined,
             site_handover_date: projectTime?.site_handover_date
-              ? getDynamicDate(
-                i18n,
-                moment(String(projectTime?.site_handover_date)).toDate()
-              )
+              ? getDynamicDate(i18n, moment(String(projectTime?.site_handover_date)).toDate())
               : undefined,
             commencement_date: projectTime?.commencement_date
-              ? getDynamicDate(
-                i18n,
-                moment(String(projectTime?.commencement_date)).toDate()
-              )
+              ? getDynamicDate(i18n, moment(String(projectTime?.commencement_date)).toDate())
               : undefined,
             mobilization_days_no: moment(projectTime.commencement_date).diff(moment(projectTime.site_handover_date), 'days'),
             original_contract_duration: moment(projectTime.project_completion_date).diff(moment(projectTime.commencement_date), 'days')
-
           }}
           createActionFunc={createProjectTime}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<ProjectTime>) => {
-            return <ProjectTimeForm file={uploadableFile}
-              onFileChange={onFileChange} formik={formik} />;
+            return <ProjectTimeForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

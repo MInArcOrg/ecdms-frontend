@@ -9,13 +9,13 @@ const ProjectStakeholder = () => {
 
   return (
     <ProjectLayout activeMenu={7} activeSubMenu={1} subMenuItems={subMenuItems(id as string, String(typeId))}>
-      <ProjectReportList projectId={String(id)}  />
+      <ProjectReportList projectId={String(id)} />
     </ProjectLayout>
   );
 };
 
 ProjectStakeholder.acl = {
-subject: 'projectreport',
+  subject: 'projectreport',
   action: 'view'
 };
 

@@ -1,4 +1,4 @@
-import { Box, Card } from '@mui/material';
+import { Box } from '@mui/material';
 import { useState } from 'react';
 
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
@@ -11,7 +11,7 @@ import ItemsListing from 'src/views/shared/listing';
 import ProjectPaymentCard from './project-payment-card';
 import ProjectPaymentDrawer from './project-payment-drawer';
 
-function ProjectPaymentList({ type,projectId }: { type: string,projectId:string }) {
+function ProjectPaymentList({ type, projectId }: { type: string; projectId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
 
   const [selectedRow, setSelectedRow] = useState<ProjectPayment | null>(null);
@@ -26,7 +26,7 @@ function ProjectPaymentList({ type,projectId }: { type: string,projectId:string 
     handlePageChange,
     refetch
   } = usePaginatedFetch<ProjectPayment[]>({
-    queryKey: ['projectPayments',type],
+    queryKey: ['projectPayments', type],
     fetchFunction: fetchProjectPayments
   });
 
@@ -44,38 +44,39 @@ function ProjectPaymentList({ type,projectId }: { type: string,projectId:string 
     refetch();
   };
 
-
   return (
     <Box>
-  
-        {showDrawer && (
-          <ProjectPaymentDrawer
+      {showDrawer && (
+        <ProjectPaymentDrawer
           open={showDrawer}
           toggle={toggleDrawer}
-          projectPayment={selectedRow as ProjectPayment} 
-          refetch={refetch} type={type} projectId={projectId} />
-        )}
-        <ItemsListing
-          title={`project.project-${type.toLocaleLowerCase()}.title`}
-          pagination={pagination}
-          type={ITEMS_LISTING_TYPE.list.value}
-          isLoading={isLoading}
-          ItemViewComponent={({ data }) => (
-            <ProjectPaymentCard type={type} onEdit={handleEdit} refetch={refetch} projectPayment={data} />
-          )}
-          createActionConfig={{
-            ...defaultCreateActionConfig,
-            onClick: toggleDrawer,
-            onlyIcon: true,
-            permission: {
-              action: 'create',
-              subject: 'payments'
-            }
-          }}
-          fetchDataFunction={refetch}
-          items={projectPayments || []}
-          onPaginationChange={handlePageChange}
+          projectPayment={selectedRow as ProjectPayment}
+          refetch={refetch}
+          type={type}
+          projectId={projectId}
         />
+      )}
+      <ItemsListing
+        title={`project.project-${type.toLocaleLowerCase()}.title`}
+        pagination={pagination}
+        type={ITEMS_LISTING_TYPE.list.value}
+        isLoading={isLoading}
+        ItemViewComponent={({ data }) => (
+          <ProjectPaymentCard type={type} onEdit={handleEdit} refetch={refetch} projectPayment={data} onDelete={handleDelete} />
+        )}
+        createActionConfig={{
+          ...defaultCreateActionConfig,
+          onClick: toggleDrawer,
+          onlyIcon: true,
+          permission: {
+            action: 'create',
+            subject: 'payments'
+          }
+        }}
+        fetchDataFunction={refetch}
+        items={projectPayments || []}
+        onPaginationChange={handlePageChange}
+      />
     </Box>
   );
 }

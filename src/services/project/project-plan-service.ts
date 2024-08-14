@@ -1,11 +1,11 @@
-import { AxiosResponse } from "axios";
-import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
-import axiosServices from "src/utils/axios";
-import { buildGetRequest } from "src/utils/requests/get-request";
-import { buildPostRequest } from "src/utils/requests/post-request";
-import { buildPutRequest } from "src/utils/requests/put-request";
-import { ProjectGeneralFinance } from "src/types/project/project-finance";
-import { ProjectPlan } from "src/types/project/project-plan";
+import { AxiosResponse } from 'axios';
+import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
+import axiosServices from 'src/utils/axios';
+import { buildGetRequest } from 'src/utils/requests/get-request';
+import { buildPostRequest } from 'src/utils/requests/post-request';
+import { buildPutRequest } from 'src/utils/requests/put-request';
+import { ProjectGeneralFinance } from 'src/types/project/project-finance';
+import { ProjectPlan } from 'src/types/project/project-plan';
 
 const projectPlanApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<ProjectPlan[]>> =>
@@ -37,24 +37,18 @@ const projectPlanApiService = {
         throw error;
       }),
 
-  update: (
-    id: string,
-    body: IApiPayload<ProjectPlan>
-  ): Promise<IApiResponse> =>
+  update: (id: string, body: IApiPayload<ProjectPlan>): Promise<IApiResponse> =>
     buildPutRequest(`/projects/project-plans/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
-  getProjectGeneralFinance: (
-    idx: string,
-    params: GetRequestParam
-  ): Promise<IApiResponse<ProjectGeneralFinance>> =>
+  getProjectGeneralFinance: (idx: string, params: GetRequestParam): Promise<IApiResponse<ProjectGeneralFinance>> =>
     buildGetRequest(`/projects/general-project-finance/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      }),
+      })
 };
 
 export default projectPlanApiService;

@@ -17,29 +17,28 @@ interface ProjectTimeComponentProps {
 
 const ProjectTimeComponent: React.FC<ProjectTimeComponentProps> = ({ projectId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
-  const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<ProjectTime | null>(null);
-
-  const { data: projectTime, isLoading, refetch } = useQuery({
+  const {
+    data: projectTime,
+    isLoading,
+    refetch
+  } = useQuery({
     queryKey: ['project-status', projectId],
     queryFn: () => projectTimeApiService.getAll({ filter: { project_id: projectId } }),
-    select: (data) => data.payload?.[0] ?? null, // Extract the first item from the array
+    select: (data) => data.payload?.[0] ?? null // Extract the first item from the array
   });
 
   const toggleDrawer = () => {
-    setSelectedRow({} as ProjectTime);
     setShowDrawer(!showDrawer);
   };
 
   const handleEdit = (projectTime: ProjectTime) => {
     toggleDrawer();
-    setSelectedRow(projectTime);
   };
   const handleDelete = async (projectTimeId: string) => {
     await projectTimeApiService.delete(projectTimeId);
     refetch();
   };
-  console.log('project time updated', projectTime)
+  console.log('project time updated', projectTime);
   return isLoading ? (
     <LoadingPlaceholder />
   ) : (
@@ -67,13 +66,7 @@ const ProjectTimeComponent: React.FC<ProjectTimeComponentProps> = ({ projectId }
         <Card>
           <CardContent>
             {projectTime && <TimelineSection data={projectTime} />}
-            {projectTime && (
-              <ProjectTimeAction
-                refetch={refetch}
-                projectTime={projectTime}
-                onDelete={handleDelete}
-                onEdit={handleEdit} />
-            )}
+            {projectTime && <ProjectTimeAction refetch={refetch} projectTime={projectTime} onDelete={handleDelete} onEdit={handleEdit} />}
           </CardContent>
         </Card>
       </Box>

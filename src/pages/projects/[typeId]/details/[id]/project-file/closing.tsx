@@ -12,8 +12,7 @@ function ProjectFileInitiation() {
   return (
     <Box>
       <ProjectLayout activeMenu={4} activeSubMenu={4} subMenuItems={subMenuItems(String(id), String(typeId))}>
-        <ProjectFileList projectId={String(id)} type={projectFileConstant.CLOSING.value}/>
-
+        <ProjectFileList projectId={String(id)} type={projectFileConstant.CLOSING.value} />
       </ProjectLayout>
     </Box>
   );

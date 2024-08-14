@@ -30,10 +30,9 @@ export interface ProjectStatus {
   status: GeneralMaster;
   status_id: string;
   updated_at: string;
-  created_at: string; 
-
+  created_at: string;
 }
-export interface ProjectFinance{
+export interface ProjectFinance {
   id: string;
   parent_id?: string;
   project_id: string;

@@ -14,6 +14,6 @@ const subMenuItems = (id: string, typeId: string) => [
     title: 'Extension Time',
     path: `/projects/${typeId}/details/${id}/time/extension-time`
   }
-]
+];
 
-export default subMenuItems
+export default subMenuItems;

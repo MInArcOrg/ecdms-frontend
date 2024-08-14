@@ -12,17 +12,17 @@ interface MainContractPriceDrawerType {
   toggle: () => void;
   refetch: () => void;
   projectFinance: ProjectFinance;
-  projectId:string;
+  projectId: string;
 }
 
 const validationSchema = yup.object().shape({
   main_contract_price_amount: yup.number().required(),
-  rebate:yup.number().required(),
+  rebate: yup.number().required()
 });
 
 const MainContractPriceDrawer = (props: MainContractPriceDrawerType) => {
   // ** Props
-  const { open, toggle, refetch, projectFinance,projectId } = props;
+  const { open, toggle, refetch, projectFinance, projectId } = props;
 
   const isEdit = projectFinance?.id ? true : false;
 
@@ -39,7 +39,7 @@ const MainContractPriceDrawer = (props: MainContractPriceDrawerType) => {
       data: {
         ...values,
         id: projectFinance?.id,
-        project_id:projectId
+        project_id: projectId
       },
       files: [] // Adjust if you need to handle files
     };
@@ -57,7 +57,11 @@ const MainContractPriceDrawer = (props: MainContractPriceDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`project.main-contract-price.${isEdit ? 'edit-main-contract-price' : 'create-main-contract-price'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={`project.main-contract-price.${isEdit ? 'edit-main-contract-price' : 'create-main-contract-price'}`}
+      handleClose={handleClose}
+      open={open}
+    >
       {() => (
         <FormPageWrapper
           edit={isEdit}

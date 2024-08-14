@@ -1,4 +1,4 @@
-import { Button, CircularProgress, Box, CardContent, FormControl, Typography } from '@mui/material';
+import { Box, Button, CardContent, CircularProgress, FormControl, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -6,7 +6,6 @@ import documentApiService from 'src/services/document/document-service';
 import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import DescCollapse from '../resources/detail/desc-collapse';
-import Icon from 'src/@core/components/icon';
 
 interface DocumentDetailProps {
   show: boolean;

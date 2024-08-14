@@ -6,7 +6,7 @@ import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { ProjectReport } from 'src/types/project/project-report';
-import FileDrawer from "src/views/components/custom/files-drawer";
+import FileDrawer from 'src/views/components/custom/files-drawer';
 import { formatCurrency } from 'src/utils/formatter/currency';
 
 interface ReportDetailProps {
@@ -49,19 +49,13 @@ function ReportDetail({ show, toggleDetail, projectReport }: ReportDetailProps) 
                   { label: t('Profit - loss'), value: projectReport.profit_or_loss },
                   { label: `${t('Project')} ${t('Expense')}`, value: projectReport.project_expense, bold: true },
                   { label: `${t('Financial Performance')}`, value: projectReport.financial_performance },
-                  { label: `${t('Physical Performance')}`, value: projectReport.physical_performance },
+                  { label: `${t('Physical Performance')}`, value: projectReport.physical_performance }
                 ].map(({ label, value, bold }) => (
                   <Box key={label} display="flex" justifyContent="space-between" alignItems="center" m={2}>
-                    <Typography 
-                                          fontWeight={bold ? 'bold' : 'light'}
-                    variant="subtitle1" fontSize="16px">
+                    <Typography fontWeight={bold ? 'bold' : 'light'} variant="subtitle1" fontSize="16px">
                       {label}
                     </Typography>
-                    <Typography
-                      variant="subtitle1"
-                      fontWeight={bold ? 'bold' : 'light'}
-                      fontSize="16px"
-                    >
+                    <Typography variant="subtitle1" fontWeight={bold ? 'bold' : 'light'} fontSize="16px">
                       {formatCurrency(Number(value))}
                     </Typography>
                   </Box>
@@ -71,10 +65,7 @@ function ReportDetail({ show, toggleDetail, projectReport }: ReportDetailProps) 
                     {`${t('Reference')} ${t('File')}`}
                   </Typography>
                   <Typography variant="subtitle1" fontWeight="light" fontSize="16px">
-                    <FileDrawer
-                      id={projectReport.id}
-                      type={uploadableProjectFileTypes.report}
-                    />
+                    <FileDrawer id={projectReport.id} type={uploadableProjectFileTypes.report} />
                   </Typography>
                 </Box>
               </Box>

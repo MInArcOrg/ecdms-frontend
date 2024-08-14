@@ -96,8 +96,7 @@ export const timeGreating = (date: string | Date): { greating: string; greatingN
   return { greating: newGreeting, greatingName };
 };
 
-
-export const convertDateToLocaleDate = (date: EthiopianDate | Date | string|undefined) => {
+export const convertDateToLocaleDate = (date: EthiopianDate | Date | string | undefined) => {
   if (i18n.language === 'am') {
     if (date instanceof EthiopianDate) {
       return convertToGC(date);

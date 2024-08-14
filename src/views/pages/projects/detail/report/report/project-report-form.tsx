@@ -1,23 +1,12 @@
-import React, { Fragment } from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Button,
-  Grid,
-  IconButton,
-  Box,
-} from "@mui/material";
-import { FormikProps } from "formik";
-import { useTranslation } from "react-i18next";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
-import { ProjectReport } from "src/types/project/project-report";
-import { ProjectPlan } from "src/types/project/project-plan";
-import Icon from "src/@core/components/icon";
-import { formatPercent } from "src/utils/formatter/number";
-import { formatCurrency } from "src/utils/formatter/currency";
+import { IconButton, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { FormikProps } from 'formik';
+import React, { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
+import Icon from 'src/@core/components/icon';
+import { ProjectPlan } from 'src/types/project/project-plan';
+import { ProjectReport } from 'src/types/project/project-report';
+import { formatCurrency } from 'src/utils/formatter/currency';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface ProjectReportTableProps {
   formik: FormikProps<ProjectReport>;
@@ -28,98 +17,89 @@ interface ProjectReportTableProps {
     manpower: boolean;
     subtotal: boolean;
   };
-  toggleSection: (section: "manpower" | "subtotal") => void;
+  toggleSection: (section: 'manpower' | 'subtotal') => void;
 }
 
-const calculatePercentage = (
-  reportValue: number | undefined,
-  planValue: number | undefined
-): string => {
-  if (typeof reportValue === "number" && typeof planValue === "number") {
-    return (((reportValue ?? 0) / (planValue ?? 1)) * 100).toFixed(2) + "%";
+const calculatePercentage = (reportValue: number | undefined, planValue: number | undefined): string => {
+  if (typeof reportValue === 'number' && typeof planValue === 'number') {
+    return (((reportValue ?? 0) / (planValue ?? 1)) * 100).toFixed(2) + '%';
   }
-  return "N/A";
+  return 'N/A';
 };
 
-const ProjectReportTable: React.FC<ProjectReportTableProps> = ({
-  formik,
-  projectPlan,
-  viewSections,
-  toggleSection,
-}) => {
+const ProjectReportTable: React.FC<ProjectReportTableProps> = ({ formik, projectPlan, viewSections, toggleSection }) => {
   const { t: transl } = useTranslation();
-
   const rows = [
     {
-      label: transl("project.report.form.manpower"),
-      name: "manpower",
-      section: "manpower",
-      dependsOn: ["subtotal"],
+      label: transl('project.report.form.manpower'),
+      name: 'manpower',
+      section: 'manpower',
+      dependsOn: ['subtotal']
     },
     {
-      label: transl("project.report.form.direct-labour"),
-      name: "direct_labour",
-      dependsOn: ["manpower", "subtotal"],
+      label: transl('project.report.form.direct-labour'),
+      name: 'direct_labour',
+      dependsOn: ['manpower', 'subtotal']
     },
     {
-      label: transl("project.report.form.indirect-labour"),
-      name: "indirect_labour",
-      dependsOn: ["manpower", "subtotal"],
+      label: transl('project.report.form.indirect-labour'),
+      name: 'indirect_labour',
+      dependsOn: ['manpower', 'subtotal']
     },
     {
-      label: transl("project.report.form.material"),
-      name: "material",
-      dependsOn: ["subtotal"],
+      label: transl('project.report.form.material'),
+      name: 'material',
+      dependsOn: ['subtotal']
     },
     {
-      label: transl("project.report.form.machinery"),
-      name: "machinery",
-      dependsOn: ["subtotal"],
+      label: transl('project.report.form.machinery'),
+      name: 'machinery',
+      dependsOn: ['subtotal']
     },
     {
-      label: transl("project.report.form.other-expense"),
-      name: "other_expense",
-      dependsOn: ["subtotal"],
+      label: transl('project.report.form.other-expense'),
+      name: 'other_expense',
+      dependsOn: ['subtotal']
     },
     {
-      label: transl("project.report.form.sub-contractor-cost"),
-      name: "sub_contractor_cost",
-      dependsOn: ["subtotal"],
+      label: transl('project.report.form.sub-contractor-cost'),
+      name: 'sub_contractor_cost',
+      dependsOn: ['subtotal']
     },
     {
-      label: transl("project.report.form.cost-due-to-rework"),
-      name: "cost_due_to_rework",
-      dependsOn: ["subtotal"],
+      label: transl('project.report.form.cost-due-to-rework'),
+      name: 'cost_due_to_rework',
+      dependsOn: ['subtotal']
     },
     {
-      label: transl("project.report.form.financial-performance"),
-      name: "financial_performance",
-      dependsOn: ["subtotal"],
+      label: transl('project.report.form.financial-performance'),
+      name: 'financial_performance',
+      dependsOn: ['subtotal']
     },
     {
-      label: transl("project.report.form.physical-performance"),
-      name: "physical_performance",
-      dependsOn: ["subtotal"],
+      label: transl('project.report.form.physical-performance'),
+      name: 'physical_performance',
+      dependsOn: ['subtotal']
     },
     {
-      label: transl("project.report.form.subtotal"),
-      name: "subtotal",
-      section: "subtotal",
+      label: transl('project.report.form.subtotal'),
+      name: 'subtotal',
+      section: 'subtotal'
     },
-    { label: transl("project.report.form.profit"), name: "profit" },
+    { label: transl('project.report.form.profit'), name: 'profit' },
     {
-      label: transl("project.report.form.over-head-cost"),
-      name: "over_head_cost",
+      label: transl('project.report.form.over-head-cost'),
+      name: 'over_head_cost'
     },
     {
-      label: transl("project.report.form.total-cost"),
-      name: "project_expense",
-    },
+      label: transl('project.report.form.total-cost'),
+      name: 'project_expense'
+    }
   ];
 
   const shouldRenderRow = (dependsOn?: string[]) => {
     if (!dependsOn) return true;
-    return dependsOn.every((section) => viewSections[section as  "manpower" | "subtotal"]);
+    return dependsOn.every((section) => viewSections[section as 'manpower' | 'subtotal']);
   };
 
   return (
@@ -127,9 +107,9 @@ const ProjectReportTable: React.FC<ProjectReportTableProps> = ({
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>{transl("project.report.form.header")}</TableCell>
-            <TableCell>{transl("project.report.form.report")}</TableCell>
-            <TableCell>{transl("project.report.form.plan")}</TableCell>
+            <TableCell>{transl('project.report.form.header')}</TableCell>
+            <TableCell>{transl('project.report.form.report')}</TableCell>
+            <TableCell>{transl('project.report.form.plan')}</TableCell>
             <TableCell>%</TableCell>
           </TableRow>
         </TableHead>
@@ -141,19 +121,10 @@ const ProjectReportTable: React.FC<ProjectReportTableProps> = ({
             return shouldRender ? (
               <TableRow key={index}>
                 <TableCell>
-                {isSection && (
-                    <IconButton
-                      onClick={() =>
-                        toggleSection(row.section as "manpower" | "subtotal")
-                      }
-                      sx={{ mr: 1 }}
-                    >
+                  {isSection && (
+                    <IconButton onClick={() => toggleSection(row.section as 'manpower' | 'subtotal')} sx={{ mr: 1 }}>
                       <Icon
-                        icon={`tabler:${
-                          viewSections[row.section as "manpower" | "subtotal"]
-                            ? "chevron-down"
-                            : "chevron-right"
-                        }`}
+                        icon={`tabler:${viewSections[row.section as 'manpower' | 'subtotal'] ? 'chevron-down' : 'chevron-right'}`}
                         width={20}
                         height={20}
                       />
@@ -161,7 +132,6 @@ const ProjectReportTable: React.FC<ProjectReportTableProps> = ({
                   )}
 
                   {row.label}
-                  
                 </TableCell>
                 <TableCell>
                   <CustomTextBox
@@ -169,18 +139,15 @@ const ProjectReportTable: React.FC<ProjectReportTableProps> = ({
                     fullWidth
                     name={row.name}
                     size="small"
-                    value={formik.values[row.name as keyof ProjectReport] || ""}
+                    value={formik.values[row.name as keyof ProjectReport] || ''}
                     onChange={formik.handleChange}
-                    disabled={
-                      (viewSections.manpower && row.name === "manpower") ||
-                      (viewSections.subtotal && row.name === "subtotal")
-                    }
+                    disabled={(viewSections.manpower && row.name === 'manpower') || (viewSections.subtotal && row.name === 'subtotal')}
                   />
                 </TableCell>
                 <TableCell>
                   {projectPlan[row.name as keyof ProjectPlan] != null
                     ? formatCurrency(Number(projectPlan[row.name as keyof ProjectPlan]))?.toString()
-                    : "-"}
+                    : '-'}
                 </TableCell>
                 <TableCell>
                   {calculatePercentage(
@@ -196,5 +163,4 @@ const ProjectReportTable: React.FC<ProjectReportTableProps> = ({
     </Fragment>
   );
 };
-
 export default ProjectReportTable;

@@ -1,16 +1,15 @@
-import { FormikProps } from "formik";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import ProjectExtensionTimeForm from "./project-extension-time-form";
+import { FormikProps } from 'formik';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import ProjectExtensionTimeForm from './project-extension-time-form';
 
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import projectExtensionTimeApiService from "src/services/project/project-extension-time-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import { ProjectExtensionTime } from "src/types/project/project-time";
+import { useState } from 'react';
+import projectExtensionTimeApiService from 'src/services/project/project-extension-time-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { ProjectExtensionTime } from 'src/types/project/project-time';
 
 interface ProjectExtensionTimeDrawerType {
   open: boolean;
@@ -21,55 +20,35 @@ interface ProjectExtensionTimeDrawerType {
 }
 
 const ProjectExtensionTimeDrawer = (props: ProjectExtensionTimeDrawerType) => {
-  const {
-    open,
-    toggle,
-    refetch,
-    projectExtensionTime,
-    projectId,
-  } = props;
-  const { t } = useTranslation();
+  const { open, toggle, refetch, projectExtensionTime, projectId } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
 
-
-  const validationSchema = yup.object().shape({
-
-  });
+  const validationSchema = yup.object().shape({});
 
   const isEdit = Boolean(projectExtensionTime?.id);
 
-  const createProjectExtensionTime = async (body: IApiPayload<ProjectExtensionTime>) =>
-    projectExtensionTimeApiService.create(body);
+  const createProjectExtensionTime = async (body: IApiPayload<ProjectExtensionTime>) => projectExtensionTimeApiService.create(body);
 
   const editProjectExtensionTime = async (body: IApiPayload<ProjectExtensionTime>) =>
-    projectExtensionTimeApiService.update(projectExtensionTime?.id || "", body);
+    projectExtensionTimeApiService.update(projectExtensionTime?.id || '', body);
 
   const getPayload = (values: ProjectExtensionTime) => ({
     data: {
       ...values,
       id: projectExtensionTime?.id,
-      project_id: projectId,
+      project_id: projectId
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<ProjectExtensionTime>,
-    payload: IApiPayload<ProjectExtensionTime>
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<ProjectExtensionTime>, payload: IApiPayload<ProjectExtensionTime>) => {
     if (payload.files.length > 0) {
-      uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.extension_time,
-        response.payload.id,
-        "",
-        ""
-      );
+      uploadFile(payload.files[0], uploadableProjectFileTypes.extension_time, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -77,11 +56,7 @@ const ProjectExtensionTimeDrawer = (props: ProjectExtensionTimeDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.project-extension-time.${
-        isEdit
-          ? `edit-project-extension-time`
-          : `create-project-extension-time`
-      }`}
+      title={`project.project-extension-time.${isEdit ? `edit-project-extension-time` : `create-project-extension-time`}`}
       handleClose={handleClose}
       open={open}
     >
@@ -92,22 +67,14 @@ const ProjectExtensionTimeDrawer = (props: ProjectExtensionTimeDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(projectExtensionTime as ProjectExtensionTime),
+            ...(projectExtensionTime as ProjectExtensionTime)
           }}
-          createActionFunc={
-            isEdit ? editProjectExtensionTime : createProjectExtensionTime
-          }
+          createActionFunc={isEdit ? editProjectExtensionTime : createProjectExtensionTime}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<ProjectExtensionTime>) => {
-            return (
-              <ProjectExtensionTimeForm
-                file={uploadableFile}
-                onFileChange={onFileChange}
-                formik={formik}
-              />
-            );
+            return <ProjectExtensionTimeForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

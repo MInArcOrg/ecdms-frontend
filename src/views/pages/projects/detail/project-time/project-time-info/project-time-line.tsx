@@ -27,7 +27,7 @@ const TimelineSection: React.FC<TimelineSectionProps> = ({ data }) => {
   const timelineItems = [
     { date: data?.contract_signing_date, label: 'Contract Signing Date' },
     { date: data?.site_handover_date, label: 'Site Handover Date' },
-    { date: data?.commencement_date, label: 'Commencement Date' },
+    { date: data?.commencement_date, label: 'Commencement Date' }
   ];
 
   return (
@@ -44,9 +44,7 @@ const TimelineSection: React.FC<TimelineSectionProps> = ({ data }) => {
                 <span>{item.date ? getDynamicDate(i18n, item.date).toDateString() : 'N/A'}</span>
                 <Icon icon="tabler:arrow-right" fontSize={20} />{' '}
               </Typography>
-              <Typography variant="body2">
-                {item.label}
-              </Typography>
+              <Typography variant="body2">{item.label}</Typography>
             </Box>
           </TimelineContent>
         </TimelineItem>

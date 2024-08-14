@@ -4,11 +4,11 @@ import ProjectStakeholderList from 'src/views/pages/projects/detail/project-stak
 
 const ProjectStakeholder = () => {
   const router = useRouter();
-  const { id, typeId } = router.query;
+  const { id } = router.query;
 
   return (
     <ProjectLayout activeMenu={3}>
-      <ProjectStakeholderList projectId={String(id)}  />
+      <ProjectStakeholderList projectId={String(id)} />
     </ProjectLayout>
   );
 };

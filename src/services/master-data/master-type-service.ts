@@ -7,14 +7,14 @@ import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const masterTypeApiService = {
-  getAll: (model: string, params: GetRequestParam): Promise<IApiResponse> =>
+  getAll: (model: string, params: GetRequestParam): Promise<IApiResponse<MasterType[]>> =>
     buildGetRequest(`/masterdata/${model}-types`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
-  getOne: (model: string, idx: string, params: GetRequestParam): Promise<IApiResponse> =>
+  getOne: (model: string, idx: string, params: GetRequestParam): Promise<IApiResponse<MasterType>> =>
     buildGetRequest(`/masterdata/${model}-types/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {

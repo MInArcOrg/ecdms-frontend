@@ -1,6 +1,6 @@
-import { EtDatetime, ETC, BahireHasab, ConvertToEthiopic } from 'abushakir';
-import EthiopianDate from './ethiopian-date';
+import { EtDatetime } from 'abushakir';
 import moment from 'moment';
+import EthiopianDate from './ethiopian-date';
 
 interface DateInput {
   year: number;
@@ -9,7 +9,7 @@ interface DateInput {
 }
 export const convertToGC = (date: DateInput) => {
   // Create an EtDatetime instance using the provided Ethiopian date
-  const etDate = new EtDatetime(date.year, date.month, date.day, 12, 0, 0, 0)
+  const etDate = new EtDatetime(date.year, date.month, date.day, 12, 0, 0, 0);
 
   const gregorianDate = new Date(etDate.moment);
 
@@ -19,7 +19,6 @@ export const convertToGC = (date: DateInput) => {
 
   return gregorianDate;
 };
-
 
 export const convertToEC = (date: Date | string): EthiopianDate => {
   const dateObj = new Date(date);

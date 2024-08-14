@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/project-layout';
 import subMenuItems from './(subMenuItems)';
-import ProjectReportList from 'src/views/pages/projects/detail/report/report';
 
 const ProjectStakeholder = () => {
   const router = useRouter();
@@ -16,7 +15,7 @@ const ProjectStakeholder = () => {
 };
 
 ProjectStakeholder.acl = {
-subject: 'projectreport',
+  subject: 'projectreport',
   action: 'view'
 };
 

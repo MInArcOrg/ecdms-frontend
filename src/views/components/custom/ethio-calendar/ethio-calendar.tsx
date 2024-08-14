@@ -17,10 +17,10 @@ interface EthioCalendarProps {
   onChange: (date: EthiopianDate) => void;
   placeholderText?: string;
   disabled?: boolean;
-  [key: string]: any; 
+  [key: string]: any;
 }
 
-const EthioCalendar: FC<EthioCalendarProps> = ({ value, onChange, placeholderText, disabled,...rest }) => {
+const EthioCalendar: FC<EthioCalendarProps> = ({ value, onChange, placeholderText, disabled, ...rest }) => {
   const [isOpen, setIsOpen] = useState(false);
   const theme = useTheme();
   const textFieldRef = useRef<HTMLDivElement>(null);

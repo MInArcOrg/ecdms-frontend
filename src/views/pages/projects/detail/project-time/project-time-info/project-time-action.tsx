@@ -1,6 +1,4 @@
 import { Box } from '@mui/material';
-import CustomChip from 'src/@core/components/mui/chip';
-import Can from 'src/layouts/components/acl/Can';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { ProjectTime } from 'src/types/project/project-time';
 import FileDrawer from 'src/views/components/custom/files-drawer';
@@ -21,32 +19,28 @@ const ProjectTimeAction = ({
   return (
     <Box display="flex" justifyContent="end" alignItems="end">
       <Box display="flex" gap={2}>
-        <FileDrawer
-          id={projectTime.id}
-          type={uploadableProjectFileTypes.time}
-        />{" "}
-        &nbsp;
-        <Box sx={{ display: "flex" }}>
+        <FileDrawer id={projectTime.id} type={uploadableProjectFileTypes.time} /> &nbsp;
+        <Box sx={{ display: 'flex' }}>
           <ModelActionComponent
             model="ProjectTime"
             model_id={projectTime.id}
             refetchModel={refetch}
             resubmit={function (): void {
-              throw new Error("Function not implemented.");
+              throw new Error('Function not implemented.');
             }}
-            title={""}
+            title={''}
             postAction={function (): void {
-              throw new Error("Function not implemented.");
+              throw new Error('Function not implemented.');
             }}
           />
           <RowOptions
             deletePermissionRule={{
-              action: "delete",
-              subject: "projecttime",
+              action: 'delete',
+              subject: 'projecttime'
             }}
             editPermissionRule={{
-              action: "edit",
-              subject: "projecttime",
+              action: 'edit',
+              subject: 'projecttime'
             }}
             onEdit={onEdit}
             onDelete={() => onDelete(projectTime.id)}

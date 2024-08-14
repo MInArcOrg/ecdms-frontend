@@ -1,13 +1,13 @@
 import { AxiosResponse } from "axios";
+import { ProjectPlan } from "src/types/project/project-plan";
+import { MonthlyReport, ProjectReport } from "src/types/project/project-report";
 import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
 import axiosServices from "src/utils/axios";
 import { buildGetRequest } from "src/utils/requests/get-request";
 import { buildPostRequest } from "src/utils/requests/post-request";
 import { buildPutRequest } from "src/utils/requests/put-request";
-import { ProjectGeneralFinance } from "src/types/project/project-finance";
-import { ProjectReport } from "src/types/project/project-report";
 
-const projectPlanApiService = {
+const projectReportApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<ProjectReport[]>> =>
     buildGetRequest(`/projects/project-reports`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
@@ -46,15 +46,15 @@ const projectPlanApiService = {
       .catch((error: any) => {
         throw error;
       }),
-  getProjectGeneralFinance: (
-    idx: string,
-    params: GetRequestParam
-  ): Promise<IApiResponse<ProjectGeneralFinance>> =>
-    buildGetRequest(`/projects/general-project-finance/${idx}`, params)
+  getMonthlyProjectReport: (
+    id: string,
+    params: any
+  ): Promise<IApiResponse<{data:MonthlyReport,plan:ProjectPlan}>> =>
+    buildGetRequest(`/projects/monthly-project-report/${id}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 };
 
-export default projectPlanApiService;
+export default projectReportApiService;

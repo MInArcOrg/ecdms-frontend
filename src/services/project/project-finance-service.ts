@@ -1,11 +1,11 @@
-import { AxiosResponse } from "axios";
-import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
-import { ProjectFinance } from "src/types/project";
-import axiosServices from "src/utils/axios";
-import { buildGetRequest } from "src/utils/requests/get-request";
-import { buildPostRequest } from "src/utils/requests/post-request";
-import { buildPutRequest } from "src/utils/requests/put-request";
-import { ProjectGeneralFinance } from "src/types/project/project-finance";
+import { AxiosResponse } from 'axios';
+import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
+import { ProjectFinance } from 'src/types/project';
+import axiosServices from 'src/utils/axios';
+import { buildGetRequest } from 'src/utils/requests/get-request';
+import { buildPostRequest } from 'src/utils/requests/post-request';
+import { buildPutRequest } from 'src/utils/requests/put-request';
+import { ProjectGeneralFinance } from 'src/types/project/project-finance';
 
 const projectFinanceApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<ProjectFinance[]>> =>
@@ -37,24 +37,18 @@ const projectFinanceApiService = {
         throw error;
       }),
 
-  update: (
-    id: string,
-    body: IApiPayload<ProjectFinance>
-  ): Promise<IApiResponse> =>
+  update: (id: string, body: IApiPayload<ProjectFinance>): Promise<IApiResponse> =>
     buildPutRequest(`/projects/project-finances/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
-  getProjectGeneralFinance: (
-    idx: string,
-    params: GetRequestParam
-  ): Promise<IApiResponse<ProjectGeneralFinance>> =>
+  getProjectGeneralFinance: (idx: string, params: GetRequestParam): Promise<IApiResponse<ProjectGeneralFinance>> =>
     buildGetRequest(`/projects/general-project-finance/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      }),
+      })
 };
 
 export default projectFinanceApiService;

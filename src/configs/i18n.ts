@@ -15,16 +15,16 @@ i18n
   .init({
     backend: {
       /* translation file path */
-      loadPath: '/locales/{{lng}}.json',
+      loadPath: '/locales/{{lng}}.json'
     },
-    fallbackLng: 'en',  // Fallback to English if the detected language is not available
+    fallbackLng: 'en', // Fallback to English if the detected language is not available
     debug: false,
     react: {
-      useSuspense: false,
+      useSuspense: false
     },
     interpolation: {
       escapeValue: false,
-      formatSeparator: ',',
+      formatSeparator: ','
     }
   });
 

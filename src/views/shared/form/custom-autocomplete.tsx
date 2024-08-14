@@ -29,7 +29,7 @@ const CustomAutocomplete: React.FC<CustomAutocompleteProps> = ({
 }) => {
   const [field, meta, helpers] = useField(name);
   const { isSubmitting } = useFormikContext();
-  
+
   // Handle change in Autocomplete
   const handleChange = (event: React.ChangeEvent<{}>, value: any) => {
     helpers.setValue(value);
@@ -38,10 +38,10 @@ const CustomAutocomplete: React.FC<CustomAutocompleteProps> = ({
   // Memoize renderInput to avoid unnecessary re-renders
   const renderInput = React.useMemo(
     () => (params: any) => (
-      <TextField 
-        {...params} 
-        label={label} 
-        placeholder={placeholder} 
+      <TextField
+        {...params}
+        label={label}
+        placeholder={placeholder}
         error={meta.touched && Boolean(meta.error)}
         helperText={meta.touched && meta.error ? meta.error : ''}
       />
@@ -63,11 +63,7 @@ const CustomAutocomplete: React.FC<CustomAutocompleteProps> = ({
         renderInput={renderInput}
         {...props}
       />
-      {meta.touched && meta.error && (
-        <FormHelperText error>
-          {meta.error}
-        </FormHelperText>
-      )}
+      {meta.touched && meta.error && <FormHelperText error>{meta.error}</FormHelperText>}
     </div>
   );
 };

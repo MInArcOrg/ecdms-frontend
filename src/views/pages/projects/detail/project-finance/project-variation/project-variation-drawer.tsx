@@ -1,23 +1,20 @@
-import * as yup from "yup";
-import { FormikProps } from "formik";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import ProjectVariationForm from "./project-variation-form";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import {
-  ProjectGeneralFinance,
-  ProjectVariation,
-} from "src/types/project/project-finance";
-import { getDynamicDate } from "src/views/components/custom/ethio-calendar/ethio-calendar-utils";
-import i18n from "src/configs/i18n";
-import moment from "moment";
-import { convertDateToLocaleDate } from "src/utils/formatter/date";
-import { variationConstants } from "src/constants/variation-constants";
-import { useTranslation } from "react-i18next";
-import projectVariationApiService from "src/services/project/project-variation-service";
-import { useEffect, useState } from "react";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
+import { FormikProps } from 'formik';
+import moment from 'moment';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import i18n from 'src/configs/i18n';
+import { variationConstants } from 'src/constants/variation-constants';
+import projectVariationApiService from 'src/services/project/project-variation-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { ProjectGeneralFinance, ProjectVariation } from 'src/types/project/project-finance';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import { convertDateToLocaleDate } from 'src/utils/formatter/date';
+import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import ProjectVariationForm from './project-variation-form';
 
 interface ProjectVariationDrawerType {
   open: boolean;
@@ -30,31 +27,19 @@ interface ProjectVariationDrawerType {
 }
 
 const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
-  const {
-    open,
-    toggle,
-    refetch,
-    projectVariation,
-    projectId,
-    type,
-    projectGeneralFinance,
-  } = props;
+  const { open, toggle, refetch, projectVariation, projectId, type, projectGeneralFinance } = props;
   const { t } = useTranslation();
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const selectedVariationType =
-    variationConstants[type as keyof typeof variationConstants];
+  const selectedVariationType = variationConstants[type as keyof typeof variationConstants];
 
-  const percentagetCalculator = (value: number) =>
-    (value / projectGeneralFinance?.price_after_rebate) * 100;
+  const percentagetCalculator = (value: number) => (value / projectGeneralFinance?.price_after_rebate) * 100;
 
-  const amountCalculator = (value: number) =>
-    projectGeneralFinance?.price_after_rebate * (value / 100);
+  const amountCalculator = (value: number) => projectGeneralFinance?.price_after_rebate * (value / 100);
 
-  const percentOf = (value: number) =>
-    (projectGeneralFinance?.price_after_rebate * value) / 100;
+  const percentOf = (value: number) => (projectGeneralFinance?.price_after_rebate * value) / 100;
 
   const variationTotal = () => {
     switch (type) {
@@ -74,47 +59,34 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
   const allowedVariation = percentOf(selectedVariationType?.percent ?? 0);
   const remainingVariation = allowedVariation - variationTotal();
   const remainingVariationPercent = percentagetCalculator(remainingVariation);
-  console.log(
-    "remaining variation percent",
-    remainingVariation,
-    remainingVariationPercent
-  );
+  console.log('remaining variation percent', remainingVariation, remainingVariationPercent);
   const validationSchema = yup.object().shape({
-    extension_time: yup
-      .number()
-      .required(`${t("Extension Time")} ${t("is required")}`),
-    approval_date: yup
-      .date()
-      .required(`${t("Approval Date")} ${t("is required")}`),
+    extension_time: yup.number().required(`${t('Extension Time')} ${t('is required')}`),
+    approval_date: yup.date().required(`${t('Approval Date')} ${t('is required')}`),
     amount: yup
       .number()
-      .required(`${t("Amount")} ${t("is required")}`)
-      .when("type", {
-        is: (value: string) =>
-          value === variationConstants.SUPPLEMENT.value ||
-          value === variationConstants.VARIATION.value,
-        then: (schema) => schema.max(remainingVariation),
+      .required(`${t('Amount')} ${t('is required')}`)
+      .when('type', {
+        is: (value: string) => value === variationConstants.SUPPLEMENT.value || value === variationConstants.VARIATION.value,
+        then: (schema) => schema.max(remainingVariation)
       })
       .moreThan(0),
     percentage: yup
       .number()
-      .required(`${t("Percentage")} ${t("is required")}`)
+      .required(`${t('Percentage')} ${t('is required')}`)
       .moreThan(0)
-      .when("type", {
-        is: (value: string) =>
-          value === variationConstants.SUPPLEMENT.value ||
-          value === variationConstants.VARIATION.value,
-        then: (schema) => schema.max(remainingVariationPercent),
-      }),
+      .when('type', {
+        is: (value: string) => value === variationConstants.SUPPLEMENT.value || value === variationConstants.VARIATION.value,
+        then: (schema) => schema.max(remainingVariationPercent)
+      })
   });
 
   const isEdit = Boolean(projectVariation?.id);
 
-  const createProjectVariation = async (body: IApiPayload<ProjectVariation>) =>
-    projectVariationApiService.create(body);
+  const createProjectVariation = async (body: IApiPayload<ProjectVariation>) => projectVariationApiService.create(body);
 
   const editProjectVariation = async (body: IApiPayload<ProjectVariation>) =>
-    projectVariationApiService.update(projectVariation?.id || "", body);
+    projectVariationApiService.update(projectVariation?.id || '', body);
 
   const getPayload = (values: ProjectVariation) => ({
     data: {
@@ -122,25 +94,16 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
       approval_date: convertDateToLocaleDate(values.approval_date),
       id: projectVariation?.id,
       project_id: projectId,
-      type,
+      type
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<ProjectVariation>,
-    payload: IApiPayload<ProjectVariation>
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<ProjectVariation>, payload: IApiPayload<ProjectVariation>) => {
     if (payload.files.length > 0) {
-      uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.variation,
-        response.payload.id,
-        "",
-        ""
-      );
+      uploadFile(payload.files[0], uploadableProjectFileTypes.variation, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -149,9 +112,7 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
   return (
     <CustomSideDrawer
       title={`project.project-${type.toLocaleLowerCase()}.${
-        isEdit
-          ? `edit-project-${type.toLocaleLowerCase()}`
-          : `create-project-${type.toLocaleLowerCase()}`
+        isEdit ? `edit-project-${type.toLocaleLowerCase()}` : `create-project-${type.toLocaleLowerCase()}`
       }`}
       handleClose={handleClose}
       open={open}
@@ -168,15 +129,10 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
             ...(projectVariation as ProjectVariation),
             percentage: percentagetCalculator(projectVariation?.amount),
             approval_date: projectVariation?.approval_date
-              ? getDynamicDate(
-                  i18n,
-                  moment(String(projectVariation?.approval_date)).toDate()
-                )
-              : undefined,
+              ? getDynamicDate(i18n, moment(String(projectVariation?.approval_date)).toDate())
+              : undefined
           }}
-          createActionFunc={
-            isEdit ? editProjectVariation : createProjectVariation
-          }
+          createActionFunc={isEdit ? editProjectVariation : createProjectVariation}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

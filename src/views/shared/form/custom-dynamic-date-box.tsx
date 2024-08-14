@@ -43,7 +43,7 @@ const CustomDynamicDatePicker: React.FC<CustomDynamicDatePickerProps> = ({ name,
               <InputAdornment position="end">
                 <Icon fontSize="1.25rem" icon={'tabler:calendar'} />
               </InputAdornment>
-            ),
+            )
           }}
           {...rest}
         />
@@ -66,7 +66,7 @@ const CustomDynamicDatePicker: React.FC<CustomDynamicDatePickerProps> = ({ name,
                   <InputAdornment position="end">
                     <Icon fontSize="1.25rem" icon={'tabler:calendar'} />
                   </InputAdornment>
-                ),
+                )
               }}
               disabled={rest?.disabled || isSubmitting}
             />

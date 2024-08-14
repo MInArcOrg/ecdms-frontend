@@ -1,20 +1,12 @@
-import { FormikProps } from "formik";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import { ProjectGeneralFinance } from "src/types/project/project-finance";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import ProjectFileForm from "./project-file-form";
-import { getDynamicDate } from "src/views/components/custom/ethio-calendar/ethio-calendar-utils";
-import i18n from "src/configs/i18n";
-import { convertDateToLocaleDate } from "src/utils/formatter/date";
-import moment from "moment";
-import { FileModel } from "src/types/general/file";
-import fileModelApiService from "src/services/general/file-api-service";
+import { FormikProps } from 'formik';
+import { useState } from 'react';
+import fileModelApiService from 'src/services/general/file-api-service';
+import { FileModel } from 'src/types/general/file';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import ProjectFileForm from './project-file-form';
 
 interface ProjectFileDrawerType {
   open: boolean;
@@ -23,20 +15,10 @@ interface ProjectFileDrawerType {
   projectFile: FileModel;
   projectId: string;
   type: string;
-  projectGeneralFinance: ProjectGeneralFinance;
 }
 
 const ProjectFileDrawer = (props: ProjectFileDrawerType) => {
-  const {
-    open,
-    toggle,
-    refetch,
-    projectFile,
-    projectId,
-    type,
-    projectGeneralFinance,
-  } = props;
-  const { t } = useTranslation();
+  const { open, toggle, refetch, projectFile, projectId, type } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
@@ -49,39 +31,35 @@ const ProjectFileDrawer = (props: ProjectFileDrawerType) => {
 
   const createProjectFile = async (body: IApiPayload<FileModel>) => {
     const formData = new FormData();
-    formData.append("type", type);
-    formData.append("reference_id", projectId);
-    formData.append("upload", body.files[0]);
-    formData.append("description", body.data.description ?? "");
+    formData.append('type', type);
+    formData.append('reference_id', projectId);
+    formData.append('upload', body.files[0]);
+    formData.append('description', body.data.description ?? '');
     return fileModelApiService.create({ data: formData, files: [] });
   };
 
-  const editProjectFile = async (body: IApiPayload<FileModel>) =>{
+  const editProjectFile = async (body: IApiPayload<FileModel>) => {
     const formData = new FormData();
-    formData.append("type", type);
-    formData.append("reference_id", projectId);
-    formData.append("upload", body.files[0]);
-    formData.append("description", body.data.description ?? "");
-    return fileModelApiService.update(projectFile.id,{ data: formData, files: [] });
-  }
+    formData.append('type', type);
+    formData.append('reference_id', projectId);
+    formData.append('upload', body.files[0]);
+    formData.append('description', body.data.description ?? '');
+    return fileModelApiService.update(projectFile.id, { data: formData, files: [] });
+  };
   const getPayload = (values: FileModel) => ({
     data: {
       ...values,
       id: projectFile?.id,
       project_id: projectId,
 
-      type,
+      type
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<FileModel>,
-    payload: IApiPayload<FileModel>
-  ) => {
- 
+  const onActionSuccess = async (response: IApiResponse<FileModel>, payload: IApiPayload<FileModel>) => {
     refetch();
     toggle();
     refetch();
@@ -90,11 +68,7 @@ const ProjectFileDrawer = (props: ProjectFileDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.project-file.${
-        isEdit
-          ? `edit-project-${type.toLocaleLowerCase()}`
-          : `create-project-${type.toLocaleLowerCase()}`
-      }`}
+      title={`project.project-file.${isEdit ? `edit-project-${type.toLocaleLowerCase()}` : `create-project-${type.toLocaleLowerCase()}`}`}
       handleClose={handleClose}
       open={open}
     >
@@ -102,9 +76,7 @@ const ProjectFileDrawer = (props: ProjectFileDrawerType) => {
         <FormPageWrapper
           edit={isEdit}
           title={`project.project-file.${
-            isEdit
-              ? `edit-project-${type.toLocaleLowerCase()}`
-              : `create-project-${type.toLocaleLowerCase()}`
+            isEdit ? `edit-project-${type.toLocaleLowerCase()}` : `create-project-${type.toLocaleLowerCase()}`
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
@@ -114,13 +86,7 @@ const ProjectFileDrawer = (props: ProjectFileDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<FileModel>) => {
-            return (
-              <ProjectFileForm
-                file={uploadableFile}
-                onFileChange={onFileChange}
-                formik={formik}
-              />
-            );
+            return <ProjectFileForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

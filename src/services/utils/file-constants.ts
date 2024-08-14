@@ -35,13 +35,14 @@ export const uploadableProjectFileTypes = {
   wind_energy: 'WIND_ENERGY',
   transformer_type: 'TRANSFORMER_TYPE',
   extension_time: 'EXTENSION_TIME',
-  variation:'VARIATION_TYPE',
-  payment:'PAYMENT_TYPE',
-  bond:'BOND',
-  stakeholder:'STAKEHOLDER',
+  variation: 'VARIATION_TYPE',
+  payment: 'PAYMENT_TYPE',
+  bond: 'BOND',
+  stakeholder: 'STAKEHOLDER',
   projectType: 'PROJECT_TYPE',
   projectCategory: 'PROJECT_CATEGORY',
   projectSubCategory: 'PROJECT_SUB_CATEGORY',
   masterStatus: 'MASTER_STATUS',
-  file: 'File'
+  file: 'File',
+  resource:'RESOURCE'
 } as const;

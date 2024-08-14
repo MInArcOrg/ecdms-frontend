@@ -1,9 +1,9 @@
-import { Box, Card, Grid } from "@mui/material";
-import { useRouter } from "next/router";
-import DetailSubMenu from "./general-info/detail-sub-menu";
-import menuTabs from "./project-menu-items";
-import DetailMenu from "./detail-menu";
-import { ReactNode } from "react";
+import { Box, Card, Grid } from '@mui/material';
+import { useRouter } from 'next/router';
+import DetailSubMenu from './general-info/detail-sub-menu';
+import menuTabs from './project-menu-items';
+import DetailMenu from './detail-menu';
+import { ReactNode } from 'react';
 
 interface ProjectLayoutProps {
   activeMenu: number;
@@ -12,12 +12,7 @@ interface ProjectLayoutProps {
   children: ReactNode;
 }
 
-const ProjectLayout: React.FC<ProjectLayoutProps> = ({
-  activeMenu,
-  activeSubMenu,
-  subMenuItems,
-  children,
-}) => {
+const ProjectLayout: React.FC<ProjectLayoutProps> = ({ activeMenu, activeSubMenu, subMenuItems, children }) => {
   const router = useRouter();
   const { id, typeId } = router.query;
   const isProject = true;
@@ -42,7 +37,7 @@ const ProjectLayout: React.FC<ProjectLayoutProps> = ({
               <Card>
                 <DetailSubMenu
                   subMenuItems={subMenuItems}
-                  activeSubMenu={subMenuItems[activeSubMenu||0]?.id}
+                  activeSubMenu={subMenuItems[activeSubMenu || 0]?.id}
                   setActiveSubMenu={(path) => {
                     router.push(path);
                   }}

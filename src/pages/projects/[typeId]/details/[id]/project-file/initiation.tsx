@@ -12,7 +12,7 @@ function ProjectFileInitiation() {
   return (
     <Box>
       <ProjectLayout activeMenu={4} activeSubMenu={0} subMenuItems={subMenuItems(String(id), String(typeId))}>
-        <ProjectFileList projectId={String(id)} type={projectFileConstant.INITIATION.value}/>
+        <ProjectFileList projectId={String(id)} type={projectFileConstant.INITIATION.value} />
       </ProjectLayout>
     </Box>
   );

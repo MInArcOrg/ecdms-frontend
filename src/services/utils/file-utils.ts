@@ -185,7 +185,6 @@ export const uploadableStakeholderFileTypes = {
 
 // Uploadable project file types
 
-
 // Uploadable resource file types
 export const uploadableResourceFileTypes = {
   resource: 'RESOURCE_FILE',

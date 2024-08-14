@@ -10,7 +10,7 @@ function ProjectVariation() {
   return (
     <Box>
       <ProjectLayout activeMenu={2} activeSubMenu={2} subMenuItems={subMenuItems(id as string, String(typeId))}>
-        <ProjectExtensionTimeList projectId={String(id)} type={''}  />
+        <ProjectExtensionTimeList projectId={String(id)} type={''} />
       </ProjectLayout>
     </Box>
   );

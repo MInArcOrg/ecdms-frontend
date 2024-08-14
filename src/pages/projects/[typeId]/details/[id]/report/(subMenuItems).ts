@@ -8,7 +8,7 @@ const subMenuItems = (id: string, typeId: string) => [
     id: 2,
     title: 'report',
     path: `/projects/${typeId}/details/${id}/report/report`
-  },
+  }
 ];
 
 export default subMenuItems;
