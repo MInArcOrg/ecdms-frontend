@@ -26,6 +26,7 @@ export const uploadablePhotoTypes = {
 } as const;
 
 export const uploadableProjectFileTypes = {
+  project:'PROJECT',
   time: 'TIME',
   plan: 'PROJECT_PLAN',
   report: 'PROJECT_REPORT',

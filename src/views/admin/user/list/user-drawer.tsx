@@ -57,7 +57,7 @@ const UserDrawer = (props: UserDrawerType) => {
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title="department.user.title"
+          title={`department.user.${isEdit ? 'edit-user' : 'create-user'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={user as User}

@@ -1,11 +1,11 @@
+import { Resource } from "../resource";
+
 export interface ProjectResource {
-    id?: string;
+    id: string;
     parent_id?: string;
-    resourcetype_id:string;
-    resourcecategory_id:string;
-    resourcesubcategory_id:string;
     project_id: string;
     resource_id: string;
+    resource?:Resource;
     used_quantity?: number;
     unit_price?: number;
     period_from?: Date;

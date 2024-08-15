@@ -1,6 +1,7 @@
 // components/ProjectList.tsx
 import { Box, Card, CardActions, CardContent, Grid, Link, Typography } from '@mui/material';
 import { Fragment } from 'react';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { Project } from 'src/types/project';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
@@ -50,10 +51,10 @@ const ProjectCard = ({
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
                 <Box>
-                  <FileDrawer id={project.id} type={'RESOURCE'} /> &nbsp;
+                  <FileDrawer id={project.id} type={uploadableProjectFileTypes.project} /> &nbsp;
                   <Box sx={{ display: 'flex' }}>
                     <ModelActionComponent
-                      model="Position"
+                      model="Project"
                       model_id={project.id}
                       refetchModel={refetch}
                       resubmit={function (): void {

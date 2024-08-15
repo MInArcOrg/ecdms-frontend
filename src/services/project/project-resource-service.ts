@@ -30,7 +30,7 @@ const projectResourceApiService = {
         throw error;
       }),
 
-  create: (body: IApiPayload<ProjectResource>): Promise<IApiResponse> =>
+  create: (body: IApiPayload<ProjectResource>): Promise<IApiResponse<ProjectResource>> =>
     buildPostRequest(`/projects/project-resources`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {

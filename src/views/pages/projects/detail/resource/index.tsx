@@ -12,12 +12,12 @@ import ProjectResourceCard from './project-resource-card';
 import ProjectResourceDrawer from './project-resource-drawer';
 import { projectResourceColumns } from './project-resource-row';
 import { useTranslation } from 'react-i18next';
-import ResourceDetail from './project-resource-detail';
 import { ProjectResource } from 'src/types/project/project-resource';
+import { useRouter } from 'next/router';
 
 function ProjectResourceList({ projectId }: { projectId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
-  const [showDetailDrawer, setShowDetailDrawer] = useState(false);
+  const router = useRouter();
 
   const [selectedRow, setSelectedRow] = useState<ProjectResource | null>(null);
   const fetchProjectResources = (params: GetRequestParam): Promise<IApiResponse<ProjectResource[]>> => {
@@ -26,11 +26,9 @@ function ProjectResourceList({ projectId }: { projectId: string }) {
       filter: { ...params.filter }
     });
   };
-  const toggleDetailDrawer = () => {
-    setSelectedRow({} as ProjectResource);
-    setShowDetailDrawer(!showDetailDrawer);
-  };
+ 
   const { t } = useTranslation();
+
   const {
     data: projectResources,
     isLoading,
@@ -56,14 +54,11 @@ function ProjectResourceList({ projectId }: { projectId: string }) {
     refetch();
   };
   const hanldeClickDetail = (projectResource: ProjectResource) => {
-    toggleDetailDrawer();
-    setSelectedRow(projectResource);
+      router.push(`/resources/${projectResource.resource?.resourcetype_id}/details/${projectResource.resource?.id}/`)
   };
   return (
     <Box>
-      {showDetailDrawer && (
-        <ResourceDetail projectResource={selectedRow as ProjectResource} show={showDetailDrawer} toggleDetail={toggleDetailDrawer} />
-      )}
+      
       {showDrawer && (
         <ProjectResourceDrawer
           open={showDrawer}
@@ -71,6 +66,7 @@ function ProjectResourceList({ projectId }: { projectId: string }) {
           projectResource={selectedRow as ProjectResource}
           refetch={refetch}
           projectId={projectId}
+          projectResources={projectResources||[]}
         />
       )}
       <ItemsListing
@@ -79,7 +75,7 @@ function ProjectResourceList({ projectId }: { projectId: string }) {
         type={ITEMS_LISTING_TYPE.table.value}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <ProjectResourceCard onDetail={hanldeClickDetail} onEdit={handleEdit} projectResource={data} onDelete={handleDelete} refetch={refetch} />
+          <ProjectResourceCard onEdit={handleEdit} onDetail={hanldeClickDetail} projectResource={data} onDelete={handleDelete} refetch={refetch} />
         )}
         tableProps={{
           headers: projectResourceColumns(hanldeClickDetail, handleEdit, handleDelete, t, refetch)

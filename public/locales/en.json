@@ -164,6 +164,7 @@
       "sub-category": "Sub Category",
       "category": "Category",
       "specification": "Specifications",
+      "measurement-unit":"Measurement Unit",
       "brand": "Brands",
       "resourcetype": "Types",
       "resourcequantityandprice": "Unit Price & Quantity",
@@ -530,6 +531,20 @@
         "header":"Header",
         "report":"Report",
         "plan":"Plan"
+      },
+      "columns": {
+        "type": "Type",
+        "financial-performance": "Financial Performance",
+        "physical-performance": "Physical Performance",
+        "project-expense": "Project Expense"
+      }
+    },
+    "resource": {
+      "title":"Project Resource",
+      "edit-project-resource":"Edit Project Resource",
+      "create-project-resource":"Create Project Resource",
+      "form": {
+        
       },
       "columns": {
         "type": "Type",

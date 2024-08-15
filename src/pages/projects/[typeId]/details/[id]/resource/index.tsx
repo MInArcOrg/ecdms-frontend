@@ -7,7 +7,7 @@ const ProjectStakeholder = () => {
   const { id } = router.query;
 
   return (
-    <ProjectLayout activeMenu={5} activeSubMenu={0}>
+    <ProjectLayout activeMenu={6} activeSubMenu={0}>
       <ProjectResourceList projectId={String(id)} />
     </ProjectLayout>
   );

@@ -1,75 +1,160 @@
-import { Box } from '@mui/material';
+import { Box, Button, MenuItem, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
-import { FormikProps } from 'formik';
-import { useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import CustomTextField from 'src/@core/components/mui/text-field';
 import masterCategoryApiService from 'src/services/master-data/master-category-service';
 import masterSubCategoryApiService from 'src/services/master-data/master-sub-category-service';
 import masterTypeApiService from 'src/services/master-data/master-type-service';
 import resourceApiService from 'src/services/resource/resource-service';
-import { MasterType, MasterSubCategory, MasterCategory } from 'src/types/master/master-types';
 import { ProjectResource } from 'src/types/project/project-resource';
-import { GetRequestParam, IApiResponse, IApiPayload } from 'src/types/requests';
-import CustomSelect from 'src/views/shared/form/custom-select';
+import { IApiResponse } from 'src/types/requests';
+import { Resource } from 'src/types/resource';
 
 interface ProjectResourceFormProps {
-  formik: FormikProps<ProjectResource>;
-  isLocaleEdit?: boolean;
-  typeId: string;
+  onSubmit: (body: Resource) => Promise<IApiResponse<ProjectResource>>,
+  addedResources?: ProjectResource[]; // Optional prop to pass the already added resources
+  refetch: () => void;
 }
 
-const ProjectResourceForm: React.FC<ProjectResourceFormProps> = ({ formik }) => {
+const ProjectResourceForm: React.FC<ProjectResourceFormProps> = ({ onSubmit, addedResources = [],refetch }) => {
   const { t: transl } = useTranslation();
 
-  const fetchOptions = (apiService: { getAll: any; getOne?: ((model: string, idx: string, params: GetRequestParam) => Promise<IApiResponse<MasterType>>) | ((model: string, idx: string, params: GetRequestParam) => Promise<IApiResponse<any>>) | ((model: string, idx: string, params: GetRequestParam) => Promise<IApiResponse<MasterSubCategory>>); delete?: ((model: string, idx: string) => Promise<IApiResponse<any>>) | ((model: string, idx: string) => Promise<IApiResponse<any>>) | ((model: string, idx: string) => Promise<IApiResponse<any>>); create?: ((model: string, body: IApiPayload<MasterType>) => Promise<IApiResponse<MasterType>>) | ((model: string, body: IApiPayload<MasterCategory>) => Promise<IApiResponse<MasterCategory>>) | ((model: string, body: { data: MasterSubCategory; files: any[]; }) => Promise<IApiResponse<MasterSubCategory>>); update?: ((model: string, id: string, body: IApiPayload<MasterType>) => Promise<IApiResponse<MasterType>>) | ((model: string, id: string, body: IApiPayload<MasterCategory>) => Promise<IApiResponse<MasterCategory>>) | ((model: string, id: string, body: { data: MasterSubCategory; files: any[]; }) => Promise<IApiResponse<MasterSubCategory>>); getOnee?: (model: string, idx: string, params: GetRequestParam) => Promise<IApiResponse<any>>; }, filter: { resourcetype_id?: string; resourcecategory_id?: string; }) => () => 
+  const [resourceTypeId, setResourceTypeId] = useState<string>('');
+  const [resourceCategoryId, setResourceCategoryId] = useState<string>('');
+  const [resourceSubCategoryId, setResourceSubCategoryId] = useState<string>('');
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+
+  const fetchOptions = (apiService: any, filter: any) => () =>
     apiService.getAll('resource', { filter });
 
   const { data: resourceTypes } = useQuery({
     queryKey: ['masterType', 'resource'],
-    queryFn: fetchOptions(masterTypeApiService, { resourcetype_id: formik.values.resourcetype_id }),
+    queryFn: fetchOptions(masterTypeApiService, {}),
   });
 
-  const { data: resourceCategories, refetch: refetchResourceCategories } = useQuery({
+  const { data: resourceCategories } = useQuery({
     queryKey: ['masterCategory', 'resource'],
-    queryFn: fetchOptions(masterCategoryApiService, { resourcetype_id: formik.values.resourcetype_id }),
-    enabled: !!formik.values.resourcetype_id,
+    queryFn: fetchOptions(masterCategoryApiService, { resourcetype_id: resourceTypeId }),
+    enabled: !!resourceTypeId,
   });
 
-  const { data: resourceSubCategories, refetch: refetchSubCategories } = useQuery({
+  const { data: resourceSubCategories } = useQuery({
     queryKey: ['masterSubCategory', 'resource'],
-    queryFn: fetchOptions(masterSubCategoryApiService, { resourcecategory_id: formik.values.resourcecategory_id }),
-    enabled: !!formik.values.resourcecategory_id,
+    queryFn: fetchOptions(masterSubCategoryApiService, { resourcecategory_id: resourceCategoryId }),
+    enabled: !!resourceCategoryId,
   });
 
-  useEffect(() => {
-    if (formik.values.resourcecategory_id) refetchSubCategories();
-  }, [formik.values.resourcecategory_id, refetchSubCategories]);
+  const handleResourceTypeChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setResourceTypeId(event.target.value as string);
+    setResourceCategoryId(''); // Reset category and subcategory when type changes
+    setResourceSubCategoryId('');
+  };
 
-  useEffect(() => {
-    if (formik.values.resourcetype_id) refetchResourceCategories();
-  }, [formik.values.resourcetype_id, refetchResourceCategories]);
+  const handleResourceCategoryChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setResourceCategoryId(event.target.value as string);
+    setResourceSubCategoryId(''); // Reset subcategory when category changes
+  };
 
-  const renderSelectBox = (name: string, label: string, optionsData: { payload: { id: any; title: any; }[]; }) => (
+  const handleResourceSubCategoryChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setResourceSubCategoryId(event.target.value as string);
+  };
+
+  const handleSearch = async () => {
+    try {
+      const filter = {
+        resourcetype_id: resourceTypeId,
+        resourcecategory_id: resourceCategoryId,
+        resourcesubcategory_id: resourceSubCategoryId,
+      };
+
+      const response = await resourceApiService.getAll({ filter });
+      setSearchResults(response.payload || []);
+    } catch (error) {
+      console.error('Search failed', error);
+    }
+  };
+
+  const handleAddResource = (resource: any) => {
+    onSubmit(resource).then(()=>{
+      refetch();
+    }).catch(()=>{
+
+    });
+  };
+
+  const renderSelectBox = (
+    name: string,
+    label: string,
+    value: string,
+    onChange: (event: React.ChangeEvent<{ value: unknown }>) => void,
+    optionsData: { payload: { id: any; title: any; }[]; }
+  ) => (
     <Box mb={2}>
-      <CustomSelect
+      <CustomTextField
+        fullWidth
         size="small"
+        select
         name={name}
         label={label}
-        options={
-          optionsData?.payload?.map((item) => ({
-            value: item.id,
-            label: item.title,
-          })) || []
-        }
-      />
+        value={value}
+        onChange={onChange}
+      >
+        {optionsData?.payload?.map((option) => (
+          <MenuItem key={option.id} value={option.id}>
+            {option.title}
+          </MenuItem>
+        ))}
+      </CustomTextField>
     </Box>
+  );
+
+  const renderTable = () => (
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell>{transl('resource.columns.title')}</TableCell>
+          <TableCell>{transl('resource.columns.measurement-unit')}</TableCell>
+          <TableCell>{transl('common.table-columns.actions')}</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {searchResults.map((resource) => {
+          const isAdded = addedResources.some((added) => added.resource_id === resource.id);
+
+          return (
+            <TableRow key={resource.id}>
+              <TableCell>{resource.title}</TableCell>
+              <TableCell>{resource.measurement_unit}</TableCell>
+              <TableCell>
+                {!isAdded && (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => handleAddResource(resource)}
+                  >
+                    {transl('common.actions.add')}
+                  </Button>
+                )}
+              </TableCell>
+            </TableRow>
+          );
+        })}
+      </TableBody>
+    </Table>
   );
 
   return (
     <>
-      {renderSelectBox('resourcetype_id', transl('resource.form.type'), resourceTypes)}
-      {renderSelectBox('resourcecategory_id', transl('resource.form.category'), resourceCategories)}
-      {renderSelectBox('resourcesubcategory_id', transl('resource.form.sub-category'), resourceSubCategories)}
+      {renderSelectBox('resourcetype_id', transl('resource.form.type'), resourceTypeId, handleResourceTypeChange, resourceTypes)}
+      {renderSelectBox('resourcecategory_id', transl('resource.form.category'), resourceCategoryId, handleResourceCategoryChange, resourceCategories)}
+      {renderSelectBox('resourcesubcategory_id', transl('resource.form.sub-category'), resourceSubCategoryId, handleResourceSubCategoryChange, resourceSubCategories)}
+      
+      <Button variant="contained" color="primary" onClick={handleSearch}>
+        {transl('resource.form.search')}
+      </Button>
+      
+      {searchResults.length > 0 && renderTable()}
     </>
   );
 };

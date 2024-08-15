@@ -49,8 +49,17 @@ const projectReportApiService = {
   getMonthlyProjectReport: (
     id: string,
     params: any
-  ): Promise<IApiResponse<{data:MonthlyReport,plan:ProjectPlan}>> =>
+  ): Promise<IApiResponse<{ data: MonthlyReport; plan: ProjectPlan }>> =>
     buildGetRequest(`/projects/monthly-project-report/${id}`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
+  getReportSummary: (
+    id: string,
+    params: any
+  ): Promise<IApiResponse<{ data: MonthlyReport; plan: ProjectPlan }>> =>
+    buildGetRequest(`/projects/populate/project-plan/project-reports/${id}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
