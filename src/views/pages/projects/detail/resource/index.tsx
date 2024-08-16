@@ -53,7 +53,7 @@ function ProjectResourceList({ projectId }: { projectId: string }) {
     await projectResourceApiService.delete(projectResourceId);
     refetch();
   };
-  const hanldeClickDetail = (projectResource: ProjectResource) => {
+  const handleClickDetail = (projectResource: ProjectResource) => {
       router.push(`/resources/${projectResource.resource?.resourcetype_id}/details/${projectResource.resource?.id}/`)
   };
   return (
@@ -75,10 +75,10 @@ function ProjectResourceList({ projectId }: { projectId: string }) {
         type={ITEMS_LISTING_TYPE.table.value}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <ProjectResourceCard onEdit={handleEdit} onDetail={hanldeClickDetail} projectResource={data} onDelete={handleDelete} refetch={refetch} />
+          <ProjectResourceCard onEdit={handleEdit} onDetail={handleClickDetail} projectResource={data} onDelete={handleDelete} refetch={refetch} />
         )}
         tableProps={{
-          headers: projectResourceColumns(hanldeClickDetail, handleEdit, handleDelete, t, refetch)
+          headers: projectResourceColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         createActionConfig={{
           ...defaultCreateActionConfig,

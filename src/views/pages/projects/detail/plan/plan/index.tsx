@@ -55,7 +55,7 @@ function ProjectPlanList({ projectId }: { projectId: string }) {
     await projectPlanApiService.delete(projectPlanId);
     refetch();
   };
-  const hanldeClickDetail = (projectPlan: ProjectPlan) => {
+  const handleClickDetail = (projectPlan: ProjectPlan) => {
     toggleDetailDrawer();
     setSelectedRow(projectPlan);
   };
@@ -79,10 +79,10 @@ function ProjectPlanList({ projectId }: { projectId: string }) {
         type={ITEMS_LISTING_TYPE.table.value}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <ProjectPlanCard onDetail={hanldeClickDetail} onEdit={handleEdit} projectPlan={data} onDelete={handleDelete} refetch={refetch} />
+          <ProjectPlanCard onDetail={handleClickDetail} onEdit={handleEdit} projectPlan={data} onDelete={handleDelete} refetch={refetch} />
         )}
         tableProps={{
-          headers: projectPlanColumns(hanldeClickDetail, handleEdit, handleDelete, t, refetch)
+          headers: projectPlanColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         createActionConfig={{
           ...defaultCreateActionConfig,

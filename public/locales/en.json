@@ -325,6 +325,40 @@
       "spi": "SPI",
       "sv": "SV"
     },
+    "navigation": {
+      "submenu": {
+        "others": {
+          "building": "Building",
+          "building-dimensions-detail": "Building Dimensions Detail",
+          "building-envelop-material": "Building Envelop Material",
+          "road": "Road",
+          "road-detail": "Road Detail",
+          "road-segments-data": "Road Segments Data",
+          "layers-of-road-data": "Layers of Road Data",
+          "telecom": "Telecom",
+          "telecom-infrastructure": "Telecom Infrastructure",
+          "electric-power": "Electric Power",
+          "generation-capacity": "Generation Capacity",
+          "turbines-detail": "Turbines Detail",
+          "hydroelectric-dam": "Hydroelectric Dam",
+          "solar-energy": "Solar Energy",
+          "wind-energy": "Wind Energy",
+          "transformers-types": "Transformers Types",
+          "transformers-registration": "Transformers Registration",
+          "transmission-lines": "Transmission Lines",
+          "electric-tower-registration": "Electric Tower Registration",
+          "railway": "Railway",
+          "railway-detail": "Railway Detail",
+          "railway-station": "Railway Station",
+          "water-irrigation": "Water Irrigation",
+          "reservoir-detail": "Reservoir Detail",
+          "spillway-detail": "Spillway Detail",
+          "irrigation-capacity": "Irrigation Capacity",
+          "water-irrigation-dam": "Water Irrigation Dam",
+          "port": "Port"
+        }
+      }
+    },
     "project-time": {
       "information": "Time Information",
       "commencement-date": "Commencement Date",

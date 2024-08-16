@@ -57,7 +57,7 @@ function ProjectReportList({ projectId }: { projectId: string }) {
     await projectReportApiService.delete(projectReportId);
     refetch();
   };
-  const hanldeClickDetail = (projectReport: ProjectReport) => {
+  const handleClickDetail = (projectReport: ProjectReport) => {
     toggleDetailDrawer();
     setSelectedRow(projectReport);
   };
@@ -86,7 +86,7 @@ function ProjectReportList({ projectId }: { projectId: string }) {
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
           <ProjectReportCard
-            onDetail={hanldeClickDetail}
+            onDetail={handleClickDetail}
             onEdit={handleEdit}
             projectReport={data}
             onDelete={handleDelete}
@@ -95,7 +95,7 @@ function ProjectReportList({ projectId }: { projectId: string }) {
         )}
         tableProps={{
           headers: projectReportColumns(
-            hanldeClickDetail,
+            handleClickDetail,
             handleEdit,
             handleDelete,
             t,

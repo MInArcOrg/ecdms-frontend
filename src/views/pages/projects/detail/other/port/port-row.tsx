@@ -2,18 +2,18 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import { Document } from 'src/types/document';
+import { Port } from 'src/types/project/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
-  row: Document;
+  row: Port;
 }
 
-export const documentColumns = (
-  onDetail: (document: Document) => void,
-  onEdit: (document: Document) => void,
+export const portColumns = (
+  onDetail: (port: Port) => void,
+  onEdit: (port: Port) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
@@ -22,7 +22,7 @@ export const documentColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('document.columns.title'),
+      headerName: t('port.columns.title'),
       field: 'title',
       renderCell: ({ row }: CellType) => {
         return (
@@ -37,7 +37,7 @@ export const documentColumns = (
               '&:hover': { color: 'primary.main' }
             }}
           >
-            {row.title}
+            {row?.id.slice(0, 5)}...
           </Typography>
         );
       }
@@ -45,10 +45,19 @@ export const documentColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('document.columns.description'),
-      field: 'description',
+      headerName: t('port.columns.operator'),
+      field: 'operator',
       renderCell: ({ row }: CellType) => {
-        return <Typography sx={{ color: 'text.secondary' }}>{row?.description}</Typography>;
+        return <Typography sx={{ color: 'text.secondary' }}>{row?.operator}</Typography>;
+      }
+    },
+    {
+      flex: 0.15,
+      minWidth: 120,
+      headerName: t('port.columns.port-type'),
+      field: 'port_type',
+      renderCell: ({ row }: CellType) => {
+        return <Typography sx={{ color: 'text.secondary' }}>{row?.port_type}</Typography>;
       }
     },
     {
@@ -63,14 +72,14 @@ export const documentColumns = (
 
     {
       flex: 0.1,
-      minWidth: 100,
+      minWidth: 120,
       sortable: false,
       field: 'actions',
       headerName: t('common.table-columns.actions'),
       renderCell: ({ row }: CellType) => (
         <Fragment>
           <ModelAction
-            model="Document"
+            model="Port"
             model_id={row.id}
             refetchModel={refetch}
             resubmit={function (): void {

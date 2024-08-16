@@ -29,7 +29,7 @@ const ModelSpecificMenus = ({
 
   const { data: typeModels, isLoading: isTypeLoading } = useQuery({
     queryKey: ['type-models', typeId],
-    queryFn: () => modelMenuApiService.getByTypeId(typeId, {})
+    queryFn: () => modelMenuApiService.getByTypeId(typeId, {pagination:{pageSize:100,page:1}})
   });
 
   useEffect(() => {
