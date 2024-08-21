@@ -49,7 +49,7 @@ const PortDrawer = (props: PortDrawerType) => {
 
   const onActionSuccess = async (response: IApiResponse<Port>, payload: IApiPayload<Port>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], uploadableProjectFileTypes.extension_time, response.payload.id, '', '');
+      uploadFile(payload.files[0], uploadableProjectFileTypes.other.port, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -57,14 +57,14 @@ const PortDrawer = (props: PortDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.project-extension-time.${isEdit ? `edit-project-extension-time` : `create-project-extension-time`}`}
+      title={`project.other.port.${isEdit ? `edit-port` : `create-port`}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.project-extension-time.title`} // Adjust the title key if necessary
+          title={`project.port.title`} // Adjust the title key if necessary
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

@@ -13,10 +13,6 @@ export const convertToGC = (date: DateInput) => {
 
   const gregorianDate = new Date(etDate.moment);
 
-  // Debugging output
-  console.log('Ethiopian Date:', etDate.toIso8601String());
-  console.log('Converted Gregorian Date:', gregorianDate.toISOString());
-
   return gregorianDate;
 };
 

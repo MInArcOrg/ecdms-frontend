@@ -6,10 +6,10 @@ import OtherSubMenu from 'src/views/pages/projects/detail/other/layouts/others-s
 
 interface OtherLayoutProps {
   activeMenu: number
-  activeSubMenu: number
+  activeSubMenu?: number
   subMenuItems: (baseUrl: string) => any[]
   children: ReactNode
-  activeType:number,
+  activeType?:number,
   baseUrl:string,
 }
 

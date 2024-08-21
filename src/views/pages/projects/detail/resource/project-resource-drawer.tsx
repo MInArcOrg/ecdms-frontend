@@ -21,6 +21,7 @@ const ProjectResourceDrawer = (props: ProjectResourceDrawerType) => {
   const onSubmit = async (body:Resource)=>{
     const dataToSubmit:ProjectResource={
       project_id: projectId, resource_id: body.id,
+      id: ''
     }
     return projectResourceApiService.create({data:dataToSubmit,files:[]});
   }

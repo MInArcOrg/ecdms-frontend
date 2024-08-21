@@ -30,9 +30,9 @@ interface SubMenuItem {
 
 interface OtherSubMenuProps {
   subMenuItems: SubMenuItem[];
-  activeSubMenu: number | null;
+  activeSubMenu?: number | null;
   setActiveType: (type: string) => void;
-  activeType: number | null;
+  activeType?: number | null;
   typeId: string;
 }
 

@@ -12,6 +12,10 @@ import otherApiService from "src/services/project/other-service";
 import { portColumns } from "./port-row";
 import { useTranslation } from "react-i18next";
 import OtherDetailSidebar from "../layouts/other-detail-drawer";
+import { getDynamicDate } from "src/views/components/custom/ethio-calendar/ethio-calendar-utils";
+import i18n from "src/configs/i18n";
+import { formatCreatedAt } from "src/utils/formatter/date";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
 
 interface PortListProps {
   model: string;
@@ -23,8 +27,7 @@ const PortList: React.FC<PortListProps> = ({ model, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<Port | null>(null);
-  const { t } = useTranslation();
-  console.log('show detail drawer',showDetailDrawer,selectedRow)
+  const { t,i18n } = useTranslation();
   const fetchPorts = (
     params: GetRequestParam
   ): Promise<IApiResponse<Port[]>> => {
@@ -56,8 +59,8 @@ const PortList: React.FC<PortListProps> = ({ model, projectId, typeId }) => {
   };
 
   const handleEdit = (port: Port) => {
-    setSelectedRow(port);
     toggleDrawer();
+    setSelectedRow(port);
   };
 
   const handleDelete = async (portId: string) => {
@@ -71,32 +74,28 @@ const PortList: React.FC<PortListProps> = ({ model, projectId, typeId }) => {
   };
 
   const mapPortToDetailItems = (
-    port: Port
+    port: Port,
   ): { title: string; value: string }[] => [
-    { title: "Owner", value: port?.owner || "N/A" },
-    { title: "Operator", value: port?.operator || "N/A" },
-    { title: "Port Type", value: port?.port_type || "N/A" },
+    { title: t('project.other.port.details.owner'), value: port?.owner || "N/A" },
+    { title: t('project.other.port.details.operator'), value: port?.operator || "N/A" },
+    { title: t('project.other.port.details.port-type'), value: port?.port_type || "N/A" },
     {
-      title: "Site Area",
+      title: t('project.other.port.details.site-area'),
       value: port?.site_area ? `${port?.site_area} sqm` : "N/A",
     },
     {
-      title: "Annual Traffic Size",
+      title: t('project.other.port.details.annual-traffic-size'),
       value: port?.annual_traffic_size
         ? `${port?.annual_traffic_size} tons`
         : "N/A",
     },
-    { title: "Revision No", value: port?.revision_no?.toString() || "N/A" },
+    { title: t('project.other.port.details.revision-no'), value: port?.revision_no?.toString() || "N/A" },
     {
-      title: "Created At",
-      value: port?.created_at ? port?.created_at : "N/A",
-    },
-    {
-      title: "Updated At",
-      value: port?.updated_at ? port?.updated_at : "N/A",
+      title: t('project.other.port.details.created-at'),
+      value:  port?.created_at ?  formatCreatedAt(port?.created_at) : "N/A",
     },
   ];
-
+  
   return (
     <Box>
       {showDrawer && (
@@ -117,13 +116,13 @@ const PortList: React.FC<PortListProps> = ({ model, projectId, typeId }) => {
           data={mapPortToDetailItems(selectedRow as Port)}
           hasReference={true} // Assuming ports have references, adjust as necessary
           id={selectedRow?.id||""}
-          fileType={model}
-          title="Port Details"
+          fileType={uploadableProjectFileTypes.other.port}
+          title={t('project.other.port.port-details')}
         />
       )}
 
       <ItemsListing
-        title={t("project.port.title")}
+        title={t("project.other.port.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
@@ -138,6 +137,7 @@ const PortList: React.FC<PortListProps> = ({ model, projectId, typeId }) => {
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
           <PortCard
+            onDetail={handleClickDetail}
             port={data}
             onEdit={handleEdit}
             refetch={refetch}

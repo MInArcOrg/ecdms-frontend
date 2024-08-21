@@ -45,5 +45,11 @@ export const uploadableProjectFileTypes = {
   projectSubCategory: 'PROJECT_SUB_CATEGORY',
   masterStatus: 'MASTER_STATUS',
   file: 'File',
-  resource:'RESOURCE'
+  resource:'RESOURCE',
+  other:{
+    buildingDimensionDetail:"BUILDING_DIMENSION_DETAIL",
+    port:"PORT",
+    telecomInfrastructure:"TELECOM_INFRASTRUCTURE",
+    buildingEnvelopMaterial:"BUILDING_ENVELOP_MATERIAL"
+  }
 } as const;

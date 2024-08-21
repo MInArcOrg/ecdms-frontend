@@ -1,72 +1,84 @@
-import { Box, Card, CardActions, CardContent, Typography } from '@mui/material';
+import React from 'react';
+import { Box, Card, CardActions, CardContent, Button, Typography, Divider } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import FileDrawer from 'src/views/components/custom/files-drawer';
-import ModelActionComponent from 'src/views/components/custom/model-actions';
+import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
-
 import Icon from 'src/@core/components/icon';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { Port } from 'src/types/project/other';
+import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
+import { formatCreatedAt } from 'src/utils/formatter/date';
 
-const PortCard = ({
-  port,
-  refetch,
-  onEdit,
-  onDelete
-}: {
+interface PortCardProps {
   port: Port;
   refetch: () => void;
   onEdit: (port: Port) => void;
   onDelete: (id: string) => void;
-}) => {
-  const { t } = useTranslation();
+  onDetail: (port: Port) => void;
+}
+
+const PortCard: React.FC<PortCardProps> = ({ port, refetch, onEdit, onDelete, onDetail }) => {
+  const { t,i18n } = useTranslation();
 
   return (
-    <Card>
+    <Card sx={{ p: 2 }}>
       <CardContent>
-        <Box justifyContent="space-between" alignItems="center" mb={2}>
-          <Typography variant="h6">
-            {t(`project.project-extension-time.title`)} {1}
+        <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
+          <Typography variant="h5" fontWeight="bold">
+          <Typography
+            noWrap
+            component={Button}
+            onClick={() => onDetail(port)}
+            sx={{
+              fontWeight: 500,
+              textDecoration: 'none',
+              color: 'text.secondary',
+              '&:hover': { color: 'primary.main' }
+            }}
+          >
+            {port?.id.slice(0, 5)}...
           </Typography>
-          <Typography variant="body2" fontWeight="bold">
-            {port?.reason}
           </Typography>
+          
         </Box>
-        <Box mt={2} display="flex">
-          <Icon icon="mdi:calendar-blank" fontSize={20} />
-          <Typography mr="0.5rem">{port?.number_of_days} </Typography>
+
+        <Divider sx={{ my: 1 }} />
+
+        <Box display="flex" flexDirection="column" gap={1} mt={2}>
+          <Typography variant="body2" color="text.secondary">
+            {t('project.other.port.details.operator')}: {port?.operator || 'N/A'}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {t('project.other.port.details.port-type')}: {port?.port_type || 'N/A'}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {t('project.other.port.details.site-area')}: {port?.site_area ? `${port?.site_area} sqm` : 'N/A'}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {t('project.other.port.details.annual-traffic-size')}: {port?.annual_traffic_size ? `${port?.annual_traffic_size} tons` : 'N/A'}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {t('common.table-columns.created-at')}: { port?.created_at ?  formatCreatedAt(port?.created_at) : "N/A"}        </Typography>
         </Box>
       </CardContent>
-      <CardActions style={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={port.id} type={uploadableProjectFileTypes.extension_time} /> &nbsp;
-        <Box sx={{ display: 'flex' }}>
-          <ModelActionComponent
-            model="ExtensionTime"
-            model_id={port.id}
-            refetchModel={refetch}
-            resubmit={function (): void {
-              throw new Error('Function not implemented.');
-            }}
-            title={''}
-            postAction={function (): void {
-              throw new Error('Function not implemented.');
-            }}
-          />
-          <RowOptions
-            onEdit={onEdit}
-            onDelete={() => onDelete(port.id)}
-            deletePermissionRule={{
-              action: 'delete',
-              subject: 'projectextensiontime'
-            }}
-            editPermissionRule={{
-              action: 'edit',
-              subject: 'projectextensiontime'
-            }}
-            item={port}
-            options={[]}
-          />
-        </Box>
+
+      <CardActions sx={{ justifyContent: 'flex-end' }}>
+        <FileDrawer id={port.id} type={uploadableProjectFileTypes.other.port} />
+        <ModelAction
+          model="Port"
+          model_id={port.id}
+          refetchModel={refetch}
+          resubmit={() => refetch()}
+          title={''}
+          postAction={() => refetch()}
+        />
+        <RowOptions
+          onEdit={() => onEdit(port)}
+          onDelete={() => onDelete(port.id)}
+          item={port}
+          options={[]}
+        />
       </CardActions>
     </Card>
   );

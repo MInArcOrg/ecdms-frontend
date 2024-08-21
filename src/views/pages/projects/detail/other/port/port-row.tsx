@@ -22,7 +22,7 @@ export const portColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('port.columns.title'),
+      headerName: t('project.other.port.columns.title'),
       field: 'title',
       renderCell: ({ row }: CellType) => {
         return (
@@ -45,7 +45,7 @@ export const portColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('port.columns.operator'),
+      headerName: t('project.other.port.columns.operator'),
       field: 'operator',
       renderCell: ({ row }: CellType) => {
         return <Typography sx={{ color: 'text.secondary' }}>{row?.operator}</Typography>;
@@ -54,7 +54,7 @@ export const portColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('port.columns.port-type'),
+      headerName: t('project.other.port.columns.port-type'),
       field: 'port_type',
       renderCell: ({ row }: CellType) => {
         return <Typography sx={{ color: 'text.secondary' }}>{row?.port_type}</Typography>;
@@ -71,8 +71,7 @@ export const portColumns = (
     },
 
     {
-      flex: 0.1,
-      minWidth: 120,
+      minWidth: 150,
       sortable: false,
       field: 'actions',
       headerName: t('common.table-columns.actions'),

@@ -25,7 +25,7 @@ const subMenuItems = (baseUrl: string): SubMenuItem[] => {
         {
           id: 1,
           title: t('project.navigation.submenu.others.building-dimensions-detail'),
-          path: `${baseUrl}/building/building-dimensions-detail`,
+          path: `${baseUrl}/building/building-dimension-detail`,
           model: 'buildingdimensiondetail'
         },
         {
@@ -70,7 +70,7 @@ const subMenuItems = (baseUrl: string): SubMenuItem[] => {
         {
           id: 6,
           title: t('project.navigation.submenu.others.telecom-infrastructure'),
-          path: `${baseUrl}/telecom/telecom`,
+          path: `${baseUrl}/telecom/telecom-infrastructure`,
           model: 'telecom'
         }
       ]

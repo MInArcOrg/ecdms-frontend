@@ -607,6 +607,121 @@
         "description":"Description"
       }
     },
+    "other": {
+      "port": {
+        "title":"Port",
+        "create-port":"Create Port",
+        "edit-port":"Edit Port",
+        "port-details":"Port Details",
+        "columns": {
+          "title": "Title",
+          "operator": "Operator",
+          "port-type": "Port Type"
+        },
+        "form": {
+          "owner": "Owner",
+          "operator": "Operator",
+          "port-type": "Port Type",
+          "site-area": "Site Area",
+          "annual-traffic-size": "Annual Traffic Size"
+        },
+        "details": {
+          "owner": "Owner",
+          "operator": "Operator",
+          "port-type": "Port Type",
+          "site-area": "Site Area",
+          "annual-traffic-size": "Annual Traffic Size",
+          "revision-no": "Revision No",
+          "created-at": "Created At"
+        }
+      },
+      "telecom-infrastructure": {
+        "title":"Telecom Infrastructure",
+        "create-telecom-infrastructure":"Create Telecom Infrastructure",
+        "edit-telecom-infrastructure":"Edit Telecom Infrastructure",
+        "telecom-infrastructure-details":"Telecom Infrastructure Details",
+        "columns": {
+          "name": "Name",
+          "specifications": "Specifications",
+          "coverage-area": "Coverage Area",
+          "no-of-families-coverage": "No. of Families Coverage",
+          "service-period": "Service Period",
+          "inauguration-date": "Inauguration Date"
+        },
+        "form": {
+          "name": "Name",
+          "specifications": "Specifications",
+          "coverage-area": "Coverage Area",
+          "no-of-families-coverage": "No. of Families Coverage",
+          "inauguration-date": "Inauguration Date",
+          "service-period": "Service Period"
+
+        },
+        "details": {
+          "name": "Name",
+          "specifications": "Specifications",
+          "coverage-area": "Coverage Area",
+          "no-of-families-coverage": "Number of Families Coverage",
+          "service-period": "Service Period",
+          "inauguration-date": "Inauguration Date"
+        }
+      },
+      "building-dimension-detail": {
+        "title":"Building Dimension Detail",
+        "create-building-dimension-detail":"Create Building Dimension Detail",
+        "edit-building-dimension-detail":"Edit Building Dimension Detail",
+        "building-dimension-detail-details":"Building Dimension Detail Details",
+        "form": {
+          "site-area": "Site Area",
+          "site-above-sea-level": "Site Above Sea Level",
+          "ground-floor-area": "Ground Floor Area",
+          "total-floor-area": "Total Floor Area",
+          "basement-stories-no": "No of Basement Stories",
+          "above-ground-floor-stories-no": "No of Above Ground Floor Stories",
+          "height-above-natural-ground": "Height Above Natural Ground",
+          "depth-below-natural-ground": "Depth Below Natural Ground",
+          "remark": "Remark"
+        },  
+       
+          "details": {
+          "site-area": "Site Area",
+          "site-above-sea-level": "Site Above Sea Level",
+          "ground-floor-area": "Ground Floor Area",
+          "total-floor-area": "Total Floor Area",
+          "basement-stories-no": "Number of Basement Stories",
+          "above-ground-floor-stories-no": "Number of Above Ground Floor Stories",
+          "height-above-natural-ground": "Height Above Natural Ground",
+          "depth-below-natural-ground": "Depth Below Natural Ground",
+          "remark": "Remark"
+        }
+      },
+      "building-envelop-material": {
+        "title": "Building Envelop Materials",
+        "create-building-envelop-material":"Create Building Envelop Material",
+        "edit-building-envelop-material":"Edit Building Envelop Material",
+        "building-envelop-material-details":"Building Envelop Material Details",
+        "form": {
+          "exterior-walls": "Exterior Walls",
+          "roof-assembly": "Roof Assembly",
+          "exterior-windows": "Exterior Windows",
+          "exterior-doors": "Exterior Doors",
+          "shading-components": "Shading Components",
+          "remark": "Remark"
+        },
+        
+        "details": {
+          "title": "Building Envelop Material Details",
+          "sub-title": "Summary of the Building Envelop Material Information",
+          "exterior-walls": "Exterior Walls",
+          "roof-assembly": "Roof Assembly",
+          "exterior-windows": "Exterior Windows",
+          "exterior-doors": "Exterior Doors",
+          "shading-components": "Shading Components",
+          "remark": "Remark"
+        }
+       
+      }
+    },
     "columns": {
       "title": "Title",
       "elapsed-time": "Elapsed Time",

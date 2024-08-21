@@ -1,6 +1,6 @@
 import moment from 'moment';
 import i18n from 'src/configs/i18n';
-import { convertToGC } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
+import { convertToGC, getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
 import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
 // Function to format a date
 export function formatDate(date: any, format = 'YYYY-MM-DD') {
@@ -9,7 +9,7 @@ export function formatDate(date: any, format = 'YYYY-MM-DD') {
 
 // Function to format a created at
 export function formatCreatedAt(date: any, format = 'MMM D, YYYY, HH:MM') {
-  return moment(date).format(format);
+  return i18n.language==="am"?getDynamicDate(i18n,date).toDateString(): moment(date).format(format);
 }
 
 // Function to format a date as a human-readable string (e.g., "3 days ago")
@@ -104,3 +104,5 @@ export const convertDateToLocaleDate = (date: EthiopianDate | Date | string | un
   }
   return date;
 };
+export const formatInitialDateDate = (dateString?: string | Date | EthiopianDate) => 
+  dateString ? getDynamicDate(i18n, moment(String(dateString)).toDate()) : undefined;

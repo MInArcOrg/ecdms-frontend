@@ -13,7 +13,6 @@ const positionApiService = {
       .catch((error: any) => {
         throw error;
       }),
-
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse<Position>> =>
     buildGetRequest(`/departments/positions/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
