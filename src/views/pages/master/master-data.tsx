@@ -62,7 +62,7 @@ const MasterDataDetail: React.FC<MasterDataDetailProps> = ({ model }) => {
                 <MasterCategoryList model={model} selectedType={selectedType} />
               ) : (
                 <Typography>Select a type to see categories</Typography>
-              )}
+              )}  
             </Grid>
           </Grid>
         </Grid>
