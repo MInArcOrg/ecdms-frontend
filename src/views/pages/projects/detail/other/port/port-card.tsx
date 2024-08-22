@@ -1,14 +1,12 @@
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
 import React from 'react';
-import { Box, Card, CardActions, CardContent, Button, Typography, Divider } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { Port } from 'src/types/project/other';
+import { formatCreatedAt } from 'src/utils/formatter/date';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
-import Icon from 'src/@core/components/icon';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { Port } from 'src/types/project/other';
-import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
-import { formatCreatedAt } from 'src/utils/formatter/date';
 
 interface PortCardProps {
   port: Port;
@@ -19,7 +17,7 @@ interface PortCardProps {
 }
 
 const PortCard: React.FC<PortCardProps> = ({ port, refetch, onEdit, onDelete, onDetail }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <Card sx={{ p: 2 }}>

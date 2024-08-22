@@ -13,8 +13,8 @@ interface SubMenuItem {
   routes: Route[];
 }
 
-const subMenuItems = (baseUrl: string): SubMenuItem[] => {
-  const { t } = useTranslation('common'); // Assuming your translations are in 'common.json'
+const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
+  const { t } = useTranslation('common');
 
   return [
     {
@@ -204,8 +204,7 @@ const subMenuItems = (baseUrl: string): SubMenuItem[] => {
     }
   ];
 };
-export const findOtherModelName = (baseUrl: string, submenuId: number, routeId: number): string | undefined =>
-  subMenuItems(baseUrl)
-    .find((submenu) => submenu.id === submenuId)
-    ?.routes.find((route) => route.id === routeId)?.model;
-export default subMenuItems;
+export default useSubMenuItems;
+export const findOtherModelName = (subMenuItems: SubMenuItem[], submenuId: number, routeId: number): string | undefined => {
+  return subMenuItems.find((submenu) => submenu.id === submenuId)?.routes.find((route) => route.id === routeId)?.model;
+};

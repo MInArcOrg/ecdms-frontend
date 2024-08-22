@@ -1,6 +1,5 @@
 import { Grid } from '@mui/material';
 import { FormikProps } from 'formik';
-import { values } from 'lodash';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { TelecomInfrastructure } from 'src/types/project/other';

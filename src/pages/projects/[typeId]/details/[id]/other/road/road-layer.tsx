@@ -19,7 +19,11 @@ function Index() {
       subMenuItems={subMenuItems}
       baseUrl={baseUrl}
     >
-      <RoadLayerList model={findOtherModelName(baseUrl, activeType, activeSubType) || ''} projectId={String(id)} typeId={String(typeId)} />
+      <RoadLayerList
+        model={findOtherModelName(subMenuItems(baseUrl), activeType, activeSubType) || ''}
+        projectId={String(id)}
+        typeId={String(typeId)}
+      />
     </OtherLayout>
   );
 }

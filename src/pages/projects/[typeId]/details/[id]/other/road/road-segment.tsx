@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router';
 import OtherLayout from 'src/views/pages/projects/detail/other/layouts/other-layout';
-import RoadInfoList from 'src/views/pages/projects/detail/other/road/road-info';
-import subMenuItems, { findOtherModelName } from '../(subMenuItems)';
 import RoadSegmentList from 'src/views/pages/projects/detail/other/road/road-segment';
+import subMenuItems, { findOtherModelName } from '../(subMenuItems)';
 
 function Index() {
   const router = useRouter();
@@ -21,7 +20,7 @@ function Index() {
       baseUrl={baseUrl}
     >
       <RoadSegmentList
-        model={findOtherModelName(baseUrl, activeType, activeSubType) || ''}
+        model={findOtherModelName(subMenuItems(baseUrl), activeType, activeSubType) || ''}
         projectId={String(id)}
         typeId={String(typeId)}
       />

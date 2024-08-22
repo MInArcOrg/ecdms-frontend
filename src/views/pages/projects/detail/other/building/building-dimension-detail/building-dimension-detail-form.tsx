@@ -4,7 +4,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
 import { BuildingDimensionDetail } from 'src/types/project/other';
-import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 

@@ -19,7 +19,11 @@ function Index() {
       subMenuItems={subMenuItems}
       baseUrl={baseUrl}
     >
-      <RoadInfoList model={findOtherModelName(baseUrl, activeType, activeSubType) || ''} projectId={String(id)} typeId={String(typeId)} />
+      <RoadInfoList
+        model={findOtherModelName(subMenuItems(baseUrl), activeType, activeSubType) || ''}
+        projectId={String(id)}
+        typeId={String(typeId)}
+      />
     </OtherLayout>
   );
 }

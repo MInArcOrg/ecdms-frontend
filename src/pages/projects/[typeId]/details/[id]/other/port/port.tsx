@@ -18,7 +18,11 @@ function Index() {
       subMenuItems={subMenuItems}
       baseUrl={baseUrl}
     >
-      <PortList model={findOtherModelName(baseUrl, activeType, activeSubType) || ''} projectId={String(id)} typeId={String(typeId)} />
+      <PortList
+        model={findOtherModelName(subMenuItems(baseUrl), activeType, activeSubType) || ''}
+        projectId={String(id)}
+        typeId={String(typeId)}
+      />
     </OtherLayout>
   );
 }

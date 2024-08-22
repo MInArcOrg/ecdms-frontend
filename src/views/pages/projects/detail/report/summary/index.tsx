@@ -1,7 +1,5 @@
 import { Box, Card } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
 import projectReportApiService from 'src/services/project/project-report-service';
 import LoadingPlaceholder from 'src/views/components/loader';
 import ReportSummaryViewCard from './report-sumary-card';

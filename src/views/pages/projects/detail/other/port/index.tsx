@@ -1,21 +1,19 @@
 import { Box } from '@mui/material';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import otherApiService from 'src/services/project/other-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { Port } from 'src/types/project/other';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
+import OtherDetailSidebar from '../layouts/other-detail-drawer';
 import PortCard from './port-card';
 import PortDrawer from './port-drawer';
-import { Port } from 'src/types/project/other';
-import otherApiService from 'src/services/project/other-service';
 import { portColumns } from './port-row';
-import { useTranslation } from 'react-i18next';
-import OtherDetailSidebar from '../layouts/other-detail-drawer';
-import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
-import i18n from 'src/configs/i18n';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 
 interface PortListProps {
   model: string;
@@ -27,7 +25,7 @@ const PortList: React.FC<PortListProps> = ({ model, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<Port | null>(null);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const fetchPorts = (params: GetRequestParam): Promise<IApiResponse<Port[]>> => {
     return otherApiService<Port>().getAll(model, {
       ...params,

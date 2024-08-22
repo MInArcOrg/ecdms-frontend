@@ -20,7 +20,7 @@ function Index() {
       baseUrl={baseUrl}
     >
       <BuildingEnvelopMaterialList
-        model={findOtherModelName(baseUrl, activeType, activeSubType) || ''}
+        model={findOtherModelName(subMenuItems(baseUrl), activeType, activeSubType) || ''}
         projectId={String(id)}
         typeId={String(typeId)}
       />

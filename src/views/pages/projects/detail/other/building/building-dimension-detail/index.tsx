@@ -4,17 +4,16 @@ import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
 import otherApiService from 'src/services/project/other-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { BuildingDimensionDetail } from 'src/types/project/other';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
 import OtherDetailSidebar from '../../layouts/other-detail-drawer';
 import BuildingDimensionDetailCard from './building-dimension-detail-card';
 import BuildingDimensionDetailDrawer from './building-dimension-detail-drawer';
-import { BuildingDimensionDetail } from 'src/types/project/other';
 import { buldingDimensionDetailColumns } from './building-dimension-detail-row';
-import { uploadableDocumentFileTypes } from 'src/services/utils/file-utils';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 
 interface BuildingDimensionDetailListProps {
   model: string;

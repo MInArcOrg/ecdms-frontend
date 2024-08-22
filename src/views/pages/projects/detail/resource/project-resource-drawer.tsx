@@ -1,9 +1,8 @@
+import projectResourceApiService from 'src/services/project/project-resource-service';
 import { ProjectResource } from 'src/types/project/project-resource';
+import { Resource } from 'src/types/resource';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import ProjectResourceForm from './project-resource-form';
-import { IApiPayload } from 'src/types/requests';
-import projectResourceApiService from 'src/services/project/project-resource-service';
-import { Resource } from 'src/types/resource';
 
 interface ProjectResourceDrawerType {
   open: boolean;

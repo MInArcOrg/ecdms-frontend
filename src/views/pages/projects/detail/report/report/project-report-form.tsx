@@ -1,6 +1,6 @@
 import { IconButton, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import { FormikProps } from 'formik';
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Icon from 'src/@core/components/icon';
 import { ProjectPlan } from 'src/types/project/project-plan';
@@ -29,6 +29,42 @@ const calculatePercentage = (reportValue: number | undefined, planValue: number 
 
 const ProjectReportTable: React.FC<ProjectReportTableProps> = ({ formik, projectPlan, viewSections, toggleSection }) => {
   const { t: transl } = useTranslation();
+  useEffect(() => {
+    const indirectLabour = formik.values.indirect_labour ?? 0;
+    const directLabour = formik.values.direct_labour ?? 0;
+    formik.setFieldValue('manpower', Number(indirectLabour + directLabour));
+  }, [formik.values.indirect_labour, formik.values.direct_labour]);
+
+  useEffect(() => {
+    const material = formik.values.material ?? 0;
+    const machinery = formik.values.machinery ?? 0;
+    const otherExpense = formik.values.other_expense ?? 0;
+    const subContractorCost = formik.values.sub_contractor_cost ?? 0;
+    const manpower = formik.values.manpower ?? 0;
+    const subtotal = manpower + material + machinery + otherExpense + subContractorCost;
+    formik.setFieldValue('subtotal', subtotal);
+  }, [
+    formik.values.manpower,
+    formik.values.material,
+    formik.values.machinery,
+    formik.values.other_expense,
+    formik.values.sub_contractor_cost
+  ]);
+
+  useEffect(() => {
+    const overHeadCost = formik.values.over_head_cost ?? 0;
+    const financialPerformance = formik.values.financial_performance ?? 0;
+    const total = overHeadCost + financialPerformance;
+    formik.setFieldValue('total', total);
+  }, [formik.values.over_head_cost, formik.values.financial_performance]);
+  useEffect(() => {
+    const subtotal = formik.values?.subtotal || 0;
+    const percentOf = (value: number) => {
+      return (value * subtotal) / 100;
+    };
+    formik.setFieldValue('project_expense', Number(subtotal + percentOf(formik.values.over_head_cost || 0)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formik.values.subtotal, formik.values.over_head_cost]);
   const rows = [
     {
       label: transl('project.report.form.manpower'),

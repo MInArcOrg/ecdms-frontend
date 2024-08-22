@@ -1,11 +1,11 @@
-import { Box, Button, Card, CardActions, CardContent, Grid, IconButton, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, Grid, Typography } from '@mui/material';
 import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { ProjectResource } from 'src/types/project/project-resource';
 import FileDrawer from 'src/views/components/custom/files-drawer';
-import RowOptions from 'src/views/shared/listing/row-options';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface ProjectResourceCardProps {
   projectResource: ProjectResource;

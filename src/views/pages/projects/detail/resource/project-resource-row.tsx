@@ -3,8 +3,6 @@ import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
 import { ProjectResource } from 'src/types/project/project-resource';
-import { formatCurrency } from 'src/utils/formatter/currency';
-import { formatDate } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 

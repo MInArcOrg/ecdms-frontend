@@ -1,9 +1,7 @@
-import { Fragment } from 'react';
-import Drawer from '@mui/material/Drawer';
+import { CardContent, Divider } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Icon from 'src/@core/components/icon';
-import { CardContent, Divider } from '@mui/material';
+import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 

@@ -1,7 +1,7 @@
 import { Box, Grid, IconButton } from '@mui/material';
 import { FormikProps } from 'formik';
 import moment from 'moment';
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import { useTranslation } from 'react-i18next';
 import Icon from 'src/@core/components/icon';
@@ -25,7 +25,45 @@ export interface ProjectPlanFormProps {
 
 const ProjectPlanForm: React.FC<ProjectPlanFormProps> = ({ formik, file, onFileChange, viewSections, toggleSection }) => {
   const { t: transl } = useTranslation();
+  useEffect(() => {
+    const indirectLabour = formik.values.indirect_labour ?? 0;
+    const directLabour = formik.values.direct_labour ?? 0;
+    formik.setFieldValue('manpower', Number(indirectLabour + directLabour));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formik.values.indirect_labour, formik.values.direct_labour]);
 
+  useEffect(() => {
+    const material = formik.values.material ?? 0;
+    const machinery = formik.values.machinery ?? 0;
+    const otherExpense = formik.values.other_expense ?? 0;
+    const subContractorCost = formik.values.sub_contractor_cost ?? 0;
+    const manpower = formik.values.manpower ?? 0;
+    const subtotal = manpower + material + machinery + otherExpense + subContractorCost;
+    formik.setFieldValue('subtotal', subtotal);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    formik.values.manpower,
+    formik.values.material,
+    formik.values.machinery,
+    formik.values.other_expense,
+    formik.values.sub_contractor_cost
+  ]);
+
+  useEffect(() => {
+    const overHeadCost = formik.values.over_head_cost ?? 0;
+    const financialPerformance = formik.values.financial_performance ?? 0;
+    const total = overHeadCost + financialPerformance;
+    formik.setFieldValue('total', total);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formik.values.over_head_cost, formik.values.financial_performance]);
+  useEffect(() => {
+    const subtotal = formik.values?.subtotal || 0;
+    const percentOf = (value: number) => {
+      return (value * subtotal) / 100;
+    };
+    formik.setFieldValue('project_expense', Number(subtotal + percentOf(formik.values.over_head_cost || 0)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formik.values.subtotal, formik.values.over_head_cost]);
   const planReportTypeOptions = Object.values(planReportTypeConstant).map((type) => ({
     value: type.value,
     label: type.name
