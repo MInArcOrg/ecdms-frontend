@@ -22,7 +22,7 @@ export const convertToEC = (date: Date | string): EthiopianDate => {
   return new EthiopianDate(convertedDate.year, convertedDate.month, convertedDate.day);
 };
 
-export const getDynamicDate = (i18n: any, date: Date | string | undefined): Date | EthiopianDate => {
+export const getDynamicDate = (i18n: any, date: Date | string | undefined| EthiopianDate): Date | EthiopianDate => {
   const newDate = moment(date);
 
   return i18n.language === 'am' ? convertToEC(newDate.toDate()) : newDate.toDate();
