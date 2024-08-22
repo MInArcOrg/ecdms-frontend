@@ -7,11 +7,6 @@ import projectFinanceApiService from 'src/services/project/project-finance-servi
 import MainContractPriceCard from './main-contract-price-card';
 import LoadingPlaceholder from 'src/views/components/loader';
 
-interface ProjectFinanceData {
-  mainContractPrice: number;
-  rebate: number;
-}
-
 const MainContractPriceComponent = ({ projectId }: { projectId: string }) => {
   const [showDrawer, setShowDrawer] = useState(false);
 
