@@ -332,9 +332,9 @@
           "building-dimensions-detail": "Building Dimensions Detail",
           "building-envelop-material": "Building Envelop Material",
           "road": "Road",
-          "road-detail": "Road Detail",
-          "road-segments-data": "Road Segments Data",
-          "layers-of-road-data": "Layers of Road Data",
+          "road-info": "Road Info",
+          "road-segment": "Road Segments",
+          "road-layer": "Layers of Road",
           "telecom": "Telecom",
           "telecom-infrastructure": "Telecom Infrastructure",
           "electric-power": "Electric Power",
@@ -720,6 +720,40 @@
           "remark": "Remark"
         }
        
+      },
+      "road-info": {
+        "title": "Road Infos",
+        "create-road-info":"Create Road Info",
+        "edit-road-info":"Edit Road Info",
+        "road-info-details":"Road Info Details",
+        "details": {
+          "material": "Material",
+          "location-function": "Location Function",
+          "traffic-volume": "Traffic Volume",
+          "traffic-type": "Traffic Type",
+          "economy": "Economy",
+          "rigidity": "Rigidity",
+          "topography": "Topography",
+          "revision-no": "Revision No"
+        }
+      },
+      "road-segment": {
+        "title": "Road Segments",
+        "create-road-segment":"Create Road Segment",
+        "edit-road-segment":"Edit Road Segment",
+        "road-segment-details":"Road Segment Details",
+        "details": {
+          "name": "Name",
+          "specifications": "Specifications",
+          "no-of-layers": "Number of Layers",
+          "length": "Length",
+          "width": "Width",
+          "remark": "Remark",
+          "start-northing": "Start Northing",
+          "start-easting": "Start Easting",
+          "end-northing": "End Northing",
+          "end-easting": "End Easting"
+        }
       }
     },
     "columns": {

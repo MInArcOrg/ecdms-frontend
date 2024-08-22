@@ -50,6 +50,9 @@ export const uploadableProjectFileTypes = {
     buildingDimensionDetail:"BUILDING_DIMENSION_DETAIL",
     port:"PORT",
     telecomInfrastructure:"TELECOM_INFRASTRUCTURE",
-    buildingEnvelopMaterial:"BUILDING_ENVELOP_MATERIAL"
+    buildingEnvelopMaterial:"BUILDING_ENVELOP_MATERIAL",
+    roadInfo:"ROAD_INFO",
+    roadSegment:"ROAD_SEGMENT",
+    roadLayer:"ROAD_LAYER"
   }
 } as const;

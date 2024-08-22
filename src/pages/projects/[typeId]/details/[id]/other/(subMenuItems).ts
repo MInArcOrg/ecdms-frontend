@@ -43,20 +43,20 @@ const subMenuItems = (baseUrl: string): SubMenuItem[] => {
       routes: [
         {
           id: 3,
-          title: t('project.navigation.submenu.others.road-detail'),
-          path: `${baseUrl}/road/road-detail`,
+          title: t('project.navigation.submenu.others.road-info'),
+          path: `${baseUrl}/road/road-info`,
           model: 'roadinfo'
         },
         {
           id: 4,
-          title: t('project.navigation.submenu.others.road-segments-data'),
-          path: `${baseUrl}/road/road-segments-data`,
+          title: t('project.navigation.submenu.others.road-segment'),
+          path: `${baseUrl}/road/road-segment`,
           model: 'roadsegment'
         },
         {
           id: 5,
-          title: t('project.navigation.submenu.others.layers-of-road-data'),
-          path: `${baseUrl}/road/layers-of-road-data`,
+          title: t('project.navigation.submenu.others.road-layer'),
+          path: `${baseUrl}/road/road-layer`,
           model: 'roadlayer'
         }
       ]

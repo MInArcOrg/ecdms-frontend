@@ -62,4 +62,52 @@ export interface Port {
     created_at?: Date; // TIMESTAMP
     updated_at?: Date; // TIMESTAMP
   }
-  
+  export interface RoadInfo {
+    id: string;
+    parent_id?: string | null;
+    project_id: string;
+    material?: string | null;
+    location_function?: string | null;
+    traffic_volume?: number | null;
+    traffic_type?: string | null;
+    economy?: string | null;
+    rigidity?: string | null;
+    topography?: string | null;
+    revision_no?: number | null;
+    created_at: Date;
+    updated_at: Date;
+  }
+  export interface RoadSegment {
+    id: string;
+    parent_id?: string;
+    project_id: string;
+    name: string;
+    specifications?: string;
+    no_of_layers?: number;
+    length?: number;
+    width?: number;
+    remark?: string;
+    start_northing?: number;
+    start_easting?: number;
+    end_northing?: number;
+    end_easting?: number;
+    revision_no?: number;
+    created_at: Date;
+    updated_at: Date;
+  }
+  export interface RoadLayer {
+    id: string; // UUID
+    parent_id?: string; // UUID (optional)
+    project_id: string; // UUID
+    segment_id: string; // UUID
+    segment:RoadSegment
+    name?: string; // Optional string
+    number?: number; // Optional integer
+    thickness?: number; // Optional double (float) - corrected typo from "thickeness" to "thickness"
+    material?: string; // Optional string
+    specifications?: string; // Optional string
+    description?: string; // Optional text
+    revision_no?: number; // Optional integer
+    created_at?: Date; // Optional date (if using TypeScript, adjust as per your needs)
+    updated_at?: Date; // Optional date (if using TypeScript, adjust as per your needs)
+  }
