@@ -4,7 +4,6 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 i18n
-
   // Enables the i18next backend
   .use(Backend)
 
@@ -14,12 +13,11 @@ i18n
   // Enables the hook initialization module
   .use(initReactI18next)
   .init({
-    lng: 'en',
     backend: {
       /* translation file path */
       loadPath: '/locales/{{lng}}.json'
     },
-    fallbackLng: 'en',
+    fallbackLng: 'en', // Fallback to English if the detected language is not available
     debug: false,
     react: {
       useSuspense: false

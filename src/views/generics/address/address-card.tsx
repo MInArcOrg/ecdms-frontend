@@ -65,7 +65,20 @@ const AddressCard = ({
                         throw new Error('Function not implemented.');
                       }}
                     />
-                    <RowOptions onEdit={onEdit} onDelete={() => onDelete(address.id)} item={address} options={[]} />
+                    <RowOptions
+                      onEdit={onEdit}
+                      onDelete={() => onDelete(address.id)}
+                      deletePermissionRule={{
+                        action: 'delete',
+                        subject: 'address'
+                      }}
+                      editPermissionRule={{
+                        action: 'edit',
+                        subject: 'address'
+                      }}
+                      item={address}
+                      options={[]}
+                    />
                   </Box>
                 </Box>
               </Fragment>

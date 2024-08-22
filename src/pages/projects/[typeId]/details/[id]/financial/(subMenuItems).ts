@@ -17,37 +17,37 @@ const subMenuItems = (id: string, typeId: string) => [
   {
     id: 4,
     title: 'Omission',
-    path: `/projects/${typeId}/details/${id}/financial/Omission`
+    path: `/projects/${typeId}/details/${id}/financial/omission`
   },
   {
     id: 5,
-    title: 'Amandment',
-    path: `/projects/${typeId}/details/${id}/financial/Amandment`
+    title: 'Amendment',
+    path: `/projects/${typeId}/details/${id}/financial/amendment`
   },
   {
     id: 6,
     title: 'Interim Payment',
-    path: `/projects/${typeId}/details/${id}/financial/InterimPayment`
+    path: `/projects/${typeId}/details/${id}/financial/interim-payment`
   },
   {
     id: 7,
     title: 'Advance Payment',
-    path: `/projects/${typeId}/details/${id}/financial/AdvancePayment`
+    path: `/projects/${typeId}/details/${id}/financial/advance-payment`
   },
   {
     id: 8,
     title: 'Performance Bond',
-    path: `/projects/${typeId}/details/${id}/financial/PerformanceBond`
+    path: `/projects/${typeId}/details/${id}/financial/performance-bond`
   },
   {
     id: 9,
     title: 'Advanced Bond',
-    path: `/projects/${typeId}/details/${id}/financial/AdvancedBond`
+    path: `/projects/${typeId}/details/${id}/financial/advance-bond`
   },
   {
     id: 10,
     title: 'Bid Bond',
-    path: `/projects/${typeId}/details/${id}/financial/BidBond`
+    path: `/projects/${typeId}/details/${id}/financial/bid-bond`
   }
 ];
 

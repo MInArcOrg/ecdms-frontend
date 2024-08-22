@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { useGetMultiplePhotos, getStaticPhoto } from 'src/services/utils/file-service'; // Adjust path as needed
+import { useGetMultiplePhotos, getStaticPhoto } from 'src/services/utils/file-utils'; // Adjust path as needed
 import { Box } from '@mui/material';
 import ShowImageDialog from './image-dialog';
 

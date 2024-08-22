@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import CustomChip from 'src/@core/components/mui/chip';
 import projectApiService from 'src/services/project/project-service';
-import { formatCurrency } from 'src/utils/formatter/money';
+import { formatCurrency } from 'src/utils/formatter/currency';
 import LoadingPlaceholder from 'src/views/components/loader';
 import ProfileCard from 'src/views/pages/projects/detail/general-info/project-profile-card';
 import ProjectStatusChip from 'src/views/pages/projects/detail/general-info/project-status-chip';

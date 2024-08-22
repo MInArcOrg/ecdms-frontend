@@ -4,21 +4,21 @@ import MainConctractPriceComponent from 'src/views/pages/projects/detail/project
 import ProjectLayout from 'src/views/pages/projects/detail/project-layout';
 import subMenuItems from './(subMenuItems)';
 
-function ProjectMainContractPrice() {
+function ProjectVariation() {
   const router = useRouter();
   const { id, typeId } = router.query;
 
   return (
     <Box>
-      <ProjectLayout activeMenu={0} activeSubMenu={2} subMenuItems={subMenuItems(id as string, String(typeId))}>
+      <ProjectLayout activeMenu={1} activeSubMenu={0} subMenuItems={subMenuItems(id as string, String(typeId))}>
         <MainConctractPriceComponent projectId={String(id)} />
       </ProjectLayout>
     </Box>
   );
 }
 
-ProjectMainContractPrice.acl = {
-  action: 'view_projectfinance',
+ProjectVariation.acl = {
+  action: 'view',
   subject: 'projectfinance'
 };
-export default ProjectMainContractPrice;
+export default ProjectVariation;

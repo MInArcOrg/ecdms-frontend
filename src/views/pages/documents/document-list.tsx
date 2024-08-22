@@ -55,7 +55,7 @@ function DocumentList() {
     await documentApiService.delete(documentId);
     refetch();
   };
-  const hanldeClickDetail = (document: Document) => {
+  const handleClickDetail = (document: Document) => {
     toggleDetailDrawer();
     setSelectedRow(document);
   };
@@ -77,7 +77,7 @@ function DocumentList() {
           isLoading={isLoading}
           ItemViewComponent={({ data }) => (
             <DocumentCard
-              onDetail={hanldeClickDetail}
+              onDetail={handleClickDetail}
               document={data}
               onDelete={handleDelete}
               onEdit={handleEdit}
@@ -96,7 +96,7 @@ function DocumentList() {
           }}
           fetchDataFunction={refetch}
           tableProps={{
-            headers: documentColumns(hanldeClickDetail, handleEdit, handleDelete, t, refetch, String(typeId))
+            headers: documentColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, String(typeId))
           }}
           items={documents || []}
           onPaginationChange={handlePageChange}

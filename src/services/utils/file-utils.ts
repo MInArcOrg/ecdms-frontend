@@ -113,18 +113,6 @@ export const deleteFile = (id: string | number): Promise<AxiosResponse<FileUploa
   return customAxios.delete(`/file/${id}`);
 };
 
-// Get image by type
-export const getImageByType = (type: string, id: string | number): string =>
-  `${process.env.NEXT_PUBLIC_API_URL}/generics/files/${id}/${type}`;
-
-// Get project file selector
-// export const getProjectFileSelector = (project_id: string | number, type: string) =>
-//   useAxios({
-//     method: 'get',
-//     url: `/projects/project-file-selector/${project_id}/${type}`
-//   });
-
-// Upload profile picture
 export const uploadProfilePicture = (user_id: string | number, type: string, file: File): Promise<AxiosResponse<FileUploadResponse>> => {
   const formData = new FormData();
   formData.append('upload', file);
@@ -140,6 +128,8 @@ export const uploadProfilePicture = (user_id: string | number, type: string, fil
 // Get photo
 export const getPhoto = (id: string | number, type: string): string => `${process.env.NEXT_PUBLIC_API_URL}/api/photo/${type}/${id}`;
 export const getStaticPhoto = (path: string) => `${process.env.NEXT_PUBLIC_BASE_URL}${path}`;
+export const getStaticFile = (path: string) => `${process.env.NEXT_PUBLIC_BASE_URL}${path}`;
+
 // Get multiple photos
 export const useGetMultiplePhotos = (params: GetRequestParam) => {
   return useQuery({
@@ -194,21 +184,6 @@ export const uploadableStakeholderFileTypes = {
 } as const;
 
 // Uploadable project file types
-export const uploadableProjectFileTypes = {
-  time: 'TIME',
-  plan: 'PROJECT_PLAN',
-  report: 'PROJECT_REPORT',
-  building_envelope_material: 'BUILDING_ENVELOPE_MATERIAL',
-  building_dimension_detail: 'BUILDING_DIMENSION_DETAIL',
-  solar_energy: 'SOLAR_ENERGY',
-  wind_energy: 'WIND_ENERGY',
-  transformer_type: 'TRANSFORMER_TYPE',
-  extension_time: 'EXTENSION_TIME',
-  projectType: 'PROJECT_TYPE',
-  projectCategory: 'PROJECT_CATEGORY',
-  projectSubCategory: 'PROJECT_SUB_CATEGORY',
-  masterStatus: 'MASTER_STATUS'
-} as const;
 
 // Uploadable resource file types
 export const uploadableResourceFileTypes = {

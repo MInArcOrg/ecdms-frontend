@@ -1,7 +1,7 @@
 import { FormikProps } from 'formik';
 import { useState } from 'react';
 import generalMasterDataApiService from 'src/services/general/general-master-data-service';
-import { uploadFile } from 'src/services/utils/file-service';
+import { uploadFile } from 'src/services/utils/file-utils';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';

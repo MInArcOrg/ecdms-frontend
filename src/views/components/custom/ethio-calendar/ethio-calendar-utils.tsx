@@ -1,4 +1,5 @@
 import { EtDatetime } from 'abushakir';
+import moment from 'moment';
 import EthiopianDate from './ethiopian-date';
 
 interface DateInput {
@@ -6,10 +7,13 @@ interface DateInput {
   month: number;
   day: number;
 }
+export const convertToGC = (date: DateInput) => {
+  // Create an EtDatetime instance using the provided Ethiopian date
+  const etDate = new EtDatetime(date.year, date.month, date.day, 12, 0, 0, 0);
 
-export const convertToGC = (date: DateInput): Date => {
-  const convertedDate = new Date(new EtDatetime(date.year, date.month, date.day, 12, 0, 0, 0).moment);
-  return convertedDate;
+  const gregorianDate = new Date(etDate.moment);
+
+  return gregorianDate;
 };
 
 export const convertToEC = (date: Date | string): EthiopianDate => {
@@ -18,12 +22,8 @@ export const convertToEC = (date: Date | string): EthiopianDate => {
   return new EthiopianDate(convertedDate.year, convertedDate.month, convertedDate.day);
 };
 
-export const getDynamicDate = (i18n: any, date: Date | string): Date | EthiopianDate => {
-  const newDate = new Date(
-    typeof date === 'string'
-      ? new Date(date.length > 10 ? date.substring(0, 10) : date).toISOString().slice(0, -1)
-      : date.toISOString().slice(0, -1)
-  ).getTime();
+export const getDynamicDate = (i18n: any, date: Date | string | undefined): Date | EthiopianDate => {
+  const newDate = moment(date);
 
-  return i18n.language === 'am' ? convertToEC(newDate.toString()) : new Date(newDate);
+  return i18n.language === 'am' ? convertToEC(newDate.toDate()) : newDate.toDate();
 };

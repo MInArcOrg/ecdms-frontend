@@ -5,7 +5,7 @@ import { buildGetRequest } from 'src/utils/requests/get-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const modelMenuApiService = {
-  getByTypeId: (id: string, params: GetRequestParam): Promise<IApiResponse<ModelMenu[]>> =>
+  getByTypeId: (id: string, params: GetRequestParam): Promise<ModelMenu[]> =>
     buildGetRequest(`/generics/module-model-menus/${id}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data.payload)
       .catch((error: any) => {

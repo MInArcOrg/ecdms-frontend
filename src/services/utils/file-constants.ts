@@ -24,3 +24,35 @@ export const uploadablePhotoTypes = {
   resourceType: 'RESOURCE_TYPE',
   user_cover_photo: 'USER_COVER_PHOTO'
 } as const;
+
+export const uploadableProjectFileTypes = {
+  project: 'PROJECT',
+  time: 'TIME',
+  plan: 'PROJECT_PLAN',
+  report: 'PROJECT_REPORT',
+  building_envelope_material: 'BUILDING_ENVELOPE_MATERIAL',
+  building_dimension_detail: 'BUILDING_DIMENSION_DETAIL',
+  solar_energy: 'SOLAR_ENERGY',
+  wind_energy: 'WIND_ENERGY',
+  transformer_type: 'TRANSFORMER_TYPE',
+  extension_time: 'EXTENSION_TIME',
+  variation: 'VARIATION_TYPE',
+  payment: 'PAYMENT_TYPE',
+  bond: 'BOND',
+  stakeholder: 'STAKEHOLDER',
+  projectType: 'PROJECT_TYPE',
+  projectCategory: 'PROJECT_CATEGORY',
+  projectSubCategory: 'PROJECT_SUB_CATEGORY',
+  masterStatus: 'MASTER_STATUS',
+  file: 'File',
+  resource: 'RESOURCE',
+  other: {
+    buildingDimensionDetail: 'BUILDING_DIMENSION_DETAIL',
+    port: 'PORT',
+    telecomInfrastructure: 'TELECOM_INFRASTRUCTURE',
+    buildingEnvelopMaterial: 'BUILDING_ENVELOP_MATERIAL',
+    roadInfo: 'ROAD_INFO',
+    roadSegment: 'ROAD_SEGMENT',
+    roadLayer: 'ROAD_LAYER'
+  }
+} as const;

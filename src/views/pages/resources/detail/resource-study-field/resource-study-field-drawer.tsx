@@ -1,7 +1,7 @@
 import { FormikProps } from 'formik';
 import React, { useState } from 'react';
 import resourceStudyFieldApiService from 'src/services/resource/resource-study-field-service';
-import { uploadFile } from 'src/services/utils/file-service';
+import { uploadFile } from 'src/services/utils/file-utils';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
 import { ResourceStudyField } from 'src/types/resource';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';

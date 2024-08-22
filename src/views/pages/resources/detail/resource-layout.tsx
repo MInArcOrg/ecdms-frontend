@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import modelMenuApiService from 'src/services/general/model-menu-service';
-import { getStaticPhoto, uploadImage, uploadableResourceFileTypes, useGetMultiplePhotos } from 'src/services/utils/file-service';
+import { getStaticPhoto, uploadImage, uploadableResourceFileTypes, useGetMultiplePhotos } from 'src/services/utils/file-utils';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ReactCropImage from 'src/views/components/custom/react-crop-image';
 import DescCollapse from './desc-collapse';

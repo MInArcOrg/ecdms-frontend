@@ -14,11 +14,11 @@ const TimeInformation: React.FC<TimeInformationProps> = ({ data, i18n }) => {
   return (
     <Box>
       <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
-        <strong>{t('project.time.information')}</strong>
+        <strong>{t('project.project-time.information')}</strong>
       </Typography>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
-          {t('project.time.commencement-date')}
+          {t('project.project-time.commencement-date')}
         </Typography>
         <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
           {data.commencement_date ? getDynamicDate(i18n, data.commencement_date).toDateString() : ''}
@@ -26,7 +26,7 @@ const TimeInformation: React.FC<TimeInformationProps> = ({ data, i18n }) => {
       </Box>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
-          {t('project.time.completion-date')}
+          {t('project.project-time.completion-date')}
         </Typography>
         <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
           {data.completion_date ? getDynamicDate(i18n, data.completion_date).toDateString() : ''}
@@ -34,18 +34,18 @@ const TimeInformation: React.FC<TimeInformationProps> = ({ data, i18n }) => {
       </Box>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
-          {t('project.time.total-duration')}
+          {t('project.project-time.total-duration')}
         </Typography>
         <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
-          {data.contract_duration ?? '0'} {t('project.time.days')}
+          {data.contract_duration ?? '0'} {t('project.project-time.days')}
         </Typography>
       </Box>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
-          {t('project.time.elapsed-time')}
+          {t('project.project-time.elapsed-time')}
         </Typography>
         <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
-          {data.elapsed_time ?? '0'} {t('project.time.days')}
+          {data.elapsed_time ?? '0'} {t('project.project-time.days')}
         </Typography>
       </Box>
     </Box>
