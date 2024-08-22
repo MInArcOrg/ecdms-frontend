@@ -54,7 +54,7 @@ const MasterDataDetail: React.FC<MasterDataDetailProps> = ({ model }) => {
               ) : error ? (
                 <Typography>Error loading master type data.</Typography>
               ) : (
-                <MasterTypeDetailCard masterType={selectedType} isLoading={false} model={model} refetch={refetch} />
+                <MasterTypeDetailCard masterType={selectedType as MasterType} isLoading={false} model={model} refetch={refetch} />
               )}
             </Grid>
             <Grid item xs={12}>
