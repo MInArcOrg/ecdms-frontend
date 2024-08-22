@@ -7,17 +7,17 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import masterCategoryApiService from "src/services/master-data/master-category-service";
 import masterSubCategoryApiService from "src/services/master-data/master-sub-category-service";
-import { Stakeholders } from "src/types/stakeholders";
+import { Stakeholder } from "src/types/stakeholder";
 import CustomSelect from "src/views/shared/form/custom-select";
 import CustomTextBox from "src/views/shared/form/custom-text-box";
 
-interface StakeholdersFormProps {
-  formik: FormikProps<Stakeholders>;
+interface StakeholderFormProps {
+  formik: FormikProps<Stakeholder>;
   isLocaleEdit?: boolean;
   typeId: string;
 }
 
-const StakeholdersForm: React.FC<StakeholdersFormProps> = ({
+const StakeholderForm: React.FC<StakeholderFormProps> = ({
   formik,
   isLocaleEdit = false,
   typeId,
@@ -140,4 +140,4 @@ const StakeholdersForm: React.FC<StakeholdersFormProps> = ({
     </>
   );
 };
-export default StakeholdersForm;
+export default StakeholderForm;

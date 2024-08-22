@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import stakeholdersApiService from 'src/services/stakeholders/stakeholders-service';
+import stakeholderApiService from 'src/services/stakeholders/stakeholder-service';
 import { ProjectStakeholder } from 'src/types/project/project-stakeholder';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
@@ -20,7 +20,7 @@ const ProjectStakeholderForm: React.FC<ProjectStakeholderFormProps> = ({ formik,
   console.log('formik error', formik.errors);
   const { data: stakeholders } = useQuery({
     queryKey: ['stakeholders'],
-    queryFn: () => stakeholdersApiService.getAll({})
+    queryFn: () => stakeholderApiService.getAll({})
   });
   return (
     <Grid container spacing={3}>

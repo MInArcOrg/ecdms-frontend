@@ -2,14 +2,14 @@
 
 import { AxiosResponse } from "axios";
 import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
-import { Stakeholder } from "src/types/stakeholders";
+import { Stakeholder } from "src/types/stakeholder";
 
 import axiosServices from "src/utils/axios";
 import { buildGetRequest } from "src/utils/requests/get-request";
 import { buildPostRequest } from "src/utils/requests/post-request";
 import { buildPutRequest } from "src/utils/requests/put-request";
 
-const stakeholdersApiService = {
+const stakeholderApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<Stakeholder[]>> =>
     buildGetRequest(`/stakeholders/stakeholders`, params)
 
@@ -63,4 +63,4 @@ const stakeholdersApiService = {
       }),
 };
 
-export default stakeholdersApiService;
+export default stakeholderApiService;

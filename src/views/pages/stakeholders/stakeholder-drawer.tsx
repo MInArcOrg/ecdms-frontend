@@ -6,15 +6,15 @@ import { FormikProps } from "formik";
 import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
 import FormPageWrapper from "src/views/shared/form/form-wrapper";
 import { IApiPayload } from "src/types/requests";
-import { Stakeholders } from "src/types/stakeholders";
-import stakeholdersApiService from "src/services/stakeholders/stakeholders-service";
-import StakeholdersForm from "./stakeholders-form";
+import StakeholderForm from "./stakeholder-form";
+import { Stakeholder } from "src/types/stakeholder";
+import stakeholderApiService from "src/services/stakeholders/stakeholder-service";
 
-interface StakeholdersDrawerType {
+interface StakeholderDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  stakeholders: Stakeholders;
+  stakeholder: Stakeholder;
   typeId: string;
 }
 
@@ -22,26 +22,26 @@ const validationSchema = yup.object().shape({
   title: yup.string().required(),
   description: yup.string().required(),
   stakeholdercategory_id: yup.string().required(),
-  stakeholdersubcategory_id: yup.string(),
+  stakeholderubcategory_id: yup.string(),
 });
 
-const StakeholdersDrawer = (props: StakeholdersDrawerType) => {
+const StakeholderDrawer = (props: StakeholderDrawerType) => {
   // ** Props
-  const { open, toggle, refetch, stakeholders, typeId } = props;
+  const { open, toggle, refetch, stakeholder, typeId } = props;
 
-  const isEdit = stakeholders?.id ? true : false;
-  const createResource = async (body: IApiPayload<Stakeholders>) => {
-    return await stakeholdersApiService.create(body);
+  const isEdit = stakeholder?.id ? true : false;
+  const createResource = async (body: IApiPayload<Stakeholder>) => {
+    return await stakeholderApiService.create(body);
   };
-  const editResource = async (body: IApiPayload<Stakeholders>) => {
-    return await stakeholdersApiService.update(stakeholders?.id || "", body);
+  const editResource = async (body: IApiPayload<Stakeholder>) => {
+    return await stakeholderApiService.update(stakeholder?.id || "", body);
   };
 
-  const getPayload = (values: Stakeholders) => {
+  const getPayload = (values: Stakeholder) => {
     const payload = {
       data: {
         ...values,
-        id: stakeholders?.id,
+        id: stakeholder?.id,
         stakeholdertype_id: typeId,
       },
       files: [],
@@ -59,8 +59,8 @@ const StakeholdersDrawer = (props: StakeholdersDrawerType) => {
   };
   return (
     <CustomSideDrawer
-      title={`stakeholders.${
-        isEdit ? "edit-stakeholders" : "create-stakeholders"
+      title={`stakeholder.${
+        isEdit ? "edit-stakeholder" : "create-stakeholder"
       }`}
       handleClose={handleClose}
       open={open}
@@ -70,13 +70,13 @@ const StakeholdersDrawer = (props: StakeholdersDrawerType) => {
           edit={isEdit}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={stakeholders as Stakeholders}
+          initialValues={stakeholder as Stakeholder}
           createActionFunc={isEdit ? editResource : createResource}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<Stakeholders>) => {
-            return <StakeholdersForm typeId={typeId} formik={formik} />;
+          {(formik: FormikProps<Stakeholder>) => {
+            return <StakeholderForm typeId={typeId} formik={formik} />;
           }}
         </FormPageWrapper>
       )}
@@ -84,4 +84,4 @@ const StakeholdersDrawer = (props: StakeholdersDrawerType) => {
   );
 };
 
-export default StakeholdersDrawer;
+export default StakeholderDrawer;

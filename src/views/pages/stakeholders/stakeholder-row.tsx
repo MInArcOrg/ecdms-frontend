@@ -4,17 +4,17 @@ import Typography from "@mui/material/Typography";
 import { GridColDef } from "@mui/x-data-grid";
 import Link from "next/link";
 import { Fragment } from "react";
-import { Stakeholders } from "src/types/stakeholders";
+import { Stakeholder } from "src/types/stakeholder";
 import { formatCreatedAt } from "src/utils/formatter/date";
 import ModelAction from "src/views/components/custom/model-actions";
 import RowOptions from "src/views/shared/listing/row-options";
 
 interface CellType {
-  row: Stakeholders;
+  row: Stakeholder;
 }
 
-export const StakeholdersRow = (
-  onEdit: (stakeholders: Stakeholders) => void,
+export const StakeholderRow = (
+  onEdit: (stakeholders: Stakeholder) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
@@ -38,7 +38,7 @@ export const StakeholdersRow = (
               "&:hover": { color: "primary.main" },
             }}
           >
-            {row?.title}
+            {row?.trade_name}
           </Typography>
         );
       },
@@ -79,7 +79,7 @@ export const StakeholdersRow = (
       renderCell: ({ row }: CellType) => (
         <Fragment>
           <ModelAction
-            model="Stakeholders"
+            model="Stakeholder"
             model_id={row.id}
             refetchModel={refetch}
             resubmit={function (): void {

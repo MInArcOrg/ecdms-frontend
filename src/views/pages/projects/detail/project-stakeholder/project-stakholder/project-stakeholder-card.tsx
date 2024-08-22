@@ -2,7 +2,7 @@ import { Box, Card, CardActions, CardContent, Divider } from '@mui/material';
 
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { ProjectStakeholder } from 'src/types/project/project-stakeholder';
-import { Stakeholder } from 'src/types/stakeholders';
+import { Stakeholder } from 'src/types/stakeholder';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import StakeholderProfileCardComponent from 'src/views/pages/stakeholders/stakeholder-profile';

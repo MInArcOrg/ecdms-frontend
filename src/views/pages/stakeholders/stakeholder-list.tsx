@@ -10,56 +10,56 @@ import usePaginatedFetch from "src/hooks/use-paginated-fetch";
 import { defaultCreateActionConfig } from "src/types/general/listing";
 import { GetRequestParam, IApiResponse } from "src/types/requests";
 import ItemsListing from "src/views/shared/listing";
-import { Stakeholders } from "src/types/stakeholders";
-import StakeholdersDrawer from "./stakeholders-drawer";
-import stakeholdersApiService from "src/services/stakeholders/stakeholders-service";
-import StakeholdersCard from "./stakeholders-card";
-import { StakeholdersRow } from "./stakeholders-row";
+import StakeholderDrawer from "./stakeholder-drawer";
+import StakeholderCard from "./stakeholder-card";
+import { StakeholderRow } from "./stakeholder-row";
+import { Stakeholder } from "src/types/stakeholder";
+import stakeholderApiService from "src/services/stakeholders/stakeholder-service";
 
 function StakholdersList() {
   const [showDrawer, setShowDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<Stakeholders | null>(null);
+  const [selectedRow, setSelectedRow] = useState<Stakeholder | null>(null);
   const { t } = useTranslation();
   const router = useRouter();
   const { typeId } = router.query;
   const fetchResources = (
     params: GetRequestParam
-  ): Promise<IApiResponse<Stakeholders[]>> => {
-    return stakeholdersApiService.getAll(params);
+  ): Promise<IApiResponse<Stakeholder[]>> => {
+    return stakeholderApiService.getAll(params);
   };
 
   const {
-    data: stakeholders,
+    data: stakeholder,
     isLoading,
     pagination,
     handlePageChange,
     refetch,
-  } = usePaginatedFetch<Stakeholders[]>({
+  } = usePaginatedFetch<Stakeholder[]>({
     queryKey: ["stakesholders"],
     fetchFunction: fetchResources,
   });
 
   const toggleDrawer = () => {
-    setSelectedRow({} as Stakeholders);
+    setSelectedRow({} as Stakeholder);
     setShowDrawer(!showDrawer);
   };
 
-  const handleEdit = (resource: Stakeholders) => {
+  const handleEdit = (resource: Stakeholder) => {
     toggleDrawer();
     setSelectedRow(resource);
   };
   const handleDelete = async (resourceId: string) => {
-    await stakeholdersApiService.delete(resourceId);
+    await stakeholderApiService.delete(resourceId);
     refetch();
   };
 
   return (
     <Box>
       {showDrawer && (
-        <StakeholdersDrawer
+        <StakeholderDrawer
           open={showDrawer}
           toggle={toggleDrawer}
-          stakeholders={selectedRow as Stakeholders}
+          stakeholder={selectedRow as Stakeholder}
           refetch={refetch}
           typeId={String(typeId)}
         />
@@ -70,8 +70,8 @@ function StakholdersList() {
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
           ItemViewComponent={({ data }) => (
-            <StakeholdersCard
-              stakeholders={data}
+            <StakeholderCard
+              stakeholder={data}
               onDelete={handleDelete}
               onEdit={handleEdit}
               t={t}
@@ -89,7 +89,7 @@ function StakholdersList() {
           }}
           fetchDataFunction={refetch}
           tableProps={{
-            headers: StakeholdersRow(
+            headers: StakeholderRow(
               handleEdit,
               handleDelete,
               t,
@@ -97,7 +97,7 @@ function StakholdersList() {
               String(typeId)
             ),
           }}
-          items={stakeholders || []}
+          items={stakeholder || []}
           onPaginationChange={handlePageChange}
         />
       </Card>

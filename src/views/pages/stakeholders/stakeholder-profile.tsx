@@ -8,7 +8,7 @@ import { ProjectStakeholder } from 'src/types/project/project-stakeholder';
 import { useQuery } from '@tanstack/react-query';
 import Icon from 'src/@core/components/icon';
 import addressApiService from 'src/services/general/address-service';
-import { Stakeholder } from 'src/types/stakeholders';
+import { Stakeholder } from 'src/types/stakeholder';
 
 const MapView = dynamic(() => import('src/views/components/custom/map-view'), {
   ssr: false

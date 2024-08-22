@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Fragment } from "react";
-import { Stakeholder } from "src/types/stakeholders";
+import { Stakeholder } from "src/types/stakeholder";
 import FileDrawer from "src/views/components/custom/files-drawer";
 import ModelActionComponent from "src/views/components/custom/model-actions";
 import RowOptions from "src/views/shared/listing/row-options";
