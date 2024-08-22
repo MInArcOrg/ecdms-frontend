@@ -96,7 +96,7 @@ function DocumentList() {
           }}
           fetchDataFunction={refetch}
           tableProps={{
-            headers: documentColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, String(typeId))
+            headers: documentColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
           }}
           items={documents || []}
           onPaginationChange={handlePageChange}
