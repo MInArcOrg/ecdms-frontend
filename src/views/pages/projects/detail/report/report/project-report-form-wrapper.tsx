@@ -17,11 +17,11 @@ interface ProjectReportFormWrapperType {
   projectReport: ProjectReport;
   projectId: string;
   projectPlan: ProjectPlan;
-  monthlyReport:MonthlyReport
+  monthlyReport: MonthlyReport;
 }
 
 const ProjectReportFormWrapper = (props: ProjectReportFormWrapperType) => {
-  const { toggle, refetch, projectReport, projectId, projectPlan,monthlyReport } = props;
+  const { toggle, refetch, projectReport, projectId, projectPlan, monthlyReport } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {

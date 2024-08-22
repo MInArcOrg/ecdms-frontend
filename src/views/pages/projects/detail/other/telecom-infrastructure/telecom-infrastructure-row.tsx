@@ -16,7 +16,7 @@ export const telecomColumns = (
   onEdit: (telecomInfrastructure: TelecomInfrastructure) => void,
   onDelete: (id: string) => void,
   t: any,
-  refetch: () => void,
+  refetch: () => void
 ): GridColDef[] => [
   {
     flex: 0.15,
@@ -32,12 +32,12 @@ export const telecomColumns = (
           fontWeight: 500,
           textDecoration: 'none',
           color: 'text.secondary',
-          '&:hover': { color: 'primary.main' },
+          '&:hover': { color: 'primary.main' }
         }}
       >
         {row?.name}
       </Typography>
-    ),
+    )
   },
   {
     flex: 0.15,
@@ -46,7 +46,7 @@ export const telecomColumns = (
     field: 'specifications',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>{row?.specifications || t('common.not-available')}</Typography>
-    ),
+    )
   },
   {
     flex: 0.15,
@@ -57,7 +57,7 @@ export const telecomColumns = (
       <Typography sx={{ color: 'text.secondary' }}>
         {row?.coverage_area ? `${row.coverage_area} sqm` : t('common.not-available')}
       </Typography>
-    ),
+    )
   },
 
   {
@@ -65,11 +65,7 @@ export const telecomColumns = (
     minWidth: 120,
     headerName: t('common.table-columns.created-at'),
     field: 'created_at',
-    renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>
-        {formatCreatedAt(row.created_at)}
-      </Typography>
-    ),
+    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{formatCreatedAt(row.created_at)}</Typography>
   },
   {
     minWidth: 150,
@@ -92,6 +88,6 @@ export const telecomColumns = (
         />
         <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
       </Fragment>
-    ),
-  },
+    )
+  }
 ];

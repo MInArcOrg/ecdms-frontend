@@ -16,13 +16,7 @@ interface RoadLayerCardProps {
   onDetail: (roadLayer: RoadLayer) => void;
 }
 
-const RoadLayerCard: React.FC<RoadLayerCardProps> = ({
-  roadLayer,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail,
-}) => {
+const RoadLayerCard: React.FC<RoadLayerCardProps> = ({ roadLayer, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -36,7 +30,7 @@ const RoadLayerCard: React.FC<RoadLayerCardProps> = ({
                 fontWeight: 500,
                 textDecoration: 'none',
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {roadLayer?.id.slice(0, 5)}...
@@ -47,6 +41,9 @@ const RoadLayerCard: React.FC<RoadLayerCardProps> = ({
         <Divider sx={{ my: 1 }} />
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
+          <Typography variant="body2" color="text.secondary">
+            {t('project.other.road-layer.details.segment')}: {roadLayer?.roadsegment?.name || 'N/A'}
+          </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.road-layer.details.name')}: {roadLayer?.name || 'N/A'}
           </Typography>
@@ -84,12 +81,7 @@ const RoadLayerCard: React.FC<RoadLayerCardProps> = ({
           title=""
           postAction={() => refetch()}
         />
-        <RowOptions
-          onEdit={() => onEdit(roadLayer)}
-          onDelete={() => onDelete(roadLayer.id)}
-          item={roadLayer}
-          options={[]}
-        />
+        <RowOptions onEdit={() => onEdit(roadLayer)} onDelete={() => onDelete(roadLayer.id)} item={roadLayer} options={[]} />
       </CardActions>
     </Card>
   );

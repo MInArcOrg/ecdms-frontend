@@ -26,7 +26,7 @@ function ProjectResourceList({ projectId }: { projectId: string }) {
       filter: { ...params.filter }
     });
   };
- 
+
   const { t } = useTranslation();
 
   const {
@@ -54,11 +54,10 @@ function ProjectResourceList({ projectId }: { projectId: string }) {
     refetch();
   };
   const handleClickDetail = (projectResource: ProjectResource) => {
-      router.push(`/resources/${projectResource.resource?.resourcetype_id}/details/${projectResource.resource?.id}/`)
+    router.push(`/resources/${projectResource.resource?.resourcetype_id}/details/${projectResource.resource?.id}/`);
   };
   return (
     <Box>
-      
       {showDrawer && (
         <ProjectResourceDrawer
           open={showDrawer}
@@ -66,7 +65,7 @@ function ProjectResourceList({ projectId }: { projectId: string }) {
           projectResource={selectedRow as ProjectResource}
           refetch={refetch}
           projectId={projectId}
-          projectResources={projectResources||[]}
+          projectResources={projectResources || []}
         />
       )}
       <ItemsListing
@@ -75,7 +74,13 @@ function ProjectResourceList({ projectId }: { projectId: string }) {
         type={ITEMS_LISTING_TYPE.table.value}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <ProjectResourceCard onEdit={handleEdit} onDetail={handleClickDetail} projectResource={data} onDelete={handleDelete} refetch={refetch} />
+          <ProjectResourceCard
+            onEdit={handleEdit}
+            onDetail={handleClickDetail}
+            projectResource={data}
+            onDelete={handleDelete}
+            refetch={refetch}
+          />
         )}
         tableProps={{
           headers: projectResourceColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)

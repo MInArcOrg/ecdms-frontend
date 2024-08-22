@@ -26,7 +26,7 @@ export const uploadablePhotoTypes = {
 } as const;
 
 export const uploadableProjectFileTypes = {
-  project:'PROJECT',
+  project: 'PROJECT',
   time: 'TIME',
   plan: 'PROJECT_PLAN',
   report: 'PROJECT_REPORT',
@@ -45,14 +45,14 @@ export const uploadableProjectFileTypes = {
   projectSubCategory: 'PROJECT_SUB_CATEGORY',
   masterStatus: 'MASTER_STATUS',
   file: 'File',
-  resource:'RESOURCE',
-  other:{
-    buildingDimensionDetail:"BUILDING_DIMENSION_DETAIL",
-    port:"PORT",
-    telecomInfrastructure:"TELECOM_INFRASTRUCTURE",
-    buildingEnvelopMaterial:"BUILDING_ENVELOP_MATERIAL",
-    roadInfo:"ROAD_INFO",
-    roadSegment:"ROAD_SEGMENT",
-    roadLayer:"ROAD_LAYER"
+  resource: 'RESOURCE',
+  other: {
+    buildingDimensionDetail: 'BUILDING_DIMENSION_DETAIL',
+    port: 'PORT',
+    telecomInfrastructure: 'TELECOM_INFRASTRUCTURE',
+    buildingEnvelopMaterial: 'BUILDING_ENVELOP_MATERIAL',
+    roadInfo: 'ROAD_INFO',
+    roadSegment: 'ROAD_SEGMENT',
+    roadLayer: 'ROAD_LAYER'
   }
 } as const;

@@ -754,6 +754,21 @@
           "end-northing": "End Northing",
           "end-easting": "End Easting"
         }
+      },
+      "road-layer": {
+        "title": "Road Layers",
+        "create-road-layer":"Create Road Layer",
+        "edit-road-layer":"Edit Road Layer",
+        "road-layer-details":"Road Layer Details",
+        "details": {
+          "segment": "Segment",
+          "name": "Name",
+          "specifications": "Specifications",
+          "number": "Number",
+          "thickness": "Thickness",
+          "material": "Material",
+          "description": "Description"
+        }
       }
     },
     "columns": {

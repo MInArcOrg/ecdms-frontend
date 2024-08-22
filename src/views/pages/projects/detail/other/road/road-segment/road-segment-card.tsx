@@ -16,13 +16,7 @@ interface RoadSegmentCardProps {
   onDetail: (roadSegment: RoadSegment) => void;
 }
 
-const RoadSegmentCard: React.FC<RoadSegmentCardProps> = ({
-  roadSegment,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail,
-}) => {
+const RoadSegmentCard: React.FC<RoadSegmentCardProps> = ({ roadSegment, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -36,7 +30,7 @@ const RoadSegmentCard: React.FC<RoadSegmentCardProps> = ({
                 fontWeight: 500,
                 textDecoration: 'none',
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {roadSegment?.id.slice(0, 5)}...
@@ -83,7 +77,6 @@ const RoadSegmentCard: React.FC<RoadSegmentCardProps> = ({
           <Typography variant="body2" color="text.secondary">
             {t('common.table-columns.created-at')}: {roadSegment?.created_at ? formatCreatedAt(roadSegment.created_at) : 'N/A'}
           </Typography>
-       
         </Box>
       </CardContent>
 
@@ -97,12 +90,7 @@ const RoadSegmentCard: React.FC<RoadSegmentCardProps> = ({
           title=""
           postAction={() => refetch()}
         />
-        <RowOptions
-          onEdit={() => onEdit(roadSegment)}
-          onDelete={() => onDelete(roadSegment.id)}
-          item={roadSegment}
-          options={[]}
-        />
+        <RowOptions onEdit={() => onEdit(roadSegment)} onDelete={() => onDelete(roadSegment.id)} item={roadSegment} options={[]} />
       </CardActions>
     </Card>
   );

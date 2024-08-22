@@ -21,7 +21,6 @@ const ReportMonthSelector = ({ fetchData, date, setDate, quarter, setQuarter }: 
   return (
     <Card>
       <CardContent>
-        
         <Grid container spacing={3}>
           <Grid item xs={12} sm={4}>
             <Typography variant="h6">Select Report Month</Typography>

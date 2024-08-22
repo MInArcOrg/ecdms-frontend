@@ -1,20 +1,20 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import otherApiService from "src/services/project/other-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import { GetRequestParam, IApiResponse } from "src/types/requests";
-import { formatCreatedAt } from "src/utils/formatter/date";
-import ItemsListing from "src/views/shared/listing";
-import OtherDetailSidebar from "../../layouts/other-detail-drawer";
-import BuildingDimensionDetailCard from "./building-dimension-detail-card";
-import BuildingDimensionDetailDrawer from "./building-dimension-detail-drawer";
-import { BuildingDimensionDetail } from "src/types/project/other";
-import { buldingDimensionDetailColumns } from "./building-dimension-detail-row";
-import { uploadableDocumentFileTypes } from "src/services/utils/file-utils";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { Box } from '@mui/material';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import otherApiService from 'src/services/project/other-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import ItemsListing from 'src/views/shared/listing';
+import OtherDetailSidebar from '../../layouts/other-detail-drawer';
+import BuildingDimensionDetailCard from './building-dimension-detail-card';
+import BuildingDimensionDetailDrawer from './building-dimension-detail-drawer';
+import { BuildingDimensionDetail } from 'src/types/project/other';
+import { buldingDimensionDetailColumns } from './building-dimension-detail-row';
+import { uploadableDocumentFileTypes } from 'src/services/utils/file-utils';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 
 interface BuildingDimensionDetailListProps {
   model: string;
@@ -28,12 +28,10 @@ const BuildingDimensionDetailList: React.FC<BuildingDimensionDetailListProps> = 
   const [selectedRow, setSelectedRow] = useState<BuildingDimensionDetail | null>(null);
   const { t } = useTranslation();
 
-  const fetchBuildingDimensionDetails = (
-    params: GetRequestParam
-  ): Promise<IApiResponse<BuildingDimensionDetail[]>> => {
+  const fetchBuildingDimensionDetails = (params: GetRequestParam): Promise<IApiResponse<BuildingDimensionDetail[]>> => {
     return otherApiService<BuildingDimensionDetail>().getAll(model, {
       ...params,
-      filter: { ...params.filter },
+      filter: { ...params.filter, project_id: projectId }
     });
   };
 
@@ -42,10 +40,10 @@ const BuildingDimensionDetailList: React.FC<BuildingDimensionDetailListProps> = 
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<BuildingDimensionDetail[]>({
-    queryKey: ["buildingDimensionDetails"],
-    fetchFunction: fetchBuildingDimensionDetails,
+    queryKey: ['buildingDimensionDetails'],
+    fetchFunction: fetchBuildingDimensionDetails
   });
 
   const toggleDrawer = () => {
@@ -74,19 +72,49 @@ const BuildingDimensionDetailList: React.FC<BuildingDimensionDetailListProps> = 
   };
 
   const mapBuildingDimensionDetailToDetailItems = (
-    buildingDimensionDetail: BuildingDimensionDetail,
+    buildingDimensionDetail: BuildingDimensionDetail
   ): { title: string; value: string }[] => [
-    { title: t('project.other.building-dimension-detail.details.site-area'), value: buildingDimensionDetail?.site_area ? `${buildingDimensionDetail?.site_area} sqm` : "N/A" },
-    { title: t('project.other.building-dimension-detail.details.site-above-sea-level'), value: buildingDimensionDetail?.site_above_sea_level?.toString() || "N/A" },
-    { title: t('project.other.building-dimension-detail.details.ground-floor-area'), value: buildingDimensionDetail?.ground_floor_area ? `${buildingDimensionDetail?.ground_floor_area} sqm` : "N/A" },
-    { title: t('project.other.building-dimension-detail.details.total-floor-area'), value: buildingDimensionDetail?.total_floor_area ? `${buildingDimensionDetail?.total_floor_area} sqm` : "N/A" },
-    { title: t('project.other.building-dimension-detail.details.basement-stories-no'), value: buildingDimensionDetail?.basement_stories_no?.toString() || "N/A" },
-    { title: t('project.other.building-dimension-detail.details.above-ground-floor-stories-no'), value: buildingDimensionDetail?.above_ground_floor_stories_no?.toString() || "N/A" },
-    { title: t('project.other.building-dimension-detail.details.height-above-natural-ground'), value: buildingDimensionDetail?.height_above_natural_ground ? `${buildingDimensionDetail?.height_above_natural_ground} m` : "N/A" },
-    { title: t('project.other.building-dimension-detail.details.depth-below-natural-ground'), value: buildingDimensionDetail?.depth_below_natural_ground ? `${buildingDimensionDetail?.depth_below_natural_ground} m` : "N/A" },
-    { title: t('project.other.building-dimension-detail.details.remark'), value: buildingDimensionDetail?.remark || "N/A" },
-    { title: t('common.table-columns.created-at'), value: buildingDimensionDetail?.created_at ? formatCreatedAt(buildingDimensionDetail?.created_at) : "N/A" },
-    { title: t('common.table-columns.updated-at'), value: buildingDimensionDetail?.updated_at ? formatCreatedAt(buildingDimensionDetail?.updated_at) : "N/A" },
+    {
+      title: t('project.other.building-dimension-detail.details.site-area'),
+      value: buildingDimensionDetail?.site_area ? `${buildingDimensionDetail?.site_area} sqm` : 'N/A'
+    },
+    {
+      title: t('project.other.building-dimension-detail.details.site-above-sea-level'),
+      value: buildingDimensionDetail?.site_above_sea_level?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.building-dimension-detail.details.ground-floor-area'),
+      value: buildingDimensionDetail?.ground_floor_area ? `${buildingDimensionDetail?.ground_floor_area} sqm` : 'N/A'
+    },
+    {
+      title: t('project.other.building-dimension-detail.details.total-floor-area'),
+      value: buildingDimensionDetail?.total_floor_area ? `${buildingDimensionDetail?.total_floor_area} sqm` : 'N/A'
+    },
+    {
+      title: t('project.other.building-dimension-detail.details.basement-stories-no'),
+      value: buildingDimensionDetail?.basement_stories_no?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.building-dimension-detail.details.above-ground-floor-stories-no'),
+      value: buildingDimensionDetail?.above_ground_floor_stories_no?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.building-dimension-detail.details.height-above-natural-ground'),
+      value: buildingDimensionDetail?.height_above_natural_ground ? `${buildingDimensionDetail?.height_above_natural_ground} m` : 'N/A'
+    },
+    {
+      title: t('project.other.building-dimension-detail.details.depth-below-natural-ground'),
+      value: buildingDimensionDetail?.depth_below_natural_ground ? `${buildingDimensionDetail?.depth_below_natural_ground} m` : 'N/A'
+    },
+    { title: t('project.other.building-dimension-detail.details.remark'), value: buildingDimensionDetail?.remark || 'N/A' },
+    {
+      title: t('common.table-columns.created-at'),
+      value: buildingDimensionDetail?.created_at ? formatCreatedAt(buildingDimensionDetail?.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: buildingDimensionDetail?.updated_at ? formatCreatedAt(buildingDimensionDetail?.updated_at) : 'N/A'
+    }
   ];
 
   return (
@@ -108,24 +136,18 @@ const BuildingDimensionDetailList: React.FC<BuildingDimensionDetailListProps> = 
           toggleDrawer={toggleDetailDrawer}
           data={mapBuildingDimensionDetailToDetailItems(selectedRow as BuildingDimensionDetail)}
           hasReference={true}
-          id={selectedRow?.id || ""}
+          id={selectedRow?.id || ''}
           fileType={uploadableProjectFileTypes.other.buildingDimensionDetail}
           title={t('project.other.building-dimension-detail.building-dimension-detail-details')}
         />
       )}
 
       <ItemsListing
-        title={t("project.other.building-dimension-detail.title")}
+        title={t('project.other.building-dimension-detail.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: buldingDimensionDetailColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch
-          ),
+          headers: buldingDimensionDetailColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -142,9 +164,9 @@ const BuildingDimensionDetailList: React.FC<BuildingDimensionDetailListProps> = 
           onClick: toggleDrawer,
           onlyIcon: true,
           permission: {
-            action: "create",
-            subject: "buildingDimensionDetail", 
-          },
+            action: 'create',
+            subject: 'buildingDimensionDetail'
+          }
         }}
         fetchDataFunction={refetch}
         items={buildingDimensionDetails || []}

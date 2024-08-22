@@ -16,7 +16,7 @@ export const documentColumns = (
   onEdit: (document: Document) => void,
   onDelete: (id: string) => void,
   t: any,
-  refetch: () => void,
+  refetch: () => void
 ) =>
   [
     {

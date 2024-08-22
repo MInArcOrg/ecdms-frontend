@@ -1,40 +1,36 @@
-import { Fragment } from 'react'
-import Drawer from '@mui/material/Drawer'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import Icon from 'src/@core/components/icon'
-import { CardContent, Divider } from '@mui/material'
-import { useTranslation } from 'react-i18next'
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer'
+import { Fragment } from 'react';
+import Drawer from '@mui/material/Drawer';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Icon from 'src/@core/components/icon';
+import { CardContent, Divider } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 
 interface ReportDetailCardProps {
-  show: boolean
-  toggleDrawer: () => void
+  show: boolean;
+  toggleDrawer: () => void;
   data?: {
-    totalManPower?: number
-    totalMaterial?: number
-    totalMachinery?: number
-    totalOtherExpense?: number
-    totalSubContractorCost?: number
-    totalSubtotalExpense?: number
-    totalOverHeadCost?: number
-    totalProfitOrLoss?: number
-    totalProjectExpense?: number
-  }
-  handleFormSubmit?: () => void
+    totalManPower?: number;
+    totalMaterial?: number;
+    totalMachinery?: number;
+    totalOtherExpense?: number;
+    totalSubContractorCost?: number;
+    totalSubtotalExpense?: number;
+    totalOverHeadCost?: number;
+    totalProfitOrLoss?: number;
+    totalProjectExpense?: number;
+  };
+  handleFormSubmit?: () => void;
 }
 
-const ReportDetailCard: React.FC<ReportDetailCardProps> = ({
-  show,
-  toggleDrawer,
-  data,
-}) => {
-  const { t } = useTranslation()
+const ReportDetailCard: React.FC<ReportDetailCardProps> = ({ show, toggleDrawer, data }) => {
+  const { t } = useTranslation();
 
   return (
     <CustomSideDrawer title={`project.report.summary-expense`} handleClose={toggleDrawer} open={show}>
-    {() => (
-  <CardContent>
+      {() => (
+        <CardContent>
           <Box alignContent="center" justifyContent="space-between">
             {[
               { label: t('Manpower'), value: data?.totalManPower },
@@ -45,7 +41,7 @@ const ReportDetailCard: React.FC<ReportDetailCardProps> = ({
               { label: `${t('Subtotal')}`, value: data?.totalSubtotalExpense, isStrong: true },
               { label: t('Overhead Cost'), value: data?.totalOverHeadCost },
               { label: t('Profit - Loss'), value: data?.totalProfitOrLoss },
-              { label: `${t('Project')} ${t('Expense')}`, value: data?.totalProjectExpense, isStrong: true },
+              { label: `${t('Project')} ${t('Expense')}`, value: data?.totalProjectExpense, isStrong: true }
             ].map(({ label, value, isStrong }, index) => (
               <Fragment key={index}>
                 <Box display="flex" justifyContent="space-between" alignItems="center" m={2}>
@@ -61,10 +57,9 @@ const ReportDetailCard: React.FC<ReportDetailCardProps> = ({
             ))}
           </Box>
         </CardContent>
-        
       )}
-      </CustomSideDrawer>)
+    </CustomSideDrawer>
+  );
+};
 
-}
-
-export default ReportDetailCard
+export default ReportDetailCard;

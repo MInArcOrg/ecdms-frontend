@@ -17,11 +17,11 @@ interface PortDrawerType {
   refetch: () => void;
   port: Port;
   projectId: string;
-  model:string
+  model: string;
 }
 
 const PortDrawer = (props: PortDrawerType) => {
-  const { open, toggle, refetch, port, projectId,model } = props;
+  const { open, toggle, refetch, port, projectId, model } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
@@ -31,10 +31,9 @@ const PortDrawer = (props: PortDrawerType) => {
 
   const isEdit = Boolean(port?.id);
 
-  const createPort = async (body: IApiPayload<Port>) => otherApiService<Port>().create(model,body);
+  const createPort = async (body: IApiPayload<Port>) => otherApiService<Port>().create(model, body);
 
-  const editPort = async (body: IApiPayload<Port>) =>
-    otherApiService<Port>().update(model,port?.id || '', body);
+  const editPort = async (body: IApiPayload<Port>) => otherApiService<Port>().update(model, port?.id || '', body);
 
   const getPayload = (values: Port) => ({
     data: {
@@ -56,11 +55,7 @@ const PortDrawer = (props: PortDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer
-      title={`project.other.port.${isEdit ? `edit-port` : `create-port`}`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`project.other.port.${isEdit ? `edit-port` : `create-port`}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}

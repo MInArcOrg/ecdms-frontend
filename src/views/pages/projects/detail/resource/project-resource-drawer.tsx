@@ -1,4 +1,3 @@
-
 import { ProjectResource } from 'src/types/project/project-resource';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import ProjectResourceForm from './project-resource-form';
@@ -12,19 +11,20 @@ interface ProjectResourceDrawerType {
   refetch: () => void;
   projectResource: ProjectResource;
   projectId: string;
-  projectResources:ProjectResource[]
+  projectResources: ProjectResource[];
 }
 
 const ProjectResourceDrawer = (props: ProjectResourceDrawerType) => {
   const { open, toggle, refetch, projectResource, projectId } = props;
   const isEdit = Boolean(projectResource?.id);
-  const onSubmit = async (body:Resource)=>{
-    const dataToSubmit:ProjectResource={
-      project_id: projectId, resource_id: body.id,
+  const onSubmit = async (body: Resource) => {
+    const dataToSubmit: ProjectResource = {
+      project_id: projectId,
+      resource_id: body.id,
       id: ''
-    }
-    return projectResourceApiService.create({data:dataToSubmit,files:[]});
-  }
+    };
+    return projectResourceApiService.create({ data: dataToSubmit, files: [] });
+  };
   const handleClose = () => toggle();
   return (
     <CustomSideDrawer
@@ -32,9 +32,8 @@ const ProjectResourceDrawer = (props: ProjectResourceDrawerType) => {
       handleClose={handleClose}
       open={open}
       width={700}
-    >{
-      ()=><ProjectResourceForm refetch={refetch} onSubmit={onSubmit} addedResources={props.projectResources}/>
-    }
+    >
+      {() => <ProjectResourceForm refetch={refetch} onSubmit={onSubmit} addedResources={props.projectResources} />}
     </CustomSideDrawer>
   );
 };

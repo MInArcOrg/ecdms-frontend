@@ -16,7 +16,7 @@ export const portColumns = (
   onEdit: (port: Port) => void,
   onDelete: (id: string) => void,
   t: any,
-  refetch: () => void,
+  refetch: () => void
 ) =>
   [
     {

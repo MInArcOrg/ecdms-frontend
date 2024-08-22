@@ -1,15 +1,15 @@
 import { useTranslation } from 'next-i18next';
 interface Route {
   id: number;
-  title:string;
+  title: string;
   path: string;
   model: string;
 }
 
 interface SubMenuItem {
   id: number;
-  title:string;
-  icon:string;
+  title: string;
+  icon: string;
   routes: Route[];
 }
 
@@ -206,6 +206,6 @@ const subMenuItems = (baseUrl: string): SubMenuItem[] => {
 };
 export const findOtherModelName = (baseUrl: string, submenuId: number, routeId: number): string | undefined =>
   subMenuItems(baseUrl)
-    .find(submenu => submenu.id === submenuId)
-    ?.routes.find(route => route.id === routeId)?.model;
+    .find((submenu) => submenu.id === submenuId)
+    ?.routes.find((route) => route.id === routeId)?.model;
 export default subMenuItems;

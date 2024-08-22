@@ -1,19 +1,19 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import otherApiService from "src/services/project/other-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import { BuildingEnvelopMaterial } from "src/types/project/other";
-import { GetRequestParam, IApiResponse } from "src/types/requests";
-import { formatCreatedAt } from "src/utils/formatter/date";
-import ItemsListing from "src/views/shared/listing";
-import OtherDetailSidebar from "../../layouts/other-detail-drawer";
-import BuildingEnvelopMaterialCard from "./building-envelop-material-card";
-import BuildingEnvelopMaterialDrawer from "./building-envelop-material-drawer";
-import { buildingEnvelopMaterialColumns } from "./building-envelop-material-row";
+import { Box } from '@mui/material';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import otherApiService from 'src/services/project/other-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { BuildingEnvelopMaterial } from 'src/types/project/other';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import ItemsListing from 'src/views/shared/listing';
+import OtherDetailSidebar from '../../layouts/other-detail-drawer';
+import BuildingEnvelopMaterialCard from './building-envelop-material-card';
+import BuildingEnvelopMaterialDrawer from './building-envelop-material-drawer';
+import { buildingEnvelopMaterialColumns } from './building-envelop-material-row';
 
 interface BuildingEnvelopMaterialListProps {
   model: string;
@@ -27,12 +27,10 @@ const BuildingEnvelopMaterialList: React.FC<BuildingEnvelopMaterialListProps> = 
   const [selectedRow, setSelectedRow] = useState<BuildingEnvelopMaterial | null>(null);
   const { t } = useTranslation();
 
-  const fetchBuildingEnvelopMaterials = (
-    params: GetRequestParam
-  ): Promise<IApiResponse<BuildingEnvelopMaterial[]>> => {
+  const fetchBuildingEnvelopMaterials = (params: GetRequestParam): Promise<IApiResponse<BuildingEnvelopMaterial[]>> => {
     return otherApiService<BuildingEnvelopMaterial>().getAll(model, {
       ...params,
-      filter: { ...params.filter },
+      filter: { ...params.filter, project_id: projectId }
     });
   };
 
@@ -41,10 +39,10 @@ const BuildingEnvelopMaterialList: React.FC<BuildingEnvelopMaterialListProps> = 
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<BuildingEnvelopMaterial[]>({
-    queryKey: ["buildingEnvelopMaterials"],
-    fetchFunction: fetchBuildingEnvelopMaterials,
+    queryKey: ['buildingEnvelopMaterials'],
+    fetchFunction: fetchBuildingEnvelopMaterials
   });
 
   const toggleDrawer = () => {
@@ -73,16 +71,28 @@ const BuildingEnvelopMaterialList: React.FC<BuildingEnvelopMaterialListProps> = 
   };
 
   const mapBuildingEnvelopMaterialToDetailItems = (
-    buildingEnvelopMaterial: BuildingEnvelopMaterial,
+    buildingEnvelopMaterial: BuildingEnvelopMaterial
   ): { title: string; value: string }[] => [
-    { title: t('project.other.building-envelop-material.details.exterior-walls'), value: buildingEnvelopMaterial.exterior_walls || "N/A" },
-    { title: t('project.other.building-envelop-material.details.roof-assembly'), value: buildingEnvelopMaterial.roof_assembly || "N/A" },
-    { title: t('project.other.building-envelop-material.details.exterior-windows'), value: buildingEnvelopMaterial.exterior_windows || "N/A" },
-    { title: t('project.other.building-envelop-material.details.exterior-doors'), value: buildingEnvelopMaterial.exterior_doors || "N/A" },
-    { title: t('project.other.building-envelop-material.details.shading-components'), value: buildingEnvelopMaterial.shading_components || "N/A" },
-    { title: t('project.other.building-envelop-material.details.remark'), value: buildingEnvelopMaterial.remark || "N/A" },
-    { title: t('common.table-columns.created-at'), value: buildingEnvelopMaterial.created_at ? formatCreatedAt(buildingEnvelopMaterial.created_at) : "N/A" },
-    { title: t('common.table-columns.updated-at'), value: buildingEnvelopMaterial.updated_at ? formatCreatedAt(buildingEnvelopMaterial.updated_at) : "N/A" },
+    { title: t('project.other.building-envelop-material.details.exterior-walls'), value: buildingEnvelopMaterial.exterior_walls || 'N/A' },
+    { title: t('project.other.building-envelop-material.details.roof-assembly'), value: buildingEnvelopMaterial.roof_assembly || 'N/A' },
+    {
+      title: t('project.other.building-envelop-material.details.exterior-windows'),
+      value: buildingEnvelopMaterial.exterior_windows || 'N/A'
+    },
+    { title: t('project.other.building-envelop-material.details.exterior-doors'), value: buildingEnvelopMaterial.exterior_doors || 'N/A' },
+    {
+      title: t('project.other.building-envelop-material.details.shading-components'),
+      value: buildingEnvelopMaterial.shading_components || 'N/A'
+    },
+    { title: t('project.other.building-envelop-material.details.remark'), value: buildingEnvelopMaterial.remark || 'N/A' },
+    {
+      title: t('common.table-columns.created-at'),
+      value: buildingEnvelopMaterial.created_at ? formatCreatedAt(buildingEnvelopMaterial.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: buildingEnvelopMaterial.updated_at ? formatCreatedAt(buildingEnvelopMaterial.updated_at) : 'N/A'
+    }
   ];
 
   return (
@@ -104,24 +114,18 @@ const BuildingEnvelopMaterialList: React.FC<BuildingEnvelopMaterialListProps> = 
           toggleDrawer={toggleDetailDrawer}
           data={mapBuildingEnvelopMaterialToDetailItems(selectedRow as BuildingEnvelopMaterial)}
           hasReference={true}
-          id={selectedRow?.id || ""}
+          id={selectedRow?.id || ''}
           fileType={uploadableProjectFileTypes.other.buildingEnvelopMaterial}
           title={t('project.other.building-envelop-material.building-envelop-material-details')}
         />
       )}
 
       <ItemsListing
-        title={t("project.other.building-envelop-material.title")}
+        title={t('project.other.building-envelop-material.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: buildingEnvelopMaterialColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch
-          ),
+          headers: buildingEnvelopMaterialColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -138,9 +142,9 @@ const BuildingEnvelopMaterialList: React.FC<BuildingEnvelopMaterialListProps> = 
           onClick: toggleDrawer,
           onlyIcon: true,
           permission: {
-            action: "create",
-            subject: "buildingEnvelopMaterial",
-          },
+            action: 'create',
+            subject: 'buildingEnvelopMaterial'
+          }
         }}
         fetchDataFunction={refetch}
         items={buildingEnvelopMaterials || []}

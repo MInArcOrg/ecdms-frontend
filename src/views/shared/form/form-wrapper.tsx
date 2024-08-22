@@ -44,7 +44,6 @@ const FormPageWrapper = <T extends FormikValues>({
   const router = useRouter();
 
   const onSubmit = async (values: T, { setErrors, setStatus, setSubmitting }: FormikHelpers<T>) => {
-    
     const payload = getPayload(values);
     try {
       const res = await createActionFunc(payload);

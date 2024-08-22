@@ -42,7 +42,7 @@ const PortForm: React.FC<PortFormProps> = ({ formik, file, onFileChange }) => {
           size="small"
           sx={{ mb: 2 }}
         />
-         <CustomTextBox
+        <CustomTextBox
           fullWidth
           label={transl('project.other.port.form.site-area')}
           placeholder={transl('project.other.port.form.site-area')}
@@ -61,8 +61,6 @@ const PortForm: React.FC<PortFormProps> = ({ formik, file, onFileChange }) => {
           sx={{ mb: 2 }}
         />
       </Grid>
-      
-     
 
       <Grid item xs={12}>
         <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />

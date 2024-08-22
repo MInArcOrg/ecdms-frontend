@@ -15,13 +15,7 @@ interface RoadInfoCardProps {
   onDetail: (roadInfo: RoadInfo) => void;
 }
 
-const RoadInfoCard: React.FC<RoadInfoCardProps> = ({
-  roadInfo,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail,
-}) => {
+const RoadInfoCard: React.FC<RoadInfoCardProps> = ({ roadInfo, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -37,7 +31,7 @@ const RoadInfoCard: React.FC<RoadInfoCardProps> = ({
                 fontWeight: 500,
                 textDecoration: 'none',
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {roadInfo?.id.slice(0, 5)}...
@@ -72,7 +66,6 @@ const RoadInfoCard: React.FC<RoadInfoCardProps> = ({
           <Typography variant="body2" color="text.secondary">
             {t('project.other.road-info.details.revision-no')}: {roadInfo?.revision_no?.toString() || 'N/A'}
           </Typography>
-         
         </Box>
       </CardContent>
 
@@ -86,12 +79,7 @@ const RoadInfoCard: React.FC<RoadInfoCardProps> = ({
           title=""
           postAction={() => refetch()}
         />
-        <RowOptions
-          onEdit={() => onEdit(roadInfo)}
-          onDelete={() => onDelete(roadInfo.id)}
-          item={roadInfo}
-          options={[]}
-        />
+        <RowOptions onEdit={() => onEdit(roadInfo)} onDelete={() => onDelete(roadInfo.id)} item={roadInfo} options={[]} />
       </CardActions>
     </Card>
   );

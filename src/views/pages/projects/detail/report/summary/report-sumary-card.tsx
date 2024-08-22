@@ -1,42 +1,42 @@
-import { CardContent, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material'
-import { useState } from 'react'
-import ReportDetailCard from './expense-detail-card'
-import { useTranslation } from 'react-i18next'
+import { CardContent, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import { useState } from 'react';
+import ReportDetailCard from './expense-detail-card';
+import { useTranslation } from 'react-i18next';
 
 // Define types for the props
 interface Data {
   physical?: {
-    actual?: number
-    planned?: number
-    percent?: number | string
-  }
+    actual?: number;
+    planned?: number;
+    percent?: number | string;
+  };
   financial?: {
-    actual?: number
-    planned?: number
-    percent?: number | string
-  }
+    actual?: number;
+    planned?: number;
+    percent?: number | string;
+  };
   expense?: {
-    actual?: number
-    planned?: number
-    percent?: number | string
-  }
+    actual?: number;
+    planned?: number;
+    percent?: number | string;
+  };
   loss?: {
-    actual?: number
-    planned?: number
-    percent?: number | string
-  }
+    actual?: number;
+    planned?: number;
+    percent?: number | string;
+  };
 }
 
 interface ReportSummaryViewCardProps {
-  data?: Data
-  detailData?: any
-  loading?: boolean
+  data?: Data;
+  detailData?: any;
+  loading?: boolean;
 }
 
 function ReportSummaryViewCard({ data, detailData, loading }: ReportSummaryViewCardProps) {
-  const [open, setOpen] = useState(false)
-  const [selectedData, setSelectedData] = useState<any | undefined>(undefined)
-  const { t } = useTranslation()
+  const [open, setOpen] = useState(false);
+  const [selectedData, setSelectedData] = useState<any | undefined>(undefined);
+  const { t } = useTranslation();
 
   return (
     <CardContent>
@@ -45,7 +45,7 @@ function ReportSummaryViewCard({ data, detailData, loading }: ReportSummaryViewC
         <TableHead>
           <TableRow>
             <TableCell>
-              <Typography fontWeight='bold'>{t('Report')}-2023</Typography>
+              <Typography fontWeight="bold">{t('Report')}-2023</Typography>
             </TableCell>
             <TableCell>{t('Actual')}</TableCell>
             <TableCell>{t('Planned')}</TableCell>
@@ -68,14 +68,14 @@ function ReportSummaryViewCard({ data, detailData, loading }: ReportSummaryViewC
           <TableRow>
             <TableCell>
               <Typography
-                color='primary.main'
-                variant='body2'
+                color="primary.main"
+                variant="body2"
                 sx={{
                   cursor: 'pointer'
                 }}
                 onClick={() => {
-                  setSelectedData(detailData)
-                  setOpen(!open)
+                  setSelectedData(detailData);
+                  setOpen(!open);
                 }}
               >
                 {`${t('Project')} ${t('Expense')}`}
@@ -94,7 +94,7 @@ function ReportSummaryViewCard({ data, detailData, loading }: ReportSummaryViewC
         </TableBody>
       </Table>
     </CardContent>
-  )
+  );
 }
 
-export default ReportSummaryViewCard
+export default ReportSummaryViewCard;

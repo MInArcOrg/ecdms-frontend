@@ -21,7 +21,7 @@ const BuildingDimensionDetailCard: React.FC<BuildingDimensionDetailCardProps> = 
   refetch,
   onEdit,
   onDelete,
-  onDetail,
+  onDetail
 }) => {
   const { t } = useTranslation();
 
@@ -38,7 +38,7 @@ const BuildingDimensionDetailCard: React.FC<BuildingDimensionDetailCardProps> = 
                 fontWeight: 500,
                 textDecoration: 'none',
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {buildingDimensionDetail?.id.slice(0, 5)}...
@@ -50,31 +50,37 @@ const BuildingDimensionDetailCard: React.FC<BuildingDimensionDetailCardProps> = 
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-dimension-detail.details.site-area')}: {buildingDimensionDetail?.site_area ? `${buildingDimensionDetail?.site_area} sqm` : 'N/A'}
+            {t('project.other.building-dimension-detail.details.site-area')}:{' '}
+            {buildingDimensionDetail?.site_area ? `${buildingDimensionDetail?.site_area} sqm` : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-dimension-detail.details.site-above-sea-level')}: {buildingDimensionDetail?.site_above_sea_level?.toString() || 'N/A'}
+            {t('project.other.building-dimension-detail.details.site-above-sea-level')}:{' '}
+            {buildingDimensionDetail?.site_above_sea_level?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-dimension-detail.details.ground-floor-area')}: {buildingDimensionDetail?.ground_floor_area ? `${buildingDimensionDetail?.ground_floor_area} sqm` : 'N/A'}
+            {t('project.other.building-dimension-detail.details.ground-floor-area')}:{' '}
+            {buildingDimensionDetail?.ground_floor_area ? `${buildingDimensionDetail?.ground_floor_area} sqm` : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-dimension-detail.details.total-floor-area')}: {buildingDimensionDetail?.total_floor_area ? `${buildingDimensionDetail?.total_floor_area} sqm` : 'N/A'}
+            {t('project.other.building-dimension-detail.details.total-floor-area')}:{' '}
+            {buildingDimensionDetail?.total_floor_area ? `${buildingDimensionDetail?.total_floor_area} sqm` : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-dimension-detail.details.basement-stories-no')}: {buildingDimensionDetail?.basement_stories_no?.toString() || 'N/A'}
+            {t('project.other.building-dimension-detail.details.basement-stories-no')}:{' '}
+            {buildingDimensionDetail?.basement_stories_no?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-dimension-detail.details.above-ground-floor-stories-no')}: {buildingDimensionDetail?.above_ground_floor_stories_no?.toString() || 'N/A'}
+            {t('project.other.building-dimension-detail.details.above-ground-floor-stories-no')}:{' '}
+            {buildingDimensionDetail?.above_ground_floor_stories_no?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-dimension-detail.details.height-above-natural-ground')}: {buildingDimensionDetail?.height_above_natural_ground ? `${buildingDimensionDetail?.height_above_natural_ground} m` : 'N/A'}
+            {t('project.other.building-dimension-detail.details.height-above-natural-ground')}:{' '}
+            {buildingDimensionDetail?.height_above_natural_ground ? `${buildingDimensionDetail?.height_above_natural_ground} m` : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-dimension-detail.details.depth-below-natural-ground')}: {buildingDimensionDetail?.depth_below_natural_ground ? `${buildingDimensionDetail?.depth_below_natural_ground} m` : 'N/A'}
+            {t('project.other.building-dimension-detail.details.depth-below-natural-ground')}:{' '}
+            {buildingDimensionDetail?.depth_below_natural_ground ? `${buildingDimensionDetail?.depth_below_natural_ground} m` : 'N/A'}
           </Typography>
-          
-        
         </Box>
       </CardContent>
 

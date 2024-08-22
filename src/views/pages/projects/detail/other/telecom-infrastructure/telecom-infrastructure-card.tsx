@@ -21,7 +21,7 @@ const TelecomInfrastructureCard: React.FC<TelecomInfrastructureCardProps> = ({
   refetch,
   onEdit,
   onDelete,
-  onDetail,
+  onDetail
 }) => {
   const { t } = useTranslation();
 
@@ -38,7 +38,7 @@ const TelecomInfrastructureCard: React.FC<TelecomInfrastructureCardProps> = ({
                 fontWeight: 500,
                 textDecoration: 'none',
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {telecomInfrastructure?.id.slice(0, 5)}...
@@ -56,19 +56,24 @@ const TelecomInfrastructureCard: React.FC<TelecomInfrastructureCardProps> = ({
             {t('project.other.telecom-infrastructure.details.specifications')}: {telecomInfrastructure?.specifications || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.telecom-infrastructure.details.coverage-area')}: {telecomInfrastructure?.coverage_area ? `${telecomInfrastructure?.coverage_area} sqm` : 'N/A'}
+            {t('project.other.telecom-infrastructure.details.coverage-area')}:{' '}
+            {telecomInfrastructure?.coverage_area ? `${telecomInfrastructure?.coverage_area} sqm` : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.telecom-infrastructure.details.no-of-families-coverage')}: {telecomInfrastructure?.no_of_families_coverage !== undefined ? telecomInfrastructure?.no_of_families_coverage : 'N/A'}
+            {t('project.other.telecom-infrastructure.details.no-of-families-coverage')}:{' '}
+            {telecomInfrastructure?.no_of_families_coverage !== undefined ? telecomInfrastructure?.no_of_families_coverage : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.telecom-infrastructure.details.service-period')}: {telecomInfrastructure?.service_period ? formatCreatedAt(telecomInfrastructure.service_period) : 'N/A'}
+            {t('project.other.telecom-infrastructure.details.service-period')}:{' '}
+            {telecomInfrastructure?.service_period ? formatCreatedAt(telecomInfrastructure.service_period) : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.telecom-infrastructure.details.inauguration-date')}: {telecomInfrastructure?.inauguration_date ? formatCreatedAt(telecomInfrastructure.inauguration_date) : 'N/A'}
+            {t('project.other.telecom-infrastructure.details.inauguration-date')}:{' '}
+            {telecomInfrastructure?.inauguration_date ? formatCreatedAt(telecomInfrastructure.inauguration_date) : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {telecomInfrastructure?.created_at ? formatCreatedAt(telecomInfrastructure.created_at) : 'N/A'}
+            {t('common.table-columns.created-at')}:{' '}
+            {telecomInfrastructure?.created_at ? formatCreatedAt(telecomInfrastructure.created_at) : 'N/A'}
           </Typography>
         </Box>
       </CardContent>

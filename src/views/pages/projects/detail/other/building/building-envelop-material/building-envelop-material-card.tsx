@@ -21,7 +21,7 @@ const BuildingEnvelopMaterialCard: React.FC<BuildingEnvelopMaterialCardProps> = 
   refetch,
   onEdit,
   onDelete,
-  onDetail,
+  onDetail
 }) => {
   const { t } = useTranslation();
 
@@ -38,7 +38,7 @@ const BuildingEnvelopMaterialCard: React.FC<BuildingEnvelopMaterialCardProps> = 
                 fontWeight: 500,
                 textDecoration: 'none',
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {buildingEnvelopMaterial?.id.slice(0, 5)}...
@@ -62,10 +62,9 @@ const BuildingEnvelopMaterialCard: React.FC<BuildingEnvelopMaterialCardProps> = 
             {t('project.other.building-envelop-material.details.exterior-doors')}: {buildingEnvelopMaterial?.exterior_doors || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-envelop-material.details.shading-components')}: {buildingEnvelopMaterial?.shading_components || 'N/A'}
+            {t('project.other.building-envelop-material.details.shading-components')}:{' '}
+            {buildingEnvelopMaterial?.shading_components || 'N/A'}
           </Typography>
-       
-        
         </Box>
       </CardContent>
 

@@ -1,24 +1,23 @@
-import { Box, Card } from '@mui/material'
-import { useQuery } from '@tanstack/react-query'
-import { useRouter } from 'next/router'
-import { useState } from 'react'
-import projectReportApiService from 'src/services/project/project-report-service'
-import LoadingPlaceholder from 'src/views/components/loader'
-import ReportSummaryViewCard from './report-sumary-card'
+import { Box, Card } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import projectReportApiService from 'src/services/project/project-report-service';
+import LoadingPlaceholder from 'src/views/components/loader';
+import ReportSummaryViewCard from './report-sumary-card';
 
-interface ReportSummaryProps{
-    projectId:string
+interface ReportSummaryProps {
+  projectId: string;
 }
-function ReportSummary({projectId}:ReportSummaryProps) {
+function ReportSummary({ projectId }: ReportSummaryProps) {
+  const { data, isLoading } = useQuery({
+    queryKey: ['report-summary', projectId],
+    queryFn: () => projectReportApiService.getReportSummary(projectId, {})
+  });
 
-  const { data, isLoading } = useQuery({ 
-    queryKey:['report-summary',projectId],
-    queryFn:()=>projectReportApiService.getReportSummary(projectId,{})
-   })
-
-  const percentOf = (actual:number, planned:number) => {
-    return (actual / planned) * 100
-  }
+  const percentOf = (actual: number, planned: number) => {
+    return (actual / planned) * 100;
+  };
 
   const sumData = {
     financial: {
@@ -41,18 +40,14 @@ function ReportSummary({projectId}:ReportSummaryProps) {
       planned: data?.Plan?.totalProfitOrLoss,
       percent: percentOf(data?.Report?.totalProfitOrLoss, data?.Plan?.totalProfitOrLoss).toFixed(2)
     }
-  }
+  };
 
   return (
-      <Box display='flex' flexDirection='column' gap={3}>
-        
-        {isLoading && (
-          <LoadingPlaceholder/>
-        )}
-        <Card>{!isLoading && data && <ReportSummaryViewCard data={sumData} detailData={data?.Report} />}</Card>
-      </Box>
-  )
+    <Box display="flex" flexDirection="column" gap={3}>
+      {isLoading && <LoadingPlaceholder />}
+      <Card>{!isLoading && data && <ReportSummaryViewCard data={sumData} detailData={data?.Report} />}</Card>
+    </Box>
+  );
 }
 
-
-export default ReportSummary
+export default ReportSummary;
