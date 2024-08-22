@@ -16,12 +16,14 @@ import RowOptions from "src/views/shared/listing/row-options";
 
 const StakeholderCard = ({
   stakeholder,
+
   onEdit,
   onDelete,
   refetch,
 }: {
   stakeholder: Stakeholder;
   onEdit: (category: Stakeholder) => void;
+
   onDelete: (id: string) => void;
   t: any;
   refetch: () => void;
@@ -38,6 +40,7 @@ const StakeholderCard = ({
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {stakeholder.description}
+
                 </Typography>
               </Box>
             </Box>
@@ -51,6 +54,7 @@ const StakeholderCard = ({
                     <ModelActionComponent
                       model="Position"
                       model_id={stakeholder.id}
+
                       refetchModel={refetch}
                       resubmit={function (): void {
                         throw new Error("Function not implemented.");
@@ -64,6 +68,7 @@ const StakeholderCard = ({
                       onEdit={onEdit}
                       onDelete={() => onDelete(stakeholder.id)}
                       item={stakeholder}
+
                       options={[]}
                     />
                   </Box>
