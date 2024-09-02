@@ -24,19 +24,19 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
 }) => {
   const { t: transl } = useTranslation();
   const { data: resourceCategories } = useQuery({
-    queryKey: ["masterCategory", "stakeholders"],
+    queryKey: ["masterCategory", "stakeholder"],
     queryFn: () =>
-      masterCategoryApiService.getAll("stakeholders", {
+      masterCategoryApiService.getAll("stakeholder", {
         filter: {
-          stakeholderstype_id: typeId,
+          stakeholdertype_id: typeId,
         },
       }),
   });
   const { data: resourceSubCategories, refetch: refetchSubCategories } =
     useQuery({
-      queryKey: ["masterSubCategory", "stakeholders"],
+      queryKey: ["masterSubCategory", "stakeholder"],
       queryFn: () =>
-        masterSubCategoryApiService.getAll("stakeholders", {
+        masterSubCategoryApiService.getAll("stakeholder", {
           filter: {
             stakeholdercategory_id: formik.values.stakeholdercategory_id,
           },
@@ -51,8 +51,8 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
     <>
       <Box mb={2}>
         <CustomSelect
-          name="stakeholderscategory_id"
-          label={transl("stakeholders.form.category")}
+          name="stakeholdercategory_id"
+          label={transl("stakeholder.form.category")}
           options={
             resourceCategories?.payload?.map((resourceCategory) => ({
               value: resourceCategory.id,
@@ -63,8 +63,8 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
       </Box>
       <Box mb={2}>
         <CustomSelect
-          name="stakeholderssubcategory_id"
-          label={transl("stakeholders.form.sub_category")}
+          name="stakeholdersubcategory_id"
+          label={transl("stakeholder.form.sub_category")}
           options={
             resourceSubCategories?.payload?.map((resourceCategory) => ({
               value: resourceCategory.id,
@@ -75,64 +75,64 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
       </Box>
       <CustomTextBox
         fullWidth
-        label={transl("stakeholders.form.title")}
-        placeholder={transl("stakeholders.form.title")}
+        label={transl("stakeholder.form.title")}
+        placeholder={transl("stakeholder.form.title")}
         name="title"
         size="sm"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
         fullWidth
-        label={transl("stakeholders.form.field_of_business")}
-        placeholder={transl("stakeholders.form.field_of_business")}
+        label={transl("stakeholder.form.field_of_business")}
+        placeholder={transl("stakeholder.form.field_of_business")}
         name="field_of_business"
         size="sm"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
         fullWidth
-        label={transl("stakeholders.form.location")}
-        placeholder={transl("stakeholders.form.location")}
+        label={transl("stakeholder.form.location")}
+        placeholder={transl("stakeholder.form.location")}
         name="location"
         size="sm"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
         fullWidth
-        label={transl("stakeholders.form.ownership_type")}
-        placeholder={transl("stakeholders.form.ownership_type")}
+        label={transl("stakeholder.form.ownership_type")}
+        placeholder={transl("stakeholder.form.ownership_type")}
         name="ownership_type"
         size="sm"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
         fullWidth
-        label={transl("stakeholders.form.trade_name")}
-        placeholder={transl("stakeholders.form.trade_name")}
+        label={transl("stakeholder.form.trade_name")}
+        placeholder={transl("stakeholder.form.trade_name")}
         name="trade_name"
         size="sm"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
         fullWidth
-        label={transl("stakeholders.form.tin_number")}
-        placeholder={transl("stakeholders.form.tin_number")}
+        label={transl("stakeholder.form.tin_number")}
+        placeholder={transl("stakeholder.form.tin_number")}
         name="tin_number"
         size="sm"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
         fullWidth
-        label={transl("stakeholders.form.phone")}
-        placeholder={transl("stakeholders.form.phone")}
+        label={transl("stakeholder.form.phone")}
+        placeholder={transl("stakeholder.form.phone")}
         name="phone"
         size="sm"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
         fullWidth
-        label={transl("stakeholders.form.licence_issue_date")}
-        placeholder={transl("stakeholders.form.licence_issue_date")}
+        label={transl("stakeholder.form.licence_issue_date")}
+        placeholder={transl("stakeholder.form.licence_issue_date")}
         name="licence_issue_date"
         size="sm"
         sx={{ mb: 2 }}

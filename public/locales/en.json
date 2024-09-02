@@ -848,10 +848,10 @@
       "success-updated": "Successfully updated!"
     }
   },
-   "stakeholders":{
-    "create-stakeholders":"Create Stakeholder",
-    "edit-stakeholders":"Edit Stakeholder",
-    "title":"Stakeholder",
+   "stakeholder":{
+    "create-stakeholder":"Create Stakeholder",
+    "edit-stakeholder":"Edit Stakeholder",
+    "title":"Stakeholders",
     "columns":{
       "title":"Title",
       "description":"Description",

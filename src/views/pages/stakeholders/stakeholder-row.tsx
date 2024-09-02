@@ -72,7 +72,7 @@ export const StakeholderRow = (
 
     {
       flex: 0.1,
-      minWidth: 100,
+      minWidth: 150,
       sortable: false,
       field: "actions",
       headerName: t("common.table-columns.actions"),
@@ -94,6 +94,14 @@ export const StakeholderRow = (
             onEdit={onEdit}
             onDelete={() => onDelete(row.id)}
             item={row}
+            deletePermissionRule={{
+              action: 'delete',
+              subject: 'stakeholder',
+            }}
+            editPermissionRule={{
+              action: 'edit',
+              subject: 'stakeholder'
+            }}
             options={[]}
           />
         </Fragment>
