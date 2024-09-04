@@ -89,7 +89,14 @@ export const portColumns = (
               throw new Error('Function not implemented.');
             }}
           />
-          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
+          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)}  deletePermissionRule={{
+          action: 'delete',
+          subject: 'port'
+        }}
+        editPermissionRule={{
+          action: 'edit',
+          subject: 'port'
+        }} item={row} options={[]} />
         </Fragment>
       )
     }

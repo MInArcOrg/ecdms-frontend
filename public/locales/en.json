@@ -338,9 +338,9 @@
           "telecom": "Telecom",
           "telecom-infrastructure": "Telecom Infrastructure",
           "electric-power": "Electric Power",
-          "generation-capacity": "Generation Capacity",
-          "turbines-detail": "Turbines Detail",
-          "hydroelectric-dam": "Hydroelectric Dam",
+          "generating-capacity": "Generation Capacity",
+          "turbine-info": "Turbines Detail",
+          "hydro-electric-dam": "Hydroelectric Dam",
           "solar-energy": "Solar Energy",
           "wind-energy": "Wind Energy",
           "transformers-types": "Transformers Types",
@@ -769,8 +769,140 @@
           "material": "Material",
           "description": "Description"
         }
-      }
+      },
+      "generating-capacity": {
+        "title": "Generating Capacity",
+        "create-generating-capacity":"Create Generating Capacity",
+        "edit-generating-capacity":"Edit Generating Capacity",
+        "generating-capacity-details":"Generating Capacity Details",
+        "details": {
+          "operator": "Operator",
+          "commission-date": "Commission Date",
+          "turbine-type-number": "Turbine Type Number",
+          "designed-capacity": "Designed Capacity",
+          "generating-capacity": "Generating Capacity",
+          "installed-capacity": "Installed Capacity",
+          "capacity-factor": "Capacity Factor",
+          "annual-generation": "Annual Generation",
+          "revision-no": "Revision No"
+        }
+      },
+      "turbine-info": {
+        "title": "Turbine Info",
+        "create-turbine-info":"Create Turbine Info",
+        "edit-turbine-info":"Edit Turbine Info",
+        "turbine-info-details":"Turbine Info Details",
+        "details": {
+          "turbine-type": "Turbine Type",
+          "name": "Turbine Name",
+          "generating-capacity": "Generating Capacity",
+          "designed-quantity": "Designed Quantity",
+          "installed-quantity": "Installed Quantity",
+          "functional-quantity": "Functional Quantity",
+          "detail": "Detail"
+        }
+      },
+      "hydro-electric-dam": {
+        "title": "Hydro Electric Dam",
+        "create-hydro-electric-dam":"Create Hydro Electric Dam",
+        "edit-hydro-electric-dam":"Edit Hydro Electric Dam",
+        "hydro-electric-dam-details":"Hydro Electric Dam Details",
+        "details": {
+          "river-name": "River Name",
+          "elevation-from-sea-level": "Elevation from Sea Level",
+          "elevation-from-ngl": "Elevation from NGL",
+          "dam-type": "Dam Type",
+          "dam-volume": "Dam Volume",
+          "gated-spillway-no": "Number of Gated Spillways",
+          "none-gated-spillway-no": "Number of Non-Gated Spillways"
+        }
+      },
+      "solar-energy": {
+        "title": "Solar Energy",
+        "create-solar-energy":"Create Solar Energy",
+        "edit-solar-energy":"Edit Solar Energy",
+        "solar-energy-details":"Solar Energy Details",
+        "details": {
+          "title":"Title",
+          "description":"Description",
+          "specifications":"Specifications"
+        }
+      },
+      "wind-energy": {
+        "title": "Wind Energy",
+        "create-wind-energy":"Create Wind Energy",
+        "edit-wind-energy":"Edit Wind Energy",
+        "wind-energy-details":"Wind Energy Details",
+        "details": {
+          "title":"Title",
+          "description":"Description",
+          "specifications":"Specifications"
+        }
+      },
+      "transformer-type": {
+        "title": "Transformer Type",
+        "create-transformer-type":"Create Transformer Type",
+        "edit-transformer-type":"Edit Transformer Type",
+        "transformer-type-details":"Transformer Type Details",
+        "details": {
+          "name":"Name",
+          "description":"Description"
+        }
+      },
+      "transformer": {
+        "title": "Transformer",
+        "create-transformer":"Create Transformer",
+        "edit-transformer":"Edit Transformer",
+        "transformer-details":"Transformer Details",
+        "details": {
+          "transformertype": "Transformer Type",
+          "specifications": "Specifications",
+          "input-current": "Input Current",
+          "input-voltage": "Input Voltage",
+          "output-current": "Output Current",
+          "output-voltage": "Output Voltage",
+          "northing": "Northing",
+          "easting": "Easting"
+        }
+      },
+      "transmission-line": {
+        "title": "Transmission",
+        "create-transmission-line":"Create Transmission",
+        "edit-transmission-line":"Edit Transmission",
+        "transmission-line-details":"Transmission Details",
+        "details": {
+          "name": "Name",
+          "line-type": "Line Type",
+          "transmission-capacity": "Transmission Capacity",
+          "transmitting-power": "Transmitting Power",
+          "transmitting-current": "Transmitting Current",
+          "transmitting-voltage": "Transmitting Voltage",
+          "transmission-towers-number": "Transmission Towers Number",
+          "start-northing": "Start Northing",
+          "start-easting": "Start Easting",
+          "end-northing": "End Northing",
+          "end-easting": "End Easting"
+        }
+      },
+      "electric-tower": {
+        "title": "Electric Tower",
+        "create-electric-tower":"Create Electric Tower",
+        "edit-electric-tower":"Edit Electric Tower",
+        "electric-tower-details":"Electric Tower Details",
+        "details": {
+          "columns": "Columns",
+          "braces": "Braces",
+          "beam-cross-arms": "Beam Cross Arms",
+          "brace-cross-arm": "Brace Cross Arm",
+          "elasticity-modulus": "Elasticity Modulus",
+          "poission-ratio": "Poisson Ratio",
+          "overall-length": "Overall Length",
+          "embedded-length": "Embedded Length",
+          "revision-no": "Revision Number"
+        }
+      }      
     },
+    
     "columns": {
       "title": "Title",
       "elapsed-time": "Elapsed Time",
@@ -834,6 +966,7 @@
   },
   "common": {
     "edit": "Edit",
+    "not-available": "Not Available",
     "create": "Create",
     "table-columns": {
       "created-at": "Created At",

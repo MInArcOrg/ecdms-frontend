@@ -122,7 +122,7 @@ const RoadLayerList: React.FC<RoadLayerListProps> = ({ model, projectId, typeId 
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'roadinfo'
+            subject: 'roadlayer'
           }
         }}
         fetchDataFunction={refetch}
