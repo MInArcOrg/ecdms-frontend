@@ -2,21 +2,27 @@ import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { Port } from 'src/types/project/other';
+import { WindEnergy } from 'src/types/project/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-interface PortCardProps {
-  port: Port;
+interface WindEnergyCardProps {
+  windEnergy: WindEnergy;
   refetch: () => void;
-  onEdit: (port: Port) => void;
+  onEdit: (windEnergy: WindEnergy) => void;
   onDelete: (id: string) => void;
-  onDetail: (port: Port) => void;
+  onDetail: (windEnergy: WindEnergy) => void;
 }
 
-const PortCard: React.FC<PortCardProps> = ({ port, refetch, onEdit, onDelete, onDetail }) => {
+const WindEnergyCard: React.FC<WindEnergyCardProps> = ({
+  windEnergy,
+  refetch,
+  onEdit,
+  onDelete,
+  onDetail
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -24,10 +30,8 @@ const PortCard: React.FC<PortCardProps> = ({ port, refetch, onEdit, onDelete, on
       <CardContent>
         <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
           <Typography variant="h5" fontWeight="bold">
-            <Typography
-              noWrap
-              component={Button}
-              onClick={() => onDetail(port)}
+            <Button
+              onClick={() => onDetail(windEnergy)}
               sx={{
                 fontWeight: 500,
                 textDecoration: 'none',
@@ -35,8 +39,8 @@ const PortCard: React.FC<PortCardProps> = ({ port, refetch, onEdit, onDelete, on
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {port?.id.slice(0, 5)}...
-            </Typography>
+              {windEnergy.title}
+            </Button>
           </Typography>
         </Box>
 
@@ -44,46 +48,40 @@ const PortCard: React.FC<PortCardProps> = ({ port, refetch, onEdit, onDelete, on
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.port.details.operator')}: {port?.operator || 'N/A'}
+            {t('project.other.wind-energy.details.description')}: {windEnergy.description || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.port.details.port-type')}: {port?.port_type || 'N/A'}
+            {t('project.other.wind-energy.details.specifications')}: {windEnergy.specifications || t('common.not-available')}
+          </Typography>
+       
+          <Typography variant="body2" color="text.secondary">
+            {t('common.table-columns.created-at')}: {windEnergy.created_at ? formatCreatedAt(windEnergy.created_at) : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.port.details.site-area')}: {port?.site_area ? `${port?.site_area} sqm` : 'N/A'}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {t('project.other.port.details.annual-traffic-size')}: {port?.annual_traffic_size ? `${port?.annual_traffic_size} tons` : 'N/A'}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {port?.created_at ? formatCreatedAt(port?.created_at) : 'N/A'}{' '}
+            {t('common.table-columns.updated-at')}: {windEnergy.updated_at ? formatCreatedAt(windEnergy.updated_at) : t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={port.id} type={uploadableProjectFileTypes.other.port} />
+        <FileDrawer id={windEnergy.id} type={uploadableProjectFileTypes.other.windEnergy} />
         <ModelAction
-          model="Port"
-          model_id={port.id}
+          model="WindEnergy"
+          model_id={windEnergy.id}
           refetchModel={refetch}
-          resubmit={() => refetch()}
-          title={''}
-          postAction={() => refetch()}
+          resubmit={refetch}
+          title=""
+          postAction={refetch}
         />
-        <RowOptions onEdit={() => onEdit(port)} onDelete={() => onDelete(port.id)} item={port}
-         deletePermissionRule={{
-          action: 'delete',
-          subject: 'port'
-        }}
-        editPermissionRule={{
-          action: 'edit',
-          subject: 'port'
-        }}
-        options={[]} />
+        <RowOptions
+          onEdit={() => onEdit(windEnergy)}
+          onDelete={() => onDelete(windEnergy.id)}
+          item={windEnergy}
+          options={[]}
+        />
       </CardActions>
     </Card>
   );
 };
 
-export default PortCard;
+export default WindEnergyCard;

@@ -2,21 +2,21 @@ import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { RoadLayer } from 'src/types/project/other';
+import { HydroElectricDam } from 'src/types/project/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-interface RoadLayerCardProps {
-  roadLayer: RoadLayer;
+interface HydroElectricDamCardProps {
+  hydroElectricDam: HydroElectricDam;
   refetch: () => void;
-  onEdit: (roadLayer: RoadLayer) => void;
+  onEdit: (hydroElectricDam: HydroElectricDam) => void;
   onDelete: (id: string) => void;
-  onDetail: (roadLayer: RoadLayer) => void;
+  onDetail: (hydroElectricDam: HydroElectricDam) => void;
 }
 
-const RoadLayerCard: React.FC<RoadLayerCardProps> = ({ roadLayer, refetch, onEdit, onDelete, onDetail }) => {
+const HydroElectricDamCard: React.FC<HydroElectricDamCardProps> = ({ hydroElectricDam, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -25,7 +25,7 @@ const RoadLayerCard: React.FC<RoadLayerCardProps> = ({ roadLayer, refetch, onEdi
         <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
           <Typography variant="h5" fontWeight="bold">
             <Button
-              onClick={() => onDetail(roadLayer)}
+              onClick={() => onDetail(hydroElectricDam)}
               sx={{
                 fontWeight: 500,
                 textDecoration: 'none',
@@ -33,7 +33,7 @@ const RoadLayerCard: React.FC<RoadLayerCardProps> = ({ roadLayer, refetch, onEdi
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {roadLayer?.id.slice(0, 5)}...
+              {hydroElectricDam?.id.slice(0, 5)}...
             </Button>
           </Typography>
         </Box>
@@ -42,58 +42,65 @@ const RoadLayerCard: React.FC<RoadLayerCardProps> = ({ roadLayer, refetch, onEdi
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.road-layer.details.segment')}: {roadLayer?.roadsegment?.name || 'N/A'}
+            {t('project.other.hydro-electric-dam.details.river-name')}: {hydroElectricDam?.river_name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.road-layer.details.name')}: {roadLayer?.name || 'N/A'}
+            {t('project.other.hydro-electric-dam.details.elevation-from-sea-level')}: {hydroElectricDam?.elevation_from_sea_level || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.road-layer.details.specifications')}: {roadLayer?.specifications || 'N/A'}
+            {t('project.other.hydro-electric-dam.details.elevation-from-ngl')}: {hydroElectricDam?.elevation_from_ngl || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.road-layer.details.number')}: {roadLayer?.number?.toString() || 'N/A'}
+            {t('project.other.hydro-electric-dam.details.dam-type')}: {hydroElectricDam?.dam_type || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.road-layer.details.thickness')}: {roadLayer?.thickness?.toString() || 'N/A'}
+            {t('project.other.hydro-electric-dam.details.dam-volume')}: {hydroElectricDam?.dam_volume || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.road-layer.details.material')}: {roadLayer?.material || 'N/A'}
+            {t('project.other.hydro-electric-dam.details.gated-spillway-no')}: {hydroElectricDam?.gated_spillway_no || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.road-layer.details.description')}: {roadLayer?.description || 'N/A'}
+            {t('project.other.hydro-electric-dam.details.none-gated-spillway-no')}: {hydroElectricDam?.none_gated_spillway_no || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {roadLayer?.created_at ? formatCreatedAt(roadLayer.created_at) : 'N/A'}
+            {t('project.other.hydro-electric-dam.details.revision-no')}: {hydroElectricDam?.revision_no || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.updated-at')}: {roadLayer?.updated_at ? formatCreatedAt(roadLayer.updated_at) : 'N/A'}
+            {t('common.table-columns.created-at')}: {hydroElectricDam?.created_at ? formatCreatedAt(hydroElectricDam.created_at) : 'N/A'}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {t('common.table-columns.updated-at')}: {hydroElectricDam?.updated_at ? formatCreatedAt(hydroElectricDam.updated_at) : 'N/A'}
           </Typography>
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={roadLayer.id} type={uploadableProjectFileTypes.other.roadLayer} />
+        <FileDrawer id={hydroElectricDam.id} type={uploadableProjectFileTypes.other.hydroElectricDam} />
         <ModelAction
-          model="RoadLayer"
-          model_id={roadLayer.id}
+          model="HydroElectricDam"
+          model_id={hydroElectricDam.id}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
           postAction={() => refetch()}
         />
-        <RowOptions onEdit={() => onEdit(roadLayer)} onDelete={() => onDelete(roadLayer.id)} item={roadLayer}
+        <RowOptions
+          onEdit={() => onEdit(hydroElectricDam)}
+          onDelete={() => onDelete(hydroElectricDam.id)}
           deletePermissionRule={{
             action: 'delete',
-            subject: 'roadlayer'
+            subject: 'hydroElectricDam',
           }}
           editPermissionRule={{
             action: 'edit',
-            subject: 'roadlayer'
+            subject: 'hydroElectricDam',
           }}
-        options={[]} />
+          item={hydroElectricDam}
+          options={[]}
+        />
       </CardActions>
     </Card>
   );
 };
 
-export default RoadLayerCard;
+export default HydroElectricDamCard;
