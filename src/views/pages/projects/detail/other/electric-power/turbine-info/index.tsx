@@ -30,7 +30,7 @@ const TurbineInfoList: React.FC<TurbineInfoListProps> = ({ model, projectId, typ
   const fetchGeneratingCapacities = (params: GetRequestParam): Promise<IApiResponse<TurbineInfo[]>> => {
     return otherApiService<TurbineInfo>().getAll(model, {
       ...params,
-      filter: { ...params.filter, project_id: projectId },
+      filter: { ...params.filter, project_id: projectId }
     });
   };
 
@@ -39,10 +39,10 @@ const TurbineInfoList: React.FC<TurbineInfoListProps> = ({ model, projectId, typ
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<TurbineInfo[]>({
     queryKey: ['generatingCapacities'],
-    fetchFunction: fetchGeneratingCapacities,
+    fetchFunction: fetchGeneratingCapacities
   });
 
   const toggleDrawer = () => {
@@ -78,7 +78,7 @@ const TurbineInfoList: React.FC<TurbineInfoListProps> = ({ model, projectId, typ
     { title: t('project.other.turbine-info.details.installed-quantity'), value: turbineInfo.installed_quantity || 'N/A' },
     { title: t('project.other.turbine-info.details.functional-quantity'), value: turbineInfo.functional_quantity || 'N/A' },
     { title: t('common.table-columns.created-at'), value: turbineInfo.created_at ? formatCreatedAt(turbineInfo.created_at) : 'N/A' },
-    { title: t('common.table-columns.updated-at'), value: turbineInfo.updated_at ? formatCreatedAt(turbineInfo.updated_at) : 'N/A' },
+    { title: t('common.table-columns.updated-at'), value: turbineInfo.updated_at ? formatCreatedAt(turbineInfo.updated_at) : 'N/A' }
   ];
 
   return (
@@ -111,17 +111,11 @@ const TurbineInfoList: React.FC<TurbineInfoListProps> = ({ model, projectId, typ
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: turbineInfoColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
+          headers: turbineInfoColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <TurbineInfoCard
-            onDetail={handleClickDetail}
-            turbineInfo={data}
-            onEdit={handleEdit}
-            refetch={refetch}
-            onDelete={handleDelete}
-          />
+          <TurbineInfoCard onDetail={handleClickDetail} turbineInfo={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
@@ -129,8 +123,8 @@ const TurbineInfoList: React.FC<TurbineInfoListProps> = ({ model, projectId, typ
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'turbineinfo',
-          },
+            subject: 'turbineinfo'
+          }
         }}
         fetchDataFunction={refetch}
         items={generatingCapacities || []}

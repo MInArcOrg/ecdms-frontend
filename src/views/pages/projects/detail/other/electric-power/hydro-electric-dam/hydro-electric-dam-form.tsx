@@ -81,7 +81,6 @@ const HydroElectricDamForm: React.FC<HydroElectricDamFormProps> = ({ formik, fil
           type="number"
           sx={{ mb: 2 }}
         />
-       
       </Grid>
 
       <Grid item xs={12}>

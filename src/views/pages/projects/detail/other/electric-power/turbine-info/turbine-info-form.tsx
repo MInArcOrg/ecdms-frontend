@@ -19,11 +19,10 @@ interface TurbineInfoFormProps {
 
 const TurbineInfoForm: React.FC<TurbineInfoFormProps> = ({ formik, file, onFileChange, projectId }) => {
   const { t } = useTranslation();
- 
+
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-     
         <CustomTextBox
           fullWidth
           label={t('project.other.turbine-info.details.name')}

@@ -16,13 +16,7 @@ interface TransformerCardProps {
   onDetail: (transformer: Transformer) => void;
 }
 
-const TransformerCard: React.FC<TransformerCardProps> = ({
-  transformer,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail
-}) => {
+const TransformerCard: React.FC<TransformerCardProps> = ({ transformer, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -63,7 +57,8 @@ const TransformerCard: React.FC<TransformerCardProps> = ({
             {t('project.other.transformer.details.output-voltage')}: {transformer.output_voltage || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {transformer.created_at ? formatCreatedAt(transformer.created_at) : t('common.not-available')}
+            {t('common.table-columns.created-at')}:{' '}
+            {transformer.created_at ? formatCreatedAt(transformer.created_at) : t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>
@@ -78,12 +73,7 @@ const TransformerCard: React.FC<TransformerCardProps> = ({
           title=""
           postAction={refetch}
         />
-        <RowOptions
-          onEdit={() => onEdit(transformer)}
-          onDelete={() => onDelete(transformer.id)}
-          item={transformer}
-          options={[]}
-        />
+        <RowOptions onEdit={() => onEdit(transformer)} onDelete={() => onDelete(transformer.id)} item={transformer} options={[]} />
       </CardActions>
     </Card>
   );

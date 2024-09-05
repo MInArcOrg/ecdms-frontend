@@ -2,18 +2,18 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import { TransformerType } from 'src/types/project/other';
+import { Railway } from 'src/types/project/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
-  row: TransformerType;
+  row: Railway;
 }
 
-export const transformerTypeColumns = (
-  onDetail: (transformerType: TransformerType) => void,
-  onEdit: (transformerType: TransformerType) => void,
+export const railwayColumns = (
+  onDetail: (railway: Railway) => void,
+  onEdit: (railway: Railway) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void
@@ -41,18 +41,32 @@ export const transformerTypeColumns = (
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t('project.other.transformer-type.details.name'),
+    headerName: t('project.other.railway-type.details.name'),
     field: 'name',
-    renderCell: ({ row }: CellType) => (row.name ? row.name : t('common.not-available'))
+    renderCell: ({ row }: CellType) => (row.railwaytype_id ? row.railwaytype?.name : t('common.not-available'))
+  },
+
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t('project.other.railway.specifications'),
+    field: 'specifications',
+    renderCell: ({ row }: CellType) => (row.specifications ? row.specifications : t('common.not-available'))
   },
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t('project.other.transformer-type.details.description'),
-    field: 'description',
-    renderCell: ({ row }: CellType) => (row.description ? row.description : t('common.not-available'))
+    headerName: t('project.other.railway.input-voltage'),
+    field: 'input_voltage',
+    renderCell: ({ row }: CellType) => (row.input_voltage ? row.input_voltage : t('common.not-available'))
   },
-
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t('project.other.railway.output-voltage'),
+    field: 'output_voltage',
+    renderCell: ({ row }: CellType) => (row.output_voltage ? row.output_voltage : t('common.not-available'))
+  },
   {
     flex: 0.15,
     minWidth: 120,
@@ -64,7 +78,6 @@ export const transformerTypeColumns = (
       </Typography>
     )
   },
-
   {
     minWidth: 150,
     sortable: false,
@@ -72,18 +85,18 @@ export const transformerTypeColumns = (
     headerName: t('common.table-columns.actions'),
     renderCell: ({ row }: CellType) => (
       <Fragment>
-        <ModelAction model="TransformerType" model_id={row.id} refetchModel={refetch} resubmit={() => {}} title="" postAction={() => {}} />
+        <ModelAction model="Railway" model_id={row.id} refetchModel={refetch} resubmit={() => {}} title="" postAction={() => {}} />
         <RowOptions
           onEdit={() => onEdit(row)}
           onDelete={() => onDelete(row.id)}
           item={row}
           deletePermissionRule={{
             action: 'delete',
-            subject: 'windenergy'
+            subject: 'railway'
           }}
           editPermissionRule={{
             action: 'edit',
-            subject: 'windenergy'
+            subject: 'railway'
           }}
           options={[]}
         />

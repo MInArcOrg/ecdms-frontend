@@ -30,7 +30,7 @@ const WindEnergyList: React.FC<WindEnergyListProps> = ({ model, projectId, typeI
   const fetchGeneratingCapacities = (params: GetRequestParam): Promise<IApiResponse<WindEnergy[]>> => {
     return otherApiService<WindEnergy>().getAll(model, {
       ...params,
-      filter: { ...params.filter, project_id: projectId },
+      filter: { ...params.filter, project_id: projectId }
     });
   };
 
@@ -39,10 +39,10 @@ const WindEnergyList: React.FC<WindEnergyListProps> = ({ model, projectId, typeI
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<WindEnergy[]>({
     queryKey: ['generatingCapacities'],
-    fetchFunction: fetchGeneratingCapacities,
+    fetchFunction: fetchGeneratingCapacities
   });
 
   const toggleDrawer = () => {
@@ -75,7 +75,7 @@ const WindEnergyList: React.FC<WindEnergyListProps> = ({ model, projectId, typeI
     { title: t('project.other.wind-energy.details.description'), value: windEnergy.description || 'N/A' },
     { title: t('project.other.wind-energy.details.specifications'), value: windEnergy.specifications || 'N/A' },
     { title: t('project.other.wind-energy.details.revision-no'), value: windEnergy.revision_no?.toString() || 'N/A' },
-    { title: t('common.table-columns.created-at'), value: windEnergy.created_at ? formatCreatedAt(windEnergy.created_at) : 'N/A' },
+    { title: t('common.table-columns.created-at'), value: windEnergy.created_at ? formatCreatedAt(windEnergy.created_at) : 'N/A' }
   ];
 
   return (
@@ -108,17 +108,11 @@ const WindEnergyList: React.FC<WindEnergyListProps> = ({ model, projectId, typeI
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: windEnergyColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
+          headers: windEnergyColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <WindEnergyCard
-            onDetail={handleClickDetail}
-            windEnergy={data}
-            onEdit={handleEdit}
-            refetch={refetch}
-            onDelete={handleDelete}
-          />
+          <WindEnergyCard onDetail={handleClickDetail} windEnergy={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
@@ -126,8 +120,8 @@ const WindEnergyList: React.FC<WindEnergyListProps> = ({ model, projectId, typeI
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'generatingcapacity',
-          },
+            subject: 'generatingcapacity'
+          }
         }}
         fetchDataFunction={refetch}
         items={generatingCapacities || []}

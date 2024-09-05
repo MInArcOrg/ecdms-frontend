@@ -17,19 +17,19 @@ interface ElectricTowerFormProps {
   projectId: string;
 }
 
-const ElectricTowerForm: React.FC<ElectricTowerFormProps> = ({ formik, file, onFileChange,projectId }) => {
+const ElectricTowerForm: React.FC<ElectricTowerFormProps> = ({ formik, file, onFileChange, projectId }) => {
   const { t } = useTranslation();
   const { data: transmissionLines } = useQuery({
-    queryKey: ['transmissionline',projectId],
+    queryKey: ['transmissionline', projectId],
     queryFn: () =>
       otherApiService<TransmissionLine>().getAll('transmissionline', {
-        filter: { project_id: projectId },
+        filter: { project_id: projectId }
       })
   });
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-      <CustomSelectBox
+        <CustomSelectBox
           size="small"
           name="transmissionline_id"
           label={t('project.other.transformer.details.transmissionline')}
@@ -104,7 +104,6 @@ const ElectricTowerForm: React.FC<ElectricTowerFormProps> = ({ formik, file, onF
           size="small"
           sx={{ mb: 2 }}
         />
-       
       </Grid>
 
       <Grid item xs={12}>

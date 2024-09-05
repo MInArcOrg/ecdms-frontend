@@ -48,7 +48,6 @@ const SolarEnergyForm: React.FC<SolarEnergyFormProps> = ({ formik, file, onFileC
           multiline
           rows={3}
         />
-   
       </Grid>
 
       <Grid item xs={12}>

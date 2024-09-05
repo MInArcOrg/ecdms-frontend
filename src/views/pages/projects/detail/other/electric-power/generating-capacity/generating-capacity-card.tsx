@@ -16,13 +16,7 @@ interface GeneratingCapacityCardProps {
   onDetail: (generatingCapacity: GeneratingCapacity) => void;
 }
 
-const GeneratingCapacityCard: React.FC<GeneratingCapacityCardProps> = ({
-  generatingCapacity,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail
-}) => {
+const GeneratingCapacityCard: React.FC<GeneratingCapacityCardProps> = ({ generatingCapacity, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -51,31 +45,40 @@ const GeneratingCapacityCard: React.FC<GeneratingCapacityCardProps> = ({
             {t('project.other.generating-capacity.details.operator')}: {generatingCapacity.operator || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.generating-capacity.details.turbine-type-number')}: {generatingCapacity.turbine_type_number !== undefined ? generatingCapacity.turbine_type_number : t('common.not-available')}
+            {t('project.other.generating-capacity.details.turbine-type-number')}:{' '}
+            {generatingCapacity.turbine_type_number !== undefined ? generatingCapacity.turbine_type_number : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.generating-capacity.details.designed-capacity')}: {generatingCapacity.designed_capacity || t('common.not-available')}
+            {t('project.other.generating-capacity.details.designed-capacity')}:{' '}
+            {generatingCapacity.designed_capacity || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.generating-capacity.details.generating-capacity')}: {generatingCapacity.generating_capacity || t('common.not-available')}
+            {t('project.other.generating-capacity.details.generating-capacity')}:{' '}
+            {generatingCapacity.generating_capacity || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.generating-capacity.details.installed-capacity')}: {generatingCapacity.installed_capacity || t('common.not-available')}
+            {t('project.other.generating-capacity.details.installed-capacity')}:{' '}
+            {generatingCapacity.installed_capacity || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.generating-capacity.details.capacity-factor')}: {generatingCapacity.capacity_factor || t('common.not-available')}
+            {t('project.other.generating-capacity.details.capacity-factor')}:{' '}
+            {generatingCapacity.capacity_factor || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.generating-capacity.details.annual-generation')}: {generatingCapacity.annual_generation || t('common.not-available')}
+            {t('project.other.generating-capacity.details.annual-generation')}:{' '}
+            {generatingCapacity.annual_generation || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.generating-capacity.details.commission-date')}: {generatingCapacity.commission_date ? formatCreatedAt(generatingCapacity.commission_date) : t('common.not-available')}
+            {t('project.other.generating-capacity.details.commission-date')}:{' '}
+            {generatingCapacity.commission_date ? formatCreatedAt(generatingCapacity.commission_date) : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {generatingCapacity.created_at ? formatCreatedAt(generatingCapacity.created_at) : t('common.not-available')}
+            {t('common.table-columns.created-at')}:{' '}
+            {generatingCapacity.created_at ? formatCreatedAt(generatingCapacity.created_at) : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.updated-at')}: {generatingCapacity.updated_at ? formatCreatedAt(generatingCapacity.updated_at) : t('common.not-available')}
+            {t('common.table-columns.updated-at')}:{' '}
+            {generatingCapacity.updated_at ? formatCreatedAt(generatingCapacity.updated_at) : t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>
@@ -96,12 +99,12 @@ const GeneratingCapacityCard: React.FC<GeneratingCapacityCardProps> = ({
           item={generatingCapacity}
           options={[]}
           deletePermissionRule={{
-            action: "delete",
-            subject: "generatingcapacity",
+            action: 'delete',
+            subject: 'generatingcapacity'
           }}
           editPermissionRule={{
-            action: "edit",
-            subject: "generatingcapacity",
+            action: 'edit',
+            subject: 'generatingcapacity'
           }}
         />
       </CardActions>

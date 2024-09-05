@@ -48,9 +48,9 @@ export interface BuildingDimensionDetail {
 }
 
 export interface BuildingEnvelopMaterial {
-  id: string; 
-  parent_id?: string; 
-  project_id: string; 
+  id: string;
+  parent_id?: string;
+  project_id: string;
   exterior_walls?: string; // STRING
   roof_assembly?: string; // STRING
   exterior_windows?: string; // STRING
@@ -96,10 +96,10 @@ export interface RoadSegment {
   updated_at: Date;
 }
 export interface RoadLayer {
-  id: string; 
-  parent_id?: string;  
-  project_id: string; 
-  segment_id: string; 
+  id: string;
+  parent_id?: string;
+  project_id: string;
+  segment_id: string;
   roadsegment: RoadSegment;
   name?: string; // Optional string
   number?: number; // Optional integer
@@ -144,9 +144,9 @@ export interface TurbineInfo {
 }
 
 export interface HydroElectricDam {
-  id: string; 
-  parent_id?: string; 
-  project_id: string; 
+  id: string;
+  parent_id?: string;
+  project_id: string;
   river_name: string;
   elevation_from_sea_level?: string;
   elevation_from_ngl?: string;
@@ -159,55 +159,55 @@ export interface HydroElectricDam {
   updated_at?: Date;
 }
 export interface SolarEnergy {
-  id: string; 
-  parent_id?: string; 
-  project_id: string; 
-  model_id: string; 
+  id: string;
+  parent_id?: string;
+  project_id: string;
+  model_id: string;
   title: string;
-  description?: string; 
-  specifications?: string; 
-  revision_no?: number; 
+  description?: string;
+  specifications?: string;
+  revision_no?: number;
   created_at?: Date;
   updated_at?: Date;
 }
 export interface WindEnergy {
-  id: string; 
-  parent_id?: string; 
-  project_id: string; 
-  model_id?: string; 
+  id: string;
+  parent_id?: string;
+  project_id: string;
+  model_id?: string;
   title: string;
-  description?: string; 
-  specifications?: string; 
-  revision_no?: number; 
-  created_at?: Date; 
-  updated_at?: Date; 
+  description?: string;
+  specifications?: string;
+  revision_no?: number;
+  created_at?: Date;
+  updated_at?: Date;
 }
 export interface TransformerType {
-  id: string; 
-  parent_id?: string; 
-  project_id?: string; 
+  id: string;
+  parent_id?: string;
+  project_id?: string;
   name: string;
-  description?: string; 
-  revision_no?: number; 
-  created_at?: Date; 
-  updated_at?: Date; 
+  description?: string;
+  revision_no?: number;
+  created_at?: Date;
+  updated_at?: Date;
 }
 export interface Transformer {
-  id: string; 
-  parent_id?: string; 
-  project_id: string; 
-  transformertype_id: string; 
-  specifications?: string; 
-  input_current?: string; 
-  input_voltage?: string; 
-  output_current?: string; 
-  output_voltage?: string; 
-  transformertype:TransformerType;
-  northing?: number; 
-  easting?: number; 
-  revision_no?: number; 
-  created_at?: Date; 
-  updated_at?: Date; 
+  id: string;
+  parent_id?: string;
+  project_id: string;
+  transformertype_id: string;
+  specifications?: string;
+  input_current?: string;
+  input_voltage?: string;
+  output_current?: string;
+  output_voltage?: string;
+  transformertype: TransformerType;
+  northing?: number;
+  easting?: number;
+  revision_no?: number;
+  created_at?: Date;
+  updated_at?: Date;
 }
 export interface TransmissionLine {
   id: string;
@@ -245,3 +245,18 @@ export interface ElectricTower {
   created_at?: Date;
   updated_at?: Date;
 }
+export interface Railway {
+  id: string;
+  parent_id?: string | null;
+  project_id: string;
+  energy_source?: string | null;
+  major_operator?: string | null;
+  system_length?: number | null;
+  total_station_no?: number | null;
+  fright_cargo_no?: number | null;
+  transport_cargo_no?: number | null;
+  revision_no?: number | null;
+  created_at?: Date;
+  updated_at?: Date;
+}
+

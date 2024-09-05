@@ -34,14 +34,15 @@ const SolarEnergyDrawer = (props: SolarEnergyDrawerType) => {
 
   const createSolarEnergy = async (body: IApiPayload<SolarEnergy>) => otherApiService<SolarEnergy>().create(model, body);
 
-  const editSolarEnergy = async (body: IApiPayload<SolarEnergy>) => otherApiService<SolarEnergy>().update(model, solarEnergy?.id || '', body);
+  const editSolarEnergy = async (body: IApiPayload<SolarEnergy>) =>
+    otherApiService<SolarEnergy>().update(model, solarEnergy?.id || '', body);
 
   const getPayload = (values: SolarEnergy) => {
     return {
       data: {
         ...values,
         id: solarEnergy?.id,
-        project_id: projectId,
+        project_id: projectId
       },
       files: uploadableFile ? [uploadableFile] : []
     };
@@ -70,7 +71,7 @@ const SolarEnergyDrawer = (props: SolarEnergyDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(solarEnergy as SolarEnergy),
+            ...(solarEnergy as SolarEnergy)
           }}
           createActionFunc={isEdit ? editSolarEnergy : createSolarEnergy}
           onActionSuccess={onActionSuccess}

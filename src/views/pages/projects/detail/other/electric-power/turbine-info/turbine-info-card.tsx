@@ -78,16 +78,20 @@ const TurbineInfoCard: React.FC<TurbineInfoCardProps> = ({ turbineInfo, refetch,
           title=""
           postAction={() => refetch()}
         />
-        <RowOptions onEdit={() => onEdit(turbineInfo)} onDelete={() => onDelete(turbineInfo.id)}
+        <RowOptions
+          onEdit={() => onEdit(turbineInfo)}
+          onDelete={() => onDelete(turbineInfo.id)}
           deletePermissionRule={{
-            action: "delete",
-            subject: "turbineinfo",
+            action: 'delete',
+            subject: 'turbineinfo'
           }}
           editPermissionRule={{
-            action: "edit",
-            subject: "turbineinfo",
+            action: 'edit',
+            subject: 'turbineinfo'
           }}
-        item={turbineInfo} options={[]} />
+          item={turbineInfo}
+          options={[]}
+        />
       </CardActions>
     </Card>
   );

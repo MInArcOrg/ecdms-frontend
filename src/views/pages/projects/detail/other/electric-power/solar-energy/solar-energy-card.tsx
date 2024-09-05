@@ -16,13 +16,7 @@ interface SolarEnergyCardProps {
   onDetail: (solarEnergy: SolarEnergy) => void;
 }
 
-const SolarEnergyCard: React.FC<SolarEnergyCardProps> = ({
-  solarEnergy,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail
-}) => {
+const SolarEnergyCard: React.FC<SolarEnergyCardProps> = ({ solarEnergy, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -53,12 +47,14 @@ const SolarEnergyCard: React.FC<SolarEnergyCardProps> = ({
           <Typography variant="body2" color="text.secondary">
             {t('project.other.solar-energy.details.specifications')}: {solarEnergy.specifications || t('common.not-available')}
           </Typography>
-       
+
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {solarEnergy.created_at ? formatCreatedAt(solarEnergy.created_at) : t('common.not-available')}
+            {t('common.table-columns.created-at')}:{' '}
+            {solarEnergy.created_at ? formatCreatedAt(solarEnergy.created_at) : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.updated-at')}: {solarEnergy.updated_at ? formatCreatedAt(solarEnergy.updated_at) : t('common.not-available')}
+            {t('common.table-columns.updated-at')}:{' '}
+            {solarEnergy.updated_at ? formatCreatedAt(solarEnergy.updated_at) : t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>
@@ -73,12 +69,7 @@ const SolarEnergyCard: React.FC<SolarEnergyCardProps> = ({
           title=""
           postAction={refetch}
         />
-        <RowOptions
-          onEdit={() => onEdit(solarEnergy)}
-          onDelete={() => onDelete(solarEnergy.id)}
-          item={solarEnergy}
-          options={[]}
-        />
+        <RowOptions onEdit={() => onEdit(solarEnergy)} onDelete={() => onDelete(solarEnergy.id)} item={solarEnergy} options={[]} />
       </CardActions>
     </Card>
   );

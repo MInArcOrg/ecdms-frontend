@@ -33,14 +33,15 @@ const TransmissionLineDrawer = (props: TransmissionLineDrawerType) => {
 
   const createTransmissionLine = async (body: IApiPayload<TransmissionLine>) => otherApiService<TransmissionLine>().create(model, body);
 
-  const editTransmissionLine = async (body: IApiPayload<TransmissionLine>) => otherApiService<TransmissionLine>().update(model, transmissionLine?.id || '', body);
+  const editTransmissionLine = async (body: IApiPayload<TransmissionLine>) =>
+    otherApiService<TransmissionLine>().update(model, transmissionLine?.id || '', body);
 
   const getPayload = (values: TransmissionLine) => {
     return {
       data: {
         ...values,
         id: transmissionLine?.id,
-        project_id: projectId,
+        project_id: projectId
       },
       files: uploadableFile ? [uploadableFile] : []
     };
@@ -69,7 +70,7 @@ const TransmissionLineDrawer = (props: TransmissionLineDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(transmissionLine as TransmissionLine),
+            ...(transmissionLine as TransmissionLine)
           }}
           createActionFunc={isEdit ? editTransmissionLine : createTransmissionLine}
           onActionSuccess={onActionSuccess}

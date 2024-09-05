@@ -54,14 +54,14 @@ export const uploadableProjectFileTypes = {
     roadInfo: 'ROAD_INFO',
     roadSegment: 'ROAD_SEGMENT',
     roadLayer: 'ROAD_LAYER',
-    generatingCapacity:'GENERATING_CAPACITY',
-    turbineInfo:'TURBINE_INFO',
-    hydroElectricDam:'HYDRO_ELECTRIC_DAM',
-    solarEnergy:'SOLAR_ENERGY',
-    windEnergy:'WIND_ENERGY',
-    transformerType:'TRANSFORMER_TYPE',
-    transformer:'TRANSFORMER',
-    transmissionLine:'TRANSMISSION_LINE',
-    electricTower:"ELECTRIC_TOWER"
+    generatingCapacity: 'GENERATING_CAPACITY',
+    turbineInfo: 'TURBINE_INFO',
+    hydroElectricDam: 'HYDRO_ELECTRIC_DAM',
+    solarEnergy: 'SOLAR_ENERGY',
+    windEnergy: 'WIND_ENERGY',
+    transformerType: 'TRANSFORMER_TYPE',
+    transformer: 'TRANSFORMER',
+    transmissionLine: 'TRANSMISSION_LINE',
+    electricTower: 'ELECTRIC_TOWER'
   }
 } as const;

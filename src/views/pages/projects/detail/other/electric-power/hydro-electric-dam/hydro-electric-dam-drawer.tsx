@@ -33,7 +33,8 @@ const HydroElectricDamDrawer = (props: HydroElectricDamDrawerType) => {
 
   const createHydroElectricDam = async (body: IApiPayload<HydroElectricDam>) => otherApiService<HydroElectricDam>().create(model, body);
 
-  const editHydroElectricDam = async (body: IApiPayload<HydroElectricDam>) => otherApiService<HydroElectricDam>().update(model, hydroElectricDam?.id || '', body);
+  const editHydroElectricDam = async (body: IApiPayload<HydroElectricDam>) =>
+    otherApiService<HydroElectricDam>().update(model, hydroElectricDam?.id || '', body);
 
   const getPayload = (values: HydroElectricDam) => {
     return {

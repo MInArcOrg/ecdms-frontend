@@ -32,9 +32,11 @@ const GeneratingCapacityDrawer = (props: GeneratingCapacityDrawerType) => {
 
   const isEdit = Boolean(generatingCapacity?.id);
 
-  const createGeneratingCapacity = async (body: IApiPayload<GeneratingCapacity>) => otherApiService<GeneratingCapacity>().create(model, body);
+  const createGeneratingCapacity = async (body: IApiPayload<GeneratingCapacity>) =>
+    otherApiService<GeneratingCapacity>().create(model, body);
 
-  const editGeneratingCapacity = async (body: IApiPayload<GeneratingCapacity>) => otherApiService<GeneratingCapacity>().update(model, generatingCapacity?.id || '', body);
+  const editGeneratingCapacity = async (body: IApiPayload<GeneratingCapacity>) =>
+    otherApiService<GeneratingCapacity>().update(model, generatingCapacity?.id || '', body);
 
   const getPayload = (values: GeneratingCapacity) => {
     return {
@@ -42,7 +44,7 @@ const GeneratingCapacityDrawer = (props: GeneratingCapacityDrawerType) => {
         ...values,
         id: generatingCapacity?.id,
         project_id: projectId,
-        commission_date: convertDateToLocaleDate(values.commission_date),
+        commission_date: convertDateToLocaleDate(values.commission_date)
       },
       files: uploadableFile ? [uploadableFile] : []
     };

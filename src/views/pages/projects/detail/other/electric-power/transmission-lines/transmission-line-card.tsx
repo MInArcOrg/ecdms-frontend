@@ -16,13 +16,7 @@ interface TransmissionLineCardProps {
   onDetail: (transmissionLine: TransmissionLine) => void;
 }
 
-const TransmissionLineCard: React.FC<TransmissionLineCardProps> = ({
-  transmissionLine,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail,
-}) => {
+const TransmissionLineCard: React.FC<TransmissionLineCardProps> = ({ transmissionLine, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -36,7 +30,7 @@ const TransmissionLineCard: React.FC<TransmissionLineCardProps> = ({
                 fontWeight: 500,
                 textDecoration: 'none',
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {transmissionLine.name}
@@ -51,34 +45,43 @@ const TransmissionLineCard: React.FC<TransmissionLineCardProps> = ({
             {t('project.other.transmission-line.line-type')}: {transmissionLine.line_type || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line.transmission-capacity')}: {transmissionLine.transmission_capacity || t('common.not-available')}
+            {t('project.other.transmission-line.transmission-capacity')}:{' '}
+            {transmissionLine.transmission_capacity || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.transmission-line.transmitting-power')}: {transmissionLine.transmitting_power || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line.transmitting-current')}: {transmissionLine.transmitting_current || t('common.not-available')}
+            {t('project.other.transmission-line.transmitting-current')}:{' '}
+            {transmissionLine.transmitting_current || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line.transmitting-voltage')}: {transmissionLine.transmitting_voltage || t('common.not-available')}
+            {t('project.other.transmission-line.transmitting-voltage')}:{' '}
+            {transmissionLine.transmitting_voltage || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line.transmission-towers-number')}: {transmissionLine.transmission_towers_number !== null ? transmissionLine.transmission_towers_number : t('common.not-available')}
+            {t('project.other.transmission-line.transmission-towers-number')}:{' '}
+            {transmissionLine.transmission_towers_number !== null ? transmissionLine.transmission_towers_number : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line.start-northing')}: {transmissionLine.start_northing !== null ? transmissionLine.start_northing : t('common.not-available')}
+            {t('project.other.transmission-line.start-northing')}:{' '}
+            {transmissionLine.start_northing !== null ? transmissionLine.start_northing : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line.start-easting')}: {transmissionLine.start_easting !== null ? transmissionLine.start_easting : t('common.not-available')}
+            {t('project.other.transmission-line.start-easting')}:{' '}
+            {transmissionLine.start_easting !== null ? transmissionLine.start_easting : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line.end-northing')}: {transmissionLine.end_northing !== null ? transmissionLine.end_northing : t('common.not-available')}
+            {t('project.other.transmission-line.end-northing')}:{' '}
+            {transmissionLine.end_northing !== null ? transmissionLine.end_northing : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line.end-easting')}: {transmissionLine.end_easting !== null ? transmissionLine.end_easting : t('common.not-available')}
+            {t('project.other.transmission-line.end-easting')}:{' '}
+            {transmissionLine.end_easting !== null ? transmissionLine.end_easting : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {transmissionLine.created_at ? formatCreatedAt(transmissionLine.created_at) : t('common.not-available')}
+            {t('common.table-columns.created-at')}:{' '}
+            {transmissionLine.created_at ? formatCreatedAt(transmissionLine.created_at) : t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>

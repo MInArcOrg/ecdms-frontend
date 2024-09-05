@@ -30,7 +30,7 @@ const ElectricTowerList: React.FC<ElectricTowerListProps> = ({ model, projectId,
   const fetchElectricTowers = (params: GetRequestParam): Promise<IApiResponse<ElectricTower[]>> => {
     return otherApiService<ElectricTower>().getAll(model, {
       ...params,
-      filter: { ...params.filter, project_id: projectId },
+      filter: { ...params.filter, project_id: projectId }
     });
   };
 
@@ -39,10 +39,10 @@ const ElectricTowerList: React.FC<ElectricTowerListProps> = ({ model, projectId,
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<ElectricTower[]>({
     queryKey: ['electricTowers'],
-    fetchFunction: fetchElectricTowers,
+    fetchFunction: fetchElectricTowers
   });
 
   const toggleDrawer = () => {
@@ -72,17 +72,26 @@ const ElectricTowerList: React.FC<ElectricTowerListProps> = ({ model, projectId,
 
   const mapElectricTowerToDetailItems = (electricTower: ElectricTower): { title: string; value: string }[] => [
     { title: t('project.other.electric-tower.details.transmissionline-id'), value: electricTower.transmissionline_id || 'N/A' },
-    { title: t('project.other.electric-tower.details.overall-length'), value: electricTower.overall_length !== null ? electricTower.overall_length?.toString()||"" : 'N/A' },
-    { title: t('project.other.electric-tower.details.embedded-length'), value: electricTower.embedded_length !== null ? electricTower.embedded_length?.toString()||"" : 'N/A' },
+    {
+      title: t('project.other.electric-tower.details.overall-length'),
+      value: electricTower.overall_length !== null ? electricTower.overall_length?.toString() || '' : 'N/A'
+    },
+    {
+      title: t('project.other.electric-tower.details.embedded-length'),
+      value: electricTower.embedded_length !== null ? electricTower.embedded_length?.toString() || '' : 'N/A'
+    },
     { title: t('project.other.electric-tower.details.columns'), value: electricTower.columns || 'N/A' },
     { title: t('project.other.electric-tower.details.braces'), value: electricTower.braces || 'N/A' },
     { title: t('project.other.electric-tower.details.beam-cross-arms'), value: electricTower.beam_cross_arms || 'N/A' },
     { title: t('project.other.electric-tower.details.brace-cross-arm'), value: electricTower.brace_cross_arm || 'N/A' },
     { title: t('project.other.electric-tower.details.elasticity-modulus'), value: electricTower.elasticity_modulus || 'N/A' },
     { title: t('project.other.electric-tower.details.poission-ratio'), value: electricTower.poission_ratio || 'N/A' },
-    { title: t('project.other.electric-tower.details.revision-no'), value: electricTower.revision_no !== null ? electricTower.revision_no?.toString()||"" : 'N/A' },
+    {
+      title: t('project.other.electric-tower.details.revision-no'),
+      value: electricTower.revision_no !== null ? electricTower.revision_no?.toString() || '' : 'N/A'
+    },
     { title: t('common.table-columns.created-at'), value: electricTower.created_at ? formatCreatedAt(electricTower.created_at) : 'N/A' },
-    { title: t('common.table-columns.updated-at'), value: electricTower.updated_at ? formatCreatedAt(electricTower.updated_at) : 'N/A' },
+    { title: t('common.table-columns.updated-at'), value: electricTower.updated_at ? formatCreatedAt(electricTower.updated_at) : 'N/A' }
   ];
 
   return (
@@ -115,7 +124,7 @@ const ElectricTowerList: React.FC<ElectricTowerListProps> = ({ model, projectId,
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: electricTowerColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
+          headers: electricTowerColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -133,8 +142,8 @@ const ElectricTowerList: React.FC<ElectricTowerListProps> = ({ model, projectId,
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'electrictower',
-          },
+            subject: 'electrictower'
+          }
         }}
         fetchDataFunction={refetch}
         items={electricTowers || []}

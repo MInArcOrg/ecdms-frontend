@@ -16,13 +16,7 @@ interface WindEnergyCardProps {
   onDetail: (windEnergy: WindEnergy) => void;
 }
 
-const WindEnergyCard: React.FC<WindEnergyCardProps> = ({
-  windEnergy,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail
-}) => {
+const WindEnergyCard: React.FC<WindEnergyCardProps> = ({ windEnergy, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -53,32 +47,22 @@ const WindEnergyCard: React.FC<WindEnergyCardProps> = ({
           <Typography variant="body2" color="text.secondary">
             {t('project.other.wind-energy.details.specifications')}: {windEnergy.specifications || t('common.not-available')}
           </Typography>
-       
+
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {windEnergy.created_at ? formatCreatedAt(windEnergy.created_at) : t('common.not-available')}
+            {t('common.table-columns.created-at')}:{' '}
+            {windEnergy.created_at ? formatCreatedAt(windEnergy.created_at) : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.updated-at')}: {windEnergy.updated_at ? formatCreatedAt(windEnergy.updated_at) : t('common.not-available')}
+            {t('common.table-columns.updated-at')}:{' '}
+            {windEnergy.updated_at ? formatCreatedAt(windEnergy.updated_at) : t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
         <FileDrawer id={windEnergy.id} type={uploadableProjectFileTypes.other.windEnergy} />
-        <ModelAction
-          model="WindEnergy"
-          model_id={windEnergy.id}
-          refetchModel={refetch}
-          resubmit={refetch}
-          title=""
-          postAction={refetch}
-        />
-        <RowOptions
-          onEdit={() => onEdit(windEnergy)}
-          onDelete={() => onDelete(windEnergy.id)}
-          item={windEnergy}
-          options={[]}
-        />
+        <ModelAction model="WindEnergy" model_id={windEnergy.id} refetchModel={refetch} resubmit={refetch} title="" postAction={refetch} />
+        <RowOptions onEdit={() => onEdit(windEnergy)} onDelete={() => onDelete(windEnergy.id)} item={windEnergy} options={[]} />
       </CardActions>
     </Card>
   );

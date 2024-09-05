@@ -33,14 +33,15 @@ const TransformerDrawer = (props: TransformerDrawerType) => {
 
   const createTransformer = async (body: IApiPayload<Transformer>) => otherApiService<Transformer>().create(model, body);
 
-  const editTransformer = async (body: IApiPayload<Transformer>) => otherApiService<Transformer>().update(model, transformer?.id || '', body);
+  const editTransformer = async (body: IApiPayload<Transformer>) =>
+    otherApiService<Transformer>().update(model, transformer?.id || '', body);
 
   const getPayload = (values: Transformer) => {
     return {
       data: {
         ...values,
         id: transformer?.id,
-        project_id: projectId,
+        project_id: projectId
       },
       files: uploadableFile ? [uploadableFile] : []
     };
@@ -69,7 +70,7 @@ const TransformerDrawer = (props: TransformerDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(transformer as Transformer),
+            ...(transformer as Transformer)
           }}
           createActionFunc={isEdit ? editTransformer : createTransformer}
           onActionSuccess={onActionSuccess}

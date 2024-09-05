@@ -30,7 +30,7 @@ const TransformerList: React.FC<TransformerListProps> = ({ model, projectId, typ
   const fetchTransformers = (params: GetRequestParam): Promise<IApiResponse<Transformer[]>> => {
     return otherApiService<Transformer>().getAll(model, {
       ...params,
-      filter: { ...params.filter, project_id: projectId },
+      filter: { ...params.filter, project_id: projectId }
     });
   };
 
@@ -39,10 +39,10 @@ const TransformerList: React.FC<TransformerListProps> = ({ model, projectId, typ
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<Transformer[]>({
     queryKey: ['transformers'],
-    fetchFunction: fetchTransformers,
+    fetchFunction: fetchTransformers
   });
 
   const toggleDrawer = () => {
@@ -78,7 +78,7 @@ const TransformerList: React.FC<TransformerListProps> = ({ model, projectId, typ
     { title: t('project.other.transformer.details.output-voltage'), value: transformer.output_voltage || 'N/A' },
     { title: t('project.other.transformer.details.northing'), value: transformer.northing?.toString() || 'N/A' },
     { title: t('project.other.transformer.details.easting'), value: transformer.easting?.toString() || 'N/A' },
-    { title: t('common.table-columns.created-at'), value: transformer.created_at ? formatCreatedAt(transformer.created_at) : 'N/A' },
+    { title: t('common.table-columns.created-at'), value: transformer.created_at ? formatCreatedAt(transformer.created_at) : 'N/A' }
   ];
 
   return (
@@ -111,17 +111,11 @@ const TransformerList: React.FC<TransformerListProps> = ({ model, projectId, typ
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: transformerColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
+          headers: transformerColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <TransformerCard
-            onDetail={handleClickDetail}
-            transformer={data}
-            onEdit={handleEdit}
-            refetch={refetch}
-            onDelete={handleDelete}
-          />
+          <TransformerCard onDetail={handleClickDetail} transformer={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
@@ -129,8 +123,8 @@ const TransformerList: React.FC<TransformerListProps> = ({ model, projectId, typ
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'transformer',
-          },
+            subject: 'transformer'
+          }
         }}
         fetchDataFunction={refetch}
         items={transformers || []}

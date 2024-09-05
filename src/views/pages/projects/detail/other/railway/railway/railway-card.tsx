@@ -2,21 +2,21 @@ import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { Port } from 'src/types/project/other';
+import { Railway } from 'src/types/project/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-interface PortCardProps {
-  port: Port;
+interface RailwayCardProps {
+  railway: Railway;
   refetch: () => void;
-  onEdit: (port: Port) => void;
+  onEdit: (railway: Railway) => void;
   onDelete: (id: string) => void;
-  onDetail: (port: Port) => void;
+  onDetail: (railway: Railway) => void;
 }
 
-const PortCard: React.FC<PortCardProps> = ({ port, refetch, onEdit, onDelete, onDetail }) => {
+const RailwayCard: React.FC<RailwayCardProps> = ({ railway, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -24,10 +24,8 @@ const PortCard: React.FC<PortCardProps> = ({ port, refetch, onEdit, onDelete, on
       <CardContent>
         <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
           <Typography variant="h5" fontWeight="bold">
-            <Typography
-              noWrap
-              component={Button}
-              onClick={() => onDetail(port)}
+            <Button
+              onClick={() => onDetail(railway)}
               sx={{
                 fontWeight: 500,
                 textDecoration: 'none',
@@ -35,8 +33,8 @@ const PortCard: React.FC<PortCardProps> = ({ port, refetch, onEdit, onDelete, on
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {port?.id.slice(0, 5)}...
-            </Typography>
+              {railway.major_operator || t('common.not-available')}
+            </Button>
           </Typography>
         </Box>
 
@@ -44,50 +42,41 @@ const PortCard: React.FC<PortCardProps> = ({ port, refetch, onEdit, onDelete, on
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.port.details.operator')}: {port?.operator || 'N/A'}
+            {t('project.other.railway.details.energy-source')}: {railway.energy_source || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.port.details.port-type')}: {port?.port_type || 'N/A'}
+            {t('project.other.railway.details.system-length')}: {railway.system_length ? `${railway.system_length} km` : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.port.details.site-area')}: {port?.site_area ? `${port?.site_area} sqm` : 'N/A'}
+            {t('project.other.railway.details.total-stations')}: {railway.total_station_no || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.port.details.annual-traffic-size')}: {port?.annual_traffic_size ? `${port?.annual_traffic_size} tons` : 'N/A'}
+            {t('project.other.railway.details.freight-cargo-no')}: {railway.fright_cargo_no || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {port?.created_at ? formatCreatedAt(port?.created_at) : 'N/A'}{' '}
+            {t('project.other.railway.details.transport-cargo-no')}: {railway.transport_cargo_no || t('common.not-available')}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {t('common.table-columns.created-at')}:{' '}
+            {railway.created_at ? formatCreatedAt(railway.created_at) : t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={port.id} type={uploadableProjectFileTypes.other.port} />
+        <FileDrawer id={railway.id} type={uploadableProjectFileTypes.other.railway} />
         <ModelAction
-          model="Port"
-          model_id={port.id}
+          model="Railway"
+          model_id={railway.id}
           refetchModel={refetch}
-          resubmit={() => refetch()}
-          title={''}
-          postAction={() => refetch()}
+          resubmit={refetch}
+          title=""
+          postAction={refetch}
         />
-        <RowOptions
-          onEdit={() => onEdit(port)}
-          onDelete={() => onDelete(port.id)}
-          item={port}
-          deletePermissionRule={{
-            action: 'delete',
-            subject: 'port'
-          }}
-          editPermissionRule={{
-            action: 'edit',
-            subject: 'port'
-          }}
-          options={[]}
-        />
+        <RowOptions onEdit={() => onEdit(railway)} onDelete={() => onDelete(railway.id)} item={railway} options={[]} />
       </CardActions>
     </Card>
   );
 };
 
-export default PortCard;
+export default RailwayCard;

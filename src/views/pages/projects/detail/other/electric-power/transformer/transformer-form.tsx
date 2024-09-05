@@ -17,13 +17,13 @@ interface TransformerFormProps {
   projectId: string;
 }
 
-const TransformerForm: React.FC<TransformerFormProps> = ({ formik, file, onFileChange,projectId }) => {
+const TransformerForm: React.FC<TransformerFormProps> = ({ formik, file, onFileChange, projectId }) => {
   const { t } = useTranslation();
   const { data: transformerTypes } = useQuery({
-    queryKey: ['transformertype',projectId],
+    queryKey: ['transformertype', projectId],
     queryFn: () =>
       otherApiService<TransformerType>().getAll('transformertype', {
-        filter: { project_id: projectId },
+        filter: { project_id: projectId }
       })
   });
   return (

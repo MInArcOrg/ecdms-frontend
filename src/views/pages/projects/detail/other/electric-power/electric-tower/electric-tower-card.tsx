@@ -16,13 +16,7 @@ interface ElectricTowerCardProps {
   onDetail: (electricTower: ElectricTower) => void;
 }
 
-const ElectricTowerCard: React.FC<ElectricTowerCardProps> = ({
-  electricTower,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail,
-}) => {
+const ElectricTowerCard: React.FC<ElectricTowerCardProps> = ({ electricTower, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -36,7 +30,7 @@ const ElectricTowerCard: React.FC<ElectricTowerCardProps> = ({
                 fontWeight: 500,
                 textDecoration: 'none',
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {electricTower.id} {/* Assuming 'name' is not available; using 'id' instead */}
@@ -66,16 +60,20 @@ const ElectricTowerCard: React.FC<ElectricTowerCardProps> = ({
             {t('project.other.transmission-line.poission-ratio')}: {electricTower.poission_ratio || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line.overall-length')}: {electricTower.overall_length !== null ? electricTower.overall_length : t('common.not-available')}
+            {t('project.other.transmission-line.overall-length')}:{' '}
+            {electricTower.overall_length !== null ? electricTower.overall_length : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line.embedded-length')}: {electricTower.embedded_length !== null ? electricTower.embedded_length : t('common.not-available')}
+            {t('project.other.transmission-line.embedded-length')}:{' '}
+            {electricTower.embedded_length !== null ? electricTower.embedded_length : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {electricTower.created_at ? formatCreatedAt(electricTower.created_at) : t('common.not-available')}
+            {t('common.table-columns.created-at')}:{' '}
+            {electricTower.created_at ? formatCreatedAt(electricTower.created_at) : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.updated-at')}: {electricTower.updated_at ? formatCreatedAt(electricTower.updated_at) : t('common.not-available')}
+            {t('common.table-columns.updated-at')}:{' '}
+            {electricTower.updated_at ? formatCreatedAt(electricTower.updated_at) : t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>
@@ -90,12 +88,7 @@ const ElectricTowerCard: React.FC<ElectricTowerCardProps> = ({
           title=""
           postAction={refetch}
         />
-        <RowOptions
-          onEdit={() => onEdit(electricTower)}
-          onDelete={() => onDelete(electricTower.id)}
-          item={electricTower}
-          options={[]}
-        />
+        <RowOptions onEdit={() => onEdit(electricTower)} onDelete={() => onDelete(electricTower.id)} item={electricTower} options={[]} />
       </CardActions>
     </Card>
   );

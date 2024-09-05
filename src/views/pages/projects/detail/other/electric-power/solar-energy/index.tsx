@@ -30,7 +30,7 @@ const SolarEnergyList: React.FC<SolarEnergyListProps> = ({ model, projectId, typ
   const fetchGeneratingCapacities = (params: GetRequestParam): Promise<IApiResponse<SolarEnergy[]>> => {
     return otherApiService<SolarEnergy>().getAll(model, {
       ...params,
-      filter: { ...params.filter, project_id: projectId },
+      filter: { ...params.filter, project_id: projectId }
     });
   };
 
@@ -39,10 +39,10 @@ const SolarEnergyList: React.FC<SolarEnergyListProps> = ({ model, projectId, typ
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<SolarEnergy[]>({
     queryKey: ['generatingCapacities'],
-    fetchFunction: fetchGeneratingCapacities,
+    fetchFunction: fetchGeneratingCapacities
   });
 
   const toggleDrawer = () => {
@@ -74,7 +74,7 @@ const SolarEnergyList: React.FC<SolarEnergyListProps> = ({ model, projectId, typ
     { title: t('project.other.solar-energy.details.title'), value: solarEnergy.title || 'N/A' },
     { title: t('project.other.solar-energy.details.description'), value: solarEnergy.description || 'N/A' },
     { title: t('project.other.solar-energy.details.specifications'), value: solarEnergy.specifications || 'N/A' },
-    { title: t('common.table-columns.created-at'), value: solarEnergy.created_at ? formatCreatedAt(solarEnergy.created_at) : 'N/A' },
+    { title: t('common.table-columns.created-at'), value: solarEnergy.created_at ? formatCreatedAt(solarEnergy.created_at) : 'N/A' }
   ];
 
   return (
@@ -107,17 +107,11 @@ const SolarEnergyList: React.FC<SolarEnergyListProps> = ({ model, projectId, typ
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: solarEnergyColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
+          headers: solarEnergyColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <SolarEnergyCard
-            onDetail={handleClickDetail}
-            solarEnergy={data}
-            onEdit={handleEdit}
-            refetch={refetch}
-            onDelete={handleDelete}
-          />
+          <SolarEnergyCard onDetail={handleClickDetail} solarEnergy={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
@@ -125,8 +119,8 @@ const SolarEnergyList: React.FC<SolarEnergyListProps> = ({ model, projectId, typ
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'generatingcapacity',
-          },
+            subject: 'generatingcapacity'
+          }
         }}
         fetchDataFunction={refetch}
         items={generatingCapacities || []}

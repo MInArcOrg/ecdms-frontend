@@ -40,7 +40,7 @@ const WindEnergyDrawer = (props: WindEnergyDrawerType) => {
       data: {
         ...values,
         id: windEnergy?.id,
-        project_id: projectId,
+        project_id: projectId
       },
       files: uploadableFile ? [uploadableFile] : []
     };
@@ -69,7 +69,7 @@ const WindEnergyDrawer = (props: WindEnergyDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(windEnergy as WindEnergy),
+            ...(windEnergy as WindEnergy)
           }}
           createActionFunc={isEdit ? editWindEnergy : createWindEnergy}
           onActionSuccess={onActionSuccess}

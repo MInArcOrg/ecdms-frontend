@@ -33,7 +33,8 @@ const TurbineInfoDrawer = (props: TurbineInfoDrawerType) => {
 
   const createTurbineInfo = async (body: IApiPayload<TurbineInfo>) => otherApiService<TurbineInfo>().create(model, body);
 
-  const editTurbineInfo = async (body: IApiPayload<TurbineInfo>) => otherApiService<TurbineInfo>().update(model, turbineInfo?.id || '', body);
+  const editTurbineInfo = async (body: IApiPayload<TurbineInfo>) =>
+    otherApiService<TurbineInfo>().update(model, turbineInfo?.id || '', body);
 
   const getPayload = (values: TurbineInfo) => {
     return {

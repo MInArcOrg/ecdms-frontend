@@ -30,7 +30,7 @@ const TransformerTypeList: React.FC<TransformerTypeListProps> = ({ model, projec
   const fetchTransformerTypes = (params: GetRequestParam): Promise<IApiResponse<TransformerType[]>> => {
     return otherApiService<TransformerType>().getAll(model, {
       ...params,
-      filter: { ...params.filter, project_id: projectId },
+      filter: { ...params.filter, project_id: projectId }
     });
   };
 
@@ -39,10 +39,10 @@ const TransformerTypeList: React.FC<TransformerTypeListProps> = ({ model, projec
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<TransformerType[]>({
     queryKey: ['transformerTypes'],
-    fetchFunction: fetchTransformerTypes,
+    fetchFunction: fetchTransformerTypes
   });
 
   const toggleDrawer = () => {
@@ -73,7 +73,7 @@ const TransformerTypeList: React.FC<TransformerTypeListProps> = ({ model, projec
   const mapTransformerTypeToDetailItems = (transformerType: TransformerType): { title: string; value: string }[] => [
     { title: t('project.other.transformer-type.details.name'), value: transformerType.name || 'N/A' },
     { title: t('project.other.transformer-type.details.description'), value: transformerType.description || 'N/A' },
-    { title: t('common.table-columns.created-at'), value: transformerType.created_at ? formatCreatedAt(transformerType.created_at) : 'N/A' },
+    { title: t('common.table-columns.created-at'), value: transformerType.created_at ? formatCreatedAt(transformerType.created_at) : 'N/A' }
   ];
 
   return (
@@ -106,7 +106,7 @@ const TransformerTypeList: React.FC<TransformerTypeListProps> = ({ model, projec
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: transformerTypeColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
+          headers: transformerTypeColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -124,8 +124,8 @@ const TransformerTypeList: React.FC<TransformerTypeListProps> = ({ model, projec
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'generatingcapacity',
-          },
+            subject: 'generatingcapacity'
+          }
         }}
         fetchDataFunction={refetch}
         items={transformerTypes || []}
