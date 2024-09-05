@@ -19,8 +19,8 @@ interface TransformerFormProps {
 
 const TransformerForm: React.FC<TransformerFormProps> = ({ formik, file, onFileChange,projectId }) => {
   const { t } = useTranslation();
-  const { data: projectCategories } = useQuery({
-    queryKey: ['masterCategory', 'project'],
+  const { data: transformerTypes } = useQuery({
+    queryKey: ['transformertype',projectId],
     queryFn: () =>
       otherApiService<TransformerType>().getAll('transformertype', {
         filter: { project_id: projectId },
@@ -34,7 +34,7 @@ const TransformerForm: React.FC<TransformerFormProps> = ({ formik, file, onFileC
           name="transformertype_id"
           label={t('project.other.transformer.details.transformertype')}
           options={
-            projectCategories?.payload?.map((projectCategory) => ({
+            transformerTypes?.payload?.map((projectCategory) => ({
               value: projectCategory.id,
               label: projectCategory.name
             })) || []

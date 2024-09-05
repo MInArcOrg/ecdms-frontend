@@ -1,9 +1,12 @@
 import { Grid } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
-import { ElectricTower } from 'src/types/project/other';
+import otherApiService from 'src/services/project/other-service';
+import { ElectricTower, TransmissionLine } from 'src/types/project/other';
+import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
@@ -14,97 +17,90 @@ interface ElectricTowerFormProps {
   projectId: string;
 }
 
-const ElectricTowerForm: React.FC<ElectricTowerFormProps> = ({ formik, file, onFileChange }) => {
+const ElectricTowerForm: React.FC<ElectricTowerFormProps> = ({ formik, file, onFileChange,projectId }) => {
   const { t } = useTranslation();
-
+  const { data: transmissionLines } = useQuery({
+    queryKey: ['transmissionline',projectId],
+    queryFn: () =>
+      otherApiService<TransmissionLine>().getAll('transmissionline', {
+        filter: { project_id: projectId },
+      })
+  });
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
+      <CustomSelectBox
+          size="small"
+          name="transmissionline_id"
+          label={t('project.other.transformer.details.transmissionline')}
+          options={
+            transmissionLines?.payload?.map((tranmissionLine) => ({
+              value: tranmissionLine.id,
+              label: tranmissionLine.name
+            })) || []
+          }
+        />
         <CustomTextBox
           fullWidth
-          label={t('project.other.transmission-line.details.name')}
-          placeholder={t('project.other.transmission-line.details.name')}
-          name="name"
+          label={t('project.other.electric-tower.details.overall-length')}
+          placeholder={t('project.other.electric-tower.details.overall-length')}
+          name="overall_length"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.transmission-line.details.line-type')}
-          placeholder={t('project.other.transmission-line.details.line-type')}
-          name="line_type"
+          label={t('project.other.electric-tower.details.embedded-length')}
+          placeholder={t('project.other.electric-tower.details.embedded-length')}
+          name="embedded_length"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.transmission-line.details.transmission-capacity')}
-          placeholder={t('project.other.transmission-line.details.transmission-capacity')}
-          name="transmission_capacity"
+          label={t('project.other.electric-tower.details.columns')}
+          placeholder={t('project.other.electric-tower.details.columns')}
+          name="columns"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.transmission-line.details.transmitting-power')}
-          placeholder={t('project.other.transmission-line.details.transmitting-power')}
-          name="transmitting_power"
+          label={t('project.other.electric-tower.details.braces')}
+          placeholder={t('project.other.electric-tower.details.braces')}
+          name="braces"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.transmission-line.details.transmitting-current')}
-          placeholder={t('project.other.transmission-line.details.transmitting-current')}
-          name="transmitting_current"
+          label={t('project.other.electric-tower.details.beam-cross-arms')}
+          placeholder={t('project.other.electric-tower.details.beam-cross-arms')}
+          name="beam_cross_arms"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.transmission-line.details.transmitting-voltage')}
-          placeholder={t('project.other.transmission-line.details.transmitting-voltage')}
-          name="transmitting_voltage"
+          label={t('project.other.electric-tower.details.brace-cross-arm')}
+          placeholder={t('project.other.electric-tower.details.brace-cross-arm')}
+          name="brace_cross_arm"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.transmission-line.details.transmission-towers-number')}
-          placeholder={t('project.other.transmission-line.details.transmission-towers-number')}
-          name="transmission_towers_number"
+          label={t('project.other.electric-tower.details.elasticity-modulus')}
+          placeholder={t('project.other.electric-tower.details.elasticity-modulus')}
+          name="elasticity_modulus"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.transmission-line.details.start-northing')}
-          placeholder={t('project.other.transmission-line.details.start-northing')}
-          name="start_northing"
-          size="small"
-          sx={{ mb: 2 }}
-        />
-        <CustomTextBox
-          fullWidth
-          label={t('project.other.transmission-line.details.start-easting')}
-          placeholder={t('project.other.transmission-line.details.start-easting')}
-          name="start_easting"
-          size="small"
-          sx={{ mb: 2 }}
-        />
-        <CustomTextBox
-          fullWidth
-          label={t('project.other.transmission-line.details.end-northing')}
-          placeholder={t('project.other.transmission-line.details.end-northing')}
-          name="end_northing"
-          size="small"
-          sx={{ mb: 2 }}
-        />
-        <CustomTextBox
-          fullWidth
-          label={t('project.other.transmission-line.details.end-easting')}
-          placeholder={t('project.other.transmission-line.details.end-easting')}
-          name="end_easting"
+          label={t('project.other.electric-tower.details.poission-ratio')}
+          placeholder={t('project.other.electric-tower.details.poission-ratio')}
+          name="poission_ratio"
           size="small"
           sx={{ mb: 2 }}
         />

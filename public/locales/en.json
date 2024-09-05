@@ -890,15 +890,14 @@
         "edit-electric-tower":"Edit Electric Tower",
         "electric-tower-details":"Electric Tower Details",
         "details": {
+          "overall-length": "Overall Length",
+          "embedded-length": "Embedded Length",
           "columns": "Columns",
           "braces": "Braces",
           "beam-cross-arms": "Beam Cross Arms",
           "brace-cross-arm": "Brace Cross Arm",
           "elasticity-modulus": "Elasticity Modulus",
-          "poission-ratio": "Poisson Ratio",
-          "overall-length": "Overall Length",
-          "embedded-length": "Embedded Length",
-          "revision-no": "Revision Number"
+          "poission-ratio": "Poisson Ratio"
         }
       }      
     },
