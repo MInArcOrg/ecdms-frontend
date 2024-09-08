@@ -56,3 +56,27 @@ export const uploadableProjectFileTypes = {
     roadLayer: 'ROAD_LAYER'
   }
 } as const;
+export const uploadableStakeholderFileTypes = {
+  stakeholder: 'STAKEHOLDER',
+  stakeholderInfo: 'STAKEHOLDER_INFO',
+  stakeholderCertificate: 'STAKEHOLDER_CERTIFICATE',
+  stakeholderTotalEmp: 'STAKEHOLDER_TOTAL_EMP',
+  stakeholderTraining: 'STAKEHOLDER_TRAINING',
+  stakeholderRegulation: 'STAKEHOLDER_REGULATION',
+  stakeholderFieldOfStudy: 'STAKEHOLDER_FIELD_OF_STUDY',
+  stakeholderSudyPreiod: 'STAKEHOLDER_STUDY_PERIOD',
+  stakeholderGraduates: 'STAKEHOLDER_GRADUATES',
+  stakeholderServices: 'STAKEHOLDER_SERVICES',
+  stakeholderType: 'STAKEHOLDER_TYPE',
+  stakeholderCategory: 'STAKEHOLDER_CATEGORY',
+  stakeholderSubCategory: 'STAKEHOLDER_SUB_CATEGORY',
+  ownershipType: 'OWNERSHIP_TYPE',
+  businessField: 'BUSINESS_FIELD',
+  studyLevel: 'STUDY_LEVEL',
+  studyProgram: 'STUDY_PROGRAM',
+  studyField: 'STUDY_FIELD',
+  education: 'EDUCATION',
+  employeeAge: 'EMPLOYEE_AGE',
+  workExperience: 'WORK_EXPERIENCE',
+  ageLevel: 'AGE_LEVEL'
+} as const;

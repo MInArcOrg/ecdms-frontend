@@ -30,7 +30,7 @@ export const StakeholderRow = (
         return (
           <Typography
             component={Link}
-            href={`/stakeholders/${typeId}/${row.id}`}
+            href={`/stakeholders/${typeId}/details/${row.id}`}
             sx={{
               fontWeight: 500,
               textDecoration: "none",
@@ -46,12 +46,12 @@ export const StakeholderRow = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t("stakeholders.columns.description"),
-      field: "description",
+      headerName: t("stakeholders.columns.tin"),
+      field: "tin",
       renderCell: ({ row }: CellType) => {
         return (
           <Typography sx={{ color: "text.secondary" }}>
-            {row?.description}
+            {row?.tin}
           </Typography>
         );
       },

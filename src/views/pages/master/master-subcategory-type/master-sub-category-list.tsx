@@ -18,7 +18,10 @@ interface MasterSubCategoryListProps {
 
 const MasterSubCategoryList: React.FC<MasterSubCategoryListProps> = ({ model, selectedCategory }) => {
   const fetchMasterSubCategory = (params: GetRequestParam): Promise<IApiResponse<MasterSubCategory[]>> => {
-    return masterSubCategoryApiService.getAll(model, { ...params, filter: { ...params.filter, [`${model}category_id`]: selectedCategory?.id } });
+    return masterSubCategoryApiService.getAll(model, {
+      ...params,
+      filter: { ...params.filter, [`${model}category_id`]: selectedCategory?.id }
+    });
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
   const [selectedRow, setSelectedRow] = useState<MasterSubCategory | null>(null);

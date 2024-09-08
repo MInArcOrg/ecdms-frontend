@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Card, Grid } from '@mui/material';
-import ProjectLayout from 'src/views/pages/projects/detail/project-layout';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import OtherSubMenu from 'src/views/pages/projects/detail/other/layouts/others-sub-menu';
 
 interface OtherLayoutProps {

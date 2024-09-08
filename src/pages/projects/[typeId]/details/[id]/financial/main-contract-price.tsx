@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { useRouter } from 'next/router';
 import MainConctractPriceComponent from 'src/views/pages/projects/detail/project-finance/main-contract-price';
-import ProjectLayout from 'src/views/pages/projects/detail/project-layout';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import subMenuItems from './(subMenuItems)';
 
 function ProjectVariation() {

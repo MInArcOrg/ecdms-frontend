@@ -1,22 +1,20 @@
 import { Box, Card, Grid } from '@mui/material';
 import { useRouter } from 'next/router';
-import DetailSubMenu from './general-info/detail-sub-menu';
-import menuTabs from './project-menu-items';
-import DetailMenu from './detail-menu';
 import { ReactNode } from 'react';
+import DetailMenu from 'src/views/components/custom/layout/detail-menu';
+import menuTabs from './stakeholder-menu-items';
+import DetailSubMenu from 'src/views/components/custom/layout/detail-sub-menu';
 
-interface ProjectLayoutProps {
+interface StakeholderLayoutProps {
   activeMenu: number;
   activeSubMenu?: number;
   subMenuItems?: Array<{ id: number; title: string; path: string }>;
   children: ReactNode;
 }
 
-const ProjectLayout: React.FC<ProjectLayoutProps> = ({ activeMenu, activeSubMenu, subMenuItems, children }) => {
+const StakeholderLayout: React.FC<StakeholderLayoutProps> = ({ activeMenu, activeSubMenu, subMenuItems, children }) => {
   const router = useRouter();
   const { id, typeId } = router.query;
-  const isProject = true;
-
   return (
     <Box>
       <DetailMenu
@@ -26,8 +24,7 @@ const ProjectLayout: React.FC<ProjectLayoutProps> = ({ activeMenu, activeSubMenu
         setActiveMenu={(path) => {
           router.push(path);
         }}
-        goBack={() => router.replace(`/projects/${typeId}`)}
-        isProject={isProject}
+        goBack={() => router.replace(`/stakeholders/${typeId}`)}
         typeId={String(typeId)}
       />
       <Box display="flex" flexDirection="column" gap={1} paddingTop={5}>
@@ -60,4 +57,4 @@ const ProjectLayout: React.FC<ProjectLayoutProps> = ({ activeMenu, activeSubMenu
   );
 };
 
-export default ProjectLayout;
+export default StakeholderLayout;

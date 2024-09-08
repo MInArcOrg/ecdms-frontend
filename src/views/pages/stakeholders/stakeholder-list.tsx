@@ -35,7 +35,7 @@ function StakholdersList() {
     handlePageChange,
     refetch,
   } = usePaginatedFetch<Stakeholder[]>({
-    queryKey: ["stakesholders"],
+    queryKey: ["stakesholders", typeId as string],
     fetchFunction: fetchResources,
   });
 

@@ -858,18 +858,25 @@
       "sub-category":"Sub Category",
       "category":"Category"
     },
-    "form":{
-      "title":"Title",
-      "description":"Description",
-      "category":"Category",
-      "sub_category":"Sub Category",
-      "field_of_business":"Field of Business",
-      "location":"Location",
-      "ownership_type":"Ownership Type",
-      "trade_name":"Trade Name",
-      "tin_number":"TIN Number",
-      "phone":"Phone Number",
-      "licence_issue_date":"Licence Issue Date"
+    "form": {
+      "category": "Category",
+      "sub_category": "Sub Category",
+      "ownership": "Ownership",
+      "email": "Email",
+      "emails":"Emails",
+      "phones":"Phones",
+      "is_primary_email": "Is Primary Email",
+      "phone": "Phone",
+      "is_primary_phone": "Is Primary Phone",
+      "trade_name": "Trade Name",
+      "tin": "TIN",
+      "origin": "Origin",
+      "license_issued_date": "License Issued Date",
+      "revision_no": "Revision No",
+      "add_email": "Add Email",
+      "add_phone": "Add Phone",
+      "emails_section_title": "Emails",
+      "phones_section_title": "Phones"
     }
   }
 }

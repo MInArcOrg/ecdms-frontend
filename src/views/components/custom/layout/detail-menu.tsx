@@ -4,10 +4,10 @@ import Icon from 'src/@core/components/icon';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Can from 'src/layouts/components/acl/Can';
-import ProjectInfo from './project-info-drawer';
+import ProjectInfo from '../../../pages/projects/detail/project-info-drawer';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ProjectMenuItem } from './project-menu-items';
+import { ProjectMenuItem } from '../../../pages/projects/detail/layout/project-menu-items';
 
 interface DetailMenuProps {
   id: string;

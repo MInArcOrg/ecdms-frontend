@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import ProjectLayout from 'src/views/pages/projects/detail/project-layout';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import subMenuItems from './(subMenuItems)';
 import ProjectPlanList from 'src/views/pages/projects/detail/plan/plan';
 
