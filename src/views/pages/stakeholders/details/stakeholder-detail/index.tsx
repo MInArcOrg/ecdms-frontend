@@ -1,24 +1,39 @@
-import { Avatar, Box, Card, CardContent, CardMedia, Tooltip } from '@mui/material';
+import { Avatar, Box, Card, CardActions, CardContent, CardMedia, Tooltip } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import { ChangeEvent, Fragment } from 'react';
+import { ChangeEvent, Fragment, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
+import stakeholderApiService from 'src/services/stakeholders/stakeholder-service';
 import { uploadablePhotoTypes } from 'src/services/utils/file-constants';
 import { getStaticPhoto, handleProfilePictureError, uploadImage, useGetMultiplePhotos } from 'src/services/utils/file-utils';
+import { uploadableStakeholderFileTypes } from "src/services/utils/file-constants";
+
 import { Stakeholder } from 'src/types/stakeholder';
+import FileDrawer from 'src/views/components/custom/files-drawer';
+import ModelActionComponent from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
+import StakeholderDrawer from '../../stakeholder-drawer';
 
-interface StakeholderProfileSectionProps {
+interface StakeholderDetailComponentProps {
   stakeholder: Stakeholder;
+  refetch: () => void;
+  typeId: string;
 }
-
-const StakeholderProfileSection: React.FC<StakeholderProfileSectionProps> = ({ stakeholder }) => {
+const StakeholderDetailComponent: React.FC<StakeholderDetailComponentProps> = ({ stakeholder, refetch, typeId }) => {
   const { data: profilePicture, refetch: refetchProfilePicture } = useGetMultiplePhotos({
     filter: {
       model_id: stakeholder.id,
       type: uploadablePhotoTypes.stakeholder_profile_photo
     }
   });
+  const [showDrawer, setShowDrawer] = useState(false);
 
+  const handleEdit = () => {
+    toggleDrawer();
+  };
+  const toggleDrawer = () => {
+    setShowDrawer(!showDrawer);
+  };
   const changeProfilePicture = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const reader = new FileReader();
@@ -36,10 +51,22 @@ const StakeholderProfileSection: React.FC<StakeholderProfileSectionProps> = ({ s
     }
   };
 
-  const { i18n, t } = useTranslation();
-
+  const { t } = useTranslation();
+  const handleDelete = async (resourceId: string) => {
+    await stakeholderApiService.delete(resourceId);
+    refetch();
+  };
   return (
     <Fragment>
+      {showDrawer && (
+        <StakeholderDrawer
+          open={showDrawer}
+          toggle={toggleDrawer}
+          stakeholder={stakeholder}
+          refetch={refetch}
+          typeId={String(typeId)}
+        />
+      )}
       <Card>
         <input id="upload-cover-profile" type="file" hidden />
         <Tooltip title={t('project.general-information.upload-cover-profile')} placement="top" arrow>
@@ -115,9 +142,45 @@ const StakeholderProfileSection: React.FC<StakeholderProfileSectionProps> = ({ s
             </Typography>
           </Box>
         </CardContent>
+        <CardActions style={{ justifyContent: "flex-end" }}>
+          <Fragment>
+            <Box>
+              <FileDrawer id={stakeholder.id} type={uploadableStakeholderFileTypes.stakeholder} /> &nbsp;
+              <Box sx={{ display: "flex" }}>
+                <ModelActionComponent
+                  model="Stakeholder"
+                  model_id={stakeholder.id}
+
+                  refetchModel={refetch}
+                  resubmit={function (): void {
+                    throw new Error("Function not implemented.");
+                  }}
+                  title={""}
+                  postAction={function (): void {
+                    throw new Error("Function not implemented.");
+                  }}
+                />
+                <RowOptions
+                  onEdit={handleEdit}
+                  onDelete={() => handleDelete(stakeholder.id)}
+                  item={stakeholder}
+                  deletePermissionRule={{
+                    action: 'delete',
+                    subject: 'stakeholder',
+                  }}
+                  editPermissionRule={{
+                    action: 'edit',
+                    subject: 'stakeholder'
+                  }}
+                  options={[]}
+                />
+              </Box>
+            </Box>
+          </Fragment>
+        </CardActions>
       </Card>
     </Fragment>
   );
 };
 
-export default StakeholderProfileSection;
+export default StakeholderDetailComponent;

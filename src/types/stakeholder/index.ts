@@ -43,3 +43,15 @@ export interface StakeholderPhone {
   email: string;
   is_primary: string;
 }
+export interface StakeholderInfo {
+  id: string;              // UUID as string
+  parent_id?: string;       // Optional UUID
+  stakeholder_id: string;   // UUID, cannot be null
+  capital?: string;         // Optional string
+  general_manager?: string; // Optional string
+  description?: string;     // Optional text
+  file_id?: string;         // Optional UUID
+  revision_no?: number;     // Optional integer
+  created_at?: Date;        // Optional date for the created_at field
+  updated_at?: Date;        // Optional date for the updated_at field
+}

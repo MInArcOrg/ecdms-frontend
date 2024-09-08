@@ -14,19 +14,24 @@ import CustomTextBox from "src/views/shared/form/custom-text-box";
 import { Icon } from '@iconify/react';
 import CustomDynamicDatePicker from "src/views/shared/form/custom-dynamic-date-box";
 import CustomPhoneInput from "src/views/shared/form/custom-phone-box";
+import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 
 interface StakeholderFormProps {
   formik: FormikProps<Stakeholder>;
   isLocaleEdit?: boolean;
   typeId: string;
   isEdit: boolean;
+  file: File | null;
+  onFileChange: (file: File | null) => void;
 }
 
 const StakeholderForm: React.FC<StakeholderFormProps> = ({
   formik,
   isLocaleEdit = false,
   typeId,
-  isEdit
+  isEdit,
+  file,
+  onFileChange
 }) => {
   const { t: transl } = useTranslation();
 
@@ -156,7 +161,7 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
 
       {/* Emails Section */}
       {
-        // !isEdit &&
+        !isEdit &&
         <Box mb={2}>
           <Typography variant="h6" gutterBottom>
             {transl("stakeholder.form.emails")}
@@ -219,7 +224,7 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
       }
       {/* Phones Section */}
       {
-        // !isEdit &&
+        !isEdit &&
         <Box mb={2}>
           <Typography variant="h6" gutterBottom>
             {transl("stakeholder.form.phones")}
@@ -281,7 +286,7 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
           </FieldArray>
         </Box>
       }
-
+      <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
     </>
   );
 };

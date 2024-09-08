@@ -4,10 +4,10 @@ import { useEffect } from 'react';
 import LoadingPlaceholder from 'src/views/components/loader';
 import subMenuItems from './(subMenuItems)';
 import stakeholderApiService from 'src/services/stakeholders/stakeholder-service';
-import StakeholderProfileSection from 'src/views/pages/stakeholders/details/stakeholder-info/project-profile-card';
+import StakeholderDetailComponent from 'src/views/pages/stakeholders/details/stakeholder-detail';
 import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
 
-function StakeholderGeneralInformation() {
+function StakeholderDetail() {
   const router = useRouter();
   const { id, typeId } = router.query;
 
@@ -32,16 +32,16 @@ function StakeholderGeneralInformation() {
         <LoadingPlaceholder />
       ) : (
         <>
-          <StakeholderProfileSection stakeholder={stakeholderGeneralInformation?.payload} />
+          <StakeholderDetailComponent typeId={typeId as string} refetch={refetch} stakeholder={stakeholderGeneralInformation?.payload} />
         </>
       )}
     </StakeholderLayout>
   );
 }
 
-StakeholderGeneralInformation.acl = {
-  subject: 'stakeholderinfo',
-  action: 'view_stakeholderinfo'
+StakeholderDetail.acl = {
+  subject: 'stakeholder',
+  action: 'view_stakeholder'
 };
 
-export default StakeholderGeneralInformation;
+export default StakeholderDetail;

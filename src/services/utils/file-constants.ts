@@ -16,6 +16,7 @@ export const uploadableResourceFileTypes = {
 } as const;
 export const uploadablePhotoTypes = {
   stakeholder_profile_photo: 'STAKEHOLDER_PROFILE_PHOTO',
+
   project_profile_photo: 'PROJECT_PROFILE_PHOTO',
   user_profile_photo: 'USER_PROFILE_PHOTO',
   resource: 'RESOURCE',

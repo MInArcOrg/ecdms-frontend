@@ -3,19 +3,21 @@
 import * as yup from "yup";
 
 import { FormikProps } from "formik";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import StakeholderForm from "./stakeholder-form";
-import { Stakeholder, StakeholderEmail, StakeholderPhone } from "src/types/stakeholder";
-import stakeholderApiService from "src/services/stakeholders/stakeholder-service";
 import moment from "moment";
-import { getDynamicDate } from "src/views/components/custom/ethio-calendar/ethio-calendar-utils";
-import { uploadableProjectFileTypes, uploadableStakeholderFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
+import { useState } from "react";
+import i18n from "src/configs/i18n";
 import stakeholderEmailApiService from "src/services/stakeholders/stakeholder-email-service";
 import stakeholderPhoneApiService from "src/services/stakeholders/stakeholder-phone-service";
-import i18n from "src/configs/i18n";
+import stakeholderApiService from "src/services/stakeholders/stakeholder-service";
+import { uploadableStakeholderFileTypes } from "src/services/utils/file-constants";
+import { uploadFile } from "src/services/utils/file-utils";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import { Stakeholder, StakeholderEmail, StakeholderPhone } from "src/types/stakeholder";
+import { getDynamicDate } from "src/views/components/custom/ethio-calendar/ethio-calendar-utils";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import StakeholderForm from "./stakeholder-form";
+import { convertDateToLocaleDate } from "src/utils/formatter/date";
 
 interface StakeholderDrawerType {
   open: boolean;
@@ -32,30 +34,7 @@ const validationSchema = yup.object().shape({
   tin: yup.string().required("TIN is required"),
   origin: yup.string().required("Origin is required"),
   license_issued_date: yup.date().required("License Issued Date is required"),
-  stakeholderemails: yup.array().of(
-    yup.object().shape({
-      email: yup.string().email("Invalid email format").required("Email is required"),
-      is_primary: yup.boolean().required(),
-    })
-  ).test({
-    message: "There must be exactly one primary email",
-    test: (emails) => {
-      const primaryCount = emails?.filter((email) => email.is_primary).length || 0;
-      return primaryCount === 1;
-    },
-  }),
-  stakeholderphones: yup.array().of(
-    yup.object().shape({
-      phone: yup.string().required("Phone is required"),
-      is_primary: yup.boolean().required(),
-    })
-  ).test({
-    message: "There must be exactly one primary phone",
-    test: (phones) => {
-      const primaryCount = phones?.filter((phone) => phone.is_primary).length || 0;
-      return primaryCount === 1;
-    },
-  }),
+
   ownership_id: yup.string().required("Ownership is required"),
 });
 
@@ -63,6 +42,11 @@ const validationSchema = yup.object().shape({
 const StakeholderDrawer = (props: StakeholderDrawerType) => {
   // ** Props
   const { open, toggle, refetch, stakeholder, typeId } = props;
+
+  const [uploadableFile, setUploadableFile] = useState<File | null>(null);
+  const onFileChange = (file: File | null) => {
+    setUploadableFile(file);
+  };
 
   const isEdit = stakeholder?.id ? true : false;
   const createResource = async (body: IApiPayload<Stakeholder>) => {
@@ -78,8 +62,9 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
         ...values,
         id: stakeholder?.id,
         stakeholdertype_id: typeId,
+        license_issued_date: convertDateToLocaleDate(values.license_issued_date),
       },
-      files: [],
+      files: uploadableFile ? [uploadableFile] : []
     };
     return payload;
   };
@@ -104,8 +89,6 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
 
     // Submit stakeholder phones and emails
     const { stakeholderemails, stakeholderphones } = payload.data;
-    console.log('stakeholderphones', stakeholderphones)
-    console.log('stakeholderemails', stakeholderemails)
     // Assuming you have a function to update or submit stakeholder's phones and emails
     if (stakeholderemails && stakeholderemails.length > 0) {
       await submitStakeholderEmails(response.payload.id, stakeholderemails);
@@ -187,7 +170,7 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<Stakeholder>) => {
-            return <StakeholderForm typeId={typeId} formik={formik} isEdit={isEdit} />;
+            return <StakeholderForm file={uploadableFile} onFileChange={onFileChange} typeId={typeId} formik={formik} isEdit={isEdit} />;
           }}
         </FormPageWrapper>
       )}
