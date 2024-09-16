@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router';
+import HydroElectricDamList from 'src/views/pages/projects/detail/other/electric-power/hydro-electric-dam';
 import OtherLayout from 'src/views/pages/projects/detail/other/layouts/other-layout';
 import subMenuItems, { findOtherModelName } from '../(subMenuItems)';
-import GeneratingCapacityList from 'src/views/pages/projects/detail/other/electric-power/generating-capacity';
-import HydroElectricDamList from 'src/views/pages/projects/detail/other/electric-power/hydro-electric-dam';
 
 function Index() {
   const router = useRouter();

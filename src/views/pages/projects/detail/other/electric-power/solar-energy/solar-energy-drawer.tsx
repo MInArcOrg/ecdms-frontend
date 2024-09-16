@@ -10,7 +10,6 @@ import otherApiService from 'src/services/project/other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { SolarEnergy } from 'src/types/project/other';
-import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
 interface SolarEnergyDrawerType {
   open: boolean;

@@ -33,8 +33,7 @@ const RailwayDrawer = (props: RailwayDrawerType) => {
 
   const createRailway = async (body: IApiPayload<Railway>) => otherApiService<Railway>().create(model, body);
 
-  const editRailway = async (body: IApiPayload<Railway>) =>
-    otherApiService<Railway>().update(model, railway?.id || '', body);
+  const editRailway = async (body: IApiPayload<Railway>) => otherApiService<Railway>().update(model, railway?.id || '', body);
 
   const getPayload = (values: Railway) => {
     return {
@@ -58,11 +57,7 @@ const RailwayDrawer = (props: RailwayDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer
-      title={`project.other.railway.${isEdit ? `edit-railway` : `create-railway`}`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`project.other.railway.${isEdit ? `edit-railway` : `create-railway`}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}

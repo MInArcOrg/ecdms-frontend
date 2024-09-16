@@ -145,8 +145,8 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
       routes: [
         {
           id: 16,
-          title: t('project.navigation.submenu.others.railway-detail'),
-          path: `${baseUrl}/railway/railway-detail`,
+          title: t('project.navigation.submenu.others.railways'),
+          path: `${baseUrl}/railway/railway`,
           model: 'railway'
         },
         {

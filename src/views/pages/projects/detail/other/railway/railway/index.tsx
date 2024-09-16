@@ -101,7 +101,7 @@ const RailwayList: React.FC<RailwayListProps> = ({ model, projectId, typeId }) =
           hasReference={true}
           id={selectedRow?.id || ''}
           fileType={uploadableProjectFileTypes.other.railway}
-          title={t('project.other.railway.railway-details')}
+          title={t('project.other.railway.railways')}
         />
       )}
 

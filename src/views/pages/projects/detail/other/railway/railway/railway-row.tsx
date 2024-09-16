@@ -40,32 +40,45 @@ export const railwayColumns = (
   },
   {
     flex: 0.15,
-    minWidth: 120,
-    headerName: t('project.other.railway-type.details.name'),
-    field: 'name',
-    renderCell: ({ row }: CellType) => (row.railwaytype_id ? row.railwaytype?.name : t('common.not-available'))
-  },
-
-  {
-    flex: 0.15,
-    minWidth: 120,
-    headerName: t('project.other.railway.specifications'),
-    field: 'specifications',
-    renderCell: ({ row }: CellType) => (row.specifications ? row.specifications : t('common.not-available'))
+    minWidth: 150,
+    headerName: t('project.other.railway.details.major-operator'),
+    field: 'major_operator',
+    renderCell: ({ row }: CellType) => (row.major_operator ? row.major_operator : t('common.not-available'))
   },
   {
     flex: 0.15,
-    minWidth: 120,
-    headerName: t('project.other.railway.input-voltage'),
-    field: 'input_voltage',
-    renderCell: ({ row }: CellType) => (row.input_voltage ? row.input_voltage : t('common.not-available'))
+    minWidth: 150,
+    headerName: t('project.other.railway.details.energy-source'),
+    field: 'energy_source',
+    renderCell: ({ row }: CellType) => (row.energy_source ? row.energy_source : t('common.not-available'))
   },
   {
     flex: 0.15,
-    minWidth: 120,
-    headerName: t('project.other.railway.output-voltage'),
-    field: 'output_voltage',
-    renderCell: ({ row }: CellType) => (row.output_voltage ? row.output_voltage : t('common.not-available'))
+    minWidth: 150,
+    headerName: t('project.other.railway.details.system-length'),
+    field: 'system_length',
+    renderCell: ({ row }: CellType) => (row.system_length ? row.system_length.toString() : t('common.not-available'))
+  },
+  {
+    flex: 0.15,
+    minWidth: 150,
+    headerName: t('project.other.railway.details.total-stations'),
+    field: 'total_station_no',
+    renderCell: ({ row }: CellType) => (row.total_station_no ? row.total_station_no.toString() : t('common.not-available'))
+  },
+  {
+    flex: 0.15,
+    minWidth: 150,
+    headerName: t('project.other.railway.details.freight-cargo-no'),
+    field: 'fright_cargo_no',
+    renderCell: ({ row }: CellType) => (row.fright_cargo_no ? row.fright_cargo_no.toString() : t('common.not-available'))
+  },
+  {
+    flex: 0.15,
+    minWidth: 150,
+    headerName: t('project.other.railway.details.transport-cargo-no'),
+    field: 'transport_cargo_no',
+    renderCell: ({ row }: CellType) => (row.transport_cargo_no ? row.transport_cargo_no.toString() : t('common.not-available'))
   },
   {
     flex: 0.15,

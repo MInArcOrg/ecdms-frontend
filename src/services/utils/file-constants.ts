@@ -62,6 +62,7 @@ export const uploadableProjectFileTypes = {
     transformerType: 'TRANSFORMER_TYPE',
     transformer: 'TRANSFORMER',
     transmissionLine: 'TRANSMISSION_LINE',
-    electricTower: 'ELECTRIC_TOWER'
+    electricTower: 'ELECTRIC_TOWER',
+    railway: 'RAILWAYS'
   }
 } as const;

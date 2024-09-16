@@ -45,7 +45,8 @@ const RailwayCard: React.FC<RailwayCardProps> = ({ railway, refetch, onEdit, onD
             {t('project.other.railway.details.energy-source')}: {railway.energy_source || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway.details.system-length')}: {railway.system_length ? `${railway.system_length} km` : t('common.not-available')}
+            {t('project.other.railway.details.system-length')}:{' '}
+            {railway.system_length ? `${railway.system_length} km` : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway.details.total-stations')}: {railway.total_station_no || t('common.not-available')}
@@ -57,22 +58,14 @@ const RailwayCard: React.FC<RailwayCardProps> = ({ railway, refetch, onEdit, onD
             {t('project.other.railway.details.transport-cargo-no')}: {railway.transport_cargo_no || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}:{' '}
-            {railway.created_at ? formatCreatedAt(railway.created_at) : t('common.not-available')}
+            {t('common.table-columns.created-at')}: {railway.created_at ? formatCreatedAt(railway.created_at) : t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
         <FileDrawer id={railway.id} type={uploadableProjectFileTypes.other.railway} />
-        <ModelAction
-          model="Railway"
-          model_id={railway.id}
-          refetchModel={refetch}
-          resubmit={refetch}
-          title=""
-          postAction={refetch}
-        />
+        <ModelAction model="Railway" model_id={railway.id} refetchModel={refetch} resubmit={refetch} title="" postAction={refetch} />
         <RowOptions onEdit={() => onEdit(railway)} onDelete={() => onDelete(railway.id)} item={railway} options={[]} />
       </CardActions>
     </Card>

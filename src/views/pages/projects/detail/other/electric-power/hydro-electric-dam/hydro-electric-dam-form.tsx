@@ -1,12 +1,11 @@
 import { Grid } from '@mui/material';
+import { FormikProps } from 'formik';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { FormikProps } from 'formik';
 import { gridSpacing } from 'src/configs/app-constants';
-import CustomSelectBox from 'src/views/shared/form/custom-select';
+import { HydroElectricDam } from 'src/types/project/other';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
-import { HydroElectricDam } from 'src/types/project/other';
 
 interface HydroElectricDamFormProps {
   formik: FormikProps<HydroElectricDam>;

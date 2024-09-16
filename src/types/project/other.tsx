@@ -259,4 +259,3 @@ export interface Railway {
   created_at?: Date;
   updated_at?: Date;
 }
-
