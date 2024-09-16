@@ -3,7 +3,7 @@
 import * as yup from "yup";
 import { FormikProps } from "formik";
 import { useState } from "react";
-import stakeholderInfoApiService from "src/services/stakeholders/stakeholder-info-service";
+import stakeholderInfoApiService from "src/services/stakeholder/stakeholder-info-service";
 import { uploadFile } from "src/services/utils/file-utils";
 import { IApiPayload, IApiResponse } from "src/types/requests";
 import { StakeholderInfo } from "src/types/stakeholder";
@@ -17,7 +17,7 @@ interface StakeholderInfoDrawerType {
     toggle: () => void;
     refetch: () => void;
     stakeholderInfo: StakeholderInfo;
-    typeId: string;
+    stakeholder_id: string;
 }
 
 const validationSchema = yup.object().shape({
@@ -29,7 +29,7 @@ const validationSchema = yup.object().shape({
 
 
 const StakeholderInfoDrawer = (props: StakeholderInfoDrawerType) => {
-    const { open, toggle, refetch, stakeholderInfo, typeId } = props;
+    const { open, toggle, refetch, stakeholderInfo, stakeholder_id } = props;
 
     const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
@@ -52,7 +52,7 @@ const StakeholderInfoDrawer = (props: StakeholderInfoDrawerType) => {
             data: {
                 ...values,
                 id: stakeholderInfo?.id,
-                stakeholdertype_id: typeId,
+                stakeholder_id: stakeholder_id,
             },
             files: uploadableFile ? [uploadableFile] : []
         };
@@ -83,14 +83,14 @@ const StakeholderInfoDrawer = (props: StakeholderInfoDrawerType) => {
 
     return (
         <CustomSideDrawer
-            title={`stakeholder.${isEdit ? "edit-stakeholder" : "create-stakeholder"}`}
+            title={`stakeholder.stakeholder-info.${isEdit ? "edit-stakeholder-info" : "create-stakeholder-info"}`}
             handleClose={handleClose}
             open={open}
         >
             {() => (
                 <FormPageWrapper
                     edit={isEdit}
-                    title={`stakeholder.${isEdit ? "edit-stakeholder" : "create-stakeholder"}`}
+                    title={`stakeholder.stakeholder-info.${isEdit ? "edit-stakeholder-info" : "create-stakeholder-info"}`}
                     getPayload={getPayload}
                     validationSchema={validationSchema}
                     initialValues={{

@@ -59,6 +59,12 @@ const projectApiService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
+      }),
+  getProjectTodateStatus: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
+    buildGetRequest(`/projects/project-analysis/${idx}`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
       })
 };
 

@@ -98,7 +98,7 @@ const ProjectEarnedValueStatisticsCard: React.FC<ProjectEarnedValueStatisticsCar
               {data?.time_percent ? data?.time_percent?.toFixed(2) : ''} %
             </Typography>
             <Typography variant="subtitle2" ml={1} pl={2}>
-              {data?.time ? data?.time : 0}
+              {/* {data?.time ? data?.time : 0} */}
             </Typography>
           </Box>
           <ReactApexcharts

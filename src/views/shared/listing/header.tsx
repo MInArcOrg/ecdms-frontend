@@ -38,7 +38,6 @@ const ListHeader = (props: ListHeaderProps) => {
   const ability = useContext(AbilityContext);
 
   const performSearch = (term: string) => {
-
     let filterObject: { [key: string]: string } = {}; // Initialize filterObject
     props.searchKeys.forEach((item) => {
       filterObject[item] = term;

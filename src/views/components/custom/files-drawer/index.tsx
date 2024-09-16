@@ -10,7 +10,7 @@ function FileDrawer({ id, type, onRefetch }: { id: string; type: string; onRefet
   const [show, setShow] = useState(false);
   const { data, isLoading, refetch, isFetching } = useQuery({
     queryKey: ['model-file', id, type],
-    queryFn: () => getFilesByModel({ filter: { type, reference_id: id } }),
+    queryFn: () => getFilesByModel({ filter: { type, reference_id: id } })
   });
   const { t } = useTranslation();
 
@@ -22,13 +22,7 @@ function FileDrawer({ id, type, onRefetch }: { id: string; type: string; onRefet
   return (
     <Fragment>
       {data?.payload && data?.payload?.length > 0 && (
-        <FileDetail
-          show={show}
-          toggleDrawer={() => setShow(!show)}
-          data={data?.payload}
-          refetch={refetch}
-          dataLoading={isLoading}
-        />
+        <FileDetail show={show} toggleDrawer={() => setShow(!show)} data={data?.payload} refetch={refetch} dataLoading={isLoading} />
       )}
       {isLoading ? (
         <CircularProgress size={10} />
@@ -41,7 +35,7 @@ function FileDrawer({ id, type, onRefetch }: { id: string; type: string; onRefet
             fontWeight: 'bold',
             display: 'flex',
             alignItems: 'center',
-            gap: 1,
+            gap: 1
           }}
           onClick={() => setShow(!show)}
         >

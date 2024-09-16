@@ -5,9 +5,7 @@ import {
   Card,
   CardActions,
   CardContent,
-  Divider,
-  Grid,
-  Typography,
+  Divider
 } from "@mui/material";
 import { Fragment } from "react";
 import { Stakeholder } from "src/types/stakeholder";

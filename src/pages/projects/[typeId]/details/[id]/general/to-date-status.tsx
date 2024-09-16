@@ -40,7 +40,7 @@ const ToDateStatus = () => {
     error
   } = useQuery({
     queryKey: ['project-general-information', id],
-    queryFn: () => projectApiService.getProjectGeneralInformation(String(id), {}),
+    queryFn: () => projectApiService.getProjectTodateStatus(String(id), {}),
     enabled: !!id
   });
 

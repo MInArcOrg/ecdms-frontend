@@ -1,23 +1,23 @@
-import { Box, Button, Card, CardActions, CardContent, IconButton, Typography } from '@mui/material';
+import { Box, Card, CardActions, CardContent, IconButton, Typography } from '@mui/material';
 import { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Icon from 'src/@core/components/icon';
+import stakeholderInfoApiService from 'src/services/stakeholder/stakeholder-info-service';
+import { uploadableStakeholderFileTypes } from 'src/services/utils/file-constants';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import StakeholderInfoDrawer from './stakeholder-info-drawer';
-import stakeholderInfoApiService from 'src/services/stakeholders/stakeholder-info-service';
 import { StakeholderInfo } from './stakeholder-info-form';
-import { uploadableStakeholderFileTypes } from 'src/services/utils/file-constants';
-import Icon from 'src/@core/components/icon';
 
 interface StakeholderInfoDetailComponentProps {
   stakeholderInfo: StakeholderInfo;
   refetch: () => void;
-  typeId: string;
+  stakeholder_id: string;
 }
 
-const StakeholderInfoDetailComponent: React.FC<StakeholderInfoDetailComponentProps> = ({ stakeholderInfo, refetch, typeId }) => {
+const StakeholderInfoDetailComponent: React.FC<StakeholderInfoDetailComponentProps> = ({ stakeholderInfo, refetch, stakeholder_id }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const { t } = useTranslation();
 
@@ -29,8 +29,8 @@ const StakeholderInfoDetailComponent: React.FC<StakeholderInfoDetailComponentPro
     setShowDrawer(!showDrawer);
   };
 
-  const handleDelete = async (resourceId: string) => {
-    await stakeholderInfoApiService.delete(resourceId);
+  const handleDelete = async (stakeholderInfoId: string) => {
+    await stakeholderInfoApiService.delete(stakeholderInfoId);
     refetch();
   };
   if (!stakeholderInfo)
@@ -42,7 +42,7 @@ const StakeholderInfoDetailComponent: React.FC<StakeholderInfoDetailComponentPro
             flexDirection: 'row-reverse',
             p: 1,
             m: 1,
-            borderRadius: 1,
+            borderRadius: 1
           }}
         >
           <></>
@@ -52,7 +52,6 @@ const StakeholderInfoDetailComponent: React.FC<StakeholderInfoDetailComponentPro
         </Box>
         <CardContent>
           <Typography variant="body1">{t('No stakeholder information available')}</Typography>
-
         </CardContent>
 
         {showDrawer && (
@@ -61,7 +60,7 @@ const StakeholderInfoDetailComponent: React.FC<StakeholderInfoDetailComponentPro
             toggle={toggleDrawer}
             stakeholderInfo={stakeholderInfo as StakeholderInfo}
             refetch={refetch}
-            typeId={String(typeId)}
+            stakeholder_id={String(stakeholder_id)}
           />
         )}
       </Card>
@@ -75,7 +74,7 @@ const StakeholderInfoDetailComponent: React.FC<StakeholderInfoDetailComponentPro
           toggle={toggleDrawer}
           stakeholderInfo={stakeholderInfo}
           refetch={refetch}
-          typeId={String(typeId)}
+          stakeholder_id={String(stakeholder_id)}
         />
       )}
 
@@ -85,12 +84,12 @@ const StakeholderInfoDetailComponent: React.FC<StakeholderInfoDetailComponentPro
           <Box sx={{ display: { md: 'flex' } }} alignItems="start" justifyContent="space-between" mt={3}>
             {stakeholderInfo.capital && (
               <Typography variant="body1">
-                <strong>{t('Capital')}:</strong> {stakeholderInfo.capital}
+                <strong>{t('stakeholder.stakeholder-info.form.capital')}:</strong> {stakeholderInfo.capital}
               </Typography>
             )}
             {stakeholderInfo.general_manager && (
               <Typography variant="body1">
-                <strong>{t('General Manager')}:</strong> {stakeholderInfo.general_manager}
+                <strong>{t('stakeholder.stakeholder-info.form.general-manager')}:</strong> {stakeholderInfo.general_manager}
               </Typography>
             )}
           </Box>
@@ -98,7 +97,7 @@ const StakeholderInfoDetailComponent: React.FC<StakeholderInfoDetailComponentPro
           {stakeholderInfo.description && (
             <Box mt={3}>
               <Typography variant="body1">
-                <strong>{t('Description')}:</strong> {stakeholderInfo.description}
+                <strong>{t('stakeholder.stakeholder-info.form.description')}:</strong> {stakeholderInfo.description}
               </Typography>
             </Box>
           )}
@@ -122,11 +121,11 @@ const StakeholderInfoDetailComponent: React.FC<StakeholderInfoDetailComponentPro
                 item={stakeholderInfo}
                 deletePermissionRule={{
                   action: 'delete',
-                  subject: 'stakeholderinfo',
+                  subject: 'stakeholderinfo'
                 }}
                 editPermissionRule={{
                   action: 'edit',
-                  subject: 'stakeholderinfo',
+                  subject: 'stakeholderinfo'
                 }}
                 options={[]}
               />

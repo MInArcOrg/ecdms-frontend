@@ -68,7 +68,7 @@ const AddressDrawer = (props: AddressDrawerType) => {
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title="address.title" // Adjust the title key if necessary
+          title={`address.${isEdit ? 'edit-address' : 'create-address'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{ ...(address as Address) }}

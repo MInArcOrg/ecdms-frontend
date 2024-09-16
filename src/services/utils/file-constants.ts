@@ -47,6 +47,7 @@ export const uploadableProjectFileTypes = {
   masterStatus: 'MASTER_STATUS',
   file: 'File',
   resource: 'RESOURCE',
+  certificate: "CERTIFICATE",
   other: {
     buildingDimensionDetail: 'BUILDING_DIMENSION_DETAIL',
     port: 'PORT',

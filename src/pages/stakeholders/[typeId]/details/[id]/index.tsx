@@ -11,14 +11,10 @@ const StakeholderGeneral = () => {
   useEffect(() => {
     if (typeId && id) {
       // Build the new URL dynamically
-      const newUrl = `/stakeholders/${typeId}/details/${id}/general/stakeholder`;
+      const newUrl = `/stakeholders/${typeId}/details/${id}/general/stakeholder-info`;
 
       // Simulate a condition or action before redirecting
-      const timer = setTimeout(() => {
-        router.push(newUrl); // Redirect to the constructed URL
-      }, 3000); // Redirect after 3 seconds
-
-      return () => clearTimeout(timer); // Cleanup the timer on unmount
+      router.push(newUrl); // Redirect to the constructed URL
     }
   }, [typeId, id, router]);
 

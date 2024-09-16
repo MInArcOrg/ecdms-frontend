@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import stakeholderApiService from 'src/services/stakeholders/stakeholder-service';
+import stakeholderApiService from 'src/services/stakeholder/stakeholder-service';
 import { ProjectStakeholder } from 'src/types/project/project-stakeholder';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';

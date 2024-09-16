@@ -3,10 +3,10 @@ import Typography from '@mui/material/Typography';
 import { ChangeEvent, Fragment, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
-import stakeholderApiService from 'src/services/stakeholders/stakeholder-service';
+import stakeholderApiService from 'src/services/stakeholder/stakeholder-service';
 import { uploadablePhotoTypes } from 'src/services/utils/file-constants';
 import { getStaticPhoto, handleProfilePictureError, uploadImage, useGetMultiplePhotos } from 'src/services/utils/file-utils';
-import { uploadableStakeholderFileTypes } from "src/services/utils/file-constants";
+import { uploadableStakeholderFileTypes } from 'src/services/utils/file-constants';
 
 import { Stakeholder } from 'src/types/stakeholder';
 import FileDrawer from 'src/views/components/custom/files-drawer';
@@ -59,13 +59,7 @@ const StakeholderDetailComponent: React.FC<StakeholderDetailComponentProps> = ({
   return (
     <Fragment>
       {showDrawer && (
-        <StakeholderDrawer
-          open={showDrawer}
-          toggle={toggleDrawer}
-          stakeholder={stakeholder}
-          refetch={refetch}
-          typeId={String(typeId)}
-        />
+        <StakeholderDrawer open={showDrawer} toggle={toggleDrawer} stakeholder={stakeholder} refetch={refetch} typeId={String(typeId)} />
       )}
       <Card>
         <input id="upload-cover-profile" type="file" hidden />
@@ -142,22 +136,21 @@ const StakeholderDetailComponent: React.FC<StakeholderDetailComponentProps> = ({
             </Typography>
           </Box>
         </CardContent>
-        <CardActions style={{ justifyContent: "flex-end" }}>
+        <CardActions style={{ justifyContent: 'flex-end' }}>
           <Fragment>
             <Box>
               <FileDrawer id={stakeholder.id} type={uploadableStakeholderFileTypes.stakeholder} /> &nbsp;
-              <Box sx={{ display: "flex" }}>
+              <Box sx={{ display: 'flex' }}>
                 <ModelActionComponent
                   model="Stakeholder"
                   model_id={stakeholder.id}
-
                   refetchModel={refetch}
                   resubmit={function (): void {
-                    throw new Error("Function not implemented.");
+                    throw new Error('Function not implemented.');
                   }}
-                  title={""}
+                  title={''}
                   postAction={function (): void {
-                    throw new Error("Function not implemented.");
+                    throw new Error('Function not implemented.');
                   }}
                 />
                 <RowOptions
@@ -166,7 +159,7 @@ const StakeholderDetailComponent: React.FC<StakeholderDetailComponentProps> = ({
                   item={stakeholder}
                   deletePermissionRule={{
                     action: 'delete',
-                    subject: 'stakeholder',
+                    subject: 'stakeholder'
                   }}
                   editPermissionRule={{
                     action: 'edit',

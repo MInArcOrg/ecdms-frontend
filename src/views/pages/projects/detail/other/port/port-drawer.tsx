@@ -18,7 +18,6 @@ interface PortDrawerType {
   port: Port;
   projectId: string;
   model: string;
-
 }
 
 const PortDrawer = (props: PortDrawerType) => {
