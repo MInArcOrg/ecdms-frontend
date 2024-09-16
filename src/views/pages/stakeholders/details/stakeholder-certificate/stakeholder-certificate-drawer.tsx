@@ -10,7 +10,7 @@ import stakeholderCertificateApiService from 'src/services/stakeholder/stakehold
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { StakeholderCertificate } from 'src/types/stakeholder/stakeholder-certificate';
-import { formatInitialDateDate } from 'src/utils/formatter/date';
+import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
 
 interface StakeholderCertificateDrawerType {
@@ -41,7 +41,10 @@ const StakeholderCertificateDrawer = (props: StakeholderCertificateDrawerType) =
     data: {
       ...values,
       id: stakeholderCertificate?.id,
-      stakeholder_id: stakeholderId
+      stakeholder_id: stakeholderId,
+      expiry_date: convertDateToLocaleDate(values?.expiry_date),
+      date_of_issue: convertDateToLocaleDate(values?.date_of_issue),
+      initial_certificate_issue_date: convertDateToLocaleDate(values?.initial_certificate_issue_date)
     },
     files: uploadableFile ? [uploadableFile] : []
   });

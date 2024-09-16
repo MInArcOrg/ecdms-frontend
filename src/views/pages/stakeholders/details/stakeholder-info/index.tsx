@@ -10,6 +10,7 @@ import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import StakeholderInfoDrawer from './stakeholder-info-drawer';
 import { StakeholderInfo } from './stakeholder-info-form';
+import { formatCurrency } from 'src/utils/formatter/currency';
 
 interface StakeholderInfoDetailComponentProps {
   stakeholderInfo: StakeholderInfo;
@@ -84,7 +85,7 @@ const StakeholderInfoDetailComponent: React.FC<StakeholderInfoDetailComponentPro
           <Box sx={{ display: { md: 'flex' } }} alignItems="start" justifyContent="space-between" mt={3}>
             {stakeholderInfo.capital && (
               <Typography variant="body1">
-                <strong>{t('stakeholder.stakeholder-info.form.capital')}:</strong> {stakeholderInfo.capital}
+                <strong>{t('stakeholder.stakeholder-info.form.capital')}:</strong> {formatCurrency(Number(stakeholderInfo.capital))}
               </Typography>
             )}
             {stakeholderInfo.general_manager && (

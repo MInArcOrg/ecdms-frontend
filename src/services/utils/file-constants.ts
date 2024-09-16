@@ -48,6 +48,10 @@ export const uploadableProjectFileTypes = {
   file: 'File',
   resource: 'RESOURCE',
   certificate: "CERTIFICATE",
+  stakeholderPhone:"STAKEHOLDER_PHONE",
+  stakeholderEmail:"STAKEHOLDER_EMAIL",
+  stakeholderOperationLocation:"STAKEHOLDER_OPERATION_LOCATION",
+  stakeholderContactPerson:"STAKEHOLDER_CONTACT_PERSON",
   other: {
     buildingDimensionDetail: 'BUILDING_DIMENSION_DETAIL',
     port: 'PORT',

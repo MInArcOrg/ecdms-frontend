@@ -829,6 +829,8 @@
   "common": {
     "edit": "Edit",
     "create": "Create",
+    "active":"Active",
+    "inactive":"InActive",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",
@@ -896,6 +898,45 @@
         "description": "Description",
         "number-of-days": "Number of Days",
         "reason": "Reason"
+      }
+    },
+    "stakeholder-email": {
+      "title": "Stakeholder Email",
+      "create-stakeholder-email": "Create Stakeholder Email",
+      "edit-stakeholder-email": "Edit Stakeholder Email",
+      "form": {
+        "email":"Email"
+      }
+    },
+    "stakeholder-phone": {
+      "title": "Stakeholder Phone",
+      "create-stakeholder-phone": "Create Stakeholder Phone",
+      "edit-stakeholder-phone": "Edit Stakeholder Phone",
+      "form": {
+        "phone":"Phone"
+      }
+    },
+    "stakeholder-contact-person": {
+      "title": "Stakeholder Contact Person",
+      "create-stakeholder-contact-person": "Create Stakeholder Contact Person",
+      "edit-stakeholder-contact-person": "Edit Stakeholder Contact Person",
+      "form": {
+        "first-name": "First Name",
+        "middle-name": "Middle Name",
+        "last-name": "Last Name",
+        "gender": "Gender",
+        "email": "Email",
+        "phone-number": "Phone Number",
+        "name":"Name"
+      }
+    },
+    "stakeholder-operation-location": {
+      "title": "Stakeholder Operation Location",
+      "create-stakeholder-operation-location": "Create Stakeholder Operation Location",
+      "edit-stakeholder-operation-location": "Edit Stakeholder Operation Location",
+      "form": {
+        "country":"Country",
+        "status":"Status"
       }
     }
   },

@@ -22,7 +22,7 @@ export interface Stakeholder {
 
   stakeholderemails?: StakeholderEmail[];
   stakeholderphones?: StakeholderPhone[];
-  // operationlocations?: OperationLocation[];
+  // operationlocations?: StakeholderOperationLocation[];
 
   stakeholdertype?: MasterType; // define a proper type if available
   stakeholdercategory?: MasterCategory; // define a proper type if available
@@ -40,8 +40,10 @@ export interface StakeholderEmail {
 export interface StakeholderPhone {
   id: string;
   stakeholder_id: string;
-  email: string;
+  phone: string;
   is_primary: string;
+  created_at:string;
+  updated_at:string;
 }
 export interface StakeholderInfo {
   id: string; // UUID as string

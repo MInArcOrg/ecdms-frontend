@@ -43,7 +43,7 @@ const AddressCard = ({
               </Box>
               <Box mt={3} display="flex" gap={3}>
                 <Typography variant="body1">
-                  <strong>{transl('commmon.address.addresses')}:</strong> {address.country}, {address.city}, {address.region}, {address.subcity},{' '}
+                  <strong>{transl('address.title')}:</strong> {address.country}, {address.city}, {address.region}, {address.subcity},{' '}
                   {address.street}, {address.block_number}, {address.house_number}
                 </Typography>
               </Box>
