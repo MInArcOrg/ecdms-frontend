@@ -12,7 +12,7 @@ import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
 import moment from 'moment';
 import i18n from 'src/configs/i18n';
-import { convertDateToLocaleDate } from 'src/utils/formatter/date';
+import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
 interface ProjectTimeDrawerType {
   open: boolean;
@@ -79,17 +79,12 @@ const ProjectTimeDrawer = (props: ProjectTimeDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...(projectTime as ProjectTime),
-            contract_signing_date: projectTime?.contract_signing_date
-              ? getDynamicDate(i18n, moment(String(projectTime?.contract_signing_date)).toDate())
-              : undefined,
-            site_handover_date: projectTime?.site_handover_date
-              ? getDynamicDate(i18n, moment(String(projectTime?.site_handover_date)).toDate())
-              : undefined,
-            commencement_date: projectTime?.commencement_date
-              ? getDynamicDate(i18n, moment(String(projectTime?.commencement_date)).toDate())
-              : undefined,
-            mobilization_days_no: moment(projectTime.commencement_date).diff(moment(projectTime.site_handover_date), 'days'),
-            original_contract_duration: moment(projectTime.project_completion_date).diff(moment(projectTime.commencement_date), 'days')
+            contract_signing_date: formatInitialDateDate(projectTime?.contract_signing_date),
+            site_handover_date: formatInitialDateDate(projectTime?.site_handover_date),
+            
+            commencement_date: formatInitialDateDate(projectTime?.commencement_date),
+            mobilization_days_no: moment(projectTime?.commencement_date).diff(moment(projectTime?.site_handover_date), 'days'),
+            original_contract_duration: moment(projectTime?.project_completion_date).diff(moment(projectTime?.commencement_date), 'days')
           }}
           createActionFunc={createProjectTime}
           onActionSuccess={onActionSuccess}

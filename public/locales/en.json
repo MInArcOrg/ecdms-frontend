@@ -938,6 +938,22 @@
         "country":"Country",
         "status":"Status"
       }
+    },
+    "total-employee": {
+      "title": "Total Employees",
+      "create-total-employee": "Create Total Employees",
+      "edit-total-employee": "Edit Total Employees",
+      "form": {
+        "year": "Year",
+        "domain": "Domain",
+        "nationality": "Nationality",
+        "male": "Male Employees",
+        "female": "Female Employees",
+        "quantity": "Total Employees",
+        "department-name": "Department Name",
+        "revision-no": "Revision Number",
+        "total-employees":"Total Employees"
+      }
     }
   },
   "address": {
