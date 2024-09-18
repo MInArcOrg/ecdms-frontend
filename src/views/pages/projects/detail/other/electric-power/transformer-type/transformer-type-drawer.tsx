@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import TransformerTypeForm from './transformer-type-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { TransformerType } from 'src/types/project/other';
@@ -31,10 +31,10 @@ const TransformerTypeDrawer = (props: TransformerTypeDrawerType) => {
 
   const isEdit = Boolean(transformerType?.id);
 
-  const createTransformerType = async (body: IApiPayload<TransformerType>) => otherApiService<TransformerType>().create(model, body);
+  const createTransformerType = async (body: IApiPayload<TransformerType>) => projectOtherApiService<TransformerType>().create(model, body);
 
   const editTransformerType = async (body: IApiPayload<TransformerType>) =>
-    otherApiService<TransformerType>().update(model, transformerType?.id || '', body);
+    projectOtherApiService<TransformerType>().update(model, transformerType?.id || '', body);
 
   const getPayload = (values: TransformerType) => {
     return {

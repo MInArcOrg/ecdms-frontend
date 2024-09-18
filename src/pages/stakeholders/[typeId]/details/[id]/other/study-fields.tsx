@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
-import TelecomInfrastructureList from 'src/views/pages/projects/detail/other/telecom-infrastructure';
 import subMenuItems, { findOtherModelName } from './(subMenuItems)';
 import StakeholderOtherLayout from 'src/views/pages/stakeholders/other/layouts/stakeholder-other-layout';
+import StudyFieldList from 'src/views/pages/stakeholders/other/stakeholder-specific/study-field';
 
 function Index() {
   const router = useRouter();
@@ -19,9 +19,9 @@ function Index() {
       subMenuItems={subMenuItems}
       baseUrl={baseUrl}
     >
-      <TelecomInfrastructureList
+      <StudyFieldList
         model={findOtherModelName(subMenuItems(baseUrl), activeType, activeSubType) || ''}
-        projectId={String(id)}
+        stakeholderId={String(id)}
         typeId={String(typeId)}
       />
     </StakeholderOtherLayout>

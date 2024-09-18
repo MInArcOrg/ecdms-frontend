@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import GeneratingCapacityForm from './generating-capacity-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { GeneratingCapacity } from 'src/types/project/other';
@@ -33,10 +33,10 @@ const GeneratingCapacityDrawer = (props: GeneratingCapacityDrawerType) => {
   const isEdit = Boolean(generatingCapacity?.id);
 
   const createGeneratingCapacity = async (body: IApiPayload<GeneratingCapacity>) =>
-    otherApiService<GeneratingCapacity>().create(model, body);
+    projectOtherApiService<GeneratingCapacity>().create(model, body);
 
   const editGeneratingCapacity = async (body: IApiPayload<GeneratingCapacity>) =>
-    otherApiService<GeneratingCapacity>().update(model, generatingCapacity?.id || '', body);
+    projectOtherApiService<GeneratingCapacity>().update(model, generatingCapacity?.id || '', body);
 
   const getPayload = (values: GeneratingCapacity) => {
     return {

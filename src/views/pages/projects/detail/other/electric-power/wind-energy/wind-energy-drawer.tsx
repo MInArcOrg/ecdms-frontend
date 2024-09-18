@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import WindEnergyForm from './wind-energy-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { WindEnergy } from 'src/types/project/other';
@@ -31,9 +31,9 @@ const WindEnergyDrawer = (props: WindEnergyDrawerType) => {
 
   const isEdit = Boolean(windEnergy?.id);
 
-  const createWindEnergy = async (body: IApiPayload<WindEnergy>) => otherApiService<WindEnergy>().create(model, body);
+  const createWindEnergy = async (body: IApiPayload<WindEnergy>) => projectOtherApiService<WindEnergy>().create(model, body);
 
-  const editWindEnergy = async (body: IApiPayload<WindEnergy>) => otherApiService<WindEnergy>().update(model, windEnergy?.id || '', body);
+  const editWindEnergy = async (body: IApiPayload<WindEnergy>) => projectOtherApiService<WindEnergy>().update(model, windEnergy?.id || '', body);
 
   const getPayload = (values: WindEnergy) => {
     return {

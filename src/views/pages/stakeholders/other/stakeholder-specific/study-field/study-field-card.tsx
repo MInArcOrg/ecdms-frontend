@@ -1,8 +1,9 @@
 import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { StudyField } from 'src/types/project/other';
+import { uploadableStakeholderFileTypes } from 'src/services/utils/file-constants';
+import { StudyField } from 'src/types/stakeholder/other';
+import { formatCreatedAt } from 'src/utils/formatter/date';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
@@ -49,26 +50,31 @@ const StudyFieldCard: React.FC<StudyFieldCardProps> = ({
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-envelop-material.details.exterior-walls')}: {studyField?.exterior_walls || 'N/A'}
+            {t('stakeholder.other.study-field.details.title')}: {studyField?.title || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-envelop-material.details.roof-assembly')}: {studyField?.roof_assembly || 'N/A'}
+            {t('stakeholder.other.study-field.details.description')}: {studyField?.description || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-envelop-material.details.exterior-windows')}: {studyField?.exterior_windows || 'N/A'}
+            {t('stakeholder.other.study-field.details.study-program-id')}: {studyField?.study_program_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-envelop-material.details.exterior-doors')}: {studyField?.exterior_doors || 'N/A'}
+            {t('stakeholder.other.study-field.details.studylevel-id')}: {studyField?.studylevel_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-envelop-material.details.shading-components')}:{' '}
-            {studyField?.shading_components || 'N/A'}
+            {t('stakeholder.other.study-field.details.revision-no')}: {studyField?.revision_no?.toString() || 'N/A'}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {t('common.table-columns.created-at')}: {studyField?.created_at ? formatCreatedAt(studyField.created_at) : 'N/A'}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {t('common.table-columns.updated-at')}: {studyField?.updated_at ? formatCreatedAt(studyField.updated_at) : 'N/A'}
           </Typography>
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={studyField.id} type={uploadableProjectFileTypes.other.studyField} />
+        <FileDrawer id={studyField.id} type={uploadableStakeholderFileTypes.other.studyField} />
         <ModelAction
           model="StudyField"
           model_id={studyField.id}

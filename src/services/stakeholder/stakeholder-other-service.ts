@@ -5,7 +5,7 @@ import { buildGetRequest } from 'src/utils/requests/get-request';
 import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
-const otherApiService = <T>() => ({
+const stakeholderOtherApiService = <T>() => ({
   getAll: (model: string, params: GetRequestParam): Promise<IApiResponse<T[]>> =>
     buildGetRequest(`/stakeholders/${model}s`, params)
       .then((response: AxiosResponse<IApiResponse<T[]>>) => response.data)
@@ -43,4 +43,4 @@ const otherApiService = <T>() => ({
       })
 });
 
-export default otherApiService;
+export default stakeholderOtherApiService;

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
@@ -28,7 +28,7 @@ const TurbineInfoList: React.FC<TurbineInfoListProps> = ({ model, projectId, typ
   const { t } = useTranslation();
 
   const fetchGeneratingCapacities = (params: GetRequestParam): Promise<IApiResponse<TurbineInfo[]>> => {
-    return otherApiService<TurbineInfo>().getAll(model, {
+    return projectOtherApiService<TurbineInfo>().getAll(model, {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -61,7 +61,7 @@ const TurbineInfoList: React.FC<TurbineInfoListProps> = ({ model, projectId, typ
   };
 
   const handleDelete = async (turbineInfoId: string) => {
-    await otherApiService<TurbineInfo>().delete(model, turbineInfoId);
+    await projectOtherApiService<TurbineInfo>().delete(model, turbineInfoId);
     refetch();
   };
 

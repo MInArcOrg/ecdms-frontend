@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import RoadLayerForm from './road-layer-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { RoadLayer } from 'src/types/project/other';
@@ -31,9 +31,9 @@ const RoadLayerDrawer = (props: RoadLayerDrawerType) => {
 
   const isEdit = Boolean(roadLayer?.id);
 
-  const createRoadLayer = async (body: IApiPayload<RoadLayer>) => otherApiService<RoadLayer>().create(model, body);
+  const createRoadLayer = async (body: IApiPayload<RoadLayer>) => projectOtherApiService<RoadLayer>().create(model, body);
 
-  const editRoadLayer = async (body: IApiPayload<RoadLayer>) => otherApiService<RoadLayer>().update(model, roadLayer?.id || '', body);
+  const editRoadLayer = async (body: IApiPayload<RoadLayer>) => projectOtherApiService<RoadLayer>().update(model, roadLayer?.id || '', body);
 
   const getPayload = (values: RoadLayer) => {
     return {

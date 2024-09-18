@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { Port } from 'src/types/project/other';
@@ -27,7 +27,7 @@ const PortList: React.FC<PortListProps> = ({ model, projectId, typeId }) => {
   const [selectedRow, setSelectedRow] = useState<Port | null>(null);
   const { t } = useTranslation();
   const fetchPorts = (params: GetRequestParam): Promise<IApiResponse<Port[]>> => {
-    return otherApiService<Port>().getAll(model, {
+    return projectOtherApiService<Port>().getAll(model, {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -60,7 +60,7 @@ const PortList: React.FC<PortListProps> = ({ model, projectId, typeId }) => {
   };
 
   const handleDelete = async (portId: string) => {
-    await otherApiService<Port>().delete(model, portId);
+    await projectOtherApiService<Port>().delete(model, portId);
     refetch();
   };
 

@@ -94,5 +94,8 @@ export const uploadableStakeholderFileTypes = {
   education: 'EDUCATION',
   employeeAge: 'EMPLOYEE_AGE',
   workExperience: 'WORK_EXPERIENCE',
-  ageLevel: 'AGE_LEVEL'
+  ageLevel: 'AGE_LEVEL',
+  other:{
+    studyField:"STUDY_FIELD"
+  }
 } as const;

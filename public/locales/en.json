@@ -1097,6 +1097,16 @@
         "revision-no": "Revision Number",
         "total-employees": "Total Employees"
       }
+    },
+    "other": {
+      "study-field": {
+        "details": {
+          "title": "Title",
+          "description": "Description",
+          "study-program": "Study Program",
+          "study-level": "Study Level"
+        }
+      }
     }
   },
   "address": {

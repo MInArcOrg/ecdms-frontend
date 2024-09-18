@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { Port } from 'src/types/project/other';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 
 interface PortDrawerType {
   open: boolean;
@@ -31,9 +31,9 @@ const PortDrawer = (props: PortDrawerType) => {
 
   const isEdit = Boolean(port?.id);
 
-  const createPort = async (body: IApiPayload<Port>) => otherApiService<Port>().create(model, body);
+  const createPort = async (body: IApiPayload<Port>) => projectOtherApiService<Port>().create(model, body);
 
-  const editPort = async (body: IApiPayload<Port>) => otherApiService<Port>().update(model, port?.id || '', body);
+  const editPort = async (body: IApiPayload<Port>) => projectOtherApiService<Port>().update(model, port?.id || '', body);
 
   const getPayload = (values: Port) => ({
     data: {

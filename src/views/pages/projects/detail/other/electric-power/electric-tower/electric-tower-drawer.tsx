@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import ElectricTowerForm from './electric-tower-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { ElectricTower } from 'src/types/project/other';
@@ -31,10 +31,10 @@ const ElectricTowerDrawer = (props: ElectricTowerDrawerType) => {
 
   const isEdit = Boolean(electricTower?.id);
 
-  const createElectricTower = async (body: IApiPayload<ElectricTower>) => otherApiService<ElectricTower>().create(model, body);
+  const createElectricTower = async (body: IApiPayload<ElectricTower>) => projectOtherApiService<ElectricTower>().create(model, body);
 
   const editElectricTower = async (body: IApiPayload<ElectricTower>) =>
-    otherApiService<ElectricTower>().update(model, electricTower?.id || '', body);
+    projectOtherApiService<ElectricTower>().update(model, electricTower?.id || '', body);
 
   const getPayload = (values: ElectricTower) => {
     return {

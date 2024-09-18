@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { BuildingDimensionDetail } from 'src/types/project/other';
@@ -28,7 +28,7 @@ const BuildingDimensionDetailList: React.FC<BuildingDimensionDetailListProps> = 
   const { t } = useTranslation();
 
   const fetchBuildingDimensionDetails = (params: GetRequestParam): Promise<IApiResponse<BuildingDimensionDetail[]>> => {
-    return otherApiService<BuildingDimensionDetail>().getAll(model, {
+    return projectOtherApiService<BuildingDimensionDetail>().getAll(model, {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -61,7 +61,7 @@ const BuildingDimensionDetailList: React.FC<BuildingDimensionDetailListProps> = 
   };
 
   const handleDelete = async (dimensionId: string) => {
-    await otherApiService<BuildingDimensionDetail>().delete(model, dimensionId);
+    await projectOtherApiService<BuildingDimensionDetail>().delete(model, dimensionId);
     refetch();
   };
 

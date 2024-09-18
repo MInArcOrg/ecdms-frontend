@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
@@ -28,7 +28,7 @@ const RailwayList: React.FC<RailwayListProps> = ({ model, projectId, typeId }) =
   const { t } = useTranslation();
 
   const fetchRailways = (params: GetRequestParam): Promise<IApiResponse<Railway[]>> => {
-    return otherApiService<Railway>().getAll(model, {
+    return projectOtherApiService<Railway>().getAll(model, {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -61,7 +61,7 @@ const RailwayList: React.FC<RailwayListProps> = ({ model, projectId, typeId }) =
   };
 
   const handleDelete = async (railwayId: string) => {
-    await otherApiService<Railway>().delete(model, railwayId);
+    await projectOtherApiService<Railway>().delete(model, railwayId);
     refetch();
   };
 

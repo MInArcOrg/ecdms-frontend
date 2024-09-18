@@ -4,7 +4,7 @@ import { FormikProps } from 'formik';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { RoadLayer, RoadSegment } from 'src/types/project/other';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
@@ -22,7 +22,7 @@ const RoadLayerForm: React.FC<RoadLayerFormProps> = ({ formik, file, onFileChang
   const { data: roadLayers } = useQuery({
     queryKey: ['road-segments'],
     queryFn: () =>
-      otherApiService<RoadSegment>().getAll('roadsegment', {
+      projectOtherApiService<RoadSegment>().getAll('roadsegment', {
         pagination: { pageSize: 100, page: 1 },
         filter: { project_id: projectId }
       })

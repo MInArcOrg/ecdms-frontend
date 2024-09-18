@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import SolarEnergyForm from './solar-energy-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { SolarEnergy } from 'src/types/project/other';
@@ -31,10 +31,10 @@ const SolarEnergyDrawer = (props: SolarEnergyDrawerType) => {
 
   const isEdit = Boolean(solarEnergy?.id);
 
-  const createSolarEnergy = async (body: IApiPayload<SolarEnergy>) => otherApiService<SolarEnergy>().create(model, body);
+  const createSolarEnergy = async (body: IApiPayload<SolarEnergy>) => projectOtherApiService<SolarEnergy>().create(model, body);
 
   const editSolarEnergy = async (body: IApiPayload<SolarEnergy>) =>
-    otherApiService<SolarEnergy>().update(model, solarEnergy?.id || '', body);
+    projectOtherApiService<SolarEnergy>().update(model, solarEnergy?.id || '', body);
 
   const getPayload = (values: SolarEnergy) => {
     return {

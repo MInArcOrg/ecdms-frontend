@@ -3,15 +3,15 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/stakeholder/other-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import stakeholderOtherApiService from 'src/services/stakeholder/stakeholder-other-service';
+import { uploadableStakeholderFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { StudyField } from 'src/types/stakeholder/other';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
 import StudyFieldCard from './study-field-card';
-import StudyFieldDrawer from './study-field';
+import StudyFieldDrawer from './study-field-drawer';
 import { studyFieldColumns } from './study-field-row';
 import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
 
@@ -28,7 +28,7 @@ const StudyFieldList: React.FC<StudyFieldListProps> = ({ model, stakeholderId, t
   const { t } = useTranslation();
 
   const fetchStudyFields = (params: GetRequestParam): Promise<IApiResponse<StudyField[]>> => {
-    return otherApiService<StudyField>().getAll(model, {
+    return stakeholderOtherApiService<StudyField>().getAll(model, {
       ...params,
       filter: { ...params.filter, stakeholder_id: stakeholderId }
     });
@@ -60,8 +60,8 @@ const StudyFieldList: React.FC<StudyFieldListProps> = ({ model, stakeholderId, t
     setSelectedRow(studyField);
   };
 
-  const handleDelete = async (materialId: string) => {
-    await otherApiService<StudyField>().delete(model, materialId);
+  const handleDelete = async (studyFieldId: string) => {
+    await stakeholderOtherApiService<StudyField>().delete(model, studyFieldId);
     refetch();
   };
 
@@ -73,18 +73,11 @@ const StudyFieldList: React.FC<StudyFieldListProps> = ({ model, stakeholderId, t
   const mapStudyFieldToDetailItems = (
     studyField: StudyField
   ): { title: string; value: string }[] => [
-    { title: t('stakeholder.other.building-envelop-material.details.exterior-walls'), value: studyField.exterior_walls || 'N/A' },
-    { title: t('stakeholder.other.building-envelop-material.details.roof-assembly'), value: studyField.roof_assembly || 'N/A' },
-    {
-      title: t('stakeholder.other.building-envelop-material.details.exterior-windows'),
-      value: studyField.exterior_windows || 'N/A'
-    },
-    { title: t('stakeholder.other.building-envelop-material.details.exterior-doors'), value: studyField.exterior_doors || 'N/A' },
-    {
-      title: t('stakeholder.other.building-envelop-material.details.shading-components'),
-      value: studyField.shading_components || 'N/A'
-    },
-    { title: t('stakeholder.other.building-envelop-material.details.remark'), value: studyField.remark || 'N/A' },
+    { title: t('stakeholder.other.study-field.details.title'), value: studyField.title || 'N/A' },
+    { title: t('stakeholder.other.study-field.details.description'), value: studyField.description || 'N/A' },
+    { title: t('stakeholder.other.study-field.details.study-program-id'), value: studyField.study_program_id || 'N/A' },
+    { title: t('stakeholder.other.study-field.details.studylevel-id'), value: studyField.studylevel_id || 'N/A' },
+    { title: t('stakeholder.other.study-field.details.revision-no'), value: studyField.revision_no?.toString() || 'N/A' },
     {
       title: t('common.table-columns.created-at'),
       value: studyField.created_at ? formatCreatedAt(studyField.created_at) : 'N/A'
@@ -115,13 +108,13 @@ const StudyFieldList: React.FC<StudyFieldListProps> = ({ model, stakeholderId, t
           data={mapStudyFieldToDetailItems(selectedRow as StudyField)}
           hasReference={true}
           id={selectedRow?.id || ''}
-          fileType={uploadableProjectFileTypes.other.studyField}
-          title={t('stakeholder.other.building-envelop-material.building-envelop-material-details')}
+          fileType={uploadableStakeholderFileTypes.other.studyField}
+          title={t('stakeholder.other.study-field.details')}
         />
       )}
 
       <ItemsListing
-        title={t('stakeholder.other.building-envelop-material.title')}
+        title={t('stakeholder.other.study-field.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

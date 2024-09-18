@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
@@ -29,7 +29,7 @@ const TelecomInfrastructureList: React.FC<TelecomInfrastructureListProps> = ({ m
 
   const fetchTelecomInfrastructures = (params: GetRequestParam): Promise<IApiResponse<TelecomInfrastructure[]>> => {
     // Updated type
-    return otherApiService<TelecomInfrastructure>().getAll(model, {
+    return projectOtherApiService<TelecomInfrastructure>().getAll(model, {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -62,7 +62,7 @@ const TelecomInfrastructureList: React.FC<TelecomInfrastructureListProps> = ({ m
   };
 
   const handleDelete = async (telecomId: string) => {
-    await otherApiService<TelecomInfrastructure>().delete(model, telecomId);
+    await projectOtherApiService<TelecomInfrastructure>().delete(model, telecomId);
     refetch();
   };
 

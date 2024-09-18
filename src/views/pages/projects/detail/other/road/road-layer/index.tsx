@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
@@ -28,7 +28,7 @@ const RoadLayerList: React.FC<RoadLayerListProps> = ({ model, projectId, typeId 
   const { t } = useTranslation();
 
   const fetchRoadLayers = (params: GetRequestParam): Promise<IApiResponse<RoadLayer[]>> => {
-    return otherApiService<RoadLayer>().getAll(model, {
+    return projectOtherApiService<RoadLayer>().getAll(model, {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -60,7 +60,7 @@ const RoadLayerList: React.FC<RoadLayerListProps> = ({ model, projectId, typeId 
   };
 
   const handleDelete = async (roadLayerId: string) => {
-    await otherApiService<RoadLayer>().delete(model, roadLayerId);
+    await projectOtherApiService<RoadLayer>().delete(model, roadLayerId);
     refetch();
   };
 

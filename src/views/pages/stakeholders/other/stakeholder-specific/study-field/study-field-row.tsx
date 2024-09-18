@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import { StudyField } from 'src/types/project/other';
+import { StudyField } from 'src/types/stakeholder/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
@@ -42,52 +42,51 @@ export const studyFieldColumns = (
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('project.other.building-envelop-material.details.exterior-walls'),
-    field: 'exterior_walls',
+    headerName: t('stakeholder.other.study-field.details.title'),
+    field: 'title',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.exterior_walls || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.title || t('common.not-available')}</Typography>
     )
   },
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('project.other.building-envelop-material.details.roof-assembly'),
-    field: 'roof_assembly',
+    headerName: t('stakeholder.other.study-field.details.description'),
+    field: 'description',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.roof_assembly || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.description || t('common.not-available')}</Typography>
     )
   },
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('project.other.building-envelop-material.details.exterior-windows'),
-    field: 'exterior_windows',
+    headerName: t('stakeholder.other.study-field.details.study-program-id'),
+    field: 'study_program_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.exterior_windows || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.study_program_id || t('common.not-available')}</Typography>
     )
   },
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('project.other.building-envelop-material.details.exterior-doors'),
-    field: 'exterior_doors',
+    headerName: t('stakeholder.other.study-field.details.studylevel-id'),
+    field: 'studylevel_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.exterior_doors || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.studylevel_id || t('common.not-available')}</Typography>
     )
   },
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('project.other.building-envelop-material.details.shading-components'),
-    field: 'shading_components',
+    headerName: t('stakeholder.other.study-field.details.revision-no'),
+    field: 'revision_no',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.shading_components || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.revision_no ?? t('common.not-available')}</Typography>
     )
   },
-
   {
     flex: 0.2,
-    minWidth: 120,
+    minWidth: 150,
     headerName: t('common.table-columns.created-at'),
     field: 'created_at',
     renderCell: ({ row }: CellType) => (
@@ -96,7 +95,6 @@ export const studyFieldColumns = (
       </Typography>
     )
   },
-
   {
     minWidth: 150,
     sortable: false,

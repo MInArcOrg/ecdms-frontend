@@ -4,7 +4,7 @@ import { FormikProps } from 'formik';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { Transformer, TransformerType } from 'src/types/project/other';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
@@ -22,7 +22,7 @@ const TransformerForm: React.FC<TransformerFormProps> = ({ formik, file, onFileC
   const { data: transformerTypes } = useQuery({
     queryKey: ['transformertype', projectId],
     queryFn: () =>
-      otherApiService<TransformerType>().getAll('transformertype', {
+      projectOtherApiService<TransformerType>().getAll('transformertype', {
         filter: { project_id: projectId }
       })
   });

@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import TelecomInfrastructureForm from './telecom-infrastructure-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { TelecomInfrastructure } from 'src/types/project/other';
@@ -33,10 +33,10 @@ const TelecomInfrastructureDrawer = (props: TelecomInfrastructureDrawerType) => 
   const isEdit = Boolean(telecomInfrastructure?.id);
 
   const createTelecomInfrastructure = async (body: IApiPayload<TelecomInfrastructure>) =>
-    otherApiService<TelecomInfrastructure>().create(model, body);
+    projectOtherApiService<TelecomInfrastructure>().create(model, body);
 
   const editTelecomInfrastructure = async (body: IApiPayload<TelecomInfrastructure>) =>
-    otherApiService<TelecomInfrastructure>().update(model, telecomInfrastructure?.id || '', body);
+    projectOtherApiService<TelecomInfrastructure>().update(model, telecomInfrastructure?.id || '', body);
 
   const getPayload = (values: TelecomInfrastructure) => {
     return {

@@ -4,7 +4,7 @@ import { FormikProps } from 'formik';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { ElectricTower, TransmissionLine } from 'src/types/project/other';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
@@ -22,7 +22,7 @@ const ElectricTowerForm: React.FC<ElectricTowerFormProps> = ({ formik, file, onF
   const { data: transmissionLines } = useQuery({
     queryKey: ['transmissionline', projectId],
     queryFn: () =>
-      otherApiService<TransmissionLine>().getAll('transmissionline', {
+      projectOtherApiService<TransmissionLine>().getAll('transmissionline', {
         filter: { project_id: projectId }
       })
   });

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
@@ -28,7 +28,7 @@ const WindEnergyList: React.FC<WindEnergyListProps> = ({ model, projectId, typeI
   const { t } = useTranslation();
 
   const fetchGeneratingCapacities = (params: GetRequestParam): Promise<IApiResponse<WindEnergy[]>> => {
-    return otherApiService<WindEnergy>().getAll(model, {
+    return projectOtherApiService<WindEnergy>().getAll(model, {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -61,7 +61,7 @@ const WindEnergyList: React.FC<WindEnergyListProps> = ({ model, projectId, typeI
   };
 
   const handleDelete = async (windEnergyId: string) => {
-    await otherApiService<WindEnergy>().delete(model, windEnergyId);
+    await projectOtherApiService<WindEnergy>().delete(model, windEnergyId);
     refetch();
   };
 

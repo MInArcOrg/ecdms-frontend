@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import RailwayForm from './railway-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { Railway } from 'src/types/project/other';
@@ -31,9 +31,9 @@ const RailwayDrawer = (props: RailwayDrawerType) => {
 
   const isEdit = Boolean(railway?.id);
 
-  const createRailway = async (body: IApiPayload<Railway>) => otherApiService<Railway>().create(model, body);
+  const createRailway = async (body: IApiPayload<Railway>) => projectOtherApiService<Railway>().create(model, body);
 
-  const editRailway = async (body: IApiPayload<Railway>) => otherApiService<Railway>().update(model, railway?.id || '', body);
+  const editRailway = async (body: IApiPayload<Railway>) => projectOtherApiService<Railway>().update(model, railway?.id || '', body);
 
   const getPayload = (values: Railway) => {
     return {

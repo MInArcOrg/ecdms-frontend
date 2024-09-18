@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { BuildingEnvelopMaterial } from 'src/types/project/other';
@@ -28,7 +28,7 @@ const BuildingEnvelopMaterialList: React.FC<BuildingEnvelopMaterialListProps> = 
   const { t } = useTranslation();
 
   const fetchBuildingEnvelopMaterials = (params: GetRequestParam): Promise<IApiResponse<BuildingEnvelopMaterial[]>> => {
-    return otherApiService<BuildingEnvelopMaterial>().getAll(model, {
+    return projectOtherApiService<BuildingEnvelopMaterial>().getAll(model, {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -61,7 +61,7 @@ const BuildingEnvelopMaterialList: React.FC<BuildingEnvelopMaterialListProps> = 
   };
 
   const handleDelete = async (materialId: string) => {
-    await otherApiService<BuildingEnvelopMaterial>().delete(model, materialId);
+    await projectOtherApiService<BuildingEnvelopMaterial>().delete(model, materialId);
     refetch();
   };
 

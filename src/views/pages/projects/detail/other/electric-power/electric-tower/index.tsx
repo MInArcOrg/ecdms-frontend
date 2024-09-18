@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
@@ -28,7 +28,7 @@ const ElectricTowerList: React.FC<ElectricTowerListProps> = ({ model, projectId,
   const { t } = useTranslation();
 
   const fetchElectricTowers = (params: GetRequestParam): Promise<IApiResponse<ElectricTower[]>> => {
-    return otherApiService<ElectricTower>().getAll(model, {
+    return projectOtherApiService<ElectricTower>().getAll(model, {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -61,7 +61,7 @@ const ElectricTowerList: React.FC<ElectricTowerListProps> = ({ model, projectId,
   };
 
   const handleDelete = async (electricTowerId: string) => {
-    await otherApiService<ElectricTower>().delete(model, electricTowerId);
+    await projectOtherApiService<ElectricTower>().delete(model, electricTowerId);
     refetch();
   };
 

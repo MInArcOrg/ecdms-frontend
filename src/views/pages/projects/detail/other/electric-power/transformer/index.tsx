@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/project/project-other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
@@ -28,7 +28,7 @@ const TransformerList: React.FC<TransformerListProps> = ({ model, projectId, typ
   const { t } = useTranslation();
 
   const fetchTransformers = (params: GetRequestParam): Promise<IApiResponse<Transformer[]>> => {
-    return otherApiService<Transformer>().getAll(model, {
+    return projectOtherApiService<Transformer>().getAll(model, {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -61,7 +61,7 @@ const TransformerList: React.FC<TransformerListProps> = ({ model, projectId, typ
   };
 
   const handleDelete = async (transformerId: string) => {
-    await otherApiService<Transformer>().delete(model, transformerId);
+    await projectOtherApiService<Transformer>().delete(model, transformerId);
     refetch();
   };
 
