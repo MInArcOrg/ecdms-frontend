@@ -26,8 +26,8 @@ const menuItems = (id: string, typeId: string): MenuItem[] => {
     },
     {
       id: 3,
-      title: 'Specific',
-      path: `${baseUrl}/specific/training`,
+      title: 'Other',
+      path: `${baseUrl}/other`,
       action: 'view_stakeholderspecific',
       subject: 'stakeholderspecific'
     },

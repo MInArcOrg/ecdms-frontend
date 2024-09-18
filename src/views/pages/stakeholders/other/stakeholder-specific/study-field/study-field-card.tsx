@@ -2,21 +2,21 @@ import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { BuildingEnvelopMaterial } from 'src/types/project/other';
+import { StudyField } from 'src/types/project/other';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-interface BuildingEnvelopMaterialCardProps {
-  buildingEnvelopMaterial: BuildingEnvelopMaterial;
+interface StudyFieldCardProps {
+  studyField: StudyField;
   refetch: () => void;
-  onEdit: (buildingEnvelopMaterial: BuildingEnvelopMaterial) => void;
+  onEdit: (studyField: StudyField) => void;
   onDelete: (id: string) => void;
-  onDetail: (buildingEnvelopMaterial: BuildingEnvelopMaterial) => void;
+  onDetail: (studyField: StudyField) => void;
 }
 
-const BuildingEnvelopMaterialCard: React.FC<BuildingEnvelopMaterialCardProps> = ({
-  buildingEnvelopMaterial,
+const StudyFieldCard: React.FC<StudyFieldCardProps> = ({
+  studyField,
   refetch,
   onEdit,
   onDelete,
@@ -32,7 +32,7 @@ const BuildingEnvelopMaterialCard: React.FC<BuildingEnvelopMaterialCardProps> = 
             <Typography
               noWrap
               component={Button}
-              onClick={() => onDetail(buildingEnvelopMaterial)}
+              onClick={() => onDetail(studyField)}
               sx={{
                 fontWeight: 500,
                 textDecoration: 'none',
@@ -40,7 +40,7 @@ const BuildingEnvelopMaterialCard: React.FC<BuildingEnvelopMaterialCardProps> = 
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {buildingEnvelopMaterial?.id.slice(0, 5)}...
+              {studyField?.id.slice(0, 5)}...
             </Typography>
           </Typography>
         </Box>
@@ -49,38 +49,38 @@ const BuildingEnvelopMaterialCard: React.FC<BuildingEnvelopMaterialCardProps> = 
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-envelop-material.details.exterior-walls')}: {buildingEnvelopMaterial?.exterior_walls || 'N/A'}
+            {t('project.other.building-envelop-material.details.exterior-walls')}: {studyField?.exterior_walls || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-envelop-material.details.roof-assembly')}: {buildingEnvelopMaterial?.roof_assembly || 'N/A'}
+            {t('project.other.building-envelop-material.details.roof-assembly')}: {studyField?.roof_assembly || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-envelop-material.details.exterior-windows')}: {buildingEnvelopMaterial?.exterior_windows || 'N/A'}
+            {t('project.other.building-envelop-material.details.exterior-windows')}: {studyField?.exterior_windows || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.building-envelop-material.details.exterior-doors')}: {buildingEnvelopMaterial?.exterior_doors || 'N/A'}
+            {t('project.other.building-envelop-material.details.exterior-doors')}: {studyField?.exterior_doors || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.building-envelop-material.details.shading-components')}:{' '}
-            {buildingEnvelopMaterial?.shading_components || 'N/A'}
+            {studyField?.shading_components || 'N/A'}
           </Typography>
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={buildingEnvelopMaterial.id} type={uploadableProjectFileTypes.other.buildingEnvelopMaterial} />
+        <FileDrawer id={studyField.id} type={uploadableProjectFileTypes.other.studyField} />
         <ModelAction
-          model="BuildingEnvelopMaterial"
-          model_id={buildingEnvelopMaterial.id}
+          model="StudyField"
+          model_id={studyField.id}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
           postAction={() => refetch()}
         />
         <RowOptions
-          onEdit={() => onEdit(buildingEnvelopMaterial)}
-          onDelete={() => onDelete(buildingEnvelopMaterial.id)}
-          item={buildingEnvelopMaterial}
+          onEdit={() => onEdit(studyField)}
+          onDelete={() => onDelete(studyField.id)}
+          item={studyField}
           options={[]}
         />
       </CardActions>
@@ -88,4 +88,4 @@ const BuildingEnvelopMaterialCard: React.FC<BuildingEnvelopMaterialCardProps> = 
   );
 };
 
-export default BuildingEnvelopMaterialCard;
+export default StudyFieldCard;

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import TransmissionLineList from 'src/views/pages/projects/detail/other/electric-power/transmission-lines';
-import OtherLayout from 'src/views/pages/projects/detail/other/layouts/other-layout';
+import ProjectOtherLayout from 'src/views/pages/projects/detail/other/layouts/project-other-layout';
 import subMenuItems, { findOtherModelName } from '../(subMenuItems)';
 import RailwayList from 'src/views/pages/projects/detail/other/railway/railway';
 
@@ -13,7 +13,7 @@ function Index() {
   const activeSubType = 16;
 
   return (
-    <OtherLayout
+    <ProjectOtherLayout
       activeMenu={activeMenu}
       activeType={activeType}
       activeSubMenu={activeSubType}
@@ -25,7 +25,7 @@ function Index() {
         projectId={String(id)}
         typeId={String(typeId)}
       />
-    </OtherLayout>
+    </ProjectOtherLayout>
   );
 }
 

@@ -2,18 +2,18 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import { BuildingEnvelopMaterial } from 'src/types/project/other';
+import { StudyField } from 'src/types/project/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
-  row: BuildingEnvelopMaterial;
+  row: StudyField;
 }
 
-export const buildingEnvelopMaterialColumns = (
-  onDetail: (buildingEnvelopMaterial: BuildingEnvelopMaterial) => void,
-  onEdit: (buildingEnvelopMaterial: BuildingEnvelopMaterial) => void,
+export const studyFieldColumns = (
+  onDetail: (studyField: StudyField) => void,
+  onEdit: (studyField: StudyField) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void
@@ -105,7 +105,7 @@ export const buildingEnvelopMaterialColumns = (
     renderCell: ({ row }: CellType) => (
       <Fragment>
         <ModelAction
-          model="BuildingEnvelopMaterial"
+          model="StudyField"
           model_id={row.id}
           refetchModel={refetch}
           resubmit={() => {}}

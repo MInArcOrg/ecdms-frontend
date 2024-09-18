@@ -2,17 +2,17 @@ import { Grid } from '@mui/material';
 import { FormikProps } from 'formik';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { BuildingEnvelopMaterial } from 'src/types/project/other';
+import { StudyField } from 'src/types/project/other';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
-interface BuildingEnvelopMaterialFormProps {
-  formik: FormikProps<BuildingEnvelopMaterial>;
+interface StudyFieldFormProps {
+  formik: FormikProps<StudyField>;
   file: File | null;
   onFileChange: (file: File | null) => void;
 }
 
-const BuildingEnvelopMaterialForm: React.FC<BuildingEnvelopMaterialFormProps> = ({ formik, file, onFileChange }) => {
+const StudyFieldForm: React.FC<StudyFieldFormProps> = ({ formik, file, onFileChange }) => {
   const { t: transl } = useTranslation();
 
   return (
@@ -89,4 +89,4 @@ const BuildingEnvelopMaterialForm: React.FC<BuildingEnvelopMaterialFormProps> = 
   );
 };
 
-export default BuildingEnvelopMaterialForm;
+export default StudyFieldForm;

@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import ElectricTowerForm from './electric-tower-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/other-service';
+import otherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { ElectricTower } from 'src/types/project/other';

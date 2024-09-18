@@ -766,9 +766,9 @@
       },
       "generating-capacity": {
         "title": "Generating Capacity",
-        "create-generating-capacity":"Create Generating Capacity",
-        "edit-generating-capacity":"Edit Generating Capacity",
-        "generating-capacity-details":"Generating Capacity Details",
+        "create-generating-capacity": "Create Generating Capacity",
+        "edit-generating-capacity": "Edit Generating Capacity",
+        "generating-capacity-details": "Generating Capacity Details",
         "details": {
           "operator": "Operator",
           "commission-date": "Commission Date",
@@ -783,9 +783,9 @@
       },
       "turbine-info": {
         "title": "Turbine Info",
-        "create-turbine-info":"Create Turbine Info",
-        "edit-turbine-info":"Edit Turbine Info",
-        "turbine-info-details":"Turbine Info Details",
+        "create-turbine-info": "Create Turbine Info",
+        "edit-turbine-info": "Edit Turbine Info",
+        "turbine-info-details": "Turbine Info Details",
         "details": {
           "turbine-type": "Turbine Type",
           "name": "Turbine Name",
@@ -798,9 +798,9 @@
       },
       "hydro-electric-dam": {
         "title": "Hydro Electric Dam",
-        "create-hydro-electric-dam":"Create Hydro Electric Dam",
-        "edit-hydro-electric-dam":"Edit Hydro Electric Dam",
-        "hydro-electric-dam-details":"Hydro Electric Dam Details",
+        "create-hydro-electric-dam": "Create Hydro Electric Dam",
+        "edit-hydro-electric-dam": "Edit Hydro Electric Dam",
+        "hydro-electric-dam-details": "Hydro Electric Dam Details",
         "details": {
           "river-name": "River Name",
           "elevation-from-sea-level": "Elevation from Sea Level",
@@ -813,41 +813,41 @@
       },
       "solar-energy": {
         "title": "Solar Energy",
-        "create-solar-energy":"Create Solar Energy",
-        "edit-solar-energy":"Edit Solar Energy",
-        "solar-energy-details":"Solar Energy Details",
+        "create-solar-energy": "Create Solar Energy",
+        "edit-solar-energy": "Edit Solar Energy",
+        "solar-energy-details": "Solar Energy Details",
         "details": {
-          "title":"Title",
-          "description":"Description",
-          "specifications":"Specifications"
+          "title": "Title",
+          "description": "Description",
+          "specifications": "Specifications"
         }
       },
       "wind-energy": {
         "title": "Wind Energy",
-        "create-wind-energy":"Create Wind Energy",
-        "edit-wind-energy":"Edit Wind Energy",
-        "wind-energy-details":"Wind Energy Details",
+        "create-wind-energy": "Create Wind Energy",
+        "edit-wind-energy": "Edit Wind Energy",
+        "wind-energy-details": "Wind Energy Details",
         "details": {
-          "title":"Title",
-          "description":"Description",
-          "specifications":"Specifications"
+          "title": "Title",
+          "description": "Description",
+          "specifications": "Specifications"
         }
       },
       "transformer-type": {
         "title": "Transformer Type",
-        "create-transformer-type":"Create Transformer Type",
-        "edit-transformer-type":"Edit Transformer Type",
-        "transformer-type-details":"Transformer Type Details",
+        "create-transformer-type": "Create Transformer Type",
+        "edit-transformer-type": "Edit Transformer Type",
+        "transformer-type-details": "Transformer Type Details",
         "details": {
-          "name":"Name",
-          "description":"Description"
+          "name": "Name",
+          "description": "Description"
         }
       },
       "transformer": {
         "title": "Transformer",
-        "create-transformer":"Create Transformer",
-        "edit-transformer":"Edit Transformer",
-        "transformer-details":"Transformer Details",
+        "create-transformer": "Create Transformer",
+        "edit-transformer": "Edit Transformer",
+        "transformer-details": "Transformer Details",
         "details": {
           "transformertype": "Transformer Type",
           "specifications": "Specifications",
@@ -861,9 +861,9 @@
       },
       "transmission-line": {
         "title": "Transmission",
-        "create-transmission-line":"Create Transmission",
-        "edit-transmission-line":"Edit Transmission",
-        "transmission-line-details":"Transmission Details",
+        "create-transmission-line": "Create Transmission",
+        "edit-transmission-line": "Edit Transmission",
+        "transmission-line-details": "Transmission Details",
         "details": {
           "name": "Name",
           "line-type": "Line Type",
@@ -880,9 +880,9 @@
       },
       "electric-tower": {
         "title": "Electric Tower",
-        "create-electric-tower":"Create Electric Tower",
-        "edit-electric-tower":"Edit Electric Tower",
-        "electric-tower-details":"Electric Tower Details",
+        "create-electric-tower": "Create Electric Tower",
+        "edit-electric-tower": "Edit Electric Tower",
+        "electric-tower-details": "Electric Tower Details",
         "details": {
           "overall-length": "Overall Length",
           "embedded-length": "Embedded Length",
@@ -893,9 +893,9 @@
           "elasticity-modulus": "Elasticity Modulus",
           "poission-ratio": "Poisson Ratio"
         }
-      }      
+      }
     },
-    
+
     "columns": {
       "title": "Title",
       "elapsed-time": "Elapsed Time",
@@ -961,8 +961,8 @@
     "edit": "Edit",
     "not-available": "Not Available",
     "create": "Create",
-    "active":"Active",
-    "inactive":"InActive",
+    "active": "Active",
+    "inactive": "InActive",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",
@@ -1006,6 +1006,17 @@
       "emails_section_title": "Emails",
       "phones_section_title": "Phones"
     },
+    "navigation": {
+      "submenu": {
+        "others": {
+          "stakeholder-specific": "Stakeholder Specific",
+          "field-of-study": "Field of Study",
+          "study-period": "Study Period",
+          "graduates": "Graduates",
+          "services": "Construction Related Services"
+        }
+      }
+    },
     "stakeholder-info": {
       "title": "Stakeholder Info",
       "edit-stakeholder-info": "Edit Stakeholder Info",
@@ -1037,7 +1048,7 @@
       "create-stakeholder-email": "Create Stakeholder Email",
       "edit-stakeholder-email": "Edit Stakeholder Email",
       "form": {
-        "email":"Email"
+        "email": "Email"
       }
     },
     "stakeholder-phone": {
@@ -1045,7 +1056,7 @@
       "create-stakeholder-phone": "Create Stakeholder Phone",
       "edit-stakeholder-phone": "Edit Stakeholder Phone",
       "form": {
-        "phone":"Phone"
+        "phone": "Phone"
       }
     },
     "stakeholder-contact-person": {
@@ -1059,7 +1070,7 @@
         "gender": "Gender",
         "email": "Email",
         "phone-number": "Phone Number",
-        "name":"Name"
+        "name": "Name"
       }
     },
     "stakeholder-operation-location": {
@@ -1067,8 +1078,8 @@
       "create-stakeholder-operation-location": "Create Stakeholder Operation Location",
       "edit-stakeholder-operation-location": "Edit Stakeholder Operation Location",
       "form": {
-        "country":"Country",
-        "status":"Status"
+        "country": "Country",
+        "status": "Status"
       }
     },
     "total-employee": {
@@ -1084,7 +1095,7 @@
         "quantity": "Total Employees",
         "department-name": "Department Name",
         "revision-no": "Revision Number",
-        "total-employees":"Total Employees"
+        "total-employees": "Total Employees"
       }
     }
   },

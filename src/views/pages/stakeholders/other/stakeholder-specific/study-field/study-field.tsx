@@ -3,25 +3,25 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import BuildingEnvelopMaterialForm from './building-envelop-material-form';
+import StudyFieldForm from './study-field-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/other-service';
+import otherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
-import { BuildingEnvelopMaterial } from 'src/types/project/other';
+import { StudyField } from 'src/types/project/other';
 
-interface BuildingEnvelopMaterialDrawerType {
+interface StudyFieldDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  buildingEnvelopMaterial: BuildingEnvelopMaterial;
+  studyField: StudyField;
   projectId: string;
   model: string;
 }
 
-const BuildingEnvelopMaterialDrawer = (props: BuildingEnvelopMaterialDrawerType) => {
-  const { open, toggle, refetch, buildingEnvelopMaterial, projectId, model } = props;
+const StudyFieldDrawer = (props: StudyFieldDrawerType) => {
+  const { open, toggle, refetch, studyField, projectId, model } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
@@ -29,19 +29,19 @@ const BuildingEnvelopMaterialDrawer = (props: BuildingEnvelopMaterialDrawerType)
 
   const validationSchema = yup.object().shape({});
 
-  const isEdit = Boolean(buildingEnvelopMaterial?.id);
+  const isEdit = Boolean(studyField?.id);
 
-  const createBuildingEnvelopMaterial = async (body: IApiPayload<BuildingEnvelopMaterial>) =>
-    otherApiService<BuildingEnvelopMaterial>().create(model, body);
+  const createStudyField = async (body: IApiPayload<StudyField>) =>
+    otherApiService<StudyField>().create(model, body);
 
-  const editBuildingEnvelopMaterial = async (body: IApiPayload<BuildingEnvelopMaterial>) =>
-    otherApiService<BuildingEnvelopMaterial>().update(model, buildingEnvelopMaterial?.id || '', body);
+  const editStudyField = async (body: IApiPayload<StudyField>) =>
+    otherApiService<StudyField>().update(model, studyField?.id || '', body);
 
-  const getPayload = (values: BuildingEnvelopMaterial) => {
+  const getPayload = (values: StudyField) => {
     return {
       data: {
         ...values,
-        id: buildingEnvelopMaterial?.id,
+        id: studyField?.id,
         project_id: projectId
       },
       files: uploadableFile ? [uploadableFile] : []
@@ -50,9 +50,9 @@ const BuildingEnvelopMaterialDrawer = (props: BuildingEnvelopMaterialDrawerType)
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<BuildingEnvelopMaterial>, payload: IApiPayload<BuildingEnvelopMaterial>) => {
+  const onActionSuccess = async (response: IApiResponse<StudyField>, payload: IApiPayload<StudyField>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], uploadableProjectFileTypes.other.buildingEnvelopMaterial, response.payload.id, '', '');
+      uploadFile(payload.files[0], uploadableProjectFileTypes.other.studyField, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -73,14 +73,14 @@ const BuildingEnvelopMaterialDrawer = (props: BuildingEnvelopMaterialDrawerType)
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(buildingEnvelopMaterial as BuildingEnvelopMaterial)
+            ...(studyField as StudyField)
           }}
-          createActionFunc={isEdit ? editBuildingEnvelopMaterial : createBuildingEnvelopMaterial}
+          createActionFunc={isEdit ? editStudyField : createStudyField}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<BuildingEnvelopMaterial>) => {
-            return <BuildingEnvelopMaterialForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
+          {(formik: FormikProps<StudyField>) => {
+            return <StudyFieldForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}
@@ -88,4 +88,4 @@ const BuildingEnvelopMaterialDrawer = (props: BuildingEnvelopMaterialDrawerType)
   );
 };
 
-export default BuildingEnvelopMaterialDrawer;
+export default StudyFieldDrawer;

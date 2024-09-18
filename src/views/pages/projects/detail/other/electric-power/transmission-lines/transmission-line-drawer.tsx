@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import TransmissionLineForm from './transmission-line-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/other-service';
+import otherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { TransmissionLine } from 'src/types/project/other';

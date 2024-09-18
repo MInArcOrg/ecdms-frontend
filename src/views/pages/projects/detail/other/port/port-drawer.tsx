@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { Port } from 'src/types/project/other';
-import otherApiService from 'src/services/project/other-service';
+import otherApiService from 'src/services/project/project-other-service';
 
 interface PortDrawerType {
   open: boolean;
