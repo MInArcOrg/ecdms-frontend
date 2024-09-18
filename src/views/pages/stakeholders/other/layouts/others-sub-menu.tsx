@@ -22,13 +22,12 @@ interface SubMenuItem {
 }
 
 interface OtherSubMenuProps {
-  typeId: string;
   subMenuItems: SubMenuItem[];
-  activeSubMenu?: number | null; // Ensure it's allowed to be null
-  setActiveType: (path: string) => void;
-  activeType?: number;
+  activeSubMenu?: number | null;
+  setActiveType: (type: string) => void;
+  activeType?: number | null;
+  typeId: string;
 }
-
 
 // Define type for the state
 type OpenState = number | null;
