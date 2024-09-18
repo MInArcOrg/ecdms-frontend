@@ -106,7 +106,20 @@ export const roadLayerColumns = (
     renderCell: ({ row }: CellType) => (
       <Fragment>
         <ModelAction model="RoadLayer" model_id={row.id} refetchModel={refetch} resubmit={() => {}} title="" postAction={() => {}} />
-        <RowOptions onEdit={() => onEdit(row)} onDelete={() => onDelete(row.id)} item={row} options={[]} />
+        <RowOptions
+          onEdit={() => onEdit(row)}
+          onDelete={() => onDelete(row.id)}
+          item={row}
+          options={[]}
+          deletePermissionRule={{
+            action: 'delete',
+            subject: 'roadlayer'
+          }}
+          editPermissionRule={{
+            action: 'edit',
+            subject: 'roadlayer'
+          }}
+        />
       </Fragment>
     )
   }

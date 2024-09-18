@@ -123,7 +123,20 @@ export const roadSegmentColumns = (
     renderCell: ({ row }: CellType) => (
       <Fragment>
         <ModelAction model="RoadSegment" model_id={row.id} refetchModel={refetch} resubmit={() => {}} title="" postAction={() => {}} />
-        <RowOptions onEdit={() => onEdit(row)} onDelete={() => onDelete(row.id)} item={row} options={[]} />
+        <RowOptions
+          onEdit={() => onEdit(row)}
+          onDelete={() => onDelete(row.id)}
+          item={row}
+          deletePermissionRule={{
+            action: 'delete',
+            subject: 'roadsegment'
+          }}
+          editPermissionRule={{
+            action: 'edit',
+            subject: 'roadsegment'
+          }}
+          options={[]}
+        />
       </Fragment>
     )
   }

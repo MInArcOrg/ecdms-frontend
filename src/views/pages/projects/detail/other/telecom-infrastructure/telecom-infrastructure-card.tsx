@@ -92,6 +92,14 @@ const TelecomInfrastructureCard: React.FC<TelecomInfrastructureCardProps> = ({
           onEdit={() => onEdit(telecomInfrastructure)}
           onDelete={() => onDelete(telecomInfrastructure.id)}
           item={telecomInfrastructure}
+          deletePermissionRule={{
+            action: 'delete',
+            subject: 'telecom'
+          }}
+          editPermissionRule={{
+            action: 'edit',
+            subject: 'telecom'
+          }}
           options={[]}
         />
       </CardActions>

@@ -86,7 +86,20 @@ export const telecomColumns = (
             throw new Error('Function not implemented.');
           }}
         />
-        <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
+        <RowOptions
+          onEdit={onEdit}
+          onDelete={() => onDelete(row.id)}
+          item={row}
+          deletePermissionRule={{
+            action: 'delete',
+            subject: 'telecom'
+          }}
+          editPermissionRule={{
+            action: 'edit',
+            subject: 'telecom'
+          }}
+          options={[]}
+        />
       </Fragment>
     )
   }

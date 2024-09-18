@@ -126,7 +126,7 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'roadinfo'
+            subject: 'roadsegment'
           }
         }}
         fetchDataFunction={refetch}

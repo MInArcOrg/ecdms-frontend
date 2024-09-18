@@ -128,7 +128,20 @@ export const roadInfoColumns = (
             throw new Error('Function not implemented.');
           }}
         />
-        <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
+        <RowOptions
+          onEdit={onEdit}
+          onDelete={() => onDelete(row.id)}
+          item={row}
+          options={[]}
+          deletePermissionRule={{
+            action: 'delete',
+            subject: 'roadinfo'
+          }}
+          editPermissionRule={{
+            action: 'edit',
+            subject: 'roadinfo'
+          }}
+        />
       </Fragment>
     )
   }

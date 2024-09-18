@@ -83,56 +83,56 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
       routes: [
         {
           id: 7,
-          title: t('project.navigation.submenu.others.generation-capacity'),
-          path: `${baseUrl}/electric-dam/generation-capacity`,
+          title: t('project.navigation.submenu.others.generating-capacity'),
+          path: `${baseUrl}/electric-power/generating-capacity`,
           model: 'generatingcapacity'
         },
         {
           id: 8,
-          title: t('project.navigation.submenu.others.turbines-detail'),
-          path: `${baseUrl}/electric-dam/turbines-detail`,
+          title: t('project.navigation.submenu.others.turbine-info'),
+          path: `${baseUrl}/electric-power/turbine-info`,
           model: 'turbineinfo'
         },
         {
           id: 9,
-          title: t('project.navigation.submenu.others.hydroelectric-dam'),
-          path: `${baseUrl}/electric-dam/hydroelectric-dam`,
+          title: t('project.navigation.submenu.others.hydro-electric-dam'),
+          path: `${baseUrl}/electric-power/hydro-electric-dam`,
           model: 'hydroelectricdam'
         },
         {
           id: 10,
           title: t('project.navigation.submenu.others.solar-energy'),
-          path: `${baseUrl}/electric-dam/solar-energy`,
+          path: `${baseUrl}/electric-power/solar-energy`,
           model: 'solarenergy'
         },
         {
           id: 11,
           title: t('project.navigation.submenu.others.wind-energy'),
-          path: `${baseUrl}/electric-dam/wind-energy`,
+          path: `${baseUrl}/electric-power/wind-energy`,
           model: 'windenergy'
         },
         {
           id: 12,
           title: t('project.navigation.submenu.others.transformers-types'),
-          path: `${baseUrl}/electric-dam/transformers-types`,
+          path: `${baseUrl}/electric-power/transformers-types`,
           model: 'transformertype'
         },
         {
           id: 13,
           title: t('project.navigation.submenu.others.transformers-registration'),
-          path: `${baseUrl}/electric-dam/transformers-registration`,
+          path: `${baseUrl}/electric-power/transformers-registration`,
           model: 'transformer'
         },
         {
           id: 14,
           title: t('project.navigation.submenu.others.transmission-lines'),
-          path: `${baseUrl}/electric-dam/transmission-lines`,
+          path: `${baseUrl}/electric-power/transmission-lines`,
           model: 'transmissionline'
         },
         {
           id: 15,
           title: t('project.navigation.submenu.others.electric-tower-registration'),
-          path: `${baseUrl}/electric-dam/electric-tower-registration`,
+          path: `${baseUrl}/electric-power/electric-tower-registration`,
           model: 'electrictower'
         }
       ]
@@ -145,8 +145,8 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
       routes: [
         {
           id: 16,
-          title: t('project.navigation.submenu.others.railway-detail'),
-          path: `${baseUrl}/railway/railway-detail`,
+          title: t('project.navigation.submenu.others.railways'),
+          path: `${baseUrl}/railway/railway`,
           model: 'railway'
         },
         {

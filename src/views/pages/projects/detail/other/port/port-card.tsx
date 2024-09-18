@@ -71,7 +71,20 @@ const PortCard: React.FC<PortCardProps> = ({ port, refetch, onEdit, onDelete, on
           title={''}
           postAction={() => refetch()}
         />
-        <RowOptions onEdit={() => onEdit(port)} onDelete={() => onDelete(port.id)} item={port} options={[]} />
+        <RowOptions
+          onEdit={() => onEdit(port)}
+          onDelete={() => onDelete(port.id)}
+          item={port}
+          deletePermissionRule={{
+            action: 'delete',
+            subject: 'port'
+          }}
+          editPermissionRule={{
+            action: 'edit',
+            subject: 'port'
+          }}
+          options={[]}
+        />
       </CardActions>
     </Card>
   );

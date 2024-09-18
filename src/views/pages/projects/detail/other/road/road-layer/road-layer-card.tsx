@@ -81,7 +81,20 @@ const RoadLayerCard: React.FC<RoadLayerCardProps> = ({ roadLayer, refetch, onEdi
           title=""
           postAction={() => refetch()}
         />
-        <RowOptions onEdit={() => onEdit(roadLayer)} onDelete={() => onDelete(roadLayer.id)} item={roadLayer} options={[]} />
+        <RowOptions
+          onEdit={() => onEdit(roadLayer)}
+          onDelete={() => onDelete(roadLayer.id)}
+          item={roadLayer}
+          deletePermissionRule={{
+            action: 'delete',
+            subject: 'roadlayer'
+          }}
+          editPermissionRule={{
+            action: 'edit',
+            subject: 'roadlayer'
+          }}
+          options={[]}
+        />
       </CardActions>
     </Card>
   );
