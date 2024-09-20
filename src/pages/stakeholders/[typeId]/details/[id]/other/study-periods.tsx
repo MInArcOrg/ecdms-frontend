@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import subMenuItems, { findOtherModelName } from './(subMenuItems)';
 import StakeholderOtherLayout from 'src/views/pages/stakeholders/other/layouts/stakeholder-other-layout';
 import StudyFieldList from 'src/views/pages/stakeholders/other/stakeholder-specific/stakeholder-study-field';
+import StudyPeriodCostList from 'src/views/pages/stakeholders/other/stakeholder-specific/study-period-cost';
 
 function Index() {
   const router = useRouter();
@@ -9,7 +10,7 @@ function Index() {
   const baseUrl = `/stakeholders/${typeId}/details/${id}/other`;
   const activeMenu = 2;
   const activeType = 1;
-  const activeSubType = 1;
+  const activeSubType = 2;
 
   return (
     <StakeholderOtherLayout
@@ -19,7 +20,7 @@ function Index() {
       subMenuItems={subMenuItems}
       baseUrl={baseUrl}
     >
-      <StudyFieldList
+      <StudyPeriodCostList
         model={findOtherModelName(subMenuItems(baseUrl), activeType, activeSubType) || ''}
         stakeholderId={String(id)}
         typeId={String(typeId)}

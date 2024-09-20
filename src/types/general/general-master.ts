@@ -14,3 +14,15 @@ export type GeneralMasterResource = {
   created_at: string;
   updated_at: string;
 };
+
+export interface StudyField {
+  id: string;
+  parent_id?: string; // Optional field
+  title: string;
+  description?: string; // Optional field
+  study_program_id: string;
+  studylevel_id: string;
+  revision_no?: number; // Optional field
+  created_at?: Date; // Optional field
+  updated_at?: Date; // Optional field
+}

@@ -2,18 +2,18 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import { StudyField } from 'src/types/stakeholder/other';
+import { StakeholderStudyField } from 'src/types/stakeholder/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
-  row: StudyField;
+  row: StakeholderStudyField;
 }
 
-export const studyFieldColumns = (
-  onDetail: (studyField: StudyField) => void,
-  onEdit: (studyField: StudyField) => void,
+export const stakeholderStudyFieldColumns = (
+  onDetail: (stakeholderStudyField: StakeholderStudyField) => void,
+  onEdit: (stakeholderStudyField: StakeholderStudyField) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void
@@ -35,55 +35,33 @@ export const studyFieldColumns = (
           '&:hover': { color: 'primary.main' }
         }}
       >
-        {row?.id.slice(0, 5)}...
+        {row.id.slice(0, 5)}...
       </Typography>
     )
   },
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('stakeholder.other.study-field.details.title'),
-    field: 'title',
+    headerName: t('stakeholder.other.stakeholder-study-field.details.title'),
+    field: 'studyfield.title', // Accessing title through studyfield
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.title || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row.studyfield?.title || t('common.not-available')}
+      </Typography>
     )
   },
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('stakeholder.other.study-field.details.description'),
-    field: 'description',
+    headerName: t('stakeholder.other.stakeholder-study-field.details.description'),
+    field: 'studyfield.description', // Accessing description through studyfield
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.description || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row.studyfield?.description || t('common.not-available')}
+      </Typography>
     )
   },
-  {
-    flex: 0.2,
-    minWidth: 150,
-    headerName: t('stakeholder.other.study-field.details.study-program-id'),
-    field: 'study_program_id',
-    renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.study_program_id || t('common.not-available')}</Typography>
-    )
-  },
-  {
-    flex: 0.2,
-    minWidth: 150,
-    headerName: t('stakeholder.other.study-field.details.studylevel-id'),
-    field: 'studylevel_id',
-    renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.studylevel_id || t('common.not-available')}</Typography>
-    )
-  },
-  {
-    flex: 0.2,
-    minWidth: 150,
-    headerName: t('stakeholder.other.study-field.details.revision-no'),
-    field: 'revision_no',
-    renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.revision_no ?? t('common.not-available')}</Typography>
-    )
-  },
+
   {
     flex: 0.2,
     minWidth: 150,
@@ -91,7 +69,7 @@ export const studyFieldColumns = (
     field: 'created_at',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.created_at ? formatCreatedAt(row.created_at) : t('common.not-available')}
+        {row.created_at ? formatCreatedAt(row.created_at) : t('common.not-available')}
       </Typography>
     )
   },
@@ -103,7 +81,7 @@ export const studyFieldColumns = (
     renderCell: ({ row }: CellType) => (
       <Fragment>
         <ModelAction
-          model="StudyField"
+          model="StakeholderStudyField"
           model_id={row.id}
           refetchModel={refetch}
           resubmit={() => {}}

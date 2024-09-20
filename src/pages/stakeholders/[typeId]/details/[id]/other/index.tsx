@@ -1,36 +1,28 @@
 import { useRouter } from 'next/router';
-import TelecomInfrastructureList from 'src/views/pages/projects/detail/other/telecom-infrastructure';
-import subMenuItems, { findOtherModelName } from './(subMenuItems)';
-import StakeholderOtherLayout from 'src/views/pages/stakeholders/other/layouts/stakeholder-other-layout';
+import { useEffect } from 'react';
+import LoadingPlaceholder from 'src/views/components/loader';
 
-function Index() {
+const StakeholderOther = () => {
   const router = useRouter();
-  const { id, typeId } = router.query;
-  const baseUrl = `/stakeholders/${typeId}/details/${id}/other`;
-  const activeMenu = 2;
-  const activeType = 1;
-  const activeSubType = 1;
+
+  // Extract dynamic route parameters from the URL
+  const { typeId, id } = router.query;
+
+  useEffect(() => {
+    if (typeId && id) {
+      // Build the new URL dynamically
+      const newUrl = `/stakeholders/${typeId}/details/${id}/other/study-fields`;
+
+      // Simulate a condition or action before redirecting
+      router.push(newUrl); // Redirect to the constructed URL
+    }
+  }, [typeId, id, router]);
 
   return (
-    <StakeholderOtherLayout
-      activeMenu={activeMenu}
-      activeType={1}
-      activeSubMenu={activeSubType}
-      subMenuItems={subMenuItems}
-      baseUrl={baseUrl}
-    >
-      <TelecomInfrastructureList
-        model={findOtherModelName(subMenuItems(baseUrl), activeType, activeSubType) || ''}
-        projectId={String(id)}
-        typeId={String(typeId)}
-      />
-    </StakeholderOtherLayout>
+    <>
+      <LoadingPlaceholder />
+    </>
   );
-}
-
-Index.acl = {
-  action: 'view_other',
-  subject: 'other'
 };
 
-export default Index;
+export default StakeholderOther;

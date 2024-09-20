@@ -6,29 +6,29 @@ import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
 import stakeholderOtherApiService from 'src/services/stakeholder/stakeholder-other-service';
 import { uploadableStakeholderFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { StudyField } from 'src/types/stakeholder/other';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
-import StudyFieldCard from './study-field-card';
-import StudyFieldDrawer from './study-field-drawer';
-import { studyFieldColumns } from './study-field-row';
+import StakeholderStudyFieldCard from './stakeholder-study-field-card';
+import StakeholderStudyFieldDrawer from './stakeholder-study-field-drawer';
 import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
+import { StakeholderStudyField } from 'src/types/stakeholder/other';
+import { stakeholderStudyFieldColumns } from './stakeholder-study-field-row';
 
-interface StudyFieldListProps {
+interface StakeholderStudyFieldListProps {
   model: string;
   typeId: string;
   stakeholderId: string;
 }
 
-const StudyFieldList: React.FC<StudyFieldListProps> = ({ model, stakeholderId, typeId }) => {
+const StakeholderStudyFieldList: React.FC<StakeholderStudyFieldListProps> = ({ model, stakeholderId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<StudyField | null>(null);
+  const [selectedRow, setSelectedRow] = useState<StakeholderStudyField | null>(null);
   const { t } = useTranslation();
 
-  const fetchStudyFields = (params: GetRequestParam): Promise<IApiResponse<StudyField[]>> => {
-    return stakeholderOtherApiService<StudyField>().getAll(model, {
+  const fetchStakeholderStudyFields = (params: GetRequestParam): Promise<IApiResponse<StakeholderStudyField[]>> => {
+    return stakeholderOtherApiService<StakeholderStudyField>().getAll(model, {
       ...params,
       filter: { ...params.filter, stakeholder_id: stakeholderId }
     });
@@ -40,9 +40,9 @@ const StudyFieldList: React.FC<StudyFieldListProps> = ({ model, stakeholderId, t
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<StudyField[]>({
-    queryKey: ['studyFields'],
-    fetchFunction: fetchStudyFields
+  } = usePaginatedFetch<StakeholderStudyField[]>({
+    queryKey: ['stakeholderStudyFields'],
+    fetchFunction: fetchStakeholderStudyFields
   });
 
   const toggleDrawer = () => {
@@ -55,29 +55,26 @@ const StudyFieldList: React.FC<StudyFieldListProps> = ({ model, stakeholderId, t
     setShowDetailDrawer(!showDetailDrawer);
   };
 
-  const handleEdit = (studyField: StudyField) => {
+  const handleEdit = (studyField: StakeholderStudyField) => {
     toggleDrawer();
     setSelectedRow(studyField);
   };
 
   const handleDelete = async (studyFieldId: string) => {
-    await stakeholderOtherApiService<StudyField>().delete(model, studyFieldId);
+    await stakeholderOtherApiService<StakeholderStudyField>().delete(model, studyFieldId);
     refetch();
   };
 
-  const handleClickDetail = (studyField: StudyField) => {
+  const handleClickDetail = (studyField: StakeholderStudyField) => {
     toggleDetailDrawer();
     setSelectedRow(studyField);
   };
 
-  const mapStudyFieldToDetailItems = (
-    studyField: StudyField
+  const mapStakeholderStudyFieldToDetailItems = (
+    studyField: StakeholderStudyField
   ): { title: string; value: string }[] => [
-    { title: t('stakeholder.other.study-field.details.title'), value: studyField.title || 'N/A' },
-    { title: t('stakeholder.other.study-field.details.description'), value: studyField.description || 'N/A' },
-    { title: t('stakeholder.other.study-field.details.study-program-id'), value: studyField.study_program_id || 'N/A' },
-    { title: t('stakeholder.other.study-field.details.studylevel-id'), value: studyField.studylevel_id || 'N/A' },
-    { title: t('stakeholder.other.study-field.details.revision-no'), value: studyField.revision_no?.toString() || 'N/A' },
+    { title: t('stakeholder.other.stakeholder-study-field.details.title'), value: studyField.studyfield?.title || 'N/A' },
+    { title: t('stakeholder.other.stakeholder-study-field.details.description'), value: studyField.studyfield?.description || 'N/A' },
     {
       title: t('common.table-columns.created-at'),
       value: studyField.created_at ? formatCreatedAt(studyField.created_at) : 'N/A'
@@ -91,11 +88,11 @@ const StudyFieldList: React.FC<StudyFieldListProps> = ({ model, stakeholderId, t
   return (
     <Box>
       {showDrawer && (
-        <StudyFieldDrawer
+        <StakeholderStudyFieldDrawer
           model={model}
           open={showDrawer}
           toggle={toggleDrawer}
-          studyField={selectedRow as StudyField}
+          StakeholderStudyField={selectedRow as StakeholderStudyField}
           refetch={refetch}
           stakeholderId={stakeholderId}
         />
@@ -105,26 +102,26 @@ const StudyFieldList: React.FC<StudyFieldListProps> = ({ model, stakeholderId, t
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapStudyFieldToDetailItems(selectedRow as StudyField)}
+          data={mapStakeholderStudyFieldToDetailItems(selectedRow as StakeholderStudyField)}
           hasReference={true}
           id={selectedRow?.id || ''}
-          fileType={uploadableStakeholderFileTypes.other.studyField}
-          title={t('stakeholder.other.study-field.details')}
+          fileType={uploadableStakeholderFileTypes.other.stakeholderStudyField}
+          title={t('stakeholder.other.stakeholder-study-field.details')}
         />
       )}
 
       <ItemsListing
-        title={t('stakeholder.other.study-field.title')}
+        title={t('stakeholder.other.stakeholder-study-field.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: studyFieldColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
+          headers: stakeholderStudyFieldColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <StudyFieldCard
+          <StakeholderStudyFieldCard
             onDetail={handleClickDetail}
-            studyField={data}
+            stakeholderStudyField={data}
             onEdit={handleEdit}
             refetch={refetch}
             onDelete={handleDelete}
@@ -147,4 +144,4 @@ const StudyFieldList: React.FC<StudyFieldListProps> = ({ model, stakeholderId, t
   );
 };
 
-export default StudyFieldList;
+export default StakeholderStudyFieldList;

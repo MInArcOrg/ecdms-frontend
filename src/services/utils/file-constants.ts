@@ -52,6 +52,8 @@ export const uploadableProjectFileTypes = {
   stakeholderEmail:"STAKEHOLDER_EMAIL",
   stakeholderOperationLocation:"STAKEHOLDER_OPERATION_LOCATION",
   stakeholderContactPerson:"STAKEHOLDER_CONTACT_PERSON",
+  training:"TRAINING",
+  regulation:"REGULATION",
   other: {
     buildingDimensionDetail: 'BUILDING_DIMENSION_DETAIL',
     port: 'PORT',
@@ -96,6 +98,7 @@ export const uploadableStakeholderFileTypes = {
   workExperience: 'WORK_EXPERIENCE',
   ageLevel: 'AGE_LEVEL',
   other:{
-    studyField:"STUDY_FIELD"
+    stakeholderStudyField:"STAKEHOLDER_STUDY_FIELD",
+    studyPeriodCost:"STUDY_PERIOD_COST"
   }
 } as const;

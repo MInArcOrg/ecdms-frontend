@@ -25,13 +25,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           id: 1,
           title: "stakeholder.navigation.submenu.others.field-of-study",
           path: `${baseUrl}/study-fields`,
-          model: "studyfield",
+          model: "stakeholderstudyfield",
         },
         {
           id: 2,
-          title: "stakeholder.navigation.submenu.others.study-period",
+          title: "stakeholder.navigation.submenu.others.study-period-cost",
 
-          path: `${baseUrl}/studyPeriod`,
+          path: `${baseUrl}/study-period-costs`,
           model: "studyperiodcost",
         },
         {

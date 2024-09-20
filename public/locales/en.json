@@ -1011,7 +1011,7 @@
         "others": {
           "stakeholder-specific": "Stakeholder Specific",
           "field-of-study": "Field of Study",
-          "study-period": "Study Period",
+          "study-period-cost": "Study Period Cost",
           "graduates": "Graduates",
           "services": "Construction Related Services"
         }
@@ -1041,6 +1041,33 @@
         "description": "Description",
         "number-of-days": "Number of Days",
         "reason": "Reason"
+      }
+    },
+    "stakeholder-training": {
+      "title": "Stakeholder Training",
+      "create-stakeholder-training": "Create Stakeholder Training",
+      "edit-stakeholder-training": "Edit Stakeholder Training",
+      "form": {
+        "title":"Title",
+        "type":"Type",
+        "quantity":"Quantity",
+        "provider": "Provider",
+        "provision-date": "Provision Date",
+        "description": "Description"
+      }
+    },
+    "stakeholder-regulation": {
+      "title": "Stakeholder Regulation",
+      "create-stakeholder-regulation": "Create Stakeholder Regulation",
+      "edit-stakeholder-regulation": "Edit Stakeholder Regulation",
+      "form": {
+        "title": "Title",
+        "regulation": "Regulation",
+        "prepared-by": "Prepared By",
+        "effective_start_date": "Effective Start Date",
+        "effective_end_date": "Effective End Date",
+        "quantity": "Quantity",
+        "description": "Description"
       }
     },
     "stakeholder-email": {
@@ -1099,12 +1126,26 @@
       }
     },
     "other": {
-      "study-field": {
+      "stakeholder-study-field": {
+        "title": "Study Field",
+        "create-stakeholder-study-field": "Create Study Field",
+        "edit-stakeholder-study-field": "Edit Study Field",
         "details": {
           "title": "Title",
           "description": "Description",
-          "study-program": "Study Program",
-          "study-level": "Study Level"
+          "study-field":"Study Field"        
+        }
+      },
+      "study-period-cost": {
+        "title": "Study Period Cost",
+        "create-study-period-cost": "Create Study Period Cost",
+        "edit-study-period-cost": "Edit Study Period Cost",
+        "details": {
+          "title": "Study Period Title",
+          "description": "Study Period Description",
+          "studyfield-title": "Study Field Title",
+          "total-month": "Total Month",
+          "study-cost": "Study Cost"
         }
       }
     }
