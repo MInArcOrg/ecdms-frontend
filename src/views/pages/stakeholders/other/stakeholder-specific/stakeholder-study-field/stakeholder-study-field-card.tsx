@@ -88,7 +88,16 @@ const StakeholderStudyFieldCard: React.FC<StakeholderStudyFieldCardProps> = ({
           onDelete={() => onDelete(stakeholderStudyField.id)}
           item={stakeholderStudyField}
           options={[]}
+          deletePermissionRule={{
+            action: 'delete',
+            subject: 'stakeholderstudyfield'
+          }}
+          editPermissionRule={{
+            action: 'edit',
+            subject: 'stakeholderstudyfield'
+          }}
         />
+        
       </CardActions>
     </Card>
   );

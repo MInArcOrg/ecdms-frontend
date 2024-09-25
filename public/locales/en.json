@@ -53,9 +53,9 @@
       "project-progress-statuses": "Project Progress Status",
       "create-project-progress-statuses": "Create Project Progress Status",
       "edit-project-progress-statuses": "Edit Project Progress Status",
-      "construction-related-services": "Construction Related Service",
-      "edit-construction-related-services": "Edit Construction Related Service",
-      "create-construction-related-services": "Create Construction Related Service"
+      "stakeholder-services": "Construction Related Service",
+      "edit-stakeholder-services": "Edit Construction Related Service",
+      "create-stakeholder-services": "Create Construction Related Service"
     },
     "form": {
       "title": "Title",
@@ -1013,7 +1013,8 @@
           "field-of-study": "Field of Study",
           "study-period-cost": "Study Period Cost",
           "graduates": "Graduates",
-          "services": "Construction Related Services"
+          "construction-related-services": "Construction Related Services",
+          "stakeholder-services": "Stakeholder Services"
         }
       }
     },
@@ -1140,12 +1141,23 @@
         "title": "Study Period Cost",
         "create-study-period-cost": "Create Study Period Cost",
         "edit-study-period-cost": "Edit Study Period Cost",
+        "study-period-cost-details":"Study Period Cost Detail",
         "details": {
-          "title": "Study Period Title",
           "description": "Study Period Description",
-          "studyfield-title": "Study Field Title",
           "total-month": "Total Month",
-          "study-cost": "Study Cost"
+          "study-cost": "Study Cost",
+          "study-field":"Study Field"
+        }
+      },
+      "stakeholder-service": {
+        "title": "Construction Related Service",
+        "create-stakeholder-service": "Create Construction Related Service",
+        "edit-stakeholder-service": "Edit Construction Related Service",
+        "details": {
+          "service-type": "Service Type",
+          "specification-detail": "Specification Detail",
+          "measurement-unit": "Measurement Unit",
+          "unit-price":"Unit Price"
         }
       }
     }

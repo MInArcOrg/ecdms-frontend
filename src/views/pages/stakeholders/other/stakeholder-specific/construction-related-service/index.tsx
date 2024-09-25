@@ -9,40 +9,40 @@ import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
-import StudyPeriodCostCard from './study-period-cost-card';
-import StudyPeriodCostDrawer from './study-period-cost-drawer';
+import ConstructionRelatedServiceCard from './construction-related-service-card';
+import ConstructionRelatedServiceDrawer from './construction-related-service-drawer';
 import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
-import { StudyPeriodCost } from 'src/types/stakeholder/other';
-import { studyPeriodCostColumns } from './study-period-cost-row';
+import { ConstructionRelatedService } from 'src/types/stakeholder/other';
+import { constructionRelatedServiceColumns } from './constrution-related-service-row';
 
-interface StudyPeriodCostListProps {
+interface ConstructionRelatedServiceListProps {
   model: string;
   typeId: string;
   stakeholderId: string;
 }
 
-const StudyPeriodCostList: React.FC<StudyPeriodCostListProps> = ({ model, stakeholderId, typeId }) => {
+const ConstructionRelatedServiceList: React.FC<ConstructionRelatedServiceListProps> = ({ model, stakeholderId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<StudyPeriodCost | null>(null);
+  const [selectedRow, setSelectedRow] = useState<ConstructionRelatedService | null>(null);
   const { t } = useTranslation();
 
-  const fetchStudyPeriodCosts = (params: GetRequestParam): Promise<IApiResponse<StudyPeriodCost[]>> => {
-    return stakeholderOtherApiService<StudyPeriodCost>().getAll(model, {
+  const fetchConstructionRelatedServices = (params: GetRequestParam): Promise<IApiResponse<ConstructionRelatedService[]>> => {
+    return stakeholderOtherApiService<ConstructionRelatedService>().getAll(model, {
       ...params,
       filter: { ...params.filter, stakeholder_id: stakeholderId }
     });
   };
 
   const {
-    data: studyPeriodCosts,
+    data: constructionRelatedServices,
     isLoading,
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<StudyPeriodCost[]>({
-    queryKey: ['studyPeriodCosts'],
-    fetchFunction: fetchStudyPeriodCosts
+  } = usePaginatedFetch<ConstructionRelatedService[]>({
+    queryKey: ['constructionRelatedServices'],
+    fetchFunction: fetchConstructionRelatedServices
   });
 
   const toggleDrawer = () => {
@@ -55,44 +55,44 @@ const StudyPeriodCostList: React.FC<StudyPeriodCostListProps> = ({ model, stakeh
     setShowDetailDrawer(!showDetailDrawer);
   };
 
-  const handleEdit = (studyPeriodCost: StudyPeriodCost) => {
+  const handleEdit = (service: ConstructionRelatedService) => {
     toggleDrawer();
-    setSelectedRow(studyPeriodCost);
+    setSelectedRow(service);
   };
 
-  const handleDelete = async (studyPeriodCostId: string) => {
-    await stakeholderOtherApiService<StudyPeriodCost>().delete(model, studyPeriodCostId);
+  const handleDelete = async (serviceId: string) => {
+    await stakeholderOtherApiService<ConstructionRelatedService>().delete(model, serviceId);
     refetch();
   };
 
-  const handleClickDetail = (studyPeriodCost: StudyPeriodCost) => {
+  const handleClickDetail = (service: ConstructionRelatedService) => {
     toggleDetailDrawer();
-    setSelectedRow(studyPeriodCost);
+    setSelectedRow(service);
   };
 
-  const mapStudyPeriodCostToDetailItems = (
-    studyPeriodCost: StudyPeriodCost
+  const mapConstructionRelatedServiceToDetailItems = (
+    service: ConstructionRelatedService
   ): { title: string; value: string }[] => [
-    { title: t('stakeholder.other.study-period-cost.details.study-field'), value: studyPeriodCost?.stakeholderstudyfield?.studyfield?.title || 'N/A' },
-    { title: t('stakeholder.other.study-period-cost.details.description'), value: studyPeriodCost.description || 'N/A' },
+    { title: t('stakeholder.other.stakeholder-service.details.service-type'), value: service.service_type || 'N/A' },
+    { title: t('stakeholder.other.stakeholder-service.details.specification-detail'), value: service.specification_detail || 'N/A' },
     {
       title: t('common.table-columns.created-at'),
-      value: studyPeriodCost.created_at ? formatCreatedAt(studyPeriodCost.created_at) : 'N/A'
+      value: service.created_at ? formatCreatedAt(service.created_at) : 'N/A'
     },
     {
       title: t('common.table-columns.updated-at'),
-      value: studyPeriodCost.updated_at ? formatCreatedAt(studyPeriodCost.updated_at) : 'N/A'
+      value: service.updated_at ? formatCreatedAt(service.updated_at) : 'N/A'
     }
   ];
 
   return (
     <Box>
       {showDrawer && (
-        <StudyPeriodCostDrawer
+        <ConstructionRelatedServiceDrawer
           model={model}
           open={showDrawer}
           toggle={toggleDrawer}
-          studyPeriodCost={selectedRow as StudyPeriodCost}
+          constructionRelatedService={selectedRow as ConstructionRelatedService}
           refetch={refetch}
           stakeholderId={stakeholderId}
         />
@@ -102,26 +102,26 @@ const StudyPeriodCostList: React.FC<StudyPeriodCostListProps> = ({ model, stakeh
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapStudyPeriodCostToDetailItems(selectedRow as StudyPeriodCost)}
+          data={mapConstructionRelatedServiceToDetailItems(selectedRow as ConstructionRelatedService)}
           hasReference={true}
           id={selectedRow?.id || ''}
-          fileType={uploadableStakeholderFileTypes.other.studyPeriodCost}
-          title={t('stakeholder.other.study-period-cost.study-period-cost-details')}
+          fileType={uploadableStakeholderFileTypes.other.constructionRelatedService}
+          title={t('stakeholder.other.stakeholder-service.details')}
         />
       )}
 
       <ItemsListing
-        title={t('stakeholder.other.study-period-cost.title')}
+        title={t('stakeholder.other.stakeholder-service.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: studyPeriodCostColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
+          headers: constructionRelatedServiceColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <StudyPeriodCostCard
+          <ConstructionRelatedServiceCard
             onDetail={handleClickDetail}
-            studyPeriodCost={data}
+            constructionRelatedService={data}
             onEdit={handleEdit}
             refetch={refetch}
             onDelete={handleDelete}
@@ -133,15 +133,15 @@ const StudyPeriodCostList: React.FC<StudyPeriodCostListProps> = ({ model, stakeh
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'studyperiodcost'
+            subject: 'constructionRelatedService'
           }
         }}
         fetchDataFunction={refetch}
-        items={studyPeriodCosts || []}
+        items={constructionRelatedServices || []}
         onPaginationChange={handlePageChange}
       />
     </Box>
   );
 };
 
-export default StudyPeriodCostList;
+export default ConstructionRelatedServiceList;

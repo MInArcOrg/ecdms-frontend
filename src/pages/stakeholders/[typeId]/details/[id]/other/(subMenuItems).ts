@@ -42,9 +42,15 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
         },
         {
           id: 4,
-          title: "stakeholder.navigation.submenu.others.services",
-          path: `${baseUrl}/crs`,
+          title: "stakeholder.navigation.submenu.others.construction-related-services",
+          path: `${baseUrl}/construction-related-services`,
           model: "constructionrelatedservice",
+        },
+        {
+          id: 5,
+          title: "stakeholder.navigation.submenu.others.stakeholder-services",
+          path: `${baseUrl}/stakeholder-services`,
+          model: "stakeholderservice",
         },
       ],
     },

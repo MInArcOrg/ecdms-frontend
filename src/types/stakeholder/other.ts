@@ -24,4 +24,25 @@ export interface StakeholderStudyField {
     created_at: Date; // Timestamp
     updated_at: Date; // Timestamp
   }
+
+  
+  export interface StakeholderService {
+    id: string;
+    parent_id?: string;
+    stakeholder_id: string;
+    construction_related_service_id: string;
+    constructionrelatedservice:ConstructionRelatedService;
+    unit_price: number;
+    created_at?: Date;
+    updated_at?: Date;
+  }
+  export interface ConstructionRelatedService {
+    id: string;
+    parent_id?: string;
+    service_type: string;
+    specification_detail: string;
+    measurement_unit: string;
+    created_at?: Date;
+    updated_at?: Date;
+  }
   

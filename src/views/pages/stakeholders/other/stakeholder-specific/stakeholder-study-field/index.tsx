@@ -133,7 +133,7 @@ const StakeholderStudyFieldList: React.FC<StakeholderStudyFieldListProps> = ({ m
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'studyField'
+            subject: 'stakeholderstudyfield'
           }
         }}
         fetchDataFunction={refetch}

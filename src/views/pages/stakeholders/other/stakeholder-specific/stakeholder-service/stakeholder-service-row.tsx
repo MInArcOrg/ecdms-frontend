@@ -2,19 +2,19 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import { StudyPeriodCost } from 'src/types/stakeholder/other';
+import { StakeholderService } from 'src/types/stakeholder/other';
 import { formatCurrency } from 'src/utils/formatter/currency';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
-  row: StudyPeriodCost;
+  row: StakeholderService;
 }
 
-export const studyPeriodCostColumns = (
-  onDetail: (studyPeriodCost: StudyPeriodCost) => void,
-  onEdit: (studyPeriodCost: StudyPeriodCost) => void,
+export const stakeholderServiceColumns = (
+  onDetail: (stakeholderService: StakeholderService) => void,
+  onEdit: (stakeholderService: StakeholderService) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void
@@ -43,35 +43,35 @@ export const studyPeriodCostColumns = (
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('stakeholder.other.study-period-cost.details.study-field'),
-    field: 'studyfield',
+    headerName: t('stakeholder.other.stakeholder-service.details.service-type'),
+    field: 'service_type',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.stakeholderstudyfield?.studyfield?.title || t('common.not-available')}
+        {row?.constructionrelatedservice?.service_type || t('common.not-available')}
       </Typography>
     )
   },
-  
 
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('stakeholder.other.study-period-cost.details.total-month'),
-    field: 'total_month',
+    headerName: t('stakeholder.other.stakeholder-service.details.measurement-unit'),
+    field: 'measurement_unit',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row.total_month || t('common.not-available')}
+        {row?.constructionrelatedservice?.measurement_unit || t('common.not-available')}
       </Typography>
     )
   },
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('stakeholder.other.study-period-cost.details.study-cost'),
-    field: 'study_cost',
+    headerName: t('stakeholder.other.stakeholder-service.details.unit-price'),
+    field: 'unit-price',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        { formatCurrency(row.study_cost) || t('common.not-available')}
+        { 
+        formatCurrency(row?.unit_price) || t('common.not-available')}
       </Typography>
     )
   },
@@ -94,14 +94,27 @@ export const studyPeriodCostColumns = (
     renderCell: ({ row }: CellType) => (
       <Fragment>
         <ModelAction
-          model="StudyPeriodCost"
+          model="StakeholderService"
           model_id={row.id}
           refetchModel={refetch}
           resubmit={() => {}}
           title=""
           postAction={() => {}}
         />
-        <RowOptions onEdit={() => onEdit(row)} onDelete={() => onDelete(row.id)} item={row} options={[]} />
+        <RowOptions
+          onEdit={() => onEdit(row)}
+          onDelete={() => onDelete(row.id)}
+          item={row}
+          options={[]}
+          deletePermissionRule={{
+            action: 'delete',
+            subject: 'stakeholderService'
+          }}
+          editPermissionRule={{
+            action: 'edit',
+            subject: 'stakeholderService'
+          }}
+        />
       </Fragment>
     )
   }

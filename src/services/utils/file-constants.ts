@@ -99,6 +99,8 @@ export const uploadableStakeholderFileTypes = {
   ageLevel: 'AGE_LEVEL',
   other:{
     stakeholderStudyField:"STAKEHOLDER_STUDY_FIELD",
-    studyPeriodCost:"STUDY_PERIOD_COST"
+    studyPeriodCost:"STUDY_PERIOD_COST",
+    constructionRelatedService:"CONSTRUCTION_RELATED_SERVICE",
+    stakeholderService:"STAKEHOLDER_SERVICE"
   }
 } as const;

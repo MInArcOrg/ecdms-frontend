@@ -2,27 +2,26 @@ import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { uploadableStakeholderFileTypes } from 'src/services/utils/file-constants';
-import { StudyPeriodCost } from 'src/types/stakeholder/other';
-import { formatCurrency } from 'src/utils/formatter/currency';
+import { ConstructionRelatedService } from 'src/types/stakeholder/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-interface StudyPeriodCostCardProps {
-  studyPeriodCost: StudyPeriodCost;
+interface ConstructionRelatedServiceCardProps {
+  constructionRelatedService: ConstructionRelatedService;
   refetch: () => void;
-  onEdit: (studyPeriodCost: StudyPeriodCost) => void;
+  onEdit: (constructionRelatedService: ConstructionRelatedService) => void;
   onDelete: (id: string) => void;
-  onDetail: (studyPeriodCost: StudyPeriodCost) => void;
+  onDetail: (constructionRelatedService: ConstructionRelatedService) => void;
 }
 
-const StudyPeriodCostCard: React.FC<StudyPeriodCostCardProps> = ({
-  studyPeriodCost,
+const ConstructionRelatedServiceCard: React.FC<ConstructionRelatedServiceCardProps> = ({
+  constructionRelatedService,
   refetch,
   onEdit,
   onDelete,
-  onDetail,
+  onDetail
 }) => {
   const { t } = useTranslation();
 
@@ -34,15 +33,15 @@ const StudyPeriodCostCard: React.FC<StudyPeriodCostCardProps> = ({
             <Typography
               noWrap
               component={Button}
-              onClick={() => onDetail(studyPeriodCost)}
+              onClick={() => onDetail(constructionRelatedService)}
               sx={{
                 fontWeight: 500,
                 textDecoration: 'none',
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
+                '&:hover': { color: 'primary.main' }
               }}
             >
-              {studyPeriodCost.id.slice(0, 5)}...
+              {constructionRelatedService.id.slice(0, 5)}...
             </Typography>
           </Typography>
         </Box>
@@ -50,47 +49,49 @@ const StudyPeriodCostCard: React.FC<StudyPeriodCostCardProps> = ({
         <Divider sx={{ my: 1 }} />
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
-        
-        <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.other.study-period-cost.details.study-field')}: {studyPeriodCost.stakeholderstudyfield?.studyfield?.title || 'N/A'}
+          <Typography variant="body2" color="text.secondary">
+            {t('stakeholder.other.stakeholder-service.details.service-type')}: {constructionRelatedService.service_type || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.other.study-period-cost.details.description')}: {studyPeriodCost.description || 'N/A'}
-          </Typography>
-
-          <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.other.study-period-cost.details.total-month')}: {studyPeriodCost.total_month || 'N/A'} months
+            {t('stakeholder.other.stakeholder-service.details.specification-detail')}: {constructionRelatedService.specification_detail || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.other.study-period-cost.details.study-cost')}: {formatCurrency(studyPeriodCost.study_cost) || 'N/A'}
+            {t('stakeholder.other.stakeholder-service.details.measurement-unit')}: {constructionRelatedService.measurement_unit || 'N/A'}
           </Typography>
-
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {studyPeriodCost.created_at ? formatCreatedAt(studyPeriodCost.created_at) : 'N/A'}
+            {t('common.table-columns.created-at')}: {constructionRelatedService.created_at ? formatCreatedAt(constructionRelatedService.created_at) : 'N/A'}
           </Typography>
-     
+  
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={studyPeriodCost.id} type={uploadableStakeholderFileTypes.other.studyPeriodCost} />
+        <FileDrawer id={constructionRelatedService.id} type={uploadableStakeholderFileTypes.other.constructionRelatedService} />
         <ModelAction
-          model="StudyPeriodCost"
-          model_id={studyPeriodCost.id}
+          model="ConstructionRelatedService"
+          model_id={constructionRelatedService.id}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
           postAction={() => refetch()}
         />
         <RowOptions
-          onEdit={() => onEdit(studyPeriodCost)}
-          onDelete={() => onDelete(studyPeriodCost.id)}
-          item={studyPeriodCost}
+          onEdit={() => onEdit(constructionRelatedService)}
+          onDelete={() => onDelete(constructionRelatedService.id)}
+          item={constructionRelatedService}
           options={[]}
+          deletePermissionRule={{
+            action: 'delete',
+            subject: 'constructionRelatedService'
+          }}
+          editPermissionRule={{
+            action: 'edit',
+            subject: 'constructionRelatedService'
+          }}
         />
       </CardActions>
     </Card>
   );
 };
 
-export default StudyPeriodCostCard;
+export default ConstructionRelatedServiceCard;

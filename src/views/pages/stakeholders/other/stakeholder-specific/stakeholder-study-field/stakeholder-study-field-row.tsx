@@ -88,7 +88,16 @@ export const stakeholderStudyFieldColumns = (
           title=""
           postAction={() => {}}
         />
-        <RowOptions onEdit={() => onEdit(row)} onDelete={() => onDelete(row.id)} item={row} options={[]} />
+        <RowOptions onEdit={() => onEdit(row)} onDelete={() => onDelete(row.id)} item={row} options={[]} 
+          deletePermissionRule={{
+            action: 'delete',
+            subject: 'stakeholderstudyfield'
+          }}
+          editPermissionRule={{
+            action: 'edit',
+            subject: 'stakeholderstudyfield'
+          }}
+        />
       </Fragment>
     )
   }
