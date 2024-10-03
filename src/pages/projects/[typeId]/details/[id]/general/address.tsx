@@ -12,7 +12,7 @@ function ProjectLocation() {
   return (
     <Box>
       <ProjectLayout activeMenu={0} activeSubMenu={2} subMenuItems={subMenuItems(id as string, String(typeId))}>
-        <AddressList modelId={String(id)} />
+        <AddressList modelId={String(id)} type={'project'} />
       </ProjectLayout>
     </Box>
   );
