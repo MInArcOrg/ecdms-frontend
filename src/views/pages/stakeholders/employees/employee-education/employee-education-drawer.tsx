@@ -94,7 +94,7 @@ const EmployeeEducationDrawer = (props: EmployeeEducationDrawerType) => {
           {(formik: FormikProps<EmployeeEducation>) => {
             return (
               <EmployeeEducationForm
-                totalEmployees={totalEmployees?.payload}
+                totalEmployees={totalEmployees?.payload || []}
                 file={uploadableFile}
                 onFileChange={onFileChange}
                 formik={formik}
