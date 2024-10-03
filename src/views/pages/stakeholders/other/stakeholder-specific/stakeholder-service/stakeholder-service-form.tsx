@@ -22,8 +22,8 @@ const StakeholderServiceForm: React.FC<StakeholderServiceFormProps> = ({
 }) => {
   const { t: transl } = useTranslation();
   const { data: constructionRelatedServices } = useQuery({
-    queryKey: ["general-master", "stakeholder-services"],
-    queryFn: () => generalMasterDataApiService.getAll("stakeholder-services", {}),
+    queryKey: ["general-master", "construction-related-services"],
+    queryFn: () => generalMasterDataApiService.getAll("construction-related-services", {}),
   });
 
   return (
@@ -40,22 +40,22 @@ const StakeholderServiceForm: React.FC<StakeholderServiceFormProps> = ({
           options={
             constructionRelatedServices?.payload?.map((service) => ({
               value: service.id,
-              label: service.title, // Assuming you want to display the service_type
+              label: service.service_type, // Assuming you want to display the service_type
             })) || []
           }
-      
+
         />
 
-     
+
         <CustomTextBox
           fullWidth
-          label={transl("stakeholder.other.stakeholder-service.details.unit_price")}
+          label={transl("stakeholder.other.stakeholder-service.details.unit-price")}
           placeholder={transl(
-            "stakeholder.other.stakeholder-service.details.unit_price"
+            "stakeholder.other.stakeholder-service.details.unit-price"
           )}
           type="number"
-          name="constructionrelatedservice.unit_price"
-         
+          name="unit_price"
+
           size="small"
           sx={{ mb: 2 }}
         />

@@ -1,4 +1,5 @@
 export interface GeneralMaster {
+  service_type: any;
   created_at: string;
   title: string;
   description: string;

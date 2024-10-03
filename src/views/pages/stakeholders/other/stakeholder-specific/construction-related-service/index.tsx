@@ -73,17 +73,17 @@ const ConstructionRelatedServiceList: React.FC<ConstructionRelatedServiceListPro
   const mapConstructionRelatedServiceToDetailItems = (
     service: ConstructionRelatedService
   ): { title: string; value: string }[] => [
-    { title: t('stakeholder.other.stakeholder-service.details.service-type'), value: service.service_type || 'N/A' },
-    { title: t('stakeholder.other.stakeholder-service.details.specification-detail'), value: service.specification_detail || 'N/A' },
-    {
-      title: t('common.table-columns.created-at'),
-      value: service.created_at ? formatCreatedAt(service.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: service.updated_at ? formatCreatedAt(service.updated_at) : 'N/A'
-    }
-  ];
+      { title: t('stakeholder.other.stakeholder-service.details.service-type'), value: service.service_type || 'N/A' },
+      { title: t('stakeholder.other.stakeholder-service.details.specification-detail'), value: service.specification_detail || 'N/A' },
+      {
+        title: t('common.table-columns.created-at'),
+        value: service.created_at ? formatCreatedAt(service.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: service.updated_at ? formatCreatedAt(service.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>
@@ -106,7 +106,7 @@ const ConstructionRelatedServiceList: React.FC<ConstructionRelatedServiceListPro
           hasReference={true}
           id={selectedRow?.id || ''}
           fileType={uploadableStakeholderFileTypes.other.constructionRelatedService}
-          title={t('stakeholder.other.stakeholder-service.details')}
+          title={t('stakeholder.other.stakeholder-service.details.title')}
         />
       )}
 

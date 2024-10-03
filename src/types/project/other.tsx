@@ -259,3 +259,67 @@ export interface Railway {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface RailwayStation {
+  id: string;
+  parent_id?: string;
+  project_id: string;
+  name: string;
+  specifications?: string;
+  northing?: number;
+  easting?: number;
+  revision_no?: number;
+  created_at: Date;
+  updated_at: Date;
+}
+export interface ReservoirInfo {
+  id: string; // UUID
+  parent_id?: string; // UUID, optional
+  project_id: string; // UUID, required
+  dam_volume?: string; // optional
+  total_capacity?: string; // optional
+  active_capacity?: string; // optional
+  inactive_capacity?: string; // optional
+  catchment_area?: number; // optional
+  surface_area?: number; // optional
+  revision_no?: number; // optional
+  created_at: Date; // Date, required
+  updated_at: Date; // Date, required
+}
+export interface SpillwayInfo {
+  id: string; // UUID
+  parent_id?: string; // UUID, optional
+  project_id: string; // UUID, required
+  name?: string; // optional
+  type?: string; // optional
+  quantity?: number; // optional
+  specifications?: string; // optional (TEXT in Sequelize is string in TypeScript)
+  capacity?: number; // optional (DOUBLE in Sequelize is number in TypeScript)
+  revision_no?: number; // optional
+  created_at: Date; // Date, required
+  updated_at: Date; // Date, required
+}
+export interface IrrigationCapacity {
+  id: string; // UUID
+  parent_id?: string; // UUID, optional
+  project_id: string; // UUID, required
+  designed_irrigation_capacity?: number; // optional
+  actual_irrigation_capacity?: number; // optional
+  revision_no?: number; // optional
+  created_at?: Date; // optional, automatically managed by Sequelize
+  updated_at?: Date; // optional, automatically managed by Sequelize
+}
+export interface WaterIrrigationDam {
+  id: string; // UUID
+  parent_id?: string; // UUID, optional
+  project_id: string; // UUID, required
+  dam_volume?: number; // optional
+  total_capacity?: number; // optional
+  active_capacity?: number; // optional
+  inactive_capacity?: number; // optional
+  catchment_area?: number; // optional
+  surface_area?: number; // optional
+  revision_no?: number; // optional
+  created_at?: Date; // optional, typically managed by the database
+  updated_at?: Date; // optional, typically managed by the database
+}

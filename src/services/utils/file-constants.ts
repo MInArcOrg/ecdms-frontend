@@ -48,12 +48,12 @@ export const uploadableProjectFileTypes = {
   file: 'File',
   resource: 'RESOURCE',
   certificate: "CERTIFICATE",
-  stakeholderPhone:"STAKEHOLDER_PHONE",
-  stakeholderEmail:"STAKEHOLDER_EMAIL",
-  stakeholderOperationLocation:"STAKEHOLDER_OPERATION_LOCATION",
-  stakeholderContactPerson:"STAKEHOLDER_CONTACT_PERSON",
-  training:"TRAINING",
-  regulation:"REGULATION",
+  stakeholderPhone: "STAKEHOLDER_PHONE",
+  stakeholderEmail: "STAKEHOLDER_EMAIL",
+  stakeholderOperationLocation: "STAKEHOLDER_OPERATION_LOCATION",
+  stakeholderContactPerson: "STAKEHOLDER_CONTACT_PERSON",
+  training: "TRAINING",
+  regulation: "REGULATION",
   other: {
     buildingDimensionDetail: 'BUILDING_DIMENSION_DETAIL',
     port: 'PORT',
@@ -71,7 +71,12 @@ export const uploadableProjectFileTypes = {
     transformer: 'TRANSFORMER',
     transmissionLine: 'TRANSMISSION_LINE',
     electricTower: 'ELECTRIC_TOWER',
-    railway: 'RAILWAYS'
+    railway: 'RAILWAYS',
+    railwayStation: 'RAILWAYSTATION',
+    reservoirInfo: "RESERVOIR_INFO",
+    spillwayInfo: "SPILLWAY_INFO",
+    irrigationCapacity: "IRRIGATION_CAPACITY",
+    waterIrrigationDam: "WATER_IRRIGATION_DAM",
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
@@ -97,10 +102,10 @@ export const uploadableStakeholderFileTypes = {
   employeeAge: 'EMPLOYEE_AGE',
   workExperience: 'WORK_EXPERIENCE',
   ageLevel: 'AGE_LEVEL',
-  other:{
-    stakeholderStudyField:"STAKEHOLDER_STUDY_FIELD",
-    studyPeriodCost:"STUDY_PERIOD_COST",
-    constructionRelatedService:"CONSTRUCTION_RELATED_SERVICE",
-    stakeholderService:"STAKEHOLDER_SERVICE"
+  other: {
+    stakeholderStudyField: "STAKEHOLDER_STUDY_FIELD",
+    studyPeriodCost: "STUDY_PERIOD_COST",
+    constructionRelatedService: "CONSTRUCTION_RELATED_SERVICE",
+    stakeholderService: "STAKEHOLDER_SERVICE"
   }
 } as const;

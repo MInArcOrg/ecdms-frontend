@@ -822,6 +822,78 @@
           "specifications": "Specifications"
         }
       },
+      "railway-station": {
+        "title": "Railway Stations",
+        "create-railway-station": "Create Railway Station",
+        "edit-railway-station": "Edit Railway Station",
+        "railway-station-details": "Railway Station Details",
+        "details": {
+          "name": "Name",
+          "specifications": "Specifications",
+          "northing": "Northing",
+          "easting": "Easting",
+          "revision-no": "Revision Number",
+          "energy-source": "Energy Source",
+          "major-operator": "Major Operator",
+          "system-length": "System Length",
+          "total-station-no": "Total Station Number",
+          "fright-cargo-no": "Fright Cargo Number",
+          "transport-cargo-no": "Transport Cargo Number"
+        }
+      },
+      "spillway-info": {
+        "title": "Spillway Infos",
+        "create-spillway-info": "Create Spillway Info",
+        "edit-spillway-info": "Edit Spillway Info",
+        "spillway-info-details": "Spillway Info Details",
+        "details": {
+          "name": "Name",
+          "type": "Type",
+          "quantity": "Quantity",
+          "specifications": "Specifications",
+          "capacity": "Capacity"
+        }
+      },
+      "irrigation-capacity": {
+        "title": "Irrigation Capcities",
+        "create-irrigation-capacity": "Create Irrigation Capcity",
+        "edit-irrigation-capacity": "Edit Irrigation Capcity",
+        "irrigation-capacity-details": "Irrigation Capcity Details",
+        "details": {
+          "designed-irrigation-capacity": "Designed Irrigation Capacity",
+          "actual-irrigation-capacity": "Actual Irrigation Capacity",
+          "revision-no": "Revision Number"
+        }
+      },
+      "water-irrigation-dam": {
+        "title": "Irrigation Capcities",
+        "create-water-irrigation-dam": "Create Water Irrigation  Dam",
+        "edit-water-irrigation-dam": "Edit Water Irrigation  Dam",
+        "water-irrigation-dam-details": "Water Irrigation  Dam Details",
+        "details": {
+          "dam-volume": "Dam Volume",
+          "designed-water-irrigation-dam": "Designed Irrigation Capacity",
+          "total-capacity": "Total Capacity",
+          "active-capacity": "Active Capacity",
+          "inactive-capacity": "Inactive Capacity",
+          "catchment-area": "Catchment Area",
+          "surface-area": "Surface Area"
+        }
+      },
+      "reservoir-info": {
+        "title": "Reservoir Infos",
+        "create-reservoir-info": "Create Reservoir Info",
+        "edit-reservoir-info": "Edit Reservoir Info",
+        "reservoir-info-details": "Reservoir Info Details",
+        "details": {
+          "dam-volume": "Dam Volume",
+          "total-capacity": "Total Capacity",
+          "active-capacity": "Active Capacity",
+          "inactive-capacity": "Inactive Capacity",
+          "catchment-area": "Catchment Area",
+          "surface-area": "Surface Area"
+        }
+      },
       "wind-energy": {
         "title": "Wind Energy",
         "create-wind-energy": "Create Wind Energy",
@@ -1049,9 +1121,9 @@
       "create-stakeholder-training": "Create Stakeholder Training",
       "edit-stakeholder-training": "Edit Stakeholder Training",
       "form": {
-        "title":"Title",
-        "type":"Type",
-        "quantity":"Quantity",
+        "title": "Title",
+        "type": "Type",
+        "quantity": "Quantity",
         "provider": "Provider",
         "provision-date": "Provision Date",
         "description": "Description"
@@ -1134,30 +1206,44 @@
         "details": {
           "title": "Title",
           "description": "Description",
-          "study-field":"Study Field"        
+          "study-field": "Study Field"
         }
       },
       "study-period-cost": {
         "title": "Study Period Cost",
         "create-study-period-cost": "Create Study Period Cost",
         "edit-study-period-cost": "Edit Study Period Cost",
-        "study-period-cost-details":"Study Period Cost Detail",
+        "study-period-cost-details": "Study Period Cost Detail",
         "details": {
           "description": "Study Period Description",
           "total-month": "Total Month",
           "study-cost": "Study Cost",
-          "study-field":"Study Field"
+          "study-field": "Study Field"
         }
       },
       "stakeholder-service": {
-        "title": "Construction Related Service",
-        "create-stakeholder-service": "Create Construction Related Service",
-        "edit-stakeholder-service": "Edit Construction Related Service",
+        "title": "Stakeholder Service",
+        "create-stakeholder-service": "Create Stakeholder Service",
+        "edit-stakeholder-service": "Edit Stakeholder Service",
         "details": {
+          "construction-related-service": "Construction Related Service",
+          "title": "Stakeholder Service Detail",
           "service-type": "Service Type",
           "specification-detail": "Specification Detail",
           "measurement-unit": "Measurement Unit",
-          "unit-price":"Unit Price"
+          "unit-price": "Unit Price"
+        }
+      },
+      "construction-related-service": {
+        "title": "Construction Related Service",
+        "create-construction-related-service": "Create Construction Related Service",
+        "edit-construction-related-service": "Edit Construction Related Service",
+        "details": {
+          "title": "Construction Related Service Detail",
+          "service-type": "Service Type",
+          "specification-detail": "Specification Detail",
+          "measurement-unit": "Measurement Unit",
+          "unit-price": "Unit Price"
         }
       }
     }

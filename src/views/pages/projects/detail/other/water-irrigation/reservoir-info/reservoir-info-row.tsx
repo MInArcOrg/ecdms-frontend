@@ -2,27 +2,26 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import { ConstructionRelatedService } from 'src/types/stakeholder/other';
+import { ReservoirInfo } from 'src/types/project/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
-  row: ConstructionRelatedService;
+  row: ReservoirInfo;
 }
 
-export const constructionRelatedServiceColumns = (
-  onDetail: (constructionRelatedService: ConstructionRelatedService) => void,
-  onEdit: (constructionRelatedService: ConstructionRelatedService) => void,
+export const reservoirInfoColumns = (
+  onDetail: (reservoirInfo: ReservoirInfo) => void,
+  onEdit: (reservoirInfo: ReservoirInfo) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void
 ): GridColDef[] => [
     {
-      flex: 0.2,
+      flex: 0.15,
       minWidth: 120,
       field: 'id',
-      headerName: 'ID',
       renderCell: ({ row }: CellType) => (
         <Typography
           noWrap
@@ -42,39 +41,72 @@ export const constructionRelatedServiceColumns = (
     {
       flex: 0.2,
       minWidth: 150,
-      headerName: t('stakeholder.other.construction-related-service.details.service-type'),
-      field: 'service_type',
+      headerName: t('project.other.reservoir-info.details.dam-volume'),
+      field: 'dam_volume',
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>
-          {row.service_type || t('common.not-available')}
+          {row.dam_volume || t('common.not-available')}
         </Typography>
       )
     },
     {
       flex: 0.2,
       minWidth: 200,
-      headerName: t('stakeholder.other.construction-related-service.details.specification-detail'),
-      field: 'specification_detail',
+      headerName: t('project.other.reservoir-info.details.total-capacity'),
+      field: 'total_capacity',
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>
-          {row.specification_detail || t('common.not-available')}
+          {row.total_capacity || t('common.not-available')}
         </Typography>
       )
     },
     {
       flex: 0.2,
-      minWidth: 150,
-      headerName: t('stakeholder.other.construction-related-service.details.measurement-unit'),
-      field: 'measurement_unit',
+      minWidth: 200,
+      headerName: t('project.other.reservoir-info.details.active-capacity'),
+      field: 'active_capacity',
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>
-          {row.measurement_unit || t('common.not-available')}
+          {row.active_capacity || t('common.not-available')}
         </Typography>
       )
     },
     {
       flex: 0.2,
+      minWidth: 200,
+      headerName: t('project.other.reservoir-info.details.inactive-capacity'),
+      field: 'inactive_capacity',
+      renderCell: ({ row }: CellType) => (
+        <Typography sx={{ color: 'text.secondary' }}>
+          {row.inactive_capacity || t('common.not-available')}
+        </Typography>
+      )
+    },
+    {
+      flex: 0.15,
       minWidth: 150,
+      headerName: t('project.other.reservoir-info.details.catchment-area'),
+      field: 'catchment_area',
+      renderCell: ({ row }: CellType) => (
+        <Typography sx={{ color: 'text.secondary' }}>
+          {row.catchment_area !== undefined ? row.catchment_area.toString() : t('common.not-available')}
+        </Typography>
+      )
+    },
+    {
+      flex: 0.15,
+      minWidth: 150,
+      headerName: t('project.other.reservoir-info.details.surface-area'),
+      field: 'surface_area',
+      renderCell: ({ row }: CellType) => (
+        <Typography sx={{ color: 'text.secondary' }}>
+          {row.surface_area !== undefined ? row.surface_area.toString() : t('common.not-available')}
+        </Typography>
+      )
+    },
+    {
+      flex: 0.15,
+      minWidth: 120,
       headerName: t('common.table-columns.created-at'),
       field: 'created_at',
       renderCell: ({ row }: CellType) => (
@@ -91,7 +123,7 @@ export const constructionRelatedServiceColumns = (
       renderCell: ({ row }: CellType) => (
         <Fragment>
           <ModelAction
-            model="ConstructionRelatedService"
+            model="ReservoirInfo"
             model_id={row.id}
             refetchModel={refetch}
             resubmit={() => { }}
@@ -102,15 +134,15 @@ export const constructionRelatedServiceColumns = (
             onEdit={() => onEdit(row)}
             onDelete={() => onDelete(row.id)}
             item={row}
-            options={[]}
             deletePermissionRule={{
               action: 'delete',
-              subject: 'constructionRelatedService'
+              subject: 'reservoirinfo' // Adjusted subject to match model
             }}
             editPermissionRule={{
               action: 'edit',
-              subject: 'constructionRelatedService'
+              subject: 'reservoirinfo' // Adjusted subject to match model
             }}
+            options={[]}
           />
         </Fragment>
       )

@@ -76,7 +76,6 @@ const StakeholderInfoDrawer = (props: StakeholderInfoDrawerType) => {
                 ''
             );
         }
-
         refetch();
         handleClose();
     };
