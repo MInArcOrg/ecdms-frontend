@@ -12,7 +12,6 @@ import { uploadFile } from 'src/services/utils/file-utils';
 import { StakeholderRegulation } from 'src/types/stakeholder/stakeholder-regulation';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
-
 interface StakeholderRegulationDrawerType {
   open: boolean;
   toggle: () => void;
@@ -43,7 +42,7 @@ const StakeholderRegulationDrawer = (props: StakeholderRegulationDrawerType) => 
       id: stakeholderRegulation?.id,
       stakeholder_id: stakeholderId,
       effective_start_date: convertDateToLocaleDate(values?.effective_start_date),
-      effective_end_date: convertDateToLocaleDate(values?.effective_end_date),
+      effective_end_date: convertDateToLocaleDate(values?.effective_end_date)
     },
     files: uploadableFile ? [uploadableFile] : []
   });
@@ -73,8 +72,8 @@ const StakeholderRegulationDrawer = (props: StakeholderRegulationDrawerType) => 
           initialValues={{
             ...(stakeholderRegulation as StakeholderRegulation),
             effective_start_date: formatInitialDateDate(stakeholderRegulation?.effective_start_date),
-            effective_end_date: formatInitialDateDate(stakeholderRegulation?.effective_end_date),
-            }}
+            effective_end_date: formatInitialDateDate(stakeholderRegulation?.effective_end_date)
+          }}
           createActionFunc={isEdit ? editStakeholderRegulation : createStakeholderRegulation}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

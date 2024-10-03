@@ -31,7 +31,8 @@ const TransmissionLineDrawer = (props: TransmissionLineDrawerType) => {
 
   const isEdit = Boolean(transmissionLine?.id);
 
-  const createTransmissionLine = async (body: IApiPayload<TransmissionLine>) => projectOtherApiService<TransmissionLine>().create(model, body);
+  const createTransmissionLine = async (body: IApiPayload<TransmissionLine>) =>
+    projectOtherApiService<TransmissionLine>().create(model, body);
 
   const editTransmissionLine = async (body: IApiPayload<TransmissionLine>) =>
     projectOtherApiService<TransmissionLine>().update(model, transmissionLine?.id || '', body);

@@ -17,13 +17,7 @@ interface StudyPeriodCostCardProps {
   onDetail: (studyPeriodCost: StudyPeriodCost) => void;
 }
 
-const StudyPeriodCostCard: React.FC<StudyPeriodCostCardProps> = ({
-  studyPeriodCost,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail,
-}) => {
+const StudyPeriodCostCard: React.FC<StudyPeriodCostCardProps> = ({ studyPeriodCost, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -39,7 +33,7 @@ const StudyPeriodCostCard: React.FC<StudyPeriodCostCardProps> = ({
                 fontWeight: 500,
                 textDecoration: 'none',
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {studyPeriodCost.id.slice(0, 5)}...
@@ -50,9 +44,9 @@ const StudyPeriodCostCard: React.FC<StudyPeriodCostCardProps> = ({
         <Divider sx={{ my: 1 }} />
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
-        
-        <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.other.study-period-cost.details.study-field')}: {studyPeriodCost.stakeholderstudyfield?.studyfield?.title || 'N/A'}
+          <Typography variant="body2" color="text.secondary">
+            {t('stakeholder.other.study-period-cost.details.study-field')}:{' '}
+            {studyPeriodCost.stakeholderstudyfield?.studyfield?.title || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('stakeholder.other.study-period-cost.details.description')}: {studyPeriodCost.description || 'N/A'}
@@ -68,7 +62,6 @@ const StudyPeriodCostCard: React.FC<StudyPeriodCostCardProps> = ({
           <Typography variant="body2" color="text.secondary">
             {t('common.table-columns.created-at')}: {studyPeriodCost.created_at ? formatCreatedAt(studyPeriodCost.created_at) : 'N/A'}
           </Typography>
-     
         </Box>
       </CardContent>
 

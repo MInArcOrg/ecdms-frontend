@@ -43,8 +43,7 @@ export const stakeholderTrainingColumns = (
     minWidth: 120,
     headerName: t('stakeholder.stakeholder-training.title'),
     field: 'title',
-    renderCell: ({ row }: CellType) =>
-      row?.title ? row.title : t('common.not-available')
+    renderCell: ({ row }: CellType) => (row?.title ? row.title : t('common.not-available'))
   },
   {
     flex: 0.15,
@@ -52,9 +51,7 @@ export const stakeholderTrainingColumns = (
     headerName: t('stakeholder.stakeholder-training.type'),
     field: 'type',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>
-        {row?.type ? row.type : t('common.not-available')}
-      </Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.type ? row.type : t('common.not-available')}</Typography>
     )
   },
   {
@@ -64,9 +61,7 @@ export const stakeholderTrainingColumns = (
     field: 'provision_date',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.provision_date
-          ? formatCreatedAt(row.provision_date)
-          : t('common.not-available')}
+        {row?.provision_date ? formatCreatedAt(row.provision_date) : t('common.not-available')}
       </Typography>
     )
   },
@@ -75,11 +70,7 @@ export const stakeholderTrainingColumns = (
     minWidth: 120,
     headerName: t('common.table-columns.created-at'),
     field: 'created_at',
-    renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>
-        {formatCreatedAt(row.created_at)}
-      </Typography>
-    )
+    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{formatCreatedAt(row.created_at)}</Typography>
   },
   {
     minWidth: 150,
@@ -100,12 +91,7 @@ export const stakeholderTrainingColumns = (
             throw new Error('Function not implemented.');
           }}
         />
-        <RowOptions
-          onEdit={onEdit}
-          onDelete={() => onDelete(row.id)}
-          item={row}
-          options={[]}
-        />
+        <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
       </Fragment>
     )
   }

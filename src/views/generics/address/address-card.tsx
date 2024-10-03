@@ -34,9 +34,7 @@ const AddressCard = ({
           <Grid item>
             <CardContent>
               <Box display="flex" alignItems="center" justifyContent="space-between">
-                <Typography variant="h6">
-                  {transl(`commmon.address.${type}-location`)}
-                </Typography>
+                <Typography variant="h6">{transl(`commmon.address.${type}-location`)}</Typography>
               </Box>
               <Box mt={3}>
                 <MapView position={[address.northing, address.easting]} />

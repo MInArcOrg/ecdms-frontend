@@ -16,7 +16,7 @@ function StakeholderOperationLocationList({ stakeholderId }: { stakeholderId: st
 
   const [selectedRow, setSelectedRow] = useState<StakeholderOperationLocation | null>(null);
   const fetchStakeholderOperationLocations = (params: GetRequestParam): Promise<IApiResponse<StakeholderOperationLocation[]>> => {
-    return stakeholderOperationLocationApiService.getAll({ ...params, filter: { ...params.filter,stakeholder_id:stakeholderId } });
+    return stakeholderOperationLocationApiService.getAll({ ...params, filter: { ...params.filter, stakeholder_id: stakeholderId } });
   };
 
   const {
@@ -61,7 +61,12 @@ function StakeholderOperationLocationList({ stakeholderId }: { stakeholderId: st
         type={ITEMS_LISTING_TYPE.list.value}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <StakeholderOperationLocationCard stakeholderOperationLocation={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
+          <StakeholderOperationLocationCard
+            stakeholderOperationLocation={data}
+            onEdit={handleEdit}
+            refetch={refetch}
+            onDelete={handleDelete}
+          />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,

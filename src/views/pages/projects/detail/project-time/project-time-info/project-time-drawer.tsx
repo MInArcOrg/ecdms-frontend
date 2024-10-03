@@ -1,18 +1,16 @@
-import * as yup from 'yup';
 import { FormikProps } from 'formik';
+import moment from 'moment';
+import { useState } from 'react';
+import projectTimeApiService from 'src/services/project/project-time-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { ProjectTime } from 'src/types/project/project-time';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
 import ProjectTimeForm from './project-time-form'; // Import your projectTime form component
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import { ProjectTime } from 'src/types/project/project-time';
-import projectTimeApiService from 'src/services/project/project-time-service';
-import { useState } from 'react';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
-import moment from 'moment';
-import i18n from 'src/configs/i18n';
-import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
 interface ProjectTimeDrawerType {
   open: boolean;
@@ -81,7 +79,7 @@ const ProjectTimeDrawer = (props: ProjectTimeDrawerType) => {
             ...(projectTime as ProjectTime),
             contract_signing_date: formatInitialDateDate(projectTime?.contract_signing_date),
             site_handover_date: formatInitialDateDate(projectTime?.site_handover_date),
-            
+
             commencement_date: formatInitialDateDate(projectTime?.commencement_date),
             mobilization_days_no: moment(projectTime?.commencement_date).diff(moment(projectTime?.site_handover_date), 'days'),
             original_contract_duration: moment(projectTime?.project_completion_date).diff(moment(projectTime?.commencement_date), 'days')

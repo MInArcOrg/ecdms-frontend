@@ -46,9 +46,7 @@ export const stakeholderServiceColumns = (
     headerName: t('stakeholder.other.stakeholder-service.details.service-type'),
     field: 'service_type',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>
-        {row?.constructionrelatedservice?.service_type || t('common.not-available')}
-      </Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.constructionrelatedservice?.service_type || t('common.not-available')}</Typography>
     )
   },
 
@@ -69,10 +67,7 @@ export const stakeholderServiceColumns = (
     headerName: t('stakeholder.other.stakeholder-service.details.unit-price'),
     field: 'unit-price',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>
-        { 
-        formatCurrency(row?.unit_price) || t('common.not-available')}
-      </Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{formatCurrency(row?.unit_price) || t('common.not-available')}</Typography>
     )
   },
   {

@@ -16,7 +16,7 @@ function StakeholderEmailList({ stakeholderId }: { stakeholderId: string }) {
 
   const [selectedRow, setSelectedRow] = useState<StakeholderEmail | null>(null);
   const fetchStakeholderEmails = (params: GetRequestParam): Promise<IApiResponse<StakeholderEmail[]>> => {
-    return stakeholderEmailApiService.getAll({ ...params, filter: { ...params.filter,stakeholder_id:stakeholderId } });
+    return stakeholderEmailApiService.getAll({ ...params, filter: { ...params.filter, stakeholder_id: stakeholderId } });
   };
 
   const {

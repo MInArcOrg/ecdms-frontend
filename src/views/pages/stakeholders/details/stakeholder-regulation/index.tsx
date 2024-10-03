@@ -11,7 +11,7 @@ import ItemsListing from 'src/views/shared/listing';
 import StakeholderRegulationCard from './stakeholder-regulation-card';
 import StakeholderRegulationDrawer from './stakeholder-regulation-drawer';
 
-function StakeholderRegulationList({ stakeholderId }: {  stakeholderId: string }) {
+function StakeholderRegulationList({ stakeholderId }: { stakeholderId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
 
   const [selectedRow, setSelectedRow] = useState<StakeholderRegulation | null>(null);

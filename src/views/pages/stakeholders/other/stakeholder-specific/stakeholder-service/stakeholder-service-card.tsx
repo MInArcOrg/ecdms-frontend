@@ -16,13 +16,7 @@ interface StakeholderServiceCardProps {
   onDetail: (stakeholderService: StakeholderService) => void;
 }
 
-const StakeholderServiceCard: React.FC<StakeholderServiceCardProps> = ({
-  stakeholderService,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail
-}) => {
+const StakeholderServiceCard: React.FC<StakeholderServiceCardProps> = ({ stakeholderService, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -50,18 +44,20 @@ const StakeholderServiceCard: React.FC<StakeholderServiceCardProps> = ({
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.other.stakeholder-service.details.service-type')}: {stakeholderService?.constructionrelatedservice?.service_type || 'N/A'}
+            {t('stakeholder.other.stakeholder-service.details.service-type')}:{' '}
+            {stakeholderService?.constructionrelatedservice?.service_type || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.other.stakeholder-service.details.specification-detail')}: {stakeholderService?.constructionrelatedservice?.specification_detail || 'N/A'}
+            {t('stakeholder.other.stakeholder-service.details.specification-detail')}:{' '}
+            {stakeholderService?.constructionrelatedservice?.specification_detail || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.other.stakeholder-service.details.measurement-unit')}: {stakeholderService?.constructionrelatedservice?.measurement_unit || 'N/A'}
+            {t('stakeholder.other.stakeholder-service.details.measurement-unit')}:{' '}
+            {stakeholderService?.constructionrelatedservice?.measurement_unit || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('common.table-columns.created-at')}: {stakeholderService.created_at ? formatCreatedAt(stakeholderService.created_at) : 'N/A'}
           </Typography>
-  
         </Box>
       </CardContent>
 

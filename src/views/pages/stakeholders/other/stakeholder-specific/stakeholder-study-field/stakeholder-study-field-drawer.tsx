@@ -67,9 +67,7 @@ const StakeholderStudyFieldDrawer = (props: StakeholderStudyFieldDrawerType) => 
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`stakeholder.other.stakeholder-study-field.${
-            isEdit ? `edit-stakeholder-study-field` : `create-stakeholder-study-field`
-          }`}
+          title={`stakeholder.other.stakeholder-study-field.${isEdit ? `edit-stakeholder-study-field` : `create-stakeholder-study-field`}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

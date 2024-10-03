@@ -9,9 +9,9 @@ function EmployeeEducation() {
 
   return (
     <StakeholderLayout activeMenu={1} activeSubMenu={1} subMenuItems={subMenuItems(id as string, typeId as string)}>
-        <>
-          <EmployeeEducationList stakeholderId={id as string}  />
-        </>
+      <>
+        <EmployeeEducationList stakeholderId={id as string} />
+      </>
     </StakeholderLayout>
   );
 }

@@ -33,7 +33,8 @@ const SpillwayInfoDrawer = (props: SpillwayInfoDrawerType) => {
 
   const createSpillwayInfo = async (body: IApiPayload<SpillwayInfo>) => projectOtherApiService<SpillwayInfo>().create(model, body);
 
-  const editSpillwayInfo = async (body: IApiPayload<SpillwayInfo>) => projectOtherApiService<SpillwayInfo>().update(model, spillwayInfo?.id || '', body);
+  const editSpillwayInfo = async (body: IApiPayload<SpillwayInfo>) =>
+    projectOtherApiService<SpillwayInfo>().update(model, spillwayInfo?.id || '', body);
 
   const getPayload = (values: SpillwayInfo) => {
     return {
@@ -57,7 +58,11 @@ const SpillwayInfoDrawer = (props: SpillwayInfoDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`project.other.spillway-info.${isEdit ? `edit-spillway-info` : `create-spillway-info`}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={`project.other.spillway-info.${isEdit ? `edit-spillway-info` : `create-spillway-info`}`}
+      handleClose={handleClose}
+      open={open}
+    >
       {() => (
         <FormPageWrapper
           edit={isEdit}

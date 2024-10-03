@@ -12,7 +12,6 @@ import { uploadFile } from 'src/services/utils/file-utils';
 import { StakeholderTraining } from 'src/types/stakeholder/stakeholder-training';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
-
 interface StakeholderTrainingDrawerType {
   open: boolean;
   toggle: () => void;
@@ -42,7 +41,7 @@ const StakeholderTrainingDrawer = (props: StakeholderTrainingDrawerType) => {
       ...values,
       id: stakeholderTraining?.id,
       stakeholder_id: stakeholderId,
-      provision_date: convertDateToLocaleDate(values?.provision_date),
+      provision_date: convertDateToLocaleDate(values?.provision_date)
     },
     files: uploadableFile ? [uploadableFile] : []
   });
@@ -71,8 +70,8 @@ const StakeholderTrainingDrawer = (props: StakeholderTrainingDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...(stakeholderTraining as StakeholderTraining),
-            provision_date: formatInitialDateDate(stakeholderTraining?.provision_date),
-            }}
+            provision_date: formatInitialDateDate(stakeholderTraining?.provision_date)
+          }}
           createActionFunc={isEdit ? editStakeholderTraining : createStakeholderTraining}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

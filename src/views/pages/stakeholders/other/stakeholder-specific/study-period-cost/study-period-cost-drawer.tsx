@@ -67,9 +67,7 @@ const StudyPeriodCostDrawer = (props: StudyPeriodCostDrawerType) => {
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`stakeholder.other.study-period-cost.${
-            isEdit ? `edit-study-period-cost` : `create-study-period-cost`
-          }`}
+          title={`stakeholder.other.study-period-cost.${isEdit ? `edit-study-period-cost` : `create-study-period-cost`}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

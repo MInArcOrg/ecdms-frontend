@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router';
-import subMenuItems, { findOtherModelName } from './(subMenuItems)';
 import StakeholderOtherLayout from 'src/views/pages/stakeholders/other/layouts/stakeholder-other-layout';
-import StudyFieldList from 'src/views/pages/stakeholders/other/stakeholder-specific/stakeholder-study-field';
 import StudyPeriodCostList from 'src/views/pages/stakeholders/other/stakeholder-specific/study-period-cost';
+import subMenuItems, { findOtherModelName } from './(subMenuItems)';
 
 function Index() {
   const router = useRouter();

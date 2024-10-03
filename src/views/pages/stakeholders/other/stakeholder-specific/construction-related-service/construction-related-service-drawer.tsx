@@ -67,9 +67,7 @@ const ConstructionRelatedServiceDrawer = (props: ConstructionRelatedServiceDrawe
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`stakeholder.other.stakeholder-service.${
-            isEdit ? `edit-stakeholder-service` : `create-stakeholder-service`
-          }`}
+          title={`stakeholder.other.stakeholder-service.${isEdit ? `edit-stakeholder-service` : `create-stakeholder-service`}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

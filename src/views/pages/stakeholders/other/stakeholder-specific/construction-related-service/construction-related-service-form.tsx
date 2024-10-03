@@ -1,12 +1,12 @@
-import { Grid } from "@mui/material";
-import { FormikProps } from "formik";
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { constructionRelatedServices } from "src/constants/stakeholder-constants";
-import { ConstructionRelatedService } from "src/types/stakeholder/other";
-import CustomSelect from "src/views/shared/form/custom-select";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
-import CustomFileUpload from "src/views/shared/form/custome-file-selector";
+import { Grid } from '@mui/material';
+import { FormikProps } from 'formik';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { constructionRelatedServices } from 'src/constants/stakeholder-constants';
+import { ConstructionRelatedService } from 'src/types/stakeholder/other';
+import CustomSelect from 'src/views/shared/form/custom-select';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface ConstructionRelatedServiceFormProps {
   formik: FormikProps<ConstructionRelatedService>;
@@ -14,13 +14,8 @@ interface ConstructionRelatedServiceFormProps {
   onFileChange: (file: File | null) => void;
 }
 
-const ConstructionRelatedServiceForm: React.FC<ConstructionRelatedServiceFormProps> = ({
-  formik,
-  file,
-  onFileChange,
-}) => {
+const ConstructionRelatedServiceForm: React.FC<ConstructionRelatedServiceFormProps> = ({ formik, file, onFileChange }) => {
   const { t: transl } = useTranslation();
-
 
   return (
     <Grid container spacing={3}>
@@ -30,14 +25,12 @@ const ConstructionRelatedServiceForm: React.FC<ConstructionRelatedServiceFormPro
           size="small"
           sx={{ mb: 2 }}
           name="service_type"
-          label={transl("stakeholder.other.construction-related-service.details.service-type")}
-          placeholder={transl(
-            "stakeholder.other.construction-related-service.details.service-type"
-          )}
+          label={transl('stakeholder.other.construction-related-service.details.service-type')}
+          placeholder={transl('stakeholder.other.construction-related-service.details.service-type')}
           options={
             constructionRelatedServices?.map((service) => ({
               value: service.value,
-              label: service.label,
+              label: service.label
             })) || []
           }
         />
@@ -45,10 +38,8 @@ const ConstructionRelatedServiceForm: React.FC<ConstructionRelatedServiceFormPro
         {/* Specification Detail */}
         <CustomTextBox
           fullWidth
-          label={transl("stakeholder.other.construction-related-service.details.specification-detail")}
-          placeholder={transl(
-            "stakeholder.other.construction-related-service.details.specification-detail"
-          )}
+          label={transl('stakeholder.other.construction-related-service.details.specification-detail')}
+          placeholder={transl('stakeholder.other.construction-related-service.details.specification-detail')}
           name="specification_detail"
           size="small"
           multiline
@@ -59,10 +50,8 @@ const ConstructionRelatedServiceForm: React.FC<ConstructionRelatedServiceFormPro
         {/* Measurement Unit */}
         <CustomTextBox
           fullWidth
-          label={transl("stakeholder.other.construction-related-service.details.measurement-unit")}
-          placeholder={transl(
-            "stakeholder.other.construction-related-service.details.measurement-unit"
-          )}
+          label={transl('stakeholder.other.construction-related-service.details.measurement-unit')}
+          placeholder={transl('stakeholder.other.construction-related-service.details.measurement-unit')}
           name="measurement_unit"
           size="small"
           sx={{ mb: 2 }}
@@ -71,11 +60,7 @@ const ConstructionRelatedServiceForm: React.FC<ConstructionRelatedServiceFormPro
 
       {/* File Upload */}
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={transl("common.form.file-upload")}
-          file={file}
-          onFileChange={onFileChange}
-        />
+        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

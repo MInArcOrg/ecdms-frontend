@@ -47,13 +47,13 @@ export const uploadableProjectFileTypes = {
   masterStatus: 'MASTER_STATUS',
   file: 'File',
   resource: 'RESOURCE',
-  certificate: "CERTIFICATE",
-  stakeholderPhone: "STAKEHOLDER_PHONE",
-  stakeholderEmail: "STAKEHOLDER_EMAIL",
-  stakeholderOperationLocation: "STAKEHOLDER_OPERATION_LOCATION",
-  stakeholderContactPerson: "STAKEHOLDER_CONTACT_PERSON",
-  training: "TRAINING",
-  regulation: "REGULATION",
+  certificate: 'CERTIFICATE',
+  stakeholderPhone: 'STAKEHOLDER_PHONE',
+  stakeholderEmail: 'STAKEHOLDER_EMAIL',
+  stakeholderOperationLocation: 'STAKEHOLDER_OPERATION_LOCATION',
+  stakeholderContactPerson: 'STAKEHOLDER_CONTACT_PERSON',
+  training: 'TRAINING',
+  regulation: 'REGULATION',
   other: {
     buildingDimensionDetail: 'BUILDING_DIMENSION_DETAIL',
     port: 'PORT',
@@ -73,10 +73,10 @@ export const uploadableProjectFileTypes = {
     electricTower: 'ELECTRIC_TOWER',
     railway: 'RAILWAYS',
     railwayStation: 'RAILWAYSTATION',
-    reservoirInfo: "RESERVOIR_INFO",
-    spillwayInfo: "SPILLWAY_INFO",
-    irrigationCapacity: "IRRIGATION_CAPACITY",
-    waterIrrigationDam: "WATER_IRRIGATION_DAM",
+    reservoirInfo: 'RESERVOIR_INFO',
+    spillwayInfo: 'SPILLWAY_INFO',
+    irrigationCapacity: 'IRRIGATION_CAPACITY',
+    waterIrrigationDam: 'WATER_IRRIGATION_DAM'
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
@@ -103,9 +103,9 @@ export const uploadableStakeholderFileTypes = {
   workExperience: 'WORK_EXPERIENCE',
   ageLevel: 'AGE_LEVEL',
   other: {
-    stakeholderStudyField: "STAKEHOLDER_STUDY_FIELD",
-    studyPeriodCost: "STUDY_PERIOD_COST",
-    constructionRelatedService: "CONSTRUCTION_RELATED_SERVICE",
-    stakeholderService: "STAKEHOLDER_SERVICE"
+    stakeholderStudyField: 'STAKEHOLDER_STUDY_FIELD',
+    studyPeriodCost: 'STUDY_PERIOD_COST',
+    constructionRelatedService: 'CONSTRUCTION_RELATED_SERVICE',
+    stakeholderService: 'STAKEHOLDER_SERVICE'
   }
 } as const;

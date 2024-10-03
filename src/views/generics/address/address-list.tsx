@@ -12,9 +12,7 @@ import ItemsListing from 'src/views/shared/listing';
 import AddressCard from './address-card';
 import AddressDrawer from './address-drawer';
 
-function AddressList({ modelId, type }: {
-  modelId: string, type: string;
-}) {
+function AddressList({ modelId, type }: { modelId: string; type: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
 
   const [selectedRow, setSelectedRow] = useState<Address | null>(null);
@@ -59,7 +57,15 @@ function AddressList({ modelId, type }: {
           type={ITEMS_LISTING_TYPE.list.value}
           isLoading={isLoading}
           ItemViewComponent={({ data }) => (
-            <AddressCard type={type} onDetail={() => { }} address={data} onDelete={handleDelete} onEdit={handleEdit} transl={transl} refetch={refetch} />
+            <AddressCard
+              type={type}
+              onDetail={() => {}}
+              address={data}
+              onDelete={handleDelete}
+              onEdit={handleEdit}
+              transl={transl}
+              refetch={refetch}
+            />
           )}
           createActionConfig={{
             ...defaultCreateActionConfig,

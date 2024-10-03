@@ -72,13 +72,31 @@ const WaterIrrigationDamList: React.FC<WaterIrrigationDamListProps> = ({ model, 
 
   const mapWaterIrrigationDamToDetailItems = (waterIrrigationDam: WaterIrrigationDam): { title: string; value: string }[] => [
     { title: t('project.other.water-irrigation-dam.details.dam-volume'), value: waterIrrigationDam.dam_volume?.toString() || 'N/A' },
-    { title: t('project.other.water-irrigation-dam.details.total-capacity'), value: waterIrrigationDam.total_capacity?.toString() || 'N/A' },
-    { title: t('project.other.water-irrigation-dam.details.active-capacity'), value: waterIrrigationDam.active_capacity?.toString() || 'N/A' },
-    { title: t('project.other.water-irrigation-dam.details.inactive-capacity'), value: waterIrrigationDam.inactive_capacity?.toString() || 'N/A' },
-    { title: t('project.other.water-irrigation-dam.details.catchment-area'), value: waterIrrigationDam.catchment_area?.toString() || 'N/A' },
+    {
+      title: t('project.other.water-irrigation-dam.details.total-capacity'),
+      value: waterIrrigationDam.total_capacity?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.water-irrigation-dam.details.active-capacity'),
+      value: waterIrrigationDam.active_capacity?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.water-irrigation-dam.details.inactive-capacity'),
+      value: waterIrrigationDam.inactive_capacity?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.water-irrigation-dam.details.catchment-area'),
+      value: waterIrrigationDam.catchment_area?.toString() || 'N/A'
+    },
     { title: t('project.other.water-irrigation-dam.details.surface-area'), value: waterIrrigationDam.surface_area?.toString() || 'N/A' },
-    { title: t('common.table-columns.created-at'), value: waterIrrigationDam.created_at ? formatCreatedAt(waterIrrigationDam.created_at) : 'N/A' },
-    { title: t('common.table-columns.updated-at'), value: waterIrrigationDam.updated_at ? formatCreatedAt(waterIrrigationDam.updated_at) : 'N/A' }
+    {
+      title: t('common.table-columns.created-at'),
+      value: waterIrrigationDam.created_at ? formatCreatedAt(waterIrrigationDam.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: waterIrrigationDam.updated_at ? formatCreatedAt(waterIrrigationDam.updated_at) : 'N/A'
+    }
   ];
 
   return (

@@ -1,12 +1,12 @@
-import { Box, Card, CardActions, CardContent, Typography, Divider, Chip, IconButton } from '@mui/material';
+import { Box, Card, CardActions, CardContent, Chip, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import FileDrawer from 'src/views/components/custom/files-drawer';
-import ModelActionComponent from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
 import Icon from 'src/@core/components/icon';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { StakeholderCertificate } from 'src/types/stakeholder/stakeholder-certificate';
 import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
+import FileDrawer from 'src/views/components/custom/files-drawer';
+import ModelActionComponent from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 const StakeholderCertificateCard = ({
   stakeholderCertificate,
@@ -22,12 +22,8 @@ const StakeholderCertificateCard = ({
   const { t, i18n } = useTranslation();
 
   return (
-    <Card
-
-    >
-      <CardContent
-
-      >
+    <Card>
+      <CardContent>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="h6" fontWeight="bold" color="primary">
             {stakeholderCertificate.title}
@@ -52,12 +48,9 @@ const StakeholderCertificateCard = ({
             </Typography>
           )}
         </Box>
-
       </CardContent>
 
-      <CardActions
-
-      >
+      <CardActions>
         <Box display="flex" alignItems="center">
           <FileDrawer id={stakeholderCertificate.id} type={uploadableProjectFileTypes.certificate} />
         </Box>

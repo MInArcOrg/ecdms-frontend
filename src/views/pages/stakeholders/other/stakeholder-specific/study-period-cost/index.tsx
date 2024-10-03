@@ -70,10 +70,11 @@ const StudyPeriodCostList: React.FC<StudyPeriodCostListProps> = ({ model, stakeh
     setSelectedRow(studyPeriodCost);
   };
 
-  const mapStudyPeriodCostToDetailItems = (
-    studyPeriodCost: StudyPeriodCost
-  ): { title: string; value: string }[] => [
-    { title: t('stakeholder.other.study-period-cost.details.study-field'), value: studyPeriodCost?.stakeholderstudyfield?.studyfield?.title || 'N/A' },
+  const mapStudyPeriodCostToDetailItems = (studyPeriodCost: StudyPeriodCost): { title: string; value: string }[] => [
+    {
+      title: t('stakeholder.other.study-period-cost.details.study-field'),
+      value: studyPeriodCost?.stakeholderstudyfield?.studyfield?.title || 'N/A'
+    },
     { title: t('stakeholder.other.study-period-cost.details.description'), value: studyPeriodCost.description || 'N/A' },
     {
       title: t('common.table-columns.created-at'),

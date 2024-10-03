@@ -54,21 +54,31 @@ const ReservoirInfoCard: React.FC<ReservoirInfoCardProps> = ({ reservoirInfo, re
             {t('project.other.reservoir-info.details.inactive-capacity')}: {reservoirInfo.inactive_capacity || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.reservoir-info.details.catchment-area')}: {reservoirInfo.catchment_area !== undefined ? reservoirInfo.catchment_area : t('common.not-available')}
+            {t('project.other.reservoir-info.details.catchment-area')}:{' '}
+            {reservoirInfo.catchment_area !== undefined ? reservoirInfo.catchment_area : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.reservoir-info.details.surface-area')}: {reservoirInfo.surface_area !== undefined ? reservoirInfo.surface_area : t('common.not-available')}
+            {t('project.other.reservoir-info.details.surface-area')}:{' '}
+            {reservoirInfo.surface_area !== undefined ? reservoirInfo.surface_area : t('common.not-available')}
           </Typography>
 
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {reservoirInfo.created_at ? formatCreatedAt(reservoirInfo.created_at) : t('common.not-available')}
+            {t('common.table-columns.created-at')}:{' '}
+            {reservoirInfo.created_at ? formatCreatedAt(reservoirInfo.created_at) : t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
         <FileDrawer id={reservoirInfo.id} type={uploadableProjectFileTypes.other.reservoirInfo} />
-        <ModelAction model="ReservoirInfo" model_id={reservoirInfo.id} refetchModel={refetch} resubmit={refetch} title="" postAction={refetch} />
+        <ModelAction
+          model="ReservoirInfo"
+          model_id={reservoirInfo.id}
+          refetchModel={refetch}
+          resubmit={refetch}
+          title=""
+          postAction={refetch}
+        />
         <RowOptions onEdit={() => onEdit(reservoirInfo)} onDelete={() => onDelete(reservoirInfo.id)} item={reservoirInfo} options={[]} />
       </CardActions>
     </Card>

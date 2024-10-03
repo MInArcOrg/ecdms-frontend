@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router';
-import TransmissionLineList from 'src/views/pages/projects/detail/other/electric-power/transmission-lines';
 import ProjectOtherLayout from 'src/views/pages/projects/detail/other/layouts/project-other-layout';
-import subMenuItems, { findOtherModelName } from '../(subMenuItems)';
 import RailwayList from 'src/views/pages/projects/detail/other/railway/railway';
+import subMenuItems, { findOtherModelName } from '../(subMenuItems)';
 
 function Index() {
   const router = useRouter();

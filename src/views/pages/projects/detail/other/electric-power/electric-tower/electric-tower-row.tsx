@@ -41,63 +41,63 @@ export const electricTowerColumns = (
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('project.other.transmission-line.details.transmissionline-id'),
+    headerName: t('project.other.electric-tower.details.transmissionline-id'),
     field: 'transmissionline_id',
     renderCell: ({ row }: CellType) => (row.transmissionline_id ? row.transmissionline_id : t('common.not-available'))
   },
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('project.other.transmission-line.details.overall-length'),
+    headerName: t('project.other.electric-tower.details.overall-length'),
     field: 'overall_length',
     renderCell: ({ row }: CellType) => (row.overall_length !== null ? row.overall_length?.toString() : t('common.not-available'))
   },
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('project.other.transmission-line.details.embedded-length'),
+    headerName: t('project.other.electric-tower.details.embedded-length'),
     field: 'embedded_length',
     renderCell: ({ row }: CellType) => (row.embedded_length !== null ? row.embedded_length?.toString() : t('common.not-available'))
   },
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('project.other.transmission-line.details.columns'),
+    headerName: t('project.other.electric-tower.details.columns'),
     field: 'columns',
     renderCell: ({ row }: CellType) => (row.columns ? row.columns : t('common.not-available'))
   },
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('project.other.transmission-line.details.braces'),
+    headerName: t('project.other.electric-tower.details.braces'),
     field: 'braces',
     renderCell: ({ row }: CellType) => (row.braces ? row.braces : t('common.not-available'))
   },
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('project.other.transmission-line.details.beam-cross-arms'),
+    headerName: t('project.other.electric-tower.details.beam-cross-arms'),
     field: 'beam_cross_arms',
     renderCell: ({ row }: CellType) => (row.beam_cross_arms ? row.beam_cross_arms : t('common.not-available'))
   },
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('project.other.transmission-line.details.brace-cross-arm'),
+    headerName: t('project.other.electric-tower.details.brace-cross-arm'),
     field: 'brace_cross_arm',
     renderCell: ({ row }: CellType) => (row.brace_cross_arm ? row.brace_cross_arm : t('common.not-available'))
   },
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('project.other.transmission-line.details.elasticity-modulus'),
+    headerName: t('project.other.electric-tower.details.elasticity-modulus'),
     field: 'elasticity_modulus',
     renderCell: ({ row }: CellType) => (row.elasticity_modulus ? row.elasticity_modulus : t('common.not-available'))
   },
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('project.other.transmission-line.details.poission-ratio'),
+    headerName: t('project.other.electric-tower.details.poission-ratio'),
     field: 'poission_ratio',
     renderCell: ({ row }: CellType) => (row.poission_ratio ? row.poission_ratio : t('common.not-available'))
   },

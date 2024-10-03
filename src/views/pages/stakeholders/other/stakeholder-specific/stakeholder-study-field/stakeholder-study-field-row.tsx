@@ -45,9 +45,7 @@ export const stakeholderStudyFieldColumns = (
     headerName: t('stakeholder.other.stakeholder-study-field.details.title'),
     field: 'studyfield.title', // Accessing title through studyfield
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>
-        {row.studyfield?.title || t('common.not-available')}
-      </Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row.studyfield?.title || t('common.not-available')}</Typography>
     )
   },
   {
@@ -56,9 +54,7 @@ export const stakeholderStudyFieldColumns = (
     headerName: t('stakeholder.other.stakeholder-study-field.details.description'),
     field: 'studyfield.description', // Accessing description through studyfield
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>
-        {row.studyfield?.description || t('common.not-available')}
-      </Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row.studyfield?.description || t('common.not-available')}</Typography>
     )
   },
 
@@ -88,7 +84,11 @@ export const stakeholderStudyFieldColumns = (
           title=""
           postAction={() => {}}
         />
-        <RowOptions onEdit={() => onEdit(row)} onDelete={() => onDelete(row.id)} item={row} options={[]} 
+        <RowOptions
+          onEdit={() => onEdit(row)}
+          onDelete={() => onDelete(row.id)}
+          item={row}
+          options={[]}
           deletePermissionRule={{
             action: 'delete',
             subject: 'stakeholderstudyfield'

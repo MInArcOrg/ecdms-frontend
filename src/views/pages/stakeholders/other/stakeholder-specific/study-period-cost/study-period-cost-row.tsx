@@ -46,12 +46,9 @@ export const studyPeriodCostColumns = (
     headerName: t('stakeholder.other.study-period-cost.details.study-field'),
     field: 'studyfield',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>
-        {row?.stakeholderstudyfield?.studyfield?.title || t('common.not-available')}
-      </Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.stakeholderstudyfield?.studyfield?.title || t('common.not-available')}</Typography>
     )
   },
-  
 
   {
     flex: 0.2,
@@ -59,9 +56,7 @@ export const studyPeriodCostColumns = (
     headerName: t('stakeholder.other.study-period-cost.details.total-month'),
     field: 'total_month',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>
-        {row.total_month || t('common.not-available')}
-      </Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row.total_month || t('common.not-available')}</Typography>
     )
   },
   {
@@ -70,9 +65,7 @@ export const studyPeriodCostColumns = (
     headerName: t('stakeholder.other.study-period-cost.details.study-cost'),
     field: 'study_cost',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>
-        { formatCurrency(row.study_cost) || t('common.not-available')}
-      </Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{formatCurrency(row.study_cost) || t('common.not-available')}</Typography>
     )
   },
   {
@@ -93,14 +86,7 @@ export const studyPeriodCostColumns = (
     headerName: t('common.table-columns.actions'),
     renderCell: ({ row }: CellType) => (
       <Fragment>
-        <ModelAction
-          model="StudyPeriodCost"
-          model_id={row.id}
-          refetchModel={refetch}
-          resubmit={() => {}}
-          title=""
-          postAction={() => {}}
-        />
+        <ModelAction model="StudyPeriodCost" model_id={row.id} refetchModel={refetch} resubmit={() => {}} title="" postAction={() => {}} />
         <RowOptions onEdit={() => onEdit(row)} onDelete={() => onDelete(row.id)} item={row} options={[]} />
       </Fragment>
     )

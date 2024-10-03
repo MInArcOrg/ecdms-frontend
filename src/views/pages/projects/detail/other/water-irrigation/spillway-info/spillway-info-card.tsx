@@ -45,29 +45,41 @@ const SpillwayInfoCard: React.FC<SpillwayInfoCardProps> = ({ spillwayInfo, refet
             {t('project.other.spillway-info.details.type')}: {spillwayInfo.type || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.spillway-info.details.quantity')}: {spillwayInfo.quantity !== undefined ? spillwayInfo.quantity : t('common.not-available')}
+            {t('project.other.spillway-info.details.quantity')}:{' '}
+            {spillwayInfo.quantity !== undefined ? spillwayInfo.quantity : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.spillway-info.details.capacity')}: {spillwayInfo.capacity !== undefined ? spillwayInfo.capacity : t('common.not-available')}
+            {t('project.other.spillway-info.details.capacity')}:{' '}
+            {spillwayInfo.capacity !== undefined ? spillwayInfo.capacity : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.spillway-info.details.specifications')}: {spillwayInfo.specifications || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.spillway-info.details.revision-no')}: {spillwayInfo.revision_no !== undefined ? spillwayInfo.revision_no : t('common.not-available')}
+            {t('project.other.spillway-info.details.revision-no')}:{' '}
+            {spillwayInfo.revision_no !== undefined ? spillwayInfo.revision_no : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {spillwayInfo.created_at ? formatCreatedAt(spillwayInfo.created_at) : t('common.not-available')}
+            {t('common.table-columns.created-at')}:{' '}
+            {spillwayInfo.created_at ? formatCreatedAt(spillwayInfo.created_at) : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.updated-at')}: {spillwayInfo.updated_at ? formatCreatedAt(spillwayInfo.updated_at) : t('common.not-available')}
+            {t('common.table-columns.updated-at')}:{' '}
+            {spillwayInfo.updated_at ? formatCreatedAt(spillwayInfo.updated_at) : t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
         <FileDrawer id={spillwayInfo.id} type={uploadableProjectFileTypes.other.spillwayInfo} />
-        <ModelAction model="SpillwayInfo" model_id={spillwayInfo.id} refetchModel={refetch} resubmit={refetch} title="" postAction={refetch} />
+        <ModelAction
+          model="SpillwayInfo"
+          model_id={spillwayInfo.id}
+          refetchModel={refetch}
+          resubmit={refetch}
+          title=""
+          postAction={refetch}
+        />
         <RowOptions onEdit={() => onEdit(spillwayInfo)} onDelete={() => onDelete(spillwayInfo.id)} item={spillwayInfo} options={[]} />
       </CardActions>
     </Card>

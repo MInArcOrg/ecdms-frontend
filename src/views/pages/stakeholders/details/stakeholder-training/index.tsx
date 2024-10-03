@@ -11,7 +11,7 @@ import ItemsListing from 'src/views/shared/listing';
 import StakeholderTrainingCard from './stakeholder-training-card';
 import StakeholderTrainingDrawer from './stakeholder-training-drawer';
 
-function StakeholderTrainingList({ stakeholderId }: {  stakeholderId: string }) {
+function StakeholderTrainingList({ stakeholderId }: { stakeholderId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
 
   const [selectedRow, setSelectedRow] = useState<StakeholderTraining | null>(null);

@@ -9,9 +9,9 @@ function TotalEmployee() {
 
   return (
     <StakeholderLayout activeMenu={1} activeSubMenu={0} subMenuItems={subMenuItems(id as string, typeId as string)}>
-        <>
-          <TotalEmployeeList stakeholderId={id as string}  />
-        </>
+      <>
+        <TotalEmployeeList stakeholderId={id as string} />
+      </>
     </StakeholderLayout>
   );
 }

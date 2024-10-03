@@ -31,7 +31,8 @@ const HydroElectricDamDrawer = (props: HydroElectricDamDrawerType) => {
 
   const isEdit = Boolean(hydroElectricDam?.id);
 
-  const createHydroElectricDam = async (body: IApiPayload<HydroElectricDam>) => projectOtherApiService<HydroElectricDam>().create(model, body);
+  const createHydroElectricDam = async (body: IApiPayload<HydroElectricDam>) =>
+    projectOtherApiService<HydroElectricDam>().create(model, body);
 
   const editHydroElectricDam = async (body: IApiPayload<HydroElectricDam>) =>
     projectOtherApiService<HydroElectricDam>().update(model, hydroElectricDam?.id || '', body);

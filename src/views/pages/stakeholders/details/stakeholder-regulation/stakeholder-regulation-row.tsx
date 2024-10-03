@@ -43,8 +43,7 @@ export const stakeholderRegulationColumns = (
     minWidth: 120,
     headerName: t('stakeholder.stakeholder-regulation.title'),
     field: 'title',
-    renderCell: ({ row }: CellType) =>
-      row?.title ? row.title : t('common.not-available')
+    renderCell: ({ row }: CellType) => (row?.title ? row.title : t('common.not-available'))
   },
   {
     flex: 0.15,
@@ -52,9 +51,7 @@ export const stakeholderRegulationColumns = (
     headerName: t('stakeholder.stakeholder-regulation.regulation'),
     field: 'description', // Assuming you want to show the description instead
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>
-        {row?.description ? row.description : t('common.not-available')}
-      </Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.description ? row.description : t('common.not-available')}</Typography>
     )
   },
   {
@@ -64,9 +61,7 @@ export const stakeholderRegulationColumns = (
     field: 'effective_start_date',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.effective_start_date
-          ? formatCreatedAt(row.effective_start_date)
-          : t('common.not-available')}
+        {row?.effective_start_date ? formatCreatedAt(row.effective_start_date) : t('common.not-available')}
       </Typography>
     )
   },
@@ -77,9 +72,7 @@ export const stakeholderRegulationColumns = (
     field: 'effective_end_date',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.effective_end_date
-          ? formatCreatedAt(row.effective_end_date)
-          : t('common.not-available')}
+        {row?.effective_end_date ? formatCreatedAt(row.effective_end_date) : t('common.not-available')}
       </Typography>
     )
   },
@@ -88,11 +81,7 @@ export const stakeholderRegulationColumns = (
     minWidth: 120,
     headerName: t('common.table-columns.created-at'),
     field: 'created_at',
-    renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>
-        {formatCreatedAt(row.created_at)}
-      </Typography>
-    )
+    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{formatCreatedAt(row.created_at)}</Typography>
   },
   {
     minWidth: 150,
@@ -105,16 +94,15 @@ export const stakeholderRegulationColumns = (
           model="StakeholderRegulation"
           model_id={row.id}
           refetchModel={refetch}
-          resubmit={() => { throw new Error('Function not implemented.'); }}
+          resubmit={() => {
+            throw new Error('Function not implemented.');
+          }}
           title=""
-          postAction={() => { throw new Error('Function not implemented.'); }}
+          postAction={() => {
+            throw new Error('Function not implemented.');
+          }}
         />
-        <RowOptions
-          onEdit={onEdit}
-          onDelete={() => onDelete(row.id)}
-          item={row}
-          options={[]}
-        />
+        <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
       </Fragment>
     )
   }
