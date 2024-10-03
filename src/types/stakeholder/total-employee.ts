@@ -9,7 +9,7 @@ export interface TotalEmployee {
   male: number; // Integer
   female: number; // Integer
   quantity: number; // Integer
-  total_employees:number;
+  total_employees: number;
   file_id?: string; // UUID (optional)
   revision_no?: number; // Integer (optional)
   created_at: Date; // Timestamp for creation

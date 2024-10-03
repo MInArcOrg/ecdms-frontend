@@ -33,7 +33,8 @@ const WindEnergyDrawer = (props: WindEnergyDrawerType) => {
 
   const createWindEnergy = async (body: IApiPayload<WindEnergy>) => projectOtherApiService<WindEnergy>().create(model, body);
 
-  const editWindEnergy = async (body: IApiPayload<WindEnergy>) => projectOtherApiService<WindEnergy>().update(model, windEnergy?.id || '', body);
+  const editWindEnergy = async (body: IApiPayload<WindEnergy>) =>
+    projectOtherApiService<WindEnergy>().update(model, windEnergy?.id || '', body);
 
   const getPayload = (values: WindEnergy) => {
     return {

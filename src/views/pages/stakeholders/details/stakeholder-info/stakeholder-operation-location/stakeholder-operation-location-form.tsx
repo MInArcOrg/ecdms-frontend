@@ -16,25 +16,22 @@ interface StakeholderOperationLocationFormProps {
 
 const StakeholderOperationLocationForm: React.FC<StakeholderOperationLocationFormProps> = ({ formik, file, onFileChange }) => {
   const { t: transl } = useTranslation();
-  console.log('values',formik.values)
+  console.log('values', formik.values);
   return (
     <Grid container spacing={3}>
-   
-
       {/* Country Field */}
       <Grid item xs={12}>
-      
         <CustomAutocomplete
-         label={transl('stakeholder.stakeholder-operation-location.form.country')}
-         placeholder={transl('stakeholder.stakeholder-operation-location.form.country')}
-         name="country"
-         size="small"
-        options={countriesList.map((country) => ({
-          value: country.title,
-          label: country.title
-        }))}
-        sx={{ mb: 2 }}
-      />
+          label={transl('stakeholder.stakeholder-operation-location.form.country')}
+          placeholder={transl('stakeholder.stakeholder-operation-location.form.country')}
+          name="country"
+          size="small"
+          options={countriesList.map((country) => ({
+            value: country.title,
+            label: country.title
+          }))}
+          sx={{ mb: 2 }}
+        />
       </Grid>
 
       {/* Status Switch */}
@@ -47,15 +44,9 @@ const StakeholderOperationLocationForm: React.FC<StakeholderOperationLocationFor
         />
       </Grid>
 
-     
-
       {/* File Upload */}
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={transl('common.form.file-upload')}
-          file={file}
-          onFileChange={onFileChange}
-        />
+        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

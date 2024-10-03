@@ -15,10 +15,10 @@ import { useTranslation } from 'react-i18next';
 
 function TotalEmployeeList({ stakeholderId }: { stakeholderId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
-  const {t}=useTranslation()
+  const { t } = useTranslation();
   const [selectedRow, setSelectedRow] = useState<TotalEmployee | null>(null);
   const fetchTotalEmployees = (params: GetRequestParam): Promise<IApiResponse<TotalEmployee[]>> => {
-    return totalEmployeeApiService.getAll({ ...params, filter: { ...params.filter,stakeholder_id:stakeholderId } });
+    return totalEmployeeApiService.getAll({ ...params, filter: { ...params.filter, stakeholder_id: stakeholderId } });
   };
 
   const {
@@ -65,8 +65,7 @@ function TotalEmployeeList({ stakeholderId }: { stakeholderId: string }) {
         ItemViewComponent={({ data }) => (
           <TotalEmployeeCard totalEmployee={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
-        tableProps={{ headers: totalEmployeeColumns(handleEdit, handleDelete,t,refetch) }}
-
+        tableProps={{ headers: totalEmployeeColumns(handleEdit, handleDelete, t, refetch) }}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,

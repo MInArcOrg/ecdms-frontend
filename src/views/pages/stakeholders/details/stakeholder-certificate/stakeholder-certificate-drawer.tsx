@@ -12,7 +12,6 @@ import { uploadFile } from 'src/services/utils/file-utils';
 import { StakeholderCertificate } from 'src/types/stakeholder/stakeholder-certificate';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
-
 interface StakeholderCertificateDrawerType {
   open: boolean;
   toggle: () => void;

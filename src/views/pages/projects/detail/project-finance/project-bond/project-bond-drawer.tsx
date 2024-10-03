@@ -1,20 +1,17 @@
 import { FormikProps } from 'formik';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { institutionType } from 'src/constants/bond-constants';
 import projectBondApiService from 'src/services/project/project-bond-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { ProjectBond, ProjectGeneralFinance } from 'src/types/project/project-finance';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
+import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import ProjectBondForm from './project-bond-form';
-import { institutionType } from 'src/constants/bond-constants';
-import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
-import i18n from 'src/configs/i18n';
-import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
-import moment from 'moment';
 
 interface ProjectBondDrawerType {
   open: boolean;

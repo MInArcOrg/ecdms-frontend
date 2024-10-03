@@ -53,15 +53,17 @@ const ConstructionRelatedServiceCard: React.FC<ConstructionRelatedServiceCardPro
             {t('stakeholder.other.construction-related-service.details.service-type')}: {constructionRelatedService.service_type || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.other.construction-related-service.details.specification-detail')}: {constructionRelatedService.specification_detail || 'N/A'}
+            {t('stakeholder.other.construction-related-service.details.specification-detail')}:{' '}
+            {constructionRelatedService.specification_detail || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.other.construction-related-service.details.measurement-unit')}: {constructionRelatedService.measurement_unit || 'N/A'}
+            {t('stakeholder.other.construction-related-service.details.measurement-unit')}:{' '}
+            {constructionRelatedService.measurement_unit || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {constructionRelatedService.created_at ? formatCreatedAt(constructionRelatedService.created_at) : 'N/A'}
+            {t('common.table-columns.created-at')}:{' '}
+            {constructionRelatedService.created_at ? formatCreatedAt(constructionRelatedService.created_at) : 'N/A'}
           </Typography>
-
         </Box>
       </CardContent>
 

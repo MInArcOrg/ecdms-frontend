@@ -31,9 +31,11 @@ const WaterIrrigationDamDrawer = (props: WaterIrrigationDamDrawerType) => {
 
   const isEdit = Boolean(waterIrrigationDam?.id);
 
-  const createWaterIrrigationDam = async (body: IApiPayload<WaterIrrigationDam>) => projectOtherApiService<WaterIrrigationDam>().create(model, body);
+  const createWaterIrrigationDam = async (body: IApiPayload<WaterIrrigationDam>) =>
+    projectOtherApiService<WaterIrrigationDam>().create(model, body);
 
-  const editWaterIrrigationDam = async (body: IApiPayload<WaterIrrigationDam>) => projectOtherApiService<WaterIrrigationDam>().update(model, waterIrrigationDam?.id || '', body);
+  const editWaterIrrigationDam = async (body: IApiPayload<WaterIrrigationDam>) =>
+    projectOtherApiService<WaterIrrigationDam>().update(model, waterIrrigationDam?.id || '', body);
 
   const getPayload = (values: WaterIrrigationDam) => {
     return {
@@ -57,7 +59,11 @@ const WaterIrrigationDamDrawer = (props: WaterIrrigationDamDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`project.other.water-irrigation-dam.${isEdit ? `edit-water-irrigation-dam` : `create-water-irrigation-dam`}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={`project.other.water-irrigation-dam.${isEdit ? `edit-water-irrigation-dam` : `create-water-irrigation-dam`}`}
+      handleClose={handleClose}
+      open={open}
+    >
       {() => (
         <FormPageWrapper
           edit={isEdit}

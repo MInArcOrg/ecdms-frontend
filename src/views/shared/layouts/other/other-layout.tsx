@@ -27,7 +27,7 @@ const OtherLayout: React.FC<OtherLayoutProps> = ({
   subMenuItems,
   children,
   activeType,
-  baseUrl,
+  baseUrl
 }) => {
   const router = useRouter();
   const { typeId } = router.query;

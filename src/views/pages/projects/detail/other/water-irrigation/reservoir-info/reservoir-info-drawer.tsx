@@ -33,7 +33,8 @@ const ReservoirInfoDrawer = (props: ReservoirInfoDrawerType) => {
 
   const createReservoirInfo = async (body: IApiPayload<ReservoirInfo>) => projectOtherApiService<ReservoirInfo>().create(model, body);
 
-  const editReservoirInfo = async (body: IApiPayload<ReservoirInfo>) => projectOtherApiService<ReservoirInfo>().update(model, reservoirInfo?.id || '', body);
+  const editReservoirInfo = async (body: IApiPayload<ReservoirInfo>) =>
+    projectOtherApiService<ReservoirInfo>().update(model, reservoirInfo?.id || '', body);
 
   const getPayload = (values: ReservoirInfo) => {
     return {
@@ -57,7 +58,11 @@ const ReservoirInfoDrawer = (props: ReservoirInfoDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`project.other.reservoir-info.${isEdit ? `edit-reservoir-info` : `create-reservoir-info`}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={`project.other.reservoir-info.${isEdit ? `edit-reservoir-info` : `create-reservoir-info`}`}
+      handleClose={handleClose}
+      open={open}
+    >
       {() => (
         <FormPageWrapper
           edit={isEdit}

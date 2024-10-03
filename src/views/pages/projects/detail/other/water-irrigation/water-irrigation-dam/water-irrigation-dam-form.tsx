@@ -14,17 +14,11 @@ interface WaterIrrigationDamFormProps {
   projectId: string;
 }
 
-const WaterIrrigationDamForm: React.FC<WaterIrrigationDamFormProps> = ({
-  formik,
-  file,
-  onFileChange,
-  projectId,
-}) => {
+const WaterIrrigationDamForm: React.FC<WaterIrrigationDamFormProps> = ({ formik, file, onFileChange, projectId }) => {
   const { t } = useTranslation();
 
   return (
     <Grid container spacing={gridSpacing}>
-
       {/* Designed Irrigation Capacity */}
       <Grid item xs={12}>
         <CustomTextBox
@@ -105,11 +99,7 @@ const WaterIrrigationDamForm: React.FC<WaterIrrigationDamFormProps> = ({
 
       {/* File Upload */}
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={t('common.form.file-upload')}
-          file={file}
-          onFileChange={onFileChange}
-        />
+        <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

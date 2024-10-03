@@ -73,11 +73,23 @@ const IrrigationCapacityList: React.FC<IrrigationCapacityListProps> = ({ model, 
   const mapIrrigationCapacityToDetailItems = (irrigationCapacity: IrrigationCapacity): { title: string; value: string }[] => [
     { title: t('project.other.irrigation-capacity.details.id'), value: irrigationCapacity.id },
     { title: t('project.other.irrigation-capacity.details.projectId'), value: irrigationCapacity.project_id },
-    { title: t('project.other.irrigation-capacity.details.designedCapacity'), value: irrigationCapacity.designed_irrigation_capacity?.toString() || 'N/A' },
-    { title: t('project.other.irrigation-capacity.details.actualCapacity'), value: irrigationCapacity.actual_irrigation_capacity?.toString() || 'N/A' },
+    {
+      title: t('project.other.irrigation-capacity.details.designedCapacity'),
+      value: irrigationCapacity.designed_irrigation_capacity?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.irrigation-capacity.details.actualCapacity'),
+      value: irrigationCapacity.actual_irrigation_capacity?.toString() || 'N/A'
+    },
     { title: t('project.other.irrigation-capacity.details.revisionNo'), value: irrigationCapacity.revision_no?.toString() || 'N/A' },
-    { title: t('common.table-columns.created-at'), value: irrigationCapacity.created_at ? formatCreatedAt(irrigationCapacity.created_at) : 'N/A' },
-    { title: t('common.table-columns.updated-at'), value: irrigationCapacity.updated_at ? formatCreatedAt(irrigationCapacity.updated_at) : 'N/A' }
+    {
+      title: t('common.table-columns.created-at'),
+      value: irrigationCapacity.created_at ? formatCreatedAt(irrigationCapacity.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: irrigationCapacity.updated_at ? formatCreatedAt(irrigationCapacity.updated_at) : 'N/A'
+    }
   ];
 
   return (

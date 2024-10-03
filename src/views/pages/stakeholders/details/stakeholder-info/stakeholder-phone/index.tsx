@@ -16,7 +16,7 @@ function StakeholderPhoneList({ stakeholderId }: { stakeholderId: string }) {
 
   const [selectedRow, setSelectedRow] = useState<StakeholderPhone | null>(null);
   const fetchStakeholderPhones = (params: GetRequestParam): Promise<IApiResponse<StakeholderPhone[]>> => {
-    return stakeholderPhoneApiService.getAll({ ...params, filter: { ...params.filter,stakeholder_id:stakeholderId } });
+    return stakeholderPhoneApiService.getAll({ ...params, filter: { ...params.filter, stakeholder_id: stakeholderId } });
   };
 
   const {

@@ -1,4 +1,4 @@
-const subMenuItems = (id:string, typeId:string) => [
+const subMenuItems = (id: string, typeId: string) => [
   {
     id: 1,
     title: 'Statistics',
@@ -19,6 +19,6 @@ const subMenuItems = (id:string, typeId:string) => [
     title: 'Work Experience',
     path: `/stakeholders/${typeId}/details/${id}/employees/work`
   }
-]
+];
 
-export default subMenuItems
+export default subMenuItems;

@@ -31,9 +31,11 @@ const IrrigationCapacityDrawer = (props: IrrigationCapacityDrawerType) => {
 
   const isEdit = Boolean(irrigationCapacity?.id);
 
-  const createIrrigationCapacity = async (body: IApiPayload<IrrigationCapacity>) => projectOtherApiService<IrrigationCapacity>().create(model, body);
+  const createIrrigationCapacity = async (body: IApiPayload<IrrigationCapacity>) =>
+    projectOtherApiService<IrrigationCapacity>().create(model, body);
 
-  const editIrrigationCapacity = async (body: IApiPayload<IrrigationCapacity>) => projectOtherApiService<IrrigationCapacity>().update(model, irrigationCapacity?.id || '', body);
+  const editIrrigationCapacity = async (body: IApiPayload<IrrigationCapacity>) =>
+    projectOtherApiService<IrrigationCapacity>().update(model, irrigationCapacity?.id || '', body);
 
   const getPayload = (values: IrrigationCapacity) => {
     return {
@@ -57,7 +59,11 @@ const IrrigationCapacityDrawer = (props: IrrigationCapacityDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`project.other.irrigation-capacity.${isEdit ? `edit-irrigation-capacity` : `create-irrigation-capacity`}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={`project.other.irrigation-capacity.${isEdit ? `edit-irrigation-capacity` : `create-irrigation-capacity`}`}
+      handleClose={handleClose}
+      open={open}
+    >
       {() => (
         <FormPageWrapper
           edit={isEdit}

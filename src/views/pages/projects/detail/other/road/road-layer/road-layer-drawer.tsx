@@ -33,7 +33,8 @@ const RoadLayerDrawer = (props: RoadLayerDrawerType) => {
 
   const createRoadLayer = async (body: IApiPayload<RoadLayer>) => projectOtherApiService<RoadLayer>().create(model, body);
 
-  const editRoadLayer = async (body: IApiPayload<RoadLayer>) => projectOtherApiService<RoadLayer>().update(model, roadLayer?.id || '', body);
+  const editRoadLayer = async (body: IApiPayload<RoadLayer>) =>
+    projectOtherApiService<RoadLayer>().update(model, roadLayer?.id || '', body);
 
   const getPayload = (values: RoadLayer) => {
     return {

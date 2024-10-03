@@ -95,11 +95,7 @@ const ReservoirForm: React.FC<ReservoirFormProps> = ({ formik, file, onFileChang
 
       {/* File Upload */}
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={t('common.form.file-upload')}
-          file={file}
-          onFileChange={onFileChange}
-        />
+        <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

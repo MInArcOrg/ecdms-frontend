@@ -52,14 +52,22 @@ const RailwayStationCard: React.FC<RailwayStationCardProps> = ({ railwayStation,
           </Typography>
 
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {railwayStation.created_at ? formatCreatedAt(railwayStation.created_at) : t('common.not-available')}
+            {t('common.table-columns.created-at')}:{' '}
+            {railwayStation.created_at ? formatCreatedAt(railwayStation.created_at) : t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
         <FileDrawer id={railwayStation.id} type={uploadableProjectFileTypes.other.railwayStation} />
-        <ModelAction model="RailwayStation" model_id={railwayStation.id} refetchModel={refetch} resubmit={refetch} title="" postAction={refetch} />
+        <ModelAction
+          model="RailwayStation"
+          model_id={railwayStation.id}
+          refetchModel={refetch}
+          resubmit={refetch}
+          title=""
+          postAction={refetch}
+        />
         <RowOptions onEdit={() => onEdit(railwayStation)} onDelete={() => onDelete(railwayStation.id)} item={railwayStation} options={[]} />
       </CardActions>
     </Card>

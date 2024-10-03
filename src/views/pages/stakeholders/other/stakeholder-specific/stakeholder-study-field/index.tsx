@@ -70,9 +70,7 @@ const StakeholderStudyFieldList: React.FC<StakeholderStudyFieldListProps> = ({ m
     setSelectedRow(studyField);
   };
 
-  const mapStakeholderStudyFieldToDetailItems = (
-    studyField: StakeholderStudyField
-  ): { title: string; value: string }[] => [
+  const mapStakeholderStudyFieldToDetailItems = (studyField: StakeholderStudyField): { title: string; value: string }[] => [
     { title: t('stakeholder.other.stakeholder-study-field.details.title'), value: studyField.studyfield?.title || 'N/A' },
     { title: t('stakeholder.other.stakeholder-study-field.details.description'), value: studyField.studyfield?.description || 'N/A' },
     {

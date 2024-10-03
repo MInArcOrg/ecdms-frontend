@@ -65,10 +65,12 @@ const StakeholderStudyFieldCard: React.FC<StakeholderStudyFieldCardProps> = ({
             {t('stakeholder.other.study-field.details.revision-no')}: {stakeholderStudyField.revision_no?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {stakeholderStudyField.created_at ? formatCreatedAt(stakeholderStudyField.created_at) : 'N/A'}
+            {t('common.table-columns.created-at')}:{' '}
+            {stakeholderStudyField.created_at ? formatCreatedAt(stakeholderStudyField.created_at) : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.updated-at')}: {stakeholderStudyField.updated_at ? formatCreatedAt(stakeholderStudyField.updated_at) : 'N/A'}
+            {t('common.table-columns.updated-at')}:{' '}
+            {stakeholderStudyField.updated_at ? formatCreatedAt(stakeholderStudyField.updated_at) : 'N/A'}
           </Typography>
         </Box>
       </CardContent>
@@ -97,11 +99,9 @@ const StakeholderStudyFieldCard: React.FC<StakeholderStudyFieldCardProps> = ({
             subject: 'stakeholderstudyfield'
           }}
         />
-        
       </CardActions>
     </Card>
   );
 };
 
 export default StakeholderStudyFieldCard;
-

@@ -22,11 +22,12 @@ function StakeholderInformation() {
     refetch
   } = useQuery({
     queryKey: ['stakeholder-general-information', id],
-    queryFn: () => stakeholderInfoApiService.getAll({
-      filter: {
-        stakeholder_id: id
-      }
-    })
+    queryFn: () =>
+      stakeholderInfoApiService.getAll({
+        filter: {
+          stakeholder_id: id
+        }
+      })
   });
 
   useEffect(() => {
@@ -36,11 +37,7 @@ function StakeholderInformation() {
   }, [id, refetch]);
 
   return (
-    <StakeholderLayout
-      activeMenu={0}
-      activeSubMenu={1}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
-    >
+    <StakeholderLayout activeMenu={0} activeSubMenu={1} subMenuItems={subMenuItems(id as string, typeId as string)}>
       {isLoading ? (
         <LoadingPlaceholder />
       ) : (

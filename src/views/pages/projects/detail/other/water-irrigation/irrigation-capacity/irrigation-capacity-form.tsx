@@ -19,7 +19,6 @@ const IrrigationCapacityForm: React.FC<IrrigationCapacityFormProps> = ({ formik,
 
   return (
     <Grid container spacing={gridSpacing}>
-
       {/* Designed Irrigation Capacity */}
       <Grid item xs={12}>
         <CustomTextBox
@@ -48,11 +47,7 @@ const IrrigationCapacityForm: React.FC<IrrigationCapacityFormProps> = ({ formik,
 
       {/* File Upload */}
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={t('common.form.file-upload')}
-          file={file}
-          onFileChange={onFileChange}
-        />
+        <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

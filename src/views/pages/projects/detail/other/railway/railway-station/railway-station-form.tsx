@@ -54,15 +54,10 @@ const RailwayForm: React.FC<RailwayFormProps> = ({ formik, file, onFileChange, p
           sx={{ mb: 2 }}
           type="number"
         />
-
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={t('common.form.file-upload')}
-          file={file}
-          onFileChange={onFileChange}
-        />
+        <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

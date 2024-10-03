@@ -15,10 +15,10 @@ import { useTranslation } from 'react-i18next';
 
 function EmployeeEducationList({ stakeholderId }: { stakeholderId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
-  const {t}=useTranslation()
+  const { t } = useTranslation();
   const [selectedRow, setSelectedRow] = useState<EmployeeEducation | null>(null);
   const fetchEmployeeEducations = (params: GetRequestParam): Promise<IApiResponse<EmployeeEducation[]>> => {
-    return employeeEducationApiService.getAll({ ...params, filter: { ...params.filter,stakeholder_id:stakeholderId } });
+    return employeeEducationApiService.getAll({ ...params, filter: { ...params.filter, stakeholder_id: stakeholderId } });
   };
 
   const {
@@ -65,8 +65,7 @@ function EmployeeEducationList({ stakeholderId }: { stakeholderId: string }) {
         ItemViewComponent={({ data }) => (
           <EmployeeEducationCard employeeEducation={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
-        tableProps={{ headers: employeeEducationColumns(handleEdit, handleDelete,t,refetch) }}
-
+        tableProps={{ headers: employeeEducationColumns(handleEdit, handleDelete, t, refetch) }}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,

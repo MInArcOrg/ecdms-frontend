@@ -70,11 +70,15 @@ const StakeholderServiceList: React.FC<StakeholderServiceListProps> = ({ model, 
     setSelectedRow(service);
   };
 
-  const mapStakeholderServiceToDetailItems = (
-    service: StakeholderService
-  ): { title: string; value: string }[] => [
-    { title: t('stakeholder.other.stakeholder-service.details.service-type'), value: service.constructionrelatedservice?.service_type || 'N/A' },
-    { title: t('stakeholder.other.stakeholder-service.details.specification-detail'), value: service.constructionrelatedservice?.specification_detail || 'N/A' },
+  const mapStakeholderServiceToDetailItems = (service: StakeholderService): { title: string; value: string }[] => [
+    {
+      title: t('stakeholder.other.stakeholder-service.details.service-type'),
+      value: service.constructionrelatedservice?.service_type || 'N/A'
+    },
+    {
+      title: t('stakeholder.other.stakeholder-service.details.specification-detail'),
+      value: service.constructionrelatedservice?.specification_detail || 'N/A'
+    },
     {
       title: t('common.table-columns.created-at'),
       value: service.created_at ? formatCreatedAt(service.created_at) : 'N/A'

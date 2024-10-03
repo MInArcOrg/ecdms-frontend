@@ -42,8 +42,8 @@ export interface StakeholderPhone {
   stakeholder_id: string;
   phone: string;
   is_primary: string;
-  created_at:string;
-  updated_at:string;
+  created_at: string;
+  updated_at: string;
 }
 export interface StakeholderInfo {
   id: string; // UUID as string

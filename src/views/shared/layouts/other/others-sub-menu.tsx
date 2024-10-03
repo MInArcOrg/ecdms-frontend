@@ -29,7 +29,6 @@ interface OtherSubMenuProps {
   activeType?: number;
 }
 
-
 // Define type for the state
 type OpenState = number | null;
 
