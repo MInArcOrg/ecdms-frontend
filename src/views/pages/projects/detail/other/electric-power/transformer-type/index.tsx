@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/project/other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from '../../layouts/other-detail-drawer';
+import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
 import TransformerTypeCard from './transformer-type-card';
 import TransformerTypeDrawer from './transformer-type-drawer';
 import { TransformerType } from 'src/types/project/other';
@@ -28,9 +28,9 @@ const TransformerTypeList: React.FC<TransformerTypeListProps> = ({ model, projec
   const { t } = useTranslation();
 
   const fetchTransformerTypes = (params: GetRequestParam): Promise<IApiResponse<TransformerType[]>> => {
-    return otherApiService<TransformerType>().getAll(model, {
+    return projectOtherApiService<TransformerType>().getAll(model, {
       ...params,
-      filter: { ...params.filter, project_id: projectId },
+      filter: { ...params.filter, project_id: projectId }
     });
   };
 
@@ -39,10 +39,10 @@ const TransformerTypeList: React.FC<TransformerTypeListProps> = ({ model, projec
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<TransformerType[]>({
     queryKey: ['transformerTypes'],
-    fetchFunction: fetchTransformerTypes,
+    fetchFunction: fetchTransformerTypes
   });
 
   const toggleDrawer = () => {
@@ -61,7 +61,7 @@ const TransformerTypeList: React.FC<TransformerTypeListProps> = ({ model, projec
   };
 
   const handleDelete = async (transformerTypeId: string) => {
-    await otherApiService<TransformerType>().delete(model, transformerTypeId);
+    await projectOtherApiService<TransformerType>().delete(model, transformerTypeId);
     refetch();
   };
 
@@ -73,7 +73,7 @@ const TransformerTypeList: React.FC<TransformerTypeListProps> = ({ model, projec
   const mapTransformerTypeToDetailItems = (transformerType: TransformerType): { title: string; value: string }[] => [
     { title: t('project.other.transformer-type.details.name'), value: transformerType.name || 'N/A' },
     { title: t('project.other.transformer-type.details.description'), value: transformerType.description || 'N/A' },
-    { title: t('common.table-columns.created-at'), value: transformerType.created_at ? formatCreatedAt(transformerType.created_at) : 'N/A' },
+    { title: t('common.table-columns.created-at'), value: transformerType.created_at ? formatCreatedAt(transformerType.created_at) : 'N/A' }
   ];
 
   return (
@@ -106,7 +106,7 @@ const TransformerTypeList: React.FC<TransformerTypeListProps> = ({ model, projec
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: transformerTypeColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
+          headers: transformerTypeColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -124,8 +124,8 @@ const TransformerTypeList: React.FC<TransformerTypeListProps> = ({ model, projec
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'generatingcapacity',
-          },
+            subject: 'generatingcapacity'
+          }
         }}
         fetchDataFunction={refetch}
         items={transformerTypes || []}

@@ -53,9 +53,9 @@
       "project-progress-statuses": "Project Progress Status",
       "create-project-progress-statuses": "Create Project Progress Status",
       "edit-project-progress-statuses": "Edit Project Progress Status",
-      "construction-related-services": "Construction Related Service",
-      "edit-construction-related-services": "Edit Construction Related Service",
-      "create-construction-related-services": "Create Construction Related Service"
+      "stakeholder-services": "Construction Related Service",
+      "edit-stakeholder-services": "Edit Construction Related Service",
+      "create-stakeholder-services": "Create Construction Related Service"
     },
     "form": {
       "title": "Title",
@@ -154,7 +154,7 @@
     "good-evening": "God Evening",
     "good-afternoon": "Good Afternoon"
   },
-  "resource":{
+  "resource": {
     "create-resource": "Create Resource",
     "edit-resource": "Edit Resource",
     "title": "Resource",
@@ -164,7 +164,7 @@
       "sub-category": "Sub Category",
       "category": "Category",
       "specification": "Specifications",
-      "measurement-unit":"Measurement Unit",
+      "measurement-unit": "Measurement Unit",
       "brand": "Brands",
       "resourcetype": "Types",
       "resourcequantityandprice": "Unit Price & Quantity",
@@ -182,90 +182,89 @@
       "measurement_unit": "Measurement Unit",
       "upload_image": "Upload Resource Picture"
     },
-    "resource-specification":{
-      "title":"Resource Specification",
-      "create-resource-specification":"Create Resource Specification",
-      "edit-resource-specification":"Edit Resource Specification",
-      "form":{
-        "title":"Title",
-        "description":"Description",
-        "datasource":"Data Source"
+    "resource-specification": {
+      "title": "Resource Specification",
+      "create-resource-specification": "Create Resource Specification",
+      "edit-resource-specification": "Edit Resource Specification",
+      "form": {
+        "title": "Title",
+        "description": "Description",
+        "datasource": "Data Source"
       }
     },
-    "resource-brand":{
-      "title":"Resource Brand",
-      "create-resource-brand":"Create Resource Brand",
-      "edit-resource-brand":"Edit Resource Brand",
-      "form":{
-        "title":"Title",
-        "description":"Description",
-        "datasource":"Data Source"
+    "resource-brand": {
+      "title": "Resource Brand",
+      "create-resource-brand": "Create Resource Brand",
+      "edit-resource-brand": "Edit Resource Brand",
+      "form": {
+        "title": "Title",
+        "description": "Description",
+        "datasource": "Data Source"
       }
     },
-    "resource-study-field":{
-      "title":"Filed of Study",
-      "create-resource-study-field":"Create Filed of Study",
-      "edit-resource-study-field":"Edit Filed of Study",
-      "form":{
-        "studyfield":"Study Field",
-        "description":"Description"
+    "resource-study-field": {
+      "title": "Filed of Study",
+      "create-resource-study-field": "Create Filed of Study",
+      "edit-resource-study-field": "Edit Filed of Study",
+      "form": {
+        "studyfield": "Study Field",
+        "description": "Description"
       }
     },
-    "resource-study-level":{
-      "title":"Study Level",
-      "create-resource-study-level":"Create Study Level",
-      "edit-resource-study-level":"Edit Study Level",
-      "form":{
-        "studylevel":"Study Field",
-        "description":"Description"
+    "resource-study-level": {
+      "title": "Study Level",
+      "create-resource-study-level": "Create Study Level",
+      "edit-resource-study-level": "Edit Study Level",
+      "form": {
+        "studylevel": "Study Field",
+        "description": "Description"
       }
     },
-    "resource-salary":{
-      "title":"Salary",
-      "create-resource-salary":"Create Salary",
-      "edit-resource-salary":"Edit Salary",
-      "form":{
+    "resource-salary": {
+      "title": "Salary",
+      "create-resource-salary": "Create Salary",
+      "edit-resource-salary": "Edit Salary",
+      "form": {
         "max_pay": "Max Pay",
         "min_pay": "Min Pay",
         "salary_type": "Salary Type",
         "year": "Year"
       }
     },
-    "detail-resource-type":{
-      "title":"Resource Brand",
-      "create-resource-brand":"Create Resource Brand",
-      "edit-resource-brand":"Edit Resource Brand",
-      "form":{
-        "title":"Title",
-        "description":"Description",
-        "datasource":"Data Source"
+    "detail-resource-type": {
+      "title": "Resource Brand",
+      "create-resource-brand": "Create Resource Brand",
+      "edit-resource-brand": "Edit Resource Brand",
+      "form": {
+        "title": "Title",
+        "description": "Description",
+        "datasource": "Data Source"
       }
     },
-    "resource-quantity-price":{
-      "title":"Unit Price & Quantity",
-      "create-resource-quantity-price":"Create Unit Price & Quantity",
-      "edit-resource-quantity-price":"Edit Unit Price & Quantity",
-      "form":{
-        "brand":"Brand",
-        "type":"Type",
-        "unit-price":"Unit Price",
-        "quantity":"Quantity",
-        "store-address":"Store Address",
-        "date":"Date",
-        "datasource":"Data Source"
+    "resource-quantity-price": {
+      "title": "Unit Price & Quantity",
+      "create-resource-quantity-price": "Create Unit Price & Quantity",
+      "edit-resource-quantity-price": "Edit Unit Price & Quantity",
+      "form": {
+        "brand": "Brand",
+        "type": "Type",
+        "unit-price": "Unit Price",
+        "quantity": "Quantity",
+        "store-address": "Store Address",
+        "date": "Date",
+        "datasource": "Data Source"
       },
       "columns": {
         "title": "Title",
         "description": "Description"
       }
     }
-    
   },
   "document": {
-      "create-document": "Create Document",
-      "edit-document": "Edit Document",
-      "title": "Document",
-      "columns": {},
+    "create-document": "Create Document",
+    "edit-document": "Edit Document",
+    "title": "Document",
+    "columns": {},
     "form": {
       "category": "Category",
       "sub-category": "Sub-category",
@@ -278,11 +277,10 @@
       "isbn": "ISBN",
       "publication_date": "Publication Date"
     }
-    
   },
   "project": {
-    "create-project":"Create Project",
-    "edit-project":"Edit Project",
+    "create-project": "Create Project",
+    "edit-project": "Edit Project",
     "form": {
       "category": "Category",
       "sub-category": "Sub-category",
@@ -291,7 +289,7 @@
       "budget-code": "Budget Code",
       "procurement-number": "Procurement Number",
       "remark": "Remark",
-      "status":"Status"
+      "status": "Status"
     },
     "general-information": {
       "client": "Client",
@@ -306,7 +304,7 @@
       "upload-cover-profile": "Upload Cover Profile",
       "upload-profile-picture": "Upload Profile Picture",
       "please-fill-contract-signing-date": "Please fill contract signing date",
-      "from": "from" 
+      "from": "from"
     },
     "finance": {
       "information": "Finance Information",
@@ -348,7 +346,7 @@
           "transmission-lines": "Transmission Lines",
           "electric-tower-registration": "Electric Tower Registration",
           "railway": "Railway",
-          "railway-detail": "Railway Detail",
+          "railways": "Railways",
           "railway-station": "Railway Station",
           "water-irrigation": "Water Irrigation",
           "reservoir-detail": "Reservoir Detail",
@@ -365,33 +363,33 @@
       "completion-date": "Completion Date",
       "total-duration": "Total Duration",
       "elapsed-time": "Elapsed Time",
-      "edit-project-time" :"Edit Project Time",
-       "create-project-time":"Create Project Time",
-        "form": {
-          "contract-signing-date": "Contract Signing Date",
-          "site-handover-date": "Site Handover Date",
-          "mobilization-days-no": "Number of Mobilization Days",
-          "commencement-date": "Commencement Date",
-          "original-contract-duration": "Original Contract Duration",
-          "project-completion-date": "Project Completion Date",
-          "remark":"Remark"
+      "edit-project-time": "Edit Project Time",
+      "create-project-time": "Create Project Time",
+      "form": {
+        "contract-signing-date": "Contract Signing Date",
+        "site-handover-date": "Site Handover Date",
+        "mobilization-days-no": "Number of Mobilization Days",
+        "commencement-date": "Commencement Date",
+        "original-contract-duration": "Original Contract Duration",
+        "project-completion-date": "Project Completion Date",
+        "remark": "Remark"
       }
     },
-    "project-extension-time":{
-      "title":"Project Extension Time",
-      "edit-project-extension-time":"Edit Project Extension Time",
-      "create-project-extension-time":"Create Project Extension Time",
-      "form":{
-        "number-of-days":"Number of days",
-        "reason":"Reason"
-      }      
+    "project-extension-time": {
+      "title": "Project Extension Time",
+      "edit-project-extension-time": "Edit Project Extension Time",
+      "create-project-extension-time": "Create Project Extension Time",
+      "form": {
+        "number-of-days": "Number of days",
+        "reason": "Reason"
+      }
     },
-    "project-status":{
-      "project-status":"Project Status",
-      "edit-project-status":"Edit Project Status",
-      "form":{
-        "status":"Status",
-        "description":"Description"
+    "project-status": {
+      "project-status": "Project Status",
+      "edit-project-status": "Edit Project Status",
+      "form": {
+        "status": "Status",
+        "description": "Description"
       }
     },
     "project-variation": {
@@ -451,7 +449,7 @@
       "create-project-interim_payment": "Create Project Interim Payment",
       "title": "Project Interim Payment",
       "form": {
-        "title":"Title",
+        "title": "Title",
         "amount": "Amount",
         "retention": "Retention",
         "description": "Description"
@@ -462,28 +460,28 @@
       "create-project-advance_payment": "Create Project Advance Payment",
       "title": "Project Advance Payment",
       "form": {
-        "title":"Title",
+        "title": "Title",
         "amount": "Amount",
         "retention": "Retention",
         "description": "Description"
       }
     },
     "project-bond": {
-      "project-performance_bond":"Performance Bond",
-      "edit-project-performance_bond":"Edit Performance Bond",
-      "create-project-performance_bond":"Create Performance Bond",
-      "project-advance_bond":"Advance Bond",
-      "edit-project-advance_bond":"Edit Advance Bond",
-      "create-project-advance_bond":"Create Advance Bond",
-      "project-bid_bond":"Bid Bond",
-      "edit-project-bid_bond":"Edit Bid Bond",
-      "create-project-bid_bond":"Create Bid Bond",
+      "project-performance_bond": "Performance Bond",
+      "edit-project-performance_bond": "Edit Performance Bond",
+      "create-project-performance_bond": "Create Performance Bond",
+      "project-advance_bond": "Advance Bond",
+      "edit-project-advance_bond": "Edit Advance Bond",
+      "create-project-advance_bond": "Create Advance Bond",
+      "project-bid_bond": "Bid Bond",
+      "edit-project-bid_bond": "Edit Bid Bond",
+      "create-project-bid_bond": "Create Bid Bond",
       "form": {
         "amount": "Amount",
         "percent": "Amount Percentage",
         "issue-date": "Issue Date",
         "expiration-date": "Expiration Date",
-        "institution-type":"Institution Type",
+        "institution-type": "Institution Type",
         "issuing-institute": "Issuing Institute",
         "institute-branch": "Institute Branch",
         "branch-address": "Branch Address",
@@ -492,28 +490,28 @@
       }
     },
     "stakeholder": {
-      "title":"Project Stakeholders",
-      "edit-project-stakeholder":"Edit Project Stakeholder",
-      "create-project-stakeholder":"Create Project Stakeholder",
+      "title": "Project Stakeholders",
+      "edit-project-stakeholder": "Edit Project Stakeholder",
+      "create-project-stakeholder": "Create Project Stakeholder",
       "information": "Stakeholder Information",
       "client": "Client",
       "consultant": "Consultant",
       "contractor": "Contractor",
       "form": {
-          "stakeholder": "Stakeholder",
-          "title": "Title",
-          "description": "Description",
-          "remark": "Remark"
+        "stakeholder": "Stakeholder",
+        "title": "Title",
+        "description": "Description",
+        "remark": "Remark"
       }
     },
     "plan": {
-      "title":"Project Plan",
-      "edit-project-plan":"Edit Project Plan",
-      "create-project-plan":"Create Project Plan",
+      "title": "Project Plan",
+      "edit-project-plan": "Edit Project Plan",
+      "create-project-plan": "Create Project Plan",
       "form": {
         "type": "Type",
         "year": "Year",
-        "project-expense":"Project Expense",
+        "project-expense": "Project Expense",
         "quarter": "Quarter",
         "manpower": "Manpower",
         "direct-labour": "Direct Labour",
@@ -522,14 +520,14 @@
         "machinery": "Machinery",
         "other-expense": "Other Expense",
         "sub-contractor-cost": "Sub Contractor Cost",
-        "cost-due-to-rework":"Cost Due To Rework",
+        "cost-due-to-rework": "Cost Due To Rework",
         "financial-performance": "Financial Performance",
         "physical-performance": "Physical Performance",
         "cost -due-to-rework": "Cost Due to Rework",
         "over-head-cost": "Over Head Cost",
-        "total-cost":"Total Cost",
-        "subtotal":"Sub Total",
-        "profit":"Profit"
+        "total-cost": "Total Cost",
+        "subtotal": "Sub Total",
+        "profit": "Profit"
       },
       "columns": {
         "type": "Type",
@@ -539,13 +537,13 @@
       }
     },
     "report": {
-      "title":"Project Report",
-      "edit-project-report":"Edit Project Report",
-      "create-project-report":"Create Project Report",
+      "title": "Project Report",
+      "edit-project-report": "Edit Project Report",
+      "create-project-report": "Create Project Report",
       "form": {
         "type": "Type",
         "year": "Year",
-        "project-expense":"Project Expense",
+        "project-expense": "Project Expense",
         "quarter": "Quarter",
         "manpower": "Manpower",
         "direct-labour": "Direct Labour",
@@ -553,18 +551,18 @@
         "material": "Material",
         "machinery": "Machinery",
         "other-expense": "Other Expense",
-        "cost-due-to-rework":"Cost Due To Rework",
+        "cost-due-to-rework": "Cost Due To Rework",
         "sub-contractor-cost": "Sub Contractor Cost",
         "financial-performance": "Financial Performance",
         "physical-performance": "Physical Performance",
         "cost -due-to-rework": "Cost Due to Rework",
         "over-head-cost": "Over Head Cost",
-        "total-cost":"Total Cost",
-        "subtotal":"Sub Total",
-        "profit":"Profit",
-        "header":"Header",
-        "report":"Report",
-        "plan":"Plan"
+        "total-cost": "Total Cost",
+        "subtotal": "Sub Total",
+        "profit": "Profit",
+        "header": "Header",
+        "report": "Report",
+        "plan": "Plan"
       },
       "columns": {
         "type": "Type",
@@ -574,12 +572,10 @@
       }
     },
     "resource": {
-      "title":"Project Resource",
-      "edit-project-resource":"Edit Project Resource",
-      "create-project-resource":"Create Project Resource",
-      "form": {
-        
-      },
+      "title": "Project Resource",
+      "edit-project-resource": "Edit Project Resource",
+      "create-project-resource": "Create Project Resource",
+      "form": {},
       "columns": {
         "type": "Type",
         "financial-performance": "Financial Performance",
@@ -587,32 +583,32 @@
         "project-expense": "Project Expense"
       }
     },
-    "project-file":{
-      "project-initiation":"Intiation File",
-      "project-planning":"Planning File",
-      "project-execution":"Execution File",
-      "project-monitoring":"Monitoring File",
-      "project-closing":"Closing File",
-      "create-project-initiation":"Create Intiation File",
-      "create-project-planning":"Create Planning File",
-      "create-project-execution":"Create Execution File",
-      "create-project-monitoring":"Create Monitoring File",
-      "create-project-closing":"Create Closing File",
-      "edit-project-initiation":"Edit Intiation File",
-      "edit-project-planning":"Edit Planning File",
-      "edit-project-execution":"Edit Execution File",
-      "edit-project-monitoring":"Edit Monitoring File",
-      "edit-project-closing":"Edit Closing File",
-      "form":{
-        "description":"Description"
+    "project-file": {
+      "project-initiation": "Intiation File",
+      "project-planning": "Planning File",
+      "project-execution": "Execution File",
+      "project-monitoring": "Monitoring File",
+      "project-closing": "Closing File",
+      "create-project-initiation": "Create Intiation File",
+      "create-project-planning": "Create Planning File",
+      "create-project-execution": "Create Execution File",
+      "create-project-monitoring": "Create Monitoring File",
+      "create-project-closing": "Create Closing File",
+      "edit-project-initiation": "Edit Intiation File",
+      "edit-project-planning": "Edit Planning File",
+      "edit-project-execution": "Edit Execution File",
+      "edit-project-monitoring": "Edit Monitoring File",
+      "edit-project-closing": "Edit Closing File",
+      "form": {
+        "description": "Description"
       }
     },
     "other": {
       "port": {
-        "title":"Port",
-        "create-port":"Create Port",
-        "edit-port":"Edit Port",
-        "port-details":"Port Details",
+        "title": "Port",
+        "create-port": "Create Port",
+        "edit-port": "Edit Port",
+        "port-details": "Port Details",
         "columns": {
           "title": "Title",
           "operator": "Operator",
@@ -636,10 +632,10 @@
         }
       },
       "telecom-infrastructure": {
-        "title":"Telecom Infrastructure",
-        "create-telecom-infrastructure":"Create Telecom Infrastructure",
-        "edit-telecom-infrastructure":"Edit Telecom Infrastructure",
-        "telecom-infrastructure-details":"Telecom Infrastructure Details",
+        "title": "Telecom Infrastructure",
+        "create-telecom-infrastructure": "Create Telecom Infrastructure",
+        "edit-telecom-infrastructure": "Edit Telecom Infrastructure",
+        "telecom-infrastructure-details": "Telecom Infrastructure Details",
         "columns": {
           "name": "Name",
           "specifications": "Specifications",
@@ -655,7 +651,6 @@
           "no-of-families-coverage": "No. of Families Coverage",
           "inauguration-date": "Inauguration Date",
           "service-period": "Service Period"
-
         },
         "details": {
           "name": "Name",
@@ -667,10 +662,10 @@
         }
       },
       "building-dimension-detail": {
-        "title":"Building Dimension Detail",
-        "create-building-dimension-detail":"Create Building Dimension Detail",
-        "edit-building-dimension-detail":"Edit Building Dimension Detail",
-        "building-dimension-detail-details":"Building Dimension Detail Details",
+        "title": "Building Dimension Detail",
+        "create-building-dimension-detail": "Create Building Dimension Detail",
+        "edit-building-dimension-detail": "Edit Building Dimension Detail",
+        "building-dimension-detail-details": "Building Dimension Detail Details",
         "form": {
           "site-area": "Site Area",
           "site-above-sea-level": "Site Above Sea Level",
@@ -681,9 +676,9 @@
           "height-above-natural-ground": "Height Above Natural Ground",
           "depth-below-natural-ground": "Depth Below Natural Ground",
           "remark": "Remark"
-        },  
-       
-          "details": {
+        },
+
+        "details": {
           "site-area": "Site Area",
           "site-above-sea-level": "Site Above Sea Level",
           "ground-floor-area": "Ground Floor Area",
@@ -697,9 +692,9 @@
       },
       "building-envelop-material": {
         "title": "Building Envelop Materials",
-        "create-building-envelop-material":"Create Building Envelop Material",
-        "edit-building-envelop-material":"Edit Building Envelop Material",
-        "building-envelop-material-details":"Building Envelop Material Details",
+        "create-building-envelop-material": "Create Building Envelop Material",
+        "edit-building-envelop-material": "Edit Building Envelop Material",
+        "building-envelop-material-details": "Building Envelop Material Details",
         "form": {
           "exterior-walls": "Exterior Walls",
           "roof-assembly": "Roof Assembly",
@@ -708,7 +703,7 @@
           "shading-components": "Shading Components",
           "remark": "Remark"
         },
-        
+
         "details": {
           "title": "Building Envelop Material Details",
           "sub-title": "Summary of the Building Envelop Material Information",
@@ -719,13 +714,12 @@
           "shading-components": "Shading Components",
           "remark": "Remark"
         }
-       
       },
       "road-info": {
         "title": "Road Infos",
-        "create-road-info":"Create Road Info",
-        "edit-road-info":"Edit Road Info",
-        "road-info-details":"Road Info Details",
+        "create-road-info": "Create Road Info",
+        "edit-road-info": "Edit Road Info",
+        "road-info-details": "Road Info Details",
         "details": {
           "material": "Material",
           "location-function": "Location Function",
@@ -739,9 +733,9 @@
       },
       "road-segment": {
         "title": "Road Segments",
-        "create-road-segment":"Create Road Segment",
-        "edit-road-segment":"Edit Road Segment",
-        "road-segment-details":"Road Segment Details",
+        "create-road-segment": "Create Road Segment",
+        "edit-road-segment": "Edit Road Segment",
+        "road-segment-details": "Road Segment Details",
         "details": {
           "name": "Name",
           "specifications": "Specifications",
@@ -757,9 +751,9 @@
       },
       "road-layer": {
         "title": "Road Layers",
-        "create-road-layer":"Create Road Layer",
-        "edit-road-layer":"Edit Road Layer",
-        "road-layer-details":"Road Layer Details",
+        "create-road-layer": "Create Road Layer",
+        "edit-road-layer": "Edit Road Layer",
+        "road-layer-details": "Road Layer Details",
         "details": {
           "segment": "Segment",
           "name": "Name",
@@ -772,9 +766,9 @@
       },
       "generating-capacity": {
         "title": "Generating Capacity",
-        "create-generating-capacity":"Create Generating Capacity",
-        "edit-generating-capacity":"Edit Generating Capacity",
-        "generating-capacity-details":"Generating Capacity Details",
+        "create-generating-capacity": "Create Generating Capacity",
+        "edit-generating-capacity": "Edit Generating Capacity",
+        "generating-capacity-details": "Generating Capacity Details",
         "details": {
           "operator": "Operator",
           "commission-date": "Commission Date",
@@ -789,9 +783,9 @@
       },
       "turbine-info": {
         "title": "Turbine Info",
-        "create-turbine-info":"Create Turbine Info",
-        "edit-turbine-info":"Edit Turbine Info",
-        "turbine-info-details":"Turbine Info Details",
+        "create-turbine-info": "Create Turbine Info",
+        "edit-turbine-info": "Edit Turbine Info",
+        "turbine-info-details": "Turbine Info Details",
         "details": {
           "turbine-type": "Turbine Type",
           "name": "Turbine Name",
@@ -804,9 +798,9 @@
       },
       "hydro-electric-dam": {
         "title": "Hydro Electric Dam",
-        "create-hydro-electric-dam":"Create Hydro Electric Dam",
-        "edit-hydro-electric-dam":"Edit Hydro Electric Dam",
-        "hydro-electric-dam-details":"Hydro Electric Dam Details",
+        "create-hydro-electric-dam": "Create Hydro Electric Dam",
+        "edit-hydro-electric-dam": "Edit Hydro Electric Dam",
+        "hydro-electric-dam-details": "Hydro Electric Dam Details",
         "details": {
           "river-name": "River Name",
           "elevation-from-sea-level": "Elevation from Sea Level",
@@ -819,41 +813,113 @@
       },
       "solar-energy": {
         "title": "Solar Energy",
-        "create-solar-energy":"Create Solar Energy",
-        "edit-solar-energy":"Edit Solar Energy",
-        "solar-energy-details":"Solar Energy Details",
+        "create-solar-energy": "Create Solar Energy",
+        "edit-solar-energy": "Edit Solar Energy",
+        "solar-energy-details": "Solar Energy Details",
         "details": {
-          "title":"Title",
-          "description":"Description",
-          "specifications":"Specifications"
+          "title": "Title",
+          "description": "Description",
+          "specifications": "Specifications"
+        }
+      },
+      "railway-station": {
+        "title": "Railway Stations",
+        "create-railway-station": "Create Railway Station",
+        "edit-railway-station": "Edit Railway Station",
+        "railway-station-details": "Railway Station Details",
+        "details": {
+          "name": "Name",
+          "specifications": "Specifications",
+          "northing": "Northing",
+          "easting": "Easting",
+          "revision-no": "Revision Number",
+          "energy-source": "Energy Source",
+          "major-operator": "Major Operator",
+          "system-length": "System Length",
+          "total-station-no": "Total Station Number",
+          "fright-cargo-no": "Fright Cargo Number",
+          "transport-cargo-no": "Transport Cargo Number"
+        }
+      },
+      "spillway-info": {
+        "title": "Spillway Infos",
+        "create-spillway-info": "Create Spillway Info",
+        "edit-spillway-info": "Edit Spillway Info",
+        "spillway-info-details": "Spillway Info Details",
+        "details": {
+          "name": "Name",
+          "type": "Type",
+          "quantity": "Quantity",
+          "specifications": "Specifications",
+          "capacity": "Capacity"
+        }
+      },
+      "irrigation-capacity": {
+        "title": "Irrigation Capcities",
+        "create-irrigation-capacity": "Create Irrigation Capcity",
+        "edit-irrigation-capacity": "Edit Irrigation Capcity",
+        "irrigation-capacity-details": "Irrigation Capcity Details",
+        "details": {
+          "designed-irrigation-capacity": "Designed Irrigation Capacity",
+          "actual-irrigation-capacity": "Actual Irrigation Capacity",
+          "revision-no": "Revision Number"
+        }
+      },
+      "water-irrigation-dam": {
+        "title": "Irrigation Capcities",
+        "create-water-irrigation-dam": "Create Water Irrigation  Dam",
+        "edit-water-irrigation-dam": "Edit Water Irrigation  Dam",
+        "water-irrigation-dam-details": "Water Irrigation  Dam Details",
+        "details": {
+          "dam-volume": "Dam Volume",
+          "designed-water-irrigation-dam": "Designed Irrigation Capacity",
+          "total-capacity": "Total Capacity",
+          "active-capacity": "Active Capacity",
+          "inactive-capacity": "Inactive Capacity",
+          "catchment-area": "Catchment Area",
+          "surface-area": "Surface Area"
+        }
+      },
+      "reservoir-info": {
+        "title": "Reservoir Infos",
+        "create-reservoir-info": "Create Reservoir Info",
+        "edit-reservoir-info": "Edit Reservoir Info",
+        "reservoir-info-details": "Reservoir Info Details",
+        "details": {
+          "dam-volume": "Dam Volume",
+          "total-capacity": "Total Capacity",
+          "active-capacity": "Active Capacity",
+          "inactive-capacity": "Inactive Capacity",
+          "catchment-area": "Catchment Area",
+          "surface-area": "Surface Area"
         }
       },
       "wind-energy": {
         "title": "Wind Energy",
-        "create-wind-energy":"Create Wind Energy",
-        "edit-wind-energy":"Edit Wind Energy",
-        "wind-energy-details":"Wind Energy Details",
+        "create-wind-energy": "Create Wind Energy",
+        "edit-wind-energy": "Edit Wind Energy",
+        "wind-energy-details": "Wind Energy Details",
         "details": {
-          "title":"Title",
-          "description":"Description",
-          "specifications":"Specifications"
+          "title": "Title",
+          "description": "Description",
+          "specifications": "Specifications"
         }
       },
       "transformer-type": {
         "title": "Transformer Type",
-        "create-transformer-type":"Create Transformer Type",
-        "edit-transformer-type":"Edit Transformer Type",
-        "transformer-type-details":"Transformer Type Details",
+        "create-transformer-type": "Create Transformer Type",
+        "edit-transformer-type": "Edit Transformer Type",
+        "transformer-type-details": "Transformer Type Details",
         "details": {
-          "name":"Name",
-          "description":"Description"
+          "name": "Name",
+          "description": "Description"
         }
       },
       "transformer": {
         "title": "Transformer",
-        "create-transformer":"Create Transformer",
-        "edit-transformer":"Edit Transformer",
-        "transformer-details":"Transformer Details",
+        "create-transformer": "Create Transformer",
+        "edit-transformer": "Edit Transformer",
+        "transformer-details": "Transformer Details",
         "details": {
           "transformertype": "Transformer Type",
           "specifications": "Specifications",
@@ -867,9 +933,9 @@
       },
       "transmission-line": {
         "title": "Transmission",
-        "create-transmission-line":"Create Transmission",
-        "edit-transmission-line":"Edit Transmission",
-        "transmission-line-details":"Transmission Details",
+        "create-transmission-line": "Create Transmission",
+        "edit-transmission-line": "Edit Transmission",
+        "transmission-line-details": "Transmission Details",
         "details": {
           "name": "Name",
           "line-type": "Line Type",
@@ -886,9 +952,9 @@
       },
       "electric-tower": {
         "title": "Electric Tower",
-        "create-electric-tower":"Create Electric Tower",
-        "edit-electric-tower":"Edit Electric Tower",
-        "electric-tower-details":"Electric Tower Details",
+        "create-electric-tower": "Create Electric Tower",
+        "edit-electric-tower": "Edit Electric Tower",
+        "electric-tower-details": "Electric Tower Details",
         "details": {
           "overall-length": "Overall Length",
           "embedded-length": "Embedded Length",
@@ -899,9 +965,9 @@
           "elasticity-modulus": "Elasticity Modulus",
           "poission-ratio": "Poisson Ratio"
         }
-      }      
+      }
     },
-    
+
     "columns": {
       "title": "Title",
       "elapsed-time": "Elapsed Time",
@@ -911,13 +977,13 @@
     "main-contract-price": {
       "price-details": "Price Details",
       "title": "Main Contract Price",
-      "edit-main-contract-price":"Edit Main Contract Price",
-      "create-main-contract-price":"Create Main Contract Price",
-      "add-main-contract-price":"Please Add Main Contract Price",
+      "edit-main-contract-price": "Edit Main Contract Price",
+      "create-main-contract-price": "Create Main Contract Price",
+      "add-main-contract-price": "Please Add Main Contract Price",
       "form": {
         "main-contract-price": "Main Contract Price",
         "rebate": "Rebate",
-        "remark":"Remark"
+        "remark": "Remark"
       }
     }
   },
@@ -956,17 +1022,19 @@
       }
     }
   },
-  "model-action":{
-    "registered-data":"Registered Data",
-    "checked-data":"Checked Data",
-    "approved-data":"Approved Data",
-    "authorized-data":"Authorized Data",
-    "rejected-data":"Rejected Data"
+  "model-action": {
+    "registered-data": "Registered Data",
+    "checked-data": "Checked Data",
+    "approved-data": "Approved Data",
+    "authorized-data": "Authorized Data",
+    "rejected-data": "Rejected Data"
   },
   "common": {
     "edit": "Edit",
     "not-available": "Not Available",
     "create": "Create",
+    "active": "Active",
+    "inactive": "InActive",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",
@@ -974,34 +1042,228 @@
       "actions": "Actions"
     },
     "form": {
-      "file-upload":"File Upload",
-  
+      "file-upload": "File Upload",
+
       "success-created": "Successfully Created!",
       "success-updated": "Successfully updated!"
     }
   },
-   "stakeholders":{
-    "create-stakeholders":"Create Stakeholder",
-    "edit-stakeholders":"Edit Stakeholder",
-    "title":"Stakeholder",
-    "columns":{
-      "title":"Title",
-      "description":"Description",
-      "sub-category":"Sub Category",
-      "category":"Category"
+  "stakeholder": {
+    "create-stakeholder": "Create Stakeholder",
+    "edit-stakeholder": "Edit Stakeholder",
+    "title": "Stakeholders",
+    "columns": {
+      "title": "Title",
+      "description": "Description",
+      "sub-category": "Sub Category",
+      "category": "Category"
     },
-    "form":{
-      "title":"Title",
-      "description":"Description",
-      "category":"Category",
-      "sub_category":"Sub Category",
-      "field_of_business":"Field of Business",
-      "location":"Location",
-      "ownership_type":"Ownership Type",
-      "trade_name":"Trade Name",
-      "tin_number":"TIN Number",
-      "phone":"Phone Number",
-      "licence_issue_date":"Licence Issue Date"
+    "form": {
+      "category": "Category",
+      "sub_category": "Sub Category",
+      "ownership": "Ownership",
+      "email": "Email",
+      "emails": "Emails",
+      "phones": "Phones",
+      "is_primary_email": "Is Primary Email",
+      "phone": "Phone",
+      "is_primary_phone": "Is Primary Phone",
+      "trade_name": "Trade Name",
+      "tin": "TIN",
+      "origin": "Origin",
+      "license_issued_date": "License Issued Date",
+      "revision_no": "Revision No",
+      "add_email": "Add Email",
+      "add_phone": "Add Phone",
+      "emails_section_title": "Emails",
+      "phones_section_title": "Phones"
+    },
+    "navigation": {
+      "submenu": {
+        "others": {
+          "stakeholder-specific": "Stakeholder Specific",
+          "field-of-study": "Field of Study",
+          "study-period-cost": "Study Period Cost",
+          "graduates": "Graduates",
+          "construction-related-services": "Construction Related Services",
+          "stakeholder-services": "Stakeholder Services"
+        }
+      }
+    },
+    "stakeholder-info": {
+      "title": "Stakeholder Info",
+      "edit-stakeholder-info": "Edit Stakeholder Info",
+      "create-stakeholder-info": "Create Stakeholder Info",
+      "form": {
+        "capital": "Capital",
+        "general-manager": "General Manager",
+        "description": "Description"
+      }
+    },
+    "stakeholder-certificate": {
+      "title": "Stakeholder Certificate",
+      "create-stakeholder-certificate": "Create Stakeholder Certificate",
+      "edit-stakeholder-certificate": "Edit Stakeholder Certificate",
+      "form": {
+        "title": "Certificate Title",
+        "certificate_no": "Certificate Number",
+        "date_of_issue": "Date of Issue",
+        "expiry_date": "Expiry Date",
+        "initial_certificate_no": "Initial Certificate Number",
+        "initial_certificate_issue_date": "Initial Certificate Issue Date",
+        "description": "Description",
+        "number-of-days": "Number of Days",
+        "reason": "Reason"
+      }
+    },
+    "stakeholder-training": {
+      "title": "Stakeholder Training",
+      "create-stakeholder-training": "Create Stakeholder Training",
+      "edit-stakeholder-training": "Edit Stakeholder Training",
+      "form": {
+        "title": "Title",
+        "type": "Type",
+        "quantity": "Quantity",
+        "provider": "Provider",
+        "provision-date": "Provision Date",
+        "description": "Description"
+      }
+    },
+    "stakeholder-regulation": {
+      "title": "Stakeholder Regulation",
+      "create-stakeholder-regulation": "Create Stakeholder Regulation",
+      "edit-stakeholder-regulation": "Edit Stakeholder Regulation",
+      "form": {
+        "title": "Title",
+        "regulation": "Regulation",
+        "prepared-by": "Prepared By",
+        "effective_start_date": "Effective Start Date",
+        "effective_end_date": "Effective End Date",
+        "quantity": "Quantity",
+        "description": "Description"
+      }
+    },
+    "stakeholder-email": {
+      "title": "Stakeholder Email",
+      "create-stakeholder-email": "Create Stakeholder Email",
+      "edit-stakeholder-email": "Edit Stakeholder Email",
+      "form": {
+        "email": "Email"
+      }
+    },
+    "stakeholder-phone": {
+      "title": "Stakeholder Phone",
+      "create-stakeholder-phone": "Create Stakeholder Phone",
+      "edit-stakeholder-phone": "Edit Stakeholder Phone",
+      "form": {
+        "phone": "Phone"
+      }
+    },
+    "stakeholder-contact-person": {
+      "title": "Stakeholder Contact Person",
+      "create-stakeholder-contact-person": "Create Stakeholder Contact Person",
+      "edit-stakeholder-contact-person": "Edit Stakeholder Contact Person",
+      "form": {
+        "first-name": "First Name",
+        "middle-name": "Middle Name",
+        "last-name": "Last Name",
+        "gender": "Gender",
+        "email": "Email",
+        "phone-number": "Phone Number",
+        "name": "Name"
+      }
+    },
+    "stakeholder-operation-location": {
+      "title": "Stakeholder Operation Location",
+      "create-stakeholder-operation-location": "Create Stakeholder Operation Location",
+      "edit-stakeholder-operation-location": "Edit Stakeholder Operation Location",
+      "form": {
+        "country": "Country",
+        "status": "Status"
+      }
+    },
+    "total-employee": {
+      "title": "Total Employees",
+      "create-total-employee": "Create Total Employees",
+      "edit-total-employee": "Edit Total Employees",
+      "form": {
+        "year": "Year",
+        "domain": "Domain",
+        "nationality": "Nationality",
+        "male": "Male Employees",
+        "female": "Female Employees",
+        "quantity": "Total Employees",
+        "department-name": "Department Name",
+        "revision-no": "Revision Number",
+        "total-employees": "Total Employees"
+      }
+    },
+    "other": {
+      "stakeholder-study-field": {
+        "title": "Study Field",
+        "create-stakeholder-study-field": "Create Study Field",
+        "edit-stakeholder-study-field": "Edit Study Field",
+        "details": {
+          "title": "Title",
+          "description": "Description",
+          "study-field": "Study Field"
+        }
+      },
+      "study-period-cost": {
+        "title": "Study Period Cost",
+        "create-study-period-cost": "Create Study Period Cost",
+        "edit-study-period-cost": "Edit Study Period Cost",
+        "study-period-cost-details": "Study Period Cost Detail",
+        "details": {
+          "description": "Study Period Description",
+          "total-month": "Total Month",
+          "study-cost": "Study Cost",
+          "study-field": "Study Field"
+        }
+      },
+      "stakeholder-service": {
+        "title": "Stakeholder Service",
+        "create-stakeholder-service": "Create Stakeholder Service",
+        "edit-stakeholder-service": "Edit Stakeholder Service",
+        "details": {
+          "construction-related-service": "Construction Related Service",
+          "title": "Stakeholder Service Detail",
+          "service-type": "Service Type",
+          "specification-detail": "Specification Detail",
+          "measurement-unit": "Measurement Unit",
+          "unit-price": "Unit Price"
+        }
+      },
+      "construction-related-service": {
+        "title": "Construction Related Service",
+        "create-construction-related-service": "Create Construction Related Service",
+        "edit-construction-related-service": "Edit Construction Related Service",
+        "details": {
+          "title": "Construction Related Service Detail",
+          "service-type": "Service Type",
+          "specification-detail": "Specification Detail",
+          "measurement-unit": "Measurement Unit",
+          "unit-price": "Unit Price"
+        }
+      }
+    }
+  },
+  "address": {
+    "title": "Address",
+    "create-address": "Create Address",
+    "edit-address": "Edit Address",
+    "project-address": "Project Address",
+    "stakeholder-address": "Stakeholder Address",
+    "form": {
+      "country": "Country",
+      "state-region": "State/Region",
+      "city": "City",
+      "subcity": "Subcity",
+      "street": "Street",
+      "block_number": "Block Number",
+      "house_number": "House Number",
+      "northing": "Northing",
+      "easting": "Easting"
     }
   }
 }

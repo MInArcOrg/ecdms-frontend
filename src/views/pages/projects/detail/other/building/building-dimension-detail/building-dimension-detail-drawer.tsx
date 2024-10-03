@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import BuildingDimensionDetailForm from './building-dimension-detail-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { BuildingDimensionDetail } from 'src/types/project/other';
@@ -32,10 +32,10 @@ const BuildingDimensionDetailDrawer = (props: BuildingDimensionDetailDrawerType)
   const isEdit = Boolean(buildingDimensionDetail?.id);
 
   const createBuildingDimensionDetail = async (body: IApiPayload<BuildingDimensionDetail>) =>
-    otherApiService<BuildingDimensionDetail>().create(model, body);
+    projectOtherApiService<BuildingDimensionDetail>().create(model, body);
 
   const editBuildingDimensionDetail = async (body: IApiPayload<BuildingDimensionDetail>) =>
-    otherApiService<BuildingDimensionDetail>().update(model, buildingDimensionDetail?.id || '', body);
+    projectOtherApiService<BuildingDimensionDetail>().update(model, buildingDimensionDetail?.id || '', body);
 
   const getPayload = (values: BuildingDimensionDetail) => {
     return {

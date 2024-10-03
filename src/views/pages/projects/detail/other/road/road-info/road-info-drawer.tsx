@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import RoadInfoForm from './road-info-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { RoadInfo } from 'src/types/project/other';
@@ -31,9 +31,9 @@ const RoadInfoDrawer = (props: RoadInfoDrawerType) => {
 
   const isEdit = Boolean(roadInfo?.id);
 
-  const createRoadInfo = async (body: IApiPayload<RoadInfo>) => otherApiService<RoadInfo>().create(model, body);
+  const createRoadInfo = async (body: IApiPayload<RoadInfo>) => projectOtherApiService<RoadInfo>().create(model, body);
 
-  const editRoadInfo = async (body: IApiPayload<RoadInfo>) => otherApiService<RoadInfo>().update(model, roadInfo?.id || '', body);
+  const editRoadInfo = async (body: IApiPayload<RoadInfo>) => projectOtherApiService<RoadInfo>().update(model, roadInfo?.id || '', body);
 
   const getPayload = (values: RoadInfo) => {
     return {

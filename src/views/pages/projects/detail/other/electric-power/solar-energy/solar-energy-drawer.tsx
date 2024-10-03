@@ -6,11 +6,10 @@ import * as yup from 'yup';
 import SolarEnergyForm from './solar-energy-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { SolarEnergy } from 'src/types/project/other';
-import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
 interface SolarEnergyDrawerType {
   open: boolean;
@@ -32,16 +31,17 @@ const SolarEnergyDrawer = (props: SolarEnergyDrawerType) => {
 
   const isEdit = Boolean(solarEnergy?.id);
 
-  const createSolarEnergy = async (body: IApiPayload<SolarEnergy>) => otherApiService<SolarEnergy>().create(model, body);
+  const createSolarEnergy = async (body: IApiPayload<SolarEnergy>) => projectOtherApiService<SolarEnergy>().create(model, body);
 
-  const editSolarEnergy = async (body: IApiPayload<SolarEnergy>) => otherApiService<SolarEnergy>().update(model, solarEnergy?.id || '', body);
+  const editSolarEnergy = async (body: IApiPayload<SolarEnergy>) =>
+    projectOtherApiService<SolarEnergy>().update(model, solarEnergy?.id || '', body);
 
   const getPayload = (values: SolarEnergy) => {
     return {
       data: {
         ...values,
         id: solarEnergy?.id,
-        project_id: projectId,
+        project_id: projectId
       },
       files: uploadableFile ? [uploadableFile] : []
     };
@@ -70,7 +70,7 @@ const SolarEnergyDrawer = (props: SolarEnergyDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(solarEnergy as SolarEnergy),
+            ...(solarEnergy as SolarEnergy)
           }}
           createActionFunc={isEdit ? editSolarEnergy : createSolarEnergy}
           onActionSuccess={onActionSuccess}

@@ -48,7 +48,6 @@ const WindEnergyForm: React.FC<WindEnergyFormProps> = ({ formik, file, onFileCha
           multiline
           rows={3}
         />
-   
       </Grid>
 
       <Grid item xs={12}>

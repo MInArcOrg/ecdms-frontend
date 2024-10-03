@@ -27,7 +27,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
     <>
       <Box mb={2}>
         <FormControl fullWidth variant="outlined" sx={{ mb: 3 }}>
-          <FormLabel>{transl('location.form.country')}</FormLabel>
+          <FormLabel>{transl('address.form.country')}</FormLabel>
           <Autocomplete
             options={countriesList.map((country) => ({ value: country.title, label: country.title }))}
             size="small"
@@ -50,8 +50,8 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
         <Grid item xs={6}>
           <CustomTextBox
             fullWidth
-            label={transl('location.form.state-region')}
-            placeholder={transl('location.form.state-region')}
+            label={transl('address.form.state-region')}
+            placeholder={transl('address.form.state-region')}
             name="region"
             size="small"
             sx={{ mb: 2 }}
@@ -61,8 +61,8 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
         <Grid item xs={6}>
           <CustomTextBox
             fullWidth
-            label={transl('location.form.city')}
-            placeholder={transl('location.form.city')}
+            label={transl('address.form.city')}
+            placeholder={transl('address.form.city')}
             name="city"
             size="small"
             sx={{ mb: 2 }}
@@ -72,8 +72,8 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
         <Grid item xs={6}>
           <CustomTextBox
             fullWidth
-            label={transl('location.form.subcity')}
-            placeholder={transl('location.form.subcity')}
+            label={transl('address.form.subcity')}
+            placeholder={transl('address.form.subcity')}
             name="subcity"
             size="small"
             sx={{ mb: 2 }}
@@ -83,8 +83,8 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
         <Grid item xs={6}>
           <CustomTextBox
             fullWidth
-            label={transl('location.form.street')}
-            placeholder={transl('location.form.street')}
+            label={transl('address.form.street')}
+            placeholder={transl('address.form.street')}
             name="street"
             size="small"
             sx={{ mb: 2 }}
@@ -94,8 +94,8 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
         <Grid item xs={6}>
           <CustomTextBox
             fullWidth
-            label={transl('location.form.block_number')}
-            placeholder={transl('location.form.block_number')}
+            label={transl('address.form.block_number')}
+            placeholder={transl('address.form.block_number')}
             name="block_number"
             size="small"
             sx={{ mb: 2 }}
@@ -105,8 +105,8 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
         <Grid item xs={6}>
           <CustomTextBox
             fullWidth
-            label={transl('location.form.house_number')}
-            placeholder={transl('location.form.house_number')}
+            label={transl('address.form.house_number')}
+            placeholder={transl('address.form.house_number')}
             name="house_number"
             size="small"
             sx={{ mb: 2 }}
@@ -116,8 +116,8 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
         <Grid item xs={6}>
           <CustomTextBox
             fullWidth
-            label={transl('location.form.northing')}
-            placeholder={transl('location.form.northing')}
+            label={transl('address.form.northing')}
+            placeholder={transl('address.form.northing')}
             name="northing"
             size="small"
             sx={{ mb: 2 }}
@@ -127,8 +127,8 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
         <Grid item xs={6}>
           <CustomTextBox
             fullWidth
-            label={transl('location.form.easting')}
-            placeholder={transl('location.form.easting')}
+            label={transl('address.form.easting')}
+            placeholder={transl('address.form.easting')}
             name="easting"
             size="small"
             sx={{ mb: 2 }}

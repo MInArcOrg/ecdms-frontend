@@ -1,4 +1,4 @@
-import OtherLayout from 'src/views/pages/projects/detail/other/layouts/other-layout';
+import ProjectOtherLayout from 'src/views/pages/projects/detail/other/layouts/project-other-layout';
 import subMenuItems, { findOtherModelName } from '../(subMenuItems)';
 import PortList from 'src/views/pages/projects/detail/other/port';
 import { useRouter } from 'next/router';
@@ -11,7 +11,7 @@ function Index() {
   const activeType = 7;
   const activeSubType = 22;
   return (
-    <OtherLayout
+    <ProjectOtherLayout
       activeMenu={activeMenu}
       activeType={activeType}
       activeSubMenu={activeSubType}
@@ -23,7 +23,7 @@ function Index() {
         projectId={String(id)}
         typeId={String(typeId)}
       />
-    </OtherLayout>
+    </ProjectOtherLayout>
   );
 }
 

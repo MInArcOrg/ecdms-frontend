@@ -9,7 +9,7 @@ import { formatCurrency } from 'src/utils/formatter/currency';
 import LoadingPlaceholder from 'src/views/components/loader';
 import ProfileCard from 'src/views/pages/projects/detail/general-info/project-profile-card';
 import ProjectStatusChip from 'src/views/pages/projects/detail/general-info/project-status-chip';
-import ProjectLayout from 'src/views/pages/projects/detail/project-layout';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import subMenuItems from './(subMenuItems)';
 
 function ProjectGeneralInformation() {

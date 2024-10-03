@@ -80,15 +80,19 @@ const RoadInfoCard: React.FC<RoadInfoCardProps> = ({ roadInfo, refetch, onEdit, 
           postAction={() => refetch()}
         />
         <RowOptions
-         deletePermissionRule={{
-          action: 'delete',
-          subject: 'roadinfo'
-        }}
-        editPermissionRule={{
-          action: 'edit',
-          subject: 'roadinfo'
-        }}
-        onEdit={() => onEdit(roadInfo)} onDelete={() => onDelete(roadInfo.id)} item={roadInfo} options={[]} />
+          deletePermissionRule={{
+            action: 'delete',
+            subject: 'roadinfo'
+          }}
+          editPermissionRule={{
+            action: 'edit',
+            subject: 'roadinfo'
+          }}
+          onEdit={() => onEdit(roadInfo)}
+          onDelete={() => onDelete(roadInfo.id)}
+          item={roadInfo}
+          options={[]}
+        />
       </CardActions>
     </Card>
   );

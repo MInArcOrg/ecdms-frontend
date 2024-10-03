@@ -13,7 +13,7 @@ import ProjectBondForm from './project-bond-form';
 import { institutionType } from 'src/constants/bond-constants';
 import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
 import i18n from 'src/configs/i18n';
-import { convertDateToLocaleDate } from 'src/utils/formatter/date';
+import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 import moment from 'moment';
 
 interface ProjectBondDrawerType {
@@ -112,10 +112,8 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
           initialValues={{
             type,
             ...(projectBond as ProjectBond),
-            issue_date: projectBond?.issue_date ? getDynamicDate(i18n, moment(String(projectBond?.issue_date)).toDate()) : undefined,
-            expiration_date: projectBond?.expiration_date
-              ? getDynamicDate(i18n, moment(String(projectBond?.expiration_date)).toDate())
-              : undefined
+            issue_date: formatInitialDateDate(projectBond?.issue_date),
+            expiration_date: formatInitialDateDate(projectBond?.expiration_date)
           }}
           createActionFunc={isEdit ? editProjectBond : createProjectBond}
           onActionSuccess={onActionSuccess}

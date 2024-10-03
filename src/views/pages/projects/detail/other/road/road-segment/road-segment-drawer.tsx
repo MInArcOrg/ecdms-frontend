@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import RoadSegmentForm from './road-segment-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { RoadSegment } from 'src/types/project/other';
@@ -31,10 +31,10 @@ const RoadSegmentDrawer = (props: RoadSegmentDrawerType) => {
 
   const isEdit = Boolean(roadSegment?.id);
 
-  const createRoadSegment = async (body: IApiPayload<RoadSegment>) => otherApiService<RoadSegment>().create(model, body);
+  const createRoadSegment = async (body: IApiPayload<RoadSegment>) => projectOtherApiService<RoadSegment>().create(model, body);
 
   const editRoadSegment = async (body: IApiPayload<RoadSegment>) =>
-    otherApiService<RoadSegment>().update(model, roadSegment?.id || '', body);
+    projectOtherApiService<RoadSegment>().update(model, roadSegment?.id || '', body);
 
   const getPayload = (values: RoadSegment) => {
     return {

@@ -20,7 +20,6 @@ const TransmissionLineForm: React.FC<TransmissionLineFormProps> = ({ formik, fil
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-
         <CustomTextBox
           fullWidth
           label={t('project.other.transmission-line.details.line-type')}
@@ -101,7 +100,6 @@ const TransmissionLineForm: React.FC<TransmissionLineFormProps> = ({ formik, fil
           size="small"
           sx={{ mb: 2 }}
         />
-       
       </Grid>
 
       <Grid item xs={12}>

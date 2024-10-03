@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/project/other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from '../../layouts/other-detail-drawer';
+import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
 import TransformerCard from './transformer-card';
 import TransformerDrawer from './transformer-drawer';
 import { Transformer } from 'src/types/project/other';
@@ -28,9 +28,9 @@ const TransformerList: React.FC<TransformerListProps> = ({ model, projectId, typ
   const { t } = useTranslation();
 
   const fetchTransformers = (params: GetRequestParam): Promise<IApiResponse<Transformer[]>> => {
-    return otherApiService<Transformer>().getAll(model, {
+    return projectOtherApiService<Transformer>().getAll(model, {
       ...params,
-      filter: { ...params.filter, project_id: projectId },
+      filter: { ...params.filter, project_id: projectId }
     });
   };
 
@@ -39,10 +39,10 @@ const TransformerList: React.FC<TransformerListProps> = ({ model, projectId, typ
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<Transformer[]>({
     queryKey: ['transformers'],
-    fetchFunction: fetchTransformers,
+    fetchFunction: fetchTransformers
   });
 
   const toggleDrawer = () => {
@@ -61,7 +61,7 @@ const TransformerList: React.FC<TransformerListProps> = ({ model, projectId, typ
   };
 
   const handleDelete = async (transformerId: string) => {
-    await otherApiService<Transformer>().delete(model, transformerId);
+    await projectOtherApiService<Transformer>().delete(model, transformerId);
     refetch();
   };
 
@@ -78,7 +78,7 @@ const TransformerList: React.FC<TransformerListProps> = ({ model, projectId, typ
     { title: t('project.other.transformer.details.output-voltage'), value: transformer.output_voltage || 'N/A' },
     { title: t('project.other.transformer.details.northing'), value: transformer.northing?.toString() || 'N/A' },
     { title: t('project.other.transformer.details.easting'), value: transformer.easting?.toString() || 'N/A' },
-    { title: t('common.table-columns.created-at'), value: transformer.created_at ? formatCreatedAt(transformer.created_at) : 'N/A' },
+    { title: t('common.table-columns.created-at'), value: transformer.created_at ? formatCreatedAt(transformer.created_at) : 'N/A' }
   ];
 
   return (
@@ -111,17 +111,11 @@ const TransformerList: React.FC<TransformerListProps> = ({ model, projectId, typ
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: transformerColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
+          headers: transformerColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <TransformerCard
-            onDetail={handleClickDetail}
-            transformer={data}
-            onEdit={handleEdit}
-            refetch={refetch}
-            onDelete={handleDelete}
-          />
+          <TransformerCard onDetail={handleClickDetail} transformer={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
@@ -129,8 +123,8 @@ const TransformerList: React.FC<TransformerListProps> = ({ model, projectId, typ
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'transformer',
-          },
+            subject: 'transformer'
+          }
         }}
         fetchDataFunction={refetch}
         items={transformers || []}

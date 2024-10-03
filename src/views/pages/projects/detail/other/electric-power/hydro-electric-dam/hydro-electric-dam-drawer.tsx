@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import HydroElectricDamForm from './hydro-electric-dam-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { HydroElectricDam } from 'src/types/project/other';
@@ -31,9 +31,10 @@ const HydroElectricDamDrawer = (props: HydroElectricDamDrawerType) => {
 
   const isEdit = Boolean(hydroElectricDam?.id);
 
-  const createHydroElectricDam = async (body: IApiPayload<HydroElectricDam>) => otherApiService<HydroElectricDam>().create(model, body);
+  const createHydroElectricDam = async (body: IApiPayload<HydroElectricDam>) => projectOtherApiService<HydroElectricDam>().create(model, body);
 
-  const editHydroElectricDam = async (body: IApiPayload<HydroElectricDam>) => otherApiService<HydroElectricDam>().update(model, hydroElectricDam?.id || '', body);
+  const editHydroElectricDam = async (body: IApiPayload<HydroElectricDam>) =>
+    projectOtherApiService<HydroElectricDam>().update(model, hydroElectricDam?.id || '', body);
 
   const getPayload = (values: HydroElectricDam) => {
     return {

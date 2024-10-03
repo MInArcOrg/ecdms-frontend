@@ -30,7 +30,7 @@ const GeneratingCapacityForm: React.FC<GeneratingCapacityFormProps> = ({ formik,
           size="small"
           sx={{ mb: 2 }}
         />
-       <CustomDynamicDatePicker
+        <CustomDynamicDatePicker
           fullWidth
           label={t('project.other.generating-capacity.details.commission-date')}
           name="commission_date"
@@ -88,7 +88,6 @@ const GeneratingCapacityForm: React.FC<GeneratingCapacityFormProps> = ({ formik,
           size="small"
           sx={{ mb: 2 }}
         />
-      
       </Grid>
 
       <Grid item xs={12}>

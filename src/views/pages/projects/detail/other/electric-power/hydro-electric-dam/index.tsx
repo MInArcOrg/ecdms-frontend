@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/project/other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from '../../layouts/other-detail-drawer';
+import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
 import HydroElectricDamCard from './hydro-electric-dam-card';
 import HydroElectricDamDrawer from './hydro-electric-dam-drawer';
 import { HydroElectricDam } from 'src/types/project/other';
@@ -28,9 +28,9 @@ const HydroElectricDamList: React.FC<HydroElectricDamListProps> = ({ model, proj
   const { t } = useTranslation();
 
   const fetchGeneratingCapacities = (params: GetRequestParam): Promise<IApiResponse<HydroElectricDam[]>> => {
-    return otherApiService<HydroElectricDam>().getAll(model, {
+    return projectOtherApiService<HydroElectricDam>().getAll(model, {
       ...params,
-      filter: { ...params.filter, project_id: projectId },
+      filter: { ...params.filter, project_id: projectId }
     });
   };
 
@@ -39,10 +39,10 @@ const HydroElectricDamList: React.FC<HydroElectricDamListProps> = ({ model, proj
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<HydroElectricDam[]>({
     queryKey: ['generatingCapacities'],
-    fetchFunction: fetchGeneratingCapacities,
+    fetchFunction: fetchGeneratingCapacities
   });
 
   const toggleDrawer = () => {
@@ -61,7 +61,7 @@ const HydroElectricDamList: React.FC<HydroElectricDamListProps> = ({ model, proj
   };
 
   const handleDelete = async (hydroElectricDamId: string) => {
-    await otherApiService<HydroElectricDam>().delete(model, hydroElectricDamId);
+    await projectOtherApiService<HydroElectricDam>().delete(model, hydroElectricDamId);
     refetch();
   };
 
@@ -72,14 +72,29 @@ const HydroElectricDamList: React.FC<HydroElectricDamListProps> = ({ model, proj
 
   const mapHydroElectricDamToDetailItems = (hydroElectricDam: HydroElectricDam): { title: string; value: string }[] => [
     { title: t('project.other.hydro-electric-dam.details.river-name'), value: hydroElectricDam.river_name || 'N/A' },
-    { title: t('project.other.hydro-electric-dam.details.elevation-from-sea-level'), value: hydroElectricDam.elevation_from_sea_level || 'N/A' },
+    {
+      title: t('project.other.hydro-electric-dam.details.elevation-from-sea-level'),
+      value: hydroElectricDam.elevation_from_sea_level || 'N/A'
+    },
     { title: t('project.other.hydro-electric-dam.details.elevation-from-ngl'), value: hydroElectricDam.elevation_from_ngl || 'N/A' },
     { title: t('project.other.hydro-electric-dam.details.dam-type'), value: hydroElectricDam.dam_type || 'N/A' },
     { title: t('project.other.hydro-electric-dam.details.dam-volume'), value: hydroElectricDam.dam_volume || 'N/A' },
-    { title: t('project.other.hydro-electric-dam.details.gated-spillway-no'), value: hydroElectricDam.gated_spillway_no?.toString() || 'N/A' },
-    { title: t('project.other.hydro-electric-dam.details.none-gated-spillway-no'), value: hydroElectricDam.none_gated_spillway_no?.toString() || 'N/A' },
-    { title: t('common.table-columns.created-at'), value: hydroElectricDam.created_at ? formatCreatedAt(hydroElectricDam.created_at) : 'N/A' },
-    { title: t('common.table-columns.updated-at'), value: hydroElectricDam.updated_at ? formatCreatedAt(hydroElectricDam.updated_at) : 'N/A' },
+    {
+      title: t('project.other.hydro-electric-dam.details.gated-spillway-no'),
+      value: hydroElectricDam.gated_spillway_no?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.hydro-electric-dam.details.none-gated-spillway-no'),
+      value: hydroElectricDam.none_gated_spillway_no?.toString() || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: hydroElectricDam.created_at ? formatCreatedAt(hydroElectricDam.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: hydroElectricDam.updated_at ? formatCreatedAt(hydroElectricDam.updated_at) : 'N/A'
+    }
   ];
 
   return (
@@ -112,7 +127,7 @@ const HydroElectricDamList: React.FC<HydroElectricDamListProps> = ({ model, proj
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: hydroElectricDamColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
+          headers: hydroElectricDamColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -130,8 +145,8 @@ const HydroElectricDamList: React.FC<HydroElectricDamListProps> = ({ model, proj
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'hydroelectricdam',
-          },
+            subject: 'hydroelectricdam'
+          }
         }}
         fetchDataFunction={refetch}
         items={generatingCapacities || []}

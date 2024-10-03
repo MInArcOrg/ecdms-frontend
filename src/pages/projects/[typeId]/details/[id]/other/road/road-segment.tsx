@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import OtherLayout from 'src/views/pages/projects/detail/other/layouts/other-layout';
+import ProjectOtherLayout from 'src/views/pages/projects/detail/other/layouts/project-other-layout';
 import RoadSegmentList from 'src/views/pages/projects/detail/other/road/road-segment';
 import subMenuItems, { findOtherModelName } from '../(subMenuItems)';
 
@@ -12,7 +12,7 @@ function Index() {
   const activeSubType = 4;
 
   return (
-    <OtherLayout
+    <ProjectOtherLayout
       activeMenu={activeMenu}
       activeType={activeType}
       activeSubMenu={activeSubType}
@@ -24,7 +24,7 @@ function Index() {
         projectId={String(id)}
         typeId={String(typeId)}
       />
-    </OtherLayout>
+    </ProjectOtherLayout>
   );
 }
 

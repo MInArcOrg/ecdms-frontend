@@ -4,7 +4,7 @@ import { FormikProps } from 'formik';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
-import otherApiService from 'src/services/project/other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { ElectricTower, TransmissionLine } from 'src/types/project/other';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
@@ -17,19 +17,19 @@ interface ElectricTowerFormProps {
   projectId: string;
 }
 
-const ElectricTowerForm: React.FC<ElectricTowerFormProps> = ({ formik, file, onFileChange,projectId }) => {
+const ElectricTowerForm: React.FC<ElectricTowerFormProps> = ({ formik, file, onFileChange, projectId }) => {
   const { t } = useTranslation();
   const { data: transmissionLines } = useQuery({
-    queryKey: ['transmissionline',projectId],
+    queryKey: ['transmissionline', projectId],
     queryFn: () =>
-      otherApiService<TransmissionLine>().getAll('transmissionline', {
-        filter: { project_id: projectId },
+      projectOtherApiService<TransmissionLine>().getAll('transmissionline', {
+        filter: { project_id: projectId }
       })
   });
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-      <CustomSelectBox
+        <CustomSelectBox
           size="small"
           name="transmissionline_id"
           label={t('project.other.transformer.details.transmissionline')}
@@ -104,7 +104,6 @@ const ElectricTowerForm: React.FC<ElectricTowerFormProps> = ({ formik, file, onF
           size="small"
           sx={{ mb: 2 }}
         />
-       
       </Grid>
 
       <Grid item xs={12}>

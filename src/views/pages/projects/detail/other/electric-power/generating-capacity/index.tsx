@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/project/other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from '../../layouts/other-detail-drawer';
+import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
 import GeneratingCapacityCard from './generating-capacity-card';
 import GeneratingCapacityDrawer from './generating-capacity-drawer';
 import { GeneratingCapacity } from 'src/types/project/other';
@@ -28,9 +28,9 @@ const GeneratingCapacityList: React.FC<GeneratingCapacityListProps> = ({ model, 
   const { t } = useTranslation();
 
   const fetchGeneratingCapacities = (params: GetRequestParam): Promise<IApiResponse<GeneratingCapacity[]>> => {
-    return otherApiService<GeneratingCapacity>().getAll(model, {
+    return projectOtherApiService<GeneratingCapacity>().getAll(model, {
       ...params,
-      filter: { ...params.filter, project_id: projectId },
+      filter: { ...params.filter, project_id: projectId }
     });
   };
 
@@ -39,10 +39,10 @@ const GeneratingCapacityList: React.FC<GeneratingCapacityListProps> = ({ model, 
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<GeneratingCapacity[]>({
     queryKey: ['generatingCapacities'],
-    fetchFunction: fetchGeneratingCapacities,
+    fetchFunction: fetchGeneratingCapacities
   });
 
   const toggleDrawer = () => {
@@ -61,7 +61,7 @@ const GeneratingCapacityList: React.FC<GeneratingCapacityListProps> = ({ model, 
   };
 
   const handleDelete = async (generatingCapacityId: string) => {
-    await otherApiService<GeneratingCapacity>().delete(model, generatingCapacityId);
+    await projectOtherApiService<GeneratingCapacity>().delete(model, generatingCapacityId);
     refetch();
   };
 
@@ -72,14 +72,23 @@ const GeneratingCapacityList: React.FC<GeneratingCapacityListProps> = ({ model, 
 
   const mapGeneratingCapacityToDetailItems = (generatingCapacity: GeneratingCapacity): { title: string; value: string }[] => [
     { title: t('project.other.generating-capacity.details.operator'), value: generatingCapacity.operator || 'N/A' },
-    { title: t('project.other.generating-capacity.details.turbine-type-number'), value: generatingCapacity.turbine_type_number?.toString() || 'N/A' },
+    {
+      title: t('project.other.generating-capacity.details.turbine-type-number'),
+      value: generatingCapacity.turbine_type_number?.toString() || 'N/A'
+    },
     { title: t('project.other.generating-capacity.details.designed-capacity'), value: generatingCapacity.designed_capacity || 'N/A' },
     { title: t('project.other.generating-capacity.details.generating-capacity'), value: generatingCapacity.generating_capacity || 'N/A' },
     { title: t('project.other.generating-capacity.details.installed-capacity'), value: generatingCapacity.installed_capacity || 'N/A' },
     { title: t('project.other.generating-capacity.details.capacity-factor'), value: generatingCapacity.capacity_factor || 'N/A' },
     { title: t('project.other.generating-capacity.details.annual-generation'), value: generatingCapacity.annual_generation || 'N/A' },
-    { title: t('common.table-columns.created-at'), value: generatingCapacity.created_at ? formatCreatedAt(generatingCapacity.created_at) : 'N/A' },
-    { title: t('common.table-columns.updated-at'), value: generatingCapacity.updated_at ? formatCreatedAt(generatingCapacity.updated_at) : 'N/A' },
+    {
+      title: t('common.table-columns.created-at'),
+      value: generatingCapacity.created_at ? formatCreatedAt(generatingCapacity.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: generatingCapacity.updated_at ? formatCreatedAt(generatingCapacity.updated_at) : 'N/A'
+    }
   ];
 
   return (
@@ -112,7 +121,7 @@ const GeneratingCapacityList: React.FC<GeneratingCapacityListProps> = ({ model, 
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: generatingCapacityColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
+          headers: generatingCapacityColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -130,8 +139,8 @@ const GeneratingCapacityList: React.FC<GeneratingCapacityListProps> = ({ model, 
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'generatingcapacity',
-          },
+            subject: 'generatingcapacity'
+          }
         }}
         fetchDataFunction={refetch}
         items={generatingCapacities || []}

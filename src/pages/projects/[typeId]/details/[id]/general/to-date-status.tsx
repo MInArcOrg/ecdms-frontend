@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import projectApiService from 'src/services/project/project-service';
 import LoadingPlaceholder from 'src/views/components/loader';
 import projectPerformaneConstant from 'src/views/pages/projects/constants/performance';
-import ProjectLayout from 'src/views/pages/projects/detail/project-layout';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import ProjectEarnedValueStatisticsCard from 'src/views/pages/projects/detail/todate-status/project-earned-value-statistics-card';
 import StatusTable from 'src/views/pages/projects/detail/todate-status/status-table';
 import subMenuItems from './(subMenuItems)';
@@ -40,7 +40,7 @@ const ToDateStatus = () => {
     error
   } = useQuery({
     queryKey: ['project-general-information', id],
-    queryFn: () => projectApiService.getProjectGeneralInformation(String(id), {}),
+    queryFn: () => projectApiService.getProjectTodateStatus(String(id), {}),
     enabled: !!id
   });
 

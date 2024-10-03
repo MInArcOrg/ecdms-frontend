@@ -127,8 +127,8 @@ export const uploadProfilePicture = (user_id: string | number, type: string, fil
 
 // Get photo
 export const getPhoto = (id: string | number, type: string): string => `${process.env.NEXT_PUBLIC_API_URL}/api/photo/${type}/${id}`;
-export const getStaticPhoto = (path: string) => `${process.env.NEXT_PUBLIC_BASE_URL}${path}`;
-export const getStaticFile = (path: string) => `${process.env.NEXT_PUBLIC_BASE_URL}${path}`;
+export const getStaticPhoto = (path: string) => `${process.env.NEXT_PUBLIC_API_URL}${path}`;
+export const getStaticFile = (path: string) => `${process.env.NEXT_PUBLIC_API_URL}${path}`;
 
 // Get multiple photos
 export const useGetMultiplePhotos = (params: GetRequestParam) => {

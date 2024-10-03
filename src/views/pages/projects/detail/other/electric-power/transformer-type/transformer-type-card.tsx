@@ -16,13 +16,7 @@ interface TransformerTypeCardProps {
   onDetail: (transformerType: TransformerType) => void;
 }
 
-const TransformerTypeCard: React.FC<TransformerTypeCardProps> = ({
-  transformerType,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail
-}) => {
+const TransformerTypeCard: React.FC<TransformerTypeCardProps> = ({ transformerType, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -51,10 +45,12 @@ const TransformerTypeCard: React.FC<TransformerTypeCardProps> = ({
             {t('project.other.transformer-type.details.description')}: {transformerType.description || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {transformerType.created_at ? formatCreatedAt(transformerType.created_at) : t('common.not-available')}
+            {t('common.table-columns.created-at')}:{' '}
+            {transformerType.created_at ? formatCreatedAt(transformerType.created_at) : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.updated-at')}: {transformerType.updated_at ? formatCreatedAt(transformerType.updated_at) : t('common.not-available')}
+            {t('common.table-columns.updated-at')}:{' '}
+            {transformerType.updated_at ? formatCreatedAt(transformerType.updated_at) : t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>

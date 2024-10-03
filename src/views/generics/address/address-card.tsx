@@ -16,7 +16,8 @@ const AddressCard = ({
   onEdit,
   onDelete,
   refetch,
-  transl
+  transl,
+  type
 }: {
   address: Address;
   onDetail: (address: Address) => void;
@@ -24,6 +25,7 @@ const AddressCard = ({
   onDelete: (id: string) => void;
   transl: any;
   refetch: () => void;
+  type: string;
 }) => {
   return (
     <Card>
@@ -33,7 +35,7 @@ const AddressCard = ({
             <CardContent>
               <Box display="flex" alignItems="center" justifyContent="space-between">
                 <Typography variant="h6">
-                  {transl('Project')} {transl('Location')}
+                  {transl(`commmon.address.${type}-location`)}
                 </Typography>
               </Box>
               <Box mt={3}>
@@ -41,7 +43,7 @@ const AddressCard = ({
               </Box>
               <Box mt={3} display="flex" gap={3}>
                 <Typography variant="body1">
-                  <strong>{transl('Address')}:</strong> {address.country}, {address.city}, {address.region}, {address.subcity},{' '}
+                  <strong>{transl('address.title')}:</strong> {address.country}, {address.city}, {address.region}, {address.subcity},{' '}
                   {address.street}, {address.block_number}, {address.house_number}
                 </Typography>
               </Box>

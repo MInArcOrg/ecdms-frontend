@@ -1,12 +1,9 @@
 import { Grid } from '@mui/material';
-import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
-import otherApiService from 'src/services/project/other-service';
-import { TurbineInfo, RoadSegment } from 'src/types/project/other';
-import CustomSelectBox from 'src/views/shared/form/custom-select';
+import { TurbineInfo } from 'src/types/project/other';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
@@ -19,11 +16,10 @@ interface TurbineInfoFormProps {
 
 const TurbineInfoForm: React.FC<TurbineInfoFormProps> = ({ formik, file, onFileChange, projectId }) => {
   const { t } = useTranslation();
- 
+
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-     
         <CustomTextBox
           fullWidth
           label={t('project.other.turbine-info.details.name')}

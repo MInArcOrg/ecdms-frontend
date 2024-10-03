@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import BuildingEnvelopMaterialForm from './building-envelop-material-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { BuildingEnvelopMaterial } from 'src/types/project/other';
@@ -32,10 +32,10 @@ const BuildingEnvelopMaterialDrawer = (props: BuildingEnvelopMaterialDrawerType)
   const isEdit = Boolean(buildingEnvelopMaterial?.id);
 
   const createBuildingEnvelopMaterial = async (body: IApiPayload<BuildingEnvelopMaterial>) =>
-    otherApiService<BuildingEnvelopMaterial>().create(model, body);
+    projectOtherApiService<BuildingEnvelopMaterial>().create(model, body);
 
   const editBuildingEnvelopMaterial = async (body: IApiPayload<BuildingEnvelopMaterial>) =>
-    otherApiService<BuildingEnvelopMaterial>().update(model, buildingEnvelopMaterial?.id || '', body);
+    projectOtherApiService<BuildingEnvelopMaterial>().update(model, buildingEnvelopMaterial?.id || '', body);
 
   const getPayload = (values: BuildingEnvelopMaterial) => {
     return {

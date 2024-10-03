@@ -53,7 +53,7 @@ const ProjectBondCard = ({
             {t('project.project-bond.form.issue-date')}
           </Typography>
           <Typography variant="h6">
-            {getDynamicDate(i18n, String(projectBond?.issue_date)).toLocaleDateString() || t('project.project-bond.form.no-date')}
+            {getDynamicDate(i18n, String(projectBond?.issue_date)).toDateString() || t('project.project-bond.form.no-date')}
           </Typography>
         </Box>
         <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
@@ -61,7 +61,7 @@ const ProjectBondCard = ({
             {t('project.project-bond.form.expiration-date')}
           </Typography>
           <Typography variant="h6">
-            {getDynamicDate(i18n, projectBond?.issue_date as string).toLocaleDateString() || t('project.project-bond.form.no-date')}
+            {getDynamicDate(i18n, projectBond?.issue_date as string).toDateString() || t('project.project-bond.form.no-date')}
           </Typography>
         </Box>
       </CardContent>

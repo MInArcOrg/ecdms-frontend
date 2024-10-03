@@ -21,6 +21,11 @@
       "apexcharts/*": ["./node_modules/apexcharts-clevision/*"]
     }
   },
-  "include": ["src", "declaration.d.ts", "src/views/dashboards/.tsx"],
+  "include": [
+    "src",
+    "declaration.d.ts",
+    "src/views/dashboards/.tsx",
+    "src/pages/projects/[typeId]/details/[id]/other/irrigation-dam/.tsx"
+  ],
   "exclude": ["node_modules"]
 }

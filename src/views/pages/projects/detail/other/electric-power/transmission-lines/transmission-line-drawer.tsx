@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import TransmissionLineForm from './transmission-line-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { TransmissionLine } from 'src/types/project/other';
@@ -31,16 +31,17 @@ const TransmissionLineDrawer = (props: TransmissionLineDrawerType) => {
 
   const isEdit = Boolean(transmissionLine?.id);
 
-  const createTransmissionLine = async (body: IApiPayload<TransmissionLine>) => otherApiService<TransmissionLine>().create(model, body);
+  const createTransmissionLine = async (body: IApiPayload<TransmissionLine>) => projectOtherApiService<TransmissionLine>().create(model, body);
 
-  const editTransmissionLine = async (body: IApiPayload<TransmissionLine>) => otherApiService<TransmissionLine>().update(model, transmissionLine?.id || '', body);
+  const editTransmissionLine = async (body: IApiPayload<TransmissionLine>) =>
+    projectOtherApiService<TransmissionLine>().update(model, transmissionLine?.id || '', body);
 
   const getPayload = (values: TransmissionLine) => {
     return {
       data: {
         ...values,
         id: transmissionLine?.id,
-        project_id: projectId,
+        project_id: projectId
       },
       files: uploadableFile ? [uploadableFile] : []
     };
@@ -69,7 +70,7 @@ const TransmissionLineDrawer = (props: TransmissionLineDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(transmissionLine as TransmissionLine),
+            ...(transmissionLine as TransmissionLine)
           }}
           createActionFunc={isEdit ? editTransmissionLine : createTransmissionLine}
           onActionSuccess={onActionSuccess}

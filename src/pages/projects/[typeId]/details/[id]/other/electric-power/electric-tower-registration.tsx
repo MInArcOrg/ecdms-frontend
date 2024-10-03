@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import ElectricTowerList from 'src/views/pages/projects/detail/other/electric-power/electric-tower';
-import OtherLayout from 'src/views/pages/projects/detail/other/layouts/other-layout';
+import ProjectOtherLayout from 'src/views/pages/projects/detail/other/layouts/project-other-layout';
 import subMenuItems, { findOtherModelName } from '../(subMenuItems)';
 
 function Index() {
@@ -12,7 +12,7 @@ function Index() {
   const activeSubType = 15;
 
   return (
-    <OtherLayout
+    <ProjectOtherLayout
       activeMenu={activeMenu}
       activeType={activeType}
       activeSubMenu={activeSubType}
@@ -24,7 +24,7 @@ function Index() {
         projectId={String(id)}
         typeId={String(typeId)}
       />
-    </OtherLayout>
+    </ProjectOtherLayout>
   );
 }
 

@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { useRouter } from 'next/router';
 import { bondConstants } from 'src/constants/bond-constants';
-import ProjectLayout from 'src/views/pages/projects/detail/project-layout';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import subMenuItems from './(subMenuItems)';
 import ProjectBondList from 'src/views/pages/projects/detail/project-finance/project-bond';
 

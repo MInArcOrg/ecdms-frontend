@@ -10,6 +10,7 @@ import { getStaticPhoto, uploadImage, uploadableResourceFileTypes, useGetMultipl
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ReactCropImage from 'src/views/components/custom/react-crop-image';
 import DescCollapse from './desc-collapse';
+import LoadingPlaceholder from 'src/views/components/loader';
 
 interface ResourceLayoutProps {
   children: React.ReactNode;
@@ -114,7 +115,7 @@ const ResourceLayout: React.FC<ResourceLayoutProps> = ({ children, id, data, goB
           <Card>
             <Tooltip title={t('resource.form.upload_image')} placement="top" arrow>
               {loading ? (
-                <CircularProgress sx={{ ml: '50%', mt: 5 }} />
+                <LoadingPlaceholder />
               ) : (
                 <Box
                   component="img"

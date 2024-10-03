@@ -38,8 +38,6 @@ const TransformerTypeForm: React.FC<TransformerTypeFormProps> = ({ formik, file,
           multiline
           rows={3}
         />
-       
-   
       </Grid>
 
       <Grid item xs={12}>

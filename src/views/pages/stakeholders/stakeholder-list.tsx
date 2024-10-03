@@ -14,7 +14,7 @@ import StakeholderDrawer from "./stakeholder-drawer";
 import StakeholderCard from "./stakeholder-card";
 import { StakeholderRow } from "./stakeholder-row";
 import { Stakeholder } from "src/types/stakeholder";
-import stakeholderApiService from "src/services/stakeholders/stakeholder-service";
+import stakeholderApiService from "src/services/stakeholder/stakeholder-service";
 
 function StakholdersList() {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -25,17 +25,17 @@ function StakholdersList() {
   const fetchResources = (
     params: GetRequestParam
   ): Promise<IApiResponse<Stakeholder[]>> => {
-    return stakeholderApiService.getAll(params);
+    return stakeholderApiService.getAll({ ...params, filter: { ...params.filter, stakeholdertype_id: typeId } });
   };
 
   const {
-    data: stakeholder,
+    data: stakeholders,
     isLoading,
     pagination,
     handlePageChange,
     refetch,
   } = usePaginatedFetch<Stakeholder[]>({
-    queryKey: ["stakesholders"],
+    queryKey: ["stakesholders", typeId as string],
     fetchFunction: fetchResources,
   });
 
@@ -66,6 +66,7 @@ function StakholdersList() {
       )}
       <Card>
         <ItemsListing
+          title={t("stakeholder.title")}
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
@@ -97,7 +98,7 @@ function StakholdersList() {
               String(typeId)
             ),
           }}
-          items={stakeholder || []}
+          items={stakeholders || []}
           onPaginationChange={handlePageChange}
         />
       </Card>

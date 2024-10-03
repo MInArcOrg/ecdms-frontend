@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { useRouter } from 'next/router';
-import ProjectLayout from 'src/views/pages/projects/detail/project-layout';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import ProjectTimeComponent from 'src/views/pages/projects/detail/project-time/project-time-info';
 import subMenuItems from './(subMenuItems)';
 

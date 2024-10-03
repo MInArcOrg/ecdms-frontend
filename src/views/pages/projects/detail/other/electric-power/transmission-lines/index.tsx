@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/project/other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from '../../layouts/other-detail-drawer';
+import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
 import TransmissionLineCard from './transmission-line-card';
 import TransmissionLineDrawer from './transmission-line-drawer';
 import { TransmissionLine } from 'src/types/project/other';
@@ -28,9 +28,9 @@ const TransmissionLineList: React.FC<TransmissionLineListProps> = ({ model, proj
   const { t } = useTranslation();
 
   const fetchTransmissionLines = (params: GetRequestParam): Promise<IApiResponse<TransmissionLine[]>> => {
-    return otherApiService<TransmissionLine>().getAll(model, {
+    return projectOtherApiService<TransmissionLine>().getAll(model, {
       ...params,
-      filter: { ...params.filter, project_id: projectId },
+      filter: { ...params.filter, project_id: projectId }
     });
   };
 
@@ -39,10 +39,10 @@ const TransmissionLineList: React.FC<TransmissionLineListProps> = ({ model, proj
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<TransmissionLine[]>({
     queryKey: ['transmissionLines'],
-    fetchFunction: fetchTransmissionLines,
+    fetchFunction: fetchTransmissionLines
   });
 
   const toggleDrawer = () => {
@@ -61,7 +61,7 @@ const TransmissionLineList: React.FC<TransmissionLineListProps> = ({ model, proj
   };
 
   const handleDelete = async (transmissionLineId: string) => {
-    await otherApiService<TransmissionLine>().delete(model, transmissionLineId);
+    await projectOtherApiService<TransmissionLine>().delete(model, transmissionLineId);
     refetch();
   };
 
@@ -77,13 +77,34 @@ const TransmissionLineList: React.FC<TransmissionLineListProps> = ({ model, proj
     { title: t('project.other.transmission-line.details.transmitting-power'), value: transmissionLine.transmitting_power || 'N/A' },
     { title: t('project.other.transmission-line.details.transmitting-current'), value: transmissionLine.transmitting_current || 'N/A' },
     { title: t('project.other.transmission-line.details.transmitting-voltage'), value: transmissionLine.transmitting_voltage || 'N/A' },
-    { title: t('project.other.transmission-line.details.transmission-towers-number'), value: transmissionLine?.transmission_towers_number !== null ? transmissionLine.transmission_towers_number?.toString()||"" : 'N/A' },
-    { title: t('project.other.transmission-line.details.start-northing'), value: transmissionLine.start_northing !== null ? transmissionLine.start_northing?.toString()||"" : 'N/A' },
-    { title: t('project.other.transmission-line.details.start-easting'), value: transmissionLine.start_easting !== null ? transmissionLine.start_easting?.toString()||"" : 'N/A' },
-    { title: t('project.other.transmission-line.details.end-northing'), value: transmissionLine.end_northing !== null ? transmissionLine.end_northing?.toString()||"" : 'N/A' },
-    { title: t('project.other.transmission-line.details.end-easting'), value: transmissionLine.end_easting !== null ? transmissionLine.end_easting?.toString()||"" : 'N/A' },
-    { title: t('common.table-columns.created-at'), value: transmissionLine.created_at ? formatCreatedAt(transmissionLine.created_at) : 'N/A' },
-    { title: t('common.table-columns.updated-at'), value: transmissionLine.updated_at ? formatCreatedAt(transmissionLine.updated_at) : 'N/A' },
+    {
+      title: t('project.other.transmission-line.details.transmission-towers-number'),
+      value: transmissionLine?.transmission_towers_number !== null ? transmissionLine.transmission_towers_number?.toString() || '' : 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line.details.start-northing'),
+      value: transmissionLine.start_northing !== null ? transmissionLine.start_northing?.toString() || '' : 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line.details.start-easting'),
+      value: transmissionLine.start_easting !== null ? transmissionLine.start_easting?.toString() || '' : 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line.details.end-northing'),
+      value: transmissionLine.end_northing !== null ? transmissionLine.end_northing?.toString() || '' : 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line.details.end-easting'),
+      value: transmissionLine.end_easting !== null ? transmissionLine.end_easting?.toString() || '' : 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: transmissionLine.created_at ? formatCreatedAt(transmissionLine.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: transmissionLine.updated_at ? formatCreatedAt(transmissionLine.updated_at) : 'N/A'
+    }
   ];
 
   return (
@@ -116,7 +137,7 @@ const TransmissionLineList: React.FC<TransmissionLineListProps> = ({ model, proj
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: transmissionLineColumns(handleClickDetail, handleEdit, handleDelete, t, refetch), // Updated function name
+          headers: transmissionLineColumns(handleClickDetail, handleEdit, handleDelete, t, refetch) // Updated function name
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -134,8 +155,8 @@ const TransmissionLineList: React.FC<TransmissionLineListProps> = ({ model, proj
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'transmissionline',
-          },
+            subject: 'transmissionline'
+          }
         }}
         fetchDataFunction={refetch}
         items={transmissionLines || []}

@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import TurbineInfoForm from './turbine-info-form';
 
 import { useState } from 'react';
-import otherApiService from 'src/services/project/other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { TurbineInfo } from 'src/types/project/other';
@@ -31,9 +31,10 @@ const TurbineInfoDrawer = (props: TurbineInfoDrawerType) => {
 
   const isEdit = Boolean(turbineInfo?.id);
 
-  const createTurbineInfo = async (body: IApiPayload<TurbineInfo>) => otherApiService<TurbineInfo>().create(model, body);
+  const createTurbineInfo = async (body: IApiPayload<TurbineInfo>) => projectOtherApiService<TurbineInfo>().create(model, body);
 
-  const editTurbineInfo = async (body: IApiPayload<TurbineInfo>) => otherApiService<TurbineInfo>().update(model, turbineInfo?.id || '', body);
+  const editTurbineInfo = async (body: IApiPayload<TurbineInfo>) =>
+    projectOtherApiService<TurbineInfo>().update(model, turbineInfo?.id || '', body);
 
   const getPayload = (values: TurbineInfo) => {
     return {

@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import otherApiService from 'src/services/project/other-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from '../../layouts/other-detail-drawer';
+import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
 import RoadInfoCard from './road-info-card';
 import RoadInfoDrawer from './road-info-drawer';
 import { RoadInfo } from 'src/types/project/other';
@@ -28,7 +28,7 @@ const RoadInfoList: React.FC<RoadInfoListProps> = ({ model, projectId, typeId })
   const { t } = useTranslation();
 
   const fetchRoadInfos = (params: GetRequestParam): Promise<IApiResponse<RoadInfo[]>> => {
-    return otherApiService<RoadInfo>().getAll(model, {
+    return projectOtherApiService<RoadInfo>().getAll(model, {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -61,7 +61,7 @@ const RoadInfoList: React.FC<RoadInfoListProps> = ({ model, projectId, typeId })
   };
 
   const handleDelete = async (roadInfoId: string) => {
-    await otherApiService<RoadInfo>().delete(model, roadInfoId);
+    await projectOtherApiService<RoadInfo>().delete(model, roadInfoId);
     refetch();
   };
 

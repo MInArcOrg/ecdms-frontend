@@ -89,11 +89,11 @@ const HydroElectricDamCard: React.FC<HydroElectricDamCardProps> = ({ hydroElectr
           onDelete={() => onDelete(hydroElectricDam.id)}
           deletePermissionRule={{
             action: 'delete',
-            subject: 'hydroElectricDam',
+            subject: 'hydroElectricDam'
           }}
           editPermissionRule={{
             action: 'edit',
-            subject: 'hydroElectricDam',
+            subject: 'hydroElectricDam'
           }}
           item={hydroElectricDam}
           options={[]}
