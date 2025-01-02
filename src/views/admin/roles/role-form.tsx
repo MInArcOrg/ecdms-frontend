@@ -5,11 +5,9 @@ import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface RoleFormProps {
   formik: FormikProps<Role>;
-  isLocaleEdit?: boolean;
-  defaultLocaleData?: Role;
 }
 
-const RoleForm: React.FC<RoleFormProps> = ({ formik, isLocaleEdit = false, defaultLocaleData }) => {
+const RoleForm: React.FC<RoleFormProps> = ({ formik }) => {
   const { t: transl } = useTranslation();
   return (
     <>
