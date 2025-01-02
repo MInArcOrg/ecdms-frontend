@@ -1,15 +1,15 @@
-import { useRouter } from 'next/router';
 import ProjectOtherLayout from 'src/views/pages/projects/detail/other/layouts/project-other-layout';
-import RailwayList from 'src/views/pages/projects/detail/other/railway/railway';
+import RailwayStationList from 'src/views/pages/projects/detail/other/railway/railway-station';
 import subMenuItems, { findOtherModelName } from '../(subMenuItems)';
+import { useRouter } from 'next/router';
 
-function Index() {
+function RailwayPage() {
   const router = useRouter();
   const { id, typeId } = router.query;
   const baseUrl = `/projects/${typeId}/details/${id}/other`;
   const activeMenu = 8;
   const activeType = 5;
-  const activeSubType = 16;
+  const activeSubType = 17;
 
   return (
     <ProjectOtherLayout
@@ -19,7 +19,7 @@ function Index() {
       subMenuItems={subMenuItems}
       baseUrl={baseUrl}
     >
-      <RailwayList
+      <RailwayStationList
         model={findOtherModelName(subMenuItems(baseUrl), activeType, activeSubType) || ''}
         projectId={String(id)}
         typeId={String(typeId)}
@@ -28,9 +28,4 @@ function Index() {
   );
 }
 
-Index.acl = {
-  action: 'view_other',
-  subject: 'other'
-};
-
-export default Index;
+export default RailwayPage;

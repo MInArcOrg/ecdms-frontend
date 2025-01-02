@@ -24,7 +24,7 @@ export const StakeholderRow = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t("stakeholders.columns.title"),
+      headerName: t("stakeholder.columns.title"),
       field: "title",
       renderCell: ({ row }: CellType) => {
         return (
@@ -46,7 +46,7 @@ export const StakeholderRow = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t("stakeholders.columns.tin"),
+      headerName: t("stakeholder.columns.tin"),
       field: "tin",
       renderCell: ({ row }: CellType) => {
         return (

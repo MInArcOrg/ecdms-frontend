@@ -11,6 +11,9 @@ function Index() {
   const activeType = 5;
   const activeSubType = 17;
 
+  // Use a key to identify the unique child component based on route params
+  const key = `${typeId}-${id}-${activeType}-${activeSubType}`;
+
   return (
     <ProjectOtherLayout
       activeMenu={activeMenu}
@@ -19,6 +22,7 @@ function Index() {
       subMenuItems={subMenuItems}
       baseUrl={baseUrl}
     >
+      {/* Child component re-renders when key changes */}
       <RailwayStationList
         model={findOtherModelName(subMenuItems(baseUrl), activeType, activeSubType) || ''}
         projectId={String(id)}
