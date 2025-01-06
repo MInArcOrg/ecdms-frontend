@@ -11,8 +11,6 @@ import {
   TableContainer,
   Paper,
   Pagination,
-  Snackbar,
-  Alert,
 } from '@mui/material';
 import { GridDeleteIcon } from '@mui/x-data-grid';
 import roadInfoApiService from 'src/services/road-info/road-info-service';
@@ -27,45 +25,42 @@ import EditIcon from '@mui/icons-material/Edit';
 const roadInfoValidationSchema = Yup.object().shape({
   material: Yup.string().required('Material is required'),
   location_function: Yup.string().required('Location is required'),
-  traffic_volume: Yup.number()
-    .required('Traffic volume is required')
-    .min(0, 'Traffic volume must be positive'),
+  traffic_volume: Yup.number().required('Traffic volume is required').min(0, 'Traffic volume must be positive'),
   traffic_type: Yup.string().required('Traffic type is required'),
   economy: Yup.string().required('Economy is required'),
   rigidity: Yup.string().required('Rigidity is required'),
   topography: Yup.string().required('Topography is required'),
-  project_id: Yup.string().required('Project ID is required'),
+  project_id: Yup.string().required('Project ID is required')
 });
 
 const ActionTypes = {
-    SET_DATA: 'SET_DATA',
-    SET_FORM: 'SET_FORM',
-    RESET_FORM: 'RESET_FORM',
-    SET_SNACKBAR: 'SET_SNACKBAR',
-    SET_PAGINATION: 'SET_PAGINATION',
-  } as const;
+  SET_DATA: 'SET_DATA',
+  SET_FORM: 'SET_FORM',
+  RESET_FORM: 'RESET_FORM',
+  SET_SNACKBAR: 'SET_SNACKBAR',
+  SET_PAGINATION: 'SET_PAGINATION'
+} as const;
 
-  const initialState: RoadInfoState = {
-    roadInfoData: [],
-    formData: {
-      id: '',
-      material: '',
-      location_function: '',
-      traffic_volume: 0,
-      traffic_type: '',
-      economy: '',
-      rigidity: '',
-      topography: '',
-      project_id: '', 
-      created_at: new Date(),
-      updated_at: new Date(),
-      files: [],
-    },
-    loading: true,
-    snackbar: { open: false, message: '', severity: 'success' },
-    pagination: { page: 1, pageSize: 10, total: 0 },
-  };
-  
+const initialState: RoadInfoState = {
+  roadInfoData: [],
+  formData: {
+    id: '',
+    material: '',
+    location_function: '',
+    traffic_volume: 0,
+    traffic_type: '',
+    economy: '',
+    rigidity: '',
+    topography: '',
+    project_id: '',
+    created_at: new Date(),
+    updated_at: new Date(),
+    files: []
+  },
+  loading: true,
+  snackbar: { open: false, message: '', severity: 'success' },
+  pagination: { page: 1, pageSize: 10, total: 0 }
+};
 
 // Reducer function
 function reducer(state: RoadInfoState, action: Action): RoadInfoState {
@@ -86,7 +81,7 @@ function reducer(state: RoadInfoState, action: Action): RoadInfoState {
 }
 
 type RoadInfoPageProps = {
-  projectId: string; 
+  projectId: string;
 };
 
 const RoadInfoPage: React.FC<RoadInfoPageProps> = ({ projectId }) => {
@@ -98,7 +93,6 @@ const RoadInfoPage: React.FC<RoadInfoPageProps> = ({ projectId }) => {
   useEffect(() => {
     dispatch({ type: ActionTypes.SET_FORM, payload: { project_id: projectId } });
   }, [projectId]);
-  
 
   const refetchData = () => {
     useRoadInfoData(state.pagination, dispatch);
@@ -118,49 +112,44 @@ const RoadInfoPage: React.FC<RoadInfoPageProps> = ({ projectId }) => {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+
     try {
       // Validate form data
       await roadInfoValidationSchema.validate(state.formData, { abortEarly: false });
-  
+
       const isEdit = Boolean(state.formData.id);
       const action = isEdit
-      ? roadInfoApiService.update(state.formData.id, 'roadInfoModel', {
-          data: {
-            ...state.formData,
-            created_at: state.formData.created_at || new Date(),
-            updated_at: new Date(), 
-          },
-          files: state.formData.files || null, 
-        })
-      : roadInfoApiService.create('roadInfoModel', {
-          data: {
-            ...state.formData,
-            created_at: new Date(), 
-            updated_at: new Date(),
-          },
-          files: state.formData.files || null, 
-        });
-    
-    
-    
-    await action;
-    
-  
+        ? roadInfoApiService.update(state.formData.id, 'roadInfoModel', {
+            data: {
+              ...state.formData,
+              created_at: state.formData.created_at || new Date(),
+              updated_at: new Date()
+            },
+            files: state.formData.files || null
+          })
+        : roadInfoApiService.create('roadInfoModel', {
+            data: {
+              ...state.formData,
+              created_at: new Date(),
+              updated_at: new Date()
+            },
+            files: state.formData.files || null
+          });
+
+      await action;
+
       dispatch({
         type: ActionTypes.SET_DATA,
         payload: isEdit
-          ? state.roadInfoData.map((road) =>
-              road.id === state.formData.id ? { ...road, ...state.formData } : road
-            )
-          : [...state.roadInfoData, state.formData],
+          ? state.roadInfoData.map((road) => (road.id === state.formData.id ? { ...road, ...state.formData } : road))
+          : [...state.roadInfoData, state.formData]
       });
-  
+
       dispatch({
         type: ActionTypes.SET_SNACKBAR,
-        payload: { open: true, message: isEdit ? 'Updated successfully' : 'Created successfully', severity: 'success' },
+        payload: { open: true, message: isEdit ? 'Updated successfully' : 'Created successfully', severity: 'success' }
       });
-  
+
       dispatch({ type: ActionTypes.RESET_FORM, payload: {} });
 
       setFormVisible(false);
@@ -173,18 +162,18 @@ const RoadInfoPage: React.FC<RoadInfoPageProps> = ({ projectId }) => {
       } else {
         dispatch({
           type: ActionTypes.SET_SNACKBAR,
-          payload: { open: true, message: 'Operation failed', severity: 'error' },
+          payload: { open: true, message: 'Operation failed', severity: 'error' }
         });
       }
     }
   };
-  
+
   const handleDelete = async (id: string) => {
     try {
       await roadInfoApiService.delete(id, 'roadInfoModel');
       dispatch({
         type: ActionTypes.SET_SNACKBAR,
-        payload: { open: true, message: 'Deleted successfully', severity: 'success' },
+        payload: { open: true, message: 'Deleted successfully', severity: 'success' }
       });
 
       // Refetch data
@@ -192,14 +181,16 @@ const RoadInfoPage: React.FC<RoadInfoPageProps> = ({ projectId }) => {
     } catch {
       dispatch({
         type: ActionTypes.SET_SNACKBAR,
-        payload: { open: true, message: 'Failed to delete', severity: 'error' },
+        payload: { open: true, message: 'Failed to delete', severity: 'error' }
       });
     }
   };
 
   return (
     <Box padding={3}>
-      <Typography variant="h4" marginBottom={3}>Manage Road Info</Typography>
+      <Typography variant="h4" marginBottom={3}>
+        Manage Road Info
+      </Typography>
 
       <IconButton onClick={() => setFormVisible(true)} color="primary" style={{ marginBottom: '20px' }}>
         <Icon icon="tabler:plus" fontSize="1.5rem" />
@@ -214,7 +205,9 @@ const RoadInfoPage: React.FC<RoadInfoPageProps> = ({ projectId }) => {
       />
 
       <Box marginTop={4}>
-        <Typography variant="h5" marginBottom={2}>Existing Road Info</Typography>
+        <Typography variant="h5" marginBottom={2}>
+          Existing Road Info
+        </Typography>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
@@ -235,7 +228,7 @@ const RoadInfoPage: React.FC<RoadInfoPageProps> = ({ projectId }) => {
                   <TableCell>{road.traffic_type}</TableCell>
                   <TableCell>
                     <IconButton onClick={() => handleEdit(road)} color="primary" size="small">
-                    <EditIcon />
+                      <EditIcon />
                     </IconButton>
                     <IconButton onClick={() => handleDelete(road.id)} style={{ color: 'red' }}>
                       <GridDeleteIcon />

@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  Typography,
-  Drawer,
-  Grid,
-  TextField,
-  Button,
-} from '@mui/material';
+import { Box, Typography, Drawer, Grid, TextField, Button } from '@mui/material';
 import { RoadSegment } from 'src/types/project/other';
 
 const RoadSegmentForm = ({
@@ -14,7 +7,7 @@ const RoadSegmentForm = ({
   onFormChange,
   onSubmit,
   isVisible,
-  onClose,
+  onClose
 }: {
   formData: RoadSegment;
   onFormChange: React.ChangeEventHandler<HTMLInputElement>;
@@ -31,25 +24,11 @@ const RoadSegmentForm = ({
 
         <form onSubmit={onSubmit}>
           <Grid container spacing={2}>
-           
             <Grid item xs={12} md={12}>
-              <TextField
-                label="Name"
-                name="name"
-                fullWidth
-                value={formData.name}
-                onChange={onFormChange}
-                required
-              />
+              <TextField label="Name" name="name" fullWidth value={formData.name} onChange={onFormChange} required />
             </Grid>
             <Grid item xs={12} md={12}>
-              <TextField
-                label="Specifications"
-                name="specifications"
-                fullWidth
-                value={formData.specifications}
-                onChange={onFormChange}
-              />
+              <TextField label="Specifications" name="specifications" fullWidth value={formData.specifications} onChange={onFormChange} />
             </Grid>
             <Grid item xs={12} md={12}>
               <TextField
@@ -62,24 +41,10 @@ const RoadSegmentForm = ({
               />
             </Grid>
             <Grid item xs={12} md={12}>
-              <TextField
-                label="Length"
-                name="length"
-                fullWidth
-                value={formData.length}
-                onChange={onFormChange}
-                type="number"
-              />
+              <TextField label="Length" name="length" fullWidth value={formData.length} onChange={onFormChange} type="number" />
             </Grid>
             <Grid item xs={12} md={12}>
-              <TextField
-                label="Width"
-                name="width"
-                fullWidth
-                value={formData.width}
-                onChange={onFormChange}
-                type="number"
-              />
+              <TextField label="Width" name="width" fullWidth value={formData.width} onChange={onFormChange} type="number" />
             </Grid>
             <Grid item xs={12} md={12}>
               <TextField
@@ -122,13 +87,7 @@ const RoadSegmentForm = ({
               />
             </Grid>
             <Grid item xs={12} md={12}>
-              <TextField
-                label="Revision Number"
-                name="revision_no"
-                fullWidth
-                value={formData.revision_no}
-                onChange={onFormChange}
-              />
+              <TextField label="Revision Number" name="revision_no" fullWidth value={formData.revision_no} onChange={onFormChange} />
             </Grid>
             <Grid item xs={12} container justifyContent="center">
               <Button variant="contained" color="primary" type="submit">

@@ -9,22 +9,22 @@ import { buildPutRequest } from 'src/utils/requests/put-request';
 const roadInfoApiService = {
   getAll: (model: string, params: GetRequestParam): Promise<IApiResponse<RoadInfo[]>> =>
     buildGetRequest(`/projects/roadinfos`, { ...params })
-      .then((response: AxiosResponse<IApiResponse<RoadInfo[]>>) => {  
-        return response.data; 
+      .then((response: AxiosResponse<IApiResponse<RoadInfo[]>>) => {
+        return response.data;
       })
       .catch((error: any) => {
-        console.error('Error in getAll:', error);  
-        throw error;  
+        console.error('Error in getAll:', error);
+        throw error;
       }),
 
   getOne: (id: string, model: string, params: GetRequestParam): Promise<IApiResponse<RoadInfo>> =>
     buildGetRequest(`/projects/roadinfos/${id}`, { ...params })
       .then((response: AxiosResponse<IApiResponse<RoadInfo>>) => {
-        return response.data;  
+        return response.data;
       })
       .catch((error: any) => {
-        console.error('Error in getOne:', error);  
-        throw error;  
+        console.error('Error in getOne:', error);
+        throw error;
       }),
 
   create: (model: string, body: IApiPayload<RoadInfo>): Promise<IApiResponse<RoadInfo>> =>
@@ -56,7 +56,7 @@ const roadInfoApiService = {
       .catch((error: any) => {
         console.error('Error in delete:', error);
         throw error;
-      }),
+      })
 };
 
 export default roadInfoApiService;

@@ -1,22 +1,13 @@
 import React from 'react';
-import {
-  Box,
-  Typography,
-  IconButton,
-  Drawer,
-  Grid,
-  TextField,
-  Button,
-} from '@mui/material';
+import { Box, Typography, Drawer, Grid, TextField, Button } from '@mui/material';
 import { FormData } from 'src/types/road';
-import useRoadInfoData from 'src/@core/hooks/useRoadInfoData';
 
 const RoadInfoForm = ({
   formData,
   onFormChange,
   onSubmit,
   isVisible,
-  onClose,
+  onClose
 }: {
   formData: FormData;
   onFormChange: React.ChangeEventHandler<HTMLInputElement>;
@@ -55,9 +46,9 @@ const RoadInfoForm = ({
               />
             </Grid>
             <Grid item xs={12} container justifyContent="center">
-            <Button type="submit" variant="contained" color="primary">
+              <Button type="submit" variant="contained" color="primary">
                 {formData.id ? 'Update' : 'Create'}
-            </Button>
+              </Button>
             </Grid>
           </Grid>
         </form>

@@ -21,19 +21,19 @@ const useRoadInfoData = (pagination: Pagination, dispatch: Dispatch) => {
       try {
         const params: ExtendedGetRequestParam = {
           page: pagination.page,
-          limit: pagination.pageSize,
+          limit: pagination.pageSize
         };
 
         const response = await roadInfoApiService.getAll('roadInfoModel', params);
         dispatch({ type: 'SET_DATA', payload: response.payload });
         dispatch({
           type: 'SET_PAGINATION',
-          payload: { ...pagination, total: response._attributes.pagination.total },
+          payload: { ...pagination, total: response._attributes.pagination.total }
         });
       } catch {
         dispatch({
           type: 'SET_SNACKBAR',
-          payload: { open: true, message: 'Failed to fetch data', severity: 'error' },
+          payload: { open: true, message: 'Failed to fetch data', severity: 'error' }
         });
       }
     };

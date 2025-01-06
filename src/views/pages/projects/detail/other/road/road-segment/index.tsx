@@ -39,10 +39,10 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<RoadSegment[]>({
     queryKey: ['roadSegments'],
-    fetchFunction: fetchRoadSegments,
+    fetchFunction: fetchRoadSegments
   });
 
   const toggleDrawer = () => {
@@ -114,7 +114,7 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: roadSegmentColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
+          headers: roadSegmentColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -126,8 +126,8 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'roadsegment',
-          },
+            subject: 'roadsegment'
+          }
         }}
         fetchDataFunction={refetch}
         items={roadSegments || []}
