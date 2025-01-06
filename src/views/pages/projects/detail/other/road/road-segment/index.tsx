@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import projectOtherApiService from 'src/services/project/project-other-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
@@ -14,6 +13,7 @@ import RoadSegmentDrawer from './road-segment-drawer';
 import { RoadSegment } from 'src/types/project/other';
 import { roadSegmentColumns } from './road-segment-row';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import roadSegmentApiService from 'src/services/road-info/road-info-segment-service';
 
 interface RoadSegmentListProps {
   model: string;
@@ -28,7 +28,7 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
   const { t } = useTranslation();
 
   const fetchRoadSegments = (params: GetRequestParam): Promise<IApiResponse<RoadSegment[]>> => {
-    return projectOtherApiService<RoadSegment>().getAll(model, {
+    return roadSegmentApiService.getAll(model, {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -39,35 +39,35 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<RoadSegment[]>({
     queryKey: ['roadSegments'],
-    fetchFunction: fetchRoadSegments
+    fetchFunction: fetchRoadSegments,
   });
 
   const toggleDrawer = () => {
-    setSelectedRow(null);
+    setSelectedRow({} as RoadSegment);
     setShowDrawer(!showDrawer);
   };
 
   const toggleDetailDrawer = () => {
-    setSelectedRow(null);
+    setSelectedRow({} as RoadSegment);
     setShowDetailDrawer(!showDetailDrawer);
   };
 
   const handleEdit = (roadSegment: RoadSegment) => {
+    toggleDrawer();
     setSelectedRow(roadSegment);
-    setShowDrawer(true);
   };
 
   const handleDelete = async (roadSegmentId: string) => {
-    await projectOtherApiService<RoadSegment>().delete(model, roadSegmentId);
+    await roadSegmentApiService.delete(roadSegmentId, model);
     refetch();
   };
 
   const handleClickDetail = (roadSegment: RoadSegment) => {
+    toggleDetailDrawer();
     setSelectedRow(roadSegment);
-    setShowDetailDrawer(true);
   };
 
   const mapRoadSegmentToDetailItems = (roadSegment: RoadSegment): { title: string; value: string }[] => [
@@ -101,11 +101,11 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapRoadSegmentToDetailItems(selectedRow!)}
+          data={mapRoadSegmentToDetailItems(selectedRow as RoadSegment)}
           hasReference={true}
           id={selectedRow?.id || ''}
           fileType={uploadableProjectFileTypes.other.roadSegment}
-          title={t('project.other.road-segment.road-segment-details')}
+          title={t('project.other.road-segment.details')}
         />
       )}
 
@@ -114,7 +114,7 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: roadSegmentColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
+          headers: roadSegmentColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -126,8 +126,8 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'roadsegment'
-          }
+            subject: 'roadsegment',
+          },
         }}
         fetchDataFunction={refetch}
         items={roadSegments || []}

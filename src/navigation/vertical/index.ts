@@ -21,6 +21,16 @@ const navigation = (): VerticalNavItemsType => {
           icon: 'tabler:users'
         },
         {
+          title: 'Road Info',   
+          path: '/projects/roadinfos',   
+          icon: 'tabler:road',           
+        },
+        {
+          title: 'Road segments',
+          path: '/projects/roadsegments',   
+          icon: 'tabler:road-sign',         
+        },
+        {
           title: 'navigation.master-data.project',
           path: '/master-data/project',
           icon: 'tabler:box-multiple'

@@ -58,3 +58,7 @@ export interface IApiPayload<T = any> {
 export interface IAttributePagination {
   pagination: Pagination;
 }
+
+export interface GetRequestParamWithModel extends GetRequestParam {
+  model: string;
+}
