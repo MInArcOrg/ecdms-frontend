@@ -27,11 +27,19 @@ const RoadSegmentDrawer = (props: RoadSegmentDrawerType) => {
     setUploadableFile(file);
   };
 
-  const validationSchema = yup.object().shape({});
+  const validationSchema = yup.object().shape({
+    name: yup.string().required(),
+    specifications: yup.string().nullable(),
+    no_of_layers: yup.number().nullable(),
+    length: yup.number().nullable(),
+    width: yup.number().nullable()
+  });
 
   const isEdit = Boolean(roadSegment?.id);
 
-  const createRoadSegment = async (body: IApiPayload<RoadSegment>) => projectOtherApiService<RoadSegment>().create(model, body);
+  const createRoadSegment = async (body: IApiPayload<RoadSegment>) => {
+    return await projectOtherApiService<RoadSegment>().create(model, body);
+  };
 
   const editRoadSegment = async (body: IApiPayload<RoadSegment>) =>
     projectOtherApiService<RoadSegment>().update(model, roadSegment?.id || '', body);

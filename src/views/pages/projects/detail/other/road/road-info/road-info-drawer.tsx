@@ -27,13 +27,24 @@ const RoadInfoDrawer = (props: RoadInfoDrawerType) => {
     setUploadableFile(file);
   };
 
-  const validationSchema = yup.object().shape({});
+  const validationSchema = yup.object().shape({
+    material: yup.string().required(),
+    location_function: yup.string().required(),
+    traffic_volume: yup.number().required(),
+    traffic_type: yup.string().required(),
+    economy: yup.string().required()
+  });
 
   const isEdit = Boolean(roadInfo?.id);
 
-  const createRoadInfo = async (body: IApiPayload<RoadInfo>) => projectOtherApiService<RoadInfo>().create(model, body);
+  const createRoadInfo = async (body: IApiPayload<RoadInfo>) => {
+    console.log('createRoadInfo', body);
+    return await projectOtherApiService<RoadInfo>().create(model, body);
+  };
 
-  const editRoadInfo = async (body: IApiPayload<RoadInfo>) => projectOtherApiService<RoadInfo>().update(model, roadInfo?.id || '', body);
+  const editRoadInfo = async (body: IApiPayload<RoadInfo>) => {
+    return await projectOtherApiService<RoadInfo>().update(model, roadInfo?.id || '', body);
+  };
 
   const getPayload = (values: RoadInfo) => {
     return {

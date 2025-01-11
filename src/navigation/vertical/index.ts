@@ -77,6 +77,17 @@ const navigation = (): VerticalNavItemsType => {
       icon: 'tabler:building',
       path: '/departments'
     },
+    { sectionTitle: 'Road' },
+    {
+      title: 'Road Info',
+      path: '/road/road-info',
+      icon: 'tabler:road'
+    },
+    {
+      title: 'Road Segment',
+      path: '/road/road-segment',
+      icon: 'tabler:lane'
+    },
     {
       sectionTitle: 'navigation.main-module'
     }
