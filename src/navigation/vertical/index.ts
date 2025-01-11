@@ -39,6 +39,20 @@ const navigation = (): VerticalNavItemsType => {
           title: 'navigation.master-data.general',
           path: '/master-data/general',
           icon: 'tabler:tools'
+        },
+        {
+          title: 'Project Additional Info',
+          icon: 'tabler:file-info',
+          path: '/projects/project-additional-info',
+          action: 'view_additionalinfo',
+          subject: 'additionalinfo'
+        },
+        {
+          title: 'Project Outcome',
+          icon: 'tabler:chart-bar',
+          path: '/projects/project-outcome',
+          action: 'view_projectOutcome',
+          subject: 'outcome'
         }
       ]
     },

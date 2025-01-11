@@ -986,6 +986,22 @@
         "rebate": "Rebate",
         "remark": "Remark"
       }
+    },
+    "additional-info": {
+      "create-additional-info": "Create Additional Info",
+      "title": "Additional Information",
+      "details": "Additional Info Details",
+      "status": "Status",
+      "accidents": "Accidents",
+      "reason": "Reason"
+    },
+    "outcome": {
+      "create-outcome": "Create Project Outcome",
+      "title": "Project Outcome",
+      "details": "Project Outcome Details",
+      "construction-type": "Construction Type",
+      "function": "Function",
+      "lesson-learned": "Lesson Learned"
     }
   },
   "location": {
@@ -1031,6 +1047,7 @@
     "rejected-data": "Rejected Data"
   },
   "common": {
+    "id": "ID",
     "edit": "Edit",
     "not-available": "Not Available",
     "create": "Create",

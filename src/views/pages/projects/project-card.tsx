@@ -15,7 +15,7 @@ const ProjectCard = ({
   refetch
 }: {
   project: Project;
-  onDetail: (project: Project) => void;
+  onDetail: (project: Project) => void; 
   onEdit: (project: Project) => void;
   onDelete: (id: string) => void;
   t: any;
