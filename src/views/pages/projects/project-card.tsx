@@ -1,5 +1,5 @@
 // components/ProjectList.tsx
-import { Box, Card, CardActions, CardContent, Grid, Link, Typography } from '@mui/material';
+import { Box, Card, CardActions, CardContent, Grid, Link, Typography, Button } from '@mui/material';
 import { Fragment } from 'react';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { Project } from 'src/types/project';
@@ -80,6 +80,7 @@ const ProjectCard = ({
                       options={[]}
                     />
                   </Box>
+                   <Button onClick={() => onDetail(project)}>View Details</Button>
                 </Box>
               </Fragment>
             </CardActions>

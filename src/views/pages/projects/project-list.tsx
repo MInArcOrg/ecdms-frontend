@@ -13,10 +13,11 @@ import ItemsListing from 'src/views/shared/listing';
 import ProjectCard from './project-card';
 import ProjectDrawer from './project-drawer';
 import { projectColumns } from './project-row';
+import ProjectAdditionalInfoPage from 'src/pages/projects/project-additional-infos';
 
 function ProjectList() {
   const [showDrawer, setShowDrawer] = useState(false);
-
+  const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
   const [selectedRow, setSelectedRow] = useState<Project | null>(null);
   const { t } = useTranslation();
   const router = useRouter();
@@ -39,6 +40,11 @@ function ProjectList() {
   const toggleDrawer = () => {
     setSelectedRow({} as Project);
     setShowDrawer(!showDrawer);
+  };
+
+  const toggleAdditionalInfo = (project: Project) => {
+    setSelectedRow(project);
+    setShowAdditionalInfo(true); 
   };
 
   const handleEdit = (project: Project) => {
@@ -67,7 +73,13 @@ function ProjectList() {
           type={ITEMS_LISTING_TYPE.grid.value}
           isLoading={isLoading}
           ItemViewComponent={({ data }) => (
-            <ProjectCard onDetail={() => { }} project={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
+            <ProjectCard project={data} 
+            onDetail={toggleAdditionalInfo} 
+            onDelete={handleDelete}
+            onEdit={handleEdit}
+            t={t}
+            refetch={refetch}
+          />
           )}
           title={t('project.title')}
           createActionConfig={{
@@ -86,6 +98,12 @@ function ProjectList() {
           items={projects || []}
           onPaginationChange={handlePageChange}
         />
+      {showAdditionalInfo && selectedRow && (
+        <ProjectAdditionalInfoPage
+          projectId={selectedRow.id} 
+          onClose={() => setShowAdditionalInfo(false)} 
+        />
+      )}
       </Card>
     </Box>
   );

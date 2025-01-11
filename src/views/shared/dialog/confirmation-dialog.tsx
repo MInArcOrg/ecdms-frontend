@@ -19,7 +19,7 @@ const ConfirmationDialog: ComponentType<ConfirmationDialogProps> = ({ open, hand
         </DialogContent>
         <DialogActions className="dialog-actions-dense">
           <Button onClick={onCancel}>Disagree</Button>
-          <Button onClick={onConfirm}>Agree</Button>
+          <Button onClick={onConfirm} sx={ { color: 'error.main' } }>Agree</Button>
         </DialogActions>
       </Dialog>
     </Fragment>
