@@ -70,6 +70,20 @@ const menuItems = (id: string, typeId: string): MenuItem[] => [
     path: `/projects/${typeId}/details/${id}/other/`,
     action: 'view_other',
     subject: 'other'
+  },
+  {
+    id: 10,
+    title: 'project.additional-info.title',
+    path: `/projects/${typeId}/details/${id}/project-additional-info`,
+    action: 'view_project_additional_info',
+    subject: 'project-additional-info'
+  },
+  {
+    id: 11,
+    title: 'project.outcome.title',
+    path: `/projects/${typeId}/details/${id}/project-outcome`,
+    action: 'view_project_outcome',
+    subject: 'project-outcome'
   }
 ];
 export type ProjectMenuItem = ReturnType<typeof menuItems>;

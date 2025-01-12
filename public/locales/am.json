@@ -1,3 +1,26 @@
 {
-    "about":"ስለ"
+    "common": {
+        "id": "መለያ",
+        "table-columns": {
+            "actions": "ድርጊቶች"
+        }
+    },
+    "project": {
+        "additional-info": {
+            "create-additional-info": "ተጨማሪ መረጃ ፍጠር",
+            "title": "ተጨማሪ መረጃ",
+            "details": "ተጨማሪ መረጃ ዝርዝሮች",
+            "status": "ሁኔታ",
+            "accidents": "አደጋዎች",
+            "reason": "ምክንያት"
+        },
+        "outcome": {
+            "create-outcome": "ውጤት ፍጠር",
+            "title": "ውጤት",
+            "details": "የውጤት ዝርዝሮች",
+            "construction-type": "የግንባታ አይነት",
+            "function": "ተግባር",
+            "lesson-learned": "የተማርነው ትምህርት"
+        }
+    }
 }
