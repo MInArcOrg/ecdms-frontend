@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
 import StakeholderCertificateList from 'src/views/pages/stakeholders/details/stakeholder-certificate';
-import subMenuItems from './(subMenuItems)';
+import subMenuItems from './(sub-menu-items)';
 
 function StakeholderInformation() {
   const router = useRouter();

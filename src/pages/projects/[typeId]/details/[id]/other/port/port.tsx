@@ -31,7 +31,7 @@ function PortPage() {
 
 PortPage.acl = {
   action: 'view_other',
-  subject: 'other',
+  subject: 'other'
 };
 
 export default PortPage;

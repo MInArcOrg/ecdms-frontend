@@ -6,7 +6,7 @@ import stakeholderInfoApiService from 'src/services/stakeholder/stakeholder-info
 import LoadingPlaceholder from 'src/views/components/loader';
 import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
 import StakeholderInfoDetailComponent from 'src/views/pages/stakeholders/details/stakeholder-info';
-import subMenuItems from './(subMenuItems)';
+import subMenuItems from './(sub-menu-items)';
 import { StakeholderInfo } from 'src/types/stakeholder';
 import StakeholderPhoneList from 'src/views/pages/stakeholders/details/stakeholder-info/stakeholder-phone';
 import StakeholderEmailList from 'src/views/pages/stakeholders/details/stakeholder-info/stakeholder-email';

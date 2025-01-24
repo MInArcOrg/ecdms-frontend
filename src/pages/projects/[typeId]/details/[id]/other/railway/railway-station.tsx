@@ -12,7 +12,7 @@ function Index() {
   const activeSubType = 17;
 
   // Use a key to identify the unique child component based on route params
-  const key = `${typeId}-${id}-${activeType}-${activeSubType}`;
+  // const key = `${typeId}-${id}-${activeType}-${activeSubType}`;
 
   return (
     <ProjectOtherLayout

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
 import TotalEmployeeList from 'src/views/pages/stakeholders/employees/total-employee';
-import subMenuItems from './(subMenuItems)';
+import subMenuItems from './(sub-menu-items)';
 
 function TotalEmployee() {
   const router = useRouter();

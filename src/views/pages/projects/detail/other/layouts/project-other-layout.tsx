@@ -16,14 +16,7 @@ const ProjectOtherLayout: React.FC<OtherProjectLayoutProps> = (props) => {
   // Memoize the subMenuItems to prevent unnecessary recalculations and re-renders
   const memoizedSubMenuItems = useMemo(() => props.subMenuItems(props.baseUrl), [props.baseUrl, props.subMenuItems]);
 
-  return (
-    <OtherLayout
-      layoutComponent={ProjectLayout}
-      subMenuComponent={OtherSubMenu}
-      {...props}
-      subMenuItems={memoizedSubMenuItems}
-    />
-  );
+  return <OtherLayout layoutComponent={ProjectLayout} subMenuComponent={OtherSubMenu} {...props} subMenuItems={memoizedSubMenuItems} />;
 };
 
 export default ProjectOtherLayout;

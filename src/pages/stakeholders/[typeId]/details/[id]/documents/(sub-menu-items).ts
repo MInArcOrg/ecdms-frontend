@@ -1,0 +1,45 @@
+interface SubMenuItem {
+  id: number;
+  title: string;
+  path: string;
+}
+
+const subMenuItems = (id: string, typeId: string): SubMenuItem[] => [
+  {
+    id: 1,
+    title: 'stakeholder.navigation.submenu.documents.documents', // Localization key for Documents
+    path: `/stakeholders/${typeId}/details/${id}/documents`
+  },
+  {
+    id: 2,
+    title: 'stakeholder.navigation.submenu.documents.strategies', // Localization key for Strategies
+    path: `/stakeholders/${typeId}/details/${id}/strategies`
+  },
+  {
+    id: 3,
+    title: 'stakeholder.navigation.submenu.documents.planning', // Localization key for Planning
+    path: `/stakeholders/${typeId}/details/${id}/planning`
+  },
+  {
+    id: 4,
+    title: 'stakeholder.navigation.submenu.documents.researches', // Localization key for Researches
+    path: `/stakeholders/${typeId}/details/${id}/researches`
+  },
+  {
+    id: 5,
+    title: 'stakeholder.navigation.submenu.documents.innovations', // Localization key for Innovations
+    path: `/stakeholders/${typeId}/details/${id}/innovations`
+  },
+  {
+    id: 6,
+    title: 'stakeholder.navigation.submenu.documents.code-of-conduct', // Localization key for Code of Conduct
+    path: `/stakeholders/${typeId}/details/${id}/code-of-conduct`
+  },
+  {
+    id: 7,
+    title: 'stakeholder.navigation.submenu.documents.manuals', // Localization key for Manuals
+    path: `/stakeholders/${typeId}/details/${id}/manuals`
+  }
+];
+
+export default subMenuItems;

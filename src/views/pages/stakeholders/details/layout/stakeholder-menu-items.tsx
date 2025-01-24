@@ -12,38 +12,80 @@ const menuItems = (id: string, typeId: string): MenuItem[] => {
   return [
     {
       id: 1,
-      title: 'General Info',
-      path: `${baseUrl}/general/stakeholder`,
+      title: 'stakeholder.navigation.menu.general-info',
+      path: `${baseUrl}/general-info`,
       action: 'view_stakeholderinfo',
       subject: 'stakeholderinfo'
     },
     {
       id: 2,
-      title: 'Employees',
-      path: `${baseUrl}/employees/statistics`,
-      action: 'view_stakeholderemployee',
-      subject: 'stakeholderemployee'
+      title: 'stakeholder.navigation.menu.branches',
+      path: `${baseUrl}/branches`,
+      action: 'view_stakeholderbranch',
+      subject: 'stakeholderbranch'
     },
     {
       id: 3,
-      title: 'Other',
-      path: `${baseUrl}/other`,
-      action: 'view_stakeholderspecific',
-      subject: 'stakeholderspecific'
+      title: 'stakeholder.navigation.menu.company-structure',
+      path: `${baseUrl}/company-structure`,
+      action: 'view_stakeholderstructure',
+      subject: 'stakeholderstructure'
     },
     {
       id: 4,
-      title: 'Projects',
-      path: `${baseUrl}/stakeProjects`,
+      title: 'stakeholder.navigation.menu.resources',
+      path: `${baseUrl}/resources`,
+      action: 'view_stakeholderresource',
+      subject: 'stakeholderresource'
+    },
+    {
+      id: 5,
+      title: 'stakeholder.navigation.menu.certificates',
+      path: `${baseUrl}/certificates`,
+      action: 'view_stakeholdercertificate',
+      subject: 'stakeholdercertificate'
+    },
+    {
+      id: 6,
+      title: 'stakeholder.navigation.menu.documents',
+      path: `${baseUrl}/documents`,
+      action: 'view_stakeholderdocument',
+      subject: 'stakeholderdocument'
+    },
+    {
+      id: 7,
+      title: 'stakeholder.navigation.menu.projects',
+      path: `${baseUrl}/projects`,
       action: 'view_stakeholderproject',
       subject: 'stakeholderproject'
     },
     {
-      id: 5,
-      title: 'Files',
-      path: `${baseUrl}/files`,
-      action: 'view_stakeholderfile',
-      subject: 'stakeholderfile'
+      id: 8,
+      title: 'stakeholder.navigation.menu.services',
+      path: `${baseUrl}/services`,
+      action: 'view_stakeholderservice',
+      subject: 'stakeholderservice'
+    },
+    {
+      id: 9,
+      title: 'stakeholder.navigation.menu.incentives',
+      path: `${baseUrl}/incentives`,
+      action: 'view_stakeholderincentive',
+      subject: 'stakeholderincentive'
+    },
+    {
+      id: 10,
+      title: 'stakeholder.navigation.menu.study-programs',
+      path: `${baseUrl}/study-programs`,
+      action: 'view_stakeholderstudyprogram',
+      subject: 'stakeholderstudyprogram'
+    },
+    {
+      id: 11,
+      title: 'stakeholder.navigation.menu.training',
+      path: `${baseUrl}/training`,
+      action: 'view_stakeholdertraining',
+      subject: 'stakeholdertraining'
     }
   ];
 };

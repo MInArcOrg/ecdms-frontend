@@ -67,7 +67,7 @@ function ProjectList() {
           type={ITEMS_LISTING_TYPE.grid.value}
           isLoading={isLoading}
           ItemViewComponent={({ data }) => (
-            <ProjectCard onDetail={() => { }} project={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
+            <ProjectCard onDetail={() => {}} project={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
           )}
           title={t('project.title')}
           createActionConfig={{
