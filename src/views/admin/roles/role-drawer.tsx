@@ -64,7 +64,7 @@ const RoleDrawer = (props: RoleDrawerType) => {
             onCancel={handleClose}
           >
             {(formik: FormikProps<Role>) => {
-              return <RoleForm formik={formik} defaultLocaleData={{} as Role} />;
+              return <RoleForm formik={formik}  />;
             }}
           </FormPageWrapper>
         )
