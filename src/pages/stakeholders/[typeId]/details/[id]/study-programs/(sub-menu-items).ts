@@ -8,17 +8,17 @@ const subMenuItems = (id: string, typeId: string): SubMenuItem[] => [
   {
     id: 1,
     title: 'stakeholder.navigation.submenu.study-programs.study-programs', // Localization key for Study Programs
-    path: `/stakeholders/${typeId}/details/${id}/study-programs`
+    path: `/stakeholders/${typeId}/details/${id}/study-programs/study-programs`
   },
   {
     id: 2,
     title: 'stakeholder.navigation.submenu.study-programs.teachers', // Localization key for Teachers
-    path: `/stakeholders/${typeId}/details/${id}/teachers`
+    path: `/stakeholders/${typeId}/details/${id}/study-programs/teachers`
   },
   {
     id: 3,
     title: 'stakeholder.navigation.submenu.study-programs.graduates', // Localization key for Graduates
-    path: `/stakeholders/${typeId}/details/${id}/graduates`
+    path: `/stakeholders/${typeId}/details/${id}/study-programs/graduates`
   }
 ];
 

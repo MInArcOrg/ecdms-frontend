@@ -10,7 +10,7 @@ function StakeholderTraining() {
   const { id, typeId } = router.query;
   return (
     <Box>
-      <StakeholderLayout activeMenu={0} activeSubMenu={5} subMenuItems={subMenuItems(id as string, String(typeId))}>
+      <StakeholderLayout activeMenu={8} activeSubMenu={0} subMenuItems={subMenuItems(id as string, String(typeId))}>
         <StakeholderTrainingList stakeholderId={String(id)} />
       </StakeholderLayout>
     </Box>

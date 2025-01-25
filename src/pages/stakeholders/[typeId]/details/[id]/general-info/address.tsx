@@ -10,7 +10,7 @@ function StakeholderLocation() {
   const { id, typeId } = router.query;
   return (
     <Box>
-      <StakeholderLayout activeMenu={0} activeSubMenu={3} subMenuItems={subMenuItems(id as string, String(typeId))}>
+      <StakeholderLayout activeMenu={0} activeSubMenu={2} subMenuItems={subMenuItems(id as string, String(typeId))}>
         <AddressList type={'project'} modelId={String(id)} />
       </StakeholderLayout>
     </Box>

@@ -83,7 +83,7 @@ const menuItems = (id: string, typeId: string): MenuItem[] => {
     {
       id: 11,
       title: 'stakeholder.navigation.menu.training',
-      path: `${baseUrl}/training`,
+      path: `${baseUrl}/trainings`,
       action: 'view_stakeholdertraining',
       subject: 'stakeholdertraining'
     }

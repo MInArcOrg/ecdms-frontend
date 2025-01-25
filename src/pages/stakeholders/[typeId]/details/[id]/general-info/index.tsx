@@ -7,7 +7,7 @@ function StakeholderGeneralInoIndex() {
   const { id, typeId } = router.query;
 
   return (
-    <StakeholderLayout activeMenu={1} activeSubMenu={1} subMenuItems={subMenuItems(id as string, typeId as string)}>
+    <StakeholderLayout activeMenu={0} activeSubMenu={1} subMenuItems={subMenuItems(id as string, typeId as string)}>
       <></>
     </StakeholderLayout>
   );
