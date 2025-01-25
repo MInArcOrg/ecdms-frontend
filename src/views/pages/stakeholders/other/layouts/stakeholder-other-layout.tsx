@@ -6,7 +6,7 @@ import StakeholderLayout from '../../details/layout/stakeholder-layout';
 interface OtherStakeholderLayoutProps {
   activeMenu: number; // The active main menu
   activeSubMenu?: number; // The active sub-menu (optional)
-  subMenuItems: (baseUrl: string) => any[]; // Function to get sub-menu items based on baseUrl
+  subMenuItems: any[]; // Function to get sub-menu items based on baseUrl
   children: ReactNode; // The content that will be rendered in the main section
   activeType?: number; // Optionally, the active type (for the sub-menu)
   baseUrl: string; // The base URL for building menu paths

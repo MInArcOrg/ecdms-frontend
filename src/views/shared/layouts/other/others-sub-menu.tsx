@@ -118,7 +118,7 @@ const OtherSubMenu: React.FC<OtherSubMenuProps> = ({ subMenuItems, activeSubMenu
           );
         })
       ) : (
-        <>No model found {models}</>
+        <Fragment> No model found</Fragment>
       )}
     </Fragment>
   );
