@@ -70,7 +70,6 @@
       "specification_detail": "Specification Detail",
       "measurement_unit": "Measurement Unit"
     },
-
     "create-master-type": "Create Type",
     "edit-master-type": "Edit Type",
     "master-category": {
@@ -98,7 +97,6 @@
     "create-master-sub-category": "Create Master SubCategory",
     "edit-master-sub-category": "Edit Master SubCategory"
   },
-
   "department": {
     "user-columns": {
       "user": "User",
@@ -281,7 +279,7 @@
   "project": {
     "create-project": "Create Project",
     "edit-project": "Edit Project",
-    "title":"Project",
+    "title": "Project",
     "form": {
       "category": "Category",
       "sub-category": "Sub-category",
@@ -315,7 +313,6 @@
     },
     "earned-value-analysis": {
       "earned-value-analysis": "Earned Value Analysis",
-
       "planned-value": "Planned Value",
       "earned-value": "Earned Value",
       "actual-cost": "Actual Cost",
@@ -678,7 +675,6 @@
           "depth-below-natural-ground": "Depth Below Natural Ground",
           "remark": "Remark"
         },
-
         "details": {
           "site-area": "Site Area",
           "site-above-sea-level": "Site Above Sea Level",
@@ -704,7 +700,6 @@
           "shading-components": "Shading Components",
           "remark": "Remark"
         },
-
         "details": {
           "title": "Building Envelop Material Details",
           "sub-title": "Summary of the Building Envelop Material Information",
@@ -968,7 +963,6 @@
         }
       }
     },
-
     "columns": {
       "title": "Title",
       "elapsed-time": "Elapsed Time",
@@ -1044,7 +1038,6 @@
     },
     "form": {
       "file-upload": "File Upload",
-
       "success-created": "Successfully Created!",
       "success-updated": "Successfully updated!"
     }
@@ -1080,7 +1073,84 @@
       "phones_section_title": "Phones"
     },
     "navigation": {
+      "menu": {
+        "general-info": "General Info",
+        "branches": "Branches",
+        "company-structure": "Company Structure",
+        "resources": "Resource",
+        "certificates": "Certificates",
+        "documents": "Documents",
+        "projects": "Projects",
+        "services": "Services",
+        "incentives": "Incentives",
+        "study-programs":"Study Programs",
+        "training":"Trainings"
+      },
       "submenu": {
+        "general-info":{
+          "manager": "Manager",
+          "contact-person": "Contact Person",
+          "address": "Address",
+          "joint-venture": "Joint Venture",
+          "joint-venture-company": "Joint Venture Company",
+          "additional-info": "Additional Info",
+          "upgrade": "Upgrade"  
+        },
+        "branches":{
+          "branches": "Branches",
+          "manager": "Manager",
+          "branch-contact-person": "Branch Contact Person",
+          "address": "Address",
+          "additional-info": "Additional Info"
+        },
+        
+        "company-structure": {
+          "departments": "Departments",
+          "positions": "Positions"
+        },
+        "resources": {
+          "machineries": "Machineries",
+          "vehicles": "Vehicles",
+          "safety-equipment": "Safety Equipment",
+          "materials": "Materials",
+          "employees": "Employees"
+        },
+        "certificates": {
+          "certificates": "Certificates",
+          "licenses": "Licenses",
+          "accreditation": "Accreditation"
+        },
+        "documents": {
+          "documents": "Documents",
+          "strategies": "Strategies",
+          "planning": "Planning",
+          "researches": "Researches",
+          "innovations": "Innovations",
+          "code-of-conduct": "Code of Conduct",
+          "manuals": "Manuals"
+        },
+        "services": {
+          "services": "Services"
+          },
+          
+        "projects":{
+             "projects": "Projects",
+          "joint-venture-projects": "Joint Venture Projects"
+        },
+        "incentives": {
+          "trainings": "Trainings",
+          "support": "Support"
+        },
+        "study-programs": {
+          "study-programs": "Study Programs",
+          "teachers": "Teachers",
+          "graduates": "Graduates"
+        },
+        "trainings": {
+          "trainings": "Trainings",
+          "trainers": "Trainers",
+          "trainees": "Trainees"
+        },
         "others": {
           "stakeholder-specific": "Stakeholder Specific",
           "field-of-study": "Field of Study",

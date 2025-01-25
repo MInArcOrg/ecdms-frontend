@@ -21,7 +21,16 @@ interface OtherLayoutProps {
 
 // Memoized layout to prevent rerendering unless relevant props change
 const OtherLayout: React.FC<OtherLayoutProps> = memo(
-  ({ layoutComponent: LayoutComponent, subMenuComponent: SubMenuComponent, activeMenu, activeSubMenu, subMenuItems, children, activeType, baseUrl }) => {
+  ({
+    layoutComponent: LayoutComponent,
+    subMenuComponent: SubMenuComponent,
+    activeMenu,
+    activeSubMenu,
+    subMenuItems,
+    children,
+    activeType,
+    baseUrl
+  }) => {
     const router = useRouter();
     const { typeId } = router.query;
 

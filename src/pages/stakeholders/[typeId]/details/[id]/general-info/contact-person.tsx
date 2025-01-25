@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import { useRouter } from 'next/router';
 import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
 import StakeholderContactPersonList from 'src/views/pages/stakeholders/stakeholder-contact-person';
-import subMenuItems from './(subMenuItems)';
+import subMenuItems from './(sub-menu-items)';
 
 function StakeholderLocation() {
   // states / hooks / variables
