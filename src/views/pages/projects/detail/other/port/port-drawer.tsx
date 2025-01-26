@@ -63,7 +63,7 @@ const PortDrawer = (props: PortDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(port as Port)
+            ...port
           }}
           createActionFunc={isEdit ? editPort : createPort}
           onActionSuccess={onActionSuccess}

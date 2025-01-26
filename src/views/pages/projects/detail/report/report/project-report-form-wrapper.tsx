@@ -92,7 +92,7 @@ const ProjectReportFormWrapper = (props: ProjectReportFormWrapperType) => {
       getPayload={getPayload}
       validationSchema={validationSchema}
       initialValues={{
-        ...(projectReport as ProjectReport)
+        ...projectReport
       }}
       createActionFunc={isEdit ? editProjectReport : createProjectReport}
       onActionSuccess={onActionSuccess}

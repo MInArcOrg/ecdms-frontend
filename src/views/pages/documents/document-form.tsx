@@ -13,11 +13,11 @@ import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface DocumentFormProps {
   formik: FormikProps<Document>;
-  isLocaleEdit?: boolean;
+
   typeId: string;
 }
 
-const DocumentForm: React.FC<DocumentFormProps> = ({ formik, isLocaleEdit = false, typeId }) => {
+const DocumentForm: React.FC<DocumentFormProps> = ({ formik, typeId }) => {
   const { t: transl } = useTranslation();
 
   const { data: documentCategories } = useQuery({

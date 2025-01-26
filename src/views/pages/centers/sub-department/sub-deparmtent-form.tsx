@@ -5,11 +5,11 @@ import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface SubDepartmentFormProps {
   formik: FormikProps<Department>;
-  isLocaleEdit?: boolean;
+
   defaultLocaleData?: Department;
 }
 
-const SubDepartmentForm: React.FC<SubDepartmentFormProps> = ({ formik, isLocaleEdit = false, defaultLocaleData }) => {
+const SubDepartmentForm: React.FC<SubDepartmentFormProps> = ({ formik, defaultLocaleData }) => {
   const { t: transl } = useTranslation();
   return (
     <>

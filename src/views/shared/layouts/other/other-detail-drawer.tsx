@@ -5,7 +5,7 @@ import React, { Fragment } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import FileDrawer from 'src/views/components/custom/files-drawer';
-import DescCollapse from 'src/views/pages/resources/detail/desc-collapse';
+import DescCollapse from 'src/views/pages/resources/details/desc-collapse';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 
 interface DetailItem {

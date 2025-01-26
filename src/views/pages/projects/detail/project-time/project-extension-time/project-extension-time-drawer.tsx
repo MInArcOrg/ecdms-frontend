@@ -67,7 +67,7 @@ const ProjectExtensionTimeDrawer = (props: ProjectExtensionTimeDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(projectExtensionTime as ProjectExtensionTime)
+            ...projectExtensionTime
           }}
           createActionFunc={isEdit ? editProjectExtensionTime : createProjectExtensionTime}
           onActionSuccess={onActionSuccess}

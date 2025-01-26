@@ -73,7 +73,7 @@ const BuildingEnvelopMaterialDrawer = (props: BuildingEnvelopMaterialDrawerType)
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(buildingEnvelopMaterial as BuildingEnvelopMaterial)
+            ...buildingEnvelopMaterial
           }}
           createActionFunc={isEdit ? editBuildingEnvelopMaterial : createBuildingEnvelopMaterial}
           onActionSuccess={onActionSuccess}

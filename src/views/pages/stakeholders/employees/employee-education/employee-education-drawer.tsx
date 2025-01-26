@@ -79,7 +79,7 @@ const EmployeeEducationDrawer = (props: EmployeeEducationDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(employeeEducation as EmployeeEducation),
+            ...employeeEducation,
             nationality: countriesList
               .map((country) => ({
                 label: country.title,

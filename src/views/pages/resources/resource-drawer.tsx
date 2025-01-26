@@ -64,7 +64,7 @@ const ResourceDrawer = (props: ResourceDrawerType) => {
           title="resource.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={resource as Resource}
+          initialValues={resource}
           createActionFunc={isEdit ? editResource : createResource}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

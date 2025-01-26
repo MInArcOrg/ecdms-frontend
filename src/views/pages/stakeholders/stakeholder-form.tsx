@@ -18,7 +18,7 @@ import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 
 interface StakeholderFormProps {
   formik: FormikProps<Stakeholder>;
-  isLocaleEdit?: boolean;
+  
   typeId: string;
   isEdit: boolean;
   file: File | null;
@@ -27,7 +27,7 @@ interface StakeholderFormProps {
 
 const StakeholderForm: React.FC<StakeholderFormProps> = ({
   formik,
-  isLocaleEdit = false,
+  
   typeId,
   isEdit,
   file,

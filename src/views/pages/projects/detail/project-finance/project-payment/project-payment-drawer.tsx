@@ -78,7 +78,7 @@ const ProjectPaymentDrawer = (props: ProjectPaymentDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             type,
-            ...(projectPayment as ProjectPayment)
+            ...projectPayment
           }}
           createActionFunc={isEdit ? editProjectPayment : createProjectPayment}
           onActionSuccess={onActionSuccess}

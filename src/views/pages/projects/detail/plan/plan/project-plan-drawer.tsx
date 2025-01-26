@@ -102,7 +102,7 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(projectPlan as ProjectPlan),
+            ...projectPlan,
             type: planReportTypeConstant.QUARTERLY.value,
             year: moment({ year: Number(projectPlan.year || new Date().getFullYear()), month: 0, day: 1 }).toDate()
           }}

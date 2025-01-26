@@ -63,7 +63,7 @@ const SubDepartmentDrawer = (props: SubDepartmentDrawerType) => {
           title="department.sub-department.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={subDepartment as Department}
+          initialValues={subDepartment}
           createActionFunc={isEdit ? editSubDepartment : createSubDepartment}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

@@ -70,7 +70,7 @@ const ElectricTowerDrawer = (props: ElectricTowerDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(electricTower as ElectricTower)
+            ...electricTower
           }}
           createActionFunc={isEdit ? editElectricTower : createElectricTower}
           onActionSuccess={onActionSuccess}

@@ -5,11 +5,11 @@ import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface MasterCategoryFormProps {
   formik: FormikProps<MasterCategory>;
-  isLocaleEdit?: boolean;
+
   defaultLocaleData?: MasterCategory;
 }
 
-const MasterCategoryForm: React.FC<MasterCategoryFormProps> = ({ formik, isLocaleEdit = false, defaultLocaleData }) => {
+const MasterCategoryForm: React.FC<MasterCategoryFormProps> = ({ formik, defaultLocaleData }) => {
   const { t: transl } = useTranslation();
   return (
     <>

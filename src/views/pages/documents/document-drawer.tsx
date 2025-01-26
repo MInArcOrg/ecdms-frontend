@@ -68,7 +68,7 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
           title="document.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{ ...(document as Document), publication_date: moment(document.publication_date).toDate() }}
+          initialValues={{ ...document, publication_date: moment(document.publication_date).toDate() }}
           createActionFunc={isEdit ? editDocument : createDocument}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

@@ -70,7 +70,7 @@ const ReservoirInfoDrawer = (props: ReservoirInfoDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(reservoirInfo as ReservoirInfo)
+            ...reservoirInfo
           }}
           createActionFunc={isEdit ? editReservoirInfo : createReservoirInfo}
           onActionSuccess={onActionSuccess}

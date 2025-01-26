@@ -6,7 +6,7 @@ import { Pagination } from 'src/types/requests/pagination';
 import Position from 'src/types/department/position';
 import positionApiService from 'src/services/department/position-service';
 
-const usePosition = (initialQueryParams: GetRequestParam = defaultGetRequestParam, departmentId: string = '') => {
+const usePosition = (initialQueryParams: GetRequestParam = defaultGetRequestParam, departmentId = '') => {
   const queryClient = useQueryClient();
   const [pagination, setPagination] = useState<Pagination>();
   const [newPosition, setNewPosition] = useState<Position | undefined>();

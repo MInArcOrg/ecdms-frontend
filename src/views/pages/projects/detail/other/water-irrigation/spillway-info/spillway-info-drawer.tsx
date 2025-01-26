@@ -70,7 +70,7 @@ const SpillwayInfoDrawer = (props: SpillwayInfoDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(spillwayInfo as SpillwayInfo)
+            ...spillwayInfo
           }}
           createActionFunc={isEdit ? editSpillwayInfo : createSpillwayInfo}
           onActionSuccess={onActionSuccess}

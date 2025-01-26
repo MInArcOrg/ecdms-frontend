@@ -70,7 +70,7 @@ const RailwayStationDrawer = (props: RailwayStationDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(railwayStation as RailwayStation)
+            ...railwayStation
           }}
           createActionFunc={isEdit ? editRailwayStation : createRailwayStation}
           onActionSuccess={onActionSuccess}

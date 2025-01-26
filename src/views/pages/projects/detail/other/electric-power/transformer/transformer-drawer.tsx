@@ -70,7 +70,7 @@ const TransformerDrawer = (props: TransformerDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(transformer as Transformer)
+            ...transformer
           }}
           createActionFunc={isEdit ? editTransformer : createTransformer}
           onActionSuccess={onActionSuccess}

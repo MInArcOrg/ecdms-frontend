@@ -6,7 +6,7 @@ import { GetRequestParam } from 'src/types/requests';
 import { Pagination } from 'src/types/requests/pagination';
 import Department from 'src/types/department/department';
 
-const useDepartment = (initialQueryParams: GetRequestParam = defaultGetRequestParam, parentDepartmentId: string = '') => {
+const useDepartment = (initialQueryParams: GetRequestParam = defaultGetRequestParam, parentDepartmentId = '') => {
   const queryClient = useQueryClient();
   const [pagination, setPagination] = useState<Pagination>();
   const [newDepartment, setNewDepartment] = useState<Department | undefined>();

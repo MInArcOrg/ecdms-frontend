@@ -80,7 +80,7 @@ const ProjectFileDrawer = (props: ProjectFileDrawerType) => {
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={projectFile as FileModel}
+          initialValues={projectFile}
           createActionFunc={isEdit ? editProjectFile : createProjectFile}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

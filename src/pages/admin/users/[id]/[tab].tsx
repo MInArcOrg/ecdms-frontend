@@ -8,7 +8,7 @@ const UserView = () => {
   const router = useRouter();
   const userId = router.query.id;
   const tab = router.query.tab || 'account';
-  const { useGetOneUser } = userHook() as ReturnType<typeof userHook>;
+  const { useGetOneUser } = userHook();
   const { data: user, isLoading } = useGetOneUser(String(userId));
 
   return <UserViewPage isLoading={isLoading} tab={String(tab)} user={user} />;

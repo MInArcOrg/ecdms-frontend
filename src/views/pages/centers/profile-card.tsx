@@ -33,7 +33,7 @@ const ProfileCard = ({ department, refetch, loading }: { department: Department;
           open={showDrawer}
           toggle={handleDrawer}
           refetch={refetch}
-          subDepartment={department as Department}
+          subDepartment={department}
           departmentId={department.parent_department_id}
         />
       )}

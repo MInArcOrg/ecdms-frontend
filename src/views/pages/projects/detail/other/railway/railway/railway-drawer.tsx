@@ -65,7 +65,7 @@ const RailwayDrawer = (props: RailwayDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(railway as Railway)
+            ...railway
           }}
           createActionFunc={isEdit ? editRailway : createRailway}
           onActionSuccess={onActionSuccess}

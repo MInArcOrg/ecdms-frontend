@@ -9,10 +9,10 @@
  */
 export function formatPercent(
   value: number,
-  isDecimal: boolean = false,
-  locale: string = 'en',
-  minimumFractionDigits: number = 0,
-  maximumFractionDigits: number = 2
+  isDecimal = false,
+  locale = 'en',
+  minimumFractionDigits = 0,
+  maximumFractionDigits = 2
 ): string {
   // If value is a decimal fraction, divide by 100 to convert to percentage
   const percentageValue = isDecimal ? value : value / 100;

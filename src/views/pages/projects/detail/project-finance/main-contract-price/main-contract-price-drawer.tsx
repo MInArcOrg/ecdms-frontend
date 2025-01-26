@@ -68,7 +68,7 @@ const MainContractPriceDrawer = (props: MainContractPriceDrawerType) => {
           title="project.main-contract-price.title" // Adjust the title key if necessary
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{ ...(projectFinance as ProjectFinance) }}
+          initialValues={{ ...projectFinance }}
           createActionFunc={isEdit ? editMainContractPrice : createMainContractPrice}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

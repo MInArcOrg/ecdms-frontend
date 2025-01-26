@@ -11,11 +11,11 @@ import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface ResourceFormProps {
   formik: FormikProps<Resource>;
-  isLocaleEdit?: boolean;
+
   typeId: string;
 }
 
-const ResourceForm: React.FC<ResourceFormProps> = ({ formik, isLocaleEdit = false, typeId }) => {
+const ResourceForm: React.FC<ResourceFormProps> = ({ formik, typeId }) => {
   const { t: transl } = useTranslation();
   const { data: resourceCategories } = useQuery({
     queryKey: ['masterCategory', 'resource'],

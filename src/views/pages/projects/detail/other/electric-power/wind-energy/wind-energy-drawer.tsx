@@ -70,7 +70,7 @@ const WindEnergyDrawer = (props: WindEnergyDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(windEnergy as WindEnergy)
+            ...windEnergy
           }}
           createActionFunc={isEdit ? editWindEnergy : createWindEnergy}
           onActionSuccess={onActionSuccess}

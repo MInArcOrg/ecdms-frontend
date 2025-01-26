@@ -23,7 +23,7 @@ const PermissionDrawer = (props: PermissionDrawerType) => {
   // ** Props
   const { open, toggle, refetch, permission } = props;
 
-  const { addNewPermission, updatePermission } = usePermission() as ReturnType<typeof usePermission>;
+  const { addNewPermission, updatePermission } = usePermission();
 
   const isEdit = permission?.id ? true : false;
 
@@ -55,7 +55,7 @@ const PermissionDrawer = (props: PermissionDrawerType) => {
             title="permission"
             getPayload={getPayload}
             validationSchema={validationSchema}
-            initialValues={permission as Permission}
+            initialValues={permission}
             createActionFunc={isEdit ? updatePermission : addNewPermission}
             onActionSuccess={onActionSuccess}
             onCancel={handleClose}

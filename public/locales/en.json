@@ -180,6 +180,49 @@
       "measurement_unit": "Measurement Unit",
       "upload_image": "Upload Resource Picture"
     },
+    "navigation": {
+      "menu": {
+        "general-info": "General Info",
+        "licenses": "Licenses",
+        "educations": "Educations",
+        "work-experiences": "Work Experiences",
+        "membership": "Membership",
+        "achievements": "Achievements",
+        "recommendations": "Recommendations"
+      },
+      "submenu": {
+        "general-info": {
+          "address": "Address",
+          "contact": "Contact",
+          "contact-person": "Contact Person",
+          "additional-info": "Additional Info"
+        },
+        "licenses":{
+          "licenses":"Licenses"
+        },
+        "work-experiances":
+        {
+          "work-experiances":"Work Experiances"
+        },
+        "educations": 
+        {
+          "educations":"Educations",
+          "trainings":"Trainings"
+        },
+        "membership":
+        {
+          "association":"Association"
+        },
+        "achievements":
+        {
+          "certificates":"Certificates"
+        },
+        "recomendations":
+        {
+          "recomendations":"Recomendations"
+        }
+      }
+    },
     "resource-specification": {
       "title": "Resource Specification",
       "create-resource-specification": "Create Resource Specification",
@@ -1083,27 +1126,26 @@
         "projects": "Projects",
         "services": "Services",
         "incentives": "Incentives",
-        "study-programs":"Study Programs",
-        "training":"Trainings"
+        "study-programs": "Study Programs",
+        "training": "Trainings"
       },
       "submenu": {
-        "general-info":{
+        "general-info": {
           "manager": "Manager",
           "contact-person": "Contact Person",
           "address": "Address",
           "joint-venture": "Joint Venture",
           "joint-venture-company": "Joint Venture Company",
           "additional-info": "Additional Info",
-          "upgrade": "Upgrade"  
+          "upgrade": "Upgrade"
         },
-        "branches":{
+        "branches": {
           "branches": "Branches",
           "manager": "Manager",
           "branch-contact-person": "Branch Contact Person",
           "address": "Address",
           "additional-info": "Additional Info"
         },
-        
         "company-structure": {
           "departments": "Departments",
           "positions": "Positions"
@@ -1131,10 +1173,9 @@
         },
         "services": {
           "services": "Services"
-          },
-          
-        "projects":{
-             "projects": "Projects",
+        },
+        "projects": {
+          "projects": "Projects",
           "joint-venture-projects": "Joint Venture Projects"
         },
         "incentives": {

@@ -68,7 +68,7 @@ const TotalEmployeeDrawer = (props: TotalEmployeeDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(totalEmployee as TotalEmployee),
+            ...totalEmployee,
             nationality: countriesList
               .map((country) => ({
                 label: country.title,

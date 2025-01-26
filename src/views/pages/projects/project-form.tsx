@@ -13,11 +13,11 @@ import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface ProjectFormProps {
   formik: FormikProps<Project>;
-  isLocaleEdit?: boolean;
+
   typeId: string;
 }
 
-const ProjectForm: React.FC<ProjectFormProps> = ({ formik, isLocaleEdit = false, typeId }) => {
+const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
   const { t: transl } = useTranslation();
 
   const { data: projectStatus } = useQuery({

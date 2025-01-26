@@ -70,7 +70,7 @@ const StakeholderRegulationDrawer = (props: StakeholderRegulationDrawerType) => 
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(stakeholderRegulation as StakeholderRegulation),
+            ...stakeholderRegulation,
             effective_start_date: formatInitialDateDate(stakeholderRegulation?.effective_start_date),
             effective_end_date: formatInitialDateDate(stakeholderRegulation?.effective_end_date)
           }}

@@ -68,7 +68,7 @@ const StakeholderContactPersonDrawer = (props: StakeholderContactPersonDrawerTyp
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(stakeholderContactPerson as StakeholderContactPerson)
+            ...stakeholderContactPerson
           }}
           createActionFunc={isEdit ? editStakeholderContactPerson : createStakeholderContactPerson}
           onActionSuccess={onActionSuccess}

@@ -74,7 +74,7 @@ const BuildingDimensionDetailDrawer = (props: BuildingDimensionDetailDrawerType)
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(buildingDimensionDetail as BuildingDimensionDetail)
+            ...buildingDimensionDetail
           }}
           createActionFunc={isEdit ? editBuildingDimensionDetail : createBuildingDimensionDetail}
           onActionSuccess={onActionSuccess}

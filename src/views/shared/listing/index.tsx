@@ -16,7 +16,7 @@ import ListListing from './list-types/list-listing';
 import MasonryListing from './list-types/masonry-listing';
 import TableListing from './list-types/table-listing';
 
-const ItemsListing = <T extends {}>({
+const ItemsListing = <T extends object>({
   items,
   pagination,
   fetchDataFunction,

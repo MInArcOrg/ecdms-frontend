@@ -69,7 +69,7 @@ const StakeholderTrainingDrawer = (props: StakeholderTrainingDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(stakeholderTraining as StakeholderTraining),
+            ...stakeholderTraining,
             provision_date: formatInitialDateDate(stakeholderTraining?.provision_date)
           }}
           createActionFunc={isEdit ? editStakeholderTraining : createStakeholderTraining}

@@ -69,7 +69,7 @@ const RoadInfoDrawer = (props: RoadInfoDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(roadInfo as RoadInfo)
+            ...roadInfo
           }}
           createActionFunc={isEdit ? editRoadInfo : createRoadInfo}
           onActionSuccess={onActionSuccess}
