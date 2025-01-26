@@ -3,19 +3,16 @@ import { DataGrid, GridColDef, GridPaginationModel, GridRowId } from '@mui/x-dat
 import React, { useState } from 'react';
 import { Pagination } from 'src/types/requests/pagination';
 
-interface T {
-  // Define your item type
-}
-
-interface TableListingProps {
+// Make T a generic type parameter
+interface TableListingProps<T> {
   columns: GridColDef[];
-  items: T[];
+  items: T[]; // Use T[] for items
   pagination: Pagination;
   isLoading: boolean;
-  onPagination?: (pageSize: any, page: any) => void;
+  onPagination?: (pageSize: number, page: number) => void;
 }
 
-const TableListing: React.FC<TableListingProps> = ({ columns, items, pagination, onPagination, isLoading }) => {
+const TableListing = <T,>({ columns, items, pagination, onPagination, isLoading }: TableListingProps<T>) => {
   const [, setSelectedRows] = useState<GridRowId[]>([]);
   const [paginationModel, setPaginationModel] = useState<GridPaginationModel>({
     page: pagination?.page - 1,

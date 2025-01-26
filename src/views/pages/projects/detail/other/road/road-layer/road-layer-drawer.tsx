@@ -70,7 +70,7 @@ const RoadLayerDrawer = (props: RoadLayerDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(roadLayer as RoadLayer)
+            ...roadLayer
           }}
           createActionFunc={isEdit ? editRoadLayer : createRoadLayer}
           onActionSuccess={onActionSuccess}

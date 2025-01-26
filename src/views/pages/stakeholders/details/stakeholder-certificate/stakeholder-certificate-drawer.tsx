@@ -71,7 +71,7 @@ const StakeholderCertificateDrawer = (props: StakeholderCertificateDrawerType) =
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(stakeholderCertificate as StakeholderCertificate),
+            ...stakeholderCertificate,
             expiry_date: formatInitialDateDate(stakeholderCertificate?.expiry_date),
             date_of_issue: formatInitialDateDate(stakeholderCertificate?.date_of_issue),
             initial_certificate_issue_date: formatInitialDateDate(stakeholderCertificate?.initial_certificate_issue_date)

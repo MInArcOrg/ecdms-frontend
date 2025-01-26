@@ -47,9 +47,7 @@ const MasterTypeDetailCard: React.FC<MasterTypeDetailCardProps> = ({ masterType,
 
   return (
     <Fragment>
-      {showDrawer && (
-        <MasterTypeDrawer model={model} open={showDrawer} toggle={toggleDrawer} masterData={masterType as MasterType} refetch={refetch} />
-      )}
+      {showDrawer && <MasterTypeDrawer model={model} open={showDrawer} toggle={toggleDrawer} masterData={masterType} refetch={refetch} />}
       <Card>
         <CardContent>
           {isLoading ? (

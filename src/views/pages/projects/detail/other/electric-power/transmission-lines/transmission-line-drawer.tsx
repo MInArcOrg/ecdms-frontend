@@ -71,7 +71,7 @@ const TransmissionLineDrawer = (props: TransmissionLineDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(transmissionLine as TransmissionLine)
+            ...transmissionLine
           }}
           createActionFunc={isEdit ? editTransmissionLine : createTransmissionLine}
           onActionSuccess={onActionSuccess}

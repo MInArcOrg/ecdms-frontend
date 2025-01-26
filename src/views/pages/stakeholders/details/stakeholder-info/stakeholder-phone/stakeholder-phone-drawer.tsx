@@ -67,7 +67,7 @@ const StakeholderPhoneDrawer = (props: StakeholderPhoneDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(stakeholderPhone as StakeholderPhone)
+            ...stakeholderPhone
           }}
           createActionFunc={isEdit ? editStakeholderPhone : createStakeholderPhone}
           onActionSuccess={onActionSuccess}

@@ -71,7 +71,7 @@ const AddressDrawer = (props: AddressDrawerType) => {
           title={`address.${isEdit ? 'edit-address' : 'create-address'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{ ...(address as Address) }}
+          initialValues={{ ...address }}
           createActionFunc={isEdit ? editAddress : createAddress}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

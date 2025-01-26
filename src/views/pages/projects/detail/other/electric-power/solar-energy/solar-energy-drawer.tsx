@@ -70,7 +70,7 @@ const SolarEnergyDrawer = (props: SolarEnergyDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(solarEnergy as SolarEnergy)
+            ...solarEnergy
           }}
           createActionFunc={isEdit ? editSolarEnergy : createSolarEnergy}
           onActionSuccess={onActionSuccess}

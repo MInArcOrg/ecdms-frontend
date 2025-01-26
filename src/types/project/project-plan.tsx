@@ -26,5 +26,5 @@ export interface ProjectPlan {
   profit?: number | null;
   file_id?: string | null;
   remark?: string | null;
-  created_at: String;
+  created_at: string;
 }

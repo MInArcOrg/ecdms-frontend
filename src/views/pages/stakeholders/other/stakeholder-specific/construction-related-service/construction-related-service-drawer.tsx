@@ -71,7 +71,7 @@ const ConstructionRelatedServiceDrawer = (props: ConstructionRelatedServiceDrawe
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(constructionRelatedService as ConstructionRelatedService)
+            ...constructionRelatedService
           }}
           createActionFunc={isEdit ? editConstructionRelatedService : createConstructionRelatedService}
           onActionSuccess={onActionSuccess}

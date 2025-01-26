@@ -45,12 +45,12 @@ const DashboardAgeBasedAnalysis = () => {
         return response.payload;
       })
   });
-  let menData = [];
-  let womenData = [];
+  const menData = [];
+  const womenData = [];
   const data = ageCategoryData?.sortedCategories;
-  for (let key in data) {
-    let maleCount = data[key]['male'] ? data[key]['male'] : 0;
-    let femaleCount = data[key]['female'] ? data[key]['female'] : 0;
+  for (const key in data) {
+    const maleCount = data[key]['male'] ? data[key]['male'] : 0;
+    const femaleCount = data[key]['female'] ? data[key]['female'] : 0;
     menData.push(maleCount);
     womenData.push(femaleCount); // Negative values for women
   }

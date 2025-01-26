@@ -71,7 +71,7 @@ const WaterIrrigationDamDrawer = (props: WaterIrrigationDamDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(waterIrrigationDam as WaterIrrigationDam)
+            ...waterIrrigationDam
           }}
           createActionFunc={isEdit ? editWaterIrrigationDam : createWaterIrrigationDam}
           onActionSuccess={onActionSuccess}

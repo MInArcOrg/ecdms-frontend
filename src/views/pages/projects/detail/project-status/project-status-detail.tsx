@@ -4,7 +4,7 @@ import i18n from 'src/configs/i18n';
 import { ProjectStatus } from 'src/types/project';
 import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
-import DescCollapse from 'src/views/pages/resources/detail/desc-collapse';
+import DescCollapse from 'src/views/pages/resources/details/desc-collapse';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import ProjectStatusChip from '../general-info/project-status-chip';
 

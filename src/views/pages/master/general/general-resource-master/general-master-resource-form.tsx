@@ -8,7 +8,7 @@ import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface GeneralMasterResourceFormProps {
   formik: FormikProps<GeneralMasterResource>; // Use ExtendedGeneralMaster in FormikProps
-  isLocaleEdit?: boolean;
+
   defaultLocaleData?: GeneralMasterResource;
   onFileChange: (file: File | null) => void;
   file: File | null;
@@ -17,8 +17,7 @@ interface GeneralMasterResourceFormProps {
 
 const GeneralMasterResourceForm: React.FC<GeneralMasterResourceFormProps> = ({
   formik,
-  isLocaleEdit = false,
-  defaultLocaleData,
+
   file,
   onFileChange,
   type

@@ -108,7 +108,7 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             type,
-            ...(projectBond as ProjectBond),
+            ...projectBond,
             issue_date: formatInitialDateDate(projectBond?.issue_date),
             expiration_date: formatInitialDateDate(projectBond?.expiration_date)
           }}

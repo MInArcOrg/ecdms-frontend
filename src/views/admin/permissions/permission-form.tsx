@@ -6,11 +6,11 @@ import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface PermissionFormProps {
   formik: FormikProps<Permission>;
-  isLocaleEdit?: boolean;
+
   defaultLocaleData?: Permission;
 }
 
-const PermissionForm: React.FC<PermissionFormProps> = ({ formik, isLocaleEdit = false, defaultLocaleData }) => {
+const PermissionForm: React.FC<PermissionFormProps> = ({ formik, defaultLocaleData }) => {
   const { t: transl } = useTranslation();
   return (
     <>

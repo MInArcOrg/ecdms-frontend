@@ -10,11 +10,11 @@ import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface UserFormProps {
   formik: FormikProps<User>;
-  isLocaleEdit?: boolean;
+
   defaultLocaleData?: User;
 }
 
-const UserForm: React.FC<UserFormProps> = ({ formik, isLocaleEdit = false, defaultLocaleData }) => {
+const UserForm: React.FC<UserFormProps> = ({ formik, defaultLocaleData }) => {
   const { t: transl } = useTranslation();
   return (
     <Grid container spacing={gridSpacing}>

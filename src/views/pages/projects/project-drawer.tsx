@@ -66,7 +66,7 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
           title="project.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{ ...(project as Project) }}
+          initialValues={{ ...project }}
           createActionFunc={isEdit ? editProject : createProject}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

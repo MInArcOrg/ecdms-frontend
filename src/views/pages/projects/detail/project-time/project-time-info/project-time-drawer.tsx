@@ -76,7 +76,7 @@ const ProjectTimeDrawer = (props: ProjectTimeDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(projectTime as ProjectTime),
+            ...projectTime,
             contract_signing_date: formatInitialDateDate(projectTime?.contract_signing_date),
             site_handover_date: formatInitialDateDate(projectTime?.site_handover_date),
 

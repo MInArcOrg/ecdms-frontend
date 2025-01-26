@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import documentApiService from 'src/services/document/document-service';
 import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import DescCollapse from '../resources/detail/desc-collapse';
+import DescCollapse from '../resources/details/desc-collapse';
 
 interface DocumentDetailProps {
   show: boolean;

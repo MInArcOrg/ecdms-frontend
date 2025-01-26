@@ -8,13 +8,13 @@ import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface MasterTypeFormProps {
   formik: FormikProps<MasterType>; // Use ExtendedMasterType in FormikProps
-  isLocaleEdit?: boolean;
+
   defaultLocaleData?: MasterType;
   onFileChange: (file: File | null) => void;
   file: File | null;
 }
 
-const MasterTypeForm: React.FC<MasterTypeFormProps> = ({ formik, isLocaleEdit = false, defaultLocaleData, file, onFileChange }) => {
+const MasterTypeForm: React.FC<MasterTypeFormProps> = ({ formik, file, onFileChange }) => {
   const { t: transl } = useTranslation();
 
   return (

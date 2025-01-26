@@ -5,11 +5,11 @@ import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface PositionFormProps {
   formik: FormikProps<Position>;
-  isLocaleEdit?: boolean;
+
   defaultLocaleData?: Position;
 }
 
-const PositionForm: React.FC<PositionFormProps> = ({ formik, isLocaleEdit = false, defaultLocaleData }) => {
+const PositionForm: React.FC<PositionFormProps> = ({ formik, defaultLocaleData }) => {
   const { t: transl } = useTranslation();
   return (
     <>

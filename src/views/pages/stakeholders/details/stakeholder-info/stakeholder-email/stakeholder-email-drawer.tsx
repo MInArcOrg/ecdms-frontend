@@ -67,7 +67,7 @@ const StakeholderEmailDrawer = (props: StakeholderEmailDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(stakeholderEmail as StakeholderEmail)
+            ...stakeholderEmail
           }}
           createActionFunc={isEdit ? editStakeholderEmail : createStakeholderEmail}
           onActionSuccess={onActionSuccess}

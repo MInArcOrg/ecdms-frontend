@@ -74,7 +74,7 @@ const TelecomInfrastructureDrawer = (props: TelecomInfrastructureDrawerType) => 
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(telecomInfrastructure as TelecomInfrastructure),
+            ...telecomInfrastructure,
             service_period: formatInitialDateDate(telecomInfrastructure?.service_period),
             inauguration_date: formatInitialDateDate(telecomInfrastructure?.inauguration_date)
           }}

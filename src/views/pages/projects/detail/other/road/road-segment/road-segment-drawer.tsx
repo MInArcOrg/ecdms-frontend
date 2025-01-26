@@ -70,7 +70,7 @@ const RoadSegmentDrawer = (props: RoadSegmentDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(roadSegment as RoadSegment)
+            ...roadSegment
           }}
           createActionFunc={isEdit ? editRoadSegment : createRoadSegment}
           onActionSuccess={onActionSuccess}

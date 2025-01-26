@@ -75,7 +75,7 @@ const ProjectStakeholderDrawer = (props: ProjectStakeholderDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(projectStakeholder as ProjectStakeholder)
+            ...projectStakeholder
           }}
           createActionFunc={isEdit ? editProjectStakeholder : createProjectStakeholder}
           onActionSuccess={onActionSuccess}

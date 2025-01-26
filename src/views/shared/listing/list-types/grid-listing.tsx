@@ -15,7 +15,7 @@ interface GridListingProps<T> {
   };
 }
 
-const GridListing = <T extends {}>({
+const GridListing = <T extends object>({
   items,
   ItemViewComponent,
   spacing = gridSpacing,

@@ -61,7 +61,7 @@ const PositionDrawer = (props: PositionDrawerType) => {
           title="department.position.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={position as Position}
+          initialValues={position}
           createActionFunc={isEdit ? editPosition : createPosition}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

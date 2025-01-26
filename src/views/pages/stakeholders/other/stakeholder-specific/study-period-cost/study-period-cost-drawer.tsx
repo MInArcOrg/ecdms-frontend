@@ -71,7 +71,7 @@ const StudyPeriodCostDrawer = (props: StudyPeriodCostDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(studyPeriodCost as StudyPeriodCost)
+            ...studyPeriodCost
           }}
           createActionFunc={isEdit ? editStudyPeriodCost : createStudyPeriodCost}
           onActionSuccess={onActionSuccess}

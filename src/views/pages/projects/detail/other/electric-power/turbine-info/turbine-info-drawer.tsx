@@ -70,7 +70,7 @@ const TurbineInfoDrawer = (props: TurbineInfoDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(turbineInfo as TurbineInfo)
+            ...turbineInfo
           }}
           createActionFunc={isEdit ? editTurbineInfo : createTurbineInfo}
           onActionSuccess={onActionSuccess}

@@ -71,7 +71,7 @@ const StakeholderStudyFieldDrawer = (props: StakeholderStudyFieldDrawerType) => 
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(StakeholderStudyField as StakeholderStudyField)
+            ...StakeholderStudyField
           }}
           createActionFunc={isEdit ? editStakeholderStudyField : createStakeholderStudyField}
           onActionSuccess={onActionSuccess}

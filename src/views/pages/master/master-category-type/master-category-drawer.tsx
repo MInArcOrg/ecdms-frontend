@@ -66,7 +66,7 @@ const MasterCategoryDrawer = (props: MasterCategoryDrawerType) => {
           title="master-data.master-category.master-category"
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={masterData as MasterCategory}
+          initialValues={masterData}
           createActionFunc={isEdit ? editMasterCategory : createMasterCategory}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

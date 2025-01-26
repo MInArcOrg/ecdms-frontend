@@ -75,7 +75,7 @@ const StakeholderOperationLocationDrawer = (props: StakeholderOperationLocationD
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(stakeholderOperationLocation as StakeholderOperationLocation),
+            ...stakeholderOperationLocation,
             country: countriesList
               .map((country) => ({
                 label: country.title,

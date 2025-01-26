@@ -26,7 +26,7 @@ const UserDrawer = (props: UserDrawerType) => {
   // ** Props
   const { open, toggle, refetch, user } = props;
 
-  const { addNewUser, updateUser } = userHook() as ReturnType<typeof userHook>;
+  const { addNewUser, updateUser } = userHook();
 
   const isEdit = user?.id ? true : false;
 
@@ -60,7 +60,7 @@ const UserDrawer = (props: UserDrawerType) => {
           title={`department.user.${isEdit ? 'edit-user' : 'create-user'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={user as User}
+          initialValues={user}
           createActionFunc={isEdit ? updateUser : addNewUser}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

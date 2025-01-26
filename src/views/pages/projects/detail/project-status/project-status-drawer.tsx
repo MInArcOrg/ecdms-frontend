@@ -64,7 +64,7 @@ const ProjectStatusDrawer = (props: ProjectStatusDrawerType) => {
           title="project.project-status.project-status" // Adjust the title key if necessary
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{ ...(projectStatus as ProjectStatus) }}
+          initialValues={{ ...projectStatus }}
           createActionFunc={createProjectStatus}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

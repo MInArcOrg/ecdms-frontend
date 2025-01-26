@@ -24,7 +24,7 @@ const RoleDrawer = (props: RoleDrawerType) => {
   const { open, toggle, refetch, role } = props;
   console.log('editable role', role);
 
-  const { addNewRole, updateRole } = useRole() as ReturnType<typeof useRole>;
+  const { addNewRole, updateRole } = useRole();
 
   const isEdit = role?.id ? true : false;
 
@@ -58,7 +58,7 @@ const RoleDrawer = (props: RoleDrawerType) => {
             title="role"
             getPayload={getPayload}
             validationSchema={validationSchema}
-            initialValues={role as Role}
+            initialValues={role}
             createActionFunc={isEdit ? updateRole : addNewRole}
             onActionSuccess={onActionSuccess}
             onCancel={handleClose}

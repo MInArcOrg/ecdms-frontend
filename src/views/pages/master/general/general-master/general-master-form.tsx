@@ -9,7 +9,7 @@ import StudyFieldMasterForm from './study-field-master-form';
 
 interface GeneralMasterFormProps {
   formik: FormikProps<GeneralMaster>; // Use ExtendedGeneralMaster in FormikProps
-  isLocaleEdit?: boolean;
+
   defaultLocaleData?: GeneralMaster;
   onFileChange: (file: File | null) => void;
   file: File | null;
@@ -18,8 +18,7 @@ interface GeneralMasterFormProps {
 
 const GeneralMasterForm: React.FC<GeneralMasterFormProps> = ({
   formik,
-  isLocaleEdit = false,
-  defaultLocaleData,
+
   file,
   onFileChange,
   type

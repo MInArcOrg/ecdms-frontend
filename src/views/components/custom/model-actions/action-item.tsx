@@ -36,7 +36,7 @@ const ActionItem: React.FC<ActionItemProps> = ({ user, actionData, title, refetc
       <Card sx={{ marginBottom: '10px' }}>
         <CardContent>
           <Box display="flex" justifyContent="space-between">
-            <UserProfileMd user={user as User} position={String(replyData?.type)} />
+            <UserProfileMd user={user} position={String(replyData?.type)} />
             <Box alignItems="end" display="flex" flexDirection="column" gap={3}>
               <Typography variant="body2">{moment(actionData?.time).fromNow()}</Typography>
               <CustomChip

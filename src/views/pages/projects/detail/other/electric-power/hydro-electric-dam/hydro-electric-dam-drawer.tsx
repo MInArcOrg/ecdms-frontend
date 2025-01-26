@@ -71,7 +71,7 @@ const HydroElectricDamDrawer = (props: HydroElectricDamDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(hydroElectricDam as HydroElectricDam)
+            ...hydroElectricDam
           }}
           createActionFunc={isEdit ? editHydroElectricDam : createHydroElectricDam}
           onActionSuccess={onActionSuccess}

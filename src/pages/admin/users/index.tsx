@@ -14,7 +14,7 @@ const UserList = ({}) => {
 
   const { t } = useTranslation();
   // Access the hook methods and state
-  const { pagination, allUsers, isLoading, deleteUser, fetchUsers, refetch } = userHook() as ReturnType<typeof userHook>;
+  const { pagination, allUsers, isLoading, deleteUser, fetchUsers, refetch } = userHook();
 
   const toggleUserDrawer = () => {
     setEditableUser({} as User);

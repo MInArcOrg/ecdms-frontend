@@ -73,7 +73,7 @@ const GeneratingCapacityDrawer = (props: GeneratingCapacityDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(generatingCapacity as GeneratingCapacity),
+            ...generatingCapacity,
             commission_date: formatInitialDateDate(generatingCapacity?.commission_date)
           }}
           createActionFunc={isEdit ? editGeneratingCapacity : createGeneratingCapacity}

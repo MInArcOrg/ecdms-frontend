@@ -71,7 +71,7 @@ const IrrigationCapacityDrawer = (props: IrrigationCapacityDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(irrigationCapacity as IrrigationCapacity)
+            ...irrigationCapacity
           }}
           createActionFunc={isEdit ? editIrrigationCapacity : createIrrigationCapacity}
           onActionSuccess={onActionSuccess}

@@ -126,7 +126,7 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
           initialValues={{
             type,
 
-            ...(projectVariation as ProjectVariation),
+            ...projectVariation,
             percentage: percentagetCalculator(projectVariation?.amount),
             approval_date: projectVariation?.approval_date
               ? getDynamicDate(i18n, moment(String(projectVariation?.approval_date)).toDate())

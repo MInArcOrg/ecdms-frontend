@@ -71,7 +71,7 @@ const StakeholderServiceDrawer = (props: StakeholderServiceDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(stakeholderService as StakeholderService)
+            ...stakeholderService
           }}
           createActionFunc={isEdit ? editStakeholderService : createStakeholderService}
           onActionSuccess={onActionSuccess}
