@@ -5,8 +5,6 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import AddressForm from './professional-address-form';
 import professionalAddressApiService from 'src/services/resource/professional-address-service';
-import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
-import { uploadFile } from 'src/services/utils/file-utils';
 import { ProfessionalAddress } from 'src/types/resource';
 
 interface AddressDrawerType {
@@ -33,20 +31,18 @@ const AddressDrawer = (props: AddressDrawerType) => {
     const editAddress = async (body: IApiPayload<ProfessionalAddress>) =>
         professionalAddressApiService.update(address?.id || '', body);
 
-    const getPayload = (values: ProfessionalAddress) => {
-        return {
-            data: {
-                ...values,
-                id: address?.id,
-                professional_id: professionalId
-            },
-            files: []
-        };
-    };
+    const getPayload = (values: ProfessionalAddress) => ({
+        data: {
+            ...values,
+            id: address?.id,
+            professional_id: professionalId
+        },
+        files: []
+    });
 
     const handleClose = () => toggle();
 
-    const onActionSuccess = async (response: IApiResponse<ProfessionalAddress>) => {
+    const onActionSuccess = () => {
         refetch();
         handleClose();
     };
@@ -70,9 +66,9 @@ const AddressDrawer = (props: AddressDrawerType) => {
                     onActionSuccess={onActionSuccess}
                     onCancel={handleClose}
                 >
-                    {(formik: FormikProps<ProfessionalAddress>) => {
-                        return <AddressForm formik={formik} />;
-                    }}
+                    {(formik: FormikProps<ProfessionalAddress>) => (
+                        <AddressForm formik={formik} />
+                    )}
                 </FormPageWrapper>
             )}
         </CustomSideDrawer>
