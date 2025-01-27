@@ -21,9 +21,6 @@ interface ContactDrawerType {
 const ContactDrawer = (props: ContactDrawerType) => {
   const { open, toggle, refetch, contact, professionalId } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
-  const onFileChange = (file: File | null) => {
-    setUploadableFile(file);
-  };
 
   const validationSchema = yup.object().shape({
     phone_no: yup.string().required('Phone number is required'),
@@ -87,4 +84,4 @@ const ContactDrawer = (props: ContactDrawerType) => {
   );
 };
 
-export default ContactDrawer; 
+export default ContactDrawer;
