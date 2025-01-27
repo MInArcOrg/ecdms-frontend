@@ -1,5 +1,4 @@
 import { FormikProps } from 'formik';
-import { useState } from 'react';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
@@ -20,7 +19,6 @@ interface AddressDrawerType {
 
 const AddressDrawer = (props: AddressDrawerType) => {
     const { open, toggle, refetch, address, professionalId } = props;
-    const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
     const validationSchema = yup.object().shape({
         country: yup.string().required('Country is required'),
@@ -42,16 +40,13 @@ const AddressDrawer = (props: AddressDrawerType) => {
                 id: address?.id,
                 professional_id: professionalId
             },
-            files: uploadableFile ? [uploadableFile] : []
+            files: []
         };
     };
 
     const handleClose = () => toggle();
 
-    const onActionSuccess = async (response: IApiResponse<ProfessionalAddress>, payload: IApiPayload<ProfessionalAddress>) => {
-        if (payload.files.length > 0) {
-            uploadFile(payload.files[0], uploadableResourceFileTypes.resource, response.payload?.id || '', '', '');
-        }
+    const onActionSuccess = async (response: IApiResponse<ProfessionalAddress>) => {
         refetch();
         handleClose();
     };
