@@ -21,9 +21,6 @@ interface AddressDrawerType {
 const AddressDrawer = (props: AddressDrawerType) => {
     const { open, toggle, refetch, address, professionalId } = props;
     const [uploadableFile, setUploadableFile] = useState<File | null>(null);
-    const onFileChange = (file: File | null) => {
-        setUploadableFile(file);
-    };
 
     const validationSchema = yup.object().shape({
         country: yup.string().required('Country is required'),
