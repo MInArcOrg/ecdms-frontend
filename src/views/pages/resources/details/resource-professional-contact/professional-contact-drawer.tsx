@@ -1,13 +1,10 @@
 import { FormikProps } from 'formik';
-import { useState } from 'react';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
+import { IApiPayload } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import ContactForm from './professional-contact-form';
 import professionalContactApiService from 'src/services/resource/professional-contact-service';
-import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
-import { uploadFile } from 'src/services/utils/file-utils';
 import { ProfessionalContact } from 'src/types/resource';
 
 interface ContactDrawerType {
@@ -20,7 +17,6 @@ interface ContactDrawerType {
 
 const ContactDrawer = (props: ContactDrawerType) => {
   const { open, toggle, refetch, contact, professionalId } = props;
-  const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const validationSchema = yup.object().shape({
     phone_no: yup.string().required('Phone number is required'),
@@ -35,23 +31,18 @@ const ContactDrawer = (props: ContactDrawerType) => {
   const editContact = async (body: IApiPayload<ProfessionalContact>) => 
     professionalContactApiService.update(contact?.id || '', body);
 
-  const getPayload = (values: ProfessionalContact) => {
-    return {
-      data: {
-        ...values,
-        id: contact?.id,
-        professional_id: professionalId
-      },
-      files: uploadableFile ? [uploadableFile] : []
-    };
-  };
+  const getPayload = (values: ProfessionalContact) => ({
+    data: {
+      ...values,
+      id: contact?.id,
+      professional_id: professionalId
+    },
+    files: []
+  });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<ProfessionalContact>, payload: IApiPayload<ProfessionalContact>) => {
-    if (payload.files.length > 0) {
-        uploadFile(payload.files[0], uploadableResourceFileTypes.resource, response.payload?.id || '', '', '');
-    }
+  const onActionSuccess = () => {
     refetch();
     handleClose();
   };
@@ -75,9 +66,9 @@ const ContactDrawer = (props: ContactDrawerType) => {
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<ProfessionalContact>) => {
-            return <ContactForm formik={formik} />;
-          }}
+          {(formik: FormikProps<ProfessionalContact>) => (
+            <ContactForm formik={formik} />
+          )}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>
