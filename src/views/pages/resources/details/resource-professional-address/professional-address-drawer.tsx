@@ -1,5 +1,5 @@
 import { FormikProps } from 'formik';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
+import { IApiPayload } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
