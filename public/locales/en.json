@@ -1392,6 +1392,17 @@
       "website": "Website",
       "northing": "Northing",
       "easting": "Easting"
+    },
+    "contact": {
+      "title": " Contact",
+      "create": "Create Contact",
+      "edit": "Edit Contact",
+      "details": "Contact Details",
+      "create-contact": "Create Contact",
+      "edit-contact": "Edit Contact",
+      "phone": "Phone Number",
+      "email": "Email",
+      "website": "Website"
     }
   }
 }

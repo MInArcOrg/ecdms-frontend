@@ -123,3 +123,13 @@ export interface ProfessionalAddress {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface ProfessionalContact {
+  id?: string;
+  professional_id: string;
+  phone_no: string;
+  email: string;
+  website?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
