@@ -133,3 +133,12 @@ export interface ProfessionalContact {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface ProfessionalAdditionalInfo {
+  id?: string
+  professional_id: string
+  additional_information: string
+  reference?: string
+  created_at?: Date
+  updated_at?: Date
+}
