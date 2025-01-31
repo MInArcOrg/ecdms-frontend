@@ -106,7 +106,6 @@ export interface ResourceQuantityPrice {
   detailresourcetype: DetailResourceType;
 }
 
-
 export interface ProfessionalAddress {
   id?: string;
   professional_id: string;
@@ -135,41 +134,37 @@ export interface ProfessionalContact {
 }
 
 export interface ProfessionalAdditionalInfo {
-  id?: string
-  professional_id: string
-  additional_information: string
-  reference?: string
-  created_at?: Date
-  updated_at?: Date
+  id?: string;
+  professional_id: string;
+  additional_information: string;
+  reference?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface ProfessionalEducation {
-  id?: string
-  professional_id: string
-  study_field: string
-  school_name?: string
-  education_level?: string
-  program_type: string
-  start_date: string
-  end_date: string
-  gpa: number
-  created_at?: Date
-  updated_at?: Date
+  id?: string;
+  professional_id: string;
+  study_field: string;
+  school_name?: string;
+  education_level?: string;
+  program_type: string;
+  start_date: string;
+  end_date: string;
+  gpa: number;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface ProfessionalWorkExperience {
-  id?: string
-  professional_id: string
-  company_name: string
-  department?: string
-  position: string
-  task_description: string
-  start_date: string
-  end_date: string
-  created_at?: Date
-  updated_at?: Date
+  id?: string;
+  professional_id: string;
+  company_name: string;
+  department?: string;
+  position: string;
+  task_description: string;
+  start_date: string;
+  end_date: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
-
-
-
-

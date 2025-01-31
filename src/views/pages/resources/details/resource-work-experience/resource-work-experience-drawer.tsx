@@ -65,8 +65,7 @@ const ExperienceDrawer = (props: ExperienceDrawerType) => {
       }
       refetch();
       handleClose();
-    } catch (error) {
-    }
+    } catch (error) {}
   };
 
   return (
