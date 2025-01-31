@@ -157,6 +157,19 @@ export interface ProfessionalEducation {
   updated_at?: Date
 }
 
+export interface ProfessionalWorkExperience {
+  id?: string
+  professional_id: string
+  company_name: string
+  department?: string
+  position: string
+  task_description: string
+  start_date: string
+  end_date: string
+  created_at?: Date
+  updated_at?: Date
+}
+
 
 
 
