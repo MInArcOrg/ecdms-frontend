@@ -142,3 +142,21 @@ export interface ProfessionalAdditionalInfo {
   created_at?: Date
   updated_at?: Date
 }
+
+export interface ProfessionalEducation {
+  id?: string
+  professional_id: string
+  study_field: string
+  school_name?: string
+  education_level?: string
+  program_type: string
+  start_date: string
+  end_date: string
+  gpa: number
+  created_at?: Date
+  updated_at?: Date
+}
+
+
+
+

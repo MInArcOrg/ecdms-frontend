@@ -16,34 +16,16 @@ const ContactForm: React.FC<ContactFormProps> = ({ formik }) => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <CustomTextBox
-          fullWidth
-          label={t('professional.contact.phone')}
-          name="phone_no"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t('professional.contact.phone')} name="phone_no" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox
-          fullWidth
-          label={t('professional.contact.email')}
-          name="email"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t('professional.contact.email')} name="email" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox
-          fullWidth
-          label={t('professional.contact.website')}
-          name="website"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t('professional.contact.website')} name="website" size="small" sx={{ mb: 2 }} />
       </Grid>
     </Grid>
   );
 };
 
-export default ContactForm; 
+export default ContactForm;

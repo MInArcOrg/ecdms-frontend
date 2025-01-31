@@ -1411,6 +1411,21 @@
       "details": "Additional Information Details",
       "information": "Additional Information",
       "reference": "Reference"
+    },
+    "education": {
+      "title": "Education",
+      "create": "Create Education",
+      "edit": "Edit Education",
+      "details": "Education Details",
+      "create-education": "Create Education",
+      "edit-education": "Edit Education",
+      "study-field": "Study Field",
+      "school-name": "School Name",
+      "education-level": "Education Level",
+      "program-type": "Program Type",
+      "start-date": "Start Date",
+      "end-date": "End Date",
+      "gpa": "GPA"
     }
   }
 }

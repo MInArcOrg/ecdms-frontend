@@ -1,22 +1,29 @@
 import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
-import React from 'react';
+import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
-import { ProfessionalAddress } from 'src/types/resource';
+import type { ProfessionalEducation } from 'src/types/resource';
+import type { StudyField } from 'src/types/general/general-master';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-interface AddressCardProps {
-  address: ProfessionalAddress;
+interface EducationCardProps {
+  education: ProfessionalEducation;
   refetch: () => void;
-  onEdit: (address: ProfessionalAddress) => void;
+  onEdit: (education: ProfessionalEducation) => void;
   onDelete: (id: string) => void;
-  onDetail: (address: ProfessionalAddress) => void;
+  onDetail: (education: ProfessionalEducation) => void;
+  studyFields: StudyField[];
 }
 
-const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onDelete, onDetail }) => {
+const EducationCard: React.FC<EducationCardProps> = ({ education, refetch, onEdit, onDelete, onDetail, studyFields }) => {
   const { t } = useTranslation();
+
+  const getStudyFieldTitle = (id: string) => {
+    const field = studyFields.find((f) => f.id === id);
+    return field ? field.title : 'N/A';
+  };
 
   return (
     <Card sx={{ p: 2 }}>
@@ -26,7 +33,7 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
             <Typography
               noWrap
               component={Button}
-              onClick={() => onDetail(address)}
+              onClick={() => onDetail(education)}
               sx={{
                 fontWeight: 500,
                 textDecoration: 'none',
@@ -34,7 +41,7 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {address?.city}, {address?.country}
+              {getStudyFieldTitle(education.study_field)}
             </Typography>
           </Typography>
         </Box>
@@ -43,21 +50,25 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.address.region')}: {address?.region || 'N/A'}
+            {t('professional.education.school-name')}: {education?.school_name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.address.sub_city')}: {address?.sub_city || 'N/A'}
+            {t('professional.education.education-level')}: {education?.education_level || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.address.street')}: {address?.street || 'N/A'}
+            {t('professional.education.program-type')}: {education?.program_type || 'N/A'}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {t('professional.education.gpa')}: {education?.gpa || 'N/A'}
           </Typography>
         </Box>
       </CardContent>
+
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={address?.id || ''} type={uploadableResourceFileTypes.resource} />
+        <FileDrawer id={education?.id || ''} type={uploadableResourceFileTypes.resource} />
         <ModelAction
-          model="ProfessionalAddress"
-          model_id={address?.id || ''}
+          model="ProfessionalEducation"
+          model_id={education?.id || ''}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
@@ -66,15 +77,15 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'professionaladdress'
+            subject: 'professionaleducation'
           }}
           editPermissionRule={{
             action: 'edit',
-            subject: 'professionaladdress'
+            subject: 'professionaleducation'
           }}
-          onEdit={() => onEdit(address)}
-          onDelete={() => onDelete(address?.id || '')}
-          item={address}
+          onEdit={() => onEdit(education)}
+          onDelete={() => onDelete(education?.id || '')}
+          item={education}
           options={[]}
         />
       </CardActions>
@@ -82,4 +93,4 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
   );
 };
 
-export default AddressCard;
+export default EducationCard;

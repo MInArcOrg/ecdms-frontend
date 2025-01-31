@@ -6,12 +6,12 @@ import { buildPutRequest } from 'src/utils/requests/put-request';
 import axiosServices from 'src/utils/axios';
 import { ProfessionalAddress } from 'src/types/resource/index';
 
-const professionalAddressApiService = { 
+const professionalAddressApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<ProfessionalAddress[]>> =>
     buildGetRequest('/resources/professional-addresses', params)
       .then((response: AxiosResponse<IApiResponse<ProfessionalAddress[]>>) => response.data)
       .catch((error: any) => {
-        throw error;
+        throw error
       }),
 
   getById: (id: string, params: GetRequestParam): Promise<IApiResponse<ProfessionalAddress>> =>
