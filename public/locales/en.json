@@ -1440,6 +1440,23 @@
       "task-description": "Task Description",
       "start-date": "Start Date",
       "end-date": "End Date"
+    },
+    "association-membership": {
+      "title": "Association Memberships",
+      "create": "Create Membership",
+      "edit": "Edit Membership",
+      "details": "Membership Details",
+      "create-work-experience": "Create Membership",
+      "edit-work-experience": "Edit Membership",
+      "association-name": "Association Name",
+      "membership-type": "Membership Type",
+      "position": "Position",
+      "description": "Description",
+      "registration-date": "Registration Date",
+      "end-date": "End Date",
+      "member": "Member",
+      "associate": "Associate",
+      "fellow": "Fellow"
     }
   }
 }
