@@ -1457,6 +1457,23 @@
       "member": "Member",
       "associate": "Associate",
       "fellow": "Fellow"
+    },
+    "certification": {
+      "title": "Certifications",
+      "create": "Create Certification",
+      "edit": "Edit Certification",
+      "details": "Certification Details",
+      "certificate-title": "Certificate Title",
+      "certification-type": "Certification Type",
+      "certifying-body": "Certifying Body",
+      "certification-number": "Certification Number",
+      "certification-scope": "Scope",
+      "issue-date": "Issue Date",
+      "expire-date": "Expire Date",
+      "remark": "Remark",
+      "type-professional": "Professional",
+      "type-technical": "Technical",
+      "type-safety": "Safety"
     }
   }
 }

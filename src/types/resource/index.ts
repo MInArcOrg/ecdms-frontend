@@ -181,3 +181,18 @@ export interface ProfessionalMembership {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface ProfessionalCertification {
+  id?: string;
+  professional_id: string;
+  certification_type: string;
+  certificate_title: string;
+  certification_scope?: string;
+  certifying_body: string;
+  certification_number?: string;
+  issue_date: string;
+  expire_date?: string;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
