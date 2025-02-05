@@ -60,7 +60,9 @@ const AddressDrawer = (props: AddressDrawerType) => {
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<ProfessionalAddress>) => <AddressForm formik={formik} />}
+          {(formik: FormikProps<ProfessionalAddress>) => (
+            <AddressForm formik={formik} />
+          )}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

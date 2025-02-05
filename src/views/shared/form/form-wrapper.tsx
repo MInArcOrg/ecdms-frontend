@@ -58,41 +58,13 @@ const FormPageWrapper = <T extends FormikValues>({
     } catch (err: any) {
       const apiError = err as IApiResponse;
       setStatus({ success: false });
+      setErrors(parseError(apiError) as FormikErrors<T>);
       setSubmitting(false);
 
       if (apiError._errors && typeof apiError._errors === 'string') {
         toast.error(apiError._errors);
-        setErrors({ _error: apiError._errors } as FormikErrors<T>);
       } else if (apiError._errors) {
-        // Convert API error structure to Formik errors
-        const formErrors: Record<string, string> = {};
-        
-        // Handle nested error objects from the API
-        const processErrors = (errors: any, prefix = '') => {
-          if (Array.isArray(errors)) {
-            return errors[0]; // Take first error if it's an array
-          } else if (typeof errors === 'object' && errors !== null) {
-            Object.entries(errors).forEach(([key, value]) => {
-              const fieldName = prefix ? `${prefix}.${key}` : key;
-              if (typeof value === 'string') {
-                formErrors[fieldName] = value;
-              } else if (Array.isArray(value)) {
-                formErrors[fieldName] = value[0];
-              } else if (value && typeof value === 'object') {
-                processErrors(value, fieldName);
-              }
-            });
-          }
-        };
-
-        processErrors(apiError._errors);
-        
-        // Set Formik errors
-        setErrors(formErrors as FormikErrors<T>);
-        
-        // Show errors in toast
-        const errorMessages = Object.values(formErrors).join('\n');
-        toast.error(errorMessages || `${intl(edit ? 'error-update' : 'error-create')} ${intl(title)}`);
+        toast.error(`${intl(edit ? 'error-update' : 'error-create')} ${intl(title)}`);
       }
     }
   };
