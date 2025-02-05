@@ -1403,7 +1403,14 @@
       "phone": "Phone Number",
       "email": "Email",
       "website": "Website"
+    },
+    "additional-info": {
+      "title": "Additional Information",
+      "create": "Create Additional Information",
+      "edit": "Edit Additional Information",
+      "details": "Additional Information Details",
+      "information": "Additional Information",
+      "reference": "Reference"
     }
   }
 }
-
