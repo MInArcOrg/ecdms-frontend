@@ -2,18 +2,18 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import type { StakeholderManager } from 'src/types/stakeholder/stakeholder-manager';
+import type { JointVenture } from 'src/types/stakeholder/joint-venture';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
-  row: StakeholderManager;
+  row: JointVenture;
 }
 
-export const managerColumns = (
-  onDetail: (manager: StakeholderManager) => void,
-  onEdit: (manager: StakeholderManager) => void,
+export const jointVentureColumns = (
+  onDetail: (jointVenture: JointVenture) => void,
+  onEdit: (jointVenture: JointVenture) => void,
   onDelete: (id: string) => void,
   t: any
 ): GridColDef[] => [
@@ -21,9 +21,8 @@ export const managerColumns = (
     flex: 0.2,
     minWidth: 200,
     field: 'name',
-    headerName: t('stakeholderManager.firstName'),
+    headerName: t('jointVenture.name'),
     renderCell: ({ row }: CellType) => {
-      const fullName = `${row.first_name} ${row.middle_name ? row.middle_name + ' ' : ''}${row.last_name}`;
       return (
         <Typography
           noWrap
@@ -36,7 +35,7 @@ export const managerColumns = (
             '&:hover': { color: 'primary.main' }
           }}
         >
-          {fullName}
+          {row.name}
         </Typography>
       );
     }
@@ -44,30 +43,23 @@ export const managerColumns = (
   {
     flex: 0.15,
     minWidth: 150,
-    field: 'department',
-    headerName: t('stakeholderManager.department'),
-    renderCell: ({ row }: CellType) => row.department
+    field: 'member_companies_no',
+    headerName: t('jointVenture.memberCompaniesNo'),
+    renderCell: ({ row }: CellType) => row.member_companies_no
   },
   {
-    flex: 0.15,
-    minWidth: 150,
-    field: 'position',
-    headerName: t('stakeholderManager.position'),
-    renderCell: ({ row }: CellType) => row.position || t('common.not-available')
+    flex: 0.3,
+    minWidth: 200,
+    field: 'description',
+    headerName: t('jointVenture.description'),
+    renderCell: ({ row }: CellType) => row.description
   },
   {
     flex: 0.2,
-    minWidth: 180,
-    field: 'email',
-    headerName: t('stakeholderManager.email'),
-    renderCell: ({ row }: CellType) => row.email
-  },
-  {
-    flex: 0.15,
-    minWidth: 120,
-    field: 'phone_no',
-    headerName: t('stakeholderManager.phoneNo'),
-    renderCell: ({ row }: CellType) => row.phone_no
+    minWidth: 150,
+    field: 'reference',
+    headerName: t('jointVenture.reference'),
+    renderCell: ({ row }: CellType) => row.reference || 'N/A'
   },
   {
     flex: 0.15,
@@ -84,7 +76,7 @@ export const managerColumns = (
     renderCell: ({ row }: CellType) => (
       <Fragment>
         <ModelAction
-          model="StakeholderManager"
+          model="JointVenture"
           model_id={row?.id || ''}
           refetchModel={() => {}}
           resubmit={() => {}}
@@ -97,11 +89,11 @@ export const managerColumns = (
           item={row}
           deletePermissionRule={{
             action: 'delete',
-            subject: 'stakeholdermanager'
+            subject: 'jointventure'
           }}
           editPermissionRule={{
             action: 'edit',
-            subject: 'stakeholdermanager'
+            subject: 'jointventure'
           }}
           options={[]}
         />

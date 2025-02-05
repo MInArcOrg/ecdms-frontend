@@ -129,13 +129,7 @@ const ManagerList: React.FC<ManagerListProps> = ({ stakeholderId }) => {
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <ManagerCard
-            onDetail={handleClickDetail}
-            manager={data}
-            onEdit={handleEdit}
-            refetch={refetch}
-            onDelete={handleDelete}
-          />
+          <ManagerCard onDetail={handleClickDetail} manager={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,

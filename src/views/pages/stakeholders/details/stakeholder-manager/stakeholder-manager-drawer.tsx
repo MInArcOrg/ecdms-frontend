@@ -73,9 +73,7 @@ const ManagerDrawer = (props: ManagerDrawerType) => {
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<StakeholderManager>) => (
-            <ManagerForm formik={formik} />
-          )}
+          {(formik: FormikProps<StakeholderManager>) => <ManagerForm formik={formik} />}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

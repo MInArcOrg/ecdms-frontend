@@ -20,75 +20,28 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik }) => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox
-          fullWidth
-          label={t('stakeholderManager.firstName')}
-          name="first_name"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t('stakeholderManager.firstName')} name="first_name" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox
-          fullWidth
-          label={t('stakeholderManager.middleName')}
-          name="middle_name"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t('stakeholderManager.middleName')} name="middle_name" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox
-          fullWidth
-          label={t('stakeholderManager.lastName')}
-          name="last_name"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t('stakeholderManager.lastName')} name="last_name" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox
-          fullWidth
-          label={t('stakeholderManager.department')}
-          name="department"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t('stakeholderManager.department')} name="department" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox
-          fullWidth
-          label={t('stakeholderManager.position')}
-          name="position"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t('stakeholderManager.position')} name="position" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox
-          fullWidth
-          label={t('stakeholderManager.nationality')}
-          name="nationality"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t('stakeholderManager.nationality')} name="nationality" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox
-          fullWidth
-          label={t('stakeholderManager.nationalIdNo')}
-          name="national_id_no"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t('stakeholderManager.nationalIdNo')} name="national_id_no" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomDatePicker
-          fullWidth
-          label={t('stakeholderManager.birthDate')}
-          name="birth_date"
-          sx={{ mb: 2 }}
-        />
+        <CustomDatePicker fullWidth label={t('stakeholderManager.birthDate')} name="birth_date" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
         <CustomRadioBox
@@ -109,23 +62,10 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik }) => {
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox
-          fullWidth
-          label={t('stakeholderManager.email')}
-          name="email"
-          type="email"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t('stakeholderManager.email')} name="email" type="email" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox
-          fullWidth
-          label={t('stakeholderManager.type')}
-          name="type"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t('stakeholderManager.type')} name="type" size="small" sx={{ mb: 2 }} />
       </Grid>
     </Grid>
   );

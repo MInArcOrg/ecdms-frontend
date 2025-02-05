@@ -1475,26 +1475,35 @@
       "type-technical": "Technical",
       "type-safety": "Safety"
     }
-  
   },
   "stakeholderManager": {
-  "title": "Stakeholder Managers",
-  "create": "Create Stakeholder Manager",
-  "edit": "Edit Stakeholder Manager",
-  "details": "Stakeholder Manager Details",
-  "create-manager": "Create Stakeholder Manager",
-  "edit-manager": "Edit Stakeholder Manager",
-  "type": "Type",
-  "firstName": "First Name",
-  "middleName": "Middle Name",
-  "lastName": "Last Name",
-  "department": "Department",
-  "position": "Position",
-  "nationality": "Nationality",
-  "nationalIdNo": "National ID No",
-  "birthDate": "Birth Date",
-  "gender": "Gender",
-  "phoneNo": "Phone No",
-  "email": "Email"
-}
+    "title": "Stakeholder Managers",
+    "create": "Create Stakeholder Manager",
+    "edit": "Edit Stakeholder Manager",
+    "details": "Stakeholder Manager Details",
+    "create-manager": "Create Stakeholder Manager",
+    "edit-manager": "Edit Stakeholder Manager",
+    "type": "Type",
+    "firstName": "First Name",
+    "middleName": "Middle Name",
+    "lastName": "Last Name",
+    "department": "Department",
+    "position": "Position",
+    "nationality": "Nationality",
+    "nationalIdNo": "National ID No",
+    "birthDate": "Birth Date",
+    "gender": "Gender",
+    "phoneNo": "Phone No",
+    "email": "Email"
+  },
+  "jointVenture": {
+    "title": "Joint Ventures",
+    "name": "Name",
+    "memberCompaniesNo": "Number of Member Companies",
+    "description": "Description",
+    "reference": "Reference",
+    "details": "Joint Venture Details",
+    "create": "Create Joint Venture",
+    "edit": "Edit Joint Venture"
+  }
 }

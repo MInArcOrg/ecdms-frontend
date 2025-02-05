@@ -1,19 +1,19 @@
 import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
-import type { StakeholderManager } from 'src/types/stakeholder/stakeholder-manager';
+import type { JointVenture } from 'src/types/stakeholder/joint-venture';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-interface ManagerCardProps {
-  manager: StakeholderManager;
+interface JointVentureCardProps {
+  jointVenture: JointVenture;
   refetch: () => void;
-  onEdit: (manager: StakeholderManager) => void;
+  onEdit: (jointVenture: JointVenture) => void;
   onDelete: (id: string) => void;
-  onDetail: (manager: StakeholderManager) => void;
+  onDetail: (jointVenture: JointVenture) => void;
 }
 
-const ManagerCard: React.FC<ManagerCardProps> = ({ manager, refetch, onEdit, onDelete, onDetail }) => {
+const JointVentureCard: React.FC<JointVentureCardProps> = ({ jointVenture, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -24,7 +24,7 @@ const ManagerCard: React.FC<ManagerCardProps> = ({ manager, refetch, onEdit, onD
             <Typography
               noWrap
               component={Button}
-              onClick={() => onDetail(manager)}
+              onClick={() => onDetail(jointVenture)}
               sx={{
                 fontWeight: 500,
                 textDecoration: 'none',
@@ -32,7 +32,7 @@ const ManagerCard: React.FC<ManagerCardProps> = ({ manager, refetch, onEdit, onD
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {`${manager.first_name} ${manager.last_name}`}
+              {jointVenture.name}
             </Typography>
           </Typography>
         </Box>
@@ -41,24 +41,18 @@ const ManagerCard: React.FC<ManagerCardProps> = ({ manager, refetch, onEdit, onD
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholderManager.department')}: {manager.department}
+            {t('jointVenture.memberCompaniesNo')}: {jointVenture.member_companies_no}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholderManager.position')}: {manager.position || 'N/A'}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {t('stakeholderManager.email')}: {manager.email}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {t('stakeholderManager.phoneNo')}: {manager.phone_no}
+            {t('jointVenture.reference')}: {jointVenture.reference || 'N/A'}
           </Typography>
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
         <ModelAction
-          model="StakeholderManager"
-          model_id={manager?.id || ''}
+          model="JointVenture"
+          model_id={jointVenture?.id || ''}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
@@ -67,15 +61,15 @@ const ManagerCard: React.FC<ManagerCardProps> = ({ manager, refetch, onEdit, onD
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'stakeholdermanager'
+            subject: 'jointventure'
           }}
           editPermissionRule={{
             action: 'edit',
-            subject: 'stakeholdermanager'
+            subject: 'jointventure'
           }}
-          onEdit={() => onEdit(manager)}
-          onDelete={() => onDelete(manager?.id || '')}
-          item={manager}
+          onEdit={() => onEdit(jointVenture)}
+          onDelete={() => onDelete(jointVenture?.id || '')}
+          item={jointVenture}
           options={[]}
         />
       </CardActions>
@@ -83,4 +77,4 @@ const ManagerCard: React.FC<ManagerCardProps> = ({ manager, refetch, onEdit, onD
   );
 };
 
-export default ManagerCard;
+export default JointVentureCard;
