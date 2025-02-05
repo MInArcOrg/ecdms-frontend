@@ -105,3 +105,31 @@ export interface ResourceQuantityPrice {
   resourcebrand: ResourceBrand;
   detailresourcetype: DetailResourceType;
 }
+
+
+export interface ProfessionalAddress {
+  id?: string;
+  professional_id: string;
+  country: string;
+  region: string;
+  city: string;
+  sub_city: string;
+  woreda: string;
+  street: string;
+  block_no: string;
+  website: string;
+  northing: number;
+  easting: number;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface ProfessionalContact {
+  id?: string;
+  professional_id: string;
+  phone_no: string;
+  email: string;
+  website?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}

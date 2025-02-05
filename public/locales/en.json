@@ -197,29 +197,24 @@
           "contact-person": "Contact Person",
           "additional-info": "Additional Info"
         },
-        "licenses":{
-          "licenses":"Licenses"
+        "licenses": {
+          "licenses": "Licenses"
         },
-        "work-experiances":
-        {
-          "work-experiances":"Work Experiances"
+        "work-experiances": {
+          "work-experiances": "Work Experiances"
         },
-        "educations": 
-        {
-          "educations":"Educations",
-          "trainings":"Trainings"
+        "educations": {
+          "educations": "Educations",
+          "trainings": "Trainings"
         },
-        "membership":
-        {
-          "association":"Association"
+        "membership": {
+          "association": "Association"
         },
-        "achievements":
-        {
-          "certificates":"Certificates"
+        "achievements": {
+          "certificates": "Certificates"
         },
-        "recomendations":
-        {
-          "recomendations":"Recomendations"
+        "recomendations": {
+          "recomendations": "Recomendations"
         }
       }
     },
@@ -1073,6 +1068,7 @@
     "create": "Create",
     "active": "Active",
     "inactive": "InActive",
+    "created-at": "Created At",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",
@@ -1377,5 +1373,37 @@
       "northing": "Northing",
       "easting": "Easting"
     }
+  },
+  "professional": {
+    "address": {
+      "title": "Address",
+      "create": "Create Address",
+      "edit": "Edit Address",
+      "details": "Address Details",
+      "create-address": "Create Address",
+      "edit-address": "Edit Address",
+      "country": "Country",
+      "region": "Region",
+      "city": "City",
+      "sub_city": "Sub City",
+      "woreda": "Woreda",
+      "street": "Street",
+      "block_no": "Block Number",
+      "website": "Website",
+      "northing": "Northing",
+      "easting": "Easting"
+    },
+    "contact": {
+      "title": " Contact",
+      "create": "Create Contact",
+      "edit": "Edit Contact",
+      "details": "Contact Details",
+      "create-contact": "Create Contact",
+      "edit-contact": "Edit Contact",
+      "phone": "Phone Number",
+      "email": "Email",
+      "website": "Website"
+    }
   }
 }
+
