@@ -6,7 +6,7 @@ interface OtherLayoutProps {
   layoutComponent: React.FC<{ activeMenu: number; children: ReactNode }>;
   subMenuComponent: React.FC<{
     typeId: string;
-    subMenuItems: (url:string)=>any[];
+    subMenuItems: any[];
     activeSubMenu?: number | null;
     setActiveType: (path: string) => void;
     activeType?: number;
