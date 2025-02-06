@@ -17,7 +17,7 @@ interface JointVentureDrawerType {
 }
 
 const JointVentureDrawer = (props: JointVentureDrawerType) => {
-  const { open, toggle, refetch, jointVenture } = props;
+  const { open, toggle, refetch, jointVenture, stakeholderId } = props;
 
   const validationSchema = yup.object().shape({
     name: yup.string().required('Name is required'),
@@ -39,7 +39,8 @@ const JointVentureDrawer = (props: JointVentureDrawerType) => {
   const getPayload = (values: JointVenture): IApiPayload<JointVenture> => ({
     data: {
       ...values,
-      id: jointVenture?.id
+      id: jointVenture?.id,
+      stakeholder_id: stakeholderId
     },
     files: []
   });
