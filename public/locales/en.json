@@ -1520,5 +1520,16 @@
     "ownershipPercentage": "Ownership Percentage",
     "description": "Description",
     "reference": "Reference"
+  },
+  "stakeholderAdditionalInformation": {
+    "title": "Additional Information",
+    "create": "Create Additional Information",
+    "edit": "Edit Additional Information",
+    "details": "Additional Information Details",
+    "create-additional-information": "Create Additional Information",
+    "edit-additional-information": "Edit Additional Information",
+    "additionalInformation": "Additional Information",
+    "reference": "Reference",
+    "noReference": "No Reference"
   }
 }
