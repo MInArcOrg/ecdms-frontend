@@ -1542,5 +1542,26 @@
     "businessFieldId": "Business Field",
     "description": "Description",
     "reference": "Reference"
+  },
+    "stakeholderBranchManager": {
+      "title": "Branch Managers",
+      "create": "Create Branch Manager",
+      "edit": "Edit Branch Manager",
+      "details": "Branch Manager Details",
+      "name": "Name",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "department": "Department",
+      "position": "Position",
+      "gender": "Gender",
+      "genderOptions": {
+        "male": "Male",
+        "female": "Female",
+        "other": "Other"
+      },
+      "phone": "Phone",
+      "email": "Email",
+      "branch": "Branch"
   }
 }

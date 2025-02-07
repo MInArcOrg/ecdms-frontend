@@ -1,0 +1,102 @@
+import type { FormikProps } from 'formik';
+import type { IApiPayload } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import BranchManagerForm from './stakeholder-branch-manager-form';
+import stakeholderBranchManagerApiService from 'src/services/stakeholder/stakeholder-branch-manager-service';
+import type { StakeholderBranchManager } from 'src/types/stakeholder/stakeholder-branch-manager';
+import type { StakeholderBranch } from 'src/types/stakeholder/stakeholder-branch';
+import type { IApiResponse } from 'src/types/requests';
+
+interface BranchManagerDrawerType {
+  open: boolean;
+  toggle: () => void;
+  refetch: () => void;
+  branchManager: StakeholderBranchManager;
+  stakeholderId: string;
+  stakeholderBranches: StakeholderBranch[];
+}
+
+const BranchManagerDrawer = (props: BranchManagerDrawerType) => {
+  const { open, toggle, refetch, branchManager, stakeholderId, stakeholderBranches } = props;
+
+  const validationSchema = yup.object().shape({
+    stakeholder_branch_id: yup.string().required('Branch is required'),
+    department: yup.string().required('Department is required'),
+    position: yup.string().required('Position is required'),
+    first_name: yup.string().required('First name is required'),
+    middle_name: yup.string().required('Middle name is required'),
+    last_name: yup.string().required('Last name is required'),
+    gender: yup.string().required('Gender is required'),
+    phone: yup.string().required('Phone number is required'),
+    email: yup.string().email('Invalid email').nullable()
+  });
+
+  const isEdit = Boolean(branchManager?.id);
+
+  const createBranchManager = async (body: IApiPayload<StakeholderBranchManager>): Promise<IApiResponse<StakeholderBranchManager>> => {
+    return stakeholderBranchManagerApiService.create(body);
+  };
+
+  const editBranchManager = async (body: IApiPayload<StakeholderBranchManager>): Promise<IApiResponse<StakeholderBranchManager>> => {
+    return stakeholderBranchManagerApiService.update(branchManager?.id || '', body);
+  };
+
+  const getPayload = (values: StakeholderBranchManager) => ({
+    data: {
+      ...values,
+      id: branchManager?.id,
+      stakeholder_id: stakeholderId
+    },
+    files: []
+  });
+
+  const handleClose = () => {
+    toggle();
+  };
+
+  const onActionSuccess = async (response: IApiResponse<StakeholderBranchManager>) => {
+    refetch();
+    handleClose();
+  };
+
+  return (
+    <CustomSideDrawer title={`stakeholderBranchManager.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+      {() => (
+        <FormPageWrapper
+          edit={isEdit}
+          title={`stakeholderBranchManager.${isEdit ? 'edit' : 'create'}`}
+          getPayload={getPayload}
+          validationSchema={validationSchema}
+          initialValues={{
+            ...(branchManager as StakeholderBranchManager)
+          }}
+          createActionFunc={isEdit ? editBranchManager : createBranchManager}
+          onActionSuccess={onActionSuccess}
+          onCancel={handleClose}
+        >
+          {(formik: FormikProps<StakeholderBranchManager>) => (
+            <BranchManagerForm formik={formik} stakeholderBranches={stakeholderBranches} />
+          )}
+        </FormPageWrapper>
+        //     <FormPageWrapper
+        //     edit={isEdit}
+        //     title={`stakeholderBranch.${isEdit ? 'edit' : 'create'}`}
+        //     getPayload={getPayload}
+        //     validationSchema={validationSchema}
+        //     initialValues={{
+        //       ...(branch as StakeholderBranch)
+        //     }}
+        //     createActionFunc={isEdit ? editBranch : createBranch}
+        //     onActionSuccess={onActionSuccess}
+        //     onCancel={handleClose}
+        //   >
+        //     {(formik: FormikProps<StakeholderBranch>) => <BranchForm formik={formik} businessFields={businessFields} />}
+        //   </FormPageWrapper>
+      )}
+    </CustomSideDrawer>
+  );
+};
+
+export default BranchManagerDrawer;
