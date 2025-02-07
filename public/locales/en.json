@@ -197,29 +197,24 @@
           "contact-person": "Contact Person",
           "additional-info": "Additional Info"
         },
-        "licenses":{
-          "licenses":"Licenses"
+        "licenses": {
+          "licenses": "Licenses"
         },
-        "work-experiances":
-        {
-          "work-experiances":"Work Experiances"
+        "work-experiances": {
+          "work-experiances": "Work Experiances"
         },
-        "educations": 
-        {
-          "educations":"Educations",
-          "trainings":"Trainings"
+        "educations": {
+          "educations": "Educations",
+          "trainings": "Trainings"
         },
-        "membership":
-        {
-          "association":"Association"
+        "membership": {
+          "association": "Association"
         },
-        "achievements":
-        {
-          "certificates":"Certificates"
+        "achievements": {
+          "certificates": "Certificates"
         },
-        "recomendations":
-        {
-          "recomendations":"Recomendations"
+        "recomendations": {
+          "recomendations": "Recomendations"
         }
       }
     },
@@ -1073,6 +1068,7 @@
     "create": "Create",
     "active": "Active",
     "inactive": "InActive",
+    "created-at": "Created At",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",

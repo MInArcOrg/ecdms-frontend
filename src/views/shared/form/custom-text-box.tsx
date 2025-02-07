@@ -31,7 +31,7 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({ name, onValueChange, type
         onChange={handleChange}
         value={field.value || ''}
       />
-      {meta.touched && meta.error && (
+      {(meta.touched || !isSubmitting) && meta.error && (
         <FormHelperText error id={`helper-text-${name}`}>
           {meta.error}
         </FormHelperText>
