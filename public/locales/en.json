@@ -1374,58 +1374,60 @@
       "easting": "Easting"
     }
   },
-  "professional": {
-    "address": {
-      "title": "Address",
-      "create": "Create Address",
-      "edit": "Edit Address",
-      "details": "Address Details",
-      "create-address": "Create Address",
-      "edit-address": "Edit Address",
-      "country": "Country",
-      "region": "Region",
-      "city": "City",
-      "sub_city": "Sub City",
-      "woreda": "Woreda",
-      "street": "Street",
-      "block_no": "Block Number",
-      "website": "Website",
-      "northing": "Northing",
-      "easting": "Easting"
-    },
-    "contact": {
-      "title": " Contact",
-      "create": "Create Contact",
-      "edit": "Edit Contact",
-      "details": "Contact Details",
-      "create-contact": "Create Contact",
-      "edit-contact": "Edit Contact",
-      "phone": "Phone Number",
-      "email": "Email",
-      "website": "Website"
-    },
-    "additional-info": {
-      "title": "Additional Information",
-      "create": "Create Additional Information",
-      "edit": "Edit Additional Information",
-      "details": "Additional Information Details",
-      "information": "Additional Information",
-      "reference": "Reference"
-    },
-    "education": {
-      "title": "Education",
-      "create": "Create Education",
-      "edit": "Edit Education",
-      "details": "Education Details",
-      "create-education": "Create Education",
-      "edit-education": "Edit Education",
-      "study-field": "Study Field",
-      "school-name": "School Name",
-      "education-level": "Education Level",
-      "program-type": "Program Type",
-      "start-date": "Start Date",
-      "end-date": "End Date",
-      "gpa": "GPA"
+  "resources": {
+    "professional": {
+      "address": {
+        "title": "Address",
+        "create": "Create Address",
+        "edit": "Edit Address",
+        "details": "Address Details",
+        "create-address": "Create Address",
+        "edit-address": "Edit Address",
+        "country": "Country",
+        "region": "Region",
+        "city": "City",
+        "sub_city": "Sub City",
+        "woreda": "Woreda",
+        "street": "Street",
+        "block_no": "Block Number",
+        "website": "Website",
+        "northing": "Northing",
+        "easting": "Easting"
+      },
+      "contact": {
+        "title": " Contact",
+        "create": "Create Contact",
+        "edit": "Edit Contact",
+        "details": "Contact Details",
+        "create-contact": "Create Contact",
+        "edit-contact": "Edit Contact",
+        "phone": "Phone Number",
+        "email": "Email",
+        "website": "Website"
+      },
+      "additional-info": {
+        "title": "Additional Information",
+        "create": "Create Additional Information",
+        "edit": "Edit Additional Information",
+        "details": "Additional Information Details",
+        "information": "Additional Information",
+        "reference": "Reference"
+      },
+      "education": {
+        "title": "Education",
+        "create": "Create Education",
+        "edit": "Edit Education",
+        "details": "Education Details",
+        "create-education": "Create Education",
+        "edit-education": "Edit Education",
+        "study-field": "Study Field",
+        "school-name": "School Name",
+        "education-level": "Education Level",
+        "program-type": "Program Type",
+        "start-date": "Start Date",
+        "end-date": "End Date",
+        "gpa": "GPA"
+      }
     }
   }
 }

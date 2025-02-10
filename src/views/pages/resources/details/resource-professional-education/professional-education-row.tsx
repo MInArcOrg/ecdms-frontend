@@ -23,7 +23,7 @@ export const educationColumns = (
     flex: 0.2,
     minWidth: 290,
     field: 'study_field',
-    headerName: t('professional.education.study-field'),
+    headerName: t('resources.professional.education.study-field'),
     renderCell: ({ row }: CellType) => {
       const studyField = studyFields?.find((field) => field.id === row.study_field);
       return (
@@ -47,28 +47,28 @@ export const educationColumns = (
     flex: 0.2,
     minWidth: 140,
     field: 'school_name',
-    headerName: t('professional.education.school-name'),
+    headerName: t('resources.professional.education.school-name'),
     renderCell: ({ row }: CellType) => row.school_name || t('common.not-available')
   },
   {
     flex: 0.15,
     minWidth: 160,
     field: 'education_level',
-    headerName: t('professional.education.education-level'),
+    headerName: t('resources.professional.education.education-level'),
     renderCell: ({ row }: CellType) => row.education_level || t('common.not-available')
   },
   {
     flex: 0.15,
     minWidth: 150,
     field: 'program_type',
-    headerName: t('professional.education.program-type'),
+    headerName: t('resources.professional.education.program-type'),
     renderCell: ({ row }: CellType) => row.program_type || t('common.not-available')
   },
   {
     flex: 0.1,
     minWidth: 80,
     field: 'gpa',
-    headerName: t('professional.education.gpa'),
+    headerName: t('resources.professional.education.gpa'),
     renderCell: ({ row }: CellType) => row.gpa || t('common.not-available')
   },
   {
