@@ -101,11 +101,11 @@ const BranchList: React.FC<BranchListProps> = ({ stakeholderId }) => {
   };
 
   const mapBranchToDetailItems = (branch: StakeholderBranch): { title: string; value: string }[] => [
-    { title: t('stakeholderBranch.name'), value: branch.name },
-    { title: t('stakeholderBranch.tinNumber'), value: branch.tin_number || 'N/A' },
-    { title: t('stakeholderBranch.businessFieldId'), value: getBusinessFieldTitle(branch.business_field_id) },
-    { title: t('stakeholderBranch.description'), value: branch.description || 'N/A' },
-    { title: t('stakeholderBranch.reference'), value: branch.reference || 'N/A' },
+    { title: t('stakeholder.stakeholder-branch.name'), value: branch.name },
+    { title: t('stakeholder.stakeholder-branch.tinNumber'), value: branch.tin_number || 'N/A' },
+    { title: t('stakeholder.stakeholder-branch.businessFieldId'), value: getBusinessFieldTitle(branch.business_field_id) },
+    { title: t('stakeholder.stakeholder-branch.description'), value: branch.description || 'N/A' },
+    { title: t('stakeholder.stakeholder-branch.reference'), value: branch.reference || 'N/A' },
     {
       title: t('common.table-columns.created-at'),
       value: branch?.created_at ? formatCreatedAt(branch.created_at) : 'N/A'
@@ -137,12 +137,12 @@ const BranchList: React.FC<BranchListProps> = ({ stakeholderId }) => {
           id={selectedRow?.id || ''}
           hasReference={true}
           fileType="STAKEHOLDER_BRANCH"
-          title={t('stakeholderBranch.details')}
+          title={t('stakeholder.stakeholder-branch.details')}
         />
       )}
 
       <ItemsListing
-        title={t('stakeholderBranch.title')}
+        title={t('stakeholder.stakeholder-branch.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

@@ -23,7 +23,7 @@ export const branchColumns = (
     flex: 0.2,
     minWidth: 200,
     field: 'name',
-    headerName: t('stakeholderBranch.name'),
+    headerName: t('stakeholder.stakeholder-branch.name'),
     renderCell: ({ row }: CellType) => {
       return (
         <Typography
@@ -46,14 +46,14 @@ export const branchColumns = (
     flex: 0.15,
     minWidth: 150,
     field: 'tin_number',
-    headerName: t('stakeholderBranch.tinNumber'),
+    headerName: t('stakeholder.stakeholder-branch.tinNumber'),
     renderCell: ({ row }: CellType) => row.tin_number || t('common.not-available')
   },
   {
     flex: 0.2,
     minWidth: 200,
     field: 'business_field_id',
-    headerName: t('stakeholderBranch.businessFieldId'),
+    headerName: t('stakeholder.stakeholder-branch.businessFieldId'),
     renderCell: ({ row }: CellType) => {
       const businessField = businessFields.find((field) => field.id === row.business_field_id);
       return businessField ? businessField.title : t('common.not-available');
@@ -63,7 +63,7 @@ export const branchColumns = (
     flex: 0.25,
     minWidth: 200,
     field: 'description',
-    headerName: t('stakeholderBranch.description'),
+    headerName: t('stakeholder.stakeholder-branch.description'),
     renderCell: ({ row }: CellType) => row.description || t('common.not-available')
   },
   {

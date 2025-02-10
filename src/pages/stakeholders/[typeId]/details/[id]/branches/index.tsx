@@ -8,7 +8,7 @@ function EmployeeBranchIndex() {
   const { id, typeId } = router.query;
 
   return (
-    <StakeholderLayout activeMenu={0} activeSubMenu={0} subMenuItems={subMenuItems(id as string, typeId as string)}>
+    <StakeholderLayout activeMenu={1} activeSubMenu={0} subMenuItems={subMenuItems(id as string, typeId as string)}>
       <StakeholderBranchList model="stakeholder-branch" stakeholderId={String(id)} typeId={String(typeId)} />
     </StakeholderLayout>
   );
