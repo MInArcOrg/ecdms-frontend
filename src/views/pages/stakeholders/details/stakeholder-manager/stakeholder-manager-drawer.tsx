@@ -58,11 +58,11 @@ const ManagerDrawer = (props: ManagerDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`stakeholderManager.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`stakeholder.stakeholder-manager.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`stakeholderManager.${isEdit ? 'edit' : 'create'}`}
+          title={`stakeholder.stakeholder-manager.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

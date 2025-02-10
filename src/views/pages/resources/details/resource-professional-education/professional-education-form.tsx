@@ -25,7 +25,7 @@ const EducationForm: React.FC<EducationFormProps> = ({ formik, studyFields, file
       <Grid item xs={12}>
         <CustomSelect
           fullWidth
-          label={t('professional.education.study-field')}
+          label={t('resources.professional.education.study-field')}
           name="study_field"
           options={studyFields?.map((field) => ({ value: field.id, label: field.title })) || []}
           size="small"
@@ -33,22 +33,22 @@ const EducationForm: React.FC<EducationFormProps> = ({ formik, studyFields, file
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('professional.education.school-name')} name="school_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('resources.professional.education.school-name')} name="school_name" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('professional.education.education-level')} name="education_level" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('resources.professional.education.education-level')} name="education_level" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('professional.education.program-type')} name="program_type" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('resources.professional.education.program-type')} name="program_type" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomDatePicker fullWidth label={t('professional.education.start-date')} name="start_date" sx={{ mb: 2 }} />
+        <CustomDatePicker fullWidth label={t('resources.professional.education.start-date')} name="start_date" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomDatePicker fullWidth label={t('professional.education.end-date')} name="end_date" sx={{ mb: 2 }} />
+        <CustomDatePicker fullWidth label={t('resources.professional.education.end-date')} name="end_date" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('professional.education.gpa')} name="gpa" type="number" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('resources.professional.education.gpa')} name="gpa" type="number" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
         <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />

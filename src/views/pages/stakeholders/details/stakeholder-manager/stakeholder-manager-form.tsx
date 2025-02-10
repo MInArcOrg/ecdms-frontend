@@ -22,7 +22,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik }) => {
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t('stakeholderManager.firstName')}
+          label={t('stakeholder.stakeholder-manager.firstName')}
           name="first_name"
           size="small"
           sx={{ mb: 2 }}
@@ -31,7 +31,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik }) => {
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t('stakeholderManager.middleName')}
+          label={t('stakeholder.stakeholder-manager.middleName')}
           name="middle_name"
           size="small"
           sx={{ mb: 2 }}
@@ -40,7 +40,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik }) => {
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t('stakeholderManager.lastName')}
+          label={t('stakeholder.stakeholder-manager.lastName')}
           name="last_name"
           size="small"
           sx={{ mb: 2 }}
@@ -49,7 +49,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik }) => {
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t('stakeholderManager.department')}
+          label={t('stakeholder.stakeholder-manager.department')}
           name="department"
           size="small"
           sx={{ mb: 2 }}
@@ -58,7 +58,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik }) => {
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t('stakeholderManager.position')}
+          label={t('stakeholder.stakeholder-manager.position')}
           name="position"
           size="small"
           sx={{ mb: 2 }}
@@ -67,7 +67,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik }) => {
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t('stakeholderManager.nationality')}
+          label={t('stakeholder.stakeholder-manager.nationality')}
           name="nationality"
           size="small"
           sx={{ mb: 2 }}
@@ -76,7 +76,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik }) => {
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t('stakeholderManager.nationalIdNo')}
+          label={t('stakeholder.stakeholder-manager.nationalIdNo')}
           name="national_id_no"
           size="small"
           sx={{ mb: 2 }}
@@ -85,7 +85,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik }) => {
       <Grid item xs={12} sm={6}>
         <CustomDatePicker
           fullWidth
-          label={t('stakeholderManager.birthDate')}
+          label={t('stakeholder.stakeholder-manager.birthDate')}
           name="birth_date"
           sx={{ mb: 2 }}
         />
@@ -111,7 +111,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik }) => {
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={t('stakeholderManager.email')}
+          label={t('stakeholder.stakeholder-manager.email')}
           name="email"
           type="email"
           size="small"
@@ -121,7 +121,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik }) => {
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={t('stakeholderManager.type')}
+          label={t('stakeholder.stakeholder-manager.type')}
           name="type"
           size="small"
           sx={{ mb: 2 }}

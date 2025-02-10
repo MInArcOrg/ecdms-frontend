@@ -70,18 +70,18 @@ const ManagerList: React.FC<ManagerListProps> = ({ stakeholderId }) => {
   };
 
   const mapManagerToDetailItems = (manager: StakeholderManager): { title: string; value: string }[] => [
-    { title: t('stakeholderManager.type'), value: manager.type || 'N/A' },
-    { title: t('stakeholderManager.firstName'), value: manager.first_name },
-    { title: t('stakeholderManager.middleName'), value: manager.middle_name },
-    { title: t('stakeholderManager.lastName'), value: manager.last_name },
-    { title: t('stakeholderManager.department'), value: manager.department },
-    { title: t('stakeholderManager.position'), value: manager.position || 'N/A' },
-    { title: t('stakeholderManager.nationality'), value: manager.nationality || 'N/A' },
-    { title: t('stakeholderManager.nationalIdNo'), value: manager.national_id_no || 'N/A' },
-    { title: t('stakeholderManager.birthDate'), value: manager.birth_date },
-    { title: t('stakeholderManager.gender'), value: manager.gender },
-    { title: t('stakeholderManager.phoneNo'), value: manager.phone_no },
-    { title: t('stakeholderManager.email'), value: manager.email },
+    { title:t('stakeholder.stakeholder-manager.type'), value: manager.type || 'N/A' },
+    { title:t('stakeholder.stakeholder-manager.firstName'), value: manager.first_name },
+    { title:t('stakeholder.stakeholder-manager.middleName'), value: manager.middle_name },
+    { title:t('stakeholder.stakeholder-manager.lastName'), value: manager.last_name },
+    { title:t('stakeholder.stakeholder-manager.department'), value: manager.department },
+    { title:t('stakeholder.stakeholder-manager.position'), value: manager.position || 'N/A' },
+    { title:t('stakeholder.stakeholder-manager.nationality'), value: manager.nationality || 'N/A' },
+    { title:t('stakeholder.stakeholder-manager.nationalIdNo'), value: manager.national_id_no || 'N/A' },
+    { title:t('stakeholder.stakeholder-manager.birthDate'), value: manager.birth_date },
+    { title:t('stakeholder.stakeholder-manager.gender'), value: manager.gender },
+    { title:t('stakeholder.stakeholder-manager.phoneNo'), value: manager.phone_no },
+    { title:t('stakeholder.stakeholder-manager.email'), value: manager.email },
     {
       title: t('common.table-columns.created-at'),
       value: manager?.created_at ? formatCreatedAt(manager.created_at) : 'N/A'
@@ -116,12 +116,12 @@ const ManagerList: React.FC<ManagerListProps> = ({ stakeholderId }) => {
           id={selectedRow?.id || ''}
           hasReference={true}
           fileType="STAKEHOLDER_MANAGER"
-          title={t('stakeholderManager.details')}
+          title={t('stakeholder.stakeholder-manager.details')}
         />
       )}
 
       <ItemsListing
-        title={t('stakeholderManager.title')}
+        title={t('stakeholder.stakeholder-manager.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

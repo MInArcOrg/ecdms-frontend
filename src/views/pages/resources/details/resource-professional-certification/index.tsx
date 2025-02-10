@@ -69,13 +69,13 @@ const CertificationList: React.FC<CertificationListProps> = ({ professionalId })
   };
 
   const mapCertificationToDetailItems = (certification: ProfessionalCertification): { title: string; value: string }[] => [
-    { title: t('professional.certification.certificate-title'), value: certification.certificate_title },
-    { title: t('professional.certification.certification-type'), value: certification.certification_type || 'N/A' },
-    { title: t('professional.certification.certifying-body'), value: certification.certifying_body || 'N/A' },
-    { title: t('professional.certification.certification-number'), value: certification.certification_number || 'N/A' },
-    { title: t('professional.certification.issue-date'), value: certification.issue_date || 'N/A' },
-    { title: t('professional.certification.expire-date'), value: certification.expire_date || 'N/A' },
-    { title: t('professional.certification.remark'), value: certification.remark || 'N/A' },
+    { title: t('resources.professional.certification.certificate-title'), value: certification.certificate_title },
+    { title: t('resources.professional.certification.certification-type'), value: certification.certification_type || 'N/A' },
+    { title: t('resources.professional.certification.certifying-body'), value: certification.certifying_body || 'N/A' },
+    { title: t('resources.professional.certification.certification-number'), value: certification.certification_number || 'N/A' },
+    { title: t('resources.professional.certification.issue-date'), value: certification.issue_date || 'N/A' },
+    { title: t('resources.professional.certification.expire-date'), value: certification.expire_date || 'N/A' },
+    { title: t('resources.professional.certification.remark'), value: certification.remark || 'N/A' },
     {
       title: t('common.created-at'),
       value: certification.created_at ? formatCreatedAt(certification.created_at) : 'N/A'
@@ -102,12 +102,12 @@ const CertificationList: React.FC<CertificationListProps> = ({ professionalId })
           id={selectedRow?.id || ''}
           hasReference={true}
           fileType="PROFESSIONAL_CERTIFICATION"
-          title={t('professional.certification.details')}
+          title={t('resources.professional.certification.details')}
         />
       )}
 
       <ItemsListing
-        title={t('professional.certification.title')}
+        title={t('resources.professional.certification.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
