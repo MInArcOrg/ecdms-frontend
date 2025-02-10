@@ -1,21 +1,25 @@
 import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
-import React from 'react';
+import type React from 'react';
 import { useTranslation } from 'react-i18next';
-import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
-import { ProfessionalAddress } from 'src/types/resource';
-import FileDrawer from 'src/views/components/custom/files-drawer';
+import type { ProfessionalContactPerson } from 'src/types/resource/professional-contact-person';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-interface AddressCardProps {
-  address: ProfessionalAddress;
+interface ProfessionalContactPersonCardProps {
+  contactPerson: ProfessionalContactPerson;
   refetch: () => void;
-  onEdit: (address: ProfessionalAddress) => void;
+  onEdit: (contactPerson: ProfessionalContactPerson) => void;
   onDelete: (id: string) => void;
-  onDetail: (address: ProfessionalAddress) => void;
+  onDetail: (contactPerson: ProfessionalContactPerson) => void;
 }
 
-const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onDelete, onDetail }) => {
+const ProfessionalContactPersonCard: React.FC<ProfessionalContactPersonCardProps> = ({
+  contactPerson,
+  refetch,
+  onEdit,
+  onDelete,
+  onDetail
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -26,7 +30,7 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
             <Typography
               noWrap
               component={Button}
-              onClick={() => onDetail(address)}
+              onClick={() => onDetail(contactPerson)}
               sx={{
                 fontWeight: 500,
                 textDecoration: 'none',
@@ -34,7 +38,7 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {address?.city}, {address?.country}
+              {`${contactPerson.first_name} ${contactPerson.last_name}`}
             </Typography>
           </Typography>
         </Box>
@@ -43,21 +47,21 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.address.region')}: {address?.region || 'N/A'}
+            {t('resources.professional.contact-person.nationalIdNo')}: {contactPerson.national_id_no}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.address.sub_city')}: {address?.sub_city || 'N/A'}
+            {t('resources.professional.contact-person.email')}: {contactPerson.email}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.address.street')}: {address?.street || 'N/A'}
+            {t('resources.professional.contact-person.phoneNo')}: {contactPerson.phone_no}
           </Typography>
         </Box>
       </CardContent>
+
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={address?.id || ''} type={uploadableResourceFileTypes.resource} />
         <ModelAction
-          model="ProfessionalAddress"
-          model_id={address?.id || ''}
+          model="ProfessionalContactPerson"
+          model_id={contactPerson?.id || ''}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
@@ -66,15 +70,15 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'professionaladdress'
+            subject: 'professionalcontactperson'
           }}
           editPermissionRule={{
             action: 'edit',
-            subject: 'professionaladdress'
+            subject: 'professionalcontactperson'
           }}
-          onEdit={() => onEdit(address)}
-          onDelete={() => onDelete(address?.id || '')}
-          item={address}
+          onEdit={() => onEdit(contactPerson)}
+          onDelete={() => onDelete(contactPerson?.id || '')}
+          item={contactPerson}
           options={[]}
         />
       </CardActions>
@@ -82,4 +86,4 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
   );
 };
 
-export default AddressCard;
+export default ProfessionalContactPersonCard;

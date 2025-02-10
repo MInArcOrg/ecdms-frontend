@@ -106,7 +106,6 @@ export interface ResourceQuantityPrice {
   detailresourcetype: DetailResourceType;
 }
 
-
 export interface ProfessionalAddress {
   id?: string;
   professional_id: string;
@@ -135,10 +134,24 @@ export interface ProfessionalContact {
 }
 
 export interface ProfessionalAdditionalInfo {
-  id?: string
-  professional_id: string
-  additional_information: string
-  reference?: string
-  created_at?: Date
-  updated_at?: Date
+  id?: string;
+  professional_id: string;
+  additional_information: string;
+  reference?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface ProfessionalContactPerson {
+  id?: string;
+  professional_id: string;
+  national_id_no: string;
+  first_name: string;
+  middle_name?: string;
+  last_name: string;
+  gender: string;
+  phone_no: string;
+  email?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }

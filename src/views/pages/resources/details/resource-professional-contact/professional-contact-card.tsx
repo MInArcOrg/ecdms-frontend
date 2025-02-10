@@ -80,4 +80,4 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact, refetch, onEdit, onD
   );
 };
 
-export default ContactCard; 
+export default ContactCard;

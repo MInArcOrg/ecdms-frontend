@@ -9,11 +9,7 @@ function EmployeeBranchIndex() {
 
   return (
     <ResourceLayout activeMenu={0} activeSubMenu={0} subMenuItems={subMenuItems(id as string, typeId as string)}>
-      <ProfessionalAddressList
-        model="professional-address"
-        professionalId={id as string}
-        typeId={typeId as string}
-      />
+      <ProfessionalAddressList model="professional-address" professionalId={id as string} typeId={typeId as string} />
     </ResourceLayout>
   );
 }
