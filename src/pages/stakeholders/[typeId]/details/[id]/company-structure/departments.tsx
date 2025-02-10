@@ -3,7 +3,7 @@ import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stake
 import subMenuItems from './(sub-menu-items)';
 import StakeholderDepartmentList from 'src/views/pages/stakeholders/details/stakeholder-department';
 
-function CompanyStructureIndex() {
+function StakeholderDepartmentIndex() {
   const router = useRouter();
   const { id, typeId } = router.query;
 
@@ -14,9 +14,9 @@ function CompanyStructureIndex() {
   );
 }
 
-CompanyStructureIndex.acl = {
+StakeholderDepartmentIndex.acl = {
   subject: 'stakeholder',
   action: 'view_stakeholder'
 };
 
-export default CompanyStructureIndex;
+export default StakeholderDepartmentIndex;

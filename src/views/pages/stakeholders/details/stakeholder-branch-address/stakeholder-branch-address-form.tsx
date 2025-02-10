@@ -83,13 +83,25 @@ const BranchAddressForm: React.FC<BranchAddressFormProps> = ({ formik, stakehold
           <CustomTextBox fullWidth label={t('stakeholder.stakeholder-branch-address.street')} name="street" size="small" sx={{ mb: 2 }} />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <CustomTextBox fullWidth label={t('stakeholder.stakeholder-branch-address.blockNo')} name="block_no" size="small" sx={{ mb: 2 }} />
+          <CustomTextBox
+            fullWidth
+            label={t('stakeholder.stakeholder-branch-address.blockNo')}
+            name="block_no"
+            size="small"
+            sx={{ mb: 2 }}
+          />
         </Grid>
         <Grid item xs={12} sm={6}>
           <CustomTextBox fullWidth label={t('stakeholder.stakeholder-branch-address.website')} name="website" size="small" sx={{ mb: 2 }} />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <CustomTextBox fullWidth label={t('stakeholder.stakeholder-branch-address.northing')} name="northing" size="small" sx={{ mb: 2 }} />
+          <CustomTextBox
+            fullWidth
+            label={t('stakeholder.stakeholder-branch-address.northing')}
+            name="northing"
+            size="small"
+            sx={{ mb: 2 }}
+          />
         </Grid>
         <Grid item xs={12} sm={6}>
           <CustomTextBox fullWidth label={t('stakeholder.stakeholder-branch-address.easting')} name="easting" size="small" sx={{ mb: 2 }} />

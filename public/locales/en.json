@@ -1467,6 +1467,16 @@
       "branch": "Branch",
       "additionalInformation": "Additional Information",
       "reference": "Reference"
+    },
+    "stakeholder-department": {
+      "title": "Stakeholder Departments",
+      "create": "Create Department",
+      "edit": "Edit Department",
+      "details": "Department Details",
+      "name": "Department Name",
+      "parentDepartment": "Parent Department",
+      "description": "Description",
+      "reference": "Reference"
     }
   },
   "address": {

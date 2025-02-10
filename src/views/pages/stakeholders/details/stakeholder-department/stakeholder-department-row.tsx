@@ -2,30 +2,28 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import type { BranchAdditionalInformation } from 'src/types/stakeholder/branch-additional-information';
-import type { StakeholderBranch } from 'src/types/stakeholder/stakeholder-branch';
+import type { StakeholderDepartment } from 'src/types/stakeholder/stakeholder-department';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
-  row: BranchAdditionalInformation;
+  row: StakeholderDepartment;
 }
 
-export const additionalInformationColumns = (
-  onDetail: (additionalInfo: BranchAdditionalInformation) => void,
-  onEdit: (additionalInfo: BranchAdditionalInformation) => void,
+export const departmentColumns = (
+  onDetail: (department: StakeholderDepartment) => void,
+  onEdit: (department: StakeholderDepartment) => void,
   onDelete: (id: string) => void,
   t: any,
-  stakeholderBranches: StakeholderBranch[]
+  departments: StakeholderDepartment[]
 ): GridColDef[] => [
   {
     flex: 0.2,
     minWidth: 200,
-    field: 'stakeholder_branch_id',
-    headerName: t('stakeholder.branch-additional-information.branch'),
+    field: 'name',
+    headerName: t('stakeholder.stakeholder-department.name'),
     renderCell: ({ row }: CellType) => {
-      const branch = stakeholderBranches.find((b) => b.id === row.stakeholder_branch_id);
       return (
         <Typography
           noWrap
@@ -38,23 +36,33 @@ export const additionalInformationColumns = (
             '&:hover': { color: 'primary.main' }
           }}
         >
-          {branch ? branch.name : t('common.not-available')}
+          {row.name}
         </Typography>
       );
     }
   },
   {
-    flex: 0.4,
-    minWidth: 300,
-    field: 'additional_information',
-    headerName: t('stakeholder.branch-additional-information.additionalInformation'),
-    renderCell: ({ row }: CellType) => row.additional_information
+    flex: 0.2,
+    minWidth: 200,
+    field: 'parent_department_id',
+    headerName: t('stakeholder.stakeholder-department.parentDepartment'),
+    renderCell: ({ row }: CellType) => {
+      const parentDepartment = departments.find((d) => d.id === row.parent_department_id);
+      return parentDepartment ? parentDepartment.name : t('common.not-available');
+    }
   },
   {
-    flex: 0.2,
+    flex: 0.3,
+    minWidth: 250,
+    field: 'description',
+    headerName: t('stakeholder.stakeholder-department.description'),
+    renderCell: ({ row }: CellType) => row.description
+  },
+  {
+    flex: 0.15,
     minWidth: 150,
     field: 'reference',
-    headerName: t('stakeholder.branch-additional-information.reference'),
+    headerName: t('stakeholder.stakeholder-department.reference'),
     renderCell: ({ row }: CellType) => row.reference || t('common.not-available')
   },
   {
@@ -72,7 +80,7 @@ export const additionalInformationColumns = (
     renderCell: ({ row }: CellType) => (
       <Fragment>
         <ModelAction
-          model="BranchAdditionalInformation"
+          model="StakeholderDepartment"
           model_id={row?.id || ''}
           refetchModel={() => {}}
           resubmit={() => {}}
@@ -85,11 +93,11 @@ export const additionalInformationColumns = (
           item={row}
           deletePermissionRule={{
             action: 'delete',
-            subject: 'branchadditionalinformation'
+            subject: 'stakeholderdepartment'
           }}
           editPermissionRule={{
             action: 'edit',
-            subject: 'branchadditionalinformation'
+            subject: 'stakeholderdepartment'
           }}
           options={[]}
         />
