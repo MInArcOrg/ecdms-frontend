@@ -11,7 +11,7 @@ const professionalAddressApiService = {
     buildGetRequest('/resources/professional-addresses', params)
       .then((response: AxiosResponse<IApiResponse<ProfessionalAddress[]>>) => response.data)
       .catch((error: any) => {
-        throw error
+        throw error;
       }),
 
   getById: (id: string, params: GetRequestParam): Promise<IApiResponse<ProfessionalAddress>> =>

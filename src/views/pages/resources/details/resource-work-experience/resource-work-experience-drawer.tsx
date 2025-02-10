@@ -65,16 +65,15 @@ const ExperienceDrawer = (props: ExperienceDrawerType) => {
       }
       refetch();
       handleClose();
-    } catch (error) {
-    }
+    } catch (error) {}
   };
 
   return (
-    <CustomSideDrawer title={`professional.work-experience.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`resources.professional.work-experience.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`professional.work-experience.${isEdit ? 'edit' : 'create'}`}
+          title={`resources.professional.work-experience.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

@@ -20,30 +20,30 @@ const ExperienceForm: React.FC<ExperienceFormProps> = ({ formik, file, onFileCha
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('professional.work-experience.company-name')} name="company_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('resources.professional.work-experience.company-name')} name="company_name" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('professional.work-experience.position')} name="position" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('resources.professional.work-experience.position')} name="position" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('professional.work-experience.department')} name="department" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('resources.professional.work-experience.department')} name="department" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
           multiline
           rows={3}
-          label={t('professional.work-experience.task-description')}
+          label={t('resources.professional.work-experience.task-description')}
           name="task_description"
           size="small"
           sx={{ mb: 2 }}
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomDatePicker fullWidth label={t('professional.work-experience.start-date')} name="start_date" sx={{ mb: 2 }} />
+        <CustomDatePicker fullWidth label={t('resources.professional.work-experience.start-date')} name="start_date" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomDatePicker fullWidth label={t('professional.work-experience.end-date')} name="end_date" sx={{ mb: 2 }} />
+        <CustomDatePicker fullWidth label={t('resources.professional.work-experience.end-date')} name="end_date" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
         <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />
