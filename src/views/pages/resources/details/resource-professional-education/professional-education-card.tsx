@@ -50,16 +50,16 @@ const EducationCard: React.FC<EducationCardProps> = ({ education, refetch, onEdi
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.education.school-name')}: {education?.school_name || 'N/A'}
+            {t('resources.professional.education.school-name')}: {education?.school_name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.education.education-level')}: {education?.education_level || 'N/A'}
+            {t('resources.professional.education.education-level')}: {education?.education_level || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.education.program-type')}: {education?.program_type || 'N/A'}
+            {t('resources.professional.education.program-type')}: {education?.program_type || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.education.gpa')}: {education?.gpa || 'N/A'}
+            {t('resources.professional.education.gpa')}: {education?.gpa || 'N/A'}
           </Typography>
         </Box>
       </CardContent>
