@@ -21,7 +21,7 @@ export const certificationColumns = (
     flex: 0.25,
     minWidth: 250,
     field: 'certificate_title',
-    headerName: t('professional.certification.certificate-title'),
+    headerName: t('resources.professional.certification.certificate-title'),
     renderCell: ({ row }: CellType) => (
       <Typography
         noWrap
@@ -42,14 +42,14 @@ export const certificationColumns = (
     flex: 0.2,
     minWidth: 150,
     field: 'certification_type',
-    headerName: t('professional.certification.certification-type'),
+    headerName: t('resources.professional.certification.certification-type'),
     renderCell: ({ row }: CellType) => row.certification_type || t('common.not-available')
   },
   {
     flex: 0.2,
     minWidth: 160,
     field: 'certifying_body',
-    headerName: t('professional.certification.certifying-body'),
+    headerName: t('resources.professional.certification.certifying-body'),
     renderCell: ({ row }: CellType) => row.certifying_body || t('common.not-available')
   },
   {
