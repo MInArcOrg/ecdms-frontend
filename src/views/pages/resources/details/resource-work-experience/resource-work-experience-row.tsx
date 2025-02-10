@@ -21,7 +21,7 @@ export const experienceColumns = (
     flex: 0.25,
     minWidth: 250,
     field: 'company_name',
-    headerName: t('professional.work-experience.company-name'),
+    headerName: t('resources.professional.work-experience.company-name'),
     renderCell: ({ row }: CellType) => (
       <Typography
         noWrap
@@ -42,21 +42,21 @@ export const experienceColumns = (
     flex: 0.2,
     minWidth: 150,
     field: 'position',
-    headerName: t('professional.work-experience.position'),
+    headerName: t('resources.professional.work-experience.position'),
     renderCell: ({ row }: CellType) => row.position || t('common.not-available')
   },
   {
     flex: 0.2,
     minWidth: 160,
     field: 'department',
-    headerName: t('professional.work-experience.department'),
+    headerName: t('resources.professional.work-experience.department'),
     renderCell: ({ row }: CellType) => row.department || t('common.not-available')
   },
   {
     flex: 0.25,
     minWidth: 200,
     field: 'task_description',
-    headerName: t('professional.work-experience.task-description'),
+    headerName: t('resources.professional.work-experience.task-description'),
     renderCell: ({ row }: CellType) => row.task_description.substring(0, 50) + '...' || t('common.not-available')
   },
   {
