@@ -1384,6 +1384,21 @@
       "details": "Joint Venture Details",
       "create": "Create Joint Venture",
       "edit": "Edit Joint Venture"
+    },
+    "joint-venture-company": {
+      "title": "Joint Venture Companies",
+      "create": "Create Joint Venture Company",
+      "edit": "Edit Joint Venture Company",
+      "details": "Joint Venture Company Details",
+      "create-joint-venture-company": "Create Joint Venture Company",
+      "edit-joint-venture-company": "Edit Joint Venture Company",
+      "jointVenture": "Joint Venture",
+      "companyName": "Company Name",
+      "specialization": "Specialization",
+      "rolesAndResponsibilities": "Roles and Responsibilities",
+      "ownershipPercentage": "Ownership Percentage",
+      "description": "Description",
+      "reference": "Reference"
     }
   },
   "address": {
