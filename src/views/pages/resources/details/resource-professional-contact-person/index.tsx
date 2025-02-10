@@ -73,13 +73,13 @@ const ProfessionalContactPersonList: React.FC<ProfessionalContactPersonListProps
   const mapContactPersonToDetailItems = (
     contactPerson: ProfessionalContactPerson,
   ): { title: string; value: string }[] => [
-    { title: t("resource.professionalContactPerson.firstName"), value: contactPerson.first_name },
-    { title: t("resource.professionalContactPerson.middleName"), value: contactPerson.middle_name || "N/A" },
-    { title: t("resource.professionalContactPerson.lastName"), value: contactPerson.last_name },
-    { title: t("resource.professionalContactPerson.nationalIdNo"), value: contactPerson.national_id_no },
-    { title: t("resource.professionalContactPerson.gender"), value: contactPerson.gender },
-    { title: t("resource.professionalContactPerson.phoneNo"), value: contactPerson.phone_no },
-    { title: t("resource.professionalContactPerson.email"), value: contactPerson.email || "N/A"  },
+    { title: t("resources.professional.contact-person.firstName"), value: contactPerson.first_name },
+    { title: t("resources.professional.contact-person.middleName"), value: contactPerson.middle_name || "N/A" },
+    { title: t("resources.professional.contact-person.lastName"), value: contactPerson.last_name },
+    { title: t("resources.professional.contact-person.nationalIdNo"), value: contactPerson.national_id_no },
+    { title: t("resources.professional.contact-person.gender"), value: contactPerson.gender },
+    { title: t("resources.professional.contact-person.phoneNo"), value: contactPerson.phone_no },
+    { title: t("resources.professional.contact-person.email"), value: contactPerson.email || "N/A"  },
   ]
 
   return (
@@ -102,12 +102,12 @@ const ProfessionalContactPersonList: React.FC<ProfessionalContactPersonListProps
           id={selectedRow.id || ""}
           hasReference={false}
           fileType="PROFESSIONAL_CONTACT_PERSON"
-          title={t("resource.professionalContactPerson.details")}
+          title={t("resources.professional.contact-person.details")}
         />
       )}
 
       <ItemsListing
-        title={t("resource.professionalContactPerson.title")}
+        title={t("resources.professional.contact-person.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
