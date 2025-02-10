@@ -70,10 +70,10 @@ const JointVentureList: React.FC<JointVentureListProps> = ({ stakeholderId }) =>
   };
 
   const mapJointVentureToDetailItems = (jointVenture: JointVenture): { title: string; value: string }[] => [
-    { title: t('jointVenture.name'), value: jointVenture.name },
-    { title: t('jointVenture.memberCompaniesNo'), value: jointVenture.member_companies_no.toString() },
-    { title: t('jointVenture.description'), value: jointVenture.description },
-    { title: t('jointVenture.reference'), value: jointVenture.reference || 'N/A' },
+    { title: t('stakeholder.joint-venture.name'), value: jointVenture.name },
+    { title: t('stakeholder.joint-venture.memberCompaniesNo'), value: jointVenture.member_companies_no.toString() },
+    { title: t('stakeholder.joint-venture.description'), value: jointVenture.description },
+    { title: t('stakeholder.joint-venture.reference'), value: jointVenture.reference || 'N/A' },
     {
       title: t('common.table-columns.created-at'),
       value: jointVenture?.created_at ? formatCreatedAt(jointVenture.created_at) : 'N/A'
@@ -108,12 +108,12 @@ const JointVentureList: React.FC<JointVentureListProps> = ({ stakeholderId }) =>
           id={selectedRow?.id || ''}
           hasReference={true}
           fileType="JOINT_VENTURE"
-          title={t('jointVenture.details')}
+          title={t('stakeholder.joint-venture.details')}
         />
       )}
 
       <ItemsListing
-        title={t('jointVenture.title')}
+        title={t('stakeholder.joint-venture.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

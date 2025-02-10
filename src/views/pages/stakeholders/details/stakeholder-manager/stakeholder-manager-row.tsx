@@ -21,7 +21,7 @@ export const managerColumns = (
     flex: 0.2,
     minWidth: 200,
     field: 'name',
-    headerName: t('stakeholderManager.firstName'),
+    headerName: t('stakeholder.stakeholder-manager.firstName'),
     renderCell: ({ row }: CellType) => {
       const fullName = `${row.first_name} ${row.middle_name ? row.middle_name + ' ' : ''}${row.last_name}`;
       return (
@@ -45,28 +45,28 @@ export const managerColumns = (
     flex: 0.15,
     minWidth: 150,
     field: 'department',
-    headerName: t('stakeholderManager.department'),
+    headerName: t('stakeholder.stakeholder-manager.department'),
     renderCell: ({ row }: CellType) => row.department
   },
   {
     flex: 0.15,
     minWidth: 150,
     field: 'position',
-    headerName: t('stakeholderManager.position'),
+    headerName: t('stakeholder.stakeholder-manager.position'),
     renderCell: ({ row }: CellType) => row.position || t('common.not-available')
   },
   {
     flex: 0.2,
     minWidth: 180,
     field: 'email',
-    headerName: t('stakeholderManager.email'),
+    headerName: t('stakeholder.stakeholder-manager.email'),
     renderCell: ({ row }: CellType) => row.email
   },
   {
     flex: 0.15,
     minWidth: 120,
     field: 'phone_no',
-    headerName: t('stakeholderManager.phoneNo'),
+    headerName: t('stakeholder.stakeholder-manager.phoneNo'),
     renderCell: ({ row }: CellType) => row.phone_no
   },
   {

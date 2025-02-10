@@ -21,7 +21,7 @@ export const membershipColumns = (
     flex: 0.25,
     minWidth: 250,
     field: 'association_name',
-    headerName: t('professional.association-membership.association-name'),
+    headerName: t('resources.professional.association-membership.association-name'),
     renderCell: ({ row }: CellType) => (
       <Typography
         noWrap
@@ -42,21 +42,21 @@ export const membershipColumns = (
     flex: 0.2,
     minWidth: 200,
     field: 'membership_type',
-    headerName: t('professional.association-membership.membership-type'),
+    headerName: t('resources.professional.association-membership.membership-type'),
     renderCell: ({ row }: CellType) => row.membership_type || t('common.not-available')
   },
   {
     flex: 0.2,
     minWidth: 160,
     field: 'position',
-    headerName: t('professional.association-membership.position'),
+    headerName: t('resources.professional.association-membership.position'),
     renderCell: ({ row }: CellType) => row.position || t('common.not-available')
   },
   {
     flex: 0.25,
     minWidth: 200,
     field: 'description',
-    headerName: t('professional.association-membership.description'),
+    headerName: t('resources.professional.association-membership.description'),
     renderCell: ({ row }: CellType) => row.description.substring(0, 50) + '...' || t('common.not-available')
   },
   {

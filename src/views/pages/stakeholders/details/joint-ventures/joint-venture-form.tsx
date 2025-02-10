@@ -16,12 +16,12 @@ const JointVentureForm: React.FC<JointVentureFormProps> = ({ formik }) => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('jointVenture.name')} name="name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.joint-venture.name')} name="name" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={t('jointVenture.memberCompaniesNo')}
+          label={t('stakeholder.joint-venture.memberCompaniesNo')}
           name="member_companies_no"
           type="number"
           size="small"
@@ -29,10 +29,10 @@ const JointVentureForm: React.FC<JointVentureFormProps> = ({ formik }) => {
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('jointVenture.description')} name="description" multiline rows={4} size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.joint-venture.description')} name="description" multiline rows={4} size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('jointVenture.reference')} name="reference" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.joint-venture.reference')} name="reference" size="small" sx={{ mb: 2 }} />
       </Grid>
     </Grid>
   );

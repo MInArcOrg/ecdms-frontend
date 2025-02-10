@@ -21,7 +21,7 @@ export const jointVentureColumns = (
     flex: 0.2,
     minWidth: 200,
     field: 'name',
-    headerName: t('jointVenture.name'),
+    headerName: t('stakeholder.joint-venture.name'),
     renderCell: ({ row }: CellType) => {
       return (
         <Typography
@@ -44,21 +44,21 @@ export const jointVentureColumns = (
     flex: 0.15,
     minWidth: 150,
     field: 'member_companies_no',
-    headerName: t('jointVenture.memberCompaniesNo'),
+    headerName: t('stakeholder.joint-venture.memberCompaniesNo'),
     renderCell: ({ row }: CellType) => row.member_companies_no
   },
   {
     flex: 0.3,
     minWidth: 200,
     field: 'description',
-    headerName: t('jointVenture.description'),
+    headerName: t('stakeholder.joint-venture.description'),
     renderCell: ({ row }: CellType) => row.description
   },
   {
     flex: 0.2,
     minWidth: 150,
     field: 'reference',
-    headerName: t('jointVenture.reference'),
+    headerName: t('stakeholder.joint-venture.reference'),
     renderCell: ({ row }: CellType) => row.reference || 'N/A'
   },
   {
