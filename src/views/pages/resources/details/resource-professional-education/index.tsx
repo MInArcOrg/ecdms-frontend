@@ -99,13 +99,13 @@ const EducationList: React.FC<EducationListProps> = ({ professionalId }) => {
   };
 
   const mapEducationToDetailItems = (education: ProfessionalEducation): { title: string; value: string }[] => [
-    { title: t('professional.education.study-field'), value: getStudyFieldTitle(education.study_field) },
-    { title: t('professional.education.school-name'), value: education?.school_name || 'N/A' },
-    { title: t('professional.education.education-level'), value: education?.education_level || 'N/A' },
-    { title: t('professional.education.program-type'), value: education?.program_type || 'N/A' },
-    { title: t('professional.education.start-date'), value: education?.start_date || 'N/A' },
-    { title: t('professional.education.end-date'), value: education?.end_date || 'N/A' },
-    { title: t('professional.education.gpa'), value: education?.gpa?.toString() || 'N/A' },
+    { title: t('resources.professional.education.study-field'), value: getStudyFieldTitle(education.study_field) },
+    { title: t('resources.professional.education.school-name'), value: education?.school_name || 'N/A' },
+    { title: t('resources.professional.education.education-level'), value: education?.education_level || 'N/A' },
+    { title: t('resources.professional.education.program-type'), value: education?.program_type || 'N/A' },
+    { title: t('resources.professional.education.start-date'), value: education?.start_date || 'N/A' },
+    { title: t('resources.professional.education.end-date'), value: education?.end_date || 'N/A' },
+    { title: t('resources.professional.education.gpa'), value: education?.gpa?.toString() || 'N/A' },
     {
       title: t('common.table-columns.created-at'),
       value: education?.created_at ? formatCreatedAt(education.created_at) : 'N/A'
@@ -137,12 +137,12 @@ const EducationList: React.FC<EducationListProps> = ({ professionalId }) => {
           id={selectedRow?.id || ''}
           hasReference={true}
           fileType="PROFESSIONAL_EDUCATION"
-          title={t('professional.education.details')}
+          title={t('resources.professional.education.details')}
         />
       )}
 
       <ItemsListing
-        title={t('professional.education.title')}
+        title={t('resources.professional.education.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

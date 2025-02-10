@@ -43,13 +43,13 @@ const CertificationCard: React.FC<CertificationCardProps> = ({ certification, re
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.certification.certifying-body')}: {certification.certifying_body}
+            {t('resources.professional.certification.certifying-body')}: {certification.certifying_body}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.certification.issue-date')}: {certification.issue_date}
+            {t('resources.professional.certification.issue-date')}: {certification.issue_date}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.certification.expire-date')}: {certification?.expire_date || 'N/A'}
+            {t('resources.professional.certification.expire-date')}: {certification?.expire_date || 'N/A'}
           </Typography>
         </Box>
       </CardContent>

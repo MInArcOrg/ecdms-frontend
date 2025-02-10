@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { useState} from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
@@ -69,12 +69,12 @@ const WorkExperienceList: React.FC<WorkExperienceListProps> = ({ professionalId 
   };
 
   const mapExperienceToDetailItems = (experience: ProfessionalWorkExperience): { title: string; value: string }[] => [
-    { title: t('professional.work-experience.company-name'), value: experience.company_name },
-    { title: t('professional.work-experience.position'), value: experience.position || 'N/A' },
-    { title: t('professional.work-experience.department'), value: experience.department || 'N/A' },
-    { title: t('professional.work-experience.task-description'), value: experience.task_description || 'N/A' },
-    { title: t('professional.work-experience.start-date'), value: experience.start_date || 'N/A' },
-    { title: t('professional.work-experience.end-date'), value: experience.end_date || 'N/A' },
+    { title: t('resources.professional.work-experience.company-name'), value: experience.company_name },
+    { title: t('resources.professional.work-experience.position'), value: experience.position || 'N/A' },
+    { title: t('resources.professional.work-experience.department'), value: experience.department || 'N/A' },
+    { title: t('resources.professional.work-experience.task-description'), value: experience.task_description || 'N/A' },
+    { title: t('resources.professional.work-experience.start-date'), value: experience.start_date || 'N/A' },
+    { title: t('resources.professional.work-experience.end-date'), value: experience.end_date || 'N/A' },
     {
       title: t('common.table-columns.created-at'),
       value: experience.created_at ? formatCreatedAt(experience.created_at) : 'N/A'
@@ -101,12 +101,12 @@ const WorkExperienceList: React.FC<WorkExperienceListProps> = ({ professionalId 
           id={selectedRow?.id || ''}
           hasReference={true}
           fileType="PROFESSIONAL_WORK_EXPERIENCE"
-          title={t('professional.work-experience.details')}
+          title={t('resources.professional.work-experience.details')}
         />
       )}
 
       <ItemsListing
-        title={t('professional.work-experience.title')}
+        title={t('resources.professional.work-experience.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

@@ -43,13 +43,13 @@ const MembershipCard: React.FC<MembershipCardProps> = ({ membership, refetch, on
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.association-membership.membership-type')}: {membership?.membership_type || 'N/A'}
+            {t('resources.professional.association-membership.membership-type')}: {membership?.membership_type || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.association-membership.position')}: {membership?.position || 'N/A'}
+            {t('resources.professional.association-membership.position')}: {membership?.position || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.association-membership.registration-date')}: {membership?.registration_date || 'N/A'}
+            {t('resources.professional.association-membership.registration-date')}: {membership?.registration_date || 'N/A'}
           </Typography>
         </Box>
       </CardContent>
