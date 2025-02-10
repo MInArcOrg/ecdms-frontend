@@ -71,10 +71,10 @@ const AdditionalInformationList: React.FC<AdditionalInformationListProps> = ({ s
 
   const mapAdditionalInfoToDetailItems = (additionalInfo: StakeholderAdditionalInformation): { title: string; value: string }[] => [
     {
-      title: t('stakeholderAdditionalInformation.additionalInformation'),
+      title: t('stakeholder.stakeholder-additional-information.additionalInformation'),
       value: additionalInfo.additional_information
     },
-    { title: t('stakeholderAdditionalInformation.reference'), value: additionalInfo.reference || 'N/A' },
+    { title: t('stakeholder.stakeholder-additional-information.reference'), value: additionalInfo.reference || 'N/A' },
     {
       title: t('common.table-columns.created-at'),
       value: additionalInfo?.created_at ? formatCreatedAt(additionalInfo.created_at) : 'N/A'
@@ -109,12 +109,12 @@ const AdditionalInformationList: React.FC<AdditionalInformationListProps> = ({ s
           id={selectedRow?.id || ''}
           hasReference={true}
           fileType="STAKEHOLDER_ADDITIONAL_INFORMATION"
-          title={t('stakeholderAdditionalInformation.details')}
+          title={t('stakeholder.stakeholder-additional-information.details')}
         />
       )}
 
       <ItemsListing
-        title={t('stakeholderAdditionalInformation.title')}
+        title={t('stakeholder.stakeholder-additional-information.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

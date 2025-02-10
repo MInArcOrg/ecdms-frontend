@@ -41,13 +41,13 @@ const JointVentureCompanyCard: React.FC<JointVentureCompanyCardProps> = ({ joint
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('jointVentureCompany.specialization')}: {jointVentureCompany.specialization || 'N/A'}
+            {t('stakeholder.joint-venture-company.specialization')}: {jointVentureCompany.specialization || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('jointVentureCompany.ownershipPercentage')}: {jointVentureCompany.ownership_percentage || 'N/A'}%
+            {t('stakeholder.joint-venture-company.ownershipPercentage')}: {jointVentureCompany.ownership_percentage || 'N/A'}%
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('jointVentureCompany.description')}: {jointVentureCompany.description}
+            {t('stakeholder.joint-venture-company.description')}: {jointVentureCompany.description}
           </Typography>
         </Box>
       </CardContent>

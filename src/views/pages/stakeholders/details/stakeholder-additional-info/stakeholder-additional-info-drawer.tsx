@@ -57,12 +57,12 @@ const AdditionalInformationDrawer = (props: AdditionalInformationDrawerType) => 
   };
 
   return (
-    <CustomSideDrawer title={`stakeholderAdditionalInformation.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`stakeholder.stakeholder-additional-information.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {/* <CustomSideDrawer title={`stakeholderManager.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}></CustomSideDrawer> */}
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`stakeholderAdditionalInformation.${isEdit ? 'edit' : 'create'}`}
+          title={`stakeholder.stakeholder-additional-information.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

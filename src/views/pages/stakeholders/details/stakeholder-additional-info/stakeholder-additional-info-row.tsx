@@ -21,7 +21,7 @@ export const additionalInformationColumns = (
     flex: 0.3,
     minWidth: 200,
     field: 'additional_information',
-    headerName: t('stakeholderAdditionalInformation.additionalInformation'),
+    headerName: t('stakeholder.stakeholder-additional-information.additionalInformation'),
     renderCell: ({ row }: CellType) => {
       return (
         <Typography
@@ -44,7 +44,7 @@ export const additionalInformationColumns = (
     flex: 0.2,
     minWidth: 150,
     field: 'reference',
-    headerName: t('stakeholderAdditionalInformation.reference'),
+    headerName: t('stakeholder.stakeholder-additional-information.reference'),
     renderCell: ({ row }: CellType) => row.reference || t('common.not-available')
   },
   {

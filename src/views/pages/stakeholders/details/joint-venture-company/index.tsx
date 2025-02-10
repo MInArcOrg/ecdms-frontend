@@ -70,12 +70,12 @@ const JointVentureCompanyList: React.FC<JointVentureCompanyListProps> = ({ stake
   };
 
   const mapJointVentureCompanyToDetailItems = (jointVentureCompany: JointVentureCompany): { title: string; value: string }[] => [
-    { title: t('jointVentureCompany.companyName'), value: jointVentureCompany.company_name },
-    { title: t('jointVentureCompany.specialization'), value: jointVentureCompany.specialization || 'N/A' },
-    { title: t('jointVentureCompany.rolesAndResponsibilities'), value: jointVentureCompany.roles_and_responsibilities || 'N/A' },
-    { title: t('jointVentureCompany.ownershipPercentage'), value: jointVentureCompany.ownership_percentage?.toString() || 'N/A' },
-    { title: t('jointVentureCompany.description'), value: jointVentureCompany.description },
-    { title: t('jointVentureCompany.reference'), value: jointVentureCompany.reference },
+    { title: t('stakeholder.joint-venture-company.companyName'), value: jointVentureCompany.company_name },
+    { title: t('stakeholder.joint-venture-company.specialization'), value: jointVentureCompany.specialization || 'N/A' },
+    { title: t('stakeholder.joint-venture-company.rolesAndResponsibilities'), value: jointVentureCompany.roles_and_responsibilities || 'N/A' },
+    { title: t('stakeholder.joint-venture-company.ownershipPercentage'), value: jointVentureCompany.ownership_percentage?.toString() || 'N/A' },
+    { title: t('stakeholder.joint-venture-company.description'), value: jointVentureCompany.description },
+    { title: t('stakeholder.joint-venture-company.reference'), value: jointVentureCompany.reference },
     {
       title: t('common.table-columns.created-at'),
       value: jointVentureCompany?.created_at ? formatCreatedAt(jointVentureCompany.created_at) : 'N/A'
@@ -110,12 +110,12 @@ const JointVentureCompanyList: React.FC<JointVentureCompanyListProps> = ({ stake
           id={selectedRow?.id || ''}
           hasReference={true}
           fileType="JOINT_VENTURE_COMPANY"
-          title={t('jointVentureCompany.details')}
+          title={t('stakeholder.joint-venture-company.details')}
         />
       )}
 
       <ItemsListing
-        title={t('jointVentureCompany.title')}
+        title={t('stakeholder.joint-venture-company.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

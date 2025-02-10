@@ -21,7 +21,7 @@ export const jointVentureCompanyColumns = (
     flex: 0.2,
     minWidth: 200,
     field: 'company_name',
-    headerName: t('jointVentureCompany.companyName'),
+    headerName: t('stakeholder.joint-venture-company.companyName'),
     renderCell: ({ row }: CellType) => {
       return (
         <Typography
@@ -44,21 +44,21 @@ export const jointVentureCompanyColumns = (
     flex: 0.15,
     minWidth: 150,
     field: 'specialization',
-    headerName: t('jointVentureCompany.specialization'),
+    headerName: t('stakeholder.joint-venture-company.specialization'),
     renderCell: ({ row }: CellType) => row.specialization || t('common.not-available')
   },
   {
     flex: 0.15,
     minWidth: 150,
     field: 'ownership_percentage',
-    headerName: t('jointVentureCompany.ownershipPercentage'),
+    headerName: t('stakeholder.joint-venture-company.ownershipPercentage'),
     renderCell: ({ row }: CellType) => (row.ownership_percentage ? `${row.ownership_percentage}%` : t('common.not-available'))
   },
   {
     flex: 0.3,
     minWidth: 250,
     field: 'description',
-    headerName: t('jointVentureCompany.description'),
+    headerName: t('stakeholder.joint-venture-company.description'),
     renderCell: ({ row }: CellType) => row.description
   },
   {

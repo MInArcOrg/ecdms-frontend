@@ -20,14 +20,14 @@ const AdditionalInformationForm: React.FC<AdditionalInformationFormProps> = ({ f
           fullWidth
           multiline
           rows={4}
-          label={t('stakeholderAdditionalInformation.additionalInformation')}
+          label={t('stakeholder.stakeholder-additional-information.additionalInformation')}
           name="additional_information"
           size="small"
           sx={{ mb: 2 }}
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholderAdditionalInformation.reference')} name="reference" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-additional-information.reference')} name="reference" size="small" sx={{ mb: 2 }} />
       </Grid>
     </Grid>
   );

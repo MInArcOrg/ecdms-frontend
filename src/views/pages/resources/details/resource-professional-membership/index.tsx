@@ -69,12 +69,12 @@ const MembershipList: React.FC<MembershipListProps> = ({ professionalId }) => {
   };
 
   const mapMembershipToDetailItems = (membership: ProfessionalMembership): { title: string; value: string }[] => [
-    { title: t('professional.association-membership.association-name'), value: membership.association_name },
-    { title: t('professional.association-membership.membership-type'), value: membership.membership_type || 'N/A' },
-    { title: t('professional.association-membership.position'), value: membership.position || 'N/A' },
-    { title: t('professional.association-membership.description'), value: membership.description || 'N/A' },
-    { title: t('professional.association-membership.registration-date'), value: membership.registration_date || 'N/A' },
-    { title: t('professional.association-membership.end-date'), value: membership.end_date || 'N/A' },
+    { title: t('resources.professional.association-membership.association-name'), value: membership.association_name },
+    { title: t('resources.professional.association-membership.membership-type'), value: membership.membership_type || 'N/A' },
+    { title: t('resources.professional.association-membership.position'), value: membership.position || 'N/A' },
+    { title: t('resources.professional.association-membership.description'), value: membership.description || 'N/A' },
+    { title: t('resources.professional.association-membership.registration-date'), value: membership.registration_date || 'N/A' },
+    { title: t('resources.professional.association-membership.end-date'), value: membership.end_date || 'N/A' },
     {
       title: t('common.created-at'),
       value: membership.created_at ? formatCreatedAt(membership.created_at) : 'N/A'
@@ -101,12 +101,12 @@ const MembershipList: React.FC<MembershipListProps> = ({ professionalId }) => {
           id={selectedRow?.id || ''}
           hasReference={true}
           fileType="PROFESSIONAL_ASSOCIATION_MEMBERSHIP"
-          title={t('professional.association-membership.details')}
+          title={t('resources.professional.association-membership.details')}
         />
       )}
 
       <ItemsListing
-        title={t('professional.association-membership.title')}
+        title={t('resources.professional.association-membership.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

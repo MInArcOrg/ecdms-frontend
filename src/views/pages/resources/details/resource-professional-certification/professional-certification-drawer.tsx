@@ -70,11 +70,11 @@ const CertificationDrawer = (props: CertificationDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`professional.certification.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`resources.professional.certification.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`professional.certification.${isEdit ? 'edit' : 'create'}`}
+          title={`resources.professional.certification.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

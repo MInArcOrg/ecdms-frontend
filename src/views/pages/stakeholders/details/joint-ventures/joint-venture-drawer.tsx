@@ -55,11 +55,11 @@ const JointVentureDrawer = (props: JointVentureDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`jointVenture.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`stakeholder.joint-venture.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`jointVenture.${isEdit ? 'edit' : 'create'}`}
+          title={`stakeholder.joint-venture.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={jointVenture}

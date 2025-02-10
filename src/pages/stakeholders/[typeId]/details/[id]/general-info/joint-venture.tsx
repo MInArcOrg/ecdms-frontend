@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import ResourceLayout from 'src/views/pages/resources/details/layout/resource-layout';
+import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
 import subMenuItems from './(sub-menu-items)';
 import JointVentureList from 'src/views/pages/stakeholders/details/joint-ventures';
 
@@ -8,10 +8,10 @@ function JointVentureIndex() {
   const { id, typeId } = router.query;
 
   return (
-    <ResourceLayout activeMenu={0} activeSubMenu={3} subMenuItems={subMenuItems(id as string, typeId as string)}>
+    <StakeholderLayout activeMenu={0} activeSubMenu={3} subMenuItems={subMenuItems(id as string, typeId as string)}>
       {/* <JointVentureList /> */}
       <JointVentureList model="stakeholder-joint-venture" stakeholderId={String(id)} typeId={String(typeId)} />
-    </ResourceLayout>
+    </StakeholderLayout>
   );
 }
 

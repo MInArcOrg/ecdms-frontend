@@ -41,16 +41,16 @@ const ManagerCard: React.FC<ManagerCardProps> = ({ manager, refetch, onEdit, onD
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholderManager.department')}: {manager.department}
+            {t('stakeholder.stakeholder-manager.department')}: {manager.department}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholderManager.position')}: {manager.position || 'N/A'}
+            {t('stakeholder.stakeholder-manager.position')}: {manager.position || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholderManager.email')}: {manager.email}
+            {t('stakeholder.stakeholder-manager.email')}: {manager.email}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholderManager.phoneNo')}: {manager.phone_no}
+            {t('stakeholder.stakeholder-manager.phoneNo')}: {manager.phone_no}
           </Typography>
         </Box>
       </CardContent>

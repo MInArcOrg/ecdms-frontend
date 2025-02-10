@@ -41,10 +41,10 @@ const JointVentureCard: React.FC<JointVentureCardProps> = ({ jointVenture, refet
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('jointVenture.memberCompaniesNo')}: {jointVenture.member_companies_no}
+            {t('stakeholder.joint-venture.memberCompaniesNo')}: {jointVenture.member_companies_no}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('jointVenture.reference')}: {jointVenture.reference || 'N/A'}
+            {t('stakeholder.joint-venture.reference')}: {jointVenture.reference || 'N/A'}
           </Typography>
         </Box>
       </CardContent>

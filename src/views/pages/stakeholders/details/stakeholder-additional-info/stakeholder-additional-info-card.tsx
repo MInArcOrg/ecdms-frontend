@@ -32,7 +32,7 @@ const AdditionalInformationCard: React.FC<AdditionalInformationCardProps> = ({ a
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {additionalInfo.reference || t('stakeholderAdditionalInformation.noReference')}
+              {additionalInfo.reference || t('stakeholder.stakeholder-additional-information.noReference')}
             </Typography>
           </Typography>
         </Box>
@@ -41,7 +41,7 @@ const AdditionalInformationCard: React.FC<AdditionalInformationCardProps> = ({ a
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholderAdditionalInformation.additionalInformation')}: {additionalInfo.additional_information}
+            {t('stakeholder.stakeholder-additional-information.additionalInformation')}: {additionalInfo.additional_information}
           </Typography>
         </Box>
       </CardContent>

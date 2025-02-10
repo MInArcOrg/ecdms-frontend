@@ -64,7 +64,7 @@ const JointVentureCompanyForm: React.FC<JointVentureCompanyFormProps> = ({ formi
       <Grid item xs={12}>
         <CustomSelect
           fullWidth
-          label={t('jointVentureCompany.jointVenture')}
+          label={t('stakeholder.joint-venture-company.jointVenture')}
           name="joint_venture_id"
           options={jointVentures}
           size="small"
@@ -72,15 +72,15 @@ const JointVentureCompanyForm: React.FC<JointVentureCompanyFormProps> = ({ formi
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('jointVentureCompany.companyName')} name="company_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.joint-venture-company.companyName')} name="company_name" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('jointVentureCompany.specialization')} name="specialization" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.joint-venture-company.specialization')} name="specialization" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={t('jointVentureCompany.rolesAndResponsibilities')}
+          label={t('stakeholder.joint-venture-company.rolesAndResponsibilities')}
           name="roles_and_responsibilities"
           multiline
           rows={4}
@@ -92,7 +92,7 @@ const JointVentureCompanyForm: React.FC<JointVentureCompanyFormProps> = ({ formi
         <CustomTextBox
           fullWidth
           type="number"
-          label={t('jointVentureCompany.ownershipPercentage')}
+          label={t('stakeholder.joint-venture-company.ownershipPercentage')}
           name="ownership_percentage"
           size="small"
           sx={{ mb: 2 }}
@@ -101,7 +101,7 @@ const JointVentureCompanyForm: React.FC<JointVentureCompanyFormProps> = ({ formi
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={t('jointVentureCompany.description')}
+          label={t('stakeholder.joint-venture-company.description')}
           name="description"
           multiline
           rows={4}
@@ -110,7 +110,7 @@ const JointVentureCompanyForm: React.FC<JointVentureCompanyFormProps> = ({ formi
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('jointVentureCompany.reference')} name="reference" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.joint-venture-company.reference')} name="reference" size="small" sx={{ mb: 2 }} />
       </Grid>
     </Grid>
   );
