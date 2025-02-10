@@ -22,7 +22,7 @@ const MembershipForm: React.FC<MembershipFormProps> = ({ formik, file, onFileCha
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={t('professional.association-membership.association-name')}
+          label={t('resources.professional.association-membership.association-name')}
           name="association_name"
           size="small"
           sx={{ mb: 2 }}
@@ -31,21 +31,21 @@ const MembershipForm: React.FC<MembershipFormProps> = ({ formik, file, onFileCha
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t('professional.association-membership.membership-type')}
+          label={t('resources.professional.association-membership.membership-type')}
           name="membership_type"
           size="small"
           sx={{ mb: 2 }}
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('professional.association-membership.position')} name="position" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('resources.professional.association-membership.position')} name="position" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
           multiline
           rows={3}
-          label={t('professional.association-membership.description')}
+          label={t('resources.professional.association-membership.description')}
           name="description"
           size="small"
           sx={{ mb: 2 }}
@@ -54,13 +54,13 @@ const MembershipForm: React.FC<MembershipFormProps> = ({ formik, file, onFileCha
       <Grid item xs={12} sm={6}>
         <CustomDatePicker
           fullWidth
-          label={t('professional.association-membership.registration-date')}
+          label={t('resources.professional.association-membership.registration-date')}
           name="registration_date"
           sx={{ mb: 2 }}
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomDatePicker fullWidth label={t('professional.association-membership.end-date')} name="end_date" sx={{ mb: 2 }} />
+        <CustomDatePicker fullWidth label={t('resources.professional.association-membership.end-date')} name="end_date" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
         <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />

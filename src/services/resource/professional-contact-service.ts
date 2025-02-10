@@ -11,7 +11,7 @@ const professionalContactApiService = {
     buildGetRequest('/resources/professional-contacts', params)
       .then((response: AxiosResponse<IApiResponse<ProfessionalContact[]>>) => response.data)
       .catch((error: any) => {
-        throw error
+        throw error;
       }),
 
   getById: (id: string, params: GetRequestParam): Promise<IApiResponse<ProfessionalContact>> =>
