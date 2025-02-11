@@ -1479,19 +1479,37 @@
       "reference": "Reference"
     },
     "position": {
-    "title": "Stakeholder Positions",
-    "create": "Create Stakeholder Position",
-    "edit": "Edit Stakeholder Position",
-    "details": "Stakeholder Position Details",
-    "name": "Name",
-    "parent-department": "Parent Department",
-    "required-education": "Required Education",
-    "required-work-experience": "Required Work Experience",
-    "salary": "Salary",
-    "no-of-professionals": "Number of Professionals",
-    "description": "Description",
-    "reference": "Reference"
-  }
+      "title": "Stakeholder Positions",
+      "create": "Create Stakeholder Position",
+      "edit": "Edit Stakeholder Position",
+      "details": "Stakeholder Position Details",
+      "name": "Name",
+      "parent-department": "Parent Department",
+      "required-education": "Required Education",
+      "required-work-experience": "Required Work Experience",
+      "salary": "Salary",
+      "no-of-professionals": "Number of Professionals",
+      "description": "Description",
+      "reference": "Reference"
+    },
+    "machinery": {
+      "title": "Stakeholder Machineries",
+      "create": "Create Stakeholder Machinery",
+      "edit": "Edit Stakeholder Machinery",
+      "details": "Stakeholder Machinery Details",
+      "name": "Name",
+      "plate-no": "Plate Number",
+      "brand-name": "Brand Name",
+      "model": "Model",
+      "year": "Year",
+      "chassis-number": "Chassis Number",
+      "engine-number": "Engine Number",
+      "capacity": "Capacity",
+      "purpose": "Purpose",
+      "quantity": "Quantity",
+      "current-situation": "Current Situation",
+      "location": "Location"
+    }
   },
   "address": {
     "title": "Address",
