@@ -1477,7 +1477,21 @@
       "parentDepartment": "Parent Department",
       "description": "Description",
       "reference": "Reference"
-    }
+    },
+    "position": {
+    "title": "Stakeholder Positions",
+    "create": "Create Stakeholder Position",
+    "edit": "Edit Stakeholder Position",
+    "details": "Stakeholder Position Details",
+    "name": "Name",
+    "parent-department": "Parent Department",
+    "required-education": "Required Education",
+    "required-work-experience": "Required Work Experience",
+    "salary": "Salary",
+    "no-of-professionals": "Number of Professionals",
+    "description": "Description",
+    "reference": "Reference"
+  }
   },
   "address": {
     "title": "Address",
