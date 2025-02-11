@@ -1509,7 +1509,23 @@
       "quantity": "Quantity",
       "current-situation": "Current Situation",
       "location": "Location"
-    }
+    },
+    "safety-equipment": {
+    "title": "Safety Equipment",
+    "create": "Create Safety Equipment",
+    "edit": "Edit Safety Equipment",
+    "details": "Safety Equipment Details",
+    "name": "Name",
+    "serial-no": "Serial Number",
+    "brand-name": "Brand Name",
+    "model": "Model",
+    "year": "Year",
+    "capacity": "Capacity",
+    "purpose": "Purpose",
+    "quantity": "Quantity",
+    "current-situation": "Current Situation",
+    "location": "Location"
+  }
   },
   "address": {
     "title": "Address",
