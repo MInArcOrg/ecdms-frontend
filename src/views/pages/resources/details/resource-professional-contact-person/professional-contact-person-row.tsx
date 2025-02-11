@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import type { ProfessionalContactPerson } from 'src/types/resource/professional-contact-person';
+import type { ProfessionalContactPerson } from 'src/types/resource/index';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';

@@ -5,7 +5,7 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import ProfessionalContactPersonForm from './professional-contact-person-form';
 import professionalContactPersonApiService from 'src/services/resource/professional-contact-person-service';
-import type { ProfessionalContactPerson } from 'src/types/resource/professional-contact-person';
+import type { ProfessionalContactPerson } from 'src/types/resource/index';
 import type { IApiResponse } from 'src/types/requests';
 
 interface ProfessionalContactPersonDrawerType {
@@ -65,21 +65,11 @@ const ProfessionalContactPersonDrawer = (props: ProfessionalContactPersonDrawerT
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            first_name: '',
-            middle_name: '',
-            last_name: '',
-            national_id_no: '',
-            gender: '',
-            phone_no: '',
-            email: '',
             ...(contactPerson as ProfessionalContactPerson)
           }}
           createActionFunc={isEdit ? editContactPerson : createContactPerson}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
-          validateOnMount={false}
-          validateOnChange={false}
-          validateOnBlur={true}
         >
           {(formik: FormikProps<ProfessionalContactPerson>) => <ProfessionalContactPersonForm formik={formik} />}
         </FormPageWrapper>

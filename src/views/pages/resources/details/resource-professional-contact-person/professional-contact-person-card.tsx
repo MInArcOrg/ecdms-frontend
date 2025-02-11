@@ -1,7 +1,7 @@
 import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
-import type { ProfessionalContactPerson } from 'src/types/resource/professional-contact-person';
+import type { ProfessionalContactPerson } from 'src/types/resource/index';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
