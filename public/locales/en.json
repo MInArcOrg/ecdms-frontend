@@ -1540,6 +1540,22 @@
       "unit-price": "Unit Price",
       "current-situation": "Current Situation",
       "location": "Location"
+    },
+    "employee": {
+      "title": "Stakeholder Employees",
+      "create": "Create Stakeholder Employee",
+      "edit": "Edit Stakeholder Employee",
+      "details": "Stakeholder Employee Details",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "nationalIdNo": "National ID Number",
+      "gender": "Gender",
+      "phone": "Phone Number",
+      "email": "Email",
+      "name": "Name",
+      "department": "Department",
+      "position": "Position"
     }
   },
   "address": {
