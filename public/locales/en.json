@@ -1511,21 +1511,36 @@
       "location": "Location"
     },
     "safety-equipment": {
-    "title": "Safety Equipment",
-    "create": "Create Safety Equipment",
-    "edit": "Edit Safety Equipment",
-    "details": "Safety Equipment Details",
-    "name": "Name",
-    "serial-no": "Serial Number",
-    "brand-name": "Brand Name",
-    "model": "Model",
-    "year": "Year",
-    "capacity": "Capacity",
-    "purpose": "Purpose",
-    "quantity": "Quantity",
-    "current-situation": "Current Situation",
-    "location": "Location"
-  }
+      "title": "Safety Equipment",
+      "create": "Create Safety Equipment",
+      "edit": "Edit Safety Equipment",
+      "details": "Safety Equipment Details",
+      "name": "Name",
+      "serial-no": "Serial Number",
+      "brand-name": "Brand Name",
+      "model": "Model",
+      "year": "Year",
+      "capacity": "Capacity",
+      "purpose": "Purpose",
+      "quantity": "Quantity",
+      "current-situation": "Current Situation",
+      "location": "Location"
+    },
+    "material": {
+      "title": "Stakeholder Materials",
+      "create": "Create Stakeholder Material",
+      "edit": "Edit Stakeholder Material",
+      "details": "Stakeholder Material Details",
+      "name": "Name",
+      "category": "Category",
+      "subcategory": "Subcategory",
+      "description": "Description",
+      "purpose": "Purpose",
+      "quantity": "Quantity",
+      "unit-price": "Unit Price",
+      "current-situation": "Current Situation",
+      "location": "Location"
+    }
   },
   "address": {
     "title": "Address",
