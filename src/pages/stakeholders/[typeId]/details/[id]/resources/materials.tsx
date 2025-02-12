@@ -9,7 +9,7 @@ function Index() {
   const { id, typeId } = router.query;
 
   return (
-    <StakeholderLayout activeMenu={0} activeSubMenu={5} subMenuItems={subMenuItems(id as string, String(typeId))}>
+    <StakeholderLayout activeMenu={3} activeSubMenu={3} subMenuItems={subMenuItems(id as string, String(typeId))}>
       <MaterialList stakeholderId={String(id)} />
     </StakeholderLayout>
   )
