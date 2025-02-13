@@ -1033,6 +1033,22 @@
       "phone": "Phone",
       "email": "Email",
       "stakeholder":"Stakeholder"
+    },
+    "project-contact-person": {
+      "title": "Project Contact Persons",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "position": "Position",
+      "department": "Department",
+      "nationalIdNo": "National ID No",
+      "gender": "Gender",
+      "phone": "Phone",
+      "email": "Email",
+      "stakeholder": "Stakeholder",
+      "details": "Contact Person Details",
+      "create": "Create Contact Person",
+      "edit": "Edit Contact Person"
     }
   },
   "location": {
