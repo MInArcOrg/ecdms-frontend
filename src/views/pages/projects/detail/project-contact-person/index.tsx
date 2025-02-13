@@ -13,11 +13,11 @@ import type { GetRequestParam, IApiResponse } from "src/types/requests"
 import { formatCreatedAt } from "src/utils/formatter/date"
 import ItemsListing from "src/views/shared/listing"
 import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer"
-import ProjectContactPersonCard from "./project-contact-oerson-card"
-import ProjectContactPersonDrawer from "./project-contact-oerson-drawer"
+import ProjectContactPersonCard from "./project-contact-person-card"
+import ProjectContactPersonDrawer from "./project-contact-person-drawer"
 import type { ProjectContactPerson } from "src/types/project/projext-contact-person"
 import type { Stakeholder } from "src/types/stakeholder"
-import { contactPersonColumns } from "./project-contact-oerson-row"
+import { contactPersonColumns } from "./project-contact-person-row"
 
 interface ProjectContactPersonListProps {
   projectId: string
