@@ -1018,6 +1018,21 @@
         "rebate": "Rebate",
         "remark": "Remark"
       }
+    },
+    "project-manager": {
+      "title": "Project Managers",
+      "create": "Create Project Manager",
+      "edit": "Edit Project Manager",
+      "details": "Project Manager Details",
+      "position": "Position",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "nationalIdNo": "National ID No",
+      "gender": "Gender",
+      "phone": "Phone",
+      "email": "Email",
+      "stakeholder":"Stakeholder"
     }
   },
   "location": {

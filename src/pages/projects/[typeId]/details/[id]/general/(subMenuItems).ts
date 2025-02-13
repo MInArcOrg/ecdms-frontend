@@ -18,12 +18,12 @@ const subMenuItems = (id: string, typeId: string) => [
     id: 4,
     title: 'Project Status',
     path: `/projects/${typeId}/details/${id}/general/project-status`
+  },
+  {
+    id: 5,
+    title: 'Project Manager',
+    path: `/projects/${typeId}/details/${id}/general/project-manager`
   }
-  // {
-  //   id: 5,
-  //   title: 'Road Location',
-  //   path: `/projects/${typeId}/details/${id}/general/roadLocation`
-  // }
 ];
 
 export default subMenuItems;
