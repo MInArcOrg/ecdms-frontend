@@ -12,7 +12,8 @@ export const uploadableResourceFileTypes = {
   resourceStudyLevel: 'RESOURCE_STUDY_LEVEL',
   resourceSalary: 'RESOURCE_SALARY',
   resourceWorkExperience: 'RESOURCE_WORK_EXPERIENCE',
-  resourceQuantityPrice: 'RESOURCE_QUANTITY_PRICE'
+  resourceQuantityPrice: 'RESOURCE_QUANTITY_PRICE',
+  project_safety_status: 'PROJECT_SAFETY_STATUS',
 } as const;
 export const uploadablePhotoTypes = {
   stakeholder_profile_photo: 'STAKEHOLDER_PROFILE_PHOTO',

@@ -1049,6 +1049,17 @@
       "details": "Contact Person Details",
       "create": "Create Contact Person",
       "edit": "Edit Contact Person"
+    },
+    "safety-status": {
+      "title": "Project Safety Status",
+      "fatal-injuries": "Fatal Injuries",
+      "major-injuries": "Major Injuries",
+      "minor-injuries": "Minor Injuries",
+      "measures-taken": "Measures Taken",
+      "lesson-learned": "Lesson Learned",
+      "details": "Safety Status Details",
+      "create": "Create Safety Status",
+      "edit": "Edit Safety Status"
     }
   },
   "location": {
