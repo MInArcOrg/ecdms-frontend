@@ -38,6 +38,11 @@ const subMenuItems = (id: string, typeId: string) => [
     id: 8,
     title: 'Project Quality',
     path: `/projects/${typeId}/details/${id}/general/project-quality`
+  },
+  {
+    id: 9,
+    title: 'Weather Condition',
+    path: `/projects/${typeId}/details/${id}/general/weather-condition`
   }
 ];
 

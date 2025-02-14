@@ -17,13 +17,6 @@ interface ProjectQualityDrawerType {
   projectId: string;
   projectQuality: ProjectQuality;
 }
-
-// const validationSchema = yup.object().shape({
-//   major_quality_problem_encountered: yup.string().required(),
-//   measures_taken: yup.string().required(),
-//   lesson_learned: yup.string().required(),
-// });
-
   const validationSchema = yup.object().shape({
     major_quality_problem_encountered: yup.string().required("Major Quality Problem Encountered is required"),
   })
