@@ -1060,6 +1060,16 @@
       "details": "Safety Status Details",
       "create": "Create Safety Status",
       "edit": "Edit Safety Status"
+    },
+    "quality": {
+      "title": "Project Quality",
+      "major-quality-problem-encountered": "Major Quality Problem Encountered",
+      "description": "Description",
+      "measures-taken": "Measures Taken",
+      "lesson-learned": "Lesson Learned",
+      "details": "Quality Details",
+      "create": "Create Quality",
+      "edit": "Edit Quality"
     }
   },
   "location": {
