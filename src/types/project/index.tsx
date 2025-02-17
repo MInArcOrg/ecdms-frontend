@@ -41,4 +41,5 @@ export interface ProjectFinance {
   remark?: string;
   revision_no?: number;
   price_after_rebate: number;
+  source_of_finance?: string;
 }

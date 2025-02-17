@@ -1016,7 +1016,8 @@
       "form": {
         "main-contract-price": "Main Contract Price",
         "rebate": "Rebate",
-        "remark": "Remark"
+        "remark": "Remark",
+        "source-of-finance": "Source of Finance"
       }
     },
     "project-manager": {
