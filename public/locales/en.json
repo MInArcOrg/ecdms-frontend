@@ -1070,6 +1070,14 @@
       "details": "Quality Details",
       "create": "Create Quality",
       "edit": "Edit Quality"
+    },
+    "construction-type": {
+      "title": "Construction Types",
+      "construction-type": "Construction Type",
+      "description": "Description",
+      "create": "Create Construction Type",
+      "edit": "Edit Construction Type",
+      "details": "Construction Type Details"
     }
   },
   "location": {
