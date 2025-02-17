@@ -8,7 +8,6 @@ import { useTranslation } from "react-i18next"
 import type { ProjectGeneralFinance } from "src/types/project/project-finance"
 import type { ProjectFinance } from "src/types/project"
 import CustomTextBox from "src/views/shared/form/custom-text-box"
-import CustomFileUpload from "src/views/shared/form/custome-file-selector"
 
 interface MainContractPriceFormProps {
   formik: FormikProps<ProjectFinance>
