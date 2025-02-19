@@ -111,6 +111,14 @@
       "details": "Design Classification Details",
       "description": "Description",
       "project-type": "Project Type"
+    },
+    "design-standard": {
+      "title": "Design Standard",
+      "create": "Create Design Standard",
+      "edit": "Edit Design Standard",
+      "details": "Design Standard Details",
+      "description": "Description",
+      "project-type": "Project Type"
     }
   },
   "department": {
