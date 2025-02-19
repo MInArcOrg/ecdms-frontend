@@ -19,6 +19,7 @@ export const uploadableResourceFileTypes = {
   functional_classification: 'FUNCTIONAL_CLASSIFICATION',
   design_classification: 'DESIGN_CLASSIFICATION',
   design_standard: 'DESIGN_STANDARD',
+  design_traffic_flow: 'DESIGN_TRAFFIC_FLOW',
 } as const;
 export const uploadablePhotoTypes = {
   stakeholder_profile_photo: 'STAKEHOLDER_PROFILE_PHOTO',

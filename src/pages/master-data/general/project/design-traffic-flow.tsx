@@ -1,13 +1,13 @@
 import { Box } from '@mui/material';
 import GeneralLayout from '../GeneralLayout';
-import DesignStandardList from 'src/views/pages/master/design-standard';
+import DesignTrafficFlowList from 'src/views/pages/master/design-traffic-flow';
 
 function StakeholderLocation() {
 
   return (
     <Box>
       <GeneralLayout>
-        <DesignStandardList />
+        <DesignTrafficFlowList />
       </GeneralLayout>
     </Box>
   );

@@ -119,6 +119,14 @@
       "details": "Design Standard Details",
       "description": "Description",
       "project-type": "Project Type"
+    },
+    "design-traffic-flow": {
+      "title": "Design Traffic Flow",
+      "create": "Create Design Traffic Flow",
+      "edit": "Edit Design Traffic Flow",
+      "details": "Design Traffic Flow Details",
+      "description": "Description",
+      "project-type": "Project Type"
     }
   },
   "department": {
