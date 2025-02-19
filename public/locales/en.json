@@ -95,7 +95,15 @@
       }
     },
     "create-master-sub-category": "Create Master SubCategory",
-    "edit-master-sub-category": "Edit Master SubCategory"
+    "edit-master-sub-category": "Edit Master SubCategory",
+    "functional-classification": {
+      "title": "Functional Classification",
+      "create": "Create Functional Classification",
+      "edit": "Edit Functional Classification",
+      "details": "Functional Classification Details",
+      "description": "Description",
+      "project-type": "Project Type"
+    }
   },
   "department": {
     "user-columns": {
@@ -1036,7 +1044,7 @@
       "gender": "Gender",
       "phone": "Phone",
       "email": "Email",
-      "stakeholder":"Stakeholder"
+      "stakeholder": "Stakeholder"
     },
     "project-contact-person": {
       "title": "Project Contact Persons",
