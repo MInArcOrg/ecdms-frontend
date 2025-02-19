@@ -103,6 +103,14 @@
       "details": "Functional Classification Details",
       "description": "Description",
       "project-type": "Project Type"
+    },
+    "design-classification": {
+      "title": "Design Classification",
+      "create": "Create Design Classification",
+      "edit": "Edit Design Classification",
+      "details": "Design Classification Details",
+      "description": "Description",
+      "project-type": "Project Type"
     }
   },
   "department": {

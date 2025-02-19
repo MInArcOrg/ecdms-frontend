@@ -57,6 +57,11 @@ const menuItems = (t: (item: string) => void) => [
         title: t('master-data.functional-classification.title'),
         path: `${baseUrl}/project/functional-classification/`
       },
+      {
+        id: 3,
+        title: t('master-data.design-classification.title'),
+        path: `${baseUrl}/project/design-classification/`
+      }
     ]
   },
   {
