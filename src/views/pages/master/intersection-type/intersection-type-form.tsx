@@ -5,21 +5,21 @@ import type React from "react"
 import { Box } from "@mui/material"
 import type { FormikProps } from "formik"
 import { useTranslation } from "react-i18next"
-import type { CrossSectionType } from "src/types/master/cross-section-type"
+import type { IntersectionType } from "src/types/master/intersection-type"
 import CustomTextBox from "src/views/shared/form/custom-text-box"
 import CustomFileUpload from "src/views/shared/form/custome-file-selector"
 import CustomSelect from "src/views/shared/form/custom-select"
 import { useEffect, useState } from "react"
 import masterTypeApiService from "src/services/master-data/master-type-service"
 
-interface CrossSectionTypeFormProps {
-  formik: FormikProps<CrossSectionType>
-  defaultLocaleData?: CrossSectionType
+interface IntersectionTypeFormProps {
+  formik: FormikProps<IntersectionType>
+  defaultLocaleData?: IntersectionType
   file: File | null
   onFileChange: (file: File | null) => void
 }
 
-const CrossSectionTypeForm: React.FC<CrossSectionTypeFormProps> = ({ formik, file, onFileChange }) => {
+const IntersectionTypeForm: React.FC<IntersectionTypeFormProps> = ({ formik, file, onFileChange }) => {
   const { t } = useTranslation()
   const [projectTypes, setProjectTypes] = useState<{ value: string; label: string }[]>([])
 
@@ -43,18 +43,12 @@ const CrossSectionTypeForm: React.FC<CrossSectionTypeFormProps> = ({ formik, fil
   return (
     <>
       <Box mb={2}>
-        <CustomTextBox
-          fullWidth
-          label={t("master-data.cross-section-type.title")}
-          name="title"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t("master-data.intersection-type.title")} name="title" size="small" sx={{ mb: 2 }} />
       </Box>
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t("master-data.cross-section-type.description")}
+          label={t("master-data.intersection-type.description")}
           name="description"
           size="small"
           multiline
@@ -65,7 +59,7 @@ const CrossSectionTypeForm: React.FC<CrossSectionTypeFormProps> = ({ formik, fil
       <Box mb={2}>
         <CustomSelect
           fullWidth
-          label={t("master-data.cross-section-type.project-type")}
+          label={t("master-data.intersection-type.project-type")}
           name="project_type_id"
           size="small"
           options={projectTypes}
@@ -77,5 +71,5 @@ const CrossSectionTypeForm: React.FC<CrossSectionTypeFormProps> = ({ formik, fil
   )
 }
 
-export default CrossSectionTypeForm
+export default IntersectionTypeForm
 

@@ -22,6 +22,7 @@ export const uploadableResourceFileTypes = {
   design_traffic_flow: 'DESIGN_TRAFFIC_FLOW',
   surface_type: 'SURFACE_TYPE',
   cross_section_type: 'CROSS_SECTION_TYPE',
+  intersection_type: 'INTERSECTION_TYPE',
 } as const;
 export const uploadablePhotoTypes = {
   stakeholder_profile_photo: 'STAKEHOLDER_PROFILE_PHOTO',

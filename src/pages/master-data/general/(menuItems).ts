@@ -80,7 +80,12 @@ const menuItems = (t: (item: string) => void) => [
       {
         id: 7,
         title: t('master-data.cross-section-type.title'),
-        path: `${baseUrl}/project/surface-type/`
+        path: `${baseUrl}/project/cross-section/`
+      },
+      {
+        id: 8,
+        title: t('master-data.intersection-type.title'),
+        path: `${baseUrl}/project/intersection-type/`
       }
     ]
   },

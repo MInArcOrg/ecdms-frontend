@@ -143,6 +143,14 @@
       "details": "Road way Cross section Type Details",
       "description": "Description",
       "project-type": "Project Type"
+    },
+    "intersection-type": {
+      "title": "Intersection Type",
+      "create": "Create Intersection Type",
+      "edit": "Edit Intersection Type",
+      "details": "Intersection Type Details",
+      "description": "Description",
+      "project-type": "Project Type"
     }
   },
   "department": {

@@ -7,22 +7,22 @@ import { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import crossSectionTypeApiService from "src/services/master-data/cross-section-type-service"
+import intersectionTypeApiService from "src/services/master-data/intersection-type-service"
 import masterTypeApiService from "src/services/master-data/master-type-service"
 import { defaultCreateActionConfig } from "src/types/general/listing"
 import type { GetRequestParam, IApiResponse } from "src/types/requests"
 import { formatCreatedAt } from "src/utils/formatter/date"
 import ItemsListing from "src/views/shared/listing"
 import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer"
-import CrossSectionTypeCard from "./cross-section-type-card"
-import CrossSectionTypeDrawer from "./cross-section-type-drawer"
-import type { CrossSectionType } from "src/types/master/cross-section-type"
-import { crossSectionTypeColumns } from "./cross-section-type-row"
+import IntersectionTypeCard from "./intersection-type-card"
+import IntersectionTypeDrawer from "./intersection-type-drawer"
+import type { IntersectionType } from "src/types/master/intersection-type"
+import { intersectionTypeColumns } from "./intersection-type-row"
 
-const CrossSectionTypeList: React.FC = () => {
+const IntersectionTypeList: React.FC = () => {
   const [showDrawer, setShowDrawer] = useState(false)
   const [showDetailDrawer, setShowDetailDrawer] = useState(false)
-  const [selectedRow, setSelectedRow] = useState<CrossSectionType | null>(null)
+  const [selectedRow, setSelectedRow] = useState<IntersectionType | null>(null)
   const [projectTypes, setProjectTypes] = useState<{ value: string; label: string }[]>([])
   const { t } = useTranslation()
 
@@ -43,58 +43,58 @@ const CrossSectionTypeList: React.FC = () => {
     fetchProjectTypes()
   }, [])
 
-  const fetchCrossSectionTypes = (params: GetRequestParam): Promise<IApiResponse<CrossSectionType[]>> => {
-    return crossSectionTypeApiService.getAll(params)
+  const fetchIntersectionTypes = (params: GetRequestParam): Promise<IApiResponse<IntersectionType[]>> => {
+    return intersectionTypeApiService.getAll(params)
   }
 
   const {
-    data: crossSectionTypes,
+    data: intersectionTypes,
     isLoading,
     pagination,
     handlePageChange,
     refetch,
-  } = usePaginatedFetch<CrossSectionType[]>({
-    queryKey: ["crossSectionTypes"],
-    fetchFunction: fetchCrossSectionTypes,
+  } = usePaginatedFetch<IntersectionType[]>({
+    queryKey: ["intersectionTypes"],
+    fetchFunction: fetchIntersectionTypes,
   })
 
   const toggleDrawer = () => {
-    setSelectedRow({} as CrossSectionType)
+    setSelectedRow({} as IntersectionType)
     setShowDrawer(!showDrawer)
   }
 
   const toggleDetailDrawer = () => {
-    setSelectedRow({} as CrossSectionType)
+    setSelectedRow({} as IntersectionType)
     setShowDetailDrawer(!showDetailDrawer)
   }
 
-  const handleEdit = (crossSectionType: CrossSectionType) => {
+  const handleEdit = (intersectionType: IntersectionType) => {
     toggleDrawer()
-    setSelectedRow(crossSectionType)
+    setSelectedRow(intersectionType)
   }
 
-  const handleDelete = async (crossSectionTypeId: string) => {
-    await crossSectionTypeApiService.delete(crossSectionTypeId)
+  const handleDelete = async (intersectionTypeId: string) => {
+    await intersectionTypeApiService.delete(intersectionTypeId)
     refetch()
   }
 
-  const handleClickDetail = (crossSectionType: CrossSectionType) => {
+  const handleClickDetail = (intersectionType: IntersectionType) => {
     toggleDetailDrawer()
-    setSelectedRow(crossSectionType)
+    setSelectedRow(intersectionType)
   }
 
-  const mapCrossSectionTypeToDetailItems = (crossSectionType: CrossSectionType): { title: string; value: string }[] => {
-    const projectType = projectTypes.find((type) => type.value === crossSectionType.project_type_id)
+  const mapIntersectionTypeToDetailItems = (intersectionType: IntersectionType): { title: string; value: string }[] => {
+    const projectType = projectTypes.find((type) => type.value === intersectionType.project_type_id)
     return [
-      { title: t("master-data.cross-section-type.title"), value: crossSectionType?.title || "N/A" },
-      { title: t("master-data.cross-section-type.description"), value: crossSectionType?.description || "N/A" },
+      { title: t("master-data.intersection-type.title"), value: intersectionType?.title || "N/A" },
+      { title: t("master-data.intersection-type.description"), value: intersectionType?.description || "N/A" },
       {
-        title: t("master-data.cross-section-type.project-type"),
+        title: t("master-data.intersection-type.project-type"),
         value: projectType ? projectType.label : "N/A",
       },
       {
         title: t("common.table-columns.created-at"),
-        value: crossSectionType?.created_at ? formatCreatedAt(crossSectionType.created_at) : "N/A",
+        value: intersectionType?.created_at ? formatCreatedAt(intersectionType.created_at) : "N/A",
       },
     ]
   }
@@ -102,11 +102,11 @@ const CrossSectionTypeList: React.FC = () => {
   return (
     <Box>
       {showDrawer && (
-        <CrossSectionTypeDrawer
+        <IntersectionTypeDrawer
           open={showDrawer}
           toggle={toggleDrawer}
           refetch={refetch}
-          crossSectionType={selectedRow as CrossSectionType}
+          intersectionType={selectedRow as IntersectionType}
         />
       )}
 
@@ -114,26 +114,26 @@ const CrossSectionTypeList: React.FC = () => {
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapCrossSectionTypeToDetailItems(selectedRow as CrossSectionType)}
+          data={mapIntersectionTypeToDetailItems(selectedRow as IntersectionType)}
           id={selectedRow?.id || ""}
           hasReference={true}
-          fileType="CROSS_SECTION_TYPE"
-          title={t("master-data.cross-section-type.details")}
+          fileType="INTERSECTION_TYPE"
+          title={t("master-data.intersection-type.details")}
         />
       )}
 
       <ItemsListing
-        title={t("master-data.cross-section-type.title")}
+        title={t("master-data.intersection-type.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: crossSectionTypeColumns(handleClickDetail, handleEdit, handleDelete, t, projectTypes),
+          headers: intersectionTypeColumns(handleClickDetail, handleEdit, handleDelete, t, projectTypes),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <CrossSectionTypeCard
+          <IntersectionTypeCard
             onDetail={handleClickDetail}
-            crossSectionType={data}
+            intersectionType={data}
             onEdit={handleEdit}
             refetch={refetch}
             onDelete={handleDelete}
@@ -146,16 +146,16 @@ const CrossSectionTypeList: React.FC = () => {
           onlyIcon: false,
           permission: {
             action: "create",
-            subject: "crosssectiontype",
+            subject: "intersectiontype",
           },
         }}
         fetchDataFunction={refetch}
-        items={crossSectionTypes || []}
+        items={intersectionTypes || []}
         onPaginationChange={handlePageChange}
       />
     </Box>
   )
 }
 
-export default CrossSectionTypeList
+export default IntersectionTypeList
 

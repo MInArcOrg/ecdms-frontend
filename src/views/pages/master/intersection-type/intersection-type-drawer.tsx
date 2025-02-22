@@ -1,21 +1,21 @@
 import type { FormikProps } from "formik"
 import type React from "react"
 import { useState } from "react"
-import crossSectionTypeApiService from "src/services/master-data/cross-section-type-service"
+import intersectionTypeApiService from "src/services/master-data/intersection-type-service"
 import { uploadFile } from "src/services/utils/file-utils"
 import type { IApiPayload, IApiResponse } from "src/types/requests"
-import type { CrossSectionType } from "src/types/master/cross-section-type"
+import type { IntersectionType } from "src/types/master/intersection-type"
 import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
 import FormPageWrapper from "src/views/shared/form/form-wrapper"
 import * as yup from "yup"
-import CrossSectionTypeForm from "./cross-section-type-form"
+import IntersectionTypeForm from "./intersection-type-form"
 import { uploadableResourceFileTypes } from "src/services/utils/file-constants"
 
-interface CrossSectionTypeDrawerType {
+interface IntersectionTypeDrawerType {
   open: boolean
   toggle: () => void
   refetch: () => void
-  crossSectionType: CrossSectionType
+  intersectionType: IntersectionType
 }
 
 const validationSchema = yup.object().shape({
@@ -23,28 +23,28 @@ const validationSchema = yup.object().shape({
   project_type_id: yup.string().required("Project Type is required"),
 })
 
-const CrossSectionTypeDrawer: React.FC<CrossSectionTypeDrawerType> = (props) => {
-  const { open, toggle, refetch, crossSectionType } = props
+const IntersectionTypeDrawer: React.FC<IntersectionTypeDrawerType> = (props) => {
+  const { open, toggle, refetch, intersectionType } = props
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null)
 
-  const isEdit = crossSectionType?.id ? true : false
+  const isEdit = intersectionType?.id ? true : false
   const onFileChange = (file: File | null) => {
     setUploadableFile(file)
   }
 
-  const createCrossSectionType = async (body: IApiPayload<CrossSectionType>) => {
-    return await crossSectionTypeApiService.create(body)
+  const createIntersectionType = async (body: IApiPayload<IntersectionType>) => {
+    return await intersectionTypeApiService.create(body)
   }
 
-  const editCrossSectionType = async (body: IApiPayload<CrossSectionType>) => {
-    return await crossSectionTypeApiService.update(crossSectionType?.id || "", body)
+  const editIntersectionType = async (body: IApiPayload<IntersectionType>) => {
+    return await intersectionTypeApiService.update(intersectionType?.id || "", body)
   }
 
-  const getPayload = (values: CrossSectionType) => ({
+  const getPayload = (values: IntersectionType) => ({
     data: {
       ...values,
-      id: crossSectionType?.id,
+      id: intersectionType?.id,
     },
     files: uploadableFile ? [uploadableFile] : [],
   })
@@ -54,10 +54,10 @@ const CrossSectionTypeDrawer: React.FC<CrossSectionTypeDrawerType> = (props) => 
     setUploadableFile(null)
   }
 
-  const onActionSuccess = async (response: IApiResponse<CrossSectionType>, payload: IApiPayload<CrossSectionType>) => {
+  const onActionSuccess = async (response: IApiResponse<IntersectionType>, payload: IApiPayload<IntersectionType>) => {
     if (payload.files.length > 0) {
       if (response.payload.id) {
-        uploadFile(payload.files[0], uploadableResourceFileTypes.cross_section_type, response.payload.id, "", "")
+        uploadFile(payload.files[0], uploadableResourceFileTypes.intersection_type, response.payload.id, "", "")
       }
     }
     refetch()
@@ -68,28 +68,28 @@ const CrossSectionTypeDrawer: React.FC<CrossSectionTypeDrawerType> = (props) => 
 
   return (
     <CustomSideDrawer
-      title={`master-data.cross-section-type.${isEdit ? "edit" : "create"}`}
+      title={`master-data.intersection-type.${isEdit ? "edit" : "create"}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`master-data.cross-section-type.${isEdit ? "edit" : "create"}`}
+          title={`master-data.intersection-type.${isEdit ? "edit" : "create"}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={crossSectionType}
-          createActionFunc={isEdit ? editCrossSectionType : createCrossSectionType}
+          initialValues={intersectionType}
+          createActionFunc={isEdit ? editIntersectionType : createIntersectionType}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<CrossSectionType>) => {
+          {(formik: FormikProps<IntersectionType>) => {
             return (
-              <CrossSectionTypeForm
+              <IntersectionTypeForm
                 file={uploadableFile}
                 onFileChange={onFileChange}
                 formik={formik}
-                defaultLocaleData={{} as CrossSectionType}
+                defaultLocaleData={{} as IntersectionType}
               />
             )
           }}
@@ -99,5 +99,5 @@ const CrossSectionTypeDrawer: React.FC<CrossSectionTypeDrawerType> = (props) => 
   )
 }
 
-export default CrossSectionTypeDrawer
+export default IntersectionTypeDrawer
 
