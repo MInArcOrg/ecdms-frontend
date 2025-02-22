@@ -86,6 +86,11 @@ const menuItems = (t: (item: string) => void) => [
         id: 8,
         title: t('master-data.intersection-type.title'),
         path: `${baseUrl}/project/intersection-type/`
+      },
+      {
+        id: 9,
+        title: t('master-data.driveway-access-point.title'),
+        path: `${baseUrl}/project/driveway-access-point/`
       }
     ]
   },

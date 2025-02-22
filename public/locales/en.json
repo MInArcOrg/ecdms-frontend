@@ -151,6 +151,14 @@
       "details": "Intersection Type Details",
       "description": "Description",
       "project-type": "Project Type"
+    },
+    "driveway-access-point": {
+      "title": "Driveway Access Point",
+      "create": "Create Driveway Access Point",
+      "edit": "Edit Driveway Access Point",
+      "details": "Driveway Access Point Details",
+      "description": "Description",
+      "project-type": "Project Type"
     }
   },
   "department": {

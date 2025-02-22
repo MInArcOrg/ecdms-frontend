@@ -23,6 +23,7 @@ export const uploadableResourceFileTypes = {
   surface_type: 'SURFACE_TYPE',
   cross_section_type: 'CROSS_SECTION_TYPE',
   intersection_type: 'INTERSECTION_TYPE',
+  driveway_access_point: 'DRIVEWAY_ACCESS_POINT',
 } as const;
 export const uploadablePhotoTypes = {
   stakeholder_profile_photo: 'STAKEHOLDER_PROFILE_PHOTO',
