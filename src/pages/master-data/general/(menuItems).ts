@@ -76,6 +76,11 @@ const menuItems = (t: (item: string) => void) => [
         id: 6,
         title: t('master-data.surface-type.title'),
         path: `${baseUrl}/project/surface-type/`
+      },
+      {
+        id: 7,
+        title: t('master-data.cross-section-type.title'),
+        path: `${baseUrl}/project/surface-type/`
       }
     ]
   },

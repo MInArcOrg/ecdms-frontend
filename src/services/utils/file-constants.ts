@@ -20,7 +20,8 @@ export const uploadableResourceFileTypes = {
   design_classification: 'DESIGN_CLASSIFICATION',
   design_standard: 'DESIGN_STANDARD',
   design_traffic_flow: 'DESIGN_TRAFFIC_FLOW',
-  surface_type: 'SURFACE_TYPE'
+  surface_type: 'SURFACE_TYPE',
+  cross_section_type: 'CROSS_SECTION_TYPE',
 } as const;
 export const uploadablePhotoTypes = {
   stakeholder_profile_photo: 'STAKEHOLDER_PROFILE_PHOTO',

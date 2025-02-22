@@ -135,6 +135,14 @@
       "details": "Surface Type Details",
       "description": "Description",
       "project-type": "Project Type"
+    },
+    "cross-section-type": {
+      "title": "Road way Cross section Type",
+      "create": "Create Road way Cross section Type",
+      "edit": "Edit Road way Cross section Type",
+      "details": "Road way Cross section Type Details",
+      "description": "Description",
+      "project-type": "Project Type"
     }
   },
   "department": {
