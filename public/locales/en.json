@@ -127,6 +127,14 @@
       "details": "Design Traffic Flow Details",
       "description": "Description",
       "project-type": "Project Type"
+    },
+    "surface-type": {
+      "title": "Surface Type",
+      "create": "Create Surface Type",
+      "edit": "Edit Surface Type",
+      "details": "Surface Type Details",
+      "description": "Description",
+      "project-type": "Project Type"
     }
   },
   "department": {
