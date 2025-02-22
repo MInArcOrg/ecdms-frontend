@@ -86,10 +86,10 @@ const CrossSectionTypeList: React.FC = () => {
   const mapCrossSectionTypeToDetailItems = (crossSectionType: CrossSectionType): { title: string; value: string }[] => {
     const projectType = projectTypes.find((type) => type.value === crossSectionType.project_type_id)
     return [
-      { title: t("master.cross-section-type.title"), value: crossSectionType?.title || "N/A" },
-      { title: t("master.cross-section-type.description"), value: crossSectionType?.description || "N/A" },
+      { title: t("master-data.cross-section-type.title"), value: crossSectionType?.title || "N/A" },
+      { title: t("master-data.cross-section-type.description"), value: crossSectionType?.description || "N/A" },
       {
-        title: t("master.cross-section-type.project-type"),
+        title: t("master-data.cross-section-type.project-type"),
         value: projectType ? projectType.label : "N/A",
       },
       {
@@ -118,12 +118,12 @@ const CrossSectionTypeList: React.FC = () => {
           id={selectedRow?.id || ""}
           hasReference={true}
           fileType="CROSS_SECTION_TYPE"
-          title={t("master.cross-section-type.details")}
+          title={t("master-data.cross-section-type.details")}
         />
       )}
 
       <ItemsListing
-        title={t("master.cross-section-type.title")}
+        title={t("master-data.cross-section-type.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
@@ -158,4 +158,3 @@ const CrossSectionTypeList: React.FC = () => {
 }
 
 export default CrossSectionTypeList
-

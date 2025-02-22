@@ -45,7 +45,7 @@ const CrossSectionTypeForm: React.FC<CrossSectionTypeFormProps> = ({ formik, fil
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t("master.cross-section-type.title")}
+          label={t("master-data.cross-section-type.title")}
           name="title"
           size="small"
           sx={{ mb: 2 }}
@@ -54,7 +54,7 @@ const CrossSectionTypeForm: React.FC<CrossSectionTypeFormProps> = ({ formik, fil
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t("master.cross-section-type.description")}
+          label={t("master-data.cross-section-type.description")}
           name="description"
           size="small"
           multiline
@@ -65,7 +65,7 @@ const CrossSectionTypeForm: React.FC<CrossSectionTypeFormProps> = ({ formik, fil
       <Box mb={2}>
         <CustomSelect
           fullWidth
-          label={t("master.cross-section-type.project-type")}
+          label={t("master-data.cross-section-type.project-type")}
           name="project_type_id"
           size="small"
           options={projectTypes}
@@ -78,4 +78,3 @@ const CrossSectionTypeForm: React.FC<CrossSectionTypeFormProps> = ({ formik, fil
 }
 
 export default CrossSectionTypeForm
-

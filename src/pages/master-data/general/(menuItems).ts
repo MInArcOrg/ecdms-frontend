@@ -80,8 +80,8 @@ const menuItems = (t: (item: string) => void) => [
       {
         id: 7,
         title: t('master-data.cross-section-type.title'),
-        path: `${baseUrl}/project/surface-type/`
-      }
+        path: `${baseUrl}/project/cross-section/`
+      },
     ]
   },
   {

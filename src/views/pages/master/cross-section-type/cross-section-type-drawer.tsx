@@ -68,14 +68,14 @@ const CrossSectionTypeDrawer: React.FC<CrossSectionTypeDrawerType> = (props) => 
 
   return (
     <CustomSideDrawer
-      title={`master.cross-section-type.${isEdit ? "edit" : "create"}`}
+      title={`master-data.cross-section-type.${isEdit ? "edit" : "create"}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`master.cross-section-type.${isEdit ? "edit" : "create"}`}
+          title={`master-data.cross-section-type.${isEdit ? "edit" : "create"}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={crossSectionType}
@@ -100,4 +100,3 @@ const CrossSectionTypeDrawer: React.FC<CrossSectionTypeDrawerType> = (props) => 
 }
 
 export default CrossSectionTypeDrawer
-

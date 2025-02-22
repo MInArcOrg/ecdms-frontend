@@ -91,4 +91,3 @@ const CrossSectionTypeCard: React.FC<CrossSectionTypeCardProps> = ({
 }
 
 export default CrossSectionTypeCard
-
