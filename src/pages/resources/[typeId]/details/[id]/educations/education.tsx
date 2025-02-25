@@ -3,7 +3,7 @@ import ResourceLayout from 'src/views/pages/resources/details/layout/resource-la
 import subMenuItems from './(sub-menu-items)';
 import ProfessionalEducationList from 'src/views/pages/resources/details/resource-professional-education';
 
-function EmployeeBranchIndex() {
+function ProfessionalEducationIndex() {
   const router = useRouter();
   const { id, typeId } = router.query;
 
@@ -14,9 +14,9 @@ function EmployeeBranchIndex() {
   );
 }
 
-EmployeeBranchIndex.acl = {
+ProfessionalEducationIndex.acl = {
   subject: 'resource',
   action: 'view_resource'
 };
 
-export default EmployeeBranchIndex;
+export default ProfessionalEducationIndex;
