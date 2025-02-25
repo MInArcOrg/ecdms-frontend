@@ -14,7 +14,7 @@ interface Route {
   model: string;
 }
 
-interface SubMenuItem {
+export interface OtherSubMenuItem {
   id: number;
   title: string;
   icon: string;
@@ -23,7 +23,7 @@ interface SubMenuItem {
 
 interface OtherSubMenuProps {
   typeId: string;
-  subMenuItems: SubMenuItem[];
+  subMenuItems: OtherSubMenuItem[];
   activeSubMenu?: number | null; // Ensure it's allowed to be null
   setActiveType: (path: string) => void;
   activeType?: number;
@@ -45,7 +45,7 @@ const OtherSubMenu: React.FC<OtherSubMenuProps> = ({ subMenuItems, activeSubMenu
     setOpen((prev) => (prev === id ? null : id));
   };
 
-  const ItemComponent: React.FC<{ route: Route; item: SubMenuItem }> = ({ route, item }) => (
+  const ItemComponent: React.FC<{ route: Route; item: OtherSubMenuItem }> = ({ route, item }) => (
     <ListItemButton
       selected={activeSubMenu === route.id}
       sx={{

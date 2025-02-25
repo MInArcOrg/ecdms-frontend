@@ -27,3 +27,12 @@ export interface StudyField {
   created_at?: Date; // Optional field
   updated_at?: Date; // Optional field
 }
+
+export interface BusinessFields {
+  id: string;
+  parent_id?: string; // Optional field
+  title: string;
+  description?: string; // Optional field
+  created_at?: Date; // Optional field
+  updated_at?: Date; // Optional field
+}

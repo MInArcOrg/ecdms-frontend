@@ -1410,6 +1410,17 @@
       "additionalInformation": "Additional Information",
       "reference": "Reference",
       "noReference": "No Reference"
+    },
+    "stakeholder-branch": {
+      "title": "Stakeholder Branches",
+      "create": "Create Branch",
+      "edit": "Edit Branch",
+      "details": "Branch Details",
+      "name": "Branch Name",
+      "tinNumber": "TIN Number",
+      "businessFieldId": "Business Field",
+      "description": "Description",
+      "reference": "Reference"
     }
   },
   "address": {
