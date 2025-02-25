@@ -1,22 +1,27 @@
 import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
-import React from 'react';
+import type React from 'react';
 import { useTranslation } from 'react-i18next';
-import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
-import { ProfessionalAddress } from 'src/types/resource';
-import FileDrawer from 'src/views/components/custom/files-drawer';
+import type { StakeholderBranch } from 'src/types/stakeholder/stakeholder-branch';
+import type { BusinessFields } from 'src/types/general/general-master';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-interface AddressCardProps {
-  address: ProfessionalAddress;
+interface BranchCardProps {
+  branch: StakeholderBranch;
   refetch: () => void;
-  onEdit: (address: ProfessionalAddress) => void;
+  onEdit: (branch: StakeholderBranch) => void;
   onDelete: (id: string) => void;
-  onDetail: (address: ProfessionalAddress) => void;
+  onDetail: (branch: StakeholderBranch) => void;
+  businessFields: BusinessFields[];
 }
 
-const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onDelete, onDetail }) => {
+const BranchCard: React.FC<BranchCardProps> = ({ branch, refetch, onEdit, onDelete, onDetail, businessFields }) => {
   const { t } = useTranslation();
+
+  const getBusinessFieldTitle = (id: string) => {
+    const field = businessFields.find((f) => f.id === id);
+    return field ? field.title : 'N/A';
+  };
 
   return (
     <Card sx={{ p: 2 }}>
@@ -26,7 +31,7 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
             <Typography
               noWrap
               component={Button}
-              onClick={() => onDetail(address)}
+              onClick={() => onDetail(branch)}
               sx={{
                 fontWeight: 500,
                 textDecoration: 'none',
@@ -34,7 +39,7 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {address?.city}, {address?.country}
+              {branch.name}
             </Typography>
           </Typography>
         </Box>
@@ -43,21 +48,21 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.address.region')}: {address?.region || 'N/A'}
+            {t('stakeholder.stakeholder-branch.tinNumber')}: {branch.tin_number || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.address.sub_city')}: {address?.sub_city || 'N/A'}
+            {t('stakeholder.stakeholder-branch.businessFieldId')}: {getBusinessFieldTitle(branch.business_field_id)}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.address.street')}: {address?.street || 'N/A'}
+            {t('stakeholder.stakeholder-branch.description')}: {branch.description || t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>
+
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={address?.id || ''} type={uploadableResourceFileTypes.resource} />
         <ModelAction
-          model="ProfessionalAddress"
-          model_id={address?.id || ''}
+          model="StakeholderBranch"
+          model_id={branch?.id || ''}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
@@ -66,15 +71,15 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'professionaladdress'
+            subject: 'stakeholderbranch'
           }}
           editPermissionRule={{
             action: 'edit',
-            subject: 'professionaladdress'
+            subject: 'stakeholderbranch'
           }}
-          onEdit={() => onEdit(address)}
-          onDelete={() => onDelete(address?.id || '')}
-          item={address}
+          onEdit={() => onEdit(branch)}
+          onDelete={() => onDelete(branch?.id || '')}
+          item={branch}
           options={[]}
         />
       </CardActions>
@@ -82,4 +87,4 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
   );
 };
 
-export default AddressCard;
+export default BranchCard;

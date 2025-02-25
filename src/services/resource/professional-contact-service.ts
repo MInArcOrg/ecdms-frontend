@@ -6,7 +6,7 @@ import { buildPutRequest } from 'src/utils/requests/put-request';
 import axiosServices from 'src/utils/axios';
 import { ProfessionalContact } from 'src/types/resource/index';
 
-const professionalContactApiService = { 
+const professionalContactApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<ProfessionalContact[]>> =>
     buildGetRequest('/resources/professional-contacts', params)
       .then((response: AxiosResponse<IApiResponse<ProfessionalContact[]>>) => response.data)

@@ -1,22 +1,34 @@
 import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
-import React from 'react';
+import type React from 'react';
 import { useTranslation } from 'react-i18next';
-import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
-import { ProfessionalAddress } from 'src/types/resource';
-import FileDrawer from 'src/views/components/custom/files-drawer';
+import type { StakeholderBranchManager } from 'src/types/stakeholder/stakeholder-branch-manager';
+import type { StakeholderBranch } from 'src/types/stakeholder/stakeholder-branch';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-interface AddressCardProps {
-  address: ProfessionalAddress;
+interface BranchManagerCardProps {
+  branchManager: StakeholderBranchManager;
   refetch: () => void;
-  onEdit: (address: ProfessionalAddress) => void;
+  onEdit: (branchManager: StakeholderBranchManager) => void;
   onDelete: (id: string) => void;
-  onDetail: (address: ProfessionalAddress) => void;
+  onDetail: (branchManager: StakeholderBranchManager) => void;
+  stakeholderBranches: StakeholderBranch[];
 }
 
-const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onDelete, onDetail }) => {
+const BranchManagerCard: React.FC<BranchManagerCardProps> = ({
+  branchManager,
+  refetch,
+  onEdit,
+  onDelete,
+  onDetail,
+  stakeholderBranches
+}) => {
   const { t } = useTranslation();
+
+  const getBranchName = (id: string) => {
+    const branch = stakeholderBranches.find((b) => b.id === id);
+    return branch ? branch.name : 'N/A';
+  };
 
   return (
     <Card sx={{ p: 2 }}>
@@ -26,7 +38,7 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
             <Typography
               noWrap
               component={Button}
-              onClick={() => onDetail(address)}
+              onClick={() => onDetail(branchManager)}
               sx={{
                 fontWeight: 500,
                 textDecoration: 'none',
@@ -34,7 +46,7 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {address?.city}, {address?.country}
+              {`${branchManager.first_name} ${branchManager.last_name}`}
             </Typography>
           </Typography>
         </Box>
@@ -43,21 +55,24 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.address.region')}: {address?.region || 'N/A'}
+            {t('stakeholder.stakeholder-branch-manager.position')}: {branchManager.position}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.address.sub_city')}: {address?.sub_city || 'N/A'}
+            {t('stakeholder.stakeholder-branch-manager.department')}: {branchManager.department}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.address.street')}: {address?.street || 'N/A'}
+            {t('stakeholder.stakeholder-branch-manager.branch')}: {getBranchName(branchManager.stakeholder_branch_id)}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {t('stakeholder.stakeholder-branch-manager.phone')}: {branchManager.phone}
           </Typography>
         </Box>
       </CardContent>
+
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={address?.id || ''} type={uploadableResourceFileTypes.resource} />
         <ModelAction
-          model="ProfessionalAddress"
-          model_id={address?.id || ''}
+          model="StakeholderBranchManager"
+          model_id={branchManager?.id || ''}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
@@ -66,15 +81,15 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'professionaladdress'
+            subject: 'stakeholderbranchmanager'
           }}
           editPermissionRule={{
             action: 'edit',
-            subject: 'professionaladdress'
+            subject: 'stakeholderbranchmanager'
           }}
-          onEdit={() => onEdit(address)}
-          onDelete={() => onDelete(address?.id || '')}
-          item={address}
+          onEdit={() => onEdit(branchManager)}
+          onDelete={() => onDelete(branchManager?.id || '')}
+          item={branchManager}
           options={[]}
         />
       </CardActions>
@@ -82,4 +97,4 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
   );
 };
 
-export default AddressCard;
+export default BranchManagerCard;

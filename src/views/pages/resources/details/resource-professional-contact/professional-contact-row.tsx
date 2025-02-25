@@ -91,4 +91,4 @@ export const contactColumns = (
       </Fragment>
     )
   }
-]; 
+];
