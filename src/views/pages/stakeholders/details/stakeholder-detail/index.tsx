@@ -162,7 +162,7 @@ const StakeholderDetailComponent: React.FC<StakeholderDetailComponentProps> = ({
                     subject: 'stakeholder'
                   }}
                   editPermissionRule={{
-                    action: 'edit',
+                    action: 'update',
                     subject: 'stakeholder'
                   }}
                   options={[]}

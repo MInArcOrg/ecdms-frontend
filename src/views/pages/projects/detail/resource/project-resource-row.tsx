@@ -72,9 +72,9 @@ export const projectResourceColumns = (
             model="ProjectResource"
             model_id={row.id || ''}
             refetchModel={refetch}
-            resubmit={() => {}}
+            resubmit={() => { }}
             title=""
-            postAction={() => {}}
+            postAction={() => { }}
           />
           <RowOptions
             deletePermissionRule={{
@@ -82,7 +82,7 @@ export const projectResourceColumns = (
               subject: 'projectresource'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'projectresource'
             }}
             onDelete={() => onDelete(row.id || '')}

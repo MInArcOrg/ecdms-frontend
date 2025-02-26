@@ -80,7 +80,7 @@ const PortCard: React.FC<PortCardProps> = ({ port, refetch, onEdit, onDelete, on
             subject: 'port'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'port'
           }}
           options={[]}
