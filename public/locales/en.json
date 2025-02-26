@@ -58,7 +58,10 @@
       "create-stakeholder-services": "Create Construction Related Service",
       "pedestrian-facilities": "Pedestrian Facilities",
       "create-pedestrian-facilities": "Create Pedestrian Facility",
-      "edit-pedestrian-facilities": "Edit Pedestrian Facility"
+      "edit-pedestrian-facilities": "Edit Pedestrian Facility",
+      "road-length-types": "Road Length Types",
+      "create-road-length-types": "Create Road Length Type",
+      "edit-road-length-types": "Edit Road Length Type"
     },
     "form": {
       "title": "Title",
