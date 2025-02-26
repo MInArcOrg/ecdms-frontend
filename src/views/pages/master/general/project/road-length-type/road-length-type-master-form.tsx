@@ -29,7 +29,7 @@ const RoadLengthTypeMasterForm: React.FC<RoadLengthTypeMasterFormProps> = ({ for
       <CustomSelectBox
         size="small"
         name="project_type_id"
-        label={transl('resource.form.project-type')}
+        label={transl('master-data.form.project-type')}
         options={
           projectTypes?.payload?.map((projectType) => ({
             value: projectType.id,
