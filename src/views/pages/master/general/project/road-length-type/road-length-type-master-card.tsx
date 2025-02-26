@@ -1,20 +1,20 @@
-// components/PedestrianFacilityList.tsx
+// components/RoadLengthTypeList.tsx
 import { Box, CardActions, CardContent, Grid, Typography } from '@mui/material';
 import { Fragment } from 'react';
-import { PedestrianFacility } from 'src/types/general/general-master';
+import { RoadLengthType } from 'src/types/general/general-master';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-const PedestrianFacilityMasterCard = ({
+const RoadLengthTypeMasterCard = ({
   generalMaster,
   onEdit,
   onDelete,
   refetch
 }: {
   type: string;
-  generalMaster: PedestrianFacility;
-  onEdit: (category: PedestrianFacility) => void;
+  generalMaster: RoadLengthType;
+  onEdit: (category: RoadLengthType) => void;
   onDelete: (id: string) => void;
   t: any;
   refetch: () => void;
@@ -38,9 +38,9 @@ const PedestrianFacilityMasterCard = ({
           <Grid item>
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id} type="PEDESTRIAN_FACILITY" /> &nbsp;
+                <FileDrawer id={generalMaster.id} type="ROAD_LENGTH_TYPE" /> &nbsp;
                 <ModelActionComponent
-                  model={'pedestrianfacility'}
+                  model={'roadlengthtype'}
                   model_id={generalMaster.id}
                   refetchModel={refetch}
                   resubmit={function (): void {
@@ -58,11 +58,11 @@ const PedestrianFacilityMasterCard = ({
                   options={[]}
                   deletePermissionRule={{
                     action: 'delete',
-                    subject: 'pedestrianfacility'
+                    subject: 'roadlengthtype'
                   }}
                   editPermissionRule={{
                     action: 'update',
-                    subject: 'pedestrianfacility'
+                    subject: 'roadlengthtype'
                   }}
                 />
               </Fragment>
@@ -73,4 +73,4 @@ const PedestrianFacilityMasterCard = ({
     </Fragment>
   );
 };
-export default PedestrianFacilityMasterCard;
+export default RoadLengthTypeMasterCard;

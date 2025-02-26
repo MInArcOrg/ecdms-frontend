@@ -2,26 +2,22 @@ import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
 import { useTranslation } from 'react-i18next';
 import masterTypeApiService from 'src/services/master-data/master-type-service';
-import { PedestrianFacility } from 'src/types/general/general-master';
+import { RoadLengthType } from 'src/types/general/general-master';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 // Extend GeneralMaster to include referenceFile for formik values
 
-interface PedestrianFacilityMasterFormProps {
-  formik: FormikProps<PedestrianFacility>; // Use ExtendedGeneralMaster in FormikProps
+interface RoadLengthTypeMasterFormProps {
+  formik: FormikProps<RoadLengthType>; // Use ExtendedGeneralMaster in FormikProps
 
-  defaultLocaleData?: PedestrianFacility;
+  defaultLocaleData?: RoadLengthType;
   onFileChange: (file: File | null) => void;
   file: File | null;
 }
 
-const PedestrianFacilityMasterForm: React.FC<PedestrianFacilityMasterFormProps> = ({
-  formik,
-  file,
-  onFileChange,
-}) => {
+const RoadLengthTypeMasterForm: React.FC<RoadLengthTypeMasterFormProps> = ({ formik, file, onFileChange }) => {
   const { data: projectTypes } = useQuery({
     queryKey: ['masterCategory', 'project'],
     queryFn: () => masterTypeApiService.getAll('project', {})
@@ -33,7 +29,7 @@ const PedestrianFacilityMasterForm: React.FC<PedestrianFacilityMasterFormProps> 
       <CustomSelectBox
         size="small"
         name="project_type_id"
-        label={transl('resource.form.project-type')}
+        label={transl('master-data.form.project-type')}
         options={
           projectTypes?.payload?.map((projectType) => ({
             value: projectType.id,
@@ -65,4 +61,4 @@ const PedestrianFacilityMasterForm: React.FC<PedestrianFacilityMasterFormProps> 
   );
 };
 
-export default PedestrianFacilityMasterForm;
+export default RoadLengthTypeMasterForm;

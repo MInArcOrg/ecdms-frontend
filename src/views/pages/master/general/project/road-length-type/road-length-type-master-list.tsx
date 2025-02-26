@@ -10,13 +10,13 @@ import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
 import RoadLengthTypeMasterCard from './road-length-type-master-card';
 import RoadLengthTypeMasterDrawer from './road-length-type-master-drawer';
-import RoadLengthTypeMasterService from 'src/services/general/project/pedestrian-facility-master-service';
+import roadLengthTypeMasterService from 'src/services/general/project/road-length-type-master-service';
 
 const RoadLengthTypeMasterList: React.FC = () => {
   const [selectedRow, setSelectedRow] = useState<RoadLengthType | null>(null);
   const { t } = useTranslation();
   const fetchRoadLengthTypeMaster = (params: GetRequestParam): Promise<IApiResponse<RoadLengthType[]>> => {
-    return RoadLengthTypeMasterService.getAll(params);
+    return roadLengthTypeMasterService.getAll(params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
 
@@ -31,7 +31,7 @@ const RoadLengthTypeMasterList: React.FC = () => {
     fetchFunction: fetchRoadLengthTypeMaster
   });
   const handleDelete = async (id: string) => {
-    await RoadLengthTypeMasterService.delete(id);
+    await roadLengthTypeMasterService.delete(id);
     refetch();
   };
 
@@ -54,7 +54,7 @@ const RoadLengthTypeMasterList: React.FC = () => {
           <ItemsListing
             pagination={pagination}
             type={ITEMS_LISTING_TYPE.list.value}
-            title={t(`master-data.general-master.road-length-type`)}
+            title={t(`master-data.general-master.road-length-types`)}
             ItemViewComponent={({ data }) => (
               <RoadLengthTypeMasterCard
                 type={'road-length-type'}
@@ -72,7 +72,7 @@ const RoadLengthTypeMasterList: React.FC = () => {
               onlyIcon: true,
               permission: {
                 action: 'create',
-                subject: `${module}type`
+                subject: `roadlengthtype`
               }
             }}
             fetchDataFunction={refetch}

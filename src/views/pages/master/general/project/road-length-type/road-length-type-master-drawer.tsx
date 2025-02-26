@@ -1,19 +1,19 @@
 import { FormikProps } from 'formik';
 import { useState } from 'react';
-import pedestrianFacilityMasterService from 'src/services/general/project/pedestrian-facility-master-service';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import PedestrianFacilityMasterForm from './road-length-type-master-form';
-import { PedestrianFacility } from 'src/types/general/general-master';
+import RoadLengthTypeMasterForm from './road-length-type-master-form';
+import { RoadLengthType } from 'src/types/general/general-master';
+import roadLengthTypeMasterService from 'src/services/general/project/road-length-type-master-service';
 
-interface PedestrianFacilityMasterDrawerType {
+interface RoadLengthTypeMasterDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  masterData: PedestrianFacility;
+  masterData: RoadLengthType;
 }
 
 const validationSchema = yup.object().shape({
@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
   description: yup.string().required('Description is required')
 });
 
-const PedestrianFacilityMasterDrawer = (props: PedestrianFacilityMasterDrawerType) => {
+const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,15 +29,15 @@ const PedestrianFacilityMasterDrawer = (props: PedestrianFacilityMasterDrawerTyp
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createPedestrianFacilityMaster = async (body: IApiPayload<PedestrianFacility>) => {
-    return await pedestrianFacilityMasterService.create(body);
+  const createRoadLengthTypeMaster = async (body: IApiPayload<RoadLengthType>) => {
+    return await roadLengthTypeMasterService.create(body);
   };
 
-  const editPedestrianFacilityMaster = async (body: IApiPayload<PedestrianFacility>) => {
-    return await pedestrianFacilityMasterService.update(masterData?.id || '', body);
+  const editRoadLengthTypeMaster = async (body: IApiPayload<RoadLengthType>) => {
+    return await roadLengthTypeMasterService.update(masterData?.id || '', body);
   };
 
-  const getPayload = (values: PedestrianFacility) => {
+  const getPayload = (values: RoadLengthType) => {
     const payload = {
       data: {
         ...values,
@@ -52,7 +52,7 @@ const PedestrianFacilityMasterDrawer = (props: PedestrianFacilityMasterDrawerTyp
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<PedestrianFacility>, payload: IApiPayload<PedestrianFacility>) => {
+  const onActionSuccess = async (response: IApiResponse<RoadLengthType>, payload: IApiPayload<RoadLengthType>) => {
     if (payload.files.length > 0) {
       uploadFile(payload.files[0], `PEDESTRIAN_FACILITY`, response.payload.id, '', '');
     }
@@ -67,24 +67,24 @@ const PedestrianFacilityMasterDrawer = (props: PedestrianFacilityMasterDrawerTyp
       open={open}
     >
       {() => (
-        <FormPageWrapper<PedestrianFacility>
+        <FormPageWrapper<RoadLengthType>
           edit={isEdit}
           title="master-data.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editPedestrianFacilityMaster : createPedestrianFacilityMaster}
+          createActionFunc={isEdit ? editRoadLengthTypeMaster : createRoadLengthTypeMaster}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<PedestrianFacility>) => {
+          {(formik: FormikProps<RoadLengthType>) => {
             return (
               <>
-                <PedestrianFacilityMasterForm
+                <RoadLengthTypeMasterForm
                   file={uploadableFile}
                   onFileChange={onFileChange}
                   formik={formik}
-                  defaultLocaleData={{} as PedestrianFacility}
+                  defaultLocaleData={{} as RoadLengthType}
                 />
               </>
             );
@@ -95,4 +95,4 @@ const PedestrianFacilityMasterDrawer = (props: PedestrianFacilityMasterDrawerTyp
   );
 };
 
-export default PedestrianFacilityMasterDrawer;
+export default RoadLengthTypeMasterDrawer;

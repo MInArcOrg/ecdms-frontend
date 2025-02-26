@@ -70,7 +70,7 @@ const PedestrianFacilityMasterList: React.FC = () => {
               onlyIcon: true,
               permission: {
                 action: 'create',
-                subject: `${module}type`
+                subject: `pedestrianfacility`
               }
             }}
             fetchDataFunction={refetch}
