@@ -74,9 +74,9 @@ const ProjectReportCard = ({
             model="ProjectReport"
             model_id={projectReport.id}
             refetchModel={refetch}
-            resubmit={() => {}}
+            resubmit={() => { }}
             title=""
-            postAction={() => {}}
+            postAction={() => { }}
           />
           <RowOptions
             onEdit={onEdit}
@@ -87,7 +87,7 @@ const ProjectReportCard = ({
               subject: 'projectreport'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'projectreport'
             }}
             options={[]}

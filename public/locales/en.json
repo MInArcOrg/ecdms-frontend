@@ -55,11 +55,18 @@
       "edit-project-progress-statuses": "Edit Project Progress Status",
       "stakeholder-services": "Construction Related Service",
       "edit-stakeholder-services": "Edit Construction Related Service",
-      "create-stakeholder-services": "Create Construction Related Service"
+      "create-stakeholder-services": "Create Construction Related Service",
+      "pedestrian-facilities": "Pedestrian Facilities",
+      "create-pedestrian-facilities": "Create Pedestrian Facility",
+      "edit-pedestrian-facilities": "Edit Pedestrian Facility",
+      "road-length-types": "Road Length Types",
+      "create-road-length-types": "Create Road Length Type",
+      "edit-road-length-types": "Edit Road Length Type"
     },
     "form": {
       "title": "Title",
       "description": "Description",
+      "project-type": "Project Type",
       "study-program": "Study Program",
       "study-level": "Study Level",
       "stakeholder-type-specific-models": "Stakeholder type Specific models",

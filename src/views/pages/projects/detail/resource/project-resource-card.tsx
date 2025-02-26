@@ -76,7 +76,7 @@ const ProjectResourceCard: React.FC<ProjectResourceCardProps> = ({ projectResour
                   subject: 'projectresource'
                 }}
                 editPermissionRule={{
-                  action: 'edit',
+                  action: 'update',
                   subject: 'projectresource'
                 }}
                 options={[]}
