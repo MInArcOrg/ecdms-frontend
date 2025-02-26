@@ -54,7 +54,7 @@ const RoadLengthTypeMasterList: React.FC = () => {
           <ItemsListing
             pagination={pagination}
             type={ITEMS_LISTING_TYPE.list.value}
-            title={t(`master-data.general-master.road-length-type`)}
+            title={t(`master-data.general-master.road-length-types`)}
             ItemViewComponent={({ data }) => (
               <RoadLengthTypeMasterCard
                 type={'road-length-type'}
