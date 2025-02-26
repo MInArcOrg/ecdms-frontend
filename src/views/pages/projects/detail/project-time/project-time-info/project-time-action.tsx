@@ -39,7 +39,7 @@ const ProjectTimeAction = ({
               subject: 'projecttime'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'projecttime'
             }}
             onEdit={onEdit}

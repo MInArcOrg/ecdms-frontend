@@ -70,7 +70,7 @@ const ManagerCard: React.FC<ManagerCardProps> = ({ manager, refetch, onEdit, onD
             subject: 'stakeholdermanager'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholdermanager'
           }}
           onEdit={() => onEdit(manager)}

@@ -70,7 +70,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience, refetch, on
             subject: 'professionalworkexperience'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'professionalworkexperience'
           }}
           onEdit={() => onEdit(experience)}

@@ -74,7 +74,7 @@ const BranchCard: React.FC<BranchCardProps> = ({ branch, refetch, onEdit, onDele
             subject: 'stakeholderbranch'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholderbranch'
           }}
           onEdit={() => onEdit(branch)}

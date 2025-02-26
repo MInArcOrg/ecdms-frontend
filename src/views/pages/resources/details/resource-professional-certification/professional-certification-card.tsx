@@ -70,7 +70,7 @@ const CertificationCard: React.FC<CertificationCardProps> = ({ certification, re
             subject: 'professionalcertification'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'professionalcertification'
           }}
           onEdit={() => onEdit(certification)}
