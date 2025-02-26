@@ -70,7 +70,7 @@ const MembershipCard: React.FC<MembershipCardProps> = ({ membership, refetch, on
             subject: 'ProfessionalMembership'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'ProfessionalMembership'
           }}
           onEdit={() => onEdit(membership)}

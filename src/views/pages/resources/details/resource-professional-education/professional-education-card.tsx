@@ -80,7 +80,7 @@ const EducationCard: React.FC<EducationCardProps> = ({ education, refetch, onEdi
             subject: 'professionaleducation'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'professionaleducation'
           }}
           onEdit={() => onEdit(education)}

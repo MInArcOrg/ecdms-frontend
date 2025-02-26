@@ -87,7 +87,7 @@ const BranchContactPersonCard: React.FC<BranchContactPersonCardProps> = ({
             subject: 'stakeholderbranchcontactperson'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholderbranchcontactperson'
           }}
           onEdit={() => onEdit(branchContactPerson)}

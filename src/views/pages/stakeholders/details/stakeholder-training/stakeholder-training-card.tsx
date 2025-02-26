@@ -82,7 +82,7 @@ const StakeholderTrainingCard = ({
               subject: 'training'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'training'
             }}
             item={stakeholderTraining}

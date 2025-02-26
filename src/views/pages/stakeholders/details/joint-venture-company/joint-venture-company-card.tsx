@@ -67,7 +67,7 @@ const JointVentureCompanyCard: React.FC<JointVentureCompanyCardProps> = ({ joint
             subject: 'jointventurecompany'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'jointventurecompany'
           }}
           onEdit={() => onEdit(jointVentureCompany)}

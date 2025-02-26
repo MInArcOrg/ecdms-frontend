@@ -55,11 +55,15 @@
       "edit-project-progress-statuses": "Edit Project Progress Status",
       "stakeholder-services": "Construction Related Service",
       "edit-stakeholder-services": "Edit Construction Related Service",
-      "create-stakeholder-services": "Create Construction Related Service"
+      "create-stakeholder-services": "Create Construction Related Service",
+      "pedestrian-facilities": "Pedestrian Facilities",
+      "create-pedestrian-facilities": "Create Pedestrian Facility",
+      "edit-pedestrian-facilities": "Edit Pedestrian Facility"
     },
     "form": {
       "title": "Title",
       "description": "Description",
+      "project-type": "Project Type",
       "study-program": "Study Program",
       "study-level": "Study Level",
       "stakeholder-type-specific-models": "Stakeholder type Specific models",
@@ -1438,21 +1442,21 @@
       "email": "Email"
     },
     "stakeholder-branch-contact-person": {
-    "title": "Branch Contact People",
-    "create": "Create Branch Contact Person",
-    "edit": "Edit Branch Contact Person",
-    "details": "Branch Contact Person Details",
-    "name": "Name",
-    "firstName": "First Name",
-    "middleName": "Middle Name",
-    "lastName": "Last Name",
-    "department": "Department",
-    "position": "Position",
-    "gender": "Gender",
-    "phone": "Phone",
-    "email": "Email",
-    "branch": "Branch"
-}
+      "title": "Branch Contact People",
+      "create": "Create Branch Contact Person",
+      "edit": "Edit Branch Contact Person",
+      "details": "Branch Contact Person Details",
+      "name": "Name",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "department": "Department",
+      "position": "Position",
+      "gender": "Gender",
+      "phone": "Phone",
+      "email": "Email",
+      "branch": "Branch"
+    }
   },
   "address": {
     "title": "Address",

@@ -97,7 +97,7 @@ const TelecomInfrastructureCard: React.FC<TelecomInfrastructureCardProps> = ({
             subject: 'telecom'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'telecom'
           }}
           options={[]}
