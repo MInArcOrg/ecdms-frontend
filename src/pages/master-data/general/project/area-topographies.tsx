@@ -1,17 +1,17 @@
 import { Fragment } from 'react';
 import GeneralMasterLayout from '../GeneralMasterLayout';
-import EndwallTypeInletMasterList from 'src/views/pages/master/general/project/endwall-type-inlet-master/endwall-type-inlet-master-list';
+import AreaTopographyMasterList from 'src/views/pages/master/general/project/area-topography-master/area-topography-master-list';
 
-function EndWallTypes() {
+function GeneralProjectMasterData() {
     return (
         <div>
             <GeneralMasterLayout>
                 <Fragment>
-                    <EndwallTypeInletMasterList />
+                    <AreaTopographyMasterList />
                 </Fragment>
             </GeneralMasterLayout>
         </div>
     );
 }
 
-export default EndWallTypes;
+export default GeneralProjectMasterData;

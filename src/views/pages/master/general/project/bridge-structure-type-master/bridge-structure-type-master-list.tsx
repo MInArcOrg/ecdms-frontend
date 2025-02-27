@@ -1,22 +1,22 @@
-// components/RoadLengthTypeMasterList.tsx
+// components/GuardRailTypeMasterList.tsx
 import { Card, CardContent } from '@mui/material';
 import React, { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { RoadLengthType } from 'src/types/general/general-master';
+import { GuardRailType } from 'src/types/general/general-master';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
-import RoadLengthTypeMasterCard from './road-length-type-master-card';
-import RoadLengthTypeMasterDrawer from './road-length-type-master-drawer';
-import roadLengthTypeMasterService from 'src/services/general/project/road-length-type-master-service';
+import GuardRailTypeMasterCard from './bridge-structure-type-master-card';
+import GuardRailTypeMasterDrawer from './bridge-structure-type-master-drawer';
+import guardRailTypeMasterService from 'src/services/general/project/guard-rail-type-master-service';
 
-const RoadLengthTypeMasterList: React.FC = () => {
-  const [selectedRow, setSelectedRow] = useState<RoadLengthType | null>(null);
+const GuardRailTypeMasterList: React.FC = () => {
+  const [selectedRow, setSelectedRow] = useState<GuardRailType | null>(null);
   const { t } = useTranslation();
-  const fetchRoadLengthTypeMaster = (params: GetRequestParam): Promise<IApiResponse<RoadLengthType[]>> => {
-    return roadLengthTypeMasterService.getAll(params);
+  const fetchGuardRailTypeMaster = (params: GetRequestParam): Promise<IApiResponse<GuardRailType[]>> => {
+    return guardRailTypeMasterService.getAll(params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
 
@@ -26,38 +26,38 @@ const RoadLengthTypeMasterList: React.FC = () => {
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<RoadLengthType[]>({
-    queryKey: ['general-master', 'road-length-type'],
-    fetchFunction: fetchRoadLengthTypeMaster
+  } = usePaginatedFetch<GuardRailType[]>({
+    queryKey: ['general-master', 'guard-rail-type'],
+    fetchFunction: fetchGuardRailTypeMaster
   });
   const handleDelete = async (id: string) => {
-    await roadLengthTypeMasterService.delete(id);
+    await guardRailTypeMasterService.delete(id);
     refetch();
   };
 
   const toggleDrawer = () => {
-    setSelectedRow({} as RoadLengthType);
+    setSelectedRow({} as GuardRailType);
     setShowDrawer(!showDrawer);
   };
 
-  const handleEdit = (generalMaster: RoadLengthType) => {
+  const handleEdit = (generalMaster: GuardRailType) => {
     toggleDrawer();
     setSelectedRow(generalMaster);
   };
   return (
     <Fragment>
       {showDrawer && (
-        <RoadLengthTypeMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as RoadLengthType} refetch={refetch} />
+        <GuardRailTypeMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as GuardRailType} refetch={refetch} />
       )}
       <Card>
         <CardContent>
           <ItemsListing
             pagination={pagination}
             type={ITEMS_LISTING_TYPE.list.value}
-            title={t(`master-data.general-master.road-length-types`)}
+            title={t(`master-data.general-master.guard-rail-types`)}
             ItemViewComponent={({ data }) => (
-              <RoadLengthTypeMasterCard
-                type={'road-length-type'}
+              <GuardRailTypeMasterCard
+                type={'guard-rail-type'}
                 generalMaster={data}
                 onDelete={handleDelete}
                 onEdit={handleEdit}
@@ -72,7 +72,7 @@ const RoadLengthTypeMasterList: React.FC = () => {
               onlyIcon: true,
               permission: {
                 action: 'create',
-                subject: `roadlengthtype`
+                subject: `bridgestructuretype`
               }
             }}
             fetchDataFunction={refetch}
@@ -85,4 +85,4 @@ const RoadLengthTypeMasterList: React.FC = () => {
   );
 };
 
-export default RoadLengthTypeMasterList;
+export default GuardRailTypeMasterList;

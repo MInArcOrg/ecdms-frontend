@@ -1,19 +1,19 @@
 import { FormikProps } from 'formik';
 import { useState } from 'react';
+import areaTopographyMasterService from 'src/services/general/project/area-topography-master-service';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import EndwallTypeInletMasterForm from './endwall-type-inlet-master-form';
-import { EndwallTypeInlet } from 'src/types/general/general-master';
-import endwallTypeInletMasterService from 'src/services/general/project/endwall-type-inlet-master-service';
+import AreaTopographyMasterForm from './area-topography-master-form';
+import { AreaTopography } from 'src/types/general/general-master';
 
-interface EndwallTypeInletMasterDrawerType {
+interface AreaTopographyMasterDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  masterData: EndwallTypeInlet;
+  masterData: AreaTopography;
 }
 
 const validationSchema = yup.object().shape({
@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
   description: yup.string().required('Description is required')
 });
 
-const EndwallTypeInletMasterDrawer = (props: EndwallTypeInletMasterDrawerType) => {
+const AreaTopographyMasterDrawer = (props: AreaTopographyMasterDrawerType) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,15 +29,15 @@ const EndwallTypeInletMasterDrawer = (props: EndwallTypeInletMasterDrawerType) =
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createEndwallTypeInletMaster = async (body: IApiPayload<EndwallTypeInlet>) => {
-    return await endwallTypeInletMasterService.create(body);
+  const createAreaTopographyMaster = async (body: IApiPayload<AreaTopography>) => {
+    return await areaTopographyMasterService.create(body);
   };
 
-  const editEndwallTypeInletMaster = async (body: IApiPayload<EndwallTypeInlet>) => {
-    return await endwallTypeInletMasterService.update(masterData?.id || '', body);
+  const editAreaTopographyMaster = async (body: IApiPayload<AreaTopography>) => {
+    return await areaTopographyMasterService.update(masterData?.id || '', body);
   };
 
-  const getPayload = (values: EndwallTypeInlet) => {
+  const getPayload = (values: AreaTopography) => {
     const payload = {
       data: {
         ...values,
@@ -52,9 +52,9 @@ const EndwallTypeInletMasterDrawer = (props: EndwallTypeInletMasterDrawerType) =
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<EndwallTypeInlet>, payload: IApiPayload<EndwallTypeInlet>) => {
+  const onActionSuccess = async (response: IApiResponse<AreaTopography>, payload: IApiPayload<AreaTopography>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `ENDWALL_TYPE_INLET`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `AREA_TOPOGRAPHY`, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -62,29 +62,29 @@ const EndwallTypeInletMasterDrawer = (props: EndwallTypeInletMasterDrawerType) =
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-endwall-type-inlet' : 'create-endwall-type-inlet'}`}
+      title={`master-data.general-master.${isEdit ? 'edit-area-topography' : 'create-area-topography'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
-        <FormPageWrapper<EndwallTypeInlet>
+        <FormPageWrapper<AreaTopography>
           edit={isEdit}
-          title="master-data.general-master.endwall-type-inlets"
+          title="master-data.general-master.area-topographies"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editEndwallTypeInletMaster : createEndwallTypeInletMaster}
+          createActionFunc={isEdit ? editAreaTopographyMaster : createAreaTopographyMaster}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<EndwallTypeInlet>) => {
+          {(formik: FormikProps<AreaTopography>) => {
             return (
               <>
-                <EndwallTypeInletMasterForm
+                <AreaTopographyMasterForm
                   file={uploadableFile}
                   onFileChange={onFileChange}
                   formik={formik}
-                  defaultLocaleData={{} as EndwallTypeInlet}
+                  defaultLocaleData={{} as AreaTopography}
                 />
               </>
             );
@@ -95,4 +95,4 @@ const EndwallTypeInletMasterDrawer = (props: EndwallTypeInletMasterDrawerType) =
   );
 };
 
-export default EndwallTypeInletMasterDrawer;
+export default AreaTopographyMasterDrawer;

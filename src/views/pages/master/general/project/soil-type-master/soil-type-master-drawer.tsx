@@ -5,15 +5,15 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import RoadLengthTypeMasterForm from './road-length-type-master-form';
-import { RoadLengthType } from 'src/types/general/general-master';
-import roadLengthTypeMasterService from 'src/services/general/project/road-length-type-master-service';
+import SoilTypeMasterForm from './soil-type-master-form';
+import { SoilType } from 'src/types/general/general-master';
+import soilTypeMasterService from 'src/services/general/project/soil-type-master-service';
 
-interface RoadLengthTypeMasterDrawerType {
+interface SoilTypeMasterDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  masterData: RoadLengthType;
+  masterData: SoilType;
 }
 
 const validationSchema = yup.object().shape({
@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
   description: yup.string().required('Description is required')
 });
 
-const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
+const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,15 +29,15 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createRoadLengthTypeMaster = async (body: IApiPayload<RoadLengthType>) => {
-    return await roadLengthTypeMasterService.create(body);
+  const createSoilTypeMaster = async (body: IApiPayload<SoilType>) => {
+    return await soilTypeMasterService.create(body);
   };
 
-  const editRoadLengthTypeMaster = async (body: IApiPayload<RoadLengthType>) => {
-    return await roadLengthTypeMasterService.update(masterData?.id || '', body);
+  const editSoilTypeMaster = async (body: IApiPayload<SoilType>) => {
+    return await soilTypeMasterService.update(masterData?.id || '', body);
   };
 
-  const getPayload = (values: RoadLengthType) => {
+  const getPayload = (values: SoilType) => {
     const payload = {
       data: {
         ...values,
@@ -52,9 +52,9 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<RoadLengthType>, payload: IApiPayload<RoadLengthType>) => {
+  const onActionSuccess = async (response: IApiResponse<SoilType>, payload: IApiPayload<SoilType>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `ROAD_LENGTH_TYPE`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `SOIL_TYPE_TYPE`, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -62,30 +62,25 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-road-length-type' : 'create-road-length-type'}`}
+      title={`master-data.general-master.${isEdit ? 'edit-soil-type' : 'create-soil-type'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
-        <FormPageWrapper<RoadLengthType>
+        <FormPageWrapper<SoilType>
           edit={isEdit}
-          title="master-data.general-master.road-length-types"
+          title="master-data.general-master.soil-types"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editRoadLengthTypeMaster : createRoadLengthTypeMaster}
+          createActionFunc={isEdit ? editSoilTypeMaster : createSoilTypeMaster}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<RoadLengthType>) => {
+          {(formik: FormikProps<SoilType>) => {
             return (
               <>
-                <RoadLengthTypeMasterForm
-                  file={uploadableFile}
-                  onFileChange={onFileChange}
-                  formik={formik}
-                  defaultLocaleData={{} as RoadLengthType}
-                />
+                <SoilTypeMasterForm file={uploadableFile} onFileChange={onFileChange} formik={formik} defaultLocaleData={{} as SoilType} />
               </>
             );
           }}
@@ -94,5 +89,4 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
     </CustomSideDrawer>
   );
 };
-
-export default RoadLengthTypeMasterDrawer;
+export default SoilTypeMasterDrawer;

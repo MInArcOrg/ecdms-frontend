@@ -1,13 +1,13 @@
 import { Fragment } from 'react';
-import RoadLengthTypeMasterList from 'src/views/pages/master/general/project/road-length-type-master/road-length-type-master-list';
 import GeneralMasterLayout from '../GeneralMasterLayout';
+import GuardRailTypeMasterList from 'src/views/pages/master/general/project/guard-rail-type-master/guard-rail-type-master-list';
 
 function RoadLengthTypes() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <RoadLengthTypeMasterList />
+          <GuardRailTypeMasterList />
         </Fragment>
       </GeneralMasterLayout>
     </div>

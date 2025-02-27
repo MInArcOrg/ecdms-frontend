@@ -1,22 +1,22 @@
-// components/RoadLengthTypeMasterList.tsx
+// components/SoilTypeMasterList.tsx
 import { Card, CardContent } from '@mui/material';
 import React, { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { RoadLengthType } from 'src/types/general/general-master';
+import { SoilType } from 'src/types/general/general-master';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
-import RoadLengthTypeMasterCard from './road-length-type-master-card';
-import RoadLengthTypeMasterDrawer from './road-length-type-master-drawer';
-import roadLengthTypeMasterService from 'src/services/general/project/road-length-type-master-service';
+import SoilTypeMasterCard from './soil-type-master-card';
+import SoilTypeMasterDrawer from './soil-type-master-drawer';
+import soilTypeMasterService from 'src/services/general/project/soil-type-master-service';
 
-const RoadLengthTypeMasterList: React.FC = () => {
-  const [selectedRow, setSelectedRow] = useState<RoadLengthType | null>(null);
+const SoilTypeMasterList: React.FC = () => {
+  const [selectedRow, setSelectedRow] = useState<SoilType | null>(null);
   const { t } = useTranslation();
-  const fetchRoadLengthTypeMaster = (params: GetRequestParam): Promise<IApiResponse<RoadLengthType[]>> => {
-    return roadLengthTypeMasterService.getAll(params);
+  const fetchSoilTypeMaster = (params: GetRequestParam): Promise<IApiResponse<SoilType[]>> => {
+    return soilTypeMasterService.getAll(params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
 
@@ -26,44 +26,37 @@ const RoadLengthTypeMasterList: React.FC = () => {
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<RoadLengthType[]>({
-    queryKey: ['general-master', 'road-length-type'],
-    fetchFunction: fetchRoadLengthTypeMaster
+  } = usePaginatedFetch<SoilType[]>({
+    queryKey: ['general-master', 'soil-type'],
+    fetchFunction: fetchSoilTypeMaster
   });
   const handleDelete = async (id: string) => {
-    await roadLengthTypeMasterService.delete(id);
+    await soilTypeMasterService.delete(id);
     refetch();
   };
 
   const toggleDrawer = () => {
-    setSelectedRow({} as RoadLengthType);
+    setSelectedRow({} as SoilType);
     setShowDrawer(!showDrawer);
   };
 
-  const handleEdit = (generalMaster: RoadLengthType) => {
+  const handleEdit = (generalMaster: SoilType) => {
     toggleDrawer();
     setSelectedRow(generalMaster);
   };
   return (
     <Fragment>
       {showDrawer && (
-        <RoadLengthTypeMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as RoadLengthType} refetch={refetch} />
+        <SoilTypeMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as SoilType} refetch={refetch} />
       )}
       <Card>
         <CardContent>
           <ItemsListing
             pagination={pagination}
             type={ITEMS_LISTING_TYPE.list.value}
-            title={t(`master-data.general-master.road-length-types`)}
+            title={t(`master-data.general-master.soil-types`)}
             ItemViewComponent={({ data }) => (
-              <RoadLengthTypeMasterCard
-                type={'road-length-type'}
-                generalMaster={data}
-                onDelete={handleDelete}
-                onEdit={handleEdit}
-                t={t}
-                refetch={refetch}
-              />
+              <SoilTypeMasterCard generalMaster={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
             )}
             isLoading={isLoading}
             createActionConfig={{
@@ -72,7 +65,7 @@ const RoadLengthTypeMasterList: React.FC = () => {
               onlyIcon: true,
               permission: {
                 action: 'create',
-                subject: `roadlengthtype`
+                subject: `soiltype`
               }
             }}
             fetchDataFunction={refetch}
@@ -85,4 +78,4 @@ const RoadLengthTypeMasterList: React.FC = () => {
   );
 };
 
-export default RoadLengthTypeMasterList;
+export default SoilTypeMasterList;

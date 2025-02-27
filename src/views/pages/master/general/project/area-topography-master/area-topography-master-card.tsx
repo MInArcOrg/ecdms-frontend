@@ -1,20 +1,19 @@
-// components/EndwallTypeInletList.tsx
+// components/AreaTopographyList.tsx
 import { Box, CardActions, CardContent, Grid, Typography } from '@mui/material';
 import { Fragment } from 'react';
-import { EndwallTypeInlet } from 'src/types/general/general-master';
+import { AreaTopography } from 'src/types/general/general-master';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-const EndwallTypeInletMasterCard = ({
+const AreaTopographyMasterCard = ({
   generalMaster,
   onEdit,
   onDelete,
   refetch
 }: {
-  type: string;
-  generalMaster: EndwallTypeInlet;
-  onEdit: (category: EndwallTypeInlet) => void;
+  generalMaster: AreaTopography;
+  onEdit: (category: AreaTopography) => void;
   onDelete: (id: string) => void;
   t: any;
   refetch: () => void;
@@ -38,9 +37,9 @@ const EndwallTypeInletMasterCard = ({
           <Grid item>
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id} type="ENDWALL_TYPE_INLET" /> &nbsp;
+                <FileDrawer id={generalMaster.id} type="AREA_TOPOGRAPHY" /> &nbsp;
                 <ModelActionComponent
-                  model={'endwalltypeinlet'}
+                  model={'areatopography'}
                   model_id={generalMaster.id}
                   refetchModel={refetch}
                   resubmit={function (): void {
@@ -54,16 +53,16 @@ const EndwallTypeInletMasterCard = ({
                 <RowOptions
                   onEdit={onEdit}
                   onDelete={() => onDelete(generalMaster.id)}
-                  item={generalMaster}
-                  options={[]}
-                  deletePermissionRule={{
-                    action: 'delete',
-                    subject: 'endwalltypeinlet'
-                  }}
                   editPermissionRule={{
                     action: 'update',
-                    subject: 'endwalltypeinlet'
+                    subject: 'areatopography'
                   }}
+                  deletePermissionRule={{
+                    action: 'delete',
+                    subject: 'areatopography'
+                  }}
+                  item={generalMaster}
+                  options={[]}
                 />
               </Fragment>
             </CardActions>
@@ -73,4 +72,4 @@ const EndwallTypeInletMasterCard = ({
     </Fragment>
   );
 };
-export default EndwallTypeInletMasterCard;
+export default AreaTopographyMasterCard;

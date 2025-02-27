@@ -1,20 +1,19 @@
-// components/EndwallTypeInletList.tsx
+// components/SoilTypeList.tsx
 import { Box, CardActions, CardContent, Grid, Typography } from '@mui/material';
 import { Fragment } from 'react';
-import { EndwallTypeInlet } from 'src/types/general/general-master';
+import { SoilType } from 'src/types/general/general-master';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-const EndwallTypeInletMasterCard = ({
+const SoilTypeMasterCard = ({
   generalMaster,
   onEdit,
   onDelete,
   refetch
 }: {
-  type: string;
-  generalMaster: EndwallTypeInlet;
-  onEdit: (category: EndwallTypeInlet) => void;
+  generalMaster: SoilType;
+  onEdit: (category: SoilType) => void;
   onDelete: (id: string) => void;
   t: any;
   refetch: () => void;
@@ -38,9 +37,9 @@ const EndwallTypeInletMasterCard = ({
           <Grid item>
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id} type="ENDWALL_TYPE_INLET" /> &nbsp;
+                <FileDrawer id={generalMaster.id} type="SOIL_TYPE" /> &nbsp;
                 <ModelActionComponent
-                  model={'endwalltypeinlet'}
+                  model={'soiltype'}
                   model_id={generalMaster.id}
                   refetchModel={refetch}
                   resubmit={function (): void {
@@ -58,11 +57,11 @@ const EndwallTypeInletMasterCard = ({
                   options={[]}
                   deletePermissionRule={{
                     action: 'delete',
-                    subject: 'endwalltypeinlet'
+                    subject: 'soiltype'
                   }}
                   editPermissionRule={{
                     action: 'update',
-                    subject: 'endwalltypeinlet'
+                    subject: 'soiltype'
                   }}
                 />
               </Fragment>
@@ -73,4 +72,4 @@ const EndwallTypeInletMasterCard = ({
     </Fragment>
   );
 };
-export default EndwallTypeInletMasterCard;
+export default SoilTypeMasterCard;

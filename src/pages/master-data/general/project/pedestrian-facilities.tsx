@@ -1,15 +1,15 @@
 import { Fragment } from 'react';
-import GeneralLayout from '../GeneralLayout';
+import GeneralMasterLayout from '../GeneralMasterLayout';
 import PedestrianFacilityMasterList from 'src/views/pages/master/general/project/pedestrian-facilities-master/pedestrian-facility-master-list';
 
 function GeneralProjectMasterData() {
   return (
     <div>
-      <GeneralLayout>
+      <GeneralMasterLayout>
         <Fragment>
           <PedestrianFacilityMasterList />
         </Fragment>
-      </GeneralLayout>
+      </GeneralMasterLayout>
     </div>
   );
 }

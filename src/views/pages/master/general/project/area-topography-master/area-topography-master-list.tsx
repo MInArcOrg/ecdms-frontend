@@ -1,22 +1,22 @@
-// components/RoadLengthTypeMasterList.tsx
+// components/AreaTopographyMasterList.tsx
 import { Card, CardContent } from '@mui/material';
 import React, { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { RoadLengthType } from 'src/types/general/general-master';
+import { AreaTopography } from 'src/types/general/general-master';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
-import RoadLengthTypeMasterCard from './road-length-type-master-card';
-import RoadLengthTypeMasterDrawer from './road-length-type-master-drawer';
-import roadLengthTypeMasterService from 'src/services/general/project/road-length-type-master-service';
+import AreaTopographyMasterCard from './area-topography-master-card';
+import AreaTopographyMasterDrawer from './area-topography-master-drawer';
+import areaTopographyMasterService from 'src/services/general/project/area-topography-master-service';
 
-const RoadLengthTypeMasterList: React.FC = () => {
-  const [selectedRow, setSelectedRow] = useState<RoadLengthType | null>(null);
+const AreaTopographyMasterList: React.FC = () => {
+  const [selectedRow, setSelectedRow] = useState<AreaTopography | null>(null);
   const { t } = useTranslation();
-  const fetchRoadLengthTypeMaster = (params: GetRequestParam): Promise<IApiResponse<RoadLengthType[]>> => {
-    return roadLengthTypeMasterService.getAll(params);
+  const fetchAreaTopographyMaster = (params: GetRequestParam): Promise<IApiResponse<AreaTopography[]>> => {
+    return areaTopographyMasterService.getAll(params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
 
@@ -26,44 +26,42 @@ const RoadLengthTypeMasterList: React.FC = () => {
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<RoadLengthType[]>({
-    queryKey: ['general-master', 'road-length-type'],
-    fetchFunction: fetchRoadLengthTypeMaster
+  } = usePaginatedFetch<AreaTopography[]>({
+    queryKey: ['general-master', 'area-topographies'],
+    fetchFunction: fetchAreaTopographyMaster
   });
   const handleDelete = async (id: string) => {
-    await roadLengthTypeMasterService.delete(id);
+    await areaTopographyMasterService.delete(id);
     refetch();
   };
 
   const toggleDrawer = () => {
-    setSelectedRow({} as RoadLengthType);
+    setSelectedRow({} as AreaTopography);
     setShowDrawer(!showDrawer);
   };
 
-  const handleEdit = (generalMaster: RoadLengthType) => {
+  const handleEdit = (generalMaster: AreaTopography) => {
     toggleDrawer();
     setSelectedRow(generalMaster);
   };
   return (
     <Fragment>
       {showDrawer && (
-        <RoadLengthTypeMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as RoadLengthType} refetch={refetch} />
+        <AreaTopographyMasterDrawer
+          open={showDrawer}
+          toggle={toggleDrawer}
+          masterData={selectedRow as AreaTopography}
+          refetch={refetch}
+        />
       )}
       <Card>
         <CardContent>
           <ItemsListing
             pagination={pagination}
             type={ITEMS_LISTING_TYPE.list.value}
-            title={t(`master-data.general-master.road-length-types`)}
+            title={t(`master-data.general-master.area-topographies`)}
             ItemViewComponent={({ data }) => (
-              <RoadLengthTypeMasterCard
-                type={'road-length-type'}
-                generalMaster={data}
-                onDelete={handleDelete}
-                onEdit={handleEdit}
-                t={t}
-                refetch={refetch}
-              />
+              <AreaTopographyMasterCard generalMaster={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
             )}
             isLoading={isLoading}
             createActionConfig={{
@@ -72,7 +70,7 @@ const RoadLengthTypeMasterList: React.FC = () => {
               onlyIcon: true,
               permission: {
                 action: 'create',
-                subject: `roadlengthtype`
+                subject: `areatopography`
               }
             }}
             fetchDataFunction={refetch}
@@ -85,4 +83,4 @@ const RoadLengthTypeMasterList: React.FC = () => {
   );
 };
 
-export default RoadLengthTypeMasterList;
+export default AreaTopographyMasterList;

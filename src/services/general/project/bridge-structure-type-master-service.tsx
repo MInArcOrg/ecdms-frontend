@@ -1,51 +1,51 @@
 import { AxiosResponse } from 'axios';
-import { EndwallTypeInlet } from 'src/types/general/general-master';
+import { BridgeStructureType } from 'src/types/general/general-master';
 import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
 import axiosServices from 'src/utils/axios';
 import { buildGetRequest } from 'src/utils/requests/get-request';
 import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
-const endwallTypeInletMasterService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<EndwallTypeInlet[]>> =>
-    buildGetRequest(`/masterdata/endwall-type-inlets`, params)
+const bridgeStructureMasterService = {
+  getAll: (params: GetRequestParam): Promise<IApiResponse<BridgeStructureType[]>> =>
+    buildGetRequest(`/masterdata/bridge-structure-types`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/masterdata/endwall-type-inlets/${idx}`, params)
+    buildGetRequest(`/masterdata/bridge-structure-types/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
   searchResource: (params: GetRequestParam) =>
-    buildGetRequest(`/masterdata/endwall-type-inlets-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as EndwallTypeInlet[])
+    buildGetRequest(`/masterdata/bridge-structure-types-search`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as BridgeStructureType[])
       .catch((error: any) => {
         throw error;
       }),
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
-      .delete(`/masterdata/endwall-type-inlets/${idx}`)
+      .delete(`/masterdata/bridge-structure-types/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
-  create: (body: IApiPayload<EndwallTypeInlet>): Promise<IApiResponse> =>
-    buildPostRequest(`/masterdata/endwall-type-inlets`, body, false)
+  create: (body: IApiPayload<BridgeStructureType>): Promise<IApiResponse> =>
+    buildPostRequest(`/masterdata/bridge-structure-types`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
-  update: (id: string, body: IApiPayload<EndwallTypeInlet>): Promise<IApiResponse> =>
-    buildPutRequest(`/masterdata/endwall-type-inlets/${id}`, body)
+  update: (id: string, body: IApiPayload<BridgeStructureType>): Promise<IApiResponse> =>
+    buildPutRequest(`/masterdata/bridge-structure-types/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       })
 };
 
-export default endwallTypeInletMasterService;
+export default bridgeStructureMasterService;

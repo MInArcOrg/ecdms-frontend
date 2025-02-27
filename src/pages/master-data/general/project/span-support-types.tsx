@@ -1,13 +1,13 @@
 import { Fragment } from 'react';
-import RoadLengthTypeMasterList from 'src/views/pages/master/general/project/road-length-type-master/road-length-type-master-list';
 import GeneralMasterLayout from '../GeneralMasterLayout';
+import SpanSupportTypeMasterList from 'src/views/pages/master/general/project/span-support-type-master/span-support-type-master-list';
 
 function RoadLengthTypes() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <RoadLengthTypeMasterList />
+          <SpanSupportTypeMasterList />
         </Fragment>
       </GeneralMasterLayout>
     </div>
