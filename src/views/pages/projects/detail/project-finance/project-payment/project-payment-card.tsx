@@ -58,7 +58,7 @@ const ProjectPaymentCard = ({
               subject: 'payment'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'payment'
             }}
           />

@@ -87,7 +87,7 @@ const ConstructionRelatedServiceCard: React.FC<ConstructionRelatedServiceCardPro
             subject: 'constructionRelatedService'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'constructionRelatedService'
           }}
         />
