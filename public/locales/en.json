@@ -73,7 +73,10 @@
       "edit-soil-type":"Edit Soil Type",
       "guard-rail-types":"Guard Rail Types",
       "create-guard-rail-type":"Create Guard Rail Type",
-      "edit-guard-rail-type":"Edit Guard Rail Type"
+      "edit-guard-rail-type":"Edit Guard Rail Type",
+      "bridge-structure-types": "Bridge Structure Types",
+      "create-bridge-structure-type": "Create Bridge Structure Type",
+      "edit-bridge-structure-type": "Edit Bridge Structure Type"
     },
     "form": {
       "title": "Title",

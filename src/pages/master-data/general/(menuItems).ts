@@ -81,6 +81,11 @@ const menuItems = (t: (item: string) => void) => [
         id: 7,
         title: t('master-data.general-master.guard-rail-types'),
         path: `${baseUrl}/project/guard-rail-types/`
+      },
+      {
+        id: 8,
+        title: t('master-data.general-master.bridge-structure-types'),
+        path: `${baseUrl}/project/bridge-structure-types/`
       }
     ]
   },
