@@ -5,15 +5,15 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import RoadLengthTypeMasterForm from './road-length-type-master-form';
-import { RoadLengthType } from 'src/types/general/general-master';
-import roadLengthTypeMasterService from 'src/services/general/project/road-length-type-master-service';
+import BridgeStructureTypeMasterForm from './bridge-structure-type-master-form';
+import { BridgeStructureType } from 'src/types/general/general-master';
+import bridgeStructureTypeMasterService from 'src/services/general/project/bridge-structure-type-master-service';
 
-interface RoadLengthTypeMasterDrawerType {
+interface BridgeStructureTypeMasterDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  masterData: RoadLengthType;
+  masterData: BridgeStructureType;
 }
 
 const validationSchema = yup.object().shape({
@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
   description: yup.string().required('Description is required')
 });
 
-const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
+const BridgeStructureTypeMasterDrawer = (props: BridgeStructureTypeMasterDrawerType) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,15 +29,15 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createRoadLengthTypeMaster = async (body: IApiPayload<RoadLengthType>) => {
-    return await roadLengthTypeMasterService.create(body);
+  const createBridgeStructureTypeMaster = async (body: IApiPayload<BridgeStructureType>) => {
+    return await bridgeStructureTypeMasterService.create(body);
   };
 
-  const editRoadLengthTypeMaster = async (body: IApiPayload<RoadLengthType>) => {
-    return await roadLengthTypeMasterService.update(masterData?.id || '', body);
+  const editBridgeStructureTypeMaster = async (body: IApiPayload<BridgeStructureType>) => {
+    return await bridgeStructureTypeMasterService.update(masterData?.id || '', body);
   };
 
-  const getPayload = (values: RoadLengthType) => {
+  const getPayload = (values: BridgeStructureType) => {
     const payload = {
       data: {
         ...values,
@@ -52,9 +52,9 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<RoadLengthType>, payload: IApiPayload<RoadLengthType>) => {
+  const onActionSuccess = async (response: IApiResponse<BridgeStructureType>, payload: IApiPayload<BridgeStructureType>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `PEDESTRIAN_FACILITY`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `BRIDGE_STRUCTURE_TYPE`, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -62,29 +62,29 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-pedestrian-facilities' : 'create-pedestrian-facilities'}`}
+      title={`master-data.general-master.${isEdit ? 'edit-bridge-structure-type' : 'create-bridge-structure-type'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
-        <FormPageWrapper<RoadLengthType>
+        <FormPageWrapper<BridgeStructureType>
           edit={isEdit}
-          title="master-data.title"
+          title="master-data.general-master.bridge-structure-types"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editRoadLengthTypeMaster : createRoadLengthTypeMaster}
+          createActionFunc={isEdit ? editBridgeStructureTypeMaster : createBridgeStructureTypeMaster}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<RoadLengthType>) => {
+          {(formik: FormikProps<BridgeStructureType>) => {
             return (
               <>
-                <RoadLengthTypeMasterForm
+                <BridgeStructureTypeMasterForm
                   file={uploadableFile}
                   onFileChange={onFileChange}
                   formik={formik}
-                  defaultLocaleData={{} as RoadLengthType}
+                  defaultLocaleData={{} as BridgeStructureType}
                 />
               </>
             );
@@ -95,4 +95,4 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
   );
 };
 
-export default RoadLengthTypeMasterDrawer;
+export default BridgeStructureTypeMasterDrawer;

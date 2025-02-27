@@ -62,14 +62,14 @@ const PedestrianFacilityMasterDrawer = (props: PedestrianFacilityMasterDrawerTyp
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-pedestrian-facilities' : 'create-pedestrian-facilities'}`}
+      title={`master-data.general-master.${isEdit ? 'edit-pedestrian-facility' : 'create-pedestrian-facility'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper<PedestrianFacility>
           edit={isEdit}
-          title="master-data.title"
+          title="master-data.general-master.pedestrian-facilities"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
