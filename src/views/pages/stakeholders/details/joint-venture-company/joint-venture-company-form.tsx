@@ -72,10 +72,22 @@ const JointVentureCompanyForm: React.FC<JointVentureCompanyFormProps> = ({ formi
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholder.joint-venture-company.companyName')} name="company_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox
+          fullWidth
+          label={t('stakeholder.joint-venture-company.companyName')}
+          name="company_name"
+          size="small"
+          sx={{ mb: 2 }}
+        />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholder.joint-venture-company.specialization')} name="specialization" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox
+          fullWidth
+          label={t('stakeholder.joint-venture-company.specialization')}
+          name="specialization"
+          size="small"
+          sx={{ mb: 2 }}
+        />
       </Grid>
       <Grid item xs={12}>
         <CustomTextBox
