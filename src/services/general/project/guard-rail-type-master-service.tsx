@@ -6,7 +6,7 @@ import { buildGetRequest } from 'src/utils/requests/get-request';
 import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
-const endwallTypeInletMasterService = {
+const guardRailTypeMasterService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<PedestrianFacility[]>> =>
     buildGetRequest(`/masterdata/guard-rail-types`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
@@ -48,4 +48,4 @@ const endwallTypeInletMasterService = {
       })
 };
 
-export default endwallTypeInletMasterService;
+export default guardRailTypeMasterService;
