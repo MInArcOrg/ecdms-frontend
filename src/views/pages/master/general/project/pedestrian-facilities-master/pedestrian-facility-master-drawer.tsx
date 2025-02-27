@@ -69,7 +69,7 @@ const PedestrianFacilityMasterDrawer = (props: PedestrianFacilityMasterDrawerTyp
       {() => (
         <FormPageWrapper<PedestrianFacility>
           edit={isEdit}
-          title="master-data.title"
+          title="master-data.general-master.pedestrian-facilities"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}

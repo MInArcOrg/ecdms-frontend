@@ -76,6 +76,11 @@ const menuItems = (t: (item: string) => void) => [
         id: 6,
         title: t('master-data.general-master.soil-types'),
         path: `${baseUrl}/project/soil-types/`
+      },
+      {
+        id: 7,
+        title: t('master-data.general-master.guard-rail-types'),
+        path: `${baseUrl}/project/guard-rail-types/`
       }
     ]
   },
