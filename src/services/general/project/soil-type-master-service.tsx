@@ -8,40 +8,40 @@ import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const endwallTypeInletMasterService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<PedestrianFacility[]>> =>
-    buildGetRequest(`/masterdata/endwall-type-inlets`, params)
+    buildGetRequest(`/masterdata/soil-types`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/masterdata/endwall-type-inlets/${idx}`, params)
+    buildGetRequest(`/masterdata/soil-types/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
   searchResource: (params: GetRequestParam) =>
-    buildGetRequest(`/masterdata/endwall-type-inlets-search`, params)
+    buildGetRequest(`/masterdata/soil-types-search`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as PedestrianFacility[])
       .catch((error: any) => {
         throw error;
       }),
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
-      .delete(`/masterdata/endwall-type-inlets/${idx}`)
+      .delete(`/masterdata/soil-types/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   create: (body: IApiPayload<PedestrianFacility>): Promise<IApiResponse> =>
-    buildPostRequest(`/masterdata/endwall-type-inlets`, body, false)
+    buildPostRequest(`/masterdata/soil-types`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
   update: (id: string, body: IApiPayload<PedestrianFacility>): Promise<IApiResponse> =>
-    buildPutRequest(`/masterdata/endwall-type-inlets/${id}`, body)
+    buildPutRequest(`/masterdata/soil-types/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;

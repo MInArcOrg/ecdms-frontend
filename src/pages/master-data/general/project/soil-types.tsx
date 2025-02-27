@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import RoadLengthTypeMasterList from 'src/views/pages/master/general/project/road-length-type-master/road-length-type-master-list';
+import SoilTypeMasterList from 'src/views/pages/master/general/project/soil-type-master/soil-type-master-list';
 import GeneralMasterLayout from '../GeneralMasterLayout';
 
 function RoadLengthTypes() {
@@ -7,7 +7,7 @@ function RoadLengthTypes() {
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <RoadLengthTypeMasterList />
+          <SoilTypeMasterList />
         </Fragment>
       </GeneralMasterLayout>
     </div>
