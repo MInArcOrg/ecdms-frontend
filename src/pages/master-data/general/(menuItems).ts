@@ -66,6 +66,11 @@ const menuItems = (t: (item: string) => void) => [
         id: 4,
         title: t('master-data.general-master.endwall-type-inlets'),
         path: `${baseUrl}/project/endwall-type-inlets/`
+      },
+      {
+        id: 5,
+        title: t('master-data.general-master.area-topographies'),
+        path: `${baseUrl}/project/area-topographies/`
       }
     ]
   },

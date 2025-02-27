@@ -1,15 +1,15 @@
 import { Fragment } from 'react';
 import RoadLengthTypeMasterList from 'src/views/pages/master/general/project/road-length-type-master/road-length-type-master-list';
-import GeneralLayout from '../GeneralLayout';
+import GeneralMasterLayout from '../GeneralMasterLayout';
 
 function RoadLengthTypes() {
     return (
         <div>
-            <GeneralLayout>
+            <GeneralMasterLayout>
                 <Fragment>
                     <RoadLengthTypeMasterList />
                 </Fragment>
-            </GeneralLayout>
+            </GeneralMasterLayout>
         </div>
     );
 }
