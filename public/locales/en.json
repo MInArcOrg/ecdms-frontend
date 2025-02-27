@@ -55,11 +55,18 @@
       "edit-project-progress-statuses": "Edit Project Progress Status",
       "stakeholder-services": "Construction Related Service",
       "edit-stakeholder-services": "Edit Construction Related Service",
-      "create-stakeholder-services": "Create Construction Related Service"
+      "create-stakeholder-services": "Create Construction Related Service",
+      "pedestrian-facilities": "Pedestrian Facilities",
+      "create-pedestrian-facilities": "Create Pedestrian Facility",
+      "edit-pedestrian-facilities": "Edit Pedestrian Facility",
+      "road-length-types": "Road Length Types",
+      "create-road-length-types": "Create Road Length Type",
+      "edit-road-length-types": "Edit Road Length Type"
     },
     "form": {
       "title": "Title",
       "description": "Description",
+      "project-type": "Project Type",
       "study-program": "Study Program",
       "study-level": "Study Level",
       "stakeholder-type-specific-models": "Stakeholder type Specific models",
@@ -1400,6 +1407,17 @@
       "description": "Description",
       "reference": "Reference"
     },
+    "stakeholder-additional-information": {
+      "title": "Additional Information",
+      "create": "Create Additional Information",
+      "edit": "Edit Additional Information",
+      "details": "Additional Information Details",
+      "create-additional-information": "Create Additional Information",
+      "edit-additional-information": "Edit Additional Information",
+      "additionalInformation": "Additional Information",
+      "reference": "Reference",
+      "noReference": "No Reference"
+    },
     "stakeholder-branch": {
       "title": "Stakeholder Branches",
       "create": "Create Branch",
@@ -1441,42 +1459,6 @@
       "phone": "Phone",
       "email": "Email",
       "branch": "Branch"
-    },
-    "stakeholder-branch-address": {
-      "title": "Branch Addresses",
-      "create": "Create Branch Address",
-      "edit": "Edit Branch Address",
-      "details": "Branch Address Details",
-      "branch": "Branch",
-      "country": "Country",
-      "region": "Region",
-      "city": "City",
-      "subcity": "Subcity",
-      "woreda": "Woreda",
-      "street": "Street",
-      "blockNo": "Block No",
-      "website": "Website",
-      "northing": "Northing",
-      "easting": "Easting"
-    },
-    "branch-additional-information": {
-      "title": "Branch Additional Information",
-      "create": "Create Additional Information",
-      "edit": "Edit Additional Information",
-      "details": "Additional Information Details",
-      "branch": "Branch",
-      "additionalInformation": "Additional Information",
-      "reference": "Reference"
-    },
-    "stakeholder-department": {
-      "title": "Stakeholder Departments",
-      "create": "Create Department",
-      "edit": "Edit Department",
-      "details": "Department Details",
-      "name": "Department Name",
-      "parentDepartment": "Parent Department",
-      "description": "Description",
-      "reference": "Reference"
     }
   },
   "address": {

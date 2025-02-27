@@ -39,7 +39,7 @@ const StakeholderEmailCard: React.FC<StakeholderEmailCardProps> = ({ stakeholder
               subject: 'stakeholderemail'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'stakeholderemail'
             }}
             item={stakeholderEmail}
