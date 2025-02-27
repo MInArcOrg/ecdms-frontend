@@ -6,10 +6,7 @@ interface MasonryListingProps<T> {
   ItemViewComponent: React.ComponentType<{ data: T }>;
 }
 
-const MasonryListing = <T extends object>({
-  items,
-  ItemViewComponent
-}: MasonryListingProps<T>) => {
+const MasonryListing = <T extends object>({ items, ItemViewComponent }: MasonryListingProps<T>) => {
   return (
     <Masonry columns={{ xs: 1, sm: 2, lg: 4, xl: 4 }} spacing={2}>
       {items.map((item, index) => (

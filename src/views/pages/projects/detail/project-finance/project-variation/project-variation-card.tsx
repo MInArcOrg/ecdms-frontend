@@ -64,7 +64,7 @@ const ProjectVariationCard = ({
               subject: 'variation'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'variation'
             }}
             item={projectVariation}

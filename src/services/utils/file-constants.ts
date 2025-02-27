@@ -13,8 +13,10 @@ export const uploadableResourceFileTypes = {
   resourceSalary: 'RESOURCE_SALARY',
   resourceWorkExperience: 'RESOURCE_WORK_EXPERIENCE',
   resourceQuantityPrice: 'RESOURCE_QUANTITY_PRICE',
-  project_safety_status: 'PROJECT_SAFETY_STATUS',
-  project_quality: 'PROJECT_QUALITY',
+  professionalEducation: 'PROFESSIONAL_EDUCATION',
+  professionalWorkExperience: 'PROFESSIONAL_WORK_EXPERIENCE',
+  professionalAssociationMembership: 'PROFESSIONAL_ASSOCIATION_MEMBERSHIP',
+  professionalCertification: 'PROFESSIONAL_CERTIFICATION'
 } as const;
 export const uploadablePhotoTypes = {
   stakeholder_profile_photo: 'STAKEHOLDER_PROFILE_PHOTO',
