@@ -3,7 +3,7 @@ import StakeholderLayout from "src/views/pages/stakeholders/details/layout/stake
 import StakeholderEmployeeList from "src/views/pages/stakeholders/details/stakeholder-employee"
 import subMenuItems from "./(sub-menu-items)"
 
-function Index() {
+function StakeholderEmployeeIndex() {
   const router = useRouter()
   const { id, typeId } = router.query;
 
@@ -14,10 +14,10 @@ function Index() {
   )
 }
 
-Index.acl = {
+StakeholderEmployeeIndex.acl = {
   action: "view",
   subject: "stakeholder-machinery",
 }
 
-export default Index
+export default StakeholderEmployeeIndex
 
