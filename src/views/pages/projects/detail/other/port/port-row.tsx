@@ -97,7 +97,7 @@ export const portColumns = (
               subject: 'port'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'port'
             }}
             item={row}

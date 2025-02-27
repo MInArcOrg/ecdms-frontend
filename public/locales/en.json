@@ -55,11 +55,27 @@
       "edit-project-progress-statuses": "Edit Project Progress Status",
       "stakeholder-services": "Construction Related Service",
       "edit-stakeholder-services": "Edit Construction Related Service",
-      "create-stakeholder-services": "Create Construction Related Service"
+      "create-stakeholder-services": "Create Construction Related Service",
+      "pedestrian-facilities": "Pedestrian Facilities",
+      "create-pedestrian-facility": "Create Pedestrian Facility",
+      "edit-pedestrian-facility": "Edit Pedestrian Facility",
+      "road-length-types": "Road Length Types",
+      "create-road-length-types": "Create Road Length Type",
+      "edit-road-length-types": "Edit Road Length Type",
+      "endwall-type-inlets": "Endwall Types Inlets",
+      "create-endwall-type-inlet": "Create Endwall Types Inlet",
+      "edit-endwall-type-inlet": "Edit Endwall Types Inlet",
+      "area-topographies": "Area Topographies",
+      "create-area-topography": "Create Area Topography",
+      "edit-area-topography": "Edit Area Topography",
+      "soil-types":"Soil Types",
+      "create-soil-type":"Create Soil Type",
+      "edit-soil-type":"Edit Soil Type"
     },
     "form": {
       "title": "Title",
       "description": "Description",
+      "project-type": "Project Type",
       "study-program": "Study Program",
       "study-level": "Study Level",
       "stakeholder-type-specific-models": "Stakeholder type Specific models",
@@ -1400,6 +1416,17 @@
       "description": "Description",
       "reference": "Reference"
     },
+    "stakeholder-additional-information": {
+      "title": "Additional Information",
+      "create": "Create Additional Information",
+      "edit": "Edit Additional Information",
+      "details": "Additional Information Details",
+      "create-additional-information": "Create Additional Information",
+      "edit-additional-information": "Edit Additional Information",
+      "additionalInformation": "Additional Information",
+      "reference": "Reference",
+      "noReference": "No Reference"
+    },
     "stakeholder-branch": {
       "title": "Stakeholder Branches",
       "create": "Create Branch",
@@ -1426,48 +1453,6 @@
       "phone": "Phone",
       "email": "Email"
     },
-    "stakeholder-branch-contact-person": {
-      "title": "Branch Contact People",
-      "create": "Create Branch Contact Person",
-      "edit": "Edit Branch Contact Person",
-      "details": "Branch Contact Person Details",
-      "name": "Name",
-      "firstName": "First Name",
-      "middleName": "Middle Name",
-      "lastName": "Last Name",
-      "department": "Department",
-      "position": "Position",
-      "gender": "Gender",
-      "phone": "Phone",
-      "email": "Email",
-      "branch": "Branch"
-    },
-    "stakeholder-branch-address": {
-      "title": "Branch Addresses",
-      "create": "Create Branch Address",
-      "edit": "Edit Branch Address",
-      "details": "Branch Address Details",
-      "branch": "Branch",
-      "country": "Country",
-      "region": "Region",
-      "city": "City",
-      "subcity": "Subcity",
-      "woreda": "Woreda",
-      "street": "Street",
-      "blockNo": "Block No",
-      "website": "Website",
-      "northing": "Northing",
-      "easting": "Easting"
-    },
-    "branch-additional-information": {
-      "title": "Branch Additional Information",
-      "create": "Create Additional Information",
-      "edit": "Edit Additional Information",
-      "details": "Additional Information Details",
-      "branch": "Branch",
-      "additionalInformation": "Additional Information",
-      "reference": "Reference"
-    },
     "stakeholder-department": {
       "title": "Stakeholder Departments",
       "create": "Create Department",
@@ -1478,21 +1463,21 @@
       "description": "Description",
       "reference": "Reference"
     },
-    "position": {
-      "title": "Stakeholder Positions",
-      "create": "Create Stakeholder Position",
-      "edit": "Edit Stakeholder Position",
-      "details": "Stakeholder Position Details",
-      "name": "Name",
-      "parent-department": "Parent Department",
-      "required-education": "Required Education",
-      "required-work-experience": "Required Work Experience",
-      "salary": "Salary",
-      "no-of-professionals": "Number of Professionals",
-      "description": "Description",
-      "reference": "Reference"
-    },
-    "machinery": {
+"position": {
+    "title": "Stakeholder Positions",
+    "create": "Create Stakeholder Position",
+    "edit": "Edit Stakeholder Position",
+    "details": "Stakeholder Position Details",
+    "name": "Name",
+    "parent-department": "Parent Department",
+    "required-education": "Required Education",
+    "required-work-experience": "Required Work Experience",
+    "salary": "Salary",
+    "no-of-professionals": "Number of Professionals",
+    "description": "Description",
+    "reference": "Reference"
+  },
+"machinery": {
       "title": "Stakeholder Machineries",
       "create": "Create Stakeholder Machinery",
       "edit": "Edit Stakeholder Machinery",
