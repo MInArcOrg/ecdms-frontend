@@ -5,15 +5,15 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import EndwallTypeInletMasterForm from './endwall-type-inlet-master-form';
-import { EndwallTypeInlet } from 'src/types/general/general-master';
-import endwallTypeInletMasterService from 'src/services/general/project/endwall-type-inlet-master-service';
+import BridgeStructureTypeMasterForm from './bridge-structure-type-master-form';
+import { BridgeStructureType } from 'src/types/general/general-master';
+import bridgeStructureTypeMasterService from 'src/services/general/project/bridge-structure-type-master-service';
 
-interface EndwallTypeInletMasterDrawerType {
+interface BridgeStructureTypeMasterDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  masterData: EndwallTypeInlet;
+  masterData: BridgeStructureType;
 }
 
 const validationSchema = yup.object().shape({
@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
   description: yup.string().required('Description is required')
 });
 
-const EndwallTypeInletMasterDrawer = (props: EndwallTypeInletMasterDrawerType) => {
+const BridgeStructureTypeMasterDrawer = (props: BridgeStructureTypeMasterDrawerType) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,15 +29,15 @@ const EndwallTypeInletMasterDrawer = (props: EndwallTypeInletMasterDrawerType) =
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createEndwallTypeInletMaster = async (body: IApiPayload<EndwallTypeInlet>) => {
-    return await endwallTypeInletMasterService.create(body);
+  const createBridgeStructureTypeMaster = async (body: IApiPayload<BridgeStructureType>) => {
+    return await bridgeStructureTypeMasterService.create(body);
   };
 
-  const editEndwallTypeInletMaster = async (body: IApiPayload<EndwallTypeInlet>) => {
-    return await endwallTypeInletMasterService.update(masterData?.id || '', body);
+  const editBridgeStructureTypeMaster = async (body: IApiPayload<BridgeStructureType>) => {
+    return await bridgeStructureTypeMasterService.update(masterData?.id || '', body);
   };
 
-  const getPayload = (values: EndwallTypeInlet) => {
+  const getPayload = (values: BridgeStructureType) => {
     const payload = {
       data: {
         ...values,
@@ -52,9 +52,9 @@ const EndwallTypeInletMasterDrawer = (props: EndwallTypeInletMasterDrawerType) =
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<EndwallTypeInlet>, payload: IApiPayload<EndwallTypeInlet>) => {
+  const onActionSuccess = async (response: IApiResponse<BridgeStructureType>, payload: IApiPayload<BridgeStructureType>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `ENDWALL_TYPE_INLET`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `BRIDGE_STRUCTURE_TYPE`, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -62,29 +62,29 @@ const EndwallTypeInletMasterDrawer = (props: EndwallTypeInletMasterDrawerType) =
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-endwall-type-inlet' : 'create-endwall-type-inlet'}`}
+      title={`master-data.general-master.${isEdit ? 'edit-bridge-structure-type' : 'create-bridge-structure-type'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
-        <FormPageWrapper<EndwallTypeInlet>
+        <FormPageWrapper<BridgeStructureType>
           edit={isEdit}
-          title="master-data.general-master.endwall-type-inlets"
+          title="master-data.general-master.bridge-structure-types"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editEndwallTypeInletMaster : createEndwallTypeInletMaster}
+          createActionFunc={isEdit ? editBridgeStructureTypeMaster : createBridgeStructureTypeMaster}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<EndwallTypeInlet>) => {
+          {(formik: FormikProps<BridgeStructureType>) => {
             return (
               <>
-                <EndwallTypeInletMasterForm
+                <BridgeStructureTypeMasterForm
                   file={uploadableFile}
                   onFileChange={onFileChange}
                   formik={formik}
-                  defaultLocaleData={{} as EndwallTypeInlet}
+                  defaultLocaleData={{} as BridgeStructureType}
                 />
               </>
             );
@@ -95,4 +95,4 @@ const EndwallTypeInletMasterDrawer = (props: EndwallTypeInletMasterDrawerType) =
   );
 };
 
-export default EndwallTypeInletMasterDrawer;
+export default BridgeStructureTypeMasterDrawer;

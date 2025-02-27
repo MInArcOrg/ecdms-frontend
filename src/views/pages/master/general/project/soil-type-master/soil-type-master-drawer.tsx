@@ -69,7 +69,7 @@ const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
       {() => (
         <FormPageWrapper<SoilType>
           edit={isEdit}
-          title="master-data.title"
+          title="master-data.general-master.soil-types"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}

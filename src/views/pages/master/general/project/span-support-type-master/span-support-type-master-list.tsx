@@ -1,22 +1,22 @@
-// components/RoadLengthTypeMasterList.tsx
+// components/SpanSupportTypeMasterList.tsx
 import { Card, CardContent } from '@mui/material';
 import React, { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { RoadLengthType } from 'src/types/general/general-master';
+import { SpanSupportType } from 'src/types/general/general-master';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
-import RoadLengthTypeMasterCard from './road-length-type-master-card';
-import RoadLengthTypeMasterDrawer from './road-length-type-master-drawer';
-import roadLengthTypeMasterService from 'src/services/general/project/road-length-type-master-service';
+import SpanSupportTypeMasterCard from './span-support-type-master-card';
+import SpanSupportTypeMasterDrawer from './span-support-type-master-drawer';
+import spanSupportTypeMasterService from 'src/services/general/project/span-support-type-master-service';
 
-const RoadLengthTypeMasterList: React.FC = () => {
-  const [selectedRow, setSelectedRow] = useState<RoadLengthType | null>(null);
+const SpanSupportTypeMasterList: React.FC = () => {
+  const [selectedRow, setSelectedRow] = useState<SpanSupportType | null>(null);
   const { t } = useTranslation();
-  const fetchRoadLengthTypeMaster = (params: GetRequestParam): Promise<IApiResponse<RoadLengthType[]>> => {
-    return roadLengthTypeMasterService.getAll(params);
+  const fetchSpanSupportTypeMaster = (params: GetRequestParam): Promise<IApiResponse<SpanSupportType[]>> => {
+    return spanSupportTypeMasterService.getAll(params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
 
@@ -26,38 +26,43 @@ const RoadLengthTypeMasterList: React.FC = () => {
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<RoadLengthType[]>({
-    queryKey: ['general-master', 'road-length-type'],
-    fetchFunction: fetchRoadLengthTypeMaster
+  } = usePaginatedFetch<SpanSupportType[]>({
+    queryKey: ['general-master', 'span-support-type'],
+    fetchFunction: fetchSpanSupportTypeMaster
   });
   const handleDelete = async (id: string) => {
-    await roadLengthTypeMasterService.delete(id);
+    await spanSupportTypeMasterService.delete(id);
     refetch();
   };
 
   const toggleDrawer = () => {
-    setSelectedRow({} as RoadLengthType);
+    setSelectedRow({} as SpanSupportType);
     setShowDrawer(!showDrawer);
   };
 
-  const handleEdit = (generalMaster: RoadLengthType) => {
+  const handleEdit = (generalMaster: SpanSupportType) => {
     toggleDrawer();
     setSelectedRow(generalMaster);
   };
   return (
     <Fragment>
       {showDrawer && (
-        <RoadLengthTypeMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as RoadLengthType} refetch={refetch} />
+        <SpanSupportTypeMasterDrawer
+          open={showDrawer}
+          toggle={toggleDrawer}
+          masterData={selectedRow as SpanSupportType}
+          refetch={refetch}
+        />
       )}
       <Card>
         <CardContent>
           <ItemsListing
             pagination={pagination}
             type={ITEMS_LISTING_TYPE.list.value}
-            title={t(`master-data.general-master.road-length-types`)}
+            title={t(`master-data.general-master.span-support-types`)}
             ItemViewComponent={({ data }) => (
-              <RoadLengthTypeMasterCard
-                type={'road-length-type'}
+              <SpanSupportTypeMasterCard
+                type={'span-support-type'}
                 generalMaster={data}
                 onDelete={handleDelete}
                 onEdit={handleEdit}
@@ -72,7 +77,7 @@ const RoadLengthTypeMasterList: React.FC = () => {
               onlyIcon: true,
               permission: {
                 action: 'create',
-                subject: `roadlengthtype`
+                subject: `spansupporttype`
               }
             }}
             fetchDataFunction={refetch}
@@ -85,4 +90,4 @@ const RoadLengthTypeMasterList: React.FC = () => {
   );
 };
 
-export default RoadLengthTypeMasterList;
+export default SpanSupportTypeMasterList;

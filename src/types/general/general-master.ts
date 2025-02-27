@@ -79,3 +79,27 @@ export interface SoilType {
   created_at?: Date;
   updated_at?: Date;
 }
+export interface GuardRailType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface BridgeStructureType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface SpanSupportType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}

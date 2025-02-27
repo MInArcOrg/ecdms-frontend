@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { PedestrianFacility } from 'src/types/general/general-master';
+import { AreaTopography } from 'src/types/general/general-master';
 import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
 import axiosServices from 'src/utils/axios';
 import { buildGetRequest } from 'src/utils/requests/get-request';
@@ -7,7 +7,7 @@ import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const areaTopographyMasterService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<PedestrianFacility[]>> =>
+  getAll: (params: GetRequestParam): Promise<IApiResponse<AreaTopography[]>> =>
     buildGetRequest(`/masterdata/area-topographies`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -22,7 +22,7 @@ const areaTopographyMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/area-topographies-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as PedestrianFacility[])
+      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as AreaTopography[])
       .catch((error: any) => {
         throw error;
       }),
@@ -34,13 +34,13 @@ const areaTopographyMasterService = {
         throw error;
       }),
 
-  create: (body: IApiPayload<PedestrianFacility>): Promise<IApiResponse> =>
+  create: (body: IApiPayload<AreaTopography>): Promise<IApiResponse> =>
     buildPostRequest(`/masterdata/area-topographies`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
-  update: (id: string, body: IApiPayload<PedestrianFacility>): Promise<IApiResponse> =>
+  update: (id: string, body: IApiPayload<AreaTopography>): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/area-topographies/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {

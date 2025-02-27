@@ -1,20 +1,20 @@
-// components/EndwallTypeInletList.tsx
+// components/GuardRailTypeList.tsx
 import { Box, CardActions, CardContent, Grid, Typography } from '@mui/material';
 import { Fragment } from 'react';
-import { EndwallTypeInlet } from 'src/types/general/general-master';
+import { GuardRailType } from 'src/types/general/general-master';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-const EndwallTypeInletMasterCard = ({
+const GuardRailTypeMasterCard = ({
   generalMaster,
   onEdit,
   onDelete,
   refetch
 }: {
   type: string;
-  generalMaster: EndwallTypeInlet;
-  onEdit: (category: EndwallTypeInlet) => void;
+  generalMaster: GuardRailType;
+  onEdit: (category: GuardRailType) => void;
   onDelete: (id: string) => void;
   t: any;
   refetch: () => void;
@@ -38,9 +38,9 @@ const EndwallTypeInletMasterCard = ({
           <Grid item>
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id} type="ENDWALL_TYPE_INLET" /> &nbsp;
+                <FileDrawer id={generalMaster.id} type="GUARD_RAIL_TYPE" /> &nbsp;
                 <ModelActionComponent
-                  model={'endwalltypeinlet'}
+                  model={'guardrailtype'}
                   model_id={generalMaster.id}
                   refetchModel={refetch}
                   resubmit={function (): void {
@@ -58,11 +58,11 @@ const EndwallTypeInletMasterCard = ({
                   options={[]}
                   deletePermissionRule={{
                     action: 'delete',
-                    subject: 'endwalltypeinlet'
+                    subject: 'guardrailtype'
                   }}
                   editPermissionRule={{
                     action: 'update',
-                    subject: 'endwalltypeinlet'
+                    subject: 'guardrailtype'
                   }}
                 />
               </Fragment>
@@ -73,4 +73,4 @@ const EndwallTypeInletMasterCard = ({
     </Fragment>
   );
 };
-export default EndwallTypeInletMasterCard;
+export default GuardRailTypeMasterCard;
