@@ -76,7 +76,10 @@
       "edit-guard-rail-type":"Edit Guard Rail Type",
       "bridge-structure-types": "Bridge Structure Types",
       "create-bridge-structure-type": "Create Bridge Structure Type",
-      "edit-bridge-structure-type": "Edit Bridge Structure Type"
+      "edit-bridge-structure-type": "Edit Bridge Structure Type",
+      "span-support-types": "Span Support Types",
+      "create-span-support-type": "Create Span Support Type",
+      "edit-span-support-type": "Edit Span Support Type"
     },
     "form": {
       "title": "Title",

@@ -5,15 +5,15 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import BridgeStructureTypeMasterForm from './bridge-structure-type-master-form';
-import { BridgeStructureType } from 'src/types/general/general-master';
-import bridgeStructureTypeMasterService from 'src/services/general/project/bridge-structure-type-master-service';
+import SpanSupportTypeMasterForm from './span-support-type-master-form';
+import { SpanSupportType } from 'src/types/general/general-master';
+import spanSupportTypeMasterService from 'src/services/general/project/span-support-type-master-service';
 
-interface BridgeStructureTypeMasterDrawerType {
+interface SpanSupportTypeMasterDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  masterData: BridgeStructureType;
+  masterData: SpanSupportType;
 }
 
 const validationSchema = yup.object().shape({
@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
   description: yup.string().required('Description is required')
 });
 
-const BridgeStructureTypeMasterDrawer = (props: BridgeStructureTypeMasterDrawerType) => {
+const SpanSupportTypeMasterDrawer = (props: SpanSupportTypeMasterDrawerType) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,15 +29,15 @@ const BridgeStructureTypeMasterDrawer = (props: BridgeStructureTypeMasterDrawerT
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createBridgeStructureTypeMaster = async (body: IApiPayload<BridgeStructureType>) => {
-    return await bridgeStructureTypeMasterService.create(body);
+  const createSpanSupportTypeMaster = async (body: IApiPayload<SpanSupportType>) => {
+    return await spanSupportTypeMasterService.create(body);
   };
 
-  const editBridgeStructureTypeMaster = async (body: IApiPayload<BridgeStructureType>) => {
-    return await bridgeStructureTypeMasterService.update(masterData?.id || '', body);
+  const editSpanSupportTypeMaster = async (body: IApiPayload<SpanSupportType>) => {
+    return await spanSupportTypeMasterService.update(masterData?.id || '', body);
   };
 
-  const getPayload = (values: BridgeStructureType) => {
+  const getPayload = (values: SpanSupportType) => {
     const payload = {
       data: {
         ...values,
@@ -52,9 +52,9 @@ const BridgeStructureTypeMasterDrawer = (props: BridgeStructureTypeMasterDrawerT
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<BridgeStructureType>, payload: IApiPayload<BridgeStructureType>) => {
+  const onActionSuccess = async (response: IApiResponse<SpanSupportType>, payload: IApiPayload<SpanSupportType>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `BRIDGE_STRUCTURE_TYPE`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `SPAN_SUPPORT_TYPE`, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -62,29 +62,29 @@ const BridgeStructureTypeMasterDrawer = (props: BridgeStructureTypeMasterDrawerT
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-bridge-structure-type' : 'create-bridge-structure-type'}`}
+      title={`master-data.general-master.${isEdit ? 'edit-span-support-type' : 'create-span-support-type'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
-        <FormPageWrapper<BridgeStructureType>
+        <FormPageWrapper<SpanSupportType>
           edit={isEdit}
-          title="master-data.general-master.bridge-structure-types"
+          title="master-data.general-master.span-support-types"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editBridgeStructureTypeMaster : createBridgeStructureTypeMaster}
+          createActionFunc={isEdit ? editSpanSupportTypeMaster : createSpanSupportTypeMaster}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<BridgeStructureType>) => {
+          {(formik: FormikProps<SpanSupportType>) => {
             return (
               <>
-                <BridgeStructureTypeMasterForm
+                <SpanSupportTypeMasterForm
                   file={uploadableFile}
                   onFileChange={onFileChange}
                   formik={formik}
-                  defaultLocaleData={{} as BridgeStructureType}
+                  defaultLocaleData={{} as SpanSupportType}
                 />
               </>
             );
@@ -95,4 +95,4 @@ const BridgeStructureTypeMasterDrawer = (props: BridgeStructureTypeMasterDrawerT
   );
 };
 
-export default BridgeStructureTypeMasterDrawer;
+export default SpanSupportTypeMasterDrawer;
