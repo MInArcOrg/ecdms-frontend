@@ -7,7 +7,7 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import RoadLengthTypeMasterForm from './road-length-type-master-form';
 import { RoadLengthType } from 'src/types/general/general-master';
-import roadLengthTypeMasterService from 'src/services/general/project/endwall-type-inlet-master-service';
+import roadLengthTypeMasterService from 'src/services/general/project/road-length-type-master-service';
 
 interface RoadLengthTypeMasterDrawerType {
   open: boolean;
@@ -69,7 +69,7 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
       {() => (
         <FormPageWrapper<RoadLengthType>
           edit={isEdit}
-          title="master-data.title"
+          title="master-data.general-master.road-length-types"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}

@@ -60,8 +60,8 @@
       "create-pedestrian-facility": "Create Pedestrian Facility",
       "edit-pedestrian-facility": "Edit Pedestrian Facility",
       "road-length-types": "Road Length Types",
-      "create-road-length-types": "Create Road Length Type",
-      "edit-road-length-types": "Edit Road Length Type",
+      "create-road-length-type": "Create Road Length Type",
+      "edit-road-length-type": "Edit Road Length Type",
       "endwall-type-inlets": "Endwall Types Inlets",
       "create-endwall-type-inlet": "Create Endwall Types Inlet",
       "edit-endwall-type-inlet": "Edit Endwall Types Inlet",
@@ -70,7 +70,10 @@
       "edit-area-topography": "Edit Area Topography",
       "soil-types":"Soil Types",
       "create-soil-type":"Create Soil Type",
-      "edit-soil-type":"Edit Soil Type"
+      "edit-soil-type":"Edit Soil Type",
+      "guard-rail-types":"Guard Rail Types",
+      "create-guard-rail-type":"Create Guard Rail Type",
+      "edit-guard-rail-type":"Edit Guard Rail Type"
     },
     "form": {
       "title": "Title",

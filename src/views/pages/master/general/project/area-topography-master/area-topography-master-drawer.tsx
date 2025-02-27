@@ -69,7 +69,7 @@ const AreaTopographyMasterDrawer = (props: AreaTopographyMasterDrawerType) => {
       {() => (
         <FormPageWrapper<AreaTopography>
           edit={isEdit}
-          title="master-data.title"
+          title="master-data.general-master.area-topographies"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
