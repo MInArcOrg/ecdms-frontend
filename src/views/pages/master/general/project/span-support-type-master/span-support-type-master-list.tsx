@@ -1,22 +1,22 @@
-// components/GuardRailTypeMasterList.tsx
+// components/SpanSupportTypeMasterList.tsx
 import { Card, CardContent } from '@mui/material';
 import React, { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { GuardRailType } from 'src/types/general/general-master';
+import { SpanSupportType } from 'src/types/general/general-master';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
-import GuardRailTypeMasterCard from './bridge-structure-type-master-card';
-import GuardRailTypeMasterDrawer from './bridge-structure-type-master-drawer';
-import guardRailTypeMasterService from 'src/services/general/project/guard-rail-type-master-service';
+import SpanSupportTypeMasterCard from './span-support-type-master-card';
+import SpanSupportTypeMasterDrawer from './span-support-type-master-drawer';
+import spanSupportTypeMasterService from 'src/services/general/project/span-support-type-master-service';
 
-const GuardRailTypeMasterList: React.FC = () => {
-  const [selectedRow, setSelectedRow] = useState<GuardRailType | null>(null);
+const SpanSupportTypeMasterList: React.FC = () => {
+  const [selectedRow, setSelectedRow] = useState<SpanSupportType | null>(null);
   const { t } = useTranslation();
-  const fetchGuardRailTypeMaster = (params: GetRequestParam): Promise<IApiResponse<GuardRailType[]>> => {
-    return guardRailTypeMasterService.getAll(params);
+  const fetchSpanSupportTypeMaster = (params: GetRequestParam): Promise<IApiResponse<SpanSupportType[]>> => {
+    return spanSupportTypeMasterService.getAll(params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
 
@@ -26,38 +26,43 @@ const GuardRailTypeMasterList: React.FC = () => {
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<GuardRailType[]>({
-    queryKey: ['general-master', 'guard-rail-type'],
-    fetchFunction: fetchGuardRailTypeMaster
+  } = usePaginatedFetch<SpanSupportType[]>({
+    queryKey: ['general-master', 'span-support-type'],
+    fetchFunction: fetchSpanSupportTypeMaster
   });
   const handleDelete = async (id: string) => {
-    await guardRailTypeMasterService.delete(id);
+    await spanSupportTypeMasterService.delete(id);
     refetch();
   };
 
   const toggleDrawer = () => {
-    setSelectedRow({} as GuardRailType);
+    setSelectedRow({} as SpanSupportType);
     setShowDrawer(!showDrawer);
   };
 
-  const handleEdit = (generalMaster: GuardRailType) => {
+  const handleEdit = (generalMaster: SpanSupportType) => {
     toggleDrawer();
     setSelectedRow(generalMaster);
   };
   return (
     <Fragment>
       {showDrawer && (
-        <GuardRailTypeMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as GuardRailType} refetch={refetch} />
+        <SpanSupportTypeMasterDrawer
+          open={showDrawer}
+          toggle={toggleDrawer}
+          masterData={selectedRow as SpanSupportType}
+          refetch={refetch}
+        />
       )}
       <Card>
         <CardContent>
           <ItemsListing
             pagination={pagination}
             type={ITEMS_LISTING_TYPE.list.value}
-            title={t(`master-data.general-master.guard-rail-types`)}
+            title={t(`master-data.general-master.span-support-types`)}
             ItemViewComponent={({ data }) => (
-              <GuardRailTypeMasterCard
-                type={'guard-rail-type'}
+              <SpanSupportTypeMasterCard
+                type={'span-support-type'}
                 generalMaster={data}
                 onDelete={handleDelete}
                 onEdit={handleEdit}
@@ -72,7 +77,7 @@ const GuardRailTypeMasterList: React.FC = () => {
               onlyIcon: true,
               permission: {
                 action: 'create',
-                subject: `bridgestructuretype`
+                subject: `spansupporttype`
               }
             }}
             fetchDataFunction={refetch}
@@ -85,4 +90,4 @@ const GuardRailTypeMasterList: React.FC = () => {
   );
 };
 
-export default GuardRailTypeMasterList;
+export default SpanSupportTypeMasterList;

@@ -38,7 +38,7 @@ const GuardRailTypeMasterCard = ({
           <Grid item>
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id} type="ROAD_LENGTH_TYPE" /> &nbsp;
+                <FileDrawer id={generalMaster.id} type="GUARD_RAIL_TYPE" /> &nbsp;
                 <ModelActionComponent
                   model={'guardrailtype'}
                   model_id={generalMaster.id}

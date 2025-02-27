@@ -38,7 +38,7 @@ const BridgeStructureTypeMasterCard = ({
           <Grid item>
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id} type="ROAD_LENGTH_TYPE" /> &nbsp;
+                <FileDrawer id={generalMaster.id} type="BRIDGE_STRUCTURE_TYPE" /> &nbsp;
                 <ModelActionComponent
                   model={'bridgestructuretype'}
                   model_id={generalMaster.id}

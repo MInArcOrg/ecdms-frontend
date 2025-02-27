@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { PedestrianFacility } from 'src/types/general/general-master';
+import { RoadLengthType } from 'src/types/general/general-master';
 import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
 import axiosServices from 'src/utils/axios';
 import { buildGetRequest } from 'src/utils/requests/get-request';
@@ -7,7 +7,7 @@ import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const roadLengthTypeMasterService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<PedestrianFacility[]>> =>
+  getAll: (params: GetRequestParam): Promise<IApiResponse<RoadLengthType[]>> =>
     buildGetRequest(`/masterdata/road-length-types`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -22,7 +22,7 @@ const roadLengthTypeMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/road-length-types-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as PedestrianFacility[])
+      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as RoadLengthType[])
       .catch((error: any) => {
         throw error;
       }),
@@ -34,13 +34,13 @@ const roadLengthTypeMasterService = {
         throw error;
       }),
 
-  create: (body: IApiPayload<PedestrianFacility>): Promise<IApiResponse> =>
+  create: (body: IApiPayload<RoadLengthType>): Promise<IApiResponse> =>
     buildPostRequest(`/masterdata/road-length-types`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
-  update: (id: string, body: IApiPayload<PedestrianFacility>): Promise<IApiResponse> =>
+  update: (id: string, body: IApiPayload<RoadLengthType>): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/road-length-types/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
