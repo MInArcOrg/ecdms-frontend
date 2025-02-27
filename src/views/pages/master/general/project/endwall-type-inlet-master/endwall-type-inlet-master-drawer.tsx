@@ -5,15 +5,15 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import RoadLengthTypeMasterForm from './road-length-type-master-form';
-import { RoadLengthType } from 'src/types/general/general-master';
-import roadLengthTypeMasterService from 'src/services/general/project/road-length-type-master-service';
+import EndwallTypeInletMasterForm from './endwall-type-inlet-master-form';
+import { EndwallTypeInlet } from 'src/types/general/general-master';
+import endwallTypeInletMasterService from 'src/services/general/project/endwall-type-inlet-master-service';
 
-interface RoadLengthTypeMasterDrawerType {
+interface EndwallTypeInletMasterDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  masterData: RoadLengthType;
+  masterData: EndwallTypeInlet;
 }
 
 const validationSchema = yup.object().shape({
@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
   description: yup.string().required('Description is required')
 });
 
-const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
+const EndwallTypeInletMasterDrawer = (props: EndwallTypeInletMasterDrawerType) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,15 +29,15 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createRoadLengthTypeMaster = async (body: IApiPayload<RoadLengthType>) => {
-    return await roadLengthTypeMasterService.create(body);
+  const createEndwallTypeInletMaster = async (body: IApiPayload<EndwallTypeInlet>) => {
+    return await endwallTypeInletMasterService.create(body);
   };
 
-  const editRoadLengthTypeMaster = async (body: IApiPayload<RoadLengthType>) => {
-    return await roadLengthTypeMasterService.update(masterData?.id || '', body);
+  const editEndwallTypeInletMaster = async (body: IApiPayload<EndwallTypeInlet>) => {
+    return await endwallTypeInletMasterService.update(masterData?.id || '', body);
   };
 
-  const getPayload = (values: RoadLengthType) => {
+  const getPayload = (values: EndwallTypeInlet) => {
     const payload = {
       data: {
         ...values,
@@ -52,9 +52,9 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<RoadLengthType>, payload: IApiPayload<RoadLengthType>) => {
+  const onActionSuccess = async (response: IApiResponse<EndwallTypeInlet>, payload: IApiPayload<EndwallTypeInlet>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `PEDESTRIAN_FACILITY`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `ENDWALL_TYPE_INLET`, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -62,29 +62,29 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-pedestrian-facilities' : 'create-pedestrian-facilities'}`}
+      title={`master-data.general-master.${isEdit ? 'edit-endwall-type-inlet' : 'create-endwall-type-inlet'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
-        <FormPageWrapper<RoadLengthType>
+        <FormPageWrapper<EndwallTypeInlet>
           edit={isEdit}
           title="master-data.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editRoadLengthTypeMaster : createRoadLengthTypeMaster}
+          createActionFunc={isEdit ? editEndwallTypeInletMaster : createEndwallTypeInletMaster}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<RoadLengthType>) => {
+          {(formik: FormikProps<EndwallTypeInlet>) => {
             return (
               <>
-                <RoadLengthTypeMasterForm
+                <EndwallTypeInletMasterForm
                   file={uploadableFile}
                   onFileChange={onFileChange}
                   formik={formik}
-                  defaultLocaleData={{} as RoadLengthType}
+                  defaultLocaleData={{} as EndwallTypeInlet}
                 />
               </>
             );
@@ -95,4 +95,4 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
   );
 };
 
-export default RoadLengthTypeMasterDrawer;
+export default EndwallTypeInletMasterDrawer;
