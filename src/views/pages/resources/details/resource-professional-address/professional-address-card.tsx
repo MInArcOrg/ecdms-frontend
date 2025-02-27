@@ -69,7 +69,7 @@ const AddressCard: React.FC<AddressCardProps> = ({ address, refetch, onEdit, onD
             subject: 'professionaladdress'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'professionaladdress'
           }}
           onEdit={() => onEdit(address)}

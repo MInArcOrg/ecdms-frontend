@@ -87,7 +87,7 @@ const ProjectBondCard = ({
               subject: 'projectbond'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'projectbond'
             }}
             onEdit={onEdit}

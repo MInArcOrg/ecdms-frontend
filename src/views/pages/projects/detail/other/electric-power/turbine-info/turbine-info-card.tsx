@@ -86,7 +86,7 @@ const TurbineInfoCard: React.FC<TurbineInfoCardProps> = ({ turbineInfo, refetch,
             subject: 'turbineinfo'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'turbineinfo'
           }}
           item={turbineInfo}

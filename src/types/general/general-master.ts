@@ -36,3 +36,37 @@ export interface BusinessFields {
   created_at?: Date; // Optional field
   updated_at?: Date; // Optional field
 }
+export interface PedestrianFacility {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface RoadLengthType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface EndwallTypeInlet {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface AreaTopography {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
