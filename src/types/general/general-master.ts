@@ -53,3 +53,11 @@ export interface RoadLengthType {
   created_at?: Date;
   updated_at?: Date;
 }
+export interface EndwallTypeInlet {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}

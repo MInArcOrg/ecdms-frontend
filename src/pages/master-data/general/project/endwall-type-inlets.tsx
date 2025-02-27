@@ -1,17 +1,17 @@
 import { Fragment } from 'react';
-import RoadLengthTypeMasterList from 'src/views/pages/master/general/project/road-length-type-master/road-length-type-master-list';
 import GeneralLayout from '../GeneralLayout';
+import EndwallTypeInletMasterList from 'src/views/pages/master/general/project/endwall-type-inlet-master/endwall-type-inlet-master-list';
 
-function RoadLengthTypes() {
+function EndWallTypes() {
     return (
         <div>
             <GeneralLayout>
                 <Fragment>
-                    <RoadLengthTypeMasterList />
+                    <EndwallTypeInletMasterList />
                 </Fragment>
             </GeneralLayout>
         </div>
     );
 }
 
-export default RoadLengthTypes;
+export default EndWallTypes;
