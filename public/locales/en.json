@@ -57,14 +57,20 @@
       "edit-stakeholder-services": "Edit Construction Related Service",
       "create-stakeholder-services": "Create Construction Related Service",
       "pedestrian-facilities": "Pedestrian Facilities",
-      "create-pedestrian-facilities": "Create Pedestrian Facility",
-      "edit-pedestrian-facilities": "Edit Pedestrian Facility",
+      "create-pedestrian-facility": "Create Pedestrian Facility",
+      "edit-pedestrian-facility": "Edit Pedestrian Facility",
       "road-length-types": "Road Length Types",
       "create-road-length-types": "Create Road Length Type",
       "edit-road-length-types": "Edit Road Length Type",
       "endwall-type-inlets": "Endwall Types Inlets",
       "create-endwall-type-inlet": "Create Endwall Types Inlet",
-      "edit-endwall-type-inlet": "Edit Endwall Types Inlet"
+      "edit-endwall-type-inlet": "Edit Endwall Types Inlet",
+      "area-topographies": "Area Topographies",
+      "create-area-topography": "Create Area Topography",
+      "edit-area-topography": "Edit Area Topography",
+      "soil-types": "Soil Types",
+      "create-soil-type": "Create Soil Type",
+      "edit-soil-type": "Edit Soil Type"
     },
     "form": {
       "title": "Title",
@@ -1473,20 +1479,20 @@
       "description": "Description",
       "reference": "Reference"
     },
-"position": {
-    "title": "Stakeholder Positions",
-    "create": "Create Stakeholder Position",
-    "edit": "Edit Stakeholder Position",
-    "details": "Stakeholder Position Details",
-    "name": "Name",
-    "parent-department": "Parent Department",
-    "required-education": "Required Education",
-    "required-work-experience": "Required Work Experience",
-    "salary": "Salary",
-    "no-of-professionals": "Number of Professionals",
-    "description": "Description",
-    "reference": "Reference"
-  }
+    "position": {
+      "title": "Stakeholder Positions",
+      "create": "Create Stakeholder Position",
+      "edit": "Edit Stakeholder Position",
+      "details": "Stakeholder Position Details",
+      "name": "Name",
+      "parent-department": "Parent Department",
+      "required-education": "Required Education",
+      "required-work-experience": "Required Work Experience",
+      "salary": "Salary",
+      "no-of-professionals": "Number of Professionals",
+      "description": "Description",
+      "reference": "Reference"
+    }
   },
   "address": {
     "title": "Address",

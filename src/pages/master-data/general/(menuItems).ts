@@ -71,6 +71,11 @@ const menuItems = (t: (item: string) => void) => [
         id: 5,
         title: t('master-data.general-master.area-topographies'),
         path: `${baseUrl}/project/area-topographies/`
+      },
+      {
+        id: 6,
+        title: t('master-data.general-master.soil-types'),
+        path: `${baseUrl}/project/soil-types/`
       }
     ]
   },
