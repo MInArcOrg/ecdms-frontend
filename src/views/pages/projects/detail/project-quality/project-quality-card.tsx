@@ -58,7 +58,7 @@ const QualityCard: React.FC<QualityCardProps> = ({ quality, refetch, onEdit, onD
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={quality?.id || ''} type={uploadableResourceFileTypes.project_quality} />
+        <FileDrawer id={quality?.id || ''} type={uploadableResourceFileTypes.projectQuality} />
         <ModelAction
           model="ProjectQuality"
           model_id={quality?.id || ''}
