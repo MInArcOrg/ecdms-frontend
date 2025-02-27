@@ -61,7 +61,10 @@
       "edit-pedestrian-facilities": "Edit Pedestrian Facility",
       "road-length-types": "Road Length Types",
       "create-road-length-types": "Create Road Length Type",
-      "edit-road-length-types": "Edit Road Length Type"
+      "edit-road-length-types": "Edit Road Length Type",
+      "endwall-type-inlets": "Endwall Types Inlets",
+      "create-endwall-type-inlet": "Create Endwall Types Inlet",
+      "edit-endwall-type-inlet": "Edit Endwall Types Inlet"
     },
     "form": {
       "title": "Title",
