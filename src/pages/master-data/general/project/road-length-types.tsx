@@ -3,15 +3,15 @@ import RoadLengthTypeMasterList from 'src/views/pages/master/general/project/roa
 import GeneralLayout from '../GeneralLayout';
 
 function RoadLengthTypes() {
-    return (
-        <div>
-            <GeneralLayout>
-                <Fragment>
-                    <RoadLengthTypeMasterList />
-                </Fragment>
-            </GeneralLayout>
-        </div>
-    );
+  return (
+    <div>
+      <GeneralLayout>
+        <Fragment>
+          <RoadLengthTypeMasterList />
+        </Fragment>
+      </GeneralLayout>
+    </div>
+  );
 }
 
 export default RoadLengthTypes;

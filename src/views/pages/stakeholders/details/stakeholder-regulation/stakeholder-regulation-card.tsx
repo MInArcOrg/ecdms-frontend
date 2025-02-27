@@ -69,9 +69,9 @@ const StakeholderRegulationCard = ({
             model="Regulation"
             model_id={stakeholderRegulation.id}
             refetchModel={refetch}
-            resubmit={() => { }}
+            resubmit={() => {}}
             title={stakeholderRegulation.title}
-            postAction={() => { }}
+            postAction={() => {}}
           />
 
           <RowOptions

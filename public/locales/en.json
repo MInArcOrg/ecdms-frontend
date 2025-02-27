@@ -1459,6 +1459,16 @@
       "phone": "Phone",
       "email": "Email",
       "branch": "Branch"
+    },
+    "stakeholder-department": {
+      "title": "Stakeholder Departments",
+      "create": "Create Department",
+      "edit": "Edit Department",
+      "details": "Department Details",
+      "name": "Department Name",
+      "parentDepartment": "Parent Department",
+      "description": "Description",
+      "reference": "Reference"
     }
   },
   "address": {
