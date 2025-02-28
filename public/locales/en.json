@@ -351,7 +351,10 @@
       "budget-code": "Budget Code",
       "procurement-number": "Procurement Number",
       "remark": "Remark",
-      "status": "Status"
+      "status": "Status",
+      "grade": "Grade",
+      "end-user": "End User",
+      "function": "Function"
     },
     "general-information": {
       "client": "Client",
@@ -1041,8 +1044,69 @@
       "form": {
         "main-contract-price": "Main Contract Price",
         "rebate": "Rebate",
-        "remark": "Remark"
+        "remark": "Remark",
+        "source-of-finance": "Source of Finance"
       }
+    },
+    "project-manager": {
+      "title": "Project Managers",
+      "create": "Create Project Manager",
+      "edit": "Edit Project Manager",
+      "details": "Project Manager Details",
+      "position": "Position",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "nationalIdNo": "National ID No",
+      "gender": "Gender",
+      "phone": "Phone",
+      "email": "Email",
+      "stakeholder":"Stakeholder"
+    },
+    "project-contact-person": {
+      "title": "Project Contact Persons",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "position": "Position",
+      "department": "Department",
+      "nationalIdNo": "National ID No",
+      "gender": "Gender",
+      "phone": "Phone",
+      "email": "Email",
+      "stakeholder": "Stakeholder",
+      "details": "Contact Person Details",
+      "create": "Create Contact Person",
+      "edit": "Edit Contact Person"
+    },
+    "safety-status": {
+      "title": "Project Safety Status",
+      "fatal-injuries": "Fatal Injuries",
+      "major-injuries": "Major Injuries",
+      "minor-injuries": "Minor Injuries",
+      "measures-taken": "Measures Taken",
+      "lesson-learned": "Lesson Learned",
+      "details": "Safety Status Details",
+      "create": "Create Safety Status",
+      "edit": "Edit Safety Status"
+    },
+    "quality": {
+      "title": "Project Quality",
+      "major-quality-problem-encountered": "Major Quality Problem Encountered",
+      "description": "Description",
+      "measures-taken": "Measures Taken",
+      "lesson-learned": "Lesson Learned",
+      "details": "Quality Details",
+      "create": "Create Quality",
+      "edit": "Edit Quality"
+    },
+    "construction-type": {
+      "title": "Construction Types",
+      "construction-type": "Construction Type",
+      "description": "Description",
+      "create": "Create Construction Type",
+      "edit": "Edit Construction Type",
+      "details": "Construction Type Details"
     }
   },
   "location": {

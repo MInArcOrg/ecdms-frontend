@@ -8,16 +8,19 @@ import { ProjectFinance } from 'src/types/project';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-const MainContractPriceCard = ({
-  projectFinance,
-  refetch,
-  onEdit
-}: {
-  projectFinance: ProjectFinance;
-  refetch: () => void;
-  onEdit: (address: ProjectFinance) => void;
-}) => {
-  const { t } = useTranslation();
+  const MainContractPriceCard = ({
+    projectFinance,
+    refetch,
+    onEdit,
+    onDelete,
+  }: {
+    projectFinance: ProjectFinance
+    refetch: () => void
+    onEdit: (projectFinance: ProjectFinance) => void
+    onDelete: (id: string) => void
+  }) => {
+    const { t } = useTranslation()
+  
 
   return (
     <Card sx={{ mx: 'auto', mt: 4 }}>
@@ -59,7 +62,7 @@ const MainContractPriceCard = ({
                     throw new Error('Function not implemented.');
                   }}
                 />
-                <RowOptions onEdit={onEdit} item={projectFinance} options={[]} />
+                <RowOptions onEdit={onEdit} onDelete={() => onDelete(projectFinance.id)} item={projectFinance} options={[]} />
               </Box>
             </Box>
           </Fragment>
