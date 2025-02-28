@@ -60,7 +60,7 @@ const ProjectExtensionTimeCard = ({
               subject: 'projectextensiontime'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'projectextensiontime'
             }}
             item={projectExtensionTime}
