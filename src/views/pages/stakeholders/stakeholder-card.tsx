@@ -63,7 +63,7 @@ const StakeholderCard = ({
                   subject: 'stakeholder',
                 }}
                 editPermissionRule={{
-                  action: 'edit',
+                  action: 'update',
                   subject: 'stakeholder'
                 }}
                 options={[]}

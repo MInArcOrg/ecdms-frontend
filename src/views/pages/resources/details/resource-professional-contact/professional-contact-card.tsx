@@ -67,7 +67,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact, refetch, onEdit, onD
             subject: 'professionalcontact'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'professionalcontact'
           }}
           onEdit={() => onEdit(contact)}
@@ -80,4 +80,4 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact, refetch, onEdit, onD
   );
 };
 
-export default ContactCard; 
+export default ContactCard;

@@ -33,7 +33,7 @@ const ContactList: React.FC<ContactListProps> = ({ professionalId }) => {
       ...params,
       filter: { ...params.filter, professional_id: professionalId }
     });
-    
+
     return professionalContactApiService.getAll({
       ...params,
       filter: { ...params.filter, professional_id: professionalId }
@@ -135,4 +135,4 @@ const ContactList: React.FC<ContactListProps> = ({ professionalId }) => {
   );
 };
 
-export default ContactList; 
+export default ContactList;

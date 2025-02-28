@@ -7,7 +7,7 @@ import menuItems from 'src/pages/master-data/general/(menuItems)'; // Ensure thi
 import { Icon } from '@iconify/react'; // Ensure you have iconify/react installed
 import { useTranslation } from 'react-i18next';
 
-function GeneralLayout({ children }: { children: ReactElement }) {
+function GeneralMasterLayout({ children }: { children: ReactElement }) {
   const router = useRouter();
   const { t } = useTranslation();
   const initialOpenId = router.asPath.includes('project') ? 2 : router.asPath.includes('resource') ? 3 : 1;
@@ -75,4 +75,4 @@ function GeneralLayout({ children }: { children: ReactElement }) {
   );
 }
 
-export default GeneralLayout;
+export default GeneralMasterLayout;

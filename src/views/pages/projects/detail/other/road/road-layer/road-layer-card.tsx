@@ -90,7 +90,7 @@ const RoadLayerCard: React.FC<RoadLayerCardProps> = ({ roadLayer, refetch, onEdi
             subject: 'roadlayer'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'roadlayer'
           }}
           options={[]}
