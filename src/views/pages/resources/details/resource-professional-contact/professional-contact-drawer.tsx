@@ -25,11 +25,9 @@ const ContactDrawer = (props: ContactDrawerType) => {
 
   const isEdit = Boolean(contact?.id);
 
-  const createContact = async (body: IApiPayload<ProfessionalContact>) => 
-    professionalContactApiService.create(body);
+  const createContact = async (body: IApiPayload<ProfessionalContact>) => professionalContactApiService.create(body);
 
-  const editContact = async (body: IApiPayload<ProfessionalContact>) => 
-    professionalContactApiService.update(contact?.id || '', body);
+  const editContact = async (body: IApiPayload<ProfessionalContact>) => professionalContactApiService.update(contact?.id || '', body);
 
   const getPayload = (values: ProfessionalContact) => ({
     data: {
@@ -48,11 +46,7 @@ const ContactDrawer = (props: ContactDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer
-      title={`professional.contact.${isEdit ? 'edit' : 'create'}`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`professional.contact.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
@@ -66,9 +60,7 @@ const ContactDrawer = (props: ContactDrawerType) => {
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<ProfessionalContact>) => (
-            <ContactForm formik={formik} />
-          )}
+          {(formik: FormikProps<ProfessionalContact>) => <ContactForm formik={formik} />}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

@@ -9,12 +9,7 @@ function Index() {
 
   return (
     <ResourceLayout activeMenu={0} activeSubMenu={0} subMenuItems={subMenuItems(id as string, typeId as string)}>
-
-      <ProfessionalAddressList
-        model="professional-address"
-        professionalId={String(id)}
-        typeId={String(typeId)}
-      />
+      <ProfessionalAddressList model="professional-address" professionalId={String(id)} typeId={String(typeId)} />
     </ResourceLayout>
   );
 }

@@ -66,7 +66,7 @@ const ProjectFileCard = ({
                     subject: 'file'
                   }}
                   editPermissionRule={{
-                    action: 'edit',
+                    action: 'update',
                     subject: 'file'
                   }}
                   onEdit={onEdit}

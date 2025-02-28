@@ -95,7 +95,7 @@ const StakeholderStudyFieldCard: React.FC<StakeholderStudyFieldCardProps> = ({
             subject: 'stakeholderstudyfield'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholderstudyfield'
           }}
         />

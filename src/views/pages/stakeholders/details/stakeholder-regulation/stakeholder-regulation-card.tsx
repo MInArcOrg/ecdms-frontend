@@ -69,9 +69,9 @@ const StakeholderRegulationCard = ({
             model="Regulation"
             model_id={stakeholderRegulation.id}
             refetchModel={refetch}
-            resubmit={() => {}}
+            resubmit={() => { }}
             title={stakeholderRegulation.title}
-            postAction={() => {}}
+            postAction={() => { }}
           />
 
           <RowOptions
@@ -82,7 +82,7 @@ const StakeholderRegulationCard = ({
               subject: 'regulation'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'regulation'
             }}
             item={stakeholderRegulation}

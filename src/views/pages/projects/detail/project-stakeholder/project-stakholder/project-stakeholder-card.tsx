@@ -49,7 +49,7 @@ const ProjectStakeholderCard = ({
               subject: 'projectstakeholder'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'projectstakeholder'
             }}
             onEdit={onEdit}
