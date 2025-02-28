@@ -47,12 +47,7 @@ const AreaTopographyMasterList: React.FC = () => {
   return (
     <Fragment>
       {showDrawer && (
-        <AreaTopographyMasterDrawer
-          open={showDrawer}
-          toggle={toggleDrawer}
-          masterData={selectedRow as AreaTopography}
-          refetch={refetch}
-        />
+        <AreaTopographyMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as AreaTopography} refetch={refetch} />
       )}
       <Card>
         <CardContent>

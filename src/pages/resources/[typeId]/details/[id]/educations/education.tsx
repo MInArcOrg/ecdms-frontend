@@ -9,7 +9,7 @@ function ProfessionalEducationIndex() {
 
   return (
     <ResourceLayout activeMenu={1} activeSubMenu={0} subMenuItems={subMenuItems(id as string, typeId as string)}>
-    <ProfessionalEducationList model="professional-education" professionalId={String(id)} typeId={String(typeId)} />
+      <ProfessionalEducationList model="professional-education" professionalId={String(id)} typeId={String(typeId)} />
     </ResourceLayout>
   );
 }

@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import {  SoilType } from 'src/types/general/general-master';
+import { SoilType } from 'src/types/general/general-master';
 import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
 import axiosServices from 'src/utils/axios';
 import { buildGetRequest } from 'src/utils/requests/get-request';

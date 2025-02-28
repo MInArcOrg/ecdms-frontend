@@ -20,13 +20,25 @@ const ExperienceForm: React.FC<ExperienceFormProps> = ({ formik, file, onFileCha
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('resources.professional.work-experience.company-name')} name="company_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox
+          fullWidth
+          label={t('resources.professional.work-experience.company-name')}
+          name="company_name"
+          size="small"
+          sx={{ mb: 2 }}
+        />
       </Grid>
       <Grid item xs={12} sm={6}>
         <CustomTextBox fullWidth label={t('resources.professional.work-experience.position')} name="position" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('resources.professional.work-experience.department')} name="department" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox
+          fullWidth
+          label={t('resources.professional.work-experience.department')}
+          name="department"
+          size="small"
+          sx={{ mb: 2 }}
+        />
       </Grid>
       <Grid item xs={12}>
         <CustomTextBox

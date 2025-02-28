@@ -24,9 +24,9 @@ interface ProjectQualityDrawerType {
 //   lesson_learned: yup.string().required(),
 // });
 
-  const validationSchema = yup.object().shape({
-    major_quality_problem_encountered: yup.string().required("Major Quality Problem Encountered is required"),
-  })
+const validationSchema = yup.object().shape({
+  major_quality_problem_encountered: yup.string().required('Major Quality Problem Encountered is required')
+});
 
 const ProjectQualityDrawer: React.FC<ProjectQualityDrawerType> = (props) => {
   const { open, toggle, refetch, projectQuality, projectId } = props;
@@ -50,9 +50,9 @@ const ProjectQualityDrawer: React.FC<ProjectQualityDrawerType> = (props) => {
     data: {
       ...values,
       id: projectQuality?.id,
-      project_id: projectId,
+      project_id: projectId
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => {
@@ -73,15 +73,11 @@ const ProjectQualityDrawer: React.FC<ProjectQualityDrawerType> = (props) => {
   };
 
   return (
-    <CustomSideDrawer
-      title={`project.quality.${isEdit ? 'edit' : 'create'}`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`project.quality.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.quality.${isEdit ? "edit" : "create"}`}
+          title={`project.quality.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={projectQuality}

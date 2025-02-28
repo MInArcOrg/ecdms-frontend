@@ -72,8 +72,14 @@ const JointVentureCompanyList: React.FC<JointVentureCompanyListProps> = ({ stake
   const mapJointVentureCompanyToDetailItems = (jointVentureCompany: JointVentureCompany): { title: string; value: string }[] => [
     { title: t('stakeholder.joint-venture-company.companyName'), value: jointVentureCompany.company_name },
     { title: t('stakeholder.joint-venture-company.specialization'), value: jointVentureCompany.specialization || 'N/A' },
-    { title: t('stakeholder.joint-venture-company.rolesAndResponsibilities'), value: jointVentureCompany.roles_and_responsibilities || 'N/A' },
-    { title: t('stakeholder.joint-venture-company.ownershipPercentage'), value: jointVentureCompany.ownership_percentage?.toString() || 'N/A' },
+    {
+      title: t('stakeholder.joint-venture-company.rolesAndResponsibilities'),
+      value: jointVentureCompany.roles_and_responsibilities || 'N/A'
+    },
+    {
+      title: t('stakeholder.joint-venture-company.ownershipPercentage'),
+      value: jointVentureCompany.ownership_percentage?.toString() || 'N/A'
+    },
     { title: t('stakeholder.joint-venture-company.description'), value: jointVentureCompany.description },
     { title: t('stakeholder.joint-venture-company.reference'), value: jointVentureCompany.reference },
     {

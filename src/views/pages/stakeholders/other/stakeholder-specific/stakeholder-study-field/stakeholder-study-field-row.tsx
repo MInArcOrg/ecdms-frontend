@@ -18,87 +18,87 @@ export const stakeholderStudyFieldColumns = (
   t: any,
   refetch: () => void
 ): GridColDef[] => [
-    {
-      flex: 0.2,
-      minWidth: 120,
-      field: 'id',
-      headerName: 'ID',
-      renderCell: ({ row }: CellType) => (
-        <Typography
-          noWrap
-          component={Button}
-          onClick={() => onDetail(row)}
-          sx={{
-            fontWeight: 500,
-            textDecoration: 'none',
-            color: 'text.secondary',
-            '&:hover': { color: 'primary.main' }
-          }}
-        >
-          {row.id.slice(0, 5)}...
-        </Typography>
-      )
-    },
-    {
-      flex: 0.2,
-      minWidth: 150,
-      headerName: t('stakeholder.other.stakeholder-study-field.details.title'),
-      field: 'studyfield.title', // Accessing title through studyfield
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row.studyfield?.title || t('common.not-available')}</Typography>
-      )
-    },
-    {
-      flex: 0.2,
-      minWidth: 150,
-      headerName: t('stakeholder.other.stakeholder-study-field.details.description'),
-      field: 'studyfield.description', // Accessing description through studyfield
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row.studyfield?.description || t('common.not-available')}</Typography>
-      )
-    },
+  {
+    flex: 0.2,
+    minWidth: 120,
+    field: 'id',
+    headerName: 'ID',
+    renderCell: ({ row }: CellType) => (
+      <Typography
+        noWrap
+        component={Button}
+        onClick={() => onDetail(row)}
+        sx={{
+          fontWeight: 500,
+          textDecoration: 'none',
+          color: 'text.secondary',
+          '&:hover': { color: 'primary.main' }
+        }}
+      >
+        {row.id.slice(0, 5)}...
+      </Typography>
+    )
+  },
+  {
+    flex: 0.2,
+    minWidth: 150,
+    headerName: t('stakeholder.other.stakeholder-study-field.details.title'),
+    field: 'studyfield.title', // Accessing title through studyfield
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>{row.studyfield?.title || t('common.not-available')}</Typography>
+    )
+  },
+  {
+    flex: 0.2,
+    minWidth: 150,
+    headerName: t('stakeholder.other.stakeholder-study-field.details.description'),
+    field: 'studyfield.description', // Accessing description through studyfield
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>{row.studyfield?.description || t('common.not-available')}</Typography>
+    )
+  },
 
-    {
-      flex: 0.2,
-      minWidth: 150,
-      headerName: t('common.table-columns.created-at'),
-      field: 'created_at',
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>
-          {row.created_at ? formatCreatedAt(row.created_at) : t('common.not-available')}
-        </Typography>
-      )
-    },
-    {
-      minWidth: 150,
-      sortable: false,
-      field: 'actions',
-      headerName: t('common.table-columns.actions'),
-      renderCell: ({ row }: CellType) => (
-        <Fragment>
-          <ModelAction
-            model="StakeholderStudyField"
-            model_id={row.id}
-            refetchModel={refetch}
-            resubmit={() => { }}
-            title=""
-            postAction={() => { }}
-          />
-          <RowOptions
-            onEdit={() => onEdit(row)}
-            onDelete={() => onDelete(row.id)}
-            item={row}
-            options={[]}
-            deletePermissionRule={{
-              action: 'delete',
-              subject: 'stakeholderstudyfield'
-            }}
-            editPermissionRule={{
-              action: 'update',
-              subject: 'stakeholderstudyfield'
-            }}
-          />
-        </Fragment>
-      )
-    }
-  ];
+  {
+    flex: 0.2,
+    minWidth: 150,
+    headerName: t('common.table-columns.created-at'),
+    field: 'created_at',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row.created_at ? formatCreatedAt(row.created_at) : t('common.not-available')}
+      </Typography>
+    )
+  },
+  {
+    minWidth: 150,
+    sortable: false,
+    field: 'actions',
+    headerName: t('common.table-columns.actions'),
+    renderCell: ({ row }: CellType) => (
+      <Fragment>
+        <ModelAction
+          model="StakeholderStudyField"
+          model_id={row.id}
+          refetchModel={refetch}
+          resubmit={() => {}}
+          title=""
+          postAction={() => {}}
+        />
+        <RowOptions
+          onEdit={() => onEdit(row)}
+          onDelete={() => onDelete(row.id)}
+          item={row}
+          options={[]}
+          deletePermissionRule={{
+            action: 'delete',
+            subject: 'stakeholderstudyfield'
+          }}
+          editPermissionRule={{
+            action: 'update',
+            subject: 'stakeholderstudyfield'
+          }}
+        />
+      </Fragment>
+    )
+  }
+];
