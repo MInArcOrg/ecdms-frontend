@@ -81,8 +81,11 @@
       "create-span-support-type": "Create Span Support Type",
       "edit-span-support-type": "Edit Span Support Type",
       "damage-conditions": "Damage Conditions",
-      "create-damage-conditions": "Create Damage Conditions",
-      "edit-damage-conditions": "Edit Damage Conditions"
+      "create-damage-condition": "Create Damage Conditions",
+      "edit-damage-condition": "Edit Damage Conditions",
+      "hydrology-defects": "Hydrology Defects",
+      "create-hydrology-defect": "Create Hydrology Defect",
+      "edit-hydrology-defect": "Edit Hydrology Defect"
     },
     "form": {
       "title": "Title",
