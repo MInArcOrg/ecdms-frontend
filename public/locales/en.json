@@ -88,7 +88,10 @@
       "edit-hydrology-defect": "Edit Hydrology Defect",
       "count-types": "Count Types",
       "create-count-type": "Create Count Type",
-      "edit-count-type": "Edit Count Type"
+      "edit-count-type": "Edit Count Type",
+      "road-safety-features": "Road Safety Features",
+      "create-road-safety-feature": "Create Road Safety Feature",
+      "edit-road-safety-feature": "Edit Road Safety Feature"
     },
     "form": {
       "title": "Title",
