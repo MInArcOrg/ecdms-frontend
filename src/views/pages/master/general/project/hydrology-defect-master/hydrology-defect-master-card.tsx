@@ -1,20 +1,20 @@
-// components/DamageConditionList.tsx
+// components/HydrologyDefectList.tsx
 import { Box, CardActions, CardContent, Grid, Typography } from '@mui/material';
 import { Fragment } from 'react';
-import { DamageCondition } from 'src/types/general/general-master';
+import { HydrologyDefect } from 'src/types/general/general-master';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-const DamageConditionMasterCard = ({
+const HydrologyDefectMasterCard = ({
   generalMaster,
   onEdit,
   onDelete,
   refetch
 }: {
   type: string;
-  generalMaster: DamageCondition;
-  onEdit: (category: DamageCondition) => void;
+  generalMaster: HydrologyDefect;
+  onEdit: (category: HydrologyDefect) => void;
   onDelete: (id: string) => void;
   t: any;
   refetch: () => void;
@@ -38,9 +38,9 @@ const DamageConditionMasterCard = ({
           <Grid item>
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id} type="DAMAGE_CONDITION" /> &nbsp;
+                <FileDrawer id={generalMaster.id} type="HYDROLOGY_DEFECT" /> &nbsp;
                 <ModelActionComponent
-                  model={'damagecondition'}
+                  model={'hydrologydefect'}
                   model_id={generalMaster.id}
                   refetchModel={refetch}
                   resubmit={function (): void {
@@ -58,11 +58,11 @@ const DamageConditionMasterCard = ({
                   options={[]}
                   deletePermissionRule={{
                     action: 'delete',
-                    subject: 'damagecondition'
+                    subject: 'hydrologydefect'
                   }}
                   editPermissionRule={{
                     action: 'update',
-                    subject: 'damagecondition'
+                    subject: 'hydrologydefect'
                   }}
                 />
               </Fragment>
@@ -73,4 +73,4 @@ const DamageConditionMasterCard = ({
     </Fragment>
   );
 };
-export default DamageConditionMasterCard;
+export default HydrologyDefectMasterCard;
