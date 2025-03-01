@@ -91,6 +91,10 @@ const menuItems = (t: (item: string) => void) => [
         id: 9,
         title: t('master-data.general-master.span-support-types'),
         path: `${baseUrl}/project/span-support-types/`
+      }, {
+        id: 10,
+        title: t('master-data.general-master.damage-conditions'),
+        path: `${baseUrl}/project/damage-conditions/`
       }
     ]
   },
