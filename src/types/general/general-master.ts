@@ -120,3 +120,12 @@ export interface HydrologyDefect {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface CountType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}

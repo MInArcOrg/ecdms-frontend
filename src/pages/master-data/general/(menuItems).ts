@@ -101,6 +101,11 @@ const menuItems = (t: (item: string) => void) => [
         id: 11,
         title: t('master-data.general-master.hydrology-defects'),
         path: `${baseUrl}/project/hydrology-defects/`
+      },
+      {
+        id: 12,
+        title: t('master-data.general-master.count-types'),
+        path: `${baseUrl}/project/count-types/`
       }
     ]
   },
