@@ -85,7 +85,10 @@
       "edit-damage-condition": "Edit Damage Conditions",
       "hydrology-defects": "Hydrology Defects",
       "create-hydrology-defect": "Create Hydrology Defect",
-      "edit-hydrology-defect": "Edit Hydrology Defect"
+      "edit-hydrology-defect": "Edit Hydrology Defect",
+      "count-types": "Count Types",
+      "create-count-type": "Create Count Type",
+      "edit-count-type": "Edit Count Type"
     },
     "form": {
       "title": "Title",
