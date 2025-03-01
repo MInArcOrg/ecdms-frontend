@@ -5,15 +5,15 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import HydrologyDefectMasterForm from './hydrology-defect-master-form';
-import { HydrologyDefect } from 'src/types/general/general-master';
-import hydrologyDefectMasterService from 'src/services/general/project/hydrology-defect-master-service';
+import RoadSafetyFeatureMasterForm from './road-safety-feature-master-form';
+import { RoadSafetyFeature } from 'src/types/general/general-master';
+import roadSafetyMasterService from 'src/services/general/project/road-safety-feature-master-service';
 
-interface HydrologyDefectMasterDrawerType {
+interface RoadSafetyFeatureMasterDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  masterData: HydrologyDefect;
+  masterData: RoadSafetyFeature;
 }
 
 const validationSchema = yup.object().shape({
@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
   description: yup.string().required('Description is required')
 });
 
-const HydrologyDefectMasterDrawer = (props: HydrologyDefectMasterDrawerType) => {
+const RoadSafetyFeatureMasterDrawer = (props: RoadSafetyFeatureMasterDrawerType) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,15 +29,15 @@ const HydrologyDefectMasterDrawer = (props: HydrologyDefectMasterDrawerType) => 
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createHydrologyDefectMaster = async (body: IApiPayload<HydrologyDefect>) => {
-    return await hydrologyDefectMasterService.create(body);
+  const createRoadSafetyFeatureMaster = async (body: IApiPayload<RoadSafetyFeature>) => {
+    return await roadSafetyMasterService.create(body);
   };
 
-  const editHydrologyDefectMaster = async (body: IApiPayload<HydrologyDefect>) => {
-    return await hydrologyDefectMasterService.update(masterData?.id || '', body);
+  const editRoadSafetyFeatureMaster = async (body: IApiPayload<RoadSafetyFeature>) => {
+    return await roadSafetyMasterService.update(masterData?.id || '', body);
   };
 
-  const getPayload = (values: HydrologyDefect) => {
+  const getPayload = (values: RoadSafetyFeature) => {
     const payload = {
       data: {
         ...values,
@@ -52,7 +52,7 @@ const HydrologyDefectMasterDrawer = (props: HydrologyDefectMasterDrawerType) => 
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<HydrologyDefect>, payload: IApiPayload<HydrologyDefect>) => {
+  const onActionSuccess = async (response: IApiResponse<RoadSafetyFeature>, payload: IApiPayload<RoadSafetyFeature>) => {
     if (payload.files.length > 0) {
       uploadFile(payload.files[0], `HYDROLOGY_DEFECT`, response.payload.id, '', '');
     }
@@ -62,29 +62,29 @@ const HydrologyDefectMasterDrawer = (props: HydrologyDefectMasterDrawerType) => 
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-hydrology-defect' : 'create-hydrology-defect'}`}
+      title={`master-data.general-master.${isEdit ? 'edit-road-safety-feature' : 'create-road-safety-feature'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
-        <FormPageWrapper<HydrologyDefect>
+        <FormPageWrapper<RoadSafetyFeature>
           edit={isEdit}
-          title="master-data.general-master.hydrology-defects"
+          title="master-data.general-master.road-safety-features"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editHydrologyDefectMaster : createHydrologyDefectMaster}
+          createActionFunc={isEdit ? editRoadSafetyFeatureMaster : createRoadSafetyFeatureMaster}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<HydrologyDefect>) => {
+          {(formik: FormikProps<RoadSafetyFeature>) => {
             return (
               <>
-                <HydrologyDefectMasterForm
+                <RoadSafetyFeatureMasterForm
                   file={uploadableFile}
                   onFileChange={onFileChange}
                   formik={formik}
-                  defaultLocaleData={{} as HydrologyDefect}
+                  defaultLocaleData={{} as RoadSafetyFeature}
                 />
               </>
             );
@@ -95,4 +95,4 @@ const HydrologyDefectMasterDrawer = (props: HydrologyDefectMasterDrawerType) => 
   );
 };
 
-export default HydrologyDefectMasterDrawer;
+export default RoadSafetyFeatureMasterDrawer;
