@@ -38,7 +38,7 @@ const DamageConditionMasterCard = ({
           <Grid item>
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id} type="ROAD_LENGTH_TYPE" /> &nbsp;
+                <FileDrawer id={generalMaster.id} type="DAMAGE_CONDITION" /> &nbsp;
                 <ModelActionComponent
                   model={'damagecondition'}
                   model_id={generalMaster.id}
