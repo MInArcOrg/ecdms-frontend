@@ -96,7 +96,6 @@
     "form": {
       "title": "Title",
       "description": "Description",
-      "project-type": "Project Type",
       "study-program": "Study Program",
       "study-level": "Study Level",
       "stakeholder-type-specific-models": "Stakeholder type Specific models",
@@ -1579,6 +1578,15 @@
       "quantity": "Quantity",
       "current-situation": "Current Situation",
       "location": "Location"
+    },
+    "branch-additional-information": {
+      "title": "Branch Additional Information",
+      "create": "Create Additional Information",
+      "edit": "Edit Additional Information",
+      "details": "Additional Information Details",
+      "branch": "Branch",
+      "additionalInformation": "Additional Information",
+      "reference": "Reference"
     }
   },
   "address": {
