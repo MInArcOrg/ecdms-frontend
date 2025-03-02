@@ -1,55 +1,62 @@
-import { Grid } from '@mui/material';
-import type { FormikProps } from 'formik';
-import type React from 'react';
+import { Box } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
+import { FormikProps } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { gridSpacing } from 'src/configs/app-constants';
-import type { ProfessionalWorkExperience } from 'src/types/resource';
+import generalMasterDataApiService from 'src/services/general/general-master-data-service';
+import { ResourceWorkExperience } from 'src/types/resource';
+import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomDatePicker from 'src/views/shared/form/custom-date-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
-interface ExperienceFormProps {
-  formik: FormikProps<ProfessionalWorkExperience>;
+interface ResourceWorkExperienceFormProps {
+  formik: FormikProps<ResourceWorkExperience>;
+
+  defaultLocaleData?: ResourceWorkExperience;
   file: File | null;
   onFileChange: (file: File | null) => void;
 }
 
-const ExperienceForm: React.FC<ExperienceFormProps> = ({ formik, file, onFileChange }) => {
-  const { t } = useTranslation();
+const ResourceWorkExperienceForm: React.FC<ResourceWorkExperienceFormProps> = ({
+  formik,
+
+  file,
+  onFileChange
+}) => {
+  console.log('Resource Values', formik.values);
+  const { t: transl } = useTranslation();
+  const { data: resourceCategories } = useQuery({
+    queryKey: ['general-master', 'study-fields'],
+    queryFn: () => generalMasterDataApiService.getAll('study-fields', {})
+  });
 
   return (
-    <Grid container spacing={gridSpacing}>
-      <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('resources.professional.work-experience.company-name')} name="company_name" size="small" sx={{ mb: 2 }} />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('resources.professional.work-experience.position')} name="position" size="small" sx={{ mb: 2 }} />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('resources.professional.work-experience.department')} name="department" size="small" sx={{ mb: 2 }} />
-      </Grid>
-      <Grid item xs={12}>
-        <CustomTextBox
-          fullWidth
-          multiline
-          rows={3}
-          label={t('resources.professional.work-experience.task-description')}
-          name="task_description"
+    <>
+      <Box mb={2}>
+        <CustomSelect
           size="small"
-          sx={{ mb: 2 }}
+          name="workexperience_id"
+          label={transl('resource.resource-study-field.form.workexperience')}
+          options={
+            resourceCategories?.payload?.map((resourceCategory) => ({
+              value: resourceCategory.id,
+              label: resourceCategory.title
+            })) || []
+          }
         />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <CustomDatePicker fullWidth label={t('resources.professional.work-experience.start-date')} name="start_date" sx={{ mb: 2 }} />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <CustomDatePicker fullWidth label={t('resources.professional.work-experience.end-date')} name="end_date" sx={{ mb: 2 }} />
-      </Grid>
-      <Grid item xs={12}>
-        <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />
-      </Grid>
-    </Grid>
+      </Box>
+
+      <CustomTextBox
+        fullWidth
+        label={transl('resource.resource-study-field.form.description')}
+        placeholder={transl('resource.resource-study-field.form.description')}
+        name="description"
+        multiline={true}
+        rows="4"
+        size="small"
+        sx={{ mb: 2 }}
+      />
+      <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
+    </>
   );
 };
-
-export default ExperienceForm;
+export default ResourceWorkExperienceForm;

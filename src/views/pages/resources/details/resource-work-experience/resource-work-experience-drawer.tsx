@@ -1,51 +1,50 @@
-import type { FormikProps } from 'formik';
-import type { IApiPayload } from 'src/types/requests';
+import { FormikProps } from 'formik';
+import React, { useState } from 'react';
+import resourceWorkExperienceApiService from 'src/services/resource/resource-work-experience-service';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import { ResourceWorkExperience } from 'src/types/resource';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import ExperienceForm from './resource-work-experience-form';
-import professionalWorkExperienceApiService from 'src/services/resource/professional-work-experience-service';
-import type { ProfessionalWorkExperience } from 'src/types/resource';
-import type { IApiResponse } from 'src/types/requests';
-import { uploadFile } from 'src/services/utils/file-utils';
+import ResourceWorkExperienceForm from './resource-work-experience-form';
 import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
-import { useState } from 'react';
 
-interface ExperienceDrawerType {
+interface ResourceWorkExperienceDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  experience: ProfessionalWorkExperience;
-  professionalId: string;
+  resourceId: string;
+  resourceWorkExperience: ResourceWorkExperience;
 }
 
-const ExperienceDrawer = (props: ExperienceDrawerType) => {
-  const { open, toggle, refetch, experience, professionalId } = props;
+const validationSchema = yup.object().shape({
+  workexperience_id: yup.string().required(),
+  description: yup.string().required()
+});
+
+const ResourceWorkExperienceDrawer: React.FC<ResourceWorkExperienceDrawerType> = (props) => {
+  const { open, toggle, refetch, resourceWorkExperience, resourceId } = props;
+
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
-  const validationSchema = yup.object().shape({
-    company_name: yup.string().required('Company name is required'),
-    position: yup.string().required('Position is required'),
-    task_description: yup.string().required('Task description is required'),
-    start_date: yup.date().required('Start date is required'),
-    end_date: yup.date().required('End date is required')
-  });
-
-  const isEdit = Boolean(experience?.id);
-
-  const createExperience = async (body: IApiPayload<ProfessionalWorkExperience>): Promise<IApiResponse<ProfessionalWorkExperience>> => {
-    return professionalWorkExperienceApiService.create(body);
+  const isEdit = resourceWorkExperience?.id ? true : false;
+  const onFileChange = (file: File | null) => {
+    setUploadableFile(file);
+  };
+  const createResourceWorkExperience = async (body: IApiPayload<ResourceWorkExperience>) => {
+    return await resourceWorkExperienceApiService.create(body);
   };
 
-  const editExperience = async (body: IApiPayload<ProfessionalWorkExperience>): Promise<IApiResponse<ProfessionalWorkExperience>> => {
-    return professionalWorkExperienceApiService.update(experience?.id || '', body);
+  const editResourceWorkExperience = async (body: IApiPayload<ResourceWorkExperience>) => {
+    return await resourceWorkExperienceApiService.update(resourceWorkExperience?.id || '', body);
   };
 
-  const getPayload = (values: ProfessionalWorkExperience) => ({
+  const getPayload = (values: ResourceWorkExperience) => ({
     data: {
       ...values,
-      id: experience?.id,
-      professional_id: professionalId
+      id: resourceWorkExperience?.id,
+      resource_id: resourceId
     },
     files: uploadableFile ? [uploadableFile] : []
   });
@@ -55,43 +54,47 @@ const ExperienceDrawer = (props: ExperienceDrawerType) => {
     setUploadableFile(null);
   };
 
-  const onActionSuccess = async (response: IApiResponse<ProfessionalWorkExperience>, payload: IApiPayload<ProfessionalWorkExperience>) => {
-    try {
-      if (!response.payload?.id) throw new Error('Missing experience ID in response');
-      const experienceId = response.payload.id;
-
-      if (payload.files?.length) {
-        await uploadFile(payload.files[0], uploadableResourceFileTypes.professionalWorkExperience, experienceId, '', '');
-      }
-      refetch();
-      handleClose();
-    } catch (error) {}
+  const onActionSuccess = async (response: IApiResponse<ResourceWorkExperience>, payload: IApiPayload<ResourceWorkExperience>) => {
+    if (payload.files.length > 0) {
+      uploadFile(payload.files[0], uploadableResourceFileTypes.resourceWorkExperience, response.payload.id, '', '');
+    }
+    refetch();
+    toggle();
+    refetch();
+    handleClose();
   };
 
   return (
-    <CustomSideDrawer title={`resources.professional.work-experience.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={`resource.resource-study-field.${isEdit ? 'edit-resource-study-field' : 'create-resource-study-field'}`}
+      handleClose={handleClose}
+      open={open}
+    >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`resources.professional.work-experience.${isEdit ? 'edit' : 'create'}`}
+          title="resource.resource-study-field.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{
-            ...(experience as ProfessionalWorkExperience),
-            start_date: experience?.start_date ? experience.start_date.split('T')[0] : '',
-            end_date: experience?.end_date ? experience.end_date.split('T')[0] : ''
-          }}
-          createActionFunc={isEdit ? editExperience : createExperience}
+          initialValues={resourceWorkExperience}
+          createActionFunc={isEdit ? editResourceWorkExperience : createResourceWorkExperience}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<ProfessionalWorkExperience>) => (
-            <ExperienceForm formik={formik} file={uploadableFile} onFileChange={setUploadableFile} />
-          )}
+          {(formik: FormikProps<ResourceWorkExperience>) => {
+            return (
+              <ResourceWorkExperienceForm
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+                defaultLocaleData={{} as ResourceWorkExperience}
+              />
+            );
+          }}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>
   );
 };
 
-export default ExperienceDrawer;
+export default ResourceWorkExperienceDrawer;

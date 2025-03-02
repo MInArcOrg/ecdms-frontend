@@ -66,11 +66,11 @@ const BranchContactPersonDrawer = (props: BranchContactPersonDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`stakeholder.stakeholder-branch-contact-person.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`stakeholderBranchContactPerson.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`stakeholder.stakeholder-branch-contact-person.${isEdit ? 'edit' : 'create'}`}
+          title={`stakeholderBranchContactPerson.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

@@ -1,6 +1,6 @@
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import OtherSubMenu from 'src/views/shared/layouts/other/others-sub-menu';
-import { ReactNode } from 'react';
+import { ReactNode, useMemo } from 'react';
 import OtherLayout from 'src/views/shared/layouts/other/other-layout';
 
 interface OtherProjectLayoutProps {
@@ -13,9 +13,10 @@ interface OtherProjectLayoutProps {
 }
 
 const ProjectOtherLayout: React.FC<OtherProjectLayoutProps> = (props) => {
-  const { baseUrl, subMenuItems } = props;
+  // Memoize the subMenuItems to prevent unnecessary recalculations and re-renders
+  const memoizedSubMenuItems = useMemo(() => props.subMenuItems(props.baseUrl), [props.baseUrl, props.subMenuItems]);
 
-  return <OtherLayout layoutComponent={ProjectLayout} subMenuComponent={OtherSubMenu} {...props} subMenuItems={subMenuItems(baseUrl)} />;
+  return <OtherLayout layoutComponent={ProjectLayout} subMenuComponent={OtherSubMenu} {...props} subMenuItems={memoizedSubMenuItems} />;
 };
 
 export default ProjectOtherLayout;

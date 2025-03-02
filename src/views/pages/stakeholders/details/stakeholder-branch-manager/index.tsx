@@ -1,5 +1,3 @@
-'use client';
-
 import { Box } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -90,20 +88,20 @@ const BranchManagerList: React.FC<BranchManagerListProps> = ({ stakeholderId }) 
   };
 
   const getBranchName = (id: string) => {
-    if (!stakeholderBranches) return 'N/A';
     const branch = stakeholderBranches.find((b) => b.id === id);
     return branch ? branch.name : 'N/A';
   };
 
   const mapBranchManagerToDetailItems = (branchManager: StakeholderBranchManager): { title: string; value: string }[] => [
-    { title: t('stakeholder.stakeholder-branch-manager.firstName'), value: branchManager.first_name },
-    { title: t('stakeholder.stakeholder-branch-manager.lastName'), value: branchManager.last_name },
-    { title: t('stakeholder.stakeholder-branch-manager.department'), value: branchManager.department },
-    { title: t('stakeholder.stakeholder-branch-manager.position'), value: branchManager.position },
-    { title: t('stakeholder.stakeholder-branch-manager.branch'), value: getBranchName(branchManager.stakeholder_branch_id) },
-    { title: t('stakeholder.stakeholder-branch-manager.gender'), value: branchManager.gender },
-    { title: t('stakeholder.stakeholder-branch-manager.phone'), value: branchManager.phone },
-    { title: t('stakeholder.stakeholder-branch-manager.email'), value: branchManager.email || 'N/A' },
+    { title: t('stakeholderBranchManager.firstName'), value: branchManager.first_name },
+    { title: t('stakeholderBranchManager.middleName'), value: branchManager.middle_name },
+    { title: t('stakeholderBranchManager.lastName'), value: branchManager.last_name },
+    { title: t('stakeholderBranchManager.department'), value: branchManager.department },
+    { title: t('stakeholderBranchManager.position'), value: branchManager.position },
+    { title: t('stakeholderBranchManager.gender'), value: branchManager.gender },
+    { title: t('stakeholderBranchManager.phone'), value: branchManager.phone },
+    { title: t('stakeholderBranchManager.email'), value: branchManager.email || 'N/A' },
+    { title: t('stakeholderBranchManager.branch'), value: getBranchName(branchManager.stakeholder_branch_id) },
     {
       title: t('common.table-columns.created-at'),
       value: branchManager?.created_at ? formatCreatedAt(branchManager.created_at) : 'N/A'
@@ -133,14 +131,14 @@ const BranchManagerList: React.FC<BranchManagerListProps> = ({ stakeholderId }) 
           toggleDrawer={toggleDetailDrawer}
           data={mapBranchManagerToDetailItems(selectedRow as StakeholderBranchManager)}
           id={selectedRow?.id || ''}
-          hasReference={true}
+          hasReference={false}
           fileType="STAKEHOLDER_BRANCH_MANAGER"
-          title={t('stakeholder.stakeholder-branch-manager.details')}
+          title={t('stakeholderBranchManager.details')}
         />
       )}
 
       <ItemsListing
-        title={t('stakeholder.stakeholder-branch-manager.title')}
+        title={t('stakeholderBranchManager.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

@@ -95,16 +95,16 @@ const BranchContactPersonList: React.FC<BranchContactPersonListProps> = ({ stake
   };
 
   const mapBranchContactPersonToDetailItems = (branchContactPerson: StakeholderBranchContactPerson): { title: string; value: string }[] => [
-    { title: t('stakeholder.stakeholder-branch-contact-person.firstName'), value: branchContactPerson.first_name },
-    { title: t('stakeholder.stakeholder-branch-contact-person.middleName'), value: branchContactPerson.middle_name },
-    { title: t('stakeholder.stakeholder-branch-contact-person.lastName'), value: branchContactPerson.last_name },
-    { title: t('stakeholder.stakeholder-branch-contact-person.department'), value: branchContactPerson.department },
-    { title: t('stakeholder.stakeholder-branch-contact-person.position'), value: branchContactPerson.position },
-    { title: t('stakeholder.stakeholder-branch-contact-person.gender'), value: branchContactPerson.gender },
-    { title: t('stakeholder.stakeholder-branch-contact-person.phone'), value: branchContactPerson.phone },
-    { title: t('stakeholder.stakeholder-branch-contact-person.email'), value: branchContactPerson.email || 'N/A' },
+    { title: t('stakeholderBranchContactPerson.firstName'), value: branchContactPerson.first_name },
+    { title: t('stakeholderBranchContactPerson.middleName'), value: branchContactPerson.middle_name },
+    { title: t('stakeholderBranchContactPerson.lastName'), value: branchContactPerson.last_name },
+    { title: t('stakeholderBranchContactPerson.department'), value: branchContactPerson.department },
+    { title: t('stakeholderBranchContactPerson.position'), value: branchContactPerson.position },
+    { title: t('stakeholderBranchContactPerson.gender'), value: branchContactPerson.gender },
+    { title: t('stakeholderBranchContactPerson.phone'), value: branchContactPerson.phone },
+    { title: t('stakeholderBranchContactPerson.email'), value: branchContactPerson.email || 'N/A' },
     {
-      title: t('stakeholder.stakeholder-branch-contact-person.branch'),
+      title: t('stakeholderBranchContactPerson.branch'),
       value: getBranchName(branchContactPerson.stakeholder_branch_id)
     },
     {
@@ -138,12 +138,12 @@ const BranchContactPersonList: React.FC<BranchContactPersonListProps> = ({ stake
           id={selectedRow?.id || ''}
           hasReference={false}
           fileType="STAKEHOLDER_BRANCH_CONTACT_PERSON"
-          title={t('stakeholder.stakeholder-branch-contact-person.details')}
+          title={t('stakeholderBranchContactPerson.details')}
         />
       )}
 
       <ItemsListing
-        title={t('stakeholder.stakeholder-branch-contact-person.title')}
+        title={t('stakeholderBranchContactPerson.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

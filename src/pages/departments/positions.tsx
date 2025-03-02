@@ -14,6 +14,7 @@ const Positions = ({ parentDepartment }: { parentDepartment: Department }) => {
     </TabPanel>
   );
 };
+
 Positions.getLayout = (page: ReactElement) => (
   <UserLayout>
     <CentersLayout value="2" routes={TabsRoute}>
@@ -25,4 +26,5 @@ Positions.acl = {
   action: 'view_position',
   subject: 'position'
 };
+
 export default Positions;

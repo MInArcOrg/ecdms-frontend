@@ -58,11 +58,11 @@ const BranchDrawer = (props: BranchDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`stakeholder.stakeholder-branch.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`stakeholderBranch.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`stakeholder.stakeholder-branch.${isEdit ? 'edit' : 'create'}`}
+          title={`stakeholderBranch.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

@@ -55,19 +55,19 @@ const BranchContactPersonCard: React.FC<BranchContactPersonCardProps> = ({
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.stakeholder-branch-contact-person.position')}: {branchContactPerson.position}
+            {t('stakeholderBranchContactPerson.position')}: {branchContactPerson.position}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.stakeholder-branch-contact-person.department')}: {branchContactPerson.department}
+            {t('stakeholderBranchContactPerson.department')}: {branchContactPerson.department}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.stakeholder-branch-contact-person.branch')}: {getBranchName(branchContactPerson.stakeholder_branch_id)}
+            {t('stakeholderBranchContactPerson.branch')}: {getBranchName(branchContactPerson.stakeholder_branch_id)}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.stakeholder-branch-contact-person.phone')}: {branchContactPerson.phone}
+            {t('stakeholderBranchContactPerson.phone')}: {branchContactPerson.phone}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.stakeholder-branch-contact-person.email')}: {branchContactPerson.email || t('common.not-available')}
+            {t('stakeholderBranchContactPerson.email')}: {branchContactPerson.email || t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>
