@@ -24,15 +24,15 @@ const BranchForm: React.FC<BranchFormProps> = ({ formik, businessFields }) => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholderBranch.name')} name="name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-branch.name')} name="name" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholderBranch.tinNumber')} name="tin_number" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-branch.tinNumber')} name="tin_number" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
         <CustomSelect
           fullWidth
-          label={t('stakeholderBranch.businessFieldId')}
+          label={t('stakeholder.stakeholder-branch.businessFieldId')}
           name="business_field_id"
           options={businessFieldOptions}
           size="small"
@@ -44,14 +44,14 @@ const BranchForm: React.FC<BranchFormProps> = ({ formik, businessFields }) => {
           fullWidth
           multiline
           rows={4}
-          label={t('stakeholderBranch.description')}
+          label={t('stakeholder.stakeholder-branch.description')}
           name="description"
           size="small"
           sx={{ mb: 2 }}
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholderBranch.reference')} name="reference" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-branch.reference')} name="reference" size="small" sx={{ mb: 2 }} />
       </Grid>
     </Grid>
   );

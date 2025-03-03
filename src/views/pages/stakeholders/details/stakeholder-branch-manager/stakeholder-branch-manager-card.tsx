@@ -55,19 +55,16 @@ const BranchManagerCard: React.FC<BranchManagerCardProps> = ({
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholderBranchManager.position')}: {branchManager.position}
+            {t('stakeholder.stakeholder-branch-manager.position')}: {branchManager.position}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholderBranchManager.department')}: {branchManager.department}
+            {t('stakeholder.stakeholder-branch-manager.department')}: {branchManager.department}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholderBranchManager.branch')}: {getBranchName(branchManager.stakeholder_branch_id)}
+            {t('stakeholder.stakeholder-branch-manager.branch')}: {getBranchName(branchManager.stakeholder_branch_id)}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholderBranchManager.phone')}: {branchManager.phone}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {t('stakeholderBranchManager.email')}: {branchManager.email || t('common.not-available')}
+            {t('stakeholder.stakeholder-branch-manager.phone')}: {branchManager.phone}
           </Typography>
         </Box>
       </CardContent>
