@@ -91,7 +91,10 @@
       "edit-count-type": "Edit Count Type",
       "road-safety-features": "Road Safety Features",
       "create-road-safety-feature": "Create Road Safety Feature",
-      "edit-road-safety-feature": "Edit Road Safety Feature"
+      "edit-road-safety-feature": "Edit Road Safety Feature",
+      "current-conditions": "Current Conditions",
+      "create-current-condition": "Create Current Condition",
+      "edit-current-condition": "Edit Current Condition"
     },
     "form": {
       "title": "Title",

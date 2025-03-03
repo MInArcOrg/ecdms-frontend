@@ -5,15 +5,15 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import SoilTypeMasterForm from './soil-type-master-form';
-import { SoilType } from 'src/types/general/general-master';
-import soilTypeMasterService from 'src/services/general/project/soil-type-master-service';
+import CurrentConditionMasterForm from './current-condition-master-form';
+import { CurrentCondition } from 'src/types/general/general-master';
+import currentConditionMasterService from 'src/services/general/project/current-condition-master-service';
 
-interface SoilTypeMasterDrawerType {
+interface CurrentConditionMasterDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  masterData: SoilType;
+  masterData: CurrentCondition;
 }
 
 const validationSchema = yup.object().shape({
@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
   description: yup.string().required('Description is required')
 });
 
-const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
+const CurrentConditionMasterDrawer = (props: CurrentConditionMasterDrawerType) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,15 +29,15 @@ const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createSoilTypeMaster = async (body: IApiPayload<SoilType>) => {
-    return await soilTypeMasterService.create(body);
+  const createCurrentConditionMaster = async (body: IApiPayload<CurrentCondition>) => {
+    return await currentConditionMasterService.create(body);
   };
 
-  const editSoilTypeMaster = async (body: IApiPayload<SoilType>) => {
-    return await soilTypeMasterService.update(masterData?.id || '', body);
+  const editCurrentConditionMaster = async (body: IApiPayload<CurrentCondition>) => {
+    return await currentConditionMasterService.update(masterData?.id || '', body);
   };
 
-  const getPayload = (values: SoilType) => {
+  const getPayload = (values: CurrentCondition) => {
     const payload = {
       data: {
         ...values,
@@ -52,9 +52,9 @@ const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<SoilType>, payload: IApiPayload<SoilType>) => {
+  const onActionSuccess = async (response: IApiResponse<CurrentCondition>, payload: IApiPayload<CurrentCondition>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `SOIL_TYPE`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `CURRENT_CONDITION`, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -62,25 +62,30 @@ const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-soil-type' : 'create-soil-type'}`}
+      title={`master-data.general-master.${isEdit ? 'edit-current-condition' : 'create-current-condition'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
-        <FormPageWrapper<SoilType>
+        <FormPageWrapper<CurrentCondition>
           edit={isEdit}
-          title="master-data.general-master.soil-types"
+          title="master-data.general-master.current-conditions"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editSoilTypeMaster : createSoilTypeMaster}
+          createActionFunc={isEdit ? editCurrentConditionMaster : createCurrentConditionMaster}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<SoilType>) => {
+          {(formik: FormikProps<CurrentCondition>) => {
             return (
               <>
-                <SoilTypeMasterForm file={uploadableFile} onFileChange={onFileChange} formik={formik} defaultLocaleData={{} as SoilType} />
+                <CurrentConditionMasterForm
+                  file={uploadableFile}
+                  onFileChange={onFileChange}
+                  formik={formik}
+                  defaultLocaleData={{} as CurrentCondition}
+                />
               </>
             );
           }}
@@ -89,4 +94,4 @@ const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
     </CustomSideDrawer>
   );
 };
-export default SoilTypeMasterDrawer;
+export default CurrentConditionMasterDrawer;
