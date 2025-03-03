@@ -27,3 +27,12 @@ export interface StudyField {
   created_at?: Date; // Optional field
   updated_at?: Date; // Optional field
 }
+
+export interface FunctionalClassification {
+  id: string
+  title?: string
+  description?: string
+  project_type_id: string
+  created_at?: Date
+  updated_at?: Date
+}

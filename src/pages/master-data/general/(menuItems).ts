@@ -53,9 +53,9 @@ const menuItems = (t: (item: string) => void) => [
         path: `${baseUrl}/stakeholder/project-progress-statuses/`
       },
       {
-        id: 2,
-        title: t('master-data.functional-classification.title'),
-        path: `${baseUrl}/project/functional-classification/`
+        id: 2, 
+        title: t("master-data.general-master.functional-classifications"),
+        path: `${baseUrl}/project/functional-classifications/`,
       },
     ]
   },
