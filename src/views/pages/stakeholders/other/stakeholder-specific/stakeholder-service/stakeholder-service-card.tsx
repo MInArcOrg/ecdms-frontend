@@ -81,7 +81,7 @@ const StakeholderServiceCard: React.FC<StakeholderServiceCardProps> = ({ stakeho
             subject: 'stakeholderService'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholderService'
           }}
         />

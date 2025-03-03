@@ -29,7 +29,7 @@ const BranchContactPersonForm: React.FC<BranchContactPersonFormProps> = ({ formi
       <Grid item xs={12}>
         <CustomSelect
           fullWidth
-          label={t('stakeholderBranchContactPerson.branch')}
+          label={t('stakeholder.stakeholder-branch-contact-person.branch')}
           name="stakeholder_branch_id"
           options={branchOptions}
           size="small"
@@ -37,28 +37,28 @@ const BranchContactPersonForm: React.FC<BranchContactPersonFormProps> = ({ formi
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholderBranchContactPerson.department')} name="department" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-branch-contact-person.department')} name="department" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholderBranchContactPerson.position')} name="position" size="small" sx={{ mb: 2 }} />
-      </Grid>
-      <Grid item xs={12} sm={4}>
-        <CustomTextBox fullWidth label={t('stakeholderBranchContactPerson.firstName')} name="first_name" size="small" sx={{ mb: 2 }} />
-      </Grid>
-      <Grid item xs={12} sm={4}>
-        <CustomTextBox fullWidth label={t('stakeholderBranchContactPerson.middleName')} name="middle_name" size="small" sx={{ mb: 2 }} />
-      </Grid>
-      <Grid item xs={12} sm={4}>
-        <CustomTextBox fullWidth label={t('stakeholderBranchContactPerson.lastName')} name="last_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-branch-contact-person.position')} name="position" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomRadioBox label={t('stakeholderBranchContactPerson.gender')} name="gender" options={genderList(t)} sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-branch-contact-person.firstName')} name="first_name" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomPhoneInput fullWidth label={t('stakeholderBranchContactPerson.phone')} name="phone" size="small" sx={{ mb: 2 }} required />
+        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-branch-contact-person.middleName')} name="middle_name" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholderBranchContactPerson.email')} name="email" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-branch-contact-person.lastName')} name="last_name" size="small" sx={{ mb: 2 }} />
+      </Grid>
+      <Grid item xs={12}>
+        <CustomRadioBox label={t('stakeholder.stakeholder-branch-contact-person.gender')} name="gender" options={genderList(t)} sx={{ mb: 2 }} />
+      </Grid>
+      <Grid item xs={12}>
+        <CustomPhoneInput fullWidth label={t('stakeholder.stakeholder-branch-contact-person.phone')} name="phone" size="small" sx={{ mb: 2 }} required />
+      </Grid>
+      <Grid item xs={12}>
+        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-branch-contact-person.email')} name="email" size="small" sx={{ mb: 2 }} />
       </Grid>
     </Grid>
   );
