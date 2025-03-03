@@ -68,23 +68,37 @@
       "area-topographies": "Area Topographies",
       "create-area-topography": "Create Area Topography",
       "edit-area-topography": "Edit Area Topography",
-      "soil-types":"Soil Types",
-      "create-soil-type":"Create Soil Type",
-      "edit-soil-type":"Edit Soil Type",
-      "guard-rail-types":"Guard Rail Types",
-      "create-guard-rail-type":"Create Guard Rail Type",
-      "edit-guard-rail-type":"Edit Guard Rail Type",
+      "soil-types": "Soil Types",
+      "create-soil-type": "Create Soil Type",
+      "edit-soil-type": "Edit Soil Type",
+      "guard-rail-types": "Guard Rail Types",
+      "create-guard-rail-type": "Create Guard Rail Type",
+      "edit-guard-rail-type": "Edit Guard Rail Type",
       "bridge-structure-types": "Bridge Structure Types",
       "create-bridge-structure-type": "Create Bridge Structure Type",
       "edit-bridge-structure-type": "Edit Bridge Structure Type",
       "span-support-types": "Span Support Types",
       "create-span-support-type": "Create Span Support Type",
-      "edit-span-support-type": "Edit Span Support Type"
+      "edit-span-support-type": "Edit Span Support Type",
+      "damage-conditions": "Damage Conditions",
+      "create-damage-condition": "Create Damage Conditions",
+      "edit-damage-condition": "Edit Damage Conditions",
+      "hydrology-defects": "Hydrology Defects",
+      "create-hydrology-defect": "Create Hydrology Defect",
+      "edit-hydrology-defect": "Edit Hydrology Defect",
+      "count-types": "Count Types",
+      "create-count-type": "Create Count Type",
+      "edit-count-type": "Edit Count Type",
+      "road-safety-features": "Road Safety Features",
+      "create-road-safety-feature": "Create Road Safety Feature",
+      "edit-road-safety-feature": "Edit Road Safety Feature",
+      "current-conditions": "Current Conditions",
+      "create-current-condition": "Create Current Condition",
+      "edit-current-condition": "Edit Current Condition"
     },
     "form": {
       "title": "Title",
       "description": "Description",
-      "project-type": "Project Type",
       "study-program": "Study Program",
       "study-level": "Study Level",
       "stakeholder-type-specific-models": "Stakeholder type Specific models",
@@ -1061,7 +1075,7 @@
       "gender": "Gender",
       "phone": "Phone",
       "email": "Email",
-      "stakeholder":"Stakeholder"
+      "stakeholder": "Stakeholder"
     },
     "project-contact-person": {
       "title": "Project Contact Persons",
@@ -1536,21 +1550,21 @@
       "description": "Description",
       "reference": "Reference"
     },
-"position": {
-    "title": "Stakeholder Positions",
-    "create": "Create Stakeholder Position",
-    "edit": "Edit Stakeholder Position",
-    "details": "Stakeholder Position Details",
-    "name": "Name",
-    "parent-department": "Parent Department",
-    "required-education": "Required Education",
-    "required-work-experience": "Required Work Experience",
-    "salary": "Salary",
-    "no-of-professionals": "Number of Professionals",
-    "description": "Description",
-    "reference": "Reference"
-  },
-"machinery": {
+    "position": {
+      "title": "Stakeholder Positions",
+      "create": "Create Stakeholder Position",
+      "edit": "Edit Stakeholder Position",
+      "details": "Stakeholder Position Details",
+      "name": "Name",
+      "parent-department": "Parent Department",
+      "required-education": "Required Education",
+      "required-work-experience": "Required Work Experience",
+      "salary": "Salary",
+      "no-of-professionals": "Number of Professionals",
+      "description": "Description",
+      "reference": "Reference"
+    },
+    "machinery": {
       "title": "Stakeholder Machineries",
       "create": "Create Stakeholder Machinery",
       "edit": "Edit Stakeholder Machinery",
@@ -1567,6 +1581,15 @@
       "quantity": "Quantity",
       "current-situation": "Current Situation",
       "location": "Location"
+    },
+    "branch-additional-information": {
+      "title": "Branch Additional Information",
+      "create": "Create Additional Information",
+      "edit": "Edit Additional Information",
+      "details": "Additional Information Details",
+      "branch": "Branch",
+      "additionalInformation": "Additional Information",
+      "reference": "Reference"
     }
   },
   "address": {
