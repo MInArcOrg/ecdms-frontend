@@ -1,20 +1,20 @@
 'use client';
 
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import projectSafetyStatusApiService from 'src/services/project/project-safety-status-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
-import ProjectSafetyStatusCard from './project-safety-status-card';
-import ProjectSafetyStatusDrawer from './project-safety-status-drawer';
-import type { ProjectSafetyStatus } from 'src/types/project/project-safety-status ';
-import { safetyStatusColumns } from './project-safety-status-row';
+import { Box } from "@mui/material"
+import { useState } from "react"
+import { useTranslation } from "react-i18next"
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
+import usePaginatedFetch from "src/hooks/use-paginated-fetch"
+import projectSafetyStatusApiService from "src/services/project/project-safety-status-service"
+import { defaultCreateActionConfig } from "src/types/general/listing"
+import type { GetRequestParam, IApiResponse } from "src/types/requests"
+import { formatCreatedAt } from "src/utils/formatter/date"
+import ItemsListing from "src/views/shared/listing"
+import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer"
+import ProjectSafetyStatusCard from "./project-safety-status-card"
+import ProjectSafetyStatusDrawer from "./project-safety-status-drawer"
+import type { ProjectSafetyStatus } from "src/types/project/project-safety-status "
+import { safetyStatusColumns } from "./project-safety-status-row"
 
 interface ProjectSafetyStatusListProps {
   model: string;

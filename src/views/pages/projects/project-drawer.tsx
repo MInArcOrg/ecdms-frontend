@@ -24,7 +24,10 @@ const validationSchema = yup.object().shape({
   contract_no: yup.string().required('Contract number is required'),
   budget_code: yup.string().required('Budget code is required'),
   procurement_no: yup.string().required('Procurement number is required'),
-  remark: yup.string().nullable()
+  remark: yup.string().nullable(),
+  grade: yup.string().nullable(),
+  end_user: yup.string().nullable(),
+  function: yup.string().nullable()
 });
 
 const ProjectDrawer = (props: ProjectDrawerType) => {

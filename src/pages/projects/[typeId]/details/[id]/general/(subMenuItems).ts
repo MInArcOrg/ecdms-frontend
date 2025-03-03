@@ -45,5 +45,4 @@ const subMenuItems = (id: string, typeId: string) => [
     path: `/projects/${typeId}/details/${id}/general/weather-condition`
   }
 ];
-
 export default subMenuItems;
