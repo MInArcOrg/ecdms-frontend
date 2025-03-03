@@ -1,21 +1,18 @@
-import { Box } from '@mui/material';
-import GeneralLayout from '../GeneralLayout';
-import DesignClassificationCard from 'src/views/pages/master/design-classification';
+import { Fragment } from "react"
+import GeneralMasterLayout from "../GeneralLayout"
+import DesignClassificationMasterList from "src/views/pages/master/general/Project/design-classification-master/design-classification-master-list"
 
-function StakeholderLocation() {
-
+function DesignClassifications() {
   return (
-    <Box>
-      <GeneralLayout>
-        <DesignClassificationCard />
-      </GeneralLayout>
-    </Box>
-  );
+    <div>
+      <GeneralMasterLayout>
+        <Fragment>
+          <DesignClassificationMasterList />
+        </Fragment>
+      </GeneralMasterLayout>
+    </div>
+  )
 }
 
-StakeholderLocation.acl = {
-  subject: 'projectinfo',
-  action: 'view_stakeholder'
-};
+export default DesignClassifications
 
-export default StakeholderLocation;

@@ -1,21 +1,18 @@
-import { Box } from '@mui/material';
-import FunctionalClassificationDrawer from 'src/views/pages/master/functional-classification';
-import GeneralLayout from '../GeneralLayout';
+import { Fragment } from "react"
+import GeneralMasterLayout from "../GeneralLayout"
+import FunctionalClassificationMasterList from "src/views/pages/master/general/Project/functional-classification-master/functional-classification-master-list"
 
-function StakeholderLocation() {
-
+function FunctionalClassifications() {
   return (
-    <Box>
-      <GeneralLayout>
-        <FunctionalClassificationDrawer />
-      </GeneralLayout>
-    </Box>
-  );
+    <div>
+      <GeneralMasterLayout>
+        <Fragment>
+          <FunctionalClassificationMasterList />
+        </Fragment>
+      </GeneralMasterLayout>
+    </div>
+  )
 }
 
-StakeholderLocation.acl = {
-  subject: 'projectinfo',
-  action: 'view_stakeholder'
-};
+export default FunctionalClassifications
 
-export default StakeholderLocation;
