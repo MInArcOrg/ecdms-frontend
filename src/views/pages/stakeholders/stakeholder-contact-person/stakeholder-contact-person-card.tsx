@@ -60,7 +60,7 @@ const StakeholderContactPersonCard = ({
               subject: 'stakeholdercontactpeople'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'stakeholdercontactpeople'
             }}
             item={stakeholderContactPerson}

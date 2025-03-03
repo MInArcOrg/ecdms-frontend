@@ -64,7 +64,7 @@ const AdditionalInfoCard: React.FC<AdditionalInfoCardProps> = ({ additionalInfo,
             subject: 'professionaladditionalinfo'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'professionaladditionalinfo'
           }}
           onEdit={() => onEdit(additionalInfo)}
