@@ -4,7 +4,7 @@ import type { FunctionalClassification } from "src/types/general/general-master"
 import FileDrawer from "src/views/components/custom/files-drawer"
 import ModelActionComponent from "src/views/components/custom/model-actions"
 import RowOptions from "src/views/shared/listing/row-options"
-import { uploadableResourceFileTypes } from "src/services/utils/file-constants"
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
 
 const FunctionalClassificationMasterCard = ({
   generalMaster,
@@ -38,7 +38,7 @@ const FunctionalClassificationMasterCard = ({
           <Grid item>
             <CardActions style={{ justifyContent: "flex-end" }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id}  type={uploadableResourceFileTypes.functional_classification} /> &nbsp;
+                <FileDrawer id={generalMaster.id}  type={uploadableProjectFileTypes.functionalClassification} /> &nbsp;
                 <ModelActionComponent
                   model={"functionalclassification"}
                   model_id={generalMaster.id}

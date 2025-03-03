@@ -8,7 +8,7 @@ import * as yup from "yup"
 import FunctionalClassificationMasterForm from "./functional-classification-master-form"
 import type { FunctionalClassification } from "src/types/general/general-master"
 import functionalClassificationMasterService from "src/services/general/project/functional-classification-master-service"
-import { uploadableResourceFileTypes } from "src/services/utils/file-constants"
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
 
 interface FunctionalClassificationMasterDrawerType {
   open: boolean
@@ -58,7 +58,7 @@ const FunctionalClassificationMasterDrawer = (props: FunctionalClassificationMas
     payload: IApiPayload<FunctionalClassification>,
   ) => {
     if (payload.files.length > 0) {
-     uploadFile(payload.files[0], uploadableResourceFileTypes.functional_classification, response.payload.id, "", "")
+     uploadFile(payload.files[0], uploadableProjectFileTypes.functionalClassification, response.payload.id, "", "")
     }
     refetch()
     handleClose()
@@ -66,7 +66,7 @@ const FunctionalClassificationMasterDrawer = (props: FunctionalClassificationMas
 
 //    if (payload.files.length > 0) {
 //         if (response.payload.id) {
-//           uploadFile(payload.files[0], uploadableResourceFileTypes.functional_classification, response.payload.id, "", "")
+//           uploadFile(payload.files[0], uploadableProjectFileTypes.functional_classification, response.payload.id, "", "")
 //         }
 //       }
 

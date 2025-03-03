@@ -16,7 +16,6 @@ export const uploadableResourceFileTypes = {
   project_safety_status: 'PROJECT_SAFETY_STATUS',
   project_quality: 'PROJECT_QUALITY',
   project_construction_type: 'PROJECT_CONSTRUCTION_TYPE',
-  functional_classification: 'FUNCTIONAL_CLASSIFICATION',
 } as const;
 export const uploadablePhotoTypes = {
   stakeholder_profile_photo: 'STAKEHOLDER_PROFILE_PHOTO',
@@ -81,7 +80,8 @@ export const uploadableProjectFileTypes = {
     spillwayInfo: 'SPILLWAY_INFO',
     irrigationCapacity: 'IRRIGATION_CAPACITY',
     waterIrrigationDam: 'WATER_IRRIGATION_DAM'
-  }
+  },
+  functionalClassification: 'FUNCTIONAL_CLASSIFICATION',
 } as const;
 export const uploadableStakeholderFileTypes = {
   stakeholder: 'STAKEHOLDER',
