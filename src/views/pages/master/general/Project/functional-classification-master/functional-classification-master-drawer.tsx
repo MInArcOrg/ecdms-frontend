@@ -66,7 +66,7 @@ const FunctionalClassificationMasterDrawer = (props: FunctionalClassificationMas
 
 //    if (payload.files.length > 0) {
 //         if (response.payload.id) {
-//           uploadFile(payload.files[0], uploadableResourceFileTypes.functional_classification, response.payload.id, "", "")
+//           uploadFile(payload.files[0], uploadableProjectFileTypes.functional_classification, response.payload.id, "", "")
 //         }
 //       }
 
