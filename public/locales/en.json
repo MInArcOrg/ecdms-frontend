@@ -94,7 +94,10 @@
       "edit-road-safety-feature": "Edit Road Safety Feature",
       "current-conditions": "Current Conditions",
       "create-current-condition": "Create Current Condition",
-      "edit-current-condition": "Edit Current Condition"
+      "edit-current-condition": "Edit Current Condition",
+      "ground-water-impacts": "Ground Water Impacts",
+      "create-ground-water-impact": "Create Ground Water Impact",
+      "edit-ground-water-impact": "Edit Ground Water Impact"
     },
     "form": {
       "title": "Title",
@@ -107,7 +110,8 @@
       "resource-type-specific-models": "Resource type Specific models",
       "service_type": "Service Type",
       "specification_detail": "Specification Detail",
-      "measurement_unit": "Measurement Unit"
+      "measurement_unit": "Measurement Unit",
+      "project-type":"Project Type"
     },
     "create-master-type": "Create Type",
     "edit-master-type": "Edit Type",
