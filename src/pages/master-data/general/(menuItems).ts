@@ -121,8 +121,10 @@ const menuItems = (t: (item: string) => void) => [
         id: 15,
         title: t('master-data.general-master.ground-water-impacts'),
         path: `${baseUrl}/project/ground-water-impacts/`
-      },
-
+      },{
+        id: 15,
+        title: t('master-data.general-master.slop-stabilities'),
+        path: `${baseUrl}/project/slop-stabilities/`      }
     ]
   },
   {

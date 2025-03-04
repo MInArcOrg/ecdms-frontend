@@ -38,7 +38,13 @@ const MembershipForm: React.FC<MembershipFormProps> = ({ formik, file, onFileCha
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('resources.professional.association-membership.position')} name="position" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox
+          fullWidth
+          label={t('resources.professional.association-membership.position')}
+          name="position"
+          size="small"
+          sx={{ mb: 2 }}
+        />
       </Grid>
       <Grid item xs={12}>
         <CustomTextBox

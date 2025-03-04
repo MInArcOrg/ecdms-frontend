@@ -1,22 +1,22 @@
-// components/AreaTopographyMasterList.tsx
+// components/SlopeStabilityMasterList.tsx
 import { Card, CardContent } from '@mui/material';
 import React, { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { AreaTopography } from 'src/types/general/general-master';
+import { SlopeStability } from 'src/types/general/general-master';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
-import AreaTopographyMasterCard from './area-topography-master-card';
-import AreaTopographyMasterDrawer from './area-topography-master-drawer';
-import areaTopographyMasterService from 'src/services/general/project/area-topography-master-service';
+import SlopeStabilityMasterCard from './slope-stability-master-card';
+import SlopeStabilityMasterDrawer from './slope-stability-master-drawer';
+import slopeStabilityMasterService from 'src/services/general/project/slope-stability-master-service';
 
-const AreaTopographyMasterList: React.FC = () => {
-  const [selectedRow, setSelectedRow] = useState<AreaTopography | null>(null);
+const SlopeStabilityMasterList: React.FC = () => {
+  const [selectedRow, setSelectedRow] = useState<SlopeStability | null>(null);
   const { t } = useTranslation();
-  const fetchAreaTopographyMaster = (params: GetRequestParam): Promise<IApiResponse<AreaTopography[]>> => {
-    return areaTopographyMasterService.getAll(params);
+  const fetchSlopeStabilityMaster = (params: GetRequestParam): Promise<IApiResponse<SlopeStability[]>> => {
+    return slopeStabilityMasterService.getAll(params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
 
@@ -26,37 +26,37 @@ const AreaTopographyMasterList: React.FC = () => {
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<AreaTopography[]>({
-    queryKey: ['general-master', 'area-topographies'],
-    fetchFunction: fetchAreaTopographyMaster
+  } = usePaginatedFetch<SlopeStability[]>({
+    queryKey: ['general-master', 'pedestrian-facilities'],
+    fetchFunction: fetchSlopeStabilityMaster
   });
   const handleDelete = async (id: string) => {
-    await areaTopographyMasterService.delete(id);
+    await slopeStabilityMasterService.delete(id);
     refetch();
   };
 
   const toggleDrawer = () => {
-    setSelectedRow({} as AreaTopography);
+    setSelectedRow({} as SlopeStability);
     setShowDrawer(!showDrawer);
   };
 
-  const handleEdit = (generalMaster: AreaTopography) => {
+  const handleEdit = (generalMaster: SlopeStability) => {
     toggleDrawer();
     setSelectedRow(generalMaster);
   };
   return (
     <Fragment>
       {showDrawer && (
-        <AreaTopographyMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as AreaTopography} refetch={refetch} />
+        <SlopeStabilityMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as SlopeStability} refetch={refetch} />
       )}
       <Card>
         <CardContent>
           <ItemsListing
             pagination={pagination}
             type={ITEMS_LISTING_TYPE.list.value}
-            title={t(`master-data.general-master.area-topographies`)}
+            title={t(`master-data.general-master.pedestrian-facilities`)}
             ItemViewComponent={({ data }) => (
-              <AreaTopographyMasterCard generalMaster={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
+              <SlopeStabilityMasterCard generalMaster={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
             )}
             isLoading={isLoading}
             createActionConfig={{
@@ -65,7 +65,7 @@ const AreaTopographyMasterList: React.FC = () => {
               onlyIcon: true,
               permission: {
                 action: 'create',
-                subject: `areatopography`
+                subject: `slopestability`
               }
             }}
             fetchDataFunction={refetch}
@@ -78,4 +78,4 @@ const AreaTopographyMasterList: React.FC = () => {
   );
 };
 
-export default AreaTopographyMasterList;
+export default SlopeStabilityMasterList;

@@ -97,7 +97,10 @@
       "edit-current-condition": "Edit Current Condition",
       "ground-water-impacts": "Ground Water Impacts",
       "create-ground-water-impact": "Create Ground Water Impact",
-      "edit-ground-water-impact": "Edit Ground Water Impact"
+      "edit-ground-water-impact": "Edit Ground Water Impact",
+      "slope-stabilities":"Slope Stabilities",
+      "create-slope-stability":"Create Slope Stability",
+      "edit-slope-stability":"Edit Slope Stability"
     },
     "form": {
       "title": "Title",
