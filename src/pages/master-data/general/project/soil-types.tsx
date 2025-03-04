@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import SoilTypeMasterList from 'src/views/pages/master/general/project/soil-type-master/soil-type-master-list';
 import GeneralMasterLayout from '../GeneralMasterLayout';
 
-function RoadLengthTypes() {
+function SoilTypes() {
   return (
     <div>
       <GeneralMasterLayout>
@@ -14,4 +14,4 @@ function RoadLengthTypes() {
   );
 }
 
-export default RoadLengthTypes;
+export default SoilTypes;
