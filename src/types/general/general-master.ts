@@ -27,3 +27,59 @@ export interface StudyField {
   created_at?: Date; // Optional field
   updated_at?: Date; // Optional field
 }
+
+export interface FunctionalClassification {
+  id: string
+  title?: string
+  description?: string
+  project_type_id: string
+  created_at?: Date
+  updated_at?: Date
+}
+
+export interface DesignClassification {
+  id: string
+  title?: string
+  description?: string
+  project_type_id: string
+  created_at?: Date
+  updated_at?: Date
+}
+
+export interface DesignStandard {
+  id: string
+  title?: string
+  description?: string
+  project_type_id: string
+  created_at?: Date
+  updated_at?: Date
+}
+
+export interface DesignTrafficFlow {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface SurfaceType {
+  id: string
+  title?: string
+  description?: string
+  project_type_id: string
+  created_at?: Date
+  updated_at?: Date
+}
+
+export interface CrossSectionType {
+  id: string
+  title?: string
+  description?: string
+  project_type_id: string
+  created_at?: Date
+  updated_at?: Date
+}
+
+
