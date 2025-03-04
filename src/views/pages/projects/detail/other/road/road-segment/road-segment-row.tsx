@@ -132,7 +132,7 @@ export const roadSegmentColumns = (
             subject: 'roadsegment'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'roadsegment'
           }}
           options={[]}

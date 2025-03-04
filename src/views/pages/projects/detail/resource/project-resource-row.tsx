@@ -82,7 +82,7 @@ export const projectResourceColumns = (
               subject: 'projectresource'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'projectresource'
             }}
             onDelete={() => onDelete(row.id || '')}

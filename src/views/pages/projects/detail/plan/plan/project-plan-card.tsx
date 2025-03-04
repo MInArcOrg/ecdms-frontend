@@ -87,7 +87,7 @@ const ProjectPlanCard = ({
               subject: 'projectplan'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'projectplan'
             }}
             options={[]}

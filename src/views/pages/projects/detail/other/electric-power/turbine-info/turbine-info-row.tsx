@@ -115,7 +115,7 @@ export const turbineInfoColumns = (
             subject: 'turbineinfo'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'turbineinfo'
           }}
           options={[]}

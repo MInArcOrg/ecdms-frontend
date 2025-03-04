@@ -115,7 +115,7 @@ export const hydroElectricDamColumns = (
             subject: 'hydroelectricdam'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'hydroelectricdam'
           }}
           options={[]}

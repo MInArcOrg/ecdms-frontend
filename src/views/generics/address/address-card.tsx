@@ -73,7 +73,7 @@ const AddressCard = ({
                         subject: 'address'
                       }}
                       editPermissionRule={{
-                        action: 'edit',
+                        action: 'update',
                         subject: 'address'
                       }}
                       item={address}

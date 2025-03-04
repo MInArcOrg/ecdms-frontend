@@ -85,7 +85,7 @@ const RoadInfoCard: React.FC<RoadInfoCardProps> = ({ roadInfo, refetch, onEdit, 
             subject: 'roadinfo'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'roadinfo'
           }}
           onEdit={() => onEdit(roadInfo)}

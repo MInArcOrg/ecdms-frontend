@@ -4,7 +4,7 @@ import MaterialList from "src/views/pages/stakeholders/details/stakeholder-mater
 import subMenuItems from "./(sub-menu-items)"
 
 
-function Index() {
+function StakeholderMaterialIndex() {
   const router = useRouter()
   const { id, typeId } = router.query;
 
@@ -15,10 +15,10 @@ function Index() {
   )
 }
 
-Index.acl = {
+StakeholderMaterialIndex.acl = {
   action: "view",
   subject: "stakeholder-material",
 }
 
-export default Index
+export default StakeholderMaterialIndex
 
