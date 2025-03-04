@@ -27,7 +27,7 @@ const SlopeStabilityMasterList: React.FC = () => {
     handlePageChange,
     refetch
   } = usePaginatedFetch<SlopeStability[]>({
-    queryKey: ['general-master', 'pedestrian-facilities'],
+    queryKey: ['general-master', 'slope-stabilities'],
     fetchFunction: fetchSlopeStabilityMaster
   });
   const handleDelete = async (id: string) => {
@@ -54,7 +54,7 @@ const SlopeStabilityMasterList: React.FC = () => {
           <ItemsListing
             pagination={pagination}
             type={ITEMS_LISTING_TYPE.list.value}
-            title={t(`master-data.general-master.pedestrian-facilities`)}
+            title={t(`master-data.general-master.slope-stabilities`)}
             ItemViewComponent={({ data }) => (
               <SlopeStabilityMasterCard generalMaster={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
             )}
