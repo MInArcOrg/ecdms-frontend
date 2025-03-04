@@ -112,9 +112,9 @@ const StakeholderInfoDetailComponent: React.FC<StakeholderInfoDetailComponentPro
                 model="StakeholderInfo"
                 model_id={stakeholderInfo.id}
                 refetchModel={refetch}
-                resubmit={() => {}}
+                resubmit={() => { }}
                 title=""
-                postAction={() => {}}
+                postAction={() => { }}
               />
               <RowOptions
                 onEdit={handleEdit}

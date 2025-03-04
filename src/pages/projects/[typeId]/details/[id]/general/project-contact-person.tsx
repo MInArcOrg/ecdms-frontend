@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
-import ProjectContactPersonList from 'src/views/pages/projects/detail/project-contact-person';
+import ProjectContactPersonList  from 'src/views/pages/projects/detail/project-contact-person';
 import subMenuItems from './(subMenuItems)';
 
 const ProjectStatus = () => {

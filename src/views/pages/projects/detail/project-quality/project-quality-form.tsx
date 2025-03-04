@@ -13,7 +13,12 @@ interface ProjectQualityFormProps {
   projectId: string;
 }
 
-const ProjectQualityForm: React.FC<ProjectQualityFormProps> = ({ formik, file, onFileChange, projectId }) => {
+const ProjectQualityForm: React.FC<ProjectQualityFormProps> = ({
+  formik,
+  file,
+  onFileChange,
+  projectId,
+}) => {
   const { t } = useTranslation();
 
   return (

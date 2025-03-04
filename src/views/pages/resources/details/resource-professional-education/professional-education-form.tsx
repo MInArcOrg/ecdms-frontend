@@ -36,22 +36,10 @@ const EducationForm: React.FC<EducationFormProps> = ({ formik, studyFields, file
         <CustomTextBox fullWidth label={t('resources.professional.education.school-name')} name="school_name" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox
-          fullWidth
-          label={t('resources.professional.education.education-level')}
-          name="education_level"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t('resources.professional.education.education-level')} name="education_level" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox
-          fullWidth
-          label={t('resources.professional.education.program-type')}
-          name="program_type"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t('resources.professional.education.program-type')} name="program_type" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
         <CustomDatePicker fullWidth label={t('resources.professional.education.start-date')} name="start_date" sx={{ mb: 2 }} />

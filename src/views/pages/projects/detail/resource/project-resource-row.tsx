@@ -72,9 +72,9 @@ export const projectResourceColumns = (
             model="ProjectResource"
             model_id={row.id || ''}
             refetchModel={refetch}
-            resubmit={() => {}}
+            resubmit={() => { }}
             title=""
-            postAction={() => {}}
+            postAction={() => { }}
           />
           <RowOptions
             deletePermissionRule={{
