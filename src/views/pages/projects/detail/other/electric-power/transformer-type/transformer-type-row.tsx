@@ -82,7 +82,7 @@ export const transformerTypeColumns = (
             subject: 'windenergy'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'windenergy'
           }}
           options={[]}

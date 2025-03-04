@@ -99,7 +99,7 @@ export const StakeholderRow = (
               subject: 'stakeholder',
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'stakeholder'
             }}
             options={[]}

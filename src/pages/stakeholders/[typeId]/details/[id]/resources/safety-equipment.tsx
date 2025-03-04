@@ -3,7 +3,7 @@ import StakeholderLayout from "src/views/pages/stakeholders/details/layout/stake
 import SafetyEquipmentList from "src/views/pages/stakeholders/details/stakeholder-safety-equipments"
 import subMenuItems from "./(sub-menu-items)"
 
-function Index() {
+function SafetyEquipmentIndex() {
   const router = useRouter()
   const { id, typeId } = router.query;
 
@@ -14,10 +14,10 @@ function Index() {
   )
 }
 
-Index.acl = {
+SafetyEquipmentIndex.acl = {
   action: "view",
   subject: "safety-equipment",
 }
 
-export default Index
+export default SafetyEquipmentIndex
 

@@ -138,7 +138,7 @@ export const roadInfoColumns = (
             subject: 'roadinfo'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'roadinfo'
           }}
         />

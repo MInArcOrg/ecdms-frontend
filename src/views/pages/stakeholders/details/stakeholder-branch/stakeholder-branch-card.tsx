@@ -48,13 +48,13 @@ const BranchCard: React.FC<BranchCardProps> = ({ branch, refetch, onEdit, onDele
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholderBranch.tinNumber')}: {branch.tin_number || t('common.not-available')}
+            {t('stakeholder.stakeholder-branch.tinNumber')}: {branch.tin_number || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholderBranch.businessFieldId')}: {getBusinessFieldTitle(branch.business_field_id)}
+            {t('stakeholder.stakeholder-branch.businessFieldId')}: {getBusinessFieldTitle(branch.business_field_id)}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholderBranch.description')}: {branch.description || t('common.not-available')}
+            {t('stakeholder.stakeholder-branch.description')}: {branch.description || t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>
@@ -74,7 +74,7 @@ const BranchCard: React.FC<BranchCardProps> = ({ branch, refetch, onEdit, onDele
             subject: 'stakeholderbranch'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholderbranch'
           }}
           onEdit={() => onEdit(branch)}

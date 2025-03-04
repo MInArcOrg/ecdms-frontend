@@ -1,15 +1,15 @@
 import { Fragment } from 'react';
 import GeneralMasterResourceList from 'src/views/pages/master/general/general-resource-master/general-master-resource-list';
-import GeneralLayout from '../GeneralLayout';
+import GeneralMasterLayout from '../GeneralMasterLayout';
 
 function GeneralStakeholderMasterData() {
   return (
     <div>
-      <GeneralLayout>
+      <GeneralMasterLayout>
         <Fragment>
           <GeneralMasterResourceList />
         </Fragment>
-      </GeneralLayout>
+      </GeneralMasterLayout>
     </div>
   );
 }
