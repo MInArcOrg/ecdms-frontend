@@ -141,7 +141,12 @@ const menuItems = (t: (item: string) => void) => [
         id: 19,
         title: t('master-data.general-master.maintenance-frequencies'),
         path: `${baseUrl}/project/maintenance-frequencies/`
-      }
+      },
+      {
+        id: 21, 
+        title: t("master-data.general-master.abutment-types"),
+        path: `${baseUrl}/project/abutment-types/`,
+      },
     ]
   },
   {

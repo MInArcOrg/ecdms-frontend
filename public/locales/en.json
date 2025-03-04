@@ -109,7 +109,10 @@
       "edit-drainage-type": "Edit Drainage Type",
       "maintenance-frequencies": "Maintenance Frequencies",
       "edit-maintenance-frequency": "Create Maintenance Frequency",
-      "create-maintenance-frequencies": "Edit Maintenance Frequency"
+      "create-maintenance-frequencies": "Edit Maintenance Frequency",
+      "abutment-types": "Abutment Types",
+      "create-abutment-type": "Create Abutment Type",
+      "edit-abutment-type": "Edit Abutment Type"
     },
     "form": {
       "title": "Title",
