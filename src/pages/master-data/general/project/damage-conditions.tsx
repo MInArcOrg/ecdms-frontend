@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import GeneralMasterLayout from '../GeneralMasterLayout';
+import GeneralMasterLayout from '../general-master-layout';
 import DamageConditionMasterList from 'src/views/pages/master/general/project/damage-condition-master/damage-condition-master-list';
 
 function DamageConditions() {

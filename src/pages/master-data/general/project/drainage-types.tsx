@@ -1,17 +1,17 @@
 import { Fragment } from 'react';
 import GeneralMasterLayout from '../general-master-layout';
-import GuardRailTypeMasterList from 'src/views/pages/master/general/project/guard-rail-type-master/guard-rail-type-master-list';
+import DrainageTypeMasterList from 'src/views/pages/master/general/project/drainage-type-master/drainage-type-master-list';
 
-function RoadLengthTypes() {
+function DrainageTypes() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <GuardRailTypeMasterList />
+          <DrainageTypeMasterList />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default RoadLengthTypes;
+export default DrainageTypes;

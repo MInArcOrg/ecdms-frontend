@@ -131,6 +131,11 @@ const menuItems = (t: (item: string) => void) => [
         id: 17,
         title: t('master-data.general-master.slope-stabilities'),
         path: `${baseUrl}/project/slope-stabilities/`
+      },
+      {
+        id: 18,
+        title: t('master-data.general-master.drainage-types'),
+        path: `${baseUrl}/project/drainage-types/`
       }
     ]
   },
