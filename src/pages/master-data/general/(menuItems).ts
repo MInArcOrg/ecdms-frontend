@@ -123,12 +123,12 @@ const menuItems = (t: (item: string) => void) => [
         path: `${baseUrl}/project/ground-water-impacts/`
       },
       {
-        id: 17,
+        id: 16,
         title: t('master-data.general-master.maintenance-types'),
         path: `${baseUrl}/project/maintenance-types/`
       },
       {
-        id: 15,
+        id: 17,
         title: t('master-data.general-master.slope-stabilities'),
         path: `${baseUrl}/project/slope-stabilities/`
       }
