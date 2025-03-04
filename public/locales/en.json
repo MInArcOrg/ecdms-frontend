@@ -109,7 +109,10 @@
       "edit-drainage-type": "Edit Drainage Type",
       "maintenance-frequencies": "Maintenance Frequencies",
       "edit-maintenance-frequency": "Create Maintenance Frequency",
-      "create-maintenance-frequencies": "Edit Maintenance Frequency"
+      "create-maintenance-frequencies": "Edit Maintenance Frequency",
+      "paved-water-way-types": "Paved Water Way Types",
+      "create-paved-water-way-type": "Create Paved Water Way Type",
+      "edit-paved-water-way-type": "Edit Paved Water Way Type"
     },
     "form": {
       "title": "Title",
