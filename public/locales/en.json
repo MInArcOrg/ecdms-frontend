@@ -106,7 +106,10 @@
       "edit-slope-stability": "Edit Slope Stability",
       "drainage-types": "Drainage Types",
       "create-drainage-type": "Create Drainage Type",
-      "edit-drainage-type": "Edit Drainage Type"
+      "edit-drainage-type": "Edit Drainage Type",
+      "maintenance-frequencies": "Maintenance Frequencies",
+      "edit-maintenance-frequency": "Create Maintenance Frequency",
+      "create-maintenance-frequencies": "Edit Maintenance Frequency"
     },
     "form": {
       "title": "Title",
