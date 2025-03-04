@@ -1,12 +1,12 @@
 import { AxiosResponse } from 'axios';
-import {  SoilType } from 'src/types/general/general-master';
+import { SoilType } from 'src/types/general/general-master';
 import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
 import axiosServices from 'src/utils/axios';
 import { buildGetRequest } from 'src/utils/requests/get-request';
 import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
-const endwallTypeInletMasterService = {
+const soilTypeMasterService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<SoilType[]>> =>
     buildGetRequest(`/masterdata/soil-types`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
@@ -48,4 +48,4 @@ const endwallTypeInletMasterService = {
       })
 };
 
-export default endwallTypeInletMasterService;
+export default soilTypeMasterService;
