@@ -8,18 +8,19 @@ import { ProjectFinance } from 'src/types/project';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-const MainContractPriceCard = ({
-  projectFinance,
-  refetch,
-  onEdit,
-  onDelete
-}: {
-  projectFinance: ProjectFinance;
-  refetch: () => void;
-  onEdit: (projectFinance: ProjectFinance) => void;
-  onDelete: (id: string) => void;
-}) => {
-  const { t } = useTranslation();
+  const MainContractPriceCard = ({
+    projectFinance,
+    refetch,
+    onEdit,
+    onDelete,
+  }: {
+    projectFinance: ProjectFinance
+    refetch: () => void
+    onEdit: (projectFinance: ProjectFinance) => void
+    onDelete: (id: string) => void
+  }) => {
+    const { t } = useTranslation()
+  
 
   return (
     <Card sx={{ mx: 'auto', mt: 4 }}>

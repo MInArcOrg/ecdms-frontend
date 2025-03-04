@@ -69,11 +69,7 @@ const MembershipDrawer = (props: MembershipDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer
-      title={`resources.professional.association-membership.${isEdit ? 'edit' : 'create'}`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`resources.professional.association-membership.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}

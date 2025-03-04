@@ -27,13 +27,7 @@ const AdditionalInformationForm: React.FC<AdditionalInformationFormProps> = ({ f
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox
-          fullWidth
-          label={t('stakeholder.stakeholder-additional-information.reference')}
-          name="reference"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-additional-information.reference')} name="reference" size="small" sx={{ mb: 2 }} />
       </Grid>
     </Grid>
   );

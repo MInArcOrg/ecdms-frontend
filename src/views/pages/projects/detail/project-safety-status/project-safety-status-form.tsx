@@ -13,7 +13,12 @@ interface ProjectSafetyStatusFormProps {
   projectId: string;
 }
 
-const ProjectSafetyStatusForm: React.FC<ProjectSafetyStatusFormProps> = ({ formik, file, onFileChange, projectId }) => {
+const ProjectSafetyStatusForm: React.FC<ProjectSafetyStatusFormProps> = ({
+  formik,
+  file,
+  onFileChange,
+  projectId,
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -60,7 +65,7 @@ const ProjectSafetyStatusForm: React.FC<ProjectSafetyStatusFormProps> = ({ formi
         />
       </Box>
       <Box mb={2}>
-        <CustomTextBox
+      <CustomTextBox
           fullWidth
           label={t('project.safety-status.lesson-learned')}
           name="lesson_learned"

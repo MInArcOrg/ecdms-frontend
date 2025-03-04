@@ -29,15 +29,7 @@ const JointVentureForm: React.FC<JointVentureFormProps> = ({ formik }) => {
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox
-          fullWidth
-          label={t('stakeholder.joint-venture.description')}
-          name="description"
-          multiline
-          rows={4}
-          size="small"
-          sx={{ mb: 2 }}
-        />
+        <CustomTextBox fullWidth label={t('stakeholder.joint-venture.description')} name="description" multiline rows={4} size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
         <CustomTextBox fullWidth label={t('stakeholder.joint-venture.reference')} name="reference" size="small" sx={{ mb: 2 }} />
