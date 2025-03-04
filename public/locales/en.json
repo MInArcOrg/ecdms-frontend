@@ -97,7 +97,10 @@
       "edit-current-condition": "Edit Current Condition",
       "ground-water-impacts": "Ground Water Impacts",
       "create-ground-water-impact": "Create Ground Water Impact",
-      "edit-ground-water-impact": "Edit Ground Water Impact"
+      "edit-ground-water-impact": "Edit Ground Water Impact",
+      "maintenance-types": "Maintenance Types",
+      "create-maintenance-type": "Create Maintenance Type",
+      "edit-maintenance-type": "Edit Maintenance Type"
     },
     "form": {
       "title": "Title",
@@ -111,7 +114,7 @@
       "service_type": "Service Type",
       "specification_detail": "Specification Detail",
       "measurement_unit": "Measurement Unit",
-      "project-type":"Project Type"
+      "project-type": "Project Type"
     },
     "create-master-type": "Create Type",
     "edit-master-type": "Edit Type",
