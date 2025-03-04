@@ -47,12 +47,7 @@ const CountTypeMasterList: React.FC = () => {
   return (
     <Fragment>
       {showDrawer && (
-        <CountTypeMasterDrawer
-          open={showDrawer}
-          toggle={toggleDrawer}
-          masterData={selectedRow as CountType}
-          refetch={refetch}
-        />
+        <CountTypeMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as CountType} refetch={refetch} />
       )}
       <Card>
         <CardContent>

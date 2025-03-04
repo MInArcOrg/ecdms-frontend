@@ -18,7 +18,7 @@ export const uploadableResourceFileTypes = {
   professionalAssociationMembership: 'PROFESSIONAL_ASSOCIATION_MEMBERSHIP',
   professionalCertification: 'PROFESSIONAL_CERTIFICATION',
   project_safety_status: 'PROJECT_SAFETY_STATUS',
-  projectQuality: 'PROJECT_QUALITY',
+  projectQuality: 'PROJECT_QUALITY'
 } as const;
 export const uploadablePhotoTypes = {
   stakeholder_profile_photo: 'STAKEHOLDER_PROFILE_PHOTO',

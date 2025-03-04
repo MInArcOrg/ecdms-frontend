@@ -17,7 +17,7 @@ interface WeatherConditionDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  weather_type: yup.string().required("Weather Type is Required"),
+  weather_type: yup.string().required('Weather Type is Required')
 });
 
 const WeatherConditionDrawer: React.FC<WeatherConditionDrawerType> = (props) => {
@@ -37,9 +37,9 @@ const WeatherConditionDrawer: React.FC<WeatherConditionDrawerType> = (props) => 
     data: {
       ...values,
       id: weatherCondition?.id,
-      project_id: projectId,
+      project_id: projectId
     },
-    files: [],
+    files: []
   });
 
   const handleClose = () => {
@@ -53,15 +53,11 @@ const WeatherConditionDrawer: React.FC<WeatherConditionDrawerType> = (props) => 
   };
 
   return (
-    <CustomSideDrawer
-      title={`project.weather-condition.${isEdit ? 'edit' : 'create'}`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`project.weather-condition.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.weather-condition.${isEdit ? "edit" : "create"}`}
+          title={`project.weather-condition.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={weatherCondition}
@@ -70,13 +66,7 @@ const WeatherConditionDrawer: React.FC<WeatherConditionDrawerType> = (props) => 
           onCancel={handleClose}
         >
           {(formik: FormikProps<WeatherCondition>) => {
-            return (
-              <WeatherConditionForm
-                formik={formik}
-                projectId={projectId}
-                defaultLocaleData={{} as WeatherCondition}
-              />
-            );
+            return <WeatherConditionForm formik={formik} projectId={projectId} defaultLocaleData={{} as WeatherCondition} />;
           }}
         </FormPageWrapper>
       )}

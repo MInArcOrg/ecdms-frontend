@@ -17,9 +17,9 @@ interface ProjectQualityDrawerType {
   projectId: string;
   projectQuality: ProjectQuality;
 }
-  const validationSchema = yup.object().shape({
-    major_quality_problem_encountered: yup.string().required("Major Quality Problem Encountered is required"),
-  })
+const validationSchema = yup.object().shape({
+  major_quality_problem_encountered: yup.string().required('Major Quality Problem Encountered is required')
+});
 
 const ProjectQualityDrawer: React.FC<ProjectQualityDrawerType> = (props) => {
   const { open, toggle, refetch, projectQuality, projectId } = props;
