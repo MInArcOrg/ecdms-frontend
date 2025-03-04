@@ -109,7 +109,10 @@
       "edit-drainage-type": "Edit Drainage Type",
       "maintenance-frequencies": "Maintenance Frequencies",
       "edit-maintenance-frequency": "Create Maintenance Frequency",
-      "create-maintenance-frequencies": "Edit Maintenance Frequency"
+      "create-maintenance-frequencies": "Edit Maintenance Frequency",
+      "endwall-type-outlets": "Endwall Type Outlets",
+      "create-endwall-type-outlet": "Create Endwall Type Outlet",
+      "edit-endwall-type-outlet": "Edit Endwall Type Outlet"
     },
     "form": {
       "title": "Title",

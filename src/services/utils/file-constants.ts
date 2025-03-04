@@ -81,7 +81,8 @@ export const uploadableProjectFileTypes = {
     spillwayInfo: 'SPILLWAY_INFO',
     irrigationCapacity: 'IRRIGATION_CAPACITY',
     waterIrrigationDam: 'WATER_IRRIGATION_DAM'
-  }
+  },
+  endwallTypeOutlet: 'ENDWALL_TYPE_OUTLET',
 } as const;
 export const uploadableStakeholderFileTypes = {
   stakeholder: 'STAKEHOLDER',
