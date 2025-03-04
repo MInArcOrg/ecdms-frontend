@@ -91,6 +91,31 @@ const menuItems = (t: (item: string) => void) => [
         id: 9,
         title: t('master-data.general-master.span-support-types'),
         path: `${baseUrl}/project/span-support-types/`
+      },
+      {
+        id: 10,
+        title: t('master-data.general-master.damage-conditions'),
+        path: `${baseUrl}/project/damage-conditions/`
+      },
+      {
+        id: 11,
+        title: t('master-data.general-master.hydrology-defects'),
+        path: `${baseUrl}/project/hydrology-defects/`
+      },
+      {
+        id: 12,
+        title: t('master-data.general-master.count-types'),
+        path: `${baseUrl}/project/count-types/`
+      },
+      {
+        id: 13,
+        title: t('master-data.general-master.road-safety-features'),
+        path: `${baseUrl}/project/road-safety-features/`
+      },
+      {
+        id: 14,
+        title: t('master-data.general-master.current-conditions'),
+        path: `${baseUrl}/project/current-conditions/`
       }
     ]
   },

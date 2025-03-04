@@ -17,13 +17,6 @@ interface ProjectQualityDrawerType {
   projectId: string;
   projectQuality: ProjectQuality;
 }
-
-// const validationSchema = yup.object().shape({
-//   major_quality_problem_encountered: yup.string().required(),
-//   measures_taken: yup.string().required(),
-//   lesson_learned: yup.string().required(),
-// });
-
   const validationSchema = yup.object().shape({
     major_quality_problem_encountered: yup.string().required("Major Quality Problem Encountered is required"),
   })
@@ -63,7 +56,7 @@ const ProjectQualityDrawer: React.FC<ProjectQualityDrawerType> = (props) => {
   const onActionSuccess = async (response: IApiResponse<ProjectQuality>, payload: IApiPayload<ProjectQuality>) => {
     if (payload.files.length > 0) {
       if (response.payload.id) {
-        uploadFile(payload.files[0], uploadableResourceFileTypes.project_quality, response.payload.id, '', '');
+        uploadFile(payload.files[0], uploadableResourceFileTypes.projectQuality, response.payload.id, '', '');
       }
     }
     refetch();

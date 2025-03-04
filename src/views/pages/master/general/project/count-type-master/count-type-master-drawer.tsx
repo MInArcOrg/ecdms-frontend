@@ -5,15 +5,15 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import SoilTypeMasterForm from './soil-type-master-form';
-import { SoilType } from 'src/types/general/general-master';
-import soilTypeMasterService from 'src/services/general/project/soil-type-master-service';
+import CountTypeMasterForm from './count-type-master-form';
+import { CountType } from 'src/types/general/general-master';
+import roadLengthTypeMasterService from 'src/services/general/project/count-type-master-service';
 
-interface SoilTypeMasterDrawerType {
+interface CountTypeMasterDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  masterData: SoilType;
+  masterData: CountType;
 }
 
 const validationSchema = yup.object().shape({
@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
   description: yup.string().required('Description is required')
 });
 
-const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
+const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,15 +29,15 @@ const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createSoilTypeMaster = async (body: IApiPayload<SoilType>) => {
-    return await soilTypeMasterService.create(body);
+  const createCountTypeMaster = async (body: IApiPayload<CountType>) => {
+    return await roadLengthTypeMasterService.create(body);
   };
 
-  const editSoilTypeMaster = async (body: IApiPayload<SoilType>) => {
-    return await soilTypeMasterService.update(masterData?.id || '', body);
+  const editCountTypeMaster = async (body: IApiPayload<CountType>) => {
+    return await roadLengthTypeMasterService.update(masterData?.id || '', body);
   };
 
-  const getPayload = (values: SoilType) => {
+  const getPayload = (values: CountType) => {
     const payload = {
       data: {
         ...values,
@@ -52,9 +52,9 @@ const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<SoilType>, payload: IApiPayload<SoilType>) => {
+  const onActionSuccess = async (response: IApiResponse<CountType>, payload: IApiPayload<CountType>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `SOIL_TYPE`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `HYDROLOGY_DEFECT`, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -62,25 +62,30 @@ const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-soil-type' : 'create-soil-type'}`}
+      title={`master-data.general-master.${isEdit ? 'edit-count-type' : 'create-count-type'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
-        <FormPageWrapper<SoilType>
+        <FormPageWrapper<CountType>
           edit={isEdit}
-          title="master-data.general-master.soil-types"
+          title="master-data.general-master.count-types"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editSoilTypeMaster : createSoilTypeMaster}
+          createActionFunc={isEdit ? editCountTypeMaster : createCountTypeMaster}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<SoilType>) => {
+          {(formik: FormikProps<CountType>) => {
             return (
               <>
-                <SoilTypeMasterForm file={uploadableFile} onFileChange={onFileChange} formik={formik} defaultLocaleData={{} as SoilType} />
+                <CountTypeMasterForm
+                  file={uploadableFile}
+                  onFileChange={onFileChange}
+                  formik={formik}
+                  defaultLocaleData={{} as CountType}
+                />
               </>
             );
           }}
@@ -89,4 +94,5 @@ const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
     </CustomSideDrawer>
   );
 };
-export default SoilTypeMasterDrawer;
+
+export default CountTypeMasterDrawer;

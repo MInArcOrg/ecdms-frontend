@@ -1,17 +1,17 @@
 import { Fragment } from 'react';
-import SoilTypeMasterList from 'src/views/pages/master/general/project/soil-type-master/soil-type-master-list';
 import GeneralMasterLayout from '../GeneralMasterLayout';
+import CountTypeMasterList from 'src/views/pages/master/general/project/count-type-master/count-type-master-list';
 
-function SoilTypes() {
+function CountTypes() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <SoilTypeMasterList />
+          <CountTypeMasterList />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default SoilTypes;
+export default CountTypes;
