@@ -109,7 +109,10 @@
       "edit-drainage-type": "Edit Drainage Type",
       "maintenance-frequencies": "Maintenance Frequencies",
       "edit-maintenance-frequency": "Create Maintenance Frequency",
-      "create-maintenance-frequencies": "Edit Maintenance Frequency"
+      "create-maintenance-frequencies": "Edit Maintenance Frequency",
+      "pier-types": "Pier Types",
+      "create-pier-type": "Create Pier Type",
+      "edit-pier-type": "Edit Pier Type"
     },
     "form": {
       "title": "Title",
