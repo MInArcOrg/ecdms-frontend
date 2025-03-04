@@ -53,40 +53,40 @@ const menuItems = (t: (item: string) => void) => [
         path: `${baseUrl}/stakeholder/project-progress-statuses/`
       },
       {
-        id: 2,
-        title: t('master-data.functional-classification.title'),
-        path: `${baseUrl}/project/functional-classification/`
+        id: 2, 
+        title: t("master-data.general-master.functional-classifications"),
+        path: `${baseUrl}/project/functional-classifications/`,
       },
       {
         id: 3,
-        title: t('master-data.design-classification.title'),
-        path: `${baseUrl}/project/design-classification/`
+        title: t('master-data.general-master.design-classifications'),
+        path: `${baseUrl}/project/design-classifications/`
       },
       {
-        id: 4,
-        title: t('master-data.design-standard.title'),
-        path: `${baseUrl}/project/design-standard/`
+        id: 4, // Make sure this ID is unique
+        title: t("master-data.general-master.design-standards"),
+        path: `${baseUrl}/project/design-standards/`,
       },
       {
-        id: 5,
-        title: t('master-data.design-traffic-flow.title'),
-        path: `${baseUrl}/project/design-traffic-flow/`
+        id: 5, 
+        title: t("master-data.general-master.design-traffic-flows"),
+        path: `${baseUrl}/project/design-traffic-flows/`,
       },
       {
-        id: 6,
-        title: t('master-data.surface-type.title'),
-        path: `${baseUrl}/project/surface-type/`
+        id: 6, 
+        title: t("master-data.general-master.surface-types"),
+        path: `${baseUrl}/project/surface-types/`,
       },
       {
         id: 7,
-        title: t('master-data.cross-section-type.title'),
-        path: `${baseUrl}/project/cross-section/`
+        title: t("master-data.general-master.cross-section-types"),
+        path: `${baseUrl}/project/cross-section-types/`,
       },
       {
         id: 8,
-        title: t('master-data.intersection-type.title'),
-        path: `${baseUrl}/project/intersection-type/`
-      }
+        title: t("master-data.general-master.intersection-types"),
+        path: `${baseUrl}/project/intersection-types/`,
+      },
     ]
   },
   {
