@@ -106,7 +106,7 @@ export const stakeholderServiceColumns = (
             subject: 'stakeholderService'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholderService'
           }}
         />

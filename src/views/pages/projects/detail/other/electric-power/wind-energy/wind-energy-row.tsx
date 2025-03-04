@@ -89,7 +89,7 @@ export const windEnergyColumns = (
             subject: 'windenergy'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'windenergy'
           }}
           options={[]}

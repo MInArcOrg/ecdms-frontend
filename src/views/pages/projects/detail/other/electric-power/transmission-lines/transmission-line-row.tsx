@@ -155,7 +155,7 @@ export const transmissionLineColumns = (
             subject: 'transmissionline'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'transmissionline'
           }}
           options={[]}

@@ -95,7 +95,7 @@ export const telecomColumns = (
             subject: 'telecom'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'telecom'
           }}
           options={[]}

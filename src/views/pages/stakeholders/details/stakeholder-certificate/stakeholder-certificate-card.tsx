@@ -77,7 +77,7 @@ const StakeholderCertificateCard = ({
               subject: 'certificate'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'certificate'
             }}
             item={stakeholderCertificate}

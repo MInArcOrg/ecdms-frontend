@@ -6,8 +6,8 @@ import * as yup from 'yup';
 import BranchManagerForm from './stakeholder-branch-manager-form';
 import stakeholderBranchManagerApiService from 'src/services/stakeholder/stakeholder-branch-manager-service';
 import type { StakeholderBranchManager } from 'src/types/stakeholder/stakeholder-branch-manager';
-import type { StakeholderBranch } from 'src/types/stakeholder/stakeholder-branch';
 import type { IApiResponse } from 'src/types/requests';
+import type { StakeholderBranch } from 'src/types/stakeholder/stakeholder-branch';
 
 interface BranchManagerDrawerType {
   open: boolean;
@@ -62,11 +62,11 @@ const BranchManagerDrawer = (props: BranchManagerDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`stakeholderBranchManager.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`stakeholder.stakeholder-branch-manager.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`stakeholderBranchManager.${isEdit ? 'edit' : 'create'}`}
+          title={`stakeholder.stakeholder-branch-manager.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
@@ -80,20 +80,6 @@ const BranchManagerDrawer = (props: BranchManagerDrawerType) => {
             <BranchManagerForm formik={formik} stakeholderBranches={stakeholderBranches} />
           )}
         </FormPageWrapper>
-        //     <FormPageWrapper
-        //     edit={isEdit}
-        //     title={`stakeholderBranch.${isEdit ? 'edit' : 'create'}`}
-        //     getPayload={getPayload}
-        //     validationSchema={validationSchema}
-        //     initialValues={{
-        //       ...(branch as StakeholderBranch)
-        //     }}
-        //     createActionFunc={isEdit ? editBranch : createBranch}
-        //     onActionSuccess={onActionSuccess}
-        //     onCancel={handleClose}
-        //   >
-        //     {(formik: FormikProps<StakeholderBranch>) => <BranchForm formik={formik} businessFields={businessFields} />}
-        //   </FormPageWrapper>
       )}
     </CustomSideDrawer>
   );

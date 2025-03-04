@@ -102,7 +102,7 @@ export const constructionRelatedServiceColumns = (
             subject: 'constructionRelatedService'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'constructionRelatedService'
           }}
         />

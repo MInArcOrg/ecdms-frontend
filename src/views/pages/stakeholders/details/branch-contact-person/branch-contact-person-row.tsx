@@ -23,7 +23,7 @@ export const branchContactPersonColumns = (
     flex: 0.2,
     minWidth: 200,
     field: 'name',
-    headerName: t('stakeholderBranchContactPerson.name'),
+    headerName: t('stakeholder.stakeholder-branch-contact-person.name'),
     renderCell: ({ row }: CellType) => {
       return (
         <Typography
@@ -46,21 +46,21 @@ export const branchContactPersonColumns = (
     flex: 0.15,
     minWidth: 150,
     field: 'position',
-    headerName: t('stakeholderBranchContactPerson.position'),
+    headerName: t('stakeholder.stakeholder-branch-contact-person.position'),
     renderCell: ({ row }: CellType) => row.position
   },
   {
     flex: 0.15,
     minWidth: 150,
     field: 'department',
-    headerName: t('stakeholderBranchContactPerson.department'),
+    headerName: t('stakeholder.stakeholder-branch-contact-person.department'),
     renderCell: ({ row }: CellType) => row.department
   },
   {
     flex: 0.2,
     minWidth: 200,
     field: 'branch',
-    headerName: t('stakeholderBranchContactPerson.branch'),
+    headerName: t('stakeholder.stakeholder-branch-contact-person.branch'),
     renderCell: ({ row }: CellType) => {
       const branch = stakeholderBranches.find((b) => b.id === row.stakeholder_branch_id);
       return branch ? branch.name : t('common.not-available');
@@ -70,7 +70,7 @@ export const branchContactPersonColumns = (
     flex: 0.15,
     minWidth: 150,
     field: 'phone',
-    headerName: t('stakeholderBranchContactPerson.phone'),
+    headerName: t('stakeholder.stakeholder-branch-contact-person.phone'),
     renderCell: ({ row }: CellType) => row.phone
   },
   {
@@ -104,7 +104,7 @@ export const branchContactPersonColumns = (
             subject: 'stakeholderbranchcontactperson'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholderbranchcontactperson'
           }}
           options={[]}

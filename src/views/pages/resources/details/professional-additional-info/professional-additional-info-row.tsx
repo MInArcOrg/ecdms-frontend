@@ -76,7 +76,7 @@ export const additionalInfoColumns = (
             subject: 'professionaladditionalinfo'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'professionaladditionalinfo'
           }}
           options={[]}
