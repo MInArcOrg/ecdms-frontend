@@ -128,6 +128,11 @@ const menuItems = (t: (item: string) => void) => [
         path: `${baseUrl}/project/maintenance-types/`
       },
 
+      }, {
+        id: 15,
+        title: t('master-data.general-master.slope-stabilities'),
+        path: `${baseUrl}/project/slope-stabilities/`
+      }
     ]
   },
   {

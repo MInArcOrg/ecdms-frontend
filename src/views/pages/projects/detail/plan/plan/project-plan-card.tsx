@@ -74,9 +74,9 @@ const ProjectPlanCard = ({
             model="ProjectPlan"
             model_id={projectPlan.id}
             refetchModel={refetch}
-            resubmit={() => { }}
+            resubmit={() => {}}
             title=""
-            postAction={() => { }}
+            postAction={() => {}}
           />
           <RowOptions
             onEdit={onEdit}

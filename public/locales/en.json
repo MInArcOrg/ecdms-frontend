@@ -101,6 +101,9 @@
       "maintenance-types": "Maintenance Types",
       "create-maintenance-type": "Create Maintenance Type",
       "edit-maintenance-type": "Edit Maintenance Type"
+      "slope-stabilities":"Slope Stabilities",
+      "create-slope-stability":"Create Slope Stability",
+      "edit-slope-stability":"Edit Slope Stability"
     },
     "form": {
       "title": "Title",
