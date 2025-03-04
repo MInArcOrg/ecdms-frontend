@@ -1075,7 +1075,7 @@
       "gender": "Gender",
       "phone": "Phone",
       "email": "Email",
-      "stakeholder": "Stakeholder"
+      "stakeholder":"Stakeholder"
     },
     "project-contact-person": {
       "title": "Project Contact Persons",
