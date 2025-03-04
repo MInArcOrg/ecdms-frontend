@@ -1637,8 +1637,8 @@
       "unit-price": "Unit Price",
       "current-situation": "Current Situation",
       "location": "Location"
-    }
-  },
+  }
+},
   "address": {
     "title": "Address",
     "create-address": "Create Address",
