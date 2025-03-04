@@ -103,7 +103,10 @@
       "edit-maintenance-type": "Edit Maintenance Type",
       "slope-stabilities": "Slope Stabilities",
       "create-slope-stability": "Create Slope Stability",
-      "edit-slope-stability": "Edit Slope Stability"
+      "edit-slope-stability": "Edit Slope Stability",
+      "drainage-types": "Drainage Types",
+      "create-drainage-type": "Create Drainage Type",
+      "edit-drainage-type": "Edit Drainage Type"
     },
     "form": {
       "title": "Title",
