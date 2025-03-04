@@ -60,7 +60,7 @@ const menuItems = (t: (item: string) => void) => [
       {
         id: 3,
         title: t('master-data.general-master.design-classifications'),
-        path: `${baseUrl}/project/design-classification/`
+        path: `${baseUrl}/project/design-classifications/`
       }
     ]
   },
