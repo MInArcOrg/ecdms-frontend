@@ -3,7 +3,7 @@ import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout
 import ProjectManagerComponent from 'src/views/pages/projects/detail/project-manager';
 import subMenuItems from './(subMenuItems)';
 
-const ProjectStatus = () => {
+const ProjectManager = () => {
   const router = useRouter();
   const { id, typeId } = router.query;
 
@@ -14,9 +14,9 @@ const ProjectStatus = () => {
   );
 };
 
-ProjectStatus.acl = {
-  subject: 'projectstatus',
-  action: 'view_projectstatus'
+ProjectManager.acl = {
+  subject: 'projectManager',
+  action: 'view_projectmanager'
 };
 
-export default ProjectStatus;
+export default ProjectManager;
