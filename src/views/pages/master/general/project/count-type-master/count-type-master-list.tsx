@@ -47,12 +47,7 @@ const CountTypeMasterList: React.FC = () => {
   return (
     <Fragment>
       {showDrawer && (
-        <CountTypeMasterDrawer
-          open={showDrawer}
-          toggle={toggleDrawer}
-          masterData={selectedRow as CountType}
-          refetch={refetch}
-        />
+        <CountTypeMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as CountType} refetch={refetch} />
       )}
       <Card>
         <CardContent>
@@ -77,7 +72,7 @@ const CountTypeMasterList: React.FC = () => {
               onlyIcon: true,
               permission: {
                 action: 'create',
-                subject: `hydrologydefect`
+                subject: `counttype`
               }
             }}
             fetchDataFunction={refetch}
@@ -89,5 +84,4 @@ const CountTypeMasterList: React.FC = () => {
     </Fragment>
   );
 };
-
 export default CountTypeMasterList;
