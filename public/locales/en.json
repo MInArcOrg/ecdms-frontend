@@ -112,7 +112,10 @@
       "create-maintenance-frequencies": "Edit Maintenance Frequency",
       "drainage-conditions": "Drainage Conditions",
       "create-drainage-condition": "Create Drainage Condition",
-      "edit-drainage-condition": "Edit Drainage Condition"
+      "edit-drainage-condition": "Edit Drainage Condition",
+      "expansion-joint-types": "Expansion Joint Types",
+      "create-expansion-joint-type": "Create Expansion Joint Type",
+      "edit-expansion-joint-type": "Edit Expansion Joint Type"
 
     },
     "form": {
