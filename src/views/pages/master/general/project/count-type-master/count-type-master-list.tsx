@@ -84,5 +84,4 @@ const CountTypeMasterList: React.FC = () => {
     </Fragment>
   );
 };
-
 export default CountTypeMasterList;
