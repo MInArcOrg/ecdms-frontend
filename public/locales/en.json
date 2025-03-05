@@ -109,7 +109,11 @@
       "edit-drainage-type": "Edit Drainage Type",
       "maintenance-frequencies": "Maintenance Frequencies",
       "edit-maintenance-frequency": "Create Maintenance Frequency",
-      "create-maintenance-frequencies": "Edit Maintenance Frequency"
+      "create-maintenance-frequencies": "Edit Maintenance Frequency",
+      "drainage-conditions": "Drainage Conditions",
+      "create-drainage-condition": "Create Drainage Condition",
+      "edit-drainage-condition": "Edit Drainage Condition"
+
     },
     "form": {
       "title": "Title",
