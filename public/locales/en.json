@@ -112,7 +112,10 @@
       "create-maintenance-frequencies": "Edit Maintenance Frequency",
       "drainage-conditions": "Drainage Conditions",
       "create-drainage-condition": "Create Drainage Condition",
-      "edit-drainage-condition": "Edit Drainage Condition"
+      "edit-drainage-condition": "Edit Drainage Condition",
+      "damage-types": "Damage Types",
+      "create-damage-type": "Create Damage Type",
+      "edit-damage-type": "Edit Damage Type"
 
     },
     "form": {
