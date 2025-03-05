@@ -112,7 +112,10 @@
       "create-maintenance-frequencies": "Edit Maintenance Frequency",
       "drainage-conditions": "Drainage Conditions",
       "create-drainage-condition": "Create Drainage Condition",
-      "edit-drainage-condition": "Edit Drainage Condition"
+      "edit-drainage-condition": "Edit Drainage Condition",
+      "bridge-part-defects": "Bridge Part Defects",
+      "create-bridge-part-defect": "Create Bridge Part Defect",
+      "edit-bridge-part-defect": "Edit Bridge Part Defect"
 
     },
     "form": {
