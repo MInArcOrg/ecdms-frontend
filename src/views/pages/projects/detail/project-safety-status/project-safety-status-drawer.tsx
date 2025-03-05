@@ -20,7 +20,7 @@ interface ProjectSafetyStatusDrawerType {
 
 const validationSchema = yup.object().shape({
   measures_taken: yup.string().required(),
-  lesson_learned: yup.string().required(),
+  lesson_learned: yup.string().required()
 });
 
 const ProjectSafetyStatusDrawer: React.FC<ProjectSafetyStatusDrawerType> = (props) => {
@@ -45,9 +45,9 @@ const ProjectSafetyStatusDrawer: React.FC<ProjectSafetyStatusDrawerType> = (prop
     data: {
       ...values,
       id: projectSafetyStatus?.id,
-      project_id: projectId,
+      project_id: projectId
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => {
@@ -68,15 +68,11 @@ const ProjectSafetyStatusDrawer: React.FC<ProjectSafetyStatusDrawerType> = (prop
   };
 
   return (
-    <CustomSideDrawer
-      title={`project.safety-status.${isEdit ? 'edit' : 'create'}`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`project.safety-status.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.safety-status.${isEdit ? "edit" : "create"}`}
+          title={`project.safety-status.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={projectSafetyStatus}

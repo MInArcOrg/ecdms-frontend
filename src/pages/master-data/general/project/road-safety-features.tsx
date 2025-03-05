@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import GeneralMasterLayout from '../GeneralMasterLayout';
+import GeneralMasterLayout from '../general-master-layout';
 import RoadSafetyFeatureMasterList from 'src/views/pages/master/general/project/road-saftey-feature-master/road-safety-feature-master-list';
 
 function RoadSafetyFeatures() {

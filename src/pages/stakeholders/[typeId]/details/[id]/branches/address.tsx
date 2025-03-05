@@ -1,22 +1,25 @@
 import { useRouter } from 'next/router';
 import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
 import subMenuItems from './(sub-menu-items)';
-import StakeholderBranchAddressList from 'src/views/pages/stakeholders/details/stakeholder-branch-address';
+import AddressList from 'src/views/generics/address/address-list';
+import { Box } from '@mui/material';
 
 function StakeholderBranchAddressIndex() {
   const router = useRouter();
   const { id, typeId } = router.query;
 
   return (
-    <StakeholderLayout activeMenu={1} activeSubMenu={3} subMenuItems={subMenuItems(id as string, typeId as string)}>
-      <StakeholderBranchAddressList model="stakeholder-branch-address" stakeholderId={String(id)} typeId={String(typeId)} />
-    </StakeholderLayout>
+    <Box>
+      <StakeholderLayout activeMenu={1} activeSubMenu={3} subMenuItems={subMenuItems(id as string, typeId as string)}>
+        <AddressList type={'stakeholder-branch-address'} modelId={String(id)} />
+      </StakeholderLayout>
+    </Box>
   );
 }
 
 StakeholderBranchAddressIndex.acl = {
-  subject: 'resource',
-  action: 'view_resource'
+  subject: 'stakeholder',
+  action: 'view_stakeholder'
 };
 
 export default StakeholderBranchAddressIndex;
