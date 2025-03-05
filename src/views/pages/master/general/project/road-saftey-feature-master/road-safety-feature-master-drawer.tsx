@@ -54,7 +54,7 @@ const RoadSafetyFeatureMasterDrawer = (props: RoadSafetyFeatureMasterDrawerType)
 
   const onActionSuccess = async (response: IApiResponse<RoadSafetyFeature>, payload: IApiPayload<RoadSafetyFeature>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `HYDROLOGY_DEFECT`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `ROAD_SAFETY_FEATURE`, response.payload.id, '', '');
     }
     refetch();
     handleClose();

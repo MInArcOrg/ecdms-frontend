@@ -5,15 +5,15 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import CountTypeMasterForm from './count-type-master-form';
-import { CountType } from 'src/types/general/general-master';
-import roadLengthTypeMasterService from 'src/services/general/project/count-type-master-service';
+import SeverityLevelMasterForm from './severity-level-master-form';
+import { SeverityLevel } from 'src/types/general/general-master';
+import roadLengthTypeMasterService from 'src/services/general/project/drainage-type-master-service';
 
-interface CountTypeMasterDrawerType {
+interface SeverityLevelMasterDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  masterData: CountType;
+  masterData: SeverityLevel;
 }
 
 const validationSchema = yup.object().shape({
@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
   description: yup.string().required('Description is required')
 });
 
-const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
+const SeverityLevelMasterDrawer = (props: SeverityLevelMasterDrawerType) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,15 +29,15 @@ const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createCountTypeMaster = async (body: IApiPayload<CountType>) => {
+  const createSeverityLevelMaster = async (body: IApiPayload<SeverityLevel>) => {
     return await roadLengthTypeMasterService.create(body);
   };
 
-  const editCountTypeMaster = async (body: IApiPayload<CountType>) => {
+  const editSeverityLevelMaster = async (body: IApiPayload<SeverityLevel>) => {
     return await roadLengthTypeMasterService.update(masterData?.id || '', body);
   };
 
-  const getPayload = (values: CountType) => {
+  const getPayload = (values: SeverityLevel) => {
     const payload = {
       data: {
         ...values,
@@ -52,9 +52,9 @@ const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<CountType>, payload: IApiPayload<CountType>) => {
+  const onActionSuccess = async (response: IApiResponse<SeverityLevel>, payload: IApiPayload<SeverityLevel>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `COUNT_TYPE`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `SEVERITY_LEVEL`, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -62,29 +62,29 @@ const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-count-type' : 'create-count-type'}`}
+      title={`master-data.general-master.${isEdit ? 'edit-drainage-type' : 'create-drainage-type'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
-        <FormPageWrapper<CountType>
+        <FormPageWrapper<SeverityLevel>
           edit={isEdit}
-          title="master-data.general-master.count-types"
+          title="master-data.general-master.drainage-types"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editCountTypeMaster : createCountTypeMaster}
+          createActionFunc={isEdit ? editSeverityLevelMaster : createSeverityLevelMaster}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<CountType>) => {
+          {(formik: FormikProps<SeverityLevel>) => {
             return (
               <>
-                <CountTypeMasterForm
+                <SeverityLevelMasterForm
                   file={uploadableFile}
                   onFileChange={onFileChange}
                   formik={formik}
-                  defaultLocaleData={{} as CountType}
+                  defaultLocaleData={{} as SeverityLevel}
                 />
               </>
             );
@@ -95,4 +95,4 @@ const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
   );
 };
 
-export default CountTypeMasterDrawer;
+export default SeverityLevelMasterDrawer;
