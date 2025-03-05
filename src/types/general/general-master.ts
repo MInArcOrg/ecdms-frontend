@@ -149,6 +149,49 @@ export interface CurrentCondition {
 }
 export interface GroundWaterImpact {
   id: string;
+
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface MaintenanceType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface SlopeStability {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface DrainageType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface MaintenanceFrequency {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface DrainageCondition{
+  id: string;
   title?: string;
   description?: string;
   project_type_id: string;

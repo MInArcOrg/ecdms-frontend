@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import GeneralMasterLayout from '../GeneralMasterLayout';
+import GeneralMasterLayout from '../general-master-layout';
 import HydrologyDefectMasterList from 'src/views/pages/master/general/project/hydrology-defect-master/hydrology-defect-master-list';
 
 function HydrologyDefects() {

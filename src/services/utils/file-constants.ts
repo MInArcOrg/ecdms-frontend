@@ -17,12 +17,13 @@ export const uploadableResourceFileTypes = {
   professionalWorkExperience: 'PROFESSIONAL_WORK_EXPERIENCE',
   professionalAssociationMembership: 'PROFESSIONAL_ASSOCIATION_MEMBERSHIP',
   professionalCertification: 'PROFESSIONAL_CERTIFICATION',
-  project_safety_status: 'PROJECT_SAFETY_STATUS',
-  projectQuality: 'PROJECT_QUALITY'
+
+  project_construction_type: 'PROJECT_CONSTRUCTION_TYPE',
+  project_quality: 'PROJECT_QUALITY',
+  project_safety_status: "PROJECT_SAFTEY_STATUS"
 } as const;
 export const uploadablePhotoTypes = {
   stakeholder_profile_photo: 'STAKEHOLDER_PROFILE_PHOTO',
-
   project_profile_photo: 'PROJECT_PROFILE_PHOTO',
   user_profile_photo: 'USER_PROFILE_PHOTO',
   resource: 'RESOURCE',

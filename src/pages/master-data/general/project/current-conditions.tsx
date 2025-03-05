@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import CurrentCondtionMasterList from 'src/views/pages/master/general/project/current-condition-master/current-condition-master-list';
-import GeneralMasterLayout from '../GeneralMasterLayout';
+import GeneralMasterLayout from '../general-master-layout';
 
 function CurrentCondtions() {
   return (
