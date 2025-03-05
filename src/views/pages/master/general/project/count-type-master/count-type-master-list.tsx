@@ -1,22 +1,22 @@
-// components/DrainageTypeMasterList.tsx
+// components/CountTypeMasterList.tsx
 import { Card, CardContent } from '@mui/material';
 import React, { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { DrainageType } from 'src/types/general/general-master';
+import { CountType } from 'src/types/general/general-master';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
-import DrainageTypeMasterCard from './drainage-type-master-card';
-import DrainageTypeMasterDrawer from './drainage-type-master-drawer';
-import drainageTypeMasterService from 'src/services/general/project/drainage-type-master-service';
+import CountTypeMasterCard from './count-type-master-card';
+import CountTypeMasterDrawer from './count-type-master-drawer';
+import countTypeMasterService from 'src/services/general/project/count-type-master-service';
 
-const DrainageTypeMasterList: React.FC = () => {
-  const [selectedRow, setSelectedRow] = useState<DrainageType | null>(null);
+const CountTypeMasterList: React.FC = () => {
+  const [selectedRow, setSelectedRow] = useState<CountType | null>(null);
   const { t } = useTranslation();
-  const fetchDrainageTypeMaster = (params: GetRequestParam): Promise<IApiResponse<DrainageType[]>> => {
-    return drainageTypeMasterService.getAll(params);
+  const fetchCountTypeMaster = (params: GetRequestParam): Promise<IApiResponse<CountType[]>> => {
+    return countTypeMasterService.getAll(params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
 
@@ -26,38 +26,38 @@ const DrainageTypeMasterList: React.FC = () => {
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<DrainageType[]>({
-    queryKey: ['general-master', 'drainage-type'],
-    fetchFunction: fetchDrainageTypeMaster
+  } = usePaginatedFetch<CountType[]>({
+    queryKey: ['general-master', 'count-type'],
+    fetchFunction: fetchCountTypeMaster
   });
   const handleDelete = async (id: string) => {
-    await drainageTypeMasterService.delete(id);
+    await countTypeMasterService.delete(id);
     refetch();
   };
 
   const toggleDrawer = () => {
-    setSelectedRow({} as DrainageType);
+    setSelectedRow({} as CountType);
     setShowDrawer(!showDrawer);
   };
 
-  const handleEdit = (generalMaster: DrainageType) => {
+  const handleEdit = (generalMaster: CountType) => {
     toggleDrawer();
     setSelectedRow(generalMaster);
   };
   return (
     <Fragment>
       {showDrawer && (
-        <DrainageTypeMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as DrainageType} refetch={refetch} />
+        <CountTypeMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as CountType} refetch={refetch} />
       )}
       <Card>
         <CardContent>
           <ItemsListing
             pagination={pagination}
             type={ITEMS_LISTING_TYPE.list.value}
-            title={t(`master-data.general-master.drainage-types`)}
+            title={t(`master-data.general-master.count-types`)}
             ItemViewComponent={({ data }) => (
-              <DrainageTypeMasterCard
-                type={'drainage-type'}
+              <CountTypeMasterCard
+                type={'count-type'}
                 generalMaster={data}
                 onDelete={handleDelete}
                 onEdit={handleEdit}
@@ -85,4 +85,4 @@ const DrainageTypeMasterList: React.FC = () => {
   );
 };
 
-export default DrainageTypeMasterList;
+export default CountTypeMasterList;
