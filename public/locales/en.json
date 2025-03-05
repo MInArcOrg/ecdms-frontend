@@ -114,8 +114,8 @@
       "create-drainage-condition": "Create Drainage Condition",
       "edit-drainage-condition": "Edit Drainage Condition",
       "assessment-conditions": "Assessment Conditions",
-      "create-assessment-conditions": "Create Assessment Conditions",
-      "edit-assessment-conditions": "Edit Assessment Conditions"
+      "create-assessment-condition": "Create Assessment Conditions",
+      "edit-assessment-condition": "Edit Assessment Conditions"
     },
     "form": {
       "title": "Title",
