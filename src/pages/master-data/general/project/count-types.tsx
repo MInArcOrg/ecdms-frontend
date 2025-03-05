@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import GeneralMasterLayout from '../GeneralMasterLayout';
+import GeneralMasterLayout from '../general-master-layout';
 import CountTypeMasterList from 'src/views/pages/master/general/project/count-type-master/count-type-master-list';
 
 function CountTypes() {
