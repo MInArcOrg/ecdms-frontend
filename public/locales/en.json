@@ -112,7 +112,10 @@
       "create-maintenance-frequencies": "Edit Maintenance Frequency",
       "drainage-conditions": "Drainage Conditions",
       "create-drainage-condition": "Create Drainage Condition",
-      "edit-drainage-condition": "Edit Drainage Condition"
+      "edit-drainage-condition": "Edit Drainage Condition",
+      "deck-slab-types": "Deck Slab Types",
+      "create-deck-slab-type": "Create Deck Slab Type",
+      "edit-deck-slab-type": "Edit Deck Slab Type"
 
     },
     "form": {
