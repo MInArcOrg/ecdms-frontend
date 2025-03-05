@@ -1550,6 +1550,22 @@
       "phone": "Phone",
       "email": "Email"
     },
+    "stakeholder-branch-contact-person": {
+      "title": "Branch Contact People",
+      "create": "Create Branch Contact Person",
+      "edit": "Edit Branch Contact Person",
+      "details": "Branch Contact Person Details",
+      "name": "Name",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "department": "Department",
+      "position": "Position",
+      "gender": "Gender",
+      "phone": "Phone",
+      "email": "Email",
+      "branch": "Branch"
+    },
     "stakeholder-department": {
       "title": "Stakeholder Departments",
       "create": "Create Department",
