@@ -17,6 +17,7 @@ export const uploadableResourceFileTypes = {
   professionalWorkExperience: 'PROFESSIONAL_WORK_EXPERIENCE',
   professionalAssociationMembership: 'PROFESSIONAL_ASSOCIATION_MEMBERSHIP',
   professionalCertification: 'PROFESSIONAL_CERTIFICATION',
+
   project_construction_type: 'PROJECT_CONSTRUCTION_TYPE',
   project_quality: 'PROJECT_QUALITY',
   project_safety_status: "PROJECT_SAFTEY_STATUS"

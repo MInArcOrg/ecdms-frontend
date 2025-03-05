@@ -54,7 +54,7 @@ const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
 
   const onActionSuccess = async (response: IApiResponse<SoilType>, payload: IApiPayload<SoilType>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `SOIL_TYPE`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `SOIL_TYPE_TYPE`, response.payload.id, '', '');
     }
     refetch();
     handleClose();

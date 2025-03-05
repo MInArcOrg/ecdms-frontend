@@ -1095,7 +1095,7 @@
       "gender": "Gender",
       "phone": "Phone",
       "email": "Email",
-      "stakeholder": "Stakeholder"
+      "stakeholder":"Stakeholder"
     },
     "project-contact-person": {
       "title": "Project Contact Persons",
@@ -1124,23 +1124,13 @@
       "create": "Create Safety Status",
       "edit": "Edit Safety Status"
     },
-    "quality": {
-      "title": "Project Quality",
-      "major-quality-problem-encountered": "Major Quality Problem Encountered",
+    "weather-condition": {
+      "title": "Weather Condition",
+      "weather-type": "Weather Type",
       "description": "Description",
-      "measures-taken": "Measures Taken",
-      "lesson-learned": "Lesson Learned",
-      "details": "Quality Details",
-      "create": "Create Quality",
-      "edit": "Edit Quality"
-    },
-    "construction-type": {
-      "title": "Construction Types",
-      "construction-type": "Construction Type",
-      "description": "Description",
-      "create": "Create Construction Type",
-      "edit": "Edit Construction Type",
-      "details": "Construction Type Details"
+      "details": "Weather Condition Details",
+      "create": "Create Weather Condition",
+      "edit": "Edit Weather Condition"
     }
   },
   "location": {

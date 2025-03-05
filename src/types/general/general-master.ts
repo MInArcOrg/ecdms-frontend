@@ -149,6 +149,7 @@ export interface CurrentCondition {
 }
 export interface GroundWaterImpact {
   id: string;
+
   title?: string;
   description?: string;
   project_type_id: string;

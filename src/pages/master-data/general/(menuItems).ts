@@ -123,27 +123,27 @@ const menuItems = (t: (item: string) => void) => [
         path: `${baseUrl}/project/ground-water-impacts/`
       },
       {
-        id: 16,
+        id: 20,
         title: t('master-data.general-master.maintenance-types'),
         path: `${baseUrl}/project/maintenance-types/`
       },
       {
-        id: 17,
+        id: 21,
         title: t('master-data.general-master.slope-stabilities'),
         path: `${baseUrl}/project/slope-stabilities/`
       },
       {
-        id: 18,
+        id: 22,
         title: t('master-data.general-master.drainage-types'),
         path: `${baseUrl}/project/drainage-types/`
       },
       {
-        id: 19,
+        id: 23,
         title: t('master-data.general-master.maintenance-frequencies'),
         path: `${baseUrl}/project/maintenance-frequencies/`
       },
       {
-        id: 19,
+        id: 24,
         title: t('master-data.general-master.drainage-conditions'),
         path: `${baseUrl}/project/drainage-conditions/`
       }

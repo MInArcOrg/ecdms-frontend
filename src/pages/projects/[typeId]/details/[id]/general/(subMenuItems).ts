@@ -40,9 +40,9 @@ const subMenuItems = (id: string, typeId: string) => [
     path: `/projects/${typeId}/details/${id}/general/project-quality`
   },
   {
-    id: 10,
-    title: 'Construction Types',
-    path: `/projects/${typeId}/details/${id}/general/construction-types`
+    id: 9,
+    title: 'Weather Condition',
+    path: `/projects/${typeId}/details/${id}/general/weather-condition`
   }
 ];
 export default subMenuItems;
