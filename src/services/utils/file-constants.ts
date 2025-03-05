@@ -84,8 +84,8 @@ export const uploadableProjectFileTypes = {
     spillwayInfo: 'SPILLWAY_INFO',
     irrigationCapacity: 'IRRIGATION_CAPACITY',
     waterIrrigationDam: 'WATER_IRRIGATION_DAM',
-    damageType: 'DAMAGE_TYPE'
-  }
+  },
+  damageType: 'DAMAGE_TYPE'
 } as const;
 export const uploadableStakeholderFileTypes = {
   stakeholder: 'STAKEHOLDER',
