@@ -72,7 +72,7 @@ const CountTypeMasterList: React.FC = () => {
               onlyIcon: true,
               permission: {
                 action: 'create',
-                subject: `hydrologydefect`
+                subject: `counttype`
               }
             }}
             fetchDataFunction={refetch}
