@@ -47,7 +47,12 @@ const MaintenanceFrequencyMasterList: React.FC = () => {
   return (
     <Fragment>
       {showDrawer && (
-        <MaintenanceFrequencyMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as MaintenanceFrequency} refetch={refetch} />
+        <MaintenanceFrequencyMasterDrawer
+          open={showDrawer}
+          toggle={toggleDrawer}
+          masterData={selectedRow as MaintenanceFrequency}
+          refetch={refetch}
+        />
       )}
       <Card>
         <CardContent>
