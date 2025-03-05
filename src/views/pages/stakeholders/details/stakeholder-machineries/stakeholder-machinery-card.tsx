@@ -1,20 +1,20 @@
-import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from "@mui/material"
-import type React from "react"
-import { useTranslation } from "react-i18next"
-import type { StakeholderMachinery } from "src/types/stakeholder/stakeholder-machinery"
-import ModelAction from "src/views/components/custom/model-actions"
-import RowOptions from "src/views/shared/listing/row-options"
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
+import type React from 'react';
+import { useTranslation } from 'react-i18next';
+import type { StakeholderMachinery } from 'src/types/stakeholder/stakeholder-machinery';
+import ModelAction from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface MachineryCardProps {
-  machinery: StakeholderMachinery
-  refetch: () => void
-  onEdit: (machinery: StakeholderMachinery) => void
-  onDelete: (id: string) => void
-  onDetail: (machinery: StakeholderMachinery) => void
+  machinery: StakeholderMachinery;
+  refetch: () => void;
+  onEdit: (machinery: StakeholderMachinery) => void;
+  onDelete: (id: string) => void;
+  onDetail: (machinery: StakeholderMachinery) => void;
 }
 
 const MachineryCard: React.FC<MachineryCardProps> = ({ machinery, refetch, onEdit, onDelete, onDetail }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <Card sx={{ p: 2 }}>
@@ -27,9 +27,9 @@ const MachineryCard: React.FC<MachineryCardProps> = ({ machinery, refetch, onEdi
               onClick={() => onDetail(machinery)}
               sx={{
                 fontWeight: 500,
-                textDecoration: "none",
-                color: "text.secondary",
-                "&:hover": { color: "primary.main" },
+                textDecoration: 'none',
+                color: 'text.secondary',
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {machinery.name}
@@ -41,27 +41,27 @@ const MachineryCard: React.FC<MachineryCardProps> = ({ machinery, refetch, onEdi
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t("stakeholder.machinery.plate-no")}: {machinery.plate_no}
+            {t('stakeholder.machinery.plate-no')}: {machinery.plate_no}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("stakeholder.machinery.brand-name")}: {machinery.brand_name || t("common.not-available")}
+            {t('stakeholder.machinery.brand-name')}: {machinery.brand_name || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("stakeholder.machinery.model")}: {machinery.model}
+            {t('stakeholder.machinery.model')}: {machinery.model}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("stakeholder.machinery.year")}: {machinery.year || t("common.not-available")}
+            {t('stakeholder.machinery.year')}: {machinery.year || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("stakeholder.machinery.engine-number")}: {machinery.engine_number}
+            {t('stakeholder.machinery.engine-number')}: {machinery.engine_number}
           </Typography>
         </Box>
       </CardContent>
 
-      <CardActions sx={{ justifyContent: "flex-end" }}>
+      <CardActions sx={{ justifyContent: 'flex-end' }}>
         <ModelAction
           model="StakeholderMachinery"
-          model_id={machinery?.id || ""}
+          model_id={machinery?.id || ''}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
@@ -69,22 +69,21 @@ const MachineryCard: React.FC<MachineryCardProps> = ({ machinery, refetch, onEdi
         />
         <RowOptions
           deletePermissionRule={{
-            action: "delete",
-            subject: "stakeholdermachinery",
+            action: 'delete',
+            subject: 'stakeholdermachinery'
           }}
           editPermissionRule={{
-            action: "edit",
-            subject: "stakeholdermachinery",
+            action: 'edit',
+            subject: 'stakeholdermachinery'
           }}
           onEdit={() => onEdit(machinery)}
-          onDelete={() => onDelete(machinery?.id || "")}
+          onDelete={() => onDelete(machinery?.id || '')}
           item={machinery}
           options={[]}
         />
       </CardActions>
     </Card>
-  )
-}
+  );
+};
 
-export default MachineryCard
-
+export default MachineryCard;

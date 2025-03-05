@@ -116,6 +116,36 @@ const menuItems = (t: (item: string) => void) => [
         id: 14,
         title: t('master-data.general-master.current-conditions'),
         path: `${baseUrl}/project/current-conditions/`
+      },
+      {
+        id: 15,
+        title: t('master-data.general-master.ground-water-impacts'),
+        path: `${baseUrl}/project/ground-water-impacts/`
+      },
+      {
+        id: 20,
+        title: t('master-data.general-master.maintenance-types'),
+        path: `${baseUrl}/project/maintenance-types/`
+      },
+      {
+        id: 21,
+        title: t('master-data.general-master.slope-stabilities'),
+        path: `${baseUrl}/project/slope-stabilities/`
+      },
+      {
+        id: 22,
+        title: t('master-data.general-master.drainage-types'),
+        path: `${baseUrl}/project/drainage-types/`
+      },
+      {
+        id: 23,
+        title: t('master-data.general-master.maintenance-frequencies'),
+        path: `${baseUrl}/project/maintenance-frequencies/`
+      },
+      {
+        id: 24,
+        title: t('master-data.general-master.drainage-conditions'),
+        path: `${baseUrl}/project/drainage-conditions/`
       }
     ]
   },

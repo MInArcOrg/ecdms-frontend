@@ -14,6 +14,7 @@ function StakeholderPositionIndex() {
   );
 }
 
+
 StakeholderPositionIndex.acl = {
   action: 'view',
   subject: 'stakeholder-position'

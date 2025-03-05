@@ -47,7 +47,12 @@ const CurrentConditionMasterList: React.FC = () => {
   return (
     <Fragment>
       {showDrawer && (
-        <CurrentConditionMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as CurrentCondition} refetch={refetch} />
+        <CurrentConditionMasterDrawer
+          open={showDrawer}
+          toggle={toggleDrawer}
+          masterData={selectedRow as CurrentCondition}
+          refetch={refetch}
+        />
       )}
       <Card>
         <CardContent>

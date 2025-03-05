@@ -94,7 +94,26 @@
       "edit-road-safety-feature": "Edit Road Safety Feature",
       "current-conditions": "Current Conditions",
       "create-current-condition": "Create Current Condition",
-      "edit-current-condition": "Edit Current Condition"
+      "edit-current-condition": "Edit Current Condition",
+      "ground-water-impacts": "Ground Water Impacts",
+      "create-ground-water-impact": "Create Ground Water Impact",
+      "edit-ground-water-impact": "Edit Ground Water Impact",
+      "maintenance-types": "Maintenance Types",
+      "create-maintenance-type": "Create Maintenance Type",
+      "edit-maintenance-type": "Edit Maintenance Type",
+      "slope-stabilities": "Slope Stabilities",
+      "create-slope-stability": "Create Slope Stability",
+      "edit-slope-stability": "Edit Slope Stability",
+      "drainage-types": "Drainage Types",
+      "create-drainage-type": "Create Drainage Type",
+      "edit-drainage-type": "Edit Drainage Type",
+      "maintenance-frequencies": "Maintenance Frequencies",
+      "edit-maintenance-frequency": "Create Maintenance Frequency",
+      "create-maintenance-frequencies": "Edit Maintenance Frequency",
+      "drainage-conditions": "Drainage Conditions",
+      "create-drainage-condition": "Create Drainage Condition",
+      "edit-drainage-condition": "Edit Drainage Condition"
+
     },
     "form": {
       "title": "Title",
@@ -107,7 +126,8 @@
       "resource-type-specific-models": "Resource type Specific models",
       "service_type": "Service Type",
       "specification_detail": "Specification Detail",
-      "measurement_unit": "Measurement Unit"
+      "measurement_unit": "Measurement Unit",
+      "project-type": "Project Type"
     },
     "create-master-type": "Create Type",
     "edit-master-type": "Edit Type",
@@ -1075,7 +1095,7 @@
       "gender": "Gender",
       "phone": "Phone",
       "email": "Email",
-      "stakeholder": "Stakeholder"
+      "stakeholder":"Stakeholder"
     },
     "project-contact-person": {
       "title": "Project Contact Persons",
@@ -1104,23 +1124,13 @@
       "create": "Create Safety Status",
       "edit": "Edit Safety Status"
     },
-    "quality": {
-      "title": "Project Quality",
-      "major-quality-problem-encountered": "Major Quality Problem Encountered",
+    "weather-condition": {
+      "title": "Weather Condition",
+      "weather-type": "Weather Type",
       "description": "Description",
-      "measures-taken": "Measures Taken",
-      "lesson-learned": "Lesson Learned",
-      "details": "Quality Details",
-      "create": "Create Quality",
-      "edit": "Edit Quality"
-    },
-    "construction-type": {
-      "title": "Construction Types",
-      "construction-type": "Construction Type",
-      "description": "Description",
-      "create": "Create Construction Type",
-      "edit": "Edit Construction Type",
-      "details": "Construction Type Details"
+      "details": "Weather Condition Details",
+      "create": "Create Weather Condition",
+      "edit": "Edit Weather Condition"
     }
   },
   "location": {
