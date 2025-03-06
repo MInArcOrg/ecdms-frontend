@@ -54,7 +54,7 @@ const MaintenanceTypeMasterDrawer = (props: MaintenanceTypeMasterDrawerType) => 
 
   const onActionSuccess = async (response: IApiResponse<MaintenanceType>, payload: IApiPayload<MaintenanceType>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `HYDROLOGY_DEFECT`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `MAINTENANCE_TYPE`, response.payload.id, '', '');
     }
     refetch();
     handleClose();

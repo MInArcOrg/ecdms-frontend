@@ -1,17 +1,17 @@
 import { Fragment } from 'react';
-import SoilTypeMasterList from 'src/views/pages/master/general/project/soil-type-master/soil-type-master-list';
+import HazardTypeMasterList from 'src/views/pages/master/general/project/hazard-type-master/hazard-type-master-list';
 import GeneralMasterLayout from '../general-master-layout';
 
-function SoilTypes() {
+function HazardLengthTypes() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <SoilTypeMasterList />
+          <HazardTypeMasterList />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default SoilTypes;
+export default HazardLengthTypes;

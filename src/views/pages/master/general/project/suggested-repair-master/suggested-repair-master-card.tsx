@@ -1,20 +1,19 @@
-// components/RoadSafetyFeatureList.tsx
+// components/SuggestedRepairList.tsx
 import { Box, CardActions, CardContent, Grid, Typography } from '@mui/material';
 import { Fragment } from 'react';
-import { RoadSafetyFeature } from 'src/types/general/general-master';
+import { SuggestedRepair } from 'src/types/general/general-master';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-const RoadSafetyFeatureMasterCard = ({
+const SuggestedRepairMasterCard = ({
   generalMaster,
   onEdit,
   onDelete,
   refetch
 }: {
-  type: string;
-  generalMaster: RoadSafetyFeature;
-  onEdit: (category: RoadSafetyFeature) => void;
+  generalMaster: SuggestedRepair;
+  onEdit: (category: SuggestedRepair) => void;
   onDelete: (id: string) => void;
   t: any;
   refetch: () => void;
@@ -38,9 +37,9 @@ const RoadSafetyFeatureMasterCard = ({
           <Grid item>
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id} type="ROAD_SAFETY_FEATURE" /> &nbsp;
+                <FileDrawer id={generalMaster.id} type="SUGGESTED_REPAIR" /> &nbsp;
                 <ModelActionComponent
-                  model={'roadsafetyfeature'}
+                  model={'suggestedrepair'}
                   model_id={generalMaster.id}
                   refetchModel={refetch}
                   resubmit={function (): void {
@@ -58,11 +57,11 @@ const RoadSafetyFeatureMasterCard = ({
                   options={[]}
                   deletePermissionRule={{
                     action: 'delete',
-                    subject: 'roadsafetyfeature'
+                    subject: 'suggestedrepair'
                   }}
                   editPermissionRule={{
                     action: 'update',
-                    subject: 'roadsafetyfeature'
+                    subject: 'suggestedrepair'
                   }}
                 />
               </Fragment>
@@ -73,4 +72,4 @@ const RoadSafetyFeatureMasterCard = ({
     </Fragment>
   );
 };
-export default RoadSafetyFeatureMasterCard;
+export default SuggestedRepairMasterCard;

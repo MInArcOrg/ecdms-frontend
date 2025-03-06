@@ -1,17 +1,17 @@
 import { Fragment } from 'react';
-import SoilTypeMasterList from 'src/views/pages/master/general/project/soil-type-master/soil-type-master-list';
 import GeneralMasterLayout from '../general-master-layout';
+import SeverityLevelMasterList from 'src/views/pages/master/general/project/drainage-type-master/drainage-type-master-list';
 
-function SoilTypes() {
+function SeverityLevels() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <SoilTypeMasterList />
+          <SeverityLevelMasterList />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default SoilTypes;
+export default SeverityLevels;
