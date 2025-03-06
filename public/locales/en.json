@@ -836,15 +836,12 @@
         "road-segment-details": "Road Segment Details",
         "details": {
           "name": "Name",
-          "specifications": "Specifications",
-          "no-of-layers": "Number of Layers",
-          "length": "Length",
-          "width": "Width",
-          "remark": "Remark",
+          "surface-type-id": "Surface Type",
           "start-northing": "Start Northing",
           "start-easting": "Start Easting",
           "end-northing": "End Northing",
-          "end-easting": "End Easting"
+          "end-easting": "End Easting",
+          "design-standard-id": "Design Standard"
         }
       },
       "road-layer": {
