@@ -115,7 +115,13 @@
       "edit-drainage-condition": "Edit Drainage Condition",
       "assessment-conditions": "Assessment Conditions",
       "create-assessment-condition": "Create Assessment Conditions",
-      "edit-assessment-condition": "Edit Assessment Conditions"
+      "edit-assessment-condition": "Edit Assessment Conditions",
+      "severity-levels": "Severity Levels",
+      "create-severity-level": "Create Severity Level",
+      "edit-severity-level": "Edit Severity Level",
+      "hazard-types":  "Hazard Types",
+      "create-hazard-types":"Create Hazard Type",
+      "edit-hazard-types":"Edit Hazard Type"
     },
     "form": {
       "title": "Title",
