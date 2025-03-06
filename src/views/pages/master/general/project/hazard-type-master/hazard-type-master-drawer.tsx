@@ -80,7 +80,12 @@ const HazardTypeMasterDrawer = (props: HazardTypeMasterDrawerType) => {
           {(formik: FormikProps<HazardType>) => {
             return (
               <>
-                <HazardTypeMasterForm file={uploadableFile} onFileChange={onFileChange} formik={formik} defaultLocaleData={{} as HazardType} />
+                <HazardTypeMasterForm
+                  file={uploadableFile}
+                  onFileChange={onFileChange}
+                  formik={formik}
+                  defaultLocaleData={{} as HazardType}
+                />
               </>
             );
           }}
