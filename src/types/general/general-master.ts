@@ -5,6 +5,15 @@ export interface GeneralMaster {
   description: string;
   id: string;
 }
+export interface ProjectGeneralMaster {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  model: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
 
 export type GeneralMasterResource = {
   id: string;
@@ -233,3 +242,12 @@ export interface SuggestedRepair {
   created_at?: Date;
   updated_at?: Date;
 }
+export interface RecommendedActionUrgency {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
