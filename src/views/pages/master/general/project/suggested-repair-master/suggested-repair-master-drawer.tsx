@@ -5,15 +5,15 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import SoilTypeMasterForm from './soil-type-master-form';
-import { SoilType } from 'src/types/general/general-master';
-import soilTypeMasterService from 'src/services/general/project/soil-type-master-service';
+import SuggestedRepairMasterForm from './suggested-repair-master-form';
+import { SuggestedRepair } from 'src/types/general/general-master';
+import suggestedRepairMasterService from 'src/services/general/project/suggested-repair-master-service';
 
-interface SoilTypeMasterDrawerType {
+interface SuggestedRepairMasterDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  masterData: SoilType;
+  masterData: SuggestedRepair;
 }
 
 const validationSchema = yup.object().shape({
@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
   description: yup.string().required('Description is required')
 });
 
-const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
+const SuggestedRepairMasterDrawer = (props: SuggestedRepairMasterDrawerType) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,15 +29,15 @@ const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createSoilTypeMaster = async (body: IApiPayload<SoilType>) => {
-    return await soilTypeMasterService.create(body);
+  const createSuggestedRepairMaster = async (body: IApiPayload<SuggestedRepair>) => {
+    return await suggestedRepairMasterService.create(body);
   };
 
-  const editSoilTypeMaster = async (body: IApiPayload<SoilType>) => {
-    return await soilTypeMasterService.update(masterData?.id || '', body);
+  const editSuggestedRepairMaster = async (body: IApiPayload<SuggestedRepair>) => {
+    return await suggestedRepairMasterService.update(masterData?.id || '', body);
   };
 
-  const getPayload = (values: SoilType) => {
+  const getPayload = (values: SuggestedRepair) => {
     const payload = {
       data: {
         ...values,
@@ -52,9 +52,9 @@ const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<SoilType>, payload: IApiPayload<SoilType>) => {
+  const onActionSuccess = async (response: IApiResponse<SuggestedRepair>, payload: IApiPayload<SuggestedRepair>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `SOIL_TYPE`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `SUGGESTED_REPAIR`, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -62,25 +62,30 @@ const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-soil-type' : 'create-soil-type'}`}
+      title={`master-data.general-master.${isEdit ? 'edit-suggested-repair' : 'create-suggested-repair'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
-        <FormPageWrapper<SoilType>
+        <FormPageWrapper<SuggestedRepair>
           edit={isEdit}
-          title="master-data.general-master.soil-types"
+          title="master-data.general-master.suggested-repairs"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editSoilTypeMaster : createSoilTypeMaster}
+          createActionFunc={isEdit ? editSuggestedRepairMaster : createSuggestedRepairMaster}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<SoilType>) => {
+          {(formik: FormikProps<SuggestedRepair>) => {
             return (
               <>
-                <SoilTypeMasterForm file={uploadableFile} onFileChange={onFileChange} formik={formik} defaultLocaleData={{} as SoilType} />
+                <SuggestedRepairMasterForm
+                  file={uploadableFile}
+                  onFileChange={onFileChange}
+                  formik={formik}
+                  defaultLocaleData={{} as SuggestedRepair}
+                />
               </>
             );
           }}
@@ -89,4 +94,4 @@ const SoilTypeMasterDrawer = (props: SoilTypeMasterDrawerType) => {
     </CustomSideDrawer>
   );
 };
-export default SoilTypeMasterDrawer;
+export default SuggestedRepairMasterDrawer;

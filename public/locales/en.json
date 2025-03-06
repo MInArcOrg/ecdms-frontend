@@ -121,7 +121,10 @@
       "edit-severity-level": "Edit Severity Level",
       "hazard-types":  "Hazard Types",
       "create-hazard-types":"Create Hazard Type",
-      "edit-hazard-types":"Edit Hazard Type"
+      "edit-hazard-types":"Edit Hazard Type",
+      "suggested-repairs": "Suggested Repairs",
+      "create-suggested-repairs": "Create Suggested Repairs",
+      "edit-suggested-repairs": "Edit Suggested Repairs"
     },
     "form": {
       "title": "Title",
