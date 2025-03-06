@@ -130,7 +130,11 @@
       "create-recommended-action-urgency":"Create Recommended Action Urgency",
       "potential-impacts": "Potential Impacts",
       "create-potential-impact": "Create Potential Impacts",
-      "edit-potential-impact": "Edit Potential Impacts"
+      "edit-potential-impact": "Edit Potential Impacts",
+      "risk-levels": "Risk Levels",
+      "create-risk-level": "Create Risk Level",
+      "edit-risk-level": "Edit Risk Level"
+      
     },
     "form": {
       "title": "Title",
