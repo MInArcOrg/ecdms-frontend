@@ -133,7 +133,10 @@
       "edit-potential-impact": "Edit Potential Impacts",
       "risk-levels": "Risk Levels",
       "create-risk-level": "Create Risk Level",
-      "edit-risk-level": "Edit Risk Level"
+      "edit-risk-level": "Edit Risk Level",
+      "incident-types": "Incident Types",
+      "create-incident-type":"Create Incident Types",
+      "edit-incident-type":"Edit Incident Types"
       
     },
     "form": {
