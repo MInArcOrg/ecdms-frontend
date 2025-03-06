@@ -1,3 +1,5 @@
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+
 const baseUrl = '/master-data/general';
 
 const menuItems = (t: (item: string) => void) => [
@@ -46,133 +48,11 @@ const menuItems = (t: (item: string) => void) => [
   {
     id: 2,
     title: t('master-data.project'),
-    children: [
-      {
-        id: 1,
-        title: t('master-data.general-master.project-progress-statuses'),
-        path: `${baseUrl}/project/project-progress-statuses/`
-      },
-      {
-        id: 2,
-        title: t('master-data.general-master.pedestrian-facilities'),
-        path: `${baseUrl}/project/pedestrian-facilities/`
-      },
-      {
-        id: 3,
-        title: t('master-data.general-master.road-length-types'),
-        path: `${baseUrl}/project/road-length-types/`
-      },
-      {
-        id: 4,
-        title: t('master-data.general-master.endwall-type-inlets'),
-        path: `${baseUrl}/project/endwall-type-inlets/`
-      },
-      {
-        id: 5,
-        title: t('master-data.general-master.area-topographies'),
-        path: `${baseUrl}/project/area-topographies/`
-      },
-      {
-        id: 6,
-        title: t('master-data.general-master.soil-types'),
-        path: `${baseUrl}/project/soil-types/`
-      },
-      {
-        id: 7,
-        title: t('master-data.general-master.guard-rail-types'),
-        path: `${baseUrl}/project/guard-rail-types/`
-      },
-      {
-        id: 8,
-        title: t('master-data.general-master.bridge-structure-types'),
-        path: `${baseUrl}/project/bridge-structure-types/`
-      },
-      {
-        id: 9,
-        title: t('master-data.general-master.span-support-types'),
-        path: `${baseUrl}/project/span-support-types/`
-      },
-      {
-        id: 10,
-        title: t('master-data.general-master.damage-conditions'),
-        path: `${baseUrl}/project/damage-conditions/`
-      },
-      {
-        id: 11,
-        title: t('master-data.general-master.hydrology-defects'),
-        path: `${baseUrl}/project/hydrology-defects/`
-      },
-      {
-        id: 12,
-        title: t('master-data.general-master.count-types'),
-        path: `${baseUrl}/project/count-types/`
-      },
-      {
-        id: 13,
-        title: t('master-data.general-master.road-safety-features'),
-        path: `${baseUrl}/project/road-safety-features/`
-      },
-      {
-        id: 14,
-        title: t('master-data.general-master.current-conditions'),
-        path: `${baseUrl}/project/current-conditions/`
-      },
-      {
-        id: 15,
-        title: t('master-data.general-master.ground-water-impacts'),
-        path: `${baseUrl}/project/ground-water-impacts/`
-      },
-      {
-        id: 20,
-        title: t('master-data.general-master.maintenance-types'),
-        path: `${baseUrl}/project/maintenance-types/`
-      },
-      {
-        id: 21,
-        title: t('master-data.general-master.slope-stabilities'),
-        path: `${baseUrl}/project/slope-stabilities/`
-      },
-      {
-        id: 22,
-        title: t('master-data.general-master.drainage-types'),
-        path: `${baseUrl}/project/drainage-types/`
-      },
-      {
-        id: 23,
-        title: t('master-data.general-master.maintenance-frequencies'),
-        path: `${baseUrl}/project/maintenance-frequencies/`
-      },
-      {
-        id: 24,
-        title: t('master-data.general-master.drainage-conditions'),
-        path: `${baseUrl}/project/drainage-conditions/`
-      },
-      {
-        id: 25,
-        title: t('master-data.general-master.assessment-conditions'),
-        path: `${baseUrl}/project/assessment-conditions/`
-      },
-      {
-        id: 26,
-        title: t('master-data.general-master.severity-levels'),
-        path: `${baseUrl}/project/severity-levels/`
-      },
-      {
-        id: 27,
-        title: t('master-data.general-master.hazard-types'),
-        path: `${baseUrl}/project/hazard-types/`
-      },
-      {
-        id: 28,
-        title: t('master-data.general-master.suggested-repairs'),
-        path: `${baseUrl}/project/suggested-repairs/`
-      },
-      {
-        id: 29,
-        title: t('master-data.general-master.recommended-action-urgencies'),
-        path: `${baseUrl}/project/recommended-action-urgencies/`
-      }
-    ]
+    children: Object.values(projectMasterModels).map((item, index) => ({
+      id: index + 1,
+      title: t(`master-data.general-master.${item.title}`),
+      path: `${baseUrl}/project/${item.title}/`
+    }))
   },
   {
     id: 3,

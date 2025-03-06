@@ -127,7 +127,10 @@
       "edit-suggested-repairs": "Edit Suggested Repairs",
       "recommended-action-urgencies":"Recommended Action Urgencies",
       "edit-recommended-action-urgency":"Edit Recommended Action Urgency",
-      "create-recommended-action-urgency":"Create Recommended Action Urgency"
+      "create-recommended-action-urgency":"Create Recommended Action Urgency",
+      "potential-impacts": "Potential Impacts",
+      "create-potential-impact": "Create Potential Impacts",
+      "edit-potential-impact": "Edit Potential Impacts"
     },
     "form": {
       "title": "Title",
