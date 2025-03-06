@@ -54,7 +54,7 @@ const HazardTypeMasterDrawer = (props: HazardTypeMasterDrawerType) => {
 
   const onActionSuccess = async (response: IApiResponse<HazardType>, payload: IApiPayload<HazardType>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `HAZARD_TYPE_TYPE`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `HAZARD_TYPE`, response.payload.id, '', '');
     }
     refetch();
     handleClose();
