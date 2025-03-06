@@ -48,11 +48,13 @@ const menuItems = (t: (item: string) => void) => [
   {
     id: 2,
     title: t('master-data.project'),
-    children: Object.values(projectMasterModels).map((item, index) => ({
-      id: index + 1,
-      title: t(`master-data.general-master.${item.title}`),
-      path: `${baseUrl}/project/${item.title}/`
-    }))
+    children: Object.values(projectMasterModels)
+      .sort((a, b) => a.title.localeCompare(b.title))
+      .map((item, index) => ({
+        id: index + 1,
+        title: t(`master-data.general-master.${item.title}`),
+        path: `${baseUrl}/project/${item.title}/`
+      }))
   },
   {
     id: 3,

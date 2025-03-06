@@ -135,9 +135,11 @@
       "create-risk-level": "Create Risk Level",
       "edit-risk-level": "Edit Risk Level",
       "incident-types": "Incident Types",
-      "create-incident-type":"Create Incident Types",
-      "edit-incident-type":"Edit Incident Types"
-      
+      "create-incident-type":"Create Incident Type",
+      "edit-incident-type":"Edit Incident Type",
+      "incident-times": "Incident Times",
+      "create-incident-time":"Create Incident Time",
+      "edit-incident-time":"Edit Incident Time"
     },
     "form": {
       "title": "Title",
