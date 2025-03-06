@@ -20,3 +20,4 @@ StakeholderPositionIndex.acl = {
 };
 
 export default StakeholderPositionIndex;
+

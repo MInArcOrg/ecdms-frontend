@@ -5,15 +5,15 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import CountTypeMasterForm from './count-type-master-form';
-import { CountType } from 'src/types/general/general-master';
-import roadLengthTypeMasterService from 'src/services/general/project/count-type-master-service';
+import AssessmentConditionMasterForm from './assessment-condition-master-form';
+import { AssessmentCondition } from 'src/types/general/general-master';
+import roadLengthTypeMasterService from 'src/services/general/project/assessment-condition-master-service';
 
-interface CountTypeMasterDrawerType {
+interface AssessmentConditionMasterDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  masterData: CountType;
+  masterData: AssessmentCondition;
 }
 
 const validationSchema = yup.object().shape({
@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
   description: yup.string().required('Description is required')
 });
 
-const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
+const AssessmentConditionMasterDrawer = (props: AssessmentConditionMasterDrawerType) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,15 +29,15 @@ const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createCountTypeMaster = async (body: IApiPayload<CountType>) => {
+  const createAssessmentConditionMaster = async (body: IApiPayload<AssessmentCondition>) => {
     return await roadLengthTypeMasterService.create(body);
   };
 
-  const editCountTypeMaster = async (body: IApiPayload<CountType>) => {
+  const editAssessmentConditionMaster = async (body: IApiPayload<AssessmentCondition>) => {
     return await roadLengthTypeMasterService.update(masterData?.id || '', body);
   };
 
-  const getPayload = (values: CountType) => {
+  const getPayload = (values: AssessmentCondition) => {
     const payload = {
       data: {
         ...values,
@@ -52,9 +52,9 @@ const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<CountType>, payload: IApiPayload<CountType>) => {
+  const onActionSuccess = async (response: IApiResponse<AssessmentCondition>, payload: IApiPayload<AssessmentCondition>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `COUNT_TYPE`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `ASSESSMENT_CONDITION`, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -62,29 +62,29 @@ const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-count-type' : 'create-count-type'}`}
+      title={`master-data.general-master.${isEdit ? 'edit-assessment-condition' : 'create-assessment-condition'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
-        <FormPageWrapper<CountType>
+        <FormPageWrapper<AssessmentCondition>
           edit={isEdit}
-          title="master-data.general-master.count-types"
+          title="master-data.general-master.assessment-conditions"
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editCountTypeMaster : createCountTypeMaster}
+          createActionFunc={isEdit ? editAssessmentConditionMaster : createAssessmentConditionMaster}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<CountType>) => {
+          {(formik: FormikProps<AssessmentCondition>) => {
             return (
               <>
-                <CountTypeMasterForm
+                <AssessmentConditionMasterForm
                   file={uploadableFile}
                   onFileChange={onFileChange}
                   formik={formik}
-                  defaultLocaleData={{} as CountType}
+                  defaultLocaleData={{} as AssessmentCondition}
                 />
               </>
             );
@@ -95,4 +95,4 @@ const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
   );
 };
 
-export default CountTypeMasterDrawer;
+export default AssessmentConditionMasterDrawer;
