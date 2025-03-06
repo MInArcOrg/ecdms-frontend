@@ -163,9 +163,14 @@ const menuItems = (t: (item: string) => void) => [
         path: `${baseUrl}/project/hazard-types/`
       },
       {
-        id:28,
+        id: 28,
         title: t('master-data.general-master.suggested-repairs'),
         path: `${baseUrl}/project/suggested-repairs/`
+      },
+      {
+        id: 29,
+        title: t('master-data.general-master.recommended-action-urgencies'),
+        path: `${baseUrl}/project/recommended-action-urgencies/`
       }
     ]
   },

@@ -124,7 +124,10 @@
       "edit-hazard-types":"Edit Hazard Type",
       "suggested-repairs": "Suggested Repairs",
       "create-suggested-repairs": "Create Suggested Repairs",
-      "edit-suggested-repairs": "Edit Suggested Repairs"
+      "edit-suggested-repairs": "Edit Suggested Repairs",
+      "recommended-action-urgencies":"Recommended Action Urgencies",
+      "edit-recommended-action-urgency":"Edit Recommended Action Urgency",
+      "create-recommended-action-urgency":"Create Recommended Action Urgency"
     },
     "form": {
       "title": "Title",
