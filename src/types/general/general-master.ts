@@ -250,4 +250,3 @@ export interface RecommendedActionUrgency {
   created_at?: Date;
   updated_at?: Date;
 }
-

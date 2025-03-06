@@ -1,8 +1,7 @@
-
 export const projectMasterModels = {
   functionalClassification: {
     model: 'FunctionalClassification',
-    dbModel: 'functionalclassification', 
+    dbModel: 'functionalclassification',
     title: 'functional-classifications',
     createTitle: 'create-functional-classification',
     editTitle: 'edit-functional-classification',

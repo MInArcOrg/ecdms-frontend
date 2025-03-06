@@ -18,7 +18,6 @@ interface ProjectQualityDrawerType {
   projectQuality: ProjectQuality;
 }
 
-
 // const validationSchema = yup.object().shape({
 //   major_quality_problem_encountered: yup.string().required(),
 //   measures_taken: yup.string().required(),

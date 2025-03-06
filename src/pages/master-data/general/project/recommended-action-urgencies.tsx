@@ -8,7 +8,7 @@ function RecommendedActionUrgenciesMasterData() {
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.recommendedActionUrgency}/>
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.recommendedActionUrgency} />
         </Fragment>
       </GeneralMasterLayout>
     </div>

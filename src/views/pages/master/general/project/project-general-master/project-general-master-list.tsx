@@ -58,7 +58,7 @@ const ProjectGeneralMasterList: React.FC<ProjectGeneralMasterProps> = ({ project
           masterData={selectedRow as ProjectGeneralMaster}
           refetch={refetch}
           projectMasterModel={projectMasterModel}
-          />
+        />
       )}
       <Card>
         <CardContent>
@@ -68,7 +68,7 @@ const ProjectGeneralMasterList: React.FC<ProjectGeneralMasterProps> = ({ project
             title={t(`master-data.general-master.${projectMasterModel.title}`)}
             ItemViewComponent={({ data }) => (
               <ProjectGeneralMasterCard
-              projectMasterModel={projectMasterModel}
+                projectMasterModel={projectMasterModel}
                 projectGeneralMaster={data}
                 onDelete={handleDelete}
                 onEdit={handleEdit}

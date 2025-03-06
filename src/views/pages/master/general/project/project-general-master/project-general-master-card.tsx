@@ -58,7 +58,7 @@ const ProjectGeneralMasterCard = ({
                   onDelete={() => onDelete(projectGeneralMaster.id)}
                   item={projectGeneralMaster}
                   options={[]}
-                   deletePermissionRule={{
+                  deletePermissionRule={{
                     action: 'delete',
                     subject: projectMasterModel.dbModel
                   }}
@@ -66,7 +66,6 @@ const ProjectGeneralMasterCard = ({
                     action: 'update',
                     subject: projectMasterModel.dbModel
                   }}
-                
                 />
               </Fragment>
             </CardActions>

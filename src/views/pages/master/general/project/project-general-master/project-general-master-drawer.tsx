@@ -15,7 +15,7 @@ interface GeneralMasterDrawerType {
   toggle: () => void;
   refetch: () => void;
   masterData: ProjectGeneralMaster;
-  projectMasterModel: ProjectMasterModel
+  projectMasterModel: ProjectMasterModel;
 }
 
 const validationSchema = yup.object().shape({

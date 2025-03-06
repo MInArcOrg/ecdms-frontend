@@ -21,7 +21,6 @@ interface EmployeeFormProps {
 const EmployeeForm: React.FC<EmployeeFormProps> = ({ formik, departments, positions }) => {
   const { t } = useTranslation();
 
-
   const departmentOptions = departments.map((dept) => ({
     value: dept.id,
     label: dept.name
