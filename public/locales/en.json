@@ -112,8 +112,16 @@
       "create-maintenance-frequencies": "Edit Maintenance Frequency",
       "drainage-conditions": "Drainage Conditions",
       "create-drainage-condition": "Create Drainage Condition",
-      "edit-drainage-condition": "Edit Drainage Condition"
-
+      "edit-drainage-condition": "Edit Drainage Condition",
+      "assessment-conditions": "Assessment Conditions",
+      "create-assessment-condition": "Create Assessment Conditions",
+      "edit-assessment-condition": "Edit Assessment Conditions",
+      "severity-levels": "Severity Levels",
+      "create-severity-level": "Create Severity Level",
+      "edit-severity-level": "Edit Severity Level",
+      "hazard-types":  "Hazard Types",
+      "create-hazard-types":"Create Hazard Type",
+      "edit-hazard-types":"Edit Hazard Type"
     },
     "form": {
       "title": "Title",
@@ -1095,7 +1103,7 @@
       "gender": "Gender",
       "phone": "Phone",
       "email": "Email",
-      "stakeholder":"Stakeholder"
+      "stakeholder": "Stakeholder"
     },
     "project-contact-person": {
       "title": "Project Contact Persons",
@@ -1647,8 +1655,25 @@
       "unit-price": "Unit Price",
       "current-situation": "Current Situation",
       "location": "Location"
-  }
-},
+
+    },
+    "employee": {
+      "title": "Stakeholder Employees",
+      "create": "Create Stakeholder Employee",
+      "edit": "Edit Stakeholder Employee",
+      "details": "Stakeholder Employee Details",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "nationalIdNo": "National ID Number",
+      "gender": "Gender",
+      "phone": "Phone Number",
+      "email": "Email",
+      "name": "Name",
+      "department": "Department",
+      "position": "Position"
+    }
+  },
   "address": {
     "title": "Address",
     "create-address": "Create Address",
