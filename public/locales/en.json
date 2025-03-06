@@ -1616,6 +1616,22 @@
       "current-situation": "Current Situation",
       "location": "Location"
     },
+    "safety-equipment": {
+        "title": "Safety Equipment",
+        "create": "Create Safety Equipment",
+        "edit": "Edit Safety Equipment",
+        "details": "Safety Equipment Details",
+        "name": "Name",
+        "serial-no": "Serial Number",
+        "brand-name": "Brand Name",
+        "model": "Model",
+        "year": "Year",
+        "capacity": "Capacity",
+        "purpose": "Purpose",
+        "quantity": "Quantity",
+        "current-situation": "Current Situation",
+        "location": "Location"
+    },
     "branch-additional-information": {
       "title": "Branch Additional Information",
       "create": "Create Additional Information",
@@ -1624,6 +1640,37 @@
       "branch": "Branch",
       "additionalInformation": "Additional Information",
       "reference": "Reference"
+      },
+    "material": {
+      "title": "Stakeholder Materials",
+      "create": "Create Stakeholder Material",
+      "edit": "Edit Stakeholder Material",
+      "details": "Stakeholder Material Details",
+      "name": "Name",
+      "category": "Category",
+      "subcategory": "Subcategory",
+      "description": "Description",
+      "purpose": "Purpose",
+      "quantity": "Quantity",
+      "unit-price": "Unit Price",
+      "current-situation": "Current Situation",
+      "location": "Location"
+    },
+    "employee": {
+      "title": "Stakeholder Employees",
+      "create": "Create Stakeholder Employee",
+      "edit": "Edit Stakeholder Employee",
+      "details": "Stakeholder Employee Details",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "nationalIdNo": "National ID Number",
+      "gender": "Gender",
+      "phone": "Phone Number",
+      "email": "Email",
+      "name": "Name",
+      "department": "Department",
+      "position": "Position"
     }
   },
   "address": {
