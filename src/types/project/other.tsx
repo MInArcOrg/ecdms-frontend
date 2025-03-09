@@ -323,3 +323,16 @@ export interface WaterIrrigationDam {
   created_at?: Date; // optional, typically managed by the database
   updated_at?: Date; // optional, typically managed by the database
 }
+
+export interface Pavement {
+  id: string;
+  project_id: string;
+  name: string;
+  tangent_length?: number;
+  curve_length?: number;
+  road_length_type_id: string;
+  road_pavement_thickness?: number;
+  paved_road_surface_width?: number;
+  created_at: Date;
+  updated_at: Date;
+}
