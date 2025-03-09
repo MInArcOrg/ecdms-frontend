@@ -1,0 +1,124 @@
+"use client"
+
+import { Button } from "@mui/material"
+import Typography from "@mui/material/Typography"
+import type { GridColDef } from "@mui/x-data-grid"
+import { Fragment } from "react"
+import type { IntersectionAndDriveway } from "src/types/project/other"
+import { formatCreatedAt } from "src/utils/formatter/date"
+import ModelAction from "src/views/components/custom/model-actions"
+import RowOptions from "src/views/shared/listing/row-options"
+
+interface CellType {
+  row: IntersectionAndDriveway
+}
+
+export const intersectionAndDrivewayColumns = (
+  onDetail: (intersectionAndDriveway: IntersectionAndDriveway) => void,
+  onEdit: (intersectionAndDriveway: IntersectionAndDriveway) => void,
+  onDelete: (id: string) => void,
+  t: any,
+  refetch: () => void,
+  intersectionTypeMap: Map<string, string>,
+  drivewayAccessPointMap: Map<string, string>,
+): GridColDef[] => {
+  return [
+    {
+      flex: 0.15,
+      minWidth: 150,
+      headerName: t("project.other.intersection-and-driveway.details.name"),
+      field: "name",
+      renderCell: ({ row }: CellType) => (
+        <Typography
+          noWrap
+          component={Button}
+          onClick={() => onDetail(row)}
+          sx={{
+            fontWeight: 500,
+            textDecoration: "none",
+            color: "text.secondary",
+            "&:hover": { color: "primary.main" },
+          }}
+        >
+          {row?.name}
+        </Typography>
+      ),
+    },
+    {
+      flex: 0.15,
+      minWidth: 120,
+      headerName: t("project.other.intersection-and-driveway.details.number-of-intersections"),
+      field: "number_of_intersections",
+      renderCell: ({ row }: CellType) => row.number_of_intersections?.toString() || t("common.not-available"),
+    },
+    {
+      flex: 0.15,
+      minWidth: 120,
+      headerName: t("project.other.intersection-and-driveway.details.intersection-type-id"),
+      field: "intersection_type_id",
+      renderCell: ({ row }: CellType) => {
+        const name = intersectionTypeMap.get(row.intersection_type_id)
+        return name || t("common.not-available")
+      },
+    },
+    {
+      flex: 0.15,
+      minWidth: 120,
+      headerName: t("project.other.intersection-and-driveway.details.driveway-access-point-id"),
+      field: "driveway_access_point_id",
+      renderCell: ({ row }: CellType) => {
+        const name = drivewayAccessPointMap.get(row.driveway_access_point_id)
+        return name || t("common.not-available")
+      },
+    },
+    {
+      flex: 0.15,
+      minWidth: 120,
+      headerName: t("project.other.intersection-and-driveway.details.similar-for-all"),
+      field: "similar_for_all",
+      renderCell: ({ row }: CellType) => (row.similar_for_all ? t("common.yes") : t("common.no")),
+    },
+    {
+      flex: 0.15,
+      minWidth: 150,
+      headerName: t("common.table-columns.created-at"),
+      field: "created_at",
+      renderCell: ({ row }: CellType) => (
+        <Typography sx={{ color: "text.secondary" }}>{formatCreatedAt(row.created_at)}</Typography>
+      ),
+    },
+    {
+      minWidth: 150,
+      sortable: false,
+      field: "actions",
+      headerName: t("common.table-columns.actions"),
+      renderCell: ({ row }: CellType) => (
+        <Fragment>
+          <ModelAction
+            model="IntersectionAndDriveway"
+            model_id={row.id}
+            refetchModel={refetch}
+            resubmit={() => {}}
+            title=""
+            postAction={() => {}}
+          />
+          <RowOptions
+            onEdit={() => onEdit(row)}
+            onDelete={() => onDelete(row.id)}
+            item={row}
+            deletePermissionRule={{
+              action: "delete",
+              subject: "intersectionanddriveway",
+            }}
+            editPermissionRule={{
+              action: "update",
+              subject: "intersectionanddriveway",
+            }}
+            options={[]}
+          />
+        </Fragment>
+      ),
+    },
+  ]
+}
+

@@ -323,3 +323,15 @@ export interface WaterIrrigationDam {
   created_at?: Date; // optional, typically managed by the database
   updated_at?: Date; // optional, typically managed by the database
 }
+
+export interface IntersectionAndDriveway {
+  id: string
+  project_id: string
+  name: string
+  number_of_intersections?: number
+  intersection_type_id: string
+  driveway_access_point_id: string
+  similar_for_all?: boolean
+  created_at: Date
+  updated_at: Date
+}

@@ -58,7 +58,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           title: t('project.navigation.submenu.others.road-layer'),
           path: `${baseUrl}/road/road-layer`,
           model: 'roadlayer'
-        }
+        },
+        {
+          id: 7,
+          title: t("project.navigation.submenu.others.intersection-and-driveway"),
+          path: `${baseUrl}/road/intersection-and-driveway`,
+          model: "intersection-and-driveway",
+        },
       ]
     },
 
