@@ -323,3 +323,16 @@ export interface WaterIrrigationDam {
   created_at?: Date; // optional, typically managed by the database
   updated_at?: Date; // optional, typically managed by the database
 }
+
+export interface TrafficParameter {
+  id: string;
+  project_id: string;
+  name: string;
+  pedestrian_facility_id: string;
+  parking?: number;
+  design_traffic_flow?: number;
+  design_speed?: number;
+  similar_for_all?: boolean;
+  created_at: Date;
+  updated_at: Date;
+}

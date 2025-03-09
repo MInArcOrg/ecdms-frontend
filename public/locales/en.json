@@ -119,15 +119,15 @@
       "severity-levels": "Severity Levels",
       "create-severity-level": "Create Severity Level",
       "edit-severity-level": "Edit Severity Level",
-      "hazard-types":  "Hazard Types",
-      "create-hazard-types":"Create Hazard Type",
-      "edit-hazard-types":"Edit Hazard Type",
+      "hazard-types": "Hazard Types",
+      "create-hazard-types": "Create Hazard Type",
+      "edit-hazard-types": "Edit Hazard Type",
       "suggested-repairs": "Suggested Repairs",
       "create-suggested-repairs": "Create Suggested Repairs",
       "edit-suggested-repairs": "Edit Suggested Repairs",
-      "recommended-action-urgencies":"Recommended Action Urgencies",
-      "edit-recommended-action-urgency":"Edit Recommended Action Urgency",
-      "create-recommended-action-urgency":"Create Recommended Action Urgency",
+      "recommended-action-urgencies": "Recommended Action Urgencies",
+      "edit-recommended-action-urgency": "Edit Recommended Action Urgency",
+      "create-recommended-action-urgency": "Create Recommended Action Urgency",
       "potential-impacts": "Potential Impacts",
       "create-potential-impact": "Create Potential Impacts",
       "edit-potential-impact": "Edit Potential Impacts",
@@ -135,11 +135,11 @@
       "create-risk-level": "Create Risk Level",
       "edit-risk-level": "Edit Risk Level",
       "incident-types": "Incident Types",
-      "create-incident-type":"Create Incident Type",
-      "edit-incident-type":"Edit Incident Type",
+      "create-incident-type": "Create Incident Type",
+      "edit-incident-type": "Edit Incident Type",
       "incident-times": "Incident Times",
-      "create-incident-time":"Create Incident Time",
-      "edit-incident-time":"Edit Incident Time"
+      "create-incident-time": "Create Incident Time",
+      "edit-incident-time": "Edit Incident Time"
     },
     "form": {
       "title": "Title",
@@ -457,6 +457,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "traffic-parameter": "Traffic Parameter",
           "telecom": "Telecom",
           "telecom-infrastructure": "Telecom Infrastructure",
           "electric-power": "Electric Power",
@@ -886,6 +887,20 @@
           "description": "Description"
         }
       },
+      "traffic-parameter": {
+        "title": "Traffic Parameters",
+        "create-traffic-parameter": "Create Traffic Parameter",
+        "edit-traffic-parameter": "Edit Traffic Parameter",
+        "traffic-parameter-details": "Traffic Parameter Details",
+        "details": {
+          "name": "Name",
+          "pedestrian-facility-id": "Pedestrian Facility",
+          "parking": "Parking",
+          "design-traffic-flow": "Design Traffic Flow",
+          "design-speed": "Design Speed",
+          "similar-for-all": "Similar For All"
+        }
+      },
       "generating-capacity": {
         "title": "Generating Capacity",
         "create-generating-capacity": "Create Generating Capacity",
@@ -1208,6 +1223,8 @@
     "active": "Active",
     "inactive": "InActive",
     "created-at": "Created At",
+    "yes": "Yes",
+    "no": "No",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",
@@ -1658,7 +1675,7 @@
       "branch": "Branch",
       "additionalInformation": "Additional Information",
       "reference": "Reference"
-      },
+    },
     "material": {
       "title": "Stakeholder Materials",
       "create": "Create Stakeholder Material",
@@ -1673,7 +1690,6 @@
       "unit-price": "Unit Price",
       "current-situation": "Current Situation",
       "location": "Location"
-
     },
     "employee": {
       "title": "Stakeholder Employees",
