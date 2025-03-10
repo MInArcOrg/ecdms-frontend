@@ -323,3 +323,18 @@ export interface WaterIrrigationDam {
   created_at?: Date; // optional, typically managed by the database
   updated_at?: Date; // optional, typically managed by the database
 }
+
+export interface CulvertRoadOverInformation {
+  id: string
+  project_id: string
+  name: string
+  carriage_way_width?: number
+  side_walk_width?: number
+  lane_number?: number
+  head_wall_to_head_wall?: number
+  average_fill_height?: number
+  guard_rail_type_id: string
+  parapet_length?: number
+  created_at: Date
+  updated_at: Date
+}
