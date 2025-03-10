@@ -119,15 +119,15 @@
       "severity-levels": "Severity Levels",
       "create-severity-level": "Create Severity Level",
       "edit-severity-level": "Edit Severity Level",
-      "hazard-types":  "Hazard Types",
-      "create-hazard-types":"Create Hazard Type",
-      "edit-hazard-types":"Edit Hazard Type",
+      "hazard-types": "Hazard Types",
+      "create-hazard-types": "Create Hazard Type",
+      "edit-hazard-types": "Edit Hazard Type",
       "suggested-repairs": "Suggested Repairs",
       "create-suggested-repairs": "Create Suggested Repairs",
       "edit-suggested-repairs": "Edit Suggested Repairs",
-      "recommended-action-urgencies":"Recommended Action Urgencies",
-      "edit-recommended-action-urgency":"Edit Recommended Action Urgency",
-      "create-recommended-action-urgency":"Create Recommended Action Urgency",
+      "recommended-action-urgencies": "Recommended Action Urgencies",
+      "edit-recommended-action-urgency": "Edit Recommended Action Urgency",
+      "create-recommended-action-urgency": "Create Recommended Action Urgency",
       "potential-impacts": "Potential Impacts",
       "create-potential-impact": "Create Potential Impacts",
       "edit-potential-impact": "Edit Potential Impacts",
@@ -135,11 +135,11 @@
       "create-risk-level": "Create Risk Level",
       "edit-risk-level": "Edit Risk Level",
       "incident-types": "Incident Types",
-      "create-incident-type":"Create Incident Type",
-      "edit-incident-type":"Edit Incident Type",
+      "create-incident-type": "Create Incident Type",
+      "edit-incident-type": "Edit Incident Type",
       "incident-times": "Incident Times",
-      "create-incident-time":"Create Incident Time",
-      "edit-incident-time":"Edit Incident Time"
+      "create-incident-time": "Create Incident Time",
+      "edit-incident-time": "Edit Incident Time"
     },
     "form": {
       "title": "Title",
@@ -458,6 +458,7 @@
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
           "telecom": "Telecom",
+          "bridge-structure-information": "Bridge Structure Information",
           "telecom-infrastructure": "Telecom Infrastructure",
           "electric-power": "Electric Power",
           "generating-capacity": "Generation Capacity",
@@ -884,6 +885,24 @@
           "thickness": "Thickness",
           "material": "Material",
           "description": "Description"
+        }
+      },
+      "bridge-structure-information": {
+        "title": "Bridge Structure Information",
+        "create-bridge-structure-information": "Create Bridge Structure Information",
+        "edit-bridge-structure-information": "Edit Bridge Structure Information",
+        "bridge-structure-information-details": "Bridge Structure Information Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "bridge-structure-type-id": "Bridge Structure Type",
+          "east-region": "East Region",
+          "west-region": "West Region",
+          "central-region": "Central Region",
+          "north-region": "North Region",
+          "south-region": "South Region",
+          "ring-road": "Ring Road",
+          "remark": "Remark"
         }
       },
       "generating-capacity": {
@@ -1658,7 +1677,7 @@
       "branch": "Branch",
       "additionalInformation": "Additional Information",
       "reference": "Reference"
-      },
+    },
     "material": {
       "title": "Stakeholder Materials",
       "create": "Create Stakeholder Material",
@@ -1673,7 +1692,6 @@
       "unit-price": "Unit Price",
       "current-situation": "Current Situation",
       "location": "Location"
-
     },
     "employee": {
       "title": "Stakeholder Employees",
