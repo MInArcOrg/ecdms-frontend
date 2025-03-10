@@ -83,7 +83,8 @@ export const uploadableProjectFileTypes = {
     reservoirInfo: 'RESERVOIR_INFO',
     spillwayInfo: 'SPILLWAY_INFO',
     irrigationCapacity: 'IRRIGATION_CAPACITY',
-    waterIrrigationDam: 'WATER_IRRIGATION_DAM'
+    waterIrrigationDam: 'WATER_IRRIGATION_DAM',
+    bridgeSuperStructure: 'BRIDGE_SUPER_STRUCTURE',
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
