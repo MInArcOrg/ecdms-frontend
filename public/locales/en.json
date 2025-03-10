@@ -457,6 +457,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "bridge-area-data": "Bridge Area Data",
           "telecom": "Telecom",
           "telecom-infrastructure": "Telecom Infrastructure",
           "electric-power": "Electric Power",
@@ -884,6 +885,24 @@
           "thickness": "Thickness",
           "material": "Material",
           "description": "Description"
+        }
+      },
+      "bridge-area-data": {
+        "title": "Bridge Area Data",
+        "create-bridge-area-data": "Create Bridge Area Data",
+        "edit-bridge-area-data": "Edit Bridge Area Data",
+        "bridge-area-data-details": "Bridge Area Data Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "river-width": "River Width",
+          "highest-water-level": "Highest Water Level",
+          "lowest-water-level": "Lowest Water Level",
+          "area-topography-id": "Area Topography",
+          "detour-possibility": "Detour Possibility",
+          "road-alignment": "Road Alignment",
+          "altitude": "Altitude",
+          "load-limit-sign": "Load Limit Sign"
         }
       },
       "generating-capacity": {
