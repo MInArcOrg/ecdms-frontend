@@ -109,7 +109,7 @@
       "edit-drainage-type": "Edit Drainage Type",
       "maintenance-frequencies": "Maintenance Frequencies",
       "edit-maintenance-frequency": "Create Maintenance Frequency",
-      "create-maintenance-frequencies": "Edit Maintenance Frequency",
+      "create-maintenance-frequency": "Edit Maintenance Frequency",
       "drainage-conditions": "Drainage Conditions",
       "create-drainage-condition": "Create Drainage Condition",
       "edit-drainage-condition": "Edit Drainage Condition",
@@ -120,8 +120,8 @@
       "create-severity-level": "Create Severity Level",
       "edit-severity-level": "Edit Severity Level",
       "hazard-types":  "Hazard Types",
-      "create-hazard-types":"Create Hazard Type",
-      "edit-hazard-types":"Edit Hazard Type",
+      "create-hazard-type":"Create Hazard Type",
+      "edit-hazard-type":"Edit Hazard Type",
       "suggested-repairs": "Suggested Repairs",
       "create-suggested-repairs": "Create Suggested Repairs",
       "edit-suggested-repairs": "Edit Suggested Repairs",
@@ -139,7 +139,10 @@
       "edit-incident-type":"Edit Incident Type",
       "incident-times": "Incident Times",
       "create-incident-time":"Create Incident Time",
-      "edit-incident-time":"Edit Incident Time"
+      "edit-incident-time":"Edit Incident Time",
+      "abutment-types": "Abutment Types",
+      "create-abutment-type":"Create Abutment Types",
+      "edit-abutment-types":"Edit Abutment Types"
     },
     "form": {
       "title": "Title",

@@ -1,17 +1,17 @@
 import { Fragment } from 'react';
-import SuggestedRepairMasterList from 'src/views/pages/master/general/project/hazard-type-master/hazard-type-master-list';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import ProjectGeneralMasterList from 'src/views/pages/master/general/project/project-general-master/project-general-master-list';
 import GeneralMasterLayout from '../general-master-layout';
 
-function HazardLengthTypes() {
+function SuggestedRepairMasterData() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <SuggestedRepairMasterList />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.suggestedRepair} />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
-
-export default HazardLengthTypes;
+export default SuggestedRepairMasterData;
