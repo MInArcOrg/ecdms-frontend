@@ -323,3 +323,22 @@ export interface WaterIrrigationDam {
   created_at?: Date; // optional, typically managed by the database
   updated_at?: Date; // optional, typically managed by the database
 }
+
+
+export interface BridgeBasicData {
+  id: string
+  project_id: string
+  name: string
+  bridge_name: string
+  bridge_number?: string
+  bridge_length?: number
+  bridge_width?: number
+  construction_year?: number
+  contractor?: string
+  designer?: string
+  bridge_cost?: number
+  land_capacity?: number
+  average_daily_traffic?: number
+  created_at: Date
+  updated_at: Date
+}
