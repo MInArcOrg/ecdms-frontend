@@ -323,3 +323,20 @@ export interface WaterIrrigationDam {
   created_at?: Date; // optional, typically managed by the database
   updated_at?: Date; // optional, typically managed by the database
 }
+
+
+export interface BridgeInspection {
+  id: string
+  project_id: string
+  name: string
+  bridge_name: string
+  bridge_part_defect_id: string
+  damage_type_id: string
+  damage_condition_id: string
+  hydrology_defect_id: string
+  maintenance_action?: string
+  bridge_history?: string
+  inspector_remark?: string
+  created_at: Date
+  updated_at: Date
+}
