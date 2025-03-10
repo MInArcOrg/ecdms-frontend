@@ -119,15 +119,15 @@
       "severity-levels": "Severity Levels",
       "create-severity-level": "Create Severity Level",
       "edit-severity-level": "Edit Severity Level",
-      "hazard-types":  "Hazard Types",
-      "create-hazard-types":"Create Hazard Type",
-      "edit-hazard-types":"Edit Hazard Type",
+      "hazard-types": "Hazard Types",
+      "create-hazard-types": "Create Hazard Type",
+      "edit-hazard-types": "Edit Hazard Type",
       "suggested-repairs": "Suggested Repairs",
       "create-suggested-repairs": "Create Suggested Repairs",
       "edit-suggested-repairs": "Edit Suggested Repairs",
-      "recommended-action-urgencies":"Recommended Action Urgencies",
-      "edit-recommended-action-urgency":"Edit Recommended Action Urgency",
-      "create-recommended-action-urgency":"Create Recommended Action Urgency",
+      "recommended-action-urgencies": "Recommended Action Urgencies",
+      "edit-recommended-action-urgency": "Edit Recommended Action Urgency",
+      "create-recommended-action-urgency": "Create Recommended Action Urgency",
       "potential-impacts": "Potential Impacts",
       "create-potential-impact": "Create Potential Impacts",
       "edit-potential-impact": "Edit Potential Impacts",
@@ -135,11 +135,11 @@
       "create-risk-level": "Create Risk Level",
       "edit-risk-level": "Edit Risk Level",
       "incident-types": "Incident Types",
-      "create-incident-type":"Create Incident Type",
-      "edit-incident-type":"Edit Incident Type",
+      "create-incident-type": "Create Incident Type",
+      "edit-incident-type": "Edit Incident Type",
       "incident-times": "Incident Times",
-      "create-incident-time":"Create Incident Time",
-      "edit-incident-time":"Edit Incident Time"
+      "create-incident-time": "Create Incident Time",
+      "edit-incident-time": "Edit Incident Time"
     },
     "form": {
       "title": "Title",
@@ -457,6 +457,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "bridge-foundation": "Bridge Foundation",
           "telecom": "Telecom",
           "telecom-infrastructure": "Telecom Infrastructure",
           "electric-power": "Electric Power",
@@ -884,6 +885,25 @@
           "thickness": "Thickness",
           "material": "Material",
           "description": "Description"
+        }
+      },
+      "bridge-foundation": {
+        "title": "Bridge Foundation",
+        "create-bridge-foundation": "Create Bridge Foundation",
+        "edit-bridge-foundation": "Edit Bridge Foundation",
+        "bridge-foundation-details": "Bridge Foundation Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "abutment-type-id": "Abutment Type",
+          "pier-type-id": "Pier Type",
+          "abutment-foundation-size": "Abutment Foundation Size",
+          "pier-foundation-size": "Pier Foundation Size",
+          "abutment-pile-number": "Number of Abutment Piles",
+          "pier-pile-number": "Number of Pier Piles",
+          "abutment-pile-depth": "Abutment Pile Depth",
+          "pier-pile-depth": "Pier Pile Depth",
+          "soil-type-id": "Soil Type"
         }
       },
       "generating-capacity": {
@@ -1658,7 +1678,7 @@
       "branch": "Branch",
       "additionalInformation": "Additional Information",
       "reference": "Reference"
-      },
+    },
     "material": {
       "title": "Stakeholder Materials",
       "create": "Create Stakeholder Material",
@@ -1673,7 +1693,6 @@
       "unit-price": "Unit Price",
       "current-situation": "Current Situation",
       "location": "Location"
-
     },
     "employee": {
       "title": "Stakeholder Employees",
