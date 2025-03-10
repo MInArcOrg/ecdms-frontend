@@ -323,3 +323,25 @@ export interface WaterIrrigationDam {
   created_at?: Date; // optional, typically managed by the database
   updated_at?: Date; // optional, typically managed by the database
 }
+
+
+export interface BridgeSubStructure {
+  id: string;
+  project_id: string;
+  name: string;
+  bridge_name: string;
+  abutment_a1_height?: number;
+  abutment_a1_width?: number;
+  abutment_a2_height?: number;
+  abutment_a2_width?: number;
+  wing_wall_length?: number;
+  pier_type_id: string;
+  piers_number?: number;
+  piers_dimension?: string;
+  pier1_height?: number;
+  pier1_width?: number;
+  pier2_height?: number;
+  pier2_width?: number;
+  created_at: Date;
+  updated_at: Date;
+}
