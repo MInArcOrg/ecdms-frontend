@@ -323,3 +323,15 @@ export interface WaterIrrigationDam {
   created_at?: Date; // optional, typically managed by the database
   updated_at?: Date; // optional, typically managed by the database
 }
+
+export interface RoadProjectQualityControl {
+  id: string
+  project_id: string
+  name: string
+  project_phase_id: string
+  inspection_type_id: string
+  defect_encountered?: string
+  remark?: string
+  created_at: Date
+  updated_at: Date
+}
