@@ -193,7 +193,19 @@
       "edit-surface-type": "Edit Surface Type",
       "inspection-types": "Inspection Types",
       "create-inspection-type": "Create Inspection Type",
-      "edit-inspection-type": "Edit Inspection Type"
+      "edit-inspection-type": "Edit Inspection Type",
+      "personal-protective-equipment-types": "Personal Protective Equipment Types",
+      "create-personal-protective-equipment-type": "Create Personal Protective Equipment Type",
+      "edit-personal-protective-equipment-type": "Edit Personal Protective Equipment Type",
+      "injury-severities": "Injury Severities",
+      "create-injury-severity": "Create Injury Severity",
+      "edit-injury-severity": "Edit Injury Severity",
+      "personal-protective-equipment-conditions": "Personal Protective Equipment Conditions",
+      "create-personal-protective-equipment-condition": "Create Personal Protective Equipment Condition", 
+      "edit-personal-protective-equipment-condition": "Edit Personal Protective Equipment Condition",
+      "weather-conditions": "Weather Conditions During Incident",
+      "create-weather-condition": "Create Weather Condition During Incident",
+      "edit-weather-condition": "Edit Weather Condition During Incident"
     },
     "form": {
       "title": "Title",
