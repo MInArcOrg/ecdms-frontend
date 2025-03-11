@@ -366,6 +366,38 @@ export const projectMasterModels = {
     createTitle: 'create-pedestrian-facility',
     editTitle: 'edit-pedestrian-facility',
     fileType: 'PEDESTRIAN_FACILITY'
+  },
+  personalProtectiveEquipmentType: {
+    model: 'PersonalProtectiveEquipmentType',
+    dbModel: 'personalprotectiveequipmenttype',
+    title: 'personal-protective-equipment-types',
+    createTitle: 'create-personal-protective-equipment-type',
+    editTitle: 'edit-personal-protective-equipment-type',
+    fileType: 'PERSONAL_PROTECTIVE_EQUIPMENT_TYPE'
+  },
+  injurySeverity: {
+    model: 'InjurySeverity',
+    dbModel: 'injuryseverity',
+    title: 'injury-severities',
+    createTitle: 'create-injury-severity',
+    editTitle: 'edit-injury-severity',
+    fileType: 'INJURY_SEVERITY'
+  },
+  personalProtectiveEquipmentCondition: {
+    model: 'PersonalProtectiveEquipmentCondition',
+    dbModel: 'personalprotectiveequipmentcondition',
+    title: 'personal-protective-equipment-conditions',
+    createTitle: 'create-personal-protective-equipment-condition',
+    editTitle: 'edit-personal-protective-equipment-condition',
+    fileType: 'PERSONAL_PROTECTIVE_EQUIPMENT_CONDITION'
+  },
+  weatherConditionDuringIncident: {
+    model: 'WeatherConditionDuringIncident',
+    dbModel: 'weatherconditionduringincident',
+    title: 'weather-condition-during-incidents',
+    createTitle: 'create-weather-condition-during-incident',
+    editTitle: 'edit-weather-condition-during-incident',
+    fileType: 'WEATHER_CONDITION_DURING_INCIDENT'
   }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
