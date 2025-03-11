@@ -203,9 +203,9 @@
       "personal-protective-equipment-conditions": "Personal Protective Equipment Conditions",
       "create-personal-protective-equipment-condition": "Create Personal Protective Equipment Condition", 
       "edit-personal-protective-equipment-condition": "Edit Personal Protective Equipment Condition",
-      "weather-conditions": "Weather Conditions During Incident",
-      "create-weather-condition": "Create Weather Condition During Incident",
-      "edit-weather-condition": "Edit Weather Condition During Incident"
+      "weather-condition-during-incidents": "Weather Conditions During Incident",
+      "create-weather-condition-during-incident": "Create Weather Condition During Incident",
+      "edit-weather-condition-during-incident": "Edit Weather Condition During Incident"
     },
     "form": {
       "title": "Title",
