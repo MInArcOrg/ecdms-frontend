@@ -343,7 +343,7 @@ export interface SafetyAndHealth {
   risk_level_id: string;
   immediate_action_taken?: string;
   incident_type_id: string;
-  incident_time?: Date;
+  incident_time?: string | Date | EthiopianDate;
   medicare_required?: boolean;
   total_injury_number?: number;
   incident_reported_by?: string;
@@ -355,6 +355,20 @@ export interface SafetyAndHealth {
   injury_severity_id: string;
   fatality_number?: number;
   recommendation?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+export interface MaintenanceHistory {
+  id: string;
+  project_id: string;
+  road_segment: string;
+  last_maintenance_date?: Date;
+  maintenance_type_id: string;
+  maintenance_cost?: number;
+  severity_level_id: string;
+  suggested_repair_id: string;
+  recommended_action_urgency_id: string;
   remark?: string;
   created_at?: string;
   updated_at?: string;

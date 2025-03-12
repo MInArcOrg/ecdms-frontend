@@ -175,7 +175,7 @@ const SafetyAndHealthForm: React.FC<SafetyAndHealthFormProps> = ({ formik, file,
           required
           showYearDropdown
           showMonthDropdown
-          customInput={<CustomTextBox name="project_completion_date" />}
+          customInput={<CustomTextBox name="incident_time" />}
         />
 
         <CustomSwitch

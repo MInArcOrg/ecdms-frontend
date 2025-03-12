@@ -524,6 +524,7 @@
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
           "safety-and-health": "Safety And Health",
+          "maintenance-histories": "Maintenance Histories",
           "telecom": "Telecom",
           "telecom-infrastructure": "Telecom Infrastructure",
           "electric-power": "Electric Power",
@@ -1194,6 +1195,22 @@
           "injury-severity": "Injury Severity",
           "fatality-number": "Fatality Number",
           "recommendation": "Recommendation",
+          "remark": "Remark"
+        }
+      },
+      "maintenance-history": {
+        "title": "Maintenance History",
+        "maintenance-history-details": "Maintenance History Details",
+        "create-maintenance-history": "Create Maintenance History",
+        "edit-maintenance-history": "Edit Maintenance History",
+        "details": {
+          "road-segment": "Road Segment",
+          "last-maintenance-date": "Last Maintenance Date",
+          "maintenance-type": "Maintenance Type",
+          "maintenance-cost": "Maintenance Cost",
+          "severity-level": "Severity Level",
+          "suggested-repair": "Suggested Repair",
+          "recommended-action-urgency": "Recommended Action Urgency",
           "remark": "Remark"
         }
       }

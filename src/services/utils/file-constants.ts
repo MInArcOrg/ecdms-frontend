@@ -85,7 +85,8 @@ export const uploadableProjectFileTypes = {
     irrigationCapacity: 'IRRIGATION_CAPACITY',
     waterIrrigationDam: 'WATER_IRRIGATION_DAM',
     drainageAssessment: 'DRAINAGE_ASSESSMENT',
-    safetyAndHealth: 'SAFTEY_AND_HEALTH'
+    safetyAndHealth: 'SAFTEY_AND_HEALTH',
+    maintenanceHistory: 'MAINTENANCE_HISTORY'
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

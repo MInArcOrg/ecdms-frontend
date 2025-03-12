@@ -11,6 +11,7 @@ import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { SafetyAndHealth } from 'src/types/project/other'; // Update import
 import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
 interface SafetyAndHealthDrawerType {
   open: boolean;
@@ -33,20 +34,18 @@ const SafetyAndHealthDrawer = (props: SafetyAndHealthDrawerType) => {
     hazard_type_id: yup.string().required('Hazard type is required'),
     potential_impact_id: yup.string().required('Potential impact is required'),
     risk_level_id: yup.string().required('Risk level is required'),
-    immediate_action_taken: yup.string().required('Immediate action is required'),
+    immediate_action_taken: yup.string(),
     incident_type_id: yup.string().required('Incident type is required'),
-    incident_time: yup.string().required('Incident time is required'),
-    medicare_required: yup.boolean().required('Medicare requirement must be specified'),
-    total_injury_number: yup.number().min(0, 'Total injuries must be non-negative').required('Total injuries is required'),
-    incident_reported_by: yup.string().required('Reporter name is required'),
+    total_injury_number: yup.number().min(0, 'Total injuries must be non-negative'),
+    incident_reported_by: yup.string(),
     personal_protective_equipment_type_id: yup.string().required('PPE type is required'),
     personal_protective_equipment_condition_id: yup.string().required('PPE condition is required'),
-    trained_on_equipment_usage: yup.boolean().required('Training status must be specified'),
-    training_hours_number: yup.number().min(0, 'Training hours must be non-negative').required('Training hours is required'),
+    trained_on_equipment_usage: yup.boolean(),
+    training_hours_number: yup.number().min(0, 'Training hours must be non-negative'),
     weather_condition_during_incident_id: yup.string().required('Weather condition is required'),
     injury_severity_id: yup.string().required('Injury severity is required'),
-    fatality_number: yup.number().min(0, 'Fatality number must be non-negative').required('Fatality number is required'),
-    recommendation: yup.string().required('Recommendation is required'),
+    fatality_number: yup.number().min(0, 'Fatality number must be non-negative'),
+    recommendation: yup.string(),
     remark: yup.string().nullable()
   });
   const isEdit = Boolean(safetyAndHealth?.id);
@@ -66,7 +65,6 @@ const SafetyAndHealthDrawer = (props: SafetyAndHealthDrawerType) => {
       risk_level_id: values.risk_level_id,
       immediate_action_taken: values.immediate_action_taken,
       incident_type_id: values.incident_type_id,
-      incident_time: values.incident_time,
       medicare_required: values.medicare_required,
       total_injury_number: values.total_injury_number,
       incident_reported_by: values.incident_reported_by,
@@ -79,6 +77,7 @@ const SafetyAndHealthDrawer = (props: SafetyAndHealthDrawerType) => {
       fatality_number: values.fatality_number,
       recommendation: values.recommendation,
       remark: values.remark,
+      incident_time: convertDateToLocaleDate(values.incident_time),
       id: safetyAndHealth?.id
     },
     files: uploadableFile ? [uploadableFile] : []
@@ -107,7 +106,8 @@ const SafetyAndHealthDrawer = (props: SafetyAndHealthDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...safetyAndHealth
+            ...safetyAndHealth,
+            incident_time: formatInitialDateDate(safetyAndHealth?.incident_time)
           }}
           createActionFunc={isEdit ? editSafetyAndHealth : createSafetyAndHealth}
           onActionSuccess={onActionSuccess}
