@@ -51,16 +51,16 @@ export interface BuildingEnvelopMaterial {
   id: string;
   parent_id?: string;
   project_id: string;
-  exterior_walls?: string; // STRING
-  roof_assembly?: string; // STRING
-  exterior_windows?: string; // STRING
-  exterior_doors?: string; // STRING
-  shading_components?: string; // STRING
-  file_id?: string; // STRING
-  remark?: string; // TEXT
-  revision_no?: number; // INTEGER
-  created_at?: Date; // TIMESTAMP
-  updated_at?: Date; // TIMESTAMP
+  exterior_walls?: string;
+  roof_assembly?: string;
+  exterior_windows?: string;
+  exterior_doors?: string;
+  shading_components?: string;
+  file_id?: string;
+  remark?: string;
+  revision_no?: number;
+  created_at?: Date;
+  updated_at?: Date;
 }
 export interface RoadInfo {
   id: string;
@@ -101,15 +101,15 @@ export interface RoadLayer {
   project_id: string;
   segment_id: string;
   roadsegment: RoadSegment;
-  name?: string; // Optional string
-  number?: number; // Optional integer
-  thickness?: number; // Optional double (float) - corrected typo from "thickness" to "thickness"
-  material?: string; // Optional string
-  specifications?: string; // Optional string
-  description?: string; // Optional text
-  revision_no?: number; // Optional integer
-  created_at?: Date; // Optional date (if using TypeScript, adjust as per your needs)
-  updated_at?: Date; // Optional date (if using TypeScript, adjust as per your needs)
+  name?: string;
+  number?: number;
+  thickness?: number;
+  material?: string;
+  specifications?: string;
+  description?: string;
+  revision_no?: number;
+  created_at?: Date;
+  updated_at?: Date;
 }
 export interface GeneratingCapacity {
   id: string;
@@ -273,53 +273,63 @@ export interface RailwayStation {
   updated_at: Date;
 }
 export interface ReservoirInfo {
-  id: string; // UUID
-  parent_id?: string; // UUID, optional
-  project_id: string; // UUID, required
-  dam_volume?: string; // optional
-  total_capacity?: string; // optional
-  active_capacity?: string; // optional
-  inactive_capacity?: string; // optional
-  catchment_area?: number; // optional
-  surface_area?: number; // optional
-  revision_no?: number; // optional
-  created_at: Date; // Date, required
-  updated_at: Date; // Date, required
+  id: string;
+  parent_id?: string;
+  project_id: string;
+  dam_volume?: string;
+  total_capacity?: string;
+  active_capacity?: string;
+  inactive_capacity?: string;
+  catchment_area?: number;
+  surface_area?: number;
+  revision_no?: number;
+  created_at: Date;
+  updated_at: Date;
 }
 export interface SpillwayInfo {
-  id: string; // UUID
-  parent_id?: string; // UUID, optional
-  project_id: string; // UUID, required
-  name?: string; // optional
-  type?: string; // optional
-  quantity?: number; // optional
-  specifications?: string; // optional (TEXT in Sequelize is string in TypeScript)
-  capacity?: number; // optional (DOUBLE in Sequelize is number in TypeScript)
-  revision_no?: number; // optional
-  created_at: Date; // Date, required
-  updated_at: Date; // Date, required
+  id: string;
+  parent_id?: string;
+  project_id: string;
+  name?: string;
+  type?: string;
+  quantity?: number;
+  specifications?: string;
+  capacity?: number;
+  revision_no?: number;
+  created_at: Date;
+  updated_at: Date;
 }
 export interface IrrigationCapacity {
-  id: string; // UUID
-  parent_id?: string; // UUID, optional
-  project_id: string; // UUID, required
-  designed_irrigation_capacity?: number; // optional
-  actual_irrigation_capacity?: number; // optional
-  revision_no?: number; // optional
-  created_at?: Date; // optional, automatically managed by Sequelize
-  updated_at?: Date; // optional, automatically managed by Sequelize
+  id: string;
+  parent_id?: string;
+  project_id: string;
+  designed_irrigation_capacity?: number;
+  actual_irrigation_capacity?: number;
+  revision_no?: number;
+  created_at?: Date;
+  updated_at?: Date;
 }
 export interface WaterIrrigationDam {
-  id: string; // UUID
-  parent_id?: string; // UUID, optional
-  project_id: string; // UUID, required
-  dam_volume?: number; // optional
-  total_capacity?: number; // optional
-  active_capacity?: number; // optional
-  inactive_capacity?: number; // optional
-  catchment_area?: number; // optional
-  surface_area?: number; // optional
-  revision_no?: number; // optional
-  created_at?: Date; // optional, typically managed by the database
-  updated_at?: Date; // optional, typically managed by the database
+  id: string;
+  parent_id?: string;
+  project_id: string;
+  dam_volume?: number;
+  total_capacity?: number;
+  active_capacity?: number;
+  inactive_capacity?: number;
+  catchment_area?: number;
+  surface_area?: number;
+  revision_no?: number;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface DrainageAssessment {
+  id: string;
+  project_id: string;
+  road_segment: string;
+  drainage_type_id: string;
+  drainage_condition_id: string;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }

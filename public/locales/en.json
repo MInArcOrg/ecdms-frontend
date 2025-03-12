@@ -201,7 +201,7 @@
       "create-injury-severity": "Create Injury Severity",
       "edit-injury-severity": "Edit Injury Severity",
       "personal-protective-equipment-conditions": "Personal Protective Equipment Conditions",
-      "create-personal-protective-equipment-condition": "Create Personal Protective Equipment Condition", 
+      "create-personal-protective-equipment-condition": "Create Personal Protective Equipment Condition",
       "edit-personal-protective-equipment-condition": "Edit Personal Protective Equipment Condition",
       "weather-condition-during-incidents": "Weather Conditions During Incident",
       "create-weather-condition-during-incident": "Create Weather Condition During Incident",
@@ -543,7 +543,8 @@
           "spillway-detail": "Spillway Detail",
           "irrigation-capacity": "Irrigation Capacity",
           "water-irrigation-dam": "Water Irrigation Dam",
-          "port": "Port"
+          "port": "Port",
+          "drainage-assessment": "Drainage Assessment"
         }
       }
     },
@@ -950,6 +951,20 @@
           "thickness": "Thickness",
           "material": "Material",
           "description": "Description"
+        }
+      },
+      "drainage-assessment": {
+        "title": "Drainage Assessment",
+        "create-drainage-assessment": "Create Drainage Assessment",
+        "edit-drainage-assessment": "Edit Drainage Assessment",
+        "drainage-assessment-details": "Drainage Assessment Details",
+        "details": {
+          "road-segment": "Road Segment",
+          "drainage-type": "Drainage Type",
+          "drainage-condition": "Drainage Condition",
+          "remark": "Remarks",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
         }
       },
       "generating-capacity": {
