@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import ProjectOtherLayout from 'src/views/pages/projects/detail/other/layouts/project-other-layout';
-import RoadInfoList from 'src/views/pages/projects/detail/other/road/road-info';
-import subMenuItems, { findOtherModelName } from '../(subMenuItems)';
+import DrainageAssessmentList from 'src/views/pages/projects/detail/other/road/drainage-assessment';
+import subMenuItems, { findOtherSubMenu } from '../(subMenuItems)';
 
 function Index() {
   const router = useRouter();
@@ -9,7 +9,7 @@ function Index() {
   const baseUrl = `/projects/${typeId}/details/${id}/other`;
   const activeMenu = 8;
   const activeType = 2;
-  const activeSubType = 3;
+  const activeSubType = 23;
 
   return (
     <ProjectOtherLayout
@@ -19,16 +19,18 @@ function Index() {
       subMenuItems={subMenuItems}
       baseUrl={baseUrl}
     >
-      <RoadInfoList
-        model={findOtherModelName(subMenuItems(baseUrl), activeType, activeSubType) || ''}
+      <DrainageAssessmentList
+        otherSubMenu={findOtherSubMenu(subMenuItems(baseUrl), activeType, activeSubType)}
         projectId={String(id)}
         typeId={String(typeId)}
       />
     </ProjectOtherLayout>
   );
 }
+
 Index.acl = {
   action: 'view_other',
   subject: 'other'
 };
+
 export default Index;

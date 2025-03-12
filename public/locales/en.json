@@ -201,7 +201,7 @@
       "create-injury-severity": "Create Injury Severity",
       "edit-injury-severity": "Edit Injury Severity",
       "personal-protective-equipment-conditions": "Personal Protective Equipment Conditions",
-      "create-personal-protective-equipment-condition": "Create Personal Protective Equipment Condition", 
+      "create-personal-protective-equipment-condition": "Create Personal Protective Equipment Condition",
       "edit-personal-protective-equipment-condition": "Edit Personal Protective Equipment Condition",
       "weather-condition-during-incidents": "Weather Conditions During Incident",
       "create-weather-condition-during-incident": "Create Weather Condition During Incident",
@@ -523,6 +523,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "safety-and-health": "Safety And Health",
           "telecom": "Telecom",
           "telecom-infrastructure": "Telecom Infrastructure",
           "electric-power": "Electric Power",
@@ -543,7 +544,8 @@
           "spillway-detail": "Spillway Detail",
           "irrigation-capacity": "Irrigation Capacity",
           "water-irrigation-dam": "Water Irrigation Dam",
-          "port": "Port"
+          "port": "Port",
+          "drainage-assessment": "Drainage Assessment"
         }
       }
     },
@@ -952,6 +954,20 @@
           "description": "Description"
         }
       },
+      "drainage-assessment": {
+        "title": "Drainage Assessment",
+        "create-drainage-assessment": "Create Drainage Assessment",
+        "edit-drainage-assessment": "Edit Drainage Assessment",
+        "drainage-assessment-details": "Drainage Assessment Details",
+        "details": {
+          "road-segment": "Road Segment",
+          "drainage-type": "Drainage Type",
+          "drainage-condition": "Drainage Condition",
+          "remark": "Remarks",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
+        }
+      },
       "generating-capacity": {
         "title": "Generating Capacity",
         "create-generating-capacity": "Create Generating Capacity",
@@ -1152,6 +1168,33 @@
           "brace-cross-arm": "Brace Cross Arm",
           "elasticity-modulus": "Elasticity Modulus",
           "poission-ratio": "Poisson Ratio"
+        }
+      },
+      "safety-and-health": {
+        "title": "Safety and Health",
+        "safety-and-health-details": "Safety and Health Details",
+        "create-safety-and-health": "Create Safety and Health Record",
+        "edit-safety-and-health": "Edit Safety and Health Record",
+        "details": {
+          "road-segment": "Road Segment",
+          "hazard-type": "Hazard Type",
+          "potential-impact": "Potential Impact",
+          "risk-level": "Risk Level",
+          "immediate-action-taken": "Immediate Action Taken",
+          "incident-type": "Incident Type",
+          "incident-time": "Incident Time",
+          "medicare-required": "Medicare Required",
+          "total-injury-number": "Total Injury Number",
+          "incident-reported-by": "Incident Reported By",
+          "ppe-type": "PPE Type",
+          "ppe-condition": "PPE Condition",
+          "trained-on-equipment-usage": "Trained on Equipment Usage",
+          "training-hours": "Training Hours",
+          "weather-condition": "Weather Condition",
+          "injury-severity": "Injury Severity",
+          "fatality-number": "Fatality Number",
+          "recommendation": "Recommendation",
+          "remark": "Remark"
         }
       }
     },
