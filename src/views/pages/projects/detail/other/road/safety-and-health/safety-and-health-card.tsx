@@ -2,20 +2,20 @@ import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { DrainageAssessment } from 'src/types/project/other';
+import { SafetyAndHealth } from 'src/types/project/other';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-interface DrainageAssessmentCardProps {
-  drainageAssessment: DrainageAssessment;
+interface SafetyAndHealthCardProps {
+  safetyAndHealth: SafetyAndHealth;
   refetch: () => void;
-  onEdit: (drainageAssessment: DrainageAssessment) => void;
+  onEdit: (safetyAndHealth: SafetyAndHealth) => void;
   onDelete: (id: string) => void;
-  onDetail: (drainageAssessment: DrainageAssessment) => void;
+  onDetail: (safetyAndHealth: SafetyAndHealth) => void;
 }
 
-const DrainageAssessmentCard: React.FC<DrainageAssessmentCardProps> = ({ drainageAssessment, refetch, onEdit, onDelete, onDetail }) => {
+const SafetyAndHealthCard: React.FC<SafetyAndHealthCardProps> = ({ safetyAndHealth, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -26,7 +26,7 @@ const DrainageAssessmentCard: React.FC<DrainageAssessmentCardProps> = ({ drainag
             <Typography
               noWrap
               component={Button}
-              onClick={() => onDetail(drainageAssessment)}
+              onClick={() => onDetail(safetyAndHealth)}
               sx={{
                 fontWeight: 500,
                 textDecoration: 'none',
@@ -34,7 +34,7 @@ const DrainageAssessmentCard: React.FC<DrainageAssessmentCardProps> = ({ drainag
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {drainageAssessment?.id.slice(0, 5)}...
+              {safetyAndHealth?.id.slice(0, 5)}...
             </Typography>
           </Typography>
         </Box>
@@ -42,25 +42,33 @@ const DrainageAssessmentCard: React.FC<DrainageAssessmentCardProps> = ({ drainag
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.drainage-assessment.details.road-segment')}: {drainageAssessment?.road_segment || 'N/A'}
+            {t('project.other.safety-and-health.details.road-segment')}: {safetyAndHealth?.road_segment || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.drainage-assessment.details.drainage-type')}: {drainageAssessment?.drainage_type_id || 'N/A'}
+            {t('project.other.safety-and-health.details.hazard-type')}: {safetyAndHealth?.hazard_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.drainage-assessment.details.drainage-condition')}: {drainageAssessment?.drainage_condition_id || 'N/A'}
+            {t('project.other.safety-and-health.details.risk-level')}: {safetyAndHealth?.risk_level_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.drainage-assessment.details.remark')}: {drainageAssessment?.remark || 'N/A'}
+            {t('project.other.safety-and-health.details.incident-type')}: {safetyAndHealth?.incident_type_id || 'N/A'}
           </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {t('project.other.safety-and-health.details.injury-severity')}: {safetyAndHealth?.injury_severity_id || 'N/A'}
+          </Typography>
+          {safetyAndHealth?.remark && (
+            <Typography variant="body2" color="text.secondary">
+              {t('project.other.safety-and-health.details.remark')}: {safetyAndHealth.remark}
+            </Typography>
+          )}
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={drainageAssessment.id} type={uploadableProjectFileTypes.other.drainageAssessment} />
+        <FileDrawer id={safetyAndHealth.id} type={uploadableProjectFileTypes.other.safetyAndHealth} />
         <ModelAction
-          model="DrainageAssessment"
-          model_id={drainageAssessment.id}
+          model="SafetyAndHealth"
+          model_id={safetyAndHealth.id}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
@@ -69,19 +77,19 @@ const DrainageAssessmentCard: React.FC<DrainageAssessmentCardProps> = ({ drainag
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'drainageassessment'
+            subject: 'safetyandhealth'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'drainageassessment'
+            subject: 'safetyandhealth'
           }}
-          onEdit={() => onEdit(drainageAssessment)}
-          onDelete={() => onDelete(drainageAssessment.id)}
-          item={drainageAssessment}
+          onEdit={() => onEdit(safetyAndHealth)}
+          onDelete={() => onDelete(safetyAndHealth.id)}
+          item={safetyAndHealth}
           options={[]}
         />
       </CardActions>
     </Card>
   );
 };
-export default DrainageAssessmentCard;
+export default SafetyAndHealthCard;

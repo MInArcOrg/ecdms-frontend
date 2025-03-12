@@ -333,3 +333,29 @@ export interface DrainageAssessment {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface SafetyAndHealth {
+  id: string;
+  project_id: string;
+  road_segment: string;
+  hazard_type_id: string;
+  potential_impact_id: string;
+  risk_level_id: string;
+  immediate_action_taken?: string;
+  incident_type_id: string;
+  incident_time?: Date;
+  medicare_required?: boolean;
+  total_injury_number?: number;
+  incident_reported_by?: string;
+  personal_protective_equipment_type_id: string;
+  personal_protective_equipment_condition_id: string;
+  trained_on_equipment_usage?: boolean;
+  training_hours_number?: number;
+  weather_condition_during_incident_id: string;
+  injury_severity_id: string;
+  fatality_number?: number;
+  recommendation?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}

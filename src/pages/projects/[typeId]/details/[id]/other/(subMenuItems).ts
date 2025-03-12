@@ -71,6 +71,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/road/drainage-assessment`,
           model: 'drainageassessment',
           apiRoute: 'drainage-assessments'
+        },
+        {
+          id: 24,
+          title: t('project.navigation.submenu.others.safety-and-health'),
+          path: `${baseUrl}/road/safety-and-healths`,
+          model: 'safetyandhealth',
+          apiRoute: 'safety-and-healths'
         }
       ]
     },

@@ -2,18 +2,18 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import { DrainageAssessment } from 'src/types/project/other';
+import { SafetyAndHealth } from 'src/types/project/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
-  row: DrainageAssessment;
+  row: SafetyAndHealth;
 }
 
-export const drainageAssessmentColumns = (
-  onDetail: (drainageAssessment: DrainageAssessment) => void,
-  onEdit: (drainageAssessment: DrainageAssessment) => void,
+export const safetyAndHealthColumns = (
+  onDetail: (safetyAndHealth: SafetyAndHealth) => void,
+  onEdit: (safetyAndHealth: SafetyAndHealth) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void
@@ -42,7 +42,7 @@ export const drainageAssessmentColumns = (
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t('project.other.drainage-assessment.details.road-segment'),
+    headerName: t('project.other.safety-and-health.details.road-segment'),
     field: 'road_segment',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>{row?.road_segment || t('common.not-available')}</Typography>
@@ -51,25 +51,43 @@ export const drainageAssessmentColumns = (
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t('project.other.drainage-assessment.details.drainage-type'),
-    field: 'drainage_type_id',
+    headerName: t('project.other.safety-and-health.details.hazard-type'),
+    field: 'hazard_type_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.drainage_type_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.hazard_type_id || t('common.not-available')}</Typography>
     )
   },
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t('project.other.drainage-assessment.details.drainage-condition'),
-    field: 'drainage_condition_id',
+    headerName: t('project.other.safety-and-health.details.risk-level'),
+    field: 'risk_level_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.drainage_condition_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.risk_level_id || t('common.not-available')}</Typography>
+    )
+  },
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t('project.other.safety-and-health.details.incident-type'),
+    field: 'incident_type_id',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>{row?.incident_type_id || t('common.not-available')}</Typography>
+    )
+  },
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t('project.other.safety-and-health.details.injury-severity'),
+    field: 'injury_severity_id',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>{row?.injury_severity_id || t('common.not-available')}</Typography>
     )
   },
   {
     flex: 0.2,
     minWidth: 180,
-    headerName: t('project.other.drainage-assessment.details.remark'),
+    headerName: t('project.other.safety-and-health.details.remark'),
     field: 'remark',
     renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.remark || t('common.not-available')}</Typography>
   },
@@ -88,7 +106,7 @@ export const drainageAssessmentColumns = (
     renderCell: ({ row }: CellType) => (
       <Fragment>
         <ModelAction
-          model="DrainageAssessment"
+          model="SafetyAndHealth"
           model_id={row.id}
           refetchModel={refetch}
           resubmit={function (): void {
@@ -106,11 +124,11 @@ export const drainageAssessmentColumns = (
           options={[]}
           deletePermissionRule={{
             action: 'delete',
-            subject: 'drainageassessment'
+            subject: 'safetyandhealth'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'drainageassessment'
+            subject: 'safetyandhealth'
           }}
         />
       </Fragment>
