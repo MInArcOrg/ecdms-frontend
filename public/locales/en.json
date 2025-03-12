@@ -546,7 +546,8 @@
           "irrigation-capacity": "Irrigation Capacity",
           "water-irrigation-dam": "Water Irrigation Dam",
           "port": "Port",
-          "drainage-assessment": "Drainage Assessment"
+          "drainage-assessment": "Drainage Assessment",
+          "road-surface-conditions": "Road Surface Conditions"
         }
       }
     },
@@ -1211,6 +1212,25 @@
           "severity-level": "Severity Level",
           "suggested-repair": "Suggested Repair",
           "recommended-action-urgency": "Recommended Action Urgency",
+          "remark": "Remark"
+        }
+      },
+      "road-surface-condition": {
+        "title": "Road Surface Condition",
+        "road-surface-condition-details": "Road Surface Condition Details",
+        "create-road-surface-condition": "Create Road Surface Condition",
+        "edit-road-surface-condition": "Edit Road Surface Condition",
+        "details": {
+          "road-segment": "Road Segment",
+          "cracks": "Cracks",
+          "rutting": "Rutting",
+          "patching": "Patching",
+          "drainage-problems": "Drainage Problems",
+          "surface-type": "Surface Type",
+          "assessment-condition": "Assessment Condition",
+          "action-taken-date": "Action Taken Date",
+          "action-taken": "Action Taken",
+          "action-taken-cost": "Action Taken Cost",
           "remark": "Remark"
         }
       }

@@ -85,6 +85,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/road/maintenance-histories`,
           model: 'safetyandhealth',
           apiRoute: 'maintenance-histories'
+        },
+        {
+          id: 26,
+          title: t('project.navigation.submenu.others.road-surface-conditions'),
+          path: `${baseUrl}/road/road-surface-conditions`,
+          model: 'safetyandhealth',
+          apiRoute: 'road-surface-conditions'
         }
       ]
     },
