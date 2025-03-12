@@ -373,3 +373,21 @@ export interface MaintenanceHistory {
   created_at?: string;
   updated_at?: string;
 }
+
+export interface RoadSurfaceCondition {
+  id: string;
+  project_id: string;
+  road_segment: string;
+  cracks?: boolean;
+  rutting?: boolean;
+  patching?: boolean;
+  drainage_problems?: boolean;
+  action_taken_date?: string | Date | EthiopianDate;
+  action_taken?: string;
+  action_taken_cost?: number;
+  assessment_condition_id: string;
+  surface_type_id: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}

@@ -86,7 +86,8 @@ export const uploadableProjectFileTypes = {
     waterIrrigationDam: 'WATER_IRRIGATION_DAM',
     drainageAssessment: 'DRAINAGE_ASSESSMENT',
     safetyAndHealth: 'SAFTEY_AND_HEALTH',
-    maintenanceHistory: 'MAINTENANCE_HISTORY'
+    maintenanceHistory: 'MAINTENANCE_HISTORY',
+    roadSurfaceCondition: 'ROAD_SURFACE_CONDITION'
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
