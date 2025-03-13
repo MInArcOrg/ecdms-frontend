@@ -55,6 +55,14 @@ export const projectMasterModels = {
     editTitle: 'edit-satellite-network-type',
     fileType: 'SATELLITE_NETWORK_TYPE'
   },
+  internetConnectionType: {
+    model: 'InternetConnectionType',
+    dbModel: 'internetconnectiontype',
+    title: 'internet-connection-types',
+    createTitle: 'create-internet-connection-type',
+    editTitle: 'edit-internet-connection-type',
+    fileType: 'INTERNET_CONNECTION_TYPE'
+  },
   endwallTypeInlet: {
     model: 'EndwallTypeInlet',
     dbModel: 'endwalltypeinlet',

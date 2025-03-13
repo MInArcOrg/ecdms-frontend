@@ -211,7 +211,10 @@
       "edit-mobile-network-type":"Edit Mobile Network Type",
       "satellite-network-types": "Satellite Network Types",
       "create-satellite-network-type": "Create Satellite Network Type",
-      "edit-satellite-network-type": "Edit Satellite Network Type"
+      "edit-satellite-network-type": "Edit Satellite Network Type",
+      "internet-connection-types": "Internet Connection Types",
+      "create-internet-connection-type": "Create Internet Connection Type",
+      "edit-internet-connection-type": "Edit Internet Connection Type"
     },
     "form": {
       "title": "Title",
