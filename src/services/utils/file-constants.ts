@@ -87,7 +87,8 @@ export const uploadableProjectFileTypes = {
     drainageAssessment: 'DRAINAGE_ASSESSMENT',
     safetyAndHealth: 'SAFTEY_AND_HEALTH',
     maintenanceHistory: 'MAINTENANCE_HISTORY',
-    roadSurfaceCondition: 'ROAD_SURFACE_CONDITION'
+    roadSurfaceCondition: 'ROAD_SURFACE_CONDITION',
+    mobileNetwork: 'MOBILE_NETWORK'
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

@@ -1,4 +1,5 @@
 import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
+import { ProjectGeneralMaster } from '../general/general-master';
 
 export interface Port {
   id: string;
@@ -26,6 +27,20 @@ export interface TelecomInfrastructure {
   inauguration_date?: string | Date | EthiopianDate;
   revision_no?: number;
   created_at?: string | Date;
+  updated_at?: string | Date;
+}
+export interface MobileNetwork {
+  id: string;
+  project_id: string;
+  mobile_network_type_id: string;
+  mobilenetworktype: ProjectGeneralMaster;
+  call_towers?: boolean;
+  antennas?: boolean;
+  base_stations?: boolean;
+  repeaters?: boolean;
+  switches?: boolean;
+  others?: string;
+  created_at: string | Date;
   updated_at?: string | Date;
 }
 export interface BuildingDimensionDetail {
@@ -391,3 +406,5 @@ export interface RoadSurfaceCondition {
   created_at?: string;
   updated_at?: string;
 }
+
+

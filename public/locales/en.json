@@ -530,6 +530,7 @@
           "maintenance-histories": "Maintenance Histories",
           "telecom": "Telecom",
           "telecom-infrastructure": "Telecom Infrastructure",
+          "mobile-network": "Mobile Network",
           "electric-power": "Electric Power",
           "generating-capacity": "Generation Capacity",
           "turbine-info": "Turbines Detail",
@@ -856,6 +857,21 @@
           "no-of-families-coverage": "Number of Families Coverage",
           "service-period": "Service Period",
           "inauguration-date": "Inauguration Date"
+        }
+      },
+      "mobile-network": {
+        "title": "Mobile Networks",
+        "create-mobile-network": "Create Mobile Network",
+        "edit-mobile-network": "Edit Mobile Network",
+        "mobile-network-details": "Mobile Network Details",
+        "details": {
+          "mobile-network-type": "Mobile Network Type",
+          "call-towers": "Call Towers",
+          "antennas": "Antennas",
+          "base-stations": "Base Stations",
+          "repeaters": "Repeaters",
+          "switches": "Switches",
+          "others": "Others"
         }
       },
       "building-dimension-detail": {
@@ -1351,8 +1367,10 @@
     "rejected-data": "Rejected Data"
   },
   "common": {
+    "yes": "Yes",
+    "no": "No",
+    "not-available": "N/A",
     "edit": "Edit",
-    "not-available": "Not Available",
     "create": "Create",
     "active": "Active",
     "inactive": "InActive",

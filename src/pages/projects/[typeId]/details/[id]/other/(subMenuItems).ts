@@ -106,6 +106,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/telecom/telecom-infrastructure`,
           model: 'telecom',
           apiRoute: 'telecoms'
+        },
+        {
+          id: 27,
+          title: t('project.navigation.submenu.others.mobile-network'),
+          path: `${baseUrl}/telecom/mobile-network`,
+          model: 'mobilenetwork',
+          apiRoute: 'mobile-networks'
         }
       ]
     },
@@ -236,7 +243,6 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
         }
       ]
     },
-
     {
       id: 7,
       title: t('project.navigation.submenu.others.port'),
