@@ -47,6 +47,14 @@ export const projectMasterModels = {
     editTitle: 'edit-mobile-network-type',
     fileType: 'MOBILE_NETWORK_TYPE'
   },
+  satelliteNetworkType: {
+    model: 'SatelliteNetworkType',
+    dbModel: 'satellitenetworktype',
+    title: 'satellite-network-types',
+    createTitle: 'create-satellite-network-type',
+    editTitle: 'edit-satellite-network-type',
+    fileType: 'SATELLITE_NETWORK_TYPE'
+  },
   endwallTypeInlet: {
     model: 'EndwallTypeInlet',
     dbModel: 'endwalltypeinlet',

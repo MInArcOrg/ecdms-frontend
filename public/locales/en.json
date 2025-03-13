@@ -208,7 +208,10 @@
       "edit-weather-condition-during-incident": "Edit Weather Condition During Incident",
       "mobile-network-types": "Mobile Network Types",
       "create-mobile-network-type":"Create Mobile Network Type",
-      "edit-mobile-network-type":"Edit Mobile Network Type"
+      "edit-mobile-network-type":"Edit Mobile Network Type",
+      "satellite-network-types": "Satellite Network Types",
+      "create-satellite-network-type": "Create Satellite Network Type",
+      "edit-satellite-network-type": "Edit Satellite Network Type"
     },
     "form": {
       "title": "Title",
