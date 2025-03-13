@@ -107,7 +107,9 @@ const SafetyAndHealthDrawer = (props: SafetyAndHealthDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...safetyAndHealth,
-            incident_time: formatInitialDateDate(safetyAndHealth?.incident_time)
+            incident_time: formatInitialDateDate(safetyAndHealth?.incident_time),
+            medicare_required: safetyAndHealth.medicare_required || false,
+            trained_on_equipment_usage: safetyAndHealth.trained_on_equipment_usage || false
           }}
           createActionFunc={isEdit ? editSafetyAndHealth : createSafetyAndHealth}
           onActionSuccess={onActionSuccess}

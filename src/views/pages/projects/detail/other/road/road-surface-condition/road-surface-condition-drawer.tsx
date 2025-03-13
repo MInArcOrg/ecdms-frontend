@@ -11,7 +11,7 @@ import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { RoadSurfaceCondition } from 'src/types/project/other'; // Update import
 import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
-import { formatInitialDateDate } from 'src/utils/formatter/date';
+import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
 interface RoadSurfaceConditionDrawerType {
   open: boolean;
@@ -58,7 +58,7 @@ const RoadSurfaceConditionDrawer = (props: RoadSurfaceConditionDrawerType) => {
       rutting: values.rutting,
       patching: values.patching,
       drainage_problems: values.drainage_problems,
-      action_taken_date: values.action_taken_date,
+      action_taken_date: convertDateToLocaleDate(values.action_taken_date),
       action_taken: values.action_taken,
       action_taken_cost: values.action_taken_cost,
       assessment_condition_id: values.assessment_condition_id,
