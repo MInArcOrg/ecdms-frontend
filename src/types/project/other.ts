@@ -28,6 +28,19 @@ export interface TelecomInfrastructure {
   created_at?: string | Date;
   updated_at?: string | Date;
 }
+export interface MobileNetwork {
+  id: string;
+  project_id: string;
+  mobile_network_type_id: string;
+  call_towers?: boolean;
+  antennas?: boolean;
+  base_stations?: boolean;
+  repeaters?: boolean;
+  switches?: boolean;
+  others?: string;
+  created_at: string | Date;
+  updated_at?: string | Date;
+}
 export interface BuildingDimensionDetail {
   id: string;
   parent_id?: string;
@@ -391,3 +404,5 @@ export interface RoadSurfaceCondition {
   created_at?: string;
   updated_at?: string;
 }
+
+
