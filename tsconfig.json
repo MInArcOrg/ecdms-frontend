@@ -25,7 +25,8 @@
     "src",
     "declaration.d.ts",
     "src/views/dashboards/.tsx",
-    "src/pages/projects/[typeId]/details/[id]/other/irrigation-dam/.tsx"
+    "src/pages/projects/[typeId]/details/[id]/other/irrigation-dam/.tsx",
+    "src/pages/master-data/general/project/surface-types.tsx"
   ],
   "exclude": ["node_modules"]
 }

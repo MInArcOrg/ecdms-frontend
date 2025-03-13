@@ -60,11 +60,11 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: 'roadlayer'
         },
         {
-          id: 23,
-          title: t("project.navigation.submenu.others.segment-geometry"),
+          id: 6,
+          title: t('project.navigation.submenu.others.segment-geometry'),
           path: `${baseUrl}/road/segment-geometry`,
-          model: "segment-geometrie",
-        },
+          model: 'segmentgeometry'
+        }
       ]
     },
 

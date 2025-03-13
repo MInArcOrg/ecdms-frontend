@@ -1,17 +1,18 @@
 import { Fragment } from 'react';
-import CurrentCondtionMasterList from 'src/views/pages/master/general/project/current-condition-master/current-condition-master-list';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import ProjectGeneralMasterList from 'src/views/pages/master/general/project/project-general-master/project-general-master-list';
 import GeneralMasterLayout from '../general-master-layout';
 
-function CurrentCondtions() {
+function CurrentConditionMasterData() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <CurrentCondtionMasterList />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.currentCondition} />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default CurrentCondtions;
+export default CurrentConditionMasterData;

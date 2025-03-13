@@ -3,16 +3,16 @@ import { projectMasterModels } from 'src/constants/master-data/project-general-m
 import ProjectGeneralMasterList from 'src/views/pages/master/general/project/project-general-master/project-general-master-list';
 import GeneralMasterLayout from '../general-master-layout';
 
-function GuardRailTypeMasterData() {
+function FunctionalClassificationMasterData() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.guardRailType} />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.functionalClassification} />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default GuardRailTypeMasterData;
+export default FunctionalClassificationMasterData;
