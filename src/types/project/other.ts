@@ -1,4 +1,5 @@
 import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
+import { ProjectGeneralMaster } from '../general/general-master';
 
 export interface Port {
   id: string;
@@ -32,6 +33,7 @@ export interface MobileNetwork {
   id: string;
   project_id: string;
   mobile_network_type_id: string;
+  mobilenetworktype: ProjectGeneralMaster;
   call_towers?: boolean;
   antennas?: boolean;
   base_stations?: boolean;

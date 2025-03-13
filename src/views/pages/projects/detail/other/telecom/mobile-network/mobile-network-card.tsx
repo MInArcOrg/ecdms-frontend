@@ -42,7 +42,7 @@ const MobileNetworkCard: React.FC<MobileNetworkCardProps> = ({ mobileNetwork, re
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.mobile-network.details.mobile-network-type')}: {mobileNetwork?.mobile_network_type_id || 'N/A'}
+            {t('project.other.mobile-network.details.mobile-network-type')}: {mobileNetwork?.mobilenetworktype.title || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.mobile-network.details.call-towers')}: {mobileNetwork?.call_towers ? t('common.yes') : t('common.no')}

@@ -44,7 +44,7 @@ export const mobileNetworkColumns = (
     headerName: t('project.other.mobile-network.details.mobile-network-type'),
     field: 'mobile_network_type_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.mobile_network_type_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.mobilenetworktype.title || t('common.not-available')}</Typography>
     )
   },
   {

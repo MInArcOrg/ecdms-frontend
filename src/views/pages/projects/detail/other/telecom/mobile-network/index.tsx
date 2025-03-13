@@ -74,7 +74,7 @@ const MobileNetworkList: React.FC<MobileNetworkListProps> = ({ otherSubMenu, pro
   const mapMobileNetworkToDetailItems = (mobileNetwork: MobileNetwork): { title: string; value: string }[] => [
     {
       title: t('project.other.mobile-network.details.mobile-network-type'),
-      value: mobileNetwork?.mobile_network_type_id || 'N/A'
+      value: mobileNetwork?.mobilenetworktype.title || 'N/A'
     },
     {
       title: t('project.other.mobile-network.details.call-towers'),
