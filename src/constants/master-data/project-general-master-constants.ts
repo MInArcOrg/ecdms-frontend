@@ -39,6 +39,14 @@ export const projectMasterModels = {
     editTitle: 'edit-abutment-type',
     fileType: 'ABUTMENT_TYPE'
   },
+  mobileNetworkType: {
+    model: 'MobileNetworkType',
+    dbModel: 'mobilenetworktype',
+    title: 'mobile-network-types',
+    createTitle: 'create-mobile-network-type',
+    editTitle: 'edit-mobile-network-type',
+    fileType: 'MOBILE_NETWORK_TYPE'
+  },
   endwallTypeInlet: {
     model: 'EndwallTypeInlet',
     dbModel: 'endwalltypeinlet',
