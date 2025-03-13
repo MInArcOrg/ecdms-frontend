@@ -207,8 +207,8 @@
       "create-weather-condition-during-incident": "Create Weather Condition During Incident",
       "edit-weather-condition-during-incident": "Edit Weather Condition During Incident",
       "mobile-network-types": "Mobile Network Types",
-      "create-mobile-network-type":"Create Mobile Network",
-      "edit-mobile-network-type":"Edit Mobile Network"
+      "create-mobile-network-type":"Create Mobile Network Type",
+      "edit-mobile-network-type":"Edit Mobile Network Type"
     },
     "form": {
       "title": "Title",
