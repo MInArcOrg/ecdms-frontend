@@ -7,8 +7,8 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import projectOtherApiService from "src/services/project/project-other-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { defaultCreateActionConfig } from "src/types/general/listing"
 import type { Accessory } from "src/types/project/other"
 import type { GetRequestParam, IApiResponse } from "src/types/requests"
@@ -20,19 +20,19 @@ import AccessoryDrawer from "./accessory-drawer"
 import { accessoryColumns } from "./accessory-row"
 
 interface AccessoryListProps {
-  model: string
+  otherSubMenu?: OtherMenuRoute
   typeId: string
   projectId: string
 }
 
-const AccessoryList: React.FC<AccessoryListProps> = ({ model, projectId, typeId }) => {
+const AccessoryList: React.FC<AccessoryListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false)
   const [showDetailDrawer, setShowDetailDrawer] = useState(false)
   const [selectedRow, setSelectedRow] = useState<Accessory | null>(null)
   const { t } = useTranslation()
 
   const fetchAccessories = (params: GetRequestParam): Promise<IApiResponse<Accessory[]>> => {
-    return projectOtherApiService<Accessory>().getAll(model, {
+    return projectOtherApiSecondService<Accessory>().getAll(otherSubMenu?.apiRoute || "", {
       ...params,
       filter: { ...params.filter, project_id: projectId },
     })
@@ -50,32 +50,35 @@ const AccessoryList: React.FC<AccessoryListProps> = ({ model, projectId, typeId 
   })
 
   const toggleDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as Accessory)
     setShowDrawer(!showDrawer)
   }
 
   const toggleDetailDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as Accessory)
     setShowDetailDrawer(!showDetailDrawer)
   }
 
   const handleEdit = (accessory: Accessory) => {
+    toggleDrawer()
     setSelectedRow(accessory)
-    setShowDrawer(true)
   }
 
   const handleDelete = async (accessoryId: string) => {
-    await projectOtherApiService<Accessory>().delete(model, accessoryId)
+    await projectOtherApiSecondService<Accessory>().delete(otherSubMenu?.apiRoute || "", accessoryId)
     refetch()
   }
 
   const handleClickDetail = (accessory: Accessory) => {
+    toggleDetailDrawer()
     setSelectedRow(accessory)
-    setShowDetailDrawer(true)
   }
 
   const mapAccessoryToDetailItems = (accessory: Accessory): { title: string; value: string }[] => [
-    { title: t("project.other.accessory.details.name"), value: accessory?.name || "N/A" },
+    {
+      title: t("project.other.accessory.details.name"),
+      value: accessory?.name || "N/A",
+    },
     {
       title: t("project.other.accessory.details.under-passes"),
       value: accessory?.under_passes?.toString() || "N/A",
@@ -122,7 +125,7 @@ const AccessoryList: React.FC<AccessoryListProps> = ({ model, projectId, typeId 
     <Box>
       {showDrawer && (
         <AccessoryDrawer
-          model={model}
+          otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
           accessory={selectedRow as Accessory}
@@ -135,10 +138,10 @@ const AccessoryList: React.FC<AccessoryListProps> = ({ model, projectId, typeId 
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapAccessoryToDetailItems(selectedRow!)}
-          hasReference={true}
+          data={mapAccessoryToDetailItems(selectedRow as Accessory)}
+          hasReference={false}
           id={selectedRow?.id || ""}
-          fileType={uploadableProjectFileTypes.other.accessory}
+          fileType=""
           title={t("project.other.accessory.accessory-details")}
         />
       )}

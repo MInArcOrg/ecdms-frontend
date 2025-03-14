@@ -1,3 +1,5 @@
+"use client"
+
 import { Grid } from "@mui/material"
 import type { FormikProps } from "formik"
 import type React from "react"
@@ -5,16 +7,13 @@ import { useTranslation } from "react-i18next"
 import { gridSpacing } from "src/configs/app-constants"
 import type { Accessory } from "src/types/project/other"
 import CustomTextBox from "src/views/shared/form/custom-text-box"
-import CustomFileUpload from "src/views/shared/form/custome-file-selector"
 import CustomSwitch from "src/views/shared/form/custom-switch"
 
 interface AccessoryFormProps {
   formik: FormikProps<Accessory>
-  file: File | null
-  onFileChange: (file: File | null) => void
 }
 
-const AccessoryForm: React.FC<AccessoryFormProps> = ({ formik, file, onFileChange }) => {
+const AccessoryForm: React.FC<AccessoryFormProps> = ({ formik }) => {
   const { t: transl } = useTranslation()
 
   return (
@@ -28,6 +27,7 @@ const AccessoryForm: React.FC<AccessoryFormProps> = ({ formik, file, onFileChang
           size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.accessory.details.under-passes")}
@@ -37,6 +37,7 @@ const AccessoryForm: React.FC<AccessoryFormProps> = ({ formik, file, onFileChang
           type="number"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.accessory.details.ramps")}
@@ -46,6 +47,7 @@ const AccessoryForm: React.FC<AccessoryFormProps> = ({ formik, file, onFileChang
           type="number"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.accessory.details.traffic-signals")}
@@ -55,6 +57,7 @@ const AccessoryForm: React.FC<AccessoryFormProps> = ({ formik, file, onFileChang
           type="number"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.accessory.details.repair-stations")}
@@ -64,6 +67,8 @@ const AccessoryForm: React.FC<AccessoryFormProps> = ({ formik, file, onFileChang
           type="number"
           sx={{ mb: 2 }}
         />
+
+
         <CustomSwitch
           label={transl("project.other.accessory.details.bicycle-lanes")}
           name="bicycle_lanes"
@@ -80,10 +85,6 @@ const AccessoryForm: React.FC<AccessoryFormProps> = ({ formik, file, onFileChang
         />
         <CustomSwitch label={transl("project.other.accessory.details.culvert")} name="culvert" sx={{ mb: 2 }} />
         <CustomSwitch label={transl("project.other.accessory.details.bridge")} name="bridge" sx={{ mb: 2 }} />
-      </Grid>
-
-      <Grid item xs={12}>
-        <CustomFileUpload label={transl("common.form.file-upload")} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   )

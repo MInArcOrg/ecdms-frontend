@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import ProjectOtherLayout from 'src/views/pages/projects/detail/other/layouts/project-other-layout';
-import TelecomInfrastructureList from 'src/views/pages/projects/detail/other/telecom-infrastructure';
+import TelecomInfrastructureList from 'src/views/pages/projects/detail/other/telecom/telecom-infrastructure';
 import subMenuItems, { findOtherModelName } from '../(subMenuItems)';
 
 function Index() {

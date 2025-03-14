@@ -39,6 +39,30 @@ export const projectMasterModels = {
     editTitle: 'edit-abutment-type',
     fileType: 'ABUTMENT_TYPE'
   },
+  mobileNetworkType: {
+    model: 'MobileNetworkType',
+    dbModel: 'mobilenetworktype',
+    title: 'mobile-network-types',
+    createTitle: 'create-mobile-network-type',
+    editTitle: 'edit-mobile-network-type',
+    fileType: 'MOBILE_NETWORK_TYPE'
+  },
+  satelliteNetworkType: {
+    model: 'SatelliteNetworkType',
+    dbModel: 'satellitenetworktype',
+    title: 'satellite-network-types',
+    createTitle: 'create-satellite-network-type',
+    editTitle: 'edit-satellite-network-type',
+    fileType: 'SATELLITE_NETWORK_TYPE'
+  },
+  internetConnectionType: {
+    model: 'InternetConnectionType',
+    dbModel: 'internetconnectiontype',
+    title: 'internet-connection-types',
+    createTitle: 'create-internet-connection-type',
+    editTitle: 'edit-internet-connection-type',
+    fileType: 'INTERNET_CONNECTION_TYPE'
+  },
   endwallTypeInlet: {
     model: 'EndwallTypeInlet',
     dbModel: 'endwalltypeinlet',
@@ -366,6 +390,38 @@ export const projectMasterModels = {
     createTitle: 'create-pedestrian-facility',
     editTitle: 'edit-pedestrian-facility',
     fileType: 'PEDESTRIAN_FACILITY'
+  },
+  personalProtectiveEquipmentType: {
+    model: 'PersonalProtectiveEquipmentType',
+    dbModel: 'personalprotectiveequipmenttype',
+    title: 'personal-protective-equipment-types',
+    createTitle: 'create-personal-protective-equipment-type',
+    editTitle: 'edit-personal-protective-equipment-type',
+    fileType: 'PERSONAL_PROTECTIVE_EQUIPMENT_TYPE'
+  },
+  injurySeverity: {
+    model: 'InjurySeverity',
+    dbModel: 'injuryseverity',
+    title: 'injury-severities',
+    createTitle: 'create-injury-severity',
+    editTitle: 'edit-injury-severity',
+    fileType: 'INJURY_SEVERITY'
+  },
+  personalProtectiveEquipmentCondition: {
+    model: 'PersonalProtectiveEquipmentCondition',
+    dbModel: 'personalprotectiveequipmentcondition',
+    title: 'personal-protective-equipment-conditions',
+    createTitle: 'create-personal-protective-equipment-condition',
+    editTitle: 'edit-personal-protective-equipment-condition',
+    fileType: 'PERSONAL_PROTECTIVE_EQUIPMENT_CONDITION'
+  },
+  weatherConditionDuringIncident: {
+    model: 'WeatherConditionDuringIncident',
+    dbModel: 'weatherconditionduringincident',
+    title: 'weather-condition-during-incidents',
+    createTitle: 'create-weather-condition-during-incident',
+    editTitle: 'edit-weather-condition-during-incident',
+    fileType: 'WEATHER_CONDITION_DURING_INCIDENT'
   }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
