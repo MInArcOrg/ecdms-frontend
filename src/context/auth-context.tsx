@@ -57,13 +57,14 @@ const AuthProvider = ({ children }: Props) => {
             setUser({ ...response.data.payload.user_data });
           })
           .catch((error) => {
+            const returnUrl = window.location.href;
             localStorage.removeItem(authConfig.storageUserKeyName);
             localStorage.removeItem('refreshToken');
             localStorage.removeItem('accessToken');
             setUser(null);
             setLoading(false);
             if (authConfig.onTokenExpiration === 'logout' && !router.pathname.includes('login')) {
-              router.replace('/auth/login');
+              router.replace(`/auth/login?returnUrl=${returnUrl}`);
             }
           })
           .finally(() => {

@@ -7,8 +7,8 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import projectOtherApiService from "src/services/project/project-other-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { defaultCreateActionConfig } from "src/types/general/listing"
 import type { CulvertRoadOverInformation } from "src/types/project/other"
 import type { GetRequestParam, IApiResponse } from "src/types/requests"
@@ -18,17 +18,15 @@ import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-det
 import CulvertRoadOverInformationCard from "./culvert-road-over-information-card"
 import CulvertRoadOverInformationDrawer from "./culvert-road-over-information-drawer"
 import { culvertRoadOverInformationColumns } from "./culvert-road-over-information-row"
-import { useQuery } from "@tanstack/react-query"
-import guardRailTypeMasterService from "src/services/general/project/guard-rail-type-master-service"
 
 interface CulvertRoadOverInformationListProps {
-  model: string
+  otherSubMenu?: OtherMenuRoute
   typeId: string
   projectId: string
 }
 
 const CulvertRoadOverInformationList: React.FC<CulvertRoadOverInformationListProps> = ({
-  model,
+  otherSubMenu,
   projectId,
   typeId,
 }) => {
@@ -37,64 +35,52 @@ const CulvertRoadOverInformationList: React.FC<CulvertRoadOverInformationListPro
   const [selectedRow, setSelectedRow] = useState<CulvertRoadOverInformation | null>(null)
   const { t } = useTranslation()
 
-  // Fetch master data for lookups
-  const { data: guardRailTypes } = useQuery({
-    queryKey: ["masterCategory", "guardRailTypes"],
-    queryFn: () => guardRailTypeMasterService.getAll({}),
-  })
-
-  // Create lookup maps
-  const guardRailTypeMap = new Map()
-
-  if (guardRailTypes?.payload) {
-    guardRailTypes.payload.forEach((type) => {
-      guardRailTypeMap.set(type.id, type.title)
-    })
-  }
-
   const fetchCulvertRoadOverInformation = (
     params: GetRequestParam,
   ): Promise<IApiResponse<CulvertRoadOverInformation[]>> => {
-    return projectOtherApiService<CulvertRoadOverInformation>().getAll(model, {
+    return projectOtherApiSecondService<CulvertRoadOverInformation>().getAll(otherSubMenu?.apiRoute || "", {
       ...params,
       filter: { ...params.filter, project_id: projectId },
     })
   }
 
   const {
-    data: culvertRoadOverInformation,
+    data: culvertRoadOverInformations,
     isLoading,
     pagination,
     handlePageChange,
     refetch,
   } = usePaginatedFetch<CulvertRoadOverInformation[]>({
-    queryKey: ["culvertRoadOverInformation"],
+    queryKey: ["culvertRoadOverInformations"],
     fetchFunction: fetchCulvertRoadOverInformation,
   })
 
   const toggleDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as CulvertRoadOverInformation)
     setShowDrawer(!showDrawer)
   }
 
   const toggleDetailDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as CulvertRoadOverInformation)
     setShowDetailDrawer(!showDetailDrawer)
   }
 
   const handleEdit = (culvertRoadOverInformation: CulvertRoadOverInformation) => {
+    toggleDrawer()
     setSelectedRow(culvertRoadOverInformation)
-    setShowDrawer(true)
   }
 
   const handleDelete = async (culvertRoadOverInformationId: string) => {
-    await projectOtherApiService<CulvertRoadOverInformation>().delete(model, culvertRoadOverInformationId)
+    await projectOtherApiSecondService<CulvertRoadOverInformation>().delete(
+      otherSubMenu?.apiRoute || "",
+      culvertRoadOverInformationId,
+    )
     refetch()
   }
 
   const handleClickDetail = (culvertRoadOverInformation: CulvertRoadOverInformation) => {
+    toggleDetailDrawer()
     setSelectedRow(culvertRoadOverInformation)
-    setShowDetailDrawer(true)
   }
 
   const mapCulvertRoadOverInformationToDetailItems = (
@@ -126,7 +112,7 @@ const CulvertRoadOverInformationList: React.FC<CulvertRoadOverInformationListPro
     },
     {
       title: t("project.other.culvert-road-over-information.details.guard-rail-type-id"),
-      value: guardRailTypeMap.get(culvertRoadOverInformation?.guard_rail_type_id) || "N/A",
+      value: culvertRoadOverInformation?.guard_rail_type_id || "N/A",
     },
     {
       title: t("project.other.culvert-road-over-information.details.parapet-length"),
@@ -136,13 +122,17 @@ const CulvertRoadOverInformationList: React.FC<CulvertRoadOverInformationListPro
       title: t("common.table-columns.created-at"),
       value: culvertRoadOverInformation?.created_at ? formatCreatedAt(culvertRoadOverInformation.created_at) : "N/A",
     },
+    {
+      title: t("common.table-columns.updated-at"),
+      value: culvertRoadOverInformation?.updated_at ? formatCreatedAt(culvertRoadOverInformation.updated_at) : "N/A",
+    },
   ]
 
   return (
     <Box>
       {showDrawer && (
         <CulvertRoadOverInformationDrawer
-          model={model}
+          otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
           culvertRoadOverInformation={selectedRow as CulvertRoadOverInformation}
@@ -155,11 +145,11 @@ const CulvertRoadOverInformationList: React.FC<CulvertRoadOverInformationListPro
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapCulvertRoadOverInformationToDetailItems(selectedRow!)}
-          hasReference={true}
+          data={mapCulvertRoadOverInformationToDetailItems(selectedRow as CulvertRoadOverInformation)}
+          hasReference={false}
           id={selectedRow?.id || ""}
-          fileType={uploadableProjectFileTypes.other.culvertRoadOverInformation}
           title={t("project.other.culvert-road-over-information.culvert-road-over-information-details")}
+          fileType=""
         />
       )}
 
@@ -168,14 +158,7 @@ const CulvertRoadOverInformationList: React.FC<CulvertRoadOverInformationListPro
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: culvertRoadOverInformationColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-            guardRailTypeMap,
-          ),
+          headers: culvertRoadOverInformationColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -197,7 +180,7 @@ const CulvertRoadOverInformationList: React.FC<CulvertRoadOverInformationListPro
           },
         }}
         fetchDataFunction={refetch}
-        items={culvertRoadOverInformation || []}
+        items={culvertRoadOverInformations || []}
         onPaginationChange={handlePageChange}
       />
     </Box>

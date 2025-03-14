@@ -1,17 +1,18 @@
 import { Fragment } from 'react';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import ProjectGeneralMasterList from 'src/views/pages/master/general/project/project-general-master/project-general-master-list';
 import GeneralMasterLayout from '../general-master-layout';
-import BridgeStructureTypeMasterList from 'src/views/pages/master/general/project/bridge-structure-type-master/bridge-structure-type-master-list';
 
-function BridgeStructureTypes() {
+function BridgeStructureTypeMasterData() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <BridgeStructureTypeMasterList />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.bridgeStructureType} />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default BridgeStructureTypes;
+export default BridgeStructureTypeMasterData;
