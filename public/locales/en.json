@@ -207,8 +207,8 @@
       "create-weather-condition-during-incident": "Create Weather Condition During Incident",
       "edit-weather-condition-during-incident": "Edit Weather Condition During Incident",
       "mobile-network-types": "Mobile Network Types",
-      "create-mobile-network-type":"Create Mobile Network Type",
-      "edit-mobile-network-type":"Edit Mobile Network Type",
+      "create-mobile-network-type": "Create Mobile Network Type",
+      "edit-mobile-network-type": "Edit Mobile Network Type",
       "satellite-network-types": "Satellite Network Types",
       "create-satellite-network-type": "Create Satellite Network Type",
       "edit-satellite-network-type": "Edit Satellite Network Type",
@@ -537,6 +537,7 @@
           "telecom": "Telecom",
           "telecom-infrastructure": "Telecom Infrastructure",
           "mobile-network": "Mobile Network",
+          "network-coverage": "Network Coverage",
           "electric-power": "Electric Power",
           "generating-capacity": "Generation Capacity",
           "turbine-info": "Turbines Detail",
@@ -877,6 +878,22 @@
           "base-stations": "Base Stations",
           "repeaters": "Repeaters",
           "switches": "Switches",
+          "others": "Others"
+        }
+      },
+      "network-coverage": {
+        "title": "Network Coverage",
+        "network-coverage-details": "Network Coverage Details",
+        "create-network-coverage": "Create Network Coverage",
+        "edit-network-coverage": "Edit Network Coverage",
+        "details": {
+          "network-infrastructure-type": "Network Infrastructure Type",
+          "total-coverage-area": "Total Coverage Area",
+          "coverage-population-number": "Coverage Population Number",
+          "active-users-number": "Active Users Number",
+          "average-download-speed": "Average Download Speed",
+          "average-upload-speed": "Average Upload Speed",
+          "signal-strength": "Signal Strength",
           "others": "Others"
         }
       },
