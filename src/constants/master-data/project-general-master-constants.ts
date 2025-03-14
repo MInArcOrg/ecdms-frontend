@@ -39,6 +39,30 @@ export const projectMasterModels = {
     editTitle: 'edit-abutment-type',
     fileType: 'ABUTMENT_TYPE'
   },
+  mobileNetworkType: {
+    model: 'MobileNetworkType',
+    dbModel: 'mobilenetworktype',
+    title: 'mobile-network-types',
+    createTitle: 'create-mobile-network-type',
+    editTitle: 'edit-mobile-network-type',
+    fileType: 'MOBILE_NETWORK_TYPE'
+  },
+  satelliteNetworkType: {
+    model: 'SatelliteNetworkType',
+    dbModel: 'satellitenetworktype',
+    title: 'satellite-network-types',
+    createTitle: 'create-satellite-network-type',
+    editTitle: 'edit-satellite-network-type',
+    fileType: 'SATELLITE_NETWORK_TYPE'
+  },
+  internetConnectionType: {
+    model: 'InternetConnectionType',
+    dbModel: 'internetconnectiontype',
+    title: 'internet-connection-types',
+    createTitle: 'create-internet-connection-type',
+    editTitle: 'edit-internet-connection-type',
+    fileType: 'INTERNET_CONNECTION_TYPE'
+  },
   endwallTypeInlet: {
     model: 'EndwallTypeInlet',
     dbModel: 'endwalltypeinlet',

@@ -1,21 +1,21 @@
-'use client';
-
 import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
-import type React from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import type { SegmentGeometry } from 'src/types/project/other';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { DrainageAssessment } from 'src/types/project/other';
+import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-interface SegmentGeometryCardProps {
-  segmentGeometry: SegmentGeometry;
+interface DrainageAssessmentCardProps {
+  drainageAssessment: DrainageAssessment;
   refetch: () => void;
-  onEdit: (segmentGeometry: SegmentGeometry) => void;
+  onEdit: (drainageAssessment: DrainageAssessment) => void;
   onDelete: (id: string) => void;
-  onDetail: (segmentGeometry: SegmentGeometry) => void;
+  onDetail: (drainageAssessment: DrainageAssessment) => void;
 }
 
-const SegmentGeometryCard: React.FC<SegmentGeometryCardProps> = ({ segmentGeometry, refetch, onEdit, onDelete, onDetail }) => {
+const DrainageAssessmentCard: React.FC<DrainageAssessmentCardProps> = ({ drainageAssessment, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -26,7 +26,7 @@ const SegmentGeometryCard: React.FC<SegmentGeometryCardProps> = ({ segmentGeomet
             <Typography
               noWrap
               component={Button}
-              onClick={() => onDetail(segmentGeometry)}
+              onClick={() => onDetail(drainageAssessment)}
               sx={{
                 fontWeight: 500,
                 textDecoration: 'none',
@@ -34,7 +34,7 @@ const SegmentGeometryCard: React.FC<SegmentGeometryCardProps> = ({ segmentGeomet
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {segmentGeometry?.id.slice(0, 5)}...
+              {drainageAssessment?.id.slice(0, 5)}...
             </Typography>
           </Typography>
         </Box>
@@ -42,24 +42,25 @@ const SegmentGeometryCard: React.FC<SegmentGeometryCardProps> = ({ segmentGeomet
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.segment-geometry.details.name')}: {segmentGeometry?.name || 'N/A'}
+            {t('project.other.drainage-assessment.details.road-segment')}: {drainageAssessment?.road_segment || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.segment-geometry.details.cross-section-type')}: {segmentGeometry?.cross_section_type_id || 'N/A'}
+            {t('project.other.drainage-assessment.details.drainage-type')}: {drainageAssessment?.drainage_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.segment-geometry.details.carriage-way-width')}: {segmentGeometry?.carriage_way_width || 'N/A'}
+            {t('project.other.drainage-assessment.details.drainage-condition')}: {drainageAssessment?.drainage_condition_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.segment-geometry.details.lane-width')}: {segmentGeometry?.lane_width || 'N/A'}
+            {t('project.other.drainage-assessment.details.remark')}: {drainageAssessment?.remark || 'N/A'}
           </Typography>
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
+        <FileDrawer id={drainageAssessment.id} type={uploadableProjectFileTypes.other.drainageAssessment} />
         <ModelAction
-          model="SegmentGeometry"
-          model_id={segmentGeometry.id}
+          model="DrainageAssessment"
+          model_id={drainageAssessment.id}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
@@ -68,19 +69,19 @@ const SegmentGeometryCard: React.FC<SegmentGeometryCardProps> = ({ segmentGeomet
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'segmentgeometry'
+            subject: 'drainageassessment'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'segmentgeometry'
+            subject: 'drainageassessment'
           }}
-          onEdit={() => onEdit(segmentGeometry)}
-          onDelete={() => onDelete(segmentGeometry.id)}
-          item={segmentGeometry}
+          onEdit={() => onEdit(drainageAssessment)}
+          onDelete={() => onDelete(drainageAssessment.id)}
+          item={drainageAssessment}
           options={[]}
         />
       </CardActions>
     </Card>
   );
 };
-export default SegmentGeometryCard;
+export default DrainageAssessmentCard;

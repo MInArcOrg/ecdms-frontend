@@ -1,5 +1,3 @@
-'use client';
-
 import type { FormikProps } from 'formik';
 import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
@@ -7,11 +5,9 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import SegmentGeometryForm from './segment-geometry-form';
 
-import { useState } from 'react';
-import projectOtherApiService from 'src/services/project/project-other-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { uploadFile } from 'src/services/utils/file-utils';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import type { SegmentGeometry } from 'src/types/project/other';
+import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
 
 interface SegmentGeometryDrawerType {
   open: boolean;
@@ -19,45 +15,37 @@ interface SegmentGeometryDrawerType {
   refetch: () => void;
   segmentGeometry: SegmentGeometry;
   projectId: string;
-  model: string;
+  otherSubMenu?: OtherMenuRoute;
 }
 
 const SegmentGeometryDrawer = (props: SegmentGeometryDrawerType) => {
-  const { open, toggle, refetch, segmentGeometry, projectId, model } = props;
-  const [uploadableFile, setUploadableFile] = useState<File | null>(null);
-  const onFileChange = (file: File | null) => {
-    setUploadableFile(file);
-  };
+  const { open, toggle, refetch, segmentGeometry, projectId, otherSubMenu } = props;
 
   const validationSchema = yup.object().shape({
     name: yup.string().required('Name is required'),
-    cross_section_type_id: yup.string().required('Cross section type is required')
+    cross_section_type_id: yup.string().required('Cross Section Type is required')
   });
 
   const isEdit = Boolean(segmentGeometry?.id);
 
-  const createSegmentGeometry = async (body: IApiPayload<SegmentGeometry>) => projectOtherApiService<SegmentGeometry>().create(model, body);
+  const createSegmentGeometry = async (body: IApiPayload<SegmentGeometry>) =>
+    projectOtherApiSecondService<SegmentGeometry>().create(otherSubMenu?.apiRoute || '', body);
 
   const editSegmentGeometry = async (body: IApiPayload<SegmentGeometry>) =>
-    projectOtherApiService<SegmentGeometry>().update(model, segmentGeometry?.id || '', body);
+    projectOtherApiSecondService<SegmentGeometry>().update(otherSubMenu?.apiRoute || '', segmentGeometry?.id || '', body);
 
-  const getPayload = (values: SegmentGeometry) => {
-    return {
-      data: {
-        ...values,
-        id: segmentGeometry?.id,
-        project_id: projectId
-      },
-      files: uploadableFile ? [uploadableFile] : []
-    };
-  };
+  const getPayload = (values: SegmentGeometry): IApiPayload<SegmentGeometry> => ({
+    data: {
+      ...values,
+      project_id: projectId,
+      id: segmentGeometry?.id
+    } as SegmentGeometry,
+    files: []
+  });
 
   const handleClose = () => toggle();
 
   const onActionSuccess = async (response: IApiResponse<SegmentGeometry>, payload: IApiPayload<SegmentGeometry>) => {
-    if (payload.files.length > 0) {
-      uploadFile(payload.files[0], uploadableProjectFileTypes.other.segmentGeometry, response.payload.id, '', '');
-    }
     refetch();
     handleClose();
   };
@@ -82,7 +70,7 @@ const SegmentGeometryDrawer = (props: SegmentGeometryDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<SegmentGeometry>) => {
-            return <SegmentGeometryForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
+            return <SegmentGeometryForm formik={formik} />;
           }}
         </FormPageWrapper>
       )}

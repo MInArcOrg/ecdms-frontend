@@ -7,8 +7,8 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import projectOtherApiService from 'src/services/project/project-other-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import type { SegmentGeometry } from 'src/types/project/other';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
@@ -18,36 +18,21 @@ import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-det
 import SegmentGeometryCard from './segment-geometry-card';
 import SegmentGeometryDrawer from './segment-geometry-drawer';
 import { segmentGeometryColumns } from './segment-geometry-row';
-import { useQuery } from '@tanstack/react-query';
-import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 
 interface SegmentGeometryListProps {
-  model: string;
+  otherSubMenu?: OtherMenuRoute;
   typeId: string;
   projectId: string;
 }
 
-const SegmentGeometryList: React.FC<SegmentGeometryListProps> = ({ model, projectId, typeId }) => {
+const SegmentGeometryList: React.FC<SegmentGeometryListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<SegmentGeometry | null>(null);
   const { t } = useTranslation();
 
-  const { data: crossSectionTypes } = useQuery({
-    queryKey: ['general-master', 'cross-section-types'],
-    queryFn: () => projectGeneralMasterDataApiService.getAll({ filter: { model: 'CrossSectionType' } })
-  });
-
-  const crossSectionTypeMap = new Map();
-
-  if (crossSectionTypes?.payload) {
-    crossSectionTypes.payload.forEach((type) => {
-      crossSectionTypeMap.set(type.id, type.title);
-    });
-  }
-
   const fetchSegmentGeometries = (params: GetRequestParam): Promise<IApiResponse<SegmentGeometry[]>> => {
-    return projectOtherApiService<SegmentGeometry>().getAll(model, {
+    return projectOtherApiSecondService<SegmentGeometry>().getAll(otherSubMenu?.apiRoute || '', {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -65,35 +50,34 @@ const SegmentGeometryList: React.FC<SegmentGeometryListProps> = ({ model, projec
   });
 
   const toggleDrawer = () => {
-    setSelectedRow(null);
+    setSelectedRow({} as SegmentGeometry);
     setShowDrawer(!showDrawer);
   };
 
   const toggleDetailDrawer = () => {
-    setSelectedRow(null);
+    setSelectedRow({} as SegmentGeometry);
     setShowDetailDrawer(!showDetailDrawer);
   };
 
   const handleEdit = (segmentGeometry: SegmentGeometry) => {
+    toggleDrawer();
     setSelectedRow(segmentGeometry);
-    setShowDrawer(true);
   };
 
   const handleDelete = async (segmentGeometryId: string) => {
-    await projectOtherApiService<SegmentGeometry>().delete(model, segmentGeometryId);
+    await projectOtherApiSecondService<SegmentGeometry>().delete(otherSubMenu?.apiRoute || '', segmentGeometryId);
     refetch();
   };
 
   const handleClickDetail = (segmentGeometry: SegmentGeometry) => {
+    toggleDetailDrawer();
     setSelectedRow(segmentGeometry);
-    setShowDetailDrawer(true);
   };
 
   const mapSegmentGeometryToDetailItems = (segmentGeometry: SegmentGeometry): { title: string; value: string }[] => [
-    { title: t('project.other.segment-geometry.details.name'), value: segmentGeometry?.name || 'N/A' },
     {
-      title: t('project.other.segment-geometry.details.cross-section-type-id'),
-      value: crossSectionTypeMap.get(segmentGeometry?.cross_section_type_id) || 'N/A'
+      title: t('project.other.segment-geometry.details.name'),
+      value: segmentGeometry?.name || 'N/A'
     },
     {
       title: t('project.other.segment-geometry.details.carriage-way-width'),
@@ -106,6 +90,10 @@ const SegmentGeometryList: React.FC<SegmentGeometryListProps> = ({ model, projec
     {
       title: t('project.other.segment-geometry.details.shoulder-width'),
       value: segmentGeometry?.shoulder_width?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.segment-geometry.details.cross-section-type'),
+      value: segmentGeometry?.cross_section_type_id || 'N/A'
     },
     {
       title: t('project.other.segment-geometry.details.grade-percentage'),
@@ -141,7 +129,7 @@ const SegmentGeometryList: React.FC<SegmentGeometryListProps> = ({ model, projec
     <Box>
       {showDrawer && (
         <SegmentGeometryDrawer
-          model={model}
+          otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
           segmentGeometry={selectedRow as SegmentGeometry}
@@ -154,10 +142,10 @@ const SegmentGeometryList: React.FC<SegmentGeometryListProps> = ({ model, projec
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapSegmentGeometryToDetailItems(selectedRow!)}
-          hasReference={true}
+          data={mapSegmentGeometryToDetailItems(selectedRow as SegmentGeometry)}
+          hasReference={false}
           id={selectedRow?.id || ''}
-          fileType={uploadableProjectFileTypes.other.segmentGeometry}
+          fileType=""
           title={t('project.other.segment-geometry.segment-geometry-details')}
         />
       )}
@@ -167,7 +155,7 @@ const SegmentGeometryList: React.FC<SegmentGeometryListProps> = ({ model, projec
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: segmentGeometryColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, crossSectionTypeMap)
+          headers: segmentGeometryColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (

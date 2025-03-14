@@ -22,5 +22,6 @@ export interface MasterType {
   title: string;
   parent_id: string | null;
   revision_no: string | null;
+
   updated_at: string;
 }

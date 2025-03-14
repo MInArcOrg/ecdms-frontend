@@ -1,29 +1,31 @@
+'use client';
+
 import { Grid } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
 import type { FormikProps } from 'formik';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
-import type { SegmentGeometry } from 'src/types/project/other';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
-import CustomSelectBox from 'src/views/shared/form/custom-select';
-import CustomSwitch from 'src/views/shared/form/custom-switch';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
-
-import { useQuery } from '@tanstack/react-query';
+import type { SegmentGeometry } from 'src/types/project/other';
+import CustomSelect from 'src/views/shared/form/custom-select';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomSwitch from 'src/views/shared/form/custom-switch';
 
 interface SegmentGeometryFormProps {
   formik: FormikProps<SegmentGeometry>;
-  file: File | null;
-  onFileChange: (file: File | null) => void;
 }
 
-const SegmentGeometryForm: React.FC<SegmentGeometryFormProps> = ({ formik, file, onFileChange }) => {
+const SegmentGeometryForm: React.FC<SegmentGeometryFormProps> = ({ formik }) => {
   const { t: transl } = useTranslation();
 
   const { data: crossSectionTypes } = useQuery({
-    queryKey: ['general-master', 'cross-section-types'],
-    queryFn: () => projectGeneralMasterDataApiService.getAll({ filter: { model: 'CrossSectionType' } })
+    queryKey: ['cross-section-types'],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.crossSectionType.model }
+      })
   });
 
   return (
@@ -37,18 +39,22 @@ const SegmentGeometryForm: React.FC<SegmentGeometryFormProps> = ({ formik, file,
           size="small"
           sx={{ mb: 2 }}
         />
-        <CustomSelectBox
-          size="small"
+
+        <CustomSelect
+          fullWidth
+          label={transl('project.other.segment-geometry.details.cross-section-type')}
+          placeholder={transl('project.other.segment-geometry.details.cross-section-type')}
           name="cross_section_type_id"
-          label={transl('project.other.segment-geometry.details.cross-section-type-id')}
-          placeholder={transl('project.other.segment-geometry.details.cross-section-type-id')}
+          size="small"
+          sx={{ mb: 2 }}
           options={
-            crossSectionTypes?.payload?.map((crossSectionType) => ({
-              value: crossSectionType.id,
-              label: crossSectionType.title
+            crossSectionTypes?.payload.map((type) => ({
+              label: type.title,
+              value: type.id
             })) || []
           }
         />
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.segment-geometry.details.carriage-way-width')}
@@ -58,6 +64,7 @@ const SegmentGeometryForm: React.FC<SegmentGeometryFormProps> = ({ formik, file,
           type="number"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.segment-geometry.details.lane-width')}
@@ -67,6 +74,7 @@ const SegmentGeometryForm: React.FC<SegmentGeometryFormProps> = ({ formik, file,
           type="number"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.segment-geometry.details.shoulder-width')}
@@ -76,6 +84,7 @@ const SegmentGeometryForm: React.FC<SegmentGeometryFormProps> = ({ formik, file,
           type="number"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.segment-geometry.details.grade-percentage')}
@@ -85,6 +94,7 @@ const SegmentGeometryForm: React.FC<SegmentGeometryFormProps> = ({ formik, file,
           type="number"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.segment-geometry.details.elevation-change')}
@@ -94,6 +104,7 @@ const SegmentGeometryForm: React.FC<SegmentGeometryFormProps> = ({ formik, file,
           type="number"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.segment-geometry.details.cross-slope-percentage')}
@@ -103,6 +114,7 @@ const SegmentGeometryForm: React.FC<SegmentGeometryFormProps> = ({ formik, file,
           type="number"
           sx={{ mb: 2 }}
         />
+
         <CustomSwitch
           label={transl('project.other.segment-geometry.details.property-access-control')}
           name="property_access_control"
@@ -113,10 +125,6 @@ const SegmentGeometryForm: React.FC<SegmentGeometryFormProps> = ({ formik, file,
           name="similar_for_all_lane"
           sx={{ mb: 2 }}
         />
-      </Grid>
-
-      <Grid item xs={12}>
-        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

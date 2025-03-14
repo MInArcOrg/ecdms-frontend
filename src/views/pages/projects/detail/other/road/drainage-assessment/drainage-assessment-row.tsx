@@ -1,21 +1,19 @@
-'use client';
-
 import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import type { GridColDef } from '@mui/x-data-grid';
+import { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import type { SegmentGeometry } from 'src/types/project/other';
+import { DrainageAssessment } from 'src/types/project/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
-  row: SegmentGeometry;
+  row: DrainageAssessment;
 }
 
-export const segmentGeometryColumns = (
-  onDetail: (segmentGeometry: SegmentGeometry) => void,
-  onEdit: (segmentGeometry: SegmentGeometry) => void,
+export const drainageAssessmentColumns = (
+  onDetail: (drainageAssessment: DrainageAssessment) => void,
+  onEdit: (drainageAssessment: DrainageAssessment) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void
@@ -44,36 +42,36 @@ export const segmentGeometryColumns = (
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t('project.other.segment-geometry.details.name'),
-    field: 'name',
-    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.name || t('common.not-available')}</Typography>
-  },
-  {
-    flex: 0.15,
-    minWidth: 120,
-    headerName: t('project.other.segment-geometry.details.cross-section-type'),
-    field: 'cross_section_type_id',
+    headerName: t('project.other.drainage-assessment.details.road-segment'),
+    field: 'road_segment',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.cross_section_type_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.road_segment || t('common.not-available')}</Typography>
     )
   },
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t('project.other.segment-geometry.details.carriage-way-width'),
-    field: 'carriage_way_width',
+    headerName: t('project.other.drainage-assessment.details.drainage-type'),
+    field: 'drainage_type_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.carriage_way_width || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.drainage_type_id || t('common.not-available')}</Typography>
     )
   },
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t('project.other.segment-geometry.details.lane-width'),
-    field: 'lane_width',
+    headerName: t('project.other.drainage-assessment.details.drainage-condition'),
+    field: 'drainage_condition_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.lane_width || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.drainage_condition_id || t('common.not-available')}</Typography>
     )
+  },
+  {
+    flex: 0.2,
+    minWidth: 180,
+    headerName: t('project.other.drainage-assessment.details.remark'),
+    field: 'remark',
+    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.remark || t('common.not-available')}</Typography>
   },
   {
     flex: 0.15,
@@ -90,14 +88,14 @@ export const segmentGeometryColumns = (
     renderCell: ({ row }: CellType) => (
       <Fragment>
         <ModelAction
-          model="SegmentGeometry"
+          model="DrainageAssessment"
           model_id={row.id}
           refetchModel={refetch}
-          resubmit={(): void => {
+          resubmit={function (): void {
             throw new Error('Function not implemented.');
           }}
           title=""
-          postAction={(): void => {
+          postAction={function (): void {
             throw new Error('Function not implemented.');
           }}
         />
@@ -108,11 +106,11 @@ export const segmentGeometryColumns = (
           options={[]}
           deletePermissionRule={{
             action: 'delete',
-            subject: 'segmentgeometry'
+            subject: 'drainageassessment'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'segmentgeometry'
+            subject: 'drainageassessment'
           }}
         />
       </Fragment>
