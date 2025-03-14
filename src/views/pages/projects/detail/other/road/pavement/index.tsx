@@ -7,8 +7,8 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import projectOtherApiService from "src/services/project/project-other-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { defaultCreateActionConfig } from "src/types/general/listing"
 import type { Pavement } from "src/types/project/other"
 import type { GetRequestParam, IApiResponse } from "src/types/requests"
@@ -18,38 +18,21 @@ import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-det
 import PavementCard from "./pavement-card"
 import PavementDrawer from "./pavement-drawer"
 import { pavementColumns } from "./pavement-row"
-import { useQuery } from "@tanstack/react-query"
-import roadLengthTypeMasterService from "src/services/general/project/road-length-type-master-service"
 
 interface PavementListProps {
-  model: string
+  otherSubMenu?: OtherMenuRoute
   typeId: string
   projectId: string
 }
 
-const PavementList: React.FC<PavementListProps> = ({ model, projectId, typeId }) => {
+const PavementList: React.FC<PavementListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false)
   const [showDetailDrawer, setShowDetailDrawer] = useState(false)
   const [selectedRow, setSelectedRow] = useState<Pavement | null>(null)
   const { t } = useTranslation()
 
-  // Fetch master data for lookups
-  const { data: roadLengthTypes } = useQuery({
-    queryKey: ["masterCategory", "roadLengthTypes"],
-    queryFn: () => roadLengthTypeMasterService.getAll({}),
-  })
-
-  // Create lookup maps
-  const roadLengthTypeMap = new Map()
-
-  if (roadLengthTypes?.payload) {
-    roadLengthTypes.payload.forEach((type) => {
-      roadLengthTypeMap.set(type.id, type.title)
-    })
-  }
-
   const fetchPavements = (params: GetRequestParam): Promise<IApiResponse<Pavement[]>> => {
-    return projectOtherApiService<Pavement>().getAll(model, {
+    return projectOtherApiSecondService<Pavement>().getAll(otherSubMenu?.apiRoute || "", {
       ...params,
       filter: { ...params.filter, project_id: projectId },
     })
@@ -67,32 +50,35 @@ const PavementList: React.FC<PavementListProps> = ({ model, projectId, typeId })
   })
 
   const toggleDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as Pavement)
     setShowDrawer(!showDrawer)
   }
 
   const toggleDetailDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as Pavement)
     setShowDetailDrawer(!showDetailDrawer)
   }
 
   const handleEdit = (pavement: Pavement) => {
+    toggleDrawer()
     setSelectedRow(pavement)
-    setShowDrawer(true)
   }
 
   const handleDelete = async (pavementId: string) => {
-    await projectOtherApiService<Pavement>().delete(model, pavementId)
+    await projectOtherApiSecondService<Pavement>().delete(otherSubMenu?.apiRoute || "", pavementId)
     refetch()
   }
 
   const handleClickDetail = (pavement: Pavement) => {
+    toggleDetailDrawer()
     setSelectedRow(pavement)
-    setShowDetailDrawer(true)
   }
 
   const mapPavementToDetailItems = (pavement: Pavement): { title: string; value: string }[] => [
-    { title: t("project.other.pavement.details.name"), value: pavement?.name || "N/A" },
+    {
+      title: t("project.other.pavement.details.name"),
+      value: pavement?.name || "N/A",
+    },
     {
       title: t("project.other.pavement.details.tangent-length"),
       value: pavement?.tangent_length?.toString() || "N/A",
@@ -102,8 +88,8 @@ const PavementList: React.FC<PavementListProps> = ({ model, projectId, typeId })
       value: pavement?.curve_length?.toString() || "N/A",
     },
     {
-      title: t("project.other.pavement.details.road-length-type-id"),
-      value: roadLengthTypeMap.get(pavement?.road_length_type_id) || "N/A",
+      title: t("project.other.pavement.details.road-length-type"),
+      value: pavement?.road_length_type_id || "N/A",
     },
     {
       title: t("project.other.pavement.details.road-pavement-thickness"),
@@ -127,7 +113,7 @@ const PavementList: React.FC<PavementListProps> = ({ model, projectId, typeId })
     <Box>
       {showDrawer && (
         <PavementDrawer
-          model={model}
+          otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
           pavement={selectedRow as Pavement}
@@ -140,11 +126,11 @@ const PavementList: React.FC<PavementListProps> = ({ model, projectId, typeId })
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapPavementToDetailItems(selectedRow!)}
-          hasReference={true}
+          data={mapPavementToDetailItems(selectedRow as Pavement)}
+          hasReference={false}
           id={selectedRow?.id || ""}
-          fileType={uploadableProjectFileTypes.other.pavement}
           title={t("project.other.pavement.pavement-details")}
+          fileType=""
         />
       )}
 
@@ -153,7 +139,7 @@ const PavementList: React.FC<PavementListProps> = ({ model, projectId, typeId })
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: pavementColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, roadLengthTypeMap),
+          headers: pavementColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (

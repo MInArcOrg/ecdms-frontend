@@ -1,5 +1,3 @@
-"use client"
-
 import type { FormikProps } from "formik"
 import type { IApiPayload, IApiResponse } from "src/types/requests"
 import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
@@ -7,11 +5,9 @@ import FormPageWrapper from "src/views/shared/form/form-wrapper"
 import * as yup from "yup"
 import PavementForm from "./pavement-form"
 
-import { useState } from "react"
-import projectOtherApiService from "src/services/project/project-other-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
-import { uploadFile } from "src/services/utils/file-utils"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import type { Pavement } from "src/types/project/other"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
 
 interface PavementDrawerType {
   open: boolean
@@ -19,15 +15,11 @@ interface PavementDrawerType {
   refetch: () => void
   pavement: Pavement
   projectId: string
-  model: string
+  otherSubMenu?: OtherMenuRoute
 }
 
 const PavementDrawer = (props: PavementDrawerType) => {
-  const { open, toggle, refetch, pavement, projectId, model } = props
-  const [uploadableFile, setUploadableFile] = useState<File | null>(null)
-  const onFileChange = (file: File | null) => {
-    setUploadableFile(file)
-  }
+  const { open, toggle, refetch, pavement, projectId, otherSubMenu } = props
 
   const validationSchema = yup.object().shape({
     name: yup.string().required("Name is required"),
@@ -36,28 +28,31 @@ const PavementDrawer = (props: PavementDrawerType) => {
 
   const isEdit = Boolean(pavement?.id)
 
-  const createPavement = async (body: IApiPayload<Pavement>) => projectOtherApiService<Pavement>().create(model, body)
+  const createPavement = async (body: IApiPayload<Pavement>) =>
+    projectOtherApiSecondService<Pavement>().create(otherSubMenu?.apiRoute || "", body)
 
   const editPavement = async (body: IApiPayload<Pavement>) =>
-    projectOtherApiService<Pavement>().update(model, pavement?.id || "", body)
+    projectOtherApiSecondService<Pavement>().update(otherSubMenu?.apiRoute || "", pavement?.id || "", body)
 
-  const getPayload = (values: Pavement) => {
-    return {
-      data: {
-        ...values,
-        id: pavement?.id,
-        project_id: projectId,
-      },
-      files: uploadableFile ? [uploadableFile] : [],
-    }
-  }
+  const getPayload = (values: Pavement) => ({
+    data: {
+      project_id: projectId,
+      name: values.name,
+      tangent_length: values.tangent_length,
+      curve_length: values.curve_length,
+      road_length_type_id: values.road_length_type_id,
+      road_pavement_thickness: values.road_pavement_thickness,
+      paved_road_surface_width: values.paved_road_surface_width,
+      id: pavement?.id,
+      created_at: values.created_at,
+      updated_at: values.updated_at,
+    },
+    files: [],
+  })
 
   const handleClose = () => toggle()
 
   const onActionSuccess = async (response: IApiResponse<Pavement>, payload: IApiPayload<Pavement>) => {
-    if (payload.files.length > 0) {
-      uploadFile(payload.files[0], uploadableProjectFileTypes.other.pavement, response.payload.id, "", "")
-    }
     refetch()
     handleClose()
   }
@@ -82,7 +77,7 @@ const PavementDrawer = (props: PavementDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<Pavement>) => {
-            return <PavementForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />
+            return <PavementForm formik={formik} />
           }}
         </FormPageWrapper>
       )}
