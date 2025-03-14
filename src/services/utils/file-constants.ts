@@ -89,6 +89,7 @@ export const uploadableProjectFileTypes = {
     maintenanceHistory: 'MAINTENANCE_HISTORY',
     roadSurfaceCondition: 'ROAD_SURFACE_CONDITION',
     mobileNetwork: 'MOBILE_NETWORK',
+    mobileNetworkComponentAge: 'MOBILE_NETWORK_COMPONENT_AGE',
     networkCoverage: 'NETWORK_COVERAGE'
   }
 } as const;

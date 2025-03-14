@@ -545,6 +545,7 @@
           "solar-energy": "Solar Energy",
           "wind-energy": "Wind Energy",
           "transformers-types": "Transformers Types",
+          "mobile-network-component-age": "Mobile Network Component Age",
           "transformers-registration": "Transformers Registration",
           "transmission-lines": "Transmission Lines",
           "electric-tower-registration": "Electric Tower Registration",
@@ -864,6 +865,22 @@
           "no-of-families-coverage": "Number of Families Coverage",
           "service-period": "Service Period",
           "inauguration-date": "Inauguration Date"
+        }
+      },
+      "mobile-network-component-age": {
+        "title": "Mobile Network Component Age",
+        "mobile-network-component-age-details": "Mobile Network Component Age Details",
+        "create-mobile-network-component-age": "Create Mobile Network Component Age",
+        "edit-mobile-network-component-age": "Edit Mobile Network Component Age",
+        "details": {
+          "mobile-network-id": "Mobile Network ID",
+          "cell": "Cell",
+          "towers": "Towers",
+          "antennas": "Antennas",
+          "base-stations": "Base Stations",
+          "repeaters": "Repeaters",
+          "switches": "Switches",
+          "others": "Others"
         }
       },
       "mobile-network": {
