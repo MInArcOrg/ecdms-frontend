@@ -88,7 +88,8 @@ export const uploadableProjectFileTypes = {
     safetyAndHealth: 'SAFTEY_AND_HEALTH',
     maintenanceHistory: 'MAINTENANCE_HISTORY',
     roadSurfaceCondition: 'ROAD_SURFACE_CONDITION',
-    mobileNetwork: 'MOBILE_NETWORK'
+    mobileNetwork: 'MOBILE_NETWORK',
+    networkCoverage: 'NETWORK_COVERAGE'
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
