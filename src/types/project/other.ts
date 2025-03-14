@@ -422,3 +422,18 @@ export interface MobileNetworkComponentAge {
 }
 
 
+export interface NetworkCoverage {
+  id: string;
+  project_id: string;
+  network_infrastructure_type_id: string;
+  networkinfrastructuretype: MobileNetwork;
+  total_coverage_area?: number;
+  coverage_population_number?: number;
+  active_users_number?: number;
+  average_download_speed?: number;
+  average_upload_speed?: number;
+  signal_strength?: number;
+  others?: string;
+  created_at?: string;
+  updated_at?: string;
+}
