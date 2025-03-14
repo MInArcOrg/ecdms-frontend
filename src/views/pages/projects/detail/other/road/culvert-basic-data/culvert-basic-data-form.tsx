@@ -1,29 +1,28 @@
-import { Grid } from "@mui/material"
+import { Grid, FormControlLabel, Switch } from "@mui/material"
+import { useQuery } from "@tanstack/react-query"
 import type { FormikProps } from "formik"
-import type React from "react"
+import React from "react"
 import { useTranslation } from "react-i18next"
 import { gridSpacing } from "src/configs/app-constants"
+import { projectMasterModels } from "src/constants/master-data/project-general-master-constants"
+import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service"
 import type { CulvertBasicData } from "src/types/project/other"
+import CustomSelect from "src/views/shared/form/custom-select"
 import CustomTextBox from "src/views/shared/form/custom-text-box"
-import CustomFileUpload from "src/views/shared/form/custome-file-selector"
-import CustomSelectBox from "src/views/shared/form/custom-select"
-import CustomSwitch from "src/views/shared/form/custom-switch"
-import areaTopographyMasterService from "src/services/general/project/area-topography-master-service"
-
-import { useQuery } from "@tanstack/react-query"
 
 interface CulvertBasicDataFormProps {
   formik: FormikProps<CulvertBasicData>
-  file: File | null
-  onFileChange: (file: File | null) => void
 }
 
-const CulvertBasicDataForm: React.FC<CulvertBasicDataFormProps> = ({ formik, file, onFileChange }) => {
+const CulvertBasicDataForm: React.FC<CulvertBasicDataFormProps> = ({ formik }) => {
   const { t: transl } = useTranslation()
 
   const { data: areaTopographies } = useQuery({
-    queryKey: ["masterCategory", "areaTopography"],
-    queryFn: () => areaTopographyMasterService.getAll({}),
+    queryKey: ["area-topographies"],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.areaTopography.model },
+      }),
   })
 
   return (
@@ -37,6 +36,7 @@ const CulvertBasicDataForm: React.FC<CulvertBasicDataFormProps> = ({ formik, fil
           size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.culvert-basic-data.details.culvert-name")}
@@ -45,76 +45,82 @@ const CulvertBasicDataForm: React.FC<CulvertBasicDataFormProps> = ({ formik, fil
           size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.culvert-basic-data.details.culvert-number")}
           placeholder={transl("project.other.culvert-basic-data.details.culvert-number")}
           name="culvert_number"
-          size="small"
           type="number"
+          size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.culvert-basic-data.details.culvert-coordinate-x")}
           placeholder={transl("project.other.culvert-basic-data.details.culvert-coordinate-x")}
           name="culvert_coordinate_x"
-          size="small"
           type="number"
-          step="0.000001"
+          size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.culvert-basic-data.details.culvert-coordinate-y")}
           placeholder={transl("project.other.culvert-basic-data.details.culvert-coordinate-y")}
           name="culvert_coordinate_y"
-          size="small"
           type="number"
-          step="0.000001"
+          size="small"
           sx={{ mb: 2 }}
         />
-        <CustomSelectBox
-          size="small"
-          name="area_topography_id"
+
+        <CustomSelect
+          fullWidth
           label={transl("project.other.culvert-basic-data.details.area-topography-id")}
           placeholder={transl("project.other.culvert-basic-data.details.area-topography-id")}
+          name="area_topography_id"
+          size="small"
+          sx={{ mb: 2 }}
           options={
-            areaTopographies?.payload?.map((areaTopography) => ({
-              value: areaTopography.id,
-              label: areaTopography.title,
+            areaTopographies?.payload.map((type) => ({
+              label: type.title,
+              value: type.id,
             })) || []
           }
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.culvert-basic-data.details.highest-water-level")}
           placeholder={transl("project.other.culvert-basic-data.details.highest-water-level")}
           name="highest_water_level"
-          size="small"
           type="number"
-          step="0.01"
+          size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.culvert-basic-data.details.lowest-water-level")}
           placeholder={transl("project.other.culvert-basic-data.details.lowest-water-level")}
           name="lowest_water_level"
-          size="small"
           type="number"
-          step="0.01"
+          size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.culvert-basic-data.details.construction-year")}
           placeholder={transl("project.other.culvert-basic-data.details.construction-year")}
           name="construction_year"
-          size="small"
           type="number"
+          size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.culvert-basic-data.details.contractor")}
@@ -123,6 +129,7 @@ const CulvertBasicDataForm: React.FC<CulvertBasicDataFormProps> = ({ formik, fil
           size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.culvert-basic-data.details.designer")}
@@ -131,21 +138,29 @@ const CulvertBasicDataForm: React.FC<CulvertBasicDataFormProps> = ({ formik, fil
           size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.culvert-basic-data.details.culvert-cost")}
           placeholder={transl("project.other.culvert-basic-data.details.culvert-cost")}
           name="culvert_cost"
-          size="small"
           type="number"
-          step="0.01"
+          size="small"
           sx={{ mb: 2 }}
         />
-        <CustomSwitch
+
+        <FormControlLabel
+          control={
+            <Switch
+              checked={formik.values.detour_possibility || false}
+              onChange={(e) => formik.setFieldValue("detour_possibility", e.target.checked)}
+              name="detour_possibility"
+            />
+          }
           label={transl("project.other.culvert-basic-data.details.detour-possibility")}
-          name="detour_possibility"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.culvert-basic-data.details.road-alignment")}
@@ -154,24 +169,19 @@ const CulvertBasicDataForm: React.FC<CulvertBasicDataFormProps> = ({ formik, fil
           size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.culvert-basic-data.details.altitude")}
           placeholder={transl("project.other.culvert-basic-data.details.altitude")}
           name="altitude"
-          size="small"
           type="number"
-          step="0.01"
+          size="small"
           sx={{ mb: 2 }}
         />
-      </Grid>
-
-      <Grid item xs={12}>
-        <CustomFileUpload label={transl("common.form.file-upload")} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   )
 }
 
 export default CulvertBasicDataForm
-

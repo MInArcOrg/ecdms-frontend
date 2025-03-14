@@ -7,8 +7,8 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import projectOtherApiService from "src/services/project/project-other-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { defaultCreateActionConfig } from "src/types/general/listing"
 import type { CulvertBasicData } from "src/types/project/other"
 import type { GetRequestParam, IApiResponse } from "src/types/requests"
@@ -18,38 +18,21 @@ import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-det
 import CulvertBasicDataCard from "./culvert-basic-data-card"
 import CulvertBasicDataDrawer from "./culvert-basic-data-drawer"
 import { culvertBasicDataColumns } from "./culvert-basic-data-row"
-import { useQuery } from "@tanstack/react-query"
-import areaTopographyMasterService from "src/services/general/project/area-topography-master-service"
 
 interface CulvertBasicDataListProps {
-  model: string
+  otherSubMenu?: OtherMenuRoute
   typeId: string
   projectId: string
 }
 
-const CulvertBasicDataList: React.FC<CulvertBasicDataListProps> = ({ model, projectId, typeId }) => {
+const CulvertBasicDataList: React.FC<CulvertBasicDataListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false)
   const [showDetailDrawer, setShowDetailDrawer] = useState(false)
   const [selectedRow, setSelectedRow] = useState<CulvertBasicData | null>(null)
   const { t } = useTranslation()
 
-  // Fetch master data for lookups
-  const { data: areaTopographies } = useQuery({
-    queryKey: ["masterCategory", "areaTopographies"],
-    queryFn: () => areaTopographyMasterService.getAll({}),
-  })
-
-  // Create lookup maps
-  const areaTopographyMap = new Map()
-
-  if (areaTopographies?.payload) {
-    areaTopographies.payload.forEach((type) => {
-      areaTopographyMap.set(type.id, type.title)
-    })
-  }
-
   const fetchCulvertBasicData = (params: GetRequestParam): Promise<IApiResponse<CulvertBasicData[]>> => {
-    return projectOtherApiService<CulvertBasicData>().getAll(model, {
+    return projectOtherApiSecondService<CulvertBasicData>().getAll(otherSubMenu?.apiRoute || "", {
       ...params,
       filter: { ...params.filter, project_id: projectId },
     })
@@ -67,32 +50,35 @@ const CulvertBasicDataList: React.FC<CulvertBasicDataListProps> = ({ model, proj
   })
 
   const toggleDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as CulvertBasicData)
     setShowDrawer(!showDrawer)
   }
 
   const toggleDetailDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as CulvertBasicData)
     setShowDetailDrawer(!showDetailDrawer)
   }
 
   const handleEdit = (culvertBasicData: CulvertBasicData) => {
+    toggleDrawer()
     setSelectedRow(culvertBasicData)
-    setShowDrawer(true)
   }
 
   const handleDelete = async (culvertBasicDataId: string) => {
-    await projectOtherApiService<CulvertBasicData>().delete(model, culvertBasicDataId)
+    await projectOtherApiSecondService<CulvertBasicData>().delete(otherSubMenu?.apiRoute || "", culvertBasicDataId)
     refetch()
   }
 
   const handleClickDetail = (culvertBasicData: CulvertBasicData) => {
+    toggleDetailDrawer()
     setSelectedRow(culvertBasicData)
-    setShowDetailDrawer(true)
   }
 
   const mapCulvertBasicDataToDetailItems = (culvertBasicData: CulvertBasicData): { title: string; value: string }[] => [
-    { title: t("project.other.culvert-basic-data.details.name"), value: culvertBasicData?.name || "N/A" },
+    {
+      title: t("project.other.culvert-basic-data.details.name"),
+      value: culvertBasicData?.name || "N/A",
+    },
     {
       title: t("project.other.culvert-basic-data.details.culvert-name"),
       value: culvertBasicData?.culvert_name || "N/A",
@@ -111,7 +97,7 @@ const CulvertBasicDataList: React.FC<CulvertBasicDataListProps> = ({ model, proj
     },
     {
       title: t("project.other.culvert-basic-data.details.area-topography-id"),
-      value: areaTopographyMap.get(culvertBasicData?.area_topography_id) || "N/A",
+      value: culvertBasicData?.area_topography_id || "N/A",
     },
     {
       title: t("project.other.culvert-basic-data.details.highest-water-level"),
@@ -153,13 +139,17 @@ const CulvertBasicDataList: React.FC<CulvertBasicDataListProps> = ({ model, proj
       title: t("common.table-columns.created-at"),
       value: culvertBasicData?.created_at ? formatCreatedAt(culvertBasicData.created_at) : "N/A",
     },
+    {
+      title: t("common.table-columns.updated-at"),
+      value: culvertBasicData?.updated_at ? formatCreatedAt(culvertBasicData.updated_at) : "N/A",
+    },
   ]
 
   return (
     <Box>
       {showDrawer && (
         <CulvertBasicDataDrawer
-          model={model}
+          otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
           culvertBasicData={selectedRow as CulvertBasicData}
@@ -172,11 +162,11 @@ const CulvertBasicDataList: React.FC<CulvertBasicDataListProps> = ({ model, proj
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapCulvertBasicDataToDetailItems(selectedRow!)}
-          hasReference={true}
+          data={mapCulvertBasicDataToDetailItems(selectedRow as CulvertBasicData)}
+          hasReference={false}
           id={selectedRow?.id || ""}
-          fileType={uploadableProjectFileTypes.other.culvertBasicData}
           title={t("project.other.culvert-basic-data.culvert-basic-data-details")}
+          fileType=""
         />
       )}
 
@@ -185,7 +175,7 @@ const CulvertBasicDataList: React.FC<CulvertBasicDataListProps> = ({ model, proj
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: culvertBasicDataColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, areaTopographyMap),
+          headers: culvertBasicDataColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -215,4 +205,3 @@ const CulvertBasicDataList: React.FC<CulvertBasicDataListProps> = ({ model, proj
 }
 
 export default CulvertBasicDataList
-

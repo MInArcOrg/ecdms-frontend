@@ -1,5 +1,3 @@
-"use client"
-
 import type { FormikProps } from "formik"
 import type { IApiPayload, IApiResponse } from "src/types/requests"
 import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
@@ -7,11 +5,9 @@ import FormPageWrapper from "src/views/shared/form/form-wrapper"
 import * as yup from "yup"
 import CulvertBasicDataForm from "./culvert-basic-data-form"
 
-import { useState } from "react"
-import projectOtherApiService from "src/services/project/project-other-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
-import { uploadFile } from "src/services/utils/file-utils"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import type { CulvertBasicData } from "src/types/project/other"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
 
 interface CulvertBasicDataDrawerType {
   open: boolean
@@ -19,15 +15,11 @@ interface CulvertBasicDataDrawerType {
   refetch: () => void
   culvertBasicData: CulvertBasicData
   projectId: string
-  model: string
+  otherSubMenu?: OtherMenuRoute
 }
 
 const CulvertBasicDataDrawer = (props: CulvertBasicDataDrawerType) => {
-  const { open, toggle, refetch, culvertBasicData, projectId, model } = props
-  const [uploadableFile, setUploadableFile] = useState<File | null>(null)
-  const onFileChange = (file: File | null) => {
-    setUploadableFile(file)
-  }
+  const { open, toggle, refetch, culvertBasicData, projectId, otherSubMenu } = props
 
   const validationSchema = yup.object().shape({
     name: yup.string().required("Name is required"),
@@ -38,28 +30,43 @@ const CulvertBasicDataDrawer = (props: CulvertBasicDataDrawerType) => {
   const isEdit = Boolean(culvertBasicData?.id)
 
   const createCulvertBasicData = async (body: IApiPayload<CulvertBasicData>) =>
-    projectOtherApiService<CulvertBasicData>().create(model, body)
+    projectOtherApiSecondService<CulvertBasicData>().create(otherSubMenu?.apiRoute || "", body)
 
   const editCulvertBasicData = async (body: IApiPayload<CulvertBasicData>) =>
-    projectOtherApiService<CulvertBasicData>().update(model, culvertBasicData?.id || "", body)
+    projectOtherApiSecondService<CulvertBasicData>().update(
+      otherSubMenu?.apiRoute || "",
+      culvertBasicData?.id || "",
+      body
+    )
 
-  const getPayload = (values: CulvertBasicData) => {
-    return {
-      data: {
-        ...values,
-        id: culvertBasicData?.id,
-        project_id: projectId,
-      },
-      files: uploadableFile ? [uploadableFile] : [],
-    }
-  }
+  const getPayload = (values: CulvertBasicData) => ({
+    data: {
+      project_id: projectId,
+      name: values.name,
+      culvert_name: values.culvert_name,
+      culvert_number: values.culvert_number,
+      culvert_coordinate_x: values.culvert_coordinate_x,
+      culvert_coordinate_y: values.culvert_coordinate_y,
+      area_topography_id: values.area_topography_id,
+      highest_water_level: values.highest_water_level,
+      lowest_water_level: values.lowest_water_level,
+      construction_year: values.construction_year,
+      contractor: values.contractor,
+      designer: values.designer,
+      culvert_cost: values.culvert_cost,
+      detour_possibility: values.detour_possibility,
+      road_alignment: values.road_alignment,
+      altitude: values.altitude,
+      id: culvertBasicData?.id,
+      created_at: values.created_at,
+      updated_at: values.updated_at,
+    },
+    files: [],
+  })
 
   const handleClose = () => toggle()
 
   const onActionSuccess = async (response: IApiResponse<CulvertBasicData>, payload: IApiPayload<CulvertBasicData>) => {
-    if (payload.files.length > 0) {
-      uploadFile(payload.files[0], uploadableProjectFileTypes.other.culvertBasicData, response.payload.id, "", "")
-    }
     refetch()
     handleClose()
   }
@@ -84,7 +91,7 @@ const CulvertBasicDataDrawer = (props: CulvertBasicDataDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<CulvertBasicData>) => {
-            return <CulvertBasicDataForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />
+            return <CulvertBasicDataForm formik={formik} />
           }}
         </FormPageWrapper>
       )}
@@ -93,4 +100,3 @@ const CulvertBasicDataDrawer = (props: CulvertBasicDataDrawerType) => {
 }
 
 export default CulvertBasicDataDrawer
-
