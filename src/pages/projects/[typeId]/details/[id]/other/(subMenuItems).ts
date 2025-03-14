@@ -113,6 +113,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/telecom/mobile-network`,
           model: 'mobilenetwork',
           apiRoute: 'mobile-networks'
+        },
+        {
+          id: 28,
+          title: t('project.navigation.submenu.others.mobile-network-component-age'),
+          path: `${baseUrl}/telecom/mobile-network-component-age`,
+          model: 'mobilenetworkcomponentage',
+          apiRoute: 'mobile-network-component-ages'
         }
       ]
     },

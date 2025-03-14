@@ -407,4 +407,18 @@ export interface RoadSurfaceCondition {
   updated_at?: string;
 }
 
+export interface MobileNetworkComponentAge {
+  id: string;
+  mobile_network_id: string;
+  cell?: number;
+  towers?: number;
+  antennas?: number;
+  base_stations?: number;
+  repeaters?: number;
+  switches?: number;
+  others?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
 
