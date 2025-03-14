@@ -7,8 +7,8 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import projectOtherApiService from "src/services/project/project-other-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { defaultCreateActionConfig } from "src/types/general/listing"
 import type { CulvertStructuralInformation } from "src/types/project/other"
 import type { GetRequestParam, IApiResponse } from "src/types/requests"
@@ -18,21 +18,15 @@ import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-det
 import CulvertStructuralInformationCard from "./culvert-structural-information-card"
 import CulvertStructuralInformationDrawer from "./culvert-structural-information-drawer"
 import { culvertStructuralInformationColumns } from "./culvert-structural-information-row"
-import { useQuery } from "@tanstack/react-query"
-import pierTypeMasterService from "src/services/general/project/pier-type-master-service"
-import abutmentTypeMasterService from "src/services/general/project/abutment-type-master-service"
-import endwallTypeMasterService from "src/services/general/project/endwall-type-inlet-master-service"
-import pavedWaterWayTypeMasterService from "src/services/general/project/paved-water-way-type-master-service"
-import soilTypeMasterService from "src/services/general/project/soil-type-master-service"
 
 interface CulvertStructuralInformationListProps {
-  model: string
+  otherSubMenu?: OtherMenuRoute
   typeId: string
   projectId: string
 }
 
 const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationListProps> = ({
-  model,
+  otherSubMenu,
   projectId,
   typeId,
 }) => {
@@ -41,112 +35,52 @@ const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationLis
   const [selectedRow, setSelectedRow] = useState<CulvertStructuralInformation | null>(null)
   const { t } = useTranslation()
 
-  // Fetch master data for lookups
-  const { data: pierTypes } = useQuery({
-    queryKey: ["masterCategory", "pierTypes"],
-    queryFn: () => pierTypeMasterService.getAll({}),
-  })
-
-  const { data: abutmentTypes } = useQuery({
-    queryKey: ["masterCategory", "abutmentTypes"],
-    queryFn: () => abutmentTypeMasterService.getAll({}),
-  })
-
-  const { data: endwallTypes } = useQuery({
-    queryKey: ["masterCategory", "endwallTypes"],
-    queryFn: () => endwallTypeMasterService.getAll({}),
-  })
-
-  const { data: pavedWaterWayTypes } = useQuery({
-    queryKey: ["masterCategory", "pavedWaterWayTypes"],
-    queryFn: () => pavedWaterWayTypeMasterService.getAll({}),
-  })
-
-  const { data: soilTypes } = useQuery({
-    queryKey: ["masterCategory", "soilTypes"],
-    queryFn: () => soilTypeMasterService.getAll({}),
-  })
-
-  // Create lookup maps
-  const pierTypeMap = new Map()
-  const abutmentTypeMap = new Map()
-  const endwallTypeMap = new Map()
-  const pavedWaterWayTypeMap = new Map()
-  const soilTypeMap = new Map()
-
-  if (pierTypes?.payload) {
-    pierTypes.payload.forEach((type) => {
-      pierTypeMap.set(type.id, type.title)
-    })
-  }
-
-  if (abutmentTypes?.payload) {
-    abutmentTypes.payload.forEach((type) => {
-      abutmentTypeMap.set(type.id, type.title)
-    })
-  }
-
-  if (endwallTypes?.payload) {
-    endwallTypes.payload.forEach((type) => {
-      endwallTypeMap.set(type.id, type.title)
-    })
-  }
-
-  if (pavedWaterWayTypes?.payload) {
-    pavedWaterWayTypes.payload.forEach((type) => {
-      pavedWaterWayTypeMap.set(type.id, type.title)
-    })
-  }
-
-  if (soilTypes?.payload) {
-    soilTypes.payload.forEach((type) => {
-      soilTypeMap.set(type.id, type.title)
-    })
-  }
-
   const fetchCulvertStructuralInformation = (
     params: GetRequestParam,
   ): Promise<IApiResponse<CulvertStructuralInformation[]>> => {
-    return projectOtherApiService<CulvertStructuralInformation>().getAll(model, {
+    return projectOtherApiSecondService<CulvertStructuralInformation>().getAll(otherSubMenu?.apiRoute || "", {
       ...params,
       filter: { ...params.filter, project_id: projectId },
     })
   }
 
   const {
-    data: culvertStructuralInformation,
+    data: culvertStructuralInformations,
     isLoading,
     pagination,
     handlePageChange,
     refetch,
   } = usePaginatedFetch<CulvertStructuralInformation[]>({
-    queryKey: ["culvertStructuralInformation"],
+    queryKey: ["culvertStructuralInformations"],
     fetchFunction: fetchCulvertStructuralInformation,
   })
 
   const toggleDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as CulvertStructuralInformation)
     setShowDrawer(!showDrawer)
   }
 
   const toggleDetailDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as CulvertStructuralInformation)
     setShowDetailDrawer(!showDetailDrawer)
   }
 
   const handleEdit = (culvertStructuralInformation: CulvertStructuralInformation) => {
+    toggleDrawer()
     setSelectedRow(culvertStructuralInformation)
-    setShowDrawer(true)
   }
 
   const handleDelete = async (culvertStructuralInformationId: string) => {
-    await projectOtherApiService<CulvertStructuralInformation>().delete(model, culvertStructuralInformationId)
+    await projectOtherApiSecondService<CulvertStructuralInformation>().delete(
+      otherSubMenu?.apiRoute || "",
+      culvertStructuralInformationId,
+    )
     refetch()
   }
 
   const handleClickDetail = (culvertStructuralInformation: CulvertStructuralInformation) => {
+    toggleDetailDrawer()
     setSelectedRow(culvertStructuralInformation)
-    setShowDetailDrawer(true)
   }
 
   const mapCulvertStructuralInformationToDetailItems = (
@@ -190,7 +124,7 @@ const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationLis
     },
     {
       title: t("project.other.culvert-structural-information.details.pier-type-id"),
-      value: pierTypeMap.get(culvertStructuralInformation?.pier_type_id) || "N/A",
+      value: culvertStructuralInformation?.pier_type_id || "N/A",
     },
     {
       title: t("project.other.culvert-structural-information.details.pier-height"),
@@ -198,7 +132,7 @@ const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationLis
     },
     {
       title: t("project.other.culvert-structural-information.details.abutment-type-id"),
-      value: abutmentTypeMap.get(culvertStructuralInformation?.abutment_type_id) || "N/A",
+      value: culvertStructuralInformation?.abutment_type_id || "N/A",
     },
     {
       title: t("project.other.culvert-structural-information.details.abutment-average-height"),
@@ -206,11 +140,11 @@ const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationLis
     },
     {
       title: t("project.other.culvert-structural-information.details.endwall-type-inlet-id"),
-      value: endwallTypeMap.get(culvertStructuralInformation?.endwall_type_inlet_id) || "N/A",
+      value: culvertStructuralInformation?.endwall_type_inlet_id || "N/A",
     },
     {
       title: t("project.other.culvert-structural-information.details.endwall-type-outlet-id"),
-      value: endwallTypeMap.get(culvertStructuralInformation?.endwall_type_outlet_id) || "N/A",
+      value: culvertStructuralInformation?.endwall_type_outlet_id || "N/A",
     },
     {
       title: t("project.other.culvert-structural-information.details.wingwall-average-length"),
@@ -218,16 +152,22 @@ const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationLis
     },
     {
       title: t("project.other.culvert-structural-information.details.paved-water-way-type-id"),
-      value: pavedWaterWayTypeMap.get(culvertStructuralInformation?.paved_water_way_type_id) || "N/A",
+      value: culvertStructuralInformation?.paved_water_way_type_id || "N/A",
     },
     {
       title: t("project.other.culvert-structural-information.details.soil-type-id"),
-      value: soilTypeMap.get(culvertStructuralInformation?.soil_type_id) || "N/A",
+      value: culvertStructuralInformation?.soil_type_id || "N/A",
     },
     {
       title: t("common.table-columns.created-at"),
       value: culvertStructuralInformation?.created_at
         ? formatCreatedAt(culvertStructuralInformation.created_at)
+        : "N/A",
+    },
+    {
+      title: t("common.table-columns.updated-at"),
+      value: culvertStructuralInformation?.updated_at
+        ? formatCreatedAt(culvertStructuralInformation.updated_at)
         : "N/A",
     },
   ]
@@ -236,7 +176,7 @@ const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationLis
     <Box>
       {showDrawer && (
         <CulvertStructuralInformationDrawer
-          model={model}
+          otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
           culvertStructuralInformation={selectedRow as CulvertStructuralInformation}
@@ -249,11 +189,11 @@ const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationLis
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapCulvertStructuralInformationToDetailItems(selectedRow!)}
-          hasReference={true}
+          data={mapCulvertStructuralInformationToDetailItems(selectedRow as CulvertStructuralInformation)}
+          hasReference={false}
           id={selectedRow?.id || ""}
-          fileType={uploadableProjectFileTypes.other.culvertStructuralInformation}
           title={t("project.other.culvert-structural-information.culvert-structural-information-details")}
+          fileType=""
         />
       )}
 
@@ -262,18 +202,7 @@ const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationLis
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: culvertStructuralInformationColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-            pierTypeMap,
-            abutmentTypeMap,
-            endwallTypeMap,
-            pavedWaterWayTypeMap,
-            soilTypeMap,
-          ),
+          headers: culvertStructuralInformationColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -295,7 +224,7 @@ const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationLis
           },
         }}
         fetchDataFunction={refetch}
-        items={culvertStructuralInformation || []}
+        items={culvertStructuralInformations || []}
         onPaginationChange={handlePageChange}
       />
     </Box>
