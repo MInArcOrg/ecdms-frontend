@@ -1,29 +1,31 @@
-import { Grid } from "@mui/material"
+"use client"
+
+import { Grid, FormControlLabel, Switch } from "@mui/material"
+import { useQuery } from "@tanstack/react-query"
 import type { FormikProps } from "formik"
 import type React from "react"
 import { useTranslation } from "react-i18next"
 import { gridSpacing } from "src/configs/app-constants"
+import { projectMasterModels } from "src/constants/master-data/project-general-master-constants"
+import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service"
 import type { TrafficParameter } from "src/types/project/other"
+import CustomSelect from "src/views/shared/form/custom-select"
 import CustomTextBox from "src/views/shared/form/custom-text-box"
-import CustomFileUpload from "src/views/shared/form/custome-file-selector"
-import CustomSelectBox from "src/views/shared/form/custom-select"
 import CustomSwitch from "src/views/shared/form/custom-switch"
-import pedestrianFacilityMasterService from "src/services/general/project/pedestrian-facility-master-service"
-
-import { useQuery } from "@tanstack/react-query"
 
 interface TrafficParameterFormProps {
   formik: FormikProps<TrafficParameter>
-  file: File | null
-  onFileChange: (file: File | null) => void
 }
 
-const TrafficParameterForm: React.FC<TrafficParameterFormProps> = ({ formik, file, onFileChange }) => {
+const TrafficParameterForm: React.FC<TrafficParameterFormProps> = ({ formik }) => {
   const { t: transl } = useTranslation()
 
   const { data: pedestrianFacilities } = useQuery({
-    queryKey: ["masterCategory", "pedestrianFacility"],
-    queryFn: () => pedestrianFacilityMasterService.getAll({}),
+    queryKey: ["pedestrian-facilities"],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.pedestrianFacility.model },
+      }),
   })
 
   return (
@@ -37,18 +39,22 @@ const TrafficParameterForm: React.FC<TrafficParameterFormProps> = ({ formik, fil
           size="small"
           sx={{ mb: 2 }}
         />
-        <CustomSelectBox
-          size="small"
-          name="pedestrian_facility_id"
+
+        <CustomSelect
+          fullWidth
           label={transl("project.other.traffic-parameter.details.pedestrian-facility-id")}
           placeholder={transl("project.other.traffic-parameter.details.pedestrian-facility-id")}
+          name="pedestrian_facility_id"
+          size="small"
+          sx={{ mb: 2 }}
           options={
-            pedestrianFacilities?.payload?.map((pedestrianFacility) => ({
-              value: pedestrianFacility.id,
-              label: pedestrianFacility.title,
+            pedestrianFacilities?.payload.map((facility) => ({
+              label: facility.title,
+              value: facility.id,
             })) || []
           }
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.traffic-parameter.details.parking")}
@@ -58,6 +64,7 @@ const TrafficParameterForm: React.FC<TrafficParameterFormProps> = ({ formik, fil
           type="number"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.traffic-parameter.details.design-traffic-flow")}
@@ -67,6 +74,7 @@ const TrafficParameterForm: React.FC<TrafficParameterFormProps> = ({ formik, fil
           type="number"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.traffic-parameter.details.design-speed")}
@@ -74,18 +82,14 @@ const TrafficParameterForm: React.FC<TrafficParameterFormProps> = ({ formik, fil
           name="design_speed"
           size="small"
           type="number"
-          step="0.01"
           sx={{ mb: 2 }}
         />
+
         <CustomSwitch
           label={transl("project.other.traffic-parameter.details.similar-for-all")}
           name="similar_for_all"
           sx={{ mb: 2 }}
         />
-      </Grid>
-
-      <Grid item xs={12}>
-        <CustomFileUpload label={transl("common.form.file-upload")} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   )

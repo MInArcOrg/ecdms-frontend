@@ -19,109 +19,110 @@ export const trafficParameterColumns = (
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
-  pedestrianFacilityMap: Map<string, string>,
-): GridColDef[] => {
-  return [
-    {
-      flex: 0.15,
-      minWidth: 150,
-      headerName: t("project.other.traffic-parameter.details.name"),
-      field: "name",
-      renderCell: ({ row }: CellType) => (
-        <Typography
-          noWrap
-          component={Button}
-          onClick={() => onDetail(row)}
-          sx={{
-            fontWeight: 500,
-            textDecoration: "none",
-            color: "text.secondary",
-            "&:hover": { color: "primary.main" },
+): GridColDef[] => [
+  {
+    flex: 0.15,
+    minWidth: 120,
+    field: "id",
+    renderCell: ({ row }: CellType) => (
+      <Typography
+        noWrap
+        component={Button}
+        onClick={() => onDetail(row)}
+        sx={{
+          fontWeight: 500,
+          textDecoration: "none",
+          color: "text.secondary",
+          "&:hover": { color: "primary.main" },
+        }}
+      >
+        {row?.id.slice(0, 5)}...
+      </Typography>
+    ),
+  },
+
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t("project.other.traffic-parameter.details.name"),
+    field: "name",
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: "text.secondary" }}>{row?.name || t("common.not-available")}</Typography>
+    ),
+  },
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t("project.other.traffic-parameter.details.pedestrian-facility-id"),
+    field: "pedestrian_facility_id",
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: "text.secondary" }}>
+        {row?.pedestrian_facility_id || t("common.not-available")}
+      </Typography>
+    ),
+  },
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t("project.other.traffic-parameter.details.design-speed"),
+    field: "design_speed",
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: "text.secondary" }}>{row?.design_speed || t("common.not-available")}</Typography>
+    ),
+  },
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t("project.other.traffic-parameter.details.design-traffic-flow"),
+    field: "design_traffic_flow",
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: "text.secondary" }}>{row?.design_traffic_flow || t("common.not-available")}</Typography>
+    ),
+  },
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t("common.table-columns.created-at"),
+    field: "created_at",
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: "text.secondary" }}>{formatCreatedAt(row.created_at)}</Typography>
+    ),
+  },
+  {
+    minWidth: 150,
+    sortable: false,
+    field: "actions",
+    headerName: t("common.table-columns.actions"),
+    renderCell: ({ row }: CellType) => (
+      <Fragment>
+        <ModelAction
+          model="TrafficParameter"
+          model_id={row.id}
+          refetchModel={refetch}
+          resubmit={(): void => {
+            throw new Error("Function not implemented.")
           }}
-        >
-          {row?.name}
-        </Typography>
-      ),
-    },
-    {
-      flex: 0.15,
-      minWidth: 120,
-      headerName: t("project.other.traffic-parameter.details.pedestrian-facility-id"),
-      field: "pedestrian_facility_id",
-      renderCell: ({ row }: CellType) => {
-        const name = pedestrianFacilityMap.get(row.pedestrian_facility_id)
-        return name || t("common.not-available")
-      },
-    },
-    {
-      flex: 0.15,
-      minWidth: 120,
-      headerName: t("project.other.traffic-parameter.details.parking"),
-      field: "parking",
-      renderCell: ({ row }: CellType) => row.parking?.toString() || t("common.not-available"),
-    },
-    {
-      flex: 0.15,
-      minWidth: 120,
-      headerName: t("project.other.traffic-parameter.details.design-traffic-flow"),
-      field: "design_traffic_flow",
-      renderCell: ({ row }: CellType) => row.design_traffic_flow?.toString() || t("common.not-available"),
-    },
-    {
-      flex: 0.15,
-      minWidth: 120,
-      headerName: t("project.other.traffic-parameter.details.design-speed"),
-      field: "design_speed",
-      renderCell: ({ row }: CellType) => row.design_speed?.toString() || t("common.not-available"),
-    },
-    {
-      flex: 0.15,
-      minWidth: 120,
-      headerName: t("project.other.traffic-parameter.details.similar-for-all"),
-      field: "similar_for_all",
-      renderCell: ({ row }: CellType) => (row.similar_for_all ? t("common.yes") : t("common.no")),
-    },
-    {
-      flex: 0.15,
-      minWidth: 150,
-      headerName: t("common.table-columns.created-at"),
-      field: "created_at",
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: "text.secondary" }}>{formatCreatedAt(row.created_at)}</Typography>
-      ),
-    },
-    {
-      minWidth: 150,
-      sortable: false,
-      field: "actions",
-      headerName: t("common.table-columns.actions"),
-      renderCell: ({ row }: CellType) => (
-        <Fragment>
-          <ModelAction
-            model="TrafficParameter"
-            model_id={row.id}
-            refetchModel={refetch}
-            resubmit={() => {}}
-            title=""
-            postAction={() => {}}
-          />
-          <RowOptions
-            onEdit={() => onEdit(row)}
-            onDelete={() => onDelete(row.id)}
-            item={row}
-            deletePermissionRule={{
-              action: "delete",
-              subject: "trafficparameter",
-            }}
-            editPermissionRule={{
-              action: "update",
-              subject: "trafficparameter",
-            }}
-            options={[]}
-          />
-        </Fragment>
-      ),
-    },
-  ]
-}
+          title=""
+          postAction={(): void => {
+            throw new Error("Function not implemented.")
+          }}
+        />
+        <RowOptions
+          onEdit={onEdit}
+          onDelete={() => onDelete(row.id)}
+          item={row}
+          options={[]}
+          deletePermissionRule={{
+            action: "delete",
+            subject: "trafficparameter",
+          }}
+          editPermissionRule={{
+            action: "update",
+            subject: "trafficparameter",
+          }}
+        />
+      </Fragment>
+    ),
+  },
+]
 

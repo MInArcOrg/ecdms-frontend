@@ -7,8 +7,8 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import projectOtherApiService from "src/services/project/project-other-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { defaultCreateActionConfig } from "src/types/general/listing"
 import type { TrafficParameter } from "src/types/project/other"
 import type { GetRequestParam, IApiResponse } from "src/types/requests"
@@ -18,38 +18,21 @@ import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-det
 import TrafficParameterCard from "./traffic-parameter-card"
 import TrafficParameterDrawer from "./traffic-parameter-drawer"
 import { trafficParameterColumns } from "./traffic-parameter-row"
-import { useQuery } from "@tanstack/react-query"
-import pedestrianFacilityMasterService from "src/services/general/project/pedestrian-facility-master-service"
 
 interface TrafficParameterListProps {
-  model: string
+  otherSubMenu?: OtherMenuRoute
   typeId: string
   projectId: string
 }
 
-const TrafficParameterList: React.FC<TrafficParameterListProps> = ({ model, projectId, typeId }) => {
+const TrafficParameterList: React.FC<TrafficParameterListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false)
   const [showDetailDrawer, setShowDetailDrawer] = useState(false)
   const [selectedRow, setSelectedRow] = useState<TrafficParameter | null>(null)
   const { t } = useTranslation()
 
-  // Fetch master data for lookups
-  const { data: pedestrianFacilities } = useQuery({
-    queryKey: ["masterCategory", "pedestrianFacilities"],
-    queryFn: () => pedestrianFacilityMasterService.getAll({}),
-  })
-
-  // Create lookup maps
-  const pedestrianFacilityMap = new Map()
-
-  if (pedestrianFacilities?.payload) {
-    pedestrianFacilities.payload.forEach((facility) => {
-      pedestrianFacilityMap.set(facility.id, facility.title)
-    })
-  }
-
   const fetchTrafficParameters = (params: GetRequestParam): Promise<IApiResponse<TrafficParameter[]>> => {
-    return projectOtherApiService<TrafficParameter>().getAll(model, {
+    return projectOtherApiSecondService<TrafficParameter>().getAll(otherSubMenu?.apiRoute || "", {
       ...params,
       filter: { ...params.filter, project_id: projectId },
     })
@@ -67,35 +50,38 @@ const TrafficParameterList: React.FC<TrafficParameterListProps> = ({ model, proj
   })
 
   const toggleDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as TrafficParameter)
     setShowDrawer(!showDrawer)
   }
 
   const toggleDetailDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as TrafficParameter)
     setShowDetailDrawer(!showDetailDrawer)
   }
 
   const handleEdit = (trafficParameter: TrafficParameter) => {
+    toggleDrawer()
     setSelectedRow(trafficParameter)
-    setShowDrawer(true)
   }
 
   const handleDelete = async (trafficParameterId: string) => {
-    await projectOtherApiService<TrafficParameter>().delete(model, trafficParameterId)
+    await projectOtherApiSecondService<TrafficParameter>().delete(otherSubMenu?.apiRoute || "", trafficParameterId)
     refetch()
   }
 
   const handleClickDetail = (trafficParameter: TrafficParameter) => {
+    toggleDetailDrawer()
     setSelectedRow(trafficParameter)
-    setShowDetailDrawer(true)
   }
 
   const mapTrafficParameterToDetailItems = (trafficParameter: TrafficParameter): { title: string; value: string }[] => [
-    { title: t("project.other.traffic-parameter.details.name"), value: trafficParameter?.name || "N/A" },
+    {
+      title: t("project.other.traffic-parameter.details.name"),
+      value: trafficParameter?.name || "N/A",
+    },
     {
       title: t("project.other.traffic-parameter.details.pedestrian-facility-id"),
-      value: pedestrianFacilityMap.get(trafficParameter?.pedestrian_facility_id) || "N/A",
+      value: trafficParameter?.pedestrian_facility_id || "N/A",
     },
     {
       title: t("project.other.traffic-parameter.details.parking"),
@@ -127,7 +113,7 @@ const TrafficParameterList: React.FC<TrafficParameterListProps> = ({ model, proj
     <Box>
       {showDrawer && (
         <TrafficParameterDrawer
-          model={model}
+          otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
           trafficParameter={selectedRow as TrafficParameter}
@@ -140,10 +126,10 @@ const TrafficParameterList: React.FC<TrafficParameterListProps> = ({ model, proj
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapTrafficParameterToDetailItems(selectedRow!)}
-          hasReference={true}
+          data={mapTrafficParameterToDetailItems(selectedRow as TrafficParameter)}
+          hasReference={false}
           id={selectedRow?.id || ""}
-          fileType={uploadableProjectFileTypes.other.trafficParameter}
+          fileType=""
           title={t("project.other.traffic-parameter.traffic-parameter-details")}
         />
       )}
@@ -153,14 +139,7 @@ const TrafficParameterList: React.FC<TrafficParameterListProps> = ({ model, proj
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: trafficParameterColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-            pedestrianFacilityMap,
-          ),
+          headers: trafficParameterColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
