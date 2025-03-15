@@ -1,33 +1,31 @@
+"use client"
+
 import { Grid } from "@mui/material"
+import { useQuery } from "@tanstack/react-query"
 import type { FormikProps } from "formik"
 import type React from "react"
 import { useTranslation } from "react-i18next"
 import { gridSpacing } from "src/configs/app-constants"
+import { projectMasterModels } from "src/constants/master-data/project-general-master-constants"
+import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service"
 import type { BridgeStructureInformation } from "src/types/project/other"
-import CustomTextBox from "src/views/shared/form/custom-text-box"
-import CustomFileUpload from "src/views/shared/form/custome-file-selector"
-import CustomSelectBox from "src/views/shared/form/custom-select"
+import CustomSelect from "src/views/shared/form/custom-select"
 import CustomTextArea from "src/views/shared/form/custom-text-box"
-import bridgeStructureTypeMasterService from "src/services/general/project/bridge-structure-type-master-service"
-
-import { useQuery } from "@tanstack/react-query"
+import CustomTextBox from "src/views/shared/form/custom-text-box"
 
 interface BridgeStructureInformationFormProps {
   formik: FormikProps<BridgeStructureInformation>
-  file: File | null
-  onFileChange: (file: File | null) => void
 }
 
-const BridgeStructureInformationForm: React.FC<BridgeStructureInformationFormProps> = ({
-  formik,
-  file,
-  onFileChange,
-}) => {
+const BridgeStructureInformationForm: React.FC<BridgeStructureInformationFormProps> = ({ formik }) => {
   const { t: transl } = useTranslation()
 
   const { data: bridgeStructureTypes } = useQuery({
-    queryKey: ["masterCategory", "bridgeStructureType"],
-    queryFn: () => bridgeStructureTypeMasterService.getAll({}),
+    queryKey: ["bridge-structure-types"],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.bridgeStructureType.model },
+      }),
   })
 
   return (
@@ -41,6 +39,7 @@ const BridgeStructureInformationForm: React.FC<BridgeStructureInformationFormPro
           size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-structure-information.details.bridge-name")}
@@ -49,21 +48,22 @@ const BridgeStructureInformationForm: React.FC<BridgeStructureInformationFormPro
           size="small"
           sx={{ mb: 2 }}
         />
-        
-        <CustomSelectBox
-          size="small"
-          name="bridge_structure_type_id"
+
+        <CustomSelect
+          fullWidth
           label={transl("project.other.bridge-structure-information.details.bridge-structure-type-id")}
           placeholder={transl("project.other.bridge-structure-information.details.bridge-structure-type-id")}
+          name="bridge_structure_type_id"
+          size="small"
+          sx={{ mb: 2 }}
           options={
-            bridgeStructureTypes?.payload?.map((type) => ({
-              value: type.id,
+            bridgeStructureTypes?.payload.map((type) => ({
               label: type.title,
+              value: type.id,
             })) || []
           }
-          sx={{ mb: 2 }}
         />
-        
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-structure-information.details.east-region")}
@@ -71,10 +71,9 @@ const BridgeStructureInformationForm: React.FC<BridgeStructureInformationFormPro
           name="east_region"
           size="small"
           type="number"
-          step="0.01"
           sx={{ mb: 2 }}
         />
-        
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-structure-information.details.west-region")}
@@ -82,10 +81,9 @@ const BridgeStructureInformationForm: React.FC<BridgeStructureInformationFormPro
           name="west_region"
           size="small"
           type="number"
-          step="0.01"
           sx={{ mb: 2 }}
         />
-        
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-structure-information.details.central-region")}
@@ -93,10 +91,9 @@ const BridgeStructureInformationForm: React.FC<BridgeStructureInformationFormPro
           name="central_region"
           size="small"
           type="number"
-          step="0.01"
           sx={{ mb: 2 }}
         />
-        
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-structure-information.details.north-region")}
@@ -104,10 +101,9 @@ const BridgeStructureInformationForm: React.FC<BridgeStructureInformationFormPro
           name="north_region"
           size="small"
           type="number"
-          step="0.01"
           sx={{ mb: 2 }}
         />
-        
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-structure-information.details.south-region")}
@@ -115,10 +111,9 @@ const BridgeStructureInformationForm: React.FC<BridgeStructureInformationFormPro
           name="south_region"
           size="small"
           type="number"
-          step="0.01"
           sx={{ mb: 2 }}
         />
-        
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-structure-information.details.ring-road")}
@@ -128,7 +123,7 @@ const BridgeStructureInformationForm: React.FC<BridgeStructureInformationFormPro
           type="number"
           sx={{ mb: 2 }}
         />
-        
+
         <CustomTextArea
           fullWidth
           label={transl("project.other.bridge-structure-information.details.remark")}
@@ -136,14 +131,12 @@ const BridgeStructureInformationForm: React.FC<BridgeStructureInformationFormPro
           name="remark"
           size="small"
           sx={{ mb: 2 }}
+          rows={3}
         />
-      </Grid>
-
-      <Grid item xs={12}>
-        <CustomFileUpload label={transl("common.form.file-upload")} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   )
 }
 
 export default BridgeStructureInformationForm
+

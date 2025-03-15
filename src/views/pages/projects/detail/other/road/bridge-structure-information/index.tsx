@@ -1,13 +1,14 @@
 "use client"
 
 import type React from "react"
+
 import { Box } from "@mui/material"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import projectOtherApiService from "src/services/project/project-other-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { defaultCreateActionConfig } from "src/types/general/listing"
 import type { BridgeStructureInformation } from "src/types/project/other"
 import type { GetRequestParam, IApiResponse } from "src/types/requests"
@@ -17,17 +18,15 @@ import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-det
 import BridgeStructureInformationCard from "./bridge-structure-information-card"
 import BridgeStructureInformationDrawer from "./bridge-structure-information-drawer"
 import { bridgeStructureInformationColumns } from "./bridge-structure-information-row"
-import { useQuery } from "@tanstack/react-query"
-import bridgeStructureTypeMasterService from "src/services/general/project/bridge-structure-type-master-service"
 
 interface BridgeStructureInformationListProps {
-  model: string
+  otherSubMenu?: OtherMenuRoute
   typeId: string
   projectId: string
 }
 
 const BridgeStructureInformationList: React.FC<BridgeStructureInformationListProps> = ({
-  model,
+  otherSubMenu,
   projectId,
   typeId,
 }) => {
@@ -36,25 +35,10 @@ const BridgeStructureInformationList: React.FC<BridgeStructureInformationListPro
   const [selectedRow, setSelectedRow] = useState<BridgeStructureInformation | null>(null)
   const { t } = useTranslation()
 
-  // Fetch master data for lookups
-  const { data: bridgeStructureTypes } = useQuery({
-    queryKey: ["masterCategory", "bridgeStructureTypes"],
-    queryFn: () => bridgeStructureTypeMasterService.getAll({}),
-  })
-
-  // Create lookup maps
-  const bridgeStructureTypeMap = new Map()
-
-  if (bridgeStructureTypes?.payload) {
-    bridgeStructureTypes.payload.forEach((type) => {
-      bridgeStructureTypeMap.set(type.id, type.title)
-    })
-  }
-
   const fetchBridgeStructureInformations = (
     params: GetRequestParam,
   ): Promise<IApiResponse<BridgeStructureInformation[]>> => {
-    return projectOtherApiService<BridgeStructureInformation>().getAll(model, {
+    return projectOtherApiSecondService<BridgeStructureInformation>().getAll(otherSubMenu?.apiRoute || "", {
       ...params,
       filter: { ...params.filter, project_id: projectId },
     })
@@ -72,28 +56,31 @@ const BridgeStructureInformationList: React.FC<BridgeStructureInformationListPro
   })
 
   const toggleDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as BridgeStructureInformation)
     setShowDrawer(!showDrawer)
   }
 
   const toggleDetailDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as BridgeStructureInformation)
     setShowDetailDrawer(!showDetailDrawer)
   }
 
   const handleEdit = (bridgeStructureInformation: BridgeStructureInformation) => {
+    toggleDrawer()
     setSelectedRow(bridgeStructureInformation)
-    setShowDrawer(true)
   }
 
   const handleDelete = async (bridgeStructureInformationId: string) => {
-    await projectOtherApiService<BridgeStructureInformation>().delete(model, bridgeStructureInformationId)
+    await projectOtherApiSecondService<BridgeStructureInformation>().delete(
+      otherSubMenu?.apiRoute || "",
+      bridgeStructureInformationId,
+    )
     refetch()
   }
 
   const handleClickDetail = (bridgeStructureInformation: BridgeStructureInformation) => {
+    toggleDetailDrawer()
     setSelectedRow(bridgeStructureInformation)
-    setShowDetailDrawer(true)
   }
 
   const mapBridgeStructureInformationToDetailItems = (
@@ -109,7 +96,7 @@ const BridgeStructureInformationList: React.FC<BridgeStructureInformationListPro
     },
     {
       title: t("project.other.bridge-structure-information.details.bridge-structure-type-id"),
-      value: bridgeStructureTypeMap.get(bridgeStructureInformation?.bridge_structure_type_id) || "N/A",
+      value: bridgeStructureInformation?.bridge_structure_type_id || "N/A",
     },
     {
       title: t("project.other.bridge-structure-information.details.east-region"),
@@ -143,13 +130,17 @@ const BridgeStructureInformationList: React.FC<BridgeStructureInformationListPro
       title: t("common.table-columns.created-at"),
       value: bridgeStructureInformation?.created_at ? formatCreatedAt(bridgeStructureInformation.created_at) : "N/A",
     },
+    {
+      title: t("common.table-columns.updated-at"),
+      value: bridgeStructureInformation?.updated_at ? formatCreatedAt(bridgeStructureInformation.updated_at) : "N/A",
+    },
   ]
 
   return (
     <Box>
       {showDrawer && (
         <BridgeStructureInformationDrawer
-          model={model}
+          otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
           bridgeStructureInformation={selectedRow as BridgeStructureInformation}
@@ -162,10 +153,10 @@ const BridgeStructureInformationList: React.FC<BridgeStructureInformationListPro
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapBridgeStructureInformationToDetailItems(selectedRow!)}
-          hasReference={true}
+          data={mapBridgeStructureInformationToDetailItems(selectedRow as BridgeStructureInformation)}
+          hasReference={false}
           id={selectedRow?.id || ""}
-          fileType={uploadableProjectFileTypes.other.bridgeStructureInformation}
+          fileType=""
           title={t("project.other.bridge-structure-information.bridge-structure-information-details")}
         />
       )}
@@ -175,14 +166,7 @@ const BridgeStructureInformationList: React.FC<BridgeStructureInformationListPro
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: bridgeStructureInformationColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-            bridgeStructureTypeMap,
-          ),
+          headers: bridgeStructureInformationColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
