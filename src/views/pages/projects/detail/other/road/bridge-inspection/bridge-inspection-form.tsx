@@ -1,19 +1,15 @@
 import { Grid } from "@mui/material"
+import { useQuery } from "@tanstack/react-query"
 import type { FormikProps } from "formik"
 import type React from "react"
 import { useTranslation } from "react-i18next"
 import { gridSpacing } from "src/configs/app-constants"
+import { projectMasterModels } from "src/constants/master-data/project-general-master-constants"
+import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service"
 import type { BridgeInspection } from "src/types/project/other"
+import CustomSelect from "src/views/shared/form/custom-select"
 import CustomTextBox from "src/views/shared/form/custom-text-box"
 import CustomFileUpload from "src/views/shared/form/custome-file-selector"
-import CustomSelectBox from "src/views/shared/form/custom-select"
-import CustomTextArea from "src/views/shared/form/custom-text-box"
-import bridgePartDefectMasterService from "src/services/general/project/bridge-part-defect-master-service"
-import damageTypeMasterService from "src/services/general/project/damage-type-master-service"
-import damageConditionMasterService from "src/services/general/project/damage-condition-master-service"
-import hydrologyDefectMasterService from "src/services/general/project/hydrology-defect-master-service"
-
-import { useQuery } from "@tanstack/react-query"
 
 interface BridgeInspectionFormProps {
   formik: FormikProps<BridgeInspection>
@@ -25,23 +21,35 @@ const BridgeInspectionForm: React.FC<BridgeInspectionFormProps> = ({ formik, fil
   const { t: transl } = useTranslation()
 
   const { data: bridgePartDefects } = useQuery({
-    queryKey: ["masterCategory", "bridgePartDefect"],
-    queryFn: () => bridgePartDefectMasterService.getAll({}),
+    queryKey: ["bridge-part-defects"],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.bridgePartDefect.model },
+      }),
   })
 
   const { data: damageTypes } = useQuery({
-    queryKey: ["masterCategory", "damageType"],
-    queryFn: () => damageTypeMasterService.getAll({}),
+    queryKey: ["damage-types"],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.damageType.model },
+      }),
   })
 
   const { data: damageConditions } = useQuery({
-    queryKey: ["masterCategory", "damageCondition"],
-    queryFn: () => damageConditionMasterService.getAll({}),
+    queryKey: ["damage-conditions"],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.damageCondition.model },
+      }),
   })
 
   const { data: hydrologyDefects } = useQuery({
-    queryKey: ["masterCategory", "hydrologyDefect"],
-    queryFn: () => hydrologyDefectMasterService.getAll({}),
+    queryKey: ["hydrology-defects"],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.hydrologyDefect.model },
+      }),
   })
 
   return (
@@ -55,6 +63,7 @@ const BridgeInspectionForm: React.FC<BridgeInspectionFormProps> = ({ formik, fil
           size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-inspection.details.bridge-name")}
@@ -64,86 +73,96 @@ const BridgeInspectionForm: React.FC<BridgeInspectionFormProps> = ({ formik, fil
           sx={{ mb: 2 }}
         />
 
-        <CustomSelectBox
-          size="small"
-          name="bridge_part_defect_id"
+        <CustomSelect
+          fullWidth
           label={transl("project.other.bridge-inspection.details.bridge-part-defect-id")}
           placeholder={transl("project.other.bridge-inspection.details.bridge-part-defect-id")}
+          name="bridge_part_defect_id"
+          size="small"
+          sx={{ mb: 2 }}
           options={
-            bridgePartDefects?.payload?.map((defect) => ({
-              value: defect.id,
+            bridgePartDefects?.payload.map((defect) => ({
               label: defect.title,
+              value: defect.id,
             })) || []
           }
-          sx={{ mb: 2 }}
         />
 
-        <CustomSelectBox
-          size="small"
-          name="damage_type_id"
+        <CustomSelect
+          fullWidth
           label={transl("project.other.bridge-inspection.details.damage-type-id")}
           placeholder={transl("project.other.bridge-inspection.details.damage-type-id")}
+          name="damage_type_id"
+          size="small"
+          sx={{ mb: 2 }}
           options={
-            damageTypes?.payload?.map((type) => ({
-              value: type.id,
+            damageTypes?.payload.map((type) => ({
               label: type.title,
+              value: type.id,
             })) || []
           }
-          sx={{ mb: 2 }}
         />
 
-        <CustomSelectBox
-          size="small"
-          name="damage_condition_id"
+        <CustomSelect
+          fullWidth
           label={transl("project.other.bridge-inspection.details.damage-condition-id")}
           placeholder={transl("project.other.bridge-inspection.details.damage-condition-id")}
+          name="damage_condition_id"
+          size="small"
+          sx={{ mb: 2 }}
           options={
-            damageConditions?.payload?.map((condition) => ({
-              value: condition.id,
+            damageConditions?.payload.map((condition) => ({
               label: condition.title,
+              value: condition.id,
             })) || []
           }
-          sx={{ mb: 2 }}
         />
 
-        <CustomSelectBox
-          size="small"
-          name="hydrology_defect_id"
+        <CustomSelect
+          fullWidth
           label={transl("project.other.bridge-inspection.details.hydrology-defect-id")}
           placeholder={transl("project.other.bridge-inspection.details.hydrology-defect-id")}
+          name="hydrology_defect_id"
+          size="small"
+          sx={{ mb: 2 }}
           options={
-            hydrologyDefects?.payload?.map((defect) => ({
-              value: defect.id,
+            hydrologyDefects?.payload.map((defect) => ({
               label: defect.title,
+              value: defect.id,
             })) || []
           }
-          sx={{ mb: 2 }}
         />
 
-        <CustomTextArea
+        <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-inspection.details.maintenance-action")}
           placeholder={transl("project.other.bridge-inspection.details.maintenance-action")}
           name="maintenance_action"
           size="small"
+          multiline
+          rows={3}
           sx={{ mb: 2 }}
         />
 
-        <CustomTextArea
+        <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-inspection.details.bridge-history")}
           placeholder={transl("project.other.bridge-inspection.details.bridge-history")}
           name="bridge_history"
           size="small"
+          multiline
+          rows={3}
           sx={{ mb: 2 }}
         />
 
-        <CustomTextArea
+        <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-inspection.details.inspector-remark")}
           placeholder={transl("project.other.bridge-inspection.details.inspector-remark")}
           name="inspector_remark"
           size="small"
+          multiline
+          rows={3}
           sx={{ mb: 2 }}
         />
       </Grid>

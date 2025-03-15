@@ -8,10 +8,11 @@ import * as yup from "yup"
 import BridgeInspectionForm from "./bridge-inspection-form"
 
 import { useState } from "react"
-import projectOtherApiService from "src/services/project/project-other-service"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
 import { uploadFile } from "src/services/utils/file-utils"
 import type { BridgeInspection } from "src/types/project/other"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
 
 interface BridgeInspectionDrawerType {
   open: boolean
@@ -19,11 +20,11 @@ interface BridgeInspectionDrawerType {
   refetch: () => void
   bridgeInspection: BridgeInspection
   projectId: string
-  model: string
+  otherSubMenu?: OtherMenuRoute
 }
 
 const BridgeInspectionDrawer = (props: BridgeInspectionDrawerType) => {
-  const { open, toggle, refetch, bridgeInspection, projectId, model } = props
+  const { open, toggle, refetch, bridgeInspection, projectId, otherSubMenu } = props
   const [uploadableFile, setUploadableFile] = useState<File | null>(null)
   const onFileChange = (file: File | null) => {
     setUploadableFile(file)
@@ -41,21 +42,33 @@ const BridgeInspectionDrawer = (props: BridgeInspectionDrawerType) => {
   const isEdit = Boolean(bridgeInspection?.id)
 
   const createBridgeInspection = async (body: IApiPayload<BridgeInspection>) =>
-    projectOtherApiService<BridgeInspection>().create(model, body)
+    projectOtherApiSecondService<BridgeInspection>().create(otherSubMenu?.apiRoute || "", body)
 
   const editBridgeInspection = async (body: IApiPayload<BridgeInspection>) =>
-    projectOtherApiService<BridgeInspection>().update(model, bridgeInspection?.id || "", body)
+    projectOtherApiSecondService<BridgeInspection>().update(
+      otherSubMenu?.apiRoute || "",
+      bridgeInspection?.id || "",
+      body,
+    )
 
-  const getPayload = (values: BridgeInspection) => {
-    return {
-      data: {
-        ...values,
-        id: bridgeInspection?.id,
-        project_id: projectId,
-      },
-      files: uploadableFile ? [uploadableFile] : [],
-    }
-  }
+  const getPayload = (values: BridgeInspection) => ({
+    data: {
+      project_id: projectId,
+      name: values.name,
+      bridge_name: values.bridge_name,
+      bridge_part_defect_id: values.bridge_part_defect_id,
+      damage_type_id: values.damage_type_id,
+      damage_condition_id: values.damage_condition_id,
+      hydrology_defect_id: values.hydrology_defect_id,
+      maintenance_action: values.maintenance_action,
+      bridge_history: values.bridge_history,
+      inspector_remark: values.inspector_remark,
+      id: bridgeInspection?.id,
+      created_at: bridgeInspection?.created_at,
+      updated_at: bridgeInspection?.updated_at,
+    },
+    files: uploadableFile ? [uploadableFile] : [],
+  })
 
   const handleClose = () => toggle()
 

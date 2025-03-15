@@ -32,7 +32,7 @@ function ProjectList() {
     handlePageChange,
     refetch
   } = usePaginatedFetch<Project[]>({
-    queryKey: ['projects'],
+    queryKey: ['projects', String(typeId)],
     fetchFunction: fetchProjects
   });
 

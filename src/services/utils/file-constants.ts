@@ -85,6 +85,13 @@ export const uploadableProjectFileTypes = {
     irrigationCapacity: 'IRRIGATION_CAPACITY',
     waterIrrigationDam: 'WATER_IRRIGATION_DAM',
     bridgeInspection: 'BRIDGE_INSPECTION',
+    drainageAssessment: 'DRAINAGE_ASSESSMENT',
+    safetyAndHealth: 'SAFTEY_AND_HEALTH',
+    maintenanceHistory: 'MAINTENANCE_HISTORY',
+    roadSurfaceCondition: 'ROAD_SURFACE_CONDITION',
+    mobileNetwork: 'MOBILE_NETWORK',
+    mobileNetworkComponentAge: 'MOBILE_NETWORK_COMPONENT_AGE',
+    networkCoverage: 'NETWORK_COVERAGE'
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

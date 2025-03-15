@@ -8,7 +8,7 @@ import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from '../../../../../shared/layouts/other/other-detail-drawer';
+import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
 import TelecomInfrastructureCard from './telecom-infrastructure-card';
 import TelecomInfrastructureDrawer from './telecom-infrastructure-drawer';
 import { telecomColumns } from './telecom-infrastructure-row'; // Updated import

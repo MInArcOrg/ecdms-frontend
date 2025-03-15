@@ -1,12 +1,14 @@
 "use client"
 
 import type React from "react"
+
 import { Box } from "@mui/material"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import projectOtherApiService from "src/services/project/project-other-service"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
 import { defaultCreateActionConfig } from "src/types/general/listing"
 import type { BridgeInspection } from "src/types/project/other"
@@ -17,77 +19,21 @@ import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-det
 import BridgeInspectionCard from "./bridge-inspection-card"
 import BridgeInspectionDrawer from "./bridge-inspection-drawer"
 import { bridgeInspectionColumns } from "./bridge-inspection-row"
-import { useQuery } from "@tanstack/react-query"
-import bridgePartDefectMasterService from "src/services/general/project/bridge-part-defect-master-service"
-import damageTypeMasterService from "src/services/general/project//damage-type-master-service"
-import damageConditionMasterService from "src/services/general/project/damage-condition-master-service"
-import hydrologyDefectMasterService from "src/services/general/project/hydrology-defect-master-service"
 
 interface BridgeInspectionListProps {
-  model: string
+  otherSubMenu?: OtherMenuRoute
   typeId: string
   projectId: string
 }
 
-const BridgeInspectionList: React.FC<BridgeInspectionListProps> = ({ model, projectId, typeId }) => {
+const BridgeInspectionList: React.FC<BridgeInspectionListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false)
   const [showDetailDrawer, setShowDetailDrawer] = useState(false)
   const [selectedRow, setSelectedRow] = useState<BridgeInspection | null>(null)
   const { t } = useTranslation()
 
-  // Fetch master data for lookups
-  const { data: bridgePartDefects } = useQuery({
-    queryKey: ["masterCategory", "bridgePartDefects"],
-    queryFn: () => bridgePartDefectMasterService.getAll({}),
-  })
-
-  const { data: damageTypes } = useQuery({
-    queryKey: ["masterCategory", "damageTypes"],
-    queryFn: () => damageTypeMasterService.getAll({}),
-  })
-
-  const { data: damageConditions } = useQuery({
-    queryKey: ["masterCategory", "damageConditions"],
-    queryFn: () => damageConditionMasterService.getAll({}),
-  })
-
-  const { data: hydrologyDefects } = useQuery({
-    queryKey: ["masterCategory", "hydrologyDefects"],
-    queryFn: () => hydrologyDefectMasterService.getAll({}),
-  })
-
-  // Create lookup maps
-  const bridgePartDefectMap = new Map()
-  const damageTypeMap = new Map()
-  const damageConditionMap = new Map()
-  const hydrologyDefectMap = new Map()
-
-  if (bridgePartDefects?.payload) {
-    bridgePartDefects.payload.forEach((defect) => {
-      bridgePartDefectMap.set(defect.id, defect.title)
-    })
-  }
-
-  if (damageTypes?.payload) {
-    damageTypes.payload.forEach((type) => {
-      damageTypeMap.set(type.id, type.title)
-    })
-  }
-
-  if (damageConditions?.payload) {
-    damageConditions.payload.forEach((condition) => {
-      damageConditionMap.set(condition.id, condition.title)
-    })
-  }
-
-  if (hydrologyDefects?.payload) {
-    hydrologyDefects.payload.forEach((defect) => {
-      hydrologyDefectMap.set(defect.id, defect.title)
-    })
-  }
-
   const fetchBridgeInspections = (params: GetRequestParam): Promise<IApiResponse<BridgeInspection[]>> => {
-    return projectOtherApiService<BridgeInspection>().getAll(model, {
+    return projectOtherApiSecondService<BridgeInspection>().getAll(otherSubMenu?.apiRoute || "", {
       ...params,
       filter: { ...params.filter, project_id: projectId },
     })
@@ -105,51 +51,54 @@ const BridgeInspectionList: React.FC<BridgeInspectionListProps> = ({ model, proj
   })
 
   const toggleDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as BridgeInspection)
     setShowDrawer(!showDrawer)
   }
 
   const toggleDetailDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as BridgeInspection)
     setShowDetailDrawer(!showDetailDrawer)
   }
 
   const handleEdit = (bridgeInspection: BridgeInspection) => {
+    toggleDrawer()
     setSelectedRow(bridgeInspection)
-    setShowDrawer(true)
   }
 
   const handleDelete = async (bridgeInspectionId: string) => {
-    await projectOtherApiService<BridgeInspection>().delete(model, bridgeInspectionId)
+    await projectOtherApiSecondService<BridgeInspection>().delete(otherSubMenu?.apiRoute || "", bridgeInspectionId)
     refetch()
   }
 
   const handleClickDetail = (bridgeInspection: BridgeInspection) => {
+    toggleDetailDrawer()
     setSelectedRow(bridgeInspection)
-    setShowDetailDrawer(true)
   }
 
   const mapBridgeInspectionToDetailItems = (bridgeInspection: BridgeInspection): { title: string; value: string }[] => [
-    { title: t("project.other.bridge-inspection.details.name"), value: bridgeInspection?.name || "N/A" },
+    {
+      title: t("project.other.bridge-inspection.details.name"),
+      value: bridgeInspection?.name || "N/A",
+    },
     {
       title: t("project.other.bridge-inspection.details.bridge-name"),
       value: bridgeInspection?.bridge_name || "N/A",
     },
     {
       title: t("project.other.bridge-inspection.details.bridge-part-defect-id"),
-      value: bridgePartDefectMap.get(bridgeInspection?.bridge_part_defect_id) || "N/A",
+      value: bridgeInspection?.bridge_part_defect_id || "N/A",
     },
     {
       title: t("project.other.bridge-inspection.details.damage-type-id"),
-      value: damageTypeMap.get(bridgeInspection?.damage_type_id) || "N/A",
+      value: bridgeInspection?.damage_type_id || "N/A",
     },
     {
       title: t("project.other.bridge-inspection.details.damage-condition-id"),
-      value: damageConditionMap.get(bridgeInspection?.damage_condition_id) || "N/A",
+      value: bridgeInspection?.damage_condition_id || "N/A",
     },
     {
       title: t("project.other.bridge-inspection.details.hydrology-defect-id"),
-      value: hydrologyDefectMap.get(bridgeInspection?.hydrology_defect_id) || "N/A",
+      value: bridgeInspection?.hydrology_defect_id || "N/A",
     },
     {
       title: t("project.other.bridge-inspection.details.maintenance-action"),
@@ -167,13 +116,17 @@ const BridgeInspectionList: React.FC<BridgeInspectionListProps> = ({ model, proj
       title: t("common.table-columns.created-at"),
       value: bridgeInspection?.created_at ? formatCreatedAt(bridgeInspection.created_at) : "N/A",
     },
+    {
+      title: t("common.table-columns.updated-at"),
+      value: bridgeInspection?.updated_at ? formatCreatedAt(bridgeInspection.updated_at) : "N/A",
+    },
   ]
 
   return (
     <Box>
       {showDrawer && (
         <BridgeInspectionDrawer
-          model={model}
+          otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
           bridgeInspection={selectedRow as BridgeInspection}
@@ -186,7 +139,7 @@ const BridgeInspectionList: React.FC<BridgeInspectionListProps> = ({ model, proj
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapBridgeInspectionToDetailItems(selectedRow!)}
+          data={mapBridgeInspectionToDetailItems(selectedRow as BridgeInspection)}
           hasReference={true}
           id={selectedRow?.id || ""}
           fileType={uploadableProjectFileTypes.other.bridgeInspection}
@@ -199,17 +152,7 @@ const BridgeInspectionList: React.FC<BridgeInspectionListProps> = ({ model, proj
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: bridgeInspectionColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-            bridgePartDefectMap,
-            damageTypeMap,
-            damageConditionMap,
-            hydrologyDefectMap,
-          ),
+          headers: bridgeInspectionColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
