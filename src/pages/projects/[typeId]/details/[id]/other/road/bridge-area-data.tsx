@@ -3,7 +3,7 @@
 import { useRouter } from "next/router"
 import ProjectOtherLayout from "src/views/pages/projects/detail/other/layouts/project-other-layout"
 import BridgeAreaDataList from "src/views/pages/projects/detail/other/road/bridge-area-data"
-import subMenuItems, { findOtherModelName } from "../(subMenuItems)"
+import subMenuItems, { findOtherSubMenu } from "../(subMenuItems)"
 
 function Index() {
   const router = useRouter()
@@ -11,7 +11,7 @@ function Index() {
   const baseUrl = `/projects/${typeId}/details/${id}/other`
   const activeMenu = 8
   const activeType = 2
-  const activeSubType = 6
+  const activeSubType = 35
 
   return (
     <ProjectOtherLayout
@@ -22,7 +22,7 @@ function Index() {
       baseUrl={baseUrl}
     >
       <BridgeAreaDataList
-        model={findOtherModelName(subMenuItems(baseUrl), activeType, activeSubType) || ""}
+        otherSubMenu={findOtherSubMenu(subMenuItems(baseUrl), activeType, activeSubType)}
         projectId={String(id)}
         typeId={String(typeId)}
       />

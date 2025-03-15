@@ -1,16 +1,17 @@
 import { useTranslation } from 'next-i18next';
-interface Route {
+export interface OtherMenuRoute {
   id: number;
   title: string;
   path: string;
   model: string;
+  apiRoute: string; // Added apiRoute property
 }
 
 interface SubMenuItem {
   id: number;
   title: string;
   icon: string;
-  routes: Route[];
+  routes: OtherMenuRoute[];
 }
 
 const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
@@ -26,13 +27,15 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           id: 1,
           title: t('project.navigation.submenu.others.building-dimensions-detail'),
           path: `${baseUrl}/building/building-dimension-detail`,
-          model: 'buildingdimensiondetail'
+          model: 'buildingdimensiondetail',
+          apiRoute: 'building-dimension-details'
         },
         {
           id: 2,
           title: t('project.navigation.submenu.others.building-envelop-material'),
           path: `${baseUrl}/building/building-envelop-material`,
-          model: 'buildingenvelopmaterial'
+          model: 'buildingenvelopmaterial',
+          apiRoute: 'building-envelop-materials'
         }
       ]
     },
@@ -45,29 +48,60 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           id: 3,
           title: t('project.navigation.submenu.others.road-info'),
           path: `${baseUrl}/road/road-info`,
-          model: 'roadinfo'
+          model: 'roadinfo',
+          apiRoute: 'road-infos'
         },
         {
           id: 4,
           title: t('project.navigation.submenu.others.road-segment'),
           path: `${baseUrl}/road/road-segment`,
-          model: 'roadsegment'
+          model: 'roadsegment',
+          apiRoute: 'road-segments'
         },
         {
           id: 5,
           title: t('project.navigation.submenu.others.road-layer'),
           path: `${baseUrl}/road/road-layer`,
-          model: 'roadlayer'
+          model: 'roadlayer',
+          apiRoute: 'road-layers'
         },
         {
-          id: 6,
+          id: 23,
+          title: t('project.navigation.submenu.others.drainage-assessment'),
+          path: `${baseUrl}/road/drainage-assessment`,
+          model: 'drainageassessment',
+          apiRoute: 'drainage-assessments'
+        },
+        {
+          id: 24,
+          title: t('project.navigation.submenu.others.safety-and-health'),
+          path: `${baseUrl}/road/safety-and-healths`,
+          model: 'safetyandhealth',
+          apiRoute: 'safety-and-healths'
+        },
+        {
+          id: 25,
+          title: t('project.navigation.submenu.others.maintenance-histories'),
+          path: `${baseUrl}/road/maintenance-histories`,
+          model: 'safetyandhealth',
+          apiRoute: 'maintenance-histories'
+        },
+        {
+          id: 26,
+          title: t('project.navigation.submenu.others.road-surface-conditions'),
+          path: `${baseUrl}/road/road-surface-conditions`,
+          model: 'safetyandhealth',
+          apiRoute: 'road-surface-conditions'
+        },
+        {
+          id: 35,
           title: t("project.navigation.submenu.others.bridge-area-data"),
           path: `${baseUrl}/road/bridge-area-data`,
-          model: "bridge-area-data",
+          model: "bridgeareadata",
+          apiRoute: "bridge-area-datas",
         },
       ]
     },
-
     {
       id: 3,
       title: t('project.navigation.submenu.others.telecom'),
@@ -77,7 +111,29 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           id: 6,
           title: t('project.navigation.submenu.others.telecom-infrastructure'),
           path: `${baseUrl}/telecom/telecom-infrastructure`,
-          model: 'telecom'
+          model: 'telecom',
+          apiRoute: 'telecoms'
+        },
+        {
+          id: 27,
+          title: t('project.navigation.submenu.others.mobile-network'),
+          path: `${baseUrl}/telecom/mobile-network`,
+          model: 'mobilenetwork',
+          apiRoute: 'mobile-networks'
+        },
+        {
+          id: 28,
+          title: t('project.navigation.submenu.others.mobile-network-component-age'),
+          path: `${baseUrl}/telecom/mobile-network-component-age`,
+          model: 'mobilenetworkcomponentage',
+          apiRoute: 'mobile-network-component-ages'
+        },
+        {
+          id: 29,
+          title: t('project.navigation.submenu.others.network-coverage'),
+          path: `${baseUrl}/telecom/network-coverage`,
+          model: 'networkcoverage',
+          apiRoute: 'network-coverages'
         }
       ]
     },
@@ -91,59 +147,67 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           id: 7,
           title: t('project.navigation.submenu.others.generating-capacity'),
           path: `${baseUrl}/electric-power/generating-capacity`,
-          model: 'generatingcapacity'
+          model: 'generatingcapacity',
+          apiRoute: 'generating-capacities'
         },
         {
           id: 8,
           title: t('project.navigation.submenu.others.turbine-info'),
           path: `${baseUrl}/electric-power/turbine-info`,
-          model: 'turbineinfo'
+          model: 'turbineinfo',
+          apiRoute: 'turbine-infos'
         },
         {
           id: 9,
           title: t('project.navigation.submenu.others.hydro-electric-dam'),
           path: `${baseUrl}/electric-power/hydro-electric-dam`,
-          model: 'hydroelectricdam'
+          model: 'hydroelectricdam',
+          apiRoute: 'hydro-electric-dams'
         },
         {
           id: 10,
           title: t('project.navigation.submenu.others.solar-energy'),
           path: `${baseUrl}/electric-power/solar-energy`,
-          model: 'solarenergy'
+          model: 'solarenergy',
+          apiRoute: 'solar-energies'
         },
         {
           id: 11,
           title: t('project.navigation.submenu.others.wind-energy'),
           path: `${baseUrl}/electric-power/wind-energy`,
-          model: 'windenergy'
+          model: 'windenergy',
+          apiRoute: 'wind-energies'
         },
         {
           id: 12,
           title: t('project.navigation.submenu.others.transformers-types'),
           path: `${baseUrl}/electric-power/transformers-types`,
-          model: 'transformertype'
+          model: 'transformertype',
+          apiRoute: 'transformer-types'
         },
         {
           id: 13,
           title: t('project.navigation.submenu.others.transformers-registration'),
           path: `${baseUrl}/electric-power/transformers-registration`,
-          model: 'transformer'
+          model: 'transformer',
+          apiRoute: 'transformers'
         },
         {
           id: 14,
           title: t('project.navigation.submenu.others.transmission-lines'),
           path: `${baseUrl}/electric-power/transmission-lines`,
-          model: 'transmissionline'
+          model: 'transmissionline',
+          apiRoute: 'transmission-lines'
         },
         {
           id: 15,
           title: t('project.navigation.submenu.others.electric-tower-registration'),
           path: `${baseUrl}/electric-power/electric-tower-registration`,
-          model: 'electrictower'
+          model: 'electrictower',
+          apiRoute: 'electric-towers'
         }
       ]
     },
-
     {
       id: 5,
       title: t('project.navigation.submenu.others.railway'),
@@ -153,13 +217,15 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           id: 16,
           title: t('project.navigation.submenu.others.railways'),
           path: `${baseUrl}/railway/railway`,
-          model: 'railway'
+          model: 'railway',
+          apiRoute: 'railways'
         },
         {
           id: 17,
           title: t('project.navigation.submenu.others.railway-station'),
           path: `${baseUrl}/railway/railway-station`,
-          model: 'railwaystation'
+          model: 'railwaystation',
+          apiRoute: 'railway-stations'
         }
       ]
     },
@@ -172,29 +238,32 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           id: 18,
           title: t('project.navigation.submenu.others.reservoir-detail'),
           path: `${baseUrl}/irrigation-dam/reservoir-detail`,
-          model: 'reservoirinfo'
+          model: 'reservoirinfo',
+          apiRoute: 'reservoir-infos'
         },
         {
           id: 19,
           title: t('project.navigation.submenu.others.spillway-detail'),
           path: `${baseUrl}/irrigation-dam/spillway-detail`,
-          model: 'spillwayinfo'
+          model: 'spillwayinfo',
+          apiRoute: 'spillway-infos'
         },
         {
           id: 20,
           title: t('project.navigation.submenu.others.irrigation-capacity'),
           path: `${baseUrl}/irrigation-dam/irrigation-capacity`,
-          model: 'irrigationcapacity'
+          model: 'irrigationcapacity',
+          apiRoute: 'irrigation-capacities'
         },
         {
           id: 21,
           title: t('project.navigation.submenu.others.water-irrigation-dam'),
           path: `${baseUrl}/irrigation-dam/water-irrigation-dam`,
-          model: 'waterirrigationdam'
+          model: 'waterirrigationdam',
+          apiRoute: 'water-irrigation-dams'
         }
       ]
     },
-
     {
       id: 7,
       title: t('project.navigation.submenu.others.port'),
@@ -204,7 +273,8 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           id: 22,
           title: t('project.navigation.submenu.others.port'),
           path: `${baseUrl}/port/port`,
-          model: 'port'
+          model: 'port',
+          apiRoute: 'ports'
         }
       ]
     }
@@ -213,4 +283,7 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
 export default useSubMenuItems;
 export const findOtherModelName = (subMenuItems: SubMenuItem[], submenuId: number, routeId: number): string | undefined => {
   return subMenuItems.find((submenu) => submenu.id === submenuId)?.routes.find((route) => route.id === routeId)?.model;
+};
+export const findOtherSubMenu = (subMenuItems: SubMenuItem[], submenuId: number, routeId: number) => {
+  return subMenuItems.find((submenu) => submenu.id === submenuId)?.routes.find((route) => route.id === routeId);
 };

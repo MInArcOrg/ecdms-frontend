@@ -1,68 +1,55 @@
-'use client';
+import type { FormikProps } from "formik"
+import type { IApiPayload, IApiResponse } from "src/types/requests"
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
+import FormPageWrapper from "src/views/shared/form/form-wrapper"
+import * as yup from "yup"
+import BridgeAreaDataForm from "./bridge-area-data-form"
 
-import type { FormikProps } from 'formik';
-import type { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import BridgeAreaDataForm from './bridge-area-data-form';
-
-import { useState } from 'react';
-import projectOtherApiService from 'src/services/project/project-other-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { uploadFile } from 'src/services/utils/file-utils';
-import type { BridgeAreaData } from 'src/types/project/other';
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
+import type { BridgeAreaData } from "src/types/project/other"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
 
 interface BridgeAreaDataDrawerType {
-  open: boolean;
-  toggle: () => void;
-  refetch: () => void;
-  bridgeAreaData: BridgeAreaData;
-  projectId: string;
-  model: string;
+  open: boolean
+  toggle: () => void
+  refetch: () => void
+  bridgeAreaData: BridgeAreaData
+  projectId: string
+  otherSubMenu?: OtherMenuRoute
 }
 
 const BridgeAreaDataDrawer = (props: BridgeAreaDataDrawerType) => {
-  const { open, toggle, refetch, bridgeAreaData, projectId, model } = props;
-  const [uploadableFile, setUploadableFile] = useState<File | null>(null);
-  const onFileChange = (file: File | null) => {
-    setUploadableFile(file);
-  };
+  const { open, toggle, refetch, bridgeAreaData, projectId, otherSubMenu } = props
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required('Name is required'),
-    bridge_name: yup.string().required('Bridge name is required'),
-    area_topography_id: yup.string().required('Area topography is required')
-  });
+    name: yup.string().required("Name is required"),
+    bridge_name: yup.string().required("Bridge name is required"),
+    area_topography_id: yup.string().required("Area topography is required"),
+  })
 
-  const isEdit = Boolean(bridgeAreaData?.id);
+  const isEdit = Boolean(bridgeAreaData?.id)
 
   const createBridgeAreaData = async (body: IApiPayload<BridgeAreaData>) =>
-    projectOtherApiService<BridgeAreaData>().create(model, body);
+    projectOtherApiSecondService<BridgeAreaData>().create(otherSubMenu?.apiRoute || "", body)
 
   const editBridgeAreaData = async (body: IApiPayload<BridgeAreaData>) =>
-    projectOtherApiService<BridgeAreaData>().update(model, bridgeAreaData?.id || '', body);
+    projectOtherApiSecondService<BridgeAreaData>().update(otherSubMenu?.apiRoute || "", bridgeAreaData?.id || "", body)
 
-  const getPayload = (values: BridgeAreaData) => {
-    return {
-      data: {
-        ...values,
-        id: bridgeAreaData?.id,
-        project_id: projectId
-      },
-      files: uploadableFile ? [uploadableFile] : []
-    };
-  };
+  const getPayload = (values: BridgeAreaData): IApiPayload<BridgeAreaData> => ({
+    data: {
+      ...values,
+      project_id: projectId,
+      id: bridgeAreaData?.id,
+    } as BridgeAreaData,
+    files: [],
+  })
 
-  const handleClose = () => toggle();
+  const handleClose = () => toggle()
 
   const onActionSuccess = async (response: IApiResponse<BridgeAreaData>, payload: IApiPayload<BridgeAreaData>) => {
-    if (payload.files.length > 0) {
-      uploadFile(payload.files[0], uploadableProjectFileTypes.other.bridgeAreaData, response.payload.id, '', '');
-    }
-    refetch();
-    handleClose();
-  };
+    refetch()
+    handleClose()
+  }
 
   return (
     <CustomSideDrawer
@@ -77,19 +64,20 @@ const BridgeAreaDataDrawer = (props: BridgeAreaDataDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...bridgeAreaData
+            ...bridgeAreaData,
           }}
           createActionFunc={isEdit ? editBridgeAreaData : createBridgeAreaData}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<BridgeAreaData>) => {
-            return <BridgeAreaDataForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
+            return <BridgeAreaDataForm formik={formik} />
           }}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>
-  );
-};
+  )
+}
 
-export default BridgeAreaDataDrawer;
+export default BridgeAreaDataDrawer
+
