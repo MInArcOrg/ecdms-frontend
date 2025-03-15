@@ -27,10 +27,8 @@ function Index() {
     </ProjectOtherLayout>
   );
 }
-
 Index.acl = {
   action: 'view_other',
   subject: 'other'
 };
-
 export default Index;
