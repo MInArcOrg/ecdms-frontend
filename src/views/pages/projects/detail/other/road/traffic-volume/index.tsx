@@ -1,13 +1,14 @@
 "use client"
 
 import type React from "react"
+
 import { Box } from "@mui/material"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import projectOtherApiService from "src/services/project/project-other-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { defaultCreateActionConfig } from "src/types/general/listing"
 import type { TrafficVolume } from "src/types/project/other"
 import type { GetRequestParam, IApiResponse } from "src/types/requests"
@@ -17,38 +18,21 @@ import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-det
 import TrafficVolumeCard from "./traffic-volume-card"
 import TrafficVolumeDrawer from "./traffic-volume-drawer"
 import { trafficVolumeColumns } from "./traffic-volume-row"
-import { useQuery } from "@tanstack/react-query"
-import countTypeMasterService from "src/services/general/project/count-type-master-service"
 
 interface TrafficVolumeListProps {
-  model: string
+  otherSubMenu?: OtherMenuRoute
   typeId: string
   projectId: string
 }
 
-const TrafficVolumeList: React.FC<TrafficVolumeListProps> = ({ model, projectId, typeId }) => {
+const TrafficVolumeList: React.FC<TrafficVolumeListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false)
   const [showDetailDrawer, setShowDetailDrawer] = useState(false)
   const [selectedRow, setSelectedRow] = useState<TrafficVolume | null>(null)
   const { t } = useTranslation()
 
-  // Fetch master data for lookups
-  const { data: countTypes } = useQuery({
-    queryKey: ["masterCategory", "countTypes"],
-    queryFn: () => countTypeMasterService.getAll({}),
-  })
-
-  // Create lookup maps
-  const countTypeMap = new Map()
-
-  if (countTypes?.payload) {
-    countTypes.payload.forEach((type) => {
-      countTypeMap.set(type.id, type.title)
-    })
-  }
-
   const fetchTrafficVolumes = (params: GetRequestParam): Promise<IApiResponse<TrafficVolume[]>> => {
-    return projectOtherApiService<TrafficVolume>().getAll(model, {
+    return projectOtherApiSecondService<TrafficVolume>().getAll(otherSubMenu?.apiRoute || "", {
       ...params,
       filter: { ...params.filter, project_id: projectId },
     })
@@ -66,35 +50,38 @@ const TrafficVolumeList: React.FC<TrafficVolumeListProps> = ({ model, projectId,
   })
 
   const toggleDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as TrafficVolume)
     setShowDrawer(!showDrawer)
   }
 
   const toggleDetailDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as TrafficVolume)
     setShowDetailDrawer(!showDetailDrawer)
   }
 
   const handleEdit = (trafficVolume: TrafficVolume) => {
+    toggleDrawer()
     setSelectedRow(trafficVolume)
-    setShowDrawer(true)
   }
 
   const handleDelete = async (trafficVolumeId: string) => {
-    await projectOtherApiService<TrafficVolume>().delete(model, trafficVolumeId)
+    await projectOtherApiSecondService<TrafficVolume>().delete(otherSubMenu?.apiRoute || "", trafficVolumeId)
     refetch()
   }
 
   const handleClickDetail = (trafficVolume: TrafficVolume) => {
+    toggleDetailDrawer()
     setSelectedRow(trafficVolume)
-    setShowDetailDrawer(true)
   }
 
   const mapTrafficVolumeToDetailItems = (trafficVolume: TrafficVolume): { title: string; value: string }[] => [
-    { title: t("project.other.traffic-volume.details.name"), value: trafficVolume?.name || "N/A" },
+    {
+      title: t("project.other.traffic-volume.details.name"),
+      value: trafficVolume?.name || "N/A",
+    },
     {
       title: t("project.other.traffic-volume.details.count-type-id"),
-      value: countTypeMap.get(trafficVolume?.count_type_id) || "N/A",
+      value: trafficVolume?.count_type_id || "N/A",
     },
     {
       title: t("project.other.traffic-volume.details.count-location-coordinate-x"),
@@ -128,13 +115,17 @@ const TrafficVolumeList: React.FC<TrafficVolumeListProps> = ({ model, projectId,
       title: t("common.table-columns.created-at"),
       value: trafficVolume?.created_at ? formatCreatedAt(trafficVolume.created_at) : "N/A",
     },
+    {
+      title: t("common.table-columns.updated-at"),
+      value: trafficVolume?.updated_at ? formatCreatedAt(trafficVolume.updated_at) : "N/A",
+    },
   ]
 
   return (
     <Box>
       {showDrawer && (
         <TrafficVolumeDrawer
-          model={model}
+          otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
           trafficVolume={selectedRow as TrafficVolume}
@@ -147,10 +138,10 @@ const TrafficVolumeList: React.FC<TrafficVolumeListProps> = ({ model, projectId,
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapTrafficVolumeToDetailItems(selectedRow!)}
-          hasReference={true}
+          data={mapTrafficVolumeToDetailItems(selectedRow as TrafficVolume)}
+          hasReference={false}
           id={selectedRow?.id || ""}
-          fileType={uploadableProjectFileTypes.other.trafficVolume}
+          fileType=""
           title={t("project.other.traffic-volume.traffic-volume-details")}
         />
       )}
@@ -160,7 +151,7 @@ const TrafficVolumeList: React.FC<TrafficVolumeListProps> = ({ model, projectId,
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: trafficVolumeColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, countTypeMap),
+          headers: trafficVolumeColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -190,4 +181,3 @@ const TrafficVolumeList: React.FC<TrafficVolumeListProps> = ({ model, projectId,
 }
 
 export default TrafficVolumeList
-

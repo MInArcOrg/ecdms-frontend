@@ -1,5 +1,3 @@
-"use client"
-
 import type { FormikProps } from "formik"
 import type { IApiPayload, IApiResponse } from "src/types/requests"
 import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
@@ -7,11 +5,9 @@ import FormPageWrapper from "src/views/shared/form/form-wrapper"
 import * as yup from "yup"
 import TrafficVolumeForm from "./traffic-volume-form"
 
-import { useState } from "react"
-import projectOtherApiService from "src/services/project/project-other-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
-import { uploadFile } from "src/services/utils/file-utils"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import type { TrafficVolume } from "src/types/project/other"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
 
 interface TrafficVolumeDrawerType {
   open: boolean
@@ -19,15 +15,11 @@ interface TrafficVolumeDrawerType {
   refetch: () => void
   trafficVolume: TrafficVolume
   projectId: string
-  model: string
+  otherSubMenu?: OtherMenuRoute
 }
 
 const TrafficVolumeDrawer = (props: TrafficVolumeDrawerType) => {
-  const { open, toggle, refetch, trafficVolume, projectId, model } = props
-  const [uploadableFile, setUploadableFile] = useState<File | null>(null)
-  const onFileChange = (file: File | null) => {
-    setUploadableFile(file)
-  }
+  const { open, toggle, refetch, trafficVolume, projectId, otherSubMenu } = props
 
   const validationSchema = yup.object().shape({
     name: yup.string().required("Name is required"),
@@ -37,28 +29,27 @@ const TrafficVolumeDrawer = (props: TrafficVolumeDrawerType) => {
   const isEdit = Boolean(trafficVolume?.id)
 
   const createTrafficVolume = async (body: IApiPayload<TrafficVolume>) =>
-    projectOtherApiService<TrafficVolume>().create(model, body)
+    projectOtherApiSecondService<TrafficVolume>().create(otherSubMenu?.apiRoute || "", body)
 
   const editTrafficVolume = async (body: IApiPayload<TrafficVolume>) =>
-    projectOtherApiService<TrafficVolume>().update(model, trafficVolume?.id || "", body)
+    projectOtherApiSecondService<TrafficVolume>().update(
+      otherSubMenu?.apiRoute || "",
+      trafficVolume?.id || "",
+      body,
+    )
 
-  const getPayload = (values: TrafficVolume) => {
-    return {
-      data: {
-        ...values,
-        id: trafficVolume?.id,
-        project_id: projectId,
-      },
-      files: uploadableFile ? [uploadableFile] : [],
-    }
-  }
+  const getPayload = (values: TrafficVolume): IApiPayload<TrafficVolume> => ({
+    data: {
+      ...values,
+      project_id: projectId,
+      id: trafficVolume?.id,
+    } as TrafficVolume,
+    files: [],
+  })
 
   const handleClose = () => toggle()
 
   const onActionSuccess = async (response: IApiResponse<TrafficVolume>, payload: IApiPayload<TrafficVolume>) => {
-    if (payload.files.length > 0) {
-      uploadFile(payload.files[0], uploadableProjectFileTypes.other.trafficVolume, response.payload.id, "", "")
-    }
     refetch()
     handleClose()
   }
@@ -83,7 +74,7 @@ const TrafficVolumeDrawer = (props: TrafficVolumeDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<TrafficVolume>) => {
-            return <TrafficVolumeForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />
+            return <TrafficVolumeForm formik={formik} />
           }}
         </FormPageWrapper>
       )}
@@ -92,4 +83,3 @@ const TrafficVolumeDrawer = (props: TrafficVolumeDrawerType) => {
 }
 
 export default TrafficVolumeDrawer
-

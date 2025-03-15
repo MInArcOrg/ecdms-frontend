@@ -1,17 +1,18 @@
 import { Fragment } from 'react';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import ProjectGeneralMasterList from 'src/views/pages/master/general/project/project-general-master/project-general-master-list';
 import GeneralMasterLayout from '../general-master-layout';
-import EndwallTypeInletMasterList from 'src/views/pages/master/general/project/endwall-type-inlet-master/endwall-type-inlet-master-list';
 
-function EndWallTypes() {
+function EndwallTypeInletMasterData() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <EndwallTypeInletMasterList />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.endwallTypeInlet} />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default EndWallTypes;
+export default EndwallTypeInletMasterData;

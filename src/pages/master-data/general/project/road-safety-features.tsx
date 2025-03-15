@@ -1,17 +1,18 @@
 import { Fragment } from 'react';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import ProjectGeneralMasterList from 'src/views/pages/master/general/project/project-general-master/project-general-master-list';
 import GeneralMasterLayout from '../general-master-layout';
-import RoadSafetyFeatureMasterList from 'src/views/pages/master/general/project/road-saftey-feature-master/road-safety-feature-master-list';
 
-function RoadSafetyFeatures() {
+function RoadSafetyFeatureMasterData() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <RoadSafetyFeatureMasterList />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.roadSafetyFeature} />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default RoadSafetyFeatures;
+export default RoadSafetyFeatureMasterData;

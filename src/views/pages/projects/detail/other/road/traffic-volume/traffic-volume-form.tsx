@@ -1,29 +1,31 @@
+"use client"
+
 import { Grid } from "@mui/material"
+import { useQuery } from "@tanstack/react-query"
 import type { FormikProps } from "formik"
 import type React from "react"
 import { useTranslation } from "react-i18next"
 import { gridSpacing } from "src/configs/app-constants"
+import { projectMasterModels } from "src/constants/master-data/project-general-master-constants"
+import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service"
 import type { TrafficVolume } from "src/types/project/other"
-import CustomTextBox from "src/views/shared/form/custom-text-box"
-import CustomFileUpload from "src/views/shared/form/custome-file-selector"
-import CustomSelectBox from "src/views/shared/form/custom-select"
 import CustomDateTimePicker from "src/views/shared/form/custom-date-box"
-import countTypeMasterService from "src/services/general/project/count-type-master-service"
-
-import { useQuery } from "@tanstack/react-query"
+import CustomSelect from "src/views/shared/form/custom-select"
+import CustomTextBox from "src/views/shared/form/custom-text-box"
 
 interface TrafficVolumeFormProps {
   formik: FormikProps<TrafficVolume>
-  file: File | null
-  onFileChange: (file: File | null) => void
 }
 
-const TrafficVolumeForm: React.FC<TrafficVolumeFormProps> = ({ formik, file, onFileChange }) => {
+const TrafficVolumeForm: React.FC<TrafficVolumeFormProps> = ({ formik }) => {
   const { t: transl } = useTranslation()
 
   const { data: countTypes } = useQuery({
-    queryKey: ["masterCategory", "countType"],
-    queryFn: () => countTypeMasterService.getAll({}),
+    queryKey: ["count-types"],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.countType.model },
+      }),
   })
 
   return (
@@ -38,18 +40,19 @@ const TrafficVolumeForm: React.FC<TrafficVolumeFormProps> = ({ formik, file, onF
           sx={{ mb: 2 }}
         />
 
-        <CustomSelectBox
-          size="small"
-          name="count_type_id"
+        <CustomSelect
+          fullWidth
           label={transl("project.other.traffic-volume.details.count-type-id")}
           placeholder={transl("project.other.traffic-volume.details.count-type-id")}
+          name="count_type_id"
+          size="small"
+          sx={{ mb: 2 }}
           options={
-            countTypes?.payload?.map((type) => ({
-              value: type.id,
+            countTypes?.payload.map((type) => ({
               label: type.title,
+              value: type.id,
             })) || []
           }
-          sx={{ mb: 2 }}
         />
 
         <CustomTextBox
@@ -59,7 +62,6 @@ const TrafficVolumeForm: React.FC<TrafficVolumeFormProps> = ({ formik, file, onF
           name="count_location_coordinate_x"
           size="small"
           type="number"
-          step="0.000001"
           sx={{ mb: 2 }}
         />
 
@@ -70,13 +72,15 @@ const TrafficVolumeForm: React.FC<TrafficVolumeFormProps> = ({ formik, file, onF
           name="count_location_coordinate_y"
           size="small"
           type="number"
-          step="0.000001"
           sx={{ mb: 2 }}
         />
 
         <CustomDateTimePicker
+          fullWidth
           label={transl("project.other.traffic-volume.details.count-time")}
+          placeholder={transl("project.other.traffic-volume.details.count-time")}
           name="count_time"
+          size="small"
           sx={{ mb: 2 }}
         />
 
@@ -120,13 +124,8 @@ const TrafficVolumeForm: React.FC<TrafficVolumeFormProps> = ({ formik, file, onF
           sx={{ mb: 2 }}
         />
       </Grid>
-
-      <Grid item xs={12}>
-        <CustomFileUpload label={transl("common.form.file-upload")} file={file} onFileChange={onFileChange} />
-      </Grid>
     </Grid>
   )
 }
 
 export default TrafficVolumeForm
-
