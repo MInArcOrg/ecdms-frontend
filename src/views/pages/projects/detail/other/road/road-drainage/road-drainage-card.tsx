@@ -5,12 +5,9 @@ import type React from "react"
 import { useTranslation } from "react-i18next"
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
 import type { RoadDrainage } from "src/types/project/other"
-import { formatCreatedAt } from "src/utils/formatter/date"
 import FileDrawer from "src/views/components/custom/files-drawer"
 import ModelAction from "src/views/components/custom/model-actions"
 import RowOptions from "src/views/shared/listing/row-options"
-import { useQuery } from "@tanstack/react-query"
-import currentConditionMasterService from "src/services/general/project/current-condition-master-service"
 
 interface RoadDrainageCardProps {
   roadDrainage: RoadDrainage
@@ -23,21 +20,14 @@ interface RoadDrainageCardProps {
 const RoadDrainageCard: React.FC<RoadDrainageCardProps> = ({ roadDrainage, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation()
 
-  // Fetch current condition data
-  const { data: currentConditionData } = useQuery({
-    queryKey: ["currentCondition", roadDrainage?.current_condition_id],
-    queryFn: () => currentConditionMasterService.getOne(roadDrainage?.current_condition_id || "", {}),
-    enabled: !!roadDrainage?.current_condition_id,
-  })
-
-  const currentConditionName = currentConditionData?.payload?.title || "N/A"
-
   return (
     <Card sx={{ p: 2 }}>
       <CardContent>
         <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
           <Typography variant="h5" fontWeight="bold">
-            <Button
+            <Typography
+              noWrap
+              component={Button}
               onClick={() => onDetail(roadDrainage)}
               sx={{
                 fontWeight: 500,
@@ -46,32 +36,29 @@ const RoadDrainageCard: React.FC<RoadDrainageCardProps> = ({ roadDrainage, refet
                 "&:hover": { color: "primary.main" },
               }}
             >
-              {roadDrainage?.id.slice(0, 5)}...
-            </Button>
+              {roadDrainage?.name || roadDrainage?.id.slice(0, 5) + "..."}
+            </Typography>
           </Typography>
         </Box>
 
         <Divider sx={{ my: 1 }} />
-
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t("project.other.road-drainage.details.name")}: {roadDrainage?.name || "N/A"}
+            {t("project.other.road-drainage.details.current-condition-id")}: {roadDrainage?.current_condition_id || "N/A"}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("project.other.road-drainage.details.length")}: {roadDrainage?.length?.toString() || "N/A"}
+            {t("project.other.road-drainage.details.dimensions")}:
+            {roadDrainage?.length ? `L: ${roadDrainage.length}` : ""}
+            {roadDrainage?.width ? ` W: ${roadDrainage.width}` : ""}
+            {roadDrainage?.height ? ` H: ${roadDrainage.height}` : ""}
+            {!roadDrainage?.length && !roadDrainage?.width && !roadDrainage?.height ? "N/A" : ""}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("project.other.road-drainage.details.height")}: {roadDrainage?.height?.toString() || "N/A"}
+            {t("project.other.road-drainage.details.construction-completion-year")}:{" "}
+            {roadDrainage?.construction_completion_year || "N/A"}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("project.other.road-drainage.details.width")}: {roadDrainage?.width?.toString() || "N/A"}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {t("project.other.road-drainage.details.current-condition-id")}: {currentConditionName}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {t("common.table-columns.created-at")}:{" "}
-            {roadDrainage?.created_at ? formatCreatedAt(roadDrainage.created_at) : "N/A"}
+            {t("project.other.road-drainage.details.remark")}: {roadDrainage?.remark || "N/A"}
           </Typography>
         </Box>
       </CardContent>
@@ -87,6 +74,14 @@ const RoadDrainageCard: React.FC<RoadDrainageCardProps> = ({ roadDrainage, refet
           postAction={() => refetch()}
         />
         <RowOptions
+          deletePermissionRule={{
+            action: "delete",
+            subject: "roaddrainage",
+          }}
+          editPermissionRule={{
+            action: "update",
+            subject: "roaddrainage",
+          }}
           onEdit={() => onEdit(roadDrainage)}
           onDelete={() => onDelete(roadDrainage.id)}
           item={roadDrainage}

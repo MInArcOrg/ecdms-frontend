@@ -1,16 +1,15 @@
 import { Grid } from "@mui/material"
+import { useQuery } from "@tanstack/react-query"
 import type { FormikProps } from "formik"
 import type React from "react"
 import { useTranslation } from "react-i18next"
 import { gridSpacing } from "src/configs/app-constants"
+import { projectMasterModels } from "src/constants/master-data/project-general-master-constants"
+import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service"
 import type { RoadDrainage } from "src/types/project/other"
+import CustomSelect from "src/views/shared/form/custom-select"
 import CustomTextBox from "src/views/shared/form/custom-text-box"
 import CustomFileUpload from "src/views/shared/form/custome-file-selector"
-import CustomSelectBox from "src/views/shared/form/custom-select"
-import CustomTextArea from "src/views/shared/form/custom-text-box"
-import currentConditionMasterService from "src/services/general/project/current-condition-master-service"
-
-import { useQuery } from "@tanstack/react-query"
 
 interface RoadDrainageFormProps {
   formik: FormikProps<RoadDrainage>
@@ -21,9 +20,12 @@ interface RoadDrainageFormProps {
 const RoadDrainageForm: React.FC<RoadDrainageFormProps> = ({ formik, file, onFileChange }) => {
   const { t: transl } = useTranslation()
 
-  const { data: currentConditions } = useQuery({
-    queryKey: ["masterCategory", "currentCondition"],
-    queryFn: () => currentConditionMasterService.getAll({}),
+  const { data: conditionTypes } = useQuery({
+    queryKey: ["condition-types"],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.currentCondition.model },
+      }),
   })
 
   return (
@@ -38,51 +40,52 @@ const RoadDrainageForm: React.FC<RoadDrainageFormProps> = ({ formik, file, onFil
           sx={{ mb: 2 }}
         />
 
-        <CustomTextBox
-          fullWidth
-          label={transl("project.other.road-drainage.details.length")}
-          placeholder={transl("project.other.road-drainage.details.length")}
-          name="length"
-          size="small"
-          type="number"
-          step="0.01"
-          sx={{ mb: 2 }}
-        />
+        <Grid container spacing={2} sx={{ mb: 2 }}>
+          <Grid item xs={4}>
+            <CustomTextBox
+              fullWidth
+              label={transl("project.other.road-drainage.details.length")}
+              placeholder={transl("project.other.road-drainage.details.length")}
+              name="length"
+              size="small"
+              type="number"
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <CustomTextBox
+              fullWidth
+              label={transl("project.other.road-drainage.details.width")}
+              placeholder={transl("project.other.road-drainage.details.width")}
+              name="width"
+              size="small"
+              type="number"
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <CustomTextBox
+              fullWidth
+              label={transl("project.other.road-drainage.details.height")}
+              placeholder={transl("project.other.road-drainage.details.height")}
+              name="height"
+              size="small"
+              type="number"
+            />
+          </Grid>
+        </Grid>
 
-        <CustomTextBox
+        <CustomSelect
           fullWidth
-          label={transl("project.other.road-drainage.details.height")}
-          placeholder={transl("project.other.road-drainage.details.height")}
-          name="height"
-          size="small"
-          type="number"
-          step="0.01"
-          sx={{ mb: 2 }}
-        />
-
-        <CustomTextBox
-          fullWidth
-          label={transl("project.other.road-drainage.details.width")}
-          placeholder={transl("project.other.road-drainage.details.width")}
-          name="width"
-          size="small"
-          type="number"
-          step="0.01"
-          sx={{ mb: 2 }}
-        />
-
-        <CustomSelectBox
-          size="small"
-          name="current_condition_id"
           label={transl("project.other.road-drainage.details.current-condition-id")}
           placeholder={transl("project.other.road-drainage.details.current-condition-id")}
+          name="current_condition_id"
+          size="small"
+          sx={{ mb: 2 }}
           options={
-            currentConditions?.payload?.map((condition) => ({
-              value: condition.id,
-              label: condition.title,
+            conditionTypes?.payload.map((type) => ({
+              label: type.title,
+              value: type.id,
             })) || []
           }
-          sx={{ mb: 2 }}
         />
 
         <CustomTextBox
@@ -92,7 +95,6 @@ const RoadDrainageForm: React.FC<RoadDrainageFormProps> = ({ formik, file, onFil
           name="weight_limit"
           size="small"
           type="number"
-          step="0.01"
           sx={{ mb: 2 }}
         />
 
@@ -126,12 +128,14 @@ const RoadDrainageForm: React.FC<RoadDrainageFormProps> = ({ formik, file, onFil
           sx={{ mb: 2 }}
         />
 
-        <CustomTextArea
+        <CustomTextBox
           fullWidth
           label={transl("project.other.road-drainage.details.remark")}
           placeholder={transl("project.other.road-drainage.details.remark")}
           name="remark"
           size="small"
+          multiline
+          rows={3}
           sx={{ mb: 2 }}
         />
       </Grid>

@@ -1,12 +1,14 @@
 "use client"
 
 import type React from "react"
+
 import { Box } from "@mui/material"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import projectOtherApiService from "src/services/project/project-other-service"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
 import { defaultCreateActionConfig } from "src/types/general/listing"
 import type { RoadDrainage } from "src/types/project/other"
@@ -17,38 +19,21 @@ import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-det
 import RoadDrainageCard from "./road-drainage-card"
 import RoadDrainageDrawer from "./road-drainage-drawer"
 import { roadDrainageColumns } from "./road-drainage-row"
-import { useQuery } from "@tanstack/react-query"
-import currentConditionMasterService from "src/services/general/project/current-condition-master-service"
 
 interface RoadDrainageListProps {
-  model: string
+  otherSubMenu?: OtherMenuRoute
   typeId: string
   projectId: string
 }
 
-const RoadDrainageList: React.FC<RoadDrainageListProps> = ({ model, projectId, typeId }) => {
+const RoadDrainageList: React.FC<RoadDrainageListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false)
   const [showDetailDrawer, setShowDetailDrawer] = useState(false)
   const [selectedRow, setSelectedRow] = useState<RoadDrainage | null>(null)
   const { t } = useTranslation()
 
-  // Fetch master data for lookups
-  const { data: currentConditions } = useQuery({
-    queryKey: ["masterCategory", "currentConditions"],
-    queryFn: () => currentConditionMasterService.getAll({}),
-  })
-
-  // Create lookup maps
-  const currentConditionMap = new Map()
-
-  if (currentConditions?.payload) {
-    currentConditions.payload.forEach((condition) => {
-      currentConditionMap.set(condition.id, condition.title)
-    })
-  }
-
   const fetchRoadDrainages = (params: GetRequestParam): Promise<IApiResponse<RoadDrainage[]>> => {
-    return projectOtherApiService<RoadDrainage>().getAll(model, {
+    return projectOtherApiSecondService<RoadDrainage>().getAll(otherSubMenu?.apiRoute || "", {
       ...params,
       filter: { ...params.filter, project_id: projectId },
     })
@@ -66,38 +51,50 @@ const RoadDrainageList: React.FC<RoadDrainageListProps> = ({ model, projectId, t
   })
 
   const toggleDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as RoadDrainage)
     setShowDrawer(!showDrawer)
   }
 
   const toggleDetailDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as RoadDrainage)
     setShowDetailDrawer(!showDetailDrawer)
   }
 
   const handleEdit = (roadDrainage: RoadDrainage) => {
+    toggleDrawer()
     setSelectedRow(roadDrainage)
-    setShowDrawer(true)
   }
 
   const handleDelete = async (roadDrainageId: string) => {
-    await projectOtherApiService<RoadDrainage>().delete(model, roadDrainageId)
+    await projectOtherApiSecondService<RoadDrainage>().delete(otherSubMenu?.apiRoute || "", roadDrainageId)
     refetch()
   }
 
   const handleClickDetail = (roadDrainage: RoadDrainage) => {
+    toggleDetailDrawer()
     setSelectedRow(roadDrainage)
-    setShowDetailDrawer(true)
   }
 
   const mapRoadDrainageToDetailItems = (roadDrainage: RoadDrainage): { title: string; value: string }[] => [
-    { title: t("project.other.road-drainage.details.name"), value: roadDrainage?.name || "N/A" },
-    { title: t("project.other.road-drainage.details.length"), value: roadDrainage?.length?.toString() || "N/A" },
-    { title: t("project.other.road-drainage.details.height"), value: roadDrainage?.height?.toString() || "N/A" },
-    { title: t("project.other.road-drainage.details.width"), value: roadDrainage?.width?.toString() || "N/A" },
+    {
+      title: t("project.other.road-drainage.details.name"),
+      value: roadDrainage?.name || "N/A",
+    },
+    {
+      title: t("project.other.road-drainage.details.length"),
+      value: roadDrainage?.length?.toString() || "N/A",
+    },
+    {
+      title: t("project.other.road-drainage.details.height"),
+      value: roadDrainage?.height?.toString() || "N/A",
+    },
+    {
+      title: t("project.other.road-drainage.details.width"),
+      value: roadDrainage?.width?.toString() || "N/A",
+    },
     {
       title: t("project.other.road-drainage.details.current-condition-id"),
-      value: currentConditionMap.get(roadDrainage?.current_condition_id) || "N/A",
+      value: roadDrainage?.current_condition_id || "N/A",
     },
     {
       title: t("project.other.road-drainage.details.weight-limit"),
@@ -115,10 +112,17 @@ const RoadDrainageList: React.FC<RoadDrainageListProps> = ({ model, projectId, t
       title: t("project.other.road-drainage.details.construction-completion-year"),
       value: roadDrainage?.construction_completion_year?.toString() || "N/A",
     },
-    { title: t("project.other.road-drainage.details.remark"), value: roadDrainage?.remark || "N/A" },
+    {
+      title: t("project.other.road-drainage.details.remark"),
+      value: roadDrainage?.remark || "N/A",
+    },
     {
       title: t("common.table-columns.created-at"),
       value: roadDrainage?.created_at ? formatCreatedAt(roadDrainage.created_at) : "N/A",
+    },
+    {
+      title: t("common.table-columns.updated-at"),
+      value: roadDrainage?.updated_at ? formatCreatedAt(roadDrainage.updated_at) : "N/A",
     },
   ]
 
@@ -126,7 +130,7 @@ const RoadDrainageList: React.FC<RoadDrainageListProps> = ({ model, projectId, t
     <Box>
       {showDrawer && (
         <RoadDrainageDrawer
-          model={model}
+          otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
           roadDrainage={selectedRow as RoadDrainage}
@@ -139,7 +143,7 @@ const RoadDrainageList: React.FC<RoadDrainageListProps> = ({ model, projectId, t
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapRoadDrainageToDetailItems(selectedRow!)}
+          data={mapRoadDrainageToDetailItems(selectedRow as RoadDrainage)}
           hasReference={true}
           id={selectedRow?.id || ""}
           fileType={uploadableProjectFileTypes.other.roadDrainage}
@@ -152,7 +156,7 @@ const RoadDrainageList: React.FC<RoadDrainageListProps> = ({ model, projectId, t
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: roadDrainageColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, currentConditionMap),
+          headers: roadDrainageColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (

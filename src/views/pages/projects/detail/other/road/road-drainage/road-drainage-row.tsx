@@ -19,102 +19,102 @@ export const roadDrainageColumns = (
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
-  currentConditionMap: Map<string, string>,
-): GridColDef[] => {
-  return [
-    {
-      flex: 0.15,
-      minWidth: 150,
-      headerName: t("project.other.road-drainage.details.name"),
-      field: "name",
-      renderCell: ({ row }: CellType) => (
-        <Typography
-          noWrap
-          component={Button}
-          onClick={() => onDetail(row)}
-          sx={{
-            fontWeight: 500,
-            textDecoration: "none",
-            color: "text.secondary",
-            "&:hover": { color: "primary.main" },
+): GridColDef[] => [
+  {
+    flex: 0.15,
+    minWidth: 120,
+    field: "name",
+    headerName: t("project.other.road-drainage.details.name"),
+    renderCell: ({ row }: CellType) => (
+      <Typography
+        noWrap
+        component={Button}
+        onClick={() => onDetail(row)}
+        sx={{
+          fontWeight: 500,
+          textDecoration: "none",
+          color: "text.secondary",
+          "&:hover": { color: "primary.main" },
+        }}
+      >
+        {row?.name || row?.id.slice(0, 5) + "..."}
+      </Typography>
+    ),
+  },
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t("project.other.road-drainage.details.dimensions"),
+    field: "dimensions",
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: "text.secondary" }}>
+        {row?.length ? `L: ${row.length}` : ""}
+        {row?.width ? ` W: ${row.width}` : ""}
+        {row?.height ? ` H: ${row.height}` : ""}
+        {!row?.length && !row?.width && !row?.height ? t("common.not-available") : ""}
+      </Typography>
+    ),
+  },
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t("project.other.road-drainage.details.current-condition-id"),
+    field: "current_condition_id",
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: "text.secondary" }}>{row?.current_condition_id || t("common.not-available")}</Typography>
+    ),
+  },
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t("project.other.road-drainage.details.construction-completion-year"),
+    field: "construction_completion_year",
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: "text.secondary" }}>
+        {row?.construction_completion_year || t("common.not-available")}
+      </Typography>
+    ),
+  },
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t("common.table-columns.created-at"),
+    field: "created_at",
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: "text.secondary" }}>{formatCreatedAt(row.created_at)}</Typography>
+    ),
+  },
+  {
+    minWidth: 150,
+    sortable: false,
+    field: "actions",
+    headerName: t("common.table-columns.actions"),
+    renderCell: ({ row }: CellType) => (
+      <Fragment>
+        <ModelAction
+          model="RoadDrainage"
+          model_id={row.id}
+          refetchModel={refetch}
+          resubmit={() => refetch()}
+          title=""
+          postAction={() => refetch()}
+        />
+        <RowOptions
+          onEdit={() => onEdit(row)}
+          onDelete={() => onDelete(row.id)}
+          item={row}
+          options={[]}
+          deletePermissionRule={{
+            action: "delete",
+            subject: "roaddrainage",
           }}
-        >
-          {row?.name}
-        </Typography>
-      ),
-    },
-    {
-      flex: 0.15,
-      minWidth: 120,
-      headerName: t("project.other.road-drainage.details.length"),
-      field: "length",
-      renderCell: ({ row }: CellType) => row.length?.toString() || t("common.not-available"),
-    },
-    {
-      flex: 0.15,
-      minWidth: 120,
-      headerName: t("project.other.road-drainage.details.height"),
-      field: "height",
-      renderCell: ({ row }: CellType) => row.height?.toString() || t("common.not-available"),
-    },
-    {
-      flex: 0.15,
-      minWidth: 120,
-      headerName: t("project.other.road-drainage.details.width"),
-      field: "width",
-      renderCell: ({ row }: CellType) => row.width?.toString() || t("common.not-available"),
-    },
-    {
-      flex: 0.15,
-      minWidth: 120,
-      headerName: t("project.other.road-drainage.details.current-condition-id"),
-      field: "current_condition_id",
-      renderCell: ({ row }: CellType) => {
-        const name = currentConditionMap.get(row.current_condition_id)
-        return name || t("common.not-available")
-      },
-    },
-    {
-      flex: 0.15,
-      minWidth: 150,
-      headerName: t("common.table-columns.created-at"),
-      field: "created_at",
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: "text.secondary" }}>{formatCreatedAt(row.created_at)}</Typography>
-      ),
-    },
-    {
-      minWidth: 150,
-      sortable: false,
-      field: "actions",
-      headerName: t("common.table-columns.actions"),
-      renderCell: ({ row }: CellType) => (
-        <Fragment>
-          <ModelAction
-            model="RoadDrainage"
-            model_id={row.id}
-            refetchModel={refetch}
-            resubmit={() => {}}
-            title=""
-            postAction={() => {}}
-          />
-          <RowOptions
-            onEdit={() => onEdit(row)}
-            onDelete={() => onDelete(row.id)}
-            item={row}
-            deletePermissionRule={{
-              action: "delete",
-              subject: "roaddrainage",
-            }}
-            editPermissionRule={{
-              action: "update",
-              subject: "roaddrainage",
-            }}
-            options={[]}
-          />
-        </Fragment>
-      ),
-    },
-  ]
-}
+          editPermissionRule={{
+            action: "update",
+            subject: "roaddrainage",
+          }}
+        />
+      </Fragment>
+    ),
+  },
+]
 
