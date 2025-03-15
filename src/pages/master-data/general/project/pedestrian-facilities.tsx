@@ -1,17 +1,18 @@
 import { Fragment } from 'react';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import ProjectGeneralMasterList from 'src/views/pages/master/general/project/project-general-master/project-general-master-list';
 import GeneralMasterLayout from '../general-master-layout';
-import PedestrianFacilityMasterList from 'src/views/pages/master/general/project/pedestrian-facilitiy-master/pedestrian-facility-master-list';
 
-function GeneralProjectMasterData() {
+function PedestrianFacilityMasterData() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <PedestrianFacilityMasterList />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.pedestrianFacility} />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default GeneralProjectMasterData;
+export default PedestrianFacilityMasterData;

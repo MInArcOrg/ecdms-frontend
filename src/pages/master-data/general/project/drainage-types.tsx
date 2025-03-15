@@ -1,17 +1,18 @@
 import { Fragment } from 'react';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import ProjectGeneralMasterList from 'src/views/pages/master/general/project/project-general-master/project-general-master-list';
 import GeneralMasterLayout from '../general-master-layout';
-import DrainageTypeMasterList from 'src/views/pages/master/general/project/drainage-type-master/drainage-type-master-list';
 
-function DrainageTypes() {
+function DrainageTypeMasterData() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <DrainageTypeMasterList />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.drainageType} />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default DrainageTypes;
+export default DrainageTypeMasterData;

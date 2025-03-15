@@ -1,13 +1,14 @@
 "use client"
 
 import type React from "react"
+
 import { Box } from "@mui/material"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import projectOtherApiService from "src/services/project/project-other-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { defaultCreateActionConfig } from "src/types/general/listing"
 import type { BridgeBasicData } from "src/types/project/other"
 import type { GetRequestParam, IApiResponse } from "src/types/requests"
@@ -19,26 +20,26 @@ import BridgeBasicDataDrawer from "./bridge-basic-data-drawer"
 import { bridgeBasicDataColumns } from "./bridge-basic-data-row"
 
 interface BridgeBasicDataListProps {
-  model: string
+  otherSubMenu?: OtherMenuRoute
   typeId: string
   projectId: string
 }
 
-const BridgeBasicDataList: React.FC<BridgeBasicDataListProps> = ({ model, projectId, typeId }) => {
+const BridgeBasicDataList: React.FC<BridgeBasicDataListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false)
   const [showDetailDrawer, setShowDetailDrawer] = useState(false)
   const [selectedRow, setSelectedRow] = useState<BridgeBasicData | null>(null)
   const { t } = useTranslation()
 
   const fetchBridgeBasicData = (params: GetRequestParam): Promise<IApiResponse<BridgeBasicData[]>> => {
-    return projectOtherApiService<BridgeBasicData>().getAll(model, {
+    return projectOtherApiSecondService<BridgeBasicData>().getAll(otherSubMenu?.apiRoute || "", {
       ...params,
       filter: { ...params.filter, project_id: projectId },
     })
   }
 
   const {
-    data: bridgeBasicData,
+    data: bridgeBasicDataList,
     isLoading,
     pagination,
     handlePageChange,
@@ -49,33 +50,39 @@ const BridgeBasicDataList: React.FC<BridgeBasicDataListProps> = ({ model, projec
   })
 
   const toggleDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as BridgeBasicData)
     setShowDrawer(!showDrawer)
   }
 
   const toggleDetailDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as BridgeBasicData)
     setShowDetailDrawer(!showDetailDrawer)
   }
 
   const handleEdit = (bridgeBasicData: BridgeBasicData) => {
+    toggleDrawer()
     setSelectedRow(bridgeBasicData)
-    setShowDrawer(true)
   }
 
   const handleDelete = async (bridgeBasicDataId: string) => {
-    await projectOtherApiService<BridgeBasicData>().delete(model, bridgeBasicDataId)
+    await projectOtherApiSecondService<BridgeBasicData>().delete(otherSubMenu?.apiRoute || "", bridgeBasicDataId)
     refetch()
   }
 
   const handleClickDetail = (bridgeBasicData: BridgeBasicData) => {
+    toggleDetailDrawer()
     setSelectedRow(bridgeBasicData)
-    setShowDetailDrawer(true)
   }
 
   const mapBridgeBasicDataToDetailItems = (bridgeBasicData: BridgeBasicData): { title: string; value: string }[] => [
-    { title: t("project.other.bridge-basic-data.details.name"), value: bridgeBasicData?.name || "N/A" },
-    { title: t("project.other.bridge-basic-data.details.bridge-name"), value: bridgeBasicData?.bridge_name || "N/A" },
+    {
+      title: t("project.other.bridge-basic-data.details.name"),
+      value: bridgeBasicData?.name || "N/A",
+    },
+    {
+      title: t("project.other.bridge-basic-data.details.bridge-name"),
+      value: bridgeBasicData?.bridge_name || "N/A",
+    },
     {
       title: t("project.other.bridge-basic-data.details.bridge-number"),
       value: bridgeBasicData?.bridge_number || "N/A",
@@ -92,8 +99,14 @@ const BridgeBasicDataList: React.FC<BridgeBasicDataListProps> = ({ model, projec
       title: t("project.other.bridge-basic-data.details.construction-year"),
       value: bridgeBasicData?.construction_year?.toString() || "N/A",
     },
-    { title: t("project.other.bridge-basic-data.details.contractor"), value: bridgeBasicData?.contractor || "N/A" },
-    { title: t("project.other.bridge-basic-data.details.designer"), value: bridgeBasicData?.designer || "N/A" },
+    {
+      title: t("project.other.bridge-basic-data.details.contractor"),
+      value: bridgeBasicData?.contractor || "N/A",
+    },
+    {
+      title: t("project.other.bridge-basic-data.details.designer"),
+      value: bridgeBasicData?.designer || "N/A",
+    },
     {
       title: t("project.other.bridge-basic-data.details.bridge-cost"),
       value: bridgeBasicData?.bridge_cost?.toString() || "N/A",
@@ -110,13 +123,17 @@ const BridgeBasicDataList: React.FC<BridgeBasicDataListProps> = ({ model, projec
       title: t("common.table-columns.created-at"),
       value: bridgeBasicData?.created_at ? formatCreatedAt(bridgeBasicData.created_at) : "N/A",
     },
+    {
+      title: t("common.table-columns.updated-at"),
+      value: bridgeBasicData?.updated_at ? formatCreatedAt(bridgeBasicData.updated_at) : "N/A",
+    },
   ]
 
   return (
     <Box>
       {showDrawer && (
         <BridgeBasicDataDrawer
-          model={model}
+          otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
           bridgeBasicData={selectedRow as BridgeBasicData}
@@ -129,10 +146,10 @@ const BridgeBasicDataList: React.FC<BridgeBasicDataListProps> = ({ model, projec
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapBridgeBasicDataToDetailItems(selectedRow!)}
-          hasReference={true}
+          data={mapBridgeBasicDataToDetailItems(selectedRow as BridgeBasicData)}
+          hasReference={false}
           id={selectedRow?.id || ""}
-          fileType={uploadableProjectFileTypes.other.bridgeBasicData}
+          fileType=""
           title={t("project.other.bridge-basic-data.bridge-basic-data-details")}
         />
       )}
@@ -164,7 +181,7 @@ const BridgeBasicDataList: React.FC<BridgeBasicDataListProps> = ({ model, projec
           },
         }}
         fetchDataFunction={refetch}
-        items={bridgeBasicData || []}
+        items={bridgeBasicDataList || []}
         onPaginationChange={handlePageChange}
       />
     </Box>

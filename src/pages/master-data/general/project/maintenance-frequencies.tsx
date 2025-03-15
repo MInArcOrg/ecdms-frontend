@@ -1,13 +1,14 @@
 import { Fragment } from 'react';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import ProjectGeneralMasterList from 'src/views/pages/master/general/project/project-general-master/project-general-master-list';
 import GeneralMasterLayout from '../general-master-layout';
-import MaintenanceFrequencyMasterList from 'src/views/pages/master/general/project/maintenance-frequency-master/maintenance-frequency-master-list';
 
 function MaintenanceFrequencyMasterData() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <MaintenanceFrequencyMasterList />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.maintenanceFrequency} />
         </Fragment>
       </GeneralMasterLayout>
     </div>

@@ -1,17 +1,18 @@
 import { Fragment } from 'react';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import ProjectGeneralMasterList from 'src/views/pages/master/general/project/project-general-master/project-general-master-list';
 import GeneralMasterLayout from '../general-master-layout';
-import HydrologyDefectMasterList from 'src/views/pages/master/general/project/hydrology-defect-master/hydrology-defect-master-list';
 
-function HydrologyDefects() {
+function HydrologyDefectMasterData() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <HydrologyDefectMasterList />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.hydrologyDefect} />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default HydrologyDefects;
+export default HydrologyDefectMasterData;

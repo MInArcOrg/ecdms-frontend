@@ -1,5 +1,3 @@
-"use client"
-
 import type { FormikProps } from "formik"
 import type { IApiPayload, IApiResponse } from "src/types/requests"
 import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
@@ -7,11 +5,9 @@ import FormPageWrapper from "src/views/shared/form/form-wrapper"
 import * as yup from "yup"
 import BridgeBasicDataForm from "./bridge-basic-data-form"
 
-import { useState } from "react"
-import projectOtherApiService from "src/services/project/project-other-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
-import { uploadFile } from "src/services/utils/file-utils"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import type { BridgeBasicData } from "src/types/project/other"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
 
 interface BridgeBasicDataDrawerType {
   open: boolean
@@ -19,15 +15,11 @@ interface BridgeBasicDataDrawerType {
   refetch: () => void
   bridgeBasicData: BridgeBasicData
   projectId: string
-  model: string
+  otherSubMenu?: OtherMenuRoute
 }
 
 const BridgeBasicDataDrawer = (props: BridgeBasicDataDrawerType) => {
-  const { open, toggle, refetch, bridgeBasicData, projectId, model } = props
-  const [uploadableFile, setUploadableFile] = useState<File | null>(null)
-  const onFileChange = (file: File | null) => {
-    setUploadableFile(file)
-  }
+  const { open, toggle, refetch, bridgeBasicData, projectId, otherSubMenu } = props
 
   const validationSchema = yup.object().shape({
     name: yup.string().required("Name is required"),
@@ -37,28 +29,27 @@ const BridgeBasicDataDrawer = (props: BridgeBasicDataDrawerType) => {
   const isEdit = Boolean(bridgeBasicData?.id)
 
   const createBridgeBasicData = async (body: IApiPayload<BridgeBasicData>) =>
-    projectOtherApiService<BridgeBasicData>().create(model, body)
+    projectOtherApiSecondService<BridgeBasicData>().create(otherSubMenu?.apiRoute || "", body)
 
   const editBridgeBasicData = async (body: IApiPayload<BridgeBasicData>) =>
-    projectOtherApiService<BridgeBasicData>().update(model, bridgeBasicData?.id || "", body)
+    projectOtherApiSecondService<BridgeBasicData>().update(
+      otherSubMenu?.apiRoute || "",
+      bridgeBasicData?.id || "",
+      body,
+    )
 
-  const getPayload = (values: BridgeBasicData) => {
-    return {
-      data: {
-        ...values,
-        id: bridgeBasicData?.id,
-        project_id: projectId,
-      },
-      files: uploadableFile ? [uploadableFile] : [],
-    }
-  }
+  const getPayload = (values: BridgeBasicData): IApiPayload<BridgeBasicData> => ({
+    data: {
+      ...values,
+      project_id: projectId,
+      id: bridgeBasicData?.id,
+    } as BridgeBasicData,
+    files: [],
+  })
 
   const handleClose = () => toggle()
 
   const onActionSuccess = async (response: IApiResponse<BridgeBasicData>, payload: IApiPayload<BridgeBasicData>) => {
-    if (payload.files.length > 0) {
-      uploadFile(payload.files[0], uploadableProjectFileTypes.other.bridgeBasicData, response.payload.id, "", "")
-    }
     refetch()
     handleClose()
   }
@@ -83,7 +74,7 @@ const BridgeBasicDataDrawer = (props: BridgeBasicDataDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<BridgeBasicData>) => {
-            return <BridgeBasicDataForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />
+            return <BridgeBasicDataForm formik={formik} />
           }}
         </FormPageWrapper>
       )}

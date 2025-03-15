@@ -1,3 +1,5 @@
+"use client"
+
 import { Grid } from "@mui/material"
 import type { FormikProps } from "formik"
 import type React from "react"
@@ -5,15 +7,12 @@ import { useTranslation } from "react-i18next"
 import { gridSpacing } from "src/configs/app-constants"
 import type { BridgeBasicData } from "src/types/project/other"
 import CustomTextBox from "src/views/shared/form/custom-text-box"
-import CustomFileUpload from "src/views/shared/form/custome-file-selector"
 
 interface BridgeBasicDataFormProps {
   formik: FormikProps<BridgeBasicData>
-  file: File | null
-  onFileChange: (file: File | null) => void
 }
 
-const BridgeBasicDataForm: React.FC<BridgeBasicDataFormProps> = ({ formik, file, onFileChange }) => {
+const BridgeBasicDataForm: React.FC<BridgeBasicDataFormProps> = ({ formik }) => {
   const { t: transl } = useTranslation()
 
   return (
@@ -27,6 +26,7 @@ const BridgeBasicDataForm: React.FC<BridgeBasicDataFormProps> = ({ formik, file,
           size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-basic-data.details.bridge-name")}
@@ -35,6 +35,7 @@ const BridgeBasicDataForm: React.FC<BridgeBasicDataFormProps> = ({ formik, file,
           size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-basic-data.details.bridge-number")}
@@ -43,6 +44,7 @@ const BridgeBasicDataForm: React.FC<BridgeBasicDataFormProps> = ({ formik, file,
           size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-basic-data.details.bridge-length")}
@@ -50,9 +52,9 @@ const BridgeBasicDataForm: React.FC<BridgeBasicDataFormProps> = ({ formik, file,
           name="bridge_length"
           size="small"
           type="number"
-          step="0.01"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-basic-data.details.bridge-width")}
@@ -60,9 +62,9 @@ const BridgeBasicDataForm: React.FC<BridgeBasicDataFormProps> = ({ formik, file,
           name="bridge_width"
           size="small"
           type="number"
-          step="0.01"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-basic-data.details.construction-year")}
@@ -72,6 +74,7 @@ const BridgeBasicDataForm: React.FC<BridgeBasicDataFormProps> = ({ formik, file,
           type="number"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-basic-data.details.contractor")}
@@ -80,6 +83,7 @@ const BridgeBasicDataForm: React.FC<BridgeBasicDataFormProps> = ({ formik, file,
           size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-basic-data.details.designer")}
@@ -88,6 +92,7 @@ const BridgeBasicDataForm: React.FC<BridgeBasicDataFormProps> = ({ formik, file,
           size="small"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-basic-data.details.bridge-cost")}
@@ -95,9 +100,9 @@ const BridgeBasicDataForm: React.FC<BridgeBasicDataFormProps> = ({ formik, file,
           name="bridge_cost"
           size="small"
           type="number"
-          step="0.01"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-basic-data.details.land-capacity")}
@@ -105,9 +110,9 @@ const BridgeBasicDataForm: React.FC<BridgeBasicDataFormProps> = ({ formik, file,
           name="land_capacity"
           size="small"
           type="number"
-          step="0.01"
           sx={{ mb: 2 }}
         />
+
         <CustomTextBox
           fullWidth
           label={transl("project.other.bridge-basic-data.details.average-daily-traffic")}
@@ -117,10 +122,6 @@ const BridgeBasicDataForm: React.FC<BridgeBasicDataFormProps> = ({ formik, file,
           type="number"
           sx={{ mb: 2 }}
         />
-      </Grid>
-
-      <Grid item xs={12}>
-        <CustomFileUpload label={transl("common.form.file-upload")} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   )
