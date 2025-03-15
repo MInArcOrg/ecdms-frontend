@@ -1,17 +1,18 @@
 import { Fragment } from 'react';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import ProjectGeneralMasterList from 'src/views/pages/master/general/project/project-general-master/project-general-master-list';
 import GeneralMasterLayout from '../general-master-layout';
-import MaintenanceTypeMasterList from 'src/views/pages/master/general/project/maintenance-type-master/maintenance-type-master-list';
 
-function MaintenanceTypes() {
+function MaintenanceTypeMasterData() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <MaintenanceTypeMasterList />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.maintenanceType} />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default MaintenanceTypes;
+export default MaintenanceTypeMasterData;

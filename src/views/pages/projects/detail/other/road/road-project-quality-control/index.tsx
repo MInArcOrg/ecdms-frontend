@@ -1,12 +1,14 @@
 "use client"
 
 import type React from "react"
+
 import { Box } from "@mui/material"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import projectOtherApiService from "src/services/project/project-other-service"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
 import { defaultCreateActionConfig } from "src/types/general/listing"
 import type { RoadProjectQualityControl } from "src/types/project/other"
@@ -17,53 +19,27 @@ import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-det
 import RoadProjectQualityControlCard from "./road-project-quality-control-card"
 import RoadProjectQualityControlDrawer from "./road-project-quality-control-drawer"
 import { roadProjectQualityControlColumns } from "./road-project-quality-control-row"
-import { useQuery } from "@tanstack/react-query"
-import projectPhaseMasterService from "src/services/general/project/project-phase-master-service"
-import inspectionTypeMasterService from "src/services/general/project/inspection-type-master-service"
 
 interface RoadProjectQualityControlListProps {
-  model: string
+  otherSubMenu?: OtherMenuRoute
   typeId: string
   projectId: string
 }
 
-const RoadProjectQualityControlList: React.FC<RoadProjectQualityControlListProps> = ({ model, projectId, typeId }) => {
+const RoadProjectQualityControlList: React.FC<RoadProjectQualityControlListProps> = ({
+  otherSubMenu,
+  projectId,
+  typeId,
+}) => {
   const [showDrawer, setShowDrawer] = useState(false)
   const [showDetailDrawer, setShowDetailDrawer] = useState(false)
   const [selectedRow, setSelectedRow] = useState<RoadProjectQualityControl | null>(null)
   const { t } = useTranslation()
 
-  // Fetch master data for lookups
-  const { data: projectPhases } = useQuery({
-    queryKey: ["masterCategory", "projectPhases"],
-    queryFn: () => projectPhaseMasterService.getAll({}),
-  })
-
-  const { data: inspectionTypes } = useQuery({
-    queryKey: ["masterCategory", "inspectionTypes"],
-    queryFn: () => inspectionTypeMasterService.getAll({}),
-  })
-
-  // Create lookup maps
-  const projectPhaseMap = new Map()
-  const inspectionTypeMap = new Map()
-
-  if (projectPhases?.payload) {
-    projectPhases.payload.forEach((phase) => {
-      projectPhaseMap.set(phase.id, phase.title)
-    })
-  }
-
-  if (inspectionTypes?.payload) {
-    inspectionTypes.payload.forEach((type) => {
-      inspectionTypeMap.set(type.id, type.title)
-    })
-  }
-
   const fetchRoadProjectQualityControls = (
     params: GetRequestParam,
   ): Promise<IApiResponse<RoadProjectQualityControl[]>> => {
-    return projectOtherApiService<RoadProjectQualityControl>().getAll(model, {
+    return projectOtherApiSecondService<RoadProjectQualityControl>().getAll(otherSubMenu?.apiRoute || "", {
       ...params,
       filter: { ...params.filter, project_id: projectId },
     })
@@ -81,28 +57,31 @@ const RoadProjectQualityControlList: React.FC<RoadProjectQualityControlListProps
   })
 
   const toggleDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as RoadProjectQualityControl)
     setShowDrawer(!showDrawer)
   }
 
   const toggleDetailDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as RoadProjectQualityControl)
     setShowDetailDrawer(!showDetailDrawer)
   }
 
   const handleEdit = (roadProjectQualityControl: RoadProjectQualityControl) => {
+    toggleDrawer()
     setSelectedRow(roadProjectQualityControl)
-    setShowDrawer(true)
   }
 
   const handleDelete = async (roadProjectQualityControlId: string) => {
-    await projectOtherApiService<RoadProjectQualityControl>().delete(model, roadProjectQualityControlId)
+    await projectOtherApiSecondService<RoadProjectQualityControl>().delete(
+      otherSubMenu?.apiRoute || "",
+      roadProjectQualityControlId,
+    )
     refetch()
   }
 
   const handleClickDetail = (roadProjectQualityControl: RoadProjectQualityControl) => {
+    toggleDetailDrawer()
     setSelectedRow(roadProjectQualityControl)
-    setShowDetailDrawer(true)
   }
 
   const mapRoadProjectQualityControlToDetailItems = (
@@ -114,11 +93,11 @@ const RoadProjectQualityControlList: React.FC<RoadProjectQualityControlListProps
     },
     {
       title: t("project.other.road-project-quality-control.details.project-phase-id"),
-      value: projectPhaseMap.get(roadProjectQualityControl?.project_phase_id) || "N/A",
+      value: roadProjectQualityControl?.project_phase_id || "N/A",
     },
     {
       title: t("project.other.road-project-quality-control.details.inspection-type-id"),
-      value: inspectionTypeMap.get(roadProjectQualityControl?.inspection_type_id) || "N/A",
+      value: roadProjectQualityControl?.inspection_type_id || "N/A",
     },
     {
       title: t("project.other.road-project-quality-control.details.defect-encountered"),
@@ -132,13 +111,17 @@ const RoadProjectQualityControlList: React.FC<RoadProjectQualityControlListProps
       title: t("common.table-columns.created-at"),
       value: roadProjectQualityControl?.created_at ? formatCreatedAt(roadProjectQualityControl.created_at) : "N/A",
     },
+    {
+      title: t("common.table-columns.updated-at"),
+      value: roadProjectQualityControl?.updated_at ? formatCreatedAt(roadProjectQualityControl.updated_at) : "N/A",
+    },
   ]
 
   return (
     <Box>
       {showDrawer && (
         <RoadProjectQualityControlDrawer
-          model={model}
+          otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
           roadProjectQualityControl={selectedRow as RoadProjectQualityControl}
@@ -151,7 +134,7 @@ const RoadProjectQualityControlList: React.FC<RoadProjectQualityControlListProps
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapRoadProjectQualityControlToDetailItems(selectedRow!)}
+          data={mapRoadProjectQualityControlToDetailItems(selectedRow as RoadProjectQualityControl)}
           hasReference={true}
           id={selectedRow?.id || ""}
           fileType={uploadableProjectFileTypes.other.roadProjectQualityControl}
@@ -164,15 +147,7 @@ const RoadProjectQualityControlList: React.FC<RoadProjectQualityControlListProps
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: roadProjectQualityControlColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-            projectPhaseMap,
-            inspectionTypeMap,
-          ),
+          headers: roadProjectQualityControlColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (

@@ -1,17 +1,15 @@
 import { Grid } from "@mui/material"
+import { useQuery } from "@tanstack/react-query"
 import type { FormikProps } from "formik"
 import type React from "react"
 import { useTranslation } from "react-i18next"
 import { gridSpacing } from "src/configs/app-constants"
+import { projectMasterModels } from "src/constants/master-data/project-general-master-constants"
+import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service"
 import type { RoadProjectQualityControl } from "src/types/project/other"
+import CustomSelect from "src/views/shared/form/custom-select"
 import CustomTextBox from "src/views/shared/form/custom-text-box"
 import CustomFileUpload from "src/views/shared/form/custome-file-selector"
-import CustomSelectBox from "src/views/shared/form/custom-select"
-import CustomTextArea from "src/views/shared/form/custom-text-box"
-import projectPhaseMasterService from "src/services/general/project/project-phase-master-service"
-import inspectionTypeMasterService from "src/services/general/project/inspection-type-master-service"
-
-import { useQuery } from "@tanstack/react-query"
 
 interface RoadProjectQualityControlFormProps {
   formik: FormikProps<RoadProjectQualityControl>
@@ -27,13 +25,19 @@ const RoadProjectQualityControlForm: React.FC<RoadProjectQualityControlFormProps
   const { t: transl } = useTranslation()
 
   const { data: projectPhases } = useQuery({
-    queryKey: ["masterCategory", "projectPhase"],
-    queryFn: () => projectPhaseMasterService.getAll({}),
+    queryKey: ["project-phases"],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.projectPhase.model },
+      }),
   })
 
   const { data: inspectionTypes } = useQuery({
-    queryKey: ["masterCategory", "inspectionType"],
-    queryFn: () => inspectionTypeMasterService.getAll({}),
+    queryKey: ["inspection-types"],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.inspectionType.model },
+      }),
   })
 
   return (
@@ -48,32 +52,34 @@ const RoadProjectQualityControlForm: React.FC<RoadProjectQualityControlFormProps
           sx={{ mb: 2 }}
         />
 
-        <CustomSelectBox
-          size="small"
-          name="project_phase_id"
+        <CustomSelect
+          fullWidth
           label={transl("project.other.road-project-quality-control.details.project-phase-id")}
           placeholder={transl("project.other.road-project-quality-control.details.project-phase-id")}
+          name="project_phase_id"
+          size="small"
+          sx={{ mb: 2 }}
           options={
-            projectPhases?.payload?.map((phase) => ({
-              value: phase.id,
+            projectPhases?.payload.map((phase) => ({
               label: phase.title,
+              value: phase.id,
             })) || []
           }
-          sx={{ mb: 2 }}
         />
 
-        <CustomSelectBox
-          size="small"
-          name="inspection_type_id"
+        <CustomSelect
+          fullWidth
           label={transl("project.other.road-project-quality-control.details.inspection-type-id")}
           placeholder={transl("project.other.road-project-quality-control.details.inspection-type-id")}
+          name="inspection_type_id"
+          size="small"
+          sx={{ mb: 2 }}
           options={
-            inspectionTypes?.payload?.map((type) => ({
-              value: type.id,
+            inspectionTypes?.payload.map((type) => ({
               label: type.title,
+              value: type.id,
             })) || []
           }
-          sx={{ mb: 2 }}
         />
 
         <CustomTextBox
@@ -82,15 +88,19 @@ const RoadProjectQualityControlForm: React.FC<RoadProjectQualityControlFormProps
           placeholder={transl("project.other.road-project-quality-control.details.defect-encountered")}
           name="defect_encountered"
           size="small"
+          multiline
+          rows={3}
           sx={{ mb: 2 }}
         />
 
-        <CustomTextArea
+        <CustomTextBox
           fullWidth
           label={transl("project.other.road-project-quality-control.details.remark")}
           placeholder={transl("project.other.road-project-quality-control.details.remark")}
           name="remark"
           size="small"
+          multiline
+          rows={3}
           sx={{ mb: 2 }}
         />
       </Grid>
