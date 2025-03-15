@@ -1,5 +1,3 @@
-"use client"
-
 import type { FormikProps } from "formik"
 import type { IApiPayload, IApiResponse } from "src/types/requests"
 import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
@@ -7,11 +5,9 @@ import FormPageWrapper from "src/views/shared/form/form-wrapper"
 import * as yup from "yup"
 import BridgeSuperStructureForm from "./bridge-super-structure-form"
 
-import { useState } from "react"
-import projectOtherApiService from "src/services/project/project-other-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
-import { uploadFile } from "src/services/utils/file-utils"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import type { BridgeSuperStructure } from "src/types/project/other"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
 
 interface BridgeSuperStructureDrawerType {
   open: boolean
@@ -19,42 +15,40 @@ interface BridgeSuperStructureDrawerType {
   refetch: () => void
   bridgeSuperStructure: BridgeSuperStructure
   projectId: string
-  model: string
+  otherSubMenu?: OtherMenuRoute
 }
 
 const BridgeSuperStructureDrawer = (props: BridgeSuperStructureDrawerType) => {
-  const { open, toggle, refetch, bridgeSuperStructure, projectId, model } = props
-  const [uploadableFile, setUploadableFile] = useState<File | null>(null)
-  const onFileChange = (file: File | null) => {
-    setUploadableFile(file)
-  }
+  const { open, toggle, refetch, bridgeSuperStructure, projectId, otherSubMenu } = props
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    bridge_name: yup.string().required("Bridge name is required"),
-    bridge_structure_type_id: yup.string().required("Bridge structure type is required"),
-    span_support_type_id: yup.string().required("Span support type is required"),
-    deck_slab_type_id: yup.string().required("Deck slab type is required"),
-  })
+    name: yup.string().required('Name is required'),
+    bridge_name: yup.string().required('Bridge name is required'),
+    bridge_structure_type_id: yup.string().required('Bridge structure type is required'),
+    span_support_type_id: yup.string().required('Span support type is required'),
+    deck_slab_type_id: yup.string().required('Deck slab type is required')
+  });
 
   const isEdit = Boolean(bridgeSuperStructure?.id)
 
   const createBridgeSuperStructure = async (body: IApiPayload<BridgeSuperStructure>) =>
-    projectOtherApiService<BridgeSuperStructure>().create(model, body)
+    projectOtherApiSecondService<BridgeSuperStructure>().create(otherSubMenu?.apiRoute || "", body)
 
   const editBridgeSuperStructure = async (body: IApiPayload<BridgeSuperStructure>) =>
-    projectOtherApiService<BridgeSuperStructure>().update(model, bridgeSuperStructure?.id || "", body)
+    projectOtherApiSecondService<BridgeSuperStructure>().update(
+      otherSubMenu?.apiRoute || "",
+      bridgeSuperStructure?.id || "",
+      body,
+    )
 
-  const getPayload = (values: BridgeSuperStructure) => {
-    return {
-      data: {
-        ...values,
-        id: bridgeSuperStructure?.id,
-        project_id: projectId,
-      },
-      files: uploadableFile ? [uploadableFile] : [],
-    }
-  }
+  const getPayload = (values: BridgeSuperStructure): IApiPayload<BridgeSuperStructure> => ({
+    data: {
+      ...values,
+      project_id: projectId,
+      id: bridgeSuperStructure?.id,
+    } as BridgeSuperStructure,
+    files: [],
+  })
 
   const handleClose = () => toggle()
 
@@ -62,27 +56,20 @@ const BridgeSuperStructureDrawer = (props: BridgeSuperStructureDrawerType) => {
     response: IApiResponse<BridgeSuperStructure>,
     payload: IApiPayload<BridgeSuperStructure>,
   ) => {
-    if (payload.files.length > 0) {
-      uploadFile(payload.files[0], uploadableProjectFileTypes.other.bridgeSuperStructure, response.payload.id, "", "")
-    }
     refetch()
     handleClose()
   }
 
   return (
     <CustomSideDrawer
-      title={`project.other.bridge-super-structure.${
-        isEdit ? `edit-bridge-super-structure` : `create-bridge-super-structure`
-      }`}
+      title={`project.other.bridge-super-structure.${isEdit ? `edit-bridge-super-structure` : `create-bridge-super-structure`}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.bridge-super-structure.${
-            isEdit ? `edit-bridge-super-structure` : `create-bridge-super-structure`
-          }`}
+          title={`project.other.bridge-super-structure.${isEdit ? `edit-bridge-super-structure` : `create-bridge-super-structure`}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
@@ -93,7 +80,7 @@ const BridgeSuperStructureDrawer = (props: BridgeSuperStructureDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<BridgeSuperStructure>) => {
-            return <BridgeSuperStructureForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />
+            return <BridgeSuperStructureForm formik={formik} />
           }}
         </FormPageWrapper>
       )}
@@ -102,4 +89,3 @@ const BridgeSuperStructureDrawer = (props: BridgeSuperStructureDrawerType) => {
 }
 
 export default BridgeSuperStructureDrawer
-

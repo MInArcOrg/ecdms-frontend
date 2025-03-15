@@ -1,13 +1,14 @@
 "use client"
 
 import type React from "react"
+
 import { Box } from "@mui/material"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import projectOtherApiService from "src/services/project/project-other-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { defaultCreateActionConfig } from "src/types/general/listing"
 import type { BridgeSuperStructure } from "src/types/project/other"
 import type { GetRequestParam, IApiResponse } from "src/types/requests"
@@ -17,64 +18,21 @@ import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-det
 import BridgeSuperStructureCard from "./bridge-super-structure-card"
 import BridgeSuperStructureDrawer from "./bridge-super-structure-drawer"
 import { bridgeSuperStructureColumns } from "./bridge-super-structure-row"
-import { useQuery } from "@tanstack/react-query"
-import bridgeStructureTypeMasterService from "src/services/general/project/bridge-structure-type-master-service"
-import spanSupportTypeMasterService from "src/services/general/project/span-support-type-master-service"
-import deckSlabTypeMasterService from "src/services/general/project/deck-slab-type-master-service "
 
 interface BridgeSuperStructureListProps {
-  model: string
+  otherSubMenu?: OtherMenuRoute
   typeId: string
   projectId: string
 }
 
-const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({ model, projectId, typeId }) => {
+const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false)
   const [showDetailDrawer, setShowDetailDrawer] = useState(false)
   const [selectedRow, setSelectedRow] = useState<BridgeSuperStructure | null>(null)
   const { t } = useTranslation()
 
-  // Fetch master data for lookups
-  const { data: bridgeStructureTypes } = useQuery({
-    queryKey: ["masterCategory", "bridgeStructureTypes"],
-    queryFn: () => bridgeStructureTypeMasterService.getAll({}),
-  })
-
-  const { data: spanSupportTypes } = useQuery({
-    queryKey: ["masterCategory", "spanSupportTypes"],
-    queryFn: () => spanSupportTypeMasterService.getAll({}),
-  })
-
-  const { data: deckSlabTypes } = useQuery({
-    queryKey: ["masterCategory", "deckSlabTypes"],
-    queryFn: () => deckSlabTypeMasterService.getAll({}),
-  })
-
-  // Create lookup maps
-  const bridgeStructureTypeMap = new Map()
-  const spanSupportTypeMap = new Map()
-  const deckSlabTypeMap = new Map()
-
-  if (bridgeStructureTypes?.payload) {
-    bridgeStructureTypes.payload.forEach((type) => {
-      bridgeStructureTypeMap.set(type.id, type.title)
-    })
-  }
-
-  if (spanSupportTypes?.payload) {
-    spanSupportTypes.payload.forEach((type) => {
-      spanSupportTypeMap.set(type.id, type.title)
-    })
-  }
-
-  if (deckSlabTypes?.payload) {
-    deckSlabTypes.payload.forEach((type) => {
-      deckSlabTypeMap.set(type.id, type.title)
-    })
-  }
-
   const fetchBridgeSuperStructures = (params: GetRequestParam): Promise<IApiResponse<BridgeSuperStructure[]>> => {
-    return projectOtherApiService<BridgeSuperStructure>().getAll(model, {
+    return projectOtherApiSecondService<BridgeSuperStructure>().getAll(otherSubMenu?.apiRoute || "", {
       ...params,
       filter: { ...params.filter, project_id: projectId },
     })
@@ -92,41 +50,47 @@ const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({ mod
   })
 
   const toggleDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as BridgeSuperStructure)
     setShowDrawer(!showDrawer)
   }
 
   const toggleDetailDrawer = () => {
-    setSelectedRow(null)
+    setSelectedRow({} as BridgeSuperStructure)
     setShowDetailDrawer(!showDetailDrawer)
   }
 
   const handleEdit = (bridgeSuperStructure: BridgeSuperStructure) => {
+    toggleDrawer()
     setSelectedRow(bridgeSuperStructure)
-    setShowDrawer(true)
   }
 
   const handleDelete = async (bridgeSuperStructureId: string) => {
-    await projectOtherApiService<BridgeSuperStructure>().delete(model, bridgeSuperStructureId)
+    await projectOtherApiSecondService<BridgeSuperStructure>().delete(
+      otherSubMenu?.apiRoute || "",
+      bridgeSuperStructureId,
+    )
     refetch()
   }
 
   const handleClickDetail = (bridgeSuperStructure: BridgeSuperStructure) => {
+    toggleDetailDrawer()
     setSelectedRow(bridgeSuperStructure)
-    setShowDetailDrawer(true)
   }
 
   const mapBridgeSuperStructureToDetailItems = (
     bridgeSuperStructure: BridgeSuperStructure,
   ): { title: string; value: string }[] => [
-    { title: t("project.other.bridge-super-structure.details.name"), value: bridgeSuperStructure?.name || "N/A" },
+    {
+      title: t("project.other.bridge-super-structure.details.name"),
+      value: bridgeSuperStructure?.name || "N/A",
+    },
     {
       title: t("project.other.bridge-super-structure.details.bridge-name"),
       value: bridgeSuperStructure?.bridge_name || "N/A",
     },
     {
       title: t("project.other.bridge-super-structure.details.bridge-structure-type-id"),
-      value: bridgeStructureTypeMap.get(bridgeSuperStructure?.bridge_structure_type_id) || "N/A",
+      value: bridgeSuperStructure?.bridge_structure_type_id || "N/A",
     },
     {
       title: t("project.other.bridge-super-structure.details.span-number"),
@@ -154,11 +118,11 @@ const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({ mod
     },
     {
       title: t("project.other.bridge-super-structure.details.span-support-type-id"),
-      value: spanSupportTypeMap.get(bridgeSuperStructure?.span_support_type_id) || "N/A",
+      value: bridgeSuperStructure?.span_support_type_id || "N/A",
     },
     {
       title: t("project.other.bridge-super-structure.details.deck-slab-type-id"),
-      value: deckSlabTypeMap.get(bridgeSuperStructure?.deck_slab_type_id) || "N/A",
+      value: bridgeSuperStructure?.deck_slab_type_id || "N/A",
     },
     {
       title: t("project.other.bridge-super-structure.details.girder-number"),
@@ -180,13 +144,17 @@ const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({ mod
       title: t("common.table-columns.created-at"),
       value: bridgeSuperStructure?.created_at ? formatCreatedAt(bridgeSuperStructure.created_at) : "N/A",
     },
+    {
+      title: t("common.table-columns.updated-at"),
+      value: bridgeSuperStructure?.updated_at ? formatCreatedAt(bridgeSuperStructure.updated_at) : "N/A",
+    },
   ]
 
   return (
     <Box>
       {showDrawer && (
         <BridgeSuperStructureDrawer
-          model={model}
+          otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
           bridgeSuperStructure={selectedRow as BridgeSuperStructure}
@@ -199,10 +167,10 @@ const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({ mod
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapBridgeSuperStructureToDetailItems(selectedRow!)}
-          hasReference={true}
+          data={mapBridgeSuperStructureToDetailItems(selectedRow as BridgeSuperStructure)}
+          hasReference={false}
           id={selectedRow?.id || ""}
-          fileType={uploadableProjectFileTypes.other.bridgeSuperStructure}
+          fileType=""
           title={t("project.other.bridge-super-structure.bridge-super-structure-details")}
         />
       )}
@@ -212,16 +180,7 @@ const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({ mod
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: bridgeSuperStructureColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-            bridgeStructureTypeMap,
-            spanSupportTypeMap,
-            deckSlabTypeMap,
-          ),
+          headers: bridgeSuperStructureColumns(handleClickDetail, handleEdit, handleDelete, t, refetch),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
