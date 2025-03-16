@@ -532,6 +532,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "road-maintenance-data": "Road Maintenance Data",
           "safety-and-health": "Safety And Health",
           "maintenance-histories": "Maintenance Histories",
           "telecom": "Telecom",
@@ -1291,6 +1292,22 @@
           "action-taken": "Action Taken",
           "action-taken-cost": "Action Taken Cost",
           "remark": "Remark"
+        }
+      },
+      "road-maintenance-data": {
+        "title": "Road Maintenance Data",
+        "create-road-maintenance-data": "Create Road Maintenance Data",
+        "edit-road-maintenance-data": "Edit Road Maintenance Data",
+        "road-maintenance-data-details": "Road Maintenance Data Details",
+        "details": {
+          "road-segment": "Road Segment",
+          "maintenance-start-date": "Maintenance Start Date",
+          "maintenance-end-date": "Maintenance End Date",
+          "weather-condition": "Weather Condition",
+          "pavement-condition": "Pavement Condition",
+          "remark": "Remark",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
         }
       }
     },
