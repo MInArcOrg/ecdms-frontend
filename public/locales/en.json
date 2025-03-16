@@ -214,7 +214,10 @@
       "edit-satellite-network-type": "Edit Satellite Network Type",
       "internet-connection-types": "Internet Connection Types",
       "create-internet-connection-type": "Create Internet Connection Type",
-      "edit-internet-connection-type": "Edit Internet Connection Type"
+      "edit-internet-connection-type": "Edit Internet Connection Type",
+      "broadcasting-infrastructure-types": "Broadcasting Infrastructure Types",
+      "create-broadcasting-infrastructure-type": "Create Broadcasting Infrastructure Type",
+      "edit-broadcasting-infrastructure-type": "Edit Broadcasting Infrastructure Type"
     },
     "form": {
       "title": "Title",
