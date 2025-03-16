@@ -1292,6 +1292,23 @@
           "action-taken-cost": "Action Taken Cost",
           "remark": "Remark"
         }
+      },
+      "environmental-data": {
+        "title": "Environmental Data",
+        "create-environmental-data": "Create Environmental Data",
+        "edit-environmental-data": "Edit Environmental Data",
+        "environmental-data-details": "Environmental Data Details",
+        "details": {
+          "remark": "Remark",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
+        },
+        "file-types": {
+          "impact-assessment": "Impact Assessment",
+          "community-feedback": "Community Feedback",
+          "mitigation-measures": "Mitigation Measures"
+        },
+        "see-in-card-view": "See files in card view"
       }
     },
     "columns": {

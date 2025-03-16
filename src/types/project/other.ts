@@ -437,3 +437,12 @@ export interface NetworkCoverage {
   created_at?: string;
   updated_at?: string;
 }
+
+export interface EnvironmentalData {
+  id: string;
+  project_id: string;
+  remark: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
