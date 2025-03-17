@@ -56,10 +56,13 @@ const RoadMaintenanceActivityList: React.FC<RoadMaintenanceActivityListProps> = 
       }),
   })
 
-  // Create maps for quick lookup
-  const maintenanceFrequencyMap = new Map(maintenanceFrequencies?.payload.map((item) => [item.id, item.title]) || [])
+  const maintenanceFrequencyMap = new Map(
+    maintenanceFrequencies?.payload.map((item) => [item.id, item.title || ""]) || []
+  )
 
-  const maintenanceTypeMap = new Map(maintenanceTypes?.payload.map((item) => [item.id, item.title]) || [])
+  const maintenanceTypeMap = new Map(
+    maintenanceTypes?.payload.map((item) => [item.id, item.title || ""]) || []
+  )
 
   const fetchRoadMaintenanceActivities = (
     params: GetRequestParam,
