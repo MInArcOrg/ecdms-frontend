@@ -535,6 +535,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "bridge-inspection": "Bridge Inspection",
           "traffic-volume": "Traffic Volume",
           "road-project-quality-control": "Road Project Quality Control",
           "road-drainage": "Road Drainage",
@@ -1021,6 +1022,23 @@
           "thickness": "Thickness",
           "material": "Material",
           "description": "Description"
+        }
+      },
+      "bridge-inspection": {
+        "title": "Bridge Inspection",
+        "create-bridge-inspection": "Create Bridge Inspection",
+        "edit-bridge-inspection": "Edit Bridge Inspection",
+        "bridge-inspection-details": "Bridge Inspection Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "bridge-part-defect-id": "Bridge Part Defect",
+          "damage-type-id": "Damage Type",
+          "damage-condition-id": "Damage Condition",
+          "hydrology-defect-id": "Hydrology Defect",
+          "maintenance-action": "Maintenance Action",
+          "bridge-history": "Bridge History",
+          "inspector-remark": "Inspector Remark"
         }
       },
       "bridge-structure-information": {

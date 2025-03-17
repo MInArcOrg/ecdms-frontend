@@ -437,12 +437,23 @@ export interface NetworkCoverage {
   created_at?: string;
   updated_at?: string;
 }
-
 export interface BridgeStructureInformation {
   id: string
   project_id: string
   name: string
   bridge_name: string
+  bridge_part_defect_id: string
+  damage_type_id: string
+  damage_condition_id: string
+  hydrology_defect_id: string
+  maintenance_action?: string
+  bridge_history?: string
+  inspector_remark?: string
+  created_at: Date
+  updated_at: Date
+}
+
+export interface BridgeInspection {
   bridge_structure_type_id: string
   east_region?: number
   west_region?: number

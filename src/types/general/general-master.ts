@@ -251,6 +251,23 @@ export interface RecommendedActionUrgency {
   updated_at?: Date;
 }
 
+export interface BridgePartDefect {
+  id: string
+  title?: string
+  description?: string
+  project_type_id: string
+  created_at?: Date
+  updated_at?: Date
+}
+
+export interface DamageType {
+  id: string
+  title?: string
+  description?: string
+  project_type_id: string
+  created_at?: Date
+  updated_at?: Date
+=======
 export interface ProjectPhaseType {
   id: string;
   title?: string;
