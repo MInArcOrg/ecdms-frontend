@@ -85,7 +85,7 @@ const MobileNetworkDrawer = (props: MobileNetworkDrawerType) => {
             base_stations: mobileNetwork?.base_stations || false,
             repeaters: mobileNetwork?.repeaters || false,
             switches: mobileNetwork?.switches || false,
-            others: mobileNetwork?.others || '',
+            others: mobileNetwork?.others || ''
           }}
           createActionFunc={isEdit ? editMobileNetwork : createMobileNetwork}
           onActionSuccess={onActionSuccess}

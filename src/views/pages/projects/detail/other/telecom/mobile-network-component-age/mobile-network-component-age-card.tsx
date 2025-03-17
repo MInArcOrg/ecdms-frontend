@@ -48,7 +48,8 @@ const MobileNetworkComponentAgeCard: React.FC<MobileNetworkComponentAgeCardProps
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.mobile-network-component-age.details.mobile-network-id')}: {mobileNetworkComponentAge?.mobile_network_id || 'N/A'}
+            {t('project.other.mobile-network-component-age.details.mobile-network-id')}:{' '}
+            {mobileNetworkComponentAge?.mobile_network_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.mobile-network-component-age.details.cell')}: {mobileNetworkComponentAge?.cell?.toString() || 'N/A'}
@@ -60,7 +61,8 @@ const MobileNetworkComponentAgeCard: React.FC<MobileNetworkComponentAgeCardProps
             {t('project.other.mobile-network-component-age.details.antennas')}: {mobileNetworkComponentAge?.antennas?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.mobile-network-component-age.details.base-stations')}: {mobileNetworkComponentAge?.base_stations?.toString() || 'N/A'}
+            {t('project.other.mobile-network-component-age.details.base-stations')}:{' '}
+            {mobileNetworkComponentAge?.base_stations?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.mobile-network-component-age.details.repeaters')}: {mobileNetworkComponentAge?.repeaters?.toString() || 'N/A'}

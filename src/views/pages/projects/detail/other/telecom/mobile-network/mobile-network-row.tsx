@@ -97,9 +97,7 @@ export const mobileNetworkColumns = (
     minWidth: 120,
     headerName: t('project.other.mobile-network.details.others'),
     field: 'others',
-    renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.others || t('common.not-available')}</Typography>
-    )
+    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.others || t('common.not-available')}</Typography>
   },
   {
     flex: 0.15,

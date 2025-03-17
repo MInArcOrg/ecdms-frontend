@@ -46,7 +46,7 @@ const MaintenanceHistoryCard: React.FC<MaintenanceHistoryCardProps> = ({ mainten
             {t('project.other.maintenance-history.details.road-segment')}: {maintenanceHistory?.road_segment || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.maintenance-history.details.last-maintenance-date')}: 
+            {t('project.other.maintenance-history.details.last-maintenance-date')}:
             {maintenanceHistory?.last_maintenance_date ? formatCreatedAt(maintenanceHistory.last_maintenance_date) : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">

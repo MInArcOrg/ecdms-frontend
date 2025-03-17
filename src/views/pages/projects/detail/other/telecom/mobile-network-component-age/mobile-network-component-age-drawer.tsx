@@ -64,16 +64,18 @@ const MobileNetworkComponentAgeDrawer = (props: MobileNetworkComponentAgeDrawerT
 
   return (
     <CustomSideDrawer
-      title={`project.other.mobile-network-component-age.${isEdit ? `edit-mobile-network-component-age` : `create-mobile-network-component-age`
-        }`}
+      title={`project.other.mobile-network-component-age.${
+        isEdit ? `edit-mobile-network-component-age` : `create-mobile-network-component-age`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.mobile-network-component-age.${isEdit ? `edit-mobile-network-component-age` : `create-mobile-network-component-age`
-            }`}
+          title={`project.other.mobile-network-component-age.${
+            isEdit ? `edit-mobile-network-component-age` : `create-mobile-network-component-age`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

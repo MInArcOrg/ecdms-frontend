@@ -71,7 +71,9 @@ const MobileNetworkComponentAgeList: React.FC<MobileNetworkComponentAgeListProps
     setSelectedRow(mobileNetworkComponentAge);
   };
 
-  const mapMobileNetworkComponentAgeToDetailItems = (mobileNetworkComponentAge: MobileNetworkComponentAge): { title: string; value: string }[] => [
+  const mapMobileNetworkComponentAgeToDetailItems = (
+    mobileNetworkComponentAge: MobileNetworkComponentAge
+  ): { title: string; value: string }[] => [
     {
       title: t('project.other.mobile-network-component-age.details.mobile-network-id'),
       value: mobileNetworkComponentAge?.mobile_network_id || 'N/A'

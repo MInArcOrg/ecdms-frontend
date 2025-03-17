@@ -554,6 +554,7 @@
           "road-maintenance-data": "Road Maintenance Data",
           "safety-and-health": "Safety And Health",
           "maintenance-histories": "Maintenance Histories",
+          "segment-geometry": "Segment Geometry",
           "intersection-and-driveway": "Intersections and Driveways",
           "telecom": "Telecom",
           "bridge-structure-information": "Bridge Structure Information",
@@ -1333,6 +1334,24 @@
           "remark": "Remarks",
           "created-at": "Created At",
           "updated-at": "Updated At"
+        }
+      },
+      "segment-geometry": {
+        "title": "Segment Geometries",
+        "create-segment-geometry": "Create Segment Geometry",
+        "edit-segment-geometry": "Edit Segment Geometry",
+        "segment-geometry-details": "Segment Geometry Details",
+        "details": {
+          "name": "Name",
+          "carriage-way-width": "Carriage Way Width",
+          "lane-width": "Lane Width",
+          "shoulder-width": "Shoulder Width",
+          "cross-section-type-id": "Cross Section Type",
+          "grade-percentage": "Grade Percentage",
+          "elevation-change": "Elevation Change",
+          "cross-slope-percentage": "Cross Slope Percentage",
+          "property-access-control": "Property Access Control",
+          "similar-for-all-lane": "Similar For All Lanes"
         }
       },
       "intersection-driveway": {

@@ -34,7 +34,6 @@ const NetworkCoverageForm: React.FC<NetworkCoverageFormProps> = ({ projectId, fi
       )
   });
 
-
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
