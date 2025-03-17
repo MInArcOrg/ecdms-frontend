@@ -438,6 +438,21 @@ export interface NetworkCoverage {
   updated_at?: string;
 }
 
+export interface TrafficVolume {
+  id: string
+  project_id: string
+  name: string
+  count_type_id: string
+  count_location_coordinate_x?: number
+  count_location_coordinate_y?: number
+  count_time?: Date
+  lane_number?: number
+  vehicle_number_per_hour?: number
+  average_daily_traffic_volume?: number
+  corridor_importance_level?: number
+  created_at: Date
+  updated_at: Date
+}
 export interface RoadProjectQualityControl {
   id: string
   project_id: string

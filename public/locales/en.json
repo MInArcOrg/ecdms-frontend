@@ -535,6 +535,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "traffic-volume": "Traffic Volume",
           "road-project-quality-control": "Road Project Quality Control",
           "road-drainage": "Road Drainage",
           "road-maintenance-data": "Road Maintenance Data",
@@ -1021,6 +1022,21 @@
           "description": "Description"
         }
       },
+      "traffic-volume": {
+        "title": "Traffic Volume",
+        "create-traffic-volume": "Create Traffic Volume",
+        "edit-traffic-volume": "Edit Traffic Volume",
+        "traffic-volume-details": "Traffic Volume Details",
+        "details": {
+          "name": "Name",
+          "count-type-id": "Count Type",
+          "count-location-coordinate-x": "Count Location Coordinate X",
+          "count-location-coordinate-y": "Count Location Coordinate Y",
+          "count-time": "Count Time",
+          "lane-number": "Lane Number",
+          "vehicle-number-per-hour": "Vehicle Number Per Hour",
+          "average-daily-traffic-volume": "Average Daily Traffic Volume",
+          "corridor-importance-level": "Corridor Importance Level"
       "road-project-quality-control": {
         "title": "Road Project Quality Control",
         "create-road-project-quality-control": "Create Road Project Quality Control",
