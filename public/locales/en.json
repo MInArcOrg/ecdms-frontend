@@ -214,7 +214,10 @@
       "edit-satellite-network-type": "Edit Satellite Network Type",
       "internet-connection-types": "Internet Connection Types",
       "create-internet-connection-type": "Create Internet Connection Type",
-      "edit-internet-connection-type": "Edit Internet Connection Type"
+      "edit-internet-connection-type": "Edit Internet Connection Type",
+      "broadcasting-infrastructure-types": "Broadcasting Infrastructure Types",
+      "create-broadcasting-infrastructure-type": "Create Broadcasting Infrastructure Type",
+      "edit-broadcasting-infrastructure-type": "Edit Broadcasting Infrastructure Type"
     },
     "form": {
       "title": "Title",
@@ -533,6 +536,7 @@
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
           "road-drainage": "Road Drainage",
+          "road-maintenance-data": "Road Maintenance Data",
           "safety-and-health": "Safety And Health",
           "maintenance-histories": "Maintenance Histories",
           "telecom": "Telecom",
@@ -1311,6 +1315,22 @@
           "action-taken": "Action Taken",
           "action-taken-cost": "Action Taken Cost",
           "remark": "Remark"
+        }
+      },
+      "road-maintenance-data": {
+        "title": "Road Maintenance Data",
+        "create-road-maintenance-data": "Create Road Maintenance Data",
+        "edit-road-maintenance-data": "Edit Road Maintenance Data",
+        "road-maintenance-data-details": "Road Maintenance Data Details",
+        "details": {
+          "road-segment": "Road Segment",
+          "maintenance-start-date": "Maintenance Start Date",
+          "maintenance-end-date": "Maintenance End Date",
+          "weather-condition": "Weather Condition",
+          "pavement-condition": "Pavement Condition",
+          "remark": "Remark",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
         }
       }
     },
