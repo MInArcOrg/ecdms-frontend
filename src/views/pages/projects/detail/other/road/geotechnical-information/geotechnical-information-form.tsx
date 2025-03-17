@@ -1,6 +1,7 @@
 "use client"
 
 import { Grid, FormControlLabel, Switch } from "@mui/material"
+import { useQuery } from "@tanstack/react-query"
 import type { FormikProps } from "formik"
 import type React from "react"
 import { useTranslation } from "react-i18next"
@@ -9,6 +10,9 @@ import type { GeotechnicalInformation } from "src/types/project/other"
 import CustomTextBox from "src/views/shared/form/custom-text-box"
 import CustomFileUpload from "src/views/shared/form/custome-file-selector"
 import CustomSelect from "src/views/shared/form/custom-select"
+import { projectMasterModels } from "src/constants/master-data/project-general-master-constants"
+import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service"
+
 
 interface GeotechnicalInformationFormProps {
   formik: FormikProps<GeotechnicalInformation>
@@ -20,28 +24,34 @@ interface GeotechnicalInformationFormProps {
   onFileChange: (fileType: string, file: File | null) => void
 }
 
-// Mock data for dropdowns - replace with actual data sources
-const soilTypes = [
-  { id: "soil-type-1", name: "Clay" },
-  { id: "soil-type-2", name: "Sand" },
-  { id: "soil-type-3", name: "Silt" },
-  { id: "soil-type-4", name: "Rock" },
-]
-
-const groundWaterImpacts = [
-  { id: "impact-1", name: "Low" },
-  { id: "impact-2", name: "Medium" },
-  { id: "impact-3", name: "High" },
-]
-
-const slopeStabilities = [
-  { id: "stability-1", name: "Stable" },
-  { id: "stability-2", name: "Moderate" },
-  { id: "stability-3", name: "Unstable" },
-]
 
 const GeotechnicalInformationForm: React.FC<GeotechnicalInformationFormProps> = ({ formik, files, onFileChange }) => {
   const { t: transl } = useTranslation()
+
+  const { data: soilTypes } = useQuery({
+    queryKey: ["soil-types"],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.soilType.model },
+      }),
+  })
+
+  const { data: groundWaterImpacts } = useQuery({
+    queryKey: ["ground-water-impacts"],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.groundWaterImpact.model },
+      }),
+  })
+
+  const { data: slopeStabilities } = useQuery({
+    queryKey: ["slope-stabilities"],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.slopeStability.model },
+      }),
+  })
+
 
   return (
     <Grid container spacing={gridSpacing}>
@@ -60,7 +70,12 @@ const GeotechnicalInformationForm: React.FC<GeotechnicalInformationFormProps> = 
           fullWidth
           label={transl("project.other.geotechnical-information.details.soil-type")}
           name="soil_type_id"
-          options={soilTypes.map((type) => ({ value: type.id, label: type.name }))}
+          options={
+            soilTypes?.payload.map((type) => ({
+              label: type.title,
+              value: type.id,
+            })) || []
+          }
           size="small"
         />
       </Grid>
@@ -70,7 +85,12 @@ const GeotechnicalInformationForm: React.FC<GeotechnicalInformationFormProps> = 
           fullWidth
           label={transl("project.other.geotechnical-information.details.ground-water-impact")}
           name="ground_water_impact_id"
-          options={groundWaterImpacts.map((impact) => ({ value: impact.id, label: impact.name }))}
+          options={
+            groundWaterImpacts?.payload.map((type) => ({
+              label: type.title,
+              value: type.id,
+            })) || []
+          }
           size="small"
         />
       </Grid>
@@ -91,7 +111,12 @@ const GeotechnicalInformationForm: React.FC<GeotechnicalInformationFormProps> = 
           fullWidth
           label={transl("project.other.geotechnical-information.details.slope-stability")}
           name="slope_stability_id"
-          options={slopeStabilities.map((stability) => ({ value: stability.id, label: stability.name }))}
+          options={
+            slopeStabilities?.payload.map((type) => ({
+              label: type.title,
+              value: type.id,
+            })) || []
+          }
           size="small"
         />
       </Grid>

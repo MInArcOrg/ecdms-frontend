@@ -11,7 +11,7 @@ function Index() {
   const baseUrl = `/projects/${typeId}/details/${id}/other`
   const activeMenu = 8
   const activeType = 2 
-  const activeSubType = 46
+  const activeSubType = 47
 
   return (
     <ProjectOtherLayout
