@@ -422,7 +422,16 @@ export const projectMasterModels = {
     createTitle: 'create-weather-condition-during-incident',
     editTitle: 'edit-weather-condition-during-incident',
     fileType: 'WEATHER_CONDITION_DURING_INCIDENT'
-  }
+  },
+  broadcastingInfrastructureType: {
+    model: 'BroadcastingInfrastructureType',
+    dbModel: 'broadcastinginfrastructuretype',
+    title: 'broadcasting-infrastructure-types',
+    createTitle: 'create-broadcasting-infrastructure-type',
+    editTitle: 'edit-broadcasting-infrastructure-type',
+    fileType: 'BROADCASTING_INFRASTRUCTURE_TYPE'
+  },
+
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
