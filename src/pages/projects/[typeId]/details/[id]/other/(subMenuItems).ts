@@ -94,6 +94,12 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           apiRoute: 'road-surface-conditions'
         },
         {
+          id: 35,
+          title: t("project.navigation.submenu.others.bridge-area-data"),
+          path: `${baseUrl}/road/bridge-area-data`,
+          model: "bridgeareadata",
+          apiRoute: "bridge-area-datas",
+        },{
           id: 36,
           title: t("project.navigation.submenu.others.bridge-super-structure"),
           path: `${baseUrl}/road/bridge-super-structure`,
@@ -124,7 +130,7 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/road/bridge-structure-information`,
           model: "bridgestructureinformation",
           apiRoute: "bridge-structure-informations",
-        },
+        },{
           id: 41,
           title: t("project.navigation.submenu.others.traffic-volume"),
           path: `${baseUrl}/road/traffic-volume`,

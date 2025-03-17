@@ -439,6 +439,7 @@ export interface NetworkCoverage {
 }
 
 
+
 export interface BridgeFoundation {
   id: string;
   project_id: string;
@@ -478,6 +479,20 @@ export interface BridgeStructureInformation {
   project_id: string
   name: string
   bridge_name: string
+  river_width?: number
+  highest_water_level?: number
+  lowest_water_level?: number
+  area_topography_id: string
+  detour_possibility?: boolean
+  road_alignment?: string
+  altitude?: number
+  load_limit_sign?: boolean
+  created_at: Date
+  updated_at: Date
+}
+export interface BridgeAreaData {
+  id: string
+  project_id: string
   bridge_structure_type_id: string
   span_number?: number
   span_composition?: string
