@@ -111,7 +111,7 @@ export const uploadableProjectFileTypes = {
     maintenance: "MAINTENANCE",
     infrastructureImage: "INFRASTRUCTURE_IMAGE",
     maintenanceData: "MAINTENANCE_DATA",
-    networkCapacity: "NETWORK_CAPACITY"
+    networkCapacity: "NETWORK_CAPACITY",
     environmentalControl: 'ENVIRONMENTAL_CONTROL',
   }
 } as const;
