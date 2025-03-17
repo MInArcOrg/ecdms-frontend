@@ -454,3 +454,62 @@ export interface BridgeStructureInformation {
   created_at: Date
   updated_at: Date
 }
+export interface TrafficVolume {
+  id: string
+  project_id: string
+  name: string
+  count_type_id: string
+  count_location_coordinate_x?: number
+  count_location_coordinate_y?: number
+  count_time?: Date
+  lane_number?: number
+  vehicle_number_per_hour?: number
+  average_daily_traffic_volume?: number
+  corridor_importance_level?: number
+  created_at: Date
+  updated_at: Date
+}
+export interface RoadProjectQualityControl {
+  id: string
+  project_id: string
+  name: string
+  project_phase_id: string
+  inspection_type_id: string
+  defect_encountered?: string
+}
+export interface RoadDrainage {
+  id: string
+  project_id: string
+  name: string
+  length?: number
+  height?: number
+  width?: number
+  current_condition_id: string
+  weight_limit?: number
+  design_life_span?: number
+  inspection_frequency?: number
+  construction_completion_year?: number
+  remark?: string
+  created_at: Date
+  updated_at: Date
+}
+export interface EnvironmentalData {
+  id: string;
+  project_id: string;
+  remark: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface RoadMaintenanceData {
+  id: string
+  project_id: string
+  road_segment: string
+  maintenance_start_date?: Date
+  maintenance_end_date?: Date
+  weather_condition?: string
+  pavement_condition?: string
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}
