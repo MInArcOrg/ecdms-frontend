@@ -439,7 +439,42 @@ export interface NetworkCoverage {
 }
 
 
-export interface BridgeAreaData {
+
+export interface BridgeFoundation {
+  id: string;
+  project_id: string;
+  name: string;
+  bridge_name: string;
+  abutment_a1_height?: number;
+  abutment_a1_width?: number;
+  abutment_a2_height?: number;
+  abutment_a2_width?: number;
+  wing_wall_length?: number;
+  pier_type_id: string;
+  piers_number?: number;
+  piers_dimension?: string;
+  pier1_height?: number;
+  pier1_width?: number;
+  pier2_height?: number;
+  pier2_width?: number;
+  created_at: Date;
+  updated_at: Date;
+}
+
+export interface BridgeSubStructure {
+  abutment_type_id: string;
+  pier_type_id: string;
+  abutment_foundation_size?: number;
+  pier_foundation_size?: number;
+  abutment_pile_number?: number;
+  pier_pile_number?: number;
+  abutment_pile_depth?: number;
+  pier_pile_depth?: number;
+  soil_type_id: string;
+  created_at: Date;
+  updated_at: Date;
+}
+export interface BridgeStructureInformation {
   id: string
   project_id: string
   name: string
@@ -454,4 +489,109 @@ export interface BridgeAreaData {
   load_limit_sign?: boolean
   created_at: Date
   updated_at: Date
+}
+export interface BridgeAreaData {
+  id: string
+  project_id: string
+  bridge_structure_type_id: string
+  span_number?: number
+  span_composition?: string
+  total_span_length?: number
+  carriage_width?: number
+  side_walk_width?: number
+  lane_number?: number
+  span_support_type_id: string
+  deck_slab_type_id: string
+  girder_number?: number
+  girder_depth?: number
+  girder_spacing?: number
+  girder_width?: number
+  created_at: Date
+  updated_at: Date
+}
+export interface BridgeSuperStructure {
+  id: string
+  project_id: string
+  name: string
+  bridge_part_defect_id: string
+  damage_type_id: string
+  damage_condition_id: string
+  hydrology_defect_id: string
+  maintenance_action?: string
+  bridge_history?: string
+  inspector_remark?: string
+  created_at: Date
+  updated_at: Date
+}
+
+export interface BridgeInspection {
+  bridge_structure_type_id: string
+  east_region?: number
+  west_region?: number
+  central_region?: number
+  north_region?: number
+  south_region?: number
+  ring_road?: number
+  remark?: string
+  created_at: Date
+  updated_at: Date
+}
+export interface TrafficVolume {
+  id: string
+  project_id: string
+  name: string
+  count_type_id: string
+  count_location_coordinate_x?: number
+  count_location_coordinate_y?: number
+  count_time?: Date
+  lane_number?: number
+  vehicle_number_per_hour?: number
+  average_daily_traffic_volume?: number
+  corridor_importance_level?: number
+  created_at: Date
+  updated_at: Date
+}
+export interface RoadProjectQualityControl {
+  id: string
+  project_id: string
+  name: string
+  project_phase_id: string
+  inspection_type_id: string
+  defect_encountered?: string
+}
+export interface RoadDrainage {
+  id: string
+  project_id: string
+  name: string
+  length?: number
+  height?: number
+  width?: number
+  current_condition_id: string
+  weight_limit?: number
+  design_life_span?: number
+  inspection_frequency?: number
+  construction_completion_year?: number
+  remark?: string
+  created_at: Date
+  updated_at: Date
+}
+export interface EnvironmentalData {
+  id: string;
+  project_id: string;
+  remark: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface RoadMaintenanceData {
+  id: string
+  project_id: string
+  road_segment: string
+  maintenance_start_date?: Date
+  maintenance_end_date?: Date
+  weather_condition?: string
+  pavement_condition?: string
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
 }
