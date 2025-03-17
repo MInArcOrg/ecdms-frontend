@@ -776,3 +776,20 @@ export interface BridgeStructureInformation {
   created_at?: Date;
   updated_at?: Date;
 }
+export interface EnvironmentalControl {
+
+}
+
+export interface DataCenter {
+  id: string;
+  project_id: string;
+  data_center_type_id: string;
+  servers?: boolean;
+  storage_devices?: boolean;
+  networking_equipment?: boolean;
+  cooling_systems?: boolean;
+  backup_generators?: boolean;
+  others?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}

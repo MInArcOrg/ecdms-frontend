@@ -96,10 +96,12 @@ export const uploadableProjectFileTypes = {
     mobileNetwork: 'MOBILE_NETWORK',
     mobileNetworkComponentAge: 'MOBILE_NETWORK_COMPONENT_AGE',
     networkCoverage: 'NETWORK_COVERAGE',
+    dataCenter: 'DATA_CENTER',
     environmentalData: 'ENVIRONMENTAL_DATA',
     environmentalImpactAssessment: 'ENVIRONMENTAL_IMPACT_ASSESSMENT',
     communityFeedback: 'COMMUNITY_FEEDBACK',
     mitigationMeasures: 'MITIGATION_MEASURES',
+
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
