@@ -84,13 +84,20 @@ export const uploadableProjectFileTypes = {
     spillwayInfo: 'SPILLWAY_INFO',
     irrigationCapacity: 'IRRIGATION_CAPACITY',
     waterIrrigationDam: 'WATER_IRRIGATION_DAM',
+    bridgeInspection: 'BRIDGE_INSPECTION',
+    roadProjectQualityControl: 'ROAD_PROJECT_QUALITY_CONTROL',
+    roadDrainage: 'ROAD_DRAINAGE',
     drainageAssessment: 'DRAINAGE_ASSESSMENT',
     safetyAndHealth: 'SAFTEY_AND_HEALTH',
     maintenanceHistory: 'MAINTENANCE_HISTORY',
     roadSurfaceCondition: 'ROAD_SURFACE_CONDITION',
     mobileNetwork: 'MOBILE_NETWORK',
     mobileNetworkComponentAge: 'MOBILE_NETWORK_COMPONENT_AGE',
-    networkCoverage: 'NETWORK_COVERAGE'
+    networkCoverage: 'NETWORK_COVERAGE',
+    environmentalData: 'ENVIRONMENTAL_DATA',
+    environmentalImpactAssessment: 'ENVIRONMENTAL_IMPACT_ASSESSMENT',
+    communityFeedback: 'COMMUNITY_FEEDBACK',
+    mitigationMeasures: 'MITIGATION_MEASURES',
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
