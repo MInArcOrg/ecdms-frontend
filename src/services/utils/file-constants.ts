@@ -103,7 +103,8 @@ export const uploadableProjectFileTypes = {
     seismicDesign: 'SEISMIC_DESIGN',
     geotechnicalReport: 'GEOTECHNICAL_REPORT',
     foundationDesign: 'FOUNDATION_DESIGN',
-    geotechnicalInformation: 'GEOTECHNICAL_INFORMATION'
+    geotechnicalInformation: 'GEOTECHNICAL_INFORMATION',
+    maintenanceRecord: "MAINTENANCE_RECORD"
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

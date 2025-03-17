@@ -791,3 +791,15 @@ export interface GeotechnicalInformation {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface RoadMaintenanceActivity {
+  id: string;
+  project_id: string;
+  road_segment: string;
+  maintenance_frequency_id?: string;
+  maintenance_type_id?: string;
+  consultant?: string;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}

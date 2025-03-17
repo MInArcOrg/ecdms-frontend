@@ -1756,6 +1756,19 @@
           "geotechnical-report": "Geotechnical Report",
           "foundation-design": "Foundation Design"
         }
+      },
+      "road-maintenance-activity": {
+        "title": "Road Maintenance Activity",
+        "create-road-maintenance-activity": "Create Road Maintenance Activity",
+        "edit-road-maintenance-activity": "Edit Road Maintenance Activity",
+        "road-maintenance-activity-details": "Road Maintenance Activity Details",
+        "details": {
+          "road-segment": "Road Segment",
+          "maintenance-frequency": "Maintenance Frequency",
+          "maintenance-type": "Maintenance Type",
+          "consultant": "Consultant",
+          "remark": "Remark"
+        }
       }
     }
   },
