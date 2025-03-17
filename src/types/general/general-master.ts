@@ -267,7 +267,8 @@ export interface DamageType {
   project_type_id: string
   created_at?: Date
   updated_at?: Date
-=======
+}
+
 export interface ProjectPhaseType {
   id: string;
   title?: string;

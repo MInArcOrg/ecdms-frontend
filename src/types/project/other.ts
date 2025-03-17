@@ -437,6 +437,25 @@ export interface NetworkCoverage {
   created_at?: string;
   updated_at?: string;
 }
+
+
+export interface BridgeFoundation {
+  id: string;
+  project_id: string;
+  name: string;
+  bridge_name: string;
+  abutment_type_id: string;
+  pier_type_id: string;
+  abutment_foundation_size?: number;
+  pier_foundation_size?: number;
+  abutment_pile_number?: number;
+  pier_pile_number?: number;
+  abutment_pile_depth?: number;
+  pier_pile_depth?: number;
+  soil_type_id: string;
+  created_at: Date;
+  updated_at: Date;
+}
 export interface BridgeStructureInformation {
   id: string
   project_id: string

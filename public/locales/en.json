@@ -535,6 +535,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "bridge-foundation": "Bridge Foundation",
           "bridge-inspection": "Bridge Inspection",
           "traffic-volume": "Traffic Volume",
           "road-project-quality-control": "Road Project Quality Control",
@@ -1022,6 +1023,25 @@
           "thickness": "Thickness",
           "material": "Material",
           "description": "Description"
+        }
+      },
+      "bridge-foundation": {
+        "title": "Bridge Foundation",
+        "create-bridge-foundation": "Create Bridge Foundation",
+        "edit-bridge-foundation": "Edit Bridge Foundation",
+        "bridge-foundation-details": "Bridge Foundation Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "abutment-type-id": "Abutment Type",
+          "pier-type-id": "Pier Type",
+          "abutment-foundation-size": "Abutment Foundation Size",
+          "pier-foundation-size": "Pier Foundation Size",
+          "abutment-pile-number": "Number of Abutment Piles",
+          "pier-pile-number": "Number of Pier Piles",
+          "abutment-pile-depth": "Abutment Pile Depth",
+          "pier-pile-depth": "Pier Pile Depth",
+          "soil-type-id": "Soil Type"
         }
       },
       "bridge-inspection": {
