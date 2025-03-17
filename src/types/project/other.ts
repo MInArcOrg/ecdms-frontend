@@ -421,7 +421,6 @@ export interface MobileNetworkComponentAge {
   updated_at?: string;
 }
 
-
 export interface NetworkCoverage {
   id: string;
   project_id: string;
@@ -433,6 +432,18 @@ export interface NetworkCoverage {
   average_download_speed?: number;
   average_upload_speed?: number;
   signal_strength?: number;
+  others?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+// Internet Connection model
+export interface InternetConnectionInfrastructureAge {
+  id: string;
+  internet_connection_id: string;
+  routers?: number;
+  switches?: number;
+  modems?: number;
+  cables?: number;
   others?: string;
   created_at?: string;
   updated_at?: string;
