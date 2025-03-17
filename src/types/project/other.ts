@@ -803,3 +803,21 @@ export interface RoadMaintenanceActivity {
   created_at?: Date;
   updated_at?: Date;
 }
+
+
+export interface TelecomInfrastructureComponent {
+  id: string
+  project_id: string
+  mobile_network_type_id: string
+  cables?: number
+  wires?: number
+  routers?: number
+  switches?: number
+  hubs?: number
+  repeaters?: number
+  antennas?: number
+  towers?: number
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}

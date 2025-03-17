@@ -104,7 +104,8 @@ export const uploadableProjectFileTypes = {
     geotechnicalReport: 'GEOTECHNICAL_REPORT',
     foundationDesign: 'FOUNDATION_DESIGN',
     geotechnicalInformation: 'GEOTECHNICAL_INFORMATION',
-    maintenanceRecord: "MAINTENANCE_RECORD"
+    maintenanceRecord: "MAINTENANCE_RECORD",
+    telecomInfrastructureComponent: "TELECOM_INFRASTRUCTURE_COMPONENT"
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

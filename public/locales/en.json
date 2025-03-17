@@ -582,7 +582,8 @@
           "water-irrigation-dam": "Water Irrigation Dam",
           "port": "Port",
           "drainage-assessment": "Drainage Assessment",
-          "road-surface-conditions": "Road Surface Conditions"
+          "road-surface-conditions": "Road Surface Conditions",
+          "telecom-infrastructure-component": "Telecom Infrastructure Component"
         }
       }
     },
@@ -1767,6 +1768,24 @@
           "maintenance-frequency": "Maintenance Frequency",
           "maintenance-type": "Maintenance Type",
           "consultant": "Consultant",
+          "remark": "Remark"
+        }
+      },
+      "telecom-infrastructure-component": {
+        "title": "Telecom Infrastructure Component",
+        "create-telecom-infrastructure-component": "Create Telecom Infrastructure Component",
+        "edit-telecom-infrastructure-component": "Edit Telecom Infrastructure Component",
+        "telecom-infrastructure-component-details": "Telecom Infrastructure Component Details",
+        "details": {
+          "mobile-network-type": "Mobile Network Type",
+          "cables": "Cables",
+          "wires": "Wires",
+          "routers": "Routers",
+          "switches": "Switches",
+          "hubs": "Hubs",
+          "repeaters": "Repeaters",
+          "antennas": "Antennas",
+          "towers": "Towers",
           "remark": "Remark"
         }
       }

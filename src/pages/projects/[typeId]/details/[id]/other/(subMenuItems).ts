@@ -281,7 +281,14 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/telecom/network-coverage`,
           model: 'networkcoverage',
           apiRoute: 'network-coverages'
-        }
+        },
+        {
+          id: 51,
+          title: t("project.navigation.submenu.others.telecom-infrastructure-component"),
+          path: `${baseUrl}/telecom/telecom-infrastructure-component`,
+          model: "telecominfrastructurecomponent",
+          apiRoute: "telecom-infrastructure-components",
+        },
       ]
     },
 
