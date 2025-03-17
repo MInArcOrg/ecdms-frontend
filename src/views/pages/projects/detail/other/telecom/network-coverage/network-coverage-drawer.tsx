@@ -71,7 +71,7 @@ const NetworkCoverageDrawer = (props: NetworkCoverageDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...networkCoverage,
+            ...networkCoverage
           }}
           createActionFunc={isEdit ? editNetworkCoverage : createNetworkCoverage}
           onActionSuccess={onActionSuccess}

@@ -94,6 +94,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           apiRoute: 'road-surface-conditions'
         },
         {
+          id: 27,
+          title: t('project.navigation.submenu.others.segment-geometry'),
+          path: `${baseUrl}/road/segment-geometry`,
+          model: 'segmentgeometry',
+          apiRoute: 'segment-geometries'
+        },
+        {
           id: 28,
           title: t("project.navigation.submenu.others.intersection-driveway"),
           path: `${baseUrl}/road/intersection-driveway`,

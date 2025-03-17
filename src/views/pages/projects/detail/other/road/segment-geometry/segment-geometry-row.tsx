@@ -1,19 +1,21 @@
+'use client';
+
 import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import { GridColDef } from '@mui/x-data-grid';
+import type { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import { MaintenanceHistory } from 'src/types/project/other';
+import type { SegmentGeometry } from 'src/types/project/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
-  row: MaintenanceHistory;
+  row: SegmentGeometry;
 }
 
-export const maintenanceHistoryColumns = (
-  onDetail: (maintenanceHistory: MaintenanceHistory) => void,
-  onEdit: (maintenanceHistory: MaintenanceHistory) => void,
+export const segmentGeometryColumns = (
+  onDetail: (segmentGeometry: SegmentGeometry) => void,
+  onEdit: (segmentGeometry: SegmentGeometry) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void
@@ -38,51 +40,39 @@ export const maintenanceHistoryColumns = (
       </Typography>
     )
   },
+
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t('project.other.maintenance-history.details.road-segment'),
-    field: 'road_segment',
+    headerName: t('project.other.segment-geometry.details.name'),
+    field: 'name',
+    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.name || t('common.not-available')}</Typography>
+  },
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t('project.other.segment-geometry.details.cross-section-type'),
+    field: 'cross_section_type_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.road_segment || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.cross_section_type_id || t('common.not-available')}</Typography>
     )
   },
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t('project.other.maintenance-history.details.last-maintenance-date'),
-    field: 'last_maintenance_date',
+    headerName: t('project.other.segment-geometry.details.carriage-way-width'),
+    field: 'carriage_way_width',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>
-        {row?.last_maintenance_date ? formatCreatedAt(row.last_maintenance_date) : t('common.not-available')}
-      </Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.carriage_way_width || t('common.not-available')}</Typography>
     )
   },
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t('project.other.maintenance-history.details.maintenance-type'),
-    field: 'maintenance_type_id',
+    headerName: t('project.other.segment-geometry.details.lane-width'),
+    field: 'lane_width',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.maintenance_type_id || t('common.not-available')}</Typography>
-    )
-  },
-  {
-    flex: 0.15,
-    minWidth: 120,
-    headerName: t('project.other.maintenance-history.details.severity-level'),
-    field: 'severity_level_id',
-    renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.severity_level_id || t('common.not-available')}</Typography>
-    )
-  },
-  {
-    flex: 0.15,
-    minWidth: 120,
-    headerName: t('project.other.maintenance-history.details.suggested-repair'),
-    field: 'suggested_repair_id',
-    renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.suggested_repair_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.lane_width || t('common.not-available')}</Typography>
     )
   },
   {
@@ -100,14 +90,14 @@ export const maintenanceHistoryColumns = (
     renderCell: ({ row }: CellType) => (
       <Fragment>
         <ModelAction
-          model="MaintenanceHistory"
+          model="SegmentGeometry"
           model_id={row.id}
           refetchModel={refetch}
-          resubmit={function (): void {
+          resubmit={(): void => {
             throw new Error('Function not implemented.');
           }}
           title=""
-          postAction={function (): void {
+          postAction={(): void => {
             throw new Error('Function not implemented.');
           }}
         />
@@ -118,11 +108,11 @@ export const maintenanceHistoryColumns = (
           options={[]}
           deletePermissionRule={{
             action: 'delete',
-            subject: 'maintenancehistory'
+            subject: 'segmentgeometry'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'maintenancehistory'
+            subject: 'segmentgeometry'
           }}
         />
       </Fragment>

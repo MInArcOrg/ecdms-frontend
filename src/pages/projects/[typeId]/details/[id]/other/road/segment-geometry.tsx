@@ -11,7 +11,7 @@ function Index() {
   const baseUrl = `/projects/${typeId}/details/${id}/other`;
   const activeMenu = 8;
   const activeType = 2;
-  const activeSubType = 24; // Assuming this is the next ID after drainage-assessment
+  const activeSubType = 27;
 
   return (
     <ProjectOtherLayout

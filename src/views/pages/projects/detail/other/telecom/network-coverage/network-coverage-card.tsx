@@ -42,19 +42,22 @@ const NetworkCoverageCard: React.FC<NetworkCoverageCardProps> = ({ networkCovera
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.network-coverage.details.network-infrastructure-type')}: {networkCoverage?.networkinfrastructuretype?.id || 'N/A'}
+            {t('project.other.network-coverage.details.network-infrastructure-type')}:{' '}
+            {networkCoverage?.networkinfrastructuretype?.id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.network-coverage.details.total-coverage-area')}: {networkCoverage?.total_coverage_area?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.network-coverage.details.coverage-population-number')}: {networkCoverage?.coverage_population_number?.toString() || 'N/A'}
+            {t('project.other.network-coverage.details.coverage-population-number')}:{' '}
+            {networkCoverage?.coverage_population_number?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.network-coverage.details.active-users-number')}: {networkCoverage?.active_users_number?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.network-coverage.details.average-download-speed')}: {networkCoverage?.average_download_speed?.toString() || 'N/A'}
+            {t('project.other.network-coverage.details.average-download-speed')}:{' '}
+            {networkCoverage?.average_download_speed?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.network-coverage.details.average-upload-speed')}: {networkCoverage?.average_upload_speed?.toString() || 'N/A'}

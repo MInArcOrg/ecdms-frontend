@@ -421,7 +421,6 @@ export interface MobileNetworkComponentAge {
   updated_at?: string;
 }
 
-
 export interface NetworkCoverage {
   id: string;
   project_id: string;
@@ -438,6 +437,22 @@ export interface NetworkCoverage {
   updated_at?: string;
 }
 
+export interface SegmentGeometry {
+  id: string;
+  project_id: string;
+  name: string;
+  carriage_way_width?: number;
+  lane_width?: number;
+  shoulder_width?: number;
+  cross_section_type_id: string;
+  grade_percentage?: number;
+  elevation_change?: number;
+  cross_slope_percentage?: number;
+  property_access_control?: boolean;
+  similar_for_all_lane?: boolean;
+  created_at: Date;
+  updated_at: Date;
+}
 export interface IntersectionAndDriveway {
   id: string
   project_id: string

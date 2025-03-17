@@ -15,7 +15,13 @@ interface RoadSurfaceConditionCardProps {
   onDetail: (roadSurfaceCondition: RoadSurfaceCondition) => void;
 }
 
-const RoadSurfaceConditionCard: React.FC<RoadSurfaceConditionCardProps> = ({ roadSurfaceCondition, refetch, onEdit, onDelete, onDetail }) => {
+const RoadSurfaceConditionCard: React.FC<RoadSurfaceConditionCardProps> = ({
+  roadSurfaceCondition,
+  refetch,
+  onEdit,
+  onDelete,
+  onDetail
+}) => {
   const { t } = useTranslation();
 
   return (
