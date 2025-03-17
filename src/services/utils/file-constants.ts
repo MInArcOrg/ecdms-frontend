@@ -84,6 +84,7 @@ export const uploadableProjectFileTypes = {
     spillwayInfo: 'SPILLWAY_INFO',
     irrigationCapacity: 'IRRIGATION_CAPACITY',
     waterIrrigationDam: 'WATER_IRRIGATION_DAM',
+    roadProjectQualityControl: 'ROAD_PROJECT_QUALITY_CONTROL',
     roadDrainage: 'ROAD_DRAINAGE',
     drainageAssessment: 'DRAINAGE_ASSESSMENT',
     safetyAndHealth: 'SAFTEY_AND_HEALTH',

@@ -535,6 +535,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "road-project-quality-control": "Road Project Quality Control",
           "road-drainage": "Road Drainage",
           "road-maintenance-data": "Road Maintenance Data",
           "safety-and-health": "Safety And Health",
@@ -1020,6 +1021,17 @@
           "description": "Description"
         }
       },
+      "road-project-quality-control": {
+        "title": "Road Project Quality Control",
+        "create-road-project-quality-control": "Create Road Project Quality Control",
+        "edit-road-project-quality-control": "Edit Road Project Quality Control",
+        "road-project-quality-control-details": "Road Project Quality Control Details",
+        "details": {
+          "name": "Name",
+          "project-phase-id": "Project Phase",
+          "inspection-type-id": "Inspection Type",
+          "defect-encountered": "Defect Encountered",
+          "remark": "Remark"
       "road-drainage": {
         "title": "Road Drainage",
         "create-road-drainage": "Create Road Drainage",

@@ -438,6 +438,14 @@ export interface NetworkCoverage {
   updated_at?: string;
 }
 
+export interface RoadProjectQualityControl {
+  id: string
+  project_id: string
+  name: string
+  project_phase_id: string
+  inspection_type_id: string
+  defect_encountered?: string
+}
 export interface RoadDrainage {
   id: string
   project_id: string
