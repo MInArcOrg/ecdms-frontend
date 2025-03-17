@@ -10,8 +10,7 @@ import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 
 interface DetailItem {
   title: string;
-  // value: string;
-  value: string | JSX.Element
+  value: string | React.ReactNode;
 }
 
 interface OtherDetailSidebarProps {

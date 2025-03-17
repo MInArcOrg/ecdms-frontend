@@ -1765,6 +1765,42 @@
         "details": "Weather Condition Details",
         "create": "Create Weather Condition",
         "edit": "Edit Weather Condition"
+      },
+      "geotechnical-information": {
+        "title": "Geotechnical Information",
+        "create-geotechnical-information": "Create Geotechnical Information",
+        "edit-geotechnical-information": "Edit Geotechnical Information",
+        "geotechnical-information-details": "Geotechnical Information Details",
+        "details": {
+          "name": "Name",
+          "soil-type": "Soil Type",
+          "ground-water-impact": "Ground Water Impact",
+          "soil-bearing-capacity": "Soil Bearing Capacity",
+          "slope-stability": "Slope Stability",
+          "retaining-walls": "Retaining Walls",
+          "geological-hazard": "Geological Hazard",
+          "remark": "Remark",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
+        },
+        "file-types": {
+          "seismic-design": "Seismic Design",
+          "geotechnical-report": "Geotechnical Report",
+          "foundation-design": "Foundation Design"
+        }
+      },
+      "road-maintenance-activity": {
+        "title": "Road Maintenance Activity",
+        "create-road-maintenance-activity": "Create Road Maintenance Activity",
+        "edit-road-maintenance-activity": "Edit Road Maintenance Activity",
+        "road-maintenance-activity-details": "Road Maintenance Activity Details",
+        "details": {
+          "road-segment": "Road Segment",
+          "maintenance-frequency": "Maintenance Frequency",
+          "maintenance-type": "Maintenance Type",
+          "consultant": "Consultant",
+          "remark": "Remark"
+        }
       }
     }
   },
