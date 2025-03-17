@@ -590,7 +590,8 @@
           "telecom-infrastructure-component": "Telecom Infrastructure Component",
           "telecom-infrastructure-age": "Telecom Infrastructure Age",
           "maintenance": "Maintenance",
-          "network-capacity": "Network Capacity"
+          "network-capacity": "Network Capacity",
+          "satellite-network": "Satellite Network"
         }
       }
     },
@@ -1869,6 +1870,21 @@
           "total-bandwidth": "Total Bandwidth",
           "users-number": "Number of Users",
           "remark": "Remark"
+        }
+      },
+      "satellite-network": {
+        "title": "Satellite Network",
+        "create-satellite-network": "Create Satellite Network",
+        "edit-satellite-network": "Edit Satellite Network",
+        "satellite-network-details": "Satellite Network Details",
+        "network-components": "Network Components",
+        "details": {
+          "satellite-network-type": "Satellite Network Type",
+          "satellite": "Satellite",
+          "ground-stations": "Ground Stations",
+          "modems": "Modems",
+          "routers": "Routers",
+          "others": "Others"
         }
       }
     }

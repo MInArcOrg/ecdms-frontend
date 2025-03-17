@@ -324,6 +324,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "networkcapacity",
           apiRoute: "network-capacities",
         },
+        {
+          id: 59,
+          title: t("project.navigation.submenu.others.satellite-network"),
+          path: `${baseUrl}/network/satellite-network`,
+          model: "satellitenetwork",
+          apiRoute: "satellite-networks",
+        },
       ]
     },
 
