@@ -437,3 +437,16 @@ export interface NetworkCoverage {
   created_at?: string;
   updated_at?: string;
 }
+
+export interface RoadMaintenanceData {
+  id: string
+  project_id: string
+  road_segment: string
+  maintenance_start_date?: Date
+  maintenance_end_date?: Date
+  weather_condition?: string
+  pavement_condition?: string
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}
