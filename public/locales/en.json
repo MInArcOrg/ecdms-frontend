@@ -1029,26 +1029,25 @@
           "description": "Description"
         }
       },
-        "bridge-basic-data": {
-          "title": "Bridge Basic Data",
-          "create-bridge-basic-data": "Create Bridge Basic Data",
-          "edit-bridge-basic-data": "Edit Bridge Basic Data",
-          "bridge-basic-data-details": "Bridge Basic Data Details",
-          "details": {
-            "name": "Name",
-            "bridge-name": "Bridge Name",
-            "bridge-number": "Bridge Number",
-            "bridge-length": "Bridge Length",
-            "bridge-width": "Bridge Width",
-            "construction-year": "Construction Year",
-            "contractor": "Contractor",
-            "designer": "Designer",
-            "bridge-cost": "Bridge Cost",
-            "land-capacity": "Land Capacity",
-            "average-daily-traffic": "Average Daily Traffic"
-          }
-        },
-      {
+      "bridge-basic-data": {
+        "title": "Bridge Basic Data",
+        "create-bridge-basic-data": "Create Bridge Basic Data",
+        "edit-bridge-basic-data": "Edit Bridge Basic Data",
+        "bridge-basic-data-details": "Bridge Basic Data Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "bridge-number": "Bridge Number",
+          "bridge-length": "Bridge Length",
+          "bridge-width": "Bridge Width",
+          "construction-year": "Construction Year",
+          "contractor": "Contractor",
+          "designer": "Designer",
+          "bridge-cost": "Bridge Cost",
+          "land-capacity": "Land Capacity",
+          "average-daily-traffic": "Average Daily Traffic"
+        }
+      },
       "bridge-area-data": {
         "title": "Bridge Area Data",
         "create-bridge-area-data": "Create Bridge Area Data",
@@ -1145,7 +1144,7 @@
           "girder-number": "Girder Number",
           "girder-depth": "Girder Depth",
           "girder-spacing": "Girder Spacing",
-          "girder-width": "Girder Width"
+          "girder-width": "Girder Width",
           "east-region": "East Region",
           "west-region": "West Region",
           "central-region": "Central Region",
@@ -1170,6 +1169,8 @@
           "vehicle-number-per-hour": "Vehicle Number Per Hour",
           "average-daily-traffic-volume": "Average Daily Traffic Volume",
           "corridor-importance-level": "Corridor Importance Level"
+        }
+      },
       "road-project-quality-control": {
         "title": "Road Project Quality Control",
         "create-road-project-quality-control": "Create Road Project Quality Control",
@@ -1181,6 +1182,8 @@
           "inspection-type-id": "Inspection Type",
           "defect-encountered": "Defect Encountered",
           "remark": "Remark"
+        }
+      },
       "road-drainage": {
         "title": "Road Drainage",
         "create-road-drainage": "Create Road Drainage",
@@ -1493,91 +1496,92 @@
           "community-feedback": "Community Feedback",
           "mitigation-measures": "Mitigation Measures"
         },
-      "road-maintenance-data": {
-        "title": "Road Maintenance Data",
-        "create-road-maintenance-data": "Create Road Maintenance Data",
-        "edit-road-maintenance-data": "Edit Road Maintenance Data",
-        "road-maintenance-data-details": "Road Maintenance Data Details",
-        "details": {
-          "road-segment": "Road Segment",
-          "maintenance-start-date": "Maintenance Start Date",
-          "maintenance-end-date": "Maintenance End Date",
-          "weather-condition": "Weather Condition",
-          "pavement-condition": "Pavement Condition",
-          "remark": "Remark",
-          "created-at": "Created At",
-          "updated-at": "Updated At"
+        "road-maintenance-data": {
+          "title": "Road Maintenance Data",
+          "create-road-maintenance-data": "Create Road Maintenance Data",
+          "edit-road-maintenance-data": "Edit Road Maintenance Data",
+          "road-maintenance-data-details": "Road Maintenance Data Details",
+          "details": {
+            "road-segment": "Road Segment",
+            "maintenance-start-date": "Maintenance Start Date",
+            "maintenance-end-date": "Maintenance End Date",
+            "weather-condition": "Weather Condition",
+            "pavement-condition": "Pavement Condition",
+            "remark": "Remark",
+            "created-at": "Created At",
+            "updated-at": "Updated At"
+          }
         }
+      },
+      "columns": {
+        "title": "Title",
+        "elapsed-time": "Elapsed Time",
+        "cpi": "CPI",
+        "spi": "SPI"
+      },
+      "main-contract-price": {
+        "price-details": "Price Details",
+        "title": "Main Contract Price",
+        "edit-main-contract-price": "Edit Main Contract Price",
+        "create-main-contract-price": "Create Main Contract Price",
+        "add-main-contract-price": "Please Add Main Contract Price",
+        "form": {
+          "main-contract-price": "Main Contract Price",
+          "rebate": "Rebate",
+          "remark": "Remark",
+          "source-of-finance": "Source of Finance"
+        }
+      },
+      "project-manager": {
+        "title": "Project Managers",
+        "create": "Create Project Manager",
+        "edit": "Edit Project Manager",
+        "details": "Project Manager Details",
+        "position": "Position",
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "nationalIdNo": "National ID No",
+        "gender": "Gender",
+        "phone": "Phone",
+        "email": "Email",
+        "stakeholder": "Stakeholder"
+      },
+      "project-contact-person": {
+        "title": "Project Contact Persons",
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "position": "Position",
+        "department": "Department",
+        "nationalIdNo": "National ID No",
+        "gender": "Gender",
+        "phone": "Phone",
+        "email": "Email",
+        "stakeholder": "Stakeholder",
+        "details": "Contact Person Details",
+        "create": "Create Contact Person",
+        "edit": "Edit Contact Person"
+      },
+      "safety-status": {
+        "title": "Project Safety Status",
+        "fatal-injuries": "Fatal Injuries",
+        "major-injuries": "Major Injuries",
+        "minor-injuries": "Minor Injuries",
+        "measures-taken": "Measures Taken",
+        "lesson-learned": "Lesson Learned",
+        "details": "Safety Status Details",
+        "create": "Create Safety Status",
+        "edit": "Edit Safety Status"
+      },
+      "weather-condition": {
+        "title": "Weather Condition",
+        "weather-type": "Weather Type",
+        "description": "Description",
+        "details": "Weather Condition Details",
+        "create": "Create Weather Condition",
+        "edit": "Edit Weather Condition"
       }
-    },
-    "columns": {
-      "title": "Title",
-      "elapsed-time": "Elapsed Time",
-      "cpi": "CPI",
-      "spi": "SPI"
-    },
-    "main-contract-price": {
-      "price-details": "Price Details",
-      "title": "Main Contract Price",
-      "edit-main-contract-price": "Edit Main Contract Price",
-      "create-main-contract-price": "Create Main Contract Price",
-      "add-main-contract-price": "Please Add Main Contract Price",
-      "form": {
-        "main-contract-price": "Main Contract Price",
-        "rebate": "Rebate",
-        "remark": "Remark",
-        "source-of-finance": "Source of Finance"
-      }
-    },
-    "project-manager": {
-      "title": "Project Managers",
-      "create": "Create Project Manager",
-      "edit": "Edit Project Manager",
-      "details": "Project Manager Details",
-      "position": "Position",
-      "firstName": "First Name",
-      "middleName": "Middle Name",
-      "lastName": "Last Name",
-      "nationalIdNo": "National ID No",
-      "gender": "Gender",
-      "phone": "Phone",
-      "email": "Email",
-      "stakeholder": "Stakeholder"
-    },
-    "project-contact-person": {
-      "title": "Project Contact Persons",
-      "firstName": "First Name",
-      "middleName": "Middle Name",
-      "lastName": "Last Name",
-      "position": "Position",
-      "department": "Department",
-      "nationalIdNo": "National ID No",
-      "gender": "Gender",
-      "phone": "Phone",
-      "email": "Email",
-      "stakeholder": "Stakeholder",
-      "details": "Contact Person Details",
-      "create": "Create Contact Person",
-      "edit": "Edit Contact Person"
-    },
-    "safety-status": {
-      "title": "Project Safety Status",
-      "fatal-injuries": "Fatal Injuries",
-      "major-injuries": "Major Injuries",
-      "minor-injuries": "Minor Injuries",
-      "measures-taken": "Measures Taken",
-      "lesson-learned": "Lesson Learned",
-      "details": "Safety Status Details",
-      "create": "Create Safety Status",
-      "edit": "Edit Safety Status"
-    },
-    "weather-condition": {
-      "title": "Weather Condition",
-      "weather-type": "Weather Type",
-      "description": "Description",
-      "details": "Weather Condition Details",
-      "create": "Create Weather Condition",
-      "edit": "Edit Weather Condition"
     }
   },
   "location": {

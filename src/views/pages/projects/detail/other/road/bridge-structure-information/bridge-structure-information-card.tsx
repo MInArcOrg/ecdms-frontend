@@ -1,18 +1,18 @@
-"use client"
+'use client';
 
-import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from "@mui/material"
-import type React from "react"
-import { useTranslation } from "react-i18next"
-import type { BridgeStructureInformation } from "src/types/project/other"
-import ModelAction from "src/views/components/custom/model-actions"
-import RowOptions from "src/views/shared/listing/row-options"
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
+import type React from 'react';
+import { useTranslation } from 'react-i18next';
+import type { BridgeStructureInformation } from 'src/types/project/other';
+import ModelAction from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface BridgeStructureInformationCardProps {
-  bridgeStructureInformation: BridgeStructureInformation
-  refetch: () => void
-  onEdit: (bridgeStructureInformation: BridgeStructureInformation) => void
-  onDelete: (id: string) => void
-  onDetail: (bridgeStructureInformation: BridgeStructureInformation) => void
+  bridgeStructureInformation: BridgeStructureInformation;
+  refetch: () => void;
+  onEdit: (bridgeStructureInformation: BridgeStructureInformation) => void;
+  onDelete: (id: string) => void;
+  onDetail: (bridgeStructureInformation: BridgeStructureInformation) => void;
 }
 
 const BridgeStructureInformationCard: React.FC<BridgeStructureInformationCardProps> = ({
@@ -20,9 +20,9 @@ const BridgeStructureInformationCard: React.FC<BridgeStructureInformationCardPro
   refetch,
   onEdit,
   onDelete,
-  onDetail,
+  onDetail
 }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <Card sx={{ p: 2 }}>
@@ -35,9 +35,9 @@ const BridgeStructureInformationCard: React.FC<BridgeStructureInformationCardPro
               onClick={() => onDetail(bridgeStructureInformation)}
               sx={{
                 fontWeight: 500,
-                textDecoration: "none",
-                color: "text.secondary",
-                "&:hover": { color: "primary.main" },
+                textDecoration: 'none',
+                color: 'text.secondary',
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {bridgeStructureInformation?.id.slice(0, 5)}...
@@ -48,24 +48,22 @@ const BridgeStructureInformationCard: React.FC<BridgeStructureInformationCardPro
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t("project.other.bridge-structure-information.details.name")}: {bridgeStructureInformation?.name || "N/A"}
+            {t('project.other.bridge-structure-information.details.name')}: {bridgeStructureInformation?.name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("project.other.bridge-structure-information.details.bridge-name")}:{" "}
-            {bridgeStructureInformation?.bridge_name || "N/A"}
+            {t('project.other.bridge-structure-information.details.bridge-name')}: {bridgeStructureInformation?.bridge_name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("project.other.bridge-structure-information.details.bridge-structure-type-id")}:{" "}
-            {bridgeStructureInformation?.bridge_structure_type_id || "N/A"}
+            {t('project.other.bridge-structure-information.details.bridge-structure-type-id')}:{' '}
+            {bridgeStructureInformation?.bridge_structure_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("project.other.bridge-structure-information.details.east-region")}:{" "}
-            {bridgeStructureInformation?.east_region || "N/A"}
+            {t('project.other.bridge-structure-information.details.east-region')}: {bridgeStructureInformation?.east_region || 'N/A'}
           </Typography>
         </Box>
       </CardContent>
 
-      <CardActions sx={{ justifyContent: "flex-end" }}>
+      <CardActions sx={{ justifyContent: 'flex-end' }}>
         <ModelAction
           model="BridgeStructureInformation"
           model_id={bridgeStructureInformation.id}
@@ -76,12 +74,12 @@ const BridgeStructureInformationCard: React.FC<BridgeStructureInformationCardPro
         />
         <RowOptions
           deletePermissionRule={{
-            action: "delete",
-            subject: "bridgestructureinformation",
+            action: 'delete',
+            subject: 'bridgestructureinformation'
           }}
           editPermissionRule={{
-            action: "update",
-            subject: "bridgestructureinformation",
+            action: 'update',
+            subject: 'bridgestructureinformation'
           }}
           onEdit={() => onEdit(bridgeStructureInformation)}
           onDelete={() => onDelete(bridgeStructureInformation.id)}
@@ -90,7 +88,6 @@ const BridgeStructureInformationCard: React.FC<BridgeStructureInformationCardPro
         />
       </CardActions>
     </Card>
-  )
-}
-export default BridgeStructureInformationCard
-
+  );
+};
+export default BridgeStructureInformationCard;

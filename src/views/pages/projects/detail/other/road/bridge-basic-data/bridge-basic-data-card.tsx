@@ -57,7 +57,7 @@ const BridgeBasicDataCard: React.FC<BridgeBasicDataCardProps> = ({
             {t("project.other.bridge-basic-data.details.bridge-number")}: {bridgeBasicData?.bridge_number || "N/A"}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("project.other.bridge-basic-data.details.bridge-length")}: {bridgeBasicData?.bridge_length || "N/A"}
+            {t('project.other.bridge-basic-data.details.bridge-length')}: {bridgeBasicData?.bridge_length || 'N/A'}
           </Typography>
         </Box>
       </CardContent>

@@ -82,7 +82,7 @@ const BridgeInspectionList: React.FC<BridgeInspectionListProps> = ({ otherSubMen
     },
     {
       title: t("project.other.bridge-inspection.details.bridge-name"),
-      value: bridgeInspection?.bridge_name || "N/A",
+      value: bridgeInspection?.name || "N/A",
     },
     {
       title: t("project.other.bridge-inspection.details.bridge-part-defect-id"),

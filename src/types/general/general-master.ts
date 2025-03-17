@@ -14,7 +14,15 @@ export interface ProjectGeneralMaster {
   created_at?: Date;
   updated_at?: Date;
 }
-
+export interface DeckSlabType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  model: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
 export type GeneralMasterResource = {
   id: string;
   parent_id: string | null; // Allow null for parent_id
@@ -46,6 +54,14 @@ export interface BusinessFields {
   updated_at?: Date; // Optional field
 }
 export interface PedestrianFacility {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface AbutmentType {
   id: string;
   title?: string;
   description?: string;
@@ -280,6 +296,14 @@ export interface ProjectPhaseType {
 }
 
 export interface InspectionType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface PierType {
   id: string;
   title?: string;
   description?: string;

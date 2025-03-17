@@ -55,7 +55,7 @@ const BridgeInspectionDrawer = (props: BridgeInspectionDrawerType) => {
     data: {
       project_id: projectId,
       name: values.name,
-      bridge_name: values.bridge_name,
+      bridge_name: values.name,
       bridge_part_defect_id: values.bridge_part_defect_id,
       damage_type_id: values.damage_type_id,
       damage_condition_id: values.damage_condition_id,
