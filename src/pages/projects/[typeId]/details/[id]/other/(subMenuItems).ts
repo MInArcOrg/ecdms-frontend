@@ -102,55 +102,55 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
         },
         {
           id: 28,
-          title: t("project.navigation.submenu.others.intersection-driveway"),
+          title: t('project.navigation.submenu.others.intersection-driveway'),
           path: `${baseUrl}/road/intersection-driveway`,
-          model: "intersectiondriveway",
-          apiRoute: "intersection-and-driveways",
+          model: 'intersectiondriveway',
+          apiRoute: 'intersection-and-driveways'
         },
         {
           id: 29,
-          title: t("project.navigation.submenu.others.traffic-parameter"),
+          title: t('project.navigation.submenu.others.traffic-parameter'),
           path: `${baseUrl}/road/traffic-parameter`,
-          model: "trafficparameter",
-          apiRoute: "traffic-parameters",
+          model: 'trafficparameter',
+          apiRoute: 'traffic-parameters'
         },
         {
           id: 30,
-          title: t("project.navigation.submenu.others.accessory"),
+          title: t('project.navigation.submenu.others.accessory'),
           path: `${baseUrl}/road/accessory`,
-          model: "accessory",
-          apiRoute: "accessories",
+          model: 'accessory',
+          apiRoute: 'accessories'
         },
         {
           id: 31,
-          title: t("project.navigation.submenu.others.pavement"),
+          title: t('project.navigation.submenu.others.pavement'),
           path: `${baseUrl}/road/pavement`,
-          model: "pavement",
-          apiRoute: "pavements",
+          model: 'pavement',
+          apiRoute: 'pavements'
         },
         {
           id: 32,
-          title: t("project.navigation.submenu.others.culvert-basic-data"),
+          title: t('project.navigation.submenu.others.culvert-basic-data'),
           path: `${baseUrl}/road/culvert-basic-data`,
-          model: "culvertbasicdata",
-          apiRoute: "culvert-basic-datas",
+          model: 'culvertbasicdata',
+          apiRoute: 'culvert-basic-datas'
         },
         {
           id: 33,
-          title: t("project.navigation.submenu.others.culvert-structural-information"),
+          title: t('project.navigation.submenu.others.culvert-structural-information'),
           path: `${baseUrl}/road/culvert-structural-information`,
-          model: "culvertstructuralinformation",
-          apiRoute: "culvert-structural-informations",
+          model: 'culvertstructuralinformation',
+          apiRoute: 'culvert-structural-informations'
         },
         {
           id: 34,
-          title: t("project.navigation.submenu.others.culvert-road-over-information"),
+          title: t('project.navigation.submenu.others.culvert-road-over-information'),
           path: `${baseUrl}/road/culvert-road-over-information`,
-          model: "culvertroadoverinformation",
-          apiRoute: "culvert-road-over-informations",
+          model: 'culvertroadoverinformation',
+          apiRoute: 'culvert-road-over-informations'
         },
         {
-          id:34,
+          id: 34,
           title: t('project.navigation.submenu.others.bridge-basic-data'),
           path: `${baseUrl}/road/bridge-basic-data`,
           model: 'bridgebasicdata',
@@ -281,6 +281,20 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/telecom/network-coverage`,
           model: 'networkcoverage',
           apiRoute: 'network-coverages'
+        },
+        {
+          id: 46,
+          title: t('project.navigation.submenu.others.data-center'),
+          path: `${baseUrl}/telecom/data-center`,
+          model: 'networkcoverage',
+          apiRoute: 'data-centers'
+        },
+        {
+          id: 48,
+          title: t('project.navigation.submenu.others.environmental-control'),
+          path: `${baseUrl}/telecom/environmental-control`,
+          model: 'networkcoverage',
+          apiRoute: 'environmental-controls'
         },
         {
           id: 51,
