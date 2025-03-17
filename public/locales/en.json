@@ -217,7 +217,10 @@
       "edit-internet-connection-type": "Edit Internet Connection Type",
       "broadcasting-infrastructure-types": "Broadcasting Infrastructure Types",
       "create-broadcasting-infrastructure-type": "Create Broadcasting Infrastructure Type",
-      "edit-broadcasting-infrastructure-type": "Edit Broadcasting Infrastructure Type"
+      "edit-broadcasting-infrastructure-type": "Edit Broadcasting Infrastructure Type",
+      "data-center-types": "Data Center Types",
+      "create-data-center-type": "Create Data Center Type",
+      "edit-data-center-type": "Edit Data Center Type"
     },
     "form": {
       "title": "Title",
@@ -561,9 +564,10 @@
           "telecom-infrastructure": "Telecom Infrastructure",
           "mobile-network": "Mobile Network",
           "network-coverage": "Network Coverage",
+          "data-center": "Data Center",
+          "environmental-control": "Environmental Control",
           "electric-power": "Electric Power",
           "generating-capacity": "Generation Capacity",
-          "turbine-info": "Turbines Detail",
           "hydro-electric-dam": "Hydroelectric Dam",
           "solar-energy": "Solar Energy",
           "wind-energy": "Wind Energy",
@@ -937,6 +941,34 @@
           "average-download-speed": "Average Download Speed",
           "average-upload-speed": "Average Upload Speed",
           "signal-strength": "Signal Strength",
+          "others": "Others"
+        }
+      },
+      "data-center": {
+        "title": "Data Centers",
+        "data-center-details": "Data Center Details",
+        "create-data-center": "Create Data Center",
+        "edit-data-center": "Edit Data Center",
+        "details": {
+          "data-center-type-id": "Data Center Type",
+          "servers": "Servers",
+          "storage-devices": "Storage Devices",
+          "networking-equipment": "Networking Equipment",
+          "cooling-systems": "Cooling Systems",
+          "backup-generators": "Backup Generators",
+          "others": "Others"
+        }
+      },
+      "environmental-control": {
+        "environmental-control-details": "Environmental Control Details",
+        "title": "Environmental Control",
+        "create-environmental-control": "Create Environmental Control",
+        "edit-environmental-control": "Edit Environmental Control",
+        "details": {
+          "data-center-id": "Data Center ID",
+          "temperature": "Temperature",
+          "humidity": "Humidity",
+          "air-quality": "Air Quality",
           "others": "Others"
         }
       },

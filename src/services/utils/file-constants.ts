@@ -96,6 +96,7 @@ export const uploadableProjectFileTypes = {
     mobileNetwork: 'MOBILE_NETWORK',
     mobileNetworkComponentAge: 'MOBILE_NETWORK_COMPONENT_AGE',
     networkCoverage: 'NETWORK_COVERAGE',
+    dataCenter: 'DATA_CENTER',
     environmentalData: 'ENVIRONMENTAL_DATA',
     environmentalImpactAssessment: 'ENVIRONMENTAL_IMPACT_ASSESSMENT',
     communityFeedback: 'COMMUNITY_FEEDBACK',
@@ -110,6 +111,7 @@ export const uploadableProjectFileTypes = {
     maintenance: "MAINTENANCE",
     infrastructureImage: "INFRASTRUCTURE_IMAGE",
     maintenanceData: "MAINTENANCE_DATA",
+    environmentalControl: 'ENVIRONMENTAL_CONTROL',
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
