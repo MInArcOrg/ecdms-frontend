@@ -535,6 +535,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "intersection-driveway": "Intersection and Driveway",
           "traffic-parameter": "Traffic Parameter",
           "accessory": "Accessory",
           "pavement": "Pavement",
@@ -553,6 +554,7 @@
           "road-maintenance-data": "Road Maintenance Data",
           "safety-and-health": "Safety And Health",
           "maintenance-histories": "Maintenance Histories",
+          "intersection-and-driveway": "Intersections and Driveways",
           "telecom": "Telecom",
           "bridge-structure-information": "Bridge Structure Information",
           "telecom-infrastructure": "Telecom Infrastructure",
@@ -1329,6 +1331,21 @@
           "drainage-type": "Drainage Type",
           "drainage-condition": "Drainage Condition",
           "remark": "Remarks",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
+        }
+      },
+      "intersection-driveway": {
+        "title": "Intersection and Driveway",
+        "create-intersection-driveway": "Create Intersection and Driveway",
+        "edit-intersection-driveway": "Edit Intersection and Driveway",
+        "intersection-driveway-details": "Intersection and Driveway Details",
+        "details": {
+          "name": "Name",
+          "number-of-intersections": "Number of Intersections",
+          "intersection-type": "Intersection Type",
+          "driveway-access-point": "Driveway Access Point",
+          "similar-for-all": "Similar For All",
           "created-at": "Created At",
           "updated-at": "Updated At"
         }
