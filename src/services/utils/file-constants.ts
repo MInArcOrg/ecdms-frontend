@@ -100,6 +100,10 @@ export const uploadableProjectFileTypes = {
     environmentalImpactAssessment: 'ENVIRONMENTAL_IMPACT_ASSESSMENT',
     communityFeedback: 'COMMUNITY_FEEDBACK',
     mitigationMeasures: 'MITIGATION_MEASURES',
+    seismicDesign: 'SEISMIC_DESIGN',
+    geotechnicalReport: 'GEOTECHNICAL_REPORT',
+    foundationDesign: 'FOUNDATION_DESIGN',
+    geotechnicalInformation: 'GEOTECHNICAL_INFORMATION'
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

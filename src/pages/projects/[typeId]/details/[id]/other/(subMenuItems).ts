@@ -232,7 +232,14 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/road/road-maintenance-data`,
           model: 'roadmaintenancedata',
           apiRoute: 'road-maintenance-datas'
-        }
+        },
+        {
+          id: 46,
+          title: t('project.navigation.submenu.others.geotechnical-information'),
+          path: `$baseUrl/geotechnical/geotechnical-information`,
+          model: 'geotechnicalinformation',
+          apiRoute: 'geotechnical-informations'
+        },
       ]
     },
     {

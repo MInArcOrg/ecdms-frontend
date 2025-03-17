@@ -776,3 +776,18 @@ export interface BridgeStructureInformation {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface GeotechnicalInformation {
+  id: string;
+  project_id: string;
+  name: string;
+  soil_type_id: string;
+  ground_water_impact_id: string;
+  soil_bearing_capacity?: number;
+  slope_stability_id: string;
+  retaining_walls?: boolean;
+  geological_hazard?: string;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}

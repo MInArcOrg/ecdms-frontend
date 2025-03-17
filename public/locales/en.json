@@ -1133,21 +1133,21 @@
         }
       },
       "culvert-road-over-information": {
-    "title": "Culvert Road Over Information",
-    "create-culvert-road-over-information": "Create Culvert Road Over Information",
-    "edit-culvert-road-over-information": "Edit Culvert Road Over Information",
-    "culvert-road-over-information-details": "Culvert Road Over Information Details",
-    "details": {
-      "name": "Name",
-      "carriage-way-width": "Carriage Way Width",
-      "side-walk-width": "Side Walk Width",
-      "lane-number": "Lane Number",
-      "head-wall-to-head-wall": "Head Wall to Head Wall",
-      "average-fill-height": "Average Fill Height",
-      "guard-rail-type-id": "Guard Rail Type",
-      "parapet-length": "Parapet Length"
-    }
-  },
+        "title": "Culvert Road Over Information",
+        "create-culvert-road-over-information": "Create Culvert Road Over Information",
+        "edit-culvert-road-over-information": "Edit Culvert Road Over Information",
+        "culvert-road-over-information-details": "Culvert Road Over Information Details",
+        "details": {
+          "name": "Name",
+          "carriage-way-width": "Carriage Way Width",
+          "side-walk-width": "Side Walk Width",
+          "lane-number": "Lane Number",
+          "head-wall-to-head-wall": "Head Wall to Head Wall",
+          "average-fill-height": "Average Fill Height",
+          "guard-rail-type-id": "Guard Rail Type",
+          "parapet-length": "Parapet Length"
+        }
+      },
       "bridge-basic-data": {
         "title": "Bridge Basic Data",
         "create-bridge-basic-data": "Create Bridge Basic Data",
@@ -1733,6 +1733,29 @@
         "details": "Weather Condition Details",
         "create": "Create Weather Condition",
         "edit": "Edit Weather Condition"
+      },
+      "geotechnical-information": {
+        "title": "Geotechnical Information",
+        "create-geotechnical-information": "Create Geotechnical Information",
+        "edit-geotechnical-information": "Edit Geotechnical Information",
+        "geotechnical-information-details": "Geotechnical Information Details",
+        "details": {
+          "name": "Name",
+          "soil-type": "Soil Type",
+          "ground-water-impact": "Ground Water Impact",
+          "soil-bearing-capacity": "Soil Bearing Capacity",
+          "slope-stability": "Slope Stability",
+          "retaining-walls": "Retaining Walls",
+          "geological-hazard": "Geological Hazard",
+          "remark": "Remark",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
+        },
+        "file-types": {
+          "seismic-design": "Seismic Design",
+          "geotechnical-report": "Geotechnical Report",
+          "foundation-design": "Foundation Design"
+        }
       }
     }
   },
@@ -1787,8 +1810,6 @@
     "active": "Active",
     "inactive": "InActive",
     "created-at": "Created At",
-    "yes": "Yes",
-    "no": "No",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",
