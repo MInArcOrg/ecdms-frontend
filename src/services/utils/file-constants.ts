@@ -91,7 +91,11 @@ export const uploadableProjectFileTypes = {
     roadSurfaceCondition: 'ROAD_SURFACE_CONDITION',
     mobileNetwork: 'MOBILE_NETWORK',
     mobileNetworkComponentAge: 'MOBILE_NETWORK_COMPONENT_AGE',
-    networkCoverage: 'NETWORK_COVERAGE'
+    networkCoverage: 'NETWORK_COVERAGE',
+    environmentalData: 'ENVIRONMENTAL_DATA',
+    environmentalImpactAssessment: 'ENVIRONMENTAL_IMPACT_ASSESSMENT',
+    communityFeedback: 'COMMUNITY_FEEDBACK',
+    mitigationMeasures: 'MITIGATION_MEASURES',
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

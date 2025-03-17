@@ -454,6 +454,14 @@ export interface RoadDrainage {
   created_at: Date
   updated_at: Date
 }
+export interface EnvironmentalData {
+  id: string;
+  project_id: string;
+  remark: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
 export interface RoadMaintenanceData {
   id: string
   project_id: string
