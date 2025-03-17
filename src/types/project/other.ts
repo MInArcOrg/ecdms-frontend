@@ -847,3 +847,14 @@ export interface Maintenance {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface NetworkCapacity {
+  id: string;
+  project_id: string;
+  network_type_id: string;
+  total_bandwidth?: number;
+  users_number?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}

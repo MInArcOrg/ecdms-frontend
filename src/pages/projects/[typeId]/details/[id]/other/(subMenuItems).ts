@@ -303,6 +303,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "maintenance",
           apiRoute: "maintenances",
         },
+        {
+          id: 57,
+          title: t("project.navigation.submenu.others.network-capacity"),
+          path: `${baseUrl}/network/network-capacity`,
+          model: "networkcapacity",
+          apiRoute: "network-capacities",
+        },
       ]
     },
 

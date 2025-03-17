@@ -110,6 +110,7 @@ export const uploadableProjectFileTypes = {
     maintenance: "MAINTENANCE",
     infrastructureImage: "INFRASTRUCTURE_IMAGE",
     maintenanceData: "MAINTENANCE_DATA",
+    networkCapacity: "NETWORK_CAPACITY"
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

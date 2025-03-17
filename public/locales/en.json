@@ -585,7 +585,8 @@
           "road-surface-conditions": "Road Surface Conditions",
           "telecom-infrastructure-component": "Telecom Infrastructure Component",
           "telecom-infrastructure-age": "Telecom Infrastructure Age",
-          "maintenance": "Maintenance"
+          "maintenance": "Maintenance",
+          "network-capacity": "Network Capacity"
         }
       }
     },
@@ -1824,6 +1825,18 @@
         "file-types": {
           "maintenance-document": "Maintenance Document",
           "infrastructure-image": "Infrastructure Image"
+        }
+      },
+      "network-capacity": {
+        "title": "Network Capacity",
+        "create-network-capacity": "Create Network Capacity",
+        "edit-network-capacity": "Edit Network Capacity",
+        "network-capacity-details": "Network Capacity Details",
+        "details": {
+          "network-type": "Network Type",
+          "total-bandwidth": "Total Bandwidth",
+          "users-number": "Number of Users",
+          "remark": "Remark"
         }
       }
     }
