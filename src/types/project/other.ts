@@ -479,6 +479,23 @@ export interface BridgeStructureInformation {
   project_id: string
   name: string
   bridge_name: string
+  bridge_number?: string
+  bridge_length?: number
+  bridge_width?: number
+  construction_year?: number
+  contractor?: string
+  designer?: string
+  bridge_cost?: number
+  land_capacity?: number
+  average_daily_traffic?: number
+  created_at: Date
+  updated_at: Date
+}
+  export interface BridgeBasicData {
+  id: string
+  project_id: string
+  name: string
+  bridge_name: string
   river_width?: number
   highest_water_level?: number
   lowest_water_level?: number

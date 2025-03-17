@@ -535,6 +535,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "bridge-basic-data": "Bridge Basic Data",
           "bridge-area-data": "Bridge Area Data",
           "bridge-super-structure": "Bridge Super Structure",
           "bridge-sub-structure": "Bridge Sub Structure",
@@ -1028,6 +1029,26 @@
           "description": "Description"
         }
       },
+        "bridge-basic-data": {
+          "title": "Bridge Basic Data",
+          "create-bridge-basic-data": "Create Bridge Basic Data",
+          "edit-bridge-basic-data": "Edit Bridge Basic Data",
+          "bridge-basic-data-details": "Bridge Basic Data Details",
+          "details": {
+            "name": "Name",
+            "bridge-name": "Bridge Name",
+            "bridge-number": "Bridge Number",
+            "bridge-length": "Bridge Length",
+            "bridge-width": "Bridge Width",
+            "construction-year": "Construction Year",
+            "contractor": "Contractor",
+            "designer": "Designer",
+            "bridge-cost": "Bridge Cost",
+            "land-capacity": "Land Capacity",
+            "average-daily-traffic": "Average Daily Traffic"
+          }
+        },
+      {
       "bridge-area-data": {
         "title": "Bridge Area Data",
         "create-bridge-area-data": "Create Bridge Area Data",
