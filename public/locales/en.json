@@ -584,7 +584,8 @@
           "drainage-assessment": "Drainage Assessment",
           "road-surface-conditions": "Road Surface Conditions",
           "telecom-infrastructure-component": "Telecom Infrastructure Component",
-          "telecom-infrastructure-age": "Telecom Infrastructure Age"
+          "telecom-infrastructure-age": "Telecom Infrastructure Age",
+          "maintenance": "Maintenance"
         }
       }
     },
@@ -1807,6 +1808,22 @@
           "antennas": "Antennas",
           "towers": "Towers",
           "remark": "Remark"
+        }
+      },
+      "maintenance": {
+        "title": "Maintenance",
+        "create-maintenance": "Create Maintenance",
+        "edit-maintenance": "Edit Maintenance",
+        "maintenance-details": "Maintenance Details",
+        "maintenance-record": "Maintenance Record",
+        "details": {
+          "maintenance-frequency": "Maintenance Frequency",
+          "service-level-agreement": "Service Level Agreement",
+          "remark": "Remark"
+        },
+        "file-types": {
+          "maintenance-document": "Maintenance Document",
+          "infrastructure-image": "Infrastructure Image"
         }
       }
     }

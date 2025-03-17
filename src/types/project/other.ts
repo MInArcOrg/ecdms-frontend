@@ -837,3 +837,13 @@ export interface TelecomInfrastructureAge {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface Maintenance {
+  id: string;
+  project_id: string;
+  maintenance_frequency?: boolean;
+  service_level_agreement?: boolean;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
