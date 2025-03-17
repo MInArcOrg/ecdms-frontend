@@ -431,6 +431,14 @@ export const projectMasterModels = {
     editTitle: 'edit-broadcasting-infrastructure-type',
     fileType: 'BROADCASTING_INFRASTRUCTURE_TYPE'
   },
+  dataCenterType: {
+    model: 'DataCenterType',
+    dbModel: 'datacentertype',
+    title: 'data-center-types',
+    createTitle: 'create-data-center-type',
+    editTitle: 'edit-data-center-type',
+    fileType: 'DATA_CENTER_TYPE'
+  }
 
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
