@@ -329,3 +329,20 @@ export interface PierType {
   created_at?: Date;
   updated_at?: Date;
 }
+export interface DrivewayAccessPoint {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface IntersectionType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
