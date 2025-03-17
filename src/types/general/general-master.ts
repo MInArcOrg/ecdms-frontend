@@ -251,7 +251,7 @@ export interface RecommendedActionUrgency {
   updated_at?: Date;
 }
 
-export interface PierType {
+export interface BridgePartDefect {
   id: string
   title?: string
   description?: string
@@ -260,11 +260,29 @@ export interface PierType {
   updated_at?: Date
 }
 
-export interface AbutmentType {
+export interface DamageType {
   id: string
   title?: string
   description?: string
   project_type_id: string
   created_at?: Date
   updated_at?: Date
+}
+
+export interface ProjectPhaseType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface InspectionType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
