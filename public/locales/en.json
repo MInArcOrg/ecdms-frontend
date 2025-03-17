@@ -214,7 +214,10 @@
       "edit-satellite-network-type": "Edit Satellite Network Type",
       "internet-connection-types": "Internet Connection Types",
       "create-internet-connection-type": "Create Internet Connection Type",
-      "edit-internet-connection-type": "Edit Internet Connection Type"
+      "edit-internet-connection-type": "Edit Internet Connection Type",
+      "broadcasting-infrastructure-types": "Broadcasting Infrastructure Types",
+      "create-broadcasting-infrastructure-type": "Create Broadcasting Infrastructure Type",
+      "edit-broadcasting-infrastructure-type": "Edit Broadcasting Infrastructure Type"
     },
     "form": {
       "title": "Title",
@@ -533,6 +536,9 @@
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
           "traffic-volume": "Traffic Volume",
+          "road-project-quality-control": "Road Project Quality Control",
+          "road-drainage": "Road Drainage",
+          "road-maintenance-data": "Road Maintenance Data",
           "safety-and-health": "Safety And Health",
           "maintenance-histories": "Maintenance Histories",
           "telecom": "Telecom",
@@ -1031,6 +1037,34 @@
           "vehicle-number-per-hour": "Vehicle Number Per Hour",
           "average-daily-traffic-volume": "Average Daily Traffic Volume",
           "corridor-importance-level": "Corridor Importance Level"
+      "road-project-quality-control": {
+        "title": "Road Project Quality Control",
+        "create-road-project-quality-control": "Create Road Project Quality Control",
+        "edit-road-project-quality-control": "Edit Road Project Quality Control",
+        "road-project-quality-control-details": "Road Project Quality Control Details",
+        "details": {
+          "name": "Name",
+          "project-phase-id": "Project Phase",
+          "inspection-type-id": "Inspection Type",
+          "defect-encountered": "Defect Encountered",
+          "remark": "Remark"
+      "road-drainage": {
+        "title": "Road Drainage",
+        "create-road-drainage": "Create Road Drainage",
+        "edit-road-drainage": "Edit Road Drainage",
+        "road-drainage-details": "Road Drainage Details",
+        "details": {
+          "name": "Name",
+          "length": "Length",
+          "height": "Height",
+          "width": "Width",
+          "current-condition-id": "Current Condition",
+          "weight-limit": "Weight Limit",
+          "design-life-span": "Design Life Span",
+          "inspection-frequency": "Inspection Frequency",
+          "construction-completion-year": "Construction Completion Year",
+          "remark": "Remark",
+          "dimensions": "Dimensions"
         }
       },
       "drainage-assessment": {
@@ -1309,6 +1343,37 @@
           "action-taken": "Action Taken",
           "action-taken-cost": "Action Taken Cost",
           "remark": "Remark"
+        }
+      },
+      "environmental-data": {
+        "title": "Environmental Data",
+        "create-environmental-data": "Create Environmental Data",
+        "edit-environmental-data": "Edit Environmental Data",
+        "environmental-data-details": "Environmental Data Details",
+        "details": {
+          "remark": "Remark",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
+        },
+        "file-types": {
+          "impact-assessment": "Impact Assessment",
+          "community-feedback": "Community Feedback",
+          "mitigation-measures": "Mitigation Measures"
+        },
+      "road-maintenance-data": {
+        "title": "Road Maintenance Data",
+        "create-road-maintenance-data": "Create Road Maintenance Data",
+        "edit-road-maintenance-data": "Edit Road Maintenance Data",
+        "road-maintenance-data-details": "Road Maintenance Data Details",
+        "details": {
+          "road-segment": "Road Segment",
+          "maintenance-start-date": "Maintenance Start Date",
+          "maintenance-end-date": "Maintenance End Date",
+          "weather-condition": "Weather Condition",
+          "pavement-condition": "Pavement Condition",
+          "remark": "Remark",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
         }
       }
     },
