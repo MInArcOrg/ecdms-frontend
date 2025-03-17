@@ -535,6 +535,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "culvert-road-over-information": "Culvert Road Over Information",
           "bridge-basic-data": "Bridge Basic Data",
           "bridge-area-data": "Bridge Area Data",
           "bridge-super-structure": "Bridge Super Structure",
@@ -1029,6 +1030,22 @@
           "description": "Description"
         }
       },
+      "culvert-road-over-information": {
+    "title": "Culvert Road Over Information",
+    "create-culvert-road-over-information": "Create Culvert Road Over Information",
+    "edit-culvert-road-over-information": "Edit Culvert Road Over Information",
+    "culvert-road-over-information-details": "Culvert Road Over Information Details",
+    "details": {
+      "name": "Name",
+      "carriage-way-width": "Carriage Way Width",
+      "side-walk-width": "Side Walk Width",
+      "lane-number": "Lane Number",
+      "head-wall-to-head-wall": "Head Wall to Head Wall",
+      "average-fill-height": "Average Fill Height",
+      "guard-rail-type-id": "Guard Rail Type",
+      "parapet-length": "Parapet Length"
+    }
+  },
       "bridge-basic-data": {
         "title": "Bridge Basic Data",
         "create-bridge-basic-data": "Create Bridge Basic Data",
