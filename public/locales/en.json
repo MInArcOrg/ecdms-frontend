@@ -214,7 +214,10 @@
       "edit-satellite-network-type": "Edit Satellite Network Type",
       "internet-connection-types": "Internet Connection Types",
       "create-internet-connection-type": "Create Internet Connection Type",
-      "edit-internet-connection-type": "Edit Internet Connection Type"
+      "edit-internet-connection-type": "Edit Internet Connection Type",
+      "broadcasting-infrastructure-types": "Broadcasting Infrastructure Types",
+      "create-broadcasting-infrastructure-type": "Create Broadcasting Infrastructure Type",
+      "edit-broadcasting-infrastructure-type": "Edit Broadcasting Infrastructure Type"
     },
     "form": {
       "title": "Title",
@@ -532,10 +535,29 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "intersection-driveway": "Intersection and Driveway",
+          "traffic-parameter": "Traffic Parameter",
+          "accessory": "Accessory",
+          "pavement": "Pavement",
+          "culvert-basic-data": "Culvert Basic Data",
+          "culvert-structural-information": "Culvert Structural Information",
+          "culvert-road-over-information": "Culvert Road Over Information",
+          "bridge-basic-data": "Bridge Basic Data",
+          "bridge-area-data": "Bridge Area Data",
+          "bridge-super-structure": "Bridge Super Structure",
+          "bridge-sub-structure": "Bridge Sub Structure",
+          "bridge-foundation": "Bridge Foundation",
+          "bridge-inspection": "Bridge Inspection",
+          "traffic-volume": "Traffic Volume",
+          "road-project-quality-control": "Road Project Quality Control",
+          "road-drainage": "Road Drainage",
+          "road-maintenance-data": "Road Maintenance Data",
           "safety-and-health": "Safety And Health",
           "maintenance-histories": "Maintenance Histories",
           "segment-geometry": "Segment Geometry",
+          "intersection-and-driveway": "Intersections and Driveways",
           "telecom": "Telecom",
+          "bridge-structure-information": "Bridge Structure Information",
           "telecom-infrastructure": "Telecom Infrastructure",
           "mobile-network": "Mobile Network",
           "network-coverage": "Network Coverage",
@@ -1016,6 +1038,290 @@
           "description": "Description"
         }
       },
+      "traffic-parameter": {
+        "title": "Traffic Parameters",
+        "create-traffic-parameter": "Create Traffic Parameter",
+        "edit-traffic-parameter": "Edit Traffic Parameter",
+        "traffic-parameter-details": "Traffic Parameter Details",
+        "details": {
+          "name": "Name",
+          "pedestrian-facility-id": "Pedestrian Facility",
+          "parking": "Parking",
+          "design-traffic-flow": "Design Traffic Flow",
+          "design-speed": "Design Speed",
+          "similar-for-all": "Similar For All"
+        }
+      },
+      "accessory": {
+        "title": "Accessories",
+        "create-accessory": "Create Accessory",
+        "edit-accessory": "Edit Accessory",
+        "accessory-details": "Accessory Details",
+        "details": {
+          "name": "Name",
+          "under-passes": "Under Passes",
+          "ramps": "Ramps",
+          "traffic-signals": "Traffic Signals",
+          "repair-stations": "Repair Stations",
+          "bicycle-lanes": "Bicycle Lanes",
+          "bicycle-signals": "Bicycle Signals",
+          "culvert": "Culvert",
+          "bridge": "Bridge"
+        }
+      },
+      "pavement": {
+        "title": "Pavements",
+        "create-pavement": "Create Pavement",
+        "edit-pavement": "Edit Pavement",
+        "pavement-details": "Pavement Details",
+        "details": {
+          "name": "Name",
+          "tangent-length": "Tangent Length",
+          "curve-length": "Curve Length",
+          "road-length-type-id": "Road Length Type",
+          "road-pavement-thickness": "Road Pavement Thickness",
+          "paved-road-surface-width": "Paved Road Surface Width"
+        }
+      },
+      "culvert-basic-data": {
+        "title": "Culvert Basic Data",
+        "create-culvert-basic-data": "Create Culvert Basic Data",
+        "edit-culvert-basic-data": "Edit Culvert Basic Data",
+        "culvert-basic-data-details": "Culvert Basic Data Details",
+        "details": {
+          "name": "Name",
+          "culvert-name": "Culvert Name",
+          "culvert-number": "Culvert Number",
+          "culvert-coordinate-x": "Culvert Coordinate X",
+          "culvert-coordinate-y": "Culvert Coordinate Y",
+          "area-topography-id": "Area Topography",
+          "highest-water-level": "Highest Water Level",
+          "lowest-water-level": "Lowest Water Level",
+          "construction-year": "Construction Year",
+          "contractor": "Contractor",
+          "designer": "Designer",
+          "culvert-cost": "Culvert Cost",
+          "detour-possibility": "Detour Possibility",
+          "road-alignment": "Road Alignment",
+          "altitude": "Altitude"
+        }
+      },
+      "culvert-structural-information": {
+        "title": "Culvert Structural Information",
+        "create-culvert-structural-information": "Create Culvert Structural Information",
+        "edit-culvert-structural-information": "Edit Culvert Structural Information",
+        "culvert-structural-information-details": "Culvert Structural Information Details",
+        "details": {
+          "name": "Name",
+          "culvert-type": "Culvert Type",
+          "culvert-barrel-length": "Culvert Barrel Length",
+          "culvert-height": "Culvert Height",
+          "opening-number": "Opening Number",
+          "opening-width": "Opening Width",
+          "total-culvert-width": "Total Culvert Width",
+          "distance-between-barrels": "Distance Between Barrels",
+          "head-wall-length": "Head Wall Length",
+          "pier-type-id": "Pier Type",
+          "pier-height": "Pier Height",
+          "abutment-type-id": "Abutment Type",
+          "abutment-average-height": "Abutment Average Height",
+          "endwall-type-inlet-id": "Endwall Type Inlet",
+          "endwall-type-outlet-id": "Endwall Type Outlet",
+          "wingwall-average-length": "Wingwall Average Length",
+          "paved-water-way-type-id": "Paved Water Way Type",
+          "soil-type-id": "Soil Type"
+        }
+      },
+      "culvert-road-over-information": {
+    "title": "Culvert Road Over Information",
+    "create-culvert-road-over-information": "Create Culvert Road Over Information",
+    "edit-culvert-road-over-information": "Edit Culvert Road Over Information",
+    "culvert-road-over-information-details": "Culvert Road Over Information Details",
+    "details": {
+      "name": "Name",
+      "carriage-way-width": "Carriage Way Width",
+      "side-walk-width": "Side Walk Width",
+      "lane-number": "Lane Number",
+      "head-wall-to-head-wall": "Head Wall to Head Wall",
+      "average-fill-height": "Average Fill Height",
+      "guard-rail-type-id": "Guard Rail Type",
+      "parapet-length": "Parapet Length"
+    }
+  },
+      "bridge-basic-data": {
+        "title": "Bridge Basic Data",
+        "create-bridge-basic-data": "Create Bridge Basic Data",
+        "edit-bridge-basic-data": "Edit Bridge Basic Data",
+        "bridge-basic-data-details": "Bridge Basic Data Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "bridge-number": "Bridge Number",
+          "bridge-length": "Bridge Length",
+          "bridge-width": "Bridge Width",
+          "construction-year": "Construction Year",
+          "contractor": "Contractor",
+          "designer": "Designer",
+          "bridge-cost": "Bridge Cost",
+          "land-capacity": "Land Capacity",
+          "average-daily-traffic": "Average Daily Traffic"
+        }
+      },
+      "bridge-area-data": {
+        "title": "Bridge Area Data",
+        "create-bridge-area-data": "Create Bridge Area Data",
+        "edit-bridge-area-data": "Edit Bridge Area Data",
+        "bridge-area-data-details": "Bridge Area Data Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "river-width": "River Width",
+          "highest-water-level": "Highest Water Level",
+          "lowest-water-level": "Lowest Water Level",
+          "area-topography-id": "Area Topography",
+          "detour-possibility": "Detour Possibility",
+          "road-alignment": "Road Alignment",
+          "altitude": "Altitude",
+          "load-limit-sign": "Load Limit Sign"
+        }
+      },
+      "bridge-sub-structure": {
+        "title": "Bridge Sub Structure",
+        "create-bridge-sub-structure": "Create Bridge Sub Structure",
+        "edit-bridge-sub-structure": "Edit Bridge Sub Structure",
+        "bridge-sub-structure-details": "Bridge Sub Structure Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "abutment-a1-height": "Abutment A1 Height",
+          "abutment-a1-width": "Abutment A1 Width",
+          "abutment-a2-height": "Abutment A2 Height",
+          "abutment-a2-width": "Abutment A2 Width",
+          "wing-wall-length": "Wing Wall Length",
+          "pier-type-id": "Pier Type",
+          "piers-number": "Number of Piers",
+          "piers-dimension": "Piers Dimension",
+          "pier1-height": "Pier 1 Height",
+          "pier1-width": "Pier 1 Width",
+          "pier2-height": "Pier 2 Height",
+          "pier2-width": "Pier 2 Width"
+        }
+      },
+      "bridge-foundation": {
+        "title": "Bridge Foundation",
+        "create-bridge-foundation": "Create Bridge Foundation",
+        "edit-bridge-foundation": "Edit Bridge Foundation",
+        "bridge-foundation-details": "Bridge Foundation Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "abutment-type-id": "Abutment Type",
+          "pier-type-id": "Pier Type",
+          "abutment-foundation-size": "Abutment Foundation Size",
+          "pier-foundation-size": "Pier Foundation Size",
+          "abutment-pile-number": "Number of Abutment Piles",
+          "pier-pile-number": "Number of Pier Piles",
+          "abutment-pile-depth": "Abutment Pile Depth",
+          "pier-pile-depth": "Pier Pile Depth",
+          "soil-type-id": "Soil Type"
+        }
+      },
+      "bridge-inspection": {
+        "title": "Bridge Inspection",
+        "create-bridge-inspection": "Create Bridge Inspection",
+        "edit-bridge-inspection": "Edit Bridge Inspection",
+        "bridge-inspection-details": "Bridge Inspection Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "bridge-part-defect-id": "Bridge Part Defect",
+          "damage-type-id": "Damage Type",
+          "damage-condition-id": "Damage Condition",
+          "hydrology-defect-id": "Hydrology Defect",
+          "maintenance-action": "Maintenance Action",
+          "bridge-history": "Bridge History",
+          "inspector-remark": "Inspector Remark"
+        }
+      },
+      "bridge-structure-information": {
+        "title": "Bridge Structure Information",
+        "create-bridge-structure-information": "Create Bridge Structure Information",
+        "edit-bridge-structure-information": "Edit Bridge Structure Information",
+        "bridge-structure-information-details": "Bridge Structure Information Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "bridge-structure-type-id": "Bridge Structure Type",
+          "span-number": "Span Number",
+          "span-composition": "Span Composition",
+          "total-span-length": "Total Span Length",
+          "carriage-width": "Carriage Width",
+          "side-walk-width": "Side Walk Width",
+          "lane-number": "Lane Number",
+          "span-support-type-id": "Span Support Type",
+          "deck-slab-type-id": "Deck Slab Type",
+          "girder-number": "Girder Number",
+          "girder-depth": "Girder Depth",
+          "girder-spacing": "Girder Spacing",
+          "girder-width": "Girder Width",
+          "east-region": "East Region",
+          "west-region": "West Region",
+          "central-region": "Central Region",
+          "north-region": "North Region",
+          "south-region": "South Region",
+          "ring-road": "Ring Road",
+          "remark": "Remark"
+        }
+      },
+      "traffic-volume": {
+        "title": "Traffic Volume",
+        "create-traffic-volume": "Create Traffic Volume",
+        "edit-traffic-volume": "Edit Traffic Volume",
+        "traffic-volume-details": "Traffic Volume Details",
+        "details": {
+          "name": "Name",
+          "count-type-id": "Count Type",
+          "count-location-coordinate-x": "Count Location Coordinate X",
+          "count-location-coordinate-y": "Count Location Coordinate Y",
+          "count-time": "Count Time",
+          "lane-number": "Lane Number",
+          "vehicle-number-per-hour": "Vehicle Number Per Hour",
+          "average-daily-traffic-volume": "Average Daily Traffic Volume",
+          "corridor-importance-level": "Corridor Importance Level"
+        }
+      },
+      "road-project-quality-control": {
+        "title": "Road Project Quality Control",
+        "create-road-project-quality-control": "Create Road Project Quality Control",
+        "edit-road-project-quality-control": "Edit Road Project Quality Control",
+        "road-project-quality-control-details": "Road Project Quality Control Details",
+        "details": {
+          "name": "Name",
+          "project-phase-id": "Project Phase",
+          "inspection-type-id": "Inspection Type",
+          "defect-encountered": "Defect Encountered",
+          "remark": "Remark"
+        }
+      },
+      "road-drainage": {
+        "title": "Road Drainage",
+        "create-road-drainage": "Create Road Drainage",
+        "edit-road-drainage": "Edit Road Drainage",
+        "road-drainage-details": "Road Drainage Details",
+        "details": {
+          "name": "Name",
+          "length": "Length",
+          "height": "Height",
+          "width": "Width",
+          "current-condition-id": "Current Condition",
+          "weight-limit": "Weight Limit",
+          "design-life-span": "Design Life Span",
+          "inspection-frequency": "Inspection Frequency",
+          "construction-completion-year": "Construction Completion Year",
+          "remark": "Remark",
+          "dimensions": "Dimensions"
+        }
+      },
       "drainage-assessment": {
         "title": "Drainage Assessment",
         "create-drainage-assessment": "Create Drainage Assessment",
@@ -1046,6 +1352,21 @@
           "cross-slope-percentage": "Cross Slope Percentage",
           "property-access-control": "Property Access Control",
           "similar-for-all-lane": "Similar For All Lanes"
+        }
+      },
+      "intersection-driveway": {
+        "title": "Intersection and Driveway",
+        "create-intersection-driveway": "Create Intersection and Driveway",
+        "edit-intersection-driveway": "Edit Intersection and Driveway",
+        "intersection-driveway-details": "Intersection and Driveway Details",
+        "details": {
+          "name": "Name",
+          "number-of-intersections": "Number of Intersections",
+          "intersection-type": "Intersection Type",
+          "driveway-access-point": "Driveway Access Point",
+          "similar-for-all": "Similar For All",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
         }
       },
       "generating-capacity": {
@@ -1311,76 +1632,108 @@
           "action-taken-cost": "Action Taken Cost",
           "remark": "Remark"
         }
+      },
+      "environmental-data": {
+        "title": "Environmental Data",
+        "create-environmental-data": "Create Environmental Data",
+        "edit-environmental-data": "Edit Environmental Data",
+        "environmental-data-details": "Environmental Data Details",
+        "details": {
+          "remark": "Remark",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
+        },
+        "file-types": {
+          "impact-assessment": "Impact Assessment",
+          "community-feedback": "Community Feedback",
+          "mitigation-measures": "Mitigation Measures"
+        },
+        "road-maintenance-data": {
+          "title": "Road Maintenance Data",
+          "create-road-maintenance-data": "Create Road Maintenance Data",
+          "edit-road-maintenance-data": "Edit Road Maintenance Data",
+          "road-maintenance-data-details": "Road Maintenance Data Details",
+          "details": {
+            "road-segment": "Road Segment",
+            "maintenance-start-date": "Maintenance Start Date",
+            "maintenance-end-date": "Maintenance End Date",
+            "weather-condition": "Weather Condition",
+            "pavement-condition": "Pavement Condition",
+            "remark": "Remark",
+            "created-at": "Created At",
+            "updated-at": "Updated At"
+          }
+        }
+      },
+      "columns": {
+        "title": "Title",
+        "elapsed-time": "Elapsed Time",
+        "cpi": "CPI",
+        "spi": "SPI"
+      },
+      "main-contract-price": {
+        "price-details": "Price Details",
+        "title": "Main Contract Price",
+        "edit-main-contract-price": "Edit Main Contract Price",
+        "create-main-contract-price": "Create Main Contract Price",
+        "add-main-contract-price": "Please Add Main Contract Price",
+        "form": {
+          "main-contract-price": "Main Contract Price",
+          "rebate": "Rebate",
+          "remark": "Remark",
+          "source-of-finance": "Source of Finance"
+        }
+      },
+      "project-manager": {
+        "title": "Project Managers",
+        "create": "Create Project Manager",
+        "edit": "Edit Project Manager",
+        "details": "Project Manager Details",
+        "position": "Position",
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "nationalIdNo": "National ID No",
+        "gender": "Gender",
+        "phone": "Phone",
+        "email": "Email",
+        "stakeholder": "Stakeholder"
+      },
+      "project-contact-person": {
+        "title": "Project Contact Persons",
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "position": "Position",
+        "department": "Department",
+        "nationalIdNo": "National ID No",
+        "gender": "Gender",
+        "phone": "Phone",
+        "email": "Email",
+        "stakeholder": "Stakeholder",
+        "details": "Contact Person Details",
+        "create": "Create Contact Person",
+        "edit": "Edit Contact Person"
+      },
+      "safety-status": {
+        "title": "Project Safety Status",
+        "fatal-injuries": "Fatal Injuries",
+        "major-injuries": "Major Injuries",
+        "minor-injuries": "Minor Injuries",
+        "measures-taken": "Measures Taken",
+        "lesson-learned": "Lesson Learned",
+        "details": "Safety Status Details",
+        "create": "Create Safety Status",
+        "edit": "Edit Safety Status"
+      },
+      "weather-condition": {
+        "title": "Weather Condition",
+        "weather-type": "Weather Type",
+        "description": "Description",
+        "details": "Weather Condition Details",
+        "create": "Create Weather Condition",
+        "edit": "Edit Weather Condition"
       }
-    },
-    "columns": {
-      "title": "Title",
-      "elapsed-time": "Elapsed Time",
-      "cpi": "CPI",
-      "spi": "SPI"
-    },
-    "main-contract-price": {
-      "price-details": "Price Details",
-      "title": "Main Contract Price",
-      "edit-main-contract-price": "Edit Main Contract Price",
-      "create-main-contract-price": "Create Main Contract Price",
-      "add-main-contract-price": "Please Add Main Contract Price",
-      "form": {
-        "main-contract-price": "Main Contract Price",
-        "rebate": "Rebate",
-        "remark": "Remark",
-        "source-of-finance": "Source of Finance"
-      }
-    },
-    "project-manager": {
-      "title": "Project Managers",
-      "create": "Create Project Manager",
-      "edit": "Edit Project Manager",
-      "details": "Project Manager Details",
-      "position": "Position",
-      "firstName": "First Name",
-      "middleName": "Middle Name",
-      "lastName": "Last Name",
-      "nationalIdNo": "National ID No",
-      "gender": "Gender",
-      "phone": "Phone",
-      "email": "Email",
-      "stakeholder": "Stakeholder"
-    },
-    "project-contact-person": {
-      "title": "Project Contact Persons",
-      "firstName": "First Name",
-      "middleName": "Middle Name",
-      "lastName": "Last Name",
-      "position": "Position",
-      "department": "Department",
-      "nationalIdNo": "National ID No",
-      "gender": "Gender",
-      "phone": "Phone",
-      "email": "Email",
-      "stakeholder": "Stakeholder",
-      "details": "Contact Person Details",
-      "create": "Create Contact Person",
-      "edit": "Edit Contact Person"
-    },
-    "safety-status": {
-      "title": "Project Safety Status",
-      "fatal-injuries": "Fatal Injuries",
-      "major-injuries": "Major Injuries",
-      "minor-injuries": "Minor Injuries",
-      "measures-taken": "Measures Taken",
-      "lesson-learned": "Lesson Learned",
-      "details": "Safety Status Details",
-      "create": "Create Safety Status",
-      "edit": "Edit Safety Status"
-    },
-    "weather-condition": {
-      "title": "Weather Condition",
-      "weather-type": "Weather Type",
-      "description": "Description",
-      "details": "Weather Condition Details",
-      "create": "Create Weather Condition",
-      "edit": "Edit Weather Condition"
     }
   },
   "location": {
@@ -1434,6 +1787,8 @@
     "active": "Active",
     "inactive": "InActive",
     "created-at": "Created At",
+    "yes": "Yes",
+    "no": "No",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",

@@ -99,6 +99,139 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/road/segment-geometry`,
           model: 'segmentgeometry',
           apiRoute: 'segment-geometries'
+        },
+        {
+          id: 28,
+          title: t("project.navigation.submenu.others.intersection-driveway"),
+          path: `${baseUrl}/road/intersection-driveway`,
+          model: "intersectiondriveway",
+          apiRoute: "intersection-and-driveways",
+        },
+        {
+          id: 29,
+          title: t("project.navigation.submenu.others.traffic-parameter"),
+          path: `${baseUrl}/road/traffic-parameter`,
+          model: "trafficparameter",
+          apiRoute: "traffic-parameters",
+        },
+        {
+          id: 30,
+          title: t("project.navigation.submenu.others.accessory"),
+          path: `${baseUrl}/road/accessory`,
+          model: "accessory",
+          apiRoute: "accessories",
+        },
+        {
+          id: 31,
+          title: t("project.navigation.submenu.others.pavement"),
+          path: `${baseUrl}/road/pavement`,
+          model: "pavement",
+          apiRoute: "pavements",
+        },
+        {
+          id: 32,
+          title: t("project.navigation.submenu.others.culvert-basic-data"),
+          path: `${baseUrl}/road/culvert-basic-data`,
+          model: "culvertbasicdata",
+          apiRoute: "culvert-basic-datas",
+        },
+        {
+          id: 33,
+          title: t("project.navigation.submenu.others.culvert-structural-information"),
+          path: `${baseUrl}/road/culvert-structural-information`,
+          model: "culvertstructuralinformation",
+          apiRoute: "culvert-structural-informations",
+        },
+        {
+          id: 34,
+          title: t("project.navigation.submenu.others.culvert-road-over-information"),
+          path: `${baseUrl}/road/culvert-road-over-information`,
+          model: "culvertroadoverinformation",
+          apiRoute: "culvert-road-over-informations",
+        },
+        {
+          id:34,
+          title: t('project.navigation.submenu.others.bridge-basic-data'),
+          path: `${baseUrl}/road/bridge-basic-data`,
+          model: 'bridgebasicdata',
+          apiRoute: 'bridge-basic-datas'
+        },
+        {
+          id: 35,
+          title: t('project.navigation.submenu.others.bridge-area-data'),
+          path: `${baseUrl}/road/bridge-area-data`,
+          model: 'bridgeareadata',
+          apiRoute: 'bridge-area-datas'
+        },
+        {
+          id: 36,
+          title: t('project.navigation.submenu.others.bridge-super-structure'),
+          path: `${baseUrl}/road/bridge-super-structure`,
+          model: 'bridgesuperstructure',
+          apiRoute: 'bridge-super-structures'
+        },
+        {
+          id: 37,
+          title: t('project.navigation.submenu.others.bridge-sub-structure'),
+          path: `${baseUrl}/road/bridge-sub-structure`,
+          model: 'bridgesubstructure',
+          apiRoute: 'bridge-sub-structures'
+        },
+        {
+          id: 38,
+          title: t('project.navigation.submenu.others.bridge-foundation'),
+          path: `${baseUrl}/road/bridge-foundation`,
+          model: 'bridgefoundation',
+          apiRoute: 'bridge-foundations'
+        },
+        {
+          id: 39,
+          title: t('project.navigation.submenu.others.bridge-inspection'),
+          path: `${baseUrl}/road/bridge-inspection`,
+          model: 'bridgeinspection',
+          apiRoute: 'bridge-inspections'
+        },
+        {
+          id: 40,
+          title: t('project.navigation.submenu.others.bridge-structure-information'),
+          path: `${baseUrl}/road/bridge-structure-information`,
+          model: 'bridgestructureinformation',
+          apiRoute: 'bridge-structure-informations'
+        },
+        {
+          id: 41,
+          title: t('project.navigation.submenu.others.traffic-volume'),
+          path: `${baseUrl}/road/traffic-volume`,
+          model: 'trafficvolume',
+          apiRoute: 'traffic-volumes'
+        },
+        {
+          id: 42,
+          title: t('project.navigation.submenu.others.road-project-quality-control'),
+          path: `${baseUrl}/road/road-project-quality-control`,
+          model: 'roadprojectqualitycontrol',
+          apiRoute: 'road-project-quality-controls'
+        },
+        {
+          id: 43,
+          title: t('project.navigation.submenu.others.road-drainage'),
+          path: `${baseUrl}/road/road-drainage`,
+          model: 'roaddrainage',
+          apiRoute: 'road-drainages'
+        },
+        {
+          id: 44,
+          title: t('project.navigation.submenu.others.environmental-data'),
+          path: `${baseUrl}/environmental/environmental-data`,
+          model: 'environmentaldata',
+          apiRoute: 'environmental-datas'
+        },
+        {
+          id: 45,
+          title: t('project.navigation.submenu.others.road-maintenance-data'),
+          path: `${baseUrl}/road/road-maintenance-data`,
+          model: 'roadmaintenancedata',
+          apiRoute: 'road-maintenance-datas'
         }
       ]
     },
