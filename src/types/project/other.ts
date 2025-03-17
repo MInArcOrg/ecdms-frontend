@@ -821,3 +821,19 @@ export interface TelecomInfrastructureComponent {
   created_at?: Date
   updated_at?: Date
 }
+
+export interface TelecomInfrastructureAge {
+  id: string;
+  project_id: string;
+  cables?: boolean;
+  wires?: boolean;
+  routers?: boolean;
+  switches?: boolean;
+  hubs?: boolean;
+  repeaters?: boolean;
+  antennas?: boolean;
+  towers?: boolean;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}

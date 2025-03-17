@@ -289,6 +289,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "telecominfrastructurecomponent",
           apiRoute: "telecom-infrastructure-components",
         },
+        {
+          id: 53,
+          title: t("project.navigation.submenu.others.telecom-infrastructure-age"),
+          path: `${baseUrl}/telecom/telecom-infrastructure-age`,
+          model: "telecominfrastructureage",
+          apiRoute: "telecom-infrastructure-ages",
+        },
       ]
     },
 

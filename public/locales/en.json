@@ -583,7 +583,8 @@
           "port": "Port",
           "drainage-assessment": "Drainage Assessment",
           "road-surface-conditions": "Road Surface Conditions",
-          "telecom-infrastructure-component": "Telecom Infrastructure Component"
+          "telecom-infrastructure-component": "Telecom Infrastructure Component",
+          "telecom-infrastructure-age": "Telecom Infrastructure Age"
         }
       }
     },
@@ -1778,6 +1779,25 @@
         "telecom-infrastructure-component-details": "Telecom Infrastructure Component Details",
         "details": {
           "mobile-network-type": "Mobile Network Type",
+          "cables": "Cables",
+          "wires": "Wires",
+          "routers": "Routers",
+          "switches": "Switches",
+          "hubs": "Hubs",
+          "repeaters": "Repeaters",
+          "antennas": "Antennas",
+          "towers": "Towers",
+          "remark": "Remark"
+        }
+      },
+      "telecom-infrastructure-age": {
+        "title": "Telecom Infrastructure Age",
+        "create-telecom-infrastructure-age": "Create Telecom Infrastructure Age",
+        "edit-telecom-infrastructure-age": "Edit Telecom Infrastructure Age",
+        "telecom-infrastructure-age-details": "Telecom Infrastructure Age Details",
+        "infrastructure-age": "Infrastructure Age",
+        "infrastructure-components": "Infrastructure Components",
+        "details": {
           "cables": "Cables",
           "wires": "Wires",
           "routers": "Routers",
