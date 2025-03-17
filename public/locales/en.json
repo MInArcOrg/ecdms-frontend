@@ -535,6 +535,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "pavement": "Pavement",
           "culvert-basic-data": "Culvert Basic Data",
           "culvert-structural-information": "Culvert Structural Information",
           "culvert-road-over-information": "Culvert Road Over Information",
@@ -1030,6 +1031,20 @@
           "thickness": "Thickness",
           "material": "Material",
           "description": "Description"
+        }
+      },
+      "pavement": {
+        "title": "Pavements",
+        "create-pavement": "Create Pavement",
+        "edit-pavement": "Edit Pavement",
+        "pavement-details": "Pavement Details",
+        "details": {
+          "name": "Name",
+          "tangent-length": "Tangent Length",
+          "curve-length": "Curve Length",
+          "road-length-type-id": "Road Length Type",
+          "road-pavement-thickness": "Road Pavement Thickness",
+          "paved-road-surface-width": "Paved Road Surface Width"
         }
       },
       "culvert-basic-data": {

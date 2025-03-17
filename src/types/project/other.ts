@@ -438,6 +438,18 @@ export interface NetworkCoverage {
   updated_at?: string;
 }
 
+export interface Pavement {
+  id: string;
+  project_id: string;
+  name: string;
+  tangent_length?: number;
+  curve_length?: number;
+  road_length_type_id: string;
+  road_pavement_thickness?: number;
+  paved_road_surface_width?: number;
+  created_at: Date;
+  updated_at: Date;
+}
 export interface CulvertBasicData {
   id: string
   project_id: string
