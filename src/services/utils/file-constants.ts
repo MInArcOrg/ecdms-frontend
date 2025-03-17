@@ -106,7 +106,7 @@ export const uploadableProjectFileTypes = {
     foundationDesign: 'FOUNDATION_DESIGN',
     geotechnicalInformation: 'GEOTECHNICAL_INFORMATION',
     maintenanceRecord: "MAINTENANCE_RECORD",
-    telecomInfrastructureComponent: "TELECOM_INFRASTRUCTURE_COMPONENT"
+    telecomInfrastructureComponent: "TELECOM_INFRASTRUCTURE_COMPONENT",
     environmentalControl: 'ENVIRONMENTAL_CONTROL',
   }
 } as const;
