@@ -535,6 +535,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "bridge-super-structure": "Bridge Super Structure",
           "bridge-sub-structure": "Bridge Sub Structure",
           "bridge-foundation": "Bridge Foundation",
           "bridge-inspection": "Bridge Inspection",
@@ -1026,6 +1027,7 @@
           "description": "Description"
         }
       },
+
       "bridge-sub-structure": {
         "title": "Bridge Sub Structure",
         "create-bridge-sub-structure": "Create Bridge Sub Structure",
@@ -1093,6 +1095,18 @@
           "name": "Name",
           "bridge-name": "Bridge Name",
           "bridge-structure-type-id": "Bridge Structure Type",
+          "span-number": "Span Number",
+          "span-composition": "Span Composition",
+          "total-span-length": "Total Span Length",
+          "carriage-width": "Carriage Width",
+          "side-walk-width": "Side Walk Width",
+          "lane-number": "Lane Number",
+          "span-support-type-id": "Span Support Type",
+          "deck-slab-type-id": "Deck Slab Type",
+          "girder-number": "Girder Number",
+          "girder-depth": "Girder Depth",
+          "girder-spacing": "Girder Spacing",
+          "girder-width": "Girder Width"
           "east-region": "East Region",
           "west-region": "West Region",
           "central-region": "Central Region",

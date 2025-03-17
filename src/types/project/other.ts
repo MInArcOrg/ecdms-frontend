@@ -437,6 +437,8 @@ export interface NetworkCoverage {
   created_at?: string;
   updated_at?: string;
 }
+
+
 export interface BridgeFoundation {
   id: string;
   project_id: string;
@@ -476,6 +478,26 @@ export interface BridgeStructureInformation {
   project_id: string
   name: string
   bridge_name: string
+  bridge_structure_type_id: string
+  span_number?: number
+  span_composition?: string
+  total_span_length?: number
+  carriage_width?: number
+  side_walk_width?: number
+  lane_number?: number
+  span_support_type_id: string
+  deck_slab_type_id: string
+  girder_number?: number
+  girder_depth?: number
+  girder_spacing?: number
+  girder_width?: number
+  created_at: Date
+  updated_at: Date
+}
+export interface BridgeSuperStructure {
+  id: string
+  project_id: string
+  name: string
   bridge_part_defect_id: string
   damage_type_id: string
   damage_condition_id: string
