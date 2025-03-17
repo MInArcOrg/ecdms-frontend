@@ -438,6 +438,27 @@ export interface NetworkCoverage {
   updated_at?: string;
 }
 
+export interface CulvertBasicData {
+  id: string
+  project_id: string
+  name: string
+  culvert_name: string
+  culvert_number?: number
+  culvert_coordinate_x?: number
+  culvert_coordinate_y?: number
+  area_topography_id: string
+  highest_water_level?: number
+  lowest_water_level?: number
+  construction_year?: number
+  contractor?: string
+  designer?: string
+  culvert_cost?: number
+  detour_possibility?: boolean
+  road_alignment?: string
+  altitude?: number
+  created_at: Date
+  updated_at: Date
+}
 export interface CulvertStructuralInformation {
   id: string
   project_id: string

@@ -535,6 +535,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "culvert-basic-data": "Culvert Basic Data",
           "culvert-structural-information": "Culvert Structural Information",
           "culvert-road-over-information": "Culvert Road Over Information",
           "bridge-basic-data": "Bridge Basic Data",
@@ -1029,6 +1030,29 @@
           "thickness": "Thickness",
           "material": "Material",
           "description": "Description"
+        }
+      },
+      "culvert-basic-data": {
+        "title": "Culvert Basic Data",
+        "create-culvert-basic-data": "Create Culvert Basic Data",
+        "edit-culvert-basic-data": "Edit Culvert Basic Data",
+        "culvert-basic-data-details": "Culvert Basic Data Details",
+        "details": {
+          "name": "Name",
+          "culvert-name": "Culvert Name",
+          "culvert-number": "Culvert Number",
+          "culvert-coordinate-x": "Culvert Coordinate X",
+          "culvert-coordinate-y": "Culvert Coordinate Y",
+          "area-topography-id": "Area Topography",
+          "highest-water-level": "Highest Water Level",
+          "lowest-water-level": "Lowest Water Level",
+          "construction-year": "Construction Year",
+          "contractor": "Contractor",
+          "designer": "Designer",
+          "culvert-cost": "Culvert Cost",
+          "detour-possibility": "Detour Possibility",
+          "road-alignment": "Road Alignment",
+          "altitude": "Altitude"
         }
       },
       "culvert-structural-information": {
