@@ -438,6 +438,14 @@ export interface NetworkCoverage {
   updated_at?: string;
 }
 
+export interface EnvironmentalData {
+  id: string;
+  project_id: string;
+  remark: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
 export interface RoadMaintenanceData {
   id: string
   project_id: string
