@@ -535,6 +535,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "road-drainage": "Road Drainage",
           "road-maintenance-data": "Road Maintenance Data",
           "safety-and-health": "Safety And Health",
           "maintenance-histories": "Maintenance Histories",
@@ -1017,6 +1018,25 @@
           "thickness": "Thickness",
           "material": "Material",
           "description": "Description"
+        }
+      },
+      "road-drainage": {
+        "title": "Road Drainage",
+        "create-road-drainage": "Create Road Drainage",
+        "edit-road-drainage": "Edit Road Drainage",
+        "road-drainage-details": "Road Drainage Details",
+        "details": {
+          "name": "Name",
+          "length": "Length",
+          "height": "Height",
+          "width": "Width",
+          "current-condition-id": "Current Condition",
+          "weight-limit": "Weight Limit",
+          "design-life-span": "Design Life Span",
+          "inspection-frequency": "Inspection Frequency",
+          "construction-completion-year": "Construction Completion Year",
+          "remark": "Remark",
+          "dimensions": "Dimensions"
         }
       },
       "drainage-assessment": {

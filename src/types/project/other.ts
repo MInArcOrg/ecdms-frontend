@@ -438,6 +438,22 @@ export interface NetworkCoverage {
   updated_at?: string;
 }
 
+export interface RoadDrainage {
+  id: string
+  project_id: string
+  name: string
+  length?: number
+  height?: number
+  width?: number
+  current_condition_id: string
+  weight_limit?: number
+  design_life_span?: number
+  inspection_frequency?: number
+  construction_completion_year?: number
+  remark?: string
+  created_at: Date
+  updated_at: Date
+}
 export interface EnvironmentalData {
   id: string;
   project_id: string;
