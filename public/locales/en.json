@@ -536,6 +536,7 @@
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
           "road-project-quality-control": "Road Project Quality Control",
+          "road-drainage": "Road Drainage",
           "road-maintenance-data": "Road Maintenance Data",
           "safety-and-health": "Safety And Health",
           "maintenance-histories": "Maintenance Histories",
@@ -1031,6 +1032,23 @@
           "inspection-type-id": "Inspection Type",
           "defect-encountered": "Defect Encountered",
           "remark": "Remark"
+      "road-drainage": {
+        "title": "Road Drainage",
+        "create-road-drainage": "Create Road Drainage",
+        "edit-road-drainage": "Edit Road Drainage",
+        "road-drainage-details": "Road Drainage Details",
+        "details": {
+          "name": "Name",
+          "length": "Length",
+          "height": "Height",
+          "width": "Width",
+          "current-condition-id": "Current Condition",
+          "weight-limit": "Weight Limit",
+          "design-life-span": "Design Life Span",
+          "inspection-frequency": "Inspection Frequency",
+          "construction-completion-year": "Construction Completion Year",
+          "remark": "Remark",
+          "dimensions": "Dimensions"
         }
       },
       "drainage-assessment": {
@@ -1311,6 +1329,21 @@
           "remark": "Remark"
         }
       },
+      "environmental-data": {
+        "title": "Environmental Data",
+        "create-environmental-data": "Create Environmental Data",
+        "edit-environmental-data": "Edit Environmental Data",
+        "environmental-data-details": "Environmental Data Details",
+        "details": {
+          "remark": "Remark",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
+        },
+        "file-types": {
+          "impact-assessment": "Impact Assessment",
+          "community-feedback": "Community Feedback",
+          "mitigation-measures": "Mitigation Measures"
+        },
       "road-maintenance-data": {
         "title": "Road Maintenance Data",
         "create-road-maintenance-data": "Create Road Maintenance Data",

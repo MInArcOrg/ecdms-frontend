@@ -100,6 +100,18 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "roadprojectqualitycontrol",
           apiRoute: "road-project-quality-controls",
         },{
+          id: 43,
+          title: t("project.navigation.submenu.others.road-drainage"),
+          path: `${baseUrl}/road/road-drainage`,
+          model: "roaddrainage",
+          apiRoute: "road-drainages",
+        },{
+          id: 44,
+          title: t("project.navigation.submenu.others.environmental-data"),
+          path: `${baseUrl}/environmental/environmental-data`,
+          model: "environmentaldata",
+          apiRoute: "environmental-datas",
+        },{
           id: 45,
           title: t("project.navigation.submenu.others.road-maintenance-data"),
           path: `${baseUrl}/road/road-maintenance-data`,
