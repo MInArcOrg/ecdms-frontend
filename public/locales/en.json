@@ -542,6 +542,7 @@
           "safety-and-health": "Safety And Health",
           "maintenance-histories": "Maintenance Histories",
           "telecom": "Telecom",
+          "bridge-structure-information": "Bridge Structure Information",
           "telecom-infrastructure": "Telecom Infrastructure",
           "mobile-network": "Mobile Network",
           "network-coverage": "Network Coverage",
@@ -1020,6 +1021,24 @@
           "thickness": "Thickness",
           "material": "Material",
           "description": "Description"
+        }
+      },
+      "bridge-structure-information": {
+        "title": "Bridge Structure Information",
+        "create-bridge-structure-information": "Create Bridge Structure Information",
+        "edit-bridge-structure-information": "Edit Bridge Structure Information",
+        "bridge-structure-information-details": "Bridge Structure Information Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "bridge-structure-type-id": "Bridge Structure Type",
+          "east-region": "East Region",
+          "west-region": "West Region",
+          "central-region": "Central Region",
+          "north-region": "North Region",
+          "south-region": "South Region",
+          "ring-road": "Ring Road",
+          "remark": "Remark"
         }
       },
       "traffic-volume": {

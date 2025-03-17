@@ -438,6 +438,22 @@ export interface NetworkCoverage {
   updated_at?: string;
 }
 
+export interface BridgeStructureInformation {
+  id: string
+  project_id: string
+  name: string
+  bridge_name: string
+  bridge_structure_type_id: string
+  east_region?: number
+  west_region?: number
+  central_region?: number
+  north_region?: number
+  south_region?: number
+  ring_road?: number
+  remark?: string
+  created_at: Date
+  updated_at: Date
+}
 export interface TrafficVolume {
   id: string
   project_id: string
