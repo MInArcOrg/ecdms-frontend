@@ -101,7 +101,7 @@ export const uploadableProjectFileTypes = {
     environmentalImpactAssessment: 'ENVIRONMENTAL_IMPACT_ASSESSMENT',
     communityFeedback: 'COMMUNITY_FEEDBACK',
     mitigationMeasures: 'MITIGATION_MEASURES',
-
+    environmentalControl: 'ENVIRONMENTAL_CONTROL',
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

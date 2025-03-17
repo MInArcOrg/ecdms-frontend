@@ -564,9 +564,10 @@
           "telecom-infrastructure": "Telecom Infrastructure",
           "mobile-network": "Mobile Network",
           "network-coverage": "Network Coverage",
+          "data-center": "Data Center",
+          "environmental-control": "Environmental Control",
           "electric-power": "Electric Power",
           "generating-capacity": "Generation Capacity",
-          "turbine-info": "Turbines Detail",
           "hydro-electric-dam": "Hydroelectric Dam",
           "solar-energy": "Solar Energy",
           "wind-energy": "Wind Energy",
@@ -952,6 +953,19 @@
           "networking-equipment": "Networking Equipment",
           "cooling-systems": "Cooling Systems",
           "backup-generators": "Backup Generators",
+          "others": "Others"
+        }
+      },
+      "environmental-control": {
+        "environmental-control-details": "Environmental Control Details",
+        "title": "Environmental Control",
+        "create-environmental-control": "Create Environmental Control",
+        "edit-environmental-control": "Edit Environmental Control",
+        "details": {
+          "data-center-id": "Data Center ID",
+          "temperature": "Temperature",
+          "humidity": "Humidity",
+          "air-quality": "Air Quality",
           "others": "Others"
         }
       },
@@ -1805,8 +1819,6 @@
     "active": "Active",
     "inactive": "InActive",
     "created-at": "Created At",
-    "yes": "Yes",
-    "no": "No",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",
