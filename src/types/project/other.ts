@@ -438,6 +438,30 @@ export interface NetworkCoverage {
   updated_at?: string;
 }
 
+export interface CulvertStructuralInformation {
+  id: string
+  project_id: string
+  name: string
+  culvert_type?: string
+  culvert_barrel_length?: number
+  culvert_height?: number
+  opening_number?: number
+  opening_width?: number
+  total_culvert_width?: number
+  distance_between_barrels?: number
+  head_wall_length?: number
+  pier_type_id: string
+  pier_height?: number
+  abutment_type_id: string
+  abutment_average_height?: number
+  endwall_type_inlet_id: string
+  endwall_type_outlet_id: string
+  wingwall_average_length?: number
+  paved_water_way_type_id: string
+  soil_type_id: string
+  created_at: Date
+  updated_at: Date
+}
 export interface CulvertRoadOverInformation {
   id: string
   project_id: string

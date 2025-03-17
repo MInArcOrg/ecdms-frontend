@@ -535,6 +535,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "culvert-structural-information": "Culvert Structural Information",
           "culvert-road-over-information": "Culvert Road Over Information",
           "bridge-basic-data": "Bridge Basic Data",
           "bridge-area-data": "Bridge Area Data",
@@ -1028,6 +1029,32 @@
           "thickness": "Thickness",
           "material": "Material",
           "description": "Description"
+        }
+      },
+      "culvert-structural-information": {
+        "title": "Culvert Structural Information",
+        "create-culvert-structural-information": "Create Culvert Structural Information",
+        "edit-culvert-structural-information": "Edit Culvert Structural Information",
+        "culvert-structural-information-details": "Culvert Structural Information Details",
+        "details": {
+          "name": "Name",
+          "culvert-type": "Culvert Type",
+          "culvert-barrel-length": "Culvert Barrel Length",
+          "culvert-height": "Culvert Height",
+          "opening-number": "Opening Number",
+          "opening-width": "Opening Width",
+          "total-culvert-width": "Total Culvert Width",
+          "distance-between-barrels": "Distance Between Barrels",
+          "head-wall-length": "Head Wall Length",
+          "pier-type-id": "Pier Type",
+          "pier-height": "Pier Height",
+          "abutment-type-id": "Abutment Type",
+          "abutment-average-height": "Abutment Average Height",
+          "endwall-type-inlet-id": "Endwall Type Inlet",
+          "endwall-type-outlet-id": "Endwall Type Outlet",
+          "wingwall-average-length": "Wingwall Average Length",
+          "paved-water-way-type-id": "Paved Water Way Type",
+          "soil-type-id": "Soil Type"
         }
       },
       "culvert-road-over-information": {

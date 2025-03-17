@@ -267,6 +267,15 @@ export interface RecommendedActionUrgency {
   updated_at?: Date;
 }
 
+export interface PavedWaterWayType {
+  id: string
+  title?: string
+  description?: string
+  project_type_id: string
+  created_at?: Date
+  updated_at?: Date
+}
+
 
 export interface BridgePartDefect {
   id: string
@@ -286,6 +295,15 @@ export interface DamageType {
   updated_at?: Date
 }
 
+
+export interface EndwallTypeOutlet {
+  id: string
+  title?: string
+  description?: string
+  project_type_id: string
+  created_at?: Date
+  updated_at?: Date
+}
 export interface ProjectPhaseType {
   id: string;
   title?: string;
