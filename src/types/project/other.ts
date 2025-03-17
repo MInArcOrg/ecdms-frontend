@@ -438,6 +438,19 @@ export interface NetworkCoverage {
   updated_at?: string;
 }
 
+export interface TrafficParameter {
+  id: string;
+  project_id: string;
+  name: string;
+  pedestrian_facility_id: string;
+  parking?: number;
+  design_traffic_flow?: number;
+  design_speed?: number;
+  similar_for_all?: boolean;
+  created_at: Date;
+  updated_at: Date;
+}
+=======
 export interface Accessory {
   id: string
   project_id: string
