@@ -459,3 +459,255 @@ export interface CulvertBasicData {
   created_at: Date
   updated_at: Date
 }
+export interface CulvertStructuralInformation {
+  id: string
+  project_id: string
+  name: string
+  culvert_type?: string
+  culvert_barrel_length?: number
+  culvert_height?: number
+  opening_number?: number
+  opening_width?: number
+  total_culvert_width?: number
+  distance_between_barrels?: number
+  head_wall_length?: number
+  pier_type_id: string
+  pier_height?: number
+  abutment_type_id: string
+  abutment_average_height?: number
+  endwall_type_inlet_id: string
+  endwall_type_outlet_id: string
+  wingwall_average_length?: number
+  paved_water_way_type_id: string
+  soil_type_id: string
+  created_at: Date
+  updated_at: Date
+}
+export interface CulvertRoadOverInformation {
+  id: string
+  project_id: string
+  name: string
+  carriage_way_width?: number
+  side_walk_width?: number
+  lane_number?: number
+  head_wall_to_head_wall?: number
+  average_fill_height?: number
+  guard_rail_type_id: string
+  parapet_length?: number
+  created_at: Date
+  updated_at: Date
+}
+
+
+export interface BridgeFoundation {
+  id: string;
+  project_id: string;
+  name: string;
+  bridge_name: string;
+  abutment_type_id: string;
+  pier_type_id: string;
+  abutment_foundation_size?: number;
+  pier_foundation_size?: number;
+  abutment_pile_number?: number;
+  pier_pile_number?: number;
+  abutment_pile_depth?: number;
+  pier_pile_depth?: number;
+  soil_type_id: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
+// Bridge SubStructure model
+export interface BridgeSubStructure {
+  id: string;
+  project_id: string;           // Required UUID - Reference to the related project
+  name: string;                 // Required String - Name of the bridge substructure
+  bridge_name: string;          // Required String - Official name of the bridge
+  abutment_a1_height?: number | null; // Optional Double - Height of abutment A1
+  abutment_a1_width?: number | null;  // Optional Double - Width of abutment A1
+  abutment_a2_height?: number | null; // Optional Double - Height of abutment A2
+  abutment_a2_width?: number | null;  // Optional Double - Width of abutment A2
+  wing_wall_length?: number | null;   // Optional Double - Length of the wing wall
+  pier_type_id: string;        // Required UUID - Reference to the pier type
+  piers_number?: number | null; // Optional Integer - Number of piers
+  piers_dimension?: string | null; // Optional String - Dimension of piers
+  pier1_height?: number | null; // Optional Double - Height of pier 1
+  pier1_width?: number | null;  // Optional Double - Width of pier 1
+  pier2_height?: number | null; // Optional Double - Height of pier 2
+  pier2_width?: number | null;  // Optional Double - Width of pier 2
+  created_at?: Date;
+  updated_at?: Date;
+}
+// Bridge Structure Information model
+export interface BridgeSuperStructure {
+  id: string;
+  project_id: string;
+  name: string;
+  bridge_name: string;
+  bridge_structure_type_id: string;
+  span_number?: number | null;
+  span_composition?: string | null;
+  total_span_length?: number | null;
+  carriage_width?: number | null;
+  side_walk_width?: number | null;
+  lane_number?: number | null;
+  span_support_type_id?: string | null;
+  deck_slab_type_id?: string | null;
+  girder_number?: number | null;
+  girder_depth?: number | null;
+  girder_spacing?: number | null;
+  girder_width?: number | null;
+  created_at: Date;
+  updated_at: Date;
+}
+// Bridge Basic Data model
+export interface BridgeBasicData {
+  id: string;
+  project_id: string;           // Required UUID - Reference to the related project
+  name: string;                 // Required String - Name of the bridge record
+  bridge_name: string;
+  bridge_number: string | null; // Optional String - Identification number for the bridge
+  bridge_length: number | null; // Optional Double - Length of the bridge (in meters)
+  bridge_width: number | null;  // Optional Double - Width of the bridge (in meters)
+  construction_year: number | null; // Optional Integer - Year the bridge was constructed
+  contractor: string | null;    // Optional String - Name of the contractor
+  designer: string | null;      // Optional String - Name of the designer
+  bridge_cost: number | null;   // Optional Double - Total cost of the bridge
+  land_capacity: number | null; // Optional Double - Load capacity supported by the bridge
+  average_daily_traffic: number | null; // Optional Integer - Estimated daily traffic over the bridge
+  created_at?: string;
+  updated_at?: string;
+}
+// Bridge Area Data model
+export interface BridgeAreaData {
+  id: string;
+  project_id: string;           // Required UUID
+  name: string;                 // Required String
+  bridge_name: string;          // Required String
+  river_width: number | null;   // Optional Double
+  highest_water_level: number | null; // Optional Double
+  lowest_water_level: number | null;  // Optional Double
+  area_topography_id: string;   // Required UUID
+  detour_possibility: boolean | null; // Optional Boolean
+  road_alignment: string | null; // Optional String
+  altitude: number | null;      // Optional Double
+  load_limit_sign: boolean | null; // Optional Boolean
+  created_at?: string;
+  updated_at?: string;
+
+}
+export interface BridgeSuperStructure {
+  id: string;
+  project_id: string;
+  name: string;
+  bridge_name: string;
+  bridge_structure_type_id: string;
+  span_number?: number | null;
+  span_composition?: string | null;
+  total_span_length?: number | null;
+  carriage_width?: number | null;
+  side_walk_width?: number | null;
+  lane_number?: number | null;
+  span_support_type_id?: string | null;
+  deck_slab_type_id?: string | null;
+  girder_number?: number | null;
+  girder_depth?: number | null;
+  girder_spacing?: number | null;
+  girder_width?: number | null;
+  created_at: Date;
+  updated_at: Date;
+}
+
+// Bridge Inspection model
+export interface BridgeInspection {
+  id: string;
+  project_id: string;
+  name: string;
+  bridge_part_defect_id: string;
+  damage_type_id: string;
+  damage_condition_id: string;
+  hydrology_defect_id: string;
+  maintenance_action?: string;
+  bridge_history?: string;
+  inspector_remark?: string;
+  created_at: Date;
+  updated_at: Date;
+}
+export interface TrafficVolume {
+  id: string
+  project_id: string
+  name: string
+  count_type_id: string
+  count_location_coordinate_x?: number
+  count_location_coordinate_y?: number
+  count_time?: Date
+  lane_number?: number
+  vehicle_number_per_hour?: number
+  average_daily_traffic_volume?: number
+  corridor_importance_level?: number
+  created_at: Date
+  updated_at: Date
+}
+export interface RoadProjectQualityControl {
+  id: string
+  project_id: string
+  name: string
+  project_phase_id: string
+  inspection_type_id: string
+  defect_encountered?: string
+  remark?: string
+  created_at: Date
+  updated_at: Date
+}
+export interface RoadDrainage {
+  id: string
+  project_id: string
+  name: string
+  length?: number
+  height?: number
+  width?: number
+  current_condition_id: string
+  weight_limit?: number
+  design_life_span?: number
+  inspection_frequency?: number
+  construction_completion_year?: number
+  remark?: string
+  created_at: Date
+  updated_at: Date
+}
+export interface EnvironmentalData {
+  id: string;
+  project_id: string;
+  remark: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface RoadMaintenanceData {
+  id: string
+  project_id: string
+  road_segment: string
+  maintenance_start_date?: Date
+  maintenance_end_date?: Date
+  weather_condition?: string
+  pavement_condition?: string
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}
+export interface BridgeStructureInformation {
+  id: string;
+  project_id: string;
+  name: string;
+  bridge_name: string;
+  bridge_structure_type_id: string;
+  east_region?: number | null;
+  west_region?: number | null;
+  central_region?: number | null;
+  north_region?: number | null;
+  south_region?: number | null;
+  ring_road?: number | null;
+  remark?: string | null;
+  created_at?: Date;
+  updated_at?: Date;
+}
