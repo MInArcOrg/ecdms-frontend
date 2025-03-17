@@ -251,6 +251,7 @@ export interface RecommendedActionUrgency {
   updated_at?: Date;
 }
 
+
 export interface BridgePartDefect {
   id: string
   title?: string

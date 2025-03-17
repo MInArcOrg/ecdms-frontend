@@ -535,6 +535,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "bridge-sub-structure": "Bridge Sub Structure",
           "bridge-foundation": "Bridge Foundation",
           "bridge-inspection": "Bridge Inspection",
           "traffic-volume": "Traffic Volume",
@@ -1023,6 +1024,28 @@
           "thickness": "Thickness",
           "material": "Material",
           "description": "Description"
+        }
+      },
+      "bridge-sub-structure": {
+        "title": "Bridge Sub Structure",
+        "create-bridge-sub-structure": "Create Bridge Sub Structure",
+        "edit-bridge-sub-structure": "Edit Bridge Sub Structure",
+        "bridge-sub-structure-details": "Bridge Sub Structure Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "abutment-a1-height": "Abutment A1 Height",
+          "abutment-a1-width": "Abutment A1 Width",
+          "abutment-a2-height": "Abutment A2 Height",
+          "abutment-a2-width": "Abutment A2 Width",
+          "wing-wall-length": "Wing Wall Length",
+          "pier-type-id": "Pier Type",
+          "piers-number": "Number of Piers",
+          "piers-dimension": "Piers Dimension",
+          "pier1-height": "Pier 1 Height",
+          "pier1-width": "Pier 1 Width",
+          "pier2-height": "Pier 2 Height",
+          "pier2-width": "Pier 2 Width"
         }
       },
       "bridge-foundation": {
