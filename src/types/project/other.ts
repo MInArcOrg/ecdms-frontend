@@ -438,6 +438,21 @@ export interface NetworkCoverage {
   updated_at?: string;
 }
 
+export interface Accessory {
+  id: string
+  project_id: string
+  name: string
+  under_passes?: number
+  ramps?: number
+  traffic_signals?: number
+  repair_stations?: number
+  bicycle_lanes?: boolean
+  bicycle_signals?: number
+  culvert?: boolean
+  bridge?: boolean
+  created_at: Date
+  updated_at: Date
+}
 export interface Pavement {
   id: string;
   project_id: string;

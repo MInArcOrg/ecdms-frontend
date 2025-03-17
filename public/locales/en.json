@@ -535,6 +535,7 @@
           "road-info": "Road Info",
           "road-segment": "Road Segments",
           "road-layer": "Layers of Road",
+          "accessory": "Accessory",
           "pavement": "Pavement",
           "culvert-basic-data": "Culvert Basic Data",
           "culvert-structural-information": "Culvert Structural Information",
@@ -1031,6 +1032,23 @@
           "thickness": "Thickness",
           "material": "Material",
           "description": "Description"
+        }
+      },
+      "accessory": {
+        "title": "Accessories",
+        "create-accessory": "Create Accessory",
+        "edit-accessory": "Edit Accessory",
+        "accessory-details": "Accessory Details",
+        "details": {
+          "name": "Name",
+          "under-passes": "Under Passes",
+          "ramps": "Ramps",
+          "traffic-signals": "Traffic Signals",
+          "repair-stations": "Repair Stations",
+          "bicycle-lanes": "Bicycle Lanes",
+          "bicycle-signals": "Bicycle Signals",
+          "culvert": "Culvert",
+          "bridge": "Bridge"
         }
       },
       "pavement": {
