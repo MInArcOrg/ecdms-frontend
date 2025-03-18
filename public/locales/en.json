@@ -1877,6 +1877,7 @@
           "maintenance-document": "Maintenance Document",
           "infrastructure-image": "Infrastructure Image"
         }
+
       },
       "network-capacity": {
         "title": "Network Capacity",
