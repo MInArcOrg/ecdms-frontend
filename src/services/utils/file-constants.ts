@@ -112,7 +112,9 @@ export const uploadableProjectFileTypes = {
     infrastructureImage: "INFRASTRUCTURE_IMAGE",
     maintenanceData: "MAINTENANCE_DATA",
     networkCapacity: "NETWORK_CAPACITY",
+    maintenanceRecord: 'MAINTENANCE_RECORD',
     environmentalControl: 'ENVIRONMENTAL_CONTROL',
+    dataCenterFacilityCapacity: 'DATA_CENTER_FACILITY'
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

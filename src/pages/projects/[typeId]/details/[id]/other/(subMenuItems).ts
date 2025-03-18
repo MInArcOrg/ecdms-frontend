@@ -293,7 +293,7 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           id: 48,
           title: t('project.navigation.submenu.others.environmental-control'),
           path: `${baseUrl}/telecom/environmental-control`,
-          model: 'networkcoverage',
+          model: 'enviromentalcontrol',
           apiRoute: 'environmental-controls'
         },
         {
@@ -324,6 +324,12 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "networkcapacity",
           apiRoute: "network-capacities",
         },
+          id: 50,
+          title: t('project.navigation.submenu.others.data-center-facility-capacity'),
+          path: `${baseUrl}/telecom/data-center-facility-capacity`,
+          model: 'networkcoverage',
+          apiRoute: 'data-center-facility-capacities'
+        }
       ]
     },
 
