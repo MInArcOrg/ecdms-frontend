@@ -915,6 +915,7 @@ export interface SatelliteNetwork {
   id: string
   project_id: string
   satellite_network_type_id: string
+  name: string
   satellite?: boolean
   ground_stations?: boolean
   modems?: boolean
@@ -934,4 +935,43 @@ export interface DataCenterComponentManufacturer {
   others?: string; // Optional Text
   created_at?: Date
   updated_at?: Date
+}
+
+export interface SatelliteInfrastructureAge {
+  id: string;
+  project_id: string;
+  satellite_network_id: string;
+  satellite?: number;
+  ground_stations?: number;
+  modems?: number;
+  routers?: number;
+  others?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface SatelliteNetworkComponentManufacturer {
+  id: string
+  project_id: string
+  satellite_network_id: string
+  satellite?: string
+  ground_stations?: string
+  modems?: string
+  routers?: string
+  others?: string
+  created_at?: Date
+  updated_at?: Date
+}
+
+export interface InternetConnection {
+  id: string;
+  project_id: string;
+  internet_connection_type_id: string;
+  routers?: boolean;
+  switches?: boolean;
+  modems?: boolean;
+  cables?: boolean;
+  others?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }

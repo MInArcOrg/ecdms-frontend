@@ -328,7 +328,7 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
         {
           id: 57,
           title: t('project.navigation.submenu.others.network-capacity'),
-          path: `${baseUrl}/network/network-capacity`,
+          path: `${baseUrl}/telecom/network-capacity`,
           model: 'networkcapacity',
           apiRoute: 'network-capacities'
         },
@@ -348,7 +348,7 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
         }, {
           id: 59,
           title: t("project.navigation.submenu.others.satellite-network"),
-          path: `${baseUrl}/network/satellite-network`,
+          path: `${baseUrl}/telecom/satellite-network`,
           model: "satellitenetwork",
           apiRoute: "satellite-networks",
         },
@@ -358,7 +358,28 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/telecom/data-center-component-manufacturer`,
           model: 'datacentercomponentmanufacturer',
           apiRoute: 'data-center-component-manufacturers'
-        }
+        },
+        {
+          id: 61,
+          title: t("project.navigation.submenu.others.satellite-infrastructure-age"),
+          path: `${baseUrl}/telecom/satellite-infrastructure-age`,
+          model: "satelliteinfrastructureage",
+          apiRoute: "satellite-infrastructure-ages",
+        },
+        {
+          id: 63,
+          title: t("project.navigation.submenu.others.satellite-network-component-manufacturer"),
+          path: `${baseUrl}/telecom/satellite-network-component-manufacturer`,
+          model: "satellitenetworkcomponentmanufacturer",
+          apiRoute: "satellite-network-component-manufacturers",
+        },
+        {
+          id: 65,
+          title: t("project.navigation.submenu.others.internet-connection"),
+          path: `${baseUrl}/telecom/internet-connection`,
+          model: "internetconnection",
+          apiRoute: "internet-connections",
+        },
       ]
     },
 
