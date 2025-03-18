@@ -345,12 +345,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/telecom/data-center-component-age`,
           model: 'networkcoverage',
           apiRoute: 'data-center-component-ages'
-        }, {
+        },
+        {
           id: 59,
-          title: t("project.navigation.submenu.others.satellite-network"),
+          title: t('project.navigation.submenu.others.satellite-network'),
           path: `${baseUrl}/telecom/satellite-network`,
-          model: "satellitenetwork",
-          apiRoute: "satellite-networks",
+          model: 'satellitenetwork',
+          apiRoute: 'satellite-networks'
         },
         {
           id: 54,
@@ -361,32 +362,39 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
         },
         {
           id: 61,
-          title: t("project.navigation.submenu.others.satellite-infrastructure-age"),
+          title: t('project.navigation.submenu.others.satellite-infrastructure-age'),
           path: `${baseUrl}/telecom/satellite-infrastructure-age`,
-          model: "satelliteinfrastructureage",
-          apiRoute: "satellite-infrastructure-ages",
+          model: 'satelliteinfrastructureage',
+          apiRoute: 'satellite-infrastructure-ages'
         },
         {
           id: 63,
-          title: t("project.navigation.submenu.others.satellite-network-component-manufacturer"),
+          title: t('project.navigation.submenu.others.satellite-network-component-manufacturer'),
           path: `${baseUrl}/telecom/satellite-network-component-manufacturer`,
-          model: "satellitenetworkcomponentmanufacturer",
-          apiRoute: "satellite-network-component-manufacturers",
+          model: 'satellitenetworkcomponentmanufacturer',
+          apiRoute: 'satellite-network-component-manufacturers'
         },
         {
           id: 65,
-          title: t("project.navigation.submenu.others.internet-connection"),
+          title: t('project.navigation.submenu.others.internet-connection'),
           path: `${baseUrl}/telecom/internet-connection`,
-          model: "internetconnection",
-          apiRoute: "internet-connections",
+          model: 'internetconnection',
+          apiRoute: 'internet-connections'
         },
         {
           id: 67,
-          title: t("project.navigation.submenu.others.broadcasting-infrastructure"),
+          title: t('project.navigation.submenu.others.broadcasting-infrastructure'),
           path: `${baseUrl}/telecom/broadcasting-infrastructure`,
-          model: "broadcastinginfrastructure",
-          apiRoute: "broadcasting-infrastructures",
+          model: 'broadcastinginfrastructure',
+          apiRoute: 'broadcasting-infrastructures'
         },
+        {
+          id: 56,
+          title: t('project.navigation.submenu.others.internet-connection-infrastructure-age'),
+          path: `${baseUrl}/telecom/internet-connection-infrastructure-age`,
+          model: 'internetconnectioninfrastructureage',
+          apiRoute: 'internet-connection-infrastructure-ages'
+        }
       ]
     },
 

@@ -569,6 +569,8 @@
           "data-center-facility-capacity": "Data Center Facility Capacity",
           "data-center-component-age": "Data Center Component Age",
           "data-center-component-manufacturer": "Data Center Component Manufacturer",
+          "internet-connection-infrastructure-age": "Internet Connection Infrastructure Age",
+          "satellite-infrastructure-age": "Satellite Infrastructure Age",
           "electric-power": "Electric Power",
           "generating-capacity": "Generation Capacity",
           "hydro-electric-dam": "Hydroelectric Dam",
@@ -1027,6 +1029,20 @@
         "title": "Data Center Component Manufacturer",
         "create-data-center-component-manufacturer": "Create Data Center Component Manufacturer",
         "edit-data-center-component-manufacturer": "Edit Data Center Component Manufacturer"
+      },
+      "internet-connection-infrastructure-age": {
+        "internet-connection-infrastructure-age-details": "Internet Connection Infrastructure Age Details",
+        "title": "Internet Connection Infrastructure Age",
+        "create-internet-connection-infrastructure-age": "Create Internet Connection Infrastructure Age",
+        "edit-internet-connection-infrastructure-age": "Edit Internet Connection Infrastructure Age",
+        "details": {
+          "internet-connection-id": "Internet Connection ID",
+          "routers": "Routers",
+          "switches": "Switches",
+          "modems": "Modems",
+          "cables": "Cables",
+          "others": "Others"
+        }
       },
       "building-dimension-detail": {
         "title": "Building Dimension Detail",

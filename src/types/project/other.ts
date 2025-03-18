@@ -967,6 +967,7 @@ export interface InternetConnection {
   id: string;
   project_id: string;
   internet_connection_type_id: string;
+  internetConnectionType: ProjectGeneralMaster;
   routers?: boolean;
   switches?: boolean;
   modems?: boolean;
@@ -989,3 +990,16 @@ export interface BroadcastingInfrastructure {
   created_at?: Date;
   updated_at?: Date;
 }
+export interface InternetConnectionInfrastructureAge {
+  id: string;
+  internet_connection_id: string; // Required UUID
+  internetConnection: InternetConnection;
+  routers?: number; // Optional Integer
+  switches?: number; // Optional Integer
+  modems?: number; // Optional Integer
+  cables?: number; // Optional Integer
+  others?: string; // Optional Text
+  created_at?: Date;
+  updated_at?: Date;
+}
+// Internet Connection model
