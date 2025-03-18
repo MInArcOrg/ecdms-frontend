@@ -345,12 +345,19 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/telecom/data-center-component-age`,
           model: 'networkcoverage',
           apiRoute: 'data-center-component-ages'
-        },{
+        }, {
           id: 59,
           title: t("project.navigation.submenu.others.satellite-network"),
           path: `${baseUrl}/network/satellite-network`,
           model: "satellitenetwork",
           apiRoute: "satellite-networks",
+        },
+        {
+          id: 54,
+          title: t('project.navigation.submenu.others.data-center-component-manufacturer'),
+          path: `${baseUrl}/telecom/data-center-component-manufacturer`,
+          model: 'datacentercomponentmanufacturer',
+          apiRoute: 'data-center-component-manufacturers'
         }
       ]
     },
