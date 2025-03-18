@@ -111,6 +111,14 @@ export const projectMasterModels = {
     editTitle: 'edit-bridge-structure-type',
     fileType: 'BRIDGE_STRUCTURE_TYPE'
   },
+  owner: {
+    model: 'Owner',
+    dbModel: 'owner',
+    title: 'owners',
+    createTitle: 'create-owner',
+    editTitle: 'edit-owner',
+    fileType: 'OWNER'
+  },
   spanSupportType: {
     model: 'SpanSupportType',
     dbModel: 'spansupporttype',
