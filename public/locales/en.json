@@ -969,6 +969,24 @@
           "others": "Others"
         }
       },
+      "data-center-facility": {
+        "data-center-facility-details": "Data Center Facility Details",
+        "title": "Data Center Facility",
+        "create-data-center-facility": "Create Data Center Facility",
+        "edit-data-center-facility": "Edit Data Center Facility",
+        "details": {
+          "data-center-id": "Data Center ID",
+          "total-floor-area": "Total Floor Area",
+          "power-capacity": "Power Capacity",
+          "rack-space-capacity": "Rack Space Capacity",
+          "cooling-capacity": "Cooling Capacity",
+          "access-control": "Access Control",
+          "surveillance-cameras": "Surveillance Cameras",
+          "fire-suppression-systems": "Fire Suppression Systems",
+          "intrusion-detection-systems": "Intrusion Detection Systems",
+          "others": "Others"
+        }
+      },
       "building-dimension-detail": {
         "title": "Building Dimension Detail",
         "create-building-dimension-detail": "Create Building Dimension Detail",

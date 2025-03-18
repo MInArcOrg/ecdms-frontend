@@ -293,8 +293,15 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           id: 48,
           title: t('project.navigation.submenu.others.environmental-control'),
           path: `${baseUrl}/telecom/environmental-control`,
-          model: 'networkcoverage',
+          model: 'enviromentalcontrol',
           apiRoute: 'environmental-controls'
+        },
+        {
+          id: 50,
+          title: t('project.navigation.submenu.others.data-center-facility'),
+          path: `${baseUrl}/telecom/data-center-facility`,
+          model: 'networkcoverage',
+          apiRoute: 'data-center-facilities'
         }
       ]
     },

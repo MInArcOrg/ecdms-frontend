@@ -805,7 +805,7 @@ export interface RoadMaintenanceActivity {
   maintenance_frequency_id?: string;
   maintenance_type_id?: string;
   consultant?: string;
-  remark?: string; 
+  remark?: string;
 }
 export interface DataCenter {
   id: string;
@@ -818,6 +818,21 @@ export interface DataCenter {
   cooling_systems?: boolean;
   backup_generators?: boolean;
   others?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface DataCenterFacility {
+  id: string;
+  data_center_id: string; // Required UUID
+  total_floor_area?: string; // Optional String
+  power_capacity?: string; // Optional String
+  rack_space_capacity?: string; // Optional String
+  cooling_capacity?: string; // Optional String
+  access_control?: boolean; // Optional Boolean
+  surveillance_cameras?: boolean; // Optional Boolean
+  fire_suppression_systems?: boolean; // Optional Boolean
+  intrusion_detection_systems?: boolean; // Optional Boolean
+  others?: string; // Optional Text
   created_at?: Date;
   updated_at?: Date;
 }
