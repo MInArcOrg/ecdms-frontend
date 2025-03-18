@@ -220,7 +220,10 @@
       "edit-broadcasting-infrastructure-type": "Edit Broadcasting Infrastructure Type",
       "data-center-types": "Data Center Types",
       "create-data-center-type": "Create Data Center Type",
-      "edit-data-center-type": "Edit Data Center Type"
+      "edit-data-center-type": "Edit Data Center Type",
+      "owners": "Owners",
+      "create-owner": "Create Owner",
+      "edit-owner": "Edit Owner"
     },
     "form": {
       "title": "Title",
