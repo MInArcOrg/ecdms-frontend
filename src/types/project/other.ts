@@ -838,6 +838,7 @@ export interface TelecomInfrastructureComponent {
   remark?: string
   created_at?: Date
   updated_at?: Date
+
 }
 
 export interface TelecomInfrastructureAge {
@@ -904,4 +905,17 @@ export interface DataCenterComponentAge {
   others?: string;
   created_at?: Date;
   updated_at?: Date;
+}
+
+export interface SatelliteNetwork {
+  id: string
+  project_id: string
+  satellite_network_type_id: string
+  satellite?: boolean
+  ground_stations?: boolean
+  modems?: boolean
+  routers?: boolean
+  others?: string
+  created_at?: Date
+  updated_at?: Date
 }

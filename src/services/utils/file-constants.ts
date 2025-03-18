@@ -113,7 +113,8 @@ export const uploadableProjectFileTypes = {
     networkCapacity: 'NETWORK_CAPACITY',
     environmentalControl: 'ENVIRONMENTAL_CONTROL',
     dataCenterFacilityCapacity: 'DATA_CENTER_FACILITY',
-    dataCenterComponentAge: 'DATA_CENTER_COMPONENT_AGE'
+    dataCenterComponentAge: 'DATA_CENTER_COMPONENT_AGE',
+    satelliteNetwork: "SATELLITE_NETWORK",
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
