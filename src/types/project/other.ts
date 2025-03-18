@@ -821,6 +821,61 @@ export interface DataCenter {
   created_at?: Date;
   updated_at?: Date;
 }
+
+
+export interface TelecomInfrastructureComponent {
+  id: string
+  project_id: string
+  mobile_network_type_id: string
+  cables?: number
+  wires?: number
+  routers?: number
+  switches?: number
+  hubs?: number
+  repeaters?: number
+  antennas?: number
+  towers?: number
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}
+
+export interface TelecomInfrastructureAge {
+  id: string;
+  project_id: string;
+  cables?: boolean;
+  wires?: boolean;
+  routers?: boolean;
+  switches?: boolean;
+  hubs?: boolean;
+  repeaters?: boolean;
+  antennas?: boolean;
+  towers?: boolean;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface Maintenance {
+  id: string;
+  project_id: string;
+  maintenance_frequency?: boolean;
+  service_level_agreement?: boolean;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface NetworkCapacity {
+  id: string;
+  project_id: string;
+  network_type_id: string;
+  total_bandwidth?: number;
+  users_number?: number;
+  remark?: string;
+   created_at?: Date;
+  updated_at?: Date;
+}
 export interface DataCenterFacilityCapacity {
   id: string;
   data_center_id: string; // Required UUID

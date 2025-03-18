@@ -297,6 +297,34 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           apiRoute: 'environmental-controls'
         },
         {
+          id: 51,
+          title: t("project.navigation.submenu.others.telecom-infrastructure-component"),
+          path: `${baseUrl}/telecom/telecom-infrastructure-component`,
+          model: "telecominfrastructurecomponent",
+          apiRoute: "telecom-infrastructure-components",
+        },
+        {
+          id: 53,
+          title: t("project.navigation.submenu.others.telecom-infrastructure-age"),
+          path: `${baseUrl}/telecom/telecom-infrastructure-age`,
+          model: "telecominfrastructureage",
+          apiRoute: "telecom-infrastructure-ages",
+        },
+        {
+          id: 55,
+          title: t("project.navigation.submenu.others.maintenance"),
+          path: `${baseUrl}/maintenance/maintenance`,
+          model: "maintenance",
+          apiRoute: "maintenances",
+        },
+        {
+          id: 57,
+          title: t("project.navigation.submenu.others.network-capacity"),
+          path: `${baseUrl}/network/network-capacity`,
+          model: "networkcapacity",
+          apiRoute: "network-capacities",
+        },
+        {
           id: 50,
           title: t('project.navigation.submenu.others.data-center-facility-capacity'),
           path: `${baseUrl}/telecom/data-center-facility-capacity`,
