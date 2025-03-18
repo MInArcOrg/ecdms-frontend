@@ -911,6 +911,7 @@ export interface SatelliteNetwork {
   id: string
   project_id: string
   satellite_network_type_id: string
+  name: string
   satellite?: boolean
   ground_stations?: boolean
   modems?: boolean

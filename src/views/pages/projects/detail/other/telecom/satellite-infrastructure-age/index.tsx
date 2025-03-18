@@ -48,7 +48,7 @@ const SatelliteInfrastructureAgeList: React.FC<SatelliteInfrastructureAgeListPro
 
   // Create maps for quick lookup
   const satelliteNetworkMap = new Map(
-    satelliteNetworks?.payload.map((network) => [network.id, network.satellite_network_type_id]) || []
+    satelliteNetworks?.payload.map((network) => [network.id, network.name]) || []
   )
 
   const fetchSatelliteInfrastructureAges = (
@@ -56,7 +56,6 @@ const SatelliteInfrastructureAgeList: React.FC<SatelliteInfrastructureAgeListPro
   ): Promise<IApiResponse<SatelliteInfrastructureAge[]>> => {
     return projectOtherApiSecondService<SatelliteInfrastructureAge>().getAll(otherSubMenu?.apiRoute || "", {
       ...params,
-    //   filter: { ...params.filter, project_id: projectId },
     })
   }
 
