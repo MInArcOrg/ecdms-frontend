@@ -114,12 +114,13 @@ export const uploadableProjectFileTypes = {
     environmentalControl: 'ENVIRONMENTAL_CONTROL',
     dataCenterFacilityCapacity: 'DATA_CENTER_FACILITY',
     dataCenterComponentAge: 'DATA_CENTER_COMPONENT_AGE',
-    satelliteNetwork: "SATELLITE_NETWORK",
+    satelliteNetwork: 'SATELLITE_NETWORK',
     dataCenterComponentManufacturer: 'DATA_CENTER_COMPONENT_MANUFACTURER',
-    satelliteInfrastructureAge: "SATELLITE_INFRASTRUCTURE_AGE",
-    satelliteNetworkComponentManufacturer: "SATELLITE_NETWORK_COMPONENT_MANUFACTURER",
-    internetConnection: "INTERNET_CONNECTION",
-    broadcastingInfrastructure: "BROADCASTING_INFRASTRUCTURE"
+    satelliteInfrastructureAge: 'SATELLITE_INFRASTRUCTURE_AGE',
+    satelliteNetworkComponentManufacturer: 'SATELLITE_NETWORK_COMPONENT_MANUFACTURER',
+    internetConnection: 'INTERNET_CONNECTION',
+    broadcastingInfrastructure: 'BROADCASTING_INFRASTRUCTURE',
+    internetConnectionInfrastructureAge: 'INTERNET_CONNECTION_COMPONENT_AGE'
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
