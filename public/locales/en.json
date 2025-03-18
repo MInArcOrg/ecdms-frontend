@@ -566,6 +566,7 @@
           "network-coverage": "Network Coverage",
           "data-center": "Data Center",
           "environmental-control": "Environmental Control",
+          "data-center-facility-capacity": "Data Center Facility Capacity",
           "electric-power": "Electric Power",
           "generating-capacity": "Generation Capacity",
           "hydro-electric-dam": "Hydroelectric Dam",
@@ -588,7 +589,9 @@
           "drainage-assessment": "Drainage Assessment",
           "road-surface-conditions": "Road Surface Conditions",
           "telecom-infrastructure-component": "Telecom Infrastructure Component",
-          "telecom-infrastructure-age": "Telecom Infrastructure Age"
+          "telecom-infrastructure-age": "Telecom Infrastructure Age",
+          "maintenance": "Maintenance",
+          "network-capacity": "Network Capacity"
         }
       }
     },
@@ -968,6 +971,24 @@
           "temperature": "Temperature",
           "humidity": "Humidity",
           "air-quality": "Air Quality",
+          "others": "Others"
+        }
+      },
+      "data-center-facility-capacity": {
+        "data-center-facility-capacity-details": "Data Center Facility Details",
+        "title": "Data Center Facility",
+        "create-data-center-facility-capacity": "Create Data Center Facility",
+        "edit-data-center-facility-capacity": "Edit Data Center Facility",
+        "details": {
+          "data-center-id": "Data Center ID",
+          "total-floor-area": "Total Floor Area",
+          "power-capacity": "Power Capacity",
+          "rack-space-capacity": "Rack Space Capacity",
+          "cooling-capacity": "Cooling Capacity",
+          "access-control": "Access Control",
+          "surveillance-cameras": "Surveillance Cameras",
+          "fire-suppression-systems": "Fire Suppression Systems",
+          "intrusion-detection-systems": "Intrusion Detection Systems",
           "others": "Others"
         }
       },
@@ -1838,6 +1859,35 @@
           "repeaters": "Repeaters",
           "antennas": "Antennas",
           "towers": "Towers",
+          "remark": "Remark"
+        }
+      },
+      "maintenance": {
+        "title": "Maintenance",
+        "create-maintenance": "Create Maintenance",
+        "edit-maintenance": "Edit Maintenance",
+        "maintenance-details": "Maintenance Details",
+        "maintenance-record": "Maintenance Record",
+        "details": {
+          "maintenance-frequency": "Maintenance Frequency",
+          "service-level-agreement": "Service Level Agreement",
+          "remark": "Remark"
+        },
+        "file-types": {
+          "maintenance-document": "Maintenance Document",
+          "infrastructure-image": "Infrastructure Image"
+        }
+
+      },
+      "network-capacity": {
+        "title": "Network Capacity",
+        "create-network-capacity": "Create Network Capacity",
+        "edit-network-capacity": "Edit Network Capacity",
+        "network-capacity-details": "Network Capacity Details",
+        "details": {
+          "network-type": "Network Type",
+          "total-bandwidth": "Total Bandwidth",
+          "users-number": "Number of Users",
           "remark": "Remark"
         }
       }
