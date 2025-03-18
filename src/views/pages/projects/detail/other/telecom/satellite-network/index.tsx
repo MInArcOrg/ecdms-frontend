@@ -44,8 +44,9 @@ const SatelliteNetworkList: React.FC<SatelliteNetworkListProps> = ({ otherSubMen
       }),
   })
 
-  // Create maps for quick lookup
-  const satelliteNetworkTypeMap = new Map(satelliteNetworkTypes?.payload.map((item) => [item.id, item.title]) || [])
+  const satelliteNetworkTypeMap = new Map(
+    satelliteNetworkTypes?.payload.map((item) => [item.id, item.title || "N/A"]) || []
+  )
 
   const fetchSatelliteNetworks = (params: GetRequestParam): Promise<IApiResponse<SatelliteNetwork[]>> => {
     return projectOtherApiSecondService<SatelliteNetwork>().getAll(otherSubMenu?.apiRoute || "", {
