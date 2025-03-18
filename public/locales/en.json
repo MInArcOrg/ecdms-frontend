@@ -1921,6 +1921,21 @@
           "routers": "Routers",
           "others": "Others"
         }
+      },
+      "satellite-infrastructure-age": {
+        "title": "Satellite Infrastructure Age",
+        "create-satellite-infrastructure-age": "Create Satellite Infrastructure Age",
+        "edit-satellite-infrastructure-age": "Edit Satellite Infrastructure Age",
+        "satellite-infrastructure-age-details": "Satellite Infrastructure Age Details",
+        "infrastructure-age": "Infrastructure Age (in years)",
+        "details": {
+          "satellite-network": "Satellite Network",
+          "satellite": "Satellite Age",
+          "ground-stations": "Ground Stations Age",
+          "modems": "Modems Age",
+          "routers": "Routers Age",
+          "others": "Others"
+        }
       }
     }
   },
@@ -1975,6 +1990,7 @@
     "active": "Active",
     "inactive": "InActive",
     "created-at": "Created At",
+    "years": "Years",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",

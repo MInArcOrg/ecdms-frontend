@@ -919,3 +919,16 @@ export interface SatelliteNetwork {
   created_at?: Date
   updated_at?: Date
 }
+
+export interface SatelliteInfrastructureAge {
+  id: string;
+  project_id: string;
+  satellite_network_id: string;
+  satellite?: number;
+  ground_stations?: number;
+  modems?: number;
+  routers?: number;
+  others?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
