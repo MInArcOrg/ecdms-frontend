@@ -22,7 +22,6 @@ export const uploadableResourceFileTypes = {
   project_quality: 'PROJECT_QUALITY',
   project_safety_status: 'PROJECT_SAFTEY_STATUS',
   projectQuality: 'PROJECT_QUALITY'
-
 } as const;
 export const uploadablePhotoTypes = {
   stakeholder_profile_photo: 'STAKEHOLDER_PROFILE_PHOTO',
@@ -105,16 +104,16 @@ export const uploadableProjectFileTypes = {
     geotechnicalReport: 'GEOTECHNICAL_REPORT',
     foundationDesign: 'FOUNDATION_DESIGN',
     geotechnicalInformation: 'GEOTECHNICAL_INFORMATION',
-    maintenanceRecord: "MAINTENANCE_RECORD",
-    telecomInfrastructureComponent: "TELECOM_INFRASTRUCTURE_COMPONENT",
-    infrastructureAge: "INFRASTRUCTURE_AGE",
-    maintenance: "MAINTENANCE",
-    infrastructureImage: "INFRASTRUCTURE_IMAGE",
-    maintenanceData: "MAINTENANCE_DATA",
-    networkCapacity: "NETWORK_CAPACITY",
     maintenanceRecord: 'MAINTENANCE_RECORD',
+    telecomInfrastructureComponent: 'TELECOM_INFRASTRUCTURE_COMPONENT',
+    infrastructureAge: 'INFRASTRUCTURE_AGE',
+    maintenance: 'MAINTENANCE',
+    infrastructureImage: 'INFRASTRUCTURE_IMAGE',
+    maintenanceData: 'MAINTENANCE_DATA',
+    networkCapacity: 'NETWORK_CAPACITY',
     environmentalControl: 'ENVIRONMENTAL_CONTROL',
-    dataCenterFacilityCapacity: 'DATA_CENTER_FACILITY'
+    dataCenterFacilityCapacity: 'DATA_CENTER_FACILITY',
+    dataCenterComponentAge: 'DATA_CENTER_COMPONENT_AGE'
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

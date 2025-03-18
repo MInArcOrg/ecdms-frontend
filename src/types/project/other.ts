@@ -873,7 +873,7 @@ export interface NetworkCapacity {
   total_bandwidth?: number;
   users_number?: number;
   remark?: string;
-   created_at?: Date;
+  created_at?: Date;
   updated_at?: Date;
 }
 export interface DataCenterFacilityCapacity {
@@ -887,7 +887,21 @@ export interface DataCenterFacilityCapacity {
   surveillance_cameras?: boolean; // Optional Boolean
   fire_suppression_systems?: boolean; // Optional Boolean
   intrusion_detection_systems?: boolean; // Optional Boolean
-  others?: string; // Optional Text
+  others?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface DataCenterComponentAge {
+  id: string;
+
+  data_center_id: string; // Required UUID
+  servers?: number; // Optional Integer
+  storage_devices?: number; // Optional Integer
+  networking_equipment?: number; // Optional Integer
+  cooling_systems?: number; // Optional Integer
+  backup_generators?: number; // Optional Integer
+  others?: string;
   created_at?: Date;
   updated_at?: Date;
 }

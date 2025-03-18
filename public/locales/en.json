@@ -567,6 +567,7 @@
           "data-center": "Data Center",
           "environmental-control": "Environmental Control",
           "data-center-facility-capacity": "Data Center Facility Capacity",
+          "data-center-component-age": "Data Center Component Age",
           "electric-power": "Electric Power",
           "generating-capacity": "Generation Capacity",
           "hydro-electric-dam": "Hydroelectric Dam",
@@ -989,6 +990,21 @@
           "surveillance-cameras": "Surveillance Cameras",
           "fire-suppression-systems": "Fire Suppression Systems",
           "intrusion-detection-systems": "Intrusion Detection Systems",
+          "others": "Others"
+        }
+      },
+      "data-center-component-age": {
+        "edit-data-center-component-age": "Edit Data Center Component Age",
+        "create-data-center-component-age": "Create Data Center Component Age",
+        "data-center-component-age-details": "Data Center Component Age Details",
+        "title": "Data Center Component Age",
+        "details": {
+          "data-center-id": "Data Center ID",
+          "servers": "Servers",
+          "storage-devices": "Storage Devices",
+          "networking-equipment": "Networking Equipment",
+          "cooling-systems": "Cooling Systems",
+          "backup-generators": "Backup Generators",
           "others": "Others"
         }
       },
@@ -1877,7 +1893,6 @@
           "maintenance-document": "Maintenance Document",
           "infrastructure-image": "Infrastructure Image"
         }
-
       },
       "network-capacity": {
         "title": "Network Capacity",
