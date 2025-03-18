@@ -594,7 +594,8 @@
           "maintenance": "Maintenance",
           "network-capacity": "Network Capacity",
           "satellite-network": "Satellite Network",
-          "satellite-network-component-manufacturer": "Satellite Network Component Manufacturer"
+          "satellite-network-component-manufacturer": "Satellite Network Component Manufacturer",
+          "internet-connection": "Internet Connection"
         }
       }
     },
@@ -1951,6 +1952,21 @@
           "modems": "Modems Manufacturer",
           "routers": "Routers Manufacturer",
           "others": "Other Manufacturers"
+        }
+      },
+      "internet-connection": {
+        "title": "Internet Connection",
+        "create-internet-connection": "Create Internet Connection",
+        "edit-internet-connection": "Edit Internet Connection",
+        "internet-connection-details": "Internet Connection Details",
+        "connection-components": "Connection Components",
+        "details": {
+          "internet-connection-type": "Internet Connection Type",
+          "routers": "Routers",
+          "switches": "Switches",
+          "modems": "Modems",
+          "cables": "Cables",
+          "others": "Others"
         }
       }
     }

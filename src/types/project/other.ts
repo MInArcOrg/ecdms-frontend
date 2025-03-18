@@ -946,3 +946,16 @@ export interface SatelliteNetworkComponentManufacturer {
   created_at?: Date
   updated_at?: Date
 }
+
+export interface InternetConnection {
+  id: string;
+  project_id: string;
+  internet_connection_type_id: string;
+  routers?: boolean;
+  switches?: boolean;
+  modems?: boolean;
+  cables?: boolean;
+  others?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}

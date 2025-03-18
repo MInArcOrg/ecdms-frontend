@@ -116,7 +116,8 @@ export const uploadableProjectFileTypes = {
     dataCenterComponentAge: 'DATA_CENTER_COMPONENT_AGE',
     satelliteNetwork: "SATELLITE_NETWORK",
     satelliteInfrastructureAge: "SATELLITE_INFRASTRUCTURE_AGE",
-    satelliteNetworkComponentManufacturer: "SATELLITE_NETWORK_COMPONENT_MANUFACTURER"
+    satelliteNetworkComponentManufacturer: "SATELLITE_NETWORK_COMPONENT_MANUFACTURER",
+    internetConnection: "INTERNET_CONNECTION"
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
