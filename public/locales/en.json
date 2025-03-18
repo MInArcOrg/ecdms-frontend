@@ -593,7 +593,8 @@
           "telecom-infrastructure-age": "Telecom Infrastructure Age",
           "maintenance": "Maintenance",
           "network-capacity": "Network Capacity",
-          "satellite-network": "Satellite Network"
+          "satellite-network": "Satellite Network",
+          "satellite-network-component-manufacturer": "Satellite Network Component Manufacturer"
         }
       }
     },
@@ -1935,6 +1936,21 @@
           "modems": "Modems Age",
           "routers": "Routers Age",
           "others": "Others"
+        }
+      },
+      "satellite-network-component-manufacturer": {
+        "title": "Satellite Network Component Manufacturer",
+        "create-satellite-network-component-manufacturer": "Create Satellite Network Component Manufacturer",
+        "edit-satellite-network-component-manufacturer": "Edit Satellite Network Component Manufacturer",
+        "satellite-network-component-manufacturer-details": "Satellite Network Component Manufacturer Details",
+        "component-manufacturers": "Component Manufacturers",
+        "details": {
+          "satellite-network": "Satellite Network",
+          "satellite": "Satellite Manufacturer",
+          "ground-stations": "Ground Stations Manufacturer",
+          "modems": "Modems Manufacturer",
+          "routers": "Routers Manufacturer",
+          "others": "Other Manufacturers"
         }
       }
     }

@@ -933,3 +933,16 @@ export interface SatelliteInfrastructureAge {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface SatelliteNetworkComponentManufacturer {
+  id: string
+  project_id: string
+  satellite_network_id: string
+  satellite?: string
+  ground_stations?: string
+  modems?: string
+  routers?: string
+  others?: string
+  created_at?: Date
+  updated_at?: Date
+}

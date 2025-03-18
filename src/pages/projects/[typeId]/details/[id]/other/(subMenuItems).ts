@@ -359,6 +359,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "satelliteinfrastructureage",
           apiRoute: "satellite-infrastructure-ages",
         },
+        {
+          id: 63,
+          title: t("project.navigation.submenu.others.satellite-network-component-manufacturer"),
+          path: `${baseUrl}/network/satellite-network-component-manufacturer`,
+          model: "satellitenetworkcomponentmanufacturer",
+          apiRoute: "satellite-network-component-manufacturers",
+        },
       ]
     },
 
