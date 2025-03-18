@@ -786,6 +786,8 @@ export interface GeotechnicalInformation {
   retaining_walls?: boolean;
   geological_hazard?: string;
   remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 export interface EnvironmentalControl {
   id: string;
@@ -806,6 +808,8 @@ export interface RoadMaintenanceActivity {
   maintenance_type_id?: string;
   consultant?: string;
   remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 export interface DataCenter {
   id: string;
