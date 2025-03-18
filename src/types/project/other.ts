@@ -786,6 +786,8 @@ export interface GeotechnicalInformation {
   retaining_walls?: boolean;
   geological_hazard?: string;
   remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 export interface EnvironmentalControl {
   id: string;
@@ -806,6 +808,8 @@ export interface RoadMaintenanceActivity {
   maintenance_type_id?: string;
   consultant?: string;
   remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 export interface DataCenter {
   id: string;
@@ -917,6 +921,18 @@ export interface SatelliteNetwork {
   modems?: boolean
   routers?: boolean
   others?: string
+  created_at?: Date
+  updated_at?: Date
+}
+export interface DataCenterComponentManufacturer {
+  id: string;
+  data_center_id: string; // Required UUID
+  servers?: string; // Optional String
+  storage_devices?: string; // Optional String
+  networking_equipment?: string; // Optional String
+  cooling_systems?: string; // Optional String
+  backup_generators?: string; // Optional String
+  others?: string; // Optional Text
   created_at?: Date
   updated_at?: Date
 }
