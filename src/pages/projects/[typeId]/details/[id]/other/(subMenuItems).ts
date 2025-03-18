@@ -324,6 +324,7 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "networkcapacity",
           apiRoute: "network-capacities",
         },
+        {
           id: 50,
           title: t('project.navigation.submenu.others.data-center-facility-capacity'),
           path: `${baseUrl}/telecom/data-center-facility-capacity`,
