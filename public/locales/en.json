@@ -568,6 +568,7 @@
           "environmental-control": "Environmental Control",
           "data-center-facility-capacity": "Data Center Facility Capacity",
           "data-center-component-age": "Data Center Component Age",
+          "data-center-component-manufacturer": "Data Center Component Manufacturer",
           "electric-power": "Electric Power",
           "generating-capacity": "Generation Capacity",
           "hydro-electric-dam": "Hydroelectric Dam",
@@ -1008,6 +1009,21 @@
           "backup-generators": "Backup Generators",
           "others": "Others"
         }
+      },
+      "data-center-component-manufacturer": {
+        "details": {
+          "data-center-id": "Data Center ID",
+          "servers": "Servers",
+          "storage-devices": "Storage Devices",
+          "networking-equipment": "Networking Equipment",
+          "cooling-systems": "Cooling Systems",
+          "backup-generators": "Backup Generators",
+          "others": "Others"
+        },
+        "data-center-component-manufacturer-details": "Data Center Component Manufacturer Details",
+        "title": "Data Center Component Manufacturer",
+        "create-data-center-component-manufacturer": "Create Data Center Component Manufacturer",
+        "edit-data-center-component-manufacturer": "Edit Data Center Component Manufacturer"
       },
       "building-dimension-detail": {
         "title": "Building Dimension Detail",
