@@ -975,3 +975,17 @@ export interface InternetConnection {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface BroadcastingInfrastructure {
+  id: string;
+  project_id: string;
+  broadcasting_infrastructure_type_id: string;
+  broadcasting_network?: boolean;
+  antennas?: boolean;
+  transmitters?: boolean;
+  towers?: boolean;
+  cables?: boolean;
+  others?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}

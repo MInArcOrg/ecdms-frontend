@@ -596,7 +596,8 @@
           "network-capacity": "Network Capacity",
           "satellite-network": "Satellite Network",
           "satellite-network-component-manufacturer": "Satellite Network Component Manufacturer",
-          "internet-connection": "Internet Connection"
+          "internet-connection": "Internet Connection",
+          "broadcasting-infrastructure": "Broadcasting Infrastructure"
         }
       }
     },
@@ -1981,6 +1982,22 @@
           "routers": "Routers",
           "switches": "Switches",
           "modems": "Modems",
+          "cables": "Cables",
+          "others": "Others"
+        }
+      },
+      "broadcasting-infrastructure": {
+        "title": "Broadcasting Infrastructure",
+        "create-broadcasting-infrastructure": "Create Broadcasting Infrastructure",
+        "edit-broadcasting-infrastructure": "Edit Broadcasting Infrastructure",
+        "broadcasting-infrastructure-details": "Broadcasting Infrastructure Details",
+        "infrastructure-components": "Infrastructure Components",
+        "details": {
+          "broadcasting-infrastructure-type": "Broadcasting Infrastructure Type",
+          "broadcasting-network": "Broadcasting Network",
+          "antennas": "Antennas",
+          "transmitters": "Transmitters",
+          "towers": "Towers",
           "cables": "Cables",
           "others": "Others"
         }
