@@ -54,6 +54,7 @@ const SatelliteNetworkDrawer = (props: SatelliteNetworkDrawerType) => {
 
   const getPayload = (values: SatelliteNetwork) => ({
     data: {
+      ...values,
       project_id: projectId,
       satellite_network_type_id: values.satellite_network_type_id,
       satellite: values.satellite,
