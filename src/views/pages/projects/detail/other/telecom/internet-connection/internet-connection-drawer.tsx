@@ -54,6 +54,7 @@ const InternetConnectionDrawer = (props: InternetConnectionDrawerType) => {
 
   const getPayload = (values: InternetConnection) => ({
     data: {
+      ...values,
       project_id: projectId,
       internet_connection_type_id: values.internet_connection_type_id,
       routers: values.routers,
@@ -99,7 +100,7 @@ const InternetConnectionDrawer = (props: InternetConnectionDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...internetConnection,
+            ...internetConnection
           }}
           createActionFunc={isEdit ? editInternetConnection : createInternetConnection}
           onActionSuccess={onActionSuccess}
