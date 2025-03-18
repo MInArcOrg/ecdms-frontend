@@ -1002,3 +1002,4 @@ export interface InternetConnectionInfrastructureAge {
   created_at?: Date;
   updated_at?: Date;
 }
+// Internet Connection model
