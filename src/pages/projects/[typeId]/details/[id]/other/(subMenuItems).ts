@@ -380,6 +380,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "internetconnection",
           apiRoute: "internet-connections",
         },
+        {
+          id: 69,
+          title: t("project.navigation.submenu.others.broadcasting-infrastructure-age"),
+          path: `${baseUrl}/telecom/broadcasting-infrastructure-age`,
+          model: "broadcastinginfrastructureage",
+          apiRoute: "broadcasting-infrastructure-ages",
+        },
       ]
     },
 
