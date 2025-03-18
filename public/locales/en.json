@@ -566,6 +566,7 @@
           "network-coverage": "Network Coverage",
           "data-center": "Data Center",
           "environmental-control": "Environmental Control",
+          "data-center-facility-capacity": "Data Center Facility Capacity",
           "electric-power": "Electric Power",
           "generating-capacity": "Generation Capacity",
           "hydro-electric-dam": "Hydroelectric Dam",
@@ -969,11 +970,11 @@
           "others": "Others"
         }
       },
-      "data-center-facility": {
-        "data-center-facility-details": "Data Center Facility Details",
+      "data-center-facility-capacity": {
+        "data-center-facility-capacity-details": "Data Center Facility Details",
         "title": "Data Center Facility",
-        "create-data-center-facility": "Create Data Center Facility",
-        "edit-data-center-facility": "Edit Data Center Facility",
+        "create-data-center-facility-capacity": "Create Data Center Facility",
+        "edit-data-center-facility-capacity": "Edit Data Center Facility",
         "details": {
           "data-center-id": "Data Center ID",
           "total-floor-area": "Total Floor Area",

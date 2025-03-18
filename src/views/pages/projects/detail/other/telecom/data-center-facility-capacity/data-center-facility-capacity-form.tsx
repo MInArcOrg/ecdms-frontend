@@ -5,19 +5,19 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { DataCenter, DataCenterFacility } from 'src/types/project/other';
+import { DataCenter, DataCenterFacilityCapacity } from 'src/types/project/other';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
-interface DataCenterFacilityFormProps {
-  formik: FormikProps<DataCenterFacility>;
+interface DataCenterFacilityCapacityFormProps {
+  formik: FormikProps<DataCenterFacilityCapacity>;
   file: File | null;
   onFileChange: (file: File | null) => void;
   projectId: String;
 }
 
-const DataCenterFacilityForm: React.FC<DataCenterFacilityFormProps> = ({ formik, projectId, file, onFileChange }) => {
+const DataCenterFacilityCapacityForm: React.FC<DataCenterFacilityCapacityFormProps> = ({ formik, projectId, file, onFileChange }) => {
   const { t: transl } = useTranslation();
   const { data: dataCenters } = useQuery({
     queryKey: ['data-centers'],
@@ -31,8 +31,8 @@ const DataCenterFacilityForm: React.FC<DataCenterFacilityFormProps> = ({ formik,
       <Grid item xs={12}>
         <CustomSelectBox
           fullWidth
-          label={transl('project.other.data-center-facility.details.data-center-id')}
-          placeholder={transl('project.other.data-center-facility.details.data-center-id')}
+          label={transl('project.other.data-center-facility-capacity.details.data-center-id')}
+          placeholder={transl('project.other.data-center-facility-capacity.details.data-center-id')}
           name="data_center_id"
           size="small"
           sx={{ mb: 2 }}
@@ -48,8 +48,8 @@ const DataCenterFacilityForm: React.FC<DataCenterFacilityFormProps> = ({ formik,
           <Grid item xs={12} sm={6}>
             <CustomTextBox
               fullWidth
-              label={transl('project.other.data-center-facility.details.total-floor-area')}
-              placeholder={transl('project.other.data-center-facility.details.total-floor-area')}
+              label={transl('project.other.data-center-facility-capacity.details.total-floor-area')}
+              placeholder={transl('project.other.data-center-facility-capacity.details.total-floor-area')}
               name="total_floor_area"
               type="text"
               size="small"
@@ -59,8 +59,8 @@ const DataCenterFacilityForm: React.FC<DataCenterFacilityFormProps> = ({ formik,
           <Grid item xs={12} sm={6}>
             <CustomTextBox
               fullWidth
-              label={transl('project.other.data-center-facility.details.power-capacity')}
-              placeholder={transl('project.other.data-center-facility.details.power-capacity')}
+              label={transl('project.other.data-center-facility-capacity.details.power-capacity')}
+              placeholder={transl('project.other.data-center-facility-capacity.details.power-capacity')}
               name="power_capacity"
               type="text"
               size="small"
@@ -70,8 +70,8 @@ const DataCenterFacilityForm: React.FC<DataCenterFacilityFormProps> = ({ formik,
           <Grid item xs={12} sm={6}>
             <CustomTextBox
               fullWidth
-              label={transl('project.other.data-center-facility.details.rack-space-capacity')}
-              placeholder={transl('project.other.data-center-facility.details.rack-space-capacity')}
+              label={transl('project.other.data-center-facility-capacity.details.rack-space-capacity')}
+              placeholder={transl('project.other.data-center-facility-capacity.details.rack-space-capacity')}
               name="rack_space_capacity"
               type="text"
               size="small"
@@ -81,8 +81,8 @@ const DataCenterFacilityForm: React.FC<DataCenterFacilityFormProps> = ({ formik,
           <Grid item xs={12} sm={6}>
             <CustomTextBox
               fullWidth
-              label={transl('project.other.data-center-facility.details.cooling-capacity')}
-              placeholder={transl('project.other.data-center-facility.details.cooling-capacity')}
+              label={transl('project.other.data-center-facility-capacity.details.cooling-capacity')}
+              placeholder={transl('project.other.data-center-facility-capacity.details.cooling-capacity')}
               name="cooling_capacity"
               type="text"
               size="small"
@@ -92,7 +92,7 @@ const DataCenterFacilityForm: React.FC<DataCenterFacilityFormProps> = ({ formik,
           <Grid item xs={12} sm={6}>
             <CustomSelectBox
               fullWidth
-              label={transl('project.other.data-center-facility.details.access-control')}
+              label={transl('project.other.data-center-facility-capacity.details.access-control')}
               name="access_control"
               size="small"
               sx={{ mb: 2 }}
@@ -105,7 +105,7 @@ const DataCenterFacilityForm: React.FC<DataCenterFacilityFormProps> = ({ formik,
           <Grid item xs={12} sm={6}>
             <CustomSelectBox
               fullWidth
-              label={transl('project.other.data-center-facility.details.surveillance-cameras')}
+              label={transl('project.other.data-center-facility-capacity.details.surveillance-cameras')}
               name="surveillance_cameras"
               size="small"
               sx={{ mb: 2 }}
@@ -118,7 +118,7 @@ const DataCenterFacilityForm: React.FC<DataCenterFacilityFormProps> = ({ formik,
           <Grid item xs={12} sm={6}>
             <CustomSelectBox
               fullWidth
-              label={transl('project.other.data-center-facility.details.fire-suppression-systems')}
+              label={transl('project.other.data-center-facility-capacity.details.fire-suppression-systems')}
               name="fire_suppression_systems"
               size="small"
               sx={{ mb: 2 }}
@@ -131,7 +131,7 @@ const DataCenterFacilityForm: React.FC<DataCenterFacilityFormProps> = ({ formik,
           <Grid item xs={12} sm={6}>
             <CustomSelectBox
               fullWidth
-              label={transl('project.other.data-center-facility.details.intrusion-detection-systems')}
+              label={transl('project.other.data-center-facility-capacity.details.intrusion-detection-systems')}
               name="intrusion_detection_systems"
               size="small"
               sx={{ mb: 2 }}
@@ -145,8 +145,8 @@ const DataCenterFacilityForm: React.FC<DataCenterFacilityFormProps> = ({ formik,
 
         <CustomTextBox
           fullWidth
-          label={transl('project.other.data-center-facility.details.others')}
-          placeholder={transl('project.other.data-center-facility.details.others')}
+          label={transl('project.other.data-center-facility-capacity.details.others')}
+          placeholder={transl('project.other.data-center-facility-capacity.details.others')}
           name="others"
           size="small"
           multiline
@@ -162,4 +162,4 @@ const DataCenterFacilityForm: React.FC<DataCenterFacilityFormProps> = ({ formik,
   );
 };
 
-export default DataCenterFacilityForm;
+export default DataCenterFacilityCapacityForm;

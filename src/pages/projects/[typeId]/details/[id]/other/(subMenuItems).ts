@@ -298,10 +298,10 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
         },
         {
           id: 50,
-          title: t('project.navigation.submenu.others.data-center-facility'),
-          path: `${baseUrl}/telecom/data-center-facility`,
+          title: t('project.navigation.submenu.others.data-center-facility-capacity'),
+          path: `${baseUrl}/telecom/data-center-facility-capacity`,
           model: 'networkcoverage',
-          apiRoute: 'data-center-facilities'
+          apiRoute: 'data-center-facility-capacities'
         }
       ]
     },

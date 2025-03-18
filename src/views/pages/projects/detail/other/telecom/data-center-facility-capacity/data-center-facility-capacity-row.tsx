@@ -2,18 +2,18 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import { DataCenterFacility } from 'src/types/project/other';
+import { DataCenterFacilityCapacity } from 'src/types/project/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
-  row: DataCenterFacility;
+  row: DataCenterFacilityCapacity;
 }
 
-export const dataCenterFacilityColumns = (
-  onDetail: (dataCenterFacility: DataCenterFacility) => void,
-  onEdit: (dataCenterFacility: DataCenterFacility) => void,
+export const dataCenterFacilityCapacityColumns = (
+  onDetail: (dataCenterFacilityCapacity: DataCenterFacilityCapacity) => void,
+  onEdit: (dataCenterFacilityCapacity: DataCenterFacilityCapacity) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void
@@ -41,7 +41,7 @@ export const dataCenterFacilityColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('project.other.data-center-facility.details.data-center-id'),
+      headerName: t('project.other.data-center-facility-capacity.details.data-center-id'),
       field: 'data_center_id',
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>{row?.data_center_id || t('common.not-available')}</Typography>
@@ -50,7 +50,7 @@ export const dataCenterFacilityColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('project.other.data-center-facility.details.total-floor-area'),
+      headerName: t('project.other.data-center-facility-capacity.details.total-floor-area'),
       field: 'total_floor_area',
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>{row?.total_floor_area || t('common.not-available')}</Typography>
@@ -59,7 +59,7 @@ export const dataCenterFacilityColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('project.other.data-center-facility.details.power-capacity'),
+      headerName: t('project.other.data-center-facility-capacity.details.power-capacity'),
       field: 'power_capacity',
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>{row?.power_capacity || t('common.not-available')}</Typography>
@@ -68,7 +68,7 @@ export const dataCenterFacilityColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('project.other.data-center-facility.details.rack-space-capacity'),
+      headerName: t('project.other.data-center-facility-capacity.details.rack-space-capacity'),
       field: 'rack_space_capacity',
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>{row?.rack_space_capacity || t('common.not-available')}</Typography>
@@ -77,7 +77,7 @@ export const dataCenterFacilityColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('project.other.data-center-facility.details.cooling-capacity'),
+      headerName: t('project.other.data-center-facility-capacity.details.cooling-capacity'),
       field: 'cooling_capacity',
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>{row?.cooling_capacity || t('common.not-available')}</Typography>
@@ -86,7 +86,7 @@ export const dataCenterFacilityColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('project.other.data-center-facility.details.access-control'),
+      headerName: t('project.other.data-center-facility-capacity.details.access-control'),
       field: 'access_control',
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>{row?.access_control ? t('common.yes') : t('common.no')}</Typography>
@@ -95,7 +95,7 @@ export const dataCenterFacilityColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('project.other.data-center-facility.details.surveillance-cameras'),
+      headerName: t('project.other.data-center-facility-capacity.details.surveillance-cameras'),
       field: 'surveillance_cameras',
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>{row?.surveillance_cameras ? t('common.yes') : t('common.no')}</Typography>
@@ -104,7 +104,7 @@ export const dataCenterFacilityColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('project.other.data-center-facility.details.fire-suppression-systems'),
+      headerName: t('project.other.data-center-facility-capacity.details.fire-suppression-systems'),
       field: 'fire_suppression_systems',
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>{row?.fire_suppression_systems ? t('common.yes') : t('common.no')}</Typography>
@@ -113,7 +113,7 @@ export const dataCenterFacilityColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('project.other.data-center-facility.details.intrusion-detection-systems'),
+      headerName: t('project.other.data-center-facility-capacity.details.intrusion-detection-systems'),
       field: 'intrusion_detection_systems',
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>{row?.intrusion_detection_systems ? t('common.yes') : t('common.no')}</Typography>
@@ -122,7 +122,7 @@ export const dataCenterFacilityColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('project.other.data-center-facility.details.others'),
+      headerName: t('project.other.data-center-facility-capacity.details.others'),
       field: 'others',
       renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.others || t('common.not-available')}</Typography>
     },
@@ -141,7 +141,7 @@ export const dataCenterFacilityColumns = (
       renderCell: ({ row }: CellType) => (
         <Fragment>
           <ModelAction
-            model="DataCenterFacility"
+            model="DataCenterFacilityCapacity"
             model_id={row.id}
             refetchModel={refetch}
             resubmit={function (): void {
@@ -159,11 +159,11 @@ export const dataCenterFacilityColumns = (
             options={[]}
             deletePermissionRule={{
               action: 'delete',
-              subject: 'datacenterfacility'
+              subject: 'datacenterfacilitycapacity'
             }}
             editPermissionRule={{
               action: 'update',
-              subject: 'datacenterfacility'
+              subject: 'datacenterfacilitycapacity'
             }}
           />
         </Fragment>

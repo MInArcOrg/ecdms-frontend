@@ -821,7 +821,7 @@ export interface DataCenter {
   created_at?: Date;
   updated_at?: Date;
 }
-export interface DataCenterFacility {
+export interface DataCenterFacilityCapacity {
   id: string;
   data_center_id: string; // Required UUID
   total_floor_area?: string; // Optional String

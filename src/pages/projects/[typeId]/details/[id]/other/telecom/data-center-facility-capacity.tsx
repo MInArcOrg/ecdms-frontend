@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import ProjectOtherLayout from 'src/views/pages/projects/detail/other/layouts/project-other-layout';
-import DataCenterFacilityList from 'src/views/pages/projects/detail/other/telecom/data-center-facility';
+import DataCenterFacilityCapacityList from 'src/views/pages/projects/detail/other/telecom/data-center-facility-capacity';
 import subMenuItems, { findOtherSubMenu } from '../(subMenuItems)';
 
 function Index() {
@@ -19,7 +19,7 @@ function Index() {
       subMenuItems={subMenuItems}
       baseUrl={baseUrl}
     >
-      <DataCenterFacilityList
+      <DataCenterFacilityCapacityList
         otherSubMenu={findOtherSubMenu(subMenuItems(baseUrl), activeType, activeSubType)}
         projectId={String(id)}
         typeId={String(typeId)}
