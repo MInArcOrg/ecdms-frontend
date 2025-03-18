@@ -242,11 +242,11 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
         },
         {
           id: 49,
-          title: t("project.navigation.submenu.others.road-maintenance-activity"),
+          title: t('project.navigation.submenu.others.road-maintenance-activity'),
           path: `${baseUrl}/road/road-maintenance-activity`,
-          model: "roadmaintenanceactivity",
-          apiRoute: "road-maintenance-activities",
-        },
+          model: 'roadmaintenanceactivity',
+          apiRoute: 'road-maintenance-activities'
+        }
       ]
     },
     {
@@ -305,34 +305,47 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
         },
         {
           id: 51,
-          title: t("project.navigation.submenu.others.telecom-infrastructure-component"),
+          title: t('project.navigation.submenu.others.telecom-infrastructure-component'),
           path: `${baseUrl}/telecom/telecom-infrastructure-component`,
-          model: "telecominfrastructurecomponent",
-          apiRoute: "telecom-infrastructure-components",
+          model: 'telecominfrastructurecomponent',
+          apiRoute: 'telecom-infrastructure-components'
         },
         {
           id: 53,
-          title: t("project.navigation.submenu.others.telecom-infrastructure-age"),
+          title: t('project.navigation.submenu.others.telecom-infrastructure-age'),
           path: `${baseUrl}/telecom/telecom-infrastructure-age`,
-          model: "telecominfrastructureage",
-          apiRoute: "telecom-infrastructure-ages",
+          model: 'telecominfrastructureage',
+          apiRoute: 'telecom-infrastructure-ages'
         },
         {
           id: 55,
-          title: t("project.navigation.submenu.others.maintenance"),
+          title: t('project.navigation.submenu.others.maintenance'),
           path: `${baseUrl}/maintenance/maintenance`,
-          model: "maintenance",
-          apiRoute: "maintenances",
+          model: 'maintenance',
+          apiRoute: 'maintenances'
         },
 
         {
           id: 57,
-          title: t("project.navigation.submenu.others.network-capacity"),
+          title: t('project.navigation.submenu.others.network-capacity'),
           path: `${baseUrl}/network/network-capacity`,
-          model: "networkcapacity",
-          apiRoute: "network-capacities",
+          model: 'networkcapacity',
+          apiRoute: 'network-capacities'
         },
         {
+          id: 50,
+          title: t('project.navigation.submenu.others.data-center-facility-capacity'),
+          path: `${baseUrl}/telecom/data-center-facility-capacity`,
+          model: 'networkcoverage',
+          apiRoute: 'data-center-facility-capacities'
+        },
+        {
+          id: 52,
+          title: t('project.navigation.submenu.others.data-center-component-age'),
+          path: `${baseUrl}/telecom/data-center-component-age`,
+          model: 'networkcoverage',
+          apiRoute: 'data-center-component-ages'
+        },{
           id: 59,
           title: t("project.navigation.submenu.others.satellite-network"),
           path: `${baseUrl}/network/satellite-network`,
