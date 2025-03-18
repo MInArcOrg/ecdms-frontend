@@ -297,6 +297,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           apiRoute: 'environmental-controls'
         },
         {
+          id: 50,
+          title: t('project.navigation.submenu.others.data-center-facility-capacity'),
+          path: `${baseUrl}/telecom/data-center-facility-capacity`,
+          model: 'networkcoverage',
+          apiRoute: 'data-center-facility-capacities'
+        },
+        {
           id: 51,
           title: t("project.navigation.submenu.others.telecom-infrastructure-component"),
           path: `${baseUrl}/telecom/telecom-infrastructure-component`,
@@ -326,11 +333,11 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           apiRoute: "network-capacities",
         },
         {
-          id: 50,
-          title: t('project.navigation.submenu.others.data-center-facility-capacity'),
-          path: `${baseUrl}/telecom/data-center-facility-capacity`,
-          model: 'networkcoverage',
-          apiRoute: 'data-center-facility-capacities'
+          id: 59,
+          title: t("project.navigation.submenu.others.satellite-network"),
+          path: `${baseUrl}/network/satellite-network`,
+          model: "satellitenetwork",
+          apiRoute: "satellite-networks",
         }
       ]
     },
