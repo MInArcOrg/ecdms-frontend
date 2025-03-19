@@ -1003,3 +1003,14 @@ export interface InternetConnectionInfrastructureAge {
   updated_at?: Date;
 }
 // Internet Connection model
+export interface InternetConnectionInfrastructureManufacturer {
+  id: string;
+  internet_connection_id: string; // Required UUID
+  routers?: string; // Optional String
+  switches?: string; // Optional String
+  modems?: string; // Optional String
+  cables?: string; // Optional String
+  others?: string; // Optional Text
+  created_at?: Date;
+  updated_at?: Date;
+}

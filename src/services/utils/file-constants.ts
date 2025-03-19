@@ -120,7 +120,8 @@ export const uploadableProjectFileTypes = {
     satelliteNetworkComponentManufacturer: 'SATELLITE_NETWORK_COMPONENT_MANUFACTURER',
     internetConnection: 'INTERNET_CONNECTION',
     broadcastingInfrastructure: 'BROADCASTING_INFRASTRUCTURE',
-    internetConnectionInfrastructureAge: 'INTERNET_CONNECTION_COMPONENT_AGE'
+    internetConnectionInfrastructureAge: 'INTERNET_CONNECTION_COMPONENT_AGE',
+    internetConnectionInfrastructureManufacturer: 'INTERNET_CONNECTION_COMPONENT_MANUFACTURER',
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
