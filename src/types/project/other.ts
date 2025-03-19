@@ -1026,3 +1026,18 @@ export interface InternetConnectionInfrastructureManufacturer {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface GeothermalPowerWell {
+  id: string
+  project_id: string
+  depth?: number
+  well_diameter?: number
+  drilling_period?: Date
+  temperature_at_bottom_hole?: number
+  wells_number?: number
+  wells_name?: string
+  plant_life?: number
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}
