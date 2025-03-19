@@ -573,6 +573,7 @@
           "data-center-component-age": "Data Center Component Age",
           "data-center-component-manufacturer": "Data Center Component Manufacturer",
           "internet-connection-infrastructure-age": "Internet Connection Infrastructure Age",
+          "internet-connection-infrastructure-manufacturer": "Internet Connection Infrastructure Manufacturer",
           "satellite-infrastructure-age": "Satellite Infrastructure Age",
           "electric-power": "Electric Power",
           "generating-capacity": "Generation Capacity",
@@ -2004,6 +2005,20 @@
           "cables": "Cables",
           "others": "Others"
         }
+      },
+      "internet-connection-infrastructure-manufacturer": {
+        "details": {
+          "internet-connection-id": "Internet Connection ID",
+          "routers": "Routers",
+          "switches": "Switches",
+          "modems": "Modems",
+          "cables": "Cables",
+          "others": "Others"
+        },
+        "internet-connection-infrastructure-manufacturer-details": "Internet Connection Infrastructure Manufacturer Details",
+        "title": "Internet Connection Infrastructure Manufacturer",
+        "create-internet-connection-infrastructure-manufacturer": "Create Internet Connection Infrastructure Manufacturer",
+        "edit-internet-connection-infrastructure-manufacturer": "Edit Internet Connection Infrastructure Manufacturer"
       },
       "broadcasting-infrastructure": {
         "title": "Broadcasting Infrastructure",
