@@ -527,6 +527,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/irrigation-dam/water-irrigation-dam`,
           model: 'waterirrigationdam',
           apiRoute: 'water-irrigation-dams'
+        },
+        {
+          id: 60,
+          title: t('project.navigation.submenu.others.hydrological-information'),
+          path: `${baseUrl}/irrigation-dam/hydrological-information`,
+          model: 'hydrologicalinformation',
+          apiRoute: 'hydrological-informations'
         }
       ]
     },
