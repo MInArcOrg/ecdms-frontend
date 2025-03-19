@@ -122,6 +122,7 @@ export const uploadableProjectFileTypes = {
     broadcastingInfrastructure: 'BROADCASTING_INFRASTRUCTURE',
     internetConnectionInfrastructureAge: 'INTERNET_CONNECTION_COMPONENT_AGE',
     internetConnectionInfrastructureManufacturer: 'INTERNET_CONNECTION_COMPONENT_MANUFACTURER',
+    hydrologicalInformation: 'HYDROLOGICAL_INFORMATION'
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

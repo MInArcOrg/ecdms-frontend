@@ -394,7 +394,8 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/telecom/internet-connection-infrastructure-age`,
           model: 'internetconnectioninfrastructureage',
           apiRoute: 'internet-connection-infrastructure-ages'
-        }, {
+        },
+        {
           id: 58,
           title: t('project.navigation.submenu.others.internet-connection-infrastructure-manufacturer'),
           path: `${baseUrl}/telecom/internet-connection-infrastructure-manufacturer`,
@@ -527,6 +528,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/irrigation-dam/water-irrigation-dam`,
           model: 'waterirrigationdam',
           apiRoute: 'water-irrigation-dams'
+        },
+        {
+          id: 60,
+          title: t('project.navigation.submenu.others.hydrological-information'),
+          path: `${baseUrl}/irrigation-dam/hydrological-information`,
+          model: 'hydrologicalinformation',
+          apiRoute: 'hydrological-informations'
         }
       ]
     },

@@ -593,6 +593,7 @@
           "spillway-detail": "Spillway Detail",
           "irrigation-capacity": "Irrigation Capacity",
           "water-irrigation-dam": "Water Irrigation Dam",
+          "hydrological-information": "Hydrological Information",
           "port": "Port",
           "drainage-assessment": "Drainage Assessment",
           "road-surface-conditions": "Road Surface Conditions",
@@ -1917,6 +1918,22 @@
           "towers": "Towers",
           "remark": "Remark"
         }
+      },
+      "hydrological-information": {
+        "details": {
+          "water-source": "Water Source",
+          "catchment-area": "Catchment Area",
+          "elevation-change": "Elevation Change",
+          "head": "Head",
+          "total-inflow": "Total Inflow",
+          "active-storage-volume": "Active Storage Volume",
+          "water-stored": "Water Stored",
+          "remark": "Remark"
+        },
+        "hydrological-information-details": "Hydrological Information Details",
+        "title": "Hydrological Information",
+        "create-hydrological-information": "Create Hydrological Information",
+        "edit-hydrological-information": "Edit Hydrological Information"
       },
       "maintenance": {
         "title": "Maintenance",

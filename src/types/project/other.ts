@@ -338,6 +338,20 @@ export interface WaterIrrigationDam {
   created_at?: Date;
   updated_at?: Date;
 }
+export interface HydrologicalInformation {
+  id: string;
+  project_id: string; // Required UUID
+  water_source?: string; // Optional String
+  catchment_area?: number; // Optional Double
+  elevation_change?: number; // Optional Double
+  head?: number; // Optional Double
+  total_inflow?: number; // Optional Double
+  active_storage_volume?: number; // Optional Double
+  water_stored?: number; // Optional Double
+  remark?: string; // Optional Text
+  created_at?: Date;
+  updated_at?: Date;
+}
 export interface DrainageAssessment {
   id: string;
   project_id: string;
@@ -826,23 +840,21 @@ export interface DataCenter {
   updated_at?: Date;
 }
 
-
 export interface TelecomInfrastructureComponent {
-  id: string
-  project_id: string
-  mobile_network_type_id: string
-  cables?: number
-  wires?: number
-  routers?: number
-  switches?: number
-  hubs?: number
-  repeaters?: number
-  antennas?: number
-  towers?: number
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
-
+  id: string;
+  project_id: string;
+  mobile_network_type_id: string;
+  cables?: number;
+  wires?: number;
+  routers?: number;
+  switches?: number;
+  hubs?: number;
+  repeaters?: number;
+  antennas?: number;
+  towers?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface TelecomInfrastructureAge {
@@ -912,17 +924,17 @@ export interface DataCenterComponentAge {
 }
 
 export interface SatelliteNetwork {
-  id: string
-  project_id: string
-  satellite_network_type_id: string
-  name: string
-  satellite?: boolean
-  ground_stations?: boolean
-  modems?: boolean
-  routers?: boolean
-  others?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  project_id: string;
+  satellite_network_type_id: string;
+  name: string;
+  satellite?: boolean;
+  ground_stations?: boolean;
+  modems?: boolean;
+  routers?: boolean;
+  others?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 export interface DataCenterComponentManufacturer {
   id: string;
@@ -933,8 +945,8 @@ export interface DataCenterComponentManufacturer {
   cooling_systems?: string; // Optional String
   backup_generators?: string; // Optional String
   others?: string; // Optional Text
-  created_at?: Date
-  updated_at?: Date
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface SatelliteInfrastructureAge {
@@ -951,16 +963,16 @@ export interface SatelliteInfrastructureAge {
 }
 
 export interface SatelliteNetworkComponentManufacturer {
-  id: string
-  project_id: string
-  satellite_network_id: string
-  satellite?: string
-  ground_stations?: string
-  modems?: string
-  routers?: string
-  others?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  project_id: string;
+  satellite_network_id: string;
+  satellite?: string;
+  ground_stations?: string;
+  modems?: string;
+  routers?: string;
+  others?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface InternetConnection {
