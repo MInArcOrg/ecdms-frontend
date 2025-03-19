@@ -1058,3 +1058,15 @@ export interface SolarPanel {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface SolarResourceInformation {
+  id: string
+  project_id: string
+  annual_solar_radiation?: number
+  solar_panel_efficiency?: number
+  annual_energy_production?: number
+  plant_life?: number
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}

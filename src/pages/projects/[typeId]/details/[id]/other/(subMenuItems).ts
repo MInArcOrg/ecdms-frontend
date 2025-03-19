@@ -487,6 +487,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "solarpanel",
           apiRoute: "solar-panels",
         },
+        {
+          id: 75,
+          title: t("project.navigation.submenu.others.solar-resource-information"),
+          path: `${baseUrl}/electric-power/solar-resource-information`,
+          model: "solarresourceinformation",
+          apiRoute: "solar-resource-informations",
+        },
       ]
     },
     {

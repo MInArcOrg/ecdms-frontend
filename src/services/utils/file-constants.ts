@@ -124,7 +124,8 @@ export const uploadableProjectFileTypes = {
     internetConnectionInfrastructureManufacturer: 'INTERNET_CONNECTION_COMPONENT_MANUFACTURER',
     hydrologicalInformation: 'HYDROLOGICAL_INFORMATION',
     geothermalPowerWell: "GEOTHERMAL_POWER_WELL",
-    solarPanel: "SOLAR_PANEL"
+    solarPanel: "SOLAR_PANEL",
+    solarResourceInformation: "SOLAR_RESOURCE_INFORMATION"
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
