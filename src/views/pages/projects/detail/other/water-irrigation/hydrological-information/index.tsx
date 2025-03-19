@@ -30,7 +30,7 @@ const HydrologicalInformationList: React.FC<HydrologicalInformationListProps> = 
 
   const fetchHydrologicalInformations = (params: GetRequestParam): Promise<IApiResponse<HydrologicalInformation[]>> => {
     // Updated type
-    return projectOtherApiSecondService<HydrologicalInformation>().getAll(otherSubMenu?.apiRoute || "", {
+    return projectOtherApiSecondService<HydrologicalInformation>().getAll(otherSubMenu?.apiRoute || '', {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -63,7 +63,7 @@ const HydrologicalInformationList: React.FC<HydrologicalInformationListProps> = 
   };
 
   const handleDelete = async (telecomId: string) => {
-    await projectOtherApiSecondService<HydrologicalInformation>().delete(otherSubMenu?.apiRoute || "", telecomId);
+    await projectOtherApiSecondService<HydrologicalInformation>().delete(otherSubMenu?.apiRoute || '', telecomId);
     refetch();
   };
 
@@ -72,44 +72,46 @@ const HydrologicalInformationList: React.FC<HydrologicalInformationListProps> = 
     setSelectedRow(hydrologicalInformation);
   };
 
-  const mapHydrologicalInformationToDetailItems = (hydrologicalInformation: HydrologicalInformation): { title: string; value: string }[] => [
-    {
-      title: t('project.other.hydrological-information.details.water-source'),
-      value: hydrologicalInformation?.water_source || 'N/A'
-    },
-    {
-      title: t('project.other.hydrological-information.details.catchment-area'),
-      value: hydrologicalInformation?.catchment_area?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.hydrological-information.details.elevation-change'),
-      value: hydrologicalInformation?.elevation_change?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.hydrological-information.details.head'),
-      value: hydrologicalInformation?.head?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.hydrological-information.details.total-inflow'),
-      value: hydrologicalInformation?.total_inflow?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.hydrological-information.details.active-storage-volume'),
-      value: hydrologicalInformation?.active_storage_volume?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.hydrological-information.details.water-stored'),
-      value: hydrologicalInformation?.water_stored?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.hydrological-information.details.remark'),
-      value: hydrologicalInformation?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: hydrologicalInformation?.created_at ? formatCreatedAt(hydrologicalInformation?.created_at) : 'N/A'
-    }
-  ];
+  const mapHydrologicalInformationToDetailItems = (
+    hydrologicalInformation: HydrologicalInformation
+  ): { title: string; value: string }[] => [
+      {
+        title: t('project.other.hydrological-information.details.water-source'),
+        value: hydrologicalInformation?.water_source || 'N/A'
+      },
+      {
+        title: t('project.other.hydrological-information.details.catchment-area'),
+        value: hydrologicalInformation?.catchment_area?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.hydrological-information.details.elevation-change'),
+        value: hydrologicalInformation?.elevation_change?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.hydrological-information.details.head'),
+        value: hydrologicalInformation?.head?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.hydrological-information.details.total-inflow'),
+        value: hydrologicalInformation?.total_inflow?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.hydrological-information.details.active-storage-volume'),
+        value: hydrologicalInformation?.active_storage_volume?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.hydrological-information.details.water-stored'),
+        value: hydrologicalInformation?.water_stored?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.hydrological-information.details.remark'),
+        value: hydrologicalInformation?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: hydrologicalInformation?.created_at ? formatCreatedAt(hydrologicalInformation?.created_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

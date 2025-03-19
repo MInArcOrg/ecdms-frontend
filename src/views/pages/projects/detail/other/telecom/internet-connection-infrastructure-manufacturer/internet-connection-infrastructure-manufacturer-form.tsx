@@ -18,7 +18,11 @@ interface InternetConnectionInfrastructureManufacturerFormProps {
   projectId: string;
 }
 
-const InternetConnectionInfrastructureManufacturerForm: React.FC<InternetConnectionInfrastructureManufacturerFormProps> = ({ projectId, file, onFileChange }) => {
+const InternetConnectionInfrastructureManufacturerForm: React.FC<InternetConnectionInfrastructureManufacturerFormProps> = ({
+  projectId,
+  file,
+  onFileChange
+}) => {
   const { t: transl } = useTranslation();
 
   const { data: internetConnections } = useQuery({
@@ -53,7 +57,7 @@ const InternetConnectionInfrastructureManufacturerForm: React.FC<InternetConnect
         />
 
         <Grid container spacing={2} sx={{ mb: 2 }}>
-          <Grid item xs={12} >
+          <Grid item xs={12}>
             <CustomTextBox
               fullWidth
               label={transl('project.other.internet-connection-infrastructure-manufacturer.details.routers')}
@@ -64,7 +68,7 @@ const InternetConnectionInfrastructureManufacturerForm: React.FC<InternetConnect
               sx={{ mb: 2 }}
             />
           </Grid>
-          <Grid item xs={12} >
+          <Grid item xs={12}>
             <CustomTextBox
               fullWidth
               label={transl('project.other.internet-connection-infrastructure-manufacturer.details.switches')}
@@ -75,7 +79,7 @@ const InternetConnectionInfrastructureManufacturerForm: React.FC<InternetConnect
               sx={{ mb: 2 }}
             />
           </Grid>
-          <Grid item xs={12} >
+          <Grid item xs={12}>
             <CustomTextBox
               fullWidth
               label={transl('project.other.internet-connection-infrastructure-manufacturer.details.modems')}
@@ -86,7 +90,7 @@ const InternetConnectionInfrastructureManufacturerForm: React.FC<InternetConnect
               sx={{ mb: 2 }}
             />
           </Grid>
-          <Grid item xs={12} >
+          <Grid item xs={12}>
             <CustomTextBox
               fullWidth
               label={transl('project.other.internet-connection-infrastructure-manufacturer.details.cables')}

@@ -52,9 +52,7 @@ export const internetConnectionInfrastructureManufacturerColumns = (
       minWidth: 100,
       headerName: t('project.other.internet-connection-infrastructure-manufacturer.details.routers'),
       field: 'routers',
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.routers || t('common.not-available')}</Typography>
-      )
+      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.routers || t('common.not-available')}</Typography>
     },
     {
       flex: 0.12,
@@ -70,18 +68,14 @@ export const internetConnectionInfrastructureManufacturerColumns = (
       minWidth: 100,
       headerName: t('project.other.internet-connection-infrastructure-manufacturer.details.modems'),
       field: 'modems',
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.modems || t('common.not-available')}</Typography>
-      )
+      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.modems || t('common.not-available')}</Typography>
     },
     {
       flex: 0.12,
       minWidth: 100,
       headerName: t('project.other.internet-connection-infrastructure-manufacturer.details.cables'),
       field: 'cables',
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.cables || t('common.not-available')}</Typography>
-      )
+      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.cables || t('common.not-available')}</Typography>
     },
     {
       flex: 0.15,

@@ -18,7 +18,7 @@ interface HydrologicalInformationDrawerType {
   refetch: () => void;
   hydrologicalInformation: HydrologicalInformation;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute
+  otherSubMenu?: OtherMenuRoute;
 }
 
 const HydrologicalInformationDrawer = (props: HydrologicalInformationDrawerType) => {
@@ -50,14 +50,14 @@ const HydrologicalInformationDrawer = (props: HydrologicalInformationDrawerType)
     total_inflow: hydrologicalInformation?.total_inflow || 0,
     active_storage_volume: hydrologicalInformation?.active_storage_volume || 0,
     water_stored: hydrologicalInformation?.water_stored || 0,
-    remark: hydrologicalInformation?.remark || '',
+    remark: hydrologicalInformation?.remark || ''
   };
 
   const createHydrologicalInformation = async (body: IApiPayload<HydrologicalInformation>) =>
-    projectOtherApiSecondService<HydrologicalInformation>().create(otherSubMenu?.apiRoute || "", body);
+    projectOtherApiSecondService<HydrologicalInformation>().create(otherSubMenu?.apiRoute || '', body);
 
   const editHydrologicalInformation = async (body: IApiPayload<HydrologicalInformation>) =>
-    projectOtherApiSecondService<HydrologicalInformation>().update(otherSubMenu?.apiRoute || "", hydrologicalInformation?.id || '', body);
+    projectOtherApiSecondService<HydrologicalInformation>().update(otherSubMenu?.apiRoute || '', hydrologicalInformation?.id || '', body);
 
   const getPayload = (values: HydrologicalInformation) => {
     return {

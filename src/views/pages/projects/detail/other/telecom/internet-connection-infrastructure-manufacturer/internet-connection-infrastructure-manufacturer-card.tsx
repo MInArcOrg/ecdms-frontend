@@ -48,28 +48,37 @@ const InternetConnectionInfrastructureManufacturerCard: React.FC<InternetConnect
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.internet-connection-infrastructure-manufacturer.details.internet-connection-id')}: {internetConnectionInfrastructureManufacturer?.internet_connection_id || 'N/A'}
+            {t('project.other.internet-connection-infrastructure-manufacturer.details.internet-connection-id')}:{' '}
+            {internetConnectionInfrastructureManufacturer?.internet_connection_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.internet-connection-infrastructure-manufacturer.details.routers')}: {internetConnectionInfrastructureManufacturer?.routers || 'N/A'}
+            {t('project.other.internet-connection-infrastructure-manufacturer.details.routers')}:{' '}
+            {internetConnectionInfrastructureManufacturer?.routers || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.internet-connection-infrastructure-manufacturer.details.switches')}: {internetConnectionInfrastructureManufacturer?.switches || 'N/A'}
+            {t('project.other.internet-connection-infrastructure-manufacturer.details.switches')}:{' '}
+            {internetConnectionInfrastructureManufacturer?.switches || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.internet-connection-infrastructure-manufacturer.details.modems')}: {internetConnectionInfrastructureManufacturer?.modems || 'N/A'}
+            {t('project.other.internet-connection-infrastructure-manufacturer.details.modems')}:{' '}
+            {internetConnectionInfrastructureManufacturer?.modems || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.internet-connection-infrastructure-manufacturer.details.cables')}: {internetConnectionInfrastructureManufacturer?.cables || 'N/A'}
+            {t('project.other.internet-connection-infrastructure-manufacturer.details.cables')}:{' '}
+            {internetConnectionInfrastructureManufacturer?.cables || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.internet-connection-infrastructure-manufacturer.details.others')}: {internetConnectionInfrastructureManufacturer?.others || 'N/A'}
+            {t('project.other.internet-connection-infrastructure-manufacturer.details.others')}:{' '}
+            {internetConnectionInfrastructureManufacturer?.others || 'N/A'}
           </Typography>
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={internetConnectionInfrastructureManufacturer.id} type={uploadableProjectFileTypes.other.internetConnectionInfrastructureManufacturer} />
+        <FileDrawer
+          id={internetConnectionInfrastructureManufacturer.id}
+          type={uploadableProjectFileTypes.other.internetConnectionInfrastructureManufacturer}
+        />
         <ModelAction
           model="InternetConnectionInfrastructureManufacturer"
           model_id={internetConnectionInfrastructureManufacturer.id}

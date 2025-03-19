@@ -98,9 +98,7 @@ export const telecomColumns = (
       minWidth: 120,
       headerName: t('project.other.hydrological-information.details.remark'),
       field: 'remark',
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.remark || t('common.not-available')}</Typography>
-      )
+      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.remark || t('common.not-available')}</Typography>
     },
     {
       flex: 0.15,

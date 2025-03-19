@@ -59,9 +59,18 @@ const InternetConnectionInfrastructureManufacturerDrawer = (props: InternetConne
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<InternetConnectionInfrastructureManufacturer>, payload: IApiPayload<InternetConnectionInfrastructureManufacturer>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<InternetConnectionInfrastructureManufacturer>,
+    payload: IApiPayload<InternetConnectionInfrastructureManufacturer>
+  ) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], uploadableProjectFileTypes.other.internetConnectionInfrastructureManufacturer, response.payload.id, '', '');
+      uploadFile(
+        payload.files[0],
+        uploadableProjectFileTypes.other.internetConnectionInfrastructureManufacturer,
+        response.payload.id,
+        '',
+        ''
+      );
     }
     refetch();
     handleClose();
@@ -79,14 +88,16 @@ const InternetConnectionInfrastructureManufacturerDrawer = (props: InternetConne
 
   return (
     <CustomSideDrawer
-      title={`project.other.internet-connection-infrastructure-manufacturer.${isEdit ? `edit-internet-connection-infrastructure-manufacturer` : `create-internet-connection-infrastructure-manufacturer`}`}
+      title={`project.other.internet-connection-infrastructure-manufacturer.${isEdit ? `edit-internet-connection-infrastructure-manufacturer` : `create-internet-connection-infrastructure-manufacturer`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.internet-connection-infrastructure-manufacturer.${isEdit ? `edit-internet-connection-infrastructure-manufacturer` : `create-internet-connection-infrastructure-manufacturer`}`}
+          title={`project.other.internet-connection-infrastructure-manufacturer.${isEdit ? `edit-internet-connection-infrastructure-manufacturer` : `create-internet-connection-infrastructure-manufacturer`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={initialValues}
@@ -96,7 +107,12 @@ const InternetConnectionInfrastructureManufacturerDrawer = (props: InternetConne
         >
           {(formik: FormikProps<InternetConnectionInfrastructureManufacturer>) => {
             return (
-              <InternetConnectionInfrastructureManufacturerForm projectId={projectId} file={uploadableFile} onFileChange={onFileChange} formik={formik} />
+              <InternetConnectionInfrastructureManufacturerForm
+                projectId={projectId}
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+              />
             );
           }}
         </FormPageWrapper>
