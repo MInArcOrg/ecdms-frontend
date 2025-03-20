@@ -122,7 +122,10 @@ export const uploadableProjectFileTypes = {
     broadcastingInfrastructure: 'BROADCASTING_INFRASTRUCTURE',
     internetConnectionInfrastructureAge: 'INTERNET_CONNECTION_COMPONENT_AGE',
     internetConnectionInfrastructureManufacturer: 'INTERNET_CONNECTION_COMPONENT_MANUFACTURER',
-    hydrologicalInformation: 'HYDROLOGICAL_INFORMATION'
+    hydrologicalInformation: 'HYDROLOGICAL_INFORMATION',
+    geothermalPowerWell: "GEOTHERMAL_POWER_WELL",
+    solarPanel: "SOLAR_PANEL",
+    solarResourceInformation: "SOLAR_RESOURCE_INFORMATION"
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
