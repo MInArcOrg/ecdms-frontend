@@ -2092,6 +2092,22 @@
           "other-equipment": "Other Equipment",
           "remark": "Remark"
         }
+      },
+      "solar-resource-information": {
+        "title": "Solar Resource Information",
+        "create-solar-resource-information": "Create Solar Resource Information",
+        "edit-solar-resource-information": "Edit Solar Resource Information",
+        "solar-resource-information-details": "Solar Resource Information Details",
+        "solar-resource-record": "Solar Resource Record",
+        "resource-details": "Resource Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "annual-solar-radiation": "Annual Solar Radiation",
+          "solar-panel-efficiency": "Solar Panel Efficiency",
+          "annual-energy-production": "Annual Energy Production",
+          "plant-life": "Plant Life",
+          "remark": "Remark"
+        }
       }
     }
   },
@@ -2149,6 +2165,10 @@
     "inches": "Inches",
     "created-at": "Created At",
     "years": "Years",
+    "kwh-per-m2": "kWh/m²",
+    "mwh": "MWh",
+    "percentage": "%",
+    "watts": "W",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",
