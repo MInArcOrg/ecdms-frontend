@@ -401,7 +401,7 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/telecom/internet-connection-infrastructure-manufacturer`,
           model: 'internetconnectioninfrastructuremanufacturer',
           apiRoute: 'internet-connection-infrastructure-manufacturers'
-        }
+        },
       ]
     },
 
@@ -472,7 +472,14 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/electric-power/electric-tower-registration`,
           model: 'electrictower',
           apiRoute: 'electric-towers'
-        }
+        },
+        {
+          id: 71,
+          title: t("project.navigation.submenu.others.geothermal-power-well"),
+          path: `${baseUrl}/electric-power/geothermal-power-well`,
+          model: "geothermalpowerwell",
+          apiRoute: "geothermal-power-wells",
+        },
       ]
     },
     {

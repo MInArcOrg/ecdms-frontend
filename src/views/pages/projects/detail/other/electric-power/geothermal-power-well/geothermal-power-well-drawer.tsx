@@ -1,0 +1,140 @@
+"use client"
+
+import type { FormikProps } from "formik"
+import type { IApiPayload, IApiResponse } from "src/types/requests"
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
+import FormPageWrapper from "src/views/shared/form/form-wrapper"
+import * as yup from "yup"
+import GeothermalPowerWellForm from "./geothermal-power-well-form"
+
+import { useState } from "react"
+import projectOtherApiSecondService from "src/services/project/project-other-second-service"
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
+import { uploadFile } from "src/services/utils/file-utils"
+import type { GeothermalPowerWell } from "src/types/project/other"
+import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+
+interface GeothermalPowerWellDrawerType {
+  open: boolean
+  toggle: () => void
+  refetch: () => void
+  geothermalPowerWell: GeothermalPowerWell
+  projectId: string
+  otherSubMenu?: OtherMenuRoute
+}
+
+const GeothermalPowerWellDrawer = (props: GeothermalPowerWellDrawerType) => {
+  const { open, toggle, refetch, geothermalPowerWell, projectId, otherSubMenu } = props
+
+  const [uploadableFile, setUploadableFile] = useState<File | null>(null)
+
+  const onFileChange = (file: File | null) => {
+    setUploadableFile(file)
+  }
+
+  const validationSchema = yup.object().shape({
+    wells_name: yup.string().nullable(),
+    wells_number: yup
+      .number()
+      .nullable()
+      .integer("Must be an integer")
+      .transform((value) => (isNaN(value) ? null : value)),
+    depth: yup
+      .number()
+      .nullable()
+      .transform((value) => (isNaN(value) ? null : value)),
+    well_diameter: yup
+      .number()
+      .nullable()
+      .transform((value) => (isNaN(value) ? null : value)),
+    drilling_period: yup.date().nullable(),
+    temperature_at_bottom_hole: yup
+      .number()
+      .nullable()
+      .transform((value) => (isNaN(value) ? null : value)),
+    plant_life: yup
+      .number()
+      .nullable()
+      .integer("Must be an integer")
+      .transform((value) => (isNaN(value) ? null : value)),
+    remark: yup.string().nullable(),
+  })
+
+  const isEdit = Boolean(geothermalPowerWell?.id)
+
+  const createGeothermalPowerWell = async (body: IApiPayload<GeothermalPowerWell>) =>
+    projectOtherApiSecondService<GeothermalPowerWell>().create(otherSubMenu?.apiRoute || "", body)
+
+  const editGeothermalPowerWell = async (body: IApiPayload<GeothermalPowerWell>) =>
+    projectOtherApiSecondService<GeothermalPowerWell>().update(
+      otherSubMenu?.apiRoute || "",
+      geothermalPowerWell?.id || "",
+      body,
+    )
+
+  const getPayload = (values: GeothermalPowerWell) => ({
+    data: {
+      project_id: projectId,
+      wells_name: values.wells_name,
+      wells_number: values.wells_number,
+      depth: values.depth,
+      well_diameter: values.well_diameter,
+      drilling_period: values.drilling_period,
+      temperature_at_bottom_hole: values.temperature_at_bottom_hole,
+      plant_life: values.plant_life,
+      remark: values.remark,
+      id: geothermalPowerWell?.id,
+    },
+    files: uploadableFile ? [uploadableFile] : [],
+  })
+
+  const handleClose = () => toggle()
+
+  const onActionSuccess = async (
+    response: IApiResponse<GeothermalPowerWell>,
+    payload: IApiPayload<GeothermalPowerWell>,
+  ) => {
+    if (payload.files.length > 0) {
+      await uploadFile(
+        payload.files[0],
+        uploadableProjectFileTypes.other.geothermalPowerWell,
+        response.payload.id,
+        "",
+        "",
+      )
+    }
+
+    refetch()
+    handleClose()
+  }
+
+  return (
+    <CustomSideDrawer
+      title={`project.other.geothermal-power-well.${isEdit ? `edit-geothermal-power-well` : `create-geothermal-power-well`}`}
+      handleClose={handleClose}
+      open={open}
+    >
+      {() => (
+        <FormPageWrapper
+          edit={isEdit}
+          title={`project.other.geothermal-power-well.${isEdit ? `edit-geothermal-power-well` : `create-geothermal-power-well`}`}
+          getPayload={getPayload}
+          validationSchema={validationSchema}
+          initialValues={{
+            ...geothermalPowerWell,
+          }}
+          createActionFunc={isEdit ? editGeothermalPowerWell : createGeothermalPowerWell}
+          onActionSuccess={onActionSuccess}
+          onCancel={handleClose}
+        >
+          {(formik: FormikProps<GeothermalPowerWell>) => {
+            return <GeothermalPowerWellForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />
+          }}
+        </FormPageWrapper>
+      )}
+    </CustomSideDrawer>
+  )
+}
+
+export default GeothermalPowerWellDrawer
+
