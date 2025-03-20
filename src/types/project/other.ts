@@ -1088,3 +1088,13 @@ export interface WindTurbine {
   created_at?: Date
   updated_at?: Date
 }
+
+export interface WindResource {
+  id: string;
+  project_id: string;
+  wind_speed_at_hub_height?: number;
+  weibull_shape_factor?: boolean;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}

@@ -607,7 +607,8 @@
           "broadcasting-infrastructure": "Broadcasting Infrastructure",
           "geothermal-power-well": "Geothermal Power Well",
           "solar-panel": "Solar Panel",
-          "wind-turbine": "Wind Turbine"
+          "wind-turbine": "Wind Turbine",
+          "wind-resource": "Wind Resources"
         }
       }
     },
@@ -2132,6 +2133,19 @@
           "generators-number": "Number of Generators",
           "remark": "Remark"
         }
+      },
+      "wind-resource": {
+        "title": "Wind Resources",
+        "create-wind-resource": "Create Wind Resource",
+        "edit-wind-resource": "Edit Wind Resource",
+        "wind-resource-details": "Wind Resource Details",
+        "resource-details": "Resource Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "wind-speed-at-hub-height": "Wind Speed at Hub Height",
+          "weibull-shape-factor": "Weibull Shape Factor",
+          "remark": "Remark"
+        }
       }
     }
   },
@@ -2193,6 +2207,7 @@
     "mwh": "MWh",
     "percentage": "%",
     "watts": "W",
+    "meters-per-second": "m/s",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",
