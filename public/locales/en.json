@@ -619,7 +619,8 @@
           "wind-turbine": "Wind Turbine",
           "wind-resource": "Wind Resources",
           "power-generation-capacity": "Power Generation Capacity",
-          "regulation-and-policy": "Regulations and Policies"
+          "regulation-and-policy": "Regulations and Policies",
+          "environmental-and-social-impact": "Environmental and Social Impact"
         }
       }
     },
@@ -2187,6 +2188,22 @@
           "regulatory-compliance-monitoring": "Regulatory Compliance Monitoring",
           "environmental-and-social-regulation-compliance-monitoring": "Environmental and Social Regulation Compliance Monitoring",
           "licensing-and-permit-requirements": "Licensing and Permit Requirements",
+          "remark": "Remark"
+        }
+      },
+      "environmental-and-social-impact": {
+        "title": "Environmental and Social Impact",
+        "create-environmental-and-social-impact": "Create Environmental and Social Impact",
+        "edit-environmental-and-social-impact": "Edit Environmental and Social Impact",
+        "environmental-and-social-impact-details": "Environmental and Social Impact Details",
+        "environmental-impact-details": "Environmental Impact Details",
+        "social-impact-details": "Social Impact Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "environmental-impact-assessment-conducted": "Environmental Impact Assessment Conducted",
+          "mitigation-measures-implemented": "Mitigation Measures Implemented",
+          "social-impact-assessment-conducted": "Social Impact Assessment Conducted",
+          "resettlement-and-compensation-measures-implemented": "Resettlement and Compensation Measures Implemented",
           "remark": "Remark"
         }
       }

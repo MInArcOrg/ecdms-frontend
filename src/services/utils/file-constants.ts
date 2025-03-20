@@ -129,7 +129,8 @@ export const uploadableProjectFileTypes = {
     powerGenerationCapacity: 'POWER_GENERATION_CAPACITY',
     windTurbine: "WIND_TURBINE",
     windResource: "WIND_RESOURCE",
-    regulationAndPolicy: "REGULATION_AND_POLICY"
+    regulationAndPolicy: "REGULATION_AND_POLICY",
+    environmentalAndSocialImpact: "ENVIRONMENTAL_AND_SOCIAL_IMPACT",
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
