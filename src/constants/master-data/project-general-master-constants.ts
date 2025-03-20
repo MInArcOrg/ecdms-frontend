@@ -446,7 +446,15 @@ export const projectMasterModels = {
     createTitle: 'create-data-center-type',
     editTitle: 'edit-data-center-type',
     fileType: 'DATA_CENTER_TYPE'
-  }
+  },
+  damType: {
+    model: 'DamType',
+    dbModel: 'damtype',
+    title: 'dam-types',
+    createTitle: 'create-dam-type',
+    editTitle: 'edit-dam-type',
+    fileType: 'DAM_TYPE'
+  },
 
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
