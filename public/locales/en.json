@@ -605,7 +605,8 @@
           "satellite-network-component-manufacturer": "Satellite Network Component Manufacturer",
           "internet-connection": "Internet Connection",
           "broadcasting-infrastructure": "Broadcasting Infrastructure",
-          "geothermal-power-well": "Geothermal Power Well"
+          "geothermal-power-well": "Geothermal Power Well",
+          "solar-panel": "Solar Panel"
         }
       }
     },
@@ -2070,6 +2071,27 @@
           "plant-life": "Plant Life",
           "remark": "Remark"
         }
+      },
+      "solar-panel": {
+        "title": "Solar Panel",
+        "create-solar-panel": "Create Solar Panel",
+        "edit-solar-panel": "Edit Solar Panel",
+        "solar-panel-details": "Solar Panel Details",
+        "panel-details": "Panel Details",
+        "inverter-details": "Inverter Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "manufacturer": "Manufacturer",
+          "model": "Model",
+          "solar-panel-type": "Solar Panel Type",
+          "solar-panels-number": "Number of Solar Panels",
+          "each-solar-panel-capacity": "Each Solar Panel Capacity",
+          "inverter-manufacturer": "Inverter Manufacturer",
+          "inverter-model": "Inverter Model",
+          "inverters-number": "Number of Inverters",
+          "other-equipment": "Other Equipment",
+          "remark": "Remark"
+        }
       }
     }
   },
@@ -2123,8 +2145,8 @@
     "create": "Create",
     "active": "Active",
     "inactive": "InActive",
-    "meters" : "Meters",
-    "inches" : "Inches",
+    "meters": "Meters",
+    "inches": "Inches",
     "created-at": "Created At",
     "years": "Years",
     "table-columns": {

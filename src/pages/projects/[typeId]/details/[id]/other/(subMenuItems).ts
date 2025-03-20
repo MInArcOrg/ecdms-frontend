@@ -480,6 +480,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "geothermalpowerwell",
           apiRoute: "geothermal-power-wells",
         },
+        {
+          id: 73,
+          title: t("project.navigation.submenu.others.solar-panel"),
+          path: `${baseUrl}/electric-power/solar-panel`,
+          model: "solarpanel",
+          apiRoute: "solar-panels",
+        },
       ]
     },
     {

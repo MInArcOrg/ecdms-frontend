@@ -1041,3 +1041,20 @@ export interface GeothermalPowerWell {
   created_at?: Date
   updated_at?: Date
 }
+
+export interface SolarPanel {
+  id: string;
+  project_id: string;
+  manufacturer?: string;
+  model?: string;
+  solar_panel_type_id: string;
+  solar_panels_number?: number;
+  each_solar_panel_capacity?: number;
+  inverter_manufacturer?: string;
+  inverter_model?: string;
+  inverters_number?: number;
+  other_equipment?: string;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
