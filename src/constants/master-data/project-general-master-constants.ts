@@ -455,6 +455,14 @@ export const projectMasterModels = {
     editTitle: 'edit-dam-type',
     fileType: 'DAM_TYPE'
   },
+  spillwayType: {
+    model: 'SpillwayType',
+    dbModel: 'spillwaytype',
+    title: 'spillway-types',
+    createTitle: 'create-spillway-type',
+    editTitle: 'edit-spillway-type',
+    fileType: 'SPILLWAY_TYPE'
+  },
 
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;

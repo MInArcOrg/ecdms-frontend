@@ -226,7 +226,10 @@
       "edit-owner": "Edit Owner",
       "dam-types":"Dam Types",
       "create-dam-type":"Create Dam Type",
-      "edit-dam-type":"Edit Dam Type"
+      "edit-dam-type":"Edit Dam Type",
+      "spillway-types":"Spillway Types",
+      "create-spillway-type":"Create Spillway Type",
+      "edit-spillway-type":"Edit Spillway Type"
     },
     "form": {
       "title": "Title",
