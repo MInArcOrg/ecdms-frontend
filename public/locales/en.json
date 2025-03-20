@@ -606,7 +606,8 @@
           "internet-connection": "Internet Connection",
           "broadcasting-infrastructure": "Broadcasting Infrastructure",
           "geothermal-power-well": "Geothermal Power Well",
-          "solar-panel": "Solar Panel"
+          "solar-panel": "Solar Panel",
+          "power-generation-capacity": "Power Generation Capacity"
         }
       }
     },
@@ -2107,6 +2108,22 @@
           "annual-energy-production": "Annual Energy Production",
           "plant-life": "Plant Life",
           "remark": "Remark"
+        }
+      },
+      "power-generation-capacity": {
+        "title": "Power Generation Capacity",
+        "power-generation-capacity-details": "Power Generation Capacity Details",
+        "power-generation-record": "Power Generation Record",
+        "create-power-generation-capacity": "Create Power Generation Capacity",
+        "edit-power-generation-capacity": "Edit Power Generation Capacity",
+        "details": {
+          "capacity": "Capacity",
+          "annual-generation": "Annual Generation",
+          "units-number": "Number of Units",
+          "owner": "Owner",
+          "commissioning-date": "Commissioning Date",
+          "plant-life": "Plant Life",
+          "others": "Other Information"
         }
       }
     }
