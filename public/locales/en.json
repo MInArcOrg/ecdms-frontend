@@ -229,7 +229,10 @@
       "edit-dam-type":"Edit Dam Type",
       "spillway-types":"Spillway Types",
       "create-spillway-type":"Create Spillway Type",
-      "edit-spillway-type":"Edit Spillway Type"
+      "edit-spillway-type":"Edit Spillway Type",
+      "turbine-types":"Turbine Type",
+      "create-turbine-type":"Create Turbine Type",
+      "edit-turbine-type":"Edit Turbine Type"
     },
     "form": {
       "title": "Title",

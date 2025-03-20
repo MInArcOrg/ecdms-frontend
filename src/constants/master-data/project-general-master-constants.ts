@@ -463,7 +463,14 @@ export const projectMasterModels = {
     editTitle: 'edit-spillway-type',
     fileType: 'SPILLWAY_TYPE'
   },
-
+  turbineType: {
+    model: 'TurbineType',
+    dbModel: 'turbinetype',
+    title: 'turbine-types',
+    createTitle: 'create-turbine-type',
+    editTitle: 'edit-turbine-type',
+    fileType: 'TURBINE_TYPE'
+  }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
