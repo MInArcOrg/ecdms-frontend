@@ -223,7 +223,16 @@
       "edit-data-center-type": "Edit Data Center Type",
       "owners": "Owners",
       "create-owner": "Create Owner",
-      "edit-owner": "Edit Owner"
+      "edit-owner": "Edit Owner",
+      "dam-types":"Dam Types",
+      "create-dam-type":"Create Dam Type",
+      "edit-dam-type":"Edit Dam Type",
+      "spillway-types":"Spillway Types",
+      "create-spillway-type":"Create Spillway Type",
+      "edit-spillway-type":"Edit Spillway Type",
+      "turbine-types":"Turbine Type",
+      "create-turbine-type":"Create Turbine Type",
+      "edit-turbine-type":"Edit Turbine Type"
     },
     "form": {
       "title": "Title",
@@ -608,7 +617,8 @@
           "geothermal-power-well": "Geothermal Power Well",
           "solar-panel": "Solar Panel",
           "wind-turbine": "Wind Turbine",
-          "wind-resource": "Wind Resources"
+          "wind-resource": "Wind Resources",
+          "power-generation-capacity": "Power Generation Capacity"
         }
       }
     },
@@ -2145,6 +2155,22 @@
           "wind-speed-at-hub-height": "Wind Speed at Hub Height",
           "weibull-shape-factor": "Weibull Shape Factor",
           "remark": "Remark"
+        }
+      },
+      "power-generation-capacity": {
+        "title": "Power Generation Capacity",
+        "power-generation-capacity-details": "Power Generation Capacity Details",
+        "power-generation-record": "Power Generation Record",
+        "create-power-generation-capacity": "Create Power Generation Capacity",
+        "edit-power-generation-capacity": "Edit Power Generation Capacity",
+        "details": {
+          "capacity": "Capacity",
+          "annual-generation": "Annual Generation",
+          "units-number": "Number of Units",
+          "owner": "Owner",
+          "commissioning-date": "Commissioning Date",
+          "plant-life": "Plant Life",
+          "others": "Other Information"
         }
       }
     }

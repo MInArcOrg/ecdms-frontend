@@ -401,7 +401,7 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/telecom/internet-connection-infrastructure-manufacturer`,
           model: 'internetconnectioninfrastructuremanufacturer',
           apiRoute: 'internet-connection-infrastructure-manufacturers'
-        },
+        }
       ]
     },
 
@@ -475,24 +475,31 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
         },
         {
           id: 71,
-          title: t("project.navigation.submenu.others.geothermal-power-well"),
+          title: t('project.navigation.submenu.others.geothermal-power-well'),
           path: `${baseUrl}/electric-power/geothermal-power-well`,
-          model: "geothermalpowerwell",
-          apiRoute: "geothermal-power-wells",
+          model: 'geothermalpowerwell',
+          apiRoute: 'geothermal-power-wells'
         },
         {
           id: 73,
-          title: t("project.navigation.submenu.others.solar-panel"),
+          title: t('project.navigation.submenu.others.solar-panel'),
           path: `${baseUrl}/electric-power/solar-panel`,
-          model: "solarpanel",
-          apiRoute: "solar-panels",
+          model: 'solarpanel',
+          apiRoute: 'solar-panels'
         },
         {
           id: 75,
-          title: t("project.navigation.submenu.others.solar-resource-information"),
+          title: t('project.navigation.submenu.others.solar-resource-information'),
           path: `${baseUrl}/electric-power/solar-resource-information`,
-          model: "solarresourceinformation",
-          apiRoute: "solar-resource-informations",
+          model: 'solarresourceinformation',
+          apiRoute: 'solar-resource-informations'
+        },
+        {
+          id: 62,
+          title: t('project.navigation.submenu.others.power-generation-capacity'),
+          path: `${baseUrl}/electric-power/power-generation-capacity`,
+          model: 'powergenerationcapacity',
+          apiRoute: 'power-generation-capacities'
         },
         {
           id: 77,

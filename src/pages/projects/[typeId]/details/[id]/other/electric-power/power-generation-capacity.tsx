@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/router';
 import ProjectOtherLayout from 'src/views/pages/projects/detail/other/layouts/project-other-layout';
-import SolarResourceInformationList from 'src/views/pages/projects/detail/other/electric-power/solar-resource-information';
+import PowerGenerationCapacityList from 'src/views/pages/projects/detail/other/electric-power/power-generation-capacity';
 import subMenuItems, { findOtherSubMenu } from '../(subMenuItems)';
 
 function Index() {
@@ -11,7 +11,7 @@ function Index() {
   const baseUrl = `/projects/${typeId}/details/${id}/other`;
   const activeMenu = 8;
   const activeType = 4;
-  const activeSubType = 75;
+  const activeSubType = 62;
 
   return (
     <ProjectOtherLayout
@@ -21,7 +21,7 @@ function Index() {
       subMenuItems={subMenuItems}
       baseUrl={baseUrl}
     >
-      <SolarResourceInformationList
+      <PowerGenerationCapacityList
         otherSubMenu={findOtherSubMenu(subMenuItems(baseUrl), activeType, activeSubType)}
         projectId={String(id)}
         typeId={String(typeId)}
