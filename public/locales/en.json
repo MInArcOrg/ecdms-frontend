@@ -632,7 +632,8 @@
           "regulation-and-policy": "Regulations and Policies",
           "environmental-and-social-impact": "Environmental and Social Impact",
           "turbine-info": "Turbine Info",
-          "reliability-and-maintenance": "Reliability and Maintenance"
+          "reliability-and-maintenance": "Reliability and Maintenance",
+          "transmission": "Transmission"
         }
       }
     },
@@ -2249,6 +2250,19 @@
           "automatic-fault-detection": "Automatic Fault Detection & Restoration System Installed",
           "remark": "Remark"
         }
+      },
+      "transmission": {
+        "title": "Transmissions",
+        "create-transmission": "Create Transmission",
+        "edit-transmission": "Edit Transmission",
+        "transmission-details": "Transmission Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "transmission-voltage": "Transmission Voltage",
+          "distance-to-substation": "Distance to Substation",
+          "transmission-lines-number": "Number of Transmission Lines",
+          "remark": "Remark"
+        }
       }
     }
   },
@@ -2309,8 +2323,10 @@
     "kwh-per-m2": "kWh/m²",
     "mwh": "MWh",
     "percentage": "%",
+    "kv": "Kilovolt",
     "watts": "W",
     "meters-per-second": "m/s",
+    "kilometers": "Kilometers",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",

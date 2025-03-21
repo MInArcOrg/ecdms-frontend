@@ -1162,3 +1162,14 @@ export interface ReliabilityAndMaintenance {
   created_at?: Date
   updated_at?: Date
 }
+
+export interface Transmission {
+  id: string
+  project_id: string
+  transmission_voltage?: number
+  distance_to_substation?: number
+  transmission_lines_number?: number
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}

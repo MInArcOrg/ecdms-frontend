@@ -549,6 +549,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "reliabilityandmaintenance",
           apiRoute: "reliability-and-maintenance",
         },
+        {
+          id: 89,
+          title: t("project.navigation.submenu.others.transmission"),
+          path: `${baseUrl}/electric-power/transmission`,
+          model: "transmission",
+          apiRoute: "transmissions",
+        },
       ]
     },
     {
