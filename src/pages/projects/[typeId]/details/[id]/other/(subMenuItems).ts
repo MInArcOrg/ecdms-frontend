@@ -472,6 +472,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/electric-power/electric-tower-registration`,
           model: 'electrictower',
           apiRoute: 'electric-towers'
+        },
+        {
+          id: 62,
+          title: t('project.navigation.submenu.others.geothermal-power-infrastructure'),
+          path: `${baseUrl}/electric-power/geothermal-power-infrastructure`,
+          model: 'geothermalpowerinfrastructure',
+          apiRoute: 'geothermal-power-infrastructures'
         }
       ]
     },

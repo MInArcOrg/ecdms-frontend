@@ -604,7 +604,8 @@
           "satellite-network": "Satellite Network",
           "satellite-network-component-manufacturer": "Satellite Network Component Manufacturer",
           "internet-connection": "Internet Connection",
-          "broadcasting-infrastructure": "Broadcasting Infrastructure"
+          "broadcasting-infrastructure": "Broadcasting Infrastructure",
+          "geothermal-power-infrastructure": "Geothermal Power Infrastructure"
         }
       }
     },
@@ -1868,6 +1869,17 @@
           "geotechnical-report": "Geotechnical Report",
           "foundation-design": "Foundation Design"
         }
+      },
+      "geothermal-power-infrastructure": {
+        "details": {
+          "turbine-manufacturer": "Turbine Manufacturer",
+          "turbine-model": "Turbine Model",
+          "turbine-type-id": "Turbine Type ID",
+          "each-turbine-capacity": "Each Turbine Capacity",
+          "remark": "Remark"
+        },
+        "geothermal-power-infrastructure-details": "Geothermal Power Infrastructure Details",
+        "title": "Geothermal Power Infrastructure"
       },
       "road-maintenance-activity": {
         "title": "Road Maintenance Activity",
