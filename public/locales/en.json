@@ -238,7 +238,10 @@
       "edit-solar-panel-type": "Edit Solar Panel Type",
       "tower-types": "Tower Types",
       "create-tower-type": "Create Tower Type",
-      "edit-tower-type": "Edit Tower Type"
+      "edit-tower-type": "Edit Tower Type",
+      "generator-types": "Generator Types",
+      "create-generator-type": "Create Generator Type",
+      "edit-generator-type": "Edit Generator Type"
     },
     "form": {
       "title": "Title",
