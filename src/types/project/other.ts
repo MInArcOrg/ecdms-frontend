@@ -1173,3 +1173,20 @@ export interface Transmission {
   created_at?: Date
   updated_at?: Date
 }
+
+export interface Dam {
+  id: string
+  project_id: string
+  dam_type_id: string
+  dam_height?: number
+  spillway_type_id: string
+  penstock_length?: number
+  turbine_type_id: string
+  turbine_number?: number
+  generator_type_id: string
+  generator_number?: number
+  national_priority_rank?: number
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}

@@ -133,7 +133,8 @@ export const uploadableProjectFileTypes = {
     regulationAndPolicy: "REGULATION_AND_POLICY",
     environmentalAndSocialImpact: "ENVIRONMENTAL_AND_SOCIAL_IMPACT",
     reliabilityAndMaintenance: "RELIABILITY_AND_MAINTENANCE",
-    transmission: "TRANSMISSION"
+    transmission: "TRANSMISSION",
+    dam: "DAM"
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
