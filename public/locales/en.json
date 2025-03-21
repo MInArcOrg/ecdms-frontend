@@ -235,7 +235,10 @@
       "edit-turbine-type": "Edit Turbine Type",
       "solar-panel-types": "Solar Panel Types",
       "create-solar-panel-type": "Create Solar Panel Type",
-      "edit-solar-panel-type": "Edit Solar Panel Type"
+      "edit-solar-panel-type": "Edit Solar Panel Type",
+      "tower-types": "Tower Types",
+      "create-tower-type": "Create Tower Type",
+      "edit-tower-type": "Edit Tower Type"
     },
     "form": {
       "title": "Title",
