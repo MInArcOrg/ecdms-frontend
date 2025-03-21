@@ -631,7 +631,8 @@
           "power-generation-capacity": "Power Generation Capacity",
           "regulation-and-policy": "Regulations and Policies",
           "environmental-and-social-impact": "Environmental and Social Impact",
-          "turbine-info": "Turbine Info"
+          "turbine-info": "Turbine Info",
+          "reliability-and-maintenance": "Reliability and Maintenance"
         }
       }
     },
@@ -2228,6 +2229,24 @@
           "mitigation-measures-implemented": "Mitigation Measures Implemented",
           "social-impact-assessment-conducted": "Social Impact Assessment Conducted",
           "resettlement-and-compensation-measures-implemented": "Resettlement and Compensation Measures Implemented",
+          "remark": "Remark"
+        }
+      },
+      "reliability-and-maintenance": {
+        "title": "Reliability & Maintenance",
+        "create-reliability-and-maintenance": "Create Reliability & Maintenance",
+        "edit-reliability-and-maintenance": "Edit Reliability & Maintenance",
+        "reliability-and-maintenance-details": "Reliability & Maintenance Details",
+        "maintenance-details": "Maintenance Details",
+        "reliability-metrics": "Reliability Metrics",
+        "additional-information": "Additional Information",
+        "details": {
+          "maintenance-frequency": "Maintenance Frequency",
+          "total-outage-duration": "Total Outage Duration",
+          "total-interruption-number": "Total Interruption Number",
+          "saidi": "SAIDI",
+          "saifi": "SAIFI",
+          "automatic-fault-detection": "Automatic Fault Detection & Restoration System Installed",
           "remark": "Remark"
         }
       }
