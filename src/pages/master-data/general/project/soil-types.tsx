@@ -1,17 +1,18 @@
 import { Fragment } from 'react';
-import SoilTypeMasterList from 'src/views/pages/master/general/project/soil-type-master/soil-type-master-list';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import ProjectGeneralMasterList from 'src/views/pages/master/general/project/project-general-master/project-general-master-list';
 import GeneralMasterLayout from '../general-master-layout';
 
-function RoadLengthTypes() {
+function SoilTypeMasterData() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <SoilTypeMasterList />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.soilType} />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default RoadLengthTypes;
+export default SoilTypeMasterData;

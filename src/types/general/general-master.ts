@@ -5,7 +5,24 @@ export interface GeneralMaster {
   description: string;
   id: string;
 }
-
+export interface ProjectGeneralMaster {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  model: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface DeckSlabType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  model: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
 export type GeneralMasterResource = {
   id: string;
   parent_id: string | null; // Allow null for parent_id
@@ -37,6 +54,14 @@ export interface BusinessFields {
   updated_at?: Date; // Optional field
 }
 export interface PedestrianFacility {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface AbutmentType {
   id: string;
   title?: string;
   description?: string;
@@ -217,6 +242,122 @@ export interface SurfaceType {
 }
 
 export interface DesignStandard {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+
+export interface SeverityLevel {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface HazardType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface SuggestedRepair {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface RecommendedActionUrgency {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface PavedWaterWayType {
+  id: string
+  title?: string
+  description?: string
+  project_type_id: string
+  created_at?: Date
+  updated_at?: Date
+}
+
+
+export interface BridgePartDefect {
+  id: string
+  title?: string
+  description?: string
+  project_type_id: string
+  created_at?: Date
+  updated_at?: Date
+}
+
+export interface DamageType {
+  id: string
+  title?: string
+  description?: string
+  project_type_id: string
+  created_at?: Date
+  updated_at?: Date
+}
+
+
+export interface EndwallTypeOutlet {
+  id: string
+  title?: string
+  description?: string
+  project_type_id: string
+  created_at?: Date
+  updated_at?: Date
+}
+export interface ProjectPhaseType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface InspectionType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface PierType {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface DrivewayAccessPoint {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface IntersectionType {
   id: string;
   title?: string;
   description?: string;

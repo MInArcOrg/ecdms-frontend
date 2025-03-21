@@ -1,3 +1,5 @@
+'use client';
+
 import { useRouter } from 'next/router';
 import ProjectOtherLayout from 'src/views/pages/projects/detail/other/layouts/project-other-layout';
 import RoadSegmentList from 'src/views/pages/projects/detail/other/road/road-segment';
@@ -9,7 +11,7 @@ function Index() {
   const baseUrl = `/projects/${typeId}/details/${id}/other`;
   const activeMenu = 8;
   const activeType = 2;
-  const activeSubType = 4;
+  const activeSubType = 4
 
   return (
     <ProjectOtherLayout

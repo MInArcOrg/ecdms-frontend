@@ -38,7 +38,7 @@ const RoadSafetyFeatureMasterCard = ({
           <Grid item>
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id} type="HYDROLOGY_DEFECT" /> &nbsp;
+                <FileDrawer id={generalMaster.id} type="ROAD_SAFETY_FEATURE" /> &nbsp;
                 <ModelActionComponent
                   model={'roadsafetyfeature'}
                   model_id={generalMaster.id}

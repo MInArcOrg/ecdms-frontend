@@ -1,17 +1,18 @@
 import { Fragment } from 'react';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import ProjectGeneralMasterList from 'src/views/pages/master/general/project/project-general-master/project-general-master-list';
 import GeneralMasterLayout from '../general-master-layout';
-import AssessmentConditionMasterList from 'src/views/pages/master/general/project/assessment-condition-master/assessment-condition-master-list';
 
-function AssessmentConditions() {
+function AssessmentConditionMasterData() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <AssessmentConditionMasterList />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.assessmentCondition} />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default AssessmentConditions;
+export default AssessmentConditionMasterData;

@@ -10,7 +10,7 @@ import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 
 interface DetailItem {
   title: string;
-  value: string;
+  value: string | React.ReactNode;
 }
 
 interface OtherDetailSidebarProps {
@@ -43,7 +43,7 @@ const OtherDetailSidebar: React.FC<OtherDetailSidebarProps> = ({ show, toggleDra
                   }}
                 >
                   <strong>{t(item.title)}:</strong>
-                  {item.title === 'Description' ? <DescCollapse desc={item.value} /> : <span>{item.value}</span>}
+                  {item.title === 'Description' && typeof item.value === 'string' ? <DescCollapse desc={item.value} /> : <span>{item.value}</span>}
                 </Typography>
               </FormControl>
             ))}

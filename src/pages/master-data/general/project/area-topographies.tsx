@@ -1,17 +1,18 @@
 import { Fragment } from 'react';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import ProjectGeneralMasterList from 'src/views/pages/master/general/project/project-general-master/project-general-master-list';
 import GeneralMasterLayout from '../general-master-layout';
-import AreaTopographyMasterList from 'src/views/pages/master/general/project/area-topography-master/area-topography-master-list';
 
-function GeneralProjectMasterData() {
+function AreaTopographyMasterData() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <AreaTopographyMasterList />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.areaTopography} />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default GeneralProjectMasterData;
+export default AreaTopographyMasterData;

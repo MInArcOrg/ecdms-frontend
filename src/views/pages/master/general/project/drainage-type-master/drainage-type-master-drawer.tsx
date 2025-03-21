@@ -54,7 +54,7 @@ const DrainageTypeMasterDrawer = (props: DrainageTypeMasterDrawerType) => {
 
   const onActionSuccess = async (response: IApiResponse<DrainageType>, payload: IApiPayload<DrainageType>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `HYDROLOGY_DEFECT`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `DRAINAGE_TYPE`, response.payload.id, '', '');
     }
     refetch();
     handleClose();

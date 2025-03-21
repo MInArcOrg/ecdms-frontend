@@ -54,7 +54,7 @@ const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
 
   const onActionSuccess = async (response: IApiResponse<CountType>, payload: IApiPayload<CountType>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `HYDROLOGY_DEFECT`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `COUNT_TYPE`, response.payload.id, '', '');
     }
     refetch();
     handleClose();

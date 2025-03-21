@@ -7,8 +7,8 @@ import type { RoadSegment } from 'src/types/project/other';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
-import surfaceTypeMasterService from 'src/services/general/project/surface-type-master-service';
-import designStandardMasterService from 'src/services/general/project/design-standard-master-service';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 
 import { useQuery } from '@tanstack/react-query';
 
@@ -22,13 +22,19 @@ const RoadSegmentForm: React.FC<RoadSegmentFormProps> = ({ formik, file, onFileC
   const { t: transl } = useTranslation();
 
   const { data: surfaceTypes } = useQuery({
-    queryKey: ['masterCategory', 'surfaceType'],
-    queryFn: () => surfaceTypeMasterService.getAll({})
+    queryKey: ['surface-types'],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.surfaceType.model }
+      })
   });
 
   const { data: designStandardTypes } = useQuery({
-    queryKey: ['masterCategory', 'designStandard'],
-    queryFn: () => designStandardMasterService.getAll({})
+    queryKey: ['design-standard-types'],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.designStandard.model }
+      })
   });
 
   return (

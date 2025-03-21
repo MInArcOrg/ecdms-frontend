@@ -10,8 +10,8 @@ import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import { useQuery } from '@tanstack/react-query';
-import surfaceTypeMasterService from 'src/services/general/project/surface-type-master-service';
-import designStandardMasterService from 'src/services/general/project/design-standard-master-service';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 
 interface RoadSegmentCardProps {
   roadSegment: RoadSegment;
@@ -26,15 +26,15 @@ const RoadSegmentCard: React.FC<RoadSegmentCardProps> = ({ roadSegment, refetch,
 
   // Fetch surface type data
   const { data: surfaceTypeData } = useQuery({
-    queryKey: ['surfaceType', roadSegment?.surface_type_id],
-    queryFn: () => surfaceTypeMasterService.getOne(roadSegment?.surface_type_id || '', {}),
+    queryKey: ['surface-types', roadSegment?.surface_type_id],
+    queryFn: () => projectGeneralMasterDataApiService.getOne(roadSegment?.surface_type_id || '', {}),
     enabled: !!roadSegment?.surface_type_id
   });
 
   // Fetch design standard data
   const { data: designStandardData } = useQuery({
-    queryKey: ['designStandard', roadSegment?.design_standard_id],
-    queryFn: () => designStandardMasterService.getOne(roadSegment?.design_standard_id || '', {}),
+    queryKey: ['design-standard-types', roadSegment?.design_standard_id],
+    queryFn: () => projectGeneralMasterDataApiService.getOne(roadSegment?.design_standard_id || '', {}),
     enabled: !!roadSegment?.design_standard_id
   });
 

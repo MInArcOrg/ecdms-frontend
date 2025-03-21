@@ -3,7 +3,7 @@ import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stake
 import StakeholderPositionList from 'src/views/pages/stakeholders/details/stakeholder-positions';
 import subMenuItems from './(sub-menu-items)';
 
-function Index() {
+function StakeholderPositionIndex() {
   const router = useRouter();
   const { id } = router.query;
 
@@ -14,9 +14,9 @@ function Index() {
   );
 }
 
-Index.acl = {
+StakeholderPositionIndex.acl = {
   action: 'view',
   subject: 'stakeholder-position'
 };
 
-export default Index;
+export default StakeholderPositionIndex;

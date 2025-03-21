@@ -1,17 +1,18 @@
 import { Fragment } from 'react';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import ProjectGeneralMasterList from 'src/views/pages/master/general/project/project-general-master/project-general-master-list';
 import GeneralMasterLayout from '../general-master-layout';
-import GroundWaterImpactMasterList from 'src/views/pages/master/general/project/ground-water-impact-master/ground-water-impact-master-list';
 
-function EndWallTypes() {
+function GroundWaterImpactMasterData() {
   return (
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <GroundWaterImpactMasterList />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.groundWaterImpact} />
         </Fragment>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default EndWallTypes;
+export default GroundWaterImpactMasterData;

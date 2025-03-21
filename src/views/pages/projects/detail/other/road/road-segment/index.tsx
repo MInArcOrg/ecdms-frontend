@@ -19,8 +19,8 @@ import RoadSegmentCard from './road-segment-card';
 import RoadSegmentDrawer from './road-segment-drawer';
 import { roadSegmentColumns } from './road-segment-row';
 import { useQuery } from '@tanstack/react-query';
-import surfaceTypeMasterService from 'src/services/general/project/surface-type-master-service';
-import designStandardMasterService from 'src/services/general/project/design-standard-master-service';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 
 interface RoadSegmentListProps {
   model: string;
@@ -36,13 +36,19 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
 
   // Fetch master data for lookups
   const { data: surfaceTypes } = useQuery({
-    queryKey: ['masterCategory', 'surfaceTypes'],
-    queryFn: () => surfaceTypeMasterService.getAll({})
+    queryKey: ['surface-types'],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.surfaceType.model }
+      })
   });
 
   const { data: designStandardTypes } = useQuery({
-    queryKey: ['masterCategory', 'designStandards'],
-    queryFn: () => designStandardMasterService.getAll({})
+    queryKey: ['design-standard-types'],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.designStandard.model }
+      })
   });
 
   // Create lookup maps
