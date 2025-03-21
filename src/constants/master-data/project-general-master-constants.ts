@@ -478,7 +478,15 @@ export const projectMasterModels = {
     createTitle: 'create-solar-panel-type',
     editTitle: 'edit-solar-panel-type',
     fileType: 'SOLAR_PANEL_TYPE'
-  }
+  },
+  towerType: {
+    model: 'TowerType',
+    dbModel: 'towertype',
+    title: 'tower-types',
+    createTitle: 'create-tower-type',
+    editTitle: 'edit-tower-type',
+    fileType: 'TOWER_TYPE'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
