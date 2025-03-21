@@ -487,6 +487,14 @@ export const projectMasterModels = {
     editTitle: 'edit-tower-type',
     fileType: 'TOWER_TYPE'
   },
+  generatorType: {
+    model: 'GeneratorType',
+    dbModel: 'generatortype',
+    title: 'generator-types',
+    createTitle: 'create-generator-type',
+    editTitle: 'edit-generator-type',
+    fileType: 'GENERATOR_TYPE'
+  }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
