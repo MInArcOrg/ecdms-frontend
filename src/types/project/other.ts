@@ -352,6 +352,17 @@ export interface HydrologicalInformation {
   created_at?: Date;
   updated_at?: Date;
 }
+export interface GeothermalPowerInfrastructure {
+  id: string;
+  project_id: string; // Required UUID
+  turbine_manufacturer?: string; // Optional String
+  turbine_model?: string; // Optional String
+  turbine_type_id?: string; // Optional UUID
+  each_turbine_capacity?: number; // Optional Double
+  remark?: string; // Optional Text
+  created_at?: Date;
+  updated_at?: Date;
+}
 export interface DrainageAssessment {
   id: string;
   project_id: string;
