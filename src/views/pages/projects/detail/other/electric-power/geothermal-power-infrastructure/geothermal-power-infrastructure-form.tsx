@@ -9,6 +9,7 @@ import projectGeneralMasterDataApiService from 'src/services/general/project-gen
 import { GeothermalPowerInfrastructure } from 'src/types/project/other';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
+import CustomSelect from 'src/views/shared/form/custom-select';
 
 interface GeothermalPowerInfrastructureFormProps {
   formik: FormikProps<GeothermalPowerInfrastructure>;
@@ -19,12 +20,12 @@ interface GeothermalPowerInfrastructureFormProps {
 const GeothermalPowerInfrastructureForm: React.FC<GeothermalPowerInfrastructureFormProps> = ({ formik, file, onFileChange }) => {
   const { t: transl } = useTranslation();
   const { data: turbineTypes } = useQuery({
-    queryKey: ['turbine-type', projectMasterModels.turbinType.model],
+    queryKey: ['turbine-type', projectMasterModels.turbineType.model],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll(
         dropDownConfig({
           filter: {
-            model: projectMasterModels.turbinType.model
+            model: projectMasterModels.turbineType.model
           }
         })
       )
@@ -32,13 +33,19 @@ const GeothermalPowerInfrastructureForm: React.FC<GeothermalPowerInfrastructureF
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>
-        <CustomTextBox
+        <CustomSelect
           fullWidth
           label={transl('project.other.geothermal-power-infrastructure.details.turbine-type-id')}
           placeholder={transl('project.other.geothermal-power-infrastructure.details.turbine-type-id')}
           name="turbine_type_id"
           size="small"
           sx={{ mb: 2 }}
+          options={
+            turbineTypes?.payload.map((type) => ({
+              label: type.title,
+              value: type.id
+            })) || []
+          }
         />
 
         <CustomTextBox
@@ -57,14 +64,7 @@ const GeothermalPowerInfrastructureForm: React.FC<GeothermalPowerInfrastructureF
           size="small"
           sx={{ mb: 2 }}
         />
-        <CustomTextBox
-          fullWidth
-          label={transl('project.other.geothermal-power-infrastructure.details.turbine-type-id')}
-          placeholder={transl('project.other.geothermal-power-infrastructure.details.turbine-type-id')}
-          name="turbine_type_id"
-          size="small"
-          sx={{ mb: 2 }}
-        />
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.geothermal-power-infrastructure.details.each-turbine-capacity')}

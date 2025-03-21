@@ -617,7 +617,8 @@
           "geothermal-power-infrastructure": "Geothermal Power Infrastructure",
           "geothermal-power-well": "Geothermal Power Well",
           "solar-panel": "Solar Panel",
-          "power-generation-capacity": "Power Generation Capacity"
+          "power-generation-capacity": "Power Generation Capacity",
+          "turbine-info": "Turbine Info"
         }
       }
     },
@@ -1891,6 +1892,8 @@
           "remark": "Remark"
         },
         "geothermal-power-infrastructure-details": "Geothermal Power Infrastructure Details",
+        "create-geothermal-power-infrastructure": "Create Power Infrastructure Infrastructure",
+        "edit-geothermal-power-infrastructure": "Edit Power Infrastructure Infrastructure",
         "title": "Geothermal Power Infrastructure"
       },
       "road-maintenance-activity": {
