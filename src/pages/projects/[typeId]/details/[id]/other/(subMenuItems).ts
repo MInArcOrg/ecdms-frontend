@@ -528,6 +528,20 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "regulationandpolicy",
           apiRoute: "regulation-and-policies",
         },
+        {
+          id: 83,
+          title: t("project.navigation.submenu.others.regulation-and-policy"),
+          path: `${baseUrl}/electric-power/regulation-and-policy`,
+          model: "regulationandpolicy",
+          apiRoute: "regulation-and-policies",
+        },
+        {
+          id: 85,
+          title: t("project.navigation.submenu.others.environmental-and-social-impact"),
+          path: `${baseUrl}/electric-power/environmental-and-social-impact`,
+          model: "environmentalandsocialimpact",
+          apiRoute: "environmental-and-social-impacts",
+        },
       ]
     },
     {

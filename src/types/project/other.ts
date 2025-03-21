@@ -1135,3 +1135,16 @@ export interface RegulationAndPolicy {
   created_at?: Date
   updated_at?: Date
 }
+
+export interface EnvironmentalAndSocialImpact {
+  id: string
+  project_id: string
+  environmental_impact_assessment_conducted: boolean
+  mitigation_measures_implemented: boolean
+  social_impact_assessment_conducted: boolean
+  resettlement_and_compensation_measures_implemented: boolean
+  remark?: string
+  files?: any[]
+  created_at?: string
+  updated_at?: string
+}
