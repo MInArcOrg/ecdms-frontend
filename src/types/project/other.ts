@@ -1123,3 +1123,15 @@ export interface WindResource {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface RegulationAndPolicy {
+  id: string
+  project_id: string
+  regulatory_body_overseeing_the_facility?: string
+  regulatory_compliance_monitoring?: boolean
+  environmental_and_social_regulation_compliance_monitoring?: boolean
+  licensing_and_permit_requirements?: boolean
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}

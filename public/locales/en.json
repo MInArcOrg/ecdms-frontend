@@ -619,8 +619,8 @@
           "solar-panel": "Solar Panel",
           "wind-turbine": "Wind Turbine",
           "wind-resource": "Wind Resources",
-          "power-generation-capacity": "Power Generation Capacity"
           "power-generation-capacity": "Power Generation Capacity",
+          "regulation-and-policy": "Regulations and Policies"
           "turbine-info": "Turbine Info"
         }
       }
@@ -2187,6 +2187,22 @@
           "commissioning-date": "Commissioning Date",
           "plant-life": "Plant Life",
           "others": "Other Information"
+        }
+      },
+      "regulation-and-policy": {
+        "title": "Regulations and Policies",
+        "create-regulation-and-policy": "Create Regulation and Policy",
+        "edit-regulation-and-policy": "Edit Regulation and Policy",
+        "regulation-and-policy-details": "Regulation and Policy Details",
+        "regulatory-details": "Regulatory Details",
+        "compliance-details": "Compliance Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "regulatory-body-overseeing-the-facility": "Regulatory Body Overseeing the Facility",
+          "regulatory-compliance-monitoring": "Regulatory Compliance Monitoring",
+          "environmental-and-social-regulation-compliance-monitoring": "Environmental and Social Regulation Compliance Monitoring",
+          "licensing-and-permit-requirements": "Licensing and Permit Requirements",
+          "remark": "Remark"
         }
       }
     }

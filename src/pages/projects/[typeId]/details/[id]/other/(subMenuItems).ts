@@ -521,6 +521,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "windresource",
           apiRoute: "wind-resources",
         },
+        {
+          id: 81,
+          title: t("project.navigation.submenu.others.regulation-and-policy"),
+          path: `${baseUrl}/electric-power/regulation-and-policy`,
+          model: "regulationandpolicy",
+          apiRoute: "regulation-and-policies",
+        },
       ]
     },
     {
