@@ -1037,3 +1037,61 @@ export interface InternetConnectionInfrastructureManufacturer {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface GeothermalPowerWell {
+  id: string;
+  project_id: string;
+  depth?: number;
+  well_diameter?: number;
+  drilling_period?: Date;
+  temperature_at_bottom_hole?: number;
+  wells_number?: number;
+  wells_name?: string;
+  plant_life?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface SolarPanel {
+  id: string;
+  project_id: string;
+  manufacturer?: string;
+  model?: string;
+  solar_panel_type_id: string;
+  solar_panels_number?: number;
+  each_solar_panel_capacity?: number;
+  inverter_manufacturer?: string;
+  inverter_model?: string;
+  inverters_number?: number;
+  other_equipment?: string;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface SolarResourceInformation {
+  id: string;
+  project_id: string;
+  annual_solar_radiation?: number;
+  solar_panel_efficiency?: number;
+  annual_energy_production?: number;
+  plant_life?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface PowerGenerationCapacity {
+  id: string;
+  project_id: string;
+  capacity: number;
+  annual_generation: number;
+  units_number: number;
+  owner_id: string;
+  commissioning_date?: string | Date | EthiopianDate;
+  plant_life: number;
+  others: string;
+  created_at: string;
+  updated_at: string;
+}

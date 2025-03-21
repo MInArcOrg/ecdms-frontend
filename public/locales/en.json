@@ -223,7 +223,16 @@
       "edit-data-center-type": "Edit Data Center Type",
       "owners": "Owners",
       "create-owner": "Create Owner",
-      "edit-owner": "Edit Owner"
+      "edit-owner": "Edit Owner",
+      "dam-types": "Dam Types",
+      "create-dam-type": "Create Dam Type",
+      "edit-dam-type": "Edit Dam Type",
+      "spillway-types": "Spillway Types",
+      "create-spillway-type": "Create Spillway Type",
+      "edit-spillway-type": "Edit Spillway Type",
+      "turbine-types": "Turbine Type",
+      "create-turbine-type": "Create Turbine Type",
+      "edit-turbine-type": "Edit Turbine Type"
     },
     "form": {
       "title": "Title",
@@ -605,7 +614,10 @@
           "satellite-network-component-manufacturer": "Satellite Network Component Manufacturer",
           "internet-connection": "Internet Connection",
           "broadcasting-infrastructure": "Broadcasting Infrastructure",
-          "geothermal-power-infrastructure": "Geothermal Power Infrastructure"
+          "geothermal-power-infrastructure": "Geothermal Power Infrastructure",
+          "geothermal-power-well": "Geothermal Power Well",
+          "solar-panel": "Solar Panel",
+          "power-generation-capacity": "Power Generation Capacity"
         }
       }
     },
@@ -2064,6 +2076,76 @@
           "cables": "Cables",
           "others": "Others"
         }
+      },
+      "geothermal-power-well": {
+        "title": "Geothermal Power Well",
+        "create-geothermal-power-well": "Create Geothermal Power Well",
+        "edit-geothermal-power-well": "Edit Geothermal Power Well",
+        "geothermal-power-well-details": "Geothermal Power Well Details",
+        "well-specifications": "Well Specifications",
+        "details": {
+          "wells-name": "Wells Name",
+          "wells-number": "Wells Number",
+          "depth": "Depth",
+          "well-diameter": "Well Diameter",
+          "drilling-period": "Drilling Period",
+          "temperature-at-bottom-hole": "Temperature at Bottom Hole",
+          "plant-life": "Plant Life",
+          "remark": "Remark"
+        }
+      },
+      "solar-panel": {
+        "title": "Solar Panel",
+        "create-solar-panel": "Create Solar Panel",
+        "edit-solar-panel": "Edit Solar Panel",
+        "solar-panel-details": "Solar Panel Details",
+        "panel-details": "Panel Details",
+        "inverter-details": "Inverter Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "manufacturer": "Manufacturer",
+          "model": "Model",
+          "solar-panel-type": "Solar Panel Type",
+          "solar-panels-number": "Number of Solar Panels",
+          "each-solar-panel-capacity": "Each Solar Panel Capacity",
+          "inverter-manufacturer": "Inverter Manufacturer",
+          "inverter-model": "Inverter Model",
+          "inverters-number": "Number of Inverters",
+          "other-equipment": "Other Equipment",
+          "remark": "Remark"
+        }
+      },
+      "solar-resource-information": {
+        "title": "Solar Resource Information",
+        "create-solar-resource-information": "Create Solar Resource Information",
+        "edit-solar-resource-information": "Edit Solar Resource Information",
+        "solar-resource-information-details": "Solar Resource Information Details",
+        "solar-resource-record": "Solar Resource Record",
+        "resource-details": "Resource Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "annual-solar-radiation": "Annual Solar Radiation",
+          "solar-panel-efficiency": "Solar Panel Efficiency",
+          "annual-energy-production": "Annual Energy Production",
+          "plant-life": "Plant Life",
+          "remark": "Remark"
+        }
+      },
+      "power-generation-capacity": {
+        "title": "Power Generation Capacity",
+        "power-generation-capacity-details": "Power Generation Capacity Details",
+        "power-generation-record": "Power Generation Record",
+        "create-power-generation-capacity": "Create Power Generation Capacity",
+        "edit-power-generation-capacity": "Edit Power Generation Capacity",
+        "details": {
+          "capacity": "Capacity",
+          "annual-generation": "Annual Generation",
+          "units-number": "Number of Units",
+          "owner": "Owner",
+          "commissioning-date": "Commissioning Date",
+          "plant-life": "Plant Life",
+          "others": "Other Information"
+        }
       }
     }
   },
@@ -2117,8 +2199,14 @@
     "create": "Create",
     "active": "Active",
     "inactive": "InActive",
+    "meters": "Meters",
+    "inches": "Inches",
     "created-at": "Created At",
     "years": "Years",
+    "kwh-per-m2": "kWh/m²",
+    "mwh": "MWh",
+    "percentage": "%",
+    "watts": "W",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",

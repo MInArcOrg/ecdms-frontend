@@ -446,8 +446,31 @@ export const projectMasterModels = {
     createTitle: 'create-data-center-type',
     editTitle: 'edit-data-center-type',
     fileType: 'DATA_CENTER_TYPE'
+  },
+  damType: {
+    model: 'DamType',
+    dbModel: 'damtype',
+    title: 'dam-types',
+    createTitle: 'create-dam-type',
+    editTitle: 'edit-dam-type',
+    fileType: 'DAM_TYPE'
+  },
+  spillwayType: {
+    model: 'SpillwayType',
+    dbModel: 'spillwaytype',
+    title: 'spillway-types',
+    createTitle: 'create-spillway-type',
+    editTitle: 'edit-spillway-type',
+    fileType: 'SPILLWAY_TYPE'
+  },
+  turbineType: {
+    model: 'TurbineType',
+    dbModel: 'turbinetype',
+    title: 'turbine-types',
+    createTitle: 'create-turbine-type',
+    editTitle: 'edit-turbine-type',
+    fileType: 'TURBINE_TYPE'
   }
-
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
