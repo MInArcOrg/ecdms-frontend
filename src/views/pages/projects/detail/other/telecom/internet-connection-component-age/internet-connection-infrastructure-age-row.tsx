@@ -44,7 +44,7 @@ export const internetConnectionInfrastructureAgeColumns = (
       headerName: t('project.other.internet-connection-infrastructure-age.details.internet-connection-id'),
       field: 'internet_connection_id',
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.internetConnection?.internetConnectionType.title || t('common.not-available')}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.internetConnection?.internetConnectionType?.title || t('common.not-available')}</Typography>
       )
     },
     {

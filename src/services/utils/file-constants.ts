@@ -123,6 +123,7 @@ export const uploadableProjectFileTypes = {
     internetConnectionInfrastructureAge: 'INTERNET_CONNECTION_COMPONENT_AGE',
     internetConnectionInfrastructureManufacturer: 'INTERNET_CONNECTION_COMPONENT_MANUFACTURER',
     hydrologicalInformation: 'HYDROLOGICAL_INFORMATION',
+    geothermalPowerInfrastructure: 'GEOTHERMAL_POWER_INFRASTRUCTURE',
     geothermalPowerWell: 'GEOTHERMAL_POWER_WELL',
     solarPanel: 'SOLAR_PANEL',
     solarResourceInformation: 'SOLAR_RESOURCE_INFORMATION',
