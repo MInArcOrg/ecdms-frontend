@@ -617,6 +617,9 @@
           "geothermal-power-infrastructure": "Geothermal Power Infrastructure",
           "geothermal-power-well": "Geothermal Power Well",
           "solar-panel": "Solar Panel",
+          "wind-turbine": "Wind Turbine",
+          "wind-resource": "Wind Resources",
+          "power-generation-capacity": "Power Generation Capacity"
           "power-generation-capacity": "Power Generation Capacity",
           "turbine-info": "Turbine Info"
         }
@@ -2134,6 +2137,42 @@
           "remark": "Remark"
         }
       },
+      "wind-turbine": {
+        "title": "Wind Turbines",
+        "create-wind-turbine": "Create Wind Turbine",
+        "edit-wind-turbine": "Edit Wind Turbine",
+        "wind-turbine-details": "Wind Turbine Details",
+        "turbine-details": "Turbine Details",
+        "physical-specifications": "Physical Specifications",
+        "generator-details": "Generator Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "turbine-manufacturer": "Turbine Manufacturer",
+          "turbine-model": "Turbine Model",
+          "rotor-diameter": "Rotor Diameter",
+          "hub-height": "Hub Height",
+          "tower-type": "Tower Type",
+          "blade-length": "Blade Length",
+          "blades-number": "Number of Blades",
+          "gearbox-type": "Gearbox Type",
+          "generator-type": "Generator Type",
+          "generators-number": "Number of Generators",
+          "remark": "Remark"
+        }
+      },
+      "wind-resource": {
+        "title": "Wind Resources",
+        "create-wind-resource": "Create Wind Resource",
+        "edit-wind-resource": "Edit Wind Resource",
+        "wind-resource-details": "Wind Resource Details",
+        "resource-details": "Resource Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "wind-speed-at-hub-height": "Wind Speed at Hub Height",
+          "weibull-shape-factor": "Weibull Shape Factor",
+          "remark": "Remark"
+        }
+      },
       "power-generation-capacity": {
         "title": "Power Generation Capacity",
         "power-generation-capacity-details": "Power Generation Capacity Details",
@@ -2210,6 +2249,7 @@
     "mwh": "MWh",
     "percentage": "%",
     "watts": "W",
+    "meters-per-second": "m/s",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",

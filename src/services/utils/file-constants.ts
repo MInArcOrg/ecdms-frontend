@@ -127,7 +127,9 @@ export const uploadableProjectFileTypes = {
     geothermalPowerWell: 'GEOTHERMAL_POWER_WELL',
     solarPanel: 'SOLAR_PANEL',
     solarResourceInformation: 'SOLAR_RESOURCE_INFORMATION',
-    powerGenerationCapacity: 'POWER_GENERATION_CAPACITY'
+    powerGenerationCapacity: 'POWER_GENERATION_CAPACITY',
+    windTurbine: "WIND_TURBINE",
+    windResource: "WIND_RESOURCE"
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

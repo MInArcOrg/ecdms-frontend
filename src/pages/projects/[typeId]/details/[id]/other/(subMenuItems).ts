@@ -507,6 +507,20 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: 'powergenerationcapacity',
           apiRoute: 'power-generation-capacities'
         },
+        {
+          id: 77,
+          title: t("project.navigation.submenu.others.wind-turbine"),
+          path: `${baseUrl}/electric-power/wind-turbine`,
+          model: "windturbine",
+          apiRoute: "wind-turbines",
+        },
+        {
+          id: 79,
+          title: t("project.navigation.submenu.others.wind-resource"),
+          path: `${baseUrl}/electric-power/wind-resource`,
+          model: "windresource",
+          apiRoute: "wind-resources",
+        },
       ]
     },
     {

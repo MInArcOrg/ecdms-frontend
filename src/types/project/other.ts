@@ -1095,3 +1095,31 @@ export interface PowerGenerationCapacity {
   created_at: string;
   updated_at: string;
 }
+
+export interface WindTurbine {
+  id: string
+  project_id: string
+  turbine_manufacturer?: string
+  turbine_model?: string
+  rotor_diameter?: number
+  hub_height?: number
+  tower_type_id?: string
+  blade_length?: number
+  blades_number?: number
+  gearbox_type?: string
+  generator_type_id?: string
+  generators_number?: number
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}
+
+export interface WindResource {
+  id: string;
+  project_id: string;
+  wind_speed_at_hub_height?: number;
+  weibull_shape_factor?: boolean;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
