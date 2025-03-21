@@ -232,7 +232,10 @@
       "edit-spillway-type": "Edit Spillway Type",
       "turbine-types": "Turbine Type",
       "create-turbine-type": "Create Turbine Type",
-      "edit-turbine-type": "Edit Turbine Type"
+      "edit-turbine-type": "Edit Turbine Type",
+      "solar-panel-types": "Solar Panel Types",
+      "create-solar-panel-type": "Create Solar Panel Type",
+      "edit-solar-panel-type": "Edit Solar Panel Type"
     },
     "form": {
       "title": "Title",
