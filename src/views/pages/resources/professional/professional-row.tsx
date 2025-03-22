@@ -1,16 +1,36 @@
-import Typography from "@mui/material/Typography"
-import type { GridColDef } from "@mui/x-data-grid"
-import { Fragment } from "react"
-import type { Professional } from "src/types/resource/index"
-import { formatCreatedAt } from "src/utils/formatter/date"
-import ModelAction from "src/views/components/custom/model-actions"
-import RowOptions from "src/views/shared/listing/row-options"
-import { useRouter } from "next/router"
-import Link from "next/link"
+import Typography from "@mui/material/Typography";
+import type { GridColDef } from "@mui/x-data-grid";
+import { Fragment } from "react";
+import type { Professional } from "src/types/resource/index";
+import { formatCreatedAt } from "src/utils/formatter/date";
+import ModelAction from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 interface CellType {
-  row: Professional
+  row: Professional;
 }
+
+const NameCell = ({ row }: CellType) => {
+  const router = useRouter();
+  const { typeId } = router.query;
+
+  return (
+    <Typography
+      component={Link}
+      href={`/resources/${typeId}/details/${row.id}/general-info`}
+      sx={{
+        fontWeight: 500,
+        textDecoration: 'none',
+        color: "text.secondary",
+        "&:hover": { color: "primary.main" },
+      }}
+    >
+      {`${row.first_name} ${row.last_name}`}
+    </Typography>
+  );
+};
 
 export const professionalColumns = (
   onEdit: (professional: Professional) => void,
@@ -22,24 +42,7 @@ export const professionalColumns = (
     minWidth: 200,
     field: "name",
     headerName: t("resources.professional.name"),
-    renderCell: ({ row }: CellType) => {
-      const router = useRouter()
-      const { typeId } = router.query
-      return (
-          <Typography
-          component={Link}
-            href={`/resources/${typeId}/details/${row.id}/general-info`}
-            sx={{
-              fontWeight: 500,
-              textDecoration: 'none',
-              color: "text.secondary",
-              "&:hover": { color: "primary.main" },
-            }}
-          >
-            {`${row.first_name} ${row.last_name}`}
-          </Typography>
-      )
-    },
+    renderCell: ({ row }: CellType) => <NameCell row={row} />,
   },
   {
     flex: 0.15,
@@ -108,5 +111,4 @@ export const professionalColumns = (
       </Fragment>
     ),
   },
-]
-
+];
