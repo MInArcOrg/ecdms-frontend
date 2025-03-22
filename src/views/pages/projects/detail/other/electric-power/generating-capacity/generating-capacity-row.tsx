@@ -129,7 +129,7 @@ export const generatingCapacityColumns = (
             subject: 'generatingcapacity'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'generatingcapacity'
           }}
           options={[]}

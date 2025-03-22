@@ -95,7 +95,7 @@ export const irrigationCapacityColumns = (
             subject: 'irrigationcapacity' // Adjusted subject to match model
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'irrigationcapacity' // Adjusted subject to match model
           }}
           options={[]}

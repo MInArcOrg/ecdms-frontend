@@ -103,7 +103,7 @@ const GeneratingCapacityCard: React.FC<GeneratingCapacityCardProps> = ({ generat
             subject: 'generatingcapacity'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'generatingcapacity'
           }}
         />

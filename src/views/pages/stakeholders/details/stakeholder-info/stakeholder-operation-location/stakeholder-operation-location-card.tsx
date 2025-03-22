@@ -66,7 +66,7 @@ const StakeholderOperationLocationCard: React.FC<StakeholderOperationLocationCar
               subject: 'stakeholderoperationlocation'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'stakeholderoperationlocation'
             }}
             item={stakeholderOperationLocation}

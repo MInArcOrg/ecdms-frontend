@@ -71,7 +71,7 @@ const TotalEmployeeCard: React.FC<TotalEmployeeCardProps> = ({ totalEmployee, re
               subject: 'totalemployee'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'totalemployee'
             }}
             item={totalEmployee}

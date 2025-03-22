@@ -89,7 +89,7 @@ export const solarEnergyColumns = (
             subject: 'solarenergy'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'solarenergy'
           }}
           options={[]}

@@ -39,7 +39,7 @@ const StakeholderPhoneCard: React.FC<StakeholderPhoneCardProps> = ({ stakeholder
               subject: 'stakeholderphone'
             }}
             editPermissionRule={{
-              action: 'edit',
+              action: 'update',
               subject: 'stakeholderphone'
             }}
             item={stakeholderPhone}

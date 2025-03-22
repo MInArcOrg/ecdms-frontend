@@ -125,7 +125,7 @@ const StakeholderInfoDetailComponent: React.FC<StakeholderInfoDetailComponentPro
                   subject: 'stakeholderinfo'
                 }}
                 editPermissionRule={{
-                  action: 'edit',
+                  action: 'update',
                   subject: 'stakeholderinfo'
                 }}
                 options={[]}

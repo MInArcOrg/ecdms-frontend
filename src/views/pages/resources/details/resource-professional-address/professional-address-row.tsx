@@ -90,7 +90,7 @@ export const addressColumns = (
             subject: 'professionaladdress'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'professionaladdress'
           }}
           options={[]}

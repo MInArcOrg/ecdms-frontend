@@ -1,7 +1,9 @@
+'use client';
+
 import { useRouter } from 'next/router';
 import ProjectOtherLayout from 'src/views/pages/projects/detail/other/layouts/project-other-layout';
-import RoadSegmentList from 'src/views/pages/projects/detail/other/road/road-segment';
-import subMenuItems, { findOtherModelName } from '../(subMenuItems)';
+import SegmentGeometryList from 'src/views/pages/projects/detail/other/road/segment-geometry';
+import subMenuItems, { findOtherSubMenu } from '../(subMenuItems)';
 
 function Index() {
   const router = useRouter();
@@ -9,7 +11,7 @@ function Index() {
   const baseUrl = `/projects/${typeId}/details/${id}/other`;
   const activeMenu = 8;
   const activeType = 2;
-  const activeSubType = 4;
+  const activeSubType = 24; // Assuming this is the next ID after drainage-assessment
 
   return (
     <ProjectOtherLayout
@@ -19,8 +21,8 @@ function Index() {
       subMenuItems={subMenuItems}
       baseUrl={baseUrl}
     >
-      <RoadSegmentList
-        model={findOtherModelName(subMenuItems(baseUrl), activeType, activeSubType) || ''}
+      <SegmentGeometryList
+        otherSubMenu={findOtherSubMenu(subMenuItems(baseUrl), activeType, activeSubType)}
         projectId={String(id)}
         typeId={String(typeId)}
       />
