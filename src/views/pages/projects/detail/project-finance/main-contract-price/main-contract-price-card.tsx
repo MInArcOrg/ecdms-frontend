@@ -11,11 +11,13 @@ import RowOptions from 'src/views/shared/listing/row-options';
 const MainContractPriceCard = ({
   projectFinance,
   refetch,
-  onEdit
+  onEdit,
+  onDelete
 }: {
   projectFinance: ProjectFinance;
   refetch: () => void;
-  onEdit: (address: ProjectFinance) => void;
+  onEdit: (projectFinance: ProjectFinance) => void;
+  onDelete: (id: string) => void;
 }) => {
   const { t } = useTranslation();
 
@@ -59,7 +61,7 @@ const MainContractPriceCard = ({
                     throw new Error('Function not implemented.');
                   }}
                 />
-                <RowOptions onEdit={onEdit} item={projectFinance} options={[]} />
+                <RowOptions onEdit={onEdit} onDelete={() => onDelete(projectFinance.id)} item={projectFinance} options={[]} />
               </Box>
             </Box>
           </Fragment>

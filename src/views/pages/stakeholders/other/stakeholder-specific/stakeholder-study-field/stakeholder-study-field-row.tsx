@@ -94,7 +94,7 @@ export const stakeholderStudyFieldColumns = (
             subject: 'stakeholderstudyfield'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholderstudyfield'
           }}
         />

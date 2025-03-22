@@ -116,7 +116,7 @@ export const roadLayerColumns = (
             subject: 'roadlayer'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'roadlayer'
           }}
         />

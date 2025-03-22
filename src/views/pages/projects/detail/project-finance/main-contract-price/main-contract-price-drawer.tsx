@@ -1,57 +1,63 @@
-import * as yup from 'yup';
-import { FormikProps } from 'formik';
+import type { FormikProps } from 'formik';
+import { useTranslation } from 'react-i18next';
+import projectFinanceApiService from 'src/services/project/project-finance-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import type { ProjectGeneralFinance } from 'src/types/project/project-finance';
+import type { ProjectFinance } from 'src/types/project';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import MainContractPriceForm from './main-contract-price-form'; // Import your project form component
-import { IApiPayload } from 'src/types/requests';
-import { ProjectFinance } from 'src/types/project';
-import projectFinanceApiService from 'src/services/project/project-finance-service';
+import * as yup from 'yup';
+import MainContractPriceForm from './main-contract-price-form';
 
-interface MainContractPriceDrawerType {
+interface MainContractPriceDrawerProps {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
   projectFinance: ProjectFinance;
   projectId: string;
+  projectGeneralFinance: ProjectGeneralFinance;
 }
 
-const validationSchema = yup.object().shape({
-  main_contract_price_amount: yup.number().required(),
-  rebate: yup.number().required()
-});
+const MainContractPriceDrawer = (props: MainContractPriceDrawerProps) => {
+  const { open, toggle, refetch, projectFinance, projectId, projectGeneralFinance } = props;
+  const { t } = useTranslation();
 
-const MainContractPriceDrawer = (props: MainContractPriceDrawerType) => {
-  // ** Props
-  const { open, toggle, refetch, projectFinance, projectId } = props;
+  const validationSchema = yup.object().shape({
+    main_contract_price_amount: yup
+      .number()
+      .required(`${t('Main Contract Price')} ${t('is required')}`)
+      .moreThan(0),
+    rebate: yup
+      .number()
+      .required(`${t('Rebate')} ${t('is required')}`)
+      .min(0)
+      .max(100),
+    source_of_finance: yup.string().required(`${t('Source of Finance')} ${t('is required')}`)
+  });
 
-  const isEdit = projectFinance?.id ? true : false;
+  const isEdit = Boolean(projectFinance?.id);
 
-  const createMainContractPrice = async (body: IApiPayload<ProjectFinance>) => {
-    return await projectFinanceApiService.create(body);
-  };
+  const createMainContractPrice = async (body: IApiPayload<ProjectFinance>) => projectFinanceApiService.create(body);
 
-  const editMainContractPrice = async (body: IApiPayload<ProjectFinance>) => {
-    return await projectFinanceApiService.update(projectFinance?.id || '', body);
-  };
+  const editMainContractPrice = async (body: IApiPayload<ProjectFinance>) =>
+    projectFinanceApiService.update(projectFinance?.id || '', body);
 
-  const getPayload = (values: ProjectFinance) => {
-    const payload = {
-      data: {
-        ...values,
-        id: projectFinance?.id,
-        project_id: projectId
-      },
-      files: [] // Adjust if you need to handle files
-    };
-    return payload;
-  };
+  const getPayload = (values: ProjectFinance) => ({
+    data: {
+      ...values,
+      project_id: projectId
+    },
+    files: []
+  });
 
-  const handleClose = () => {
-    toggle();
-  };
+  const handleClose = () => toggle();
 
-  const onActionSuccess = () => {
-    toggle();
+  const onActionSuccess = async (response: IApiResponse<ProjectFinance>, payload: IApiPayload<ProjectFinance>) => {
+    if (payload.files.length > 0) {
+      uploadFile(payload.files[0], uploadableProjectFileTypes.project, response.payload.id, '', '');
+    }
     refetch();
     handleClose();
   };
@@ -65,17 +71,15 @@ const MainContractPriceDrawer = (props: MainContractPriceDrawerType) => {
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title="project.main-contract-price.title" // Adjust the title key if necessary
+          title="project.main-contract-price.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{ ...projectFinance }}
+          initialValues={projectFinance || { main_contract_price_amount: 0, rebate: 0, source_of_finance: '', price_after_rebate: 0 }}
           createActionFunc={isEdit ? editMainContractPrice : createMainContractPrice}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<ProjectFinance>) => {
-            return <MainContractPriceForm formik={formik} />;
-          }}
+          {(formik: FormikProps<ProjectFinance>) => <MainContractPriceForm formik={formik} projectGeneralFinance={projectGeneralFinance} />}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

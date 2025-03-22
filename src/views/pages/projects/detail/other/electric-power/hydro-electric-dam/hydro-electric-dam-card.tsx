@@ -92,7 +92,7 @@ const HydroElectricDamCard: React.FC<HydroElectricDamCardProps> = ({ hydroElectr
             subject: 'hydroElectricDam'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'hydroElectricDam'
           }}
           item={hydroElectricDam}

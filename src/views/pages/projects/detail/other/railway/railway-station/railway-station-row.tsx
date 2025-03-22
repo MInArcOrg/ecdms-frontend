@@ -105,7 +105,7 @@ export const railwayStationColumns = (
             subject: 'railwaystation'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'railwaystation'
           }}
           options={[]}

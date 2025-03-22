@@ -112,7 +112,7 @@ export const spillwayInfoColumns = (
             subject: 'reservoirinfo' // Adjusted subject to match model
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'reservoirinfo' // Adjusted subject to match model
           }}
           options={[]}

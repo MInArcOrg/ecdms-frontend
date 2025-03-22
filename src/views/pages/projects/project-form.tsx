@@ -77,7 +77,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
                   value: projectSubCategory.id,
                   label: projectSubCategory.title
                 }))
-              : [] || []
+              : []
           }
         />
       </Box>
@@ -92,53 +92,90 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
                   value: projectSubCategory.id,
                   label: projectSubCategory.title
                 }))
-              : [] || []
+              : []
           }
         />
       </Box>
-      <CustomTextBox
-        fullWidth
-        label={transl('project.form.name')}
-        placeholder={transl('project.form.name')}
-        name="name"
-        size="small"
-        sx={{ mb: 2 }}
-      />
-      <CustomTextBox
-        fullWidth
-        label={transl('project.form.contract-no')}
-        placeholder={transl('project.form.contract-no')}
-        type="number"
-        name="contract_no"
-        size="small"
-        sx={{ mb: 2 }}
-      />
-      <CustomTextBox
-        fullWidth
-        label={transl('project.form.budget-code')}
-        placeholder={transl('project.form.budget-code')}
-        name="budget_code"
-        type="number"
-        size="small"
-        sx={{ mb: 2 }}
-      />
-      <CustomTextBox
-        fullWidth
-        label={transl('project.form.procurement-number')}
-        placeholder={transl('project.form.procurement-number')}
-        name="procurement_no"
-        type="number"
-        size="small"
-        sx={{ mb: 2 }}
-      />
-      <CustomTextBox
-        fullWidth
-        label={transl('project.form.remark')}
-        placeholder={transl('project.form.remark')}
-        name="remark"
-        multiline={true}
-        rows="4"
-      />
+      <Box mb={2}>
+        <CustomTextBox
+          fullWidth
+          label={transl('project.form.name')}
+          placeholder={transl('project.form.name')}
+          name="name"
+          size="small"
+          sx={{ mb: 2 }}
+        />
+      </Box>
+      <Box mb={2}>
+        <CustomTextBox
+          fullWidth
+          label={transl('project.form.contract-no')}
+          placeholder={transl('project.form.contract-no')}
+          name="contract_no"
+          size="small"
+          sx={{ mb: 2 }}
+        />
+      </Box>
+      <Box mb={2}>
+        <CustomTextBox
+          fullWidth
+          label={transl('project.form.budget-code')}
+          placeholder={transl('project.form.budget-code')}
+          name="budget_code"
+          size="small"
+          sx={{ mb: 2 }}
+        />
+      </Box>
+      <Box mb={2}>
+        <CustomTextBox
+          fullWidth
+          label={transl('project.form.procurement-number')}
+          placeholder={transl('project.form.procurement-number')}
+          name="procurement_no"
+          size="small"
+          sx={{ mb: 2 }}
+        />
+      </Box>
+      <Box mb={2}>
+        <CustomTextBox
+          fullWidth
+          label={transl('project.form.remark')}
+          placeholder={transl('project.form.remark')}
+          name="remark"
+          multiline={true}
+          rows="4"
+        />
+      </Box>
+      <Box mb={2}>
+        <CustomTextBox
+          fullWidth
+          label={transl('project.form.grade')}
+          placeholder={transl('project.form.grade')}
+          name="grade"
+          size="small"
+          sx={{ mb: 2 }}
+        />
+      </Box>
+      <Box mb={2}>
+        <CustomTextBox
+          fullWidth
+          label={transl('project.form.end-user')}
+          placeholder={transl('project.form.end-user')}
+          name="end_user"
+          size="small"
+          sx={{ mb: 2 }}
+        />
+      </Box>
+      <Box mb={2}>
+        <CustomTextBox
+          fullWidth
+          label={transl('project.form.function')}
+          placeholder={transl('project.form.function')}
+          name="function"
+          size="small"
+          sx={{ mb: 2 }}
+        />
+      </Box>
     </>
   );
 };

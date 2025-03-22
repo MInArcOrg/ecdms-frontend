@@ -1,3 +1,5 @@
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+
 const baseUrl = '/master-data/general';
 
 const menuItems = (t: (item: string) => void) => [
@@ -46,13 +48,13 @@ const menuItems = (t: (item: string) => void) => [
   {
     id: 2,
     title: t('master-data.project'),
-    children: [
-      {
-        id: 1,
-        title: t('master-data.general-master.project-progress-statuses'),
-        path: `${baseUrl}/stakeholder/project-progress-statuses/`
-      }
-    ]
+    children: Object.values(projectMasterModels)
+      .sort((a, b) => a.title.localeCompare(b.title))
+      .map((item, index) => ({
+        id: index + 1,
+        title: t(`master-data.general-master.${item.title}`),
+        path: `${baseUrl}/project/${item.title}/`
+      }))
   },
   {
     id: 3,

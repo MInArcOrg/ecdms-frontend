@@ -141,7 +141,7 @@ export const electricTowerColumns = (
             subject: 'transmissionline'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'transmissionline'
           }}
           options={[]}
