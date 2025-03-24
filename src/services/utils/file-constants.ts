@@ -132,7 +132,8 @@ export const uploadableProjectFileTypes = {
     windResource: "WIND_RESOURCE",
     regulationAndPolicy: "REGULATION_AND_POLICY",
     environmentalAndSocialImpact: "ENVIRONMENTAL_AND_SOCIAL_IMPACT",
-    reliabilityAndMaintenance: "RELIABILITY_AND_MAINTENANCE"
+    reliabilityAndMaintenance: "RELIABILITY_AND_MAINTENANCE",
+    transmission: "TRANSMISSION"
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
