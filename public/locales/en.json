@@ -633,7 +633,8 @@
           "environmental-and-social-impact": "Environmental and Social Impact",
           "turbine-info": "Turbine Info",
           "reliability-and-maintenance": "Reliability and Maintenance",
-          "transmission": "Transmission"
+          "transmission": "Transmission",
+          "dam": "Dam"
         }
       }
     },
@@ -2258,6 +2259,26 @@
           "transmission-voltage": "Transmission Voltage",
           "distance-to-substation": "Distance to Substation",
           "transmission-lines-number": "Number of Transmission Lines",
+          "remark": "Remark"
+        }
+      },
+      "dam": {
+        "title": "Dams",
+        "create-dam": "Create Dam",
+        "edit-dam": "Edit Dam",
+        "dam-details": "Dam Details",
+        "turbine-generator-details": "Turbine & Generator Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "dam-type": "Dam Type",
+          "dam-height": "Dam Height",
+          "spillway-type": "Spillway Type",
+          "penstock-length": "Penstock Length",
+          "turbine-type": "Turbine Type",
+          "turbine-number": "Number of Turbines",
+          "generator-type": "Generator Type",
+          "generator-number": "Number of Generators",
+          "national-priority-rank": "National Priority Rank",
           "remark": "Remark"
         }
       }
