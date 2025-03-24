@@ -1,11 +1,16 @@
 import { Grid } from '@mui/material';
-import { FormikProps } from 'formik';
-import React from 'react';
+import type { FormikProps } from 'formik';
+import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
-import { RoadSegment } from 'src/types/project/other';
+import type { RoadSegment } from 'src/types/project/other';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
+import CustomSelectBox from 'src/views/shared/form/custom-select';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
+
+import { useQuery } from '@tanstack/react-query';
 
 interface RoadSegmentFormProps {
   formik: FormikProps<RoadSegment>;
@@ -15,6 +20,22 @@ interface RoadSegmentFormProps {
 
 const RoadSegmentForm: React.FC<RoadSegmentFormProps> = ({ formik, file, onFileChange }) => {
   const { t: transl } = useTranslation();
+
+  const { data: surfaceTypes } = useQuery({
+    queryKey: ['surface-types'],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.surfaceType.model }
+      })
+  });
+
+  const { data: designStandardTypes } = useQuery({
+    queryKey: ['design-standard-types'],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.designStandard.model }
+      })
+  });
 
   return (
     <Grid container spacing={gridSpacing}>
@@ -27,48 +48,17 @@ const RoadSegmentForm: React.FC<RoadSegmentFormProps> = ({ formik, file, onFileC
           size="small"
           sx={{ mb: 2 }}
         />
-        <CustomTextBox
-          fullWidth
-          label={transl('project.other.road-segment.details.specifications')}
-          placeholder={transl('project.other.road-segment.details.specifications')}
-          name="specifications"
+        <CustomSelectBox
           size="small"
-          sx={{ mb: 2 }}
-        />
-        <CustomTextBox
-          fullWidth
-          label={transl('project.other.road-segment.details.no-of-layers')}
-          placeholder={transl('project.other.road-segment.details.no-of-layers')}
-          name="no_of_layers"
-          size="small"
-          type="number"
-          sx={{ mb: 2 }}
-        />
-        <CustomTextBox
-          fullWidth
-          label={transl('project.other.road-segment.details.length')}
-          placeholder={transl('project.other.road-segment.details.length')}
-          name="length"
-          size="small"
-          type="number"
-          sx={{ mb: 2 }}
-        />
-        <CustomTextBox
-          fullWidth
-          label={transl('project.other.road-segment.details.width')}
-          placeholder={transl('project.other.road-segment.details.width')}
-          name="width"
-          size="small"
-          type="number"
-          sx={{ mb: 2 }}
-        />
-        <CustomTextBox
-          fullWidth
-          label={transl('project.other.road-segment.details.remark')}
-          placeholder={transl('project.other.road-segment.details.remark')}
-          name="remark"
-          size="small"
-          sx={{ mb: 2 }}
+          name="surface_type_id"
+          label={transl('project.other.road-segment.details.surface-type-id')}
+          placeholder={transl('project.other.road-segment.details.surface-type-id')}
+          options={
+            surfaceTypes?.payload?.map((surfaceTypes) => ({
+              value: surfaceTypes.id,
+              label: surfaceTypes.title
+            })) || []
+          }
         />
         <CustomTextBox
           fullWidth
@@ -105,6 +95,18 @@ const RoadSegmentForm: React.FC<RoadSegmentFormProps> = ({ formik, file, onFileC
           size="small"
           type="number"
           sx={{ mb: 2 }}
+        />
+        <CustomSelectBox
+          size="small"
+          label={transl('project.other.road-segment.details.design-standard-id')}
+          placeholder={transl('project.other.road-segment.details.design-standard-id')}
+          name="design_standard_id"
+          options={
+            designStandardTypes?.payload?.map((designStandardTypes) => ({
+              value: designStandardTypes.id,
+              label: designStandardTypes.title
+            })) || []
+          }
         />
       </Grid>
 
