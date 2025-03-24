@@ -97,16 +97,12 @@ export interface RoadSegment {
   parent_id?: string;
   project_id: string;
   name: string;
-  specifications?: string;
-  no_of_layers?: number;
-  length?: number;
-  width?: number;
-  remark?: string;
+  surface_type_id: string;
   start_northing?: number;
   start_easting?: number;
   end_northing?: number;
   end_easting?: number;
-  revision_no?: number;
+  design_standard_id?: string;
   created_at: Date;
   updated_at: Date;
 }
