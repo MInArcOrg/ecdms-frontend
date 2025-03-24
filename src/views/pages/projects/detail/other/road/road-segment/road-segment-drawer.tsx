@@ -1,5 +1,7 @@
-import { FormikProps } from 'formik';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
+'use client';
+
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
@@ -9,7 +11,7 @@ import { useState } from 'react';
 import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
-import { RoadSegment } from 'src/types/project/other';
+import type { RoadSegment } from 'src/types/project/other';
 
 interface RoadSegmentDrawerType {
   open: boolean;
@@ -27,7 +29,10 @@ const RoadSegmentDrawer = (props: RoadSegmentDrawerType) => {
     setUploadableFile(file);
   };
 
-  const validationSchema = yup.object().shape({});
+  const validationSchema = yup.object().shape({
+    name: yup.string().required('Name is required'),
+    surface_type_id: yup.string().required('Surface type is required')
+  });
 
   const isEdit = Boolean(roadSegment?.id);
 

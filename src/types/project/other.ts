@@ -97,16 +97,12 @@ export interface RoadSegment {
   parent_id?: string;
   project_id: string;
   name: string;
-  specifications?: string;
-  no_of_layers?: number;
-  length?: number;
-  width?: number;
-  remark?: string;
+  surface_type_id: string;
   start_northing?: number;
   start_easting?: number;
   end_northing?: number;
   end_easting?: number;
-  revision_no?: number;
+  design_standard_id?: string;
   created_at: Date;
   updated_at: Date;
 }
@@ -1163,4 +1159,46 @@ export interface TransmissionLineInformation {
   remark?: string;
   created_at?: string;
   updated_at?: string;
+}
+
+export interface ReliabilityAndMaintenance {
+  id: string
+  project_id: string
+  maintenance_frequency_id: string
+  total_outage_duration?: number
+  total_interruption_number?: number
+  saidi?: number
+  saifi?: number
+  automatic_fault_detection_restoration_system_installed?: boolean
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}
+
+export interface Transmission {
+  id: string
+  project_id: string
+  transmission_voltage?: number
+  distance_to_substation?: number
+  transmission_lines_number?: number
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}
+
+export interface Dam {
+  id: string
+  project_id: string
+  dam_type_id: string
+  dam_height?: number
+  spillway_type_id: string
+  penstock_length?: number
+  turbine_type_id: string
+  turbine_number?: number
+  generator_type_id: string
+  generator_number?: number
+  national_priority_rank?: number
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
 }

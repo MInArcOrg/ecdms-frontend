@@ -195,3 +195,31 @@ export interface ProfessionalCertification {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface ProfessionalContactPerson {
+  id?: string;
+  professional_id: string;
+  national_id_no: string;
+  first_name: string;
+  middle_name?: string;
+  last_name: string;
+  gender: string;
+  phone_no: string;
+  email?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface Professional {
+  id?: string;
+  first_name: string;
+  middle_name?: string;
+  last_name: string;
+  national_id_no: string;
+  date_of_birth: string;
+  gender: string;
+  phone_no: string;
+  email: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
