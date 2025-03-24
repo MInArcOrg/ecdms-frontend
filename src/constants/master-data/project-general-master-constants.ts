@@ -503,6 +503,14 @@ export const projectMasterModels = {
     editTitle: 'edit-maintenance-frequency-type',
     fileType: 'MAINTENANCE_FREQUENCY_TYPE'
   },
+  conductorCodeName: {
+    model: 'ConductorCodeName',
+    dbModel: 'conductorcodename',
+    title: 'conductor-code-names',
+    createTitle: 'create-conductor-code-name',
+    editTitle: 'edit-conductor-code-name',
+    fileType: 'CONDUCTOR_CODE_NAME'
+  }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
