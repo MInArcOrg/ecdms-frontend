@@ -29,13 +29,10 @@ const GeothermalPowerInfrastructureDrawer = (props: GeothermalPowerInfrastructur
   };
 
   const validationSchema = yup.object().shape({
-    water_source: yup.string().nullable(),
-    catchment_area: yup.number().nullable(),
-    elevation_change: yup.number().nullable(),
-    head: yup.number().nullable(),
-    total_inflow: yup.number().nullable(),
-    active_storage_volume: yup.number().nullable(),
-    water_stored: yup.number().nullable(),
+    turbine_manufacturer: yup.string().nullable(),
+    turbine_model: yup.string().nullable(),
+    turbine_type_id: yup.string().nullable(),
+    each_turbine_capacity: yup.number().nullable(),
     remark: yup.string().nullable()
   });
 
@@ -43,13 +40,10 @@ const GeothermalPowerInfrastructureDrawer = (props: GeothermalPowerInfrastructur
 
   const initialValues = {
     ...geothermalPowerInfrastructure,
-    water_source: geothermalPowerInfrastructure?.water_source || '',
-    catchment_area: geothermalPowerInfrastructure?.catchment_area || 0,
-    elevation_change: geothermalPowerInfrastructure?.elevation_change || 0,
-    head: geothermalPowerInfrastructure?.head || 0,
-    total_inflow: geothermalPowerInfrastructure?.total_inflow || 0,
-    active_storage_volume: geothermalPowerInfrastructure?.active_storage_volume || 0,
-    water_stored: geothermalPowerInfrastructure?.water_stored || 0,
+    turbine_manufacturer: geothermalPowerInfrastructure?.turbine_manufacturer || '',
+    turbine_model: geothermalPowerInfrastructure?.turbine_model || '',
+    turbine_type_id: geothermalPowerInfrastructure?.turbine_type_id || '',
+    each_turbine_capacity: geothermalPowerInfrastructure?.each_turbine_capacity || 0,
     remark: geothermalPowerInfrastructure?.remark || ''
   };
 
@@ -57,7 +51,11 @@ const GeothermalPowerInfrastructureDrawer = (props: GeothermalPowerInfrastructur
     projectOtherApiSecondService<GeothermalPowerInfrastructure>().create(otherSubMenu?.apiRoute || '', body);
 
   const editGeothermalPowerInfrastructure = async (body: IApiPayload<GeothermalPowerInfrastructure>) =>
-    projectOtherApiSecondService<GeothermalPowerInfrastructure>().update(otherSubMenu?.apiRoute || '', geothermalPowerInfrastructure?.id || '', body);
+    projectOtherApiSecondService<GeothermalPowerInfrastructure>().update(
+      otherSubMenu?.apiRoute || '',
+      geothermalPowerInfrastructure?.id || '',
+      body
+    );
 
   const getPayload = (values: GeothermalPowerInfrastructure) => {
     return {
@@ -72,7 +70,10 @@ const GeothermalPowerInfrastructureDrawer = (props: GeothermalPowerInfrastructur
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<GeothermalPowerInfrastructure>, payload: IApiPayload<GeothermalPowerInfrastructure>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<GeothermalPowerInfrastructure>,
+    payload: IApiPayload<GeothermalPowerInfrastructure>
+  ) => {
     if (payload.files.length > 0) {
       uploadFile(payload.files[0], uploadableProjectFileTypes.other.geothermalPowerInfrastructure, response.payload.id, '', '');
     }
