@@ -479,7 +479,8 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/electric-power/geothermal-power-infrastructure`,
           model: 'geothermalpowerinfrastructure',
           apiRoute: 'geothermal-power-infrastructures'
-        }, {
+        },
+        {
           id: 71,
           title: t('project.navigation.submenu.others.geothermal-power-well'),
           path: `${baseUrl}/electric-power/geothermal-power-well`,
@@ -508,40 +509,47 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           apiRoute: 'power-generation-capacities'
         },
         {
+          id: 66,
+          title: t('project.navigation.submenu.others.transmission-line-informations'),
+          path: `${baseUrl}/electric-power/transmission-line-informations`,
+          model: 'transmissionlineinformation',
+          apiRoute: 'transmission-line-informations'
+        },
+        {
           id: 77,
-          title: t("project.navigation.submenu.others.wind-turbine"),
+          title: t('project.navigation.submenu.others.wind-turbine'),
           path: `${baseUrl}/electric-power/wind-turbine`,
-          model: "windturbine",
-          apiRoute: "wind-turbines",
+          model: 'windturbine',
+          apiRoute: 'wind-turbines'
         },
         {
           id: 79,
-          title: t("project.navigation.submenu.others.wind-resource"),
+          title: t('project.navigation.submenu.others.wind-resource'),
           path: `${baseUrl}/electric-power/wind-resource`,
-          model: "windresource",
-          apiRoute: "wind-resources",
+          model: 'windresource',
+          apiRoute: 'wind-resources'
         },
         {
           id: 81,
-          title: t("project.navigation.submenu.others.regulation-and-policy"),
+          title: t('project.navigation.submenu.others.regulation-and-policy'),
           path: `${baseUrl}/electric-power/regulation-and-policy`,
-          model: "regulationandpolicy",
-          apiRoute: "regulation-and-policies",
+          model: 'regulationandpolicy',
+          apiRoute: 'regulation-and-policies'
         },
         {
           id: 83,
-          title: t("project.navigation.submenu.others.regulation-and-policy"),
+          title: t('project.navigation.submenu.others.regulation-and-policy'),
           path: `${baseUrl}/electric-power/regulation-and-policy`,
-          model: "regulationandpolicy",
-          apiRoute: "regulation-and-policies",
+          model: 'regulationandpolicy',
+          apiRoute: 'regulation-and-policies'
         },
         {
           id: 85,
-          title: t("project.navigation.submenu.others.environmental-and-social-impact"),
+          title: t('project.navigation.submenu.others.environmental-and-social-impact'),
           path: `${baseUrl}/electric-power/environmental-and-social-impact`,
-          model: "environmentalandsocialimpact",
-          apiRoute: "environmental-and-social-impacts",
-        },
+          model: 'environmentalandsocialimpact',
+          apiRoute: 'environmental-and-social-impacts'
+        }
       ]
     },
     {

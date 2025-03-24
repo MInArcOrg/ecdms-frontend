@@ -631,7 +631,8 @@
           "power-generation-capacity": "Power Generation Capacity",
           "regulation-and-policy": "Regulations and Policies",
           "environmental-and-social-impact": "Environmental and Social Impact",
-          "turbine-info": "Turbine Info"
+          "turbine-info": "Turbine Info",
+          "transmission-line-informations": "Transmission Line Informations"
         }
       }
     },
@@ -1692,6 +1693,24 @@
           "start-easting": "Start Easting",
           "end-northing": "End Northing",
           "end-easting": "End Easting"
+        }
+      },
+      "transmission-line-information": {
+        "title": "Transmission Line Information",
+        "transmission-line-information-details": "Transmission Line Information Details",
+        "create-transmission-line-information": "Create Transmission Line Information",
+        "edit-transmission-line-information": "Edit Transmission Line Information",
+        "details": {
+          "name": "Name",
+          "transmission-voltage": "Transmission Voltage",
+          "transmission-line-route-length": "Transmission Line Route Length",
+          "circuit-number": "Circuit Number",
+          "starting-point-northing": "Starting Point Northing",
+          "starting-point-easting": "Starting Point Easting",
+          "ending-point-northing": "Ending Point Northing",
+          "ending-point-easting": "Ending Point Easting",
+          "lifetime": "Lifetime",
+          "remark": "Remark"
         }
       },
       "electric-tower": {

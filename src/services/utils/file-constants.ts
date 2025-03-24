@@ -128,10 +128,11 @@ export const uploadableProjectFileTypes = {
     solarPanel: 'SOLAR_PANEL',
     solarResourceInformation: 'SOLAR_RESOURCE_INFORMATION',
     powerGenerationCapacity: 'POWER_GENERATION_CAPACITY',
-    windTurbine: "WIND_TURBINE",
-    windResource: "WIND_RESOURCE",
-    regulationAndPolicy: "REGULATION_AND_POLICY",
-    environmentalAndSocialImpact: "ENVIRONMENTAL_AND_SOCIAL_IMPACT",
+    windTurbine: 'WIND_TURBINE',
+    windResource: 'WIND_RESOURCE',
+    regulationAndPolicy: 'REGULATION_AND_POLICY',
+    environmentalAndSocialImpact: 'ENVIRONMENTAL_AND_SOCIAL_IMPACT',
+    transmissionLineInformation: 'TRANSMISSION_LINE_INFORMATION'
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
