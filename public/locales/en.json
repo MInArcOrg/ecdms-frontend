@@ -241,7 +241,10 @@
       "edit-tower-type": "Edit Tower Type",
       "generator-types": "Generator Types",
       "create-generator-type": "Create Generator Type",
-      "edit-generator-type": "Edit Generator Type"
+      "edit-generator-type": "Edit Generator Type",
+      "conductor-code-names": "Conductor Code Names",
+      "create-conductor-code-name": "Create Conductor Code Name",
+      "edit-conductor-code-name": "Edit Conductor Code Name"
     },
     "form": {
       "title": "Title",
