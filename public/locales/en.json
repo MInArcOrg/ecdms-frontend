@@ -3041,8 +3041,26 @@
         "type-professional": "Professional",
         "type-technical": "Technical",
         "type-safety": "Safety"
-      }
+      },
+      "contact-person": {
+      "title": "Professional Contact Persons",
+      "create": "Create Contact Person",
+      "edit": "Edit Contact Person",
+      "details": "Contact Person Details",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "nationalIdNo": "National ID Number",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "other": "Other",
+      "phoneNo": "Phone Number",
+      "email": "Email",
+      "name": "Name"
     }
+    }
+
   
 }
 
