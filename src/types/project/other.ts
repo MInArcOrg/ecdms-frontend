@@ -336,7 +336,7 @@ export interface WaterIrrigationDam {
 }
 export interface HydrologicalInformation {
   id: string;
-  project_id: string; // Required UUID
+  project_id: string;
   water_source?: string; // Optional String
   catchment_area?: number; // Optional Double
   elevation_change?: number; // Optional Double
@@ -1143,6 +1143,22 @@ export interface EnvironmentalAndSocialImpact {
   files?: any[]
   created_at?: string
   updated_at?: string
+}
+export interface TransmissionLineInformation {
+  id: string;
+  project_id: string;
+  name: string;
+  transmission_voltage?: number;
+  transmission_line_route_length?: number;
+  circuit_number?: number;
+  starting_point_northing?: number;
+  starting_point_easting?: number;
+  ending_point_northing?: number;
+  ending_point_easting?: number;
+  lifetime?: number;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface ReliabilityAndMaintenance {
