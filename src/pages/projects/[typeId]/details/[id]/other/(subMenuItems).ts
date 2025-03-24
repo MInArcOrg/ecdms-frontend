@@ -542,6 +542,27 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "environmentalandsocialimpact",
           apiRoute: "environmental-and-social-impacts",
         },
+        {
+          id: 87,
+          title: t("project.navigation.submenu.others.reliability-and-maintenance"),
+          path: `${baseUrl}/electric-power/reliability-and-maintenance`,
+          model: "reliabilityandmaintenance",
+          apiRoute: "reliability-and-maintenance",
+        },
+        {
+          id: 89,
+          title: t("project.navigation.submenu.others.transmission"),
+          path: `${baseUrl}/electric-power/transmission`,
+          model: "transmission",
+          apiRoute: "transmissions",
+        },
+        {
+          id: 91,
+          title: t("project.navigation.submenu.others.dam"),
+          path: `${baseUrl}/electric-power/dam`,
+          model: "dam",
+          apiRoute: "dams",
+        },
       ]
     },
     {

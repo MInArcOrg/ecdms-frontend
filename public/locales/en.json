@@ -631,7 +631,10 @@
           "power-generation-capacity": "Power Generation Capacity",
           "regulation-and-policy": "Regulations and Policies",
           "environmental-and-social-impact": "Environmental and Social Impact",
-          "turbine-info": "Turbine Info"
+          "turbine-info": "Turbine Info",
+          "reliability-and-maintenance": "Reliability and Maintenance",
+          "transmission": "Transmission",
+          "dam": "Dam"
         }
       }
     },
@@ -1151,15 +1154,12 @@
         "road-segment-details": "Road Segment Details",
         "details": {
           "name": "Name",
-          "specifications": "Specifications",
-          "no-of-layers": "Number of Layers",
-          "length": "Length",
-          "width": "Width",
-          "remark": "Remark",
+          "surface-type-id": "Surface Type",
           "start-northing": "Start Northing",
           "start-easting": "Start Easting",
           "end-northing": "End Northing",
-          "end-easting": "End Easting"
+          "end-easting": "End Easting",
+          "design-standard-id": "Design Standard"
         }
       },
       "road-layer": {
@@ -2230,6 +2230,57 @@
           "resettlement-and-compensation-measures-implemented": "Resettlement and Compensation Measures Implemented",
           "remark": "Remark"
         }
+      },
+      "reliability-and-maintenance": {
+        "title": "Reliability & Maintenance",
+        "create-reliability-and-maintenance": "Create Reliability & Maintenance",
+        "edit-reliability-and-maintenance": "Edit Reliability & Maintenance",
+        "reliability-and-maintenance-details": "Reliability & Maintenance Details",
+        "maintenance-details": "Maintenance Details",
+        "reliability-metrics": "Reliability Metrics",
+        "additional-information": "Additional Information",
+        "details": {
+          "maintenance-frequency": "Maintenance Frequency",
+          "total-outage-duration": "Total Outage Duration",
+          "total-interruption-number": "Total Interruption Number",
+          "saidi": "SAIDI",
+          "saifi": "SAIFI",
+          "automatic-fault-detection": "Automatic Fault Detection & Restoration System Installed",
+          "remark": "Remark"
+        }
+      },
+      "transmission": {
+        "title": "Transmissions",
+        "create-transmission": "Create Transmission",
+        "edit-transmission": "Edit Transmission",
+        "transmission-details": "Transmission Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "transmission-voltage": "Transmission Voltage",
+          "distance-to-substation": "Distance to Substation",
+          "transmission-lines-number": "Number of Transmission Lines",
+          "remark": "Remark"
+        }
+      },
+      "dam": {
+        "title": "Dams",
+        "create-dam": "Create Dam",
+        "edit-dam": "Edit Dam",
+        "dam-details": "Dam Details",
+        "turbine-generator-details": "Turbine & Generator Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "dam-type": "Dam Type",
+          "dam-height": "Dam Height",
+          "spillway-type": "Spillway Type",
+          "penstock-length": "Penstock Length",
+          "turbine-type": "Turbine Type",
+          "turbine-number": "Number of Turbines",
+          "generator-type": "Generator Type",
+          "generator-number": "Number of Generators",
+          "national-priority-rank": "National Priority Rank",
+          "remark": "Remark"
+        }
       }
     }
   },
@@ -2290,8 +2341,10 @@
     "kwh-per-m2": "kWh/m²",
     "mwh": "MWh",
     "percentage": "%",
+    "kv": "Kilovolt",
     "watts": "W",
     "meters-per-second": "m/s",
+    "kilometers": "Kilometers",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",
@@ -2992,3 +3045,4 @@
     }
   
 }
+

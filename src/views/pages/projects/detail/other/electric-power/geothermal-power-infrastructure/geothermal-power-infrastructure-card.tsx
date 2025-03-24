@@ -50,25 +50,16 @@ const GeothermalPowerInfrastructureCard: React.FC<GeothermalPowerInfrastructureC
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.geothermal-power-infrastructure.details.water-source')}: {geothermalPowerInfrastructure?.water_source || 'N/A'}
+            {t('project.other.geothermal-power-infrastructure.details.turbine-manufacturer')}: {geothermalPowerInfrastructure?.turbine_manufacturer || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.geothermal-power-infrastructure.details.catchment-area')}: {geothermalPowerInfrastructure?.catchment_area?.toString() || 'N/A'}
+            {t('project.other.geothermal-power-infrastructure.details.turbine-model')}: {geothermalPowerInfrastructure?.turbine_model || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.geothermal-power-infrastructure.details.elevation-change')}: {geothermalPowerInfrastructure?.elevation_change?.toString() || 'N/A'}
+            {t('project.other.geothermal-power-infrastructure.details.turbine-type-id')}: {geothermalPowerInfrastructure?.turbine_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.geothermal-power-infrastructure.details.head')}: {geothermalPowerInfrastructure?.head?.toString() || 'N/A'}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {t('project.other.geothermal-power-infrastructure.details.total-inflow')}: {geothermalPowerInfrastructure?.total_inflow?.toString() || 'N/A'}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {t('project.other.geothermal-power-infrastructure.details.active-storage-volume')}: {geothermalPowerInfrastructure?.active_storage_volume?.toString() || 'N/A'}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {t('project.other.geothermal-power-infrastructure.details.water-stored')}: {geothermalPowerInfrastructure?.water_stored?.toString() || 'N/A'}
+            {t('project.other.geothermal-power-infrastructure.details.each-turbine-capacity')}: {geothermalPowerInfrastructure?.each_turbine_capacity?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.geothermal-power-infrastructure.details.remark')}: {geothermalPowerInfrastructure?.remark || 'N/A'}
