@@ -1144,3 +1144,17 @@ export interface EnvironmentalAndSocialImpact {
   created_at?: string
   updated_at?: string
 }
+
+export interface ReliabilityAndMaintenance {
+  id: string
+  project_id: string
+  maintenance_frequency_id: string
+  total_outage_duration?: number
+  total_interruption_number?: number
+  saidi?: number
+  saifi?: number
+  automatic_fault_detection_restoration_system_installed?: boolean
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}
