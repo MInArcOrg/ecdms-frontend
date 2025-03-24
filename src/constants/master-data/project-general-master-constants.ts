@@ -494,7 +494,15 @@ export const projectMasterModels = {
     createTitle: 'create-generator-type',
     editTitle: 'edit-generator-type',
     fileType: 'GENERATOR_TYPE'
-  }
+  },
+  maintenanceFrequencyType: {
+    model: 'MaintenanceFrequencyType',
+    dbModel: 'maintenancefrequencytype',
+    title: 'maintenance-frequency-types',
+    createTitle: 'create-maintenance-frequency-type',
+    editTitle: 'edit-maintenance-frequency-type',
+    fileType: 'MAINTENANCE_FREQUENCY_TYPE'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
