@@ -253,7 +253,10 @@
       "edit-battery-type": "Edit Battery Type",
       "tower-foundation-types": "Tower Foundation Types",
       "create-tower-foundation-type": "Create Tower Foundation Type",
-      "edit-tower-foundation-type": "Edit Tower Foundation Type"
+      "edit-tower-foundation-type": "Edit Tower Foundation Type",
+      "switchgear-types": "Switchgear Types",
+      "create-switchgear-type": "Create Switchgear Type",
+      "edit-switchgear-type": "Edit Switchgear Type"
     },
     "form": {
       "title": "Title",

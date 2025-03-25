@@ -526,6 +526,14 @@ export const projectMasterModels = {
     createTitle: 'create-tower-foundation-type',
     editTitle: 'edit-tower-foundation-type',
     fileType: 'TOWER_FOUNDATION_TYPE'
+  },
+  switchgearType: {
+    model: 'SwitchgearType',
+    dbModel: 'switchgeartype',
+    title: 'switchgear-types',
+    createTitle: 'create-switchgear-type',
+    editTitle: 'edit-switchgear-type',
+    fileType: 'SWITCHGEAR_TYPE'
   }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
