@@ -259,7 +259,10 @@
       "edit-switchgear-type": "Edit Switchgear Type",
       "circuit-breaker-types": "Circuit Breaker Types",
       "create-circuit-breaker-type": "Create Circuit Breaker Type",
-      "edit-circuit-breaker-type": "Edit Circuit Breaker Type"
+      "edit-circuit-breaker-type": "Edit Circuit Breaker Type",
+      "substation-communication-systems": "Substation Communication Systems",
+      "create-substation-communication-system": "Create Substation Communication System",
+      "edit-substation-communication-system": "Edit Substation Communication System"
     },
     "form": {
       "title": "Title",

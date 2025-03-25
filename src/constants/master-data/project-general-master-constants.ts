@@ -543,6 +543,14 @@ export const projectMasterModels = {
     editTitle: 'edit-circuit-breaker-type',
     fileType: 'CIRCUIT_BREAKER_TYPE'
   },
+  substationCommunicationSystem: {
+    model: 'SubstationCommunicationSystem',
+    dbModel: 'substationcommunicationsystem',
+    title: 'substation-communication-systems',
+    createTitle: 'create-substation-communication-system',
+    editTitle: 'edit-substation-communication-system',
+    fileType: 'SUBSTATION_COMMUNICATION_SYSTEM'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
