@@ -110,6 +110,9 @@
       "maintenance-frequencies": "Maintenance Frequencies",
       "edit-maintenance-frequency": "Create Maintenance Frequency",
       "create-maintenance-frequency": "Edit Maintenance Frequency",
+      "maintenance-frequency-types": "Maintenance Frequency Types",
+      "create-maintenance-frequency-type": "Create Maintenance Frequency Type",
+      "edit-maintenance-frequency-type": "Edit Maintenance Frequency Type",
       "drainage-conditions": "Drainage Conditions",
       "create-drainage-condition": "Create Drainage Condition",
       "edit-drainage-condition": "Edit Drainage Condition",
@@ -244,7 +247,10 @@
       "edit-generator-type": "Edit Generator Type",
       "conductor-code-names": "Conductor Code Names",
       "create-conductor-code-name": "Create Conductor Code Name",
-      "edit-conductor-code-name": "Edit Conductor Code Name"
+      "edit-conductor-code-name": "Edit Conductor Code Name",
+      "battery-types": "Battery Types",
+      "create-battery-type": "Create Battery Type",
+      "edit-battery-type": "Edit Battery Type"
     },
     "form": {
       "title": "Title",
