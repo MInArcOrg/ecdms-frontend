@@ -510,6 +510,14 @@ export const projectMasterModels = {
     createTitle: 'create-conductor-code-name',
     editTitle: 'edit-conductor-code-name',
     fileType: 'CONDUCTOR_CODE_NAME'
+  },
+  batteryType: {
+    model: 'BatteryType',
+    dbModel: 'batterytype',
+    title: 'battery-types',
+    createTitle: 'create-battery-type',
+    editTitle: 'edit-battery-type',
+    fileType: 'BATTERY_TYPE'
   }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
