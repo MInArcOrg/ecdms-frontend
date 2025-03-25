@@ -250,7 +250,10 @@
       "edit-conductor-code-name": "Edit Conductor Code Name",
       "battery-types": "Battery Types",
       "create-battery-type": "Create Battery Type",
-      "edit-battery-type": "Edit Battery Type"
+      "edit-battery-type": "Edit Battery Type",
+      "tower-foundation-types": "Tower Foundation Types",
+      "create-tower-foundation-type": "Create Tower Foundation Type",
+      "edit-tower-foundation-type": "Edit Tower Foundation Type"
     },
     "form": {
       "title": "Title",
