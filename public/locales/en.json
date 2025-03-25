@@ -256,7 +256,10 @@
       "edit-tower-foundation-type": "Edit Tower Foundation Type",
       "switchgear-types": "Switchgear Types",
       "create-switchgear-type": "Create Switchgear Type",
-      "edit-switchgear-type": "Edit Switchgear Type"
+      "edit-switchgear-type": "Edit Switchgear Type",
+      "circuit-breaker-types": "Circuit Breaker Types",
+      "create-circuit-breaker-type": "Create Circuit Breaker Type",
+      "edit-circuit-breaker-type": "Edit Circuit Breaker Type"
     },
     "form": {
       "title": "Title",
