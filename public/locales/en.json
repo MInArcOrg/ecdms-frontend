@@ -262,7 +262,10 @@
       "edit-circuit-breaker-type": "Edit Circuit Breaker Type",
       "substation-communication-systems": "Substation Communication Systems",
       "create-substation-communication-system": "Create Substation Communication System",
-      "edit-substation-communication-system": "Edit Substation Communication System"
+      "edit-substation-communication-system": "Edit Substation Communication System",
+      "substation-grounding-systems": "Substation Grounding Systems",
+      "create-substation-grounding-system": "Create Substation Grounding System",
+      "edit-substation-grounding-system": "Edit Substation Grounding System"
     },
     "form": {
       "title": "Title",
