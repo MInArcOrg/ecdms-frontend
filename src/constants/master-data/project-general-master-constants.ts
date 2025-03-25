@@ -551,6 +551,14 @@ export const projectMasterModels = {
     editTitle: 'edit-substation-communication-system',
     fileType: 'SUBSTATION_COMMUNICATION_SYSTEM'
   },
+  substationGroundingSystem: {
+    model: 'SubstationGroundingSystem',
+    dbModel: 'substationgroundingsystem',
+    title: 'substation-grounding-systems',
+    createTitle: 'create-substation-grounding-system',
+    editTitle: 'edit-substation-grounding-system',
+    fileType: 'SUBSTATION_GROUNDING_SYSTEM'
+  }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
