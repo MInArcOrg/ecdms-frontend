@@ -518,6 +518,14 @@ export const projectMasterModels = {
     createTitle: 'create-battery-type',
     editTitle: 'edit-battery-type',
     fileType: 'BATTERY_TYPE'
+  },
+  towerFoundationType: {
+    model: 'TowerFoundationType',
+    dbModel: 'towerfoundationtype',
+    title: 'tower-foundation-types',
+    createTitle: 'create-tower-foundation-type',
+    editTitle: 'edit-tower-foundation-type',
+    fileType: 'TOWER_FOUNDATION_TYPE'
   }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
