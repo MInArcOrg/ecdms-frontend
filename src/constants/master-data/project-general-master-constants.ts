@@ -534,7 +534,15 @@ export const projectMasterModels = {
     createTitle: 'create-switchgear-type',
     editTitle: 'edit-switchgear-type',
     fileType: 'SWITCHGEAR_TYPE'
-  }
+  },
+  circuitBreakerType: {
+    model: 'CircuitBreakerType',
+    dbModel: 'circuitbreakertype',
+    title: 'circuit-breaker-types',
+    createTitle: 'create-circuit-breaker-type',
+    editTitle: 'edit-circuit-breaker-type',
+    fileType: 'CIRCUIT_BREAKER_TYPE'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
