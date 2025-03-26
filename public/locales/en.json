@@ -265,7 +265,10 @@
       "edit-substation-communication-system": "Edit Substation Communication System",
       "transformer-types": "Transformer Types",
       "create-transformer-type": "Create Transformer Type",
-      "edit-transformer-type": "Edit Transformer Type"
+      "edit-transformer-type": "Edit Transformer Type",
+      "substation-grounding-systems": "Substation Grounding Systems",
+      "create-substation-grounding-system": "Create Substation Grounding System",
+      "edit-substation-grounding-system": "Edit Substation Grounding System"
     },
     "form": {
       "title": "Title",
