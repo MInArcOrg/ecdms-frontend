@@ -8,7 +8,7 @@ function DesignStandardMasterData() {
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.distributionLineType} />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.protectionInstalled} />
         </Fragment>
       </GeneralMasterLayout>
     </div>

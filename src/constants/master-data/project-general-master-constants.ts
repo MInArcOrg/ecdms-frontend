@@ -583,6 +583,14 @@ export const projectMasterModels = {
     editTitle: 'edit-privacy-measures-type',
     fileType: 'PRIVACY_MEASURES_TYPE'
   },
+  protectionInstalled: {
+    model: 'ProtectionInstalled',
+    dbModel: 'protectioninstalled',
+    title: 'protection-installed',
+    createTitle: 'create-protection-installed',
+    editTitle: 'edit-protection-installed',
+    fileType: 'PROTECTION_INSTALLED'
+  },
 
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;

@@ -274,7 +274,10 @@
       "edit-distribution-line-type": "Edit Distribution Line Type",
       "privacy-measures-types": "Privacy Measures Types",
       "create-privacy-measures-type": "Create Privacy Measures Types",
-      "edit-privacy-measures-type": "Edit Privacy Measures Types"
+      "edit-privacy-measures-type": "Edit Privacy Measures Types",
+      "protection-installed": "Protection Installed",
+      "create-protection-installed": "Create Protection Installed",
+      "edit-protection-installed": "Edit Protection Installed"
     },
     "form": {
       "title": "Title",
