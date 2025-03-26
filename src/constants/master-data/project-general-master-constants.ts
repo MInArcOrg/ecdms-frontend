@@ -591,7 +591,14 @@ export const projectMasterModels = {
     editTitle: 'edit-protection-installed',
     fileType: 'PROTECTION_INSTALLED'
   },
-
+  fireExtinguishingTechnology: {
+    model: 'FireExtinguishingTechnology',
+    dbModel: 'fireextinguishingtechnology',
+    title: 'fire-extinguishing-technologies',
+    createTitle: 'create-fire-extinguishing-technology',
+    editTitle: 'edit-fire-extinguishing-technology',
+    fileType: 'FIRE_EXTINGUISHING_TECHNOLOGY'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
