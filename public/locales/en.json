@@ -675,7 +675,8 @@
           "reliability-and-maintenance": "Reliability and Maintenance",
           "transmission": "Transmission",
           "dam": "Dam",
-          "transmission-line-conductor-and-tower-data": "Transmission Line Conductor And Tower Data"
+          "transmission-line-conductor-and-tower-data": "Transmission Line Conductor And Tower Data",
+          "transmission-line-equipment-data": "Transmission Line Equipment Data"
         }
       }
     },
@@ -2363,6 +2364,30 @@
           "conductor-diameter": "Conductor Diameter",
           "each-strand-diameter": "Each Strand Diameter",
           "tower-foundation-type-id": "Tower Foundation Type",
+          "other-equipment": "Other Equipment",
+          "remark": "Remark"
+        }
+      },
+      "transmission-line-equipment-data": {
+        "title": "Transmission Line Equipment Data",
+        "create-transmission-line-equipment-data": "Create Transmission Line Equipment Data",
+        "edit-transmission-line-equipment-data": "Edit Transmission Line Equipment Data",
+        "transmission-line-equipment-data-details": "Transmission Line Equipment Data Details",
+        "general-information": "General Information",
+        "equipment-information": "Equipment Information",
+        "tower-information": "Tower Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "transmission-line-id": "Transmission Line",
+          "insulator-type": "Insulator Type",
+          "ground-wire-type": "Ground Wire Type",
+          "fiber-optics-number": "Number of Fiber Optics",
+          "opgw-uts": "OPGW UTS",
+          "opgw-weight": "OPGW Weight",
+          "owner-operator": "Owner/Operator",
+          "tower-grounding": "Tower Grounding",
+          "tower-circuit-arrangement": "Tower Circuit Arrangement",
           "other-equipment": "Other Equipment",
           "remark": "Remark"
         }
