@@ -277,7 +277,10 @@
       "edit-privacy-measures-type": "Edit Privacy Measures Types",
       "protection-installed": "Protection Installed",
       "create-protection-installed": "Create Protection Installed",
-      "edit-protection-installed": "Edit Protection Installed"
+      "edit-protection-installed": "Edit Protection Installed",
+      "fire-extinguishing-technologies": "Fire Extinguishing Technologies",
+      "create-fire-extinguishing-technology": "Create Fire Extinguishing Technologies",
+      "edit-fire-extinguishing-technologgy": "Edit Fire Extinguishing Technologies"
     },
     "form": {
       "title": "Title",
