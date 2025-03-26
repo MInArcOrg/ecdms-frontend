@@ -101,7 +101,7 @@ const PowerGenerationCapacityDrawer = (props: PowerGenerationCapacityDrawerType)
           validationSchema={validationSchema}
           initialValues={{
             ...powerGenerationCapacity,
-            commissioning_date: formatInitialDateDate(powerGenerationCapacity?.commissioning_date),
+            commissioning_date: formatInitialDateDate(powerGenerationCapacity?.commissioning_date)
           }}
           createActionFunc={isEdit ? editPowerGenerationCapacity : createPowerGenerationCapacity}
           onActionSuccess={onActionSuccess}

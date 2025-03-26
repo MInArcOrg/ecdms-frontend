@@ -48,28 +48,37 @@ const InternetConnectionInfrastructureAgeCard: React.FC<InternetConnectionInfras
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.internet-connection-infrastructure-age.details.internet-connection-id')}: {internetConnectionInfrastructureAge?.internet_connection_id || 'N/A'}
+            {t('project.other.internet-connection-infrastructure-age.details.internet-connection-id')}:{' '}
+            {internetConnectionInfrastructureAge?.internet_connection_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.internet-connection-infrastructure-age.details.routers')}: {internetConnectionInfrastructureAge?.routers?.toString() || 'N/A'}
+            {t('project.other.internet-connection-infrastructure-age.details.routers')}:{' '}
+            {internetConnectionInfrastructureAge?.routers?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.internet-connection-infrastructure-age.details.switches')}: {internetConnectionInfrastructureAge?.switches?.toString() || 'N/A'}
+            {t('project.other.internet-connection-infrastructure-age.details.switches')}:{' '}
+            {internetConnectionInfrastructureAge?.switches?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.internet-connection-infrastructure-age.details.modems')}: {internetConnectionInfrastructureAge?.modems?.toString() || 'N/A'}
+            {t('project.other.internet-connection-infrastructure-age.details.modems')}:{' '}
+            {internetConnectionInfrastructureAge?.modems?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.internet-connection-infrastructure-age.details.cables')}: {internetConnectionInfrastructureAge?.cables?.toString() || 'N/A'}
+            {t('project.other.internet-connection-infrastructure-age.details.cables')}:{' '}
+            {internetConnectionInfrastructureAge?.cables?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.internet-connection-infrastructure-age.details.others')}: {internetConnectionInfrastructureAge?.others || 'N/A'}
+            {t('project.other.internet-connection-infrastructure-age.details.others')}:{' '}
+            {internetConnectionInfrastructureAge?.others || 'N/A'}
           </Typography>
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={internetConnectionInfrastructureAge.id} type={uploadableProjectFileTypes.other.internetConnectionInfrastructureAge} />
+        <FileDrawer
+          id={internetConnectionInfrastructureAge.id}
+          type={uploadableProjectFileTypes.other.internetConnectionInfrastructureAge}
+        />
         <ModelAction
           model="InternetConnectionInfrastructureAge"
           model_id={internetConnectionInfrastructureAge.id}

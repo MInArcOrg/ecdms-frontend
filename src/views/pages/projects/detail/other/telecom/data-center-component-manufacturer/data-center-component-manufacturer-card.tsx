@@ -48,22 +48,27 @@ const DataCenterComponentManufacturerCard: React.FC<DataCenterComponentManufactu
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.data-center-component-manufacturer.details.data-center-id')}: {dataCenterComponentManufacturer?.data_center_id || 'N/A'}
+            {t('project.other.data-center-component-manufacturer.details.data-center-id')}:{' '}
+            {dataCenterComponentManufacturer?.data_center_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.data-center-component-manufacturer.details.servers')}: {dataCenterComponentManufacturer?.servers || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.data-center-component-manufacturer.details.storage-devices')}: {dataCenterComponentManufacturer?.storage_devices || 'N/A'}
+            {t('project.other.data-center-component-manufacturer.details.storage-devices')}:{' '}
+            {dataCenterComponentManufacturer?.storage_devices || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.data-center-component-manufacturer.details.networking-equipment')}: {dataCenterComponentManufacturer?.networking_equipment || 'N/A'}
+            {t('project.other.data-center-component-manufacturer.details.networking-equipment')}:{' '}
+            {dataCenterComponentManufacturer?.networking_equipment || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.data-center-component-manufacturer.details.cooling-systems')}: {dataCenterComponentManufacturer?.cooling_systems || 'N/A'}
+            {t('project.other.data-center-component-manufacturer.details.cooling-systems')}:{' '}
+            {dataCenterComponentManufacturer?.cooling_systems || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.data-center-component-manufacturer.details.backup-generators')}: {dataCenterComponentManufacturer?.backup_generators || 'N/A'}
+            {t('project.other.data-center-component-manufacturer.details.backup-generators')}:{' '}
+            {dataCenterComponentManufacturer?.backup_generators || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.data-center-component-manufacturer.details.others')}: {dataCenterComponentManufacturer?.others || 'N/A'}

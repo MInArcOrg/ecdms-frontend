@@ -51,7 +51,8 @@ const DataCenterCard: React.FC<DataCenterCardProps> = ({ dataCenter, refetch, on
             {t('project.other.data-center.details.storage-devices')}: {dataCenter?.storage_devices ? t('common.yes') : t('common.no')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.data-center.details.networking-equipment')}: {dataCenter?.networking_equipment ? t('common.yes') : t('common.no')}
+            {t('project.other.data-center.details.networking-equipment')}:{' '}
+            {dataCenter?.networking_equipment ? t('common.yes') : t('common.no')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.data-center.details.cooling-systems')}: {dataCenter?.cooling_systems ? t('common.yes') : t('common.no')}

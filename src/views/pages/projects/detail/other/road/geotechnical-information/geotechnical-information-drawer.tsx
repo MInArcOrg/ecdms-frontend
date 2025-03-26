@@ -1,69 +1,65 @@
-"use client"
+'use client';
 
-import type { FormikProps } from "formik"
-import type { IApiPayload, IApiResponse } from "src/types/requests"
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
-import FormPageWrapper from "src/views/shared/form/form-wrapper"
-import * as yup from "yup"
-import GeotechnicalInformationForm from "./geotechnical-information-form"
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import GeotechnicalInformationForm from './geotechnical-information-form';
 
-import { useState } from "react"
-import projectOtherApiSecondService from "src/services/project/project-other-second-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
-import { uploadFile } from "src/services/utils/file-utils"
-import type { GeotechnicalInformation } from "src/types/project/other"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import { useState } from 'react';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import type { GeotechnicalInformation } from 'src/types/project/other';
+import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
 
 interface GeotechnicalInformationDrawerType {
-  open: boolean
-  toggle: () => void
-  refetch: () => void
-  geotechnicalInformation: GeotechnicalInformation
-  projectId: string
-  otherSubMenu?: OtherMenuRoute
+  open: boolean;
+  toggle: () => void;
+  refetch: () => void;
+  geotechnicalInformation: GeotechnicalInformation;
+  projectId: string;
+  otherSubMenu?: OtherMenuRoute;
 }
 
 const GeotechnicalInformationDrawer = (props: GeotechnicalInformationDrawerType) => {
-  const { open, toggle, refetch, geotechnicalInformation, projectId, otherSubMenu } = props
+  const { open, toggle, refetch, geotechnicalInformation, projectId, otherSubMenu } = props;
   const [uploadableFiles, setUploadableFiles] = useState<{
-    seismicDesign: File | null
-    geotechnicalReport: File | null
-    foundationDesign: File | null
+    seismicDesign: File | null;
+    geotechnicalReport: File | null;
+    foundationDesign: File | null;
   }>({
     seismicDesign: null,
     geotechnicalReport: null,
-    foundationDesign: null,
-  })
+    foundationDesign: null
+  });
 
   const onFileChange = (fileType: string, file: File | null) => {
     setUploadableFiles((prev) => ({
       ...prev,
-      [fileType]: file,
-    }))
-  }
+      [fileType]: file
+    }));
+  };
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    soil_type_id: yup.string().required("Soil type is required"),
-    ground_water_impact_id: yup.string().required("Ground water impact is required"),
-    slope_stability_id: yup.string().required("Slope stability is required"),
+    name: yup.string().required('Name is required'),
+    soil_type_id: yup.string().required('Soil type is required'),
+    ground_water_impact_id: yup.string().required('Ground water impact is required'),
+    slope_stability_id: yup.string().required('Slope stability is required'),
     soil_bearing_capacity: yup.number().nullable(),
     retaining_walls: yup.boolean().nullable(),
     geological_hazard: yup.string().nullable(),
-    remark: yup.string().nullable(),
-  })
+    remark: yup.string().nullable()
+  });
 
-  const isEdit = Boolean(geotechnicalInformation?.id)
+  const isEdit = Boolean(geotechnicalInformation?.id);
 
   const createGeotechnicalInformation = async (body: IApiPayload<GeotechnicalInformation>) =>
-    projectOtherApiSecondService<GeotechnicalInformation>().create(otherSubMenu?.apiRoute || "", body)
+    projectOtherApiSecondService<GeotechnicalInformation>().create(otherSubMenu?.apiRoute || '', body);
 
   const editGeotechnicalInformation = async (body: IApiPayload<GeotechnicalInformation>) =>
-    projectOtherApiSecondService<GeotechnicalInformation>().update(
-      otherSubMenu?.apiRoute || "",
-      geotechnicalInformation?.id || "",
-      body,
-    )
+    projectOtherApiSecondService<GeotechnicalInformation>().update(otherSubMenu?.apiRoute || '', geotechnicalInformation?.id || '', body);
 
   const getPayload = (values: GeotechnicalInformation) => ({
     data: {
@@ -76,47 +72,32 @@ const GeotechnicalInformationDrawer = (props: GeotechnicalInformationDrawerType)
       retaining_walls: values.retaining_walls,
       geological_hazard: values.geological_hazard,
       remark: values.remark,
-      id: geotechnicalInformation?.id,
+      id: geotechnicalInformation?.id
     },
-    files: [],
-  })
+    files: []
+  });
 
-  const handleClose = () => toggle()
+  const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<GeotechnicalInformation>,
-    payload: IApiPayload<GeotechnicalInformation>,
-  ) => {
-    const recordId = response.payload.id
+  const onActionSuccess = async (response: IApiResponse<GeotechnicalInformation>, payload: IApiPayload<GeotechnicalInformation>) => {
+    const recordId = response.payload.id;
 
     // Upload each file type if provided
     if (uploadableFiles.seismicDesign) {
-      await uploadFile(uploadableFiles.seismicDesign, uploadableProjectFileTypes.other.seismicDesign, recordId, "", "")
+      await uploadFile(uploadableFiles.seismicDesign, uploadableProjectFileTypes.other.seismicDesign, recordId, '', '');
     }
 
     if (uploadableFiles.geotechnicalReport) {
-      await uploadFile(
-        uploadableFiles.geotechnicalReport,
-        uploadableProjectFileTypes.other.geotechnicalReport,
-        recordId,
-        "",
-        "",
-      )
+      await uploadFile(uploadableFiles.geotechnicalReport, uploadableProjectFileTypes.other.geotechnicalReport, recordId, '', '');
     }
 
     if (uploadableFiles.foundationDesign) {
-      await uploadFile(
-        uploadableFiles.foundationDesign,
-        uploadableProjectFileTypes.other.foundationDesign,
-        recordId,
-        "",
-        "",
-      )
+      await uploadFile(uploadableFiles.foundationDesign, uploadableProjectFileTypes.other.foundationDesign, recordId, '', '');
     }
 
-    refetch()
-    handleClose()
-  }
+    refetch();
+    handleClose();
+  };
 
   return (
     <CustomSideDrawer
@@ -131,20 +112,19 @@ const GeotechnicalInformationDrawer = (props: GeotechnicalInformationDrawerType)
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...geotechnicalInformation,
+            ...geotechnicalInformation
           }}
           createActionFunc={isEdit ? editGeotechnicalInformation : createGeotechnicalInformation}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<GeotechnicalInformation>) => {
-            return <GeotechnicalInformationForm files={uploadableFiles} onFileChange={onFileChange} formik={formik} />
+            return <GeotechnicalInformationForm files={uploadableFiles} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>
-  )
-}
+  );
+};
 
-export default GeotechnicalInformationDrawer
-
+export default GeotechnicalInformationDrawer;

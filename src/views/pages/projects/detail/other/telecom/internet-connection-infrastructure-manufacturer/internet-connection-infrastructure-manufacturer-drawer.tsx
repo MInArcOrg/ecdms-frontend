@@ -88,16 +88,18 @@ const InternetConnectionInfrastructureManufacturerDrawer = (props: InternetConne
 
   return (
     <CustomSideDrawer
-      title={`project.other.internet-connection-infrastructure-manufacturer.${isEdit ? `edit-internet-connection-infrastructure-manufacturer` : `create-internet-connection-infrastructure-manufacturer`
-        }`}
+      title={`project.other.internet-connection-infrastructure-manufacturer.${
+        isEdit ? `edit-internet-connection-infrastructure-manufacturer` : `create-internet-connection-infrastructure-manufacturer`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.internet-connection-infrastructure-manufacturer.${isEdit ? `edit-internet-connection-infrastructure-manufacturer` : `create-internet-connection-infrastructure-manufacturer`
-            }`}
+          title={`project.other.internet-connection-infrastructure-manufacturer.${
+            isEdit ? `edit-internet-connection-infrastructure-manufacturer` : `create-internet-connection-infrastructure-manufacturer`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={initialValues}

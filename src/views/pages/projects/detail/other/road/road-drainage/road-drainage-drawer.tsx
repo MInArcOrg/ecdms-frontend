@@ -1,54 +1,54 @@
-"use client"
+'use client';
 
-import type { FormikProps } from "formik"
-import { useState } from "react"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
-import projectOtherApiSecondService from "src/services/project/project-other-second-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
-import { uploadFile } from "src/services/utils/file-utils"
-import type { RoadDrainage } from "src/types/project/other"
-import type { IApiPayload, IApiResponse } from "src/types/requests"
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
-import FormPageWrapper from "src/views/shared/form/form-wrapper"
-import * as yup from "yup"
-import RoadDrainageForm from "./road-drainage-form"
+import type { FormikProps } from 'formik';
+import { useState } from 'react';
+import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import type { RoadDrainage } from 'src/types/project/other';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import RoadDrainageForm from './road-drainage-form';
 
 interface RoadDrainageDrawerType {
-  open: boolean
-  toggle: () => void
-  refetch: () => void
-  roadDrainage: RoadDrainage
-  projectId: string
-  otherSubMenu?: OtherMenuRoute
+  open: boolean;
+  toggle: () => void;
+  refetch: () => void;
+  roadDrainage: RoadDrainage;
+  projectId: string;
+  otherSubMenu?: OtherMenuRoute;
 }
 
 const RoadDrainageDrawer = (props: RoadDrainageDrawerType) => {
-  const { open, toggle, refetch, roadDrainage, projectId, otherSubMenu } = props
-  const [uploadableFile, setUploadableFile] = useState<File | null>(null)
+  const { open, toggle, refetch, roadDrainage, projectId, otherSubMenu } = props;
+  const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const onFileChange = (file: File | null) => {
-    setUploadableFile(file)
-  }
+    setUploadableFile(file);
+  };
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    current_condition_id: yup.string().required("Current condition is required"),
-    length: yup.number().nullable().typeError("Length must be a number"),
-    height: yup.number().nullable().typeError("Height must be a number"),
-    width: yup.number().nullable().typeError("Width must be a number"),
-    weight_limit: yup.number().nullable().typeError("Weight limit must be a number"),
-    design_life_span: yup.number().nullable().typeError("Design life span must be a number"),
-    inspection_frequency: yup.number().nullable().typeError("Inspection frequency must be a number"),
-    construction_completion_year: yup.number().nullable().typeError("Construction completion year must be a number"),
-  })
+    name: yup.string().required('Name is required'),
+    current_condition_id: yup.string().required('Current condition is required'),
+    length: yup.number().nullable().typeError('Length must be a number'),
+    height: yup.number().nullable().typeError('Height must be a number'),
+    width: yup.number().nullable().typeError('Width must be a number'),
+    weight_limit: yup.number().nullable().typeError('Weight limit must be a number'),
+    design_life_span: yup.number().nullable().typeError('Design life span must be a number'),
+    inspection_frequency: yup.number().nullable().typeError('Inspection frequency must be a number'),
+    construction_completion_year: yup.number().nullable().typeError('Construction completion year must be a number')
+  });
 
-  const isEdit = Boolean(roadDrainage?.id)
+  const isEdit = Boolean(roadDrainage?.id);
 
   const createRoadDrainage = async (body: IApiPayload<RoadDrainage>) =>
-    projectOtherApiSecondService<RoadDrainage>().create(otherSubMenu?.apiRoute || "", body)
+    projectOtherApiSecondService<RoadDrainage>().create(otherSubMenu?.apiRoute || '', body);
 
   const editRoadDrainage = async (body: IApiPayload<RoadDrainage>) =>
-    projectOtherApiSecondService<RoadDrainage>().update(otherSubMenu?.apiRoute || "", roadDrainage?.id || "", body)
+    projectOtherApiSecondService<RoadDrainage>().update(otherSubMenu?.apiRoute || '', roadDrainage?.id || '', body);
 
   const getPayload = (values: RoadDrainage) => ({
     data: {
@@ -65,48 +65,47 @@ const RoadDrainageDrawer = (props: RoadDrainageDrawerType) => {
       remark: values.remark,
       id: roadDrainage?.id,
       created_at: roadDrainage?.created_at,
-      updated_at: roadDrainage?.updated_at,
+      updated_at: roadDrainage?.updated_at
     },
-    files: uploadableFile ? [uploadableFile] : [],
-  })
+    files: uploadableFile ? [uploadableFile] : []
+  });
 
-  const handleClose = () => toggle()
+  const handleClose = () => toggle();
 
   const onActionSuccess = async (response: IApiResponse<RoadDrainage>, payload: IApiPayload<RoadDrainage>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], uploadableProjectFileTypes.other.roadDrainage, response.payload.id, "", "")
+      uploadFile(payload.files[0], uploadableProjectFileTypes.other.roadDrainage, response.payload.id, '', '');
     }
-    refetch()
-    handleClose()
-  }
+    refetch();
+    handleClose();
+  };
 
   return (
     <CustomSideDrawer
-      title={`project.other.road-drainage.${isEdit ? "edit-road-drainage" : "create-road-drainage"}`}
+      title={`project.other.road-drainage.${isEdit ? 'edit-road-drainage' : 'create-road-drainage'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.road-drainage.${isEdit ? "edit-road-drainage" : "create-road-drainage"}`}
+          title={`project.other.road-drainage.${isEdit ? 'edit-road-drainage' : 'create-road-drainage'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...roadDrainage,
+            ...roadDrainage
           }}
           createActionFunc={isEdit ? editRoadDrainage : createRoadDrainage}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<RoadDrainage>) => {
-            return <RoadDrainageForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />
+            return <RoadDrainageForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>
-  )
-}
+  );
+};
 
-export default RoadDrainageDrawer
-
+export default RoadDrainageDrawer;

@@ -144,13 +144,7 @@ const DataCenterList: React.FC<DataCenterListProps> = ({ otherSubMenu, projectId
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <DataCenterCard
-            onDetail={handleClickDetail}
-            dataCenter={data}
-            onEdit={handleEdit}
-            refetch={refetch}
-            onDelete={handleDelete}
-          />
+          <DataCenterCard onDetail={handleClickDetail} dataCenter={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,

@@ -22,19 +22,13 @@ interface GeothermalPowerInfrastructureListProps {
   projectId: string;
 }
 
-const GeothermalPowerInfrastructureList: React.FC<GeothermalPowerInfrastructureListProps> = ({
-  otherSubMenu,
-  projectId,
-  typeId
-}) => {
+const GeothermalPowerInfrastructureList: React.FC<GeothermalPowerInfrastructureListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<GeothermalPowerInfrastructure | null>(null);
   const { t } = useTranslation();
 
-  const fetchGeothermalPowerInfrastructures = (
-    params: GetRequestParam
-  ): Promise<IApiResponse<GeothermalPowerInfrastructure[]>> => {
+  const fetchGeothermalPowerInfrastructures = (params: GetRequestParam): Promise<IApiResponse<GeothermalPowerInfrastructure[]>> => {
     return projectOtherApiSecondService<GeothermalPowerInfrastructure>().getAll(otherSubMenu?.apiRoute || '', {
       ...params,
       filter: { ...params.filter }
@@ -83,39 +77,35 @@ const GeothermalPowerInfrastructureList: React.FC<GeothermalPowerInfrastructureL
   const mapGeothermalPowerInfrastructureToDetailItems = (
     geothermalPowerInfrastructure: GeothermalPowerInfrastructure
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.geothermal-power-infrastructure.details.turbine-manufacturer'),
-        value: geothermalPowerInfrastructure?.turbine_manufacturer || 'N/A'
-      },
-      {
-        title: t('project.other.geothermal-power-infrastructure.details.turbine-model'),
-        value: geothermalPowerInfrastructure?.turbine_model || 'N/A'
-      },
-      {
-        title: t('project.other.geothermal-power-infrastructure.details.turbine-type-id'),
-        value: geothermalPowerInfrastructure?.turbine_type_id || 'N/A'
-      },
-      {
-        title: t('project.other.geothermal-power-infrastructure.details.each-turbine-capacity'),
-        value: geothermalPowerInfrastructure?.each_turbine_capacity?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.geothermal-power-infrastructure.details.remark'),
-        value: geothermalPowerInfrastructure?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: geothermalPowerInfrastructure?.created_at
-          ? formatCreatedAt(geothermalPowerInfrastructure.created_at)
-          : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: geothermalPowerInfrastructure?.updated_at
-          ? formatCreatedAt(geothermalPowerInfrastructure.updated_at)
-          : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.geothermal-power-infrastructure.details.turbine-manufacturer'),
+      value: geothermalPowerInfrastructure?.turbine_manufacturer || 'N/A'
+    },
+    {
+      title: t('project.other.geothermal-power-infrastructure.details.turbine-model'),
+      value: geothermalPowerInfrastructure?.turbine_model || 'N/A'
+    },
+    {
+      title: t('project.other.geothermal-power-infrastructure.details.turbine-type-id'),
+      value: geothermalPowerInfrastructure?.turbine_type_id || 'N/A'
+    },
+    {
+      title: t('project.other.geothermal-power-infrastructure.details.each-turbine-capacity'),
+      value: geothermalPowerInfrastructure?.each_turbine_capacity?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.geothermal-power-infrastructure.details.remark'),
+      value: geothermalPowerInfrastructure?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: geothermalPowerInfrastructure?.created_at ? formatCreatedAt(geothermalPowerInfrastructure.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: geothermalPowerInfrastructure?.updated_at ? formatCreatedAt(geothermalPowerInfrastructure.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

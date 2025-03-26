@@ -83,14 +83,18 @@ const TransmissionLineInformationDrawer = (props: TransmissionLineInformationDra
 
   return (
     <CustomSideDrawer
-      title={`project.other.transmission-line-information.${isEdit ? `edit-transmission-line-information` : `create-transmission-line-information`}`}
+      title={`project.other.transmission-line-information.${
+        isEdit ? `edit-transmission-line-information` : `create-transmission-line-information`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.transmission-line-information.${isEdit ? `edit-transmission-line-information` : `create-transmission-line-information`}`}
+          title={`project.other.transmission-line-information.${
+            isEdit ? `edit-transmission-line-information` : `create-transmission-line-information`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={initialValues}

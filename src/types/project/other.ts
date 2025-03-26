@@ -1093,21 +1093,21 @@ export interface PowerGenerationCapacity {
 }
 
 export interface WindTurbine {
-  id: string
-  project_id: string
-  turbine_manufacturer?: string
-  turbine_model?: string
-  rotor_diameter?: number
-  hub_height?: number
-  tower_type_id?: string
-  blade_length?: number
-  blades_number?: number
-  gearbox_type?: string
-  generator_type_id?: string
-  generators_number?: number
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  project_id: string;
+  turbine_manufacturer?: string;
+  turbine_model?: string;
+  rotor_diameter?: number;
+  hub_height?: number;
+  tower_type_id?: string;
+  blade_length?: number;
+  blades_number?: number;
+  gearbox_type?: string;
+  generator_type_id?: string;
+  generators_number?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface WindResource {
@@ -1121,28 +1121,28 @@ export interface WindResource {
 }
 
 export interface RegulationAndPolicy {
-  id: string
-  project_id: string
-  regulatory_body_overseeing_the_facility?: string
-  regulatory_compliance_monitoring?: boolean
-  environmental_and_social_regulation_compliance_monitoring?: boolean
-  licensing_and_permit_requirements?: boolean
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  project_id: string;
+  regulatory_body_overseeing_the_facility?: string;
+  regulatory_compliance_monitoring?: boolean;
+  environmental_and_social_regulation_compliance_monitoring?: boolean;
+  licensing_and_permit_requirements?: boolean;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface EnvironmentalAndSocialImpact {
-  id: string
-  project_id: string
-  environmental_impact_assessment_conducted: boolean
-  mitigation_measures_implemented: boolean
-  social_impact_assessment_conducted: boolean
-  resettlement_and_compensation_measures_implemented: boolean
-  remark?: string
-  files?: any[]
-  created_at?: string
-  updated_at?: string
+  id: string;
+  project_id: string;
+  environmental_impact_assessment_conducted: boolean;
+  mitigation_measures_implemented: boolean;
+  social_impact_assessment_conducted: boolean;
+  resettlement_and_compensation_measures_implemented: boolean;
+  remark?: string;
+  files?: any[];
+  created_at?: string;
+  updated_at?: string;
 }
 export interface TransmissionLineInformation {
   id: string;
@@ -1162,43 +1162,43 @@ export interface TransmissionLineInformation {
 }
 
 export interface ReliabilityAndMaintenance {
-  id: string
-  project_id: string
-  maintenance_frequency_id: string
-  total_outage_duration?: number
-  total_interruption_number?: number
-  saidi?: number
-  saifi?: number
-  automatic_fault_detection_restoration_system_installed?: boolean
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  project_id: string;
+  maintenance_frequency_id: string;
+  total_outage_duration?: number;
+  total_interruption_number?: number;
+  saidi?: number;
+  saifi?: number;
+  automatic_fault_detection_restoration_system_installed?: boolean;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface Transmission {
-  id: string
-  project_id: string
-  transmission_voltage?: number
-  distance_to_substation?: number
-  transmission_lines_number?: number
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  project_id: string;
+  transmission_voltage?: number;
+  distance_to_substation?: number;
+  transmission_lines_number?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface Dam {
-  id: string
-  project_id: string
-  dam_type_id: string
-  dam_height?: number
-  spillway_type_id: string
-  penstock_length?: number
-  turbine_type_id: string
-  turbine_number?: number
-  generator_type_id: string
-  generator_number?: number
-  national_priority_rank?: number
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  project_id: string;
+  dam_type_id: string;
+  dam_height?: number;
+  spillway_type_id: string;
+  penstock_length?: number;
+  turbine_type_id: string;
+  turbine_number?: number;
+  generator_type_id: string;
+  generator_number?: number;
+  national_priority_rank?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }

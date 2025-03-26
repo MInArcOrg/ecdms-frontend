@@ -1,15 +1,15 @@
-"use client"
+'use client';
 
 import { Grid } from '@mui/material';
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
-import { projectMasterModels } from "src/constants/master-data/project-general-master-constants";
-import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service";
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 import { BridgeSuperStructure } from 'src/types/project/other';
-import CustomSelect from "src/views/shared/form/custom-select";
+import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface BridgeSuperStructureFormProps {
@@ -20,27 +20,27 @@ const BridgeSuperStructureForm: React.FC<BridgeSuperStructureFormProps> = ({ for
   const { t: transl } = useTranslation();
 
   const { data: bridgeStructureTypes } = useQuery({
-    queryKey: ["bridge-structure-types"],
+    queryKey: ['bridge-structure-types'],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll({
-        filter: { model: projectMasterModels.bridgeStructureType.model },
-      }),
+        filter: { model: projectMasterModels.bridgeStructureType.model }
+      })
   });
 
   const { data: spanSupportTypes } = useQuery({
-    queryKey: ["span-support-types"],
+    queryKey: ['span-support-types'],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll({
-        filter: { model: projectMasterModels.spanSupportType.model },
-      }),
+        filter: { model: projectMasterModels.spanSupportType.model }
+      })
   });
 
   const { data: deckSlabTypes } = useQuery({
-    queryKey: ["deck-slab-types"],
+    queryKey: ['deck-slab-types'],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll({
-        filter: { model: projectMasterModels.deckSlabType.model },
-      }),
+        filter: { model: projectMasterModels.deckSlabType.model }
+      })
   });
 
   return (
@@ -74,7 +74,7 @@ const BridgeSuperStructureForm: React.FC<BridgeSuperStructureFormProps> = ({ for
           options={
             bridgeStructureTypes?.payload.map((type) => ({
               label: type.title,
-              value: type.id,
+              value: type.id
             })) || []
           }
         />
@@ -148,7 +148,7 @@ const BridgeSuperStructureForm: React.FC<BridgeSuperStructureFormProps> = ({ for
           options={
             spanSupportTypes?.payload.map((type) => ({
               label: type.title,
-              value: type.id,
+              value: type.id
             })) || []
           }
         />
@@ -163,7 +163,7 @@ const BridgeSuperStructureForm: React.FC<BridgeSuperStructureFormProps> = ({ for
           options={
             deckSlabTypes?.payload.map((type) => ({
               label: type.title,
-              value: type.id,
+              value: type.id
             })) || []
           }
         />

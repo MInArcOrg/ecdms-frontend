@@ -17,7 +17,12 @@ interface DataCenterComponentManufacturerFormProps {
   projectId: String;
 }
 
-const DataCenterComponentManufacturerForm: React.FC<DataCenterComponentManufacturerFormProps> = ({ formik, projectId, file, onFileChange }) => {
+const DataCenterComponentManufacturerForm: React.FC<DataCenterComponentManufacturerFormProps> = ({
+  formik,
+  projectId,
+  file,
+  onFileChange
+}) => {
   const { t: transl } = useTranslation();
   const { data: dataCenters } = useQuery({
     queryKey: ['data-centers'],

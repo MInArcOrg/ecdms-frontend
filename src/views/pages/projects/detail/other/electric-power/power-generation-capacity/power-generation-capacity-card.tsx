@@ -78,7 +78,8 @@ const PowerGenerationCapacityCard: React.FC<PowerGenerationCapacityCardProps> = 
           {powerGenerationCapacity?.commissioning_date && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t('project.other.power-generation-capacity.details.commissioning-date')}: {formatCreatedAt(powerGenerationCapacity.commissioning_date)}
+                {t('project.other.power-generation-capacity.details.commissioning-date')}:{' '}
+                {formatCreatedAt(powerGenerationCapacity.commissioning_date)}
               </Typography>
             </Grid>
           )}
