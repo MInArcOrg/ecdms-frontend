@@ -34,18 +34,15 @@ const TransmissionLineConductorAndTowerDataList: React.FC<TransmissionLineConduc
   const { t } = useTranslation()
 
   const { data: transmissionLines } = useQuery({
-    queryKey: ["transmission-lines", projectId],
+    queryKey: ["transmission-line-informations", projectId],
     queryFn: () =>
-        projectOtherApiSecondService<TransmissionLine>().getAll("transmission-lines", {
+        projectOtherApiSecondService<TransmissionLine>().getAll("transmission-line-informations", {
           filter: { project_id: projectId },
         }),
   })
 
   const fetchTransmissionLineConductorAndTowerDatas = (params: GetRequestParam): Promise<IApiResponse<TransmissionLineConductorAndTowerData[]>> => {
-    return projectOtherApiSecondService<TransmissionLineConductorAndTowerData>().getAll(otherSubMenu?.apiRoute || "", {
-      ...params,
-      filter: { ...params.filter, project_id: projectId },
-    })
+    return projectOtherApiSecondService<TransmissionLineConductorAndTowerData>().getAll(otherSubMenu?.apiRoute || "", {})
   }
 
   const {
