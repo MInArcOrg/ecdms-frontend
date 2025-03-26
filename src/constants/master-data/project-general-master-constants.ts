@@ -575,6 +575,15 @@ export const projectMasterModels = {
     editTitle: 'edit-distribution-line-type',
     fileType: 'DISTRIBUTION_LINE_TYPE'
   },
+  privacyMeasuresType: {
+    model: 'PrivacyMeasuresType',
+    dbModel: 'privacymeasurestype',
+    title: 'privacy-measures-types',
+    createTitle: 'create-privacy-measures-type',
+    editTitle: 'edit-privacy-measures-type',
+    fileType: 'PRIVACY_MEASURES_TYPE'
+  },
+
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
