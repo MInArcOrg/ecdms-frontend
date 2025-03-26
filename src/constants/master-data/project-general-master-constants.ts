@@ -566,7 +566,15 @@ export const projectMasterModels = {
     createTitle: 'create-substation-grounding-system',
     editTitle: 'edit-substation-grounding-system',
     fileType: 'SUBSTATION_GROUNDING_SYSTEM'
-  }
+  },
+  distributionLineType: {
+    model: 'DistributionLineType',
+    dbModel: 'distributionlinetype',
+    title: 'distribution-line-types',
+    createTitle: 'create-distribution-line-type',
+    editTitle: 'edit-distribution-line-type',
+    fileType: 'DISTRIBUTION_LINE_TYPE'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
