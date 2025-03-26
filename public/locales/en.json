@@ -271,7 +271,10 @@
       "edit-substation-grounding-system": "Edit Substation Grounding System",
       "distribution-line-types": "Distribution Line Types",
       "create-distribution-line-type": "Create Distribution Line Type",
-      "edit-distribution-line-type": "Edit Distribution Line Type"
+      "edit-distribution-line-type": "Edit Distribution Line Type",
+      "privacy-measures-types": "Privacy Measures Types",
+      "create-privacy-measures-type": "Create Privacy Measures Types",
+      "edit-privacy-measures-type": "Edit Privacy Measures Types"
     },
     "form": {
       "title": "Title",
