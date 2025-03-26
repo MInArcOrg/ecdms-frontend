@@ -14,7 +14,7 @@ interface TransmissionLineInformationFormProps {
 
 const TransmissionLineInformationForm: React.FC<TransmissionLineInformationFormProps> = ({ formik, file, onFileChange }) => {
   const { t: transl } = useTranslation();
-  
+
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>
@@ -27,7 +27,7 @@ const TransmissionLineInformationForm: React.FC<TransmissionLineInformationFormP
           sx={{ mb: 2 }}
           required
         />
-        
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.transmission-line-information.details.transmission-voltage')}
@@ -37,7 +37,7 @@ const TransmissionLineInformationForm: React.FC<TransmissionLineInformationFormP
           type="number"
           sx={{ mb: 2 }}
         />
-        
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.transmission-line-information.details.transmission-line-route-length')}
@@ -47,7 +47,7 @@ const TransmissionLineInformationForm: React.FC<TransmissionLineInformationFormP
           type="number"
           sx={{ mb: 2 }}
         />
-        
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.transmission-line-information.details.circuit-number')}
@@ -57,7 +57,7 @@ const TransmissionLineInformationForm: React.FC<TransmissionLineInformationFormP
           type="number"
           sx={{ mb: 2 }}
         />
-        
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.transmission-line-information.details.starting-point-northing')}
@@ -67,7 +67,7 @@ const TransmissionLineInformationForm: React.FC<TransmissionLineInformationFormP
           type="number"
           sx={{ mb: 2 }}
         />
-        
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.transmission-line-information.details.starting-point-easting')}
@@ -77,7 +77,7 @@ const TransmissionLineInformationForm: React.FC<TransmissionLineInformationFormP
           type="number"
           sx={{ mb: 2 }}
         />
-        
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.transmission-line-information.details.ending-point-northing')}
@@ -87,7 +87,7 @@ const TransmissionLineInformationForm: React.FC<TransmissionLineInformationFormP
           type="number"
           sx={{ mb: 2 }}
         />
-        
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.transmission-line-information.details.ending-point-easting')}
@@ -97,7 +97,7 @@ const TransmissionLineInformationForm: React.FC<TransmissionLineInformationFormP
           type="number"
           sx={{ mb: 2 }}
         />
-        
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.transmission-line-information.details.lifetime')}
@@ -107,7 +107,7 @@ const TransmissionLineInformationForm: React.FC<TransmissionLineInformationFormP
           type="number"
           sx={{ mb: 2 }}
         />
-        
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.transmission-line-information.details.remark')}

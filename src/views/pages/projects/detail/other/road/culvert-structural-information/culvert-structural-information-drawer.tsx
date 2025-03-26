@@ -1,47 +1,47 @@
-import type { FormikProps } from "formik"
-import type { IApiPayload, IApiResponse } from "src/types/requests"
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
-import FormPageWrapper from "src/views/shared/form/form-wrapper"
-import * as yup from "yup"
-import CulvertStructuralInformationForm from "./culvert-structural-information-form"
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import CulvertStructuralInformationForm from './culvert-structural-information-form';
 
-import projectOtherApiSecondService from "src/services/project/project-other-second-service"
-import type { CulvertStructuralInformation } from "src/types/project/other"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import type { CulvertStructuralInformation } from 'src/types/project/other';
+import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
 
 interface CulvertStructuralInformationDrawerType {
-  open: boolean
-  toggle: () => void
-  refetch: () => void
-  culvertStructuralInformation: CulvertStructuralInformation
-  projectId: string
-  otherSubMenu?: OtherMenuRoute
+  open: boolean;
+  toggle: () => void;
+  refetch: () => void;
+  culvertStructuralInformation: CulvertStructuralInformation;
+  projectId: string;
+  otherSubMenu?: OtherMenuRoute;
 }
 
 const CulvertStructuralInformationDrawer = (props: CulvertStructuralInformationDrawerType) => {
-  const { open, toggle, refetch, culvertStructuralInformation, projectId, otherSubMenu } = props
+  const { open, toggle, refetch, culvertStructuralInformation, projectId, otherSubMenu } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    pier_type_id: yup.string().required("Pier type is required"),
-    abutment_type_id: yup.string().required("Abutment type is required"),
-    endwall_type_inlet_id: yup.string().required("Endwall type inlet is required"),
-    endwall_type_outlet_id: yup.string().required("Endwall type outlet is required"),
-    paved_water_way_type_id: yup.string().required("Paved water way type is required"),
-    soil_type_id: yup.string().required("Soil type is required"),
-  })
+    name: yup.string().required('Name is required'),
+    pier_type_id: yup.string().required('Pier type is required'),
+    abutment_type_id: yup.string().required('Abutment type is required'),
+    endwall_type_inlet_id: yup.string().required('Endwall type inlet is required'),
+    endwall_type_outlet_id: yup.string().required('Endwall type outlet is required'),
+    paved_water_way_type_id: yup.string().required('Paved water way type is required'),
+    soil_type_id: yup.string().required('Soil type is required')
+  });
 
-  const isEdit = Boolean(culvertStructuralInformation?.id)
+  const isEdit = Boolean(culvertStructuralInformation?.id);
 
   const createCulvertStructuralInformation = async (body: IApiPayload<CulvertStructuralInformation>) =>
-    projectOtherApiSecondService<CulvertStructuralInformation>().create(otherSubMenu?.apiRoute || "", body)
+    projectOtherApiSecondService<CulvertStructuralInformation>().create(otherSubMenu?.apiRoute || '', body);
 
   const editCulvertStructuralInformation = async (body: IApiPayload<CulvertStructuralInformation>) =>
     projectOtherApiSecondService<CulvertStructuralInformation>().update(
-      otherSubMenu?.apiRoute || "",
-      culvertStructuralInformation?.id || "",
-      body,
-    )
+      otherSubMenu?.apiRoute || '',
+      culvertStructuralInformation?.id || '',
+      body
+    );
 
   const getPayload = (values: CulvertStructuralInformation) => ({
     data: {
@@ -66,20 +66,20 @@ const CulvertStructuralInformationDrawer = (props: CulvertStructuralInformationD
       soil_type_id: values.soil_type_id,
       id: culvertStructuralInformation?.id,
       created_at: values.created_at,
-      updated_at: values.updated_at,
+      updated_at: values.updated_at
     },
-    files: [],
-  })
+    files: []
+  });
 
-  const handleClose = () => toggle()
+  const handleClose = () => toggle();
 
   const onActionSuccess = async (
     response: IApiResponse<CulvertStructuralInformation>,
-    payload: IApiPayload<CulvertStructuralInformation>,
+    payload: IApiPayload<CulvertStructuralInformation>
   ) => {
-    refetch()
-    handleClose()
-  }
+    refetch();
+    handleClose();
+  };
 
   return (
     <CustomSideDrawer
@@ -98,20 +98,19 @@ const CulvertStructuralInformationDrawer = (props: CulvertStructuralInformationD
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...culvertStructuralInformation,
+            ...culvertStructuralInformation
           }}
           createActionFunc={isEdit ? editCulvertStructuralInformation : createCulvertStructuralInformation}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<CulvertStructuralInformation>) => {
-            return <CulvertStructuralInformationForm formik={formik} />
+            return <CulvertStructuralInformationForm formik={formik} />;
           }}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>
-  )
-}
+  );
+};
 
-export default CulvertStructuralInformationDrawer
-
+export default CulvertStructuralInformationDrawer;

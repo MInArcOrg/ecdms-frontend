@@ -1,18 +1,18 @@
-"use client"
+'use client';
 
-import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from "@mui/material"
-import type React from "react"
-import { useTranslation } from "react-i18next"
-import type { BridgeSuperStructure } from "src/types/project/other"
-import ModelAction from "src/views/components/custom/model-actions"
-import RowOptions from "src/views/shared/listing/row-options"
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
+import type React from 'react';
+import { useTranslation } from 'react-i18next';
+import type { BridgeSuperStructure } from 'src/types/project/other';
+import ModelAction from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface BridgeSuperStructureCardProps {
-  bridgeSuperStructure: BridgeSuperStructure
-  refetch: () => void
-  onEdit: (bridgeSuperStructure: BridgeSuperStructure) => void
-  onDelete: (id: string) => void
-  onDetail: (bridgeSuperStructure: BridgeSuperStructure) => void
+  bridgeSuperStructure: BridgeSuperStructure;
+  refetch: () => void;
+  onEdit: (bridgeSuperStructure: BridgeSuperStructure) => void;
+  onDelete: (id: string) => void;
+  onDetail: (bridgeSuperStructure: BridgeSuperStructure) => void;
 }
 
 const BridgeSuperStructureCard: React.FC<BridgeSuperStructureCardProps> = ({
@@ -20,9 +20,9 @@ const BridgeSuperStructureCard: React.FC<BridgeSuperStructureCardProps> = ({
   refetch,
   onEdit,
   onDelete,
-  onDetail,
+  onDetail
 }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <Card sx={{ p: 2 }}>
@@ -35,9 +35,9 @@ const BridgeSuperStructureCard: React.FC<BridgeSuperStructureCardProps> = ({
               onClick={() => onDetail(bridgeSuperStructure)}
               sx={{
                 fontWeight: 500,
-                textDecoration: "none",
-                color: "text.secondary",
-                "&:hover": { color: "primary.main" },
+                textDecoration: 'none',
+                color: 'text.secondary',
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {bridgeSuperStructure?.id.slice(0, 5)}...
@@ -54,7 +54,8 @@ const BridgeSuperStructureCard: React.FC<BridgeSuperStructureCardProps> = ({
             {t('project.other.bridge-super-structure.details.bridge-name')}: {bridgeSuperStructure?.bridge_name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-super-structure.details.bridge-structure-type')}: {bridgeSuperStructure?.bridge_structure_type_id || 'N/A'}
+            {t('project.other.bridge-super-structure.details.bridge-structure-type')}:{' '}
+            {bridgeSuperStructure?.bridge_structure_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.bridge-super-structure.details.span-number')}: {bridgeSuperStructure?.span_number || 'N/A'}
@@ -62,7 +63,7 @@ const BridgeSuperStructureCard: React.FC<BridgeSuperStructureCardProps> = ({
         </Box>
       </CardContent>
 
-      <CardActions sx={{ justifyContent: "flex-end" }}>
+      <CardActions sx={{ justifyContent: 'flex-end' }}>
         <ModelAction
           model="BridgeSuperStructure"
           model_id={bridgeSuperStructure.id}
@@ -87,6 +88,6 @@ const BridgeSuperStructureCard: React.FC<BridgeSuperStructureCardProps> = ({
         />
       </CardActions>
     </Card>
-  )
-}
-export default BridgeSuperStructureCard
+  );
+};
+export default BridgeSuperStructureCard;

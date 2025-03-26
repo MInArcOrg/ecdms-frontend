@@ -1,28 +1,22 @@
-"use client"
+'use client';
 
-import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from "@mui/material"
-import type React from "react"
-import { useTranslation } from "react-i18next"
-import type { BridgeFoundation } from "src/types/project/other"
-import ModelAction from "src/views/components/custom/model-actions"
-import RowOptions from "src/views/shared/listing/row-options"
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
+import type React from 'react';
+import { useTranslation } from 'react-i18next';
+import type { BridgeFoundation } from 'src/types/project/other';
+import ModelAction from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface BridgeFoundationCardProps {
-  bridgeFoundation: BridgeFoundation
-  refetch: () => void
-  onEdit: (bridgeFoundation: BridgeFoundation) => void
-  onDelete: (id: string) => void
-  onDetail: (bridgeFoundation: BridgeFoundation) => void
+  bridgeFoundation: BridgeFoundation;
+  refetch: () => void;
+  onEdit: (bridgeFoundation: BridgeFoundation) => void;
+  onDelete: (id: string) => void;
+  onDetail: (bridgeFoundation: BridgeFoundation) => void;
 }
 
-const BridgeFoundationCard: React.FC<BridgeFoundationCardProps> = ({
-  bridgeFoundation,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail,
-}) => {
-  const { t } = useTranslation()
+const BridgeFoundationCard: React.FC<BridgeFoundationCardProps> = ({ bridgeFoundation, refetch, onEdit, onDelete, onDetail }) => {
+  const { t } = useTranslation();
 
   return (
     <Card sx={{ p: 2 }}>
@@ -35,9 +29,9 @@ const BridgeFoundationCard: React.FC<BridgeFoundationCardProps> = ({
               onClick={() => onDetail(bridgeFoundation)}
               sx={{
                 fontWeight: 500,
-                textDecoration: "none",
-                color: "text.secondary",
-                "&:hover": { color: "primary.main" },
+                textDecoration: 'none',
+                color: 'text.secondary',
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {bridgeFoundation?.id.slice(0, 5)}...
@@ -48,21 +42,21 @@ const BridgeFoundationCard: React.FC<BridgeFoundationCardProps> = ({
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t("project.other.bridge-foundation.details.name")}: {bridgeFoundation?.name || "N/A"}
+            {t('project.other.bridge-foundation.details.name')}: {bridgeFoundation?.name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("project.other.bridge-foundation.details.bridge-name")}: {bridgeFoundation?.bridge_name || "N/A"}
+            {t('project.other.bridge-foundation.details.bridge-name')}: {bridgeFoundation?.bridge_name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("project.other.bridge-foundation.details.abutment-type-id")}: {bridgeFoundation?.abutment_type_id || "N/A"}
+            {t('project.other.bridge-foundation.details.abutment-type-id')}: {bridgeFoundation?.abutment_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("project.other.bridge-foundation.details.soil-type-id")}: {bridgeFoundation?.soil_type_id || "N/A"}
+            {t('project.other.bridge-foundation.details.soil-type-id')}: {bridgeFoundation?.soil_type_id || 'N/A'}
           </Typography>
         </Box>
       </CardContent>
 
-      <CardActions sx={{ justifyContent: "flex-end" }}>
+      <CardActions sx={{ justifyContent: 'flex-end' }}>
         <ModelAction
           model="BridgeFoundation"
           model_id={bridgeFoundation.id}
@@ -73,12 +67,12 @@ const BridgeFoundationCard: React.FC<BridgeFoundationCardProps> = ({
         />
         <RowOptions
           deletePermissionRule={{
-            action: "delete",
-            subject: "bridgefoundation",
+            action: 'delete',
+            subject: 'bridgefoundation'
           }}
           editPermissionRule={{
-            action: "update",
-            subject: "bridgefoundation",
+            action: 'update',
+            subject: 'bridgefoundation'
           }}
           onEdit={() => onEdit(bridgeFoundation)}
           onDelete={() => onDelete(bridgeFoundation.id)}
@@ -87,7 +81,6 @@ const BridgeFoundationCard: React.FC<BridgeFoundationCardProps> = ({
         />
       </CardActions>
     </Card>
-  )
-}
-export default BridgeFoundationCard
-
+  );
+};
+export default BridgeFoundationCard;

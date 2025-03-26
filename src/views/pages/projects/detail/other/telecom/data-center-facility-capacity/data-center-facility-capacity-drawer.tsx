@@ -47,7 +47,11 @@ const DataCenterFacilityCapacityDrawer = (props: DataCenterFacilityCapacityDrawe
     projectOtherApiSecondService<DataCenterFacilityCapacity>().create(otherSubMenu?.apiRoute || '', body);
 
   const editDataCenterFacilityCapacity = async (body: IApiPayload<DataCenterFacilityCapacity>) =>
-    projectOtherApiSecondService<DataCenterFacilityCapacity>().update(otherSubMenu?.apiRoute || '', dataCenterFacilityCapacity?.id || '', body);
+    projectOtherApiSecondService<DataCenterFacilityCapacity>().update(
+      otherSubMenu?.apiRoute || '',
+      dataCenterFacilityCapacity?.id || '',
+      body
+    );
 
   const getPayload = (values: DataCenterFacilityCapacity) => ({
     data: {
@@ -69,14 +73,18 @@ const DataCenterFacilityCapacityDrawer = (props: DataCenterFacilityCapacityDrawe
 
   return (
     <CustomSideDrawer
-      title={`project.other.data-center-facility-capacity.${isEdit ? `edit-data-center-facility-capacity` : `create-data-center-facility-capacity`}`}
+      title={`project.other.data-center-facility-capacity.${
+        isEdit ? `edit-data-center-facility-capacity` : `create-data-center-facility-capacity`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.data-center-facility-capacity.${isEdit ? `edit-data-center-facility-capacity` : `create-data-center-facility-capacity`}`}
+          title={`project.other.data-center-facility-capacity.${
+            isEdit ? `edit-data-center-facility-capacity` : `create-data-center-facility-capacity`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
@@ -97,7 +105,9 @@ const DataCenterFacilityCapacityDrawer = (props: DataCenterFacilityCapacityDrawe
           onCancel={handleClose}
         >
           {(formik: FormikProps<DataCenterFacilityCapacity>) => {
-            return <DataCenterFacilityCapacityForm projectId={projectId} file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
+            return (
+              <DataCenterFacilityCapacityForm projectId={projectId} file={uploadableFile} onFileChange={onFileChange} formik={formik} />
+            );
           }}
         </FormPageWrapper>
       )}

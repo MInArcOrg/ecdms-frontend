@@ -57,7 +57,8 @@ const DataCenterComponentAgeCard: React.FC<DataCenterComponentAgeCardProps> = ({
             {t('project.other.data-center-component-age.details.storage-devices')}: {dataCenterComponentAge?.storage_devices || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.data-center-component-age.details.networking-equipment')}: {dataCenterComponentAge?.networking_equipment || 'N/A'}
+            {t('project.other.data-center-component-age.details.networking-equipment')}:{' '}
+            {dataCenterComponentAge?.networking_equipment || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.data-center-component-age.details.cooling-systems')}: {dataCenterComponentAge?.cooling_systems || 'N/A'}

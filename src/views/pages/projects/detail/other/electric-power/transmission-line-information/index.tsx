@@ -22,19 +22,13 @@ interface TransmissionLineInformationListProps {
   projectId: string;
 }
 
-const TransmissionLineInformationList: React.FC<TransmissionLineInformationListProps> = ({
-  otherSubMenu,
-  projectId,
-  typeId
-}) => {
+const TransmissionLineInformationList: React.FC<TransmissionLineInformationListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<TransmissionLineInformation | null>(null);
   const { t } = useTranslation();
 
-  const fetchTransmissionLineInformations = (
-    params: GetRequestParam
-  ): Promise<IApiResponse<TransmissionLineInformation[]>> => {
+  const fetchTransmissionLineInformations = (params: GetRequestParam): Promise<IApiResponse<TransmissionLineInformation[]>> => {
     return projectOtherApiSecondService<TransmissionLineInformation>().getAll(otherSubMenu?.apiRoute || '', {
       ...params,
       filter: { ...params.filter }
@@ -68,10 +62,7 @@ const TransmissionLineInformationList: React.FC<TransmissionLineInformationListP
   };
 
   const handleDelete = async (transmissionLineInformationId: string) => {
-    await projectOtherApiSecondService<TransmissionLineInformation>().delete(
-      otherSubMenu?.apiRoute || '',
-      transmissionLineInformationId
-    );
+    await projectOtherApiSecondService<TransmissionLineInformation>().delete(otherSubMenu?.apiRoute || '', transmissionLineInformationId);
     refetch();
   };
 
@@ -83,59 +74,55 @@ const TransmissionLineInformationList: React.FC<TransmissionLineInformationListP
   const mapTransmissionLineInformationToDetailItems = (
     transmissionLineInformation: TransmissionLineInformation
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.transmission-line-information.details.name'),
-        value: transmissionLineInformation?.name || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.transmission-voltage'),
-        value: transmissionLineInformation?.transmission_voltage?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.transmission-line-route-length'),
-        value: transmissionLineInformation?.transmission_line_route_length?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.circuit-number'),
-        value: transmissionLineInformation?.circuit_number?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.starting-point-northing'),
-        value: transmissionLineInformation?.starting_point_northing?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.starting-point-easting'),
-        value: transmissionLineInformation?.starting_point_easting?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.ending-point-northing'),
-        value: transmissionLineInformation?.ending_point_northing?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.ending-point-easting'),
-        value: transmissionLineInformation?.ending_point_easting?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.lifetime'),
-        value: transmissionLineInformation?.lifetime?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.remark'),
-        value: transmissionLineInformation?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: transmissionLineInformation?.created_at
-          ? formatCreatedAt(transmissionLineInformation.created_at)
-          : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: transmissionLineInformation?.updated_at
-          ? formatCreatedAt(transmissionLineInformation.updated_at)
-          : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.transmission-line-information.details.name'),
+      value: transmissionLineInformation?.name || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.transmission-voltage'),
+      value: transmissionLineInformation?.transmission_voltage?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.transmission-line-route-length'),
+      value: transmissionLineInformation?.transmission_line_route_length?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.circuit-number'),
+      value: transmissionLineInformation?.circuit_number?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.starting-point-northing'),
+      value: transmissionLineInformation?.starting_point_northing?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.starting-point-easting'),
+      value: transmissionLineInformation?.starting_point_easting?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.ending-point-northing'),
+      value: transmissionLineInformation?.ending_point_northing?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.ending-point-easting'),
+      value: transmissionLineInformation?.ending_point_easting?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.lifetime'),
+      value: transmissionLineInformation?.lifetime?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.remark'),
+      value: transmissionLineInformation?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: transmissionLineInformation?.created_at ? formatCreatedAt(transmissionLineInformation.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: transmissionLineInformation?.updated_at ? formatCreatedAt(transmissionLineInformation.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>
