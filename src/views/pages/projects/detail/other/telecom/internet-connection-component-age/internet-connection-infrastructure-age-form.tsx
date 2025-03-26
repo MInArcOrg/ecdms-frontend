@@ -18,7 +18,11 @@ interface InternetConnectionInfrastructureAgeFormProps {
   projectId: string;
 }
 
-const InternetConnectionInfrastructureAgeForm: React.FC<InternetConnectionInfrastructureAgeFormProps> = ({ projectId, file, onFileChange }) => {
+const InternetConnectionInfrastructureAgeForm: React.FC<InternetConnectionInfrastructureAgeFormProps> = ({
+  projectId,
+  file,
+  onFileChange
+}) => {
   const { t: transl } = useTranslation();
 
   const { data: internetConnections } = useQuery({

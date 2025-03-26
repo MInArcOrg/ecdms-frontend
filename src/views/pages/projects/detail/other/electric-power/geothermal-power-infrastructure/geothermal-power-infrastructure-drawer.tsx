@@ -83,14 +83,18 @@ const GeothermalPowerInfrastructureDrawer = (props: GeothermalPowerInfrastructur
 
   return (
     <CustomSideDrawer
-      title={`project.other.geothermal-power-infrastructure.${isEdit ? `edit-geothermal-power-infrastructure` : `create-geothermal-power-infrastructure`}`}
+      title={`project.other.geothermal-power-infrastructure.${
+        isEdit ? `edit-geothermal-power-infrastructure` : `create-geothermal-power-infrastructure`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.geothermal-power-infrastructure.${isEdit ? `edit-geothermal-power-infrastructure` : `create-geothermal-power-infrastructure`}`}
+          title={`project.other.geothermal-power-infrastructure.${
+            isEdit ? `edit-geothermal-power-infrastructure` : `create-geothermal-power-infrastructure`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={initialValues}

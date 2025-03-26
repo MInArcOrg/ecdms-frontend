@@ -59,7 +59,10 @@ const InternetConnectionInfrastructureAgeDrawer = (props: InternetConnectionInfr
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<InternetConnectionInfrastructureAge>, payload: IApiPayload<InternetConnectionInfrastructureAge>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<InternetConnectionInfrastructureAge>,
+    payload: IApiPayload<InternetConnectionInfrastructureAge>
+  ) => {
     if (payload.files.length > 0) {
       uploadFile(payload.files[0], uploadableProjectFileTypes.other.internetConnectionInfrastructureAge, response.payload.id, '', '');
     }
@@ -69,14 +72,18 @@ const InternetConnectionInfrastructureAgeDrawer = (props: InternetConnectionInfr
 
   return (
     <CustomSideDrawer
-      title={`project.other.internet-connection-infrastructure-age.${isEdit ? `edit-internet-connection-infrastructure-age` : `create-internet-connection-infrastructure-age`}`}
+      title={`project.other.internet-connection-infrastructure-age.${
+        isEdit ? `edit-internet-connection-infrastructure-age` : `create-internet-connection-infrastructure-age`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.internet-connection-infrastructure-age.${isEdit ? `edit-internet-connection-infrastructure-age` : `create-internet-connection-infrastructure-age`}`}
+          title={`project.other.internet-connection-infrastructure-age.${
+            isEdit ? `edit-internet-connection-infrastructure-age` : `create-internet-connection-infrastructure-age`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
@@ -94,7 +101,12 @@ const InternetConnectionInfrastructureAgeDrawer = (props: InternetConnectionInfr
         >
           {(formik: FormikProps<InternetConnectionInfrastructureAge>) => {
             return (
-              <InternetConnectionInfrastructureAgeForm projectId={projectId} file={uploadableFile} onFileChange={onFileChange} formik={formik} />
+              <InternetConnectionInfrastructureAgeForm
+                projectId={projectId}
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+              />
             );
           }}
         </FormPageWrapper>

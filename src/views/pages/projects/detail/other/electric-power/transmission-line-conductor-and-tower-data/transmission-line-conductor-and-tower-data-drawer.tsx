@@ -1,17 +1,15 @@
 "use client"
-
 import type { FormikProps } from "formik"
 import type { IApiPayload, IApiResponse } from "src/types/requests"
 import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
 import FormPageWrapper from "src/views/shared/form/form-wrapper"
 import * as yup from "yup"
 import TransmissionLineConductorAndTowerDataForm from "./transmission-line-conductor-and-tower-data-form"
-
 import { useState } from "react"
 import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
 import { uploadFile } from "src/services/utils/file-utils"
-import type { TransmissionLineConductorAndTowerData, TransmissionLineInformation } from "src/types/project/other"
+import type { TransmissionLineConductorAndTowerData, TransmissionLine } from "src/types/project/other"
 import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
 
 interface TransmissionLineConductorAndTowerDataDrawerType {
@@ -21,7 +19,7 @@ interface TransmissionLineConductorAndTowerDataDrawerType {
   transmissionLineConductorAndTowerData: TransmissionLineConductorAndTowerData
   projectId: string
   otherSubMenu?: OtherMenuRoute
-  transmissionLines: TransmissionLineInformation[]
+  transmissionLines: TransmissionLine[]
 }
 
 const TransmissionLineConductorAndTowerDataDrawer = (props: TransmissionLineConductorAndTowerDataDrawerType) => {
@@ -34,10 +32,10 @@ const TransmissionLineConductorAndTowerDataDrawer = (props: TransmissionLineCond
   }
 
   const validationSchema = yup.object().shape({
-    transmission_line_id: yup.string().required("Transmission Line ID is required"),
+    transmission_line_id: yup.string().required("Transmission Line is required"),
     name: yup.string().required("Name is required"),
     conductor_type: yup.string().nullable(),
-    conductor_code_name_id: yup.string().required("Conductor Code Name ID is required"),
+    conductor_code_name_id: yup.string().required("Conductor Code Name is required"),
     strands_number: yup
       .number()
       .nullable()
@@ -52,7 +50,7 @@ const TransmissionLineConductorAndTowerDataDrawer = (props: TransmissionLineCond
       .nullable()
       .integer("Must be an integer")
       .transform((value) => (isNaN(value) ? null : value)),
-    tower_type_id: yup.string().required("Tower Type ID is required"),
+    tower_type_id: yup.string().required("Tower Type is required"),
     tower_height: yup
       .number()
       .nullable()
@@ -65,7 +63,7 @@ const TransmissionLineConductorAndTowerDataDrawer = (props: TransmissionLineCond
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value)),
-    tower_foundation_type_id: yup.string().required("Tower Foundation Type ID is required"),
+    tower_foundation_type_id: yup.string().required("Tower Foundation Type is required"),
     other_equipment: yup.string().nullable(),
     remark: yup.string().nullable(),
   })

@@ -1,17 +1,17 @@
-"use client"
+'use client';
 
-import { useRouter } from "next/router"
-import ProjectOtherLayout from "src/views/pages/projects/detail/other/layouts/project-other-layout"
-import GeotechnicalInformationList from "src/views/pages/projects/detail/other/road/geotechnical-information"
-import subMenuItems, { findOtherSubMenu } from "../(subMenuItems)"
+import { useRouter } from 'next/router';
+import ProjectOtherLayout from 'src/views/pages/projects/detail/other/layouts/project-other-layout';
+import GeotechnicalInformationList from 'src/views/pages/projects/detail/other/road/geotechnical-information';
+import subMenuItems, { findOtherSubMenu } from '../(subMenuItems)';
 
 function Index() {
-  const router = useRouter()
-  const { id, typeId } = router.query
-  const baseUrl = `/projects/${typeId}/details/${id}/other`
-  const activeMenu = 8
-  const activeType = 2 
-  const activeSubType = 47
+  const router = useRouter();
+  const { id, typeId } = router.query;
+  const baseUrl = `/projects/${typeId}/details/${id}/other`;
+  const activeMenu = 8;
+  const activeType = 2;
+  const activeSubType = 47;
 
   return (
     <ProjectOtherLayout
@@ -27,13 +27,12 @@ function Index() {
         typeId={String(typeId)}
       />
     </ProjectOtherLayout>
-  )
+  );
 }
 
 Index.acl = {
-  action: "view_other",
-  subject: "other",
-}
+  action: 'view_other',
+  subject: 'other'
+};
 
-export default Index
-
+export default Index;

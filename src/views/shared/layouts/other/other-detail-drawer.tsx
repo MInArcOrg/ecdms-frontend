@@ -43,7 +43,11 @@ const OtherDetailSidebar: React.FC<OtherDetailSidebarProps> = ({ show, toggleDra
                   }}
                 >
                   <strong>{t(item.title)}:</strong>
-                  {item.title === 'Description' && typeof item.value === 'string' ? <DescCollapse desc={item.value} /> : <span>{item.value}</span>}
+                  {item.title === 'Description' && typeof item.value === 'string' ? (
+                    <DescCollapse desc={item.value} />
+                  ) : (
+                    <span>{item.value}</span>
+                  )}
                 </Typography>
               </FormControl>
             ))}

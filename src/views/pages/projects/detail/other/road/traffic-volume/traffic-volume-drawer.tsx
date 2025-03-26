@@ -1,58 +1,54 @@
-import type { FormikProps } from "formik"
-import type { IApiPayload, IApiResponse } from "src/types/requests"
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
-import FormPageWrapper from "src/views/shared/form/form-wrapper"
-import * as yup from "yup"
-import TrafficVolumeForm from "./traffic-volume-form"
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import TrafficVolumeForm from './traffic-volume-form';
 
-import projectOtherApiSecondService from "src/services/project/project-other-second-service"
-import type { TrafficVolume } from "src/types/project/other"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import type { TrafficVolume } from 'src/types/project/other';
+import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
 
 interface TrafficVolumeDrawerType {
-  open: boolean
-  toggle: () => void
-  refetch: () => void
-  trafficVolume: TrafficVolume
-  projectId: string
-  otherSubMenu?: OtherMenuRoute
+  open: boolean;
+  toggle: () => void;
+  refetch: () => void;
+  trafficVolume: TrafficVolume;
+  projectId: string;
+  otherSubMenu?: OtherMenuRoute;
 }
 
 const TrafficVolumeDrawer = (props: TrafficVolumeDrawerType) => {
-  const { open, toggle, refetch, trafficVolume, projectId, otherSubMenu } = props
+  const { open, toggle, refetch, trafficVolume, projectId, otherSubMenu } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    count_type_id: yup.string().required("Count type is required"),
-  })
+    name: yup.string().required('Name is required'),
+    count_type_id: yup.string().required('Count type is required')
+  });
 
-  const isEdit = Boolean(trafficVolume?.id)
+  const isEdit = Boolean(trafficVolume?.id);
 
   const createTrafficVolume = async (body: IApiPayload<TrafficVolume>) =>
-    projectOtherApiSecondService<TrafficVolume>().create(otherSubMenu?.apiRoute || "", body)
+    projectOtherApiSecondService<TrafficVolume>().create(otherSubMenu?.apiRoute || '', body);
 
   const editTrafficVolume = async (body: IApiPayload<TrafficVolume>) =>
-    projectOtherApiSecondService<TrafficVolume>().update(
-      otherSubMenu?.apiRoute || "",
-      trafficVolume?.id || "",
-      body,
-    )
+    projectOtherApiSecondService<TrafficVolume>().update(otherSubMenu?.apiRoute || '', trafficVolume?.id || '', body);
 
   const getPayload = (values: TrafficVolume): IApiPayload<TrafficVolume> => ({
     data: {
       ...values,
       project_id: projectId,
-      id: trafficVolume?.id,
+      id: trafficVolume?.id
     } as TrafficVolume,
-    files: [],
-  })
+    files: []
+  });
 
-  const handleClose = () => toggle()
+  const handleClose = () => toggle();
 
   const onActionSuccess = async (response: IApiResponse<TrafficVolume>, payload: IApiPayload<TrafficVolume>) => {
-    refetch()
-    handleClose()
-  }
+    refetch();
+    handleClose();
+  };
 
   return (
     <CustomSideDrawer
@@ -67,19 +63,19 @@ const TrafficVolumeDrawer = (props: TrafficVolumeDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...trafficVolume,
+            ...trafficVolume
           }}
           createActionFunc={isEdit ? editTrafficVolume : createTrafficVolume}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<TrafficVolume>) => {
-            return <TrafficVolumeForm formik={formik} />
+            return <TrafficVolumeForm formik={formik} />;
           }}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>
-  )
-}
+  );
+};
 
-export default TrafficVolumeDrawer
+export default TrafficVolumeDrawer;

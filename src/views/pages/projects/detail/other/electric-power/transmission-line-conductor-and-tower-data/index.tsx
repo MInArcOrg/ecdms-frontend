@@ -11,7 +11,7 @@ import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/ot
 import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
 import { defaultCreateActionConfig } from "src/types/general/listing"
-import type { TransmissionLineConductorAndTowerData, TransmissionLineInformation } from "src/types/project/other"
+import type { TransmissionLineConductorAndTowerData, TransmissionLine } from "src/types/project/other"
 import type { GetRequestParam, IApiResponse } from "src/types/requests"
 import { formatCreatedAt } from "src/utils/formatter/date"
 import ItemsListing from "src/views/shared/listing"
@@ -36,7 +36,7 @@ const TransmissionLineConductorAndTowerDataList: React.FC<TransmissionLineConduc
   const { data: transmissionLines } = useQuery({
     queryKey: ["transmission-lines", projectId],
     queryFn: () =>
-        projectOtherApiSecondService<TransmissionLineInformation>().getAll("transmission-lines", {
+        projectOtherApiSecondService<TransmissionLine>().getAll("transmission-lines", {
           filter: { project_id: projectId },
         }),
   })

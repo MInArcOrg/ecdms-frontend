@@ -5,7 +5,7 @@ import type { FormikProps } from "formik"
 import type React from "react"
 import { useTranslation } from "react-i18next"
 import { gridSpacing } from "src/configs/app-constants"
-import type { TransmissionLineConductorAndTowerData, TransmissionLineInformation } from "src/types/project/other"
+import type { TransmissionLineConductorAndTowerData, TransmissionLine } from "src/types/project/other"
 import CustomTextBox from "src/views/shared/form/custom-text-box"
 import CustomFileUpload from "src/views/shared/form/custome-file-selector"
 import CustomSelect from "src/views/shared/form/custom-select"
@@ -17,7 +17,7 @@ interface TransmissionLineConductorAndTowerDataFormProps {
   formik: FormikProps<TransmissionLineConductorAndTowerData>
   file: File | null
   onFileChange: (file: File | null) => void
-  transmissionLines: TransmissionLineInformation[]
+  transmissionLines: TransmissionLine[]
 }
 
 const TransmissionLineConductorAndTowerDataForm: React.FC<TransmissionLineConductorAndTowerDataFormProps> = ({ formik, file, onFileChange, transmissionLines }) => {
@@ -44,7 +44,7 @@ const TransmissionLineConductorAndTowerDataForm: React.FC<TransmissionLineConduc
   
   // Fetch tower foundation types for dropdown
   const { data: towerFoundationTypes } = useQuery({
-    queryKey: ["tower-types"],
+    queryKey: ["tower-foundation-types"],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll({
         filter: { model: projectMasterModels.towerFoundationType.model },
@@ -117,9 +117,9 @@ const TransmissionLineConductorAndTowerDataForm: React.FC<TransmissionLineConduc
               size="small"
               sx={{ mb: 2 }}
               options={
-                conductorCodeNames?.map((code: any) => ({
-                  label: code.name,
-                  value: code.id,
+                conductorCodeNames?.payload.map((type) => ({
+                  label: type.title,
+                  value: type.id
                 })) || []
               }
             />
@@ -208,7 +208,7 @@ const TransmissionLineConductorAndTowerDataForm: React.FC<TransmissionLineConduc
               size="small"
               sx={{ mb: 2 }}
               options={
-                towerTypes?.map((type: any) => ({
+                towerTypes?.payload.map((type: any) => ({
                   label: type.title,
                   value: type.id,
                 })) || []
@@ -239,8 +239,8 @@ const TransmissionLineConductorAndTowerDataForm: React.FC<TransmissionLineConduc
               size="small"
               sx={{ mb: 2 }}
               options={
-                towerFoundationTypes?.map((type: any) => ({
-                  label: type.name,
+                towerFoundationTypes?.payload.map((type: any) => ({
+                  label: type.title,
                   value: type.id,
                 })) || []
               }

@@ -22,13 +22,19 @@ interface InternetConnectionInfrastructureAgeListProps {
   projectId: string;
 }
 
-const InternetConnectionInfrastructureAgeList: React.FC<InternetConnectionInfrastructureAgeListProps> = ({ otherSubMenu, projectId, typeId }) => {
+const InternetConnectionInfrastructureAgeList: React.FC<InternetConnectionInfrastructureAgeListProps> = ({
+  otherSubMenu,
+  projectId,
+  typeId
+}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<InternetConnectionInfrastructureAge | null>(null);
   const { t } = useTranslation();
 
-  const fetchInternetConnectionInfrastructureAges = (params: GetRequestParam): Promise<IApiResponse<InternetConnectionInfrastructureAge[]>> => {
+  const fetchInternetConnectionInfrastructureAges = (
+    params: GetRequestParam
+  ): Promise<IApiResponse<InternetConnectionInfrastructureAge[]>> => {
     return projectOtherApiSecondService<InternetConnectionInfrastructureAge>().getAll(otherSubMenu?.apiRoute || '', {
       ...params,
       filter: { ...params.filter }
@@ -62,7 +68,10 @@ const InternetConnectionInfrastructureAgeList: React.FC<InternetConnectionInfras
   };
 
   const handleDelete = async (internetConnectionInfrastructureAgeId: string) => {
-    await projectOtherApiSecondService<InternetConnectionInfrastructureAge>().delete(otherSubMenu?.apiRoute || '', internetConnectionInfrastructureAgeId);
+    await projectOtherApiSecondService<InternetConnectionInfrastructureAge>().delete(
+      otherSubMenu?.apiRoute || '',
+      internetConnectionInfrastructureAgeId
+    );
     refetch();
   };
 
@@ -74,39 +83,39 @@ const InternetConnectionInfrastructureAgeList: React.FC<InternetConnectionInfras
   const mapInternetConnectionInfrastructureAgeToDetailItems = (
     internetConnectionInfrastructureAge: InternetConnectionInfrastructureAge
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.internet-connection-infrastructure-age.details.internet-connection-id'),
-        value: internetConnectionInfrastructureAge?.internet_connection_id || 'N/A'
-      },
-      {
-        title: t('project.other.internet-connection-infrastructure-age.details.routers'),
-        value: internetConnectionInfrastructureAge?.routers?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.internet-connection-infrastructure-age.details.switches'),
-        value: internetConnectionInfrastructureAge?.switches?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.internet-connection-infrastructure-age.details.modems'),
-        value: internetConnectionInfrastructureAge?.modems?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.internet-connection-infrastructure-age.details.cables'),
-        value: internetConnectionInfrastructureAge?.cables?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.internet-connection-infrastructure-age.details.others'),
-        value: internetConnectionInfrastructureAge?.others || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: internetConnectionInfrastructureAge?.created_at ? formatCreatedAt(internetConnectionInfrastructureAge.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: internetConnectionInfrastructureAge?.updated_at ? formatCreatedAt(internetConnectionInfrastructureAge.updated_at) : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.internet-connection-infrastructure-age.details.internet-connection-id'),
+      value: internetConnectionInfrastructureAge?.internet_connection_id || 'N/A'
+    },
+    {
+      title: t('project.other.internet-connection-infrastructure-age.details.routers'),
+      value: internetConnectionInfrastructureAge?.routers?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.internet-connection-infrastructure-age.details.switches'),
+      value: internetConnectionInfrastructureAge?.switches?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.internet-connection-infrastructure-age.details.modems'),
+      value: internetConnectionInfrastructureAge?.modems?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.internet-connection-infrastructure-age.details.cables'),
+      value: internetConnectionInfrastructureAge?.cables?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.internet-connection-infrastructure-age.details.others'),
+      value: internetConnectionInfrastructureAge?.others || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: internetConnectionInfrastructureAge?.created_at ? formatCreatedAt(internetConnectionInfrastructureAge.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: internetConnectionInfrastructureAge?.updated_at ? formatCreatedAt(internetConnectionInfrastructureAge.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

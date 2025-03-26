@@ -50,34 +50,43 @@ const TransmissionLineInformationCard: React.FC<TransmissionLineInformationCardP
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line-information.details.transmission-voltage')}: {transmissionLineInformation?.transmission_voltage?.toString() || 'N/A'}
+            {t('project.other.transmission-line-information.details.transmission-voltage')}:{' '}
+            {transmissionLineInformation?.transmission_voltage?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line-information.details.transmission-line-route-length')}: {transmissionLineInformation?.transmission_line_route_length?.toString() || 'N/A'}
+            {t('project.other.transmission-line-information.details.transmission-line-route-length')}:{' '}
+            {transmissionLineInformation?.transmission_line_route_length?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line-information.details.circuit-number')}: {transmissionLineInformation?.circuit_number?.toString() || 'N/A'}
+            {t('project.other.transmission-line-information.details.circuit-number')}:{' '}
+            {transmissionLineInformation?.circuit_number?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line-information.details.starting-point-northing')}: {transmissionLineInformation?.starting_point_northing?.toString() || 'N/A'}
+            {t('project.other.transmission-line-information.details.starting-point-northing')}:{' '}
+            {transmissionLineInformation?.starting_point_northing?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line-information.details.starting-point-easting')}: {transmissionLineInformation?.starting_point_easting?.toString() || 'N/A'}
+            {t('project.other.transmission-line-information.details.starting-point-easting')}:{' '}
+            {transmissionLineInformation?.starting_point_easting?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line-information.details.ending-point-northing')}: {transmissionLineInformation?.ending_point_northing?.toString() || 'N/A'}
+            {t('project.other.transmission-line-information.details.ending-point-northing')}:{' '}
+            {transmissionLineInformation?.ending_point_northing?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line-information.details.ending-point-easting')}: {transmissionLineInformation?.ending_point_easting?.toString() || 'N/A'}
+            {t('project.other.transmission-line-information.details.ending-point-easting')}:{' '}
+            {transmissionLineInformation?.ending_point_easting?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.transmission-line-information.details.lifetime')}: {transmissionLineInformation?.lifetime?.toString() || 'N/A'}
+            {t('project.other.transmission-line-information.details.lifetime')}:{' '}
+            {transmissionLineInformation?.lifetime?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.transmission-line-information.details.remark')}: {transmissionLineInformation?.remark || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {transmissionLineInformation?.created_at ? formatCreatedAt(transmissionLineInformation.created_at) : 'N/A'}
+            {t('common.table-columns.created-at')}:{' '}
+            {transmissionLineInformation?.created_at ? formatCreatedAt(transmissionLineInformation.created_at) : 'N/A'}
           </Typography>
         </Box>
       </CardContent>

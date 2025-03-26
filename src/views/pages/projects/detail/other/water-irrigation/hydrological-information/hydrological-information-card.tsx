@@ -53,10 +53,12 @@ const HydrologicalInformationCard: React.FC<HydrologicalInformationCardProps> = 
             {t('project.other.hydrological-information.details.water-source')}: {hydrologicalInformation?.water_source || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.hydrological-information.details.catchment-area')}: {hydrologicalInformation?.catchment_area?.toString() || 'N/A'}
+            {t('project.other.hydrological-information.details.catchment-area')}:{' '}
+            {hydrologicalInformation?.catchment_area?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.hydrological-information.details.elevation-change')}: {hydrologicalInformation?.elevation_change?.toString() || 'N/A'}
+            {t('project.other.hydrological-information.details.elevation-change')}:{' '}
+            {hydrologicalInformation?.elevation_change?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.hydrological-information.details.head')}: {hydrologicalInformation?.head?.toString() || 'N/A'}
@@ -65,7 +67,8 @@ const HydrologicalInformationCard: React.FC<HydrologicalInformationCardProps> = 
             {t('project.other.hydrological-information.details.total-inflow')}: {hydrologicalInformation?.total_inflow?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.hydrological-information.details.active-storage-volume')}: {hydrologicalInformation?.active_storage_volume?.toString() || 'N/A'}
+            {t('project.other.hydrological-information.details.active-storage-volume')}:{' '}
+            {hydrologicalInformation?.active_storage_volume?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.hydrological-information.details.water-stored')}: {hydrologicalInformation?.water_stored?.toString() || 'N/A'}
@@ -74,7 +77,8 @@ const HydrologicalInformationCard: React.FC<HydrologicalInformationCardProps> = 
             {t('project.other.hydrological-information.details.remark')}: {hydrologicalInformation?.remark || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {hydrologicalInformation?.created_at ? formatCreatedAt(hydrologicalInformation.created_at) : 'N/A'}
+            {t('common.table-columns.created-at')}:{' '}
+            {hydrologicalInformation?.created_at ? formatCreatedAt(hydrologicalInformation.created_at) : 'N/A'}
           </Typography>
         </Box>
       </CardContent>

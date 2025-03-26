@@ -510,7 +510,95 @@ export const projectMasterModels = {
     createTitle: 'create-conductor-code-name',
     editTitle: 'edit-conductor-code-name',
     fileType: 'CONDUCTOR_CODE_NAME'
-  }
+  },
+  batteryType: {
+    model: 'BatteryType',
+    dbModel: 'batterytype',
+    title: 'battery-types',
+    createTitle: 'create-battery-type',
+    editTitle: 'edit-battery-type',
+    fileType: 'BATTERY_TYPE'
+  },
+  towerFoundationType: {
+    model: 'TowerFoundationType',
+    dbModel: 'towerfoundationtype',
+    title: 'tower-foundation-types',
+    createTitle: 'create-tower-foundation-type',
+    editTitle: 'edit-tower-foundation-type',
+    fileType: 'TOWER_FOUNDATION_TYPE'
+  },
+  switchgearType: {
+    model: 'SwitchgearType',
+    dbModel: 'switchgeartype',
+    title: 'switchgear-types',
+    createTitle: 'create-switchgear-type',
+    editTitle: 'edit-switchgear-type',
+    fileType: 'SWITCHGEAR_TYPE'
+  },
+  circuitBreakerType: {
+    model: 'CircuitBreakerType',
+    dbModel: 'circuitbreakertype',
+    title: 'circuit-breaker-types',
+    createTitle: 'create-circuit-breaker-type',
+    editTitle: 'edit-circuit-breaker-type',
+    fileType: 'CIRCUIT_BREAKER_TYPE'
+  },
+  substationCommunicationSystem: {
+    model: 'SubstationCommunicationSystem',
+    dbModel: 'substationcommunicationsystem',
+    title: 'substation-communication-systems',
+    createTitle: 'create-substation-communication-system',
+    editTitle: 'edit-substation-communication-system',
+    fileType: 'SUBSTATION_COMMUNICATION_SYSTEM'
+  },
+  transformerType: {
+    model: 'TransformerType',
+    dbModel: 'transformertype',
+    title: 'transformer-types',
+    createTitle: 'create-transformer-type',
+    editTitle: 'edit-transformer-type',
+    fileType: 'TRANSFORMER_TYPE'
+  },
+  substationGroundingSystem: {
+    model: 'SubstationGroundingSystem',
+    dbModel: 'substationgroundingsystem',
+    title: 'substation-grounding-systems',
+    createTitle: 'create-substation-grounding-system',
+    editTitle: 'edit-substation-grounding-system',
+    fileType: 'SUBSTATION_GROUNDING_SYSTEM'
+  },
+  distributionLineType: {
+    model: 'DistributionLineType',
+    dbModel: 'distributionlinetype',
+    title: 'distribution-line-types',
+    createTitle: 'create-distribution-line-type',
+    editTitle: 'edit-distribution-line-type',
+    fileType: 'DISTRIBUTION_LINE_TYPE'
+  },
+  privacyMeasuresType: {
+    model: 'PrivacyMeasuresType',
+    dbModel: 'privacymeasurestype',
+    title: 'privacy-measures-types',
+    createTitle: 'create-privacy-measures-type',
+    editTitle: 'edit-privacy-measures-type',
+    fileType: 'PRIVACY_MEASURES_TYPE'
+  },
+  protectionInstalled: {
+    model: 'ProtectionInstalled',
+    dbModel: 'protectioninstalled',
+    title: 'protection-installed',
+    createTitle: 'create-protection-installed',
+    editTitle: 'edit-protection-installed',
+    fileType: 'PROTECTION_INSTALLED'
+  },
+  fireExtinguishingTechnology: {
+    model: 'FireExtinguishingTechnology',
+    dbModel: 'fireextinguishingtechnology',
+    title: 'fire-extinguishing-technologies',
+    createTitle: 'create-fire-extinguishing-technology',
+    editTitle: 'edit-fire-extinguishing-technology',
+    fileType: 'FIRE_EXTINGUISHING_TECHNOLOGY'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

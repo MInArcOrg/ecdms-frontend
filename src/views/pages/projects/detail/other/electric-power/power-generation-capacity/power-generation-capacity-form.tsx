@@ -34,8 +34,6 @@ const PowerGenerationCapacityForm: React.FC<PowerGenerationCapacityFormProps> = 
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-    
-
         <CustomSelect
           fullWidth
           label={transl('project.other.power-generation-capacity.details.owner')}
@@ -116,7 +114,6 @@ const PowerGenerationCapacityForm: React.FC<PowerGenerationCapacityFormProps> = 
           </Grid>
         </Grid>
 
-    
         <CustomTextBox
           fullWidth
           label={transl('project.other.power-generation-capacity.details.others')}

@@ -15,7 +15,13 @@ interface DataCenterFacilityCapacityCardProps {
   onDetail: (dataCenterFacilityCapacity: DataCenterFacilityCapacity) => void;
 }
 
-const DataCenterFacilityCapacityCard: React.FC<DataCenterFacilityCapacityCardProps> = ({ dataCenterFacilityCapacity, refetch, onEdit, onDelete, onDetail }) => {
+const DataCenterFacilityCapacityCard: React.FC<DataCenterFacilityCapacityCardProps> = ({
+  dataCenterFacilityCapacity,
+  refetch,
+  onEdit,
+  onDelete,
+  onDetail
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -45,16 +51,19 @@ const DataCenterFacilityCapacityCard: React.FC<DataCenterFacilityCapacityCardPro
             {t('project.other.data-center-facility-capacity.details.data-center-id')}: {dataCenterFacilityCapacity?.data_center_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.data-center-facility-capacity.details.total-floor-area')}: {dataCenterFacilityCapacity?.total_floor_area || 'N/A'}
+            {t('project.other.data-center-facility-capacity.details.total-floor-area')}:{' '}
+            {dataCenterFacilityCapacity?.total_floor_area || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.data-center-facility-capacity.details.power-capacity')}: {dataCenterFacilityCapacity?.power_capacity || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.data-center-facility-capacity.details.rack-space-capacity')}: {dataCenterFacilityCapacity?.rack_space_capacity || 'N/A'}
+            {t('project.other.data-center-facility-capacity.details.rack-space-capacity')}:{' '}
+            {dataCenterFacilityCapacity?.rack_space_capacity || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.data-center-facility-capacity.details.cooling-capacity')}: {dataCenterFacilityCapacity?.cooling_capacity || 'N/A'}
+            {t('project.other.data-center-facility-capacity.details.cooling-capacity')}:{' '}
+            {dataCenterFacilityCapacity?.cooling_capacity || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.data-center-facility-capacity.details.access-control')}:{' '}

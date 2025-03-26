@@ -1,22 +1,22 @@
-"use client"
+'use client';
 
-import { Box, Button, Card, CardActions, CardContent, Divider, Typography, Grid } from "@mui/material"
-import type React from "react"
-import { useTranslation } from "react-i18next"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
-import type { NetworkCapacity } from "src/types/project/other"
-import FileDrawer from "src/views/components/custom/files-drawer"
-import ModelAction from "src/views/components/custom/model-actions"
-import RowOptions from "src/views/shared/listing/row-options"
-import { formatCreatedAt } from "src/utils/formatter/date"
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography, Grid } from '@mui/material';
+import type React from 'react';
+import { useTranslation } from 'react-i18next';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import type { NetworkCapacity } from 'src/types/project/other';
+import FileDrawer from 'src/views/components/custom/files-drawer';
+import ModelAction from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
+import { formatCreatedAt } from 'src/utils/formatter/date';
 
 interface NetworkCapacityCardProps {
-  networkCapacity: NetworkCapacity
-  refetch: () => void
-  onEdit: (networkCapacity: NetworkCapacity) => void
-  onDelete: (id: string) => void
-  onDetail: (networkCapacity: NetworkCapacity) => void
-  networkTypeMap: Map<string, string>
+  networkCapacity: NetworkCapacity;
+  refetch: () => void;
+  onEdit: (networkCapacity: NetworkCapacity) => void;
+  onDelete: (id: string) => void;
+  onDetail: (networkCapacity: NetworkCapacity) => void;
+  networkTypeMap: Map<string, string>;
 }
 
 const NetworkCapacityCard: React.FC<NetworkCapacityCardProps> = ({
@@ -25,9 +25,9 @@ const NetworkCapacityCard: React.FC<NetworkCapacityCardProps> = ({
   onEdit,
   onDelete,
   onDetail,
-  networkTypeMap,
+  networkTypeMap
 }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <Card sx={{ p: 2 }}>
@@ -40,12 +40,12 @@ const NetworkCapacityCard: React.FC<NetworkCapacityCardProps> = ({
               onClick={() => onDetail(networkCapacity)}
               sx={{
                 fontWeight: 500,
-                textDecoration: "none",
-                color: "text.secondary",
-                "&:hover": { color: "primary.main" },
+                textDecoration: 'none',
+                color: 'text.secondary',
+                '&:hover': { color: 'primary.main' }
               }}
             >
-              {networkTypeMap.get(networkCapacity?.network_type_id) || networkCapacity?.id.slice(0, 8) + "..."}
+              {networkTypeMap.get(networkCapacity?.network_type_id) || networkCapacity?.id.slice(0, 8) + '...'}
             </Typography>
           </Typography>
         </Box>
@@ -56,7 +56,7 @@ const NetworkCapacityCard: React.FC<NetworkCapacityCardProps> = ({
           {networkCapacity?.total_bandwidth !== undefined && (
             <Grid item xs={12}>
               <Typography variant="body2" color="text.secondary">
-                {t("project.other.network-capacity.details.total-bandwidth")}: {networkCapacity.total_bandwidth} Mbps
+                {t('project.other.network-capacity.details.total-bandwidth')}: {networkCapacity.total_bandwidth} Mbps
               </Typography>
             </Grid>
           )}
@@ -64,7 +64,7 @@ const NetworkCapacityCard: React.FC<NetworkCapacityCardProps> = ({
           {networkCapacity?.users_number !== undefined && (
             <Grid item xs={12}>
               <Typography variant="body2" color="text.secondary">
-                {t("project.other.network-capacity.details.users-number")}: {networkCapacity.users_number}
+                {t('project.other.network-capacity.details.users-number')}: {networkCapacity.users_number}
               </Typography>
             </Grid>
           )}
@@ -72,7 +72,7 @@ const NetworkCapacityCard: React.FC<NetworkCapacityCardProps> = ({
           {networkCapacity?.remark && (
             <Grid item xs={12}>
               <Typography variant="body2" color="text.secondary">
-                {t("project.other.network-capacity.details.remark")}: {networkCapacity.remark}
+                {t('project.other.network-capacity.details.remark')}: {networkCapacity.remark}
               </Typography>
             </Grid>
           )}
@@ -80,12 +80,12 @@ const NetworkCapacityCard: React.FC<NetworkCapacityCardProps> = ({
 
         {networkCapacity?.created_at && (
           <Typography variant="body2" color="text.secondary" mt={2}>
-            {t("common.table-columns.created-at")}: {formatCreatedAt(networkCapacity.created_at)}
+            {t('common.table-columns.created-at')}: {formatCreatedAt(networkCapacity.created_at)}
           </Typography>
         )}
       </CardContent>
 
-      <CardActions sx={{ justifyContent: "space-between" }}>
+      <CardActions sx={{ justifyContent: 'space-between' }}>
         <FileDrawer id={networkCapacity.id} type={uploadableProjectFileTypes.other.networkCapacity} />
 
         <Box display="flex">
@@ -99,12 +99,12 @@ const NetworkCapacityCard: React.FC<NetworkCapacityCardProps> = ({
           />
           <RowOptions
             deletePermissionRule={{
-              action: "delete",
-              subject: "networkcapacity",
+              action: 'delete',
+              subject: 'networkcapacity'
             }}
             editPermissionRule={{
-              action: "update",
-              subject: "networkcapacity",
+              action: 'update',
+              subject: 'networkcapacity'
             }}
             onEdit={() => onEdit(networkCapacity)}
             onDelete={() => onDelete(networkCapacity.id)}
@@ -114,8 +114,7 @@ const NetworkCapacityCard: React.FC<NetworkCapacityCardProps> = ({
         </Box>
       </CardActions>
     </Card>
-  )
-}
+  );
+};
 
-export default NetworkCapacityCard
-
+export default NetworkCapacityCard;

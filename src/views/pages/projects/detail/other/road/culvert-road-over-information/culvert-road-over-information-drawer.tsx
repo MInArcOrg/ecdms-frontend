@@ -1,42 +1,42 @@
-import type { FormikProps } from "formik"
-import type { IApiPayload, IApiResponse } from "src/types/requests"
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
-import FormPageWrapper from "src/views/shared/form/form-wrapper"
-import * as yup from "yup"
-import CulvertRoadOverInformationForm from "./culvert-road-over-information-form"
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import CulvertRoadOverInformationForm from './culvert-road-over-information-form';
 
-import projectOtherApiSecondService from "src/services/project/project-other-second-service"
-import type { CulvertRoadOverInformation } from "src/types/project/other"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import type { CulvertRoadOverInformation } from 'src/types/project/other';
+import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
 
 interface CulvertRoadOverInformationDrawerType {
-  open: boolean
-  toggle: () => void
-  refetch: () => void
-  culvertRoadOverInformation: CulvertRoadOverInformation
-  projectId: string
-  otherSubMenu?: OtherMenuRoute
+  open: boolean;
+  toggle: () => void;
+  refetch: () => void;
+  culvertRoadOverInformation: CulvertRoadOverInformation;
+  projectId: string;
+  otherSubMenu?: OtherMenuRoute;
 }
 
 const CulvertRoadOverInformationDrawer = (props: CulvertRoadOverInformationDrawerType) => {
-  const { open, toggle, refetch, culvertRoadOverInformation, projectId, otherSubMenu } = props
+  const { open, toggle, refetch, culvertRoadOverInformation, projectId, otherSubMenu } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    guard_rail_type_id: yup.string().required("Guard rail type is required"),
-  })
+    name: yup.string().required('Name is required'),
+    guard_rail_type_id: yup.string().required('Guard rail type is required')
+  });
 
-  const isEdit = Boolean(culvertRoadOverInformation?.id)
+  const isEdit = Boolean(culvertRoadOverInformation?.id);
 
   const createCulvertRoadOverInformation = async (body: IApiPayload<CulvertRoadOverInformation>) =>
-    projectOtherApiSecondService<CulvertRoadOverInformation>().create(otherSubMenu?.apiRoute || "", body)
+    projectOtherApiSecondService<CulvertRoadOverInformation>().create(otherSubMenu?.apiRoute || '', body);
 
   const editCulvertRoadOverInformation = async (body: IApiPayload<CulvertRoadOverInformation>) =>
     projectOtherApiSecondService<CulvertRoadOverInformation>().update(
-      otherSubMenu?.apiRoute || "",
-      culvertRoadOverInformation?.id || "",
-      body,
-    )
+      otherSubMenu?.apiRoute || '',
+      culvertRoadOverInformation?.id || '',
+      body
+    );
 
   const getPayload = (values: CulvertRoadOverInformation) => ({
     data: {
@@ -51,20 +51,17 @@ const CulvertRoadOverInformationDrawer = (props: CulvertRoadOverInformationDrawe
       parapet_length: values.parapet_length,
       id: culvertRoadOverInformation?.id,
       created_at: culvertRoadOverInformation?.created_at,
-      updated_at: culvertRoadOverInformation?.updated_at,
+      updated_at: culvertRoadOverInformation?.updated_at
     },
-    files: [],
-  })
+    files: []
+  });
 
-  const handleClose = () => toggle()
+  const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<CulvertRoadOverInformation>,
-    payload: IApiPayload<CulvertRoadOverInformation>,
-  ) => {
-    refetch()
-    handleClose()
-  }
+  const onActionSuccess = async (response: IApiResponse<CulvertRoadOverInformation>, payload: IApiPayload<CulvertRoadOverInformation>) => {
+    refetch();
+    handleClose();
+  };
 
   return (
     <CustomSideDrawer
@@ -83,20 +80,19 @@ const CulvertRoadOverInformationDrawer = (props: CulvertRoadOverInformationDrawe
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...culvertRoadOverInformation,
+            ...culvertRoadOverInformation
           }}
           createActionFunc={isEdit ? editCulvertRoadOverInformation : createCulvertRoadOverInformation}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<CulvertRoadOverInformation>) => {
-            return <CulvertRoadOverInformationForm formik={formik} />
+            return <CulvertRoadOverInformationForm formik={formik} />;
           }}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>
-  )
-}
+  );
+};
 
-export default CulvertRoadOverInformationDrawer
-
+export default CulvertRoadOverInformationDrawer;

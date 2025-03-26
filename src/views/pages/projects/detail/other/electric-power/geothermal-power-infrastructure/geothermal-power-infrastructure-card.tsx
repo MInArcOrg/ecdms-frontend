@@ -50,22 +50,27 @@ const GeothermalPowerInfrastructureCard: React.FC<GeothermalPowerInfrastructureC
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.geothermal-power-infrastructure.details.turbine-manufacturer')}: {geothermalPowerInfrastructure?.turbine_manufacturer || 'N/A'}
+            {t('project.other.geothermal-power-infrastructure.details.turbine-manufacturer')}:{' '}
+            {geothermalPowerInfrastructure?.turbine_manufacturer || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.geothermal-power-infrastructure.details.turbine-model')}: {geothermalPowerInfrastructure?.turbine_model || 'N/A'}
+            {t('project.other.geothermal-power-infrastructure.details.turbine-model')}:{' '}
+            {geothermalPowerInfrastructure?.turbine_model || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.geothermal-power-infrastructure.details.turbine-type-id')}: {geothermalPowerInfrastructure?.turbine_type_id || 'N/A'}
+            {t('project.other.geothermal-power-infrastructure.details.turbine-type-id')}:{' '}
+            {geothermalPowerInfrastructure?.turbine_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.geothermal-power-infrastructure.details.each-turbine-capacity')}: {geothermalPowerInfrastructure?.each_turbine_capacity?.toString() || 'N/A'}
+            {t('project.other.geothermal-power-infrastructure.details.each-turbine-capacity')}:{' '}
+            {geothermalPowerInfrastructure?.each_turbine_capacity?.toString() || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.geothermal-power-infrastructure.details.remark')}: {geothermalPowerInfrastructure?.remark || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}: {geothermalPowerInfrastructure?.created_at ? formatCreatedAt(geothermalPowerInfrastructure.created_at) : 'N/A'}
+            {t('common.table-columns.created-at')}:{' '}
+            {geothermalPowerInfrastructure?.created_at ? formatCreatedAt(geothermalPowerInfrastructure.created_at) : 'N/A'}
           </Typography>
         </Box>
       </CardContent>
