@@ -574,7 +574,7 @@ export const projectMasterModels = {
     createTitle: 'create-distribution-line-type',
     editTitle: 'edit-distribution-line-type',
     fileType: 'DISTRIBUTION_LINE_TYPE'
-  },
+  }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
