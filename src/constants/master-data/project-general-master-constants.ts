@@ -551,6 +551,14 @@ export const projectMasterModels = {
     editTitle: 'edit-substation-communication-system',
     fileType: 'SUBSTATION_COMMUNICATION_SYSTEM'
   },
+  transformerType: {
+    model: 'TransformerType',
+    dbModel: 'transformertype',
+    title: 'transformer-types',
+    createTitle: 'create-transformer-type',
+    editTitle: 'edit-transformer-type',
+    fileType: 'TRANSFORMER_TYPE'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
