@@ -268,7 +268,10 @@
       "edit-transformer-type": "Edit Transformer Type",
       "substation-grounding-systems": "Substation Grounding Systems",
       "create-substation-grounding-system": "Create Substation Grounding System",
-      "edit-substation-grounding-system": "Edit Substation Grounding System"
+      "edit-substation-grounding-system": "Edit Substation Grounding System",
+      "distribution-line-types": "Distribution Line Types",
+      "create-distribution-line-type": "Create Distribution Line Type",
+      "edit-distribution-line-type": "Edit Distribution Line Type"
     },
     "form": {
       "title": "Title",
