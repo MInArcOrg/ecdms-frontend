@@ -70,7 +70,9 @@ const DataCenterFacilityCapacityList: React.FC<DataCenterFacilityCapacityListPro
     setSelectedRow(dataCenterFacilityCapacity);
   };
 
-  const mapDataCenterFacilityCapacityToDetailItems = (dataCenterFacilityCapacity: DataCenterFacilityCapacity): { title: string; value: string }[] => [
+  const mapDataCenterFacilityCapacityToDetailItems = (
+    dataCenterFacilityCapacity: DataCenterFacilityCapacity
+  ): { title: string; value: string }[] => [
     {
       title: t('project.other.data-center-facility-capacity.details.data-center-id'),
       value: dataCenterFacilityCapacity?.data_center_id || 'N/A'

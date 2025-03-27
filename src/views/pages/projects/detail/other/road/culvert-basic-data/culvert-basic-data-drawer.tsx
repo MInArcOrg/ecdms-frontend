@@ -1,43 +1,39 @@
-import type { FormikProps } from "formik"
-import type { IApiPayload, IApiResponse } from "src/types/requests"
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
-import FormPageWrapper from "src/views/shared/form/form-wrapper"
-import * as yup from "yup"
-import CulvertBasicDataForm from "./culvert-basic-data-form"
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import CulvertBasicDataForm from './culvert-basic-data-form';
 
-import projectOtherApiSecondService from "src/services/project/project-other-second-service"
-import type { CulvertBasicData } from "src/types/project/other"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import type { CulvertBasicData } from 'src/types/project/other';
+import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
 
 interface CulvertBasicDataDrawerType {
-  open: boolean
-  toggle: () => void
-  refetch: () => void
-  culvertBasicData: CulvertBasicData
-  projectId: string
-  otherSubMenu?: OtherMenuRoute
+  open: boolean;
+  toggle: () => void;
+  refetch: () => void;
+  culvertBasicData: CulvertBasicData;
+  projectId: string;
+  otherSubMenu?: OtherMenuRoute;
 }
 
 const CulvertBasicDataDrawer = (props: CulvertBasicDataDrawerType) => {
-  const { open, toggle, refetch, culvertBasicData, projectId, otherSubMenu } = props
+  const { open, toggle, refetch, culvertBasicData, projectId, otherSubMenu } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    culvert_name: yup.string().required("Culvert name is required"),
-    area_topography_id: yup.string().required("Area topography is required"),
-  })
+    name: yup.string().required('Name is required'),
+    culvert_name: yup.string().required('Culvert name is required'),
+    area_topography_id: yup.string().required('Area topography is required')
+  });
 
-  const isEdit = Boolean(culvertBasicData?.id)
+  const isEdit = Boolean(culvertBasicData?.id);
 
   const createCulvertBasicData = async (body: IApiPayload<CulvertBasicData>) =>
-    projectOtherApiSecondService<CulvertBasicData>().create(otherSubMenu?.apiRoute || "", body)
+    projectOtherApiSecondService<CulvertBasicData>().create(otherSubMenu?.apiRoute || '', body);
 
   const editCulvertBasicData = async (body: IApiPayload<CulvertBasicData>) =>
-    projectOtherApiSecondService<CulvertBasicData>().update(
-      otherSubMenu?.apiRoute || "",
-      culvertBasicData?.id || "",
-      body
-    )
+    projectOtherApiSecondService<CulvertBasicData>().update(otherSubMenu?.apiRoute || '', culvertBasicData?.id || '', body);
 
   const getPayload = (values: CulvertBasicData) => ({
     data: {
@@ -59,17 +55,17 @@ const CulvertBasicDataDrawer = (props: CulvertBasicDataDrawerType) => {
       altitude: values.altitude,
       id: culvertBasicData?.id,
       created_at: values.created_at,
-      updated_at: values.updated_at,
+      updated_at: values.updated_at
     },
-    files: [],
-  })
+    files: []
+  });
 
-  const handleClose = () => toggle()
+  const handleClose = () => toggle();
 
   const onActionSuccess = async (response: IApiResponse<CulvertBasicData>, payload: IApiPayload<CulvertBasicData>) => {
-    refetch()
-    handleClose()
-  }
+    refetch();
+    handleClose();
+  };
 
   return (
     <CustomSideDrawer
@@ -84,19 +80,19 @@ const CulvertBasicDataDrawer = (props: CulvertBasicDataDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...culvertBasicData,
+            ...culvertBasicData
           }}
           createActionFunc={isEdit ? editCulvertBasicData : createCulvertBasicData}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<CulvertBasicData>) => {
-            return <CulvertBasicDataForm formik={formik} />
+            return <CulvertBasicDataForm formik={formik} />;
           }}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>
-  )
-}
+  );
+};
 
-export default CulvertBasicDataDrawer
+export default CulvertBasicDataDrawer;

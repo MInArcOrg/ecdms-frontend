@@ -54,10 +54,7 @@ const BroadcastingInfrastructureAgeList: React.FC<BroadcastingInfrastructureAgeL
   const fetchBroadcastingInfrastructureAges = (
     params: GetRequestParam,
   ): Promise<IApiResponse<BroadcastingInfrastructureAge[]>> => {
-    return projectOtherApiSecondService<BroadcastingInfrastructureAge>().getAll(otherSubMenu?.apiRoute || "", {
-      ...params,
-      filter: { ...params.filter, project_id: projectId },
-    })
+    return projectOtherApiSecondService<BroadcastingInfrastructureAge>().getAll(otherSubMenu?.apiRoute || "", { })
   }
 
   const {
@@ -108,6 +105,10 @@ const BroadcastingInfrastructureAgeList: React.FC<BroadcastingInfrastructureAgeL
         broadcastingInfrastructureMap.get(broadcastingInfrastructureAge?.broadcasting_infrastructure_id) ||
         broadcastingInfrastructureAge?.broadcasting_infrastructure_id ||
         "N/A",
+    },
+    {
+      title: t("project.other.broadcasting-infrastructure-age.details.name"),
+      value: broadcastingInfrastructureAge?.name || "N/A",
     },
     {
       title: t("project.other.broadcasting-infrastructure-age.details.antennas"),

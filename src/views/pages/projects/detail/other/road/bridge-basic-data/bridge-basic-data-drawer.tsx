@@ -1,58 +1,54 @@
-import type { FormikProps } from "formik"
-import type { IApiPayload, IApiResponse } from "src/types/requests"
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
-import FormPageWrapper from "src/views/shared/form/form-wrapper"
-import * as yup from "yup"
-import BridgeBasicDataForm from "./bridge-basic-data-form"
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import BridgeBasicDataForm from './bridge-basic-data-form';
 
-import projectOtherApiSecondService from "src/services/project/project-other-second-service"
-import type { BridgeBasicData } from "src/types/project/other"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import type { BridgeBasicData } from 'src/types/project/other';
+import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
 
 interface BridgeBasicDataDrawerType {
-  open: boolean
-  toggle: () => void
-  refetch: () => void
-  bridgeBasicData: BridgeBasicData
-  projectId: string
-  otherSubMenu?: OtherMenuRoute
+  open: boolean;
+  toggle: () => void;
+  refetch: () => void;
+  bridgeBasicData: BridgeBasicData;
+  projectId: string;
+  otherSubMenu?: OtherMenuRoute;
 }
 
 const BridgeBasicDataDrawer = (props: BridgeBasicDataDrawerType) => {
-  const { open, toggle, refetch, bridgeBasicData, projectId, otherSubMenu } = props
+  const { open, toggle, refetch, bridgeBasicData, projectId, otherSubMenu } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    bridge_name: yup.string().required("Bridge name is required"),
-  })
+    name: yup.string().required('Name is required'),
+    bridge_name: yup.string().required('Bridge name is required')
+  });
 
-  const isEdit = Boolean(bridgeBasicData?.id)
+  const isEdit = Boolean(bridgeBasicData?.id);
 
   const createBridgeBasicData = async (body: IApiPayload<BridgeBasicData>) =>
-    projectOtherApiSecondService<BridgeBasicData>().create(otherSubMenu?.apiRoute || "", body)
+    projectOtherApiSecondService<BridgeBasicData>().create(otherSubMenu?.apiRoute || '', body);
 
   const editBridgeBasicData = async (body: IApiPayload<BridgeBasicData>) =>
-    projectOtherApiSecondService<BridgeBasicData>().update(
-      otherSubMenu?.apiRoute || "",
-      bridgeBasicData?.id || "",
-      body,
-    )
+    projectOtherApiSecondService<BridgeBasicData>().update(otherSubMenu?.apiRoute || '', bridgeBasicData?.id || '', body);
 
   const getPayload = (values: BridgeBasicData): IApiPayload<BridgeBasicData> => ({
     data: {
       ...values,
       project_id: projectId,
-      id: bridgeBasicData?.id,
+      id: bridgeBasicData?.id
     } as BridgeBasicData,
-    files: [],
-  })
+    files: []
+  });
 
-  const handleClose = () => toggle()
+  const handleClose = () => toggle();
 
   const onActionSuccess = async (response: IApiResponse<BridgeBasicData>, payload: IApiPayload<BridgeBasicData>) => {
-    refetch()
-    handleClose()
-  }
+    refetch();
+    handleClose();
+  };
 
   return (
     <CustomSideDrawer
@@ -67,20 +63,19 @@ const BridgeBasicDataDrawer = (props: BridgeBasicDataDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...bridgeBasicData,
+            ...bridgeBasicData
           }}
           createActionFunc={isEdit ? editBridgeBasicData : createBridgeBasicData}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<BridgeBasicData>) => {
-            return <BridgeBasicDataForm formik={formik} />
+            return <BridgeBasicDataForm formik={formik} />;
           }}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>
-  )
-}
+  );
+};
 
-export default BridgeBasicDataDrawer
-
+export default BridgeBasicDataDrawer;

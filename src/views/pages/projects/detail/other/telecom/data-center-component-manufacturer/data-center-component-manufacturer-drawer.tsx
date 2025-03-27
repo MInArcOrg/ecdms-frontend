@@ -44,7 +44,11 @@ const DataCenterComponentManufacturerDrawer = (props: DataCenterComponentManufac
     projectOtherApiSecondService<DataCenterComponentManufacturer>().create(otherSubMenu?.apiRoute || '', body);
 
   const editDataCenterComponentManufacturer = async (body: IApiPayload<DataCenterComponentManufacturer>) =>
-    projectOtherApiSecondService<DataCenterComponentManufacturer>().update(otherSubMenu?.apiRoute || '', dataCenterComponentManufacturer?.id || '', body);
+    projectOtherApiSecondService<DataCenterComponentManufacturer>().update(
+      otherSubMenu?.apiRoute || '',
+      dataCenterComponentManufacturer?.id || '',
+      body
+    );
 
   const getPayload = (values: DataCenterComponentManufacturer) => ({
     data: {
@@ -56,7 +60,10 @@ const DataCenterComponentManufacturerDrawer = (props: DataCenterComponentManufac
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<DataCenterComponentManufacturer>, payload: IApiPayload<DataCenterComponentManufacturer>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<DataCenterComponentManufacturer>,
+    payload: IApiPayload<DataCenterComponentManufacturer>
+  ) => {
     if (payload.files.length > 0) {
       uploadFile(payload.files[0], uploadableProjectFileTypes.other.dataCenterComponentManufacturer, response.payload.id, '', '');
     }
@@ -66,14 +73,18 @@ const DataCenterComponentManufacturerDrawer = (props: DataCenterComponentManufac
 
   return (
     <CustomSideDrawer
-      title={`project.other.data-center-component-manufacturer.${isEdit ? `edit-data-center-component-manufacturer` : `create-data-center-component-manufacturer`}`}
+      title={`project.other.data-center-component-manufacturer.${
+        isEdit ? `edit-data-center-component-manufacturer` : `create-data-center-component-manufacturer`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.data-center-component-manufacturer.${isEdit ? `edit-data-center-component-manufacturer` : `create-data-center-component-manufacturer`}`}
+          title={`project.other.data-center-component-manufacturer.${
+            isEdit ? `edit-data-center-component-manufacturer` : `create-data-center-component-manufacturer`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
@@ -91,7 +102,14 @@ const DataCenterComponentManufacturerDrawer = (props: DataCenterComponentManufac
           onCancel={handleClose}
         >
           {(formik: FormikProps<DataCenterComponentManufacturer>) => {
-            return <DataCenterComponentManufacturerForm projectId={projectId} file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
+            return (
+              <DataCenterComponentManufacturerForm
+                projectId={projectId}
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+              />
+            );
           }}
         </FormPageWrapper>
       )}

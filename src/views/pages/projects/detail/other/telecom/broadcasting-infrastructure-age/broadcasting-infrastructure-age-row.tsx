@@ -45,6 +45,17 @@ export const broadcastingInfrastructureAgeColumns = (
   {
     flex: 0.15,
     minWidth: 100,
+    headerName: t("project.other.broadcasting-infrastructure-age.details.name"),
+    field: "name",
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: "text.secondary" }}>
+        {row?.name?.toString() || t('common.not-available')}
+      </Typography>
+    ),
+  },
+  {
+    flex: 0.15,
+    minWidth: 100,
     headerName: t("project.other.broadcasting-infrastructure-age.details.antennas"),
     field: "antennas",
     renderCell: ({ row }: CellType) => (

@@ -77,6 +77,7 @@ const BroadcastingInfrastructureAgeDrawer = (props: BroadcastingInfrastructureAg
   const getPayload = (values: BroadcastingInfrastructureAge) => ({
     data: {
       project_id: projectId,
+      name: values.name,
       broadcasting_infrastructure_id: values.broadcasting_infrastructure_id,
       antennas: values.antennas,
       transmitters: values.transmitters,

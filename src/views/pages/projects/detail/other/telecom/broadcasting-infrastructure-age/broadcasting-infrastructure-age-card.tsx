@@ -45,15 +45,23 @@ const BroadcastingInfrastructureAgeCard: React.FC<BroadcastingInfrastructureAgeC
                 "&:hover": { color: "primary.main" },
               }}
             >
-              {broadcastingInfrastructureMap.get(broadcastingInfrastructureAge?.broadcasting_infrastructure_id) || 
-               broadcastingInfrastructureAge?.id.slice(0, 8) + "..."}
+              {broadcastingInfrastructureMap.get(broadcastingInfrastructureAge?.broadcasting_infrastructure_id) ||
+                broadcastingInfrastructureAge?.id.slice(0, 8) + "..."}
             </Typography>
           </Typography>
         </Box>
 
         <Divider sx={{ my: 1 }} />
-        
+
         <Grid container spacing={2} mt={1}>
+          {broadcastingInfrastructureAge?.name !== undefined && (
+            <Grid item xs={6}>
+              <Typography variant="body2" color="text.secondary">
+                {t("project.other.broadcasting-infrastructure-age.details.nmae")}: {broadcastingInfrastructureAge.name}
+              </Typography>
+            </Grid>
+          )}
+
           {broadcastingInfrastructureAge?.antennas !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
@@ -61,7 +69,7 @@ const BroadcastingInfrastructureAgeCard: React.FC<BroadcastingInfrastructureAgeC
               </Typography>
             </Grid>
           )}
-          
+
           {broadcastingInfrastructureAge?.transmitters !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
@@ -69,7 +77,7 @@ const BroadcastingInfrastructureAgeCard: React.FC<BroadcastingInfrastructureAgeC
               </Typography>
             </Grid>
           )}
-          
+
           {broadcastingInfrastructureAge?.towers !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
@@ -77,7 +85,7 @@ const BroadcastingInfrastructureAgeCard: React.FC<BroadcastingInfrastructureAgeC
               </Typography>
             </Grid>
           )}
-          
+
           {broadcastingInfrastructureAge?.cables !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">

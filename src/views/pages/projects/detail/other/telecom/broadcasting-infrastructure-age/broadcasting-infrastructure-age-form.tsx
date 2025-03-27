@@ -43,6 +43,17 @@ const BroadcastingInfrastructureAgeForm: React.FC<BroadcastingInfrastructureAgeF
           }
         />
 
+        <Grid item xs={12}>
+          <CustomTextBox
+            fullWidth
+            label={transl("project.other.broadcasting-infrastructure-age.details.name")}
+            placeholder={transl("project.other.broadcasting-infrastructure-age.details.name")}
+            name="name"
+            size="small"
+            sx={{ mb: 2 }}
+          />
+        </Grid>
+
         <Typography variant="subtitle1" gutterBottom>
           {transl("project.other.broadcasting-infrastructure-age.infrastructure-age")}
         </Typography>

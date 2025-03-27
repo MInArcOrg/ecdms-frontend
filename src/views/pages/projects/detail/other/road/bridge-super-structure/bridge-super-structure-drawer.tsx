@@ -1,25 +1,25 @@
-import type { FormikProps } from "formik"
-import type { IApiPayload, IApiResponse } from "src/types/requests"
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
-import FormPageWrapper from "src/views/shared/form/form-wrapper"
-import * as yup from "yup"
-import BridgeSuperStructureForm from "./bridge-super-structure-form"
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import BridgeSuperStructureForm from './bridge-super-structure-form';
 
-import projectOtherApiSecondService from "src/services/project/project-other-second-service"
-import type { BridgeSuperStructure } from "src/types/project/other"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import type { BridgeSuperStructure } from 'src/types/project/other';
+import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
 
 interface BridgeSuperStructureDrawerType {
-  open: boolean
-  toggle: () => void
-  refetch: () => void
-  bridgeSuperStructure: BridgeSuperStructure
-  projectId: string
-  otherSubMenu?: OtherMenuRoute
+  open: boolean;
+  toggle: () => void;
+  refetch: () => void;
+  bridgeSuperStructure: BridgeSuperStructure;
+  projectId: string;
+  otherSubMenu?: OtherMenuRoute;
 }
 
 const BridgeSuperStructureDrawer = (props: BridgeSuperStructureDrawerType) => {
-  const { open, toggle, refetch, bridgeSuperStructure, projectId, otherSubMenu } = props
+  const { open, toggle, refetch, bridgeSuperStructure, projectId, otherSubMenu } = props;
 
   const validationSchema = yup.object().shape({
     name: yup.string().required('Name is required'),
@@ -29,36 +29,29 @@ const BridgeSuperStructureDrawer = (props: BridgeSuperStructureDrawerType) => {
     deck_slab_type_id: yup.string().required('Deck slab type is required')
   });
 
-  const isEdit = Boolean(bridgeSuperStructure?.id)
+  const isEdit = Boolean(bridgeSuperStructure?.id);
 
   const createBridgeSuperStructure = async (body: IApiPayload<BridgeSuperStructure>) =>
-    projectOtherApiSecondService<BridgeSuperStructure>().create(otherSubMenu?.apiRoute || "", body)
+    projectOtherApiSecondService<BridgeSuperStructure>().create(otherSubMenu?.apiRoute || '', body);
 
   const editBridgeSuperStructure = async (body: IApiPayload<BridgeSuperStructure>) =>
-    projectOtherApiSecondService<BridgeSuperStructure>().update(
-      otherSubMenu?.apiRoute || "",
-      bridgeSuperStructure?.id || "",
-      body,
-    )
+    projectOtherApiSecondService<BridgeSuperStructure>().update(otherSubMenu?.apiRoute || '', bridgeSuperStructure?.id || '', body);
 
   const getPayload = (values: BridgeSuperStructure): IApiPayload<BridgeSuperStructure> => ({
     data: {
       ...values,
       project_id: projectId,
-      id: bridgeSuperStructure?.id,
+      id: bridgeSuperStructure?.id
     } as BridgeSuperStructure,
-    files: [],
-  })
+    files: []
+  });
 
-  const handleClose = () => toggle()
+  const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<BridgeSuperStructure>,
-    payload: IApiPayload<BridgeSuperStructure>,
-  ) => {
-    refetch()
-    handleClose()
-  }
+  const onActionSuccess = async (response: IApiResponse<BridgeSuperStructure>, payload: IApiPayload<BridgeSuperStructure>) => {
+    refetch();
+    handleClose();
+  };
 
   return (
     <CustomSideDrawer
@@ -73,19 +66,19 @@ const BridgeSuperStructureDrawer = (props: BridgeSuperStructureDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...bridgeSuperStructure,
+            ...bridgeSuperStructure
           }}
           createActionFunc={isEdit ? editBridgeSuperStructure : createBridgeSuperStructure}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<BridgeSuperStructure>) => {
-            return <BridgeSuperStructureForm formik={formik} />
+            return <BridgeSuperStructureForm formik={formik} />;
           }}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>
-  )
-}
+  );
+};
 
-export default BridgeSuperStructureDrawer
+export default BridgeSuperStructureDrawer;

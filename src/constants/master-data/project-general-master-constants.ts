@@ -111,6 +111,14 @@ export const projectMasterModels = {
     editTitle: 'edit-bridge-structure-type',
     fileType: 'BRIDGE_STRUCTURE_TYPE'
   },
+  owner: {
+    model: 'Owner',
+    dbModel: 'owner',
+    title: 'owners',
+    createTitle: 'create-owner',
+    editTitle: 'edit-owner',
+    fileType: 'OWNER'
+  },
   spanSupportType: {
     model: 'SpanSupportType',
     dbModel: 'spansupporttype',
@@ -438,8 +446,159 @@ export const projectMasterModels = {
     createTitle: 'create-data-center-type',
     editTitle: 'edit-data-center-type',
     fileType: 'DATA_CENTER_TYPE'
-  }
-
+  },
+  damType: {
+    model: 'DamType',
+    dbModel: 'damtype',
+    title: 'dam-types',
+    createTitle: 'create-dam-type',
+    editTitle: 'edit-dam-type',
+    fileType: 'DAM_TYPE'
+  },
+  spillwayType: {
+    model: 'SpillwayType',
+    dbModel: 'spillwaytype',
+    title: 'spillway-types',
+    createTitle: 'create-spillway-type',
+    editTitle: 'edit-spillway-type',
+    fileType: 'SPILLWAY_TYPE'
+  },
+  turbineType: {
+    model: 'TurbineType',
+    dbModel: 'turbinetype',
+    title: 'turbine-types',
+    createTitle: 'create-turbine-type',
+    editTitle: 'edit-turbine-type',
+    fileType: 'TURBINE_TYPE'
+  },
+  solarPanelType: {
+    model: 'SolarPanelType',
+    dbModel: 'solarpaneltype',
+    title: 'solar-panel-types',
+    createTitle: 'create-solar-panel-type',
+    editTitle: 'edit-solar-panel-type',
+    fileType: 'SOLAR_PANEL_TYPE'
+  },
+  towerType: {
+    model: 'TowerType',
+    dbModel: 'towertype',
+    title: 'tower-types',
+    createTitle: 'create-tower-type',
+    editTitle: 'edit-tower-type',
+    fileType: 'TOWER_TYPE'
+  },
+  generatorType: {
+    model: 'GeneratorType',
+    dbModel: 'generatortype',
+    title: 'generator-types',
+    createTitle: 'create-generator-type',
+    editTitle: 'edit-generator-type',
+    fileType: 'GENERATOR_TYPE'
+  },
+  maintenanceFrequencyType: {
+    model: 'MaintenanceFrequencyType',
+    dbModel: 'maintenancefrequencytype',
+    title: 'maintenance-frequency-types',
+    createTitle: 'create-maintenance-frequency-type',
+    editTitle: 'edit-maintenance-frequency-type',
+    fileType: 'MAINTENANCE_FREQUENCY_TYPE'
+  },
+  conductorCodeName: {
+    model: 'ConductorCodeName',
+    dbModel: 'conductorcodename',
+    title: 'conductor-code-names',
+    createTitle: 'create-conductor-code-name',
+    editTitle: 'edit-conductor-code-name',
+    fileType: 'CONDUCTOR_CODE_NAME'
+  },
+  batteryType: {
+    model: 'BatteryType',
+    dbModel: 'batterytype',
+    title: 'battery-types',
+    createTitle: 'create-battery-type',
+    editTitle: 'edit-battery-type',
+    fileType: 'BATTERY_TYPE'
+  },
+  towerFoundationType: {
+    model: 'TowerFoundationType',
+    dbModel: 'towerfoundationtype',
+    title: 'tower-foundation-types',
+    createTitle: 'create-tower-foundation-type',
+    editTitle: 'edit-tower-foundation-type',
+    fileType: 'TOWER_FOUNDATION_TYPE'
+  },
+  switchgearType: {
+    model: 'SwitchgearType',
+    dbModel: 'switchgeartype',
+    title: 'switchgear-types',
+    createTitle: 'create-switchgear-type',
+    editTitle: 'edit-switchgear-type',
+    fileType: 'SWITCHGEAR_TYPE'
+  },
+  circuitBreakerType: {
+    model: 'CircuitBreakerType',
+    dbModel: 'circuitbreakertype',
+    title: 'circuit-breaker-types',
+    createTitle: 'create-circuit-breaker-type',
+    editTitle: 'edit-circuit-breaker-type',
+    fileType: 'CIRCUIT_BREAKER_TYPE'
+  },
+  substationCommunicationSystem: {
+    model: 'SubstationCommunicationSystem',
+    dbModel: 'substationcommunicationsystem',
+    title: 'substation-communication-systems',
+    createTitle: 'create-substation-communication-system',
+    editTitle: 'edit-substation-communication-system',
+    fileType: 'SUBSTATION_COMMUNICATION_SYSTEM'
+  },
+  transformerType: {
+    model: 'TransformerType',
+    dbModel: 'transformertype',
+    title: 'transformer-types',
+    createTitle: 'create-transformer-type',
+    editTitle: 'edit-transformer-type',
+    fileType: 'TRANSFORMER_TYPE'
+  },
+  substationGroundingSystem: {
+    model: 'SubstationGroundingSystem',
+    dbModel: 'substationgroundingsystem',
+    title: 'substation-grounding-systems',
+    createTitle: 'create-substation-grounding-system',
+    editTitle: 'edit-substation-grounding-system',
+    fileType: 'SUBSTATION_GROUNDING_SYSTEM'
+  },
+  distributionLineType: {
+    model: 'DistributionLineType',
+    dbModel: 'distributionlinetype',
+    title: 'distribution-line-types',
+    createTitle: 'create-distribution-line-type',
+    editTitle: 'edit-distribution-line-type',
+    fileType: 'DISTRIBUTION_LINE_TYPE'
+  },
+  privacyMeasuresType: {
+    model: 'PrivacyMeasuresType',
+    dbModel: 'privacymeasurestype',
+    title: 'privacy-measures-types',
+    createTitle: 'create-privacy-measures-type',
+    editTitle: 'edit-privacy-measures-type',
+    fileType: 'PRIVACY_MEASURES_TYPE'
+  },
+  protectionInstalled: {
+    model: 'ProtectionInstalled',
+    dbModel: 'protectioninstalled',
+    title: 'protection-installed',
+    createTitle: 'create-protection-installed',
+    editTitle: 'edit-protection-installed',
+    fileType: 'PROTECTION_INSTALLED'
+  },
+  fireExtinguishingTechnology: {
+    model: 'FireExtinguishingTechnology',
+    dbModel: 'fireextinguishingtechnology',
+    title: 'fire-extinguishing-technologies',
+    createTitle: 'create-fire-extinguishing-technology',
+    editTitle: 'edit-fire-extinguishing-technology',
+    fileType: 'FIRE_EXTINGUISHING_TECHNOLOGY'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

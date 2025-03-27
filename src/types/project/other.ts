@@ -97,16 +97,12 @@ export interface RoadSegment {
   parent_id?: string;
   project_id: string;
   name: string;
-  specifications?: string;
-  no_of_layers?: number;
-  length?: number;
-  width?: number;
-  remark?: string;
+  surface_type_id: string;
   start_northing?: number;
   start_easting?: number;
   end_northing?: number;
   end_easting?: number;
-  revision_no?: number;
+  design_standard_id?: string;
   created_at: Date;
   updated_at: Date;
 }
@@ -335,6 +331,31 @@ export interface WaterIrrigationDam {
   catchment_area?: number;
   surface_area?: number;
   revision_no?: number;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface HydrologicalInformation {
+  id: string;
+  project_id: string;
+  water_source?: string; // Optional String
+  catchment_area?: number; // Optional Double
+  elevation_change?: number; // Optional Double
+  head?: number; // Optional Double
+  total_inflow?: number; // Optional Double
+  active_storage_volume?: number; // Optional Double
+  water_stored?: number; // Optional Double
+  remark?: string; // Optional Text
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface GeothermalPowerInfrastructure {
+  id: string;
+  project_id: string; // Required UUID
+  turbine_manufacturer?: string; // Optional String
+  turbine_model?: string; // Optional String
+  turbine_type_id?: string; // Optional UUID
+  each_turbine_capacity?: number; // Optional Double
+  remark?: string; // Optional Text
   created_at?: Date;
   updated_at?: Date;
 }
@@ -826,23 +847,21 @@ export interface DataCenter {
   updated_at?: Date;
 }
 
-
 export interface TelecomInfrastructureComponent {
-  id: string
-  project_id: string
-  mobile_network_type_id: string
-  cables?: number
-  wires?: number
-  routers?: number
-  switches?: number
-  hubs?: number
-  repeaters?: number
-  antennas?: number
-  towers?: number
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
-
+  id: string;
+  project_id: string;
+  mobile_network_type_id: string;
+  cables?: number;
+  wires?: number;
+  routers?: number;
+  switches?: number;
+  hubs?: number;
+  repeaters?: number;
+  antennas?: number;
+  towers?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface TelecomInfrastructureAge {
@@ -912,17 +931,17 @@ export interface DataCenterComponentAge {
 }
 
 export interface SatelliteNetwork {
-  id: string
-  project_id: string
-  satellite_network_type_id: string
-  name: string
-  satellite?: boolean
-  ground_stations?: boolean
-  modems?: boolean
-  routers?: boolean
-  others?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  project_id: string;
+  satellite_network_type_id: string;
+  name: string;
+  satellite?: boolean;
+  ground_stations?: boolean;
+  modems?: boolean;
+  routers?: boolean;
+  others?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 export interface DataCenterComponentManufacturer {
   id: string;
@@ -933,8 +952,8 @@ export interface DataCenterComponentManufacturer {
   cooling_systems?: string; // Optional String
   backup_generators?: string; // Optional String
   others?: string; // Optional Text
-  created_at?: Date
-  updated_at?: Date
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface SatelliteInfrastructureAge {
@@ -951,22 +970,23 @@ export interface SatelliteInfrastructureAge {
 }
 
 export interface SatelliteNetworkComponentManufacturer {
-  id: string
-  project_id: string
-  satellite_network_id: string
-  satellite?: string
-  ground_stations?: string
-  modems?: string
-  routers?: string
-  others?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  project_id: string;
+  satellite_network_id: string;
+  satellite?: string;
+  ground_stations?: string;
+  modems?: string;
+  routers?: string;
+  others?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface InternetConnection {
   id: string;
   project_id: string;
   internet_connection_type_id: string;
+  internetConnectionType: ProjectGeneralMaster;
   routers?: boolean;
   switches?: boolean;
   modems?: boolean;
@@ -976,9 +996,255 @@ export interface InternetConnection {
   updated_at?: Date;
 }
 
+export interface BroadcastingInfrastructure {
+  id: string;
+  project_id: string;
+  broadcasting_infrastructure_type_id: string;
+  broadcasting_network?: boolean;
+  antennas?: boolean;
+  transmitters?: boolean;
+  towers?: boolean;
+  cables?: boolean;
+  others?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface InternetConnectionInfrastructureAge {
+  id: string;
+  internet_connection_id: string; // Required UUID
+  internetConnection: InternetConnection;
+  routers?: number; // Optional Integer
+  switches?: number; // Optional Integer
+  modems?: number; // Optional Integer
+  cables?: number; // Optional Integer
+  others?: string; // Optional Text
+  created_at?: Date;
+  updated_at?: Date;
+}
+// Internet Connection model
+export interface InternetConnectionInfrastructureManufacturer {
+  id: string;
+  internet_connection_id: string; // Required UUID
+  routers?: string; // Optional String
+  switches?: string; // Optional String
+  modems?: string; // Optional String
+  cables?: string; // Optional String
+  others?: string; // Optional Text
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface GeothermalPowerWell {
+  id: string;
+  project_id: string;
+  depth?: number;
+  well_diameter?: number;
+  drilling_period?: Date;
+  temperature_at_bottom_hole?: number;
+  wells_number?: number;
+  wells_name?: string;
+  plant_life?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface SolarPanel {
+  id: string;
+  project_id: string;
+  manufacturer?: string;
+  model?: string;
+  solar_panel_type_id: string;
+  solar_panels_number?: number;
+  each_solar_panel_capacity?: number;
+  inverter_manufacturer?: string;
+  inverter_model?: string;
+  inverters_number?: number;
+  other_equipment?: string;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface SolarResourceInformation {
+  id: string;
+  project_id: string;
+  annual_solar_radiation?: number;
+  solar_panel_efficiency?: number;
+  annual_energy_production?: number;
+  plant_life?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface PowerGenerationCapacity {
+  id: string;
+  project_id: string;
+  capacity: number;
+  annual_generation: number;
+  units_number: number;
+  owner_id: string;
+  commissioning_date?: string | Date | EthiopianDate;
+  plant_life: number;
+  others: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface WindTurbine {
+  id: string;
+  project_id: string;
+  turbine_manufacturer?: string;
+  turbine_model?: string;
+  rotor_diameter?: number;
+  hub_height?: number;
+  tower_type_id?: string;
+  blade_length?: number;
+  blades_number?: number;
+  gearbox_type?: string;
+  generator_type_id?: string;
+  generators_number?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface WindResource {
+  id: string;
+  project_id: string;
+  wind_speed_at_hub_height?: number;
+  weibull_shape_factor?: boolean;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface RegulationAndPolicy {
+  id: string;
+  project_id: string;
+  regulatory_body_overseeing_the_facility?: string;
+  regulatory_compliance_monitoring?: boolean;
+  environmental_and_social_regulation_compliance_monitoring?: boolean;
+  licensing_and_permit_requirements?: boolean;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface EnvironmentalAndSocialImpact {
+  id: string;
+  project_id: string;
+  environmental_impact_assessment_conducted: boolean;
+  mitigation_measures_implemented: boolean;
+  social_impact_assessment_conducted: boolean;
+  resettlement_and_compensation_measures_implemented: boolean;
+  remark?: string;
+  files?: any[];
+  created_at?: string;
+  updated_at?: string;
+}
+export interface TransmissionLineInformation {
+  id: string;
+  project_id: string;
+  name: string;
+  transmission_voltage?: number;
+  transmission_line_route_length?: number;
+  circuit_number?: number;
+  starting_point_northing?: number;
+  starting_point_easting?: number;
+  ending_point_northing?: number;
+  ending_point_easting?: number;
+  lifetime?: number;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface ReliabilityAndMaintenance {
+  id: string;
+  project_id: string;
+  maintenance_frequency_id: string;
+  total_outage_duration?: number;
+  total_interruption_number?: number;
+  saidi?: number;
+  saifi?: number;
+  automatic_fault_detection_restoration_system_installed?: boolean;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface Transmission {
+  id: string;
+  project_id: string;
+  transmission_voltage?: number;
+  distance_to_substation?: number;
+  transmission_lines_number?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface Dam {
+  id: string;
+  project_id: string;
+  dam_type_id: string;
+  dam_height?: number;
+  spillway_type_id: string;
+  penstock_length?: number;
+  turbine_type_id: string;
+  turbine_number?: number;
+  generator_type_id: string;
+  generator_number?: number;
+  national_priority_rank?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface TransmissionLineConductorAndTowerData {
+  id: string
+  transmission_line_id: string
+  name: string
+  conductor_type?: string
+  conductor_code_name_id: string
+  strands_number?: number
+  conductor_size?: number
+  conductors_per_phase_number?: number
+  tower_type_id: string
+  tower_height?: number
+  conductor_diameter?: number
+  each_strand_diameter?: number
+  tower_foundation_type_id: string
+  other_equipment?: string
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}
+
+export interface TransmissionLineEquipmentData {
+  id: string
+  transmission_line_id: string
+  name: string
+  insulator_type?: string
+  ground_wire_type?: string
+  fiber_optics_number?: number
+  opgw_uts?: number
+  opgw_weight?: number
+  owner_operator?: string
+  tower_grounding?: string
+  tower_circuit_arrangement?: string
+  other_equipment?: string
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}
+
 export interface BroadcastingInfrastructureAge {
   id: string;
   project_id: string;
+  name: string;
   broadcasting_infrastructure_id: string;
   antennas?: number;
   transmitters?: number;

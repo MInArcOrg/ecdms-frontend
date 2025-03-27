@@ -345,12 +345,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/telecom/data-center-component-age`,
           model: 'networkcoverage',
           apiRoute: 'data-center-component-ages'
-        }, {
+        },
+        {
           id: 59,
-          title: t("project.navigation.submenu.others.satellite-network"),
+          title: t('project.navigation.submenu.others.satellite-network'),
           path: `${baseUrl}/telecom/satellite-network`,
-          model: "satellitenetwork",
-          apiRoute: "satellite-networks",
+          model: 'satellitenetwork',
+          apiRoute: 'satellite-networks'
         },
         {
           id: 54,
@@ -361,24 +362,45 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
         },
         {
           id: 61,
-          title: t("project.navigation.submenu.others.satellite-infrastructure-age"),
+          title: t('project.navigation.submenu.others.satellite-infrastructure-age'),
           path: `${baseUrl}/telecom/satellite-infrastructure-age`,
-          model: "satelliteinfrastructureage",
-          apiRoute: "satellite-infrastructure-ages",
+          model: 'satelliteinfrastructureage',
+          apiRoute: 'satellite-infrastructure-ages'
         },
         {
           id: 63,
-          title: t("project.navigation.submenu.others.satellite-network-component-manufacturer"),
+          title: t('project.navigation.submenu.others.satellite-network-component-manufacturer'),
           path: `${baseUrl}/telecom/satellite-network-component-manufacturer`,
-          model: "satellitenetworkcomponentmanufacturer",
-          apiRoute: "satellite-network-component-manufacturers",
+          model: 'satellitenetworkcomponentmanufacturer',
+          apiRoute: 'satellite-network-component-manufacturers'
         },
         {
           id: 65,
-          title: t("project.navigation.submenu.others.internet-connection"),
+          title: t('project.navigation.submenu.others.internet-connection'),
           path: `${baseUrl}/telecom/internet-connection`,
-          model: "internetconnection",
-          apiRoute: "internet-connections",
+          model: 'internetconnection',
+          apiRoute: 'internet-connections'
+        },
+        {
+          id: 67,
+          title: t('project.navigation.submenu.others.broadcasting-infrastructure'),
+          path: `${baseUrl}/telecom/broadcasting-infrastructure`,
+          model: 'broadcastinginfrastructure',
+          apiRoute: 'broadcasting-infrastructures'
+        },
+        {
+          id: 56,
+          title: t('project.navigation.submenu.others.internet-connection-infrastructure-age'),
+          path: `${baseUrl}/telecom/internet-connection-infrastructure-age`,
+          model: 'internetconnectioninfrastructureage',
+          apiRoute: 'internet-connection-infrastructure-ages'
+        },
+        {
+          id: 58,
+          title: t('project.navigation.submenu.others.internet-connection-infrastructure-manufacturer'),
+          path: `${baseUrl}/telecom/internet-connection-infrastructure-manufacturer`,
+          model: 'internetconnectioninfrastructuremanufacturer',
+          apiRoute: 'internet-connection-infrastructure-manufacturers'
         },
         {
           id: 69,
@@ -457,7 +479,119 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/electric-power/electric-tower-registration`,
           model: 'electrictower',
           apiRoute: 'electric-towers'
-        }
+        },
+        {
+          id: 64,
+          title: t('project.navigation.submenu.others.geothermal-power-infrastructure'),
+          path: `${baseUrl}/electric-power/geothermal-power-infrastructure`,
+          model: 'geothermalpowerinfrastructure',
+          apiRoute: 'geothermal-power-infrastructures'
+        },
+        {
+          id: 71,
+          title: t('project.navigation.submenu.others.geothermal-power-well'),
+          path: `${baseUrl}/electric-power/geothermal-power-well`,
+          model: 'geothermalpowerwell',
+          apiRoute: 'geothermal-power-wells'
+        },
+        {
+          id: 73,
+          title: t('project.navigation.submenu.others.solar-panel'),
+          path: `${baseUrl}/electric-power/solar-panel`,
+          model: 'solarpanel',
+          apiRoute: 'solar-panels'
+        },
+        {
+          id: 75,
+          title: t('project.navigation.submenu.others.solar-resource-information'),
+          path: `${baseUrl}/electric-power/solar-resource-information`,
+          model: 'solarresourceinformation',
+          apiRoute: 'solar-resource-informations'
+        },
+        {
+          id: 62,
+          title: t('project.navigation.submenu.others.power-generation-capacity'),
+          path: `${baseUrl}/electric-power/power-generation-capacity`,
+          model: 'powergenerationcapacity',
+          apiRoute: 'power-generation-capacities'
+        },
+        {
+          id: 66,
+          title: t('project.navigation.submenu.others.transmission-line-informations'),
+          path: `${baseUrl}/electric-power/transmission-line-informations`,
+          model: 'transmissionlineinformation',
+          apiRoute: 'transmission-line-informations'
+        },
+        {
+          id: 77,
+          title: t('project.navigation.submenu.others.wind-turbine'),
+          path: `${baseUrl}/electric-power/wind-turbine`,
+          model: 'windturbine',
+          apiRoute: 'wind-turbines'
+        },
+        {
+          id: 79,
+          title: t('project.navigation.submenu.others.wind-resource'),
+          path: `${baseUrl}/electric-power/wind-resource`,
+          model: 'windresource',
+          apiRoute: 'wind-resources'
+        },
+        {
+          id: 81,
+          title: t('project.navigation.submenu.others.regulation-and-policy'),
+          path: `${baseUrl}/electric-power/regulation-and-policy`,
+          model: 'regulationandpolicy',
+          apiRoute: 'regulation-and-policies'
+        },
+        {
+          id: 83,
+          title: t('project.navigation.submenu.others.regulation-and-policy'),
+          path: `${baseUrl}/electric-power/regulation-and-policy`,
+          model: 'regulationandpolicy',
+          apiRoute: 'regulation-and-policies'
+        },
+        {
+          id: 85,
+          title: t('project.navigation.submenu.others.environmental-and-social-impact'),
+          path: `${baseUrl}/electric-power/environmental-and-social-impact`,
+          model: 'environmentalandsocialimpact',
+          apiRoute: 'environmental-and-social-impacts'
+        },
+        {
+          id: 87,
+          title: t('project.navigation.submenu.others.reliability-and-maintenance'),
+          path: `${baseUrl}/electric-power/reliability-and-maintenance`,
+          model: 'reliabilityandmaintenance',
+          apiRoute: 'reliability-and-maintenance'
+        },
+        {
+          id: 89,
+          title: t('project.navigation.submenu.others.transmission'),
+          path: `${baseUrl}/electric-power/transmission`,
+          model: 'transmission',
+          apiRoute: 'transmissions'
+        },
+        {
+          id: 91,
+          title: t('project.navigation.submenu.others.dam'),
+          path: `${baseUrl}/electric-power/dam`,
+          model: 'dam',
+          apiRoute: 'dams'
+        },
+        {
+          id: 93,
+          title: t("project.navigation.submenu.others.transmission-line-conductor-and-tower-data"),
+          path: `${baseUrl}/electric-power/transmission-line-conductor-and-tower-data`,
+          model: "transmissionlineconductorandtowerdata",
+          apiRoute: "transmission-line-conductor-and-tower-datas",
+        },
+        {
+          id: 95,
+          title: t("project.navigation.submenu.others.transmission-line-equipment-data"),
+          path: `${baseUrl}/electric-power/transmission-line-equipment-data`,
+          model: "transmissionlineequipmentdata",
+          apiRoute: "transmission-line-equipment-datas",
+        },
       ]
     },
     {
@@ -513,6 +647,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/irrigation-dam/water-irrigation-dam`,
           model: 'waterirrigationdam',
           apiRoute: 'water-irrigation-dams'
+        },
+        {
+          id: 60,
+          title: t('project.navigation.submenu.others.hydrological-information'),
+          path: `${baseUrl}/irrigation-dam/hydrological-information`,
+          model: 'hydrologicalinformation',
+          apiRoute: 'hydrological-informations'
         }
       ]
     },
