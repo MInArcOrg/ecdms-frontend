@@ -136,7 +136,8 @@ export const uploadableProjectFileTypes = {
     reliabilityAndMaintenance: 'RELIABILITY_AND_MAINTENANCE',
     transmission: 'TRANSMISSION',
     dam: 'DAM',
-    transmissionLineConductorAndTowerData: "TRANSMISSION_LINE_CONDUCTOR_AND_TOWER_DATA"
+    transmissionLineConductorAndTowerData: "TRANSMISSION_LINE_CONDUCTOR_AND_TOWER_DATA",
+    transmissionLineEquipmentData: "TRANSMISSION_LINE_EQUIPMENT_DATA"
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

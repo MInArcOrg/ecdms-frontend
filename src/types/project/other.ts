@@ -1222,3 +1222,21 @@ export interface TransmissionLineConductorAndTowerData {
   created_at?: Date
   updated_at?: Date
 }
+
+export interface TransmissionLineEquipmentData {
+  id: string
+  transmission_line_id: string
+  name: string
+  insulator_type?: string
+  ground_wire_type?: string
+  fiber_optics_number?: number
+  opgw_uts?: number
+  opgw_weight?: number
+  owner_operator?: string
+  tower_grounding?: string
+  tower_circuit_arrangement?: string
+  other_equipment?: string
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}
