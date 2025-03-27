@@ -1254,3 +1254,16 @@ export interface BroadcastingInfrastructureAge {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface BroadcastingInfrastructureManufacturer {
+  id: string
+  broadcasting_infrastructure_id: string
+  name: string
+  antennas?: string
+  transmitters?: string
+  towers?: string
+  cables?: string
+  others?: string
+  created_at?: Date
+  updated_at?: Date
+}

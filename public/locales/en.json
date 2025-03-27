@@ -677,7 +677,8 @@
           "transmission": "Transmission",
           "dam": "Dam",
           "transmission-line-conductor-and-tower-data": "Transmission Line Conductor And Tower Data",
-          "transmission-line-equipment-data": "Transmission Line Equipment Data"
+          "transmission-line-equipment-data": "Transmission Line Equipment Data",
+          "broadcasting-infrastructure-manufacturer": "Broadcasting Infrastructure Manufacturer"
         }
       }
     },
@@ -2407,6 +2408,22 @@
           "tower-circuit-arrangement": "Tower Circuit Arrangement",
           "other-equipment": "Other Equipment",
           "remark": "Remark"
+        }
+      },
+      "broadcasting-infrastructure-manufacturer": {
+        "title": "Broadcasting Infrastructure Manufacturer",
+        "create-broadcasting-infrastructure-manufacturer": "Create Broadcasting Infrastructure Manufacturer",
+        "edit-broadcasting-infrastructure-manufacturer": "Edit Broadcasting Infrastructure Manufacturer",
+        "broadcasting-infrastructure-manufacturer-details": "Broadcasting Infrastructure Manufacturer Details",
+        "general-information": "General Information",
+        "manufacturer-information": "Manufacturer Information",
+        "details": {
+          "broadcasting-infrastructure-id": "Broadcasting Infrastructure",
+          "antennas": "Antennas",
+          "transmitters": "Transmitters",
+          "towers": "Towers",
+          "cables": "Cables",
+          "others": "Others"
         }
       }
     }
