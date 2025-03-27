@@ -674,7 +674,8 @@
           "transmission-line-informations": "Transmission Line Informations",
           "reliability-and-maintenance": "Reliability and Maintenance",
           "transmission": "Transmission",
-          "dam": "Dam"
+          "dam": "Dam",
+          "transmission-line-conductor-and-tower-data": "Transmission Line Conductor And Tower Data"
         }
       }
     },
@@ -2339,6 +2340,32 @@
           "national-priority-rank": "National Priority Rank",
           "remark": "Remark"
         }
+      },
+      "transmission-line-conductor-and-tower-data": {
+        "title": "Transmission Line Conductor And Tower Data",
+        "create-transmission-line-conductor-and-tower-data": "Create Transmission Line Conductor And Tower Data",
+        "edit-transmission-line-conductor-and-tower-data": "Edit Transmission Line Conductor And Tower Data",
+        "transmission-line-conductor-and-tower-data-details": "Transmission Line Conductor And Tower Data Details",
+        "general-information": "General Information",
+        "conductor-information": "Conductor Information",
+        "tower-information": "Tower Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "transmission-line-id": "Transmission Line",
+          "conductor-type": "Conductor Type",
+          "conductor-code-name-id": "Conductor Code Name",
+          "strands-number": "Number of Strands",
+          "conductor-size": "Conductor Size",
+          "conductors-per-phase-number": "Conductors Per Phase",
+          "tower-type-id": "Tower Type",
+          "tower-height": "Tower Height",
+          "conductor-diameter": "Conductor Diameter",
+          "each-strand-diameter": "Each Strand Diameter",
+          "tower-foundation-type-id": "Tower Foundation Type",
+          "other-equipment": "Other Equipment",
+          "remark": "Remark"
+        }
       }
     }
   },
@@ -2403,6 +2430,8 @@
     "watts": "W",
     "meters-per-second": "m/s",
     "kilometers": "Kilometers",
+    "mm2": "Square Millimeters",
+    "mm": "Millimeters",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",

@@ -1202,3 +1202,23 @@ export interface Dam {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface TransmissionLineConductorAndTowerData {
+  id: string
+  transmission_line_id: string
+  name: string
+  conductor_type?: string
+  conductor_code_name_id: string
+  strands_number?: number
+  conductor_size?: number
+  conductors_per_phase_number?: number
+  tower_type_id: string
+  tower_height?: number
+  conductor_diameter?: number
+  each_strand_diameter?: number
+  tower_foundation_type_id: string
+  other_equipment?: string
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}
