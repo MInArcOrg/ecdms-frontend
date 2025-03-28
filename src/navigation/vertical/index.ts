@@ -8,6 +8,25 @@ const navigation = (): VerticalNavItemsType => {
       icon: 'tabler:smart-home',
       path: '/dashboard'
     },
+
+    {
+      sectionTitle: 'navigation.admin-module'
+    },
+    {
+      title: 'navigation.department',
+      icon: 'tabler:building',
+      path: '/departments'
+    },
+    {
+      title: 'navigation.user',
+      icon: 'tabler:user',
+      path: '/admin/users'
+    },
+    {
+      title: 'navigation.roles',
+      icon: 'tabler:settings',
+      path: '/admin/roles'
+    },
     {
       sectionTitle: 'navigation.master-data.master-data'
     },
@@ -23,6 +42,11 @@ const navigation = (): VerticalNavItemsType => {
         {
           title: 'navigation.master-data.project',
           path: '/master-data/project',
+          icon: 'tabler:box-multiple'
+        },
+        {
+          title: 'navigation.master-data.infrastructure',
+          path: '/master-data/infrastructure',
           icon: 'tabler:box-multiple'
         },
         {
@@ -42,41 +66,7 @@ const navigation = (): VerticalNavItemsType => {
         }
       ]
     },
-    {
-      sectionTitle: 'navigation.admin-module'
-    },
-    {
-      title: 'navigation.user',
-      icon: 'tabler:user',
-      children: [
-        {
-          title: 'navigation.user-list',
-          path: '/admin/users'
-        }
-      ]
-    },
-    {
-      title: 'navigation.roles-and-permissions',
-      icon: 'tabler:settings',
-      children: [
-        {
-          title: 'navigation.roles',
-          path: '/admin/roles'
-        },
-        {
-          title: 'navigation.permissions',
-          path: '/admin/permissions'
-        }
-      ]
-    },
-    {
-      sectionTitle: 'navigation.depamrtent-module'
-    },
-    {
-      title: 'navigation.department',
-      icon: 'tabler:building',
-      path: '/departments'
-    },
+
     {
       sectionTitle: 'navigation.main-module'
     }

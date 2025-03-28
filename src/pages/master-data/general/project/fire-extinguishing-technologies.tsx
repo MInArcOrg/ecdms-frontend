@@ -14,6 +14,4 @@ function DesignStandardMasterData() {
     </div>
   );
 }
-
 export default DesignStandardMasterData;
-

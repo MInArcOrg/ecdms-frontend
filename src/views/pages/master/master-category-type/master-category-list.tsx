@@ -15,9 +15,11 @@ import MasterCategoryDrawer from './master-category-drawer';
 interface MasterCategoryListProps {
   model: string;
   selectedType: MasterType | null;
+  onCategorySelect: (id: string) => void;
+  selectedCategory: MasterCategory | null;
 }
 
-const MasterCategoryList: React.FC<MasterCategoryListProps> = ({ model, selectedType }) => {
+const MasterCategoryList: React.FC<MasterCategoryListProps> = ({ model, selectedType, onCategorySelect, selectedCategory }) => {
   const fetchMasterCategory = (params: GetRequestParam): Promise<IApiResponse<MasterCategory[]>> => {
     return masterCategoryApiService.getAll(model, {
       ...params,
@@ -39,7 +41,7 @@ const MasterCategoryList: React.FC<MasterCategoryListProps> = ({ model, selected
     handlePageChange,
     refetch
   } = usePaginatedFetch<MasterCategory[]>({
-    queryKey: ['masterCategory', model],
+    queryKey: ['masterCategory', model, selectedType?.id || ''],
     fetchFunction: fetchMasterCategory
   });
 
@@ -75,11 +77,19 @@ const MasterCategoryList: React.FC<MasterCategoryListProps> = ({ model, selected
               onlyIcon: true,
               permission: {
                 action: 'create',
-                subject: 'position'
+                subject: ''
               }
             }}
             ItemViewComponent={({ data }) => (
-              <MasterCategoryCard model={model} masterCategory={data} onDelete={handleDelete} onEdit={handleEdit} refetch={refetch} t={t} />
+              <MasterCategoryCard
+                onCategorySelect={onCategorySelect}
+                model={model}
+                masterCategory={data}
+                onDelete={handleDelete}
+                onEdit={handleEdit}
+                refetch={refetch}
+                t={t}
+                selectedCategory={selectedCategory} />
             )}
             fetchDataFunction={refetch}
             items={categorys || []}

@@ -4,7 +4,7 @@ import { buildGetRequest } from 'src/utils/requests/get-request';
 import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 import axiosServices from 'src/utils/axios';
-import type { ProfessionalContactPerson } from 'src/types/resource/professional-contact-person';
+import { ProfessionalContactPerson } from 'src/types/resource';
 
 const professionalContactPersonApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<ProfessionalContactPerson[]>> =>
