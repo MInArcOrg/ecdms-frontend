@@ -120,6 +120,7 @@ export const uploadableProjectFileTypes = {
     satelliteNetworkComponentManufacturer: 'SATELLITE_NETWORK_COMPONENT_MANUFACTURER',
     internetConnection: 'INTERNET_CONNECTION',
     broadcastingInfrastructure: 'BROADCASTING_INFRASTRUCTURE',
+    broadcastingInfrastructureAge: "BROADCASTING_INFRASTRUCTURE_AGE",
     internetConnectionInfrastructureAge: 'INTERNET_CONNECTION_COMPONENT_AGE',
     internetConnectionInfrastructureManufacturer: 'INTERNET_CONNECTION_COMPONENT_MANUFACTURER',
     hydrologicalInformation: 'HYDROLOGICAL_INFORMATION',
