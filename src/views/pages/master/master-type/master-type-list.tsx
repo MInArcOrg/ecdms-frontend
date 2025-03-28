@@ -1,13 +1,12 @@
 // components/MasterTypeList.tsx
-import { Card, CardContent, ListItemButton, ListItemText } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 import React, { Fragment, useState } from 'react';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import { useTranslation } from 'react-i18next';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
 import masterTypeApiService from 'src/services/master-data/master-type-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { MasterType } from 'src/types/master/master-types';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
+import MasterDataNavMenu from 'src/views/components/custom/layout/master-data-nav-menu';
 import MasterTypeDrawer from './master-type-drawer';
 
 interface MasterTypeListProps {
@@ -17,18 +16,20 @@ interface MasterTypeListProps {
 }
 
 const MasterTypeList: React.FC<MasterTypeListProps> = ({ model, selectedType, onTypeSelect }) => {
-  const fetchMasterType = (params: GetRequestParam): Promise<IApiResponse<MasterType[]>> => {
-    return masterTypeApiService.getAll(model, params);
-  };
-  const [showDrawer, setShowDrawer] = useState<boolean>();
+  const { t } = useTranslation();
+  const [showDrawer, setShowDrawer] = useState<boolean>(false);
+
   const toggleDrawer = () => {
     setShowDrawer(!showDrawer);
   };
+
+  const fetchMasterType = (params: GetRequestParam): Promise<IApiResponse<MasterType[]>> => {
+    return masterTypeApiService.getAll(model, params);
+  };
+
   const {
     data: types,
     isLoading,
-    pagination,
-    handlePageChange,
     refetch
   } = usePaginatedFetch<MasterType[]>({
     queryKey: ['masterType', model],
@@ -40,61 +41,29 @@ const MasterTypeList: React.FC<MasterTypeListProps> = ({ model, selectedType, on
       {showDrawer && (
         <MasterTypeDrawer model={model} open={showDrawer} toggle={toggleDrawer} masterData={{} as MasterType} refetch={refetch} />
       )}
-      <Card>
-        <CardContent>
-          <ItemsListing
-            pagination={pagination}
-            type={ITEMS_LISTING_TYPE.list.value}
-            title="master-data.master-type"
-            ItemViewComponent={({ data }) => <ListItemView type={data} onTypeSelect={onTypeSelect} selectedType={selectedType} />}
-            isLoading={isLoading}
-            createActionConfig={{
-              ...defaultCreateActionConfig,
-              onClick: toggleDrawer,
-              onlyIcon: true,
-              permission: {
-                action: 'create',
-                subject: `${model}type`
-              }
-            }}
-            fetchDataFunction={refetch}
-            items={types || []}
-            onPaginationChange={handlePageChange}
-          />
-        </CardContent>
-      </Card>
+
+      {isLoading ? (
+        <Box sx={{ display: 'flex', justifyContent: 'center', p: 3 }}>
+          <CircularProgress size={30} />
+        </Box>
+      ) : types && types.length > 0 ? (
+        <MasterDataNavMenu
+          activeMenu={{ id: selectedType?.id || '', title: selectedType?.title || '' }}
+          menuItems={
+            types
+              .sort((a, b) => a.title.localeCompare(b.title))
+              .map((type) => ({
+                id: type.id,
+                title: type.title
+              })) || []
+          }
+          setActiveMenu={onTypeSelect}
+        />
+      ) : (
+        <Box sx={{ p: 2, textAlign: 'center', color: 'text.secondary' }}>{t('common.no-data-available')}</Box>
+      )}
     </Fragment>
   );
 };
 
 export default MasterTypeList;
-const ListItemView = ({
-  type,
-  onTypeSelect,
-  selectedType
-}: {
-  type: MasterType;
-  onTypeSelect: (id: string) => void;
-  selectedType: MasterType | null;
-}) => {
-  return (
-    <ListItemButton
-      sx={{
-        borderRadius: '0.5rem'
-      }}
-      selected={type.id === selectedType?.id}
-      onClick={() => onTypeSelect(type.id)}
-    >
-      <ListItemText
-        primaryTypographyProps={{
-          style: {
-            color: `${type?.id === selectedType?.id ? '#fff' : ''}`,
-            wordWrap: 'break-word',
-            maxWidth: '95%'
-          }
-        }}
-        primary={type.title}
-      />
-    </ListItemButton>
-  );
-};

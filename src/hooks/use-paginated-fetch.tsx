@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useState } from 'react';
 import { defaultGetRequestParam, GetRequestParam, IApiResponse } from 'src/types/requests';
 import { Pagination } from 'src/types/requests/pagination';
+import { StringHelpers } from 'src/utils/string-helpers';
 
 interface UsePaginatedFetchProps<T> {
   queryKey: string[];
@@ -23,13 +24,38 @@ const usePaginatedFetch = <T,>({ queryKey, fetchFunction, initialQueryParams = d
     queryClient.invalidateQueries({ queryKey: [queryKey] });
   };
 
+  const handleSearch = (searchTerm: string, searchKeys: string[]) => {
+    setQueryParams((prevParams: GetRequestParam): GetRequestParam => ({
+      ...prevParams,
+      filter: {
+        ...prevParams.filter,
+        ...StringHelpers.createSearchFilter(searchTerm, searchKeys)
+      },
+      pagination: {
+        ...prevParams.pagination,
+        page: 1,
+        pageSize: prevParams?.pagination?.pageSize || 0
+      }
+    }));
+  };
+
+  const handleFilter = (filterValues: Record<string, any>) => {
+    const cleanedFilterValues = StringHelpers.cleanObject(filterValues);
+    setQueryParams((prevParams: GetRequestParam): GetRequestParam => ({
+      ...prevParams,
+      filter: cleanedFilterValues
+    }));
+  };
+
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: [queryKey, queryParams],
     queryFn: () =>
       fetchFunction({ ...defaultGetRequestParam, ...queryParams }).then((response) => {
         setPagination(response._attributes.pagination);
         return response.payload;
-      })
+      }),
+    // Add this to prevent automatic refetching when queryParams changes
+    enabled: true
   });
 
   const handlePageChange = (pageSize: number, newPage: number) => {
@@ -55,9 +81,10 @@ const usePaginatedFetch = <T,>({ queryKey, fetchFunction, initialQueryParams = d
     }));
   };
 
-  useEffect(() => {
-    refetch();
-  }, [queryParams]);
+  // Remove this useEffect as it's causing duplicate requests
+  // useEffect(() => {
+  //     refetch();
+  // }, [queryParams]);
 
   return {
     data,
@@ -67,7 +94,9 @@ const usePaginatedFetch = <T,>({ queryKey, fetchFunction, initialQueryParams = d
     pagination,
     handlePageChange,
     handlePageSizeChange,
-    invalidateQuery
+    invalidateQuery,
+    handleSearch,
+    handleFilter
   };
 };
 
