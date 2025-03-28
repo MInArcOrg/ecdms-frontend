@@ -7,7 +7,7 @@
     "department": "Department",
     "user": "User",
     "user-list": "User List",
-    "roles-and-permissions": "Roles & Permissions",
+    "roles-and-permissions": "Roles",
     "roles": "Roles",
     "permissions": "Permissions",
     "resources": "Resources",
@@ -18,7 +18,8 @@
       "project": "Project",
       "resource": "Resource",
       "document": "Document",
-      "general": "General"
+      "general": "General",
+      "infrastructure": "Infrastructure"
     }
   },
   "master-data": {
