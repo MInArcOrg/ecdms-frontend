@@ -20,6 +20,8 @@ import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-det
 import SubstationLayoutAndCommunicationDataCard from "./substation-layout-and-communication-data-card"
 import SubstationLayoutAndCommunicationDataDrawer from "./substation-layout-and-communication-data-drawer"
 import { substationLayoutAndCommunicationDataColumns } from "./substation-layout-and-communication-data-row"
+import { projectMasterModels } from "src/constants/master-data/project-general-master-constants"
+import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service"
 
 interface SubstationLayoutAndCommunicationDataListProps {
   otherSubMenu?: OtherMenuRoute
@@ -36,10 +38,27 @@ const SubstationLayoutAndCommunicationDataList: React.FC<SubstationLayoutAndComm
   const { data: substations } = useQuery({
     queryKey: ["substations", projectId],
     queryFn: () =>
-        projectOtherApiSecondService<any>().getAll("substations", {
-          filter: { project_id: projectId },
-        }),
+      projectOtherApiSecondService<any>().getAll("substation-transformer-and-switchgear-datas", {}),
   })
+
+  // Fetch communication systems for dropdown
+  const { data: communicationSystems } = useQuery({
+    queryKey: ["communication-systems"],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.substationCommunicationSystem.model },
+      }),
+  })
+
+  // Fetch grounding systems for dropdown
+  const { data: groundingSystems } = useQuery({
+    queryKey: ["grounding-systems"],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.substationGroundingSystem.model },
+      }),
+  })
+
 
   const fetchSubstationLayoutAndCommunicationDatas = (params: GetRequestParam): Promise<IApiResponse<SubstationLayoutAndCommunicationData[]>> => {
     return projectOtherApiSecondService<SubstationLayoutAndCommunicationData>().getAll(otherSubMenu?.apiRoute || "", {})
@@ -82,6 +101,8 @@ const SubstationLayoutAndCommunicationDataList: React.FC<SubstationLayoutAndComm
   }
 
   const substationsMap = new Map(substations?.payload.map((item: any) => [item.id, item.name || '']) || []);
+  const communicationSystemsMap = new Map(communicationSystems?.payload.map((item: any) => [item.id, item.title || '']) || []);
+  const groundingSystemsMap = new Map(groundingSystems?.payload.map((item: any) => [item.id, item.title || '']) || []);
 
   const mapSubstationLayoutAndCommunicationDataToDetailItems = (substationLayoutAndCommunicationData: SubstationLayoutAndCommunicationData): { title: string; value: string }[] => [
     {
@@ -106,22 +127,22 @@ const SubstationLayoutAndCommunicationDataList: React.FC<SubstationLayoutAndComm
     },
     {
       title: t("project.other.substation-layout-and-communication-data.details.substation-communication-system-id"),
-      value: substationLayoutAndCommunicationData?.substation_communication_system_id || "N/A",
+      value: substationLayoutAndCommunicationData?.substation_communication_system_id ? communicationSystemsMap.get(substationLayoutAndCommunicationData?.substation_communication_system_id) || substationLayoutAndCommunicationData?.substation_communication_system_id : 'N/A'
     },
     {
       title: t("project.other.substation-layout-and-communication-data.details.scada-system"),
-      value: substationLayoutAndCommunicationData?.scada_system !== undefined 
-        ? substationLayoutAndCommunicationData.scada_system ? t("common.yes") : t("common.no") 
+      value: substationLayoutAndCommunicationData?.scada_system !== undefined
+        ? substationLayoutAndCommunicationData.scada_system ? t("common.yes") : t("common.no")
         : "N/A",
     },
     {
       title: t("project.other.substation-layout-and-communication-data.details.substation-grounding-system-id"),
-      value: substationLayoutAndCommunicationData?.substation_grounding_system_id || "N/A",
+      value: substationLayoutAndCommunicationData?.substation_grounding_system_id ? groundingSystemsMap.get(substationLayoutAndCommunicationData?.substation_grounding_system_id) || substationLayoutAndCommunicationData?.substation_grounding_system_id : 'N/A'
     },
     {
       title: t("project.other.substation-layout-and-communication-data.details.substation-altitude-level"),
-      value: substationLayoutAndCommunicationData?.substation_altitude_level !== undefined 
-        ? `${substationLayoutAndCommunicationData.substation_altitude_level} ${t("common.meters")}` 
+      value: substationLayoutAndCommunicationData?.substation_altitude_level !== undefined
+        ? `${substationLayoutAndCommunicationData.substation_altitude_level} ${t("common.meters")}`
         : "N/A",
     },
     {
