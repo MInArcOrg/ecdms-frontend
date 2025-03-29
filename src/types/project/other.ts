@@ -1284,3 +1284,19 @@ export interface SubstationTransformerAndSwitchgearData {
   created_at?: Date
   updated_at?: Date
 }
+
+export interface SubstationLayoutAndCommunicationData {
+  id: string
+  substation_id: string
+  name: string
+  substation_layout?: string
+  equipped_with_standby_diesel_generator?: string
+  substation_busbar_type?: string
+  substation_communication_system_id: string
+  scada_system?: boolean
+  substation_grounding_system_id: string
+  substation_altitude_level?: number
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}

@@ -680,7 +680,8 @@
           "transmission-line-conductor-and-tower-data": "Transmission Line Conductor And Tower Data",
           "transmission-line-equipment-data": "Transmission Line Equipment Data",
           "broadcasting-infrastructure-manufacturer": "Broadcasting Infrastructure Manufacturer",
-          "substation-transformer-and-switchgear-data": "Substation Transformer And Switchgear Data"
+          "substation-transformer-and-switchgear-data": "Substation Transformer And Switchgear Data",
+          "substation-layout-and-communication-data": "Substation Layout And Communication Data"
         }
       }
     },
@@ -2448,6 +2449,28 @@
           "switchgear-type-id": "Switchgear Type",
           "circuit-breaker-type-id": "Circuit Breaker Type",
           "other-equipment": "Other Equipment",
+          "remark": "Remark"
+        }
+      },
+      "substation-layout-and-communication-data": {
+        "title": "Substation Layout And Communication Data",
+        "create-substation-layout-and-communication-data": "Create Substation Layout And Communication Data",
+        "edit-substation-layout-and-communication-data": "Edit Substation Layout And Communication Data",
+        "substation-layout-and-communication-data-details": "Substation Layout And Communication Data Details",
+        "general-information": "General Information",
+        "layout-information": "Layout Information",
+        "communication-information": "Communication Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "substation-id": "Substation",
+          "substation-layout": "Substation Layout",
+          "equipped-with-standby-diesel-generator": "Equipped With Standby Diesel Generator",
+          "substation-busbar-type": "Substation Busbar Type",
+          "substation-communication-system-id": "Communication System",
+          "scada-system": "SCADA System",
+          "substation-grounding-system-id": "Grounding System",
+          "substation-altitude-level": "Altitude Level",
           "remark": "Remark"
         }
       }
