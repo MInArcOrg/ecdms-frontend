@@ -13,7 +13,7 @@ export interface Port {
   revision_no?: number;
   created_at?: Date;
   updated_at?: Date;
-}
+} 
 export interface TelecomInfrastructure {
   id: string;
   parent_id?: string;
@@ -1264,6 +1264,23 @@ export interface BroadcastingInfrastructureManufacturer {
   towers?: string
   cables?: string
   others?: string
+  created_at?: Date
+  updated_at?: Date
+}
+
+export interface SubstationTransformerAndSwitchgearData {
+  id: string
+  transmission_line_id: string
+  name: string
+  transformers_number?: number
+  transformer_type?: string
+  transformer_capacity?: number
+  input_voltage_level?: number
+  output_voltage_level?: number
+  switchgear_type_id: string
+  circuit_breaker_type_id: string
+  other_equipment?: string
+  remark?: string
   created_at?: Date
   updated_at?: Date
 }

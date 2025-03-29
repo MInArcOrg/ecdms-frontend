@@ -599,6 +599,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "transmissionlineequipmentdata",
           apiRoute: "transmission-line-equipment-datas",
         },
+        {
+          id: 97,
+          title: t("project.navigation.submenu.others.substation-transformer-and-switchgear-data"),
+          path: `${baseUrl}/electric-power/substation-transformer-and-switchgear-data`,
+          model: "substationtransformerandswitchgeardata",
+          apiRoute: "substation-transformer-and-switchgear-datas",
+        },
       ]
     },
     {
