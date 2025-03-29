@@ -1300,3 +1300,20 @@ export interface SubstationLayoutAndCommunicationData {
   created_at?: Date
   updated_at?: Date
 }
+
+export interface MiniGridStation {
+  id: string
+  substation_id: string
+  name: string
+  minigrid_size?: number
+  battery_type_id?: string
+  battery_size?: number
+  inverter?: number
+  system_voltage?: number
+  expected_annual_generation?: number
+  diesel_generator: 'Equipped' | 'Not Equipped'
+  owner_operator?: string
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}

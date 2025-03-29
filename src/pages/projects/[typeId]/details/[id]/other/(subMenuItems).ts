@@ -613,6 +613,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "substationlayoutandcommunicationdata",
           apiRoute: "substation-layout-and-communication-datas",
         },
+        {
+          id: 101,
+          title: t("project.navigation.submenu.others.mini-grid-station"),
+          path: `${baseUrl}/electric-power/mini-grid-station`,
+          model: "minigridstation",
+          apiRoute: "mini-grid-stations",
+        },
       ]
     },
     {

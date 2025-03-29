@@ -681,7 +681,8 @@
           "transmission-line-equipment-data": "Transmission Line Equipment Data",
           "broadcasting-infrastructure-manufacturer": "Broadcasting Infrastructure Manufacturer",
           "substation-transformer-and-switchgear-data": "Substation Transformer And Switchgear Data",
-          "substation-layout-and-communication-data": "Substation Layout And Communication Data"
+          "substation-layout-and-communication-data": "Substation Layout And Communication Data",
+          "mini-grid-station": "Mini Grid Station"
         }
       }
     },
@@ -2473,6 +2474,29 @@
           "substation-altitude-level": "Altitude Level",
           "remark": "Remark"
         }
+      },
+      "mini-grid-station": {
+        "title": "Mini Grid Station",
+        "create-mini-grid-station": "Create Mini Grid Station",
+        "edit-mini-grid-station": "Edit Mini Grid Station",
+        "mini-grid-station-details": "Mini Grid Station Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "power-generation": "Power Generation",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "substation-id": "Substation",
+          "minigrid-size": "Mini Grid Size",
+          "battery-type-id": "Battery Type",
+          "battery-size": "Battery Size",
+          "inverter": "Inverter",
+          "system-voltage": "System Voltage",
+          "expected-annual-generation": "Expected Annual Generation",
+          "diesel-generator": "Diesel Generator",
+          "owner-operator": "Owner/Operator",
+          "remark": "Remark"
+        }
       }
     }
   },
@@ -2540,6 +2564,9 @@
     "mm2": "Square Millimeters",
     "mm": "Millimeters",
     "mva": "Mega Volt-Amperes",
+    "kwh": "Kilowatt-Hour",
+    "kw": "Kilowatt",
+    "v": "Volt",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",
