@@ -144,7 +144,8 @@ export const uploadableProjectFileTypes = {
     substation_layout_and_communication_data: 'SUBSTATION_LAYOUT_AND_COMMUNICATION_DATA',
     mini_grid_station: 'MINI_GRID_STATION',
     mini_grid_station_distribution_line: 'MINI_GRID_STATION_DISTRIBUTION_LINE',
-    mini_grid_station_consumer: 'MINI_GRID_STATION_CONSUMER'
+    mini_grid_station_consumer: 'MINI_GRID_STATION_CONSUMER',
+    mini_grid_station_backup_power_source: 'MINI_GRID_STATION_BACKUP_POWER_SOURCE',
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
