@@ -1333,3 +1333,21 @@ export interface MiniGridStationDistributionLine {
   created_at?: Date
   updated_at?: Date
 }
+
+export interface MiniGridStationConsumer {
+  id: string
+  mini_grid_station_id: string
+  name: string
+  residential?: number
+  commercial?: number
+  productive_industrial?: number
+  health_centers?: number
+  schools?: number
+  street_lighting?: number
+  other?: number
+  expected_electricity_sales?: number
+  electricity_tariff?: number
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}

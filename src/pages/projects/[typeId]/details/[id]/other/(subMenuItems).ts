@@ -627,6 +627,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "minigridstationdistributionline",
           apiRoute: "mini-grid-station-distribution-lines",
         },
+        {
+          id: 105,
+          title: t("project.navigation.submenu.others.mini-grid-station-consumer"),
+          path: `${baseUrl}/electric-power/mini-grid-station-consumer`,
+          model: "minigridstationconsumer",
+          apiRoute: "mini-grid-station-consumers",
+        },
       ]
     },
     {
