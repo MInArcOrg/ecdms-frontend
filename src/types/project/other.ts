@@ -1317,3 +1317,19 @@ export interface MiniGridStation {
   created_at?: Date
   updated_at?: Date
 }
+
+export interface MiniGridStationDistributionLine {
+  id: string
+  mini_grid_station_id: string
+  name: string
+  system_type?: string
+  lines_type?: string
+  line_length?: number
+  poles: 'Concrete' | 'Wood' | 'Steel'
+  transformer_type_id: string
+  transformers_number?: number
+  transformers_size?: number
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}
