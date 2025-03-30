@@ -679,7 +679,8 @@
           "dam": "Dam",
           "transmission-line-conductor-and-tower-data": "Transmission Line Conductor And Tower Data",
           "transmission-line-equipment-data": "Transmission Line Equipment Data",
-          "broadcasting-infrastructure-manufacturer": "Broadcasting Infrastructure Manufacturer"
+          "broadcasting-infrastructure-manufacturer": "Broadcasting Infrastructure Manufacturer",
+          "substation-transformer-and-switchgear-data": "Substation Transformer And Switchgear Data"
         }
       }
     },
@@ -2426,6 +2427,29 @@
           "cables": "Cables",
           "others": "Others"
         }
+      },
+      "substation-transformer-and-switchgear-data": {
+        "title": "Substation Transformer And Switchgear Data",
+        "create-substation-transformer-and-switchgear-data": "Create Substation Transformer And Switchgear Data",
+        "edit-substation-transformer-and-switchgear-data": "Edit Substation Transformer And Switchgear Data",
+        "substation-transformer-and-switchgear-data-details": "Substation Transformer And Switchgear Data Details",
+        "general-information": "General Information",
+        "transformer-information": "Transformer Information",
+        "switchgear-information": "Switchgear Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "transmission-line-id": "Transmission Line",
+          "transformers-number": "Number of Transformers",
+          "transformer-type": "Transformer Type",
+          "transformer-capacity": "Transformer Capacity",
+          "input-voltage-level": "Input Voltage Level",
+          "output-voltage-level": "Output Voltage Level",
+          "switchgear-type-id": "Switchgear Type",
+          "circuit-breaker-type-id": "Circuit Breaker Type",
+          "other-equipment": "Other Equipment",
+          "remark": "Remark"
+        }
       }
     }
   },
@@ -2492,6 +2516,7 @@
     "kilometers": "Kilometers",
     "mm2": "Square Millimeters",
     "mm": "Millimeters",
+    "mva": "Mega Volt-Amperes",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",
