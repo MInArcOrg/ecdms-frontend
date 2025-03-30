@@ -683,7 +683,8 @@
           "substation-transformer-and-switchgear-data": "Substation Transformer And Switchgear Data",
           "substation-layout-and-communication-data": "Substation Layout And Communication Data",
           "mini-grid-station": "Mini Grid Station",
-          "mini-grid-station-distribution-line": "Mini Grid Station Distribution Line"
+          "mini-grid-station-distribution-line": "Mini Grid Station Distribution Line",
+          "mini-grid-station-consumer": "Mini Grid Station Consumer"
         }
       }
     },
@@ -2520,6 +2521,30 @@
           "transformers-size": "Transformers Size",
           "remark": "Remark"
         }
+      },
+      "mini-grid-station-consumer": {
+        "title": "Mini Grid Station Consumer",
+        "create-mini-grid-station-consumer": "Create Mini Grid Station Consumer",
+        "edit-mini-grid-station-consumer": "Edit Mini Grid Station Consumer",
+        "mini-grid-station-consumer-details": "Mini Grid Station Consumer Details",
+        "general-information": "General Information",
+        "consumer-types": "Consumer Types",
+        "electricity-information": "Electricity Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "residential": "Residential",
+          "commercial": "Commercial",
+          "productive-industrial": "Productive Industrial",
+          "health-centers": "Health Centers",
+          "schools": "Schools",
+          "street-lighting": "Street Lighting",
+          "other": "Other",
+          "expected-electricity-sales": "Expected Electricity Sales",
+          "electricity-tariff": "Electricity Tariff",
+          "remark": "Remark"
+        }
       }
     }
   },
@@ -2590,6 +2615,7 @@
     "kwh": "Kilowatt-Hour",
     "kw": "Kilowatt",
     "v": "Volt",
+    "currency": "Currency",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",
