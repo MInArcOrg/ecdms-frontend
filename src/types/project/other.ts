@@ -1351,3 +1351,18 @@ export interface MiniGridStationConsumer {
   created_at?: Date
   updated_at?: Date
 }
+
+export interface MiniGridStationBackupPowerSource {
+  id: string
+  mini_grid_station_id: string
+  name: string
+  capacity?: number
+  installation_year?: number
+  distribution_lines_total_length?: number
+  lifetime?: number
+  commissioning_date?: Date | string
+  other?: string
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}

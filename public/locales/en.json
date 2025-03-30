@@ -684,7 +684,8 @@
           "substation-layout-and-communication-data": "Substation Layout And Communication Data",
           "mini-grid-station": "Mini Grid Station",
           "mini-grid-station-distribution-line": "Mini Grid Station Distribution Line",
-          "mini-grid-station-consumer": "Mini Grid Station Consumer"
+          "mini-grid-station-consumer": "Mini Grid Station Consumer",
+          "mini-grid-station-backup-power-source": "Mini Grid Station Backup Power Source"
         }
       }
     },
@@ -2545,6 +2546,27 @@
           "electricity-tariff": "Electricity Tariff",
           "remark": "Remark"
         }
+      },
+      "mini-grid-station-backup-power-source": {
+        "title": "Mini Grid Station Backup Power Source",
+        "create-mini-grid-station-backup-power-source": "Create Mini Grid Station Backup Power Source",
+        "edit-mini-grid-station-backup-power-source": "Edit Mini Grid Station Backup Power Source",
+        "mini-grid-station-backup-power-source-details": "Mini Grid Station Backup Power Source Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "timeline-information": "Timeline Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "capacity": "Capacity",
+          "installation-year": "Installation Year",
+          "distribution-lines-total-length": "Distribution Lines Total Length",
+          "lifetime": "Lifetime",
+          "commissioning-date": "Commissioning Date",
+          "other": "Other Information",
+          "remark": "Remark"
+        }
       }
     }
   },
@@ -2616,6 +2638,7 @@
     "kw": "Kilowatt",
     "v": "Volt",
     "currency": "Currency",
+    "km": "Kilometers",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",
