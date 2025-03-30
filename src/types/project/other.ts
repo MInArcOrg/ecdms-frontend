@@ -1366,3 +1366,19 @@ export interface MiniGridStationBackupPowerSource {
   created_at?: Date
   updated_at?: Date
 }
+
+export interface MiniGridStationDistributionLineInfrastructure {
+  id: string
+  mini_grid_station_id: string
+  name: string
+  distribution_line_type_id: string
+  distribution_line_material_id: string
+  distribution_line_conductor_size?: number
+  voltage_level?: number
+  topology?: "Radial" | "Ring"
+  switching_station_connection?: boolean
+  station_name?: string
+  remark?: string
+  created_at?: Date
+  updated_at?: Date
+}
