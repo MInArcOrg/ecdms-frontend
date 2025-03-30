@@ -143,6 +143,7 @@ export const uploadableProjectFileTypes = {
     SUBSTATION_TRANSFORMER_AND_SWITCH_GEAR_DATA: 'SUBSTATION_TRANSFORMER_AND_SWITCH_GEAR_DATA',
     substation_layout_and_communication_data: 'SUBSTATION_LAYOUT_AND_COMMUNICATION_DATA',
     mini_grid_station: 'MINI_GRID_STATION',
+    mini_grid_station_distribution_line: 'MINI_GRID_STATION_DISTRIBUTION_LINE',
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

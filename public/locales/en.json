@@ -682,7 +682,8 @@
           "broadcasting-infrastructure-manufacturer": "Broadcasting Infrastructure Manufacturer",
           "substation-transformer-and-switchgear-data": "Substation Transformer And Switchgear Data",
           "substation-layout-and-communication-data": "Substation Layout And Communication Data",
-          "mini-grid-station": "Mini Grid Station"
+          "mini-grid-station": "Mini Grid Station",
+          "mini-grid-station-distribution-line": "Mini Grid Station Distribution Line"
         }
       }
     },
@@ -2495,6 +2496,28 @@
           "expected-annual-generation": "Expected Annual Generation",
           "diesel-generator": "Diesel Generator",
           "owner-operator": "Owner/Operator",
+          "remark": "Remark"
+        }
+      },
+      "mini-grid-station-distribution-line": {
+        "title": "Mini Grid Station Distribution Line",
+        "create-mini-grid-station-distribution-line": "Create Mini Grid Station Distribution Line",
+        "edit-mini-grid-station-distribution-line": "Edit Mini Grid Station Distribution Line",
+        "mini-grid-station-distribution-line-details": "Mini Grid Station Distribution Line Details",
+        "general-information": "General Information",
+        "line-specifications": "Line Specifications",
+        "transformer-information": "Transformer Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "system-type": "System Type",
+          "lines-type": "Lines Type",
+          "line-length": "Line Length",
+          "poles": "Poles",
+          "transformer-type-id": "Transformer Type",
+          "transformers-number": "Number of Transformers",
+          "transformers-size": "Transformers Size",
           "remark": "Remark"
         }
       }
