@@ -685,7 +685,8 @@
           "mini-grid-station": "Mini Grid Station",
           "mini-grid-station-distribution-line": "Mini Grid Station Distribution Line",
           "mini-grid-station-consumer": "Mini Grid Station Consumer",
-          "mini-grid-station-backup-power-source": "Mini Grid Station Backup Power Source"
+          "mini-grid-station-backup-power-source": "Mini Grid Station Backup Power Source",
+          "electric-distribution-transformer": "Electric Distribution Transformer"
         }
       }
     },
@@ -2567,6 +2568,27 @@
           "other": "Other Information",
           "remark": "Remark"
         }
+      },
+      "electric-distribution-transformer": {
+        "title": "Electric Distribution Transformers",
+        "create-electric-distribution-transformer": "Create Electric Distribution Transformer",
+        "edit-electric-distribution-transformer": "Edit Electric Distribution Transformer",
+        "electric-distribution-transformer-details": "Electric Distribution Transformer Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "location-information": "Location Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "service-area": "Service Area",
+          "installation-year": "Installation Year",
+          "transformers-total-number": "Total Number of Transformers",
+          "gps-x-coordinates": "GPS X Coordinates",
+          "gps-y-coordinates": "GPS Y Coordinates",
+          "fire-extinguishing-technology-id": "Fire Extinguishing Technology",
+          "other": "Other Information",
+          "remark": "Remark"
+        }
       }
     }
   },
@@ -2637,6 +2659,7 @@
     "kwh": "Kilowatt-Hour",
     "kw": "Kilowatt",
     "v": "Volt",
+    "km2": "Square Kilometer",
     "currency": "Currency",
     "km": "Kilometers",
     "table-columns": {
