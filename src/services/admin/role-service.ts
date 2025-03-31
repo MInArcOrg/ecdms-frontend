@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import Role from 'src/types/admin/role';
+import Permission from 'src/types/admin/role/permission';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import axiosServices from 'src/utils/axios';
 import { buildGetRequest } from 'src/utils/requests/get-request';
@@ -48,6 +49,24 @@ const roleApiService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
+      }),
+  getPermissionsByRole: (id: string, params: GetRequestParam): Promise<IApiResponse<Permission[]>> =>
+    buildGetRequest(`/roles/${id}/permissions`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
+  assignPermission: (
+    role_id: string,
+    body: {
+      data: { permissions: { id: string; is_selected: boolean }[] };
+      files: any[];
+    }
+  ): Promise<IApiResponse> =>
+    buildPutRequest(`/roles/${role_id}/assign-permission`, body)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw new Error(error);
       })
 };
 

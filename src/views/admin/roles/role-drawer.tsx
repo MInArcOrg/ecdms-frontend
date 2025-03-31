@@ -1,11 +1,11 @@
-import * as yup from 'yup';
+import * as yup from "yup";
 
-import { FormikProps } from 'formik';
-import useRole from 'src/hooks/admin/role-hook';
-import Role from 'src/types/admin/role';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import RoleForm from './role-form';
+import { FormikProps } from "formik";
+import useRole from "src/hooks/admin/role-hook";
+import Role from "src/types/admin/role";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import RoleForm from "./role-form";
 
 interface RoleDrawerType {
   open: boolean;
@@ -16,13 +16,13 @@ interface RoleDrawerType {
 
 const validationSchema = yup.object().shape({
   name: yup.string().required(),
-  description: yup.string().required()
+  description: yup.string().required(),
 });
 
 const RoleDrawer = (props: RoleDrawerType) => {
   // ** Props
   const { open, toggle, refetch, role } = props;
-  console.log('editable role', role);
+  console.log(`RoleDrawer`, role)
 
   const { addNewRole, updateRole } = useRole();
 
@@ -33,15 +33,15 @@ const RoleDrawer = (props: RoleDrawerType) => {
       data: {
         ...values,
         id: role?.id,
-        name: values.name,
-        description: values.description
       },
-      files: []
+      files: [],
     };
+
     return payload;
   };
   const handleClose = () => {
     toggle();
+
     // formik.resetForm()
   };
   const onActionSuccess = () => {
@@ -49,8 +49,13 @@ const RoleDrawer = (props: RoleDrawerType) => {
     refetch();
     handleClose();
   };
+
   return (
-    <CustomSideDrawer title={isEdit ? 'edit-role' : 'create-role'} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={isEdit ? "edit-role" : "create-role"}
+      handleClose={handleClose}
+      open={open}
+    >
       {() =>
         role && (
           <FormPageWrapper
@@ -64,7 +69,9 @@ const RoleDrawer = (props: RoleDrawerType) => {
             onCancel={handleClose}
           >
             {(formik: FormikProps<Role>) => {
-              return <RoleForm formik={formik} />;
+              return (
+                <RoleForm formik={formik} defaultLocaleData={{} as Role} />
+              );
             }}
           </FormPageWrapper>
         )

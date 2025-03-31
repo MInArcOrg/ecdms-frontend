@@ -4,6 +4,7 @@ type Permission = {
   model: string;
   module: string;
   description: string;
+  selected: boolean;
   created_at: string;
   updatedAt: string;
 };
