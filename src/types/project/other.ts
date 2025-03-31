@@ -1466,3 +1466,21 @@ export interface ElectricSmartMetersPerformanceData {
   created_at?: string
   updated_at?: string
 }
+
+export interface ElectricSmartMetersPrivacyAndSecurityData {
+  id: string
+  project_id: string
+  electric_smart_meters_data_id: string
+  name: string
+  privacy_measures_implemented?: boolean
+  privacy_measures_type_id: string
+  customer_engagement_frequency_id: string
+  customer_engagement_programs_implemented?: boolean
+  customer_engagement_programs_type_id: string
+  social_impact_assessment_conducted?: boolean
+  resettlement_and_compensation_measures_implemented?: boolean
+  remark?: string
+  created_at?: string
+  updated_at?: string
+}
+

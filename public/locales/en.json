@@ -690,7 +690,8 @@
           "electric-distribution-transformer-type": "Electric Distribution Transformer Types",
           "electric-smart-meters-data": "Electric Smart Meters Data",
           "electric-smart-meters-ratings-data": "Electric Smart Meters Ratings Data",
-          "electric-smart-meters-performance-data": "Electric Smart Meters Performance Data"
+          "electric-smart-meters-performance-data": "Electric Smart Meters Performance Data",
+          "electric-smart-meters-privacy-and-security-data": "Electric Smart Meters Privacy And Security Data"
         }
       }
     },
@@ -2677,6 +2678,29 @@
           "work-accidents-number": "Work Accidents Number",
           "on-site-safety-regulation-implemented": "On-site Safety Regulation Implemented",
           "other": "Other",
+          "remark": "Remark"
+        }
+      },
+      "electric-smart-meters-privacy-and-security-data": {
+        "title": "Electric Smart Meters Privacy And Security Data",
+        "create-electric-smart-meters-privacy-and-security-data": "Create Electric Smart Meters Privacy And Security Data",
+        "edit-electric-smart-meters-privacy-and-security-data": "Edit Electric Smart Meters Privacy And Security Data",
+        "electric-smart-meters-privacy-and-security-data-details": "Electric Smart Meters Privacy And Security Data Details",
+        "general-information": "General Information",
+        "privacy-information": "Privacy Information",
+        "customer-engagement": "Customer Engagement",
+        "social-impact": "Social Impact",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "electric-smart-meters-data-id": "Electric Smart Meters Data",
+          "privacy-measures-implemented": "Privacy Measures Implemented",
+          "privacy-measures-type-id": "Privacy Measures Type",
+          "customer-engagement-frequency-id": "Customer Engagement Frequency",
+          "customer-engagement-programs-implemented": "Customer Engagement Programs Implemented",
+          "customer-engagement-programs-type-id": "Customer Engagement Programs Type",
+          "social-impact-assessment-conducted": "Social Impact Assessment Conducted",
+          "resettlement-and-compensation-measures-implemented": "Resettlement And Compensation Measures Implemented",
           "remark": "Remark"
         }
       }
