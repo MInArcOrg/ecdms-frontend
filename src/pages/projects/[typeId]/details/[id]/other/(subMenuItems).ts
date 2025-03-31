@@ -648,6 +648,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           model: "electricdistributiontransformer",
           apiRoute: "electric-distribution-transformers",
         },
+        {
+          id: 113,
+          title: t("project.navigation.submenu.others.electric-distribution-transformer-type.title"),
+          path: `${baseUrl}/electric-power/electric-distribution-transformer-type`,
+          model: "electricdistributiontransformertype",
+          apiRoute: "electric-distribution-transformer-types",
+        }
       ]
     },
     {

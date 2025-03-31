@@ -1398,3 +1398,21 @@ export interface ElectricDistributionTransformer {
   created_at?: string
   updated_at?: string
 }
+
+export interface ElectricDistributionTransformerType {
+  id: string
+  project_id: string
+  mini_grid_station_id: string
+  name: string
+  transformer_type_id: string
+  cooling_type: 'Oil Immersed' | 'Dry type'
+  transformer_power_rating?: number
+  lifetime?: number
+  protection_installed_id: string
+  safety_problems_encountered_id: string
+  work_accidents_number?: number
+  on_site_safety_regulation_implemented?: boolean
+  remark?: string
+  created_at?: string
+  updated_at?: string
+}
