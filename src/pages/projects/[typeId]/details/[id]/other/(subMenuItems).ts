@@ -654,6 +654,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/electric-power/electric-distribution-transformer-type`,
           model: "electricdistributiontransformertype",
           apiRoute: "electric-distribution-transformer-types",
+        },
+        {
+          id: 115,
+          title: t("project.navigation.submenu.others.electric-smart-meters-data.title"),
+          path: `${baseUrl}/electric-power/electric-smart-meters-data`,
+          model: "electricsmartmetersdata",
+          apiRoute: "electric-smart-meters-data",
         }
       ]
     },

@@ -1416,3 +1416,21 @@ export interface ElectricDistributionTransformerType {
   created_at?: string
   updated_at?: string
 }
+
+export interface ElectricSmartMetersData {
+  id: string
+  project_id: string
+  mini_grid_station_id: string
+  name: string
+  owner_operator?: string
+  facility_type: 'Oil Immersed' | 'Dry Type'
+  service_area?: number
+  manufacturer?: string
+  model_id: string
+  smart_meter_type_id: string
+  installation_year?: number
+  smart_meters_installed_number?: number
+  remark?: string
+  created_at?: string
+  updated_at?: string
+}
