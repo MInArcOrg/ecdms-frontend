@@ -679,7 +679,14 @@
           "dam": "Dam",
           "transmission-line-conductor-and-tower-data": "Transmission Line Conductor And Tower Data",
           "transmission-line-equipment-data": "Transmission Line Equipment Data",
-          "broadcasting-infrastructure-manufacturer": "Broadcasting Infrastructure Manufacturer"
+          "broadcasting-infrastructure-manufacturer": "Broadcasting Infrastructure Manufacturer",
+          "substation-transformer-and-switchgear-data": "Substation Transformer And Switchgear Data",
+          "substation-layout-and-communication-data": "Substation Layout And Communication Data",
+          "mini-grid-station": "Mini Grid Station",
+          "mini-grid-station-distribution-line": "Mini Grid Station Distribution Line",
+          "mini-grid-station-consumer": "Mini Grid Station Consumer",
+          "mini-grid-station-backup-power-source": "Mini Grid Station Backup Power Source",
+          "electric-distribution-transformer": "Electric Distribution Transformer"
         }
       }
     },
@@ -2426,6 +2433,162 @@
           "cables": "Cables",
           "others": "Others"
         }
+      },
+      "substation-transformer-and-switchgear-data": {
+        "title": "Substation Transformer And Switchgear Data",
+        "create-substation-transformer-and-switchgear-data": "Create Substation Transformer And Switchgear Data",
+        "edit-substation-transformer-and-switchgear-data": "Edit Substation Transformer And Switchgear Data",
+        "substation-transformer-and-switchgear-data-details": "Substation Transformer And Switchgear Data Details",
+        "general-information": "General Information",
+        "transformer-information": "Transformer Information",
+        "switchgear-information": "Switchgear Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "transmission-line-id": "Transmission Line",
+          "transformers-number": "Number of Transformers",
+          "transformer-type": "Transformer Type",
+          "transformer-capacity": "Transformer Capacity",
+          "input-voltage-level": "Input Voltage Level",
+          "output-voltage-level": "Output Voltage Level",
+          "switchgear-type-id": "Switchgear Type",
+          "circuit-breaker-type-id": "Circuit Breaker Type",
+          "other-equipment": "Other Equipment",
+          "remark": "Remark"
+        }
+      },
+      "substation-layout-and-communication-data": {
+        "title": "Substation Layout And Communication Data",
+        "create-substation-layout-and-communication-data": "Create Substation Layout And Communication Data",
+        "edit-substation-layout-and-communication-data": "Edit Substation Layout And Communication Data",
+        "substation-layout-and-communication-data-details": "Substation Layout And Communication Data Details",
+        "general-information": "General Information",
+        "layout-information": "Layout Information",
+        "communication-information": "Communication Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "substation-id": "Substation",
+          "substation-layout": "Substation Layout",
+          "equipped-with-standby-diesel-generator": "Equipped With Standby Diesel Generator",
+          "substation-busbar-type": "Substation Busbar Type",
+          "substation-communication-system-id": "Communication System",
+          "scada-system": "SCADA System",
+          "substation-grounding-system-id": "Grounding System",
+          "substation-altitude-level": "Altitude Level",
+          "remark": "Remark"
+        }
+      },
+      "mini-grid-station": {
+        "title": "Mini Grid Station",
+        "create-mini-grid-station": "Create Mini Grid Station",
+        "edit-mini-grid-station": "Edit Mini Grid Station",
+        "mini-grid-station-details": "Mini Grid Station Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "power-generation": "Power Generation",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "substation-id": "Substation",
+          "minigrid-size": "Mini Grid Size",
+          "battery-type-id": "Battery Type",
+          "battery-size": "Battery Size",
+          "inverter": "Inverter",
+          "system-voltage": "System Voltage",
+          "expected-annual-generation": "Expected Annual Generation",
+          "diesel-generator": "Diesel Generator",
+          "owner-operator": "Owner/Operator",
+          "remark": "Remark"
+        }
+      },
+      "mini-grid-station-distribution-line": {
+        "title": "Mini Grid Station Distribution Line",
+        "create-mini-grid-station-distribution-line": "Create Mini Grid Station Distribution Line",
+        "edit-mini-grid-station-distribution-line": "Edit Mini Grid Station Distribution Line",
+        "mini-grid-station-distribution-line-details": "Mini Grid Station Distribution Line Details",
+        "general-information": "General Information",
+        "line-specifications": "Line Specifications",
+        "transformer-information": "Transformer Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "system-type": "System Type",
+          "lines-type": "Lines Type",
+          "line-length": "Line Length",
+          "poles": "Poles",
+          "transformer-type-id": "Transformer Type",
+          "transformers-number": "Number of Transformers",
+          "transformers-size": "Transformers Size",
+          "remark": "Remark"
+        }
+      },
+      "mini-grid-station-consumer": {
+        "title": "Mini Grid Station Consumer",
+        "create-mini-grid-station-consumer": "Create Mini Grid Station Consumer",
+        "edit-mini-grid-station-consumer": "Edit Mini Grid Station Consumer",
+        "mini-grid-station-consumer-details": "Mini Grid Station Consumer Details",
+        "general-information": "General Information",
+        "consumer-types": "Consumer Types",
+        "electricity-information": "Electricity Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "residential": "Residential",
+          "commercial": "Commercial",
+          "productive-industrial": "Productive Industrial",
+          "health-centers": "Health Centers",
+          "schools": "Schools",
+          "street-lighting": "Street Lighting",
+          "other": "Other",
+          "expected-electricity-sales": "Expected Electricity Sales",
+          "electricity-tariff": "Electricity Tariff",
+          "remark": "Remark"
+        }
+      },
+      "mini-grid-station-backup-power-source": {
+        "title": "Mini Grid Station Backup Power Source",
+        "create-mini-grid-station-backup-power-source": "Create Mini Grid Station Backup Power Source",
+        "edit-mini-grid-station-backup-power-source": "Edit Mini Grid Station Backup Power Source",
+        "mini-grid-station-backup-power-source-details": "Mini Grid Station Backup Power Source Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "timeline-information": "Timeline Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "capacity": "Capacity",
+          "installation-year": "Installation Year",
+          "distribution-lines-total-length": "Distribution Lines Total Length",
+          "lifetime": "Lifetime",
+          "commissioning-date": "Commissioning Date",
+          "other": "Other Information",
+          "remark": "Remark"
+        }
+      },
+      "electric-distribution-transformer": {
+        "title": "Electric Distribution Transformers",
+        "create-electric-distribution-transformer": "Create Electric Distribution Transformer",
+        "edit-electric-distribution-transformer": "Edit Electric Distribution Transformer",
+        "electric-distribution-transformer-details": "Electric Distribution Transformer Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "location-information": "Location Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "service-area": "Service Area",
+          "installation-year": "Installation Year",
+          "transformers-total-number": "Total Number of Transformers",
+          "gps-x-coordinates": "GPS X Coordinates",
+          "gps-y-coordinates": "GPS Y Coordinates",
+          "fire-extinguishing-technology-id": "Fire Extinguishing Technology",
+          "other": "Other Information",
+          "remark": "Remark"
+        }
       }
     }
   },
@@ -2492,6 +2655,13 @@
     "kilometers": "Kilometers",
     "mm2": "Square Millimeters",
     "mm": "Millimeters",
+    "mva": "Mega Volt-Amperes",
+    "kwh": "Kilowatt-Hour",
+    "kw": "Kilowatt",
+    "v": "Volt",
+    "km2": "Square Kilometer",
+    "currency": "Currency",
+    "km": "Kilometers",
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",
