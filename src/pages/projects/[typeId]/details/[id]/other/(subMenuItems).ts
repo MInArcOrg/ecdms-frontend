@@ -661,6 +661,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/electric-power/electric-smart-meters-data`,
           model: "electricsmartmetersdata",
           apiRoute: "electric-smart-meters-data",
+        },
+        {
+          id: 117,
+          title: t("project.navigation.submenu.others.electric-smart-meters-ratings-data.title"),
+          path: `${baseUrl}/electric-power/electric-smart-meters-ratings-data`,
+          model: "electricsmartmetersratingsdata",
+          apiRoute: "electric-smart-meters-ratings-data",
         }
       ]
     },
