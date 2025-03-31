@@ -1484,3 +1484,19 @@ export interface ElectricSmartMetersPrivacyAndSecurityData {
   updated_at?: string
 }
 
+export interface ElectricGridControlCenterData {
+  id: string
+  project_id: string
+  mini_grid_station_id: string
+  name: string
+  installation_year?: number
+  control_system_type_id: string
+  communication_links_id: string
+  energy_management_system_capability?: boolean
+  remote_control_capability?: boolean
+  average_measured_data_reliability?: number
+  remark?: string
+  created_at?: string
+  updated_at?: string
+}
+

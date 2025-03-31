@@ -691,7 +691,8 @@
           "electric-smart-meters-data": "Electric Smart Meters Data",
           "electric-smart-meters-ratings-data": "Electric Smart Meters Ratings Data",
           "electric-smart-meters-performance-data": "Electric Smart Meters Performance Data",
-          "electric-smart-meters-privacy-and-security-data": "Electric Smart Meters Privacy And Security Data"
+          "electric-smart-meters-privacy-and-security-data": "Electric Smart Meters Privacy And Security Data",
+          "electric-grid-control-center-data": "Electric Grid Control Center Data"
         }
       }
     },
@@ -2701,6 +2702,27 @@
           "customer-engagement-programs-type-id": "Customer Engagement Programs Type",
           "social-impact-assessment-conducted": "Social Impact Assessment Conducted",
           "resettlement-and-compensation-measures-implemented": "Resettlement And Compensation Measures Implemented",
+          "remark": "Remark"
+        }
+      },
+      "electric-grid-control-center-data": {
+        "title": "Electric Grid Control Center Data",
+        "create-electric-grid-control-center-data": "Create Electric Grid Control Center Data",
+        "edit-electric-grid-control-center-data": "Edit Electric Grid Control Center Data",
+        "electric-grid-control-center-data-details": "Electric Grid Control Center Data Details",
+        "general-information": "General Information",
+        "control-system": "Control System",
+        "capabilities": "Capabilities",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "installation-year": "Installation Year",
+          "control-system-type-id": "Control System Type",
+          "communication-links-id": "Communication Links",
+          "energy-management-system-capability": "Energy Management System Capability",
+          "remote-control-capability": "Remote Control Capability",
+          "average-measured-data-reliability": "Average Measured Data Reliability",
           "remark": "Remark"
         }
       }
