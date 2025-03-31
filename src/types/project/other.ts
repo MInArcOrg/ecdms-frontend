@@ -1449,3 +1449,20 @@ export interface ElectricSmartMetersRatingsData {
   created_at?: string
   updated_at?: string
 }
+
+export interface ElectricSmartMetersPerformanceData {
+  id: string
+  project_id: string
+  electric_smart_meters_data_id: string
+  name: string
+  maintenance_frequency_id: string
+  average_meter_lifespan?: number
+  average_meter_accuracy?: number
+  safety_problems_encountered?: string
+  work_accidents_number?: number
+  on_site_safety_regulation_implemented?: boolean
+  other?: string
+  remark?: string
+  created_at?: string
+  updated_at?: string
+}
