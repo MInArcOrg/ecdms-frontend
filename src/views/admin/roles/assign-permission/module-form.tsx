@@ -1,23 +1,10 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow
-} from '@mui/material';
+import { Accordion, AccordionSummary, Box, Button, Grid, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Checkbox from '@mui/material/Checkbox';
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
-import React, { useState } from 'react';
+import { GridExpandMoreIcon } from '@mui/x-data-grid';
+import React from 'react';
 import { appModulesNames } from 'src/configs/app-constants';
 import usePermissionSelection from 'src/hooks/admin/permission-selection-hook';
 
@@ -41,89 +28,88 @@ const AccordionDetail: React.FC<AccordionDetailProps> = ({ module, roleId }) => 
     handleCheckboxChange,
     handleSelectAll,
     handleModelSelectAll,
-    handleSubmit
+    handleSubmit,
+    models
   } = usePermissionSelection(roleId, module);
 
   if (isLoading) {
     return <CircularProgress />;
   }
-
   if (error) {
     return <Typography color="error">{error}</Typography>;
   }
 
-  const models = Array.from(new Set(permissions.map((permission) => permission.model)));
-  const permissionHeaders = Array.from(new Set(permissions.map((permission) => permission.name)));
+  // Remove console.log to improve performance
+  const permissionHeaders = ['create', 'update', 'delete', 'view', 'approve', 'check', 'authorize'];
 
   return (
     <AccordionDetails>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Model</TableCell>
-            {permissionHeaders.map((header, index) => (
-              <TableCell key={index}>
-                <Box display="flex" alignItems="center">
-                  <Checkbox
-                    checked={permissions
-                      .filter((permission) => permission.name === header)
-                      .every((permission) => selectedPermissions[permission.id])}
-                    indeterminate={
-                      permissions
-                        .filter((permission) => permission.name === header)
-                        .some((permission) => selectedPermissions[permission.id]) &&
-                      !permissions
-                        .filter((permission) => permission.name === header)
-                        .every((permission) => selectedPermissions[permission.id])
-                    }
-                    onChange={(e) => handleSelectAll(e.target.checked, header)}
-                  />
-                  <Typography>{header}</Typography>
-                </Box>
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {models.map((model) => (
-            <TableRow key={model}>
-              <TableCell>
-                <Box display="flex" alignItems="center">
-                  <Checkbox
-                    checked={permissions
-                      .filter((permission) => permission.model === model)
-                      .every((permission) => selectedPermissions[permission.id])}
-                    indeterminate={
-                      permissions
-                        .filter((permission) => permission.model === model)
-                        .some((permission) => selectedPermissions[permission.id]) &&
-                      !permissions
-                        .filter((permission) => permission.model === model)
-                        .every((permission) => selectedPermissions[permission.id])
-                    }
-                    onChange={(e) => handleModelSelectAll(model, e.target.checked)}
-                  />
-                  <Typography>{model}</Typography>
-                </Box>
-              </TableCell>
-              {permissionHeaders.map((permissionName) => {
-                const permission = permissions.find((p) => p.model === model && p.name === permissionName);
+      <Box sx={{ overflowX: 'auto' }}>
+        <Table sx={{ minWidth: 650 }}>
+          <TableHead>
+            <TableRow>
+              <TableCell>Model</TableCell>
+              {permissionHeaders.map((header, index) => {
+                // Check if there are any permissions with this action name
+                const headerPermissions = permissions.filter((p) => p.name.includes(header));
+                const allChecked = headerPermissions.length > 0 && headerPermissions.every((p) => selectedPermissions[p.id]);
+                const someChecked = headerPermissions.some((p) => selectedPermissions[p.id]);
 
                 return (
-                  <TableCell key={permission?.id}>
-                    {permission && (
+                  <TableCell key={index}>
+                    <Box display="flex" alignItems="center">
                       <Checkbox
-                        checked={selectedPermissions[permission.id] || false}
-                        onChange={() => handleCheckboxChange(permission.id)}
+                        checked={allChecked}
+                        indeterminate={someChecked && !allChecked}
+                        onChange={(e) => handleSelectAll(e.target.checked, header)}
+                        disabled={headerPermissions.length === 0}
                       />
-                    )}
+                      <Typography>{header}</Typography>
+                    </Box>
                   </TableCell>
                 );
               })}
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {models.map((model) => {
+              const modelPermissions = permissions.filter((p) => p.model === model);
+              const allModelChecked = modelPermissions.length > 0 && modelPermissions.every((p) => selectedPermissions[p.id]);
+              const someModelChecked = modelPermissions.some((p) => selectedPermissions[p.id]);
+
+              return (
+                <TableRow key={model}>
+                  <TableCell>
+                    <Box display="flex" alignItems="center">
+                      <Checkbox
+                        checked={allModelChecked}
+                        indeterminate={someModelChecked && !allModelChecked}
+                        onChange={(e) => handleModelSelectAll(model, e.target.checked)}
+                      />
+                      <Typography>{model}</Typography>
+                    </Box>
+                  </TableCell>
+                  {permissionHeaders.map((permissionName) => {
+                    const permission = permissions.find((p) => p.model === model && p.name.includes(permissionName));
+
+                    return (
+                      <TableCell key={`${model}-${permissionName}`}>
+                        {permission && (
+                          <Checkbox
+                            checked={selectedPermissions[permission.id] || false}
+                            onChange={() => handleCheckboxChange(permission.id)}
+                          />
+                        )}
+                        {permission && selectedPermissions[permission.id] ? 'checked' : 'unchecked'}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </Box>
       <Box mt={2} display="flex" justifyContent="flex-end">
         <Button variant="contained" color="primary" onClick={handleSubmit} disabled={isSubmitting}>
           {isSubmitting ? <CircularProgress size={24} /> : 'Assign Permissions'}
@@ -134,38 +120,32 @@ const AccordionDetail: React.FC<AccordionDetailProps> = ({ module, roleId }) => 
 };
 
 const AssignPermissionComponent: React.FC<AssignPermissionComponentProps> = ({ roleId }) => {
-  const [selectedModule, setSelectedModule] = useState<string>(''); // state to store selected module
-
-  const handleChange = (event: SelectChangeEvent<string>) => {
-    setSelectedModule(event.target.value);
-  };
+  const [expanded, setExpanded] = React.useState<string | false>(false);
 
   return (
     <div>
-      <Grid container>
-        <Grid item ml={5}>
-          <FormControl fullWidth variant="outlined">
-            <InputLabel id="module-select-label">Select Module</InputLabel>
-            <Select labelId="module-select-label" id="module-select" value={selectedModule} onChange={handleChange} label="Select Module">
-              {appModulesNames.map((module, index) => (
-                <MenuItem key={index} value={module}>
-                  {module.toUpperCase()}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-      </Grid>
-
-      {selectedModule && (
-        <AccordionDetails>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <AccordionDetail roleId={roleId} module={selectedModule} />
-            </Grid>
-          </Grid>
-        </AccordionDetails>
-      )}
+      {appModulesNames.map((module, index) => (
+        <Accordion
+          key={index}
+          expanded={expanded === `panel${index}`}
+          onChange={(event, isExpanded) => {
+            setExpanded(isExpanded ? `panel${index}` : false);
+          }}
+        >
+          <AccordionSummary expandIcon={<GridExpandMoreIcon />}>
+            <Typography variant="h6">{module}</Typography>
+          </AccordionSummary>
+          {expanded === `panel${index}` && (
+            <AccordionDetails>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <AccordionDetail roleId={roleId} module={module} />
+                </Grid>
+              </Grid>
+            </AccordionDetails>
+          )}
+        </Accordion>
+      ))}
     </div>
   );
 };

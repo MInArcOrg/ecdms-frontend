@@ -374,6 +374,17 @@
     },
     "department-structure": "department-structure"
   },
+  "admin": {
+    "role": {
+      "roles": "Roles",
+      "create-role": "Create Role",
+      "update-role": "Create Role",
+      "form": {
+        "title": "Title",
+        "description": "Description"
+      }
+    }
+  },
   "greating": {
     "good-morning": "Good Morning",
     "good-evening": "God Evening",
