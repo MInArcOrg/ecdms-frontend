@@ -29,7 +29,7 @@ const RoleDrawer = (props: RoleDrawerType) => {
     return await roleApiService.create(body);
   };
   const editRole = async (body: IApiPayload<Role>) => {
-    return await roleApiService.update(role?.id || "", body);
+    return await roleApiService.update(role?.id || '', body);
   };
   const isEdit = role?.id ? true : false;
 

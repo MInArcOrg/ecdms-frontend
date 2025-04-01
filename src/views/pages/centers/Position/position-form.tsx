@@ -16,12 +16,8 @@ interface PositionFormProps {
 const PositionForm: React.FC<PositionFormProps> = ({ formik, defaultLocaleData }) => {
   const { t: transl } = useTranslation();
   const { data: roles } = useQuery({
-    queryKey: ["roles"],
-    queryFn: () =>
-      roleApiService.getAll(
-        dropDownConfig({
-        })
-      ),
+    queryKey: ['roles'],
+    queryFn: () => roleApiService.getAll(dropDownConfig({}))
   });
   return (
     <>
@@ -44,17 +40,17 @@ const PositionForm: React.FC<PositionFormProps> = ({ formik, defaultLocaleData }
         size="small"
         sx={{ mb: 2 }}
       />
-          <CustomSelectBox
-            size="small"
-            name="role_id"
-            label={transl("department.position.form.role")}
-            options={
-              roles?.payload?.map((role) => ({
-                value: role.id,
-                label: role.name,
-              })) || []
-            }
-          />
+      <CustomSelectBox
+        size="small"
+        name="role_id"
+        label={transl('department.position.form.role')}
+        options={
+          roles?.payload?.map((role) => ({
+            value: role.id,
+            label: role.name
+          })) || []
+        }
+      />
     </>
   );
 };

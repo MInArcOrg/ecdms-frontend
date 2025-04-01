@@ -70,7 +70,6 @@ const RoleList: React.FC = () => {
         items={roles || []}
         onPaginationChange={handlePageChange}
       />
-
     </Fragment>
   );
 };

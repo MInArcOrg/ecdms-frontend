@@ -404,18 +404,18 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
         },
         {
           id: 69,
-          title: t("project.navigation.submenu.others.broadcasting-infrastructure-age"),
+          title: t('project.navigation.submenu.others.broadcasting-infrastructure-age'),
           path: `${baseUrl}/telecom/broadcasting-infrastructure-age`,
-          model: "broadcastinginfrastructureage",
-          apiRoute: "broadcasting-infrastructure-ages",
+          model: 'broadcastinginfrastructureage',
+          apiRoute: 'broadcasting-infrastructure-ages'
         },
         {
           id: 97,
-          title: t("project.navigation.submenu.others.broadcasting-infrastructure-manufacturer"),
+          title: t('project.navigation.submenu.others.broadcasting-infrastructure-manufacturer'),
           path: `${baseUrl}/telecom/broadcasting-infrastructure-manufacturer`,
-          model: "broadcastinginfrastructuremanufacturer",
-          apiRoute: "broadcasting-infrastructure-manufacturers",
-        },
+          model: 'broadcastinginfrastructuremanufacturer',
+          apiRoute: 'broadcasting-infrastructure-manufacturers'
+        }
       ]
     },
 
@@ -587,67 +587,67 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
         },
         {
           id: 93,
-          title: t("project.navigation.submenu.others.transmission-line-conductor-and-tower-data"),
+          title: t('project.navigation.submenu.others.transmission-line-conductor-and-tower-data'),
           path: `${baseUrl}/electric-power/transmission-line-conductor-and-tower-data`,
-          model: "transmissionlineconductorandtowerdata",
-          apiRoute: "transmission-line-conductor-and-tower-datas",
+          model: 'transmissionlineconductorandtowerdata',
+          apiRoute: 'transmission-line-conductor-and-tower-datas'
         },
         {
           id: 95,
-          title: t("project.navigation.submenu.others.transmission-line-equipment-data"),
+          title: t('project.navigation.submenu.others.transmission-line-equipment-data'),
           path: `${baseUrl}/electric-power/transmission-line-equipment-data`,
-          model: "transmissionlineequipmentdata",
-          apiRoute: "transmission-line-equipment-datas",
+          model: 'transmissionlineequipmentdata',
+          apiRoute: 'transmission-line-equipment-datas'
         },
         {
           id: 97,
-          title: t("project.navigation.submenu.others.substation-transformer-and-switchgear-data"),
+          title: t('project.navigation.submenu.others.substation-transformer-and-switchgear-data'),
           path: `${baseUrl}/electric-power/substation-transformer-and-switchgear-data`,
-          model: "substationtransformerandswitchgeardata",
-          apiRoute: "substation-transformer-and-switchgear-datas",
+          model: 'substationtransformerandswitchgeardata',
+          apiRoute: 'substation-transformer-and-switchgear-datas'
         },
         {
           id: 99,
-          title: t("project.navigation.submenu.others.substation-layout-and-communication-data"),
+          title: t('project.navigation.submenu.others.substation-layout-and-communication-data'),
           path: `${baseUrl}/electric-power/substation-layout-and-communication-data`,
-          model: "substationlayoutandcommunicationdata",
-          apiRoute: "substation-layout-and-communication-datas",
+          model: 'substationlayoutandcommunicationdata',
+          apiRoute: 'substation-layout-and-communication-datas'
         },
         {
           id: 101,
-          title: t("project.navigation.submenu.others.mini-grid-station"),
+          title: t('project.navigation.submenu.others.mini-grid-station'),
           path: `${baseUrl}/electric-power/mini-grid-station`,
-          model: "minigridstation",
-          apiRoute: "mini-grid-stations",
+          model: 'minigridstation',
+          apiRoute: 'mini-grid-stations'
         },
         {
           id: 103,
-          title: t("project.navigation.submenu.others.mini-grid-station-distribution-line"),
+          title: t('project.navigation.submenu.others.mini-grid-station-distribution-line'),
           path: `${baseUrl}/electric-power/mini-grid-station-distribution-line`,
-          model: "minigridstationdistributionline",
-          apiRoute: "mini-grid-station-distribution-lines",
+          model: 'minigridstationdistributionline',
+          apiRoute: 'mini-grid-station-distribution-lines'
         },
         {
           id: 105,
-          title: t("project.navigation.submenu.others.mini-grid-station-consumer"),
+          title: t('project.navigation.submenu.others.mini-grid-station-consumer'),
           path: `${baseUrl}/electric-power/mini-grid-station-consumer`,
-          model: "minigridstationconsumer",
-          apiRoute: "mini-grid-station-consumers",
+          model: 'minigridstationconsumer',
+          apiRoute: 'mini-grid-station-consumers'
         },
         {
           id: 107,
-          title: t("project.navigation.submenu.others.mini-grid-station-backup-power-source"),
+          title: t('project.navigation.submenu.others.mini-grid-station-backup-power-source'),
           path: `${baseUrl}/electric-power/mini-grid-station-backup-power-source`,
-          model: "minigridstationbackuppowersource",
-          apiRoute: "mini-grid-station-backup-power-sources",
+          model: 'minigridstationbackuppowersource',
+          apiRoute: 'mini-grid-station-backup-power-sources'
         },
         {
           id: 111,
-          title: t("project.navigation.submenu.others.electric-distribution-transformer.title"),
+          title: t('project.navigation.submenu.others.electric-distribution-transformer.title'),
           path: `${baseUrl}/electric-power/electric-distribution-transformer`,
-          model: "electricdistributiontransformer",
-          apiRoute: "electric-distribution-transformers",
-        },
+          model: 'electricdistributiontransformer',
+          apiRoute: 'electric-distribution-transformers'
+        }
       ]
     },
     {

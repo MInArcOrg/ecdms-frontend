@@ -60,7 +60,7 @@ const roleApiService = {
     data: { permissions: { id: string; is_selected: boolean }[]; id: string };
     files: any[];
   }): Promise<IApiResponse> =>
-    buildPostRequest(`/departments/assign-role-permissions`, body,false)
+    buildPostRequest(`/departments/assign-role-permissions`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw new Error(error);
