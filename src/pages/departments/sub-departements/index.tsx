@@ -9,9 +9,7 @@ import TabsRoute from '../tab-routes';
 
 const Departments = ({ parentDepartment }: { parentDepartment: Department }) => {
   return (
-    <TabPanel value="1" sx={{ margin: 0, padding: 0 }}>
       <SubDepartmentList parentDepartment={parentDepartment} />
-    </TabPanel>
   );
 };
 

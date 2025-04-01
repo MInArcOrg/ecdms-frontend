@@ -330,6 +330,13 @@
       "role": "Role",
       "phone": "Phone"
     },
+    "tabs":{
+      "professionals": "Professionals",
+      "positions": "Positions",
+      "sub-departments": "Sub Departments",
+      "documents": "Documents",
+      "structure": "Structure"
+    },
     "user": {
       "form": {
         "first_name": "First Name",
@@ -338,9 +345,11 @@
         "email": "Email",
         "gender": "Gender",
         "phone": "Phone",
+        "position": "Position",
+        "department": "Department",
         "birth_data": "Birth Date"
       },
-      "title": "User",
+      "title": "Users",
       "male": "Male",
       "female": "Female",
       "edit-user": "Edit User",
@@ -349,13 +358,14 @@
     "position": {
       "form": {
         "name": "Name",
-        "description": "Description"
+        "description": "Description",
+        "role":"Role"
       },
       "columns": {
         "name": "Name",
         "description": "Description"
       },
-      "title": "Position",
+      "title": "Positions",
       "create-position": "Create Position",
       "edit-position": "Edit Position"
     },
@@ -368,7 +378,7 @@
         "name": "Name",
         "description": "Description"
       },
-      "title": "Sub Department",
+      "title": "Sub Departments",
       "create-sub-department": "Create Sub Department",
       "edit-sub-department": "Edit Sub Department"
     },

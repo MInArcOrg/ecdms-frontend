@@ -1,6 +1,10 @@
+import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
 import { useTranslation } from 'react-i18next';
+import { dropDownConfig } from 'src/configs/api-constants';
+import roleApiService from 'src/services/admin/role-service';
 import Position from 'src/types/department/position';
+import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface PositionFormProps {
@@ -11,6 +15,14 @@ interface PositionFormProps {
 
 const PositionForm: React.FC<PositionFormProps> = ({ formik, defaultLocaleData }) => {
   const { t: transl } = useTranslation();
+  const { data: roles } = useQuery({
+    queryKey: ["roles"],
+    queryFn: () =>
+      roleApiService.getAll(
+        dropDownConfig({
+        })
+      ),
+  });
   return (
     <>
       <CustomTextBox
@@ -32,6 +44,17 @@ const PositionForm: React.FC<PositionFormProps> = ({ formik, defaultLocaleData }
         size="small"
         sx={{ mb: 2 }}
       />
+          <CustomSelectBox
+            size="small"
+            name="role_id"
+            label={transl("department.position.form.role")}
+            options={
+              roles?.payload?.map((role) => ({
+                value: role.id,
+                label: role.name,
+              })) || []
+            }
+          />
     </>
   );
 };

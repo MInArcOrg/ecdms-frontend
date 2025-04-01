@@ -34,8 +34,9 @@ function ProfessionalList({ parentDepartment }: { parentDepartment: Department }
     fetchFunction: fetchProfessionals
   });
 
-  const handleDelete = (professionalId: string) => {
-    // Handle delete logic
+  const handleDelete = async (professionalId: string) => {
+    await userApiService.delete(professionalId);
+    refetch();
   };
 
   const toggleDrawer = () => {
@@ -75,6 +76,7 @@ function ProfessionalList({ parentDepartment }: { parentDepartment: Department }
             onlyIcon: true,
             permission: { action: 'create', subject: 'user' }
           }}
+          title={t('department.user.title')}
           fetchDataFunction={refetch}
           tableProps={{ headers: userColumns(handleEdit, handleDelete, t, refetch) }}
           items={professionals || []}

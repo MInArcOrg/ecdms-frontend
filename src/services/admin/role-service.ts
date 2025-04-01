@@ -8,7 +8,7 @@ import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const roleApiService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse> =>
+  getAll: (params: GetRequestParam): Promise<IApiResponse<Role[]>> =>
     buildGetRequest('/departments/roles', params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -60,7 +60,7 @@ const roleApiService = {
     data: { permissions: { id: string; is_selected: boolean }[]; id: string };
     files: any[];
   }): Promise<IApiResponse> =>
-    buildPutRequest(`/departments/assign-role-permissions`, body)
+    buildPostRequest(`/departments/assign-role-permissions`, body,false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw new Error(error);

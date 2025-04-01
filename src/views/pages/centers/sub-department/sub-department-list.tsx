@@ -33,6 +33,7 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
   });
   console.log('subDepartments', subDepartments);
   const handleDelete = (subDepartmentId: string) => {
+      return departmentApiService.delete(subDepartmentId);
     // Handle delete logic
   };
   const toggleDrawer = () => {
@@ -62,6 +63,7 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
           fetchDataFunction={refetch}
+          title={t('department.sub-department.title')}
           tableProps={{ headers: subDepartmentColumns(handleEdit, handleDelete, t, refetch) }}
           items={subDepartments || []}
           onPaginationChange={handlePageChange}
