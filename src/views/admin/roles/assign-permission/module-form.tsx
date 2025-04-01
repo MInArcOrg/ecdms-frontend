@@ -1,4 +1,4 @@
-import { Accordion, AccordionSummary, Box, Button, Grid, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Accordion, AccordionSummary, Box, Button, Grid, Switch, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Checkbox from '@mui/material/Checkbox';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -95,12 +95,11 @@ const AccordionDetail: React.FC<AccordionDetailProps> = ({ module, roleId }) => 
                     return (
                       <TableCell key={`${model}-${permissionName}`}>
                         {permission && (
-                          <Checkbox
+                          <Switch
                             checked={selectedPermissions[permission.id] || false}
                             onChange={() => handleCheckboxChange(permission.id)}
                           />
                         )}
-                        {permission && selectedPermissions[permission.id] ? 'checked' : 'unchecked'}
                       </TableCell>
                     );
                   })}
