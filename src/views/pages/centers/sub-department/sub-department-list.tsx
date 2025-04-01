@@ -33,7 +33,7 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
   });
   console.log('subDepartments', subDepartments);
   const handleDelete = (subDepartmentId: string) => {
-      return departmentApiService.delete(subDepartmentId);
+    return departmentApiService.delete(subDepartmentId);
     // Handle delete logic
   };
   const toggleDrawer = () => {

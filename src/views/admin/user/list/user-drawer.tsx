@@ -26,7 +26,7 @@ const validationSchema = yup.object().shape({
 
 const UserDrawer = (props: UserDrawerType) => {
   // ** Props
-  const { open, toggle, refetch, user,departmentId } = props;
+  const { open, toggle, refetch, user, departmentId } = props;
 
   const createUser = async (body: IApiPayload<User>): Promise<IApiResponse<User>> => {
     return userApiService.create(body);
@@ -68,14 +68,13 @@ const UserDrawer = (props: UserDrawerType) => {
           title={`department.user.${isEdit ? 'edit-user' : 'create-user'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{...user, birth_date: formatInitialDateDate(user?.birth_date),
-          }}
+          initialValues={{ ...user, birth_date: formatInitialDateDate(user?.birth_date) }}
           createActionFunc={isEdit ? editUser : createUser}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<User>) => {
-            return <UserForm formik={formik} departmentId={departmentId} isEdit={isEdit}/>;
+            return <UserForm formik={formik} departmentId={departmentId} isEdit={isEdit} />;
           }}
         </FormPageWrapper>
       )}

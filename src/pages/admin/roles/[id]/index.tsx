@@ -8,113 +8,113 @@ import User from 'src/types/admin/user';
 import AssignPermissionComponent from 'src/views/admin/roles/assign-permission/module-form';
 
 const StyledCard = styled(Card)(({ theme }) => ({
-    minWidth: 275,
-    marginBottom: theme.spacing(2)
+  minWidth: 275,
+  marginBottom: theme.spacing(2)
 }));
 
 const Title = styled(Typography)(({ theme }) => ({
-    fontSize: 14,
-    color: theme.palette.text.secondary,
-    marginBottom: theme.spacing(1)
+  fontSize: 14,
+  color: theme.palette.text.secondary,
+  marginBottom: theme.spacing(1)
 }));
 
 const Pos = styled(Typography)(({ theme }) => ({
-    marginBottom: 12,
-    color: theme.palette.text.secondary
+  marginBottom: 12,
+  color: theme.palette.text.secondary
 }));
 
 const ActionButtons = styled(Box)(({ theme }) => ({
-    display: 'flex',
-    justifyContent: 'flex-end',
-    marginTop: theme.spacing(2)
+  display: 'flex',
+  justifyContent: 'flex-end',
+  marginTop: theme.spacing(2)
 }));
 
 const RoleDetail = () => {
-    const router = useRouter();
-    const { id } = router.query;
-    const { useGetOneRole } = useRole();
-    const { data: role, isLoading, error } = useGetOneRole(String(id));
+  const router = useRouter();
+  const { id } = router.query;
+  const { useGetOneRole } = useRole();
+  const { data: role, isLoading, error } = useGetOneRole(String(id));
 
-    if (isLoading) {
-        return <CircularProgress />;
-    }
+  if (isLoading) {
+    return <CircularProgress />;
+  }
 
-    if (error) {
-        return (
-            <Typography variant="h6" color="error">
-                Error loading role details
-            </Typography>
-        );
-    }
-
+  if (error) {
     return (
-        <Grid container spacing={gridSpacing}>
-            <Grid item xs={12}>
-                <Typography variant="h4" gutterBottom>
-                    Role Details
-                </Typography>
-            </Grid>
-
-            <Grid item xs={12}>
-                <StyledCard>
-                    <CardHeader title="Role Information" />
-                    <CardContent>
-                        <Title gutterBottom>Name</Title>
-                        <Typography variant="h5" component="h2">
-                            {role?.name}
-                        </Typography>
-                        <Pos>Description</Pos>
-                        <Typography variant="body2" component="p">
-                            {role?.description}
-                        </Typography>
-                    </CardContent>
-                </StyledCard>
-                <Grid container spacing={gridSpacing}>
-                    <Grid item md={6}>
-                        <CardStatsHorizontal icon="users" stats={role?.totalUsers || 0} title="Total Users" />
-                    </Grid>
-                    <Grid item md={6}>
-                        {' '}
-                        <CardStatsHorizontal icon="permissions" stats={role?.totalPermissions || 0} title="Total Permissions" />
-                    </Grid>
-                </Grid>
-
-                <ActionButtons>
-                    <Button variant="contained" color="primary" onClick={() => router.push(`/edit-role/${id}`)}>
-                        Edit Role
-                    </Button>
-                    <Button variant="contained" color="secondary" style={{ marginLeft: '1rem' }} onClick={() => handleDeleteRole(String(id))}>
-                        Delete Role
-                    </Button>
-                </ActionButtons>
-            </Grid>
-
-            <Grid item xs={12}>
-                <StyledCard>
-                    <CardHeader title="Permissions" />
-                    <AssignPermissionComponent roleId={String(id)} />
-                </StyledCard>
-
-                <StyledCard>
-                    <CardHeader title="Users with this Role" />
-                    <CardContent>
-                        {role?.users?.map((user: User) => (
-                            <Typography variant="body2" component="p" key={user.id}>
-                                {user.name} ({user.email})
-                            </Typography>
-                        ))}
-                    </CardContent>
-                </StyledCard>
-            </Grid>
-        </Grid>
+      <Typography variant="h6" color="error">
+        Error loading role details
+      </Typography>
     );
+  }
 
-    function handleDeleteRole(roleId: string) {
-        console.log('Deleting role with id:', roleId);
-    }
+  return (
+    <Grid container spacing={gridSpacing}>
+      <Grid item xs={12}>
+        <Typography variant="h4" gutterBottom>
+          Role Details
+        </Typography>
+      </Grid>
+
+      <Grid item xs={12}>
+        <StyledCard>
+          <CardHeader title="Role Information" />
+          <CardContent>
+            <Title gutterBottom>Name</Title>
+            <Typography variant="h5" component="h2">
+              {role?.name}
+            </Typography>
+            <Pos>Description</Pos>
+            <Typography variant="body2" component="p">
+              {role?.description}
+            </Typography>
+          </CardContent>
+        </StyledCard>
+        <Grid container spacing={gridSpacing}>
+          <Grid item md={6}>
+            <CardStatsHorizontal icon="users" stats={role?.totalUsers || 0} title="Total Users" />
+          </Grid>
+          <Grid item md={6}>
+            {' '}
+            <CardStatsHorizontal icon="permissions" stats={role?.totalPermissions || 0} title="Total Permissions" />
+          </Grid>
+        </Grid>
+
+        <ActionButtons>
+          <Button variant="contained" color="primary" onClick={() => router.push(`/edit-role/${id}`)}>
+            Edit Role
+          </Button>
+          <Button variant="contained" color="secondary" style={{ marginLeft: '1rem' }} onClick={() => handleDeleteRole(String(id))}>
+            Delete Role
+          </Button>
+        </ActionButtons>
+      </Grid>
+
+      <Grid item xs={12}>
+        <StyledCard>
+          <CardHeader title="Permissions" />
+          <AssignPermissionComponent roleId={String(id)} />
+        </StyledCard>
+
+        <StyledCard>
+          <CardHeader title="Users with this Role" />
+          <CardContent>
+            {role?.users?.map((user: User) => (
+              <Typography variant="body2" component="p" key={user.id}>
+                {user.name} ({user.email})
+              </Typography>
+            ))}
+          </CardContent>
+        </StyledCard>
+      </Grid>
+    </Grid>
+  );
+
+  function handleDeleteRole(roleId: string) {
+    console.log('Deleting role with id:', roleId);
+  }
 };
 RoleDetail.acl = {
-    action: 'read',
-    subject: 'role'
+  action: 'read',
+  subject: 'role'
 };
 export default RoleDetail;

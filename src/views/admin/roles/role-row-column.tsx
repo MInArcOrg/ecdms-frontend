@@ -49,7 +49,7 @@ export const roleColumns = (
       headerName: transl('actions'),
       renderCell: ({ row }: CellType) => (
         <Fragment>
-          <ModelActionComponent model="role" model_id={row.id} refetchModel={refetch} resubmit={() => { }} title="" postAction={() => { }} />
+          <ModelActionComponent model="role" model_id={row.id} refetchModel={refetch} resubmit={() => {}} title="" postAction={() => {}} />
 
           <RowOptions
             onEdit={onEdit}

@@ -51,9 +51,8 @@ const usePermissionSelection = (roleId: string, module: string) => {
   // Memoize derived data
   const models = useMemo(() => Array.from(new Set(permissions.map((permission) => permission.model))), [permissions]);
 
-
   const handleCheckboxChange = useCallback((permissionId: string) => {
-    console.log('change is made on this id', permissionId)
+    console.log('change is made on this id', permissionId);
     setSelectedPermissions((prevState) => ({
       ...prevState,
       [permissionId]: !prevState[permissionId]
