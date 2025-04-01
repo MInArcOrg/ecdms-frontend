@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import roleApiService from 'src/services/admin/role-service';
 import Permission from 'src/types/admin/role/permission';
 
@@ -11,79 +11,111 @@ const usePermissionSelection = (roleId: string, module: string) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetchPermissions();
-  }, [roleId, module]);
-  const fetchPermissions = async () => {
+  // Use useCallback to memoize the fetchPermissions function
+  const fetchPermissions = useCallback(async () => {
+    if (!roleId || !module) return;
+
     try {
       setIsLoading(true);
+      setError(null);
+
       const response = await roleApiService.getPermissionsByRole(roleId, {
         filter: { module }
       });
+
       const initialPermissions = response.payload;
       setPermissions(initialPermissions);
 
-      const initialSelections: { [key: string]: boolean } = {};
-      initialPermissions.forEach((permission) => {
-        initialSelections[permission.id] = permission.selected;
-      });
+      // Create initial selections object in one pass
+      const initialSelections = initialPermissions.reduce(
+        (acc, permission) => {
+          acc[permission.id] = permission.selected;
+          return acc;
+        },
+        {} as { [key: string]: boolean }
+      );
+
       setSelectedPermissions(initialSelections);
     } catch (err) {
       setError('Error loading permissions');
+      console.error('Error fetching permissions:', err);
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [roleId, module]);
 
-  const handleCheckboxChange = (permissionId: string) => {
+  useEffect(() => {
+    fetchPermissions();
+  }, [fetchPermissions]);
+
+  // Memoize derived data
+  const models = useMemo(() => Array.from(new Set(permissions.map((permission) => permission.model))), [permissions]);
+
+
+  const handleCheckboxChange = useCallback((permissionId: string) => {
+    console.log('change is made on this id', permissionId)
     setSelectedPermissions((prevState) => ({
       ...prevState,
       [permissionId]: !prevState[permissionId]
     }));
-  };
+  }, []);
 
-  const handleSelectAll = (isSelected: boolean, name: string) => {
-    const updatedSelections = { ...selectedPermissions };
-    permissions.forEach((permission) => {
-      if (permission.name === name) {
-        updatedSelections[permission.id] = isSelected;
-      }
-    });
-    setSelectedPermissions(updatedSelections);
-  };
+  const handleSelectAll = useCallback(
+    (isSelected: boolean, name: string) => {
+      setSelectedPermissions((prevSelections) => {
+        const updatedSelections = { ...prevSelections };
+        permissions.forEach((permission) => {
+          if (permission.name.includes(name)) {
+            updatedSelections[permission.id] = isSelected;
+          }
+        });
+        return updatedSelections;
+      });
+    },
+    [permissions]
+  );
 
-  const handleModelSelectAll = (model: string, isSelected: boolean) => {
-    const updatedSelections = { ...selectedPermissions };
-    permissions.forEach((permission) => {
-      if (permission.model === model) {
-        updatedSelections[permission.id] = isSelected;
-      }
-    });
-    setSelectedPermissions(updatedSelections);
-  };
-  const handleSubmit = async () => {
+  const handleModelSelectAll = useCallback(
+    (model: string, isSelected: boolean) => {
+      setSelectedPermissions((prevSelections) => {
+        const updatedSelections = { ...prevSelections };
+        permissions.forEach((permission) => {
+          if (permission.model === model) {
+            updatedSelections[permission.id] = isSelected;
+          }
+        });
+        return updatedSelections;
+      });
+    },
+    [permissions]
+  );
+  const handleSubmit = useCallback(async () => {
+    if (isSubmitting) return;
+
     try {
       setIsSubmitting(true);
+      setError(null);
 
-      // Transform selectedPermissions to array of { id: string, is_selected: boolean }
-      const permissionsArray = Object.keys(selectedPermissions).map((permissionId) => ({
-        id: permissionId,
-        is_selected: selectedPermissions[permissionId]
+      // Transform selectedPermissions to array in one operation
+      const permissionsArray = Object.entries(selectedPermissions).map(([id, is_selected]) => ({
+        id,
+        is_selected
       }));
 
-      await roleApiService.assignPermission(roleId, {
-        data: { permissions: permissionsArray },
+      await roleApiService.assignPermission({
+        data: { permissions: permissionsArray, id: roleId },
         files: []
       });
-      fetchPermissions();
 
-      // Optionally refetch or update state after submission
+      // Refresh permissions after successful submission
+      await fetchPermissions();
     } catch (err) {
-      // Handle the error, e.g., setError('Error assigning permissions');
+      setError('Error assigning permissions');
+      console.error('Error submitting permissions:', err);
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }, [roleId, selectedPermissions, isSubmitting, fetchPermissions]);
 
   return {
     permissions,
@@ -91,6 +123,7 @@ const usePermissionSelection = (roleId: string, module: string) => {
     isLoading,
     isSubmitting,
     error,
+    models,
     handleCheckboxChange,
     handleSelectAll,
     handleModelSelectAll,

@@ -9,14 +9,14 @@ import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const roleApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest('/roles', params)
+    buildGetRequest('/departments/roles', params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/roles/${idx}`, params)
+    buildGetRequest(`/departments/roles/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
@@ -24,21 +24,21 @@ const roleApiService = {
 
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
-      .delete(`/roles/${idx}`)
+      .delete(`/departments/roles/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   create: (body: { data: Role; files: any[] }): Promise<IApiResponse> =>
-    buildPostRequest('/roles', body, false)
+    buildPostRequest('/departments/roles', body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   update: (id: string, body: { data: Role; files: any[] }): Promise<IApiResponse> =>
-    buildPutRequest(`/roles/${id}`, body)
+    buildPutRequest(`/departments/roles/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
@@ -51,19 +51,16 @@ const roleApiService = {
         throw error;
       }),
   getPermissionsByRole: (id: string, params: GetRequestParam): Promise<IApiResponse<Permission[]>> =>
-    buildGetRequest(`/roles/${id}/permissions`, params)
+    buildGetRequest(`/departments/role-permissions/${id}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
-  assignPermission: (
-    role_id: string,
-    body: {
-      data: { permissions: { id: string; is_selected: boolean }[] };
-      files: any[];
-    }
-  ): Promise<IApiResponse> =>
-    buildPutRequest(`/roles/${role_id}/assign-permission`, body)
+  assignPermission: (body: {
+    data: { permissions: { id: string; is_selected: boolean }[]; id: string };
+    files: any[];
+  }): Promise<IApiResponse> =>
+    buildPutRequest(`/departments/assign-role-permissions`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw new Error(error);
