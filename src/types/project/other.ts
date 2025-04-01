@@ -1500,3 +1500,18 @@ export interface ElectricGridControlCenterData {
   updated_at?: string
 }
 
+export interface ElectricGridControlCenterPerformanceAndMaintenance {
+  id: string
+  project_id: string
+  electric_grid_control_center_data_id: string
+  name: string
+  maintenance_frequency_id: string
+  total_system_downtime_outage_duration?: number
+  total_interruptions_number?: number
+  saidi?: string
+  saifi?: string
+  remark?: string
+  created_at?: string
+  updated_at?: string
+}
+

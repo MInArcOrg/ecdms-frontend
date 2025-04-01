@@ -689,6 +689,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/electric-power/electric-grid-control-center-data`,
           model: "electricgridcontrolcenterdata",
           apiRoute: "electric-grid-control-center-data",
+        },
+        {
+          id: 125,
+          title: t("project.navigation.submenu.others.electric-grid-control-center-performance-and-maintenance.title"),
+          path: `${baseUrl}/electric-power/electric-grid-control-center-performance-and-maintenance`,
+          model: "electricgridcontrolcenterperformanceandmaintenance",
+          apiRoute: "electric-grid-control-center-performance-and-maintenance",
         }
       ]
     },

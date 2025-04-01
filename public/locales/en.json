@@ -692,7 +692,8 @@
           "electric-smart-meters-ratings-data": "Electric Smart Meters Ratings Data",
           "electric-smart-meters-performance-data": "Electric Smart Meters Performance Data",
           "electric-smart-meters-privacy-and-security-data": "Electric Smart Meters Privacy And Security Data",
-          "electric-grid-control-center-data": "Electric Grid Control Center Data"
+          "electric-grid-control-center-data": "Electric Grid Control Center Data",
+          "electric-grid-control-center-performance-and-maintenance": "Electric Grid Control Center Performance And Maintenance"
         }
       }
     },
@@ -2723,6 +2724,25 @@
           "energy-management-system-capability": "Energy Management System Capability",
           "remote-control-capability": "Remote Control Capability",
           "average-measured-data-reliability": "Average Measured Data Reliability",
+          "remark": "Remark"
+        }
+      },
+      "electric-grid-control-center-performance-and-maintenance": {
+        "title": "Electric Grid Control Center Performance And Maintenance",
+        "create-electric-grid-control-center-performance-and-maintenance": "Create Electric Grid Control Center Performance And Maintenance",
+        "edit-electric-grid-control-center-performance-and-maintenance": "Edit Electric Grid Control Center Performance And Maintenance",
+        "electric-grid-control-center-performance-and-maintenance-details": "Electric Grid Control Center Performance And Maintenance Details",
+        "general-information": "General Information",
+        "performance-metrics": "Performance Metrics",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "electric-grid-control-center-data-id": "Electric Grid Control Center Data",
+          "maintenance-frequency-id": "Maintenance Frequency",
+          "total-system-downtime-outage-duration": "Total System Downtime/Outage Duration",
+          "total-interruptions-number": "Total Interruptions Number",
+          "saidi": "SAIDI (System Average Interruption Duration Index)",
+          "saifi": "SAIFI (System Average Interruption Frequency Index)",
           "remark": "Remark"
         }
       }
