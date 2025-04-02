@@ -1,7 +1,7 @@
 // Import necessary modules and components
 import { useRouter } from 'next/router';
 import userHook from 'src/hooks/admin/user-hook';
-import UserViewPage from 'src/views/admin/user/view/UserViewPage';
+import UserViewPage from 'src/views/admin/user/view/user-view-page';
 
 // Define the functional component
 const UserView = () => {

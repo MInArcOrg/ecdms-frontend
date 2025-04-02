@@ -8,5 +8,4 @@ type Permission = {
   created_at: string;
   updatedAt: string;
 };
-export const appModules = ['member', 'admin', 'team'];
 export default Permission;

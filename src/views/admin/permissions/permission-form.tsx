@@ -1,8 +1,9 @@
 import { FormikProps } from 'formik';
 import { useTranslation } from 'react-i18next';
-import Permission, { appModules } from 'src/types/admin/role/permission';
+import Permission from 'src/types/admin/role/permission';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import { appModulesNames } from '../../../configs/app-constants';
 
 interface PermissionFormProps {
   formik: FormikProps<Permission>;
@@ -20,7 +21,7 @@ const PermissionForm: React.FC<PermissionFormProps> = ({ formik, defaultLocaleDa
         size="small"
         name="module"
         label={transl('module')}
-        options={appModules.map((type) => ({
+        options={appModulesNames.map((type) => ({
           value: type,
           label: type.toUpperCase()
         }))}
