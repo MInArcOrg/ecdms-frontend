@@ -1,3 +1,4 @@
+import { GeneralMaster } from 'src/types/general/general-master';
 import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
 
 // src/types/users.ts
@@ -22,4 +23,19 @@ type User = {
   updatedAt: string;
   access_token?: string; // Include access_token for JWT
 };
+export interface UserEducation {
+  id?: string;
+  user_id: string;
+  study_field_id: string;
+  studyField: GeneralMaster;
+  school_name?: string;
+  education_level?: string;
+  program_type: string;
+  start_date: string | Date | EthiopianDate | undefined;
+  end_date: string | Date | EthiopianDate | undefined;
+  gpa: number;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
 export default User;

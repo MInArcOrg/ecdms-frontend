@@ -179,3 +179,6 @@ export const uploadableStakeholderFileTypes = {
     stakeholderService: 'STAKEHOLDER_SERVICE'
   }
 } as const;
+export const uploadableUserFileTypes = {
+  userEducation: 'EDUCATION_STATUS',
+}
