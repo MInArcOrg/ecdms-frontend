@@ -66,7 +66,7 @@ const UserViewLeft = ({ user }: { user: User }) => {
 
                 <Box sx={{ display: 'flex', mb: 3 }}>
                   <Typography sx={{ mr: 2, fontWeight: 500, color: 'text.secondary' }}>Contact:</Typography>
-                  <Typography sx={{ color: 'text.secondary' }}>+1 {user.phone}</Typography>
+                  <Typography sx={{ color: 'text.secondary' }}> {user.phone}</Typography>
                 </Box>
                
               </Box>

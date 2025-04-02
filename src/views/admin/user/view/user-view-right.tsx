@@ -18,12 +18,12 @@ import { styled } from '@mui/material/styles';
 import Icon from 'src/@core/components/icon';
 
 // ** Demo Components Imports
-import UserViewSecurity from 'src/views/admin/user/view/UserViewSecurity';
 
 // ** Types
+import { useTranslation } from 'react-i18next';
 import User from 'src/types/admin/user';
 import UserEducationList from './user-education';
-import { useTranslation } from 'react-i18next';
+import UserWorkExperienceList from './user-work-experience';
 
 interface Props {
   tab: string;
@@ -99,7 +99,10 @@ const UserViewRight = ({ tab, user, isLoading }: Props) => {
         sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
       >
         <Tab value="user-education" label={transl('department.user.tabs.education')} icon={<Icon fontSize="1.125rem" icon="tabler:school" />} />
+        <Tab value="user-work-experience" label={transl('department.user.tabs.work-experience')} icon={<Icon fontSize="1.125rem" icon="tabler:briefcase" />} />
+
       </TabList>
+      
       <Box sx={{ mt: 4 }}>
         {isLoading ? (
           <Box
@@ -115,11 +118,13 @@ const UserViewRight = ({ tab, user, isLoading }: Props) => {
           </Box>
         ) : (
           <>
-            <TabPanel sx={{ p: 0 }} value="security">
-              <UserViewSecurity />
-            </TabPanel>
             <TabPanel sx={{ p: 0 }} value="user-education">
               <UserEducationList userId={user.id} />
+            </TabPanel>
+       
+ 
+            <TabPanel sx={{ p: 0 }} value="user-work-experience">
+              <UserWorkExperienceList userId={user.id} />
             </TabPanel>
           </>
         )}

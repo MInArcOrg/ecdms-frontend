@@ -37,5 +37,16 @@ export interface UserEducation {
   created_at?: Date;
   updated_at?: Date;
 }
-
+export interface UserWorkExperience {
+  id?: string;
+  user_id: string;
+  company_name: string;
+  department?: string;
+  position?: string;
+  task_description: string;
+  start_date: string | Date | EthiopianDate | undefined;
+  end_date?: string | Date | EthiopianDate | undefined;
+  created_at?: Date;
+  updated_at?: Date;
+}
 export default User;

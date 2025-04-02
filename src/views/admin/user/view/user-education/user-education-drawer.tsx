@@ -5,7 +5,7 @@ import { uploadableUserFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { UserEducation } from 'src/types/admin/user';
 import type { IApiPayload, IApiResponse } from 'src/types/requests';
-import { formatInitialDateDate } from 'src/utils/formatter/date';
+import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
@@ -46,6 +46,8 @@ const EducationDrawer = (props: EducationDrawerType) => {
     data: {
       ...values,
       id: education?.id,
+      start_date: convertDateToLocaleDate(values.start_date),
+      end_date: convertDateToLocaleDate(values.end_date),
       user_id: userId
     },
     files: uploadableFile ? [uploadableFile] : []

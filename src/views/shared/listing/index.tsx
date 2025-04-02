@@ -1,4 +1,4 @@
-import { Container, GridProps, useMediaQuery } from '@mui/material';
+import { Container, GridProps, Typography, useMediaQuery } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
 import { isArray } from 'lodash';
 import { Fragment, useState } from 'react';
@@ -130,12 +130,20 @@ const ItemsListing = <T extends object>({
       ) : (
         isArray(items) && (
           <Fragment>
-            {listingComponents[adjustedType] || listingComponents.default}
-            <></>
-            {adjustedType !== ITEMS_LISTING_TYPE.table.value && pagination && (
-              <Container>
-                <PaginationComponent onPaginationChange={onPagination} pagination={pagination}></PaginationComponent>
-              </Container>
+            {items.length === 0 ? (
+              <Typography variant="h6" align="center" sx={{ mt: 4 }}>
+                No items available.
+              </Typography>
+            ) : (
+              <>
+                {listingComponents[adjustedType] || listingComponents.default}
+                <></>
+                {adjustedType !== ITEMS_LISTING_TYPE.table.value && pagination && (
+                  <Container>
+                    <PaginationComponent onPaginationChange={onPagination} pagination={pagination}></PaginationComponent>
+                  </Container>
+                )}
+              </>
             )}
           </Fragment>
         )
