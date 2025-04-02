@@ -374,18 +374,15 @@
         "gpa": "GPA"
       },
       "work-experience": {
-        "title": "Work Experience",
-        "create": "Create Work Experience",
-        "edit": "Edit Work Experience",
-        "details": "Work Experience Details",
-        "create-work-experience": "Create Work Experience",
-        "edit-work-experience": "Edit Work Experience",
         "company-name": "Company Name",
         "department": "Department",
         "position": "Position",
         "task-description": "Task Description",
         "start-date": "Start Date",
-        "end-date": "End Date"
+        "end-date": "End Date",
+        "create-work-experience": "Create Work Experience",
+        "edit-work-experience": "Edit Work Experience",
+        "title": "Work Experience"
       }
     },
     "position": {
@@ -481,8 +478,8 @@
         "licenses": {
           "licenses": "Licenses"
         },
-        "work-experiances": {
-          "work-experiances": "Work Experiances"
+        "work-experiences": {
+          "work-experiences": "Work experiences"
         },
         "educations": {
           "educations": "Educations",
