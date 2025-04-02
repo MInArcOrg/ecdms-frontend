@@ -1,17 +1,15 @@
 import type { FormikProps } from 'formik';
-import type { IApiPayload } from 'src/types/requests';
+import { useState } from 'react';
+import userEducationApiService from 'src/services/admin/user-education-service';
+import { uploadableUserFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { UserEducation } from 'src/types/admin/user';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import { formatInitialDateDate } from 'src/utils/formatter/date';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import EducationForm from './user-education-form';
-import type { StudyField } from 'src/types/general/general-master';
-import type { IApiResponse } from 'src/types/requests';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { uploadableUserFileTypes } from 'src/services/utils/file-constants';
-import { useState } from 'react';
-import { UserEducation } from 'src/types/admin/user';
-import userEducationApiService from 'src/services/admin/user-education-service';
-import { formatInitialDateDate } from 'src/utils/formatter/date';
 
 interface EducationDrawerType {
   open: boolean;
@@ -19,15 +17,14 @@ interface EducationDrawerType {
   refetch: () => void;
   education: UserEducation;
   userId: string;
-  studyFields: StudyField[];
 }
 
 const EducationDrawer = (props: EducationDrawerType) => {
-  const { open, toggle, refetch, education, userId, studyFields } = props;
+  const { open, toggle, refetch, education, userId } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const validationSchema = yup.object().shape({
-    study_field: yup.string().required('Study field is required'),
+    study_field_id  : yup.string().required('Study field is required'),
     program_type: yup.string().required('Program type is required'),
     start_date: yup.date().required('Start date is required'),
     end_date: yup.date().required('End date is required'),
@@ -96,7 +93,7 @@ const EducationDrawer = (props: EducationDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<UserEducation>) => (
-            <EducationForm formik={formik} studyFields={studyFields || []} file={uploadableFile} onFileChange={setUploadableFile} />
+            <EducationForm formik={formik} file={uploadableFile} onFileChange={setUploadableFile} />
           )}
         </FormPageWrapper>
       )}

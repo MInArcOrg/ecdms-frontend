@@ -1,3 +1,4 @@
+import { GeneralMaster } from 'src/types/general/general-master';
 import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
 
 // src/types/users.ts
@@ -25,7 +26,8 @@ type User = {
 export interface UserEducation {
   id?: string;
   user_id: string;
-  study_field: string;
+  study_field_id: string;
+  studyField: GeneralMaster;
   school_name?: string;
   education_level?: string;
   program_type: string;

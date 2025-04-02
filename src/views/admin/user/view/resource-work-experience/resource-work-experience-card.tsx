@@ -43,13 +43,13 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience, refetch, on
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('resources.professional.work-experience.position')}: {experience?.position || 'N/A'}
+            {t('epartment.user.education.position')}: {experience?.position || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('resources.professional.work-experience.department')}: {experience?.department || 'N/A'}
+            {t('epartment.user.education.department')}: {experience?.department || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('resources.professional.work-experience.task-description')}: {experience?.task_description || 'N/A'}
+            {t('epartment.user.education.task-description')}: {experience?.task_description || 'N/A'}
           </Typography>
         </Box>
       </CardContent>

@@ -1,12 +1,10 @@
 import { Box } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
 import userEducationApiService from 'src/services/admin/user-education-service';
-import generalMasterDataApiService from 'src/services/general/general-master-data-service';
 import { UserEducation } from 'src/types/admin/user';
-import type { StudyField } from 'src/types/general/general-master';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
@@ -22,29 +20,9 @@ const UserEducationList: React.FC<UserEducationListProps> = ({ userId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<UserEducation | null>(null);
-  const [studyFields, setStudyFields] = useState<StudyField[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+
   const { t } = useTranslation();
 
-  useEffect(() => {
-    const fetchStudyFields = async () => {
-      try {
-        const response = await generalMasterDataApiService.getAllResourceGeneralMaster('study-fields', {});
-        setStudyFields(
-          response.payload.map((item: any) => ({
-            id: item.id,
-            title: item.title
-          })) as StudyField[]
-        );
-      } catch (error) {
-        console.error('Error fetching study fields:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchStudyFields();
-  }, []);
 
   const fetchEducation = (params: GetRequestParam): Promise<IApiResponse<UserEducation[]>> => {
     return userEducationApiService.getAll({
@@ -57,7 +35,8 @@ const UserEducationList: React.FC<UserEducationListProps> = ({ userId }) => {
     data: educations,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
+    isLoading
   } = usePaginatedFetch<UserEducation[]>({
     queryKey: ['educations'],
     fetchFunction: fetchEducation
@@ -92,10 +71,7 @@ const UserEducationList: React.FC<UserEducationListProps> = ({ userId }) => {
 
 
 
-  if (isLoading) {
-    return <Box>Loading...</Box>;
-  }
-
+ 
   return (
     <Box>
       {showDrawer && (
@@ -105,7 +81,6 @@ const UserEducationList: React.FC<UserEducationListProps> = ({ userId }) => {
           education={selectedRow as UserEducation}
           refetch={refetch}
           userId={userId}
-          studyFields={studyFields || []}
         />
       )}
 
@@ -113,9 +88,9 @@ const UserEducationList: React.FC<UserEducationListProps> = ({ userId }) => {
       <ItemsListing
         title={t('department.user.education.title')}
         pagination={pagination}
-        type={ITEMS_LISTING_TYPE.table.value}
+        type={ITEMS_LISTING_TYPE.list.value}
         tableProps={{
-          headers: educationColumns(handleClickDetail, handleEdit, handleDelete, t, studyFields)
+          headers: educationColumns(handleEdit, handleDelete, t)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -125,7 +100,6 @@ const UserEducationList: React.FC<UserEducationListProps> = ({ userId }) => {
             onEdit={handleEdit}
             refetch={refetch}
             onDelete={handleDelete}
-            studyFields={studyFields || []}
           />
         )}
         createActionConfig={{

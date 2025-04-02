@@ -98,7 +98,7 @@ const UserViewRight = ({ tab, user, isLoading }: Props) => {
         aria-label="forced scroll tabs example"
         sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
       >
-        <Tab value="user-education" label={transl('department.user.tabs.education')} icon={<Icon fontSize="1.125rem" icon="tabler:lock" />} />
+        <Tab value="user-education" label={transl('department.user.tabs.education')} icon={<Icon fontSize="1.125rem" icon="tabler:school" />} />
       </TabList>
       <Box sx={{ mt: 4 }}>
         {isLoading ? (

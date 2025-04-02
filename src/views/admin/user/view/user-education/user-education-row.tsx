@@ -1,9 +1,6 @@
-import { Button } from '@mui/material';
-import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
 import { UserEducation } from 'src/types/admin/user';
-import type { StudyField } from 'src/types/general/general-master';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
@@ -13,33 +10,18 @@ interface CellType {
 }
 
 export const educationColumns = (
-  onDetail: (education: UserEducation) => void,
   onEdit: (education: UserEducation) => void,
   onDelete: (id: string) => void,
   t: any,
-  studyFields?: StudyField[]
 ): GridColDef[] => [
     {
       flex: 0.2,
-      minWidth: 290,
+      minWidth: 240,
       field: 'study_field',
       headerName: t('department.user.education.study-field'),
       renderCell: ({ row }: CellType) => {
-        const studyField = studyFields?.find((field) => field.id === row.study_field);
         return (
-          <Typography
-            noWrap
-            component={Button}
-            onClick={() => onDetail(row)}
-            sx={{
-              fontWeight: 500,
-              textDecoration: 'none',
-              color: 'text.secondary',
-              '&:hover': { color: 'primary.main' }
-            }}
-          >
-            {studyField ? studyField.title : t('common.not-available')}
-          </Typography>
+            row.studyField.title 
         );
       }
     },

@@ -3,31 +3,35 @@ import type { FormikProps } from 'formik';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
-import type { StudyField } from 'src/types/general/general-master';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomDatePicker from 'src/views/shared/form/custom-date-box';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 import { UserEducation } from 'src/types/admin/user';
+import generalMasterDataApiService from 'src/services/general/general-master-data-service';
+import { useQuery } from '@tanstack/react-query';
+import { dropDownConfig } from 'src/configs/api-constants';
 
 interface EducationFormProps {
   formik: FormikProps<UserEducation>;
-  studyFields: StudyField[];
   file: File | null;
   onFileChange: (file: File | null) => void;
 }
 
-const EducationForm: React.FC<EducationFormProps> = ({ formik, studyFields, file, onFileChange }) => {
+const EducationForm: React.FC<EducationFormProps> = ({ formik, file, onFileChange }) => {
   const { t } = useTranslation();
-
+      const { data: studyFields  } = useQuery({
+        queryKey: ['roles'],
+        queryFn: () => generalMasterDataApiService.getAll('study-fields',dropDownConfig())
+      });
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
         <CustomSelect
           fullWidth
           label={t('department.user.education.study-field')}
-          name="study_field"
-          options={studyFields?.map((field) => ({ value: field.id, label: field.title })) || []}
+          name="study_field_id"
+          options={studyFields?.payload.map((field) => ({ value: field.id, label: field.title })) || []}
           size="small"
           sx={{ mb: 2 }}
         />
