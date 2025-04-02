@@ -5,42 +5,39 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import professionalContactPersonApiService from 'src/services/resource/professional-contact-person-service';
+import userContactPersonApiService from 'src/services/admin/user-contact-person-service';
+import { UserContactPerson } from 'src/types/admin/user';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
-import ProfessionalContactPersonCard from './professional-contact-person-card';
-import ProfessionalContactPersonDrawer from './professional-contact-person-drawer';
-import type { ProfessionalContactPerson } from 'src/types/resource/index';
-import { professionalContactPersonColumns } from './professional-contact-person-row';
+import UserContactPersonCard from './user-contact-person-card';
+import UserContactPersonDrawer from './user-contact-person-drawer';
+import { userContactPersonColumns } from './user-contact-person-row';
 
-interface ProfessionalContactPersonListProps {
-  model: string;
-  professionalId: string;
+interface UserContactPersonListProps {
+  userId: string;
 }
 
-const ProfessionalContactPersonList: React.FC<ProfessionalContactPersonListProps> = ({ model, professionalId }) => {
+const UserContactPersonList: React.FC<UserContactPersonListProps> = ({  userId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
-  const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<ProfessionalContactPerson | null>(null);
+  const [selectedRow, setSelectedRow] = useState<UserContactPerson | null>(null);
   const { t } = useTranslation();
 
-  const fetchProfessionalContactPeople = (params: GetRequestParam): Promise<IApiResponse<ProfessionalContactPerson[]>> => {
-    return professionalContactPersonApiService.getAll({
+  const fetchUserContactPeople = (params: GetRequestParam): Promise<IApiResponse<UserContactPerson[]>> => {
+    return userContactPersonApiService.getAll({
       ...params,
-      filter: { ...params.filter, professional_id: professionalId }
+      filter: { ...params.filter, user_id: userId }
     });
   };
 
   const {
-    data: professionalContactPeople,
+    data: userContactPeople,
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<ProfessionalContactPerson[]>({
-    queryKey: ['professionalContactPeople', professionalId],
-    fetchFunction: fetchProfessionalContactPeople
+  } = usePaginatedFetch<UserContactPerson[]>({
+    queryKey: ['userContactPeople', userId],
+    fetchFunction: fetchUserContactPeople
   });
 
   const toggleDrawer = () => {
@@ -48,70 +45,43 @@ const ProfessionalContactPersonList: React.FC<ProfessionalContactPersonListProps
     setShowDrawer(!showDrawer);
   };
 
-  const toggleDetailDrawer = () => {
-    setSelectedRow(null);
-    setShowDetailDrawer(!showDetailDrawer);
-  };
 
-  const handleEdit = (contactPerson: ProfessionalContactPerson) => {
+  const handleEdit = (contactPerson: UserContactPerson) => {
     setSelectedRow(contactPerson);
     setShowDrawer(true);
   };
 
   const handleDelete = async (contactPersonId: string) => {
-    await professionalContactPersonApiService.delete(contactPersonId);
+    await userContactPersonApiService.delete(contactPersonId);
     refetch();
   };
 
-  const handleClickDetail = (contactPerson: ProfessionalContactPerson) => {
-    setSelectedRow(contactPerson);
-    setShowDetailDrawer(true);
-  };
 
-  const mapContactPersonToDetailItems = (contactPerson: ProfessionalContactPerson): { title: string; value: string }[] => [
-    { title: t('resources.professional.contact-person.firstName'), value: contactPerson.first_name },
-    { title: t('resources.professional.contact-person.middleName'), value: contactPerson.middle_name || 'N/A' },
-    { title: t('resources.professional.contact-person.lastName'), value: contactPerson.last_name },
-    { title: t('resources.professional.contact-person.nationalIdNo'), value: contactPerson.national_id_no },
-    { title: t('resources.professional.contact-person.gender'), value: contactPerson.gender },
-    { title: t('resources.professional.contact-person.phoneNo'), value: contactPerson.phone_no },
-    { title: t('resources.professional.contact-person.email'), value: contactPerson.email || 'N/A' }
-  ];
+
 
   return (
     <Box>
       {showDrawer && (
-        <ProfessionalContactPersonDrawer
+        <UserContactPersonDrawer
           open={showDrawer}
           toggle={toggleDrawer}
           contactPerson={selectedRow}
           refetch={refetch}
-          professionalId={professionalId}
+          userId={userId}
         />
       )}
 
-      {showDetailDrawer && selectedRow && (
-        <OtherDetailSidebar
-          show={showDetailDrawer}
-          toggleDrawer={toggleDetailDrawer}
-          data={mapContactPersonToDetailItems(selectedRow)}
-          id={selectedRow.id || ''}
-          hasReference={false}
-          fileType="PROFESSIONAL_CONTACT_PERSON"
-          title={t('resources.professional.contact-person.details')}
-        />
-      )}
+ 
 
       <ItemsListing
-        title={t('resources.professional.contact-person.title')}
+        title={t('department.user.contact-person.title')}
         pagination={pagination}
-        type={ITEMS_LISTING_TYPE.table.value}
+        type={ITEMS_LISTING_TYPE.list.value}
         tableProps={{
-          headers: professionalContactPersonColumns(handleClickDetail, handleEdit, handleDelete, t)
+          headers: userContactPersonColumns( handleEdit, handleDelete, t)
         }}
         ItemViewComponent={({ data }) => (
-          <ProfessionalContactPersonCard
-            onDetail={handleClickDetail}
+          <UserContactPersonCard
             contactPerson={data}
             onEdit={handleEdit}
             refetch={refetch}
@@ -124,15 +94,15 @@ const ProfessionalContactPersonList: React.FC<ProfessionalContactPersonListProps
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'professionalcontactperson'
+            subject: 'contactperson'
           }
         }}
         fetchDataFunction={refetch}
-        items={professionalContactPeople || []}
+        items={userContactPeople || []}
         onPaginationChange={handlePageChange}
       />
     </Box>
   );
 };
 
-export default ProfessionalContactPersonList;
+export default UserContactPersonList;

@@ -24,6 +24,7 @@ import { useTranslation } from 'react-i18next';
 import User from 'src/types/admin/user';
 import UserEducationList from './user-education';
 import UserWorkExperienceList from './user-work-experience';
+import UserContactPersonList from './user-contact-person';
 
 interface Props {
   tab: string;
@@ -100,6 +101,7 @@ const UserViewRight = ({ tab, user, isLoading }: Props) => {
       >
         <Tab value="user-education" label={transl('department.user.tabs.education')} icon={<Icon fontSize="1.125rem" icon="tabler:school" />} />
         <Tab value="user-work-experience" label={transl('department.user.tabs.work-experience')} icon={<Icon fontSize="1.125rem" icon="tabler:briefcase" />} />
+        <Tab value="user-contact-person" label={transl('department.user.tabs.contact-person')} icon={<Icon fontSize="1.125rem" icon="tabler:users" />} />
 
       </TabList>
       
@@ -125,6 +127,9 @@ const UserViewRight = ({ tab, user, isLoading }: Props) => {
  
             <TabPanel sx={{ p: 0 }} value="user-work-experience">
               <UserWorkExperienceList userId={user.id} />
+            </TabPanel>
+            <TabPanel sx={{ p: 0 }} value="user-contact-person">
+              <UserContactPersonList userId={user.id} />
             </TabPanel>
           </>
         )}
