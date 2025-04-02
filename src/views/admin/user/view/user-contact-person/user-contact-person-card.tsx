@@ -1,24 +1,22 @@
 import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
-import type { ProfessionalContactPerson } from 'src/types/resource/index';
+import { UserContactPerson } from 'src/types/admin/user';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-interface ProfessionalContactPersonCardProps {
-  contactPerson: ProfessionalContactPerson;
+interface UserContactPersonCardProps {
+  contactPerson: UserContactPerson;
   refetch: () => void;
-  onEdit: (contactPerson: ProfessionalContactPerson) => void;
+  onEdit: (contactPerson: UserContactPerson) => void;
   onDelete: (id: string) => void;
-  onDetail: (contactPerson: ProfessionalContactPerson) => void;
 }
 
-const ProfessionalContactPersonCard: React.FC<ProfessionalContactPersonCardProps> = ({
+const UserContactPersonCard: React.FC<UserContactPersonCardProps> = ({
   contactPerson,
   refetch,
   onEdit,
   onDelete,
-  onDetail
 }) => {
   const { t } = useTranslation();
 
@@ -27,19 +25,7 @@ const ProfessionalContactPersonCard: React.FC<ProfessionalContactPersonCardProps
       <CardContent>
         <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
           <Typography variant="h5" fontWeight="bold">
-            <Typography
-              noWrap
-              component={Button}
-              onClick={() => onDetail(contactPerson)}
-              sx={{
-                fontWeight: 500,
-                textDecoration: 'none',
-                color: 'text.secondary',
-                '&:hover': { color: 'primary.main' }
-              }}
-            >
-              {`${contactPerson.first_name} ${contactPerson.last_name}`}
-            </Typography>
+            {`${contactPerson.first_name} ${contactPerson.middle_name} ${contactPerson.last_name}`}
           </Typography>
         </Box>
 
@@ -47,20 +33,23 @@ const ProfessionalContactPersonCard: React.FC<ProfessionalContactPersonCardProps
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('resources.professional.contact-person.nationalIdNo')}: {contactPerson.national_id_no}
+            {t('department.user.contact-person.nationalIdNo')}: {contactPerson.national_id_no || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('resources.professional.contact-person.email')}: {contactPerson.email}
+            {t('department.user.contact-person.email')}: {contactPerson.email || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('resources.professional.contact-person.phoneNo')}: {contactPerson.phone_no}
+            {t('department.user.contact-person.phoneNo')}: {contactPerson.phone_no}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {t('department.user.contact-person.gender')}: {contactPerson.gender}
           </Typography>
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
         <ModelAction
-          model="ProfessionalContactPerson"
+          model="ContactPerson"
           model_id={contactPerson?.id || ''}
           refetchModel={refetch}
           resubmit={() => refetch()}
@@ -70,11 +59,11 @@ const ProfessionalContactPersonCard: React.FC<ProfessionalContactPersonCardProps
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'professionalcontactperson'
+            subject: 'contactperson'
           }}
           editPermissionRule={{
             action: 'edit',
-            subject: 'professionalcontactperson'
+            subject: 'contactperson'
           }}
           onEdit={() => onEdit(contactPerson)}
           onDelete={() => onDelete(contactPerson?.id || '')}
@@ -86,4 +75,4 @@ const ProfessionalContactPersonCard: React.FC<ProfessionalContactPersonCardProps
   );
 };
 
-export default ProfessionalContactPersonCard;
+export default UserContactPersonCard;

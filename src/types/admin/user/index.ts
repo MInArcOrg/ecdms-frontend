@@ -49,4 +49,18 @@ export interface UserWorkExperience {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface UserContactPerson {
+  id?: string;
+  user_id: string;
+  national_id_no?: string;
+  first_name: string;
+  middle_name: string;
+  last_name: string;
+  gender: string;
+  phone_no: string;
+  email?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
 export default User;

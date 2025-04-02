@@ -351,7 +351,8 @@
       },
       "tabs": {
         "education": "Education",
-        "work-experience": "Work Experience"
+        "work-experience": "Work Experience",
+        "contact-person":"Contact Person"
       },
       "title": "Users",
       "male": "Male",
@@ -383,6 +384,18 @@
         "create-work-experience": "Create Work Experience",
         "edit-work-experience": "Edit Work Experience",
         "title": "Work Experience"
+      },
+      "contact-person": {
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "nationalIdNo": "National ID Number",
+        "gender": "Gender",
+        "phoneNo": "Phone Number",
+        "email": "Email",
+        "title":"Contact Person",
+        "create-contact-person": "Create Contact Person",
+        "edit-contact-person": "Edit Contact Person"
       }
     },
     "position": {
