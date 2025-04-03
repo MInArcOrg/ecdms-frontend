@@ -8,7 +8,7 @@ function GeneralProjectMasterData() {
     <div>
       <GeneralMasterLayout>
         <Fragment>
-          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.customerEngagementFrequency} />
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.customerEngagementProgramsType} />
         </Fragment>
       </GeneralMasterLayout>
     </div>

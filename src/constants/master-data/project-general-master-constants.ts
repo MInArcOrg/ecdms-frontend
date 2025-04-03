@@ -623,6 +623,14 @@ export const projectMasterModels = {
     editTitle: 'edit-customer-engagement-frequency',
     fileType: 'CUSTOMER_ENGAGEMENT_FREQUENCY'
   },
+  customerEngagementProgramsType: {
+    model: 'CustomerEngagementProgramsType',
+    dbModel: 'customerengagementprogramstype',
+    title: 'customer-engagement-programs-types',
+    createTitle: 'create-customer-engagement-programs-type',
+    editTitle: 'edit-customer-engagement-programs-type',
+    fileType: 'CUSTOMER_ENGAGEMENT_PROGRAMS_TYPE'
+  },
   
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
