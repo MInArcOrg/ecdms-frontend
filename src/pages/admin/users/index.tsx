@@ -24,7 +24,6 @@ const UserList = ({}) => {
     data: users,
     isLoading,
     pagination,
-    handlePageChange,
     refetch
   } = usePaginatedFetch<User[]>({
     queryKey: ['system-users'],

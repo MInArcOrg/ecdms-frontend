@@ -1,17 +1,16 @@
 import { Grid } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
 import type { FormikProps } from 'formik';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
-import { gridSpacing } from 'src/configs/app-constants';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomDatePicker from 'src/views/shared/form/custom-date-box';
-import CustomSelect from 'src/views/shared/form/custom-select';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
-import { UserEducation } from 'src/types/admin/user';
-import generalMasterDataApiService from 'src/services/general/general-master-data-service';
-import { useQuery } from '@tanstack/react-query';
 import { dropDownConfig } from 'src/configs/api-constants';
+import { gridSpacing } from 'src/configs/app-constants';
+import generalMasterDataApiService from 'src/services/general/general-master-data-service';
+import { UserEducation } from 'src/types/admin/user';
 import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
+import CustomSelect from 'src/views/shared/form/custom-select';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface EducationFormProps {
   formik: FormikProps<UserEducation>;
