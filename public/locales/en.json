@@ -302,7 +302,10 @@
       "edit-communication-link-type": "Edit Communication Link Types",
       "cyber-security-measures-types": "Cyber Security Measures Types",
       "create-cyber-security-measures-type": "Create Cyber Security Measures Types",
-      "edit-cyber-security-measures-type": "Edit Cyber Security Measures Types"
+      "edit-cyber-security-measures-type": "Edit Cyber Security Measures Types",
+      "cyber-security-audits-frequencies": "Cyber Security Audits Frequencies",
+      "create-cyber-security-audits-frequency": "Create Cyber Security Audits Frequencies",
+      "edit-cyber-security-audits-frequency": "Edit Cyber Security Audits Frequencies"
     },
     "form": {
       "title": "Title",
