@@ -287,7 +287,13 @@
       "edit-model":"Edit Model",
       "smart-meter-types": "Smart Meter Types",
       "create-smart-meter-type": "Create Smart Meter Type",
-      "edit-smart-meter-type": "Edit Smart Meter Type"
+      "edit-smart-meter-type": "Edit Smart Meter Type",
+      "customer-engagement-frequencies": "Customer Engagement Frequencies",
+      "create-customer-engagement-frequency": "Create Customer Engagement Frequency",
+      "edit-customer-engagement-frequency": "Edit Customer Engagement Frequency",
+      "customer-engagement-programs-types": "Customer Engagement Programs Types",
+      "create-customer-engagement-programs-type": "Create Customer Engagement Programs Type",
+      "edit-customer-engagement-programs-type": "Edit Customer Engagement Programs Type"
     },
     "form": {
       "title": "Title",
@@ -301,10 +307,7 @@
       "service_type": "Service Type",
       "specification_detail": "Specification Detail",
       "measurement_unit": "Measurement Unit",
-      "project-type": "Project Type",
-      "customer-engagement-frequencies": "Customer Engagement Frequencies",
-      "create-customer-engagement-frequency": "Create Customer Engagement Frequency",
-      "edit-customer-engagement-frequency": "Edit Customer Engagement Frequency"
+      "project-type": "Project Type"
     },
     "create-master-type": "Create Type",
     "edit-master-type": "Edit Type",
