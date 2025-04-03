@@ -293,7 +293,10 @@
       "edit-customer-engagement-frequency": "Edit Customer Engagement Frequency",
       "customer-engagement-programs-types": "Customer Engagement Programs Types",
       "create-customer-engagement-programs-type": "Create Customer Engagement Programs Type",
-      "edit-customer-engagement-programs-type": "Edit Customer Engagement Programs Type"
+      "edit-customer-engagement-programs-type": "Edit Customer Engagement Programs Type",
+      "control-system-types": "Control System Types",
+      "create-control-system-type": "Create Control System Types",
+      "edit-control-system-type": "Edit Control System Types"
     },
     "form": {
       "title": "Title",
