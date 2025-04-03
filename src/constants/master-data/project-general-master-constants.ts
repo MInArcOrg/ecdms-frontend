@@ -647,6 +647,22 @@ export const projectMasterModels = {
     editTitle: 'edit-communication-link-type',
     fileType: 'COMMUNICATION_LINK_TYPE'
   },
+  cyberSecurityMeasuresType: {
+    model: 'CyberSecurityMeasuresType',
+    dbModel: 'cybersecuritymeasurestype',
+    title: 'cyber-security-measures-types',
+    createTitle: 'create-cyber-security-measures-type',
+    editTitle: 'edit-cyber-security-measures-type',
+    fileType: 'CYBER_SECURITY_MEASURES_TYPE'
+  },
+  cyberSecurityAuditsFrequency: {
+    model: 'CyberSecurityAuditsFrequency',
+    dbModel: 'cybersecurityauditsfrequency',
+    title: 'cyber-security-audits-frequencies',
+    createTitle: 'create-cyber-security-audits-frequency',
+    editTitle: 'edit-cyber-security-audits-frequency',
+    fileType: 'CYBER_SECURITY_AUDITS_FREQUENCY'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
