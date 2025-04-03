@@ -182,4 +182,4 @@ export const uploadableStakeholderFileTypes = {
 export const uploadableUserFileTypes = {
   userEducation: 'EDUCATION_STATUS',
   userWorkExperience: 'WORK_EXPERIENCE'
-}
+};

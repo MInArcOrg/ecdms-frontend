@@ -58,7 +58,11 @@ const UserContactPersonDrawer = (props: UserContactPersonDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`department.user.contact-person.${isEdit ? 'edit' : 'create'}-contact-person`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={`department.user.contact-person.${isEdit ? 'edit' : 'create'}-contact-person`}
+      handleClose={handleClose}
+      open={open}
+    >
       {() => (
         <FormPageWrapper
           edit={isEdit}

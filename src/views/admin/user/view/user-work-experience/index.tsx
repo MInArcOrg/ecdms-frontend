@@ -23,7 +23,6 @@ const UserWorkExperienceList: React.FC<UserWorkExperienceListProps> = ({ userId 
 
   const { t } = useTranslation();
 
-
   const fetchWorkExperience = (params: GetRequestParam): Promise<IApiResponse<UserWorkExperience[]>> => {
     return userWorkExperienceApiService.getAll({
       ...params,
@@ -67,11 +66,6 @@ const UserWorkExperienceList: React.FC<UserWorkExperienceListProps> = ({ userId 
     setSelectedRow(workexperience);
   };
 
-
-
-
-
- 
   return (
     <Box>
       {showDrawer && (
@@ -83,7 +77,6 @@ const UserWorkExperienceList: React.FC<UserWorkExperienceListProps> = ({ userId 
           userId={userId}
         />
       )}
-
 
       <ItemsListing
         title={t('department.user.work-experience.title')}

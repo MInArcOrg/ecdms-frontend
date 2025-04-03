@@ -20,7 +20,13 @@ const WorkExperienceForm: React.FC<WorkExperienceFormProps> = ({ formik, file, o
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('department.user.work-experience.company-name')} name="company_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox
+          fullWidth
+          label={t('department.user.work-experience.company-name')}
+          name="company_name"
+          size="small"
+          sx={{ mb: 2 }}
+        />
       </Grid>
       <Grid item xs={12}>
         <CustomTextBox fullWidth label={t('department.user.work-experience.department')} name="department" size="small" sx={{ mb: 2 }} />
@@ -29,7 +35,15 @@ const WorkExperienceForm: React.FC<WorkExperienceFormProps> = ({ formik, file, o
         <CustomTextBox fullWidth label={t('department.user.work-experience.position')} name="position" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('department.user.work-experience.task-description')} rows="3" multiline={true} name="task_description" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox
+          fullWidth
+          label={t('department.user.work-experience.task-description')}
+          rows="3"
+          multiline={true}
+          name="task_description"
+          size="small"
+          sx={{ mb: 2 }}
+        />
       </Grid>
       <Grid item xs={12} md={6} lg={6}>
         <CustomDynamicDatePicker

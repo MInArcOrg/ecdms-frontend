@@ -20,9 +20,7 @@ export const userContactPersonColumns = (
     field: 'name',
     headerName: t('resources.user.contact-person.name'),
     renderCell: ({ row }: CellType) => {
-      return (
-          `${row.first_name} ${row.last_name}`
-      );
+      return `${row.first_name} ${row.last_name}`;
     }
   },
   {

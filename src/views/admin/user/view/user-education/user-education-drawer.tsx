@@ -24,7 +24,7 @@ const EducationDrawer = (props: EducationDrawerType) => {
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const validationSchema = yup.object().shape({
-    study_field_id  : yup.string().required('Study field is required'),
+    study_field_id: yup.string().required('Study field is required'),
     program_type: yup.string().required('Program type is required'),
     start_date: yup.date().required('Start date is required'),
     end_date: yup.date().required('End date is required'),
@@ -88,15 +88,13 @@ const EducationDrawer = (props: EducationDrawerType) => {
           initialValues={{
             ...(education as UserEducation),
             start_date: formatInitialDateDate(education?.start_date),
-            end_date: formatInitialDateDate(education?.end_date),
+            end_date: formatInitialDateDate(education?.end_date)
           }}
           createActionFunc={isEdit ? editEducation : createEducation}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<UserEducation>) => (
-            <EducationForm formik={formik} file={uploadableFile} onFileChange={setUploadableFile} />
-          )}
+          {(formik: FormikProps<UserEducation>) => <EducationForm formik={formik} file={uploadableFile} onFileChange={setUploadableFile} />}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

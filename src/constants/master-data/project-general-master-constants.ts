@@ -662,7 +662,7 @@ export const projectMasterModels = {
     createTitle: 'create-cyber-security-audits-frequency',
     editTitle: 'edit-cyber-security-audits-frequency',
     fileType: 'CYBER_SECURITY_AUDITS_FREQUENCY'
-  },
+  }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

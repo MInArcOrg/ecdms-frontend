@@ -36,7 +36,7 @@ const FooterContent = () => {
     >
       <Typography sx={{ mr: 2, display: 'flex', color: 'text.secondary' }}>
         {`© ${new Date().getFullYear()}, Powered By `}
-        
+
         {'by'}
         <Typography sx={{ ml: 1 }} target="_blank" href="https://www.onespace.et" component={StyledCompanyName}>
           1Space

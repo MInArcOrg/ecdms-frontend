@@ -12,12 +12,7 @@ interface UserContactPersonCardProps {
   onDelete: (id: string) => void;
 }
 
-const UserContactPersonCard: React.FC<UserContactPersonCardProps> = ({
-  contactPerson,
-  refetch,
-  onEdit,
-  onDelete,
-}) => {
+const UserContactPersonCard: React.FC<UserContactPersonCardProps> = ({ contactPerson, refetch, onEdit, onDelete }) => {
   const { t } = useTranslation();
 
   return (

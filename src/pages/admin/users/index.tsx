@@ -50,7 +50,7 @@ const UserList = ({}) => {
         onCreateClick={toggleUserDrawer}
         fetchDataFunction={fetchUsers}
         tableProps={{ headers: userColumns(handleEdit, handleDelete, t, refetch) }}
-        items={users||[]}
+        items={users || []}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleUserDrawer,
