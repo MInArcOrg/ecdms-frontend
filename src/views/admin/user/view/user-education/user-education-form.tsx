@@ -20,10 +20,10 @@ interface EducationFormProps {
 
 const EducationForm: React.FC<EducationFormProps> = ({ formik, file, onFileChange }) => {
   const { t } = useTranslation();
-      const { data: studyFields  } = useQuery({
-        queryKey: ['roles'],
-        queryFn: () => generalMasterDataApiService.getAll('study-fields',dropDownConfig())
-      });
+  const { data: studyFields } = useQuery({
+    queryKey: ['roles'],
+    queryFn: () => generalMasterDataApiService.getAll('study-fields', dropDownConfig())
+  });
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -51,7 +51,7 @@ const EducationForm: React.FC<EducationFormProps> = ({ formik, file, onFileChang
       <Grid item xs={12}>
         <CustomTextBox fullWidth label={t('department.user.education.program-type')} name="program_type" size="small" sx={{ mb: 2 }} />
       </Grid>
-    
+
       <Grid item xs={12} md={6} lg={6}>
         <CustomDynamicDatePicker
           fullWidth

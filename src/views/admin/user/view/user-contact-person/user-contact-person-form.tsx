@@ -31,13 +31,7 @@ const UserContactPersonForm: React.FC<UserContactPersonFormProps> = ({ formik })
         <CustomTextBox fullWidth label={t('department.user.contact-person.nationalIdNo')} name="national_id_no" size="small" />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomRadioBox
-          fullWidth
-          label={t('department.user.contact-person.gender')}
-          name="gender"
-          options={genderList(t)}
-          size="small"
-        />
+        <CustomRadioBox fullWidth label={t('department.user.contact-person.gender')} name="gender" options={genderList(t)} size="small" />
       </Grid>
       <Grid item xs={12}>
         <CustomPhoneInput fullWidth label={t('department.user.contact-person.phoneNo')} name="phone_no" size="small" />

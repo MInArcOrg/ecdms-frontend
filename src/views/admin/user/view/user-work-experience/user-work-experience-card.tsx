@@ -23,30 +23,25 @@ const WorkExperienceCard: React.FC<WorkExperienceCardProps> = ({ workexperience,
   return (
     <Card sx={{ marginBottom: 3 }}>
       <CardContent>
-        <Box display='flex' gap={4} alignItems='center'>
-          <Avatar 
-            alt={workexperience.company_name} 
-            src='/static/images/avatar/1.jpg' 
-            sx={{ width: 55, height: 55 }} 
-          />
+        <Box display="flex" gap={4} alignItems="center">
+          <Avatar alt={workexperience.company_name} src="/static/images/avatar/1.jpg" sx={{ width: 55, height: 55 }} />
           <Box>
-            <Typography variant='subtitle1'>
-              {workexperience.company_name || 'N/A'}
-            </Typography>
-            <Typography variant='subtitle2'>
+            <Typography variant="subtitle1">{workexperience.company_name || 'N/A'}</Typography>
+            <Typography variant="subtitle2">
               {workexperience.position || t('common.not-available')} {t('in')} {workexperience.department || t('common.not-available')}
             </Typography>
-            <Typography variant='body2' color='text.secondary'>
+            <Typography variant="body2" color="text.secondary">
               {workexperience.task_description || t('common.not-available')}
             </Typography>
-            <Typography variant='subtitle2'>
-              {formatDynamicDate(workexperience.start_date)} - {workexperience.end_date ? formatDynamicDate(workexperience.end_date) : t('Present')}
+            <Typography variant="subtitle2">
+              {formatDynamicDate(workexperience.start_date)} -{' '}
+              {workexperience.end_date ? formatDynamicDate(workexperience.end_date) : t('Present')}
             </Typography>
           </Box>
         </Box>
       </CardContent>
 
-      <Box display='flex' justifyContent='flex-end' alignItems='center' gap={2} p={2}>
+      <Box display="flex" justifyContent="flex-end" alignItems="center" gap={2} p={2}>
         <FileDrawer id={workexperience?.id || ''} type={uploadableResourceFileTypes.resource} />
         <ModelAction
           model="UserWorkExperience"

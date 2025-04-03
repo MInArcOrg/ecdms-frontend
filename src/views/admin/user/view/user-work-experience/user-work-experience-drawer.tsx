@@ -77,7 +77,11 @@ const WorkExperienceDrawer = (props: WorkExperienceDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`department.user.work-experience.${isEdit ? 'edit' : 'create'}-work-experience`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={`department.user.work-experience.${isEdit ? 'edit' : 'create'}-work-experience`}
+      handleClose={handleClose}
+      open={open}
+    >
       {() => (
         <FormPageWrapper
           edit={isEdit}
@@ -87,7 +91,7 @@ const WorkExperienceDrawer = (props: WorkExperienceDrawerType) => {
           initialValues={{
             ...(workexperience as UserWorkExperience),
             start_date: formatInitialDateDate(workexperience?.start_date),
-            end_date: formatInitialDateDate(workexperience?.end_date),
+            end_date: formatInitialDateDate(workexperience?.end_date)
           }}
           createActionFunc={isEdit ? editWorkExperience : createWorkExperience}
           onActionSuccess={onActionSuccess}

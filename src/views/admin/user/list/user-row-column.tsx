@@ -11,7 +11,13 @@ interface CellType {
   row: User;
 }
 
-export const userColumns = (onEdit: (user: User) => void, onDelete: (id: string) => void, t: any, refetch: () => void, isProfessional: boolean = false) =>
+export const userColumns = (
+  onEdit: (user: User) => void,
+  onDelete: (id: string) => void,
+  t: any,
+  refetch: () => void,
+  isProfessional: boolean = false
+) =>
   [
     {
       flex: 0.25,

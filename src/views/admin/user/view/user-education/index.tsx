@@ -23,7 +23,6 @@ const UserEducationList: React.FC<UserEducationListProps> = ({ userId }) => {
 
   const { t } = useTranslation();
 
-
   const fetchEducation = (params: GetRequestParam): Promise<IApiResponse<UserEducation[]>> => {
     return userEducationApiService.getAll({
       ...params,
@@ -67,11 +66,6 @@ const UserEducationList: React.FC<UserEducationListProps> = ({ userId }) => {
     setSelectedRow(education);
   };
 
-
-
-
-
- 
   return (
     <Box>
       {showDrawer && (
@@ -84,7 +78,6 @@ const UserEducationList: React.FC<UserEducationListProps> = ({ userId }) => {
         />
       )}
 
-
       <ItemsListing
         title={t('department.user.education.title')}
         pagination={pagination}
@@ -94,13 +87,7 @@ const UserEducationList: React.FC<UserEducationListProps> = ({ userId }) => {
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <EducationCard
-            onDetail={handleClickDetail}
-            education={data}
-            onEdit={handleEdit}
-            refetch={refetch}
-            onDelete={handleDelete}
-          />
+          <EducationCard onDetail={handleClickDetail} education={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,

@@ -68,7 +68,6 @@ const UserViewLeft = ({ user }: { user: User }) => {
                   <Typography sx={{ mr: 2, fontWeight: 500, color: 'text.secondary' }}>Contact:</Typography>
                   <Typography sx={{ color: 'text.secondary' }}> {user.phone}</Typography>
                 </Box>
-               
               </Box>
             </CardContent>
           </Card>

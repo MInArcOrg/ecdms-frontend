@@ -66,7 +66,7 @@ const TabList = styled(MuiTabList)<TabListProps>(({ theme }) => ({
 }));
 
 const UserViewRight = ({ tab, user, isLoading }: Props) => {
-  const { t: transl } = useTranslation()
+  const { t: transl } = useTranslation();
   // ** State
   const [activeTab, setActiveTab] = useState<string>(tab);
 
@@ -79,7 +79,7 @@ const UserViewRight = ({ tab, user, isLoading }: Props) => {
       .push({
         pathname: `/admin/users/${user.id}/${value.toLowerCase()}`
       })
-      .then(() => { });
+      .then(() => {});
   };
 
   useEffect(() => {
@@ -99,12 +99,23 @@ const UserViewRight = ({ tab, user, isLoading }: Props) => {
         aria-label="forced scroll tabs example"
         sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
       >
-        <Tab value="user-education" label={transl('department.user.tabs.education')} icon={<Icon fontSize="1.125rem" icon="tabler:school" />} />
-        <Tab value="user-work-experience" label={transl('department.user.tabs.work-experience')} icon={<Icon fontSize="1.125rem" icon="tabler:briefcase" />} />
-        <Tab value="user-contact-person" label={transl('department.user.tabs.contact-person')} icon={<Icon fontSize="1.125rem" icon="tabler:users" />} />
-
+        <Tab
+          value="user-education"
+          label={transl('department.user.tabs.education')}
+          icon={<Icon fontSize="1.125rem" icon="tabler:school" />}
+        />
+        <Tab
+          value="user-work-experience"
+          label={transl('department.user.tabs.work-experience')}
+          icon={<Icon fontSize="1.125rem" icon="tabler:briefcase" />}
+        />
+        <Tab
+          value="user-contact-person"
+          label={transl('department.user.tabs.contact-person')}
+          icon={<Icon fontSize="1.125rem" icon="tabler:users" />}
+        />
       </TabList>
-      
+
       <Box sx={{ mt: 4 }}>
         {isLoading ? (
           <Box
@@ -123,8 +134,7 @@ const UserViewRight = ({ tab, user, isLoading }: Props) => {
             <TabPanel sx={{ p: 0 }} value="user-education">
               <UserEducationList userId={user.id} />
             </TabPanel>
-       
- 
+
             <TabPanel sx={{ p: 0 }} value="user-work-experience">
               <UserWorkExperienceList userId={user.id} />
             </TabPanel>

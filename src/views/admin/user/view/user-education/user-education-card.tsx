@@ -20,33 +20,24 @@ interface EducationCardProps {
 const EducationCard: React.FC<EducationCardProps> = ({ education, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
-
-
-
   return (
     <Card sx={{ marginBottom: 3 }}>
       <CardContent>
-        <Box display='flex' gap={4} alignItems='center'>
-          <Avatar 
-            alt={education.school_name} 
-            src='/static/images/avatar/1.jpg' 
-            sx={{ width: 55, height: 55 }} 
-          />
+        <Box display="flex" gap={4} alignItems="center">
+          <Avatar alt={education.school_name} src="/static/images/avatar/1.jpg" sx={{ width: 55, height: 55 }} />
           <Box>
-            <Typography variant='subtitle1'>
-              {education.school_name || 'N/A'}
-            </Typography>
-            <Typography variant='subtitle2'>
+            <Typography variant="subtitle1">{education.school_name || 'N/A'}</Typography>
+            <Typography variant="subtitle2">
               {education.education_level} {t('in')} {education.studyField?.title}
             </Typography>
-            <Typography variant='subtitle2'>
+            <Typography variant="subtitle2">
               {formatDynamicDate(education.start_date)} - {formatDynamicDate(education.end_date)}
             </Typography>
           </Box>
         </Box>
       </CardContent>
 
-      <Box display='flex' justifyContent='flex-end' alignItems='center' gap={2} p={2}>
+      <Box display="flex" justifyContent="flex-end" alignItems="center" gap={2} p={2}>
         <FileDrawer id={education?.id || ''} type={uploadableResourceFileTypes.resource} />
         <ModelAction
           model="UserEducation"

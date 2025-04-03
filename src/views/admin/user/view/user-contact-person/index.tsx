@@ -18,7 +18,7 @@ interface UserContactPersonListProps {
   userId: string;
 }
 
-const UserContactPersonList: React.FC<UserContactPersonListProps> = ({  userId }) => {
+const UserContactPersonList: React.FC<UserContactPersonListProps> = ({ userId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<UserContactPerson | null>(null);
   const { t } = useTranslation();
@@ -45,7 +45,6 @@ const UserContactPersonList: React.FC<UserContactPersonListProps> = ({  userId }
     setShowDrawer(!showDrawer);
   };
 
-
   const handleEdit = (contactPerson: UserContactPerson) => {
     setSelectedRow(contactPerson);
     setShowDrawer(true);
@@ -56,37 +55,21 @@ const UserContactPersonList: React.FC<UserContactPersonListProps> = ({  userId }
     refetch();
   };
 
-
-
-
   return (
     <Box>
       {showDrawer && (
-        <UserContactPersonDrawer
-          open={showDrawer}
-          toggle={toggleDrawer}
-          contactPerson={selectedRow}
-          refetch={refetch}
-          userId={userId}
-        />
+        <UserContactPersonDrawer open={showDrawer} toggle={toggleDrawer} contactPerson={selectedRow} refetch={refetch} userId={userId} />
       )}
-
- 
 
       <ItemsListing
         title={t('department.user.contact-person.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.list.value}
         tableProps={{
-          headers: userContactPersonColumns( handleEdit, handleDelete, t)
+          headers: userContactPersonColumns(handleEdit, handleDelete, t)
         }}
         ItemViewComponent={({ data }) => (
-          <UserContactPersonCard
-            contactPerson={data}
-            onEdit={handleEdit}
-            refetch={refetch}
-            onDelete={handleDelete}
-          />
+          <UserContactPersonCard contactPerson={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
