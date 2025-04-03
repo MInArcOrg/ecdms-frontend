@@ -615,6 +615,15 @@ export const projectMasterModels = {
     editTitle: 'edit-smart-meter-type',
     fileType: 'SMART_METER_TYPE'
   },
+  customerEngagementFrequency: {
+    model: 'CustomerEngagementFrequency',
+    dbModel: 'customerengagementfrequency',
+    title: 'customer-engagement-frequencies',
+    createTitle: 'create-customer-engagement-frequency',
+    editTitle: 'edit-customer-engagement-frequency',
+    fileType: 'CUSTOMER_ENGAGEMENT_FREQUENCY'
+  },
+  
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

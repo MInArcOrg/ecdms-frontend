@@ -301,7 +301,10 @@
       "service_type": "Service Type",
       "specification_detail": "Specification Detail",
       "measurement_unit": "Measurement Unit",
-      "project-type": "Project Type"
+      "project-type": "Project Type",
+      "customer-engagement-frequencies": "Customer Engagement Frequencies",
+      "create-customer-engagement-frequency": "Create Customer Engagement Frequency",
+      "edit-customer-engagement-frequency": "Edit Customer Engagement Frequency"
     },
     "create-master-type": "Create Type",
     "edit-master-type": "Edit Type",
