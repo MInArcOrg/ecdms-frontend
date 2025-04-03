@@ -78,7 +78,7 @@ function ProfessionalList({ parentDepartment }: { parentDepartment: Department }
           }}
           title={t('department.user.title')}
           fetchDataFunction={refetch}
-          tableProps={{ headers: userColumns(handleEdit, handleDelete, t, refetch) }}
+          tableProps={{ headers: userColumns(handleEdit, handleDelete, t, refetch,true) }}
           items={professionals || []}
           onPaginationChange={handlePageChange}
         />
