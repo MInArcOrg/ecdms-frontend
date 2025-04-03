@@ -631,7 +631,14 @@ export const projectMasterModels = {
     editTitle: 'edit-customer-engagement-programs-type',
     fileType: 'CUSTOMER_ENGAGEMENT_PROGRAMS_TYPE'
   },
-  
+  controlSystemType: {
+    model: 'ControlSystemType',
+    dbModel: 'controlsystemtype',
+    title: 'control-system-types',
+    createTitle: 'create-control-system-type',
+    editTitle: 'edit-control-system-type',
+    fileType: 'CONTROL_SYSTEM_TYPE'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
