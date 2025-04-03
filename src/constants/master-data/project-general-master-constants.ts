@@ -606,7 +606,15 @@ export const projectMasterModels = {
     createTitle: 'create-model',
     editTitle: 'edit-model',
     fileType: 'MODEL'
-  }
+  },
+  smartMeterType: {
+    model: 'SmartMeterType',
+    dbModel: 'smartmetertype',
+    title: 'smart-meter-types',
+    createTitle: 'create-smart-meter-type',
+    editTitle: 'edit-smart-meter-type',
+    fileType: 'SMART_METER_TYPE'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

@@ -284,7 +284,10 @@
       "edit-fire-extinguishing-technologgy": "Edit Fire Extinguishing Technologies",
       "models": "Models",
       "create-model":"Create Model",
-      "edit-model":"Edit Model"
+      "edit-model":"Edit Model",
+      "smart-meter-types": "Smart Meter Types",
+      "create-smart-meter-type": "Create Smart Meter Type",
+      "edit-smart-meter-type": "Edit Smart Meter Type"
     },
     "form": {
       "title": "Title",
