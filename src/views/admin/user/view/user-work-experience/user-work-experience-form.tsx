@@ -3,15 +3,10 @@ import type { FormikProps } from 'formik';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomDatePicker from 'src/views/shared/form/custom-date-box';
-import CustomSelect from 'src/views/shared/form/custom-select';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 import { UserWorkExperience } from 'src/types/admin/user';
-import generalMasterDataApiService from 'src/services/general/general-master-data-service';
-import { useQuery } from '@tanstack/react-query';
-import { dropDownConfig } from 'src/configs/api-constants';
 import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface WorkExperienceFormProps {
   formik: FormikProps<UserWorkExperience>;
