@@ -296,7 +296,10 @@
       "edit-customer-engagement-programs-type": "Edit Customer Engagement Programs Type",
       "control-system-types": "Control System Types",
       "create-control-system-type": "Create Control System Types",
-      "edit-control-system-type": "Edit Control System Types"
+      "edit-control-system-type": "Edit Control System Types",
+      "communication-link-types": "Communication Link Types",
+      "create-communication-link-type": "Create Communication Link Types",
+      "edit-communication-link-type": "Edit Communication Link Types"
     },
     "form": {
       "title": "Title",

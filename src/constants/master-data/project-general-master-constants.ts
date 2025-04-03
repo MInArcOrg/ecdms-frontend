@@ -639,6 +639,14 @@ export const projectMasterModels = {
     editTitle: 'edit-control-system-type',
     fileType: 'CONTROL_SYSTEM_TYPE'
   },
+  communicationLinkType: {
+    model: 'CommunicationLinkType',
+    dbModel: 'communicationlinktype',
+    title: 'communication-link-types',
+    createTitle: 'create-communication-link-type',
+    editTitle: 'edit-communication-link-type',
+    fileType: 'COMMUNICATION_LINK_TYPE'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
