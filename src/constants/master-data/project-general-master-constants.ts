@@ -598,6 +598,14 @@ export const projectMasterModels = {
     createTitle: 'create-fire-extinguishing-technology',
     editTitle: 'edit-fire-extinguishing-technology',
     fileType: 'FIRE_EXTINGUISHING_TECHNOLOGY'
+  },
+  model: {
+    model: 'model',
+    dbModel: 'model',
+    title: 'models',
+    createTitle: 'create-model',
+    editTitle: 'edit-model',
+    fileType: 'MODEL'
   }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;

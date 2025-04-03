@@ -281,7 +281,10 @@
       "edit-protection-installed": "Edit Protection Installed",
       "fire-extinguishing-technologies": "Fire Extinguishing Technologies",
       "create-fire-extinguishing-technology": "Create Fire Extinguishing Technologies",
-      "edit-fire-extinguishing-technologgy": "Edit Fire Extinguishing Technologies"
+      "edit-fire-extinguishing-technologgy": "Edit Fire Extinguishing Technologies",
+      "models": "Models",
+      "create-model":"Create Model",
+      "edit-model":"Edit Model"
     },
     "form": {
       "title": "Title",
@@ -328,7 +331,9 @@
     "user-columns": {
       "user": "User",
       "role": "Role",
-      "phone": "Phone"
+      "phone": "Phone",
+      "department": "Department",
+      "position": "Position"
     },
     "tabs": {
       "professionals": "Professionals",

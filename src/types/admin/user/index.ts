@@ -1,3 +1,5 @@
+import Department from 'src/types/department/department';
+import Position from 'src/types/department/position';
 import { GeneralMaster } from 'src/types/general/general-master';
 import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
 
@@ -17,6 +19,8 @@ type User = {
   partner_name: string | null;
   birth_date: string | Date | EthiopianDate | undefined;
   position_name?: string;
+  department:Department;
+  position: Position;
   lang: string;
   is_activated: boolean;
   created_at: string;
