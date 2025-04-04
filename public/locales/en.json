@@ -778,7 +778,8 @@
           "mini-grid-station-backup-power-source": "Mini Grid Station Backup Power Source",
           "electric-distribution-transformer": "Electric Distribution Transformer",
           "electric-distribution-transformer-type": "Electric Distribution Transformer Types",
-          "electric-smart-meters-data": "Electric Smart Meters Data"
+          "electric-smart-meters-data": "Electric Smart Meters Data",
+          "electric-smart-meters-ratings-data": "Electric Smart Meters Ratings Data"
         }
       }
     },
@@ -2724,6 +2725,25 @@
           "smart-meter-type-id": "Smart Meter Type",
           "installation-year": "Installation Year",
           "smart-meters-installed-number": "Smart Meters Installed Number",
+          "remark": "Remark"
+        }
+      },
+      "electric-smart-meters-ratings-data": {
+        "title": "Electric Smart Meters Ratings Data",
+        "create-electric-smart-meters-ratings-data": "Create Electric Smart Meters Ratings Data",
+        "edit-electric-smart-meters-ratings-data": "Edit Electric Smart Meters Ratings Data",
+        "electric-smart-meters-ratings-data-details": "Electric Smart Meters Ratings Data Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "electric-smart-meters-data-id": "Electric Smart Meters Data",
+          "active-reactive": "Active/Reactive",
+          "kwh-kvarh-rating": "kWh/kVArh Rating",
+          "phase": "Phase",
+          "maximum-current-rating": "Maximum Current Rating",
+          "other": "Other",
           "remark": "Remark"
         }
       }

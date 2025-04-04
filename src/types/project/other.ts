@@ -1434,3 +1434,18 @@ export interface ElectricSmartMetersData {
   created_at?: string
   updated_at?: string
 }
+
+export interface ElectricSmartMetersRatingsData {
+  id: string
+  project_id: string
+  electric_smart_meters_data_id: string
+  name: string
+  active_reactive: string
+  kwh_kvarh_rating?: number
+  phase: string
+  maximum_current_rating?: number
+  other?: string
+  remark?: string
+  created_at?: string
+  updated_at?: string
+}
