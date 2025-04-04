@@ -150,6 +150,7 @@ export const uploadableProjectFileTypes = {
     electric_distribution_transformer_type: "ELECTRIC_DISTRIBUTION_TRANSFORMER_TYPE",
     electric_smart_meters_data: "ELECTRIC_SMART_METERS_DATA",
     electric_smart_meters_ratings_data: "ELECTRIC_SMART_METERS_RATINGS_DATA",
+    electric_smart_meters_performance_data: "ELECTRIC_SMART_METERS_PERFORMANCE_DATA",
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
