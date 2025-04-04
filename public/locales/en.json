@@ -283,8 +283,8 @@
       "create-fire-extinguishing-technology": "Create Fire Extinguishing Technologies",
       "edit-fire-extinguishing-technologgy": "Edit Fire Extinguishing Technologies",
       "models": "Models",
-      "create-model":"Create Model",
-      "edit-model":"Edit Model",
+      "create-model": "Create Model",
+      "edit-model": "Edit Model",
       "smart-meter-types": "Smart Meter Types",
       "create-smart-meter-type": "Create Smart Meter Type",
       "edit-smart-meter-type": "Edit Smart Meter Type",
@@ -305,7 +305,10 @@
       "edit-cyber-security-measures-type": "Edit Cyber Security Measures Types",
       "cyber-security-audits-frequencies": "Cyber Security Audits Frequencies",
       "create-cyber-security-audits-frequency": "Create Cyber Security Audits Frequencies",
-      "edit-cyber-security-audits-frequency": "Edit Cyber Security Audits Frequencies"
+      "edit-cyber-security-audits-frequency": "Edit Cyber Security Audits Frequencies",
+      "safety-problems-encountered": "Safety Problems Encountered",
+      "create-safety-problems-encountered": "Create Safety Problems Encountered",
+      "edit-safety-problems-encountered": "Edit Safety Problems Encountered"
     },
     "form": {
       "title": "Title",
@@ -378,7 +381,7 @@
       "tabs": {
         "education": "Education",
         "work-experience": "Work Experience",
-        "contact-person":"Contact Person"
+        "contact-person": "Contact Person"
       },
       "title": "Users",
       "male": "Male",
@@ -419,7 +422,7 @@
         "gender": "Gender",
         "phoneNo": "Phone Number",
         "email": "Email",
-        "title":"Contact Person",
+        "title": "Contact Person",
         "create-contact-person": "Create Contact Person",
         "edit-contact-person": "Edit Contact Person"
       }

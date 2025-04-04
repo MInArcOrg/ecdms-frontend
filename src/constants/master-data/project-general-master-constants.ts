@@ -662,6 +662,14 @@ export const projectMasterModels = {
     createTitle: 'create-cyber-security-audits-frequency',
     editTitle: 'edit-cyber-security-audits-frequency',
     fileType: 'CYBER_SECURITY_AUDITS_FREQUENCY'
+  },
+  safetyProblemsEncountered: {
+    model: 'SafetyProblemsEncountered',
+    dbModel: 'safetyproblemencountered',
+    title: 'safety-problems-encountered',
+    createTitle: 'create-safety-problems-encountered',
+    editTitle: 'edit-safety-problems-encountered',
+    fileType: 'SAFETY_PROBLEMS_ENCOUNTERED'
   }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
