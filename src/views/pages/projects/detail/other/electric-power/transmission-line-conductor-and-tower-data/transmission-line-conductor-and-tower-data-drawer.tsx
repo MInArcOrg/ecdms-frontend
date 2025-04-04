@@ -1,45 +1,45 @@
-"use client"
-import type { FormikProps } from "formik"
-import type { IApiPayload, IApiResponse } from "src/types/requests"
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
-import FormPageWrapper from "src/views/shared/form/form-wrapper"
-import * as yup from "yup"
-import TransmissionLineConductorAndTowerDataForm from "./transmission-line-conductor-and-tower-data-form"
-import { useState } from "react"
-import projectOtherApiSecondService from "src/services/project/project-other-second-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
-import { uploadFile } from "src/services/utils/file-utils"
-import type { TransmissionLineConductorAndTowerData, TransmissionLine } from "src/types/project/other"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+'use client';
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import TransmissionLineConductorAndTowerDataForm from './transmission-line-conductor-and-tower-data-form';
+import { useState } from 'react';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import type { TransmissionLineConductorAndTowerData, TransmissionLine } from 'src/types/project/other';
+import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
 
 interface TransmissionLineConductorAndTowerDataDrawerType {
-  open: boolean
-  toggle: () => void
-  refetch: () => void
-  transmissionLineConductorAndTowerData: TransmissionLineConductorAndTowerData
-  projectId: string
-  otherSubMenu?: OtherMenuRoute
-  transmissionLines: TransmissionLine[]
+  open: boolean;
+  toggle: () => void;
+  refetch: () => void;
+  transmissionLineConductorAndTowerData: TransmissionLineConductorAndTowerData;
+  projectId: string;
+  otherSubMenu?: OtherMenuRoute;
+  transmissionLines: TransmissionLine[];
 }
 
 const TransmissionLineConductorAndTowerDataDrawer = (props: TransmissionLineConductorAndTowerDataDrawerType) => {
-  const { open, toggle, refetch, transmissionLineConductorAndTowerData, projectId, otherSubMenu, transmissionLines } = props
+  const { open, toggle, refetch, transmissionLineConductorAndTowerData, projectId, otherSubMenu, transmissionLines } = props;
 
-  const [uploadableFile, setUploadableFile] = useState<File | null>(null)
+  const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const onFileChange = (file: File | null) => {
-    setUploadableFile(file)
-  }
+    setUploadableFile(file);
+  };
 
   const validationSchema = yup.object().shape({
-    transmission_line_id: yup.string().required("Transmission Line is required"),
-    name: yup.string().required("Name is required"),
+    transmission_line_id: yup.string().required('Transmission Line is required'),
+    name: yup.string().required('Name is required'),
     conductor_type: yup.string().nullable(),
-    conductor_code_name_id: yup.string().required("Conductor Code Name is required"),
+    conductor_code_name_id: yup.string().required('Conductor Code Name is required'),
     strands_number: yup
       .number()
       .nullable()
-      .integer("Must be an integer")
+      .integer('Must be an integer')
       .transform((value) => (isNaN(value) ? null : value)),
     conductor_size: yup
       .number()
@@ -48,9 +48,9 @@ const TransmissionLineConductorAndTowerDataDrawer = (props: TransmissionLineCond
     conductors_per_phase_number: yup
       .number()
       .nullable()
-      .integer("Must be an integer")
+      .integer('Must be an integer')
       .transform((value) => (isNaN(value) ? null : value)),
-    tower_type_id: yup.string().required("Tower Type is required"),
+    tower_type_id: yup.string().required('Tower Type is required'),
     tower_height: yup
       .number()
       .nullable()
@@ -63,22 +63,22 @@ const TransmissionLineConductorAndTowerDataDrawer = (props: TransmissionLineCond
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value)),
-    tower_foundation_type_id: yup.string().required("Tower Foundation Type is required"),
+    tower_foundation_type_id: yup.string().required('Tower Foundation Type is required'),
     other_equipment: yup.string().nullable(),
-    remark: yup.string().nullable(),
-  })
+    remark: yup.string().nullable()
+  });
 
-  const isEdit = Boolean(transmissionLineConductorAndTowerData?.id)
+  const isEdit = Boolean(transmissionLineConductorAndTowerData?.id);
 
   const createTransmissionLineConductorAndTowerData = async (body: IApiPayload<TransmissionLineConductorAndTowerData>) =>
-    projectOtherApiSecondService<TransmissionLineConductorAndTowerData>().create(otherSubMenu?.apiRoute || "", body)
+    projectOtherApiSecondService<TransmissionLineConductorAndTowerData>().create(otherSubMenu?.apiRoute || '', body);
 
   const editTransmissionLineConductorAndTowerData = async (body: IApiPayload<TransmissionLineConductorAndTowerData>) =>
     projectOtherApiSecondService<TransmissionLineConductorAndTowerData>().update(
-      otherSubMenu?.apiRoute || "", 
-      transmissionLineConductorAndTowerData?.id || "", 
+      otherSubMenu?.apiRoute || '',
+      transmissionLineConductorAndTowerData?.id || '',
       body
-    )
+    );
 
   const getPayload = (values: TransmissionLineConductorAndTowerData) => ({
     data: {
@@ -97,53 +97,68 @@ const TransmissionLineConductorAndTowerDataDrawer = (props: TransmissionLineCond
       tower_foundation_type_id: values.tower_foundation_type_id,
       other_equipment: values.other_equipment,
       remark: values.remark,
-      id: transmissionLineConductorAndTowerData?.id,
+      id: transmissionLineConductorAndTowerData?.id
     },
-    files: uploadableFile ? [uploadableFile] : [],
-  })
+    files: uploadableFile ? [uploadableFile] : []
+  });
 
-  const handleClose = () => toggle()
+  const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<TransmissionLineConductorAndTowerData>, payload: IApiPayload<TransmissionLineConductorAndTowerData>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<TransmissionLineConductorAndTowerData>,
+    payload: IApiPayload<TransmissionLineConductorAndTowerData>
+  ) => {
     if (payload.files.length > 0) {
-      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.transmissionLineConductorAndTowerData, response.payload.id, "", "")
+      await uploadFile(
+        payload.files[0],
+        uploadableProjectFileTypes.other.transmissionLineConductorAndTowerData,
+        response.payload.id,
+        '',
+        ''
+      );
     }
 
-    refetch()
-    handleClose()
-  }
+    refetch();
+    handleClose();
+  };
 
   return (
     <CustomSideDrawer
-      title={`project.other.transmission-line-conductor-and-tower-data.${isEdit ? `edit-transmission-line-conductor-and-tower-data` : `create-transmission-line-conductor-and-tower-data`}`}
+      title={`project.other.transmission-line-conductor-and-tower-data.${
+        isEdit ? `edit-transmission-line-conductor-and-tower-data` : `create-transmission-line-conductor-and-tower-data`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.transmission-line-conductor-and-tower-data.${isEdit ? `edit-transmission-line-conductor-and-tower-data` : `create-transmission-line-conductor-and-tower-data`}`}
+          title={`project.other.transmission-line-conductor-and-tower-data.${
+            isEdit ? `edit-transmission-line-conductor-and-tower-data` : `create-transmission-line-conductor-and-tower-data`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...transmissionLineConductorAndTowerData,
+            ...transmissionLineConductorAndTowerData
           }}
           createActionFunc={isEdit ? editTransmissionLineConductorAndTowerData : createTransmissionLineConductorAndTowerData}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<TransmissionLineConductorAndTowerData>) => {
-            return <TransmissionLineConductorAndTowerDataForm 
-            file={uploadableFile} 
-            onFileChange={onFileChange} 
-            formik={formik} 
-            transmissionLines={transmissionLines}
-            />
+            return (
+              <TransmissionLineConductorAndTowerDataForm
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+                transmissionLines={transmissionLines}
+              />
+            );
           }}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>
-  )
-}
+  );
+};
 
-export default TransmissionLineConductorAndTowerDataDrawer
+export default TransmissionLineConductorAndTowerDataDrawer;

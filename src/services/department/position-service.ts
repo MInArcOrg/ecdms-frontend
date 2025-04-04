@@ -7,8 +7,8 @@ import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const positionApiService = {
-  getAll: (params: GetRequestParam, parentPositionId: string): Promise<IApiResponse<Position[]>> =>
-    buildGetRequest(`/departments/positions?parentId=${parentPositionId}`, params)
+  getAll: (params: GetRequestParam): Promise<IApiResponse<Position[]>> =>
+    buildGetRequest(`/departments/positions`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;

@@ -1,8 +1,9 @@
 import { FormikProps } from 'formik';
 import { useTranslation } from 'react-i18next';
-import Permission, { appModules } from 'src/types/admin/role/permission';
+import Permission from 'src/types/admin/role/permission';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import { appModulesNames } from '../../../configs/app-constants';
 
 interface PermissionFormProps {
   formik: FormikProps<Permission>;
@@ -14,13 +15,13 @@ const PermissionForm: React.FC<PermissionFormProps> = ({ formik, defaultLocaleDa
   const { t: transl } = useTranslation();
   return (
     <>
-      <CustomTextBox fullWidth label={transl('name')} placeholder={transl('name')} name="name" size="sm" sx={{ mb: 2 }} />
-      <CustomTextBox fullWidth label={transl('model')} placeholder={transl('model')} name="model" size="sm" sx={{ mb: 2 }} />
+      <CustomTextBox fullWidth label={transl('name')} placeholder={transl('name')} name="name" size="small" sx={{ mb: 2 }} />
+      <CustomTextBox fullWidth label={transl('model')} placeholder={transl('model')} name="model" size="small" sx={{ mb: 2 }} />
       <CustomSelect
         size="small"
         name="module"
         label={transl('module')}
-        options={appModules.map((type) => ({
+        options={appModulesNames.map((type) => ({
           value: type,
           label: type.toUpperCase()
         }))}

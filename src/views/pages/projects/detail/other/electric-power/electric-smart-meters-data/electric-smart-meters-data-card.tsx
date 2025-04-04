@@ -17,7 +17,7 @@ interface ElectricSmartMetersDataCardProps {
   onDelete: (id: string) => void
   onDetail: (electricSmartMetersData: ElectricSmartMetersData) => void
   miniGridStationsMap: Map<string, string>
-  smartMeterModelsMap: Map<string, string>
+  modelMap: Map<string, string>;
   smartMeterTypesMap: Map<string, string>
 }
 
@@ -28,7 +28,7 @@ const ElectricSmartMetersDataCard: React.FC<ElectricSmartMetersDataCardProps> = 
   onDelete,
   onDetail,
   miniGridStationsMap,
-  smartMeterModelsMap,
+  modelMap,
   smartMeterTypesMap
 }) => {
   const { t } = useTranslation()
@@ -96,7 +96,7 @@ const ElectricSmartMetersDataCard: React.FC<ElectricSmartMetersDataCardProps> = 
             <Typography variant="body2" color="text.secondary">
               {t("project.other.electric-smart-meters-data.details.model-id")}:{" "}
               {electricSmartMetersData?.model_id
-                ? smartMeterModelsMap.get(electricSmartMetersData.model_id) || electricSmartMetersData.model_id
+                ? modelMap.get(electricSmartMetersData.model_id) || electricSmartMetersData.model_id
                 : t("common.not-available")}
             </Typography>
           </Grid>

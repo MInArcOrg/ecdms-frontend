@@ -599,6 +599,70 @@ export const projectMasterModels = {
     editTitle: 'edit-fire-extinguishing-technology',
     fileType: 'FIRE_EXTINGUISHING_TECHNOLOGY'
   },
+  model: {
+    model: 'model',
+    dbModel: 'model',
+    title: 'models',
+    createTitle: 'create-model',
+    editTitle: 'edit-model',
+    fileType: 'MODEL'
+  },
+  smartMeterType: {
+    model: 'SmartMeterType',
+    dbModel: 'smartmetertype',
+    title: 'smart-meter-types',
+    createTitle: 'create-smart-meter-type',
+    editTitle: 'edit-smart-meter-type',
+    fileType: 'SMART_METER_TYPE'
+  },
+  customerEngagementFrequency: {
+    model: 'CustomerEngagementFrequency',
+    dbModel: 'customerengagementfrequency',
+    title: 'customer-engagement-frequencies',
+    createTitle: 'create-customer-engagement-frequency',
+    editTitle: 'edit-customer-engagement-frequency',
+    fileType: 'CUSTOMER_ENGAGEMENT_FREQUENCY'
+  },
+  customerEngagementProgramsType: {
+    model: 'CustomerEngagementProgramsType',
+    dbModel: 'customerengagementprogramstype',
+    title: 'customer-engagement-programs-types',
+    createTitle: 'create-customer-engagement-programs-type',
+    editTitle: 'edit-customer-engagement-programs-type',
+    fileType: 'CUSTOMER_ENGAGEMENT_PROGRAMS_TYPE'
+  },
+  controlSystemType: {
+    model: 'ControlSystemType',
+    dbModel: 'controlsystemtype',
+    title: 'control-system-types',
+    createTitle: 'create-control-system-type',
+    editTitle: 'edit-control-system-type',
+    fileType: 'CONTROL_SYSTEM_TYPE'
+  },
+  communicationLinkType: {
+    model: 'CommunicationLinkType',
+    dbModel: 'communicationlinktype',
+    title: 'communication-link-types',
+    createTitle: 'create-communication-link-type',
+    editTitle: 'edit-communication-link-type',
+    fileType: 'COMMUNICATION_LINK_TYPE'
+  },
+  cyberSecurityMeasuresType: {
+    model: 'CyberSecurityMeasuresType',
+    dbModel: 'cybersecuritymeasurestype',
+    title: 'cyber-security-measures-types',
+    createTitle: 'create-cyber-security-measures-type',
+    editTitle: 'edit-cyber-security-measures-type',
+    fileType: 'CYBER_SECURITY_MEASURES_TYPE'
+  },
+  cyberSecurityAuditsFrequency: {
+    model: 'CyberSecurityAuditsFrequency',
+    dbModel: 'cybersecurityauditsfrequency',
+    title: 'cyber-security-audits-frequencies',
+    createTitle: 'create-cyber-security-audits-frequency',
+    editTitle: 'edit-cyber-security-audits-frequency',
+    fileType: 'CYBER_SECURITY_AUDITS_FREQUENCY'
+  }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

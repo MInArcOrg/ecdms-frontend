@@ -44,7 +44,7 @@ const ElectricSmartMetersDataList: React.FC<ElectricSmartMetersDataListProps> = 
 
   // Fetch smart meter models from master data
   const { data: model } = useQuery({
-    queryKey: ["smart-meter-models"],
+    queryKey: ["models"],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll({
         filter: { model: projectMasterModels.model.model },
@@ -179,7 +179,7 @@ const ElectricSmartMetersDataList: React.FC<ElectricSmartMetersDataListProps> = 
           refetch={refetch}
           projectId={projectId}
           miniGridStations={miniGridStations?.payload || []}
-          model={model?.payload || []}
+          Model={model?.payload || []}
           smartMeterTypes={smartMeterTypes?.payload || []}
         />
       )}
