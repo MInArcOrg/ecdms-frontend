@@ -776,7 +776,9 @@
           "mini-grid-station-distribution-line": "Mini Grid Station Distribution Line",
           "mini-grid-station-consumer": "Mini Grid Station Consumer",
           "mini-grid-station-backup-power-source": "Mini Grid Station Backup Power Source",
-          "electric-distribution-transformer": "Electric Distribution Transformer"
+          "electric-distribution-transformer": "Electric Distribution Transformer",
+          "electric-distribution-transformer-type": "Electric Distribution Transformer Types",
+          "electric-smart-meters-data": "Electric Smart Meters Data"
         }
       }
     },
@@ -2677,6 +2679,51 @@
           "gps-y-coordinates": "GPS Y Coordinates",
           "fire-extinguishing-technology-id": "Fire Extinguishing Technology",
           "other": "Other Information",
+          "remark": "Remark"
+        }
+      },
+      "electric-distribution-transformer-type": {
+        "title": "Electric Distribution Transformer Types",
+        "create-electric-distribution-transformer-type": "Create Electric Distribution Transformer Type",
+        "edit-electric-distribution-transformer-type": "Edit Electric Distribution Transformer Type",
+        "electric-distribution-transformer-type-details": "Electric Distribution Transformer Type Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "safety-information": "Safety Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "transformer-type-id": "Transformer Type",
+          "cooling-type": "Cooling Type",
+          "transformer-power-rating": "Transformer Power Rating",
+          "lifetime": "Lifetime",
+          "protection-installed-id": "Protection Installed",
+          "safety-problems-encountered-id": "Safety Problems Encountered",
+          "work-accidents-number": "Work Accidents Number",
+          "on-site-safety-regulation-implemented": "On-site Safety Regulation Implemented",
+          "remark": "Remark"
+        }
+      },
+      "electric-smart-meters-data": {
+        "title": "Electric Smart Meters Data",
+        "create-electric-smart-meters-data": "Create Electric Smart Meters Data",
+        "edit-electric-smart-meters-data": "Edit Electric Smart Meters Data",
+        "electric-smart-meters-data-details": "Electric Smart Meters Data Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "owner-operator": "Owner/Operator",
+          "facility-type": "Facility Type",
+          "service-area": "Service Area",
+          "manufacturer": "Manufacturer",
+          "model-id": "Model",
+          "smart-meter-type-id": "Smart Meter Type",
+          "installation-year": "Installation Year",
+          "smart-meters-installed-number": "Smart Meters Installed Number",
           "remark": "Remark"
         }
       }

@@ -146,7 +146,9 @@ export const uploadableProjectFileTypes = {
     mini_grid_station_distribution_line: 'MINI_GRID_STATION_DISTRIBUTION_LINE',
     mini_grid_station_consumer: 'MINI_GRID_STATION_CONSUMER',
     mini_grid_station_backup_power_source: 'MINI_GRID_STATION_BACKUP_POWER_SOURCE',
-    electric_distribution_transformer: 'ELECTRIC_DISTRIBUTION_TRANSFORMER'
+    electric_distribution_transformer: 'ELECTRIC_DISTRIBUTION_TRANSFORMER',
+    electric_distribution_transformer_type: "ELECTRIC_DISTRIBUTION_TRANSFORMER_TYPE",
+    electric_smart_meters_data: "ELECTRIC_SMART_METERS_DATA",
   }
 } as const;
 export const uploadableStakeholderFileTypes = {
