@@ -5,8 +5,8 @@ import User from 'src/types/admin/user';
 // ** Types
 
 // ** Demo Components Imports
-import UserViewLeft from 'src/views/admin/user/view/UserViewLeft';
-import UserViewRight from './UserViewRight';
+import UserViewLeft from 'src/views/admin/user/view/user-view-left';
+import UserViewRight from './user-view-right';
 
 type Props = {
   tab: string;

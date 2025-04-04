@@ -20,7 +20,7 @@ interface ElectricSmartMetersDataDrawerType {
   projectId: string
   otherSubMenu?: OtherMenuRoute
   miniGridStations: MiniGridStation[]
-  smartMeterModels: any[]
+  Model: any[]
   smartMeterTypes: any[]
 }
 
@@ -33,7 +33,7 @@ const ElectricSmartMetersDataDrawer = (props: ElectricSmartMetersDataDrawerType)
     projectId, 
     otherSubMenu, 
     miniGridStations,
-    smartMeterModels,
+    Model,
     smartMeterTypes
   } = props
 
@@ -136,7 +136,7 @@ const ElectricSmartMetersDataDrawer = (props: ElectricSmartMetersDataDrawerType)
               onFileChange={onFileChange} 
               formik={formik} 
               miniGridStations={miniGridStations}
-              smartMeterModels={smartMeterModels}
+              smartMeterModels={Model}
               smartMeterTypes={smartMeterTypes}
             />
           }}

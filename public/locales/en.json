@@ -281,7 +281,31 @@
       "edit-protection-installed": "Edit Protection Installed",
       "fire-extinguishing-technologies": "Fire Extinguishing Technologies",
       "create-fire-extinguishing-technology": "Create Fire Extinguishing Technologies",
-      "edit-fire-extinguishing-technologgy": "Edit Fire Extinguishing Technologies"
+      "edit-fire-extinguishing-technologgy": "Edit Fire Extinguishing Technologies",
+      "models": "Models",
+      "create-model":"Create Model",
+      "edit-model":"Edit Model",
+      "smart-meter-types": "Smart Meter Types",
+      "create-smart-meter-type": "Create Smart Meter Type",
+      "edit-smart-meter-type": "Edit Smart Meter Type",
+      "customer-engagement-frequencies": "Customer Engagement Frequencies",
+      "create-customer-engagement-frequency": "Create Customer Engagement Frequency",
+      "edit-customer-engagement-frequency": "Edit Customer Engagement Frequency",
+      "customer-engagement-programs-types": "Customer Engagement Programs Types",
+      "create-customer-engagement-programs-type": "Create Customer Engagement Programs Type",
+      "edit-customer-engagement-programs-type": "Edit Customer Engagement Programs Type",
+      "control-system-types": "Control System Types",
+      "create-control-system-type": "Create Control System Types",
+      "edit-control-system-type": "Edit Control System Types",
+      "communication-link-types": "Communication Link Types",
+      "create-communication-link-type": "Create Communication Link Types",
+      "edit-communication-link-type": "Edit Communication Link Types",
+      "cyber-security-measures-types": "Cyber Security Measures Types",
+      "create-cyber-security-measures-type": "Create Cyber Security Measures Types",
+      "edit-cyber-security-measures-type": "Edit Cyber Security Measures Types",
+      "cyber-security-audits-frequencies": "Cyber Security Audits Frequencies",
+      "create-cyber-security-audits-frequency": "Create Cyber Security Audits Frequencies",
+      "edit-cyber-security-audits-frequency": "Edit Cyber Security Audits Frequencies"
     },
     "form": {
       "title": "Title",
@@ -328,7 +352,16 @@
     "user-columns": {
       "user": "User",
       "role": "Role",
-      "phone": "Phone"
+      "phone": "Phone",
+      "department": "Department",
+      "position": "Position"
+    },
+    "tabs": {
+      "professionals": "Professionals",
+      "positions": "Positions",
+      "sub-departments": "Sub Departments",
+      "documents": "Documents",
+      "structure": "Structure"
     },
     "user": {
       "form": {
@@ -338,24 +371,70 @@
         "email": "Email",
         "gender": "Gender",
         "phone": "Phone",
+        "position": "Position",
+        "department": "Department",
         "birth_data": "Birth Date"
       },
-      "title": "User",
+      "tabs": {
+        "education": "Education",
+        "work-experience": "Work Experience",
+        "contact-person":"Contact Person"
+      },
+      "title": "Users",
       "male": "Male",
       "female": "Female",
       "edit-user": "Edit User",
-      "create-user": "Create User"
+      "create-user": "Create User",
+      "education": {
+        "title": "Education",
+        "create": "Create Education",
+        "edit": "Edit Education",
+        "details": "Education Details",
+        "create-education": "Create Education",
+        "edit-education": "Edit Education",
+        "study-field": "Study Field",
+        "school-name": "School Name",
+        "education-level": "Education Level",
+        "program-type": "Program Type",
+        "start-date": "Start Date",
+        "end-date": "End Date",
+        "gpa": "GPA"
+      },
+      "work-experience": {
+        "company-name": "Company Name",
+        "department": "Department",
+        "position": "Position",
+        "task-description": "Task Description",
+        "start-date": "Start Date",
+        "end-date": "End Date",
+        "create-work-experience": "Create Work Experience",
+        "edit-work-experience": "Edit Work Experience",
+        "title": "Work Experience"
+      },
+      "contact-person": {
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "nationalIdNo": "National ID Number",
+        "gender": "Gender",
+        "phoneNo": "Phone Number",
+        "email": "Email",
+        "title":"Contact Person",
+        "create-contact-person": "Create Contact Person",
+        "edit-contact-person": "Edit Contact Person"
+      }
     },
     "position": {
       "form": {
         "name": "Name",
-        "description": "Description"
+        "description": "Description",
+        "role": "Role"
       },
       "columns": {
         "name": "Name",
         "description": "Description"
       },
-      "title": "Position",
+      "title": "Positions",
       "create-position": "Create Position",
       "edit-position": "Edit Position"
     },
@@ -368,11 +447,22 @@
         "name": "Name",
         "description": "Description"
       },
-      "title": "Sub Department",
+      "title": "Sub Departments",
       "create-sub-department": "Create Sub Department",
       "edit-sub-department": "Edit Sub Department"
     },
     "department-structure": "department-structure"
+  },
+  "admin": {
+    "role": {
+      "roles": "Roles",
+      "create-role": "Create Role",
+      "update-role": "Create Role",
+      "form": {
+        "title": "Title",
+        "description": "Description"
+      }
+    }
   },
   "greating": {
     "good-morning": "Good Morning",
@@ -427,8 +517,8 @@
         "licenses": {
           "licenses": "Licenses"
         },
-        "work-experiances": {
-          "work-experiances": "Work Experiances"
+        "work-experiences": {
+          "work-experiences": "Work experiences"
         },
         "educations": {
           "educations": "Educations",
