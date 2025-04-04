@@ -39,9 +39,7 @@ const ElectricSmartMetersPerformanceDataList: React.FC<ElectricSmartMetersPerfor
   const { data: electricSmartMetersData } = useQuery({
     queryKey: ["electric-smart-meters-data", projectId],
     queryFn: () =>
-      projectOtherApiSecondService<ElectricSmartMetersData>().getAll("electric-smart-meters-data", {
-        filter: { project_id: projectId },
-      }),
+      projectOtherApiSecondService<ElectricSmartMetersData>().getAll("electric-smart-meters-data", {}),
   })
 
   // Fetch maintenance frequencies from master data

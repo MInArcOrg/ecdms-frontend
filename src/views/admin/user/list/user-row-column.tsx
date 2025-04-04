@@ -11,7 +11,13 @@ interface CellType {
   row: User;
 }
 
-export const userColumns = (onEdit: (user: User) => void, onDelete: (id: string) => void, t: any, refetch: () => void) =>
+export const userColumns = (
+  onEdit: (user: User) => void,
+  onDelete: (id: string) => void,
+  t: any,
+  refetch: () => void,
+  isProfessional: boolean = false
+) =>
   [
     {
       flex: 0.25,
@@ -24,6 +30,24 @@ export const userColumns = (onEdit: (user: User) => void, onDelete: (id: string)
             <UserProfileSmall user={row} />
           </Box>
         );
+      }
+    },
+    !isProfessional && {
+      flex: 0.15,
+      minWidth: 120,
+      headerName: t('department.user-columns.department'),
+      field: 'department',
+      renderCell: ({ row }: CellType) => {
+        return <Typography sx={{ color: 'text.secondary' }}>{row?.department?.name}</Typography>;
+      }
+    },
+    {
+      flex: 0.15,
+      minWidth: 120,
+      headerName: t('department.user-columns.position'),
+      field: 'position',
+      renderCell: ({ row }: CellType) => {
+        return <Typography sx={{ color: 'text.secondary' }}>{row?.position?.name}</Typography>;
       }
     },
     {
@@ -60,4 +84,4 @@ export const userColumns = (onEdit: (user: User) => void, onDelete: (id: string)
         </Fragment>
       )
     }
-  ] as GridColDef[];
+  ].filter(Boolean) as GridColDef[];

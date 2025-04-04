@@ -42,9 +42,7 @@ const ElectricSmartMetersPrivacyAndSecurityDataList: React.FC<ElectricSmartMeter
   const { data: electricSmartMetersData } = useQuery({
     queryKey: ["electric-smart-meters-data", projectId],
     queryFn: () =>
-      projectOtherApiSecondService<ElectricSmartMetersData>().getAll("electric-smart-meters-data", {
-        filter: { project_id: projectId },
-      }),
+      projectOtherApiSecondService<ElectricSmartMetersData>().getAll("electric-smart-meters-data", {}),
   })
 
   // Fetch privacy measures types from master data

@@ -37,9 +37,7 @@ const ElectricSmartMetersRatingsDataList: React.FC<ElectricSmartMetersRatingsDat
   const { data: electricSmartMetersData } = useQuery({
     queryKey: ["electric-smart-meters-data", projectId],
     queryFn: () =>
-      projectOtherApiSecondService<ElectricSmartMetersData>().getAll("electric-smart-meters-data", {
-        filter: { project_id: projectId },
-      }),
+      projectOtherApiSecondService<ElectricSmartMetersData>().getAll("electric-smart-meters-data", {}),
   })
 
   const fetchElectricSmartMetersRatingsData = (params: GetRequestParam): Promise<IApiResponse<ElectricSmartMetersRatingsData[]>> => {

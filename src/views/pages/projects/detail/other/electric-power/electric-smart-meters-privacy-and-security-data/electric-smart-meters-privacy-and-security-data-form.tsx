@@ -9,7 +9,6 @@ import type { ElectricSmartMetersData, ElectricSmartMetersPrivacyAndSecurityData
 import CustomTextBox from "src/views/shared/form/custom-text-box"
 import CustomFileUpload from "src/views/shared/form/custome-file-selector"
 import CustomSelect from "src/views/shared/form/custom-select"
-import CustomSwitch from "src/views/shared/form/custom-switch"
 
 interface ElectricSmartMetersPrivacyAndSecurityDataFormProps {
     formik: FormikProps<ElectricSmartMetersPrivacyAndSecurityData>

@@ -11,6 +11,9 @@ export function formatDate(date: any, format = 'YYYY-MM-DD') {
 export function formatCreatedAt(date: any, format = 'MMM D, YYYY, HH:MM') {
   return i18n.language === 'am' ? getDynamicDate(i18n, date).toDateString() : moment(date).format(format);
 }
+export function formatDynamicDate(date: any, format = 'MMM D, YYYY') {
+  return i18n.language === 'am' ? getDynamicDate(i18n, date).toDateString() : moment(date).format(format);
+}
 
 // Function to format a date as a human-readable string (e.g., "3 days ago")
 export function formatRelative(date: any) {

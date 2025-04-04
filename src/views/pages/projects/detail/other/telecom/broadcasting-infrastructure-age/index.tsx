@@ -1,160 +1,142 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
-import { Box } from "@mui/material"
-import { useState } from "react"
-import { useTranslation } from "react-i18next"
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
-import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
-import projectOtherApiSecondService from "src/services/project/project-other-second-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
-import { defaultCreateActionConfig } from "src/types/general/listing"
-import type { BroadcastingInfrastructureAge, BroadcastingInfrastructure } from "src/types/project/other"
-import type { GetRequestParam, IApiResponse } from "src/types/requests"
-import { formatCreatedAt } from "src/utils/formatter/date"
-import ItemsListing from "src/views/shared/listing"
-import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-detail-drawer"
-import BroadcastingInfrastructureAgeCard from "./broadcasting-infrastructure-age-card"
-import BroadcastingInfrastructureAgeDrawer from "./broadcasting-infrastructure-age-drawer"
-import { broadcastingInfrastructureAgeColumns } from "./broadcasting-infrastructure-age-row"
-import { useQuery } from "@tanstack/react-query"
+import { Box } from '@mui/material';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import type { BroadcastingInfrastructureAge, BroadcastingInfrastructure } from 'src/types/project/other';
+import type { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import ItemsListing from 'src/views/shared/listing';
+import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
+import BroadcastingInfrastructureAgeCard from './broadcasting-infrastructure-age-card';
+import BroadcastingInfrastructureAgeDrawer from './broadcasting-infrastructure-age-drawer';
+import { broadcastingInfrastructureAgeColumns } from './broadcasting-infrastructure-age-row';
+import { useQuery } from '@tanstack/react-query';
 
 interface BroadcastingInfrastructureAgeListProps {
-  otherSubMenu?: OtherMenuRoute
-  typeId: string
-  projectId: string
+  otherSubMenu?: OtherMenuRoute;
+  typeId: string;
+  projectId: string;
 }
 
-const BroadcastingInfrastructureAgeList: React.FC<BroadcastingInfrastructureAgeListProps> = ({
-  otherSubMenu,
-  projectId,
-  typeId,
-}) => {
-  const [showDrawer, setShowDrawer] = useState(false)
-  const [showDetailDrawer, setShowDetailDrawer] = useState(false)
-  const [selectedRow, setSelectedRow] = useState<BroadcastingInfrastructureAge | null>(null)
-  const { t } = useTranslation()
+const BroadcastingInfrastructureAgeList: React.FC<BroadcastingInfrastructureAgeListProps> = ({ otherSubMenu, projectId, typeId }) => {
+  const [showDrawer, setShowDrawer] = useState(false);
+  const [showDetailDrawer, setShowDetailDrawer] = useState(false);
+  const [selectedRow, setSelectedRow] = useState<BroadcastingInfrastructureAge | null>(null);
+  const { t } = useTranslation();
 
   // Fetch broadcasting infrastructures for dropdown
   const { data: broadcastingInfrastructures } = useQuery({
-    queryKey: ["broadcasting-infrastructures", projectId],
+    queryKey: ['broadcasting-infrastructures', projectId],
     queryFn: () =>
-      projectOtherApiSecondService<BroadcastingInfrastructure>().getAll("broadcasting-infrastructures", {
-        filter: { project_id: projectId },
-      }),
-  })
+      projectOtherApiSecondService<BroadcastingInfrastructure>().getAll('broadcasting-infrastructures', {
+        filter: { project_id: projectId }
+      })
+  });
 
   // Create maps for quick lookup
   const broadcastingInfrastructureMap = new Map(
-    broadcastingInfrastructures?.payload.map((infra) => [infra.id, infra.broadcasting_infrastructure_type_id]) || [],
-  )
+    broadcastingInfrastructures?.payload.map((infra) => [infra.id, infra.broadcasting_infrastructure_type_id]) || []
+  );
 
-  const fetchBroadcastingInfrastructureAges = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<BroadcastingInfrastructureAge[]>> => {
-    return projectOtherApiSecondService<BroadcastingInfrastructureAge>().getAll(otherSubMenu?.apiRoute || "", { })
-  }
+  const fetchBroadcastingInfrastructureAges = (params: GetRequestParam): Promise<IApiResponse<BroadcastingInfrastructureAge[]>> => {
+    return projectOtherApiSecondService<BroadcastingInfrastructureAge>().getAll(otherSubMenu?.apiRoute || '', {});
+  };
 
   const {
     data: broadcastingInfrastructureAges,
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<BroadcastingInfrastructureAge[]>({
-    queryKey: ["broadcastingInfrastructureAges"],
-    fetchFunction: fetchBroadcastingInfrastructureAges,
-  })
+    queryKey: ['broadcastingInfrastructureAges'],
+    fetchFunction: fetchBroadcastingInfrastructureAges
+  });
 
   const toggleDrawer = () => {
-    setSelectedRow({} as BroadcastingInfrastructureAge)
-    setShowDrawer(!showDrawer)
-  }
+    setSelectedRow({} as BroadcastingInfrastructureAge);
+    setShowDrawer(!showDrawer);
+  };
 
   const toggleDetailDrawer = () => {
-    setSelectedRow({} as BroadcastingInfrastructureAge)
-    setShowDetailDrawer(!showDetailDrawer)
-  }
+    setSelectedRow({} as BroadcastingInfrastructureAge);
+    setShowDetailDrawer(!showDetailDrawer);
+  };
 
   const handleEdit = (broadcastingInfrastructureAge: BroadcastingInfrastructureAge) => {
-    toggleDrawer()
-    setSelectedRow(broadcastingInfrastructureAge)
-  }
+    toggleDrawer();
+    setSelectedRow(broadcastingInfrastructureAge);
+  };
 
   const handleDelete = async (broadcastingInfrastructureAgeId: string) => {
     await projectOtherApiSecondService<BroadcastingInfrastructureAge>().delete(
-      otherSubMenu?.apiRoute || "",
-      broadcastingInfrastructureAgeId,
-    )
-    refetch()
-  }
+      otherSubMenu?.apiRoute || '',
+      broadcastingInfrastructureAgeId
+    );
+    refetch();
+  };
 
   const handleClickDetail = (broadcastingInfrastructureAge: BroadcastingInfrastructureAge) => {
-    toggleDetailDrawer()
-    setSelectedRow(broadcastingInfrastructureAge)
-  }
+    toggleDetailDrawer();
+    setSelectedRow(broadcastingInfrastructureAge);
+  };
 
   const mapBroadcastingInfrastructureAgeToDetailItems = (
-    broadcastingInfrastructureAge: BroadcastingInfrastructureAge,
+    broadcastingInfrastructureAge: BroadcastingInfrastructureAge
   ): { title: string; value: string }[] => [
     {
-      title: t("project.other.broadcasting-infrastructure-age.details.broadcasting-infrastructure"),
+      title: t('project.other.broadcasting-infrastructure-age.details.broadcasting-infrastructure'),
       value:
         broadcastingInfrastructureMap.get(broadcastingInfrastructureAge?.broadcasting_infrastructure_id) ||
         broadcastingInfrastructureAge?.broadcasting_infrastructure_id ||
-        "N/A",
+        'N/A'
     },
     {
-      title: t("project.other.broadcasting-infrastructure-age.details.name"),
-      value: broadcastingInfrastructureAge?.name || "N/A",
+      title: t('project.other.broadcasting-infrastructure-age.details.name'),
+      value: broadcastingInfrastructureAge?.name || 'N/A'
     },
     {
-      title: t("project.other.broadcasting-infrastructure-age.details.antennas"),
+      title: t('project.other.broadcasting-infrastructure-age.details.antennas'),
       value:
-        broadcastingInfrastructureAge?.antennas !== undefined
-          ? `${broadcastingInfrastructureAge.antennas} ${t("common.years")}`
-          : "N/A",
+        broadcastingInfrastructureAge?.antennas !== undefined ? `${broadcastingInfrastructureAge.antennas} ${t('common.years')}` : 'N/A'
     },
     {
-      title: t("project.other.broadcasting-infrastructure-age.details.transmitters"),
+      title: t('project.other.broadcasting-infrastructure-age.details.transmitters'),
       value:
         broadcastingInfrastructureAge?.transmitters !== undefined
-          ? `${broadcastingInfrastructureAge.transmitters} ${t("common.years")}`
-          : "N/A",
+          ? `${broadcastingInfrastructureAge.transmitters} ${t('common.years')}`
+          : 'N/A'
     },
     {
-      title: t("project.other.broadcasting-infrastructure-age.details.towers"),
-      value:
-        broadcastingInfrastructureAge?.towers !== undefined
-          ? `${broadcastingInfrastructureAge.towers} ${t("common.years")}`
-          : "N/A",
+      title: t('project.other.broadcasting-infrastructure-age.details.towers'),
+      value: broadcastingInfrastructureAge?.towers !== undefined ? `${broadcastingInfrastructureAge.towers} ${t('common.years')}` : 'N/A'
     },
     {
-      title: t("project.other.broadcasting-infrastructure-age.details.cables"),
-      value:
-        broadcastingInfrastructureAge?.cables !== undefined
-          ? `${broadcastingInfrastructureAge.cables} ${t("common.years")}`
-          : "N/A",
+      title: t('project.other.broadcasting-infrastructure-age.details.cables'),
+      value: broadcastingInfrastructureAge?.cables !== undefined ? `${broadcastingInfrastructureAge.cables} ${t('common.years')}` : 'N/A'
     },
     {
-      title: t("project.other.broadcasting-infrastructure-age.details.others"),
-      value: broadcastingInfrastructureAge?.others || "N/A",
+      title: t('project.other.broadcasting-infrastructure-age.details.others'),
+      value: broadcastingInfrastructureAge?.others || 'N/A'
     },
     {
-      title: t("common.table-columns.created-at"),
-      value: broadcastingInfrastructureAge?.created_at
-        ? formatCreatedAt(broadcastingInfrastructureAge.created_at)
-        : "N/A",
+      title: t('common.table-columns.created-at'),
+      value: broadcastingInfrastructureAge?.created_at ? formatCreatedAt(broadcastingInfrastructureAge.created_at) : 'N/A'
     },
     {
-      title: t("common.table-columns.updated-at"),
-      value: broadcastingInfrastructureAge?.updated_at
-        ? formatCreatedAt(broadcastingInfrastructureAge.updated_at)
-        : "N/A",
-    },
-  ]
+      title: t('common.table-columns.updated-at'),
+      value: broadcastingInfrastructureAge?.updated_at ? formatCreatedAt(broadcastingInfrastructureAge.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>
@@ -176,14 +158,14 @@ const BroadcastingInfrastructureAgeList: React.FC<BroadcastingInfrastructureAgeL
           toggleDrawer={toggleDetailDrawer}
           data={mapBroadcastingInfrastructureAgeToDetailItems(selectedRow as BroadcastingInfrastructureAge)}
           hasReference={true}
-          id={selectedRow?.id || ""}
+          id={selectedRow?.id || ''}
           fileType={uploadableProjectFileTypes.other.broadcastingInfrastructureAge}
-          title={t("project.other.broadcasting-infrastructure-age.broadcasting-infrastructure-age-details")}
+          title={t('project.other.broadcasting-infrastructure-age.broadcasting-infrastructure-age-details')}
         />
       )}
 
       <ItemsListing
-        title={t("project.other.broadcasting-infrastructure-age.title")}
+        title={t('project.other.broadcasting-infrastructure-age.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
@@ -193,8 +175,8 @@ const BroadcastingInfrastructureAgeList: React.FC<BroadcastingInfrastructureAgeL
             handleDelete,
             t,
             refetch,
-            broadcastingInfrastructureMap,
-          ),
+            broadcastingInfrastructureMap
+          )
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -212,17 +194,16 @@ const BroadcastingInfrastructureAgeList: React.FC<BroadcastingInfrastructureAgeL
           onClick: toggleDrawer,
           onlyIcon: true,
           permission: {
-            action: "create",
-            subject: "broadcastinginfrastructureage",
-          },
+            action: 'create',
+            subject: 'broadcastinginfrastructureage'
+          }
         }}
         fetchDataFunction={refetch}
         items={broadcastingInfrastructureAges || []}
         onPaginationChange={handlePageChange}
       />
     </Box>
-  )
-}
+  );
+};
 
-export default BroadcastingInfrastructureAgeList
-
+export default BroadcastingInfrastructureAgeList;
