@@ -8,15 +8,15 @@ import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const departmentApiService = {
-  getAll: (params: GetRequestParam, parentDepartmentId: string): Promise<IApiResponse> =>
-    buildGetRequest(`/departments?parentId=${parentDepartmentId}`, params)
+  getAll: (params: GetRequestParam): Promise<IApiResponse<Department[]>> =>
+    buildGetRequest(`/departments/departments`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse<Department>> =>
-    buildGetRequest(`/departments/${idx}`, params)
+    buildGetRequest(`/departments/departments/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
@@ -45,7 +45,7 @@ const departmentApiService = {
 
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
-      .delete(`/departments/${idx}`)
+      .delete(`/departments/departments/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
