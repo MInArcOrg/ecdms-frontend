@@ -52,9 +52,7 @@ const MasterCategoryDetailDrawer: React.FC<MasterCategoryDetailDrawerProps> = ({
       {() => (
         <Card>
           <CardContent>
-
             <Fragment>
-
               {
                 <Box>
                   <DetailRow label={t('Title')} value={masterCategory?.title} />
@@ -68,9 +66,9 @@ const MasterCategoryDetailDrawer: React.FC<MasterCategoryDetailDrawerProps> = ({
                       model={`${capitalizeFirstLetter(model)}type`}
                       model_id={masterCategory?.id}
                       refetchModel={refetch}
-                      resubmit={() => { }}
+                      resubmit={() => {}}
                       title={''}
-                      postAction={() => { }}
+                      postAction={() => {}}
                     />
                     <RowOptions
                       onEdit={handleEdit}
@@ -87,14 +85,13 @@ const MasterCategoryDetailDrawer: React.FC<MasterCategoryDetailDrawerProps> = ({
                       }}
                     />
                   </Box>
-                </Box>}
-
+                </Box>
+              }
             </Fragment>
-
           </CardContent>
         </Card>
       )}
-    </CustomSideDrawer >
+    </CustomSideDrawer>
   );
 };
 

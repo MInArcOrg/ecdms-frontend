@@ -19,10 +19,8 @@ const MasterDataNavMenu: React.FC<MasterDataNavMenuProps> = ({ menuItems, active
   const desktop = useMediaQuery(theme.breakpoints.up('md'));
   const { t } = useTranslation();
 
-
   return (
     <Card sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 2 }}>
-
       <Box
         sx={{
           display: 'flex',
@@ -30,9 +28,7 @@ const MasterDataNavMenu: React.FC<MasterDataNavMenuProps> = ({ menuItems, active
           gap: 5,
           pl: 3
         }}
-      >
-
-      </Box>
+      ></Box>
       {desktop ? (
         <Grid container gap={2} sx={{ ml: 3 }}>
           {menuItems.map((item) => (

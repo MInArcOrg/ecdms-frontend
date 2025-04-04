@@ -36,6 +36,7 @@ const SubDepartmentDrawer = (props: SubDepartmentDrawerType) => {
     const payload = {
       data: {
         ...values,
+        parent_department_id: props.departmentId,
         id: subDepartment?.id
       },
       files: []

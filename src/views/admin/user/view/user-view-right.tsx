@@ -18,11 +18,13 @@ import { styled } from '@mui/material/styles';
 import Icon from 'src/@core/components/icon';
 
 // ** Demo Components Imports
-import UserViewBilling from 'src/views/admin/user/view/UserViewBilling';
-import UserViewSecurity from 'src/views/admin/user/view/UserViewSecurity';
 
 // ** Types
+import { useTranslation } from 'react-i18next';
 import User from 'src/types/admin/user';
+import UserEducationList from './user-education';
+import UserWorkExperienceList from './user-work-experience';
+import UserContactPersonList from './user-contact-person';
 
 interface Props {
   tab: string;
@@ -64,6 +66,7 @@ const TabList = styled(MuiTabList)<TabListProps>(({ theme }) => ({
 }));
 
 const UserViewRight = ({ tab, user, isLoading }: Props) => {
+  const { t: transl } = useTranslation();
   // ** State
   const [activeTab, setActiveTab] = useState<string>(tab);
 
@@ -96,10 +99,23 @@ const UserViewRight = ({ tab, user, isLoading }: Props) => {
         aria-label="forced scroll tabs example"
         sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
       >
-        <Tab value="account" label="Account" icon={<Icon fontSize="1.125rem" icon="tabler:user-check" />} />
-        <Tab value="security" label="Security" icon={<Icon fontSize="1.125rem" icon="tabler:lock" />} />
-        45
+        <Tab
+          value="user-education"
+          label={transl('department.user.tabs.education')}
+          icon={<Icon fontSize="1.125rem" icon="tabler:school" />}
+        />
+        <Tab
+          value="user-work-experience"
+          label={transl('department.user.tabs.work-experience')}
+          icon={<Icon fontSize="1.125rem" icon="tabler:briefcase" />}
+        />
+        <Tab
+          value="user-contact-person"
+          label={transl('department.user.tabs.contact-person')}
+          icon={<Icon fontSize="1.125rem" icon="tabler:users" />}
+        />
       </TabList>
+
       <Box sx={{ mt: 4 }}>
         {isLoading ? (
           <Box
@@ -115,11 +131,15 @@ const UserViewRight = ({ tab, user, isLoading }: Props) => {
           </Box>
         ) : (
           <>
-            <TabPanel sx={{ p: 0 }} value="security">
-              <UserViewSecurity />
+            <TabPanel sx={{ p: 0 }} value="user-education">
+              <UserEducationList userId={user.id} />
             </TabPanel>
-            <TabPanel sx={{ p: 0 }} value="billing-plan">
-              <UserViewBilling />
+
+            <TabPanel sx={{ p: 0 }} value="user-work-experience">
+              <UserWorkExperienceList userId={user.id} />
+            </TabPanel>
+            <TabPanel sx={{ p: 0 }} value="user-contact-person">
+              <UserContactPersonList userId={user.id} />
             </TabPanel>
           </>
         )}
