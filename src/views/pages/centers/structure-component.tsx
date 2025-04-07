@@ -1,14 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
 import departmentApiService from 'src/services/department/department-service';
-import Department from 'src/types/department/department';
 import Obs from 'src/views/components/org-chart';
 
-function StructureComponent({ parentDepartment, viewAll }: { parentDepartment: Department; viewAll: boolean }) {
+function StructureComponent({ parentDepartmentId, viewAll }: { parentDepartmentId: string; viewAll: boolean }) {
   const { data } = useQuery({
-    queryKey: ['head-department', parentDepartment?.id],
+    queryKey: ['head-department', parentDepartmentId],
     queryFn: () =>
-      viewAll ? departmentApiService.getDepartmentStructure() : departmentApiService.getDepartmentStructure(parentDepartment?.id)
+      viewAll ? departmentApiService.getDepartmentStructure() : departmentApiService.getDepartmentStructure(parentDepartmentId)
   });
   return data?.payload ? (
     <Obs data={data?.payload ? data?.payload?.map((item: any) => ({ ...item, parentNodeId: item?.parent_node_id })) : []} />

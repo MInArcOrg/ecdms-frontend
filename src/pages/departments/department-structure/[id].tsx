@@ -1,8 +1,9 @@
-import Department from 'src/types/department/department';
+import { useRouter } from 'next/router';
 import StructureComponent from 'src/views/pages/centers/structure-component';
 
 const MainDepartmentStructure = () => {
-  return <StructureComponent parentDepartment={{} as Department} viewAll={true} />;
+  const { id } = useRouter().query;
+  return <StructureComponent parentDepartmentId={String(id)} viewAll={false} />;
 };
 
 export default MainDepartmentStructure;

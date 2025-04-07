@@ -308,7 +308,10 @@
       "edit-cyber-security-audits-frequency": "Edit Cyber Security Audits Frequencies",
       "safety-problems-encountered": "Safety Problems Encountered",
       "create-safety-problems-encountered": "Create Safety Problems Encountered",
-      "edit-safety-problems-encountered": "Edit Safety Problems Encountered"
+      "edit-safety-problems-encountered": "Edit Safety Problems Encountered",
+      "quantity-measurement-units": "Quantity Measurement Units",
+      "create-quantity-measurement-unit": "Create Quantity Measurement Unit",
+      "edit-quantity-measurement-unit": "Edit Quantity Measurement Unit"
     },
     "form": {
       "title": "Title",
