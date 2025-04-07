@@ -122,7 +122,6 @@ const CentersLayout = ({ children, value, routes }: CentersLayoutProps) => {
                     <Tab value="3" component={Link} label={t('department.tabs.professionals')} href={currentRoutes[2].path} />
                   )}
                   <Tab value="4" component={Link} label={t('department.tabs.documents')} href={currentRoutes[3].path} />
-                  <Tab value="5" component={Link} label={t('department.tabs.structure')} href={currentRoutes[4].path} />
                 </TabList>
                 {cloneElement(children, { parentDepartment: department?.payload })}
               </TabContext>

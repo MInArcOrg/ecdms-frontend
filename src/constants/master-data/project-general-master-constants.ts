@@ -670,7 +670,15 @@ export const projectMasterModels = {
     createTitle: 'create-safety-problems-encountered',
     editTitle: 'edit-safety-problems-encountered',
     fileType: 'SAFETY_PROBLEMS_ENCOUNTERED'
-  }
+  },
+  quantityMeasurementUnit: {
+    model: 'QuantityMeasurementUnit',
+    dbModel: 'quantitymeasurementunit',
+    title: 'quantity-measurement-units',
+    createTitle: 'create-quantity-measurement-unit',
+    editTitle: 'edit-quantity-measurement-unit',
+    fileType: 'QUANTITY_MEASUREMENT_UNIT'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
