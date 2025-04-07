@@ -5,5 +5,4 @@ const MainDepartmentStructure = () => {
   const { id } = useRouter().query;
   return <StructureComponent parentDepartmentId={String(id)} viewAll={false} />;
 };
-
 export default MainDepartmentStructure;
