@@ -679,6 +679,14 @@ export const projectMasterModels = {
     editTitle: 'edit-quantity-measurement-unit',
     fileType: 'QUANTITY_MEASUREMENT_UNIT'
   },
+  apronSurfaceType: {
+    model: 'ApronSurfaceType',
+    dbModel: 'apronsurfacetype',
+    title: 'apron-surface-types',
+    createTitle: 'create-apron-surface-type',
+    editTitle: 'edit-apron-surface-type',
+    fileType: 'APRON_SURFACE_TYPE'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

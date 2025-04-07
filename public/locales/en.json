@@ -311,7 +311,10 @@
       "edit-safety-problems-encountered": "Edit Safety Problems Encountered",
       "quantity-measurement-units": "Quantity Measurement Units",
       "create-quantity-measurement-unit": "Create Quantity Measurement Unit",
-      "edit-quantity-measurement-unit": "Edit Quantity Measurement Unit"
+      "edit-quantity-measurement-unit": "Edit Quantity Measurement Unit",
+      "apron-surface-types": "Apron Surface Types",
+      "create-apron-surface-type": "Create Apron Surface Types",
+      "edit-apron-surface-type": "Edit Apron Surface Types"
     },
     "form": {
       "title": "Title",
