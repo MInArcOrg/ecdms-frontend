@@ -25,6 +25,7 @@ import User from 'src/types/admin/user';
 import UserEducationList from './user-education';
 import UserWorkExperienceList from './user-work-experience';
 import UserContactPersonList from './user-contact-person';
+import UserActivityLogList from './user-activity-log';
 
 interface Props {
   tab: string;
@@ -114,6 +115,11 @@ const UserViewRight = ({ tab, user, isLoading }: Props) => {
           label={transl('department.user.tabs.contact-person')}
           icon={<Icon fontSize="1.125rem" icon="tabler:users" />}
         />
+        <Tab
+          value="activity-log"
+          label={transl('department.user.tabs.activity-log')}
+          icon={<Icon fontSize="1.125rem" icon="tabler:users" />}
+        />
       </TabList>
 
       <Box sx={{ mt: 4 }}>
@@ -140,6 +146,9 @@ const UserViewRight = ({ tab, user, isLoading }: Props) => {
             </TabPanel>
             <TabPanel sx={{ p: 0 }} value="user-contact-person">
               <UserContactPersonList userId={user.id} />
+            </TabPanel>
+            <TabPanel sx={{ p: 0 }} value="activity-log">
+              <UserActivityLogList userId={user.id} />
             </TabPanel>
           </>
         )}

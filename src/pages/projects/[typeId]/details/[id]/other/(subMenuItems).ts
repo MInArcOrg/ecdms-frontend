@@ -650,38 +650,38 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
         },
         {
           id: 113,
-          title: t("project.navigation.submenu.others.electric-distribution-transformer-type.title"),
+          title: t('project.navigation.submenu.others.electric-distribution-transformer-type.title'),
           path: `${baseUrl}/electric-power/electric-distribution-transformer-type`,
-          model: "electricdistributiontransformertype",
-          apiRoute: "electric-distribution-transformer-types",
+          model: 'electricdistributiontransformertype',
+          apiRoute: 'electric-distribution-transformer-types'
         },
         {
           id: 115,
-          title: t("project.navigation.submenu.others.electric-smart-meters-data.title"),
+          title: t('project.navigation.submenu.others.electric-smart-meters-data.title'),
           path: `${baseUrl}/electric-power/electric-smart-meters-data`,
-          model: "electricsmartmetersdata",
-          apiRoute: "electric-smart-meters-data",
+          model: 'electricsmartmetersdata',
+          apiRoute: 'electric-smart-meters-data'
         },
         {
           id: 117,
-          title: t("project.navigation.submenu.others.electric-smart-meters-ratings-data.title"),
+          title: t('project.navigation.submenu.others.electric-smart-meters-ratings-data.title'),
           path: `${baseUrl}/electric-power/electric-smart-meters-ratings-data`,
-          model: "electricsmartmetersratingsdata",
-          apiRoute: "electric-smart-meters-ratings-data",
+          model: 'electricsmartmetersratingsdata',
+          apiRoute: 'electric-smart-meters-ratings-data'
         },
         {
           id: 119,
-          title: t("project.navigation.submenu.others.electric-smart-meters-performance-data.title"),
+          title: t('project.navigation.submenu.others.electric-smart-meters-performance-data.title'),
           path: `${baseUrl}/electric-power/electric-smart-meters-performance-data`,
-          model: "electricsmartmetersperformancedata",
-          apiRoute: "electric-smart-meters-performance-data",
+          model: 'electricsmartmetersperformancedata',
+          apiRoute: 'electric-smart-meters-performance-data'
         },
         {
           id: 121,
-          title: t("project.navigation.submenu.others.electric-smart-meters-privacy-and-security-data.title"),
+          title: t('project.navigation.submenu.others.electric-smart-meters-privacy-and-security-data.title'),
           path: `${baseUrl}/electric-power/electric-smart-meters-privacy-and-security-data`,
-          model: "electricsmartmetersprivacyandsecuritydata",
-          apiRoute: "electric-smart-meters-privacy-and-security-data",
+          model: 'electricsmartmetersprivacyandsecuritydata',
+          apiRoute: 'electric-smart-meters-privacy-and-security-data'
         }
       ]
     },

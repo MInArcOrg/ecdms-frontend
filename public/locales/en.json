@@ -387,7 +387,8 @@
       "tabs": {
         "education": "Education",
         "work-experience": "Work Experience",
-        "contact-person": "Contact Person"
+        "contact-person": "Contact Person",
+        "activity-log": "Activity Log"
       },
       "title": "Users",
       "male": "Male",
@@ -431,6 +432,15 @@
         "title": "Contact Person",
         "create-contact-person": "Create Contact Person",
         "edit-contact-person": "Edit Contact Person"
+      },
+      "activity-log": {
+        "title": "Activity Log",
+        "action": "Action",
+        "module": "Module",
+        "target-type": "Target Type",
+        "target-id": "Target ID",
+        "ip-address": "IP Address",
+        "user-agent": "User Agent"
       }
     },
     "position": {

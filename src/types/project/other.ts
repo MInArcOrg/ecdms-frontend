@@ -1400,87 +1400,86 @@ export interface ElectricDistributionTransformer {
 }
 
 export interface ElectricDistributionTransformerType {
-  id: string
-  project_id: string
-  mini_grid_station_id: string
-  name: string
-  transformer_type_id: string
-  cooling_type: 'Oil Immersed' | 'Dry type'
-  transformer_power_rating?: number
-  lifetime?: number
-  protection_installed_id: string
-  safety_problems_encountered_id: string
-  work_accidents_number?: number
-  on_site_safety_regulation_implemented?: boolean
-  remark?: string
-  created_at?: string
-  updated_at?: string
+  id: string;
+  project_id: string;
+  mini_grid_station_id: string;
+  name: string;
+  transformer_type_id: string;
+  cooling_type: 'Oil Immersed' | 'Dry type';
+  transformer_power_rating?: number;
+  lifetime?: number;
+  protection_installed_id: string;
+  safety_problems_encountered_id: string;
+  work_accidents_number?: number;
+  on_site_safety_regulation_implemented?: boolean;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface ElectricSmartMetersData {
-  id: string
-  project_id: string
-  mini_grid_station_id: string
-  name: string
-  owner_operator?: string
-  facility_type: 'Oil Immersed' | 'Dry Type'
-  service_area?: number
-  manufacturer?: string
-  model_id: string
-  smart_meter_type_id: string
-  installation_year?: number
-  smart_meters_installed_number?: number
-  remark?: string
-  created_at?: string
-  updated_at?: string
+  id: string;
+  project_id: string;
+  mini_grid_station_id: string;
+  name: string;
+  owner_operator?: string;
+  facility_type: 'Oil Immersed' | 'Dry Type';
+  service_area?: number;
+  manufacturer?: string;
+  model_id: string;
+  smart_meter_type_id: string;
+  installation_year?: number;
+  smart_meters_installed_number?: number;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface ElectricSmartMetersRatingsData {
-  id: string
-  project_id: string
-  electric_smart_meters_data_id: string
-  name: string
-  active_reactive: string
-  kwh_kvarh_rating?: number
-  phase: string
-  maximum_current_rating?: number
-  other?: string
-  remark?: string
-  created_at?: string
-  updated_at?: string
+  id: string;
+  project_id: string;
+  electric_smart_meters_data_id: string;
+  name: string;
+  active_reactive: string;
+  kwh_kvarh_rating?: number;
+  phase: string;
+  maximum_current_rating?: number;
+  other?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface ElectricSmartMetersPerformanceData {
-  id: string
-  project_id: string
-  electric_smart_meters_data_id: string
-  name: string
-  maintenance_frequency_id: string
-  average_meter_lifespan?: number
-  average_meter_accuracy?: number
-  safety_problems_encountered?: string
-  work_accidents_number?: number
-  on_site_safety_regulation_implemented?: boolean
-  other?: string
-  remark?: string
-  created_at?: string
-  updated_at?: string
+  id: string;
+  project_id: string;
+  electric_smart_meters_data_id: string;
+  name: string;
+  maintenance_frequency_id: string;
+  average_meter_lifespan?: number;
+  average_meter_accuracy?: number;
+  safety_problems_encountered?: string;
+  work_accidents_number?: number;
+  on_site_safety_regulation_implemented?: boolean;
+  other?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface ElectricSmartMetersPrivacyAndSecurityData {
-  id: string
-  project_id: string
-  electric_smart_meters_data_id: string
-  name: string
-  privacy_measures_implemented?: boolean
-  privacy_measures_type_id: string
-  customer_engagement_frequency_id: string
-  customer_engagement_programs_implemented?: boolean
-  customer_engagement_programs_type_id: string
-  social_impact_assessment_conducted?: boolean
-  resettlement_and_compensation_measures_implemented?: boolean
-  remark?: string
-  created_at?: string
-  updated_at?: string
+  id: string;
+  project_id: string;
+  electric_smart_meters_data_id: string;
+  name: string;
+  privacy_measures_implemented?: boolean;
+  privacy_measures_type_id: string;
+  customer_engagement_frequency_id: string;
+  customer_engagement_programs_implemented?: boolean;
+  customer_engagement_programs_type_id: string;
+  social_impact_assessment_conducted?: boolean;
+  resettlement_and_compensation_measures_implemented?: boolean;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
 }
-

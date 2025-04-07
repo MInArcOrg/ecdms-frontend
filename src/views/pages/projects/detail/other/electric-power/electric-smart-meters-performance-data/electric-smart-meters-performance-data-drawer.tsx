@@ -1,55 +1,55 @@
-"use client"
-import type { FormikProps } from "formik"
-import type { IApiPayload, IApiResponse } from "src/types/requests"
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
-import FormPageWrapper from "src/views/shared/form/form-wrapper"
-import * as yup from "yup"
-import ElectricSmartMetersPerformanceDataForm from "./electric-smart-meters-performance-data-form"
-import { useState } from "react"
-import projectOtherApiSecondService from "src/services/project/project-other-second-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
-import { uploadFile } from "src/services/utils/file-utils"
-import type { ElectricSmartMetersData, ElectricSmartMetersPerformanceData } from "src/types/project/other"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+'use client';
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import ElectricSmartMetersPerformanceDataForm from './electric-smart-meters-performance-data-form';
+import { useState } from 'react';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import type { ElectricSmartMetersData, ElectricSmartMetersPerformanceData } from 'src/types/project/other';
+import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
 
 interface ElectricSmartMetersPerformanceDataDrawerType {
-  open: boolean
-  toggle: () => void
-  refetch: () => void
-  electricSmartMetersPerformanceData: ElectricSmartMetersPerformanceData
-  projectId: string
-  otherSubMenu?: OtherMenuRoute
-  electricSmartMetersData: ElectricSmartMetersData[]
-  maintenanceFrequencies: any[]
+  open: boolean;
+  toggle: () => void;
+  refetch: () => void;
+  electricSmartMetersPerformanceData: ElectricSmartMetersPerformanceData;
+  projectId: string;
+  otherSubMenu?: OtherMenuRoute;
+  electricSmartMetersData: ElectricSmartMetersData[];
+  maintenanceFrequencies: any[];
 }
 
 const ElectricSmartMetersPerformanceDataDrawer = (props: ElectricSmartMetersPerformanceDataDrawerType) => {
-  const { 
-    open, 
-    toggle, 
-    refetch, 
-    electricSmartMetersPerformanceData, 
-    projectId, 
-    otherSubMenu, 
+  const {
+    open,
+    toggle,
+    refetch,
+    electricSmartMetersPerformanceData,
+    projectId,
+    otherSubMenu,
     electricSmartMetersData,
     maintenanceFrequencies
-  } = props
+  } = props;
 
-  const [uploadableFile, setUploadableFile] = useState<File | null>(null)
+  const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const onFileChange = (file: File | null) => {
-    setUploadableFile(file)
-  }
+    setUploadableFile(file);
+  };
 
   const validationSchema = yup.object().shape({
-    electric_smart_meters_data_id: yup.string().required("Electric Smart Meters Data is required"),
-    name: yup.string().required("Name is required"),
-    maintenance_frequency_id: yup.string().required("Maintenance Frequency is required"),
+    electric_smart_meters_data_id: yup.string().required('Electric Smart Meters Data is required'),
+    name: yup.string().required('Name is required'),
+    maintenance_frequency_id: yup.string().required('Maintenance Frequency is required'),
     average_meter_lifespan: yup
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value))
-      .integer("Average meter lifespan must be an integer"),
+      .integer('Average meter lifespan must be an integer'),
     average_meter_accuracy: yup
       .number()
       .nullable()
@@ -59,23 +59,23 @@ const ElectricSmartMetersPerformanceDataDrawer = (props: ElectricSmartMetersPerf
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value))
-      .integer("Work accidents number must be an integer"),
+      .integer('Work accidents number must be an integer'),
     on_site_safety_regulation_implemented: yup.boolean().nullable(),
     other: yup.string().nullable(),
-    remark: yup.string().nullable(),
-  })
+    remark: yup.string().nullable()
+  });
 
-  const isEdit = Boolean(electricSmartMetersPerformanceData?.id)
+  const isEdit = Boolean(electricSmartMetersPerformanceData?.id);
 
   const createElectricSmartMetersPerformanceData = async (body: IApiPayload<ElectricSmartMetersPerformanceData>) =>
-    projectOtherApiSecondService<ElectricSmartMetersPerformanceData>().create(otherSubMenu?.apiRoute || "", body)
+    projectOtherApiSecondService<ElectricSmartMetersPerformanceData>().create(otherSubMenu?.apiRoute || '', body);
 
   const editElectricSmartMetersPerformanceData = async (body: IApiPayload<ElectricSmartMetersPerformanceData>) =>
     projectOtherApiSecondService<ElectricSmartMetersPerformanceData>().update(
-      otherSubMenu?.apiRoute || "", 
-      electricSmartMetersPerformanceData?.id || "", 
+      otherSubMenu?.apiRoute || '',
+      electricSmartMetersPerformanceData?.id || '',
       body
-    )
+    );
 
   const getPayload = (values: ElectricSmartMetersPerformanceData) => ({
     data: {
@@ -90,55 +90,70 @@ const ElectricSmartMetersPerformanceDataDrawer = (props: ElectricSmartMetersPerf
       on_site_safety_regulation_implemented: values.on_site_safety_regulation_implemented,
       other: values.other,
       remark: values.remark,
-      id: electricSmartMetersPerformanceData?.id,
+      id: electricSmartMetersPerformanceData?.id
     },
-    files: uploadableFile ? [uploadableFile] : [],
-  })
+    files: uploadableFile ? [uploadableFile] : []
+  });
 
-  const handleClose = () => toggle()
+  const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<ElectricSmartMetersPerformanceData>, payload: IApiPayload<ElectricSmartMetersPerformanceData>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<ElectricSmartMetersPerformanceData>,
+    payload: IApiPayload<ElectricSmartMetersPerformanceData>
+  ) => {
     if (payload.files.length > 0) {
-      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.electric_smart_meters_performance_data, response.payload.id, "", "")
+      await uploadFile(
+        payload.files[0],
+        uploadableProjectFileTypes.other.electric_smart_meters_performance_data,
+        response.payload.id,
+        '',
+        ''
+      );
     }
 
-    refetch()
-    handleClose()
-  }
+    refetch();
+    handleClose();
+  };
 
   return (
     <CustomSideDrawer
-      title={`project.other.electric-smart-meters-performance-data.${isEdit ? `edit-electric-smart-meters-performance-data` : `create-electric-smart-meters-performance-data`}`}
+      title={`project.other.electric-smart-meters-performance-data.${
+        isEdit ? `edit-electric-smart-meters-performance-data` : `create-electric-smart-meters-performance-data`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.electric-smart-meters-performance-data.${isEdit ? `edit-electric-smart-meters-performance-data` : `create-electric-smart-meters-performance-data`}`}
+          title={`project.other.electric-smart-meters-performance-data.${
+            isEdit ? `edit-electric-smart-meters-performance-data` : `create-electric-smart-meters-performance-data`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
             ...electricSmartMetersPerformanceData,
-            on_site_safety_regulation_implemented: electricSmartMetersPerformanceData?.on_site_safety_regulation_implemented || false,
+            on_site_safety_regulation_implemented: electricSmartMetersPerformanceData?.on_site_safety_regulation_implemented || false
           }}
           createActionFunc={isEdit ? editElectricSmartMetersPerformanceData : createElectricSmartMetersPerformanceData}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<ElectricSmartMetersPerformanceData>) => {
-            return <ElectricSmartMetersPerformanceDataForm 
-              file={uploadableFile} 
-              onFileChange={onFileChange} 
-              formik={formik} 
-              electricSmartMetersData={electricSmartMetersData}
-              maintenanceFrequencies={maintenanceFrequencies}
-            />
+            return (
+              <ElectricSmartMetersPerformanceDataForm
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+                electricSmartMetersData={electricSmartMetersData}
+                maintenanceFrequencies={maintenanceFrequencies}
+              />
+            );
           }}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>
-  )
-}
+  );
+};
 
-export default ElectricSmartMetersPerformanceDataDrawer
+export default ElectricSmartMetersPerformanceDataDrawer;
