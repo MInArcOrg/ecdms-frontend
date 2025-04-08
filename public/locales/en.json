@@ -314,7 +314,10 @@
       "edit-quantity-measurement-unit": "Edit Quantity Measurement Unit",
       "apron-surface-types": "Apron Surface Types",
       "create-apron-surface-type": "Create Apron Surface Types",
-      "edit-apron-surface-type": "Edit Apron Surface Types"
+      "edit-apron-surface-type": "Edit Apron Surface Types",
+      "embedded-enstrument": "Embedded Enstrument",
+      "create-embedded-enstrument": "Create Embedded Enstrument",
+      "edit-embedded-enstrument": "Edit Embedded Enstrument"
     },
     "form": {
       "title": "Title",

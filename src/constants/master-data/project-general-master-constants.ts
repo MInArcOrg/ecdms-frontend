@@ -686,6 +686,14 @@ export const projectMasterModels = {
     createTitle: 'create-apron-surface-type',
     editTitle: 'edit-apron-surface-type',
     fileType: 'APRON_SURFACE_TYPE'
+  },
+  embeddedEnstrument: {
+    model: 'EmbeddedEnstrument',
+    dbModel: 'embeddedEnstrument',
+    title: 'embedded-enstrument',
+    createTitle: 'create-embedded-enstrument',
+    editTitle: 'edit-embedded-enstrument',
+    fileType: 'EMBEDDED_ENSTRUMENT'
   }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
