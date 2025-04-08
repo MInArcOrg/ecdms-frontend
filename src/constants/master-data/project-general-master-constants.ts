@@ -694,6 +694,14 @@ export const projectMasterModels = {
     createTitle: 'create-embedded-enstrument',
     editTitle: 'edit-embedded-enstrument',
     fileType: 'EMBEDDED_ENSTRUMENT'
+  },
+  damPurpose: {
+    model: 'DamPurpose',
+    dbModel: 'damPurpose',
+    title: 'dam-purpose',
+    createTitle: 'create-dam-purpose',
+    editTitle: 'edit-dam-purpose',
+    fileType: 'DAM_PURPOSE'
   }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;

@@ -317,7 +317,10 @@
       "edit-apron-surface-type": "Edit Apron Surface Types",
       "embedded-enstrument": "Embedded Enstrument",
       "create-embedded-enstrument": "Create Embedded Enstrument",
-      "edit-embedded-enstrument": "Edit Embedded Enstrument"
+      "edit-embedded-enstrument": "Edit Embedded Enstrument",
+      "dam-purpose": "Dam Purpose",
+      "create-dam-purpose": "Create Dam Purpose",
+      "edit-dam-purpose": "Edit Dam Purpose"
     },
     "form": {
       "title": "Title",
