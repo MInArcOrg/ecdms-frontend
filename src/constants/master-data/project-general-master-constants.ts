@@ -702,6 +702,14 @@ export const projectMasterModels = {
     createTitle: 'create-dam-purpose',
     editTitle: 'edit-dam-purpose',
     fileType: 'DAM_PURPOSE'
+  },
+  quality: {
+    model: 'Quality',
+    dbModel: 'quality',
+    title: 'quality',
+    createTitle: 'create-quality',
+    editTitle: 'edit-quality',
+    fileType: 'DAM_PURPOSE'
   }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;

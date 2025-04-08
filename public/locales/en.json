@@ -320,7 +320,10 @@
       "edit-embedded-enstrument": "Edit Embedded Enstrument",
       "dam-purpose": "Dam Purpose",
       "create-dam-purpose": "Create Dam Purpose",
-      "edit-dam-purpose": "Edit Dam Purpose"
+      "edit-dam-purpose": "Edit Dam Purpose",
+      "quality": "Quality",
+      "create-quality": "Create Quality",
+      "edit-quality": "Edit Quality"
     },
     "form": {
       "title": "Title",
