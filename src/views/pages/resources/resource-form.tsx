@@ -1,7 +1,6 @@
 import { Box } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
-import { title } from 'process';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { dropDownConfig } from 'src/configs/api-constants';
