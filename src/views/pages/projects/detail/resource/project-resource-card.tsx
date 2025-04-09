@@ -35,17 +35,17 @@ const ProjectResourceCard: React.FC<ProjectResourceCardProps> = ({ projectResour
                   '&:hover': { color: 'primary.main' }
                 }}
               >
-                {projectResource?.resource?.title}
+                {projectResource?.resource?.name}
               </Typography>
               <Typography variant="body2" color="text.secondary" sx={{ marginTop: 0.5 }}>
-                <span>{t('resource.form.description')}:</span> <strong>{projectResource?.resource?.description ?? t('N/A')}</strong>
+                <span>{t('resource.form.description')}:</span> <strong>{projectResource?.resource?.remark ?? t('N/A')}</strong>
               </Typography>
               <Typography variant="body2" color="text.secondary" sx={{ marginTop: 0.5 }}>
                 <span>{t('resource.form.measurement-unit')}:</span>{' '}
-                <strong>{projectResource?.resource?.measurement_unit ?? t('N/A')}</strong>
+                <strong>{projectResource?.resource?.quality_measurement_unit_id ?? t('N/A')}</strong>
               </Typography>
               <Typography variant="body2" color="text.secondary" sx={{ marginTop: 0.5 }}>
-                <span>{t('resource.form.status')}:</span> <strong>{projectResource?.resource?.status ?? t('N/A')}</strong>
+                <span>{t('resource.form.status')}:</span> <strong>{projectResource?.resource?.quality_measurement_unit_id ?? t('N/A')}</strong>
               </Typography>
             </Box>
           </Grid>
