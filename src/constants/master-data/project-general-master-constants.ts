@@ -662,7 +662,16 @@ export const projectMasterModels = {
     createTitle: 'create-cyber-security-audits-frequency',
     editTitle: 'edit-cyber-security-audits-frequency',
     fileType: 'CYBER_SECURITY_AUDITS_FREQUENCY'
-  }
+  },
+  apronSurfaceType: {
+    model: 'ApronSurfaceType',
+    dbModel: 'apronsurfacetype',
+    title: 'apron-surface-types',
+    createTitle: 'create-apron-surface-type',
+    editTitle: 'edit-apron-surface-type',
+    fileType: 'APRON_SURFACE_TYPE'
+  },
+
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
