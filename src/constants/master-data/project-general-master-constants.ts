@@ -671,6 +671,14 @@ export const projectMasterModels = {
     editTitle: 'edit-apron-surface-type',
     fileType: 'APRON_SURFACE_TYPE'
   },
+  safetyProblemsEncountered: {
+    model: 'SafetyProblemsEncountered',
+    dbModel: 'safetyproblemsencountered',
+    title: 'safety-problems-encountered',
+    createTitle: 'create-safety-problems-encountered',
+    editTitle: 'edit-safety-problems-encountered',
+    fileType: 'SAFETY_PROBLEMS_ENCOUNTERED'
+  },
 
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
