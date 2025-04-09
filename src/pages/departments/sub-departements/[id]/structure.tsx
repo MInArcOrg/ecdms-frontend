@@ -18,7 +18,7 @@ const SubDepartemnts = ({ parentDepartment }: { parentDepartment: Department }) 
         padding: 0
       }}
     >
-      <StructureComponent viewAll={true} parentDepartmentId={parentDepartment.?id} />
+      <StructureComponent viewAll={true} parentDepartmentId={parentDepartment?.id} />
     </TabPanel>
   );
 };
