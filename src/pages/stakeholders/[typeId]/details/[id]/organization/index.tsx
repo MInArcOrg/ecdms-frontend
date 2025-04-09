@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import LoadingPlaceholder from 'src/views/components/loader';
 
-const StakeholderGeneral = () => {
+const StakeholderOther = () => {
   const router = useRouter();
 
   // Extract dynamic route parameters from the URL
@@ -11,7 +11,7 @@ const StakeholderGeneral = () => {
   useEffect(() => {
     if (typeId && id) {
       // Build the new URL dynamically
-      const newUrl = `/stakeholders/${typeId}/details/${id}/organization/general-info/general-info`;
+      const newUrl = `/stakeholders/${typeId}/details/${id}/organization/general-info/general-info/`;
 
       // Simulate a condition or action before redirecting
       router.push(newUrl); // Redirect to the constructed URL
@@ -25,4 +25,4 @@ const StakeholderGeneral = () => {
   );
 };
 
-export default StakeholderGeneral;
+export default StakeholderOther;
