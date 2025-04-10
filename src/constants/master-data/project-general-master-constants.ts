@@ -671,6 +671,14 @@ export const projectMasterModels = {
     editTitle: 'edit-apron-surface-type',
     fileType: 'APRON_SURFACE_TYPE'
   },
+  embeddedEnstrument: {
+    model: 'EmbeddedEnstrument',
+    dbModel: 'embeddedEnstrument',
+    title: 'embedded-enstrument',
+    createTitle: 'create-embedded-enstrument',
+    editTitle: 'edit-embedded-enstrument',
+    fileType: 'EMBEDDED_ENSTRUMENT'
+  },
   safetyProblemsEncountered: {
     model: 'SafetyProblemsEncountered',
     dbModel: 'safetyproblemsencountered',
