@@ -16,7 +16,7 @@ const SubDepartemnts = ({ parentDepartment }: { parentDepartment: Department }) 
         backgroundColor: '#EFF2F7'
       }}
     >
-      <StructureComponent viewAll={true} parentDepartment={parentDepartment} />
+      <StructureComponent viewAll={true} parentDepartmentId={parentDepartment?.id} />
     </TabPanel>
   );
 };
