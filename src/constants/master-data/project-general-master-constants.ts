@@ -687,6 +687,14 @@ export const projectMasterModels = {
     editTitle: 'edit-dam-purpose',
     fileType: 'DAM_PURPOSE'
   },
+  quality: {
+    model: 'Quality',
+    dbModel: 'quality',
+    title: 'quality',
+    createTitle: 'create-quality',
+    editTitle: 'edit-quality',
+    fileType: 'DAM_PURPOSE'
+  },
   safetyProblemsEncountered: {
     model: 'SafetyProblemsEncountered',
     dbModel: 'safetyproblemsencountered',
