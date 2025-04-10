@@ -9,7 +9,11 @@ function StakeholderBranchContactPersonIndex() {
   const { id, typeId } = router.query;
 
   return (
-    <StakeholderLayout activeMenuId={stakeholderMenuIds.ORGANIZATION} activeSubMenuId={stakeholderOrganizationIds.branches.additionalInfo} subMenuItems={subMenuItems(id as string, typeId as string)}>
+    <StakeholderLayout
+      activeMenuId={stakeholderMenuIds.ORGANIZATION}
+      activeSubMenuId={stakeholderOrganizationIds.branches.additionalInfo}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
       <StakeholderBranchContactPersonList model="stakeholder-branch-contact-person" stakeholderId={String(id)} typeId={String(typeId)} />
     </StakeholderLayout>
   );

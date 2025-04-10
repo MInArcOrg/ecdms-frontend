@@ -11,7 +11,11 @@ function StakeholderBranchAddressIndex() {
 
   return (
     <Box>
-      <StakeholderLayout activeMenuId={stakeholderMenuIds.ORGANIZATION} activeSubMenuId={stakeholderOrganizationIds.branches.address} subMenuItems={subMenuItems(id as string, typeId as string)}>
+      <StakeholderLayout
+        activeMenuId={stakeholderMenuIds.ORGANIZATION}
+        activeSubMenuId={stakeholderOrganizationIds.branches.address}
+        subMenuItems={subMenuItems(id as string, typeId as string)}
+      >
         <AddressList type={'stakeholderbranchaddress'} modelId={String(id)} />
       </StakeholderLayout>
     </Box>

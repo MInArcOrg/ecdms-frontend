@@ -11,8 +11,12 @@ function StakeholderContactPersonIndex() {
   const { id, typeId } = router.query;
   return (
     <Box>
-    <StakeholderLayout activeMenuId={stakeholderMenuIds.ORGANIZATION} activeSubMenuId={stakeholderOrganizationIds.generalInfo.contactPerson} subMenuItems={subMenuItems(id as string, typeId as string)}>
-    <StakeholderContactPersonList type={'project'} stakeholderId={String(id)} />
+      <StakeholderLayout
+        activeMenuId={stakeholderMenuIds.ORGANIZATION}
+        activeSubMenuId={stakeholderOrganizationIds.generalInfo.contactPerson}
+        subMenuItems={subMenuItems(id as string, typeId as string)}
+      >
+        <StakeholderContactPersonList type={'project'} stakeholderId={String(id)} />
       </StakeholderLayout>
     </Box>
   );

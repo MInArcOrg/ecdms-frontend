@@ -4,23 +4,23 @@ import { stakeholderMenuIds } from 'src/views/pages/stakeholders/details/layout/
 import subMenuItems, { stakeholderProjectIds } from '../(sub-menu-items)';
 
 function BranchAdditionalInformationIndex() {
-    const router = useRouter();
-    const { id, typeId } = router.query;
+  const router = useRouter();
+  const { id, typeId } = router.query;
 
-    return (
-        <StakeholderLayout
-            activeMenuId={stakeholderMenuIds.PROJECTS}
-            activeSubMenuId={stakeholderProjectIds.projects.jointVentureProjects}
-            subMenuItems={subMenuItems(id as string, typeId as string)}
-        >
-            <>Joint venture projects goes here</>
-        </StakeholderLayout>
-    );
+  return (
+    <StakeholderLayout
+      activeMenuId={stakeholderMenuIds.PROJECTS}
+      activeSubMenuId={stakeholderProjectIds.projects.jointVentureProjects}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <>Joint venture projects goes here</>
+    </StakeholderLayout>
+  );
 }
 
 BranchAdditionalInformationIndex.acl = {
-    subject: 'stakeholder',
-    action: 'view_stakeholder'
+  subject: 'stakeholder',
+  action: 'view_stakeholder'
 };
 
 export default BranchAdditionalInformationIndex;

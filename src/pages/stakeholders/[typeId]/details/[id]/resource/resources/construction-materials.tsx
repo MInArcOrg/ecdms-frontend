@@ -9,7 +9,11 @@ function StakeholderMaterialIndex() {
   const { id, typeId } = router.query;
 
   return (
-    <StakeholderLayout activeMenuId={stakeholderMenuIds.RESOURCE} activeSubMenuId={stakeholderResourceIds.resources.constructionMaterials} subMenuItems={subMenuItems(id as string, typeId as string)}>
+    <StakeholderLayout
+      activeMenuId={stakeholderMenuIds.RESOURCE}
+      activeSubMenuId={stakeholderResourceIds.resources.constructionMaterials}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
       <MaterialList stakeholderId={String(id)} />
     </StakeholderLayout>
   );

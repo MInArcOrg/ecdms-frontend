@@ -1,8 +1,6 @@
 // Define TypeScript types for menu items
 
-import { DetailSubMenuItem } from "src/types/layouts/detail-layout";
-
-
+import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
 
 // Define an object for ID constants
 export const stakeholderOrganizationIds = {
@@ -74,7 +72,7 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: stakeholderOrganizationIds.generalInfo.upgrade,
         title: 'stakeholder.navigation.submenu.organization.general-info.upgrade',
-        path: `/stakeholders/${typeId}/details/${id}/organization/general-info/upgrade`,
+        path: `/stakeholders/${typeId}/details/${id}/organization/general-info/upgrade`
       },
       {
         id: stakeholderOrganizationIds.generalInfo.additionalInfo,

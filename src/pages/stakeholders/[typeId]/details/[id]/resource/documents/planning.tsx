@@ -8,10 +8,12 @@ function StakeholderStrategyIndex() {
   const { id, typeId } = router.query;
 
   return (
-    <StakeholderLayout activeMenuId={stakeholderMenuIds.RESOURCE} activeSubMenuId={stakeholderResourceIds.documents.planning} subMenuItems={subMenuItems(id as string, typeId as string)}>
-        <>
-        //planning need to be added here
-        </>
+    <StakeholderLayout
+      activeMenuId={stakeholderMenuIds.RESOURCE}
+      activeSubMenuId={stakeholderResourceIds.documents.planning}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <>planning need to be added here</>
     </StakeholderLayout>
   );
 }

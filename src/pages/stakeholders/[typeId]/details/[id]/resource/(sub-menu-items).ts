@@ -1,6 +1,6 @@
 // Define TypeScript types for menu items
 
-import { DetailSubMenuItem } from "src/types/layouts/detail-layout";
+import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
 
 // Define an object for ID constants
 export const stakeholderResourceIds = {
@@ -32,7 +32,6 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
     id: stakeholderResourceIds.resources.resources,
     title: 'stakeholder.navigation.submenu.resource.resources.resources',
     subItems: [
-      
       {
         id: stakeholderResourceIds.resources.machineries,
         title: 'stakeholder.navigation.submenu.resource.resources.machineries',

@@ -1,9 +1,8 @@
-import { CardContent, ListItemButton, ListItemText, Collapse, Box, ListItem } from '@mui/material';
-import { Fragment, useState } from 'react';
+import { Box, CardContent, Collapse, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Icon from 'src/@core/components/icon';
 import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
-
 
 interface DetailSubMenuProps {
   subMenuItems: DetailSubMenuItem[];
@@ -13,7 +12,7 @@ interface DetailSubMenuProps {
 
 const DetailSubMenu: React.FC<DetailSubMenuProps> = ({ subMenuItems, activeSubMenuId, setActiveSubMenu }) => {
   const { t } = useTranslation();
-  const initialOpenId = subMenuItems.find(item => item.subItems?.some(subItem => subItem.id === activeSubMenuId))?.id || null;
+  const initialOpenId = subMenuItems.find((item) => item.subItems?.some((subItem) => subItem.id === activeSubMenuId))?.id || null;
   const [openId, setOpenId] = useState<string | null>(initialOpenId);
 
   const handleMenuItemClick = (id: string) => {
@@ -27,7 +26,7 @@ const DetailSubMenu: React.FC<DetailSubMenuProps> = ({ subMenuItems, activeSubMe
   return (
     <CardContent>
       {subMenuItems.map((item) => {
-        const isParentActive = item.subItems?.some(subItem => subItem.id === activeSubMenuId);
+        const isParentActive = item.subItems?.some((subItem) => subItem.id === activeSubMenuId);
 
         return (
           <Box key={item.id}>
@@ -40,26 +39,27 @@ const DetailSubMenu: React.FC<DetailSubMenuProps> = ({ subMenuItems, activeSubMe
               <Icon icon={openId === item.id ? 'tabler:chevron-down' : 'tabler:chevron-up'} />
             </ListItemButton>
             <Collapse in={openId === item.id} timeout="auto" unmountOnExit>
-              {item.subItems && item.subItems.map((subItem) => (
-                <ListItem key={subItem.id} sx={{ pb: 0.7, pt: 0 }}>
-                  <ListItemButton
-                    sx={{
-                      borderRadius: '0.5rem',
-                      '&.Mui-selected': {
-                        backgroundColor: 'primary.light',
-                        '&:hover': {
-                          backgroundColor: 'primary.light'
+              {item.subItems &&
+                item.subItems.map((subItem) => (
+                  <ListItem key={subItem.id} sx={{ pb: 0.7, pt: 0 }}>
+                    <ListItemButton
+                      sx={{
+                        borderRadius: '0.5rem',
+                        '&.Mui-selected': {
+                          backgroundColor: 'primary.light',
+                          '&:hover': {
+                            backgroundColor: 'primary.light'
+                          }
                         }
-                      }
-                    }}
-                    selected={activeSubMenuId === subItem.id}
-                    onClick={() => handleSubMenuItemClick(subItem.path)}
-                  >
-                    <Icon icon="tabler:chevron-right" fontSize="1rem" />
-                    <ListItemText primary={t(subItem.title)} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
+                      }}
+                      selected={activeSubMenuId === subItem.id}
+                      onClick={() => handleSubMenuItemClick(subItem.path)}
+                    >
+                      <Icon icon="tabler:chevron-right" fontSize="1rem" />
+                      <ListItemText primary={t(subItem.title)} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
             </Collapse>
           </Box>
         );

@@ -9,7 +9,11 @@ function StakeholderInformation() {
   const { id, typeId } = router.query;
 
   return (
-    <StakeholderLayout activeMenuId={stakeholderMenuIds.RESOURCE} activeSubMenuId={stakeholderResourceIds.certificates.certificates} subMenuItems={subMenuItems(id as string, typeId as string)}>
+    <StakeholderLayout
+      activeMenuId={stakeholderMenuIds.RESOURCE}
+      activeSubMenuId={stakeholderResourceIds.certificates.certificates}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
       <StakeholderCertificateList stakeholderId={String(id)} type={String(id)} />
     </StakeholderLayout>
   );

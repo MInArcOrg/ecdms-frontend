@@ -9,7 +9,11 @@ function StakeholderBranchManagerIndex() {
   const { id, typeId } = router.query;
 
   return (
-    <StakeholderLayout activeMenuId={stakeholderMenuIds.ORGANIZATION} activeSubMenuId={stakeholderOrganizationIds.branches.branchManager} subMenuItems={subMenuItems(id as string, typeId as string)}>
+    <StakeholderLayout
+      activeMenuId={stakeholderMenuIds.ORGANIZATION}
+      activeSubMenuId={stakeholderOrganizationIds.branches.branchManager}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
       <StakeholderBranchManagerList model="stakeholder-branch-manager" stakeholderId={String(id)} typeId={String(typeId)} />
     </StakeholderLayout>
   );

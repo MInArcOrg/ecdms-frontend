@@ -6,10 +6,14 @@ import { stakeholderMenuIds } from 'src/views/pages/stakeholders/details/layout/
 
 function StakeholderPositionIndex() {
   const router = useRouter();
-  const { id,typeId } = router.query;
+  const { id, typeId } = router.query;
 
   return (
-    <StakeholderLayout activeMenuId={stakeholderMenuIds.ORGANIZATION} activeSubMenuId={stakeholderOrganizationIds.companyStructure.positions} subMenuItems={subMenuItems(id as string, typeId as string)}>
+    <StakeholderLayout
+      activeMenuId={stakeholderMenuIds.ORGANIZATION}
+      activeSubMenuId={stakeholderOrganizationIds.companyStructure.positions}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
       <StakeholderPositionList stakeholderId={String(id)} />
     </StakeholderLayout>
   );

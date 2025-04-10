@@ -1,13 +1,11 @@
-import { DetailMenuItem } from "src/types/layouts/detail-layout";
+import { DetailMenuItem } from 'src/types/layouts/detail-layout';
 
 // Define an object for ID constants
 export const stakeholderMenuIds = {
   ORGANIZATION: 'ORGANIZATION',
   RESOURCE: 'RESOURCE',
-  PROJECTS: 'PROJECTS',
+  PROJECTS: 'PROJECTS'
 };
-
-
 
 const menuItems = (id: string, typeId: string): DetailMenuItem[] => {
   const baseUrl = `/stakeholders/${typeId}/details/${id}`;
@@ -16,7 +14,7 @@ const menuItems = (id: string, typeId: string): DetailMenuItem[] => {
     {
       id: stakeholderMenuIds.ORGANIZATION,
       title: 'stakeholder.navigation.menu.organization',
-      path: `${baseUrl}/organization`,
+      path: `${baseUrl}/organization`
     },
     {
       id: stakeholderMenuIds.RESOURCE,

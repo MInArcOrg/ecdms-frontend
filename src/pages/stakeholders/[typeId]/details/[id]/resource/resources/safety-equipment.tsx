@@ -9,7 +9,11 @@ function SafetyEquipmentIndex() {
   const { id, typeId } = router.query;
 
   return (
-    <StakeholderLayout activeMenuId={stakeholderMenuIds.RESOURCE} activeSubMenuId={stakeholderResourceIds.resources.safetyEquipment} subMenuItems={subMenuItems(id as string, typeId as string)}>
+    <StakeholderLayout
+      activeMenuId={stakeholderMenuIds.RESOURCE}
+      activeSubMenuId={stakeholderResourceIds.resources.safetyEquipment}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
       <SafetyEquipmentList stakeholderId={String(id)} />
     </StakeholderLayout>
   );

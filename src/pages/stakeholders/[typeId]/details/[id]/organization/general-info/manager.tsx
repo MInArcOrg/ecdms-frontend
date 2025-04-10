@@ -9,7 +9,11 @@ function StakeholderManagerIndex() {
   const { id, typeId } = router.query;
 
   return (
-    <StakeholderLayout activeMenuId={stakeholderMenuIds.ORGANIZATION} activeSubMenuId={stakeholderOrganizationIds.generalInfo.manager} subMenuItems={subMenuItems(id as string, typeId as string)}>
+    <StakeholderLayout
+      activeMenuId={stakeholderMenuIds.ORGANIZATION}
+      activeSubMenuId={stakeholderOrganizationIds.generalInfo.manager}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
       <StakeholderManagerList model="stakeholder-manager" stakeholderId={String(id)} typeId={String(typeId)} />
     </StakeholderLayout>
   );

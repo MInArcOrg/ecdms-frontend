@@ -9,7 +9,11 @@ function JointVentureCompanyIndex() {
   const { id, typeId } = router.query;
 
   return (
-    <StakeholderLayout activeMenuId={stakeholderMenuIds.ORGANIZATION} activeSubMenuId={stakeholderOrganizationIds.generalInfo.jointVentureCompany} subMenuItems={subMenuItems(id as string, typeId as string)}>
+    <StakeholderLayout
+      activeMenuId={stakeholderMenuIds.ORGANIZATION}
+      activeSubMenuId={stakeholderOrganizationIds.generalInfo.jointVentureCompany}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
       <JointVentureCompanyList model="joint-venture-company" stakeholderId={String(id)} typeId={String(typeId)} />
     </StakeholderLayout>
   );

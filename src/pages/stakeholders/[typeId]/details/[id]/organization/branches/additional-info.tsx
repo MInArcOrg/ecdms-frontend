@@ -10,8 +10,12 @@ function BranchAdditionalInformationIndex() {
   const { id, typeId } = router.query;
 
   return (
-    <StakeholderLayout activeMenuId={stakeholderMenuIds.ORGANIZATION} activeSubMenuId={stakeholderOrganizationIds.branches.additionalInfo} subMenuItems={subMenuItems(id as string, typeId as string)}>
-      <BranchAdditionalInformationList stakeholderId={String(id)}  />
+    <StakeholderLayout
+      activeMenuId={stakeholderMenuIds.ORGANIZATION}
+      activeSubMenuId={stakeholderOrganizationIds.branches.additionalInfo}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <BranchAdditionalInformationList stakeholderId={String(id)} />
     </StakeholderLayout>
   );
 }
