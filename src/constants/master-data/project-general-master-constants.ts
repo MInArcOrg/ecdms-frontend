@@ -663,22 +663,6 @@ export const projectMasterModels = {
     editTitle: 'edit-cyber-security-audits-frequency',
     fileType: 'CYBER_SECURITY_AUDITS_FREQUENCY'
   },
-  safetyProblemsEncountered: {
-    model: 'SafetyProblemsEncountered',
-    dbModel: 'safetyproblemencountered',
-    title: 'safety-problems-encountered',
-    createTitle: 'create-safety-problems-encountered',
-    editTitle: 'edit-safety-problems-encountered',
-    fileType: 'SAFETY_PROBLEMS_ENCOUNTERED'
-  },
-  quantityMeasurementUnit: {
-    model: 'QuantityMeasurementUnit',
-    dbModel: 'quantitymeasurementunit',
-    title: 'quantity-measurement-units',
-    createTitle: 'create-quantity-measurement-unit',
-    editTitle: 'edit-quantity-measurement-unit',
-    fileType: 'QUANTITY_MEASUREMENT_UNIT'
-  },
   apronSurfaceType: {
     model: 'ApronSurfaceType',
     dbModel: 'apronsurfacetype',
@@ -710,7 +694,16 @@ export const projectMasterModels = {
     createTitle: 'create-quality',
     editTitle: 'edit-quality',
     fileType: 'DAM_PURPOSE'
-  }
+  },
+  safetyProblemsEncountered: {
+    model: 'SafetyProblemsEncountered',
+    dbModel: 'safetyproblemsencountered',
+    title: 'safety-problems-encountered',
+    createTitle: 'create-safety-problems-encountered',
+    editTitle: 'edit-safety-problems-encountered',
+    fileType: 'SAFETY_PROBLEMS_ENCOUNTERED'
+  },
+
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

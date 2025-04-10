@@ -19,6 +19,7 @@ type User = {
   partner_name: string | null;
   birth_date: string | Date | EthiopianDate | undefined;
   position_name?: string;
+  redirect_url?: string;
   department: Department;
   position: Position;
   lang: string;
