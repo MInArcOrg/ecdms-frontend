@@ -663,22 +663,6 @@ export const projectMasterModels = {
     editTitle: 'edit-cyber-security-audits-frequency',
     fileType: 'CYBER_SECURITY_AUDITS_FREQUENCY'
   },
-  safetyProblemsEncountered: {
-    model: 'SafetyProblemsEncountered',
-    dbModel: 'safetyproblemencountered',
-    title: 'safety-problems-encountered',
-    createTitle: 'create-safety-problems-encountered',
-    editTitle: 'edit-safety-problems-encountered',
-    fileType: 'SAFETY_PROBLEMS_ENCOUNTERED'
-  },
-  quantityMeasurementUnit: {
-    model: 'QuantityMeasurementUnit',
-    dbModel: 'quantitymeasurementunit',
-    title: 'quantity-measurement-units',
-    createTitle: 'create-quantity-measurement-unit',
-    editTitle: 'edit-quantity-measurement-unit',
-    fileType: 'QUANTITY_MEASUREMENT_UNIT'
-  },
   apronSurfaceType: {
     model: 'ApronSurfaceType',
     dbModel: 'apronsurfacetype',
@@ -686,7 +670,40 @@ export const projectMasterModels = {
     createTitle: 'create-apron-surface-type',
     editTitle: 'edit-apron-surface-type',
     fileType: 'APRON_SURFACE_TYPE'
-  }
+  },
+  embeddedEnstrument: {
+    model: 'EmbeddedEnstrument',
+    dbModel: 'embeddedEnstrument',
+    title: 'embedded-enstrument',
+    createTitle: 'create-embedded-enstrument',
+    editTitle: 'edit-embedded-enstrument',
+    fileType: 'EMBEDDED_ENSTRUMENT'
+  },
+  damPurpose: {
+    model: 'DamPurpose',
+    dbModel: 'damPurpose',
+    title: 'dam-purpose',
+    createTitle: 'create-dam-purpose',
+    editTitle: 'edit-dam-purpose',
+    fileType: 'DAM_PURPOSE'
+  },
+  quality: {
+    model: 'Quality',
+    dbModel: 'quality',
+    title: 'quality',
+    createTitle: 'create-quality',
+    editTitle: 'edit-quality',
+    fileType: 'DAM_PURPOSE'
+  },
+  safetyProblemsEncountered: {
+    model: 'SafetyProblemsEncountered',
+    dbModel: 'safetyproblemsencountered',
+    title: 'safety-problems-encountered',
+    createTitle: 'create-safety-problems-encountered',
+    editTitle: 'edit-safety-problems-encountered',
+    fileType: 'SAFETY_PROBLEMS_ENCOUNTERED'
+  },
+
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

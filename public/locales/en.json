@@ -2934,21 +2934,21 @@
       "menu": {
         "projects": "Projects",
         "organization": "Organization",
-        "resource":"Resource"
+        "resource": "Resource"
       },
       "submenu": {
         "organization": {
-          "general-info":{
-          "general-info": "General Info",
-          "licenses": "Licenses",
-          "manager": "Manager",
-          "contact-person": "Contact Person",
-          "address": "Address",
-          "joint-venture": "Joint Venture",
-          "joint-venture-company": "Joint Venture Company",
-          "upgrade": "Upgrade",
-          "additional-info": "Additional Info"
-        },
+          "general-info": {
+            "general-info": "General Info",
+            "licenses": "Licenses",
+            "manager": "Manager",
+            "contact-person": "Contact Person",
+            "address": "Address",
+            "joint-venture": "Joint Venture",
+            "joint-venture-company": "Joint Venture Company",
+            "upgrade": "Upgrade",
+            "additional-info": "Additional Info"
+          },
           "branches": {
             "branches": "Branches",
             "branch-manager": "Branch Manager",
@@ -2959,7 +2959,7 @@
           "company-structure": {
             "company-structure": "Company Structure",
             "departments": "Departments",
-            "positions": "Positions" 
+            "positions": "Positions"
           }
         },
         "resource": {
@@ -2983,6 +2983,18 @@
           "certificates": {
             "certificates": "Certificates",
             "accreditation": "Accreditation"
+          }
+        },
+        "projects": {
+          "projects": {
+            "projects": "Projects",
+            "joint-venture-projects": "Joint Venture Projects"
+          },
+          "services": {
+            "services": "Services",
+            "incentives": "Incentives",
+            "trainings": "Trainings",
+            "support": "Support"
           }
         }
       }
