@@ -679,6 +679,14 @@ export const projectMasterModels = {
     editTitle: 'edit-embedded-enstrument',
     fileType: 'EMBEDDED_ENSTRUMENT'
   },
+  damPurpose: {
+    model: 'DamPurpose',
+    dbModel: 'damPurpose',
+    title: 'dam-purpose',
+    createTitle: 'create-dam-purpose',
+    editTitle: 'edit-dam-purpose',
+    fileType: 'DAM_PURPOSE'
+  },
   safetyProblemsEncountered: {
     model: 'SafetyProblemsEncountered',
     dbModel: 'safetyproblemsencountered',
