@@ -2902,6 +2902,9 @@
       "file-upload": "File Upload",
       "success-created": "Successfully Created!",
       "success-updated": "Successfully updated!"
+    },
+    "listing": {
+      "no-items-available": "No items available."
     }
   },
   "stakeholder": {
@@ -2936,88 +2939,70 @@
     },
     "navigation": {
       "menu": {
-        "general-info": "General Info",
-        "branches": "Branches",
-        "company-structure": "Company Structure",
-        "resources": "Resource",
-        "certificates": "Certificates",
-        "documents": "Documents",
         "projects": "Projects",
-        "services": "Services",
-        "incentives": "Incentives",
-        "study-programs": "Study Programs",
-        "training": "Trainings"
+        "organization": "Organization",
+        "resource": "Resource"
       },
       "submenu": {
-        "general-info": {
-          "manager": "Manager",
-          "contact-person": "Contact Person",
-          "address": "Address",
-          "joint-venture": "Joint Venture",
-          "joint-venture-company": "Joint Venture Company",
-          "additional-info": "Additional Info",
-          "upgrade": "Upgrade"
+        "organization": {
+          "general-info": {
+            "general-info": "General Info",
+            "licenses": "Licenses",
+            "manager": "Manager",
+            "contact-person": "Contact Person",
+            "address": "Address",
+            "joint-venture": "Joint Venture",
+            "joint-venture-company": "Joint Venture Company",
+            "upgrade": "Upgrade",
+            "additional-info": "Additional Info"
+          },
+          "branches": {
+            "branches": "Branches",
+            "branch-manager": "Branch Manager",
+            "branch-contact-person": "Branch Contact Person",
+            "address": "Address",
+            "additional-info": "Additional Info"
+          },
+          "company-structure": {
+            "company-structure": "Company Structure",
+            "departments": "Departments",
+            "positions": "Positions"
+          }
         },
-        "branches": {
-          "branches": "Branches",
-          "manager": "Manager",
-          "branch-contact-person": "Branch Contact Person",
-          "address": "Address",
-          "additional-info": "Additional Info"
-        },
-        "company-structure": {
-          "departments": "Departments",
-          "positions": "Positions"
-        },
-        "resources": {
-          "machineries": "Machineries",
-          "vehicles": "Vehicles",
-          "safety-equipment": "Safety Equipment",
-          "materials": "Materials",
-          "employees": "Employees"
-        },
-        "certificates": {
-          "certificates": "Certificates",
-          "licenses": "Licenses",
-          "accreditation": "Accreditation"
-        },
-        "documents": {
-          "documents": "Documents",
-          "strategies": "Strategies",
-          "planning": "Planning",
-          "researches": "Researches",
-          "innovations": "Innovations",
-          "code-of-conduct": "Code of Conduct",
-          "manuals": "Manuals"
-        },
-        "services": {
-          "services": "Services"
+        "resource": {
+          "resources": {
+            "resources": "Resources",
+            "machineries": "Machineries",
+            "vehicles": "Vehicles",
+            "safety-equipment": "Safety Equipment",
+            "construction-materials": "Construction Materials",
+            "employees": "Employees"
+          },
+          "documents": {
+            "documents": "Documents",
+            "strategies": "Strategies",
+            "planning": "Planning",
+            "researches": "Researches",
+            "innovations": "Innovations",
+            "code-of-conduct": "Code of Conduct",
+            "manuals": "Manuals"
+          },
+          "certificates": {
+            "certificates": "Certificates",
+            "accreditation": "Accreditation"
+          }
         },
         "projects": {
-          "projects": "Projects",
-          "joint-venture-projects": "Joint Venture Projects"
-        },
-        "incentives": {
-          "trainings": "Trainings",
-          "support": "Support"
-        },
-        "study-programs": {
-          "study-programs": "Study Programs",
-          "teachers": "Teachers",
-          "graduates": "Graduates"
-        },
-        "trainings": {
-          "trainings": "Trainings",
-          "trainers": "Trainers",
-          "trainees": "Trainees"
-        },
-        "others": {
-          "stakeholder-specific": "Stakeholder Specific",
-          "field-of-study": "Field of Study",
-          "study-period-cost": "Study Period Cost",
-          "graduates": "Graduates",
-          "construction-related-services": "Construction Related Services",
-          "stakeholder-services": "Stakeholder Services"
+          "projects": {
+            "projects": "Projects",
+            "joint-venture-projects": "Joint Venture Projects"
+          },
+          "services": {
+            "services": "Services",
+            "incentives": "Incentives",
+            "trainings": "Trainings",
+            "support": "Support"
+          }
         }
       }
     },

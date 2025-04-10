@@ -2,7 +2,7 @@ const subMenuItems = (id: string, typeId: string) => [
   {
     id: 1,
     title: 'resource.navigation.submenu.professional.contact.title',
-    path: `/resources/${typeId}/details/${id}/contact-person/`,
+    path: `/resources/${typeId}/details/${id}/contact-people/`,
     model: 'professional-contact'
   }
 ];

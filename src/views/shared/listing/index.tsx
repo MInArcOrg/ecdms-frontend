@@ -131,8 +131,8 @@ const ItemsListing = <T extends object>({
         isArray(items) && (
           <Fragment>
             {items.length === 0 ? (
-              <Typography variant="h6" align="center" sx={{ mt: 4 }}>
-                No items available.
+              <Typography variant="h6" align="center" sx={{ m: 5 }}>
+                {i18n.t('common.listing.no-items-available')}
               </Typography>
             ) : (
               <>

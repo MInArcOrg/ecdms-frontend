@@ -11,7 +11,7 @@ const StakeholderOther = () => {
   useEffect(() => {
     if (typeId && id) {
       // Build the new URL dynamically
-      const newUrl = `/stakeholders/${typeId}/details/${id}/projects/projects/project/`;
+      const newUrl = `/stakeholders/${typeId}/details/${id}/resource/resources/machineries`;
 
       // Simulate a condition or action before redirecting
       router.push(newUrl); // Redirect to the constructed URL
