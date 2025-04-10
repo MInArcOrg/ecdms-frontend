@@ -36,7 +36,7 @@ export const projectResourceColumns = (
               '&:hover': { color: 'primary.main' }
             }}
           >
-            {row?.resource?.title}
+            {row?.resource?.name}
           </Typography>
         );
       }
@@ -47,7 +47,7 @@ export const projectResourceColumns = (
       headerName: t('resource.columns.measurement-unit'),
       field: 'measurement_unit',
       renderCell: ({ row }: CellType) => {
-        return <Typography sx={{ color: 'text.secondary' }}>{row?.resource?.measurement_unit ?? t('N/A')}</Typography>;
+        return <Typography sx={{ color: 'text.secondary' }}>{row?.resource?.quality_measurement_unit_id ?? t('N/A')}</Typography>;
       }
     },
     {
@@ -56,7 +56,7 @@ export const projectResourceColumns = (
       headerName: t('resource.columns.description'),
       field: 'description',
       renderCell: ({ row }: CellType) => {
-        return <Typography sx={{ color: 'text.secondary' }}>{row?.resource?.description ?? t('N/A')}</Typography>;
+        return <Typography sx={{ color: 'text.secondary' }}>{row?.resource?.remark ?? t('N/A')}</Typography>;
       }
     },
 

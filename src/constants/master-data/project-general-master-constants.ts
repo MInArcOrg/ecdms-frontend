@@ -703,6 +703,7 @@ export const projectMasterModels = {
     editTitle: 'edit-safety-problems-encountered',
     fileType: 'SAFETY_PROBLEMS_ENCOUNTERED'
   }
+
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
