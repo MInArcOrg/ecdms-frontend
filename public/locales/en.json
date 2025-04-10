@@ -312,6 +312,9 @@
       "quantity-measurement-units": "Quantity Measurement Units",
       "create-quantity-measurement-unit": "Create Quantity Measurement Unit",
       "edit-quantity-measurement-unit": "Edit Quantity Measurement Unit",
+      "quality-measurement-units": "Quality Measurement Units",
+      "create-quality-measurement-unit": "Create Quality Measurement Unit",
+      "edit-quality-measurement-unit": "Edit Quality Measurement Unit",
       "apron-surface-types": "Apron Surface Types",
       "create-apron-surface-type": "Create Apron Surface Types",
       "edit-apron-surface-type": "Edit Apron Surface Types",
@@ -331,7 +334,8 @@
       "service_type": "Service Type",
       "specification_detail": "Specification Detail",
       "measurement_unit": "Measurement Unit",
-      "project-type": "Project Type"
+      "project-type": "Project Type",
+      "resource-type": "Resource Type"
     },
     "create-master-type": "Create Type",
     "edit-master-type": "Edit Type",
@@ -496,28 +500,22 @@
     "edit-resource": "Edit Resource",
     "title": "Resource",
     "columns": {
-      "title": "Title",
-      "description": "Description",
-      "sub-category": "Sub Category",
-      "category": "Category",
-      "specification": "Specifications",
-      "measurement-unit": "Measurement Unit",
-      "brand": "Brands",
-      "resourcetype": "Types",
-      "resourcequantityandprice": "Unit Price & Quantity",
-      "studyfield": "Field of Study",
-      "studylevel": "Study Level",
-      "workexperience": "Work Experience",
-      "salary": "Salary",
-      "reference_files": "Reference Files"
+      "name": "Name",
+      "remark": "Remark",
+      "resourcetype_id": "Resource Type",
+      "resourcecategory_id": "Resource Category",
+      "resourcesubcategory_id": "Resource Subcategory",
+      "quantity_measurement_unit_id": "Quantity Measurement Unit",
+      "quality_measurement_unit_id": "Quality Measurement Unit"
     },
     "form": {
-      "title": "Title",
-      "description": "Description",
-      "category": "Category",
-      "sub_category": "Sub Category",
-      "measurement_unit": "Measurement Unit",
-      "upload_image": "Upload Resource Picture"
+      "name": "Name",
+      "remark": "Remark",
+      "resourcetype_id": "Resource Type",
+      "resourcecategory_id": "Resource Category",
+      "resourcesubcategory_id": "Resource Subcategory",
+      "quantity_measurement_unit_id": "Quantity Measurement Unit",
+      "quality_measurement_unit_id": "Quality Measurement Unit"
     },
     "navigation": {
       "menu": {
