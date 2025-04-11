@@ -29,7 +29,7 @@ export const projectColumns = (
           <Typography
             noWrap
             component={Link}
-            href={`/projects/${typeId}/details/${row.id}/general/detail`}
+            href={`/projects/${typeId}/details/${row.id}`}
             sx={{
               fontWeight: 500,
               textDecoration: 'none',

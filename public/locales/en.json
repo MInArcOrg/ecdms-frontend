@@ -707,6 +707,69 @@
     },
     "navigation": {
       "submenu": {
+        "project-setup": {
+          "general-info": {
+            "title": "General Info",
+            "project-info": "Project Info",
+            "address": "Address",
+            "project-manager": "Project Manager",
+            "contact-person": "Contact Person",
+            "construction-type": "Construction Type",
+            "construction-method": "Construction Method"
+          },
+          "stakeholders": {
+            "title": "Stakeholders",
+            "stakeholders": "Stakeholders"
+          },
+          "time": {
+            "title": "Time",
+            "contract-period": "Contract Period",
+            "extension-time": "Extension Time"
+          }
+        },
+        "resource": {
+          "finance": {
+            "title": "Finance",
+            "contract-amount": "Contract Amount",
+            "amendments": "Amendments",
+            "supplements": "Supplements",
+            "variations": "Variations",
+            "omission": "Omission",
+            "performance-bond": "Performance Bond",
+            "advance-bond": "Advance Bond",
+            "bid-bond": "Bid Bond",
+            "interim-payment": "Interim Payment",
+            "advance-payment": "Advance Payment"
+          },
+          "resources": {
+            "title": "Resources",
+            "materials": "Materials",
+            "machinery": "Machinery",
+            "manpower": "Manpower"
+          },
+          "documents": {
+            "title": "Documents",
+            "planning": "Planning",
+            "design": "Design",
+            "construction": "Construction",
+            "other": "Other"
+          }
+        },
+        "reporting": {
+          "plan": {
+            "title": "Plan",
+            "plan": "Plan"
+          },
+          "report": {
+            "title": "Report",
+            "actual-status": "Actual Status",
+            "weather-condition": "Weather Condition",
+            "claim": "Claim",
+            "challenges": "Challenges",
+            "quality-inspection": "Quality Inspection",
+            "site-pictures": "Site Pictures"
+          }
+        },
         "others": {
           "building": "Building",
           "building-dimensions-detail": "Building Dimensions Detail",
@@ -809,6 +872,11 @@
           "electric-smart-meters-performance-data": "Electric Smart Meters Performance Data",
           "electric-smart-meters-privacy-and-security-data": "Electric Smart Meters Privacy And Security Data"
         }
+      },
+      "menu": {
+        "project-setup": "Project Setup",
+        "resource": "Resource",
+        "reporting": "Reporting"
       }
     },
     "project-time": {
