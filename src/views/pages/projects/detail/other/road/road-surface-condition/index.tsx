@@ -17,7 +17,7 @@ import RoadSurfaceConditionDrawer from './road-surface-condition-drawer';
 import { roadSurfaceConditionColumns } from './road-surface-condition-row';
 
 interface RoadSurfaceConditionListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }

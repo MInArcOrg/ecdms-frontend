@@ -12,7 +12,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { TelecomInfrastructureComponent } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface TelecomInfrastructureComponentDrawerType {
   open: boolean;
@@ -20,7 +20,7 @@ interface TelecomInfrastructureComponentDrawerType {
   refetch: () => void;
   telecomInfrastructureComponent: TelecomInfrastructureComponent;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const TelecomInfrastructureComponentDrawer = (props: TelecomInfrastructureComponentDrawerType) => {
@@ -114,18 +114,16 @@ const TelecomInfrastructureComponentDrawer = (props: TelecomInfrastructureCompon
 
   return (
     <CustomSideDrawer
-      title={`project.other.telecom-infrastructure-component.${
-        isEdit ? `edit-telecom-infrastructure-component` : `create-telecom-infrastructure-component`
-      }`}
+      title={`project.other.telecom-infrastructure-component.${isEdit ? `edit-telecom-infrastructure-component` : `create-telecom-infrastructure-component`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.telecom-infrastructure-component.${
-            isEdit ? `edit-telecom-infrastructure-component` : `create-telecom-infrastructure-component`
-          }`}
+          title={`project.other.telecom-infrastructure-component.${isEdit ? `edit-telecom-infrastructure-component` : `create-telecom-infrastructure-component`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -22,7 +22,7 @@ import ElectricSmartMetersRatingsDataDrawer from './electric-smart-meters-rating
 import { electricSmartMetersRatingsDataColumns } from './electric-smart-meters-ratings-data-row';
 
 interface ElectricSmartMetersRatingsDataListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -90,54 +90,54 @@ const ElectricSmartMetersRatingsDataList: React.FC<ElectricSmartMetersRatingsDat
   const mapElectricSmartMetersRatingsDataToDetailItems = (
     electricSmartMetersRatingsData: ElectricSmartMetersRatingsData
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.electric-smart-meters-ratings-data.details.name'),
-      value: electricSmartMetersRatingsData?.name || 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-ratings-data.details.electric-smart-meters-data-id'),
-      value: electricSmartMetersRatingsData?.electric_smart_meters_data_id
-        ? electricSmartMetersDataMap.get(electricSmartMetersRatingsData.electric_smart_meters_data_id) ||
+      {
+        title: t('project.other.electric-smart-meters-ratings-data.details.name'),
+        value: electricSmartMetersRatingsData?.name || 'N/A'
+      },
+      {
+        title: t('project.other.electric-smart-meters-ratings-data.details.electric-smart-meters-data-id'),
+        value: electricSmartMetersRatingsData?.electric_smart_meters_data_id
+          ? electricSmartMetersDataMap.get(electricSmartMetersRatingsData.electric_smart_meters_data_id) ||
           electricSmartMetersRatingsData.electric_smart_meters_data_id
-        : 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-ratings-data.details.active-reactive'),
-      value: electricSmartMetersRatingsData?.active_reactive || 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-ratings-data.details.kwh-kvarh-rating'),
-      value:
-        electricSmartMetersRatingsData?.kwh_kvarh_rating !== undefined ? electricSmartMetersRatingsData.kwh_kvarh_rating.toString() : 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-ratings-data.details.phase'),
-      value: electricSmartMetersRatingsData?.phase || 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-ratings-data.details.maximum-current-rating'),
-      value:
-        electricSmartMetersRatingsData?.maximum_current_rating !== undefined
-          ? electricSmartMetersRatingsData.maximum_current_rating.toString()
           : 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-ratings-data.details.other'),
-      value: electricSmartMetersRatingsData?.other || 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-ratings-data.details.remark'),
-      value: electricSmartMetersRatingsData?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: electricSmartMetersRatingsData?.created_at ? formatCreatedAt(electricSmartMetersRatingsData.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: electricSmartMetersRatingsData?.updated_at ? formatCreatedAt(electricSmartMetersRatingsData.updated_at) : 'N/A'
-    }
-  ];
+      },
+      {
+        title: t('project.other.electric-smart-meters-ratings-data.details.active-reactive'),
+        value: electricSmartMetersRatingsData?.active_reactive || 'N/A'
+      },
+      {
+        title: t('project.other.electric-smart-meters-ratings-data.details.kwh-kvarh-rating'),
+        value:
+          electricSmartMetersRatingsData?.kwh_kvarh_rating !== undefined ? electricSmartMetersRatingsData.kwh_kvarh_rating.toString() : 'N/A'
+      },
+      {
+        title: t('project.other.electric-smart-meters-ratings-data.details.phase'),
+        value: electricSmartMetersRatingsData?.phase || 'N/A'
+      },
+      {
+        title: t('project.other.electric-smart-meters-ratings-data.details.maximum-current-rating'),
+        value:
+          electricSmartMetersRatingsData?.maximum_current_rating !== undefined
+            ? electricSmartMetersRatingsData.maximum_current_rating.toString()
+            : 'N/A'
+      },
+      {
+        title: t('project.other.electric-smart-meters-ratings-data.details.other'),
+        value: electricSmartMetersRatingsData?.other || 'N/A'
+      },
+      {
+        title: t('project.other.electric-smart-meters-ratings-data.details.remark'),
+        value: electricSmartMetersRatingsData?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: electricSmartMetersRatingsData?.created_at ? formatCreatedAt(electricSmartMetersRatingsData.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: electricSmartMetersRatingsData?.updated_at ? formatCreatedAt(electricSmartMetersRatingsData.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

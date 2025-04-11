@@ -10,7 +10,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { ElectricDistributionTransformer } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface ElectricDistributionTransformerDrawerType {
   open: boolean;
@@ -18,7 +18,7 @@ interface ElectricDistributionTransformerDrawerType {
   refetch: () => void;
   electricDistributionTransformer: ElectricDistributionTransformer;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   fireExtinguishingTechnologies: any[];
 }
 
@@ -105,18 +105,16 @@ const ElectricDistributionTransformerDrawer = (props: ElectricDistributionTransf
 
   return (
     <CustomSideDrawer
-      title={`project.other.electric-distribution-transformer.${
-        isEdit ? `edit-electric-distribution-transformer` : `create-electric-distribution-transformer`
-      }`}
+      title={`project.other.electric-distribution-transformer.${isEdit ? `edit-electric-distribution-transformer` : `create-electric-distribution-transformer`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.electric-distribution-transformer.${
-            isEdit ? `edit-electric-distribution-transformer` : `create-electric-distribution-transformer`
-          }`}
+          title={`project.other.electric-distribution-transformer.${isEdit ? `edit-electric-distribution-transformer` : `create-electric-distribution-transformer`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

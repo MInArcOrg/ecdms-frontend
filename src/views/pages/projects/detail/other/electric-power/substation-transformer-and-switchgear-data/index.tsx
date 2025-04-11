@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -22,7 +22,7 @@ import SubstationTransformerAndSwitchgearDataDrawer from './substation-transform
 import { substationTransformerAndSwitchgearDataColumns } from './substation-transformer-and-switchgear-data-row';
 
 interface SubstationTransformerAndSwitchgearDataListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -95,74 +95,74 @@ const SubstationTransformerAndSwitchgearDataList: React.FC<SubstationTransformer
   const mapSubstationTransformerAndSwitchgearDataToDetailItems = (
     substationTransformerAndSwitchgearData: SubstationTransformerAndSwitchgearData
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.substation-transformer-and-switchgear-data.details.name'),
-      value: substationTransformerAndSwitchgearData?.name || 'N/A'
-    },
-    {
-      title: t('project.other.substation-transformer-and-switchgear-data.details.transmission-line-id'),
-      value: substationTransformerAndSwitchgearData?.transmission_line_id
-        ? transmissionLinesMap.get(substationTransformerAndSwitchgearData?.transmission_line_id) ||
+      {
+        title: t('project.other.substation-transformer-and-switchgear-data.details.name'),
+        value: substationTransformerAndSwitchgearData?.name || 'N/A'
+      },
+      {
+        title: t('project.other.substation-transformer-and-switchgear-data.details.transmission-line-id'),
+        value: substationTransformerAndSwitchgearData?.transmission_line_id
+          ? transmissionLinesMap.get(substationTransformerAndSwitchgearData?.transmission_line_id) ||
           substationTransformerAndSwitchgearData?.transmission_line_id
-        : 'N/A'
-    },
-    {
-      title: t('project.other.substation-transformer-and-switchgear-data.details.transformers-number'),
-      value:
-        substationTransformerAndSwitchgearData?.transformers_number !== undefined
-          ? substationTransformerAndSwitchgearData.transformers_number.toString()
           : 'N/A'
-    },
-    {
-      title: t('project.other.substation-transformer-and-switchgear-data.details.transformer-type'),
-      value: substationTransformerAndSwitchgearData?.transformer_type || 'N/A'
-    },
-    {
-      title: t('project.other.substation-transformer-and-switchgear-data.details.transformer-capacity'),
-      value:
-        substationTransformerAndSwitchgearData?.transformer_capacity !== undefined
-          ? `${substationTransformerAndSwitchgearData.transformer_capacity} ${t('common.mva')}`
-          : 'N/A'
-    },
-    {
-      title: t('project.other.substation-transformer-and-switchgear-data.details.input-voltage-level'),
-      value:
-        substationTransformerAndSwitchgearData?.input_voltage_level !== undefined
-          ? `${substationTransformerAndSwitchgearData.input_voltage_level} ${t('common.kv')}`
-          : 'N/A'
-    },
-    {
-      title: t('project.other.substation-transformer-and-switchgear-data.details.output-voltage-level'),
-      value:
-        substationTransformerAndSwitchgearData?.output_voltage_level !== undefined
-          ? `${substationTransformerAndSwitchgearData.output_voltage_level} ${t('common.kv')}`
-          : 'N/A'
-    },
-    {
-      title: t('project.other.substation-transformer-and-switchgear-data.details.switchgear-type-id'),
-      value: substationTransformerAndSwitchgearData?.switchgear_type_id || 'N/A'
-    },
-    {
-      title: t('project.other.substation-transformer-and-switchgear-data.details.circuit-breaker-type-id'),
-      value: substationTransformerAndSwitchgearData?.circuit_breaker_type_id || 'N/A'
-    },
-    {
-      title: t('project.other.substation-transformer-and-switchgear-data.details.other-equipment'),
-      value: substationTransformerAndSwitchgearData?.other_equipment || 'N/A'
-    },
-    {
-      title: t('project.other.substation-transformer-and-switchgear-data.details.remark'),
-      value: substationTransformerAndSwitchgearData?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: substationTransformerAndSwitchgearData?.created_at ? formatCreatedAt(substationTransformerAndSwitchgearData.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: substationTransformerAndSwitchgearData?.updated_at ? formatCreatedAt(substationTransformerAndSwitchgearData.updated_at) : 'N/A'
-    }
-  ];
+      },
+      {
+        title: t('project.other.substation-transformer-and-switchgear-data.details.transformers-number'),
+        value:
+          substationTransformerAndSwitchgearData?.transformers_number !== undefined
+            ? substationTransformerAndSwitchgearData.transformers_number.toString()
+            : 'N/A'
+      },
+      {
+        title: t('project.other.substation-transformer-and-switchgear-data.details.transformer-type'),
+        value: substationTransformerAndSwitchgearData?.transformer_type || 'N/A'
+      },
+      {
+        title: t('project.other.substation-transformer-and-switchgear-data.details.transformer-capacity'),
+        value:
+          substationTransformerAndSwitchgearData?.transformer_capacity !== undefined
+            ? `${substationTransformerAndSwitchgearData.transformer_capacity} ${t('common.mva')}`
+            : 'N/A'
+      },
+      {
+        title: t('project.other.substation-transformer-and-switchgear-data.details.input-voltage-level'),
+        value:
+          substationTransformerAndSwitchgearData?.input_voltage_level !== undefined
+            ? `${substationTransformerAndSwitchgearData.input_voltage_level} ${t('common.kv')}`
+            : 'N/A'
+      },
+      {
+        title: t('project.other.substation-transformer-and-switchgear-data.details.output-voltage-level'),
+        value:
+          substationTransformerAndSwitchgearData?.output_voltage_level !== undefined
+            ? `${substationTransformerAndSwitchgearData.output_voltage_level} ${t('common.kv')}`
+            : 'N/A'
+      },
+      {
+        title: t('project.other.substation-transformer-and-switchgear-data.details.switchgear-type-id'),
+        value: substationTransformerAndSwitchgearData?.switchgear_type_id || 'N/A'
+      },
+      {
+        title: t('project.other.substation-transformer-and-switchgear-data.details.circuit-breaker-type-id'),
+        value: substationTransformerAndSwitchgearData?.circuit_breaker_type_id || 'N/A'
+      },
+      {
+        title: t('project.other.substation-transformer-and-switchgear-data.details.other-equipment'),
+        value: substationTransformerAndSwitchgearData?.other_equipment || 'N/A'
+      },
+      {
+        title: t('project.other.substation-transformer-and-switchgear-data.details.remark'),
+        value: substationTransformerAndSwitchgearData?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: substationTransformerAndSwitchgearData?.created_at ? formatCreatedAt(substationTransformerAndSwitchgearData.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: substationTransformerAndSwitchgearData?.updated_at ? formatCreatedAt(substationTransformerAndSwitchgearData.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

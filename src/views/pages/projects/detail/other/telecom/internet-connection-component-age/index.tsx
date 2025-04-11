@@ -17,7 +17,7 @@ import InternetConnectionInfrastructureAgeDrawer from './internet-connection-inf
 import { internetConnectionInfrastructureAgeColumns } from './internet-connection-infrastructure-age-row';
 
 interface InternetConnectionInfrastructureAgeListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -83,39 +83,39 @@ const InternetConnectionInfrastructureAgeList: React.FC<InternetConnectionInfras
   const mapInternetConnectionInfrastructureAgeToDetailItems = (
     internetConnectionInfrastructureAge: InternetConnectionInfrastructureAge
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.internet-connection-infrastructure-age.details.internet-connection-id'),
-      value: internetConnectionInfrastructureAge?.internet_connection_id || 'N/A'
-    },
-    {
-      title: t('project.other.internet-connection-infrastructure-age.details.routers'),
-      value: internetConnectionInfrastructureAge?.routers?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.internet-connection-infrastructure-age.details.switches'),
-      value: internetConnectionInfrastructureAge?.switches?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.internet-connection-infrastructure-age.details.modems'),
-      value: internetConnectionInfrastructureAge?.modems?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.internet-connection-infrastructure-age.details.cables'),
-      value: internetConnectionInfrastructureAge?.cables?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.internet-connection-infrastructure-age.details.others'),
-      value: internetConnectionInfrastructureAge?.others || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: internetConnectionInfrastructureAge?.created_at ? formatCreatedAt(internetConnectionInfrastructureAge.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: internetConnectionInfrastructureAge?.updated_at ? formatCreatedAt(internetConnectionInfrastructureAge.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.internet-connection-infrastructure-age.details.internet-connection-id'),
+        value: internetConnectionInfrastructureAge?.internet_connection_id || 'N/A'
+      },
+      {
+        title: t('project.other.internet-connection-infrastructure-age.details.routers'),
+        value: internetConnectionInfrastructureAge?.routers?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.internet-connection-infrastructure-age.details.switches'),
+        value: internetConnectionInfrastructureAge?.switches?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.internet-connection-infrastructure-age.details.modems'),
+        value: internetConnectionInfrastructureAge?.modems?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.internet-connection-infrastructure-age.details.cables'),
+        value: internetConnectionInfrastructureAge?.cables?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.internet-connection-infrastructure-age.details.others'),
+        value: internetConnectionInfrastructureAge?.others || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: internetConnectionInfrastructureAge?.created_at ? formatCreatedAt(internetConnectionInfrastructureAge.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: internetConnectionInfrastructureAge?.updated_at ? formatCreatedAt(internetConnectionInfrastructureAge.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

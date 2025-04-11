@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -22,7 +22,7 @@ import { satelliteInfrastructureAgeColumns } from './satellite-infrastructure-ag
 import { useQuery } from '@tanstack/react-query';
 
 interface SatelliteInfrastructureAgeListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -90,42 +90,42 @@ const SatelliteInfrastructureAgeList: React.FC<SatelliteInfrastructureAgeListPro
   const mapSatelliteInfrastructureAgeToDetailItems = (
     satelliteInfrastructureAge: SatelliteInfrastructureAge
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.satellite-infrastructure-age.details.satellite-network'),
-      value:
-        satelliteNetworkMap.get(satelliteInfrastructureAge?.satellite_network_id) ||
-        satelliteInfrastructureAge?.satellite_network_id ||
-        'N/A'
-    },
-    {
-      title: t('project.other.satellite-infrastructure-age.details.satellite'),
-      value: satelliteInfrastructureAge?.satellite?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.satellite-infrastructure-age.details.ground-stations'),
-      value: satelliteInfrastructureAge?.ground_stations?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.satellite-infrastructure-age.details.modems'),
-      value: satelliteInfrastructureAge?.modems?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.satellite-infrastructure-age.details.routers'),
-      value: satelliteInfrastructureAge?.routers?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.satellite-infrastructure-age.details.others'),
-      value: satelliteInfrastructureAge?.others || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: satelliteInfrastructureAge?.created_at ? formatCreatedAt(satelliteInfrastructureAge.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: satelliteInfrastructureAge?.updated_at ? formatCreatedAt(satelliteInfrastructureAge.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.satellite-infrastructure-age.details.satellite-network'),
+        value:
+          satelliteNetworkMap.get(satelliteInfrastructureAge?.satellite_network_id) ||
+          satelliteInfrastructureAge?.satellite_network_id ||
+          'N/A'
+      },
+      {
+        title: t('project.other.satellite-infrastructure-age.details.satellite'),
+        value: satelliteInfrastructureAge?.satellite?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.satellite-infrastructure-age.details.ground-stations'),
+        value: satelliteInfrastructureAge?.ground_stations?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.satellite-infrastructure-age.details.modems'),
+        value: satelliteInfrastructureAge?.modems?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.satellite-infrastructure-age.details.routers'),
+        value: satelliteInfrastructureAge?.routers?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.satellite-infrastructure-age.details.others'),
+        value: satelliteInfrastructureAge?.others || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: satelliteInfrastructureAge?.created_at ? formatCreatedAt(satelliteInfrastructureAge.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: satelliteInfrastructureAge?.updated_at ? formatCreatedAt(satelliteInfrastructureAge.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

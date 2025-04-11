@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -24,7 +24,7 @@ import { projectMasterModels } from 'src/constants/master-data/project-general-m
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 
 interface ElectricDistributionTransformerTypeListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -126,82 +126,82 @@ const ElectricDistributionTransformerTypeList: React.FC<ElectricDistributionTran
   const mapElectricDistributionTransformerTypeToDetailItems = (
     electricDistributionTransformerType: ElectricDistributionTransformerType
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.electric-distribution-transformer-type.details.name'),
-      value: electricDistributionTransformerType?.name || 'N/A'
-    },
-    {
-      title: t('project.other.electric-distribution-transformer-type.details.mini-grid-station-id'),
-      value: electricDistributionTransformerType?.mini_grid_station_id
-        ? miniGridStationsMap.get(electricDistributionTransformerType.mini_grid_station_id) ||
+      {
+        title: t('project.other.electric-distribution-transformer-type.details.name'),
+        value: electricDistributionTransformerType?.name || 'N/A'
+      },
+      {
+        title: t('project.other.electric-distribution-transformer-type.details.mini-grid-station-id'),
+        value: electricDistributionTransformerType?.mini_grid_station_id
+          ? miniGridStationsMap.get(electricDistributionTransformerType.mini_grid_station_id) ||
           electricDistributionTransformerType.mini_grid_station_id
-        : 'N/A'
-    },
-    {
-      title: t('project.other.electric-distribution-transformer-type.details.transformer-type-id'),
-      value: electricDistributionTransformerType?.transformer_type_id
-        ? transformerTypesMap.get(electricDistributionTransformerType.transformer_type_id) ||
+          : 'N/A'
+      },
+      {
+        title: t('project.other.electric-distribution-transformer-type.details.transformer-type-id'),
+        value: electricDistributionTransformerType?.transformer_type_id
+          ? transformerTypesMap.get(electricDistributionTransformerType.transformer_type_id) ||
           electricDistributionTransformerType.transformer_type_id
-        : 'N/A'
-    },
-    {
-      title: t('project.other.electric-distribution-transformer-type.details.cooling-type'),
-      value: electricDistributionTransformerType?.cooling_type || 'N/A'
-    },
-    {
-      title: t('project.other.electric-distribution-transformer-type.details.transformer-power-rating'),
-      value:
-        electricDistributionTransformerType?.transformer_power_rating !== undefined
-          ? `${electricDistributionTransformerType.transformer_power_rating} ${t('common.kva')}`
           : 'N/A'
-    },
-    {
-      title: t('project.other.electric-distribution-transformer-type.details.lifetime'),
-      value:
-        electricDistributionTransformerType?.lifetime !== undefined
-          ? `${electricDistributionTransformerType.lifetime} ${t('common.years')}`
-          : 'N/A'
-    },
-    {
-      title: t('project.other.electric-distribution-transformer-type.details.protection-installed-id'),
-      value: electricDistributionTransformerType?.protection_installed_id
-        ? protectionInstalledMap.get(electricDistributionTransformerType.protection_installed_id) ||
+      },
+      {
+        title: t('project.other.electric-distribution-transformer-type.details.cooling-type'),
+        value: electricDistributionTransformerType?.cooling_type || 'N/A'
+      },
+      {
+        title: t('project.other.electric-distribution-transformer-type.details.transformer-power-rating'),
+        value:
+          electricDistributionTransformerType?.transformer_power_rating !== undefined
+            ? `${electricDistributionTransformerType.transformer_power_rating} ${t('common.kva')}`
+            : 'N/A'
+      },
+      {
+        title: t('project.other.electric-distribution-transformer-type.details.lifetime'),
+        value:
+          electricDistributionTransformerType?.lifetime !== undefined
+            ? `${electricDistributionTransformerType.lifetime} ${t('common.years')}`
+            : 'N/A'
+      },
+      {
+        title: t('project.other.electric-distribution-transformer-type.details.protection-installed-id'),
+        value: electricDistributionTransformerType?.protection_installed_id
+          ? protectionInstalledMap.get(electricDistributionTransformerType.protection_installed_id) ||
           electricDistributionTransformerType.protection_installed_id
-        : 'N/A'
-    },
-    {
-      title: t('project.other.electric-distribution-transformer-type.details.safety-problems-encountered-id'),
-      value: electricDistributionTransformerType?.safety_problems_encountered_id
-        ? safetyProblemsEncounteredMap.get(electricDistributionTransformerType.safety_problems_encountered_id) ||
-          electricDistributionTransformerType.safety_problems_encountered_id
-        : 'N/A'
-    },
-    {
-      title: t('project.other.electric-distribution-transformer-type.details.work-accidents-number'),
-      value: electricDistributionTransformerType?.work_accidents_number?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.electric-distribution-transformer-type.details.on-site-safety-regulation-implemented'),
-      value:
-        electricDistributionTransformerType?.on_site_safety_regulation_implemented !== undefined
-          ? electricDistributionTransformerType.on_site_safety_regulation_implemented
-            ? t('common.yes')
-            : t('common.no')
           : 'N/A'
-    },
-    {
-      title: t('project.other.electric-distribution-transformer-type.details.remark'),
-      value: electricDistributionTransformerType?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: electricDistributionTransformerType?.created_at ? formatCreatedAt(electricDistributionTransformerType.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: electricDistributionTransformerType?.updated_at ? formatCreatedAt(electricDistributionTransformerType.updated_at) : 'N/A'
-    }
-  ];
+      },
+      {
+        title: t('project.other.electric-distribution-transformer-type.details.safety-problems-encountered-id'),
+        value: electricDistributionTransformerType?.safety_problems_encountered_id
+          ? safetyProblemsEncounteredMap.get(electricDistributionTransformerType.safety_problems_encountered_id) ||
+          electricDistributionTransformerType.safety_problems_encountered_id
+          : 'N/A'
+      },
+      {
+        title: t('project.other.electric-distribution-transformer-type.details.work-accidents-number'),
+        value: electricDistributionTransformerType?.work_accidents_number?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.electric-distribution-transformer-type.details.on-site-safety-regulation-implemented'),
+        value:
+          electricDistributionTransformerType?.on_site_safety_regulation_implemented !== undefined
+            ? electricDistributionTransformerType.on_site_safety_regulation_implemented
+              ? t('common.yes')
+              : t('common.no')
+            : 'N/A'
+      },
+      {
+        title: t('project.other.electric-distribution-transformer-type.details.remark'),
+        value: electricDistributionTransformerType?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: electricDistributionTransformerType?.created_at ? formatCreatedAt(electricDistributionTransformerType.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: electricDistributionTransformerType?.updated_at ? formatCreatedAt(electricDistributionTransformerType.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

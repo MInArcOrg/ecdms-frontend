@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -24,7 +24,7 @@ import { projectMasterModels } from 'src/constants/master-data/project-general-m
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 
 interface ElectricSmartMetersDataListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -107,63 +107,63 @@ const ElectricSmartMetersDataList: React.FC<ElectricSmartMetersDataListProps> = 
   const mapElectricSmartMetersDataToDetailItems = (
     electricSmartMetersData: ElectricSmartMetersData
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.electric-smart-meters-data.details.name'),
-      value: electricSmartMetersData?.name || 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-data.details.mini-grid-station-id'),
-      value: electricSmartMetersData?.mini_grid_station_id
-        ? miniGridStationsMap.get(electricSmartMetersData.mini_grid_station_id) || electricSmartMetersData.mini_grid_station_id
-        : 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-data.details.owner-operator'),
-      value: electricSmartMetersData?.owner_operator || 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-data.details.facility-type'),
-      value: electricSmartMetersData?.facility_type || 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-data.details.service-area'),
-      value: electricSmartMetersData?.service_area !== undefined ? `${electricSmartMetersData.service_area} ${t('common.km2')}` : 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-data.details.manufacturer'),
-      value: electricSmartMetersData?.manufacturer || 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-data.details.model-id'),
-      value: electricSmartMetersData?.model_id ? modelMap.get(electricSmartMetersData.model_id) || electricSmartMetersData.model_id : 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-data.details.smart-meter-type-id'),
-      value: electricSmartMetersData?.smart_meter_type_id
-        ? smartMeterTypesMap.get(electricSmartMetersData.smart_meter_type_id) || electricSmartMetersData.smart_meter_type_id
-        : 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-data.details.installation-year'),
-      value: electricSmartMetersData?.installation_year?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-data.details.smart-meters-installed-number'),
-      value: electricSmartMetersData?.smart_meters_installed_number?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.electric-smart-meters-data.details.remark'),
-      value: electricSmartMetersData?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: electricSmartMetersData?.created_at ? formatCreatedAt(electricSmartMetersData.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: electricSmartMetersData?.updated_at ? formatCreatedAt(electricSmartMetersData.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.electric-smart-meters-data.details.name'),
+        value: electricSmartMetersData?.name || 'N/A'
+      },
+      {
+        title: t('project.other.electric-smart-meters-data.details.mini-grid-station-id'),
+        value: electricSmartMetersData?.mini_grid_station_id
+          ? miniGridStationsMap.get(electricSmartMetersData.mini_grid_station_id) || electricSmartMetersData.mini_grid_station_id
+          : 'N/A'
+      },
+      {
+        title: t('project.other.electric-smart-meters-data.details.owner-operator'),
+        value: electricSmartMetersData?.owner_operator || 'N/A'
+      },
+      {
+        title: t('project.other.electric-smart-meters-data.details.facility-type'),
+        value: electricSmartMetersData?.facility_type || 'N/A'
+      },
+      {
+        title: t('project.other.electric-smart-meters-data.details.service-area'),
+        value: electricSmartMetersData?.service_area !== undefined ? `${electricSmartMetersData.service_area} ${t('common.km2')}` : 'N/A'
+      },
+      {
+        title: t('project.other.electric-smart-meters-data.details.manufacturer'),
+        value: electricSmartMetersData?.manufacturer || 'N/A'
+      },
+      {
+        title: t('project.other.electric-smart-meters-data.details.model-id'),
+        value: electricSmartMetersData?.model_id ? modelMap.get(electricSmartMetersData.model_id) || electricSmartMetersData.model_id : 'N/A'
+      },
+      {
+        title: t('project.other.electric-smart-meters-data.details.smart-meter-type-id'),
+        value: electricSmartMetersData?.smart_meter_type_id
+          ? smartMeterTypesMap.get(electricSmartMetersData.smart_meter_type_id) || electricSmartMetersData.smart_meter_type_id
+          : 'N/A'
+      },
+      {
+        title: t('project.other.electric-smart-meters-data.details.installation-year'),
+        value: electricSmartMetersData?.installation_year?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.electric-smart-meters-data.details.smart-meters-installed-number'),
+        value: electricSmartMetersData?.smart_meters_installed_number?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.electric-smart-meters-data.details.remark'),
+        value: electricSmartMetersData?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: electricSmartMetersData?.created_at ? formatCreatedAt(electricSmartMetersData.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: electricSmartMetersData?.updated_at ? formatCreatedAt(electricSmartMetersData.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

@@ -18,7 +18,7 @@ interface DataCenterDrawerType {
   refetch: () => void;
   dataCenter: DataCenter;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const DataCenterDrawer = (props: DataCenterDrawerType) => {

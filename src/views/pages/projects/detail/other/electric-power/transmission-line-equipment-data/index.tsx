@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -22,7 +22,7 @@ import TransmissionLineEquipmentDataDrawer from './transmission-line-equipment-d
 import { transmissionLineEquipmentDataColumns } from './transmission-line-equipment-data-row';
 
 interface TransmissionLineEquipmentDataListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -87,66 +87,66 @@ const TransmissionLineEquipmentDataList: React.FC<TransmissionLineEquipmentDataL
   const mapTransmissionLineEquipmentDataToDetailItems = (
     transmissionLineEquipmentData: TransmissionLineEquipmentData
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.transmission-line-equipment-data.details.name'),
-      value: transmissionLineEquipmentData?.name || 'N/A'
-    },
-    {
-      title: t('project.other.transmission-line-equipment-data.details.transmission-line-id'),
-      value: transmissionLineEquipmentData?.transmission_line_id || 'N/A'
-    },
-    {
-      title: t('project.other.transmission-line-equipment-data.details.insulator-type'),
-      value: transmissionLineEquipmentData?.insulator_type || 'N/A'
-    },
-    {
-      title: t('project.other.transmission-line-equipment-data.details.ground-wire-type'),
-      value: transmissionLineEquipmentData?.ground_wire_type || 'N/A'
-    },
-    {
-      title: t('project.other.transmission-line-equipment-data.details.fiber-optics-number'),
-      value:
-        transmissionLineEquipmentData?.fiber_optics_number !== undefined
-          ? transmissionLineEquipmentData.fiber_optics_number.toString()
-          : 'N/A'
-    },
-    {
-      title: t('project.other.transmission-line-equipment-data.details.opgw-uts'),
-      value: transmissionLineEquipmentData?.opgw_uts !== undefined ? transmissionLineEquipmentData.opgw_uts.toString() : 'N/A'
-    },
-    {
-      title: t('project.other.transmission-line-equipment-data.details.opgw-weight'),
-      value: transmissionLineEquipmentData?.opgw_weight !== undefined ? transmissionLineEquipmentData.opgw_weight.toString() : 'N/A'
-    },
-    {
-      title: t('project.other.transmission-line-equipment-data.details.owner-operator'),
-      value: transmissionLineEquipmentData?.owner_operator || 'N/A'
-    },
-    {
-      title: t('project.other.transmission-line-equipment-data.details.tower-grounding'),
-      value: transmissionLineEquipmentData?.tower_grounding || 'N/A'
-    },
-    {
-      title: t('project.other.transmission-line-equipment-data.details.tower-circuit-arrangement'),
-      value: transmissionLineEquipmentData?.tower_circuit_arrangement || 'N/A'
-    },
-    {
-      title: t('project.other.transmission-line-equipment-data.details.other-equipment'),
-      value: transmissionLineEquipmentData?.other_equipment || 'N/A'
-    },
-    {
-      title: t('project.other.transmission-line-equipment-data.details.remark'),
-      value: transmissionLineEquipmentData?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: transmissionLineEquipmentData?.created_at ? formatCreatedAt(transmissionLineEquipmentData.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: transmissionLineEquipmentData?.updated_at ? formatCreatedAt(transmissionLineEquipmentData.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.transmission-line-equipment-data.details.name'),
+        value: transmissionLineEquipmentData?.name || 'N/A'
+      },
+      {
+        title: t('project.other.transmission-line-equipment-data.details.transmission-line-id'),
+        value: transmissionLineEquipmentData?.transmission_line_id || 'N/A'
+      },
+      {
+        title: t('project.other.transmission-line-equipment-data.details.insulator-type'),
+        value: transmissionLineEquipmentData?.insulator_type || 'N/A'
+      },
+      {
+        title: t('project.other.transmission-line-equipment-data.details.ground-wire-type'),
+        value: transmissionLineEquipmentData?.ground_wire_type || 'N/A'
+      },
+      {
+        title: t('project.other.transmission-line-equipment-data.details.fiber-optics-number'),
+        value:
+          transmissionLineEquipmentData?.fiber_optics_number !== undefined
+            ? transmissionLineEquipmentData.fiber_optics_number.toString()
+            : 'N/A'
+      },
+      {
+        title: t('project.other.transmission-line-equipment-data.details.opgw-uts'),
+        value: transmissionLineEquipmentData?.opgw_uts !== undefined ? transmissionLineEquipmentData.opgw_uts.toString() : 'N/A'
+      },
+      {
+        title: t('project.other.transmission-line-equipment-data.details.opgw-weight'),
+        value: transmissionLineEquipmentData?.opgw_weight !== undefined ? transmissionLineEquipmentData.opgw_weight.toString() : 'N/A'
+      },
+      {
+        title: t('project.other.transmission-line-equipment-data.details.owner-operator'),
+        value: transmissionLineEquipmentData?.owner_operator || 'N/A'
+      },
+      {
+        title: t('project.other.transmission-line-equipment-data.details.tower-grounding'),
+        value: transmissionLineEquipmentData?.tower_grounding || 'N/A'
+      },
+      {
+        title: t('project.other.transmission-line-equipment-data.details.tower-circuit-arrangement'),
+        value: transmissionLineEquipmentData?.tower_circuit_arrangement || 'N/A'
+      },
+      {
+        title: t('project.other.transmission-line-equipment-data.details.other-equipment'),
+        value: transmissionLineEquipmentData?.other_equipment || 'N/A'
+      },
+      {
+        title: t('project.other.transmission-line-equipment-data.details.remark'),
+        value: transmissionLineEquipmentData?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: transmissionLineEquipmentData?.created_at ? formatCreatedAt(transmissionLineEquipmentData.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: transmissionLineEquipmentData?.updated_at ? formatCreatedAt(transmissionLineEquipmentData.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>
