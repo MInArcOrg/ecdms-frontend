@@ -326,7 +326,10 @@
       "edit-dam-purpose": "Edit Dam Purpose",
       "quality": "Quality",
       "create-quality": "Create Quality",
-      "edit-quality": "Edit Quality"
+      "edit-quality": "Edit Quality",
+      "unit-price": "Unit Price",
+      "create-unit-price": "Create Unit Price",
+      "edit-unit-price": "Edit Unit Price"
     },
     "form": {
       "title": "Title",
