@@ -25,11 +25,9 @@ const RoadSafetyFeatures = () => {
             activeSubMenuId={projectFeatureIds.accessories.roadSafetyFeatures}
             subMenuItems={subMenuItems(id as string, typeId as string)}
         >
-            <IntersectionDrivewayList
-                otherSubMenu={menuItem}
-                typeId={String(typeId)}
-                projectId={String(id)}
-            />
+            <>
+                Road Safety Features
+            </>
         </ProjectLayout>
     );
 };

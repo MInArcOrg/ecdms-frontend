@@ -1,44 +1,44 @@
 import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { findSubMenuItem, projectFeatureIds } from '../(subMenuItems)';
+import subMenuItems, { findSubMenuItem, projectMaintenanceIds } from '../(subMenuItems)';
 
 const defaultMenuItem = findSubMenuItem(
     subMenuItems('', ''),
-    projectFeatureIds.accessories.drainageGeotechnicalData
+    projectMaintenanceIds.maintenance.drainageMaintenanceData
 );
 
-const DrainageGeotechnicalData = () => {
+const DrainageMaintenanceData = () => {
     const router = useRouter();
     const { id = '', typeId = '' } = router.query;
 
     const menuItem = findSubMenuItem(
         subMenuItems(id as string, typeId as string),
-        projectFeatureIds.accessories.drainageGeotechnicalData
+        projectMaintenanceIds.maintenance.drainageMaintenanceData
     );
 
     return (
         <ProjectLayout
-            activeMenuId={projectMenuIds.feature}
-            activeSubMenuId={projectFeatureIds.accessories.drainageGeotechnicalData}
+            activeMenuId={projectMenuIds.maintenance}
+            activeSubMenuId={projectMaintenanceIds.maintenance.drainageMaintenanceData}
             subMenuItems={subMenuItems(id as string, typeId as string)}
         >
-            {/* <DrainageGeotechnicalData
+            {/* <DrainageMaintenance
                 otherSubMenu={menuItem}
                 typeId={String(typeId)}
                 projectId={String(id)}
             /> */}
             <>
-                Drainage geothechnical data
+                Drainage Maintenance Data
             </>
         </ProjectLayout>
     );
 };
 
 // Access control configuration
-DrainageGeotechnicalData.acl = {
+DrainageMaintenanceData.acl = {
     subject: defaultMenuItem?.model,
     action: 'view'
 };
 
-export default DrainageGeotechnicalData;
+export default DrainageMaintenanceData;

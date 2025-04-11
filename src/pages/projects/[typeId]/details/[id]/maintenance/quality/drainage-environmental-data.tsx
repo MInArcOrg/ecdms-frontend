@@ -1,44 +1,42 @@
 import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { findSubMenuItem, projectFeatureIds } from '../(subMenuItems)';
+import subMenuItems, { findSubMenuItem, projectMaintenanceIds } from '../(subMenuItems)';
 
 const defaultMenuItem = findSubMenuItem(
     subMenuItems('', ''),
-    projectFeatureIds.accessories.drainageGeotechnicalData
+    projectMaintenanceIds.quality.drainageEnvironmentalData
 );
 
-const DrainageGeotechnicalData = () => {
+const DrainageEnvironmentalData = () => {
     const router = useRouter();
     const { id = '', typeId = '' } = router.query;
 
     const menuItem = findSubMenuItem(
         subMenuItems(id as string, typeId as string),
-        projectFeatureIds.accessories.drainageGeotechnicalData
+        projectMaintenanceIds.quality.drainageEnvironmentalData
     );
 
     return (
         <ProjectLayout
-            activeMenuId={projectMenuIds.feature}
-            activeSubMenuId={projectFeatureIds.accessories.drainageGeotechnicalData}
+            activeMenuId={projectMenuIds.maintenance}
+            activeSubMenuId={projectMaintenanceIds.quality.drainageEnvironmentalData}
             subMenuItems={subMenuItems(id as string, typeId as string)}
         >
-            {/* <DrainageGeotechnicalData
+            {/* <DrainageEnvironmentalDataList
                 otherSubMenu={menuItem}
                 typeId={String(typeId)}
                 projectId={String(id)}
             /> */}
-            <>
-                Drainage geothechnical data
-            </>
+            <> Drainage Environmental list</>
         </ProjectLayout>
     );
 };
 
 // Access control configuration
-DrainageGeotechnicalData.acl = {
+DrainageEnvironmentalData.acl = {
     subject: defaultMenuItem?.model,
     action: 'view'
 };
 
-export default DrainageGeotechnicalData;
+export default DrainageEnvironmentalData;

@@ -1,44 +1,42 @@
 import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { findSubMenuItem, projectFeatureIds } from '../(subMenuItems)';
+import CulvertBasicDataList from 'src/views/pages/projects/detail/other/road/culvert-basic-data';
+import subMenuItems, { findSubMenuItem, projectFeatureIds } from '../feature/(subMenuItems)';
 
 const defaultMenuItem = findSubMenuItem(
     subMenuItems('', ''),
-    projectFeatureIds.accessories.drainageGeotechnicalData
+    projectFeatureIds.culvert.culvertBasicData
 );
 
-const DrainageGeotechnicalData = () => {
+const CulvertBasicData = () => {
     const router = useRouter();
     const { id = '', typeId = '' } = router.query;
 
     const menuItem = findSubMenuItem(
         subMenuItems(id as string, typeId as string),
-        projectFeatureIds.accessories.drainageGeotechnicalData
+        projectFeatureIds.culvert.culvertBasicData
     );
 
     return (
         <ProjectLayout
             activeMenuId={projectMenuIds.feature}
-            activeSubMenuId={projectFeatureIds.accessories.drainageGeotechnicalData}
+            activeSubMenuId={projectFeatureIds.culvert.culvertBasicData}
             subMenuItems={subMenuItems(id as string, typeId as string)}
         >
-            {/* <DrainageGeotechnicalData
+            <CulvertBasicDataList
                 otherSubMenu={menuItem}
                 typeId={String(typeId)}
                 projectId={String(id)}
-            /> */}
-            <>
-                Drainage geothechnical data
-            </>
+            />
         </ProjectLayout>
     );
 };
 
 // Access control configuration
-DrainageGeotechnicalData.acl = {
+CulvertBasicData.acl = {
     subject: defaultMenuItem?.model,
     action: 'view'
 };
 
-export default DrainageGeotechnicalData;
+export default CulvertBasicData;

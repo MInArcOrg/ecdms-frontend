@@ -4,7 +4,6 @@ import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
 export const projectFeatureIds = {
   accessories: {
     accessories: 'ACCESSORIES',
-    accessoriesBasic: 'ACCESSORIES_BASIC',
     roadSafetyFeatures: 'ROAD_SAFETY_FEATURES',
     roadDrainage: 'ROAD_DRAINAGE',
     drainageGeotechnicalData: 'DRAINAGE_GEOTECHNICAL_DATA'
@@ -13,7 +12,7 @@ export const projectFeatureIds = {
     culvert: 'CULVERT',
     culvertBasicData: 'CULVERT_BASIC_DATA',
     culvertStructuralData: 'CULVERT_STRUCTURAL_DATA',
-    culvertRoadOverData: 'CULVERT_ROAD_OVER_DATA',
+    culvertRoadOverInformation: 'CULVERT_ROAD_OVER_DATA',
     culvertConditionAssessment: 'CULVERT_CONDITION_ASSESSMENT'
   },
   bridge: {
@@ -34,11 +33,11 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
     title: 'project.navigation.submenu.feature.accessories.title',
     subItems: [
       {
-        id: projectFeatureIds.accessories.accessoriesBasic,
-        title: 'project.navigation.submenu.feature.accessories.accessories-basic',
-        path: `/projects/${typeId}/details/${id}/feature/accessories/accessories-basic`,
-        model: 'accessoriesbasic',
-        apiRoute: 'accessories-basic'
+        id: projectFeatureIds.accessories.accessories,
+        title: 'project.navigation.submenu.feature.accessories.accessories',
+        path: `/projects/${typeId}/details/${id}/feature/accessories/accessories`,
+        model: 'accessories',
+        apiRoute: 'accessories'
       },
       {
         id: projectFeatureIds.accessories.roadSafetyFeatures,
@@ -52,7 +51,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         title: 'project.navigation.submenu.feature.accessories.road-drainage',
         path: `/projects/${typeId}/details/${id}/feature/accessories/road-drainage`,
         model: 'roaddrainage',
-        apiRoute: 'road-drainage'
+        apiRoute: 'road-drainages'
       },
       {
         id: projectFeatureIds.accessories.drainageGeotechnicalData,
@@ -76,17 +75,17 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       },
       {
         id: projectFeatureIds.culvert.culvertStructuralData,
-        title: 'project.navigation.submenu.feature.culvert.culvert-structural-data',
-        path: `/projects/${typeId}/details/${id}/feature/culvert/culvert-structural-data`,
+        title: 'project.navigation.submenu.feature.culvert.culvert-structural-information',
+        path: `/projects/${typeId}/details/${id}/feature/culvert/culvert-structural-information`,
         model: 'culvertstructuraldata',
-        apiRoute: 'culvert-structural-data'
+        apiRoute: 'culvert-structural-information'
       },
       {
-        id: projectFeatureIds.culvert.culvertRoadOverData,
-        title: 'project.navigation.submenu.feature.culvert.culvert-road-over-data',
-        path: `/projects/${typeId}/details/${id}/feature/culvert/culvert-road-over-data`,
-        model: 'culvertroadoverdata',
-        apiRoute: 'culvert-road-over-data'
+        id: projectFeatureIds.culvert.culvertRoadOverInformation,
+        title: 'project.navigation.submenu.feature.culvert.culvert-road-over-information',
+        path: `/projects/${typeId}/details/${id}/feature/culvert/culvert-road-over-information`,
+        model: 'culvertroadoverinformation',
+        apiRoute: 'culvert-road-over-informations'
       },
       {
         id: projectFeatureIds.culvert.culvertConditionAssessment,

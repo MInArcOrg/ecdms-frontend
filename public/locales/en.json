@@ -800,7 +800,7 @@
         "feature": {
           "accessories": {
             "title": "Accessories",
-            "accessories-basic": "Accessories",
+            "accessories": "Accessories",
             "road-safety-features": "Road Safety Features",
             "road-drainage": "Road Drainage",
             "drainage-geotechnical-data": "Drainage Geotechnical Data"
@@ -808,8 +808,8 @@
           "culvert": {
             "title": "Culvert",
             "culvert-basic-data": "Culvert Basic Data",
-            "culvert-structural-data": "Culvert Structural Data",
-            "culvert-road-over-data": "Culvert Road Over Data",
+            "culvert-structural-information": "Culvert Structural Information",
+            "culvert-road-over-information": "Culvert Road Over Information",
             "culvert-condition-assessment": "Culvert Condition Assessment"
           },
           "bridge": {
@@ -821,6 +821,21 @@
             "bridge-foundation": "Bridge Foundation",
             "bridge-components-ancillaries": "Bridge Components & Ancillaries",
             "bridge-inspection": "Bridge Inspection"
+          }
+        },
+        "maintenance": {
+          "quality": {
+            "title": "Quality",
+            "quality-control": "Quality Control",
+            "drainage-environmental-data": "Drainage Environmental Data",
+            "drainage-assessment": "Drainage Assessment"
+          },
+          "maintenance": {
+            "title": "Maintenance",
+            "road-maintenance-activities": "Road Maintenance Activities",
+            "maintenance-history": "Maintenance History",
+            "traffic-maintenance": "Traffic Maintenance",
+            "drainage-maintenance-data": "Drainage Maintenance Data"
           }
         },
         "others": {

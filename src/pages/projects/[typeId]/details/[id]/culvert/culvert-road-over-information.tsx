@@ -1,44 +1,42 @@
 import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { findSubMenuItem, projectFeatureIds } from '../(subMenuItems)';
+import CulvertRoadOverInformationList from 'src/views/pages/projects/detail/other/road/culvert-road-over-information';
+import subMenuItems, { findSubMenuItem, projectFeatureIds } from '../feature/(subMenuItems)';
 
 const defaultMenuItem = findSubMenuItem(
     subMenuItems('', ''),
-    projectFeatureIds.accessories.drainageGeotechnicalData
+    projectFeatureIds.culvert.culvertRoadOverInformation
 );
 
-const DrainageGeotechnicalData = () => {
+const CulvertRoadOverInformation = () => {
     const router = useRouter();
     const { id = '', typeId = '' } = router.query;
 
     const menuItem = findSubMenuItem(
         subMenuItems(id as string, typeId as string),
-        projectFeatureIds.accessories.drainageGeotechnicalData
+        projectFeatureIds.culvert.culvertRoadOverInformation
     );
 
     return (
         <ProjectLayout
             activeMenuId={projectMenuIds.feature}
-            activeSubMenuId={projectFeatureIds.accessories.drainageGeotechnicalData}
+            activeSubMenuId={projectFeatureIds.culvert.culvertRoadOverInformation}
             subMenuItems={subMenuItems(id as string, typeId as string)}
         >
-            {/* <DrainageGeotechnicalData
+            <CulvertRoadOverInformationList
                 otherSubMenu={menuItem}
                 typeId={String(typeId)}
                 projectId={String(id)}
-            /> */}
-            <>
-                Drainage geothechnical data
-            </>
+            />
         </ProjectLayout>
     );
 };
 
 // Access control configuration
-DrainageGeotechnicalData.acl = {
+CulvertRoadOverInformation.acl = {
     subject: defaultMenuItem?.model,
     action: 'view'
 };
 
-export default DrainageGeotechnicalData;
+export default CulvertRoadOverInformation;

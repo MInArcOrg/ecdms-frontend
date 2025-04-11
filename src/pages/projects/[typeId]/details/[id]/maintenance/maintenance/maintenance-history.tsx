@@ -1,44 +1,42 @@
 import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { findSubMenuItem, projectFeatureIds } from '../(subMenuItems)';
+import MaintenanceHistoryList from 'src/views/pages/projects/detail/other/road/maintenance-history';
+import subMenuItems, { findSubMenuItem, projectMaintenanceIds } from '../(subMenuItems)';
 
 const defaultMenuItem = findSubMenuItem(
     subMenuItems('', ''),
-    projectFeatureIds.accessories.drainageGeotechnicalData
+    projectMaintenanceIds.maintenance.maintenanceHistory
 );
 
-const DrainageGeotechnicalData = () => {
+const MaintenanceHistory = () => {
     const router = useRouter();
     const { id = '', typeId = '' } = router.query;
 
     const menuItem = findSubMenuItem(
         subMenuItems(id as string, typeId as string),
-        projectFeatureIds.accessories.drainageGeotechnicalData
+        projectMaintenanceIds.maintenance.maintenanceHistory
     );
 
     return (
         <ProjectLayout
-            activeMenuId={projectMenuIds.feature}
-            activeSubMenuId={projectFeatureIds.accessories.drainageGeotechnicalData}
+            activeMenuId={projectMenuIds.maintenance}
+            activeSubMenuId={projectMaintenanceIds.maintenance.maintenanceHistory}
             subMenuItems={subMenuItems(id as string, typeId as string)}
         >
-            {/* <DrainageGeotechnicalData
+            <MaintenanceHistoryList
                 otherSubMenu={menuItem}
                 typeId={String(typeId)}
                 projectId={String(id)}
-            /> */}
-            <>
-                Drainage geothechnical data
-            </>
+            />
         </ProjectLayout>
     );
 };
 
 // Access control configuration
-DrainageGeotechnicalData.acl = {
+MaintenanceHistory.acl = {
     subject: defaultMenuItem?.model,
     action: 'view'
 };
 
-export default DrainageGeotechnicalData;
+export default MaintenanceHistory;
