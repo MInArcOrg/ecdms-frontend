@@ -329,7 +329,10 @@
       "edit-quality": "Edit Quality",
       "unit-price": "Unit Price",
       "create-unit-price": "Create Unit Price",
-      "edit-unit-price": "Edit Unit Price"
+      "edit-unit-price": "Edit Unit Price",
+      "supplier-name": "Supplier Name",
+      "create-supplier-name": "Create Supplier Name",
+      "edit-supplier-name": "Edit Supplier Name"
     },
     "form": {
       "title": "Title",

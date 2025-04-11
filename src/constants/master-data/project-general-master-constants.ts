@@ -710,6 +710,14 @@ export const projectMasterModels = {
     createTitle: 'create-unit-price',
     editTitle: 'edit-unit-price',
     fileType: 'UNIT_PRICE'
+  },
+  supplierName: {
+    model: 'SupplierName',
+    dbModel: 'supplierName',
+    title: 'supplier-name',
+    createTitle: 'create-supplier-name',
+    editTitle: 'edit-supplier-name',
+    fileType: 'SUPPLIER_NAME'
   }
 
 };
