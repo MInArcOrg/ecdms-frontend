@@ -1,21 +1,28 @@
 import { useRouter } from 'next/router';
-import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
-import ProjectResourceList from 'src/views/pages/projects/detail/resource';
+import { useEffect } from 'react';
+import LoadingPlaceholder from 'src/views/components/loader';
 
-const ProjectStakeholder = () => {
+const ProjectGeneral = () => {
   const router = useRouter();
-  const { id } = router.query;
+
+  // Extract dynamic route parameters from the URL
+  const { typeId, id } = router.query;
+
+  useEffect(() => {
+    if (typeId && id) {
+      // Build the new URL dynamically
+      const newUrl = `/projects/${typeId}/details/${id}/resource/finance/contract-amount`;
+
+      // Simulate a condition or action before redirecting
+      router.push(newUrl); // Redirect to the constructed URL
+    }
+  }, [typeId, id, router]);
 
   return (
-    <ProjectLayout activeMenu={6} activeSubMenu={0}>
-      <ProjectResourceList projectId={String(id)} />
-    </ProjectLayout>
+    <>
+      <LoadingPlaceholder />
+    </>
   );
 };
 
-ProjectStakeholder.acl = {
-  subject: 'projectplan',
-  action: 'view'
-};
-
-export default ProjectStakeholder;
+export default ProjectGeneral;
