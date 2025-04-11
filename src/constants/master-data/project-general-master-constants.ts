@@ -718,6 +718,14 @@ export const projectMasterModels = {
     createTitle: 'create-supplier-name',
     editTitle: 'edit-supplier-name',
     fileType: 'SUPPLIER_NAME'
+  },
+  supplierAddress: {
+    model: 'SupplierAddress',
+    dbModel: 'supplierAddress',
+    title: 'supplier-address',
+    createTitle: 'create-supplier-address',
+    editTitle: 'edit-supplier-address',
+    fileType: 'SUPPLIER_ADDRESS'
   }
 
 };
