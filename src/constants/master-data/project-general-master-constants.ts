@@ -702,6 +702,14 @@ export const projectMasterModels = {
     createTitle: 'create-safety-problems-encountered',
     editTitle: 'edit-safety-problems-encountered',
     fileType: 'SAFETY_PROBLEMS_ENCOUNTERED'
+  },
+  unitPrice: {
+    model: 'UnitPrice',
+    dbModel: 'unitPrice',
+    title: 'unit-price',
+    createTitle: 'create-unit-price',
+    editTitle: 'edit-unit-price',
+    fileType: 'UNIT_PRICE'
   }
 
 };
