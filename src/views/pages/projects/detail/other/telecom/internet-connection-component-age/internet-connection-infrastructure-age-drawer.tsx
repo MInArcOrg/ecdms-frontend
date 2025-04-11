@@ -18,7 +18,7 @@ interface InternetConnectionInfrastructureAgeDrawerType {
   refetch: () => void;
   internetConnectionInfrastructureAge: InternetConnectionInfrastructureAge;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const InternetConnectionInfrastructureAgeDrawer = (props: InternetConnectionInfrastructureAgeDrawerType) => {
@@ -72,18 +72,16 @@ const InternetConnectionInfrastructureAgeDrawer = (props: InternetConnectionInfr
 
   return (
     <CustomSideDrawer
-      title={`project.other.internet-connection-infrastructure-age.${
-        isEdit ? `edit-internet-connection-infrastructure-age` : `create-internet-connection-infrastructure-age`
-      }`}
+      title={`project.other.internet-connection-infrastructure-age.${isEdit ? `edit-internet-connection-infrastructure-age` : `create-internet-connection-infrastructure-age`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.internet-connection-infrastructure-age.${
-            isEdit ? `edit-internet-connection-infrastructure-age` : `create-internet-connection-infrastructure-age`
-          }`}
+          title={`project.other.internet-connection-infrastructure-age.${isEdit ? `edit-internet-connection-infrastructure-age` : `create-internet-connection-infrastructure-age`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

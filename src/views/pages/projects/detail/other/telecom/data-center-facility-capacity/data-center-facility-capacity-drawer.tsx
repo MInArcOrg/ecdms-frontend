@@ -18,7 +18,7 @@ interface DataCenterFacilityCapacityDrawerType {
   refetch: () => void;
   dataCenterFacilityCapacity: DataCenterFacilityCapacity;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const DataCenterFacilityCapacityDrawer = (props: DataCenterFacilityCapacityDrawerType) => {
@@ -73,18 +73,16 @@ const DataCenterFacilityCapacityDrawer = (props: DataCenterFacilityCapacityDrawe
 
   return (
     <CustomSideDrawer
-      title={`project.other.data-center-facility-capacity.${
-        isEdit ? `edit-data-center-facility-capacity` : `create-data-center-facility-capacity`
-      }`}
+      title={`project.other.data-center-facility-capacity.${isEdit ? `edit-data-center-facility-capacity` : `create-data-center-facility-capacity`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.data-center-facility-capacity.${
-            isEdit ? `edit-data-center-facility-capacity` : `create-data-center-facility-capacity`
-          }`}
+          title={`project.other.data-center-facility-capacity.${isEdit ? `edit-data-center-facility-capacity` : `create-data-center-facility-capacity`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

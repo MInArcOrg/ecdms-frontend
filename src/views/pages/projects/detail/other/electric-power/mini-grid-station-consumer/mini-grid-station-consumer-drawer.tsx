@@ -10,7 +10,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { MiniGridStationConsumer, MiniGridStation } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface MiniGridStationConsumerDrawerType {
   open: boolean;
@@ -18,7 +18,7 @@ interface MiniGridStationConsumerDrawerType {
   refetch: () => void;
   miniGridStationConsumer: MiniGridStationConsumer;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   miniGridStations: MiniGridStation[];
 }
 
@@ -128,9 +128,8 @@ const MiniGridStationConsumerDrawer = (props: MiniGridStationConsumerDrawerType)
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.mini-grid-station-consumer.${
-            isEdit ? `edit-mini-grid-station-consumer` : `create-mini-grid-station-consumer`
-          }`}
+          title={`project.other.mini-grid-station-consumer.${isEdit ? `edit-mini-grid-station-consumer` : `create-mini-grid-station-consumer`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

@@ -10,7 +10,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { ElectricSmartMetersData, ElectricSmartMetersRatingsData } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface ElectricSmartMetersRatingsDataDrawerType {
   open: boolean;
@@ -18,7 +18,7 @@ interface ElectricSmartMetersRatingsDataDrawerType {
   refetch: () => void;
   electricSmartMetersRatingsData: ElectricSmartMetersRatingsData;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   electricSmartMetersData: ElectricSmartMetersData[];
 }
 
@@ -92,18 +92,16 @@ const ElectricSmartMetersRatingsDataDrawer = (props: ElectricSmartMetersRatingsD
 
   return (
     <CustomSideDrawer
-      title={`project.other.electric-smart-meters-ratings-data.${
-        isEdit ? `edit-electric-smart-meters-ratings-data` : `create-electric-smart-meters-ratings-data`
-      }`}
+      title={`project.other.electric-smart-meters-ratings-data.${isEdit ? `edit-electric-smart-meters-ratings-data` : `create-electric-smart-meters-ratings-data`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.electric-smart-meters-ratings-data.${
-            isEdit ? `edit-electric-smart-meters-ratings-data` : `create-electric-smart-meters-ratings-data`
-          }`}
+          title={`project.other.electric-smart-meters-ratings-data.${isEdit ? `edit-electric-smart-meters-ratings-data` : `create-electric-smart-meters-ratings-data`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

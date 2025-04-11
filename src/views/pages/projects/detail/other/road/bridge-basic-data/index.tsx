@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import type { BridgeBasicData } from 'src/types/project/other';
@@ -20,7 +20,7 @@ import BridgeBasicDataDrawer from './bridge-basic-data-drawer';
 import { bridgeBasicDataColumns } from './bridge-basic-data-row';
 
 interface BridgeBasicDataListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }

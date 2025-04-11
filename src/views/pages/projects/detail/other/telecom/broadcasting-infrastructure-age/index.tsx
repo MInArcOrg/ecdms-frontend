@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -22,7 +22,7 @@ import { broadcastingInfrastructureAgeColumns } from './broadcasting-infrastruct
 import { useQuery } from '@tanstack/react-query';
 
 interface BroadcastingInfrastructureAgeListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -93,50 +93,50 @@ const BroadcastingInfrastructureAgeList: React.FC<BroadcastingInfrastructureAgeL
   const mapBroadcastingInfrastructureAgeToDetailItems = (
     broadcastingInfrastructureAge: BroadcastingInfrastructureAge
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.broadcasting-infrastructure-age.details.broadcasting-infrastructure'),
-      value:
-        broadcastingInfrastructureMap.get(broadcastingInfrastructureAge?.broadcasting_infrastructure_id) ||
-        broadcastingInfrastructureAge?.broadcasting_infrastructure_id ||
-        'N/A'
-    },
-    {
-      title: t('project.other.broadcasting-infrastructure-age.details.name'),
-      value: broadcastingInfrastructureAge?.name || 'N/A'
-    },
-    {
-      title: t('project.other.broadcasting-infrastructure-age.details.antennas'),
-      value:
-        broadcastingInfrastructureAge?.antennas !== undefined ? `${broadcastingInfrastructureAge.antennas} ${t('common.years')}` : 'N/A'
-    },
-    {
-      title: t('project.other.broadcasting-infrastructure-age.details.transmitters'),
-      value:
-        broadcastingInfrastructureAge?.transmitters !== undefined
-          ? `${broadcastingInfrastructureAge.transmitters} ${t('common.years')}`
-          : 'N/A'
-    },
-    {
-      title: t('project.other.broadcasting-infrastructure-age.details.towers'),
-      value: broadcastingInfrastructureAge?.towers !== undefined ? `${broadcastingInfrastructureAge.towers} ${t('common.years')}` : 'N/A'
-    },
-    {
-      title: t('project.other.broadcasting-infrastructure-age.details.cables'),
-      value: broadcastingInfrastructureAge?.cables !== undefined ? `${broadcastingInfrastructureAge.cables} ${t('common.years')}` : 'N/A'
-    },
-    {
-      title: t('project.other.broadcasting-infrastructure-age.details.others'),
-      value: broadcastingInfrastructureAge?.others || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: broadcastingInfrastructureAge?.created_at ? formatCreatedAt(broadcastingInfrastructureAge.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: broadcastingInfrastructureAge?.updated_at ? formatCreatedAt(broadcastingInfrastructureAge.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.broadcasting-infrastructure-age.details.broadcasting-infrastructure'),
+        value:
+          broadcastingInfrastructureMap.get(broadcastingInfrastructureAge?.broadcasting_infrastructure_id) ||
+          broadcastingInfrastructureAge?.broadcasting_infrastructure_id ||
+          'N/A'
+      },
+      {
+        title: t('project.other.broadcasting-infrastructure-age.details.name'),
+        value: broadcastingInfrastructureAge?.name || 'N/A'
+      },
+      {
+        title: t('project.other.broadcasting-infrastructure-age.details.antennas'),
+        value:
+          broadcastingInfrastructureAge?.antennas !== undefined ? `${broadcastingInfrastructureAge.antennas} ${t('common.years')}` : 'N/A'
+      },
+      {
+        title: t('project.other.broadcasting-infrastructure-age.details.transmitters'),
+        value:
+          broadcastingInfrastructureAge?.transmitters !== undefined
+            ? `${broadcastingInfrastructureAge.transmitters} ${t('common.years')}`
+            : 'N/A'
+      },
+      {
+        title: t('project.other.broadcasting-infrastructure-age.details.towers'),
+        value: broadcastingInfrastructureAge?.towers !== undefined ? `${broadcastingInfrastructureAge.towers} ${t('common.years')}` : 'N/A'
+      },
+      {
+        title: t('project.other.broadcasting-infrastructure-age.details.cables'),
+        value: broadcastingInfrastructureAge?.cables !== undefined ? `${broadcastingInfrastructureAge.cables} ${t('common.years')}` : 'N/A'
+      },
+      {
+        title: t('project.other.broadcasting-infrastructure-age.details.others'),
+        value: broadcastingInfrastructureAge?.others || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: broadcastingInfrastructureAge?.created_at ? formatCreatedAt(broadcastingInfrastructureAge.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: broadcastingInfrastructureAge?.updated_at ? formatCreatedAt(broadcastingInfrastructureAge.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

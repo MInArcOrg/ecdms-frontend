@@ -18,7 +18,7 @@ interface MaintenanceHistoryDrawerType {
   refetch: () => void;
   maintenanceHistory: MaintenanceHistory; // Changed from MaintenanceHistory
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const MaintenanceHistoryDrawer = (props: MaintenanceHistoryDrawerType) => {

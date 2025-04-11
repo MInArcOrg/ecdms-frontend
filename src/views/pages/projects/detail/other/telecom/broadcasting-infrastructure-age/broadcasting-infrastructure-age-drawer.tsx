@@ -12,7 +12,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { BroadcastingInfrastructureAge, BroadcastingInfrastructure } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface BroadcastingInfrastructureAgeDrawerType {
   open: boolean;
@@ -20,7 +20,7 @@ interface BroadcastingInfrastructureAgeDrawerType {
   refetch: () => void;
   broadcastingInfrastructureAge: BroadcastingInfrastructureAge;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   broadcastingInfrastructures: BroadcastingInfrastructure[];
 }
 
@@ -97,18 +97,16 @@ const BroadcastingInfrastructureAgeDrawer = (props: BroadcastingInfrastructureAg
 
   return (
     <CustomSideDrawer
-      title={`project.other.broadcasting-infrastructure-age.${
-        isEdit ? `edit-broadcasting-infrastructure-age` : `create-broadcasting-infrastructure-age`
-      }`}
+      title={`project.other.broadcasting-infrastructure-age.${isEdit ? `edit-broadcasting-infrastructure-age` : `create-broadcasting-infrastructure-age`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.broadcasting-infrastructure-age.${
-            isEdit ? `edit-broadcasting-infrastructure-age` : `create-broadcasting-infrastructure-age`
-          }`}
+          title={`project.other.broadcasting-infrastructure-age.${isEdit ? `edit-broadcasting-infrastructure-age` : `create-broadcasting-infrastructure-age`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

@@ -10,7 +10,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { ElectricSmartMetersData, ElectricSmartMetersPerformanceData } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface ElectricSmartMetersPerformanceDataDrawerType {
   open: boolean;
@@ -18,7 +18,7 @@ interface ElectricSmartMetersPerformanceDataDrawerType {
   refetch: () => void;
   electricSmartMetersPerformanceData: ElectricSmartMetersPerformanceData;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   electricSmartMetersData: ElectricSmartMetersData[];
   maintenanceFrequencies: any[];
 }
@@ -117,18 +117,16 @@ const ElectricSmartMetersPerformanceDataDrawer = (props: ElectricSmartMetersPerf
 
   return (
     <CustomSideDrawer
-      title={`project.other.electric-smart-meters-performance-data.${
-        isEdit ? `edit-electric-smart-meters-performance-data` : `create-electric-smart-meters-performance-data`
-      }`}
+      title={`project.other.electric-smart-meters-performance-data.${isEdit ? `edit-electric-smart-meters-performance-data` : `create-electric-smart-meters-performance-data`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.electric-smart-meters-performance-data.${
-            isEdit ? `edit-electric-smart-meters-performance-data` : `create-electric-smart-meters-performance-data`
-          }`}
+          title={`project.other.electric-smart-meters-performance-data.${isEdit ? `edit-electric-smart-meters-performance-data` : `create-electric-smart-meters-performance-data`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

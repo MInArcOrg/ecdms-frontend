@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -24,7 +24,7 @@ import { projectMasterModels } from 'src/constants/master-data/project-general-m
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 
 interface BroadcastingInfrastructureListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -95,63 +95,63 @@ const BroadcastingInfrastructureList: React.FC<BroadcastingInfrastructureListPro
   const mapBroadcastingInfrastructureToDetailItems = (
     broadcastingInfrastructure: BroadcastingInfrastructure
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.broadcasting-infrastructure.details.broadcasting-infrastructure-type'),
-      value:
-        broadcastingInfrastructureTypeMap.get(broadcastingInfrastructure?.broadcasting_infrastructure_type_id) ||
-        broadcastingInfrastructure?.broadcasting_infrastructure_type_id ||
-        'N/A'
-    },
-    {
-      title: t('project.other.broadcasting-infrastructure.details.broadcasting-network'),
-      value:
-        broadcastingInfrastructure?.broadcasting_network !== undefined
-          ? broadcastingInfrastructure.broadcasting_network
-            ? t('common.yes')
-            : t('common.no')
-          : 'N/A'
-    },
-    {
-      title: t('project.other.broadcasting-infrastructure.details.antennas'),
-      value:
-        broadcastingInfrastructure?.antennas !== undefined
-          ? broadcastingInfrastructure.antennas
-            ? t('common.yes')
-            : t('common.no')
-          : 'N/A'
-    },
-    {
-      title: t('project.other.broadcasting-infrastructure.details.transmitters'),
-      value:
-        broadcastingInfrastructure?.transmitters !== undefined
-          ? broadcastingInfrastructure.transmitters
-            ? t('common.yes')
-            : t('common.no')
-          : 'N/A'
-    },
-    {
-      title: t('project.other.broadcasting-infrastructure.details.towers'),
-      value:
-        broadcastingInfrastructure?.towers !== undefined ? (broadcastingInfrastructure.towers ? t('common.yes') : t('common.no')) : 'N/A'
-    },
-    {
-      title: t('project.other.broadcasting-infrastructure.details.cables'),
-      value:
-        broadcastingInfrastructure?.cables !== undefined ? (broadcastingInfrastructure.cables ? t('common.yes') : t('common.no')) : 'N/A'
-    },
-    {
-      title: t('project.other.broadcasting-infrastructure.details.others'),
-      value: broadcastingInfrastructure?.others || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: broadcastingInfrastructure?.created_at ? formatCreatedAt(broadcastingInfrastructure.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: broadcastingInfrastructure?.updated_at ? formatCreatedAt(broadcastingInfrastructure.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.broadcasting-infrastructure.details.broadcasting-infrastructure-type'),
+        value:
+          broadcastingInfrastructureTypeMap.get(broadcastingInfrastructure?.broadcasting_infrastructure_type_id) ||
+          broadcastingInfrastructure?.broadcasting_infrastructure_type_id ||
+          'N/A'
+      },
+      {
+        title: t('project.other.broadcasting-infrastructure.details.broadcasting-network'),
+        value:
+          broadcastingInfrastructure?.broadcasting_network !== undefined
+            ? broadcastingInfrastructure.broadcasting_network
+              ? t('common.yes')
+              : t('common.no')
+            : 'N/A'
+      },
+      {
+        title: t('project.other.broadcasting-infrastructure.details.antennas'),
+        value:
+          broadcastingInfrastructure?.antennas !== undefined
+            ? broadcastingInfrastructure.antennas
+              ? t('common.yes')
+              : t('common.no')
+            : 'N/A'
+      },
+      {
+        title: t('project.other.broadcasting-infrastructure.details.transmitters'),
+        value:
+          broadcastingInfrastructure?.transmitters !== undefined
+            ? broadcastingInfrastructure.transmitters
+              ? t('common.yes')
+              : t('common.no')
+            : 'N/A'
+      },
+      {
+        title: t('project.other.broadcasting-infrastructure.details.towers'),
+        value:
+          broadcastingInfrastructure?.towers !== undefined ? (broadcastingInfrastructure.towers ? t('common.yes') : t('common.no')) : 'N/A'
+      },
+      {
+        title: t('project.other.broadcasting-infrastructure.details.cables'),
+        value:
+          broadcastingInfrastructure?.cables !== undefined ? (broadcastingInfrastructure.cables ? t('common.yes') : t('common.no')) : 'N/A'
+      },
+      {
+        title: t('project.other.broadcasting-infrastructure.details.others'),
+        value: broadcastingInfrastructure?.others || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: broadcastingInfrastructure?.created_at ? formatCreatedAt(broadcastingInfrastructure.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: broadcastingInfrastructure?.updated_at ? formatCreatedAt(broadcastingInfrastructure.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

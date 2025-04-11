@@ -779,6 +779,50 @@
             "site-pictures": "Site Pictures"
           }
         },
+        "segment": {
+          "design": {
+            "title": "Design",
+            "design-standard": "Design Standard",
+            "safety-and-health": "Safety and Health"
+          },
+          "segment": {
+            "title": "Segment",
+            "road-segment": "Road Segment",
+            "segment-coordinates": "Segment Coordinates",
+            "segment-geometry": "Segment Geometry",
+            "intersection-and-driveway": "Intersection and Driveway",
+            "traffic-parameters": "Traffic Parameters",
+            "traffic-volume": "Traffic Volume",
+            "pavement": "Pavement",
+            "road-surface-condition": "Road Surface Condition"
+          }
+        },
+        "feature": {
+          "accessories": {
+            "title": "Accessories",
+            "accessories-basic": "Accessories",
+            "road-safety-features": "Road Safety Features",
+            "road-drainage": "Road Drainage",
+            "drainage-geotechnical-data": "Drainage Geotechnical Data"
+          },
+          "culvert": {
+            "title": "Culvert",
+            "culvert-basic-data": "Culvert Basic Data",
+            "culvert-structural-data": "Culvert Structural Data",
+            "culvert-road-over-data": "Culvert Road Over Data",
+            "culvert-condition-assessment": "Culvert Condition Assessment"
+          },
+          "bridge": {
+            "title": "Bridge",
+            "bridge-basic-data": "Bridge Basic Data",
+            "bridge-area-data": "Bridge Area Data",
+            "bridge-super-structure": "Bridge Super Structure",
+            "bridge-sub-structure": "Bridge Sub Structure",
+            "bridge-foundation": "Bridge Foundation",
+            "bridge-components-ancillaries": "Bridge Components & Ancillaries",
+            "bridge-inspection": "Bridge Inspection"
+          }
+        },
         "others": {
           "building": "Building",
           "building-dimensions-detail": "Building Dimensions Detail",
@@ -885,7 +929,10 @@
       "menu": {
         "project-setup": "Project Setup",
         "resource": "Resource",
-        "reporting": "Reporting"
+        "reporting": "Reporting",
+        "segment": "Segment",
+        "feature": "Feature",
+        "maintenance": "Maintenance"
       }
     },
     "project-time": {

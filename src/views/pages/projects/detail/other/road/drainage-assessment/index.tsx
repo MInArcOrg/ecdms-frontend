@@ -17,7 +17,7 @@ import DrainageAssessmentDrawer from './drainage-assessment-drawer';
 import { drainageAssessmentColumns } from './drainage-assessment-row';
 
 interface DrainageAssessmentListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }

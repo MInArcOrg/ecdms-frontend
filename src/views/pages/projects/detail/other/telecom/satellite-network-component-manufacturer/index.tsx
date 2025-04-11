@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -22,7 +22,7 @@ import { satelliteNetworkComponentManufacturerColumns } from './satellite-networ
 import { useQuery } from '@tanstack/react-query';
 
 interface SatelliteNetworkComponentManufacturerListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -99,42 +99,42 @@ const SatelliteNetworkComponentManufacturerList: React.FC<SatelliteNetworkCompon
   const mapSatelliteNetworkComponentManufacturerToDetailItems = (
     satelliteNetworkComponentManufacturer: SatelliteNetworkComponentManufacturer
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.satellite-network-component-manufacturer.details.satellite-network'),
-      value:
-        satelliteNetworkMap.get(satelliteNetworkComponentManufacturer?.satellite_network_id) ||
-        satelliteNetworkComponentManufacturer?.satellite_network_id ||
-        'N/A'
-    },
-    {
-      title: t('project.other.satellite-network-component-manufacturer.details.satellite'),
-      value: satelliteNetworkComponentManufacturer?.satellite || 'N/A'
-    },
-    {
-      title: t('project.other.satellite-network-component-manufacturer.details.ground-stations'),
-      value: satelliteNetworkComponentManufacturer?.ground_stations || 'N/A'
-    },
-    {
-      title: t('project.other.satellite-network-component-manufacturer.details.modems'),
-      value: satelliteNetworkComponentManufacturer?.modems || 'N/A'
-    },
-    {
-      title: t('project.other.satellite-network-component-manufacturer.details.routers'),
-      value: satelliteNetworkComponentManufacturer?.routers || 'N/A'
-    },
-    {
-      title: t('project.other.satellite-network-component-manufacturer.details.others'),
-      value: satelliteNetworkComponentManufacturer?.others || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: satelliteNetworkComponentManufacturer?.created_at ? formatCreatedAt(satelliteNetworkComponentManufacturer.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: satelliteNetworkComponentManufacturer?.updated_at ? formatCreatedAt(satelliteNetworkComponentManufacturer.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.satellite-network-component-manufacturer.details.satellite-network'),
+        value:
+          satelliteNetworkMap.get(satelliteNetworkComponentManufacturer?.satellite_network_id) ||
+          satelliteNetworkComponentManufacturer?.satellite_network_id ||
+          'N/A'
+      },
+      {
+        title: t('project.other.satellite-network-component-manufacturer.details.satellite'),
+        value: satelliteNetworkComponentManufacturer?.satellite || 'N/A'
+      },
+      {
+        title: t('project.other.satellite-network-component-manufacturer.details.ground-stations'),
+        value: satelliteNetworkComponentManufacturer?.ground_stations || 'N/A'
+      },
+      {
+        title: t('project.other.satellite-network-component-manufacturer.details.modems'),
+        value: satelliteNetworkComponentManufacturer?.modems || 'N/A'
+      },
+      {
+        title: t('project.other.satellite-network-component-manufacturer.details.routers'),
+        value: satelliteNetworkComponentManufacturer?.routers || 'N/A'
+      },
+      {
+        title: t('project.other.satellite-network-component-manufacturer.details.others'),
+        value: satelliteNetworkComponentManufacturer?.others || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: satelliteNetworkComponentManufacturer?.created_at ? formatCreatedAt(satelliteNetworkComponentManufacturer.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: satelliteNetworkComponentManufacturer?.updated_at ? formatCreatedAt(satelliteNetworkComponentManufacturer.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

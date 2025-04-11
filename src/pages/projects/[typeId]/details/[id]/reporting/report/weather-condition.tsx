@@ -15,7 +15,7 @@ function ProjectPlanning() {
                 activeSubMenuId={projectReportingIds.report.weatherCondition}
                 subMenuItems={subMenuItems(id as string, typeId as string)}
             >
-                <>wheather condition goes here</>
+                <>Wheather condition goes here</>
             </ProjectLayout>
         </Box>
     );

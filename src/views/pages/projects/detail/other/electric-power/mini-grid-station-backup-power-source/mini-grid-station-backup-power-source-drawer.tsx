@@ -10,7 +10,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { MiniGridStationBackupPowerSource, MiniGridStation } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface MiniGridStationBackupPowerSourceDrawerType {
   open: boolean;
@@ -18,7 +18,7 @@ interface MiniGridStationBackupPowerSourceDrawerType {
   refetch: () => void;
   miniGridStationBackupPowerSource: MiniGridStationBackupPowerSource;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   miniGridStations: MiniGridStation[];
 }
 
@@ -108,18 +108,16 @@ const MiniGridStationBackupPowerSourceDrawer = (props: MiniGridStationBackupPowe
 
   return (
     <CustomSideDrawer
-      title={`project.other.mini-grid-station-backup-power-source.${
-        isEdit ? `edit-mini-grid-station-backup-power-source` : `create-mini-grid-station-backup-power-source`
-      }`}
+      title={`project.other.mini-grid-station-backup-power-source.${isEdit ? `edit-mini-grid-station-backup-power-source` : `create-mini-grid-station-backup-power-source`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.mini-grid-station-backup-power-source.${
-            isEdit ? `edit-mini-grid-station-backup-power-source` : `create-mini-grid-station-backup-power-source`
-          }`}
+          title={`project.other.mini-grid-station-backup-power-source.${isEdit ? `edit-mini-grid-station-backup-power-source` : `create-mini-grid-station-backup-power-source`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

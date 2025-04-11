@@ -7,7 +7,7 @@ import CulvertStructuralInformationForm from './culvert-structural-information-f
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import type { CulvertStructuralInformation } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface CulvertStructuralInformationDrawerType {
   open: boolean;
@@ -15,7 +15,7 @@ interface CulvertStructuralInformationDrawerType {
   refetch: () => void;
   culvertStructuralInformation: CulvertStructuralInformation;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const CulvertStructuralInformationDrawer = (props: CulvertStructuralInformationDrawerType) => {
@@ -83,18 +83,16 @@ const CulvertStructuralInformationDrawer = (props: CulvertStructuralInformationD
 
   return (
     <CustomSideDrawer
-      title={`project.other.culvert-structural-information.${
-        isEdit ? `edit-culvert-structural-information` : `create-culvert-structural-information`
-      }`}
+      title={`project.other.culvert-structural-information.${isEdit ? `edit-culvert-structural-information` : `create-culvert-structural-information`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.culvert-structural-information.${
-            isEdit ? `edit-culvert-structural-information` : `create-culvert-structural-information`
-          }`}
+          title={`project.other.culvert-structural-information.${isEdit ? `edit-culvert-structural-information` : `create-culvert-structural-information`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

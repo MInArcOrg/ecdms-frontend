@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -24,7 +24,7 @@ import { projectMasterModels } from 'src/constants/master-data/project-general-m
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 
 interface SubstationLayoutAndCommunicationDataListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -114,71 +114,71 @@ const SubstationLayoutAndCommunicationDataList: React.FC<SubstationLayoutAndComm
   const mapSubstationLayoutAndCommunicationDataToDetailItems = (
     substationLayoutAndCommunicationData: SubstationLayoutAndCommunicationData
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.substation-layout-and-communication-data.details.name'),
-      value: substationLayoutAndCommunicationData?.name || 'N/A'
-    },
-    {
-      title: t('project.other.substation-layout-and-communication-data.details.substation-id'),
-      value: substationLayoutAndCommunicationData?.substation_id
-        ? substationsMap.get(substationLayoutAndCommunicationData?.substation_id) || substationLayoutAndCommunicationData?.substation_id
-        : 'N/A'
-    },
-    {
-      title: t('project.other.substation-layout-and-communication-data.details.substation-layout'),
-      value: substationLayoutAndCommunicationData?.substation_layout || 'N/A'
-    },
-    {
-      title: t('project.other.substation-layout-and-communication-data.details.equipped-with-standby-diesel-generator'),
-      value: substationLayoutAndCommunicationData?.equipped_with_standby_diesel_generator || 'N/A'
-    },
-    {
-      title: t('project.other.substation-layout-and-communication-data.details.substation-busbar-type'),
-      value: substationLayoutAndCommunicationData?.substation_busbar_type || 'N/A'
-    },
-    {
-      title: t('project.other.substation-layout-and-communication-data.details.substation-communication-system-id'),
-      value: substationLayoutAndCommunicationData?.substation_communication_system_id
-        ? communicationSystemsMap.get(substationLayoutAndCommunicationData?.substation_communication_system_id) ||
+      {
+        title: t('project.other.substation-layout-and-communication-data.details.name'),
+        value: substationLayoutAndCommunicationData?.name || 'N/A'
+      },
+      {
+        title: t('project.other.substation-layout-and-communication-data.details.substation-id'),
+        value: substationLayoutAndCommunicationData?.substation_id
+          ? substationsMap.get(substationLayoutAndCommunicationData?.substation_id) || substationLayoutAndCommunicationData?.substation_id
+          : 'N/A'
+      },
+      {
+        title: t('project.other.substation-layout-and-communication-data.details.substation-layout'),
+        value: substationLayoutAndCommunicationData?.substation_layout || 'N/A'
+      },
+      {
+        title: t('project.other.substation-layout-and-communication-data.details.equipped-with-standby-diesel-generator'),
+        value: substationLayoutAndCommunicationData?.equipped_with_standby_diesel_generator || 'N/A'
+      },
+      {
+        title: t('project.other.substation-layout-and-communication-data.details.substation-busbar-type'),
+        value: substationLayoutAndCommunicationData?.substation_busbar_type || 'N/A'
+      },
+      {
+        title: t('project.other.substation-layout-and-communication-data.details.substation-communication-system-id'),
+        value: substationLayoutAndCommunicationData?.substation_communication_system_id
+          ? communicationSystemsMap.get(substationLayoutAndCommunicationData?.substation_communication_system_id) ||
           substationLayoutAndCommunicationData?.substation_communication_system_id
-        : 'N/A'
-    },
-    {
-      title: t('project.other.substation-layout-and-communication-data.details.scada-system'),
-      value:
-        substationLayoutAndCommunicationData?.scada_system !== undefined
-          ? substationLayoutAndCommunicationData.scada_system
-            ? t('common.yes')
-            : t('common.no')
           : 'N/A'
-    },
-    {
-      title: t('project.other.substation-layout-and-communication-data.details.substation-grounding-system-id'),
-      value: substationLayoutAndCommunicationData?.substation_grounding_system_id
-        ? groundingSystemsMap.get(substationLayoutAndCommunicationData?.substation_grounding_system_id) ||
+      },
+      {
+        title: t('project.other.substation-layout-and-communication-data.details.scada-system'),
+        value:
+          substationLayoutAndCommunicationData?.scada_system !== undefined
+            ? substationLayoutAndCommunicationData.scada_system
+              ? t('common.yes')
+              : t('common.no')
+            : 'N/A'
+      },
+      {
+        title: t('project.other.substation-layout-and-communication-data.details.substation-grounding-system-id'),
+        value: substationLayoutAndCommunicationData?.substation_grounding_system_id
+          ? groundingSystemsMap.get(substationLayoutAndCommunicationData?.substation_grounding_system_id) ||
           substationLayoutAndCommunicationData?.substation_grounding_system_id
-        : 'N/A'
-    },
-    {
-      title: t('project.other.substation-layout-and-communication-data.details.substation-altitude-level'),
-      value:
-        substationLayoutAndCommunicationData?.substation_altitude_level !== undefined
-          ? `${substationLayoutAndCommunicationData.substation_altitude_level} ${t('common.meters')}`
           : 'N/A'
-    },
-    {
-      title: t('project.other.substation-layout-and-communication-data.details.remark'),
-      value: substationLayoutAndCommunicationData?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: substationLayoutAndCommunicationData?.created_at ? formatCreatedAt(substationLayoutAndCommunicationData.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: substationLayoutAndCommunicationData?.updated_at ? formatCreatedAt(substationLayoutAndCommunicationData.updated_at) : 'N/A'
-    }
-  ];
+      },
+      {
+        title: t('project.other.substation-layout-and-communication-data.details.substation-altitude-level'),
+        value:
+          substationLayoutAndCommunicationData?.substation_altitude_level !== undefined
+            ? `${substationLayoutAndCommunicationData.substation_altitude_level} ${t('common.meters')}`
+            : 'N/A'
+      },
+      {
+        title: t('project.other.substation-layout-and-communication-data.details.remark'),
+        value: substationLayoutAndCommunicationData?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: substationLayoutAndCommunicationData?.created_at ? formatCreatedAt(substationLayoutAndCommunicationData.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: substationLayoutAndCommunicationData?.updated_at ? formatCreatedAt(substationLayoutAndCommunicationData.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

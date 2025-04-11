@@ -17,7 +17,7 @@ import DataCenterDrawer from './data-center-drawer';
 import { dataCenterColumns } from './data-center-row';
 
 interface DataCenterListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }

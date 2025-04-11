@@ -7,7 +7,7 @@ import CulvertRoadOverInformationForm from './culvert-road-over-information-form
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import type { CulvertRoadOverInformation } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface CulvertRoadOverInformationDrawerType {
   open: boolean;
@@ -15,7 +15,7 @@ interface CulvertRoadOverInformationDrawerType {
   refetch: () => void;
   culvertRoadOverInformation: CulvertRoadOverInformation;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const CulvertRoadOverInformationDrawer = (props: CulvertRoadOverInformationDrawerType) => {
@@ -65,18 +65,16 @@ const CulvertRoadOverInformationDrawer = (props: CulvertRoadOverInformationDrawe
 
   return (
     <CustomSideDrawer
-      title={`project.other.culvert-road-over-information.${
-        isEdit ? `edit-culvert-road-over-information` : `create-culvert-road-over-information`
-      }`}
+      title={`project.other.culvert-road-over-information.${isEdit ? `edit-culvert-road-over-information` : `create-culvert-road-over-information`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.culvert-road-over-information.${
-            isEdit ? `edit-culvert-road-over-information` : `create-culvert-road-over-information`
-          }`}
+          title={`project.other.culvert-road-over-information.${isEdit ? `edit-culvert-road-over-information` : `create-culvert-road-over-information`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

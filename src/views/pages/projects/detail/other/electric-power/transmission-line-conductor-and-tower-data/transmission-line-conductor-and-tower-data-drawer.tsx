@@ -10,7 +10,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { TransmissionLineConductorAndTowerData, TransmissionLine } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface TransmissionLineConductorAndTowerDataDrawerType {
   open: boolean;
@@ -18,7 +18,7 @@ interface TransmissionLineConductorAndTowerDataDrawerType {
   refetch: () => void;
   transmissionLineConductorAndTowerData: TransmissionLineConductorAndTowerData;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   transmissionLines: TransmissionLine[];
 }
 
@@ -124,18 +124,16 @@ const TransmissionLineConductorAndTowerDataDrawer = (props: TransmissionLineCond
 
   return (
     <CustomSideDrawer
-      title={`project.other.transmission-line-conductor-and-tower-data.${
-        isEdit ? `edit-transmission-line-conductor-and-tower-data` : `create-transmission-line-conductor-and-tower-data`
-      }`}
+      title={`project.other.transmission-line-conductor-and-tower-data.${isEdit ? `edit-transmission-line-conductor-and-tower-data` : `create-transmission-line-conductor-and-tower-data`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.transmission-line-conductor-and-tower-data.${
-            isEdit ? `edit-transmission-line-conductor-and-tower-data` : `create-transmission-line-conductor-and-tower-data`
-          }`}
+          title={`project.other.transmission-line-conductor-and-tower-data.${isEdit ? `edit-transmission-line-conductor-and-tower-data` : `create-transmission-line-conductor-and-tower-data`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

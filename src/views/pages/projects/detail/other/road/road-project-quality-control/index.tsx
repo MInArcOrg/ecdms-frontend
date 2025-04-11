@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -21,7 +21,7 @@ import RoadProjectQualityControlDrawer from './road-project-quality-control-draw
 import { roadProjectQualityControlColumns } from './road-project-quality-control-row';
 
 interface RoadProjectQualityControlListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -78,35 +78,35 @@ const RoadProjectQualityControlList: React.FC<RoadProjectQualityControlListProps
   const mapRoadProjectQualityControlToDetailItems = (
     roadProjectQualityControl: RoadProjectQualityControl
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.road-project-quality-control.details.name'),
-      value: roadProjectQualityControl?.name || 'N/A'
-    },
-    {
-      title: t('project.other.road-project-quality-control.details.project-phase-id'),
-      value: roadProjectQualityControl?.project_phase_id || 'N/A'
-    },
-    {
-      title: t('project.other.road-project-quality-control.details.inspection-type-id'),
-      value: roadProjectQualityControl?.inspection_type_id || 'N/A'
-    },
-    {
-      title: t('project.other.road-project-quality-control.details.defect-encountered'),
-      value: roadProjectQualityControl?.defect_encountered || 'N/A'
-    },
-    {
-      title: t('project.other.road-project-quality-control.details.remark'),
-      value: roadProjectQualityControl?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: roadProjectQualityControl?.created_at ? formatCreatedAt(roadProjectQualityControl.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: roadProjectQualityControl?.updated_at ? formatCreatedAt(roadProjectQualityControl.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.road-project-quality-control.details.name'),
+        value: roadProjectQualityControl?.name || 'N/A'
+      },
+      {
+        title: t('project.other.road-project-quality-control.details.project-phase-id'),
+        value: roadProjectQualityControl?.project_phase_id || 'N/A'
+      },
+      {
+        title: t('project.other.road-project-quality-control.details.inspection-type-id'),
+        value: roadProjectQualityControl?.inspection_type_id || 'N/A'
+      },
+      {
+        title: t('project.other.road-project-quality-control.details.defect-encountered'),
+        value: roadProjectQualityControl?.defect_encountered || 'N/A'
+      },
+      {
+        title: t('project.other.road-project-quality-control.details.remark'),
+        value: roadProjectQualityControl?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: roadProjectQualityControl?.created_at ? formatCreatedAt(roadProjectQualityControl.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: roadProjectQualityControl?.updated_at ? formatCreatedAt(roadProjectQualityControl.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>
