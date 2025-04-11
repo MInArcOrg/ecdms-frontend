@@ -45,7 +45,8 @@ const UserDrawer = (props: UserDrawerType) => {
         phone: values.phone,
         department_id: props.departmentId,
         gender: values.gender,
-        birth_date: convertDateToLocaleDate(values.birth_date)
+        birth_date: convertDateToLocaleDate(values.birth_date),
+        redirect_url:`${window.location.origin}`
       },
       files: []
     };

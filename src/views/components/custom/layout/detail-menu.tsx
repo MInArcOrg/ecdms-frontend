@@ -7,19 +7,19 @@ import Can from 'src/layouts/components/acl/Can';
 import ProjectInfo from '../../../pages/projects/detail/project-info-drawer';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ProjectMenuItem } from '../../../pages/projects/detail/layout/project-menu-items';
+import { DetailMenuItem } from 'src/types/layouts/detail-layout';
 
 interface DetailMenuProps {
   id: string;
-  menuItems: ProjectMenuItem;
-  activeMenu: number;
+  menuItems: DetailMenuItem[];
+  activeMenuId: string;
   setActiveMenu: (path: string) => void;
   goBack: () => void;
   typeId: string;
   isProject?: boolean;
 }
 
-const DetailMenu: React.FC<DetailMenuProps> = ({ id, menuItems, activeMenu, setActiveMenu, goBack, typeId, isProject = false }) => {
+const DetailMenu: React.FC<DetailMenuProps> = ({ id, menuItems, activeMenuId, setActiveMenu, goBack, typeId, isProject = false }) => {
   const theme = useTheme();
   const desktop = useMediaQuery(theme.breakpoints.up('md'));
   const { t } = useTranslation();
@@ -54,7 +54,7 @@ const DetailMenu: React.FC<DetailMenuProps> = ({ id, menuItems, activeMenu, setA
       {desktop ? (
         <Grid container gap={2} sx={{ ml: 3 }}>
           {menuItems.map((item) => (
-            <Can do={item.subject} key={item.id} on={item.subject}>
+            <Can do={item.action} key={item.id} on={item.subject}>
               <Grid item>
                 <ListItemButton
                   onClick={() => setActiveMenu(item.path)}
@@ -69,7 +69,7 @@ const DetailMenu: React.FC<DetailMenuProps> = ({ id, menuItems, activeMenu, setA
                       textDecoration: 'underline'
                     }
                   }}
-                  selected={activeMenu === item.id}
+                  selected={activeMenuId === item.id}
                 >
                   <ListItemText primary={t(item.title)} />
                 </ListItemButton>
@@ -81,8 +81,8 @@ const DetailMenu: React.FC<DetailMenuProps> = ({ id, menuItems, activeMenu, setA
         <FormControl sx={{ my: 2 }}>
           <Select
             id="demo-simple-select"
-            defaultValue={activeMenu}
-            value={activeMenu}
+            defaultValue={activeMenuId}
+            value={activeMenuId}
             onChange={(e) => {
               const path = menuItems.find((item) => item.id === e.target.value)?.path || '';
               setActiveMenu(path);

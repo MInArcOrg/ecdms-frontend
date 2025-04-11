@@ -662,7 +662,48 @@ export const projectMasterModels = {
     createTitle: 'create-cyber-security-audits-frequency',
     editTitle: 'edit-cyber-security-audits-frequency',
     fileType: 'CYBER_SECURITY_AUDITS_FREQUENCY'
+  },
+  apronSurfaceType: {
+    model: 'ApronSurfaceType',
+    dbModel: 'apronsurfacetype',
+    title: 'apron-surface-types',
+    createTitle: 'create-apron-surface-type',
+    editTitle: 'edit-apron-surface-type',
+    fileType: 'APRON_SURFACE_TYPE'
+  },
+  embeddedEnstrument: {
+    model: 'EmbeddedEnstrument',
+    dbModel: 'embeddedEnstrument',
+    title: 'embedded-enstrument',
+    createTitle: 'create-embedded-enstrument',
+    editTitle: 'edit-embedded-enstrument',
+    fileType: 'EMBEDDED_ENSTRUMENT'
+  },
+  damPurpose: {
+    model: 'DamPurpose',
+    dbModel: 'damPurpose',
+    title: 'dam-purpose',
+    createTitle: 'create-dam-purpose',
+    editTitle: 'edit-dam-purpose',
+    fileType: 'DAM_PURPOSE'
+  },
+  quality: {
+    model: 'Quality',
+    dbModel: 'quality',
+    title: 'quality',
+    createTitle: 'create-quality',
+    editTitle: 'edit-quality',
+    fileType: 'DAM_PURPOSE'
+  },
+  safetyProblemsEncountered: {
+    model: 'SafetyProblemsEncountered',
+    dbModel: 'safetyproblemsencountered',
+    title: 'safety-problems-encountered',
+    createTitle: 'create-safety-problems-encountered',
+    editTitle: 'edit-safety-problems-encountered',
+    fileType: 'SAFETY_PROBLEMS_ENCOUNTERED'
   }
+
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

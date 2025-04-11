@@ -19,6 +19,7 @@ type User = {
   partner_name: string | null;
   birth_date: string | Date | EthiopianDate | undefined;
   position_name?: string;
+  redirect_url?: string;
   department: Department;
   position: Position;
   lang: string;
@@ -67,4 +68,19 @@ export interface UserContactPerson {
   created_at?: Date;
   updated_at?: Date;
 }
+
+// Activity Log model definition
+export type UserActivityLog = {
+  id: string;
+  user_id: string;
+  action?: string;
+  module?: string;
+  target_id?: string;
+  target_type?: string;
+  ip_address?: string;
+  user_agent?: string;
+  created_at?: string;
+  updated_at?: string;
+};
+
 export default User;

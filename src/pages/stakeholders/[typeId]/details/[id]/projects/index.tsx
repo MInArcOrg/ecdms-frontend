@@ -1,21 +1,28 @@
 import { useRouter } from 'next/router';
-import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
-import subMenuItems from './(sub-menu-items)';
+import { useEffect } from 'react';
+import LoadingPlaceholder from 'src/views/components/loader';
 
-function ProjectBranchIndex() {
+const StakeholderOther = () => {
   const router = useRouter();
-  const { id, typeId } = router.query;
+
+  // Extract dynamic route parameters from the URL
+  const { typeId, id } = router.query;
+
+  useEffect(() => {
+    if (typeId && id) {
+      // Build the new URL dynamically
+      const newUrl = `/stakeholders/${typeId}/details/${id}/projects/projects/project/`;
+
+      // Simulate a condition or action before redirecting
+      router.push(newUrl); // Redirect to the constructed URL
+    }
+  }, [typeId, id, router]);
 
   return (
-    <StakeholderLayout activeMenu={6} activeSubMenu={1} subMenuItems={subMenuItems(id as string, typeId as string)}>
-      <></>
-    </StakeholderLayout>
+    <>
+      <LoadingPlaceholder />
+    </>
   );
-}
-
-ProjectBranchIndex.acl = {
-  subject: 'stakeholder',
-  action: 'view_stakeholder'
 };
 
-export default ProjectBranchIndex;
+export default StakeholderOther;
