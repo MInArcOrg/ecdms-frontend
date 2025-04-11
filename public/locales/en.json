@@ -332,7 +332,10 @@
       "edit-unit-price": "Edit Unit Price",
       "supplier-name": "Supplier Name",
       "create-supplier-name": "Create Supplier Name",
-      "edit-supplier-name": "Edit Supplier Name"
+      "edit-supplier-name": "Edit Supplier Name",
+      "supplier-address": "Supplier Address",
+      "create-supplier-address": "Create Supplier Address",
+      "edit-supplier-address": "Edit Supplier Address"
     },
     "form": {
       "title": "Title",
