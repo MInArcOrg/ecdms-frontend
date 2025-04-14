@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import type { CulvertStructuralInformation } from 'src/types/project/other';
@@ -20,7 +20,7 @@ import CulvertStructuralInformationDrawer from './culvert-structural-information
 import { culvertStructuralInformationColumns } from './culvert-structural-information-row';
 
 interface CulvertStructuralInformationListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -77,87 +77,87 @@ const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationLis
   const mapCulvertStructuralInformationToDetailItems = (
     culvertStructuralInformation: CulvertStructuralInformation
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.culvert-structural-information.details.name'),
-      value: culvertStructuralInformation?.name || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.culvert-type'),
-      value: culvertStructuralInformation?.culvert_type || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.culvert-barrel-length'),
-      value: culvertStructuralInformation?.culvert_barrel_length?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.culvert-height'),
-      value: culvertStructuralInformation?.culvert_height?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.opening-number'),
-      value: culvertStructuralInformation?.opening_number?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.opening-width'),
-      value: culvertStructuralInformation?.opening_width?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.total-culvert-width'),
-      value: culvertStructuralInformation?.total_culvert_width?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.distance-between-barrels'),
-      value: culvertStructuralInformation?.distance_between_barrels?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.head-wall-length'),
-      value: culvertStructuralInformation?.head_wall_length?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.pier-type-id'),
-      value: culvertStructuralInformation?.pier_type_id || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.pier-height'),
-      value: culvertStructuralInformation?.pier_height?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.abutment-type-id'),
-      value: culvertStructuralInformation?.abutment_type_id || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.abutment-average-height'),
-      value: culvertStructuralInformation?.abutment_average_height?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.endwall-type-inlet-id'),
-      value: culvertStructuralInformation?.endwall_type_inlet_id || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.endwall-type-outlet-id'),
-      value: culvertStructuralInformation?.endwall_type_outlet_id || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.wingwall-average-length'),
-      value: culvertStructuralInformation?.wingwall_average_length?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.paved-water-way-type-id'),
-      value: culvertStructuralInformation?.paved_water_way_type_id || 'N/A'
-    },
-    {
-      title: t('project.other.culvert-structural-information.details.soil-type-id'),
-      value: culvertStructuralInformation?.soil_type_id || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: culvertStructuralInformation?.created_at ? formatCreatedAt(culvertStructuralInformation.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: culvertStructuralInformation?.updated_at ? formatCreatedAt(culvertStructuralInformation.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.culvert-structural-information.details.name'),
+        value: culvertStructuralInformation?.name || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.culvert-type'),
+        value: culvertStructuralInformation?.culvert_type || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.culvert-barrel-length'),
+        value: culvertStructuralInformation?.culvert_barrel_length?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.culvert-height'),
+        value: culvertStructuralInformation?.culvert_height?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.opening-number'),
+        value: culvertStructuralInformation?.opening_number?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.opening-width'),
+        value: culvertStructuralInformation?.opening_width?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.total-culvert-width'),
+        value: culvertStructuralInformation?.total_culvert_width?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.distance-between-barrels'),
+        value: culvertStructuralInformation?.distance_between_barrels?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.head-wall-length'),
+        value: culvertStructuralInformation?.head_wall_length?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.pier-type-id'),
+        value: culvertStructuralInformation?.pier_type_id || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.pier-height'),
+        value: culvertStructuralInformation?.pier_height?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.abutment-type-id'),
+        value: culvertStructuralInformation?.abutment_type_id || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.abutment-average-height'),
+        value: culvertStructuralInformation?.abutment_average_height?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.endwall-type-inlet-id'),
+        value: culvertStructuralInformation?.endwall_type_inlet_id || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.endwall-type-outlet-id'),
+        value: culvertStructuralInformation?.endwall_type_outlet_id || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.wingwall-average-length'),
+        value: culvertStructuralInformation?.wingwall_average_length?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.paved-water-way-type-id'),
+        value: culvertStructuralInformation?.paved_water_way_type_id || 'N/A'
+      },
+      {
+        title: t('project.other.culvert-structural-information.details.soil-type-id'),
+        value: culvertStructuralInformation?.soil_type_id || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: culvertStructuralInformation?.created_at ? formatCreatedAt(culvertStructuralInformation.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: culvertStructuralInformation?.updated_at ? formatCreatedAt(culvertStructuralInformation.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

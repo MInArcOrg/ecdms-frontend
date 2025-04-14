@@ -18,7 +18,7 @@ interface DataCenterComponentAgeDrawerType {
   refetch: () => void;
   dataCenterComponentAge: DataCenterComponentAge;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const DataCenterComponentAgeDrawer = (props: DataCenterComponentAgeDrawerType) => {
@@ -73,9 +73,8 @@ const DataCenterComponentAgeDrawer = (props: DataCenterComponentAgeDrawerType) =
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.data-center-component-age.${
-            isEdit ? `edit-data-center-component-age` : `create-data-center-component-age`
-          }`}
+          title={`project.other.data-center-component-age.${isEdit ? `edit-data-center-component-age` : `create-data-center-component-age`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

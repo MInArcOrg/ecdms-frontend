@@ -18,7 +18,7 @@ interface EnvironmentalControlDrawerType {
   refetch: () => void;
   environmentalControl: EnvironmentalControl;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const EnvironmentalControlDrawer = (props: EnvironmentalControlDrawerType) => {

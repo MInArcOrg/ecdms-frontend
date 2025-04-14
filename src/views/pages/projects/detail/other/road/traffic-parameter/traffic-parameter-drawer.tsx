@@ -7,7 +7,7 @@ import TrafficParameterForm from './traffic-parameter-form';
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import type { TrafficParameter } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface TrafficParameterDrawerType {
   open: boolean;
@@ -15,7 +15,7 @@ interface TrafficParameterDrawerType {
   refetch: () => void;
   trafficParameter: TrafficParameter;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const TrafficParameterDrawer = (props: TrafficParameterDrawerType) => {

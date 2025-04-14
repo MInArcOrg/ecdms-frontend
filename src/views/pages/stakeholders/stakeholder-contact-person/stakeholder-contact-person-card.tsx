@@ -41,7 +41,7 @@ const StakeholderContactPersonCard = ({
         <Box display="flex" alignItems="center" gap={1}>
           <FileDrawer id={stakeholderContactPerson.id} type={uploadableProjectFileTypes.stakeholderContactPerson} />
           <ModelActionComponent
-            model="Certificate"
+            model="Stakeholdercontactperson"
             model_id={stakeholderContactPerson.id}
             refetchModel={refetch}
             resubmit={function (): void {
@@ -57,11 +57,11 @@ const StakeholderContactPersonCard = ({
             onDelete={() => onDelete(stakeholderContactPerson.id)}
             deletePermissionRule={{
               action: 'delete',
-              subject: 'stakeholdercontactpeople'
+              subject: 'stakeholdercontactperson'
             }}
             editPermissionRule={{
               action: 'update',
-              subject: 'stakeholdercontactpeople'
+              subject: 'stakeholdercontactperson'
             }}
             item={stakeholderContactPerson}
             options={[]}

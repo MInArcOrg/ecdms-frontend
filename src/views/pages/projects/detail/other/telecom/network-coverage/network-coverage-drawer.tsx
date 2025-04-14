@@ -18,7 +18,7 @@ interface NetworkCoverageDrawerType {
   refetch: () => void;
   networkCoverage: NetworkCoverage;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const NetworkCoverageDrawer = (props: NetworkCoverageDrawerType) => {

@@ -19,7 +19,7 @@ interface RoadSurfaceConditionDrawerType {
   refetch: () => void;
   roadSurfaceCondition: RoadSurfaceCondition; // Changed from RoadSurfaceCondition
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const RoadSurfaceConditionDrawer = (props: RoadSurfaceConditionDrawerType) => {

@@ -16,11 +16,11 @@ import MachineryDrawer from './stakeholder-machinery-drawe';
 import type { StakeholderMachinery } from 'src/types/stakeholder/stakeholder-machinery';
 import { machineryColumns } from './stakeholder-machinery-row';
 
-interface MachineryListProps {
+interface StakeholderMachineryListProps {
   stakeholderId: string;
 }
 
-const MachineryList: React.FC<MachineryListProps> = ({ stakeholderId }) => {
+const StakeholderMachineryList: React.FC<StakeholderMachineryListProps> = ({ stakeholderId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<StakeholderMachinery | null>(null);
@@ -140,4 +140,4 @@ const MachineryList: React.FC<MachineryListProps> = ({ stakeholderId }) => {
   );
 };
 
-export default MachineryList;
+export default StakeholderMachineryList;

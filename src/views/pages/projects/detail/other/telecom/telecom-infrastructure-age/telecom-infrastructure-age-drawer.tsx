@@ -12,7 +12,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { TelecomInfrastructureAge } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface TelecomInfrastructureAgeDrawerType {
   open: boolean;
@@ -20,7 +20,7 @@ interface TelecomInfrastructureAgeDrawerType {
   refetch: () => void;
   telecomInfrastructureAge: TelecomInfrastructureAge;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const TelecomInfrastructureAgeDrawer = (props: TelecomInfrastructureAgeDrawerType) => {
@@ -88,9 +88,8 @@ const TelecomInfrastructureAgeDrawer = (props: TelecomInfrastructureAgeDrawerTyp
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.telecom-infrastructure-age.${
-            isEdit ? `edit-telecom-infrastructure-age` : `create-telecom-infrastructure-age`
-          }`}
+          title={`project.other.telecom-infrastructure-age.${isEdit ? `edit-telecom-infrastructure-age` : `create-telecom-infrastructure-age`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

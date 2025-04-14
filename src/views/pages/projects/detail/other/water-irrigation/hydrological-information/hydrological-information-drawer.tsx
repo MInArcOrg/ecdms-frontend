@@ -18,7 +18,7 @@ interface HydrologicalInformationDrawerType {
   refetch: () => void;
   hydrologicalInformation: HydrologicalInformation;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const HydrologicalInformationDrawer = (props: HydrologicalInformationDrawerType) => {

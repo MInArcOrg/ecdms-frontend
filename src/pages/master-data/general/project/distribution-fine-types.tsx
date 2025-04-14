@@ -16,4 +16,3 @@ function DesignStandardMasterData() {
 }
 
 export default DesignStandardMasterData;
-

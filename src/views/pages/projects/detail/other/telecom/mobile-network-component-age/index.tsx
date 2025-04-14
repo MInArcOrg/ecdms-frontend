@@ -17,7 +17,7 @@ import MobileNetworkComponentAgeDrawer from './mobile-network-component-age-draw
 import { mobileNetworkComponentAgeColumns } from './mobile-network-component-age-row';
 
 interface MobileNetworkComponentAgeListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -74,47 +74,47 @@ const MobileNetworkComponentAgeList: React.FC<MobileNetworkComponentAgeListProps
   const mapMobileNetworkComponentAgeToDetailItems = (
     mobileNetworkComponentAge: MobileNetworkComponentAge
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.mobile-network-component-age.details.mobile-network-id'),
-      value: mobileNetworkComponentAge?.mobile_network_id || 'N/A'
-    },
-    {
-      title: t('project.other.mobile-network-component-age.details.cell'),
-      value: mobileNetworkComponentAge?.cell?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.mobile-network-component-age.details.towers'),
-      value: mobileNetworkComponentAge?.towers?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.mobile-network-component-age.details.antennas'),
-      value: mobileNetworkComponentAge?.antennas?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.mobile-network-component-age.details.base-stations'),
-      value: mobileNetworkComponentAge?.base_stations?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.mobile-network-component-age.details.repeaters'),
-      value: mobileNetworkComponentAge?.repeaters?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.mobile-network-component-age.details.switches'),
-      value: mobileNetworkComponentAge?.switches?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.mobile-network-component-age.details.others'),
-      value: mobileNetworkComponentAge?.others || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: mobileNetworkComponentAge?.created_at ? formatCreatedAt(mobileNetworkComponentAge.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: mobileNetworkComponentAge?.updated_at ? formatCreatedAt(mobileNetworkComponentAge.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.mobile-network-component-age.details.mobile-network-id'),
+        value: mobileNetworkComponentAge?.mobile_network_id || 'N/A'
+      },
+      {
+        title: t('project.other.mobile-network-component-age.details.cell'),
+        value: mobileNetworkComponentAge?.cell?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.mobile-network-component-age.details.towers'),
+        value: mobileNetworkComponentAge?.towers?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.mobile-network-component-age.details.antennas'),
+        value: mobileNetworkComponentAge?.antennas?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.mobile-network-component-age.details.base-stations'),
+        value: mobileNetworkComponentAge?.base_stations?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.mobile-network-component-age.details.repeaters'),
+        value: mobileNetworkComponentAge?.repeaters?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.mobile-network-component-age.details.switches'),
+        value: mobileNetworkComponentAge?.switches?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.mobile-network-component-age.details.others'),
+        value: mobileNetworkComponentAge?.others || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: mobileNetworkComponentAge?.created_at ? formatCreatedAt(mobileNetworkComponentAge.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: mobileNetworkComponentAge?.updated_at ? formatCreatedAt(mobileNetworkComponentAge.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

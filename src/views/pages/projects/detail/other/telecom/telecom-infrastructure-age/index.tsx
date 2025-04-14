@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -21,7 +21,7 @@ import TelecomInfrastructureAgeDrawer from './telecom-infrastructure-age-drawer'
 import { telecomInfrastructureAgeColumns } from './telecom-infrastructure-age-row';
 
 interface TelecomInfrastructureAgeListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -78,51 +78,51 @@ const TelecomInfrastructureAgeList: React.FC<TelecomInfrastructureAgeListProps> 
   const mapTelecomInfrastructureAgeToDetailItems = (
     telecomInfrastructureAge: TelecomInfrastructureAge
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.telecom-infrastructure-age.details.cables'),
-      value: telecomInfrastructureAge?.cables ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.telecom-infrastructure-age.details.wires'),
-      value: telecomInfrastructureAge?.wires ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.telecom-infrastructure-age.details.routers'),
-      value: telecomInfrastructureAge?.routers ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.telecom-infrastructure-age.details.switches'),
-      value: telecomInfrastructureAge?.switches ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.telecom-infrastructure-age.details.hubs'),
-      value: telecomInfrastructureAge?.hubs ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.telecom-infrastructure-age.details.repeaters'),
-      value: telecomInfrastructureAge?.repeaters ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.telecom-infrastructure-age.details.antennas'),
-      value: telecomInfrastructureAge?.antennas ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.telecom-infrastructure-age.details.towers'),
-      value: telecomInfrastructureAge?.towers ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.telecom-infrastructure-age.details.remark'),
-      value: telecomInfrastructureAge?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: telecomInfrastructureAge?.created_at ? formatCreatedAt(telecomInfrastructureAge.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: telecomInfrastructureAge?.updated_at ? formatCreatedAt(telecomInfrastructureAge.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.telecom-infrastructure-age.details.cables'),
+        value: telecomInfrastructureAge?.cables ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.telecom-infrastructure-age.details.wires'),
+        value: telecomInfrastructureAge?.wires ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.telecom-infrastructure-age.details.routers'),
+        value: telecomInfrastructureAge?.routers ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.telecom-infrastructure-age.details.switches'),
+        value: telecomInfrastructureAge?.switches ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.telecom-infrastructure-age.details.hubs'),
+        value: telecomInfrastructureAge?.hubs ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.telecom-infrastructure-age.details.repeaters'),
+        value: telecomInfrastructureAge?.repeaters ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.telecom-infrastructure-age.details.antennas'),
+        value: telecomInfrastructureAge?.antennas ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.telecom-infrastructure-age.details.towers'),
+        value: telecomInfrastructureAge?.towers ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.telecom-infrastructure-age.details.remark'),
+        value: telecomInfrastructureAge?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: telecomInfrastructureAge?.created_at ? formatCreatedAt(telecomInfrastructureAge.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: telecomInfrastructureAge?.updated_at ? formatCreatedAt(telecomInfrastructureAge.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

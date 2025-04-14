@@ -1,21 +1,21 @@
-"use client"
+'use client';
 
-import { Box, Button, Card, CardActions, CardContent, Divider, Typography, Grid } from "@mui/material"
-import type React from "react"
-import { useTranslation } from "react-i18next"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
-import type { MiniGridStationDistributionLine } from "src/types/project/other"
-import FileDrawer from "src/views/components/custom/files-drawer"
-import ModelAction from "src/views/components/custom/model-actions"
-import RowOptions from "src/views/shared/listing/row-options"
-import { formatCreatedAt } from "src/utils/formatter/date"
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography, Grid } from '@mui/material';
+import type React from 'react';
+import { useTranslation } from 'react-i18next';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import type { MiniGridStationDistributionLine } from 'src/types/project/other';
+import FileDrawer from 'src/views/components/custom/files-drawer';
+import ModelAction from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
+import { formatCreatedAt } from 'src/utils/formatter/date';
 
 interface MiniGridStationDistributionLineCardProps {
-  miniGridStationDistributionLine: MiniGridStationDistributionLine
-  refetch: () => void
-  onEdit: (miniGridStationDistributionLine: MiniGridStationDistributionLine) => void
-  onDelete: (id: string) => void
-  onDetail: (miniGridStationDistributionLine: MiniGridStationDistributionLine) => void
+  miniGridStationDistributionLine: MiniGridStationDistributionLine;
+  refetch: () => void;
+  onEdit: (miniGridStationDistributionLine: MiniGridStationDistributionLine) => void;
+  onDelete: (id: string) => void;
+  onDetail: (miniGridStationDistributionLine: MiniGridStationDistributionLine) => void;
 }
 
 const MiniGridStationDistributionLineCard: React.FC<MiniGridStationDistributionLineCardProps> = ({
@@ -23,9 +23,9 @@ const MiniGridStationDistributionLineCard: React.FC<MiniGridStationDistributionL
   refetch,
   onEdit,
   onDelete,
-  onDetail,
+  onDetail
 }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <Card sx={{ p: 2 }}>
@@ -38,12 +38,12 @@ const MiniGridStationDistributionLineCard: React.FC<MiniGridStationDistributionL
               onClick={() => onDetail(miniGridStationDistributionLine)}
               sx={{
                 fontWeight: 500,
-                textDecoration: "none",
-                color: "text.secondary",
-                "&:hover": { color: "primary.main" },
+                textDecoration: 'none',
+                color: 'text.secondary',
+                '&:hover': { color: 'primary.main' }
               }}
             >
-              {miniGridStationDistributionLine?.name || miniGridStationDistributionLine?.id.slice(0, 8) + "..."}
+              {miniGridStationDistributionLine?.name || miniGridStationDistributionLine?.id.slice(0, 8) + '...'}
             </Typography>
           </Typography>
         </Box>
@@ -51,15 +51,14 @@ const MiniGridStationDistributionLineCard: React.FC<MiniGridStationDistributionL
         <Divider sx={{ my: 1 }} />
 
         <Typography variant="subtitle1" mt={2} fontWeight="bold">
-          {t("project.other.mini-grid-station-distribution-line.line-specifications")}
+          {t('project.other.mini-grid-station-distribution-line.line-specifications')}
         </Typography>
 
         <Grid container spacing={2} mt={1}>
           {miniGridStationDistributionLine?.system_type && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t("project.other.mini-grid-station-distribution-line.details.system-type")}:{" "}
-                {miniGridStationDistributionLine.system_type}
+                {t('project.other.mini-grid-station-distribution-line.details.system-type')}: {miniGridStationDistributionLine.system_type}
               </Typography>
             </Grid>
           )}
@@ -67,8 +66,7 @@ const MiniGridStationDistributionLineCard: React.FC<MiniGridStationDistributionL
           {miniGridStationDistributionLine?.lines_type && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t("project.other.mini-grid-station-distribution-line.details.lines-type")}:{" "}
-                {miniGridStationDistributionLine.lines_type}
+                {t('project.other.mini-grid-station-distribution-line.details.lines-type')}: {miniGridStationDistributionLine.lines_type}
               </Typography>
             </Grid>
           )}
@@ -76,29 +74,28 @@ const MiniGridStationDistributionLineCard: React.FC<MiniGridStationDistributionL
           {miniGridStationDistributionLine?.line_length !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t("project.other.mini-grid-station-distribution-line.details.line-length")}:{" "}
-                {miniGridStationDistributionLine.line_length} {t("common.km")}
+                {t('project.other.mini-grid-station-distribution-line.details.line-length')}: {miniGridStationDistributionLine.line_length}{' '}
+                {t('common.km')}
               </Typography>
             </Grid>
           )}
 
           <Grid item xs={6}>
             <Typography variant="body2" color="text.secondary">
-              {t("project.other.mini-grid-station-distribution-line.details.poles")}:{" "}
-              {miniGridStationDistributionLine.poles}
+              {t('project.other.mini-grid-station-distribution-line.details.poles')}: {miniGridStationDistributionLine.poles}
             </Typography>
           </Grid>
         </Grid>
 
         <Typography variant="subtitle1" mt={2} fontWeight="bold">
-          {t("project.other.mini-grid-station-distribution-line.transformer-information")}
+          {t('project.other.mini-grid-station-distribution-line.transformer-information')}
         </Typography>
 
         <Grid container spacing={2} mt={1}>
           {miniGridStationDistributionLine?.transformers_number !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t("project.other.mini-grid-station-distribution-line.details.transformers-number")}:{" "}
+                {t('project.other.mini-grid-station-distribution-line.details.transformers-number')}:{' '}
                 {miniGridStationDistributionLine.transformers_number}
               </Typography>
             </Grid>
@@ -107,8 +104,8 @@ const MiniGridStationDistributionLineCard: React.FC<MiniGridStationDistributionL
           {miniGridStationDistributionLine?.transformers_size !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t("project.other.mini-grid-station-distribution-line.details.transformers-size")}:{" "}
-                {miniGridStationDistributionLine.transformers_size} {t("common.kva")}
+                {t('project.other.mini-grid-station-distribution-line.details.transformers-size')}:{' '}
+                {miniGridStationDistributionLine.transformers_size} {t('common.kva')}
               </Typography>
             </Grid>
           )}
@@ -117,20 +114,19 @@ const MiniGridStationDistributionLineCard: React.FC<MiniGridStationDistributionL
         {miniGridStationDistributionLine?.remark && (
           <Box mt={2}>
             <Typography variant="body2" color="text.secondary">
-              {t("project.other.mini-grid-station-distribution-line.details.remark")}:{" "}
-              {miniGridStationDistributionLine.remark}
+              {t('project.other.mini-grid-station-distribution-line.details.remark')}: {miniGridStationDistributionLine.remark}
             </Typography>
           </Box>
         )}
 
         {miniGridStationDistributionLine?.created_at && (
           <Typography variant="body2" color="text.secondary" mt={2}>
-            {t("common.table-columns.created-at")}: {formatCreatedAt(miniGridStationDistributionLine.created_at)}
+            {t('common.table-columns.created-at')}: {formatCreatedAt(miniGridStationDistributionLine.created_at)}
           </Typography>
         )}
       </CardContent>
 
-      <CardActions sx={{ justifyContent: "space-between" }}>
+      <CardActions sx={{ justifyContent: 'space-between' }}>
         <FileDrawer id={miniGridStationDistributionLine.id} type={uploadableProjectFileTypes.other.mini_grid_station_distribution_line} />
 
         <Box display="flex">
@@ -144,12 +140,12 @@ const MiniGridStationDistributionLineCard: React.FC<MiniGridStationDistributionL
           />
           <RowOptions
             deletePermissionRule={{
-              action: "delete",
-              subject: "minigridstationdistributionline",
+              action: 'delete',
+              subject: 'minigridstationdistributionline'
             }}
             editPermissionRule={{
-              action: "update",
-              subject: "minigridstationdistributionline",
+              action: 'update',
+              subject: 'minigridstationdistributionline'
             }}
             onEdit={() => onEdit(miniGridStationDistributionLine)}
             onDelete={() => onDelete(miniGridStationDistributionLine.id)}
@@ -159,7 +155,7 @@ const MiniGridStationDistributionLineCard: React.FC<MiniGridStationDistributionL
         </Box>
       </CardActions>
     </Card>
-  )
-}
+  );
+};
 
-export default MiniGridStationDistributionLineCard
+export default MiniGridStationDistributionLineCard;

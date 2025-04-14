@@ -91,7 +91,7 @@ const ResourceQuantityPriceForm: React.FC<ResourceQuantityPriceFormProps> = ({
         label={transl('resource.resource-quantity-price.form.quantity')}
         placeholder={transl('resource.resource-quantity-price.form.quantity')}
         name="quantity"
-        size="sm"
+        size="small"
         type="number"
         sx={{ mb: 2 }}
       />

@@ -18,9 +18,7 @@ import type { StakeholderBranch } from 'src/types/stakeholder/stakeholder-branch
 import { additionalInformationColumns } from './branch-additional-information-row';
 
 interface AdditionalInformationListProps {
-  model: string;
   stakeholderId: string;
-  typeId: string;
 }
 
 const AdditionalInformationList: React.FC<AdditionalInformationListProps> = ({ stakeholderId }) => {

@@ -281,7 +281,61 @@
       "edit-protection-installed": "Edit Protection Installed",
       "fire-extinguishing-technologies": "Fire Extinguishing Technologies",
       "create-fire-extinguishing-technology": "Create Fire Extinguishing Technologies",
-      "edit-fire-extinguishing-technologgy": "Edit Fire Extinguishing Technologies"
+      "edit-fire-extinguishing-technologgy": "Edit Fire Extinguishing Technologies",
+      "models": "Models",
+      "create-model": "Create Model",
+      "edit-model": "Edit Model",
+      "smart-meter-types": "Smart Meter Types",
+      "create-smart-meter-type": "Create Smart Meter Type",
+      "edit-smart-meter-type": "Edit Smart Meter Type",
+      "customer-engagement-frequencies": "Customer Engagement Frequencies",
+      "create-customer-engagement-frequency": "Create Customer Engagement Frequency",
+      "edit-customer-engagement-frequency": "Edit Customer Engagement Frequency",
+      "customer-engagement-programs-types": "Customer Engagement Programs Types",
+      "create-customer-engagement-programs-type": "Create Customer Engagement Programs Type",
+      "edit-customer-engagement-programs-type": "Edit Customer Engagement Programs Type",
+      "control-system-types": "Control System Types",
+      "create-control-system-type": "Create Control System Types",
+      "edit-control-system-type": "Edit Control System Types",
+      "communication-link-types": "Communication Link Types",
+      "create-communication-link-type": "Create Communication Link Types",
+      "edit-communication-link-type": "Edit Communication Link Types",
+      "cyber-security-measures-types": "Cyber Security Measures Types",
+      "create-cyber-security-measures-type": "Create Cyber Security Measures Types",
+      "edit-cyber-security-measures-type": "Edit Cyber Security Measures Types",
+      "cyber-security-audits-frequencies": "Cyber Security Audits Frequencies",
+      "create-cyber-security-audits-frequency": "Create Cyber Security Audits Frequencies",
+      "edit-cyber-security-audits-frequency": "Edit Cyber Security Audits Frequencies",
+      "safety-problems-encountered": "Safety Problems Encountered",
+      "create-safety-problems-encountered": "Create Safety Problems Encountered",
+      "edit-safety-problems-encountered": "Edit Safety Problems Encountered",
+      "quantity-measurement-units": "Quantity Measurement Units",
+      "create-quantity-measurement-unit": "Create Quantity Measurement Unit",
+      "edit-quantity-measurement-unit": "Edit Quantity Measurement Unit",
+      "quality-measurement-units": "Quality Measurement Units",
+      "create-quality-measurement-unit": "Create Quality Measurement Unit",
+      "edit-quality-measurement-unit": "Edit Quality Measurement Unit",
+      "apron-surface-types": "Apron Surface Types",
+      "create-apron-surface-type": "Create Apron Surface Types",
+      "edit-apron-surface-type": "Edit Apron Surface Types",
+      "embedded-enstrument": "Embedded Enstrument",
+      "create-embedded-enstrument": "Create Embedded Enstrument",
+      "edit-embedded-enstrument": "Edit Embedded Enstrument",
+      "dam-purpose": "Dam Purpose",
+      "create-dam-purpose": "Create Dam Purpose",
+      "edit-dam-purpose": "Edit Dam Purpose",
+      "quality": "Quality",
+      "create-quality": "Create Quality",
+      "edit-quality": "Edit Quality",
+      "unit-price": "Unit Price",
+      "create-unit-price": "Create Unit Price",
+      "edit-unit-price": "Edit Unit Price",
+      "supplier-name": "Supplier Name",
+      "create-supplier-name": "Create Supplier Name",
+      "edit-supplier-name": "Edit Supplier Name",
+      "supplier-address": "Supplier Address",
+      "create-supplier-address": "Create Supplier Address",
+      "edit-supplier-address": "Edit Supplier Address"
     },
     "form": {
       "title": "Title",
@@ -295,7 +349,8 @@
       "service_type": "Service Type",
       "specification_detail": "Specification Detail",
       "measurement_unit": "Measurement Unit",
-      "project-type": "Project Type"
+      "project-type": "Project Type",
+      "resource-type": "Resource Type"
     },
     "create-master-type": "Create Type",
     "edit-master-type": "Edit Type",
@@ -328,7 +383,16 @@
     "user-columns": {
       "user": "User",
       "role": "Role",
-      "phone": "Phone"
+      "phone": "Phone",
+      "department": "Department",
+      "position": "Position"
+    },
+    "tabs": {
+      "professionals": "Professionals",
+      "positions": "Positions",
+      "sub-departments": "Sub Departments",
+      "documents": "Documents",
+      "structure": "Structure"
     },
     "user": {
       "form": {
@@ -338,24 +402,80 @@
         "email": "Email",
         "gender": "Gender",
         "phone": "Phone",
+        "position": "Position",
+        "department": "Department",
         "birth_data": "Birth Date"
       },
-      "title": "User",
+      "tabs": {
+        "education": "Education",
+        "work-experience": "Work Experience",
+        "contact-person": "Contact Person",
+        "activity-log": "Activity Log"
+      },
+      "title": "Users",
       "male": "Male",
       "female": "Female",
       "edit-user": "Edit User",
-      "create-user": "Create User"
+      "create-user": "Create User",
+      "education": {
+        "title": "Education",
+        "create": "Create Education",
+        "edit": "Edit Education",
+        "details": "Education Details",
+        "create-education": "Create Education",
+        "edit-education": "Edit Education",
+        "study-field": "Study Field",
+        "school-name": "School Name",
+        "education-level": "Education Level",
+        "program-type": "Program Type",
+        "start-date": "Start Date",
+        "end-date": "End Date",
+        "gpa": "GPA"
+      },
+      "work-experience": {
+        "company-name": "Company Name",
+        "department": "Department",
+        "position": "Position",
+        "task-description": "Task Description",
+        "start-date": "Start Date",
+        "end-date": "End Date",
+        "create-work-experience": "Create Work Experience",
+        "edit-work-experience": "Edit Work Experience",
+        "title": "Work Experience"
+      },
+      "contact-person": {
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "nationalIdNo": "National ID Number",
+        "gender": "Gender",
+        "phoneNo": "Phone Number",
+        "email": "Email",
+        "title": "Contact Person",
+        "create-contact-person": "Create Contact Person",
+        "edit-contact-person": "Edit Contact Person"
+      },
+      "activity-log": {
+        "title": "Activity Log",
+        "action": "Action",
+        "module": "Module",
+        "target-type": "Target Type",
+        "target-id": "Target ID",
+        "ip-address": "IP Address",
+        "user-agent": "User Agent"
+      }
     },
     "position": {
       "form": {
         "name": "Name",
-        "description": "Description"
+        "description": "Description",
+        "role": "Role"
       },
       "columns": {
         "name": "Name",
         "description": "Description"
       },
-      "title": "Position",
+      "title": "Positions",
       "create-position": "Create Position",
       "edit-position": "Edit Position"
     },
@@ -368,11 +488,22 @@
         "name": "Name",
         "description": "Description"
       },
-      "title": "Sub Department",
+      "title": "Sub Departments",
       "create-sub-department": "Create Sub Department",
       "edit-sub-department": "Edit Sub Department"
     },
     "department-structure": "department-structure"
+  },
+  "admin": {
+    "role": {
+      "roles": "Roles",
+      "create-role": "Create Role",
+      "update-role": "Create Role",
+      "form": {
+        "title": "Title",
+        "description": "Description"
+      }
+    }
   },
   "greating": {
     "good-morning": "Good Morning",
@@ -384,28 +515,22 @@
     "edit-resource": "Edit Resource",
     "title": "Resource",
     "columns": {
-      "title": "Title",
-      "description": "Description",
-      "sub-category": "Sub Category",
-      "category": "Category",
-      "specification": "Specifications",
-      "measurement-unit": "Measurement Unit",
-      "brand": "Brands",
-      "resourcetype": "Types",
-      "resourcequantityandprice": "Unit Price & Quantity",
-      "studyfield": "Field of Study",
-      "studylevel": "Study Level",
-      "workexperience": "Work Experience",
-      "salary": "Salary",
-      "reference_files": "Reference Files"
+      "name": "Name",
+      "remark": "Remark",
+      "resourcetype_id": "Resource Type",
+      "resourcecategory_id": "Resource Category",
+      "resourcesubcategory_id": "Resource Subcategory",
+      "quantity_measurement_unit_id": "Quantity Measurement Unit",
+      "quality_measurement_unit_id": "Quality Measurement Unit"
     },
     "form": {
-      "title": "Title",
-      "description": "Description",
-      "category": "Category",
-      "sub_category": "Sub Category",
-      "measurement_unit": "Measurement Unit",
-      "upload_image": "Upload Resource Picture"
+      "name": "Name",
+      "remark": "Remark",
+      "resourcetype_id": "Resource Type",
+      "resourcecategory_id": "Resource Category",
+      "resourcesubcategory_id": "Resource Subcategory",
+      "quantity_measurement_unit_id": "Quantity Measurement Unit",
+      "quality_measurement_unit_id": "Quality Measurement Unit"
     },
     "navigation": {
       "menu": {
@@ -427,8 +552,8 @@
         "licenses": {
           "licenses": "Licenses"
         },
-        "work-experiances": {
-          "work-experiances": "Work Experiances"
+        "work-experiences": {
+          "work-experiences": "Work experiences"
         },
         "educations": {
           "educations": "Educations",
@@ -591,6 +716,128 @@
     },
     "navigation": {
       "submenu": {
+        "project-setup": {
+          "general-info": {
+            "title": "General Info",
+            "project-info": "Project Info",
+            "address": "Address",
+            "project-manager": "Project Manager",
+            "contact-person": "Contact Person",
+            "construction-type": "Construction Type",
+            "construction-method": "Construction Method"
+          },
+          "stakeholders": {
+            "title": "Stakeholders",
+            "stakeholders": "Stakeholders"
+          },
+          "time": {
+            "title": "Time",
+            "contract-period": "Contract Period",
+            "extension-time": "Extension Time"
+          }
+        },
+        "resource": {
+          "finance": {
+            "title": "Finance",
+            "contract-amount": "Contract Amount",
+            "amendments": "Amendments",
+            "supplements": "Supplements",
+            "variations": "Variations",
+            "omission": "Omission",
+            "performance-bond": "Performance Bond",
+            "advance-bond": "Advance Bond",
+            "bid-bond": "Bid Bond",
+            "interim-payment": "Interim Payment",
+            "advance-payment": "Advance Payment"
+          },
+          "resources": {
+            "title": "Resources",
+            "materials": "Materials",
+            "machinery": "Machinery",
+            "manpower": "Manpower"
+          },
+          "documents": {
+            "title": "Documents",
+            "planning": "Planning",
+            "design": "Design",
+            "construction": "Construction",
+            "other": "Other"
+          }
+        },
+        "reporting": {
+          "plan": {
+            "title": "Plan",
+            "plan": "Plan"
+          },
+          "report": {
+            "title": "Report",
+            "actual-status": "Actual Status",
+            "weather-condition": "Weather Condition",
+            "claim": "Claim",
+            "challenges": "Challenges",
+            "quality-inspection": "Quality Inspection",
+            "site-pictures": "Site Pictures"
+          }
+        },
+        "segment": {
+          "design": {
+            "title": "Design",
+            "design-standard": "Design Standard",
+            "safety-and-health": "Safety and Health"
+          },
+          "segment": {
+            "title": "Segment",
+            "road-segment": "Road Segment",
+            "segment-coordinates": "Segment Coordinates",
+            "segment-geometry": "Segment Geometry",
+            "intersection-and-driveway": "Intersection and Driveway",
+            "traffic-parameters": "Traffic Parameters",
+            "traffic-volume": "Traffic Volume",
+            "pavement": "Pavement",
+            "road-surface-condition": "Road Surface Condition"
+          }
+        },
+        "feature": {
+          "accessories": {
+            "title": "Accessories",
+            "accessories": "Accessories",
+            "road-safety-features": "Road Safety Features",
+            "road-drainage": "Road Drainage",
+            "drainage-geotechnical-data": "Drainage Geotechnical Data"
+          },
+          "culvert": {
+            "title": "Culvert",
+            "culvert-basic-data": "Culvert Basic Data",
+            "culvert-structural-information": "Culvert Structural Information",
+            "culvert-road-over-information": "Culvert Road Over Information",
+            "culvert-condition-assessment": "Culvert Condition Assessment"
+          },
+          "bridge": {
+            "title": "Bridge",
+            "bridge-basic-data": "Bridge Basic Data",
+            "bridge-area-data": "Bridge Area Data",
+            "bridge-super-structure": "Bridge Super Structure",
+            "bridge-sub-structure": "Bridge Sub Structure",
+            "bridge-foundation": "Bridge Foundation",
+            "bridge-components-ancillaries": "Bridge Components & Ancillaries",
+            "bridge-inspection": "Bridge Inspection"
+          }
+        },
+        "maintenance": {
+          "quality": {
+            "title": "Quality",
+            "quality-control": "Quality Control",
+            "drainage-environmental-data": "Drainage Environmental Data",
+            "drainage-assessment": "Drainage Assessment"
+          },
+          "maintenance": {
+            "title": "Maintenance",
+            "road-maintenance-activities": "Road Maintenance Activities",
+            "maintenance-history": "Maintenance History",
+            "traffic-maintenance": "Traffic Maintenance",
+            "drainage-maintenance-data": "Drainage Maintenance Data"
+          }
+        },
         "others": {
           "building": "Building",
           "building-dimensions-detail": "Building Dimensions Detail",
@@ -694,6 +941,14 @@
           "electric-smart-meters-privacy-and-security-data": "Electric Smart Meters Privacy And Security Data",
           "electric-grid-control-center-data": "Electric Grid Control Center Data"
         }
+      },
+      "menu": {
+        "project-setup": "Project Setup",
+        "resource": "Resource",
+        "reporting": "Reporting",
+        "segment": "Segment",
+        "feature": "Feature",
+        "maintenance": "Maintenance"
       }
     },
     "project-time": {
@@ -2808,6 +3063,9 @@
       "file-upload": "File Upload",
       "success-created": "Successfully Created!",
       "success-updated": "Successfully updated!"
+    },
+    "listing": {
+      "no-items-available": "No items available."
     }
   },
   "stakeholder": {
@@ -2842,88 +3100,70 @@
     },
     "navigation": {
       "menu": {
-        "general-info": "General Info",
-        "branches": "Branches",
-        "company-structure": "Company Structure",
-        "resources": "Resource",
-        "certificates": "Certificates",
-        "documents": "Documents",
         "projects": "Projects",
-        "services": "Services",
-        "incentives": "Incentives",
-        "study-programs": "Study Programs",
-        "training": "Trainings"
+        "organization": "Organization",
+        "resource": "Resource"
       },
       "submenu": {
-        "general-info": {
-          "manager": "Manager",
-          "contact-person": "Contact Person",
-          "address": "Address",
-          "joint-venture": "Joint Venture",
-          "joint-venture-company": "Joint Venture Company",
-          "additional-info": "Additional Info",
-          "upgrade": "Upgrade"
+        "organization": {
+          "general-info": {
+            "general-info": "General Info",
+            "licenses": "Licenses",
+            "manager": "Manager",
+            "contact-person": "Contact Person",
+            "address": "Address",
+            "joint-venture": "Joint Venture",
+            "joint-venture-company": "Joint Venture Company",
+            "upgrade": "Upgrade",
+            "additional-info": "Additional Info"
+          },
+          "branches": {
+            "branches": "Branches",
+            "branch-manager": "Branch Manager",
+            "branch-contact-person": "Branch Contact Person",
+            "address": "Address",
+            "additional-info": "Additional Info"
+          },
+          "company-structure": {
+            "company-structure": "Company Structure",
+            "departments": "Departments",
+            "positions": "Positions"
+          }
         },
-        "branches": {
-          "branches": "Branches",
-          "manager": "Manager",
-          "branch-contact-person": "Branch Contact Person",
-          "address": "Address",
-          "additional-info": "Additional Info"
-        },
-        "company-structure": {
-          "departments": "Departments",
-          "positions": "Positions"
-        },
-        "resources": {
-          "machineries": "Machineries",
-          "vehicles": "Vehicles",
-          "safety-equipment": "Safety Equipment",
-          "materials": "Materials",
-          "employees": "Employees"
-        },
-        "certificates": {
-          "certificates": "Certificates",
-          "licenses": "Licenses",
-          "accreditation": "Accreditation"
-        },
-        "documents": {
-          "documents": "Documents",
-          "strategies": "Strategies",
-          "planning": "Planning",
-          "researches": "Researches",
-          "innovations": "Innovations",
-          "code-of-conduct": "Code of Conduct",
-          "manuals": "Manuals"
-        },
-        "services": {
-          "services": "Services"
+        "resource": {
+          "resources": {
+            "resources": "Resources",
+            "machineries": "Machineries",
+            "vehicles": "Vehicles",
+            "safety-equipment": "Safety Equipment",
+            "construction-materials": "Construction Materials",
+            "employees": "Employees"
+          },
+          "documents": {
+            "documents": "Documents",
+            "strategies": "Strategies",
+            "planning": "Planning",
+            "researches": "Researches",
+            "innovations": "Innovations",
+            "code-of-conduct": "Code of Conduct",
+            "manuals": "Manuals"
+          },
+          "certificates": {
+            "certificates": "Certificates",
+            "accreditation": "Accreditation"
+          }
         },
         "projects": {
-          "projects": "Projects",
-          "joint-venture-projects": "Joint Venture Projects"
-        },
-        "incentives": {
-          "trainings": "Trainings",
-          "support": "Support"
-        },
-        "study-programs": {
-          "study-programs": "Study Programs",
-          "teachers": "Teachers",
-          "graduates": "Graduates"
-        },
-        "trainings": {
-          "trainings": "Trainings",
-          "trainers": "Trainers",
-          "trainees": "Trainees"
-        },
-        "others": {
-          "stakeholder-specific": "Stakeholder Specific",
-          "field-of-study": "Field of Study",
-          "study-period-cost": "Study Period Cost",
-          "graduates": "Graduates",
-          "construction-related-services": "Construction Related Services",
-          "stakeholder-services": "Stakeholder Services"
+          "projects": {
+            "projects": "Projects",
+            "joint-venture-projects": "Joint Venture Projects"
+          },
+          "services": {
+            "services": "Services",
+            "incentives": "Incentives",
+            "trainings": "Trainings",
+            "support": "Support"
+          }
         }
       }
     },

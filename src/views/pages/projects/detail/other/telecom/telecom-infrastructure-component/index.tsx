@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -24,7 +24,7 @@ import { projectMasterModels } from 'src/constants/master-data/project-general-m
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 
 interface TelecomInfrastructureComponentListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -96,58 +96,58 @@ const TelecomInfrastructureComponentList: React.FC<TelecomInfrastructureComponen
   const mapTelecomInfrastructureComponentToDetailItems = (
     telecomInfrastructureComponent: TelecomInfrastructureComponent
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.telecom-infrastructure-component.details.mobile-network-type'),
-      value:
-        mobileNetworkTypeMap.get(telecomInfrastructureComponent?.mobile_network_type_id) ||
-        telecomInfrastructureComponent?.mobile_network_type_id ||
-        'N/A'
-    },
-    {
-      title: t('project.other.telecom-infrastructure-component.details.cables'),
-      value: telecomInfrastructureComponent?.cables?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.telecom-infrastructure-component.details.wires'),
-      value: telecomInfrastructureComponent?.wires?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.telecom-infrastructure-component.details.routers'),
-      value: telecomInfrastructureComponent?.routers?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.telecom-infrastructure-component.details.switches'),
-      value: telecomInfrastructureComponent?.switches?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.telecom-infrastructure-component.details.hubs'),
-      value: telecomInfrastructureComponent?.hubs?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.telecom-infrastructure-component.details.repeaters'),
-      value: telecomInfrastructureComponent?.repeaters?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.telecom-infrastructure-component.details.antennas'),
-      value: telecomInfrastructureComponent?.antennas?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.telecom-infrastructure-component.details.towers'),
-      value: telecomInfrastructureComponent?.towers?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.telecom-infrastructure-component.details.remark'),
-      value: telecomInfrastructureComponent?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: telecomInfrastructureComponent?.created_at ? formatCreatedAt(telecomInfrastructureComponent.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: telecomInfrastructureComponent?.updated_at ? formatCreatedAt(telecomInfrastructureComponent.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.telecom-infrastructure-component.details.mobile-network-type'),
+        value:
+          mobileNetworkTypeMap.get(telecomInfrastructureComponent?.mobile_network_type_id) ||
+          telecomInfrastructureComponent?.mobile_network_type_id ||
+          'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-component.details.cables'),
+        value: telecomInfrastructureComponent?.cables?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-component.details.wires'),
+        value: telecomInfrastructureComponent?.wires?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-component.details.routers'),
+        value: telecomInfrastructureComponent?.routers?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-component.details.switches'),
+        value: telecomInfrastructureComponent?.switches?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-component.details.hubs'),
+        value: telecomInfrastructureComponent?.hubs?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-component.details.repeaters'),
+        value: telecomInfrastructureComponent?.repeaters?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-component.details.antennas'),
+        value: telecomInfrastructureComponent?.antennas?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-component.details.towers'),
+        value: telecomInfrastructureComponent?.towers?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-component.details.remark'),
+        value: telecomInfrastructureComponent?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: telecomInfrastructureComponent?.created_at ? formatCreatedAt(telecomInfrastructureComponent.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: telecomInfrastructureComponent?.updated_at ? formatCreatedAt(telecomInfrastructureComponent.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

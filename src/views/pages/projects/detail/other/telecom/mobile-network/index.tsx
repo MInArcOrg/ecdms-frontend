@@ -17,7 +17,7 @@ import MobileNetworkDrawer from './mobile-network-drawer';
 import { mobileNetworkColumns } from './mobile-network-row';
 
 interface MobileNetworkListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }

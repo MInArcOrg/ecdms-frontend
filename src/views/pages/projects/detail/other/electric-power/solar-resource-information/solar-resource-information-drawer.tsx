@@ -12,7 +12,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { SolarResourceInformation } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface SolarResourceInformationDrawerType {
   open: boolean;
@@ -20,7 +20,7 @@ interface SolarResourceInformationDrawerType {
   refetch: () => void;
   solarResourceInformation: SolarResourceInformation;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const SolarResourceInformationDrawer = (props: SolarResourceInformationDrawerType) => {
@@ -95,9 +95,8 @@ const SolarResourceInformationDrawer = (props: SolarResourceInformationDrawerTyp
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.solar-resource-information.${
-            isEdit ? `edit-solar-resource-information` : `create-solar-resource-information`
-          }`}
+          title={`project.other.solar-resource-information.${isEdit ? `edit-solar-resource-information` : `create-solar-resource-information`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
