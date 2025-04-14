@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -21,7 +21,7 @@ import PowerGenerationCapacityDrawer from './power-generation-capacity-drawer';
 import { powerGenerationCapacityColumns } from './power-generation-capacity-row';
 
 interface PowerGenerationCapacityListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -78,43 +78,43 @@ const PowerGenerationCapacityList: React.FC<PowerGenerationCapacityListProps> = 
   const mapPowerGenerationCapacityToDetailItems = (
     powerGenerationCapacity: PowerGenerationCapacity
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.power-generation-capacity.details.capacity'),
-      value: powerGenerationCapacity?.capacity !== undefined ? `${powerGenerationCapacity.capacity} MW` : 'N/A'
-    },
-    {
-      title: t('project.other.power-generation-capacity.details.annual-generation'),
-      value: powerGenerationCapacity?.annual_generation !== undefined ? `${powerGenerationCapacity.annual_generation} GWh` : 'N/A'
-    },
-    {
-      title: t('project.other.power-generation-capacity.details.units-number'),
-      value: powerGenerationCapacity?.units_number !== undefined ? `${powerGenerationCapacity.units_number}` : 'N/A'
-    },
-    {
-      title: t('project.other.power-generation-capacity.details.owner'),
-      value: powerGenerationCapacity?.owner_id || 'N/A'
-    },
-    {
-      title: t('project.other.power-generation-capacity.details.commissioning-date'),
-      value: powerGenerationCapacity?.commissioning_date ? formatCreatedAt(powerGenerationCapacity.commissioning_date) : 'N/A'
-    },
-    {
-      title: t('project.other.power-generation-capacity.details.plant-life'),
-      value: powerGenerationCapacity?.plant_life !== undefined ? `${powerGenerationCapacity.plant_life} ${t('common.years')}` : 'N/A'
-    },
-    {
-      title: t('project.other.power-generation-capacity.details.others'),
-      value: powerGenerationCapacity?.others || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: powerGenerationCapacity?.created_at ? formatCreatedAt(powerGenerationCapacity.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: powerGenerationCapacity?.updated_at ? formatCreatedAt(powerGenerationCapacity.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.power-generation-capacity.details.capacity'),
+        value: powerGenerationCapacity?.capacity !== undefined ? `${powerGenerationCapacity.capacity} MW` : 'N/A'
+      },
+      {
+        title: t('project.other.power-generation-capacity.details.annual-generation'),
+        value: powerGenerationCapacity?.annual_generation !== undefined ? `${powerGenerationCapacity.annual_generation} GWh` : 'N/A'
+      },
+      {
+        title: t('project.other.power-generation-capacity.details.units-number'),
+        value: powerGenerationCapacity?.units_number !== undefined ? `${powerGenerationCapacity.units_number}` : 'N/A'
+      },
+      {
+        title: t('project.other.power-generation-capacity.details.owner'),
+        value: powerGenerationCapacity?.owner_id || 'N/A'
+      },
+      {
+        title: t('project.other.power-generation-capacity.details.commissioning-date'),
+        value: powerGenerationCapacity?.commissioning_date ? formatCreatedAt(powerGenerationCapacity.commissioning_date) : 'N/A'
+      },
+      {
+        title: t('project.other.power-generation-capacity.details.plant-life'),
+        value: powerGenerationCapacity?.plant_life !== undefined ? `${powerGenerationCapacity.plant_life} ${t('common.years')}` : 'N/A'
+      },
+      {
+        title: t('project.other.power-generation-capacity.details.others'),
+        value: powerGenerationCapacity?.others || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: powerGenerationCapacity?.created_at ? formatCreatedAt(powerGenerationCapacity.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: powerGenerationCapacity?.updated_at ? formatCreatedAt(powerGenerationCapacity.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

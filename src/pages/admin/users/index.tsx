@@ -1,12 +1,14 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import userHook from 'src/hooks/admin/user-hook';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import userApiService from 'src/services/admin/user-service';
 import User from 'src/types/admin/user';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import UserDrawer from 'src/views/admin/user/list/user-drawer';
 import { userColumns } from 'src/views/admin/user/list/user-row-column';
 import ItemsListing from 'src/views/shared/listing';
-import { useTranslation } from 'react-i18next';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
 
 const UserList = ({}) => {
   const [userDrawerOpen, setAddUserOpen] = useState<boolean>(false);
@@ -14,15 +16,26 @@ const UserList = ({}) => {
 
   const { t } = useTranslation();
   // Access the hook methods and state
-  const { pagination, allUsers, isLoading, deleteUser, fetchUsers, refetch } = userHook();
+  const fetchUsers = (params: GetRequestParam): Promise<IApiResponse<User[]>> => {
+    return userApiService.getAll(params);
+  };
 
+  const {
+    data: users,
+    isLoading,
+    pagination,
+    refetch
+  } = usePaginatedFetch<User[]>({
+    queryKey: ['system-users'],
+    fetchFunction: fetchUsers
+  });
   const toggleUserDrawer = () => {
     setEditableUser({} as User);
-    console.log('editable user', editableUser);
     setAddUserOpen(!userDrawerOpen);
   };
-  function handleDelete(id: string): void {
-    deleteUser(id);
+  async function handleDelete(id: string): Promise<void> {
+    await userApiService.delete(id);
+    refetch();
   }
   const handleEdit = (user: User) => {
     toggleUserDrawer();
@@ -37,7 +50,7 @@ const UserList = ({}) => {
         onCreateClick={toggleUserDrawer}
         fetchDataFunction={fetchUsers}
         tableProps={{ headers: userColumns(handleEdit, handleDelete, t, refetch) }}
-        items={allUsers}
+        items={users || []}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleUserDrawer,
@@ -47,7 +60,7 @@ const UserList = ({}) => {
       />
 
       {userDrawerOpen && (
-        <UserDrawer refetch={fetchUsers} open={userDrawerOpen} toggle={toggleUserDrawer} user={editableUser as User} departmentId={''} />
+        <UserDrawer refetch={refetch} open={userDrawerOpen} toggle={toggleUserDrawer} user={editableUser as User} departmentId={''} />
       )}
     </>
   );

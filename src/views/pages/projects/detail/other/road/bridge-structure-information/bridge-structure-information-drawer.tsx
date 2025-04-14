@@ -7,7 +7,7 @@ import BridgeStructureInformationForm from './bridge-structure-information-form'
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import type { BridgeStructureInformation } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface BridgeStructureInformationDrawerType {
   open: boolean;
@@ -15,7 +15,7 @@ interface BridgeStructureInformationDrawerType {
   refetch: () => void;
   bridgeStructureInformation: BridgeStructureInformation;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const BridgeStructureInformationDrawer = (props: BridgeStructureInformationDrawerType) => {
@@ -57,18 +57,16 @@ const BridgeStructureInformationDrawer = (props: BridgeStructureInformationDrawe
 
   return (
     <CustomSideDrawer
-      title={`project.other.bridge-structure-information.${
-        isEdit ? `edit-bridge-structure-information` : `create-bridge-structure-information`
-      }`}
+      title={`project.other.bridge-structure-information.${isEdit ? `edit-bridge-structure-information` : `create-bridge-structure-information`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.bridge-structure-information.${
-            isEdit ? `edit-bridge-structure-information` : `create-bridge-structure-information`
-          }`}
+          title={`project.other.bridge-structure-information.${isEdit ? `edit-bridge-structure-information` : `create-bridge-structure-information`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

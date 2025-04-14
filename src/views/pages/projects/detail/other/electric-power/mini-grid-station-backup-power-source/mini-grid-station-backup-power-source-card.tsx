@@ -1,21 +1,21 @@
-"use client"
+'use client';
 
-import { Box, Button, Card, CardActions, CardContent, Divider, Typography, Grid } from "@mui/material"
-import type React from "react"
-import { useTranslation } from "react-i18next"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
-import type { MiniGridStationBackupPowerSource } from "src/types/project/other"
-import FileDrawer from "src/views/components/custom/files-drawer"
-import ModelAction from "src/views/components/custom/model-actions"
-import RowOptions from "src/views/shared/listing/row-options"
-import { formatCreatedAt, formatDate } from "src/utils/formatter/date"
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography, Grid } from '@mui/material';
+import type React from 'react';
+import { useTranslation } from 'react-i18next';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import type { MiniGridStationBackupPowerSource } from 'src/types/project/other';
+import FileDrawer from 'src/views/components/custom/files-drawer';
+import ModelAction from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
+import { formatCreatedAt, formatDate } from 'src/utils/formatter/date';
 
 interface MiniGridStationBackupPowerSourceCardProps {
-  miniGridStationBackupPowerSource: MiniGridStationBackupPowerSource
-  refetch: () => void
-  onEdit: (miniGridStationBackupPowerSource: MiniGridStationBackupPowerSource) => void
-  onDelete: (id: string) => void
-  onDetail: (miniGridStationBackupPowerSource: MiniGridStationBackupPowerSource) => void
+  miniGridStationBackupPowerSource: MiniGridStationBackupPowerSource;
+  refetch: () => void;
+  onEdit: (miniGridStationBackupPowerSource: MiniGridStationBackupPowerSource) => void;
+  onDelete: (id: string) => void;
+  onDetail: (miniGridStationBackupPowerSource: MiniGridStationBackupPowerSource) => void;
 }
 
 const MiniGridStationBackupPowerSourceCard: React.FC<MiniGridStationBackupPowerSourceCardProps> = ({
@@ -23,9 +23,9 @@ const MiniGridStationBackupPowerSourceCard: React.FC<MiniGridStationBackupPowerS
   refetch,
   onEdit,
   onDelete,
-  onDetail,
+  onDetail
 }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <Card sx={{ p: 2 }}>
@@ -38,12 +38,12 @@ const MiniGridStationBackupPowerSourceCard: React.FC<MiniGridStationBackupPowerS
               onClick={() => onDetail(miniGridStationBackupPowerSource)}
               sx={{
                 fontWeight: 500,
-                textDecoration: "none",
-                color: "text.secondary",
-                "&:hover": { color: "primary.main" },
+                textDecoration: 'none',
+                color: 'text.secondary',
+                '&:hover': { color: 'primary.main' }
               }}
             >
-              {miniGridStationBackupPowerSource?.name || miniGridStationBackupPowerSource?.id.slice(0, 8) + "..."}
+              {miniGridStationBackupPowerSource?.name || miniGridStationBackupPowerSource?.id.slice(0, 8) + '...'}
             </Typography>
           </Typography>
         </Box>
@@ -51,15 +51,15 @@ const MiniGridStationBackupPowerSourceCard: React.FC<MiniGridStationBackupPowerS
         <Divider sx={{ my: 1 }} />
 
         <Typography variant="subtitle1" mt={2} fontWeight="bold">
-          {t("project.other.mini-grid-station-backup-power-source.technical-specifications")}
+          {t('project.other.mini-grid-station-backup-power-source.technical-specifications')}
         </Typography>
 
         <Grid container spacing={2} mt={1}>
           {miniGridStationBackupPowerSource?.capacity !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t("project.other.mini-grid-station-backup-power-source.details.capacity")}:{" "}
-                {miniGridStationBackupPowerSource.capacity} {t("common.kw")}
+                {t('project.other.mini-grid-station-backup-power-source.details.capacity')}: {miniGridStationBackupPowerSource.capacity}{' '}
+                {t('common.kw')}
               </Typography>
             </Grid>
           )}
@@ -67,22 +67,22 @@ const MiniGridStationBackupPowerSourceCard: React.FC<MiniGridStationBackupPowerS
           {miniGridStationBackupPowerSource?.distribution_lines_total_length !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t("project.other.mini-grid-station-backup-power-source.details.distribution-lines-total-length")}:{" "}
-                {miniGridStationBackupPowerSource.distribution_lines_total_length} {t("common.km")}
+                {t('project.other.mini-grid-station-backup-power-source.details.distribution-lines-total-length')}:{' '}
+                {miniGridStationBackupPowerSource.distribution_lines_total_length} {t('common.km')}
               </Typography>
             </Grid>
           )}
         </Grid>
 
         <Typography variant="subtitle1" mt={2} fontWeight="bold">
-          {t("project.other.mini-grid-station-backup-power-source.timeline-information")}
+          {t('project.other.mini-grid-station-backup-power-source.timeline-information')}
         </Typography>
 
         <Grid container spacing={2} mt={1}>
           {miniGridStationBackupPowerSource?.installation_year !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t("project.other.mini-grid-station-backup-power-source.details.installation-year")}:{" "}
+                {t('project.other.mini-grid-station-backup-power-source.details.installation-year')}:{' '}
                 {miniGridStationBackupPowerSource.installation_year}
               </Typography>
             </Grid>
@@ -91,8 +91,8 @@ const MiniGridStationBackupPowerSourceCard: React.FC<MiniGridStationBackupPowerS
           {miniGridStationBackupPowerSource?.lifetime !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t("project.other.mini-grid-station-backup-power-source.details.lifetime")}:{" "}
-                {miniGridStationBackupPowerSource.lifetime} {t("common.years")}
+                {t('project.other.mini-grid-station-backup-power-source.details.lifetime')}: {miniGridStationBackupPowerSource.lifetime}{' '}
+                {t('common.years')}
               </Typography>
             </Grid>
           )}
@@ -100,7 +100,7 @@ const MiniGridStationBackupPowerSourceCard: React.FC<MiniGridStationBackupPowerS
           {miniGridStationBackupPowerSource?.commissioning_date && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t("project.other.mini-grid-station-backup-power-source.details.commissioning-date")}:{" "}
+                {t('project.other.mini-grid-station-backup-power-source.details.commissioning-date')}:{' '}
                 {formatDate(miniGridStationBackupPowerSource.commissioning_date)}
               </Typography>
             </Grid>
@@ -110,8 +110,7 @@ const MiniGridStationBackupPowerSourceCard: React.FC<MiniGridStationBackupPowerS
         {miniGridStationBackupPowerSource?.other && (
           <Box mt={2}>
             <Typography variant="body2" color="text.secondary">
-              {t("project.other.mini-grid-station-backup-power-source.details.other")}:{" "}
-              {miniGridStationBackupPowerSource.other}
+              {t('project.other.mini-grid-station-backup-power-source.details.other')}: {miniGridStationBackupPowerSource.other}
             </Typography>
           </Box>
         )}
@@ -119,21 +118,23 @@ const MiniGridStationBackupPowerSourceCard: React.FC<MiniGridStationBackupPowerS
         {miniGridStationBackupPowerSource?.remark && (
           <Box mt={2}>
             <Typography variant="body2" color="text.secondary">
-              {t("project.other.mini-grid-station-backup-power-source.details.remark")}:{" "}
-              {miniGridStationBackupPowerSource.remark}
+              {t('project.other.mini-grid-station-backup-power-source.details.remark')}: {miniGridStationBackupPowerSource.remark}
             </Typography>
           </Box>
         )}
 
         {miniGridStationBackupPowerSource?.created_at && (
           <Typography variant="body2" color="text.secondary" mt={2}>
-            {t("common.table-columns.created-at")}: {formatCreatedAt(miniGridStationBackupPowerSource.created_at)}
+            {t('common.table-columns.created-at')}: {formatCreatedAt(miniGridStationBackupPowerSource.created_at)}
           </Typography>
         )}
       </CardContent>
 
-      <CardActions sx={{ justifyContent: "space-between" }}>
-        <FileDrawer id={miniGridStationBackupPowerSource.id} type={uploadableProjectFileTypes.other.mini_grid_station_backup_power_source} />
+      <CardActions sx={{ justifyContent: 'space-between' }}>
+        <FileDrawer
+          id={miniGridStationBackupPowerSource.id}
+          type={uploadableProjectFileTypes.other.mini_grid_station_backup_power_source}
+        />
 
         <Box display="flex">
           <ModelAction
@@ -146,12 +147,12 @@ const MiniGridStationBackupPowerSourceCard: React.FC<MiniGridStationBackupPowerS
           />
           <RowOptions
             deletePermissionRule={{
-              action: "delete",
-              subject: "minigridstationbackuppowersource",
+              action: 'delete',
+              subject: 'minigridstationbackuppowersource'
             }}
             editPermissionRule={{
-              action: "update",
-              subject: "minigridstationbackuppowersource",
+              action: 'update',
+              subject: 'minigridstationbackuppowersource'
             }}
             onEdit={() => onEdit(miniGridStationBackupPowerSource)}
             onDelete={() => onDelete(miniGridStationBackupPowerSource.id)}
@@ -161,7 +162,7 @@ const MiniGridStationBackupPowerSourceCard: React.FC<MiniGridStationBackupPowerS
         </Box>
       </CardActions>
     </Card>
-  )
-}
+  );
+};
 
-export default MiniGridStationBackupPowerSourceCard
+export default MiniGridStationBackupPowerSourceCard;

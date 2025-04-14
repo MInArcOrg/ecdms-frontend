@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -24,7 +24,7 @@ import { projectMasterModels } from 'src/constants/master-data/project-general-m
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 
 interface RoadMaintenanceActivityListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -102,39 +102,39 @@ const RoadMaintenanceActivityList: React.FC<RoadMaintenanceActivityListProps> = 
   const mapRoadMaintenanceActivityToDetailItems = (
     roadMaintenanceActivity: RoadMaintenanceActivity
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.road-maintenance-activity.details.road-segment'),
-      value: roadMaintenanceActivity?.road_segment || 'N/A'
-    },
-    {
-      title: t('project.other.road-maintenance-activity.details.maintenance-frequency'),
-      value: roadMaintenanceActivity?.maintenance_frequency_id
-        ? maintenanceFrequencyMap.get(roadMaintenanceActivity.maintenance_frequency_id) || roadMaintenanceActivity.maintenance_frequency_id
-        : 'N/A'
-    },
-    {
-      title: t('project.other.road-maintenance-activity.details.maintenance-type'),
-      value: roadMaintenanceActivity?.maintenance_type_id
-        ? maintenanceTypeMap.get(roadMaintenanceActivity.maintenance_type_id) || roadMaintenanceActivity.maintenance_type_id
-        : 'N/A'
-    },
-    {
-      title: t('project.other.road-maintenance-activity.details.consultant'),
-      value: roadMaintenanceActivity?.consultant || 'N/A'
-    },
-    {
-      title: t('project.other.road-maintenance-activity.details.remark'),
-      value: roadMaintenanceActivity?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: roadMaintenanceActivity?.created_at ? formatCreatedAt(roadMaintenanceActivity.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: roadMaintenanceActivity?.updated_at ? formatCreatedAt(roadMaintenanceActivity.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.road-maintenance-activity.details.road-segment'),
+        value: roadMaintenanceActivity?.road_segment || 'N/A'
+      },
+      {
+        title: t('project.other.road-maintenance-activity.details.maintenance-frequency'),
+        value: roadMaintenanceActivity?.maintenance_frequency_id
+          ? maintenanceFrequencyMap.get(roadMaintenanceActivity.maintenance_frequency_id) || roadMaintenanceActivity.maintenance_frequency_id
+          : 'N/A'
+      },
+      {
+        title: t('project.other.road-maintenance-activity.details.maintenance-type'),
+        value: roadMaintenanceActivity?.maintenance_type_id
+          ? maintenanceTypeMap.get(roadMaintenanceActivity.maintenance_type_id) || roadMaintenanceActivity.maintenance_type_id
+          : 'N/A'
+      },
+      {
+        title: t('project.other.road-maintenance-activity.details.consultant'),
+        value: roadMaintenanceActivity?.consultant || 'N/A'
+      },
+      {
+        title: t('project.other.road-maintenance-activity.details.remark'),
+        value: roadMaintenanceActivity?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: roadMaintenanceActivity?.created_at ? formatCreatedAt(roadMaintenanceActivity.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: roadMaintenanceActivity?.updated_at ? formatCreatedAt(roadMaintenanceActivity.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

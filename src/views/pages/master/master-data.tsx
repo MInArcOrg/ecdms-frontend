@@ -46,7 +46,6 @@ const MasterDataDetail: React.FC<MasterDataDetailProps> = ({ model }) => {
     router.push(`/master-data/${model}/${selectedType?.id}/${categoryId}`);
   };
 
-
   return (
     <Container>
       <Typography variant="h5" gutterBottom>

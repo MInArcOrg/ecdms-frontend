@@ -18,7 +18,7 @@ interface MobileNetworkDrawerType {
   refetch: () => void;
   mobileNetwork: MobileNetwork;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const MobileNetworkDrawer = (props: MobileNetworkDrawerType) => {

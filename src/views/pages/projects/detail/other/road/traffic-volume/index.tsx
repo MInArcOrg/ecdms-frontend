@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import type { TrafficVolume } from 'src/types/project/other';
@@ -18,9 +17,10 @@ import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-det
 import TrafficVolumeCard from './traffic-volume-card';
 import TrafficVolumeDrawer from './traffic-volume-drawer';
 import { trafficVolumeColumns } from './traffic-volume-row';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface TrafficVolumeListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }

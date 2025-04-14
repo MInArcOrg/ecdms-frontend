@@ -1,9 +1,9 @@
-import ProfessionalList from 'src/views/pages/resources/professional';
+import ResourceList from 'src/views/pages/resources/resource-list';
 
 const ResourcePage = () => {
   return (
     <>
-      <ProfessionalList model="Professional" />
+      <ResourceList />
     </>
   );
 };

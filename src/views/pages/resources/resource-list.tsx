@@ -68,6 +68,7 @@ function ResourceList() {
           ItemViewComponent={({ data }) => (
             <ResourceCard resource={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
           )}
+          title={t('resource.title')}
           createActionConfig={{
             ...defaultCreateActionConfig,
             onClick: toggleDrawer,

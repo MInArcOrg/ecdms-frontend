@@ -17,7 +17,7 @@ import InternetConnectionInfrastructureManufacturerDrawer from './internet-conne
 import { internetConnectionInfrastructureManufacturerColumns } from './internet-connection-infrastructure-manufacturer-row';
 
 interface InternetConnectionInfrastructureManufacturerListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -83,43 +83,43 @@ const InternetConnectionInfrastructureManufacturerList: React.FC<InternetConnect
   const mapInternetConnectionInfrastructureManufacturerToDetailItems = (
     internetConnectionInfrastructureManufacturer: InternetConnectionInfrastructureManufacturer
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.internet-connection-infrastructure-manufacturer.details.internet-connection-id'),
-      value: internetConnectionInfrastructureManufacturer?.internet_connection_id || 'N/A'
-    },
-    {
-      title: t('project.other.internet-connection-infrastructure-manufacturer.details.routers'),
-      value: internetConnectionInfrastructureManufacturer?.routers || 'N/A'
-    },
-    {
-      title: t('project.other.internet-connection-infrastructure-manufacturer.details.switches'),
-      value: internetConnectionInfrastructureManufacturer?.switches || 'N/A'
-    },
-    {
-      title: t('project.other.internet-connection-infrastructure-manufacturer.details.modems'),
-      value: internetConnectionInfrastructureManufacturer?.modems || 'N/A'
-    },
-    {
-      title: t('project.other.internet-connection-infrastructure-manufacturer.details.cables'),
-      value: internetConnectionInfrastructureManufacturer?.cables || 'N/A'
-    },
-    {
-      title: t('project.other.internet-connection-infrastructure-manufacturer.details.others'),
-      value: internetConnectionInfrastructureManufacturer?.others || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: internetConnectionInfrastructureManufacturer?.created_at
-        ? formatCreatedAt(internetConnectionInfrastructureManufacturer.created_at)
-        : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: internetConnectionInfrastructureManufacturer?.updated_at
-        ? formatCreatedAt(internetConnectionInfrastructureManufacturer.updated_at)
-        : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.internet-connection-infrastructure-manufacturer.details.internet-connection-id'),
+        value: internetConnectionInfrastructureManufacturer?.internet_connection_id || 'N/A'
+      },
+      {
+        title: t('project.other.internet-connection-infrastructure-manufacturer.details.routers'),
+        value: internetConnectionInfrastructureManufacturer?.routers || 'N/A'
+      },
+      {
+        title: t('project.other.internet-connection-infrastructure-manufacturer.details.switches'),
+        value: internetConnectionInfrastructureManufacturer?.switches || 'N/A'
+      },
+      {
+        title: t('project.other.internet-connection-infrastructure-manufacturer.details.modems'),
+        value: internetConnectionInfrastructureManufacturer?.modems || 'N/A'
+      },
+      {
+        title: t('project.other.internet-connection-infrastructure-manufacturer.details.cables'),
+        value: internetConnectionInfrastructureManufacturer?.cables || 'N/A'
+      },
+      {
+        title: t('project.other.internet-connection-infrastructure-manufacturer.details.others'),
+        value: internetConnectionInfrastructureManufacturer?.others || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: internetConnectionInfrastructureManufacturer?.created_at
+          ? formatCreatedAt(internetConnectionInfrastructureManufacturer.created_at)
+          : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: internetConnectionInfrastructureManufacturer?.updated_at
+          ? formatCreatedAt(internetConnectionInfrastructureManufacturer.updated_at)
+          : 'N/A'
+      }
+    ];
 
   return (
     <Box>

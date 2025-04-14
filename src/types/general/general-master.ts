@@ -14,6 +14,7 @@ export interface ProjectGeneralMaster {
   created_at?: Date;
   updated_at?: Date;
 }
+
 export interface DeckSlabType {
   id: string;
   title?: string;
@@ -359,6 +360,15 @@ export interface IntersectionType {
   title?: string;
   description?: string;
   project_type_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+export interface ResourceGeneralMaster {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  model: string;
   created_at?: Date;
   updated_at?: Date;
 }

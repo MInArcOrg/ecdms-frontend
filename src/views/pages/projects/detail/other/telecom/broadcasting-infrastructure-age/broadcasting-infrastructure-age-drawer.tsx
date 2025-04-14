@@ -1,48 +1,40 @@
-"use client"
+'use client';
 
-import type { FormikProps } from "formik"
-import type { IApiPayload, IApiResponse } from "src/types/requests"
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
-import FormPageWrapper from "src/views/shared/form/form-wrapper"
-import * as yup from "yup"
-import BroadcastingInfrastructureAgeForm from "./broadcasting-infrastructure-age-form"
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import BroadcastingInfrastructureAgeForm from './broadcasting-infrastructure-age-form';
 
-import { useState } from "react"
-import projectOtherApiSecondService from "src/services/project/project-other-second-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
-import { uploadFile } from "src/services/utils/file-utils"
-import type { BroadcastingInfrastructureAge, BroadcastingInfrastructure } from "src/types/project/other"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import { useState } from 'react';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import type { BroadcastingInfrastructureAge, BroadcastingInfrastructure } from 'src/types/project/other';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface BroadcastingInfrastructureAgeDrawerType {
-  open: boolean
-  toggle: () => void
-  refetch: () => void
-  broadcastingInfrastructureAge: BroadcastingInfrastructureAge
-  projectId: string
-  otherSubMenu?: OtherMenuRoute
-  broadcastingInfrastructures: BroadcastingInfrastructure[]
+  open: boolean;
+  toggle: () => void;
+  refetch: () => void;
+  broadcastingInfrastructureAge: BroadcastingInfrastructureAge;
+  projectId: string;
+  otherSubMenu?: DetailSubMenuItemChild;
+  broadcastingInfrastructures: BroadcastingInfrastructure[];
 }
 
 const BroadcastingInfrastructureAgeDrawer = (props: BroadcastingInfrastructureAgeDrawerType) => {
-  const { 
-    open, 
-    toggle, 
-    refetch, 
-    broadcastingInfrastructureAge, 
-    projectId, 
-    otherSubMenu,
-    broadcastingInfrastructures 
-  } = props
-  
-  const [uploadableFile, setUploadableFile] = useState<File | null>(null)
-  
+  const { open, toggle, refetch, broadcastingInfrastructureAge, projectId, otherSubMenu, broadcastingInfrastructures } = props;
+
+  const [uploadableFile, setUploadableFile] = useState<File | null>(null);
+
   const onFileChange = (file: File | null) => {
-    setUploadableFile(file)
-  }
+    setUploadableFile(file);
+  };
 
   const validationSchema = yup.object().shape({
-    broadcasting_infrastructure_id: yup.string().required("Broadcasting infrastructure is required"),
+    broadcasting_infrastructure_id: yup.string().required('Broadcasting infrastructure is required'),
     antennas: yup
       .number()
       .nullable()
@@ -59,20 +51,20 @@ const BroadcastingInfrastructureAgeDrawer = (props: BroadcastingInfrastructureAg
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value)),
-    others: yup.string().nullable(),
-  })
+    others: yup.string().nullable()
+  });
 
-  const isEdit = Boolean(broadcastingInfrastructureAge?.id)
+  const isEdit = Boolean(broadcastingInfrastructureAge?.id);
 
   const createBroadcastingInfrastructureAge = async (body: IApiPayload<BroadcastingInfrastructureAge>) =>
-    projectOtherApiSecondService<BroadcastingInfrastructureAge>().create(otherSubMenu?.apiRoute || "", body)
+    projectOtherApiSecondService<BroadcastingInfrastructureAge>().create(otherSubMenu?.apiRoute || '', body);
 
   const editBroadcastingInfrastructureAge = async (body: IApiPayload<BroadcastingInfrastructureAge>) =>
     projectOtherApiSecondService<BroadcastingInfrastructureAge>().update(
-      otherSubMenu?.apiRoute || "",
-      broadcastingInfrastructureAge?.id || "",
-      body,
-    )
+      otherSubMenu?.apiRoute || '',
+      broadcastingInfrastructureAge?.id || '',
+      body
+    );
 
   const getPayload = (values: BroadcastingInfrastructureAge) => ({
     data: {
@@ -84,45 +76,41 @@ const BroadcastingInfrastructureAgeDrawer = (props: BroadcastingInfrastructureAg
       towers: values.towers,
       cables: values.cables,
       others: values.others,
-      id: broadcastingInfrastructureAge?.id,
+      id: broadcastingInfrastructureAge?.id
     },
-    files: uploadableFile ? [uploadableFile] : [],
-  })
+    files: uploadableFile ? [uploadableFile] : []
+  });
 
-  const handleClose = () => toggle()
+  const handleClose = () => toggle();
 
   const onActionSuccess = async (
-    response: IApiResponse<BroadcastingInfrastructureAge>, 
+    response: IApiResponse<BroadcastingInfrastructureAge>,
     payload: IApiPayload<BroadcastingInfrastructureAge>
   ) => {
     if (payload.files.length > 0) {
-      await uploadFile(
-        payload.files[0], 
-        uploadableProjectFileTypes.other.broadcastingInfrastructureAge, 
-        response.payload.id, 
-        "", 
-        ""
-      )
+      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.broadcastingInfrastructureAge, response.payload.id, '', '');
     }
-    
-    refetch()
-    handleClose()
-  }
+
+    refetch();
+    handleClose();
+  };
 
   return (
     <CustomSideDrawer
-      title={`project.other.broadcasting-infrastructure-age.${isEdit ? `edit-broadcasting-infrastructure-age` : `create-broadcasting-infrastructure-age`}`}
+      title={`project.other.broadcasting-infrastructure-age.${isEdit ? `edit-broadcasting-infrastructure-age` : `create-broadcasting-infrastructure-age`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.broadcasting-infrastructure-age.${isEdit ? `edit-broadcasting-infrastructure-age` : `create-broadcasting-infrastructure-age`}`}
+          title={`project.other.broadcasting-infrastructure-age.${isEdit ? `edit-broadcasting-infrastructure-age` : `create-broadcasting-infrastructure-age`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...broadcastingInfrastructureAge,
+            ...broadcastingInfrastructureAge
           }}
           createActionFunc={isEdit ? editBroadcastingInfrastructureAge : createBroadcastingInfrastructureAge}
           onActionSuccess={onActionSuccess}
@@ -130,18 +118,18 @@ const BroadcastingInfrastructureAgeDrawer = (props: BroadcastingInfrastructureAg
         >
           {(formik: FormikProps<BroadcastingInfrastructureAge>) => {
             return (
-              <BroadcastingInfrastructureAgeForm 
-                file={uploadableFile} 
-                onFileChange={onFileChange} 
+              <BroadcastingInfrastructureAgeForm
+                file={uploadableFile}
+                onFileChange={onFileChange}
                 formik={formik}
                 broadcastingInfrastructures={broadcastingInfrastructures}
               />
-            )
+            );
           }}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>
-  )
-}
+  );
+};
 
-export default BroadcastingInfrastructureAgeDrawer
+export default BroadcastingInfrastructureAgeDrawer;
