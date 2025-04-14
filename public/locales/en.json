@@ -838,6 +838,53 @@
             "drainage-maintenance-data": "Drainage Maintenance Data"
           }
         },
+        "telecom-infrastructure": {
+          "telecom-infrastructure": {
+            "title": "Telecom",
+            "telecom-network": "Telecom Network",
+            "telecom-infrastructure-age": "Infrastructure Age",
+            "telecom-infrastructure-manufacturer": "Infrastructure Manufacturer",
+            "network-capacity": "Network Capacity",
+            "network-coverage": "Network Coverage",
+            "maintenance": "Maintenance"
+          }
+        },
+        "mobile-satellite": {
+          "mobile-networks": {
+            "title": "Mobile Networks",
+            "mobile-network": "Mobile Network",
+            "age-of-mobile-network-components": "Age of Mobile Network Components",
+            "manufacturer-of-mobile-network-components": "Manufacturer of Mobile Network Components",
+            "network-capacity": "Network Capacity",
+            "network-coverage": "Network Coverage"
+          },
+          "satellite-networks": {
+            "title": "Satellite Networks",
+            "satellite-network": "Satellite Network",
+            "age-of-satellite-network-components": "Age of Satellite Network Components",
+            "manufacturer-of-satellite-network-components": "Manufacturer of Satellite Network Components",
+            "network-capacity": "Network Capacity",
+            "network-coverage": "Network Coverage"
+          }
+        },
+        "broadcasting-data": {
+          "broadcasting": {
+            "title": "Broadcasting",
+            "broadcasting-infrastructure": "Broadcasting Infrastructure",
+            "age-of-broadcasting-infrastructure": "Age of Broadcasting Infrastructure",
+            "manufacturer-of-broadcasting-infrastructure": "Manufacturer of Broadcasting Infrastructure",
+            "network-capacity": "Network Capacity",
+            "network-coverage": "Network Coverage"
+          },
+          "data-systems": {
+            "title": "Data Systems",
+            "data-centers": "Data Centers",
+            "age-of-data-center-components": "Age of Data Center Components",
+            "manufacturer-of-data-center-components": "Manufacturer of Data Center Components",
+            "data-center-facility-capacity": "Data Center Facility Capacity",
+            "environmental-control": "Environmental Control"
+          }
+        },
         "others": {
           "building": "Building",
           "building-dimensions-detail": "Building Dimensions Detail",
@@ -947,7 +994,10 @@
         "reporting": "Reporting",
         "segment": "Segment",
         "feature": "Feature",
-        "maintenance": "Maintenance"
+        "maintenance": "Maintenance",
+        "telecom-infrastructure": "Telecom Infrastructure",
+        "mobile-satellite-networks": "Mobile & Satellite Networks",
+        "broadcasting-data-systems": "Broadcasting & Data Systems"
       }
     },
     "project-time": {
