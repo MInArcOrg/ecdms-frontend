@@ -2879,6 +2879,32 @@
           "remark": "Remark"
         }
       },
+      "mini-grid-station-distribution-line-infrastructure": {
+        "title": "Mini Grid Station Distribution Line Infrastructure",
+        "create-mini-grid-station-distribution-line-infrastructure": "Create Mini Grid Station Distribution Line Infrastructure",
+        "edit-mini-grid-station-distribution-line-infrastructure": "Edit Mini Grid Station Distribution Line Infrastructure",
+        "mini-grid-station-distribution-line-infrastructure-details": "Mini Grid Station Distribution Line Infrastructure Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "connection-information": "Connection Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "distribution-line-type-id": "Distribution Line Type",
+          "distribution-line-material-id": "Distribution Line Material",
+          "distribution-line-conductor-size": "Distribution Line Conductor Size",
+          "voltage-level": "Voltage Level",
+          "topology": "Topology",
+          "switching-station-connection": "Switching Station Connection",
+          "station-name": "Station Name",
+          "remark": "Remark"
+        },
+        "topology-options": {
+          "radial": "Radial",
+          "ring": "Ring"
+        }
+      },
       "electric-distribution-transformer": {
         "title": "Electric Distribution Transformers",
         "create-electric-distribution-transformer": "Create Electric Distribution Transformer",

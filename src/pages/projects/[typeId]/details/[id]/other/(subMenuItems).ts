@@ -682,7 +682,14 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/electric-power/electric-smart-meters-privacy-and-security-data`,
           model: 'electricsmartmetersprivacyandsecuritydata',
           apiRoute: 'electric-smart-meters-privacy-and-security-data'
-        }
+        },
+        {
+          id: 109,
+          title: t("project.navigation.submenu.others.mini-grid-station-distribution-line-infrastructure"),
+          path: `${baseUrl}/electric-power/mini-grid-station-distribution-line-infrastructure`,
+          model: "minigridstationdistributionlineinfrastructure",
+          apiRoute: "mini-grid-station-distribution-line-infrastructures",
+        },
       ]
     },
     {
