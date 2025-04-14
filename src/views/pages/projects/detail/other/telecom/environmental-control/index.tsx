@@ -17,7 +17,7 @@ import EnvironmentalControlDrawer from './environmental-control-drawer';
 import { environmentalControlColumns } from './environmental-control-row';
 
 interface EnvironmentalControlListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }

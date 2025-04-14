@@ -7,7 +7,7 @@ import AccessoryForm from './accessory-form';
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import type { Accessory } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface AccessoryDrawerType {
   open: boolean;
@@ -15,7 +15,7 @@ interface AccessoryDrawerType {
   refetch: () => void;
   accessory: Accessory;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const AccessoryDrawer = (props: AccessoryDrawerType) => {

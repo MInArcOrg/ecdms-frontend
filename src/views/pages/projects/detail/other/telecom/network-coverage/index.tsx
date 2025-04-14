@@ -17,7 +17,7 @@ import NetworkCoverageDrawer from './network-coverage-drawer';
 import { networkCoverageColumns } from './network-coverage-row';
 
 interface NetworkCoverageListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }

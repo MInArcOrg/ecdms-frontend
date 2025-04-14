@@ -19,7 +19,7 @@ interface SafetyAndHealthDrawerType {
   refetch: () => void;
   safetyAndHealth: SafetyAndHealth; // Changed from SafetyAndHealth
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const SafetyAndHealthDrawer = (props: SafetyAndHealthDrawerType) => {

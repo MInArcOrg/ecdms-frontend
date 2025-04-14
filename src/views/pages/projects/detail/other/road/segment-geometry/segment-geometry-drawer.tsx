@@ -7,7 +7,7 @@ import SegmentGeometryForm from './segment-geometry-form';
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import type { SegmentGeometry } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface SegmentGeometryDrawerType {
   open: boolean;
@@ -15,7 +15,7 @@ interface SegmentGeometryDrawerType {
   refetch: () => void;
   segmentGeometry: SegmentGeometry;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const SegmentGeometryDrawer = (props: SegmentGeometryDrawerType) => {

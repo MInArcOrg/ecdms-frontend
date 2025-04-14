@@ -12,7 +12,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { SatelliteNetworkComponentManufacturer, SatelliteNetwork } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface SatelliteNetworkComponentManufacturerDrawerType {
   open: boolean;
@@ -20,7 +20,7 @@ interface SatelliteNetworkComponentManufacturerDrawerType {
   refetch: () => void;
   satelliteNetworkComponentManufacturer: SatelliteNetworkComponentManufacturer;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   satelliteNetworks: SatelliteNetwork[];
 }
 
@@ -89,18 +89,16 @@ const SatelliteNetworkComponentManufacturerDrawer = (props: SatelliteNetworkComp
 
   return (
     <CustomSideDrawer
-      title={`project.other.satellite-network-component-manufacturer.${
-        isEdit ? `edit-satellite-network-component-manufacturer` : `create-satellite-network-component-manufacturer`
-      }`}
+      title={`project.other.satellite-network-component-manufacturer.${isEdit ? `edit-satellite-network-component-manufacturer` : `create-satellite-network-component-manufacturer`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.satellite-network-component-manufacturer.${
-            isEdit ? `edit-satellite-network-component-manufacturer` : `create-satellite-network-component-manufacturer`
-          }`}
+          title={`project.other.satellite-network-component-manufacturer.${isEdit ? `edit-satellite-network-component-manufacturer` : `create-satellite-network-component-manufacturer`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

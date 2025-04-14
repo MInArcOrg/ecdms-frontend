@@ -1,18 +1,13 @@
 // ** MUI Imports
-import { TabPanel } from '@mui/lab';
+import { ReactElement } from 'react';
 import UserLayout from 'src/layouts/UserLayout';
 import Department from 'src/types/department/department';
 import CentersLayout from 'src/views/pages/centers/centers-layout';
-import { ReactElement } from 'react';
 import SubDepartmentList from 'src/views/pages/centers/sub-department/sub-department-list';
 import TabsRoute from '../tab-routes';
 
 const Departments = ({ parentDepartment }: { parentDepartment: Department }) => {
-  return (
-    <TabPanel value="1" sx={{ margin: 0, padding: 0 }}>
-      <SubDepartmentList parentDepartment={parentDepartment} />
-    </TabPanel>
-  );
+  return <SubDepartmentList parentDepartment={parentDepartment} />;
 };
 
 Departments.getLayout = (page: ReactElement) => (

@@ -69,7 +69,7 @@ function StakeholderContactPersonList({ stakeholderId }: { type: string; stakeho
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'certificate'
+            subject: 'stakeholdercontactperson'
           }
         }}
         fetchDataFunction={refetch}

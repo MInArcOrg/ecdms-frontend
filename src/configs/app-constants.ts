@@ -39,3 +39,4 @@ export const acadamicLevels: string[] = [
   'PHD Degree',
   'others'
 ];
+export const appModulesNames = ['Masterdata', 'project', 'stakeholder', 'resource', 'document', 'infrastructure'];

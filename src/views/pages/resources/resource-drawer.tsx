@@ -17,11 +17,12 @@ interface ResourceDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required(),
-  description: yup.string().required(),
-  resourcecategory_id: yup.string().required(),
-  resourcesubcategory_id: yup.string(),
-  measurement_unit: yup.string()
+  resourcecategory_id: yup.string().required('Resource category is required'),
+  resourcesubcategory_id: yup.string().required('Resource subcategory is required'),
+  name: yup.string().required('Name is required'),
+  quantity_measurement_unit_id: yup.string().required('Quantity measurement unit is required'),
+  quality_measurement_unit_id: yup.string().required('Quality measurement unit is required'),
+  remark: yup.string().optional()
 });
 
 const ResourceDrawer = (props: ResourceDrawerType) => {

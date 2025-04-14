@@ -84,7 +84,7 @@ const ProfileCard = ({ department, refetch, loading }: { department: Department;
               <Icon icon="tabler:edit" fontSize={19} />
             </IconButton>
             <Typography
-              href="/department-structure"
+              href={`/departments/department-structure/${department?.id}`}
               component={Link}
               sx={{
                 textDecoration: 'none',

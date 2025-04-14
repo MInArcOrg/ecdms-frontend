@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -22,7 +22,7 @@ import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-det
 import FileDrawer from 'src/views/components/custom/files-drawer';
 
 interface GeotechnicalInformationListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -79,59 +79,59 @@ const GeotechnicalInformationList: React.FC<GeotechnicalInformationListProps> = 
   const mapGeotechnicalInformationToDetailItems = (
     geotechnicalInformation: GeotechnicalInformation
   ): { title: string; value: string | React.ReactNode }[] => [
-    {
-      title: t('project.other.geotechnical-information.details.name'),
-      value: geotechnicalInformation?.name || 'N/A'
-    },
-    {
-      title: t('project.other.geotechnical-information.details.soil-type'),
-      value: geotechnicalInformation?.soil_type_id || 'N/A'
-    },
-    {
-      title: t('project.other.geotechnical-information.details.ground-water-impact'),
-      value: geotechnicalInformation?.ground_water_impact_id || 'N/A'
-    },
-    {
-      title: t('project.other.geotechnical-information.details.soil-bearing-capacity'),
-      value: geotechnicalInformation?.soil_bearing_capacity?.toString() || 'N/A'
-    },
-    {
-      title: t('project.other.geotechnical-information.details.slope-stability'),
-      value: geotechnicalInformation?.slope_stability_id || 'N/A'
-    },
-    {
-      title: t('project.other.geotechnical-information.details.retaining-walls'),
-      value: geotechnicalInformation?.retaining_walls ? 'Yes' : 'No'
-    },
-    {
-      title: t('project.other.geotechnical-information.details.geological-hazard'),
-      value: geotechnicalInformation?.geological_hazard || 'N/A'
-    },
-    {
-      title: t('project.other.geotechnical-information.details.remark'),
-      value: geotechnicalInformation?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: geotechnicalInformation?.created_at ? formatCreatedAt(geotechnicalInformation.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: geotechnicalInformation?.updated_at ? formatCreatedAt(geotechnicalInformation.updated_at) : 'N/A'
-    },
-    {
-      title: t('project.other.geotechnical-information.file-types.seismic-design'),
-      value: <FileDrawer id={selectedRow?.id || ''} type={uploadableProjectFileTypes.other.seismicDesign} />
-    },
-    {
-      title: t('project.other.geotechnical-information.file-types.geotechnical-report'),
-      value: <FileDrawer id={selectedRow?.id || ''} type={uploadableProjectFileTypes.other.geotechnicalReport} />
-    },
-    {
-      title: t('project.other.geotechnical-information.file-types.foundation-design'),
-      value: <FileDrawer id={selectedRow?.id || ''} type={uploadableProjectFileTypes.other.foundationDesign} />
-    }
-  ];
+      {
+        title: t('project.other.geotechnical-information.details.name'),
+        value: geotechnicalInformation?.name || 'N/A'
+      },
+      {
+        title: t('project.other.geotechnical-information.details.soil-type'),
+        value: geotechnicalInformation?.soil_type_id || 'N/A'
+      },
+      {
+        title: t('project.other.geotechnical-information.details.ground-water-impact'),
+        value: geotechnicalInformation?.ground_water_impact_id || 'N/A'
+      },
+      {
+        title: t('project.other.geotechnical-information.details.soil-bearing-capacity'),
+        value: geotechnicalInformation?.soil_bearing_capacity?.toString() || 'N/A'
+      },
+      {
+        title: t('project.other.geotechnical-information.details.slope-stability'),
+        value: geotechnicalInformation?.slope_stability_id || 'N/A'
+      },
+      {
+        title: t('project.other.geotechnical-information.details.retaining-walls'),
+        value: geotechnicalInformation?.retaining_walls ? 'Yes' : 'No'
+      },
+      {
+        title: t('project.other.geotechnical-information.details.geological-hazard'),
+        value: geotechnicalInformation?.geological_hazard || 'N/A'
+      },
+      {
+        title: t('project.other.geotechnical-information.details.remark'),
+        value: geotechnicalInformation?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: geotechnicalInformation?.created_at ? formatCreatedAt(geotechnicalInformation.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: geotechnicalInformation?.updated_at ? formatCreatedAt(geotechnicalInformation.updated_at) : 'N/A'
+      },
+      {
+        title: t('project.other.geotechnical-information.file-types.seismic-design'),
+        value: <FileDrawer id={selectedRow?.id || ''} type={uploadableProjectFileTypes.other.seismicDesign} />
+      },
+      {
+        title: t('project.other.geotechnical-information.file-types.geotechnical-report'),
+        value: <FileDrawer id={selectedRow?.id || ''} type={uploadableProjectFileTypes.other.geotechnicalReport} />
+      },
+      {
+        title: t('project.other.geotechnical-information.file-types.foundation-design'),
+        value: <FileDrawer id={selectedRow?.id || ''} type={uploadableProjectFileTypes.other.foundationDesign} />
+      }
+    ];
 
   return (
     <Box>

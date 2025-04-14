@@ -89,7 +89,8 @@ const MasterCategoryList: React.FC<MasterCategoryListProps> = ({ model, selected
                 onEdit={handleEdit}
                 refetch={refetch}
                 t={t}
-                selectedCategory={selectedCategory} />
+                selectedCategory={selectedCategory}
+              />
             )}
             fetchDataFunction={refetch}
             items={categorys || []}

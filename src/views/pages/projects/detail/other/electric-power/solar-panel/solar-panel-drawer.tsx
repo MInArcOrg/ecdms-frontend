@@ -12,7 +12,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { SolarPanel } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface SolarPanelDrawerType {
   open: boolean;
@@ -20,7 +20,7 @@ interface SolarPanelDrawerType {
   refetch: () => void;
   solarPanel: SolarPanel;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const SolarPanelDrawer = (props: SolarPanelDrawerType) => {
