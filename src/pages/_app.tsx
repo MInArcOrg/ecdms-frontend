@@ -1,5 +1,5 @@
 // ** React Imports
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 
 // ** Next Imports
 import type { NextPage } from 'next';
@@ -117,21 +117,22 @@ const App = (props: ExtendedAppProps) => {
   const guestGuard = Component.guestGuard ?? false;
 
   const aclAbilities = Component.acl ?? defaultACLObj;
-  const queryClient = new QueryClient();
+  const [queryClient] = useState(() => new QueryClient())
 
   return (
-    <Provider store={store}>
-      <CacheProvider value={emotionCache}>
-        <Head>
-          <title>{`${themeConfig.templateName} - 1space`}</title>
-          <meta
-            name="description"
-            content={`${themeConfig.templateName} – Material Design React Admin Dashboard Template – is the most developer friendly & highly customizable Admin Dashboard Template based on MUI v5.`}
-          />
-          <meta name="keywords" content="Material Design, MUI, Admin Template, React Admin Template" />
-          <meta name="viewport" content="initial-scale=1, width=device-width" />
-        </Head>
-        <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+
+      <Provider store={store}>
+        <CacheProvider value={emotionCache}>
+          <Head>
+            <title>{`${themeConfig.templateName} - 1space`}</title>
+            <meta
+              name="description"
+              content={`${themeConfig.templateName} – Material Design React Admin Dashboard Template – is the most developer friendly & highly customizable Admin Dashboard Template based on MUI v5.`}
+            />
+            <meta name="keywords" content="Material Design, MUI, Admin Template, React Admin Template" />
+            <meta name="viewport" content="initial-scale=1, width=device-width" />
+          </Head>
           <AuthProvider>
             <SettingsProvider {...(setConfig ? { pageSettings: setConfig() } : {})}>
               <SettingsConsumer>
@@ -152,9 +153,9 @@ const App = (props: ExtendedAppProps) => {
               </SettingsConsumer>
             </SettingsProvider>
           </AuthProvider>
-        </QueryClientProvider>
-      </CacheProvider>
-    </Provider>
+        </CacheProvider>
+      </Provider>
+    </QueryClientProvider>
   );
 };
 

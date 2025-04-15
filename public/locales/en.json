@@ -838,6 +838,53 @@
             "drainage-maintenance-data": "Drainage Maintenance Data"
           }
         },
+        "telecom-infrastructure": {
+          "telecom-infrastructure": {
+            "title": "Telecom",
+            "telecom-network": "Telecom Network",
+            "telecom-infrastructure-age": "Infrastructure Age",
+            "telecom-infrastructure-manufacturer": "Infrastructure Manufacturer",
+            "network-capacity": "Network Capacity",
+            "network-coverage": "Network Coverage",
+            "maintenance": "Maintenance"
+          }
+        },
+        "mobile-satellite": {
+          "mobile-networks": {
+            "title": "Mobile Networks",
+            "mobile-network": "Mobile Network",
+            "age-of-mobile-network-components": "Age of Mobile Network Components",
+            "manufacturer-of-mobile-network-components": "Manufacturer of Mobile Network Components",
+            "network-capacity": "Network Capacity",
+            "network-coverage": "Network Coverage"
+          },
+          "satellite-networks": {
+            "title": "Satellite Networks",
+            "satellite-network": "Satellite Network",
+            "age-of-satellite-network-components": "Age of Satellite Network Components",
+            "manufacturer-of-satellite-network-components": "Manufacturer of Satellite Network Components",
+            "network-capacity": "Network Capacity",
+            "network-coverage": "Network Coverage"
+          }
+        },
+        "broadcasting-data": {
+          "broadcasting": {
+            "title": "Broadcasting",
+            "broadcasting-infrastructure": "Broadcasting Infrastructure",
+            "age-of-broadcasting-infrastructure": "Age of Broadcasting Infrastructure",
+            "manufacturer-of-broadcasting-infrastructure": "Manufacturer of Broadcasting Infrastructure",
+            "network-capacity": "Network Capacity",
+            "network-coverage": "Network Coverage"
+          },
+          "data-systems": {
+            "title": "Data Systems",
+            "data-centers": "Data Centers",
+            "age-of-data-center-components": "Age of Data Center Components",
+            "manufacturer-of-data-center-components": "Manufacturer of Data Center Components",
+            "data-center-facility-capacity": "Data Center Facility Capacity",
+            "environmental-control": "Environmental Control"
+          }
+        },
         "others": {
           "building": "Building",
           "building-dimensions-detail": "Building Dimensions Detail",
@@ -948,7 +995,10 @@
         "reporting": "Reporting",
         "segment": "Segment",
         "feature": "Feature",
-        "maintenance": "Maintenance"
+        "maintenance": "Maintenance",
+        "telecom-infrastructure": "Telecom Infrastructure",
+        "mobile-satellite-networks": "Mobile & Satellite Networks",
+        "broadcasting-data-systems": "Broadcasting & Data Systems"
       }
     },
     "project-time": {
@@ -2828,6 +2878,32 @@
           "commissioning-date": "Commissioning Date",
           "other": "Other Information",
           "remark": "Remark"
+        }
+      },
+      "mini-grid-station-distribution-line-infrastructure": {
+        "title": "Mini Grid Station Distribution Line Infrastructure",
+        "create-mini-grid-station-distribution-line-infrastructure": "Create Mini Grid Station Distribution Line Infrastructure",
+        "edit-mini-grid-station-distribution-line-infrastructure": "Edit Mini Grid Station Distribution Line Infrastructure",
+        "mini-grid-station-distribution-line-infrastructure-details": "Mini Grid Station Distribution Line Infrastructure Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "connection-information": "Connection Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "distribution-line-type-id": "Distribution Line Type",
+          "distribution-line-material-id": "Distribution Line Material",
+          "distribution-line-conductor-size": "Distribution Line Conductor Size",
+          "voltage-level": "Voltage Level",
+          "topology": "Topology",
+          "switching-station-connection": "Switching Station Connection",
+          "station-name": "Station Name",
+          "remark": "Remark"
+        },
+        "topology-options": {
+          "radial": "Radial",
+          "ring": "Ring"
         }
       },
       "electric-distribution-transformer": {
