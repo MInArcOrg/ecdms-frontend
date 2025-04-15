@@ -7,7 +7,10 @@ export const projectMenuIds = {
   reporting: 'REPORTING',
   segment: 'SEGMENT',
   feature: 'FEATURE',
-  maintenance: 'MAINTENANCE'
+  maintenance: 'MAINTENANCE',
+  telecomInfrastructure: 'TELECOM_INFRASTRUCTURE',
+  mobileSatelliteNetworks: 'MOBILE_SATELLITE_NETWORKS',
+  broadcastingDataSystems: 'BROADCASTING_DATA_SYSTEMS'
 };
 
 const menuItems = (id: string, typeId: string): DetailMenuItem[] => {
@@ -46,7 +49,25 @@ const menuItems = (id: string, typeId: string): DetailMenuItem[] => {
       title: 'project.navigation.menu.maintenance',
       path: `${baseUrl}/maintenance`,
       type: projectTypesMaster.road
-    }
+    },
+    {
+      id: projectMenuIds.telecomInfrastructure,
+      title: 'project.navigation.menu.telecom-infrastructure',
+      path: `${baseUrl}/telecom-infrastructure`,
+      type: projectTypesMaster.telecommunication
+    },
+    {
+      id: projectMenuIds.mobileSatelliteNetworks,
+      title: 'project.navigation.menu.mobile-satellite-networks',
+      path: `${baseUrl}/mobile-satellite-networks`,
+      type: projectTypesMaster.telecommunication
+    },
+    {
+      id: projectMenuIds.broadcastingDataSystems,
+      title: 'project.navigation.menu.broadcasting-data-systems',
+      path: `${baseUrl}/broadcasting-data-systems`,
+      type: projectTypesMaster.telecommunication
+    },
   ];
 };
 export const projectTypesMaster = {
@@ -55,7 +76,7 @@ export const projectTypesMaster = {
   railway: 'RAILWAY',
   telecommunication: 'TELECOMMUNICATION',
   road: 'ROAD',
-  waterInfrastructure: 'WATER_INFRASTRUCTURE'
+  waterInfrastructure: 'WATER_INFRASTRUCTURE',
 };
 export type ProjectMenuItem = ReturnType<typeof menuItems>;
 export default menuItems;

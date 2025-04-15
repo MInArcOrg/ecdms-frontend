@@ -25,30 +25,26 @@ const usePaginatedFetch = <T,>({ queryKey, fetchFunction, initialQueryParams = d
   };
 
   const handleSearch = (searchTerm: string, searchKeys: string[]) => {
-    setQueryParams(
-      (prevParams: GetRequestParam): GetRequestParam => ({
-        ...prevParams,
-        filter: {
-          ...prevParams.filter,
-          ...StringHelpers.createSearchFilter(searchTerm, searchKeys)
-        },
-        pagination: {
-          ...prevParams.pagination,
-          page: 1,
-          pageSize: prevParams?.pagination?.pageSize || 0
-        }
-      })
-    );
+    setQueryParams((prevParams: GetRequestParam): GetRequestParam => ({
+      ...prevParams,
+      filter: {
+        ...prevParams.filter,
+        ...StringHelpers.createSearchFilter(searchTerm, searchKeys)
+      },
+      pagination: {
+        ...prevParams.pagination,
+        page: 1,
+        pageSize: prevParams?.pagination?.pageSize || 0
+      }
+    }));
   };
 
   const handleFilter = (filterValues: Record<string, any>) => {
     const cleanedFilterValues = StringHelpers.cleanObject(filterValues);
-    setQueryParams(
-      (prevParams: GetRequestParam): GetRequestParam => ({
-        ...prevParams,
-        filter: cleanedFilterValues
-      })
-    );
+    setQueryParams((prevParams: GetRequestParam): GetRequestParam => ({
+      ...prevParams,
+      filter: cleanedFilterValues
+    }));
   };
 
   const { data, isLoading, error, refetch } = useQuery({
