@@ -3,28 +3,28 @@
 import type React from "react"
 
 import { Box } from "@mui/material"
+import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
+import { projectMasterModels } from "src/constants/master-data/project-general-master-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service"
 import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
 import { defaultCreateActionConfig } from "src/types/general/listing"
-import type { MiniGridStationDistributionLineInfrastructure, MiniGridStation } from "src/types/project/other"
+import type { MiniGridStation, MiniGridStationDistributionLineInfrastructure } from "src/types/project/other"
 import type { GetRequestParam, IApiResponse } from "src/types/requests"
 import { formatCreatedAt } from "src/utils/formatter/date"
 import ItemsListing from "src/views/shared/listing"
-import { useQuery } from "@tanstack/react-query"
 import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-detail-drawer"
 import MiniGridStationDistributionLineInfrastructureCard from "./mini-grid-station-distribution-line-infrastructure-card"
 import MiniGridStationDistributionLineInfrastructureDrawer from "./mini-grid-station-distribution-line-infrastructure-drawer"
 import { miniGridStationDistributionLineInfrastructureColumns } from "./mini-grid-station-distribution-line-infrastructure-row"
-import { projectMasterModels } from "src/constants/master-data/project-general-master-constants"
-import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service"
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout"
 
 interface MiniGridStationDistributionLineInfrastructureListProps {
-    otherSubMenu?: OtherMenuRoute
+    otherSubMenu?: DetailSubMenuItemChild;
     typeId: string
     projectId: string
 }

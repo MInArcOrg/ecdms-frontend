@@ -10,7 +10,8 @@ import projectOtherApiSecondService from "src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
 import { uploadFile } from "src/services/utils/file-utils"
 import type { ElectricGridControlCenterData, MiniGridStation } from "src/types/project/other"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout"
+
 
 interface ElectricGridControlCenterDataDrawerType {
   open: boolean
@@ -18,20 +19,20 @@ interface ElectricGridControlCenterDataDrawerType {
   refetch: () => void
   electricGridControlCenterData: ElectricGridControlCenterData
   projectId: string
-  otherSubMenu?: OtherMenuRoute
+  otherSubMenu?: DetailSubMenuItemChild
   miniGridStations: MiniGridStation[]
   controlSystemTypes: any[]
   communicationLinks: any[]
 }
 
 const ElectricGridControlCenterDataDrawer = (props: ElectricGridControlCenterDataDrawerType) => {
-  const { 
-    open, 
-    toggle, 
-    refetch, 
-    electricGridControlCenterData, 
-    projectId, 
-    otherSubMenu, 
+  const {
+    open,
+    toggle,
+    refetch,
+    electricGridControlCenterData,
+    projectId,
+    otherSubMenu,
     miniGridStations,
     controlSystemTypes,
     communicationLinks
@@ -69,8 +70,8 @@ const ElectricGridControlCenterDataDrawer = (props: ElectricGridControlCenterDat
 
   const editElectricGridControlCenterData = async (body: IApiPayload<ElectricGridControlCenterData>) =>
     projectOtherApiSecondService<ElectricGridControlCenterData>().update(
-      otherSubMenu?.apiRoute || "", 
-      electricGridControlCenterData?.id || "", 
+      otherSubMenu?.apiRoute || "",
+      electricGridControlCenterData?.id || "",
       body
     )
 
@@ -124,10 +125,10 @@ const ElectricGridControlCenterDataDrawer = (props: ElectricGridControlCenterDat
           onCancel={handleClose}
         >
           {(formik: FormikProps<ElectricGridControlCenterData>) => {
-            return <ElectricGridControlCenterDataForm 
-              file={uploadableFile} 
-              onFileChange={onFileChange} 
-              formik={formik} 
+            return <ElectricGridControlCenterDataForm
+              file={uploadableFile}
+              onFileChange={onFileChange}
+              formik={formik}
               miniGridStations={miniGridStations}
               controlSystemTypes={controlSystemTypes}
               communicationLinks={communicationLinks}
