@@ -7,12 +7,13 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout"
+
 import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
 import { defaultCreateActionConfig } from "src/types/general/listing"
-import type { 
-  ElectricGridControlCenterData, 
+import type {
+  ElectricGridControlCenterData,
   MiniGridStation
 } from "src/types/project/other"
 import type { GetRequestParam, IApiResponse } from "src/types/requests"
@@ -27,11 +28,10 @@ import { projectMasterModels } from "src/constants/master-data/project-general-m
 import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service"
 
 interface ElectricGridControlCenterDataListProps {
-  otherSubMenu?: OtherMenuRoute
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string
   projectId: string
 }
-
 const ElectricGridControlCenterDataList: React.FC<ElectricGridControlCenterDataListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false)
   const [showDetailDrawer, setShowDetailDrawer] = useState(false)
@@ -117,48 +117,48 @@ const ElectricGridControlCenterDataList: React.FC<ElectricGridControlCenterDataL
     },
     {
       title: t("project.other.electric-grid-control-center-data.details.mini-grid-station-id"),
-      value: electricGridControlCenterData?.mini_grid_station_id 
-        ? miniGridStationsMap.get(electricGridControlCenterData.mini_grid_station_id) || electricGridControlCenterData.mini_grid_station_id 
+      value: electricGridControlCenterData?.mini_grid_station_id
+        ? miniGridStationsMap.get(electricGridControlCenterData.mini_grid_station_id) || electricGridControlCenterData.mini_grid_station_id
         : "N/A",
     },
     {
       title: t("project.other.electric-grid-control-center-data.details.installation-year"),
-      value: electricGridControlCenterData?.installation_year !== undefined 
-        ? electricGridControlCenterData.installation_year.toString() 
+      value: electricGridControlCenterData?.installation_year !== undefined
+        ? electricGridControlCenterData.installation_year.toString()
         : "N/A",
     },
     {
       title: t("project.other.electric-grid-control-center-data.details.control-system-type-id"),
-      value: electricGridControlCenterData?.control_system_type_id 
-        ? controlSystemTypesMap.get(electricGridControlCenterData.control_system_type_id) || electricGridControlCenterData.control_system_type_id 
+      value: electricGridControlCenterData?.control_system_type_id
+        ? controlSystemTypesMap.get(electricGridControlCenterData.control_system_type_id) || electricGridControlCenterData.control_system_type_id
         : "N/A",
     },
     {
       title: t("project.other.electric-grid-control-center-data.details.communication-links-id"),
-      value: electricGridControlCenterData?.communication_links_id 
-        ? communicationLinksMap.get(electricGridControlCenterData.communication_links_id) || electricGridControlCenterData.communication_links_id 
+      value: electricGridControlCenterData?.communication_links_id
+        ? communicationLinksMap.get(electricGridControlCenterData.communication_links_id) || electricGridControlCenterData.communication_links_id
         : "N/A",
     },
     {
       title: t("project.other.electric-grid-control-center-data.details.energy-management-system-capability"),
-      value: electricGridControlCenterData?.energy_management_system_capability !== undefined 
-        ? electricGridControlCenterData.energy_management_system_capability 
-          ? t("common.yes") 
-          : t("common.no") 
+      value: electricGridControlCenterData?.energy_management_system_capability !== undefined
+        ? electricGridControlCenterData.energy_management_system_capability
+          ? t("common.yes")
+          : t("common.no")
         : "N/A",
     },
     {
       title: t("project.other.electric-grid-control-center-data.details.remote-control-capability"),
-      value: electricGridControlCenterData?.remote_control_capability !== undefined 
-        ? electricGridControlCenterData.remote_control_capability 
-          ? t("common.yes") 
-          : t("common.no") 
+      value: electricGridControlCenterData?.remote_control_capability !== undefined
+        ? electricGridControlCenterData.remote_control_capability
+          ? t("common.yes")
+          : t("common.no")
         : "N/A",
     },
     {
       title: t("project.other.electric-grid-control-center-data.details.average-measured-data-reliability"),
-      value: electricGridControlCenterData?.average_measured_data_reliability !== undefined 
-        ? electricGridControlCenterData.average_measured_data_reliability.toString() 
+      value: electricGridControlCenterData?.average_measured_data_reliability !== undefined
+        ? electricGridControlCenterData.average_measured_data_reliability.toString()
         : "N/A",
     },
     {

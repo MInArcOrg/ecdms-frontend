@@ -14,21 +14,23 @@ import HydroElectricDamDrawer from './hydro-electric-dam-drawer';
 import { HydroElectricDam } from 'src/types/project/other';
 import { hydroElectricDamColumns } from './hydro-electric-dam-row';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 
 interface HydroElectricDamListProps {
-  model: string;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
 
-const HydroElectricDamList: React.FC<HydroElectricDamListProps> = ({ model, projectId, typeId }) => {
+const HydroElectricDamList: React.FC<HydroElectricDamListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<HydroElectricDam | null>(null);
   const { t } = useTranslation();
 
   const fetchGeneratingCapacities = (params: GetRequestParam): Promise<IApiResponse<HydroElectricDam[]>> => {
-    return projectOtherApiService<HydroElectricDam>().getAll(model, {
+    return projectOtherApiSecondService<HydroElectricDam>().getAll(otherSubMenu?.apiRoute, {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -61,7 +63,7 @@ const HydroElectricDamList: React.FC<HydroElectricDamListProps> = ({ model, proj
   };
 
   const handleDelete = async (hydroElectricDamId: string) => {
-    await projectOtherApiService<HydroElectricDam>().delete(model, hydroElectricDamId);
+    await projectOtherApiSecondService<HydroElectricDam>().delete(otherSubMenu?.apiRoute || '', hydroElectricDamId);
     refetch();
   };
 
@@ -101,7 +103,7 @@ const HydroElectricDamList: React.FC<HydroElectricDamListProps> = ({ model, proj
     <Box>
       {showDrawer && (
         <HydroElectricDamDrawer
-          model={model}
+          otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
           hydroElectricDam={selectedRow as HydroElectricDam}
