@@ -885,6 +885,81 @@
             "environmental-control": "Environmental Control"
           }
         },
+        "power-generation": {
+          "hydropower": {
+            "title": "Hydropower",
+            "hydroelectric-dam": "Hydroelectric Dam",
+            "hydrological-information": "Hydrological Information"
+          },
+          "wind-energy": {
+            "title": "Wind Energy",
+            "wind-resource": "Wind Resource",
+            "wind-turbine": "Wind Turbine"
+          },
+          "solar-energy": {
+            "title": "Solar Energy",
+            "solar-resource-information": "Solar Resource Information",
+            "solar-panel": "Solar Panel"
+          },
+          "geothermal-energy": {
+            "title": "Geothermal Energy",
+            "geothermal-power-wells": "Geothermal Power Wells",
+            "geothermal-power-infrastructure": "Geothermal Power Infrastructure"
+          },
+          "thermal-biomass": {
+            "title": "Thermal/Biomass",
+            "thermal-biomass-incineration-data": "Thermal/Biomass Incineration Data"
+          },
+          "capacity": {
+            "title": "Capacity",
+            "power-generation-capacity": "Power Generation Capacity"
+          }
+        },
+        "power-infrastructure": {
+          "transmission-systems": {
+            "title": "Transmission Systems",
+            "transmission": "Transmission",
+            "transmission-line-information": "Transmission Line Information",
+            "transmission-line-conductor-and-tower-data": "Transmission Line Conductor and Tower Data",
+            "transmission-line-equipment-data": "Transmission Line Equipment Data",
+            "substation-transformer-and-switchgear-data": "Substation Transformer and Switchgear Data",
+            "substation-layout-and-communication-data": "Substation Layout and Communication Data"
+          },
+          "mini-grid-systems": {
+            "title": "Mini-Grid Systems",
+            "mini-grid-station": "Mini-Grid Station",
+            "mini-grid-station-distribution-line": "Mini-Grid Station Distribution Line",
+            "mini-grid-station-distribution-line-infrastructure": "Mini-Grid Station Distribution Line Infrastructure",
+            "mini-grid-station-consumers": "Mini-Grid Station Consumers",
+            "mini-grid-station-backup-power-source": "Mini-Grid Station Backup Power Source"
+          },
+          "distribution-systems": {
+            "title": "Distribution Systems",
+            "electric-distribution-transformer": "Electric Distribution Transformer",
+            "electric-distribution-transformer-type": "Electric Distribution Transformer Type",
+            "electric-smart-meters-data": "Electric Smart Meters Data",
+            "electric-smart-meters-ratings-data": "Electric Smart Meters Ratings Data",
+            "electric-smart-meters-performance-data": "Electric Smart Meters Performance Data",
+            "electric-smart-meters-privacy-and-security-data": "Electric Smart Meters Privacy and Security Data"
+          }
+        },
+        "regulation": {
+          "grid-operations": {
+            "title": "Grid Operations",
+            "electric-grid-control-center-data": "Electric Grid Control Center Data",
+            "electric-grid-control-center-performance-and-maintenance": "Electric Grid Control Center Performance and Maintenance",
+            "electric-grid-control-center-cyber-security-data": "Electric Grid Control Center Cyber Security Data"
+          },
+          "regulatory-and-environmental-oversight": {
+            "title": "Regulatory and Environmental Oversight",
+            "regulation-and-policy": "Regulation and Policy",
+            "environmental-and-social-impact": "Environmental and Social Impact"
+          },
+          "maintenance-and-reliability": {
+            "title": "Maintenance and Reliability",
+            "reliability-and-maintenance": "Reliability and Maintenance"
+          }
+        },
         "others": {
           "building": "Building",
           "building-dimensions-detail": "Building Dimensions Detail",
@@ -998,7 +1073,10 @@
         "maintenance": "Maintenance",
         "telecom-infrastructure": "Telecom Infrastructure",
         "mobile-satellite-networks": "Mobile & Satellite Networks",
-        "broadcasting-data-systems": "Broadcasting & Data Systems"
+        "broadcasting-data-systems": "Broadcasting & Data Systems",
+        "regulation": "Regulation",
+        "power-infrastructure": "Power Infrastructure",
+        "power-generation": "Power Generation"
       }
     },
     "project-time": {

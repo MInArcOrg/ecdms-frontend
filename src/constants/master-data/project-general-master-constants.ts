@@ -726,7 +726,23 @@ export const projectMasterModels = {
     createTitle: 'create-supplier-address',
     editTitle: 'edit-supplier-address',
     fileType: 'SUPPLIER_ADDRESS'
-  }
+  },
+  distributionLineMaterial: {
+    model: 'DistributionLineMaterial',
+    dbModel: 'distributionlinematerial',
+    title: 'distribution-line-materials',
+    createTitle: 'create-distribution-line-material',
+    editTitle: 'edit-distribution-line-material',
+    fileType: 'DISTRIBUTION_LINE_MATERIAL'
+  },
+  communicationLinks: {
+    model: 'CommunicationLinks',
+    dbModel: 'communicationlinks',
+    title: 'communication-links',
+    createTitle: 'create-communication-links',
+    editTitle: 'edit-communication-links',
+    fileType: 'COMMUNICATION_LINKS'
+  },
 
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
