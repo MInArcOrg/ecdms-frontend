@@ -535,19 +535,30 @@
     "navigation": {
       "menu": {
         "general-info": "General Info",
-        "licenses": "Licenses",
-        "educations": "Educations",
-        "work-experiences": "Work Experiences",
-        "membership": "Membership",
-        "achievements": "Achievements",
-        "recommendations": "Recommendations"
+        "price": "Price",
+        "quantity": "Quantity"
       },
       "submenu": {
         "general-info": {
-          "address": "Address",
-          "contact": "Contact",
-          "contact-person": "Contact Person",
-          "additional-info": "Additional Info"
+          "general-info-section": "General Info",
+          "general-info": "General Info",
+          "brands": "Brands",
+          "specification": "Specification",
+          "price-and-quantity-section": "Price and quantity",
+          "resource-prices": "Resource Prices",
+          "resource-quantity": "Resource Quantity"
+        },
+        "resource-price": {
+          "resource-price-section": "Price",
+          "price": "Price",
+          "resource-price": "Resource Price",
+          "resource-prices": "Resource Prices"
+        },
+        "resource-quantity": {
+          "resource-quantity-section": "Quantity",
+          "quality": "Quantity",
+          "resource-quantity": "Resource Quantity",
+          "resource-quantities": "Resource Quantities"
         },
         "licenses": {
           "licenses": "Licenses"
@@ -1063,7 +1074,6 @@
           "electric-smart-meters-privacy-and-security-data": "Electric Smart Meters Privacy And Security Data",
           "electric-grid-control-center-data": "Electric Grid Control Center Data",
           "electric-grid-control-center-performance-and-maintenance": "Electric Grid Control Center Performance And Maintenance"
-          "electric-grid-control-center-data": "Electric Grid Control Center Data"
         }
       },
       "menu": {

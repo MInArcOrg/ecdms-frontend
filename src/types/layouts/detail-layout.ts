@@ -2,7 +2,7 @@ export type DetailMenuItem = {
   id: string;
   title: string;
   path: string;
-  type?: string;
+  type?: string | String[];
   action?: string;
   subject?: string;
 };
@@ -16,7 +16,7 @@ export interface DetailSubMenuItemChild {
   model?: string;
 }
 export type DetailSubMenuItem = {
-  type?: string;
+  type?: string | String[];
   id: string;
   title: string;
   subItems: DetailSubMenuItemChild[];
