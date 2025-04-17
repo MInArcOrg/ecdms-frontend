@@ -743,6 +743,15 @@ export const projectMasterModels = {
     editTitle: 'edit-communication-links',
     fileType: 'COMMUNICATION_LINKS'
   },
+  waterSource: {
+    model: 'WaterSource',
+    dbModel: 'waterSource',
+    title: 'water-source',
+    createTitle: 'create-water-source',
+    editTitle: 'edit-water-source',
+    fileType: 'WATER_SOURCE'
+  }
+
 
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
