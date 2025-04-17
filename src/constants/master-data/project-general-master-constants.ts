@@ -774,7 +774,16 @@ export const projectMasterModels = {
     createTitle: 'create-irrigation-technology',
     editTitle: 'edit-irrigation-technology',
     fileType: 'IRRIGATION_TECHNOLOGY'
+  },
+  mainCanalType: {
+    model: 'MainCanalType',
+    dbModel: 'mainCanalType',
+    title: 'main-canal-type',
+    createTitle: 'create-main-canal-type',
+    editTitle: 'edit-main-canal-type',
+    fileType: 'MAIN_CANAL_TYPE'
   }
+  
   
   
 

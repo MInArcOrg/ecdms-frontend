@@ -347,7 +347,11 @@
       "edit-head-work-type": "Edit Head Work Type",
       "irrigation-technology": "Irrigation Technology",
       "create-irrigation-technology": "Create Irrigation Technology",
-      "edit-irrigation-technology": "Edit Irrigation Technology"
+      "edit-irrigation-technology": "Edit Irrigation Technology",
+      "main-canal-type": "Main Canal Type",
+"create-main-canal-type": "Create Main Canal Type",
+"edit-main-canal-type": "Edit Main Canal Type"
+
     },
     "form": {
       "title": "Title",
