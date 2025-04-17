@@ -766,7 +766,16 @@ export const projectMasterModels = {
     createTitle: 'create-head-work-type',
     editTitle: 'edit-head-work-type',
     fileType: 'HEAD_WORK_TYPE'
+  },
+  irrigationTechnology: {
+    model: 'IrrigationTechnology',
+    dbModel: 'irrigationTechnology',
+    title: 'irrigation-technology',
+    createTitle: 'create-irrigation-technology',
+    editTitle: 'edit-irrigation-technology',
+    fileType: 'IRRIGATION_TECHNOLOGY'
   }
+  
   
 
 

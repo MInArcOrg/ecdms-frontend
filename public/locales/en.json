@@ -344,7 +344,10 @@
       "edit-project-target": "Edit Project Target",
       "head-work-type": "Head Work Type",
       "create-head-work-type": "Create Head Work Type",
-      "edit-head-work-type": "Edit Head Work Type"
+      "edit-head-work-type": "Edit Head Work Type",
+      "irrigation-technology": "Irrigation Technology",
+      "create-irrigation-technology": "Create Irrigation Technology",
+      "edit-irrigation-technology": "Edit Irrigation Technology"
     },
     "form": {
       "title": "Title",
