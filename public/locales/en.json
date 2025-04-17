@@ -335,7 +335,10 @@
       "edit-supplier-name": "Edit Supplier Name",
       "supplier-address": "Supplier Address",
       "create-supplier-address": "Create Supplier Address",
-      "edit-supplier-address": "Edit Supplier Address"
+      "edit-supplier-address": "Edit Supplier Address",
+      "water-source": "Water Source",
+      "create-water-source": "Create Water Source",
+      "edit-water-source": "Edit Water Source"
     },
     "form": {
       "title": "Title",
@@ -1063,7 +1066,6 @@
           "electric-smart-meters-privacy-and-security-data": "Electric Smart Meters Privacy And Security Data",
           "electric-grid-control-center-data": "Electric Grid Control Center Data",
           "electric-grid-control-center-performance-and-maintenance": "Electric Grid Control Center Performance And Maintenance"
-          "electric-grid-control-center-data": "Electric Grid Control Center Data"
         }
       },
       "menu": {
