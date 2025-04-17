@@ -341,7 +341,10 @@
       "edit-water-source": "Edit Water Source",
       "project-target": "Project Target",
       "create-project-target": "Create Project Target",
-      "edit-project-target": "Edit Project Target"
+      "edit-project-target": "Edit Project Target",
+      "head-work-type": "Head Work Type",
+      "create-head-work-type": "Create Head Work Type",
+      "edit-head-work-type": "Edit Head Work Type"
     },
     "form": {
       "title": "Title",

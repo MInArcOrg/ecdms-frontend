@@ -758,7 +758,16 @@ export const projectMasterModels = {
     createTitle: 'create-project-target',
     editTitle: 'edit-project-target',
     fileType: 'PROJECT_TARGET'
+  },
+  headWorkType: {
+    model: 'HeadWorkType',
+    dbModel: 'headWorkType',
+    title: 'head-work-type',
+    createTitle: 'create-head-work-type',
+    editTitle: 'edit-head-work-type',
+    fileType: 'HEAD_WORK_TYPE'
   }
+  
 
 
 
