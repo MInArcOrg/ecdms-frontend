@@ -338,7 +338,10 @@
       "edit-supplier-address": "Edit Supplier Address",
       "water-source": "Water Source",
       "create-water-source": "Create Water Source",
-      "edit-water-source": "Edit Water Source"
+      "edit-water-source": "Edit Water Source",
+      "project-target": "Project Target",
+      "create-project-target": "Create Project Target",
+      "edit-project-target": "Edit Project Target"
     },
     "form": {
       "title": "Title",

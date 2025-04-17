@@ -750,7 +750,16 @@ export const projectMasterModels = {
     createTitle: 'create-water-source',
     editTitle: 'edit-water-source',
     fileType: 'WATER_SOURCE'
+  },
+  projectTarget: {
+    model: 'ProjectTarget',
+    dbModel: 'projectTarget',
+    title: 'water-source',
+    createTitle: 'create-project-target',
+    editTitle: 'edit-project-target',
+    fileType: 'PROJECT_TARGET'
   }
+
 
 
 };
