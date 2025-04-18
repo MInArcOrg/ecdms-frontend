@@ -349,9 +349,11 @@
       "create-irrigation-technology": "Create Irrigation Technology",
       "edit-irrigation-technology": "Edit Irrigation Technology",
       "main-canal-type": "Main Canal Type",
-"create-main-canal-type": "Create Main Canal Type",
-"edit-main-canal-type": "Edit Main Canal Type"
-
+      "create-main-canal-type": "Create Main Canal Type",
+      "edit-main-canal-type": "Edit Main Canal Type",
+      "pump-type": "Pump Type",
+      "create-pump-type": "Create Pump Type",
+      "edit-pump-type": "Edit Pump Type"
     },
     "form": {
       "title": "Title",
