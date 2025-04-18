@@ -798,7 +798,16 @@ export const projectMasterModels = {
     createTitle: 'create-pumps-power-source',
     editTitle: 'edit-pumps-power-source',
     fileType: 'PUMPS_POWER_SOURCE'
+  },
+  runwaySurfaceType: {
+    model: 'RunwaySurfaceType',
+    dbModel: 'runwaySurfaceType',
+    title: 'runway-surface-type',
+    createTitle: 'create-runway-surface-type',
+    editTitle: 'edit-runway-surface-type',
+    fileType: 'RUNWAY_SURFACE_TYPE'
   }
+  
   
 
 
