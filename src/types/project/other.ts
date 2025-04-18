@@ -13,7 +13,7 @@ export interface Port {
   revision_no?: number;
   created_at?: Date;
   updated_at?: Date;
-} 
+}
 export interface TelecomInfrastructure {
   id: string;
   parent_id?: string;
@@ -1204,41 +1204,41 @@ export interface Dam {
 }
 
 export interface TransmissionLineConductorAndTowerData {
-  id: string
-  transmission_line_id: string
-  name: string
-  conductor_type?: string
-  conductor_code_name_id: string
-  strands_number?: number
-  conductor_size?: number
-  conductors_per_phase_number?: number
-  tower_type_id: string
-  tower_height?: number
-  conductor_diameter?: number
-  each_strand_diameter?: number
-  tower_foundation_type_id: string
-  other_equipment?: string
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  transmission_line_id: string;
+  name: string;
+  conductor_type?: string;
+  conductor_code_name_id: string;
+  strands_number?: number;
+  conductor_size?: number;
+  conductors_per_phase_number?: number;
+  tower_type_id: string;
+  tower_height?: number;
+  conductor_diameter?: number;
+  each_strand_diameter?: number;
+  tower_foundation_type_id: string;
+  other_equipment?: string;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface TransmissionLineEquipmentData {
-  id: string
-  transmission_line_id: string
-  name: string
-  insulator_type?: string
-  ground_wire_type?: string
-  fiber_optics_number?: number
-  opgw_uts?: number
-  opgw_weight?: number
-  owner_operator?: string
-  tower_grounding?: string
-  tower_circuit_arrangement?: string
-  other_equipment?: string
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  transmission_line_id: string;
+  name: string;
+  insulator_type?: string;
+  ground_wire_type?: string;
+  fiber_optics_number?: number;
+  opgw_uts?: number;
+  opgw_weight?: number;
+  owner_operator?: string;
+  tower_grounding?: string;
+  tower_circuit_arrangement?: string;
+  other_equipment?: string;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface BroadcastingInfrastructureAge {
@@ -1256,232 +1256,232 @@ export interface BroadcastingInfrastructureAge {
 }
 
 export interface BroadcastingInfrastructureManufacturer {
-  id: string
-  broadcasting_infrastructure_id: string
-  name: string
-  antennas?: string
-  transmitters?: string
-  towers?: string
-  cables?: string
-  others?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  broadcasting_infrastructure_id: string;
+  name: string;
+  antennas?: string;
+  transmitters?: string;
+  towers?: string;
+  cables?: string;
+  others?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface SubstationTransformerAndSwitchgearData {
-  id: string
-  transmission_line_id: string
-  name: string
-  transformers_number?: number
-  transformer_type?: string
-  transformer_capacity?: number
-  input_voltage_level?: number
-  output_voltage_level?: number
-  switchgear_type_id: string
-  circuit_breaker_type_id: string
-  other_equipment?: string
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  transmission_line_id: string;
+  name: string;
+  transformers_number?: number;
+  transformer_type?: string;
+  transformer_capacity?: number;
+  input_voltage_level?: number;
+  output_voltage_level?: number;
+  switchgear_type_id: string;
+  circuit_breaker_type_id: string;
+  other_equipment?: string;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface SubstationLayoutAndCommunicationData {
-  id: string
-  substation_id: string
-  name: string
-  substation_layout?: string
-  equipped_with_standby_diesel_generator?: string
-  substation_busbar_type?: string
-  substation_communication_system_id: string
-  scada_system?: boolean
-  substation_grounding_system_id: string
-  substation_altitude_level?: number
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  substation_id: string;
+  name: string;
+  substation_layout?: string;
+  equipped_with_standby_diesel_generator?: string;
+  substation_busbar_type?: string;
+  substation_communication_system_id: string;
+  scada_system?: boolean;
+  substation_grounding_system_id: string;
+  substation_altitude_level?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface MiniGridStation {
-  id: string
-  substation_id: string
-  name: string
-  minigrid_size?: number
-  battery_type_id?: string
-  battery_size?: number
-  inverter?: number
-  system_voltage?: number
-  expected_annual_generation?: number
-  diesel_generator: 'Equipped' | 'Not Equipped'
-  owner_operator?: string
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  substation_id: string;
+  name: string;
+  minigrid_size?: number;
+  battery_type_id?: string;
+  battery_size?: number;
+  inverter?: number;
+  system_voltage?: number;
+  expected_annual_generation?: number;
+  diesel_generator: 'Equipped' | 'Not Equipped';
+  owner_operator?: string;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface MiniGridStationDistributionLine {
-  id: string
-  mini_grid_station_id: string
-  name: string
-  system_type?: string
-  lines_type?: string
-  line_length?: number
-  poles: 'Concrete' | 'Wood' | 'Steel'
-  transformer_type_id: string
-  transformers_number?: number
-  transformers_size?: number
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  mini_grid_station_id: string;
+  name: string;
+  system_type?: string;
+  lines_type?: string;
+  line_length?: number;
+  poles: 'Concrete' | 'Wood' | 'Steel';
+  transformer_type_id: string;
+  transformers_number?: number;
+  transformers_size?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface MiniGridStationConsumer {
-  id: string
-  mini_grid_station_id: string
-  name: string
-  residential?: number
-  commercial?: number
-  productive_industrial?: number
-  health_centers?: number
-  schools?: number
-  street_lighting?: number
-  other?: number
-  expected_electricity_sales?: number
-  electricity_tariff?: number
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  mini_grid_station_id: string;
+  name: string;
+  residential?: number;
+  commercial?: number;
+  productive_industrial?: number;
+  health_centers?: number;
+  schools?: number;
+  street_lighting?: number;
+  other?: number;
+  expected_electricity_sales?: number;
+  electricity_tariff?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface MiniGridStationBackupPowerSource {
-  id: string
-  mini_grid_station_id: string
-  name: string
-  capacity?: number
-  installation_year?: number
-  distribution_lines_total_length?: number
-  lifetime?: number
-  commissioning_date?: Date | string
-  other?: string
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  mini_grid_station_id: string;
+  name: string;
+  capacity?: number;
+  installation_year?: number;
+  distribution_lines_total_length?: number;
+  lifetime?: number;
+  commissioning_date?: Date | string;
+  other?: string;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface MiniGridStationDistributionLineInfrastructure {
-  id: string
-  mini_grid_station_id: string
-  name: string
-  distribution_line_type_id: string
-  distribution_line_material_id: string
-  distribution_line_conductor_size?: number
-  voltage_level?: number
-  topology?: "Radial" | "Ring"
-  switching_station_connection?: boolean
-  station_name?: string
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  mini_grid_station_id: string;
+  name: string;
+  distribution_line_type_id: string;
+  distribution_line_material_id: string;
+  distribution_line_conductor_size?: number;
+  voltage_level?: number;
+  topology?: 'Radial' | 'Ring';
+  switching_station_connection?: boolean;
+  station_name?: string;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface ElectricDistributionTransformer {
-  id: string
-  project_id: string
-  name: string
-  service_area?: number
-  installation_year?: number
-  transformers_total_number?: number
-  gps_x_coordinates?: number
-  gps_y_coordinates?: number
-  fire_extinguishing_technology_id: string
-  other?: string
-  remark?: string
-  created_at?: string
-  updated_at?: string
+  id: string;
+  project_id: string;
+  name: string;
+  service_area?: number;
+  installation_year?: number;
+  transformers_total_number?: number;
+  gps_x_coordinates?: number;
+  gps_y_coordinates?: number;
+  fire_extinguishing_technology_id: string;
+  other?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface ElectricDistributionTransformerType {
-  id: string
-  project_id: string
-  mini_grid_station_id: string
-  name: string
-  transformer_type_id: string
-  cooling_type: 'Oil Immersed' | 'Dry type'
-  transformer_power_rating?: number
-  lifetime?: number
-  protection_installed_id: string
-  safety_problems_encountered_id: string
-  work_accidents_number?: number
-  on_site_safety_regulation_implemented?: boolean
-  remark?: string
-  created_at?: string
-  updated_at?: string
+  id: string;
+  project_id: string;
+  mini_grid_station_id: string;
+  name: string;
+  transformer_type_id: string;
+  cooling_type: 'Oil Immersed' | 'Dry type';
+  transformer_power_rating?: number;
+  lifetime?: number;
+  protection_installed_id: string;
+  safety_problems_encountered_id: string;
+  work_accidents_number?: number;
+  on_site_safety_regulation_implemented?: boolean;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface ElectricSmartMetersData {
-  id: string
-  project_id: string
-  mini_grid_station_id: string
-  name: string
-  owner_operator?: string
-  facility_type: 'Oil Immersed' | 'Dry Type'
-  service_area?: number
-  manufacturer?: string
-  model_id: string
-  smart_meter_type_id: string
-  installation_year?: number
-  smart_meters_installed_number?: number
-  remark?: string
-  created_at?: string
-  updated_at?: string
+  id: string;
+  project_id: string;
+  mini_grid_station_id: string;
+  name: string;
+  owner_operator?: string;
+  facility_type: 'Oil Immersed' | 'Dry Type';
+  service_area?: number;
+  manufacturer?: string;
+  model_id: string;
+  smart_meter_type_id: string;
+  installation_year?: number;
+  smart_meters_installed_number?: number;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface ElectricSmartMetersRatingsData {
-  id: string
-  project_id: string
-  electric_smart_meters_data_id: string
-  name: string
-  active_reactive: string
-  kwh_kvarh_rating?: number
-  phase: string
-  maximum_current_rating?: number
-  other?: string
-  remark?: string
-  created_at?: string
-  updated_at?: string
+  id: string;
+  project_id: string;
+  electric_smart_meters_data_id: string;
+  name: string;
+  active_reactive: string;
+  kwh_kvarh_rating?: number;
+  phase: string;
+  maximum_current_rating?: number;
+  other?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface ElectricSmartMetersPerformanceData {
-  id: string
-  project_id: string
-  electric_smart_meters_data_id: string
-  name: string
-  maintenance_frequency_id: string
-  average_meter_lifespan?: number
-  average_meter_accuracy?: number
-  safety_problems_encountered?: string
-  work_accidents_number?: number
-  on_site_safety_regulation_implemented?: boolean
-  other?: string
-  remark?: string
-  created_at?: string
-  updated_at?: string
+  id: string;
+  project_id: string;
+  electric_smart_meters_data_id: string;
+  name: string;
+  maintenance_frequency_id: string;
+  average_meter_lifespan?: number;
+  average_meter_accuracy?: number;
+  safety_problems_encountered?: string;
+  work_accidents_number?: number;
+  on_site_safety_regulation_implemented?: boolean;
+  other?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface ElectricSmartMetersPrivacyAndSecurityData {
-  id: string
-  project_id: string
-  electric_smart_meters_data_id: string
-  name: string
-  privacy_measures_implemented?: boolean
-  privacy_measures_type_id: string
-  customer_engagement_frequency_id: string
-  customer_engagement_programs_implemented?: boolean
-  customer_engagement_programs_type_id: string
-  social_impact_assessment_conducted?: boolean
-  resettlement_and_compensation_measures_implemented?: boolean
-  remark?: string
-  created_at?: string
-  updated_at?: string
+  id: string;
+  project_id: string;
+  electric_smart_meters_data_id: string;
+  name: string;
+  privacy_measures_implemented?: boolean;
+  privacy_measures_type_id: string;
+  customer_engagement_frequency_id: string;
+  customer_engagement_programs_implemented?: boolean;
+  customer_engagement_programs_type_id: string;
+  social_impact_assessment_conducted?: boolean;
+  resettlement_and_compensation_measures_implemented?: boolean;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface ElectricGridControlCenterData {

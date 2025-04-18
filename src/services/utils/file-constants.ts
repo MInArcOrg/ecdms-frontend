@@ -120,7 +120,7 @@ export const uploadableProjectFileTypes = {
     satelliteNetworkComponentManufacturer: 'SATELLITE_NETWORK_COMPONENT_MANUFACTURER',
     internetConnection: 'INTERNET_CONNECTION',
     broadcastingInfrastructure: 'BROADCASTING_INFRASTRUCTURE',
-    broadcastingInfrastructureAge: "BROADCASTING_INFRASTRUCTURE_AGE",
+    broadcastingInfrastructureAge: 'BROADCASTING_INFRASTRUCTURE_AGE',
     internetConnectionInfrastructureAge: 'INTERNET_CONNECTION_COMPONENT_AGE',
     internetConnectionInfrastructureManufacturer: 'INTERNET_CONNECTION_COMPONENT_MANUFACTURER',
     hydrologicalInformation: 'HYDROLOGICAL_INFORMATION',
@@ -137,21 +137,22 @@ export const uploadableProjectFileTypes = {
     reliabilityAndMaintenance: 'RELIABILITY_AND_MAINTENANCE',
     transmission: 'TRANSMISSION',
     dam: 'DAM',
-    transmissionLineConductorAndTowerData: "TRANSMISSION_LINE_CONDUCTOR_AND_TOWER_DATA",
-    transmissionLineEquipmentData: "TRANSMISSION_LINE_EQUIPMENT_DATA",
-    broadcastingInfrastructureManufacturer: "BROADCASTING_INFRASTRUCTURE_MANUFACTURER",
+    transmissionLineConductorAndTowerData: 'TRANSMISSION_LINE_CONDUCTOR_AND_TOWER_DATA',
+    transmissionLineEquipmentData: 'TRANSMISSION_LINE_EQUIPMENT_DATA',
+    broadcastingInfrastructureManufacturer: 'BROADCASTING_INFRASTRUCTURE_MANUFACTURER',
     SUBSTATION_TRANSFORMER_AND_SWITCH_GEAR_DATA: 'SUBSTATION_TRANSFORMER_AND_SWITCH_GEAR_DATA',
     substation_layout_and_communication_data: 'SUBSTATION_LAYOUT_AND_COMMUNICATION_DATA',
     mini_grid_station: 'MINI_GRID_STATION',
     mini_grid_station_distribution_line: 'MINI_GRID_STATION_DISTRIBUTION_LINE',
     mini_grid_station_consumer: 'MINI_GRID_STATION_CONSUMER',
     mini_grid_station_backup_power_source: 'MINI_GRID_STATION_BACKUP_POWER_SOURCE',
-    electric_distribution_transformer: "ELECTRIC_DISTRIBUTION_TRANSFORMER",
-    electric_distribution_transformer_type: "ELECTRIC_DISTRIBUTION_TRANSFORMER_TYPE",
-    electric_smart_meters_data: "ELECTRIC_SMART_METERS_DATA",
-    electric_smart_meters_ratings_data: "ELECTRIC_SMART_METERS_RATINGS_DATA",
-    electric_smart_meters_performance_data: "ELECTRIC_SMART_METERS_PERFORMANCE_DATA",
-    electric_smart_meters_privacy_and_security_data: "ELECTRIC_SMART_METERS_PRIVACY_AND_SECURITY_DATA",
+    mini_grid_station_distribution_line_infrastructure: 'MINI_GRID_STATION_DISTRICUTION_LINE_INFRASTRUCTURE',
+    electric_distribution_transformer: 'ELECTRIC_DISTRIBUTION_TRANSFORMER',
+    electric_distribution_transformer_type: 'ELECTRIC_DISTRIBUTION_TRANSFORMER_TYPE',
+    electric_smart_meters_data: 'ELECTRIC_SMART_METERS_DATA',
+    electric_smart_meters_ratings_data: 'ELECTRIC_SMART_METERS_RATINGS_DATA',
+    electric_smart_meters_performance_data: 'ELECTRIC_SMART_METERS_PERFORMANCE_DATA',
+    electric_smart_meters_privacy_and_security_data: 'ELECTRIC_SMART_METERS_PRIVACY_AND_SECURITY_DATA',
     electric_grid_control_center_data: "ELECTRIC_GRID_CONTROL_CENTER_DATA",
     electric_grid_control_center_performance_and_maintenance: "ELECTRIC_GRID_CONTROL_CENTER_PERFORMANCE_AND_MAINTENANCE",
     electric_grid_control_center_cyber_security_data: "ELECTRIC_GRID_CONTROL_CENTER_CYBER_SECURITY_DATA",
@@ -187,3 +188,7 @@ export const uploadableStakeholderFileTypes = {
     stakeholderService: 'STAKEHOLDER_SERVICE'
   }
 } as const;
+export const uploadableUserFileTypes = {
+  userEducation: 'EDUCATION_STATUS',
+  userWorkExperience: 'WORK_EXPERIENCE'
+};

@@ -12,7 +12,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { BridgeInspection } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface BridgeInspectionDrawerType {
   open: boolean;
@@ -20,7 +20,7 @@ interface BridgeInspectionDrawerType {
   refetch: () => void;
   bridgeInspection: BridgeInspection;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const BridgeInspectionDrawer = (props: BridgeInspectionDrawerType) => {

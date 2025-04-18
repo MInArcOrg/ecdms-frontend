@@ -17,7 +17,7 @@ import DataCenterComponentAgeDrawer from './data-center-component-age-drawer';
 import { dataCenterComponentAgeColumns } from './data-center-component-age-row';
 
 interface DataCenterComponentAgeListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }

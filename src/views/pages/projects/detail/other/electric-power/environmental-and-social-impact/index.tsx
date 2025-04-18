@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -21,7 +21,7 @@ import EnvironmentalAndSocialImpactDrawer from './environmental-and-social-impac
 import { environmentalAndSocialImpactColumns } from './environmental-and-social-impact-row';
 
 interface EnvironmentalAndSocialImpactListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -78,35 +78,35 @@ const EnvironmentalAndSocialImpactList: React.FC<EnvironmentalAndSocialImpactLis
   const mapEnvironmentalAndSocialImpactToDetailItems = (
     environmentalAndSocialImpact: EnvironmentalAndSocialImpact
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.environmental-and-social-impact.details.environmental-impact-assessment-conducted'),
-      value: environmentalAndSocialImpact?.environmental_impact_assessment_conducted ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.environmental-and-social-impact.details.mitigation-measures-implemented'),
-      value: environmentalAndSocialImpact?.mitigation_measures_implemented ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.environmental-and-social-impact.details.social-impact-assessment-conducted'),
-      value: environmentalAndSocialImpact?.social_impact_assessment_conducted ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.environmental-and-social-impact.details.resettlement-and-compensation-measures-implemented'),
-      value: environmentalAndSocialImpact?.resettlement_and_compensation_measures_implemented ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.environmental-and-social-impact.details.remark'),
-      value: environmentalAndSocialImpact?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: environmentalAndSocialImpact?.created_at ? formatCreatedAt(environmentalAndSocialImpact.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: environmentalAndSocialImpact?.updated_at ? formatCreatedAt(environmentalAndSocialImpact.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.environmental-and-social-impact.details.environmental-impact-assessment-conducted'),
+        value: environmentalAndSocialImpact?.environmental_impact_assessment_conducted ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.environmental-and-social-impact.details.mitigation-measures-implemented'),
+        value: environmentalAndSocialImpact?.mitigation_measures_implemented ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.environmental-and-social-impact.details.social-impact-assessment-conducted'),
+        value: environmentalAndSocialImpact?.social_impact_assessment_conducted ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.environmental-and-social-impact.details.resettlement-and-compensation-measures-implemented'),
+        value: environmentalAndSocialImpact?.resettlement_and_compensation_measures_implemented ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.environmental-and-social-impact.details.remark'),
+        value: environmentalAndSocialImpact?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: environmentalAndSocialImpact?.created_at ? formatCreatedAt(environmentalAndSocialImpact.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: environmentalAndSocialImpact?.updated_at ? formatCreatedAt(environmentalAndSocialImpact.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

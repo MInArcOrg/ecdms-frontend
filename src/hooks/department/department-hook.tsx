@@ -27,7 +27,7 @@ const useDepartment = (initialQueryParams: GetRequestParam = defaultGetRequestPa
   } = useQuery({
     queryKey: ['departments', queryParams],
     queryFn: () =>
-      departmentApiService.getAll({ ...defaultGetRequestParam, ...queryParams }, parentDepartmentId).then((response) => {
+      departmentApiService.getAll({ ...defaultGetRequestParam, ...queryParams }).then((response) => {
         setPagination(response._attributes.pagination);
         return response.payload;
       })

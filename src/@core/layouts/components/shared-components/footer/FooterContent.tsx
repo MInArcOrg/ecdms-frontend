@@ -35,10 +35,8 @@ const FooterContent = () => {
       }}
     >
       <Typography sx={{ mr: 2, display: 'flex', color: 'text.secondary' }}>
-        {`© ${new Date().getFullYear()}, Made with `}
-        <Box component="span" sx={{ mx: 1, color: 'error.main' }}>
-          ❤️
-        </Box>
+        {`© ${new Date().getFullYear()}, Powered By `}
+
         {'by'}
         <Typography sx={{ ml: 1 }} target="_blank" href="https://www.onespace.et" component={StyledCompanyName}>
           1Space

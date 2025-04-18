@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -21,7 +21,7 @@ import SolarResourceInformationDrawer from './solar-resource-information-drawer'
 import { solarResourceInformationColumns } from './solar-resource-information-row';
 
 interface SolarResourceInformationListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
@@ -78,41 +78,41 @@ const SolarResourceInformationList: React.FC<SolarResourceInformationListProps> 
   const mapSolarResourceInformationToDetailItems = (
     solarResourceInformation: SolarResourceInformation
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.solar-resource-information.details.annual-solar-radiation'),
-      value:
-        solarResourceInformation?.annual_solar_radiation !== undefined
-          ? `${solarResourceInformation.annual_solar_radiation} ${t('common.kwh-per-m2')}`
-          : 'N/A'
-    },
-    {
-      title: t('project.other.solar-resource-information.details.solar-panel-efficiency'),
-      value: solarResourceInformation?.solar_panel_efficiency !== undefined ? `${solarResourceInformation.solar_panel_efficiency}%` : 'N/A'
-    },
-    {
-      title: t('project.other.solar-resource-information.details.annual-energy-production'),
-      value:
-        solarResourceInformation?.annual_energy_production !== undefined
-          ? `${solarResourceInformation.annual_energy_production} ${t('common.mwh')}`
-          : 'N/A'
-    },
-    {
-      title: t('project.other.solar-resource-information.details.plant-life'),
-      value: solarResourceInformation?.plant_life !== undefined ? `${solarResourceInformation.plant_life} ${t('common.years')}` : 'N/A'
-    },
-    {
-      title: t('project.other.solar-resource-information.details.remark'),
-      value: solarResourceInformation?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: solarResourceInformation?.created_at ? formatCreatedAt(solarResourceInformation.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: solarResourceInformation?.updated_at ? formatCreatedAt(solarResourceInformation.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.solar-resource-information.details.annual-solar-radiation'),
+        value:
+          solarResourceInformation?.annual_solar_radiation !== undefined
+            ? `${solarResourceInformation.annual_solar_radiation} ${t('common.kwh-per-m2')}`
+            : 'N/A'
+      },
+      {
+        title: t('project.other.solar-resource-information.details.solar-panel-efficiency'),
+        value: solarResourceInformation?.solar_panel_efficiency !== undefined ? `${solarResourceInformation.solar_panel_efficiency}%` : 'N/A'
+      },
+      {
+        title: t('project.other.solar-resource-information.details.annual-energy-production'),
+        value:
+          solarResourceInformation?.annual_energy_production !== undefined
+            ? `${solarResourceInformation.annual_energy_production} ${t('common.mwh')}`
+            : 'N/A'
+      },
+      {
+        title: t('project.other.solar-resource-information.details.plant-life'),
+        value: solarResourceInformation?.plant_life !== undefined ? `${solarResourceInformation.plant_life} ${t('common.years')}` : 'N/A'
+      },
+      {
+        title: t('project.other.solar-resource-information.details.remark'),
+        value: solarResourceInformation?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: solarResourceInformation?.created_at ? formatCreatedAt(solarResourceInformation.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: solarResourceInformation?.updated_at ? formatCreatedAt(solarResourceInformation.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

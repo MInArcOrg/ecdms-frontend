@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import Role from 'src/types/admin/role';
+import Permission from 'src/types/admin/role/permission';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import axiosServices from 'src/utils/axios';
 import { buildGetRequest } from 'src/utils/requests/get-request';
@@ -7,15 +8,15 @@ import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const roleApiService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest('/roles', params)
+  getAll: (params: GetRequestParam): Promise<IApiResponse<Role[]>> =>
+    buildGetRequest('/departments/roles', params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/roles/${idx}`, params)
+    buildGetRequest(`/departments/roles/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
@@ -23,21 +24,21 @@ const roleApiService = {
 
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
-      .delete(`/roles/${idx}`)
+      .delete(`/departments/roles/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   create: (body: { data: Role; files: any[] }): Promise<IApiResponse> =>
-    buildPostRequest('/roles', body, false)
+    buildPostRequest('/departments/roles', body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   update: (id: string, body: { data: Role; files: any[] }): Promise<IApiResponse> =>
-    buildPutRequest(`/roles/${id}`, body)
+    buildPutRequest(`/departments/roles/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
@@ -48,6 +49,21 @@ const roleApiService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
+      }),
+  getPermissionsByRole: (id: string, params: GetRequestParam): Promise<IApiResponse<Permission[]>> =>
+    buildGetRequest(`/departments/role-permissions/${id}`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
+  assignPermission: (body: {
+    data: { permissions: { id: string; is_selected: boolean }[]; id: string };
+    files: any[];
+  }): Promise<IApiResponse> =>
+    buildPostRequest(`/departments/assign-role-permissions`, body, false)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw new Error(error);
       })
 };
 

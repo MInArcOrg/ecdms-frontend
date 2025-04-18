@@ -6,10 +6,11 @@ import * as yup from 'yup';
 import HydroElectricDamForm from './hydro-electric-dam-form';
 
 import { useState } from 'react';
-import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { HydroElectricDam } from 'src/types/project/other';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 
 interface HydroElectricDamDrawerType {
   open: boolean;
@@ -17,11 +18,11 @@ interface HydroElectricDamDrawerType {
   refetch: () => void;
   hydroElectricDam: HydroElectricDam;
   projectId: string;
-  model: string;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const HydroElectricDamDrawer = (props: HydroElectricDamDrawerType) => {
-  const { open, toggle, refetch, hydroElectricDam, projectId, model } = props;
+  const { open, toggle, refetch, hydroElectricDam, projectId, otherSubMenu } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
@@ -32,10 +33,10 @@ const HydroElectricDamDrawer = (props: HydroElectricDamDrawerType) => {
   const isEdit = Boolean(hydroElectricDam?.id);
 
   const createHydroElectricDam = async (body: IApiPayload<HydroElectricDam>) =>
-    projectOtherApiService<HydroElectricDam>().create(model, body);
+    projectOtherApiSecondService<HydroElectricDam>().create(otherSubMenu?.apiRoute || '', body);
 
   const editHydroElectricDam = async (body: IApiPayload<HydroElectricDam>) =>
-    projectOtherApiService<HydroElectricDam>().update(model, hydroElectricDam?.id || '', body);
+    projectOtherApiSecondService<HydroElectricDam>().update(otherSubMenu?.apiRoute, hydroElectricDam?.id || '', body);
 
   const getPayload = (values: HydroElectricDam) => {
     return {

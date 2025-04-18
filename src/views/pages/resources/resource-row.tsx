@@ -22,13 +22,13 @@ export const resourceColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('resource.columns.title'),
-      field: 'title',
+      headerName: t('resource.columns.name'),
+      field: 'name',
       renderCell: ({ row }: CellType) => {
         return (
           <Typography
             component={Link}
-            href={`/resources/${typeId}/details/${row.id}/general-info`}
+            href={`/resources/${typeId}/details/${row.id}`}
             sx={{
               fontWeight: 500,
               textDecoration: 'none',
@@ -36,7 +36,7 @@ export const resourceColumns = (
               '&:hover': { color: 'primary.main' }
             }}
           >
-            {row?.title}
+            {row?.name}
           </Typography>
         );
       }
@@ -44,10 +44,10 @@ export const resourceColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('resource.columns.description'),
-      field: 'description',
+      headerName: t('resource.columns.remark'),
+      field: 'remark',
       renderCell: ({ row }: CellType) => {
-        return <Typography sx={{ color: 'text.secondary' }}>{row?.description}</Typography>;
+        return <Typography sx={{ color: 'text.secondary' }}>{row?.remark || t('common.not-available')}</Typography>;
       }
     },
     {

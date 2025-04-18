@@ -18,7 +18,7 @@ interface DrainageAssessmentDrawerType {
   refetch: () => void;
   drainageAssessment: DrainageAssessment; // Changed from DrainageAssessment
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const DrainageAssessmentDrawer = (props: DrainageAssessmentDrawerType) => {

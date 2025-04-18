@@ -599,6 +599,196 @@ export const projectMasterModels = {
     editTitle: 'edit-fire-extinguishing-technology',
     fileType: 'FIRE_EXTINGUISHING_TECHNOLOGY'
   },
+  model: {
+    model: 'model',
+    dbModel: 'model',
+    title: 'models',
+    createTitle: 'create-model',
+    editTitle: 'edit-model',
+    fileType: 'MODEL'
+  },
+  smartMeterType: {
+    model: 'SmartMeterType',
+    dbModel: 'smartmetertype',
+    title: 'smart-meter-types',
+    createTitle: 'create-smart-meter-type',
+    editTitle: 'edit-smart-meter-type',
+    fileType: 'SMART_METER_TYPE'
+  },
+  customerEngagementFrequency: {
+    model: 'CustomerEngagementFrequency',
+    dbModel: 'customerengagementfrequency',
+    title: 'customer-engagement-frequencies',
+    createTitle: 'create-customer-engagement-frequency',
+    editTitle: 'edit-customer-engagement-frequency',
+    fileType: 'CUSTOMER_ENGAGEMENT_FREQUENCY'
+  },
+  customerEngagementProgramsType: {
+    model: 'CustomerEngagementProgramsType',
+    dbModel: 'customerengagementprogramstype',
+    title: 'customer-engagement-programs-types',
+    createTitle: 'create-customer-engagement-programs-type',
+    editTitle: 'edit-customer-engagement-programs-type',
+    fileType: 'CUSTOMER_ENGAGEMENT_PROGRAMS_TYPE'
+  },
+  controlSystemType: {
+    model: 'ControlSystemType',
+    dbModel: 'controlsystemtype',
+    title: 'control-system-types',
+    createTitle: 'create-control-system-type',
+    editTitle: 'edit-control-system-type',
+    fileType: 'CONTROL_SYSTEM_TYPE'
+  },
+  communicationLinkType: {
+    model: 'CommunicationLinkType',
+    dbModel: 'communicationlinktype',
+    title: 'communication-link-types',
+    createTitle: 'create-communication-link-type',
+    editTitle: 'edit-communication-link-type',
+    fileType: 'COMMUNICATION_LINK_TYPE'
+  },
+  cyberSecurityMeasuresType: {
+    model: 'CyberSecurityMeasuresType',
+    dbModel: 'cybersecuritymeasurestype',
+    title: 'cyber-security-measures-types',
+    createTitle: 'create-cyber-security-measures-type',
+    editTitle: 'edit-cyber-security-measures-type',
+    fileType: 'CYBER_SECURITY_MEASURES_TYPE'
+  },
+  cyberSecurityAuditsFrequency: {
+    model: 'CyberSecurityAuditsFrequency',
+    dbModel: 'cybersecurityauditsfrequency',
+    title: 'cyber-security-audits-frequencies',
+    createTitle: 'create-cyber-security-audits-frequency',
+    editTitle: 'edit-cyber-security-audits-frequency',
+    fileType: 'CYBER_SECURITY_AUDITS_FREQUENCY'
+  },
+  apronSurfaceType: {
+    model: 'ApronSurfaceType',
+    dbModel: 'apronsurfacetype',
+    title: 'apron-surface-types',
+    createTitle: 'create-apron-surface-type',
+    editTitle: 'edit-apron-surface-type',
+    fileType: 'APRON_SURFACE_TYPE'
+  },
+  embeddedEnstrument: {
+    model: 'EmbeddedEnstrument',
+    dbModel: 'embeddedEnstrument',
+    title: 'embedded-enstrument',
+    createTitle: 'create-embedded-enstrument',
+    editTitle: 'edit-embedded-enstrument',
+    fileType: 'EMBEDDED_ENSTRUMENT'
+  },
+  damPurpose: {
+    model: 'DamPurpose',
+    dbModel: 'damPurpose',
+    title: 'dam-purpose',
+    createTitle: 'create-dam-purpose',
+    editTitle: 'edit-dam-purpose',
+    fileType: 'DAM_PURPOSE'
+  },
+  quality: {
+    model: 'Quality',
+    dbModel: 'quality',
+    title: 'quality',
+    createTitle: 'create-quality',
+    editTitle: 'edit-quality',
+    fileType: 'DAM_PURPOSE'
+  },
+  safetyProblemsEncountered: {
+    model: 'SafetyProblemsEncountered',
+    dbModel: 'safetyproblemsencountered',
+    title: 'safety-problems-encountered',
+    createTitle: 'create-safety-problems-encountered',
+    editTitle: 'edit-safety-problems-encountered',
+    fileType: 'SAFETY_PROBLEMS_ENCOUNTERED'
+  },
+  unitPrice: {
+    model: 'UnitPrice',
+    dbModel: 'unitPrice',
+    title: 'unit-price',
+    createTitle: 'create-unit-price',
+    editTitle: 'edit-unit-price',
+    fileType: 'UNIT_PRICE'
+  },
+  supplierName: {
+    model: 'SupplierName',
+    dbModel: 'supplierName',
+    title: 'supplier-name',
+    createTitle: 'create-supplier-name',
+    editTitle: 'edit-supplier-name',
+    fileType: 'SUPPLIER_NAME'
+  },
+  supplierAddress: {
+    model: 'SupplierAddress',
+    dbModel: 'supplierAddress',
+    title: 'supplier-address',
+    createTitle: 'create-supplier-address',
+    editTitle: 'edit-supplier-address',
+    fileType: 'SUPPLIER_ADDRESS'
+  },
+  distributionLineMaterial: {
+    model: 'DistributionLineMaterial',
+    dbModel: 'distributionlinematerial',
+    title: 'distribution-line-materials',
+    createTitle: 'create-distribution-line-material',
+    editTitle: 'edit-distribution-line-material',
+    fileType: 'DISTRIBUTION_LINE_MATERIAL'
+  },
+  communicationLinks: {
+    model: 'CommunicationLinks',
+    dbModel: 'communicationlinks',
+    title: 'communication-links',
+    createTitle: 'create-communication-links',
+    editTitle: 'edit-communication-links',
+    fileType: 'COMMUNICATION_LINKS'
+  },
+  waterSource: {
+    model: 'WaterSource',
+    dbModel: 'waterSource',
+    title: 'water-source',
+    createTitle: 'create-water-source',
+    editTitle: 'edit-water-source',
+    fileType: 'WATER_SOURCE'
+  },
+  projectTarget: {
+    model: 'ProjectTarget',
+    dbModel: 'projectTarget',
+    title: 'water-source',
+    createTitle: 'create-project-target',
+    editTitle: 'edit-project-target',
+    fileType: 'PROJECT_TARGET'
+  },
+  headWorkType: {
+    model: 'HeadWorkType',
+    dbModel: 'headWorkType',
+    title: 'head-work-type',
+    createTitle: 'create-head-work-type',
+    editTitle: 'edit-head-work-type',
+    fileType: 'HEAD_WORK_TYPE'
+  },
+  irrigationTechnology: {
+    model: 'IrrigationTechnology',
+    dbModel: 'irrigationTechnology',
+    title: 'irrigation-technology',
+    createTitle: 'create-irrigation-technology',
+    editTitle: 'edit-irrigation-technology',
+    fileType: 'IRRIGATION_TECHNOLOGY'
+  },
+  mainCanalType: {
+    model: 'MainCanalType',
+    dbModel: 'mainCanalType',
+    title: 'main-canal-type',
+    createTitle: 'create-main-canal-type',
+    editTitle: 'edit-main-canal-type',
+    fileType: 'MAIN_CANAL_TYPE'
+  }
+  
+  
+  
+
+
+
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

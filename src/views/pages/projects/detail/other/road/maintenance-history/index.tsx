@@ -17,7 +17,7 @@ import MaintenanceHistoryDrawer from './maintenance-history-drawer';
 import { maintenanceHistoryColumns } from './maintenance-history-row';
 
 interface MaintenanceHistoryListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }

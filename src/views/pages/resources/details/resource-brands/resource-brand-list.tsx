@@ -79,6 +79,7 @@ function ResourceBrandList({ resourceId }: { resourceId: string }) {
         <ItemsListing
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.grid.value}
+          title={t('resource.resource-brand.title')}
           isLoading={isLoading}
           breakpoints={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 4 }}
           ItemViewComponent={({ data }) => (

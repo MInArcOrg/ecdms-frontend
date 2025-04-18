@@ -17,7 +17,7 @@ import SafetyAndHealthDrawer from './safety-and-health-drawer';
 import { safetyAndHealthColumns } from './safety-and-health-row';
 
 interface SafetyAndHealthListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }

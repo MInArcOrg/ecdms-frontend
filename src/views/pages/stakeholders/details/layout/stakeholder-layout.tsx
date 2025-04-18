@@ -4,15 +4,16 @@ import { ReactNode } from 'react';
 import DetailMenu from 'src/views/components/custom/layout/detail-menu';
 import menuTabs from './stakeholder-menu-items';
 import DetailSubMenu from 'src/views/components/custom/layout/detail-sub-menu';
+import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
 
 interface StakeholderLayoutProps {
-  activeMenu: number;
-  activeSubMenu?: number;
-  subMenuItems?: Array<{ id: number; title: string; path: string }>;
+  activeMenuId: string;
+  activeSubMenuId?: string;
+  subMenuItems?: DetailSubMenuItem[];
   children: ReactNode;
 }
 
-const StakeholderLayout: React.FC<StakeholderLayoutProps> = ({ activeMenu, activeSubMenu, subMenuItems, children }) => {
+const StakeholderLayout: React.FC<StakeholderLayoutProps> = ({ activeMenuId, activeSubMenuId, subMenuItems, children }) => {
   const router = useRouter();
   const { id, typeId } = router.query;
   return (
@@ -20,7 +21,7 @@ const StakeholderLayout: React.FC<StakeholderLayoutProps> = ({ activeMenu, activ
       <DetailMenu
         id={id as string}
         menuItems={menuTabs(id as string, typeId as string)}
-        activeMenu={menuTabs(id as string, typeId as string)[activeMenu].id}
+        activeMenuId={activeMenuId}
         setActiveMenu={(path) => {
           router.push(path);
         }}
@@ -34,7 +35,7 @@ const StakeholderLayout: React.FC<StakeholderLayoutProps> = ({ activeMenu, activ
               <Card>
                 <DetailSubMenu
                   subMenuItems={subMenuItems}
-                  activeSubMenu={subMenuItems[activeSubMenu || 0]?.id}
+                  activeSubMenuId={activeSubMenuId}
                   setActiveSubMenu={(path) => {
                     router.push(path);
                   }}

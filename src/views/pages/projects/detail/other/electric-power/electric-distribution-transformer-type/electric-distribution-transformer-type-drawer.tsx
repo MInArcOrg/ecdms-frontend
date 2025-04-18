@@ -1,55 +1,55 @@
-"use client"
-import type { FormikProps } from "formik"
-import type { IApiPayload, IApiResponse } from "src/types/requests"
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer"
-import FormPageWrapper from "src/views/shared/form/form-wrapper"
-import * as yup from "yup"
-import ElectricDistributionTransformerTypeForm from "./electric-distribution-transformer-type-form"
-import { useState } from "react"
-import projectOtherApiSecondService from "src/services/project/project-other-second-service"
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
-import { uploadFile } from "src/services/utils/file-utils"
-import type { ElectricDistributionTransformerType, MiniGridStation } from "src/types/project/other"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
+'use client';
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import ElectricDistributionTransformerTypeForm from './electric-distribution-transformer-type-form';
+import { useState } from 'react';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import type { ElectricDistributionTransformerType, MiniGridStation } from 'src/types/project/other';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface ElectricDistributionTransformerTypeDrawerType {
-  open: boolean
-  toggle: () => void
-  refetch: () => void
-  electricDistributionTransformerType: ElectricDistributionTransformerType
-  projectId: string
-  otherSubMenu?: OtherMenuRoute
-  miniGridStations: MiniGridStation[]
-  transformerTypes: any[]
-  protectionInstalled: any[]
-  safetyProblemsEncountered: any[]
+  open: boolean;
+  toggle: () => void;
+  refetch: () => void;
+  electricDistributionTransformerType: ElectricDistributionTransformerType;
+  projectId: string;
+  otherSubMenu?: DetailSubMenuItemChild;
+  miniGridStations: MiniGridStation[];
+  transformerTypes: any[];
+  protectionInstalled: any[];
+  safetyProblemsEncountered: any[];
 }
 
 const ElectricDistributionTransformerTypeDrawer = (props: ElectricDistributionTransformerTypeDrawerType) => {
-  const { 
-    open, 
-    toggle, 
-    refetch, 
-    electricDistributionTransformerType, 
-    projectId, 
-    otherSubMenu, 
+  const {
+    open,
+    toggle,
+    refetch,
+    electricDistributionTransformerType,
+    projectId,
+    otherSubMenu,
     miniGridStations,
     transformerTypes,
     protectionInstalled,
     safetyProblemsEncountered
-  } = props
+  } = props;
 
-  const [uploadableFile, setUploadableFile] = useState<File | null>(null)
+  const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const onFileChange = (file: File | null) => {
-    setUploadableFile(file)
-  }
+    setUploadableFile(file);
+  };
 
   const validationSchema = yup.object().shape({
-    mini_grid_station_id: yup.string().required("Mini Grid Station is required"),
-    name: yup.string().required("Name is required"),
-    transformer_type_id: yup.string().required("Transformer Type is required"),
-    cooling_type: yup.string().required("Cooling Type is required"),
+    mini_grid_station_id: yup.string().required('Mini Grid Station is required'),
+    name: yup.string().required('Name is required'),
+    transformer_type_id: yup.string().required('Transformer Type is required'),
+    cooling_type: yup.string().required('Cooling Type is required'),
     transformer_power_rating: yup
       .number()
       .nullable()
@@ -58,29 +58,29 @@ const ElectricDistributionTransformerTypeDrawer = (props: ElectricDistributionTr
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value))
-      .integer("Lifetime must be an integer"),
-    protection_installed_id: yup.string().required("Protection Installed is required"),
-    safety_problems_encountered_id: yup.string().required("Safety Problems Encountered is required"),
+      .integer('Lifetime must be an integer'),
+    protection_installed_id: yup.string().required('Protection Installed is required'),
+    safety_problems_encountered_id: yup.string().required('Safety Problems Encountered is required'),
     work_accidents_number: yup
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value))
-      .integer("Work accidents number must be an integer"),
+      .integer('Work accidents number must be an integer'),
     on_site_safety_regulation_implemented: yup.boolean().nullable(),
-    remark: yup.string().nullable(),
-  })
+    remark: yup.string().nullable()
+  });
 
-  const isEdit = Boolean(electricDistributionTransformerType?.id)
+  const isEdit = Boolean(electricDistributionTransformerType?.id);
 
   const createElectricDistributionTransformerType = async (body: IApiPayload<ElectricDistributionTransformerType>) =>
-    projectOtherApiSecondService<ElectricDistributionTransformerType>().create(otherSubMenu?.apiRoute || "", body)
+    projectOtherApiSecondService<ElectricDistributionTransformerType>().create(otherSubMenu?.apiRoute || '', body);
 
   const editElectricDistributionTransformerType = async (body: IApiPayload<ElectricDistributionTransformerType>) =>
     projectOtherApiSecondService<ElectricDistributionTransformerType>().update(
-      otherSubMenu?.apiRoute || "", 
-      electricDistributionTransformerType?.id || "", 
+      otherSubMenu?.apiRoute || '',
+      electricDistributionTransformerType?.id || '',
       body
-    )
+    );
 
   const getPayload = (values: ElectricDistributionTransformerType) => ({
     data: {
@@ -96,57 +96,70 @@ const ElectricDistributionTransformerTypeDrawer = (props: ElectricDistributionTr
       work_accidents_number: values.work_accidents_number,
       on_site_safety_regulation_implemented: values.on_site_safety_regulation_implemented,
       remark: values.remark,
-      id: electricDistributionTransformerType?.id,
+      id: electricDistributionTransformerType?.id
     },
-    files: uploadableFile ? [uploadableFile] : [],
-  })
+    files: uploadableFile ? [uploadableFile] : []
+  });
 
-  const handleClose = () => toggle()
+  const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<ElectricDistributionTransformerType>, payload: IApiPayload<ElectricDistributionTransformerType>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<ElectricDistributionTransformerType>,
+    payload: IApiPayload<ElectricDistributionTransformerType>
+  ) => {
     if (payload.files.length > 0) {
-      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.electric_distribution_transformer_type, response.payload.id, "", "")
+      await uploadFile(
+        payload.files[0],
+        uploadableProjectFileTypes.other.electric_distribution_transformer_type,
+        response.payload.id,
+        '',
+        ''
+      );
     }
 
-    refetch()
-    handleClose()
-  }
+    refetch();
+    handleClose();
+  };
 
   return (
     <CustomSideDrawer
-      title={`project.other.electric-distribution-transformer-type.${isEdit ? `edit-electric-distribution-transformer-type` : `create-electric-distribution-transformer-type`}`}
+      title={`project.other.electric-distribution-transformer-type.${isEdit ? `edit-electric-distribution-transformer-type` : `create-electric-distribution-transformer-type`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.electric-distribution-transformer-type.${isEdit ? `edit-electric-distribution-transformer-type` : `create-electric-distribution-transformer-type`}`}
+          title={`project.other.electric-distribution-transformer-type.${isEdit ? `edit-electric-distribution-transformer-type` : `create-electric-distribution-transformer-type`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
             ...electricDistributionTransformerType,
-            cooling_type: electricDistributionTransformerType?.cooling_type || 'Oil Immersed',
+            cooling_type: electricDistributionTransformerType?.cooling_type || 'Oil Immersed'
           }}
           createActionFunc={isEdit ? editElectricDistributionTransformerType : createElectricDistributionTransformerType}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<ElectricDistributionTransformerType>) => {
-            return <ElectricDistributionTransformerTypeForm 
-              file={uploadableFile} 
-              onFileChange={onFileChange} 
-              formik={formik} 
-              miniGridStations={miniGridStations}
-              transformerTypes={transformerTypes}
-              protectionInstalled={protectionInstalled}
-              safetyProblemsEncountered={safetyProblemsEncountered}
-            />
+            return (
+              <ElectricDistributionTransformerTypeForm
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+                miniGridStations={miniGridStations}
+                transformerTypes={transformerTypes}
+                protectionInstalled={protectionInstalled}
+                safetyProblemsEncountered={safetyProblemsEncountered}
+              />
+            );
           }}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>
-  )
-}
+  );
+};
 
-export default ElectricDistributionTransformerTypeDrawer
+export default ElectricDistributionTransformerTypeDrawer;

@@ -27,7 +27,7 @@ const usePosition = (initialQueryParams: GetRequestParam = defaultGetRequestPara
   } = useQuery({
     queryKey: ['positions', queryParams],
     queryFn: () =>
-      positionApiService.getAll({ ...defaultGetRequestParam, ...queryParams }, departmentId).then((response) => {
+      positionApiService.getAll({ ...defaultGetRequestParam, ...queryParams }).then((response) => {
         setPagination(response._attributes.pagination);
         return response.payload;
       })

@@ -18,7 +18,7 @@ interface DataCenterComponentManufacturerDrawerType {
   refetch: () => void;
   dataCenterComponentManufacturer: DataCenterComponentManufacturer;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const DataCenterComponentManufacturerDrawer = (props: DataCenterComponentManufacturerDrawerType) => {
@@ -73,18 +73,16 @@ const DataCenterComponentManufacturerDrawer = (props: DataCenterComponentManufac
 
   return (
     <CustomSideDrawer
-      title={`project.other.data-center-component-manufacturer.${
-        isEdit ? `edit-data-center-component-manufacturer` : `create-data-center-component-manufacturer`
-      }`}
+      title={`project.other.data-center-component-manufacturer.${isEdit ? `edit-data-center-component-manufacturer` : `create-data-center-component-manufacturer`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.data-center-component-manufacturer.${
-            isEdit ? `edit-data-center-component-manufacturer` : `create-data-center-component-manufacturer`
-          }`}
+          title={`project.other.data-center-component-manufacturer.${isEdit ? `edit-data-center-component-manufacturer` : `create-data-center-component-manufacturer`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

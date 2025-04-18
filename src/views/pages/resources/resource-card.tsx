@@ -10,7 +10,8 @@ const ResourceCard = ({
   resource,
   onEdit,
   onDelete,
-  refetch
+  refetch,
+  t
 }: {
   resource: Resource;
   onEdit: (category: Resource) => void;
@@ -26,10 +27,10 @@ const ResourceCard = ({
             <Box sx={{ display: 'flex' }}>
               <Box>
                 <Typography variant="h5" component="div">
-                  {resource.title}
+                  {resource.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {resource.description}
+                  {resource.remark || t('common.not-available')}
                 </Typography>
               </Box>
             </Box>
@@ -63,4 +64,5 @@ const ResourceCard = ({
     </Card>
   );
 };
+
 export default ResourceCard;

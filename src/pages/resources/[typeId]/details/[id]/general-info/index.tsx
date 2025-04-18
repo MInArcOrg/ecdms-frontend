@@ -1,22 +1,28 @@
 import { useRouter } from 'next/router';
-import ResourceLayout from '../../../../../../views/pages/resources/details/layout/resource-layout';
-import ProfessionalAddressList from '../../../../../../views/pages/resources/details/resource-professional-address';
+import { useEffect } from 'react';
+import LoadingPlaceholder from 'src/views/components/loader';
 
-import subMenuItems from './(sub-menu-items)';
-function EmployeeBranchIndex() {
+const StakeholderOther = () => {
   const router = useRouter();
-  const { id, typeId } = router.query;
+
+  // Extract dynamic route parameters from the URL
+  const { typeId, id } = router.query;
+
+  useEffect(() => {
+    if (typeId && id) {
+      // Build the new URL dynamically
+      const newUrl = `/resources/${typeId}/details/${id}/general-info/general-info/general-info/`;
+
+      // Simulate a condition or action before redirecting
+      router.push(newUrl); // Redirect to the constructed URL
+    }
+  }, [typeId, id, router]);
 
   return (
-    <ResourceLayout activeMenu={0} activeSubMenu={0} subMenuItems={subMenuItems(id as string, typeId as string)}>
-      <ProfessionalAddressList model="professional-address" professionalId={id as string} typeId={typeId as string} />
-    </ResourceLayout>
+    <>
+      <LoadingPlaceholder />
+    </>
   );
-}
-
-EmployeeBranchIndex.acl = {
-  subject: 'resource',
-  action: 'view_resource'
 };
 
-export default EmployeeBranchIndex;
+export default StakeholderOther;
