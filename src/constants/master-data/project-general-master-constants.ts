@@ -806,9 +806,15 @@ export const projectMasterModels = {
     createTitle: 'create-runway-surface-type',
     editTitle: 'edit-runway-surface-type',
     fileType: 'RUNWAY_SURFACE_TYPE'
-  }
-  
-  
+  },
+  schemeStatus: {
+    model: 'SchemeStatus',
+    dbModel: 'schemeStatus',
+    title: 'scheme-status',
+    createTitle: 'create-scheme-status',
+    editTitle: 'edit-scheme-status',
+    fileType: 'SCHEME_STATUS'
+  }  
 
 
 };

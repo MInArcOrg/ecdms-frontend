@@ -359,7 +359,10 @@
       "edit-pumps-power-source": "Edit Pumps Power Source",
       "runway-surface-type": "Runway Surface Type",
       "create-runway-surface-type": "Create Runway Surface Type",
-      "edit-runway-surface-type": "Edit Runway Surface Type"
+      "edit-runway-surface-type": "Edit Runway Surface Type",
+      "scheme-status": "Scheme Status",
+      "create-scheme-status": "Create Scheme Status",
+      "edit-scheme-status": "Edit Scheme Status"
     },
     "form": {
       "title": "Title",
