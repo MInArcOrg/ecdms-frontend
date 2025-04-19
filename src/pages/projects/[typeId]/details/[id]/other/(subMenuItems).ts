@@ -696,6 +696,13 @@ const useSubMenuItems = (baseUrl: string): SubMenuItem[] => {
           path: `${baseUrl}/electric-power/electric-grid-control-center-performance-and-maintenance`,
           model: "electricgridcontrolcenterperformanceandmaintenance",
           apiRoute: "electric-grid-control-center-performance-and-maintenance",
+        },
+        {
+          id: 127,
+          title: t("project.navigation.submenu.others.electric-grid-control-center-cyber-security-data.title"),
+          path: `${baseUrl}/electric-power/electric-grid-control-center-cyber-security-data`,
+          model: "electricgridcontrolcentercybersecuritydata",
+          apiRoute: "electric-grid-control-center-cyber-security-data",
         }, {
           id: 109,
           title: t("project.navigation.submenu.others.mini-grid-station-distribution-line-infrastructure"),

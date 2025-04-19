@@ -1513,18 +1513,18 @@ export interface ElectricGridControlCenterPerformanceAndMaintenance {
   remark?: string
   created_at?: string
   updated_at?: string
-export interface MiniGridStationDistributionLineInfrastructure {
-  id: string
-  mini_grid_station_id: string
-  name: string
-  distribution_line_type_id: string
-  distribution_line_material_id: string
-  distribution_line_conductor_size?: number
-  voltage_level?: number
-  topology?: "Radial" | "Ring"
-  switching_station_connection?: boolean
-  station_name?: string
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
 }
+
+export interface ElectricGridControlCenterCyberSecurityData {
+  id: string
+  project_id: string
+  electric_grid_control_center_data_id: string
+  name: string
+  cyber_security_measures_implemented?: boolean
+  cyber_security_measures_type: string
+  cyber_security_audits_frequency: string
+  remark?: string
+  created_at?: string
+  updated_at?: string
+}
+
