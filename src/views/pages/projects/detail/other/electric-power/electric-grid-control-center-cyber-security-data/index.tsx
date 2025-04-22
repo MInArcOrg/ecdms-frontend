@@ -7,7 +7,6 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ITEMS_LISTING_TYPE } from "src/configs/app-constants"
 import usePaginatedFetch from "src/hooks/use-paginated-fetch"
-import type { OtherMenuRoute } from "src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)"
 import projectOtherApiSecondService from "src/services/project/project-other-second-service"
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants"
 import { defaultCreateActionConfig } from "src/types/general/listing"
@@ -25,9 +24,10 @@ import ElectricGridControlCenterCyberSecurityDataDrawer from "./electric-grid-co
 import { electricGridControlCenterCyberSecurityDataColumns } from "./electric-grid-control-center-cyber-security-data-row"
 import { projectMasterModels } from "src/constants/master-data/project-general-master-constants"
 import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service"
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout"
 
 interface ElectricGridControlCenterCyberSecurityDataListProps {
-  otherSubMenu?: OtherMenuRoute
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string
   projectId: string
 }
