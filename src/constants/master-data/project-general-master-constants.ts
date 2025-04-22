@@ -782,7 +782,41 @@ export const projectMasterModels = {
     createTitle: 'create-main-canal-type',
     editTitle: 'edit-main-canal-type',
     fileType: 'MAIN_CANAL_TYPE'
-  }
+  },
+  pumpType: {
+    model: 'PumpType',
+    dbModel: 'pumpType',
+    title: 'pump-type',
+    createTitle: 'create-pump-type',
+    editTitle: 'edit-pump-type',
+    fileType: 'PUMP_TYPE'
+  },
+  pumpsPowerSource: {
+    model: 'PumpsPowerSource',
+    dbModel: 'pumpsPowerSource',
+    title: 'pumps-power-source',
+    createTitle: 'create-pumps-power-source',
+    editTitle: 'edit-pumps-power-source',
+    fileType: 'PUMPS_POWER_SOURCE'
+  },
+  runwaySurfaceType: {
+    model: 'RunwaySurfaceType',
+    dbModel: 'runwaySurfaceType',
+    title: 'runway-surface-type',
+    createTitle: 'create-runway-surface-type',
+    editTitle: 'edit-runway-surface-type',
+    fileType: 'RUNWAY_SURFACE_TYPE'
+  },
+  schemeStatus: {
+    model: 'SchemeStatus',
+    dbModel: 'schemeStatus',
+    title: 'scheme-status',
+    createTitle: 'create-scheme-status',
+    editTitle: 'edit-scheme-status',
+    fileType: 'SCHEME_STATUS'
+  }  
+
+
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

@@ -349,9 +349,20 @@
       "create-irrigation-technology": "Create Irrigation Technology",
       "edit-irrigation-technology": "Edit Irrigation Technology",
       "main-canal-type": "Main Canal Type",
-"create-main-canal-type": "Create Main Canal Type",
-"edit-main-canal-type": "Edit Main Canal Type"
-
+      "create-main-canal-type": "Create Main Canal Type",
+      "edit-main-canal-type": "Edit Main Canal Type",
+      "pump-type": "Pump Type",
+      "create-pump-type": "Create Pump Type",
+      "edit-pump-type": "Edit Pump Type",
+      "pumps-power-source": "Pumps Power Source",
+      "create-pumps-power-source": "Create Pumps Power Source",
+      "edit-pumps-power-source": "Edit Pumps Power Source",
+      "runway-surface-type": "Runway Surface Type",
+      "create-runway-surface-type": "Create Runway Surface Type",
+      "edit-runway-surface-type": "Edit Runway Surface Type",
+      "scheme-status": "Scheme Status",
+      "create-scheme-status": "Create Scheme Status",
+      "edit-scheme-status": "Edit Scheme Status"
     },
     "form": {
       "title": "Title",
@@ -1106,7 +1117,8 @@
           "electric-smart-meters-performance-data": "Electric Smart Meters Performance Data",
           "electric-smart-meters-privacy-and-security-data": "Electric Smart Meters Privacy And Security Data",
           "electric-grid-control-center-data": "Electric Grid Control Center Data",
-          "electric-grid-control-center-performance-and-maintenance": "Electric Grid Control Center Performance And Maintenance"
+          "electric-grid-control-center-performance-and-maintenance": "Electric Grid Control Center Performance And Maintenance",
+          "electric-grid-control-center-cyber-security-data": "Electric Grid Control Center Cyber Security Data"
         }
       },
       "menu": {
@@ -3196,6 +3208,23 @@
           "total-interruptions-number": "Total Interruptions Number",
           "saidi": "SAIDI (System Average Interruption Duration Index)",
           "saifi": "SAIFI (System Average Interruption Frequency Index)",
+          "remark": "Remark"
+        }
+      },
+      "electric-grid-control-center-cyber-security-data": {
+        "title": "Electric Grid Control Center Cyber Security Data",
+        "create-electric-grid-control-center-cyber-security-data": "Create Electric Grid Control Center Cyber Security Data",
+        "edit-electric-grid-control-center-cyber-security-data": "Edit Electric Grid Control Center Cyber Security Data",
+        "electric-grid-control-center-cyber-security-data-details": "Electric Grid Control Center Cyber Security Data Details",
+        "general-information": "General Information",
+        "cyber-security": "Cyber Security",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "electric-grid-control-center-data-id": "Electric Grid Control Center Data",
+          "cyber-security-measures-implemented": "Cyber Security Measures Implemented",
+          "cyber-security-measures-type": "Cyber Security Measures Type",
+          "cyber-security-audits-frequency": "Cyber Security Audits Frequency",
           "remark": "Remark"
         }
       }
