@@ -5,23 +5,23 @@ import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-m
 import subMenuItems, { projectSetupIds } from '../(subMenuItems)';
 
 function ProjectVariation() {
-    const router = useRouter();
-    const { id, typeId } = router.query;
-    return (
-        <Box>
-            <ProjectLayout
-                activeMenuId={projectMenuIds.projectSetup}
-                activeSubMenuId={projectSetupIds.time.contractPeriod}
-                subMenuItems={subMenuItems(id as string, typeId as string)}
-            >
-                <>Contract Period here</>
-            </ProjectLayout>
-        </Box>
-    );
+  const router = useRouter();
+  const { id, typeId } = router.query;
+  return (
+    <Box>
+      <ProjectLayout
+        activeMenuId={projectMenuIds.projectSetup}
+        activeSubMenuId={projectSetupIds.time.contractPeriod}
+        subMenuItems={subMenuItems(id as string, typeId as string)}
+      >
+        <>Contract Period here</>
+      </ProjectLayout>
+    </Box>
+  );
 }
 
 ProjectVariation.acl = {
-    action: 'view',
-    subject: 'projectextensiontime'
+  action: 'view',
+  subject: 'projectextensiontime'
 };
 export default ProjectVariation;

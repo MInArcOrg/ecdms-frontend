@@ -38,7 +38,8 @@ function ProjectGeneralInformation() {
       activeMenuId={projectMenuIds.projectSetup}
       activeSubMenuId={projectSetupIds.generalInfo.projectInfo}
       subMenuItems={subMenuItems(id as string, typeId as string)}
-    >      {' '}
+    >
+      {' '}
       {isLoading ? (
         <LoadingPlaceholder />
       ) : (
@@ -114,7 +115,7 @@ function ProjectGeneralInformation() {
                       }
                     />
                     <Box pt={3}>
-                      <ProjectStatusChip data={projectGeneralInformation?.payload?.project_status} onClick={function (): void { }} />
+                      <ProjectStatusChip data={projectGeneralInformation?.payload?.project_status} onClick={function (): void {}} />
                     </Box>
                   </Box>
                 </Grid>

@@ -10,7 +10,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { DataCenterComponentManufacturer } from 'src/types/project/other';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface DataCenterComponentManufacturerDrawerType {
   open: boolean;
@@ -73,16 +73,18 @@ const DataCenterComponentManufacturerDrawer = (props: DataCenterComponentManufac
 
   return (
     <CustomSideDrawer
-      title={`project.other.data-center-component-manufacturer.${isEdit ? `edit-data-center-component-manufacturer` : `create-data-center-component-manufacturer`
-        }`}
+      title={`project.other.data-center-component-manufacturer.${
+        isEdit ? `edit-data-center-component-manufacturer` : `create-data-center-component-manufacturer`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.data-center-component-manufacturer.${isEdit ? `edit-data-center-component-manufacturer` : `create-data-center-component-manufacturer`
-            }`}
+          title={`project.other.data-center-component-manufacturer.${
+            isEdit ? `edit-data-center-component-manufacturer` : `create-data-center-component-manufacturer`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

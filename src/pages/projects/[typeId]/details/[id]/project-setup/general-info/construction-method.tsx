@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
-import subMenuItems, { projectSetupIds } from '../(subMenuItems)';
-import ProjectConstructionTypeList from 'src/views/pages/projects/detail/project-construction-type';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import subMenuItems, { projectSetupIds } from '../(subMenuItems)';
 
 function ProjectConstructionTypeIndex() {
   const router = useRouter();
@@ -14,9 +13,7 @@ function ProjectConstructionTypeIndex() {
       activeSubMenuId={projectSetupIds.generalInfo.constructionMethod}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <>
-        construction method here
-      </>
+      <>construction method here</>
     </ProjectLayout>
   );
 }

@@ -99,42 +99,42 @@ const SatelliteNetworkComponentManufacturerList: React.FC<SatelliteNetworkCompon
   const mapSatelliteNetworkComponentManufacturerToDetailItems = (
     satelliteNetworkComponentManufacturer: SatelliteNetworkComponentManufacturer
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.satellite-network-component-manufacturer.details.satellite-network'),
-        value:
-          satelliteNetworkMap.get(satelliteNetworkComponentManufacturer?.satellite_network_id) ||
-          satelliteNetworkComponentManufacturer?.satellite_network_id ||
-          'N/A'
-      },
-      {
-        title: t('project.other.satellite-network-component-manufacturer.details.satellite'),
-        value: satelliteNetworkComponentManufacturer?.satellite || 'N/A'
-      },
-      {
-        title: t('project.other.satellite-network-component-manufacturer.details.ground-stations'),
-        value: satelliteNetworkComponentManufacturer?.ground_stations || 'N/A'
-      },
-      {
-        title: t('project.other.satellite-network-component-manufacturer.details.modems'),
-        value: satelliteNetworkComponentManufacturer?.modems || 'N/A'
-      },
-      {
-        title: t('project.other.satellite-network-component-manufacturer.details.routers'),
-        value: satelliteNetworkComponentManufacturer?.routers || 'N/A'
-      },
-      {
-        title: t('project.other.satellite-network-component-manufacturer.details.others'),
-        value: satelliteNetworkComponentManufacturer?.others || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: satelliteNetworkComponentManufacturer?.created_at ? formatCreatedAt(satelliteNetworkComponentManufacturer.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: satelliteNetworkComponentManufacturer?.updated_at ? formatCreatedAt(satelliteNetworkComponentManufacturer.updated_at) : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.satellite-network-component-manufacturer.details.satellite-network'),
+      value:
+        satelliteNetworkMap.get(satelliteNetworkComponentManufacturer?.satellite_network_id) ||
+        satelliteNetworkComponentManufacturer?.satellite_network_id ||
+        'N/A'
+    },
+    {
+      title: t('project.other.satellite-network-component-manufacturer.details.satellite'),
+      value: satelliteNetworkComponentManufacturer?.satellite || 'N/A'
+    },
+    {
+      title: t('project.other.satellite-network-component-manufacturer.details.ground-stations'),
+      value: satelliteNetworkComponentManufacturer?.ground_stations || 'N/A'
+    },
+    {
+      title: t('project.other.satellite-network-component-manufacturer.details.modems'),
+      value: satelliteNetworkComponentManufacturer?.modems || 'N/A'
+    },
+    {
+      title: t('project.other.satellite-network-component-manufacturer.details.routers'),
+      value: satelliteNetworkComponentManufacturer?.routers || 'N/A'
+    },
+    {
+      title: t('project.other.satellite-network-component-manufacturer.details.others'),
+      value: satelliteNetworkComponentManufacturer?.others || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: satelliteNetworkComponentManufacturer?.created_at ? formatCreatedAt(satelliteNetworkComponentManufacturer.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: satelliteNetworkComponentManufacturer?.updated_at ? formatCreatedAt(satelliteNetworkComponentManufacturer.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

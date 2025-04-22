@@ -105,8 +105,9 @@ const ElectricSmartMetersDataDrawer = (props: ElectricSmartMetersDataDrawerType)
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.electric-smart-meters-data.${isEdit ? `edit-electric-smart-meters-data` : `create-electric-smart-meters-data`
-            }`}
+          title={`project.other.electric-smart-meters-data.${
+            isEdit ? `edit-electric-smart-meters-data` : `create-electric-smart-meters-data`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

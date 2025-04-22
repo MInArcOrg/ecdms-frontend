@@ -15,14 +15,15 @@ import EducationDrawer from './professional-education-drawer';
 import type { ProfessionalEducation } from 'src/types/resource';
 import type { StudyField } from 'src/types/general/general-master';
 import { educationColumns } from './professional-education-row';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
-interface EducationListProps {
-  model: string;
-  professionalId: string;
+interface ResourceEducationListProps {
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
+  professionalId: string;
 }
 
-const EducationList: React.FC<EducationListProps> = ({ professionalId }) => {
+const ResourceEducationList: React.FC<ResourceEducationListProps> = ({ professionalId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<ProfessionalEducation | null>(null);
@@ -176,4 +177,4 @@ const EducationList: React.FC<EducationListProps> = ({ professionalId }) => {
   );
 };
 
-export default EducationList;
+export default ResourceEducationList;

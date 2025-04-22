@@ -75,16 +75,18 @@ const RoadProjectQualityControlDrawer = (props: RoadProjectQualityControlDrawerT
 
   return (
     <CustomSideDrawer
-      title={`project.other.road-project-quality-control.${isEdit ? 'edit-road-project-quality-control' : 'create-road-project-quality-control'
-        }`}
+      title={`project.other.road-project-quality-control.${
+        isEdit ? 'edit-road-project-quality-control' : 'create-road-project-quality-control'
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.road-project-quality-control.${isEdit ? 'edit-road-project-quality-control' : 'create-road-project-quality-control'
-            }`}
+          title={`project.other.road-project-quality-control.${
+            isEdit ? 'edit-road-project-quality-control' : 'create-road-project-quality-control'
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

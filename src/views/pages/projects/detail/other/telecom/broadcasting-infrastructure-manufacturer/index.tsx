@@ -93,39 +93,39 @@ const BroadcastingInfrastructureManufacturerList: React.FC<BroadcastingInfrastru
   const mapBroadcastingInfrastructureManufacturerToDetailItems = (
     broadcastingInfrastructureManufacturer: BroadcastingInfrastructureManufacturer
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.broadcasting-infrastructure-manufacturer.details.broadcasting-infrastructure-id'),
-        value: broadcastingInfrastructureManufacturer?.broadcasting_infrastructure_id || 'N/A'
-      },
-      {
-        title: t('project.other.broadcasting-infrastructure-manufacturer.details.antennas'),
-        value: broadcastingInfrastructureManufacturer?.antennas || 'N/A'
-      },
-      {
-        title: t('project.other.broadcasting-infrastructure-manufacturer.details.transmitters'),
-        value: broadcastingInfrastructureManufacturer?.transmitters || 'N/A'
-      },
-      {
-        title: t('project.other.broadcasting-infrastructure-manufacturer.details.towers'),
-        value: broadcastingInfrastructureManufacturer?.towers || 'N/A'
-      },
-      {
-        title: t('project.other.broadcasting-infrastructure-manufacturer.details.cables'),
-        value: broadcastingInfrastructureManufacturer?.cables || 'N/A'
-      },
-      {
-        title: t('project.other.broadcasting-infrastructure-manufacturer.details.others'),
-        value: broadcastingInfrastructureManufacturer?.others || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: broadcastingInfrastructureManufacturer?.created_at ? formatCreatedAt(broadcastingInfrastructureManufacturer.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: broadcastingInfrastructureManufacturer?.updated_at ? formatCreatedAt(broadcastingInfrastructureManufacturer.updated_at) : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.broadcasting-infrastructure-manufacturer.details.broadcasting-infrastructure-id'),
+      value: broadcastingInfrastructureManufacturer?.broadcasting_infrastructure_id || 'N/A'
+    },
+    {
+      title: t('project.other.broadcasting-infrastructure-manufacturer.details.antennas'),
+      value: broadcastingInfrastructureManufacturer?.antennas || 'N/A'
+    },
+    {
+      title: t('project.other.broadcasting-infrastructure-manufacturer.details.transmitters'),
+      value: broadcastingInfrastructureManufacturer?.transmitters || 'N/A'
+    },
+    {
+      title: t('project.other.broadcasting-infrastructure-manufacturer.details.towers'),
+      value: broadcastingInfrastructureManufacturer?.towers || 'N/A'
+    },
+    {
+      title: t('project.other.broadcasting-infrastructure-manufacturer.details.cables'),
+      value: broadcastingInfrastructureManufacturer?.cables || 'N/A'
+    },
+    {
+      title: t('project.other.broadcasting-infrastructure-manufacturer.details.others'),
+      value: broadcastingInfrastructureManufacturer?.others || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: broadcastingInfrastructureManufacturer?.created_at ? formatCreatedAt(broadcastingInfrastructureManufacturer.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: broadcastingInfrastructureManufacturer?.updated_at ? formatCreatedAt(broadcastingInfrastructureManufacturer.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

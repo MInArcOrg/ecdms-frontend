@@ -1,22 +1,28 @@
 import { useRouter } from 'next/router';
-import ResourceLayout from 'src/views/pages/resources/details/layout/resource-layout';
-import subMenuItems from './(sub-menu-items)';
-import MembershipList from 'src/views/pages/resources/details/resource-professional-membership';
+import { useEffect } from 'react';
+import LoadingPlaceholder from 'src/views/components/loader';
 
-function EmployeeBranchIndex() {
+const ResourceMembership = () => {
   const router = useRouter();
-  const { id, typeId } = router.query;
+
+  // Extract dynamic route parameters from the URL
+  const { typeId, id } = router.query;
+
+  useEffect(() => {
+    if (typeId && id) {
+      // Build the new URL dynamically
+      const newUrl = `/resources/${typeId}/details/${id}/membership/membership/`;
+
+      // Simulate a condition or action before redirecting
+      router.push(newUrl); // Redirect to the constructed URL
+    }
+  }, [typeId, id, router]);
 
   return (
-    <ResourceLayout activeMenu={4} activeSubMenu={0} subMenuItems={subMenuItems(id as string, typeId as string)}>
-      <MembershipList model="professional-association-membership" professionalId={String(id)} typeId={String(typeId)} />
-    </ResourceLayout>
+    <>
+      <LoadingPlaceholder />
+    </>
   );
-}
-
-EmployeeBranchIndex.acl = {
-  subject: 'resource',
-  action: 'view_resource'
 };
 
-export default EmployeeBranchIndex;
+export default ResourceMembership;

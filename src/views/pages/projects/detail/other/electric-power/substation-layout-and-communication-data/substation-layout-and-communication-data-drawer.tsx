@@ -99,16 +99,18 @@ const SubstationLayoutAndCommunicationDataDrawer = (props: SubstationLayoutAndCo
 
   return (
     <CustomSideDrawer
-      title={`project.other.substation-layout-and-communication-data.${isEdit ? `edit-substation-layout-and-communication-data` : `create-substation-layout-and-communication-data`
-        }`}
+      title={`project.other.substation-layout-and-communication-data.${
+        isEdit ? `edit-substation-layout-and-communication-data` : `create-substation-layout-and-communication-data`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.substation-layout-and-communication-data.${isEdit ? `edit-substation-layout-and-communication-data` : `create-substation-layout-and-communication-data`
-            }`}
+          title={`project.other.substation-layout-and-communication-data.${
+            isEdit ? `edit-substation-layout-and-communication-data` : `create-substation-layout-and-communication-data`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

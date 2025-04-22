@@ -95,16 +95,18 @@ const ReliabilityAndMaintenanceDrawer = (props: ReliabilityAndMaintenanceDrawerT
 
   return (
     <CustomSideDrawer
-      title={`project.other.reliability-and-maintenance.${isEdit ? `edit-reliability-and-maintenance` : `create-reliability-and-maintenance`
-        }`}
+      title={`project.other.reliability-and-maintenance.${
+        isEdit ? `edit-reliability-and-maintenance` : `create-reliability-and-maintenance`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.reliability-and-maintenance.${isEdit ? `edit-reliability-and-maintenance` : `create-reliability-and-maintenance`
-            }`}
+          title={`project.other.reliability-and-maintenance.${
+            isEdit ? `edit-reliability-and-maintenance` : `create-reliability-and-maintenance`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

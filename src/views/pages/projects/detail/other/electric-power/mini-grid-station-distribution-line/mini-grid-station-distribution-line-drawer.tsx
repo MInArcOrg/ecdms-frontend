@@ -100,16 +100,18 @@ const MiniGridStationDistributionLineDrawer = (props: MiniGridStationDistributio
 
   return (
     <CustomSideDrawer
-      title={`project.other.mini-grid-station-distribution-line.${isEdit ? `edit-mini-grid-station-distribution-line` : `create-mini-grid-station-distribution-line`
-        }`}
+      title={`project.other.mini-grid-station-distribution-line.${
+        isEdit ? `edit-mini-grid-station-distribution-line` : `create-mini-grid-station-distribution-line`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.mini-grid-station-distribution-line.${isEdit ? `edit-mini-grid-station-distribution-line` : `create-mini-grid-station-distribution-line`
-            }`}
+          title={`project.other.mini-grid-station-distribution-line.${
+            isEdit ? `edit-mini-grid-station-distribution-line` : `create-mini-grid-station-distribution-line`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

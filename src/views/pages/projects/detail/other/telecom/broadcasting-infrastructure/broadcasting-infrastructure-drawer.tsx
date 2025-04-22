@@ -81,16 +81,18 @@ const BroadcastingInfrastructureDrawer = (props: BroadcastingInfrastructureDrawe
 
   return (
     <CustomSideDrawer
-      title={`project.other.broadcasting-infrastructure.${isEdit ? `edit-broadcasting-infrastructure` : `create-broadcasting-infrastructure`
-        }`}
+      title={`project.other.broadcasting-infrastructure.${
+        isEdit ? `edit-broadcasting-infrastructure` : `create-broadcasting-infrastructure`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.broadcasting-infrastructure.${isEdit ? `edit-broadcasting-infrastructure` : `create-broadcasting-infrastructure`
-            }`}
+          title={`project.other.broadcasting-infrastructure.${
+            isEdit ? `edit-broadcasting-infrastructure` : `create-broadcasting-infrastructure`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

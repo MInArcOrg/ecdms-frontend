@@ -4,39 +4,29 @@ import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-m
 import subMenuItems, { findSubMenuItem, mobileSatelliteNetworksId } from '../(subMenuItems)';
 import NetworkCapacityList from 'src/views/pages/projects/detail/other/telecom/network-capacity';
 
-const defaultMenuItem = findSubMenuItem(
-    subMenuItems('', ''),
-    mobileSatelliteNetworksId.mobileNetworks.networkCapacity
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), mobileSatelliteNetworksId.mobileNetworks.networkCapacity);
 
 const NetworkCapacityPage = () => {
-    const router = useRouter();
-    const { id = '', typeId = '' } = router.query;
+  const router = useRouter();
+  const { id = '', typeId = '' } = router.query;
 
-    const menuItem = findSubMenuItem(
-        subMenuItems(id as string, typeId as string),
-        mobileSatelliteNetworksId.mobileNetworks.networkCapacity
-    );
+  const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), mobileSatelliteNetworksId.mobileNetworks.networkCapacity);
 
-    return (
-        <ProjectLayout
-            activeMenuId={projectMenuIds.mobileSatelliteNetworks}
-            activeSubMenuId={mobileSatelliteNetworksId.mobileNetworks.networkCapacity}
-            subMenuItems={subMenuItems(id as string, typeId as string)}
-        >
-            <NetworkCapacityList
-                otherSubMenu={menuItem}
-                typeId={String(typeId)}
-                projectId={String(id)}
-            />
-        </ProjectLayout>
-    );
+  return (
+    <ProjectLayout
+      activeMenuId={projectMenuIds.mobileSatelliteNetworks}
+      activeSubMenuId={mobileSatelliteNetworksId.mobileNetworks.networkCapacity}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <NetworkCapacityList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
+    </ProjectLayout>
+  );
 };
 
 // Access control configuration
 NetworkCapacityPage.acl = {
-    subject: defaultMenuItem?.model,
-    action: 'view'
+  subject: defaultMenuItem?.model,
+  action: 'view'
 };
 
 export default NetworkCapacityPage;

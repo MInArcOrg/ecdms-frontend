@@ -97,16 +97,18 @@ const BroadcastingInfrastructureAgeDrawer = (props: BroadcastingInfrastructureAg
 
   return (
     <CustomSideDrawer
-      title={`project.other.broadcasting-infrastructure-age.${isEdit ? `edit-broadcasting-infrastructure-age` : `create-broadcasting-infrastructure-age`
-        }`}
+      title={`project.other.broadcasting-infrastructure-age.${
+        isEdit ? `edit-broadcasting-infrastructure-age` : `create-broadcasting-infrastructure-age`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.broadcasting-infrastructure-age.${isEdit ? `edit-broadcasting-infrastructure-age` : `create-broadcasting-infrastructure-age`
-            }`}
+          title={`project.other.broadcasting-infrastructure-age.${
+            isEdit ? `edit-broadcasting-infrastructure-age` : `create-broadcasting-infrastructure-age`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

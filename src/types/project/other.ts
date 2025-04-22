@@ -1485,46 +1485,47 @@ export interface ElectricSmartMetersPrivacyAndSecurityData {
 }
 
 export interface ElectricGridControlCenterData {
-  id: string
-  project_id: string
-  mini_grid_station_id: string
-  name: string
-  installation_year?: number
-  control_system_type_id: string
-  communication_links_id: string
-  energy_management_system_capability?: boolean
-  remote_control_capability?: boolean
-  average_measured_data_reliability?: number
-  remark?: string
-  created_at?: string
-  updated_at?: string
+  id: string;
+  project_id: string;
+  mini_grid_station_id: string;
+  name: string;
+  installation_year?: number;
+  control_system_type_id: string;
+  communication_links_id: string;
+  energy_management_system_capability?: boolean;
+  remote_control_capability?: boolean;
+  average_measured_data_reliability?: number;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface ElectricGridControlCenterPerformanceAndMaintenance {
-  id: string
-  project_id: string
-  electric_grid_control_center_data_id: string
-  name: string
-  maintenance_frequency_id: string
-  total_system_downtime_outage_duration?: number
-  total_interruptions_number?: number
-  saidi?: string
-  saifi?: string
-  remark?: string
-  created_at?: string
-  updated_at?: string
+  id: string;
+  project_id: string;
+  electric_grid_control_center_data_id: string;
+  name: string;
+  maintenance_frequency_id: string;
+  total_system_downtime_outage_duration?: number;
+  total_interruptions_number?: number;
+  saidi?: string;
+  saifi?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
 export interface MiniGridStationDistributionLineInfrastructure {
-  id: string
-  mini_grid_station_id: string
-  name: string
-  distribution_line_type_id: string
-  distribution_line_material_id: string
-  distribution_line_conductor_size?: number
-  voltage_level?: number
-  topology?: "Radial" | "Ring"
-  switching_station_connection?: boolean
-  station_name?: string
-  remark?: string
-  created_at?: Date
-  updated_at?: Date
+  id: string;
+  mini_grid_station_id: string;
+  name: string;
+  distribution_line_type_id: string;
+  distribution_line_material_id: string;
+  distribution_line_conductor_size?: number;
+  voltage_level?: number;
+  topology?: 'Radial' | 'Ring';
+  switching_station_connection?: boolean;
+  station_name?: string;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }

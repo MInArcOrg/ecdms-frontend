@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -76,43 +76,43 @@ const DataCenterComponentManufacturerList: React.FC<DataCenterComponentManufactu
   const mapDataCenterComponentManufacturerToDetailItems = (
     dataCenterComponentManufacturer: DataCenterComponentManufacturer
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.data-center-component-manufacturer.details.data-center-id'),
-        value: dataCenterComponentManufacturer?.data_center_id || 'N/A'
-      },
-      {
-        title: t('project.other.data-center-component-manufacturer.details.servers'),
-        value: dataCenterComponentManufacturer?.servers || 'N/A'
-      },
-      {
-        title: t('project.other.data-center-component-manufacturer.details.storage-devices'),
-        value: dataCenterComponentManufacturer?.storage_devices || 'N/A'
-      },
-      {
-        title: t('project.other.data-center-component-manufacturer.details.networking-equipment'),
-        value: dataCenterComponentManufacturer?.networking_equipment || 'N/A'
-      },
-      {
-        title: t('project.other.data-center-component-manufacturer.details.cooling-systems'),
-        value: dataCenterComponentManufacturer?.cooling_systems || 'N/A'
-      },
-      {
-        title: t('project.other.data-center-component-manufacturer.details.backup-generators'),
-        value: dataCenterComponentManufacturer?.backup_generators || 'N/A'
-      },
-      {
-        title: t('project.other.data-center-component-manufacturer.details.others'),
-        value: dataCenterComponentManufacturer?.others || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: dataCenterComponentManufacturer?.created_at ? formatCreatedAt(dataCenterComponentManufacturer.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: dataCenterComponentManufacturer?.updated_at ? formatCreatedAt(dataCenterComponentManufacturer.updated_at) : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.data-center-component-manufacturer.details.data-center-id'),
+      value: dataCenterComponentManufacturer?.data_center_id || 'N/A'
+    },
+    {
+      title: t('project.other.data-center-component-manufacturer.details.servers'),
+      value: dataCenterComponentManufacturer?.servers || 'N/A'
+    },
+    {
+      title: t('project.other.data-center-component-manufacturer.details.storage-devices'),
+      value: dataCenterComponentManufacturer?.storage_devices || 'N/A'
+    },
+    {
+      title: t('project.other.data-center-component-manufacturer.details.networking-equipment'),
+      value: dataCenterComponentManufacturer?.networking_equipment || 'N/A'
+    },
+    {
+      title: t('project.other.data-center-component-manufacturer.details.cooling-systems'),
+      value: dataCenterComponentManufacturer?.cooling_systems || 'N/A'
+    },
+    {
+      title: t('project.other.data-center-component-manufacturer.details.backup-generators'),
+      value: dataCenterComponentManufacturer?.backup_generators || 'N/A'
+    },
+    {
+      title: t('project.other.data-center-component-manufacturer.details.others'),
+      value: dataCenterComponentManufacturer?.others || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: dataCenterComponentManufacturer?.created_at ? formatCreatedAt(dataCenterComponentManufacturer.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: dataCenterComponentManufacturer?.updated_at ? formatCreatedAt(dataCenterComponentManufacturer.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

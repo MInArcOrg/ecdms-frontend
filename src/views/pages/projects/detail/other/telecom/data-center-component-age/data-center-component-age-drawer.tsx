@@ -10,7 +10,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { DataCenterComponentAge } from 'src/types/project/other';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface DataCenterComponentAgeDrawerType {
   open: boolean;
@@ -73,8 +73,9 @@ const DataCenterComponentAgeDrawer = (props: DataCenterComponentAgeDrawerType) =
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.data-center-component-age.${isEdit ? `edit-data-center-component-age` : `create-data-center-component-age`
-            }`}
+          title={`project.other.data-center-component-age.${
+            isEdit ? `edit-data-center-component-age` : `create-data-center-component-age`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

@@ -15,7 +15,9 @@ function ProjectVariation() {
         activeMenuId={projectMenuIds.projectSetup}
         activeSubMenuId={projectSetupIds.time.time}
         subMenuItems={subMenuItems(id as string, typeId as string)}
-      >        <ProjectTimeComponent projectId={String(id)} />
+      >
+        {' '}
+        <ProjectTimeComponent projectId={String(id)} />
       </ProjectLayout>
     </Box>
   );

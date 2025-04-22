@@ -98,7 +98,7 @@ export const projectTypesMaster = {
   telecommunication: 'TELECOMMUNICATION',
   road: 'ROAD',
   waterInfrastructure: 'WATER_INFRASTRUCTURE',
-  eletric: 'ELECTRIC',
+  eletric: 'ELECTRIC'
 };
 export type ProjectMenuItem = ReturnType<typeof menuItems>;
 export default menuItems;

@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import GeothermalPowerInfrastructureForm from './geothermal-power-infrastructure-form';
 
 import { useState } from 'react';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { GeothermalPowerInfrastructure } from 'src/types/project/other';
@@ -83,16 +83,18 @@ const GeothermalPowerInfrastructureDrawer = (props: GeothermalPowerInfrastructur
 
   return (
     <CustomSideDrawer
-      title={`project.other.geothermal-power-infrastructure.${isEdit ? `edit-geothermal-power-infrastructure` : `create-geothermal-power-infrastructure`
-        }`}
+      title={`project.other.geothermal-power-infrastructure.${
+        isEdit ? `edit-geothermal-power-infrastructure` : `create-geothermal-power-infrastructure`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.geothermal-power-infrastructure.${isEdit ? `edit-geothermal-power-infrastructure` : `create-geothermal-power-infrastructure`
-            }`}
+          title={`project.other.geothermal-power-infrastructure.${
+            isEdit ? `edit-geothermal-power-infrastructure` : `create-geothermal-power-infrastructure`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={initialValues}

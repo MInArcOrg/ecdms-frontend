@@ -45,7 +45,8 @@ const ProjectResourceCard: React.FC<ProjectResourceCardProps> = ({ projectResour
                 <strong>{projectResource?.resource?.quality_measurement_unit_id ?? t('N/A')}</strong>
               </Typography>
               <Typography variant="body2" color="text.secondary" sx={{ marginTop: 0.5 }}>
-                <span>{t('resource.form.status')}:</span> <strong>{projectResource?.resource?.quality_measurement_unit_id ?? t('N/A')}</strong>
+                <span>{t('resource.form.status')}:</span>{' '}
+                <strong>{projectResource?.resource?.quality_measurement_unit_id ?? t('N/A')}</strong>
               </Typography>
             </Box>
           </Grid>

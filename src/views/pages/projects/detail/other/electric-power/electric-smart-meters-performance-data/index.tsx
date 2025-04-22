@@ -108,75 +108,75 @@ const ElectricSmartMetersPerformanceDataList: React.FC<ElectricSmartMetersPerfor
   const mapElectricSmartMetersPerformanceDataToDetailItems = (
     electricSmartMetersPerformanceData: ElectricSmartMetersPerformanceData
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.electric-smart-meters-performance-data.details.name'),
-        value: electricSmartMetersPerformanceData?.name || 'N/A'
-      },
-      {
-        title: t('project.other.electric-smart-meters-performance-data.details.electric-smart-meters-data-id'),
-        value: electricSmartMetersPerformanceData?.electric_smart_meters_data_id
-          ? electricSmartMetersDataMap.get(electricSmartMetersPerformanceData.electric_smart_meters_data_id) ||
+    {
+      title: t('project.other.electric-smart-meters-performance-data.details.name'),
+      value: electricSmartMetersPerformanceData?.name || 'N/A'
+    },
+    {
+      title: t('project.other.electric-smart-meters-performance-data.details.electric-smart-meters-data-id'),
+      value: electricSmartMetersPerformanceData?.electric_smart_meters_data_id
+        ? electricSmartMetersDataMap.get(electricSmartMetersPerformanceData.electric_smart_meters_data_id) ||
           electricSmartMetersPerformanceData.electric_smart_meters_data_id
-          : 'N/A'
-      },
-      {
-        title: t('project.other.electric-smart-meters-performance-data.details.maintenance-frequency-id'),
-        value: electricSmartMetersPerformanceData?.maintenance_frequency_id
-          ? maintenanceFrequenciesMap.get(electricSmartMetersPerformanceData.maintenance_frequency_id) ||
+        : 'N/A'
+    },
+    {
+      title: t('project.other.electric-smart-meters-performance-data.details.maintenance-frequency-id'),
+      value: electricSmartMetersPerformanceData?.maintenance_frequency_id
+        ? maintenanceFrequenciesMap.get(electricSmartMetersPerformanceData.maintenance_frequency_id) ||
           electricSmartMetersPerformanceData.maintenance_frequency_id
+        : 'N/A'
+    },
+    {
+      title: t('project.other.electric-smart-meters-performance-data.details.average-meter-lifespan'),
+      value:
+        electricSmartMetersPerformanceData?.average_meter_lifespan !== undefined
+          ? electricSmartMetersPerformanceData.average_meter_lifespan.toString()
           : 'N/A'
-      },
-      {
-        title: t('project.other.electric-smart-meters-performance-data.details.average-meter-lifespan'),
-        value:
-          electricSmartMetersPerformanceData?.average_meter_lifespan !== undefined
-            ? electricSmartMetersPerformanceData.average_meter_lifespan.toString()
-            : 'N/A'
-      },
-      {
-        title: t('project.other.electric-smart-meters-performance-data.details.average-meter-accuracy'),
-        value:
-          electricSmartMetersPerformanceData?.average_meter_accuracy !== undefined
-            ? electricSmartMetersPerformanceData.average_meter_accuracy.toString()
-            : 'N/A'
-      },
-      {
-        title: t('project.other.electric-smart-meters-performance-data.details.safety-problems-encountered'),
-        value: electricSmartMetersPerformanceData?.safety_problems_encountered || 'N/A'
-      },
-      {
-        title: t('project.other.electric-smart-meters-performance-data.details.work-accidents-number'),
-        value:
-          electricSmartMetersPerformanceData?.work_accidents_number !== undefined
-            ? electricSmartMetersPerformanceData.work_accidents_number.toString()
-            : 'N/A'
-      },
-      {
-        title: t('project.other.electric-smart-meters-performance-data.details.on-site-safety-regulation-implemented'),
-        value:
-          electricSmartMetersPerformanceData?.on_site_safety_regulation_implemented !== undefined
-            ? electricSmartMetersPerformanceData.on_site_safety_regulation_implemented
-              ? t('common.yes')
-              : t('common.no')
-            : 'N/A'
-      },
-      {
-        title: t('project.other.electric-smart-meters-performance-data.details.other'),
-        value: electricSmartMetersPerformanceData?.other || 'N/A'
-      },
-      {
-        title: t('project.other.electric-smart-meters-performance-data.details.remark'),
-        value: electricSmartMetersPerformanceData?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: electricSmartMetersPerformanceData?.created_at ? formatCreatedAt(electricSmartMetersPerformanceData.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: electricSmartMetersPerformanceData?.updated_at ? formatCreatedAt(electricSmartMetersPerformanceData.updated_at) : 'N/A'
-      }
-    ];
+    },
+    {
+      title: t('project.other.electric-smart-meters-performance-data.details.average-meter-accuracy'),
+      value:
+        electricSmartMetersPerformanceData?.average_meter_accuracy !== undefined
+          ? electricSmartMetersPerformanceData.average_meter_accuracy.toString()
+          : 'N/A'
+    },
+    {
+      title: t('project.other.electric-smart-meters-performance-data.details.safety-problems-encountered'),
+      value: electricSmartMetersPerformanceData?.safety_problems_encountered || 'N/A'
+    },
+    {
+      title: t('project.other.electric-smart-meters-performance-data.details.work-accidents-number'),
+      value:
+        electricSmartMetersPerformanceData?.work_accidents_number !== undefined
+          ? electricSmartMetersPerformanceData.work_accidents_number.toString()
+          : 'N/A'
+    },
+    {
+      title: t('project.other.electric-smart-meters-performance-data.details.on-site-safety-regulation-implemented'),
+      value:
+        electricSmartMetersPerformanceData?.on_site_safety_regulation_implemented !== undefined
+          ? electricSmartMetersPerformanceData.on_site_safety_regulation_implemented
+            ? t('common.yes')
+            : t('common.no')
+          : 'N/A'
+    },
+    {
+      title: t('project.other.electric-smart-meters-performance-data.details.other'),
+      value: electricSmartMetersPerformanceData?.other || 'N/A'
+    },
+    {
+      title: t('project.other.electric-smart-meters-performance-data.details.remark'),
+      value: electricSmartMetersPerformanceData?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: electricSmartMetersPerformanceData?.created_at ? formatCreatedAt(electricSmartMetersPerformanceData.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: electricSmartMetersPerformanceData?.updated_at ? formatCreatedAt(electricSmartMetersPerformanceData.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

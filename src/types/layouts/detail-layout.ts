@@ -14,10 +14,16 @@ export interface DetailSubMenuItemChild {
   subject?: string;
   apiRoute?: string;
   model?: string;
+  type?: string | String[];
 }
 export type DetailSubMenuItem = {
-  type?: string | String[];
   id: string;
+  path?: string;
   title: string;
-  subItems: DetailSubMenuItemChild[];
+  action?: string;
+  subject?: string;
+  apiRoute?: string;
+  model?: string;
+  type?: string | String[];
+  subItems?: DetailSubMenuItemChild[];
 };

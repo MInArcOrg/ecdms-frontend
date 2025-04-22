@@ -15,6 +15,31 @@ interface ResourceLayoutProps {
   children: ReactNode;
 }
 
+// Utility functions (separation of concern)
+function normalizeType(type: unknown): string | string[] | undefined {
+  if (typeof type === 'string') return type;
+  if (Array.isArray(type)) return type.map((t) => t.toString());
+  if (type instanceof String) return type.toString();
+  return undefined;
+}
+
+function filterByType(type: unknown, flag: string): boolean {
+  const normalizedType = normalizeType(type);
+  if (!normalizedType) return true;
+  if (Array.isArray(normalizedType)) return !!flag && normalizedType.includes(flag);
+  return !!flag && normalizedType === flag;
+}
+
+function filterSubMenuItems(items: DetailSubMenuItem[] | undefined, flag: string): DetailSubMenuItem[] {
+  if (!items) return [];
+  return items
+    .filter((item) => filterByType(item.type, flag))
+    .map((item) => ({
+      ...item,
+      subItems: item.subItems ? item.subItems.filter((subItem) => filterByType(subItem.type, flag)) : []
+    }));
+}
+
 const ResourceLayout: React.FC<ResourceLayoutProps> = ({ activeMenuId, activeSubMenuId, subMenuItems, children }) => {
   const router = useRouter();
   const { id, typeId } = router.query;
@@ -22,41 +47,20 @@ const ResourceLayout: React.FC<ResourceLayoutProps> = ({ activeMenuId, activeSub
   const { data: masterType } = useQuery({
     queryKey: ['masterType', 'resource', typeId],
     queryFn: () => masterTypeApiService.getOne('resource', String(typeId), {}),
-    staleTime: Infinity, // Data never goes stale
-    gcTime: 5 * 60 * 1000, // Cached for 5 minutes
-    enabled: !!typeId // Only fetch if typeId is available
+    staleTime: Infinity,
+    gcTime: 5 * 60 * 1000,
+    enabled: !!typeId
   });
+  console.log('masterType', masterType);
+  const filteredMenuItems = useMemo(() => {
+    const flag = masterType?.payload?.flag ?? '';
+    return menuTabs(id as string, typeId as string).filter((item) => filterByType(item.type, flag));
+  }, [id, typeId, masterType?.payload?.flag]);
 
-  // Memoize values derived from props and query
-  const filteredMenuItems = useMemo(
-    () => {
-      const flag = masterType?.payload?.flag ?? '';
-      return menuTabs(id as string, typeId as string).filter(
-        (item) =>
-          !item.type ||
-          (Array.isArray(item.type)
-            ? flag && item.type.includes(flag)
-            : flag && item.type === flag)
-      );
-    },
-    [id, typeId, masterType?.payload?.flag]
-  );
-
-  const filteredSubMenuItems = useMemo(
-    () => {
-      const flag = masterType?.payload?.flag ?? '';
-      return (
-        subMenuItems?.filter(
-          (item) =>
-            !item.type ||
-            (Array.isArray(item.type)
-              ? flag && item.type.includes(flag)
-              : flag && item.type === flag)
-        ) || []
-      );
-    },
-    [subMenuItems, masterType?.payload?.flag]
-  );
+  const filteredSubMenuItems = useMemo(() => {
+    const flag = masterType?.payload?.flag ?? '';
+    return filterSubMenuItems(subMenuItems, flag);
+  }, [subMenuItems, masterType?.payload?.flag]);
 
   return (
     <Box>

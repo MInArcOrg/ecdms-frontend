@@ -108,16 +108,18 @@ const MiniGridStationBackupPowerSourceDrawer = (props: MiniGridStationBackupPowe
 
   return (
     <CustomSideDrawer
-      title={`project.other.mini-grid-station-backup-power-source.${isEdit ? `edit-mini-grid-station-backup-power-source` : `create-mini-grid-station-backup-power-source`
-        }`}
+      title={`project.other.mini-grid-station-backup-power-source.${
+        isEdit ? `edit-mini-grid-station-backup-power-source` : `create-mini-grid-station-backup-power-source`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.mini-grid-station-backup-power-source.${isEdit ? `edit-mini-grid-station-backup-power-source` : `create-mini-grid-station-backup-power-source`
-            }`}
+          title={`project.other.mini-grid-station-backup-power-source.${
+            isEdit ? `edit-mini-grid-station-backup-power-source` : `create-mini-grid-station-backup-power-source`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

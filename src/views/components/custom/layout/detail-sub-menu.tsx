@@ -26,17 +26,24 @@ const DetailSubMenu: React.FC<DetailSubMenuProps> = ({ subMenuItems, activeSubMe
   return (
     <CardContent>
       {subMenuItems.map((item) => {
-        const isParentActive = item.subItems?.some((subItem) => subItem.id === activeSubMenuId);
+        const isParentActive = item.subItems?.some((subItem) => subItem.id === activeSubMenuId) || activeSubMenuId === item.id;
+        const hasSubItems = !!item.subItems && item.subItems.length > 0;
 
         return (
           <Box key={item.id}>
             <ListItemButton
               selected={openId === item.id || isParentActive}
               sx={{ borderRadius: '0.5rem', mb: 2 }}
-              onClick={() => handleMenuItemClick(item.id)}
+              onClick={() => {
+                if (hasSubItems) {
+                  handleMenuItemClick(item.id);
+                } else if (item.path) {
+                  setActiveSubMenu(item.path);
+                }
+              }}
             >
               <ListItemText primary={t(item.title)} />
-              <Icon icon={openId === item.id ? 'tabler:chevron-down' : 'tabler:chevron-up'} />
+              {hasSubItems ? <Icon icon={openId === item.id ? 'tabler:chevron-down' : 'tabler:chevron-up'} /> : null}
             </ListItemButton>
             <Collapse in={openId === item.id} timeout="auto" unmountOnExit>
               {item.subItems &&

@@ -10,7 +10,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { DataCenterFacilityCapacity } from 'src/types/project/other';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface DataCenterFacilityCapacityDrawerType {
   open: boolean;
@@ -73,16 +73,18 @@ const DataCenterFacilityCapacityDrawer = (props: DataCenterFacilityCapacityDrawe
 
   return (
     <CustomSideDrawer
-      title={`project.other.data-center-facility-capacity.${isEdit ? `edit-data-center-facility-capacity` : `create-data-center-facility-capacity`
-        }`}
+      title={`project.other.data-center-facility-capacity.${
+        isEdit ? `edit-data-center-facility-capacity` : `create-data-center-facility-capacity`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.data-center-facility-capacity.${isEdit ? `edit-data-center-facility-capacity` : `create-data-center-facility-capacity`
-            }`}
+          title={`project.other.data-center-facility-capacity.${
+            isEdit ? `edit-data-center-facility-capacity` : `create-data-center-facility-capacity`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

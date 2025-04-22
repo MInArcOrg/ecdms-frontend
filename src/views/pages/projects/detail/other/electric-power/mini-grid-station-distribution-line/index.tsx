@@ -98,70 +98,70 @@ const MiniGridStationDistributionLineList: React.FC<MiniGridStationDistributionL
   const mapMiniGridStationDistributionLineToDetailItems = (
     miniGridStationDistributionLine: MiniGridStationDistributionLine
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.mini-grid-station-distribution-line.details.name'),
-        value: miniGridStationDistributionLine?.name || 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-distribution-line.details.mini-grid-station-id'),
-        value: miniGridStationDistributionLine?.mini_grid_station_id
-          ? miniGridStationsMap.get(miniGridStationDistributionLine?.mini_grid_station_id) ||
+    {
+      title: t('project.other.mini-grid-station-distribution-line.details.name'),
+      value: miniGridStationDistributionLine?.name || 'N/A'
+    },
+    {
+      title: t('project.other.mini-grid-station-distribution-line.details.mini-grid-station-id'),
+      value: miniGridStationDistributionLine?.mini_grid_station_id
+        ? miniGridStationsMap.get(miniGridStationDistributionLine?.mini_grid_station_id) ||
           miniGridStationDistributionLine?.mini_grid_station_id
+        : 'N/A'
+    },
+    {
+      title: t('project.other.mini-grid-station-distribution-line.details.system-type'),
+      value: miniGridStationDistributionLine?.system_type || 'N/A'
+    },
+    {
+      title: t('project.other.mini-grid-station-distribution-line.details.lines-type'),
+      value: miniGridStationDistributionLine?.lines_type || 'N/A'
+    },
+    {
+      title: t('project.other.mini-grid-station-distribution-line.details.line-length'),
+      value:
+        miniGridStationDistributionLine?.line_length !== undefined
+          ? `${miniGridStationDistributionLine.line_length} ${t('common.km')}`
           : 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-distribution-line.details.system-type'),
-        value: miniGridStationDistributionLine?.system_type || 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-distribution-line.details.lines-type'),
-        value: miniGridStationDistributionLine?.lines_type || 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-distribution-line.details.line-length'),
-        value:
-          miniGridStationDistributionLine?.line_length !== undefined
-            ? `${miniGridStationDistributionLine.line_length} ${t('common.km')}`
-            : 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-distribution-line.details.poles'),
-        value: miniGridStationDistributionLine?.poles || 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-distribution-line.details.transformer-type-id'),
-        value: miniGridStationDistributionLine?.transformer_type_id
-          ? transformerTypesMap.get(miniGridStationDistributionLine?.transformer_type_id) ||
+    },
+    {
+      title: t('project.other.mini-grid-station-distribution-line.details.poles'),
+      value: miniGridStationDistributionLine?.poles || 'N/A'
+    },
+    {
+      title: t('project.other.mini-grid-station-distribution-line.details.transformer-type-id'),
+      value: miniGridStationDistributionLine?.transformer_type_id
+        ? transformerTypesMap.get(miniGridStationDistributionLine?.transformer_type_id) ||
           miniGridStationDistributionLine?.transformer_type_id
+        : 'N/A'
+    },
+    {
+      title: t('project.other.mini-grid-station-distribution-line.details.transformers-number'),
+      value:
+        miniGridStationDistributionLine?.transformers_number !== undefined
+          ? miniGridStationDistributionLine.transformers_number.toString()
           : 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-distribution-line.details.transformers-number'),
-        value:
-          miniGridStationDistributionLine?.transformers_number !== undefined
-            ? miniGridStationDistributionLine.transformers_number.toString()
-            : 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-distribution-line.details.transformers-size'),
-        value:
-          miniGridStationDistributionLine?.transformers_size !== undefined
-            ? `${miniGridStationDistributionLine.transformers_size} ${t('common.kva')}`
-            : 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-distribution-line.details.remark'),
-        value: miniGridStationDistributionLine?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: miniGridStationDistributionLine?.created_at ? formatCreatedAt(miniGridStationDistributionLine.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: miniGridStationDistributionLine?.updated_at ? formatCreatedAt(miniGridStationDistributionLine.updated_at) : 'N/A'
-      }
-    ];
+    },
+    {
+      title: t('project.other.mini-grid-station-distribution-line.details.transformers-size'),
+      value:
+        miniGridStationDistributionLine?.transformers_size !== undefined
+          ? `${miniGridStationDistributionLine.transformers_size} ${t('common.kva')}`
+          : 'N/A'
+    },
+    {
+      title: t('project.other.mini-grid-station-distribution-line.details.remark'),
+      value: miniGridStationDistributionLine?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: miniGridStationDistributionLine?.created_at ? formatCreatedAt(miniGridStationDistributionLine.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: miniGridStationDistributionLine?.updated_at ? formatCreatedAt(miniGridStationDistributionLine.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

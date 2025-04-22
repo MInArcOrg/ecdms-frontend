@@ -92,16 +92,18 @@ const SatelliteInfrastructureAgeDrawer = (props: SatelliteInfrastructureAgeDrawe
 
   return (
     <CustomSideDrawer
-      title={`project.other.satellite-infrastructure-age.${isEdit ? `edit-satellite-infrastructure-age` : `create-satellite-infrastructure-age`
-        }`}
+      title={`project.other.satellite-infrastructure-age.${
+        isEdit ? `edit-satellite-infrastructure-age` : `create-satellite-infrastructure-age`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.satellite-infrastructure-age.${isEdit ? `edit-satellite-infrastructure-age` : `create-satellite-infrastructure-age`
-            }`}
+          title={`project.other.satellite-infrastructure-age.${
+            isEdit ? `edit-satellite-infrastructure-age` : `create-satellite-infrastructure-age`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

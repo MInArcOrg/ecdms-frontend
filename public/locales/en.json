@@ -552,17 +552,23 @@
       "menu": {
         "general-info": "General Info",
         "price": "Price",
-        "quantity": "Quantity"
+        "quantity": "Quantity",
+        "education": "Education",
+        "work-experience": "Work Experience",
+        "certificates": "Certificates",
+        "membership": "Membership"
       },
       "submenu": {
         "general-info": {
           "general-info-section": "General Info",
           "general-info": "General Info",
+          "professional-registration": "Professional Registration",
+          "address": "Address",
+          "contact": "Contact",
+          "contact-person": "Contact Person",
+          "additional-info": "Additional Info",
           "brands": "Brands",
-          "specification": "Specification",
-          "price-and-quantity-section": "Price and quantity",
-          "resource-prices": "Resource Prices",
-          "resource-quantity": "Resource Quantity"
+          "specification": "Specification"
         },
         "resource-price": {
           "resource-price-section": "Price",
@@ -582,18 +588,29 @@
         "work-experiences": {
           "work-experiences": "Work experiences"
         },
-        "educations": {
-          "educations": "Educations",
+        "education": {
+          "education": "Education",
+          "education-section": "Education Section",
           "trainings": "Trainings"
         },
+        "work-experience": {
+          "work-experience": "Work Experience"
+        },
         "membership": {
-          "association": "Association"
+          "association": "Association",
+          "membership": "Membership"
         },
         "achievements": {
           "certificates": "Certificates"
         },
         "recomendations": {
           "recomendations": "Recomendations"
+        },
+        "certificates": {
+          "certificates-section": "Certificates",
+          "certificates": "Certificates",
+          "recommendations": "Recommendations",
+          "license": "License"
         }
       }
     },

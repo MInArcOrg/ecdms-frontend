@@ -3,7 +3,7 @@ import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
 // Define an object for ID constants
 export const projectReportingIds = {
   plan: {
-    plan: 'PLAN',
+    plan: 'PLAN'
   },
   report: {
     report: 'REPORT',

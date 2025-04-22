@@ -16,7 +16,9 @@ function ProjectVariation() {
         activeMenuId={projectMenuIds.resource}
         activeSubMenuId={projectResourceIds.finance.variations}
         subMenuItems={subMenuItems(id as string, typeId as string)}
-      >        <ProjectVariationList projectId={String(id)} type={variationConstants.VARIATION.value} />
+      >
+        {' '}
+        <ProjectVariationList projectId={String(id)} type={variationConstants.VARIATION.value} />
       </ProjectLayout>
     </Box>
   );

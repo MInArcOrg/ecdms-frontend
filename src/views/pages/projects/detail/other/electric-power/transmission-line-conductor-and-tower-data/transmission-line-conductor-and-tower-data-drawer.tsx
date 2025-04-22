@@ -124,16 +124,18 @@ const TransmissionLineConductorAndTowerDataDrawer = (props: TransmissionLineCond
 
   return (
     <CustomSideDrawer
-      title={`project.other.transmission-line-conductor-and-tower-data.${isEdit ? `edit-transmission-line-conductor-and-tower-data` : `create-transmission-line-conductor-and-tower-data`
-        }`}
+      title={`project.other.transmission-line-conductor-and-tower-data.${
+        isEdit ? `edit-transmission-line-conductor-and-tower-data` : `create-transmission-line-conductor-and-tower-data`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.transmission-line-conductor-and-tower-data.${isEdit ? `edit-transmission-line-conductor-and-tower-data` : `create-transmission-line-conductor-and-tower-data`
-            }`}
+          title={`project.other.transmission-line-conductor-and-tower-data.${
+            isEdit ? `edit-transmission-line-conductor-and-tower-data` : `create-transmission-line-conductor-and-tower-data`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

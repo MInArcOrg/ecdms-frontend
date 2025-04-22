@@ -117,11 +117,10 @@ const App = (props: ExtendedAppProps) => {
   const guestGuard = Component.guestGuard ?? false;
 
   const aclAbilities = Component.acl ?? defaultACLObj;
-  const [queryClient] = useState(() => new QueryClient())
+  const [queryClient] = useState(() => new QueryClient());
 
   return (
     <QueryClientProvider client={queryClient}>
-
       <Provider store={store}>
         <CacheProvider value={emotionCache}>
           <Head>

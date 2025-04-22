@@ -57,16 +57,18 @@ const BridgeStructureInformationDrawer = (props: BridgeStructureInformationDrawe
 
   return (
     <CustomSideDrawer
-      title={`project.other.bridge-structure-information.${isEdit ? `edit-bridge-structure-information` : `create-bridge-structure-information`
-        }`}
+      title={`project.other.bridge-structure-information.${
+        isEdit ? `edit-bridge-structure-information` : `create-bridge-structure-information`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.bridge-structure-information.${isEdit ? `edit-bridge-structure-information` : `create-bridge-structure-information`
-            }`}
+          title={`project.other.bridge-structure-information.${
+            isEdit ? `edit-bridge-structure-information` : `create-bridge-structure-information`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

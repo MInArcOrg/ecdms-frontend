@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -83,43 +83,43 @@ const InternetConnectionInfrastructureManufacturerList: React.FC<InternetConnect
   const mapInternetConnectionInfrastructureManufacturerToDetailItems = (
     internetConnectionInfrastructureManufacturer: InternetConnectionInfrastructureManufacturer
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.internet-connection-infrastructure-manufacturer.details.internet-connection-id'),
-        value: internetConnectionInfrastructureManufacturer?.internet_connection_id || 'N/A'
-      },
-      {
-        title: t('project.other.internet-connection-infrastructure-manufacturer.details.routers'),
-        value: internetConnectionInfrastructureManufacturer?.routers || 'N/A'
-      },
-      {
-        title: t('project.other.internet-connection-infrastructure-manufacturer.details.switches'),
-        value: internetConnectionInfrastructureManufacturer?.switches || 'N/A'
-      },
-      {
-        title: t('project.other.internet-connection-infrastructure-manufacturer.details.modems'),
-        value: internetConnectionInfrastructureManufacturer?.modems || 'N/A'
-      },
-      {
-        title: t('project.other.internet-connection-infrastructure-manufacturer.details.cables'),
-        value: internetConnectionInfrastructureManufacturer?.cables || 'N/A'
-      },
-      {
-        title: t('project.other.internet-connection-infrastructure-manufacturer.details.others'),
-        value: internetConnectionInfrastructureManufacturer?.others || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: internetConnectionInfrastructureManufacturer?.created_at
-          ? formatCreatedAt(internetConnectionInfrastructureManufacturer.created_at)
-          : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: internetConnectionInfrastructureManufacturer?.updated_at
-          ? formatCreatedAt(internetConnectionInfrastructureManufacturer.updated_at)
-          : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.internet-connection-infrastructure-manufacturer.details.internet-connection-id'),
+      value: internetConnectionInfrastructureManufacturer?.internet_connection_id || 'N/A'
+    },
+    {
+      title: t('project.other.internet-connection-infrastructure-manufacturer.details.routers'),
+      value: internetConnectionInfrastructureManufacturer?.routers || 'N/A'
+    },
+    {
+      title: t('project.other.internet-connection-infrastructure-manufacturer.details.switches'),
+      value: internetConnectionInfrastructureManufacturer?.switches || 'N/A'
+    },
+    {
+      title: t('project.other.internet-connection-infrastructure-manufacturer.details.modems'),
+      value: internetConnectionInfrastructureManufacturer?.modems || 'N/A'
+    },
+    {
+      title: t('project.other.internet-connection-infrastructure-manufacturer.details.cables'),
+      value: internetConnectionInfrastructureManufacturer?.cables || 'N/A'
+    },
+    {
+      title: t('project.other.internet-connection-infrastructure-manufacturer.details.others'),
+      value: internetConnectionInfrastructureManufacturer?.others || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: internetConnectionInfrastructureManufacturer?.created_at
+        ? formatCreatedAt(internetConnectionInfrastructureManufacturer.created_at)
+        : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: internetConnectionInfrastructureManufacturer?.updated_at
+        ? formatCreatedAt(internetConnectionInfrastructureManufacturer.updated_at)
+        : 'N/A'
+    }
+  ];
 
   return (
     <Box>

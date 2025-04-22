@@ -92,16 +92,18 @@ const ElectricSmartMetersRatingsDataDrawer = (props: ElectricSmartMetersRatingsD
 
   return (
     <CustomSideDrawer
-      title={`project.other.electric-smart-meters-ratings-data.${isEdit ? `edit-electric-smart-meters-ratings-data` : `create-electric-smart-meters-ratings-data`
-        }`}
+      title={`project.other.electric-smart-meters-ratings-data.${
+        isEdit ? `edit-electric-smart-meters-ratings-data` : `create-electric-smart-meters-ratings-data`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.electric-smart-meters-ratings-data.${isEdit ? `edit-electric-smart-meters-ratings-data` : `create-electric-smart-meters-ratings-data`
-            }`}
+          title={`project.other.electric-smart-meters-ratings-data.${
+            isEdit ? `edit-electric-smart-meters-ratings-data` : `create-electric-smart-meters-ratings-data`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

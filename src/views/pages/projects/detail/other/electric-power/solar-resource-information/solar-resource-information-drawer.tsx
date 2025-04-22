@@ -95,8 +95,9 @@ const SolarResourceInformationDrawer = (props: SolarResourceInformationDrawerTyp
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.solar-resource-information.${isEdit ? `edit-solar-resource-information` : `create-solar-resource-information`
-            }`}
+          title={`project.other.solar-resource-information.${
+            isEdit ? `edit-solar-resource-information` : `create-solar-resource-information`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

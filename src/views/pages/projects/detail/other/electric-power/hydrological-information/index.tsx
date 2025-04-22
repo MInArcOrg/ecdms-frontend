@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -15,6 +14,7 @@ import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-det
 import HydrologicalInformationCard from './hydrological-information-card';
 import HydrologicalInformationDrawer from './hydrological-information-drawer';
 import { telecomColumns } from './hydrological-information-row'; // Updated import
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface HydrologicalInformationListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -75,43 +75,43 @@ const HydrologicalInformationList: React.FC<HydrologicalInformationListProps> = 
   const mapHydrologicalInformationToDetailItems = (
     hydrologicalInformation: HydrologicalInformation
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.hydrological-information.details.water-source'),
-        value: hydrologicalInformation?.water_source || 'N/A'
-      },
-      {
-        title: t('project.other.hydrological-information.details.catchment-area'),
-        value: hydrologicalInformation?.catchment_area?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.hydrological-information.details.elevation-change'),
-        value: hydrologicalInformation?.elevation_change?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.hydrological-information.details.head'),
-        value: hydrologicalInformation?.head?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.hydrological-information.details.total-inflow'),
-        value: hydrologicalInformation?.total_inflow?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.hydrological-information.details.active-storage-volume'),
-        value: hydrologicalInformation?.active_storage_volume?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.hydrological-information.details.water-stored'),
-        value: hydrologicalInformation?.water_stored?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.hydrological-information.details.remark'),
-        value: hydrologicalInformation?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: hydrologicalInformation?.created_at ? formatCreatedAt(hydrologicalInformation?.created_at) : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.hydrological-information.details.water-source'),
+      value: hydrologicalInformation?.water_source || 'N/A'
+    },
+    {
+      title: t('project.other.hydrological-information.details.catchment-area'),
+      value: hydrologicalInformation?.catchment_area?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.hydrological-information.details.elevation-change'),
+      value: hydrologicalInformation?.elevation_change?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.hydrological-information.details.head'),
+      value: hydrologicalInformation?.head?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.hydrological-information.details.total-inflow'),
+      value: hydrologicalInformation?.total_inflow?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.hydrological-information.details.active-storage-volume'),
+      value: hydrologicalInformation?.active_storage_volume?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.hydrological-information.details.water-stored'),
+      value: hydrologicalInformation?.water_stored?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.hydrological-information.details.remark'),
+      value: hydrologicalInformation?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: hydrologicalInformation?.created_at ? formatCreatedAt(hydrologicalInformation?.created_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

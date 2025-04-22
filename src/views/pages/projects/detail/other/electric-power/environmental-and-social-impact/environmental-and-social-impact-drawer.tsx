@@ -81,16 +81,18 @@ const EnvironmentalAndSocialImpactDrawer = (props: EnvironmentalAndSocialImpactD
 
   return (
     <CustomSideDrawer
-      title={`project.other.environmental-and-social-impact.${isEdit ? `edit-environmental-and-social-impact` : `create-environmental-and-social-impact`
-        }`}
+      title={`project.other.environmental-and-social-impact.${
+        isEdit ? `edit-environmental-and-social-impact` : `create-environmental-and-social-impact`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.environmental-and-social-impact.${isEdit ? `edit-environmental-and-social-impact` : `create-environmental-and-social-impact`
-            }`}
+          title={`project.other.environmental-and-social-impact.${
+            isEdit ? `edit-environmental-and-social-impact` : `create-environmental-and-social-impact`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

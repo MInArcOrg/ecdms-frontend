@@ -14,7 +14,7 @@ import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-det
 import TransmissionLineInformationCard from './transmission-line-information-card';
 import TransmissionLineInformationDrawer from './transmission-line-information-drawer';
 import { transmissionLineInformationColumns } from './transmission-line-information-row';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface TransmissionLineInformationListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -74,55 +74,55 @@ const TransmissionLineInformationList: React.FC<TransmissionLineInformationListP
   const mapTransmissionLineInformationToDetailItems = (
     transmissionLineInformation: TransmissionLineInformation
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.transmission-line-information.details.name'),
-        value: transmissionLineInformation?.name || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.transmission-voltage'),
-        value: transmissionLineInformation?.transmission_voltage?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.transmission-line-route-length'),
-        value: transmissionLineInformation?.transmission_line_route_length?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.circuit-number'),
-        value: transmissionLineInformation?.circuit_number?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.starting-point-northing'),
-        value: transmissionLineInformation?.starting_point_northing?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.starting-point-easting'),
-        value: transmissionLineInformation?.starting_point_easting?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.ending-point-northing'),
-        value: transmissionLineInformation?.ending_point_northing?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.ending-point-easting'),
-        value: transmissionLineInformation?.ending_point_easting?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.lifetime'),
-        value: transmissionLineInformation?.lifetime?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-information.details.remark'),
-        value: transmissionLineInformation?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: transmissionLineInformation?.created_at ? formatCreatedAt(transmissionLineInformation.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: transmissionLineInformation?.updated_at ? formatCreatedAt(transmissionLineInformation.updated_at) : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.transmission-line-information.details.name'),
+      value: transmissionLineInformation?.name || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.transmission-voltage'),
+      value: transmissionLineInformation?.transmission_voltage?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.transmission-line-route-length'),
+      value: transmissionLineInformation?.transmission_line_route_length?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.circuit-number'),
+      value: transmissionLineInformation?.circuit_number?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.starting-point-northing'),
+      value: transmissionLineInformation?.starting_point_northing?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.starting-point-easting'),
+      value: transmissionLineInformation?.starting_point_easting?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.ending-point-northing'),
+      value: transmissionLineInformation?.ending_point_northing?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.ending-point-easting'),
+      value: transmissionLineInformation?.ending_point_easting?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.lifetime'),
+      value: transmissionLineInformation?.lifetime?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-information.details.remark'),
+      value: transmissionLineInformation?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: transmissionLineInformation?.created_at ? formatCreatedAt(transmissionLineInformation.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: transmissionLineInformation?.updated_at ? formatCreatedAt(transmissionLineInformation.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

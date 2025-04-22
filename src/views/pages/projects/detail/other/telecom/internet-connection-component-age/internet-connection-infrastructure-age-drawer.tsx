@@ -10,7 +10,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { InternetConnectionInfrastructureAge } from 'src/types/project/other';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface InternetConnectionInfrastructureAgeDrawerType {
   open: boolean;
@@ -72,16 +72,18 @@ const InternetConnectionInfrastructureAgeDrawer = (props: InternetConnectionInfr
 
   return (
     <CustomSideDrawer
-      title={`project.other.internet-connection-infrastructure-age.${isEdit ? `edit-internet-connection-infrastructure-age` : `create-internet-connection-infrastructure-age`
-        }`}
+      title={`project.other.internet-connection-infrastructure-age.${
+        isEdit ? `edit-internet-connection-infrastructure-age` : `create-internet-connection-infrastructure-age`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.internet-connection-infrastructure-age.${isEdit ? `edit-internet-connection-infrastructure-age` : `create-internet-connection-infrastructure-age`
-            }`}
+          title={`project.other.internet-connection-infrastructure-age.${
+            isEdit ? `edit-internet-connection-infrastructure-age` : `create-internet-connection-infrastructure-age`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

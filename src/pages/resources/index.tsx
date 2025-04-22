@@ -3,7 +3,7 @@ import ResourceList from 'src/views/pages/resources/resource-list';
 const ResourcePage = () => {
   return (
     <>
-      <ResourceList  />
+      <ResourceList />
     </>
   );
 };

@@ -12,7 +12,6 @@ function ProjectLocation() {
 
   return (
     <Box>
-
       <ProjectLayout
         activeMenuId={projectMenuIds.projectSetup}
         activeSubMenuId={projectSetupIds.generalInfo.address}

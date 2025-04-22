@@ -89,16 +89,18 @@ const BroadcastingInfrastructureManufacturerDrawer = (props: BroadcastingInfrast
 
   return (
     <CustomSideDrawer
-      title={`project.other.broadcasting-infrastructure-manufacturer.${isEdit ? `edit-broadcasting-infrastructure-manufacturer` : `create-broadcasting-infrastructure-manufacturer`
-        }`}
+      title={`project.other.broadcasting-infrastructure-manufacturer.${
+        isEdit ? `edit-broadcasting-infrastructure-manufacturer` : `create-broadcasting-infrastructure-manufacturer`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.broadcasting-infrastructure-manufacturer.${isEdit ? `edit-broadcasting-infrastructure-manufacturer` : `create-broadcasting-infrastructure-manufacturer`
-            }`}
+          title={`project.other.broadcasting-infrastructure-manufacturer.${
+            isEdit ? `edit-broadcasting-infrastructure-manufacturer` : `create-broadcasting-infrastructure-manufacturer`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

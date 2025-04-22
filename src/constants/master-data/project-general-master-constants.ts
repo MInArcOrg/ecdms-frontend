@@ -783,12 +783,6 @@ export const projectMasterModels = {
     editTitle: 'edit-main-canal-type',
     fileType: 'MAIN_CANAL_TYPE'
   }
-  
-  
-  
-
-
-
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

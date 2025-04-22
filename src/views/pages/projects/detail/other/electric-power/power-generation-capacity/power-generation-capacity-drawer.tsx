@@ -94,8 +94,9 @@ const PowerGenerationCapacityDrawer = (props: PowerGenerationCapacityDrawerType)
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.power-generation-capacity.${isEdit ? `edit-power-generation-capacity` : `create-power-generation-capacity`
-            }`}
+          title={`project.other.power-generation-capacity.${
+            isEdit ? `edit-power-generation-capacity` : `create-power-generation-capacity`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

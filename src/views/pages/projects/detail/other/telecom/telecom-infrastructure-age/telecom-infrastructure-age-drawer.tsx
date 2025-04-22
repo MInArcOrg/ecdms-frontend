@@ -88,8 +88,9 @@ const TelecomInfrastructureAgeDrawer = (props: TelecomInfrastructureAgeDrawerTyp
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.telecom-infrastructure-age.${isEdit ? `edit-telecom-infrastructure-age` : `create-telecom-infrastructure-age`
-            }`}
+          title={`project.other.telecom-infrastructure-age.${
+            isEdit ? `edit-telecom-infrastructure-age` : `create-telecom-infrastructure-age`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
