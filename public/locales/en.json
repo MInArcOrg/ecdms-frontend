@@ -353,7 +353,10 @@
       "edit-main-canal-type": "Edit Main Canal Type",
       "pump-type": "Pump Type",
       "create-pump-type": "Create Pump Type",
-      "edit-pump-type": "Edit Pump Type"
+      "edit-pump-type": "Edit Pump Type",
+      "pumps-power-source": "Pumps Power Source",
+      "create-pumps-power-source": "Create Pumps Power Source",
+      "edit-pumps-power-source": "Edit Pumps Power Source"
     },
     "form": {
       "title": "Title",

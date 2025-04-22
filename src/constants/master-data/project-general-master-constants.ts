@@ -790,7 +790,16 @@ export const projectMasterModels = {
     createTitle: 'create-pump-type',
     editTitle: 'edit-pump-type',
     fileType: 'PUMP_TYPE'
+  },
+  pumpsPowerSource: {
+    model: 'PumpsPowerSource',
+    dbModel: 'pumpsPowerSource',
+    title: 'pumps-power-source',
+    createTitle: 'create-pumps-power-source',
+    editTitle: 'edit-pumps-power-source',
+    fileType: 'PUMPS_POWER_SOURCE'
   }
+  
 
 
 };
