@@ -1,15 +1,14 @@
 "use client"
 
-import { Grid, Typography, Divider, FormControlLabel, Checkbox } from "@mui/material"
+import { Checkbox, Divider, FormControlLabel, Grid, Typography } from "@mui/material"
 import type { FormikProps } from "formik"
 import type React from "react"
 import { useTranslation } from "react-i18next"
 import { gridSpacing } from "src/configs/app-constants"
 import type { ElectricGridControlCenterCyberSecurityData, ElectricGridControlCenterData } from "src/types/project/other"
+import CustomSelect from "src/views/shared/form/custom-select"
 import CustomTextBox from "src/views/shared/form/custom-text-box"
 import CustomFileUpload from "src/views/shared/form/custome-file-selector"
-import CustomSelect from "src/views/shared/form/custom-select"
-import CustomSwitch from "src/views/shared/form/custom-switch"
 
 interface ElectricGridControlCenterCyberSecurityDataFormProps {
     formik: FormikProps<ElectricGridControlCenterCyberSecurityData>
