@@ -782,11 +782,15 @@ export const projectMasterModels = {
     createTitle: 'create-main-canal-type',
     editTitle: 'edit-main-canal-type',
     fileType: 'MAIN_CANAL_TYPE'
+  },
+  pumpType: {
+    model: 'PumpType',
+    dbModel: 'pumpType',
+    title: 'pump-type',
+    createTitle: 'create-pump-type',
+    editTitle: 'edit-pump-type',
+    fileType: 'PUMP_TYPE'
   }
-  
-  
-  
-
 
 
 };
