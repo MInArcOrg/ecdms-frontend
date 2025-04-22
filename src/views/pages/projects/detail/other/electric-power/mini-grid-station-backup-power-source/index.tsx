@@ -87,64 +87,64 @@ const MiniGridStationBackupPowerSourceList: React.FC<MiniGridStationBackupPowerS
   const mapMiniGridStationBackupPowerSourceToDetailItems = (
     miniGridStationBackupPowerSource: MiniGridStationBackupPowerSource
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.mini-grid-station-backup-power-source.details.name'),
-        value: miniGridStationBackupPowerSource?.name || 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-backup-power-source.details.mini-grid-station-id'),
-        value: miniGridStationBackupPowerSource?.mini_grid_station_id
-          ? miniGridStationsMap.get(miniGridStationBackupPowerSource?.mini_grid_station_id) ||
+    {
+      title: t('project.other.mini-grid-station-backup-power-source.details.name'),
+      value: miniGridStationBackupPowerSource?.name || 'N/A'
+    },
+    {
+      title: t('project.other.mini-grid-station-backup-power-source.details.mini-grid-station-id'),
+      value: miniGridStationBackupPowerSource?.mini_grid_station_id
+        ? miniGridStationsMap.get(miniGridStationBackupPowerSource?.mini_grid_station_id) ||
           miniGridStationBackupPowerSource?.mini_grid_station_id
+        : 'N/A'
+    },
+    {
+      title: t('project.other.mini-grid-station-backup-power-source.details.capacity'),
+      value:
+        miniGridStationBackupPowerSource?.capacity !== undefined ? `${miniGridStationBackupPowerSource.capacity} ${t('common.kw')}` : 'N/A'
+    },
+    {
+      title: t('project.other.mini-grid-station-backup-power-source.details.installation-year'),
+      value:
+        miniGridStationBackupPowerSource?.installation_year !== undefined
+          ? miniGridStationBackupPowerSource.installation_year.toString()
           : 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-backup-power-source.details.capacity'),
-        value:
-          miniGridStationBackupPowerSource?.capacity !== undefined ? `${miniGridStationBackupPowerSource.capacity} ${t('common.kw')}` : 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-backup-power-source.details.installation-year'),
-        value:
-          miniGridStationBackupPowerSource?.installation_year !== undefined
-            ? miniGridStationBackupPowerSource.installation_year.toString()
-            : 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-backup-power-source.details.distribution-lines-total-length'),
-        value:
-          miniGridStationBackupPowerSource?.distribution_lines_total_length !== undefined
-            ? `${miniGridStationBackupPowerSource.distribution_lines_total_length} ${t('common.km')}`
-            : 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-backup-power-source.details.lifetime'),
-        value:
-          miniGridStationBackupPowerSource?.lifetime !== undefined
-            ? `${miniGridStationBackupPowerSource.lifetime} ${t('common.years')}`
-            : 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-backup-power-source.details.commissioning-date'),
-        value: miniGridStationBackupPowerSource?.commissioning_date ? formatDate(miniGridStationBackupPowerSource.commissioning_date) : 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-backup-power-source.details.other'),
-        value: miniGridStationBackupPowerSource?.other || 'N/A'
-      },
-      {
-        title: t('project.other.mini-grid-station-backup-power-source.details.remark'),
-        value: miniGridStationBackupPowerSource?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: miniGridStationBackupPowerSource?.created_at ? formatCreatedAt(miniGridStationBackupPowerSource.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: miniGridStationBackupPowerSource?.updated_at ? formatCreatedAt(miniGridStationBackupPowerSource.updated_at) : 'N/A'
-      }
-    ];
+    },
+    {
+      title: t('project.other.mini-grid-station-backup-power-source.details.distribution-lines-total-length'),
+      value:
+        miniGridStationBackupPowerSource?.distribution_lines_total_length !== undefined
+          ? `${miniGridStationBackupPowerSource.distribution_lines_total_length} ${t('common.km')}`
+          : 'N/A'
+    },
+    {
+      title: t('project.other.mini-grid-station-backup-power-source.details.lifetime'),
+      value:
+        miniGridStationBackupPowerSource?.lifetime !== undefined
+          ? `${miniGridStationBackupPowerSource.lifetime} ${t('common.years')}`
+          : 'N/A'
+    },
+    {
+      title: t('project.other.mini-grid-station-backup-power-source.details.commissioning-date'),
+      value: miniGridStationBackupPowerSource?.commissioning_date ? formatDate(miniGridStationBackupPowerSource.commissioning_date) : 'N/A'
+    },
+    {
+      title: t('project.other.mini-grid-station-backup-power-source.details.other'),
+      value: miniGridStationBackupPowerSource?.other || 'N/A'
+    },
+    {
+      title: t('project.other.mini-grid-station-backup-power-source.details.remark'),
+      value: miniGridStationBackupPowerSource?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: miniGridStationBackupPowerSource?.created_at ? formatCreatedAt(miniGridStationBackupPowerSource.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: miniGridStationBackupPowerSource?.updated_at ? formatCreatedAt(miniGridStationBackupPowerSource.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

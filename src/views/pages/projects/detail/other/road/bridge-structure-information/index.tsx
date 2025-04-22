@@ -77,55 +77,55 @@ const BridgeStructureInformationList: React.FC<BridgeStructureInformationListPro
   const mapBridgeStructureInformationToDetailItems = (
     bridgeStructureInformation: BridgeStructureInformation
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.bridge-structure-information.details.name'),
-        value: bridgeStructureInformation?.name || 'N/A'
-      },
-      {
-        title: t('project.other.bridge-structure-information.details.bridge-name'),
-        value: bridgeStructureInformation?.bridge_name || 'N/A'
-      },
-      {
-        title: t('project.other.bridge-structure-information.details.bridge-structure-type-id'),
-        value: bridgeStructureInformation?.bridge_structure_type_id || 'N/A'
-      },
-      {
-        title: t('project.other.bridge-structure-information.details.east-region'),
-        value: bridgeStructureInformation?.east_region?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.bridge-structure-information.details.west-region'),
-        value: bridgeStructureInformation?.west_region?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.bridge-structure-information.details.central-region'),
-        value: bridgeStructureInformation?.central_region?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.bridge-structure-information.details.north-region'),
-        value: bridgeStructureInformation?.north_region?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.bridge-structure-information.details.south-region'),
-        value: bridgeStructureInformation?.south_region?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.bridge-structure-information.details.ring-road'),
-        value: bridgeStructureInformation?.ring_road?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.bridge-structure-information.details.remark'),
-        value: bridgeStructureInformation?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: bridgeStructureInformation?.created_at ? formatCreatedAt(bridgeStructureInformation.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: bridgeStructureInformation?.updated_at ? formatCreatedAt(bridgeStructureInformation.updated_at) : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.bridge-structure-information.details.name'),
+      value: bridgeStructureInformation?.name || 'N/A'
+    },
+    {
+      title: t('project.other.bridge-structure-information.details.bridge-name'),
+      value: bridgeStructureInformation?.bridge_name || 'N/A'
+    },
+    {
+      title: t('project.other.bridge-structure-information.details.bridge-structure-type-id'),
+      value: bridgeStructureInformation?.bridge_structure_type_id || 'N/A'
+    },
+    {
+      title: t('project.other.bridge-structure-information.details.east-region'),
+      value: bridgeStructureInformation?.east_region?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.bridge-structure-information.details.west-region'),
+      value: bridgeStructureInformation?.west_region?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.bridge-structure-information.details.central-region'),
+      value: bridgeStructureInformation?.central_region?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.bridge-structure-information.details.north-region'),
+      value: bridgeStructureInformation?.north_region?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.bridge-structure-information.details.south-region'),
+      value: bridgeStructureInformation?.south_region?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.bridge-structure-information.details.ring-road'),
+      value: bridgeStructureInformation?.ring_road?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.bridge-structure-information.details.remark'),
+      value: bridgeStructureInformation?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: bridgeStructureInformation?.created_at ? formatCreatedAt(bridgeStructureInformation.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: bridgeStructureInformation?.updated_at ? formatCreatedAt(bridgeStructureInformation.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

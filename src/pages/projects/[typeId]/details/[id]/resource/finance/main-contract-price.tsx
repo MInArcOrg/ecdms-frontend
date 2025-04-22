@@ -15,7 +15,9 @@ function ProjectVariation() {
         activeMenuId={projectMenuIds.resource}
         activeSubMenuId={projectResourceIds.finance.contractAmount}
         subMenuItems={subMenuItems(id as string, typeId as string)}
-      >        <MainConctractPriceComponent projectId={String(id)} />
+      >
+        {' '}
+        <MainConctractPriceComponent projectId={String(id)} />
       </ProjectLayout>
     </Box>
   );

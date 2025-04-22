@@ -5,38 +5,34 @@ import subMenuItems, { findSubMenuItem, broadcastingDataSystemsId } from '../(su
 import BroadcastingInfrastructureManufacturerList from 'src/views/pages/projects/detail/other/telecom/broadcasting-infrastructure-manufacturer';
 
 const defaultMenuItem = findSubMenuItem(
-    subMenuItems('', ''),
-    broadcastingDataSystemsId.broadcasting.manufacturerOfBroadcastingInfrastructure
+  subMenuItems('', ''),
+  broadcastingDataSystemsId.broadcasting.manufacturerOfBroadcastingInfrastructure
 );
 
 const ManufacturerOfBroadcastingInfrastructurePage = () => {
-    const router = useRouter();
-    const { id = '', typeId = '' } = router.query;
+  const router = useRouter();
+  const { id = '', typeId = '' } = router.query;
 
-    const menuItem = findSubMenuItem(
-        subMenuItems(id as string, typeId as string),
-        broadcastingDataSystemsId.broadcasting.manufacturerOfBroadcastingInfrastructure
-    );
+  const menuItem = findSubMenuItem(
+    subMenuItems(id as string, typeId as string),
+    broadcastingDataSystemsId.broadcasting.manufacturerOfBroadcastingInfrastructure
+  );
 
-    return (
-        <ProjectLayout
-            activeMenuId={projectMenuIds.broadcastingDataSystems}
-            activeSubMenuId={broadcastingDataSystemsId.broadcasting.manufacturerOfBroadcastingInfrastructure}
-            subMenuItems={subMenuItems(id as string, typeId as string)}
-        >
-            <BroadcastingInfrastructureManufacturerList
-                otherSubMenu={menuItem}
-                typeId={String(typeId)}
-                projectId={String(id)}
-            />
-        </ProjectLayout>
-    );
+  return (
+    <ProjectLayout
+      activeMenuId={projectMenuIds.broadcastingDataSystems}
+      activeSubMenuId={broadcastingDataSystemsId.broadcasting.manufacturerOfBroadcastingInfrastructure}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <BroadcastingInfrastructureManufacturerList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
+    </ProjectLayout>
+  );
 };
 
 // Access control configuration
 ManufacturerOfBroadcastingInfrastructurePage.acl = {
-    subject: defaultMenuItem?.model,
-    action: 'view'
+  subject: defaultMenuItem?.model,
+  action: 'view'
 };
 
 export default ManufacturerOfBroadcastingInfrastructurePage;

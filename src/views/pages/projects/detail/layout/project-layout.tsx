@@ -30,18 +30,12 @@ const ProjectLayout: React.FC<ProjectLayoutProps> = ({ activeMenuId, activeSubMe
 
   // Memoize values derived from props and query
   const filteredMenuItems = useMemo(
-    () =>
-      menuTabs(id as string, typeId as string).filter(
-        (item) => !item.type || item.type === masterType?.payload?.flag
-      ),
+    () => menuTabs(id as string, typeId as string).filter((item) => !item.type || item.type === masterType?.payload?.flag),
     [id, typeId, masterType?.payload?.flag]
   );
 
   const filteredSubMenuItems = useMemo(
-    () =>
-      subMenuItems?.filter(
-        (item) => !item.type || item.type === masterType?.payload?.flag
-      ) || [],
+    () => subMenuItems?.filter((item) => !item.type || item.type === masterType?.payload?.flag) || [],
     [subMenuItems, masterType?.payload?.flag]
   );
 

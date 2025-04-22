@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -73,55 +73,55 @@ const DataCenterFacilityCapacityList: React.FC<DataCenterFacilityCapacityListPro
   const mapDataCenterFacilityCapacityToDetailItems = (
     dataCenterFacilityCapacity: DataCenterFacilityCapacity
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.data-center-facility-capacity.details.data-center-id'),
-        value: dataCenterFacilityCapacity?.data_center_id || 'N/A'
-      },
-      {
-        title: t('project.other.data-center-facility-capacity.details.total-floor-area'),
-        value: dataCenterFacilityCapacity?.total_floor_area || 'N/A'
-      },
-      {
-        title: t('project.other.data-center-facility-capacity.details.power-capacity'),
-        value: dataCenterFacilityCapacity?.power_capacity || 'N/A'
-      },
-      {
-        title: t('project.other.data-center-facility-capacity.details.rack-space-capacity'),
-        value: dataCenterFacilityCapacity?.rack_space_capacity || 'N/A'
-      },
-      {
-        title: t('project.other.data-center-facility-capacity.details.cooling-capacity'),
-        value: dataCenterFacilityCapacity?.cooling_capacity || 'N/A'
-      },
-      {
-        title: t('project.other.data-center-facility-capacity.details.access-control'),
-        value: dataCenterFacilityCapacity?.access_control ? t('common.yes') : t('common.no')
-      },
-      {
-        title: t('project.other.data-center-facility-capacity.details.surveillance-cameras'),
-        value: dataCenterFacilityCapacity?.surveillance_cameras ? t('common.yes') : t('common.no')
-      },
-      {
-        title: t('project.other.data-center-facility-capacity.details.fire-suppression-systems'),
-        value: dataCenterFacilityCapacity?.fire_suppression_systems ? t('common.yes') : t('common.no')
-      },
-      {
-        title: t('project.other.data-center-facility-capacity.details.intrusion-detection-systems'),
-        value: dataCenterFacilityCapacity?.intrusion_detection_systems ? t('common.yes') : t('common.no')
-      },
-      {
-        title: t('project.other.data-center-facility-capacity.details.others'),
-        value: dataCenterFacilityCapacity?.others || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: dataCenterFacilityCapacity?.created_at ? formatCreatedAt(dataCenterFacilityCapacity.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: dataCenterFacilityCapacity?.updated_at ? formatCreatedAt(dataCenterFacilityCapacity.updated_at) : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.data-center-facility-capacity.details.data-center-id'),
+      value: dataCenterFacilityCapacity?.data_center_id || 'N/A'
+    },
+    {
+      title: t('project.other.data-center-facility-capacity.details.total-floor-area'),
+      value: dataCenterFacilityCapacity?.total_floor_area || 'N/A'
+    },
+    {
+      title: t('project.other.data-center-facility-capacity.details.power-capacity'),
+      value: dataCenterFacilityCapacity?.power_capacity || 'N/A'
+    },
+    {
+      title: t('project.other.data-center-facility-capacity.details.rack-space-capacity'),
+      value: dataCenterFacilityCapacity?.rack_space_capacity || 'N/A'
+    },
+    {
+      title: t('project.other.data-center-facility-capacity.details.cooling-capacity'),
+      value: dataCenterFacilityCapacity?.cooling_capacity || 'N/A'
+    },
+    {
+      title: t('project.other.data-center-facility-capacity.details.access-control'),
+      value: dataCenterFacilityCapacity?.access_control ? t('common.yes') : t('common.no')
+    },
+    {
+      title: t('project.other.data-center-facility-capacity.details.surveillance-cameras'),
+      value: dataCenterFacilityCapacity?.surveillance_cameras ? t('common.yes') : t('common.no')
+    },
+    {
+      title: t('project.other.data-center-facility-capacity.details.fire-suppression-systems'),
+      value: dataCenterFacilityCapacity?.fire_suppression_systems ? t('common.yes') : t('common.no')
+    },
+    {
+      title: t('project.other.data-center-facility-capacity.details.intrusion-detection-systems'),
+      value: dataCenterFacilityCapacity?.intrusion_detection_systems ? t('common.yes') : t('common.no')
+    },
+    {
+      title: t('project.other.data-center-facility-capacity.details.others'),
+      value: dataCenterFacilityCapacity?.others || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: dataCenterFacilityCapacity?.created_at ? formatCreatedAt(dataCenterFacilityCapacity.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: dataCenterFacilityCapacity?.updated_at ? formatCreatedAt(dataCenterFacilityCapacity.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

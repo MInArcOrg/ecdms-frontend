@@ -105,16 +105,18 @@ const ElectricDistributionTransformerDrawer = (props: ElectricDistributionTransf
 
   return (
     <CustomSideDrawer
-      title={`project.other.electric-distribution-transformer.${isEdit ? `edit-electric-distribution-transformer` : `create-electric-distribution-transformer`
-        }`}
+      title={`project.other.electric-distribution-transformer.${
+        isEdit ? `edit-electric-distribution-transformer` : `create-electric-distribution-transformer`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.electric-distribution-transformer.${isEdit ? `edit-electric-distribution-transformer` : `create-electric-distribution-transformer`
-            }`}
+          title={`project.other.electric-distribution-transformer.${
+            isEdit ? `edit-electric-distribution-transformer` : `create-electric-distribution-transformer`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

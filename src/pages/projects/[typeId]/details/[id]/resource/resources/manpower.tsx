@@ -5,24 +5,24 @@ import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-m
 import subMenuItems, { projectResourceIds } from '../(subMenuItems)';
 
 function ProjectVariation() {
-    const router = useRouter();
-    const { id, typeId } = router.query;
+  const router = useRouter();
+  const { id, typeId } = router.query;
 
-    return (
-        <Box>
-            <ProjectLayout
-                activeMenuId={projectMenuIds.resource}
-                activeSubMenuId={projectResourceIds.resources.manpower}
-                subMenuItems={subMenuItems(id as string, typeId as string)}
-            >
-                <>manpower goes here</>
-            </ProjectLayout>
-        </Box>
-    );
+  return (
+    <Box>
+      <ProjectLayout
+        activeMenuId={projectMenuIds.resource}
+        activeSubMenuId={projectResourceIds.resources.manpower}
+        subMenuItems={subMenuItems(id as string, typeId as string)}
+      >
+        <>manpower goes here</>
+      </ProjectLayout>
+    </Box>
+  );
 }
 
 ProjectVariation.acl = {
-    action: 'view',
-    subject: 'projectfinance'
+  action: 'view',
+  subject: 'projectfinance'
 };
 export default ProjectVariation;

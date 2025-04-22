@@ -5,38 +5,34 @@ import subMenuItems, { findSubMenuItem, powerInfrastructureIds } from '../(subMe
 import MiniGridStationDistributionLineInfrastructureList from 'src/views/pages/projects/detail/other/electric-power/mini-grid-station-distribution-line-infrastructure';
 
 const defaultMenuItem = findSubMenuItem(
-    subMenuItems('', ''),
-    powerInfrastructureIds.miniGridSystems.miniGridStationDistributionLineInfrastructure
+  subMenuItems('', ''),
+  powerInfrastructureIds.miniGridSystems.miniGridStationDistributionLineInfrastructure
 );
 
 const MiniGridStationDistributionLineInfrastructurePage = () => {
-    const router = useRouter();
-    const { id = '', typeId = '' } = router.query;
+  const router = useRouter();
+  const { id = '', typeId = '' } = router.query;
 
-    const menuItem = findSubMenuItem(
-        subMenuItems(id as string, typeId as string),
-        powerInfrastructureIds.miniGridSystems.miniGridStationDistributionLineInfrastructure
-    );
+  const menuItem = findSubMenuItem(
+    subMenuItems(id as string, typeId as string),
+    powerInfrastructureIds.miniGridSystems.miniGridStationDistributionLineInfrastructure
+  );
 
-    return (
-        <ProjectLayout
-            activeMenuId={projectMenuIds.powerInfrastructure}
-            activeSubMenuId={powerInfrastructureIds.miniGridSystems.miniGridStationDistributionLineInfrastructure}
-            subMenuItems={subMenuItems(id as string, typeId as string)}
-        >
-            <MiniGridStationDistributionLineInfrastructureList
-                otherSubMenu={menuItem}
-                typeId={String(typeId)}
-                projectId={String(id)}
-            />
-        </ProjectLayout>
-    );
+  return (
+    <ProjectLayout
+      activeMenuId={projectMenuIds.powerInfrastructure}
+      activeSubMenuId={powerInfrastructureIds.miniGridSystems.miniGridStationDistributionLineInfrastructure}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <MiniGridStationDistributionLineInfrastructureList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
+    </ProjectLayout>
+  );
 };
 
 // Access control configuration
 MiniGridStationDistributionLineInfrastructurePage.acl = {
-    subject: defaultMenuItem?.model,
-    action: 'view'
+  subject: defaultMenuItem?.model,
+  action: 'view'
 };
 
 export default MiniGridStationDistributionLineInfrastructurePage;

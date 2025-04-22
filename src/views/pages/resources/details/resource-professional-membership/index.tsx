@@ -14,13 +14,12 @@ import MembershipDrawer from './professional-membership-drawer';
 import type { ProfessionalMembership } from 'src/types/resource';
 import { membershipColumns } from './professional-membership-row';
 
-interface MembershipListProps {
-  model: string;
+interface ResourceProfessionalMembershipProps {
   professionalId: string;
   typeId: string;
 }
 
-const MembershipList: React.FC<MembershipListProps> = ({ professionalId }) => {
+const ResourceProfessionalMembership: React.FC<ResourceProfessionalMembershipProps> = ({ professionalId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<ProfessionalMembership | null>(null);
@@ -133,4 +132,4 @@ const MembershipList: React.FC<MembershipListProps> = ({ professionalId }) => {
   );
 };
 
-export default MembershipList;
+export default ResourceProfessionalMembership;

@@ -1,14 +1,9 @@
 import { useRouter } from 'next/router';
-import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
-import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { findSubMenuItem, generalInfoMenuIds } from '../(sub-menu-items)';
-import { resourceMenuIds } from 'src/views/pages/resources/details/layout/resource-menu-items';
 import ResourceLayout from 'src/views/pages/resources/details/layout/resource-layout';
+import { resourceMenuIds } from 'src/views/pages/resources/details/layout/resource-menu-items';
+import subMenuItems, { findSubMenuItem, generalInfoMenuIds } from '../(sub-menu-items)';
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems('', ''),
-  generalInfoMenuIds.generalInfo.generalInfo
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), generalInfoMenuIds.generalInfo.generalInfo);
 
 const GeneralInfoPage = () => {
   const router = useRouter();

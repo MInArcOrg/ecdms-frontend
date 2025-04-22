@@ -128,8 +128,9 @@ const MiniGridStationConsumerDrawer = (props: MiniGridStationConsumerDrawerType)
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.mini-grid-station-consumer.${isEdit ? `edit-mini-grid-station-consumer` : `create-mini-grid-station-consumer`
-            }`}
+          title={`project.other.mini-grid-station-consumer.${
+            isEdit ? `edit-mini-grid-station-consumer` : `create-mini-grid-station-consumer`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

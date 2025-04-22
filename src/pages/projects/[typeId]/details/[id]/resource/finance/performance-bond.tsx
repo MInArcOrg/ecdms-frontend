@@ -15,7 +15,9 @@ function ProjectAdvanceBond() {
         activeMenuId={projectMenuIds.resource}
         activeSubMenuId={projectResourceIds.finance.performanceBond}
         subMenuItems={subMenuItems(id as string, typeId as string)}
-      >          <ProjectBondList projectId={String(id)} type={bondConstants.PERFORMANCE_BOND.value} />
+      >
+        {' '}
+        <ProjectBondList projectId={String(id)} type={bondConstants.PERFORMANCE_BOND.value} />
       </ProjectLayout>
     </Box>
   );

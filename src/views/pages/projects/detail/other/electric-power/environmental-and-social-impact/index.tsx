@@ -78,35 +78,35 @@ const EnvironmentalAndSocialImpactList: React.FC<EnvironmentalAndSocialImpactLis
   const mapEnvironmentalAndSocialImpactToDetailItems = (
     environmentalAndSocialImpact: EnvironmentalAndSocialImpact
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.environmental-and-social-impact.details.environmental-impact-assessment-conducted'),
-        value: environmentalAndSocialImpact?.environmental_impact_assessment_conducted ? t('common.yes') : t('common.no')
-      },
-      {
-        title: t('project.other.environmental-and-social-impact.details.mitigation-measures-implemented'),
-        value: environmentalAndSocialImpact?.mitigation_measures_implemented ? t('common.yes') : t('common.no')
-      },
-      {
-        title: t('project.other.environmental-and-social-impact.details.social-impact-assessment-conducted'),
-        value: environmentalAndSocialImpact?.social_impact_assessment_conducted ? t('common.yes') : t('common.no')
-      },
-      {
-        title: t('project.other.environmental-and-social-impact.details.resettlement-and-compensation-measures-implemented'),
-        value: environmentalAndSocialImpact?.resettlement_and_compensation_measures_implemented ? t('common.yes') : t('common.no')
-      },
-      {
-        title: t('project.other.environmental-and-social-impact.details.remark'),
-        value: environmentalAndSocialImpact?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: environmentalAndSocialImpact?.created_at ? formatCreatedAt(environmentalAndSocialImpact.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: environmentalAndSocialImpact?.updated_at ? formatCreatedAt(environmentalAndSocialImpact.updated_at) : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.environmental-and-social-impact.details.environmental-impact-assessment-conducted'),
+      value: environmentalAndSocialImpact?.environmental_impact_assessment_conducted ? t('common.yes') : t('common.no')
+    },
+    {
+      title: t('project.other.environmental-and-social-impact.details.mitigation-measures-implemented'),
+      value: environmentalAndSocialImpact?.mitigation_measures_implemented ? t('common.yes') : t('common.no')
+    },
+    {
+      title: t('project.other.environmental-and-social-impact.details.social-impact-assessment-conducted'),
+      value: environmentalAndSocialImpact?.social_impact_assessment_conducted ? t('common.yes') : t('common.no')
+    },
+    {
+      title: t('project.other.environmental-and-social-impact.details.resettlement-and-compensation-measures-implemented'),
+      value: environmentalAndSocialImpact?.resettlement_and_compensation_measures_implemented ? t('common.yes') : t('common.no')
+    },
+    {
+      title: t('project.other.environmental-and-social-impact.details.remark'),
+      value: environmentalAndSocialImpact?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: environmentalAndSocialImpact?.created_at ? formatCreatedAt(environmentalAndSocialImpact.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: environmentalAndSocialImpact?.updated_at ? formatCreatedAt(environmentalAndSocialImpact.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

@@ -111,16 +111,18 @@ const ElectricSmartMetersPrivacyAndSecurityDataDrawer = (props: ElectricSmartMet
 
   return (
     <CustomSideDrawer
-      title={`project.other.electric-smart-meters-privacy-and-security-data.${isEdit ? `edit-electric-smart-meters-privacy-and-security-data` : `create-electric-smart-meters-privacy-and-security-data`
-        }`}
+      title={`project.other.electric-smart-meters-privacy-and-security-data.${
+        isEdit ? `edit-electric-smart-meters-privacy-and-security-data` : `create-electric-smart-meters-privacy-and-security-data`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.electric-smart-meters-privacy-and-security-data.${isEdit ? `edit-electric-smart-meters-privacy-and-security-data` : `create-electric-smart-meters-privacy-and-security-data`
-            }`}
+          title={`project.other.electric-smart-meters-privacy-and-security-data.${
+            isEdit ? `edit-electric-smart-meters-privacy-and-security-data` : `create-electric-smart-meters-privacy-and-security-data`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

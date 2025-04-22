@@ -3,42 +3,32 @@ import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, projectFeatureIds } from '../feature/(subMenuItems)';
 
-const defaultMenuItem = findSubMenuItem(
-    subMenuItems('', ''),
-    projectFeatureIds.culvert.culvertConditionAssessment
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), projectFeatureIds.culvert.culvertConditionAssessment);
 
 const CulvertConditionAssessment = () => {
-    const router = useRouter();
-    const { id = '', typeId = '' } = router.query;
+  const router = useRouter();
+  const { id = '', typeId = '' } = router.query;
 
-    const menuItem = findSubMenuItem(
-        subMenuItems(id as string, typeId as string),
-        projectFeatureIds.culvert.culvertConditionAssessment
-    );
-
-    return (
-        <ProjectLayout
-            activeMenuId={projectMenuIds.feature}
-            activeSubMenuId={projectFeatureIds.culvert.culvertConditionAssessment}
-            subMenuItems={subMenuItems(id as string, typeId as string)}
-        >
-            {/* <CulvertConditionAssessmentList
+  return (
+    <ProjectLayout
+      activeMenuId={projectMenuIds.feature}
+      activeSubMenuId={projectFeatureIds.culvert.culvertConditionAssessment}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      {/* <CulvertConditionAssessmentList
                 otherSubMenu={menuItem}
                 typeId={String(typeId)}
                 projectId={String(id)}
             /> */}
-            <>
-                Culvert Condition Assessment
-            </>
-        </ProjectLayout>
-    );
+      <>Culvert Condition Assessment</>
+    </ProjectLayout>
+  );
 };
 
 // Access control configuration
 CulvertConditionAssessment.acl = {
-    subject: defaultMenuItem?.model,
-    action: 'view'
+  subject: defaultMenuItem?.model,
+  action: 'view'
 };
 
 export default CulvertConditionAssessment;

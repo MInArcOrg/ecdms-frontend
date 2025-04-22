@@ -111,16 +111,18 @@ const SubstationTransformerAndSwitchgearDataDrawer = (props: SubstationTransform
 
   return (
     <CustomSideDrawer
-      title={`project.other.substation-transformer-and-switchgear-data.${isEdit ? `edit-substation-transformer-and-switchgear-data` : `create-substation-transformer-and-switchgear-data`
-        }`}
+      title={`project.other.substation-transformer-and-switchgear-data.${
+        isEdit ? `edit-substation-transformer-and-switchgear-data` : `create-substation-transformer-and-switchgear-data`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.substation-transformer-and-switchgear-data.${isEdit ? `edit-substation-transformer-and-switchgear-data` : `create-substation-transformer-and-switchgear-data`
-            }`}
+          title={`project.other.substation-transformer-and-switchgear-data.${
+            isEdit ? `edit-substation-transformer-and-switchgear-data` : `create-substation-transformer-and-switchgear-data`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

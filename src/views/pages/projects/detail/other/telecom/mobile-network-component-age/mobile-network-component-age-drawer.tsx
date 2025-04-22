@@ -10,7 +10,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { MobileNetworkComponentAge } from 'src/types/project/other';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface MobileNetworkComponentAgeDrawerType {
   open: boolean;
@@ -64,16 +64,18 @@ const MobileNetworkComponentAgeDrawer = (props: MobileNetworkComponentAgeDrawerT
 
   return (
     <CustomSideDrawer
-      title={`project.other.mobile-network-component-age.${isEdit ? `edit-mobile-network-component-age` : `create-mobile-network-component-age`
-        }`}
+      title={`project.other.mobile-network-component-age.${
+        isEdit ? `edit-mobile-network-component-age` : `create-mobile-network-component-age`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.mobile-network-component-age.${isEdit ? `edit-mobile-network-component-age` : `create-mobile-network-component-age`
-            }`}
+          title={`project.other.mobile-network-component-age.${
+            isEdit ? `edit-mobile-network-component-age` : `create-mobile-network-component-age`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

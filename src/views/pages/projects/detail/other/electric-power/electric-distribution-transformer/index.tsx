@@ -95,57 +95,57 @@ const ElectricDistributionTransformerList: React.FC<ElectricDistributionTransfor
   const mapElectricDistributionTransformerToDetailItems = (
     electricDistributionTransformer: ElectricDistributionTransformer
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.electric-distribution-transformer.details.name'),
-        value: electricDistributionTransformer?.name || 'N/A'
-      },
-      {
-        title: t('project.other.electric-distribution-transformer.details.service-area'),
-        value:
-          electricDistributionTransformer?.service_area !== undefined
-            ? `${electricDistributionTransformer.service_area} ${t('common.km2')}`
-            : 'N/A'
-      },
-      {
-        title: t('project.other.electric-distribution-transformer.details.installation-year'),
-        value: electricDistributionTransformer?.installation_year?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.electric-distribution-transformer.details.transformers-total-number'),
-        value: electricDistributionTransformer?.transformers_total_number?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.electric-distribution-transformer.details.gps-x-coordinates'),
-        value: electricDistributionTransformer?.gps_x_coordinates?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.electric-distribution-transformer.details.gps-y-coordinates'),
-        value: electricDistributionTransformer?.gps_y_coordinates?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.electric-distribution-transformer.details.fire-extinguishing-technology-id'),
-        value: electricDistributionTransformer?.fire_extinguishing_technology_id
-          ? fireExtinguishingTechnologiesMap.get(electricDistributionTransformer.fire_extinguishing_technology_id) ||
-          electricDistributionTransformer.fire_extinguishing_technology_id
+    {
+      title: t('project.other.electric-distribution-transformer.details.name'),
+      value: electricDistributionTransformer?.name || 'N/A'
+    },
+    {
+      title: t('project.other.electric-distribution-transformer.details.service-area'),
+      value:
+        electricDistributionTransformer?.service_area !== undefined
+          ? `${electricDistributionTransformer.service_area} ${t('common.km2')}`
           : 'N/A'
-      },
-      {
-        title: t('project.other.electric-distribution-transformer.details.other'),
-        value: electricDistributionTransformer?.other || 'N/A'
-      },
-      {
-        title: t('project.other.electric-distribution-transformer.details.remark'),
-        value: electricDistributionTransformer?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: electricDistributionTransformer?.created_at ? formatCreatedAt(electricDistributionTransformer.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: electricDistributionTransformer?.updated_at ? formatCreatedAt(electricDistributionTransformer.updated_at) : 'N/A'
-      }
-    ];
+    },
+    {
+      title: t('project.other.electric-distribution-transformer.details.installation-year'),
+      value: electricDistributionTransformer?.installation_year?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.electric-distribution-transformer.details.transformers-total-number'),
+      value: electricDistributionTransformer?.transformers_total_number?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.electric-distribution-transformer.details.gps-x-coordinates'),
+      value: electricDistributionTransformer?.gps_x_coordinates?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.electric-distribution-transformer.details.gps-y-coordinates'),
+      value: electricDistributionTransformer?.gps_y_coordinates?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.electric-distribution-transformer.details.fire-extinguishing-technology-id'),
+      value: electricDistributionTransformer?.fire_extinguishing_technology_id
+        ? fireExtinguishingTechnologiesMap.get(electricDistributionTransformer.fire_extinguishing_technology_id) ||
+          electricDistributionTransformer.fire_extinguishing_technology_id
+        : 'N/A'
+    },
+    {
+      title: t('project.other.electric-distribution-transformer.details.other'),
+      value: electricDistributionTransformer?.other || 'N/A'
+    },
+    {
+      title: t('project.other.electric-distribution-transformer.details.remark'),
+      value: electricDistributionTransformer?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: electricDistributionTransformer?.created_at ? formatCreatedAt(electricDistributionTransformer.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: electricDistributionTransformer?.updated_at ? formatCreatedAt(electricDistributionTransformer.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

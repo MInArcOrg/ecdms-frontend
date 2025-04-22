@@ -83,16 +83,18 @@ const CulvertStructuralInformationDrawer = (props: CulvertStructuralInformationD
 
   return (
     <CustomSideDrawer
-      title={`project.other.culvert-structural-information.${isEdit ? `edit-culvert-structural-information` : `create-culvert-structural-information`
-        }`}
+      title={`project.other.culvert-structural-information.${
+        isEdit ? `edit-culvert-structural-information` : `create-culvert-structural-information`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.culvert-structural-information.${isEdit ? `edit-culvert-structural-information` : `create-culvert-structural-information`
-            }`}
+          title={`project.other.culvert-structural-information.${
+            isEdit ? `edit-culvert-structural-information` : `create-culvert-structural-information`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

@@ -10,7 +10,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { InternetConnectionInfrastructureManufacturer } from 'src/types/project/other';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface InternetConnectionInfrastructureManufacturerDrawerType {
   open: boolean;
@@ -88,16 +88,18 @@ const InternetConnectionInfrastructureManufacturerDrawer = (props: InternetConne
 
   return (
     <CustomSideDrawer
-      title={`project.other.internet-connection-infrastructure-manufacturer.${isEdit ? `edit-internet-connection-infrastructure-manufacturer` : `create-internet-connection-infrastructure-manufacturer`
-        }`}
+      title={`project.other.internet-connection-infrastructure-manufacturer.${
+        isEdit ? `edit-internet-connection-infrastructure-manufacturer` : `create-internet-connection-infrastructure-manufacturer`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.internet-connection-infrastructure-manufacturer.${isEdit ? `edit-internet-connection-infrastructure-manufacturer` : `create-internet-connection-infrastructure-manufacturer`
-            }`}
+          title={`project.other.internet-connection-infrastructure-manufacturer.${
+            isEdit ? `edit-internet-connection-infrastructure-manufacturer` : `create-internet-connection-infrastructure-manufacturer`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={initialValues}

@@ -61,12 +61,12 @@ const menuItems = (t: (item: string) => void) => [
     id: 3,
     title: t('master-data.resource'),
     children: Object.values(resourceMasterModels)
-    .sort((a, b) => a.title.localeCompare(b.title))
-    .map((item, index) => ({
-      id: index + 1,
-      title: t(`master-data.general-master.${item.title}`),
-      path: `${baseUrl}/resource/${item.title}/`
-    }))
+      .sort((a, b) => a.title.localeCompare(b.title))
+      .map((item, index) => ({
+        id: index + 1,
+        title: t(`master-data.general-master.${item.title}`),
+        path: `${baseUrl}/resource/${item.title}/`
+      }))
   }
 ];
 

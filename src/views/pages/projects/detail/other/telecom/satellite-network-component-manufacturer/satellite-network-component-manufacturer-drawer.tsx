@@ -89,16 +89,18 @@ const SatelliteNetworkComponentManufacturerDrawer = (props: SatelliteNetworkComp
 
   return (
     <CustomSideDrawer
-      title={`project.other.satellite-network-component-manufacturer.${isEdit ? `edit-satellite-network-component-manufacturer` : `create-satellite-network-component-manufacturer`
-        }`}
+      title={`project.other.satellite-network-component-manufacturer.${
+        isEdit ? `edit-satellite-network-component-manufacturer` : `create-satellite-network-component-manufacturer`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.satellite-network-component-manufacturer.${isEdit ? `edit-satellite-network-component-manufacturer` : `create-satellite-network-component-manufacturer`
-            }`}
+          title={`project.other.satellite-network-component-manufacturer.${
+            isEdit ? `edit-satellite-network-component-manufacturer` : `create-satellite-network-component-manufacturer`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

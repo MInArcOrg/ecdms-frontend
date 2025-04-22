@@ -77,47 +77,47 @@ const CulvertRoadOverInformationList: React.FC<CulvertRoadOverInformationListPro
   const mapCulvertRoadOverInformationToDetailItems = (
     culvertRoadOverInformation: CulvertRoadOverInformation
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.culvert-road-over-information.details.name'),
-        value: culvertRoadOverInformation?.name || 'N/A'
-      },
-      {
-        title: t('project.other.culvert-road-over-information.details.carriage-way-width'),
-        value: culvertRoadOverInformation?.carriage_way_width?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.culvert-road-over-information.details.side-walk-width'),
-        value: culvertRoadOverInformation?.side_walk_width?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.culvert-road-over-information.details.lane-number'),
-        value: culvertRoadOverInformation?.lane_number?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.culvert-road-over-information.details.head-wall-to-head-wall'),
-        value: culvertRoadOverInformation?.head_wall_to_head_wall?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.culvert-road-over-information.details.average-fill-height'),
-        value: culvertRoadOverInformation?.average_fill_height?.toString() || 'N/A'
-      },
-      {
-        title: t('project.other.culvert-road-over-information.details.guard-rail-type-id'),
-        value: culvertRoadOverInformation?.guard_rail_type_id || 'N/A'
-      },
-      {
-        title: t('project.other.culvert-road-over-information.details.parapet-length'),
-        value: culvertRoadOverInformation?.parapet_length?.toString() || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: culvertRoadOverInformation?.created_at ? formatCreatedAt(culvertRoadOverInformation.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: culvertRoadOverInformation?.updated_at ? formatCreatedAt(culvertRoadOverInformation.updated_at) : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.culvert-road-over-information.details.name'),
+      value: culvertRoadOverInformation?.name || 'N/A'
+    },
+    {
+      title: t('project.other.culvert-road-over-information.details.carriage-way-width'),
+      value: culvertRoadOverInformation?.carriage_way_width?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.culvert-road-over-information.details.side-walk-width'),
+      value: culvertRoadOverInformation?.side_walk_width?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.culvert-road-over-information.details.lane-number'),
+      value: culvertRoadOverInformation?.lane_number?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.culvert-road-over-information.details.head-wall-to-head-wall'),
+      value: culvertRoadOverInformation?.head_wall_to_head_wall?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.culvert-road-over-information.details.average-fill-height'),
+      value: culvertRoadOverInformation?.average_fill_height?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.culvert-road-over-information.details.guard-rail-type-id'),
+      value: culvertRoadOverInformation?.guard_rail_type_id || 'N/A'
+    },
+    {
+      title: t('project.other.culvert-road-over-information.details.parapet-length'),
+      value: culvertRoadOverInformation?.parapet_length?.toString() || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: culvertRoadOverInformation?.created_at ? formatCreatedAt(culvertRoadOverInformation.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: culvertRoadOverInformation?.updated_at ? formatCreatedAt(culvertRoadOverInformation.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

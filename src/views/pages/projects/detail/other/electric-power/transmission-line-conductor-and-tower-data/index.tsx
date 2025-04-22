@@ -93,89 +93,89 @@ const TransmissionLineConductorAndTowerDataList: React.FC<TransmissionLineConduc
   const mapTransmissionLineConductorAndTowerDataToDetailItems = (
     transmissionLineConductorAndTowerData: TransmissionLineConductorAndTowerData
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.transmission-line-conductor-and-tower-data.details.name'),
-        value: transmissionLineConductorAndTowerData?.name || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-conductor-and-tower-data.details.transmission-line-id'),
-        value: transmissionLineConductorAndTowerData?.transmission_line_id || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-conductor-and-tower-data.details.conductor-type'),
-        value: transmissionLineConductorAndTowerData?.conductor_type || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-conductor-and-tower-data.details.conductor-code-name-id'),
-        value: transmissionLineConductorAndTowerData?.conductor_code_name_id || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-conductor-and-tower-data.details.strands-number'),
-        value:
-          transmissionLineConductorAndTowerData?.strands_number !== undefined
-            ? transmissionLineConductorAndTowerData.strands_number.toString()
-            : 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-conductor-and-tower-data.details.conductor-size'),
-        value:
-          transmissionLineConductorAndTowerData?.conductor_size !== undefined
-            ? `${transmissionLineConductorAndTowerData.conductor_size} ${t('common.mm2')}`
-            : 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-conductor-and-tower-data.details.conductors-per-phase-number'),
-        value:
-          transmissionLineConductorAndTowerData?.conductors_per_phase_number !== undefined
-            ? transmissionLineConductorAndTowerData.conductors_per_phase_number.toString()
-            : 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-conductor-and-tower-data.details.tower-type-id'),
-        value: transmissionLineConductorAndTowerData?.tower_type_id || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-conductor-and-tower-data.details.tower-height'),
-        value:
-          transmissionLineConductorAndTowerData?.tower_height !== undefined
-            ? `${transmissionLineConductorAndTowerData.tower_height} ${t('common.meters')}`
-            : 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-conductor-and-tower-data.details.conductor-diameter'),
-        value:
-          transmissionLineConductorAndTowerData?.conductor_diameter !== undefined
-            ? `${transmissionLineConductorAndTowerData.conductor_diameter} ${t('common.mm')}`
-            : 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-conductor-and-tower-data.details.each-strand-diameter'),
-        value:
-          transmissionLineConductorAndTowerData?.each_strand_diameter !== undefined
-            ? `${transmissionLineConductorAndTowerData.each_strand_diameter} ${t('common.mm')}`
-            : 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-conductor-and-tower-data.details.tower-foundation-type-id'),
-        value: transmissionLineConductorAndTowerData?.tower_foundation_type_id || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-conductor-and-tower-data.details.other-equipment'),
-        value: transmissionLineConductorAndTowerData?.other_equipment || 'N/A'
-      },
-      {
-        title: t('project.other.transmission-line-conductor-and-tower-data.details.remark'),
-        value: transmissionLineConductorAndTowerData?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: transmissionLineConductorAndTowerData?.created_at ? formatCreatedAt(transmissionLineConductorAndTowerData.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: transmissionLineConductorAndTowerData?.updated_at ? formatCreatedAt(transmissionLineConductorAndTowerData.updated_at) : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.transmission-line-conductor-and-tower-data.details.name'),
+      value: transmissionLineConductorAndTowerData?.name || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-conductor-and-tower-data.details.transmission-line-id'),
+      value: transmissionLineConductorAndTowerData?.transmission_line_id || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-conductor-and-tower-data.details.conductor-type'),
+      value: transmissionLineConductorAndTowerData?.conductor_type || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-conductor-and-tower-data.details.conductor-code-name-id'),
+      value: transmissionLineConductorAndTowerData?.conductor_code_name_id || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-conductor-and-tower-data.details.strands-number'),
+      value:
+        transmissionLineConductorAndTowerData?.strands_number !== undefined
+          ? transmissionLineConductorAndTowerData.strands_number.toString()
+          : 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-conductor-and-tower-data.details.conductor-size'),
+      value:
+        transmissionLineConductorAndTowerData?.conductor_size !== undefined
+          ? `${transmissionLineConductorAndTowerData.conductor_size} ${t('common.mm2')}`
+          : 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-conductor-and-tower-data.details.conductors-per-phase-number'),
+      value:
+        transmissionLineConductorAndTowerData?.conductors_per_phase_number !== undefined
+          ? transmissionLineConductorAndTowerData.conductors_per_phase_number.toString()
+          : 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-conductor-and-tower-data.details.tower-type-id'),
+      value: transmissionLineConductorAndTowerData?.tower_type_id || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-conductor-and-tower-data.details.tower-height'),
+      value:
+        transmissionLineConductorAndTowerData?.tower_height !== undefined
+          ? `${transmissionLineConductorAndTowerData.tower_height} ${t('common.meters')}`
+          : 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-conductor-and-tower-data.details.conductor-diameter'),
+      value:
+        transmissionLineConductorAndTowerData?.conductor_diameter !== undefined
+          ? `${transmissionLineConductorAndTowerData.conductor_diameter} ${t('common.mm')}`
+          : 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-conductor-and-tower-data.details.each-strand-diameter'),
+      value:
+        transmissionLineConductorAndTowerData?.each_strand_diameter !== undefined
+          ? `${transmissionLineConductorAndTowerData.each_strand_diameter} ${t('common.mm')}`
+          : 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-conductor-and-tower-data.details.tower-foundation-type-id'),
+      value: transmissionLineConductorAndTowerData?.tower_foundation_type_id || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-conductor-and-tower-data.details.other-equipment'),
+      value: transmissionLineConductorAndTowerData?.other_equipment || 'N/A'
+    },
+    {
+      title: t('project.other.transmission-line-conductor-and-tower-data.details.remark'),
+      value: transmissionLineConductorAndTowerData?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: transmissionLineConductorAndTowerData?.created_at ? formatCreatedAt(transmissionLineConductorAndTowerData.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: transmissionLineConductorAndTowerData?.updated_at ? formatCreatedAt(transmissionLineConductorAndTowerData.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

@@ -80,8 +80,9 @@ const RoadMaintenanceActivityDrawer = (props: RoadMaintenanceActivityDrawerType)
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.road-maintenance-activity.${isEdit ? `edit-road-maintenance-activity` : `create-road-maintenance-activity`
-            }`}
+          title={`project.other.road-maintenance-activity.${
+            isEdit ? `edit-road-maintenance-activity` : `create-road-maintenance-activity`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

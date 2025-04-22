@@ -114,16 +114,18 @@ const TelecomInfrastructureComponentDrawer = (props: TelecomInfrastructureCompon
 
   return (
     <CustomSideDrawer
-      title={`project.other.telecom-infrastructure-component.${isEdit ? `edit-telecom-infrastructure-component` : `create-telecom-infrastructure-component`
-        }`}
+      title={`project.other.telecom-infrastructure-component.${
+        isEdit ? `edit-telecom-infrastructure-component` : `create-telecom-infrastructure-component`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.telecom-infrastructure-component.${isEdit ? `edit-telecom-infrastructure-component` : `create-telecom-infrastructure-component`
-            }`}
+          title={`project.other.telecom-infrastructure-component.${
+            isEdit ? `edit-telecom-infrastructure-component` : `create-telecom-infrastructure-component`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

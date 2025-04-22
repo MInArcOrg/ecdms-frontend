@@ -93,56 +93,56 @@ const ReliabilityAndMaintenanceList: React.FC<ReliabilityAndMaintenanceListProps
   const mapReliabilityAndMaintenanceToDetailItems = (
     reliabilityAndMaintenance: ReliabilityAndMaintenance
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.reliability-and-maintenance.details.maintenance-frequency'),
-        value: reliabilityAndMaintenance?.maintenance_frequency_id
-          ? maintenanceFrequencyMap.get(reliabilityAndMaintenance.maintenance_frequency_id) || 'N/A'
+    {
+      title: t('project.other.reliability-and-maintenance.details.maintenance-frequency'),
+      value: reliabilityAndMaintenance?.maintenance_frequency_id
+        ? maintenanceFrequencyMap.get(reliabilityAndMaintenance.maintenance_frequency_id) || 'N/A'
+        : 'N/A'
+    },
+    {
+      title: t('project.other.reliability-and-maintenance.details.total-outage-duration'),
+      value:
+        reliabilityAndMaintenance?.total_outage_duration !== undefined
+          ? `${reliabilityAndMaintenance.total_outage_duration} ${t('common.hours')}`
           : 'N/A'
-      },
-      {
-        title: t('project.other.reliability-and-maintenance.details.total-outage-duration'),
-        value:
-          reliabilityAndMaintenance?.total_outage_duration !== undefined
-            ? `${reliabilityAndMaintenance.total_outage_duration} ${t('common.hours')}`
-            : 'N/A'
-      },
-      {
-        title: t('project.other.reliability-and-maintenance.details.total-interruption-number'),
-        value:
-          reliabilityAndMaintenance?.total_interruption_number !== undefined
-            ? reliabilityAndMaintenance.total_interruption_number.toString()
-            : 'N/A'
-      },
-      {
-        title: t('project.other.reliability-and-maintenance.details.saidi'),
-        value: reliabilityAndMaintenance?.saidi !== undefined ? reliabilityAndMaintenance.saidi.toString() : 'N/A'
-      },
-      {
-        title: t('project.other.reliability-and-maintenance.details.saifi'),
-        value: reliabilityAndMaintenance?.saifi !== undefined ? reliabilityAndMaintenance.saifi.toString() : 'N/A'
-      },
-      {
-        title: t('project.other.reliability-and-maintenance.details.automatic-fault-detection'),
-        value:
-          reliabilityAndMaintenance?.automatic_fault_detection_restoration_system_installed !== undefined
-            ? reliabilityAndMaintenance.automatic_fault_detection_restoration_system_installed
-              ? t('common.yes')
-              : t('common.no')
-            : 'N/A'
-      },
-      {
-        title: t('project.other.reliability-and-maintenance.details.remark'),
-        value: reliabilityAndMaintenance?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: reliabilityAndMaintenance?.created_at ? formatCreatedAt(reliabilityAndMaintenance.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: reliabilityAndMaintenance?.updated_at ? formatCreatedAt(reliabilityAndMaintenance.updated_at) : 'N/A'
-      }
-    ];
+    },
+    {
+      title: t('project.other.reliability-and-maintenance.details.total-interruption-number'),
+      value:
+        reliabilityAndMaintenance?.total_interruption_number !== undefined
+          ? reliabilityAndMaintenance.total_interruption_number.toString()
+          : 'N/A'
+    },
+    {
+      title: t('project.other.reliability-and-maintenance.details.saidi'),
+      value: reliabilityAndMaintenance?.saidi !== undefined ? reliabilityAndMaintenance.saidi.toString() : 'N/A'
+    },
+    {
+      title: t('project.other.reliability-and-maintenance.details.saifi'),
+      value: reliabilityAndMaintenance?.saifi !== undefined ? reliabilityAndMaintenance.saifi.toString() : 'N/A'
+    },
+    {
+      title: t('project.other.reliability-and-maintenance.details.automatic-fault-detection'),
+      value:
+        reliabilityAndMaintenance?.automatic_fault_detection_restoration_system_installed !== undefined
+          ? reliabilityAndMaintenance.automatic_fault_detection_restoration_system_installed
+            ? t('common.yes')
+            : t('common.no')
+          : 'N/A'
+    },
+    {
+      title: t('project.other.reliability-and-maintenance.details.remark'),
+      value: reliabilityAndMaintenance?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: reliabilityAndMaintenance?.created_at ? formatCreatedAt(reliabilityAndMaintenance.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: reliabilityAndMaintenance?.updated_at ? formatCreatedAt(reliabilityAndMaintenance.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

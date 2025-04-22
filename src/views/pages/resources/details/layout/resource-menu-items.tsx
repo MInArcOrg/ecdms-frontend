@@ -4,7 +4,11 @@ import { DetailMenuItem } from 'src/types/layouts/detail-layout';
 export const resourceMenuIds = {
   generalInfo: 'GENERAL_INFO',
   price: 'PRICE',
-  quantity: 'QUANTITY'
+  quantity: 'QUANTITY',
+  education: 'EDUCATION',
+  workExperience: 'WORK_EXPERIENCE',
+  certificates: 'CERTIFICATES',
+  membership: 'MEMBERSHIP'
 };
 
 const menuItems = (id: string, typeId: string): DetailMenuItem[] => {
@@ -14,8 +18,8 @@ const menuItems = (id: string, typeId: string): DetailMenuItem[] => {
     {
       id: resourceMenuIds.generalInfo,
       title: 'resource.navigation.menu.general-info',
-      path: `${baseUrl}/generalInfo`,
-      type: [resourceTypesMaster.machineryAndEquipment, resourceTypesMaster.material]
+      path: `${baseUrl}/general-info`,
+      type: [resourceTypesMaster.machineryAndEquipment, resourceTypesMaster.material, resourceTypesMaster.professional]
     },
     {
       id: resourceMenuIds.price,
@@ -28,6 +32,30 @@ const menuItems = (id: string, typeId: string): DetailMenuItem[] => {
       title: 'resource.navigation.menu.quantity',
       path: `${baseUrl}/resource-quantity`,
       type: [resourceTypesMaster.machineryAndEquipment, resourceTypesMaster.material]
+    },
+    {
+      id: resourceMenuIds.education,
+      title: 'resource.navigation.menu.education',
+      path: `${baseUrl}/education`,
+      type: resourceTypesMaster.professional
+    },
+    {
+      id: resourceMenuIds.workExperience,
+      title: 'resource.navigation.menu.work-experience',
+      path: `${baseUrl}/work-experience`,
+      type: resourceTypesMaster.professional
+    },
+    {
+      id: resourceMenuIds.certificates,
+      title: 'resource.navigation.menu.certificates',
+      path: `${baseUrl}/certificates`,
+      type: resourceTypesMaster.professional
+    },
+    {
+      id: resourceMenuIds.membership,
+      title: 'resource.navigation.menu.membership',
+      path: `${baseUrl}/membership`,
+      type: resourceTypesMaster.professional
     }
   ];
 };
@@ -36,7 +64,7 @@ export const resourceTypesMaster = {
   mineral: 'MINERAL',
   material: 'MATERIAL',
   machineryAndEquipment: 'MACHINERY_AND_EQUIPMENT',
-  professional: 'PROFESSIONAL',
+  professional: 'PROFESSIONAL'
 };
 export type ResourceMenuItem = ReturnType<typeof menuItems>;
 export default menuItems;

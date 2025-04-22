@@ -104,16 +104,18 @@ const TransmissionLineEquipmentDataDrawer = (props: TransmissionLineEquipmentDat
 
   return (
     <CustomSideDrawer
-      title={`project.other.transmission-line-equipment-data.${isEdit ? `edit-transmission-line-equipment-data` : `create-transmission-line-equipment-data`
-        }`}
+      title={`project.other.transmission-line-equipment-data.${
+        isEdit ? `edit-transmission-line-equipment-data` : `create-transmission-line-equipment-data`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.transmission-line-equipment-data.${isEdit ? `edit-transmission-line-equipment-data` : `create-transmission-line-equipment-data`
-            }`}
+          title={`project.other.transmission-line-equipment-data.${
+            isEdit ? `edit-transmission-line-equipment-data` : `create-transmission-line-equipment-data`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

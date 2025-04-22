@@ -102,39 +102,39 @@ const RoadMaintenanceActivityList: React.FC<RoadMaintenanceActivityListProps> = 
   const mapRoadMaintenanceActivityToDetailItems = (
     roadMaintenanceActivity: RoadMaintenanceActivity
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.road-maintenance-activity.details.road-segment'),
-        value: roadMaintenanceActivity?.road_segment || 'N/A'
-      },
-      {
-        title: t('project.other.road-maintenance-activity.details.maintenance-frequency'),
-        value: roadMaintenanceActivity?.maintenance_frequency_id
-          ? maintenanceFrequencyMap.get(roadMaintenanceActivity.maintenance_frequency_id) || roadMaintenanceActivity.maintenance_frequency_id
-          : 'N/A'
-      },
-      {
-        title: t('project.other.road-maintenance-activity.details.maintenance-type'),
-        value: roadMaintenanceActivity?.maintenance_type_id
-          ? maintenanceTypeMap.get(roadMaintenanceActivity.maintenance_type_id) || roadMaintenanceActivity.maintenance_type_id
-          : 'N/A'
-      },
-      {
-        title: t('project.other.road-maintenance-activity.details.consultant'),
-        value: roadMaintenanceActivity?.consultant || 'N/A'
-      },
-      {
-        title: t('project.other.road-maintenance-activity.details.remark'),
-        value: roadMaintenanceActivity?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: roadMaintenanceActivity?.created_at ? formatCreatedAt(roadMaintenanceActivity.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: roadMaintenanceActivity?.updated_at ? formatCreatedAt(roadMaintenanceActivity.updated_at) : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.road-maintenance-activity.details.road-segment'),
+      value: roadMaintenanceActivity?.road_segment || 'N/A'
+    },
+    {
+      title: t('project.other.road-maintenance-activity.details.maintenance-frequency'),
+      value: roadMaintenanceActivity?.maintenance_frequency_id
+        ? maintenanceFrequencyMap.get(roadMaintenanceActivity.maintenance_frequency_id) || roadMaintenanceActivity.maintenance_frequency_id
+        : 'N/A'
+    },
+    {
+      title: t('project.other.road-maintenance-activity.details.maintenance-type'),
+      value: roadMaintenanceActivity?.maintenance_type_id
+        ? maintenanceTypeMap.get(roadMaintenanceActivity.maintenance_type_id) || roadMaintenanceActivity.maintenance_type_id
+        : 'N/A'
+    },
+    {
+      title: t('project.other.road-maintenance-activity.details.consultant'),
+      value: roadMaintenanceActivity?.consultant || 'N/A'
+    },
+    {
+      title: t('project.other.road-maintenance-activity.details.remark'),
+      value: roadMaintenanceActivity?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: roadMaintenanceActivity?.created_at ? formatCreatedAt(roadMaintenanceActivity.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: roadMaintenanceActivity?.updated_at ? formatCreatedAt(roadMaintenanceActivity.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

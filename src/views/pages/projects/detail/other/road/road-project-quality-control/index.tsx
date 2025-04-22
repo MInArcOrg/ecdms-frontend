@@ -78,35 +78,35 @@ const RoadProjectQualityControlList: React.FC<RoadProjectQualityControlListProps
   const mapRoadProjectQualityControlToDetailItems = (
     roadProjectQualityControl: RoadProjectQualityControl
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.road-project-quality-control.details.name'),
-        value: roadProjectQualityControl?.name || 'N/A'
-      },
-      {
-        title: t('project.other.road-project-quality-control.details.project-phase-id'),
-        value: roadProjectQualityControl?.project_phase_id || 'N/A'
-      },
-      {
-        title: t('project.other.road-project-quality-control.details.inspection-type-id'),
-        value: roadProjectQualityControl?.inspection_type_id || 'N/A'
-      },
-      {
-        title: t('project.other.road-project-quality-control.details.defect-encountered'),
-        value: roadProjectQualityControl?.defect_encountered || 'N/A'
-      },
-      {
-        title: t('project.other.road-project-quality-control.details.remark'),
-        value: roadProjectQualityControl?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: roadProjectQualityControl?.created_at ? formatCreatedAt(roadProjectQualityControl.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: roadProjectQualityControl?.updated_at ? formatCreatedAt(roadProjectQualityControl.updated_at) : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.road-project-quality-control.details.name'),
+      value: roadProjectQualityControl?.name || 'N/A'
+    },
+    {
+      title: t('project.other.road-project-quality-control.details.project-phase-id'),
+      value: roadProjectQualityControl?.project_phase_id || 'N/A'
+    },
+    {
+      title: t('project.other.road-project-quality-control.details.inspection-type-id'),
+      value: roadProjectQualityControl?.inspection_type_id || 'N/A'
+    },
+    {
+      title: t('project.other.road-project-quality-control.details.defect-encountered'),
+      value: roadProjectQualityControl?.defect_encountered || 'N/A'
+    },
+    {
+      title: t('project.other.road-project-quality-control.details.remark'),
+      value: roadProjectQualityControl?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: roadProjectQualityControl?.created_at ? formatCreatedAt(roadProjectQualityControl.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: roadProjectQualityControl?.updated_at ? formatCreatedAt(roadProjectQualityControl.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>
