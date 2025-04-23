@@ -51,7 +51,6 @@ const ResourceLayout: React.FC<ResourceLayoutProps> = ({ activeMenuId, activeSub
     gcTime: 5 * 60 * 1000,
     enabled: !!typeId
   });
-  console.log('masterType', masterType);
   const filteredMenuItems = useMemo(() => {
     const flag = masterType?.payload?.flag ?? '';
     return menuTabs(id as string, typeId as string).filter((item) => filterByType(item.type, flag));
