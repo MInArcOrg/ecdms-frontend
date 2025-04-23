@@ -75,19 +75,19 @@ const menuItems = (id: string, typeId: string): DetailMenuItem[] => {
       id: projectMenuIds.powerGeneration,
       title: 'project.navigation.menu.power-generation',
       path: `${baseUrl}/power-generation`,
-      type: projectTypesMaster.telecommunication
+      type: projectTypesMaster.eletric
     },
     {
       id: projectMenuIds.powerInfrastructure,
       title: 'project.navigation.menu.power-infrastructure',
       path: `${baseUrl}/power-infrastructure`,
-      type: projectTypesMaster.telecommunication
+      type: projectTypesMaster.eletric
     },
     {
       id: projectMenuIds.regulation,
       title: 'project.navigation.menu.regulation',
       path: `${baseUrl}/regulation`,
-      type: projectTypesMaster.telecommunication
+      type: projectTypesMaster.eletric
     }
   ];
 };
