@@ -4,10 +4,7 @@ import { resourceMenuIds } from 'src/views/pages/resources/details/layout/resour
 import { certificatesMenuIds } from './(sub-menu-items)';
 import subMenuItems, { findSubMenuItem } from './(sub-menu-items)';
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems('', ''),
-  certificatesMenuIds.recommendations
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), certificatesMenuIds.recommendations);
 
 const RecommendationsPage = () => {
   const router = useRouter();

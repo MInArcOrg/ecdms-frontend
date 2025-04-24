@@ -15,11 +15,7 @@ const ResourcePage = () => {
     gcTime: 5 * 60 * 1000,
     enabled: !!typeId
   });
-  return (
-    masterType?.payload.flag === resourceTypesMaster.professional ?
-      <ProfessionalList /> :
-      <ResourceList />
-  );
+  return masterType?.payload.flag === resourceTypesMaster.professional ? <ProfessionalList /> : <ResourceList />;
 };
 
 export default ResourcePage;
