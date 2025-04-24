@@ -31,7 +31,7 @@ function ResourceList() {
     handlePageChange,
     refetch
   } = usePaginatedFetch<Resource[]>({
-    queryKey: ['resources',String(typeId)],
+    queryKey: ['resources', String(typeId)],
     fetchFunction: fetchResources
   });
 

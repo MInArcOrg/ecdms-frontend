@@ -21,7 +21,7 @@ interface WorkExperienceListProps {
   typeId: string;
 }
 
-const ResourceWorkExperienceList: React.FC<WorkExperienceListProps> = ({ professionalId,otherSubMenu }) => {
+const ResourceWorkExperienceList: React.FC<WorkExperienceListProps> = ({ professionalId, otherSubMenu }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<ProfessionalWorkExperience | null>(null);

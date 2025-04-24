@@ -15,7 +15,7 @@ const ProjectStakeholder = () => {
       activeSubMenuId={projectResourceIds.documents.design}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-            <ProjectFileList projectId={String(id)} type={projectFileConstant.CONSTRUCTION.value} />
+      <ProjectFileList projectId={String(id)} type={projectFileConstant.CONSTRUCTION.value} />
     </ProjectLayout>
   );
 };

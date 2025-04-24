@@ -15,13 +15,15 @@ interface ResetPasswordPayload {
 
 const authApiService = {
   sendResetEmail: async (payload: ForgotPasswordPayload): Promise<IApiResponse> =>
-    axios.post('/request-password-reset', payload)
+    axios
+      .post('/request-password-reset', payload)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: IApiResponse) => {
         throw error;
       }),
   resetPassword: async (payload: ResetPasswordPayload): Promise<IApiResponse> =>
-    axios.post('/auth/reset-password', payload)
+    axios
+      .post('/auth/reset-password', payload)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: IApiResponse) => {
         throw error;

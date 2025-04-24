@@ -18,7 +18,7 @@ const ResourceMembershipPage = () => {
       activeSubMenuId={membershipMenuIds.membership}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <ResourceProfessionalMembership  typeId={String(typeId)} professionalId={String(id)} />
+      <ResourceProfessionalMembership typeId={String(typeId)} professionalId={String(id)} />
     </ResourceLayout>
   );
 };

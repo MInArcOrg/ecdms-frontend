@@ -814,9 +814,7 @@ export const projectMasterModels = {
     createTitle: 'create-scheme-status',
     editTitle: 'edit-scheme-status',
     fileType: 'SCHEME_STATUS'
-  }  
-
-
+  }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
