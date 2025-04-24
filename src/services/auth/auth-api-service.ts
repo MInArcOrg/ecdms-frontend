@@ -23,7 +23,7 @@ const authApiService = {
       }),
   resetPassword: async (payload: ResetPasswordPayload): Promise<IApiResponse> =>
     axios
-      .post('/auth/reset-password', payload)
+      .post('/password-reset', payload)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: IApiResponse) => {
         throw error;

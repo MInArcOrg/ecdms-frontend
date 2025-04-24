@@ -37,7 +37,8 @@ const ResetPassword = () => {
   const { authLoading } = useAuth();
   const { t } = useTranslation();
   const router = useRouter();
-  const { token, userId } = router.query;
+  const { token, user_id } = router.query;
+  console.log('user_id',user_id)
 
   useEffect(() => {
     if (!token) {
@@ -67,7 +68,7 @@ const ResetPassword = () => {
       }
 
       const { password } = values;
-      await authApiService.resetPassword({ password, resetString: token.toString(), user_id: String(userId) });
+      await authApiService.resetPassword({ password, resetString: token.toString(), user_id: String(user_id) });
       setPasswordReset(true);
       toast.success(t('reset-password.success-message'));
       router.push('/auth/login');
