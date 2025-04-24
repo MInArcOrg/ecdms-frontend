@@ -1,5 +1,5 @@
 // ** React Imports
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 
 // ** Next Imports
 import Link from "next/link";
@@ -29,9 +29,9 @@ import Logo from "src/layouts/components/logo";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import BlankLayout from "src/@core/layouts/BlankLayout";
-import { parseError } from "src/utils/parse/clean-error";
 import authApiService from "src/services/auth/auth-api-service";
 import { IApiResponse } from "src/types/requests";
+import { parseError } from "src/utils/parse/clean-error";
 import AuthContainer from "src/views/auth/auth-container";
 
 // ** Styled Components
