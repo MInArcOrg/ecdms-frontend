@@ -42,7 +42,7 @@ const ResetPassword = () => {
   useEffect(() => {
     if (!token) {
       // Redirect to login if there's no token in the URL
-      router.push('/auth/login');
+      // router.push('/auth/login');
     }
   }, [token, router]);
 
@@ -159,5 +159,5 @@ const ResetPassword = () => {
 
 ResetPassword.getLayout = (page: ReactNode) => <BlankLayout>{page}</BlankLayout>;
 ResetPassword.guestGuard = true;
-
+ResetPassword.authGuard = false;
 export default ResetPassword;
