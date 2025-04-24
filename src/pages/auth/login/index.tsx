@@ -192,5 +192,6 @@ const Login = () => {
 
 Login.getLayout = (page: ReactNode) => <BlankLayout>{page}</BlankLayout>;
 Login.guestGuard = true;
+Login.authGuard = false;
 
 export default Login;

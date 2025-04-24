@@ -113,12 +113,15 @@ const App = (props: ExtendedAppProps) => {
   const setConfig = Component.setConfig ?? undefined;
 
   const authGuard = Component.authGuard ?? true;
-
   const guestGuard = Component.guestGuard ?? false;
+
+  // Set guard props on window for use in AuthProvider
+  if (typeof window !== 'undefined') {
+    window.__NEXT_GUARD_PROPS__ = { guestGuard, authGuard };
+  }
 
   const aclAbilities = Component.acl ?? defaultACLObj;
   const [queryClient] = useState(() => new QueryClient());
-
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>

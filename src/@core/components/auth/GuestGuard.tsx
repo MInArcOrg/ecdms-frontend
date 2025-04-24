@@ -1,10 +1,5 @@
-// ** React Imports
 import { ReactNode, ReactElement, useEffect } from 'react';
-
-// ** Next Import
 import { useRouter } from 'next/router';
-
-// ** Hooks Import
 import { useAuth } from 'src/hooks/useAuth';
 
 interface GuestGuardProps {
@@ -12,27 +7,29 @@ interface GuestGuardProps {
   fallback: ReactElement | null;
 }
 
-const GuestGuard = (props: GuestGuardProps) => {
-  const { children, fallback } = props;
+const GuestGuard = ({ children, fallback }: GuestGuardProps) => {
   const auth = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (!router.isReady) {
-      return;
-    }
-
-    if (window.localStorage.getItem('userData')) {
+    if (!router.isReady) return;
+    // If user is authenticated, redirect to dashboard (or home)
+    if (auth.user && window.localStorage.getItem('userData')) {
       router.replace('/');
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.route]);
+  }, [auth.user, router]);
 
-  if (auth.loading || (!auth.loading && auth.user !== null)) {
+  if (auth.loading) {
     return fallback;
   }
 
-  return <>{children}</>;
+  // Only render children if user is NOT authenticated
+  if (!auth.user) {
+    return <>{children}</>;
+  }
+
+  // Optionally, render nothing or a spinner while redirecting
+  return null;
 };
 
 export default GuestGuard;

@@ -1,4 +1,48 @@
 {
+    "forgot-password": {
+      "title": "Forgot your password?",
+      "instructions": "Enter your email and we'll send you instructions to reset your password.",
+      "input-labels": {
+        "email": "Email"
+      },
+      "submit-button": "Send Reset Link",
+      "email-sent": "If your email exists in our system, you will receive a password reset link.",
+      "remember-password": "Remember your password?",
+      "back-to-login": "Back to login",
+      "success-message": "If your email exists in our system, you will receive a password reset link.",
+      "validation-messages": {
+        "email": {
+          "email": "Please enter a valid email address.",
+          "required": "Email is required."
+        }
+      }
+    },
+    "reset-password": {
+    "title": "Reset your password",
+    "instructions": "Enter your new password below to reset your account.",
+    "input-labels": {
+      "password": "New Password",
+      "passwordConfirm": "Confirm New Password"
+    },
+    "submit-button": "Reset Password",
+    "password-reset": "Your password has been reset successfully.",
+    "remember-password": "Remember your password?",
+    "back-to-login": "Back to login",
+    "success-message": "Your password has been reset successfully. Please log in.",
+    "error": {
+      "no-token": "Reset token is missing or invalid."
+    },
+    "validation-messages": {
+      "password": {
+        "min": "Password must be at least 8 characters.",
+        "required": "Password is required."
+      },
+      "passwordConfirm": {
+        "match": "Passwords must match.",
+        "required": "Please confirm your password."
+      }
+    }
+  },
   "navigation": {
     "dashboard": "Dashboard",
     "admin-module": "Admin Module",

@@ -18,6 +18,5 @@ export type AuthValuesType = {
   setAuthLoading: (value: boolean) => void;
   setUser: (value: User | null) => void;
   login: (params: LoginParams, errorCallback?: ErrCallbackType) => void;
-  setIsGuestGuard: (isGuestGuard: boolean) => void;
   isGuestGuard: boolean;
 };
