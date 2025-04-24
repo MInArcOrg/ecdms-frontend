@@ -62,7 +62,6 @@ const AuthProvider = ({ children }: Props) => {
             setUser({ ...response.data.payload.user_data });
           })
           .catch((error) => {
-            const returnUrl = window.location.href;
             const currentUrl = window.location.pathname;
 
             localStorage.removeItem(authConfig.storageUserKeyName);
