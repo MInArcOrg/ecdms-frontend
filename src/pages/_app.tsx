@@ -130,7 +130,7 @@ const App = (props: ExtendedAppProps) => {
             <title>{`${themeConfig.templateName} - 1space`}</title>
             <meta
               name="description"
-              content={`${themeConfig.templateName} – 1space Ethiopian Construction Data Platform.`}
+              content={`${themeConfig.templateName} – ECDMS is Ethiopia's integrated platform for the collection, organization, and dissemination of construction industry data by federal, regional and wereda administrations as well as the city administrations of Addis Ababa and Dire Dawa and also private sector key actors in the construction industry..`}
             />
             <meta name="keywords" content="1space Ethiopian Construction Data Platform" />
             <meta name="viewport" content="initial-scale=1, width=device-width" />
