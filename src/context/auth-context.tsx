@@ -28,7 +28,6 @@ const defaultProvider: AuthValuesType = {
   setAuthLoading: () => Boolean,
   login: () => Promise.resolve(),
   logout: () => Promise.resolve(),
-  setIsGuestGuard: (isGuestGuard: boolean) => null,
   isGuestGuard: false
 };
 
@@ -43,9 +42,15 @@ const AuthProvider = ({ children }: Props) => {
   const [user, setUser] = useState<User | null>(defaultProvider.user);
   const [loading, setLoading] = useState<boolean>(defaultProvider.loading);
   const [authLoading, setAuthLoading] = useState<boolean>(false);
-  const [isGuestGuard, setIsGuestGuard] = useState<boolean>(defaultProvider.isGuestGuard);
+  // Remove isGuestGuard state and setIsGuestGuard
   // ** Hooks
   const router = useRouter();
+
+  // Get guestGuard and authGuard from window object set in _app.tsx
+  let isGuestGuard = false;
+  if (typeof window !== 'undefined' && window.__NEXT_GUARD_PROPS__) {
+    isGuestGuard = window.__NEXT_GUARD_PROPS__.guestGuard;
+  }
 
   useEffect(() => {
     const initAuth = async (): Promise<void> => {
@@ -57,14 +62,19 @@ const AuthProvider = ({ children }: Props) => {
             setUser({ ...response.data.payload.user_data });
           })
           .catch((error) => {
-            const returnUrl = window.location.href;
+            const currentUrl = window.location.pathname;
+
             localStorage.removeItem(authConfig.storageUserKeyName);
             localStorage.removeItem('refreshToken');
             localStorage.removeItem('accessToken');
             setUser(null);
             setLoading(false);
-            if (authConfig.onTokenExpiration === 'logout' && !router.pathname.includes('login')) {
-              router.replace(`/auth/login?returnUrl=${returnUrl}`);
+            console.log('isGuestGuard', isGuestGuard);
+            if (authConfig.onTokenExpiration === 'logout' && !isGuestGuard) {
+              if (!currentUrl.includes('login') && !currentUrl.includes('check-profile')) {
+                const loginRedirectURL = `/auth/login?returnUrl=${encodeURIComponent(currentUrl)}`;
+                window.location.href = loginRedirectURL;
+              }
             }
           })
           .finally(() => {
@@ -125,7 +135,7 @@ const AuthProvider = ({ children }: Props) => {
     setAuthLoading,
     login: handleLogin,
     logout: handleLogout,
-    setIsGuestGuard,
+    // Remove setIsGuestGuard,
     isGuestGuard
   };
 

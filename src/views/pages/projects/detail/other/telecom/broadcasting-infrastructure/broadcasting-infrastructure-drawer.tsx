@@ -12,7 +12,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { BroadcastingInfrastructure } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface BroadcastingInfrastructureDrawerType {
   open: boolean;
@@ -20,7 +20,7 @@ interface BroadcastingInfrastructureDrawerType {
   refetch: () => void;
   broadcastingInfrastructure: BroadcastingInfrastructure;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const BroadcastingInfrastructureDrawer = (props: BroadcastingInfrastructureDrawerType) => {

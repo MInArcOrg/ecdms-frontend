@@ -156,7 +156,7 @@ const Login = () => {
                 label={t('login.remember-me')}
                 control={<Checkbox checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />}
               />
-              <Typography component={LinkStyled} href="/forgot-password">
+              <Typography component={LinkStyled} href="/auth/forgot-password">
                 {t('login.forgot-password')}
               </Typography>
             </Box>
@@ -192,5 +192,6 @@ const Login = () => {
 
 Login.getLayout = (page: ReactNode) => <BlankLayout>{page}</BlankLayout>;
 Login.guestGuard = true;
+Login.authGuard = false;
 
 export default Login;

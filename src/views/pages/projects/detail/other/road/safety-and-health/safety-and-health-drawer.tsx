@@ -10,7 +10,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { SafetyAndHealth } from 'src/types/project/other'; // Update import
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
 interface SafetyAndHealthDrawerType {
@@ -19,7 +19,7 @@ interface SafetyAndHealthDrawerType {
   refetch: () => void;
   safetyAndHealth: SafetyAndHealth; // Changed from SafetyAndHealth
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const SafetyAndHealthDrawer = (props: SafetyAndHealthDrawerType) => {

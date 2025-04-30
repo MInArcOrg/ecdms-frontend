@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -15,9 +14,10 @@ import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-det
 import HydrologicalInformationCard from './hydrological-information-card';
 import HydrologicalInformationDrawer from './hydrological-information-drawer';
 import { telecomColumns } from './hydrological-information-row'; // Updated import
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface HydrologicalInformationListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }

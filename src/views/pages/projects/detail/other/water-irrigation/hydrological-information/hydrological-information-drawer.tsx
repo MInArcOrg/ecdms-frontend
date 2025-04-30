@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import HydrologicalInformationForm from './hydrological-information-form';
 
 import { useState } from 'react';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { HydrologicalInformation } from 'src/types/project/other';
@@ -18,7 +18,7 @@ interface HydrologicalInformationDrawerType {
   refetch: () => void;
   hydrologicalInformation: HydrologicalInformation;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const HydrologicalInformationDrawer = (props: HydrologicalInformationDrawerType) => {

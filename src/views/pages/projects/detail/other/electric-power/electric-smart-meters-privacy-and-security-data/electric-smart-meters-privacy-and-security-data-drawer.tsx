@@ -10,7 +10,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { ElectricSmartMetersData, ElectricSmartMetersPrivacyAndSecurityData } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface ElectricSmartMetersPrivacyAndSecurityDataDrawerType {
   open: boolean;
@@ -18,7 +18,7 @@ interface ElectricSmartMetersPrivacyAndSecurityDataDrawerType {
   refetch: () => void;
   electricSmartMetersPrivacyAndSecurityData: ElectricSmartMetersPrivacyAndSecurityData;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   electricSmartMetersData: ElectricSmartMetersData[];
   privacyMeasuresTypes: any[];
   customerEngagementFrequencies: any[];

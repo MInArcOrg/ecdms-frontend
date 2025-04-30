@@ -14,7 +14,7 @@ export const resourceMasterModels = {
     createTitle: 'create-quality-measurement-unit',
     editTitle: 'edit-quality-measurement-unit',
     fileType: 'QUALITY_MEASUREMENT_UNIT'
-  },
+  }
 };
 export type ResourceMasterModelKey = keyof typeof resourceMasterModels;
 

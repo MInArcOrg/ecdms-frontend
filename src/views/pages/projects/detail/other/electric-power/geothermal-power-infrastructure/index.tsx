@@ -14,10 +14,10 @@ import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-det
 import GeothermalPowerInfrastructureCard from './geothermal-power-infrastructure-card';
 import GeothermalPowerInfrastructureDrawer from './geothermal-power-infrastructure-drawer';
 import { geothermalPowerInfrastructureColumns } from './geothermal-power-infrastructure-row';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface GeothermalPowerInfrastructureListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }

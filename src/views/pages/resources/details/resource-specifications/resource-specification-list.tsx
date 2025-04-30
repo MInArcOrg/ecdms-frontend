@@ -80,6 +80,7 @@ function ResourceSpecificationList({ resourceId }: { resourceId: string }) {
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.grid.value}
           isLoading={isLoading}
+          title={t('resource.resource-specification.title')}
           breakpoints={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 4 }}
           ItemViewComponent={({ data }) => (
             <ResourceSpecificationCard resourceSpecification={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch}>

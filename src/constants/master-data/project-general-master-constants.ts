@@ -703,7 +703,118 @@ export const projectMasterModels = {
     editTitle: 'edit-safety-problems-encountered',
     fileType: 'SAFETY_PROBLEMS_ENCOUNTERED'
   },
-
+  unitPrice: {
+    model: 'UnitPrice',
+    dbModel: 'unitPrice',
+    title: 'unit-price',
+    createTitle: 'create-unit-price',
+    editTitle: 'edit-unit-price',
+    fileType: 'UNIT_PRICE'
+  },
+  supplierName: {
+    model: 'SupplierName',
+    dbModel: 'supplierName',
+    title: 'supplier-name',
+    createTitle: 'create-supplier-name',
+    editTitle: 'edit-supplier-name',
+    fileType: 'SUPPLIER_NAME'
+  },
+  supplierAddress: {
+    model: 'SupplierAddress',
+    dbModel: 'supplierAddress',
+    title: 'supplier-address',
+    createTitle: 'create-supplier-address',
+    editTitle: 'edit-supplier-address',
+    fileType: 'SUPPLIER_ADDRESS'
+  },
+  distributionLineMaterial: {
+    model: 'DistributionLineMaterial',
+    dbModel: 'distributionlinematerial',
+    title: 'distribution-line-materials',
+    createTitle: 'create-distribution-line-material',
+    editTitle: 'edit-distribution-line-material',
+    fileType: 'DISTRIBUTION_LINE_MATERIAL'
+  },
+  communicationLinks: {
+    model: 'CommunicationLinks',
+    dbModel: 'communicationlinks',
+    title: 'communication-links',
+    createTitle: 'create-communication-links',
+    editTitle: 'edit-communication-links',
+    fileType: 'COMMUNICATION_LINKS'
+  },
+  waterSource: {
+    model: 'WaterSource',
+    dbModel: 'waterSource',
+    title: 'water-source',
+    createTitle: 'create-water-source',
+    editTitle: 'edit-water-source',
+    fileType: 'WATER_SOURCE'
+  },
+  projectTarget: {
+    model: 'ProjectTarget',
+    dbModel: 'projectTarget',
+    title: 'water-source',
+    createTitle: 'create-project-target',
+    editTitle: 'edit-project-target',
+    fileType: 'PROJECT_TARGET'
+  },
+  headWorkType: {
+    model: 'HeadWorkType',
+    dbModel: 'headWorkType',
+    title: 'head-work-type',
+    createTitle: 'create-head-work-type',
+    editTitle: 'edit-head-work-type',
+    fileType: 'HEAD_WORK_TYPE'
+  },
+  irrigationTechnology: {
+    model: 'IrrigationTechnology',
+    dbModel: 'irrigationTechnology',
+    title: 'irrigation-technology',
+    createTitle: 'create-irrigation-technology',
+    editTitle: 'edit-irrigation-technology',
+    fileType: 'IRRIGATION_TECHNOLOGY'
+  },
+  mainCanalType: {
+    model: 'MainCanalType',
+    dbModel: 'mainCanalType',
+    title: 'main-canal-type',
+    createTitle: 'create-main-canal-type',
+    editTitle: 'edit-main-canal-type',
+    fileType: 'MAIN_CANAL_TYPE'
+  },
+  pumpType: {
+    model: 'PumpType',
+    dbModel: 'pumpType',
+    title: 'pump-type',
+    createTitle: 'create-pump-type',
+    editTitle: 'edit-pump-type',
+    fileType: 'PUMP_TYPE'
+  },
+  pumpsPowerSource: {
+    model: 'PumpsPowerSource',
+    dbModel: 'pumpsPowerSource',
+    title: 'pumps-power-source',
+    createTitle: 'create-pumps-power-source',
+    editTitle: 'edit-pumps-power-source',
+    fileType: 'PUMPS_POWER_SOURCE'
+  },
+  runwaySurfaceType: {
+    model: 'RunwaySurfaceType',
+    dbModel: 'runwaySurfaceType',
+    title: 'runway-surface-type',
+    createTitle: 'create-runway-surface-type',
+    editTitle: 'edit-runway-surface-type',
+    fileType: 'RUNWAY_SURFACE_TYPE'
+  },
+  schemeStatus: {
+    model: 'SchemeStatus',
+    dbModel: 'schemeStatus',
+    title: 'scheme-status',
+    createTitle: 'create-scheme-status',
+    editTitle: 'edit-scheme-status',
+    fileType: 'SCHEME_STATUS'
+  }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

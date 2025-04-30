@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
   first_name: yup.string().required(),
   last_name: yup.string().required(),
   email: yup.string().email(),
-  phone: yup.number().typeError('Contact Number field is required').min(10)
+  phone: yup.number().typeError('Contact Number field is required').min(10),
 });
 
 const UserDrawer = (props: UserDrawerType) => {
@@ -46,7 +46,7 @@ const UserDrawer = (props: UserDrawerType) => {
         department_id: props.departmentId,
         gender: values.gender,
         birth_date: convertDateToLocaleDate(values.birth_date),
-        redirect_url:`${window.location.origin}`
+        redirect_url: process.env.NEXT_PUBLIC_APP_URL || window.location.origin + '/auth/' + 'reset-password'
       },
       files: []
     };

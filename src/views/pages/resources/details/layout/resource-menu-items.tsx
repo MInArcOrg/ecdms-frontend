@@ -1,66 +1,70 @@
-interface MenuItem {
-  id: number;
-  title: string;
-  path: string;
-  action: string;
-  subject: string;
-}
+import { DetailMenuItem } from 'src/types/layouts/detail-layout';
 
-const menuItems = (id: string, typeId: string): MenuItem[] => {
+// Define an object for ID constants
+export const resourceMenuIds = {
+  generalInfo: 'GENERAL_INFO',
+  price: 'PRICE',
+  quantity: 'QUANTITY',
+  education: 'EDUCATION',
+  workExperience: 'WORK_EXPERIENCE',
+  certificates: 'CERTIFICATES',
+  membership: 'MEMBERSHIP'
+};
+
+const menuItems = (id: string, typeId: string): DetailMenuItem[] => {
   const baseUrl = `/resources/${typeId}/details/${id}`;
 
   return [
     {
-      id: 1,
+      id: resourceMenuIds.generalInfo,
       title: 'resource.navigation.menu.general-info',
       path: `${baseUrl}/general-info`,
-      action: 'view_generalinfo',
-      subject: 'generalinfo'
+      type: [resourceTypesMaster.machineryAndEquipment, resourceTypesMaster.material, resourceTypesMaster.professional]
     },
     {
-      id: 2,
-      title: 'resource.navigation.menu.licenses',
-      path: `${baseUrl}/licenses`,
-      action: 'view_licenses',
-      subject: 'licenses'
+      id: resourceMenuIds.price,
+      title: 'resource.navigation.menu.price',
+      path: `${baseUrl}/resource-price`,
+      type: [resourceTypesMaster.machineryAndEquipment, resourceTypesMaster.material]
     },
     {
-      id: 3,
-      title: 'resource.navigation.menu.educations',
-      path: `${baseUrl}/educations`,
-      action: 'view_education',
-      subject: 'education'
+      id: resourceMenuIds.quantity,
+      title: 'resource.navigation.menu.quantity',
+      path: `${baseUrl}/resource-quantity`,
+      type: [resourceTypesMaster.machineryAndEquipment, resourceTypesMaster.material]
     },
     {
-      id: 4,
-      title: 'resource.navigation.menu.work-experiences',
-      path: `${baseUrl}/work-experiences`,
-      action: 'view_workexperience',
-      subject: 'workexperience'
+      id: resourceMenuIds.education,
+      title: 'resource.navigation.menu.education',
+      path: `${baseUrl}/education`,
+      type: resourceTypesMaster.professional
     },
     {
-      id: 5,
+      id: resourceMenuIds.workExperience,
+      title: 'resource.navigation.menu.work-experience',
+      path: `${baseUrl}/work-experience`,
+      type: resourceTypesMaster.professional
+    },
+    {
+      id: resourceMenuIds.certificates,
+      title: 'resource.navigation.menu.certificates',
+      path: `${baseUrl}/certificates`,
+      type: resourceTypesMaster.professional
+    },
+    {
+      id: resourceMenuIds.membership,
       title: 'resource.navigation.menu.membership',
       path: `${baseUrl}/membership`,
-      action: 'view_membership',
-      subject: 'membership'
-    },
-    {
-      id: 6,
-      title: 'resource.navigation.menu.achievements',
-      path: `${baseUrl}/achievements`,
-      action: 'view_achievements',
-      subject: 'achievements'
-    },
-    {
-      id: 7,
-      title: 'resource.navigation.menu.recommendations',
-      path: `${baseUrl}/recommendations`,
-      action: 'view_recommendations',
-      subject: 'recommendations'
+      type: resourceTypesMaster.professional
     }
   ];
 };
 
-export type resourceMenuItem = ReturnType<typeof menuItems>;
+export const resourceTypesMaster = {
+  mineral: 'MINERAL',
+  material: 'MATERIAL',
+  machineryAndEquipment: 'MACHINERY_AND_EQUIPMENT',
+  professional: 'PROFESSIONAL'
+};
+export type ResourceMenuItem = ReturnType<typeof menuItems>;
 export default menuItems;

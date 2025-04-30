@@ -7,7 +7,7 @@ import BridgeSuperStructureForm from './bridge-super-structure-form';
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import type { BridgeSuperStructure } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface BridgeSuperStructureDrawerType {
   open: boolean;
@@ -15,7 +15,7 @@ interface BridgeSuperStructureDrawerType {
   refetch: () => void;
   bridgeSuperStructure: BridgeSuperStructure;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const BridgeSuperStructureDrawer = (props: BridgeSuperStructureDrawerType) => {

@@ -14,10 +14,10 @@ import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-det
 import TransmissionLineInformationCard from './transmission-line-information-card';
 import TransmissionLineInformationDrawer from './transmission-line-information-drawer';
 import { transmissionLineInformationColumns } from './transmission-line-information-row';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface TransmissionLineInformationListProps {
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }

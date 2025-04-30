@@ -104,14 +104,24 @@ const ResourceForm: React.FC<ResourceFormProps> = ({ formik, typeId }) => {
         size="small"
         name="quantity_measurement_unit_id"
         label={transl('resource.form.quantity_measurement_unit_id')}
-        options={qualityMeasurementUnits?.payload?.map((qualityMeasurementUnit) => ({label:qualityMeasurementUnit.title,value:qualityMeasurementUnit.id}))||[]}
+        options={
+          qualityMeasurementUnits?.payload?.map((qualityMeasurementUnit) => ({
+            label: qualityMeasurementUnit.title,
+            value: qualityMeasurementUnit.id
+          })) || []
+        }
         sx={{ mb: 2 }}
       />
       <CustomSelect
         size="small"
         name="quality_measurement_unit_id"
         label={transl('resource.form.quality_measurement_unit_id')}
-        options={quantityMeasurementUnits?.payload?.map((qualityMeasurementUnit) => ({label:qualityMeasurementUnit.title,value:qualityMeasurementUnit.id})) ||[]}
+        options={
+          quantityMeasurementUnits?.payload?.map((qualityMeasurementUnit) => ({
+            label: qualityMeasurementUnit.title,
+            value: qualityMeasurementUnit.id
+          })) || []
+        }
         sx={{ mb: 2 }}
       />
       <CustomTextBox

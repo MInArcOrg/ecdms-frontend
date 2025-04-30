@@ -7,7 +7,7 @@ import CulvertBasicDataForm from './culvert-basic-data-form';
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import type { CulvertBasicData } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface CulvertBasicDataDrawerType {
   open: boolean;
@@ -15,7 +15,7 @@ interface CulvertBasicDataDrawerType {
   refetch: () => void;
   culvertBasicData: CulvertBasicData;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const CulvertBasicDataDrawer = (props: CulvertBasicDataDrawerType) => {

@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import GeothermalPowerInfrastructureForm from './geothermal-power-infrastructure-form';
 
 import { useState } from 'react';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { GeothermalPowerInfrastructure } from 'src/types/project/other';
@@ -18,7 +18,7 @@ interface GeothermalPowerInfrastructureDrawerType {
   refetch: () => void;
   geothermalPowerInfrastructure: GeothermalPowerInfrastructure;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const GeothermalPowerInfrastructureDrawer = (props: GeothermalPowerInfrastructureDrawerType) => {

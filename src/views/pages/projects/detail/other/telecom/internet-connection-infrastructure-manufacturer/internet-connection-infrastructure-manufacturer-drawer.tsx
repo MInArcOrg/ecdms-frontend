@@ -10,7 +10,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { InternetConnectionInfrastructureManufacturer } from 'src/types/project/other';
-import { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface InternetConnectionInfrastructureManufacturerDrawerType {
   open: boolean;
@@ -18,7 +18,7 @@ interface InternetConnectionInfrastructureManufacturerDrawerType {
   refetch: () => void;
   internetConnectionInfrastructureManufacturer: InternetConnectionInfrastructureManufacturer;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const InternetConnectionInfrastructureManufacturerDrawer = (props: InternetConnectionInfrastructureManufacturerDrawerType) => {

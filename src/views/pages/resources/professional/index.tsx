@@ -14,11 +14,9 @@ import ProfessionalDrawer from './professional-drawer';
 import type { Professional } from 'src/types/resource/index';
 import { professionalColumns } from './professional-row';
 
-interface ProfessionalListProps {
-  model: string;
-}
+interface ProfessionalListProps {}
 
-const ProfessionalList: React.FC<ProfessionalListProps> = ({ model }) => {
+const ProfessionalList: React.FC<ProfessionalListProps> = ({}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const { t } = useTranslation();
 

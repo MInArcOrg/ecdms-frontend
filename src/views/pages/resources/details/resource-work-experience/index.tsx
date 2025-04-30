@@ -13,14 +13,15 @@ import WorkExperienceCard from './resource-work-experience-card';
 import WorkExperienceDrawer from './resource-work-experience-drawer';
 import type { ProfessionalWorkExperience } from 'src/types/resource';
 import { experienceColumns } from './resource-work-experience-row';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface WorkExperienceListProps {
-  model: string;
+  otherSubMenu?: DetailSubMenuItemChild;
   professionalId: string;
   typeId: string;
 }
 
-const WorkExperienceList: React.FC<WorkExperienceListProps> = ({ professionalId }) => {
+const ResourceWorkExperienceList: React.FC<WorkExperienceListProps> = ({ professionalId, otherSubMenu }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<ProfessionalWorkExperience | null>(null);
@@ -139,4 +140,4 @@ const WorkExperienceList: React.FC<WorkExperienceListProps> = ({ professionalId 
   );
 };
 
-export default WorkExperienceList;
+export default ResourceWorkExperienceList;

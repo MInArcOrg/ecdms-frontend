@@ -7,7 +7,7 @@ import CulvertRoadOverInformationForm from './culvert-road-over-information-form
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import type { CulvertRoadOverInformation } from 'src/types/project/other';
-import type { OtherMenuRoute } from 'src/pages/projects/[typeId]/details/[id]/other/(subMenuItems)';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface CulvertRoadOverInformationDrawerType {
   open: boolean;
@@ -15,7 +15,7 @@ interface CulvertRoadOverInformationDrawerType {
   refetch: () => void;
   culvertRoadOverInformation: CulvertRoadOverInformation;
   projectId: string;
-  otherSubMenu?: OtherMenuRoute;
+  otherSubMenu?: DetailSubMenuItemChild;
 }
 
 const CulvertRoadOverInformationDrawer = (props: CulvertRoadOverInformationDrawerType) => {

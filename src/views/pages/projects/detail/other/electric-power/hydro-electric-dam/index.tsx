@@ -3,32 +3,33 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import projectOtherApiService from 'src/services/project/project-other-service';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import { HydroElectricDam } from 'src/types/project/other';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
 import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
 import HydroElectricDamCard from './hydro-electric-dam-card';
 import HydroElectricDamDrawer from './hydro-electric-dam-drawer';
-import { HydroElectricDam } from 'src/types/project/other';
 import { hydroElectricDamColumns } from './hydro-electric-dam-row';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 
 interface HydroElectricDamListProps {
-  model: string;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
 
-const HydroElectricDamList: React.FC<HydroElectricDamListProps> = ({ model, projectId, typeId }) => {
+const HydroElectricDamList: React.FC<HydroElectricDamListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<HydroElectricDam | null>(null);
   const { t } = useTranslation();
 
   const fetchGeneratingCapacities = (params: GetRequestParam): Promise<IApiResponse<HydroElectricDam[]>> => {
-    return projectOtherApiService<HydroElectricDam>().getAll(model, {
+    return projectOtherApiSecondService<HydroElectricDam>().getAll(otherSubMenu?.apiRoute, {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -61,7 +62,7 @@ const HydroElectricDamList: React.FC<HydroElectricDamListProps> = ({ model, proj
   };
 
   const handleDelete = async (hydroElectricDamId: string) => {
-    await projectOtherApiService<HydroElectricDam>().delete(model, hydroElectricDamId);
+    await projectOtherApiSecondService<HydroElectricDam>().delete(otherSubMenu?.apiRoute || '', hydroElectricDamId);
     refetch();
   };
 
@@ -101,7 +102,7 @@ const HydroElectricDamList: React.FC<HydroElectricDamListProps> = ({ model, proj
     <Box>
       {showDrawer && (
         <HydroElectricDamDrawer
-          model={model}
+          otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
           hydroElectricDam={selectedRow as HydroElectricDam}

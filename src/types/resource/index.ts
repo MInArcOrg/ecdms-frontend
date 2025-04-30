@@ -1,7 +1,7 @@
 import { GeneralMaster } from '../general/general-master';
 
 export interface Resource {
-  id:string;
+  id: string;
   resourcetype_id: string;
   resourcecategory_id: string;
   resourcesubcategory_id: string;
