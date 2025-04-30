@@ -9,11 +9,11 @@ import Icon from 'src/@core/components/icon';
 import { Settings } from 'src/@core/context/settingsContext';
 
 // ** Components
-import ModeToggler from 'src/@core/layouts/components/shared-components/ModeToggler';
-import UserDropdown from 'src/@core/layouts/components/shared-components/UserDropdown';
 import LanguageDropdown from 'src/@core/layouts/components/shared-components/LanguageDropdown';
-import NotificationDropdown, { NotificationsType } from 'src/@core/layouts/components/shared-components/NotificationDropdown';
-import ShortcutsDropdown, { ShortcutsType } from 'src/@core/layouts/components/shared-components/ShortcutsDropdown';
+import ModeToggler from 'src/@core/layouts/components/shared-components/ModeToggler';
+import NotificationDropdown from 'src/@core/layouts/components/shared-components/NotificationDropdown';
+import ShortcutsDropdown from 'src/@core/layouts/components/shared-components/ShortcutsDropdown';
+import UserDropdown from 'src/@core/layouts/components/shared-components/UserDropdown';
 
 // ** Hook Import
 import { useAuth } from 'src/hooks/useAuth';
