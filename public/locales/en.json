@@ -1,23 +1,23 @@
 {
-    "forgot-password": {
-      "title": "Forgot your password?",
-      "instructions": "Enter your email and we'll send you instructions to reset your password.",
-      "input-labels": {
-        "email": "Email"
-      },
-      "submit-button": "Send Reset Link",
-      "email-sent": "If your email exists in our system, you will receive a password reset link.",
-      "remember-password": "Remember your password?",
-      "back-to-login": "Back to login",
-      "success-message": "If your email exists in our system, you will receive a password reset link.",
-      "validation-messages": {
-        "email": {
-          "email": "Please enter a valid email address.",
-          "required": "Email is required."
-        }
-      }
+  "forgot-password": {
+    "title": "Forgot your password?",
+    "instructions": "Enter your email and we'll send you instructions to reset your password.",
+    "input-labels": {
+      "email": "Email"
     },
-    "reset-password": {
+    "submit-button": "Send Reset Link",
+    "email-sent": "If your email exists in our system, you will receive a password reset link.",
+    "remember-password": "Remember your password?",
+    "back-to-login": "Back to login",
+    "success-message": "If your email exists in our system, you will receive a password reset link.",
+    "validation-messages": {
+      "email": {
+        "email": "Please enter a valid email address.",
+        "required": "Email is required."
+      }
+    }
+  },
+  "reset-password": {
     "title": "Reset your password",
     "instructions": "Enter your new password below to reset your account.",
     "input-labels": {
@@ -49,6 +49,7 @@
     "depamrtent-module": "Department Module",
     "main-modules": "Main Modules",
     "department": "Department",
+    "address": "Address",
     "user": "User",
     "user-list": "User List",
     "roles-and-permissions": "Roles",
@@ -578,7 +579,7 @@
   },
   "greating": {
     "good-morning": "Good Morning",
-    "good-evening": "God Evening",
+    "good-evening": "Good Evening",
     "good-afternoon": "Good Afternoon"
   },
   "resource": {

@@ -18,6 +18,11 @@ const navigation = (): VerticalNavItemsType => {
       path: '/departments'
     },
     {
+      title: 'navigation.address',
+      icon: 'tabler:location',
+      path: '/address-master'
+    },
+    {
       title: 'navigation.user',
       icon: 'tabler:user',
       path: '/admin/users'
