@@ -15,12 +15,19 @@ export const addressMasterColumns = (
   transl: (word: string) => string
 ) => [
   {
+    flex: 0.25,
+    minWidth: 200,
+    field: 'title',
+    headerName: transl('title'),
+    renderCell: ({ row }: CellType) => getTitleLinkOrText(row)
+  },
+  {
     flex: 0.2,
     minWidth: 180,
     field: 'parent',
     headerName: transl('parent'),
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row.parent || '-'}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.parentAddress?.title || '-'}</Typography>
     )
   },
   {
@@ -31,13 +38,6 @@ export const addressMasterColumns = (
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>{row.type}</Typography>
     )
-  },
-  {
-    flex: 0.25,
-    minWidth: 200,
-    field: 'title',
-    headerName: transl('title'),
-    renderCell: ({ row }: CellType) => getTitleLinkOrText(row)
   },
   {
     flex: 0.3,

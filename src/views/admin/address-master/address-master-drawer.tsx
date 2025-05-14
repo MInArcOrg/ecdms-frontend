@@ -56,12 +56,12 @@ const AddressMasterDrawer = (props: AddressMasterDrawerType) => {
     handleClose();
   };
   return (
-    <CustomSideDrawer title={isEdit ? 'edit-addressMaster' : 'create-addressMaster'} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={'address-master.'+(isEdit ? 'edit-' : 'create-')+type.toLocaleLowerCase().replace('_', ' ')} handleClose={handleClose} open={open}>
       {() =>
         addressMaster && (
           <FormPageWrapper
             edit={isEdit}
-            title="addressMaster"
+            title={'address-master.'+(isEdit ? 'edit-' : 'create-')+type.toLocaleLowerCase().replace('_', ' ')}
             getPayload={getPayload}
             validationSchema={validationSchema}
             initialValues={addressMaster}

@@ -577,6 +577,43 @@
       }
     }
   },
+  "address-master": {
+    "region": "Region",
+    "city-administration": "City Administration",
+    "zone": "Zone",
+    "city": "City",
+    "sub-city": "Sub City",
+    "woreda": "Woreda",
+    "kebele": "Kebele",
+    "other": "Other",
+    "all": "All",
+    "create-region": "Create Region",
+    "create-city-administration": "Create City Administration",
+    "create-zone": "Create Zone",
+    "create-city": "Create City",
+    "create-sub-city": "Create Sub City",
+    "create-woreda": "Create Woreda",
+    "create-kebele": "Create Kebele",
+    "create-other": "Create Other",
+    "edit-region": "Edit Region",
+    "edit-city-administration": "Edit City Administration",
+    "edit-zone": "Edit Zone",
+    "edit-city": "Edit City",
+    "edit-sub-city": "Edit Sub City",
+    "edit-woreda": "Edit Woreda",
+    "edit-kebele": "Edit Kebele",
+    "edit-other": "Edit Other",
+    "columns":{
+     "title":"Title",
+     "description":"Description",
+     "parent":"Parent",
+     "type":"Type" 
+    },
+    "form": {
+      "title": "Title",
+      "description": "Description"
+    }
+  },
   "greating": {
     "good-morning": "Good Morning",
     "good-evening": "Good Evening",
