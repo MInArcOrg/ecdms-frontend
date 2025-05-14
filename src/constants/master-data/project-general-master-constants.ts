@@ -814,7 +814,15 @@ export const projectMasterModels = {
     createTitle: 'create-scheme-status',
     editTitle: 'edit-scheme-status',
     fileType: 'SCHEME_STATUS'
-  }
+  },
+  trackType: {
+    model: 'TrackType',
+    dbModel: 'tracktype', 
+    title: 'track-types',
+    createTitle: 'create-track-type',
+    editTitle: 'edit-track-type',
+    fileType: 'TRACK_TYPE'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
