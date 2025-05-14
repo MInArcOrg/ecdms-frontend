@@ -1,23 +1,23 @@
 {
-    "forgot-password": {
-      "title": "Forgot your password?",
-      "instructions": "Enter your email and we'll send you instructions to reset your password.",
-      "input-labels": {
-        "email": "Email"
-      },
-      "submit-button": "Send Reset Link",
-      "email-sent": "If your email exists in our system, you will receive a password reset link.",
-      "remember-password": "Remember your password?",
-      "back-to-login": "Back to login",
-      "success-message": "If your email exists in our system, you will receive a password reset link.",
-      "validation-messages": {
-        "email": {
-          "email": "Please enter a valid email address.",
-          "required": "Email is required."
-        }
-      }
+  "forgot-password": {
+    "title": "Forgot your password?",
+    "instructions": "Enter your email and we'll send you instructions to reset your password.",
+    "input-labels": {
+      "email": "Email"
     },
-    "reset-password": {
+    "submit-button": "Send Reset Link",
+    "email-sent": "If your email exists in our system, you will receive a password reset link.",
+    "remember-password": "Remember your password?",
+    "back-to-login": "Back to login",
+    "success-message": "If your email exists in our system, you will receive a password reset link.",
+    "validation-messages": {
+      "email": {
+        "email": "Please enter a valid email address.",
+        "required": "Email is required."
+      }
+    }
+  },
+  "reset-password": {
     "title": "Reset your password",
     "instructions": "Enter your new password below to reset your account.",
     "input-labels": {
@@ -49,6 +49,7 @@
     "depamrtent-module": "Department Module",
     "main-modules": "Main Modules",
     "department": "Department",
+    "address": "Address",
     "user": "User",
     "user-list": "User List",
     "roles-and-permissions": "Roles",
@@ -576,9 +577,46 @@
       }
     }
   },
+  "address-master": {
+    "region": "Region",
+    "city-administration": "City Administration",
+    "zone": "Zone",
+    "city": "City",
+    "sub-city": "Sub City",
+    "woreda": "Woreda",
+    "kebele": "Kebele",
+    "other": "Other",
+    "all": "All",
+    "create-region": "Create Region",
+    "create-city-administration": "Create City Administration",
+    "create-zone": "Create Zone",
+    "create-city": "Create City",
+    "create-sub-city": "Create Sub City",
+    "create-woreda": "Create Woreda",
+    "create-kebele": "Create Kebele",
+    "create-other": "Create Other",
+    "edit-region": "Edit Region",
+    "edit-city-administration": "Edit City Administration",
+    "edit-zone": "Edit Zone",
+    "edit-city": "Edit City",
+    "edit-sub-city": "Edit Sub City",
+    "edit-woreda": "Edit Woreda",
+    "edit-kebele": "Edit Kebele",
+    "edit-other": "Edit Other",
+    "columns":{
+     "title":"Title",
+     "description":"Description",
+     "parent":"Parent",
+     "type":"Type" 
+    },
+    "form": {
+      "title": "Title",
+      "description": "Description"
+    }
+  },
   "greating": {
     "good-morning": "Good Morning",
-    "good-evening": "God Evening",
+    "good-evening": "Good Evening",
     "good-afternoon": "Good Afternoon"
   },
   "resource": {
