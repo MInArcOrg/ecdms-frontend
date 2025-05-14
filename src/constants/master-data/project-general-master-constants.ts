@@ -739,8 +739,8 @@ export const projectMasterModels = {
     model: 'CommunicationLinks',
     dbModel: 'communicationlinks',
     title: 'communication-links',
-    createTitle: 'create-communication-links',
-    editTitle: 'edit-communication-links',
+    createTitle: 'create-communication-link',
+    editTitle: 'edit-communication-link',
     fileType: 'COMMUNICATION_LINKS'
   },
   waterSource: {
@@ -823,6 +823,79 @@ export const projectMasterModels = {
     editTitle: 'edit-track-type',
     fileType: 'TRACK_TYPE'
   },
+  railwayTrackInfrastructure: {
+    model: 'RailwayTrackInfrastructure',
+    dbModel: 'railwaytrackinfrastructure',
+    title: 'railway-track-infrastructures',
+    createTitle: 'create-railway-track-infrastructure',
+    editTitle: 'edit-railway-track-infrastructure',
+    fileType: 'RAILWAY_TRACK_INFRASTRUCTURE'
+  },
+  trackGauge: {
+    model: 'TrackGauge',
+    dbModel: 'trackgauge',
+    title: 'track-gauges',
+    createTitle: 'create-track-gauge', 
+    editTitle: 'edit-track-gauge',
+    fileType: 'TRACK_GAUGE'
+  },
+  trackConditionRating: {
+    model: 'TrackConditionRating',
+    dbModel: 'trackconditionrating',
+    title: 'track-condition-ratings',
+    createTitle: 'create-track-condition-rating', 
+    editTitle: 'edit-track-condition-rating',
+    fileType: 'TRACK_CONDITION_RATING'
+  },
+  observedDefects: {
+    model: 'ObservedDefects',
+    dbModel: 'observeddefects', 
+    title: 'observed-defects',
+    createTitle: 'create-observed-defect',
+    editTitle: 'edit-observed-defect',
+    fileType: 'OBSERVED_DEFECTS'
+  },
+  compactionMethod: {
+    model: 'CompactionMethod',
+    dbModel: 'compactionmethod',
+    title: 'compaction-methods',
+    createTitle: 'create-compaction-method',
+    editTitle: 'edit-compaction-method',
+    fileType: 'COMPACTION_METHOD'
+  },
+  ballastMaterialType: {
+    model: 'BallastMaterialType', 
+    dbModel: 'ballastmaterialtype',
+    title: 'ballast-material-types',
+    createTitle: 'create-ballast-material-type',
+    editTitle: 'edit-ballast-material-type',
+    fileType: 'BALLAST_MATERIAL_TYPE'
+  },
+  ballastSource: {
+    model: 'BallastSource',
+    dbModel: 'ballastsource', 
+    title: 'ballast-sources',
+    createTitle: 'create-ballast-source',
+    editTitle: 'edit-ballast-source',
+    fileType: 'BALLAST_SOURCE'
+  },
+  ballastDegradationIndicator: {
+    model: 'BallastDegradationIndicator',
+    dbModel: 'ballastdegradationindicator',
+    title: 'ballast-degradation-indicators',
+    createTitle: 'create-ballast-degradation-indicator',
+    editTitle: 'edit-ballast-degradation-indicator',
+    fileType: 'BALLAST_DEGRADATION_INDICATOR'
+  },
+  subBallastMaterialType: {
+    model: 'SubBallastMaterialType',
+    dbModel: 'subballastmaterialtype',
+    title: 'sub-ballast-material-types',
+    createTitle: 'create-sub-ballast-material-type',
+    editTitle: 'edit-sub-ballast-material-type',
+    fileType: 'SUB_BALLAST_MATERIAL_TYPE'
+  },
+
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

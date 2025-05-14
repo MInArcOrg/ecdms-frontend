@@ -27,6 +27,6 @@
     "src/views/dashboards/.tsx",
     "src/pages/projects/[typeId]/details/[id]/other/irrigation-dam/.tsx",
     "src/pages/master-data/general/project/surface-types.tsx"
-, "src/pages/master-data/general/project/.tsx"  ],
+, "src/pages/master-data/general/project/observed-defects.tsx"  ],
   "exclude": ["node_modules"]
 }
