@@ -407,7 +407,10 @@
       "edit-runway-surface-type": "Edit Runway Surface Type",
       "scheme-status": "Scheme Status",
       "create-scheme-status": "Create Scheme Status",
-      "edit-scheme-status": "Edit Scheme Status"
+      "edit-scheme-status": "Edit Scheme Status",
+      "track-types": "Track Types",
+      "create-track-type": "Create Track Types",
+      "edit-track-type": "Edit Track Types"
     },
     "form": {
       "title": "Title",
