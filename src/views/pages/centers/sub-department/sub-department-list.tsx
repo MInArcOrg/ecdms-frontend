@@ -68,7 +68,9 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
           tableProps={{ headers: subDepartmentColumns(handleEdit, handleDelete, t, refetch) }}
           items={subDepartments || []}
           onPaginationChange={handlePageChange}
-          ItemViewComponent={({ data }) => <DepartmentCard department={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />}
+          ItemViewComponent={({ data }) => (
+            <DepartmentCard department={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
+          )}
           createActionConfig={{
             ...defaultCreateActionConfig,
             onClick: toggleDrawer,

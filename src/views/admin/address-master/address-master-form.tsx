@@ -14,8 +14,7 @@ const AddressMasterForm: React.FC<AddressMasterFormProps> = ({ type }) => {
   const { t: transl } = useTranslation();
   return (
     <>
-      {
-        !type &&
+      {!type && (
         <CustomSelect
           size="small"
           name="type"
@@ -26,16 +25,9 @@ const AddressMasterForm: React.FC<AddressMasterFormProps> = ({ type }) => {
           }))}
           sx={{ mb: 2 }}
         />
-      }
+      )}
 
-      <CustomTextBox
-        fullWidth
-        label={transl('title')}
-        placeholder={transl('title')}
-        name="title"
-        size="small"
-        sx={{ mb: 2 }}
-      />
+      <CustomTextBox fullWidth label={transl('title')} placeholder={transl('title')} name="title" size="small" sx={{ mb: 2 }} />
       <CustomTextBox
         fullWidth
         label={transl('description')}
