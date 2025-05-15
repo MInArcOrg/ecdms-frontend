@@ -11,6 +11,7 @@ import ItemsListing from 'src/views/shared/listing';
 import SubDepartmentDrawer from './sub-department-drawer';
 import { subDepartmentColumns } from './sub-department-row';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
+import DepartmentCard from './sub-department-card';
 
 function SubDepartmentList({ parentDepartment }: { parentDepartment: Department }) {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -67,6 +68,7 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
           tableProps={{ headers: subDepartmentColumns(handleEdit, handleDelete, t, refetch) }}
           items={subDepartments || []}
           onPaginationChange={handlePageChange}
+          ItemViewComponent={({ data }) => <DepartmentCard department={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />}
           createActionConfig={{
             ...defaultCreateActionConfig,
             onClick: toggleDrawer,
