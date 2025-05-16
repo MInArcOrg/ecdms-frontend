@@ -817,7 +817,7 @@ export const projectMasterModels = {
   },
   trackType: {
     model: 'TrackType',
-    dbModel: 'tracktype', 
+    dbModel: 'tracktype',
     title: 'track-types',
     createTitle: 'create-track-type',
     editTitle: 'edit-track-type',
@@ -835,7 +835,7 @@ export const projectMasterModels = {
     model: 'TrackGauge',
     dbModel: 'trackgauge',
     title: 'track-gauges',
-    createTitle: 'create-track-gauge', 
+    createTitle: 'create-track-gauge',
     editTitle: 'edit-track-gauge',
     fileType: 'TRACK_GAUGE'
   },
@@ -843,13 +843,13 @@ export const projectMasterModels = {
     model: 'TrackConditionRating',
     dbModel: 'trackconditionrating',
     title: 'track-condition-ratings',
-    createTitle: 'create-track-condition-rating', 
+    createTitle: 'create-track-condition-rating',
     editTitle: 'edit-track-condition-rating',
     fileType: 'TRACK_CONDITION_RATING'
   },
   observedDefects: {
     model: 'ObservedDefects',
-    dbModel: 'observeddefects', 
+    dbModel: 'observeddefects',
     title: 'observed-defects',
     createTitle: 'create-observed-defect',
     editTitle: 'edit-observed-defect',
@@ -864,7 +864,7 @@ export const projectMasterModels = {
     fileType: 'COMPACTION_METHOD'
   },
   ballastMaterialType: {
-    model: 'BallastMaterialType', 
+    model: 'BallastMaterialType',
     dbModel: 'ballastmaterialtype',
     title: 'ballast-material-types',
     createTitle: 'create-ballast-material-type',
@@ -873,7 +873,7 @@ export const projectMasterModels = {
   },
   ballastSource: {
     model: 'BallastSource',
-    dbModel: 'ballastsource', 
+    dbModel: 'ballastsource',
     title: 'ballast-sources',
     createTitle: 'create-ballast-source',
     editTitle: 'edit-ballast-source',
@@ -894,8 +894,7 @@ export const projectMasterModels = {
     createTitle: 'create-sub-ballast-material-type',
     editTitle: 'edit-sub-ballast-material-type',
     fileType: 'SUB_BALLAST_MATERIAL_TYPE'
-  },
-
+  }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

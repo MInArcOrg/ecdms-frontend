@@ -502,6 +502,9 @@
       "documents": "Documents",
       "structure": "Structure"
     },
+    "professional": {
+      "title": "Professionals"
+    },
     "user": {
       "form": {
         "first_name": "First Name",
@@ -639,11 +642,11 @@
     "edit-woreda": "Edit Woreda",
     "edit-kebele": "Edit Kebele",
     "edit-other": "Edit Other",
-    "columns":{
-     "title":"Title",
-     "description":"Description",
-     "parent":"Parent",
-     "type":"Type" 
+    "columns": {
+      "title": "Title",
+      "description": "Description",
+      "parent": "Parent",
+      "type": "Type"
     },
     "form": {
       "title": "Title",
@@ -3418,6 +3421,10 @@
     "km2": "Square Kilometer",
     "currency": "Currency",
     "km": "Kilometers",
+    "status": {
+      "active": "Active",
+      "inactive": "InActive"
+    },
     "table-columns": {
       "created-at": "Created At",
       "updated-at": "update At",

@@ -26,7 +26,6 @@ const AddressMasterDrawer = (props: AddressMasterDrawerType) => {
   // ** Props
   const { open, toggle, refetch, addressMaster, type, parentAddressMaster } = props;
 
-
   const isEdit = addressMaster?.id ? true : false;
   const createAddressMaster = async (body: IApiPayload<AddressMaster>) => {
     return await addressMasterApiService.create(body);
@@ -56,12 +55,16 @@ const AddressMasterDrawer = (props: AddressMasterDrawerType) => {
     handleClose();
   };
   return (
-    <CustomSideDrawer title={'address-master.'+(isEdit ? 'edit-' : 'create-')+type.toLocaleLowerCase().replace('_', ' ')} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={'address-master.' + (isEdit ? 'edit-' : 'create-') + type.toLocaleLowerCase().replace('_', ' ')}
+      handleClose={handleClose}
+      open={open}
+    >
       {() =>
         addressMaster && (
           <FormPageWrapper
             edit={isEdit}
-            title={'address-master.'+(isEdit ? 'edit-' : 'create-')+type.toLocaleLowerCase().replace('_', ' ')}
+            title={'address-master.' + (isEdit ? 'edit-' : 'create-') + type.toLocaleLowerCase().replace('_', ' ')}
             getPayload={getPayload}
             validationSchema={validationSchema}
             initialValues={addressMaster}

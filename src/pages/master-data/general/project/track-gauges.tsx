@@ -12,7 +12,6 @@ function GeneralProjectMasterData() {
         </Fragment>
       </GeneralMasterLayout>
     </div>
-    
   );
 }
 

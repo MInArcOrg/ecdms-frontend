@@ -6,6 +6,7 @@ import userApiService from 'src/services/admin/user-service';
 import User from 'src/types/admin/user';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import UserCard from 'src/views/admin/user/list/user-card';
 import UserDrawer from 'src/views/admin/user/list/user-drawer';
 import { userColumns } from 'src/views/admin/user/list/user-row-column';
 import ItemsListing from 'src/views/shared/listing';
@@ -50,6 +51,7 @@ const UserList = ({}) => {
         onCreateClick={toggleUserDrawer}
         fetchDataFunction={fetchUsers}
         tableProps={{ headers: userColumns(handleEdit, handleDelete, t, refetch) }}
+        ItemViewComponent={({ data }) => <UserCard user={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />}
         items={users || []}
         createActionConfig={{
           ...defaultCreateActionConfig,
