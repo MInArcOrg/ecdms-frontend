@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
