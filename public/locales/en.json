@@ -3554,15 +3554,14 @@
       "create-stakeholder-certificate": "Create Stakeholder Certificate",
       "edit-stakeholder-certificate": "Edit Stakeholder Certificate",
       "form": {
-        "title": "Certificate Title",
-        "certificate_no": "Certificate Number",
-        "date_of_issue": "Date of Issue",
-        "expiry_date": "Expiry Date",
-        "initial_certificate_no": "Initial Certificate Number",
-        "initial_certificate_issue_date": "Initial Certificate Issue Date",
-        "description": "Description",
-        "number-of-days": "Number of Days",
-        "reason": "Reason"
+        "title": "Title",
+        "issue-date": "Issue Date",
+        "expire-date": "Expire Date",
+        "type": "Type",
+        "scope": "Scope",
+        "certifying-body": "Certifying Body",
+        "certification-number": "Certfication Number",
+        "remark": "Remark"
       }
     },
     "stakeholder-training": {
