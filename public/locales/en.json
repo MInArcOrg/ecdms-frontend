@@ -3564,6 +3564,20 @@
         "remark": "Remark"
       }
     },
+    "stakeholder-upgrade": {
+      "title": "Stakholder Upgrades",
+      "create": "Create Stakeholder Upgrade",
+      "edit": "Edit Stakeholder Upgrade",
+      "details": "Stakeholder Upgrade Details",
+      "form": {
+        "stakeholder-id": "Stakeholder_id",
+        "upgrade-type": "Upgrade Type",
+        "previous-level": "Previous Level",
+        "upgraded-level": "Upgraded Level",
+        "ownership-percentage": "Ownership Percentage",
+        "description": "Description"
+      }
+    },
     "stakeholder-training": {
       "title": "Stakeholder Training",
       "create-stakeholder-training": "Create Stakeholder Training",
