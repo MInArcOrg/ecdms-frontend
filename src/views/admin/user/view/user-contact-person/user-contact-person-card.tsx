@@ -1,4 +1,4 @@
-import { Box, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
+import { Box, CardActions, Divider, Typography } from '@mui/material';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import { UserContactPerson } from 'src/types/admin/user';
