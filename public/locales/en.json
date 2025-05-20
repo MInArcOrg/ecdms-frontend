@@ -3404,6 +3404,7 @@
     "meters": "Meters",
     "inches": "Inches",
     "created-at": "Created At",
+    "updated-at": "update At",
     "years": "Years",
     "kwh-per-m2": "kWh/m²",
     "mwh": "MWh",
@@ -3577,6 +3578,26 @@
         "ownership-percentage": "Ownership Percentage",
         "description": "Description"
       }
+    },
+    "stakeholder-vehicle": {
+      "title": "Vehicle Details",
+      "form": {
+        "vehicle-name": "Vehicle Name",
+        "plate-number": "Plate Number",
+        "brand-name": "Brand Name",
+        "model": "Model",
+        "year": "Year",
+        "chassis-number": "Chassis Number",
+        "engine-number": "Engine Number",
+        "capacity": "Capacity",
+        "purpose": "Purpose",
+        "quantity": "Quantity",
+        "current-situation": "Current Situation",
+        "location": "Location"
+      },
+      "details": "Vehicle Details",
+      "create": "Create Vehicle",
+      "edit": "Edit Vehicle"
     },
     "stakeholder-training": {
       "title": "Stakeholder Training",
