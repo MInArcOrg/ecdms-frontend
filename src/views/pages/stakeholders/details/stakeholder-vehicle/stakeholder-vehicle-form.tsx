@@ -16,13 +16,31 @@ const VehicleForm: React.FC<VehicleFormProps> = ({ formik }) => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={6}>
-        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.vehicle-name')} name="vehicle_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox
+          fullWidth
+          label={t('stakeholder.stakeholder-vehicle.form.vehicle-name')}
+          name="vehicle_name"
+          size="small"
+          sx={{ mb: 2 }}
+        />
       </Grid>
       <Grid item xs={6}>
-        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.plate-number')} name="plate_number" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox
+          fullWidth
+          label={t('stakeholder.stakeholder-vehicle.form.plate-number')}
+          name="plate_number"
+          size="small"
+          sx={{ mb: 2 }}
+        />
       </Grid>
       <Grid item xs={6}>
-        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.brand-name')} name="brand_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox
+          fullWidth
+          label={t('stakeholder.stakeholder-vehicle.form.brand-name')}
+          name="brand_name"
+          size="small"
+          sx={{ mb: 2 }}
+        />
       </Grid>
       <Grid item xs={6}>
         <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.model')} name="model" size="small" sx={{ mb: 2 }} />
@@ -31,10 +49,22 @@ const VehicleForm: React.FC<VehicleFormProps> = ({ formik }) => {
         <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.year')} name="year" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={6}>
-        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.chassis-number')} name="chassis_number" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox
+          fullWidth
+          label={t('stakeholder.stakeholder-vehicle.form.chassis-number')}
+          name="chassis_number"
+          size="small"
+          sx={{ mb: 2 }}
+        />
       </Grid>
       <Grid item xs={6}>
-        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.engine-number')} name="engine_number" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox
+          fullWidth
+          label={t('stakeholder.stakeholder-vehicle.form.engine-number')}
+          name="engine_number"
+          size="small"
+          sx={{ mb: 2 }}
+        />
       </Grid>
       <Grid item xs={6}>
         <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.capacity')} name="capacity" size="small" sx={{ mb: 2 }} />
@@ -46,7 +76,13 @@ const VehicleForm: React.FC<VehicleFormProps> = ({ formik }) => {
         <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.quantity')} name="quantity" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={6}>
-        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.current-situation')} name="current_situation" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox
+          fullWidth
+          label={t('stakeholder.stakeholder-vehicle.form.current-situation')}
+          name="current_situation"
+          size="small"
+          sx={{ mb: 2 }}
+        />
       </Grid>
       <Grid item xs={6}>
         <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.location')} name="location" size="small" sx={{ mb: 2 }} />

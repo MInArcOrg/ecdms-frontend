@@ -65,8 +65,7 @@ function StakeholderCertificateList({ stakeholderId }: { type: string; stakehold
         ItemViewComponent={({ data }) => (
           <StakeholderCertificateCard stakeholderCertificate={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
-        tableProps={{ headers: stakeholderCertificateColumns(() => { }, handleEdit, handleDelete, transl, refetch) }}
-
+        tableProps={{ headers: stakeholderCertificateColumns(() => {}, handleEdit, handleDelete, transl, refetch) }}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,

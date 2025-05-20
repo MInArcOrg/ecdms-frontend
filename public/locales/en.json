@@ -1471,6 +1471,7 @@
         "project-expense": "Project Expense"
       }
     },
+
     "resource": {
       "title": "Project Resource",
       "edit-project-resource": "Edit Project Resource",
@@ -3562,6 +3563,23 @@
         "scope": "Scope",
         "certifying-body": "Certifying Body",
         "certification-number": "Certfication Number",
+        "remark": "Remark"
+      }
+    },
+    "stakeholder-license": {
+      "title": "Stakeholder Licenses",
+      "detail": "Stakeholder License Detail",
+      "create": "Create Stakeholder License",
+      "edit": "Edit Stakeholder License",
+      "form": {
+        "license-type": "License Type",
+        "license-category": "License Category",
+        "license-name": "License Name",
+        "license-scope": "License Scope",
+        "licensing-body": "Licensing Body",
+        "license-number": "License Number",
+        "issue-date": "Issue Date",
+        "expire-date": "Expire Date",
         "remark": "Remark"
       }
     },

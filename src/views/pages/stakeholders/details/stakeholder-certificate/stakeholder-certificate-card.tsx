@@ -33,9 +33,9 @@ const StakeholderCertificateCard = ({
             model="Certificate"
             model_id={stakeholderCertificate.id}
             refetchModel={refetch}
-            resubmit={() => { }}
+            resubmit={() => {}}
             title={stakeholderCertificate.title}
-            postAction={() => { }}
+            postAction={() => {}}
           />
           <RowOptions
             onEdit={() => onEdit(stakeholderCertificate)}
@@ -67,12 +67,14 @@ const StakeholderCertificateCard = ({
           <Icon icon="mdi:calendar-blank" fontSize={20} color="action" />
           {stakeholderCertificate.issue_date && (
             <Typography variant="body2" color="textSecondary" ml={1} mr={3}>
-              {t('stakeholder.stakeholder-certificate.form.issue-date')}: {getDynamicDate(i18n, stakeholderCertificate?.issue_date as string).toDateString()}
+              {t('stakeholder.stakeholder-certificate.form.issue-date')}:{' '}
+              {getDynamicDate(i18n, stakeholderCertificate?.issue_date as string).toDateString()}
             </Typography>
           )}
           {stakeholderCertificate.expire_date && (
             <Typography variant="body2" color="textSecondary">
-              {t('stakeholder.stakeholder-certificate.form.expire-date')}: {getDynamicDate(i18n, stakeholderCertificate?.expire_date as string).toDateString()}
+              {t('stakeholder.stakeholder-certificate.form.expire-date')}:{' '}
+              {getDynamicDate(i18n, stakeholderCertificate?.expire_date as string).toDateString()}
             </Typography>
           )}
         </Box>

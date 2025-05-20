@@ -30,8 +30,6 @@ const StakeholderCertificateForm: React.FC<StakeholderCertificateFormProps> = ({
         />
       </Grid>
 
-
-
       {/* Date of Issue */}
       <Grid item xs={12}>
         <CustomDynamicDatePicker
@@ -44,8 +42,6 @@ const StakeholderCertificateForm: React.FC<StakeholderCertificateFormProps> = ({
           customInput={<CustomTextBox name="issue_date" />}
         />
       </Grid>
-
-
 
       {/* Type Field */}
       <Grid item xs={12}>
