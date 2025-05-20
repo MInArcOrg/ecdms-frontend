@@ -39,6 +39,7 @@ export const projectMasterModels = {
     editTitle: 'edit-abutment-type',
     fileType: 'ABUTMENT_TYPE'
   },
+
   mobileNetworkType: {
     model: 'MobileNetworkType',
     dbModel: 'mobilenetworktype',
@@ -222,6 +223,46 @@ export const projectMasterModels = {
     createTitle: 'create-ground-water-impact',
     editTitle: 'edit-ground-water-impact',
     fileType: 'GROUND_WATER_IMPACT'
+  },
+  trackMaintenanceFrequency: {
+    model: 'TrackMaintenanceFrequency',
+    dbModel: 'trackmaintenancefrequency',
+    title: 'track-maintenance-frequencies',
+    createTitle: 'create-track-maintenance-frequency',
+    editTitle: 'edit-track-maintenance-frequency',
+    fileType: 'TRACK_MAINTENANCE_FREQUENCY'
+  },
+  scheduledMaintenanceActivity: {
+    model: 'ScheduledMaintenanceActivity',
+    dbModel: 'scheduledmaintenanceactivity',
+    title: 'scheduled-maintenance-activities',
+    createTitle: 'create-scheduled-maintenance-activity',
+    editTitle: 'edit-scheduled-maintenance-activity',
+    fileType: 'SCHEDULED_MAINTENANCE_ACTIVITY'
+  },
+  rehabilitationRenewalMethodUsed: {
+    model: 'RehabilitationRenewalMethodUsed',
+    dbModel: 'rehabilitationrenewalmethodUsed',
+    title: 'rehabilitation-renewal-method-used',
+    createTitle: 'create-rehabilitation-renewal-method-used',
+    editTitle: 'edit-rehabilitation-renewal-method-used',
+    fileType: 'REHABILITATION_RENEWAL_METHOD_USED'
+  },
+  trackInspectionFrequency: {
+    model: 'TrackInspectionFrequency',
+    dbModel: 'trackinspectionfrequency',
+    title: 'track-inspection-frequencies',
+    createTitle: 'create-track-inspection-frequency',
+    editTitle: 'edit-track-inspection-frequency',
+    fileType: 'TRACK_INSPECTION_FREQUENCY'
+  },
+  trackSafetyMeasure: {
+    model: 'TrackSafetyMeasure',
+    dbModel: 'tracksafetymeasure',
+    title: 'track-safety-measures',
+    createTitle: 'create-track-safety-measure',
+    editTitle: 'edit-track-safety-measure',
+    fileType: 'TRACK_SAFETY_MEASURE'
   },
   slopeStability: {
     model: 'SlopeStability',

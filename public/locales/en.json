@@ -443,7 +443,22 @@
       "edit-sub-ballast-material-type": "Edit Sub Ballast Material Types",
       "distribution-line-materials": "Distribution Line Materials",
       "create-distribution-line-material": "Create Distribution Line Materials",
-      "edit-distribution-line-material": "Edit Distribution Line Materials"
+      "edit-distribution-line-material": "Edit Distribution Line Materials",
+      "track-maintenance-frequencies": "Track Maintenance Frequencies",
+      "create-track-maintenance-frequency": "Create Track Maintenance Frequency",
+      "edit-track-maintenance-frequency": "Edit Track Maintenance Frequency",
+      "scheduled-maintenance-activities": "Scheduled Maintenance Activities",
+      "create-scheduled-maintenance-activity": "Create Scheduled Maintenance Activity",
+      "edit-scheduled-maintenance-activity": "Edit Scheduled Maintenance Activity",
+      "rehabilitation-renewal-method-used": "Rehabilitation Renewal Methods Used",
+      "create-rehabilitation-renewal-method-used": "Create Rehabilitation Renewal Method Used",
+      "edit-rehabilitation-renewal-method-used": "Edit Rehabilitation Renewal Method Used",
+      "track-inspection-frequencies": "Track Inspection Frequencies",
+      "create-track-inspection-frequency": "Create Track Inspection Frequency",
+      "edit-track-inspection-frequency": "Edit Track Inspection Frequency",
+      "track-safety-measures": "Track Safety Measures",
+      "create-track-safety-measure": "Create Track Safety Measure",
+      "edit-track-safety-measure": "Edit Track Safety Measure"
     },
     "form": {
       "title": "Title",
