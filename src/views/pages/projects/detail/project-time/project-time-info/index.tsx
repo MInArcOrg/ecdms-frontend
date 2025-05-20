@@ -38,7 +38,6 @@ const ProjectTimeComponent: React.FC<ProjectTimeComponentProps> = ({ projectId }
     await projectTimeApiService.delete(projectTimeId);
     refetch();
   };
-  console.log('project time updated', projectTime);
   return isLoading ? (
     <LoadingPlaceholder />
   ) : (

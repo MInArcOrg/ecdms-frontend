@@ -17,32 +17,36 @@ const UserContactPersonCard: React.FC<UserContactPersonCardProps> = ({ contactPe
   const { t } = useTranslation();
 
   return (
-    <SharedItemViewCard createdAt={contactPerson.created_at} t={t} actions={
-      <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <ModelAction
-          model="ContactPerson"
-          model_id={contactPerson?.id || ''}
-          refetchModel={refetch}
-          resubmit={() => refetch()}
-          title=""
-          postAction={() => refetch()}
-        />
-        <RowOptions
-          deletePermissionRule={{
-            action: 'delete',
-            subject: 'contactperson'
-          }}
-          editPermissionRule={{
-            action: 'edit',
-            subject: 'contactperson'
-          }}
-          onEdit={() => onEdit(contactPerson)}
-          onDelete={() => onDelete(contactPerson?.id || '')}
-          item={contactPerson}
-          options={[]}
-        />
-      </CardActions>
-    }>
+    <SharedItemViewCard
+      createdAt={contactPerson.created_at}
+      t={t}
+      actions={
+        <CardActions sx={{ justifyContent: 'flex-end' }}>
+          <ModelAction
+            model="ContactPerson"
+            model_id={contactPerson?.id || ''}
+            refetchModel={refetch}
+            resubmit={() => refetch()}
+            title=""
+            postAction={() => refetch()}
+          />
+          <RowOptions
+            deletePermissionRule={{
+              action: 'delete',
+              subject: 'contactperson'
+            }}
+            editPermissionRule={{
+              action: 'edit',
+              subject: 'contactperson'
+            }}
+            onEdit={() => onEdit(contactPerson)}
+            onDelete={() => onDelete(contactPerson?.id || '')}
+            item={contactPerson}
+            options={[]}
+          />
+        </CardActions>
+      }
+    >
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
         <Typography variant="h5" fontWeight="bold">
           {`${contactPerson.first_name} ${contactPerson.middle_name} ${contactPerson.last_name}`}

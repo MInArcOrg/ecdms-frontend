@@ -62,6 +62,7 @@ export const uploadableProjectFileTypes = {
   stakeholderContactPerson: 'STAKEHOLDER_CONTACT_PERSON',
   training: 'TRAINING',
   regulation: 'REGULATION',
+  license: 'LICENSE',
   other: {
     buildingDimensionDetail: 'BUILDING_DIMENSION_DETAIL',
     port: 'PORT',

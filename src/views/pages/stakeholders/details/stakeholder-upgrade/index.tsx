@@ -74,7 +74,10 @@ const StakeholderUpgradeList: React.FC<StakeholderUpgradeListProps> = ({ stakeho
     { title: t('stakeholder.stakeholder-upgrade.form.upgrade-type'), value: upgrade.upgrade_type || 'N/A' },
     { title: t('stakeholder.stakeholder-upgrade.form.previous-level'), value: upgrade.previous_level || 'N/A' },
     { title: t('stakeholder.stakeholder-upgrade.form.upgraded-level'), value: upgrade.upgraded_level || 'N/A' },
-    { title: t('stakeholder.stakeholder-upgrade.form.ownership-percentage'), value: upgrade.ownership_percentage !== undefined ? upgrade.ownership_percentage.toString() : 'N/A' },
+    {
+      title: t('stakeholder.stakeholder-upgrade.form.ownership-percentage'),
+      value: upgrade.ownership_percentage !== undefined ? upgrade.ownership_percentage.toString() : 'N/A'
+    },
     { title: t('stakeholder.stakeholder-upgrade.form.description'), value: upgrade.description || 'N/A' },
     {
       title: t('common.table-columns.created-at'),
