@@ -243,7 +243,7 @@ export const projectMasterModels = {
   rehabilitationRenewalMethodUsed: {
     model: 'RehabilitationRenewalMethodUsed',
     dbModel: 'rehabilitationrenewalmethodUsed',
-    title: 'rehabilitation-renewal-methods',
+    title: 'rehabilitation-renewal-method-used',
     createTitle: 'create-rehabilitation-renewal-method-used',
     editTitle: 'edit-rehabilitation-renewal-method-used',
     fileType: 'REHABILITATION_RENEWAL_METHOD_USED'
