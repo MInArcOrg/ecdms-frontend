@@ -13,7 +13,10 @@ export const projectMenuIds = {
   broadcastingDataSystems: 'BROADCASTING_DATA_SYSTEMS',
   powerGeneration: 'POWER_GENERATION',
   powerInfrastructure: 'POWER_INFRASTRUCTURE',
-  regulation: 'REGULATION'
+  regulation: 'REGULATION',
+  railwayTrackInfrastructure: 'RAILWAY_TRACK_INFRASTRUCTURE',
+  railwayOperationalSystems: 'RAILWAY_OPERATIONAL_SYSTEMS',
+  railwayFacilitiesAndStations: 'RAILWAY_FACILITIES_AND_STATIONS'
 };
 
 const menuItems = (id: string, typeId: string): DetailMenuItem[] => {
@@ -88,6 +91,24 @@ const menuItems = (id: string, typeId: string): DetailMenuItem[] => {
       title: 'project.navigation.menu.regulation',
       path: `${baseUrl}/regulation`,
       type: projectTypesMaster.eletric
+    },
+    {
+      id: projectMenuIds.railwayTrackInfrastructure,
+      title: 'project.navigation.menu.railway-track-infrastructure',
+      path: `${baseUrl}/railway-track-infrastructure`,
+      type: projectTypesMaster.railway
+    },
+    {
+      id: projectMenuIds.railwayOperationalSystems,
+      title: 'project.navigation.menu.railway-operational-systems',
+      path: `${baseUrl}/railway-operational-systems`,
+      type: projectTypesMaster.railway
+    },
+    {
+      id: projectMenuIds.railwayFacilitiesAndStations,
+      title: 'project.navigation.menu.railway-facilities-and-stations',
+      path: `${baseUrl}/railway-facilities-and-stations`,
+      type: projectTypesMaster.railway
     }
   ];
 };
