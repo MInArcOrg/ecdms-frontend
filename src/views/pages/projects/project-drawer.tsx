@@ -62,8 +62,9 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
     handleClose();
   };
   return (
-    <CustomSideDrawer           model={'project'}
-    title={`project.${isEdit ? 'edit-project' : 'create-project'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      model={'project'}
+      title={`project.${isEdit ? 'edit-project' : 'create-project'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}

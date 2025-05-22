@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, BoxProps, Drawer, IconButton, styled, Typography, Tabs, Tab } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import Icon from 'src/@core/components/icon';
+import DataCollectionGuideList from '../data-collection-guide';
 
 interface CustomSideDrawerProps {
   open: boolean;
@@ -9,7 +10,7 @@ interface CustomSideDrawerProps {
   title: string;
   children: () => JSX.Element;
   width?: number; // Optional width prop
-  model?:string;
+  model?: string;
 }
 
 const Header = styled(Box)<BoxProps>(({ theme }) => ({
@@ -68,7 +69,7 @@ const CustomSideDrawer: React.FC<CustomSideDrawerProps> = ({ open, handleClose, 
               </Tabs>
               <Box sx={{ mt: 2 }}>
                 {tab === 0 && <Box>{children()}</Box>}
-                {tab === 1 && <Box>{/* Information content goes here */}Information about the model: {model}</Box>}
+                {tab === 1 && <DataCollectionGuideList model={model} />}
               </Box>
             </>
           ) : (

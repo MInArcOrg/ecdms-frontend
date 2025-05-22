@@ -1,50 +1,4209 @@
 {
+  "forgot-password": {
+    "title": "Forgot your password?",
+    "instructions": "Enter your email and we'll send you instructions to reset your password.",
+    "input-labels": {
+      "email": "Email"
+    },
+    "submit-button": "Send Reset Link",
+    "email-sent": "If your email exists in our system, you will receive a password reset link.",
+    "remember-password": "Remember your password?",
+    "back-to-login": "Back to login",
+    "success-message": "If your email exists in our system, you will receive a password reset link.",
+    "validation-messages": {
+      "email": {
+        "email": "Please enter a valid email address.",
+        "required": "Email is required."
+      }
+    }
+  },
+  "reset-password": {
+    "title": "Reset your password",
+    "instructions": "Enter your new password below to reset your account.",
+    "input-labels": {
+      "password": "New Password",
+      "passwordConfirm": "Confirm New Password"
+    },
+    "submit-button": "Reset Password",
+    "password-reset": "Your password has been reset successfully.",
+    "remember-password": "Remember your password?",
+    "back-to-login": "Back to login",
+    "success-message": "Your password has been reset successfully. Please log in.",
+    "error": {
+      "no-token": "Reset token is missing or invalid."
+    },
+    "validation-messages": {
+      "password": {
+        "min": "Password must be at least 8 characters.",
+        "required": "Password is required."
+      },
+      "passwordConfirm": {
+        "match": "Passwords must match.",
+        "required": "Please confirm your password."
+      }
+    }
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "admin-module": "Admin Module",
+    "depamrtent-module": "Department Module",
+    "main-modules": "Main Modules",
+    "department": "Department",
+    "address": "Address",
+    "user": "User",
+    "user-list": "User List",
+    "roles-and-permissions": "Roles",
+    "roles": "Roles",
+    "permissions": "Permissions",
+    "resources": "Resources",
+    "stakeholder": "Stakeholder",
+    "master-data": {
+      "master-data": "Master Data",
+      "stakeholder": "Stakeholder",
+      "project": "Project",
+      "resource": "Resource",
+      "document": "Document",
+      "general": "General",
+      "infrastructure": "Infrastructure"
+    }
+  },
+  "master-data": {
+    "master-data": "Master Data",
+    "master-type": "Type",
+    "stakeholder": "Stakeholder",
+    "project": "Project",
+    "document": "Document",
+    "resource": "Resource",
+    "general-master": {
+      "ownerships": "Ownership Types",
+      "create-ownerships": "Create Ownership Type",
+      "edit-ownerships": "Edit Ownership Type",
+      "business-fields": "Business Fields",
+      "create-business-fields": "Create Business Field",
+      "edit-business-fields": "Edit Business Field",
+      "study-levels": "Study Levels",
+      "create-study-levels": "Create Study Level",
+      "edit-study-levels": "Edit Study Level",
+      "study-programs": "Study Programs",
+      "create-study-programs": "Create Study Program",
+      "edit-study-programs": "Edit Study Program",
+      "study-fields": "Study Fields",
+      "create-study-fields": "Create Study Field",
+      "edit-study-fields": "Edit Study Field",
+      "age-levels": "Age Levels",
+      "create-age-levels": "Create Age Level",
+      "edit-age-levels": "Edit Age Level",
+      "work-experiences": "Work Experiences",
+      "create-work-experiences": "Create Work Experience",
+      "edit-work-experiences": "Edit Work Experience",
+      "project-progress-statuses": "Project Progress Status",
+      "create-project-progress-statuses": "Create Project Progress Status",
+      "edit-project-progress-statuses": "Edit Project Progress Status",
+      "stakeholder-services": "Construction Related Service",
+      "edit-stakeholder-services": "Edit Construction Related Service",
+      "create-stakeholder-services": "Create Construction Related Service",
+      "pedestrian-facilities": "Pedestrian Facilities",
+      "create-pedestrian-facility": "Create Pedestrian Facility",
+      "edit-pedestrian-facility": "Edit Pedestrian Facility",
+      "road-length-types": "Road Length Types",
+      "create-road-length-type": "Create Road Length Type",
+      "edit-road-length-type": "Edit Road Length Type",
+      "endwall-type-inlets": "Endwall Types Inlets",
+      "create-endwall-type-inlet": "Create Endwall Types Inlet",
+      "edit-endwall-type-inlet": "Edit Endwall Types Inlet",
+      "area-topographies": "Area Topographies",
+      "create-area-topography": "Create Area Topography",
+      "edit-area-topography": "Edit Area Topography",
+      "soil-types": "Soil Types",
+      "create-soil-type": "Create Soil Type",
+      "edit-soil-type": "Edit Soil Type",
+      "guard-rail-types": "Guard Rail Types",
+      "create-guard-rail-type": "Create Guard Rail Type",
+      "edit-guard-rail-type": "Edit Guard Rail Type",
+      "bridge-structure-types": "Bridge Structure Types",
+      "create-bridge-structure-type": "Create Bridge Structure Type",
+      "edit-bridge-structure-type": "Edit Bridge Structure Type",
+      "span-support-types": "Span Support Types",
+      "create-span-support-type": "Create Span Support Type",
+      "edit-span-support-type": "Edit Span Support Type",
+      "damage-conditions": "Damage Conditions",
+      "create-damage-condition": "Create Damage Conditions",
+      "edit-damage-condition": "Edit Damage Conditions",
+      "hydrology-defects": "Hydrology Defects",
+      "create-hydrology-defect": "Create Hydrology Defect",
+      "edit-hydrology-defect": "Edit Hydrology Defect",
+      "count-types": "Count Types",
+      "create-count-type": "Create Count Type",
+      "edit-count-type": "Edit Count Type",
+      "road-safety-features": "Road Safety Features",
+      "create-road-safety-feature": "Create Road Safety Feature",
+      "edit-road-safety-feature": "Edit Road Safety Feature",
+      "current-conditions": "Current Conditions",
+      "create-current-condition": "Create Current Condition",
+      "edit-current-condition": "Edit Current Condition",
+      "ground-water-impacts": "Ground Water Impacts",
+      "create-ground-water-impact": "Create Ground Water Impact",
+      "edit-ground-water-impact": "Edit Ground Water Impact",
+      "maintenance-types": "Maintenance Types",
+      "create-maintenance-type": "Create Maintenance Type",
+      "edit-maintenance-type": "Edit Maintenance Type",
+      "slope-stabilities": "Slope Stabilities",
+      "create-slope-stability": "Create Slope Stability",
+      "edit-slope-stability": "Edit Slope Stability",
+      "drainage-types": "Drainage Types",
+      "create-drainage-type": "Create Drainage Type",
+      "edit-drainage-type": "Edit Drainage Type",
+      "maintenance-frequencies": "Maintenance Frequencies",
+      "edit-maintenance-frequency": "Create Maintenance Frequency",
+      "create-maintenance-frequency": "Edit Maintenance Frequency",
+      "maintenance-frequency-types": "Maintenance Frequency Types",
+      "create-maintenance-frequency-type": "Create Maintenance Frequency Type",
+      "edit-maintenance-frequency-type": "Edit Maintenance Frequency Type",
+      "drainage-conditions": "Drainage Conditions",
+      "create-drainage-condition": "Create Drainage Condition",
+      "edit-drainage-condition": "Edit Drainage Condition",
+      "assessment-conditions": "Assessment Conditions",
+      "create-assessment-condition": "Create Assessment Conditions",
+      "edit-assessment-condition": "Edit Assessment Conditions",
+      "severity-levels": "Severity Levels",
+      "create-severity-level": "Create Severity Level",
+      "edit-severity-level": "Edit Severity Level",
+      "hazard-types": "Hazard Types",
+      "create-hazard-type": "Create Hazard Type",
+      "edit-hazard-type": "Edit Hazard Type",
+      "suggested-repairs": "Suggested Repairs",
+      "create-suggested-repairs": "Create Suggested Repairs",
+      "edit-suggested-repairs": "Edit Suggested Repairs",
+      "recommended-action-urgencies": "Recommended Action Urgencies",
+      "edit-recommended-action-urgency": "Edit Recommended Action Urgency",
+      "create-recommended-action-urgency": "Create Recommended Action Urgency",
+      "potential-impacts": "Potential Impacts",
+      "create-potential-impact": "Create Potential Impacts",
+      "edit-potential-impact": "Edit Potential Impacts",
+      "risk-levels": "Risk Levels",
+      "create-risk-level": "Create Risk Level",
+      "edit-risk-level": "Edit Risk Level",
+      "incident-types": "Incident Types",
+      "create-incident-type": "Create Incident Type",
+      "edit-incident-type": "Edit Incident Type",
+      "incident-times": "Incident Times",
+      "create-incident-time": "Create Incident Time",
+      "edit-incident-time": "Edit Incident Time",
+      "abutment-types": "Abutment Types",
+      "create-abutment-type": "Create Abutment Types",
+      "edit-abutment-types": "Edit Abutment Types",
+      "bridge-part-defects": "Bridge Part Defects",
+      "create-bridge-part-defect": "Create Bridge Part Defect",
+      "edit-bridge-part-defect": "Edit Bridge Part Defect",
+      "cross-section-types": "Cross Section Types",
+      "create-cross-section-type": "Create Cross Section Types",
+      "edit-cross-section-type": "Edit Cross Section Types",
+      "damage-types": "Damage Types",
+      "create-damage-type": "Create Damage Types",
+      "edit-damage-type": "Edit Damage Types",
+      "deck-slab-types": "Deck Slab Types",
+      "create-deck-slab-type": "Create Deck Slab Types",
+      "edit-deck-slab-type": "Edit Deck Slab Types",
+      "design-classifications": "Design Classifications",
+      "create-design-classification": "Create Design Classification",
+      "edit-design-classification": "Edit Design Classification",
+      "design-standards": "Design Standards",
+      "create-design-standard": "Create Design Standard",
+      "edit-design-standard": "Edit Design Standard",
+      "design-traffic-flows": "Design Traffic Flows",
+      "create-design-traffic-flow": "Create Design Traffic Flow",
+      "edit-design-traffic-flow": "Edit Design Traffic Flow",
+      "driveway-access-points": "Driveway Access Points",
+      "create-driveway-access-point": "Create Driveway Access Points",
+      "edit-driveway-access-point": "Edit Driveway Access Points",
+      "endwall-type-outlets": "Endwall Type Outlets",
+      "create-endwall-type-outlet": "Create Endwall Type Outlet",
+      "edit-endwall-type-outlet": "Edit Endwall Type Outlet",
+      "expansion-joint-types": "Expansion Joint Types",
+      "create-expansion-joint-type": "Create Expansion Joint Type",
+      "edit-expansion-joint-type": "Edit Expansion Joint Type",
+      "functional-classifications": "Functional Classifications",
+      "create-functional-classification": "Create Functional Classification",
+      "edit-functional-classification": "Edit Functional Classification",
+      "intersection-types": "Intersection Types",
+      "create-intersection-type": "Create Intersection Type",
+      "edit-intersection-type": "Edit Intersection Type",
+      "paved-water-way-types": "Paved Water Way Types",
+      "create-paved-water-way-type": "Create Paved Water Way Type",
+      "edit-paved-water-way-type": "Edit Paved Water Way Type",
+      "pier-types": "Pier Types",
+      "create-pier-type": "Create Pier Type",
+      "edit-pier-type": "Edit Pier Type",
+      "project-phases": "Project Phases",
+      "create-project-phase": "Create Project Phase",
+      "edit-project-phase": "Edit Project Phase",
+      "surface-types": "Surface Types",
+      "create-surface-type": "Create Surface Type",
+      "edit-surface-type": "Edit Surface Type",
+      "inspection-types": "Inspection Types",
+      "create-inspection-type": "Create Inspection Type",
+      "edit-inspection-type": "Edit Inspection Type",
+      "personal-protective-equipment-types": "Personal Protective Equipment Types",
+      "create-personal-protective-equipment-type": "Create Personal Protective Equipment Type",
+      "edit-personal-protective-equipment-type": "Edit Personal Protective Equipment Type",
+      "injury-severities": "Injury Severities",
+      "create-injury-severity": "Create Injury Severity",
+      "edit-injury-severity": "Edit Injury Severity",
+      "personal-protective-equipment-conditions": "Personal Protective Equipment Conditions",
+      "create-personal-protective-equipment-condition": "Create Personal Protective Equipment Condition",
+      "edit-personal-protective-equipment-condition": "Edit Personal Protective Equipment Condition",
+      "weather-condition-during-incidents": "Weather Conditions During Incident",
+      "create-weather-condition-during-incident": "Create Weather Condition During Incident",
+      "edit-weather-condition-during-incident": "Edit Weather Condition During Incident",
+      "mobile-network-types": "Mobile Network Types",
+      "create-mobile-network-type": "Create Mobile Network Type",
+      "edit-mobile-network-type": "Edit Mobile Network Type",
+      "satellite-network-types": "Satellite Network Types",
+      "create-satellite-network-type": "Create Satellite Network Type",
+      "edit-satellite-network-type": "Edit Satellite Network Type",
+      "internet-connection-types": "Internet Connection Types",
+      "create-internet-connection-type": "Create Internet Connection Type",
+      "edit-internet-connection-type": "Edit Internet Connection Type",
+      "broadcasting-infrastructure-types": "Broadcasting Infrastructure Types",
+      "create-broadcasting-infrastructure-type": "Create Broadcasting Infrastructure Type",
+      "edit-broadcasting-infrastructure-type": "Edit Broadcasting Infrastructure Type",
+      "data-center-types": "Data Center Types",
+      "create-data-center-type": "Create Data Center Type",
+      "edit-data-center-type": "Edit Data Center Type",
+      "owners": "Owners",
+      "create-owner": "Create Owner",
+      "edit-owner": "Edit Owner",
+      "dam-types": "Dam Types",
+      "create-dam-type": "Create Dam Type",
+      "edit-dam-type": "Edit Dam Type",
+      "spillway-types": "Spillway Types",
+      "create-spillway-type": "Create Spillway Type",
+      "edit-spillway-type": "Edit Spillway Type",
+      "turbine-types": "Turbine Type",
+      "create-turbine-type": "Create Turbine Type",
+      "edit-turbine-type": "Edit Turbine Type",
+      "solar-panel-types": "Solar Panel Types",
+      "create-solar-panel-type": "Create Solar Panel Type",
+      "edit-solar-panel-type": "Edit Solar Panel Type",
+      "tower-types": "Tower Types",
+      "create-tower-type": "Create Tower Type",
+      "edit-tower-type": "Edit Tower Type",
+      "generator-types": "Generator Types",
+      "create-generator-type": "Create Generator Type",
+      "edit-generator-type": "Edit Generator Type",
+      "conductor-code-names": "Conductor Code Names",
+      "create-conductor-code-name": "Create Conductor Code Name",
+      "edit-conductor-code-name": "Edit Conductor Code Name",
+      "battery-types": "Battery Types",
+      "create-battery-type": "Create Battery Type",
+      "edit-battery-type": "Edit Battery Type",
+      "tower-foundation-types": "Tower Foundation Types",
+      "create-tower-foundation-type": "Create Tower Foundation Type",
+      "edit-tower-foundation-type": "Edit Tower Foundation Type",
+      "switchgear-types": "Switchgear Types",
+      "create-switchgear-type": "Create Switchgear Type",
+      "edit-switchgear-type": "Edit Switchgear Type",
+      "circuit-breaker-types": "Circuit Breaker Types",
+      "create-circuit-breaker-type": "Create Circuit Breaker Type",
+      "edit-circuit-breaker-type": "Edit Circuit Breaker Type",
+      "substation-communication-systems": "Substation Communication Systems",
+      "create-substation-communication-system": "Create Substation Communication System",
+      "edit-substation-communication-system": "Edit Substation Communication System",
+      "transformer-types": "Transformer Types",
+      "create-transformer-type": "Create Transformer Type",
+      "edit-transformer-type": "Edit Transformer Type",
+      "substation-grounding-systems": "Substation Grounding Systems",
+      "create-substation-grounding-system": "Create Substation Grounding System",
+      "edit-substation-grounding-system": "Edit Substation Grounding System",
+      "distribution-line-types": "Distribution Line Types",
+      "create-distribution-line-type": "Create Distribution Line Type",
+      "edit-distribution-line-type": "Edit Distribution Line Type",
+      "privacy-measures-types": "Privacy Measures Types",
+      "create-privacy-measures-type": "Create Privacy Measures Types",
+      "edit-privacy-measures-type": "Edit Privacy Measures Types",
+      "protection-installed": "Protection Installed",
+      "create-protection-installed": "Create Protection Installed",
+      "edit-protection-installed": "Edit Protection Installed",
+      "fire-extinguishing-technologies": "Fire Extinguishing Technologies",
+      "create-fire-extinguishing-technology": "Create Fire Extinguishing Technologies",
+      "edit-fire-extinguishing-technologgy": "Edit Fire Extinguishing Technologies",
+      "models": "Models",
+      "create-model": "Create Model",
+      "edit-model": "Edit Model",
+      "smart-meter-types": "Smart Meter Types",
+      "create-smart-meter-type": "Create Smart Meter Type",
+      "edit-smart-meter-type": "Edit Smart Meter Type",
+      "customer-engagement-frequencies": "Customer Engagement Frequencies",
+      "create-customer-engagement-frequency": "Create Customer Engagement Frequency",
+      "edit-customer-engagement-frequency": "Edit Customer Engagement Frequency",
+      "customer-engagement-programs-types": "Customer Engagement Programs Types",
+      "create-customer-engagement-programs-type": "Create Customer Engagement Programs Type",
+      "edit-customer-engagement-programs-type": "Edit Customer Engagement Programs Type",
+      "control-system-types": "Control System Types",
+      "create-control-system-type": "Create Control System Types",
+      "edit-control-system-type": "Edit Control System Types",
+      "communication-link-types": "Communication Link Types",
+      "create-communication-link-type": "Create Communication Link Types",
+      "edit-communication-link-type": "Edit Communication Link Types",
+      "cyber-security-measures-types": "Cyber Security Measures Types",
+      "create-cyber-security-measures-type": "Create Cyber Security Measures Types",
+      "edit-cyber-security-measures-type": "Edit Cyber Security Measures Types",
+      "cyber-security-audits-frequencies": "Cyber Security Audits Frequencies",
+      "create-cyber-security-audits-frequency": "Create Cyber Security Audits Frequencies",
+      "edit-cyber-security-audits-frequency": "Edit Cyber Security Audits Frequencies",
+      "safety-problems-encountered": "Safety Problems Encountered",
+      "create-safety-problems-encountered": "Create Safety Problems Encountered",
+      "edit-safety-problems-encountered": "Edit Safety Problems Encountered",
+      "quantity-measurement-units": "Quantity Measurement Units",
+      "create-quantity-measurement-unit": "Create Quantity Measurement Unit",
+      "edit-quantity-measurement-unit": "Edit Quantity Measurement Unit",
+      "quality-measurement-units": "Quality Measurement Units",
+      "create-quality-measurement-unit": "Create Quality Measurement Unit",
+      "edit-quality-measurement-unit": "Edit Quality Measurement Unit",
+      "apron-surface-types": "Apron Surface Types",
+      "create-apron-surface-type": "Create Apron Surface Types",
+      "edit-apron-surface-type": "Edit Apron Surface Types",
+      "embedded-enstrument": "Embedded Enstrument",
+      "create-embedded-enstrument": "Create Embedded Enstrument",
+      "edit-embedded-enstrument": "Edit Embedded Enstrument",
+      "dam-purpose": "Dam Purpose",
+      "create-dam-purpose": "Create Dam Purpose",
+      "edit-dam-purpose": "Edit Dam Purpose",
+      "quality": "Quality",
+      "create-quality": "Create Quality",
+      "edit-quality": "Edit Quality",
+      "unit-price": "Unit Price",
+      "create-unit-price": "Create Unit Price",
+      "edit-unit-price": "Edit Unit Price",
+      "supplier-name": "Supplier Name",
+      "create-supplier-name": "Create Supplier Name",
+      "edit-supplier-name": "Edit Supplier Name",
+      "supplier-address": "Supplier Address",
+      "create-supplier-address": "Create Supplier Address",
+      "edit-supplier-address": "Edit Supplier Address",
+      "water-source": "Water Source",
+      "create-water-source": "Create Water Source",
+      "edit-water-source": "Edit Water Source",
+      "project-target": "Project Target",
+      "create-project-target": "Create Project Target",
+      "edit-project-target": "Edit Project Target",
+      "head-work-type": "Head Work Type",
+      "create-head-work-type": "Create Head Work Type",
+      "edit-head-work-type": "Edit Head Work Type",
+      "irrigation-technology": "Irrigation Technology",
+      "create-irrigation-technology": "Create Irrigation Technology",
+      "edit-irrigation-technology": "Edit Irrigation Technology",
+      "main-canal-type": "Main Canal Type",
+      "create-main-canal-type": "Create Main Canal Type",
+      "edit-main-canal-type": "Edit Main Canal Type",
+      "pump-type": "Pump Type",
+      "create-pump-type": "Create Pump Type",
+      "edit-pump-type": "Edit Pump Type",
+      "pumps-power-source": "Pumps Power Source",
+      "create-pumps-power-source": "Create Pumps Power Source",
+      "edit-pumps-power-source": "Edit Pumps Power Source",
+      "runway-surface-type": "Runway Surface Type",
+      "create-runway-surface-type": "Create Runway Surface Type",
+      "edit-runway-surface-type": "Edit Runway Surface Type",
+      "scheme-status": "Scheme Status",
+      "create-scheme-status": "Create Scheme Status",
+      "edit-scheme-status": "Edit Scheme Status",
+      "track-types": "Track Types",
+      "create-track-type": "Create Track Type",
+      "edit-track-type": "Edit Track Type",
+      "railway-track-infrastructures": "Railway Track Infrastructures",
+      "create-railway-track-infrastructure": "Create Railway Track Infrastructure",
+      "edit-railway-track-infrastructure": "Edit Railway Track Infrastructure",
+      "track-gauges": "Track Gauges",
+      "create-track-gauge": "Create Track Gauge",
+      "edit-track-gauge": "Edit Track Gauge",
+      "track-condition-ratings": "Track Condition Ratings",
+      "create-track-condition-rating": "Create Track Condition Rating",
+      "edit-track-condition-rating": "Edit Track Condition Rating",
+      "communication-links": "Communication Links",
+      "create-communication-link": "Create Communication Link",
+      "edit-communication-link": "Edit Communication Link",
+      "observed-defects": "Observed Defects",
+      "create-observed-defect": "Create Observed Defect",
+      "edit-observed-defect": "Edit Observed Defect",
+      "compaction-methods": "Compaction Methods",
+      "create-compaction-method": "Create Compaction Method",
+      "edit-compaction-method": "Edit Compaction Method",
+      "ballast-material-types": "Ballast Material Types",
+      "create-ballast-material-type": "Create Ballast Material Types",
+      "edit-ballast-material-type": "Edit Ballast Material Types",
+      "ballast-sources": "Ballast Sources",
+      "create-ballast-source": "Create Ballast Sources",
+      "edit-ballast-source": "Edit Ballast Sources",
+      "ballast-degradation-indicators": "Ballast Degradation Indicators",
+      "create-ballast-degradation-indicator": "Create Ballast Degradation Indicators",
+      "edit-ballast-degradation-indicator": "Edit Ballast Degradation Indicators",
+      "sub-ballast-material-types": "Sub Ballast Material Types",
+      "create-sub-ballast-material-type": "Create Sub Ballast Material Types",
+      "edit-sub-ballast-material-type": "Edit Sub Ballast Material Types",
+      "distribution-line-materials": "Distribution Line Materials",
+      "create-distribution-line-material": "Create Distribution Line Materials",
+      "edit-distribution-line-material": "Edit Distribution Line Materials",
+      "track-maintenance-frequencies": "Track Maintenance Frequencies",
+      "create-track-maintenance-frequency": "Create Track Maintenance Frequency",
+      "edit-track-maintenance-frequency": "Edit Track Maintenance Frequency",
+      "scheduled-maintenance-activities": "Scheduled Maintenance Activities",
+      "create-scheduled-maintenance-activity": "Create Scheduled Maintenance Activity",
+      "edit-scheduled-maintenance-activity": "Edit Scheduled Maintenance Activity",
+      "rehabilitation-renewal-method-used": "Rehabilitation Renewal Methods Used",
+      "create-rehabilitation-renewal-method-used": "Create Rehabilitation Renewal Method Used",
+      "edit-rehabilitation-renewal-method-used": "Edit Rehabilitation Renewal Method Used",
+      "track-inspection-frequencies": "Track Inspection Frequencies",
+      "create-track-inspection-frequency": "Create Track Inspection Frequency",
+      "edit-track-inspection-frequency": "Edit Track Inspection Frequency",
+      "track-safety-measures": "Track Safety Measures",
+      "create-track-safety-measure": "Create Track Safety Measure",
+      "edit-track-safety-measure": "Edit Track Safety Measure"
+    },
+    "form": {
+      "title": "Title",
+      "description": "Description",
+      "study-program": "Study Program",
+      "study-level": "Study Level",
+      "stakeholder-type-specific-models": "Stakeholder type Specific models",
+      "project-type-specific-models": "Project type Specific models",
+      "document-type-specific-models": "Document type Specific models",
+      "resource-type-specific-models": "Resource type Specific models",
+      "service_type": "Service Type",
+      "specification_detail": "Specification Detail",
+      "measurement_unit": "Measurement` Unit",
+      "project-type": "Project Type",
+      "resource-type": "Resource Type"
+    },
+    "create-master-type": "Create Type",
+    "edit-master-type": "Edit Type",
+    "master-category": {
+      "master-category": "Category",
+      "columns": {
+        "title": "Title",
+        "description": "Description"
+      },
+      "form": {
+        "title": "Title",
+        "description": "Description"
+      }
+    },
+    "master-sub-category": {
+      "master-sub-category": "SubCategory",
+      "columns": {
+        "title": "Title",
+        "description": "Description"
+      },
+      "form": {
+        "title": "Title",
+        "description": "Description"
+      }
+    },
+    "create-master-sub-category": "Create Master SubCategory",
+    "edit-master-sub-category": "Edit Master SubCategory"
+  },
+  "department": {
+    "user-columns": {
+      "user": "User",
+      "role": "Role",
+      "phone": "Phone",
+      "department": "Department",
+      "position": "Position"
+    },
+    "tabs": {
+      "professionals": "Professionals",
+      "positions": "Positions",
+      "sub-departments": "Sub Departments",
+      "documents": "Documents",
+      "structure": "Structure"
+    },
+    "professional": {
+      "title": "Professionals"
+    },
+    "user": {
+      "form": {
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "middle_name": "Middle Name",
+        "email": "Email",
+        "gender": "Gender",
+        "phone": "Phone",
+        "position": "Position",
+        "department": "Department",
+        "birth_data": "Birth Date"
+      },
+      "tabs": {
+        "education": "Education",
+        "work-experience": "Work Experience",
+        "contact-person": "Contact Person",
+        "activity-log": "Activity Log"
+      },
+      "title": "Users",
+      "male": "Male",
+      "female": "Female",
+      "edit-user": "Edit User",
+      "create-user": "Create User",
+      "education": {
+        "title": "Education",
+        "create": "Create Education",
+        "edit": "Edit Education",
+        "details": "Education Details",
+        "create-education": "Create Education",
+        "edit-education": "Edit Education",
+        "study-field": "Study Field",
+        "school-name": "School Name",
+        "education-level": "Education Level",
+        "program-type": "Program Type",
+        "start-date": "Start Date",
+        "end-date": "End Date",
+        "gpa": "GPA"
+      },
+      "work-experience": {
+        "company-name": "Company Name",
+        "department": "Department",
+        "position": "Position",
+        "task-description": "Task Description",
+        "start-date": "Start Date",
+        "end-date": "End Date",
+        "create-work-experience": "Create Work Experience",
+        "edit-work-experience": "Edit Work Experience",
+        "title": "Work Experience"
+      },
+      "contact-person": {
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "nationalIdNo": "National ID Number",
+        "gender": "Gender",
+        "phoneNo": "Phone Number",
+        "email": "Email",
+        "title": "Contact Person",
+        "create-contact-person": "Create Contact Person",
+        "edit-contact-person": "Edit Contact Person"
+      },
+      "activity-log": {
+        "title": "Activity Log",
+        "action": "Action",
+        "module": "Module",
+        "target-type": "Target Type",
+        "target-id": "Target ID",
+        "ip-address": "IP Address",
+        "user-agent": "User Agent"
+      }
+    },
+    "position": {
+      "form": {
+        "name": "Name",
+        "description": "Description",
+        "role": "Role"
+      },
+      "columns": {
+        "name": "Name",
+        "description": "Description"
+      },
+      "title": "Positions",
+      "create-position": "Create Position",
+      "edit-position": "Edit Position"
+    },
+    "sub-department": {
+      "form": {
+        "name": "Name",
+        "description": "Description"
+      },
+      "columns": {
+        "name": "Name",
+        "description": "Description"
+      },
+      "title": "Sub Departments",
+      "create-sub-department": "Create Sub Department",
+      "edit-sub-department": "Edit Sub Department"
+    },
+    "department-structure": "department-structure"
+  },
+  "admin": {
+    "role": {
+      "roles": "Roles",
+      "create-role": "Create Role",
+      "update-role": "Create Role",
+      "form": {
+        "title": "Title",
+        "description": "Description"
+      }
+    }
+  },
+  "address-master": {
+    "region": "Region",
+    "city-administration": "City Administration",
+    "zone": "Zone",
+    "city": "City",
+    "sub-city": "Sub City",
+    "woreda": "Woreda",
+    "kebele": "Kebele",
+    "other": "Other",
+    "all": "All",
+    "create-region": "Create Region",
+    "create-city-administration": "Create City Administration",
+    "create-zone": "Create Zone",
+    "create-city": "Create City",
+    "create-sub-city": "Create Sub City",
+    "create-woreda": "Create Woreda",
+    "create-kebele": "Create Kebele",
+    "create-other": "Create Other",
+    "edit-region": "Edit Region",
+    "edit-city-administration": "Edit City Administration",
+    "edit-zone": "Edit Zone",
+    "edit-city": "Edit City",
+    "edit-sub-city": "Edit Sub City",
+    "edit-woreda": "Edit Woreda",
+    "edit-kebele": "Edit Kebele",
+    "edit-other": "Edit Other",
+    "columns": {
+      "title": "Title",
+      "description": "Description",
+      "parent": "Parent",
+      "type": "Type"
+    },
+    "form": {
+      "title": "Title",
+      "description": "Description"
+    }
+  },
+  "greating": {
+    "good-morning": "Good Morning",
+    "good-evening": "Good Evening",
+    "good-afternoon": "Good Afternoon"
+  },
+  "resource": {
+    "create-resource": "Create Resource",
+    "edit-resource": "Edit Resource",
+    "title": "Resource",
+    "columns": {
+      "name": "Name",
+      "remark": "Remark",
+      "resourcetype_id": "Resource Type",
+      "resourcecategory_id": "Resource Category",
+      "resourcesubcategory_id": "Resource Subcategory",
+      "quantity_measurement_unit_id": "Quantity Measurement Unit",
+      "quality_measurement_unit_id": "Quality Measurement Unit"
+    },
+    "form": {
+      "name": "Name",
+      "remark": "Remark",
+      "resourcetype_id": "Resource Type",
+      "resourcecategory_id": "Resource Category",
+      "resourcesubcategory_id": "Resource Subcategory",
+      "quantity_measurement_unit_id": "Quantity Measurement Unit",
+      "quality_measurement_unit_id": "Quality Measurement Unit"
+    },
+    "navigation": {
+      "menu": {
+        "general-info": "General Info",
+        "price": "Price",
+        "quantity": "Quantity",
+        "education": "Education",
+        "work-experience": "Work Experience",
+        "certificates": "Certificates",
+        "membership": "Membership"
+      },
+      "submenu": {
+        "general-info": {
+          "general-info-section": "General Info",
+          "general-info": "General Info",
+          "professional-registration": "Professional Registration",
+          "address": "Address",
+          "contact": "Contact",
+          "contact-person": "Contact Person",
+          "additional-info": "Additional Info",
+          "brands": "Brands",
+          "specification": "Specification"
+        },
+        "resource-price": {
+          "resource-price-section": "Price",
+          "price": "Price",
+          "resource-price": "Resource Price",
+          "resource-prices": "Resource Prices"
+        },
+        "resource-quantity": {
+          "resource-quantity-section": "Quantity",
+          "quality": "Quantity",
+          "resource-quantity": "Resource Quantity",
+          "resource-quantities": "Resource Quantities"
+        },
+        "licenses": {
+          "licenses": "Licenses"
+        },
+        "work-experiences": {
+          "work-experiences": "Work experiences"
+        },
+        "education": {
+          "education": "Education",
+          "education-section": "Education Section",
+          "trainings": "Trainings"
+        },
+        "work-experience": {
+          "work-experience": "Work Experience"
+        },
+        "membership": {
+          "association": "Association",
+          "membership": "Membership"
+        },
+        "achievements": {
+          "certificates": "Certificates"
+        },
+        "recomendations": {
+          "recomendations": "Recomendations"
+        },
+        "certificates": {
+          "certificates-section": "Certificates",
+          "certificates": "Certificates",
+          "recommendations": "Recommendations",
+          "license": "License"
+        }
+      }
+    },
+    "resource-specification": {
+      "title": "Resource Specification",
+      "create-resource-specification": "Create Resource Specification",
+      "edit-resource-specification": "Edit Resource Specification",
+      "form": {
+        "title": "Title",
+        "description": "Description",
+        "datasource": "Data Source"
+      }
+    },
+    "resource-brand": {
+      "title": "Resource Brand",
+      "create-resource-brand": "Create Resource Brand",
+      "edit-resource-brand": "Edit Resource Brand",
+      "form": {
+        "title": "Title",
+        "description": "Description",
+        "datasource": "Data Source"
+      }
+    },
+    "resource-study-field": {
+      "title": "Filed of Study",
+      "create-resource-study-field": "Create Filed of Study",
+      "edit-resource-study-field": "Edit Filed of Study",
+      "form": {
+        "studyfield": "Study Field",
+        "description": "Description"
+      }
+    },
+    "resource-study-level": {
+      "title": "Study Level",
+      "create-resource-study-level": "Create Study Level",
+      "edit-resource-study-level": "Edit Study Level",
+      "form": {
+        "studylevel": "Study Field",
+        "description": "Description"
+      }
+    },
+    "resource-salary": {
+      "title": "Salary",
+      "create-resource-salary": "Create Salary",
+      "edit-resource-salary": "Edit Salary",
+      "form": {
+        "max_pay": "Max Pay",
+        "min_pay": "Min Pay",
+        "salary_type": "Salary Type",
+        "year": "Year"
+      }
+    },
+    "detail-resource-type": {
+      "title": "Resource Brand",
+      "create-resource-brand": "Create Resource Brand",
+      "edit-resource-brand": "Edit Resource Brand",
+      "form": {
+        "title": "Title",
+        "description": "Description",
+        "datasource": "Data Source"
+      }
+    },
+    "resource-quantity-price": {
+      "title": "Unit Price & Quantity",
+      "create-resource-quantity-price": "Create Unit Price & Quantity",
+      "edit-resource-quantity-price": "Edit Unit Price & Quantity",
+      "form": {
+        "brand": "Brand",
+        "type": "Type",
+        "unit-price": "Unit Price",
+        "quantity": "Quantity",
+        "store-address": "Store Address",
+        "date": "Date",
+        "datasource": "Data Source"
+      },
+      "columns": {
+        "title": "Title",
+        "description": "Description"
+      }
+    }
+  },
+  "document": {
+    "create-document": "Create Document",
+    "edit-document": "Edit Document",
+    "title": "Document",
+    "columns": {},
+    "form": {
+      "category": "Category",
+      "sub-category": "Sub-category",
+      "title": "Title",
+      "measurement_unit": "Measurement Unit",
+      "description": "Description",
+      "author": "Author",
+      "copy_right_notice": "Copyright Notice",
+      "edition": "Edition",
+      "isbn": "ISBN",
+      "publication_date": "Publication Date"
+    }
+  },
   "project": {
+    "create-project": "Create Project",
+    "edit-project": "Edit Project",
+    "title": "Project",
+    "form": {
+      "category": "Category",
+      "sub-category": "Sub-category",
+      "name": "Project Name",
+      "contract-no": "Contract Number",
+      "budget-code": "Budget Code",
+      "procurement-number": "Procurement Number",
+      "remark": "Remark",
+      "status": "Status",
+      "grade": "Grade",
+      "end-user": "End User",
+      "function": "Function"
+    },
+    "general-information": {
+      "client": "Client",
+      "contractor": "Contractor",
+      "consultant": "Consultant",
+      "please-add-client": "Please add client",
+      "please-add-contractor": "Please add contractor",
+      "please-add-consultant": "Please add consultant",
+      "contractPrice": "Contract Price",
+      "projectStatus": "Project Status",
+      "please-add-main-contract-price": "Please add Main Contract Price",
+      "upload-cover-profile": "Upload Cover Profile",
+      "upload-profile-picture": "Upload Profile Picture",
+      "please-fill-contract-signing-date": "Please fill contract signing date",
+      "from": "from"
+    },
+    "finance": {
+      "information": "Finance Information",
+      "total-contract-amount": "Total Contract Amount",
+      "paid-ipc": "Paid IPC",
+      "remaining-ipc": "Remaining IPC"
+    },
+    "earned-value-analysis": {
+      "earned-value-analysis": "Earned Value Analysis",
+      "planned-value": "Planned Value",
+      "earned-value": "Earned Value",
+      "actual-cost": "Actual Cost",
+      "cpi": "CPI",
+      "cv": "CV",
+      "spi": "SPI",
+      "sv": "SV"
+    },
     "navigation": {
       "submenu": {
-        "railway-track-infrastructure": {
-          "track-systems": {
-            "title": "Track Systems",
-            "tracks-data": "Tracks Data",
-            "tracks-geometry-data": "Tracks Geometry Data",
-            "tracks-condition-assessment": "Tracks Condition Assessment",
-            "tracks-maintenance-inspections": "Tracks Maintenance Inspections",
-            "tracks-rehabilitation-renewal": "Tracks Rehabilitation/Renewal",
-            "track-safety": "Track Safety"
+        "project-setup": {
+          "general-info": {
+            "title": "General Info",
+            "project-info": "Project Info",
+            "address": "Address",
+            "project-manager": "Project Manager",
+            "contact-person": "Contact Person",
+            "construction-type": "Construction Type",
+            "construction-method": "Construction Method"
           },
-          "ballast-systems": {
-            "title": "Ballast Systems",
-            "ballast": "Ballast",
-            "ballast-material-data": "Ballast Material Data",
-            "ballast-material-specification": "Ballast Material Specification",
-            "ballast-condition-assessment": "Ballast Condition Assessment",
-            "ballast-maintenance-renewal": "Ballast Maintenance/Renewal",
-            "ballast-drainage-water-management": "Ballast Drainage/Water Management",
-            "ballast-environmental-factors": "Ballast Environmental Factors"
+          "stakeholders": {
+            "title": "Stakeholders",
+            "stakeholders": "Stakeholders"
           },
-          "sub-ballast-systems": {
-            "title": "Sub-Ballast Systems",
-            "sub-ballast-materials": "Sub-Ballast Materials",
-            "sub-ballast-material-test": "Sub-Ballast Material Test",
-            "sub-ballast-condition-assessment": "Sub-Ballast Condition Assessment",
-            "sub-ballast-maintenance-renewal": "Sub-Ballast Maintenance/Renewal",
-            "sub-ballast-drainage-water-management": "Sub-Ballast Drainage/Water Management",
-            "sub-ballast-environmental-factors": "Sub-Ballast Environmental Factors"
+          "time": {
+            "title": "Time",
+            "contract-period": "Contract Period",
+            "extension-time": "Extension Time"
+          }
+        },
+        "resource": {
+          "finance": {
+            "title": "Finance",
+            "contract-amount": "Contract Amount",
+            "amendments": "Amendments",
+            "supplements": "Supplements",
+            "variations": "Variations",
+            "omission": "Omission",
+            "performance-bond": "Performance Bond",
+            "advance-bond": "Advance Bond",
+            "bid-bond": "Bid Bond",
+            "interim-payment": "Interim Payment",
+            "advance-payment": "Advance Payment"
           },
-          "sleeper-and-fastening-systems": {
-            "title": "Sleeper and Fastening Systems",
-            "sleeper-characteristics": "Sleeper Characteristics",
-            "sleeper-condition-assessment": "Sleeper Condition Assessment",
-            "sleeper-maintenance-replacement": "Sleeper Maintenance/Replacement",
-            "sleeper-fastening-systems": "Sleeper Fastening Systems",
-            "sleeper-environmental-factors": "Sleeper Environmental Factors",
-            "fastening-system-characteristics": "Fastening System Characteristics",
-            "fastening-system-condition-assessment": "Fastening System Condition Assessment",
-            "fastening-system-maintenance-replacement": "Fastening System Maintenance/Replacement",
-            "fastening-system-environmental-factors": "Fastening System Environmental Factors"
+          "resources": {
+            "title": "Resources",
+            "materials": "Materials",
+            "machinery": "Machinery",
+            "manpower": "Manpower"
+          },
+          "documents": {
+            "title": "Documents",
+            "planning": "Planning",
+            "design": "Design",
+            "construction": "Construction",
+            "other": "Other"
+          }
+        },
+        "reporting": {
+          "plan": {
+            "title": "Plan",
+            "plan": "Plan"
+          },
+          "report": {
+            "title": "Report",
+            "actual-status": "Actual Status",
+            "weather-condition": "Weather Condition",
+            "claim": "Claim",
+            "challenges": "Challenges",
+            "quality-inspection": "Quality Inspection",
+            "site-pictures": "Site Pictures"
+          }
+        },
+        "segment": {
+          "design": {
+            "title": "Design",
+            "design-standard": "Design Standard",
+            "safety-and-health": "Safety and Health"
+          },
+          "segment": {
+            "title": "Segment",
+            "road-segment": "Road Segment",
+            "segment-coordinates": "Segment Coordinates",
+            "segment-geometry": "Segment Geometry",
+            "intersection-and-driveway": "Intersection and Driveway",
+            "traffic-parameters": "Traffic Parameters",
+            "traffic-volume": "Traffic Volume",
+            "pavement": "Pavement",
+            "road-surface-condition": "Road Surface Condition"
+          }
+        },
+        "feature": {
+          "accessories": {
+            "title": "Accessories",
+            "accessories": "Accessories",
+            "road-safety-features": "Road Safety Features",
+            "road-drainage": "Road Drainage",
+            "drainage-geotechnical-data": "Drainage Geotechnical Data"
+          },
+          "culvert": {
+            "title": "Culvert",
+            "culvert-basic-data": "Culvert Basic Data",
+            "culvert-structural-information": "Culvert Structural Information",
+            "culvert-road-over-information": "Culvert Road Over Information",
+            "culvert-condition-assessment": "Culvert Condition Assessment"
+          },
+          "bridge": {
+            "title": "Bridge",
+            "bridge-basic-data": "Bridge Basic Data",
+            "bridge-area-data": "Bridge Area Data",
+            "bridge-super-structure": "Bridge Super Structure",
+            "bridge-sub-structure": "Bridge Sub Structure",
+            "bridge-foundation": "Bridge Foundation",
+            "bridge-components-ancillaries": "Bridge Components & Ancillaries",
+            "bridge-inspection": "Bridge Inspection"
+          }
+        },
+        "maintenance": {
+          "quality": {
+            "title": "Quality",
+            "quality-control": "Quality Control",
+            "drainage-environmental-data": "Drainage Environmental Data",
+            "drainage-assessment": "Drainage Assessment"
+          },
+          "maintenance": {
+            "title": "Maintenance",
+            "road-maintenance-activities": "Road Maintenance Activities",
+            "maintenance-history": "Maintenance History",
+            "traffic-maintenance": "Traffic Maintenance",
+            "drainage-maintenance-data": "Drainage Maintenance Data"
+          }
+        },
+        "telecom-infrastructure": {
+          "telecom-infrastructure": {
+            "title": "Telecom",
+            "telecom-network": "Telecom Network",
+            "telecom-infrastructure-age": "Infrastructure Age",
+            "telecom-infrastructure-manufacturer": "Infrastructure Manufacturer",
+            "network-capacity": "Network Capacity",
+            "network-coverage": "Network Coverage",
+            "maintenance": "Maintenance"
+          }
+        },
+        "mobile-satellite": {
+          "mobile-networks": {
+            "title": "Mobile Networks",
+            "mobile-network": "Mobile Network",
+            "age-of-mobile-network-components": "Age of Mobile Network Components",
+            "manufacturer-of-mobile-network-components": "Manufacturer of Mobile Network Components",
+            "network-capacity": "Network Capacity",
+            "network-coverage": "Network Coverage"
+          },
+          "satellite-networks": {
+            "title": "Satellite Networks",
+            "satellite-network": "Satellite Network",
+            "age-of-satellite-network-components": "Age of Satellite Network Components",
+            "manufacturer-of-satellite-network-components": "Manufacturer of Satellite Network Components",
+            "network-capacity": "Network Capacity",
+            "network-coverage": "Network Coverage"
+          }
+        },
+        "broadcasting-data": {
+          "broadcasting": {
+            "title": "Broadcasting",
+            "broadcasting-infrastructure": "Broadcasting Infrastructure",
+            "age-of-broadcasting-infrastructure": "Age of Broadcasting Infrastructure",
+            "manufacturer-of-broadcasting-infrastructure": "Manufacturer of Broadcasting Infrastructure",
+            "network-capacity": "Network Capacity",
+            "network-coverage": "Network Coverage"
+          },
+          "data-systems": {
+            "title": "Data Systems",
+            "data-centers": "Data Centers",
+            "age-of-data-center-components": "Age of Data Center Components",
+            "manufacturer-of-data-center-components": "Manufacturer of Data Center Components",
+            "data-center-facility-capacity": "Data Center Facility Capacity",
+            "environmental-control": "Environmental Control"
+          }
+        },
+        "power-generation": {
+          "hydropower": {
+            "title": "Hydropower",
+            "hydroelectric-dam": "Hydroelectric Dam",
+            "hydrological-information": "Hydrological Information"
+          },
+          "wind-energy": {
+            "title": "Wind Energy",
+            "wind-resource": "Wind Resource",
+            "wind-turbine": "Wind Turbine"
+          },
+          "solar-energy": {
+            "title": "Solar Energy",
+            "solar-resource-information": "Solar Resource Information",
+            "solar-panel": "Solar Panel"
+          },
+          "geothermal-energy": {
+            "title": "Geothermal Energy",
+            "geothermal-power-wells": "Geothermal Power Wells",
+            "geothermal-power-infrastructure": "Geothermal Power Infrastructure"
+          },
+          "thermal-biomass": {
+            "title": "Thermal/Biomass",
+            "thermal-biomass-incineration-data": "Thermal/Biomass Incineration Data"
+          },
+          "capacity": {
+            "title": "Capacity",
+            "power-generation-capacity": "Power Generation Capacity"
+          }
+        },
+        "power-infrastructure": {
+          "transmission-systems": {
+            "title": "Transmission Systems",
+            "transmission": "Transmission",
+            "transmission-line-information": "Transmission Line Information",
+            "transmission-line-conductor-and-tower-data": "Transmission Line Conductor and Tower Data",
+            "transmission-line-equipment-data": "Transmission Line Equipment Data",
+            "substation-transformer-and-switchgear-data": "Substation Transformer and Switchgear Data",
+            "substation-layout-and-communication-data": "Substation Layout and Communication Data"
+          },
+          "mini-grid-systems": {
+            "title": "Mini-Grid Systems",
+            "mini-grid-station": "Mini-Grid Station",
+            "mini-grid-station-distribution-line": "Mini-Grid Station Distribution Line",
+            "mini-grid-station-distribution-line-infrastructure": "Mini-Grid Station Distribution Line Infrastructure",
+            "mini-grid-station-consumers": "Mini-Grid Station Consumers",
+            "mini-grid-station-backup-power-source": "Mini-Grid Station Backup Power Source"
+          },
+          "distribution-systems": {
+            "title": "Distribution Systems",
+            "electric-distribution-transformer": "Electric Distribution Transformer",
+            "electric-distribution-transformer-type": "Electric Distribution Transformer Type",
+            "electric-smart-meters-data": "Electric Smart Meters Data",
+            "electric-smart-meters-ratings-data": "Electric Smart Meters Ratings Data",
+            "electric-smart-meters-performance-data": "Electric Smart Meters Performance Data",
+            "electric-smart-meters-privacy-and-security-data": "Electric Smart Meters Privacy and Security Data"
+          }
+        },
+        "regulation": {
+          "grid-operations": {
+            "title": "Grid Operations",
+            "electric-grid-control-center-data": "Electric Grid Control Center Data",
+            "electric-grid-control-center-performance-and-maintenance": "Electric Grid Control Center Performance and Maintenance",
+            "electric-grid-control-center-cyber-security-data": "Electric Grid Control Center Cyber Security Data"
+          },
+          "regulatory-and-environmental-oversight": {
+            "title": "Regulatory and Environmental Oversight",
+            "regulation-and-policy": "Regulation and Policy",
+            "environmental-and-social-impact": "Environmental and Social Impact"
+          },
+          "maintenance-and-reliability": {
+            "title": "Maintenance and Reliability",
+            "reliability-and-maintenance": "Reliability and Maintenance"
+          }
+        },
+        "others": {
+          "building": "Building",
+          "building-dimensions-detail": "Building Dimensions Detail",
+          "building-envelop-material": "Building Envelop Material",
+          "road": "Road",
+          "road-info": "Road Info",
+          "road-segment": "Road Segments",
+          "road-layer": "Layers of Road",
+          "intersection-driveway": "Intersection and Driveway",
+          "traffic-parameter": "Traffic Parameter",
+          "accessory": "Accessory",
+          "pavement": "Pavement",
+          "culvert-basic-data": "Culvert Basic Data",
+          "culvert-structural-information": "Culvert Structural Information",
+          "culvert-road-over-information": "Culvert Road Over Information",
+          "bridge-basic-data": "Bridge Basic Data",
+          "bridge-area-data": "Bridge Area Data",
+          "bridge-super-structure": "Bridge Super Structure",
+          "bridge-sub-structure": "Bridge Sub Structure",
+          "bridge-foundation": "Bridge Foundation",
+          "bridge-inspection": "Bridge Inspection",
+          "traffic-volume": "Traffic Volume",
+          "road-project-quality-control": "Road Project Quality Control",
+          "road-drainage": "Road Drainage",
+          "road-maintenance-data": "Road Maintenance Data",
+          "safety-and-health": "Safety And Health",
+          "maintenance-histories": "Maintenance Histories",
+          "segment-geometry": "Segment Geometry",
+          "intersection-and-driveway": "Intersections and Driveways",
+          "telecom": "Telecom",
+          "bridge-structure-information": "Bridge Structure Information",
+          "telecom-infrastructure": "Telecom Infrastructure",
+          "mobile-network": "Mobile Network",
+          "network-coverage": "Network Coverage",
+          "data-center": "Data Center",
+          "environmental-control": "Environmental Control",
+          "data-center-facility-capacity": "Data Center Facility Capacity",
+          "data-center-component-age": "Data Center Component Age",
+          "data-center-component-manufacturer": "Data Center Component Manufacturer",
+          "internet-connection-infrastructure-age": "Internet Connection Infrastructure Age",
+          "internet-connection-infrastructure-manufacturer": "Internet Connection Infrastructure Manufacturer",
+          "satellite-infrastructure-age": "Satellite Infrastructure Age",
+          "electric-power": "Electric Power",
+          "generating-capacity": "Generation Capacity",
+          "hydro-electric-dam": "Hydroelectric Dam",
+          "solar-energy": "Solar Energy",
+          "wind-energy": "Wind Energy",
+          "transformers-types": "Transformers Types",
+          "mobile-network-component-age": "Mobile Network Component Age",
+          "transformers-registration": "Transformers Registration",
+          "transmission-lines": "Transmission Lines",
+          "electric-tower-registration": "Electric Tower Registration",
+          "railway": "Railway",
+          "railways": "Railways",
+          "railway-station": "Railway Station",
+          "water-irrigation": "Water Irrigation",
+          "reservoir-detail": "Reservoir Detail",
+          "spillway-detail": "Spillway Detail",
+          "irrigation-capacity": "Irrigation Capacity",
+          "water-irrigation-dam": "Water Irrigation Dam",
+          "hydrological-information": "Hydrological Information",
+          "port": "Port",
+          "drainage-assessment": "Drainage Assessment",
+          "road-surface-conditions": "Road Surface Conditions",
+          "telecom-infrastructure-component": "Telecom Infrastructure Component",
+          "telecom-infrastructure-age": "Telecom Infrastructure Age",
+          "maintenance": "Maintenance",
+          "network-capacity": "Network Capacity",
+          "satellite-network": "Satellite Network",
+          "satellite-network-component-manufacturer": "Satellite Network Component Manufacturer",
+          "internet-connection": "Internet Connection",
+          "broadcasting-infrastructure-age": "Broadcasting Infrastructure Age",
+          "broadcasting-infrastructure": "Broadcasting Infrastructure",
+          "geothermal-power-infrastructure": "Geothermal Power Infrastructure",
+          "geothermal-power-well": "Geothermal Power Well",
+          "solar-panel": "Solar Panel",
+          "wind-turbine": "Wind Turbine",
+          "wind-resource": "Wind Resources",
+          "power-generation-capacity": "Power Generation Capacity",
+          "regulation-and-policy": "Regulations and Policies",
+          "environmental-and-social-impact": "Environmental and Social Impact",
+          "turbine-info": "Turbine Info",
+          "transmission-line-informations": "Transmission Line Informations",
+          "reliability-and-maintenance": "Reliability and Maintenance",
+          "transmission": "Transmission",
+          "dam": "Dam",
+          "transmission-line-conductor-and-tower-data": "Transmission Line Conductor And Tower Data",
+          "transmission-line-equipment-data": "Transmission Line Equipment Data",
+          "broadcasting-infrastructure-manufacturer": "Broadcasting Infrastructure Manufacturer",
+          "substation-transformer-and-switchgear-data": "Substation Transformer And Switchgear Data",
+          "substation-layout-and-communication-data": "Substation Layout And Communication Data",
+          "mini-grid-station": "Mini Grid Station",
+          "mini-grid-station-distribution-line": "Mini Grid Station Distribution Line",
+          "mini-grid-station-consumer": "Mini Grid Station Consumer",
+          "mini-grid-station-backup-power-source": "Mini Grid Station Backup Power Source",
+          "electric-distribution-transformer": "Electric Distribution Transformer",
+          "electric-distribution-transformer-type": "Electric Distribution Transformer Types",
+          "electric-smart-meters-data": "Electric Smart Meters Data",
+          "electric-smart-meters-ratings-data": "Electric Smart Meters Ratings Data",
+          "electric-smart-meters-performance-data": "Electric Smart Meters Performance Data",
+          "electric-smart-meters-privacy-and-security-data": "Electric Smart Meters Privacy And Security Data",
+          "electric-grid-control-center-data": "Electric Grid Control Center Data",
+          "electric-grid-control-center-performance-and-maintenance": "Electric Grid Control Center Performance And Maintenance",
+          "electric-grid-control-center-cyber-security-data": "Electric Grid Control Center Cyber Security Data"
+        }
+      },
+      "menu": {
+        "project-setup": "Project Setup",
+        "resource": "Resource",
+        "reporting": "Reporting",
+        "segment": "Segment",
+        "feature": "Feature",
+        "maintenance": "Maintenance",
+        "telecom-infrastructure": "Telecom Infrastructure",
+        "mobile-satellite-networks": "Mobile & Satellite Networks",
+        "broadcasting-data-systems": "Broadcasting & Data Systems",
+        "regulation": "Regulation",
+        "power-infrastructure": "Power Infrastructure",
+        "power-generation": "Power Generation"
+      }
+    },
+    "project-time": {
+      "information": "Time Information",
+      "commencement-date": "Commencement Date",
+      "completion-date": "Completion Date",
+      "total-duration": "Total Duration",
+      "elapsed-time": "Elapsed Time",
+      "edit-project-time": "Edit Project Time",
+      "create-project-time": "Create Project Time",
+      "form": {
+        "contract-signing-date": "Contract Signing Date",
+        "site-handover-date": "Site Handover Date",
+        "mobilization-days-no": "Number of Mobilization Days",
+        "commencement-date": "Commencement Date",
+        "original-contract-duration": "Original Contract Duration",
+        "project-completion-date": "Project Completion Date",
+        "remark": "Remark"
+      }
+    },
+    "project-extension-time": {
+      "title": "Project Extension Time",
+      "edit-project-extension-time": "Edit Project Extension Time",
+      "create-project-extension-time": "Create Project Extension Time",
+      "form": {
+        "number-of-days": "Number of days",
+        "reason": "Reason"
+      }
+    },
+    "project-status": {
+      "project-status": "Project Status",
+      "edit-project-status": "Edit Project Status",
+      "form": {
+        "status": "Status",
+        "description": "Description"
+      }
+    },
+    "project-variation": {
+      "edit-project-variation": "Edit Project Variation",
+      "create-project-variation": "Create Project Variation",
+      "title": "Project Variation",
+      "form": {
+        "amount": "Amount",
+        "amount-percent": "Amount (%)",
+        "approval-date": "Approval Date",
+        "extension-time": "Extension Time",
+        "justification": "Justification",
+        "remark": "Remark"
+      }
+    },
+    "project-supplement": {
+      "edit-project-supplement": "Edit Project Supplement",
+      "create-project-supplement": "Create Project Supplement",
+      "title": "Project Supplement",
+      "form": {
+        "amount": "Amount",
+        "amount-percent": "Amount (%)",
+        "approval-date": "Approval Date",
+        "extension-time": "Extension Time",
+        "justification": "Justification",
+        "remark": "Remark"
+      }
+    },
+    "project-amendment": {
+      "edit-project-amendment": "Edit Project Amendment",
+      "create-project-amendment": "Create Project Amendment",
+      "title": "Project Amendment",
+      "form": {
+        "amount": "Amount",
+        "amount-percent": "Amount (%)",
+        "approval-date": "Approval Date",
+        "extension-time": "Extension Time",
+        "justification": "Justification",
+        "remark": "Remark"
+      }
+    },
+    "project-omission": {
+      "edit-project-omission": "Edit Project Omission",
+      "create-project-omission": "Create Project Omission",
+      "title": "Project Omission",
+      "form": {
+        "amount": "Amount",
+        "amount-percent": "Amount (%)",
+        "approval-date": "Approval Date",
+        "extension-time": "Extension Time",
+        "justification": "Justification",
+        "remark": "Remark"
+      }
+    },
+    "project-interim_payment": {
+      "edit-project-interim_payment": "Edit Project Interim Payment",
+      "create-project-interim_payment": "Create Project Interim Payment",
+      "title": "Project Interim Payment",
+      "form": {
+        "title": "Title",
+        "amount": "Amount",
+        "retention": "Retention",
+        "description": "Description"
+      }
+    },
+    "project-advance_payment": {
+      "edit-project-advance_payment": "Edit Project Advance Payment",
+      "create-project-advance_payment": "Create Project Advance Payment",
+      "title": "Project Advance Payment",
+      "form": {
+        "title": "Title",
+        "amount": "Amount",
+        "retention": "Retention",
+        "description": "Description"
+      }
+    },
+    "project-bond": {
+      "project-performance_bond": "Performance Bond",
+      "edit-project-performance_bond": "Edit Performance Bond",
+      "create-project-performance_bond": "Create Performance Bond",
+      "project-advance_bond": "Advance Bond",
+      "edit-project-advance_bond": "Edit Advance Bond",
+      "create-project-advance_bond": "Create Advance Bond",
+      "project-bid_bond": "Bid Bond",
+      "edit-project-bid_bond": "Edit Bid Bond",
+      "create-project-bid_bond": "Create Bid Bond",
+      "form": {
+        "amount": "Amount",
+        "percent": "Amount Percentage",
+        "issue-date": "Issue Date",
+        "expiration-date": "Expiration Date",
+        "institution-type": "Institution Type",
+        "issuing-institute": "Issuing Institute",
+        "institute-branch": "Institute Branch",
+        "branch-address": "Branch Address",
+        "phone": "Phone",
+        "remark": "Remark"
+      }
+    },
+    "stakeholder": {
+      "title": "Project Stakeholders",
+      "edit-project-stakeholder": "Edit Project Stakeholder",
+      "create-project-stakeholder": "Create Project Stakeholder",
+      "information": "Stakeholder Information",
+      "client": "Client",
+      "consultant": "Consultant",
+      "contractor": "Contractor",
+      "form": {
+        "stakeholder": "Stakeholder",
+        "title": "Title",
+        "description": "Description",
+        "remark": "Remark"
+      }
+    },
+    "plan": {
+      "title": "Project Plan",
+      "edit-project-plan": "Edit Project Plan",
+      "create-project-plan": "Create Project Plan",
+      "form": {
+        "type": "Type",
+        "year": "Year",
+        "project-expense": "Project Expense",
+        "quarter": "Quarter",
+        "manpower": "Manpower",
+        "direct-labour": "Direct Labour",
+        "indirect-labour": "Indirect Labour",
+        "material": "Material",
+        "machinery": "Machinery",
+        "other-expense": "Other Expense",
+        "sub-contractor-cost": "Sub Contractor Cost",
+        "cost-due-to-rework": "Cost Due To Rework",
+        "financial-performance": "Financial Performance",
+        "physical-performance": "Physical Performance",
+        "cost -due-to-rework": "Cost Due to Rework",
+        "over-head-cost": "Over Head Cost",
+        "total-cost": "Total Cost",
+        "subtotal": "Sub Total",
+        "profit": "Profit"
+      },
+      "columns": {
+        "type": "Type",
+        "financial-performance": "Financial Performance",
+        "physical-performance": "Physical Performance",
+        "project-expense": "Project Expense"
+      }
+    },
+    "report": {
+      "title": "Project Report",
+      "edit-project-report": "Edit Project Report",
+      "create-project-report": "Create Project Report",
+      "form": {
+        "type": "Type",
+        "year": "Year",
+        "project-expense": "Project Expense",
+        "quarter": "Quarter",
+        "manpower": "Manpower",
+        "direct-labour": "Direct Labour",
+        "indirect-labour": "Indirect Labour",
+        "material": "Material",
+        "machinery": "Machinery",
+        "other-expense": "Other Expense",
+        "cost-due-to-rework": "Cost Due To Rework",
+        "sub-contractor-cost": "Sub Contractor Cost",
+        "financial-performance": "Financial Performance",
+        "physical-performance": "Physical Performance",
+        "cost -due-to-rework": "Cost Due to Rework",
+        "over-head-cost": "Over Head Cost",
+        "total-cost": "Total Cost",
+        "subtotal": "Sub Total",
+        "profit": "Profit",
+        "header": "Header",
+        "report": "Report",
+        "plan": "Plan"
+      },
+      "columns": {
+        "type": "Type",
+        "financial-performance": "Financial Performance",
+        "physical-performance": "Physical Performance",
+        "project-expense": "Project Expense"
+      }
+    },
+
+    "resource": {
+      "title": "Project Resource",
+      "edit-project-resource": "Edit Project Resource",
+      "create-project-resource": "Create Project Resource",
+      "form": {},
+      "columns": {
+        "type": "Type",
+        "financial-performance": "Financial Performance",
+        "physical-performance": "Physical Performance",
+        "project-expense": "Project Expense"
+      }
+    },
+    "project-file": {
+      "project-initiation": "Intiation File",
+      "project-planning": "Planning File",
+      "project-execution": "Execution File",
+      "project-monitoring": "Monitoring File",
+      "project-closing": "Closing File",
+      "create-project-initiation": "Create Intiation File",
+      "create-project-planning": "Create Planning File",
+      "create-project-execution": "Create Execution File",
+      "create-project-monitoring": "Create Monitoring File",
+      "create-project-closing": "Create Closing File",
+      "edit-project-initiation": "Edit Intiation File",
+      "edit-project-planning": "Edit Planning File",
+      "edit-project-execution": "Edit Execution File",
+      "edit-project-monitoring": "Edit Monitoring File",
+      "edit-project-closing": "Edit Closing File",
+      "form": {
+        "description": "Description"
+      }
+    },
+    "other": {
+      "port": {
+        "title": "Port",
+        "create-port": "Create Port",
+        "edit-port": "Edit Port",
+        "port-details": "Port Details",
+        "columns": {
+          "title": "Title",
+          "operator": "Operator",
+          "port-type": "Port Type"
+        },
+        "form": {
+          "owner": "Owner",
+          "operator": "Operator",
+          "port-type": "Port Type",
+          "site-area": "Site Area",
+          "annual-traffic-size": "Annual Traffic Size"
+        },
+        "details": {
+          "owner": "Owner",
+          "operator": "Operator",
+          "port-type": "Port Type",
+          "site-area": "Site Area",
+          "annual-traffic-size": "Annual Traffic Size",
+          "revision-no": "Revision No",
+          "created-at": "Created At"
+        }
+      },
+      "telecom-infrastructure": {
+        "title": "Telecom Infrastructure",
+        "create-telecom-infrastructure": "Create Telecom Infrastructure",
+        "edit-telecom-infrastructure": "Edit Telecom Infrastructure",
+        "telecom-infrastructure-details": "Telecom Infrastructure Details",
+        "columns": {
+          "name": "Name",
+          "specifications": "Specifications",
+          "coverage-area": "Coverage Area",
+          "no-of-families-coverage": "No. of Families Coverage",
+          "service-period": "Service Period",
+          "inauguration-date": "Inauguration Date"
+        },
+        "form": {
+          "name": "Name",
+          "specifications": "Specifications",
+          "coverage-area": "Coverage Area",
+          "no-of-families-coverage": "No. of Families Coverage",
+          "inauguration-date": "Inauguration Date",
+          "service-period": "Service Period"
+        },
+        "details": {
+          "name": "Name",
+          "specifications": "Specifications",
+          "coverage-area": "Coverage Area",
+          "no-of-families-coverage": "Number of Families Coverage",
+          "service-period": "Service Period",
+          "inauguration-date": "Inauguration Date"
+        }
+      },
+      "mobile-network-component-age": {
+        "title": "Mobile Network Component Age",
+        "mobile-network-component-age-details": "Mobile Network Component Age Details",
+        "create-mobile-network-component-age": "Create Mobile Network Component Age",
+        "edit-mobile-network-component-age": "Edit Mobile Network Component Age",
+        "details": {
+          "mobile-network-id": "Mobile Network ID",
+          "cell": "Cell",
+          "towers": "Towers",
+          "antennas": "Antennas",
+          "base-stations": "Base Stations",
+          "repeaters": "Repeaters",
+          "switches": "Switches",
+          "others": "Others"
+        }
+      },
+      "mobile-network": {
+        "title": "Mobile Networks",
+        "create-mobile-network": "Create Mobile Network",
+        "edit-mobile-network": "Edit Mobile Network",
+        "mobile-network-details": "Mobile Network Details",
+        "details": {
+          "mobile-network-type": "Mobile Network Type",
+          "call-towers": "Call Towers",
+          "antennas": "Antennas",
+          "base-stations": "Base Stations",
+          "repeaters": "Repeaters",
+          "switches": "Switches",
+          "others": "Others"
+        }
+      },
+      "network-coverage": {
+        "title": "Network Coverage",
+        "network-coverage-details": "Network Coverage Details",
+        "create-network-coverage": "Create Network Coverage",
+        "edit-network-coverage": "Edit Network Coverage",
+        "details": {
+          "network-infrastructure-type": "Network Infrastructure Type",
+          "total-coverage-area": "Total Coverage Area",
+          "coverage-population-number": "Coverage Population Number",
+          "active-users-number": "Active Users Number",
+          "average-download-speed": "Average Download Speed",
+          "average-upload-speed": "Average Upload Speed",
+          "signal-strength": "Signal Strength",
+          "others": "Others"
+        }
+      },
+      "data-center": {
+        "title": "Data Centers",
+        "data-center-details": "Data Center Details",
+        "create-data-center": "Create Data Center",
+        "edit-data-center": "Edit Data Center",
+        "details": {
+          "data-center-type-id": "Data Center Type",
+          "servers": "Servers",
+          "storage-devices": "Storage Devices",
+          "networking-equipment": "Networking Equipment",
+          "cooling-systems": "Cooling Systems",
+          "backup-generators": "Backup Generators",
+          "others": "Others"
+        }
+      },
+      "environmental-control": {
+        "environmental-control-details": "Environmental Control Details",
+        "title": "Environmental Control",
+        "create-environmental-control": "Create Environmental Control",
+        "edit-environmental-control": "Edit Environmental Control",
+        "details": {
+          "data-center-id": "Data Center ID",
+          "temperature": "Temperature",
+          "humidity": "Humidity",
+          "air-quality": "Air Quality",
+          "others": "Others"
+        }
+      },
+      "data-center-facility-capacity": {
+        "data-center-facility-capacity-details": "Data Center Facility Details",
+        "title": "Data Center Facility",
+        "create-data-center-facility-capacity": "Create Data Center Facility",
+        "edit-data-center-facility-capacity": "Edit Data Center Facility",
+        "details": {
+          "data-center-id": "Data Center ID",
+          "total-floor-area": "Total Floor Area",
+          "power-capacity": "Power Capacity",
+          "rack-space-capacity": "Rack Space Capacity",
+          "cooling-capacity": "Cooling Capacity",
+          "access-control": "Access Control",
+          "surveillance-cameras": "Surveillance Cameras",
+          "fire-suppression-systems": "Fire Suppression Systems",
+          "intrusion-detection-systems": "Intrusion Detection Systems",
+          "others": "Others"
+        }
+      },
+      "data-center-component-age": {
+        "edit-data-center-component-age": "Edit Data Center Component Age",
+        "create-data-center-component-age": "Create Data Center Component Age",
+        "data-center-component-age-details": "Data Center Component Age Details",
+        "title": "Data Center Component Age",
+        "details": {
+          "data-center-id": "Data Center ID",
+          "servers": "Servers",
+          "storage-devices": "Storage Devices",
+          "networking-equipment": "Networking Equipment",
+          "cooling-systems": "Cooling Systems",
+          "backup-generators": "Backup Generators",
+          "others": "Others"
+        }
+      },
+      "data-center-component-manufacturer": {
+        "details": {
+          "data-center-id": "Data Center ID",
+          "servers": "Servers",
+          "storage-devices": "Storage Devices",
+          "networking-equipment": "Networking Equipment",
+          "cooling-systems": "Cooling Systems",
+          "backup-generators": "Backup Generators",
+          "others": "Others"
+        },
+        "data-center-component-manufacturer-details": "Data Center Component Manufacturer Details",
+        "title": "Data Center Component Manufacturer",
+        "create-data-center-component-manufacturer": "Create Data Center Component Manufacturer",
+        "edit-data-center-component-manufacturer": "Edit Data Center Component Manufacturer"
+      },
+      "internet-connection-infrastructure-age": {
+        "internet-connection-infrastructure-age-details": "Internet Connection Infrastructure Age Details",
+        "title": "Internet Connection Infrastructure Age",
+        "create-internet-connection-infrastructure-age": "Create Internet Connection Infrastructure Age",
+        "edit-internet-connection-infrastructure-age": "Edit Internet Connection Infrastructure Age",
+        "details": {
+          "internet-connection-id": "Internet Connection ID",
+          "routers": "Routers",
+          "switches": "Switches",
+          "modems": "Modems",
+          "cables": "Cables",
+          "others": "Others"
+        }
+      },
+      "building-dimension-detail": {
+        "title": "Building Dimension Detail",
+        "create-building-dimension-detail": "Create Building Dimension Detail",
+        "edit-building-dimension-detail": "Edit Building Dimension Detail",
+        "building-dimension-detail-details": "Building Dimension Detail Details",
+        "form": {
+          "site-area": "Site Area",
+          "site-above-sea-level": "Site Above Sea Level",
+          "ground-floor-area": "Ground Floor Area",
+          "total-floor-area": "Total Floor Area",
+          "basement-stories-no": "No of Basement Stories",
+          "above-ground-floor-stories-no": "No of Above Ground Floor Stories",
+          "height-above-natural-ground": "Height Above Natural Ground",
+          "depth-below-natural-ground": "Depth Below Natural Ground",
+          "remark": "Remark"
+        },
+        "details": {
+          "site-area": "Site Area",
+          "site-above-sea-level": "Site Above Sea Level",
+          "ground-floor-area": "Ground Floor Area",
+          "total-floor-area": "Total Floor Area",
+          "basement-stories-no": "Number of Basement Stories",
+          "above-ground-floor-stories-no": "Number of Above Ground Floor Stories",
+          "height-above-natural-ground": "Height Above Natural Ground",
+          "depth-below-natural-ground": "Depth Below Natural Ground",
+          "remark": "Remark"
+        }
+      },
+      "building-envelop-material": {
+        "title": "Building Envelop Materials",
+        "create-building-envelop-material": "Create Building Envelop Material",
+        "edit-building-envelop-material": "Edit Building Envelop Material",
+        "building-envelop-material-details": "Building Envelop Material Details",
+        "form": {
+          "exterior-walls": "Exterior Walls",
+          "roof-assembly": "Roof Assembly",
+          "exterior-windows": "Exterior Windows",
+          "exterior-doors": "Exterior Doors",
+          "shading-components": "Shading Components",
+          "remark": "Remark"
+        },
+        "details": {
+          "title": "Building Envelop Material Details",
+          "sub-title": "Summary of the Building Envelop Material Information",
+          "exterior-walls": "Exterior Walls",
+          "roof-assembly": "Roof Assembly",
+          "exterior-windows": "Exterior Windows",
+          "exterior-doors": "Exterior Doors",
+          "shading-components": "Shading Components",
+          "remark": "Remark"
+        }
+      },
+      "road-info": {
+        "title": "Road Infos",
+        "create-road-info": "Create Road Info",
+        "edit-road-info": "Edit Road Info",
+        "road-info-details": "Road Info Details",
+        "details": {
+          "material": "Material",
+          "location-function": "Location Function",
+          "traffic-volume": "Traffic Volume",
+          "traffic-type": "Traffic Type",
+          "economy": "Economy",
+          "rigidity": "Rigidity",
+          "topography": "Topography",
+          "revision-no": "Revision No"
+        }
+      },
+      "road-segment": {
+        "title": "Road Segments",
+        "create-road-segment": "Create Road Segment",
+        "edit-road-segment": "Edit Road Segment",
+        "road-segment-details": "Road Segment Details",
+        "details": {
+          "name": "Name",
+          "surface-type-id": "Surface Type",
+          "start-northing": "Start Northing",
+          "start-easting": "Start Easting",
+          "end-northing": "End Northing",
+          "end-easting": "End Easting",
+          "design-standard-id": "Design Standard"
+        }
+      },
+      "road-layer": {
+        "title": "Road Layers",
+        "create-road-layer": "Create Road Layer",
+        "edit-road-layer": "Edit Road Layer",
+        "road-layer-details": "Road Layer Details",
+        "details": {
+          "segment": "Segment",
+          "name": "Name",
+          "specifications": "Specifications",
+          "number": "Number",
+          "thickness": "Thickness",
+          "material": "Material",
+          "description": "Description"
+        }
+      },
+      "traffic-parameter": {
+        "title": "Traffic Parameters",
+        "create-traffic-parameter": "Create Traffic Parameter",
+        "edit-traffic-parameter": "Edit Traffic Parameter",
+        "traffic-parameter-details": "Traffic Parameter Details",
+        "details": {
+          "name": "Name",
+          "pedestrian-facility-id": "Pedestrian Facility",
+          "parking": "Parking",
+          "design-traffic-flow": "Design Traffic Flow",
+          "design-speed": "Design Speed",
+          "similar-for-all": "Similar For All"
+        }
+      },
+      "accessory": {
+        "title": "Accessories",
+        "create-accessory": "Create Accessory",
+        "edit-accessory": "Edit Accessory",
+        "accessory-details": "Accessory Details",
+        "details": {
+          "name": "Name",
+          "under-passes": "Under Passes",
+          "ramps": "Ramps",
+          "traffic-signals": "Traffic Signals",
+          "repair-stations": "Repair Stations",
+          "bicycle-lanes": "Bicycle Lanes",
+          "bicycle-signals": "Bicycle Signals",
+          "culvert": "Culvert",
+          "bridge": "Bridge"
+        }
+      },
+      "pavement": {
+        "title": "Pavements",
+        "create-pavement": "Create Pavement",
+        "edit-pavement": "Edit Pavement",
+        "pavement-details": "Pavement Details",
+        "details": {
+          "name": "Name",
+          "tangent-length": "Tangent Length",
+          "curve-length": "Curve Length",
+          "road-length-type-id": "Road Length Type",
+          "road-pavement-thickness": "Road Pavement Thickness",
+          "paved-road-surface-width": "Paved Road Surface Width"
+        }
+      },
+      "culvert-basic-data": {
+        "title": "Culvert Basic Data",
+        "create-culvert-basic-data": "Create Culvert Basic Data",
+        "edit-culvert-basic-data": "Edit Culvert Basic Data",
+        "culvert-basic-data-details": "Culvert Basic Data Details",
+        "details": {
+          "name": "Name",
+          "culvert-name": "Culvert Name",
+          "culvert-number": "Culvert Number",
+          "culvert-coordinate-x": "Culvert Coordinate X",
+          "culvert-coordinate-y": "Culvert Coordinate Y",
+          "area-topography-id": "Area Topography",
+          "highest-water-level": "Highest Water Level",
+          "lowest-water-level": "Lowest Water Level",
+          "construction-year": "Construction Year",
+          "contractor": "Contractor",
+          "designer": "Designer",
+          "culvert-cost": "Culvert Cost",
+          "detour-possibility": "Detour Possibility",
+          "road-alignment": "Road Alignment",
+          "altitude": "Altitude"
+        }
+      },
+      "culvert-structural-information": {
+        "title": "Culvert Structural Information",
+        "create-culvert-structural-information": "Create Culvert Structural Information",
+        "edit-culvert-structural-information": "Edit Culvert Structural Information",
+        "culvert-structural-information-details": "Culvert Structural Information Details",
+        "details": {
+          "name": "Name",
+          "culvert-type": "Culvert Type",
+          "culvert-barrel-length": "Culvert Barrel Length",
+          "culvert-height": "Culvert Height",
+          "opening-number": "Opening Number",
+          "opening-width": "Opening Width",
+          "total-culvert-width": "Total Culvert Width",
+          "distance-between-barrels": "Distance Between Barrels",
+          "head-wall-length": "Head Wall Length",
+          "pier-type-id": "Pier Type",
+          "pier-height": "Pier Height",
+          "abutment-type-id": "Abutment Type",
+          "abutment-average-height": "Abutment Average Height",
+          "endwall-type-inlet-id": "Endwall Type Inlet",
+          "endwall-type-outlet-id": "Endwall Type Outlet",
+          "wingwall-average-length": "Wingwall Average Length",
+          "paved-water-way-type-id": "Paved Water Way Type",
+          "soil-type-id": "Soil Type"
+        }
+      },
+      "culvert-road-over-information": {
+        "title": "Culvert Road Over Information",
+        "create-culvert-road-over-information": "Create Culvert Road Over Information",
+        "edit-culvert-road-over-information": "Edit Culvert Road Over Information",
+        "culvert-road-over-information-details": "Culvert Road Over Information Details",
+        "details": {
+          "name": "Name",
+          "carriage-way-width": "Carriage Way Width",
+          "side-walk-width": "Side Walk Width",
+          "lane-number": "Lane Number",
+          "head-wall-to-head-wall": "Head Wall to Head Wall",
+          "average-fill-height": "Average Fill Height",
+          "guard-rail-type-id": "Guard Rail Type",
+          "parapet-length": "Parapet Length"
+        }
+      },
+      "bridge-basic-data": {
+        "title": "Bridge Basic Data",
+        "create-bridge-basic-data": "Create Bridge Basic Data",
+        "edit-bridge-basic-data": "Edit Bridge Basic Data",
+        "bridge-basic-data-details": "Bridge Basic Data Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "bridge-number": "Bridge Number",
+          "bridge-length": "Bridge Length",
+          "bridge-width": "Bridge Width",
+          "construction-year": "Construction Year",
+          "contractor": "Contractor",
+          "designer": "Designer",
+          "bridge-cost": "Bridge Cost",
+          "land-capacity": "Land Capacity",
+          "average-daily-traffic": "Average Daily Traffic"
+        }
+      },
+      "bridge-area-data": {
+        "title": "Bridge Area Data",
+        "create-bridge-area-data": "Create Bridge Area Data",
+        "edit-bridge-area-data": "Edit Bridge Area Data",
+        "bridge-area-data-details": "Bridge Area Data Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "river-width": "River Width",
+          "highest-water-level": "Highest Water Level",
+          "lowest-water-level": "Lowest Water Level",
+          "area-topography-id": "Area Topography",
+          "detour-possibility": "Detour Possibility",
+          "road-alignment": "Road Alignment",
+          "altitude": "Altitude",
+          "load-limit-sign": "Load Limit Sign"
+        }
+      },
+      "bridge-sub-structure": {
+        "title": "Bridge Sub Structure",
+        "create-bridge-sub-structure": "Create Bridge Sub Structure",
+        "edit-bridge-sub-structure": "Edit Bridge Sub Structure",
+        "bridge-sub-structure-details": "Bridge Sub Structure Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "abutment-a1-height": "Abutment A1 Height",
+          "abutment-a1-width": "Abutment A1 Width",
+          "abutment-a2-height": "Abutment A2 Height",
+          "abutment-a2-width": "Abutment A2 Width",
+          "wing-wall-length": "Wing Wall Length",
+          "pier-type-id": "Pier Type",
+          "piers-number": "Number of Piers",
+          "piers-dimension": "Piers Dimension",
+          "pier1-height": "Pier 1 Height",
+          "pier1-width": "Pier 1 Width",
+          "pier2-height": "Pier 2 Height",
+          "pier2-width": "Pier 2 Width"
+        }
+      },
+      "bridge-foundation": {
+        "title": "Bridge Foundation",
+        "create-bridge-foundation": "Create Bridge Foundation",
+        "edit-bridge-foundation": "Edit Bridge Foundation",
+        "bridge-foundation-details": "Bridge Foundation Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "abutment-type-id": "Abutment Type",
+          "pier-type-id": "Pier Type",
+          "abutment-foundation-size": "Abutment Foundation Size",
+          "pier-foundation-size": "Pier Foundation Size",
+          "abutment-pile-number": "Number of Abutment Piles",
+          "pier-pile-number": "Number of Pier Piles",
+          "abutment-pile-depth": "Abutment Pile Depth",
+          "pier-pile-depth": "Pier Pile Depth",
+          "soil-type-id": "Soil Type"
+        }
+      },
+      "bridge-inspection": {
+        "title": "Bridge Inspection",
+        "create-bridge-inspection": "Create Bridge Inspection",
+        "edit-bridge-inspection": "Edit Bridge Inspection",
+        "bridge-inspection-details": "Bridge Inspection Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "bridge-part-defect-id": "Bridge Part Defect",
+          "damage-type-id": "Damage Type",
+          "damage-condition-id": "Damage Condition",
+          "hydrology-defect-id": "Hydrology Defect",
+          "maintenance-action": "Maintenance Action",
+          "bridge-history": "Bridge History",
+          "inspector-remark": "Inspector Remark"
+        }
+      },
+      "bridge-structure-information": {
+        "title": "Bridge Structure Information",
+        "create-bridge-structure-information": "Create Bridge Structure Information",
+        "edit-bridge-structure-information": "Edit Bridge Structure Information",
+        "bridge-structure-information-details": "Bridge Structure Information Details",
+        "details": {
+          "name": "Name",
+          "bridge-name": "Bridge Name",
+          "bridge-structure-type-id": "Bridge Structure Type",
+          "span-number": "Span Number",
+          "span-composition": "Span Composition",
+          "total-span-length": "Total Span Length",
+          "carriage-width": "Carriage Width",
+          "side-walk-width": "Side Walk Width",
+          "lane-number": "Lane Number",
+          "span-support-type-id": "Span Support Type",
+          "deck-slab-type-id": "Deck Slab Type",
+          "girder-number": "Girder Number",
+          "girder-depth": "Girder Depth",
+          "girder-spacing": "Girder Spacing",
+          "girder-width": "Girder Width",
+          "east-region": "East Region",
+          "west-region": "West Region",
+          "central-region": "Central Region",
+          "north-region": "North Region",
+          "south-region": "South Region",
+          "ring-road": "Ring Road",
+          "remark": "Remark"
+        }
+      },
+      "traffic-volume": {
+        "title": "Traffic Volume",
+        "create-traffic-volume": "Create Traffic Volume",
+        "edit-traffic-volume": "Edit Traffic Volume",
+        "traffic-volume-details": "Traffic Volume Details",
+        "details": {
+          "name": "Name",
+          "count-type-id": "Count Type",
+          "count-location-coordinate-x": "Count Location Coordinate X",
+          "count-location-coordinate-y": "Count Location Coordinate Y",
+          "count-time": "Count Time",
+          "lane-number": "Lane Number",
+          "vehicle-number-per-hour": "Vehicle Number Per Hour",
+          "average-daily-traffic-volume": "Average Daily Traffic Volume",
+          "corridor-importance-level": "Corridor Importance Level"
+        }
+      },
+      "road-project-quality-control": {
+        "title": "Road Project Quality Control",
+        "create-road-project-quality-control": "Create Road Project Quality Control",
+        "edit-road-project-quality-control": "Edit Road Project Quality Control",
+        "road-project-quality-control-details": "Road Project Quality Control Details",
+        "details": {
+          "name": "Name",
+          "project-phase-id": "Project Phase",
+          "inspection-type-id": "Inspection Type",
+          "defect-encountered": "Defect Encountered",
+          "remark": "Remark"
+        }
+      },
+      "road-drainage": {
+        "title": "Road Drainage",
+        "create-road-drainage": "Create Road Drainage",
+        "edit-road-drainage": "Edit Road Drainage",
+        "road-drainage-details": "Road Drainage Details",
+        "details": {
+          "name": "Name",
+          "length": "Length",
+          "height": "Height",
+          "width": "Width",
+          "current-condition-id": "Current Condition",
+          "weight-limit": "Weight Limit",
+          "design-life-span": "Design Life Span",
+          "inspection-frequency": "Inspection Frequency",
+          "construction-completion-year": "Construction Completion Year",
+          "remark": "Remark",
+          "dimensions": "Dimensions"
+        }
+      },
+      "drainage-assessment": {
+        "title": "Drainage Assessment",
+        "create-drainage-assessment": "Create Drainage Assessment",
+        "edit-drainage-assessment": "Edit Drainage Assessment",
+        "drainage-assessment-details": "Drainage Assessment Details",
+        "details": {
+          "road-segment": "Road Segment",
+          "drainage-type": "Drainage Type",
+          "drainage-condition": "Drainage Condition",
+          "remark": "Remarks",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
+        }
+      },
+      "segment-geometry": {
+        "title": "Segment Geometries",
+        "create-segment-geometry": "Create Segment Geometry",
+        "edit-segment-geometry": "Edit Segment Geometry",
+        "segment-geometry-details": "Segment Geometry Details",
+        "details": {
+          "name": "Name",
+          "carriage-way-width": "Carriage Way Width",
+          "lane-width": "Lane Width",
+          "shoulder-width": "Shoulder Width",
+          "cross-section-type-id": "Cross Section Type",
+          "grade-percentage": "Grade Percentage",
+          "elevation-change": "Elevation Change",
+          "cross-slope-percentage": "Cross Slope Percentage",
+          "property-access-control": "Property Access Control",
+          "similar-for-all-lane": "Similar For All Lanes"
+        }
+      },
+      "intersection-driveway": {
+        "title": "Intersection and Driveway",
+        "create-intersection-driveway": "Create Intersection and Driveway",
+        "edit-intersection-driveway": "Edit Intersection and Driveway",
+        "intersection-driveway-details": "Intersection and Driveway Details",
+        "details": {
+          "name": "Name",
+          "number-of-intersections": "Number of Intersections",
+          "intersection-type": "Intersection Type",
+          "driveway-access-point": "Driveway Access Point",
+          "similar-for-all": "Similar For All",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
+        }
+      },
+      "generating-capacity": {
+        "title": "Generating Capacity",
+        "create-generating-capacity": "Create Generating Capacity",
+        "edit-generating-capacity": "Edit Generating Capacity",
+        "generating-capacity-details": "Generating Capacity Details",
+        "details": {
+          "operator": "Operator",
+          "commission-date": "Commission Date",
+          "turbine-type-number": "Turbine Type Number",
+          "designed-capacity": "Designed Capacity",
+          "generating-capacity": "Generating Capacity",
+          "installed-capacity": "Installed Capacity",
+          "capacity-factor": "Capacity Factor",
+          "annual-generation": "Annual Generation",
+          "revision-no": "Revision No"
+        }
+      },
+      "turbine-info": {
+        "title": "Turbine Info",
+        "create-turbine-info": "Create Turbine Info",
+        "edit-turbine-info": "Edit Turbine Info",
+        "turbine-info-details": "Turbine Info Details",
+        "details": {
+          "turbine-type": "Turbine Type",
+          "name": "Turbine Name",
+          "generating-capacity": "Generating Capacity",
+          "designed-quantity": "Designed Quantity",
+          "installed-quantity": "Installed Quantity",
+          "functional-quantity": "Functional Quantity",
+          "detail": "Detail"
+        }
+      },
+      "hydro-electric-dam": {
+        "title": "Hydro Electric Dam",
+        "create-hydro-electric-dam": "Create Hydro Electric Dam",
+        "edit-hydro-electric-dam": "Edit Hydro Electric Dam",
+        "hydro-electric-dam-details": "Hydro Electric Dam Details",
+        "details": {
+          "river-name": "River Name",
+          "elevation-from-sea-level": "Elevation from Sea Level",
+          "elevation-from-ngl": "Elevation from NGL",
+          "dam-type": "Dam Type",
+          "dam-volume": "Dam Volume",
+          "gated-spillway-no": "Number of Gated Spillways",
+          "none-gated-spillway-no": "Number of Non-Gated Spillways"
+        }
+      },
+      "solar-energy": {
+        "title": "Solar Energy",
+        "create-solar-energy": "Create Solar Energy",
+        "edit-solar-energy": "Edit Solar Energy",
+        "solar-energy-details": "Solar Energy Details",
+        "details": {
+          "title": "Title",
+          "description": "Description",
+          "specifications": "Specifications"
+        }
+      },
+      "railway-station": {
+        "title": "Railway Stations",
+        "create-railway-station": "Create Railway Station",
+        "edit-railway-station": "Edit Railway Station",
+        "railway-station-details": "Railway Station Details",
+        "details": {
+          "name": "Name",
+          "specifications": "Specifications",
+          "northing": "Northing",
+          "easting": "Easting",
+          "revision-no": "Revision Number",
+          "energy-source": "Energy Source",
+          "major-operator": "Major Operator",
+          "system-length": "System Length",
+          "total-station-no": "Total Station Number",
+          "fright-cargo-no": "Fright Cargo Number",
+          "transport-cargo-no": "Transport Cargo Number"
+        }
+      },
+      "spillway-info": {
+        "title": "Spillway Infos",
+        "create-spillway-info": "Create Spillway Info",
+        "edit-spillway-info": "Edit Spillway Info",
+        "spillway-info-details": "Spillway Info Details",
+        "details": {
+          "name": "Name",
+          "type": "Type",
+          "quantity": "Quantity",
+          "specifications": "Specifications",
+          "capacity": "Capacity"
+        }
+      },
+      "irrigation-capacity": {
+        "title": "Irrigation Capcities",
+        "create-irrigation-capacity": "Create Irrigation Capcity",
+        "edit-irrigation-capacity": "Edit Irrigation Capcity",
+        "irrigation-capacity-details": "Irrigation Capcity Details",
+        "details": {
+          "designed-irrigation-capacity": "Designed Irrigation Capacity",
+          "actual-irrigation-capacity": "Actual Irrigation Capacity",
+          "revision-no": "Revision Number"
+        }
+      },
+      "water-irrigation-dam": {
+        "title": "Irrigation Capcities",
+        "create-water-irrigation-dam": "Create Water Irrigation  Dam",
+        "edit-water-irrigation-dam": "Edit Water Irrigation  Dam",
+        "water-irrigation-dam-details": "Water Irrigation  Dam Details",
+        "details": {
+          "dam-volume": "Dam Volume",
+          "designed-water-irrigation-dam": "Designed Irrigation Capacity",
+          "total-capacity": "Total Capacity",
+          "active-capacity": "Active Capacity",
+          "inactive-capacity": "Inactive Capacity",
+          "catchment-area": "Catchment Area",
+          "surface-area": "Surface Area"
+        }
+      },
+      "reservoir-info": {
+        "title": "Reservoir Infos",
+        "create-reservoir-info": "Create Reservoir Info",
+        "edit-reservoir-info": "Edit Reservoir Info",
+        "reservoir-info-details": "Reservoir Info Details",
+        "details": {
+          "dam-volume": "Dam Volume",
+          "total-capacity": "Total Capacity",
+          "active-capacity": "Active Capacity",
+          "inactive-capacity": "Inactive Capacity",
+          "catchment-area": "Catchment Area",
+          "surface-area": "Surface Area"
+        }
+      },
+      "wind-energy": {
+        "title": "Wind Energy",
+        "create-wind-energy": "Create Wind Energy",
+        "edit-wind-energy": "Edit Wind Energy",
+        "wind-energy-details": "Wind Energy Details",
+        "details": {
+          "title": "Title",
+          "description": "Description",
+          "specifications": "Specifications"
+        }
+      },
+      "transformer-type": {
+        "title": "Transformer Type",
+        "create-transformer-type": "Create Transformer Type",
+        "edit-transformer-type": "Edit Transformer Type",
+        "transformer-type-details": "Transformer Type Details",
+        "details": {
+          "name": "Name",
+          "description": "Description"
+        }
+      },
+      "transformer": {
+        "title": "Transformer",
+        "create-transformer": "Create Transformer",
+        "edit-transformer": "Edit Transformer",
+        "transformer-details": "Transformer Details",
+        "details": {
+          "transformertype": "Transformer Type",
+          "specifications": "Specifications",
+          "input-current": "Input Current",
+          "input-voltage": "Input Voltage",
+          "output-current": "Output Current",
+          "output-voltage": "Output Voltage",
+          "northing": "Northing",
+          "easting": "Easting"
+        }
+      },
+      "transmission-line": {
+        "title": "Transmission",
+        "create-transmission-line": "Create Transmission",
+        "edit-transmission-line": "Edit Transmission",
+        "transmission-line-details": "Transmission Details",
+        "details": {
+          "name": "Name",
+          "line-type": "Line Type",
+          "transmission-capacity": "Transmission Capacity",
+          "transmitting-power": "Transmitting Power",
+          "transmitting-current": "Transmitting Current",
+          "transmitting-voltage": "Transmitting Voltage",
+          "transmission-towers-number": "Transmission Towers Number",
+          "start-northing": "Start Northing",
+          "start-easting": "Start Easting",
+          "end-northing": "End Northing",
+          "end-easting": "End Easting"
+        }
+      },
+      "transmission-line-information": {
+        "title": "Transmission Line Information",
+        "transmission-line-information-details": "Transmission Line Information Details",
+        "create-transmission-line-information": "Create Transmission Line Information",
+        "edit-transmission-line-information": "Edit Transmission Line Information",
+        "details": {
+          "name": "Name",
+          "transmission-voltage": "Transmission Voltage",
+          "transmission-line-route-length": "Transmission Line Route Length",
+          "circuit-number": "Circuit Number",
+          "starting-point-northing": "Starting Point Northing",
+          "starting-point-easting": "Starting Point Easting",
+          "ending-point-northing": "Ending Point Northing",
+          "ending-point-easting": "Ending Point Easting",
+          "lifetime": "Lifetime",
+          "remark": "Remark"
+        }
+      },
+      "electric-tower": {
+        "title": "Electric Tower",
+        "create-electric-tower": "Create Electric Tower",
+        "edit-electric-tower": "Edit Electric Tower",
+        "electric-tower-details": "Electric Tower Details",
+        "details": {
+          "overall-length": "Overall Length",
+          "embedded-length": "Embedded Length",
+          "columns": "Columns",
+          "braces": "Braces",
+          "beam-cross-arms": "Beam Cross Arms",
+          "brace-cross-arm": "Brace Cross Arm",
+          "elasticity-modulus": "Elasticity Modulus",
+          "poission-ratio": "Poisson Ratio"
+        }
+      },
+      "safety-and-health": {
+        "title": "Safety and Health",
+        "safety-and-health-details": "Safety and Health Details",
+        "create-safety-and-health": "Create Safety and Health Record",
+        "edit-safety-and-health": "Edit Safety and Health Record",
+        "details": {
+          "road-segment": "Road Segment",
+          "hazard-type": "Hazard Type",
+          "potential-impact": "Potential Impact",
+          "risk-level": "Risk Level",
+          "immediate-action-taken": "Immediate Action Taken",
+          "incident-type": "Incident Type",
+          "incident-time": "Incident Time",
+          "medicare-required": "Medicare Required",
+          "total-injury-number": "Total Injury Number",
+          "incident-reported-by": "Incident Reported By",
+          "ppe-type": "PPE Type",
+          "ppe-condition": "PPE Condition",
+          "trained-on-equipment-usage": "Trained on Equipment Usage",
+          "training-hours": "Training Hours",
+          "weather-condition": "Weather Condition",
+          "injury-severity": "Injury Severity",
+          "fatality-number": "Fatality Number",
+          "recommendation": "Recommendation",
+          "remark": "Remark"
+        }
+      },
+      "maintenance-history": {
+        "title": "Maintenance History",
+        "maintenance-history-details": "Maintenance History Details",
+        "create-maintenance-history": "Create Maintenance History",
+        "edit-maintenance-history": "Edit Maintenance History",
+        "details": {
+          "road-segment": "Road Segment",
+          "last-maintenance-date": "Last Maintenance Date",
+          "maintenance-type": "Maintenance Type",
+          "maintenance-cost": "Maintenance Cost",
+          "severity-level": "Severity Level",
+          "suggested-repair": "Suggested Repair",
+          "recommended-action-urgency": "Recommended Action Urgency",
+          "remark": "Remark"
+        }
+      },
+      "road-surface-condition": {
+        "title": "Road Surface Condition",
+        "road-surface-condition-details": "Road Surface Condition Details",
+        "create-road-surface-condition": "Create Road Surface Condition",
+        "edit-road-surface-condition": "Edit Road Surface Condition",
+        "details": {
+          "road-segment": "Road Segment",
+          "cracks": "Cracks",
+          "rutting": "Rutting",
+          "patching": "Patching",
+          "drainage-problems": "Drainage Problems",
+          "surface-type": "Surface Type",
+          "assessment-condition": "Assessment Condition",
+          "action-taken-date": "Action Taken Date",
+          "action-taken": "Action Taken",
+          "action-taken-cost": "Action Taken Cost",
+          "remark": "Remark"
+        }
+      },
+      "environmental-data": {
+        "title": "Environmental Data",
+        "create-environmental-data": "Create Environmental Data",
+        "edit-environmental-data": "Edit Environmental Data",
+        "environmental-data-details": "Environmental Data Details",
+        "details": {
+          "remark": "Remark",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
+        },
+        "file-types": {
+          "impact-assessment": "Impact Assessment",
+          "community-feedback": "Community Feedback",
+          "mitigation-measures": "Mitigation Measures"
+        },
+        "road-maintenance-data": {
+          "title": "Road Maintenance Data",
+          "create-road-maintenance-data": "Create Road Maintenance Data",
+          "edit-road-maintenance-data": "Edit Road Maintenance Data",
+          "road-maintenance-data-details": "Road Maintenance Data Details",
+          "details": {
+            "road-segment": "Road Segment",
+            "maintenance-start-date": "Maintenance Start Date",
+            "maintenance-end-date": "Maintenance End Date",
+            "weather-condition": "Weather Condition",
+            "pavement-condition": "Pavement Condition",
+            "remark": "Remark",
+            "created-at": "Created At",
+            "updated-at": "Updated At"
+          }
+        }
+      },
+      "columns": {
+        "title": "Title",
+        "elapsed-time": "Elapsed Time",
+        "cpi": "CPI",
+        "spi": "SPI"
+      },
+      "main-contract-price": {
+        "price-details": "Price Details",
+        "title": "Main Contract Price",
+        "edit-main-contract-price": "Edit Main Contract Price",
+        "create-main-contract-price": "Create Main Contract Price",
+        "add-main-contract-price": "Please Add Main Contract Price",
+        "form": {
+          "main-contract-price": "Main Contract Price",
+          "rebate": "Rebate",
+          "remark": "Remark",
+          "source-of-finance": "Source of Finance"
+        }
+      },
+      "project-manager": {
+        "title": "Project Managers",
+        "create": "Create Project Manager",
+        "edit": "Edit Project Manager",
+        "details": "Project Manager Details",
+        "position": "Position",
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "nationalIdNo": "National ID No",
+        "gender": "Gender",
+        "phone": "Phone",
+        "email": "Email",
+        "stakeholder": "Stakeholder"
+      },
+      "project-contact-person": {
+        "title": "Project Contact Persons",
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "position": "Position",
+        "department": "Department",
+        "nationalIdNo": "National ID No",
+        "gender": "Gender",
+        "phone": "Phone",
+        "email": "Email",
+        "stakeholder": "Stakeholder",
+        "details": "Contact Person Details",
+        "create": "Create Contact Person",
+        "edit": "Edit Contact Person"
+      },
+      "safety-status": {
+        "title": "Project Safety Status",
+        "fatal-injuries": "Fatal Injuries",
+        "major-injuries": "Major Injuries",
+        "minor-injuries": "Minor Injuries",
+        "measures-taken": "Measures Taken",
+        "lesson-learned": "Lesson Learned",
+        "details": "Safety Status Details",
+        "create": "Create Safety Status",
+        "edit": "Edit Safety Status"
+      },
+      "weather-condition": {
+        "title": "Weather Condition",
+        "weather-type": "Weather Type",
+        "description": "Description",
+        "details": "Weather Condition Details",
+        "create": "Create Weather Condition",
+        "edit": "Edit Weather Condition"
+      },
+      "geotechnical-information": {
+        "title": "Geotechnical Information",
+        "create-geotechnical-information": "Create Geotechnical Information",
+        "edit-geotechnical-information": "Edit Geotechnical Information",
+        "geotechnical-information-details": "Geotechnical Information Details",
+        "details": {
+          "name": "Name",
+          "soil-type": "Soil Type",
+          "ground-water-impact": "Ground Water Impact",
+          "soil-bearing-capacity": "Soil Bearing Capacity",
+          "slope-stability": "Slope Stability",
+          "retaining-walls": "Retaining Walls",
+          "geological-hazard": "Geological Hazard",
+          "remark": "Remark",
+          "created-at": "Created At",
+          "updated-at": "Updated At"
+        },
+        "file-types": {
+          "seismic-design": "Seismic Design",
+          "geotechnical-report": "Geotechnical Report",
+          "foundation-design": "Foundation Design"
+        }
+      },
+      "geothermal-power-infrastructure": {
+        "details": {
+          "turbine-manufacturer": "Turbine Manufacturer",
+          "turbine-model": "Turbine Model",
+          "turbine-type-id": "Turbine Type ID",
+          "each-turbine-capacity": "Each Turbine Capacity",
+          "remark": "Remark"
+        },
+        "geothermal-power-infrastructure-details": "Geothermal Power Infrastructure Details",
+        "create-geothermal-power-infrastructure": "Create Power Infrastructure Infrastructure",
+        "edit-geothermal-power-infrastructure": "Edit Power Infrastructure Infrastructure",
+        "title": "Geothermal Power Infrastructure"
+      },
+      "road-maintenance-activity": {
+        "title": "Road Maintenance Activity",
+        "create-road-maintenance-activity": "Create Road Maintenance Activity",
+        "edit-road-maintenance-activity": "Edit Road Maintenance Activity",
+        "road-maintenance-activity-details": "Road Maintenance Activity Details",
+        "details": {
+          "road-segment": "Road Segment",
+          "maintenance-frequency": "Maintenance Frequency",
+          "maintenance-type": "Maintenance Type",
+          "consultant": "Consultant",
+          "remark": "Remark"
+        }
+      },
+      "telecom-infrastructure-component": {
+        "title": "Telecom Infrastructure Component",
+        "create-telecom-infrastructure-component": "Create Telecom Infrastructure Component",
+        "edit-telecom-infrastructure-component": "Edit Telecom Infrastructure Component",
+        "telecom-infrastructure-component-details": "Telecom Infrastructure Component Details",
+        "details": {
+          "mobile-network-type": "Mobile Network Type",
+          "cables": "Cables",
+          "wires": "Wires",
+          "routers": "Routers",
+          "switches": "Switches",
+          "hubs": "Hubs",
+          "repeaters": "Repeaters",
+          "antennas": "Antennas",
+          "towers": "Towers",
+          "remark": "Remark"
+        }
+      },
+      "telecom-infrastructure-age": {
+        "title": "Telecom Infrastructure Age",
+        "create-telecom-infrastructure-age": "Create Telecom Infrastructure Age",
+        "edit-telecom-infrastructure-age": "Edit Telecom Infrastructure Age",
+        "telecom-infrastructure-age-details": "Telecom Infrastructure Age Details",
+        "infrastructure-age": "Infrastructure Age",
+        "infrastructure-components": "Infrastructure Components",
+        "details": {
+          "cables": "Cables",
+          "wires": "Wires",
+          "routers": "Routers",
+          "switches": "Switches",
+          "hubs": "Hubs",
+          "repeaters": "Repeaters",
+          "antennas": "Antennas",
+          "towers": "Towers",
+          "remark": "Remark"
+        }
+      },
+      "hydrological-information": {
+        "details": {
+          "water-source": "Water Source",
+          "catchment-area": "Catchment Area",
+          "elevation-change": "Elevation Change",
+          "head": "Head",
+          "total-inflow": "Total Inflow",
+          "active-storage-volume": "Active Storage Volume",
+          "water-stored": "Water Stored",
+          "remark": "Remark"
+        },
+        "hydrological-information-details": "Hydrological Information Details",
+        "title": "Hydrological Information",
+        "create-hydrological-information": "Create Hydrological Information",
+        "edit-hydrological-information": "Edit Hydrological Information"
+      },
+      "maintenance": {
+        "title": "Maintenance",
+        "create-maintenance": "Create Maintenance",
+        "edit-maintenance": "Edit Maintenance",
+        "maintenance-details": "Maintenance Details",
+        "maintenance-record": "Maintenance Record",
+        "details": {
+          "maintenance-frequency": "Maintenance Frequency",
+          "service-level-agreement": "Service Level Agreement",
+          "remark": "Remark"
+        },
+        "file-types": {
+          "maintenance-document": "Maintenance Document",
+          "infrastructure-image": "Infrastructure Image"
+        }
+      },
+      "network-capacity": {
+        "title": "Network Capacity",
+        "create-network-capacity": "Create Network Capacity",
+        "edit-network-capacity": "Edit Network Capacity",
+        "network-capacity-details": "Network Capacity Details",
+        "details": {
+          "network-type": "Network Type",
+          "total-bandwidth": "Total Bandwidth",
+          "users-number": "Number of Users",
+          "remark": "Remark"
+        }
+      },
+      "satellite-network": {
+        "title": "Satellite Network",
+        "create-satellite-network": "Create Satellite Network",
+        "edit-satellite-network": "Edit Satellite Network",
+        "satellite-network-details": "Satellite Network Details",
+        "network-components": "Network Components",
+        "details": {
+          "satellite-network-type": "Satellite Network Type",
+          "satellite": "Satellite",
+          "ground-stations": "Ground Stations",
+          "modems": "Modems",
+          "routers": "Routers",
+          "others": "Others"
+        }
+      },
+      "satellite-infrastructure-age": {
+        "title": "Satellite Infrastructure Age",
+        "create-satellite-infrastructure-age": "Create Satellite Infrastructure Age",
+        "edit-satellite-infrastructure-age": "Edit Satellite Infrastructure Age",
+        "satellite-infrastructure-age-details": "Satellite Infrastructure Age Details",
+        "infrastructure-age": "Infrastructure Age (in years)",
+        "details": {
+          "satellite-network": "Satellite Network",
+          "satellite": "Satellite Age",
+          "ground-stations": "Ground Stations Age",
+          "modems": "Modems Age",
+          "routers": "Routers Age",
+          "others": "Others"
+        }
+      },
+      "satellite-network-component-manufacturer": {
+        "title": "Satellite Network Component Manufacturer",
+        "create-satellite-network-component-manufacturer": "Create Satellite Network Component Manufacturer",
+        "edit-satellite-network-component-manufacturer": "Edit Satellite Network Component Manufacturer",
+        "satellite-network-component-manufacturer-details": "Satellite Network Component Manufacturer Details",
+        "component-manufacturers": "Component Manufacturers",
+        "details": {
+          "satellite-network": "Satellite Network",
+          "satellite": "Satellite Manufacturer",
+          "ground-stations": "Ground Stations Manufacturer",
+          "modems": "Modems Manufacturer",
+          "routers": "Routers Manufacturer",
+          "others": "Other Manufacturers"
+        }
+      },
+      "internet-connection": {
+        "title": "Internet Connection",
+        "create-internet-connection": "Create Internet Connection",
+        "edit-internet-connection": "Edit Internet Connection",
+        "internet-connection-details": "Internet Connection Details",
+        "connection-components": "Connection Components",
+        "details": {
+          "internet-connection-type": "Internet Connection Type",
+          "routers": "Routers",
+          "switches": "Switches",
+          "modems": "Modems",
+          "cables": "Cables",
+          "others": "Others"
+        }
+      },
+      "broadcasting-infrastructure-age": {
+        "title": "Broadcasting Infrastructure Age",
+        "create-broadcasting-infrastructure-age": "Create Broadcasting Infrastructure Age",
+        "edit-broadcasting-infrastructure-age": "Edit Broadcasting Infrastructure Age",
+        "broadcasting-infrastructure-age-details": "Broadcasting Infrastructure Age Details",
+        "infrastructure-age": "Infrastructure Age",
+        "details": {
+          "name": "Name",
+          "broadcasting-infrastructure": "Broadcasting Infrastructure",
+          "antennas": "Antennas",
+          "transmitters": "Transmitters",
+          "towers": "Towers",
+          "cables": "Cables",
+          "others": "Others"
+        }
+      },
+      "internet-connection-infrastructure-manufacturer": {
+        "details": {
+          "internet-connection-id": "Internet Connection ID",
+          "routers": "Routers",
+          "switches": "Switches",
+          "modems": "Modems",
+          "cables": "Cables",
+          "others": "Others"
+        },
+        "internet-connection-infrastructure-manufacturer-details": "Internet Connection Infrastructure Manufacturer Details",
+        "title": "Internet Connection Infrastructure Manufacturer",
+        "create-internet-connection-infrastructure-manufacturer": "Create Internet Connection Infrastructure Manufacturer",
+        "edit-internet-connection-infrastructure-manufacturer": "Edit Internet Connection Infrastructure Manufacturer"
+      },
+      "broadcasting-infrastructure": {
+        "title": "Broadcasting Infrastructure",
+        "create-broadcasting-infrastructure": "Create Broadcasting Infrastructure",
+        "edit-broadcasting-infrastructure": "Edit Broadcasting Infrastructure",
+        "broadcasting-infrastructure-details": "Broadcasting Infrastructure Details",
+        "infrastructure-components": "Infrastructure Components",
+        "details": {
+          "broadcasting-infrastructure-type": "Broadcasting Infrastructure Type",
+          "broadcasting-network": "Broadcasting Network",
+          "antennas": "Antennas",
+          "transmitters": "Transmitters",
+          "towers": "Towers",
+          "cables": "Cables",
+          "others": "Others"
+        }
+      },
+      "geothermal-power-well": {
+        "title": "Geothermal Power Well",
+        "create-geothermal-power-well": "Create Geothermal Power Well",
+        "edit-geothermal-power-well": "Edit Geothermal Power Well",
+        "geothermal-power-well-details": "Geothermal Power Well Details",
+        "well-specifications": "Well Specifications",
+        "details": {
+          "wells-name": "Wells Name",
+          "wells-number": "Wells Number",
+          "depth": "Depth",
+          "well-diameter": "Well Diameter",
+          "drilling-period": "Drilling Period",
+          "temperature-at-bottom-hole": "Temperature at Bottom Hole",
+          "plant-life": "Plant Life",
+          "remark": "Remark"
+        }
+      },
+      "solar-panel": {
+        "title": "Solar Panel",
+        "create-solar-panel": "Create Solar Panel",
+        "edit-solar-panel": "Edit Solar Panel",
+        "solar-panel-details": "Solar Panel Details",
+        "panel-details": "Panel Details",
+        "inverter-details": "Inverter Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "manufacturer": "Manufacturer",
+          "model": "Model",
+          "solar-panel-type": "Solar Panel Type",
+          "solar-panels-number": "Number of Solar Panels",
+          "each-solar-panel-capacity": "Each Solar Panel Capacity",
+          "inverter-manufacturer": "Inverter Manufacturer",
+          "inverter-model": "Inverter Model",
+          "inverters-number": "Number of Inverters",
+          "other-equipment": "Other Equipment",
+          "remark": "Remark"
+        }
+      },
+      "solar-resource-information": {
+        "title": "Solar Resource Information",
+        "create-solar-resource-information": "Create Solar Resource Information",
+        "edit-solar-resource-information": "Edit Solar Resource Information",
+        "solar-resource-information-details": "Solar Resource Information Details",
+        "solar-resource-record": "Solar Resource Record",
+        "resource-details": "Resource Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "annual-solar-radiation": "Annual Solar Radiation",
+          "solar-panel-efficiency": "Solar Panel Efficiency",
+          "annual-energy-production": "Annual Energy Production",
+          "plant-life": "Plant Life",
+          "remark": "Remark"
+        }
+      },
+      "wind-turbine": {
+        "title": "Wind Turbines",
+        "create-wind-turbine": "Create Wind Turbine",
+        "edit-wind-turbine": "Edit Wind Turbine",
+        "wind-turbine-details": "Wind Turbine Details",
+        "turbine-details": "Turbine Details",
+        "physical-specifications": "Physical Specifications",
+        "generator-details": "Generator Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "turbine-manufacturer": "Turbine Manufacturer",
+          "turbine-model": "Turbine Model",
+          "rotor-diameter": "Rotor Diameter",
+          "hub-height": "Hub Height",
+          "tower-type": "Tower Type",
+          "blade-length": "Blade Length",
+          "blades-number": "Number of Blades",
+          "gearbox-type": "Gearbox Type",
+          "generator-type": "Generator Type",
+          "generators-number": "Number of Generators",
+          "remark": "Remark"
+        }
+      },
+      "wind-resource": {
+        "title": "Wind Resources",
+        "create-wind-resource": "Create Wind Resource",
+        "edit-wind-resource": "Edit Wind Resource",
+        "wind-resource-details": "Wind Resource Details",
+        "resource-details": "Resource Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "wind-speed-at-hub-height": "Wind Speed at Hub Height",
+          "weibull-shape-factor": "Weibull Shape Factor",
+          "remark": "Remark"
+        }
+      },
+      "power-generation-capacity": {
+        "title": "Power Generation Capacity",
+        "power-generation-capacity-details": "Power Generation Capacity Details",
+        "power-generation-record": "Power Generation Record",
+        "create-power-generation-capacity": "Create Power Generation Capacity",
+        "edit-power-generation-capacity": "Edit Power Generation Capacity",
+        "details": {
+          "capacity": "Capacity",
+          "annual-generation": "Annual Generation",
+          "units-number": "Number of Units",
+          "owner": "Owner",
+          "commissioning-date": "Commissioning Date",
+          "plant-life": "Plant Life",
+          "others": "Other Information"
+        }
+      },
+      "regulation-and-policy": {
+        "title": "Regulations and Policies",
+        "create-regulation-and-policy": "Create Regulation and Policy",
+        "edit-regulation-and-policy": "Edit Regulation and Policy",
+        "regulation-and-policy-details": "Regulation and Policy Details",
+        "regulatory-details": "Regulatory Details",
+        "compliance-details": "Compliance Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "regulatory-body-overseeing-the-facility": "Regulatory Body Overseeing the Facility",
+          "regulatory-compliance-monitoring": "Regulatory Compliance Monitoring",
+          "environmental-and-social-regulation-compliance-monitoring": "Environmental and Social Regulation Compliance Monitoring",
+          "licensing-and-permit-requirements": "Licensing and Permit Requirements",
+          "remark": "Remark"
+        }
+      },
+      "environmental-and-social-impact": {
+        "title": "Environmental and Social Impact",
+        "create-environmental-and-social-impact": "Create Environmental and Social Impact",
+        "edit-environmental-and-social-impact": "Edit Environmental and Social Impact",
+        "environmental-and-social-impact-details": "Environmental and Social Impact Details",
+        "environmental-impact-details": "Environmental Impact Details",
+        "social-impact-details": "Social Impact Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "environmental-impact-assessment-conducted": "Environmental Impact Assessment Conducted",
+          "mitigation-measures-implemented": "Mitigation Measures Implemented",
+          "social-impact-assessment-conducted": "Social Impact Assessment Conducted",
+          "resettlement-and-compensation-measures-implemented": "Resettlement and Compensation Measures Implemented",
+          "remark": "Remark"
+        }
+      },
+      "reliability-and-maintenance": {
+        "title": "Reliability & Maintenance",
+        "create-reliability-and-maintenance": "Create Reliability & Maintenance",
+        "edit-reliability-and-maintenance": "Edit Reliability & Maintenance",
+        "reliability-and-maintenance-details": "Reliability & Maintenance Details",
+        "maintenance-details": "Maintenance Details",
+        "reliability-metrics": "Reliability Metrics",
+        "additional-information": "Additional Information",
+        "details": {
+          "maintenance-frequency": "Maintenance Frequency",
+          "total-outage-duration": "Total Outage Duration",
+          "total-interruption-number": "Total Interruption Number",
+          "saidi": "SAIDI",
+          "saifi": "SAIFI",
+          "automatic-fault-detection": "Automatic Fault Detection & Restoration System Installed",
+          "remark": "Remark"
+        }
+      },
+      "transmission": {
+        "title": "Transmissions",
+        "create-transmission": "Create Transmission",
+        "edit-transmission": "Edit Transmission",
+        "transmission-details": "Transmission Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "transmission-voltage": "Transmission Voltage",
+          "distance-to-substation": "Distance to Substation",
+          "transmission-lines-number": "Number of Transmission Lines",
+          "remark": "Remark"
+        }
+      },
+      "dam": {
+        "title": "Dams",
+        "create-dam": "Create Dam",
+        "edit-dam": "Edit Dam",
+        "dam-details": "Dam Details",
+        "turbine-generator-details": "Turbine & Generator Details",
+        "additional-information": "Additional Information",
+        "details": {
+          "dam-type": "Dam Type",
+          "dam-height": "Dam Height",
+          "spillway-type": "Spillway Type",
+          "penstock-length": "Penstock Length",
+          "turbine-type": "Turbine Type",
+          "turbine-number": "Number of Turbines",
+          "generator-type": "Generator Type",
+          "generator-number": "Number of Generators",
+          "national-priority-rank": "National Priority Rank",
+          "remark": "Remark"
+        }
+      },
+      "transmission-line-conductor-and-tower-data": {
+        "title": "Transmission Line Conductor And Tower Data",
+        "create-transmission-line-conductor-and-tower-data": "Create Transmission Line Conductor And Tower Data",
+        "edit-transmission-line-conductor-and-tower-data": "Edit Transmission Line Conductor And Tower Data",
+        "transmission-line-conductor-and-tower-data-details": "Transmission Line Conductor And Tower Data Details",
+        "general-information": "General Information",
+        "conductor-information": "Conductor Information",
+        "tower-information": "Tower Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "transmission-line-id": "Transmission Line",
+          "conductor-type": "Conductor Type",
+          "conductor-code-name-id": "Conductor Code Name",
+          "strands-number": "Number of Strands",
+          "conductor-size": "Conductor Size",
+          "conductors-per-phase-number": "Conductors Per Phase",
+          "tower-type-id": "Tower Type",
+          "tower-height": "Tower Height",
+          "conductor-diameter": "Conductor Diameter",
+          "each-strand-diameter": "Each Strand Diameter",
+          "tower-foundation-type-id": "Tower Foundation Type",
+          "other-equipment": "Other Equipment",
+          "remark": "Remark"
+        }
+      },
+      "transmission-line-equipment-data": {
+        "title": "Transmission Line Equipment Data",
+        "create-transmission-line-equipment-data": "Create Transmission Line Equipment Data",
+        "edit-transmission-line-equipment-data": "Edit Transmission Line Equipment Data",
+        "transmission-line-equipment-data-details": "Transmission Line Equipment Data Details",
+        "general-information": "General Information",
+        "equipment-information": "Equipment Information",
+        "tower-information": "Tower Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "transmission-line-id": "Transmission Line",
+          "insulator-type": "Insulator Type",
+          "ground-wire-type": "Ground Wire Type",
+          "fiber-optics-number": "Number of Fiber Optics",
+          "opgw-uts": "OPGW UTS",
+          "opgw-weight": "OPGW Weight",
+          "owner-operator": "Owner/Operator",
+          "tower-grounding": "Tower Grounding",
+          "tower-circuit-arrangement": "Tower Circuit Arrangement",
+          "other-equipment": "Other Equipment",
+          "remark": "Remark"
+        }
+      },
+      "broadcasting-infrastructure-manufacturer": {
+        "title": "Broadcasting Infrastructure Manufacturer",
+        "create-broadcasting-infrastructure-manufacturer": "Create Broadcasting Infrastructure Manufacturer",
+        "edit-broadcasting-infrastructure-manufacturer": "Edit Broadcasting Infrastructure Manufacturer",
+        "broadcasting-infrastructure-manufacturer-details": "Broadcasting Infrastructure Manufacturer Details",
+        "general-information": "General Information",
+        "manufacturer-information": "Manufacturer Information",
+        "details": {
+          "broadcasting-infrastructure-id": "Broadcasting Infrastructure",
+          "antennas": "Antennas",
+          "transmitters": "Transmitters",
+          "towers": "Towers",
+          "cables": "Cables",
+          "others": "Others"
+        }
+      },
+      "substation-transformer-and-switchgear-data": {
+        "title": "Substation Transformer And Switchgear Data",
+        "create-substation-transformer-and-switchgear-data": "Create Substation Transformer And Switchgear Data",
+        "edit-substation-transformer-and-switchgear-data": "Edit Substation Transformer And Switchgear Data",
+        "substation-transformer-and-switchgear-data-details": "Substation Transformer And Switchgear Data Details",
+        "general-information": "General Information",
+        "transformer-information": "Transformer Information",
+        "switchgear-information": "Switchgear Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "transmission-line-id": "Transmission Line",
+          "transformers-number": "Number of Transformers",
+          "transformer-type": "Transformer Type",
+          "transformer-capacity": "Transformer Capacity",
+          "input-voltage-level": "Input Voltage Level",
+          "output-voltage-level": "Output Voltage Level",
+          "switchgear-type-id": "Switchgear Type",
+          "circuit-breaker-type-id": "Circuit Breaker Type",
+          "other-equipment": "Other Equipment",
+          "remark": "Remark"
+        }
+      },
+      "substation-layout-and-communication-data": {
+        "title": "Substation Layout And Communication Data",
+        "create-substation-layout-and-communication-data": "Create Substation Layout And Communication Data",
+        "edit-substation-layout-and-communication-data": "Edit Substation Layout And Communication Data",
+        "substation-layout-and-communication-data-details": "Substation Layout And Communication Data Details",
+        "general-information": "General Information",
+        "layout-information": "Layout Information",
+        "communication-information": "Communication Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "substation-id": "Substation",
+          "substation-layout": "Substation Layout",
+          "equipped-with-standby-diesel-generator": "Equipped With Standby Diesel Generator",
+          "substation-busbar-type": "Substation Busbar Type",
+          "substation-communication-system-id": "Communication System",
+          "scada-system": "SCADA System",
+          "substation-grounding-system-id": "Grounding System",
+          "substation-altitude-level": "Altitude Level",
+          "remark": "Remark"
+        }
+      },
+      "mini-grid-station": {
+        "title": "Mini Grid Station",
+        "create-mini-grid-station": "Create Mini Grid Station",
+        "edit-mini-grid-station": "Edit Mini Grid Station",
+        "mini-grid-station-details": "Mini Grid Station Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "power-generation": "Power Generation",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "substation-id": "Substation",
+          "minigrid-size": "Mini Grid Size",
+          "battery-type-id": "Battery Type",
+          "battery-size": "Battery Size",
+          "inverter": "Inverter",
+          "system-voltage": "System Voltage",
+          "expected-annual-generation": "Expected Annual Generation",
+          "diesel-generator": "Diesel Generator",
+          "owner-operator": "Owner/Operator",
+          "remark": "Remark"
+        }
+      },
+      "mini-grid-station-distribution-line": {
+        "title": "Mini Grid Station Distribution Line",
+        "create-mini-grid-station-distribution-line": "Create Mini Grid Station Distribution Line",
+        "edit-mini-grid-station-distribution-line": "Edit Mini Grid Station Distribution Line",
+        "mini-grid-station-distribution-line-details": "Mini Grid Station Distribution Line Details",
+        "general-information": "General Information",
+        "line-specifications": "Line Specifications",
+        "transformer-information": "Transformer Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "system-type": "System Type",
+          "lines-type": "Lines Type",
+          "line-length": "Line Length",
+          "poles": "Poles",
+          "transformer-type-id": "Transformer Type",
+          "transformers-number": "Number of Transformers",
+          "transformers-size": "Transformers Size",
+          "remark": "Remark"
+        }
+      },
+      "mini-grid-station-consumer": {
+        "title": "Mini Grid Station Consumer",
+        "create-mini-grid-station-consumer": "Create Mini Grid Station Consumer",
+        "edit-mini-grid-station-consumer": "Edit Mini Grid Station Consumer",
+        "mini-grid-station-consumer-details": "Mini Grid Station Consumer Details",
+        "general-information": "General Information",
+        "consumer-types": "Consumer Types",
+        "electricity-information": "Electricity Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "residential": "Residential",
+          "commercial": "Commercial",
+          "productive-industrial": "Productive Industrial",
+          "health-centers": "Health Centers",
+          "schools": "Schools",
+          "street-lighting": "Street Lighting",
+          "other": "Other",
+          "expected-electricity-sales": "Expected Electricity Sales",
+          "electricity-tariff": "Electricity Tariff",
+          "remark": "Remark"
+        }
+      },
+      "mini-grid-station-backup-power-source": {
+        "title": "Mini Grid Station Backup Power Source",
+        "create-mini-grid-station-backup-power-source": "Create Mini Grid Station Backup Power Source",
+        "edit-mini-grid-station-backup-power-source": "Edit Mini Grid Station Backup Power Source",
+        "mini-grid-station-backup-power-source-details": "Mini Grid Station Backup Power Source Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "timeline-information": "Timeline Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "capacity": "Capacity",
+          "installation-year": "Installation Year",
+          "distribution-lines-total-length": "Distribution Lines Total Length",
+          "lifetime": "Lifetime",
+          "commissioning-date": "Commissioning Date",
+          "other": "Other Information",
+          "remark": "Remark"
+        }
+      },
+      "mini-grid-station-distribution-line-infrastructure": {
+        "title": "Mini Grid Station Distribution Line Infrastructure",
+        "create-mini-grid-station-distribution-line-infrastructure": "Create Mini Grid Station Distribution Line Infrastructure",
+        "edit-mini-grid-station-distribution-line-infrastructure": "Edit Mini Grid Station Distribution Line Infrastructure",
+        "mini-grid-station-distribution-line-infrastructure-details": "Mini Grid Station Distribution Line Infrastructure Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "connection-information": "Connection Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "distribution-line-type-id": "Distribution Line Type",
+          "distribution-line-material-id": "Distribution Line Material",
+          "distribution-line-conductor-size": "Distribution Line Conductor Size",
+          "voltage-level": "Voltage Level",
+          "topology": "Topology",
+          "switching-station-connection": "Switching Station Connection",
+          "station-name": "Station Name",
+          "remark": "Remark"
+        },
+        "topology-options": {
+          "radial": "Radial",
+          "ring": "Ring"
+        }
+      },
+      "electric-distribution-transformer": {
+        "title": "Electric Distribution Transformers",
+        "create-electric-distribution-transformer": "Create Electric Distribution Transformer",
+        "edit-electric-distribution-transformer": "Edit Electric Distribution Transformer",
+        "electric-distribution-transformer-details": "Electric Distribution Transformer Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "location-information": "Location Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "service-area": "Service Area",
+          "installation-year": "Installation Year",
+          "transformers-total-number": "Total Number of Transformers",
+          "gps-x-coordinates": "GPS X Coordinates",
+          "gps-y-coordinates": "GPS Y Coordinates",
+          "fire-extinguishing-technology-id": "Fire Extinguishing Technology",
+          "other": "Other Information",
+          "remark": "Remark"
+        }
+      },
+      "electric-distribution-transformer-type": {
+        "title": "Electric Distribution Transformer Types",
+        "create-electric-distribution-transformer-type": "Create Electric Distribution Transformer Type",
+        "edit-electric-distribution-transformer-type": "Edit Electric Distribution Transformer Type",
+        "electric-distribution-transformer-type-details": "Electric Distribution Transformer Type Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "safety-information": "Safety Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "transformer-type-id": "Transformer Type",
+          "cooling-type": "Cooling Type",
+          "transformer-power-rating": "Transformer Power Rating",
+          "lifetime": "Lifetime",
+          "protection-installed-id": "Protection Installed",
+          "safety-problems-encountered-id": "Safety Problems Encountered",
+          "work-accidents-number": "Work Accidents Number",
+          "on-site-safety-regulation-implemented": "On-site Safety Regulation Implemented",
+          "remark": "Remark"
+        }
+      },
+      "electric-smart-meters-data": {
+        "title": "Electric Smart Meters Data",
+        "create-electric-smart-meters-data": "Create Electric Smart Meters Data",
+        "edit-electric-smart-meters-data": "Edit Electric Smart Meters Data",
+        "electric-smart-meters-data-details": "Electric Smart Meters Data Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "owner-operator": "Owner/Operator",
+          "facility-type": "Facility Type",
+          "service-area": "Service Area",
+          "manufacturer": "Manufacturer",
+          "model-id": "Model",
+          "smart-meter-type-id": "Smart Meter Type",
+          "installation-year": "Installation Year",
+          "smart-meters-installed-number": "Smart Meters Installed Number",
+          "remark": "Remark"
+        }
+      },
+      "electric-smart-meters-ratings-data": {
+        "title": "Electric Smart Meters Ratings Data",
+        "create-electric-smart-meters-ratings-data": "Create Electric Smart Meters Ratings Data",
+        "edit-electric-smart-meters-ratings-data": "Edit Electric Smart Meters Ratings Data",
+        "electric-smart-meters-ratings-data-details": "Electric Smart Meters Ratings Data Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "electric-smart-meters-data-id": "Electric Smart Meters Data",
+          "active-reactive": "Active/Reactive",
+          "kwh-kvarh-rating": "kWh/kVArh Rating",
+          "phase": "Phase",
+          "maximum-current-rating": "Maximum Current Rating",
+          "other": "Other",
+          "remark": "Remark"
+        }
+      },
+      "electric-smart-meters-performance-data": {
+        "title": "Electric Smart Meters Performance Data",
+        "create-electric-smart-meters-performance-data": "Create Electric Smart Meters Performance Data",
+        "edit-electric-smart-meters-performance-data": "Edit Electric Smart Meters Performance Data",
+        "electric-smart-meters-performance-data-details": "Electric Smart Meters Performance Data Details",
+        "general-information": "General Information",
+        "technical-specifications": "Technical Specifications",
+        "safety-information": "Safety Information",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "electric-smart-meters-data-id": "Electric Smart Meters Data",
+          "maintenance-frequency-id": "Maintenance Frequency",
+          "average-meter-lifespan": "Average Meter Lifespan",
+          "average-meter-accuracy": "Average Meter Accuracy",
+          "safety-problems-encountered": "Safety Problems Encountered",
+          "work-accidents-number": "Work Accidents Number",
+          "on-site-safety-regulation-implemented": "On-site Safety Regulation Implemented",
+          "other": "Other",
+          "remark": "Remark"
+        }
+      },
+      "electric-smart-meters-privacy-and-security-data": {
+        "title": "Electric Smart Meters Privacy And Security Data",
+        "create-electric-smart-meters-privacy-and-security-data": "Create Electric Smart Meters Privacy And Security Data",
+        "edit-electric-smart-meters-privacy-and-security-data": "Edit Electric Smart Meters Privacy And Security Data",
+        "electric-smart-meters-privacy-and-security-data-details": "Electric Smart Meters Privacy And Security Data Details",
+        "general-information": "General Information",
+        "privacy-information": "Privacy Information",
+        "customer-engagement": "Customer Engagement",
+        "social-impact": "Social Impact",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "electric-smart-meters-data-id": "Electric Smart Meters Data",
+          "privacy-measures-implemented": "Privacy Measures Implemented",
+          "privacy-measures-type-id": "Privacy Measures Type",
+          "customer-engagement-frequency-id": "Customer Engagement Frequency",
+          "customer-engagement-programs-implemented": "Customer Engagement Programs Implemented",
+          "customer-engagement-programs-type-id": "Customer Engagement Programs Type",
+          "social-impact-assessment-conducted": "Social Impact Assessment Conducted",
+          "resettlement-and-compensation-measures-implemented": "Resettlement And Compensation Measures Implemented",
+          "remark": "Remark"
+        }
+      },
+      "electric-grid-control-center-data": {
+        "title": "Electric Grid Control Center Data",
+        "create-electric-grid-control-center-data": "Create Electric Grid Control Center Data",
+        "edit-electric-grid-control-center-data": "Edit Electric Grid Control Center Data",
+        "electric-grid-control-center-data-details": "Electric Grid Control Center Data Details",
+        "general-information": "General Information",
+        "control-system": "Control System",
+        "capabilities": "Capabilities",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "mini-grid-station-id": "Mini Grid Station",
+          "installation-year": "Installation Year",
+          "control-system-type-id": "Control System Type",
+          "communication-links-id": "Communication Links",
+          "energy-management-system-capability": "Energy Management System Capability",
+          "remote-control-capability": "Remote Control Capability",
+          "average-measured-data-reliability": "Average Measured Data Reliability",
+          "remark": "Remark"
+        }
+      },
+      "electric-grid-control-center-performance-and-maintenance": {
+        "title": "Electric Grid Control Center Performance And Maintenance",
+        "create-electric-grid-control-center-performance-and-maintenance": "Create Electric Grid Control Center Performance And Maintenance",
+        "edit-electric-grid-control-center-performance-and-maintenance": "Edit Electric Grid Control Center Performance And Maintenance",
+        "electric-grid-control-center-performance-and-maintenance-details": "Electric Grid Control Center Performance And Maintenance Details",
+        "general-information": "General Information",
+        "performance-metrics": "Performance Metrics",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "electric-grid-control-center-data-id": "Electric Grid Control Center Data",
+          "maintenance-frequency-id": "Maintenance Frequency",
+          "total-system-downtime-outage-duration": "Total System Downtime/Outage Duration",
+          "total-interruptions-number": "Total Interruptions Number",
+          "saidi": "SAIDI (System Average Interruption Duration Index)",
+          "saifi": "SAIFI (System Average Interruption Frequency Index)",
+          "remark": "Remark"
+        }
+      },
+      "electric-grid-control-center-cyber-security-data": {
+        "title": "Electric Grid Control Center Cyber Security Data",
+        "create-electric-grid-control-center-cyber-security-data": "Create Electric Grid Control Center Cyber Security Data",
+        "edit-electric-grid-control-center-cyber-security-data": "Edit Electric Grid Control Center Cyber Security Data",
+        "electric-grid-control-center-cyber-security-data-details": "Electric Grid Control Center Cyber Security Data Details",
+        "general-information": "General Information",
+        "cyber-security": "Cyber Security",
+        "additional-information": "Additional Information",
+        "details": {
+          "name": "Name",
+          "electric-grid-control-center-data-id": "Electric Grid Control Center Data",
+          "cyber-security-measures-implemented": "Cyber Security Measures Implemented",
+          "cyber-security-measures-type": "Cyber Security Measures Type",
+          "cyber-security-audits-frequency": "Cyber Security Audits Frequency",
+          "remark": "Remark"
+        }
+      }
+    }
+  },
+  "location": {
+    "form": {
+      "country": "Country",
+      "state-region": "State/Region",
+      "city": "City",
+      "subcity": "Subcity",
+      "street": "Street",
+      "block_number": "Block Number",
+      "house_number": "House Number",
+      "northing": "Northing",
+      "easting": "Easting"
+    }
+  },
+  "login": {
+    "welcome-message": "Welcome to {{templateName}}! 👋🏻",
+    "sign-in-message": "Please sign-in to your account and start the adventure",
+    "remember-me": "Remember Me",
+    "forgot-password": "Forgot Password?",
+    "new-on-platform": "New on our platform?",
+    "create-account": "Create an account",
+    "input-labels": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "validation-messages": {
+      "email": {
+        "required": "Email is required",
+        "email": "Please enter a valid email address"
+      },
+      "password": {
+        "required": "Password is required",
+        "min": "Password must be at least {{min}} characters long"
+      }
+    }
+  },
+  "model-action": {
+    "registered-data": "Registered Data",
+    "checked-data": "Checked Data",
+    "approved-data": "Approved Data",
+    "authorized-data": "Authorized Data",
+    "rejected-data": "Rejected Data"
+  },
+  "common": {
+    "yes": "Yes",
+    "no": "No",
+    "not-available": "N/A",
+    "edit": "Edit",
+    "create": "Create",
+    "active": "Active",
+    "inactive": "InActive",
+    "meters": "Meters",
+    "inches": "Inches",
+    "created-at": "Created At",
+    "updated-at": "update At",
+    "years": "Years",
+    "kwh-per-m2": "kWh/m²",
+    "mwh": "MWh",
+    "percentage": "%",
+    "kv": "Kilovolt",
+    "watts": "W",
+    "meters-per-second": "m/s",
+    "kilometers": "Kilometers",
+    "mm2": "Square Millimeters",
+    "mm": "Millimeters",
+    "mva": "Mega Volt-Amperes",
+    "kwh": "Kilowatt-Hour",
+    "kw": "Kilowatt",
+    "v": "Volt",
+    "km2": "Square Kilometer",
+    "currency": "Currency",
+    "km": "Kilometers",
+    "status": {
+      "active": "Active",
+      "inactive": "InActive"
+    },
+    "table-columns": {
+      "created-at": "Created At",
+      "updated-at": "update At",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "form": {
+      "file-upload": "File Upload",
+      "success-created": "Successfully Created!",
+      "success-updated": "Successfully updated!"
+    },
+    "listing": {
+      "no-items-available": "No items available."
+    }
+  },
+  "stakeholder": {
+    "create-stakeholder": "Create Stakeholder",
+    "edit-stakeholder": "Edit Stakeholder",
+    "title": "Stakeholders",
+    "columns": {
+      "title": "Title",
+      "description": "Description",
+      "sub-category": "Sub Category",
+      "category": "Category"
+    },
+    "form": {
+      "category": "Category",
+      "sub_category": "Sub Category",
+      "ownership": "Ownership",
+      "email": "Email",
+      "emails": "Emails",
+      "phones": "Phones",
+      "is_primary_email": "Is Primary Email",
+      "phone": "Phone",
+      "is_primary_phone": "Is Primary Phone",
+      "trade_name": "Trade Name",
+      "tin": "TIN",
+      "origin": "Origin",
+      "license_issued_date": "License Issued Date",
+      "revision_no": "Revision No",
+      "add_email": "Add Email",
+      "add_phone": "Add Phone",
+      "emails_section_title": "Emails",
+      "phones_section_title": "Phones"
+    },
+    "navigation": {
+      "menu": {
+        "projects": "Projects",
+        "organization": "Organization",
+        "resource": "Resource"
+      },
+      "submenu": {
+        "organization": {
+          "general-info": {
+            "general-info": "General Info",
+            "licenses": "Licenses",
+            "manager": "Manager",
+            "contact-person": "Contact Person",
+            "address": "Address",
+            "joint-venture": "Joint Venture",
+            "joint-venture-company": "Joint Venture Company",
+            "upgrade": "Upgrade",
+            "additional-info": "Additional Info"
+          },
+          "branches": {
+            "branches": "Branches",
+            "branch-manager": "Branch Manager",
+            "branch-contact-person": "Branch Contact Person",
+            "address": "Address",
+            "additional-info": "Additional Info"
+          },
+          "company-structure": {
+            "company-structure": "Company Structure",
+            "departments": "Departments",
+            "positions": "Positions"
+          }
+        },
+        "resource": {
+          "resources": {
+            "resources": "Resources",
+            "machineries": "Machineries",
+            "vehicles": "Vehicles",
+            "safety-equipment": "Safety Equipment",
+            "construction-materials": "Construction Materials",
+            "employees": "Employees"
+          },
+          "documents": {
+            "documents": "Documents",
+            "strategies": "Strategies",
+            "planning": "Planning",
+            "researches": "Researches",
+            "innovations": "Innovations",
+            "code-of-conduct": "Code of Conduct",
+            "manuals": "Manuals"
+          },
+          "certificates": {
+            "certificates": "Certificates",
+            "accreditation": "Accreditation"
+          }
+        },
+        "projects": {
+          "projects": {
+            "projects": "Projects",
+            "joint-venture-projects": "Joint Venture Projects"
+          },
+          "services": {
+            "services": "Services",
+            "incentives": "Incentives",
+            "trainings": "Trainings",
+            "support": "Support"
           }
         }
       }
+    },
+    "stakeholder-info": {
+      "title": "Stakeholder Info",
+      "edit-stakeholder-info": "Edit Stakeholder Info",
+      "create-stakeholder-info": "Create Stakeholder Info",
+      "form": {
+        "capital": "Capital",
+        "general-manager": "General Manager",
+        "description": "Description"
+      }
+    },
+    "stakeholder-certificate": {
+      "title": "Stakeholder Certificate",
+      "create-stakeholder-certificate": "Create Stakeholder Certificate",
+      "edit-stakeholder-certificate": "Edit Stakeholder Certificate",
+      "form": {
+        "title": "Title",
+        "issue-date": "Issue Date",
+        "expire-date": "Expire Date",
+        "type": "Type",
+        "scope": "Scope",
+        "certifying-body": "Certifying Body",
+        "certification-number": "Certfication Number",
+        "remark": "Remark"
+      }
+    },
+    "stakeholder-license": {
+      "title": "Stakeholder Licenses",
+      "detail": "Stakeholder License Detail",
+      "create": "Create Stakeholder License",
+      "edit": "Edit Stakeholder License",
+      "form": {
+        "license-type": "License Type",
+        "license-category": "License Category",
+        "license-name": "License Name",
+        "license-scope": "License Scope",
+        "licensing-body": "Licensing Body",
+        "license-number": "License Number",
+        "issue-date": "Issue Date",
+        "expire-date": "Expire Date",
+        "remark": "Remark"
+      }
+    },
+    "stakeholder-upgrade": {
+      "title": "Stakholder Upgrades",
+      "create": "Create Stakeholder Upgrade",
+      "edit": "Edit Stakeholder Upgrade",
+      "details": "Stakeholder Upgrade Details",
+      "form": {
+        "stakeholder-id": "Stakeholder_id",
+        "upgrade-type": "Upgrade Type",
+        "previous-level": "Previous Level",
+        "upgraded-level": "Upgraded Level",
+        "ownership-percentage": "Ownership Percentage",
+        "description": "Description"
+      }
+    },
+    "stakeholder-vehicle": {
+      "title": "Vehicle Details",
+      "form": {
+        "vehicle-name": "Vehicle Name",
+        "plate-number": "Plate Number",
+        "brand-name": "Brand Name",
+        "model": "Model",
+        "year": "Year",
+        "chassis-number": "Chassis Number",
+        "engine-number": "Engine Number",
+        "capacity": "Capacity",
+        "purpose": "Purpose",
+        "quantity": "Quantity",
+        "current-situation": "Current Situation",
+        "location": "Location"
+      },
+      "details": "Vehicle Details",
+      "create": "Create Vehicle",
+      "edit": "Edit Vehicle"
+    },
+    "stakeholder-training": {
+      "title": "Stakeholder Training",
+      "create-stakeholder-training": "Create Stakeholder Training",
+      "edit-stakeholder-training": "Edit Stakeholder Training",
+      "form": {
+        "title": "Title",
+        "type": "Type",
+        "quantity": "Quantity",
+        "provider": "Provider",
+        "provision-date": "Provision Date",
+        "description": "Description"
+      }
+    },
+    "stakeholder-regulation": {
+      "title": "Stakeholder Regulation",
+      "create-stakeholder-regulation": "Create Stakeholder Regulation",
+      "edit-stakeholder-regulation": "Edit Stakeholder Regulation",
+      "form": {
+        "title": "Title",
+        "regulation": "Regulation",
+        "prepared-by": "Prepared By",
+        "effective_start_date": "Effective Start Date",
+        "effective_end_date": "Effective End Date",
+        "quantity": "Quantity",
+        "description": "Description"
+      }
+    },
+    "stakeholder-email": {
+      "title": "Stakeholder Email",
+      "create-stakeholder-email": "Create Stakeholder Email",
+      "edit-stakeholder-email": "Edit Stakeholder Email",
+      "form": {
+        "email": "Email"
+      }
+    },
+    "stakeholder-phone": {
+      "title": "Stakeholder Phone",
+      "create-stakeholder-phone": "Create Stakeholder Phone",
+      "edit-stakeholder-phone": "Edit Stakeholder Phone",
+      "form": {
+        "phone": "Phone"
+      }
+    },
+    "stakeholder-contact-person": {
+      "title": "Stakeholder Contact Person",
+      "create-stakeholder-contact-person": "Create Stakeholder Contact Person",
+      "edit-stakeholder-contact-person": "Edit Stakeholder Contact Person",
+      "form": {
+        "first-name": "First Name",
+        "middle-name": "Middle Name",
+        "last-name": "Last Name",
+        "gender": "Gender",
+        "email": "Email",
+        "phone-number": "Phone Number",
+        "name": "Name"
+      }
+    },
+    "stakeholder-operation-location": {
+      "title": "Stakeholder Operation Location",
+      "create-stakeholder-operation-location": "Create Stakeholder Operation Location",
+      "edit-stakeholder-operation-location": "Edit Stakeholder Operation Location",
+      "form": {
+        "country": "Country",
+        "status": "Status"
+      }
+    },
+    "total-employee": {
+      "title": "Total Employees",
+      "create-total-employee": "Create Total Employees",
+      "edit-total-employee": "Edit Total Employees",
+      "form": {
+        "year": "Year",
+        "domain": "Domain",
+        "nationality": "Nationality",
+        "male": "Male Employees",
+        "female": "Female Employees",
+        "quantity": "Total Employees",
+        "department-name": "Department Name",
+        "revision-no": "Revision Number",
+        "total-employees": "Total Employees"
+      }
+    },
+    "other": {
+      "stakeholder-study-field": {
+        "title": "Study Field",
+        "create-stakeholder-study-field": "Create Study Field",
+        "edit-stakeholder-study-field": "Edit Study Field",
+        "details": {
+          "title": "Title",
+          "description": "Description",
+          "study-field": "Study Field"
+        }
+      },
+      "study-period-cost": {
+        "title": "Study Period Cost",
+        "create-study-period-cost": "Create Study Period Cost",
+        "edit-study-period-cost": "Edit Study Period Cost",
+        "study-period-cost-details": "Study Period Cost Detail",
+        "details": {
+          "description": "Study Period Description",
+          "total-month": "Total Month",
+          "study-cost": "Study Cost",
+          "study-field": "Study Field"
+        }
+      },
+      "stakeholder-service": {
+        "title": "Stakeholder Service",
+        "create-stakeholder-service": "Create Stakeholder Service",
+        "edit-stakeholder-service": "Edit Stakeholder Service",
+        "details": {
+          "construction-related-service": "Construction Related Service",
+          "title": "Stakeholder Service Detail",
+          "service-type": "Service Type",
+          "specification-detail": "Specification Detail",
+          "measurement-unit": "Measurement Unit",
+          "unit-price": "Unit Price"
+        }
+      },
+      "construction-related-service": {
+        "title": "Construction Related Service",
+        "create-construction-related-service": "Create Construction Related Service",
+        "edit-construction-related-service": "Edit Construction Related Service",
+        "details": {
+          "title": "Construction Related Service Detail",
+          "service-type": "Service Type",
+          "specification-detail": "Specification Detail",
+          "measurement-unit": "Measurement Unit",
+          "unit-price": "Unit Price"
+        }
+      }
+    },
+    "stakeholder-manager": {
+      "title": "Stakeholder Managers",
+      "create": "Create Stakeholder Manager",
+      "edit": "Edit Stakeholder Manager",
+      "details": "Stakeholder Manager Details",
+      "create-manager": "Create Stakeholder Manager",
+      "edit-manager": "Edit Stakeholder Manager",
+      "type": "Type",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "department": "Department",
+      "position": "Position",
+      "nationality": "Nationality",
+      "nationalIdNo": "National ID No",
+      "birthDate": "Birth Date",
+      "gender": "Gender",
+      "phoneNo": "Phone No",
+      "email": "Email"
+    },
+    "joint-venture": {
+      "title": "Joint Ventures",
+      "name": "Name",
+      "memberCompaniesNo": "Number of Member Companies",
+      "description": "Description",
+      "reference": "Reference",
+      "details": "Joint Venture Details",
+      "create": "Create Joint Venture",
+      "edit": "Edit Joint Venture"
+    },
+    "joint-venture-company": {
+      "title": "Joint Venture Companies",
+      "create": "Create Joint Venture Company",
+      "edit": "Edit Joint Venture Company",
+      "details": "Joint Venture Company Details",
+      "create-joint-venture-company": "Create Joint Venture Company",
+      "edit-joint-venture-company": "Edit Joint Venture Company",
+      "jointVenture": "Joint Venture",
+      "companyName": "Company Name",
+      "specialization": "Specialization",
+      "rolesAndResponsibilities": "Roles and Responsibilities",
+      "ownershipPercentage": "Ownership Percentage",
+      "description": "Description",
+      "reference": "Reference"
+    },
+    "stakeholder-additional-information": {
+      "title": "Additional Information",
+      "create": "Create Additional Information",
+      "edit": "Edit Additional Information",
+      "details": "Additional Information Details",
+      "create-additional-information": "Create Additional Information",
+      "edit-additional-information": "Edit Additional Information",
+      "additionalInformation": "Additional Information",
+      "reference": "Reference",
+      "noReference": "No Reference"
+    },
+    "stakeholder-branch": {
+      "title": "Stakeholder Branches",
+      "create": "Create Branch",
+      "edit": "Edit Branch",
+      "details": "Branch Details",
+      "name": "Branch Name",
+      "tinNumber": "TIN Number",
+      "businessFieldId": "Business Field",
+      "description": "Description",
+      "reference": "Reference"
+    },
+    "stakeholder-branch-manager": {
+      "title": "Stakeholder Branch Managers",
+      "create": "Create Branch Manager",
+      "edit": "Edit Branch Manager",
+      "details": "Branch Manager Details",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "branch": "Branch",
+      "department": "Department",
+      "position": "Position",
+      "gender": "Gender",
+      "phone": "Phone",
+      "email": "Email"
+    },
+    "stakeholder-branch-contact-person": {
+      "title": "Branch Contact People",
+      "create": "Create Branch Contact Person",
+      "edit": "Edit Branch Contact Person",
+      "details": "Branch Contact Person Details",
+      "name": "Name",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "department": "Department",
+      "position": "Position",
+      "gender": "Gender",
+      "phone": "Phone",
+      "email": "Email",
+      "branch": "Branch"
+    },
+    "stakeholder-department": {
+      "title": "Stakeholder Departments",
+      "create": "Create Department",
+      "edit": "Edit Department",
+      "details": "Department Details",
+      "name": "Department Name",
+      "parentDepartment": "Parent Department",
+      "description": "Description",
+      "reference": "Reference"
+    },
+    "position": {
+      "title": "Stakeholder Positions",
+      "create": "Create Stakeholder Position",
+      "edit": "Edit Stakeholder Position",
+      "details": "Stakeholder Position Details",
+      "name": "Name",
+      "parent-department": "Parent Department",
+      "required-education": "Required Education",
+      "required-work-experience": "Required Work Experience",
+      "salary": "Salary",
+      "no-of-professionals": "Number of Professionals",
+      "description": "Description",
+      "reference": "Reference"
+    },
+    "machinery": {
+      "title": "Stakeholder Machineries",
+      "create": "Create Stakeholder Machinery",
+      "edit": "Edit Stakeholder Machinery",
+      "details": "Stakeholder Machinery Details",
+      "name": "Name",
+      "plate-no": "Plate Number",
+      "brand-name": "Brand Name",
+      "model": "Model",
+      "year": "Year",
+      "chassis-number": "Chassis Number",
+      "engine-number": "Engine Number",
+      "capacity": "Capacity",
+      "purpose": "Purpose",
+      "quantity": "Quantity",
+      "current-situation": "Current Situation",
+      "location": "Location"
+    },
+    "safety-equipment": {
+      "title": "Safety Equipment",
+      "create": "Create Safety Equipment",
+      "edit": "Edit Safety Equipment",
+      "details": "Safety Equipment Details",
+      "name": "Name",
+      "serial-no": "Serial Number",
+      "brand-name": "Brand Name",
+      "model": "Model",
+      "year": "Year",
+      "capacity": "Capacity",
+      "purpose": "Purpose",
+      "quantity": "Quantity",
+      "current-situation": "Current Situation",
+      "location": "Location"
+    },
+    "branch-additional-information": {
+      "title": "Branch Additional Information",
+      "create": "Create Additional Information",
+      "edit": "Edit Additional Information",
+      "details": "Additional Information Details",
+      "branch": "Branch",
+      "additionalInformation": "Additional Information",
+      "reference": "Reference"
+    },
+    "material": {
+      "title": "Stakeholder Materials",
+      "create": "Create Stakeholder Material",
+      "edit": "Edit Stakeholder Material",
+      "details": "Stakeholder Material Details",
+      "name": "Name",
+      "category": "Category",
+      "subcategory": "Subcategory",
+      "description": "Description",
+      "purpose": "Purpose",
+      "quantity": "Quantity",
+      "unit-price": "Unit Price",
+      "current-situation": "Current Situation",
+      "location": "Location"
+    },
+    "employee": {
+      "title": "Stakeholder Employees",
+      "create": "Create Stakeholder Employee",
+      "edit": "Edit Stakeholder Employee",
+      "details": "Stakeholder Employee Details",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "nationalIdNo": "National ID Number",
+      "gender": "Gender",
+      "phone": "Phone Number",
+      "email": "Email",
+      "name": "Name",
+      "department": "Department",
+      "position": "Position"
+    }
+  },
+  "address": {
+    "title": "Address",
+    "create-address": "Create Address",
+    "edit-address": "Edit Address",
+    "project-address": "Project Address",
+    "stakeholder-address": "Stakeholder Address",
+    "form": {
+      "country": "Country",
+      "state-region": "State/Region",
+      "city": "City",
+      "subcity": "Subcity",
+      "street": "Street",
+      "block_number": "Block Number",
+      "house_number": "House Number",
+      "northing": "Northing",
+      "easting": "Easting"
+    }
+  },
+  "resources": {
+    "professional": {
+      "title": "Professionals",
+      "create": "Create Professional",
+      "edit": "Edit Professional",
+      "details": "Professional Details",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "nationalIdNo": "National ID Number",
+      "dateOfBirth": "Date of Birth",
+      "gender": "Gender",
+      "phoneNo": "Phone Number",
+      "email": "Email",
+      "name": "Name",
+      "address": {
+        "title": "Address",
+        "create": "Create Address",
+        "edit": "Edit Address",
+        "details": "Address Details",
+        "create-address": "Create Address",
+        "edit-address": "Edit Address",
+        "country": "Country",
+        "region": "Region",
+        "city": "City",
+        "sub_city": "Sub City",
+        "woreda": "Woreda",
+        "street": "Street",
+        "block_no": "Block Number",
+        "website": "Website",
+        "northing": "Northing",
+        "easting": "Easting"
+      },
+      "contact": {
+        "title": " Contact",
+        "create": "Create Contact",
+        "edit": "Edit Contact",
+        "details": "Contact Details",
+        "create-contact": "Create Contact",
+        "edit-contact": "Edit Contact",
+        "phone": "Phone Number",
+        "email": "Email",
+        "website": "Website"
+      },
+      "additional-info": {
+        "title": "Additional Information",
+        "create": "Create Additional Information",
+        "edit": "Edit Additional Information",
+        "details": "Additional Information Details",
+        "information": "Additional Information",
+        "reference": "Reference"
+      },
+      "education": {
+        "title": "Education",
+        "create": "Create Education",
+        "edit": "Edit Education",
+        "details": "Education Details",
+        "create-education": "Create Education",
+        "edit-education": "Edit Education",
+        "study-field": "Study Field",
+        "school-name": "School Name",
+        "education-level": "Education Level",
+        "program-type": "Program Type",
+        "start-date": "Start Date",
+        "end-date": "End Date",
+        "gpa": "GPA"
+      },
+      "work-experience": {
+        "title": "Work Experience",
+        "create": "Create Work Experience",
+        "edit": "Edit Work Experience",
+        "details": "Work Experience Details",
+        "create-work-experience": "Create Work Experience",
+        "edit-work-experience": "Edit Work Experience",
+        "company-name": "Company Name",
+        "department": "Department",
+        "position": "Position",
+        "task-description": "Task Description",
+        "start-date": "Start Date",
+        "end-date": "End Date"
+      },
+      "association-membership": {
+        "title": "Association Memberships",
+        "create": "Create Membership",
+        "edit": "Edit Membership",
+        "details": "Membership Details",
+        "create-work-experience": "Create Membership",
+        "edit-work-experience": "Edit Membership",
+        "association-name": "Association Name",
+        "membership-type": "Membership Type",
+        "position": "Position",
+        "description": "Description",
+        "registration-date": "Registration Date",
+        "end-date": "End Date",
+        "member": "Member",
+        "associate": "Associate",
+        "fellow": "Fellow"
+      },
+      "certification": {
+        "title": "Certifications",
+        "create": "Create Certification",
+        "edit": "Edit Certification",
+        "details": "Certification Details",
+        "certificate-title": "Certificate Title",
+        "certification-type": "Certification Type",
+        "certifying-body": "Certifying Body",
+        "certification-number": "Certification Number",
+        "certification-scope": "Scope",
+        "issue-date": "Issue Date",
+        "expire-date": "Expire Date",
+        "remark": "Remark",
+        "type-professional": "Professional",
+        "type-technical": "Technical",
+        "type-safety": "Safety"
+      },
+      "contact-person": {
+        "title": "Professional Contact Persons",
+        "create": "Create Contact Person",
+        "edit": "Edit Contact Person",
+        "details": "Contact Person Details",
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "nationalIdNo": "National ID Number",
+        "gender": "Gender",
+        "male": "Male",
+        "female": "Female",
+        "other": "Other",
+        "phoneNo": "Phone Number",
+        "email": "Email",
+        "name": "Name"
+      }
+    },
+    "education": {
+      "title": "Education",
+      "create": "Create Education",
+      "edit": "Edit Education",
+      "details": "Education Details",
+      "create-education": "Create Education",
+      "edit-education": "Edit Education",
+      "study-field": "Study Field",
+      "school-name": "School Name",
+      "education-level": "Education Level",
+      "program-type": "Program Type",
+      "start-date": "Start Date",
+      "end-date": "End Date",
+      "gpa": "GPA"
+    },
+    "work-experience": {
+      "title": "Work Experience",
+      "create": "Create Work Experience",
+      "edit": "Edit Work Experience",
+      "details": "Work Experience Details",
+      "create-work-experience": "Create Work Experience",
+      "edit-work-experience": "Edit Work Experience",
+      "company-name": "Company Name",
+      "department": "Department",
+      "position": "Position",
+      "task-description": "Task Description",
+      "start-date": "Start Date",
+      "end-date": "End Date"
+    },
+    "association-membership": {
+      "title": "Association Memberships",
+      "create": "Create Membership",
+      "edit": "Edit Membership",
+      "details": "Membership Details",
+      "create-work-experience": "Create Membership",
+      "edit-work-experience": "Edit Membership",
+      "association-name": "Association Name",
+      "membership-type": "Membership Type",
+      "position": "Position",
+      "description": "Description",
+      "registration-date": "Registration Date",
+      "end-date": "End Date",
+      "member": "Member",
+      "associate": "Associate",
+      "fellow": "Fellow"
+    },
+    "certification": {
+      "title": "Certifications",
+      "create": "Create Certification",
+      "edit": "Edit Certification",
+      "details": "Certification Details",
+      "certificate-title": "Certificate Title",
+      "certification-type": "Certification Type",
+      "certifying-body": "Certifying Body",
+      "certification-number": "Certification Number",
+      "certification-scope": "Scope",
+      "issue-date": "Issue Date",
+      "expire-date": "Expire Date",
+      "remark": "Remark",
+      "type-professional": "Professional",
+      "type-technical": "Technical",
+      "type-safety": "Safety"
+    },
+    "contact-person": {
+      "title": "Professional Contact Persons",
+      "create": "Create Contact Person",
+      "edit": "Edit Contact Person",
+      "details": "Contact Person Details",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "nationalIdNo": "National ID Number",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "other": "Other",
+      "phoneNo": "Phone Number",
+      "email": "Email",
+      "name": "Name"
+    }
+  },
+  "data-collection-guide": {
+    "title": "Data Collection Guide",
+    "create": "Create Data Collection Guide",
+    "edit": "Edit Data Collection Guide",
+    "form": {
+      "model": "Model",
+      "title": "Title",
+      "description": "Description",
+      "instruction": "Instruction",
+      "data_collection_frequency": "Data Collection Frequency",
+      "data_source": "Data Source",
+      "responsible_data_collector_body": "Responsible Data Collector Body"
     }
   }
 }
