@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, BoxProps, Drawer, IconButton, styled, Typography } from '@mui/material';
+import { Box, BoxProps, Drawer, IconButton, styled, Typography, Tabs, Tab } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import Icon from 'src/@core/components/icon';
 
@@ -9,6 +9,7 @@ interface CustomSideDrawerProps {
   title: string;
   children: () => JSX.Element;
   width?: number; // Optional width prop
+  model?:string;
 }
 
 const Header = styled(Box)<BoxProps>(({ theme }) => ({
@@ -18,8 +19,13 @@ const Header = styled(Box)<BoxProps>(({ theme }) => ({
   justifyContent: 'space-between'
 }));
 
-const CustomSideDrawer: React.FC<CustomSideDrawerProps> = ({ open, handleClose, title, children, width }) => {
+const CustomSideDrawer: React.FC<CustomSideDrawerProps> = ({ open, handleClose, title, children, width, model }) => {
   const { t: transl } = useTranslation();
+  const [tab, setTab] = React.useState(0);
+
+  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+    setTab(newValue);
+  };
 
   return (
     <div className="customizer">
@@ -33,7 +39,7 @@ const CustomSideDrawer: React.FC<CustomSideDrawerProps> = ({ open, handleClose, 
           '& .MuiDrawer-paper': {
             width: width ? `min(${width}px, 100%)` : { xs: '100%', sm: 400 }
           }
-        }} // Use custom width if provided, ensuring it doesn't exceed 100%
+        }}
       >
         <Header>
           <Typography variant="h5">{transl(title)}</Typography>
@@ -54,11 +60,24 @@ const CustomSideDrawer: React.FC<CustomSideDrawerProps> = ({ open, handleClose, 
           </IconButton>
         </Header>
         <Box sx={{ p: (theme) => theme.spacing(0, 6, 6) }}>
-          <Box>{children()}</Box>
+          {model ? (
+            <>
+              <Tabs value={tab} onChange={handleTabChange} aria-label="side drawer tabs">
+                <Tab label={transl('Form')} />
+                <Tab label={transl('Information')} />
+              </Tabs>
+              <Box sx={{ mt: 2 }}>
+                {tab === 0 && <Box>{children()}</Box>}
+                {tab === 1 && <Box>{/* Information content goes here */}Information about the model: {model}</Box>}
+              </Box>
+            </>
+          ) : (
+            <Box>{children()}</Box>
+          )}
         </Box>
       </Drawer>
     </div>
   );
-};
+}
 
 export default CustomSideDrawer;
