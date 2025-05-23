@@ -1527,3 +1527,16 @@ export interface ElectricGridControlCenterCyberSecurityData {
   created_at?: string;
   updated_at?: string;
 }
+
+export interface TracksGeometryData {
+  project_id: string;
+  alignment?: string;
+  gradient?: number;
+  curvature_radius?: number;
+  cant?: string;
+  track_gauge?: string;
+  cross_level?: string;
+  track_surface_profile?: string;
+  twist?: string;
+  remark?: string;
+}

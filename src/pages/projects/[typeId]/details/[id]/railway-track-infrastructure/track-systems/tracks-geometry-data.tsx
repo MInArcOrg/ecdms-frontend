@@ -25,7 +25,7 @@ const TracksGeometryDataPage = () => {
             activeSubMenuId={railwayTrackInfrastructureIds.trackSystems.tracksGeometryData}
             subMenuItems={subMenuItems(id as string, typeId as string)}
         >
-            <div>Tracks Geometry Data List Placeholder</div>;
+        
         </ProjectLayout>
     );
 };
