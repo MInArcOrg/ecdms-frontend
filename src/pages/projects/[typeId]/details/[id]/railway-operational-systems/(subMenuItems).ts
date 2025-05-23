@@ -1,103 +1,151 @@
 import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
 
-export const railwayTrackInfrastructureIds = {
-  trackSystems: {
-    trackSystems: 'TRACK_SYSTEMS',
-    tracksData: 'TRACKS_DATA',
-    tracksGeometryData: 'TRACKS_GEOMETRY_DATA',
-    tracksConditionAssessment: 'TRACKS_CONDITION_ASSESSMENT',
-    tracksMaintenanceInspections: 'TRACKS_MAINTENANCE_INSPECTIONS',
-    tracksRehabilitationRenewal: 'TRACKS_REHABILITATION_RENEWAL',
-    trackSafety: 'TRACK_SAFETY'
+export const railwayOperationalSystemsIds = {
+  communicationAndSignaling: {
+    id: 'COMMUNICATION_AND_SIGNALING',
+    railwaySignalingSystem: 'RAILWAY_SIGNALING_SYSTEM',
+    railwayCommunicationSystem: 'RAILWAY_COMMUNICATION_SYSTEM',
+    railwaySystemConditionAssessment: 'RAILWAY_SYSTEM_CONDITION_ASSESSMENT',
+    railwayCommSystemMaintenanceAndTesting: 'RAILWAY_COMM_SYSTEM_MAINTENANCE_AND_TESTING',
+    railwayCommSystemSafetyAndCompliance: 'RAILWAY_COMM_SYSTEM_SAFETY_AND_COMPLIANCE',
+    railwayEnvironmentalAndOtherFactors: 'RAILWAY_ENVIRONMENTAL_AND_OTHER_FACTORS'
   },
-  ballastSystems: {
-    ballastSystems: 'BALLAST_SYSTEMS',
-    ballast: 'BALLAST',
-    ballastMaterialData: 'BALLAST_MATERIAL_DATA',
-    ballastMaterialSpecification: 'BALLAST_MATERIAL_SPECIFICATION',
-    ballastConditionAssessment: 'BALLAST_CONDITION_ASSESSMENT',
-    ballastMaintenanceRenewal: 'BALLAST_MAINTENANCE_RENEWAL',
-    ballastDrainageWaterManagement: 'BALLAST_DRAINAGE_WATER_MANAGEMENT',
-    ballastEnvironmentalFactors: 'BALLAST_ENVIRONMENTAL_FACTORS'
+  rollingStockVehicles: {
+    id: 'ROLLING_STOCK_VEHICLES',
+    railwayVehicleIdentification: 'RAILWAY_VEHICLE_IDENTIFICATION',
+    railwayVehicleSpecifications: 'RAILWAY_VEHICLE_SPECIFICATIONS',
+    railwayVehicleMaintenanceAndInspection: 'RAILWAY_VEHICLE_MAINTENANCE_AND_INSPECTION',
+    railwayVehicleOperationalPerformance: 'RAILWAY_VEHICLE_OPERATIONAL_PERFORMANCE',
+    railwayVehicleSafetyAndCompliance: 'RAILWAY_VEHICLE_SAFETY_AND_COMPLIANCE',
+    railwayVehicleInteriorAndPassengerAmenities: 'RAILWAY_VEHICLE_INTERIOR_AND_PASSENGER_AMENITIES',
+    railwayVehicleLoadAndCargoSpecifications: 'RAILWAY_VEHICLE_LOAD_AND_CARGO_SPECIFICATIONS'
   },
-  subBallastSystems: {
-    subBallastSystems: 'SUB_BALLAST_SYSTEMS',
-    subBallastMaterials: 'SUB_BALLAST_MATERIALS',
-    subBallastMaterialTest: 'SUB_BALLAST_MATERIAL_TEST',
-    subBallastConditionAssessment: 'SUB_BALLAST_CONDITION_ASSESSMENT',
-    subBallastMaintenanceRenewal: 'SUB_BALLAST_MAINTENANCE_RENEWAL',
-    subBallastDrainageWaterManagement: 'SUB_BALLAST_DRAINAGE_WATER_MANAGEMENT',
-    subBallastEnvironmentalFactors: 'SUB_BALLAST_ENVIRONMENTAL_FACTORS'
-  },
-  sleeperAndFasteningSystems: {
-    sleeperAndFasteningSystems: 'SLEEPER_AND_FASTENING_SYSTEMS',
-    sleeperCharacteristics: 'SLEEPER_CHARACTERISTICS',
-    sleeperConditionAssessment: 'SLEEPER_CONDITION_ASSESSMENT',
-    sleeperMaintenanceReplacement: 'SLEEPER_MAINTENANCE_REPLACEMENT',
-    sleeperFasteningSystems: 'SLEEPER_FASTENING_SYSTEMS',
-    sleeperEnvironmentalFactors: 'SLEEPER_ENVIRONMENTAL_FACTORS',
-    fasteningSystemCharacteristics: 'FASTENING_SYSTEM_CHARACTERISTICS',
-    fasteningSystemConditionAssessment: 'FASTENING_SYSTEM_CONDITION_ASSESSMENT',
-    fasteningSystemMaintenanceReplacement: 'FASTENING_SYSTEM_MAINTENANCE_REPLACEMENT',
-    fasteningSystemEnvironmentalFactors: 'FASTENING_SYSTEM_ENVIRONMENTAL_FACTORS'
+  powerSystems: {
+    id: 'POWER_SYSTEMS',
+    railwayPowerSupplyConfiguration: 'RAILWAY_POWER_SUPPLY_CONFIGURATION',
+    railwayPowerSubstationsAndEquipment: 'RAILWAY_POWER_SUBSTATIONS_AND_EQUIPMENT',
+    railwayPowerDistribution: 'RAILWAY_POWER_DISTRIBUTION',
+    railwayPowerSupplyMaintenanceAndTesting: 'RAILWAY_POWER_SUPPLY_MAINTENANCE_AND_TESTING',
+    railwayPowerSupplySafetyAndCompliance: 'RAILWAY_POWER_SUPPLY_SAFETY_AND_COMPLIANCE',
+    railwayPowerSupplyEnvironmentalAndOtherFactors: 'RAILWAY_POWER_SUPPLY_ENVIRONMENTAL_AND_OTHER_FACTORS'
   }
 };
 
-const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
+export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
   {
-    id: railwayTrackInfrastructureIds.trackSystems.trackSystems,
-    title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.title',
+    id: railwayOperationalSystemsIds.communicationAndSignaling.id,
+    title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.title',
     subItems: [
-      { id: railwayTrackInfrastructureIds.trackSystems.tracksData, title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-data', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-data` },
-      { id: railwayTrackInfrastructureIds.trackSystems.tracksGeometryData, title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-geometry-data', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-geometry-data` },
-      { id: railwayTrackInfrastructureIds.trackSystems.tracksConditionAssessment, title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-condition-assessment', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-condition-assessment` },
-      { id: railwayTrackInfrastructureIds.trackSystems.tracksMaintenanceInspections, title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-maintenance-inspections', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-maintenance-inspections` },
-      { id: railwayTrackInfrastructureIds.trackSystems.tracksRehabilitationRenewal, title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-rehabilitation-renewal', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-rehabilitation-renewal` },
-      { id: railwayTrackInfrastructureIds.trackSystems.trackSafety, title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.track-safety', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/track-safety` }
+      {
+        id: railwayOperationalSystemsIds.communicationAndSignaling.railwaySignalingSystem,
+        title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-signaling-system',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-signaling-system`
+      },
+      {
+        id: railwayOperationalSystemsIds.communicationAndSignaling.railwayCommunicationSystem,
+        title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-communication-system',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-communication-system`
+      },
+      {
+        id: railwayOperationalSystemsIds.communicationAndSignaling.railwaySystemConditionAssessment,
+        title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-system-condition-assessment',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-system-condition-assessment`
+      },
+      {
+        id: railwayOperationalSystemsIds.communicationAndSignaling.railwayCommSystemMaintenanceAndTesting,
+        title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-comm-system-maintenance-and-testing',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-comm-system-maintenance-and-testing`
+      },
+      {
+        id: railwayOperationalSystemsIds.communicationAndSignaling.railwayCommSystemSafetyAndCompliance,
+        title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-comm-system-safety-and-compliance',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-comm-system-safety-and-compliance`
+      },
+      {
+        id: railwayOperationalSystemsIds.communicationAndSignaling.railwayEnvironmentalAndOtherFactors,
+        title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-environmental-and-other-factors',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-environmental-and-other-factors`
+      }
     ]
   },
   {
-    id: railwayTrackInfrastructureIds.ballastSystems.ballastSystems,
-    title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.title',
+    id: railwayOperationalSystemsIds.rollingStockVehicles.id,
+    title: 'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.title',
     subItems: [
-      { id: railwayTrackInfrastructureIds.ballastSystems.ballast, title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast` },
-      { id: railwayTrackInfrastructureIds.ballastSystems.ballastMaterialData, title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast-material-data', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-material-data` },
-      { id: railwayTrackInfrastructureIds.ballastSystems.ballastMaterialSpecification, title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast-material-specification', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-material-specification` },
-      { id: railwayTrackInfrastructureIds.ballastSystems.ballastConditionAssessment, title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast-condition-assessment', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-condition-assessment` },
-      { id: railwayTrackInfrastructureIds.ballastSystems.ballastMaintenanceRenewal, title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast-maintenance-renewal', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-maintenance-renewal` },
-      { id: railwayTrackInfrastructureIds.ballastSystems.ballastDrainageWaterManagement, title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast-drainage-water-management', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-drainage-water-management` },
-      { id: railwayTrackInfrastructureIds.ballastSystems.ballastEnvironmentalFactors, title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast-environmental-factors', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-environmental-factors` }
+      {
+        id: railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleIdentification,
+        title: 'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-identification',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-identification`
+      },
+      {
+        id: railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleSpecifications,
+        title: 'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-specifications',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-specifications`
+      },
+      {
+        id: railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleMaintenanceAndInspection,
+        title: 'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-maintenance-and-inspection',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-maintenance-and-inspection`
+      },
+      {
+        id: railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleOperationalPerformance,
+        title: 'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-operational-performance',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-operational-performance`
+      },
+      {
+        id: railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleSafetyAndCompliance,
+        title: 'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-safety-and-compliance',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-safety-and-compliance`
+      },
+      {
+        id: railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleInteriorAndPassengerAmenities,
+        title: 'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-interior-and-passenger-amenities',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-interior-and-passenger-amenities`
+      },
+      {
+        id: railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleLoadAndCargoSpecifications,
+        title: 'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-load-and-cargo-specifications',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-load-and-cargo-specifications`
+      }
     ]
   },
   {
-    id: railwayTrackInfrastructureIds.subBallastSystems.subBallastSystems,
-    title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.title',
+    id: railwayOperationalSystemsIds.powerSystems.id,
+    title: 'project.navigation.submenu.railway-operational-systems.power-systems.title',
     subItems: [
-      { id: railwayTrackInfrastructureIds.subBallastSystems.subBallastMaterials, title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.sub-ballast-materials', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-materials` },
-      { id: railwayTrackInfrastructureIds.subBallastSystems.subBallastMaterialTest, title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.sub-ballast-material-test', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-material-test` },
-      { id: railwayTrackInfrastructureIds.subBallastSystems.subBallastConditionAssessment, title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.sub-ballast-condition-assessment', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-condition-assessment` },
-      { id: railwayTrackInfrastructureIds.subBallastSystems.subBallastMaintenanceRenewal, title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.sub-ballast-maintenance-renewal', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-maintenance-renewal` },
-      { id: railwayTrackInfrastructureIds.subBallastSystems.subBallastDrainageWaterManagement, title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.sub-ballast-drainage-water-management', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-drainage-water-management` },
-      { id: railwayTrackInfrastructureIds.subBallastSystems.subBallastEnvironmentalFactors, title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.sub-ballast-environmental-factors', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-environmental-factors` }
-    ]
-  },
-  {
-    id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperAndFasteningSystems,
-    title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.title',
-    subItems: [
-      { id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperCharacteristics, title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.sleeper-characteristics', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-characteristics` },
-      { id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperConditionAssessment, title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.sleeper-condition-assessment', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-condition-assessment` },
-      { id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperMaintenanceReplacement, title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.sleeper-maintenance-replacement', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-maintenance-replacement` },
-      { id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperFasteningSystems, title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.sleeper-fastening-systems', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-fastening-systems` },
-      { id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperEnvironmentalFactors, title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.sleeper-environmental-factors', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-environmental-factors` },
-      { id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemCharacteristics, title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.fastening-system-characteristics', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-characteristics` },
-      { id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemConditionAssessment, title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.fastening-system-condition-assessment', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-condition-assessment` },
-      { id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemMaintenanceReplacement, title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.fastening-system-maintenance-replacement', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-maintenance-replacement` },
-      { id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemEnvironmentalFactors, title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.fastening-system-environmental-factors', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-environmental-factors` }
+      {
+        id: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyConfiguration,
+        title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-supply-configuration',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-configuration`
+      },
+      {
+        id: railwayOperationalSystemsIds.powerSystems.railwayPowerSubstationsAndEquipment,
+        title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-substations-and-equipment',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-substations-and-equipment`
+      },
+      {
+        id: railwayOperationalSystemsIds.powerSystems.railwayPowerDistribution,
+        title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-distribution',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-distribution`
+      },
+      {
+        id: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyMaintenanceAndTesting,
+        title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-supply-maintenance-and-testing',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-maintenance-and-testing`
+      },
+      {
+        id: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplySafetyAndCompliance,
+        title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-supply-safety-and-compliance',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-safety-and-compliance`
+      },
+      {
+        id: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyEnvironmentalAndOtherFactors,
+        title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-supply-environmental-and-other-factors',
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-environmental-and-other-factors`
+      }
     ]
   }
 ];
-
 export const findSubMenuItem = (items: DetailSubMenuItem[], id: string) => {
   for (const item of items) {
     if (item.subItems) {
