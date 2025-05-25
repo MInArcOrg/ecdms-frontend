@@ -29,9 +29,9 @@ const PositionCard = ({
             model="Position"
             model_id={position.id}
             refetchModel={refetch}
-            resubmit={() => {}}
+            resubmit={() => { }}
             title=""
-            postAction={() => {}}
+            postAction={() => { }}
           />
           <RowOptions
             onEdit={onEdit}
