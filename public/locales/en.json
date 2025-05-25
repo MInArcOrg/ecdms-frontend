@@ -3428,6 +3428,23 @@
           "remark": "Remark"
         }
       },
+      "railway-tracks-geometry-data": {
+        "title": "Railway Tracks Geometry Data",
+        "create-railway-tracks-geometry-data": "Create Railway Tracks Geometry Data",
+        "edit-railway-tracks-geometry-data": "Edit Railway Tracks Geometry Data",
+        "railway-tracks-geometry-data-details": "Railway Tracks Geometry Data Details",
+        "details": {
+          "alignment": "Alignment",
+          "gradient": "Gradient",
+          "curvature-radius": "Curvature Radius",
+          "cant": "Cant",
+          "track-gauge": "Track Gauge",
+          "cross-level": "Cross Level",
+          "track-surface-profile": "Track Surface Profile",
+          "twist": "Twist",
+          "remark": "Remark"
+        }
+      },
       "electric-grid-control-center-performance-and-maintenance": {
         "title": "Electric Grid Control Center Performance And Maintenance",
         "create-electric-grid-control-center-performance-and-maintenance": "Create Electric Grid Control Center Performance And Maintenance",

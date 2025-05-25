@@ -1528,7 +1528,8 @@ export interface ElectricGridControlCenterCyberSecurityData {
   updated_at?: string;
 }
 
-export interface TracksGeometryData {
+export interface RailwayTracksGeometryData {
+  id: string;
   project_id: string;
   alignment?: string;
   gradient?: number;
@@ -1539,4 +1540,6 @@ export interface TracksGeometryData {
   track_surface_profile?: string;
   twist?: string;
   remark?: string;
+  created_at?: string;
+  updated_at?: string;
 }
