@@ -1543,3 +1543,20 @@ export interface RailwayTracksGeometryData {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayTrackData {
+  id: string;
+  project_id: string;
+  railway_track_infrastructure_type_id: string;
+  track_type_id: string;
+  track_gauge_id: string;
+  track_length?: number;
+  rail_type_and_size?: string;
+  sleepers_type_and_spacing?: string;
+  fastening_systems?: string;
+  ballast_type_and_depth?: string;
+  track_connection_method?: string;
+  track_type?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
