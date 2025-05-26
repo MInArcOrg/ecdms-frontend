@@ -3428,6 +3428,25 @@
           "remark": "Remark"
         }
       },
+      "railway-track-data": {
+        "title": "Railway Track Data",
+        "create-railway-track-data": "Create Railway Track Data",
+        "edit-railway-track-data": "Edit Railway Track Data",
+        "railway-track-data-details": "Railway Track Data Details",
+        "details": {
+          "railway-track-infrastructure-type-id": "Railway Track Infrastructure Type",
+          "track-type-id": "Track Type",
+          "track-gauge-id": "Track Gauge",
+          "track-length": "Track Length",
+          "rail-type-and-size": "Rail Type and Size",
+          "sleepers-type-and-spacing": "Sleepers Type and Spacing",
+          "fastening-systems": "Fastening Systems",
+          "ballast-type-and-depth": "Ballast Type and Depth",
+          "track-connection-method": "Track Connection Method",
+          "track-type": "Track Type",
+          "remark": "Remark"
+        }
+      },
       "railway-tracks-geometry-data": {
         "title": "Railway Tracks Geometry Data",
         "create-railway-tracks-geometry-data": "Create Railway Tracks Geometry Data",
