@@ -99,6 +99,7 @@ const RailwayTracksGeometryDataDrawer = (props: RailwayTracksGeometryDataDrawerT
     <CustomSideDrawer
       title={`project.other.railway-tracks-geometry-data.${isEdit ? `edit-railway-tracks-geometry-data` : `create-railway-tracks-geometry-data`
         }`}
+      model='railwaytracksgeometrydata'
       handleClose={handleClose}
       open={open}
     >

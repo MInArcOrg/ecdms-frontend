@@ -1560,3 +1560,16 @@ export interface RailwayTrackData {
   created_at?: string;
   updated_at?: string;
 }
+
+
+export interface RailwayTrackConditionAssessment {
+  id: string;
+  project_id: string;
+  inspection_dates?: string;
+  track_condition_rating_id: string;
+  observed_defects_id: string;
+  track_settlement_irregularities?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
