@@ -5,33 +5,27 @@ import subMenuItems, { findSubMenuItem, railwayTrackInfrastructureIds } from '..
 import RailwayTrackDataList from 'src/views/pages/projects/detail/other/railway/railway-track-data';
 // Placeholder import, replace with actual component when available
 
-const defaultMenuItem = findSubMenuItem(
-    subMenuItems('', ''),
-    railwayTrackInfrastructureIds.trackSystems.tracksData
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), railwayTrackInfrastructureIds.trackSystems.tracksData);
 
 const TrackDataPage = () => {
-    const router = useRouter();
-    const { id = '', typeId = '' } = router.query;
+  const router = useRouter();
+  const { id = '', typeId = '' } = router.query;
 
-    const menuItem = findSubMenuItem(
-        subMenuItems(id as string, typeId as string),
-        railwayTrackInfrastructureIds.trackSystems.tracksData
-    );
-    return (
-        <ProjectLayout
-            activeMenuId={projectMenuIds.railwayTrackInfrastructure}
-            activeSubMenuId={railwayTrackInfrastructureIds.trackSystems.tracksData}
-            subMenuItems={subMenuItems(id as string, typeId as string)}
-        >
-            <RailwayTrackDataList projectId={String(id)} typeId={String(typeId)} otherSubMenu={menuItem} />
-        </ProjectLayout>
-    );
+  const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), railwayTrackInfrastructureIds.trackSystems.tracksData);
+  return (
+    <ProjectLayout
+      activeMenuId={projectMenuIds.railwayTrackInfrastructure}
+      activeSubMenuId={railwayTrackInfrastructureIds.trackSystems.tracksData}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <RailwayTrackDataList projectId={String(id)} typeId={String(typeId)} otherSubMenu={menuItem} />
+    </ProjectLayout>
+  );
 };
 
 TrackDataPage.acl = {
-    subject: defaultMenuItem?.model,
-    action: 'view'
+  subject: defaultMenuItem?.model,
+  action: 'view'
 };
 
 export default TrackDataPage;

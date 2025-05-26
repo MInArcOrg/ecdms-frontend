@@ -5,36 +5,32 @@ import RailwayTrackConditionAssesmentList from 'src/views/pages/projects/detail/
 import subMenuItems, { findSubMenuItem, railwayTrackInfrastructureIds } from '../(subMenuItems)';
 // Placeholder import, replace with actual component when available
 
-const defaultMenuItem = findSubMenuItem(
-    subMenuItems('', ''),
-    railwayTrackInfrastructureIds.trackSystems.tracksConditionAssessment
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), railwayTrackInfrastructureIds.trackSystems.tracksConditionAssessment);
 
 const TracksConditionAssessmentPage = () => {
-    const router = useRouter();
-    const { id = '', typeId = '' } = router.query;
+  const router = useRouter();
+  const { id = '', typeId = '' } = router.query;
 
-    const menuItem = findSubMenuItem(
-        subMenuItems(id as string, typeId as string),
-        railwayTrackInfrastructureIds.trackSystems.tracksConditionAssessment
-    );
-    menuItem;
+  const menuItem = findSubMenuItem(
+    subMenuItems(id as string, typeId as string),
+    railwayTrackInfrastructureIds.trackSystems.tracksConditionAssessment
+  );
+  menuItem;
 
-    return (
-        <ProjectLayout
-            activeMenuId={projectMenuIds.railwayTrackInfrastructure}
-            activeSubMenuId={railwayTrackInfrastructureIds.trackSystems.tracksConditionAssessment}
-            subMenuItems={subMenuItems(id as string, typeId as string)}
-        >
-            <RailwayTrackConditionAssesmentList projectId={String(id)} typeId={String(typeId)} otherSubMenu={menuItem} />
-
-        </ProjectLayout>
-    );
+  return (
+    <ProjectLayout
+      activeMenuId={projectMenuIds.railwayTrackInfrastructure}
+      activeSubMenuId={railwayTrackInfrastructureIds.trackSystems.tracksConditionAssessment}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <RailwayTrackConditionAssesmentList projectId={String(id)} typeId={String(typeId)} otherSubMenu={menuItem} />
+    </ProjectLayout>
+  );
 };
 
 TracksConditionAssessmentPage.acl = {
-    subject: defaultMenuItem?.model,
-    action: 'view'
+  subject: defaultMenuItem?.model,
+  action: 'view'
 };
 
 export default TracksConditionAssessmentPage;

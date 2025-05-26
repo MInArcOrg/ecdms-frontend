@@ -4,34 +4,34 @@ import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-m
 import subMenuItems, { findSubMenuItem, railwayOperationalSystemsIds } from '../(subMenuItems)';
 
 const defaultMenuItem = findSubMenuItem(
-    subMenuItems('', ''),
-    railwayOperationalSystemsIds.communicationAndSignaling.railwayCommSystemSafetyAndCompliance
+  subMenuItems('', ''),
+  railwayOperationalSystemsIds.communicationAndSignaling.railwayCommSystemSafetyAndCompliance
 );
 
 const RailwayCommSystemSafetyAndCompliancePage = () => {
-    const router = useRouter();
-    const { id = '', typeId = '' } = router.query;
+  const router = useRouter();
+  const { id = '', typeId = '' } = router.query;
 
-    const menuItem = findSubMenuItem(
-        subMenuItems(id as string, typeId as string),
-        railwayOperationalSystemsIds.communicationAndSignaling.railwayCommSystemSafetyAndCompliance
-    );
-    menuItem;
+  const menuItem = findSubMenuItem(
+    subMenuItems(id as string, typeId as string),
+    railwayOperationalSystemsIds.communicationAndSignaling.railwayCommSystemSafetyAndCompliance
+  );
+  menuItem;
 
-    return (
-        <ProjectLayout
-            activeMenuId={projectMenuIds.railwayOperationalSystems}
-            activeSubMenuId={railwayOperationalSystemsIds.communicationAndSignaling.railwayCommSystemSafetyAndCompliance}
-            subMenuItems={subMenuItems(id as string, typeId as string)}
-        >
-            <div>Railway Comm System Safety and Compliance Placeholder</div>
-        </ProjectLayout>
-    );
+  return (
+    <ProjectLayout
+      activeMenuId={projectMenuIds.railwayOperationalSystems}
+      activeSubMenuId={railwayOperationalSystemsIds.communicationAndSignaling.railwayCommSystemSafetyAndCompliance}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <div>Railway Comm System Safety and Compliance Placeholder</div>
+    </ProjectLayout>
+  );
 };
 
 RailwayCommSystemSafetyAndCompliancePage.acl = {
-    subject: defaultMenuItem?.model,
-    action: 'view'
+  subject: defaultMenuItem?.model,
+  action: 'view'
 };
 
 export default RailwayCommSystemSafetyAndCompliancePage;

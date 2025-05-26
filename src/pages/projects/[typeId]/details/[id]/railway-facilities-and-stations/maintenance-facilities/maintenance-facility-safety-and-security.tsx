@@ -4,34 +4,34 @@ import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-m
 import subMenuItems, { findSubMenuItem, railwayFacilitiesAndStationsIds } from '../(subMenuItems)';
 
 const defaultMenuItem = findSubMenuItem(
-    subMenuItems('', ''),
-    railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_safety_and_security
+  subMenuItems('', ''),
+  railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_safety_and_security
 );
 
 const MaintenanceFacilitySafetyAndSecurityPage = () => {
-    const router = useRouter();
-    const { id = '', typeId = '' } = router.query;
+  const router = useRouter();
+  const { id = '', typeId = '' } = router.query;
 
-    const menuItem = findSubMenuItem(
-        subMenuItems(id as string, typeId as string),
-        railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_safety_and_security
-    );
-    menuItem;
+  const menuItem = findSubMenuItem(
+    subMenuItems(id as string, typeId as string),
+    railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_safety_and_security
+  );
+  menuItem;
 
-    return (
-        <ProjectLayout
-            activeMenuId={projectMenuIds.railwayFacilitiesAndStations}
-            activeSubMenuId={railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_safety_and_security}
-            subMenuItems={subMenuItems(id as string, typeId as string)}
-        >
-            <div>Maintenance Facility Safety and Security Placeholder</div>
-        </ProjectLayout>
-    );
+  return (
+    <ProjectLayout
+      activeMenuId={projectMenuIds.railwayFacilitiesAndStations}
+      activeSubMenuId={railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_safety_and_security}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <div>Maintenance Facility Safety and Security Placeholder</div>
+    </ProjectLayout>
+  );
 };
 
 MaintenanceFacilitySafetyAndSecurityPage.acl = {
-    subject: defaultMenuItem?.model,
-    action: 'view'
+  subject: defaultMenuItem?.model,
+  action: 'view'
 };
 
 export default MaintenanceFacilitySafetyAndSecurityPage;

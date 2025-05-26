@@ -14,7 +14,6 @@ import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import type { RailwayTrackData } from 'src/types/project/other';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
 import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
 import RailwayTrackDataCard from './railway-track-data-card';
@@ -31,9 +30,6 @@ const RailwayTrackDataList: React.FC<RailwayTrackDataListProps> = ({ otherSubMen
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<RailwayTrackData | null>(null);
   const { t } = useTranslation();
-
-
-
 
   const fetchRailwayTrackData = (params: GetRequestParam): Promise<IApiResponse<RailwayTrackData[]>> => {
     return projectOtherApiSecondService<RailwayTrackData>().getAll(otherSubMenu?.apiRoute || '', {});
@@ -66,10 +62,7 @@ const RailwayTrackDataList: React.FC<RailwayTrackDataListProps> = ({ otherSubMen
   };
 
   const handleDelete = async (railwayTrackDataId: string) => {
-    await projectOtherApiSecondService<RailwayTrackData>().delete(
-      otherSubMenu?.apiRoute || '',
-      railwayTrackDataId
-    );
+    await projectOtherApiSecondService<RailwayTrackData>().delete(otherSubMenu?.apiRoute || '', railwayTrackDataId);
     refetch();
   };
 
@@ -78,59 +71,56 @@ const RailwayTrackDataList: React.FC<RailwayTrackDataListProps> = ({ otherSubMen
     setSelectedRow(railwayTrackData);
   };
 
-
-  const mapRailwayTrackDataToDetailItems = (
-    railwayTrackData: RailwayTrackData
-  ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.railway-track-data.details.project-id'),
-        value: railwayTrackData?.project_id || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-data.details.railway-track-infrastructure-type-id'),
-        value: railwayTrackData?.railway_track_infrastructure_type_id || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-data.details.track-type-id'),
-        value: railwayTrackData?.track_type_id || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-data.details.track-gauge-id'),
-        value: railwayTrackData?.track_gauge_id || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-data.details.track-length'),
-        value: railwayTrackData?.track_length !== undefined ? railwayTrackData.track_length.toString() : 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-data.details.rail-type-and-size'),
-        value: railwayTrackData?.rail_type_and_size || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-data.details.sleepers-type-and-spacing'),
-        value: railwayTrackData?.sleepers_type_and_spacing || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-data.details.fastening-systems'),
-        value: railwayTrackData?.fastening_systems || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-data.details.ballast-type-and-depth'),
-        value: railwayTrackData?.ballast_type_and_depth || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-data.details.track-connection-method'),
-        value: railwayTrackData?.track_connection_method || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-data.details.track-type'),
-        value: railwayTrackData?.track_type || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-data.details.remark'),
-        value: railwayTrackData?.remark || 'N/A'
-      }
-    ];
+  const mapRailwayTrackDataToDetailItems = (railwayTrackData: RailwayTrackData): { title: string; value: string }[] => [
+    {
+      title: t('project.other.railway-track-data.details.project-id'),
+      value: railwayTrackData?.project_id || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-data.details.railway-track-infrastructure-type-id'),
+      value: railwayTrackData?.railway_track_infrastructure_type_id || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-data.details.track-type-id'),
+      value: railwayTrackData?.track_type_id || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-data.details.track-gauge-id'),
+      value: railwayTrackData?.track_gauge_id || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-data.details.track-length'),
+      value: railwayTrackData?.track_length !== undefined ? railwayTrackData.track_length.toString() : 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-data.details.rail-type-and-size'),
+      value: railwayTrackData?.rail_type_and_size || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-data.details.sleepers-type-and-spacing'),
+      value: railwayTrackData?.sleepers_type_and_spacing || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-data.details.fastening-systems'),
+      value: railwayTrackData?.fastening_systems || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-data.details.ballast-type-and-depth'),
+      value: railwayTrackData?.ballast_type_and_depth || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-data.details.track-connection-method'),
+      value: railwayTrackData?.track_connection_method || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-data.details.track-type'),
+      value: railwayTrackData?.track_type || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-data.details.remark'),
+      value: railwayTrackData?.remark || 'N/A'
+    }
+  ];
 
   return (
     <Box>
@@ -162,13 +152,7 @@ const RailwayTrackDataList: React.FC<RailwayTrackDataListProps> = ({ otherSubMen
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: railwayTrackDataColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-          )
+          headers: railwayTrackDataColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (

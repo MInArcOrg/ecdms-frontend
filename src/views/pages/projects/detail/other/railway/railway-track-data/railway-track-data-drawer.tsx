@@ -22,15 +22,7 @@ interface RailwayTrackDataDrawerType {
 }
 
 const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
-  const {
-    open,
-    toggle,
-    refetch,
-    railwayTrackData,
-    projectId,
-    otherSubMenu,
-
-  } = props;
+  const { open, toggle, refetch, railwayTrackData, projectId, otherSubMenu } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
@@ -38,19 +30,13 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
     setUploadableFile(file);
   };
 
-
-
   const isEdit = Boolean(railwayTrackData?.id);
 
   const createRailwayTrackData = async (body: IApiPayload<RailwayTrackData>) =>
     projectOtherApiSecondService<RailwayTrackData>().create(otherSubMenu?.apiRoute || '', body);
 
   const editRailwayTrackData = async (body: IApiPayload<RailwayTrackData>) =>
-    projectOtherApiSecondService<RailwayTrackData>().update(
-      otherSubMenu?.apiRoute || '',
-      railwayTrackData?.id || '',
-      body
-    );
+    projectOtherApiSecondService<RailwayTrackData>().update(otherSubMenu?.apiRoute || '', railwayTrackData?.id || '', body);
 
   const validationSchema = yup.object().shape({
     railway_track_infrastructure_type_id: yup.string().required(),
@@ -87,10 +73,7 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<RailwayTrackData>,
-    payload: IApiPayload<RailwayTrackData>
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<RailwayTrackData>, payload: IApiPayload<RailwayTrackData>) => {
     if (payload.files.length > 0) {
       await uploadFile(payload.files[0], uploadableProjectFileTypes.other.electric_grid_control_center_data, response.payload.id, '', '');
     }
@@ -104,31 +87,25 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
       title={`project.other.railway-track-data.${isEdit ? `edit-railway-track-data` : `create-railway-track-data`}`}
       handleClose={handleClose}
       open={open}
-      model='railwaytrackdata'
+      model="railwaytrackdata"
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.railway-tracks-geometry-data.${isEdit ? `edit-railway-tracks-geometry-data` : `create-railway-tracks-geometry-data`
-            }`}
+          title={`project.other.railway-tracks-geometry-data.${
+            isEdit ? `edit-railway-tracks-geometry-data` : `create-railway-tracks-geometry-data`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...railwayTrackData,
+            ...railwayTrackData
           }}
           createActionFunc={isEdit ? editRailwayTrackData : createRailwayTrackData}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<RailwayTrackData>) => {
-            return (
-              <RailwayTrackDataForm
-                file={uploadableFile}
-                onFileChange={onFileChange}
-                formik={formik}
-
-              />
-            );
+            return <RailwayTrackDataForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

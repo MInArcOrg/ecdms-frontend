@@ -12,7 +12,7 @@ const RailwayTracksGeometryDataCard = ({
   onEdit,
   onDelete,
   refetch,
-  t,
+  t
 }: {
   onDetail: (railwayTracksGeometryData: RailwayTracksGeometryData) => void;
   railwayTracksGeometryData: RailwayTracksGeometryData;
@@ -84,7 +84,8 @@ const RailwayTracksGeometryDataCard = ({
         </Grid>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.railway.geometry.track-surface-profile')}: {railwayTracksGeometryData?.track_surface_profile ?? t('common.not-available')}
+            {t('project.railway.geometry.track-surface-profile')}:{' '}
+            {railwayTracksGeometryData?.track_surface_profile ?? t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>

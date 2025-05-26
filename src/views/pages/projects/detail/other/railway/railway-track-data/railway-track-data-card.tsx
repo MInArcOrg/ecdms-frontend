@@ -12,7 +12,7 @@ const RailwayTrackDataCard = ({
   onEdit,
   onDelete,
   refetch,
-  t,
+  t
 }: {
   onDetail: (railwayTrackData: RailwayTrackData) => void;
   railwayTrackData: RailwayTrackData;
@@ -54,7 +54,8 @@ const RailwayTrackDataCard = ({
       <Grid container spacing={2} sx={{ mt: 1 }}>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-data.details.railway-track-infrastructure-type-id')}: {railwayTrackData?.railway_track_infrastructure_type_id ?? t('common.not-available')}
+            {t('project.other.railway-track-data.details.railway-track-infrastructure-type-id')}:{' '}
+            {railwayTrackData?.railway_track_infrastructure_type_id ?? t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>
@@ -74,27 +75,32 @@ const RailwayTrackDataCard = ({
         </Grid>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-data.details.rail-type-and-size')}: {railwayTrackData?.rail_type_and_size ?? t('common.not-available')}
+            {t('project.other.railway-track-data.details.rail-type-and-size')}:{' '}
+            {railwayTrackData?.rail_type_and_size ?? t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-data.details.sleepers-type-and-spacing')}: {railwayTrackData?.sleepers_type_and_spacing ?? t('common.not-available')}
+            {t('project.other.railway-track-data.details.sleepers-type-and-spacing')}:{' '}
+            {railwayTrackData?.sleepers_type_and_spacing ?? t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-data.details.fastening-systems')}: {railwayTrackData?.fastening_systems ?? t('common.not-available')}
+            {t('project.other.railway-track-data.details.fastening-systems')}:{' '}
+            {railwayTrackData?.fastening_systems ?? t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-data.details.ballast-type-and-depth')}: {railwayTrackData?.ballast_type_and_depth ?? t('common.not-available')}
+            {t('project.other.railway-track-data.details.ballast-type-and-depth')}:{' '}
+            {railwayTrackData?.ballast_type_and_depth ?? t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-data.details.track-connection-method')}: {railwayTrackData?.track_connection_method ?? t('common.not-available')}
+            {t('project.other.railway-track-data.details.track-connection-method')}:{' '}
+            {railwayTrackData?.track_connection_method ?? t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>

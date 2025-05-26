@@ -1,5 +1,4 @@
-
-import { Divider, Grid, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
 import type { FormikProps } from 'formik';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -14,22 +13,16 @@ interface RailwayTracksGeometryDataFormProps {
   onFileChange: (file: File | null) => void;
 }
 
-const RailwayTracksGeometryDataForm: React.FC<RailwayTracksGeometryDataFormProps> = ({
-  formik,
-  file,
-  onFileChange,
-}) => {
+const RailwayTracksGeometryDataForm: React.FC<RailwayTracksGeometryDataFormProps> = ({ formik, file, onFileChange }) => {
   const { t: transl } = useTranslation();
 
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <CustomTextBox
               fullWidth
-
               label={transl('project.other.railway-tracks-geometry-data.details.alignment')}
               name="alignment"
               size="small"
@@ -41,7 +34,6 @@ const RailwayTracksGeometryDataForm: React.FC<RailwayTracksGeometryDataFormProps
           <Grid item xs={12}>
             <CustomTextBox
               fullWidth
-
               label={transl('project.other.railway-tracks-geometry-data.details.gradient')}
               name="gradient"
               size="small"
@@ -53,7 +45,6 @@ const RailwayTracksGeometryDataForm: React.FC<RailwayTracksGeometryDataFormProps
           <Grid item xs={12}>
             <CustomTextBox
               fullWidth
-
               label={transl('project.other.railway-tracks-geometry-data.details.curvature-radius')}
               name="curvature_radius"
               size="small"
@@ -65,7 +56,6 @@ const RailwayTracksGeometryDataForm: React.FC<RailwayTracksGeometryDataFormProps
           <Grid item xs={12}>
             <CustomTextBox
               fullWidth
-
               label={transl('project.other.railway-tracks-geometry-data.details.cant')}
               name="cant"
               size="small"
@@ -77,7 +67,6 @@ const RailwayTracksGeometryDataForm: React.FC<RailwayTracksGeometryDataFormProps
           <Grid item xs={12}>
             <CustomTextBox
               fullWidth
-
               label={transl('project.other.railway-tracks-geometry-data.details.track-gauge')}
               name="track_gauge"
               size="small"
@@ -89,7 +78,6 @@ const RailwayTracksGeometryDataForm: React.FC<RailwayTracksGeometryDataFormProps
           <Grid item xs={12}>
             <CustomTextBox
               fullWidth
-
               label={transl('project.other.railway-tracks-geometry-data.details.cross-level')}
               name="cross_level"
               size="small"
@@ -101,7 +89,6 @@ const RailwayTracksGeometryDataForm: React.FC<RailwayTracksGeometryDataFormProps
           <Grid item xs={12}>
             <CustomTextBox
               fullWidth
-
               label={transl('project.other.railway-tracks-geometry-data.details.track-surface-profile')}
               name="track_surface_profile"
               size="small"
@@ -113,7 +100,6 @@ const RailwayTracksGeometryDataForm: React.FC<RailwayTracksGeometryDataFormProps
           <Grid item xs={12}>
             <CustomTextBox
               fullWidth
-
               label={transl('project.other.railway-tracks-geometry-data.details.twist')}
               name="twist"
               size="small"

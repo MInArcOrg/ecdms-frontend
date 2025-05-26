@@ -68,13 +68,15 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       },
       {
         id: railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_passenger_flow_and_capacity,
-        title: 'project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-passenger-flow-and-capacity',
+        title:
+          'project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-passenger-flow-and-capacity',
         path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-passenger-flow-and-capacity`,
         model: 'stationplatformpassengerflowandcapacity'
       },
       {
         id: railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_environmental_and_other_factors,
-        title: 'project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-environmental-and-other-factors',
+        title:
+          'project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-environmental-and-other-factors',
         path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-environmental-and-other-factors`,
         model: 'stationplatformenvironmentalandotherfactor'
       }
@@ -104,7 +106,8 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       },
       {
         id: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_infrastructure_and_utilities,
-        title: 'project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-infrastructure-and-utilities',
+        title:
+          'project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-infrastructure-and-utilities',
         path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-infrastructure-and-utilities`,
         model: 'maintenancefacilityinfrastructureandutility'
       },
@@ -116,7 +119,8 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       },
       {
         id: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_schedules_and_procedures,
-        title: 'project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-schedules-and-procedures',
+        title:
+          'project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-schedules-and-procedures',
         path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-schedules-and-procedures`,
         model: 'maintenancefacilityscheduleandprocedure'
       },
@@ -128,7 +132,8 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       },
       {
         id: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_environmental_and_other_factors,
-        title: 'project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-environmental-and-other-factors',
+        title:
+          'project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-environmental-and-other-factors',
         path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-environmental-and-other-factors`,
         model: 'maintenancefacilityenvironmentalandotherfactor'
       }

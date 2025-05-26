@@ -12,17 +12,14 @@ import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { RailwayTracksGeometryData, MiniGridStation } from 'src/types/project/other';
+import type { RailwayTracksGeometryData } from 'src/types/project/other';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
-import { useQuery } from '@tanstack/react-query';
 import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
 import RailwayTracksGeometryDataCard from './railway-tracks-geometry-data-card';
 import RailwayTracksGeometryDataDrawer from './railway-tracks-geometry-data-drawer';
 import { railwayTracksGeometryDataColumns } from './railway-tracks-geometry-data-row';
-import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
-import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 
 interface RailwayTracksGeometryDataListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -34,9 +31,6 @@ const RailwayTracksGeometryDataList: React.FC<RailwayTracksGeometryDataListProps
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<RailwayTracksGeometryData | null>(null);
   const { t } = useTranslation();
-
-
-
 
   const fetchRailwayTracksGeometryData = (params: GetRequestParam): Promise<IApiResponse<RailwayTracksGeometryData[]>> => {
     return projectOtherApiSecondService<RailwayTracksGeometryData>().getAll(otherSubMenu?.apiRoute || '', {});
@@ -69,10 +63,7 @@ const RailwayTracksGeometryDataList: React.FC<RailwayTracksGeometryDataListProps
   };
 
   const handleDelete = async (railwayTracksGeometryDataId: string) => {
-    await projectOtherApiSecondService<RailwayTracksGeometryData>().delete(
-      otherSubMenu?.apiRoute || '',
-      railwayTracksGeometryDataId
-    );
+    await projectOtherApiSecondService<RailwayTracksGeometryData>().delete(otherSubMenu?.apiRoute || '', railwayTracksGeometryDataId);
     refetch();
   };
 
@@ -81,56 +72,54 @@ const RailwayTracksGeometryDataList: React.FC<RailwayTracksGeometryDataListProps
     setSelectedRow(railwayTracksGeometryData);
   };
 
-
   const mapRailwayTracksGeometryDataToDetailItems = (
     railwayTracksGeometryData: RailwayTracksGeometryData
   ): { title: string; value: string }[] => [
-
-      {
-        title: t('project.other.railway-tracks-geometry-data.details.alignment'),
-        value: railwayTracksGeometryData?.alignment || 'N/A'
-      },
-      {
-        title: t('project.other.railway-tracks-geometry-data.details.gradient'),
-        value: railwayTracksGeometryData?.gradient !== undefined ? railwayTracksGeometryData.gradient.toString() : 'N/A'
-      },
-      {
-        title: t('project.other.railway-tracks-geometry-data.details.curvature-radius'),
-        value: railwayTracksGeometryData?.curvature_radius !== undefined ? railwayTracksGeometryData.curvature_radius.toString() : 'N/A'
-      },
-      {
-        title: t('project.other.railway-tracks-geometry-data.details.cant'),
-        value: railwayTracksGeometryData?.cant || 'N/A'
-      },
-      {
-        title: t('project.other.railway-tracks-geometry-data.details.track-gauge'),
-        value: railwayTracksGeometryData?.track_gauge || 'N/A'
-      },
-      {
-        title: t('project.other.railway-tracks-geometry-data.details.cross-level'),
-        value: railwayTracksGeometryData?.cross_level || 'N/A'
-      },
-      {
-        title: t('project.other.railway-tracks-geometry-data.details.track-surface-profile'),
-        value: railwayTracksGeometryData?.track_surface_profile || 'N/A'
-      },
-      {
-        title: t('project.other.railway-tracks-geometry-data.details.twist'),
-        value: railwayTracksGeometryData?.twist || 'N/A'
-      },
-      {
-        title: t('project.other.railway-tracks-geometry-data.details.remark'),
-        value: railwayTracksGeometryData?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: railwayTracksGeometryData?.created_at ? formatCreatedAt(railwayTracksGeometryData.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: railwayTracksGeometryData?.updated_at ? formatCreatedAt(railwayTracksGeometryData.updated_at) : 'N/A'
-      }
-    ];
+    {
+      title: t('project.other.railway-tracks-geometry-data.details.alignment'),
+      value: railwayTracksGeometryData?.alignment || 'N/A'
+    },
+    {
+      title: t('project.other.railway-tracks-geometry-data.details.gradient'),
+      value: railwayTracksGeometryData?.gradient !== undefined ? railwayTracksGeometryData.gradient.toString() : 'N/A'
+    },
+    {
+      title: t('project.other.railway-tracks-geometry-data.details.curvature-radius'),
+      value: railwayTracksGeometryData?.curvature_radius !== undefined ? railwayTracksGeometryData.curvature_radius.toString() : 'N/A'
+    },
+    {
+      title: t('project.other.railway-tracks-geometry-data.details.cant'),
+      value: railwayTracksGeometryData?.cant || 'N/A'
+    },
+    {
+      title: t('project.other.railway-tracks-geometry-data.details.track-gauge'),
+      value: railwayTracksGeometryData?.track_gauge || 'N/A'
+    },
+    {
+      title: t('project.other.railway-tracks-geometry-data.details.cross-level'),
+      value: railwayTracksGeometryData?.cross_level || 'N/A'
+    },
+    {
+      title: t('project.other.railway-tracks-geometry-data.details.track-surface-profile'),
+      value: railwayTracksGeometryData?.track_surface_profile || 'N/A'
+    },
+    {
+      title: t('project.other.railway-tracks-geometry-data.details.twist'),
+      value: railwayTracksGeometryData?.twist || 'N/A'
+    },
+    {
+      title: t('project.other.railway-tracks-geometry-data.details.remark'),
+      value: railwayTracksGeometryData?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: railwayTracksGeometryData?.created_at ? formatCreatedAt(railwayTracksGeometryData.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: railwayTracksGeometryData?.updated_at ? formatCreatedAt(railwayTracksGeometryData.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>
@@ -162,13 +151,7 @@ const RailwayTracksGeometryDataList: React.FC<RailwayTracksGeometryDataListProps
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: railwayTracksGeometryDataColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-          )
+          headers: railwayTracksGeometryDataColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (

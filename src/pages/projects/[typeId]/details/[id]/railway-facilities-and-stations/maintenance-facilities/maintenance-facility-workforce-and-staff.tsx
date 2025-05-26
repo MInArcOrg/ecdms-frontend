@@ -4,34 +4,34 @@ import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-m
 import subMenuItems, { findSubMenuItem, railwayFacilitiesAndStationsIds } from '../(subMenuItems)';
 
 const defaultMenuItem = findSubMenuItem(
-    subMenuItems('', ''),
-    railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_workforce_and_staff
+  subMenuItems('', ''),
+  railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_workforce_and_staff
 );
 
 const MaintenanceFacilityWorkforceAndStaffPage = () => {
-    const router = useRouter();
-    const { id = '', typeId = '' } = router.query;
+  const router = useRouter();
+  const { id = '', typeId = '' } = router.query;
 
-    const menuItem = findSubMenuItem(
-        subMenuItems(id as string, typeId as string),
-        railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_workforce_and_staff
-    );
-    menuItem;
+  const menuItem = findSubMenuItem(
+    subMenuItems(id as string, typeId as string),
+    railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_workforce_and_staff
+  );
+  menuItem;
 
-    return (
-        <ProjectLayout
-            activeMenuId={projectMenuIds.railwayFacilitiesAndStations}
-            activeSubMenuId={railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_workforce_and_staff}
-            subMenuItems={subMenuItems(id as string, typeId as string)}
-        >
-            <div>Maintenance Facility Workforce and Staff Placeholder</div>
-        </ProjectLayout>
-    );
+  return (
+    <ProjectLayout
+      activeMenuId={projectMenuIds.railwayFacilitiesAndStations}
+      activeSubMenuId={railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_workforce_and_staff}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <div>Maintenance Facility Workforce and Staff Placeholder</div>
+    </ProjectLayout>
+  );
 };
 
 MaintenanceFacilityWorkforceAndStaffPage.acl = {
-    subject: defaultMenuItem?.model,
-    action: 'view'
+  subject: defaultMenuItem?.model,
+  action: 'view'
 };
 
 export default MaintenanceFacilityWorkforceAndStaffPage;

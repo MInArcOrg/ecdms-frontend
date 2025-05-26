@@ -31,9 +31,6 @@ const RailwayTrackConditionAssesmentList: React.FC<RailwayTrackConditionAssesmen
   const [selectedRow, setSelectedRow] = useState<RailwayTrackConditionAssessment | null>(null);
   const { t } = useTranslation();
 
-
-
-
   const fetchRailwayTrackConditionAssessment = (params: GetRequestParam): Promise<IApiResponse<RailwayTrackConditionAssessment[]>> => {
     return projectOtherApiSecondService<RailwayTrackConditionAssessment>().getAll(otherSubMenu?.apiRoute || '', {});
   };
@@ -65,10 +62,7 @@ const RailwayTrackConditionAssesmentList: React.FC<RailwayTrackConditionAssesmen
   };
 
   const handleDelete = async (assessmentId: string) => {
-    await projectOtherApiSecondService<RailwayTrackConditionAssessment>().delete(
-      otherSubMenu?.apiRoute || '',
-      assessmentId
-    );
+    await projectOtherApiSecondService<RailwayTrackConditionAssessment>().delete(otherSubMenu?.apiRoute || '', assessmentId);
     refetch();
   };
 
@@ -77,35 +71,32 @@ const RailwayTrackConditionAssesmentList: React.FC<RailwayTrackConditionAssesmen
     setSelectedRow(assessment);
   };
 
-
-  const mapAssessmentToDetailItems = (
-    assessment: RailwayTrackConditionAssessment
-  ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.railway-track-condition-assessment.details.project-id'),
-        value: assessment?.project_id || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-condition-assessment.details.inspection-dates'),
-        value: assessment?.inspection_dates || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-condition-assessment.details.track-condition-rating-id'),
-        value: assessment?.track_condition_rating_id || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-condition-assessment.details.observed-defects-id'),
-        value: assessment?.observed_defects_id || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-condition-assessment.details.track-settlement-irregularities'),
-        value: assessment?.track_settlement_irregularities || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-condition-assessment.details.remark'),
-        value: assessment?.remark || 'N/A'
-      }
-    ];
+  const mapAssessmentToDetailItems = (assessment: RailwayTrackConditionAssessment): { title: string; value: string }[] => [
+    {
+      title: t('project.other.railway-track-condition-assessment.details.project-id'),
+      value: assessment?.project_id || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-condition-assessment.details.inspection-dates'),
+      value: assessment?.inspection_dates || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-condition-assessment.details.track-condition-rating-id'),
+      value: assessment?.track_condition_rating_id || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-condition-assessment.details.observed-defects-id'),
+      value: assessment?.observed_defects_id || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-condition-assessment.details.track-settlement-irregularities'),
+      value: assessment?.track_settlement_irregularities || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-condition-assessment.details.remark'),
+      value: assessment?.remark || 'N/A'
+    }
+  ];
 
   return (
     <Box>
@@ -137,13 +128,7 @@ const RailwayTrackConditionAssesmentList: React.FC<RailwayTrackConditionAssesmen
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: railwayTrackConditionAssessmentColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-          )
+          headers: railwayTrackConditionAssessmentColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (

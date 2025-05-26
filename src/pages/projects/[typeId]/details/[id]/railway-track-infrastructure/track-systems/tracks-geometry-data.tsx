@@ -5,34 +5,31 @@ import subMenuItems, { findSubMenuItem, railwayTrackInfrastructureIds } from '..
 import RailwayTracksGeometryDataList from 'src/views/pages/projects/detail/other/railway/railway-tracks-geometry-data';
 // Placeholder import, replace with actual component when available
 
-const defaultMenuItem = findSubMenuItem(
-    subMenuItems('', ''),
-    railwayTrackInfrastructureIds.trackSystems.tracksGeometryData
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), railwayTrackInfrastructureIds.trackSystems.tracksGeometryData);
 
 const TracksGeometryDataPage = () => {
-    const router = useRouter();
-    const { id = '', typeId = '' } = router.query;
+  const router = useRouter();
+  const { id = '', typeId = '' } = router.query;
 
-    const menuItem = findSubMenuItem(
-        subMenuItems(id as string, typeId as string),
-        railwayTrackInfrastructureIds.trackSystems.tracksGeometryData
-    );
+  const menuItem = findSubMenuItem(
+    subMenuItems(id as string, typeId as string),
+    railwayTrackInfrastructureIds.trackSystems.tracksGeometryData
+  );
 
-    return (
-        <ProjectLayout
-            activeMenuId={projectMenuIds.railwayTrackInfrastructure}
-            activeSubMenuId={railwayTrackInfrastructureIds.trackSystems.tracksGeometryData}
-            subMenuItems={subMenuItems(id as string, typeId as string)}
-        >
-            <RailwayTracksGeometryDataList projectId={String(id)} typeId={String(typeId)} otherSubMenu={menuItem} />
-        </ProjectLayout>
-    );
+  return (
+    <ProjectLayout
+      activeMenuId={projectMenuIds.railwayTrackInfrastructure}
+      activeSubMenuId={railwayTrackInfrastructureIds.trackSystems.tracksGeometryData}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <RailwayTracksGeometryDataList projectId={String(id)} typeId={String(typeId)} otherSubMenu={menuItem} />
+    </ProjectLayout>
+  );
 };
 
 TracksGeometryDataPage.acl = {
-    subject: defaultMenuItem?.model,
-    action: 'view'
+  subject: defaultMenuItem?.model,
+  action: 'view'
 };
 
 export default TracksGeometryDataPage;

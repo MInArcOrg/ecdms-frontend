@@ -1,5 +1,4 @@
-
-import { Divider, Grid, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import type { FormikProps } from 'formik';
 import type React from 'react';
@@ -7,15 +6,11 @@ import { useTranslation } from 'react-i18next';
 import { dropDownConfig } from 'src/configs/api-constants';
 import { gridSpacing } from 'src/configs/app-constants';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
-import generalMasterDataApiService from 'src/services/general/general-master-data-service';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
-import type { RailwayTrackData } from 'src/types/project/other';
 import type { RailwayTrackConditionAssessment } from 'src/types/project/other';
 import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
-
 
 interface RailwayTrackConditionAssessmentFormProps {
   formik: FormikProps<RailwayTrackConditionAssessment>;
@@ -23,22 +18,17 @@ interface RailwayTrackConditionAssessmentFormProps {
   onFileChange: (file: File | null) => void;
 }
 
-const RailwayTrackConditionAssessmentForm: React.FC<RailwayTrackConditionAssessmentFormProps> = ({
-  formik,
-  file,
-  onFileChange,
-}) => {
+const RailwayTrackConditionAssessmentForm: React.FC<RailwayTrackConditionAssessmentFormProps> = ({ formik, file, onFileChange }) => {
   const { t } = useTranslation();
   const { data: trackConditionRatings } = useQuery({
     queryKey: [projectMasterModels.trackConditionRating.title],
-    queryFn: () => projectGeneralMasterDataApiService.getAll(
-      dropDownConfig(
-        {
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll(
+        dropDownConfig({
           filter: { model: projectMasterModels.trackConditionRating.model }
         })
-    )
+      )
   });
-
 
   return (
     <Grid container spacing={gridSpacing}>
@@ -50,10 +40,12 @@ const RailwayTrackConditionAssessmentForm: React.FC<RailwayTrackConditionAssessm
             name="track_condition_rating_id"
             size="small"
             sx={{ mb: 2 }}
-            options={trackConditionRatings?.payload?.map((item) => ({
-              label: item.title,
-              value: item.id,
-            })) || []}
+            options={
+              trackConditionRatings?.payload?.map((item) => ({
+                label: item.title,
+                value: item.id
+              })) || []
+            }
           />
         </Grid>
         <Grid item xs={12}>
@@ -66,7 +58,6 @@ const RailwayTrackConditionAssessmentForm: React.FC<RailwayTrackConditionAssessm
             showMonthDropdown
             customInput={<CustomTextBox name="inspection_dates" />}
           />
-
         </Grid>
         <Grid item xs={12}>
           <CustomTextBox

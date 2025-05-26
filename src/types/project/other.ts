@@ -1561,7 +1561,6 @@ export interface RailwayTrackData {
   updated_at?: string;
 }
 
-
 export interface RailwayTrackConditionAssessment {
   id: string;
   project_id: string;

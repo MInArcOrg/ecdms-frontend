@@ -4,34 +4,34 @@ import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-m
 import subMenuItems, { findSubMenuItem, railwayTrackInfrastructureIds } from '../(subMenuItems)';
 
 const defaultMenuItem = findSubMenuItem(
-    subMenuItems('', ''),
-    railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemConditionAssessment
+  subMenuItems('', ''),
+  railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemConditionAssessment
 );
 
 const FasteningSystemConditionAssessmentPage = () => {
-    const router = useRouter();
-    const { id = '', typeId = '' } = router.query;
+  const router = useRouter();
+  const { id = '', typeId = '' } = router.query;
 
-    const menuItem = findSubMenuItem(
-        subMenuItems(id as string, typeId as string),
-        railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemConditionAssessment
-    );
-    menuItem;
+  const menuItem = findSubMenuItem(
+    subMenuItems(id as string, typeId as string),
+    railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemConditionAssessment
+  );
+  menuItem;
 
-    return (
-        <ProjectLayout
-            activeMenuId={projectMenuIds.railwayTrackInfrastructure}
-            activeSubMenuId={railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemConditionAssessment}
-            subMenuItems={subMenuItems(id as string, typeId as string)}
-        >
-            <div>Fastening System Condition Assessment Placeholder</div>
-        </ProjectLayout>
-    );
+  return (
+    <ProjectLayout
+      activeMenuId={projectMenuIds.railwayTrackInfrastructure}
+      activeSubMenuId={railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemConditionAssessment}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <div>Fastening System Condition Assessment Placeholder</div>
+    </ProjectLayout>
+  );
 };
 
 FasteningSystemConditionAssessmentPage.acl = {
-    subject: defaultMenuItem?.model,
-    action: 'view'
+  subject: defaultMenuItem?.model,
+  action: 'view'
 };
 
 export default FasteningSystemConditionAssessmentPage;

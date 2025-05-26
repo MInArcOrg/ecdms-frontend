@@ -53,12 +53,14 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       },
       {
         id: railwayOperationalSystemsIds.communicationAndSignaling.railwayCommSystemMaintenanceAndTesting,
-        title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-comm-system-maintenance-and-testing',
+        title:
+          'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-comm-system-maintenance-and-testing',
         path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-comm-system-maintenance-and-testing`
       },
       {
         id: railwayOperationalSystemsIds.communicationAndSignaling.railwayCommSystemSafetyAndCompliance,
-        title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-comm-system-safety-and-compliance',
+        title:
+          'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-comm-system-safety-and-compliance',
         path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-comm-system-safety-and-compliance`
       },
       {
@@ -99,12 +101,14 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       },
       {
         id: railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleInteriorAndPassengerAmenities,
-        title: 'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-interior-and-passenger-amenities',
+        title:
+          'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-interior-and-passenger-amenities',
         path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-interior-and-passenger-amenities`
       },
       {
         id: railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleLoadAndCargoSpecifications,
-        title: 'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-load-and-cargo-specifications',
+        title:
+          'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-load-and-cargo-specifications',
         path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-load-and-cargo-specifications`
       }
     ]

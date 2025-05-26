@@ -79,6 +79,6 @@ const CustomSideDrawer: React.FC<CustomSideDrawerProps> = ({ open, handleClose, 
       </Drawer>
     </div>
   );
-}
+};
 
 export default CustomSideDrawer;

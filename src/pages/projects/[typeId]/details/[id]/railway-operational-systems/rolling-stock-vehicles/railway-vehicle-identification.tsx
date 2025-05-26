@@ -4,34 +4,34 @@ import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-m
 import subMenuItems, { findSubMenuItem, railwayOperationalSystemsIds } from '../(subMenuItems)';
 
 const defaultMenuItem = findSubMenuItem(
-    subMenuItems('', ''),
-    railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleIdentification
+  subMenuItems('', ''),
+  railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleIdentification
 );
 
 const RailwayVehicleIdentificationPage = () => {
-    const router = useRouter();
-    const { id = '', typeId = '' } = router.query;
+  const router = useRouter();
+  const { id = '', typeId = '' } = router.query;
 
-    const menuItem = findSubMenuItem(
-        subMenuItems(id as string, typeId as string),
-        railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleIdentification
-    );
-    menuItem;
+  const menuItem = findSubMenuItem(
+    subMenuItems(id as string, typeId as string),
+    railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleIdentification
+  );
+  menuItem;
 
-    return (
-        <ProjectLayout
-            activeMenuId={projectMenuIds.railwayOperationalSystems}
-            activeSubMenuId={railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleIdentification}
-            subMenuItems={subMenuItems(id as string, typeId as string)}
-        >
-            <div>Railway Vehicle Identification Placeholder</div>
-        </ProjectLayout>
-    );
+  return (
+    <ProjectLayout
+      activeMenuId={projectMenuIds.railwayOperationalSystems}
+      activeSubMenuId={railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleIdentification}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <div>Railway Vehicle Identification Placeholder</div>
+    </ProjectLayout>
+  );
 };
 
 RailwayVehicleIdentificationPage.acl = {
-    subject: defaultMenuItem?.model,
-    action: 'view'
+  subject: defaultMenuItem?.model,
+  action: 'view'
 };
 
 export default RailwayVehicleIdentificationPage;

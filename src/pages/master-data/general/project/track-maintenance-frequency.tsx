@@ -4,15 +4,15 @@ import ProjectGeneralMasterList from 'src/views/pages/master/general/project/pro
 import GeneralMasterLayout from '../general-master-layout';
 
 function GeneralProjectMasterData() {
-    return (
-        <div>
-            <GeneralMasterLayout>
-                <Fragment>
-                    <ProjectGeneralMasterList projectMasterModel={projectMasterModels.trackMaintenanceFrequency} />
-                </Fragment>
-            </GeneralMasterLayout>
-        </div>
-    );
+  return (
+    <div>
+      <GeneralMasterLayout>
+        <Fragment>
+          <ProjectGeneralMasterList projectMasterModel={projectMasterModels.trackMaintenanceFrequency} />
+        </Fragment>
+      </GeneralMasterLayout>
+    </div>
+  );
 }
 
 export default GeneralProjectMasterData;

@@ -12,8 +12,6 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import RailwayTrackConditionAssessmentForm from './railway-track-condition-assessment-form';
 
-
-
 interface RailwayTrackConditionAssessmentDrawerType {
   open: boolean;
   toggle: () => void;
@@ -24,14 +22,7 @@ interface RailwayTrackConditionAssessmentDrawerType {
 }
 
 const RailwayTrackConditionAssessmentDrawer = (props: RailwayTrackConditionAssessmentDrawerType) => {
-  const {
-    open,
-    toggle,
-    refetch,
-    assessment,
-    projectId,
-    otherSubMenu,
-  } = props;
+  const { open, toggle, refetch, assessment, projectId, otherSubMenu } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
@@ -45,11 +36,7 @@ const RailwayTrackConditionAssessmentDrawer = (props: RailwayTrackConditionAsses
     projectOtherApiSecondService<RailwayTrackConditionAssessment>().create(otherSubMenu?.apiRoute || '', body);
 
   const editAssessment = async (body: IApiPayload<RailwayTrackConditionAssessment>) =>
-    projectOtherApiSecondService<RailwayTrackConditionAssessment>().update(
-      otherSubMenu?.apiRoute || '',
-      assessment?.id || '',
-      body
-    );
+    projectOtherApiSecondService<RailwayTrackConditionAssessment>().update(otherSubMenu?.apiRoute || '', assessment?.id || '', body);
 
   const validationSchema = yup.object().shape({
     project_id: yup.string().required(),
@@ -88,32 +75,30 @@ const RailwayTrackConditionAssessmentDrawer = (props: RailwayTrackConditionAsses
 
   return (
     <CustomSideDrawer
-      title={`project.other.railway-track-condition-assessment.${isEdit ? `edit-railway-track-condition-assessment` : `create-railway-track-condition-assessment`}`}
+      title={`project.other.railway-track-condition-assessment.${
+        isEdit ? `edit-railway-track-condition-assessment` : `create-railway-track-condition-assessment`
+      }`}
       handleClose={handleClose}
-      model='railwaytrackconditionassessment'
+      model="railwaytrackconditionassessment"
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.railway-track-condition-assessment.${isEdit ? `edit-railway-track-condition-assessment` : `create-railway-track-condition-assessment`}`}
+          title={`project.other.railway-track-condition-assessment.${
+            isEdit ? `edit-railway-track-condition-assessment` : `create-railway-track-condition-assessment`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...assessment,
+            ...assessment
           }}
           createActionFunc={isEdit ? editAssessment : createAssessment}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<RailwayTrackConditionAssessment>) => {
-            return (
-              <RailwayTrackConditionAssessmentForm
-                file={uploadableFile}
-                onFileChange={onFileChange}
-                formik={formik}
-              />
-            );
+            return <RailwayTrackConditionAssessmentForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

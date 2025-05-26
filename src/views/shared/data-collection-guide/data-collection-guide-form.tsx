@@ -1,5 +1,3 @@
-
-
 import { FormikProps } from 'formik';
 import { useTranslation } from 'react-i18next';
 import DataCollectionGuide from 'src/types/general/data-collection-guide';
@@ -14,7 +12,6 @@ const DataCollectionGuideForm: React.FC<DataCollectionGuideFormProps> = ({ formi
   const { t: transl } = useTranslation();
   return (
     <>
-
       <CustomTextBox
         fullWidth
         label={transl('data-collection-guide.form.title')}
