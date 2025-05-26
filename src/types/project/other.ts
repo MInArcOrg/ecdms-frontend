@@ -1572,3 +1572,15 @@ export interface RailwayTrackConditionAssessment {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayTrackMaintenanceAndInspection {
+  id: string;
+  project_id: string;
+  scheduled_maintenance_activity_id: string;
+  maintenance_method?: string;
+  track_maintenance_frequency_id: string;
+  recent_maintenance_date?: string;
+  inspection_reports_and_findings?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}

@@ -72,7 +72,9 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: railwayTrackInfrastructureIds.trackSystems.tracksMaintenanceInspections,
         title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-maintenance-inspections',
-        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-maintenance-inspections`
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-maintenance-inspections`,
+        apiRoute: 'railway-track-maintenance-and-inspections',
+        model: 'railwaytracksmaintenanceandinspection'
       },
       {
         id: railwayTrackInfrastructureIds.trackSystems.tracksRehabilitationRenewal,
@@ -149,7 +151,8 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: railwayTrackInfrastructureIds.subBallastSystems.subBallastMaintenanceRenewal,
         title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.sub-ballast-maintenance-renewal',
-        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-maintenance-renewal`
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-maintenance-renewal`,
+
       },
       {
         id: railwayTrackInfrastructureIds.subBallastSystems.subBallastDrainageWaterManagement,
