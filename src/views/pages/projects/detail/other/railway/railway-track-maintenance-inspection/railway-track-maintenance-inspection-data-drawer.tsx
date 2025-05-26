@@ -5,7 +5,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import type { RailwayTrackData, RailwayTrackMaintenanceAndInspection } from 'src/types/project/other';
+import type { RailwayTrackMaintenanceAndInspection } from 'src/types/project/other';
 import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
