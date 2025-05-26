@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayTrackInfrastructureIds } from '../(subMenuItems)';
+import RailwayTrackMaintenanceAndInspectionCard from 'src/views/pages/projects/detail/other/railway/railway-track-maintenance-inspection/railway-track-maintenance-inspection-card';
+import RailwayTrackMaintenanceAndInspectionList from 'src/views/pages/projects/detail/other/railway/railway-track-maintenance-inspection';
 // Placeholder import, replace with actual component when available
 
 const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), railwayTrackInfrastructureIds.trackSystems.tracksMaintenanceInspections);
@@ -21,7 +23,8 @@ const TracksMaintenanceInspectionsPage = () => {
       activeSubMenuId={railwayTrackInfrastructureIds.trackSystems.tracksMaintenanceInspections}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Tracks Maintenance Inspections List Placeholder</div>;s
+      <RailwayTrackMaintenanceAndInspectionList projectId={String(id)} typeId={String(typeId)} otherSubMenu={menuItem} />
+
     </ProjectLayout>
   );
 };

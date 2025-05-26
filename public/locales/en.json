@@ -3478,6 +3478,21 @@
           "remark": "Remark"
         }
       },
+      "railway-track-maintenance-and-inspection": {
+        "title": "Railway Track Maintenance And Inspection",
+        "create-railway-track-maintenance-and-inspection": "Create Railway Track Maintenance And Inspection",
+        "edit-railway-track-maintenance-and-inspection": "Edit Railway Track Maintenance And Inspection",
+        "railway-track-maintenance-and-inspection-details": "Railway Track Maintenance And Inspection Details",
+        "details": {
+          "project-id": "Project ID",
+          "scheduled-maintenance-activity-id": "Scheduled Maintenance Activity",
+          "maintenance-method": "Maintenance Method",
+          "track-maintenance-frequency-id": "Track Maintenance Frequency",
+          "recent-maintenance-date": "Recent Maintenance Date",
+          "inspection-reports-and-findings": "Inspection Reports and Findings",
+          "remark": "Remark"
+        }
+      },
       "electric-grid-control-center-performance-and-maintenance": {
         "title": "Electric Grid Control Center Performance And Maintenance",
         "create-electric-grid-control-center-performance-and-maintenance": "Create Electric Grid Control Center Performance And Maintenance",

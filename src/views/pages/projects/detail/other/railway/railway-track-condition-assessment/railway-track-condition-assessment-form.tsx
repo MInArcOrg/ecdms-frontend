@@ -29,6 +29,15 @@ const RailwayTrackConditionAssessmentForm: React.FC<RailwayTrackConditionAssessm
         })
       )
   });
+  const { data: observedDefects } = useQuery({
+    queryKey: [projectMasterModels.observedDefects.title],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll(
+        dropDownConfig({
+          filter: { model: projectMasterModels.observedDefects.model }
+        })
+      )
+  });
 
   return (
     <Grid container spacing={gridSpacing}>
@@ -42,6 +51,21 @@ const RailwayTrackConditionAssessmentForm: React.FC<RailwayTrackConditionAssessm
             sx={{ mb: 2 }}
             options={
               trackConditionRatings?.payload?.map((item) => ({
+                label: item.title,
+                value: item.id
+              })) || []
+            }
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <CustomSelectBox
+            fullWidth
+            label={t('project.other.railway-track-condition-assessment.details.track-condition-rating-id')}
+            name="track_condition_rating_id"
+            size="small"
+            sx={{ mb: 2 }}
+            options={
+              observedDefects?.payload?.map((item) => ({
                 label: item.title,
                 value: item.id
               })) || []
