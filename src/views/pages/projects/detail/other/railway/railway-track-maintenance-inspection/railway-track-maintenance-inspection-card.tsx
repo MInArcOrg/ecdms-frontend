@@ -1,7 +1,7 @@
 'use client';
 
-import { Typography, Grid } from '@mui/material';
-import type { RailwayTrackData, RailwayTrackMaintenanceAndInspection } from 'src/types/project/other';
+import { Grid, Typography } from '@mui/material';
+import type { RailwayTrackMaintenanceAndInspection } from 'src/types/project/other';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';

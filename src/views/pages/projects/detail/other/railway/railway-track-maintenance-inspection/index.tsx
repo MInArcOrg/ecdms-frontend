@@ -12,14 +12,13 @@ import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { RailwayTrackMaintenanceAndInspection } from 'src/types/project/other';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
 import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
 import RailwayTrackDataCard from './railway-track-maintenance-inspection-card';
 import RailwayTrackDataDrawer from './railway-track-maintenance-inspection-data-drawer';
 import { railwayTrackMaintenanceAndInspectionColumns } from './railway-track-maintenance-inspection-row';
-import RailwayTrackMaintenanceAndInspectionForm from './railway-track-maintenance-inspection-form';
-import { RailwayTrackMaintenanceAndInspection } from 'src/types/project/other';
 
 interface RailwayTrackMaintenanceAndInspectionListProps {
   otherSubMenu?: DetailSubMenuItemChild;
