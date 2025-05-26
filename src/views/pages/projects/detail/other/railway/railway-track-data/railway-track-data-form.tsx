@@ -53,7 +53,8 @@ const RailwayTrackDataForm: React.FC<RailwayTrackDataFormProps> = ({
         })
     )
   });
-
+  console.log('formik errors', formik.errors)
+  // TODO: Add railwayTrackInfrastructureTypes to the form
   console.log('railwayTrackInfrastructureTypes', railwayTrackInfrastructureTypes)
   return (
     <Grid container spacing={gridSpacing}>

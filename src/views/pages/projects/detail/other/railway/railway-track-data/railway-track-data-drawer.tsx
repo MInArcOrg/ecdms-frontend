@@ -1,22 +1,22 @@
 'use client';
 import type { FormikProps } from 'formik';
-import type { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import RailwayTracksGeometryDataForm from './railway-track-data-form';
 import { useState } from 'react';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
-import type { RailwayTrackData, MiniGridStation } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import type { RailwayTrackData } from 'src/types/project/other';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import RailwayTrackDataForm from './railway-track-data-form';
 
 interface RailwayTrackDataDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  railwayTracksGeometryData: RailwayTracksGeometryData;
+  railwayTrackData: RailwayTrackData;
   projectId: string;
   otherSubMenu?: DetailSubMenuItemChild;
 }
@@ -53,7 +53,6 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
     );
 
   const validationSchema = yup.object().shape({
-    project_id: yup.string().required(),
     railway_track_infrastructure_type_id: yup.string().required(),
     track_type_id: yup.string().required(),
     track_gauge_id: yup.string().required(),
@@ -102,8 +101,7 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.other.railway-track-data.${isEdit ? `edit-railway-track-data` : `create-railway-track-data`}
-        }`}
+      title={`project.other.railway-track-data.${isEdit ? `edit-railway-track-data` : `create-railway-track-data`}`}
       handleClose={handleClose}
       open={open}
     >
@@ -115,15 +113,15 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...railwayTracksGeometryData,
+            ...railwayTrackData,
           }}
-          createActionFunc={isEdit ? editRailwayTracksGeometryData : createRailwayTracksGeometryData}
+          createActionFunc={isEdit ? editRailwayTrackData : createRailwayTrackData}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<RailwayTracksGeometryData>) => {
+          {(formik: FormikProps<RailwayTrackData>) => {
             return (
-              <RailwayTracksGeometryDataForm
+              <RailwayTrackDataForm
                 file={uploadableFile}
                 onFileChange={onFileChange}
                 formik={formik}
@@ -137,4 +135,4 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
   );
 };
 
-export default RailwayTracksGeometryDataDrawer;
+export default RailwayTrackDataDrawer;
