@@ -99,14 +99,14 @@ const AuthProvider = ({ children }: Props) => {
         const loginResponse: IApiResponse = response.data;
         params.rememberMe ? window.localStorage.setItem(authConfig.storageTokenKeyName, loginResponse.payload.access_token) : null;
         const returnUrl = router.query.returnUrl;
-
+        console.log('returnUrl', returnUrl);
         setUser({ ...loginResponse.payload.user_data });
         params.rememberMe
           ? window.localStorage.setItem(authConfig.storageUserKeyName, JSON.stringify(loginResponse.payload.user_data))
           : null;
 
         const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : getHomeRoute('admin');
-
+        console.log('redirectURL', redirectURL);
         router.replace(redirectURL as string);
       })
 

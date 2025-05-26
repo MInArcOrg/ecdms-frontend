@@ -104,6 +104,7 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
       title={`project.other.railway-track-data.${isEdit ? `edit-railway-track-data` : `create-railway-track-data`}`}
       handleClose={handleClose}
       open={open}
+      model='railwaytrackdata'
     >
       {() => (
         <FormPageWrapper

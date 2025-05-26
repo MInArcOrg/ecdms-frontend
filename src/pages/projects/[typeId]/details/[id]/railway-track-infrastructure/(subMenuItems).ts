@@ -62,7 +62,13 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         model: 'railwaytracksgeometrydata',
         apiRoute: 'railway-track-geometry-data',
       },
-      { id: railwayTrackInfrastructureIds.trackSystems.tracksConditionAssessment, title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-condition-assessment', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-condition-assessment` },
+      {
+        id: railwayTrackInfrastructureIds.trackSystems.tracksConditionAssessment,
+        title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-condition-assessment',
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-condition-assessment`,
+        apiRoute: 'railway-track-condition-assessments',
+        model: 'railwaytracksconditionassessment'
+      },
       { id: railwayTrackInfrastructureIds.trackSystems.tracksMaintenanceInspections, title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-maintenance-inspections', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-maintenance-inspections` },
       { id: railwayTrackInfrastructureIds.trackSystems.tracksRehabilitationRenewal, title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-rehabilitation-renewal', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-rehabilitation-renewal` },
       { id: railwayTrackInfrastructureIds.trackSystems.trackSafety, title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.track-safety', path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/track-safety` }

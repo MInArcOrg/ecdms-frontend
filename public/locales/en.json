@@ -3428,6 +3428,20 @@
           "remark": "Remark"
         }
       },
+      "railway-track-condition-assessment": {
+        "title": "Railway Track Condition Assessment",
+        "create-railway-track-condition-assessment": "Create Railway Track Condition Assessment",
+        "edit-railway-track-condition-assessment": "Edit Railway Track Condition Assessment",
+        "railway-track-condition-assessment-details": "Railway Track Condition Assessment Details",
+        "details": {
+          "project-id": "Project ID",
+          "inspection-dates": "Inspection Dates",
+          "track-condition-rating-id": "Track Condition Rating ID",
+          "observed-defects-id": "Observed Defects ID",
+          "track-settlement-irregularities": "Track Settlement Irregularities",
+          "remark": "Remark"
+        }
+      },
       "railway-track-data": {
         "title": "Railway Track Data",
         "create-railway-track-data": "Create Railway Track Data",
@@ -4325,6 +4339,19 @@
       "phoneNo": "Phone Number",
       "email": "Email",
       "name": "Name"
+    }
+  },
+  "data-collection-guide": {
+    "title": "Data Collection Guide",
+    "create": "Create Data Collection Guide",
+    "edit": "Edit Data Collection Guide",
+    "details": "Data Collection Guide Details",
+    "form": {
+      "description": "Description",
+      "instruction": "Instruction",
+      "data_collection_frequency": "Data Collection Frequency",
+      "data_source": "Data Source",
+      "responsible_data_collector_body": "Responsible Data Collector Body"
     }
   }
 }
