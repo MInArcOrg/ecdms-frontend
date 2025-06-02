@@ -1584,3 +1584,15 @@ export interface RailwayTrackMaintenanceAndInspection {
   created_at?: string;
   updated_at?: string;
 }
+
+export interface RailwayTrackRehabilitationOrRenewal {
+  id: string;
+  project_id: string;
+  track_renewal_history?: string;
+  plans_or_schedules?: string;
+  rehabilitation_renewal_methods_used_id: string;
+  rehabilitation_renewal_types?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
