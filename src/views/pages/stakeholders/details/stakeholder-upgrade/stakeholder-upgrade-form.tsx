@@ -16,12 +16,12 @@ const UpgradeForm: React.FC<UpgradeFormProps> = ({ formik }) => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-upgrade.upgradeType')} name="upgrade_type" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-upgrade.form.upgrade-type')} name="upgrade_type" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t('stakeholder.stakeholder-upgrade.previousLevel')}
+          label={t('stakeholder.stakeholder-upgrade.form.previous-level')}
           name="previous_level"
           size="small"
           sx={{ mb: 2 }}
@@ -30,7 +30,7 @@ const UpgradeForm: React.FC<UpgradeFormProps> = ({ formik }) => {
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t('stakeholder.stakeholder-upgrade.upgradedLevel')}
+          label={t('stakeholder.stakeholder-upgrade.form.upgraded-level')}
           name="upgraded_level"
           size="small"
           sx={{ mb: 2 }}
@@ -39,7 +39,7 @@ const UpgradeForm: React.FC<UpgradeFormProps> = ({ formik }) => {
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={t('stakeholder.stakeholder-upgrade.ownershipPercentage')}
+          label={t('stakeholder.stakeholder-upgrade.form.ownership-percentage')}
           name="ownership_percentage"
           size="small"
           sx={{ mb: 2 }}
@@ -50,7 +50,7 @@ const UpgradeForm: React.FC<UpgradeFormProps> = ({ formik }) => {
           fullWidth
           multiline
           rows={4}
-          label={t('stakeholder.stakeholder-upgrade.description')}
+          label={t('stakeholder.stakeholder-upgrade.form.description')}
           name="description"
           size="small"
           sx={{ mb: 2 }}

@@ -178,10 +178,7 @@ const Login = () => {
                 justifyContent: 'center'
               }}
             >
-              <Typography sx={{ color: 'text.secondary', mr: 2 }}>{t('login.new-on-platform')}</Typography>
-              <Typography href="/register" component={LinkStyled}>
-                {t('login.create-account')}
-              </Typography>
+
             </Box>
           </Form>
         )}
