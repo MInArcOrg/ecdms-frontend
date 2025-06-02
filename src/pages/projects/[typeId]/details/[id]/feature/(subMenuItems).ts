@@ -71,14 +71,14 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         title: 'project.navigation.submenu.feature.culvert.culvert-basic-data',
         path: `/projects/${typeId}/details/${id}/feature/culvert/culvert-basic-data`,
         model: 'culvertbasicdata',
-        apiRoute: 'culvert-basic-data'
+        apiRoute: 'culvert-basic-datas'
       },
       {
         id: projectFeatureIds.culvert.culvertStructuralData,
         title: 'project.navigation.submenu.feature.culvert.culvert-structural-information',
         path: `/projects/${typeId}/details/${id}/feature/culvert/culvert-structural-information`,
         model: 'culvertstructuraldata',
-        apiRoute: 'culvert-structural-information'
+        apiRoute: 'culvert-structural-informations'
       },
       {
         id: projectFeatureIds.culvert.culvertRoadOverInformation,
@@ -105,35 +105,35 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         title: 'project.navigation.submenu.feature.bridge.bridge-basic-data',
         path: `/projects/${typeId}/details/${id}/feature/bridge/bridge-basic-data`,
         model: 'bridgebasicdata',
-        apiRoute: 'bridge-basic-data'
+        apiRoute: 'bridge-basic-datas'
       },
       {
         id: projectFeatureIds.bridge.bridgeAreaData,
         title: 'project.navigation.submenu.feature.bridge.bridge-area-data',
         path: `/projects/${typeId}/details/${id}/feature/bridge/bridge-area-data`,
         model: 'bridgeareadata',
-        apiRoute: 'bridge-area-data'
+        apiRoute: 'bridge-area-datas'
       },
       {
         id: projectFeatureIds.bridge.bridgeSuperStructure,
         title: 'project.navigation.submenu.feature.bridge.bridge-super-structure',
         path: `/projects/${typeId}/details/${id}/feature/bridge/bridge-super-structure`,
         model: 'bridgesuperstructure',
-        apiRoute: 'bridge-super-structure'
+        apiRoute: 'bridge-super-structures'
       },
       {
         id: projectFeatureIds.bridge.bridgeSubStructure,
         title: 'project.navigation.submenu.feature.bridge.bridge-sub-structure',
         path: `/projects/${typeId}/details/${id}/feature/bridge/bridge-sub-structure`,
         model: 'bridgesubstructure',
-        apiRoute: 'bridge-sub-structure'
+        apiRoute: 'bridge-sub-structures'
       },
       {
         id: projectFeatureIds.bridge.bridgeFoundation,
         title: 'project.navigation.submenu.feature.bridge.bridge-foundation',
         path: `/projects/${typeId}/details/${id}/feature/bridge/bridge-foundation`,
         model: 'bridgefoundation',
-        apiRoute: 'bridge-foundation'
+        apiRoute: 'bridge-foundations'
       },
       {
         id: projectFeatureIds.bridge.bridgeComponentsAncillaries,
@@ -147,7 +147,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         title: 'project.navigation.submenu.feature.bridge.bridge-inspection',
         path: `/projects/${typeId}/details/${id}/feature/bridge/bridge-inspection`,
         model: 'bridgeinspection',
-        apiRoute: 'bridge-inspection'
+        apiRoute: 'bridge-inspections'
       }
     ]
   }
