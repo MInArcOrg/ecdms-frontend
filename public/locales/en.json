@@ -2319,6 +2319,18 @@
           "transport-cargo-no": "Transport Cargo Number"
         }
       },
+      "railway-track-rehabilitation-or-renewal": {
+        "title": "Railway Track Rehabilitation or renewal",
+        "create": "Create Railway Track Rehabilitation or renewal",
+        "detail": "Railway Track Rehabilitation or renewal Detail",
+        "details": {
+          "track-renewal-history": "Track Renewal History",
+          "plans-or-schedules": "Plans or Schedules",
+          "rehabilitation-renewal-methods-used-id": "Rehabilitation/Renewal Methods Used",
+          "rehabilitation-renewal-types": "Rehabilitation/Renewal Types",
+          "remark": "Remark"
+        }
+      },
       "spillway-info": {
         "title": "Spillway Infos",
         "create-spillway-info": "Create Spillway Info",

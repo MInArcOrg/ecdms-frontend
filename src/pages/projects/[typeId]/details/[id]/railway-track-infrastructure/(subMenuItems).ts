@@ -79,7 +79,9 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: railwayTrackInfrastructureIds.trackSystems.tracksRehabilitationRenewal,
         title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-rehabilitation-renewal',
-        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-rehabilitation-renewal`
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-rehabilitation-renewal`,
+        apiRoute: 'railway-track-rehabilitation-or-renewals',
+        model: 'railwaytracksrehabilitationorrenewal'
       },
       {
         id: railwayTrackInfrastructureIds.trackSystems.trackSafety,

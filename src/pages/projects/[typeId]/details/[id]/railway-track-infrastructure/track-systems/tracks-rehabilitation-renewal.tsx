@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayTrackInfrastructureIds } from '../(subMenuItems)';
+import RailwayTrackRehabilitationOrRenewalList from 'src/views/pages/projects/detail/other/road/railway-track-rehabilitation-or-renewal';
 // Placeholder import, replace with actual component when available
 
 const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), railwayTrackInfrastructureIds.trackSystems.tracksRehabilitationRenewal);
@@ -22,7 +23,7 @@ const TracksRehabilitationRenewalPage = () => {
       activeSubMenuId={railwayTrackInfrastructureIds.trackSystems.tracksRehabilitationRenewal}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Tracks Rehabilitation Renewal List Placeholder</div>;
+      <RailwayTrackRehabilitationOrRenewalList projectId={String(id)} typeId={String(typeId)} otherSubMenu={menuItem} />
     </ProjectLayout>
   );
 };
