@@ -3479,6 +3479,23 @@
           "remark": "Remark"
         }
       },
+      "railway-ballast-material-data": {
+        "title": "Railway Ballast Materials",
+        "detail": "Railway Ballast Detail",
+        "create": "Create Railway Ballast Material",
+        "edit": "Edit Railway Ballast Material",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "ballast-material-type-id": "Ballast Material Type",
+          "particle-size-distribution-grading": "Particle Size Distribution Grading",
+          "ballast-used-quantity": "Ballast Used Quantity",
+          "ballast-source-id": "Ballast Source",
+          "ballast-material-size": "Ballast Material Size",
+          "ballast-layer-thickness": "Ballast Layer Thickness",
+          "compaction-method-id": "Compaction Method",
+          "remark": "Remark"
+        }
+      },
       "railway-track-data": {
         "title": "Railway Track Data",
         "create-railway-track-data": "Create Railway Track Data",

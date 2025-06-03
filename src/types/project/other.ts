@@ -1618,3 +1618,18 @@ export interface RailwayBallast {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayBallastMaterialData {
+  id: string;
+  project_id: string; // UUID
+  railway_line_section_name: string;
+  ballast_material_type_id: string; // UUID
+  particle_size_distribution_grading?: string;
+  ballast_used_quantity?: number; // DOUBLE
+  ballast_source_id: string; // UUID
+  ballast_material_size?: number; // DOUBLE
+  ballast_layer_thickness?: number; // DOUBLE
+  compaction_method_id: string; // UUID
+  remark?: string; // TEXT
+  created_at?: string;
+  updated_at?: string;
+}
