@@ -6,65 +6,88 @@ import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
-import type { RailwayTrackRehabilitationOrRenewal } from 'src/types/project/other';
+import type { RailwayTrackSafety } from 'src/types/project/other';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
+import CustomSwitch from 'src/views/shared/form/custom-switch';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
-interface RailwayTrackRehabilitationOrRenewalFormProps {
-  formik: FormikProps<RailwayTrackRehabilitationOrRenewal>;
+interface RailwayTrackSafetyFormProps {
+  formik: FormikProps<RailwayTrackSafety>;
 }
 
-const RailwayTrackRehabilitationOrRenewalForm: React.FC<RailwayTrackRehabilitationOrRenewalFormProps> = ({ formik }) => {
+const RailwayTrackSafetyForm: React.FC<RailwayTrackSafetyFormProps> = ({ formik }) => {
   const { t } = useTranslation();
 
-  const { data: rehabilitationRenewalMethods } = useQuery({
-    queryKey: [projectMasterModels.rehabilitationRenewalMethodUsed.title],
+  const { data: trackSafetyMeasures } = useQuery({
+    queryKey: [projectMasterModels.trackSafetyMeasure.model],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll({
-        filter: { model: projectMasterModels.rehabilitationRenewalMethodUsed.model }
+        filter: { model: projectMasterModels.trackSafetyMeasure.model }
       })
   });
+  const { data: trackInspectionFrequencies } = useQuery({
+    queryKey: [projectMasterModels.trackInspectionFrequency.model],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.trackInspectionFrequency.model }
+      })
+  });
+
+
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
+        {/* project_id - Assuming this is a required UUID, you might want a Select box to choose from projects or just a text field if it's manually entered */}
         <CustomSelectBox
           fullWidth
-          label={t('project.other.railway-track-rehabilitation-or-renewal.details.rehabilitation-renewal-methods-used-id')}
-          placeholder={t('project.other.railway-track-rehabilitation-or-renewal.details.rehabilitation-renewal-methods-used-id')}
-          name="rehabilitation_renewal_methods_used_id"
+          label={t('project.other.railway-track-safety.details.project-id')}
+          placeholder={t('project.other.railway-track-safety.details.project-id')}
+          name="project_id"
           size="small"
           sx={{ mb: 2 }}
-          options={rehabilitationRenewalMethods?.payload.map((type) => ({
-            label: type.title,
-            value: type.id
-          })) || [] || []}
+          options={[]} // Add options for projects here
         />
 
-        <CustomTextBox
+        {/* railway_track_safety_measures_id - Assuming this is a required UUID, use a Select box */}
+        <CustomSelectBox
           fullWidth
-          label={t('project.other.railway-track-rehabilitation-or-renewal.details.track-renewal-history')}
-          placeholder={t('project.other.railway-track-rehabilitation-or-renewal.details.track-renewal-history')}
-          name="track_renewal_history"
+          label={t('project.other.railway-track-safety.details.railway-track-safety-measures-id')}
+          placeholder={t('project.other.railway-track-safety.details.railway-track-safety-measures-id')}
+          name="railway_track_safety_measures_id"
           size="small"
           sx={{ mb: 2 }}
+          options={trackSafetyMeasures?.payload?.map(item=>{
+            return {
+              label: item.title,
+              value: item.id
+            }
+          })} // Add options for safety measures here
         />
-        <CustomTextBox
+
+        {/* track_inspection_frequency_id - Assuming this is a required UUID, use a Select box */}
+        <CustomSelectBox
           fullWidth
-          label={t('project.other.railway-track-rehabilitation-or-renewal.details.plans-or-schedules')}
-          placeholder={t('project.other.railway-track-rehabilitation-or-renewal.details.plans-or-schedules')}
-          name="plans_or_schedules"
+          label={t('project.other.railway-track-safety.details.track-inspection-frequency-id')}
+          placeholder={t('project.other.railway-track-safety.details.track-inspection-frequency-id')}
+          name="track_inspection_frequency_id"
           size="small"
           sx={{ mb: 2 }}
+          options={trackInspectionFrequencies?.payload?.map(item=>{
+            return {
+              label: item.title,
+              value: item.id
+            }
+          })} // Add options for safety measures here
         />
-        {/* Dropdown for rehabilitation_renewal_methods_used_id */}
-        <CustomTextBox
-          fullWidth
-          label={t('project.other.railway-track-rehabilitation-or-renewal.details.rehabilitation-renewal-types')}
-          placeholder={t('project.other.railway-track-rehabilitation-or-renewal.details.rehabilitation-renewal-types')}
-          name="rehabilitation_renewal_types"
-          size="small"
+
+        {/* is_compliant_with_safety_regulations_standards - Boolean, use a Checkbox */}
+        <CustomSwitch
+          label={t('project.other.railway-track-safety.details.is-compliant-with-safety-regulations-standards')}
+          name="is_compliant_with_safety_regulations_standards"
           sx={{ mb: 2 }}
         />
+
+   
 
         <CustomTextBox
           fullWidth
@@ -73,6 +96,8 @@ const RailwayTrackRehabilitationOrRenewalForm: React.FC<RailwayTrackRehabilitati
           name="remark"
           size="small"
           sx={{ mb: 2 }}
+          multiline
+          rows={4}
         />
 
       </Grid>
@@ -80,4 +105,4 @@ const RailwayTrackRehabilitationOrRenewalForm: React.FC<RailwayTrackRehabilitati
   );
 };
 
-export default RailwayTrackRehabilitationOrRenewalForm;
+export default RailwayTrackSafetyForm;

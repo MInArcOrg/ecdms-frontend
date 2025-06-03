@@ -78,23 +78,37 @@ const RailwayTrackSafetyList: React.FC<RailwayTrackSafetyListProps> = ({ otherSu
   const mapRailwayTrackSafetyToDetailItems = (
     railwayTrackSafety: RailwayTrackSafety
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.railway-track-safety.details.safety-assessment'),
-        value: railwayTrackSafety?.safetyAssessment || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-safety.details.inspection-date'),
-        value: railwayTrackSafety?.inspectionDate || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-safety.details.corrective-actions'),
-        value: railwayTrackSafety?.correctiveActions || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-safety.details.status'),
-        value: railwayTrackSafety?.status || 'N/A'
-      }
-    ];
+    {
+      title: t('ID'),
+      value: railwayTrackSafety?.id || 'N/A'
+    },
+    {
+      title: t('Railway Track Safety Measures ID'),
+      value: railwayTrackSafety?.railway_track_safety_measures_id || 'N/A'
+    },
+    {
+      title: t('Track Inspection Frequency ID'),
+      value: railwayTrackSafety?.track_inspection_frequency_id || 'N/A'
+    },
+    {
+      title: t('Compliant with Safety Regulations Standards'),
+      value: railwayTrackSafety?.is_compliant_with_safety_regulations_standards !== undefined && railwayTrackSafety?.is_compliant_with_safety_regulations_standards !== null
+        ? railwayTrackSafety?.is_compliant_with_safety_regulations_standards.toString()
+        : 'N/A'
+    },
+    {
+      title: t('Remark'),
+      value: railwayTrackSafety?.remark || 'N/A'
+    },
+    {
+      title: t('Created At'),
+      value: railwayTrackSafety?.created_at ? formatCreatedAt(railwayTrackSafety.created_at) : 'N/A'
+    },
+    {
+      title: t('Updated At'),
+      value: railwayTrackSafety?.updated_at ? formatCreatedAt(railwayTrackSafety.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

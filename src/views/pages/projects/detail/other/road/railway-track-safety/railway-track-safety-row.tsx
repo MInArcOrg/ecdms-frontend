@@ -2,7 +2,6 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import { RailwayTrackSafety } from 'src/types/project/other';
-import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
@@ -21,6 +20,7 @@ export const railwayTrackSafetryColumns = (
       flex: 0.15,
       minWidth: 120,
       field: 'id',
+      headerName: t('common.table-columns.id'),
       renderCell: ({ row }: CellType) => (
         <Typography
           noWrap
@@ -33,51 +33,46 @@ export const railwayTrackSafetryColumns = (
             '&:hover': { color: 'primary.main' }
           }}
         >
-          {row?.id.slice(0, 5)}...
+ {row?.id || 'N/A'}
         </Typography>
+      )
+    },
+   
+    {
+      flex: 0.15,
+      minWidth: 120,
+      field: 'railway_track_safety_measures_id',
+      headerName: t('project.other.railway-track-safety.details.safety-measures-id'),
+      renderCell: ({ row }: CellType) => (
+        <Typography sx={{ color: 'text.secondary' }}>{row?.railway_track_safety_measures_id || 'N/A'}</Typography>
       )
     },
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('project.other.railway-track-rehabilitation-or-renewal.details.track-renewal-history'),
-      field: 'track_renewal_history',
-      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.track_renewal_history || t('common.not-available')}</Typography>
+      field: 'track_inspection_frequency_id',
+      headerName: t('project.other.railway-track-safety.details.inspection-frequency-id'),
+      renderCell: ({ row }: CellType) => (
+        <Typography sx={{ color: 'text.secondary' }}>{row?.track_inspection_frequency_id || 'N/A'}</Typography>
+      )
     },
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('project.other.railway-track-rehabilitation-or-renewal.details.plans-or-schedules'),
-      field: 'plans_or_schedules',
-      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.plans_or_schedules || t('common.not-available')}</Typography>
+      field: 'is_compliant_with_safety_regulations_standards',
+      headerName: t('project.other.railway-track-safety.details.is-compliant'),
+      renderCell: ({ row }: CellType) => (
+        <Typography sx={{ color: 'text.secondary' }}>{row?.is_compliant_with_safety_regulations_standards !== null && row?.is_compliant_with_safety_regulations_standards !== undefined ? (row.is_compliant_with_safety_regulations_standards ? 'Yes' : 'No') : 'N/A'}</Typography>
+      )
     },
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('project.other.railway-track-rehabilitation-or-renewal.details.rehabilitation-renewal-methods-used-id'),
-      field: 'rehabilitation_renewal_methods_used_id',
-      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.rehabilitation_renewal_methods_used_id || t('common.not-available')}</Typography>
-    },
-    {
-      flex: 0.15,
-      minWidth: 120,
-      headerName: t('project.other.railway-track-rehabilitation-or-renewal.details.rehabilitation-renewal-types'),
-      field: 'rehabilitation_renewal_types',
-      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.rehabilitation_renewal_types || t('common.not-available')}</Typography>
-    },
-    {
-      flex: 0.15,
-      minWidth: 120,
-      headerName: t('project.other.railway-track-rehabilitation-or-renewal.details.remark'),
       field: 'remark',
-      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.remark || t('common.not-available')}</Typography>
-    },
-    {
-      flex: 0.15,
-      minWidth: 120,
-      headerName: t('common.table-columns.created-at'),
-      field: 'created_at',
-      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{formatCreatedAt(row?.created_at) || t('common.not-available')}</Typography>
+      headerName: t('project.other.railway-track-safety.details.remark'),
+      renderCell: ({ row }: CellType) => (
+        <Typography sx={{ color: 'text.secondary' }}>{row?.remark || 'N/A'}</Typography>
+      )
     },
 
     {
@@ -97,7 +92,7 @@ export const railwayTrackSafetryColumns = (
             postAction={() => refetch()}
           />
           <RowOptions
-            deletePermissionRule={{ action: 'delete', subject: 'railwaytrackrehabilitationorrenewal' }}
+            deletePermissionRule={{ action: 'delete', subject: 'railwaytracksafety' }}
             editPermissionRule={{ action: 'update', subject: 'railwaytrackrehabilitationorrenewal' }}
             onEdit={() => onEdit(row)}
             onDelete={() => onDelete(row.id)}
