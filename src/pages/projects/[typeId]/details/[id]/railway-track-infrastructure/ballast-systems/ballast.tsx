@@ -19,9 +19,7 @@ const BallastPage = () => {
       activeSubMenuId={railwayTrackInfrastructureIds.ballastSystems.ballast}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <RailwayBallastList projectId={id as string}
-        typeId={typeId as string}
-        otherSubMenu={menuItem} />
+      <RailwayBallastList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>
   );
 };

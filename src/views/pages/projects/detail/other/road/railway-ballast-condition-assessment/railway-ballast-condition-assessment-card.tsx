@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Divider,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import type { RailwayBallastConditionAssessment } from 'src/types/project/other';
@@ -27,7 +19,7 @@ const RailwayBallastConditionAssessmentCard: React.FC<RailwayBallastConditionAss
   refetch,
   onEdit,
   onDelete,
-  onDetail,
+  onDetail
 }) => {
   const { t } = useTranslation();
 
@@ -43,7 +35,7 @@ const RailwayBallastConditionAssessmentCard: React.FC<RailwayBallastConditionAss
     ballast_resistance,
     ballast_degradation_rate,
     drainage_performance,
-    remark,
+    remark
   } = railwayBallastConditionAssessment;
 
   return (
@@ -58,7 +50,7 @@ const RailwayBallastConditionAssessmentCard: React.FC<RailwayBallastConditionAss
                 textTransform: 'none',
                 textDecoration: 'none',
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {project_id.slice(0, 8)}...
@@ -68,10 +60,12 @@ const RailwayBallastConditionAssessmentCard: React.FC<RailwayBallastConditionAss
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast-condition-assessment.details.railway-line-section-name')}: {railway_line_section_name || 'N/A'}
+            {t('project.other.railway-ballast-condition-assessment.details.railway-line-section-name')}:{' '}
+            {railway_line_section_name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast-condition-assessment.details.inspection-dates')}: {formatDynamicDate(inspection_dates) ?? 'N/A'}
+            {t('project.other.railway-ballast-condition-assessment.details.inspection-dates')}:{' '}
+            {formatDynamicDate(inspection_dates) ?? 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-ballast-condition-assessment.details.ballast-condition-rating')}: {ballast_condition_rating || 'N/A'}
@@ -80,10 +74,12 @@ const RailwayBallastConditionAssessmentCard: React.FC<RailwayBallastConditionAss
             {t('project.other.railway-ballast-condition-assessment.details.fouling-presence')}: {fouling_presence || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast-condition-assessment.details.ballast-degradation-indicators')}: {ballast_degradation_indicators || 'N/A'}
+            {t('project.other.railway-ballast-condition-assessment.details.ballast-degradation-indicators')}:{' '}
+            {ballast_degradation_indicators || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast-condition-assessment.details.ballast-quality-testing-method')}: {ballast_quality_testing_method || 'N/A'}
+            {t('project.other.railway-ballast-condition-assessment.details.ballast-quality-testing-method')}:{' '}
+            {ballast_quality_testing_method || 'N/A'}
           </Typography>
           {testing_frequency !== undefined && (
             <Typography variant="body2" color="text.secondary">
@@ -120,11 +116,11 @@ const RailwayBallastConditionAssessmentCard: React.FC<RailwayBallastConditionAss
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'railwayballastconditionassessment',
+            subject: 'railwayballastconditionassessment'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'railwayballastconditionassessment',
+            subject: 'railwayballastconditionassessment'
           }}
           onEdit={() => onEdit(railwayBallastConditionAssessment)}
           onDelete={() => onDelete(project_id)}

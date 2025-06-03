@@ -21,29 +21,35 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
   const { data: ballasterMaterialType } = useQuery({
     queryKey: [projectMasterModels.ballastMaterialType.model],
     queryFn: () =>
-      projectGeneralMasterDataApiService.getAll(dropDownConfig({
-        filter: {
-          model: projectMasterModels.ballastMaterialType.model
-        }
-      }))
+      projectGeneralMasterDataApiService.getAll(
+        dropDownConfig({
+          filter: {
+            model: projectMasterModels.ballastMaterialType.model
+          }
+        })
+      )
   });
   const { data: ballastSources } = useQuery({
     queryKey: [projectMasterModels.ballastSource.model],
     queryFn: () =>
-      projectGeneralMasterDataApiService.getAll(dropDownConfig({
-        filter: {
-          model: projectMasterModels.ballastSource.model
-        }
-      }))
+      projectGeneralMasterDataApiService.getAll(
+        dropDownConfig({
+          filter: {
+            model: projectMasterModels.ballastSource.model
+          }
+        })
+      )
   });
   const { data: compactionMethods } = useQuery({
     queryKey: [projectMasterModels.compactionMethod.model],
     queryFn: () =>
-      projectGeneralMasterDataApiService.getAll(dropDownConfig({
-        filter: {
-          model: projectMasterModels.compactionMethod.model
-        }
-      }))
+      projectGeneralMasterDataApiService.getAll(
+        dropDownConfig({
+          filter: {
+            model: projectMasterModels.compactionMethod.model
+          }
+        })
+      )
   });
 
   return (
@@ -67,10 +73,14 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
           name="ballast_material_type_id"
           size="small"
           sx={{ mb: 2 }}
-          options={ballasterMaterialType?.payload.map((type) => ({
-            label: type.title,
-            value: type.id
-          })) || [] || []}
+          options={
+            ballasterMaterialType?.payload.map((type) => ({
+              label: type.title,
+              value: type.id
+            })) ||
+            [] ||
+            []
+          }
         />
 
         {/* particle_size_distribution_grading */}
@@ -102,10 +112,14 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
           name="ballast_source_id"
           size="small"
           sx={{ mb: 2 }}
-          options={ballastSources?.payload.map((type) => ({
-            label: type.title,
-            value: type.id
-          })) || [] || []}
+          options={
+            ballastSources?.payload.map((type) => ({
+              label: type.title,
+              value: type.id
+            })) ||
+            [] ||
+            []
+          }
         />
 
         {/* ballast_material_size */}
@@ -138,10 +152,14 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
           name="compaction_method_id"
           size="small"
           sx={{ mb: 2 }}
-          options={compactionMethods?.payload.map((type) => ({
-            label: type.title,
-            value: type.id
-          })) || [] || []}
+          options={
+            compactionMethods?.payload.map((type) => ({
+              label: type.title,
+              value: type.id
+            })) ||
+            [] ||
+            []
+          }
         />
 
         {/* remark */}

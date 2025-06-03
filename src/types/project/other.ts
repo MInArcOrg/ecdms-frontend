@@ -1605,7 +1605,6 @@ export interface RailwayTrackSafety {
   remark?: string; // Optional Text
   created_at?: string;
   updated_at?: string;
-
 }
 export interface RailwayBallast {
   id: string;
@@ -1673,7 +1672,7 @@ export enum BallastConditionRating {
   Excellent = 'Excellent',
   Good = 'Good',
   Fair = 'Fair',
-  Poor = 'Poor',
+  Poor = 'Poor'
 }
 
 export enum FoulingPresence {
@@ -1681,34 +1680,34 @@ export enum FoulingPresence {
   Debris = 'Debris',
   Sediments = 'Sediments',
   Siltation = 'Siltation',
-  Other = 'Other',
+  Other = 'Other'
 }
 
 export enum BallastDegradationIndicators {
   Breakage = 'Breakage',
   Crack = 'Crack',
-  Other = 'Other',
+  Other = 'Other'
 }
 
 export enum BallastQualityTestingMethod {
   GradationTest = 'Gradation Test',
   SoundnessTest = 'Soundness Test',
   CompactionTest = 'Compaction Test',
-  Other = 'Other',
+  Other = 'Other'
 }
 
 export enum BallastDegradationRate {
   Excellent = 'Excellent',
   Good = 'Good',
   Fair = 'Fair',
-  Poor = 'Poor',
+  Poor = 'Poor'
 }
 
 export enum DrainagePerformance {
   Excellent = 'Excellent',
   Good = 'Good',
   Fair = 'Fair',
-  Poor = 'Poor',
+  Poor = 'Poor'
 }
 // src/types/project/other.ts
 
@@ -1728,5 +1727,5 @@ export enum ScheduledMaintenanceActivities {
   Cleaning = 'Cleaning',
   RoutineMaintenance = 'Routine Maintenance',
   CorrectiveMaintenance = 'Corrective Maintenance',
-  Other = 'Other',
+  Other = 'Other'
 }

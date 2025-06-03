@@ -42,13 +42,7 @@ const RailwayBallastMaterialSpecificationList: React.FC<RailwayBallastMaterialSp
     });
   };
 
-  const {
-    data,
-    isLoading,
-    pagination,
-    handlePageChange,
-    refetch
-  } = usePaginatedFetch<RailwayBallastMaterialSpecification[]>({
+  const { data, isLoading, pagination, handlePageChange, refetch } = usePaginatedFetch<RailwayBallastMaterialSpecification[]>({
     queryKey: ['railwayBallastMaterialSpecifications'],
     fetchFunction: fetchData
   });

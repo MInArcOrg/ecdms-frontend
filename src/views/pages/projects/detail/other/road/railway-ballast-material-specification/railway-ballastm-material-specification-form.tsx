@@ -24,9 +24,9 @@ const RailwayBallestMaterialSpecification: React.FC<RailwayBallestMaterialSpecif
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll(
         dropDownConfig({
-          filter: { model: projectMasterModels.ballastMaterialType.model },
+          filter: { model: projectMasterModels.ballastMaterialType.model }
         })
-      ),
+      )
   });
 
   return (
@@ -53,7 +53,7 @@ const RailwayBallestMaterialSpecification: React.FC<RailwayBallestMaterialSpecif
           options={
             ballastMaterialTypes?.payload.map((type) => ({
               label: type.title,
-              value: type.id,
+              value: type.id
             })) || []
           }
         />

@@ -27,7 +27,7 @@ const RailwayBallastConditionAssessmentDrawer = ({
   refetch,
   railwayBallastConditionAssessment,
   projectId,
-  otherSubMenu,
+  otherSubMenu
 }: RailwayBallastConditionAssessmentDrawerProps) => {
   const isEdit = Boolean(railwayBallastConditionAssessment?.project_id);
 
@@ -41,42 +41,33 @@ const RailwayBallastConditionAssessmentDrawer = ({
     ballast_resistance: yup.string().nullable(),
     ballast_degradation_rate: yup.string().required('Ballast degradation rate is required'),
     drainage_performance: yup.string().required('Drainage performance is required'),
-    remark: yup.string().nullable(),
+    remark: yup.string().nullable()
   });
 
-  const createRailwayBallastConditionAssessment = async (
-    body: IApiPayload<RailwayBallastConditionAssessment>
-  ) =>
-    projectOtherApiSecondService<RailwayBallastConditionAssessment>().create(
-      otherSubMenu?.apiRoute || '',
-      body,
-    );
+  const createRailwayBallastConditionAssessment = async (body: IApiPayload<RailwayBallastConditionAssessment>) =>
+    projectOtherApiSecondService<RailwayBallastConditionAssessment>().create(otherSubMenu?.apiRoute || '', body);
 
-  const editRailwayBallastConditionAssessment = async (
-    body: IApiPayload<RailwayBallastConditionAssessment>
-  ) =>
+  const editRailwayBallastConditionAssessment = async (body: IApiPayload<RailwayBallastConditionAssessment>) =>
     projectOtherApiSecondService<RailwayBallastConditionAssessment>().update(
       otherSubMenu?.apiRoute || '',
       railwayBallastConditionAssessment.project_id,
-      body,
+      body
     );
 
-  const getPayload = (
-    values: RailwayBallastConditionAssessment
-  ): IApiPayload<RailwayBallastConditionAssessment> => ({
+  const getPayload = (values: RailwayBallastConditionAssessment): IApiPayload<RailwayBallastConditionAssessment> => ({
     data: {
       ...values,
       inspection_dates: convertDateToLocaleDate(values.inspection_dates),
-      project_id: projectId,
+      project_id: projectId
     },
-    files: [],
+    files: []
   });
 
   const handleClose = () => toggle();
 
   const onActionSuccess = async (
     response: IApiResponse<RailwayBallastConditionAssessment>,
-    payload: IApiPayload<RailwayBallastConditionAssessment>,
+    payload: IApiPayload<RailwayBallastConditionAssessment>
   ) => {
     refetch();
     handleClose();
@@ -96,18 +87,13 @@ const RailwayBallastConditionAssessmentDrawer = ({
           validationSchema={validationSchema}
           initialValues={{
             ...railwayBallastConditionAssessment,
-            inspection_dates: formatInitialDateDate(railwayBallastConditionAssessment?.inspection_dates),
-
+            inspection_dates: formatInitialDateDate(railwayBallastConditionAssessment?.inspection_dates)
           }}
-          createActionFunc={
-            isEdit ? editRailwayBallastConditionAssessment : createRailwayBallastConditionAssessment
-          }
+          createActionFunc={isEdit ? editRailwayBallastConditionAssessment : createRailwayBallastConditionAssessment}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<RailwayBallastConditionAssessment>) => (
-            <RailwayBallastConditionAssessmentForm formik={formik} />
-          )}
+          {(formik: FormikProps<RailwayBallastConditionAssessment>) => <RailwayBallastConditionAssessmentForm formik={formik} />}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

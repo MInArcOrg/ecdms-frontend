@@ -17,11 +17,7 @@ const BridgeInspection = () => {
       activeSubMenuId={projectFeatureIds.bridge.bridgeInspection}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <BridgeInspectionList
-        projectId={id as string}
-        typeId={typeId as string}
-        otherSubMenu={menuItem}
-      />
+      <BridgeInspectionList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>
   );
 };

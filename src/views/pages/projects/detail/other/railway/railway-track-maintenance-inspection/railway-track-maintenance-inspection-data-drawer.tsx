@@ -12,9 +12,6 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as Yup from 'yup';
 import RailwayTrackMaintenanceAndInspectionForm from './railway-track-maintenance-inspection-form';
 
-
-
-
 interface RailwayTrackMaintenanceAndInspectionDrawerType {
   open: boolean;
   toggle: () => void;
@@ -39,7 +36,11 @@ const RailwayTrackMaintenanceAndInspectionDrawer = (props: RailwayTrackMaintenan
     projectOtherApiSecondService<RailwayTrackMaintenanceAndInspection>().create(otherSubMenu?.apiRoute || '', body);
 
   const editRailwayTrackMaintenanceAndInspection = async (body: IApiPayload<RailwayTrackMaintenanceAndInspection>) =>
-    projectOtherApiSecondService<RailwayTrackMaintenanceAndInspection>().update(otherSubMenu?.apiRoute || '', railwayTrackMaintenanceAndInspection?.id || '', body);
+    projectOtherApiSecondService<RailwayTrackMaintenanceAndInspection>().update(
+      otherSubMenu?.apiRoute || '',
+      railwayTrackMaintenanceAndInspection?.id || '',
+      body
+    );
 
   const validationSchema = Yup.object().shape({
     scheduled_maintenance_activity_id: Yup.string().required(),
@@ -66,7 +67,10 @@ const RailwayTrackMaintenanceAndInspectionDrawer = (props: RailwayTrackMaintenan
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<RailwayTrackMaintenanceAndInspection>, payload: IApiPayload<RailwayTrackMaintenanceAndInspection>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<RailwayTrackMaintenanceAndInspection>,
+    payload: IApiPayload<RailwayTrackMaintenanceAndInspection>
+  ) => {
     if (payload.files.length > 0) {
       await uploadFile(payload.files[0], uploadableProjectFileTypes.other.electric_grid_control_center_data, response.payload.id, '', '');
     }
@@ -76,7 +80,9 @@ const RailwayTrackMaintenanceAndInspectionDrawer = (props: RailwayTrackMaintenan
 
   return (
     <CustomSideDrawer
-      title={`project.other.railway-track-maintenance-and-inspection.${isEdit ? `edit-railway-track-maintenance-and-inspection` : `create-railway-track-maintenance-and-inspection`}`}
+      title={`project.other.railway-track-maintenance-and-inspection.${
+        isEdit ? `edit-railway-track-maintenance-and-inspection` : `create-railway-track-maintenance-and-inspection`
+      }`}
       handleClose={handleClose}
       open={open}
       model="railwaytrackmaintenanceandinspection"
@@ -84,7 +90,9 @@ const RailwayTrackMaintenanceAndInspectionDrawer = (props: RailwayTrackMaintenan
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.railway-track-maintenance-and-inspection.${isEdit ? `edit-railway-track-maintenance-and-inspection` : `create-railway-track-maintenance-and-inspection`}`}
+          title={`project.other.railway-track-maintenance-and-inspection.${
+            isEdit ? `edit-railway-track-maintenance-and-inspection` : `create-railway-track-maintenance-and-inspection`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

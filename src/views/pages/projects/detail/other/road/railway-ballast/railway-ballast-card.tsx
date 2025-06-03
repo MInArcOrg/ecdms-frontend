@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Divider,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import type { RailwayBallast } from 'src/types/project/other';
@@ -21,13 +13,7 @@ interface RailwayBallastCardProps {
   onDetail: (railwayBallast: RailwayBallast) => void;
 }
 
-const RailwayBallastCard: React.FC<RailwayBallastCardProps> = ({
-  railwayBallast,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail,
-}) => {
+const RailwayBallastCard: React.FC<RailwayBallastCardProps> = ({ railwayBallast, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -43,7 +29,7 @@ const RailwayBallastCard: React.FC<RailwayBallastCardProps> = ({
                 fontWeight: 500,
                 textDecoration: 'none',
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {railwayBallast?.id?.toString().slice(0, 5)}...
@@ -53,34 +39,26 @@ const RailwayBallastCard: React.FC<RailwayBallastCardProps> = ({
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast.details.railway-line-section-name')}:{' '}
-            {railwayBallast.railway_line_section_name || 'N/A'}
+            {t('project.other.railway-ballast.details.railway-line-section-name')}: {railwayBallast.railway_line_section_name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast.details.railway-ballast-name')}:{' '}
-            {railwayBallast.railway_ballast_name || 'N/A'}
+            {t('project.other.railway-ballast.details.railway-ballast-name')}: {railwayBallast.railway_ballast_name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast.details.ballast-id-no')}:{' '}
-            {railwayBallast.ballast_id_no || 'N/A'}
+            {t('project.other.railway-ballast.details.ballast-id-no')}: {railwayBallast.ballast_id_no || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-ballast.details.ballast-construction-cost')}:{' '}
-            {railwayBallast.ballast_construction_cost != null
-              ? `${railwayBallast.ballast_construction_cost}`
-              : 'N/A'}
+            {railwayBallast.ballast_construction_cost != null ? `${railwayBallast.ballast_construction_cost}` : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast.details.remark')}:{' '}
-            {railwayBallast.remark || 'N/A'}
+            {t('project.other.railway-ballast.details.remark')}: {railwayBallast.remark || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}:{' '}
-            {railwayBallast.created_at || 'N/A'}
+            {t('common.table-columns.created-at')}: {railwayBallast.created_at || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.updated-at')}:{' '}
-            {railwayBallast.updated_at || 'N/A'}
+            {t('common.table-columns.updated-at')}: {railwayBallast.updated_at || 'N/A'}
           </Typography>
         </Box>
       </CardContent>
@@ -96,11 +74,11 @@ const RailwayBallastCard: React.FC<RailwayBallastCardProps> = ({
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'railwayballast',
+            subject: 'railwayballast'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'railwayballast',
+            subject: 'railwayballast'
           }}
           onEdit={() => onEdit(railwayBallast)}
           onDelete={() => onDelete(railwayBallast.id)}

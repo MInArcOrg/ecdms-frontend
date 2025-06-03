@@ -21,18 +21,9 @@ interface RailwayTrackSafetyDrawerType {
 const RailwayTrackSafetyDrawer = (props: RailwayTrackSafetyDrawerType) => {
   const { open, toggle, refetch, railwayTrackSafety, projectId, otherSubMenu } = props;
   const validationSchema = yup.object().shape({
-    railway_track_safety_measures_id: yup
-      .string()
-      .required(
-        'Railway Track Safety Measures is required'
-      ),
-    track_inspection_frequency_id: yup
-      .string()
-      .required(
-        'Track Inspection Frequency is required'
-      )
+    railway_track_safety_measures_id: yup.string().required('Railway Track Safety Measures is required'),
+    track_inspection_frequency_id: yup.string().required('Track Inspection Frequency is required')
   });
-
 
   const isEdit = Boolean(railwayTrackSafety?.id);
 
@@ -59,11 +50,7 @@ const RailwayTrackSafetyDrawer = (props: RailwayTrackSafetyDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer
-      title={`project.other.railway-track-safety.${isEdit ? `edit` : `create`}`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`project.other.railway-track-safety.${isEdit ? `edit` : `create`}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}

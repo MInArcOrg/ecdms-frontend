@@ -26,53 +26,51 @@ const RailwayBallastMaterialSpecificationDrawer = ({
   refetch,
   railwayBallastMaterialSpecification,
   projectId,
-  otherSubMenu,
+  otherSubMenu
 }: RailwayBallastMaterialSpecificationDrawerProps) => {
   const isEdit = Boolean(railwayBallastMaterialSpecification?.project_id);
 
   const validationSchema = yup.object().shape({
-    railway_line_section_name: yup.string().required('project.other.railway-ballast-material-specification.validation.railway_line_section_name'),
-    ballast_material_type_id: yup.string().required('project.other.railway-ballast-material-specification.validation.ballast_material_type_id'),
+    railway_line_section_name: yup
+      .string()
+      .required('project.other.railway-ballast-material-specification.validation.railway_line_section_name'),
+    ballast_material_type_id: yup
+      .string()
+      .required('project.other.railway-ballast-material-specification.validation.ballast_material_type_id'),
     specific_gravity: yup.number().nullable().typeError('project.other.railway-ballast-material-specification.validation.specific_gravity'),
     porosity: yup.number().nullable().typeError('project.other.railway-ballast-material-specification.validation.porosity'),
     water_absorption: yup.number().nullable().typeError('project.other.railway-ballast-material-specification.validation.water_absorption'),
     shape: yup.string().nullable(),
-    average_particle_length: yup.number().nullable().typeError('project.other.railway-ballast-material-specification.validation.average_particle_length'),
-    remark: yup.string().nullable(),
+    average_particle_length: yup
+      .number()
+      .nullable()
+      .typeError('project.other.railway-ballast-material-specification.validation.average_particle_length'),
+    remark: yup.string().nullable()
   });
 
-  const createRailwayBallastMaterialSpecification = async (
-    body: IApiPayload<RailwayBallastMaterialSpecification>
-  ) =>
-    projectOtherApiSecondService<RailwayBallastMaterialSpecification>().create(
-      otherSubMenu?.apiRoute || '',
-      body,
-    );
+  const createRailwayBallastMaterialSpecification = async (body: IApiPayload<RailwayBallastMaterialSpecification>) =>
+    projectOtherApiSecondService<RailwayBallastMaterialSpecification>().create(otherSubMenu?.apiRoute || '', body);
 
-  const editRailwayBallastMaterialSpecification = async (
-    body: IApiPayload<RailwayBallastMaterialSpecification>
-  ) =>
+  const editRailwayBallastMaterialSpecification = async (body: IApiPayload<RailwayBallastMaterialSpecification>) =>
     projectOtherApiSecondService<RailwayBallastMaterialSpecification>().update(
       otherSubMenu?.apiRoute || '',
       railwayBallastMaterialSpecification.project_id,
-      body,
+      body
     );
 
-  const getPayload = (
-    values: RailwayBallastMaterialSpecification
-  ): IApiPayload<RailwayBallastMaterialSpecification> => ({
+  const getPayload = (values: RailwayBallastMaterialSpecification): IApiPayload<RailwayBallastMaterialSpecification> => ({
     data: {
       ...values,
-      project_id: projectId,
+      project_id: projectId
     },
-    files: [],
+    files: []
   });
 
   const handleClose = () => toggle();
 
   const onActionSuccess = async (
     response: IApiResponse<RailwayBallastMaterialSpecification>,
-    payload: IApiPayload<RailwayBallastMaterialSpecification>,
+    payload: IApiPayload<RailwayBallastMaterialSpecification>
   ) => {
     refetch();
     handleClose();
@@ -91,17 +89,13 @@ const RailwayBallastMaterialSpecificationDrawer = ({
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...railwayBallastMaterialSpecification,
+            ...railwayBallastMaterialSpecification
           }}
-          createActionFunc={
-            isEdit ? editRailwayBallastMaterialSpecification : createRailwayBallastMaterialSpecification
-          }
+          createActionFunc={isEdit ? editRailwayBallastMaterialSpecification : createRailwayBallastMaterialSpecification}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<RailwayBallastMaterialSpecification>) => (
-            <RailwayBallastMaterialSpecificationForm formik={formik} />
-          )}
+          {(formik: FormikProps<RailwayBallastMaterialSpecification>) => <RailwayBallastMaterialSpecificationForm formik={formik} />}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

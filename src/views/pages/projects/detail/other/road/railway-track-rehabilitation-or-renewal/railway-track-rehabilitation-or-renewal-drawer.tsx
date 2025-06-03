@@ -33,7 +33,11 @@ const RailwayTrackRehabilitationOrRenewalDrawer = (props: RailwayTrackRehabilita
     projectOtherApiSecondService<RailwayTrackRehabilitationOrRenewal>().create(otherSubMenu?.apiRoute || '', body);
 
   const editRailwayTrackRehabilitationOrRenewal = async (body: IApiPayload<RailwayTrackRehabilitationOrRenewal>) =>
-    projectOtherApiSecondService<RailwayTrackRehabilitationOrRenewal>().update(otherSubMenu?.apiRoute || '', railwayTrackRehabilitationOrRenewal?.id || '', body);
+    projectOtherApiSecondService<RailwayTrackRehabilitationOrRenewal>().update(
+      otherSubMenu?.apiRoute || '',
+      railwayTrackRehabilitationOrRenewal?.id || '',
+      body
+    );
 
   const getPayload = (values: RailwayTrackRehabilitationOrRenewal): IApiPayload<RailwayTrackRehabilitationOrRenewal> => ({
     data: {
@@ -46,7 +50,10 @@ const RailwayTrackRehabilitationOrRenewalDrawer = (props: RailwayTrackRehabilita
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<RailwayTrackRehabilitationOrRenewal>, payload: IApiPayload<RailwayTrackRehabilitationOrRenewal>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<RailwayTrackRehabilitationOrRenewal>,
+    payload: IApiPayload<RailwayTrackRehabilitationOrRenewal>
+  ) => {
     refetch();
     handleClose();
   };

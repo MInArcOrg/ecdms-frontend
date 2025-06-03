@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Divider,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import type { RailwayTrackSafety } from 'src/types/project/other';
@@ -21,13 +13,7 @@ interface RailwayTrackSafetyCardProps {
   onDetail: (railwayTrackSafety: RailwayTrackSafety) => void;
 }
 
-const RailwayTrackSafetyCard: React.FC<RailwayTrackSafetyCardProps> = ({
-  railwayTrackSafety,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail,
-}) => {
+const RailwayTrackSafetyCard: React.FC<RailwayTrackSafetyCardProps> = ({ railwayTrackSafety, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -43,7 +29,7 @@ const RailwayTrackSafetyCard: React.FC<RailwayTrackSafetyCardProps> = ({
                 fontWeight: 500,
                 textDecoration: 'none',
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {railwayTrackSafety?.id?.toString().slice(0, 5)}...
@@ -69,16 +55,13 @@ const RailwayTrackSafetyCard: React.FC<RailwayTrackSafetyCardProps> = ({
                 : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-safety.details.remark')}:{' '}
-            {railwayTrackSafety?.remark || 'N/A'}
+            {t('project.other.railway-track-safety.details.remark')}: {railwayTrackSafety?.remark || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.created-at')}:{' '}
-            {railwayTrackSafety?.created_at || 'N/A'}
+            {t('common.table-columns.created-at')}: {railwayTrackSafety?.created_at || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('common.table-columns.updated-at')}:{' '}
-            {railwayTrackSafety?.updated_at || 'N/A'}
+            {t('common.table-columns.updated-at')}: {railwayTrackSafety?.updated_at || 'N/A'}
           </Typography>
         </Box>
       </CardContent>
@@ -94,11 +77,11 @@ const RailwayTrackSafetyCard: React.FC<RailwayTrackSafetyCardProps> = ({
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'railwaytracksafety',
+            subject: 'railwaytracksafety'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'railwaytracksafety',
+            subject: 'railwaytracksafety'
           }}
           onEdit={() => onEdit(railwayTrackSafety)}
           onDelete={() => onDelete(railwayTrackSafety.id)}

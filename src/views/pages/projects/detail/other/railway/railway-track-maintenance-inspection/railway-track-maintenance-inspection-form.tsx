@@ -12,14 +12,17 @@ import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
-
 interface RailwayTrackMaintenanceAndInspectionFormProps {
   formik: FormikProps<RailwayTrackMaintenanceAndInspection>;
   file: File | null;
   onFileChange: (file: File | null) => void;
 }
 
-const RailwayTrackMaintenanceAndInspectionForm: React.FC<RailwayTrackMaintenanceAndInspectionFormProps> = ({ formik, file, onFileChange }) => {
+const RailwayTrackMaintenanceAndInspectionForm: React.FC<RailwayTrackMaintenanceAndInspectionFormProps> = ({
+  formik,
+  file,
+  onFileChange
+}) => {
   const { t } = useTranslation();
   const { data: scheduledMaintenanceActivities } = useQuery({
     queryKey: [projectMasterModels.scheduledMaintenanceActivity.title],

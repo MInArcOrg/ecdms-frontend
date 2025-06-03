@@ -21,7 +21,6 @@ const TrackSafetyPage = () => {
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <RailwayTrackSafetyList projectId={String(id)} typeId={String(typeId)} otherSubMenu={menuItem} />
-
     </ProjectLayout>
   );
 };

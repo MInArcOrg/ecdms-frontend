@@ -177,9 +177,7 @@ const Login = () => {
                 flexWrap: 'wrap',
                 justifyContent: 'center'
               }}
-            >
-
-            </Box>
+            ></Box>
           </Form>
         )}
       </Formik>

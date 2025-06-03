@@ -25,7 +25,11 @@ interface RailwayTrackMaintenanceAndInspectionListProps {
   typeId: string;
   projectId: string;
 }
-const RailwayTrackMaintenanceAndInspectionList: React.FC<RailwayTrackMaintenanceAndInspectionListProps> = ({ otherSubMenu, projectId, typeId }) => {
+const RailwayTrackMaintenanceAndInspectionList: React.FC<RailwayTrackMaintenanceAndInspectionListProps> = ({
+  otherSubMenu,
+  projectId,
+  typeId
+}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<RailwayTrackMaintenanceAndInspection | null>(null);
@@ -73,11 +77,26 @@ const RailwayTrackMaintenanceAndInspectionList: React.FC<RailwayTrackMaintenance
 
   const mapRailwayTrackDataToDetailItems = (row: RailwayTrackMaintenanceAndInspection): { title: string; value: string }[] => [
     { title: t('project.other.railway-track-maintenance-and-inspection.details.project-id'), value: row?.project_id || 'N/A' },
-    { title: t('project.other.railway-track-maintenance-and-inspection.details.scheduled-maintenance-activity-id'), value: row?.scheduled_maintenance_activity_id || 'N/A' },
-    { title: t('project.other.railway-track-maintenance-and-inspection.details.maintenance-method'), value: row?.maintenance_method || 'N/A' },
-    { title: t('project.other.railway-track-maintenance-and-inspection.details.track-maintenance-frequency-id'), value: row?.track_maintenance_frequency_id || 'N/A' },
-    { title: t('project.other.railway-track-maintenance-and-inspection.details.recent-maintenance-date'), value: row?.recent_maintenance_date || 'N/A' },
-    { title: t('project.other.railway-track-maintenance-and-inspection.details.inspection-reports-and-findings'), value: row?.inspection_reports_and_findings || 'N/A' },
+    {
+      title: t('project.other.railway-track-maintenance-and-inspection.details.scheduled-maintenance-activity-id'),
+      value: row?.scheduled_maintenance_activity_id || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-maintenance-and-inspection.details.maintenance-method'),
+      value: row?.maintenance_method || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-maintenance-and-inspection.details.track-maintenance-frequency-id'),
+      value: row?.track_maintenance_frequency_id || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-maintenance-and-inspection.details.recent-maintenance-date'),
+      value: row?.recent_maintenance_date || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-maintenance-and-inspection.details.inspection-reports-and-findings'),
+      value: row?.inspection_reports_and_findings || 'N/A'
+    },
     { title: t('project.other.railway-track-maintenance-and-inspection.details.remark'), value: row?.remark || 'N/A' }
   ];
 

@@ -17,11 +17,7 @@ const BridgeSubStructure = () => {
       activeSubMenuId={projectFeatureIds.bridge.bridgeSubStructure}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <BridgeSubStructureList
-        projectId={id as string}
-        typeId={typeId as string}
-        otherSubMenu={menuItem}
-      />
+      <BridgeSubStructureList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>
   );
 };
