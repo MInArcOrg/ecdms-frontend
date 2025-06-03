@@ -3532,6 +3532,19 @@
           "remark": "Remark"
         }
       },
+      "railway-ballast-maintenance-and-renewal": {
+        "title": "Railway Ballast Maintenance and Renewal",
+        "detail": "Railway Ballast Maintenance and Renewal Details",
+        "edit": "Edit Railway Ballast Maintenance and Renewal",
+        "create": "Create Railway Ballast Maintenance and Renewal",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "scheduled-maintenance-activities": "Scheduled Maintenance Activities",
+          "recent-maintenance-dates": "Recent Maintenance Dates",
+          "inspection-reports-findings": "Inspection Reports Findings",
+          "remark": "Remark"
+        }
+      },
       "railway-track-data": {
         "title": "Railway Track Data",
         "create-railway-track-data": "Create Railway Track Data",

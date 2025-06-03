@@ -127,7 +127,9 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: railwayTrackInfrastructureIds.ballastSystems.ballastMaintenanceRenewal,
         title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast-maintenance-renewal',
-        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-maintenance-renewal`
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-maintenance-renewal`,
+        apiRoute: 'railway-ballast-maintenance-and-renewals',
+        model: 'railwayballastmaintenanceandrenewal'
       },
       {
         id: railwayTrackInfrastructureIds.ballastSystems.ballastDrainageWaterManagement,

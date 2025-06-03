@@ -1710,3 +1710,23 @@ export enum DrainagePerformance {
   Fair = 'Fair',
   Poor = 'Poor',
 }
+// src/types/project/other.ts
+
+export interface RailwayBallastMaintenanceAndRenewal {
+  project_id: string; // UUID
+  railway_line_section_name: string; // STRING
+  scheduled_maintenance_activities: ScheduledMaintenanceActivities; // ENUM
+  recent_maintenance_dates?: string | Date | EthiopianDate; // DATE (ISO date string)
+  inspection_reports_findings?: string; // TEXT
+  remark?: string; // TEXT
+  created_at?: string;
+  updated_at?: string;
+}
+
+export enum ScheduledMaintenanceActivities {
+  Tamping = 'Tamping',
+  Cleaning = 'Cleaning',
+  RoutineMaintenance = 'Routine Maintenance',
+  CorrectiveMaintenance = 'Corrective Maintenance',
+  Other = 'Other',
+}

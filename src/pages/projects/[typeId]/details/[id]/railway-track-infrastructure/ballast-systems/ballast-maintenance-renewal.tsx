@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayTrackInfrastructureIds } from '../(subMenuItems)';
+import RailwayBallastMaintenanceAndRenewalList from 'src/views/pages/projects/detail/other/road/railway-ballast-maintenance-and-renewal';
 // Placeholder import, replace with actual component when available
 
 const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), railwayTrackInfrastructureIds.ballastSystems.ballastMaintenanceRenewal);
@@ -22,7 +23,8 @@ const BallastMaintenanceRenewalPage = () => {
       activeSubMenuId={railwayTrackInfrastructureIds.ballastSystems.ballastMaintenanceRenewal}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Ballast Maintenance Renewal List Placeholder</div>
+      <RailwayBallastMaintenanceAndRenewalList typeId={typeId as string}
+        otherSubMenu={menuItem} projectId={id as string} />
     </ProjectLayout>
   );
 };
