@@ -1225,6 +1225,7 @@
             "ballast-drainage-water-management": "Ballast Drainage & Water Management",
             "ballast-environmental-factors": "Ballast Environmental Factors"
           },
+
           "sub-ballast-systems": {
             "title": "Sub-Ballast Systems",
             "sub-ballast-materials": "Sub-Ballast Materials",
@@ -3493,6 +3494,22 @@
           "ballast-material-size": "Ballast Material Size",
           "ballast-layer-thickness": "Ballast Layer Thickness",
           "compaction-method-id": "Compaction Method",
+          "remark": "Remark"
+        }
+      },
+      "railway-ballast-material-specification": {
+        "title": "Railway Ballast Material Specification",
+        "create": "Create Railway Ballast Material Specification",
+        "edit": "Edit Railway Ballast Material Specification",
+        "detail": "Railway Ballast Material Specification Detail",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "ballast-material-type-id": "Ballast Material Type",
+          "specific-gravity": "Specific Gravity",
+          "porosity": "Porosity",
+          "water-absorption": "Water Absorption",
+          "shape": "Shape",
+          "average-particle-length": "Average Particle Length",
           "remark": "Remark"
         }
       },
