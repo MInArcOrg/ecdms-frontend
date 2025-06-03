@@ -80,7 +80,7 @@ const RailwayBallastMaterialSpecificationList: React.FC<RailwayBallastMaterialSp
 
   const mapToDetailItems = (row: RailwayBallastMaterialSpecification): { title: string; value: string }[] => [
     {
-      title: t('common.table-columns.project-id'),
+      title: t('common.table-columns.id'),
       value: row?.project_id || 'N/A'
     },
     {

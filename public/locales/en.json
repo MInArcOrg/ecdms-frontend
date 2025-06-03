@@ -3504,7 +3504,7 @@
         "detail": "Railway Ballast Material Specification Detail",
         "details": {
           "railway-line-section-name": "Railway Line Section Name",
-          "ballast-material-type": "Ballast Material Type",
+          "ballast-material-type-id": "Ballast Material Type",
           "specific-gravity": "Specific Gravity",
           "porosity": "Porosity",
           "water-absorption": "Water Absorption",
