@@ -1634,7 +1634,7 @@ export interface RailwayBallastMaterialData {
   updated_at?: string;
 }
 export interface RailwayBallastMaterialSpecification {
-  id:string;
+  id: string;
   project_id: string; // UUID
   railway_line_section_name: string;
   ballast_material_type_id: string; // UUID
@@ -1646,4 +1646,67 @@ export interface RailwayBallastMaterialSpecification {
   remark?: string;
   created_at?: string;
   updated_at?: string;
+}
+
+export interface RailwayBallastConditionAssessment {
+  id: string;
+  project_id: string; // UUID
+  railway_line_section_name: string;
+  inspection_dates?: string | Date | EthiopianDate; // ISO date string
+
+  ballast_condition_rating: BallastConditionRating;
+  fouling_presence: FoulingPresence;
+  ballast_degradation_indicators: BallastDegradationIndicators;
+  ballast_quality_testing_method: BallastQualityTestingMethod;
+
+  testing_frequency?: number;
+  ballast_resistance?: string;
+
+  ballast_degradation_rate: BallastDegradationRate;
+  drainage_performance: DrainagePerformance;
+
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+export enum BallastConditionRating {
+  Excellent = 'Excellent',
+  Good = 'Good',
+  Fair = 'Fair',
+  Poor = 'Poor',
+}
+
+export enum FoulingPresence {
+  Fines = 'Fines',
+  Debris = 'Debris',
+  Sediments = 'Sediments',
+  Siltation = 'Siltation',
+  Other = 'Other',
+}
+
+export enum BallastDegradationIndicators {
+  Breakage = 'Breakage',
+  Crack = 'Crack',
+  Other = 'Other',
+}
+
+export enum BallastQualityTestingMethod {
+  GradationTest = 'Gradation Test',
+  SoundnessTest = 'Soundness Test',
+  CompactionTest = 'Compaction Test',
+  Other = 'Other',
+}
+
+export enum BallastDegradationRate {
+  Excellent = 'Excellent',
+  Good = 'Good',
+  Fair = 'Fair',
+  Poor = 'Poor',
+}
+
+export enum DrainagePerformance {
+  Excellent = 'Excellent',
+  Good = 'Good',
+  Fair = 'Fair',
+  Poor = 'Poor',
 }

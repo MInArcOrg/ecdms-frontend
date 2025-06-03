@@ -114,6 +114,14 @@ const RailwayBallastMaterialSpecificationList: React.FC<RailwayBallastMaterialSp
     {
       title: t('project.other.railway-ballast-material-specification.details.remark'),
       value: row?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: row?.created_at ? formatCreatedAt(row.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: row?.updated_at ? formatCreatedAt(row.updated_at) : 'N/A'
     }
   ];
 

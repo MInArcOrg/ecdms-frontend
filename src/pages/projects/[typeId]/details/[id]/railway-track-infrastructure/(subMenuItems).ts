@@ -120,7 +120,9 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: railwayTrackInfrastructureIds.ballastSystems.ballastConditionAssessment,
         title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast-condition-assessment',
-        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-condition-assessment`
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-condition-assessment`,
+        apiRoute: 'railway-ballast-condition-assessments',
+        model: 'railwayballastconditionassessment'
       },
       {
         id: railwayTrackInfrastructureIds.ballastSystems.ballastMaintenanceRenewal,
