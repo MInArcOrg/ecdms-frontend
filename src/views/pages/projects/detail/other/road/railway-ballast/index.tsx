@@ -98,6 +98,14 @@ const RailwayBallastList: React.FC<RailwayBallastListProps> = ({ otherSubMenu, p
     {
       title: t('project.other.railway-ballast.details.remark'),
       value: railwayBallast?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: railwayBallast?.created_at ? formatCreatedAt(railwayBallast.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: railwayBallast?.updated_at ? formatCreatedAt(railwayBallast.updated_at) : 'N/A'
     }
   ];
 
