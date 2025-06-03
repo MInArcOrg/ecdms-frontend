@@ -17,7 +17,6 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-
         {/* railway_line_section_name */}
         <CustomTextBox
           fullWidth
@@ -70,7 +69,6 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
           multiline
           rows={4}
         />
-
       </Grid>
     </Grid>
   );

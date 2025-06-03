@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Divider,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import type { RailwayBallastMaintenanceAndRenewal } from 'src/types/project/other'; // Updated type import
@@ -14,7 +6,8 @@ import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import { formatCreatedAt } from 'src/utils/formatter/date'; // Assuming this utility is available for date formatting
 
-interface RailwayBallastMaintenanceAndRenewalCardProps { // Renamed interface
+interface RailwayBallastMaintenanceAndRenewalCardProps {
+  // Renamed interface
   railwayBallastMaintenanceAndRenewal: RailwayBallastMaintenanceAndRenewal; // Updated prop type
   refetch: () => void;
   onEdit: (data: RailwayBallastMaintenanceAndRenewal) => void; // Updated type
@@ -22,12 +15,13 @@ interface RailwayBallastMaintenanceAndRenewalCardProps { // Renamed interface
   onDetail: (data: RailwayBallastMaintenanceAndRenewal) => void; // Updated type
 }
 
-const RailwayBallastMaintenanceAndRenewalCard: React.FC<RailwayBallastMaintenanceAndRenewalCardProps> = ({ // Renamed component
+const RailwayBallastMaintenanceAndRenewalCard: React.FC<RailwayBallastMaintenanceAndRenewalCardProps> = ({
+  // Renamed component
   railwayBallastMaintenanceAndRenewal, // Updated prop name
   refetch,
   onEdit,
   onDelete,
-  onDetail,
+  onDetail
 }) => {
   const { t } = useTranslation();
 
@@ -35,9 +29,9 @@ const RailwayBallastMaintenanceAndRenewalCard: React.FC<RailwayBallastMaintenanc
     project_id,
     railway_line_section_name,
     scheduled_maintenance_activities, // New field
-    recent_maintenance_dates,       // New field
-    inspection_reports_findings,    // New field
-    remark,
+    recent_maintenance_dates, // New field
+    inspection_reports_findings, // New field
+    remark
   } = railwayBallastMaintenanceAndRenewal;
 
   return (
@@ -53,7 +47,7 @@ const RailwayBallastMaintenanceAndRenewalCard: React.FC<RailwayBallastMaintenanc
                 fontWeight: 500,
                 textDecoration: 'none',
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {project_id?.toString().slice(0, 5)}...
@@ -63,16 +57,20 @@ const RailwayBallastMaintenanceAndRenewalCard: React.FC<RailwayBallastMaintenanc
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast-maintenance-and-renewal.details.railway-line-section-name')}: {railway_line_section_name || 'N/A'}
+            {t('project.other.railway-ballast-maintenance-and-renewal.details.railway-line-section-name')}:{' '}
+            {railway_line_section_name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast-maintenance-and-renewal.details.scheduled-maintenance-activities')}: {scheduled_maintenance_activities || 'N/A'}
+            {t('project.other.railway-ballast-maintenance-and-renewal.details.scheduled-maintenance-activities')}:{' '}
+            {scheduled_maintenance_activities || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast-maintenance-and-renewal.details.recent-maintenance-dates')}: {recent_maintenance_dates ? formatCreatedAt(recent_maintenance_dates) : 'N/A'}
+            {t('project.other.railway-ballast-maintenance-and-renewal.details.recent-maintenance-dates')}:{' '}
+            {recent_maintenance_dates ? formatCreatedAt(recent_maintenance_dates) : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast-maintenance-and-renewal.details.inspection-reports-findings')}: {inspection_reports_findings || 'N/A'}
+            {t('project.other.railway-ballast-maintenance-and-renewal.details.inspection-reports-findings')}:{' '}
+            {inspection_reports_findings || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-ballast-maintenance-and-renewal.details.remark')}: {remark ?? 'N/A'}
@@ -91,11 +89,11 @@ const RailwayBallastMaintenanceAndRenewalCard: React.FC<RailwayBallastMaintenanc
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'railwayballastmaintenanceandrenewal', // Updated subject
+            subject: 'railwayballastmaintenanceandrenewal' // Updated subject
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'railwayballastmaintenanceandrenewal', // Updated subject
+            subject: 'railwayballastmaintenanceandrenewal' // Updated subject
           }}
           onEdit={() => onEdit(railwayBallastMaintenanceAndRenewal)} // Updated prop name
           onDelete={() => onDelete(project_id)}

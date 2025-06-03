@@ -23,8 +23,7 @@ const BallastMaintenanceRenewalPage = () => {
       activeSubMenuId={railwayTrackInfrastructureIds.ballastSystems.ballastMaintenanceRenewal}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <RailwayBallastMaintenanceAndRenewalList typeId={typeId as string}
-        otherSubMenu={menuItem} projectId={id as string} />
+      <RailwayBallastMaintenanceAndRenewalList typeId={typeId as string} otherSubMenu={menuItem} projectId={id as string} />
     </ProjectLayout>
   );
 };

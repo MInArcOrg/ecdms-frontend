@@ -8,20 +8,21 @@ import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-b
 
 import {
   RailwayBallastMaintenanceAndRenewal, // Updated type import
-  ScheduledMaintenanceActivities, // Added enum import
+  ScheduledMaintenanceActivities // Added enum import
 } from 'src/types/project/other';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
 
-interface RailwayBallastMaintenanceAndRenewalFormProps { // Renamed interface
+interface RailwayBallastMaintenanceAndRenewalFormProps {
+  // Renamed interface
   formik: FormikProps<RailwayBallastMaintenanceAndRenewal>; // Updated prop type
 }
 
-const RailwayBallastMaintenanceAndRenewalForm: React.FC<RailwayBallastMaintenanceAndRenewalFormProps> = ({ formik }) => { // Renamed component
+const RailwayBallastMaintenanceAndRenewalForm: React.FC<RailwayBallastMaintenanceAndRenewalFormProps> = ({ formik }) => {
+  // Renamed component
   const { t } = useTranslation();
 
   // Helper function to convert enum to select box options
-  const enumToOptions = (enumObject: Record<string, string>) =>
-    Object.values(enumObject).map((value) => ({ label: value, value: value }));
+  const enumToOptions = (enumObject: Record<string, string>) => Object.values(enumObject).map((value) => ({ label: value, value: value }));
 
   return (
     <Grid container spacing={gridSpacing}>

@@ -23,7 +23,6 @@ const TracksMaintenanceInspectionsPage = () => {
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <RailwayTrackMaintenanceAndInspectionList projectId={String(id)} typeId={String(typeId)} otherSubMenu={menuItem} />
-
     </ProjectLayout>
   );
 };

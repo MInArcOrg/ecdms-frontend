@@ -16,7 +16,13 @@ const UpgradeForm: React.FC<UpgradeFormProps> = ({ formik }) => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-upgrade.form.upgrade-type')} name="upgrade_type" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox
+          fullWidth
+          label={t('stakeholder.stakeholder-upgrade.form.upgrade-type')}
+          name="upgrade_type"
+          size="small"
+          sx={{ mb: 2 }}
+        />
       </Grid>
       <Grid item xs={12} sm={6}>
         <CustomTextBox

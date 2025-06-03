@@ -74,7 +74,9 @@ const RailwayBallastMaterialDataList: React.FC<railwayBallastMaterialDataProps> 
     setSelectedRow(railwayBallastMaterialData);
   };
 
-  const mapRailwayBallastMaterialDataToDetailItems = (railwayBallastMaterialData: RailwayBallastMaterialData): { title: string; value: string }[] => [
+  const mapRailwayBallastMaterialDataToDetailItems = (
+    railwayBallastMaterialData: RailwayBallastMaterialData
+  ): { title: string; value: string }[] => [
     {
       title: t('common.table-columns.id'),
       value: railwayBallastMaterialData?.project_id || 'N/A'
@@ -93,9 +95,10 @@ const RailwayBallastMaterialDataList: React.FC<railwayBallastMaterialDataProps> 
     },
     {
       title: t('project.other.railway-ballast-material-data.details.ballast-used-quantity'),
-      value: railwayBallastMaterialData?.ballast_used_quantity !== undefined
-        ? railwayBallastMaterialData.ballast_used_quantity.toLocaleString()
-        : 'N/A'
+      value:
+        railwayBallastMaterialData?.ballast_used_quantity !== undefined
+          ? railwayBallastMaterialData.ballast_used_quantity.toLocaleString()
+          : 'N/A'
     },
     {
       title: t('project.other.railway-ballast-material-data.details.ballast-source-id'),
@@ -103,15 +106,17 @@ const RailwayBallastMaterialDataList: React.FC<railwayBallastMaterialDataProps> 
     },
     {
       title: t('project.other.railway-ballast-material-data.details.ballast-material-size'),
-      value: railwayBallastMaterialData?.ballast_material_size !== undefined
-        ? railwayBallastMaterialData.ballast_material_size.toLocaleString()
-        : 'N/A'
+      value:
+        railwayBallastMaterialData?.ballast_material_size !== undefined
+          ? railwayBallastMaterialData.ballast_material_size.toLocaleString()
+          : 'N/A'
     },
     {
       title: t('project.other.railway-ballast-material-data.details.ballast-layer-thickness'),
-      value: railwayBallastMaterialData?.ballast_layer_thickness !== undefined
-        ? railwayBallastMaterialData.ballast_layer_thickness.toLocaleString()
-        : 'N/A'
+      value:
+        railwayBallastMaterialData?.ballast_layer_thickness !== undefined
+          ? railwayBallastMaterialData.ballast_layer_thickness.toLocaleString()
+          : 'N/A'
     },
     {
       title: t('project.other.railway-ballast-material-data.details.compaction-method-id'),

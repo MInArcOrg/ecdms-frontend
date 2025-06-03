@@ -24,7 +24,7 @@ const RailwayBallastMaterialDataDrawer = ({
   refetch,
   railwayBallastMaterialData,
   projectId,
-  otherSubMenu,
+  otherSubMenu
 }: RailwayBallastMaterialDataDrawerProps) => {
   const isEdit = Boolean(railwayBallastMaterialData?.project_id); // or some unique ID field if available
 
@@ -34,48 +34,33 @@ const RailwayBallastMaterialDataDrawer = ({
     ballast_source_id: yup.string().required('Ballast source is required'),
     compaction_method_id: yup.string().required('Compaction method is required'),
     particle_size_distribution_grading: yup.string().nullable(),
-    ballast_used_quantity: yup
-      .number()
-      .nullable()
-      .typeError('Ballast used quantity must be a number'),
-    ballast_material_size: yup
-      .number()
-      .nullable()
-      .typeError('Ballast material size must be a number'),
-    ballast_layer_thickness: yup
-      .number()
-      .nullable()
-      .typeError('Ballast layer thickness must be a number'),
-    remark: yup.string().nullable(),
+    ballast_used_quantity: yup.number().nullable().typeError('Ballast used quantity must be a number'),
+    ballast_material_size: yup.number().nullable().typeError('Ballast material size must be a number'),
+    ballast_layer_thickness: yup.number().nullable().typeError('Ballast layer thickness must be a number'),
+    remark: yup.string().nullable()
   });
 
   const createRailwayBallastMaterialData = async (body: IApiPayload<RailwayBallastMaterialData>) =>
-    projectOtherApiSecondService<RailwayBallastMaterialData>().create(
-      otherSubMenu?.apiRoute || '',
-      body,
-    );
+    projectOtherApiSecondService<RailwayBallastMaterialData>().create(otherSubMenu?.apiRoute || '', body);
 
   const editRailwayBallastMaterialData = async (body: IApiPayload<RailwayBallastMaterialData>) =>
     projectOtherApiSecondService<RailwayBallastMaterialData>().update(
       otherSubMenu?.apiRoute || '',
       railwayBallastMaterialData.project_id, // assuming project_id is the unique id here, change if not correct
-      body,
+      body
     );
 
   const getPayload = (values: RailwayBallastMaterialData): IApiPayload<RailwayBallastMaterialData> => ({
     data: {
       ...values,
-      project_id: projectId,
+      project_id: projectId
     },
-    files: [],
+    files: []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<RailwayBallastMaterialData>,
-    payload: IApiPayload<RailwayBallastMaterialData>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<RailwayBallastMaterialData>, payload: IApiPayload<RailwayBallastMaterialData>) => {
     refetch();
     handleClose();
   };
@@ -93,15 +78,13 @@ const RailwayBallastMaterialDataDrawer = ({
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...railwayBallastMaterialData,
+            ...railwayBallastMaterialData
           }}
           createActionFunc={isEdit ? editRailwayBallastMaterialData : createRailwayBallastMaterialData}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<RailwayBallastMaterialData>) => (
-            <RailwayBallastMaterialDataForm formik={formik} />
-          )}
+          {(formik: FormikProps<RailwayBallastMaterialData>) => <RailwayBallastMaterialDataForm formik={formik} />}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

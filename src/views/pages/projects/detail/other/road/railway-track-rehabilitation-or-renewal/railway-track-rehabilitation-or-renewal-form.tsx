@@ -34,10 +34,14 @@ const RailwayTrackRehabilitationOrRenewalForm: React.FC<RailwayTrackRehabilitati
           name="rehabilitation_renewal_methods_used_id"
           size="small"
           sx={{ mb: 2 }}
-          options={rehabilitationRenewalMethods?.payload.map((type) => ({
-            label: type.title,
-            value: type.id
-          })) || [] || []}
+          options={
+            rehabilitationRenewalMethods?.payload.map((type) => ({
+              label: type.title,
+              value: type.id
+            })) ||
+            [] ||
+            []
+          }
         />
 
         <CustomTextBox
@@ -76,7 +80,6 @@ const RailwayTrackRehabilitationOrRenewalForm: React.FC<RailwayTrackRehabilitati
           rows={4}
           sx={{ mb: 2 }}
         />
-
       </Grid>
     </Grid>
   );

@@ -18,69 +18,41 @@ interface RailwayBallastDrawerProps {
   otherSubMenu?: DetailSubMenuItemChild;
 }
 
-const RailwayBallastDrawer = ({
-  open,
-  toggle,
-  refetch,
-  railwayBallast,
-  projectId,
-  otherSubMenu,
-}: RailwayBallastDrawerProps) => {
+const RailwayBallastDrawer = ({ open, toggle, refetch, railwayBallast, projectId, otherSubMenu }: RailwayBallastDrawerProps) => {
   const isEdit = Boolean(railwayBallast?.id);
 
   const validationSchema = yup.object().shape({
-    railway_line_section_name: yup
-      .string()
-      .required('Railway line section name is required'),
-    railway_ballast_name: yup
-      .string()
-      .required('Railway ballast name is required'),
+    railway_line_section_name: yup.string().required('Railway line section name is required'),
+    railway_ballast_name: yup.string().required('Railway ballast name is required'),
     ballast_id_no: yup.string().nullable(),
-    ballast_construction_cost: yup
-      .number()
-      .nullable()
-      .typeError('Ballast construction cost must be a number'),
-    remark: yup.string().nullable(),
+    ballast_construction_cost: yup.number().nullable().typeError('Ballast construction cost must be a number'),
+    remark: yup.string().nullable()
   });
 
   const createRailwayBallast = async (body: IApiPayload<RailwayBallast>) =>
-    projectOtherApiSecondService<RailwayBallast>().create(
-      otherSubMenu?.apiRoute || '',
-      body,
-    );
+    projectOtherApiSecondService<RailwayBallast>().create(otherSubMenu?.apiRoute || '', body);
 
   const editRailwayBallast = async (body: IApiPayload<RailwayBallast>) =>
-    projectOtherApiSecondService<RailwayBallast>().update(
-      otherSubMenu?.apiRoute || '',
-      railwayBallast?.id || '',
-      body,
-    );
+    projectOtherApiSecondService<RailwayBallast>().update(otherSubMenu?.apiRoute || '', railwayBallast?.id || '', body);
 
   const getPayload = (values: RailwayBallast): IApiPayload<RailwayBallast> => ({
     data: {
       ...values,
       project_id: projectId,
-      id: railwayBallast?.id,
+      id: railwayBallast?.id
     },
-    files: [],
+    files: []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<RailwayBallast>,
-    payload: IApiPayload<RailwayBallast>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<RailwayBallast>, payload: IApiPayload<RailwayBallast>) => {
     refetch();
     handleClose();
   };
 
   return (
-    <CustomSideDrawer
-      title={`project.other.railway-ballast.${isEdit ? 'edit' : 'create'}`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`project.other.railway-ballast.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
@@ -88,15 +60,13 @@ const RailwayBallastDrawer = ({
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...railwayBallast,
+            ...railwayBallast
           }}
           createActionFunc={isEdit ? editRailwayBallast : createRailwayBallast}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<RailwayBallast>) => (
-            <RailwayBallastForm formik={formik} />
-          )}
+          {(formik: FormikProps<RailwayBallast>) => <RailwayBallastForm formik={formik} />}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

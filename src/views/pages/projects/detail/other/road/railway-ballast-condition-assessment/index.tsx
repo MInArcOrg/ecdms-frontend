@@ -1,30 +1,24 @@
 'use client';
 
-import type React from 'react';
 import { Box } from '@mui/material';
+import type React from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import {
+  RailwayBallastConditionAssessment
+} from 'src/types/project/other'; // Ensure all enums are imported
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
+import { formatCreatedAt, formatDynamicDate } from 'src/utils/formatter/date';
 import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
+import ItemsListing from 'src/views/shared/listing';
 import RailwayBallastConditionAssessmentCard from './railway-ballast-condition-assessment-card';
 import RailwayBallastConditionAssessmentDrawer from './railway-ballast-condition-assessment-drawer';
-import {
-  RailwayBallastConditionAssessment,
-  BallastConditionRating,
-  FoulingPresence,
-  BallastDegradationIndicators,
-  BallastQualityTestingMethod,
-  BallastDegradationRate,
-  DrainagePerformance
-} from 'src/types/project/other'; // Ensure all enums are imported
-import { formatCreatedAt, formatDynamicDate } from 'src/utils/formatter/date';
 import { railwayBallastConditionAssessmentColumns } from './railway-ballast-condition-assessment-row';
 
 interface RailwayBallastConditionAssessmentListProps {

@@ -2,15 +2,16 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import type { RailwayBallastMaintenanceAndRenewal } from 'src/types/project/other'; // Updated type import
+import { formatDynamicDate } from 'src/utils/formatter/date'; // Added import for date formatting
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
-import { formatCreatedAt, formatDynamicDate } from 'src/utils/formatter/date'; // Added import for date formatting
 
 interface CellType {
   row: RailwayBallastMaintenanceAndRenewal; // Updated interface type
 }
 
-export const railwayBallastMaintenanceAndRenewalColumns = ( // Renamed function
+export const railwayBallastMaintenanceAndRenewalColumns = (
+  // Renamed function
   onDetail: (row: RailwayBallastMaintenanceAndRenewal) => void,
   onEdit: (row: RailwayBallastMaintenanceAndRenewal) => void,
   onDelete: (id: string) => void,
@@ -43,11 +44,7 @@ export const railwayBallastMaintenanceAndRenewalColumns = ( // Renamed function
       minWidth: 180,
       field: 'railway_line_section_name',
       headerName: t('project.other.railway-ballast-maintenance-and-renewal.details.railway-line-section-name'), // Updated translation key
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>
-          {row.railway_line_section_name || 'N/A'}
-        </Typography>
-      )
+      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row.railway_line_section_name || 'N/A'}</Typography>
     },
     {
       flex: 0.2,
@@ -55,9 +52,7 @@ export const railwayBallastMaintenanceAndRenewalColumns = ( // Renamed function
       field: 'scheduled_maintenance_activities',
       headerName: t('project.other.railway-ballast-maintenance-and-renewal.details.scheduled-maintenance-activities'), // New field
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>
-          {row.scheduled_maintenance_activities || 'N/A'}
-        </Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row.scheduled_maintenance_activities || 'N/A'}</Typography>
       )
     },
     {
@@ -76,22 +71,14 @@ export const railwayBallastMaintenanceAndRenewalColumns = ( // Renamed function
       minWidth: 200,
       field: 'inspection_reports_findings',
       headerName: t('project.other.railway-ballast-maintenance-and-renewal.details.inspection-reports-findings'), // New field
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>
-          {row.inspection_reports_findings || 'N/A'}
-        </Typography>
-      )
+      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row.inspection_reports_findings || 'N/A'}</Typography>
     },
     {
       flex: 0.2,
       minWidth: 200,
       field: 'remark',
       headerName: t('project.other.railway-ballast-maintenance-and-renewal.details.remark'), // Updated translation key
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>
-          {row.remark || 'N/A'}
-        </Typography>
-      )
+      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row.remark || 'N/A'}</Typography>
     },
     {
       field: 'actions',

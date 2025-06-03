@@ -7,7 +7,6 @@ import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import SharedItemViewCard from 'src/views/shared/listing/shared-item-view-card';
 
-
 const RailwayTrackMaintenanceAndInspectionCard = ({
   railwayTrackMaintenanceAndInspection,
   onEdit,
@@ -55,37 +54,44 @@ const RailwayTrackMaintenanceAndInspectionCard = ({
       <Grid container spacing={2} sx={{ mt: 1 }}>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-maintenance-and-inspection.details.project-id')}: {railwayTrackMaintenanceAndInspection?.project_id ?? t('common.not-available')}
+            {t('project.other.railway-track-maintenance-and-inspection.details.project-id')}:{' '}
+            {railwayTrackMaintenanceAndInspection?.project_id ?? t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-maintenance-and-inspection.details.scheduled-maintenance-activity-id')}: {railwayTrackMaintenanceAndInspection?.scheduled_maintenance_activity_id ?? t('common.not-available')}
+            {t('project.other.railway-track-maintenance-and-inspection.details.scheduled-maintenance-activity-id')}:{' '}
+            {railwayTrackMaintenanceAndInspection?.scheduled_maintenance_activity_id ?? t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-maintenance-and-inspection.details.maintenance-method')}: {railwayTrackMaintenanceAndInspection?.maintenance_method ?? t('common.not-available')}
+            {t('project.other.railway-track-maintenance-and-inspection.details.maintenance-method')}:{' '}
+            {railwayTrackMaintenanceAndInspection?.maintenance_method ?? t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-maintenance-and-inspection.details.track-maintenance-frequency-id')}: {railwayTrackMaintenanceAndInspection?.track_maintenance_frequency_id ?? t('common.not-available')}
+            {t('project.other.railway-track-maintenance-and-inspection.details.track-maintenance-frequency-id')}:{' '}
+            {railwayTrackMaintenanceAndInspection?.track_maintenance_frequency_id ?? t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-maintenance-and-inspection.details.recent-maintenance-date')}: {railwayTrackMaintenanceAndInspection?.recent_maintenance_date ?? t('common.not-available')}
+            {t('project.other.railway-track-maintenance-and-inspection.details.recent-maintenance-date')}:{' '}
+            {railwayTrackMaintenanceAndInspection?.recent_maintenance_date ?? t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-maintenance-and-inspection.details.inspection-reports-and-findings')}: {railwayTrackMaintenanceAndInspection?.inspection_reports_and_findings ?? t('common.not-available')}
+            {t('project.other.railway-track-maintenance-and-inspection.details.inspection-reports-and-findings')}:{' '}
+            {railwayTrackMaintenanceAndInspection?.inspection_reports_and_findings ?? t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={12}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-maintenance-and-inspection.details.remark')}: {railwayTrackMaintenanceAndInspection?.remark ?? t('common.not-available')}
+            {t('project.other.railway-track-maintenance-and-inspection.details.remark')}:{' '}
+            {railwayTrackMaintenanceAndInspection?.remark ?? t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>

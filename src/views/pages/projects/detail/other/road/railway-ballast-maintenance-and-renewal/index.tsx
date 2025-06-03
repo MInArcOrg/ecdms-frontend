@@ -19,13 +19,15 @@ import { RailwayBallastMaintenanceAndRenewal } from 'src/types/project/other'; /
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import { railwayBallastMaintenanceAndRenewalColumns } from './railway-ballast-maintenance-and-renewal-row'; // Updated import
 
-interface RailwayBallastMaintenanceAndRenewalListProps { // Renamed interface
+interface RailwayBallastMaintenanceAndRenewalListProps {
+  // Renamed interface
   otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
 
-const RailwayBallastMaintenanceAndRenewalList: React.FC<RailwayBallastMaintenanceAndRenewalListProps> = ({ // Renamed component
+const RailwayBallastMaintenanceAndRenewalList: React.FC<RailwayBallastMaintenanceAndRenewalListProps> = ({
+  // Renamed component
   otherSubMenu,
   projectId,
   typeId
@@ -35,20 +37,17 @@ const RailwayBallastMaintenanceAndRenewalList: React.FC<RailwayBallastMaintenanc
   const [selectedRow, setSelectedRow] = useState<RailwayBallastMaintenanceAndRenewal | null>(null); // Updated type
   const { t } = useTranslation();
 
-  const fetchData = (params: GetRequestParam): Promise<IApiResponse<RailwayBallastMaintenanceAndRenewal[]>> => { // Updated type
-    return projectOtherApiSecondService<RailwayBallastMaintenanceAndRenewal>().getAll(otherSubMenu?.apiRoute || '', { // Updated type
+  const fetchData = (params: GetRequestParam): Promise<IApiResponse<RailwayBallastMaintenanceAndRenewal[]>> => {
+    // Updated type
+    return projectOtherApiSecondService<RailwayBallastMaintenanceAndRenewal>().getAll(otherSubMenu?.apiRoute || '', {
+      // Updated type
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
   };
 
-  const {
-    data,
-    isLoading,
-    pagination,
-    handlePageChange,
-    refetch
-  } = usePaginatedFetch<RailwayBallastMaintenanceAndRenewal[]>({ // Updated type
+  const { data, isLoading, pagination, handlePageChange, refetch } = usePaginatedFetch<RailwayBallastMaintenanceAndRenewal[]>({
+    // Updated type
     queryKey: ['railwayBallastMaintenanceAndRenewals'], // Updated queryKey
     fetchFunction: fetchData
   });
@@ -63,7 +62,8 @@ const RailwayBallastMaintenanceAndRenewalList: React.FC<RailwayBallastMaintenanc
     setShowDetailDrawer(!showDetailDrawer);
   };
 
-  const handleEdit = (row: RailwayBallastMaintenanceAndRenewal) => { // Updated type
+  const handleEdit = (row: RailwayBallastMaintenanceAndRenewal) => {
+    // Updated type
     setSelectedRow(row);
     setShowDrawer(true);
   };
@@ -73,12 +73,14 @@ const RailwayBallastMaintenanceAndRenewalList: React.FC<RailwayBallastMaintenanc
     refetch();
   };
 
-  const handleClickDetail = (row: RailwayBallastMaintenanceAndRenewal) => { // Updated type
+  const handleClickDetail = (row: RailwayBallastMaintenanceAndRenewal) => {
+    // Updated type
     setSelectedRow(row);
     setShowDetailDrawer(true);
   };
 
-  const mapToDetailItems = (row: RailwayBallastMaintenanceAndRenewal): { title: string; value: string }[] => [ // Updated type
+  const mapToDetailItems = (row: RailwayBallastMaintenanceAndRenewal): { title: string; value: string }[] => [
+    // Updated type
     {
       title: t('common.table-columns.id'),
       value: row?.project_id || 'N/A'
@@ -138,12 +140,13 @@ const RailwayBallastMaintenanceAndRenewalList: React.FC<RailwayBallastMaintenanc
         />
       )}
 
-      <ItemsListing// Updated translation key
+      <ItemsListing
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
           headers: railwayBallastMaintenanceAndRenewalColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
+        title="project.other.railway-ballast-maintenance-and-renewal.title"
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
           <RailwayBallastMaintenanceAndRenewalCard
@@ -171,4 +174,4 @@ const RailwayBallastMaintenanceAndRenewalList: React.FC<RailwayBallastMaintenanc
   );
 };
 
-export default RailwayBallastMaintenanceAndRenewalList; 
+export default RailwayBallastMaintenanceAndRenewalList;

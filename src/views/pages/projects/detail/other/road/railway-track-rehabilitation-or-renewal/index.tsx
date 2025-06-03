@@ -25,13 +25,19 @@ interface RailwayTrackRehabilitationOrRenewalListProps {
   projectId: string;
 }
 
-const RailwayTrackRehabilitationOrRenewalList: React.FC<RailwayTrackRehabilitationOrRenewalListProps> = ({ otherSubMenu, projectId, typeId }) => {
+const RailwayTrackRehabilitationOrRenewalList: React.FC<RailwayTrackRehabilitationOrRenewalListProps> = ({
+  otherSubMenu,
+  projectId,
+  typeId
+}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<RailwayTrackRehabilitationOrRenewal | null>(null);
   const { t } = useTranslation();
 
-  const fetchRailwayTrackRehabilitationOrRenewal = (params: GetRequestParam): Promise<IApiResponse<RailwayTrackRehabilitationOrRenewal[]>> => {
+  const fetchRailwayTrackRehabilitationOrRenewal = (
+    params: GetRequestParam
+  ): Promise<IApiResponse<RailwayTrackRehabilitationOrRenewal[]>> => {
     return projectOtherApiSecondService<RailwayTrackRehabilitationOrRenewal>().getAll(otherSubMenu?.apiRoute || '', {
       ...params,
       filter: { ...params.filter, project_id: projectId }
@@ -65,7 +71,10 @@ const RailwayTrackRehabilitationOrRenewalList: React.FC<RailwayTrackRehabilitati
   };
 
   const handleDelete = async (railwayTrackRehabilitationOrRenewalId: string) => {
-    await projectOtherApiSecondService<RailwayTrackRehabilitationOrRenewal>().delete(otherSubMenu?.apiRoute || '', railwayTrackRehabilitationOrRenewalId);
+    await projectOtherApiSecondService<RailwayTrackRehabilitationOrRenewal>().delete(
+      otherSubMenu?.apiRoute || '',
+      railwayTrackRehabilitationOrRenewalId
+    );
     refetch();
   };
 
@@ -77,40 +86,35 @@ const RailwayTrackRehabilitationOrRenewalList: React.FC<RailwayTrackRehabilitati
   const mapRailwayTrackRehabilitationOrRenewalToDetailItems = (
     railwayTrackRehabilitationOrRenewal: RailwayTrackRehabilitationOrRenewal
   ): { title: string; value: string }[] => [
-      {
-        title: t('project.other.railway-track-rehabilitation-or-renewal.details.track-renewal-history'),
-        value: railwayTrackRehabilitationOrRenewal?.track_renewal_history || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-rehabilitation-or-renewal.details.plans-or-schedules'),
-        value: railwayTrackRehabilitationOrRenewal?.plans_or_schedules || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-rehabilitation-or-renewal.details.rehabilitation-renewal-methods-used-id'),
-        value: railwayTrackRehabilitationOrRenewal?.rehabilitation_renewal_methods_used_id || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-rehabilitation-or-renewal.details.rehabilitation-renewal-types'),
-        value: railwayTrackRehabilitationOrRenewal?.rehabilitation_renewal_types || 'N/A'
-      },
-      {
-        title: t('project.other.railway-track-rehabilitation-or-renewal.details.remark'),
-        value: railwayTrackRehabilitationOrRenewal?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: railwayTrackRehabilitationOrRenewal?.created_at
-          ? formatCreatedAt(railwayTrackRehabilitationOrRenewal.created_at)
-          : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: railwayTrackRehabilitationOrRenewal?.updated_at
-          ? formatCreatedAt(railwayTrackRehabilitationOrRenewal.updated_at)
-          : 'N/A'
-      }
-    ];
-
+    {
+      title: t('project.other.railway-track-rehabilitation-or-renewal.details.track-renewal-history'),
+      value: railwayTrackRehabilitationOrRenewal?.track_renewal_history || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-rehabilitation-or-renewal.details.plans-or-schedules'),
+      value: railwayTrackRehabilitationOrRenewal?.plans_or_schedules || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-rehabilitation-or-renewal.details.rehabilitation-renewal-methods-used-id'),
+      value: railwayTrackRehabilitationOrRenewal?.rehabilitation_renewal_methods_used_id || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-rehabilitation-or-renewal.details.rehabilitation-renewal-types'),
+      value: railwayTrackRehabilitationOrRenewal?.rehabilitation_renewal_types || 'N/A'
+    },
+    {
+      title: t('project.other.railway-track-rehabilitation-or-renewal.details.remark'),
+      value: railwayTrackRehabilitationOrRenewal?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: railwayTrackRehabilitationOrRenewal?.created_at ? formatCreatedAt(railwayTrackRehabilitationOrRenewal.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: railwayTrackRehabilitationOrRenewal?.updated_at ? formatCreatedAt(railwayTrackRehabilitationOrRenewal.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

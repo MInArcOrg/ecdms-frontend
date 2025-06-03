@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Divider,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import type { RailwayBallastMaterialSpecification } from 'src/types/project/other';
@@ -26,7 +18,7 @@ const RailwayBallastMaterialSpecificationCard: React.FC<RailwayBallastMaterialSp
   refetch,
   onEdit,
   onDelete,
-  onDetail,
+  onDetail
 }) => {
   const { t } = useTranslation();
 
@@ -43,7 +35,7 @@ const RailwayBallastMaterialSpecificationCard: React.FC<RailwayBallastMaterialSp
                 fontWeight: 500,
                 textDecoration: 'none',
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {railwayBallastMaterialSpecification?.project_id?.toString().slice(0, 5)}...
@@ -53,28 +45,37 @@ const RailwayBallastMaterialSpecificationCard: React.FC<RailwayBallastMaterialSp
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast-material-specification.details.railway-line-section-name')}: {railwayBallastMaterialSpecification.railway_line_section_name}
+            {t('project.other.railway-ballast-material-specification.details.railway-line-section-name')}:{' '}
+            {railwayBallastMaterialSpecification.railway_line_section_name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast-material-specification.details.ballast-material-type-id')}: {railwayBallastMaterialSpecification.ballast_material_type_id}
+            {t('project.other.railway-ballast-material-specification.details.ballast-material-type-id')}:{' '}
+            {railwayBallastMaterialSpecification.ballast_material_type_id}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast-material-specification.details.specific-gravity')}: {railwayBallastMaterialSpecification.specific_gravity ?? 'N/A'}
+            {t('project.other.railway-ballast-material-specification.details.specific-gravity')}:{' '}
+            {railwayBallastMaterialSpecification.specific_gravity ?? 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast-material-specification.details.porosity')}: {railwayBallastMaterialSpecification.porosity ?? 'N/A'}
+            {t('project.other.railway-ballast-material-specification.details.porosity')}:{' '}
+            {railwayBallastMaterialSpecification.porosity ?? 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast-material-specification.details.water-absorption')}: {railwayBallastMaterialSpecification.water_absorption ?? 'N/A'}
+            {t('project.other.railway-ballast-material-specification.details.water-absorption')}:{' '}
+            {railwayBallastMaterialSpecification.water_absorption ?? 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-ballast-material-specification.details.shape')}: {railwayBallastMaterialSpecification.shape ?? 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast-material-specification.details.average-particle-length')}: {railwayBallastMaterialSpecification.average_particle_length != null ? railwayBallastMaterialSpecification.average_particle_length.toLocaleString() : 'N/A'}
+            {t('project.other.railway-ballast-material-specification.details.average-particle-length')}:{' '}
+            {railwayBallastMaterialSpecification.average_particle_length != null
+              ? railwayBallastMaterialSpecification.average_particle_length.toLocaleString()
+              : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast-material-specification.details.remark')}: {railwayBallastMaterialSpecification.remark ?? 'N/A'}
+            {t('project.other.railway-ballast-material-specification.details.remark')}:{' '}
+            {railwayBallastMaterialSpecification.remark ?? 'N/A'}
           </Typography>
         </Box>
       </CardContent>
@@ -90,11 +91,11 @@ const RailwayBallastMaterialSpecificationCard: React.FC<RailwayBallastMaterialSp
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'railwayballastmaterialspecification',
+            subject: 'railwayballastmaterialspecification'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'railwayballastmaterialspecification',
+            subject: 'railwayballastmaterialspecification'
           }}
           onEdit={() => onEdit(railwayBallastMaterialSpecification)}
           onDelete={() => onDelete(railwayBallastMaterialSpecification.project_id)}

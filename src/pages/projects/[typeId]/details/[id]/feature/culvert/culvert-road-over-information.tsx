@@ -17,10 +17,7 @@ const CulvertRoadOverInformation = () => {
       activeSubMenuId={projectFeatureIds.culvert.culvertRoadOverInformation}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <CulvertRoadOverInformationList
-        otherSubMenu={menuItem}
-        typeId={String(typeId)} projectId={String(id)}
-      />
+      <CulvertRoadOverInformationList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>
   );
 };

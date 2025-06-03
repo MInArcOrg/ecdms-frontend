@@ -12,7 +12,8 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import RailwayBallastMaintenanceAndRenewalForm from './railway-ballast-maintenance-and-renewal-form'; // Updated component import
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
-interface RailwayBallastMaintenanceAndRenewalDrawerProps { // Renamed interface
+interface RailwayBallastMaintenanceAndRenewalDrawerProps {
+  // Renamed interface
   open: boolean;
   toggle: () => void;
   refetch: () => void;
@@ -21,13 +22,14 @@ interface RailwayBallastMaintenanceAndRenewalDrawerProps { // Renamed interface
   otherSubMenu?: DetailSubMenuItemChild;
 }
 
-const RailwayBallastMaintenanceAndRenewalDrawer = ({ // Renamed component
+const RailwayBallastMaintenanceAndRenewalDrawer = ({
+  // Renamed component
   open,
   toggle,
   refetch,
   railwayBallastMaintenanceAndRenewal, // Updated prop name
   projectId,
-  otherSubMenu,
+  otherSubMenu
 }: RailwayBallastMaintenanceAndRenewalDrawerProps) => {
   const isEdit = Boolean(railwayBallastMaintenanceAndRenewal?.project_id);
 
@@ -35,42 +37,47 @@ const RailwayBallastMaintenanceAndRenewalDrawer = ({ // Renamed component
     railway_line_section_name: yup.string().required('Railway line section name is required'),
     scheduled_maintenance_activities: yup.string().required('Scheduled maintenance activities are required'),
     inspection_reports_findings: yup.string().nullable().optional(),
-    remark: yup.string().nullable().optional(),
+    remark: yup.string().nullable().optional()
   });
 
-  const createRailwayBallastMaintenanceAndRenewal = async ( // Renamed function
+  const createRailwayBallastMaintenanceAndRenewal = async (
+    // Renamed function
     body: IApiPayload<RailwayBallastMaintenanceAndRenewal>
   ) =>
-    projectOtherApiSecondService<RailwayBallastMaintenanceAndRenewal>().create( // Updated type
+    projectOtherApiSecondService<RailwayBallastMaintenanceAndRenewal>().create(
+      // Updated type
       otherSubMenu?.apiRoute || '',
-      body,
+      body
     );
 
-  const editRailwayBallastMaintenanceAndRenewal = async ( // Renamed function
+  const editRailwayBallastMaintenanceAndRenewal = async (
+    // Renamed function
     body: IApiPayload<RailwayBallastMaintenanceAndRenewal>
   ) =>
-    projectOtherApiSecondService<RailwayBallastMaintenanceAndRenewal>().update( // Updated type
+    projectOtherApiSecondService<RailwayBallastMaintenanceAndRenewal>().update(
+      // Updated type
       otherSubMenu?.apiRoute || '',
       railwayBallastMaintenanceAndRenewal.project_id,
-      body,
+      body
     );
 
   const getPayload = (
     values: RailwayBallastMaintenanceAndRenewal // Updated type
-  ): IApiPayload<RailwayBallastMaintenanceAndRenewal> => ({ // Updated type
+  ): IApiPayload<RailwayBallastMaintenanceAndRenewal> => ({
+    // Updated type
     data: {
       ...values,
       recent_maintenance_dates: convertDateToLocaleDate(values.recent_maintenance_dates),
-      project_id: projectId,
+      project_id: projectId
     },
-    files: [],
+    files: []
   });
 
   const handleClose = () => toggle();
 
   const onActionSuccess = async (
     response: IApiResponse<RailwayBallastMaintenanceAndRenewal>, // Updated type
-    payload: IApiPayload<RailwayBallastMaintenanceAndRenewal>, // Updated type
+    payload: IApiPayload<RailwayBallastMaintenanceAndRenewal> // Updated type
   ) => {
     refetch();
     handleClose();
@@ -90,8 +97,7 @@ const RailwayBallastMaintenanceAndRenewalDrawer = ({ // Renamed component
           validationSchema={validationSchema}
           initialValues={{
             ...railwayBallastMaintenanceAndRenewal, // Updated prop name
-            recent_maintenance_dates: formatInitialDateDate(railwayBallastMaintenanceAndRenewal?.recent_maintenance_dates),
-
+            recent_maintenance_dates: formatInitialDateDate(railwayBallastMaintenanceAndRenewal?.recent_maintenance_dates)
           }}
           createActionFunc={
             isEdit ? editRailwayBallastMaintenanceAndRenewal : createRailwayBallastMaintenanceAndRenewal // Updated function names
@@ -99,7 +105,9 @@ const RailwayBallastMaintenanceAndRenewalDrawer = ({ // Renamed component
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<RailwayBallastMaintenanceAndRenewal>) => ( // Updated type
+          {(
+            formik: FormikProps<RailwayBallastMaintenanceAndRenewal> // Updated type
+          ) => (
             <RailwayBallastMaintenanceAndRenewalForm formik={formik} /> // Updated component name
           )}
         </FormPageWrapper>

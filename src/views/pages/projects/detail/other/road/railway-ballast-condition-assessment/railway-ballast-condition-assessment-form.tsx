@@ -12,27 +12,27 @@ import {
   BallastQualityTestingMethod,
   DrainagePerformance,
   FoulingPresence,
-  RailwayBallastConditionAssessment, // Updated type import
+  RailwayBallastConditionAssessment // Updated type import
 } from 'src/types/project/other';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
 
-interface RailwayBallastConditionAssessmentFormProps { // Renamed interface
+interface RailwayBallastConditionAssessmentFormProps {
+  // Renamed interface
   formik: FormikProps<RailwayBallastConditionAssessment>; // Updated prop type
 }
 
-const RailwayBallastConditionAssessmentForm: React.FC<RailwayBallastConditionAssessmentFormProps> = ({ formik }) => { // Renamed component
+const RailwayBallastConditionAssessmentForm: React.FC<RailwayBallastConditionAssessmentFormProps> = ({ formik }) => {
+  // Renamed component
   const { t } = useTranslation();
 
-  const enumToOptions = (enumObject: Record<string, string>) =>
-    Object.values(enumObject).map((value) => ({ label: value, value: value }));
+  const enumToOptions = (enumObject: Record<string, string>) => Object.values(enumObject).map((value) => ({ label: value, value: value }));
   console.log('formik errors', formik.errors);
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
         {/* railway_line_section_name */}
         <CustomTextBox
-
           fullWidth
           label={t('project.other.railway-ballast-condition-assessment.details.railway-line-section-name')}
           placeholder={t('project.other.railway-ballast-condition-assessment.details.railway-line-section-name')}
@@ -55,7 +55,6 @@ const RailwayBallastConditionAssessmentForm: React.FC<RailwayBallastConditionAss
 
         {/* ballast_condition_rating */}
         <CustomSelectBox
-
           fullWidth
           label={t('project.other.railway-ballast-condition-assessment.details.ballast-condition-rating')}
           placeholder={t('project.other.railway-ballast-condition-assessment.details.ballast-condition-rating')}
@@ -67,7 +66,6 @@ const RailwayBallastConditionAssessmentForm: React.FC<RailwayBallastConditionAss
 
         {/* fouling_presence */}
         <CustomSelectBox
-
           fullWidth
           label={t('project.other.railway-ballast-condition-assessment.details.fouling-presence')}
           placeholder={t('project.other.railway-ballast-condition-assessment.details.fouling-presence')}
@@ -79,7 +77,6 @@ const RailwayBallastConditionAssessmentForm: React.FC<RailwayBallastConditionAss
 
         {/* ballast_degradation_indicators */}
         <CustomSelectBox
-
           fullWidth
           label={t('project.other.railway-ballast-condition-assessment.details.ballast-degradation-indicators')}
           placeholder={t('project.other.railway-ballast-condition-assessment.details.ballast-degradation-indicators')}
@@ -91,7 +88,6 @@ const RailwayBallastConditionAssessmentForm: React.FC<RailwayBallastConditionAss
 
         {/* ballast_quality_testing_method */}
         <CustomSelectBox
-
           fullWidth
           label={t('project.other.railway-ballast-condition-assessment.details.ballast-quality-testing-method')}
           placeholder={t('project.other.railway-ballast-condition-assessment.details.ballast-quality-testing-method')}
@@ -103,7 +99,6 @@ const RailwayBallastConditionAssessmentForm: React.FC<RailwayBallastConditionAss
 
         {/* testing_frequency */}
         <CustomTextBox
-
           fullWidth
           label={t('project.other.railway-ballast-condition-assessment.details.testing-frequency')}
           placeholder={t('project.other.railway-ballast-condition-assessment.details.testing-frequency')}
@@ -115,7 +110,6 @@ const RailwayBallastConditionAssessmentForm: React.FC<RailwayBallastConditionAss
 
         {/* ballast_resistance */}
         <CustomTextBox
-
           fullWidth
           label={t('project.other.railway-ballast-condition-assessment.details.ballast-resistance')}
           placeholder={t('project.other.railway-ballast-condition-assessment.details.ballast-resistance')}
@@ -126,7 +120,6 @@ const RailwayBallastConditionAssessmentForm: React.FC<RailwayBallastConditionAss
 
         {/* ballast_degradation_rate */}
         <CustomSelectBox
-
           fullWidth
           label={t('project.other.railway-ballast-condition-assessment.details.ballast-degradation-rate')}
           placeholder={t('project.other.railway-ballast-condition-assessment.details.ballast-degradation-rate')}
@@ -138,7 +131,6 @@ const RailwayBallastConditionAssessmentForm: React.FC<RailwayBallastConditionAss
 
         {/* drainage_performance */}
         <CustomSelectBox
-
           fullWidth
           label={t('project.other.railway-ballast-condition-assessment.details.drainage-performance')}
           placeholder={t('project.other.railway-ballast-condition-assessment.details.drainage-performance')}
@@ -150,7 +142,6 @@ const RailwayBallastConditionAssessmentForm: React.FC<RailwayBallastConditionAss
 
         {/* remark */}
         <CustomTextBox
-
           fullWidth
           label={t('project.other.railway-ballast-condition-assessment.details.remark')}
           placeholder={t('project.other.railway-ballast-condition-assessment.details.remark')}
@@ -165,4 +156,4 @@ const RailwayBallastConditionAssessmentForm: React.FC<RailwayBallastConditionAss
   );
 };
 
-export default RailwayBallastConditionAssessmentForm; 
+export default RailwayBallastConditionAssessmentForm;
