@@ -138,12 +138,13 @@ const RailwayBallastMaintenanceAndRenewalList: React.FC<RailwayBallastMaintenanc
         />
       )}
 
-      <ItemsListing// Updated translation key
+      <ItemsListing
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
           headers: railwayBallastMaintenanceAndRenewalColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
+        title='project.other.railway-ballast-maintenance-and-renewal.title'
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
           <RailwayBallastMaintenanceAndRenewalCard
