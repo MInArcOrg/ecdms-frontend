@@ -72,6 +72,8 @@ const RailwayTrackRehabilitationOrRenewalForm: React.FC<RailwayTrackRehabilitati
           placeholder={t('project.other.railway-track-rehabilitation-or-renewal.details.remark')}
           name="remark"
           size="small"
+          multiline
+          rows={4}
           sx={{ mb: 2 }}
         />
 

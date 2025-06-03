@@ -1596,3 +1596,14 @@ export interface RailwayTrackRehabilitationOrRenewal {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayTrackSafety {
+  id: string; // Required string
+  project_id: string; // Required UUID
+  railway_track_safety_measures_id: string; // Required UUID
+  track_inspection_frequency_id: string; // Required UUID
+  is_compliant_with_safety_regulations_standards?: boolean; // Optional Boolean
+  remark?: string; // Optional Text
+  created_at?: string;
+  updated_at?: string;
+
+}
