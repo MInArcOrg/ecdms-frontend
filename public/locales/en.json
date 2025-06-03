@@ -3513,6 +3513,25 @@
           "remark": "Remark"
         }
       },
+      "railway-ballast-condition-assessment": {
+        "title": "Railway Ballast Condition Assessment",
+        "detail": "Railway Ballast Condition Assessment Details",
+        "edit": "Edit Railway Ballast Condition Assessment",
+        "create": "Create Railway Ballast Condition Assessment",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "inspection-dates": "Inspection Dates",
+          "ballast-condition-rating": "Ballast Condition Rating",
+          "fouling-presence": "Fouling Presence",
+          "ballast-degradation-indicators": "Ballast Degradation Indicators",
+          "ballast-quality-testing-method": "Ballast Quality Testing Method",
+          "testing-frequency": "Testing Frequency",
+          "ballast-resistance": "Ballast Resistance",
+          "ballast-degradation-rate": "Ballast Degradation Rate",
+          "drainage-performance": "Drainage Performance",
+          "remark": "Remark"
+        }
+      },
       "railway-track-data": {
         "title": "Railway Track Data",
         "create-railway-track-data": "Create Railway Track Data",
