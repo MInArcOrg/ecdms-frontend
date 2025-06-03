@@ -10,6 +10,7 @@ const BridgeComponentsAncillaries = () => {
   const { id = '', typeId = '' } = router.query;
 
   const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), projectFeatureIds.bridge.bridgeComponentsAncillaries);
+  menuItem;
   return (
     <ProjectLayout
       activeMenuId={projectMenuIds.feature}

@@ -3466,6 +3466,19 @@
           "remark": "Remark"
         }
       },
+      "railway-ballast": {
+        "title": "Railway Ballast",
+        "create": "Create Railway Ballast",
+        "edit": "Edit Railway Ballast",
+        "detail": "Railway Ballast Details",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "railway-ballast-name": "Railway Ballast Name",
+          "ballast-id-no": "Ballast ID No.",
+          "ballast-construction-cost": "Ballast Construction Cost",
+          "remark": "Remark"
+        }
+      },
       "railway-track-data": {
         "title": "Railway Track Data",
         "create-railway-track-data": "Create Railway Track Data",
