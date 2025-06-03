@@ -1633,3 +1633,17 @@ export interface RailwayBallastMaterialData {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayBallastMaterialSpecification {
+  id:string;
+  project_id: string; // UUID
+  railway_line_section_name: string;
+  ballast_material_type_id: string; // UUID
+  specific_gravity?: number;
+  porosity?: number;
+  water_absorption?: number;
+  shape?: string;
+  average_particle_length?: number;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
