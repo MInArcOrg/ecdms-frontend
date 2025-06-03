@@ -116,11 +116,11 @@ const RailwayBallastMaintenanceAndRenewalList: React.FC<RailwayBallastMaintenanc
   return (
     <Box>
       {showDrawer && (
-        <RailwayBallastMaintenanceAndRenewalDrawer // Updated component name
+        <RailwayBallastMaintenanceAndRenewalDrawer
           otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
-          railwayBallastMaintenanceAndRenewal={selectedRow as RailwayBallastMaintenanceAndRenewal} // Updated prop name and type
+          railwayBallastMaintenanceAndRenewal={selectedRow as RailwayBallastMaintenanceAndRenewal}
           refetch={refetch}
           projectId={projectId}
         />
@@ -130,26 +130,25 @@ const RailwayBallastMaintenanceAndRenewalList: React.FC<RailwayBallastMaintenanc
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapToDetailItems(selectedRow as RailwayBallastMaintenanceAndRenewal)} // Updated type
+          data={mapToDetailItems(selectedRow as RailwayBallastMaintenanceAndRenewal)}
           hasReference={false}
           id={selectedRow?.project_id || ''}
           fileType=""
-          title={t('project.other.railway-ballast-maintenance-and-renewal.detail')} // Updated translation key
+          title={t('project.other.railway-ballast-maintenance-and-renewal.detail')}
         />
       )}
 
-      <ItemsListing
-        title={t('project.other.railway-ballast-maintenance-and-renewal.title')} // Updated translation key
+      <ItemsListing// Updated translation key
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: railwayBallastMaintenanceAndRenewalColumns(handleClickDetail, handleEdit, handleDelete, t, refetch) // Updated function name
+          headers: railwayBallastMaintenanceAndRenewalColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <RailwayBallastMaintenanceAndRenewalCard // Updated component name
+          <RailwayBallastMaintenanceAndRenewalCard
             onDetail={handleClickDetail}
-            railwayBallastMaintenanceAndRenewal={data} // Updated prop name
+            railwayBallastMaintenanceAndRenewal={data}
             onEdit={handleEdit}
             refetch={refetch}
             onDelete={handleDelete}
@@ -161,7 +160,7 @@ const RailwayBallastMaintenanceAndRenewalList: React.FC<RailwayBallastMaintenanc
           onlyIcon: true,
           permission: {
             action: 'create',
-            subject: 'railwayballastmaintenanceandrenewal' // Updated subject
+            subject: 'railwayballastmaintenanceandrenewal'
           }
         }}
         fetchDataFunction={refetch}
@@ -172,4 +171,4 @@ const RailwayBallastMaintenanceAndRenewalList: React.FC<RailwayBallastMaintenanc
   );
 };
 
-export default RailwayBallastMaintenanceAndRenewalList; // Updated export name
+export default RailwayBallastMaintenanceAndRenewalList; 
