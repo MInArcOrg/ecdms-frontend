@@ -13,10 +13,11 @@ import { defaultCreateActionConfig } from 'src/types/general/listing';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
 import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
-import RailwayBallastCard from './railway-ballast-material-data-card';
-import RailwayBallastDrawer from './railway-ballast-material-data-drawer';
+import RailwayBallastMaterialDataCard from './railway-ballast-material-data-card';
+import RailwayBallastMaterialDataDrawer from './railway-ballast-material-data-drawer';
 import { RailwayBallastMaterialData } from 'src/types/project/other';
-import { railwayBallastColumns } from './railway-ballast-material-data-row';
+import { railwayBallastMaterialDataColumns } from './railway-ballast-material-data-row';
+import { formatCreatedAt } from 'src/utils/formatter/date';
 
 interface railwayBallastMaterialDataProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -30,7 +31,7 @@ const RailwayBallastMaterialDataList: React.FC<railwayBallastMaterialDataProps> 
   const [selectedRow, setSelectedRow] = useState<RailwayBallastMaterialData | null>(null);
   const { t } = useTranslation();
 
-  const fetchRailwayBallast = (params: GetRequestParam): Promise<IApiResponse<RailwayBallastMaterialData[]>> => {
+  const fetchRailwayBallastMaterialData = (params: GetRequestParam): Promise<IApiResponse<RailwayBallastMaterialData[]>> => {
     return projectOtherApiSecondService<RailwayBallastMaterialData>().getAll(otherSubMenu?.apiRoute || '', {
       ...params,
       filter: { ...params.filter, project_id: projectId }
@@ -45,7 +46,7 @@ const RailwayBallastMaterialDataList: React.FC<railwayBallastMaterialDataProps> 
     refetch
   } = usePaginatedFetch<RailwayBallastMaterialData[]>({
     queryKey: ['railwayBallastMaterialData'],
-    fetchFunction: fetchRailwayBallast
+    fetchFunction: fetchRailwayBallastMaterialData
   });
 
   const toggleDrawer = () => {
@@ -58,9 +59,9 @@ const RailwayBallastMaterialDataList: React.FC<railwayBallastMaterialDataProps> 
     setShowDetailDrawer(!showDetailDrawer);
   };
 
-  const handleEdit = (railwayBallast: RailwayBallastMaterialData) => {
+  const handleEdit = (railwayBallastMaterialData: RailwayBallastMaterialData) => {
     toggleDrawer();
-    setSelectedRow(railwayBallast);
+    setSelectedRow(railwayBallastMaterialData);
   };
 
   const handleDelete = async (id: string) => {
@@ -68,68 +69,76 @@ const RailwayBallastMaterialDataList: React.FC<railwayBallastMaterialDataProps> 
     refetch();
   };
 
-  const handleClickDetail = (railwayBallast: RailwayBallastMaterialData) => {
+  const handleClickDetail = (railwayBallastMaterialData: RailwayBallastMaterialData) => {
     toggleDetailDrawer();
-    setSelectedRow(railwayBallast);
+    setSelectedRow(railwayBallastMaterialData);
   };
 
-  const mapRailwayBallastToDetailItems = (railwayBallast: RailwayBallastMaterialData): { title: string; value: string }[] => [
+  const mapRailwayBallastMaterialDataToDetailItems = (railwayBallastMaterialData: RailwayBallastMaterialData): { title: string; value: string }[] => [
     {
       title: t('common.table-columns.id'),
-      value: railwayBallast?.project_id || 'N/A'
+      value: railwayBallastMaterialData?.project_id || 'N/A'
     },
     {
       title: t('project.other.railway-ballast-material-data.details.railway-line-section-name'),
-      value: railwayBallast?.railway_line_section_name || 'N/A'
+      value: railwayBallastMaterialData?.railway_line_section_name || 'N/A'
     },
     {
       title: t('project.other.railway-ballast-material-data.details.ballast-material-type-id'),
-      value: railwayBallast?.ballast_material_type_id || 'N/A'
+      value: railwayBallastMaterialData?.ballast_material_type_id || 'N/A'
     },
     {
       title: t('project.other.railway-ballast-material-data.details.particle-size-distribution-grading'),
-      value: railwayBallast?.particle_size_distribution_grading || 'N/A'
+      value: railwayBallastMaterialData?.particle_size_distribution_grading || 'N/A'
     },
     {
       title: t('project.other.railway-ballast-material-data.details.ballast-used-quantity'),
-      value: railwayBallast?.ballast_used_quantity !== undefined
-        ? railwayBallast.ballast_used_quantity.toLocaleString()
+      value: railwayBallastMaterialData?.ballast_used_quantity !== undefined
+        ? railwayBallastMaterialData.ballast_used_quantity.toLocaleString()
         : 'N/A'
     },
     {
       title: t('project.other.railway-ballast-material-data.details.ballast-source-id'),
-      value: railwayBallast?.ballast_source_id || 'N/A'
+      value: railwayBallastMaterialData?.ballast_source_id || 'N/A'
     },
     {
       title: t('project.other.railway-ballast-material-data.details.ballast-material-size'),
-      value: railwayBallast?.ballast_material_size !== undefined
-        ? railwayBallast.ballast_material_size.toLocaleString()
+      value: railwayBallastMaterialData?.ballast_material_size !== undefined
+        ? railwayBallastMaterialData.ballast_material_size.toLocaleString()
         : 'N/A'
     },
     {
       title: t('project.other.railway-ballast-material-data.details.ballast-layer-thickness'),
-      value: railwayBallast?.ballast_layer_thickness !== undefined
-        ? railwayBallast.ballast_layer_thickness.toLocaleString()
+      value: railwayBallastMaterialData?.ballast_layer_thickness !== undefined
+        ? railwayBallastMaterialData.ballast_layer_thickness.toLocaleString()
         : 'N/A'
     },
     {
       title: t('project.other.railway-ballast-material-data.details.compaction-method-id'),
-      value: railwayBallast?.compaction_method_id || 'N/A'
+      value: railwayBallastMaterialData?.compaction_method_id || 'N/A'
     },
     {
       title: t('project.other.railway-ballast-material-data.details.remark'),
-      value: railwayBallast?.remark || 'N/A'
+      value: railwayBallastMaterialData?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: railwayBallastMaterialData?.created_at ? formatCreatedAt(railwayBallastMaterialData.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: railwayBallastMaterialData?.updated_at ? formatCreatedAt(railwayBallastMaterialData.updated_at) : 'N/A'
     }
   ];
 
   return (
     <Box>
       {showDrawer && (
-        <RailwayBallastDrawer
+        <RailwayBallastMaterialDataDrawer
           otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
-          railwayBallast={selectedRow as RailwayBallastMaterialData}
+          railwayBallastMaterialData={selectedRow as RailwayBallastMaterialData}
           refetch={refetch}
           projectId={projectId}
         />
@@ -139,7 +148,7 @@ const RailwayBallastMaterialDataList: React.FC<railwayBallastMaterialDataProps> 
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapRailwayBallastToDetailItems(selectedRow as RailwayBallastMaterialData)}
+          data={mapRailwayBallastMaterialDataToDetailItems(selectedRow as RailwayBallastMaterialData)}
           hasReference={false}
           id={selectedRow?.project_id || ''}
           fileType=""
@@ -152,13 +161,13 @@ const RailwayBallastMaterialDataList: React.FC<railwayBallastMaterialDataProps> 
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: railwayBallastColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
+          headers: railwayBallastMaterialDataColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <RailwayBallastCard
+          <RailwayBallastMaterialDataCard
             onDetail={handleClickDetail}
-            railwayBallast={data}
+            railwayBallastMaterialData={data}
             onEdit={handleEdit}
             refetch={refetch}
             onDelete={handleDelete}

@@ -3,30 +3,30 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import RailwayBallastForm from './railway-ballast-material-data-form';
+import RailwayBallastMaterialDataForm from './railway-ballast-material-data-form';
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import type { RailwayBallastMaterialData } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
-interface RailwayBallastDrawerProps {
+interface RailwayBallastMaterialDataDrawerProps {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  railwayBallast: RailwayBallastMaterialData;
+  railwayBallastMaterialData: RailwayBallastMaterialData;
   projectId: string;
   otherSubMenu?: DetailSubMenuItemChild;
 }
 
-const RailwayBallastDrawer = ({
+const RailwayBallastMaterialDataDrawer = ({
   open,
   toggle,
   refetch,
-  railwayBallast,
+  railwayBallastMaterialData,
   projectId,
   otherSubMenu,
-}: RailwayBallastDrawerProps) => {
-  const isEdit = Boolean(railwayBallast?.project_id); // or some unique ID field if available
+}: RailwayBallastMaterialDataDrawerProps) => {
+  const isEdit = Boolean(railwayBallastMaterialData?.project_id); // or some unique ID field if available
 
   const validationSchema = yup.object().shape({
     railway_line_section_name: yup.string().required('Railway line section name is required'),
@@ -49,16 +49,16 @@ const RailwayBallastDrawer = ({
     remark: yup.string().nullable(),
   });
 
-  const createRailwayBallast = async (body: IApiPayload<RailwayBallastMaterialData>) =>
+  const createRailwayBallastMaterialData = async (body: IApiPayload<RailwayBallastMaterialData>) =>
     projectOtherApiSecondService<RailwayBallastMaterialData>().create(
       otherSubMenu?.apiRoute || '',
       body,
     );
 
-  const editRailwayBallast = async (body: IApiPayload<RailwayBallastMaterialData>) =>
+  const editRailwayBallastMaterialData = async (body: IApiPayload<RailwayBallastMaterialData>) =>
     projectOtherApiSecondService<RailwayBallastMaterialData>().update(
       otherSubMenu?.apiRoute || '',
-      railwayBallast.project_id, // assuming project_id is the unique id here, change if not correct
+      railwayBallastMaterialData.project_id, // assuming project_id is the unique id here, change if not correct
       body,
     );
 
@@ -82,25 +82,25 @@ const RailwayBallastDrawer = ({
 
   return (
     <CustomSideDrawer
-      title={`project.other.railway-ballast.${isEdit ? 'edit' : 'create'}`}
+      title={`project.other.railway-ballast-material-data.${isEdit ? 'edit' : 'create'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.railway-ballast.${isEdit ? 'edit' : 'create'}`}
+          title={`project.other.railway-ballast-material-data. ${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...railwayBallast,
+            ...railwayBallastMaterialData,
           }}
-          createActionFunc={isEdit ? editRailwayBallast : createRailwayBallast}
+          createActionFunc={isEdit ? editRailwayBallastMaterialData : createRailwayBallastMaterialData}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<RailwayBallastMaterialData>) => (
-            <RailwayBallastForm formik={formik} />
+            <RailwayBallastMaterialDataForm formik={formik} />
           )}
         </FormPageWrapper>
       )}
@@ -108,4 +108,4 @@ const RailwayBallastDrawer = ({
   );
 };
 
-export default RailwayBallastDrawer;
+export default RailwayBallastMaterialDataDrawer;

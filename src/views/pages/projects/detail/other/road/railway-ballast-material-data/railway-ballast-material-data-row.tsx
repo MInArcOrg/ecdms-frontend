@@ -9,7 +9,7 @@ interface CellType {
   row: RailwayBallastMaterialData;
 }
 
-export const railwayBallastColumns = (
+export const railwayBallastMaterialDataColumns = (
   onDetail: (row: RailwayBallastMaterialData) => void,
   onEdit: (row: RailwayBallastMaterialData) => void,
   onDelete: (id: string) => void,
