@@ -1607,3 +1607,14 @@ export interface RailwayTrackSafety {
   updated_at?: string;
 
 }
+export interface RailwayBallast {
+  id: string;
+  project_id: string;
+  railway_line_section_name: string;
+  railway_ballast_name: string;
+  ballast_id_no?: string;
+  ballast_construction_cost?: number;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
