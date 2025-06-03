@@ -17,6 +17,7 @@ import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-det
 import RailwayTrackSafetyCard from './railway-track-safety-card';
 import RailwayTrackSafetyDrawer from './railway-track-safety-drawer';
 import { RailwayTrackSafety } from 'src/types/project/other';
+import { railwayTrackSafetryColumns } from './railway-track-safety-row';
 
 interface RailwayTrackSafetyListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -78,37 +79,40 @@ const RailwayTrackSafetyList: React.FC<RailwayTrackSafetyListProps> = ({ otherSu
   const mapRailwayTrackSafetyToDetailItems = (
     railwayTrackSafety: RailwayTrackSafety
   ): { title: string; value: string }[] => [
-    {
-      title: t('ID'),
-      value: railwayTrackSafety?.id || 'N/A'
-    },
-    {
-      title: t('Railway Track Safety Measures ID'),
-      value: railwayTrackSafety?.railway_track_safety_measures_id || 'N/A'
-    },
-    {
-      title: t('Track Inspection Frequency ID'),
-      value: railwayTrackSafety?.track_inspection_frequency_id || 'N/A'
-    },
-    {
-      title: t('Compliant with Safety Regulations Standards'),
-      value: railwayTrackSafety?.is_compliant_with_safety_regulations_standards !== undefined && railwayTrackSafety?.is_compliant_with_safety_regulations_standards !== null
-        ? railwayTrackSafety?.is_compliant_with_safety_regulations_standards.toString()
-        : 'N/A'
-    },
-    {
-      title: t('Remark'),
-      value: railwayTrackSafety?.remark || 'N/A'
-    },
-    {
-      title: t('Created At'),
-      value: railwayTrackSafety?.created_at ? formatCreatedAt(railwayTrackSafety.created_at) : 'N/A'
-    },
-    {
-      title: t('Updated At'),
-      value: railwayTrackSafety?.updated_at ? formatCreatedAt(railwayTrackSafety.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('common.table-columns.id'),
+        value: railwayTrackSafety?.id || 'N/A'
+      },
+      {
+        title: t('project.other.railway-track-safety.details.railway-track-safety-measures-id'),
+        value: railwayTrackSafety?.railway_track_safety_measures_id || 'N/A'
+      },
+      {
+        title: t('project.other.railway-track-safety.details.track-inspection-frequency-id'),
+        value: railwayTrackSafety?.track_inspection_frequency_id || 'N/A'
+      },
+      {
+        title: t('project.other.railway-track-safety.details.is-compliant-with-safety-regulations-standards'),
+        value:
+          railwayTrackSafety?.is_compliant_with_safety_regulations_standards !== undefined &&
+            railwayTrackSafety?.is_compliant_with_safety_regulations_standards !== null
+            ? railwayTrackSafety?.is_compliant_with_safety_regulations_standards.toString()
+            : 'N/A'
+      },
+      {
+        title: t('project.other.railway-track-safety.details.remark'),
+        value: railwayTrackSafety?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: railwayTrackSafety?.created_at ? formatCreatedAt(railwayTrackSafety.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: railwayTrackSafety?.updated_at ? formatCreatedAt(railwayTrackSafety.updated_at) : 'N/A'
+      }
+    ];
+
 
   return (
     <Box>
@@ -140,7 +144,7 @@ const RailwayTrackSafetyList: React.FC<RailwayTrackSafetyListProps> = ({ otherSu
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: railwayTrackSafetyColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
+          headers: railwayTrackSafetryColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (

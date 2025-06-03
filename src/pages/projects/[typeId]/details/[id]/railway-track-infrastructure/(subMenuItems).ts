@@ -86,7 +86,9 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: railwayTrackInfrastructureIds.trackSystems.trackSafety,
         title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.track-safety',
-        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/track-safety`
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/track-safety`,
+        apiRoute: 'railway-track-safeties',
+        model: 'railwaytracksafety'
       }
     ]
   },

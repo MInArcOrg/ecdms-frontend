@@ -1,19 +1,33 @@
-import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Divider,
+  Typography,
+} from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import type { RailwayTrackRehabilitationOrRenewal } from 'src/types/project/other';
+import type { RailwayTrackSafety } from 'src/types/project/other';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-interface RailwayTrackRehabilitationOrRenewalCardProps {
-  railwayTrackRehabilitationOrRenewal: RailwayTrackRehabilitationOrRenewal;
+interface RailwayTrackSafetyCardProps {
+  railwayTrackSafety: RailwayTrackSafety;
   refetch: () => void;
-  onEdit: (railwayTrackRehabilitationOrRenewal: RailwayTrackRehabilitationOrRenewal) => void;
+  onEdit: (railwayTrackSafety: RailwayTrackSafety) => void;
   onDelete: (id: string) => void;
-  onDetail: (railwayTrackRehabilitationOrRenewal: RailwayTrackRehabilitationOrRenewal) => void;
+  onDetail: (railwayTrackSafety: RailwayTrackSafety) => void;
 }
 
-const RailwayTrackRehabilitationOrRenewalCard: React.FC<RailwayTrackRehabilitationOrRenewalCardProps> = ({ railwayTrackRehabilitationOrRenewal, refetch, onEdit, onDelete, onDetail }) => {
+const RailwayTrackSafetyCard: React.FC<RailwayTrackSafetyCardProps> = ({
+  railwayTrackSafety,
+  refetch,
+  onEdit,
+  onDelete,
+  onDetail,
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -24,47 +38,54 @@ const RailwayTrackRehabilitationOrRenewalCard: React.FC<RailwayTrackRehabilitati
             <Typography
               noWrap
               component={Button}
-              onClick={() => onDetail(railwayTrackRehabilitationOrRenewal)}
+              onClick={() => onDetail(railwayTrackSafety)}
               sx={{
                 fontWeight: 500,
                 textDecoration: 'none',
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main' }
+                '&:hover': { color: 'primary.main' },
               }}
             >
-              {railwayTrackRehabilitationOrRenewal?.id?.toString().slice(0, 5)}...
+              {railwayTrackSafety?.id?.toString().slice(0, 5)}...
             </Typography>
           </Typography>
         </Box>
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-rehabilitation-or-renewal.track_renewal_history')}: {railwayTrackRehabilitationOrRenewal?.track_renewal_history || 'N/A'}
+            {t('project.other.railway-track-safety.details.railway-track-safety-measures-id')}:{' '}
+            {railwayTrackSafety?.railway_track_safety_measures_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-rehabilitation-or-renewal.plans_or_schedules')}: {railwayTrackRehabilitationOrRenewal?.plans_or_schedules || 'N/A'}
+            {t('project.other.railway-track-safety.details.track-inspection-frequency-id')}:{' '}
+            {railwayTrackSafety?.track_inspection_frequency_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-rehabilitation-or-renewal.rehabilitation_renewal_methods_used_id')}: {railwayTrackRehabilitationOrRenewal?.rehabilitation_renewal_methods_used_id || 'N/A'}
+            {t('project.other.railway-track-safety.details.is-compliant-with-safety-regulations-standards')}:{' '}
+            {railwayTrackSafety?.is_compliant_with_safety_regulations_standards === true
+              ? t('common.yes')
+              : railwayTrackSafety?.is_compliant_with_safety_regulations_standards === false
+                ? t('common.no')
+                : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-rehabilitation-or-renewal.rehabilitation_renewal_types')}: {railwayTrackRehabilitationOrRenewal?.rehabilitation_renewal_types || 'N/A'}
+            {t('project.other.railway-track-safety.details.remark')}:{' '}
+            {railwayTrackSafety?.remark || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-rehabilitation-or-renewal.remark')}: {railwayTrackRehabilitationOrRenewal?.remark || 'N/A'}
+            {t('common.table-columns.created-at')}:{' '}
+            {railwayTrackSafety?.created_at || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-rehabilitation-or-renewal.created_at')}: {railwayTrackRehabilitationOrRenewal?.created_at || 'N/A'}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-rehabilitation-or-renewal.updated_at')}: {railwayTrackRehabilitationOrRenewal?.updated_at || 'N/A'}
+            {t('common.table-columns.updated-at')}:{' '}
+            {railwayTrackSafety?.updated_at || 'N/A'}
           </Typography>
         </Box>
       </CardContent>
       <CardActions sx={{ justifyContent: 'flex-end' }}>
         <ModelAction
-          model="RailwayTrackRehabilitationOrRenewal"
-          model_id={railwayTrackRehabilitationOrRenewal.id}
+          model="RailwayTrackSafety"
+          model_id={railwayTrackSafety.id}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
@@ -73,19 +94,20 @@ const RailwayTrackRehabilitationOrRenewalCard: React.FC<RailwayTrackRehabilitati
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'railwaytrackrehabilitationorrenewal'
+            subject: 'railwaytracksafety',
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'railwaytrackrehabilitationorrenewal'
+            subject: 'railwaytracksafety',
           }}
-          onEdit={() => onEdit(railwayTrackRehabilitationOrRenewal)}
-          onDelete={() => onDelete(railwayTrackRehabilitationOrRenewal.id)}
-          item={railwayTrackRehabilitationOrRenewal}
+          onEdit={() => onEdit(railwayTrackSafety)}
+          onDelete={() => onDelete(railwayTrackSafety.id)}
+          item={railwayTrackSafety}
           options={[]}
         />
       </CardActions>
     </Card>
   );
 };
-export default RailwayTrackRehabilitationOrRenewalCard;
+
+export default RailwayTrackSafetyCard;

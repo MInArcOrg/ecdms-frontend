@@ -1605,9 +1605,5 @@ export interface RailwayTrackSafety {
   remark?: string; // Optional Text
   created_at?: string;
   updated_at?: string;
-  // The following attributes were in the previous model and are removed based on the provided instruction:
-  // safetyAssessment?: string;
-  // inspectionDate?: string;
-  // correctiveActions?: string;
-  // status?: string;
+
 }

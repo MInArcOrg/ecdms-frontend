@@ -20,12 +20,19 @@ interface RailwayTrackSafetyDrawerType {
 
 const RailwayTrackSafetyDrawer = (props: RailwayTrackSafetyDrawerType) => {
   const { open, toggle, refetch, railwayTrackSafety, projectId, otherSubMenu } = props;
-
   const validationSchema = yup.object().shape({
-    track_renewal_history: yup.string().required('Track renewal history is required'),
-    rehabilitation_renewal_methods_used_id: yup.string().required('Rehabilitation/renewal methods used is required'),
-    rehabilitation_renewal_types: yup.string().required('Rehabilitation/renewal types is required')
+    railway_track_safety_measures_id: yup
+      .string()
+      .required(
+        'Railway Track Safety Measures is required'
+      ),
+    track_inspection_frequency_id: yup
+      .string()
+      .required(
+        'Track Inspection Frequency is required'
+      )
   });
+
 
   const isEdit = Boolean(railwayTrackSafety?.id);
 

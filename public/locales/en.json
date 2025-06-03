@@ -2116,6 +2116,18 @@
           "inspector-remark": "Inspector Remark"
         }
       },
+      "railway-track-safety": {
+        "title": "Railway Track Safety",
+        "create": "Create Railway Track Safety",
+        "edit": "Edit Railway Track Safety",
+        "detail": "Railway Track Safety Details",
+        "details": {
+          "railway-track-safety-measures-id": "Safety Measures",
+          "track-inspection-frequency-id": "Inspection Frequency",
+          "is-compliant-with-safety-regulations-standards": "Compliant with Safety Regulations",
+          "remark": "Remark"
+        }
+      },
       "bridge-structure-information": {
         "title": "Bridge Structure Information",
         "create-bridge-structure-information": "Create Bridge Structure Information",
@@ -3619,6 +3631,7 @@
       "inactive": "InActive"
     },
     "table-columns": {
+      "id": "ID",
       "created-at": "Created At",
       "updated-at": "update At",
       "status": "Status",

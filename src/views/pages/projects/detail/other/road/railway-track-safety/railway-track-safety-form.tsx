@@ -37,16 +37,6 @@ const RailwayTrackSafetyForm: React.FC<RailwayTrackSafetyFormProps> = ({ formik 
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        {/* project_id - Assuming this is a required UUID, you might want a Select box to choose from projects or just a text field if it's manually entered */}
-        <CustomSelectBox
-          fullWidth
-          label={t('project.other.railway-track-safety.details.project-id')}
-          placeholder={t('project.other.railway-track-safety.details.project-id')}
-          name="project_id"
-          size="small"
-          sx={{ mb: 2 }}
-          options={[]} // Add options for projects here
-        />
 
         {/* railway_track_safety_measures_id - Assuming this is a required UUID, use a Select box */}
         <CustomSelectBox
@@ -56,12 +46,12 @@ const RailwayTrackSafetyForm: React.FC<RailwayTrackSafetyFormProps> = ({ formik 
           name="railway_track_safety_measures_id"
           size="small"
           sx={{ mb: 2 }}
-          options={trackSafetyMeasures?.payload?.map(item=>{
+          options={trackSafetyMeasures?.payload?.map(item => {
             return {
               label: item.title,
               value: item.id
             }
-          })} // Add options for safety measures here
+          }) || []} // Add options for safety measures here
         />
 
         {/* track_inspection_frequency_id - Assuming this is a required UUID, use a Select box */}
@@ -72,12 +62,12 @@ const RailwayTrackSafetyForm: React.FC<RailwayTrackSafetyFormProps> = ({ formik 
           name="track_inspection_frequency_id"
           size="small"
           sx={{ mb: 2 }}
-          options={trackInspectionFrequencies?.payload?.map(item=>{
+          options={trackInspectionFrequencies?.payload?.map(item => {
             return {
               label: item.title,
               value: item.id
             }
-          })} // Add options for safety measures here
+          }) || []} // Add options for safety measures here
         />
 
         {/* is_compliant_with_safety_regulations_standards - Boolean, use a Checkbox */}
@@ -87,7 +77,7 @@ const RailwayTrackSafetyForm: React.FC<RailwayTrackSafetyFormProps> = ({ formik 
           sx={{ mb: 2 }}
         />
 
-   
+
 
         <CustomTextBox
           fullWidth

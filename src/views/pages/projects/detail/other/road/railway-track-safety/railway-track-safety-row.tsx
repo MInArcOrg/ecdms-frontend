@@ -33,36 +33,46 @@ export const railwayTrackSafetryColumns = (
             '&:hover': { color: 'primary.main' }
           }}
         >
- {row?.id || 'N/A'}
+          {row?.id || 'N/A'}
         </Typography>
       )
     },
-   
     {
       flex: 0.15,
       minWidth: 120,
       field: 'railway_track_safety_measures_id',
-      headerName: t('project.other.railway-track-safety.details.safety-measures-id'),
+      headerName: t('project.other.railway-track-safety.details.railway-track-safety-measures-id'),
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.railway_track_safety_measures_id || 'N/A'}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>
+          {row?.railway_track_safety_measures_id || 'N/A'}
+        </Typography>
       )
     },
     {
       flex: 0.15,
       minWidth: 120,
       field: 'track_inspection_frequency_id',
-      headerName: t('project.other.railway-track-safety.details.inspection-frequency-id'),
+      headerName: t('project.other.railway-track-safety.details.track-inspection-frequency-id'),
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.track_inspection_frequency_id || 'N/A'}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>
+          {row?.track_inspection_frequency_id || 'N/A'}
+        </Typography>
       )
     },
     {
       flex: 0.15,
       minWidth: 120,
       field: 'is_compliant_with_safety_regulations_standards',
-      headerName: t('project.other.railway-track-safety.details.is-compliant'),
+      headerName: t('project.other.railway-track-safety.details.is-compliant-with-safety-regulations-standards'),
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.is_compliant_with_safety_regulations_standards !== null && row?.is_compliant_with_safety_regulations_standards !== undefined ? (row.is_compliant_with_safety_regulations_standards ? 'Yes' : 'No') : 'N/A'}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>
+          {row?.is_compliant_with_safety_regulations_standards !== null &&
+            row?.is_compliant_with_safety_regulations_standards !== undefined
+            ? row.is_compliant_with_safety_regulations_standards
+              ? t('common.boolean.yes')
+              : t('common.boolean.no')
+            : 'N/A'}
+        </Typography>
       )
     },
     {
@@ -74,7 +84,6 @@ export const railwayTrackSafetryColumns = (
         <Typography sx={{ color: 'text.secondary' }}>{row?.remark || 'N/A'}</Typography>
       )
     },
-
     {
       field: 'actions',
       headerName: t('common.table-columns.actions'),
@@ -93,7 +102,7 @@ export const railwayTrackSafetryColumns = (
           />
           <RowOptions
             deletePermissionRule={{ action: 'delete', subject: 'railwaytracksafety' }}
-            editPermissionRule={{ action: 'update', subject: 'railwaytrackrehabilitationorrenewal' }}
+            editPermissionRule={{ action: 'update', subject: 'railwaytracksafety' }}
             onEdit={() => onEdit(row)}
             onDelete={() => onDelete(row.id)}
             item={row}
