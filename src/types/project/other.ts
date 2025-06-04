@@ -1712,6 +1712,7 @@ export enum DrainagePerformance {
 // src/types/project/other.ts
 
 export interface RailwayBallastMaintenanceAndRenewal {
+  id: string;
   project_id: string; // UUID
   railway_line_section_name: string; // STRING
   scheduled_maintenance_activities: ScheduledMaintenanceActivities; // ENUM
@@ -1728,4 +1729,18 @@ export enum ScheduledMaintenanceActivities {
   RoutineMaintenance = 'Routine Maintenance',
   CorrectiveMaintenance = 'Corrective Maintenance',
   Other = 'Other'
+}
+// src/types/project/other.ts
+
+export interface RailwayBallastDrainageAndWaterManagement {
+  id: string;
+  project_id: string; // UUID is typically represented as a string in TypeScript
+  railway_line_section_name: string; // STRING
+  drainage_condition_assessment?: string; // STRING, Optional
+  drainage_infrastructure_type?: string; // STRING, Optional
+  water_management_measures?: string; // TEXT, Optional
+  drainage_infrastructure_length?: number; // DOUBLE, Optional
+  remark?: string; // TEXT, Optional
+  created_at?: string;
+  updated_at?: string;
 }

@@ -57,7 +57,7 @@ const RailwayBallastMaintenanceAndRenewalDrawer = ({
     projectOtherApiSecondService<RailwayBallastMaintenanceAndRenewal>().update(
       // Updated type
       otherSubMenu?.apiRoute || '',
-      railwayBallastMaintenanceAndRenewal.project_id,
+      railwayBallastMaintenanceAndRenewal.id,
       body
     );
 
