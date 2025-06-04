@@ -54,7 +54,7 @@ const RailwayBallastMaterialSpecificationDrawer = ({
   const editRailwayBallastMaterialSpecification = async (body: IApiPayload<RailwayBallastMaterialSpecification>) =>
     projectOtherApiSecondService<RailwayBallastMaterialSpecification>().update(
       otherSubMenu?.apiRoute || '',
-      railwayBallastMaterialSpecification.project_id,
+      railwayBallastMaterialSpecification.id,
       body
     );
 

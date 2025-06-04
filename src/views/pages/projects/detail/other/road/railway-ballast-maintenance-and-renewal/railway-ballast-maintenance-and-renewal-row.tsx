@@ -35,7 +35,7 @@ export const railwayBallastMaintenanceAndRenewalColumns = (
             '&:hover': { color: 'primary.main' }
           }}
         >
-          {row.project_id || 'N/A'}
+          {row.id || 'N/A'}
         </Typography>
       )
     },
@@ -100,7 +100,7 @@ export const railwayBallastMaintenanceAndRenewalColumns = (
             deletePermissionRule={{ action: 'delete', subject: 'railwayballastmaintenanceandrenewal' }} // Updated subject
             editPermissionRule={{ action: 'update', subject: 'railwayballastmaintenanceandrenewal' }} // Updated subject
             onEdit={() => onEdit(row)}
-            onDelete={() => onDelete(row.project_id)}
+            onDelete={() => onDelete(row.id)}
             item={row}
             options={[]}
           />

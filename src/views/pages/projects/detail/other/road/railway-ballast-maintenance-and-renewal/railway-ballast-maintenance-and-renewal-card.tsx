@@ -96,7 +96,7 @@ const RailwayBallastMaintenanceAndRenewalCard: React.FC<RailwayBallastMaintenanc
             subject: 'railwayballastmaintenanceandrenewal' // Updated subject
           }}
           onEdit={() => onEdit(railwayBallastMaintenanceAndRenewal)} // Updated prop name
-          onDelete={() => onDelete(project_id)}
+          onDelete={() => onDelete(railwayBallastMaintenanceAndRenewal.id)}
           item={railwayBallastMaintenanceAndRenewal} // Updated prop name
           options={[]}
         />

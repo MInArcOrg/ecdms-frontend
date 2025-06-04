@@ -24,6 +24,7 @@ const RailwayBallastConditionAssessmentCard: React.FC<RailwayBallastConditionAss
   const { t } = useTranslation();
 
   const {
+    id,
     project_id,
     railway_line_section_name,
     inspection_dates,
@@ -123,7 +124,7 @@ const RailwayBallastConditionAssessmentCard: React.FC<RailwayBallastConditionAss
             subject: 'railwayballastconditionassessment'
           }}
           onEdit={() => onEdit(railwayBallastConditionAssessment)}
-          onDelete={() => onDelete(project_id)}
+          onDelete={() => onDelete(id)}
           item={railwayBallastConditionAssessment}
           options={[]}
         />
