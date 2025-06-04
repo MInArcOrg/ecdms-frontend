@@ -154,7 +154,9 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: railwayTrackInfrastructureIds.subBallastSystems.subBallastMaterials,
         title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.sub-ballast-materials',
-        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-materials`
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-materials`,
+        apiRoute: 'railway-sub-ballast-materials',
+        model: 'railwaysubballastmaterial'
       },
       {
         id: railwayTrackInfrastructureIds.subBallastSystems.subBallastMaterialTest,

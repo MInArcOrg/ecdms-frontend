@@ -3571,6 +3571,23 @@
           "remark": "Remark"
         }
       },
+
+      "railway-sub-ballast-material": {
+        "title": "Railway Sub-Ballast Material",
+        "edit": "Edit Railway Sub-Ballast Material",
+        "create": "Create Railway Sub-Ballast Material",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "sub-ballast-material-type-id": "Sub-Ballast Material Type",
+          "layer-thickness": "Layer Thickness",
+          "layer-depth": "Layer Depth",
+          "density": "Density",
+          "moisture-content": "Moisture Content",
+          "method-used-for-compaction": "Method Used For Compaction",
+          "compaction-density": "Compaction Density",
+          "remark": "Remark"
+        }
+      },
       "railway-track-data": {
         "title": "Railway Track Data",
         "create-railway-track-data": "Create Railway Track Data",

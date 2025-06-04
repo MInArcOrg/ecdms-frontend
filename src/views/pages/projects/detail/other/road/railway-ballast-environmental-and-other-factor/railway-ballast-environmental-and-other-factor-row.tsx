@@ -20,7 +20,7 @@ export const railwayBallastEnvironmentalAndOtherFactorColumns = (
       flex: 0.15,
       minWidth: 120,
       field: 'id',
-      headerName: t('project.id'),
+      headerName: t('common.table-columns.id'),
       renderCell: ({ row }: CellType) => (
         <Typography
           noWrap
