@@ -134,12 +134,16 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: railwayTrackInfrastructureIds.ballastSystems.ballastDrainageWaterManagement,
         title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast-drainage-water-management',
-        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-drainage-water-management`
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-drainage-water-management`,
+        apiRoute: 'railway-ballast-drainage-and-water-managements',
+        model: 'railwayballastdrainageandwatermanagement'
       },
       {
         id: railwayTrackInfrastructureIds.ballastSystems.ballastEnvironmentalFactors,
         title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast-environmental-factors',
-        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-environmental-factors`
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-environmental-factors`,
+        apiRoute: 'railway-ballast-environmental-and-other-factors',
+        model: 'railwayballastenvironmentalandotherfactor'
       }
     ]
   },

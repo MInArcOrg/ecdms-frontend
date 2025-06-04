@@ -3545,6 +3545,32 @@
           "remark": "Remark"
         }
       },
+      "railway-ballast-drainage-and-water-management": {
+        "title": "Railway Ballast Drainage and Water Management",
+        "detail": "Railway Ballast Drainage and Water Management Details",
+        "edit": "Edit Railway Ballast Drainage and Water Management",
+        "create": "Create Railway Ballast Drainage and Water Management",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "drainage-condition-assessment": "Drainage Condition Assessment",
+          "drainage-infrastructure-type": "Drainage Infrastructure Type",
+          "water-management-measures": "Water Management Measures",
+          "drainage-infrastructure-length": "Drainage Infrastructure Length",
+          "remark": "Remark"
+        }
+      },
+      "railway-ballast-environmental-and-other-factor": {
+        "title": "Railway Ballast Environmental and Other Factor",
+        "detail": "Railway Ballast Environmental and Other Factor Details",
+        "edit": "Edit Railway Ballast Environmental and Other Factor",
+        "create": "Create Railway Ballast Environmental and Other Factor",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "environmental-compliance-measures": "Environmental Compliance Measures",
+          "environmental-impact-assessment": "Environmental Impact Assessment",
+          "remark": "Remark"
+        }
+      },
       "railway-track-data": {
         "title": "Railway Track Data",
         "create-railway-track-data": "Create Railway Track Data",
