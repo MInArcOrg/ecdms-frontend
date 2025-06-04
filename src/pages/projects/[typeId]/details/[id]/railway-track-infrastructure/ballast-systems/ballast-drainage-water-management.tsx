@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayTrackInfrastructureIds } from '../(subMenuItems)';
+import RailwayBallastDrainageAndWaterManagementList from 'src/views/pages/projects/detail/other/road/railway-ballast-drainage-and-water-management';
 // Placeholder import, replace with actual component when available
 
 const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), railwayTrackInfrastructureIds.ballastSystems.ballastDrainageWaterManagement);
@@ -22,7 +23,7 @@ const BallastDrainageWaterManagementPage = () => {
       activeSubMenuId={railwayTrackInfrastructureIds.ballastSystems.ballastDrainageWaterManagement}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Ballast Drainage Water Management List Placeholder</div>
+      <RailwayBallastDrainageAndWaterManagementList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>
   );
 };

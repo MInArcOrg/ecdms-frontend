@@ -1744,3 +1744,15 @@ export interface RailwayBallastDrainageAndWaterManagement {
   created_at?: string;
   updated_at?: string;
 }
+// src/types/project/other.ts
+
+export interface RailwayBallastEnvironmentalAndOtherFactor {
+  id: string; // Added id field
+  project_id: string; // UUID is typically represented as a string in TypeScript
+  railway_line_section_name: string; // STRING
+  environmental_compliance_measures?: string; // TEXT, Optional
+  environmental_impact_assessment?: string; // TEXT, Optional
+  remark?: string; // TEXT, Optional
+  created_at?: string;
+  updated_at?: string;
+}
