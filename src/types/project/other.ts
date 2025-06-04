@@ -1756,3 +1756,21 @@ export interface RailwayBallastEnvironmentalAndOtherFactor {
   created_at?: string;
   updated_at?: string;
 }
+
+// src/types/project/other.ts
+
+export interface RailwaySubBallastMaterial {
+  id: string; // Assuming 'id' will be added as a primary key like other models
+  project_id: string; // UUID
+  railway_line_section_name: string; // STRING
+  sub_ballast_material_type_id: string; // UUID (FK to sub-ballast material type)
+  layer_thickness?: number; // DOUBLE, Optional
+  layer_depth?: number; // DOUBLE, Optional
+  density?: number; // DOUBLE, Optional
+  moisture_content?: number; // DOUBLE, Optional
+  method_used_for_compaction?: string; // STRING, Optional
+  compaction_density?: number; // DOUBLE, Optional
+  remark?: string; // TEXT, Optional
+  created_at?: string;
+  updated_at?: string;
+}
