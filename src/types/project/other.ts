@@ -1774,3 +1774,18 @@ export interface RailwaySubBallastMaterial {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwaySubBallastMaterialTest {
+  id: string;
+  project_id: string; // UUID, Foreign key to the project
+  railway_line_section_name: string; // Name of the rail line section
+  sub_ballast_material_type_id: string; // UUID, FK to sub-ballast material type
+  testing_method_used?: string; // Description of the test method (e.g., compaction, gradation)
+  sampling_method?: string; // Method used to collect the sample
+  sample_size?: number; // DOUBLE, Size/volume of the sample taken
+  material_source?: string; // Location or provider of the material
+  sieve_analysis_results?: string; // Description or summary of sieve results
+  supplier?: string; // Name of the material supplier
+  remark?: string; // TEXT, Additional notes
+  created_at?: string;
+  updated_at?: string;
+}

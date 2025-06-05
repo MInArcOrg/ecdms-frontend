@@ -3588,6 +3588,21 @@
           "remark": "Remark"
         }
       },
+      "railway-sub-ballast-material-test": {
+        "edit": "Edit Railway Sub-Ballast Material Test",
+        "create": "Create Railway Sub-Ballast Material Test",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "sub-ballast-material-type-id": "Sub-Ballast Material Type",
+          "testing-method-used": "Testing Method Used",
+          "sampling-method": "Sampling Method",
+          "sample-size": "Sample Size",
+          "material-source": "Material Source",
+          "sieve-analysis-results": "Sieve Analysis Results",
+          "supplier": "Supplier",
+          "remark": "Remark"
+        }
+      },
       "railway-track-data": {
         "title": "Railway Track Data",
         "create-railway-track-data": "Create Railway Track Data",
