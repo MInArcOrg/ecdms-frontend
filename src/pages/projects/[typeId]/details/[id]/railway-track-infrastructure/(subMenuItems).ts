@@ -168,12 +168,16 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: railwayTrackInfrastructureIds.subBallastSystems.subBallastConditionAssessment,
         title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.sub-ballast-condition-assessment',
-        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-condition-assessment`
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-condition-assessment`,
+        apiRoute: 'railway-sub-ballast-condition-assessments',
+        model: 'railwaysubballastconditionassessment'
       },
       {
         id: railwayTrackInfrastructureIds.subBallastSystems.subBallastMaintenanceRenewal,
         title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.sub-ballast-maintenance-renewal',
-        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-maintenance-renewal`
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-maintenance-renewal`,
+        apiRoute: 'railway-sub-ballast-maintenance-and-renewals',
+        model: 'railwaysubballastmaintenanceandrenewal'
       },
       {
         id: railwayTrackInfrastructureIds.subBallastSystems.subBallastDrainageWaterManagement,

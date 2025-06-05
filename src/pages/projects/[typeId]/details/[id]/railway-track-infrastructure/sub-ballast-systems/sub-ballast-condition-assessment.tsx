@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayTrackInfrastructureIds } from '../(subMenuItems)';
+import RailwaySubBallastConditionAssessmentList from 'src/views/pages/projects/detail/other/road/railway-sub-ballast-material-test copy';
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems('', ''),
@@ -23,7 +24,7 @@ const SubBallastConditionAssessmentPage = () => {
       activeSubMenuId={railwayTrackInfrastructureIds.subBallastSystems.subBallastConditionAssessment}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Sub-Ballast Condition Assessment List Placeholder</div>
+      <RailwaySubBallastConditionAssessmentList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>
   );
 };

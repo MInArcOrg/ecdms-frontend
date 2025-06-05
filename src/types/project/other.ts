@@ -1564,7 +1564,7 @@ export interface RailwayTrackData {
 export interface RailwayTrackConditionAssessment {
   id: string;
   project_id: string;
-  inspection_dates?: string;
+  inspection_dates?: string | Date | EthiopianDate; // ISO date string
   track_condition_rating_id: string;
   observed_defects_id: string;
   track_settlement_irregularities?: string;
@@ -1788,4 +1788,25 @@ export interface RailwaySubBallastMaterialTest {
   remark?: string; // TEXT, Additional notes
   created_at?: string;
   updated_at?: string;
+}
+
+export interface RailwaySubBallastConditionAssessment {
+  id: string; // UUID, typically added for database entities
+  project_id: string; // UUID, References the associated project
+  railway_line_section_name: string; // STRING, Name of the railway section
+  sub_ballast_material_type_id: string; // UUID, FK to the sub-ballast material type
+  inspection_dates?: string | Date | EthiopianDate; // ISO date string
+  sub_ballast_condition_rating?: string; // STRING, Overall rating (e.g., "Good", "Poor")
+  cracking_observations?: string; // STRING, Noted surface or subsurface cracks
+  erosion_issues?: string; // STRING, Presence/type of erosion problems
+  unwanted_vegetation_presence?: string; // STRING, Noted vegetation growth in the sub-ballast
+  testing_frequency_per_year?: number; // INTEGER, Number of times testing is conducted yearly
+  sub_ballast_resistance?: string; // STRING, Structural resistance capacity
+  sub_ballast_degradation_rate?: string; // STRING, Speed of degradation over time
+  drainage_performance?: string; // STRING, Assessment of water flow or drainage effectiveness
+  remark?: string; // TEXT, Optional comments or findings
+
+  // Optional: Add common fields like 'id', 'created_at', 'updated_at' if they are part of your typical models
+  created_at?: string; // DATETIME, timestamp of creation
+  updated_at?: string; // DATETIME, timestamp of last update
 }

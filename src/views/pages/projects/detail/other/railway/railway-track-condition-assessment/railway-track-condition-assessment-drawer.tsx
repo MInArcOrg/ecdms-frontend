@@ -11,6 +11,7 @@ import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import RailwayTrackConditionAssessmentForm from './railway-track-condition-assessment-form';
+import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
 interface RailwayTrackConditionAssessmentDrawerType {
   open: boolean;
@@ -50,7 +51,7 @@ const RailwayTrackConditionAssessmentDrawer = (props: RailwayTrackConditionAsses
   const getPayload = (values: RailwayTrackConditionAssessment) => ({
     data: {
       project_id: projectId,
-      inspection_dates: values.inspection_dates,
+      inspection_dates: convertDateToLocaleDate(values.inspection_dates),
       track_condition_rating_id: values.track_condition_rating_id,
       observed_defects_id: values.observed_defects_id,
       track_settlement_irregularities: values.track_settlement_irregularities,
@@ -75,9 +76,8 @@ const RailwayTrackConditionAssessmentDrawer = (props: RailwayTrackConditionAsses
 
   return (
     <CustomSideDrawer
-      title={`project.other.railway-track-condition-assessment.${
-        isEdit ? `edit-railway-track-condition-assessment` : `create-railway-track-condition-assessment`
-      }`}
+      title={`project.other.railway-track-condition-assessment.${isEdit ? `edit-railway-track-condition-assessment` : `create-railway-track-condition-assessment`
+        }`}
       handleClose={handleClose}
       model="railwaytrackconditionassessment"
       open={open}
@@ -85,13 +85,14 @@ const RailwayTrackConditionAssessmentDrawer = (props: RailwayTrackConditionAsses
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.railway-track-condition-assessment.${
-            isEdit ? `edit-railway-track-condition-assessment` : `create-railway-track-condition-assessment`
-          }`}
+          title={`project.other.railway-track-condition-assessment.${isEdit ? `edit-railway-track-condition-assessment` : `create-railway-track-condition-assessment`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...assessment
+            ...assessment,
+            inspection_dates: formatInitialDateDate(assessment?.inspection_dates)
+
           }}
           createActionFunc={isEdit ? editAssessment : createAssessment}
           onActionSuccess={onActionSuccess}
