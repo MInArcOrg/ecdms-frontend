@@ -3588,6 +3588,25 @@
           "remark": "Remark"
         }
       },
+      "railway-sub-ballast-condition-assessment": {
+        "edit": "Edit Railway Sub-Ballast Condition Assessment",
+        "create": "Create Railway Sub-Ballast Condition Assessment",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "sub_ballast_material_type_id": "Sub-Ballast Material Type",
+          "inspection_dates": "Inspection Dates",
+          "sub_ballast_condition_rating": "Sub-Ballast Condition Rating",
+          "cracking_observations": "Cracking Observations",
+          "erosion_issues": "Erosion Issues",
+          "unwanted_vegetation_presence": "Unwanted Vegetation Presence",
+          "testing_frequency_per_year": "Testing Frequency Per Year",
+          "sub_ballast_resistance": "Sub-Ballast Resistance",
+          "sub_ballast_degradation_rate": "Sub-Ballast Degradation Rate",
+          "drainage_performance": "Drainage Performance",
+          "remark": "Remark"
+        }
+      },
       "railway-sub-ballast-material-test": {
         "edit": "Edit Railway Sub-Ballast Material Test",
         "create": "Create Railway Sub-Ballast Material Test",
