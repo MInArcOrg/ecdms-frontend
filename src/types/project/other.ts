@@ -1810,3 +1810,17 @@ export interface RailwaySubBallastConditionAssessment {
   created_at?: string; // DATETIME, timestamp of creation
   updated_at?: string; // DATETIME, timestamp of last update
 }
+export interface RailwaySubBallastMaintenanceAndRenewal {
+  id: string;
+  project_id: string; // UUID, Foreign key to project
+  railway_line_section_name: string; // String
+  scheduled_maintenance_activities?: string; // String, Enum-like (e.g., Routine)
+  sub_ballast_renewal_history?: string; // Text/String
+  recent_maintenance_dates?: string | Date | EthiopianDate; // ISO date string
+  inspection_reports_findings?: string; // Text/String
+  remark?: string; // Text/String
+
+  // Optional: Add common fields like 'id', 'created_at', 'updated_at' if they are part of your typical models
+  created_at?: string; // DATETIME, timestamp of creation
+  updated_at?: string; // DATETIME, timestamp of last update
+}
