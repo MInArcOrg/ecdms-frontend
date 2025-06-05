@@ -3607,6 +3607,21 @@
           "remark": "Remark"
         }
       },
+      "railway-sub-ballast-maintenance-and-renewal": {
+        "title": "Railway Sub-Ballast Maintenance and Renewal Records",
+        "detail": "Railway Sub-Ballast Maintenance and Renewal Details",
+        "create": "Create Railway Sub-Ballast Maintenance and Renewal Record",
+        "edit": "Edit Railway Sub-Ballast Maintenance and Renewal Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "scheduled_maintenance_activities": "Scheduled Maintenance Activities",
+          "sub_ballast_renewal_history": "Sub-Ballast Renewal History",
+          "recent_maintenance_dates": "Recent Maintenance Dates",
+          "inspection_reports_findings": "Inspection Reports Findings",
+          "remark": "Remark"
+        }
+      },
       "railway-sub-ballast-material-test": {
         "edit": "Edit Railway Sub-Ballast Material Test",
         "create": "Create Railway Sub-Ballast Material Test",
