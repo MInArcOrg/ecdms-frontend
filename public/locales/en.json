@@ -3607,6 +3607,21 @@
           "remark": "Remark"
         }
       },
+      "railway-sub-ballast-drainage-and-water-management": {
+        "title": "Railway Sub-Ballast Drainage and Water Management Records",
+        "detail": "Railway Sub-Ballast Drainage and Water Management Details",
+        "create": "Create Railway Sub-Ballast Drainage and Water Management Record",
+        "edit": "Edit Railway Sub-Ballast Drainage and Water Management Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "drainage_condition_assessment": "Drainage Condition Assessment",
+          "drainage_infrastructure_type": "Drainage Infrastructure Type",
+          "water_management_measures": "Water Management Measures",
+          "drainage_infrastructure_length": "Drainage Infrastructure Length",
+          "remark": "Remark"
+        }
+      },
       "railway-sub-ballast-maintenance-and-renewal": {
         "title": "Railway Sub-Ballast Maintenance and Renewal Records",
         "detail": "Railway Sub-Ballast Maintenance and Renewal Details",
