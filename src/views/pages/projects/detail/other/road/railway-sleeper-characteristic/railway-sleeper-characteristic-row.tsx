@@ -118,7 +118,7 @@ export const railwaySleeperCharacteristicColumns = (
         <>
           <ModelAction
             model="RailwaySleeperCharacteristic"
-            model_id={row.project_id}
+            model_id={row.id}
             refetchModel={refetch}
             resubmit={() => refetch()}
             title=""
@@ -128,7 +128,7 @@ export const railwaySleeperCharacteristicColumns = (
             deletePermissionRule={{ action: 'delete', subject: 'railwaysleepercharacteristic' }}
             editPermissionRule={{ action: 'update', subject: 'railwaysleepercharacteristic' }}
             onEdit={() => onEdit(row)}
-            onDelete={() => onDelete(row.project_id)}
+            onDelete={() => onDelete(row.id)}
             item={row}
             options={[]}
           />

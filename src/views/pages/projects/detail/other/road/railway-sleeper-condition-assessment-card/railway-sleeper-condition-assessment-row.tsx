@@ -115,7 +115,7 @@ export const railwaySleeperConditionAssessmentColumns = (
         <>
           <ModelAction
             model="RailwaySleeperConditionAssessment"
-            model_id={row.project_id}
+            model_id={row.id}
             refetchModel={refetch}
             resubmit={() => refetch()}
             title=""
@@ -125,7 +125,7 @@ export const railwaySleeperConditionAssessmentColumns = (
             deletePermissionRule={{ action: 'delete', subject: 'railwaysleeperconditionassessment' }}
             editPermissionRule={{ action: 'update', subject: 'railwaysleeperconditionassessment' }}
             onEdit={() => onEdit(row)}
-            onDelete={() => onDelete(row.project_id)}
+            onDelete={() => onDelete(row.id)}
             item={row}
             options={[]}
           />

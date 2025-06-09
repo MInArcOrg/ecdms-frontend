@@ -1868,6 +1868,7 @@ export interface RailwaySleeperCharacteristic {
 // Add this interface to src/types/project/other.ts or a relevant types file
 
 export interface RailwaySleeperConditionAssessment {
+  id: string; // Assuming 'id' is still the primary key for individual records if not project_id
   project_id: string; // UUID, Required
   railway_line_section_name: string; // String, Required
   inspection_dates?: string | Date | EthiopianDate; // ISO date string
@@ -1880,7 +1881,6 @@ export interface RailwaySleeperConditionAssessment {
   remark?: string; // Text/String, Not required
 
   // Optional: Add common fields like 'id', 'created_at', 'updated_at' if they are part of your typical models
-  id?: string; // Assuming 'id' is still the primary key for individual records if not project_id
   created_at?: string; // DATETIME, timestamp of creation
   updated_at?: string; // DATETIME, timestamp of last update
 }

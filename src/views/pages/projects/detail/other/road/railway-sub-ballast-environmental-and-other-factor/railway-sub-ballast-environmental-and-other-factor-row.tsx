@@ -75,7 +75,7 @@ export const railwaySubBallastEnvironmentalAndOtherFactorColumns = (
         <>
           <ModelAction
             model="RailwaySubBallastEnvironmentalAndOtherFactor"
-            model_id={row.project_id}
+            model_id={row.id}
             refetchModel={refetch}
             resubmit={() => refetch()}
             title=""
@@ -85,7 +85,7 @@ export const railwaySubBallastEnvironmentalAndOtherFactorColumns = (
             deletePermissionRule={{ action: 'delete', subject: 'railwaysubballastenvironmentalandotherfactor' }}
             editPermissionRule={{ action: 'update', subject: 'railwaysubballastenvironmentalandotherfactor' }}
             onEdit={() => onEdit(row)}
-            onDelete={() => onDelete(row.project_id)}
+            onDelete={() => onDelete(row.id)}
             item={row}
             options={[]}
           />
