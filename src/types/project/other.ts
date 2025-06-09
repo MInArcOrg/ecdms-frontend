@@ -1812,7 +1812,7 @@ export interface RailwaySubBallastConditionAssessment {
 }
 export interface RailwaySubBallastMaintenanceAndRenewal {
   id: string;
-  project_id: string; // UUID, Foreign key to project
+  project_id: string;
   railway_line_section_name: string; // String
   scheduled_maintenance_activities?: string; // String, Enum-like (e.g., Routine)
   sub_ballast_renewal_history?: string; // Text/String
@@ -1821,6 +1821,20 @@ export interface RailwaySubBallastMaintenanceAndRenewal {
   remark?: string; // Text/String
 
   // Optional: Add common fields like 'id', 'created_at', 'updated_at' if they are part of your typical models
+  created_at?: string; // DATETIME, timestamp of creation
+  updated_at?: string; // DATETIME, timestamp of last update
+}
+
+export interface RailwaySubBallastDrainageAndWaterManagement {
+  id: string; // UUID, typically added for database entities
+  project_id: string; // UUID, Required
+  railway_line_section_name: string;
+  drainage_condition_assessment?: string; // STRING, Not required
+  drainage_infrastructure_type?: string; // STRING, Not required
+  water_management_measures?: string; // TEXT, Not required
+  drainage_infrastructure_length?: number; // DOUBLE, Not required
+  remark?: string; // TEXT, Not required
+
   created_at?: string; // DATETIME, timestamp of creation
   updated_at?: string; // DATETIME, timestamp of last update
 }
