@@ -1899,3 +1899,17 @@ export interface RailwaySleeperMaintenanceAndReplacement {
   created_at?: string; // DATETIME, timestamp of creation
   updated_at?: string; // DATETIME, timestamp of last update
 }
+// Add this interface to src/types/project/other.ts or a relevant types file
+
+export interface RailwaySleeperFasteningSystem {
+  id: string; // Assuming 'id' is still the primary key for individual records if not project_id
+  project_id: string; // UUID, Required
+  railway_line_section_name: string; // String, Required
+  used_fastening_systems_type?: string; // String, Not required
+  fastener_condition_assessment?: string; // String, Not required
+  remark?: string; // Text/String, Not required
+
+  // Optional: Add common fields like 'id', 'created_at', 'updated_at' if they are part of your typical models
+  created_at?: string; // DATETIME, timestamp of creation
+  updated_at?: string; // DATETIME, timestamp of last update
+}
