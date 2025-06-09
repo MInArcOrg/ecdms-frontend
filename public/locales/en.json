@@ -3671,6 +3671,21 @@
           "remark": "Remark"
         }
       },
+      "railway-sleeper-maintenance-and-replacement": {
+        "title": "Railway Sleeper Maintenance and Replacement Records",
+        "detail": "Railway Sleeper Maintenance and Replacement Details",
+        "create": "Create Railway Sleeper Maintenance and Replacement Record",
+        "edit": "Edit Railway Sleeper Maintenance and Replacement Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "scheduled_maintenance_activities": "Scheduled Maintenance Activities",
+          "recent_maintenance_date": "Recent Maintenance Date",
+          "inspection_reports": "Inspection Reports",
+          "sleeper_replacement_history": "Sleeper Replacement History",
+          "remark": "Remark"
+        }
+      },
       "railway-sub-ballast-maintenance-and-renewal": {
         "title": "Railway Sub-Ballast Maintenance and Renewal Records",
         "detail": "Railway Sub-Ballast Maintenance and Renewal Details",

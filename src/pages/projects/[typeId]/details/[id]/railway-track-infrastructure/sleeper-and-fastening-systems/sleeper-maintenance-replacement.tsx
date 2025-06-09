@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayTrackInfrastructureIds } from '../(subMenuItems)';
+import RailwaySleeperMaintenanceAndReplacementList from 'src/views/pages/projects/detail/other/road/railway-sleeper-maintenance-and-replacement';
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems('', ''),
@@ -24,7 +25,8 @@ const SleeperMaintenanceReplacementPage = () => {
       activeSubMenuId={railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperMaintenanceReplacement}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Sleeper Maintenance Replacement Placeholder</div>
+      <RailwaySleeperMaintenanceAndReplacementList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
+
     </ProjectLayout>
   );
 };
