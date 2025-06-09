@@ -130,7 +130,7 @@ export const railwayBallastMaterialDataColumns = (
         <>
           <ModelAction
             model="RailwayBallastMaterialData"
-            model_id={row.project_id}
+            model_id={row.id}
             refetchModel={refetch}
             resubmit={() => refetch()}
             title=""
