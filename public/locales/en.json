@@ -3686,6 +3686,19 @@
           "remark": "Remark"
         }
       },
+      "railway-sleeper-fastening-system": {
+        "title": "Railway Sleeper Fastening System Records",
+        "detail": "Railway Sleeper Fastening System Details",
+        "create": "Create Railway Sleeper Fastening System Record",
+        "edit": "Edit Railway Sleeper Fastening System Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "used_fastening_systems_type": "Used Fastening Systems Type",
+          "fastener_condition_assessment": "Fastener Condition Assessment",
+          "remark": "Remark"
+        }
+      },
       "railway-sub-ballast-maintenance-and-renewal": {
         "title": "Railway Sub-Ballast Maintenance and Renewal Records",
         "detail": "Railway Sub-Ballast Maintenance and Renewal Details",
