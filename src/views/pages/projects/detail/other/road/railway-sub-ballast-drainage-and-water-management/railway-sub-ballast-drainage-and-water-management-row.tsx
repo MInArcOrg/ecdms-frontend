@@ -4,7 +4,6 @@ import type { GridColDef } from '@mui/x-data-grid';
 import type { RailwaySubBallastDrainageAndWaterManagement } from 'src/types/project/other'; // Updated type import
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
-import { formatCreatedAt } from 'src/utils/formatter/date';
 
 interface CellType {
   row: RailwaySubBallastDrainageAndWaterManagement; // Updated interface type

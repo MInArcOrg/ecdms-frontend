@@ -3622,6 +3622,19 @@
           "remark": "Remark"
         }
       },
+      "railway-sub-ballast-environmental-and-other-factor": {
+        "title": "Railway Sub-Ballast Environmental and Other Factor Records",
+        "detail": "Railway Sub-Ballast Environmental and Other Factor Details",
+        "create": "Create Railway Sub-Ballast Environmental and Other Factor Record",
+        "edit": "Edit Railway Sub-Ballast Environmental and Other Factor Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "environmental_compliance_measures": "Environmental Compliance Measures",
+          "environmental_impact_assessment": "Environmental Impact Assessment",
+          "remark": "Remark"
+        }
+      },
       "railway-sub-ballast-maintenance-and-renewal": {
         "title": "Railway Sub-Ballast Maintenance and Renewal Records",
         "detail": "Railway Sub-Ballast Maintenance and Renewal Details",
