@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayTrackInfrastructureIds } from '../(subMenuItems)';
+import RailwaySleeperConditionAssessmentList from 'src/views/pages/projects/detail/other/road/railway-sleeper-condition-assessment-card';
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems('', ''),
@@ -24,7 +25,7 @@ const SleeperConditionAssessmentPage = () => {
       activeSubMenuId={railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperConditionAssessment}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Sleeper Condition Assessment Placeholder</div>
+      <RailwaySleeperConditionAssessmentList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>
   );
 };

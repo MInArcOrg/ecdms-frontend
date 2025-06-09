@@ -3653,6 +3653,24 @@
           "remark": "Remark"
         }
       },
+      "railway-sleeper-condition-assessment": {
+        "title": "Railway Sleeper Condition Assessment Records",
+        "detail": "Railway Sleeper Condition Assessment Details",
+        "create": "Create Railway Sleeper Condition Assessment Record",
+        "edit": "Edit Railway Sleeper Condition Assessment Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "inspection_dates": "Inspection Dates",
+          "sleeper_condition_rating": "Sleeper Condition Rating",
+          "defect_presence": "Defect Presence",
+          "sleeper_stability_and_alignment": "Sleeper Stability and Alignment",
+          "sleepers_required_number": "Sleepers Required Number",
+          "supplier_name": "Supplier Name",
+          "supplier_phone": "Supplier Phone",
+          "remark": "Remark"
+        }
+      },
       "railway-sub-ballast-maintenance-and-renewal": {
         "title": "Railway Sub-Ballast Maintenance and Renewal Records",
         "detail": "Railway Sub-Ballast Maintenance and Renewal Details",

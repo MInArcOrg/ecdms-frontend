@@ -1865,3 +1865,22 @@ export interface RailwaySleeperCharacteristic {
   created_at?: string; // DATETIME, timestamp of creation
   updated_at?: string; // DATETIME, timestamp of last update
 }
+// Add this interface to src/types/project/other.ts or a relevant types file
+
+export interface RailwaySleeperConditionAssessment {
+  project_id: string; // UUID, Required
+  railway_line_section_name: string; // String, Required
+  inspection_dates?: string | Date | EthiopianDate; // ISO date string
+  sleeper_condition_rating?: string; // String, Not required, e.g., Excellent, Good, Poor
+  defect_presence?: string; // String, Not required, e.g., Cracks, Chips
+  sleeper_stability_and_alignment?: string; // String, Not required, Description of alignment
+  sleepers_required_number?: number; // Integer, Not required, Number of replacement sleepers
+  supplier_name?: string; // String, Not required
+  supplier_phone?: string; // String, Not required
+  remark?: string; // Text/String, Not required
+
+  // Optional: Add common fields like 'id', 'created_at', 'updated_at' if they are part of your typical models
+  id?: string; // Assuming 'id' is still the primary key for individual records if not project_id
+  created_at?: string; // DATETIME, timestamp of creation
+  updated_at?: string; // DATETIME, timestamp of last update
+}
