@@ -223,7 +223,9 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperFasteningSystems,
         title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.sleeper-fastening-systems',
-        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-fastening-systems`
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-fastening-systems`,
+        apiRoute: 'railway-sleeper-fastening-systems',
+        model: 'railwaysleeperfasteningsystem'
       },
       {
         id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperEnvironmentalFactors,
