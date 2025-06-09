@@ -24,7 +24,6 @@ const RailwaySubBallastDrainageAndWaterManagementCard: React.FC<RailwaySubBallas
 
   const {
     id,
-    project_id,
     railway_line_section_name,
     drainage_condition_assessment, // New field
     drainage_infrastructure_type, // New field

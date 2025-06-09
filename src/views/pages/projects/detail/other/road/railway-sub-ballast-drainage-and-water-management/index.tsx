@@ -14,7 +14,7 @@ import {
   RailwaySubBallastDrainageAndWaterManagement // Updated import to the new model
 } from 'src/types/project/other';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt, formatDynamicDate } from 'src/utils/formatter/date';
+import { formatCreatedAt } from 'src/utils/formatter/date';
 import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
 import ItemsListing from 'src/views/shared/listing';
 

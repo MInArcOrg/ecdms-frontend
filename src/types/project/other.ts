@@ -1838,3 +1838,13 @@ export interface RailwaySubBallastDrainageAndWaterManagement {
   created_at?: string; // DATETIME, timestamp of creation
   updated_at?: string; // DATETIME, timestamp of last update
 }
+export interface RailwaySubBallastEnvironmentalAndOtherFactor {
+  id: string; // UUID, typically added for database entities
+  project_id: string; // UUID, Required
+  railway_line_section_name: string; // STRING, Required
+  environmental_compliance_measures?: string; // TEXT, Not required
+  environmental_impact_assessment?: string; // TEXT, Not required
+  remark?: string; // TEXT, Not required
+  created_at?: string; // DATETIME, timestamp of creation
+  updated_at?: string; // DATETIME, timestamp of last update
+}
