@@ -6,11 +6,6 @@ import { gridSpacing } from 'src/configs/app-constants';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 import type { RailwaySubBallastEnvironmentalAndOtherFactor } from 'src/types/project/other';
-import { useQuery } from '@tanstack/react-query';
-import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
-import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
-import CustomSelectBox from 'src/views/shared/form/custom-select';
-import { dropDownConfig } from 'src/configs/api-constants';
 
 interface RailwaySubBallastEnvironmentalAndOtherFactorFormProps {
   formik: FormikProps<RailwaySubBallastEnvironmentalAndOtherFactor>;
