@@ -1848,3 +1848,20 @@ export interface RailwaySubBallastEnvironmentalAndOtherFactor {
   created_at?: string; // DATETIME, timestamp of creation
   updated_at?: string; // DATETIME, timestamp of last update
 }
+export interface RailwaySleeperCharacteristic {
+  id: string; // UUID, typically added for database entities
+  project_id: string; // UUID, Required
+  railway_line_section_name: string; // String, Required
+  sleeper_type?: string; // String, Not required
+  sleeper_size_and_dimensions?: number; // Double, Not required
+  sleeper_distance_between_pairs?: string; // String, Not required
+  sleeper_material_specification?: string; // String, Not required
+  sleeper_spacing?: string; // String, Not required
+  spacing_between?: number; // Double, Not required
+  sleeper_shape?: string; // String, Not required
+  remark?: string; // Text/String, Not required
+
+  // Optional: Add common fields like 'id', 'created_at', 'updated_at' if they are part of your typical models
+  created_at?: string; // DATETIME, timestamp of creation
+  updated_at?: string; // DATETIME, timestamp of last update
+}
