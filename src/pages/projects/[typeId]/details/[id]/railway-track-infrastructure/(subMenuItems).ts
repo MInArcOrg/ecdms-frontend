@@ -247,7 +247,10 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemConditionAssessment,
         title:
           'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.fastening-system-condition-assessment',
-        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-condition-assessment`
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-condition-assessment`,
+        apiRoute: 'railway-fastening-system-condition-assessments',
+        model: 'railwayfasteningsystemconditionassessment',
+        fileType: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemConditionAssessment
       },
       {
         id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemMaintenanceReplacement,

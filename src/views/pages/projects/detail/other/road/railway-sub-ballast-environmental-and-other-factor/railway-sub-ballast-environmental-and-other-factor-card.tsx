@@ -75,7 +75,7 @@ const RailwaySubBallastEnvironmentalAndOtherFactorCard: React.FC<RailwaySubBalla
       <CardActions sx={{ justifyContent: 'flex-end' }}>
         <ModelAction
           model="RailwaySubBallastEnvironmentalAndOtherFactor"
-          model_id={railwaySubBallastEnvironmentalAndOtherFactor.project_id}
+          model_id={railwaySubBallastEnvironmentalAndOtherFactor.id}
           refetchModel={refetch}
           resubmit={refetch}
           title=""
@@ -91,7 +91,7 @@ const RailwaySubBallastEnvironmentalAndOtherFactorCard: React.FC<RailwaySubBalla
             subject: 'railwaysubballastenvironmentalandotherfactor'
           }}
           onEdit={() => onEdit(railwaySubBallastEnvironmentalAndOtherFactor)}
-          onDelete={() => onDelete(railwaySubBallastEnvironmentalAndOtherFactor.project_id)}
+          onDelete={() => onDelete(railwaySubBallastEnvironmentalAndOtherFactor.id)}
           item={railwaySubBallastEnvironmentalAndOtherFactor}
           options={[]}
         />

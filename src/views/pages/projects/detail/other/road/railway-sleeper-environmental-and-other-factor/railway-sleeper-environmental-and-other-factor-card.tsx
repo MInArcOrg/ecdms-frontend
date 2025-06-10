@@ -81,7 +81,7 @@ const RailwaySleeperEnvironmentalAndOtherFactorCard: React.FC<RailwaySleeperEnvi
 
         <ModelAction
           model="RailwaySleeperEnvironmentalAndOtherFactor"
-          model_id={railwaySleeperEnvironmentalAndOtherFactor.project_id}
+          model_id={railwaySleeperEnvironmentalAndOtherFactor.id}
           refetchModel={refetch}
           resubmit={refetch}
           title=""
@@ -97,7 +97,7 @@ const RailwaySleeperEnvironmentalAndOtherFactorCard: React.FC<RailwaySleeperEnvi
             subject: 'railwaysleeperenvironmentalandotherfactor'
           }}
           onEdit={() => onEdit(railwaySleeperEnvironmentalAndOtherFactor)}
-          onDelete={() => onDelete(railwaySleeperEnvironmentalAndOtherFactor.project_id)}
+          onDelete={() => onDelete(railwaySleeperEnvironmentalAndOtherFactor.id)}
           item={railwaySleeperEnvironmentalAndOtherFactor}
           options={[]}
         />
