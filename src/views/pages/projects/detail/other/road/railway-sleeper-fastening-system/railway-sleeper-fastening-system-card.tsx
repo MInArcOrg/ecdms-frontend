@@ -75,7 +75,7 @@ const RailwaySleeperFasteningSystemCard: React.FC<RailwaySleeperFasteningSystemC
       <CardActions sx={{ justifyContent: 'flex-end' }}>
         <ModelAction
           model="RailwaySleeperFasteningSystem"
-          model_id={railwaySleeperFasteningSystem.project_id}
+          model_id={railwaySleeperFasteningSystem.id}
           refetchModel={refetch}
           resubmit={refetch}
           title=""
@@ -91,7 +91,7 @@ const RailwaySleeperFasteningSystemCard: React.FC<RailwaySleeperFasteningSystemC
             subject: 'railwaysleeperfasteningsystem'
           }}
           onEdit={() => onEdit(railwaySleeperFasteningSystem)}
-          onDelete={() => onDelete(railwaySleeperFasteningSystem.project_id)}
+          onDelete={() => onDelete(railwaySleeperFasteningSystem.id)}
           item={railwaySleeperFasteningSystem}
           options={[]}
         />

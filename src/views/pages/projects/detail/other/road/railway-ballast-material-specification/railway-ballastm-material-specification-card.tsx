@@ -82,7 +82,7 @@ const RailwayBallastMaterialSpecificationCard: React.FC<RailwayBallastMaterialSp
       <CardActions sx={{ justifyContent: 'flex-end' }}>
         <ModelAction
           model="RailwayBallastMaterialSpecification"
-          model_id={railwayBallastMaterialSpecification.project_id}
+          model_id={railwayBallastMaterialSpecification.id}
           refetchModel={refetch}
           resubmit={refetch}
           title=""
@@ -98,7 +98,7 @@ const RailwayBallastMaterialSpecificationCard: React.FC<RailwayBallastMaterialSp
             subject: 'railwayballastmaterialspecification'
           }}
           onEdit={() => onEdit(railwayBallastMaterialSpecification)}
-          onDelete={() => onDelete(railwayBallastMaterialSpecification.project_id)}
+          onDelete={() => onDelete(railwayBallastMaterialSpecification.id)}
           item={railwayBallastMaterialSpecification}
           options={[]}
         />

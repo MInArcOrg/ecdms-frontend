@@ -3730,6 +3730,25 @@
           "remark": "Remark"
         }
       },
+      "railway-fastening-system-condition-assessment": {
+        "title": "Railway Fastening System Condition Assessments",
+        "detail": "Railway Fastening System Condition Assessment Details",
+        "create": "Create Railway Fastening System Condition Assessment",
+        "edit": "Edit Railway Fastening System Condition Assessment",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "inspection_date": "Inspection Date",
+          "fastening_system_condition_rating": "Fastening System Condition Rating",
+          "defect_presence": "Defect Presence",
+          "fastening_system_stability_and_alignment": "Fastening System Stability and Alignment",
+          "rail_fastening_model_number": "Rail Fastening Model Number",
+          "rail_fastening_needed_quantity": "Rail Fastening Needed Quantity",
+          "rail_fastening_expected_lifespan": "Rail Fastening Expected Lifespan (Years)",
+          "rail_fastening_availability": "Rail Fastening Availability",
+          "remark": "Remark"
+        }
+      },
       "railway-sub-ballast-maintenance-and-renewal": {
         "title": "Railway Sub-Ballast Maintenance and Renewal Records",
         "detail": "Railway Sub-Ballast Maintenance and Renewal Details",
