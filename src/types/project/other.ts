@@ -1958,3 +1958,13 @@ export interface RailwayFasteningSystemConditionAssessment {
   updated_at?: string;
 }
 
+export interface RailwayFasteningSystemMaintenanceAndReplacement {
+  id: string;
+  project_id: string;
+  railway_line_section_name: string;
+  scheduled_maintenance_activities?: string | null;
+  recent_maintenance_records_and_dates?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
