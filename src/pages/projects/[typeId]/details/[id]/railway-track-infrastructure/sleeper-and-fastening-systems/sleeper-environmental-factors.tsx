@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayTrackInfrastructureIds } from '../(subMenuItems)';
+import RailwaySleeperEnvironmentalAndOtherFactorList from 'src/views/pages/projects/detail/other/road/railway-sleeper-environmental-and-other-factor';
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems('', ''),
@@ -24,7 +25,7 @@ const SleeperEnvironmentalFactorsPage = () => {
       activeSubMenuId={railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperEnvironmentalFactors}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Sleeper Environmental Factors Placeholder</div>
+      <RailwaySleeperEnvironmentalAndOtherFactorList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>
   );
 };
