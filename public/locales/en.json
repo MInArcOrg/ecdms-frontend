@@ -3749,6 +3749,21 @@
           "remark": "Remark"
         }
       },
+      "railway-fastening-system-maintenance-and-replacement": {
+        "title": "Railway Fastening System Maintenance and Replacements",
+        "detail": "Railway Fastening System Maintenance and Replacement Details",
+        "create": "Create Railway Fastening System Maintenance and Replacement",
+        "edit": "Edit Railway Fastening System Maintenance and Replacement",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "scheduled_maintenance_activities": "Scheduled Maintenance Activities",
+          "recent_maintenance_records_and_dates": "Recent Maintenance Records and Dates",
+          "remark": "Remark",
+          "inspection_reports_and_findings": "Inspection Reports and Findings",
+          "fastening_system_replacement_history": "Fastening System Replacement History"
+        }
+      },
       "railway-sub-ballast-maintenance-and-renewal": {
         "title": "Railway Sub-Ballast Maintenance and Renewal Records",
         "detail": "Railway Sub-Ballast Maintenance and Renewal Details",

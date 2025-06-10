@@ -256,7 +256,10 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemMaintenanceReplacement,
         title:
           'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.fastening-system-maintenance-replacement',
-        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-maintenance-replacement`
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-maintenance-replacement`,
+        apiRoute: 'railway-fastening-system-maintenance-and-replacements',
+        model: 'railwayfasteningsystemmaintenanceandreplacement',
+        fileType: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemMaintenanceReplacement
       },
       {
         id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemEnvironmentalFactors,
