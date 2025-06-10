@@ -1913,3 +1913,17 @@ export interface RailwaySleeperFasteningSystem {
   created_at?: string; // DATETIME, timestamp of creation
   updated_at?: string; // DATETIME, timestamp of last update
 }
+// Add this interface to src/types/project/other.ts or a relevant types file
+
+export interface RailwaySleeperEnvironmentalAndOtherFactor {
+  project_id: string; // UUID, Required
+  railway_line_section_name: string; // String, Required
+  environmental_compliance_measures?: string; // String/Text, Not required
+  environmental_impact_assessment?: string; // String/Text, Not required
+  remark?: string; // Text/String, Not required
+
+  // Optional: Add common fields like 'id', 'created_at', 'updated_at' if they are part of your typical models
+  id: string;
+  created_at?: string;
+  updated_at?: string;
+}

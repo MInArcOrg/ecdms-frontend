@@ -3699,6 +3699,20 @@
           "remark": "Remark"
         }
       },
+      "railway-sleeper-environmental-and-other-factor": {
+        "title": "Railway Sleeper Environmental And Other Factor Records",
+        "detail": "Railway Sleeper Environmental And Other Factor Details",
+        "create": "Create Railway Sleeper Environmental And Other Factor Record",
+        "edit": "Edit Railway Sleeper Environmental And Other Factor Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "environmental_compliance_measures": "Environmental Compliance Measures",
+          "environmental_impact_assessment": "Environmental Impact Assessment",
+          "remark": "Remark",
+          "sleeper_condition_photo": "Sleeper Condition Photo"
+        }
+      },
       "railway-sub-ballast-maintenance-and-renewal": {
         "title": "Railway Sub-Ballast Maintenance and Renewal Records",
         "detail": "Railway Sub-Ballast Maintenance and Renewal Details",
