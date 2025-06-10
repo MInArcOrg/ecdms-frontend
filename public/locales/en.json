@@ -3713,6 +3713,23 @@
           "sleeper_condition_photo": "Sleeper Condition Photo"
         }
       },
+      "railway-fastening-system-characteristic": {
+        "title": "Railway Fastening System Characteristics",
+        "detail": "Railway Fastening System Characteristic Details",
+        "create": "Create Railway Fastening System Characteristic",
+        "edit": "Edit Railway Fastening System Characteristic",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "used_fastening_system_type": "Used Fastening System Type",
+          "fastening_system_manufacturer_supplier": "Fastening System Manufacturer/Supplier",
+          "fastening_system_specifications": "Fastening System Specifications",
+          "rail_clips_or_clamps_details": "Rail Clips or Clamps Details",
+          "bolts_and_nuts_specifications": "Bolts and Nuts Specifications",
+          "other_fastening_system": "Other Fastening System",
+          "remark": "Remark"
+        }
+      },
       "railway-sub-ballast-maintenance-and-renewal": {
         "title": "Railway Sub-Ballast Maintenance and Renewal Records",
         "detail": "Railway Sub-Ballast Maintenance and Renewal Details",

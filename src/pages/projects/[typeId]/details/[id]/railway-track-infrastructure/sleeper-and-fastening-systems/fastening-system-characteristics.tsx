@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayTrackInfrastructureIds } from '../(subMenuItems)';
+import RailwaySleeperCharacteristicList from 'src/views/pages/projects/detail/other/road/railway-sleeper-characteristic';
+import RailwayFasteningSystemCharacteristicList from 'src/views/pages/projects/detail/other/road/railway-fastening-system-characteristic';
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems('', ''),
@@ -24,7 +26,7 @@ const FasteningSystemCharacteristicsPage = () => {
       activeSubMenuId={railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemCharacteristics}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Fastening System Characteristics Placeholder</div>
+      <RailwayFasteningSystemCharacteristicList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>
   );
 };
