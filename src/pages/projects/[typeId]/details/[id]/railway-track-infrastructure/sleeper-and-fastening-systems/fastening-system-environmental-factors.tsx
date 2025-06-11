@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayTrackInfrastructureIds } from '../(subMenuItems)';
+import RailwayFasteningSystemEnvironmentalFactorList from 'src/views/pages/projects/detail/other/road/railway-fastening-system-environmental-factor';
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems('', ''),
@@ -24,7 +25,7 @@ const FasteningSystemEnvironmentalFactorsPage = () => {
       activeSubMenuId={railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemEnvironmentalFactors}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Fastening System Environmental Factors Placeholder </div>
+      <RailwayFasteningSystemEnvironmentalFactorList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>
   );
 };

@@ -3764,6 +3764,20 @@
           "fastening_system_replacement_history": "Fastening System Replacement History"
         }
       },
+      "railway-fastening-system-environmental-factor": {
+        "title": "Railway Fastening System Environmental Factors",
+        "detail": "Railway Fastening System Environmental Factor Details",
+        "create": "Create Railway Fastening System Environmental Factor",
+        "edit": "Edit Railway Fastening System Environmental Factor",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "environmental_compliance_measures": "Environmental Compliance Measures",
+          "environmental_impact_assessment": "Environmental Impact Assessment",
+          "remark": "Remark",
+          "fastening_system_condition_documentation": "Fastening System Condition Documentation"
+        }
+      },
       "railway-sub-ballast-maintenance-and-renewal": {
         "title": "Railway Sub-Ballast Maintenance and Renewal Records",
         "detail": "Railway Sub-Ballast Maintenance and Renewal Details",
