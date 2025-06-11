@@ -3859,6 +3859,22 @@
           "remark": "Remark"
         }
       },
+      "railway-signaling-system": {
+        "title": "Railway Signaling Systems",
+        "detail": "Railway Signaling System Details",
+        "create": "Create Railway Signaling System",
+        "edit": "Edit Railway Signaling System",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "signaling_system_type": "Signaling System Type",
+          "signaling_system_manufacturer_or_supplier_name": "Manufacturer/Supplier Name",
+          "signaling_system_manufacturer_or_supplier_phone": "Manufacturer/Supplier Phone",
+          "signaling_system_components": "Signaling System Components",
+          "remark": "Remark",
+          "signaling_system_documentation": "Signaling System Documentation"
+        }
+      },
       "electric-grid-control-center-performance-and-maintenance": {
         "title": "Electric Grid Control Center Performance And Maintenance",
         "create-electric-grid-control-center-performance-and-maintenance": "Create Electric Grid Control Center Performance And Maintenance",
