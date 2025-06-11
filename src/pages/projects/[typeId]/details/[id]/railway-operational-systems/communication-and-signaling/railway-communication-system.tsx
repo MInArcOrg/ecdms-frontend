@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayOperationalSystemsIds } from '../(subMenuItems)';
+import RailwayCommunicationSystemList from 'src/views/pages/projects/detail/other/road/railway-communication-system';
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems('', ''),
@@ -24,7 +25,7 @@ const RailwayCommunicationSystemPage = () => {
       activeSubMenuId={railwayOperationalSystemsIds.communicationAndSignaling.railwayCommunicationSystem}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Railway Communication System Placeholder</div>
+      <RailwayCommunicationSystemList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>
   );
 };

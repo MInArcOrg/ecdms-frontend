@@ -1990,3 +1990,15 @@ export interface RailwaySignalingSystem {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayCommunicationSystem {
+  id?: string;
+  project_id: string; //
+  railway_line_section_name: string; //
+  communication_system_type?: string | null; //
+  communication_system_protocols_or_standards?: string | null; //
+  communication_system_components?: string | null; //
+  signaling_system_components?: string | null; // 
+  remark?: string | null; //
+  created_at?: string;
+  updated_at?: string;
+}
