@@ -265,7 +265,10 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemEnvironmentalFactors,
         title:
           'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.fastening-system-environmental-factors',
-        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-environmental-factors`
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-environmental-factors`,
+        apiRoute: 'railway-fastening-system-environmental-factors',
+        model: 'railwayfasteningsystem',
+        fileType: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemEnvironmentalFactors
       }
     ]
   }

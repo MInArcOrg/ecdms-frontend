@@ -1968,3 +1968,13 @@ export interface RailwayFasteningSystemMaintenanceAndReplacement {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayFasteningSystemEnvironmentalFactor {
+  id: string;
+  project_id: string;
+  railway_line_section_name: string;
+  environmental_compliance_measures?: string | null;
+  environmental_impact_assessment?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
