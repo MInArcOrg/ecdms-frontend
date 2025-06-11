@@ -3875,6 +3875,22 @@
           "signaling_system_documentation": "Signaling System Documentation"
         }
       },
+      "railway-communication-system": {
+        "title": "Railway Communication Systems",
+        "detail": "Railway Communication System Details",
+        "create": "Create Railway Communication System",
+        "edit": "Edit Railway Communication System",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "communication_system_type": "Communication System Type",
+          "communication_system_protocols_or_standards": "Protocols/Standards",
+          "communication_system_components": "Communication System Components",
+          "signaling_system_components": "Signaling System Interoperability Components",
+          "remark": "Remark",
+          "communication_system_documentation": "Communication System Documentation"
+        }
+      },
       "electric-grid-control-center-performance-and-maintenance": {
         "title": "Electric Grid Control Center Performance And Maintenance",
         "create-electric-grid-control-center-performance-and-maintenance": "Create Electric Grid Control Center Performance And Maintenance",
