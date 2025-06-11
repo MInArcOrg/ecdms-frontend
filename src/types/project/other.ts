@@ -1978,3 +1978,15 @@ export interface RailwayFasteningSystemEnvironmentalFactor {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwaySignalingSystem {
+  id: string;
+  project_id: string;
+  railway_line_section_name: string;
+  signaling_system_type?: string | null;
+  signaling_system_manufacturer_or_supplier_name?: string | null;
+  signaling_system_manufacturer_or_supplier_phone?: string | null;
+  signaling_system_components?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
