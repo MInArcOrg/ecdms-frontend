@@ -84,8 +84,8 @@ const RailwayCommunicationSystemDrawer = ({
 
 
       if (defaultFile) {
-        console.log('Uploading default file for record ID:', recordId);
-        // Use otherSubMenu?.id as the file type for the generic file
+
+
         await uploadFile(defaultFile, otherSubMenu?.fileType || '', recordId, '', '');
       }
 

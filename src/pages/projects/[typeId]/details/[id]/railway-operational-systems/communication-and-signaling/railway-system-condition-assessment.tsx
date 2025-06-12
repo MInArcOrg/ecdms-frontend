@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayOperationalSystemsIds } from '../(subMenuItems)';
+import RailwaySystemConditionAssessmentList from 'src/views/pages/projects/detail/other/road/railway-system-condition-assessment';
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems('', ''),
@@ -24,7 +25,7 @@ const RailwaySystemConditionAssessmentPage = () => {
       activeSubMenuId={railwayOperationalSystemsIds.communicationAndSignaling.railwaySystemConditionAssessment}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Railway System Condition Assessment Placeholder</div>
+      <RailwaySystemConditionAssessmentList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>
   );
 };

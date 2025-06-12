@@ -2002,3 +2002,15 @@ export interface RailwayCommunicationSystem {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwaySystemConditionAssessment {
+  id?: string;
+  project_id: string; //
+  railway_line_section_name: string; //
+  system_condition_rating_or_assessment?: string | null; //
+  defect_presence?: boolean | null; //
+  system_performance_indicators?: string | null; //
+  power_supply_systems_and_communication?: string | null; //
+  remark?: string | null; //
+  created_at?: string;
+  updated_at?: string;
+}
