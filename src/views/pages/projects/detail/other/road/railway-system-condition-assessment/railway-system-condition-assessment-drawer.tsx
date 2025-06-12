@@ -5,62 +5,62 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import RailwaySignalingSystemForm from './railway-signaling-system-form';
+import RailwaySystemConditionAssessmentForm from './railway-system-condition-assessment-form';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import type { RailwaySignalingSystem } from 'src/types/project/other';
+import type { RailwaySystemConditionAssessment } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import { useState } from 'react';
 import { uploadFile } from 'src/services/utils/file-utils';
 
-interface RailwaySignalingSystemDrawerProps {
+interface RailwaySystemConditionAssessmentDrawerProps {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  railwaySignalingSystem: RailwaySignalingSystem;
+  railwaySystemConditionAssessment: RailwaySystemConditionAssessment;
   projectId: string;
   otherSubMenu?: DetailSubMenuItemChild;
 }
 
-const RailwaySignalingSystemDrawer = ({
+const RailwaySystemConditionAssessmentDrawer = ({
   open,
   toggle,
   refetch,
-  railwaySignalingSystem,
+  railwaySystemConditionAssessment,
   projectId,
   otherSubMenu
-}: RailwaySignalingSystemDrawerProps) => {
-  const isEdit = Boolean(railwaySignalingSystem?.id);
+}: RailwaySystemConditionAssessmentDrawerProps) => {
+  const isEdit = Boolean(railwaySystemConditionAssessment?.id);
   const [defaultFile, setDefaultFile] = useState<File | null>(null);
 
   const validationSchema = yup.object().shape({
     railway_line_section_name: yup.string().required('Railway line section name is required'),
-    signaling_system_type: yup.string().nullable(),
-    signaling_system_manufacturer_or_supplier_name: yup.string().nullable(),
-    signaling_system_manufacturer_or_supplier_phone: yup.string().nullable(),
-    signaling_system_components: yup.string().nullable(),
+    system_condition_rating_or_assessment: yup.string().nullable(),
+    defect_presence: yup.boolean().nullable(),
+    system_performance_indicators: yup.string().nullable(),
+    power_supply_systems_and_communication: yup.string().nullable(),
     remark: yup.string().nullable()
   });
 
-  const createRailwaySignalingSystem = async (
-    body: IApiPayload<RailwaySignalingSystem>
+  const createRailwaySystemConditionAssessment = async (
+    body: IApiPayload<RailwaySystemConditionAssessment>
   ) =>
-    projectOtherApiSecondService<RailwaySignalingSystem>().create(
+    projectOtherApiSecondService<RailwaySystemConditionAssessment>().create(
       otherSubMenu?.apiRoute || '',
       body
     );
 
-  const editRailwaySignalingSystem = async (
-    body: IApiPayload<RailwaySignalingSystem>
+  const editRailwaySystemConditionAssessment = async (
+    body: IApiPayload<RailwaySystemConditionAssessment>
   ) =>
-    projectOtherApiSecondService<RailwaySignalingSystem>().update(
+    projectOtherApiSecondService<RailwaySystemConditionAssessment>().update(
       otherSubMenu?.apiRoute || '',
-      railwaySignalingSystem.id as string,
+      railwaySystemConditionAssessment.id as string,
       body
     );
 
   const getPayload = (
-    values: RailwaySignalingSystem
-  ): IApiPayload<RailwaySignalingSystem> => {
+    values: RailwaySystemConditionAssessment
+  ): IApiPayload<RailwaySystemConditionAssessment> => {
     return {
       data: {
         ...values,
@@ -75,19 +75,15 @@ const RailwaySignalingSystemDrawer = ({
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<RailwaySignalingSystem>) => {
+  const onActionSuccess = async (response: IApiResponse<RailwaySystemConditionAssessment>) => {
     try {
       console.log('API Response:', response);
       if (!response.payload?.id) throw new Error('Missing record ID in response');
 
       const recordId = response.payload.id;
 
-
-
       if (defaultFile) {
-
-
-        await uploadFile(defaultFile, otherSubMenu?.id || '', recordId, '');
+        await uploadFile(defaultFile, otherSubMenu?.id || "", recordId, '', '');
       }
 
       refetch();
@@ -99,29 +95,28 @@ const RailwaySignalingSystemDrawer = ({
 
   return (
     <CustomSideDrawer
-      title={`project.other.railway-signaling-system.${isEdit ? 'edit' : 'create'}`}
+      title={`project.other.railway-system-condition-assessment.${isEdit ? 'edit' : 'create'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.railway-signaling-system.${isEdit ? 'edit' : 'create'}`}
+          title={`project.other.railway-system-condition-assessment.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={railwaySignalingSystem}
+          initialValues={railwaySystemConditionAssessment}
           createActionFunc={
             isEdit
-              ? editRailwaySignalingSystem
-              : createRailwaySignalingSystem
+              ? editRailwaySystemConditionAssessment
+              : createRailwaySystemConditionAssessment
           }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<RailwaySignalingSystem>) => (
-            <RailwaySignalingSystemForm
+          {(formik: FormikProps<RailwaySystemConditionAssessment>) => (
+            <RailwaySystemConditionAssessmentForm
               formik={formik}
-
               defaultFile={defaultFile}
               onDefaultFileChange={setDefaultFile}
             />
@@ -132,4 +127,4 @@ const RailwaySignalingSystemDrawer = ({
   );
 };
 
-export default RailwaySignalingSystemDrawer;
+export default RailwaySystemConditionAssessmentDrawer;

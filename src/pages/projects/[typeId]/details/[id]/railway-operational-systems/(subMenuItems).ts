@@ -55,7 +55,10 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.communicationAndSignaling.railwaySystemConditionAssessment,
         title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-system-condition-assessment',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-system-condition-assessment`
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-system-condition-assessment`,
+        apiRoute: 'railway-system-condition-assessments',
+        model: 'railwaysystemconditionassessment',
+        fileType: railwayOperationalSystemsIds.communicationAndSignaling.id
       },
       {
         id: railwayOperationalSystemsIds.communicationAndSignaling.railwayCommSystemMaintenanceAndTesting,

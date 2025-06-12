@@ -88,7 +88,7 @@ const RailwayFasteningSystemEnvironmentalFactorDrawer = ({
       }
 
       if (defaultFile) {
-        console.log('Uploading default file for record ID:', recordId);
+
         await uploadFile(defaultFile, otherSubMenu?.fileType || "", recordId, '', '');
       }
 

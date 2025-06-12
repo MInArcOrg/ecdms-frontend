@@ -3891,6 +3891,21 @@
           "communication_system_documentation": "Communication System Documentation"
         }
       },
+      "railway-system-condition-assessment": {
+        "title": "Railway System Condition Assessments",
+        "detail": "Railway System Condition Assessment Details",
+        "create": "Create Railway System Condition Assessment",
+        "edit": "Edit Railway System Condition Assessment",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "system_condition_rating_or_assessment": "System Condition Rating/Assessment",
+          "defect_presence": "Defect Presence",
+          "system_performance_indicators": "System Performance Indicators",
+          "power_supply_systems_and_communication": "Power Supply Systems and Communication",
+          "remark": "Remark"
+        }
+      },
       "electric-grid-control-center-performance-and-maintenance": {
         "title": "Electric Grid Control Center Performance And Maintenance",
         "create-electric-grid-control-center-performance-and-maintenance": "Create Electric Grid Control Center Performance And Maintenance",
