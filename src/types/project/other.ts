@@ -2014,3 +2014,17 @@ export interface RailwaySystemConditionAssessment {
   created_at?: string;
   updated_at?: string;
 }
+
+export interface RailwayCommunicationSystemMaintenanceAndTesting {
+  id: string;
+  project_id: string; //
+  railway_line_section_name: string; //
+  scheduled_maintenance_activities?: string | null; //
+  inspections?: boolean | null; //
+  recent_maintenance_records_and_dates?: string | null; //
+  testing_and_verification_procedures_prepared?: boolean | null; //
+  maintenance_contracts_or_agreements_made?: string | null; //
+  remark?: string | null; //
+  created_at?: string;
+  updated_at?: string;
+}

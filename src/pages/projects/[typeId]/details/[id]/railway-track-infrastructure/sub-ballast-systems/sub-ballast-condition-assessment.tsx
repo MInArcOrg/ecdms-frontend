@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayTrackInfrastructureIds } from '../(subMenuItems)';
-import RailwaySubBallastConditionAssessmentList from 'src/views/pages/projects/detail/other/road/railway-sub-ballast-material-test copy';
+import RailwaySubBallastConditionAssessmentList from 'src/views/pages/projects/detail/other/road/railway-sub-ballast-condition-assessment';
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems('', ''),

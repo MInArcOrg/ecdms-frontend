@@ -3906,6 +3906,23 @@
           "remark": "Remark"
         }
       },
+      "railway-communication-system-maintenance-and-testing": {
+        "title": "Railway Communication System Maintenance and Testing",
+        "detail": "Railway Communication System Maintenance and Testing Details",
+        "create": "Create Railway Communication System Maintenance and Testing",
+        "edit": "Edit Railway Communication System Maintenance and Testing",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "scheduled_maintenance_activities": "Scheduled Maintenance Activities",
+          "inspections": "Inspections",
+          "recent_maintenance_records_and_dates": "Recent Maintenance Records and Dates",
+          "testing_and_verification_procedures_prepared": "Testing and Verification Procedures Prepared",
+          "maintenance_contracts_or_agreements_made": "Maintenance Contracts or Agreements Made",
+          "maintenance-contracts-file-upload": "Upload Maintenance Contracts File",
+          "remark": "Remark"
+        }
+      },
       "electric-grid-control-center-performance-and-maintenance": {
         "title": "Electric Grid Control Center Performance And Maintenance",
         "create-electric-grid-control-center-performance-and-maintenance": "Create Electric Grid Control Center Performance And Maintenance",
