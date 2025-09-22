@@ -1,12 +1,12 @@
-import * as yup from 'yup';
+import * as yup from "yup";
 
-import { FormikProps } from 'formik';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import SubDepartmentForm from './sub-deparmtent-form';
-import Department from 'src/types/department/department';
-import departmentApiService from 'src/services/department/department-service';
-import { IApiPayload } from 'src/types/requests';
+import { FormikProps } from "formik";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import SubDepartmentForm from "./sub-deparmtent-form";
+import Department from "src/types/department/department";
+import departmentApiService from "src/services/department/department-service";
+import { IApiPayload } from "src/types/requests";
 
 interface SubDepartmentDrawerType {
   open: boolean;
@@ -18,7 +18,7 @@ interface SubDepartmentDrawerType {
 
 const validationSchema = yup.object().shape({
   name: yup.string().required(),
-  description: yup.string().required()
+  description: yup.string().required(),
 });
 
 const SubDepartmentDrawer = (props: SubDepartmentDrawerType) => {
@@ -29,7 +29,7 @@ const SubDepartmentDrawer = (props: SubDepartmentDrawerType) => {
     return await departmentApiService.create(body);
   };
   const editSubDepartment = async (body: IApiPayload<Department>) => {
-    return await departmentApiService.update(subDepartment?.id || '', body);
+    return await departmentApiService.update(subDepartment?.id || "", body);
   };
 
   const getPayload = (values: Department) => {
@@ -37,9 +37,9 @@ const SubDepartmentDrawer = (props: SubDepartmentDrawerType) => {
       data: {
         ...values,
         parent_department_id: props.departmentId,
-        id: subDepartment?.id
+        id: subDepartment?.id,
       },
-      files: []
+      files: [],
     };
     return payload;
   };
@@ -54,7 +54,9 @@ const SubDepartmentDrawer = (props: SubDepartmentDrawerType) => {
   };
   return (
     <CustomSideDrawer
-      title={`department.sub-department.${isEdit ? 'edit-sub-department' : 'create-sub-department'}`}
+      title={`department.sub-department.${
+        isEdit ? "edit-sub-department" : "create-sub-department"
+      }`}
       handleClose={handleClose}
       open={open}
     >
@@ -70,7 +72,12 @@ const SubDepartmentDrawer = (props: SubDepartmentDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<Department>) => {
-            return <SubDepartmentForm formik={formik} defaultLocaleData={{} as Department} />;
+            return (
+              <SubDepartmentForm
+                formik={formik}
+                defaultLocaleData={{} as Department}
+              />
+            );
           }}
         </FormPageWrapper>
       )}

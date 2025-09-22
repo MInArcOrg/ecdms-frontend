@@ -1,13 +1,13 @@
-import { FormikProps } from 'formik';
-import { useState } from 'react';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import GuardRailTypeMasterForm from './guard-rail-type-master-form';
-import { GuardRailType } from 'src/types/general/general-master';
-import guardRailTypeMasterService from 'src/services/general/project/guard-rail-type-master-service';
+import { FormikProps } from "formik";
+import { useState } from "react";
+import { uploadFile } from "src/services/utils/file-utils";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import GuardRailTypeMasterForm from "./guard-rail-type-master-form";
+import { GuardRailType } from "src/types/general/general-master";
+import guardRailTypeMasterService from "src/services/general/project/guard-rail-type-master-service";
 
 interface GuardRailTypeMasterDrawerType {
   open: boolean;
@@ -17,8 +17,8 @@ interface GuardRailTypeMasterDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required('Title is required'),
-  description: yup.string().required('Description is required')
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
 });
 
 const GuardRailTypeMasterDrawer = (props: GuardRailTypeMasterDrawerType) => {
@@ -29,21 +29,23 @@ const GuardRailTypeMasterDrawer = (props: GuardRailTypeMasterDrawerType) => {
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createGuardRailTypeMaster = async (body: IApiPayload<GuardRailType>) => {
+  const createGuardRailTypeMaster = async (
+    body: IApiPayload<GuardRailType>,
+  ) => {
     return await guardRailTypeMasterService.create(body);
   };
 
   const editGuardRailTypeMaster = async (body: IApiPayload<GuardRailType>) => {
-    return await guardRailTypeMasterService.update(masterData?.id || '', body);
+    return await guardRailTypeMasterService.update(masterData?.id || "", body);
   };
 
   const getPayload = (values: GuardRailType) => {
     const payload = {
       data: {
         ...values,
-        id: masterData?.id
+        id: masterData?.id,
       },
-      files: uploadableFile ? [uploadableFile] : []
+      files: uploadableFile ? [uploadableFile] : [],
     };
     return payload;
   };
@@ -52,9 +54,18 @@ const GuardRailTypeMasterDrawer = (props: GuardRailTypeMasterDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<GuardRailType>, payload: IApiPayload<GuardRailType>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<GuardRailType>,
+    payload: IApiPayload<GuardRailType>,
+  ) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `GUARD_RAIL_TYPE`, response.payload.id, '', '');
+      uploadFile(
+        payload.files[0],
+        `GUARD_RAIL_TYPE`,
+        response.payload.id,
+        "",
+        "",
+      );
     }
     refetch();
     handleClose();
@@ -62,7 +73,9 @@ const GuardRailTypeMasterDrawer = (props: GuardRailTypeMasterDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-guard-rail-type' : 'create-guard-rail-type'}`}
+      title={`master-data.general-master.${
+        isEdit ? "edit-guard-rail-type" : "create-guard-rail-type"
+      }`}
       handleClose={handleClose}
       open={open}
     >
@@ -73,7 +86,9 @@ const GuardRailTypeMasterDrawer = (props: GuardRailTypeMasterDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editGuardRailTypeMaster : createGuardRailTypeMaster}
+          createActionFunc={
+            isEdit ? editGuardRailTypeMaster : createGuardRailTypeMaster
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

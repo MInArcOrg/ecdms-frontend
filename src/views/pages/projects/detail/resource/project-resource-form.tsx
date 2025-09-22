@@ -1,15 +1,24 @@
-import { Box, Button, MenuItem, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
-import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import CustomTextField from 'src/@core/components/mui/text-field';
-import masterCategoryApiService from 'src/services/master-data/master-category-service';
-import masterSubCategoryApiService from 'src/services/master-data/master-sub-category-service';
-import masterTypeApiService from 'src/services/master-data/master-type-service';
-import resourceApiService from 'src/services/resource/resource-service';
-import { ProjectResource } from 'src/types/project/project-resource';
-import { IApiResponse } from 'src/types/requests';
-import { Resource } from 'src/types/resource';
+import {
+  Box,
+  Button,
+  MenuItem,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import CustomTextField from "src/@core/components/mui/text-field";
+import masterCategoryApiService from "src/services/master-data/master-category-service";
+import masterSubCategoryApiService from "src/services/master-data/master-sub-category-service";
+import masterTypeApiService from "src/services/master-data/master-type-service";
+import resourceApiService from "src/services/resource/resource-service";
+import { ProjectResource } from "src/types/project/project-resource";
+import { IApiResponse } from "src/types/requests";
+import { Resource } from "src/types/resource";
 
 interface ProjectResourceFormProps {
   onSubmit: (body: Resource) => Promise<IApiResponse<ProjectResource>>;
@@ -17,45 +26,61 @@ interface ProjectResourceFormProps {
   refetch: () => void;
 }
 
-const ProjectResourceForm: React.FC<ProjectResourceFormProps> = ({ onSubmit, addedResources = [], refetch }) => {
+const ProjectResourceForm: React.FC<ProjectResourceFormProps> = ({
+  onSubmit,
+  addedResources = [],
+  refetch,
+}) => {
   const { t: transl } = useTranslation();
 
-  const [resourceTypeId, setResourceTypeId] = useState<string>('');
-  const [resourceCategoryId, setResourceCategoryId] = useState<string>('');
-  const [resourceSubCategoryId, setResourceSubCategoryId] = useState<string>('');
+  const [resourceTypeId, setResourceTypeId] = useState<string>("");
+  const [resourceCategoryId, setResourceCategoryId] = useState<string>("");
+  const [resourceSubCategoryId, setResourceSubCategoryId] =
+    useState<string>("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
 
-  const fetchOptions = (apiService: any, filter: any) => () => apiService.getAll('resource', { filter });
+  const fetchOptions = (apiService: any, filter: any) => () =>
+    apiService.getAll("resource", { filter });
 
   const { data: resourceTypes } = useQuery({
-    queryKey: ['masterType', 'resource'],
-    queryFn: fetchOptions(masterTypeApiService, {})
+    queryKey: ["masterType", "resource"],
+    queryFn: fetchOptions(masterTypeApiService, {}),
   });
 
   const { data: resourceCategories } = useQuery({
-    queryKey: ['masterCategory', 'resource'],
-    queryFn: fetchOptions(masterCategoryApiService, { resourcetype_id: resourceTypeId }),
-    enabled: !!resourceTypeId
+    queryKey: ["masterCategory", "resource"],
+    queryFn: fetchOptions(masterCategoryApiService, {
+      resourcetype_id: resourceTypeId,
+    }),
+    enabled: !!resourceTypeId,
   });
 
   const { data: resourceSubCategories } = useQuery({
-    queryKey: ['masterSubCategory', 'resource'],
-    queryFn: fetchOptions(masterSubCategoryApiService, { resourcecategory_id: resourceCategoryId }),
-    enabled: !!resourceCategoryId
+    queryKey: ["masterSubCategory", "resource"],
+    queryFn: fetchOptions(masterSubCategoryApiService, {
+      resourcecategory_id: resourceCategoryId,
+    }),
+    enabled: !!resourceCategoryId,
   });
 
-  const handleResourceTypeChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleResourceTypeChange = (
+    event: React.ChangeEvent<{ value: unknown }>,
+  ) => {
     setResourceTypeId(event.target.value as string);
-    setResourceCategoryId(''); // Reset category and subcategory when type changes
-    setResourceSubCategoryId('');
+    setResourceCategoryId(""); // Reset category and subcategory when type changes
+    setResourceSubCategoryId("");
   };
 
-  const handleResourceCategoryChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleResourceCategoryChange = (
+    event: React.ChangeEvent<{ value: unknown }>,
+  ) => {
     setResourceCategoryId(event.target.value as string);
-    setResourceSubCategoryId(''); // Reset subcategory when category changes
+    setResourceSubCategoryId(""); // Reset subcategory when category changes
   };
 
-  const handleResourceSubCategoryChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleResourceSubCategoryChange = (
+    event: React.ChangeEvent<{ value: unknown }>,
+  ) => {
     setResourceSubCategoryId(event.target.value as string);
   };
 
@@ -64,13 +89,13 @@ const ProjectResourceForm: React.FC<ProjectResourceFormProps> = ({ onSubmit, add
       const filter = {
         resourcetype_id: resourceTypeId,
         resourcecategory_id: resourceCategoryId,
-        resourcesubcategory_id: resourceSubCategoryId
+        resourcesubcategory_id: resourceSubCategoryId,
       };
 
       const response = await resourceApiService.getAll({ filter });
       setSearchResults(response.payload || []);
     } catch (error) {
-      console.error('Search failed', error);
+      console.error("Search failed", error);
     }
   };
 
@@ -87,10 +112,18 @@ const ProjectResourceForm: React.FC<ProjectResourceFormProps> = ({ onSubmit, add
     label: string,
     value: string,
     onChange: (event: React.ChangeEvent<{ value: unknown }>) => void,
-    optionsData: { payload: { id: any; title: any }[] }
+    optionsData: { payload: { id: any; title: any }[] },
   ) => (
     <Box mb={2}>
-      <CustomTextField fullWidth size="small" select name={name} label={label} value={value} onChange={onChange}>
+      <CustomTextField
+        fullWidth
+        size="small"
+        select
+        name={name}
+        label={label}
+        value={value}
+        onChange={onChange}
+      >
         {optionsData?.payload?.map((option) => (
           <MenuItem key={option.id} value={option.id}>
             {option.title}
@@ -104,14 +137,16 @@ const ProjectResourceForm: React.FC<ProjectResourceFormProps> = ({ onSubmit, add
     <Table>
       <TableHead>
         <TableRow>
-          <TableCell>{transl('resource.columns.title')}</TableCell>
-          <TableCell>{transl('resource.columns.measurement-unit')}</TableCell>
-          <TableCell>{transl('common.table-columns.actions')}</TableCell>
+          <TableCell>{transl("resource.columns.title")}</TableCell>
+          <TableCell>{transl("resource.columns.measurement-unit")}</TableCell>
+          <TableCell>{transl("common.table-columns.actions")}</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
         {searchResults.map((resource) => {
-          const isAdded = addedResources.some((added) => added.resource_id === resource.id);
+          const isAdded = addedResources.some(
+            (added) => added.resource_id === resource.id,
+          );
 
           return (
             <TableRow key={resource.id}>
@@ -119,8 +154,12 @@ const ProjectResourceForm: React.FC<ProjectResourceFormProps> = ({ onSubmit, add
               <TableCell>{resource.measurement_unit}</TableCell>
               <TableCell>
                 {!isAdded && (
-                  <Button variant="contained" color="primary" onClick={() => handleAddResource(resource)}>
-                    {transl('common.actions.add')}
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => handleAddResource(resource)}
+                  >
+                    {transl("common.actions.add")}
                   </Button>
                 )}
               </TableCell>
@@ -133,24 +172,30 @@ const ProjectResourceForm: React.FC<ProjectResourceFormProps> = ({ onSubmit, add
 
   return (
     <>
-      {renderSelectBox('resourcetype_id', transl('resource.form.type'), resourceTypeId, handleResourceTypeChange, resourceTypes)}
       {renderSelectBox(
-        'resourcecategory_id',
-        transl('resource.form.category'),
-        resourceCategoryId,
-        handleResourceCategoryChange,
-        resourceCategories
+        "resourcetype_id",
+        transl("resource.form.type"),
+        resourceTypeId,
+        handleResourceTypeChange,
+        resourceTypes,
       )}
       {renderSelectBox(
-        'resourcesubcategory_id',
-        transl('resource.form.sub-category'),
+        "resourcecategory_id",
+        transl("resource.form.category"),
+        resourceCategoryId,
+        handleResourceCategoryChange,
+        resourceCategories,
+      )}
+      {renderSelectBox(
+        "resourcesubcategory_id",
+        transl("resource.form.sub-category"),
         resourceSubCategoryId,
         handleResourceSubCategoryChange,
-        resourceSubCategories
+        resourceSubCategories,
       )}
 
       <Button variant="contained" color="primary" onClick={handleSearch}>
-        {transl('resource.form.search')}
+        {transl("resource.form.search")}
       </Button>
 
       {searchResults.length > 0 && renderTable()}

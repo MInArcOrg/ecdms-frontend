@@ -1,13 +1,15 @@
-import { AxiosResponse } from 'axios';
-import { DrainageCondition } from 'src/types/general/general-master';
-import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import { AxiosResponse } from "axios";
+import { DrainageCondition } from "src/types/general/general-master";
+import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const drainageConditionMasterService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<DrainageCondition[]>> =>
+  getAll: (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<DrainageCondition[]>> =>
     buildGetRequest(`/masterdata/drainage-conditions`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -22,7 +24,10 @@ const drainageConditionMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/drainage-conditions-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as DrainageCondition[])
+      .then(
+        (response: AxiosResponse<IApiResponse>) =>
+          response.data.payload as unknown as DrainageCondition[],
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -40,12 +45,15 @@ const drainageConditionMasterService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (id: string, body: IApiPayload<DrainageCondition>): Promise<IApiResponse> =>
+  update: (
+    id: string,
+    body: IApiPayload<DrainageCondition>,
+  ): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/drainage-conditions/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default drainageConditionMasterService;

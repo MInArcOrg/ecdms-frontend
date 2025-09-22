@@ -1,10 +1,10 @@
-import { AxiosResponse } from 'axios';
-import { AreaTopography } from 'src/types/general/general-master';
-import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import { AxiosResponse } from "axios";
+import { AreaTopography } from "src/types/general/general-master";
+import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const areaTopographyMasterService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<AreaTopography[]>> =>
@@ -22,7 +22,10 @@ const areaTopographyMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/area-topographies-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as AreaTopography[])
+      .then(
+        (response: AxiosResponse<IApiResponse>) =>
+          response.data.payload as unknown as AreaTopography[],
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -40,12 +43,15 @@ const areaTopographyMasterService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (id: string, body: IApiPayload<AreaTopography>): Promise<IApiResponse> =>
+  update: (
+    id: string,
+    body: IApiPayload<AreaTopography>,
+  ): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/area-topographies/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default areaTopographyMasterService;

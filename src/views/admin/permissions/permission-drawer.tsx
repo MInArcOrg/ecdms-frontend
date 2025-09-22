@@ -1,11 +1,11 @@
-import * as yup from 'yup';
+import * as yup from "yup";
 
-import { FormikProps } from 'formik';
-import usePermission from 'src/hooks/admin/permission-hook';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import PermissionForm from './permission-form';
-import Permission from 'src/types/admin/role/permission';
+import { FormikProps } from "formik";
+import usePermission from "src/hooks/admin/permission-hook";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import PermissionForm from "./permission-form";
+import Permission from "src/types/admin/role/permission";
 
 interface PermissionDrawerType {
   open: boolean;
@@ -16,7 +16,7 @@ interface PermissionDrawerType {
 
 const validationSchema = yup.object().shape({
   name: yup.string().required(),
-  description: yup.string().required()
+  description: yup.string().required(),
 });
 
 const PermissionDrawer = (props: PermissionDrawerType) => {
@@ -31,9 +31,9 @@ const PermissionDrawer = (props: PermissionDrawerType) => {
     const payload = {
       data: {
         ...values,
-        id: permission?.id
+        id: permission?.id,
       },
-      files: []
+      files: [],
     };
     return payload;
   };
@@ -47,7 +47,11 @@ const PermissionDrawer = (props: PermissionDrawerType) => {
     handleClose();
   };
   return (
-    <CustomSideDrawer title={isEdit ? 'edit-permission' : 'create-permission'} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={isEdit ? "edit-permission" : "create-permission"}
+      handleClose={handleClose}
+      open={open}
+    >
       {() =>
         permission && (
           <FormPageWrapper
@@ -61,7 +65,12 @@ const PermissionDrawer = (props: PermissionDrawerType) => {
             onCancel={handleClose}
           >
             {(formik: FormikProps<Permission>) => {
-              return <PermissionForm formik={formik} defaultLocaleData={{} as Permission} />;
+              return (
+                <PermissionForm
+                  formik={formik}
+                  defaultLocaleData={{} as Permission}
+                />
+              );
             }}
           </FormPageWrapper>
         )

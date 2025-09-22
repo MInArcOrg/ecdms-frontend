@@ -12,7 +12,6 @@ import { buildPutRequest } from "src/utils/requests/put-request";
 const stakeholderApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<Stakeholder[]>> =>
     buildGetRequest(`/stakeholders/stakeholders`, params)
-
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
@@ -20,7 +19,6 @@ const stakeholderApiService = {
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`/stakeholders/stakeholders/${idx}`, params)
-
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
@@ -29,8 +27,7 @@ const stakeholderApiService = {
     buildGetRequest(`/stakeholders/stakeholders-search`, params)
       .then(
         (response: AxiosResponse<IApiResponse>) =>
-          response.data.payload as unknown as Stakeholder[]
-
+          response.data.payload as unknown as Stakeholder[],
       )
       .catch((error: any) => {
         throw error;
@@ -45,18 +42,13 @@ const stakeholderApiService = {
 
   create: (body: IApiPayload<Stakeholder>): Promise<IApiResponse> =>
     buildPostRequest(`/stakeholders/stakeholders`, body, false)
-
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
-  update: (
-    id: string,
-    body: IApiPayload<Stakeholder>
-  ): Promise<IApiResponse> =>
+  update: (id: string, body: IApiPayload<Stakeholder>): Promise<IApiResponse> =>
     buildPutRequest(`/stakeholders/stakeholders/${id}`, body)
-
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;

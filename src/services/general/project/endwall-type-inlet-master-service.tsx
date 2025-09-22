@@ -1,13 +1,15 @@
-import { AxiosResponse } from 'axios';
-import { EndwallTypeInlet } from 'src/types/general/general-master';
-import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import { AxiosResponse } from "axios";
+import { EndwallTypeInlet } from "src/types/general/general-master";
+import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const endwallTypeInletMasterService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<EndwallTypeInlet[]>> =>
+  getAll: (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<EndwallTypeInlet[]>> =>
     buildGetRequest(`/masterdata/endwall-type-inlets`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -22,7 +24,10 @@ const endwallTypeInletMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/endwall-type-inlets-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as EndwallTypeInlet[])
+      .then(
+        (response: AxiosResponse<IApiResponse>) =>
+          response.data.payload as unknown as EndwallTypeInlet[],
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -40,12 +45,15 @@ const endwallTypeInletMasterService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (id: string, body: IApiPayload<EndwallTypeInlet>): Promise<IApiResponse> =>
+  update: (
+    id: string,
+    body: IApiPayload<EndwallTypeInlet>,
+  ): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/endwall-type-inlets/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default endwallTypeInletMasterService;

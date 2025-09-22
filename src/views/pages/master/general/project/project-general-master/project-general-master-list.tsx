@@ -1,27 +1,36 @@
 // components/ProjectGeneralMaster.tsx
-import { Card, CardContent } from '@mui/material';
-import React, { Fragment, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import { ProjectMasterModel } from 'src/constants/master-data/project-general-master-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
-import { ProjectGeneralMaster } from 'src/types/general/general-master';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import ProjectGeneralMasterCard from './project-general-master-card';
-import ProjectGeneralMasterDrawer from './project-general-master-drawer';
+import { Card, CardContent } from "@mui/material";
+import React, { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import { ProjectMasterModel } from "src/constants/master-data/project-general-master-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service";
+import { ProjectGeneralMaster } from "src/types/general/general-master";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import ProjectGeneralMasterCard from "./project-general-master-card";
+import ProjectGeneralMasterDrawer from "./project-general-master-drawer";
 
 interface ProjectGeneralMasterProps {
   projectMasterModel: ProjectMasterModel;
 }
 
-const ProjectGeneralMasterList: React.FC<ProjectGeneralMasterProps> = ({ projectMasterModel }) => {
-  const [selectedRow, setSelectedRow] = useState<ProjectGeneralMaster | null>(null);
+const ProjectGeneralMasterList: React.FC<ProjectGeneralMasterProps> = ({
+  projectMasterModel,
+}) => {
+  const [selectedRow, setSelectedRow] = useState<ProjectGeneralMaster | null>(
+    null,
+  );
   const { t } = useTranslation();
-  const fetchProjectGeneralMaster = (params: GetRequestParam): Promise<IApiResponse<ProjectGeneralMaster[]>> => {
-    return projectGeneralMasterDataApiService.getAll({ ...params, filter: { ...params.filter, model: projectMasterModel.model } });
+  const fetchProjectGeneralMaster = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<ProjectGeneralMaster[]>> => {
+    return projectGeneralMasterDataApiService.getAll({
+      ...params,
+      filter: { ...params.filter, model: projectMasterModel.model },
+    });
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
 
@@ -30,13 +39,15 @@ const ProjectGeneralMasterList: React.FC<ProjectGeneralMasterProps> = ({ project
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<ProjectGeneralMaster[]>({
-    queryKey: ['general-master', projectMasterModel.title],
-    fetchFunction: fetchProjectGeneralMaster
+    queryKey: ["general-master", projectMasterModel.title],
+    fetchFunction: fetchProjectGeneralMaster,
   });
   const handleDelete = async (projectGeneralMasterSubCategoryId: string) => {
-    await projectGeneralMasterDataApiService.delete(projectGeneralMasterSubCategoryId);
+    await projectGeneralMasterDataApiService.delete(
+      projectGeneralMasterSubCategoryId,
+    );
     refetch();
   };
 
@@ -82,9 +93,9 @@ const ProjectGeneralMasterList: React.FC<ProjectGeneralMasterProps> = ({ project
               onClick: toggleDrawer,
               onlyIcon: true,
               permission: {
-                action: 'create',
-                subject: projectMasterModel.dbModel
-              }
+                action: "create",
+                subject: projectMasterModel.dbModel,
+              },
             }}
             fetchDataFunction={refetch}
             items={projectGeneralMasters || []}

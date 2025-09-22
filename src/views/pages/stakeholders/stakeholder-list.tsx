@@ -23,9 +23,12 @@ function StakholdersList() {
   const router = useRouter();
   const { typeId } = router.query;
   const fetchResources = (
-    params: GetRequestParam
+    params: GetRequestParam,
   ): Promise<IApiResponse<Stakeholder[]>> => {
-    return stakeholderApiService.getAll({ ...params, filter: { ...params.filter, stakeholdertype_id: typeId } });
+    return stakeholderApiService.getAll({
+      ...params,
+      filter: { ...params.filter, stakeholdertype_id: typeId },
+    });
   };
 
   const {
@@ -95,7 +98,7 @@ function StakholdersList() {
               handleDelete,
               t,
               refetch,
-              String(typeId)
+              String(typeId),
             ),
           }}
           items={stakeholders || []}

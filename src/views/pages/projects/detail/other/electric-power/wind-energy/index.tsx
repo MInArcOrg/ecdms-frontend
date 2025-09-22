@@ -1,19 +1,19 @@
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import projectOtherApiService from 'src/services/project/project-other-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
-import WindEnergyCard from './wind-energy-card';
-import WindEnergyDrawer from './wind-energy-drawer';
-import { WindEnergy } from 'src/types/project/other';
-import { windEnergyColumns } from './wind-energy-row';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import projectOtherApiService from "src/services/project/project-other-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import { formatCreatedAt } from "src/utils/formatter/date";
+import ItemsListing from "src/views/shared/listing";
+import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-detail-drawer";
+import WindEnergyCard from "./wind-energy-card";
+import WindEnergyDrawer from "./wind-energy-drawer";
+import { WindEnergy } from "src/types/project/other";
+import { windEnergyColumns } from "./wind-energy-row";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
 
 interface WindEnergyListProps {
   model: string;
@@ -21,16 +21,22 @@ interface WindEnergyListProps {
   projectId: string;
 }
 
-const WindEnergyList: React.FC<WindEnergyListProps> = ({ model, projectId, typeId }) => {
+const WindEnergyList: React.FC<WindEnergyListProps> = ({
+  model,
+  projectId,
+  typeId,
+}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<WindEnergy | null>(null);
   const { t } = useTranslation();
 
-  const fetchGeneratingCapacities = (params: GetRequestParam): Promise<IApiResponse<WindEnergy[]>> => {
+  const fetchGeneratingCapacities = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<WindEnergy[]>> => {
     return projectOtherApiService<WindEnergy>().getAll(model, {
       ...params,
-      filter: { ...params.filter, project_id: projectId }
+      filter: { ...params.filter, project_id: projectId },
     });
   };
 
@@ -39,10 +45,10 @@ const WindEnergyList: React.FC<WindEnergyListProps> = ({ model, projectId, typeI
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<WindEnergy[]>({
-    queryKey: ['generatingCapacities'],
-    fetchFunction: fetchGeneratingCapacities
+    queryKey: ["generatingCapacities"],
+    fetchFunction: fetchGeneratingCapacities,
   });
 
   const toggleDrawer = () => {
@@ -70,12 +76,31 @@ const WindEnergyList: React.FC<WindEnergyListProps> = ({ model, projectId, typeI
     setShowDetailDrawer(true);
   };
 
-  const mapWindEnergyToDetailItems = (windEnergy: WindEnergy): { title: string; value: string }[] => [
-    { title: t('project.other.wind-energy.details.title'), value: windEnergy.title || 'N/A' },
-    { title: t('project.other.wind-energy.details.description'), value: windEnergy.description || 'N/A' },
-    { title: t('project.other.wind-energy.details.specifications'), value: windEnergy.specifications || 'N/A' },
-    { title: t('project.other.wind-energy.details.revision-no'), value: windEnergy.revision_no?.toString() || 'N/A' },
-    { title: t('common.table-columns.created-at'), value: windEnergy.created_at ? formatCreatedAt(windEnergy.created_at) : 'N/A' }
+  const mapWindEnergyToDetailItems = (
+    windEnergy: WindEnergy,
+  ): { title: string; value: string }[] => [
+    {
+      title: t("project.other.wind-energy.details.title"),
+      value: windEnergy.title || "N/A",
+    },
+    {
+      title: t("project.other.wind-energy.details.description"),
+      value: windEnergy.description || "N/A",
+    },
+    {
+      title: t("project.other.wind-energy.details.specifications"),
+      value: windEnergy.specifications || "N/A",
+    },
+    {
+      title: t("project.other.wind-energy.details.revision-no"),
+      value: windEnergy.revision_no?.toString() || "N/A",
+    },
+    {
+      title: t("common.table-columns.created-at"),
+      value: windEnergy.created_at
+        ? formatCreatedAt(windEnergy.created_at)
+        : "N/A",
+    },
   ];
 
   return (
@@ -97,31 +122,43 @@ const WindEnergyList: React.FC<WindEnergyListProps> = ({ model, projectId, typeI
           toggleDrawer={toggleDetailDrawer}
           data={mapWindEnergyToDetailItems(selectedRow!)}
           hasReference={true}
-          id={selectedRow?.id || ''}
+          id={selectedRow?.id || ""}
           fileType={uploadableProjectFileTypes.other.windEnergy}
-          title={t('project.other.wind-energy.wind-energy-details')}
+          title={t("project.other.wind-energy.wind-energy-details")}
         />
       )}
 
       <ItemsListing
-        title={t('project.other.wind-energy.title')}
+        title={t("project.other.wind-energy.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: windEnergyColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
+          headers: windEnergyColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+            refetch,
+          ),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <WindEnergyCard onDetail={handleClickDetail} windEnergy={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
+          <WindEnergyCard
+            onDetail={handleClickDetail}
+            windEnergy={data}
+            onEdit={handleEdit}
+            refetch={refetch}
+            onDelete={handleDelete}
+          />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
           onlyIcon: true,
           permission: {
-            action: 'create',
-            subject: 'generatingcapacity'
-          }
+            action: "create",
+            subject: "generatingcapacity",
+          },
         }}
         fetchDataFunction={refetch}
         items={generatingCapacities || []}

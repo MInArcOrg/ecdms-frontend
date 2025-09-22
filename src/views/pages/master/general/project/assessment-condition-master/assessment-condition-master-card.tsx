@@ -1,16 +1,16 @@
 // components/AssessmentConditionList.tsx
-import { Box, CardActions, CardContent, Grid, Typography } from '@mui/material';
-import { Fragment } from 'react';
-import { AssessmentCondition } from 'src/types/general/general-master';
-import FileDrawer from 'src/views/components/custom/files-drawer';
-import ModelActionComponent from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
+import { Box, CardActions, CardContent, Grid, Typography } from "@mui/material";
+import { Fragment } from "react";
+import { AssessmentCondition } from "src/types/general/general-master";
+import FileDrawer from "src/views/components/custom/files-drawer";
+import ModelActionComponent from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
 
 const AssessmentConditionMasterCard = ({
   generalMaster,
   onEdit,
   onDelete,
-  refetch
+  refetch,
 }: {
   type: string;
   generalMaster: AssessmentCondition;
@@ -24,7 +24,7 @@ const AssessmentConditionMasterCard = ({
       <CardContent>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: "flex" }}>
               <Box>
                 <Typography variant="h5" component="div">
                   {generalMaster.title}
@@ -36,19 +36,20 @@ const AssessmentConditionMasterCard = ({
             </Box>
           </Grid>
           <Grid item>
-            <CardActions style={{ justifyContent: 'flex-end' }}>
+            <CardActions style={{ justifyContent: "flex-end" }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id} type="ASSESSMENT_CONDITION" /> &nbsp;
+                <FileDrawer id={generalMaster.id} type="ASSESSMENT_CONDITION" />{" "}
+                &nbsp;
                 <ModelActionComponent
-                  model={'assessmentcondition'}
+                  model={"assessmentcondition"}
                   model_id={generalMaster.id}
                   refetchModel={refetch}
                   resubmit={function (): void {
-                    throw new Error('Function not implemented.');
+                    throw new Error("Function not implemented.");
                   }}
-                  title={''}
+                  title={""}
                   postAction={function (): void {
-                    throw new Error('Function not implemented.');
+                    throw new Error("Function not implemented.");
                   }}
                 />
                 <RowOptions
@@ -57,12 +58,12 @@ const AssessmentConditionMasterCard = ({
                   item={generalMaster}
                   options={[]}
                   deletePermissionRule={{
-                    action: 'delete',
-                    subject: 'assessmentcondition'
+                    action: "delete",
+                    subject: "assessmentcondition",
                   }}
                   editPermissionRule={{
-                    action: 'update',
-                    subject: 'assessmentcondition'
+                    action: "update",
+                    subject: "assessmentcondition",
                   }}
                 />
               </Fragment>

@@ -1,10 +1,10 @@
 // ** React Imports
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, useState } from "react";
 
 // ** MUI Imports
-import Menu from '@mui/material/Menu';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
+import Menu from "@mui/material/Menu";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
 
 const MenuBasic = () => {
   // ** State
@@ -20,10 +20,21 @@ const MenuBasic = () => {
 
   return (
     <div>
-      <Button variant="outlined" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+      <Button
+        variant="outlined"
+        aria-controls="simple-menu"
+        aria-haspopup="true"
+        onClick={handleClick}
+      >
         Open Menu
       </Button>
-      <Menu keepMounted id="simple-menu" anchorEl={anchorEl} onClose={handleClose} open={Boolean(anchorEl)}>
+      <Menu
+        keepMounted
+        id="simple-menu"
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        open={Boolean(anchorEl)}
+      >
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>

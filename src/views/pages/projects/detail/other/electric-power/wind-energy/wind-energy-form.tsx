@@ -1,11 +1,11 @@
-import { Grid } from '@mui/material';
-import { FormikProps } from 'formik';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { gridSpacing } from 'src/configs/app-constants';
-import { WindEnergy } from 'src/types/project/other';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
+import { Grid } from "@mui/material";
+import { FormikProps } from "formik";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { gridSpacing } from "src/configs/app-constants";
+import { WindEnergy } from "src/types/project/other";
+import CustomTextBox from "src/views/shared/form/custom-text-box";
+import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 
 interface WindEnergyFormProps {
   formik: FormikProps<WindEnergy>;
@@ -14,7 +14,11 @@ interface WindEnergyFormProps {
   projectId: string;
 }
 
-const WindEnergyForm: React.FC<WindEnergyFormProps> = ({ formik, file, onFileChange }) => {
+const WindEnergyForm: React.FC<WindEnergyFormProps> = ({
+  formik,
+  file,
+  onFileChange,
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -22,16 +26,16 @@ const WindEnergyForm: React.FC<WindEnergyFormProps> = ({ formik, file, onFileCha
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={t('project.other.wind-energy.details.title')}
-          placeholder={t('project.other.wind-energy.details.title')}
+          label={t("project.other.wind-energy.details.title")}
+          placeholder={t("project.other.wind-energy.details.title")}
           name="title"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.wind-energy.details.description')}
-          placeholder={t('project.other.wind-energy.details.description')}
+          label={t("project.other.wind-energy.details.description")}
+          placeholder={t("project.other.wind-energy.details.description")}
           name="description"
           size="small"
           sx={{ mb: 2 }}
@@ -40,8 +44,8 @@ const WindEnergyForm: React.FC<WindEnergyFormProps> = ({ formik, file, onFileCha
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.wind-energy.details.specifications')}
-          placeholder={t('project.other.wind-energy.details.specifications')}
+          label={t("project.other.wind-energy.details.specifications")}
+          placeholder={t("project.other.wind-energy.details.specifications")}
           name="specifications"
           size="small"
           sx={{ mb: 2 }}
@@ -51,7 +55,11 @@ const WindEnergyForm: React.FC<WindEnergyFormProps> = ({ formik, file, onFileCha
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />
+        <CustomFileUpload
+          label={t("common.form.file-upload")}
+          file={file}
+          onFileChange={onFileChange}
+        />
       </Grid>
     </Grid>
   );

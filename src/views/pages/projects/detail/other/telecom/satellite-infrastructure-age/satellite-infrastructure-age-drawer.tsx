@@ -1,18 +1,21 @@
-'use client';
+"use client";
 
-import type { FormikProps } from 'formik';
-import type { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import SatelliteInfrastructureAgeForm from './satellite-infrastructure-age-form';
+import type { FormikProps } from "formik";
+import type { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import SatelliteInfrastructureAgeForm from "./satellite-infrastructure-age-form";
 
-import { useState } from 'react';
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { uploadFile } from 'src/services/utils/file-utils';
-import type { SatelliteInfrastructureAge, SatelliteNetwork } from 'src/types/project/other';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import { useState } from "react";
+import projectOtherApiSecondService from "src/services/project/project-other-second-service";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { uploadFile } from "src/services/utils/file-utils";
+import type {
+  SatelliteInfrastructureAge,
+  SatelliteNetwork,
+} from "src/types/project/other";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
 
 interface SatelliteInfrastructureAgeDrawerType {
   open: boolean;
@@ -24,8 +27,18 @@ interface SatelliteInfrastructureAgeDrawerType {
   satelliteNetworks: SatelliteNetwork[];
 }
 
-const SatelliteInfrastructureAgeDrawer = (props: SatelliteInfrastructureAgeDrawerType) => {
-  const { open, toggle, refetch, satelliteInfrastructureAge, projectId, otherSubMenu, satelliteNetworks } = props;
+const SatelliteInfrastructureAgeDrawer = (
+  props: SatelliteInfrastructureAgeDrawerType,
+) => {
+  const {
+    open,
+    toggle,
+    refetch,
+    satelliteInfrastructureAge,
+    projectId,
+    otherSubMenu,
+    satelliteNetworks,
+  } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const onFileChange = (file: File | null) => {
@@ -33,7 +46,9 @@ const SatelliteInfrastructureAgeDrawer = (props: SatelliteInfrastructureAgeDrawe
   };
 
   const validationSchema = yup.object().shape({
-    satellite_network_id: yup.string().required('Satellite network is required'),
+    satellite_network_id: yup
+      .string()
+      .required("Satellite network is required"),
     satellite: yup
       .number()
       .nullable()
@@ -50,19 +65,26 @@ const SatelliteInfrastructureAgeDrawer = (props: SatelliteInfrastructureAgeDrawe
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value)),
-    others: yup.string().nullable()
+    others: yup.string().nullable(),
   });
 
   const isEdit = Boolean(satelliteInfrastructureAge?.id);
 
-  const createSatelliteInfrastructureAge = async (body: IApiPayload<SatelliteInfrastructureAge>) =>
-    projectOtherApiSecondService<SatelliteInfrastructureAge>().create(otherSubMenu?.apiRoute || '', body);
+  const createSatelliteInfrastructureAge = async (
+    body: IApiPayload<SatelliteInfrastructureAge>,
+  ) =>
+    projectOtherApiSecondService<SatelliteInfrastructureAge>().create(
+      otherSubMenu?.apiRoute || "",
+      body,
+    );
 
-  const editSatelliteInfrastructureAge = async (body: IApiPayload<SatelliteInfrastructureAge>) =>
+  const editSatelliteInfrastructureAge = async (
+    body: IApiPayload<SatelliteInfrastructureAge>,
+  ) =>
     projectOtherApiSecondService<SatelliteInfrastructureAge>().update(
-      otherSubMenu?.apiRoute || '',
-      satelliteInfrastructureAge?.id || '',
-      body
+      otherSubMenu?.apiRoute || "",
+      satelliteInfrastructureAge?.id || "",
+      body,
     );
 
   const getPayload = (values: SatelliteInfrastructureAge) => ({
@@ -74,16 +96,25 @@ const SatelliteInfrastructureAgeDrawer = (props: SatelliteInfrastructureAgeDrawe
       modems: values.modems,
       routers: values.routers,
       others: values.others,
-      id: satelliteInfrastructureAge?.id
+      id: satelliteInfrastructureAge?.id,
     },
-    files: uploadableFile ? [uploadableFile] : []
+    files: uploadableFile ? [uploadableFile] : [],
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<SatelliteInfrastructureAge>, payload: IApiPayload<SatelliteInfrastructureAge>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<SatelliteInfrastructureAge>,
+    payload: IApiPayload<SatelliteInfrastructureAge>,
+  ) => {
     if (payload.files.length > 0) {
-      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.satelliteInfrastructureAge, response.payload.id, '', '');
+      await uploadFile(
+        payload.files[0],
+        uploadableProjectFileTypes.other.satelliteInfrastructureAge,
+        response.payload.id,
+        "",
+        "",
+      );
     }
 
     refetch();
@@ -93,7 +124,9 @@ const SatelliteInfrastructureAgeDrawer = (props: SatelliteInfrastructureAgeDrawe
   return (
     <CustomSideDrawer
       title={`project.other.satellite-infrastructure-age.${
-        isEdit ? `edit-satellite-infrastructure-age` : `create-satellite-infrastructure-age`
+        isEdit
+          ? `edit-satellite-infrastructure-age`
+          : `create-satellite-infrastructure-age`
       }`}
       handleClose={handleClose}
       open={open}
@@ -102,14 +135,20 @@ const SatelliteInfrastructureAgeDrawer = (props: SatelliteInfrastructureAgeDrawe
         <FormPageWrapper
           edit={isEdit}
           title={`project.other.satellite-infrastructure-age.${
-            isEdit ? `edit-satellite-infrastructure-age` : `create-satellite-infrastructure-age`
+            isEdit
+              ? `edit-satellite-infrastructure-age`
+              : `create-satellite-infrastructure-age`
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...satelliteInfrastructureAge
+            ...satelliteInfrastructureAge,
           }}
-          createActionFunc={isEdit ? editSatelliteInfrastructureAge : createSatelliteInfrastructureAge}
+          createActionFunc={
+            isEdit
+              ? editSatelliteInfrastructureAge
+              : createSatelliteInfrastructureAge
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

@@ -1,13 +1,15 @@
-import { AxiosResponse } from 'axios';
-import { AssessmentCondition } from 'src/types/general/general-master';
-import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import { AxiosResponse } from "axios";
+import { AssessmentCondition } from "src/types/general/general-master";
+import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const assessmentConditionMasterService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<AssessmentCondition[]>> =>
+  getAll: (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<AssessmentCondition[]>> =>
     buildGetRequest(`/masterdata/assessment-conditions`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -22,7 +24,10 @@ const assessmentConditionMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/assessment-conditions-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as AssessmentCondition[])
+      .then(
+        (response: AxiosResponse<IApiResponse>) =>
+          response.data.payload as unknown as AssessmentCondition[],
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -40,12 +45,15 @@ const assessmentConditionMasterService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (id: string, body: IApiPayload<AssessmentCondition>): Promise<IApiResponse> =>
+  update: (
+    id: string,
+    body: IApiPayload<AssessmentCondition>,
+  ): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/assessment-conditions/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default assessmentConditionMasterService;

@@ -1,9 +1,9 @@
-import { FormikProps } from 'formik';
-import { useTranslation } from 'react-i18next';
-import Permission from 'src/types/admin/role/permission';
-import CustomSelect from 'src/views/shared/form/custom-select';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import { appModulesNames } from '../../../configs/app-constants';
+import { FormikProps } from "formik";
+import { useTranslation } from "react-i18next";
+import Permission from "src/types/admin/role/permission";
+import CustomSelect from "src/views/shared/form/custom-select";
+import CustomTextBox from "src/views/shared/form/custom-text-box";
+import { appModulesNames } from "../../../configs/app-constants";
 
 interface PermissionFormProps {
   formik: FormikProps<Permission>;
@@ -11,26 +11,43 @@ interface PermissionFormProps {
   defaultLocaleData?: Permission;
 }
 
-const PermissionForm: React.FC<PermissionFormProps> = ({ formik, defaultLocaleData }) => {
+const PermissionForm: React.FC<PermissionFormProps> = ({
+  formik,
+  defaultLocaleData,
+}) => {
   const { t: transl } = useTranslation();
   return (
     <>
-      <CustomTextBox fullWidth label={transl('name')} placeholder={transl('name')} name="name" size="small" sx={{ mb: 2 }} />
-      <CustomTextBox fullWidth label={transl('model')} placeholder={transl('model')} name="model" size="small" sx={{ mb: 2 }} />
+      <CustomTextBox
+        fullWidth
+        label={transl("name")}
+        placeholder={transl("name")}
+        name="name"
+        size="small"
+        sx={{ mb: 2 }}
+      />
+      <CustomTextBox
+        fullWidth
+        label={transl("model")}
+        placeholder={transl("model")}
+        name="model"
+        size="small"
+        sx={{ mb: 2 }}
+      />
       <CustomSelect
         size="small"
         name="module"
-        label={transl('module')}
+        label={transl("module")}
         options={appModulesNames.map((type) => ({
           value: type,
-          label: type.toUpperCase()
+          label: type.toUpperCase(),
         }))}
         sx={{ mb: 2 }}
       />
       <CustomTextBox
         fullWidth
-        label={transl('description')}
-        placeholder={transl('description')}
+        label={transl("description")}
+        placeholder={transl("description")}
         name="description"
         multiline
         rows={3}

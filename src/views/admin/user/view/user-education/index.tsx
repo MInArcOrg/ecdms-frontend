@@ -1,16 +1,16 @@
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import userEducationApiService from 'src/services/admin/user-education-service';
-import { UserEducation } from 'src/types/admin/user';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import EducationCard from './user-education-card';
-import EducationDrawer from './user-education-drawer';
-import { educationColumns } from './user-education-row';
+import { Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import userEducationApiService from "src/services/admin/user-education-service";
+import { UserEducation } from "src/types/admin/user";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import type { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import EducationCard from "./user-education-card";
+import EducationDrawer from "./user-education-drawer";
+import { educationColumns } from "./user-education-row";
 
 interface UserEducationListProps {
   userId: string;
@@ -23,10 +23,12 @@ const UserEducationList: React.FC<UserEducationListProps> = ({ userId }) => {
 
   const { t } = useTranslation();
 
-  const fetchEducation = (params: GetRequestParam): Promise<IApiResponse<UserEducation[]>> => {
+  const fetchEducation = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<UserEducation[]>> => {
     return userEducationApiService.getAll({
       ...params,
-      filter: { ...params.filter, user_id: userId }
+      filter: { ...params.filter, user_id: userId },
     });
   };
 
@@ -35,10 +37,10 @@ const UserEducationList: React.FC<UserEducationListProps> = ({ userId }) => {
     pagination,
     handlePageChange,
     refetch,
-    isLoading
+    isLoading,
   } = usePaginatedFetch<UserEducation[]>({
-    queryKey: ['educations'],
-    fetchFunction: fetchEducation
+    queryKey: ["educations"],
+    fetchFunction: fetchEducation,
   });
 
   const toggleDrawer = () => {
@@ -79,24 +81,30 @@ const UserEducationList: React.FC<UserEducationListProps> = ({ userId }) => {
       )}
 
       <ItemsListing
-        title={t('department.user.education.title')}
+        title={t("department.user.education.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.list.value}
         tableProps={{
-          headers: educationColumns(handleEdit, handleDelete, t)
+          headers: educationColumns(handleEdit, handleDelete, t),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <EducationCard onDetail={handleClickDetail} education={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
+          <EducationCard
+            onDetail={handleClickDetail}
+            education={data}
+            onEdit={handleEdit}
+            refetch={refetch}
+            onDelete={handleDelete}
+          />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: 'create',
-            subject: 'usereducation'
-          }
+            action: "create",
+            subject: "usereducation",
+          },
         }}
         fetchDataFunction={refetch}
         items={educations || []}

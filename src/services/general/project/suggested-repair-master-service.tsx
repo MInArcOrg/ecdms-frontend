@@ -1,10 +1,10 @@
-import { AxiosResponse } from 'axios';
-import { SuggestedRepair } from 'src/types/general/general-master';
-import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import { AxiosResponse } from "axios";
+import { SuggestedRepair } from "src/types/general/general-master";
+import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const suggestedRepairMasterService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<SuggestedRepair[]>> =>
@@ -22,7 +22,10 @@ const suggestedRepairMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/suggested-repairs-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as SuggestedRepair[])
+      .then(
+        (response: AxiosResponse<IApiResponse>) =>
+          response.data.payload as unknown as SuggestedRepair[],
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -40,12 +43,15 @@ const suggestedRepairMasterService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (id: string, body: IApiPayload<SuggestedRepair>): Promise<IApiResponse> =>
+  update: (
+    id: string,
+    body: IApiPayload<SuggestedRepair>,
+  ): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/suggested-repairs/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default suggestedRepairMasterService;

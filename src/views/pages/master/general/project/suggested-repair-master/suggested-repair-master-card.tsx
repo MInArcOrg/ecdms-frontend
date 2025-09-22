@@ -1,16 +1,16 @@
 // components/SuggestedRepairList.tsx
-import { Box, CardActions, CardContent, Grid, Typography } from '@mui/material';
-import { Fragment } from 'react';
-import { SuggestedRepair } from 'src/types/general/general-master';
-import FileDrawer from 'src/views/components/custom/files-drawer';
-import ModelActionComponent from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
+import { Box, CardActions, CardContent, Grid, Typography } from "@mui/material";
+import { Fragment } from "react";
+import { SuggestedRepair } from "src/types/general/general-master";
+import FileDrawer from "src/views/components/custom/files-drawer";
+import ModelActionComponent from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
 
 const SuggestedRepairMasterCard = ({
   generalMaster,
   onEdit,
   onDelete,
-  refetch
+  refetch,
 }: {
   generalMaster: SuggestedRepair;
   onEdit: (category: SuggestedRepair) => void;
@@ -23,7 +23,7 @@ const SuggestedRepairMasterCard = ({
       <CardContent>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: "flex" }}>
               <Box>
                 <Typography variant="h5" component="div">
                   {generalMaster.title}
@@ -35,19 +35,20 @@ const SuggestedRepairMasterCard = ({
             </Box>
           </Grid>
           <Grid item>
-            <CardActions style={{ justifyContent: 'flex-end' }}>
+            <CardActions style={{ justifyContent: "flex-end" }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id} type="SUGGESTED_REPAIR" /> &nbsp;
+                <FileDrawer id={generalMaster.id} type="SUGGESTED_REPAIR" />{" "}
+                &nbsp;
                 <ModelActionComponent
-                  model={'suggestedrepair'}
+                  model={"suggestedrepair"}
                   model_id={generalMaster.id}
                   refetchModel={refetch}
                   resubmit={function (): void {
-                    throw new Error('Function not implemented.');
+                    throw new Error("Function not implemented.");
                   }}
-                  title={''}
+                  title={""}
                   postAction={function (): void {
-                    throw new Error('Function not implemented.');
+                    throw new Error("Function not implemented.");
                   }}
                 />
                 <RowOptions
@@ -56,12 +57,12 @@ const SuggestedRepairMasterCard = ({
                   item={generalMaster}
                   options={[]}
                   deletePermissionRule={{
-                    action: 'delete',
-                    subject: 'suggestedrepair'
+                    action: "delete",
+                    subject: "suggestedrepair",
                   }}
                   editPermissionRule={{
-                    action: 'update',
-                    subject: 'suggestedrepair'
+                    action: "update",
+                    subject: "suggestedrepair",
                   }}
                 />
               </Fragment>

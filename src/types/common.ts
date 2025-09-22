@@ -1,12 +1,12 @@
 // Type Imports
-import { ThemeColor } from 'src/@core/layouts/types';
+import { ThemeColor } from "src/@core/layouts/types";
 import {
   CardStatsSquareProps,
   CardStatsVerticalProps,
   CardStatsHorizontalProps,
   CardStatsWithAreaChartProps,
-  CardStatsHorizontalWithDetailsProps
-} from 'src/@core/components/card-statistics/types';
+  CardStatsHorizontalWithDetailsProps,
+} from "src/@core/components/card-statistics/types";
 
 // Template Search
 //----------------
@@ -143,7 +143,11 @@ export type ProfileTabType = {
   teamsTech: ProfileTeamsTechType[];
   connections: ProfileConnectionsType[];
 };
-export type UserProfileActiveTab = ProfileTabType | TeamsTabType[] | ProjectsTabType[] | ConnectionsTabType[];
+export type UserProfileActiveTab =
+  | ProfileTabType
+  | TeamsTabType[]
+  | ProjectsTabType[]
+  | ConnectionsTabType[];
 
 // Data Grid page
 //---------------

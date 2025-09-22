@@ -10,7 +10,9 @@ import { buildPostRequest } from "src/utils/requests/post-request";
 import { buildPutRequest } from "src/utils/requests/put-request";
 
 const stakeholderContactPersonApiService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<StakeholderContactPerson[]>> =>
+  getAll: (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<StakeholderContactPerson[]>> =>
     buildGetRequest(`/stakeholders/stakeholder-contact-people`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -32,7 +34,9 @@ const stakeholderContactPersonApiService = {
         throw error;
       }),
 
-  create: (body: IApiPayload<StakeholderContactPerson>): Promise<IApiResponse> =>
+  create: (
+    body: IApiPayload<StakeholderContactPerson>,
+  ): Promise<IApiResponse> =>
     buildPostRequest(`/stakeholders/stakeholder-contact-people`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -41,7 +45,7 @@ const stakeholderContactPersonApiService = {
 
   update: (
     id: string,
-    body: IApiPayload<StakeholderContactPerson>
+    body: IApiPayload<StakeholderContactPerson>,
   ): Promise<IApiResponse> =>
     buildPutRequest(`/stakeholders/stakeholder-contact-people/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)

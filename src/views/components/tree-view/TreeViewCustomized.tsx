@@ -1,28 +1,28 @@
 // ** MUI Imports
-import TreeItem from '@mui/lab/TreeItem';
-import { alpha, styled } from '@mui/material/styles';
-import MuiTreeView, { TreeViewProps } from '@mui/lab/TreeView';
+import TreeItem from "@mui/lab/TreeItem";
+import { alpha, styled } from "@mui/material/styles";
+import MuiTreeView, { TreeViewProps } from "@mui/lab/TreeView";
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon';
+import Icon from "src/@core/components/icon";
 
 // Styled TreeView component
 const TreeView = styled(MuiTreeView)<TreeViewProps>(({ theme }) => ({
   minHeight: 264,
-  '& .MuiTreeItem-iconContainer .close': {
-    opacity: 0.3
+  "& .MuiTreeItem-iconContainer .close": {
+    opacity: 0.3,
   },
-  '& .MuiTreeItem-group': {
+  "& .MuiTreeItem-group": {
     marginLeft: 15,
     paddingLeft: 18,
-    borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`
-  }
+    borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`,
+  },
 }));
 
 const TreeViewCustomized = () => {
   return (
     <TreeView
-      defaultExpanded={['1']}
+      defaultExpanded={["1"]}
       defaultExpandIcon={<Icon icon="tabler:square-plus" />}
       defaultCollapseIcon={<Icon icon="tabler:square-minus" />}
       defaultEndIcon={<Icon icon="tabler:square-x" className="close" />}

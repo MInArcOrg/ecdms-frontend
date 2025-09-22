@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router';
-import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
-import StakeholderPositionList from 'src/views/pages/stakeholders/details/stakeholder-positions';
-import subMenuItems, { stakeholderOrganizationIds } from '../(sub-menu-items)';
-import { stakeholderMenuIds } from 'src/views/pages/stakeholders/details/layout/stakeholder-menu-items';
+import { useRouter } from "next/router";
+import StakeholderLayout from "src/views/pages/stakeholders/details/layout/stakeholder-layout";
+import StakeholderPositionList from "src/views/pages/stakeholders/details/stakeholder-positions";
+import subMenuItems, { stakeholderOrganizationIds } from "../(sub-menu-items)";
+import { stakeholderMenuIds } from "src/views/pages/stakeholders/details/layout/stakeholder-menu-items";
 
 function StakeholderPositionIndex() {
   const router = useRouter();
@@ -20,8 +20,8 @@ function StakeholderPositionIndex() {
 }
 
 StakeholderPositionIndex.acl = {
-  action: 'view',
-  subject: 'stakeholder-position'
+  action: "view",
+  subject: "stakeholder-position",
 };
 
 export default StakeholderPositionIndex;

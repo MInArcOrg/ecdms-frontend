@@ -1,19 +1,29 @@
-import { Box, Button, Card, CardActions, CardContent, Grid, IconButton, Tooltip, Typography } from '@mui/material';
-import { Fragment } from 'react';
-import { useTranslation } from 'react-i18next';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { ProjectPlan } from 'src/types/project/project-plan';
-import { formatCurrency } from 'src/utils/formatter/currency';
-import FileDrawer from 'src/views/components/custom/files-drawer';
-import ModelActionComponent from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Grid,
+  IconButton,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import { Fragment } from "react";
+import { useTranslation } from "react-i18next";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { ProjectPlan } from "src/types/project/project-plan";
+import { formatCurrency } from "src/utils/formatter/currency";
+import FileDrawer from "src/views/components/custom/files-drawer";
+import ModelActionComponent from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
 
 const ProjectPlanCard = ({
   projectPlan,
   onDetail,
   onEdit,
   onDelete,
-  refetch
+  refetch,
 }: {
   projectPlan: ProjectPlan;
   onDetail: (projectPlan: ProjectPlan) => void;
@@ -35,38 +45,66 @@ const ProjectPlanCard = ({
                 onClick={() => onDetail(projectPlan)}
                 sx={{
                   fontWeight: 500,
-                  textDecoration: 'none',
-                  color: 'text.secondary',
-                  '&:hover': { color: 'primary.main' }
+                  textDecoration: "none",
+                  color: "text.secondary",
+                  "&:hover": { color: "primary.main" },
                 }}
               >
                 {projectPlan.type}
               </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ marginTop: 0.5 }}>
-                <span>{t('project.plan.form.financial-year')}:</span> <strong>{String(projectPlan.year) ?? t('N/A')}</strong>,{' '}
-                {t('Quarter')}: <strong>{projectPlan.quarter ?? t('N/A')}</strong>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ marginTop: 0.5 }}
+              >
+                <span>{t("project.plan.form.financial-year")}:</span>{" "}
+                <strong>{String(projectPlan.year) ?? t("N/A")}</strong>,{" "}
+                {t("Quarter")}:{" "}
+                <strong>{projectPlan.quarter ?? t("N/A")}</strong>
               </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ marginTop: 0.5 }}>
-                <span>{t('project.plan.form.physical-performance')}:</span>{' '}
-                <strong>{formatCurrency(Number(projectPlan.physical_performance))}</strong>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ marginTop: 0.5 }}
+              >
+                <span>{t("project.plan.form.physical-performance")}:</span>{" "}
+                <strong>
+                  {formatCurrency(Number(projectPlan.physical_performance))}
+                </strong>
               </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ marginTop: 0.5 }}>
-                <span>{t('project.plan.form.financial-performance')}:</span>{' '}
-                <strong>{formatCurrency(Number(projectPlan.financial_performance))}</strong>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ marginTop: 0.5 }}
+              >
+                <span>{t("project.plan.form.financial-performance")}:</span>{" "}
+                <strong>
+                  {formatCurrency(Number(projectPlan.financial_performance))}
+                </strong>
               </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ marginTop: 0.5 }}>
-                <span>{t('project.plan.form.project-expense')}:</span>{' '}
-                <strong>{formatCurrency(Number(projectPlan.project_expense)) ?? t('N/A')}</strong>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ marginTop: 0.5 }}
+              >
+                <span>{t("project.plan.form.project-expense")}:</span>{" "}
+                <strong>
+                  {formatCurrency(Number(projectPlan.project_expense)) ??
+                    t("N/A")}
+                </strong>
               </Typography>
             </Box>
           </Grid>
         </Grid>
       </CardContent>
-      <CardActions sx={{ justifyContent: 'flex-end' }}>
+      <CardActions sx={{ justifyContent: "flex-end" }}>
         <Fragment>
-          <Tooltip title={t('View Files')}>
+          <Tooltip title={t("View Files")}>
             <IconButton>
-              <FileDrawer id={projectPlan.file_id ?? ''} type={uploadableProjectFileTypes.plan} />
+              <FileDrawer
+                id={projectPlan.file_id ?? ""}
+                type={uploadableProjectFileTypes.plan}
+              />
             </IconButton>
           </Tooltip>
 
@@ -83,12 +121,12 @@ const ProjectPlanCard = ({
             onDelete={() => onDelete(projectPlan.id)}
             item={projectPlan}
             deletePermissionRule={{
-              action: 'delete',
-              subject: 'projectplan'
+              action: "delete",
+              subject: "projectplan",
             }}
             editPermissionRule={{
-              action: 'update',
-              subject: 'projectplan'
+              action: "update",
+              subject: "projectplan",
             }}
             options={[]}
           />

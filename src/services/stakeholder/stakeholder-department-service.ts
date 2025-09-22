@@ -1,22 +1,37 @@
-import type { AxiosResponse } from 'axios';
-import type { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
-import axiosServices from 'src/utils/axios';
-import type { StakeholderDepartment } from 'src/types/stakeholder/stakeholder-department';
+import type { AxiosResponse } from "axios";
+import type {
+  GetRequestParam,
+  IApiPayload,
+  IApiResponse,
+} from "src/types/requests";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
+import axiosServices from "src/utils/axios";
+import type { StakeholderDepartment } from "src/types/stakeholder/stakeholder-department";
 
 const stakeholderDepartmentApiService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<StakeholderDepartment[]>> =>
-    buildGetRequest('/stakeholders/stakeholder-departments', params)
-      .then((response: AxiosResponse<IApiResponse<StakeholderDepartment[]>>) => response.data)
+  getAll: (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<StakeholderDepartment[]>> =>
+    buildGetRequest("/stakeholders/stakeholder-departments", params)
+      .then(
+        (response: AxiosResponse<IApiResponse<StakeholderDepartment[]>>) =>
+          response.data,
+      )
       .catch((error: any) => {
         throw error;
       }),
 
-  getById: (id: string, params: GetRequestParam): Promise<IApiResponse<StakeholderDepartment>> =>
+  getById: (
+    id: string,
+    params: GetRequestParam,
+  ): Promise<IApiResponse<StakeholderDepartment>> =>
     buildGetRequest(`/stakeholders/stakeholder-departments/${id}`, params)
-      .then((response: AxiosResponse<IApiResponse<StakeholderDepartment>>) => response.data)
+      .then(
+        (response: AxiosResponse<IApiResponse<StakeholderDepartment>>) =>
+          response.data,
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -30,18 +45,21 @@ const stakeholderDepartmentApiService = {
       }),
 
   create: (body: IApiPayload<StakeholderDepartment>): Promise<IApiResponse> =>
-    buildPostRequest('/stakeholders/stakeholder-departments', body)
+    buildPostRequest("/stakeholders/stakeholder-departments", body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
-  update: (id: string, body: IApiPayload<StakeholderDepartment>): Promise<IApiResponse> =>
+  update: (
+    id: string,
+    body: IApiPayload<StakeholderDepartment>,
+  ): Promise<IApiResponse> =>
     buildPutRequest(`/stakeholders/stakeholder-departments/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default stakeholderDepartmentApiService;

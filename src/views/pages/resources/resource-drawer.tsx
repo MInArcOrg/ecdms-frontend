@@ -1,12 +1,12 @@
-import * as yup from 'yup';
+import * as yup from "yup";
 
-import { FormikProps } from 'formik';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import ResourceForm from './resource-form';
-import { IApiPayload } from 'src/types/requests';
-import resourceApiService from 'src/services/resource/resource-service';
-import { Resource } from 'src/types/resource';
+import { FormikProps } from "formik";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import ResourceForm from "./resource-form";
+import { IApiPayload } from "src/types/requests";
+import resourceApiService from "src/services/resource/resource-service";
+import { Resource } from "src/types/resource";
 
 interface ResourceDrawerType {
   open: boolean;
@@ -17,12 +17,18 @@ interface ResourceDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  resourcecategory_id: yup.string().required('Resource category is required'),
-  resourcesubcategory_id: yup.string().required('Resource subcategory is required'),
-  name: yup.string().required('Name is required'),
-  quantity_measurement_unit_id: yup.string().required('Quantity measurement unit is required'),
-  quality_measurement_unit_id: yup.string().required('Quality measurement unit is required'),
-  remark: yup.string().optional()
+  resourcecategory_id: yup.string().required("Resource category is required"),
+  resourcesubcategory_id: yup
+    .string()
+    .required("Resource subcategory is required"),
+  name: yup.string().required("Name is required"),
+  quantity_measurement_unit_id: yup
+    .string()
+    .required("Quantity measurement unit is required"),
+  quality_measurement_unit_id: yup
+    .string()
+    .required("Quality measurement unit is required"),
+  remark: yup.string().optional(),
 });
 
 const ResourceDrawer = (props: ResourceDrawerType) => {
@@ -34,7 +40,7 @@ const ResourceDrawer = (props: ResourceDrawerType) => {
     return await resourceApiService.create(body);
   };
   const editResource = async (body: IApiPayload<Resource>) => {
-    return await resourceApiService.update(resource?.id || '', body);
+    return await resourceApiService.update(resource?.id || "", body);
   };
 
   const getPayload = (values: Resource) => {
@@ -42,9 +48,9 @@ const ResourceDrawer = (props: ResourceDrawerType) => {
       data: {
         ...values,
         id: resource?.id,
-        resourcetype_id: typeId
+        resourcetype_id: typeId,
       },
-      files: []
+      files: [],
     };
     return payload;
   };
@@ -58,7 +64,11 @@ const ResourceDrawer = (props: ResourceDrawerType) => {
     handleClose();
   };
   return (
-    <CustomSideDrawer title={`resource.${isEdit ? 'edit-resource' : 'create-resource'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={`resource.${isEdit ? "edit-resource" : "create-resource"}`}
+      handleClose={handleClose}
+      open={open}
+    >
       {() => (
         <FormPageWrapper
           edit={isEdit}

@@ -1,8 +1,8 @@
-import { Box } from '@mui/material';
-import { useRouter } from 'next/router';
-import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
-import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { projectSetupIds } from '../(subMenuItems)';
+import { Box } from "@mui/material";
+import { useRouter } from "next/router";
+import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
+import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
+import subMenuItems, { projectSetupIds } from "../(subMenuItems)";
 
 function ProjectVariation() {
   const router = useRouter();
@@ -21,7 +21,7 @@ function ProjectVariation() {
 }
 
 ProjectVariation.acl = {
-  action: 'view',
-  subject: 'projectextensiontime'
+  action: "view",
+  subject: "projectextensiontime",
 };
 export default ProjectVariation;

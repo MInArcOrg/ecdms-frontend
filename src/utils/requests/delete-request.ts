@@ -1,12 +1,14 @@
-import { AxiosResponse } from 'axios';
-import axiosServices from '../axios';
+import { AxiosResponse } from "axios";
+import axiosServices from "../axios";
 
-export const buildDeleteRequest = async (url: string): Promise<AxiosResponse> => {
+export const buildDeleteRequest = async (
+  url: string,
+): Promise<AxiosResponse> => {
   try {
     const requestParams: Record<string, any> = {};
 
     const response = await axiosServices.delete(url, {
-      params: requestParams
+      params: requestParams,
     });
 
     return response;

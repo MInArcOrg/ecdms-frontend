@@ -1,14 +1,14 @@
-import { OwnerStateThemeType } from './';
+import { OwnerStateThemeType } from "./";
 
 const FabButton = () => {
   return {
     MuiFab: {
       styleOverrides: {
         default: ({ theme }: OwnerStateThemeType) => ({
-          color: theme.palette.text.primary
-        })
-      }
-    }
+          color: theme.palette.text.primary,
+        }),
+      },
+    },
   };
 };
 

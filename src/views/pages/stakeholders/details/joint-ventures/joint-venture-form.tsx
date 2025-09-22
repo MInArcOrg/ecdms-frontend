@@ -1,10 +1,10 @@
-import { Grid } from '@mui/material';
-import type { FormikProps } from 'formik';
-import type React from 'react';
-import { useTranslation } from 'react-i18next';
-import { gridSpacing } from 'src/configs/app-constants';
-import type { JointVenture } from 'src/types/stakeholder/joint-venture';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import { Grid } from "@mui/material";
+import type { FormikProps } from "formik";
+import type React from "react";
+import { useTranslation } from "react-i18next";
+import { gridSpacing } from "src/configs/app-constants";
+import type { JointVenture } from "src/types/stakeholder/joint-venture";
+import CustomTextBox from "src/views/shared/form/custom-text-box";
 
 interface JointVentureFormProps {
   formik: FormikProps<JointVenture>;
@@ -16,12 +16,18 @@ const JointVentureForm: React.FC<JointVentureFormProps> = ({ formik }) => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholder.joint-venture.name')} name="name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox
+          fullWidth
+          label={t("stakeholder.joint-venture.name")}
+          name="name"
+          size="small"
+          sx={{ mb: 2 }}
+        />
       </Grid>
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={t('stakeholder.joint-venture.memberCompaniesNo')}
+          label={t("stakeholder.joint-venture.memberCompaniesNo")}
           name="member_companies_no"
           type="number"
           size="small"
@@ -31,7 +37,7 @@ const JointVentureForm: React.FC<JointVentureFormProps> = ({ formik }) => {
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={t('stakeholder.joint-venture.description')}
+          label={t("stakeholder.joint-venture.description")}
           name="description"
           multiline
           rows={4}
@@ -40,7 +46,13 @@ const JointVentureForm: React.FC<JointVentureFormProps> = ({ formik }) => {
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholder.joint-venture.reference')} name="reference" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox
+          fullWidth
+          label={t("stakeholder.joint-venture.reference")}
+          name="reference"
+          size="small"
+          sx={{ mb: 2 }}
+        />
       </Grid>
     </Grid>
   );

@@ -1,21 +1,23 @@
 // components/SuggestedRepairMasterList.tsx
-import { Card, CardContent } from '@mui/material';
-import React, { Fragment, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { SuggestedRepair } from 'src/types/general/general-master';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import SuggestedRepairMasterCard from './suggested-repair-master-card';
-import SuggestedRepairMasterDrawer from './suggested-repair-master-drawer';
-import suggestedRepairMasterService from 'src/services/general/project/suggested-repair-master-service';
+import { Card, CardContent } from "@mui/material";
+import React, { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import { SuggestedRepair } from "src/types/general/general-master";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import SuggestedRepairMasterCard from "./suggested-repair-master-card";
+import SuggestedRepairMasterDrawer from "./suggested-repair-master-drawer";
+import suggestedRepairMasterService from "src/services/general/project/suggested-repair-master-service";
 
 const SuggestedRepairMasterList: React.FC = () => {
   const [selectedRow, setSelectedRow] = useState<SuggestedRepair | null>(null);
   const { t } = useTranslation();
-  const fetchSuggestedRepairMaster = (params: GetRequestParam): Promise<IApiResponse<SuggestedRepair[]>> => {
+  const fetchSuggestedRepairMaster = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<SuggestedRepair[]>> => {
     return suggestedRepairMasterService.getAll(params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
@@ -25,10 +27,10 @@ const SuggestedRepairMasterList: React.FC = () => {
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<SuggestedRepair[]>({
-    queryKey: ['general-master', 'suggested-repair'],
-    fetchFunction: fetchSuggestedRepairMaster
+    queryKey: ["general-master", "suggested-repair"],
+    fetchFunction: fetchSuggestedRepairMaster,
   });
   const handleDelete = async (id: string) => {
     await suggestedRepairMasterService.delete(id);
@@ -61,7 +63,13 @@ const SuggestedRepairMasterList: React.FC = () => {
             type={ITEMS_LISTING_TYPE.list.value}
             title={t(`master-data.general-master.suggested-repairs`)}
             ItemViewComponent={({ data }) => (
-              <SuggestedRepairMasterCard generalMaster={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
+              <SuggestedRepairMasterCard
+                generalMaster={data}
+                onDelete={handleDelete}
+                onEdit={handleEdit}
+                t={t}
+                refetch={refetch}
+              />
             )}
             isLoading={isLoading}
             createActionConfig={{
@@ -69,9 +77,9 @@ const SuggestedRepairMasterList: React.FC = () => {
               onClick: toggleDrawer,
               onlyIcon: true,
               permission: {
-                action: 'create',
-                subject: `suggestedrepair`
-              }
+                action: "create",
+                subject: `suggestedrepair`,
+              },
             }}
             fetchDataFunction={refetch}
             items={types || []}

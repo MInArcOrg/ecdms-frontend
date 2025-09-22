@@ -1,13 +1,13 @@
-import { FormikProps } from 'formik';
-import { useState } from 'react';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import CountTypeMasterForm from './count-type-master-form';
-import { CountType } from 'src/types/general/general-master';
-import roadLengthTypeMasterService from 'src/services/general/project/count-type-master-service';
+import { FormikProps } from "formik";
+import { useState } from "react";
+import { uploadFile } from "src/services/utils/file-utils";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import CountTypeMasterForm from "./count-type-master-form";
+import { CountType } from "src/types/general/general-master";
+import roadLengthTypeMasterService from "src/services/general/project/count-type-master-service";
 
 interface CountTypeMasterDrawerType {
   open: boolean;
@@ -17,8 +17,8 @@ interface CountTypeMasterDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required('Title is required'),
-  description: yup.string().required('Description is required')
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
 });
 
 const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
@@ -34,16 +34,16 @@ const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
   };
 
   const editCountTypeMaster = async (body: IApiPayload<CountType>) => {
-    return await roadLengthTypeMasterService.update(masterData?.id || '', body);
+    return await roadLengthTypeMasterService.update(masterData?.id || "", body);
   };
 
   const getPayload = (values: CountType) => {
     const payload = {
       data: {
         ...values,
-        id: masterData?.id
+        id: masterData?.id,
       },
-      files: uploadableFile ? [uploadableFile] : []
+      files: uploadableFile ? [uploadableFile] : [],
     };
     return payload;
   };
@@ -52,9 +52,12 @@ const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<CountType>, payload: IApiPayload<CountType>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<CountType>,
+    payload: IApiPayload<CountType>,
+  ) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `COUNT_TYPE`, response.payload.id, '', '');
+      uploadFile(payload.files[0], `COUNT_TYPE`, response.payload.id, "", "");
     }
     refetch();
     handleClose();
@@ -62,7 +65,9 @@ const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-count-type' : 'create-count-type'}`}
+      title={`master-data.general-master.${
+        isEdit ? "edit-count-type" : "create-count-type"
+      }`}
       handleClose={handleClose}
       open={open}
     >
@@ -73,7 +78,9 @@ const CountTypeMasterDrawer = (props: CountTypeMasterDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editCountTypeMaster : createCountTypeMaster}
+          createActionFunc={
+            isEdit ? editCountTypeMaster : createCountTypeMaster
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

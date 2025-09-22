@@ -1,19 +1,19 @@
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import professionalWorkExperienceApiService from 'src/services/resource/professional-work-experience-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
-import WorkExperienceCard from './resource-work-experience-card';
-import WorkExperienceDrawer from './resource-work-experience-drawer';
-import type { ProfessionalWorkExperience } from 'src/types/resource';
-import { experienceColumns } from './resource-work-experience-row';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import { Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import professionalWorkExperienceApiService from "src/services/resource/professional-work-experience-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import type { GetRequestParam, IApiResponse } from "src/types/requests";
+import { formatCreatedAt } from "src/utils/formatter/date";
+import ItemsListing from "src/views/shared/listing";
+import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer";
+import WorkExperienceCard from "./resource-work-experience-card";
+import WorkExperienceDrawer from "./resource-work-experience-drawer";
+import type { ProfessionalWorkExperience } from "src/types/resource";
+import { experienceColumns } from "./resource-work-experience-row";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
 
 interface WorkExperienceListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -21,16 +21,22 @@ interface WorkExperienceListProps {
   typeId: string;
 }
 
-const ResourceWorkExperienceList: React.FC<WorkExperienceListProps> = ({ professionalId, otherSubMenu }) => {
+const ResourceWorkExperienceList: React.FC<WorkExperienceListProps> = ({
+  professionalId,
+  otherSubMenu,
+}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<ProfessionalWorkExperience | null>(null);
+  const [selectedRow, setSelectedRow] =
+    useState<ProfessionalWorkExperience | null>(null);
   const { t } = useTranslation();
 
-  const fetchWorkExperiences = (params: GetRequestParam): Promise<IApiResponse<ProfessionalWorkExperience[]>> => {
+  const fetchWorkExperiences = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<ProfessionalWorkExperience[]>> => {
     return professionalWorkExperienceApiService.getAll({
       ...params,
-      filter: { ...params.filter, professional_id: professionalId }
+      filter: { ...params.filter, professional_id: professionalId },
     });
   };
 
@@ -38,10 +44,10 @@ const ResourceWorkExperienceList: React.FC<WorkExperienceListProps> = ({ profess
     data: experiences,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<ProfessionalWorkExperience[]>({
-    queryKey: ['work-experiences'],
-    fetchFunction: fetchWorkExperiences
+    queryKey: ["work-experiences"],
+    fetchFunction: fetchWorkExperiences,
   });
 
   const toggleDrawer = () => {
@@ -69,17 +75,39 @@ const ResourceWorkExperienceList: React.FC<WorkExperienceListProps> = ({ profess
     setSelectedRow(experience);
   };
 
-  const mapExperienceToDetailItems = (experience: ProfessionalWorkExperience): { title: string; value: string }[] => [
-    { title: t('resources.professional.work-experience.company-name'), value: experience.company_name },
-    { title: t('resources.professional.work-experience.position'), value: experience.position || 'N/A' },
-    { title: t('resources.professional.work-experience.department'), value: experience.department || 'N/A' },
-    { title: t('resources.professional.work-experience.task-description'), value: experience.task_description || 'N/A' },
-    { title: t('resources.professional.work-experience.start-date'), value: experience.start_date || 'N/A' },
-    { title: t('resources.professional.work-experience.end-date'), value: experience.end_date || 'N/A' },
+  const mapExperienceToDetailItems = (
+    experience: ProfessionalWorkExperience,
+  ): { title: string; value: string }[] => [
     {
-      title: t('common.table-columns.created-at'),
-      value: experience.created_at ? formatCreatedAt(experience.created_at) : 'N/A'
-    }
+      title: t("resources.professional.work-experience.company-name"),
+      value: experience.company_name,
+    },
+    {
+      title: t("resources.professional.work-experience.position"),
+      value: experience.position || "N/A",
+    },
+    {
+      title: t("resources.professional.work-experience.department"),
+      value: experience.department || "N/A",
+    },
+    {
+      title: t("resources.professional.work-experience.task-description"),
+      value: experience.task_description || "N/A",
+    },
+    {
+      title: t("resources.professional.work-experience.start-date"),
+      value: experience.start_date || "N/A",
+    },
+    {
+      title: t("resources.professional.work-experience.end-date"),
+      value: experience.end_date || "N/A",
+    },
+    {
+      title: t("common.table-columns.created-at"),
+      value: experience.created_at
+        ? formatCreatedAt(experience.created_at)
+        : "N/A",
+    },
   ];
 
   return (
@@ -98,20 +126,27 @@ const ResourceWorkExperienceList: React.FC<WorkExperienceListProps> = ({ profess
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapExperienceToDetailItems(selectedRow as ProfessionalWorkExperience)}
-          id={selectedRow?.id || ''}
+          data={mapExperienceToDetailItems(
+            selectedRow as ProfessionalWorkExperience,
+          )}
+          id={selectedRow?.id || ""}
           hasReference={true}
           fileType="PROFESSIONAL_WORK_EXPERIENCE"
-          title={t('resources.professional.work-experience.details')}
+          title={t("resources.professional.work-experience.details")}
         />
       )}
 
       <ItemsListing
-        title={t('resources.professional.work-experience.title')}
+        title={t("resources.professional.work-experience.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: experienceColumns(handleClickDetail, handleEdit, handleDelete, t)
+          headers: experienceColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+          ),
         }}
         isLoading={false}
         ItemViewComponent={({ data }) => (
@@ -128,9 +163,9 @@ const ResourceWorkExperienceList: React.FC<WorkExperienceListProps> = ({ profess
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: 'create',
-            subject: 'professionalworkexperience'
-          }
+            action: "create",
+            subject: "professionalworkexperience",
+          },
         }}
         fetchDataFunction={refetch}
         items={experiences || []}

@@ -1,13 +1,13 @@
-import { FormikProps } from 'formik';
-import { useState } from 'react';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import DrainageConditionMasterForm from './drainage-condition-master-form';
-import { DrainageCondition } from 'src/types/general/general-master';
-import roadLengthTypeMasterService from 'src/services/general/project/drainage-condition-master-service';
+import { FormikProps } from "formik";
+import { useState } from "react";
+import { uploadFile } from "src/services/utils/file-utils";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import DrainageConditionMasterForm from "./drainage-condition-master-form";
+import { DrainageCondition } from "src/types/general/general-master";
+import roadLengthTypeMasterService from "src/services/general/project/drainage-condition-master-service";
 
 interface DrainageConditionMasterDrawerType {
   open: boolean;
@@ -17,11 +17,13 @@ interface DrainageConditionMasterDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required('Title is required'),
-  description: yup.string().required('Description is required')
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
 });
 
-const DrainageConditionMasterDrawer = (props: DrainageConditionMasterDrawerType) => {
+const DrainageConditionMasterDrawer = (
+  props: DrainageConditionMasterDrawerType,
+) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,21 +31,25 @@ const DrainageConditionMasterDrawer = (props: DrainageConditionMasterDrawerType)
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createDrainageConditionMaster = async (body: IApiPayload<DrainageCondition>) => {
+  const createDrainageConditionMaster = async (
+    body: IApiPayload<DrainageCondition>,
+  ) => {
     return await roadLengthTypeMasterService.create(body);
   };
 
-  const editDrainageConditionMaster = async (body: IApiPayload<DrainageCondition>) => {
-    return await roadLengthTypeMasterService.update(masterData?.id || '', body);
+  const editDrainageConditionMaster = async (
+    body: IApiPayload<DrainageCondition>,
+  ) => {
+    return await roadLengthTypeMasterService.update(masterData?.id || "", body);
   };
 
   const getPayload = (values: DrainageCondition) => {
     const payload = {
       data: {
         ...values,
-        id: masterData?.id
+        id: masterData?.id,
       },
-      files: uploadableFile ? [uploadableFile] : []
+      files: uploadableFile ? [uploadableFile] : [],
     };
     return payload;
   };
@@ -52,9 +58,18 @@ const DrainageConditionMasterDrawer = (props: DrainageConditionMasterDrawerType)
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<DrainageCondition>, payload: IApiPayload<DrainageCondition>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<DrainageCondition>,
+    payload: IApiPayload<DrainageCondition>,
+  ) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `DRAINAGE_CONDITION`, response.payload.id, '', '');
+      uploadFile(
+        payload.files[0],
+        `DRAINAGE_CONDITION`,
+        response.payload.id,
+        "",
+        "",
+      );
     }
     refetch();
     handleClose();
@@ -62,7 +77,9 @@ const DrainageConditionMasterDrawer = (props: DrainageConditionMasterDrawerType)
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-drainage-condition' : 'create-drainage-condition'}`}
+      title={`master-data.general-master.${
+        isEdit ? "edit-drainage-condition" : "create-drainage-condition"
+      }`}
       handleClose={handleClose}
       open={open}
     >
@@ -73,7 +90,9 @@ const DrainageConditionMasterDrawer = (props: DrainageConditionMasterDrawerType)
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editDrainageConditionMaster : createDrainageConditionMaster}
+          createActionFunc={
+            isEdit ? editDrainageConditionMaster : createDrainageConditionMaster
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

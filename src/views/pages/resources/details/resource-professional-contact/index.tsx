@@ -1,18 +1,18 @@
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import professionalContactApiService from 'src/services/resource/professional-contact-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
-import ContactCard from './professional-contact-card';
-import ContactDrawer from './professional-contact-drawer';
-import { ProfessionalContact } from 'src/types/resource';
-import { contactColumns } from './professional-contact-row';
+import { Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import professionalContactApiService from "src/services/resource/professional-contact-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import { formatCreatedAt } from "src/utils/formatter/date";
+import ItemsListing from "src/views/shared/listing";
+import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer";
+import ContactCard from "./professional-contact-card";
+import ContactDrawer from "./professional-contact-drawer";
+import { ProfessionalContact } from "src/types/resource";
+import { contactColumns } from "./professional-contact-row";
 
 interface ContactListProps {
   model: string;
@@ -23,20 +23,24 @@ interface ContactListProps {
 const ContactList: React.FC<ContactListProps> = ({ professionalId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<ProfessionalContact | null>(null);
+  const [selectedRow, setSelectedRow] = useState<ProfessionalContact | null>(
+    null,
+  );
   const { t } = useTranslation();
 
-  console.log('Professional ID:', professionalId);
+  console.log("Professional ID:", professionalId);
 
-  const fetchContacts = (params: GetRequestParam): Promise<IApiResponse<ProfessionalContact[]>> => {
-    console.log('Fetch params:', {
+  const fetchContacts = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<ProfessionalContact[]>> => {
+    console.log("Fetch params:", {
       ...params,
-      filter: { ...params.filter, professional_id: professionalId }
+      filter: { ...params.filter, professional_id: professionalId },
     });
 
     return professionalContactApiService.getAll({
       ...params,
-      filter: { ...params.filter, professional_id: professionalId }
+      filter: { ...params.filter, professional_id: professionalId },
     });
   };
 
@@ -45,10 +49,10 @@ const ContactList: React.FC<ContactListProps> = ({ professionalId }) => {
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<ProfessionalContact[]>({
-    queryKey: ['contacts'],
-    fetchFunction: fetchContacts
+    queryKey: ["contacts"],
+    fetchFunction: fetchContacts,
   });
 
   const toggleDrawer = () => {
@@ -76,11 +80,22 @@ const ContactList: React.FC<ContactListProps> = ({ professionalId }) => {
     setSelectedRow(contact);
   };
 
-  const mapContactToDetailItems = (contact: ProfessionalContact): { title: string; value: string }[] => [
-    { title: t('professional.contact.phone'), value: contact?.phone_no || 'N/A' },
-    { title: t('professional.contact.email'), value: contact?.email || 'N/A' },
-    { title: t('professional.contact.website'), value: contact?.website || 'N/A' },
-    { title: t('common.table-columns.created-at'), value: contact?.created_at ? formatCreatedAt(contact.created_at) : 'N/A' }
+  const mapContactToDetailItems = (
+    contact: ProfessionalContact,
+  ): { title: string; value: string }[] => [
+    {
+      title: t("professional.contact.phone"),
+      value: contact?.phone_no || "N/A",
+    },
+    { title: t("professional.contact.email"), value: contact?.email || "N/A" },
+    {
+      title: t("professional.contact.website"),
+      value: contact?.website || "N/A",
+    },
+    {
+      title: t("common.table-columns.created-at"),
+      value: contact?.created_at ? formatCreatedAt(contact.created_at) : "N/A",
+    },
   ];
 
   return (
@@ -100,32 +115,43 @@ const ContactList: React.FC<ContactListProps> = ({ professionalId }) => {
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
           data={mapContactToDetailItems(selectedRow as ProfessionalContact)}
-          id={selectedRow?.id || ''}
+          id={selectedRow?.id || ""}
           hasReference={true}
           fileType="contact"
-          title={t('professional.contact.details')}
+          title={t("professional.contact.details")}
         />
       )}
 
       <ItemsListing
-        title={t('professional.contact.title')}
+        title={t("professional.contact.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: contactColumns(handleClickDetail, handleEdit, handleDelete, t)
+          headers: contactColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+          ),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <ContactCard onDetail={handleClickDetail} contact={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
+          <ContactCard
+            onDetail={handleClickDetail}
+            contact={data}
+            onEdit={handleEdit}
+            refetch={refetch}
+            onDelete={handleDelete}
+          />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: 'create',
-            subject: 'professionalcontact'
-          }
+            action: "create",
+            subject: "professionalcontact",
+          },
         }}
         fetchDataFunction={refetch}
         items={contacts || []}

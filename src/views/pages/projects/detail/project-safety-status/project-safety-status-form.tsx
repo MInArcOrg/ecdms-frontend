@@ -1,9 +1,9 @@
-import { Box } from '@mui/material';
-import { FormikProps } from 'formik';
-import { useTranslation } from 'react-i18next';
-import { ProjectSafetyStatus } from 'src/types/project/project-safety-status ';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
+import { Box } from "@mui/material";
+import { FormikProps } from "formik";
+import { useTranslation } from "react-i18next";
+import { ProjectSafetyStatus } from "src/types/project/project-safety-status ";
+import CustomTextBox from "src/views/shared/form/custom-text-box";
+import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 
 interface ProjectSafetyStatusFormProps {
   formik: FormikProps<ProjectSafetyStatus>;
@@ -13,7 +13,12 @@ interface ProjectSafetyStatusFormProps {
   projectId: string;
 }
 
-const ProjectSafetyStatusForm: React.FC<ProjectSafetyStatusFormProps> = ({ formik, file, onFileChange, projectId }) => {
+const ProjectSafetyStatusForm: React.FC<ProjectSafetyStatusFormProps> = ({
+  formik,
+  file,
+  onFileChange,
+  projectId,
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -21,7 +26,7 @@ const ProjectSafetyStatusForm: React.FC<ProjectSafetyStatusFormProps> = ({ formi
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t('project.safety-status.fatal-injuries')}
+          label={t("project.safety-status.fatal-injuries")}
           name="no_of_fatal_injuries"
           type="number"
           size="small"
@@ -31,7 +36,7 @@ const ProjectSafetyStatusForm: React.FC<ProjectSafetyStatusFormProps> = ({ formi
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t('project.safety-status.major-injuries')}
+          label={t("project.safety-status.major-injuries")}
           name="no_of_major_injuries"
           type="number"
           size="small"
@@ -41,7 +46,7 @@ const ProjectSafetyStatusForm: React.FC<ProjectSafetyStatusFormProps> = ({ formi
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t('project.safety-status.minor-injuries')}
+          label={t("project.safety-status.minor-injuries")}
           name="no_of_minor_injuries"
           type="number"
           size="small"
@@ -51,7 +56,7 @@ const ProjectSafetyStatusForm: React.FC<ProjectSafetyStatusFormProps> = ({ formi
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t('project.safety-status.measures-taken')}
+          label={t("project.safety-status.measures-taken")}
           name="measures_taken"
           size="small"
           multiline
@@ -62,7 +67,7 @@ const ProjectSafetyStatusForm: React.FC<ProjectSafetyStatusFormProps> = ({ formi
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t('project.safety-status.lesson-learned')}
+          label={t("project.safety-status.lesson-learned")}
           name="lesson_learned"
           multiline
           rows={3}
@@ -70,7 +75,11 @@ const ProjectSafetyStatusForm: React.FC<ProjectSafetyStatusFormProps> = ({ formi
           sx={{ mb: 2 }}
         />
       </Box>
-      <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />
+      <CustomFileUpload
+        label={t("common.form.file-upload")}
+        file={file}
+        onFileChange={onFileChange}
+      />
     </>
   );
 };

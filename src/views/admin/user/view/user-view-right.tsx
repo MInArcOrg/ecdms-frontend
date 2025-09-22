@@ -1,31 +1,31 @@
 // ** React Imports
-import { SyntheticEvent, useEffect, useState } from 'react';
+import { SyntheticEvent, useEffect, useState } from "react";
 
 // ** Next Import
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 // ** MUI Imports
-import TabContext from '@mui/lab/TabContext';
-import MuiTabList, { TabListProps } from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
-import Box from '@mui/material/Box';
-import CircularProgress from '@mui/material/CircularProgress';
-import MuiTab, { TabProps } from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
+import TabContext from "@mui/lab/TabContext";
+import MuiTabList, { TabListProps } from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
+import MuiTab, { TabProps } from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon';
+import Icon from "src/@core/components/icon";
 
 // ** Demo Components Imports
 
 // ** Types
-import { useTranslation } from 'react-i18next';
-import User from 'src/types/admin/user';
-import UserEducationList from './user-education';
-import UserWorkExperienceList from './user-work-experience';
-import UserContactPersonList from './user-contact-person';
-import UserActivityLogList from './user-activity-log';
+import { useTranslation } from "react-i18next";
+import User from "src/types/admin/user";
+import UserEducationList from "./user-education";
+import UserWorkExperienceList from "./user-work-experience";
+import UserContactPersonList from "./user-contact-person";
+import UserActivityLogList from "./user-activity-log";
 
 interface Props {
   tab: string;
@@ -35,35 +35,35 @@ interface Props {
 
 // ** Styled Tab component
 const Tab = styled(MuiTab)<TabProps>(({ theme }) => ({
-  flexDirection: 'row',
-  '& svg': {
-    marginBottom: '0 !important',
-    marginRight: theme.spacing(1.5)
-  }
+  flexDirection: "row",
+  "& svg": {
+    marginBottom: "0 !important",
+    marginRight: theme.spacing(1.5),
+  },
 }));
 
 const TabList = styled(MuiTabList)<TabListProps>(({ theme }) => ({
-  borderBottom: '0 !important',
-  '&, & .MuiTabs-scroller': {
-    boxSizing: 'content-box',
+  borderBottom: "0 !important",
+  "&, & .MuiTabs-scroller": {
+    boxSizing: "content-box",
     padding: theme.spacing(1.25, 1.25, 2),
-    margin: `${theme.spacing(-1.25, -1.25, -2)} !important`
+    margin: `${theme.spacing(-1.25, -1.25, -2)} !important`,
   },
-  '& .MuiTabs-indicator': {
-    display: 'none'
+  "& .MuiTabs-indicator": {
+    display: "none",
   },
-  '& .Mui-selected': {
+  "& .Mui-selected": {
     boxShadow: theme.shadows[2],
     backgroundColor: theme.palette.primary.main,
-    color: `${theme.palette.common.white} !important`
+    color: `${theme.palette.common.white} !important`,
   },
-  '& .MuiTab-root': {
+  "& .MuiTab-root": {
     lineHeight: 1,
     borderRadius: theme.shape.borderRadius,
-    '&:hover': {
-      color: theme.palette.primary.main
-    }
-  }
+    "&:hover": {
+      color: theme.palette.primary.main,
+    },
+  },
 }));
 
 const UserViewRight = ({ tab, user, isLoading }: Props) => {
@@ -78,7 +78,7 @@ const UserViewRight = ({ tab, user, isLoading }: Props) => {
     setActiveTab(value);
     router
       .push({
-        pathname: `/admin/users/${user.id}/${value.toLowerCase()}`
+        pathname: `/admin/users/${user.id}/${value.toLowerCase()}`,
       })
       .then(() => {});
   };
@@ -102,22 +102,22 @@ const UserViewRight = ({ tab, user, isLoading }: Props) => {
       >
         <Tab
           value="user-education"
-          label={transl('department.user.tabs.education')}
+          label={transl("department.user.tabs.education")}
           icon={<Icon fontSize="1.125rem" icon="tabler:school" />}
         />
         <Tab
           value="user-work-experience"
-          label={transl('department.user.tabs.work-experience')}
+          label={transl("department.user.tabs.work-experience")}
           icon={<Icon fontSize="1.125rem" icon="tabler:briefcase" />}
         />
         <Tab
           value="user-contact-person"
-          label={transl('department.user.tabs.contact-person')}
+          label={transl("department.user.tabs.contact-person")}
           icon={<Icon fontSize="1.125rem" icon="tabler:users" />}
         />
         <Tab
           value="activity-log"
-          label={transl('department.user.tabs.activity-log')}
+          label={transl("department.user.tabs.activity-log")}
           icon={<Icon fontSize="1.125rem" icon="tabler:users" />}
         />
       </TabList>
@@ -127,9 +127,9 @@ const UserViewRight = ({ tab, user, isLoading }: Props) => {
           <Box
             sx={{
               mt: 6,
-              display: 'flex',
-              alignItems: 'center',
-              flexDirection: 'column'
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
             }}
           >
             <CircularProgress sx={{ mb: 4 }} />

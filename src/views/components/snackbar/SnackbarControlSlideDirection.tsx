@@ -1,12 +1,12 @@
 // ** React Imports
-import { ComponentType, Fragment, useState } from 'react';
+import { ComponentType, Fragment, useState } from "react";
 
 // ** MUI Imports
-import Button from '@mui/material/Button';
-import Snackbar from '@mui/material/Snackbar';
-import Slide, { SlideProps } from '@mui/material/Slide';
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
+import Slide, { SlideProps } from "@mui/material/Slide";
 
-type TransitionProps = Omit<SlideProps, 'direction'>;
+type TransitionProps = Omit<SlideProps, "direction">;
 
 const TransitionLeft = (props: TransitionProps) => {
   return <Slide {...props} direction="left" />;
@@ -27,7 +27,9 @@ const TransitionDown = (props: TransitionProps) => {
 const SnackbarControlSlideDirection = () => {
   // ** States
   const [open, setOpen] = useState<boolean>(false);
-  const [transition, setTransition] = useState<ComponentType<TransitionProps> | undefined>(undefined);
+  const [transition, setTransition] = useState<
+    ComponentType<TransitionProps> | undefined
+  >(undefined);
 
   const handleClick = (Transition: ComponentType<TransitionProps>) => () => {
     setTransition(() => Transition);
@@ -60,7 +62,7 @@ const SnackbarControlSlideDirection = () => {
         message="I love snacks"
         autoHideDuration={3000}
         TransitionComponent={transition}
-        key={transition ? transition.name : ''}
+        key={transition ? transition.name : ""}
       />
     </Fragment>
   );

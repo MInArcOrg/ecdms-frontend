@@ -1,7 +1,7 @@
-import React from 'react';
-import { FormHelperText, InputLabel, TextField } from '@mui/material';
-import Autocomplete from '@mui/material/Autocomplete';
-import { useField, useFormikContext } from 'formik';
+import React from "react";
+import { FormHelperText, InputLabel, TextField } from "@mui/material";
+import Autocomplete from "@mui/material/Autocomplete";
+import { useField, useFormikContext } from "formik";
 
 interface OptionType {
   label: string;
@@ -22,7 +22,7 @@ const CustomAutocomplete: React.FC<CustomAutocompleteProps> = ({
   label,
   placeholder,
   options = [],
-  labelField = 'label',
+  labelField = "label",
   disabled = false,
   name,
   ...props
@@ -43,10 +43,10 @@ const CustomAutocomplete: React.FC<CustomAutocompleteProps> = ({
         label={label}
         placeholder={placeholder}
         error={meta.touched && Boolean(meta.error)}
-        helperText={meta.touched && meta.error ? meta.error : ''}
+        helperText={meta.touched && meta.error ? meta.error : ""}
       />
     ),
-    [label, placeholder, meta.touched, meta.error]
+    [label, placeholder, meta.touched, meta.error],
   );
 
   return (
@@ -58,12 +58,14 @@ const CustomAutocomplete: React.FC<CustomAutocompleteProps> = ({
         onChange={handleChange}
         disableClearable
         options={options}
-        getOptionLabel={(option: any) => option[labelField] || ''}
+        getOptionLabel={(option: any) => option[labelField] || ""}
         disabled={disabled || isSubmitting}
         renderInput={renderInput}
         {...props}
       />
-      {meta.touched && meta.error && <FormHelperText error>{meta.error}</FormHelperText>}
+      {meta.touched && meta.error && (
+        <FormHelperText error>{meta.error}</FormHelperText>
+      )}
     </div>
   );
 };

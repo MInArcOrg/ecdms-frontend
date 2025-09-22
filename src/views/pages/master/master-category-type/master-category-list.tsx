@@ -1,16 +1,16 @@
 // components/MasterCategoryList.tsx
-import { Card, CardContent } from '@mui/material';
-import React, { Fragment, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import masterCategoryApiService from 'src/services/master-data/master-category-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { MasterCategory, MasterType } from 'src/types/master/master-types';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import MasterCategoryCard from './master-category-card';
-import MasterCategoryDrawer from './master-category-drawer';
+import { Card, CardContent } from "@mui/material";
+import React, { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import masterCategoryApiService from "src/services/master-data/master-category-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { MasterCategory, MasterType } from "src/types/master/master-types";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import MasterCategoryCard from "./master-category-card";
+import MasterCategoryDrawer from "./master-category-drawer";
 
 interface MasterCategoryListProps {
   model: string;
@@ -19,11 +19,18 @@ interface MasterCategoryListProps {
   selectedCategory: MasterCategory | null;
 }
 
-const MasterCategoryList: React.FC<MasterCategoryListProps> = ({ model, selectedType, onCategorySelect, selectedCategory }) => {
-  const fetchMasterCategory = (params: GetRequestParam): Promise<IApiResponse<MasterCategory[]>> => {
+const MasterCategoryList: React.FC<MasterCategoryListProps> = ({
+  model,
+  selectedType,
+  onCategorySelect,
+  selectedCategory,
+}) => {
+  const fetchMasterCategory = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<MasterCategory[]>> => {
     return masterCategoryApiService.getAll(model, {
       ...params,
-      filter: { ...params.filter, [`${model}type_id`]: selectedType?.id }
+      filter: { ...params.filter, [`${model}type_id`]: selectedType?.id },
     });
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
@@ -39,10 +46,10 @@ const MasterCategoryList: React.FC<MasterCategoryListProps> = ({ model, selected
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<MasterCategory[]>({
-    queryKey: ['masterCategory', model, selectedType?.id || ''],
-    fetchFunction: fetchMasterCategory
+    queryKey: ["masterCategory", model, selectedType?.id || ""],
+    fetchFunction: fetchMasterCategory,
   });
 
   const handleDelete = async (masterCategoryId: string) => {
@@ -76,9 +83,9 @@ const MasterCategoryList: React.FC<MasterCategoryListProps> = ({ model, selected
               onClick: toggleDrawer,
               onlyIcon: true,
               permission: {
-                action: 'create',
-                subject: ''
-              }
+                action: "create",
+                subject: "",
+              },
             }}
             ItemViewComponent={({ data }) => (
               <MasterCategoryCard

@@ -1,13 +1,13 @@
-import { FormikProps } from 'formik';
-import { useState } from 'react';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import RoadLengthTypeMasterForm from './road-length-type-master-form';
-import { RoadLengthType } from 'src/types/general/general-master';
-import roadLengthTypeMasterService from 'src/services/general/project/road-length-type-master-service';
+import { FormikProps } from "formik";
+import { useState } from "react";
+import { uploadFile } from "src/services/utils/file-utils";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import RoadLengthTypeMasterForm from "./road-length-type-master-form";
+import { RoadLengthType } from "src/types/general/general-master";
+import roadLengthTypeMasterService from "src/services/general/project/road-length-type-master-service";
 
 interface RoadLengthTypeMasterDrawerType {
   open: boolean;
@@ -17,8 +17,8 @@ interface RoadLengthTypeMasterDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required('Title is required'),
-  description: yup.string().required('Description is required')
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
 });
 
 const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
@@ -29,21 +29,25 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createRoadLengthTypeMaster = async (body: IApiPayload<RoadLengthType>) => {
+  const createRoadLengthTypeMaster = async (
+    body: IApiPayload<RoadLengthType>,
+  ) => {
     return await roadLengthTypeMasterService.create(body);
   };
 
-  const editRoadLengthTypeMaster = async (body: IApiPayload<RoadLengthType>) => {
-    return await roadLengthTypeMasterService.update(masterData?.id || '', body);
+  const editRoadLengthTypeMaster = async (
+    body: IApiPayload<RoadLengthType>,
+  ) => {
+    return await roadLengthTypeMasterService.update(masterData?.id || "", body);
   };
 
   const getPayload = (values: RoadLengthType) => {
     const payload = {
       data: {
         ...values,
-        id: masterData?.id
+        id: masterData?.id,
       },
-      files: uploadableFile ? [uploadableFile] : []
+      files: uploadableFile ? [uploadableFile] : [],
     };
     return payload;
   };
@@ -52,9 +56,18 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<RoadLengthType>, payload: IApiPayload<RoadLengthType>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<RoadLengthType>,
+    payload: IApiPayload<RoadLengthType>,
+  ) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `ROAD_LENGTH_TYPE`, response.payload.id, '', '');
+      uploadFile(
+        payload.files[0],
+        `ROAD_LENGTH_TYPE`,
+        response.payload.id,
+        "",
+        "",
+      );
     }
     refetch();
     handleClose();
@@ -62,7 +75,9 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-road-length-type' : 'create-road-length-type'}`}
+      title={`master-data.general-master.${
+        isEdit ? "edit-road-length-type" : "create-road-length-type"
+      }`}
       handleClose={handleClose}
       open={open}
     >
@@ -73,7 +88,9 @@ const RoadLengthTypeMasterDrawer = (props: RoadLengthTypeMasterDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editRoadLengthTypeMaster : createRoadLengthTypeMaster}
+          createActionFunc={
+            isEdit ? editRoadLengthTypeMaster : createRoadLengthTypeMaster
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

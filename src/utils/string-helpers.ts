@@ -16,12 +16,16 @@ export const StringHelpers = {
   cleanObject: (obj: Record<string, any>): Record<string, any> => {
     return Object.entries(obj).reduce(
       (acc, [key, value]) => {
-        if (value !== null && value !== undefined && !StringHelpers.isNullOrWhitespace(value)) {
+        if (
+          value !== null &&
+          value !== undefined &&
+          !StringHelpers.isNullOrWhitespace(value)
+        ) {
           acc[key] = value;
         }
         return acc;
       },
-      {} as Record<string, any>
+      {} as Record<string, any>,
     );
   },
 
@@ -31,7 +35,10 @@ export const StringHelpers = {
    * @param searchKeys - Array of keys to search
    * @returns Record<string, string> - The search filter object
    */
-  createSearchFilter: (searchTerm: string, searchKeys: string[]): Record<string, string> => {
+  createSearchFilter: (
+    searchTerm: string,
+    searchKeys: string[],
+  ): Record<string, string> => {
     return searchKeys.reduce((acc, key) => ({ ...acc, [key]: searchTerm }), {});
-  }
+  },
 };

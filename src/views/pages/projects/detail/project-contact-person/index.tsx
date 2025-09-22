@@ -1,32 +1,36 @@
 // src/views/project/project-contact-person-list.tsx
-'use client';
+"use client";
 
-import { Box } from '@mui/material';
-import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import projectContactPersonApiService from 'src/services/project/project-contact-person-service';
-import stakeholderApiService from 'src/services/stakeholder/stakeholder-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
-import ProjectContactPersonCard from './project-contact-person-card';
-import ProjectContactPersonDrawer from './project-contact-person-drawer';
-import type { ProjectContactPerson } from 'src/types/project/projext-contact-person';
-import type { Stakeholder } from 'src/types/stakeholder';
-import { contactPersonColumns } from './project-contact-person-row';
+import { Box } from "@mui/material";
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import projectContactPersonApiService from "src/services/project/project-contact-person-service";
+import stakeholderApiService from "src/services/stakeholder/stakeholder-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import type { GetRequestParam, IApiResponse } from "src/types/requests";
+import { formatCreatedAt } from "src/utils/formatter/date";
+import ItemsListing from "src/views/shared/listing";
+import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer";
+import ProjectContactPersonCard from "./project-contact-person-card";
+import ProjectContactPersonDrawer from "./project-contact-person-drawer";
+import type { ProjectContactPerson } from "src/types/project/projext-contact-person";
+import type { Stakeholder } from "src/types/stakeholder";
+import { contactPersonColumns } from "./project-contact-person-row";
 
 interface ProjectContactPersonListProps {
   projectId: string;
 }
 
-const ProjectContactPersonList: React.FC<ProjectContactPersonListProps> = ({ projectId }) => {
+const ProjectContactPersonList: React.FC<ProjectContactPersonListProps> = ({
+  projectId,
+}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<ProjectContactPerson | null>(null);
+  const [selectedRow, setSelectedRow] = useState<ProjectContactPerson | null>(
+    null,
+  );
   const [stakeholders, setStakeholders] = useState<Stakeholder[]>([]);
   const { t } = useTranslation();
 
@@ -36,17 +40,19 @@ const ProjectContactPersonList: React.FC<ProjectContactPersonListProps> = ({ pro
         const response = await stakeholderApiService.getAll({});
         setStakeholders(response.payload);
       } catch (error) {
-        console.error('Error fetching stakeholders:', error);
+        console.error("Error fetching stakeholders:", error);
       }
     };
 
     fetchStakeholders();
   }, []);
 
-  const fetchContactPersons = (params: GetRequestParam): Promise<IApiResponse<ProjectContactPerson[]>> => {
+  const fetchContactPersons = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<ProjectContactPerson[]>> => {
     return projectContactPersonApiService.getAll({
       ...params,
-      filter: { ...params.filter, project_id: projectId }
+      filter: { ...params.filter, project_id: projectId },
     });
   };
 
@@ -55,10 +61,10 @@ const ProjectContactPersonList: React.FC<ProjectContactPersonListProps> = ({ pro
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<ProjectContactPerson[]>({
-    queryKey: ['contactPersons'],
-    fetchFunction: fetchContactPersons
+    queryKey: ["contactPersons"],
+    fetchFunction: fetchContactPersons,
   });
 
   const toggleDrawer = () => {
@@ -87,26 +93,60 @@ const ProjectContactPersonList: React.FC<ProjectContactPersonListProps> = ({ pro
   };
 
   const getStakeholderName = (stakeholderId: string) => {
-    if (!stakeholders) return 'N/A';
+    if (!stakeholders) return "N/A";
     const stakeholder = stakeholders.find((s) => s.id === stakeholderId);
-    return stakeholder ? stakeholder.trade_name : 'N/A';
+    return stakeholder ? stakeholder.trade_name : "N/A";
   };
 
-  const mapContactPersonToDetailItems = (contactPerson: ProjectContactPerson): { title: string; value: string }[] => [
-    { title: t('project.project-contact-person.firstName'), value: contactPerson?.first_name || 'N/A' },
-    { title: t('project.project-contact-person.middleName'), value: contactPerson?.middle_name || 'N/A' },
-    { title: t('project.project-contact-person.lastName'), value: contactPerson?.last_name || 'N/A' },
-    { title: t('project.project-contact-person.position'), value: contactPerson?.position || 'N/A' },
-    { title: t('project.project-contact-person.department'), value: contactPerson?.department || 'N/A' },
-    { title: t('project.project-contact-person.nationalIdNo'), value: contactPerson?.national_id_no || 'N/A' },
-    { title: t('project.project-contact-person.gender'), value: contactPerson?.gender || 'N/A' },
-    { title: t('project.project-contact-person.phone'), value: contactPerson?.phone || 'N/A' },
-    { title: t('project.project-contact-person.email'), value: contactPerson?.email || 'N/A' },
-    { title: t('project.project-contact-person.stakeholder'), value: getStakeholderName(contactPerson?.stakeholder_id) },
+  const mapContactPersonToDetailItems = (
+    contactPerson: ProjectContactPerson,
+  ): { title: string; value: string }[] => [
     {
-      title: t('common.table-columns.created-at'),
-      value: contactPerson?.created_at ? formatCreatedAt(contactPerson.created_at) : 'N/A'
-    }
+      title: t("project.project-contact-person.firstName"),
+      value: contactPerson?.first_name || "N/A",
+    },
+    {
+      title: t("project.project-contact-person.middleName"),
+      value: contactPerson?.middle_name || "N/A",
+    },
+    {
+      title: t("project.project-contact-person.lastName"),
+      value: contactPerson?.last_name || "N/A",
+    },
+    {
+      title: t("project.project-contact-person.position"),
+      value: contactPerson?.position || "N/A",
+    },
+    {
+      title: t("project.project-contact-person.department"),
+      value: contactPerson?.department || "N/A",
+    },
+    {
+      title: t("project.project-contact-person.nationalIdNo"),
+      value: contactPerson?.national_id_no || "N/A",
+    },
+    {
+      title: t("project.project-contact-person.gender"),
+      value: contactPerson?.gender || "N/A",
+    },
+    {
+      title: t("project.project-contact-person.phone"),
+      value: contactPerson?.phone || "N/A",
+    },
+    {
+      title: t("project.project-contact-person.email"),
+      value: contactPerson?.email || "N/A",
+    },
+    {
+      title: t("project.project-contact-person.stakeholder"),
+      value: getStakeholderName(contactPerson?.stakeholder_id),
+    },
+    {
+      title: t("common.table-columns.created-at"),
+      value: contactPerson?.created_at
+        ? formatCreatedAt(contactPerson.created_at)
+        : "N/A",
+    },
   ];
 
   return (
@@ -126,20 +166,28 @@ const ProjectContactPersonList: React.FC<ProjectContactPersonListProps> = ({ pro
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapContactPersonToDetailItems(selectedRow as ProjectContactPerson)}
-          id={selectedRow?.id || ''}
+          data={mapContactPersonToDetailItems(
+            selectedRow as ProjectContactPerson,
+          )}
+          id={selectedRow?.id || ""}
           hasReference={true}
           fileType="PROJECT_CONTACT_PERSON"
-          title={t('project.project-contact-person.details')}
+          title={t("project.project-contact-person.details")}
         />
       )}
 
       <ItemsListing
-        title={t('project.project-contact-person.title')}
+        title={t("project.project-contact-person.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: contactPersonColumns(handleClickDetail, handleEdit, handleDelete, t, stakeholders)
+          headers: contactPersonColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+            stakeholders,
+          ),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -157,9 +205,9 @@ const ProjectContactPersonList: React.FC<ProjectContactPersonListProps> = ({ pro
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: 'create',
-            subject: 'projectcontactperson'
-          }
+            action: "create",
+            subject: "projectcontactperson",
+          },
         }}
         fetchDataFunction={refetch}
         items={contactPersons || []}

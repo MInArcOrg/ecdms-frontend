@@ -1,15 +1,15 @@
-import { FormikProps } from 'formik';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import projectPaymentApiService from 'src/services/project/project-payment-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { ProjectPayment } from 'src/types/project/project-finance';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import ProjectPaymentForm from './project-payment-form';
+import { FormikProps } from "formik";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import projectPaymentApiService from "src/services/project/project-payment-service";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { uploadFile } from "src/services/utils/file-utils";
+import { ProjectPayment } from "src/types/project/project-finance";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import ProjectPaymentForm from "./project-payment-form";
 
 interface ProjectPaymentDrawerType {
   open: boolean;
@@ -30,31 +30,42 @@ const ProjectPaymentDrawer = (props: ProjectPaymentDrawerType) => {
   };
   const validationSchema = yup.object().shape({
     title: yup.string().required(),
-    amount: yup.number().required(`${t('Amount')} ${t('is required')}`),
-    retention: yup.number().required(`${t('Retention')} ${t('is required')}`)
+    amount: yup.number().required(`${t("Amount")} ${t("is required")}`),
+    retention: yup.number().required(`${t("Retention")} ${t("is required")}`),
   });
 
   const isEdit = Boolean(projectPayment?.id);
 
-  const createProjectPayment = async (body: IApiPayload<ProjectPayment>) => projectPaymentApiService.create(body);
+  const createProjectPayment = async (body: IApiPayload<ProjectPayment>) =>
+    projectPaymentApiService.create(body);
 
-  const editProjectPayment = async (body: IApiPayload<ProjectPayment>) => projectPaymentApiService.update(projectPayment?.id || '', body);
+  const editProjectPayment = async (body: IApiPayload<ProjectPayment>) =>
+    projectPaymentApiService.update(projectPayment?.id || "", body);
 
   const getPayload = (values: ProjectPayment) => ({
     data: {
       ...values,
       id: projectPayment?.id,
       project_id: projectId,
-      type
+      type,
     },
-    files: uploadableFile ? [uploadableFile] : []
+    files: uploadableFile ? [uploadableFile] : [],
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<ProjectPayment>, payload: IApiPayload<ProjectPayment>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<ProjectPayment>,
+    payload: IApiPayload<ProjectPayment>,
+  ) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], uploadableProjectFileTypes.payment, response.payload.id, '', '');
+      uploadFile(
+        payload.files[0],
+        uploadableProjectFileTypes.payment,
+        response.payload.id,
+        "",
+        "",
+      );
     }
     refetch();
     toggle();
@@ -65,7 +76,9 @@ const ProjectPaymentDrawer = (props: ProjectPaymentDrawerType) => {
   return (
     <CustomSideDrawer
       title={`project.project-${type.toLocaleLowerCase()}.${
-        isEdit ? `edit-project-${type.toLocaleLowerCase()}` : `create-project-${type.toLocaleLowerCase()}`
+        isEdit
+          ? `edit-project-${type.toLocaleLowerCase()}`
+          : `create-project-${type.toLocaleLowerCase()}`
       }`}
       handleClose={handleClose}
       open={open}
@@ -78,14 +91,20 @@ const ProjectPaymentDrawer = (props: ProjectPaymentDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             type,
-            ...projectPayment
+            ...projectPayment,
           }}
           createActionFunc={isEdit ? editProjectPayment : createProjectPayment}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<ProjectPayment>) => {
-            return <ProjectPaymentForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
+            return (
+              <ProjectPaymentForm
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+              />
+            );
           }}
         </FormPageWrapper>
       )}

@@ -1,24 +1,24 @@
-'use client';
+"use client";
 
-import type React from 'react';
+import type React from "react";
 
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { SolarResourceInformation } from 'src/types/project/other';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
-import SolarResourceInformationCard from './solar-resource-information-card';
-import SolarResourceInformationDrawer from './solar-resource-information-drawer';
-import { solarResourceInformationColumns } from './solar-resource-information-row';
+import { Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import projectOtherApiSecondService from "src/services/project/project-other-second-service";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import type { SolarResourceInformation } from "src/types/project/other";
+import type { GetRequestParam, IApiResponse } from "src/types/requests";
+import { formatCreatedAt } from "src/utils/formatter/date";
+import ItemsListing from "src/views/shared/listing";
+import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-detail-drawer";
+import SolarResourceInformationCard from "./solar-resource-information-card";
+import SolarResourceInformationDrawer from "./solar-resource-information-drawer";
+import { solarResourceInformationColumns } from "./solar-resource-information-row";
 
 interface SolarResourceInformationListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -26,17 +26,25 @@ interface SolarResourceInformationListProps {
   projectId: string;
 }
 
-const SolarResourceInformationList: React.FC<SolarResourceInformationListProps> = ({ otherSubMenu, projectId, typeId }) => {
+const SolarResourceInformationList: React.FC<
+  SolarResourceInformationListProps
+> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<SolarResourceInformation | null>(null);
+  const [selectedRow, setSelectedRow] =
+    useState<SolarResourceInformation | null>(null);
   const { t } = useTranslation();
 
-  const fetchSolarResourceInformations = (params: GetRequestParam): Promise<IApiResponse<SolarResourceInformation[]>> => {
-    return projectOtherApiSecondService<SolarResourceInformation>().getAll(otherSubMenu?.apiRoute || '', {
-      ...params,
-      filter: { ...params.filter, project_id: projectId }
-    });
+  const fetchSolarResourceInformations = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<SolarResourceInformation[]>> => {
+    return projectOtherApiSecondService<SolarResourceInformation>().getAll(
+      otherSubMenu?.apiRoute || "",
+      {
+        ...params,
+        filter: { ...params.filter, project_id: projectId },
+      },
+    );
   };
 
   const {
@@ -44,10 +52,10 @@ const SolarResourceInformationList: React.FC<SolarResourceInformationListProps> 
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<SolarResourceInformation[]>({
-    queryKey: ['solarResourceInformations'],
-    fetchFunction: fetchSolarResourceInformations
+    queryKey: ["solarResourceInformations"],
+    fetchFunction: fetchSolarResourceInformations,
   });
 
   const toggleDrawer = () => {
@@ -66,52 +74,77 @@ const SolarResourceInformationList: React.FC<SolarResourceInformationListProps> 
   };
 
   const handleDelete = async (solarResourceInformationId: string) => {
-    await projectOtherApiSecondService<SolarResourceInformation>().delete(otherSubMenu?.apiRoute || '', solarResourceInformationId);
+    await projectOtherApiSecondService<SolarResourceInformation>().delete(
+      otherSubMenu?.apiRoute || "",
+      solarResourceInformationId,
+    );
     refetch();
   };
 
-  const handleClickDetail = (solarResourceInformation: SolarResourceInformation) => {
+  const handleClickDetail = (
+    solarResourceInformation: SolarResourceInformation,
+  ) => {
     toggleDetailDrawer();
     setSelectedRow(solarResourceInformation);
   };
 
   const mapSolarResourceInformationToDetailItems = (
-    solarResourceInformation: SolarResourceInformation
+    solarResourceInformation: SolarResourceInformation,
   ): { title: string; value: string }[] => [
     {
-      title: t('project.other.solar-resource-information.details.annual-solar-radiation'),
+      title: t(
+        "project.other.solar-resource-information.details.annual-solar-radiation",
+      ),
       value:
         solarResourceInformation?.annual_solar_radiation !== undefined
-          ? `${solarResourceInformation.annual_solar_radiation} ${t('common.kwh-per-m2')}`
-          : 'N/A'
+          ? `${solarResourceInformation.annual_solar_radiation} ${t(
+              "common.kwh-per-m2",
+            )}`
+          : "N/A",
     },
     {
-      title: t('project.other.solar-resource-information.details.solar-panel-efficiency'),
-      value: solarResourceInformation?.solar_panel_efficiency !== undefined ? `${solarResourceInformation.solar_panel_efficiency}%` : 'N/A'
+      title: t(
+        "project.other.solar-resource-information.details.solar-panel-efficiency",
+      ),
+      value:
+        solarResourceInformation?.solar_panel_efficiency !== undefined
+          ? `${solarResourceInformation.solar_panel_efficiency}%`
+          : "N/A",
     },
     {
-      title: t('project.other.solar-resource-information.details.annual-energy-production'),
+      title: t(
+        "project.other.solar-resource-information.details.annual-energy-production",
+      ),
       value:
         solarResourceInformation?.annual_energy_production !== undefined
-          ? `${solarResourceInformation.annual_energy_production} ${t('common.mwh')}`
-          : 'N/A'
+          ? `${solarResourceInformation.annual_energy_production} ${t(
+              "common.mwh",
+            )}`
+          : "N/A",
     },
     {
-      title: t('project.other.solar-resource-information.details.plant-life'),
-      value: solarResourceInformation?.plant_life !== undefined ? `${solarResourceInformation.plant_life} ${t('common.years')}` : 'N/A'
+      title: t("project.other.solar-resource-information.details.plant-life"),
+      value:
+        solarResourceInformation?.plant_life !== undefined
+          ? `${solarResourceInformation.plant_life} ${t("common.years")}`
+          : "N/A",
     },
     {
-      title: t('project.other.solar-resource-information.details.remark'),
-      value: solarResourceInformation?.remark || 'N/A'
+      title: t("project.other.solar-resource-information.details.remark"),
+      value: solarResourceInformation?.remark || "N/A",
     },
     {
-      title: t('common.table-columns.created-at'),
-      value: solarResourceInformation?.created_at ? formatCreatedAt(solarResourceInformation.created_at) : 'N/A'
+      title: t("common.table-columns.created-at"),
+      value: solarResourceInformation?.created_at
+        ? formatCreatedAt(solarResourceInformation.created_at)
+        : "N/A",
     },
     {
-      title: t('common.table-columns.updated-at'),
-      value: solarResourceInformation?.updated_at ? formatCreatedAt(solarResourceInformation.updated_at) : 'N/A'
-    }
+      title: t("common.table-columns.updated-at"),
+      value: solarResourceInformation?.updated_at
+        ? formatCreatedAt(solarResourceInformation.updated_at)
+        : "N/A",
+    },
   ];
 
   return (
@@ -131,20 +164,30 @@ const SolarResourceInformationList: React.FC<SolarResourceInformationListProps> 
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapSolarResourceInformationToDetailItems(selectedRow as SolarResourceInformation)}
+          data={mapSolarResourceInformationToDetailItems(
+            selectedRow as SolarResourceInformation,
+          )}
           hasReference={true}
-          id={selectedRow?.id || ''}
+          id={selectedRow?.id || ""}
           fileType={uploadableProjectFileTypes.other.solarResourceInformation}
-          title={t('project.other.solar-resource-information.solar-resource-information-details')}
+          title={t(
+            "project.other.solar-resource-information.solar-resource-information-details",
+          )}
         />
       )}
 
       <ItemsListing
-        title={t('project.other.solar-resource-information.title')}
+        title={t("project.other.solar-resource-information.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: solarResourceInformationColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
+          headers: solarResourceInformationColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+            refetch,
+          ),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -161,9 +204,9 @@ const SolarResourceInformationList: React.FC<SolarResourceInformationListProps> 
           onClick: toggleDrawer,
           onlyIcon: true,
           permission: {
-            action: 'create',
-            subject: 'solarresourceinformation'
-          }
+            action: "create",
+            subject: "solarresourceinformation",
+          },
         }}
         fetchDataFunction={refetch}
         items={solarResourceInformations || []}

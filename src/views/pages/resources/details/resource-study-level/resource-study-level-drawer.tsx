@@ -1,14 +1,14 @@
-import { FormikProps } from 'formik';
-import React, { useState } from 'react';
-import resourceStudyLevelApiService from 'src/services/resource/resource-study-level-service';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import { ResourceStudyLevel } from 'src/types/resource';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import ResourceStudyLevelForm from './resource-study-level-form';
-import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
+import { FormikProps } from "formik";
+import React, { useState } from "react";
+import resourceStudyLevelApiService from "src/services/resource/resource-study-level-service";
+import { uploadFile } from "src/services/utils/file-utils";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import { ResourceStudyLevel } from "src/types/resource";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import ResourceStudyLevelForm from "./resource-study-level-form";
+import { uploadableResourceFileTypes } from "src/services/utils/file-constants";
 
 interface ResourceStudyLevelDrawerType {
   open: boolean;
@@ -20,10 +20,12 @@ interface ResourceStudyLevelDrawerType {
 
 const validationSchema = yup.object().shape({
   studylevel_id: yup.string().required(),
-  description: yup.string().required()
+  description: yup.string().required(),
 });
 
-const ResourceStudyLevelDrawer: React.FC<ResourceStudyLevelDrawerType> = (props) => {
+const ResourceStudyLevelDrawer: React.FC<ResourceStudyLevelDrawerType> = (
+  props,
+) => {
   const { open, toggle, refetch, resourceStudyLevel, resourceId } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
@@ -32,21 +34,28 @@ const ResourceStudyLevelDrawer: React.FC<ResourceStudyLevelDrawerType> = (props)
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createResourceStudyLevel = async (body: IApiPayload<ResourceStudyLevel>) => {
+  const createResourceStudyLevel = async (
+    body: IApiPayload<ResourceStudyLevel>,
+  ) => {
     return await resourceStudyLevelApiService.create(body);
   };
 
-  const editResourceStudyLevel = async (body: IApiPayload<ResourceStudyLevel>) => {
-    return await resourceStudyLevelApiService.update(resourceStudyLevel?.id || '', body);
+  const editResourceStudyLevel = async (
+    body: IApiPayload<ResourceStudyLevel>,
+  ) => {
+    return await resourceStudyLevelApiService.update(
+      resourceStudyLevel?.id || "",
+      body,
+    );
   };
 
   const getPayload = (values: ResourceStudyLevel) => ({
     data: {
       ...values,
       id: resourceStudyLevel?.id,
-      resource_id: resourceId
+      resource_id: resourceId,
     },
-    files: uploadableFile ? [uploadableFile] : []
+    files: uploadableFile ? [uploadableFile] : [],
   });
 
   const handleClose = () => {
@@ -54,9 +63,18 @@ const ResourceStudyLevelDrawer: React.FC<ResourceStudyLevelDrawerType> = (props)
     setUploadableFile(null);
   };
 
-  const onActionSuccess = async (response: IApiResponse<ResourceStudyLevel>, payload: IApiPayload<ResourceStudyLevel>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<ResourceStudyLevel>,
+    payload: IApiPayload<ResourceStudyLevel>,
+  ) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], uploadableResourceFileTypes.resourceStudyLevel, response.payload.id, '', '');
+      uploadFile(
+        payload.files[0],
+        uploadableResourceFileTypes.resourceStudyLevel,
+        response.payload.id,
+        "",
+        "",
+      );
     }
     refetch();
     toggle();
@@ -66,7 +84,9 @@ const ResourceStudyLevelDrawer: React.FC<ResourceStudyLevelDrawerType> = (props)
 
   return (
     <CustomSideDrawer
-      title={`resource.resource-study-level.${isEdit ? 'edit-resource-study-level' : 'create-resource-study-level'}`}
+      title={`resource.resource-study-level.${
+        isEdit ? "edit-resource-study-level" : "create-resource-study-level"
+      }`}
       handleClose={handleClose}
       open={open}
     >
@@ -77,7 +97,9 @@ const ResourceStudyLevelDrawer: React.FC<ResourceStudyLevelDrawerType> = (props)
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={resourceStudyLevel}
-          createActionFunc={isEdit ? editResourceStudyLevel : createResourceStudyLevel}
+          createActionFunc={
+            isEdit ? editResourceStudyLevel : createResourceStudyLevel
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

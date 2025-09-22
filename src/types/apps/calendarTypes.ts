@@ -1,10 +1,15 @@
 // ** Types
-import { Dispatch } from 'redux';
+import { Dispatch } from "redux";
 
 // ** Theme Type Import
-import { ThemeColor } from 'src/@core/layouts/types';
+import { ThemeColor } from "src/@core/layouts/types";
 
-export type CalendarFiltersType = 'Personal' | 'Business' | 'Family' | 'Holiday' | 'ETC';
+export type CalendarFiltersType =
+  | "Personal"
+  | "Business"
+  | "Family"
+  | "Holiday"
+  | "ETC";
 
 export type EventDateType = Date | null | undefined;
 
@@ -66,7 +71,7 @@ export type CalendarType = {
   calendarApi: any;
   dispatch: Dispatch<any>;
   store: CalendarStoreType;
-  direction: 'ltr' | 'rtl';
+  direction: "ltr" | "rtl";
   calendarsColor: CalendarColors;
   setCalendarApi: (val: any) => void;
   handleLeftSidebarToggle: () => void;

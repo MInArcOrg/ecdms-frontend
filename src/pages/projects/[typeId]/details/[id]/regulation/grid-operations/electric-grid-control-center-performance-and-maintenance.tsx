@@ -1,16 +1,20 @@
-import { useRouter } from 'next/router';
-import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
-import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { findSubMenuItem, regulationIds } from '../(subMenuItems)';
+import { useRouter } from "next/router";
+import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
+import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
+import subMenuItems, {
+  findSubMenuItem,
+  regulationIds,
+} from "../(subMenuItems)";
 
 const defaultMenuItem = findSubMenuItem(
-  subMenuItems('', ''),
-  regulationIds.gridOperations.electricGridControlCenterPerformanceAndMaintenance
+  subMenuItems("", ""),
+  regulationIds.gridOperations
+    .electricGridControlCenterPerformanceAndMaintenance,
 );
 
 const ElectricGridControlCenterPerformanceAndMaintenancePage = () => {
   const router = useRouter();
-  const { id = '', typeId = '' } = router.query;
+  const { id = "", typeId = "" } = router.query;
 
   // const menuItem = findSubMenuItem(
   //   subMenuItems(id as string, typeId as string),
@@ -20,7 +24,10 @@ const ElectricGridControlCenterPerformanceAndMaintenancePage = () => {
   return (
     <ProjectLayout
       activeMenuId={projectMenuIds.regulation}
-      activeSubMenuId={regulationIds.gridOperations.electricGridControlCenterPerformanceAndMaintenance}
+      activeSubMenuId={
+        regulationIds.gridOperations
+          .electricGridControlCenterPerformanceAndMaintenance
+      }
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <>Electric Grid Control Center Performance and Maintenance</>
@@ -31,7 +38,7 @@ const ElectricGridControlCenterPerformanceAndMaintenancePage = () => {
 // Access control configuration
 ElectricGridControlCenterPerformanceAndMaintenancePage.acl = {
   subject: defaultMenuItem?.model,
-  action: 'view'
+  action: "view",
 };
 
 export default ElectricGridControlCenterPerformanceAndMaintenancePage;

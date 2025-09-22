@@ -1,7 +1,7 @@
-import Department from 'src/types/department/department';
-import Position from 'src/types/department/position';
-import { GeneralMaster } from 'src/types/general/general-master';
-import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
+import Department from "src/types/department/department";
+import Position from "src/types/department/position";
+import { GeneralMaster } from "src/types/general/general-master";
+import EthiopianDate from "src/views/components/custom/ethio-calendar/ethiopian-date";
 
 // src/types/users.ts
 type User = {

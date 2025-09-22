@@ -1,10 +1,10 @@
-import { Grid } from '@mui/material';
-import { FormikProps } from 'formik';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { ProjectExtensionTime } from 'src/types/project/project-time';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
+import { Grid } from "@mui/material";
+import { FormikProps } from "formik";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { ProjectExtensionTime } from "src/types/project/project-time";
+import CustomTextBox from "src/views/shared/form/custom-text-box";
+import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 
 interface ProjectExtensionTimeFormProps {
   formik: FormikProps<ProjectExtensionTime>;
@@ -12,7 +12,11 @@ interface ProjectExtensionTimeFormProps {
   onFileChange: (file: File | null) => void;
 }
 
-const ProjectExtensionTimeForm: React.FC<ProjectExtensionTimeFormProps> = ({ formik, file, onFileChange }) => {
+const ProjectExtensionTimeForm: React.FC<ProjectExtensionTimeFormProps> = ({
+  formik,
+  file,
+  onFileChange,
+}) => {
   const { t: transl } = useTranslation();
 
   return (
@@ -20,8 +24,10 @@ const ProjectExtensionTimeForm: React.FC<ProjectExtensionTimeFormProps> = ({ for
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl('project.project-extension-time.form.number-of-days')}
-          placeholder={transl('project.project-extension-time.form.number-of-days')}
+          label={transl("project.project-extension-time.form.number-of-days")}
+          placeholder={transl(
+            "project.project-extension-time.form.number-of-days",
+          )}
           name="number_of_days"
           size="small"
           type="number"
@@ -31,8 +37,8 @@ const ProjectExtensionTimeForm: React.FC<ProjectExtensionTimeFormProps> = ({ for
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl('project.project-extension-time.form.reason')}
-          placeholder={transl('project.project-extension-time.form.reason')}
+          label={transl("project.project-extension-time.form.reason")}
+          placeholder={transl("project.project-extension-time.form.reason")}
           name="reason"
           multiline
           rows="4"
@@ -41,7 +47,11 @@ const ProjectExtensionTimeForm: React.FC<ProjectExtensionTimeFormProps> = ({ for
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
+        <CustomFileUpload
+          label={transl("common.form.file-upload")}
+          file={file}
+          onFileChange={onFileChange}
+        />
       </Grid>
     </Grid>
   );

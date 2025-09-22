@@ -1,13 +1,15 @@
-import { AxiosResponse } from 'axios';
-import { CurrentCondition } from 'src/types/general/general-master';
-import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import { AxiosResponse } from "axios";
+import { CurrentCondition } from "src/types/general/general-master";
+import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const currentConditionMasterService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<CurrentCondition[]>> =>
+  getAll: (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<CurrentCondition[]>> =>
     buildGetRequest(`/masterdata/current-conditions`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -22,7 +24,10 @@ const currentConditionMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/current-conditions-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as CurrentCondition[])
+      .then(
+        (response: AxiosResponse<IApiResponse>) =>
+          response.data.payload as unknown as CurrentCondition[],
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -40,12 +45,15 @@ const currentConditionMasterService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (id: string, body: IApiPayload<CurrentCondition>): Promise<IApiResponse> =>
+  update: (
+    id: string,
+    body: IApiPayload<CurrentCondition>,
+  ): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/current-conditions/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default currentConditionMasterService;

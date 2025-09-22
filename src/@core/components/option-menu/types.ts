@@ -1,15 +1,15 @@
 // ** React Import
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 // ** MUI Imports
-import { MenuProps } from '@mui/material/Menu';
-import { DividerProps } from '@mui/material/Divider';
-import { MenuItemProps } from '@mui/material/MenuItem';
-import { IconButtonProps } from '@mui/material/IconButton';
+import { MenuProps } from "@mui/material/Menu";
+import { DividerProps } from "@mui/material/Divider";
+import { MenuItemProps } from "@mui/material/MenuItem";
+import { IconButtonProps } from "@mui/material/IconButton";
 
 // ** Types
-import { LinkProps } from 'next/link';
-import { IconProps } from '@iconify/react';
+import { LinkProps } from "next/link";
+import { IconProps } from "@iconify/react";
 
 export type OptionDividerType = {
   divider: boolean;
@@ -24,7 +24,7 @@ export type OptionMenuItemType = {
   text: ReactNode;
   icon?: ReactNode;
   linkProps?: LinkProps;
-  href?: LinkProps['href'];
+  href?: LinkProps["href"];
   menuItemProps?: MenuItemProps;
   divider?: never;
   dividerProps?: never;
@@ -37,6 +37,6 @@ export type OptionsMenuType = {
   options: OptionType[];
   leftAlignMenu?: boolean;
   iconButtonProps?: IconButtonProps;
-  iconProps?: Omit<IconProps, 'icon'>;
-  menuProps?: Omit<MenuProps, 'open'>;
+  iconProps?: Omit<IconProps, "icon">;
+  menuProps?: Omit<MenuProps, "open">;
 };

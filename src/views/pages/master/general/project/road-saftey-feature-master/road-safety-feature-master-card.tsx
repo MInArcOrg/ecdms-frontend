@@ -1,16 +1,16 @@
 // components/RoadSafetyFeatureList.tsx
-import { Box, CardActions, CardContent, Grid, Typography } from '@mui/material';
-import { Fragment } from 'react';
-import { RoadSafetyFeature } from 'src/types/general/general-master';
-import FileDrawer from 'src/views/components/custom/files-drawer';
-import ModelActionComponent from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
+import { Box, CardActions, CardContent, Grid, Typography } from "@mui/material";
+import { Fragment } from "react";
+import { RoadSafetyFeature } from "src/types/general/general-master";
+import FileDrawer from "src/views/components/custom/files-drawer";
+import ModelActionComponent from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
 
 const RoadSafetyFeatureMasterCard = ({
   generalMaster,
   onEdit,
   onDelete,
-  refetch
+  refetch,
 }: {
   type: string;
   generalMaster: RoadSafetyFeature;
@@ -24,7 +24,7 @@ const RoadSafetyFeatureMasterCard = ({
       <CardContent>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: "flex" }}>
               <Box>
                 <Typography variant="h5" component="div">
                   {generalMaster.title}
@@ -36,19 +36,20 @@ const RoadSafetyFeatureMasterCard = ({
             </Box>
           </Grid>
           <Grid item>
-            <CardActions style={{ justifyContent: 'flex-end' }}>
+            <CardActions style={{ justifyContent: "flex-end" }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id} type="ROAD_SAFETY_FEATURE" /> &nbsp;
+                <FileDrawer id={generalMaster.id} type="ROAD_SAFETY_FEATURE" />{" "}
+                &nbsp;
                 <ModelActionComponent
-                  model={'roadsafetyfeature'}
+                  model={"roadsafetyfeature"}
                   model_id={generalMaster.id}
                   refetchModel={refetch}
                   resubmit={function (): void {
-                    throw new Error('Function not implemented.');
+                    throw new Error("Function not implemented.");
                   }}
-                  title={''}
+                  title={""}
                   postAction={function (): void {
-                    throw new Error('Function not implemented.');
+                    throw new Error("Function not implemented.");
                   }}
                 />
                 <RowOptions
@@ -57,12 +58,12 @@ const RoadSafetyFeatureMasterCard = ({
                   item={generalMaster}
                   options={[]}
                   deletePermissionRule={{
-                    action: 'delete',
-                    subject: 'roadsafetyfeature'
+                    action: "delete",
+                    subject: "roadsafetyfeature",
                   }}
                   editPermissionRule={{
-                    action: 'update',
-                    subject: 'roadsafetyfeature'
+                    action: "update",
+                    subject: "roadsafetyfeature",
                   }}
                 />
               </Fragment>

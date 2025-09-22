@@ -1,5 +1,5 @@
-import User from 'src/types/admin/user';
-import { IApiResponse } from 'src/types/requests';
+import User from "src/types/admin/user";
+import { IApiResponse } from "src/types/requests";
 
 export type ErrCallbackType = (err: IApiResponse) => void;
 

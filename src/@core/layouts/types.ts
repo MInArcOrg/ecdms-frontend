@@ -1,27 +1,33 @@
 // ** Type Imports
-import { ReactNode } from 'react';
-import { AppBarProps } from '@mui/material/AppBar';
-import { Theme, SxProps, PaletteMode } from '@mui/material';
-import { Settings } from 'src/@core/context/settingsContext';
-import { SwipeableDrawerProps } from '@mui/material/SwipeableDrawer';
+import { ReactNode } from "react";
+import { AppBarProps } from "@mui/material/AppBar";
+import { Theme, SxProps, PaletteMode } from "@mui/material";
+import { Settings } from "src/@core/context/settingsContext";
+import { SwipeableDrawerProps } from "@mui/material/SwipeableDrawer";
 
-export type Layout = 'vertical' | 'horizontal' | 'blank' | 'blankWithAppBar';
+export type Layout = "vertical" | "horizontal" | "blank" | "blankWithAppBar";
 
-export type Skin = 'default' | 'bordered';
+export type Skin = "default" | "bordered";
 
-export type Mode = PaletteMode | 'semi-dark';
+export type Mode = PaletteMode | "semi-dark";
 
-export type ContentWidth = 'full' | 'boxed';
+export type ContentWidth = "full" | "boxed";
 
-export type AppBar = 'fixed' | 'static' | 'hidden';
+export type AppBar = "fixed" | "static" | "hidden";
 
-export type Footer = 'fixed' | 'static' | 'hidden';
+export type Footer = "fixed" | "static" | "hidden";
 
-export type ThemeColor = 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success';
+export type ThemeColor =
+  | "primary"
+  | "secondary"
+  | "error"
+  | "warning"
+  | "info"
+  | "success";
 
-export type VerticalNavToggle = 'accordion' | 'collapse';
+export type VerticalNavToggle = "accordion" | "collapse";
 
-export type HorizontalMenuToggle = 'hover' | 'click';
+export type HorizontalMenuToggle = "hover" | "click";
 
 export type BlankLayoutProps = {
   children: ReactNode;
@@ -46,7 +52,14 @@ export type NavGroup = {
   subject?: string;
   badgeContent?: string;
   children?: (NavGroup | NavLink)[];
-  badgeColor?: 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info';
+  badgeColor?:
+    | "default"
+    | "primary"
+    | "secondary"
+    | "success"
+    | "error"
+    | "warning"
+    | "info";
 };
 
 export type NavLink = {
@@ -60,7 +73,14 @@ export type NavLink = {
   badgeContent?: string;
   externalLink?: boolean;
   openInNewTab?: boolean;
-  badgeColor?: 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info';
+  badgeColor?:
+    | "default"
+    | "primary"
+    | "secondary"
+    | "success"
+    | "error"
+    | "warning"
+    | "info";
 };
 
 export type VerticalNavItemsType = (NavLink | NavGroup | NavSectionTitle)[];
@@ -84,7 +104,7 @@ export type VerticalLayoutProps = {
     branding?: (props?: any) => ReactNode;
     afterContent?: (props?: any) => ReactNode;
     beforeContent?: (props?: any) => ReactNode;
-    componentProps?: Omit<SwipeableDrawerProps, 'open' | 'onOpen' | 'onClose'>;
+    componentProps?: Omit<SwipeableDrawerProps, "open" | "onOpen" | "onClose">;
   };
 };
 

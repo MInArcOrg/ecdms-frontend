@@ -1,11 +1,11 @@
-import * as yup from 'yup';
-import { FormikProps } from 'formik';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import ProjectStatusForm from './project-status-form'; // Import your projectStatus form component
-import { IApiPayload } from 'src/types/requests';
-import { ProjectStatus } from 'src/types/project';
-import projectStatusApiService from 'src/services/project/project-status-service';
+import * as yup from "yup";
+import { FormikProps } from "formik";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import ProjectStatusForm from "./project-status-form"; // Import your projectStatus form component
+import { IApiPayload } from "src/types/requests";
+import { ProjectStatus } from "src/types/project";
+import projectStatusApiService from "src/services/project/project-status-service";
 
 interface ProjectStatusDrawerType {
   open: boolean;
@@ -17,7 +17,7 @@ interface ProjectStatusDrawerType {
 
 const validationSchema = yup.object().shape({
   status_id: yup.string().required(),
-  description: yup.string()
+  description: yup.string(),
 });
 
 const ProjectStatusDrawer = (props: ProjectStatusDrawerType) => {
@@ -35,9 +35,9 @@ const ProjectStatusDrawer = (props: ProjectStatusDrawerType) => {
       data: {
         description: values.description,
         status_id: values.status_id,
-        project_id: projectId
+        project_id: projectId,
       } as ProjectStatus,
-      files: [] // Adjust if you need to handle files
+      files: [], // Adjust if you need to handle files
     };
     return payload;
   };
@@ -54,7 +54,9 @@ const ProjectStatusDrawer = (props: ProjectStatusDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.project-status.${isEdit ? 'edit-project-status' : 'create-project-status'}`}
+      title={`project.project-status.${
+        isEdit ? "edit-project-status" : "create-project-status"
+      }`}
       handleClose={handleClose}
       open={open}
     >

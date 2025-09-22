@@ -1,13 +1,13 @@
-import { FormikProps } from 'formik';
-import { useState } from 'react';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import BridgeStructureTypeMasterForm from './bridge-structure-type-master-form';
-import { BridgeStructureType } from 'src/types/general/general-master';
-import bridgeStructureTypeMasterService from 'src/services/general/project/bridge-structure-type-master-service';
+import { FormikProps } from "formik";
+import { useState } from "react";
+import { uploadFile } from "src/services/utils/file-utils";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import BridgeStructureTypeMasterForm from "./bridge-structure-type-master-form";
+import { BridgeStructureType } from "src/types/general/general-master";
+import bridgeStructureTypeMasterService from "src/services/general/project/bridge-structure-type-master-service";
 
 interface BridgeStructureTypeMasterDrawerType {
   open: boolean;
@@ -17,11 +17,13 @@ interface BridgeStructureTypeMasterDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required('Title is required'),
-  description: yup.string().required('Description is required')
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
 });
 
-const BridgeStructureTypeMasterDrawer = (props: BridgeStructureTypeMasterDrawerType) => {
+const BridgeStructureTypeMasterDrawer = (
+  props: BridgeStructureTypeMasterDrawerType,
+) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,21 +31,28 @@ const BridgeStructureTypeMasterDrawer = (props: BridgeStructureTypeMasterDrawerT
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createBridgeStructureTypeMaster = async (body: IApiPayload<BridgeStructureType>) => {
+  const createBridgeStructureTypeMaster = async (
+    body: IApiPayload<BridgeStructureType>,
+  ) => {
     return await bridgeStructureTypeMasterService.create(body);
   };
 
-  const editBridgeStructureTypeMaster = async (body: IApiPayload<BridgeStructureType>) => {
-    return await bridgeStructureTypeMasterService.update(masterData?.id || '', body);
+  const editBridgeStructureTypeMaster = async (
+    body: IApiPayload<BridgeStructureType>,
+  ) => {
+    return await bridgeStructureTypeMasterService.update(
+      masterData?.id || "",
+      body,
+    );
   };
 
   const getPayload = (values: BridgeStructureType) => {
     const payload = {
       data: {
         ...values,
-        id: masterData?.id
+        id: masterData?.id,
       },
-      files: uploadableFile ? [uploadableFile] : []
+      files: uploadableFile ? [uploadableFile] : [],
     };
     return payload;
   };
@@ -52,9 +61,18 @@ const BridgeStructureTypeMasterDrawer = (props: BridgeStructureTypeMasterDrawerT
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<BridgeStructureType>, payload: IApiPayload<BridgeStructureType>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<BridgeStructureType>,
+    payload: IApiPayload<BridgeStructureType>,
+  ) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `BRIDGE_STRUCTURE_TYPE`, response.payload.id, '', '');
+      uploadFile(
+        payload.files[0],
+        `BRIDGE_STRUCTURE_TYPE`,
+        response.payload.id,
+        "",
+        "",
+      );
     }
     refetch();
     handleClose();
@@ -62,7 +80,9 @@ const BridgeStructureTypeMasterDrawer = (props: BridgeStructureTypeMasterDrawerT
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-bridge-structure-type' : 'create-bridge-structure-type'}`}
+      title={`master-data.general-master.${
+        isEdit ? "edit-bridge-structure-type" : "create-bridge-structure-type"
+      }`}
       handleClose={handleClose}
       open={open}
     >
@@ -73,7 +93,11 @@ const BridgeStructureTypeMasterDrawer = (props: BridgeStructureTypeMasterDrawerT
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editBridgeStructureTypeMaster : createBridgeStructureTypeMaster}
+          createActionFunc={
+            isEdit
+              ? editBridgeStructureTypeMaster
+              : createBridgeStructureTypeMaster
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

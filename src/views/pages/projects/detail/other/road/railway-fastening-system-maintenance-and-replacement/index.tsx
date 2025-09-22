@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import type React from 'react';
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
-import { RailwayFasteningSystemMaintenanceAndReplacement } from 'src/types/project/other';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import RailwayFasteningSystemMaintenanceAndReplacementCard from './railway-fastening-system-maintenance-and-replacement-card';
-import RailwayFasteningSystemMaintenanceAndReplacementDrawer from './railway-fastening-system-maintenance-and-replacement-drawer';
-import { railwayFasteningSystemMaintenanceAndReplacementColumns } from './railway-fastening-system-maintenance-and-replacement-row';
+import type React from "react";
+import { Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import projectOtherApiSecondService from "src/services/project/project-other-second-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import type { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer";
+import { RailwayFasteningSystemMaintenanceAndReplacement } from "src/types/project/other";
+import { formatCreatedAt } from "src/utils/formatter/date";
+import RailwayFasteningSystemMaintenanceAndReplacementCard from "./railway-fastening-system-maintenance-and-replacement-card";
+import RailwayFasteningSystemMaintenanceAndReplacementDrawer from "./railway-fastening-system-maintenance-and-replacement-drawer";
+import { railwayFasteningSystemMaintenanceAndReplacementColumns } from "./railway-fastening-system-maintenance-and-replacement-row";
 
 interface RailwayFasteningSystemMaintenanceAndReplacementListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -29,21 +29,21 @@ const RailwayFasteningSystemMaintenanceAndReplacementList: React.FC<
 > = ({ otherSubMenu, projectId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [
-    selectedRow,
-    setSelectedRow
-  ] = useState<RailwayFasteningSystemMaintenanceAndReplacement | null>(null);
+  const [selectedRow, setSelectedRow] =
+    useState<RailwayFasteningSystemMaintenanceAndReplacement | null>(null);
   const { t } = useTranslation();
 
   const fetchRailwayFasteningSystemMaintenanceAndReplacement = (
-    params: GetRequestParam
-  ): Promise<IApiResponse<RailwayFasteningSystemMaintenanceAndReplacement[]>> => {
+    params: GetRequestParam,
+  ): Promise<
+    IApiResponse<RailwayFasteningSystemMaintenanceAndReplacement[]>
+  > => {
     return projectOtherApiSecondService<RailwayFasteningSystemMaintenanceAndReplacement>().getAll(
-      otherSubMenu?.apiRoute || '',
+      otherSubMenu?.apiRoute || "",
       {
         ...params,
-        filter: { ...params.filter, project_id: projectId }
-      }
+        filter: { ...params.filter, project_id: projectId },
+      },
     );
   };
 
@@ -52,10 +52,10 @@ const RailwayFasteningSystemMaintenanceAndReplacementList: React.FC<
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<RailwayFasteningSystemMaintenanceAndReplacement[]>({
-    queryKey: ['railwayFasteningSystemMaintenanceAndReplacement'],
-    fetchFunction: fetchRailwayFasteningSystemMaintenanceAndReplacement
+    queryKey: ["railwayFasteningSystemMaintenanceAndReplacement"],
+    fetchFunction: fetchRailwayFasteningSystemMaintenanceAndReplacement,
   });
 
   const toggleDrawer = () => {
@@ -68,62 +68,72 @@ const RailwayFasteningSystemMaintenanceAndReplacementList: React.FC<
     setShowDetailDrawer(!showDetailDrawer);
   };
 
-  const handleEdit = (maintenance: RailwayFasteningSystemMaintenanceAndReplacement) => {
+  const handleEdit = (
+    maintenance: RailwayFasteningSystemMaintenanceAndReplacement,
+  ) => {
     toggleDrawer();
     setSelectedRow(maintenance);
   };
 
   const handleDelete = async (id: string) => {
     await projectOtherApiSecondService<RailwayFasteningSystemMaintenanceAndReplacement>().delete(
-      otherSubMenu?.apiRoute || '',
-      id
+      otherSubMenu?.apiRoute || "",
+      id,
     );
     refetch();
   };
 
-  const handleClickDetail = (maintenance: RailwayFasteningSystemMaintenanceAndReplacement) => {
+  const handleClickDetail = (
+    maintenance: RailwayFasteningSystemMaintenanceAndReplacement,
+  ) => {
     toggleDetailDrawer();
     setSelectedRow(maintenance);
   };
 
   const mapRailwayFasteningSystemMaintenanceAndReplacementToDetailItems = (
-    maintenance: RailwayFasteningSystemMaintenanceAndReplacement
+    maintenance: RailwayFasteningSystemMaintenanceAndReplacement,
   ): { title: string; value: string }[] => [
-      {
-        title: t('common.table-columns.id'),
-        value: maintenance?.id || 'N/A'
-      },
-      {
-        title: t(
-          'project.other.railway-fastening-system-maintenance-and-replacement.details.railway_line_section_name'
-        ),
-        value: maintenance?.railway_line_section_name || 'N/A'
-      },
-      {
-        title: t(
-          'project.other.railway-fastening-system-maintenance-and-replacement.details.scheduled_maintenance_activities'
-        ),
-        value: maintenance?.scheduled_maintenance_activities || 'N/A'
-      },
-      {
-        title: t(
-          'project.other.railway-fastening-system-maintenance-and-replacement.details.recent_maintenance_records_and_dates'
-        ),
-        value: maintenance?.recent_maintenance_records_and_dates || 'N/A'
-      },
-      {
-        title: t('project.other.railway-fastening-system-maintenance-and-replacement.details.remark'),
-        value: maintenance?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: maintenance?.created_at ? formatCreatedAt(maintenance.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: maintenance?.updated_at ? formatCreatedAt(maintenance.updated_at) : 'N/A'
-      }
-    ];
+    {
+      title: t("common.table-columns.id"),
+      value: maintenance?.id || "N/A",
+    },
+    {
+      title: t(
+        "project.other.railway-fastening-system-maintenance-and-replacement.details.railway_line_section_name",
+      ),
+      value: maintenance?.railway_line_section_name || "N/A",
+    },
+    {
+      title: t(
+        "project.other.railway-fastening-system-maintenance-and-replacement.details.scheduled_maintenance_activities",
+      ),
+      value: maintenance?.scheduled_maintenance_activities || "N/A",
+    },
+    {
+      title: t(
+        "project.other.railway-fastening-system-maintenance-and-replacement.details.recent_maintenance_records_and_dates",
+      ),
+      value: maintenance?.recent_maintenance_records_and_dates || "N/A",
+    },
+    {
+      title: t(
+        "project.other.railway-fastening-system-maintenance-and-replacement.details.remark",
+      ),
+      value: maintenance?.remark || "N/A",
+    },
+    {
+      title: t("common.table-columns.created-at"),
+      value: maintenance?.created_at
+        ? formatCreatedAt(maintenance.created_at)
+        : "N/A",
+    },
+    {
+      title: t("common.table-columns.updated-at"),
+      value: maintenance?.updated_at
+        ? formatCreatedAt(maintenance.updated_at)
+        : "N/A",
+    },
+  ];
 
   return (
     <Box>
@@ -145,17 +155,21 @@ const RailwayFasteningSystemMaintenanceAndReplacementList: React.FC<
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
           data={mapRailwayFasteningSystemMaintenanceAndReplacementToDetailItems(
-            selectedRow as RailwayFasteningSystemMaintenanceAndReplacement
+            selectedRow as RailwayFasteningSystemMaintenanceAndReplacement,
           )}
           hasReference={Boolean(otherSubMenu?.fileType)}
-          id={selectedRow?.id || ''}
-          fileType={otherSubMenu?.fileType || ''}
-          title={t('project.other.railway-fastening-system-maintenance-and-replacement.detail')}
+          id={selectedRow?.id || ""}
+          fileType={otherSubMenu?.fileType || ""}
+          title={t(
+            "project.other.railway-fastening-system-maintenance-and-replacement.detail",
+          )}
         />
       )}
 
       <ItemsListing
-        title={t('project.other.railway-fastening-system-maintenance-and-replacement.title')}
+        title={t(
+          "project.other.railway-fastening-system-maintenance-and-replacement.title",
+        )}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
@@ -165,8 +179,8 @@ const RailwayFasteningSystemMaintenanceAndReplacementList: React.FC<
             handleDelete,
             t,
             refetch,
-            otherSubMenu
-          )
+            otherSubMenu,
+          ),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -186,9 +200,9 @@ const RailwayFasteningSystemMaintenanceAndReplacementList: React.FC<
           onClick: toggleDrawer,
           onlyIcon: true,
           permission: {
-            action: 'create',
-            subject: 'railwayfasteningsystemmaintenanceandreplacement'
-          }
+            action: "create",
+            subject: "railwayfasteningsystemmaintenanceandreplacement",
+          },
         }}
         fetchDataFunction={refetch}
         items={railwayFasteningSystemMaintenanceAndReplacement || []}

@@ -1,20 +1,20 @@
-import { Box, Card, CardActions, CardContent, Typography } from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import { ProjectVariation } from 'src/types/project/project-finance';
-import { formatCurrency } from 'src/utils/formatter/currency';
-import FileDrawer from 'src/views/components/custom/files-drawer';
-import ModelActionComponent from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
+import { Box, Card, CardActions, CardContent, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
+import { ProjectVariation } from "src/types/project/project-finance";
+import { formatCurrency } from "src/utils/formatter/currency";
+import FileDrawer from "src/views/components/custom/files-drawer";
+import ModelActionComponent from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
 
-import Icon from 'src/@core/components/icon';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import Icon from "src/@core/components/icon";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
 
 const ProjectVariationCard = ({
   projectVariation,
   refetch,
   onEdit,
   onDelete,
-  type
+  type,
 }: {
   type: string;
   projectVariation: ProjectVariation;
@@ -36,36 +36,44 @@ const ProjectVariationCard = ({
           </Typography>
         </Box>
         <Box mt={2} display="flex">
-          <Typography mr="0.5rem">{formatCurrency(projectVariation?.amount)}</Typography>
+          <Typography mr="0.5rem">
+            {formatCurrency(projectVariation?.amount)}
+          </Typography>
           <Icon icon="mdi:calendar-blank" fontSize={20} />
-          <Typography mr="0.5rem">{projectVariation?.extension_time} </Typography>
+          <Typography mr="0.5rem">
+            {projectVariation?.extension_time}{" "}
+          </Typography>
         </Box>
       </CardContent>
-      <CardActions style={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={projectVariation.id} type={uploadableProjectFileTypes.variation} /> &nbsp;
-        <Box sx={{ display: 'flex' }}>
+      <CardActions style={{ justifyContent: "flex-end" }}>
+        <FileDrawer
+          id={projectVariation.id}
+          type={uploadableProjectFileTypes.variation}
+        />{" "}
+        &nbsp;
+        <Box sx={{ display: "flex" }}>
           <ModelActionComponent
             model="Variation"
             model_id={projectVariation.id}
             refetchModel={refetch}
             resubmit={function (): void {
-              throw new Error('Function not implemented.');
+              throw new Error("Function not implemented.");
             }}
-            title={''}
+            title={""}
             postAction={function (): void {
-              throw new Error('Function not implemented.');
+              throw new Error("Function not implemented.");
             }}
           />
           <RowOptions
             onEdit={onEdit}
             onDelete={() => onDelete(projectVariation.id)}
             deletePermissionRule={{
-              action: 'delete',
-              subject: 'variation'
+              action: "delete",
+              subject: "variation",
             }}
             editPermissionRule={{
-              action: 'update',
-              subject: 'variation'
+              action: "update",
+              subject: "variation",
             }}
             item={projectVariation}
             options={[]}

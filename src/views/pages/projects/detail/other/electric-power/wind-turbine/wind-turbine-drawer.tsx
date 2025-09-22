@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import type { FormikProps } from 'formik';
-import type { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import WindTurbineForm from './wind-turbine-form';
+import type { FormikProps } from "formik";
+import type { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import WindTurbineForm from "./wind-turbine-form";
 
-import { useState } from 'react';
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { uploadFile } from 'src/services/utils/file-utils';
-import type { WindTurbine } from 'src/types/project/other';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import { useState } from "react";
+import projectOtherApiSecondService from "src/services/project/project-other-second-service";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { uploadFile } from "src/services/utils/file-utils";
+import type { WindTurbine } from "src/types/project/other";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
 
 interface WindTurbineDrawerType {
   open: boolean;
@@ -51,25 +51,32 @@ const WindTurbineDrawer = (props: WindTurbineDrawerType) => {
     blades_number: yup
       .number()
       .nullable()
-      .integer('Must be an integer')
+      .integer("Must be an integer")
       .transform((value) => (isNaN(value) ? null : value)),
     gearbox_type: yup.string().nullable(),
     generator_type_id: yup.string().nullable(),
     generators_number: yup
       .number()
       .nullable()
-      .integer('Must be an integer')
+      .integer("Must be an integer")
       .transform((value) => (isNaN(value) ? null : value)),
-    remark: yup.string().nullable()
+    remark: yup.string().nullable(),
   });
 
   const isEdit = Boolean(windTurbine?.id);
 
   const createWindTurbine = async (body: IApiPayload<WindTurbine>) =>
-    projectOtherApiSecondService<WindTurbine>().create(otherSubMenu?.apiRoute || '', body);
+    projectOtherApiSecondService<WindTurbine>().create(
+      otherSubMenu?.apiRoute || "",
+      body,
+    );
 
   const editWindTurbine = async (body: IApiPayload<WindTurbine>) =>
-    projectOtherApiSecondService<WindTurbine>().update(otherSubMenu?.apiRoute || '', windTurbine?.id || '', body);
+    projectOtherApiSecondService<WindTurbine>().update(
+      otherSubMenu?.apiRoute || "",
+      windTurbine?.id || "",
+      body,
+    );
 
   const getPayload = (values: WindTurbine) => ({
     data: {
@@ -85,16 +92,25 @@ const WindTurbineDrawer = (props: WindTurbineDrawerType) => {
       generator_type_id: values.generator_type_id,
       generators_number: values.generators_number,
       remark: values.remark,
-      id: windTurbine?.id
+      id: windTurbine?.id,
     },
-    files: uploadableFile ? [uploadableFile] : []
+    files: uploadableFile ? [uploadableFile] : [],
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<WindTurbine>, payload: IApiPayload<WindTurbine>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<WindTurbine>,
+    payload: IApiPayload<WindTurbine>,
+  ) => {
     if (payload.files.length > 0) {
-      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.windTurbine, response.payload.id, '', '');
+      await uploadFile(
+        payload.files[0],
+        uploadableProjectFileTypes.other.windTurbine,
+        response.payload.id,
+        "",
+        "",
+      );
     }
 
     refetch();
@@ -103,25 +119,35 @@ const WindTurbineDrawer = (props: WindTurbineDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.other.wind-turbine.${isEdit ? `edit-wind-turbine` : `create-wind-turbine`}`}
+      title={`project.other.wind-turbine.${
+        isEdit ? `edit-wind-turbine` : `create-wind-turbine`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.wind-turbine.${isEdit ? `edit-wind-turbine` : `create-wind-turbine`}`}
+          title={`project.other.wind-turbine.${
+            isEdit ? `edit-wind-turbine` : `create-wind-turbine`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...windTurbine
+            ...windTurbine,
           }}
           createActionFunc={isEdit ? editWindTurbine : createWindTurbine}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<WindTurbine>) => {
-            return <WindTurbineForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
+            return (
+              <WindTurbineForm
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+              />
+            );
           }}
         </FormPageWrapper>
       )}

@@ -1,4 +1,4 @@
-import { Stakeholder } from '../stakeholder';
+import { Stakeholder } from "../stakeholder";
 
 export interface ProjectStakeholder {
   id: string;

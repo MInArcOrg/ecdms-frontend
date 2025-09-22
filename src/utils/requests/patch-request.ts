@@ -1,8 +1,11 @@
-import { AxiosResponse } from 'axios';
-import { PostRequestParam } from 'src/types/requests';
-import axiosServices from '../axios';
+import { AxiosResponse } from "axios";
+import { PostRequestParam } from "src/types/requests";
+import axiosServices from "../axios";
 
-export const buildPatchRequest = async (url: string, params: PostRequestParam | null): Promise<AxiosResponse> => {
+export const buildPatchRequest = async (
+  url: string,
+  params: PostRequestParam | null,
+): Promise<AxiosResponse> => {
   try {
     // const formData = new FormData();
     // if (params?.files !== null) {

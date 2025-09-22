@@ -1,14 +1,17 @@
-import type { FormikProps } from 'formik';
-import type { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import RailwaySleeperMaintenanceAndReplacementForm from './railway-sleeper-maintenance-and-replacement-form';
+import type { FormikProps } from "formik";
+import type { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import RailwaySleeperMaintenanceAndReplacementForm from "./railway-sleeper-maintenance-and-replacement-form";
 
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import type { RailwaySleeperMaintenanceAndReplacement } from 'src/types/project/other';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import projectOtherApiSecondService from "src/services/project/project-other-second-service";
+import type { RailwaySleeperMaintenanceAndReplacement } from "src/types/project/other";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import {
+  convertDateToLocaleDate,
+  formatInitialDateDate,
+} from "src/utils/formatter/date";
 
 interface RailwaySleeperMaintenanceAndReplacementDrawerProps {
   open: boolean;
@@ -25,67 +28,97 @@ const RailwaySleeperMaintenanceAndReplacementDrawer = ({
   refetch,
   railwaySleeperMaintenanceAndReplacement,
   projectId,
-  otherSubMenu
+  otherSubMenu,
 }: RailwaySleeperMaintenanceAndReplacementDrawerProps) => {
   const isEdit = Boolean(railwaySleeperMaintenanceAndReplacement?.project_id);
 
   const validationSchema = yup.object().shape({
-    railway_line_section_name: yup.string().required('Railway line section name is required'),
+    railway_line_section_name: yup
+      .string()
+      .required("Railway line section name is required"),
     scheduled_maintenance_activities: yup.string().nullable(),
-    recent_maintenance_date: yup.date().nullable().transform((curr, orig) => orig === '' ? null : curr),
+    recent_maintenance_date: yup
+      .date()
+      .nullable()
+      .transform((curr, orig) => (orig === "" ? null : curr)),
     inspection_reports: yup.string().nullable(),
     sleeper_replacement_history: yup.string().nullable(),
-    remark: yup.string().nullable()
+    remark: yup.string().nullable(),
   });
 
-  const createRailwaySleeperMaintenanceAndReplacement = async (body: IApiPayload<RailwaySleeperMaintenanceAndReplacement>) =>
-    projectOtherApiSecondService<RailwaySleeperMaintenanceAndReplacement>().create(otherSubMenu?.apiRoute || '', body);
-
-  const editRailwaySleeperMaintenanceAndReplacement = async (body: IApiPayload<RailwaySleeperMaintenanceAndReplacement>) =>
-    projectOtherApiSecondService<RailwaySleeperMaintenanceAndReplacement>().update(
-      otherSubMenu?.apiRoute || '',
-      railwaySleeperMaintenanceAndReplacement.project_id,
-      body
+  const createRailwaySleeperMaintenanceAndReplacement = async (
+    body: IApiPayload<RailwaySleeperMaintenanceAndReplacement>,
+  ) =>
+    projectOtherApiSecondService<RailwaySleeperMaintenanceAndReplacement>().create(
+      otherSubMenu?.apiRoute || "",
+      body,
     );
 
-  const getPayload = (values: RailwaySleeperMaintenanceAndReplacement): IApiPayload<RailwaySleeperMaintenanceAndReplacement> => ({
+  const editRailwaySleeperMaintenanceAndReplacement = async (
+    body: IApiPayload<RailwaySleeperMaintenanceAndReplacement>,
+  ) =>
+    projectOtherApiSecondService<RailwaySleeperMaintenanceAndReplacement>().update(
+      otherSubMenu?.apiRoute || "",
+      railwaySleeperMaintenanceAndReplacement.project_id,
+      body,
+    );
+
+  const getPayload = (
+    values: RailwaySleeperMaintenanceAndReplacement,
+  ): IApiPayload<RailwaySleeperMaintenanceAndReplacement> => ({
     data: {
       ...values,
       project_id: projectId,
-      recent_maintenance_date: convertDateToLocaleDate(values.recent_maintenance_date),
-
+      recent_maintenance_date: convertDateToLocaleDate(
+        values.recent_maintenance_date,
+      ),
     },
-    files: []
+    files: [],
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<RailwaySleeperMaintenanceAndReplacement>, payload: IApiPayload<RailwaySleeperMaintenanceAndReplacement>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<RailwaySleeperMaintenanceAndReplacement>,
+    payload: IApiPayload<RailwaySleeperMaintenanceAndReplacement>,
+  ) => {
     refetch();
     handleClose();
   };
 
   return (
     <CustomSideDrawer
-      title={`project.other.railway-sleeper-maintenance-and-replacement.${isEdit ? 'edit' : 'create'}`}
+      title={`project.other.railway-sleeper-maintenance-and-replacement.${
+        isEdit ? "edit" : "create"
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.railway-sleeper-maintenance-and-replacement.${isEdit ? 'edit' : 'create'}`}
+          title={`project.other.railway-sleeper-maintenance-and-replacement.${
+            isEdit ? "edit" : "create"
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
             ...railwaySleeperMaintenanceAndReplacement,
-            recent_maintenance_date: formatInitialDateDate(railwaySleeperMaintenanceAndReplacement?.recent_maintenance_date)
+            recent_maintenance_date: formatInitialDateDate(
+              railwaySleeperMaintenanceAndReplacement?.recent_maintenance_date,
+            ),
           }}
-          createActionFunc={isEdit ? editRailwaySleeperMaintenanceAndReplacement : createRailwaySleeperMaintenanceAndReplacement}
+          createActionFunc={
+            isEdit
+              ? editRailwaySleeperMaintenanceAndReplacement
+              : createRailwaySleeperMaintenanceAndReplacement
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<RailwaySleeperMaintenanceAndReplacement>) => <RailwaySleeperMaintenanceAndReplacementForm formik={formik} />}
+          {(formik: FormikProps<RailwaySleeperMaintenanceAndReplacement>) => (
+            <RailwaySleeperMaintenanceAndReplacementForm formik={formik} />
+          )}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

@@ -1,13 +1,13 @@
-import { FormikProps } from 'formik';
-import { useState } from 'react';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import SeverityLevelMasterForm from './severity-level-master-form';
-import { SeverityLevel } from 'src/types/general/general-master';
-import roadLengthTypeMasterService from 'src/services/general/project/drainage-type-master-service';
+import { FormikProps } from "formik";
+import { useState } from "react";
+import { uploadFile } from "src/services/utils/file-utils";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import SeverityLevelMasterForm from "./severity-level-master-form";
+import { SeverityLevel } from "src/types/general/general-master";
+import roadLengthTypeMasterService from "src/services/general/project/drainage-type-master-service";
 
 interface SeverityLevelMasterDrawerType {
   open: boolean;
@@ -17,8 +17,8 @@ interface SeverityLevelMasterDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required('Title is required'),
-  description: yup.string().required('Description is required')
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
 });
 
 const SeverityLevelMasterDrawer = (props: SeverityLevelMasterDrawerType) => {
@@ -29,21 +29,23 @@ const SeverityLevelMasterDrawer = (props: SeverityLevelMasterDrawerType) => {
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createSeverityLevelMaster = async (body: IApiPayload<SeverityLevel>) => {
+  const createSeverityLevelMaster = async (
+    body: IApiPayload<SeverityLevel>,
+  ) => {
     return await roadLengthTypeMasterService.create(body);
   };
 
   const editSeverityLevelMaster = async (body: IApiPayload<SeverityLevel>) => {
-    return await roadLengthTypeMasterService.update(masterData?.id || '', body);
+    return await roadLengthTypeMasterService.update(masterData?.id || "", body);
   };
 
   const getPayload = (values: SeverityLevel) => {
     const payload = {
       data: {
         ...values,
-        id: masterData?.id
+        id: masterData?.id,
       },
-      files: uploadableFile ? [uploadableFile] : []
+      files: uploadableFile ? [uploadableFile] : [],
     };
     return payload;
   };
@@ -52,9 +54,18 @@ const SeverityLevelMasterDrawer = (props: SeverityLevelMasterDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<SeverityLevel>, payload: IApiPayload<SeverityLevel>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<SeverityLevel>,
+    payload: IApiPayload<SeverityLevel>,
+  ) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `SEVERITY_LEVEL`, response.payload.id, '', '');
+      uploadFile(
+        payload.files[0],
+        `SEVERITY_LEVEL`,
+        response.payload.id,
+        "",
+        "",
+      );
     }
     refetch();
     handleClose();
@@ -62,7 +73,9 @@ const SeverityLevelMasterDrawer = (props: SeverityLevelMasterDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-drainage-type' : 'create-drainage-type'}`}
+      title={`master-data.general-master.${
+        isEdit ? "edit-drainage-type" : "create-drainage-type"
+      }`}
       handleClose={handleClose}
       open={open}
     >
@@ -73,7 +86,9 @@ const SeverityLevelMasterDrawer = (props: SeverityLevelMasterDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editSeverityLevelMaster : createSeverityLevelMaster}
+          createActionFunc={
+            isEdit ? editSeverityLevelMaster : createSeverityLevelMaster
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

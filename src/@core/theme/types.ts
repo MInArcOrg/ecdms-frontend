@@ -1,4 +1,4 @@
-declare module '@mui/material/styles' {
+declare module "@mui/material/styles" {
   interface Palette {
     customColors: {
       dark: string;
@@ -27,13 +27,13 @@ declare module '@mui/material/styles' {
   }
 }
 
-declare module '@mui/material/Button' {
+declare module "@mui/material/Button" {
   interface ButtonPropsVariantOverrides {
     tonal: true;
   }
 }
 
-declare module '@mui/material/ButtonGroup' {
+declare module "@mui/material/ButtonGroup" {
   interface ButtonGroupPropsVariantOverrides {
     tonal: true;
   }

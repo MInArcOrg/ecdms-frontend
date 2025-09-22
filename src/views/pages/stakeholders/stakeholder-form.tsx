@@ -11,14 +11,14 @@ import { Stakeholder } from "src/types/stakeholder";
 import CustomSelect from "src/views/shared/form/custom-select";
 import CustomSwitch from "src/views/shared/form/custom-switch";
 import CustomTextBox from "src/views/shared/form/custom-text-box";
-import { Icon } from '@iconify/react';
+import { Icon } from "@iconify/react";
 import CustomDynamicDatePicker from "src/views/shared/form/custom-dynamic-date-box";
 import CustomPhoneInput from "src/views/shared/form/custom-phone-box";
 import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 
 interface StakeholderFormProps {
   formik: FormikProps<Stakeholder>;
-  
+
   typeId: string;
   isEdit: boolean;
   file: File | null;
@@ -27,11 +27,11 @@ interface StakeholderFormProps {
 
 const StakeholderForm: React.FC<StakeholderFormProps> = ({
   formik,
-  
+
   typeId,
   isEdit,
   file,
-  onFileChange
+  onFileChange,
 }) => {
   const { t: transl } = useTranslation();
 
@@ -48,7 +48,9 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
       queryKey: ["masterSubCategory", "stakeholder"],
       queryFn: () =>
         masterSubCategoryApiService.getAll("stakeholder", {
-          filter: { stakeholdercategory_id: formik.values.stakeholdercategory_id },
+          filter: {
+            stakeholdercategory_id: formik.values.stakeholdercategory_id,
+          },
         }),
       enabled: !!formik.values.stakeholdercategory_id,
     });
@@ -122,7 +124,6 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
         />
       </Box>
 
-
       <CustomTextBox
         fullWidth
         label={transl("stakeholder.form.trade_name")}
@@ -150,7 +151,7 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
 
       <CustomDynamicDatePicker
         fullWidth
-        label={transl('stakeholder.form.license_issued_date')}
+        label={transl("stakeholder.form.license_issued_date")}
         name="license_issued_date"
         required
         showYearDropdown
@@ -158,27 +159,32 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
         customInput={<CustomTextBox name="license_issued_date" />}
       />
 
-
       {/* Emails Section */}
-      {
-        !isEdit &&
+      {!isEdit && (
         <Box mb={2}>
           <Typography variant="h6" gutterBottom>
             {transl("stakeholder.form.emails")}
           </Typography>
           <FieldArray name="stakeholderemails">
             {({ push, remove }) => {
-              const hasPrimaryEmail = hasPrimary(formik.values.stakeholderemails || [], "is_primary");
+              const hasPrimaryEmail = hasPrimary(
+                formik.values.stakeholderemails || [],
+                "is_primary",
+              );
 
               return (
                 <>
                   {formik.values.stakeholderemails?.map((email, index) => (
-                    <Box key={index} mb={2} sx={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      p: 1,
-                      m: 1,
-                    }}>
+                    <Box
+                      key={index}
+                      mb={2}
+                      sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        p: 1,
+                        m: 1,
+                      }}
+                    >
                       <Box>
                         <CustomTextBox
                           fullWidth
@@ -199,8 +205,8 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
                               formik.values?.stakeholderemails?.map((e, i) =>
                                 i === index
                                   ? { ...e, is_primary: !e.is_primary }
-                                  : { ...e, is_primary: false }
-                              )
+                                  : { ...e, is_primary: false },
+                              ),
                             );
                           }}
                           disabled={hasPrimaryEmail && !email.is_primary}
@@ -213,7 +219,9 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
                       </Box>
                     </Box>
                   ))}
-                  <Button onClick={() => push({ email: "", is_primary: false })}>
+                  <Button
+                    onClick={() => push({ email: "", is_primary: false })}
+                  >
                     <Icon icon="tabler:plus" fontSize={20} />
                   </Button>
                 </>
@@ -221,29 +229,34 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
             }}
           </FieldArray>
         </Box>
-      }
+      )}
       {/* Phones Section */}
-      {
-        !isEdit &&
+      {!isEdit && (
         <Box mb={2}>
           <Typography variant="h6" gutterBottom>
             {transl("stakeholder.form.phones")}
           </Typography>
           <FieldArray name="stakeholderphones">
             {({ push, remove }) => {
-              const hasPrimaryPhone = hasPrimary(formik?.values?.stakeholderphones || [], "is_primary");
+              const hasPrimaryPhone = hasPrimary(
+                formik?.values?.stakeholderphones || [],
+                "is_primary",
+              );
 
               return (
                 <>
                   {formik.values.stakeholderphones?.map((phone, index) => (
-                    <Box key={index} mb={2} sx={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      p: 1,
-                      m: 1,
-                    }}>
+                    <Box
+                      key={index}
+                      mb={2}
+                      sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        p: 1,
+                        m: 1,
+                      }}
+                    >
                       <Box>
-
                         <CustomPhoneInput
                           fullWidth
                           label={transl("stakeholder.form.phone")}
@@ -263,8 +276,8 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
                               formik.values?.stakeholderphones?.map((p, i) =>
                                 i === index
                                   ? { ...p, is_primary: !p.is_primary }
-                                  : { ...p, is_primary: false }
-                              )
+                                  : { ...p, is_primary: false },
+                              ),
                             );
                           }}
                           disabled={hasPrimaryPhone && !phone.is_primary}
@@ -277,7 +290,9 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
                       </Box>
                     </Box>
                   ))}
-                  <Button onClick={() => push({ phone: "", is_primary: false })}>
+                  <Button
+                    onClick={() => push({ phone: "", is_primary: false })}
+                  >
                     <Icon icon="tabler:plus" fontSize={20} />
                   </Button>
                 </>
@@ -285,8 +300,12 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
             }}
           </FieldArray>
         </Box>
-      }
-      <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
+      )}
+      <CustomFileUpload
+        label={transl("common.form.file-upload")}
+        file={file}
+        onFileChange={onFileChange}
+      />
     </>
   );
 };
