@@ -57,13 +57,11 @@ const RailwayCommunicationSystemMaintenanceAndTestingForm: React.FC<RailwayCommu
           size="small"
           sx={{ mb: 2 }}
         />
-
         <CustomSwitch
           name="inspections"
           label={t('project.other.railway-communication-system-maintenance-and-testing.details.inspections')}
           sx={{ mb: 2 }}
         />
-
         <CustomTextBox
           fullWidth
           label={t(
