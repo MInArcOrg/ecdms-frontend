@@ -95,7 +95,7 @@ const RailwayTrackConditionAssesmentList: React.FC<
       title: t(
         "project.other.railway-track-condition-assessment.details.inspection-dates",
       ),
-      value: assessment?.inspection_dates || "N/A",
+value: assessment?.inspection_dates?.toLocaleString() || "N/A",
     },
     {
       title: t(
