@@ -1,23 +1,23 @@
 {
-    "forgot-password": {
-      "title": "Forgot your password?",
-      "instructions": "Enter your email and we'll send you instructions to reset your password.",
-      "input-labels": {
-        "email": "Email"
-      },
-      "submit-button": "Send Reset Link",
-      "email-sent": "If your email exists in our system, you will receive a password reset link.",
-      "remember-password": "Remember your password?",
-      "back-to-login": "Back to login",
-      "success-message": "If your email exists in our system, you will receive a password reset link.",
-      "validation-messages": {
-        "email": {
-          "email": "Please enter a valid email address.",
-          "required": "Email is required."
-        }
-      }
+  "forgot-password": {
+    "title": "Forgot your password?",
+    "instructions": "Enter your email and we'll send you instructions to reset your password.",
+    "input-labels": {
+      "email": "Email"
     },
-    "reset-password": {
+    "submit-button": "Send Reset Link",
+    "email-sent": "If your email exists in our system, you will receive a password reset link.",
+    "remember-password": "Remember your password?",
+    "back-to-login": "Back to login",
+    "success-message": "If your email exists in our system, you will receive a password reset link.",
+    "validation-messages": {
+      "email": {
+        "email": "Please enter a valid email address.",
+        "required": "Email is required."
+      }
+    }
+  },
+  "reset-password": {
     "title": "Reset your password",
     "instructions": "Enter your new password below to reset your account.",
     "input-labels": {
@@ -49,6 +49,7 @@
     "depamrtent-module": "Department Module",
     "main-modules": "Main Modules",
     "department": "Department",
+    "address": "Address",
     "user": "User",
     "user-list": "User List",
     "roles-and-permissions": "Roles",
@@ -406,7 +407,58 @@
       "edit-runway-surface-type": "Edit Runway Surface Type",
       "scheme-status": "Scheme Status",
       "create-scheme-status": "Create Scheme Status",
-      "edit-scheme-status": "Edit Scheme Status"
+      "edit-scheme-status": "Edit Scheme Status",
+      "track-types": "Track Types",
+      "create-track-type": "Create Track Type",
+      "edit-track-type": "Edit Track Type",
+      "railway-track-infrastructures": "Railway Track Infrastructures",
+      "create-railway-track-infrastructure": "Create Railway Track Infrastructure",
+      "edit-railway-track-infrastructure": "Edit Railway Track Infrastructure",
+      "track-gauges": "Track Gauges",
+      "create-track-gauge": "Create Track Gauge",
+      "edit-track-gauge": "Edit Track Gauge",
+      "track-condition-ratings": "Track Condition Ratings",
+      "create-track-condition-rating": "Create Track Condition Rating",
+      "edit-track-condition-rating": "Edit Track Condition Rating",
+      "communication-links": "Communication Links",
+      "create-communication-link": "Create Communication Link",
+      "edit-communication-link": "Edit Communication Link",
+      "observed-defects": "Observed Defects",
+      "create-observed-defect": "Create Observed Defect",
+      "edit-observed-defect": "Edit Observed Defect",
+      "compaction-methods": "Compaction Methods",
+      "create-compaction-method": "Create Compaction Method",
+      "edit-compaction-method": "Edit Compaction Method",
+      "ballast-material-types": "Ballast Material Types",
+      "create-ballast-material-type": "Create Ballast Material Types",
+      "edit-ballast-material-type": "Edit Ballast Material Types",
+      "ballast-sources": "Ballast Sources",
+      "create-ballast-source": "Create Ballast Sources",
+      "edit-ballast-source": "Edit Ballast Sources",
+      "ballast-degradation-indicators": "Ballast Degradation Indicators",
+      "create-ballast-degradation-indicator": "Create Ballast Degradation Indicators",
+      "edit-ballast-degradation-indicator": "Edit Ballast Degradation Indicators",
+      "sub-ballast-material-types": "Sub Ballast Material Types",
+      "create-sub-ballast-material-type": "Create Sub Ballast Material Types",
+      "edit-sub-ballast-material-type": "Edit Sub Ballast Material Types",
+      "distribution-line-materials": "Distribution Line Materials",
+      "create-distribution-line-material": "Create Distribution Line Materials",
+      "edit-distribution-line-material": "Edit Distribution Line Materials",
+      "track-maintenance-frequencies": "Track Maintenance Frequencies",
+      "create-track-maintenance-frequency": "Create Track Maintenance Frequency",
+      "edit-track-maintenance-frequency": "Edit Track Maintenance Frequency",
+      "scheduled-maintenance-activities": "Scheduled Maintenance Activities",
+      "create-scheduled-maintenance-activity": "Create Scheduled Maintenance Activity",
+      "edit-scheduled-maintenance-activity": "Edit Scheduled Maintenance Activity",
+      "rehabilitation-renewal-method-used": "Rehabilitation Renewal Methods Used",
+      "create-rehabilitation-renewal-method-used": "Create Rehabilitation Renewal Method Used",
+      "edit-rehabilitation-renewal-method-used": "Edit Rehabilitation Renewal Method Used",
+      "track-inspection-frequencies": "Track Inspection Frequencies",
+      "create-track-inspection-frequency": "Create Track Inspection Frequency",
+      "edit-track-inspection-frequency": "Edit Track Inspection Frequency",
+      "track-safety-measures": "Track Safety Measures",
+      "create-track-safety-measure": "Create Track Safety Measure",
+      "edit-track-safety-measure": "Edit Track Safety Measure"
     },
     "form": {
       "title": "Title",
@@ -419,7 +471,7 @@
       "resource-type-specific-models": "Resource type Specific models",
       "service_type": "Service Type",
       "specification_detail": "Specification Detail",
-      "measurement_unit": "Measurement Unit",
+      "measurement_unit": "Measurement` Unit",
       "project-type": "Project Type",
       "resource-type": "Resource Type"
     },
@@ -464,6 +516,9 @@
       "sub-departments": "Sub Departments",
       "documents": "Documents",
       "structure": "Structure"
+    },
+    "professional": {
+      "title": "Professionals"
     },
     "user": {
       "form": {
@@ -576,9 +631,46 @@
       }
     }
   },
+  "address-master": {
+    "region": "Region",
+    "city-administration": "City Administration",
+    "zone": "Zone",
+    "city": "City",
+    "sub-city": "Sub City",
+    "woreda": "Woreda",
+    "kebele": "Kebele",
+    "other": "Other",
+    "all": "All",
+    "create-region": "Create Region",
+    "create-city-administration": "Create City Administration",
+    "create-zone": "Create Zone",
+    "create-city": "Create City",
+    "create-sub-city": "Create Sub City",
+    "create-woreda": "Create Woreda",
+    "create-kebele": "Create Kebele",
+    "create-other": "Create Other",
+    "edit-region": "Edit Region",
+    "edit-city-administration": "Edit City Administration",
+    "edit-zone": "Edit Zone",
+    "edit-city": "Edit City",
+    "edit-sub-city": "Edit Sub City",
+    "edit-woreda": "Edit Woreda",
+    "edit-kebele": "Edit Kebele",
+    "edit-other": "Edit Other",
+    "columns": {
+      "title": "Title",
+      "description": "Description",
+      "parent": "Parent",
+      "type": "Type"
+    },
+    "form": {
+      "title": "Title",
+      "description": "Description"
+    }
+  },
   "greating": {
     "good-morning": "Good Morning",
-    "good-evening": "God Evening",
+    "good-evening": "Good Evening",
     "good-afternoon": "Good Afternoon"
   },
   "resource": {
@@ -1059,6 +1151,103 @@
             "reliability-and-maintenance": "Reliability and Maintenance"
           }
         },
+        "railway-facilities-and-stations": {
+          "stations-and-platforms": {
+            "title": "Stations and Platforms",
+            "station-platform-layout": "Station Platform Layout",
+            "station-platform-facilities": "Station Platform Facilities",
+            "station-platform-structural-elements": "Station Platform Structural Elements",
+            "station-platform-signage-and-wayfinding": "Station Platform Signage and Wayfinding",
+            "station-platform-safety-and-security": "Station Platform Safety and Security",
+            "station-platform-surface-and-finishes": "Station Platform Surface and Finishes",
+            "station-platform-passenger-flow-and-capacity": "Station Platform Passenger Flow and Capacity",
+            "station-platform-environmental-and-other-factors": "Station Platform Environmental and Other Factors"
+          },
+          "maintenance-facilities": {
+            "title": "Maintenance Facilities",
+            "maintenance-facility-type-and-purpose": "Maintenance Facility Type and Purpose",
+            "maintenance-facility-layout-and-design": "Maintenance Facility Layout and Design",
+            "maintenance-facility-equipment-and-tools": "Maintenance Facility Equipment and Tools",
+            "maintenance-facility-infrastructure-and-utilities": "Maintenance Facility Infrastructure and Utilities",
+            "maintenance-facility-workforce-and-staff": "Maintenance Facility Workforce and Staff",
+            "maintenance-facility-schedules-and-procedures": "Maintenance Facility Schedules and Procedures",
+            "maintenance-facility-safety-and-security": "Maintenance Facility Safety and Security",
+            "maintenance-facility-environmental-and-other-factors": "Maintenance Facility Environmental and Other Factors"
+          }
+        },
+        "railway-operational-systems": {
+          "communication-and-signaling": {
+            "title": "Communication and Signaling",
+            "railway-signaling-system": "Railway Signaling System",
+            "railway-communication-system": "Railway Communication System",
+            "railway-system-condition-assessment": "System Condition Assessment",
+            "railway-comm-system-maintenance-and-testing": "System Maintenance and Testing",
+            "railway-comm-system-safety-and-compliance": "System Safety and Compliance",
+            "railway-environmental-and-other-factors": "Environmental and Other Factors"
+          },
+          "rolling-stock-vehicles": {
+            "title": "Rolling Stock Vehicles",
+            "railway-vehicle-identification": "Vehicle Identification",
+            "railway-vehicle-specifications": "Vehicle Specifications",
+            "railway-vehicle-maintenance-and-inspection": "Maintenance and Inspection",
+            "railway-vehicle-operational-performance": "Operational Performance",
+            "railway-vehicle-safety-and-compliance": "Safety and Compliance",
+            "railway-vehicle-interior-and-passenger-amenities": "Interior and Passenger Amenities",
+            "railway-vehicle-load-and-cargo-specifications": "Load and Cargo Specifications"
+          },
+          "power-systems": {
+            "title": "Power Systems",
+            "railway-power-supply-configuration": "Power Supply Configuration",
+            "railway-power-substations-and-equipment": "Power Substations and Equipment",
+            "railway-power-distribution": "Power Distribution",
+            "railway-power-supply-maintenance-and-testing": "Power Supply Maintenance and Testing",
+            "railway-power-supply-safety-and-compliance": "Power Supply Safety and Compliance",
+            "railway-power-supply-environmental-and-other-factors": "Power Supply Environmental and Other Factors"
+          }
+        },
+        "railway-track-infrastructure": {
+          "track-systems": {
+            "title": "Track Systems",
+            "tracks-data": "Tracks Data",
+            "tracks-geometry-data": "Tracks Geometry Data",
+            "tracks-condition-assessment": "Tracks Condition Assessment",
+            "tracks-maintenance-inspections": "Tracks Maintenance Inspections",
+            "tracks-rehabilitation-renewal": "Tracks Rehabilitation & Renewal",
+            "track-safety": "Track Safety"
+          },
+          "ballast-systems": {
+            "title": "Ballast Systems",
+            "ballast": "Ballast",
+            "ballast-material-data": "Ballast Material Data",
+            "ballast-material-specification": "Ballast Material Specification",
+            "ballast-condition-assessment": "Ballast Condition Assessment",
+            "ballast-maintenance-renewal": "Ballast Maintenance & Renewal",
+            "ballast-drainage-water-management": "Ballast Drainage & Water Management",
+            "ballast-environmental-factors": "Ballast Environmental Factors"
+          },
+
+          "sub-ballast-systems": {
+            "title": "Sub-Ballast Systems",
+            "sub-ballast-materials": "Sub-Ballast Materials",
+            "sub-ballast-material-test": "Sub-Ballast Material Test",
+            "sub-ballast-condition-assessment": "Sub-Ballast Condition Assessment",
+            "sub-ballast-maintenance-renewal": "Sub-Ballast Maintenance & Renewal",
+            "sub-ballast-drainage-water-management": "Sub-Ballast Drainage & Water Management",
+            "sub-ballast-environmental-factors": "Sub-Ballast Environmental Factors"
+          },
+          "sleeper-and-fastening-systems": {
+            "title": "Sleeper and Fastening Systems",
+            "sleeper-characteristics": "Sleeper Characteristics",
+            "sleeper-condition-assessment": "Sleeper Condition Assessment",
+            "sleeper-maintenance-replacement": "Sleeper Maintenance & Replacement",
+            "sleeper-fastening-systems": "Sleeper Fastening Systems",
+            "sleeper-environmental-factors": "Sleeper Environmental Factors",
+            "fastening-system-characteristics": "Fastening System Characteristics",
+            "fastening-system-condition-assessment": "Fastening System Condition Assessment",
+            "fastening-system-maintenance-replacement": "Fastening System Maintenance & Replacement",
+            "fastening-system-environmental-factors": "Fastening System Environmental Factors"
+          }
+        },
         "others": {
           "building": "Building",
           "building-dimensions-detail": "Building Dimensions Detail",
@@ -1177,7 +1366,10 @@
         "broadcasting-data-systems": "Broadcasting & Data Systems",
         "regulation": "Regulation",
         "power-infrastructure": "Power Infrastructure",
-        "power-generation": "Power Generation"
+        "power-generation": "Power Generation",
+        "railway-track-infrastructure": "Railway Track Infrastructure",
+        "railway-operational-systems": "Railway Operational Systems",
+        "railway-facilities-and-stations": "Railway Facilities and Stations"
       }
     },
     "project-time": {
@@ -1394,6 +1586,7 @@
         "project-expense": "Project Expense"
       }
     },
+
     "resource": {
       "title": "Project Resource",
       "edit-project-resource": "Edit Project Resource",
@@ -1924,6 +2117,18 @@
           "inspector-remark": "Inspector Remark"
         }
       },
+      "railway-track-safety": {
+        "title": "Railway Track Safety",
+        "create": "Create Railway Track Safety",
+        "edit": "Edit Railway Track Safety",
+        "detail": "Railway Track Safety Details",
+        "details": {
+          "railway-track-safety-measures-id": "Safety Measures",
+          "track-inspection-frequency-id": "Inspection Frequency",
+          "is-compliant-with-safety-regulations-standards": "Compliant with Safety Regulations",
+          "remark": "Remark"
+        }
+      },
       "bridge-structure-information": {
         "title": "Bridge Structure Information",
         "create-bridge-structure-information": "Create Bridge Structure Information",
@@ -2125,6 +2330,18 @@
           "total-station-no": "Total Station Number",
           "fright-cargo-no": "Fright Cargo Number",
           "transport-cargo-no": "Transport Cargo Number"
+        }
+      },
+      "railway-track-rehabilitation-or-renewal": {
+        "title": "Railway Track Rehabilitation or renewal",
+        "create": "Create Railway Track Rehabilitation or renewal",
+        "detail": "Railway Track Rehabilitation or renewal Detail",
+        "details": {
+          "track-renewal-history": "Track Renewal History",
+          "plans-or-schedules": "Plans or Schedules",
+          "rehabilitation-renewal-methods-used-id": "Rehabilitation/Renewal Methods Used",
+          "rehabilitation-renewal-types": "Rehabilitation/Renewal Types",
+          "remark": "Remark"
         }
       },
       "spillway-info": {
@@ -3236,6 +3453,476 @@
           "remark": "Remark"
         }
       },
+      "railway-track-condition-assessment": {
+        "title": "Railway Track Condition Assessment",
+        "create-railway-track-condition-assessment": "Create Railway Track Condition Assessment",
+        "edit-railway-track-condition-assessment": "Edit Railway Track Condition Assessment",
+        "railway-track-condition-assessment-details": "Railway Track Condition Assessment Details",
+        "details": {
+          "project-id": "Project ID",
+          "inspection-dates": "Inspection Dates",
+          "track-condition-rating-id": "Track Condition Rating ID",
+          "observed-defects-id": "Observed Defects ID",
+          "track-settlement-irregularities": "Track Settlement Irregularities",
+          "remark": "Remark"
+        }
+      },
+      "railway-ballast": {
+        "title": "Railway Ballast",
+        "create": "Create Railway Ballast",
+        "edit": "Edit Railway Ballast",
+        "detail": "Railway Ballast Details",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "railway-ballast-name": "Railway Ballast Name",
+          "ballast-id-no": "Ballast ID No.",
+          "ballast-construction-cost": "Ballast Construction Cost",
+          "remark": "Remark"
+        }
+      },
+      "railway-ballast-material-data": {
+        "title": "Railway Ballast Materials",
+        "detail": "Railway Ballast Detail",
+        "create": "Create Railway Ballast Material",
+        "edit": "Edit Railway Ballast Material",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "ballast-material-type-id": "Ballast Material Type",
+          "particle-size-distribution-grading": "Particle Size Distribution Grading",
+          "ballast-used-quantity": "Ballast Used Quantity",
+          "ballast-source-id": "Ballast Source",
+          "ballast-material-size": "Ballast Material Size",
+          "ballast-layer-thickness": "Ballast Layer Thickness",
+          "compaction-method-id": "Compaction Method",
+          "remark": "Remark"
+        }
+      },
+      "railway-ballast-material-specification": {
+        "title": "Railway Ballast Material Specification",
+        "create": "Create Railway Ballast Material Specification",
+        "edit": "Edit Railway Ballast Material Specification",
+        "detail": "Railway Ballast Material Specification Detail",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "ballast-material-type-id": "Ballast Material Type",
+          "specific-gravity": "Specific Gravity",
+          "porosity": "Porosity",
+          "water-absorption": "Water Absorption",
+          "shape": "Shape",
+          "average-particle-length": "Average Particle Length",
+          "remark": "Remark"
+        }
+      },
+      "railway-ballast-condition-assessment": {
+        "title": "Railway Ballast Condition Assessment",
+        "detail": "Railway Ballast Condition Assessment Details",
+        "edit": "Edit Railway Ballast Condition Assessment",
+        "create": "Create Railway Ballast Condition Assessment",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "inspection-dates": "Inspection Dates",
+          "ballast-condition-rating": "Ballast Condition Rating",
+          "fouling-presence": "Fouling Presence",
+          "ballast-degradation-indicators": "Ballast Degradation Indicators",
+          "ballast-quality-testing-method": "Ballast Quality Testing Method",
+          "testing-frequency": "Testing Frequency",
+          "ballast-resistance": "Ballast Resistance",
+          "ballast-degradation-rate": "Ballast Degradation Rate",
+          "drainage-performance": "Drainage Performance",
+          "remark": "Remark"
+        }
+      },
+      "railway-ballast-maintenance-and-renewal": {
+        "title": "Railway Ballast Maintenance and Renewal",
+        "detail": "Railway Ballast Maintenance and Renewal Details",
+        "edit": "Edit Railway Ballast Maintenance and Renewal",
+        "create": "Create Railway Ballast Maintenance and Renewal",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "scheduled-maintenance-activities": "Scheduled Maintenance Activities",
+          "recent-maintenance-dates": "Recent Maintenance Dates",
+          "inspection-reports-findings": "Inspection Reports Findings",
+          "remark": "Remark"
+        }
+      },
+      "railway-ballast-drainage-and-water-management": {
+        "title": "Railway Ballast Drainage and Water Management",
+        "detail": "Railway Ballast Drainage and Water Management Details",
+        "edit": "Edit Railway Ballast Drainage and Water Management",
+        "create": "Create Railway Ballast Drainage and Water Management",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "drainage-condition-assessment": "Drainage Condition Assessment",
+          "drainage-infrastructure-type": "Drainage Infrastructure Type",
+          "water-management-measures": "Water Management Measures",
+          "drainage-infrastructure-length": "Drainage Infrastructure Length",
+          "remark": "Remark"
+        }
+      },
+      "railway-ballast-environmental-and-other-factor": {
+        "title": "Railway Ballast Environmental and Other Factor",
+        "detail": "Railway Ballast Environmental and Other Factor Details",
+        "edit": "Edit Railway Ballast Environmental and Other Factor",
+        "create": "Create Railway Ballast Environmental and Other Factor",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "environmental-compliance-measures": "Environmental Compliance Measures",
+          "environmental-impact-assessment": "Environmental Impact Assessment",
+          "remark": "Remark"
+        }
+      },
+
+      "railway-sub-ballast-material": {
+        "title": "Railway Sub-Ballast Material",
+        "edit": "Edit Railway Sub-Ballast Material",
+        "create": "Create Railway Sub-Ballast Material",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "sub-ballast-material-type-id": "Sub-Ballast Material Type",
+          "layer-thickness": "Layer Thickness",
+          "layer-depth": "Layer Depth",
+          "density": "Density",
+          "moisture-content": "Moisture Content",
+          "method-used-for-compaction": "Method Used For Compaction",
+          "compaction-density": "Compaction Density",
+          "remark": "Remark"
+        }
+      },
+      "railway-sub-ballast-condition-assessment": {
+        "edit": "Edit Railway Sub-Ballast Condition Assessment",
+        "create": "Create Railway Sub-Ballast Condition Assessment",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "sub_ballast_material_type_id": "Sub-Ballast Material Type",
+          "inspection_dates": "Inspection Dates",
+          "sub_ballast_condition_rating": "Sub-Ballast Condition Rating",
+          "cracking_observations": "Cracking Observations",
+          "erosion_issues": "Erosion Issues",
+          "unwanted_vegetation_presence": "Unwanted Vegetation Presence",
+          "testing_frequency_per_year": "Testing Frequency Per Year",
+          "sub_ballast_resistance": "Sub-Ballast Resistance",
+          "sub_ballast_degradation_rate": "Sub-Ballast Degradation Rate",
+          "drainage_performance": "Drainage Performance",
+          "remark": "Remark"
+        }
+      },
+      "railway-sub-ballast-drainage-and-water-management": {
+        "title": "Railway Sub-Ballast Drainage and Water Management Records",
+        "detail": "Railway Sub-Ballast Drainage and Water Management Details",
+        "create": "Create Railway Sub-Ballast Drainage and Water Management Record",
+        "edit": "Edit Railway Sub-Ballast Drainage and Water Management Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "drainage_condition_assessment": "Drainage Condition Assessment",
+          "drainage_infrastructure_type": "Drainage Infrastructure Type",
+          "water_management_measures": "Water Management Measures",
+          "drainage_infrastructure_length": "Drainage Infrastructure Length",
+          "remark": "Remark"
+        }
+      },
+      "railway-sub-ballast-environmental-and-other-factor": {
+        "title": "Railway Sub-Ballast Environmental and Other Factor Records",
+        "detail": "Railway Sub-Ballast Environmental and Other Factor Details",
+        "create": "Create Railway Sub-Ballast Environmental and Other Factor Record",
+        "edit": "Edit Railway Sub-Ballast Environmental and Other Factor Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "environmental_compliance_measures": "Environmental Compliance Measures",
+          "environmental_impact_assessment": "Environmental Impact Assessment",
+          "remark": "Remark"
+        }
+      },
+      "railway-sleeper-characteristic": {
+        "title": "Railway Sleeper Characteristic Records",
+        "detail": "Railway Sleeper Characteristic Details",
+        "create": "Create Railway Sleeper Characteristic Record",
+        "edit": "Edit Railway Sleeper Characteristic Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "sleeper_type": "Sleeper Type",
+          "sleeper_size_and_dimensions": "Sleeper Size and Dimensions",
+          "sleeper_distance_between_pairs": "Sleeper Distance Between Pairs",
+          "sleeper_material_specification": "Sleeper Material Specification",
+          "sleeper_spacing": "Sleeper Spacing",
+          "spacing_between": "Spacing Between",
+          "sleeper_shape": "Sleeper Shape",
+          "remark": "Remark"
+        }
+      },
+      "railway-sleeper-condition-assessment": {
+        "title": "Railway Sleeper Condition Assessment Records",
+        "detail": "Railway Sleeper Condition Assessment Details",
+        "create": "Create Railway Sleeper Condition Assessment Record",
+        "edit": "Edit Railway Sleeper Condition Assessment Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "inspection_dates": "Inspection Dates",
+          "sleeper_condition_rating": "Sleeper Condition Rating",
+          "defect_presence": "Defect Presence",
+          "sleeper_stability_and_alignment": "Sleeper Stability and Alignment",
+          "sleepers_required_number": "Sleepers Required Number",
+          "supplier_name": "Supplier Name",
+          "supplier_phone": "Supplier Phone",
+          "remark": "Remark"
+        }
+      },
+      "railway-sleeper-maintenance-and-replacement": {
+        "title": "Railway Sleeper Maintenance and Replacement Records",
+        "detail": "Railway Sleeper Maintenance and Replacement Details",
+        "create": "Create Railway Sleeper Maintenance and Replacement Record",
+        "edit": "Edit Railway Sleeper Maintenance and Replacement Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "scheduled_maintenance_activities": "Scheduled Maintenance Activities",
+          "recent_maintenance_date": "Recent Maintenance Date",
+          "inspection_reports": "Inspection Reports",
+          "sleeper_replacement_history": "Sleeper Replacement History",
+          "remark": "Remark"
+        }
+      },
+      "railway-sleeper-fastening-system": {
+        "title": "Railway Sleeper Fastening System Records",
+        "detail": "Railway Sleeper Fastening System Details",
+        "create": "Create Railway Sleeper Fastening System Record",
+        "edit": "Edit Railway Sleeper Fastening System Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "used_fastening_systems_type": "Used Fastening Systems Type",
+          "fastener_condition_assessment": "Fastener Condition Assessment",
+          "remark": "Remark"
+        }
+      },
+      "railway-sleeper-environmental-and-other-factor": {
+        "title": "Railway Sleeper Environmental And Other Factor Records",
+        "detail": "Railway Sleeper Environmental And Other Factor Details",
+        "create": "Create Railway Sleeper Environmental And Other Factor Record",
+        "edit": "Edit Railway Sleeper Environmental And Other Factor Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "environmental_compliance_measures": "Environmental Compliance Measures",
+          "environmental_impact_assessment": "Environmental Impact Assessment",
+          "remark": "Remark",
+          "sleeper_condition_photo": "Sleeper Condition Photo"
+        }
+      },
+      "railway-fastening-system-characteristic": {
+        "title": "Railway Fastening System Characteristics",
+        "detail": "Railway Fastening System Characteristic Details",
+        "create": "Create Railway Fastening System Characteristic",
+        "edit": "Edit Railway Fastening System Characteristic",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "used_fastening_system_type": "Used Fastening System Type",
+          "fastening_system_manufacturer_supplier": "Fastening System Manufacturer/Supplier",
+          "fastening_system_specifications": "Fastening System Specifications",
+          "rail_clips_or_clamps_details": "Rail Clips or Clamps Details",
+          "bolts_and_nuts_specifications": "Bolts and Nuts Specifications",
+          "other_fastening_system": "Other Fastening System",
+          "remark": "Remark"
+        }
+      },
+      "railway-fastening-system-condition-assessment": {
+        "title": "Railway Fastening System Condition Assessments",
+        "detail": "Railway Fastening System Condition Assessment Details",
+        "create": "Create Railway Fastening System Condition Assessment",
+        "edit": "Edit Railway Fastening System Condition Assessment",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "inspection_date": "Inspection Date",
+          "fastening_system_condition_rating": "Fastening System Condition Rating",
+          "defect_presence": "Defect Presence",
+          "fastening_system_stability_and_alignment": "Fastening System Stability and Alignment",
+          "rail_fastening_model_number": "Rail Fastening Model Number",
+          "rail_fastening_needed_quantity": "Rail Fastening Needed Quantity",
+          "rail_fastening_expected_lifespan": "Rail Fastening Expected Lifespan (Years)",
+          "rail_fastening_availability": "Rail Fastening Availability",
+          "remark": "Remark"
+        }
+      },
+      "railway-fastening-system-maintenance-and-replacement": {
+        "title": "Railway Fastening System Maintenance and Replacements",
+        "detail": "Railway Fastening System Maintenance and Replacement Details",
+        "create": "Create Railway Fastening System Maintenance and Replacement",
+        "edit": "Edit Railway Fastening System Maintenance and Replacement",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "scheduled_maintenance_activities": "Scheduled Maintenance Activities",
+          "recent_maintenance_records_and_dates": "Recent Maintenance Records and Dates",
+          "remark": "Remark",
+          "inspection_reports_and_findings": "Inspection Reports and Findings",
+          "fastening_system_replacement_history": "Fastening System Replacement History"
+        }
+      },
+      "railway-fastening-system-environmental-factor": {
+        "title": "Railway Fastening System Environmental Factors",
+        "detail": "Railway Fastening System Environmental Factor Details",
+        "create": "Create Railway Fastening System Environmental Factor",
+        "edit": "Edit Railway Fastening System Environmental Factor",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "environmental_compliance_measures": "Environmental Compliance Measures",
+          "environmental_impact_assessment": "Environmental Impact Assessment",
+          "remark": "Remark",
+          "fastening_system_condition_documentation": "Fastening System Condition Documentation"
+        }
+      },
+      "railway-sub-ballast-maintenance-and-renewal": {
+        "title": "Railway Sub-Ballast Maintenance and Renewal Records",
+        "detail": "Railway Sub-Ballast Maintenance and Renewal Details",
+        "create": "Create Railway Sub-Ballast Maintenance and Renewal Record",
+        "edit": "Edit Railway Sub-Ballast Maintenance and Renewal Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "scheduled_maintenance_activities": "Scheduled Maintenance Activities",
+          "sub_ballast_renewal_history": "Sub-Ballast Renewal History",
+          "recent_maintenance_dates": "Recent Maintenance Dates",
+          "inspection_reports_findings": "Inspection Reports Findings",
+          "remark": "Remark"
+        }
+      },
+      "railway-sub-ballast-material-test": {
+        "edit": "Edit Railway Sub-Ballast Material Test",
+        "create": "Create Railway Sub-Ballast Material Test",
+        "details": {
+          "railway-line-section-name": "Railway Line Section Name",
+          "sub-ballast-material-type-id": "Sub-Ballast Material Type",
+          "testing-method-used": "Testing Method Used",
+          "sampling-method": "Sampling Method",
+          "sample-size": "Sample Size",
+          "material-source": "Material Source",
+          "sieve-analysis-results": "Sieve Analysis Results",
+          "supplier": "Supplier",
+          "remark": "Remark"
+        }
+      },
+      "railway-track-data": {
+        "title": "Railway Track Data",
+        "create-railway-track-data": "Create Railway Track Data",
+        "edit-railway-track-data": "Edit Railway Track Data",
+        "railway-track-data-details": "Railway Track Data Details",
+        "details": {
+          "railway-track-infrastructure-type-id": "Railway Track Infrastructure Type",
+          "track-type-id": "Track Type",
+          "track-gauge-id": "Track Gauge",
+          "track-length": "Track Length",
+          "rail-type-and-size": "Rail Type and Size",
+          "sleepers-type-and-spacing": "Sleepers Type and Spacing",
+          "fastening-systems": "Fastening Systems",
+          "ballast-type-and-depth": "Ballast Type and Depth",
+          "track-connection-method": "Track Connection Method",
+          "track-type": "Track Type",
+          "remark": "Remark"
+        }
+      },
+      "railway-tracks-geometry-data": {
+        "title": "Railway Tracks Geometry Data",
+        "create-railway-tracks-geometry-data": "Create Railway Tracks Geometry Data",
+        "edit-railway-tracks-geometry-data": "Edit Railway Tracks Geometry Data",
+        "railway-tracks-geometry-data-details": "Railway Tracks Geometry Data Details",
+        "details": {
+          "alignment": "Alignment",
+          "gradient": "Gradient",
+          "curvature-radius": "Curvature Radius",
+          "cant": "Cant",
+          "track-gauge": "Track Gauge",
+          "cross-level": "Cross Level",
+          "track-surface-profile": "Track Surface Profile",
+          "twist": "Twist",
+          "remark": "Remark"
+        }
+      },
+      "railway-track-maintenance-and-inspection": {
+        "title": "Railway Track Maintenance And Inspection",
+        "create-railway-track-maintenance-and-inspection": "Create Railway Track Maintenance And Inspection",
+        "edit-railway-track-maintenance-and-inspection": "Edit Railway Track Maintenance And Inspection",
+        "railway-track-maintenance-and-inspection-details": "Railway Track Maintenance And Inspection Details",
+        "details": {
+          "project-id": "Project ID",
+          "scheduled-maintenance-activity-id": "Scheduled Maintenance Activity",
+          "maintenance-method": "Maintenance Method",
+          "track-maintenance-frequency-id": "Track Maintenance Frequency",
+          "recent-maintenance-date": "Recent Maintenance Date",
+          "inspection-reports-and-findings": "Inspection Reports and Findings",
+          "remark": "Remark"
+        }
+      },
+      "railway-signaling-system": {
+        "title": "Railway Signaling Systems",
+        "detail": "Railway Signaling System Details",
+        "create": "Create Railway Signaling System",
+        "edit": "Edit Railway Signaling System",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "signaling_system_type": "Signaling System Type",
+          "signaling_system_manufacturer_or_supplier_name": "Manufacturer/Supplier Name",
+          "signaling_system_manufacturer_or_supplier_phone": "Manufacturer/Supplier Phone",
+          "signaling_system_components": "Signaling System Components",
+          "remark": "Remark",
+          "signaling_system_documentation": "Signaling System Documentation"
+        }
+      },
+      "railway-communication-system": {
+        "title": "Railway Communication Systems",
+        "detail": "Railway Communication System Details",
+        "create": "Create Railway Communication System",
+        "edit": "Edit Railway Communication System",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "communication_system_type": "Communication System Type",
+          "communication_system_protocols_or_standards": "Protocols/Standards",
+          "communication_system_components": "Communication System Components",
+          "signaling_system_components": "Signaling System Interoperability Components",
+          "remark": "Remark",
+          "communication_system_documentation": "Communication System Documentation"
+        }
+      },
+      "railway-system-condition-assessment": {
+        "title": "Railway System Condition Assessments",
+        "detail": "Railway System Condition Assessment Details",
+        "create": "Create Railway System Condition Assessment",
+        "edit": "Edit Railway System Condition Assessment",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "system_condition_rating_or_assessment": "System Condition Rating/Assessment",
+          "defect_presence": "Defect Presence",
+          "system_performance_indicators": "System Performance Indicators",
+          "power_supply_systems_and_communication": "Power Supply Systems and Communication",
+          "remark": "Remark"
+        }
+      },
+      "railway-communication-system-maintenance-and-testing": {
+        "title": "Railway Communication System Maintenance and Testing",
+        "detail": "Railway Communication System Maintenance and Testing Details",
+        "create": "Create Railway Communication System Maintenance and Testing",
+        "edit": "Edit Railway Communication System Maintenance and Testing",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "scheduled_maintenance_activities": "Scheduled Maintenance Activities",
+          "inspections": "Inspections",
+          "recent_maintenance_records_and_dates": "Recent Maintenance Records and Dates",
+          "testing_and_verification_procedures_prepared": "Testing and Verification Procedures Prepared",
+          "maintenance_contracts_or_agreements_made": "Maintenance Contracts or Agreements Made",
+          "maintenance-contracts-file-upload": "Upload Maintenance Contracts File",
+          "remark": "Remark"
+        }
+      },
       "electric-grid-control-center-performance-and-maintenance": {
         "title": "Electric Grid Control Center Performance And Maintenance",
         "create-electric-grid-control-center-performance-and-maintenance": "Create Electric Grid Control Center Performance And Maintenance",
@@ -3327,6 +4014,7 @@
     "meters": "Meters",
     "inches": "Inches",
     "created-at": "Created At",
+    "updated-at": "update At",
     "years": "Years",
     "kwh-per-m2": "kWh/m²",
     "mwh": "MWh",
@@ -3344,7 +4032,12 @@
     "km2": "Square Kilometer",
     "currency": "Currency",
     "km": "Kilometers",
+    "status": {
+      "active": "Active",
+      "inactive": "InActive"
+    },
     "table-columns": {
+      "id": "ID",
       "created-at": "Created At",
       "updated-at": "update At",
       "status": "Status",
@@ -3473,16 +4166,66 @@
       "create-stakeholder-certificate": "Create Stakeholder Certificate",
       "edit-stakeholder-certificate": "Edit Stakeholder Certificate",
       "form": {
-        "title": "Certificate Title",
-        "certificate_no": "Certificate Number",
-        "date_of_issue": "Date of Issue",
-        "expiry_date": "Expiry Date",
-        "initial_certificate_no": "Initial Certificate Number",
-        "initial_certificate_issue_date": "Initial Certificate Issue Date",
-        "description": "Description",
-        "number-of-days": "Number of Days",
-        "reason": "Reason"
+        "title": "Title",
+        "issue-date": "Issue Date",
+        "expire-date": "Expire Date",
+        "type": "Type",
+        "scope": "Scope",
+        "certifying-body": "Certifying Body",
+        "certification-number": "Certfication Number",
+        "remark": "Remark"
       }
+    },
+    "stakeholder-license": {
+      "title": "Stakeholder Licenses",
+      "detail": "Stakeholder License Detail",
+      "create": "Create Stakeholder License",
+      "edit": "Edit Stakeholder License",
+      "form": {
+        "license-type": "License Type",
+        "license-category": "License Category",
+        "license-name": "License Name",
+        "license-scope": "License Scope",
+        "licensing-body": "Licensing Body",
+        "license-number": "License Number",
+        "issue-date": "Issue Date",
+        "expire-date": "Expire Date",
+        "remark": "Remark"
+      }
+    },
+    "stakeholder-upgrade": {
+      "title": "Stakholder Upgrades",
+      "create": "Create Stakeholder Upgrade",
+      "edit": "Edit Stakeholder Upgrade",
+      "details": "Stakeholder Upgrade Details",
+      "form": {
+        "stakeholder-id": "Stakeholder_id",
+        "upgrade-type": "Upgrade Type",
+        "previous-level": "Previous Level",
+        "upgraded-level": "Upgraded Level",
+        "ownership-percentage": "Ownership Percentage",
+        "description": "Description"
+      }
+    },
+    "stakeholder-vehicle": {
+      "title": "Vehicle Details",
+      "form": {
+        "vehicle-name": "Vehicle Name",
+        "plate-number": "Plate Number",
+        "brand-name": "Brand Name",
+        "model": "Model",
+        "year": "Year",
+        "chassis-number": "Chassis Number",
+        "engine-number": "Engine Number",
+        "capacity": "Capacity",
+        "purpose": "Purpose",
+        "quantity": "Quantity",
+        "current-situation": "Current Situation",
+        "location": "Location"
+      },
+      "details": "Vehicle Details",
+      "create": "Create Vehicle",
+      "edit": "Edit Vehicle"
     },
     "stakeholder-training": {
       "title": "Stakeholder Training",
@@ -4042,6 +4785,19 @@
       "phoneNo": "Phone Number",
       "email": "Email",
       "name": "Name"
+    }
+  },
+  "data-collection-guide": {
+    "title": "Data Collection Guide",
+    "create": "Create Data Collection Guide",
+    "edit": "Edit Data Collection Guide",
+    "details": "Data Collection Guide Details",
+    "form": {
+      "description": "Description",
+      "instruction": "Instruction",
+      "data_collection_frequency": "Data Collection Frequency",
+      "data_source": "Data Source",
+      "responsible_data_collector_body": "Responsible Data Collector Body"
     }
   }
 }

@@ -20,9 +20,6 @@ interface Props {
   saveSettings: (values: Settings) => void;
 }
 
-
-
-
 const AppBarContent = (props: Props) => {
   // ** Props
   const { settings, saveSettings } = props;

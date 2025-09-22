@@ -30,24 +30,12 @@ const StakeholderCertificateForm: React.FC<StakeholderCertificateFormProps> = ({
         />
       </Grid>
 
-      {/* Certificate Number Field */}
-      <Grid item xs={12}>
-        <CustomTextBox
-          fullWidth
-          label={transl('stakeholder.stakeholder-certificate.form.certificate_no')}
-          placeholder={transl('stakeholder.stakeholder-certificate.form.certificate_no')}
-          name="certificate_no"
-          size="small"
-          sx={{ mb: 2 }}
-        />
-      </Grid>
-
       {/* Date of Issue */}
       <Grid item xs={12}>
         <CustomDynamicDatePicker
           fullWidth
-          label={transl('stakeholder.stakeholder-certificate.form.date_of_issue')}
-          name="date_of_issue"
+          label={transl('stakeholder.stakeholder-certificate.form.issue-date')}
+          name="issue_date"
           required
           showYearDropdown
           showMonthDropdown
@@ -55,53 +43,90 @@ const StakeholderCertificateForm: React.FC<StakeholderCertificateFormProps> = ({
         />
       </Grid>
 
-      {/* Expiry Date */}
-      <Grid item xs={12}>
-        <CustomDynamicDatePicker
-          fullWidth
-          label={transl('stakeholder.stakeholder-certificate.form.expiry_date')}
-          name="expiry_date"
-          required
-          showYearDropdown
-          showMonthDropdown
-          customInput={<CustomTextBox name="expiry_date" />}
-        />
-      </Grid>
-
-      {/* Initial Certificate Number */}
+      {/* Type Field */}
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl('stakeholder.stakeholder-certificate.form.initial_certificate_no')}
-          placeholder={transl('stakeholder.stakeholder-certificate.form.initial_certificate_no')}
-          name="initial_certificate_no"
+          label={transl('stakeholder.stakeholder-certificate.form.type')}
+          placeholder={transl('stakeholder.stakeholder-certificate.form.type')}
+          name="type"
           size="small"
           sx={{ mb: 2 }}
         />
       </Grid>
 
-      {/* Initial Certificate Issue Date */}
-      <Grid item xs={12}>
-        <CustomDynamicDatePicker
-          fullWidth
-          label={transl('stakeholder.stakeholder-certificate.form.initial_certificate_issue_date')}
-          name="initial_certificate_issue_date"
-          required
-          showYearDropdown
-          showMonthDropdown
-          customInput={<CustomTextBox name="initial_certificate_issue_date" />}
-        />
-      </Grid>
-
-      {/* Description */}
+      {/* Scope Field */}
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl('stakeholder.stakeholder-certificate.form.description')}
-          placeholder={transl('stakeholder.stakeholder-certificate.form.description')}
-          name="description"
+          label={transl('stakeholder.stakeholder-certificate.form.scope')}
+          placeholder={transl('stakeholder.stakeholder-certificate.form.scope')}
+          name="scope"
+          size="small"
+          sx={{ mb: 2 }}
+        />
+      </Grid>
+
+      {/* Certifying Body Field */}
+      <Grid item xs={12}>
+        <CustomTextBox
+          fullWidth
+          label={transl('stakeholder.stakeholder-certificate.form.certifying-body')}
+          placeholder={transl('stakeholder.stakeholder-certificate.form.certifying_body')}
+          name="certifying_body"
+          size="small"
+          sx={{ mb: 2 }}
+        />
+      </Grid>
+
+      {/* Certification Number Field */}
+      <Grid item xs={12}>
+        <CustomTextBox
+          fullWidth
+          label={transl('stakeholder.stakeholder-certificate.form.certification-number')}
+          placeholder={transl('stakeholder.stakeholder-certificate.form.certification_number')}
+          name="certification_number"
+          size="small"
+          sx={{ mb: 2 }}
+        />
+      </Grid>
+
+      {/* Issue Date */}
+      <Grid item xs={12}>
+        <CustomDynamicDatePicker
+          fullWidth
+          label={transl('stakeholder.stakeholder-certificate.form.issue-date')}
+          name="issue_date"
+          required
+          showYearDropdown
+          showMonthDropdown
+          customInput={<CustomTextBox name="issue_date" />}
+        />
+      </Grid>
+
+      {/* Expire Date */}
+      <Grid item xs={12}>
+        <CustomDynamicDatePicker
+          fullWidth
+          label={transl('stakeholder.stakeholder-certificate.form.expire-date')}
+          name="expire_date"
+          required
+          showYearDropdown
+          showMonthDropdown
+          customInput={<CustomTextBox name="expire_date" />}
+        />
+      </Grid>
+
+      {/* Remark */}
+      <Grid item xs={12}>
+        <CustomTextBox
+          fullWidth
           multiline
-          rows="4"
+          rows={3}
+          label={transl('stakeholder.stakeholder-certificate.form.remark')}
+          placeholder={transl('stakeholder.stakeholder-certificate.form.remark')}
+          name="remark"
+          size="small"
           sx={{ mb: 2 }}
         />
       </Grid>

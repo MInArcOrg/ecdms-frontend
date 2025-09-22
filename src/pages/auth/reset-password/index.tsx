@@ -38,7 +38,6 @@ const ResetPassword = () => {
   const { t } = useTranslation();
   const router = useRouter();
   const { token, user_id } = router.query;
-  console.log('user_id',user_id)
 
   useEffect(() => {
     if (!token) {

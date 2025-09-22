@@ -41,35 +41,73 @@ export const stakeholderCertificateColumns = (
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t('stakeholder.stakeholder-certificate.title'),
+    headerName: t('stakeholder.stakeholder-certificate.form.title'),
     field: 'title',
     renderCell: ({ row }: CellType) => (row?.title ? row.title : t('common.not-available'))
   },
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t('stakeholder.stakeholder-certificate.certificate-no'),
-    field: 'certificate_no',
+    headerName: t('stakeholder.stakeholder-certificate.form.type'),
+    field: 'type',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.certificate_no ? row.certificate_no : t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.type ? row.type : t('common.not-available')}</Typography>
     )
   },
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t('stakeholder.stakeholder-certificate.date-of-issue'),
-    field: 'date_of_issue',
+    headerName: t('stakeholder.stakeholder-certificate.form.certification-number'),
+    field: 'certification_number',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.date_of_issue ? row.date_of_issue : t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.certification_number ? row.certification_number : t('common.not-available')}
+      </Typography>
     )
   },
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t('stakeholder.stakeholder-certificate.expiry-date'),
-    field: 'expiry_date',
+    headerName: t('stakeholder.stakeholder-certificate.form.scope'),
+    field: 'scope',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.expiry_date ? row.expiry_date : t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.scope ? row.scope : t('common.not-available')}</Typography>
+    )
+  },
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t('stakeholder.stakeholder-certificate.form.certifying-body'),
+    field: 'certifying_body',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>{row?.certifying_body ? row.certifying_body : t('common.not-available')}</Typography>
+    )
+  },
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t('stakeholder.stakeholder-certificate.form.issue-date'),
+    field: 'issue_date',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>{row?.issue_date ? row.issue_date : t('common.not-available')}</Typography>
+    )
+  },
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t('stakeholder.stakeholder-certificate.form.expire-date'),
+    field: 'expire_date',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>{row?.expire_date ? row.expire_date : t('common.not-available')}</Typography>
+    )
+  },
+  {
+    flex: 0.15,
+    minWidth: 120,
+    headerName: t('stakeholder.stakeholder-certificate.form.remark'),
+    field: 'remark',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>{row?.remark ? row.remark : t('common.not-available')}</Typography>
     )
   },
   {

@@ -13,6 +13,7 @@ import { userColumns } from 'src/views/admin/user/list/user-row-column';
 import UserDrawer from 'src/views/admin/user/list/user-drawer';
 import userApiService from 'src/services/admin/user-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
+import UserCard from 'src/views/admin/user/list/user-card';
 
 function ProfessionalList({ parentDepartment }: { parentDepartment: Department }) {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -67,6 +68,7 @@ function ProfessionalList({ parentDepartment }: { parentDepartment: Department }
       )}
       <Container>
         <ItemsListing
+          ItemViewComponent={({ data }) => <UserCard user={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />}
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
@@ -76,7 +78,7 @@ function ProfessionalList({ parentDepartment }: { parentDepartment: Department }
             onlyIcon: true,
             permission: { action: 'create', subject: 'user' }
           }}
-          title={t('department.user.title')}
+          title={t('department.professional.title')}
           fetchDataFunction={refetch}
           tableProps={{ headers: userColumns(handleEdit, handleDelete, t, refetch, true) }}
           items={professionals || []}

@@ -39,6 +39,7 @@ export const projectMasterModels = {
     editTitle: 'edit-abutment-type',
     fileType: 'ABUTMENT_TYPE'
   },
+
   mobileNetworkType: {
     model: 'MobileNetworkType',
     dbModel: 'mobilenetworktype',
@@ -222,6 +223,46 @@ export const projectMasterModels = {
     createTitle: 'create-ground-water-impact',
     editTitle: 'edit-ground-water-impact',
     fileType: 'GROUND_WATER_IMPACT'
+  },
+  trackMaintenanceFrequency: {
+    model: 'TrackMaintenanceFrequency',
+    dbModel: 'trackmaintenancefrequency',
+    title: 'track-maintenance-frequencies',
+    createTitle: 'create-track-maintenance-frequency',
+    editTitle: 'edit-track-maintenance-frequency',
+    fileType: 'TRACK_MAINTENANCE_FREQUENCY'
+  },
+  scheduledMaintenanceActivity: {
+    model: 'ScheduledMaintenanceActivity',
+    dbModel: 'scheduledmaintenanceactivity',
+    title: 'scheduled-maintenance-activities',
+    createTitle: 'create-scheduled-maintenance-activity',
+    editTitle: 'edit-scheduled-maintenance-activity',
+    fileType: 'SCHEDULED_MAINTENANCE_ACTIVITY'
+  },
+  rehabilitationRenewalMethodUsed: {
+    model: 'RehabilitationRenewalMethodUsed',
+    dbModel: 'rehabilitationrenewalmethodUsed',
+    title: 'rehabilitation-renewal-method-used',
+    createTitle: 'create-rehabilitation-renewal-method-used',
+    editTitle: 'edit-rehabilitation-renewal-method-used',
+    fileType: 'REHABILITATION_RENEWAL_METHOD_USED'
+  },
+  trackInspectionFrequency: {
+    model: 'TrackInspectionFrequency',
+    dbModel: 'trackinspectionfrequency',
+    title: 'track-inspection-frequencies',
+    createTitle: 'create-track-inspection-frequency',
+    editTitle: 'edit-track-inspection-frequency',
+    fileType: 'TRACK_INSPECTION_FREQUENCY'
+  },
+  trackSafetyMeasure: {
+    model: 'TrackSafetyMeasure',
+    dbModel: 'tracksafetymeasure',
+    title: 'track-safety-measures',
+    createTitle: 'create-track-safety-measure',
+    editTitle: 'edit-track-safety-measure',
+    fileType: 'TRACK_SAFETY_MEASURE'
   },
   slopeStability: {
     model: 'SlopeStability',
@@ -739,8 +780,8 @@ export const projectMasterModels = {
     model: 'CommunicationLinks',
     dbModel: 'communicationlinks',
     title: 'communication-links',
-    createTitle: 'create-communication-links',
-    editTitle: 'edit-communication-links',
+    createTitle: 'create-communication-link',
+    editTitle: 'edit-communication-link',
     fileType: 'COMMUNICATION_LINKS'
   },
   waterSource: {
@@ -814,6 +855,86 @@ export const projectMasterModels = {
     createTitle: 'create-scheme-status',
     editTitle: 'edit-scheme-status',
     fileType: 'SCHEME_STATUS'
+  },
+  trackType: {
+    model: 'TrackType',
+    dbModel: 'tracktype',
+    title: 'track-types',
+    createTitle: 'create-track-type',
+    editTitle: 'edit-track-type',
+    fileType: 'TRACK_TYPE'
+  },
+  railwayTrackInfrastructure: {
+    model: 'RailwayTrackInfrastructure',
+    dbModel: 'railwaytrackinfrastructure',
+    title: 'railway-track-infrastructures',
+    createTitle: 'create-railway-track-infrastructure',
+    editTitle: 'edit-railway-track-infrastructure',
+    fileType: 'RAILWAY_TRACK_INFRASTRUCTURE'
+  },
+  trackGauge: {
+    model: 'TrackGauge',
+    dbModel: 'trackgauge',
+    title: 'track-gauges',
+    createTitle: 'create-track-gauge',
+    editTitle: 'edit-track-gauge',
+    fileType: 'TRACK_GAUGE'
+  },
+  trackConditionRating: {
+    model: 'TrackConditionRating',
+    dbModel: 'trackconditionrating',
+    title: 'track-condition-ratings',
+    createTitle: 'create-track-condition-rating',
+    editTitle: 'edit-track-condition-rating',
+    fileType: 'TRACK_CONDITION_RATING'
+  },
+  observedDefects: {
+    model: 'ObservedDefects',
+    dbModel: 'observeddefects',
+    title: 'observed-defects',
+    createTitle: 'create-observed-defect',
+    editTitle: 'edit-observed-defect',
+    fileType: 'OBSERVED_DEFECTS'
+  },
+  compactionMethod: {
+    model: 'CompactionMethod',
+    dbModel: 'compactionmethod',
+    title: 'compaction-methods',
+    createTitle: 'create-compaction-method',
+    editTitle: 'edit-compaction-method',
+    fileType: 'COMPACTION_METHOD'
+  },
+  ballastMaterialType: {
+    model: 'BallastMaterialType',
+    dbModel: 'ballastmaterialtype',
+    title: 'ballast-material-types',
+    createTitle: 'create-ballast-material-type',
+    editTitle: 'edit-ballast-material-type',
+    fileType: 'BALLAST_MATERIAL_TYPE'
+  },
+  ballastSource: {
+    model: 'BallastSource',
+    dbModel: 'ballastsource',
+    title: 'ballast-sources',
+    createTitle: 'create-ballast-source',
+    editTitle: 'edit-ballast-source',
+    fileType: 'BALLAST_SOURCE'
+  },
+  ballastDegradationIndicator: {
+    model: 'BallastDegradationIndicator',
+    dbModel: 'ballastdegradationindicator',
+    title: 'ballast-degradation-indicators',
+    createTitle: 'create-ballast-degradation-indicator',
+    editTitle: 'edit-ballast-degradation-indicator',
+    fileType: 'BALLAST_DEGRADATION_INDICATOR'
+  },
+  subBallastMaterialType: {
+    model: 'SubBallastMaterialType',
+    dbModel: 'subballastmaterialtype',
+    title: 'sub-ballast-material-types',
+    createTitle: 'create-sub-ballast-material-type',
+    editTitle: 'edit-sub-ballast-material-type',
+    fileType: 'SUB_BALLAST_MATERIAL_TYPE'
   }
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;

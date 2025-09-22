@@ -25,7 +25,6 @@ interface Props {
   saveSettings: (values: Settings) => void;
 }
 
-
 const AppBarContent = (props: Props) => {
   // ** Props
   const { hidden, settings, saveSettings, toggleNavVisibility } = props;

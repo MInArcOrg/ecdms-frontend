@@ -77,5 +77,4 @@ const ProjectLayout: React.FC<ProjectLayoutProps> = ({ activeMenuId, activeSubMe
     </Box>
   );
 };
-
 export default ProjectLayout;

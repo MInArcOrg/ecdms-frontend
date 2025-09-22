@@ -10,13 +10,15 @@ import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
 import StakeholderCertificateCard from './stakeholder-certificate-card';
 import StakeholderCertificateDrawer from './stakeholder-certificate-drawer';
+import { stakeholderCertificateColumns } from './stakeholder-certificate-row';
+import { useTranslation } from 'react-i18next';
 
 function StakeholderCertificateList({ stakeholderId }: { type: string; stakeholderId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
-
+  const { t: transl } = useTranslation();
   const [selectedRow, setSelectedRow] = useState<StakeholderCertificate | null>(null);
   const fetchStakeholderCertificates = (params: GetRequestParam): Promise<IApiResponse<StakeholderCertificate[]>> => {
-    return stakeholderCertificateApiService.getAll({ ...params, filter: { ...params.filter } });
+    return stakeholderCertificateApiService.getAll({ ...params, filter: { ...params.filter, stakeholder_id: stakeholderId } });
   };
 
   const {
@@ -58,11 +60,12 @@ function StakeholderCertificateList({ stakeholderId }: { type: string; stakehold
       <ItemsListing
         title={`stakeholder.stakeholder-certificate.title`}
         pagination={pagination}
-        type={ITEMS_LISTING_TYPE.grid.value}
+        type={ITEMS_LISTING_TYPE.table.value}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
           <StakeholderCertificateCard stakeholderCertificate={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
+        tableProps={{ headers: stakeholderCertificateColumns(() => {}, handleEdit, handleDelete, transl, refetch) }}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,

@@ -13,6 +13,7 @@ import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
 import { Container } from '@mui/system';
 import { positionColumns } from './position-row';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
+import PositionCard from './position-card';
 
 function PositionList({ parentDepartment }: { parentDepartment: Department }) {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -69,6 +70,10 @@ function PositionList({ parentDepartment }: { parentDepartment: Department }) {
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
+          title={t('department.position.title')}
+          ItemViewComponent={({ data }) => (
+            <PositionCard position={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
+          )}
           createActionConfig={{
             ...defaultCreateActionConfig,
             onClick: toggleDrawer,

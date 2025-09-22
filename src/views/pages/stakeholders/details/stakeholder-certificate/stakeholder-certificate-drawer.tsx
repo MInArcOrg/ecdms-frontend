@@ -41,9 +41,13 @@ const StakeholderCertificateDrawer = (props: StakeholderCertificateDrawerType) =
       ...values,
       id: stakeholderCertificate?.id,
       stakeholder_id: stakeholderId,
-      expiry_date: convertDateToLocaleDate(values?.expiry_date),
-      date_of_issue: convertDateToLocaleDate(values?.date_of_issue),
-      initial_certificate_issue_date: convertDateToLocaleDate(values?.initial_certificate_issue_date)
+      certification_number: values.certification_number,
+      issue_date: convertDateToLocaleDate(values.issue_date),
+      expire_date: convertDateToLocaleDate(values.expire_date),
+      type: values.type,
+      scope: values.scope,
+      certifying_body: values.certifying_body,
+      remark: values.remark
     },
     files: uploadableFile ? [uploadableFile] : []
   });
@@ -72,9 +76,13 @@ const StakeholderCertificateDrawer = (props: StakeholderCertificateDrawerType) =
           validationSchema={validationSchema}
           initialValues={{
             ...stakeholderCertificate,
-            expiry_date: formatInitialDateDate(stakeholderCertificate?.expiry_date),
-            date_of_issue: formatInitialDateDate(stakeholderCertificate?.date_of_issue),
-            initial_certificate_issue_date: formatInitialDateDate(stakeholderCertificate?.initial_certificate_issue_date)
+            certification_number: stakeholderCertificate?.certification_number || '',
+            issue_date: formatInitialDateDate(stakeholderCertificate?.issue_date),
+            expire_date: formatInitialDateDate(stakeholderCertificate?.expire_date),
+            type: stakeholderCertificate?.type || '',
+            scope: stakeholderCertificate?.scope || '',
+            certifying_body: stakeholderCertificate?.certifying_body || '',
+            remark: stakeholderCertificate?.remark || ''
           }}
           createActionFunc={isEdit ? editStakeholderCertificate : createStakeholderCertificate}
           onActionSuccess={onActionSuccess}

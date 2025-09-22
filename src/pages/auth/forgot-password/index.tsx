@@ -66,7 +66,7 @@ const ForgotPassword = () => {
       const { email } = values;
       await authApiService.sendResetEmail({
         email,
-        redirectUrl: (process.env.NEXT_PUBLIC_APP_URL || window.location.origin )+ '/auth/' + 'reset-password'
+        redirectUrl: (process.env.NEXT_PUBLIC_APP_URL || window.location.origin) + '/auth/' + 'reset-password'
       });
       setEmailSent(true);
       toast.success(t('forgot-password.success-message'));

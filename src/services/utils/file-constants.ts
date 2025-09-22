@@ -62,6 +62,7 @@ export const uploadableProjectFileTypes = {
   stakeholderContactPerson: 'STAKEHOLDER_CONTACT_PERSON',
   training: 'TRAINING',
   regulation: 'REGULATION',
+  license: 'LICENSE',
   other: {
     buildingDimensionDetail: 'BUILDING_DIMENSION_DETAIL',
     port: 'PORT',
@@ -155,7 +156,8 @@ export const uploadableProjectFileTypes = {
     electric_smart_meters_privacy_and_security_data: 'ELECTRIC_SMART_METERS_PRIVACY_AND_SECURITY_DATA',
     electric_grid_control_center_data: 'ELECTRIC_GRID_CONTROL_CENTER_DATA',
     electric_grid_control_center_performance_and_maintenance: 'ELECTRIC_GRID_CONTROL_CENTER_PERFORMANCE_AND_MAINTENANCE',
-    electric_grid_control_center_cyber_security_data: 'ELECTRIC_GRID_CONTROL_CENTER_CYBER_SECURITY_DATA'
+    electric_grid_control_center_cyber_security_data: 'ELECTRIC_GRID_CONTROL_CENTER_CYBER_SECURITY_DATA',
+    tracksGeometryData: 'TRACKS_GEOMETRY_DATA'
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

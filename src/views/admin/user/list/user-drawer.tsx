@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
   first_name: yup.string().required(),
   last_name: yup.string().required(),
   email: yup.string().email(),
-  phone: yup.number().typeError('Contact Number field is required').min(10),
+  phone: yup.number().typeError('Contact Number field is required').min(10)
 });
 
 const UserDrawer = (props: UserDrawerType) => {

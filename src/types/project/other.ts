@@ -1527,3 +1527,504 @@ export interface ElectricGridControlCenterCyberSecurityData {
   created_at?: string;
   updated_at?: string;
 }
+
+export interface RailwayTracksGeometryData {
+  id: string;
+  project_id: string;
+  alignment?: string;
+  gradient?: number;
+  curvature_radius?: number;
+  cant?: string;
+  track_gauge?: string;
+  cross_level?: string;
+  track_surface_profile?: string;
+  twist?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwayTrackData {
+  id: string;
+  project_id: string;
+  railway_track_infrastructure_type_id: string;
+  track_type_id: string;
+  track_gauge_id: string;
+  track_length?: number;
+  rail_type_and_size?: string;
+  sleepers_type_and_spacing?: string;
+  fastening_systems?: string;
+  ballast_type_and_depth?: string;
+  track_connection_method?: string;
+  track_type?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface RailwayTrackConditionAssessment {
+  id: string;
+  project_id: string;
+  inspection_dates?: string | Date | EthiopianDate; // ISO date string
+  track_condition_rating_id: string;
+  observed_defects_id: string;
+  track_settlement_irregularities?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwayTrackMaintenanceAndInspection {
+  id: string;
+  project_id: string;
+  scheduled_maintenance_activity_id: string;
+  maintenance_method?: string;
+  track_maintenance_frequency_id: string;
+  recent_maintenance_date?: string;
+  inspection_reports_and_findings?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface RailwayTrackRehabilitationOrRenewal {
+  id: string;
+  project_id: string;
+  track_renewal_history?: string;
+  plans_or_schedules?: string;
+  rehabilitation_renewal_methods_used_id: string;
+  rehabilitation_renewal_types?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwayTrackSafety {
+  id: string; // Required string
+  project_id: string; // Required UUID
+  railway_track_safety_measures_id: string; // Required UUID
+  track_inspection_frequency_id: string; // Required UUID
+  is_compliant_with_safety_regulations_standards?: boolean; // Optional Boolean
+  remark?: string; // Optional Text
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwayBallast {
+  id: string;
+  project_id: string;
+  railway_line_section_name: string;
+  railway_ballast_name: string;
+  ballast_id_no?: string;
+  ballast_construction_cost?: number;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwayBallastMaterialData {
+  id: string;
+  project_id: string; // UUID
+  railway_line_section_name: string;
+  ballast_material_type_id: string; // UUID
+  particle_size_distribution_grading?: string;
+  ballast_used_quantity?: number; // DOUBLE
+  ballast_source_id: string; // UUID
+  ballast_material_size?: number; // DOUBLE
+  ballast_layer_thickness?: number; // DOUBLE
+  compaction_method_id: string; // UUID
+  remark?: string; // TEXT
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwayBallastMaterialSpecification {
+  id: string;
+  project_id: string; // UUID
+  railway_line_section_name: string;
+  ballast_material_type_id: string; // UUID
+  specific_gravity?: number;
+  porosity?: number;
+  water_absorption?: number;
+  shape?: string;
+  average_particle_length?: number;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface RailwayBallastConditionAssessment {
+  id: string;
+  project_id: string; // UUID
+  railway_line_section_name: string;
+  inspection_dates?: string | Date | EthiopianDate; // ISO date string
+
+  ballast_condition_rating: BallastConditionRating;
+  fouling_presence: FoulingPresence;
+  ballast_degradation_indicators: BallastDegradationIndicators;
+  ballast_quality_testing_method: BallastQualityTestingMethod;
+
+  testing_frequency?: number;
+  ballast_resistance?: string;
+
+  ballast_degradation_rate: BallastDegradationRate;
+  drainage_performance: DrainagePerformance;
+
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+export enum BallastConditionRating {
+  Excellent = 'Excellent',
+  Good = 'Good',
+  Fair = 'Fair',
+  Poor = 'Poor'
+}
+
+export enum FoulingPresence {
+  Fines = 'Fines',
+  Debris = 'Debris',
+  Sediments = 'Sediments',
+  Siltation = 'Siltation',
+  Other = 'Other'
+}
+
+export enum BallastDegradationIndicators {
+  Breakage = 'Breakage',
+  Crack = 'Crack',
+  Other = 'Other'
+}
+
+export enum BallastQualityTestingMethod {
+  GradationTest = 'Gradation Test',
+  SoundnessTest = 'Soundness Test',
+  CompactionTest = 'Compaction Test',
+  Other = 'Other'
+}
+
+export enum BallastDegradationRate {
+  Excellent = 'Excellent',
+  Good = 'Good',
+  Fair = 'Fair',
+  Poor = 'Poor'
+}
+
+export enum DrainagePerformance {
+  Excellent = 'Excellent',
+  Good = 'Good',
+  Fair = 'Fair',
+  Poor = 'Poor'
+}
+// src/types/project/other.ts
+
+export interface RailwayBallastMaintenanceAndRenewal {
+  id: string;
+  project_id: string; // UUID
+  railway_line_section_name: string; // STRING
+  scheduled_maintenance_activities: ScheduledMaintenanceActivities; // ENUM
+  recent_maintenance_dates?: string | Date | EthiopianDate; // DATE (ISO date string)
+  inspection_reports_findings?: string; // TEXT
+  remark?: string; // TEXT
+  created_at?: string;
+  updated_at?: string;
+}
+
+export enum ScheduledMaintenanceActivities {
+  Tamping = 'Tamping',
+  Cleaning = 'Cleaning',
+  RoutineMaintenance = 'Routine Maintenance',
+  CorrectiveMaintenance = 'Corrective Maintenance',
+  Other = 'Other'
+}
+// src/types/project/other.ts
+
+export interface RailwayBallastDrainageAndWaterManagement {
+  id: string;
+  project_id: string; // UUID is typically represented as a string in TypeScript
+  railway_line_section_name: string; // STRING
+  drainage_condition_assessment?: string; // STRING, Optional
+  drainage_infrastructure_type?: string; // STRING, Optional
+  water_management_measures?: string; // TEXT, Optional
+  drainage_infrastructure_length?: number; // DOUBLE, Optional
+  remark?: string; // TEXT, Optional
+  created_at?: string;
+  updated_at?: string;
+}
+// src/types/project/other.ts
+
+export interface RailwayBallastEnvironmentalAndOtherFactor {
+  id: string; // Added id field
+  project_id: string; // UUID is typically represented as a string in TypeScript
+  railway_line_section_name: string; // STRING
+  environmental_compliance_measures?: string; // TEXT, Optional
+  environmental_impact_assessment?: string; // TEXT, Optional
+  remark?: string; // TEXT, Optional
+  created_at?: string;
+  updated_at?: string;
+}
+
+// src/types/project/other.ts
+
+export interface RailwaySubBallastMaterial {
+  id: string; // Assuming 'id' will be added as a primary key like other models
+  project_id: string; // UUID
+  railway_line_section_name: string; // STRING
+  sub_ballast_material_type_id: string; // UUID (FK to sub-ballast material type)
+  layer_thickness?: number; // DOUBLE, Optional
+  layer_depth?: number; // DOUBLE, Optional
+  density?: number; // DOUBLE, Optional
+  moisture_content?: number; // DOUBLE, Optional
+  method_used_for_compaction?: string; // STRING, Optional
+  compaction_density?: number; // DOUBLE, Optional
+  remark?: string; // TEXT, Optional
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwaySubBallastMaterialTest {
+  id: string;
+  project_id: string; // UUID, Foreign key to the project
+  railway_line_section_name: string; // Name of the rail line section
+  sub_ballast_material_type_id: string; // UUID, FK to sub-ballast material type
+  testing_method_used?: string; // Description of the test method (e.g., compaction, gradation)
+  sampling_method?: string; // Method used to collect the sample
+  sample_size?: number; // DOUBLE, Size/volume of the sample taken
+  material_source?: string; // Location or provider of the material
+  sieve_analysis_results?: string; // Description or summary of sieve results
+  supplier?: string; // Name of the material supplier
+  remark?: string; // TEXT, Additional notes
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface RailwaySubBallastConditionAssessment {
+  id: string; // UUID, typically added for database entities
+  project_id: string; // UUID, References the associated project
+  railway_line_section_name: string; // STRING, Name of the railway section
+  sub_ballast_material_type_id: string; // UUID, FK to the sub-ballast material type
+  inspection_dates?: string | Date | EthiopianDate; // ISO date string
+  sub_ballast_condition_rating?: string; // STRING, Overall rating (e.g., "Good", "Poor")
+  cracking_observations?: string; // STRING, Noted surface or subsurface cracks
+  erosion_issues?: string; // STRING, Presence/type of erosion problems
+  unwanted_vegetation_presence?: string; // STRING, Noted vegetation growth in the sub-ballast
+  testing_frequency_per_year?: number; // INTEGER, Number of times testing is conducted yearly
+  sub_ballast_resistance?: string; // STRING, Structural resistance capacity
+  sub_ballast_degradation_rate?: string; // STRING, Speed of degradation over time
+  drainage_performance?: string; // STRING, Assessment of water flow or drainage effectiveness
+  remark?: string; // TEXT, Optional comments or findings
+
+  // Optional: Add common fields like 'id', 'created_at', 'updated_at' if they are part of your typical models
+  created_at?: string; // DATETIME, timestamp of creation
+  updated_at?: string; // DATETIME, timestamp of last update
+}
+export interface RailwaySubBallastMaintenanceAndRenewal {
+  id: string;
+  project_id: string;
+  railway_line_section_name: string; // String
+  scheduled_maintenance_activities?: string; // String, Enum-like (e.g., Routine)
+  sub_ballast_renewal_history?: string; // Text/String
+  recent_maintenance_dates?: string | Date | EthiopianDate; // ISO date string
+  inspection_reports_findings?: string; // Text/String
+  remark?: string; // Text/String
+
+  // Optional: Add common fields like 'id', 'created_at', 'updated_at' if they are part of your typical models
+  created_at?: string; // DATETIME, timestamp of creation
+  updated_at?: string; // DATETIME, timestamp of last update
+}
+
+export interface RailwaySubBallastDrainageAndWaterManagement {
+  id: string; // UUID, typically added for database entities
+  project_id: string; // UUID, Required
+  railway_line_section_name: string;
+  drainage_condition_assessment?: string; // STRING, Not required
+  drainage_infrastructure_type?: string; // STRING, Not required
+  water_management_measures?: string; // TEXT, Not required
+  drainage_infrastructure_length?: number; // DOUBLE, Not required
+  remark?: string; // TEXT, Not required
+
+  created_at?: string; // DATETIME, timestamp of creation
+  updated_at?: string; // DATETIME, timestamp of last update
+}
+export interface RailwaySubBallastEnvironmentalAndOtherFactor {
+  id: string; // UUID, typically added for database entities
+  project_id: string; // UUID, Required
+  railway_line_section_name: string; // STRING, Required
+  environmental_compliance_measures?: string; // TEXT, Not required
+  environmental_impact_assessment?: string; // TEXT, Not required
+  remark?: string; // TEXT, Not required
+  created_at?: string; // DATETIME, timestamp of creation
+  updated_at?: string; // DATETIME, timestamp of last update
+}
+export interface RailwaySleeperCharacteristic {
+  id: string; // UUID, typically added for database entities
+  project_id: string; // UUID, Required
+  railway_line_section_name: string; // String, Required
+  sleeper_type?: string; // String, Not required
+  sleeper_size_and_dimensions?: number; // Double, Not required
+  sleeper_distance_between_pairs?: string; // String, Not required
+  sleeper_material_specification?: string; // String, Not required
+  sleeper_spacing?: string; // String, Not required
+  spacing_between?: number; // Double, Not required
+  sleeper_shape?: string; // String, Not required
+  remark?: string; // Text/String, Not required
+
+  // Optional: Add common fields like 'id', 'created_at', 'updated_at' if they are part of your typical models
+  created_at?: string; // DATETIME, timestamp of creation
+  updated_at?: string; // DATETIME, timestamp of last update
+}
+// Add this interface to src/types/project/other.ts or a relevant types file
+
+export interface RailwaySleeperConditionAssessment {
+  id: string; // Assuming 'id' is still the primary key for individual records if not project_id
+  project_id: string; // UUID, Required
+  railway_line_section_name: string; // String, Required
+  inspection_dates?: string | Date | EthiopianDate; // ISO date string
+  sleeper_condition_rating?: string; // String, Not required, e.g., Excellent, Good, Poor
+  defect_presence?: string; // String, Not required, e.g., Cracks, Chips
+  sleeper_stability_and_alignment?: string; // String, Not required, Description of alignment
+  sleepers_required_number?: number; // Integer, Not required, Number of replacement sleepers
+  supplier_name?: string; // String, Not required
+  supplier_phone?: string; // String, Not required
+  remark?: string; // Text/String, Not required
+
+  // Optional: Add common fields like 'id', 'created_at', 'updated_at' if they are part of your typical models
+  created_at?: string; // DATETIME, timestamp of creation
+  updated_at?: string; // DATETIME, timestamp of last update
+}
+
+export interface RailwaySleeperMaintenanceAndReplacement {
+  project_id: string; // UUID, Required
+  railway_line_section_name: string; // String, Required
+  scheduled_maintenance_activities?: string; // String, Not required, Description of scheduled work
+  recent_maintenance_date?: string | Date | EthiopianDate; // Date, Not required, Date of the last maintenance
+  inspection_reports?: string; // String, Not required, Summary of inspection
+  sleeper_replacement_history?: string; // String, Not required, Replacement activities history
+  remark?: string; // Text/String, Not required
+
+  // Optional: Add common fields like 'id', 'created_at', 'updated_at' if they are part of your typical models
+  id: string; // Assuming 'id' is still the primary key for individual records if not project_id
+  created_at?: string; // DATETIME, timestamp of creation
+  updated_at?: string; // DATETIME, timestamp of last update
+}
+// Add this interface to src/types/project/other.ts or a relevant types file
+
+export interface RailwaySleeperFasteningSystem {
+  id: string; // Assuming 'id' is still the primary key for individual records if not project_id
+  project_id: string; // UUID, Required
+  railway_line_section_name: string; // String, Required
+  used_fastening_systems_type?: string; // String, Not required
+  fastener_condition_assessment?: string; // String, Not required
+  remark?: string; // Text/String, Not required
+
+  // Optional: Add common fields like 'id', 'created_at', 'updated_at' if they are part of your typical models
+  created_at?: string; // DATETIME, timestamp of creation
+  updated_at?: string; // DATETIME, timestamp of last update
+}
+// Add this interface to src/types/project/other.ts or a relevant types file
+
+export interface RailwaySleeperEnvironmentalAndOtherFactor {
+  project_id: string; // UUID, Required
+  railway_line_section_name: string; // String, Required
+  environmental_compliance_measures?: string; // String/Text, Not required
+  environmental_impact_assessment?: string; // String/Text, Not required
+  remark?: string; // Text/String, Not required
+
+  // Optional: Add common fields like 'id', 'created_at', 'updated_at' if they are part of your typical models
+  id: string;
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwayFasteningSystemCharacteristic {
+  id: string; // Assuming an 'id' will be generated by the backend
+  project_id: string; // UUID
+  railway_line_section_name: string; // String, Required
+  used_fastening_system_type?: string | null; // String, Optional
+  fastening_system_manufacturer_supplier?: string | null; // String, Optional
+  fastening_system_specifications?: string | null; // String, Optional
+  rail_clips_or_clamps_details?: string | null; // Text/String, Optional
+  bolts_and_nuts_specifications?: string | null; // Text/String, Optional
+  other_fastening_system?: string | null; // Text/String, Optional
+  remark?: string | null; // Text/String, Optional
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwayFasteningSystemConditionAssessment {
+  id: string; // Assuming an 'id' will be generated by the backend
+  project_id: string; // UUID, Required
+  railway_line_section_name: string; // String, Required
+  inspection_date?: string | Date | EthiopianDate; // ISO date string
+  fastening_system_condition_rating?: string | null; // String, Optional
+  defect_presence?: string | null; // String, Optional
+  fastening_system_stability_and_alignment?: string | null; // String, Optional
+  rail_fastening_model_number?: string | null; // String, Optional
+  rail_fastening_needed_quantity?: number | null; // Integer, Optional
+  rail_fastening_expected_lifespan?: number | null; // Integer, Optional
+  rail_fastening_availability?: boolean | null; // Boolean, Optional
+  remark?: string | null; // Text/String, Optional
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface RailwayFasteningSystemMaintenanceAndReplacement {
+  id: string;
+  project_id: string;
+  railway_line_section_name: string;
+  scheduled_maintenance_activities?: string | null;
+  recent_maintenance_records_and_dates?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwayFasteningSystemEnvironmentalFactor {
+  id: string;
+  project_id: string;
+  railway_line_section_name: string;
+  environmental_compliance_measures?: string | null;
+  environmental_impact_assessment?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwaySignalingSystem {
+  id: string;
+  project_id: string;
+  railway_line_section_name: string;
+  signaling_system_type?: string | null;
+  signaling_system_manufacturer_or_supplier_name?: string | null;
+  signaling_system_manufacturer_or_supplier_phone?: string | null;
+  signaling_system_components?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwayCommunicationSystem {
+  id?: string;
+  project_id: string; //
+  railway_line_section_name: string; //
+  communication_system_type?: string | null; //
+  communication_system_protocols_or_standards?: string | null; //
+  communication_system_components?: string | null; //
+  signaling_system_components?: string | null; // 
+  remark?: string | null; //
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwaySystemConditionAssessment {
+  id?: string;
+  project_id: string; //
+  railway_line_section_name: string; //
+  system_condition_rating_or_assessment?: string | null; //
+  defect_presence?: boolean | null; //
+  system_performance_indicators?: string | null; //
+  power_supply_systems_and_communication?: string | null; //
+  remark?: string | null; //
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface RailwayCommunicationSystemMaintenanceAndTesting {
+  id: string;
+  project_id: string; //
+  railway_line_section_name: string; //
+  scheduled_maintenance_activities?: string | null; //
+  inspections?: boolean | null; //
+  recent_maintenance_records_and_dates?: string | null; //
+  testing_and_verification_procedures_prepared?: boolean | null; //
+  maintenance_contracts_or_agreements_made?: string | null; //
+  remark?: string | null; //
+  created_at?: string;
+  updated_at?: string;
+}

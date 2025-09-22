@@ -15,6 +15,7 @@ export interface DetailSubMenuItemChild {
   apiRoute?: string;
   model?: string;
   type?: string | String[];
+  fileType?: string;
 }
 export type DetailSubMenuItem = {
   id: string;
