@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import type React from 'react';
+import type React from "react";
 
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
-import RailwayTrackSafetyCard from './railway-track-safety-card';
-import RailwayTrackSafetyDrawer from './railway-track-safety-drawer';
-import { RailwayTrackSafety } from 'src/types/project/other';
-import { railwayTrackSafetryColumns } from './railway-track-safety-row';
+import { Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import projectOtherApiSecondService from "src/services/project/project-other-second-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import type { GetRequestParam, IApiResponse } from "src/types/requests";
+import { formatCreatedAt } from "src/utils/formatter/date";
+import ItemsListing from "src/views/shared/listing";
+import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-detail-drawer";
+import RailwayTrackSafetyCard from "./railway-track-safety-card";
+import RailwayTrackSafetyDrawer from "./railway-track-safety-drawer";
+import { RailwayTrackSafety } from "src/types/project/other";
+import { railwayTrackSafetryColumns } from "./railway-track-safety-row";
 
 interface RailwayTrackSafetyListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -25,17 +25,28 @@ interface RailwayTrackSafetyListProps {
   projectId: string;
 }
 
-const RailwayTrackSafetyList: React.FC<RailwayTrackSafetyListProps> = ({ otherSubMenu, projectId, typeId }) => {
+const RailwayTrackSafetyList: React.FC<RailwayTrackSafetyListProps> = ({
+  otherSubMenu,
+  projectId,
+  typeId,
+}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<RailwayTrackSafety | null>(null);
+  const [selectedRow, setSelectedRow] = useState<RailwayTrackSafety | null>(
+    null,
+  );
   const { t } = useTranslation();
 
-  const fetchRailwayTrackSafety = (params: GetRequestParam): Promise<IApiResponse<RailwayTrackSafety[]>> => {
-    return projectOtherApiSecondService<RailwayTrackSafety>().getAll(otherSubMenu?.apiRoute || '', {
-      ...params,
-      filter: { ...params.filter, project_id: projectId }
-    });
+  const fetchRailwayTrackSafety = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<RailwayTrackSafety[]>> => {
+    return projectOtherApiSecondService<RailwayTrackSafety>().getAll(
+      otherSubMenu?.apiRoute || "",
+      {
+        ...params,
+        filter: { ...params.filter, project_id: projectId },
+      },
+    );
   };
 
   const {
@@ -43,10 +54,10 @@ const RailwayTrackSafetyList: React.FC<RailwayTrackSafetyListProps> = ({ otherSu
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<RailwayTrackSafety[]>({
-    queryKey: ['railwayTrackSafety'],
-    fetchFunction: fetchRailwayTrackSafety
+    queryKey: ["railwayTrackSafety"],
+    fetchFunction: fetchRailwayTrackSafety,
   });
 
   const toggleDrawer = () => {
@@ -65,7 +76,10 @@ const RailwayTrackSafetyList: React.FC<RailwayTrackSafetyListProps> = ({ otherSu
   };
 
   const handleDelete = async (railwayTrackSafetyId: string) => {
-    await projectOtherApiSecondService<RailwayTrackSafety>().delete(otherSubMenu?.apiRoute || '', railwayTrackSafetyId);
+    await projectOtherApiSecondService<RailwayTrackSafety>().delete(
+      otherSubMenu?.apiRoute || "",
+      railwayTrackSafetyId,
+    );
     refetch();
   };
 
@@ -74,39 +88,53 @@ const RailwayTrackSafetyList: React.FC<RailwayTrackSafetyListProps> = ({ otherSu
     setSelectedRow(railwayTrackSafety);
   };
 
-  const mapRailwayTrackSafetyToDetailItems = (railwayTrackSafety: RailwayTrackSafety): { title: string; value: string }[] => [
+  const mapRailwayTrackSafetyToDetailItems = (
+    railwayTrackSafety: RailwayTrackSafety,
+  ): { title: string; value: string }[] => [
     {
-      title: t('common.table-columns.id'),
-      value: railwayTrackSafety?.id || 'N/A'
+      title: t("common.table-columns.id"),
+      value: railwayTrackSafety?.id || "N/A",
     },
     {
-      title: t('project.other.railway-track-safety.details.railway-track-safety-measures-id'),
-      value: railwayTrackSafety?.railway_track_safety_measures_id || 'N/A'
+      title: t(
+        "project.other.railway-track-safety.details.railway-track-safety-measures-id",
+      ),
+      value: railwayTrackSafety?.railway_track_safety_measures_id || "N/A",
     },
     {
-      title: t('project.other.railway-track-safety.details.track-inspection-frequency-id'),
-      value: railwayTrackSafety?.track_inspection_frequency_id || 'N/A'
+      title: t(
+        "project.other.railway-track-safety.details.track-inspection-frequency-id",
+      ),
+      value: railwayTrackSafety?.track_inspection_frequency_id || "N/A",
     },
     {
-      title: t('project.other.railway-track-safety.details.is-compliant-with-safety-regulations-standards'),
+      title: t(
+        "project.other.railway-track-safety.details.is-compliant-with-safety-regulations-standards",
+      ),
       value:
-        railwayTrackSafety?.is_compliant_with_safety_regulations_standards !== undefined &&
-        railwayTrackSafety?.is_compliant_with_safety_regulations_standards !== null
+        railwayTrackSafety?.is_compliant_with_safety_regulations_standards !==
+          undefined &&
+        railwayTrackSafety?.is_compliant_with_safety_regulations_standards !==
+          null
           ? railwayTrackSafety?.is_compliant_with_safety_regulations_standards.toString()
-          : 'N/A'
+          : "N/A",
     },
     {
-      title: t('project.other.railway-track-safety.details.remark'),
-      value: railwayTrackSafety?.remark || 'N/A'
+      title: t("project.other.railway-track-safety.details.remark"),
+      value: railwayTrackSafety?.remark || "N/A",
     },
     {
-      title: t('common.table-columns.created-at'),
-      value: railwayTrackSafety?.created_at ? formatCreatedAt(railwayTrackSafety.created_at) : 'N/A'
+      title: t("common.table-columns.created-at"),
+      value: railwayTrackSafety?.created_at
+        ? formatCreatedAt(railwayTrackSafety.created_at)
+        : "N/A",
     },
     {
-      title: t('common.table-columns.updated-at'),
-      value: railwayTrackSafety?.updated_at ? formatCreatedAt(railwayTrackSafety.updated_at) : 'N/A'
-    }
+      title: t("common.table-columns.updated-at"),
+      value: railwayTrackSafety?.updated_at
+        ? formatCreatedAt(railwayTrackSafety.updated_at)
+        : "N/A",
+    },
   ];
 
   return (
@@ -126,20 +154,30 @@ const RailwayTrackSafetyList: React.FC<RailwayTrackSafetyListProps> = ({ otherSu
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapRailwayTrackSafetyToDetailItems(selectedRow as RailwayTrackSafety)}
+          data={mapRailwayTrackSafetyToDetailItems(
+            selectedRow as RailwayTrackSafety,
+          )}
           hasReference={false}
-          id={selectedRow?.id || ''}
+          id={selectedRow?.id || ""}
           fileType=""
-          title={t('project.other.railway-track-rehabilitation-or-renewal.detail')}
+          title={t(
+            "project.other.railway-track-rehabilitation-or-renewal.detail",
+          )}
         />
       )}
 
       <ItemsListing
-        title={t('project.other.railway-track-rehabilitation-or-renewal.title')}
+        title={t("project.other.railway-track-rehabilitation-or-renewal.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: railwayTrackSafetryColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
+          headers: railwayTrackSafetryColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+            refetch,
+          ),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -156,9 +194,9 @@ const RailwayTrackSafetyList: React.FC<RailwayTrackSafetyListProps> = ({ otherSu
           onClick: toggleDrawer,
           onlyIcon: true,
           permission: {
-            action: 'create',
-            subject: 'railwaytracksafety'
-          }
+            action: "create",
+            subject: "railwaytracksafety",
+          },
         }}
         fetchDataFunction={refetch}
         items={railwayTrackSafetyList || []}

@@ -1,16 +1,16 @@
 // components/MaintenanceFrequencyList.tsx
-import { Box, CardActions, CardContent, Grid, Typography } from '@mui/material';
-import { Fragment } from 'react';
-import { MaintenanceFrequency } from 'src/types/general/general-master';
-import FileDrawer from 'src/views/components/custom/files-drawer';
-import ModelActionComponent from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
+import { Box, CardActions, CardContent, Grid, Typography } from "@mui/material";
+import { Fragment } from "react";
+import { MaintenanceFrequency } from "src/types/general/general-master";
+import FileDrawer from "src/views/components/custom/files-drawer";
+import ModelActionComponent from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
 
 const MaintenanceFrequencyMasterCard = ({
   generalMaster,
   onEdit,
   onDelete,
-  refetch
+  refetch,
 }: {
   generalMaster: MaintenanceFrequency;
   onEdit: (category: MaintenanceFrequency) => void;
@@ -23,7 +23,7 @@ const MaintenanceFrequencyMasterCard = ({
       <CardContent>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: "flex" }}>
               <Box>
                 <Typography variant="h5" component="div">
                   {generalMaster.title}
@@ -35,31 +35,35 @@ const MaintenanceFrequencyMasterCard = ({
             </Box>
           </Grid>
           <Grid item>
-            <CardActions style={{ justifyContent: 'flex-end' }}>
+            <CardActions style={{ justifyContent: "flex-end" }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id} type="MAINTENANCE_FREQUENCY" /> &nbsp;
+                <FileDrawer
+                  id={generalMaster.id}
+                  type="MAINTENANCE_FREQUENCY"
+                />{" "}
+                &nbsp;
                 <ModelActionComponent
-                  model={'maintenancefrequency'}
+                  model={"maintenancefrequency"}
                   model_id={generalMaster.id}
                   refetchModel={refetch}
                   resubmit={function (): void {
-                    throw new Error('Function not implemented.');
+                    throw new Error("Function not implemented.");
                   }}
-                  title={''}
+                  title={""}
                   postAction={function (): void {
-                    throw new Error('Function not implemented.');
+                    throw new Error("Function not implemented.");
                   }}
                 />
                 <RowOptions
                   onEdit={onEdit}
                   onDelete={() => onDelete(generalMaster.id)}
                   editPermissionRule={{
-                    action: 'update',
-                    subject: 'maintenancefrequency'
+                    action: "update",
+                    subject: "maintenancefrequency",
                   }}
                   deletePermissionRule={{
-                    action: 'delete',
-                    subject: 'maintenancefrequency'
+                    action: "delete",
+                    subject: "maintenancefrequency",
                   }}
                   item={generalMaster}
                   options={[]}

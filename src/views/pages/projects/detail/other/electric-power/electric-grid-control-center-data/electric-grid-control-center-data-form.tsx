@@ -1,14 +1,23 @@
-'use client';
+"use client";
 
-import { Checkbox, Divider, FormControlLabel, Grid, Typography } from '@mui/material';
-import type { FormikProps } from 'formik';
-import type React from 'react';
-import { useTranslation } from 'react-i18next';
-import { gridSpacing } from 'src/configs/app-constants';
-import type { ElectricGridControlCenterData, MiniGridStation } from 'src/types/project/other';
-import CustomSelect from 'src/views/shared/form/custom-select';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
+import {
+  Checkbox,
+  Divider,
+  FormControlLabel,
+  Grid,
+  Typography,
+} from "@mui/material";
+import type { FormikProps } from "formik";
+import type React from "react";
+import { useTranslation } from "react-i18next";
+import { gridSpacing } from "src/configs/app-constants";
+import type {
+  ElectricGridControlCenterData,
+  MiniGridStation,
+} from "src/types/project/other";
+import CustomSelect from "src/views/shared/form/custom-select";
+import CustomTextBox from "src/views/shared/form/custom-text-box";
+import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 
 interface ElectricGridControlCenterDataFormProps {
   formik: FormikProps<ElectricGridControlCenterData>;
@@ -19,13 +28,15 @@ interface ElectricGridControlCenterDataFormProps {
   communicationLinks: any[];
 }
 
-const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataFormProps> = ({
+const ElectricGridControlCenterDataForm: React.FC<
+  ElectricGridControlCenterDataFormProps
+> = ({
   formik,
   file,
   onFileChange,
   miniGridStations,
   controlSystemTypes,
-  communicationLinks
+  communicationLinks,
 }) => {
   const { t: transl } = useTranslation();
 
@@ -33,7 +44,9 @@ const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataF
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
         <Typography variant="subtitle1" gutterBottom>
-          {transl('project.other.electric-grid-control-center-data.general-information')}
+          {transl(
+            "project.other.electric-grid-control-center-data.general-information",
+          )}
         </Typography>
         <Divider sx={{ mb: 2 }} />
 
@@ -42,14 +55,16 @@ const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataF
             <CustomSelect
               fullWidth
               required
-              label={transl('project.other.electric-grid-control-center-data.details.mini-grid-station-id')}
+              label={transl(
+                "project.other.electric-grid-control-center-data.details.mini-grid-station-id",
+              )}
               name="mini_grid_station_id"
               size="small"
               sx={{ mb: 2 }}
               options={
                 miniGridStations?.map((station: MiniGridStation) => ({
                   label: station.name,
-                  value: station.id
+                  value: station.id,
                 })) || []
               }
             />
@@ -61,8 +76,12 @@ const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataF
             <CustomTextBox
               fullWidth
               required
-              label={transl('project.other.electric-grid-control-center-data.details.name')}
-              placeholder={transl('project.other.electric-grid-control-center-data.details.name')}
+              label={transl(
+                "project.other.electric-grid-control-center-data.details.name",
+              )}
+              placeholder={transl(
+                "project.other.electric-grid-control-center-data.details.name",
+              )}
               name="name"
               size="small"
               sx={{ mb: 2 }}
@@ -74,8 +93,12 @@ const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataF
           <Grid item xs={12}>
             <CustomTextBox
               fullWidth
-              label={transl('project.other.electric-grid-control-center-data.details.installation-year')}
-              placeholder={transl('project.other.electric-grid-control-center-data.details.installation-year')}
+              label={transl(
+                "project.other.electric-grid-control-center-data.details.installation-year",
+              )}
+              placeholder={transl(
+                "project.other.electric-grid-control-center-data.details.installation-year",
+              )}
               name="installation_year"
               type="number"
               size="small"
@@ -85,7 +108,9 @@ const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataF
         </Grid>
 
         <Typography variant="subtitle1" gutterBottom sx={{ mt: 2 }}>
-          {transl('project.other.electric-grid-control-center-data.control-system')}
+          {transl(
+            "project.other.electric-grid-control-center-data.control-system",
+          )}
         </Typography>
         <Divider sx={{ mb: 2 }} />
 
@@ -94,14 +119,16 @@ const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataF
             <CustomSelect
               fullWidth
               required
-              label={transl('project.other.electric-grid-control-center-data.details.control-system-type-id')}
+              label={transl(
+                "project.other.electric-grid-control-center-data.details.control-system-type-id",
+              )}
               name="control_system_type_id"
               size="small"
               sx={{ mb: 2 }}
               options={
                 controlSystemTypes?.map((type: any) => ({
                   label: type.title,
-                  value: type.id
+                  value: type.id,
                 })) || []
               }
             />
@@ -110,14 +137,16 @@ const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataF
             <CustomSelect
               fullWidth
               required
-              label={transl('project.other.electric-grid-control-center-data.details.communication-links-id')}
+              label={transl(
+                "project.other.electric-grid-control-center-data.details.communication-links-id",
+              )}
               name="communication_links_id"
               size="small"
               sx={{ mb: 2 }}
               options={
                 communicationLinks?.map((link: any) => ({
                   label: link.title,
-                  value: link.id
+                  value: link.id,
                 })) || []
               }
             />
@@ -125,7 +154,9 @@ const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataF
         </Grid>
 
         <Typography variant="subtitle1" gutterBottom sx={{ mt: 2 }}>
-          {transl('project.other.electric-grid-control-center-data.capabilities')}
+          {transl(
+            "project.other.electric-grid-control-center-data.capabilities",
+          )}
         </Typography>
         <Divider sx={{ mb: 2 }} />
 
@@ -134,14 +165,21 @@ const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataF
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={formik.values.energy_management_system_capability || false}
+                  checked={
+                    formik.values.energy_management_system_capability || false
+                  }
                   onChange={(e) => {
-                    formik.setFieldValue('energy_management_system_capability', e.target.checked);
+                    formik.setFieldValue(
+                      "energy_management_system_capability",
+                      e.target.checked,
+                    );
                   }}
                   name="energy_management_system_capability"
                 />
               }
-              label={transl('project.other.electric-grid-control-center-data.details.energy-management-system-capability')}
+              label={transl(
+                "project.other.electric-grid-control-center-data.details.energy-management-system-capability",
+              )}
             />
           </Grid>
           <Grid item xs={12}>
@@ -150,12 +188,17 @@ const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataF
                 <Checkbox
                   checked={formik.values.remote_control_capability || false}
                   onChange={(e) => {
-                    formik.setFieldValue('remote_control_capability', e.target.checked);
+                    formik.setFieldValue(
+                      "remote_control_capability",
+                      e.target.checked,
+                    );
                   }}
                   name="remote_control_capability"
                 />
               }
-              label={transl('project.other.electric-grid-control-center-data.details.remote-control-capability')}
+              label={transl(
+                "project.other.electric-grid-control-center-data.details.remote-control-capability",
+              )}
             />
           </Grid>
         </Grid>
@@ -164,8 +207,12 @@ const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataF
           <Grid item xs={12}>
             <CustomTextBox
               fullWidth
-              label={transl('project.other.electric-grid-control-center-data.details.average-measured-data-reliability')}
-              placeholder={transl('project.other.electric-grid-control-center-data.details.average-measured-data-reliability')}
+              label={transl(
+                "project.other.electric-grid-control-center-data.details.average-measured-data-reliability",
+              )}
+              placeholder={transl(
+                "project.other.electric-grid-control-center-data.details.average-measured-data-reliability",
+              )}
               name="average_measured_data_reliability"
               type="number"
               size="small"
@@ -175,14 +222,20 @@ const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataF
         </Grid>
 
         <Typography variant="subtitle1" gutterBottom sx={{ mt: 2 }}>
-          {transl('project.other.electric-grid-control-center-data.additional-information')}
+          {transl(
+            "project.other.electric-grid-control-center-data.additional-information",
+          )}
         </Typography>
         <Divider sx={{ mb: 2 }} />
 
         <CustomTextBox
           fullWidth
-          label={transl('project.other.electric-grid-control-center-data.details.remark')}
-          placeholder={transl('project.other.electric-grid-control-center-data.details.remark')}
+          label={transl(
+            "project.other.electric-grid-control-center-data.details.remark",
+          )}
+          placeholder={transl(
+            "project.other.electric-grid-control-center-data.details.remark",
+          )}
           name="remark"
           size="small"
           multiline
@@ -192,7 +245,11 @@ const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataF
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
+        <CustomFileUpload
+          label={transl("common.form.file-upload")}
+          file={file}
+          onFileChange={onFileChange}
+        />
       </Grid>
     </Grid>
   );

@@ -1,14 +1,14 @@
-import { Grid } from '@mui/material';
-import { useQuery } from '@tanstack/react-query';
-import { FormikProps } from 'formik';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { gridSpacing } from 'src/configs/app-constants';
-import projectOtherApiService from 'src/services/project/project-other-service';
-import { Transformer, TransformerType } from 'src/types/project/other';
-import CustomSelectBox from 'src/views/shared/form/custom-select';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
+import { Grid } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
+import { FormikProps } from "formik";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { gridSpacing } from "src/configs/app-constants";
+import projectOtherApiService from "src/services/project/project-other-service";
+import { Transformer, TransformerType } from "src/types/project/other";
+import CustomSelectBox from "src/views/shared/form/custom-select";
+import CustomTextBox from "src/views/shared/form/custom-text-box";
+import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 
 interface TransformerFormProps {
   formik: FormikProps<Transformer>;
@@ -17,14 +17,19 @@ interface TransformerFormProps {
   projectId: string;
 }
 
-const TransformerForm: React.FC<TransformerFormProps> = ({ formik, file, onFileChange, projectId }) => {
+const TransformerForm: React.FC<TransformerFormProps> = ({
+  formik,
+  file,
+  onFileChange,
+  projectId,
+}) => {
   const { t } = useTranslation();
   const { data: transformerTypes } = useQuery({
-    queryKey: ['transformertype', projectId],
+    queryKey: ["transformertype", projectId],
     queryFn: () =>
-      projectOtherApiService<TransformerType>().getAll('transformertype', {
-        filter: { project_id: projectId }
-      })
+      projectOtherApiService<TransformerType>().getAll("transformertype", {
+        filter: { project_id: projectId },
+      }),
   });
   return (
     <Grid container spacing={gridSpacing}>
@@ -32,18 +37,18 @@ const TransformerForm: React.FC<TransformerFormProps> = ({ formik, file, onFileC
         <CustomSelectBox
           size="small"
           name="transformertype_id"
-          label={t('project.other.transformer.details.transformertype')}
+          label={t("project.other.transformer.details.transformertype")}
           options={
             transformerTypes?.payload?.map((projectCategory) => ({
               value: projectCategory.id,
-              label: projectCategory.name
+              label: projectCategory.name,
             })) || []
           }
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.transformer.details.specifications')}
-          placeholder={t('project.other.transformer.details.specifications')}
+          label={t("project.other.transformer.details.specifications")}
+          placeholder={t("project.other.transformer.details.specifications")}
           name="specifications"
           size="small"
           sx={{ mb: 2 }}
@@ -52,48 +57,48 @@ const TransformerForm: React.FC<TransformerFormProps> = ({ formik, file, onFileC
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.transformer.details.input-current')}
-          placeholder={t('project.other.transformer.details.input-current')}
+          label={t("project.other.transformer.details.input-current")}
+          placeholder={t("project.other.transformer.details.input-current")}
           name="input_current"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.transformer.details.input-voltage')}
-          placeholder={t('project.other.transformer.details.input-voltage')}
+          label={t("project.other.transformer.details.input-voltage")}
+          placeholder={t("project.other.transformer.details.input-voltage")}
           name="input_voltage"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.transformer.details.output-current')}
-          placeholder={t('project.other.transformer.details.output-current')}
+          label={t("project.other.transformer.details.output-current")}
+          placeholder={t("project.other.transformer.details.output-current")}
           name="output_current"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.transformer.details.output-voltage')}
-          placeholder={t('project.other.transformer.details.output-voltage')}
+          label={t("project.other.transformer.details.output-voltage")}
+          placeholder={t("project.other.transformer.details.output-voltage")}
           name="output_voltage"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.transformer.details.northing')}
-          placeholder={t('project.other.transformer.details.northing')}
+          label={t("project.other.transformer.details.northing")}
+          placeholder={t("project.other.transformer.details.northing")}
           name="northing"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.transformer.details.easting')}
-          placeholder={t('project.other.transformer.details.easting')}
+          label={t("project.other.transformer.details.easting")}
+          placeholder={t("project.other.transformer.details.easting")}
           name="easting"
           size="small"
           sx={{ mb: 2 }}
@@ -101,7 +106,11 @@ const TransformerForm: React.FC<TransformerFormProps> = ({ formik, file, onFileC
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />
+        <CustomFileUpload
+          label={t("common.form.file-upload")}
+          file={file}
+          onFileChange={onFileChange}
+        />
       </Grid>
     </Grid>
   );

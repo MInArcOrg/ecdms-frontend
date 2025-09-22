@@ -1,21 +1,23 @@
 // components/GuardRailTypeMasterList.tsx
-import { Card, CardContent } from '@mui/material';
-import React, { Fragment, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { GuardRailType } from 'src/types/general/general-master';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import GuardRailTypeMasterCard from './guard-rail-type-master-card';
-import GuardRailTypeMasterDrawer from './guard-rail-type-master-drawer';
-import guardRailTypeMasterService from 'src/services/general/project/guard-rail-type-master-service';
+import { Card, CardContent } from "@mui/material";
+import React, { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import { GuardRailType } from "src/types/general/general-master";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import GuardRailTypeMasterCard from "./guard-rail-type-master-card";
+import GuardRailTypeMasterDrawer from "./guard-rail-type-master-drawer";
+import guardRailTypeMasterService from "src/services/general/project/guard-rail-type-master-service";
 
 const GuardRailTypeMasterList: React.FC = () => {
   const [selectedRow, setSelectedRow] = useState<GuardRailType | null>(null);
   const { t } = useTranslation();
-  const fetchGuardRailTypeMaster = (params: GetRequestParam): Promise<IApiResponse<GuardRailType[]>> => {
+  const fetchGuardRailTypeMaster = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<GuardRailType[]>> => {
     return guardRailTypeMasterService.getAll(params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
@@ -25,10 +27,10 @@ const GuardRailTypeMasterList: React.FC = () => {
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<GuardRailType[]>({
-    queryKey: ['general-master', 'guard-rail-type'],
-    fetchFunction: fetchGuardRailTypeMaster
+    queryKey: ["general-master", "guard-rail-type"],
+    fetchFunction: fetchGuardRailTypeMaster,
   });
   const handleDelete = async (id: string) => {
     await guardRailTypeMasterService.delete(id);
@@ -47,7 +49,12 @@ const GuardRailTypeMasterList: React.FC = () => {
   return (
     <Fragment>
       {showDrawer && (
-        <GuardRailTypeMasterDrawer open={showDrawer} toggle={toggleDrawer} masterData={selectedRow as GuardRailType} refetch={refetch} />
+        <GuardRailTypeMasterDrawer
+          open={showDrawer}
+          toggle={toggleDrawer}
+          masterData={selectedRow as GuardRailType}
+          refetch={refetch}
+        />
       )}
       <Card>
         <CardContent>
@@ -57,7 +64,7 @@ const GuardRailTypeMasterList: React.FC = () => {
             title={t(`master-data.general-master.guard-rail-types`)}
             ItemViewComponent={({ data }) => (
               <GuardRailTypeMasterCard
-                type={'guard-rail-type'}
+                type={"guard-rail-type"}
                 generalMaster={data}
                 onDelete={handleDelete}
                 onEdit={handleEdit}
@@ -71,9 +78,9 @@ const GuardRailTypeMasterList: React.FC = () => {
               onClick: toggleDrawer,
               onlyIcon: true,
               permission: {
-                action: 'create',
-                subject: `guardrailtype`
-              }
+                action: "create",
+                subject: `guardrailtype`,
+              },
             }}
             fetchDataFunction={refetch}
             items={types || []}

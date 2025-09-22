@@ -1,13 +1,13 @@
-import { Grid } from '@mui/material';
-import type { FormikProps } from 'formik';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { gridSpacing } from 'src/configs/app-constants';
-import CustomSelect from 'src/views/shared/form/custom-select';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import type { RailwayFasteningSystemConditionAssessment } from 'src/types/project/other';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
-import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
+import { Grid } from "@mui/material";
+import type { FormikProps } from "formik";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { gridSpacing } from "src/configs/app-constants";
+import CustomSelect from "src/views/shared/form/custom-select";
+import CustomTextBox from "src/views/shared/form/custom-text-box";
+import type { RailwayFasteningSystemConditionAssessment } from "src/types/project/other";
+import CustomFileUpload from "src/views/shared/form/custome-file-selector";
+import CustomDynamicDatePicker from "src/views/shared/form/custom-dynamic-date-box";
 
 interface RailwayFasteningSystemConditionAssessmentFormProps {
   formik: FormikProps<RailwayFasteningSystemConditionAssessment>;
@@ -21,25 +21,25 @@ const RailwayFasteningSystemConditionAssessmentForm: React.FC<
   const { t } = useTranslation();
 
   const conditionRatingOptions = [
-    { value: 'Excellent', label: t('common.options.excellent') },
-    { value: 'Good', label: t('common.options.good') },
-    { value: 'Fair', label: t('common.options.fair') },
-    { value: 'Poor', label: t('common.options.poor') },
-    { value: 'Critical', label: t('common.options.critical') }
+    { value: "Excellent", label: t("common.options.excellent") },
+    { value: "Good", label: t("common.options.good") },
+    { value: "Fair", label: t("common.options.fair") },
+    { value: "Poor", label: t("common.options.poor") },
+    { value: "Critical", label: t("common.options.critical") },
   ];
 
   const defectPresenceOptions = [
-    { value: 'Cracks', label: t('common.options.cracks') },
-    { value: 'Corrosion', label: t('common.options.corrosion') },
-    { value: 'Loose', label: t('common.options.loose') },
-    { value: 'Missing', label: t('common.options.missing') },
-    { value: 'Deformed', label: t('common.options.deformed') },
-    { value: 'Other', label: t('common.options.other') }
+    { value: "Cracks", label: t("common.options.cracks") },
+    { value: "Corrosion", label: t("common.options.corrosion") },
+    { value: "Loose", label: t("common.options.loose") },
+    { value: "Missing", label: t("common.options.missing") },
+    { value: "Deformed", label: t("common.options.deformed") },
+    { value: "Other", label: t("common.options.other") },
   ];
 
   const booleanOptions = [
-    { value: true, label: t('common.options.yes') },
-    { value: false, label: t('common.options.no') }
+    { value: true, label: t("common.options.yes") },
+    { value: false, label: t("common.options.no") },
   ];
 
   return (
@@ -48,10 +48,10 @@ const RailwayFasteningSystemConditionAssessmentForm: React.FC<
         <CustomTextBox
           fullWidth
           label={t(
-            'project.other.railway-fastening-system-condition-assessment.details.railway_line_section_name'
+            "project.other.railway-fastening-system-condition-assessment.details.railway_line_section_name",
           )}
           placeholder={t(
-            'project.other.railway-fastening-system-condition-assessment.details.railway_line_section_name'
+            "project.other.railway-fastening-system-condition-assessment.details.railway_line_section_name",
           )}
           name="railway_line_section_name"
           size="small"
@@ -59,7 +59,9 @@ const RailwayFasteningSystemConditionAssessmentForm: React.FC<
         />
 
         <CustomDynamicDatePicker
-          label={t('project.other.railway-fastening-system-condition-assessment.details.inspection_date')}
+          label={t(
+            "project.other.railway-fastening-system-condition-assessment.details.inspection_date",
+          )}
           name="inspection_date"
           fullWidth
           required
@@ -70,7 +72,7 @@ const RailwayFasteningSystemConditionAssessmentForm: React.FC<
         <CustomSelect
           fullWidth
           label={t(
-            'project.other.railway-fastening-system-condition-assessment.details.fastening_system_condition_rating'
+            "project.other.railway-fastening-system-condition-assessment.details.fastening_system_condition_rating",
           )}
           name="fastening_system_condition_rating"
           options={conditionRatingOptions}
@@ -80,7 +82,9 @@ const RailwayFasteningSystemConditionAssessmentForm: React.FC<
 
         <CustomSelect
           fullWidth
-          label={t('project.other.railway-fastening-system-condition-assessment.details.defect_presence')}
+          label={t(
+            "project.other.railway-fastening-system-condition-assessment.details.defect_presence",
+          )}
           name="defect_presence"
           options={defectPresenceOptions}
           size="small"
@@ -90,10 +94,10 @@ const RailwayFasteningSystemConditionAssessmentForm: React.FC<
         <CustomTextBox
           fullWidth
           label={t(
-            'project.other.railway-fastening-system-condition-assessment.details.fastening_system_stability_and_alignment'
+            "project.other.railway-fastening-system-condition-assessment.details.fastening_system_stability_and_alignment",
           )}
           placeholder={t(
-            'project.other.railway-fastening-system-condition-assessment.details.fastening_system_stability_and_alignment'
+            "project.other.railway-fastening-system-condition-assessment.details.fastening_system_stability_and_alignment",
           )}
           name="fastening_system_stability_and_alignment"
           size="small"
@@ -102,9 +106,11 @@ const RailwayFasteningSystemConditionAssessmentForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={t('project.other.railway-fastening-system-condition-assessment.details.rail_fastening_model_number')}
+          label={t(
+            "project.other.railway-fastening-system-condition-assessment.details.rail_fastening_model_number",
+          )}
           placeholder={t(
-            'project.other.railway-fastening-system-condition-assessment.details.rail_fastening_model_number'
+            "project.other.railway-fastening-system-condition-assessment.details.rail_fastening_model_number",
           )}
           name="rail_fastening_model_number"
           size="small"
@@ -113,9 +119,11 @@ const RailwayFasteningSystemConditionAssessmentForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={t('project.other.railway-fastening-system-condition-assessment.details.rail_fastening_needed_quantity')}
+          label={t(
+            "project.other.railway-fastening-system-condition-assessment.details.rail_fastening_needed_quantity",
+          )}
           placeholder={t(
-            'project.other.railway-fastening-system-condition-assessment.details.rail_fastening_needed_quantity'
+            "project.other.railway-fastening-system-condition-assessment.details.rail_fastening_needed_quantity",
           )}
           name="rail_fastening_needed_quantity"
           type="number"
@@ -126,10 +134,10 @@ const RailwayFasteningSystemConditionAssessmentForm: React.FC<
         <CustomTextBox
           fullWidth
           label={t(
-            'project.other.railway-fastening-system-condition-assessment.details.rail_fastening_expected_lifespan'
+            "project.other.railway-fastening-system-condition-assessment.details.rail_fastening_expected_lifespan",
           )}
           placeholder={t(
-            'project.other.railway-fastening-system-condition-assessment.details.rail_fastening_expected_lifespan'
+            "project.other.railway-fastening-system-condition-assessment.details.rail_fastening_expected_lifespan",
           )}
           name="rail_fastening_expected_lifespan"
           type="number"
@@ -139,7 +147,9 @@ const RailwayFasteningSystemConditionAssessmentForm: React.FC<
 
         <CustomSelect
           fullWidth
-          label={t('project.other.railway-fastening-system-condition-assessment.details.rail_fastening_availability')}
+          label={t(
+            "project.other.railway-fastening-system-condition-assessment.details.rail_fastening_availability",
+          )}
           name="rail_fastening_availability"
           options={booleanOptions}
           size="small"
@@ -148,8 +158,12 @@ const RailwayFasteningSystemConditionAssessmentForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={t('project.other.railway-fastening-system-condition-assessment.details.remark')}
-          placeholder={t('project.other.railway-fastening-system-condition-assessment.details.remark')}
+          label={t(
+            "project.other.railway-fastening-system-condition-assessment.details.remark",
+          )}
+          placeholder={t(
+            "project.other.railway-fastening-system-condition-assessment.details.remark",
+          )}
           name="remark"
           size="small"
           sx={{ mb: 2 }}
@@ -158,7 +172,11 @@ const RailwayFasteningSystemConditionAssessmentForm: React.FC<
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />
+        <CustomFileUpload
+          label={t("common.form.file-upload")}
+          file={file}
+          onFileChange={onFileChange}
+        />
       </Grid>
     </Grid>
   );

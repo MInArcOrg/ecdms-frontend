@@ -12,46 +12,46 @@ const menuItems = (id: string, typeId: string): MenuItem[] => {
   return [
     {
       id: 1,
-      title: 'stakeholder.navigation.menu.general-info',
+      title: "stakeholder.navigation.menu.general-info",
       path: `${baseUrl}/general-info`,
-      action: 'view_stakeholderinfo',
-      subject: 'stakeholderinfo'
+      action: "view_stakeholderinfo",
+      subject: "stakeholderinfo",
     },
     {
       id: 6,
-      title: 'stakeholder.navigation.menu.branches',
+      title: "stakeholder.navigation.menu.branches",
       path: `${baseUrl}/branches`,
-      action: 'view_stakeholderbranch',
-      subject: 'stakeholderbranch'
+      action: "view_stakeholderbranch",
+      subject: "stakeholderbranch",
     },
     {
       id: 2,
-      title: 'stakeholder.navigation.menu.employees',
+      title: "stakeholder.navigation.menu.employees",
       path: `${baseUrl}/employees/statistics`,
-      action: 'view_stakeholderemployee',
-      subject: 'stakeholderemployee'
+      action: "view_stakeholderemployee",
+      subject: "stakeholderemployee",
     },
     {
       id: 3,
-      title: 'stakeholder.navigation.menu.other',
+      title: "stakeholder.navigation.menu.other",
       path: `${baseUrl}/other`,
-      action: 'view_stakeholderspecific',
-      subject: 'stakeholderspecific'
+      action: "view_stakeholderspecific",
+      subject: "stakeholderspecific",
     },
     {
       id: 4,
-      title: 'stakeholder.navigation.menu.projects',
+      title: "stakeholder.navigation.menu.projects",
       path: `${baseUrl}/stakeProjects`,
-      action: 'view_stakeholderproject',
-      subject: 'stakeholderproject'
+      action: "view_stakeholderproject",
+      subject: "stakeholderproject",
     },
     {
       id: 5,
-      title: 'stakeholder.navigation.menu.files',
+      title: "stakeholder.navigation.menu.files",
       path: `${baseUrl}/files`,
-      action: 'view_stakeholderfile',
-      subject: 'stakeholderfile'
-    }
+      action: "view_stakeholderfile",
+      subject: "stakeholderfile",
+    },
   ];
 };
 

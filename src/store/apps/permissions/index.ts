@@ -1,29 +1,32 @@
 // ** Redux Imports
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // ** Axios Imports
-import axios from 'axios';
+import axios from "axios";
 
 interface DataParams {
   q: string;
 }
 
 // ** Fetch Invoices
-export const fetchData = createAsyncThunk('appPermissions/fetchData', async (params: DataParams) => {
-  const response = await axios.get('/apps/permissions/data', {
-    params
-  });
+export const fetchData = createAsyncThunk(
+  "appPermissions/fetchData",
+  async (params: DataParams) => {
+    const response = await axios.get("/apps/permissions/data", {
+      params,
+    });
 
-  return response.data;
-});
+    return response.data;
+  },
+);
 
 export const appPermissionsSlice = createSlice({
-  name: 'appPermissions',
+  name: "appPermissions",
   initialState: {
     data: [],
     total: 1,
     params: {},
-    allData: []
+    allData: [],
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -33,7 +36,7 @@ export const appPermissionsSlice = createSlice({
       state.allData = action.payload.allData;
       state.total = action.payload.total;
     });
-  }
+  },
 });
 
 export default appPermissionsSlice.reducer;

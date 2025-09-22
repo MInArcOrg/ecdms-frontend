@@ -1,8 +1,8 @@
-import projectResourceApiService from 'src/services/project/project-resource-service';
-import { ProjectResource } from 'src/types/project/project-resource';
-import { Resource } from 'src/types/resource';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import ProjectResourceForm from './project-resource-form';
+import projectResourceApiService from "src/services/project/project-resource-service";
+import { ProjectResource } from "src/types/project/project-resource";
+import { Resource } from "src/types/resource";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import ProjectResourceForm from "./project-resource-form";
 
 interface ProjectResourceDrawerType {
   open: boolean;
@@ -20,19 +20,27 @@ const ProjectResourceDrawer = (props: ProjectResourceDrawerType) => {
     const dataToSubmit: ProjectResource = {
       project_id: projectId,
       resource_id: body.id,
-      id: ''
+      id: "",
     };
     return projectResourceApiService.create({ data: dataToSubmit, files: [] });
   };
   const handleClose = () => toggle();
   return (
     <CustomSideDrawer
-      title={`project.resource.${isEdit ? `edit-project-resource` : `create-project-resource`}`}
+      title={`project.resource.${
+        isEdit ? `edit-project-resource` : `create-project-resource`
+      }`}
       handleClose={handleClose}
       open={open}
       width={700}
     >
-      {() => <ProjectResourceForm refetch={refetch} onSubmit={onSubmit} addedResources={props.projectResources} />}
+      {() => (
+        <ProjectResourceForm
+          refetch={refetch}
+          onSubmit={onSubmit}
+          addedResources={props.projectResources}
+        />
+      )}
     </CustomSideDrawer>
   );
 };

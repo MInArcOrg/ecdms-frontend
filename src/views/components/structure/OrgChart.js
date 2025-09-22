@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 // import { jsonData } from "./data.js";
 
 // import { OrgChart } from 'd3-org-chart'
-import ReactDOMServer from 'react-dom/server';
-import StructureCard from './card';
+import ReactDOMServer from "react-dom/server";
+import StructureCard from "./card";
 
 const Obs = (props) => {
   const d3Container = useRef(null);
@@ -13,7 +13,7 @@ const Obs = (props) => {
   const [chart, setChart] = useState(null);
 
   const first = async () => {
-    const { OrgChart } = await import('d3-org-chart');
+    const { OrgChart } = await import("d3-org-chart");
 
     setChart(new OrgChart());
   };
@@ -40,10 +40,12 @@ const Obs = (props) => {
           .compactMarginBetween((d) => 35)
           .compactMarginPair((d) => 80)
           .onNodeClick((d) => {
-            console.log(d, 'Id of clicked node ');
+            console.log(d, "Id of clicked node ");
           })
           .nodeContent(function (d) {
-            return ReactDOMServer.renderToStaticMarkup(<StructureCard d={d} showAvatar={props.showAvatar} />);
+            return ReactDOMServer.renderToStaticMarkup(
+              <StructureCard d={d} showAvatar={props.showAvatar} />,
+            );
             // return renderToString(
             //   <div
             //     style={{
@@ -132,7 +134,7 @@ const Obs = (props) => {
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [data, d3Container.current, chart]
+    [data, d3Container.current, chart],
   );
 
   // function addNodeWithData(nodeData) {

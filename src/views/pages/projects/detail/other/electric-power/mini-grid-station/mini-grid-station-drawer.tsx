@@ -1,16 +1,16 @@
-'use client';
-import type { FormikProps } from 'formik';
-import type { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import MiniGridStationForm from './mini-grid-station-form';
-import { useState } from 'react';
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { uploadFile } from 'src/services/utils/file-utils';
-import type { MiniGridStation } from 'src/types/project/other';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+"use client";
+import type { FormikProps } from "formik";
+import type { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import MiniGridStationForm from "./mini-grid-station-form";
+import { useState } from "react";
+import projectOtherApiSecondService from "src/services/project/project-other-second-service";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { uploadFile } from "src/services/utils/file-utils";
+import type { MiniGridStation } from "src/types/project/other";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
 
 interface MiniGridStationDrawerType {
   open: boolean;
@@ -23,7 +23,15 @@ interface MiniGridStationDrawerType {
 }
 
 const MiniGridStationDrawer = (props: MiniGridStationDrawerType) => {
-  const { open, toggle, refetch, miniGridStation, projectId, otherSubMenu, substations } = props;
+  const {
+    open,
+    toggle,
+    refetch,
+    miniGridStation,
+    projectId,
+    otherSubMenu,
+    substations,
+  } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
@@ -32,8 +40,8 @@ const MiniGridStationDrawer = (props: MiniGridStationDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
-    substation_id: yup.string().required('Substation is required'),
-    name: yup.string().required('Name is required'),
+    substation_id: yup.string().required("Substation is required"),
+    name: yup.string().required("Name is required"),
     minigrid_size: yup
       .number()
       .nullable()
@@ -55,18 +63,25 @@ const MiniGridStationDrawer = (props: MiniGridStationDrawerType) => {
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value)),
-    diesel_generator: yup.string().required('Diesel Generator is required'),
+    diesel_generator: yup.string().required("Diesel Generator is required"),
     owner_operator: yup.string().nullable(),
-    remark: yup.string().nullable()
+    remark: yup.string().nullable(),
   });
 
   const isEdit = Boolean(miniGridStation?.id);
 
   const createMiniGridStation = async (body: IApiPayload<MiniGridStation>) =>
-    projectOtherApiSecondService<MiniGridStation>().create(otherSubMenu?.apiRoute || '', body);
+    projectOtherApiSecondService<MiniGridStation>().create(
+      otherSubMenu?.apiRoute || "",
+      body,
+    );
 
   const editMiniGridStation = async (body: IApiPayload<MiniGridStation>) =>
-    projectOtherApiSecondService<MiniGridStation>().update(otherSubMenu?.apiRoute || '', miniGridStation?.id || '', body);
+    projectOtherApiSecondService<MiniGridStation>().update(
+      otherSubMenu?.apiRoute || "",
+      miniGridStation?.id || "",
+      body,
+    );
 
   const getPayload = (values: MiniGridStation) => ({
     data: {
@@ -82,16 +97,25 @@ const MiniGridStationDrawer = (props: MiniGridStationDrawerType) => {
       diesel_generator: values.diesel_generator,
       owner_operator: values.owner_operator,
       remark: values.remark,
-      id: miniGridStation?.id
+      id: miniGridStation?.id,
     },
-    files: uploadableFile ? [uploadableFile] : []
+    files: uploadableFile ? [uploadableFile] : [],
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<MiniGridStation>, payload: IApiPayload<MiniGridStation>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<MiniGridStation>,
+    payload: IApiPayload<MiniGridStation>,
+  ) => {
     if (payload.files.length > 0) {
-      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.mini_grid_station, response.payload.id, '', '');
+      await uploadFile(
+        payload.files[0],
+        uploadableProjectFileTypes.other.mini_grid_station,
+        response.payload.id,
+        "",
+        "",
+      );
     }
 
     refetch();
@@ -100,26 +124,40 @@ const MiniGridStationDrawer = (props: MiniGridStationDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.other.mini-grid-station.${isEdit ? `edit-mini-grid-station` : `create-mini-grid-station`}`}
+      title={`project.other.mini-grid-station.${
+        isEdit ? `edit-mini-grid-station` : `create-mini-grid-station`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.mini-grid-station.${isEdit ? `edit-mini-grid-station` : `create-mini-grid-station`}`}
+          title={`project.other.mini-grid-station.${
+            isEdit ? `edit-mini-grid-station` : `create-mini-grid-station`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
             ...miniGridStation,
-            diesel_generator: miniGridStation?.diesel_generator || 'Not Equipped'
+            diesel_generator:
+              miniGridStation?.diesel_generator || "Not Equipped",
           }}
-          createActionFunc={isEdit ? editMiniGridStation : createMiniGridStation}
+          createActionFunc={
+            isEdit ? editMiniGridStation : createMiniGridStation
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<MiniGridStation>) => {
-            return <MiniGridStationForm file={uploadableFile} onFileChange={onFileChange} formik={formik} substations={substations} />;
+            return (
+              <MiniGridStationForm
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+                substations={substations}
+              />
+            );
           }}
         </FormPageWrapper>
       )}

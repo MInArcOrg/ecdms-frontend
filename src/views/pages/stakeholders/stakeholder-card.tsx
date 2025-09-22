@@ -1,12 +1,6 @@
 /* eslint-disable prettier/prettier */
 
-import {
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  Divider
-} from "@mui/material";
+import { Box, Card, CardActions, CardContent, Divider } from "@mui/material";
 import { Fragment } from "react";
 import { Stakeholder } from "src/types/stakeholder";
 import FileDrawer from "src/views/components/custom/files-drawer";
@@ -31,9 +25,7 @@ const StakeholderCard = ({
   return (
     <Card>
       <CardContent>
-        <StakeholderProfileCardComponent
-          stakeholder={stakeholder}
-        />
+        <StakeholderProfileCardComponent stakeholder={stakeholder} />
       </CardContent>
       <Divider />
       <CardActions style={{ justifyContent: "flex-end" }}>
@@ -44,7 +36,6 @@ const StakeholderCard = ({
               <ModelActionComponent
                 model="Stakeholder"
                 model_id={stakeholder.id}
-
                 refetchModel={refetch}
                 resubmit={function (): void {
                   throw new Error("Function not implemented.");
@@ -59,12 +50,12 @@ const StakeholderCard = ({
                 onDelete={() => onDelete(stakeholder.id)}
                 item={stakeholder}
                 deletePermissionRule={{
-                  action: 'delete',
-                  subject: 'stakeholder',
+                  action: "delete",
+                  subject: "stakeholder",
                 }}
                 editPermissionRule={{
-                  action: 'update',
-                  subject: 'stakeholder'
+                  action: "update",
+                  subject: "stakeholder",
                 }}
                 options={[]}
               />

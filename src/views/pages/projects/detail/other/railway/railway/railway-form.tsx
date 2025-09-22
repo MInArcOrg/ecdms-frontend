@@ -1,11 +1,11 @@
-import { Grid } from '@mui/material';
-import { FormikProps } from 'formik';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { gridSpacing } from 'src/configs/app-constants';
-import { Railway } from 'src/types/project/other';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
+import { Grid } from "@mui/material";
+import { FormikProps } from "formik";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { gridSpacing } from "src/configs/app-constants";
+import { Railway } from "src/types/project/other";
+import CustomTextBox from "src/views/shared/form/custom-text-box";
+import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 
 interface RailwayFormProps {
   formik: FormikProps<Railway>;
@@ -14,7 +14,12 @@ interface RailwayFormProps {
   projectId: string;
 }
 
-const RailwayForm: React.FC<RailwayFormProps> = ({ formik, file, onFileChange, projectId }) => {
+const RailwayForm: React.FC<RailwayFormProps> = ({
+  formik,
+  file,
+  onFileChange,
+  projectId,
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -22,24 +27,24 @@ const RailwayForm: React.FC<RailwayFormProps> = ({ formik, file, onFileChange, p
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={t('project.other.railway.details.major-operator')}
-          placeholder={t('project.other.railway.details.major-operator')}
+          label={t("project.other.railway.details.major-operator")}
+          placeholder={t("project.other.railway.details.major-operator")}
           name="major_operator"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.railway.details.energy-source')}
-          placeholder={t('project.other.railway.details.energy-source')}
+          label={t("project.other.railway.details.energy-source")}
+          placeholder={t("project.other.railway.details.energy-source")}
           name="energy_source"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.railway.details.system-length')}
-          placeholder={t('project.other.railway.details.system-length')}
+          label={t("project.other.railway.details.system-length")}
+          placeholder={t("project.other.railway.details.system-length")}
           name="system_length"
           size="small"
           sx={{ mb: 2 }}
@@ -47,8 +52,8 @@ const RailwayForm: React.FC<RailwayFormProps> = ({ formik, file, onFileChange, p
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.railway.details.total-stations')}
-          placeholder={t('project.other.railway.details.total-stations')}
+          label={t("project.other.railway.details.total-stations")}
+          placeholder={t("project.other.railway.details.total-stations")}
           name="total_station_no"
           size="small"
           sx={{ mb: 2 }}
@@ -56,8 +61,8 @@ const RailwayForm: React.FC<RailwayFormProps> = ({ formik, file, onFileChange, p
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.railway.details.freight-cargo-no')}
-          placeholder={t('project.other.railway.details.freight-cargo-no')}
+          label={t("project.other.railway.details.freight-cargo-no")}
+          placeholder={t("project.other.railway.details.freight-cargo-no")}
           name="fright_cargo_no"
           size="small"
           sx={{ mb: 2 }}
@@ -65,8 +70,8 @@ const RailwayForm: React.FC<RailwayFormProps> = ({ formik, file, onFileChange, p
         />
         <CustomTextBox
           fullWidth
-          label={t('project.other.railway.details.transport-cargo-no')}
-          placeholder={t('project.other.railway.details.transport-cargo-no')}
+          label={t("project.other.railway.details.transport-cargo-no")}
+          placeholder={t("project.other.railway.details.transport-cargo-no")}
           name="transport_cargo_no"
           size="small"
           sx={{ mb: 2 }}
@@ -75,7 +80,11 @@ const RailwayForm: React.FC<RailwayFormProps> = ({ formik, file, onFileChange, p
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />
+        <CustomFileUpload
+          label={t("common.form.file-upload")}
+          file={file}
+          onFileChange={onFileChange}
+        />
       </Grid>
     </Grid>
   );

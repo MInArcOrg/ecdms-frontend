@@ -1,16 +1,19 @@
-'use client';
-import type { FormikProps } from 'formik';
-import type { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import SubstationTransformerAndSwitchgearDataForm from './substation-transformer-and-switchgear-data-form';
-import { useState } from 'react';
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { uploadFile } from 'src/services/utils/file-utils';
-import type { SubstationTransformerAndSwitchgearData, TransmissionLine } from 'src/types/project/other';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+"use client";
+import type { FormikProps } from "formik";
+import type { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import SubstationTransformerAndSwitchgearDataForm from "./substation-transformer-and-switchgear-data-form";
+import { useState } from "react";
+import projectOtherApiSecondService from "src/services/project/project-other-second-service";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { uploadFile } from "src/services/utils/file-utils";
+import type {
+  SubstationTransformerAndSwitchgearData,
+  TransmissionLine,
+} from "src/types/project/other";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
 
 interface SubstationTransformerAndSwitchgearDataDrawerType {
   open: boolean;
@@ -22,8 +25,18 @@ interface SubstationTransformerAndSwitchgearDataDrawerType {
   transmissionLines: TransmissionLine[];
 }
 
-const SubstationTransformerAndSwitchgearDataDrawer = (props: SubstationTransformerAndSwitchgearDataDrawerType) => {
-  const { open, toggle, refetch, substationTransformerAndSwitchgearData, projectId, otherSubMenu, transmissionLines } = props;
+const SubstationTransformerAndSwitchgearDataDrawer = (
+  props: SubstationTransformerAndSwitchgearDataDrawerType,
+) => {
+  const {
+    open,
+    toggle,
+    refetch,
+    substationTransformerAndSwitchgearData,
+    projectId,
+    otherSubMenu,
+    transmissionLines,
+  } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
@@ -32,12 +45,14 @@ const SubstationTransformerAndSwitchgearDataDrawer = (props: SubstationTransform
   };
 
   const validationSchema = yup.object().shape({
-    transmission_line_id: yup.string().required('Transmission Line is required'),
-    name: yup.string().required('Name is required'),
+    transmission_line_id: yup
+      .string()
+      .required("Transmission Line is required"),
+    name: yup.string().required("Name is required"),
     transformers_number: yup
       .number()
       .nullable()
-      .integer('Must be an integer')
+      .integer("Must be an integer")
       .transform((value) => (isNaN(value) ? null : value)),
     transformer_type: yup.string().nullable(),
     transformer_capacity: yup
@@ -52,22 +67,31 @@ const SubstationTransformerAndSwitchgearDataDrawer = (props: SubstationTransform
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value)),
-    switchgear_type_id: yup.string().required('Switchgear Type is required'),
-    circuit_breaker_type_id: yup.string().required('Circuit Breaker Type is required'),
+    switchgear_type_id: yup.string().required("Switchgear Type is required"),
+    circuit_breaker_type_id: yup
+      .string()
+      .required("Circuit Breaker Type is required"),
     other_equipment: yup.string().nullable(),
-    remark: yup.string().nullable()
+    remark: yup.string().nullable(),
   });
 
   const isEdit = Boolean(substationTransformerAndSwitchgearData?.id);
 
-  const createSubstationTransformerAndSwitchgearData = async (body: IApiPayload<SubstationTransformerAndSwitchgearData>) =>
-    projectOtherApiSecondService<SubstationTransformerAndSwitchgearData>().create(otherSubMenu?.apiRoute || '', body);
+  const createSubstationTransformerAndSwitchgearData = async (
+    body: IApiPayload<SubstationTransformerAndSwitchgearData>,
+  ) =>
+    projectOtherApiSecondService<SubstationTransformerAndSwitchgearData>().create(
+      otherSubMenu?.apiRoute || "",
+      body,
+    );
 
-  const editSubstationTransformerAndSwitchgearData = async (body: IApiPayload<SubstationTransformerAndSwitchgearData>) =>
+  const editSubstationTransformerAndSwitchgearData = async (
+    body: IApiPayload<SubstationTransformerAndSwitchgearData>,
+  ) =>
     projectOtherApiSecondService<SubstationTransformerAndSwitchgearData>().update(
-      otherSubMenu?.apiRoute || '',
-      substationTransformerAndSwitchgearData?.id || '',
-      body
+      otherSubMenu?.apiRoute || "",
+      substationTransformerAndSwitchgearData?.id || "",
+      body,
     );
 
   const getPayload = (values: SubstationTransformerAndSwitchgearData) => ({
@@ -84,24 +108,25 @@ const SubstationTransformerAndSwitchgearDataDrawer = (props: SubstationTransform
       circuit_breaker_type_id: values.circuit_breaker_type_id,
       other_equipment: values.other_equipment,
       remark: values.remark,
-      id: substationTransformerAndSwitchgearData?.id
+      id: substationTransformerAndSwitchgearData?.id,
     },
-    files: uploadableFile ? [uploadableFile] : []
+    files: uploadableFile ? [uploadableFile] : [],
   });
 
   const handleClose = () => toggle();
 
   const onActionSuccess = async (
     response: IApiResponse<SubstationTransformerAndSwitchgearData>,
-    payload: IApiPayload<SubstationTransformerAndSwitchgearData>
+    payload: IApiPayload<SubstationTransformerAndSwitchgearData>,
   ) => {
     if (payload.files.length > 0) {
       await uploadFile(
         payload.files[0],
-        uploadableProjectFileTypes.other.SUBSTATION_TRANSFORMER_AND_SWITCH_GEAR_DATA,
+        uploadableProjectFileTypes.other
+          .SUBSTATION_TRANSFORMER_AND_SWITCH_GEAR_DATA,
         response.payload.id,
-        '',
-        ''
+        "",
+        "",
       );
     }
 
@@ -112,7 +137,9 @@ const SubstationTransformerAndSwitchgearDataDrawer = (props: SubstationTransform
   return (
     <CustomSideDrawer
       title={`project.other.substation-transformer-and-switchgear-data.${
-        isEdit ? `edit-substation-transformer-and-switchgear-data` : `create-substation-transformer-and-switchgear-data`
+        isEdit
+          ? `edit-substation-transformer-and-switchgear-data`
+          : `create-substation-transformer-and-switchgear-data`
       }`}
       handleClose={handleClose}
       open={open}
@@ -121,14 +148,20 @@ const SubstationTransformerAndSwitchgearDataDrawer = (props: SubstationTransform
         <FormPageWrapper
           edit={isEdit}
           title={`project.other.substation-transformer-and-switchgear-data.${
-            isEdit ? `edit-substation-transformer-and-switchgear-data` : `create-substation-transformer-and-switchgear-data`
+            isEdit
+              ? `edit-substation-transformer-and-switchgear-data`
+              : `create-substation-transformer-and-switchgear-data`
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...substationTransformerAndSwitchgearData
+            ...substationTransformerAndSwitchgearData,
           }}
-          createActionFunc={isEdit ? editSubstationTransformerAndSwitchgearData : createSubstationTransformerAndSwitchgearData}
+          createActionFunc={
+            isEdit
+              ? editSubstationTransformerAndSwitchgearData
+              : createSubstationTransformerAndSwitchgearData
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

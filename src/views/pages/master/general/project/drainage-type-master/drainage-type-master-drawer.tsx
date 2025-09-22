@@ -1,13 +1,13 @@
-import { FormikProps } from 'formik';
-import { useState } from 'react';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import DrainageTypeMasterForm from './drainage-type-master-form';
-import { DrainageType } from 'src/types/general/general-master';
-import roadLengthTypeMasterService from 'src/services/general/project/drainage-type-master-service';
+import { FormikProps } from "formik";
+import { useState } from "react";
+import { uploadFile } from "src/services/utils/file-utils";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import DrainageTypeMasterForm from "./drainage-type-master-form";
+import { DrainageType } from "src/types/general/general-master";
+import roadLengthTypeMasterService from "src/services/general/project/drainage-type-master-service";
 
 interface DrainageTypeMasterDrawerType {
   open: boolean;
@@ -17,8 +17,8 @@ interface DrainageTypeMasterDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required('Title is required'),
-  description: yup.string().required('Description is required')
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
 });
 
 const DrainageTypeMasterDrawer = (props: DrainageTypeMasterDrawerType) => {
@@ -34,16 +34,16 @@ const DrainageTypeMasterDrawer = (props: DrainageTypeMasterDrawerType) => {
   };
 
   const editDrainageTypeMaster = async (body: IApiPayload<DrainageType>) => {
-    return await roadLengthTypeMasterService.update(masterData?.id || '', body);
+    return await roadLengthTypeMasterService.update(masterData?.id || "", body);
   };
 
   const getPayload = (values: DrainageType) => {
     const payload = {
       data: {
         ...values,
-        id: masterData?.id
+        id: masterData?.id,
       },
-      files: uploadableFile ? [uploadableFile] : []
+      files: uploadableFile ? [uploadableFile] : [],
     };
     return payload;
   };
@@ -52,9 +52,18 @@ const DrainageTypeMasterDrawer = (props: DrainageTypeMasterDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<DrainageType>, payload: IApiPayload<DrainageType>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<DrainageType>,
+    payload: IApiPayload<DrainageType>,
+  ) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `DRAINAGE_TYPE`, response.payload.id, '', '');
+      uploadFile(
+        payload.files[0],
+        `DRAINAGE_TYPE`,
+        response.payload.id,
+        "",
+        "",
+      );
     }
     refetch();
     handleClose();
@@ -62,7 +71,9 @@ const DrainageTypeMasterDrawer = (props: DrainageTypeMasterDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-drainage-type' : 'create-drainage-type'}`}
+      title={`master-data.general-master.${
+        isEdit ? "edit-drainage-type" : "create-drainage-type"
+      }`}
       handleClose={handleClose}
       open={open}
     >
@@ -73,7 +84,9 @@ const DrainageTypeMasterDrawer = (props: DrainageTypeMasterDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editDrainageTypeMaster : createDrainageTypeMaster}
+          createActionFunc={
+            isEdit ? editDrainageTypeMaster : createDrainageTypeMaster
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

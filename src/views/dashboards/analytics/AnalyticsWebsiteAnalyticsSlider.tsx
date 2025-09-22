@@ -1,21 +1,21 @@
 // ** React Imports
-import { useState } from 'react';
+import { useState } from "react";
 
 // ** MUI Imports
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import Grid from '@mui/material/Grid';
-import Badge from '@mui/material/Badge';
-import Typography from '@mui/material/Typography';
-import { Theme, useTheme } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import Badge from "@mui/material/Badge";
+import Typography from "@mui/material/Typography";
+import { Theme, useTheme } from "@mui/material/styles";
 
 // ** Third Party Components
-import clsx from 'clsx';
-import { useKeenSlider } from 'keen-slider/react';
+import clsx from "clsx";
+import { useKeenSlider } from "keen-slider/react";
 
 // ** Custom Components Imports
-import CustomAvatar from 'src/@core/components/mui/avatar';
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
+import CustomAvatar from "src/@core/components/mui/avatar";
+import { hexToRGBA } from "src/@core/utils/hex-to-rgba";
 
 interface SwiperData {
   img: string;
@@ -25,35 +25,35 @@ interface SwiperData {
 
 const data: SwiperData[] = [
   {
-    title: 'Traffic',
-    img: '/images/cards/graphic-illustration-1.png',
+    title: "Traffic",
+    img: "/images/cards/graphic-illustration-1.png",
     details: {
-      Sessions: '28%',
-      'Page Views': '3.1k',
-      Leads: '1.2k',
-      Conversions: '12%'
-    }
+      Sessions: "28%",
+      "Page Views": "3.1k",
+      Leads: "1.2k",
+      Conversions: "12%",
+    },
   },
   {
-    title: 'Spending',
-    img: '/images/cards/graphic-illustration-2.png',
+    title: "Spending",
+    img: "/images/cards/graphic-illustration-2.png",
     details: {
-      Spend: '12h',
-      Orders: '18',
-      Order: '127',
-      Items: '2.3k'
-    }
+      Spend: "12h",
+      Orders: "18",
+      Order: "127",
+      Items: "2.3k",
+    },
   },
   {
-    title: 'Revenue Sources',
-    img: '/images/cards/graphic-illustration-3.png',
+    title: "Revenue Sources",
+    img: "/images/cards/graphic-illustration-3.png",
     details: {
-      Direct: '268',
-      Organic: '890',
-      Referral: '62',
-      Campaign: '1.2k'
-    }
-  }
+      Direct: "268",
+      Organic: "890",
+      Referral: "62",
+      Campaign: "1.2k",
+    },
+  },
 ];
 
 const Slides = ({ theme }: { theme: Theme }) => {
@@ -61,7 +61,11 @@ const Slides = ({ theme }: { theme: Theme }) => {
     <>
       {data.map((slide: SwiperData, index: number) => {
         return (
-          <Box key={index} className="keen-slider__slide" sx={{ p: 6, '& .MuiTypography-root': { color: 'common.white' } }}>
+          <Box
+            key={index}
+            className="keen-slider__slide"
+            sx={{ p: 6, "& .MuiTypography-root": { color: "common.white" } }}
+          >
             <Typography variant="h5" sx={{ mb: 0.5 }}>
               Website Analytics
             </Typography>
@@ -74,29 +78,31 @@ const Slides = ({ theme }: { theme: Theme }) => {
                   {slide.title}
                 </Typography>
                 <Grid container spacing={4.5}>
-                  {Object.keys(slide.details).map((key: string, index: number) => {
-                    return (
-                      <Grid item key={index} xs={6}>
-                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                          <CustomAvatar
-                            color="primary"
-                            variant="rounded"
-                            sx={{
-                              mr: 2,
-                              width: 48,
-                              height: 30,
-                              fontWeight: 500,
-                              color: 'common.white',
-                              backgroundColor: 'primary.dark'
-                            }}
-                          >
-                            {slide.details[key]}
-                          </CustomAvatar>
-                          <Typography noWrap>{key}</Typography>
-                        </Box>
-                      </Grid>
-                    );
-                  })}
+                  {Object.keys(slide.details).map(
+                    (key: string, index: number) => {
+                      return (
+                        <Grid item key={index} xs={6}>
+                          <Box sx={{ display: "flex", alignItems: "center" }}>
+                            <CustomAvatar
+                              color="primary"
+                              variant="rounded"
+                              sx={{
+                                mr: 2,
+                                width: 48,
+                                height: 30,
+                                fontWeight: 500,
+                                color: "common.white",
+                                backgroundColor: "primary.dark",
+                              }}
+                            >
+                              {slide.details[key]}
+                            </CustomAvatar>
+                            <Typography noWrap>{key}</Typography>
+                          </Box>
+                        </Grid>
+                      );
+                    },
+                  )}
                 </Grid>
               </Grid>
               <Grid
@@ -105,17 +111,17 @@ const Slides = ({ theme }: { theme: Theme }) => {
                 sm={4}
                 sx={{
                   order: [1, 2],
-                  textAlign: 'center',
-                  '& img': {
-                    height: '160px !important',
-                    maxWidth: 'none !important',
-                    [theme.breakpoints.up('sm')]: {
-                      top: '50%',
-                      position: 'absolute',
+                  textAlign: "center",
+                  "& img": {
+                    height: "160px !important",
+                    maxWidth: "none !important",
+                    [theme.breakpoints.up("sm")]: {
+                      top: "50%",
+                      position: "absolute",
                       right: theme.spacing(6),
-                      transform: 'translateY(-50%)'
-                    }
-                  }
+                      transform: "translateY(-50%)",
+                    },
+                  },
                 }}
               >
                 <img src={slide.img} alt={slide.title} />
@@ -139,13 +145,13 @@ const AnalyticsWebsiteAnalyticsSlider = () => {
     {
       loop: true,
       initial: 0,
-      rtl: theme.direction === 'rtl',
+      rtl: theme.direction === "rtl",
       slideChanged(slider) {
         setCurrentSlide(slider.track.details.rel);
       },
       created() {
         setLoaded(true);
-      }
+      },
     },
     [
       (slider) => {
@@ -161,29 +167,34 @@ const AnalyticsWebsiteAnalyticsSlider = () => {
             slider.next();
           }, 4000);
         };
-        slider.on('created', () => {
-          slider.container.addEventListener('mouseover', () => {
+        slider.on("created", () => {
+          slider.container.addEventListener("mouseover", () => {
             mouseOver = true;
             clearNextTimeout();
           });
-          slider.container.addEventListener('mouseout', () => {
+          slider.container.addEventListener("mouseout", () => {
             mouseOver = false;
             nextTimeout();
           });
           nextTimeout();
         });
-        slider.on('dragStarted', clearNextTimeout);
-        slider.on('animationEnded', nextTimeout);
-        slider.on('updated', nextTimeout);
-      }
-    ]
+        slider.on("dragStarted", clearNextTimeout);
+        slider.on("animationEnded", nextTimeout);
+        slider.on("updated", nextTimeout);
+      },
+    ],
   );
 
   return (
-    <Card sx={{ position: 'relative', backgroundColor: 'primary.main' }}>
+    <Card sx={{ position: "relative", backgroundColor: "primary.main" }}>
       {loaded && instanceRef.current && (
-        <Box className="swiper-dots" sx={{ top: 4, right: 6, position: 'absolute' }}>
-          {[...Array(instanceRef.current.track.details.slides.length).keys()].map((idx) => {
+        <Box
+          className="swiper-dots"
+          sx={{ top: 4, right: 6, position: "absolute" }}
+        >
+          {[
+            ...Array(instanceRef.current.track.details.slides.length).keys(),
+          ].map((idx) => {
             return (
               <Badge
                 key={idx}
@@ -193,14 +204,17 @@ const AnalyticsWebsiteAnalyticsSlider = () => {
                 onClick={() => instanceRef.current?.moveToIdx(idx)}
                 sx={{
                   mr: `${theme.spacing(3.5)} !important`,
-                  '& .MuiBadge-dot': {
-                    width: '8px !important',
-                    height: '8px !important',
-                    backgroundColor: `${hexToRGBA(theme.palette.common.white, 0.4)} !important`
+                  "& .MuiBadge-dot": {
+                    width: "8px !important",
+                    height: "8px !important",
+                    backgroundColor: `${hexToRGBA(
+                      theme.palette.common.white,
+                      0.4,
+                    )} !important`,
                   },
-                  '&.active .MuiBadge-dot': {
-                    backgroundColor: `${theme.palette.common.white} !important`
-                  }
+                  "&.active .MuiBadge-dot": {
+                    backgroundColor: `${theme.palette.common.white} !important`,
+                  },
                 }}
               />
             );

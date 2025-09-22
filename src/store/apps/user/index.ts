@@ -1,8 +1,8 @@
 // ** Redux Imports
-import { Dispatch } from 'redux';
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axiosServices from 'src/utils/axios';
-import { IApiResponse } from 'src/types/requests';
+import { Dispatch } from "redux";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axiosServices from "src/utils/axios";
+import { IApiResponse } from "src/types/requests";
 
 // ** Axios Imports
 
@@ -19,44 +19,53 @@ interface Redux {
 }
 
 // ** Fetch Users
-export const fetchData = createAsyncThunk('appUsers/fetchData', async (params: DataParams) => {
-  const response: IApiResponse = await axiosServices.get('/users', {
-    params
-  });
+export const fetchData = createAsyncThunk(
+  "appUsers/fetchData",
+  async (params: DataParams) => {
+    const response: IApiResponse = await axiosServices.get("/users", {
+      params,
+    });
 
-  return response.payload;
-});
+    return response.payload;
+  },
+);
 
 // ** Add User
 export const addUser = createAsyncThunk(
-  'appUsers/addUser',
-  async (data: { [key: string]: number | string }, { getState, dispatch }: Redux) => {
-    const response = await axiosServices.post('/apps/users/add-user', {
-      data
+  "appUsers/addUser",
+  async (
+    data: { [key: string]: number | string },
+    { getState, dispatch }: Redux,
+  ) => {
+    const response = await axiosServices.post("/apps/users/add-user", {
+      data,
     });
     dispatch(fetchData(getState().user.params));
 
     return response.data;
-  }
+  },
 );
 
 // ** Delete User
-export const deleteUser = createAsyncThunk('appUsers/deleteUser', async (id: number | string, { getState, dispatch }: Redux) => {
-  const response = await axiosServices.delete('/apps/users/delete', {
-    data: id
-  });
-  dispatch(fetchData(getState().user.params));
+export const deleteUser = createAsyncThunk(
+  "appUsers/deleteUser",
+  async (id: number | string, { getState, dispatch }: Redux) => {
+    const response = await axiosServices.delete("/apps/users/delete", {
+      data: id,
+    });
+    dispatch(fetchData(getState().user.params));
 
-  return response.data;
-});
+    return response.data;
+  },
+);
 
 export const appUsersSlice = createSlice({
-  name: 'appUsers',
+  name: "appUsers",
   initialState: {
     data: [],
     total: 1,
     params: {},
-    allData: []
+    allData: [],
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -66,7 +75,7 @@ export const appUsersSlice = createSlice({
       state.params = action.payload.params;
       state.allData = action.payload.allData;
     });
-  }
+  },
 });
 
 export default appUsersSlice.reducer;

@@ -1,4 +1,4 @@
-import { GeneralMaster } from '../general/general-master';
+import { GeneralMaster } from "../general/general-master";
 
 export interface Project {
   id: string;

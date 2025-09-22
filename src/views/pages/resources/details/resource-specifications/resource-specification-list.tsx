@@ -1,32 +1,36 @@
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import { Container } from '@mui/system';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import resourceSpecificationApiService from 'src/services/resource/resource-specification-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { ResourceSpecification } from 'src/types/resource';
-import ItemsListing from 'src/views/shared/listing';
-import ResourceSpecificationCard from './resource-specification-card';
-import ResourceSpecificationDrawer from './resource-specification-drawer';
-import ImageSwiper from 'src/views/components/custom/image/image-swiper';
+import { Container } from "@mui/system";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import resourceSpecificationApiService from "src/services/resource/resource-specification-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import { ResourceSpecification } from "src/types/resource";
+import ItemsListing from "src/views/shared/listing";
+import ResourceSpecificationCard from "./resource-specification-card";
+import ResourceSpecificationDrawer from "./resource-specification-drawer";
+import ImageSwiper from "src/views/components/custom/image/image-swiper";
 
 function ResourceSpecificationList({ resourceId }: { resourceId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
   const [refetchImages, setRefetchImages] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<ResourceSpecification | null>(null);
+  const [selectedRow, setSelectedRow] = useState<ResourceSpecification | null>(
+    null,
+  );
 
   const { t } = useTranslation();
 
-  const fetchResourceSpecifications = (params: GetRequestParam): Promise<IApiResponse<ResourceSpecification[]>> => {
+  const fetchResourceSpecifications = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<ResourceSpecification[]>> => {
     return resourceSpecificationApiService.getAll({
       ...params,
       filter: {
-        resource_id: resourceId
-      }
+        resource_id: resourceId,
+      },
     });
   };
 
@@ -35,10 +39,10 @@ function ResourceSpecificationList({ resourceId }: { resourceId: string }) {
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<ResourceSpecification[]>({
-    queryKey: ['resourceSpecifications', resourceId],
-    fetchFunction: fetchResourceSpecifications
+    queryKey: ["resourceSpecifications", resourceId],
+    fetchFunction: fetchResourceSpecifications,
   });
 
   const toggleDrawer = () => {
@@ -58,9 +62,9 @@ function ResourceSpecificationList({ resourceId }: { resourceId: string }) {
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'end'
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "end",
       }}
     >
       {showDrawer && (
@@ -80,10 +84,16 @@ function ResourceSpecificationList({ resourceId }: { resourceId: string }) {
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.grid.value}
           isLoading={isLoading}
-          title={t('resource.resource-specification.title')}
+          title={t("resource.resource-specification.title")}
           breakpoints={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 4 }}
           ItemViewComponent={({ data }) => (
-            <ResourceSpecificationCard resourceSpecification={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch}>
+            <ResourceSpecificationCard
+              resourceSpecification={data}
+              onDelete={handleDelete}
+              onEdit={handleEdit}
+              t={t}
+              refetch={refetch}
+            >
               <ImageSwiper id={data.id} refetch={refetchImages} />
             </ResourceSpecificationCard>
           )}
@@ -92,9 +102,9 @@ function ResourceSpecificationList({ resourceId }: { resourceId: string }) {
             onClick: toggleDrawer,
             onlyIcon: true,
             permission: {
-              action: 'create',
-              subject: 'resourceSpecification'
-            }
+              action: "create",
+              subject: "resourceSpecification",
+            },
           }}
           fetchDataFunction={refetch}
           items={resourceSpecifications || []}

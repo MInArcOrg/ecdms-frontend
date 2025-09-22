@@ -1,9 +1,9 @@
 // ** React Imports
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from "react";
 
 // ** MUI Imports
-import Typography from '@mui/material/Typography';
-import Pagination from '@mui/material/Pagination';
+import Typography from "@mui/material/Typography";
+import Pagination from "@mui/material/Pagination";
 
 const PaginationControlled = () => {
   // ** State

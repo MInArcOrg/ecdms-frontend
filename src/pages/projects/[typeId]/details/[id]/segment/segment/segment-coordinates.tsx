@@ -1,13 +1,19 @@
-import { useRouter } from 'next/router';
-import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
-import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { findSubMenuItem, projectSegmentIds } from '../(subMenuItems)';
+import { useRouter } from "next/router";
+import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
+import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
+import subMenuItems, {
+  findSubMenuItem,
+  projectSegmentIds,
+} from "../(subMenuItems)";
 
-const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), projectSegmentIds.segment.segmentCoordinates);
+const defaultMenuItem = findSubMenuItem(
+  subMenuItems("", ""),
+  projectSegmentIds.segment.segmentCoordinates,
+);
 
 const SegmentCoordinate = () => {
   const router = useRouter();
-  const { id = '', typeId = '' } = router.query;
+  const { id = "", typeId = "" } = router.query;
 
   // const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), projectSegmentIds.segment.segmentCoordinates);
 
@@ -25,7 +31,7 @@ const SegmentCoordinate = () => {
 // Access control configuration
 SegmentCoordinate.acl = {
   subject: defaultMenuItem?.model,
-  action: 'view'
+  action: "view",
 };
 
 export default SegmentCoordinate;

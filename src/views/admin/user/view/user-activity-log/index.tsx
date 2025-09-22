@@ -1,27 +1,31 @@
-'use client';
+"use client";
 
-import { Box } from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { UserActivityLog } from 'src/types/admin/user';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import UserActivityLogCard from './user-activity-log-card';
-import { userActivityLogColumns } from './user-activity-log-row';
-import userActivityLogApiService from 'src/services/admin/user-activity-log-service';
+import { Box } from "@mui/material";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import { UserActivityLog } from "src/types/admin/user";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import type { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import UserActivityLogCard from "./user-activity-log-card";
+import { userActivityLogColumns } from "./user-activity-log-row";
+import userActivityLogApiService from "src/services/admin/user-activity-log-service";
 
 interface UserActivityLogListProps {
   userId: string;
 }
 
-const UserActivityLogList: React.FC<UserActivityLogListProps> = ({ userId }) => {
+const UserActivityLogList: React.FC<UserActivityLogListProps> = ({
+  userId,
+}) => {
   const { t } = useTranslation();
 
-  const fetchUserActivityLog = (params: GetRequestParam): Promise<IApiResponse<UserActivityLog[]>> => {
+  const fetchUserActivityLog = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<UserActivityLog[]>> => {
     return userActivityLogApiService.getAll({
-      ...params
+      ...params,
     });
   };
 
@@ -29,25 +33,27 @@ const UserActivityLogList: React.FC<UserActivityLogListProps> = ({ userId }) => 
     data: userActivityLog,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<UserActivityLog[]>({
-    queryKey: ['userActivityLog', userId],
-    fetchFunction: fetchUserActivityLog
+    queryKey: ["userActivityLog", userId],
+    fetchFunction: fetchUserActivityLog,
   });
 
   return (
     <Box>
       <ItemsListing
-        title={t('department.user.activity-log.title')}
+        title={t("department.user.activity-log.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: userActivityLogColumns(t)
+          headers: userActivityLogColumns(t),
         }}
-        ItemViewComponent={({ data }) => <UserActivityLogCard userActivityLog={data} refetch={refetch} />}
+        ItemViewComponent={({ data }) => (
+          <UserActivityLogCard userActivityLog={data} refetch={refetch} />
+        )}
         createActionConfig={{
           ...defaultCreateActionConfig,
-          show: false
+          show: false,
         }}
         fetchDataFunction={refetch}
         items={userActivityLog || []}

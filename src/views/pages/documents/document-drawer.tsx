@@ -1,13 +1,13 @@
-import * as yup from 'yup';
+import * as yup from "yup";
 
-import { FormikProps } from 'formik';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import DocumentForm from './document-form';
-import { IApiPayload } from 'src/types/requests';
-import documentApiService from 'src/services/document/document-service';
-import { Document } from 'src/types/document';
-import moment from 'moment';
+import { FormikProps } from "formik";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import DocumentForm from "./document-form";
+import { IApiPayload } from "src/types/requests";
+import documentApiService from "src/services/document/document-service";
+import { Document } from "src/types/document";
+import moment from "moment";
 
 interface DocumentDrawerType {
   open: boolean;
@@ -26,7 +26,7 @@ const validationSchema = yup.object().shape({
   documentcategory_id: yup.string().required(),
   edition: yup.string().required(),
   isbn: yup.string().required(),
-  publication_date: yup.string().required()
+  publication_date: yup.string().required(),
 });
 
 const DocumentDrawer = (props: DocumentDrawerType) => {
@@ -38,7 +38,7 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
     return await documentApiService.create(body);
   };
   const editDocument = async (body: IApiPayload<Document>) => {
-    return await documentApiService.update(document?.id || '', body);
+    return await documentApiService.update(document?.id || "", body);
   };
 
   const getPayload = (values: Document) => {
@@ -46,9 +46,9 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
       data: {
         ...values,
         id: document?.id,
-        documenttype_id: typeId
+        documenttype_id: typeId,
       },
-      files: []
+      files: [],
     };
     return payload;
   };
@@ -61,14 +61,21 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
     handleClose();
   };
   return (
-    <CustomSideDrawer title={`document.${isEdit ? 'edit-document' : 'create-document'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={`document.${isEdit ? "edit-document" : "create-document"}`}
+      handleClose={handleClose}
+      open={open}
+    >
       {() => (
         <FormPageWrapper
           edit={isEdit}
           title="document.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{ ...document, publication_date: moment(document.publication_date).toDate() }}
+          initialValues={{
+            ...document,
+            publication_date: moment(document.publication_date).toDate(),
+          }}
           createActionFunc={isEdit ? editDocument : createDocument}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

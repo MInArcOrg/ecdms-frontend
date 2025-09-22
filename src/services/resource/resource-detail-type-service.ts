@@ -1,13 +1,15 @@
-import { AxiosResponse } from 'axios';
-import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import { DetailResourceType } from 'src/types/resource';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import { AxiosResponse } from "axios";
+import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
+import { DetailResourceType } from "src/types/resource";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const resourceDetailTypeApiService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<DetailResourceType[]>> =>
+  getAll: (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<DetailResourceType[]>> =>
     buildGetRequest(`/resources/detail-resource-types`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -22,7 +24,10 @@ const resourceDetailTypeApiService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/resources/detail-resource-types-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as DetailResourceType[])
+      .then(
+        (response: AxiosResponse<IApiResponse>) =>
+          response.data.payload as unknown as DetailResourceType[],
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -40,12 +45,15 @@ const resourceDetailTypeApiService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (id: string, body: IApiPayload<DetailResourceType>): Promise<IApiResponse> =>
+  update: (
+    id: string,
+    body: IApiPayload<DetailResourceType>,
+  ): Promise<IApiResponse> =>
     buildPutRequest(`/resources/detail-resource-types/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default resourceDetailTypeApiService;

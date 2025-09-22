@@ -1,54 +1,55 @@
 // ** MUI Imports
-import { Theme } from '@mui/material/styles';
-import { ComponentsPropsList } from '@mui/material';
+import { Theme } from "@mui/material/styles";
+import { ComponentsPropsList } from "@mui/material";
 
 // ** Type Import
-import { Settings } from 'src/@core/context/settingsContext';
+import { Settings } from "src/@core/context/settingsContext";
 
 export type OwnerStateThemeType = {
   theme: Theme;
-  ownerState: ComponentsPropsList[keyof ComponentsPropsList] & Record<string, unknown>;
+  ownerState: ComponentsPropsList[keyof ComponentsPropsList] &
+    Record<string, unknown>;
 };
 
 // ** Overrides Imports
-import MuiCard from './card';
-import MuiChip from './chip';
-import MuiLink from './link';
-import MuiList from './list';
-import MuiMenu from './menu';
-import MuiTabs from './tabs';
-import FabButton from './fab';
-import MuiBadge from './badge';
-import MuiInput from './input';
-import MuiPaper from './paper';
-import MuiTable from './table';
-import MuiRadio from './radio';
-import MuiAlerts from './alerts';
-import MuiButton from './button';
-import MuiDialog from './dialog';
-import MuiRating from './rating';
-import MuiDrawer from './drawer';
-import MuiSelect from './select';
-import MuiSlider from './slider';
-import MuiAvatar from './avatars';
-import MuiDivider from './divider';
-import MuiPopover from './popover';
-import MuiTooltip from './tooltip';
-import MuiCheckbox from './checkbox';
-import MuiBackdrop from './backdrop';
-import MuiDataGrid from './dataGrid';
-import MuiProgress from './progress';
-import MuiSnackbar from './snackbar';
-import MuiSwitches from './switches';
-import MuiTimeline from './timeline';
-import MuiAccordion from './accordion';
-import MuiPagination from './pagination';
-import MuiTypography from './typography';
-import MuiBreadcrumb from './breadcrumbs';
-import MuiIconButton from './icon-button';
-import MuiButtonGroup from './button-group';
-import MuiAutocomplete from './autocomplete';
-import MuiToggleButton from './toggleButton';
+import MuiCard from "./card";
+import MuiChip from "./chip";
+import MuiLink from "./link";
+import MuiList from "./list";
+import MuiMenu from "./menu";
+import MuiTabs from "./tabs";
+import FabButton from "./fab";
+import MuiBadge from "./badge";
+import MuiInput from "./input";
+import MuiPaper from "./paper";
+import MuiTable from "./table";
+import MuiRadio from "./radio";
+import MuiAlerts from "./alerts";
+import MuiButton from "./button";
+import MuiDialog from "./dialog";
+import MuiRating from "./rating";
+import MuiDrawer from "./drawer";
+import MuiSelect from "./select";
+import MuiSlider from "./slider";
+import MuiAvatar from "./avatars";
+import MuiDivider from "./divider";
+import MuiPopover from "./popover";
+import MuiTooltip from "./tooltip";
+import MuiCheckbox from "./checkbox";
+import MuiBackdrop from "./backdrop";
+import MuiDataGrid from "./dataGrid";
+import MuiProgress from "./progress";
+import MuiSnackbar from "./snackbar";
+import MuiSwitches from "./switches";
+import MuiTimeline from "./timeline";
+import MuiAccordion from "./accordion";
+import MuiPagination from "./pagination";
+import MuiTypography from "./typography";
+import MuiBreadcrumb from "./breadcrumbs";
+import MuiIconButton from "./icon-button";
+import MuiButtonGroup from "./button-group";
+import MuiAutocomplete from "./autocomplete";
+import MuiToggleButton from "./toggleButton";
 
 const Overrides = (settings: Settings) => {
   const { skin } = settings;
@@ -123,7 +124,7 @@ const Overrides = (settings: Settings) => {
     autocomplete,
     MuiIconButton,
     MuiTypography,
-    MuiToggleButton
+    MuiToggleButton,
   );
 };
 

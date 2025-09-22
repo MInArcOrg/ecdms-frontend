@@ -12,7 +12,11 @@ import stakeholderApiService from "src/services/stakeholder/stakeholder-service"
 import { uploadableStakeholderFileTypes } from "src/services/utils/file-constants";
 import { uploadFile } from "src/services/utils/file-utils";
 import { IApiPayload, IApiResponse } from "src/types/requests";
-import { Stakeholder, StakeholderEmail, StakeholderPhone } from "src/types/stakeholder";
+import {
+  Stakeholder,
+  StakeholderEmail,
+  StakeholderPhone,
+} from "src/types/stakeholder";
 import { getDynamicDate } from "src/views/components/custom/ethio-calendar/ethio-calendar-utils";
 import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
 import FormPageWrapper from "src/views/shared/form/form-wrapper";
@@ -38,7 +42,6 @@ const validationSchema = yup.object().shape({
   ownership_id: yup.string().required("Ownership is required"),
 });
 
-
 const StakeholderDrawer = (props: StakeholderDrawerType) => {
   // ** Props
   const { open, toggle, refetch, stakeholder, typeId } = props;
@@ -62,9 +65,11 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
         ...values,
         id: stakeholder?.id,
         stakeholdertype_id: typeId,
-        license_issued_date: convertDateToLocaleDate(values.license_issued_date),
+        license_issued_date: convertDateToLocaleDate(
+          values.license_issued_date,
+        ),
       },
-      files: uploadableFile ? [uploadableFile] : []
+      files: uploadableFile ? [uploadableFile] : [],
     };
     return payload;
   };
@@ -74,7 +79,7 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
   };
   const onActionSuccess = async (
     response: IApiResponse<Stakeholder>,
-    payload: IApiPayload<Stakeholder>
+    payload: IApiPayload<Stakeholder>,
   ) => {
     // Handle file upload if there are files present
     if (payload.files.length > 0) {
@@ -82,8 +87,8 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
         payload.files[0],
         uploadableStakeholderFileTypes.stakeholder,
         response.payload.id,
-        '',
-        ''
+        "",
+        "",
       );
     }
 
@@ -98,7 +103,6 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
       await submitStakeholderPhones(response.payload.id, stakeholderphones);
     }
 
-
     // Refetch data and close the form/modal
     refetch();
     handleClose();
@@ -106,17 +110,20 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
 
   // Function to submit stakeholder emails
   // Function to submit stakeholder emails
-  const submitStakeholderEmails = async (stakeholderId: string, emails: any[]) => {
+  const submitStakeholderEmails = async (
+    stakeholderId: string,
+    emails: any[],
+  ) => {
     try {
       for (const email of emails) {
         const payload: IApiPayload<StakeholderEmail> = {
           data: {
             ...email,
-            stakeholder_id: stakeholderId
+            stakeholder_id: stakeholderId,
           },
-          files: []
+          files: [],
         };
-        console.log('stakeholderemails payload', payload)
+        console.log("stakeholderemails payload", payload);
 
         await stakeholderEmailApiService.create(payload);
       }
@@ -126,15 +133,18 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
   };
 
   // Function to submit stakeholder phones
-  const submitStakeholderPhones = async (stakeholderId: string, phones: any[]) => {
+  const submitStakeholderPhones = async (
+    stakeholderId: string,
+    phones: any[],
+  ) => {
     try {
       for (const phone of phones) {
         const payload: IApiPayload<StakeholderPhone> = {
           data: {
             ...phone,
-            stakeholder_id: stakeholderId
+            stakeholder_id: stakeholderId,
           },
-          files: []
+          files: [],
         };
         await stakeholderPhoneApiService.create(payload);
       }
@@ -143,26 +153,29 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
     }
   };
 
-
-
   return (
     <CustomSideDrawer
-      title={`stakeholder.${isEdit ? "edit-stakeholder" : "create-stakeholder"
-        }`}
+      title={`stakeholder.${
+        isEdit ? "edit-stakeholder" : "create-stakeholder"
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`stakeholder.${isEdit ? "edit-stakeholder" : "create-stakeholder"
-            }`}
+          title={`stakeholder.${
+            isEdit ? "edit-stakeholder" : "create-stakeholder"
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
             ...stakeholder,
             license_issued_date: stakeholder?.license_issued_date
-              ? getDynamicDate(i18n, moment(String(stakeholder?.license_issued_date)).toDate())
+              ? getDynamicDate(
+                  i18n,
+                  moment(String(stakeholder?.license_issued_date)).toDate(),
+                )
               : undefined,
           }}
           createActionFunc={isEdit ? editResource : createResource}
@@ -170,7 +183,15 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<Stakeholder>) => {
-            return <StakeholderForm file={uploadableFile} onFileChange={onFileChange} typeId={typeId} formik={formik} isEdit={isEdit} />;
+            return (
+              <StakeholderForm
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                typeId={typeId}
+                formik={formik}
+                isEdit={isEdit}
+              />
+            );
           }}
         </FormPageWrapper>
       )}

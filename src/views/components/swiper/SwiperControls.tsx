@@ -1,17 +1,17 @@
 // ** React Imports
-import { useState } from 'react';
+import { useState } from "react";
 
 // ** MUI Imports
-import Box from '@mui/material/Box';
-import Badge from '@mui/material/Badge';
-import { Direction } from '@mui/material';
+import Box from "@mui/material/Box";
+import Badge from "@mui/material/Badge";
+import { Direction } from "@mui/material";
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon';
+import Icon from "src/@core/components/icon";
 
 // ** Third Party Components
-import clsx from 'clsx';
-import { useKeenSlider } from 'keen-slider/react';
+import clsx from "clsx";
+import { useKeenSlider } from "keen-slider/react";
 
 const SwiperControls = ({ direction }: { direction: Direction }) => {
   // ** States
@@ -20,13 +20,13 @@ const SwiperControls = ({ direction }: { direction: Direction }) => {
 
   // ** Hook
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
-    rtl: direction === 'rtl',
+    rtl: direction === "rtl",
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel);
     },
     created() {
       setLoaded(true);
-    }
+    },
   });
 
   return (
@@ -53,32 +53,40 @@ const SwiperControls = ({ direction }: { direction: Direction }) => {
           <>
             <Icon
               icon="tabler:chevron-left"
-              className={clsx('arrow arrow-left', {
-                'arrow-disabled': currentSlide === 0
+              className={clsx("arrow arrow-left", {
+                "arrow-disabled": currentSlide === 0,
               })}
-              onClick={(e: any) => e.stopPropagation() || instanceRef.current?.prev()}
+              onClick={(e: any) =>
+                e.stopPropagation() || instanceRef.current?.prev()
+              }
             />
 
             <Icon
               icon="tabler:chevron-right"
-              className={clsx('arrow arrow-right', {
-                'arrow-disabled': currentSlide === instanceRef.current.track.details.slides.length - 1
+              className={clsx("arrow arrow-right", {
+                "arrow-disabled":
+                  currentSlide ===
+                  instanceRef.current.track.details.slides.length - 1,
               })}
-              onClick={(e: any) => e.stopPropagation() || instanceRef.current?.next()}
+              onClick={(e: any) =>
+                e.stopPropagation() || instanceRef.current?.next()
+              }
             />
           </>
         )}
       </Box>
       {loaded && instanceRef.current && (
         <Box className="swiper-dots">
-          {[...Array(instanceRef.current.track.details.slides.length).keys()].map((idx) => {
+          {[
+            ...Array(instanceRef.current.track.details.slides.length).keys(),
+          ].map((idx) => {
             return (
               <Badge
                 key={idx}
                 variant="dot"
                 component="div"
                 className={clsx({
-                  active: currentSlide === idx
+                  active: currentSlide === idx,
                 })}
                 onClick={() => {
                   instanceRef.current?.moveToIdx(idx);

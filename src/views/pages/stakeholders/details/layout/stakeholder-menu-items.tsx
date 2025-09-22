@@ -1,10 +1,10 @@
-import { DetailMenuItem } from 'src/types/layouts/detail-layout';
+import { DetailMenuItem } from "src/types/layouts/detail-layout";
 
 // Define an object for ID constants
 export const stakeholderMenuIds = {
-  ORGANIZATION: 'ORGANIZATION',
-  RESOURCE: 'RESOURCE',
-  PROJECTS: 'PROJECTS'
+  ORGANIZATION: "ORGANIZATION",
+  RESOURCE: "RESOURCE",
+  PROJECTS: "PROJECTS",
 };
 
 const menuItems = (id: string, typeId: string): DetailMenuItem[] => {
@@ -13,19 +13,19 @@ const menuItems = (id: string, typeId: string): DetailMenuItem[] => {
   return [
     {
       id: stakeholderMenuIds.ORGANIZATION,
-      title: 'stakeholder.navigation.menu.organization',
-      path: `${baseUrl}/organization`
+      title: "stakeholder.navigation.menu.organization",
+      path: `${baseUrl}/organization`,
     },
     {
       id: stakeholderMenuIds.RESOURCE,
-      title: 'stakeholder.navigation.menu.resource',
-      path: `${baseUrl}/resource`
+      title: "stakeholder.navigation.menu.resource",
+      path: `${baseUrl}/resource`,
     },
     {
       id: stakeholderMenuIds.PROJECTS,
-      title: 'stakeholder.navigation.menu.projects',
-      path: `${baseUrl}/projects`
-    }
+      title: "stakeholder.navigation.menu.projects",
+      path: `${baseUrl}/projects`,
+    },
   ];
 };
 

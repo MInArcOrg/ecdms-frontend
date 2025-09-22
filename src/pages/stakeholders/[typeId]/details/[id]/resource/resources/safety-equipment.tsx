@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router';
-import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
-import SafetyEquipmentList from 'src/views/pages/stakeholders/details/stakeholder-safety-equipments';
-import subMenuItems, { stakeholderResourceIds } from '../(sub-menu-items)';
-import { stakeholderMenuIds } from 'src/views/pages/stakeholders/details/layout/stakeholder-menu-items';
+import { useRouter } from "next/router";
+import StakeholderLayout from "src/views/pages/stakeholders/details/layout/stakeholder-layout";
+import SafetyEquipmentList from "src/views/pages/stakeholders/details/stakeholder-safety-equipments";
+import subMenuItems, { stakeholderResourceIds } from "../(sub-menu-items)";
+import { stakeholderMenuIds } from "src/views/pages/stakeholders/details/layout/stakeholder-menu-items";
 
 function SafetyEquipmentIndex() {
   const router = useRouter();
@@ -20,8 +20,8 @@ function SafetyEquipmentIndex() {
 }
 
 SafetyEquipmentIndex.acl = {
-  action: 'view',
-  subject: 'safetyequipment'
+  action: "view",
+  subject: "safetyequipment",
 };
 
 export default SafetyEquipmentIndex;

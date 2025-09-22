@@ -1,6 +1,6 @@
-import { ReactNode, ReactElement, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useAuth } from 'src/hooks/useAuth';
+import { ReactNode, ReactElement, useEffect } from "react";
+import { useRouter } from "next/router";
+import { useAuth } from "src/hooks/useAuth";
 
 interface GuestGuardProps {
   children: ReactNode;
@@ -14,8 +14,8 @@ const GuestGuard = ({ children, fallback }: GuestGuardProps) => {
   useEffect(() => {
     if (!router.isReady) return;
     // If user is authenticated, redirect to dashboard (or home)
-    if (auth.user && window.localStorage.getItem('userData')) {
-      router.replace('/');
+    if (auth.user && window.localStorage.getItem("userData")) {
+      router.replace("/");
     }
   }, [auth.user, router]);
 

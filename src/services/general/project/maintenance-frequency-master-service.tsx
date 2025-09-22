@@ -1,13 +1,15 @@
-import { AxiosResponse } from 'axios';
-import { MaintenanceFrequency } from 'src/types/general/general-master';
-import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import { AxiosResponse } from "axios";
+import { MaintenanceFrequency } from "src/types/general/general-master";
+import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const maintenanceFrequencyMasterService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<MaintenanceFrequency[]>> =>
+  getAll: (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<MaintenanceFrequency[]>> =>
     buildGetRequest(`/masterdata/maintenance-frequencies`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -22,7 +24,10 @@ const maintenanceFrequencyMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/maintenance-frequencies-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as MaintenanceFrequency[])
+      .then(
+        (response: AxiosResponse<IApiResponse>) =>
+          response.data.payload as unknown as MaintenanceFrequency[],
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -40,12 +45,15 @@ const maintenanceFrequencyMasterService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (id: string, body: IApiPayload<MaintenanceFrequency>): Promise<IApiResponse> =>
+  update: (
+    id: string,
+    body: IApiPayload<MaintenanceFrequency>,
+  ): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/maintenance-frequencies/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default maintenanceFrequencyMasterService;

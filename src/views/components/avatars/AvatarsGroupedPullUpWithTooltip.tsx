@@ -1,7 +1,7 @@
 // ** MUI Imports
-import Avatar from '@mui/material/Avatar';
-import Tooltip from '@mui/material/Tooltip';
-import AvatarGroup from '@mui/material/AvatarGroup';
+import Avatar from "@mui/material/Avatar";
+import Tooltip from "@mui/material/Tooltip";
+import AvatarGroup from "@mui/material/AvatarGroup";
 
 const AvatarsGroupedPullUpWithTooltip = () => {
   return (

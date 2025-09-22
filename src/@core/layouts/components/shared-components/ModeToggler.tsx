@@ -1,12 +1,12 @@
 // ** MUI Imports
-import IconButton from '@mui/material/IconButton';
+import IconButton from "@mui/material/IconButton";
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon';
+import Icon from "src/@core/components/icon";
 
 // ** Types Import
-import { Mode } from 'src/@core/layouts/types';
-import { Settings } from 'src/@core/context/settingsContext';
+import { Mode } from "src/@core/layouts/types";
+import { Settings } from "src/@core/context/settingsContext";
 
 interface Props {
   settings: Settings;
@@ -22,16 +22,19 @@ const ModeToggler = (props: Props) => {
   };
 
   const handleModeToggle = () => {
-    if (settings.mode === 'light') {
-      handleModeChange('dark' as Mode);
+    if (settings.mode === "light") {
+      handleModeChange("dark" as Mode);
     } else {
-      handleModeChange('light' as Mode);
+      handleModeChange("light" as Mode);
     }
   };
 
   return (
     <IconButton color="inherit" aria-haspopup="true" onClick={handleModeToggle}>
-      <Icon fontSize="1.625rem" icon={settings.mode === 'dark' ? 'tabler:sun' : 'tabler:moon-stars'} />
+      <Icon
+        fontSize="1.625rem"
+        icon={settings.mode === "dark" ? "tabler:sun" : "tabler:moon-stars"}
+      />
     </IconButton>
   );
 };

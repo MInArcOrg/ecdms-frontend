@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import { Box } from '@mui/material';
-import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import stakeholderBranchManagerApiService from 'src/services/stakeholder/stakeholder-branch-manager-service';
-import stakeholderBranchApiService from 'src/services/stakeholder/stakeholder-branch-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
-import BranchManagerCard from './stakeholder-branch-manager-card';
-import BranchManagerDrawer from './stakeholder-branch-manager-drawer';
-import type { StakeholderBranchManager } from 'src/types/stakeholder/stakeholder-branch-manager';
-import type { StakeholderBranch } from 'src/types/stakeholder/stakeholder-branch';
-import { branchManagerColumns } from './stakeholder-branch-manager-row';
+import { Box } from "@mui/material";
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import stakeholderBranchManagerApiService from "src/services/stakeholder/stakeholder-branch-manager-service";
+import stakeholderBranchApiService from "src/services/stakeholder/stakeholder-branch-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import type { GetRequestParam, IApiResponse } from "src/types/requests";
+import { formatCreatedAt } from "src/utils/formatter/date";
+import ItemsListing from "src/views/shared/listing";
+import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer";
+import BranchManagerCard from "./stakeholder-branch-manager-card";
+import BranchManagerDrawer from "./stakeholder-branch-manager-drawer";
+import type { StakeholderBranchManager } from "src/types/stakeholder/stakeholder-branch-manager";
+import type { StakeholderBranch } from "src/types/stakeholder/stakeholder-branch";
+import { branchManagerColumns } from "./stakeholder-branch-manager-row";
 
 interface BranchManagerListProps {
   model: string;
@@ -24,21 +24,28 @@ interface BranchManagerListProps {
   typeId: string;
 }
 
-const BranchManagerList: React.FC<BranchManagerListProps> = ({ stakeholderId }) => {
+const BranchManagerList: React.FC<BranchManagerListProps> = ({
+  stakeholderId,
+}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<StakeholderBranchManager | null>(null);
-  const [stakeholderBranches, setStakeholderBranches] = useState<StakeholderBranch[]>([]);
+  const [selectedRow, setSelectedRow] =
+    useState<StakeholderBranchManager | null>(null);
+  const [stakeholderBranches, setStakeholderBranches] = useState<
+    StakeholderBranch[]
+  >([]);
   const [isLoading, setIsLoading] = useState(true);
   const { t } = useTranslation();
 
   useEffect(() => {
     const fetchStakeholderBranches = async () => {
       try {
-        const response = await stakeholderBranchApiService.getAll({ filter: { stakeholder_id: stakeholderId } });
+        const response = await stakeholderBranchApiService.getAll({
+          filter: { stakeholder_id: stakeholderId },
+        });
         setStakeholderBranches(response.payload);
       } catch (error) {
-        console.error('Error fetching stakeholder branches:', error);
+        console.error("Error fetching stakeholder branches:", error);
       } finally {
         setIsLoading(false);
       }
@@ -47,10 +54,12 @@ const BranchManagerList: React.FC<BranchManagerListProps> = ({ stakeholderId }) 
     fetchStakeholderBranches();
   }, [stakeholderId]);
 
-  const fetchBranchManagers = (params: GetRequestParam): Promise<IApiResponse<StakeholderBranchManager[]>> => {
+  const fetchBranchManagers = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<StakeholderBranchManager[]>> => {
     return stakeholderBranchManagerApiService.getAll({
       ...params,
-      filter: { ...params.filter, stakeholder_id: stakeholderId }
+      filter: { ...params.filter, stakeholder_id: stakeholderId },
     });
   };
 
@@ -58,10 +67,10 @@ const BranchManagerList: React.FC<BranchManagerListProps> = ({ stakeholderId }) 
     data: branchManagers,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<StakeholderBranchManager[]>({
-    queryKey: ['branchManagers'],
-    fetchFunction: fetchBranchManagers
+    queryKey: ["branchManagers"],
+    fetchFunction: fetchBranchManagers,
   });
 
   const toggleDrawer = () => {
@@ -90,24 +99,52 @@ const BranchManagerList: React.FC<BranchManagerListProps> = ({ stakeholderId }) 
   };
 
   const getBranchName = (id: string) => {
-    if (!stakeholderBranches) return 'N/A';
+    if (!stakeholderBranches) return "N/A";
     const branch = stakeholderBranches.find((b) => b.id === id);
-    return branch ? branch.name : 'N/A';
+    return branch ? branch.name : "N/A";
   };
 
-  const mapBranchManagerToDetailItems = (branchManager: StakeholderBranchManager): { title: string; value: string }[] => [
-    { title: t('stakeholder.stakeholder-branch-manager.firstName'), value: branchManager.first_name },
-    { title: t('stakeholder.stakeholder-branch-manager.lastName'), value: branchManager.last_name },
-    { title: t('stakeholder.stakeholder-branch-manager.department'), value: branchManager.department },
-    { title: t('stakeholder.stakeholder-branch-manager.position'), value: branchManager.position },
-    { title: t('stakeholder.stakeholder-branch-manager.branch'), value: getBranchName(branchManager.stakeholder_branch_id) },
-    { title: t('stakeholder.stakeholder-branch-manager.gender'), value: branchManager.gender },
-    { title: t('stakeholder.stakeholder-branch-manager.phone'), value: branchManager.phone },
-    { title: t('stakeholder.stakeholder-branch-manager.email'), value: branchManager.email || 'N/A' },
+  const mapBranchManagerToDetailItems = (
+    branchManager: StakeholderBranchManager,
+  ): { title: string; value: string }[] => [
     {
-      title: t('common.table-columns.created-at'),
-      value: branchManager?.created_at ? formatCreatedAt(branchManager.created_at) : 'N/A'
-    }
+      title: t("stakeholder.stakeholder-branch-manager.firstName"),
+      value: branchManager.first_name,
+    },
+    {
+      title: t("stakeholder.stakeholder-branch-manager.lastName"),
+      value: branchManager.last_name,
+    },
+    {
+      title: t("stakeholder.stakeholder-branch-manager.department"),
+      value: branchManager.department,
+    },
+    {
+      title: t("stakeholder.stakeholder-branch-manager.position"),
+      value: branchManager.position,
+    },
+    {
+      title: t("stakeholder.stakeholder-branch-manager.branch"),
+      value: getBranchName(branchManager.stakeholder_branch_id),
+    },
+    {
+      title: t("stakeholder.stakeholder-branch-manager.gender"),
+      value: branchManager.gender,
+    },
+    {
+      title: t("stakeholder.stakeholder-branch-manager.phone"),
+      value: branchManager.phone,
+    },
+    {
+      title: t("stakeholder.stakeholder-branch-manager.email"),
+      value: branchManager.email || "N/A",
+    },
+    {
+      title: t("common.table-columns.created-at"),
+      value: branchManager?.created_at
+        ? formatCreatedAt(branchManager.created_at)
+        : "N/A",
+    },
   ];
 
   if (isLoading) {
@@ -131,20 +168,28 @@ const BranchManagerList: React.FC<BranchManagerListProps> = ({ stakeholderId }) 
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapBranchManagerToDetailItems(selectedRow as StakeholderBranchManager)}
-          id={selectedRow?.id || ''}
+          data={mapBranchManagerToDetailItems(
+            selectedRow as StakeholderBranchManager,
+          )}
+          id={selectedRow?.id || ""}
           hasReference={true}
           fileType="STAKEHOLDER_BRANCH_MANAGER"
-          title={t('stakeholder.stakeholder-branch-manager.details')}
+          title={t("stakeholder.stakeholder-branch-manager.details")}
         />
       )}
 
       <ItemsListing
-        title={t('stakeholder.stakeholder-branch-manager.title')}
+        title={t("stakeholder.stakeholder-branch-manager.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: branchManagerColumns(handleClickDetail, handleEdit, handleDelete, t, stakeholderBranches)
+          headers: branchManagerColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+            stakeholderBranches,
+          ),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -162,9 +207,9 @@ const BranchManagerList: React.FC<BranchManagerListProps> = ({ stakeholderId }) 
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: 'create',
-            subject: 'stakeholderbranchmanager'
-          }
+            action: "create",
+            subject: "stakeholderbranchmanager",
+          },
         }}
         fetchDataFunction={refetch}
         items={branchManagers || []}

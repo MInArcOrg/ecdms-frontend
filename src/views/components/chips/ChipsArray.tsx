@@ -1,9 +1,9 @@
 // ** React Imports
-import { useState } from 'react';
+import { useState } from "react";
 
 // ** MUI Imports
-import Chip from '@mui/material/Chip';
-import Avatar from '@mui/material/Avatar';
+import Chip from "@mui/material/Chip";
+import Avatar from "@mui/material/Avatar";
 
 interface ChipData {
   key: number;
@@ -17,33 +17,35 @@ const ChipsArray = () => {
   const [chipData, setChipData] = useState<ChipData[]>([
     {
       key: 0,
-      avatar: '/images/avatars/1.png',
-      avatarAlt: 'User Avatar',
-      label: 'Norman Santiago'
+      avatar: "/images/avatars/1.png",
+      avatarAlt: "User Avatar",
+      label: "Norman Santiago",
     },
     {
       key: 1,
-      avatar: '/images/avatars/2.png',
-      avatarAlt: 'User Avatar',
-      label: 'Cecelia Tucker'
+      avatar: "/images/avatars/2.png",
+      avatarAlt: "User Avatar",
+      label: "Cecelia Tucker",
     },
-    { key: 2, label: 'Max Burns' },
+    { key: 2, label: "Max Burns" },
     {
       key: 3,
-      avatar: '/images/avatars/4.png',
-      avatarAlt: 'User Avatar',
-      label: 'Ellen Nguyen'
+      avatar: "/images/avatars/4.png",
+      avatarAlt: "User Avatar",
+      label: "Ellen Nguyen",
     },
     {
       key: 4,
-      avatar: '/images/avatars/5.png',
-      avatarAlt: 'User Avatar',
-      label: 'Edward Francis'
-    }
+      avatar: "/images/avatars/5.png",
+      avatarAlt: "User Avatar",
+      label: "Edward Francis",
+    },
   ]);
 
   const handleDelete = (chipToDelete: ChipData) => () => {
-    setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+    setChipData((chips) =>
+      chips.filter((chip) => chip.key !== chipToDelete.key),
+    );
   };
 
   return (

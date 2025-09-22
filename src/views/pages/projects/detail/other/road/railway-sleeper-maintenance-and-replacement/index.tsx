@@ -1,24 +1,24 @@
-'use client';
+"use client";
 
-import type React from 'react';
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import type React from "react";
+import { Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
-import { RailwaySleeperMaintenanceAndReplacement } from 'src/types/project/other';
-import { formatCreatedAt, formatDynamicDate } from 'src/utils/formatter/date';
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import projectOtherApiSecondService from "src/services/project/project-other-second-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import type { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer";
+import { RailwaySleeperMaintenanceAndReplacement } from "src/types/project/other";
+import { formatCreatedAt, formatDynamicDate } from "src/utils/formatter/date";
 
-import RailwaySleeperMaintenanceAndReplacementCard from './railway-sleeper-maintenance-and-replacement-card';
-import RailwaySleeperMaintenanceAndReplacementDrawer from './railway-sleeper-maintenance-and-replacement-drawer';
-import { railwaySleeperMaintenanceAndReplacementColumns } from './railway-sleeper-maintenance-and-replacement-row';
+import RailwaySleeperMaintenanceAndReplacementCard from "./railway-sleeper-maintenance-and-replacement-card";
+import RailwaySleeperMaintenanceAndReplacementDrawer from "./railway-sleeper-maintenance-and-replacement-drawer";
+import { railwaySleeperMaintenanceAndReplacementColumns } from "./railway-sleeper-maintenance-and-replacement-row";
 
 interface RailwaySleeperMaintenanceAndReplacementListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -26,22 +26,25 @@ interface RailwaySleeperMaintenanceAndReplacementListProps {
   projectId: string;
 }
 
-const RailwaySleeperMaintenanceAndReplacementList: React.FC<RailwaySleeperMaintenanceAndReplacementListProps> = ({
-  otherSubMenu,
-  projectId
-}) => {
+const RailwaySleeperMaintenanceAndReplacementList: React.FC<
+  RailwaySleeperMaintenanceAndReplacementListProps
+> = ({ otherSubMenu, projectId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<RailwaySleeperMaintenanceAndReplacement | null>(null);
+  const [selectedRow, setSelectedRow] =
+    useState<RailwaySleeperMaintenanceAndReplacement | null>(null);
   const { t } = useTranslation();
 
   const fetchRailwaySleeperMaintenanceAndReplacement = (
-    params: GetRequestParam
+    params: GetRequestParam,
   ): Promise<IApiResponse<RailwaySleeperMaintenanceAndReplacement[]>> => {
-    return projectOtherApiSecondService<RailwaySleeperMaintenanceAndReplacement>().getAll(otherSubMenu?.apiRoute || '', {
-      ...params,
-      filter: { ...params.filter, project_id: projectId }
-    });
+    return projectOtherApiSecondService<RailwaySleeperMaintenanceAndReplacement>().getAll(
+      otherSubMenu?.apiRoute || "",
+      {
+        ...params,
+        filter: { ...params.filter, project_id: projectId },
+      },
+    );
   };
 
   const {
@@ -49,10 +52,10 @@ const RailwaySleeperMaintenanceAndReplacementList: React.FC<RailwaySleeperMainte
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<RailwaySleeperMaintenanceAndReplacement[]>({
-    queryKey: ['railwaySleeperMaintenanceAndReplacement'],
-    fetchFunction: fetchRailwaySleeperMaintenanceAndReplacement
+    queryKey: ["railwaySleeperMaintenanceAndReplacement"],
+    fetchFunction: fetchRailwaySleeperMaintenanceAndReplacement,
   });
 
   const toggleDrawer = () => {
@@ -65,61 +68,95 @@ const RailwaySleeperMaintenanceAndReplacementList: React.FC<RailwaySleeperMainte
     setShowDetailDrawer(!showDetailDrawer);
   };
 
-  const handleEdit = (railwaySleeperMaintenanceAndReplacement: RailwaySleeperMaintenanceAndReplacement) => {
+  const handleEdit = (
+    railwaySleeperMaintenanceAndReplacement: RailwaySleeperMaintenanceAndReplacement,
+  ) => {
     toggleDrawer();
     setSelectedRow(railwaySleeperMaintenanceAndReplacement);
   };
 
   const handleDelete = async (id: string) => {
-    await projectOtherApiSecondService<RailwaySleeperMaintenanceAndReplacement>().delete(otherSubMenu?.apiRoute || '', id);
+    await projectOtherApiSecondService<RailwaySleeperMaintenanceAndReplacement>().delete(
+      otherSubMenu?.apiRoute || "",
+      id,
+    );
     refetch();
   };
 
-  const handleClickDetail = (railwaySleeperMaintenanceAndReplacement: RailwaySleeperMaintenanceAndReplacement) => {
+  const handleClickDetail = (
+    railwaySleeperMaintenanceAndReplacement: RailwaySleeperMaintenanceAndReplacement,
+  ) => {
     toggleDetailDrawer();
     setSelectedRow(railwaySleeperMaintenanceAndReplacement);
   };
 
   const mapRailwaySleeperMaintenanceAndReplacementToDetailItems = (
-    railwaySleeperMaintenanceAndReplacement: RailwaySleeperMaintenanceAndReplacement
+    railwaySleeperMaintenanceAndReplacement: RailwaySleeperMaintenanceAndReplacement,
   ): { title: string; value: string }[] => [
-      {
-        title: t('common.table-columns.id'),
-        value: railwaySleeperMaintenanceAndReplacement?.project_id || 'N/A'
-      },
-      {
-        title: t('project.other.railway-sleeper-maintenance-and-replacement.details.railway_line_section_name'),
-        value: railwaySleeperMaintenanceAndReplacement?.railway_line_section_name || 'N/A'
-      },
-      {
-        title: t('project.other.railway-sleeper-maintenance-and-replacement.details.scheduled_maintenance_activities'),
-        value: railwaySleeperMaintenanceAndReplacement?.scheduled_maintenance_activities || 'N/A'
-      },
-      {
-        title: t('project.other.railway-sleeper-maintenance-and-replacement.details.recent_maintenance_date'),
-        value: railwaySleeperMaintenanceAndReplacement?.recent_maintenance_date ? formatDynamicDate(railwaySleeperMaintenanceAndReplacement?.recent_maintenance_date) : 'N/A'
-      },
-      {
-        title: t('project.other.railway-sleeper-maintenance-and-replacement.details.inspection_reports'),
-        value: railwaySleeperMaintenanceAndReplacement?.inspection_reports || 'N/A'
-      },
-      {
-        title: t('project.other.railway-sleeper-maintenance-and-replacement.details.sleeper_replacement_history'),
-        value: railwaySleeperMaintenanceAndReplacement?.sleeper_replacement_history || 'N/A'
-      },
-      {
-        title: t('project.other.railway-sleeper-maintenance-and-replacement.details.remark'),
-        value: railwaySleeperMaintenanceAndReplacement?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: railwaySleeperMaintenanceAndReplacement?.created_at ? formatCreatedAt(railwaySleeperMaintenanceAndReplacement.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: railwaySleeperMaintenanceAndReplacement?.updated_at ? formatCreatedAt(railwaySleeperMaintenanceAndReplacement.updated_at) : 'N/A'
-      }
-    ];
+    {
+      title: t("common.table-columns.id"),
+      value: railwaySleeperMaintenanceAndReplacement?.project_id || "N/A",
+    },
+    {
+      title: t(
+        "project.other.railway-sleeper-maintenance-and-replacement.details.railway_line_section_name",
+      ),
+      value:
+        railwaySleeperMaintenanceAndReplacement?.railway_line_section_name ||
+        "N/A",
+    },
+    {
+      title: t(
+        "project.other.railway-sleeper-maintenance-and-replacement.details.scheduled_maintenance_activities",
+      ),
+      value:
+        railwaySleeperMaintenanceAndReplacement?.scheduled_maintenance_activities ||
+        "N/A",
+    },
+    {
+      title: t(
+        "project.other.railway-sleeper-maintenance-and-replacement.details.recent_maintenance_date",
+      ),
+      value: railwaySleeperMaintenanceAndReplacement?.recent_maintenance_date
+        ? formatDynamicDate(
+            railwaySleeperMaintenanceAndReplacement?.recent_maintenance_date,
+          )
+        : "N/A",
+    },
+    {
+      title: t(
+        "project.other.railway-sleeper-maintenance-and-replacement.details.inspection_reports",
+      ),
+      value:
+        railwaySleeperMaintenanceAndReplacement?.inspection_reports || "N/A",
+    },
+    {
+      title: t(
+        "project.other.railway-sleeper-maintenance-and-replacement.details.sleeper_replacement_history",
+      ),
+      value:
+        railwaySleeperMaintenanceAndReplacement?.sleeper_replacement_history ||
+        "N/A",
+    },
+    {
+      title: t(
+        "project.other.railway-sleeper-maintenance-and-replacement.details.remark",
+      ),
+      value: railwaySleeperMaintenanceAndReplacement?.remark || "N/A",
+    },
+    {
+      title: t("common.table-columns.created-at"),
+      value: railwaySleeperMaintenanceAndReplacement?.created_at
+        ? formatCreatedAt(railwaySleeperMaintenanceAndReplacement.created_at)
+        : "N/A",
+    },
+    {
+      title: t("common.table-columns.updated-at"),
+      value: railwaySleeperMaintenanceAndReplacement?.updated_at
+        ? formatCreatedAt(railwaySleeperMaintenanceAndReplacement.updated_at)
+        : "N/A",
+    },
+  ];
 
   return (
     <Box>
@@ -128,7 +165,9 @@ const RailwaySleeperMaintenanceAndReplacementList: React.FC<RailwaySleeperMainte
           otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
-          railwaySleeperMaintenanceAndReplacement={selectedRow as RailwaySleeperMaintenanceAndReplacement}
+          railwaySleeperMaintenanceAndReplacement={
+            selectedRow as RailwaySleeperMaintenanceAndReplacement
+          }
           refetch={refetch}
           projectId={projectId}
         />
@@ -138,16 +177,22 @@ const RailwaySleeperMaintenanceAndReplacementList: React.FC<RailwaySleeperMainte
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapRailwaySleeperMaintenanceAndReplacementToDetailItems(selectedRow as RailwaySleeperMaintenanceAndReplacement)}
+          data={mapRailwaySleeperMaintenanceAndReplacementToDetailItems(
+            selectedRow as RailwaySleeperMaintenanceAndReplacement,
+          )}
           hasReference={false}
-          id={selectedRow?.project_id || ''}
+          id={selectedRow?.project_id || ""}
           fileType=""
-          title={t('project.other.railway-sleeper-maintenance-and-replacement.detail')}
+          title={t(
+            "project.other.railway-sleeper-maintenance-and-replacement.detail",
+          )}
         />
       )}
 
       <ItemsListing
-        title={t('project.other.railway-sleeper-maintenance-and-replacement.title')}
+        title={t(
+          "project.other.railway-sleeper-maintenance-and-replacement.title",
+        )}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
@@ -156,14 +201,16 @@ const RailwaySleeperMaintenanceAndReplacementList: React.FC<RailwaySleeperMainte
             handleEdit,
             handleDelete,
             t,
-            refetch
-          )
+            refetch,
+          ),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
           <RailwaySleeperMaintenanceAndReplacementCard
             onDetail={handleClickDetail}
-            railwaySleeperMaintenanceAndReplacement={data as RailwaySleeperMaintenanceAndReplacement}
+            railwaySleeperMaintenanceAndReplacement={
+              data as RailwaySleeperMaintenanceAndReplacement
+            }
             onEdit={handleEdit}
             refetch={refetch}
             onDelete={handleDelete}
@@ -174,9 +221,9 @@ const RailwaySleeperMaintenanceAndReplacementList: React.FC<RailwaySleeperMainte
           onClick: toggleDrawer,
           onlyIcon: true,
           permission: {
-            action: 'create',
-            subject: 'railwaysleepermaintenanceandreplacement'
-          }
+            action: "create",
+            subject: "railwaysleepermaintenanceandreplacement",
+          },
         }}
         fetchDataFunction={refetch}
         items={railwaySleeperMaintenanceAndReplacement || []}

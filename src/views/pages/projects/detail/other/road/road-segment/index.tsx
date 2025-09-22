@@ -1,26 +1,26 @@
-'use client';
+"use client";
 
-import type React from 'react';
+import type React from "react";
 
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import projectOtherApiService from 'src/services/project/project-other-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { RoadSegment } from 'src/types/project/other';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
-import RoadSegmentCard from './road-segment-card';
-import RoadSegmentDrawer from './road-segment-drawer';
-import { roadSegmentColumns } from './road-segment-row';
-import { useQuery } from '@tanstack/react-query';
-import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
-import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
+import { Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import projectOtherApiService from "src/services/project/project-other-service";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import type { RoadSegment } from "src/types/project/other";
+import type { GetRequestParam, IApiResponse } from "src/types/requests";
+import { formatCreatedAt } from "src/utils/formatter/date";
+import ItemsListing from "src/views/shared/listing";
+import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-detail-drawer";
+import RoadSegmentCard from "./road-segment-card";
+import RoadSegmentDrawer from "./road-segment-drawer";
+import { roadSegmentColumns } from "./road-segment-row";
+import { useQuery } from "@tanstack/react-query";
+import { projectMasterModels } from "src/constants/master-data/project-general-master-constants";
+import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service";
 
 interface RoadSegmentListProps {
   model: string;
@@ -28,7 +28,11 @@ interface RoadSegmentListProps {
   projectId: string;
 }
 
-const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typeId }) => {
+const RoadSegmentList: React.FC<RoadSegmentListProps> = ({
+  model,
+  projectId,
+  typeId,
+}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<RoadSegment | null>(null);
@@ -36,19 +40,19 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
 
   // Fetch master data for lookups
   const { data: surfaceTypes } = useQuery({
-    queryKey: ['surface-types'],
+    queryKey: ["surface-types"],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll({
-        filter: { model: projectMasterModels.surfaceType.model }
-      })
+        filter: { model: projectMasterModels.surfaceType.model },
+      }),
   });
 
   const { data: designStandardTypes } = useQuery({
-    queryKey: ['design-standard-types'],
+    queryKey: ["design-standard-types"],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll({
-        filter: { model: projectMasterModels.designStandard.model }
-      })
+        filter: { model: projectMasterModels.designStandard.model },
+      }),
   });
 
   // Create lookup maps
@@ -67,10 +71,12 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
     });
   }
 
-  const fetchRoadSegments = (params: GetRequestParam): Promise<IApiResponse<RoadSegment[]>> => {
+  const fetchRoadSegments = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<RoadSegment[]>> => {
     return projectOtherApiService<RoadSegment>().getAll(model, {
       ...params,
-      filter: { ...params.filter, project_id: projectId }
+      filter: { ...params.filter, project_id: projectId },
     });
   };
 
@@ -79,10 +85,10 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<RoadSegment[]>({
-    queryKey: ['roadSegments'],
-    fetchFunction: fetchRoadSegments
+    queryKey: ["roadSegments"],
+    fetchFunction: fetchRoadSegments,
   });
 
   const toggleDrawer = () => {
@@ -110,40 +116,49 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
     setShowDetailDrawer(true);
   };
 
-  const mapRoadSegmentToDetailItems = (roadSegment: RoadSegment): { title: string; value: string }[] => [
-    { title: t('project.other.road-segment.details.name'), value: roadSegment?.name || 'N/A' },
+  const mapRoadSegmentToDetailItems = (
+    roadSegment: RoadSegment,
+  ): { title: string; value: string }[] => [
     {
-      title: t('project.other.road-segment.details.surface-type-id'),
-      value: surfaceTypeMap.get(roadSegment?.surface_type_id) || 'N/A'
+      title: t("project.other.road-segment.details.name"),
+      value: roadSegment?.name || "N/A",
     },
     {
-      title: t('project.other.road-segment.details.start-northing'),
-      value: roadSegment?.start_northing?.toString() || 'N/A'
+      title: t("project.other.road-segment.details.surface-type-id"),
+      value: surfaceTypeMap.get(roadSegment?.surface_type_id) || "N/A",
     },
     {
-      title: t('project.other.road-segment.details.start-easting'),
-      value: roadSegment?.start_easting?.toString() || 'N/A'
+      title: t("project.other.road-segment.details.start-northing"),
+      value: roadSegment?.start_northing?.toString() || "N/A",
     },
     {
-      title: t('project.other.road-segment.details.end-northing'),
-      value: roadSegment?.end_northing?.toString() || 'N/A'
+      title: t("project.other.road-segment.details.start-easting"),
+      value: roadSegment?.start_easting?.toString() || "N/A",
     },
     {
-      title: t('project.other.road-segment.details.end-easting'),
-      value: roadSegment?.end_easting?.toString() || 'N/A'
+      title: t("project.other.road-segment.details.end-northing"),
+      value: roadSegment?.end_northing?.toString() || "N/A",
     },
     {
-      title: t('project.other.road-segment.details.design-standard-id'),
-      value: designStandardMap.get(roadSegment?.design_standard_id) || 'N/A'
+      title: t("project.other.road-segment.details.end-easting"),
+      value: roadSegment?.end_easting?.toString() || "N/A",
     },
     {
-      title: t('common.table-columns.created-at'),
-      value: roadSegment?.created_at ? formatCreatedAt(roadSegment.created_at) : 'N/A'
+      title: t("project.other.road-segment.details.design-standard-id"),
+      value: designStandardMap.get(roadSegment?.design_standard_id) || "N/A",
     },
     {
-      title: t('common.table-columns.updated-at'),
-      value: roadSegment?.updated_at ? formatCreatedAt(roadSegment.updated_at) : 'N/A'
-    }
+      title: t("common.table-columns.created-at"),
+      value: roadSegment?.created_at
+        ? formatCreatedAt(roadSegment.created_at)
+        : "N/A",
+    },
+    {
+      title: t("common.table-columns.updated-at"),
+      value: roadSegment?.updated_at
+        ? formatCreatedAt(roadSegment.updated_at)
+        : "N/A",
+    },
   ];
 
   return (
@@ -165,31 +180,45 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
           toggleDrawer={toggleDetailDrawer}
           data={mapRoadSegmentToDetailItems(selectedRow!)}
           hasReference={true}
-          id={selectedRow?.id || ''}
+          id={selectedRow?.id || ""}
           fileType={uploadableProjectFileTypes.other.roadSegment}
-          title={t('project.other.road-segment.road-segment-details')}
+          title={t("project.other.road-segment.road-segment-details")}
         />
       )}
 
       <ItemsListing
-        title={t('project.other.road-segment.title')}
+        title={t("project.other.road-segment.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: roadSegmentColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, surfaceTypeMap, designStandardMap)
+          headers: roadSegmentColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+            refetch,
+            surfaceTypeMap,
+            designStandardMap,
+          ),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <RoadSegmentCard onDetail={handleClickDetail} roadSegment={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
+          <RoadSegmentCard
+            onDetail={handleClickDetail}
+            roadSegment={data}
+            onEdit={handleEdit}
+            refetch={refetch}
+            onDelete={handleDelete}
+          />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
           onlyIcon: true,
           permission: {
-            action: 'create',
-            subject: 'roadsegment'
-          }
+            action: "create",
+            subject: "roadsegment",
+          },
         }}
         fetchDataFunction={refetch}
         items={roadSegments || []}

@@ -1,1 +1,3 @@
-export const constructionRelatedServices = [{ label: 'Building Maintenance', value: 'Building Maintenance' }];
+export const constructionRelatedServices = [
+  { label: "Building Maintenance", value: "Building Maintenance" },
+];

@@ -1,10 +1,10 @@
-import { Box } from '@mui/material';
-import { useRouter } from 'next/router';
-import { variationConstants } from 'src/constants/variation-constants';
-import ProjectVariationList from 'src/views/pages/projects/detail/project-finance/project-variation';
-import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
-import subMenuItems, { projectResourceIds } from '../(subMenuItems)';
-import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import { Box } from "@mui/material";
+import { useRouter } from "next/router";
+import { variationConstants } from "src/constants/variation-constants";
+import ProjectVariationList from "src/views/pages/projects/detail/project-finance/project-variation";
+import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
+import subMenuItems, { projectResourceIds } from "../(subMenuItems)";
+import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
 
 function ProjectVariation() {
   const router = useRouter();
@@ -17,15 +17,18 @@ function ProjectVariation() {
         activeSubMenuId={projectResourceIds.finance.omission}
         subMenuItems={subMenuItems(id as string, typeId as string)}
       >
-        {' '}
-        <ProjectVariationList projectId={String(id)} type={variationConstants.OMISSION.value} />
+        {" "}
+        <ProjectVariationList
+          projectId={String(id)}
+          type={variationConstants.OMISSION.value}
+        />
       </ProjectLayout>
     </Box>
   );
 }
 
 ProjectVariation.acl = {
-  action: 'view',
-  subject: 'variation'
+  action: "view",
+  subject: "variation",
 };
 export default ProjectVariation;

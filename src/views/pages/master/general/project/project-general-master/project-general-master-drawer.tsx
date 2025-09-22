@@ -1,14 +1,14 @@
-import { FormikProps } from 'formik';
-import { useState } from 'react';
-import generalMasterDataApiService from 'src/services/general/project-general-master-data-service';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { ProjectGeneralMaster } from 'src/types/general/general-master';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import GeneralMasterForm from './project-general-master-form';
-import { ProjectMasterModel } from 'src/constants/master-data/project-general-master-constants';
+import { FormikProps } from "formik";
+import { useState } from "react";
+import generalMasterDataApiService from "src/services/general/project-general-master-data-service";
+import { uploadFile } from "src/services/utils/file-utils";
+import { ProjectGeneralMaster } from "src/types/general/general-master";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import GeneralMasterForm from "./project-general-master-form";
+import { ProjectMasterModel } from "src/constants/master-data/project-general-master-constants";
 
 interface GeneralMasterDrawerType {
   open: boolean;
@@ -19,9 +19,9 @@ interface GeneralMasterDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  project_type_id: yup.string().required('Project Type is required'),
-  title: yup.string().required('Title is required'),
-  description: yup.string().required('Description is required')
+  project_type_id: yup.string().required("Project Type is required"),
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
 });
 
 const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
@@ -32,12 +32,14 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createGeneralMaster = async (body: IApiPayload<ProjectGeneralMaster>) => {
+  const createGeneralMaster = async (
+    body: IApiPayload<ProjectGeneralMaster>,
+  ) => {
     return await generalMasterDataApiService.create(body);
   };
 
   const editGeneralMaster = async (body: IApiPayload<ProjectGeneralMaster>) => {
-    return await generalMasterDataApiService.update(masterData?.id || '', body);
+    return await generalMasterDataApiService.update(masterData?.id || "", body);
   };
 
   const getPayload = (values: ProjectGeneralMaster) => {
@@ -45,9 +47,9 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
       data: {
         ...values,
         id: masterData?.id,
-        model: projectMasterModel.model
+        model: projectMasterModel.model,
       },
-      files: uploadableFile ? [uploadableFile] : []
+      files: uploadableFile ? [uploadableFile] : [],
     };
     return payload;
   };
@@ -56,9 +58,18 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<ProjectGeneralMaster>, payload: IApiPayload<ProjectGeneralMaster>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<ProjectGeneralMaster>,
+    payload: IApiPayload<ProjectGeneralMaster>,
+  ) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], projectMasterModel.fileType, response.payload.id, '', '');
+      uploadFile(
+        payload.files[0],
+        projectMasterModel.fileType,
+        response.payload.id,
+        "",
+        "",
+      );
     }
     refetch();
     handleClose();
@@ -66,7 +77,9 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? projectMasterModel.editTitle : projectMasterModel.createTitle}`}
+      title={`master-data.general-master.${
+        isEdit ? projectMasterModel.editTitle : projectMasterModel.createTitle
+      }`}
       handleClose={handleClose}
       open={open}
     >

@@ -1,13 +1,19 @@
-import { useRouter } from 'next/router';
-import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
-import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { findSubMenuItem, projectFeatureIds } from '../(subMenuItems)';
+import { useRouter } from "next/router";
+import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
+import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
+import subMenuItems, {
+  findSubMenuItem,
+  projectFeatureIds,
+} from "../(subMenuItems)";
 
-const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), projectFeatureIds.accessories.drainageGeotechnicalData);
+const defaultMenuItem = findSubMenuItem(
+  subMenuItems("", ""),
+  projectFeatureIds.accessories.drainageGeotechnicalData,
+);
 
 const DrainageGeotechnicalData = () => {
   const router = useRouter();
-  const { id = '', typeId = '' } = router.query;
+  const { id = "", typeId = "" } = router.query;
 
   return (
     <ProjectLayout
@@ -28,7 +34,7 @@ const DrainageGeotechnicalData = () => {
 // Access control configuration
 DrainageGeotechnicalData.acl = {
   subject: defaultMenuItem?.model,
-  action: 'view'
+  action: "view",
 };
 
 export default DrainageGeotechnicalData;

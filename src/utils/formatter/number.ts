@@ -10,16 +10,16 @@
 export function formatPercent(
   value: number,
   isDecimal = false,
-  locale = 'en',
+  locale = "en",
   minimumFractionDigits = 0,
-  maximumFractionDigits = 2
+  maximumFractionDigits = 2,
 ): string {
   // If value is a decimal fraction, divide by 100 to convert to percentage
   const percentageValue = isDecimal ? value : value / 100;
 
   return new Intl.NumberFormat(locale, {
-    style: 'percent',
+    style: "percent",
     minimumFractionDigits: minimumFractionDigits,
-    maximumFractionDigits: maximumFractionDigits
+    maximumFractionDigits: maximumFractionDigits,
   }).format(percentageValue);
 }

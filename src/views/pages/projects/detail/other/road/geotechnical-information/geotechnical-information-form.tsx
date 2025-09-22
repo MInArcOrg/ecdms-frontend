@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { Grid, FormControlLabel, Switch } from '@mui/material';
-import { useQuery } from '@tanstack/react-query';
-import type { FormikProps } from 'formik';
-import type React from 'react';
-import { useTranslation } from 'react-i18next';
-import { gridSpacing } from 'src/configs/app-constants';
-import type { GeotechnicalInformation } from 'src/types/project/other';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
-import CustomSelect from 'src/views/shared/form/custom-select';
-import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
-import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
+import { Grid, FormControlLabel, Switch } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
+import type { FormikProps } from "formik";
+import type React from "react";
+import { useTranslation } from "react-i18next";
+import { gridSpacing } from "src/configs/app-constants";
+import type { GeotechnicalInformation } from "src/types/project/other";
+import CustomTextBox from "src/views/shared/form/custom-text-box";
+import CustomFileUpload from "src/views/shared/form/custome-file-selector";
+import CustomSelect from "src/views/shared/form/custom-select";
+import { projectMasterModels } from "src/constants/master-data/project-general-master-constants";
+import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service";
 
 interface GeotechnicalInformationFormProps {
   formik: FormikProps<GeotechnicalInformation>;
@@ -23,31 +23,33 @@ interface GeotechnicalInformationFormProps {
   onFileChange: (fileType: string, file: File | null) => void;
 }
 
-const GeotechnicalInformationForm: React.FC<GeotechnicalInformationFormProps> = ({ formik, files, onFileChange }) => {
+const GeotechnicalInformationForm: React.FC<
+  GeotechnicalInformationFormProps
+> = ({ formik, files, onFileChange }) => {
   const { t: transl } = useTranslation();
 
   const { data: soilTypes } = useQuery({
-    queryKey: ['soil-types'],
+    queryKey: ["soil-types"],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll({
-        filter: { model: projectMasterModels.soilType.model }
-      })
+        filter: { model: projectMasterModels.soilType.model },
+      }),
   });
 
   const { data: groundWaterImpacts } = useQuery({
-    queryKey: ['ground-water-impacts'],
+    queryKey: ["ground-water-impacts"],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll({
-        filter: { model: projectMasterModels.groundWaterImpact.model }
-      })
+        filter: { model: projectMasterModels.groundWaterImpact.model },
+      }),
   });
 
   const { data: slopeStabilities } = useQuery({
-    queryKey: ['slope-stabilities'],
+    queryKey: ["slope-stabilities"],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll({
-        filter: { model: projectMasterModels.slopeStability.model }
-      })
+        filter: { model: projectMasterModels.slopeStability.model },
+      }),
   });
 
   return (
@@ -55,8 +57,10 @@ const GeotechnicalInformationForm: React.FC<GeotechnicalInformationFormProps> = 
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl('project.other.geotechnical-information.details.name')}
-          placeholder={transl('project.other.geotechnical-information.details.name')}
+          label={transl("project.other.geotechnical-information.details.name")}
+          placeholder={transl(
+            "project.other.geotechnical-information.details.name",
+          )}
           name="name"
           size="small"
         />
@@ -65,12 +69,14 @@ const GeotechnicalInformationForm: React.FC<GeotechnicalInformationFormProps> = 
       <Grid item xs={12} md={6}>
         <CustomSelect
           fullWidth
-          label={transl('project.other.geotechnical-information.details.soil-type')}
+          label={transl(
+            "project.other.geotechnical-information.details.soil-type",
+          )}
           name="soil_type_id"
           options={
             soilTypes?.payload.map((type) => ({
               label: type.title,
-              value: type.id
+              value: type.id,
             })) || []
           }
           size="small"
@@ -80,12 +86,14 @@ const GeotechnicalInformationForm: React.FC<GeotechnicalInformationFormProps> = 
       <Grid item xs={12} md={6}>
         <CustomSelect
           fullWidth
-          label={transl('project.other.geotechnical-information.details.ground-water-impact')}
+          label={transl(
+            "project.other.geotechnical-information.details.ground-water-impact",
+          )}
           name="ground_water_impact_id"
           options={
             groundWaterImpacts?.payload.map((type) => ({
               label: type.title,
-              value: type.id
+              value: type.id,
             })) || []
           }
           size="small"
@@ -95,8 +103,12 @@ const GeotechnicalInformationForm: React.FC<GeotechnicalInformationFormProps> = 
       <Grid item xs={12} md={6}>
         <CustomTextBox
           fullWidth
-          label={transl('project.other.geotechnical-information.details.soil-bearing-capacity')}
-          placeholder={transl('project.other.geotechnical-information.details.soil-bearing-capacity')}
+          label={transl(
+            "project.other.geotechnical-information.details.soil-bearing-capacity",
+          )}
+          placeholder={transl(
+            "project.other.geotechnical-information.details.soil-bearing-capacity",
+          )}
           name="soil_bearing_capacity"
           type="number"
           size="small"
@@ -106,12 +118,14 @@ const GeotechnicalInformationForm: React.FC<GeotechnicalInformationFormProps> = 
       <Grid item xs={12} md={6}>
         <CustomSelect
           fullWidth
-          label={transl('project.other.geotechnical-information.details.slope-stability')}
+          label={transl(
+            "project.other.geotechnical-information.details.slope-stability",
+          )}
           name="slope_stability_id"
           options={
             slopeStabilities?.payload.map((type) => ({
               label: type.title,
-              value: type.id
+              value: type.id,
             })) || []
           }
           size="small"
@@ -123,19 +137,27 @@ const GeotechnicalInformationForm: React.FC<GeotechnicalInformationFormProps> = 
           control={
             <Switch
               checked={formik.values.retaining_walls || false}
-              onChange={(e) => formik.setFieldValue('retaining_walls', e.target.checked)}
+              onChange={(e) =>
+                formik.setFieldValue("retaining_walls", e.target.checked)
+              }
               name="retaining_walls"
             />
           }
-          label={transl('project.other.geotechnical-information.details.retaining-walls')}
+          label={transl(
+            "project.other.geotechnical-information.details.retaining-walls",
+          )}
         />
       </Grid>
 
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl('project.other.geotechnical-information.details.geological-hazard')}
-          placeholder={transl('project.other.geotechnical-information.details.geological-hazard')}
+          label={transl(
+            "project.other.geotechnical-information.details.geological-hazard",
+          )}
+          placeholder={transl(
+            "project.other.geotechnical-information.details.geological-hazard",
+          )}
           name="geological_hazard"
           size="small"
           multiline
@@ -146,8 +168,12 @@ const GeotechnicalInformationForm: React.FC<GeotechnicalInformationFormProps> = 
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl('project.other.geotechnical-information.details.remark')}
-          placeholder={transl('project.other.geotechnical-information.details.remark')}
+          label={transl(
+            "project.other.geotechnical-information.details.remark",
+          )}
+          placeholder={transl(
+            "project.other.geotechnical-information.details.remark",
+          )}
           name="remark"
           size="small"
           multiline
@@ -157,25 +183,31 @@ const GeotechnicalInformationForm: React.FC<GeotechnicalInformationFormProps> = 
 
       <Grid item xs={12}>
         <CustomFileUpload
-          label={transl('project.other.geotechnical-information.file-types.seismic-design')}
+          label={transl(
+            "project.other.geotechnical-information.file-types.seismic-design",
+          )}
           file={files.seismicDesign}
-          onFileChange={(file) => onFileChange('seismicDesign', file)}
+          onFileChange={(file) => onFileChange("seismicDesign", file)}
         />
       </Grid>
 
       <Grid item xs={12}>
         <CustomFileUpload
-          label={transl('project.other.geotechnical-information.file-types.geotechnical-report')}
+          label={transl(
+            "project.other.geotechnical-information.file-types.geotechnical-report",
+          )}
           file={files.geotechnicalReport}
-          onFileChange={(file) => onFileChange('geotechnicalReport', file)}
+          onFileChange={(file) => onFileChange("geotechnicalReport", file)}
         />
       </Grid>
 
       <Grid item xs={12}>
         <CustomFileUpload
-          label={transl('project.other.geotechnical-information.file-types.foundation-design')}
+          label={transl(
+            "project.other.geotechnical-information.file-types.foundation-design",
+          )}
           file={files.foundationDesign}
-          onFileChange={(file) => onFileChange('foundationDesign', file)}
+          onFileChange={(file) => onFileChange("foundationDesign", file)}
         />
       </Grid>
     </Grid>

@@ -1,11 +1,11 @@
 // ** React Imports
-import { ReactNode, ReactElement, useEffect } from 'react';
+import { ReactNode, ReactElement, useEffect } from "react";
 
 // ** Next Import
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 // ** Hooks Import
-import { useAuth } from 'src/hooks/useAuth';
+import { useAuth } from "src/hooks/useAuth";
 
 interface AuthGuardProps {
   children: ReactNode;
@@ -23,19 +23,19 @@ const AuthGuard = (props: AuthGuardProps) => {
         return;
       }
 
-      if (auth.user === null && !window.localStorage.getItem('userData')) {
-        if (!router.asPath.match('login')) {
+      if (auth.user === null && !window.localStorage.getItem("userData")) {
+        if (!router.asPath.match("login")) {
           router.replace({
-            pathname: '/auth/login',
-            query: { returnUrl: router.asPath }
+            pathname: "/auth/login",
+            query: { returnUrl: router.asPath },
           });
         } else {
-          router.replace('/auth/login');
+          router.replace("/auth/login");
         }
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [router.route]
+    [router.route],
   );
 
   if (auth.loading || auth.user === null) {

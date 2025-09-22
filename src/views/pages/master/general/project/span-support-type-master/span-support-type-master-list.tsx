@@ -1,21 +1,23 @@
 // components/SpanSupportTypeMasterList.tsx
-import { Card, CardContent } from '@mui/material';
-import React, { Fragment, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { SpanSupportType } from 'src/types/general/general-master';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import SpanSupportTypeMasterCard from './span-support-type-master-card';
-import SpanSupportTypeMasterDrawer from './span-support-type-master-drawer';
-import spanSupportTypeMasterService from 'src/services/general/project/span-support-type-master-service';
+import { Card, CardContent } from "@mui/material";
+import React, { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import { SpanSupportType } from "src/types/general/general-master";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import SpanSupportTypeMasterCard from "./span-support-type-master-card";
+import SpanSupportTypeMasterDrawer from "./span-support-type-master-drawer";
+import spanSupportTypeMasterService from "src/services/general/project/span-support-type-master-service";
 
 const SpanSupportTypeMasterList: React.FC = () => {
   const [selectedRow, setSelectedRow] = useState<SpanSupportType | null>(null);
   const { t } = useTranslation();
-  const fetchSpanSupportTypeMaster = (params: GetRequestParam): Promise<IApiResponse<SpanSupportType[]>> => {
+  const fetchSpanSupportTypeMaster = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<SpanSupportType[]>> => {
     return spanSupportTypeMasterService.getAll(params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
@@ -25,10 +27,10 @@ const SpanSupportTypeMasterList: React.FC = () => {
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<SpanSupportType[]>({
-    queryKey: ['general-master', 'span-support-type'],
-    fetchFunction: fetchSpanSupportTypeMaster
+    queryKey: ["general-master", "span-support-type"],
+    fetchFunction: fetchSpanSupportTypeMaster,
   });
   const handleDelete = async (id: string) => {
     await spanSupportTypeMasterService.delete(id);
@@ -62,7 +64,7 @@ const SpanSupportTypeMasterList: React.FC = () => {
             title={t(`master-data.general-master.span-support-types`)}
             ItemViewComponent={({ data }) => (
               <SpanSupportTypeMasterCard
-                type={'span-support-type'}
+                type={"span-support-type"}
                 generalMaster={data}
                 onDelete={handleDelete}
                 onEdit={handleEdit}
@@ -76,9 +78,9 @@ const SpanSupportTypeMasterList: React.FC = () => {
               onClick: toggleDrawer,
               onlyIcon: true,
               permission: {
-                action: 'create',
-                subject: `spansupporttype`
-              }
+                action: "create",
+                subject: `spansupporttype`,
+              },
             }}
             fetchDataFunction={refetch}
             items={types || []}

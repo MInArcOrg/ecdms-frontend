@@ -1,5 +1,5 @@
 // ** MUI Imports
-import Alert from '@mui/material/Alert';
+import Alert from "@mui/material/Alert";
 
 const AlertsFilled = () => {
   return (

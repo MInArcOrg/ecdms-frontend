@@ -1,11 +1,19 @@
-import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import type { RailwayCommunicationSystem } from 'src/types/project/other';
-import FileDrawer from 'src/views/components/custom/files-drawer';
-import ModelAction from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Divider,
+  Typography,
+} from "@mui/material";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import type { RailwayCommunicationSystem } from "src/types/project/other";
+import FileDrawer from "src/views/components/custom/files-drawer";
+import ModelAction from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
 
 interface RailwayCommunicationSystemCardProps {
   railwayCommunicationSystem: RailwayCommunicationSystem;
@@ -16,20 +24,27 @@ interface RailwayCommunicationSystemCardProps {
   otherSubMenu?: DetailSubMenuItemChild;
 }
 
-const RailwayCommunicationSystemCard: React.FC<RailwayCommunicationSystemCardProps> = ({
+const RailwayCommunicationSystemCard: React.FC<
+  RailwayCommunicationSystemCardProps
+> = ({
   railwayCommunicationSystem,
   refetch,
   onEdit,
   onDelete,
   onDetail,
-  otherSubMenu
+  otherSubMenu,
 }) => {
   const { t } = useTranslation();
 
   return (
     <Card sx={{ p: 2 }}>
       <CardContent>
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          mb={1}
+        >
           <Typography variant="h6" fontWeight="bold">
             <Typography
               noWrap
@@ -37,9 +52,9 @@ const RailwayCommunicationSystemCard: React.FC<RailwayCommunicationSystemCardPro
               onClick={() => onDetail(railwayCommunicationSystem)}
               sx={{
                 fontWeight: 500,
-                textDecoration: 'none',
-                color: 'text.secondary',
-                '&:hover': { color: 'primary.main' }
+                textDecoration: "none",
+                color: "text.secondary",
+                "&:hover": { color: "primary.main" },
               }}
             >
               {railwayCommunicationSystem?.id?.toString().slice(0, 5)}...
@@ -50,66 +65,63 @@ const RailwayCommunicationSystemCard: React.FC<RailwayCommunicationSystemCardPro
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
             {t(
-              'project.other.railway-communication-system.details.railway_line_section_name'
+              "project.other.railway-communication-system.details.railway_line_section_name",
             )}
-            :{' '}
-            {railwayCommunicationSystem.railway_line_section_name || 'N/A'}
+            : {railwayCommunicationSystem.railway_line_section_name || "N/A"}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t(
-              'project.other.railway-communication-system.details.communication_system_type'
+              "project.other.railway-communication-system.details.communication_system_type",
             )}
-            :{' '}
-            {railwayCommunicationSystem.communication_system_type || 'N/A'}
+            : {railwayCommunicationSystem.communication_system_type || "N/A"}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t(
-              'project.other.railway-communication-system.details.communication_system_protocols_or_standards'
+              "project.other.railway-communication-system.details.communication_system_protocols_or_standards",
             )}
-            :{' '}
+            :{" "}
             {railwayCommunicationSystem.communication_system_protocols_or_standards ||
-              'N/A'}
+              "N/A"}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t(
-              'project.other.railway-communication-system.details.communication_system_components'
+              "project.other.railway-communication-system.details.communication_system_components",
             )}
-            :{' '}
-            {railwayCommunicationSystem.communication_system_components || 'N/A'}
+            :{" "}
+            {railwayCommunicationSystem.communication_system_components ||
+              "N/A"}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t(
-              'project.other.railway-communication-system.details.signaling_system_components'
+              "project.other.railway-communication-system.details.signaling_system_components",
             )}
-            :{' '}
-            {railwayCommunicationSystem.signaling_system_components || 'N/A'}
+            : {railwayCommunicationSystem.signaling_system_components || "N/A"}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-communication-system.details.remark')}:{' '}
-            {railwayCommunicationSystem.remark || 'N/A'}
+            {t("project.other.railway-communication-system.details.remark")}:{" "}
+            {railwayCommunicationSystem.remark || "N/A"}
           </Typography>
           {railwayCommunicationSystem.created_at && (
             <Typography variant="body2" color="text.secondary">
-              {t('common.table-columns.created-at')}:{' '}
+              {t("common.table-columns.created-at")}:{" "}
               {railwayCommunicationSystem.created_at}
             </Typography>
           )}
           {railwayCommunicationSystem.updated_at && (
             <Typography variant="body2" color="text.secondary">
-              {t('common.table-columns.updated-at')}:{' '}
+              {t("common.table-columns.updated-at")}:{" "}
               {railwayCommunicationSystem.updated_at}
             </Typography>
           )}
         </Box>
       </CardContent>
-      <CardActions sx={{ justifyContent: 'flex-end' }}>
-
-        {railwayCommunicationSystem.id &&
+      <CardActions sx={{ justifyContent: "flex-end" }}>
+        {railwayCommunicationSystem.id && (
           <FileDrawer
             id={railwayCommunicationSystem.id}
-            type={otherSubMenu?.fileType || ''}
+            type={otherSubMenu?.fileType || ""}
           />
-        }
+        )}
 
         {railwayCommunicationSystem.id && (
           <ModelAction
@@ -123,12 +135,12 @@ const RailwayCommunicationSystemCard: React.FC<RailwayCommunicationSystemCardPro
         )}
         <RowOptions
           deletePermissionRule={{
-            action: 'delete',
-            subject: 'railwaycommunicationsystem'
+            action: "delete",
+            subject: "railwaycommunicationsystem",
           }}
           editPermissionRule={{
-            action: 'update',
-            subject: 'railwaycommunicationsystem'
+            action: "update",
+            subject: "railwaycommunicationsystem",
           }}
           onEdit={() => onEdit(railwayCommunicationSystem)}
           onDelete={() => onDelete(railwayCommunicationSystem.id as string)}

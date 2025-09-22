@@ -1,10 +1,10 @@
 // ** React Imports
-import { useState } from 'react';
+import { useState } from "react";
 
 // ** MUI Imports
-import Box from '@mui/material/Box';
-import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
+import Box from "@mui/material/Box";
+import Rating from "@mui/material/Rating";
+import Typography from "@mui/material/Typography";
 
 const RatingsBasic = () => {
   // ** State
@@ -14,7 +14,11 @@ const RatingsBasic = () => {
     <div>
       <Box sx={{ mb: 3 }}>
         <Typography sx={{ fontWeight: 500 }}>Controlled</Typography>
-        <Rating value={value} name="simple-controlled" onChange={(event, newValue) => setValue(newValue)} />
+        <Rating
+          value={value}
+          name="simple-controlled"
+          onChange={(event, newValue) => setValue(newValue)}
+        />
       </Box>
       <Box sx={{ mb: 3 }}>
         <Typography sx={{ fontWeight: 500 }}>Read only</Typography>

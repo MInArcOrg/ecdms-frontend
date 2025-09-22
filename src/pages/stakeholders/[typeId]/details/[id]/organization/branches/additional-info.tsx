@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router';
-import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
-import subMenuItems from '../(sub-menu-items)';
-import BranchAdditionalInformationList from 'src/views/pages/stakeholders/details/branch-additional-information';
-import { stakeholderMenuIds } from 'src/views/pages/stakeholders/details/layout/stakeholder-menu-items';
-import { stakeholderOrganizationIds } from '../(sub-menu-items)';
+import { useRouter } from "next/router";
+import StakeholderLayout from "src/views/pages/stakeholders/details/layout/stakeholder-layout";
+import subMenuItems from "../(sub-menu-items)";
+import BranchAdditionalInformationList from "src/views/pages/stakeholders/details/branch-additional-information";
+import { stakeholderMenuIds } from "src/views/pages/stakeholders/details/layout/stakeholder-menu-items";
+import { stakeholderOrganizationIds } from "../(sub-menu-items)";
 
 function BranchAdditionalInformationIndex() {
   const router = useRouter();
@@ -21,8 +21,8 @@ function BranchAdditionalInformationIndex() {
 }
 
 BranchAdditionalInformationIndex.acl = {
-  subject: 'stakeholder',
-  action: 'view_stakeholder'
+  subject: "stakeholder",
+  action: "view_stakeholder",
 };
 
 export default BranchAdditionalInformationIndex;

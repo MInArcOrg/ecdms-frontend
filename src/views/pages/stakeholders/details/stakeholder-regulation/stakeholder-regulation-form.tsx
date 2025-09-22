@@ -1,11 +1,11 @@
-import { Grid } from '@mui/material';
-import { FormikProps } from 'formik';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { StakeholderRegulation } from 'src/types/stakeholder/stakeholder-regulation';
-import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
+import { Grid } from "@mui/material";
+import { FormikProps } from "formik";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { StakeholderRegulation } from "src/types/stakeholder/stakeholder-regulation";
+import CustomDynamicDatePicker from "src/views/shared/form/custom-dynamic-date-box";
+import CustomTextBox from "src/views/shared/form/custom-text-box";
+import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 
 interface StakeholderRegulationFormProps {
   formik: FormikProps<StakeholderRegulation>;
@@ -13,7 +13,11 @@ interface StakeholderRegulationFormProps {
   onFileChange: (file: File | null) => void;
 }
 
-const StakeholderRegulationForm: React.FC<StakeholderRegulationFormProps> = ({ formik, file, onFileChange }) => {
+const StakeholderRegulationForm: React.FC<StakeholderRegulationFormProps> = ({
+  formik,
+  file,
+  onFileChange,
+}) => {
   const { t: transl } = useTranslation();
 
   return (
@@ -22,8 +26,8 @@ const StakeholderRegulationForm: React.FC<StakeholderRegulationFormProps> = ({ f
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl('stakeholder.stakeholder-regulation.form.title')}
-          placeholder={transl('stakeholder.stakeholder-regulation.form.title')}
+          label={transl("stakeholder.stakeholder-regulation.form.title")}
+          placeholder={transl("stakeholder.stakeholder-regulation.form.title")}
           name="title"
           size="small"
           sx={{ mb: 2 }}
@@ -34,8 +38,10 @@ const StakeholderRegulationForm: React.FC<StakeholderRegulationFormProps> = ({ f
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl('stakeholder.stakeholder-regulation.form.prepared-by')}
-          placeholder={transl('stakeholder.stakeholder-regulation.form.prepared-by')}
+          label={transl("stakeholder.stakeholder-regulation.form.prepared-by")}
+          placeholder={transl(
+            "stakeholder.stakeholder-regulation.form.prepared-by",
+          )}
           name="prepared_by" // Changed to prepared_by
           size="small"
           sx={{ mb: 2 }}
@@ -46,7 +52,9 @@ const StakeholderRegulationForm: React.FC<StakeholderRegulationFormProps> = ({ f
       <Grid item xs={12}>
         <CustomDynamicDatePicker
           fullWidth
-          label={transl('stakeholder.stakeholder-regulation.form.effective_start_date')}
+          label={transl(
+            "stakeholder.stakeholder-regulation.form.effective_start_date",
+          )}
           name="effective_start_date"
           required
           showYearDropdown
@@ -59,7 +67,9 @@ const StakeholderRegulationForm: React.FC<StakeholderRegulationFormProps> = ({ f
       <Grid item xs={12}>
         <CustomDynamicDatePicker
           fullWidth
-          label={transl('stakeholder.stakeholder-regulation.form.effective_end_date')}
+          label={transl(
+            "stakeholder.stakeholder-regulation.form.effective_end_date",
+          )}
           name="effective_end_date"
           required
           showYearDropdown
@@ -72,8 +82,10 @@ const StakeholderRegulationForm: React.FC<StakeholderRegulationFormProps> = ({ f
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl('stakeholder.stakeholder-regulation.form.description')}
-          placeholder={transl('stakeholder.stakeholder-regulation.form.description')}
+          label={transl("stakeholder.stakeholder-regulation.form.description")}
+          placeholder={transl(
+            "stakeholder.stakeholder-regulation.form.description",
+          )}
           name="description"
           multiline
           rows="4"
@@ -85,7 +97,11 @@ const StakeholderRegulationForm: React.FC<StakeholderRegulationFormProps> = ({ f
 
       {/* File Upload */}
       <Grid item xs={12}>
-        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
+        <CustomFileUpload
+          label={transl("common.form.file-upload")}
+          file={file}
+          onFileChange={onFileChange}
+        />
       </Grid>
     </Grid>
   );

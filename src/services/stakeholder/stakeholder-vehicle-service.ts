@@ -9,48 +9,46 @@ import { buildPostRequest } from "src/utils/requests/post-request";
 import { buildPutRequest } from "src/utils/requests/put-request";
 
 const stakeholderPhoneApiService = {
-    getAll: (params: GetRequestParam): Promise<IApiResponse<StakeholderVehicle[]>> =>
-        buildGetRequest(`/stakeholders/vehicles`, params)
+  getAll: (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<StakeholderVehicle[]>> =>
+    buildGetRequest(`/stakeholders/vehicles`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
 
-            .then((response: AxiosResponse<IApiResponse>) => response.data)
-            .catch((error: any) => {
-                throw error;
-            }),
+  getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
+    buildGetRequest(`/stakeholders/vehicles/${idx}`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
 
-    getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-        buildGetRequest(`/stakeholders/vehicles/${idx}`, params)
+  delete: (idx: string): Promise<IApiResponse> =>
+    axiosServices
+      .delete(`/stakeholders/vehicles/${idx}`)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
 
-            .then((response: AxiosResponse<IApiResponse>) => response.data)
-            .catch((error: any) => {
-                throw error;
-            }),
+  create: (body: IApiPayload<StakeholderVehicle>): Promise<IApiResponse> =>
+    buildPostRequest(`/stakeholders/vehicles`, body, false)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
 
-    delete: (idx: string): Promise<IApiResponse> =>
-        axiosServices
-            .delete(`/stakeholders/vehicles/${idx}`)
-            .then((response: AxiosResponse<IApiResponse>) => response.data)
-            .catch((error: any) => {
-                throw error;
-            }),
-
-    create: (body: IApiPayload<StakeholderVehicle>): Promise<IApiResponse> =>
-        buildPostRequest(`/stakeholders/vehicles`, body, false)
-
-            .then((response: AxiosResponse<IApiResponse>) => response.data)
-            .catch((error: any) => {
-                throw error;
-            }),
-
-    update: (
-        id: string,
-        body: IApiPayload<StakeholderVehicle>
-    ): Promise<IApiResponse> =>
-        buildPutRequest(`/stakeholders/vehicles/${id}`, body)
-
-            .then((response: AxiosResponse<IApiResponse>) => response.data)
-            .catch((error: any) => {
-                throw error;
-            }),
+  update: (
+    id: string,
+    body: IApiPayload<StakeholderVehicle>,
+  ): Promise<IApiResponse> =>
+    buildPutRequest(`/stakeholders/vehicles/${id}`, body)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
 };
 
 export default stakeholderPhoneApiService;

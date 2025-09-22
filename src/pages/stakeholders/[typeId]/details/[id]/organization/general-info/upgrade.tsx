@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router';
-import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
-import { stakeholderMenuIds } from 'src/views/pages/stakeholders/details/layout/stakeholder-menu-items';
-import subMenuItems, { stakeholderOrganizationIds } from '../(sub-menu-items)';
-import StakeholderUpgradeList from 'src/views/pages/stakeholders/details/stakeholder-upgrade';
+import { useRouter } from "next/router";
+import StakeholderLayout from "src/views/pages/stakeholders/details/layout/stakeholder-layout";
+import { stakeholderMenuIds } from "src/views/pages/stakeholders/details/layout/stakeholder-menu-items";
+import subMenuItems, { stakeholderOrganizationIds } from "../(sub-menu-items)";
+import StakeholderUpgradeList from "src/views/pages/stakeholders/details/stakeholder-upgrade";
 
 function StakeholderUpgradeIndex() {
   const router = useRouter();
@@ -14,14 +14,18 @@ function StakeholderUpgradeIndex() {
       activeSubMenuId={stakeholderOrganizationIds.generalInfo.upgrade}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <StakeholderUpgradeList model="stakeholder-manager" stakeholderId={String(id)} typeId={String(typeId)} />
+      <StakeholderUpgradeList
+        model="stakeholder-manager"
+        stakeholderId={String(id)}
+        typeId={String(typeId)}
+      />
     </StakeholderLayout>
   );
 }
 
 StakeholderUpgradeIndex.acl = {
-  subject: 'resource',
-  action: 'view_resource'
+  subject: "resource",
+  action: "view_resource",
 };
 
 export default StakeholderUpgradeIndex;

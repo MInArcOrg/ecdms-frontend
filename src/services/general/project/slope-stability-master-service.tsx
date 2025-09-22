@@ -1,10 +1,10 @@
-import { AxiosResponse } from 'axios';
-import { SlopeStability } from 'src/types/general/general-master';
-import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import { AxiosResponse } from "axios";
+import { SlopeStability } from "src/types/general/general-master";
+import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const slopeStabilityMasterService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<SlopeStability[]>> =>
@@ -22,7 +22,10 @@ const slopeStabilityMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/slope-stabilities-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as SlopeStability[])
+      .then(
+        (response: AxiosResponse<IApiResponse>) =>
+          response.data.payload as unknown as SlopeStability[],
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -40,12 +43,15 @@ const slopeStabilityMasterService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (id: string, body: IApiPayload<SlopeStability>): Promise<IApiResponse> =>
+  update: (
+    id: string,
+    body: IApiPayload<SlopeStability>,
+  ): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/slope-stabilities/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default slopeStabilityMasterService;

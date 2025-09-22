@@ -1,16 +1,25 @@
-import { useRouter } from 'next/router';
-import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
-import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { findSubMenuItem, mobileSatelliteNetworksId } from '../(subMenuItems)';
-import MobileNetworkList from 'src/views/pages/projects/detail/other/telecom/mobile-network';
+import { useRouter } from "next/router";
+import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
+import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
+import subMenuItems, {
+  findSubMenuItem,
+  mobileSatelliteNetworksId,
+} from "../(subMenuItems)";
+import MobileNetworkList from "src/views/pages/projects/detail/other/telecom/mobile-network";
 
-const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), mobileSatelliteNetworksId.mobileNetworks.mobileNetwork);
+const defaultMenuItem = findSubMenuItem(
+  subMenuItems("", ""),
+  mobileSatelliteNetworksId.mobileNetworks.mobileNetwork,
+);
 
 const MobileNetworkPage = () => {
   const router = useRouter();
-  const { id = '', typeId = '' } = router.query;
+  const { id = "", typeId = "" } = router.query;
 
-  const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), mobileSatelliteNetworksId.mobileNetworks.mobileNetwork);
+  const menuItem = findSubMenuItem(
+    subMenuItems(id as string, typeId as string),
+    mobileSatelliteNetworksId.mobileNetworks.mobileNetwork,
+  );
 
   return (
     <ProjectLayout
@@ -18,7 +27,11 @@ const MobileNetworkPage = () => {
       activeSubMenuId={mobileSatelliteNetworksId.mobileNetworks.mobileNetwork}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <MobileNetworkList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
+      <MobileNetworkList
+        otherSubMenu={menuItem}
+        typeId={String(typeId)}
+        projectId={String(id)}
+      />
     </ProjectLayout>
   );
 };
@@ -26,7 +39,7 @@ const MobileNetworkPage = () => {
 // Access control configuration
 MobileNetworkPage.acl = {
   subject: defaultMenuItem?.model,
-  action: 'view'
+  action: "view",
 };
 
 export default MobileNetworkPage;

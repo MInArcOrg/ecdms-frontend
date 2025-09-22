@@ -1,14 +1,21 @@
-import React from 'react';
-import CustomChip from 'src/@core/components/mui/chip';
-import { STATUS_COLORS, STATUS_LABELS, StatusKey } from 'src/constants/status-constants';
+import React from "react";
+import CustomChip from "src/@core/components/mui/chip";
+import {
+  STATUS_COLORS,
+  STATUS_LABELS,
+  StatusKey,
+} from "src/constants/status-constants";
 
 interface ProjectStatusChipProps {
   data: string;
   onClick?: () => void;
 }
 
-const ProjectStatusChip: React.FC<ProjectStatusChipProps> = ({ data, onClick }) => {
-  const status = (data in STATUS_COLORS ? data : 'NoStatus') as StatusKey;
+const ProjectStatusChip: React.FC<ProjectStatusChipProps> = ({
+  data,
+  onClick,
+}) => {
+  const status = (data in STATUS_COLORS ? data : "NoStatus") as StatusKey;
 
   return (
     <CustomChip
@@ -18,9 +25,9 @@ const ProjectStatusChip: React.FC<ProjectStatusChipProps> = ({ data, onClick }) 
       size="small"
       skin="light"
       sx={{
-        '& .MuiChip-label': { textTransform: 'capitalize' },
+        "& .MuiChip-label": { textTransform: "capitalize" },
         height: 15,
-        cursor: 'pointer'
+        cursor: "pointer",
       }}
       onClick={onClick}
     />

@@ -1,5 +1,5 @@
 // material-ui
-import { AlertProps, SnackbarOrigin } from '@mui/material';
+import { AlertProps, SnackbarOrigin } from "@mui/material";
 
 // ==============================|| SNACKBAR TYPES ||============================== //
 

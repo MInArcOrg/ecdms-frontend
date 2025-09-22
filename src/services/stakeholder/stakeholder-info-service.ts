@@ -12,7 +12,6 @@ import { buildPutRequest } from "src/utils/requests/put-request";
 const stakeholderInfoApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<StakeholderInfo[]>> =>
     buildGetRequest(`/stakeholders/stakeholder-infos`, params)
-
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
@@ -20,7 +19,6 @@ const stakeholderInfoApiService = {
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`/stakeholders/stakeholder-infos/${idx}`, params)
-
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
@@ -36,7 +34,6 @@ const stakeholderInfoApiService = {
 
   create: (body: IApiPayload<StakeholderInfo>): Promise<IApiResponse> =>
     buildPostRequest(`/stakeholders/stakeholder-infos`, body, false)
-
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
@@ -44,10 +41,9 @@ const stakeholderInfoApiService = {
 
   update: (
     id: string,
-    body: IApiPayload<StakeholderInfo>
+    body: IApiPayload<StakeholderInfo>,
   ): Promise<IApiResponse> =>
     buildPutRequest(`/stakeholders/stakeholder-infos/${id}`, body)
-
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;

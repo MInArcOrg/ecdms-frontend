@@ -1,11 +1,19 @@
-import { EtDatetime } from 'abushakir';
-import { convertToGC } from './ethio-calendar-utils';
+import { EtDatetime } from "abushakir";
+import { convertToGC } from "./ethio-calendar-utils";
 
-const days = [{ sun: 'እሑድ' }, { mon: 'ሰኞ' }, { tue: 'ማክሰኞ' }, { wed: 'ረቡዕ' }, { thu: 'ሐሙስ' }, { fri: 'ዓርብ' }, { sat: 'ቅዳሜ' }];
+const days = [
+  { sun: "እሑድ" },
+  { mon: "ሰኞ" },
+  { tue: "ማክሰኞ" },
+  { wed: "ረቡዕ" },
+  { thu: "ሐሙስ" },
+  { fri: "ዓርብ" },
+  { sat: "ቅዳሜ" },
+];
 
-type DayKey = 'sun' | 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat';
+type DayKey = "sun" | "mon" | "tue" | "wed" | "thu" | "fri" | "sat";
 
-const dayKeys: DayKey[] = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+const dayKeys: DayKey[] = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
 interface EthiopianDateProps {
   year: number;
@@ -33,7 +41,15 @@ export default class EthiopianDate implements EthiopianDateProps {
     const ethiopianMonth = this.month - 1;
     const ethiopianDay = this.day;
 
-    const etDate = new EtDatetime(ethiopianYear, ethiopianMonth, ethiopianDay, 12, 1, 1, 1);
+    const etDate = new EtDatetime(
+      ethiopianYear,
+      ethiopianMonth,
+      ethiopianDay,
+      12,
+      1,
+      1,
+      1,
+    );
 
     return new Date(etDate.moment);
   }
@@ -95,7 +111,7 @@ export default class EthiopianDate implements EthiopianDateProps {
     const date = {
       year: this.year,
       month: this.month,
-      day: this.day
+      day: this.day,
     };
 
     const gDate = convertToGC(date);
@@ -103,7 +119,9 @@ export default class EthiopianDate implements EthiopianDateProps {
     const etDate = new EtDatetime(date.year, date.month, date.day, 12, 0, 0, 0);
     const monthName = etDate.monthGeez;
     const dayKey = dayKeys[gDate.getDay()];
-    const dayName = days.find((day) => Object.keys(day)[0] === dayKey)?.[dayKey];
+    const dayName = days.find((day) => Object.keys(day)[0] === dayKey)?.[
+      dayKey
+    ];
 
     return `${dayName} ${monthName} ${date.day} ${date.year}`;
   }
@@ -112,7 +130,7 @@ export default class EthiopianDate implements EthiopianDateProps {
     const date = {
       year: this.year,
       month: this.month,
-      day: this.day
+      day: this.day,
     };
 
     const etDate = new EtDatetime(date.year, date.month, date.day, 12, 0, 0, 0);

@@ -1,8 +1,8 @@
-import { FormHelperText, InputAdornment } from '@mui/material';
-import { useField, useFormikContext } from 'formik';
-import React from 'react';
-import Icon from 'src/@core/components/icon';
-import CustomTextField from 'src/@core/components/mui/text-field';
+import { FormHelperText, InputAdornment } from "@mui/material";
+import { useField, useFormikContext } from "formik";
+import React from "react";
+import Icon from "src/@core/components/icon";
+import CustomTextField from "src/@core/components/mui/text-field";
 
 const CustomDateSelector: React.FC<any> = (props) => {
   const [field, meta] = useField(props);
@@ -17,7 +17,7 @@ const CustomDateSelector: React.FC<any> = (props) => {
         {...props}
         endAdornment={
           <InputAdornment position="end">
-            <Icon fontSize="1.25rem" icon={'tabler:calendar'} />
+            <Icon fontSize="1.25rem" icon={"tabler:calendar"} />
           </InputAdornment>
         }
         disabled={props?.disabled || isSubmitting}

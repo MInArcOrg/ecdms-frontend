@@ -1,13 +1,13 @@
-import { FormikProps } from 'formik';
-import { useState } from 'react';
-import maintenanceFrequencyMasterService from 'src/services/general/project/maintenance-frequency-master-service';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import MaintenanceFrequencyMasterForm from './maintenance-frequency-master-form';
-import { MaintenanceFrequency } from 'src/types/general/general-master';
+import { FormikProps } from "formik";
+import { useState } from "react";
+import maintenanceFrequencyMasterService from "src/services/general/project/maintenance-frequency-master-service";
+import { uploadFile } from "src/services/utils/file-utils";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import MaintenanceFrequencyMasterForm from "./maintenance-frequency-master-form";
+import { MaintenanceFrequency } from "src/types/general/general-master";
 
 interface MaintenanceFrequencyMasterDrawerType {
   open: boolean;
@@ -17,11 +17,13 @@ interface MaintenanceFrequencyMasterDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required('Title is required'),
-  description: yup.string().required('Description is required')
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
 });
 
-const MaintenanceFrequencyMasterDrawer = (props: MaintenanceFrequencyMasterDrawerType) => {
+const MaintenanceFrequencyMasterDrawer = (
+  props: MaintenanceFrequencyMasterDrawerType,
+) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,21 +31,28 @@ const MaintenanceFrequencyMasterDrawer = (props: MaintenanceFrequencyMasterDrawe
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createMaintenanceFrequencyMaster = async (body: IApiPayload<MaintenanceFrequency>) => {
+  const createMaintenanceFrequencyMaster = async (
+    body: IApiPayload<MaintenanceFrequency>,
+  ) => {
     return await maintenanceFrequencyMasterService.create(body);
   };
 
-  const editMaintenanceFrequencyMaster = async (body: IApiPayload<MaintenanceFrequency>) => {
-    return await maintenanceFrequencyMasterService.update(masterData?.id || '', body);
+  const editMaintenanceFrequencyMaster = async (
+    body: IApiPayload<MaintenanceFrequency>,
+  ) => {
+    return await maintenanceFrequencyMasterService.update(
+      masterData?.id || "",
+      body,
+    );
   };
 
   const getPayload = (values: MaintenanceFrequency) => {
     const payload = {
       data: {
         ...values,
-        id: masterData?.id
+        id: masterData?.id,
       },
-      files: uploadableFile ? [uploadableFile] : []
+      files: uploadableFile ? [uploadableFile] : [],
     };
     return payload;
   };
@@ -52,9 +61,18 @@ const MaintenanceFrequencyMasterDrawer = (props: MaintenanceFrequencyMasterDrawe
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<MaintenanceFrequency>, payload: IApiPayload<MaintenanceFrequency>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<MaintenanceFrequency>,
+    payload: IApiPayload<MaintenanceFrequency>,
+  ) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `MAINTENANCE_FREQUENCY`, response.payload.id, '', '');
+      uploadFile(
+        payload.files[0],
+        `MAINTENANCE_FREQUENCY`,
+        response.payload.id,
+        "",
+        "",
+      );
     }
     refetch();
     handleClose();
@@ -62,7 +80,9 @@ const MaintenanceFrequencyMasterDrawer = (props: MaintenanceFrequencyMasterDrawe
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-maintenance-frequency' : 'create-maintenance-frequency'}`}
+      title={`master-data.general-master.${
+        isEdit ? "edit-maintenance-frequency" : "create-maintenance-frequency"
+      }`}
       handleClose={handleClose}
       open={open}
     >
@@ -73,7 +93,11 @@ const MaintenanceFrequencyMasterDrawer = (props: MaintenanceFrequencyMasterDrawe
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editMaintenanceFrequencyMaster : createMaintenanceFrequencyMaster}
+          createActionFunc={
+            isEdit
+              ? editMaintenanceFrequencyMaster
+              : createMaintenanceFrequencyMaster
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

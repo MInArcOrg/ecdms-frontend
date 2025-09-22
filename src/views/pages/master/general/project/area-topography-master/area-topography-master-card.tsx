@@ -1,16 +1,16 @@
 // components/AreaTopographyList.tsx
-import { Box, CardActions, CardContent, Grid, Typography } from '@mui/material';
-import { Fragment } from 'react';
-import { AreaTopography } from 'src/types/general/general-master';
-import FileDrawer from 'src/views/components/custom/files-drawer';
-import ModelActionComponent from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
+import { Box, CardActions, CardContent, Grid, Typography } from "@mui/material";
+import { Fragment } from "react";
+import { AreaTopography } from "src/types/general/general-master";
+import FileDrawer from "src/views/components/custom/files-drawer";
+import ModelActionComponent from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
 
 const AreaTopographyMasterCard = ({
   generalMaster,
   onEdit,
   onDelete,
-  refetch
+  refetch,
 }: {
   generalMaster: AreaTopography;
   onEdit: (category: AreaTopography) => void;
@@ -23,7 +23,7 @@ const AreaTopographyMasterCard = ({
       <CardContent>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: "flex" }}>
               <Box>
                 <Typography variant="h5" component="div">
                   {generalMaster.title}
@@ -35,31 +35,32 @@ const AreaTopographyMasterCard = ({
             </Box>
           </Grid>
           <Grid item>
-            <CardActions style={{ justifyContent: 'flex-end' }}>
+            <CardActions style={{ justifyContent: "flex-end" }}>
               <Fragment>
-                <FileDrawer id={generalMaster.id} type="AREA_TOPOGRAPHY" /> &nbsp;
+                <FileDrawer id={generalMaster.id} type="AREA_TOPOGRAPHY" />{" "}
+                &nbsp;
                 <ModelActionComponent
-                  model={'areatopography'}
+                  model={"areatopography"}
                   model_id={generalMaster.id}
                   refetchModel={refetch}
                   resubmit={function (): void {
-                    throw new Error('Function not implemented.');
+                    throw new Error("Function not implemented.");
                   }}
-                  title={''}
+                  title={""}
                   postAction={function (): void {
-                    throw new Error('Function not implemented.');
+                    throw new Error("Function not implemented.");
                   }}
                 />
                 <RowOptions
                   onEdit={onEdit}
                   onDelete={() => onDelete(generalMaster.id)}
                   editPermissionRule={{
-                    action: 'update',
-                    subject: 'areatopography'
+                    action: "update",
+                    subject: "areatopography",
                   }}
                   deletePermissionRule={{
-                    action: 'delete',
-                    subject: 'areatopography'
+                    action: "delete",
+                    subject: "areatopography",
                   }}
                   item={generalMaster}
                   options={[]}

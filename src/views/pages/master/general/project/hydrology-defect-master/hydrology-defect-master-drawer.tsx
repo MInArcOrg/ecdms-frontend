@@ -1,13 +1,13 @@
-import { FormikProps } from 'formik';
-import { useState } from 'react';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import HydrologyDefectMasterForm from './hydrology-defect-master-form';
-import { HydrologyDefect } from 'src/types/general/general-master';
-import hydrologyDefectMasterService from 'src/services/general/project/hydrology-defect-master-service';
+import { FormikProps } from "formik";
+import { useState } from "react";
+import { uploadFile } from "src/services/utils/file-utils";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import HydrologyDefectMasterForm from "./hydrology-defect-master-form";
+import { HydrologyDefect } from "src/types/general/general-master";
+import hydrologyDefectMasterService from "src/services/general/project/hydrology-defect-master-service";
 
 interface HydrologyDefectMasterDrawerType {
   open: boolean;
@@ -17,11 +17,13 @@ interface HydrologyDefectMasterDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required('Title is required'),
-  description: yup.string().required('Description is required')
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
 });
 
-const HydrologyDefectMasterDrawer = (props: HydrologyDefectMasterDrawerType) => {
+const HydrologyDefectMasterDrawer = (
+  props: HydrologyDefectMasterDrawerType,
+) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,21 +31,28 @@ const HydrologyDefectMasterDrawer = (props: HydrologyDefectMasterDrawerType) => 
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createHydrologyDefectMaster = async (body: IApiPayload<HydrologyDefect>) => {
+  const createHydrologyDefectMaster = async (
+    body: IApiPayload<HydrologyDefect>,
+  ) => {
     return await hydrologyDefectMasterService.create(body);
   };
 
-  const editHydrologyDefectMaster = async (body: IApiPayload<HydrologyDefect>) => {
-    return await hydrologyDefectMasterService.update(masterData?.id || '', body);
+  const editHydrologyDefectMaster = async (
+    body: IApiPayload<HydrologyDefect>,
+  ) => {
+    return await hydrologyDefectMasterService.update(
+      masterData?.id || "",
+      body,
+    );
   };
 
   const getPayload = (values: HydrologyDefect) => {
     const payload = {
       data: {
         ...values,
-        id: masterData?.id
+        id: masterData?.id,
       },
-      files: uploadableFile ? [uploadableFile] : []
+      files: uploadableFile ? [uploadableFile] : [],
     };
     return payload;
   };
@@ -52,9 +61,18 @@ const HydrologyDefectMasterDrawer = (props: HydrologyDefectMasterDrawerType) => 
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<HydrologyDefect>, payload: IApiPayload<HydrologyDefect>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<HydrologyDefect>,
+    payload: IApiPayload<HydrologyDefect>,
+  ) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `HYDROLOGY_DEFECT`, response.payload.id, '', '');
+      uploadFile(
+        payload.files[0],
+        `HYDROLOGY_DEFECT`,
+        response.payload.id,
+        "",
+        "",
+      );
     }
     refetch();
     handleClose();
@@ -62,7 +80,9 @@ const HydrologyDefectMasterDrawer = (props: HydrologyDefectMasterDrawerType) => 
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-hydrology-defect' : 'create-hydrology-defect'}`}
+      title={`master-data.general-master.${
+        isEdit ? "edit-hydrology-defect" : "create-hydrology-defect"
+      }`}
       handleClose={handleClose}
       open={open}
     >
@@ -73,7 +93,9 @@ const HydrologyDefectMasterDrawer = (props: HydrologyDefectMasterDrawerType) => 
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editHydrologyDefectMaster : createHydrologyDefectMaster}
+          createActionFunc={
+            isEdit ? editHydrologyDefectMaster : createHydrologyDefectMaster
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

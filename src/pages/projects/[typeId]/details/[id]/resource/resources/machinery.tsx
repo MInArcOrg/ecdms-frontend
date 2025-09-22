@@ -1,8 +1,8 @@
-import { Box } from '@mui/material';
-import { useRouter } from 'next/router';
-import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
-import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { projectResourceIds } from '../(subMenuItems)';
+import { Box } from "@mui/material";
+import { useRouter } from "next/router";
+import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
+import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
+import subMenuItems, { projectResourceIds } from "../(subMenuItems)";
 
 function ProjectVariation() {
   const router = useRouter();
@@ -22,7 +22,7 @@ function ProjectVariation() {
 }
 
 ProjectVariation.acl = {
-  action: 'view',
-  subject: 'projectfinance'
+  action: "view",
+  subject: "projectfinance",
 };
 export default ProjectVariation;

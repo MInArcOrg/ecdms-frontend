@@ -1,17 +1,17 @@
 // ** React Imports
-import { Fragment, useState } from 'react';
+import { Fragment, useState } from "react";
 
 // ** MUI Imports
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import Collapse from '@mui/material/Collapse';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemButton from '@mui/material/ListItemButton';
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import Collapse from "@mui/material/Collapse";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemButton from "@mui/material/ListItemButton";
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon';
+import Icon from "src/@core/components/icon";
 
 const ListNested = () => {
   // ** State
@@ -30,7 +30,7 @@ const ListNested = () => {
               <Icon icon="tabler:mail" fontSize={20} />
             </ListItemIcon>
             <ListItemText primary="Inbox" />
-            <Icon icon={open ? 'tabler:chevron-up' : 'tabler:chevron-down'} />
+            <Icon icon={open ? "tabler:chevron-up" : "tabler:chevron-down"} />
           </ListItemButton>
         </ListItem>
         <Collapse in={open} timeout="auto" unmountOnExit>
@@ -54,7 +54,7 @@ const ListNested = () => {
           </ListItemButton>
         </ListItem>
       </List>
-      <Divider sx={{ m: '0 !important' }} />
+      <Divider sx={{ m: "0 !important" }} />
       <List component="nav" aria-label="secondary mailbox">
         <ListItem disablePadding>
           <ListItemButton>

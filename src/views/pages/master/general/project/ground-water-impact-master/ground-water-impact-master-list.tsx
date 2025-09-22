@@ -1,21 +1,25 @@
 // components/GroundWaterImpactMasterList.tsx
-import { Card, CardContent } from '@mui/material';
-import React, { Fragment, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { GroundWaterImpact } from 'src/types/general/general-master';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import GroundWaterImpactMasterCard from './ground-water-impact-master-card';
-import GroundWaterImpactMasterDrawer from './ground-water-impact-master-drawer';
-import groundWaterImpactMasterService from 'src/services/general/project/ground-water-impact-master-service';
+import { Card, CardContent } from "@mui/material";
+import React, { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import { GroundWaterImpact } from "src/types/general/general-master";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import GroundWaterImpactMasterCard from "./ground-water-impact-master-card";
+import GroundWaterImpactMasterDrawer from "./ground-water-impact-master-drawer";
+import groundWaterImpactMasterService from "src/services/general/project/ground-water-impact-master-service";
 
 const GroundWaterImpactMasterList: React.FC = () => {
-  const [selectedRow, setSelectedRow] = useState<GroundWaterImpact | null>(null);
+  const [selectedRow, setSelectedRow] = useState<GroundWaterImpact | null>(
+    null,
+  );
   const { t } = useTranslation();
-  const fetchGroundWaterImpactMaster = (params: GetRequestParam): Promise<IApiResponse<GroundWaterImpact[]>> => {
+  const fetchGroundWaterImpactMaster = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<GroundWaterImpact[]>> => {
     return groundWaterImpactMasterService.getAll(params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
@@ -25,10 +29,10 @@ const GroundWaterImpactMasterList: React.FC = () => {
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<GroundWaterImpact[]>({
-    queryKey: ['general-master', 'ground-water-impact'],
-    fetchFunction: fetchGroundWaterImpactMaster
+    queryKey: ["general-master", "ground-water-impact"],
+    fetchFunction: fetchGroundWaterImpactMaster,
   });
   const handleDelete = async (id: string) => {
     await groundWaterImpactMasterService.delete(id);
@@ -62,7 +66,7 @@ const GroundWaterImpactMasterList: React.FC = () => {
             title={t(`master-data.general-master.ground-water-impacts`)}
             ItemViewComponent={({ data }) => (
               <GroundWaterImpactMasterCard
-                type={'ground-water-impact'}
+                type={"ground-water-impact"}
                 generalMaster={data}
                 onDelete={handleDelete}
                 onEdit={handleEdit}
@@ -76,9 +80,9 @@ const GroundWaterImpactMasterList: React.FC = () => {
               onClick: toggleDrawer,
               onlyIcon: true,
               permission: {
-                action: 'create',
-                subject: `groundwaterimpact`
-              }
+                action: "create",
+                subject: `groundwaterimpact`,
+              },
             }}
             fetchDataFunction={refetch}
             items={types || []}

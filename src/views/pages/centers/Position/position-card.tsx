@@ -1,16 +1,16 @@
-import { Typography } from '@mui/material';
-import Position from 'src/types/department/position';
-import FileDrawer from 'src/views/components/custom/files-drawer';
-import ModelActionComponent from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
-import SharedItemViewCard from 'src/views/shared/listing/shared-item-view-card';
+import { Typography } from "@mui/material";
+import Position from "src/types/department/position";
+import FileDrawer from "src/views/components/custom/files-drawer";
+import ModelActionComponent from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
+import SharedItemViewCard from "src/views/shared/listing/shared-item-view-card";
 
 const PositionCard = ({
   position,
   onEdit,
   onDelete,
   refetch,
-  t
+  t,
 }: {
   position: Position;
   onEdit: (position: Position) => void;
@@ -37,8 +37,8 @@ const PositionCard = ({
             onEdit={onEdit}
             onDelete={() => onDelete(position.id)}
             item={position}
-            deletePermissionRule={{ action: 'delete', subject: 'position' }}
-            editPermissionRule={{ action: 'update', subject: 'position' }}
+            deletePermissionRule={{ action: "delete", subject: "position" }}
+            editPermissionRule={{ action: "update", subject: "position" }}
             options={[]}
           />
         </>
@@ -48,8 +48,12 @@ const PositionCard = ({
         {position?.name}
       </Typography>
 
-      <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5, fontSize: '1rem', lineHeight: 1.5 }}>
-        {position.description || t('common.not-available')}
+      <Typography
+        variant="body2"
+        color="text.secondary"
+        sx={{ mt: 0.5, fontSize: "1rem", lineHeight: 1.5 }}
+      >
+        {position.description || t("common.not-available")}
       </Typography>
     </SharedItemViewCard>
   );

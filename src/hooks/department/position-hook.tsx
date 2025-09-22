@@ -1,36 +1,41 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
-import { defaultGetRequestParam } from 'src/types/requests';
-import { GetRequestParam } from 'src/types/requests';
-import { Pagination } from 'src/types/requests/pagination';
-import Position from 'src/types/department/position';
-import positionApiService from 'src/services/department/position-service';
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
+import { defaultGetRequestParam } from "src/types/requests";
+import { GetRequestParam } from "src/types/requests";
+import { Pagination } from "src/types/requests/pagination";
+import Position from "src/types/department/position";
+import positionApiService from "src/services/department/position-service";
 
-const usePosition = (initialQueryParams: GetRequestParam = defaultGetRequestParam, departmentId = '') => {
+const usePosition = (
+  initialQueryParams: GetRequestParam = defaultGetRequestParam,
+  departmentId = "",
+) => {
   const queryClient = useQueryClient();
   const [pagination, setPagination] = useState<Pagination>();
   const [newPosition, setNewPosition] = useState<Position | undefined>();
   const [queryParams, setQueryParams] = useState<GetRequestParam>({
-    ...initialQueryParams
+    ...initialQueryParams,
   });
   const [pageSize, setPageSize] = useState(10);
 
   const invalidatePositionsQuery = () => {
-    queryClient.invalidateQueries({ queryKey: ['positions'] });
+    queryClient.invalidateQueries({ queryKey: ["positions"] });
   };
 
   const {
     data: allPositions,
     isLoading: allLoading,
     error: allError,
-    refetch
+    refetch,
   } = useQuery({
-    queryKey: ['positions', queryParams],
+    queryKey: ["positions", queryParams],
     queryFn: () =>
-      positionApiService.getAll({ ...defaultGetRequestParam, ...queryParams }).then((response) => {
-        setPagination(response._attributes.pagination);
-        return response.payload;
-      })
+      positionApiService
+        .getAll({ ...defaultGetRequestParam, ...queryParams })
+        .then((response) => {
+          setPagination(response._attributes.pagination);
+          return response.payload;
+        }),
   });
 
   const handlePageChange = (newPage: number) => {
@@ -39,8 +44,8 @@ const usePosition = (initialQueryParams: GetRequestParam = defaultGetRequestPara
       pagination: {
         ...prevParams.pagination,
         page: newPage,
-        pageSize: prevParams.pagination?.pageSize || pageSize
-      }
+        pageSize: prevParams.pagination?.pageSize || pageSize,
+      },
     }));
   };
 
@@ -48,31 +53,39 @@ const usePosition = (initialQueryParams: GetRequestParam = defaultGetRequestPara
     setPageSize(newPageSize);
     setQueryParams((prevParams) => ({
       ...prevParams,
-      pagination: { ...prevParams.pagination, page: 1, pageSize: newPageSize }
+      pagination: { ...prevParams.pagination, page: 1, pageSize: newPageSize },
     }));
   };
 
-  const fetchPositions = (nextPageQueryParams: GetRequestParam = defaultGetRequestParam) => {
+  const fetchPositions = (
+    nextPageQueryParams: GetRequestParam = defaultGetRequestParam,
+  ) => {
     setQueryParams((prevParams) => ({
       ...prevParams,
       ...nextPageQueryParams,
       pagination: {
         ...(prevParams.pagination || {}), // Use an empty object as the default value
         ...nextPageQueryParams.pagination,
-        page: nextPageQueryParams.pagination?.page || prevParams.pagination?.page || 1,
+        page:
+          nextPageQueryParams.pagination?.page ||
+          prevParams.pagination?.page ||
+          1,
         pageSize:
           nextPageQueryParams.pagination?.pageSize !== undefined
             ? nextPageQueryParams.pagination.pageSize
-            : prevParams.pagination?.pageSize || pageSize
-      }
+            : prevParams.pagination?.pageSize || pageSize,
+      },
     }));
     refetch();
   };
 
   const useGetOnePosition = (positionId: string) => {
     return useQuery({
-      queryKey: ['positions', positionId],
-      queryFn: () => positionApiService.getOne(positionId, defaultGetRequestParam).then((response) => response.payload)
+      queryKey: ["positions", positionId],
+      queryFn: () =>
+        positionApiService
+          .getOne(positionId, defaultGetRequestParam)
+          .then((response) => response.payload),
     });
   };
 
@@ -107,7 +120,7 @@ const usePosition = (initialQueryParams: GetRequestParam = defaultGetRequestPara
     currentPage: queryParams.pagination?.page || 1,
     pageSize,
     handlePageChange,
-    handlePageSizeChange
+    handlePageSizeChange,
   };
 };
 

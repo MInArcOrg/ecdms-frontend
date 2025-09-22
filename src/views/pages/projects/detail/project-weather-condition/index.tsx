@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import weatherConditionApiService from 'src/services/project/weather-condition-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
-import WeatherConditionCard from './project-weather-condition-card';
-import WeatherConditionDrawer from './project-weather-condition-drawer';
-import type { WeatherCondition } from 'src/types/project/weather-condition';
-import { weatherConditionColumns } from './project-weather-condition-row';
+import { Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import weatherConditionApiService from "src/services/project/weather-condition-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import type { GetRequestParam, IApiResponse } from "src/types/requests";
+import { formatCreatedAt } from "src/utils/formatter/date";
+import ItemsListing from "src/views/shared/listing";
+import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer";
+import WeatherConditionCard from "./project-weather-condition-card";
+import WeatherConditionDrawer from "./project-weather-condition-drawer";
+import type { WeatherCondition } from "src/types/project/weather-condition";
+import { weatherConditionColumns } from "./project-weather-condition-row";
 
 interface WeatherConditionListProps {
   model: string;
@@ -22,16 +22,20 @@ interface WeatherConditionListProps {
   typeId: string;
 }
 
-const WeatherConditionList: React.FC<WeatherConditionListProps> = ({ projectId }) => {
+const WeatherConditionList: React.FC<WeatherConditionListProps> = ({
+  projectId,
+}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<WeatherCondition | null>(null);
   const { t } = useTranslation();
 
-  const fetchWeatherConditions = (params: GetRequestParam): Promise<IApiResponse<WeatherCondition[]>> => {
+  const fetchWeatherConditions = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<WeatherCondition[]>> => {
     return weatherConditionApiService.getAll({
       ...params,
-      filter: { ...params.filter, project_id: projectId }
+      filter: { ...params.filter, project_id: projectId },
     });
   };
 
@@ -40,10 +44,10 @@ const WeatherConditionList: React.FC<WeatherConditionListProps> = ({ projectId }
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<WeatherCondition[]>({
-    queryKey: ['weatherConditions'],
-    fetchFunction: fetchWeatherConditions
+    queryKey: ["weatherConditions"],
+    fetchFunction: fetchWeatherConditions,
   });
 
   const toggleDrawer = () => {
@@ -71,13 +75,23 @@ const WeatherConditionList: React.FC<WeatherConditionListProps> = ({ projectId }
     setSelectedRow(weatherCondition);
   };
 
-  const mapWeatherConditionToDetailItems = (weatherCondition: WeatherCondition): { title: string; value: string }[] => [
-    { title: t('project.weather-condition.weather-type'), value: weatherCondition?.weather_type || 'N/A' },
-    { title: t('project.weather-condition.description'), value: weatherCondition?.description || 'N/A' },
+  const mapWeatherConditionToDetailItems = (
+    weatherCondition: WeatherCondition,
+  ): { title: string; value: string }[] => [
     {
-      title: t('common.table-columns.created-at'),
-      value: weatherCondition?.created_at ? formatCreatedAt(weatherCondition.created_at) : 'N/A'
-    }
+      title: t("project.weather-condition.weather-type"),
+      value: weatherCondition?.weather_type || "N/A",
+    },
+    {
+      title: t("project.weather-condition.description"),
+      value: weatherCondition?.description || "N/A",
+    },
+    {
+      title: t("common.table-columns.created-at"),
+      value: weatherCondition?.created_at
+        ? formatCreatedAt(weatherCondition.created_at)
+        : "N/A",
+    },
   ];
 
   return (
@@ -96,20 +110,27 @@ const WeatherConditionList: React.FC<WeatherConditionListProps> = ({ projectId }
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapWeatherConditionToDetailItems(selectedRow as WeatherCondition)}
-          id={selectedRow?.id || ''}
+          data={mapWeatherConditionToDetailItems(
+            selectedRow as WeatherCondition,
+          )}
+          id={selectedRow?.id || ""}
           hasReference={false}
-          title={t('project.weather-condition.details')}
+          title={t("project.weather-condition.details")}
           fileType="weatherCondition"
         />
       )}
 
       <ItemsListing
-        title={t('project.weather-condition.title')}
+        title={t("project.weather-condition.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: weatherConditionColumns(handleClickDetail, handleEdit, handleDelete, t)
+          headers: weatherConditionColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+          ),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -126,9 +147,9 @@ const WeatherConditionList: React.FC<WeatherConditionListProps> = ({ projectId }
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: 'create',
-            subject: 'weathercondition'
-          }
+            action: "create",
+            subject: "weathercondition",
+          },
         }}
         fetchDataFunction={refetch}
         items={weatherConditions || []}
