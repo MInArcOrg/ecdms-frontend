@@ -1,12 +1,12 @@
-import { Grid, Checkbox, FormControlLabel } from '@mui/material';
+import { Grid } from '@mui/material';
 import type { FormikProps } from 'formik';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import type { RailwayCommunicationSystemMaintenanceAndTesting } from 'src/types/project/other';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 import CustomSwitch from 'src/views/shared/form/custom-switch';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface RailwayCommunicationSystemMaintenanceAndTestingFormProps {
   formik: FormikProps<RailwayCommunicationSystemMaintenanceAndTesting>;
