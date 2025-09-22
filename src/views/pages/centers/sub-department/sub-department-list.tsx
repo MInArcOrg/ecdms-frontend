@@ -1,25 +1,34 @@
-import { Container } from '@mui/material';
-import { Fragment, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Container } from "@mui/material";
+import { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import departmentApiService from 'src/services/department/department-service';
-import Department from 'src/types/department/department';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import SubDepartmentDrawer from './sub-department-drawer';
-import { subDepartmentColumns } from './sub-department-row';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import DepartmentCard from './sub-department-card';
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import departmentApiService from "src/services/department/department-service";
+import Department from "src/types/department/department";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import SubDepartmentDrawer from "./sub-department-drawer";
+import { subDepartmentColumns } from "./sub-department-row";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import DepartmentCard from "./sub-department-card";
 
-function SubDepartmentList({ parentDepartment }: { parentDepartment: Department }) {
+function SubDepartmentList({
+  parentDepartment,
+}: {
+  parentDepartment: Department;
+}) {
   const [showDrawer, setShowDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<Department | null>(null);
   const { t } = useTranslation();
 
-  const fetchSubDepartments = (params: GetRequestParam): Promise<IApiResponse<Department[]>> => {
-    return departmentApiService.getSubDepartmentsByDepartmentId(parentDepartment.id, params);
+  const fetchSubDepartments = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<Department[]>> => {
+    return departmentApiService.getSubDepartmentsByDepartmentId(
+      parentDepartment.id,
+      params,
+    );
   };
 
   const {
@@ -27,12 +36,12 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<Department[]>({
-    queryKey: ['subDepartments', parentDepartment?.id],
-    fetchFunction: fetchSubDepartments
+    queryKey: ["subDepartments", parentDepartment?.id],
+    fetchFunction: fetchSubDepartments,
   });
-  console.log('subDepartments', subDepartments);
+  console.log("subDepartments", subDepartments);
   const handleDelete = (subDepartmentId: string) => {
     return departmentApiService.delete(subDepartmentId);
     // Handle delete logic
@@ -64,18 +73,26 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
           fetchDataFunction={refetch}
-          title={t('department.sub-department.title')}
-          tableProps={{ headers: subDepartmentColumns(handleEdit, handleDelete, t, refetch) }}
+          title={t("department.sub-department.title")}
+          tableProps={{
+            headers: subDepartmentColumns(handleEdit, handleDelete, t, refetch),
+          }}
           items={subDepartments || []}
           onPaginationChange={handlePageChange}
           ItemViewComponent={({ data }) => (
-            <DepartmentCard department={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
+            <DepartmentCard
+              department={data}
+              onDelete={handleDelete}
+              onEdit={handleEdit}
+              t={t}
+              refetch={refetch}
+            />
           )}
           createActionConfig={{
             ...defaultCreateActionConfig,
             onClick: toggleDrawer,
             onlyIcon: true,
-            permission: { action: 'create', subject: 'department' }
+            permission: { action: "create", subject: "department" },
           }}
         />
       </Container>

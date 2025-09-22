@@ -1,8 +1,8 @@
 // ** Types
-import { ApexOptions } from 'apexcharts';
-import { ChipProps } from '@mui/material/Chip';
-import { SxProps, Theme } from '@mui/material';
-import { ThemeColor } from 'src/@core/layouts/types';
+import { ApexOptions } from "apexcharts";
+import { ChipProps } from "@mui/material/Chip";
+import { SxProps, Theme } from "@mui/material";
+import { ThemeColor } from "src/@core/layouts/types";
 
 export type CardStatsSquareProps = {
   icon: string;
@@ -33,7 +33,7 @@ export type CardStatsWithAreaChartProps = {
   chartColor?: ThemeColor;
   avatarColor?: ThemeColor;
   avatarIconSize?: number | string;
-  chartSeries: ApexOptions['series'];
+  chartSeries: ApexOptions["series"];
 };
 
 export type CardStatsVerticalProps = {
@@ -46,7 +46,7 @@ export type CardStatsVerticalProps = {
   avatarSize?: number;
   avatarColor?: ThemeColor;
   iconSize?: number | string;
-  chipColor?: ChipProps['color'];
+  chipColor?: ChipProps["color"];
 };
 
 export type CardStatsHorizontalWithDetailsProps = {
@@ -59,5 +59,5 @@ export type CardStatsHorizontalWithDetailsProps = {
   avatarSize?: number;
   avatarColor?: ThemeColor;
   iconSize?: number | string;
-  trend?: 'positive' | 'negative';
+  trend?: "positive" | "negative";
 };

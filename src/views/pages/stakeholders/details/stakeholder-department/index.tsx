@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { Box } from '@mui/material';
-import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import stakeholderDepartmentApiService from 'src/services/stakeholder/stakeholder-department-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
-import DepartmentCard from './stakeholder-department-card';
-import DepartmentDrawer from './stakeholder-department-drawer';
-import type { StakeholderDepartment } from 'src/types/stakeholder/stakeholder-department';
-import { departmentColumns } from './stakeholder-department-row';
+import { Box } from "@mui/material";
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import stakeholderDepartmentApiService from "src/services/stakeholder/stakeholder-department-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import type { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer";
+import DepartmentCard from "./stakeholder-department-card";
+import DepartmentDrawer from "./stakeholder-department-drawer";
+import type { StakeholderDepartment } from "src/types/stakeholder/stakeholder-department";
+import { departmentColumns } from "./stakeholder-department-row";
 
 interface DepartmentListProps {
   model: string;
@@ -24,7 +24,9 @@ interface DepartmentListProps {
 const DepartmentList: React.FC<DepartmentListProps> = ({ stakeholderId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<StakeholderDepartment | null>(null);
+  const [selectedRow, setSelectedRow] = useState<StakeholderDepartment | null>(
+    null,
+  );
   const [departments, setDepartments] = useState<StakeholderDepartment[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { t } = useTranslation();
@@ -32,10 +34,12 @@ const DepartmentList: React.FC<DepartmentListProps> = ({ stakeholderId }) => {
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
-        const response = await stakeholderDepartmentApiService.getAll({ filter: { stakeholder_id: stakeholderId } });
+        const response = await stakeholderDepartmentApiService.getAll({
+          filter: { stakeholder_id: stakeholderId },
+        });
         setDepartments(response.payload);
       } catch (error) {
-        console.error('Error fetching departments:', error);
+        console.error("Error fetching departments:", error);
       } finally {
         setIsLoading(false);
       }
@@ -44,10 +48,12 @@ const DepartmentList: React.FC<DepartmentListProps> = ({ stakeholderId }) => {
     fetchDepartments();
   }, [stakeholderId]);
 
-  const fetchDepartments = (params: GetRequestParam): Promise<IApiResponse<StakeholderDepartment[]>> => {
+  const fetchDepartments = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<StakeholderDepartment[]>> => {
     return stakeholderDepartmentApiService.getAll({
       ...params,
-      filter: { ...params.filter, stakeholder_id: stakeholderId }
+      filter: { ...params.filter, stakeholder_id: stakeholderId },
     });
   };
 
@@ -55,10 +61,10 @@ const DepartmentList: React.FC<DepartmentListProps> = ({ stakeholderId }) => {
     data: paginatedDepartments,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<StakeholderDepartment[]>({
-    queryKey: ['departments'],
-    fetchFunction: fetchDepartments
+    queryKey: ["departments"],
+    fetchFunction: fetchDepartments,
   });
 
   const toggleDrawer = () => {
@@ -87,19 +93,30 @@ const DepartmentList: React.FC<DepartmentListProps> = ({ stakeholderId }) => {
   };
 
   const getParentDepartmentName = (id: string) => {
-    if (!departments) return 'N/A';
+    if (!departments) return "N/A";
     const department = departments.find((d) => d.id === id);
-    return department ? department.name : 'N/A';
+    return department ? department.name : "N/A";
   };
 
-  const mapDepartmentToDetailItems = (department: StakeholderDepartment): { title: string; value: string }[] => [
-    { title: t('stakeholder.stakeholder-department.name'), value: department.name },
+  const mapDepartmentToDetailItems = (
+    department: StakeholderDepartment,
+  ): { title: string; value: string }[] => [
     {
-      title: t('stakeholder.stakeholder-department.parentDepartment'),
-      value: getParentDepartmentName(department.parent_department_id || '')
+      title: t("stakeholder.stakeholder-department.name"),
+      value: department.name,
     },
-    { title: t('stakeholder.stakeholder-department.description'), value: department.description },
-    { title: t('stakeholder.stakeholder-department.reference'), value: department.reference || 'N/A' }
+    {
+      title: t("stakeholder.stakeholder-department.parentDepartment"),
+      value: getParentDepartmentName(department.parent_department_id || ""),
+    },
+    {
+      title: t("stakeholder.stakeholder-department.description"),
+      value: department.description,
+    },
+    {
+      title: t("stakeholder.stakeholder-department.reference"),
+      value: department.reference || "N/A",
+    },
   ];
 
   if (isLoading) {
@@ -123,20 +140,28 @@ const DepartmentList: React.FC<DepartmentListProps> = ({ stakeholderId }) => {
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapDepartmentToDetailItems(selectedRow as StakeholderDepartment)}
-          id={selectedRow?.id || ''}
+          data={mapDepartmentToDetailItems(
+            selectedRow as StakeholderDepartment,
+          )}
+          id={selectedRow?.id || ""}
           hasReference={true}
           fileType="STAKEHOLDER_DEPARTMENT"
-          title={t('stakeholder.stakeholder-department.details')}
+          title={t("stakeholder.stakeholder-department.details")}
         />
       )}
 
       <ItemsListing
-        title={t('stakeholder.stakeholder-department.title')}
+        title={t("stakeholder.stakeholder-department.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: departmentColumns(handleClickDetail, handleEdit, handleDelete, t, departments)
+          headers: departmentColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+            departments,
+          ),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -154,9 +179,9 @@ const DepartmentList: React.FC<DepartmentListProps> = ({ stakeholderId }) => {
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: 'create',
-            subject: 'stakeholderdepartment'
-          }
+            action: "create",
+            subject: "stakeholderdepartment",
+          },
         }}
         fetchDataFunction={refetch}
         items={paginatedDepartments || []}

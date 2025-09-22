@@ -1,10 +1,10 @@
-import { AxiosResponse } from 'axios';
-import { SoilType } from 'src/types/general/general-master';
-import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import { AxiosResponse } from "axios";
+import { SoilType } from "src/types/general/general-master";
+import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const soilTypeMasterService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<SoilType[]>> =>
@@ -22,7 +22,10 @@ const soilTypeMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/soil-types-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as SoilType[])
+      .then(
+        (response: AxiosResponse<IApiResponse>) =>
+          response.data.payload as unknown as SoilType[],
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -45,7 +48,7 @@ const soilTypeMasterService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default soilTypeMasterService;

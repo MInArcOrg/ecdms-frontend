@@ -1,14 +1,14 @@
-import { FormikProps } from 'formik';
-import React, { useState } from 'react';
-import projectSafetyStatusApiService from 'src/services/project/project-safety-status-service';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import { ProjectSafetyStatus } from 'src/types/project/project-safety-status ';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import ProjectSafetyStatusForm from './project-safety-status-form';
-import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
+import { FormikProps } from "formik";
+import React, { useState } from "react";
+import projectSafetyStatusApiService from "src/services/project/project-safety-status-service";
+import { uploadFile } from "src/services/utils/file-utils";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import { ProjectSafetyStatus } from "src/types/project/project-safety-status ";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import ProjectSafetyStatusForm from "./project-safety-status-form";
+import { uploadableResourceFileTypes } from "src/services/utils/file-constants";
 
 interface ProjectSafetyStatusDrawerType {
   open: boolean;
@@ -20,10 +20,12 @@ interface ProjectSafetyStatusDrawerType {
 
 const validationSchema = yup.object().shape({
   measures_taken: yup.string().required(),
-  lesson_learned: yup.string().required()
+  lesson_learned: yup.string().required(),
 });
 
-const ProjectSafetyStatusDrawer: React.FC<ProjectSafetyStatusDrawerType> = (props) => {
+const ProjectSafetyStatusDrawer: React.FC<ProjectSafetyStatusDrawerType> = (
+  props,
+) => {
   const { open, toggle, refetch, projectSafetyStatus, projectId } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
@@ -33,21 +35,28 @@ const ProjectSafetyStatusDrawer: React.FC<ProjectSafetyStatusDrawerType> = (prop
     setUploadableFile(file);
   };
 
-  const createProjectSafetyStatus = async (body: IApiPayload<ProjectSafetyStatus>) => {
+  const createProjectSafetyStatus = async (
+    body: IApiPayload<ProjectSafetyStatus>,
+  ) => {
     return await projectSafetyStatusApiService.create(body);
   };
 
-  const editProjectSafetyStatus = async (body: IApiPayload<ProjectSafetyStatus>) => {
-    return await projectSafetyStatusApiService.update(projectSafetyStatus?.id || '', body);
+  const editProjectSafetyStatus = async (
+    body: IApiPayload<ProjectSafetyStatus>,
+  ) => {
+    return await projectSafetyStatusApiService.update(
+      projectSafetyStatus?.id || "",
+      body,
+    );
   };
 
   const getPayload = (values: ProjectSafetyStatus) => ({
     data: {
       ...values,
       id: projectSafetyStatus?.id,
-      project_id: projectId
+      project_id: projectId,
     },
-    files: uploadableFile ? [uploadableFile] : []
+    files: uploadableFile ? [uploadableFile] : [],
   });
 
   const handleClose = () => {
@@ -55,10 +64,19 @@ const ProjectSafetyStatusDrawer: React.FC<ProjectSafetyStatusDrawerType> = (prop
     setUploadableFile(null);
   };
 
-  const onActionSuccess = async (response: IApiResponse<ProjectSafetyStatus>, payload: IApiPayload<ProjectSafetyStatus>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<ProjectSafetyStatus>,
+    payload: IApiPayload<ProjectSafetyStatus>,
+  ) => {
     if (payload.files.length > 0) {
       if (response.payload.id) {
-        uploadFile(payload.files[0], uploadableResourceFileTypes.project_safety_status, response.payload.id, '', '');
+        uploadFile(
+          payload.files[0],
+          uploadableResourceFileTypes.project_safety_status,
+          response.payload.id,
+          "",
+          "",
+        );
       }
     }
     refetch();
@@ -68,15 +86,21 @@ const ProjectSafetyStatusDrawer: React.FC<ProjectSafetyStatusDrawerType> = (prop
   };
 
   return (
-    <CustomSideDrawer title={`project.safety-status.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={`project.safety-status.${isEdit ? "edit" : "create"}`}
+      handleClose={handleClose}
+      open={open}
+    >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.safety-status.${isEdit ? 'edit' : 'create'}`}
+          title={`project.safety-status.${isEdit ? "edit" : "create"}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={projectSafetyStatus}
-          createActionFunc={isEdit ? editProjectSafetyStatus : createProjectSafetyStatus}
+          createActionFunc={
+            isEdit ? editProjectSafetyStatus : createProjectSafetyStatus
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

@@ -1,39 +1,39 @@
 // ** React Imports
-import { useEffect, Fragment } from 'react';
+import { useEffect, Fragment } from "react";
 
 // ** Next Import
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 // ** MUI Imports
-import Chip from '@mui/material/Chip';
-import Collapse from '@mui/material/Collapse';
-import ListItem from '@mui/material/ListItem';
-import { styled } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import Box, { BoxProps } from '@mui/material/Box';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemButton from '@mui/material/ListItemButton';
+import Chip from "@mui/material/Chip";
+import Collapse from "@mui/material/Collapse";
+import ListItem from "@mui/material/ListItem";
+import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import Box, { BoxProps } from "@mui/material/Box";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemButton from "@mui/material/ListItemButton";
 
 // ** Third Party Imports
-import clsx from 'clsx';
+import clsx from "clsx";
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon';
+import Icon from "src/@core/components/icon";
 
 // ** Configs Import
-import themeConfig from 'src/configs/themeConfig';
+import themeConfig from "src/configs/themeConfig";
 
 // ** Utils
-import { hasActiveChild, removeChildren } from 'src/@core/layouts/utils';
+import { hasActiveChild, removeChildren } from "src/@core/layouts/utils";
 
 // ** Type Import
-import { NavGroup, LayoutProps } from 'src/@core/layouts/types';
+import { NavGroup, LayoutProps } from "src/@core/layouts/types";
 
 // ** Custom Components Imports
-import VerticalNavItems from './VerticalNavItems';
-import UserIcon from 'src/layouts/components/UserIcon';
-import Translations from 'src/layouts/components/Translations';
-import CanViewNavGroup from 'src/layouts/components/acl/CanViewNavGroup';
+import VerticalNavItems from "./VerticalNavItems";
+import UserIcon from "src/layouts/components/UserIcon";
+import Translations from "src/layouts/components/Translations";
+import CanViewNavGroup from "src/layouts/components/acl/CanViewNavGroup";
 
 interface Props {
   item: NavGroup;
@@ -44,21 +44,21 @@ interface Props {
   collapsedNavWidth: number;
   currentActiveGroup: string[];
   navigationBorderWidth: number;
-  settings: LayoutProps['settings'];
+  settings: LayoutProps["settings"];
   isSubToSub?: NavGroup | undefined;
-  saveSettings: LayoutProps['saveSettings'];
+  saveSettings: LayoutProps["saveSettings"];
   setGroupActive: (values: string[]) => void;
   setCurrentActiveGroup: (items: string[]) => void;
 }
 
 const MenuItemTextWrapper = styled(Box)<BoxProps>(({ theme }) => ({
-  width: '100%',
-  display: 'flex',
-  alignItems: 'center',
+  width: "100%",
+  display: "flex",
+  alignItems: "center",
   gap: theme.spacing(2),
-  justifyContent: 'space-between',
-  transition: 'opacity .25s ease-in-out',
-  ...(themeConfig.menuTextTruncate && { overflow: 'hidden' })
+  justifyContent: "space-between",
+  transition: "opacity .25s ease-in-out",
+  ...(themeConfig.menuTextTruncate && { overflow: "hidden" }),
 }));
 
 const VerticalNavGroup = (props: Props) => {
@@ -75,7 +75,7 @@ const VerticalNavGroup = (props: Props) => {
     collapsedNavWidth,
     currentActiveGroup,
     setCurrentActiveGroup,
-    navigationBorderWidth
+    navigationBorderWidth,
   } = props;
 
   // ** Hooks & Vars
@@ -127,7 +127,7 @@ const VerticalNavGroup = (props: Props) => {
   // ** Menu Group Click
   const handleGroupClick = () => {
     const openGroup = groupActive;
-    if (verticalNavToggleType === 'collapse') {
+    if (verticalNavToggleType === "collapse") {
       if (openGroup.includes(item.title)) {
         openGroup.splice(openGroup.indexOf(item.title), 1);
       } else {
@@ -161,7 +161,10 @@ const VerticalNavGroup = (props: Props) => {
       setGroupActive([]);
     }
 
-    if ((navCollapsed && navHover) || (groupActive.length === 0 && !navCollapsed)) {
+    if (
+      (navCollapsed && navHover) ||
+      (groupActive.length === 0 && !navCollapsed)
+    ) {
       setGroupActive([...currentActiveGroup]);
     }
 
@@ -177,7 +180,8 @@ const VerticalNavGroup = (props: Props) => {
 
   const icon = parent && !item.icon ? themeConfig.navSubItemIcon : item.icon;
 
-  const menuGroupCollapsedStyles = navCollapsed && !navHover ? { opacity: 0 } : { opacity: 1 };
+  const menuGroupCollapsedStyles =
+    navCollapsed && !navHover ? { opacity: 0 } : { opacity: 1 };
 
   return (
     <CanViewNavGroup navGroup={item}>
@@ -186,64 +190,76 @@ const VerticalNavGroup = (props: Props) => {
           disablePadding
           className="nav-group"
           onClick={handleGroupClick}
-          sx={{ mt: 1, px: '0 !important', flexDirection: 'column' }}
+          sx={{ mt: 1, px: "0 !important", flexDirection: "column" }}
         >
           <ListItemButton
             className={clsx({
-              'Mui-selected': groupActive.includes(item.title) || currentActiveGroup.includes(item.title)
+              "Mui-selected":
+                groupActive.includes(item.title) ||
+                currentActiveGroup.includes(item.title),
             })}
             sx={{
               py: 2,
               mx: 3.5,
               borderRadius: 1,
               width: (theme) => `calc(100% - ${theme.spacing(3.5 * 2)})`,
-              transition: 'padding-left .25s ease-in-out, padding-right .25s ease-in-out',
-              px: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 22 - 28) / 8 : 4,
-              '&:hover': {
-                backgroundColor: 'action.hover'
+              transition:
+                "padding-left .25s ease-in-out, padding-right .25s ease-in-out",
+              px:
+                navCollapsed && !navHover
+                  ? (collapsedNavWidth - navigationBorderWidth - 22 - 28) / 8
+                  : 4,
+              "&:hover": {
+                backgroundColor: "action.hover",
               },
-              '& .MuiTypography-root, & :not(.menu-item-meta) > svg': {
-                color: 'text.secondary'
+              "& .MuiTypography-root, & :not(.menu-item-meta) > svg": {
+                color: "text.secondary",
               },
-              '&.Mui-selected': {
-                backgroundColor: 'action.selected',
-                '&:hover': {
-                  backgroundColor: 'action.selected'
+              "&.Mui-selected": {
+                backgroundColor: "action.selected",
+                "&:hover": {
+                  backgroundColor: "action.selected",
                 },
-                '& .MuiTypography-root, & :not(.menu-item-meta) > svg': {
-                  color: 'text.primary'
+                "& .MuiTypography-root, & :not(.menu-item-meta) > svg": {
+                  color: "text.primary",
                 },
-                '& .menu-item-meta > svg': {
-                  color: 'text.secondary'
+                "& .menu-item-meta > svg": {
+                  color: "text.secondary",
                 },
-                '&.Mui-focusVisible': {
-                  backgroundColor: 'action.focus',
-                  '&:hover': {
-                    backgroundColor: 'action.focus'
-                  }
-                }
-              }
+                "&.Mui-focusVisible": {
+                  backgroundColor: "action.focus",
+                  "&:hover": {
+                    backgroundColor: "action.focus",
+                  },
+                },
+              },
             }}
           >
             <ListItemIcon
               sx={{
-                transition: 'margin .25s ease-in-out',
+                transition: "margin .25s ease-in-out",
                 ...(parent && navCollapsed && !navHover ? {} : { mr: 2 }),
                 ...(navCollapsed && !navHover ? { mr: 0 } : {}), // this condition should come after (parent && navCollapsed && !navHover) condition for proper styling
-                ...(parent && item.children ? { ml: 1.5, mr: 3.5 } : {})
+                ...(parent && item.children ? { ml: 1.5, mr: 3.5 } : {}),
               }}
             >
-              <UserIcon icon={icon as string} {...(parent && { fontSize: '0.625rem' })} />
+              <UserIcon
+                icon={icon as string}
+                {...(parent && { fontSize: "0.625rem" })}
+              />
             </ListItemIcon>
             <MenuItemTextWrapper
               sx={{
                 ...menuGroupCollapsedStyles,
-                ...(isSubToSub ? { ml: 2 } : {})
+                ...(isSubToSub ? { ml: 2 } : {}),
               }}
             >
               <Typography
-                {...((themeConfig.menuTextTruncate || (!themeConfig.menuTextTruncate && navCollapsed && !navHover)) && {
-                  noWrap: true
+                {...((themeConfig.menuTextTruncate ||
+                  (!themeConfig.menuTextTruncate &&
+                    navCollapsed &&
+                    !navHover)) && {
+                  noWrap: true,
                 })}
               >
                 <Translations text={item.title} />
@@ -251,34 +267,44 @@ const VerticalNavGroup = (props: Props) => {
               <Box
                 className="menu-item-meta"
                 sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  '& svg': {
-                    color: 'text.disabled',
-                    transition: 'transform .25s ease-in-out',
+                  display: "flex",
+                  alignItems: "center",
+                  "& svg": {
+                    color: "text.disabled",
+                    transition: "transform .25s ease-in-out",
                     ...(groupActive.includes(item.title) && {
-                      transform: direction === 'ltr' ? 'rotate(90deg)' : 'rotate(-90deg)'
-                    })
-                  }
+                      transform:
+                        direction === "ltr"
+                          ? "rotate(90deg)"
+                          : "rotate(-90deg)",
+                    }),
+                  },
                 }}
               >
                 {item.badgeContent ? (
                   <Chip
                     size="small"
                     label={item.badgeContent}
-                    color={item.badgeColor || 'primary'}
+                    color={item.badgeColor || "primary"}
                     sx={{
                       mr: 2,
                       height: 22,
                       minWidth: 22,
-                      '& .MuiChip-label': {
+                      "& .MuiChip-label": {
                         px: 1.5,
-                        textTransform: 'capitalize'
-                      }
+                        textTransform: "capitalize",
+                      },
                     }}
                   />
                 ) : null}
-                <Icon fontSize="1.125rem" icon={direction === 'ltr' ? 'tabler:chevron-right' : 'tabler:chevron-left'} />
+                <Icon
+                  fontSize="1.125rem"
+                  icon={
+                    direction === "ltr"
+                      ? "tabler:chevron-right"
+                      : "tabler:chevron-left"
+                  }
+                />
               </Box>
             </MenuItemTextWrapper>
           </ListItemButton>
@@ -288,9 +314,9 @@ const VerticalNavGroup = (props: Props) => {
             in={groupActive.includes(item.title)}
             sx={{
               pl: 0,
-              width: '100%',
+              width: "100%",
               ...menuGroupCollapsedStyles,
-              transition: 'all 0.25s ease-in-out'
+              transition: "all 0.25s ease-in-out",
             }}
           >
             <VerticalNavItems

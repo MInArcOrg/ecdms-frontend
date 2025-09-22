@@ -1,20 +1,20 @@
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { MaintenanceHistory } from 'src/types/project/other';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
-import MaintenanceHistoryCard from './maintenance-history-card';
-import MaintenanceHistoryDrawer from './maintenance-history-drawer';
-import { maintenanceHistoryColumns } from './maintenance-history-row';
+import { Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import projectOtherApiSecondService from "src/services/project/project-other-second-service";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { MaintenanceHistory } from "src/types/project/other";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import { formatCreatedAt } from "src/utils/formatter/date";
+import ItemsListing from "src/views/shared/listing";
+import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-detail-drawer";
+import MaintenanceHistoryCard from "./maintenance-history-card";
+import MaintenanceHistoryDrawer from "./maintenance-history-drawer";
+import { maintenanceHistoryColumns } from "./maintenance-history-row";
 
 interface MaintenanceHistoryListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -22,17 +22,28 @@ interface MaintenanceHistoryListProps {
   projectId: string;
 }
 
-const MaintenanceHistoryList: React.FC<MaintenanceHistoryListProps> = ({ otherSubMenu, projectId, typeId }) => {
+const MaintenanceHistoryList: React.FC<MaintenanceHistoryListProps> = ({
+  otherSubMenu,
+  projectId,
+  typeId,
+}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<MaintenanceHistory | null>(null);
+  const [selectedRow, setSelectedRow] = useState<MaintenanceHistory | null>(
+    null,
+  );
   const { t } = useTranslation();
 
-  const fetchMaintenanceHistorys = (params: GetRequestParam): Promise<IApiResponse<MaintenanceHistory[]>> => {
-    return projectOtherApiSecondService<MaintenanceHistory>().getAll(otherSubMenu?.apiRoute || '', {
-      ...params,
-      filter: { ...params.filter, project_id: projectId }
-    });
+  const fetchMaintenanceHistorys = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<MaintenanceHistory[]>> => {
+    return projectOtherApiSecondService<MaintenanceHistory>().getAll(
+      otherSubMenu?.apiRoute || "",
+      {
+        ...params,
+        filter: { ...params.filter, project_id: projectId },
+      },
+    );
   };
 
   const {
@@ -40,10 +51,10 @@ const MaintenanceHistoryList: React.FC<MaintenanceHistoryListProps> = ({ otherSu
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<MaintenanceHistory[]>({
-    queryKey: ['maintenanceHistorys'],
-    fetchFunction: fetchMaintenanceHistorys
+    queryKey: ["maintenanceHistorys"],
+    fetchFunction: fetchMaintenanceHistorys,
   });
 
   const toggleDrawer = () => {
@@ -62,7 +73,10 @@ const MaintenanceHistoryList: React.FC<MaintenanceHistoryListProps> = ({ otherSu
   };
 
   const handleDelete = async (maintenanceHistoryId: string) => {
-    await projectOtherApiSecondService<MaintenanceHistory>().delete(otherSubMenu?.apiRoute || '', maintenanceHistoryId);
+    await projectOtherApiSecondService<MaintenanceHistory>().delete(
+      otherSubMenu?.apiRoute || "",
+      maintenanceHistoryId,
+    );
     refetch();
   };
 
@@ -71,47 +85,59 @@ const MaintenanceHistoryList: React.FC<MaintenanceHistoryListProps> = ({ otherSu
     setSelectedRow(maintenanceHistory);
   };
 
-  const mapMaintenanceHistoryToDetailItems = (maintenanceHistory: MaintenanceHistory): { title: string; value: string }[] => [
+  const mapMaintenanceHistoryToDetailItems = (
+    maintenanceHistory: MaintenanceHistory,
+  ): { title: string; value: string }[] => [
     {
-      title: t('project.other.maintenance-history.details.road-segment'),
-      value: maintenanceHistory?.road_segment || 'N/A'
+      title: t("project.other.maintenance-history.details.road-segment"),
+      value: maintenanceHistory?.road_segment || "N/A",
     },
     {
-      title: t('project.other.maintenance-history.details.last-maintenance-date'),
-      value: maintenanceHistory?.last_maintenance_date ? formatCreatedAt(maintenanceHistory.last_maintenance_date) : 'N/A'
+      title: t(
+        "project.other.maintenance-history.details.last-maintenance-date",
+      ),
+      value: maintenanceHistory?.last_maintenance_date
+        ? formatCreatedAt(maintenanceHistory.last_maintenance_date)
+        : "N/A",
     },
     {
-      title: t('project.other.maintenance-history.details.maintenance-type'),
-      value: maintenanceHistory?.maintenance_type_id || 'N/A'
+      title: t("project.other.maintenance-history.details.maintenance-type"),
+      value: maintenanceHistory?.maintenance_type_id || "N/A",
     },
     {
-      title: t('project.other.maintenance-history.details.maintenance-cost'),
-      value: maintenanceHistory?.maintenance_cost?.toString() || 'N/A'
+      title: t("project.other.maintenance-history.details.maintenance-cost"),
+      value: maintenanceHistory?.maintenance_cost?.toString() || "N/A",
     },
     {
-      title: t('project.other.maintenance-history.details.severity-level'),
-      value: maintenanceHistory?.severity_level_id || 'N/A'
+      title: t("project.other.maintenance-history.details.severity-level"),
+      value: maintenanceHistory?.severity_level_id || "N/A",
     },
     {
-      title: t('project.other.maintenance-history.details.suggested-repair'),
-      value: maintenanceHistory?.suggested_repair_id || 'N/A'
+      title: t("project.other.maintenance-history.details.suggested-repair"),
+      value: maintenanceHistory?.suggested_repair_id || "N/A",
     },
     {
-      title: t('project.other.maintenance-history.details.recommended-action-urgency'),
-      value: maintenanceHistory?.recommended_action_urgency_id || 'N/A'
+      title: t(
+        "project.other.maintenance-history.details.recommended-action-urgency",
+      ),
+      value: maintenanceHistory?.recommended_action_urgency_id || "N/A",
     },
     {
-      title: t('project.other.maintenance-history.details.remark'),
-      value: maintenanceHistory?.remark || 'N/A'
+      title: t("project.other.maintenance-history.details.remark"),
+      value: maintenanceHistory?.remark || "N/A",
     },
     {
-      title: t('common.table-columns.created-at'),
-      value: maintenanceHistory?.created_at ? formatCreatedAt(maintenanceHistory.created_at) : 'N/A'
+      title: t("common.table-columns.created-at"),
+      value: maintenanceHistory?.created_at
+        ? formatCreatedAt(maintenanceHistory.created_at)
+        : "N/A",
     },
     {
-      title: t('common.table-columns.updated-at'),
-      value: maintenanceHistory?.updated_at ? formatCreatedAt(maintenanceHistory.updated_at) : 'N/A'
-    }
+      title: t("common.table-columns.updated-at"),
+      value: maintenanceHistory?.updated_at
+        ? formatCreatedAt(maintenanceHistory.updated_at)
+        : "N/A",
+    },
   ];
 
   return (
@@ -131,20 +157,30 @@ const MaintenanceHistoryList: React.FC<MaintenanceHistoryListProps> = ({ otherSu
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapMaintenanceHistoryToDetailItems(selectedRow as MaintenanceHistory)}
+          data={mapMaintenanceHistoryToDetailItems(
+            selectedRow as MaintenanceHistory,
+          )}
           hasReference={true}
-          id={selectedRow?.id || ''}
+          id={selectedRow?.id || ""}
           fileType={uploadableProjectFileTypes.other.maintenanceHistory}
-          title={t('project.other.maintenance-history.maintenance-history-details')}
+          title={t(
+            "project.other.maintenance-history.maintenance-history-details",
+          )}
         />
       )}
 
       <ItemsListing
-        title={t('project.other.maintenance-history.title')}
+        title={t("project.other.maintenance-history.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: maintenanceHistoryColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
+          headers: maintenanceHistoryColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+            refetch,
+          ),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -161,9 +197,9 @@ const MaintenanceHistoryList: React.FC<MaintenanceHistoryListProps> = ({ otherSu
           onClick: toggleDrawer,
           onlyIcon: true,
           permission: {
-            action: 'create',
-            subject: 'maintenancehistory'
-          }
+            action: "create",
+            subject: "maintenancehistory",
+          },
         }}
         fetchDataFunction={refetch}
         items={maintenanceHistorys || []}

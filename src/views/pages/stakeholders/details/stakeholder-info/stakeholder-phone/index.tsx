@@ -1,22 +1,27 @@
-import { Box } from '@mui/material';
-import { useState } from 'react';
+import { Box } from "@mui/material";
+import { useState } from "react";
 
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import stakeholderPhoneApiService from 'src/services/stakeholder/stakeholder-phone-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { StakeholderPhone } from 'src/types/stakeholder';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import StakeholderPhoneCard from './stakeholder-phone-card';
-import StakeholderPhoneDrawer from './stakeholder-phone-drawer';
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import stakeholderPhoneApiService from "src/services/stakeholder/stakeholder-phone-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { StakeholderPhone } from "src/types/stakeholder";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import StakeholderPhoneCard from "./stakeholder-phone-card";
+import StakeholderPhoneDrawer from "./stakeholder-phone-drawer";
 
 function StakeholderPhoneList({ stakeholderId }: { stakeholderId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
 
   const [selectedRow, setSelectedRow] = useState<StakeholderPhone | null>(null);
-  const fetchStakeholderPhones = (params: GetRequestParam): Promise<IApiResponse<StakeholderPhone[]>> => {
-    return stakeholderPhoneApiService.getAll({ ...params, filter: { ...params.filter, stakeholder_id: stakeholderId } });
+  const fetchStakeholderPhones = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<StakeholderPhone[]>> => {
+    return stakeholderPhoneApiService.getAll({
+      ...params,
+      filter: { ...params.filter, stakeholder_id: stakeholderId },
+    });
   };
 
   const {
@@ -24,10 +29,10 @@ function StakeholderPhoneList({ stakeholderId }: { stakeholderId: string }) {
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<StakeholderPhone[]>({
-    queryKey: ['stakeholderPhones'],
-    fetchFunction: fetchStakeholderPhones
+    queryKey: ["stakeholderPhones"],
+    fetchFunction: fetchStakeholderPhones,
   });
 
   const toggleDrawer = () => {
@@ -61,16 +66,21 @@ function StakeholderPhoneList({ stakeholderId }: { stakeholderId: string }) {
         type={ITEMS_LISTING_TYPE.list.value}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <StakeholderPhoneCard stakeholderPhone={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
+          <StakeholderPhoneCard
+            stakeholderPhone={data}
+            onEdit={handleEdit}
+            refetch={refetch}
+            onDelete={handleDelete}
+          />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
           onlyIcon: true,
           permission: {
-            action: 'create',
-            subject: 'certificate'
-          }
+            action: "create",
+            subject: "certificate",
+          },
         }}
         fetchDataFunction={refetch}
         items={stakeholderPhones || []}

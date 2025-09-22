@@ -1,10 +1,10 @@
-import { AxiosResponse } from 'axios';
-import { ProjectTime } from 'src/types/project/project-time';
-import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import { AxiosResponse } from "axios";
+import { ProjectTime } from "src/types/project/project-time";
+import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const projectTimeApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<ProjectTime[]>> =>
@@ -41,7 +41,7 @@ const projectTimeApiService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default projectTimeApiService;

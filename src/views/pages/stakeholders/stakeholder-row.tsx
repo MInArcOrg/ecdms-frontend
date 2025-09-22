@@ -18,7 +18,7 @@ export const StakeholderRow = (
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
-  typeId: string
+  typeId: string,
 ) =>
   [
     {
@@ -50,9 +50,7 @@ export const StakeholderRow = (
       field: "tin",
       renderCell: ({ row }: CellType) => {
         return (
-          <Typography sx={{ color: "text.secondary" }}>
-            {row?.tin}
-          </Typography>
+          <Typography sx={{ color: "text.secondary" }}>{row?.tin}</Typography>
         );
       },
     },
@@ -95,12 +93,12 @@ export const StakeholderRow = (
             onDelete={() => onDelete(row.id)}
             item={row}
             deletePermissionRule={{
-              action: 'delete',
-              subject: 'stakeholder',
+              action: "delete",
+              subject: "stakeholder",
             }}
             editPermissionRule={{
-              action: 'update',
-              subject: 'stakeholder'
+              action: "update",
+              subject: "stakeholder",
             }}
             options={[]}
           />

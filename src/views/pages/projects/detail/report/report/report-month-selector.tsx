@@ -1,9 +1,18 @@
-import { Autocomplete, Box, Button, Card, CardContent, Grid, TextField, Typography } from '@mui/material';
-import { RefetchOptions } from '@tanstack/react-query';
-import moment from 'moment';
-import { forwardRef } from 'react';
-import DatePicker from 'react-datepicker';
-import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker';
+import {
+  Autocomplete,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { RefetchOptions } from "@tanstack/react-query";
+import moment from "moment";
+import { forwardRef } from "react";
+import DatePicker from "react-datepicker";
+import DatePickerWrapper from "src/@core/styles/libs/react-datepicker";
 
 interface ReportMonthSelectorProps {
   fetchData: (options?: RefetchOptions | undefined) => any;
@@ -13,9 +22,24 @@ interface ReportMonthSelectorProps {
   setQuarter: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 
-const ReportMonthSelector = ({ fetchData, date, setDate, quarter, setQuarter }: ReportMonthSelectorProps) => {
+const ReportMonthSelector = ({
+  fetchData,
+  date,
+  setDate,
+  quarter,
+  setQuarter,
+}: ReportMonthSelectorProps) => {
   const CustomInput = forwardRef((props: any, ref: any) => {
-    return <TextField size="small" fullWidth {...props} inputRef={ref} label={props.label || ''} autoComplete="off" />;
+    return (
+      <TextField
+        size="small"
+        fullWidth
+        {...props}
+        inputRef={ref}
+        label={props.label || ""}
+        autoComplete="off"
+      />
+    );
   });
 
   return (
@@ -45,23 +69,32 @@ const ReportMonthSelector = ({ fetchData, date, setDate, quarter, setQuarter }: 
           <Grid item xs={12} sm={3}>
             <Autocomplete
               style={{
-                width: 150
+                width: 150,
               }}
               id="quarter"
-              size={'small'}
+              size={"small"}
               disableClearable
               options={[1, 2, 3, 4]}
-              getOptionLabel={(option) => (option ? `Q${option.toString()}` : '')}
+              getOptionLabel={(option) =>
+                option ? `Q${option.toString()}` : ""
+              }
               value={quarter}
               onChange={(event, newValue) => {
                 setQuarter(newValue);
               }}
-              renderInput={(params) => <TextField {...params} placeholder="Quarter" />}
+              renderInput={(params) => (
+                <TextField {...params} placeholder="Quarter" />
+              )}
             />
           </Grid>
         </Grid>
         <Box display="flex" gap={1} pt={3}>
-          <Button variant="contained" color="primary" size="small" onClick={() => fetchData()}>
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            onClick={() => fetchData()}
+          >
             Select
           </Button>
           <Button variant="contained" color="secondary" size="small">

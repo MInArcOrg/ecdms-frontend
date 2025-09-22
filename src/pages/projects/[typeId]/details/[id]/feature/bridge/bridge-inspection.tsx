@@ -1,30 +1,43 @@
-import { useRouter } from 'next/router';
-import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
-import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { findSubMenuItem, projectFeatureIds } from '../(subMenuItems)';
-import BridgeInspectionList from 'src/views/pages/projects/detail/other/road/bridge-inspection';
+import { useRouter } from "next/router";
+import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
+import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
+import subMenuItems, {
+  findSubMenuItem,
+  projectFeatureIds,
+} from "../(subMenuItems)";
+import BridgeInspectionList from "src/views/pages/projects/detail/other/road/bridge-inspection";
 
-const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), projectFeatureIds.bridge.bridgeInspection);
+const defaultMenuItem = findSubMenuItem(
+  subMenuItems("", ""),
+  projectFeatureIds.bridge.bridgeInspection,
+);
 
 const BridgeInspection = () => {
   const router = useRouter();
-  const { id = '', typeId = '' } = router.query;
+  const { id = "", typeId = "" } = router.query;
 
-  const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), projectFeatureIds.bridge.bridgeInspection);
+  const menuItem = findSubMenuItem(
+    subMenuItems(id as string, typeId as string),
+    projectFeatureIds.bridge.bridgeInspection,
+  );
   return (
     <ProjectLayout
       activeMenuId={projectMenuIds.feature}
       activeSubMenuId={projectFeatureIds.bridge.bridgeInspection}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <BridgeInspectionList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
+      <BridgeInspectionList
+        projectId={id as string}
+        typeId={typeId as string}
+        otherSubMenu={menuItem}
+      />
     </ProjectLayout>
   );
 };
 
 BridgeInspection.acl = {
   subject: defaultMenuItem?.model,
-  action: 'view'
+  action: "view",
 };
 
 export default BridgeInspection;

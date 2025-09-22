@@ -1,25 +1,33 @@
 // ** MUI Imports
-import { Icon } from '@iconify/react';
-import { CircularProgress, Divider, IconButton, Tooltip } from '@mui/material';
-import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import Link from 'next/link';
-import { Fragment, useState } from 'react';
+import { Icon } from "@iconify/react";
+import { CircularProgress, Divider, IconButton, Tooltip } from "@mui/material";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import Link from "next/link";
+import { Fragment, useState } from "react";
 // import CentersDrawer from './sub-department/sub-department-drawer';
-import { useQuery } from '@tanstack/react-query';
-import { useTranslation } from 'react-i18next';
-import departmentApiService from 'src/services/department/department-service';
-import Department from 'src/types/department/department';
-import SubDepartmentDrawer from './sub-department/sub-department-drawer';
-const ProfileCard = ({ department, refetch, loading }: { department: Department; refetch: () => void; loading: boolean }) => {
+import { useQuery } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
+import departmentApiService from "src/services/department/department-service";
+import Department from "src/types/department/department";
+import SubDepartmentDrawer from "./sub-department/sub-department-drawer";
+const ProfileCard = ({
+  department,
+  refetch,
+  loading,
+}: {
+  department: Department;
+  refetch: () => void;
+  loading: boolean;
+}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const { data: departmentHead } = useQuery({
-    queryKey: ['head-department', department?.id],
-    queryFn: () => departmentApiService.getDepartmentHead(department?.id, {})
+    queryKey: ["head-department", department?.id],
+    queryFn: () => departmentApiService.getDepartmentHead(department?.id, {}),
   });
   const handleDrawer = () => {
     setShowDrawer(!showDrawer);
@@ -27,7 +35,7 @@ const ProfileCard = ({ department, refetch, loading }: { department: Department;
   const { t } = useTranslation();
 
   return (
-    <Card sx={{ position: 'relative' }}>
+    <Card sx={{ position: "relative" }}>
       {showDrawer && (
         <SubDepartmentDrawer
           open={showDrawer}
@@ -40,7 +48,10 @@ const ProfileCard = ({ department, refetch, loading }: { department: Department;
       <input id="upload-cover-pic" type="file" hidden />
       <Tooltip title="Upload Cover Picture" placement="top" arrow>
         <label htmlFor="upload-cover-pic">
-          <CardMedia sx={{ height: '6rem', cursor: 'pointer' }} image="/images/cards/background-user.png" />
+          <CardMedia
+            sx={{ height: "6rem", cursor: "pointer" }}
+            image="/images/cards/background-user.png"
+          />
         </label>
       </Tooltip>
       <input id="upload-avatar-pic" type="file" hidden />
@@ -52,11 +63,11 @@ const ProfileCard = ({ department, refetch, loading }: { department: Department;
             sx={{
               width: 90,
               height: 90,
-              left: '1.313rem',
-              top: '-1.5rem',
-              cursor: 'pointer',
+              left: "1.313rem",
+              top: "-1.5rem",
+              cursor: "pointer",
 
-              border: (theme) => `solid ${theme.palette.common.white}`
+              border: (theme) => `solid ${theme.palette.common.white}`,
             }}
           />
         </Tooltip>
@@ -64,20 +75,27 @@ const ProfileCard = ({ department, refetch, loading }: { department: Department;
 
       <CardContent>
         {loading ? (
-          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100%",
+            }}
+          >
             <CircularProgress />
           </Box>
         ) : (
           <Box>
-            <Typography variant="h6" sx={{ color: 'text.primary', mt: 0 }}>
+            <Typography variant="h6" sx={{ color: "text.primary", mt: 0 }}>
               {department?.name}
             </Typography>
             <IconButton
               sx={{
-                color: 'text.secondary',
-                '&:hover': {
-                  color: 'text.primary'
-                }
+                color: "text.secondary",
+                "&:hover": {
+                  color: "text.primary",
+                },
               }}
               onClick={handleDrawer}
             >
@@ -87,23 +105,27 @@ const ProfileCard = ({ department, refetch, loading }: { department: Department;
               href={`/departments/department-structure/${department?.id}`}
               component={Link}
               sx={{
-                textDecoration: 'none',
-                display: 'block',
-                color: 'primary.main'
+                textDecoration: "none",
+                display: "block",
+                color: "primary.main",
               }}
               mb={2}
             >
-              {t('department.department-structure')}
+              {t("department.department-structure")}
             </Typography>
 
-            <Typography variant="body2" sx={{ color: 'text.secondary' }} mb={3}>
+            <Typography variant="body2" sx={{ color: "text.secondary" }} mb={3}>
               {department?.description}
             </Typography>
             {departmentHead?.full_name && (
               <Fragment>
                 <Divider />
                 <Box display="flex" alignItems="center" gap={3} py={2}>
-                  <Avatar sx={{ backgroundColor: 'primary.light', color: '#fff' }}>{departmentHead?.full_name}</Avatar>
+                  <Avatar
+                    sx={{ backgroundColor: "primary.light", color: "#fff" }}
+                  >
+                    {departmentHead?.full_name}
+                  </Avatar>
                   <Box>
                     <Typography variant="subtitle1" mt={3.5}>
                       {departmentHead?.full_name}

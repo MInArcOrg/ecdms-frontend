@@ -1,27 +1,39 @@
-import { useRouter } from 'next/router';
-import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
-import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { findSubMenuItem, regulationIds } from '../(subMenuItems)';
-import ElectricGridControlCenterDataList from 'src/views/pages/projects/detail/other/electric-power/electric-grid-control-center-data';
+import { useRouter } from "next/router";
+import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
+import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
+import subMenuItems, {
+  findSubMenuItem,
+  regulationIds,
+} from "../(subMenuItems)";
+import ElectricGridControlCenterDataList from "src/views/pages/projects/detail/other/electric-power/electric-grid-control-center-data";
 
-const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), regulationIds.gridOperations.electricGridControlCenterData);
+const defaultMenuItem = findSubMenuItem(
+  subMenuItems("", ""),
+  regulationIds.gridOperations.electricGridControlCenterData,
+);
 
 const ElectricGridControlCenterDataPage = () => {
   const router = useRouter();
-  const { id = '', typeId = '' } = router.query;
+  const { id = "", typeId = "" } = router.query;
 
   const menuItem = findSubMenuItem(
     subMenuItems(id as string, typeId as string),
-    regulationIds.gridOperations.electricGridControlCenterData
+    regulationIds.gridOperations.electricGridControlCenterData,
   );
 
   return (
     <ProjectLayout
       activeMenuId={projectMenuIds.regulation}
-      activeSubMenuId={regulationIds.gridOperations.electricGridControlCenterData}
+      activeSubMenuId={
+        regulationIds.gridOperations.electricGridControlCenterData
+      }
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <ElectricGridControlCenterDataList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
+      <ElectricGridControlCenterDataList
+        otherSubMenu={menuItem}
+        typeId={String(typeId)}
+        projectId={String(id)}
+      />
     </ProjectLayout>
   );
 };
@@ -29,7 +41,7 @@ const ElectricGridControlCenterDataPage = () => {
 // Access control configuration
 ElectricGridControlCenterDataPage.acl = {
   subject: defaultMenuItem?.model,
-  action: 'view'
+  action: "view",
 };
 
 export default ElectricGridControlCenterDataPage;

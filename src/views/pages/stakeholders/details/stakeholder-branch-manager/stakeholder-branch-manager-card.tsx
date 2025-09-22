@@ -1,10 +1,18 @@
-import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
-import type React from 'react';
-import { useTranslation } from 'react-i18next';
-import type { StakeholderBranchManager } from 'src/types/stakeholder/stakeholder-branch-manager';
-import type { StakeholderBranch } from 'src/types/stakeholder/stakeholder-branch';
-import ModelAction from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Divider,
+  Typography,
+} from "@mui/material";
+import type React from "react";
+import { useTranslation } from "react-i18next";
+import type { StakeholderBranchManager } from "src/types/stakeholder/stakeholder-branch-manager";
+import type { StakeholderBranch } from "src/types/stakeholder/stakeholder-branch";
+import ModelAction from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
 
 interface BranchManagerCardProps {
   branchManager: StakeholderBranchManager;
@@ -21,19 +29,24 @@ const BranchManagerCard: React.FC<BranchManagerCardProps> = ({
   onEdit,
   onDelete,
   onDetail,
-  stakeholderBranches
+  stakeholderBranches,
 }) => {
   const { t } = useTranslation();
 
   const getBranchName = (id: string) => {
     const branch = stakeholderBranches.find((b) => b.id === id);
-    return branch ? branch.name : 'N/A';
+    return branch ? branch.name : "N/A";
   };
 
   return (
     <Card sx={{ p: 2 }}>
       <CardContent>
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          mb={1}
+        >
           <Typography variant="h5" fontWeight="bold">
             <Typography
               noWrap
@@ -41,9 +54,9 @@ const BranchManagerCard: React.FC<BranchManagerCardProps> = ({
               onClick={() => onDetail(branchManager)}
               sx={{
                 fontWeight: 500,
-                textDecoration: 'none',
-                color: 'text.secondary',
-                '&:hover': { color: 'primary.main' }
+                textDecoration: "none",
+                color: "text.secondary",
+                "&:hover": { color: "primary.main" },
               }}
             >
               {`${branchManager.first_name} ${branchManager.last_name}`}
@@ -55,24 +68,28 @@ const BranchManagerCard: React.FC<BranchManagerCardProps> = ({
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.stakeholder-branch-manager.position')}: {branchManager.position}
+            {t("stakeholder.stakeholder-branch-manager.position")}:{" "}
+            {branchManager.position}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.stakeholder-branch-manager.department')}: {branchManager.department}
+            {t("stakeholder.stakeholder-branch-manager.department")}:{" "}
+            {branchManager.department}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.stakeholder-branch-manager.branch')}: {getBranchName(branchManager.stakeholder_branch_id)}
+            {t("stakeholder.stakeholder-branch-manager.branch")}:{" "}
+            {getBranchName(branchManager.stakeholder_branch_id)}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.stakeholder-branch-manager.phone')}: {branchManager.phone}
+            {t("stakeholder.stakeholder-branch-manager.phone")}:{" "}
+            {branchManager.phone}
           </Typography>
         </Box>
       </CardContent>
 
-      <CardActions sx={{ justifyContent: 'flex-end' }}>
+      <CardActions sx={{ justifyContent: "flex-end" }}>
         <ModelAction
           model="StakeholderBranchManager"
-          model_id={branchManager?.id || ''}
+          model_id={branchManager?.id || ""}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
@@ -80,15 +97,15 @@ const BranchManagerCard: React.FC<BranchManagerCardProps> = ({
         />
         <RowOptions
           deletePermissionRule={{
-            action: 'delete',
-            subject: 'stakeholderbranchmanager'
+            action: "delete",
+            subject: "stakeholderbranchmanager",
           }}
           editPermissionRule={{
-            action: 'update',
-            subject: 'stakeholderbranchmanager'
+            action: "update",
+            subject: "stakeholderbranchmanager",
           }}
           onEdit={() => onEdit(branchManager)}
-          onDelete={() => onDelete(branchManager?.id || '')}
+          onDelete={() => onDelete(branchManager?.id || "")}
           item={branchManager}
           options={[]}
         />

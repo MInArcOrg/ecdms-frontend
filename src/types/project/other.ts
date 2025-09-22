@@ -1,5 +1,5 @@
-import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
-import { ProjectGeneralMaster } from '../general/general-master';
+import EthiopianDate from "src/views/components/custom/ethio-calendar/ethiopian-date";
+import { ProjectGeneralMaster } from "../general/general-master";
 
 export interface Port {
   id: string;
@@ -1311,7 +1311,7 @@ export interface MiniGridStation {
   inverter?: number;
   system_voltage?: number;
   expected_annual_generation?: number;
-  diesel_generator: 'Equipped' | 'Not Equipped';
+  diesel_generator: "Equipped" | "Not Equipped";
   owner_operator?: string;
   remark?: string;
   created_at?: Date;
@@ -1325,7 +1325,7 @@ export interface MiniGridStationDistributionLine {
   system_type?: string;
   lines_type?: string;
   line_length?: number;
-  poles: 'Concrete' | 'Wood' | 'Steel';
+  poles: "Concrete" | "Wood" | "Steel";
   transformer_type_id: string;
   transformers_number?: number;
   transformers_size?: number;
@@ -1375,7 +1375,7 @@ export interface MiniGridStationDistributionLineInfrastructure {
   distribution_line_material_id: string;
   distribution_line_conductor_size?: number;
   voltage_level?: number;
-  topology?: 'Radial' | 'Ring';
+  topology?: "Radial" | "Ring";
   switching_station_connection?: boolean;
   station_name?: string;
   remark?: string;
@@ -1405,7 +1405,7 @@ export interface ElectricDistributionTransformerType {
   mini_grid_station_id: string;
   name: string;
   transformer_type_id: string;
-  cooling_type: 'Oil Immersed' | 'Dry type';
+  cooling_type: "Oil Immersed" | "Dry type";
   transformer_power_rating?: number;
   lifetime?: number;
   protection_installed_id: string;
@@ -1423,7 +1423,7 @@ export interface ElectricSmartMetersData {
   mini_grid_station_id: string;
   name: string;
   owner_operator?: string;
-  facility_type: 'Oil Immersed' | 'Dry Type';
+  facility_type: "Oil Immersed" | "Dry Type";
   service_area?: number;
   manufacturer?: string;
   model_id: string;
@@ -1669,45 +1669,45 @@ export interface RailwayBallastConditionAssessment {
   updated_at?: string;
 }
 export enum BallastConditionRating {
-  Excellent = 'Excellent',
-  Good = 'Good',
-  Fair = 'Fair',
-  Poor = 'Poor'
+  Excellent = "Excellent",
+  Good = "Good",
+  Fair = "Fair",
+  Poor = "Poor",
 }
 
 export enum FoulingPresence {
-  Fines = 'Fines',
-  Debris = 'Debris',
-  Sediments = 'Sediments',
-  Siltation = 'Siltation',
-  Other = 'Other'
+  Fines = "Fines",
+  Debris = "Debris",
+  Sediments = "Sediments",
+  Siltation = "Siltation",
+  Other = "Other",
 }
 
 export enum BallastDegradationIndicators {
-  Breakage = 'Breakage',
-  Crack = 'Crack',
-  Other = 'Other'
+  Breakage = "Breakage",
+  Crack = "Crack",
+  Other = "Other",
 }
 
 export enum BallastQualityTestingMethod {
-  GradationTest = 'Gradation Test',
-  SoundnessTest = 'Soundness Test',
-  CompactionTest = 'Compaction Test',
-  Other = 'Other'
+  GradationTest = "Gradation Test",
+  SoundnessTest = "Soundness Test",
+  CompactionTest = "Compaction Test",
+  Other = "Other",
 }
 
 export enum BallastDegradationRate {
-  Excellent = 'Excellent',
-  Good = 'Good',
-  Fair = 'Fair',
-  Poor = 'Poor'
+  Excellent = "Excellent",
+  Good = "Good",
+  Fair = "Fair",
+  Poor = "Poor",
 }
 
 export enum DrainagePerformance {
-  Excellent = 'Excellent',
-  Good = 'Good',
-  Fair = 'Fair',
-  Poor = 'Poor'
+  Excellent = "Excellent",
+  Good = "Good",
+  Fair = "Fair",
+  Poor = "Poor",
 }
 // src/types/project/other.ts
 
@@ -1724,11 +1724,11 @@ export interface RailwayBallastMaintenanceAndRenewal {
 }
 
 export enum ScheduledMaintenanceActivities {
-  Tamping = 'Tamping',
-  Cleaning = 'Cleaning',
-  RoutineMaintenance = 'Routine Maintenance',
-  CorrectiveMaintenance = 'Corrective Maintenance',
-  Other = 'Other'
+  Tamping = "Tamping",
+  Cleaning = "Cleaning",
+  RoutineMaintenance = "Routine Maintenance",
+  CorrectiveMaintenance = "Corrective Maintenance",
+  Other = "Other",
 }
 // src/types/project/other.ts
 
@@ -1997,7 +1997,7 @@ export interface RailwayCommunicationSystem {
   communication_system_type?: string | null; //
   communication_system_protocols_or_standards?: string | null; //
   communication_system_components?: string | null; //
-  signaling_system_components?: string | null; // 
+  signaling_system_components?: string | null; //
   remark?: string | null; //
   created_at?: string;
   updated_at?: string;

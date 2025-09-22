@@ -1,7 +1,7 @@
-import { useRouter } from 'next/router';
-import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
-import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { projectSetupIds } from '../(subMenuItems)';
+import { useRouter } from "next/router";
+import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
+import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
+import subMenuItems, { projectSetupIds } from "../(subMenuItems)";
 
 function ProjectConstructionTypeIndex() {
   const router = useRouter();
@@ -19,8 +19,8 @@ function ProjectConstructionTypeIndex() {
 }
 
 ProjectConstructionTypeIndex.acl = {
-  subject: 'projectconstructiontype',
-  action: 'view_project_construction_type'
+  subject: "projectconstructiontype",
+  action: "view_project_construction_type",
 };
 
 export default ProjectConstructionTypeIndex;

@@ -1,12 +1,12 @@
-import * as yup from 'yup';
+import * as yup from "yup";
 
-import { FormikProps } from 'formik';
-import projectApiService from 'src/services/project/project-service';
-import { Project } from 'src/types/project';
-import { IApiPayload } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import ProjectForm from './project-form';
+import { FormikProps } from "formik";
+import projectApiService from "src/services/project/project-service";
+import { Project } from "src/types/project";
+import { IApiPayload } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import ProjectForm from "./project-form";
 
 interface ProjectDrawerType {
   open: boolean;
@@ -17,17 +17,19 @@ interface ProjectDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  projectcategory_id: yup.string().required('Project category is required'),
-  projectsubcategory_id: yup.string().required('Project subcategory is required'),
-  status_id: yup.string().required('Project status is required'),
-  name: yup.string().required('Project name is required'),
-  contract_no: yup.string().required('Contract number is required'),
-  budget_code: yup.string().required('Budget code is required'),
-  procurement_no: yup.string().required('Procurement number is required'),
+  projectcategory_id: yup.string().required("Project category is required"),
+  projectsubcategory_id: yup
+    .string()
+    .required("Project subcategory is required"),
+  status_id: yup.string().required("Project status is required"),
+  name: yup.string().required("Project name is required"),
+  contract_no: yup.string().required("Contract number is required"),
+  budget_code: yup.string().required("Budget code is required"),
+  procurement_no: yup.string().required("Procurement number is required"),
   remark: yup.string().nullable(),
   grade: yup.string().nullable(),
   end_user: yup.string().nullable(),
-  function: yup.string().nullable()
+  function: yup.string().nullable(),
 });
 
 const ProjectDrawer = (props: ProjectDrawerType) => {
@@ -39,7 +41,7 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
     return await projectApiService.create(body);
   };
   const editProject = async (body: IApiPayload<Project>) => {
-    return await projectApiService.update(project?.id || '', body);
+    return await projectApiService.update(project?.id || "", body);
   };
 
   const getPayload = (values: Project) => {
@@ -47,9 +49,9 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
       data: {
         ...values,
         id: project?.id,
-        projecttype_id: typeId
+        projecttype_id: typeId,
       },
-      files: []
+      files: [],
     };
     return payload;
   };
@@ -63,8 +65,8 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
   };
   return (
     <CustomSideDrawer
-      model={'project'}
-      title={`project.${isEdit ? 'edit-project' : 'create-project'}`}
+      model={"project"}
+      title={`project.${isEdit ? "edit-project" : "create-project"}`}
       handleClose={handleClose}
       open={open}
     >

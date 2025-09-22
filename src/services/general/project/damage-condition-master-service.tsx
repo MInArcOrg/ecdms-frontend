@@ -1,10 +1,10 @@
-import { AxiosResponse } from 'axios';
-import { DamageCondition } from 'src/types/general/general-master';
-import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import { AxiosResponse } from "axios";
+import { DamageCondition } from "src/types/general/general-master";
+import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const damageConditionMasterService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<DamageCondition[]>> =>
@@ -22,7 +22,10 @@ const damageConditionMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/damage-conditions-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as DamageCondition[])
+      .then(
+        (response: AxiosResponse<IApiResponse>) =>
+          response.data.payload as unknown as DamageCondition[],
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -40,12 +43,15 @@ const damageConditionMasterService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (id: string, body: IApiPayload<DamageCondition>): Promise<IApiResponse> =>
+  update: (
+    id: string,
+    body: IApiPayload<DamageCondition>,
+  ): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/damage-conditions/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default damageConditionMasterService;

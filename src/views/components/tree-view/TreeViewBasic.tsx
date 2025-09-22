@@ -1,16 +1,17 @@
 // ** MUI Imports
-import TreeView from '@mui/lab/TreeView';
-import TreeItem from '@mui/lab/TreeItem';
+import TreeView from "@mui/lab/TreeView";
+import TreeItem from "@mui/lab/TreeItem";
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon';
+import Icon from "src/@core/components/icon";
 
 interface Props {
-  direction: 'ltr' | 'rtl';
+  direction: "ltr" | "rtl";
 }
 
 const TreeViewBasic = ({ direction }: Props) => {
-  const ExpandIcon = direction === 'rtl' ? 'tabler:chevron-left' : 'tabler:chevron-right';
+  const ExpandIcon =
+    direction === "rtl" ? "tabler:chevron-left" : "tabler:chevron-right";
 
   return (
     <TreeView

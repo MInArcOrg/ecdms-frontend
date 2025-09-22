@@ -1,18 +1,20 @@
 // ** MUI Imports
-import { styled } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import MuiListSubheader, { ListSubheaderProps } from '@mui/material/ListSubheader';
+import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import MuiListSubheader, {
+  ListSubheaderProps,
+} from "@mui/material/ListSubheader";
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon';
+import Icon from "src/@core/components/icon";
 
 // ** Types
-import { NavSectionTitle } from 'src/@core/layouts/types';
-import { Settings } from 'src/@core/context/settingsContext';
+import { NavSectionTitle } from "src/@core/layouts/types";
+import { Settings } from "src/@core/context/settingsContext";
 
 // ** Custom Components Imports
-import Translations from 'src/layouts/components/Translations';
-import CanViewNavSectionTitle from 'src/layouts/components/acl/CanViewNavSectionTitle';
+import Translations from "src/layouts/components/Translations";
+import CanViewNavSectionTitle from "src/layouts/components/acl/CanViewNavSectionTitle";
 
 interface Props {
   navHover: boolean;
@@ -23,20 +25,23 @@ interface Props {
 }
 
 // ** Styled Components
-const ListSubheader = styled((props: ListSubheaderProps) => <MuiListSubheader component="li" {...props} />)(({ theme }) => ({
+const ListSubheader = styled((props: ListSubheaderProps) => (
+  <MuiListSubheader component="li" {...props} />
+))(({ theme }) => ({
   lineHeight: 1,
-  display: 'flex',
-  position: 'static',
+  display: "flex",
+  position: "static",
   marginTop: theme.spacing(3.5),
   paddingTop: theme.spacing(1.5),
-  backgroundColor: 'transparent',
+  backgroundColor: "transparent",
   paddingBottom: theme.spacing(1.5),
-  transition: 'padding-left .25s ease-in-out'
+  transition: "padding-left .25s ease-in-out",
 }));
 
 const VerticalNavSectionTitle = (props: Props) => {
   // ** Props
-  const { item, navHover, settings, collapsedNavWidth, navigationBorderWidth } = props;
+  const { item, navHover, settings, collapsedNavWidth, navigationBorderWidth } =
+    props;
 
   // ** Vars
   const { navCollapsed } = settings;
@@ -49,18 +54,22 @@ const VerticalNavSectionTitle = (props: Props) => {
           ...(navCollapsed && !navHover
             ? {
                 py: 0.5,
-                px: (collapsedNavWidth - navigationBorderWidth - 22) / 8
+                px: (collapsedNavWidth - navigationBorderWidth - 22) / 8,
               }
             : { px: 7.5 }),
-          '& .MuiTypography-root, & svg': {
-            color: 'text.disabled'
-          }
+          "& .MuiTypography-root, & svg": {
+            color: "text.disabled",
+          },
         }}
       >
         {navCollapsed && !navHover ? (
           <Icon icon="tabler:separator" />
         ) : (
-          <Typography noWrap variant="caption" sx={{ textTransform: 'uppercase' }}>
+          <Typography
+            noWrap
+            variant="caption"
+            sx={{ textTransform: "uppercase" }}
+          >
             <Translations text={item.sectionTitle} />
           </Typography>
         )}

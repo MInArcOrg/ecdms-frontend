@@ -1,21 +1,25 @@
 // components/PedestrianFacilityMasterList.tsx
-import { Card, CardContent } from '@mui/material';
-import React, { Fragment, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { PedestrianFacility } from 'src/types/general/general-master';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import PedestrianFacilityMasterCard from './pedestrian-facility-master-card';
-import PedestrianFacilityMasterDrawer from './pedestrian-facility-master-drawer';
-import pedestrianFacilityMasterService from 'src/services/general/project/pedestrian-facility-master-service';
+import { Card, CardContent } from "@mui/material";
+import React, { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import { PedestrianFacility } from "src/types/general/general-master";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import PedestrianFacilityMasterCard from "./pedestrian-facility-master-card";
+import PedestrianFacilityMasterDrawer from "./pedestrian-facility-master-drawer";
+import pedestrianFacilityMasterService from "src/services/general/project/pedestrian-facility-master-service";
 
 const PedestrianFacilityMasterList: React.FC = () => {
-  const [selectedRow, setSelectedRow] = useState<PedestrianFacility | null>(null);
+  const [selectedRow, setSelectedRow] = useState<PedestrianFacility | null>(
+    null,
+  );
   const { t } = useTranslation();
-  const fetchPedestrianFacilityMaster = (params: GetRequestParam): Promise<IApiResponse<PedestrianFacility[]>> => {
+  const fetchPedestrianFacilityMaster = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<PedestrianFacility[]>> => {
     return pedestrianFacilityMasterService.getAll(params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
@@ -25,10 +29,10 @@ const PedestrianFacilityMasterList: React.FC = () => {
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<PedestrianFacility[]>({
-    queryKey: ['general-master', 'pedestrian-facilities'],
-    fetchFunction: fetchPedestrianFacilityMaster
+    queryKey: ["general-master", "pedestrian-facilities"],
+    fetchFunction: fetchPedestrianFacilityMaster,
   });
   const handleDelete = async (id: string) => {
     await pedestrianFacilityMasterService.delete(id);
@@ -61,7 +65,13 @@ const PedestrianFacilityMasterList: React.FC = () => {
             type={ITEMS_LISTING_TYPE.list.value}
             title={t(`master-data.general-master.pedestrian-facilities`)}
             ItemViewComponent={({ data }) => (
-              <PedestrianFacilityMasterCard generalMaster={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
+              <PedestrianFacilityMasterCard
+                generalMaster={data}
+                onDelete={handleDelete}
+                onEdit={handleEdit}
+                t={t}
+                refetch={refetch}
+              />
             )}
             isLoading={isLoading}
             createActionConfig={{
@@ -69,9 +79,9 @@ const PedestrianFacilityMasterList: React.FC = () => {
               onClick: toggleDrawer,
               onlyIcon: true,
               permission: {
-                action: 'create',
-                subject: `pedestrianfacility`
-              }
+                action: "create",
+                subject: `pedestrianfacility`,
+              },
             }}
             fetchDataFunction={refetch}
             items={types || []}

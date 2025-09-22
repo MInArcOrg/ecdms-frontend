@@ -1,13 +1,15 @@
-import { AxiosResponse } from 'axios';
-import { GroundWaterImpact } from 'src/types/general/general-master';
-import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import { AxiosResponse } from "axios";
+import { GroundWaterImpact } from "src/types/general/general-master";
+import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const groundWaterImpactMasterService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<GroundWaterImpact[]>> =>
+  getAll: (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<GroundWaterImpact[]>> =>
     buildGetRequest(`/masterdata/ground-water-impacts`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -22,7 +24,10 @@ const groundWaterImpactMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/ground-water-impacts-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as GroundWaterImpact[])
+      .then(
+        (response: AxiosResponse<IApiResponse>) =>
+          response.data.payload as unknown as GroundWaterImpact[],
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -40,12 +45,15 @@ const groundWaterImpactMasterService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (id: string, body: IApiPayload<GroundWaterImpact>): Promise<IApiResponse> =>
+  update: (
+    id: string,
+    body: IApiPayload<GroundWaterImpact>,
+  ): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/ground-water-impacts/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default groundWaterImpactMasterService;

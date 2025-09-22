@@ -1,22 +1,32 @@
-import { Box } from '@mui/material';
-import { useState } from 'react';
+import { Box } from "@mui/material";
+import { useState } from "react";
 
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import stakeholderOperationLocationApiService from 'src/services/stakeholder/stakeholder-operation-location-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { StakeholderOperationLocation } from 'src/types/stakeholder/stakeholder-operation-location';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import StakeholderOperationLocationCard from './stakeholder-operation-location-card';
-import StakeholderOperationLocationDrawer from './stakeholder-operation-location-drawer';
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import stakeholderOperationLocationApiService from "src/services/stakeholder/stakeholder-operation-location-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { StakeholderOperationLocation } from "src/types/stakeholder/stakeholder-operation-location";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import StakeholderOperationLocationCard from "./stakeholder-operation-location-card";
+import StakeholderOperationLocationDrawer from "./stakeholder-operation-location-drawer";
 
-function StakeholderOperationLocationList({ stakeholderId }: { stakeholderId: string }) {
+function StakeholderOperationLocationList({
+  stakeholderId,
+}: {
+  stakeholderId: string;
+}) {
   const [showDrawer, setShowDrawer] = useState(false);
 
-  const [selectedRow, setSelectedRow] = useState<StakeholderOperationLocation | null>(null);
-  const fetchStakeholderOperationLocations = (params: GetRequestParam): Promise<IApiResponse<StakeholderOperationLocation[]>> => {
-    return stakeholderOperationLocationApiService.getAll({ ...params, filter: { ...params.filter, stakeholder_id: stakeholderId } });
+  const [selectedRow, setSelectedRow] =
+    useState<StakeholderOperationLocation | null>(null);
+  const fetchStakeholderOperationLocations = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<StakeholderOperationLocation[]>> => {
+    return stakeholderOperationLocationApiService.getAll({
+      ...params,
+      filter: { ...params.filter, stakeholder_id: stakeholderId },
+    });
   };
 
   const {
@@ -24,10 +34,10 @@ function StakeholderOperationLocationList({ stakeholderId }: { stakeholderId: st
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<StakeholderOperationLocation[]>({
-    queryKey: ['stakeholderOperationLocations'],
-    fetchFunction: fetchStakeholderOperationLocations
+    queryKey: ["stakeholderOperationLocations"],
+    fetchFunction: fetchStakeholderOperationLocations,
   });
 
   const toggleDrawer = () => {
@@ -35,12 +45,16 @@ function StakeholderOperationLocationList({ stakeholderId }: { stakeholderId: st
     setShowDrawer(!showDrawer);
   };
 
-  const handleEdit = (stakeholderOperationLocation: StakeholderOperationLocation) => {
+  const handleEdit = (
+    stakeholderOperationLocation: StakeholderOperationLocation,
+  ) => {
     toggleDrawer();
     setSelectedRow(stakeholderOperationLocation);
   };
   const handleDelete = async (stakeholderOperationLocationId: string) => {
-    await stakeholderOperationLocationApiService.delete(stakeholderOperationLocationId);
+    await stakeholderOperationLocationApiService.delete(
+      stakeholderOperationLocationId,
+    );
     refetch();
   };
 
@@ -50,7 +64,9 @@ function StakeholderOperationLocationList({ stakeholderId }: { stakeholderId: st
         <StakeholderOperationLocationDrawer
           open={showDrawer}
           toggle={toggleDrawer}
-          stakeholderOperationLocation={selectedRow as StakeholderOperationLocation}
+          stakeholderOperationLocation={
+            selectedRow as StakeholderOperationLocation
+          }
           refetch={refetch}
           stakeholderId={stakeholderId}
         />
@@ -73,9 +89,9 @@ function StakeholderOperationLocationList({ stakeholderId }: { stakeholderId: st
           onClick: toggleDrawer,
           onlyIcon: true,
           permission: {
-            action: 'create',
-            subject: 'certificate'
-          }
+            action: "create",
+            subject: "certificate",
+          },
         }}
         fetchDataFunction={refetch}
         items={stakeholderOperationLocations || []}

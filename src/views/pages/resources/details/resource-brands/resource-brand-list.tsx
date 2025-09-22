@@ -1,18 +1,18 @@
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import { Container } from '@mui/system';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import resourceBrandApiService from 'src/services/resource/resource-brand-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { ResourceBrand } from 'src/types/resource';
-import ItemsListing from 'src/views/shared/listing';
-import ResourceBrandCard from './resource-brand-card';
-import ResourceBrandDrawer from './resource-brand-drawer';
-import ImageSwiper from 'src/views/components/custom/image/image-swiper';
+import { Container } from "@mui/system";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import resourceBrandApiService from "src/services/resource/resource-brand-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import { ResourceBrand } from "src/types/resource";
+import ItemsListing from "src/views/shared/listing";
+import ResourceBrandCard from "./resource-brand-card";
+import ResourceBrandDrawer from "./resource-brand-drawer";
+import ImageSwiper from "src/views/components/custom/image/image-swiper";
 
 function ResourceBrandList({ resourceId }: { resourceId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -21,12 +21,14 @@ function ResourceBrandList({ resourceId }: { resourceId: string }) {
 
   const { t } = useTranslation();
 
-  const fetchResourceBrands = (params: GetRequestParam): Promise<IApiResponse<ResourceBrand[]>> => {
+  const fetchResourceBrands = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<ResourceBrand[]>> => {
     return resourceBrandApiService.getAll({
       ...params,
       filter: {
-        resource_id: resourceId
-      }
+        resource_id: resourceId,
+      },
     });
   };
 
@@ -35,10 +37,10 @@ function ResourceBrandList({ resourceId }: { resourceId: string }) {
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<ResourceBrand[]>({
-    queryKey: ['resourceBrands', resourceId],
-    fetchFunction: fetchResourceBrands
+    queryKey: ["resourceBrands", resourceId],
+    fetchFunction: fetchResourceBrands,
   });
 
   const toggleDrawer = () => {
@@ -58,9 +60,9 @@ function ResourceBrandList({ resourceId }: { resourceId: string }) {
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'end'
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "end",
       }}
     >
       {showDrawer && (
@@ -79,11 +81,17 @@ function ResourceBrandList({ resourceId }: { resourceId: string }) {
         <ItemsListing
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.grid.value}
-          title={t('resource.resource-brand.title')}
+          title={t("resource.resource-brand.title")}
           isLoading={isLoading}
           breakpoints={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 4 }}
           ItemViewComponent={({ data }) => (
-            <ResourceBrandCard resourceBrand={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch}>
+            <ResourceBrandCard
+              resourceBrand={data}
+              onDelete={handleDelete}
+              onEdit={handleEdit}
+              t={t}
+              refetch={refetch}
+            >
               <ImageSwiper id={data.id} refetch={refetchImages} />
             </ResourceBrandCard>
           )}
@@ -92,9 +100,9 @@ function ResourceBrandList({ resourceId }: { resourceId: string }) {
             onClick: toggleDrawer,
             onlyIcon: true,
             permission: {
-              action: 'create',
-              subject: 'resourceBrand'
-            }
+              action: "create",
+              subject: "resourceBrand",
+            },
           }}
           fetchDataFunction={refetch}
           items={resourceBrands || []}

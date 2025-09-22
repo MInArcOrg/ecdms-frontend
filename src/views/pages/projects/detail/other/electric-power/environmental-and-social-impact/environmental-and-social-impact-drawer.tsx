@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import type { FormikProps } from 'formik';
-import type { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import EnvironmentalAndSocialImpactForm from './environmental-and-social-impact-form';
+import type { FormikProps } from "formik";
+import type { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import EnvironmentalAndSocialImpactForm from "./environmental-and-social-impact-form";
 
-import { useState } from 'react';
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { uploadFile } from 'src/services/utils/file-utils';
-import type { EnvironmentalAndSocialImpact } from 'src/types/project/other';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import { useState } from "react";
+import projectOtherApiSecondService from "src/services/project/project-other-second-service";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { uploadFile } from "src/services/utils/file-utils";
+import type { EnvironmentalAndSocialImpact } from "src/types/project/other";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
 
 interface EnvironmentalAndSocialImpactDrawerType {
   open: boolean;
@@ -23,8 +23,17 @@ interface EnvironmentalAndSocialImpactDrawerType {
   otherSubMenu?: DetailSubMenuItemChild;
 }
 
-const EnvironmentalAndSocialImpactDrawer = (props: EnvironmentalAndSocialImpactDrawerType) => {
-  const { open, toggle, refetch, environmentalAndSocialImpact, projectId, otherSubMenu } = props;
+const EnvironmentalAndSocialImpactDrawer = (
+  props: EnvironmentalAndSocialImpactDrawerType,
+) => {
+  const {
+    open,
+    toggle,
+    refetch,
+    environmentalAndSocialImpact,
+    projectId,
+    otherSubMenu,
+  } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
@@ -36,43 +45,61 @@ const EnvironmentalAndSocialImpactDrawer = (props: EnvironmentalAndSocialImpactD
     environmental_impact_assessment_conducted: yup.boolean().nullable(),
     mitigation_measures_implemented: yup.boolean().nullable(),
     social_impact_assessment_conducted: yup.boolean().nullable(),
-    resettlement_and_compensation_measures_implemented: yup.boolean().nullable(),
-    remark: yup.string().nullable()
+    resettlement_and_compensation_measures_implemented: yup
+      .boolean()
+      .nullable(),
+    remark: yup.string().nullable(),
   });
 
   const isEdit = Boolean(environmentalAndSocialImpact?.id);
 
-  const createEnvironmentalAndSocialImpact = async (body: IApiPayload<EnvironmentalAndSocialImpact>) =>
-    projectOtherApiSecondService<EnvironmentalAndSocialImpact>().create(otherSubMenu?.apiRoute || '', body);
+  const createEnvironmentalAndSocialImpact = async (
+    body: IApiPayload<EnvironmentalAndSocialImpact>,
+  ) =>
+    projectOtherApiSecondService<EnvironmentalAndSocialImpact>().create(
+      otherSubMenu?.apiRoute || "",
+      body,
+    );
 
-  const editEnvironmentalAndSocialImpact = async (body: IApiPayload<EnvironmentalAndSocialImpact>) =>
+  const editEnvironmentalAndSocialImpact = async (
+    body: IApiPayload<EnvironmentalAndSocialImpact>,
+  ) =>
     projectOtherApiSecondService<EnvironmentalAndSocialImpact>().update(
-      otherSubMenu?.apiRoute || '',
-      environmentalAndSocialImpact?.id || '',
-      body
+      otherSubMenu?.apiRoute || "",
+      environmentalAndSocialImpact?.id || "",
+      body,
     );
 
   const getPayload = (values: EnvironmentalAndSocialImpact) => ({
     data: {
       project_id: projectId,
-      environmental_impact_assessment_conducted: values.environmental_impact_assessment_conducted,
+      environmental_impact_assessment_conducted:
+        values.environmental_impact_assessment_conducted,
       mitigation_measures_implemented: values.mitigation_measures_implemented,
-      social_impact_assessment_conducted: values.social_impact_assessment_conducted,
-      resettlement_and_compensation_measures_implemented: values.resettlement_and_compensation_measures_implemented,
+      social_impact_assessment_conducted:
+        values.social_impact_assessment_conducted,
+      resettlement_and_compensation_measures_implemented:
+        values.resettlement_and_compensation_measures_implemented,
       remark: values.remark,
-      id: environmentalAndSocialImpact?.id
+      id: environmentalAndSocialImpact?.id,
     },
-    files: uploadableFile ? [uploadableFile] : []
+    files: uploadableFile ? [uploadableFile] : [],
   });
 
   const handleClose = () => toggle();
 
   const onActionSuccess = async (
     response: IApiResponse<EnvironmentalAndSocialImpact>,
-    payload: IApiPayload<EnvironmentalAndSocialImpact>
+    payload: IApiPayload<EnvironmentalAndSocialImpact>,
   ) => {
     if (payload.files.length > 0) {
-      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.environmentalAndSocialImpact, response.payload.id, '', '');
+      await uploadFile(
+        payload.files[0],
+        uploadableProjectFileTypes.other.environmentalAndSocialImpact,
+        response.payload.id,
+        "",
+        "",
+      );
     }
 
     refetch();
@@ -82,7 +109,9 @@ const EnvironmentalAndSocialImpactDrawer = (props: EnvironmentalAndSocialImpactD
   return (
     <CustomSideDrawer
       title={`project.other.environmental-and-social-impact.${
-        isEdit ? `edit-environmental-and-social-impact` : `create-environmental-and-social-impact`
+        isEdit
+          ? `edit-environmental-and-social-impact`
+          : `create-environmental-and-social-impact`
       }`}
       handleClose={handleClose}
       open={open}
@@ -91,19 +120,31 @@ const EnvironmentalAndSocialImpactDrawer = (props: EnvironmentalAndSocialImpactD
         <FormPageWrapper
           edit={isEdit}
           title={`project.other.environmental-and-social-impact.${
-            isEdit ? `edit-environmental-and-social-impact` : `create-environmental-and-social-impact`
+            isEdit
+              ? `edit-environmental-and-social-impact`
+              : `create-environmental-and-social-impact`
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...environmentalAndSocialImpact
+            ...environmentalAndSocialImpact,
           }}
-          createActionFunc={isEdit ? editEnvironmentalAndSocialImpact : createEnvironmentalAndSocialImpact}
+          createActionFunc={
+            isEdit
+              ? editEnvironmentalAndSocialImpact
+              : createEnvironmentalAndSocialImpact
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<EnvironmentalAndSocialImpact>) => {
-            return <EnvironmentalAndSocialImpactForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
+            return (
+              <EnvironmentalAndSocialImpactForm
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+              />
+            );
           }}
         </FormPageWrapper>
       )}

@@ -1,10 +1,18 @@
-import { Box, Card, CardActions, CardContent, CardHeader, Grid, Typography } from '@mui/material';
-import { ReactElement } from 'react';
-import FileDrawer from 'src/views/components/custom/files-drawer';
-import ModelActionComponent from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
-import DescCollapse from '../desc-collapse';
-import { ResourceSpecification } from 'src/types/resource';
+import {
+  Box,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Grid,
+  Typography,
+} from "@mui/material";
+import { ReactElement } from "react";
+import FileDrawer from "src/views/components/custom/files-drawer";
+import ModelActionComponent from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
+import DescCollapse from "../desc-collapse";
+import { ResourceSpecification } from "src/types/resource";
 
 interface ResourceSpecificationCardProps {
   resourceSpecification: ResourceSpecification;
@@ -21,10 +29,10 @@ const ResourceSpecificationCard: React.FC<ResourceSpecificationCardProps> = ({
   onDelete,
   refetch,
   t,
-  children
+  children,
 }) => {
   return (
-    <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <Card sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <CardContent>
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -41,14 +49,17 @@ const ResourceSpecificationCard: React.FC<ResourceSpecificationCardProps> = ({
           <Grid item xs={12}>
             <Box display="flex" alignItems="center">
               <Typography variant="subtitle1">
-                <strong>{t('resource.resource-specification.form.datasource')}:</strong> {resourceSpecification.datasource}
+                <strong>
+                  {t("resource.resource-specification.form.datasource")}:
+                </strong>{" "}
+                {resourceSpecification.datasource}
               </Typography>
             </Box>
           </Grid>
         </Grid>
       </CardContent>
       <Box sx={{ flexGrow: 1 }} />
-      <CardActions sx={{ justifyContent: 'flex-end' }}>
+      <CardActions sx={{ justifyContent: "flex-end" }}>
         <Box>
           <FileDrawer id={resourceSpecification.id} type="" />
           <Box display="flex" alignItems="end">
@@ -60,7 +71,12 @@ const ResourceSpecificationCard: React.FC<ResourceSpecificationCardProps> = ({
               title=""
               postAction={() => {}}
             />
-            <RowOptions onEdit={onEdit} onDelete={() => onDelete(resourceSpecification.id)} item={resourceSpecification} options={[]} />
+            <RowOptions
+              onEdit={onEdit}
+              onDelete={() => onDelete(resourceSpecification.id)}
+              item={resourceSpecification}
+              options={[]}
+            />
           </Box>
         </Box>
       </CardActions>

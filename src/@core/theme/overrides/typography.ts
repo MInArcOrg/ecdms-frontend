@@ -1,95 +1,95 @@
 // ** Type Import
-import { OwnerStateThemeType } from './';
+import { OwnerStateThemeType } from "./";
 
 const typography = {
   MuiTypography: {
     styleOverrides: {
       gutterBottom: ({ theme }: OwnerStateThemeType) => ({
-        marginBottom: theme.spacing(2)
-      })
+        marginBottom: theme.spacing(2),
+      }),
     },
     variants: [
       {
-        props: { variant: 'h1' },
+        props: { variant: "h1" },
         style: ({ theme }: OwnerStateThemeType) => ({
-          color: theme.palette.text.primary
-        })
+          color: theme.palette.text.primary,
+        }),
       },
       {
-        props: { variant: 'h2' },
+        props: { variant: "h2" },
         style: ({ theme }: OwnerStateThemeType) => ({
-          color: theme.palette.text.primary
-        })
+          color: theme.palette.text.primary,
+        }),
       },
       {
-        props: { variant: 'h3' },
+        props: { variant: "h3" },
         style: ({ theme }: OwnerStateThemeType) => ({
-          color: theme.palette.text.primary
-        })
+          color: theme.palette.text.primary,
+        }),
       },
       {
-        props: { variant: 'h4' },
+        props: { variant: "h4" },
         style: ({ theme }: OwnerStateThemeType) => ({
-          color: theme.palette.text.primary
-        })
+          color: theme.palette.text.primary,
+        }),
       },
       {
-        props: { variant: 'h5' },
+        props: { variant: "h5" },
         style: ({ theme }: OwnerStateThemeType) => ({
-          color: theme.palette.text.primary
-        })
+          color: theme.palette.text.primary,
+        }),
       },
       {
-        props: { variant: 'h6' },
+        props: { variant: "h6" },
         style: ({ theme }: OwnerStateThemeType) => ({
-          color: theme.palette.text.primary
-        })
+          color: theme.palette.text.primary,
+        }),
       },
       {
-        props: { variant: 'subtitle1' },
+        props: { variant: "subtitle1" },
         style: ({ theme }: OwnerStateThemeType) => ({
-          color: theme.palette.text.primary
-        })
+          color: theme.palette.text.primary,
+        }),
       },
       {
-        props: { variant: 'subtitle2' },
+        props: { variant: "subtitle2" },
         style: ({ theme }: OwnerStateThemeType) => ({
-          color: theme.palette.text.secondary
-        })
+          color: theme.palette.text.secondary,
+        }),
       },
       {
-        props: { variant: 'body1' },
+        props: { variant: "body1" },
         style: ({ theme }: OwnerStateThemeType) => ({
-          color: theme.palette.text.primary
-        })
+          color: theme.palette.text.primary,
+        }),
       },
       {
-        props: { variant: 'body2' },
+        props: { variant: "body2" },
         style: ({ theme }: OwnerStateThemeType) => ({
-          color: theme.palette.text.secondary
-        })
+          color: theme.palette.text.secondary,
+        }),
       },
       {
-        props: { variant: 'button' },
+        props: { variant: "button" },
         style: ({ theme }: OwnerStateThemeType) => ({
-          textTransform: 'none',
-          color: theme.palette.text.primary
-        })
+          textTransform: "none",
+          color: theme.palette.text.primary,
+        }),
       },
       {
-        props: { variant: 'caption' },
+        props: { variant: "caption" },
         style: ({ theme }: OwnerStateThemeType) => ({
-          color: theme.palette.text.secondary
-        })
+          color: theme.palette.text.secondary,
+        }),
       },
       {
-        props: { variant: 'overline' },
+        props: { variant: "overline" },
         style: ({ theme }: OwnerStateThemeType) => ({
-          color: theme.palette.text.secondary
-        })
-      }
-    ]
-  }
+          color: theme.palette.text.secondary,
+        }),
+      },
+    ],
+  },
 };
 
 export default typography;

@@ -1,13 +1,22 @@
-import { Card, FormControl, Grid, Select, ListItemButton, ListItemText, MenuItem, Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import Icon from 'src/@core/components/icon';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import Can from 'src/layouts/components/acl/Can';
-import ProjectInfo from '../../../pages/projects/detail/project-info-drawer';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { DetailMenuItem } from 'src/types/layouts/detail-layout';
+import {
+  Card,
+  FormControl,
+  Grid,
+  Select,
+  ListItemButton,
+  ListItemText,
+  MenuItem,
+  Typography,
+} from "@mui/material";
+import { Box } from "@mui/system";
+import Icon from "src/@core/components/icon";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Can from "src/layouts/components/acl/Can";
+import ProjectInfo from "../../../pages/projects/detail/project-info-drawer";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { DetailMenuItem } from "src/types/layouts/detail-layout";
 
 interface DetailMenuProps {
   id: string;
@@ -19,31 +28,56 @@ interface DetailMenuProps {
   isProject?: boolean;
 }
 
-const DetailMenu: React.FC<DetailMenuProps> = ({ id, menuItems, activeMenuId, setActiveMenu, goBack, typeId, isProject = false }) => {
+const DetailMenu: React.FC<DetailMenuProps> = ({
+  id,
+  menuItems,
+  activeMenuId,
+  setActiveMenu,
+  goBack,
+  typeId,
+  isProject = false,
+}) => {
   const theme = useTheme();
-  const desktop = useMediaQuery(theme.breakpoints.up('md'));
+  const desktop = useMediaQuery(theme.breakpoints.up("md"));
   const { t } = useTranslation();
 
   const [detailForm, setDetailForm] = useState(false);
 
   return (
-    <Card sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 2 }}>
+    <Card
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        p: 2,
+      }}
+    >
       {isProject && detailForm && (
-        <ProjectInfo show={detailForm} toggleDrawer={() => setDetailForm(!detailForm)} title="Project Info" id={id} />
+        <ProjectInfo
+          show={detailForm}
+          toggleDrawer={() => setDetailForm(!detailForm)}
+          title="Project Info"
+          id={id}
+        />
       )}
       <Box
         sx={{
-          display: 'flex',
-          alignItems: 'center',
+          display: "flex",
+          alignItems: "center",
           gap: 5,
-          pl: 3
+          pl: 3,
         }}
       >
-        <Icon icon="tabler:arrow-left" fontSize={20} cursor="pointer" onClick={() => goBack()} />
+        <Icon
+          icon="tabler:arrow-left"
+          fontSize={20}
+          cursor="pointer"
+          onClick={() => goBack()}
+        />
         <Typography
           variant="body2"
           color="primary"
-          sx={{ cursor: 'pointer' }}
+          sx={{ cursor: "pointer" }}
           onClick={() => {
             setDetailForm(true);
           }}
@@ -59,15 +93,15 @@ const DetailMenu: React.FC<DetailMenuProps> = ({ id, menuItems, activeMenuId, se
                 <ListItemButton
                   onClick={() => setActiveMenu(item.path)}
                   sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                     py: 2,
                     px: 3,
                     borderRadius: 1,
-                    '&.Mui-selected': {
-                      textDecoration: 'underline'
-                    }
+                    "&.Mui-selected": {
+                      textDecoration: "underline",
+                    },
                   }}
                   selected={activeMenuId === item.id}
                 >
@@ -84,7 +118,9 @@ const DetailMenu: React.FC<DetailMenuProps> = ({ id, menuItems, activeMenuId, se
             defaultValue={activeMenuId}
             value={activeMenuId}
             onChange={(e) => {
-              const path = menuItems.find((item) => item.id === e.target.value)?.path || '';
+              const path =
+                menuItems.find((item) => item.id === e.target.value)?.path ||
+                "";
               setActiveMenu(path);
             }}
           >

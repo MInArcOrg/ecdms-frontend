@@ -1,16 +1,16 @@
-import { Grid } from '@mui/material';
-import { useQuery } from '@tanstack/react-query';
-import { FormikProps } from 'formik';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { gridSpacing } from 'src/configs/app-constants';
-import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
-import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
-import { MobileNetwork } from 'src/types/project/other';
-import CustomSelect from 'src/views/shared/form/custom-select';
-import CustomSwitch from 'src/views/shared/form/custom-switch';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
+import { Grid } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
+import { FormikProps } from "formik";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { gridSpacing } from "src/configs/app-constants";
+import { projectMasterModels } from "src/constants/master-data/project-general-master-constants";
+import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service";
+import { MobileNetwork } from "src/types/project/other";
+import CustomSelect from "src/views/shared/form/custom-select";
+import CustomSwitch from "src/views/shared/form/custom-switch";
+import CustomTextBox from "src/views/shared/form/custom-text-box";
+import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 
 interface MobileNetworkFormProps {
   formik: FormikProps<MobileNetwork>;
@@ -18,15 +18,19 @@ interface MobileNetworkFormProps {
   onFileChange: (file: File | null) => void;
 }
 
-const MobileNetworkForm: React.FC<MobileNetworkFormProps> = ({ formik, file, onFileChange }) => {
+const MobileNetworkForm: React.FC<MobileNetworkFormProps> = ({
+  formik,
+  file,
+  onFileChange,
+}) => {
   const { t: transl } = useTranslation();
 
   const { data: mobileNetworkTypes } = useQuery({
-    queryKey: ['mobile-network-types'],
+    queryKey: ["mobile-network-types"],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll({
-        filter: { model: projectMasterModels.mobileNetworkType.model }
-      })
+        filter: { model: projectMasterModels.mobileNetworkType.model },
+      }),
   });
 
   return (
@@ -34,15 +38,19 @@ const MobileNetworkForm: React.FC<MobileNetworkFormProps> = ({ formik, file, onF
       <Grid item xs={12}>
         <CustomSelect
           fullWidth
-          label={transl('project.other.mobile-network.details.mobile-network-type')}
-          placeholder={transl('project.other.mobile-network.details.mobile-network-type')}
+          label={transl(
+            "project.other.mobile-network.details.mobile-network-type",
+          )}
+          placeholder={transl(
+            "project.other.mobile-network.details.mobile-network-type",
+          )}
           name="mobile_network_type_id"
           size="small"
           sx={{ mb: 2 }}
           options={
             mobileNetworkTypes?.payload.map((type) => ({
               label: type.title,
-              value: type.id
+              value: type.id,
             })) || []
           }
         />
@@ -51,7 +59,7 @@ const MobileNetworkForm: React.FC<MobileNetworkFormProps> = ({ formik, file, onF
           <Grid item xs={12} sm={6} md={4}>
             <CustomSwitch
               name="call_towers"
-              label={transl('project.other.mobile-network.details.call-towers')}
+              label={transl("project.other.mobile-network.details.call-towers")}
               checked={formik.values.call_towers || false}
               onChange={formik.handleChange}
             />
@@ -59,7 +67,7 @@ const MobileNetworkForm: React.FC<MobileNetworkFormProps> = ({ formik, file, onF
           <Grid item xs={12} sm={6} md={4}>
             <CustomSwitch
               name="antennas"
-              label={transl('project.other.mobile-network.details.antennas')}
+              label={transl("project.other.mobile-network.details.antennas")}
               checked={formik.values.antennas || false}
               onChange={formik.handleChange}
             />
@@ -67,15 +75,17 @@ const MobileNetworkForm: React.FC<MobileNetworkFormProps> = ({ formik, file, onF
           <Grid item xs={12} sm={6} md={4}>
             <CustomSwitch
               name="base_stations"
-              label={transl('project.other.mobile-network.details.base-stations')}
+              label={transl(
+                "project.other.mobile-network.details.base-stations",
+              )}
               checked={formik.values.base_stations || false}
               onChange={formik.handleChange}
-            />{' '}
+            />{" "}
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <CustomSwitch
               name="repeaters"
-              label={transl('project.other.mobile-network.details.repeaters')}
+              label={transl("project.other.mobile-network.details.repeaters")}
               checked={formik.values.repeaters || false}
               onChange={formik.handleChange}
             />
@@ -83,7 +93,7 @@ const MobileNetworkForm: React.FC<MobileNetworkFormProps> = ({ formik, file, onF
           <Grid item xs={12} sm={6} md={4}>
             <CustomSwitch
               name="switches"
-              label={transl('project.other.mobile-network.details.switches')}
+              label={transl("project.other.mobile-network.details.switches")}
               checked={formik.values.switches || false}
               onChange={formik.handleChange}
             />
@@ -92,8 +102,8 @@ const MobileNetworkForm: React.FC<MobileNetworkFormProps> = ({ formik, file, onF
 
         <CustomTextBox
           fullWidth
-          label={transl('project.other.mobile-network.details.others')}
-          placeholder={transl('project.other.mobile-network.details.others')}
+          label={transl("project.other.mobile-network.details.others")}
+          placeholder={transl("project.other.mobile-network.details.others")}
           name="others"
           size="small"
           multiline
@@ -103,7 +113,11 @@ const MobileNetworkForm: React.FC<MobileNetworkFormProps> = ({ formik, file, onF
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
+        <CustomFileUpload
+          label={transl("common.form.file-upload")}
+          file={file}
+          onFileChange={onFileChange}
+        />
       </Grid>
     </Grid>
   );

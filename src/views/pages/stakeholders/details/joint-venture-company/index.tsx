@@ -1,18 +1,18 @@
-import { Box } from '@mui/material';
-import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import jointVentureCompanyApiService from 'src/services/stakeholder/joint-venture-company-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
-import JointVentureCompanyCard from './joint-venture-company-card';
-import JointVentureCompanyDrawer from './joint-venture-company-drawer';
-import type { JointVentureCompany } from 'src/types/stakeholder/joint-venture-company';
-import { jointVentureCompanyColumns } from './joint-venture-company-row';
+import { Box } from "@mui/material";
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import jointVentureCompanyApiService from "src/services/stakeholder/joint-venture-company-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import type { GetRequestParam, IApiResponse } from "src/types/requests";
+import { formatCreatedAt } from "src/utils/formatter/date";
+import ItemsListing from "src/views/shared/listing";
+import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer";
+import JointVentureCompanyCard from "./joint-venture-company-card";
+import JointVentureCompanyDrawer from "./joint-venture-company-drawer";
+import type { JointVentureCompany } from "src/types/stakeholder/joint-venture-company";
+import { jointVentureCompanyColumns } from "./joint-venture-company-row";
 
 interface JointVentureCompanyListProps {
   model: string;
@@ -20,17 +20,23 @@ interface JointVentureCompanyListProps {
   typeId: string;
 }
 
-const JointVentureCompanyList: React.FC<JointVentureCompanyListProps> = ({ stakeholderId }) => {
+const JointVentureCompanyList: React.FC<JointVentureCompanyListProps> = ({
+  stakeholderId,
+}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<JointVentureCompany | null>(null);
+  const [selectedRow, setSelectedRow] = useState<JointVentureCompany | null>(
+    null,
+  );
   const [isLoading, setIsLoading] = useState(true);
   const { t } = useTranslation();
 
-  const fetchJointVentureCompanies = (params: GetRequestParam): Promise<IApiResponse<JointVentureCompany[]>> => {
+  const fetchJointVentureCompanies = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<JointVentureCompany[]>> => {
     return jointVentureCompanyApiService.getAll({
       ...params,
-      filter: { ...params.filter, stakeholder_id: stakeholderId }
+      filter: { ...params.filter, stakeholder_id: stakeholderId },
     });
   };
 
@@ -38,10 +44,10 @@ const JointVentureCompanyList: React.FC<JointVentureCompanyListProps> = ({ stake
     data: jointVentureCompanies,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<JointVentureCompany[]>({
-    queryKey: ['jointVentureCompanies'],
-    fetchFunction: fetchJointVentureCompanies
+    queryKey: ["jointVentureCompanies"],
+    fetchFunction: fetchJointVentureCompanies,
   });
 
   const toggleDrawer = () => {
@@ -69,23 +75,39 @@ const JointVentureCompanyList: React.FC<JointVentureCompanyListProps> = ({ stake
     setSelectedRow(jointVentureCompany);
   };
 
-  const mapJointVentureCompanyToDetailItems = (jointVentureCompany: JointVentureCompany): { title: string; value: string }[] => [
-    { title: t('stakeholder.joint-venture-company.companyName'), value: jointVentureCompany.company_name },
-    { title: t('stakeholder.joint-venture-company.specialization'), value: jointVentureCompany.specialization || 'N/A' },
+  const mapJointVentureCompanyToDetailItems = (
+    jointVentureCompany: JointVentureCompany,
+  ): { title: string; value: string }[] => [
     {
-      title: t('stakeholder.joint-venture-company.rolesAndResponsibilities'),
-      value: jointVentureCompany.roles_and_responsibilities || 'N/A'
+      title: t("stakeholder.joint-venture-company.companyName"),
+      value: jointVentureCompany.company_name,
     },
     {
-      title: t('stakeholder.joint-venture-company.ownershipPercentage'),
-      value: jointVentureCompany.ownership_percentage?.toString() || 'N/A'
+      title: t("stakeholder.joint-venture-company.specialization"),
+      value: jointVentureCompany.specialization || "N/A",
     },
-    { title: t('stakeholder.joint-venture-company.description'), value: jointVentureCompany.description },
-    { title: t('stakeholder.joint-venture-company.reference'), value: jointVentureCompany.reference },
     {
-      title: t('common.table-columns.created-at'),
-      value: jointVentureCompany?.created_at ? formatCreatedAt(jointVentureCompany.created_at) : 'N/A'
-    }
+      title: t("stakeholder.joint-venture-company.rolesAndResponsibilities"),
+      value: jointVentureCompany.roles_and_responsibilities || "N/A",
+    },
+    {
+      title: t("stakeholder.joint-venture-company.ownershipPercentage"),
+      value: jointVentureCompany.ownership_percentage?.toString() || "N/A",
+    },
+    {
+      title: t("stakeholder.joint-venture-company.description"),
+      value: jointVentureCompany.description,
+    },
+    {
+      title: t("stakeholder.joint-venture-company.reference"),
+      value: jointVentureCompany.reference,
+    },
+    {
+      title: t("common.table-columns.created-at"),
+      value: jointVentureCompany?.created_at
+        ? formatCreatedAt(jointVentureCompany.created_at)
+        : "N/A",
+    },
   ];
 
   useEffect(() => {
@@ -112,20 +134,27 @@ const JointVentureCompanyList: React.FC<JointVentureCompanyListProps> = ({ stake
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapJointVentureCompanyToDetailItems(selectedRow as JointVentureCompany)}
-          id={selectedRow?.id || ''}
+          data={mapJointVentureCompanyToDetailItems(
+            selectedRow as JointVentureCompany,
+          )}
+          id={selectedRow?.id || ""}
           hasReference={true}
           fileType="JOINT_VENTURE_COMPANY"
-          title={t('stakeholder.joint-venture-company.details')}
+          title={t("stakeholder.joint-venture-company.details")}
         />
       )}
 
       <ItemsListing
-        title={t('stakeholder.joint-venture-company.title')}
+        title={t("stakeholder.joint-venture-company.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: jointVentureCompanyColumns(handleClickDetail, handleEdit, handleDelete, t)
+          headers: jointVentureCompanyColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+          ),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -142,9 +171,9 @@ const JointVentureCompanyList: React.FC<JointVentureCompanyListProps> = ({ stake
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: 'create',
-            subject: 'jointventurecompany'
-          }
+            action: "create",
+            subject: "jointventurecompany",
+          },
         }}
         fetchDataFunction={refetch}
         items={jointVentureCompanies || []}

@@ -1,19 +1,23 @@
-import { AxiosResponse } from 'axios';
-import { ProjectGeneralMaster } from 'src/types/general/general-master';
-import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import { AxiosResponse } from "axios";
+import { ProjectGeneralMaster } from "src/types/general/general-master";
+import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const projectGeneralMasterDataApiService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<ProjectGeneralMaster[]>> =>
+  getAll: (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<ProjectGeneralMaster[]>> =>
     buildGetRequest(`/masterdata/project-general-master-data`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
-  getAllResourceProjectGeneralMaster: (params: GetRequestParam): Promise<IApiResponse<ProjectGeneralMaster[]>> =>
+  getAllResourceProjectGeneralMaster: (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<ProjectGeneralMaster[]>> =>
     buildGetRequest(`/masterdata/project-general-master-data`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -34,13 +38,18 @@ const projectGeneralMasterDataApiService = {
         throw error;
       }),
 
-  create: (body: IApiPayload<ProjectGeneralMaster>): Promise<IApiResponse<ProjectGeneralMaster>> =>
+  create: (
+    body: IApiPayload<ProjectGeneralMaster>,
+  ): Promise<IApiResponse<ProjectGeneralMaster>> =>
     buildPostRequest(`/masterdata/project-general-master-data`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
-  update: (idx: string, body: IApiPayload<ProjectGeneralMaster>): Promise<IApiResponse<ProjectGeneralMaster>> =>
+  update: (
+    idx: string,
+    body: IApiPayload<ProjectGeneralMaster>,
+  ): Promise<IApiResponse<ProjectGeneralMaster>> =>
     buildPutRequest(`/masterdata/project-general-master-data/${idx}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -48,7 +57,7 @@ const projectGeneralMasterDataApiService = {
       }),
   createResourceProjectGeneralMaster: (
     type: string,
-    body: IApiPayload<ProjectGeneralMaster>
+    body: IApiPayload<ProjectGeneralMaster>,
   ): Promise<IApiResponse<ProjectGeneralMaster>> =>
     buildPostRequest(`/masterdata/project-general-master-data`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
@@ -58,13 +67,13 @@ const projectGeneralMasterDataApiService = {
   updateResourceProjectGeneralMaster: (
     type: string,
     idx: string,
-    body: IApiPayload<ProjectGeneralMaster>
+    body: IApiPayload<ProjectGeneralMaster>,
   ): Promise<IApiResponse<ProjectGeneralMaster>> =>
     buildPutRequest(`/masterdata/project-general-master-data/${idx}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default projectGeneralMasterDataApiService;

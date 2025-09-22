@@ -1,13 +1,13 @@
-import { Grid } from '@mui/material';
-import { useQuery } from '@tanstack/react-query';
-import { FormikProps } from 'formik';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import stakeholderApiService from 'src/services/stakeholder/stakeholder-service';
-import { ProjectStakeholder } from 'src/types/project/project-stakeholder';
-import CustomSelect from 'src/views/shared/form/custom-select';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
+import { Grid } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
+import { FormikProps } from "formik";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import stakeholderApiService from "src/services/stakeholder/stakeholder-service";
+import { ProjectStakeholder } from "src/types/project/project-stakeholder";
+import CustomSelect from "src/views/shared/form/custom-select";
+import CustomTextBox from "src/views/shared/form/custom-text-box";
+import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 
 interface ProjectStakeholderFormProps {
   formik: FormikProps<ProjectStakeholder>;
@@ -15,12 +15,16 @@ interface ProjectStakeholderFormProps {
   onFileChange: (file: File | null) => void;
 }
 
-const ProjectStakeholderForm: React.FC<ProjectStakeholderFormProps> = ({ formik, file, onFileChange }) => {
+const ProjectStakeholderForm: React.FC<ProjectStakeholderFormProps> = ({
+  formik,
+  file,
+  onFileChange,
+}) => {
   const { t: transl } = useTranslation();
-  console.log('formik error', formik.errors);
+  console.log("formik error", formik.errors);
   const { data: stakeholders } = useQuery({
-    queryKey: ['stakeholders'],
-    queryFn: () => stakeholderApiService.getAll({})
+    queryKey: ["stakeholders"],
+    queryFn: () => stakeholderApiService.getAll({}),
   });
   return (
     <Grid container spacing={3}>
@@ -28,11 +32,11 @@ const ProjectStakeholderForm: React.FC<ProjectStakeholderFormProps> = ({ formik,
         <CustomSelect
           size="small"
           name="stakeholder_id"
-          label={transl('project.stakeholder.form.stakeholder')}
+          label={transl("project.stakeholder.form.stakeholder")}
           options={
             stakeholders?.payload?.map((stakeholder) => ({
               value: stakeholder.id,
-              label: stakeholder.trade_name
+              label: stakeholder.trade_name,
             })) || []
           }
         />
@@ -41,8 +45,8 @@ const ProjectStakeholderForm: React.FC<ProjectStakeholderFormProps> = ({ formik,
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl('project.stakeholder.form.title')}
-          placeholder={transl('project.stakeholder.form.title')}
+          label={transl("project.stakeholder.form.title")}
+          placeholder={transl("project.stakeholder.form.title")}
           name="title"
           size="small"
           value={formik.values.title}
@@ -53,8 +57,8 @@ const ProjectStakeholderForm: React.FC<ProjectStakeholderFormProps> = ({ formik,
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl('project.stakeholder.form.description')}
-          placeholder={transl('project.stakeholder.form.description')}
+          label={transl("project.stakeholder.form.description")}
+          placeholder={transl("project.stakeholder.form.description")}
           name="description"
           multiline
           rows={4}
@@ -66,8 +70,8 @@ const ProjectStakeholderForm: React.FC<ProjectStakeholderFormProps> = ({ formik,
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl('project.stakeholder.form.remark')}
-          placeholder={transl('project.stakeholder.form.remark')}
+          label={transl("project.stakeholder.form.remark")}
+          placeholder={transl("project.stakeholder.form.remark")}
           name="remark"
           multiline
           rows={2}
@@ -77,7 +81,11 @@ const ProjectStakeholderForm: React.FC<ProjectStakeholderFormProps> = ({ formik,
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
+        <CustomFileUpload
+          label={transl("common.form.file-upload")}
+          file={file}
+          onFileChange={onFileChange}
+        />
       </Grid>
     </Grid>
   );

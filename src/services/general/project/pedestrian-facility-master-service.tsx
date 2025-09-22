@@ -1,13 +1,15 @@
-import { AxiosResponse } from 'axios';
-import { PedestrianFacility } from 'src/types/general/general-master';
-import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import { AxiosResponse } from "axios";
+import { PedestrianFacility } from "src/types/general/general-master";
+import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const pedestrianFacilityMasterService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<PedestrianFacility[]>> =>
+  getAll: (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<PedestrianFacility[]>> =>
     buildGetRequest(`/masterdata/pedestrian-facilities`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -22,7 +24,10 @@ const pedestrianFacilityMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/pedestrian-facilities-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as PedestrianFacility[])
+      .then(
+        (response: AxiosResponse<IApiResponse>) =>
+          response.data.payload as unknown as PedestrianFacility[],
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -40,12 +45,15 @@ const pedestrianFacilityMasterService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (id: string, body: IApiPayload<PedestrianFacility>): Promise<IApiResponse> =>
+  update: (
+    id: string,
+    body: IApiPayload<PedestrianFacility>,
+  ): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/pedestrian-facilities/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default pedestrianFacilityMasterService;

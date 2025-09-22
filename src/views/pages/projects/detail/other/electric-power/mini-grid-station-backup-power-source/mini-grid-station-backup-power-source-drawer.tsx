@@ -1,16 +1,19 @@
-'use client';
-import type { FormikProps } from 'formik';
-import type { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import MiniGridStationBackupPowerSourceForm from './mini-grid-station-backup-power-source-form';
-import { useState } from 'react';
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { uploadFile } from 'src/services/utils/file-utils';
-import type { MiniGridStationBackupPowerSource, MiniGridStation } from 'src/types/project/other';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+"use client";
+import type { FormikProps } from "formik";
+import type { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import MiniGridStationBackupPowerSourceForm from "./mini-grid-station-backup-power-source-form";
+import { useState } from "react";
+import projectOtherApiSecondService from "src/services/project/project-other-second-service";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { uploadFile } from "src/services/utils/file-utils";
+import type {
+  MiniGridStationBackupPowerSource,
+  MiniGridStation,
+} from "src/types/project/other";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
 
 interface MiniGridStationBackupPowerSourceDrawerType {
   open: boolean;
@@ -22,8 +25,18 @@ interface MiniGridStationBackupPowerSourceDrawerType {
   miniGridStations: MiniGridStation[];
 }
 
-const MiniGridStationBackupPowerSourceDrawer = (props: MiniGridStationBackupPowerSourceDrawerType) => {
-  const { open, toggle, refetch, miniGridStationBackupPowerSource, projectId, otherSubMenu, miniGridStations } = props;
+const MiniGridStationBackupPowerSourceDrawer = (
+  props: MiniGridStationBackupPowerSourceDrawerType,
+) => {
+  const {
+    open,
+    toggle,
+    refetch,
+    miniGridStationBackupPowerSource,
+    projectId,
+    otherSubMenu,
+    miniGridStations,
+  } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
@@ -32,8 +45,10 @@ const MiniGridStationBackupPowerSourceDrawer = (props: MiniGridStationBackupPowe
   };
 
   const validationSchema = yup.object().shape({
-    mini_grid_station_id: yup.string().required('Mini Grid Station is required'),
-    name: yup.string().required('Name is required'),
+    mini_grid_station_id: yup
+      .string()
+      .required("Mini Grid Station is required"),
+    name: yup.string().required("Name is required"),
     capacity: yup
       .number()
       .nullable()
@@ -42,7 +57,7 @@ const MiniGridStationBackupPowerSourceDrawer = (props: MiniGridStationBackupPowe
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value))
-      .integer('Must be an integer'),
+      .integer("Must be an integer"),
     distribution_lines_total_length: yup
       .number()
       .nullable()
@@ -51,22 +66,29 @@ const MiniGridStationBackupPowerSourceDrawer = (props: MiniGridStationBackupPowe
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value))
-      .integer('Must be an integer'),
+      .integer("Must be an integer"),
     commissioning_date: yup.date().nullable(),
     other: yup.string().nullable(),
-    remark: yup.string().nullable()
+    remark: yup.string().nullable(),
   });
 
   const isEdit = Boolean(miniGridStationBackupPowerSource?.id);
 
-  const createMiniGridStationBackupPowerSource = async (body: IApiPayload<MiniGridStationBackupPowerSource>) =>
-    projectOtherApiSecondService<MiniGridStationBackupPowerSource>().create(otherSubMenu?.apiRoute || '', body);
+  const createMiniGridStationBackupPowerSource = async (
+    body: IApiPayload<MiniGridStationBackupPowerSource>,
+  ) =>
+    projectOtherApiSecondService<MiniGridStationBackupPowerSource>().create(
+      otherSubMenu?.apiRoute || "",
+      body,
+    );
 
-  const editMiniGridStationBackupPowerSource = async (body: IApiPayload<MiniGridStationBackupPowerSource>) =>
+  const editMiniGridStationBackupPowerSource = async (
+    body: IApiPayload<MiniGridStationBackupPowerSource>,
+  ) =>
     projectOtherApiSecondService<MiniGridStationBackupPowerSource>().update(
-      otherSubMenu?.apiRoute || '',
-      miniGridStationBackupPowerSource?.id || '',
-      body
+      otherSubMenu?.apiRoute || "",
+      miniGridStationBackupPowerSource?.id || "",
+      body,
     );
 
   const getPayload = (values: MiniGridStationBackupPowerSource) => ({
@@ -81,24 +103,24 @@ const MiniGridStationBackupPowerSourceDrawer = (props: MiniGridStationBackupPowe
       commissioning_date: values.commissioning_date,
       other: values.other,
       remark: values.remark,
-      id: miniGridStationBackupPowerSource?.id
+      id: miniGridStationBackupPowerSource?.id,
     },
-    files: uploadableFile ? [uploadableFile] : []
+    files: uploadableFile ? [uploadableFile] : [],
   });
 
   const handleClose = () => toggle();
 
   const onActionSuccess = async (
     response: IApiResponse<MiniGridStationBackupPowerSource>,
-    payload: IApiPayload<MiniGridStationBackupPowerSource>
+    payload: IApiPayload<MiniGridStationBackupPowerSource>,
   ) => {
     if (payload.files.length > 0) {
       await uploadFile(
         payload.files[0],
         uploadableProjectFileTypes.other.mini_grid_station_backup_power_source,
         response.payload.id,
-        '',
-        ''
+        "",
+        "",
       );
     }
 
@@ -109,7 +131,9 @@ const MiniGridStationBackupPowerSourceDrawer = (props: MiniGridStationBackupPowe
   return (
     <CustomSideDrawer
       title={`project.other.mini-grid-station-backup-power-source.${
-        isEdit ? `edit-mini-grid-station-backup-power-source` : `create-mini-grid-station-backup-power-source`
+        isEdit
+          ? `edit-mini-grid-station-backup-power-source`
+          : `create-mini-grid-station-backup-power-source`
       }`}
       handleClose={handleClose}
       open={open}
@@ -118,14 +142,20 @@ const MiniGridStationBackupPowerSourceDrawer = (props: MiniGridStationBackupPowe
         <FormPageWrapper
           edit={isEdit}
           title={`project.other.mini-grid-station-backup-power-source.${
-            isEdit ? `edit-mini-grid-station-backup-power-source` : `create-mini-grid-station-backup-power-source`
+            isEdit
+              ? `edit-mini-grid-station-backup-power-source`
+              : `create-mini-grid-station-backup-power-source`
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...miniGridStationBackupPowerSource
+            ...miniGridStationBackupPowerSource,
           }}
-          createActionFunc={isEdit ? editMiniGridStationBackupPowerSource : createMiniGridStationBackupPowerSource}
+          createActionFunc={
+            isEdit
+              ? editMiniGridStationBackupPowerSource
+              : createMiniGridStationBackupPowerSource
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

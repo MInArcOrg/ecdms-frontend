@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import projectSafetyStatusApiService from 'src/services/project/project-safety-status-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
-import ProjectSafetyStatusCard from './project-safety-status-card';
-import ProjectSafetyStatusDrawer from './project-safety-status-drawer';
-import type { ProjectSafetyStatus } from 'src/types/project/project-safety-status ';
-import { safetyStatusColumns } from './project-safety-status-row';
+import { Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import projectSafetyStatusApiService from "src/services/project/project-safety-status-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import type { GetRequestParam, IApiResponse } from "src/types/requests";
+import { formatCreatedAt } from "src/utils/formatter/date";
+import ItemsListing from "src/views/shared/listing";
+import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer";
+import ProjectSafetyStatusCard from "./project-safety-status-card";
+import ProjectSafetyStatusDrawer from "./project-safety-status-drawer";
+import type { ProjectSafetyStatus } from "src/types/project/project-safety-status ";
+import { safetyStatusColumns } from "./project-safety-status-row";
 
 interface ProjectSafetyStatusListProps {
   model: string;
@@ -22,16 +22,22 @@ interface ProjectSafetyStatusListProps {
   typeId: string;
 }
 
-const ProjectSafetyStatusList: React.FC<ProjectSafetyStatusListProps> = ({ projectId }) => {
+const ProjectSafetyStatusList: React.FC<ProjectSafetyStatusListProps> = ({
+  projectId,
+}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<ProjectSafetyStatus | null>(null);
+  const [selectedRow, setSelectedRow] = useState<ProjectSafetyStatus | null>(
+    null,
+  );
   const { t } = useTranslation();
 
-  const fetchSafetyStatuses = (params: GetRequestParam): Promise<IApiResponse<ProjectSafetyStatus[]>> => {
+  const fetchSafetyStatuses = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<ProjectSafetyStatus[]>> => {
     return projectSafetyStatusApiService.getAll({
       ...params,
-      filter: { ...params.filter, project_id: projectId }
+      filter: { ...params.filter, project_id: projectId },
     });
   };
 
@@ -40,10 +46,10 @@ const ProjectSafetyStatusList: React.FC<ProjectSafetyStatusListProps> = ({ proje
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<ProjectSafetyStatus[]>({
-    queryKey: ['safetyStatuses'],
-    fetchFunction: fetchSafetyStatuses
+    queryKey: ["safetyStatuses"],
+    fetchFunction: fetchSafetyStatuses,
   });
 
   const toggleDrawer = () => {
@@ -71,16 +77,35 @@ const ProjectSafetyStatusList: React.FC<ProjectSafetyStatusListProps> = ({ proje
     setSelectedRow(safetyStatus);
   };
 
-  const mapSafetyStatusToDetailItems = (safetyStatus: ProjectSafetyStatus): { title: string; value: string }[] => [
-    { title: t('project.safety-status.fatal-injuries'), value: safetyStatus?.no_of_fatal_injuries?.toString() || 'N/A' },
-    { title: t('project.safety-status.major-injuries'), value: safetyStatus?.no_of_major_injuries?.toString() || 'N/A' },
-    { title: t('project.safety-status.minor-injuries'), value: safetyStatus?.no_of_minor_injuries?.toString() || 'N/A' },
-    { title: t('project.safety-status.measures-taken'), value: safetyStatus?.measures_taken || 'N/A' },
-    { title: t('project.safety-status.lesson-learned'), value: safetyStatus?.lesson_learned || 'N/A' },
+  const mapSafetyStatusToDetailItems = (
+    safetyStatus: ProjectSafetyStatus,
+  ): { title: string; value: string }[] => [
     {
-      title: t('common.table-columns.created-at'),
-      value: safetyStatus?.created_at ? formatCreatedAt(safetyStatus.created_at) : 'N/A'
-    }
+      title: t("project.safety-status.fatal-injuries"),
+      value: safetyStatus?.no_of_fatal_injuries?.toString() || "N/A",
+    },
+    {
+      title: t("project.safety-status.major-injuries"),
+      value: safetyStatus?.no_of_major_injuries?.toString() || "N/A",
+    },
+    {
+      title: t("project.safety-status.minor-injuries"),
+      value: safetyStatus?.no_of_minor_injuries?.toString() || "N/A",
+    },
+    {
+      title: t("project.safety-status.measures-taken"),
+      value: safetyStatus?.measures_taken || "N/A",
+    },
+    {
+      title: t("project.safety-status.lesson-learned"),
+      value: safetyStatus?.lesson_learned || "N/A",
+    },
+    {
+      title: t("common.table-columns.created-at"),
+      value: safetyStatus?.created_at
+        ? formatCreatedAt(safetyStatus.created_at)
+        : "N/A",
+    },
   ];
 
   return (
@@ -99,20 +124,27 @@ const ProjectSafetyStatusList: React.FC<ProjectSafetyStatusListProps> = ({ proje
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapSafetyStatusToDetailItems(selectedRow as ProjectSafetyStatus)}
-          id={selectedRow?.id || ''}
+          data={mapSafetyStatusToDetailItems(
+            selectedRow as ProjectSafetyStatus,
+          )}
+          id={selectedRow?.id || ""}
           hasReference={true}
           fileType="PROJECT_SAFETY_STATUS"
-          title={t('project.safety-status.details')}
+          title={t("project.safety-status.details")}
         />
       )}
 
       <ItemsListing
-        title={t('project.safety-status.title')}
+        title={t("project.safety-status.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: safetyStatusColumns(handleClickDetail, handleEdit, handleDelete, t)
+          headers: safetyStatusColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+          ),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -129,9 +161,9 @@ const ProjectSafetyStatusList: React.FC<ProjectSafetyStatusListProps> = ({ proje
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: 'create',
-            subject: 'projectsafetystatus'
-          }
+            action: "create",
+            subject: "projectsafetystatus",
+          },
         }}
         fetchDataFunction={refetch}
         items={safetyStatuses || []}

@@ -1,10 +1,14 @@
-import type { AxiosResponse } from 'axios';
-import type { SurfaceType } from 'src/types/general/general-master';
-import type { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import type { AxiosResponse } from "axios";
+import type { SurfaceType } from "src/types/general/general-master";
+import type {
+  GetRequestParam,
+  IApiPayload,
+  IApiResponse,
+} from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const surfaceTypeMasterService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<SurfaceType[]>> =>
@@ -22,7 +26,10 @@ const surfaceTypeMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/surface-types-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as SurfaceType[])
+      .then(
+        (response: AxiosResponse<IApiResponse>) =>
+          response.data.payload as unknown as SurfaceType[],
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -45,7 +52,7 @@ const surfaceTypeMasterService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default surfaceTypeMasterService;

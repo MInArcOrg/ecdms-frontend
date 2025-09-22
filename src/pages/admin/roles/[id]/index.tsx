@@ -1,32 +1,41 @@
-import { Box, Button, Card, CardContent, CardHeader, CircularProgress, Grid, Typography } from '@mui/material';
-import { styled } from '@mui/system';
-import { useRouter } from 'next/router';
-import CardStatsHorizontal from 'src/@core/components/card-statistics/card-stats-horizontal';
-import { gridSpacing } from 'src/configs/app-constants';
-import useRole from 'src/hooks/admin/role-hook';
-import User from 'src/types/admin/user';
-import AssignPermissionComponent from 'src/views/admin/roles/assign-permission/module-form';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CircularProgress,
+  Grid,
+  Typography,
+} from "@mui/material";
+import { styled } from "@mui/system";
+import { useRouter } from "next/router";
+import CardStatsHorizontal from "src/@core/components/card-statistics/card-stats-horizontal";
+import { gridSpacing } from "src/configs/app-constants";
+import useRole from "src/hooks/admin/role-hook";
+import User from "src/types/admin/user";
+import AssignPermissionComponent from "src/views/admin/roles/assign-permission/module-form";
 
 const StyledCard = styled(Card)(({ theme }) => ({
   minWidth: 275,
-  marginBottom: theme.spacing(2)
+  marginBottom: theme.spacing(2),
 }));
 
 const Title = styled(Typography)(({ theme }) => ({
   fontSize: 14,
   color: theme.palette.text.secondary,
-  marginBottom: theme.spacing(1)
+  marginBottom: theme.spacing(1),
 }));
 
 const Pos = styled(Typography)(({ theme }) => ({
   marginBottom: 12,
-  color: theme.palette.text.secondary
+  color: theme.palette.text.secondary,
 }));
 
 const ActionButtons = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  justifyContent: 'flex-end',
-  marginTop: theme.spacing(2)
+  display: "flex",
+  justifyContent: "flex-end",
+  marginTop: theme.spacing(2),
 }));
 
 const RoleDetail = () => {
@@ -71,19 +80,36 @@ const RoleDetail = () => {
         </StyledCard>
         <Grid container spacing={gridSpacing}>
           <Grid item md={6}>
-            <CardStatsHorizontal icon="users" stats={role?.totalUsers || 0} title="Total Users" />
+            <CardStatsHorizontal
+              icon="users"
+              stats={role?.totalUsers || 0}
+              title="Total Users"
+            />
           </Grid>
           <Grid item md={6}>
-            {' '}
-            <CardStatsHorizontal icon="permissions" stats={role?.totalPermissions || 0} title="Total Permissions" />
+            {" "}
+            <CardStatsHorizontal
+              icon="permissions"
+              stats={role?.totalPermissions || 0}
+              title="Total Permissions"
+            />
           </Grid>
         </Grid>
 
         <ActionButtons>
-          <Button variant="contained" color="primary" onClick={() => router.push(`/edit-role/${id}`)}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => router.push(`/edit-role/${id}`)}
+          >
             Edit Role
           </Button>
-          <Button variant="contained" color="secondary" style={{ marginLeft: '1rem' }} onClick={() => handleDeleteRole(String(id))}>
+          <Button
+            variant="contained"
+            color="secondary"
+            style={{ marginLeft: "1rem" }}
+            onClick={() => handleDeleteRole(String(id))}
+          >
             Delete Role
           </Button>
         </ActionButtons>
@@ -110,11 +136,11 @@ const RoleDetail = () => {
   );
 
   function handleDeleteRole(roleId: string) {
-    console.log('Deleting role with id:', roleId);
+    console.log("Deleting role with id:", roleId);
   }
 };
 RoleDetail.acl = {
-  action: 'read',
-  subject: 'role'
+  action: "read",
+  subject: "role",
 };
 export default RoleDetail;

@@ -1,27 +1,27 @@
-import { Icon } from '@iconify/react';
-import { Box, Button, Typography } from '@mui/material';
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import CustomChip from 'src/@core/components/mui/chip';
+import { Icon } from "@iconify/react";
+import { Box, Button, Typography } from "@mui/material";
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import CustomChip from "src/@core/components/mui/chip";
 
 // import CentersDrawer from 'src/views/components/centers/CentersDrawer'
-import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const createData = (title: any, description: any, role: any, Action: any) => {
   return { title, description, role, Action };
 };
 
 const rows = [
-  createData('Frozen yoghurt', 159, 'admin', 24),
-  createData('Ice cream sandwich', 237, 'notadmin', 37),
-  createData('Eclair', 262, 'admin', 24),
-  createData('Cupcake', 305, 'superadmin', 67)
+  createData("Frozen yoghurt", 159, "admin", 24),
+  createData("Ice cream sandwich", 237, "notadmin", 37),
+  createData("Eclair", 262, "admin", 24),
+  createData("Cupcake", 305, "superadmin", 67),
 ];
 function Document() {
   // const [selectedRow, setSelectedRow] = useState(undefined);
@@ -32,9 +32,9 @@ function Document() {
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'end'
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "end",
       }}
     >
       <Icon
@@ -57,10 +57,10 @@ function Document() {
         <Table sx={{ minWidth: 50 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>{t('Name')}</TableCell>
-              <TableCell align="right">{t('Description')}</TableCell>
-              <TableCell align="center">{t('Status')}</TableCell>
-              <TableCell align="right">{t('Action')}</TableCell>
+              <TableCell>{t("Name")}</TableCell>
+              <TableCell align="right">{t("Description")}</TableCell>
+              <TableCell align="center">{t("Status")}</TableCell>
+              <TableCell align="right">{t("Action")}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -68,9 +68,9 @@ function Document() {
               <TableRow
                 key={row.title}
                 sx={{
-                  '&:last-of-type td, &:last-of-type th': {
-                    border: 0
-                  }
+                  "&:last-of-type td, &:last-of-type th": {
+                    border: 0,
+                  },
                 }}
               >
                 <TableCell component="th" scope="row">
@@ -78,9 +78,9 @@ function Document() {
                     href={`/centers/subDepartements/${row.description}`}
                     component={Link}
                     sx={{
-                      textDecoration: 'none',
-                      display: 'block',
-                      color: 'primary.main'
+                      textDecoration: "none",
+                      display: "block",
+                      color: "primary.main",
                     }}
                   >
                     {row.title}

@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import type { FormikProps } from 'formik';
-import type { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import GeothermalPowerWellForm from './geothermal-power-well-form';
+import type { FormikProps } from "formik";
+import type { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import GeothermalPowerWellForm from "./geothermal-power-well-form";
 
-import { useState } from 'react';
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { uploadFile } from 'src/services/utils/file-utils';
-import type { GeothermalPowerWell } from 'src/types/project/other';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import { useState } from "react";
+import projectOtherApiSecondService from "src/services/project/project-other-second-service";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { uploadFile } from "src/services/utils/file-utils";
+import type { GeothermalPowerWell } from "src/types/project/other";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
 
 interface GeothermalPowerWellDrawerType {
   open: boolean;
@@ -24,7 +24,14 @@ interface GeothermalPowerWellDrawerType {
 }
 
 const GeothermalPowerWellDrawer = (props: GeothermalPowerWellDrawerType) => {
-  const { open, toggle, refetch, geothermalPowerWell, projectId, otherSubMenu } = props;
+  const {
+    open,
+    toggle,
+    refetch,
+    geothermalPowerWell,
+    projectId,
+    otherSubMenu,
+  } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
@@ -37,7 +44,7 @@ const GeothermalPowerWellDrawer = (props: GeothermalPowerWellDrawerType) => {
     wells_number: yup
       .number()
       .nullable()
-      .integer('Must be an integer')
+      .integer("Must be an integer")
       .transform((value) => (isNaN(value) ? null : value)),
     depth: yup
       .number()
@@ -55,18 +62,29 @@ const GeothermalPowerWellDrawer = (props: GeothermalPowerWellDrawerType) => {
     plant_life: yup
       .number()
       .nullable()
-      .integer('Must be an integer')
+      .integer("Must be an integer")
       .transform((value) => (isNaN(value) ? null : value)),
-    remark: yup.string().nullable()
+    remark: yup.string().nullable(),
   });
 
   const isEdit = Boolean(geothermalPowerWell?.id);
 
-  const createGeothermalPowerWell = async (body: IApiPayload<GeothermalPowerWell>) =>
-    projectOtherApiSecondService<GeothermalPowerWell>().create(otherSubMenu?.apiRoute || '', body);
+  const createGeothermalPowerWell = async (
+    body: IApiPayload<GeothermalPowerWell>,
+  ) =>
+    projectOtherApiSecondService<GeothermalPowerWell>().create(
+      otherSubMenu?.apiRoute || "",
+      body,
+    );
 
-  const editGeothermalPowerWell = async (body: IApiPayload<GeothermalPowerWell>) =>
-    projectOtherApiSecondService<GeothermalPowerWell>().update(otherSubMenu?.apiRoute || '', geothermalPowerWell?.id || '', body);
+  const editGeothermalPowerWell = async (
+    body: IApiPayload<GeothermalPowerWell>,
+  ) =>
+    projectOtherApiSecondService<GeothermalPowerWell>().update(
+      otherSubMenu?.apiRoute || "",
+      geothermalPowerWell?.id || "",
+      body,
+    );
 
   const getPayload = (values: GeothermalPowerWell) => ({
     data: {
@@ -79,16 +97,25 @@ const GeothermalPowerWellDrawer = (props: GeothermalPowerWellDrawerType) => {
       temperature_at_bottom_hole: values.temperature_at_bottom_hole,
       plant_life: values.plant_life,
       remark: values.remark,
-      id: geothermalPowerWell?.id
+      id: geothermalPowerWell?.id,
     },
-    files: uploadableFile ? [uploadableFile] : []
+    files: uploadableFile ? [uploadableFile] : [],
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<GeothermalPowerWell>, payload: IApiPayload<GeothermalPowerWell>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<GeothermalPowerWell>,
+    payload: IApiPayload<GeothermalPowerWell>,
+  ) => {
     if (payload.files.length > 0) {
-      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.geothermalPowerWell, response.payload.id, '', '');
+      await uploadFile(
+        payload.files[0],
+        uploadableProjectFileTypes.other.geothermalPowerWell,
+        response.payload.id,
+        "",
+        "",
+      );
     }
 
     refetch();
@@ -97,25 +124,39 @@ const GeothermalPowerWellDrawer = (props: GeothermalPowerWellDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.other.geothermal-power-well.${isEdit ? `edit-geothermal-power-well` : `create-geothermal-power-well`}`}
+      title={`project.other.geothermal-power-well.${
+        isEdit ? `edit-geothermal-power-well` : `create-geothermal-power-well`
+      }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.geothermal-power-well.${isEdit ? `edit-geothermal-power-well` : `create-geothermal-power-well`}`}
+          title={`project.other.geothermal-power-well.${
+            isEdit
+              ? `edit-geothermal-power-well`
+              : `create-geothermal-power-well`
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...geothermalPowerWell
+            ...geothermalPowerWell,
           }}
-          createActionFunc={isEdit ? editGeothermalPowerWell : createGeothermalPowerWell}
+          createActionFunc={
+            isEdit ? editGeothermalPowerWell : createGeothermalPowerWell
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<GeothermalPowerWell>) => {
-            return <GeothermalPowerWellForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
+            return (
+              <GeothermalPowerWellForm
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+              />
+            );
           }}
         </FormPageWrapper>
       )}

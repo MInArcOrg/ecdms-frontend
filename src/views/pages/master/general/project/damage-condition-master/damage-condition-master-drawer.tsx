@@ -1,13 +1,13 @@
-import { FormikProps } from 'formik';
-import { useState } from 'react';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import DamageConditionMasterForm from './damage-condition-master-form';
-import { DamageCondition } from 'src/types/general/general-master';
-import roadLengthTypeMasterService from 'src/services/general/project/damage-condition-master-service';
+import { FormikProps } from "formik";
+import { useState } from "react";
+import { uploadFile } from "src/services/utils/file-utils";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import DamageConditionMasterForm from "./damage-condition-master-form";
+import { DamageCondition } from "src/types/general/general-master";
+import roadLengthTypeMasterService from "src/services/general/project/damage-condition-master-service";
 
 interface DamageConditionMasterDrawerType {
   open: boolean;
@@ -17,11 +17,13 @@ interface DamageConditionMasterDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required('Title is required'),
-  description: yup.string().required('Description is required')
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
 });
 
-const DamageConditionMasterDrawer = (props: DamageConditionMasterDrawerType) => {
+const DamageConditionMasterDrawer = (
+  props: DamageConditionMasterDrawerType,
+) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,21 +31,25 @@ const DamageConditionMasterDrawer = (props: DamageConditionMasterDrawerType) => 
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createDamageConditionMaster = async (body: IApiPayload<DamageCondition>) => {
+  const createDamageConditionMaster = async (
+    body: IApiPayload<DamageCondition>,
+  ) => {
     return await roadLengthTypeMasterService.create(body);
   };
 
-  const editDamageConditionMaster = async (body: IApiPayload<DamageCondition>) => {
-    return await roadLengthTypeMasterService.update(masterData?.id || '', body);
+  const editDamageConditionMaster = async (
+    body: IApiPayload<DamageCondition>,
+  ) => {
+    return await roadLengthTypeMasterService.update(masterData?.id || "", body);
   };
 
   const getPayload = (values: DamageCondition) => {
     const payload = {
       data: {
         ...values,
-        id: masterData?.id
+        id: masterData?.id,
       },
-      files: uploadableFile ? [uploadableFile] : []
+      files: uploadableFile ? [uploadableFile] : [],
     };
     return payload;
   };
@@ -52,9 +58,18 @@ const DamageConditionMasterDrawer = (props: DamageConditionMasterDrawerType) => 
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<DamageCondition>, payload: IApiPayload<DamageCondition>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<DamageCondition>,
+    payload: IApiPayload<DamageCondition>,
+  ) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `DAMAGE_CONDITION`, response.payload.id, '', '');
+      uploadFile(
+        payload.files[0],
+        `DAMAGE_CONDITION`,
+        response.payload.id,
+        "",
+        "",
+      );
     }
     refetch();
     handleClose();
@@ -62,7 +77,9 @@ const DamageConditionMasterDrawer = (props: DamageConditionMasterDrawerType) => 
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-damage-condition' : 'create-damage-condition'}`}
+      title={`master-data.general-master.${
+        isEdit ? "edit-damage-condition" : "create-damage-condition"
+      }`}
       handleClose={handleClose}
       open={open}
     >
@@ -73,7 +90,9 @@ const DamageConditionMasterDrawer = (props: DamageConditionMasterDrawerType) => 
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editDamageConditionMaster : createDamageConditionMaster}
+          createActionFunc={
+            isEdit ? editDamageConditionMaster : createDamageConditionMaster
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

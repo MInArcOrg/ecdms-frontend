@@ -1,13 +1,13 @@
-import { FormikProps } from 'formik';
-import { useState } from 'react';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import RoadSafetyFeatureMasterForm from './road-safety-feature-master-form';
-import { RoadSafetyFeature } from 'src/types/general/general-master';
-import roadSafetyMasterService from 'src/services/general/project/road-safety-feature-master-service';
+import { FormikProps } from "formik";
+import { useState } from "react";
+import { uploadFile } from "src/services/utils/file-utils";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import RoadSafetyFeatureMasterForm from "./road-safety-feature-master-form";
+import { RoadSafetyFeature } from "src/types/general/general-master";
+import roadSafetyMasterService from "src/services/general/project/road-safety-feature-master-service";
 
 interface RoadSafetyFeatureMasterDrawerType {
   open: boolean;
@@ -17,11 +17,13 @@ interface RoadSafetyFeatureMasterDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required('Title is required'),
-  description: yup.string().required('Description is required')
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
 });
 
-const RoadSafetyFeatureMasterDrawer = (props: RoadSafetyFeatureMasterDrawerType) => {
+const RoadSafetyFeatureMasterDrawer = (
+  props: RoadSafetyFeatureMasterDrawerType,
+) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,21 +31,25 @@ const RoadSafetyFeatureMasterDrawer = (props: RoadSafetyFeatureMasterDrawerType)
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createRoadSafetyFeatureMaster = async (body: IApiPayload<RoadSafetyFeature>) => {
+  const createRoadSafetyFeatureMaster = async (
+    body: IApiPayload<RoadSafetyFeature>,
+  ) => {
     return await roadSafetyMasterService.create(body);
   };
 
-  const editRoadSafetyFeatureMaster = async (body: IApiPayload<RoadSafetyFeature>) => {
-    return await roadSafetyMasterService.update(masterData?.id || '', body);
+  const editRoadSafetyFeatureMaster = async (
+    body: IApiPayload<RoadSafetyFeature>,
+  ) => {
+    return await roadSafetyMasterService.update(masterData?.id || "", body);
   };
 
   const getPayload = (values: RoadSafetyFeature) => {
     const payload = {
       data: {
         ...values,
-        id: masterData?.id
+        id: masterData?.id,
       },
-      files: uploadableFile ? [uploadableFile] : []
+      files: uploadableFile ? [uploadableFile] : [],
     };
     return payload;
   };
@@ -52,9 +58,18 @@ const RoadSafetyFeatureMasterDrawer = (props: RoadSafetyFeatureMasterDrawerType)
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<RoadSafetyFeature>, payload: IApiPayload<RoadSafetyFeature>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<RoadSafetyFeature>,
+    payload: IApiPayload<RoadSafetyFeature>,
+  ) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `ROAD_SAFETY_FEATURE`, response.payload.id, '', '');
+      uploadFile(
+        payload.files[0],
+        `ROAD_SAFETY_FEATURE`,
+        response.payload.id,
+        "",
+        "",
+      );
     }
     refetch();
     handleClose();
@@ -62,7 +77,9 @@ const RoadSafetyFeatureMasterDrawer = (props: RoadSafetyFeatureMasterDrawerType)
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-road-safety-feature' : 'create-road-safety-feature'}`}
+      title={`master-data.general-master.${
+        isEdit ? "edit-road-safety-feature" : "create-road-safety-feature"
+      }`}
       handleClose={handleClose}
       open={open}
     >
@@ -73,7 +90,9 @@ const RoadSafetyFeatureMasterDrawer = (props: RoadSafetyFeatureMasterDrawerType)
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editRoadSafetyFeatureMaster : createRoadSafetyFeatureMaster}
+          createActionFunc={
+            isEdit ? editRoadSafetyFeatureMaster : createRoadSafetyFeatureMaster
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

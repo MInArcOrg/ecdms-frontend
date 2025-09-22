@@ -1,21 +1,23 @@
 // components/EndwallTypeInletMasterList.tsx
-import { Card, CardContent } from '@mui/material';
-import React, { Fragment, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { EndwallTypeInlet } from 'src/types/general/general-master';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import EndwallTypeInletMasterCard from './endwall-type-inlet-master-card';
-import EndwallTypeInletMasterDrawer from './endwall-type-inlet-master-drawer';
-import endwallTypeInletMasterService from 'src/services/general/project/endwall-type-inlet-master-service';
+import { Card, CardContent } from "@mui/material";
+import React, { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import { EndwallTypeInlet } from "src/types/general/general-master";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import EndwallTypeInletMasterCard from "./endwall-type-inlet-master-card";
+import EndwallTypeInletMasterDrawer from "./endwall-type-inlet-master-drawer";
+import endwallTypeInletMasterService from "src/services/general/project/endwall-type-inlet-master-service";
 
 const EndwallTypeInletMasterList: React.FC = () => {
   const [selectedRow, setSelectedRow] = useState<EndwallTypeInlet | null>(null);
   const { t } = useTranslation();
-  const fetchEndwallTypeInletMaster = (params: GetRequestParam): Promise<IApiResponse<EndwallTypeInlet[]>> => {
+  const fetchEndwallTypeInletMaster = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<EndwallTypeInlet[]>> => {
     return endwallTypeInletMasterService.getAll(params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
@@ -25,10 +27,10 @@ const EndwallTypeInletMasterList: React.FC = () => {
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<EndwallTypeInlet[]>({
-    queryKey: ['general-master', 'endwall-type-inlet'],
-    fetchFunction: fetchEndwallTypeInletMaster
+    queryKey: ["general-master", "endwall-type-inlet"],
+    fetchFunction: fetchEndwallTypeInletMaster,
   });
   const handleDelete = async (id: string) => {
     await endwallTypeInletMasterService.delete(id);
@@ -62,7 +64,7 @@ const EndwallTypeInletMasterList: React.FC = () => {
             title={t(`master-data.general-master.endwall-type-inlets`)}
             ItemViewComponent={({ data }) => (
               <EndwallTypeInletMasterCard
-                type={'endwall-type-inlet'}
+                type={"endwall-type-inlet"}
                 generalMaster={data}
                 onDelete={handleDelete}
                 onEdit={handleEdit}
@@ -76,9 +78,9 @@ const EndwallTypeInletMasterList: React.FC = () => {
               onClick: toggleDrawer,
               onlyIcon: true,
               permission: {
-                action: 'create',
-                subject: `endwalltypeinlet`
-              }
+                action: "create",
+                subject: `endwalltypeinlet`,
+              },
             }}
             fetchDataFunction={refetch}
             items={types || []}

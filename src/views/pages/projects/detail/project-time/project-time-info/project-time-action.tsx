@@ -1,15 +1,15 @@
-import { Box } from '@mui/material';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { ProjectTime } from 'src/types/project/project-time';
-import FileDrawer from 'src/views/components/custom/files-drawer';
-import ModelActionComponent from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
+import { Box } from "@mui/material";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { ProjectTime } from "src/types/project/project-time";
+import FileDrawer from "src/views/components/custom/files-drawer";
+import ModelActionComponent from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
 
 const ProjectTimeAction = ({
   projectTime,
   refetch,
   onDelete,
-  onEdit
+  onEdit,
 }: {
   projectTime: ProjectTime;
   refetch: () => void;
@@ -19,28 +19,32 @@ const ProjectTimeAction = ({
   return (
     <Box display="flex" justifyContent="end" alignItems="end">
       <Box display="flex" gap={2}>
-        <FileDrawer id={projectTime.id} type={uploadableProjectFileTypes.time} /> &nbsp;
-        <Box sx={{ display: 'flex' }}>
+        <FileDrawer
+          id={projectTime.id}
+          type={uploadableProjectFileTypes.time}
+        />{" "}
+        &nbsp;
+        <Box sx={{ display: "flex" }}>
           <ModelActionComponent
             model="ProjectTime"
             model_id={projectTime.id}
             refetchModel={refetch}
             resubmit={function (): void {
-              throw new Error('Function not implemented.');
+              throw new Error("Function not implemented.");
             }}
-            title={''}
+            title={""}
             postAction={function (): void {
-              throw new Error('Function not implemented.');
+              throw new Error("Function not implemented.");
             }}
           />
           <RowOptions
             deletePermissionRule={{
-              action: 'delete',
-              subject: 'projecttime'
+              action: "delete",
+              subject: "projecttime",
             }}
             editPermissionRule={{
-              action: 'update',
-              subject: 'projecttime'
+              action: "update",
+              subject: "projecttime",
             }}
             onEdit={onEdit}
             onDelete={() => onDelete(projectTime.id)}

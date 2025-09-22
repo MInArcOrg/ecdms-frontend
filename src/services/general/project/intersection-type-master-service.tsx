@@ -1,13 +1,15 @@
-import { AxiosResponse } from 'axios';
-import { IntersectionType } from 'src/types/general/general-master';
-import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import { AxiosResponse } from "axios";
+import { IntersectionType } from "src/types/general/general-master";
+import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const intersectionTypeMasterService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<IntersectionType[]>> =>
+  getAll: (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<IntersectionType[]>> =>
     buildGetRequest(`/masterdata/intersection-types`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -22,7 +24,10 @@ const intersectionTypeMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/intersection-types-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as IntersectionType[])
+      .then(
+        (response: AxiosResponse<IApiResponse>) =>
+          response.data.payload as unknown as IntersectionType[],
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -40,12 +45,15 @@ const intersectionTypeMasterService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (id: string, body: IApiPayload<IntersectionType>): Promise<IApiResponse> =>
+  update: (
+    id: string,
+    body: IApiPayload<IntersectionType>,
+  ): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/intersection-types/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default intersectionTypeMasterService;

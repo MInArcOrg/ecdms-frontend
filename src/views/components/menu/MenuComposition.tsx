@@ -1,17 +1,24 @@
 // ** React Imports
-import { KeyboardEvent, useEffect, useRef, useState, MouseEvent, TouchEvent } from 'react';
+import {
+  KeyboardEvent,
+  useEffect,
+  useRef,
+  useState,
+  MouseEvent,
+  TouchEvent,
+} from "react";
 
 // ** MUI Imports
-import Grow from '@mui/material/Grow';
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
-import Popper from '@mui/material/Popper';
-import MenuList from '@mui/material/MenuList';
-import MenuItem from '@mui/material/MenuItem';
-import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from "@mui/material/Grow";
+import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import Popper from "@mui/material/Popper";
+import MenuList from "@mui/material/MenuList";
+import MenuItem from "@mui/material/MenuItem";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 
 // ** Hook Import
-import { useSettings } from 'src/@core/hooks/useSettings';
+import { useSettings } from "src/@core/hooks/useSettings";
 
 const MenuComposition = () => {
   // ** States
@@ -29,17 +36,20 @@ const MenuComposition = () => {
   };
 
   const handleClose = (event: MouseEvent | TouchEvent): void => {
-    if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
+    if (
+      anchorRef.current &&
+      anchorRef.current.contains(event.target as HTMLElement)
+    ) {
       return;
     }
     setOpen(false);
   };
 
   const handleListKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Tab') {
+    if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);
-    } else if (event.key === 'Escape') {
+    } else if (event.key === "Escape") {
       setOpen(false);
     }
   };
@@ -63,9 +73,9 @@ const MenuComposition = () => {
         aria-haspopup="true"
         onClick={handleToggle}
         id="composition-button"
-        aria-expanded={open ? 'true' : undefined}
-        aria-controls={open ? 'composition-menu' : undefined}
-        sx={{ '& + div': { zIndex: (theme) => theme.zIndex.modal } }}
+        aria-expanded={open ? "true" : undefined}
+        aria-controls={open ? "composition-menu" : undefined}
+        sx={{ "& + div": { zIndex: (theme) => theme.zIndex.modal } }}
       >
         Open Menu
       </Button>
@@ -79,28 +89,37 @@ const MenuComposition = () => {
         popperOptions={{
           modifiers: [
             {
-              name: 'flip',
+              name: "flip",
               options: {
                 enabled: true,
-                boundary: 'window'
-              }
-            }
-          ]
+                boundary: "window",
+              },
+            },
+          ],
         }}
       >
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}
             style={{
-              transformOrigin: placement === 'bottom-start' ? 'left top' : 'left bottom'
+              transformOrigin:
+                placement === "bottom-start" ? "left top" : "left bottom",
             }}
           >
             <Paper
-              elevation={skin === 'bordered' ? 0 : 6}
-              sx={skin === 'bordered' ? { border: (theme) => `1px solid ${theme.palette.divider}` } : {}}
+              elevation={skin === "bordered" ? 0 : 6}
+              sx={
+                skin === "bordered"
+                  ? { border: (theme) => `1px solid ${theme.palette.divider}` }
+                  : {}
+              }
             >
               <ClickAwayListener onClickAway={() => setOpen(false)}>
-                <MenuList autoFocusItem={open} id="composition-menu" onKeyDown={handleListKeyDown}>
+                <MenuList
+                  autoFocusItem={open}
+                  id="composition-menu"
+                  onKeyDown={handleListKeyDown}
+                >
                   <MenuItem onClick={handleClose}>Profile</MenuItem>
                   <MenuItem onClick={handleClose}>My account</MenuItem>
                   <MenuItem onClick={handleClose}>Logout</MenuItem>

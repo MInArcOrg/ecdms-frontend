@@ -1,11 +1,19 @@
-'use client';
+"use client";
 
-import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
-import type React from 'react';
-import { useTranslation } from 'react-i18next';
-import type { CulvertRoadOverInformation } from 'src/types/project/other';
-import ModelAction from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Divider,
+  Typography,
+} from "@mui/material";
+import type React from "react";
+import { useTranslation } from "react-i18next";
+import type { CulvertRoadOverInformation } from "src/types/project/other";
+import ModelAction from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
 
 interface CulvertRoadOverInformationCardProps {
   culvertRoadOverInformation: CulvertRoadOverInformation;
@@ -15,19 +23,20 @@ interface CulvertRoadOverInformationCardProps {
   onDetail: (culvertRoadOverInformation: CulvertRoadOverInformation) => void;
 }
 
-const CulvertRoadOverInformationCard: React.FC<CulvertRoadOverInformationCardProps> = ({
-  culvertRoadOverInformation,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail
-}) => {
+const CulvertRoadOverInformationCard: React.FC<
+  CulvertRoadOverInformationCardProps
+> = ({ culvertRoadOverInformation, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
     <Card sx={{ p: 2 }}>
       <CardContent>
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          mb={1}
+        >
           <Typography variant="h5" fontWeight="bold">
             <Typography
               noWrap
@@ -35,9 +44,9 @@ const CulvertRoadOverInformationCard: React.FC<CulvertRoadOverInformationCardPro
               onClick={() => onDetail(culvertRoadOverInformation)}
               sx={{
                 fontWeight: 500,
-                textDecoration: 'none',
-                color: 'text.secondary',
-                '&:hover': { color: 'primary.main' }
+                textDecoration: "none",
+                color: "text.secondary",
+                "&:hover": { color: "primary.main" },
               }}
             >
               {culvertRoadOverInformation?.id.slice(0, 5)}...
@@ -48,23 +57,31 @@ const CulvertRoadOverInformationCard: React.FC<CulvertRoadOverInformationCardPro
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.culvert-road-over-information.details.name')}: {culvertRoadOverInformation?.name || 'N/A'}
+            {t("project.other.culvert-road-over-information.details.name")}:{" "}
+            {culvertRoadOverInformation?.name || "N/A"}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.culvert-road-over-information.details.carriage-way-width')}:{' '}
-            {culvertRoadOverInformation?.carriage_way_width || 'N/A'}
+            {t(
+              "project.other.culvert-road-over-information.details.carriage-way-width",
+            )}
+            : {culvertRoadOverInformation?.carriage_way_width || "N/A"}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.culvert-road-over-information.details.lane-number')}: {culvertRoadOverInformation?.lane_number || 'N/A'}
+            {t(
+              "project.other.culvert-road-over-information.details.lane-number",
+            )}
+            : {culvertRoadOverInformation?.lane_number || "N/A"}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.culvert-road-over-information.details.guard-rail-type-id')}:{' '}
-            {culvertRoadOverInformation?.guard_rail_type_id || 'N/A'}
+            {t(
+              "project.other.culvert-road-over-information.details.guard-rail-type-id",
+            )}
+            : {culvertRoadOverInformation?.guard_rail_type_id || "N/A"}
           </Typography>
         </Box>
       </CardContent>
 
-      <CardActions sx={{ justifyContent: 'flex-end' }}>
+      <CardActions sx={{ justifyContent: "flex-end" }}>
         <ModelAction
           model="CulvertRoadOverInformation"
           model_id={culvertRoadOverInformation.id}
@@ -75,12 +92,12 @@ const CulvertRoadOverInformationCard: React.FC<CulvertRoadOverInformationCardPro
         />
         <RowOptions
           deletePermissionRule={{
-            action: 'delete',
-            subject: 'culvertroadoverinformation'
+            action: "delete",
+            subject: "culvertroadoverinformation",
           }}
           editPermissionRule={{
-            action: 'update',
-            subject: 'culvertroadoverinformation'
+            action: "update",
+            subject: "culvertroadoverinformation",
           }}
           onEdit={() => onEdit(culvertRoadOverInformation)}
           onDelete={() => onDelete(culvertRoadOverInformation.id)}

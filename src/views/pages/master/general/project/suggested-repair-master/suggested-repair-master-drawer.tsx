@@ -1,13 +1,13 @@
-import { FormikProps } from 'formik';
-import { useState } from 'react';
-import { uploadFile } from 'src/services/utils/file-utils';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import SuggestedRepairMasterForm from './suggested-repair-master-form';
-import { SuggestedRepair } from 'src/types/general/general-master';
-import suggestedRepairMasterService from 'src/services/general/project/suggested-repair-master-service';
+import { FormikProps } from "formik";
+import { useState } from "react";
+import { uploadFile } from "src/services/utils/file-utils";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import SuggestedRepairMasterForm from "./suggested-repair-master-form";
+import { SuggestedRepair } from "src/types/general/general-master";
+import suggestedRepairMasterService from "src/services/general/project/suggested-repair-master-service";
 
 interface SuggestedRepairMasterDrawerType {
   open: boolean;
@@ -17,11 +17,13 @@ interface SuggestedRepairMasterDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required('Title is required'),
-  description: yup.string().required('Description is required')
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
 });
 
-const SuggestedRepairMasterDrawer = (props: SuggestedRepairMasterDrawerType) => {
+const SuggestedRepairMasterDrawer = (
+  props: SuggestedRepairMasterDrawerType,
+) => {
   const { open, toggle, refetch, masterData } = props;
 
   const isEdit = Boolean(masterData?.id);
@@ -29,21 +31,28 @@ const SuggestedRepairMasterDrawer = (props: SuggestedRepairMasterDrawerType) => 
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createSuggestedRepairMaster = async (body: IApiPayload<SuggestedRepair>) => {
+  const createSuggestedRepairMaster = async (
+    body: IApiPayload<SuggestedRepair>,
+  ) => {
     return await suggestedRepairMasterService.create(body);
   };
 
-  const editSuggestedRepairMaster = async (body: IApiPayload<SuggestedRepair>) => {
-    return await suggestedRepairMasterService.update(masterData?.id || '', body);
+  const editSuggestedRepairMaster = async (
+    body: IApiPayload<SuggestedRepair>,
+  ) => {
+    return await suggestedRepairMasterService.update(
+      masterData?.id || "",
+      body,
+    );
   };
 
   const getPayload = (values: SuggestedRepair) => {
     const payload = {
       data: {
         ...values,
-        id: masterData?.id
+        id: masterData?.id,
       },
-      files: uploadableFile ? [uploadableFile] : []
+      files: uploadableFile ? [uploadableFile] : [],
     };
     return payload;
   };
@@ -52,9 +61,18 @@ const SuggestedRepairMasterDrawer = (props: SuggestedRepairMasterDrawerType) => 
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<SuggestedRepair>, payload: IApiPayload<SuggestedRepair>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<SuggestedRepair>,
+    payload: IApiPayload<SuggestedRepair>,
+  ) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], `SUGGESTED_REPAIR`, response.payload.id, '', '');
+      uploadFile(
+        payload.files[0],
+        `SUGGESTED_REPAIR`,
+        response.payload.id,
+        "",
+        "",
+      );
     }
     refetch();
     handleClose();
@@ -62,7 +80,9 @@ const SuggestedRepairMasterDrawer = (props: SuggestedRepairMasterDrawerType) => 
 
   return (
     <CustomSideDrawer
-      title={`master-data.general-master.${isEdit ? 'edit-suggested-repair' : 'create-suggested-repair'}`}
+      title={`master-data.general-master.${
+        isEdit ? "edit-suggested-repair" : "create-suggested-repair"
+      }`}
       handleClose={handleClose}
       open={open}
     >
@@ -73,7 +93,9 @@ const SuggestedRepairMasterDrawer = (props: SuggestedRepairMasterDrawerType) => 
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={masterData}
-          createActionFunc={isEdit ? editSuggestedRepairMaster : createSuggestedRepairMaster}
+          createActionFunc={
+            isEdit ? editSuggestedRepairMaster : createSuggestedRepairMaster
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

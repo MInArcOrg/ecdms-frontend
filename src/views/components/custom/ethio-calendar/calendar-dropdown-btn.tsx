@@ -1,9 +1,9 @@
-import { useState, MouseEvent, FC } from 'react';
-import Menu from '@mui/material/Menu';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import { Icon } from '@iconify/react';
-import { useTheme } from '@mui/material';
+import { useState, MouseEvent, FC } from "react";
+import Menu from "@mui/material/Menu";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import { Icon } from "@iconify/react";
+import { useTheme } from "@mui/material";
 
 interface CalendarDropdownBtnProps {
   options: string[];
@@ -20,7 +20,7 @@ const CalendarDropdownBtn: FC<CalendarDropdownBtnProps> = ({
   handleChange,
   isMonth,
   addNextYearOption,
-  addPreviousYearOption
+  addPreviousYearOption,
 }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const theme = useTheme();
@@ -34,7 +34,7 @@ const CalendarDropdownBtn: FC<CalendarDropdownBtnProps> = ({
   };
 
   const handleOptionClick = (event: MouseEvent<HTMLElement>) => {
-    handleChange(event.currentTarget.textContent || '');
+    handleChange(event.currentTarget.textContent || "");
     handleClose();
   };
 
@@ -46,10 +46,10 @@ const CalendarDropdownBtn: FC<CalendarDropdownBtnProps> = ({
         aria-controls="dropdown-button"
         aria-haspopup="true"
         sx={{
-          '&:hover': {
-            backgroundColor: 'transparent',
-            color: theme.palette.mode === 'dark' ? '#cccccc' : '#737373'
-          }
+          "&:hover": {
+            backgroundColor: "transparent",
+            color: theme.palette.mode === "dark" ? "#cccccc" : "#737373",
+          },
         }}
         onClick={handleClick}
       >
@@ -61,18 +61,18 @@ const CalendarDropdownBtn: FC<CalendarDropdownBtnProps> = ({
         anchorEl={anchorEl}
         onClose={handleClose}
         open={Boolean(anchorEl)}
-        sx={{ alignItems: 'center', textAlign: 'center', mt: '1rem' }}
+        sx={{ alignItems: "center", textAlign: "center", mt: "1rem" }}
       >
         {!isMonth && (
           <MenuItem
             sx={{
-              fontSize: '14px',
+              fontSize: "14px",
               px: 10,
               py: 1,
-              '&:hover': {
-                backgroundColor: 'primary.main',
-                color: 'white'
-              }
+              "&:hover": {
+                backgroundColor: "primary.main",
+                color: "white",
+              },
             }}
             onClick={addPreviousYearOption}
           >
@@ -84,15 +84,16 @@ const CalendarDropdownBtn: FC<CalendarDropdownBtnProps> = ({
             key={index}
             onClick={handleOptionClick}
             sx={{
-              fontSize: '14px',
-              backgroundColor: option === title ? 'primary.main' : 'transparent',
-              color: option === title ? 'white' : 'inherit',
+              fontSize: "14px",
+              backgroundColor:
+                option === title ? "primary.main" : "transparent",
+              color: option === title ? "white" : "inherit",
               px: 9,
               py: 1.2,
-              '&:hover': {
-                backgroundColor: 'primary.main',
-                color: 'white'
-              }
+              "&:hover": {
+                backgroundColor: "primary.main",
+                color: "white",
+              },
             }}
           >
             {option}
@@ -101,13 +102,13 @@ const CalendarDropdownBtn: FC<CalendarDropdownBtnProps> = ({
         {!isMonth && (
           <MenuItem
             sx={{
-              fontSize: '14px',
+              fontSize: "14px",
               px: 10,
               py: 1,
-              '&:hover': {
-                backgroundColor: 'primary.main',
-                color: 'white'
-              }
+              "&:hover": {
+                backgroundColor: "primary.main",
+                color: "white",
+              },
             }}
             onClick={addNextYearOption}
           >

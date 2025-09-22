@@ -1,17 +1,17 @@
 // components/GeneralGeneralMaster.tsx
-import { Card, CardContent } from '@mui/material';
-import { useRouter } from 'next/router';
-import React, { Fragment, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import generalMasterDataApiService from 'src/services/general/general-master-data-service';
-import { GeneralMaster } from 'src/types/general/general-master';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import GeneralMasterCard from './general-master-card';
-import GeneralMasterDrawer from './general-master-drawer';
+import { Card, CardContent } from "@mui/material";
+import { useRouter } from "next/router";
+import React, { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import generalMasterDataApiService from "src/services/general/general-master-data-service";
+import { GeneralMaster } from "src/types/general/general-master";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import GeneralMasterCard from "./general-master-card";
+import GeneralMasterDrawer from "./general-master-drawer";
 
 interface GeneralGeneralMasterProps {}
 
@@ -20,7 +20,9 @@ const GeneralGeneralMaster: React.FC<GeneralGeneralMasterProps> = () => {
   const router = useRouter();
   const { type } = router.query;
   const { t } = useTranslation();
-  const fetchGeneralMaster = (params: GetRequestParam): Promise<IApiResponse<GeneralMaster[]>> => {
+  const fetchGeneralMaster = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<GeneralMaster[]>> => {
     return generalMasterDataApiService.getAll(String(type), params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
@@ -30,10 +32,10 @@ const GeneralGeneralMaster: React.FC<GeneralGeneralMasterProps> = () => {
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<GeneralMaster[]>({
-    queryKey: ['general-master', String(type)],
-    fetchFunction: fetchGeneralMaster
+    queryKey: ["general-master", String(type)],
+    fetchFunction: fetchGeneralMaster,
   });
   const handleDelete = async (masterSubCategoryId: string) => {
     await generalMasterDataApiService.delete(String(type), masterSubCategoryId);
@@ -82,9 +84,9 @@ const GeneralGeneralMaster: React.FC<GeneralGeneralMasterProps> = () => {
               onClick: toggleDrawer,
               onlyIcon: true,
               permission: {
-                action: 'create',
-                subject: `${module}type`
-              }
+                action: "create",
+                subject: `${module}type`,
+              },
             }}
             fetchDataFunction={refetch}
             items={types || []}

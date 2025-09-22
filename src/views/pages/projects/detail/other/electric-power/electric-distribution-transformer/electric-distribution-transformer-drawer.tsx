@@ -1,16 +1,16 @@
-'use client';
-import type { FormikProps } from 'formik';
-import type { IApiPayload, IApiResponse } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import ElectricDistributionTransformerForm from './electric-distribution-transformer-form';
-import { useState } from 'react';
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { uploadFile } from 'src/services/utils/file-utils';
-import type { ElectricDistributionTransformer } from 'src/types/project/other';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+"use client";
+import type { FormikProps } from "formik";
+import type { IApiPayload, IApiResponse } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import ElectricDistributionTransformerForm from "./electric-distribution-transformer-form";
+import { useState } from "react";
+import projectOtherApiSecondService from "src/services/project/project-other-second-service";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { uploadFile } from "src/services/utils/file-utils";
+import type { ElectricDistributionTransformer } from "src/types/project/other";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
 
 interface ElectricDistributionTransformerDrawerType {
   open: boolean;
@@ -22,8 +22,18 @@ interface ElectricDistributionTransformerDrawerType {
   fireExtinguishingTechnologies: any[];
 }
 
-const ElectricDistributionTransformerDrawer = (props: ElectricDistributionTransformerDrawerType) => {
-  const { open, toggle, refetch, electricDistributionTransformer, projectId, otherSubMenu, fireExtinguishingTechnologies } = props;
+const ElectricDistributionTransformerDrawer = (
+  props: ElectricDistributionTransformerDrawerType,
+) => {
+  const {
+    open,
+    toggle,
+    refetch,
+    electricDistributionTransformer,
+    projectId,
+    otherSubMenu,
+    fireExtinguishingTechnologies,
+  } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
@@ -32,8 +42,10 @@ const ElectricDistributionTransformerDrawer = (props: ElectricDistributionTransf
   };
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required('Name is required'),
-    fire_extinguishing_technology_id: yup.string().required('Fire Extinguishing Technology is required'),
+    name: yup.string().required("Name is required"),
+    fire_extinguishing_technology_id: yup
+      .string()
+      .required("Fire Extinguishing Technology is required"),
     service_area: yup
       .number()
       .nullable()
@@ -42,12 +54,12 @@ const ElectricDistributionTransformerDrawer = (props: ElectricDistributionTransf
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value))
-      .integer('Installation year must be an integer'),
+      .integer("Installation year must be an integer"),
     transformers_total_number: yup
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value))
-      .integer('Total number of transformers must be an integer'),
+      .integer("Total number of transformers must be an integer"),
     gps_x_coordinates: yup
       .number()
       .nullable()
@@ -57,19 +69,26 @@ const ElectricDistributionTransformerDrawer = (props: ElectricDistributionTransf
       .nullable()
       .transform((value) => (isNaN(value) ? null : value)),
     other: yup.string().nullable(),
-    remark: yup.string().nullable()
+    remark: yup.string().nullable(),
   });
 
   const isEdit = Boolean(electricDistributionTransformer?.id);
 
-  const createElectricDistributionTransformer = async (body: IApiPayload<ElectricDistributionTransformer>) =>
-    projectOtherApiSecondService<ElectricDistributionTransformer>().create(otherSubMenu?.apiRoute || '', body);
+  const createElectricDistributionTransformer = async (
+    body: IApiPayload<ElectricDistributionTransformer>,
+  ) =>
+    projectOtherApiSecondService<ElectricDistributionTransformer>().create(
+      otherSubMenu?.apiRoute || "",
+      body,
+    );
 
-  const editElectricDistributionTransformer = async (body: IApiPayload<ElectricDistributionTransformer>) =>
+  const editElectricDistributionTransformer = async (
+    body: IApiPayload<ElectricDistributionTransformer>,
+  ) =>
     projectOtherApiSecondService<ElectricDistributionTransformer>().update(
-      otherSubMenu?.apiRoute || '',
-      electricDistributionTransformer?.id || '',
-      body
+      otherSubMenu?.apiRoute || "",
+      electricDistributionTransformer?.id || "",
+      body,
     );
 
   const getPayload = (values: ElectricDistributionTransformer) => ({
@@ -84,19 +103,25 @@ const ElectricDistributionTransformerDrawer = (props: ElectricDistributionTransf
       gps_y_coordinates: values.gps_y_coordinates,
       other: values.other,
       remark: values.remark,
-      id: electricDistributionTransformer?.id
+      id: electricDistributionTransformer?.id,
     },
-    files: uploadableFile ? [uploadableFile] : []
+    files: uploadableFile ? [uploadableFile] : [],
   });
 
   const handleClose = () => toggle();
 
   const onActionSuccess = async (
     response: IApiResponse<ElectricDistributionTransformer>,
-    payload: IApiPayload<ElectricDistributionTransformer>
+    payload: IApiPayload<ElectricDistributionTransformer>,
   ) => {
     if (payload.files.length > 0) {
-      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.electric_distribution_transformer, response.payload.id, '', '');
+      await uploadFile(
+        payload.files[0],
+        uploadableProjectFileTypes.other.electric_distribution_transformer,
+        response.payload.id,
+        "",
+        "",
+      );
     }
 
     refetch();
@@ -106,7 +131,9 @@ const ElectricDistributionTransformerDrawer = (props: ElectricDistributionTransf
   return (
     <CustomSideDrawer
       title={`project.other.electric-distribution-transformer.${
-        isEdit ? `edit-electric-distribution-transformer` : `create-electric-distribution-transformer`
+        isEdit
+          ? `edit-electric-distribution-transformer`
+          : `create-electric-distribution-transformer`
       }`}
       handleClose={handleClose}
       open={open}
@@ -115,14 +142,20 @@ const ElectricDistributionTransformerDrawer = (props: ElectricDistributionTransf
         <FormPageWrapper
           edit={isEdit}
           title={`project.other.electric-distribution-transformer.${
-            isEdit ? `edit-electric-distribution-transformer` : `create-electric-distribution-transformer`
+            isEdit
+              ? `edit-electric-distribution-transformer`
+              : `create-electric-distribution-transformer`
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...electricDistributionTransformer
+            ...electricDistributionTransformer,
           }}
-          createActionFunc={isEdit ? editElectricDistributionTransformer : createElectricDistributionTransformer}
+          createActionFunc={
+            isEdit
+              ? editElectricDistributionTransformer
+              : createElectricDistributionTransformer
+          }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

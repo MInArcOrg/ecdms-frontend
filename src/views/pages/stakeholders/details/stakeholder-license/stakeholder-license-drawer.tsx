@@ -1,13 +1,16 @@
-import type { FormikProps } from 'formik';
-import type { IApiPayload } from 'src/types/requests';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import LicenseForm from './stakeholder-license-form';
-import stakeholderLicenseApiService from 'src/services/stakeholder/stakeholder-license-service';
-import type { StakeholderLicense } from 'src/types/stakeholder/stakeholder-license';
-import type { IApiResponse } from 'src/types/requests';
-import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import type { FormikProps } from "formik";
+import type { IApiPayload } from "src/types/requests";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import LicenseForm from "./stakeholder-license-form";
+import stakeholderLicenseApiService from "src/services/stakeholder/stakeholder-license-service";
+import type { StakeholderLicense } from "src/types/stakeholder/stakeholder-license";
+import type { IApiResponse } from "src/types/requests";
+import {
+  convertDateToLocaleDate,
+  formatInitialDateDate,
+} from "src/utils/formatter/date";
 
 interface LicenseDrawerType {
   open: boolean;
@@ -21,25 +24,29 @@ const LicenseDrawer = (props: LicenseDrawerType) => {
   const { open, toggle, refetch, license, stakeholderId } = props;
 
   const validationSchema = yup.object().shape({
-    license_type: yup.string().required('License type is required'),
-    license_category: yup.string().required('License category is required'),
-    license_name: yup.string().required('License name is required'),
-    license_scope: yup.string().required('License scope is required'),
-    licensing_body: yup.string().required('Licensing body is required'),
-    license_number: yup.string().required('License number is required'),
-    issue_date: yup.date().required('Issue date is required'),
-    expire_date: yup.date().required('Expire date is required'),
-    remark: yup.string()
+    license_type: yup.string().required("License type is required"),
+    license_category: yup.string().required("License category is required"),
+    license_name: yup.string().required("License name is required"),
+    license_scope: yup.string().required("License scope is required"),
+    licensing_body: yup.string().required("Licensing body is required"),
+    license_number: yup.string().required("License number is required"),
+    issue_date: yup.date().required("Issue date is required"),
+    expire_date: yup.date().required("Expire date is required"),
+    remark: yup.string(),
   });
 
   const isEdit = Boolean(license?.id);
 
-  const createLicense = async (body: IApiPayload<StakeholderLicense>): Promise<IApiResponse<StakeholderLicense>> => {
+  const createLicense = async (
+    body: IApiPayload<StakeholderLicense>,
+  ): Promise<IApiResponse<StakeholderLicense>> => {
     return stakeholderLicenseApiService.create(body);
   };
 
-  const editLicense = async (body: IApiPayload<StakeholderLicense>): Promise<IApiResponse<StakeholderLicense>> => {
-    return stakeholderLicenseApiService.update(license?.id || '', body);
+  const editLicense = async (
+    body: IApiPayload<StakeholderLicense>,
+  ): Promise<IApiResponse<StakeholderLicense>> => {
+    return stakeholderLicenseApiService.update(license?.id || "", body);
   };
 
   const getPayload = (values: StakeholderLicense) => ({
@@ -55,46 +62,56 @@ const LicenseDrawer = (props: LicenseDrawerType) => {
       expire_date: convertDateToLocaleDate(values.expire_date),
       remark: values.remark,
       id: license?.id,
-      stakeholder_id: stakeholderId
+      stakeholder_id: stakeholderId,
     },
-    files: []
+    files: [],
   });
 
   const handleClose = () => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<StakeholderLicense>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<StakeholderLicense>,
+  ) => {
     refetch();
     handleClose();
   };
 
   return (
-    <CustomSideDrawer title={`stakeholder.stakeholder-license.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={`stakeholder.stakeholder-license.${isEdit ? "edit" : "create"}`}
+      handleClose={handleClose}
+      open={open}
+    >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`stakeholder.stakeholder-license.${isEdit ? 'edit' : 'create'}`}
+          title={`stakeholder.stakeholder-license.${
+            isEdit ? "edit" : "create"
+          }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
             ...license,
             stakeholder_id: stakeholderId,
-            license_type: license?.license_type || '',
-            license_category: license?.license_category || '',
-            license_name: license?.license_name || '',
-            license_scope: license?.license_scope || '',
-            licensing_body: license?.licensing_body || '',
-            license_number: license?.license_number || '',
+            license_type: license?.license_type || "",
+            license_category: license?.license_category || "",
+            license_name: license?.license_name || "",
+            license_scope: license?.license_scope || "",
+            licensing_body: license?.licensing_body || "",
+            license_number: license?.license_number || "",
             issue_date: formatInitialDateDate(license?.issue_date),
             expire_date: formatInitialDateDate(license?.expire_date),
-            remark: license?.remark || ''
+            remark: license?.remark || "",
           }}
           createActionFunc={isEdit ? editLicense : createLicense}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<StakeholderLicense>) => <LicenseForm formik={formik} />}
+          {(formik: FormikProps<StakeholderLicense>) => (
+            <LicenseForm formik={formik} />
+          )}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

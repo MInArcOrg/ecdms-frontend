@@ -1,8 +1,12 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
-import { defaultGetRequestParam, GetRequestParam, IApiResponse } from 'src/types/requests';
-import { Pagination } from 'src/types/requests/pagination';
-import { StringHelpers } from 'src/utils/string-helpers';
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
+import {
+  defaultGetRequestParam,
+  GetRequestParam,
+  IApiResponse,
+} from "src/types/requests";
+import { Pagination } from "src/types/requests/pagination";
+import { StringHelpers } from "src/utils/string-helpers";
 
 interface UsePaginatedFetchProps<T> {
   queryKey: string[];
@@ -10,15 +14,21 @@ interface UsePaginatedFetchProps<T> {
   initialQueryParams?: GetRequestParam;
 }
 
-const usePaginatedFetch = <T,>({ queryKey, fetchFunction, initialQueryParams = defaultGetRequestParam }: UsePaginatedFetchProps<T>) => {
+const usePaginatedFetch = <T,>({
+  queryKey,
+  fetchFunction,
+  initialQueryParams = defaultGetRequestParam,
+}: UsePaginatedFetchProps<T>) => {
   const queryClient = useQueryClient();
   const [pagination, setPagination] = useState<Pagination>({
     page: 1,
     pageSize: 10,
     total: 0,
-    lastPage: 1
+    lastPage: 1,
   });
-  const [queryParams, setQueryParams] = useState<GetRequestParam>({ ...initialQueryParams });
+  const [queryParams, setQueryParams] = useState<GetRequestParam>({
+    ...initialQueryParams,
+  });
 
   const invalidateQuery = () => {
     queryClient.invalidateQueries({ queryKey: [queryKey] });
@@ -30,14 +40,14 @@ const usePaginatedFetch = <T,>({ queryKey, fetchFunction, initialQueryParams = d
         ...prevParams,
         filter: {
           ...prevParams.filter,
-          ...StringHelpers.createSearchFilter(searchTerm, searchKeys)
+          ...StringHelpers.createSearchFilter(searchTerm, searchKeys),
         },
         pagination: {
           ...prevParams.pagination,
           page: 1,
-          pageSize: prevParams?.pagination?.pageSize || 0
-        }
-      })
+          pageSize: prevParams?.pagination?.pageSize || 0,
+        },
+      }),
     );
   };
 
@@ -46,20 +56,22 @@ const usePaginatedFetch = <T,>({ queryKey, fetchFunction, initialQueryParams = d
     setQueryParams(
       (prevParams: GetRequestParam): GetRequestParam => ({
         ...prevParams,
-        filter: cleanedFilterValues
-      })
+        filter: cleanedFilterValues,
+      }),
     );
   };
 
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: [queryKey, queryParams],
     queryFn: () =>
-      fetchFunction({ ...defaultGetRequestParam, ...queryParams }).then((response) => {
-        setPagination(response._attributes.pagination);
-        return response.payload;
-      }),
+      fetchFunction({ ...defaultGetRequestParam, ...queryParams }).then(
+        (response) => {
+          setPagination(response._attributes.pagination);
+          return response.payload;
+        },
+      ),
     // Add this to prevent automatic refetching when queryParams changes
-    enabled: true
+    enabled: true,
   });
 
   const handlePageChange = (pageSize: number, newPage: number) => {
@@ -68,8 +80,8 @@ const usePaginatedFetch = <T,>({ queryKey, fetchFunction, initialQueryParams = d
       pagination: {
         ...prevParams.pagination,
         page: newPage,
-        pageSize: pageSize
-      }
+        pageSize: pageSize,
+      },
     }));
   };
 
@@ -80,8 +92,8 @@ const usePaginatedFetch = <T,>({ queryKey, fetchFunction, initialQueryParams = d
         page: 1,
         pageSize: newPageSize,
         total: pagination.total,
-        lastPage: pagination.lastPage
-      }
+        lastPage: pagination.lastPage,
+      },
     }));
   };
 
@@ -100,7 +112,7 @@ const usePaginatedFetch = <T,>({ queryKey, fetchFunction, initialQueryParams = d
     handlePageSizeChange,
     invalidateQuery,
     handleSearch,
-    handleFilter
+    handleFilter,
   };
 };
 

@@ -1,10 +1,10 @@
-import type React from 'react';
-import { Box } from '@mui/material';
-import type { FormikProps } from 'formik';
-import { useTranslation } from 'react-i18next';
-import type { ProjectConstructionType } from 'src/types/project/project-construction-type';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
+import type React from "react";
+import { Box } from "@mui/material";
+import type { FormikProps } from "formik";
+import { useTranslation } from "react-i18next";
+import type { ProjectConstructionType } from "src/types/project/project-construction-type";
+import CustomTextBox from "src/views/shared/form/custom-text-box";
+import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 
 interface ProjectConstructionTypeFormProps {
   formik: FormikProps<ProjectConstructionType>;
@@ -14,7 +14,9 @@ interface ProjectConstructionTypeFormProps {
   projectId: string;
 }
 
-const ProjectConstructionTypeForm: React.FC<ProjectConstructionTypeFormProps> = ({ formik, file, onFileChange, projectId }) => {
+const ProjectConstructionTypeForm: React.FC<
+  ProjectConstructionTypeFormProps
+> = ({ formik, file, onFileChange, projectId }) => {
   const { t } = useTranslation();
 
   return (
@@ -22,7 +24,7 @@ const ProjectConstructionTypeForm: React.FC<ProjectConstructionTypeFormProps> = 
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t('project.construction-type.construction-type')}
+          label={t("project.construction-type.construction-type")}
           name="construction_type"
           size="small"
           sx={{ mb: 2 }}
@@ -31,7 +33,7 @@ const ProjectConstructionTypeForm: React.FC<ProjectConstructionTypeFormProps> = 
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t('project.construction-type.description')}
+          label={t("project.construction-type.description")}
           name="description"
           size="small"
           multiline
@@ -39,7 +41,11 @@ const ProjectConstructionTypeForm: React.FC<ProjectConstructionTypeFormProps> = 
           sx={{ mb: 2 }}
         />
       </Box>
-      <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />
+      <CustomFileUpload
+        label={t("common.form.file-upload")}
+        file={file}
+        onFileChange={onFileChange}
+      />
     </>
   );
 };

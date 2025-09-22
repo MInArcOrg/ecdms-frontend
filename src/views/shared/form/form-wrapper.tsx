@@ -1,13 +1,19 @@
-import { LoadingButton } from '@mui/lab';
-import { Box, Button, Grid } from '@mui/material';
-import { Formik, FormikProps, FormikHelpers, FormikValues, FormikErrors } from 'formik';
-import { useRouter } from 'next/router';
-import { toast } from 'react-hot-toast';
-import { useTranslation } from 'react-i18next';
-import Translations from 'src/layouts/components/Translations';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import { parseError } from 'src/utils/parse/clean-error';
-import Page from 'src/views/components/page/page';
+import { LoadingButton } from "@mui/lab";
+import { Box, Button, Grid } from "@mui/material";
+import {
+  Formik,
+  FormikProps,
+  FormikHelpers,
+  FormikValues,
+  FormikErrors,
+} from "formik";
+import { useRouter } from "next/router";
+import { toast } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
+import Translations from "src/layouts/components/Translations";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import { parseError } from "src/utils/parse/clean-error";
+import Page from "src/views/components/page/page";
 
 interface FormPageWrapperProps<T extends FormikValues> {
   children: (formik: FormikProps<T>) => JSX.Element;
@@ -22,7 +28,10 @@ interface FormPageWrapperProps<T extends FormikValues> {
   fullLayout?: boolean;
   baseUrl?: string;
   headerActions?: any[];
-  onActionSuccess?: (response: IApiResponse<T>, payload: { data: T; files: any[] }) => void;
+  onActionSuccess?: (
+    response: IApiResponse<T>,
+    payload: { data: T; files: any[] },
+  ) => void;
 }
 
 const FormPageWrapper = <T extends FormikValues>({
@@ -30,20 +39,23 @@ const FormPageWrapper = <T extends FormikValues>({
   initialValues,
   children,
   edit = false,
-  title = '',
+  title = "",
   showTitle = true,
   onCancel,
   getPayload,
   createActionFunc,
   fullLayout = false,
-  baseUrl = '',
+  baseUrl = "",
   headerActions = [],
-  onActionSuccess
+  onActionSuccess,
 }: FormPageWrapperProps<T>) => {
   const { t: intl } = useTranslation();
   const router = useRouter();
 
-  const onSubmit = async (values: T, { setErrors, setStatus, setSubmitting }: FormikHelpers<T>) => {
+  const onSubmit = async (
+    values: T,
+    { setErrors, setStatus, setSubmitting }: FormikHelpers<T>,
+  ) => {
     const payload = getPayload(values);
     try {
       const res = await createActionFunc(payload);
@@ -54,17 +66,23 @@ const FormPageWrapper = <T extends FormikValues>({
       } else {
         router.push(baseUrl);
       }
-      toast.success(`${intl(title)} ${intl(edit ? 'common.form.success-updated' : 'common.form.success-created')}`);
+      toast.success(
+        `${intl(title)} ${intl(
+          edit ? "common.form.success-updated" : "common.form.success-created",
+        )}`,
+      );
     } catch (err: any) {
       const apiError = err as IApiResponse;
       setStatus({ success: false });
       setErrors(parseError(apiError) as FormikErrors<T>);
       setSubmitting(false);
 
-      if (apiError._errors && typeof apiError._errors === 'string') {
+      if (apiError._errors && typeof apiError._errors === "string") {
         toast.error(apiError._errors);
       } else if (apiError._errors) {
-        toast.error(`${intl(edit ? 'error-update' : 'error-create')} ${intl(title)}`);
+        toast.error(
+          `${intl(edit ? "error-update" : "error-create")} ${intl(title)}`,
+        );
       }
     }
   };
@@ -75,7 +93,11 @@ const FormPageWrapper = <T extends FormikValues>({
 
   return (
     <Page titleId={title}>
-      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      >
         {(formik: FormikProps<T>) => (
           <form onSubmit={formik.handleSubmit}>
             <Grid container>
@@ -91,7 +113,7 @@ const FormPageWrapper = <T extends FormikValues>({
                   variant="contained"
                   color="primary"
                 >
-                  <Translations text={edit ? 'save' : 'submit'} />
+                  <Translations text={edit ? "save" : "submit"} />
                 </LoadingButton>
                 <Button
                   onClick={() => {

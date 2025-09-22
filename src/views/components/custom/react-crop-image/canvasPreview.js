@@ -1,10 +1,16 @@
 const TO_RADIANS = Math.PI / 180;
 
-export async function canvasPreview(image, canvas, crop, scale = 1, rotate = 0) {
-  const ctx = canvas.getContext('2d');
+export async function canvasPreview(
+  image,
+  canvas,
+  crop,
+  scale = 1,
+  rotate = 0,
+) {
+  const ctx = canvas.getContext("2d");
 
   if (!ctx) {
-    throw new Error('No 2d context');
+    throw new Error("No 2d context");
   }
 
   const scaleX = image.naturalWidth / image.width;
@@ -20,7 +26,7 @@ export async function canvasPreview(image, canvas, crop, scale = 1, rotate = 0) 
   canvas.height = Math.floor(crop.height * scaleY * pixelRatio);
 
   ctx.scale(pixelRatio, pixelRatio);
-  ctx.imageSmoothingQuality = 'high';
+  ctx.imageSmoothingQuality = "high";
 
   const cropX = crop.x * scaleX;
   const cropY = crop.y * scaleY;
@@ -41,7 +47,17 @@ export async function canvasPreview(image, canvas, crop, scale = 1, rotate = 0) 
   ctx.scale(scale, scale);
   // 1) Move the center of the image to the origin (0,0)
   ctx.translate(-centerX, -centerY);
-  ctx.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight, 0, 0, image.naturalWidth, image.naturalHeight);
+  ctx.drawImage(
+    image,
+    0,
+    0,
+    image.naturalWidth,
+    image.naturalHeight,
+    0,
+    0,
+    image.naturalWidth,
+    image.naturalHeight,
+  );
 
   ctx.restore();
 }

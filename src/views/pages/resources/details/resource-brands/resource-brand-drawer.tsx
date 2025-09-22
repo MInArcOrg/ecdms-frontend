@@ -1,14 +1,18 @@
-import { FormikProps } from 'formik';
-import React, { useEffect, useState } from 'react';
-import resourceBrandApiService from 'src/services/resource/resource-brand-service';
-import { deletePhoto, useGetMultiplePhotos, uploadImage } from 'src/services/utils/file-utils';
-import { FileWithId } from 'src/types/general/file';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import { ResourceBrand } from 'src/types/resource';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
-import FormPageWrapper from 'src/views/shared/form/form-wrapper';
-import * as yup from 'yup';
-import ResourceBrandForm from './resource-brand-form';
+import { FormikProps } from "formik";
+import React, { useEffect, useState } from "react";
+import resourceBrandApiService from "src/services/resource/resource-brand-service";
+import {
+  deletePhoto,
+  useGetMultiplePhotos,
+  uploadImage,
+} from "src/services/utils/file-utils";
+import { FileWithId } from "src/types/general/file";
+import { IApiPayload, IApiResponse } from "src/types/requests";
+import { ResourceBrand } from "src/types/resource";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
+import FormPageWrapper from "src/views/shared/form/form-wrapper";
+import * as yup from "yup";
+import ResourceBrandForm from "./resource-brand-form";
 
 interface ResourceBrandDrawerType {
   open: boolean;
@@ -21,13 +25,15 @@ interface ResourceBrandDrawerType {
 const validationSchema = yup.object().shape({
   title: yup.string().required(),
   datasource: yup.string().required(),
-  description: yup.string().required()
+  description: yup.string().required(),
 });
 
 const ResourceBrandDrawer: React.FC<ResourceBrandDrawerType> = (props) => {
   const { open, toggle, refetch, resourceBrand, resourceId } = props;
 
-  const { data: fetchedImages } = useGetMultiplePhotos({ filter: { model_id: resourceBrand?.id || '' } });
+  const { data: fetchedImages } = useGetMultiplePhotos({
+    filter: { model_id: resourceBrand?.id || "" },
+  });
   const [uploadableFiles, setUploadableFiles] = useState<FileWithId[]>([]);
   const [fetchedImageIds, setFetchedImageIds] = useState<string[]>([]);
 
@@ -38,7 +44,7 @@ const ResourceBrandDrawer: React.FC<ResourceBrandDrawerType> = (props) => {
   };
 
   const editResourceBrand = async (body: IApiPayload<ResourceBrand>) => {
-    return await resourceBrandApiService.update(resourceBrand?.id || '', body);
+    return await resourceBrandApiService.update(resourceBrand?.id || "", body);
   };
 
   useEffect(() => {
@@ -47,7 +53,11 @@ const ResourceBrandDrawer: React.FC<ResourceBrandDrawerType> = (props) => {
         const fetchedFiles = fetchedImages.payload.map(async (image) => {
           const response = await fetch(image.url);
           const blob = await response.blob();
-          return { id: image.id, file: new File([blob], image.title || 'image', { type: blob.type }), isFetched: true };
+          return {
+            id: image.id,
+            file: new File([blob], image.title || "image", { type: blob.type }),
+            isFetched: true,
+          };
         });
         const convertedFiles = await Promise.all(fetchedFiles);
         setUploadableFiles(convertedFiles);
@@ -70,9 +80,9 @@ const ResourceBrandDrawer: React.FC<ResourceBrandDrawerType> = (props) => {
     data: {
       ...values,
       id: resourceBrand?.id,
-      resource_id: resourceId
+      resource_id: resourceId,
     },
-    files: []
+    files: [],
   });
 
   const handleClose = () => {
@@ -80,13 +90,22 @@ const ResourceBrandDrawer: React.FC<ResourceBrandDrawerType> = (props) => {
     setUploadableFiles([]);
   };
 
-  const onActionSuccess = async (response: IApiResponse<ResourceBrand>, payload: IApiPayload<ResourceBrand>) => {
-    const uploadableFilesToUpload = uploadableFiles.filter((file) => !file.isFetched);
-    const uploadPromises = uploadableFilesToUpload.map((file) => uploadImage(file.file, 'RESOURCE_BRAND', response.payload.id));
+  const onActionSuccess = async (
+    response: IApiResponse<ResourceBrand>,
+    payload: IApiPayload<ResourceBrand>,
+  ) => {
+    const uploadableFilesToUpload = uploadableFiles.filter(
+      (file) => !file.isFetched,
+    );
+    const uploadPromises = uploadableFilesToUpload.map((file) =>
+      uploadImage(file.file, "RESOURCE_BRAND", response.payload.id),
+    );
     await Promise.all(uploadPromises);
 
     const uploadableFileIds = uploadableFiles.map((file) => file.id);
-    const idsToRemove = fetchedImageIds.filter((id) => !uploadableFileIds.includes(id));
+    const idsToRemove = fetchedImageIds.filter(
+      (id) => !uploadableFileIds.includes(id),
+    );
 
     const removePromises = idsToRemove.map((id) => deletePhoto(id));
     await Promise.all(removePromises);
@@ -98,7 +117,9 @@ const ResourceBrandDrawer: React.FC<ResourceBrandDrawerType> = (props) => {
 
   return (
     <CustomSideDrawer
-      title={`resource.resource-brand.${isEdit ? 'edit-resource-brand' : 'create-resource-brand'}`}
+      title={`resource.resource-brand.${
+        isEdit ? "edit-resource-brand" : "create-resource-brand"
+      }`}
       handleClose={handleClose}
       open={open}
     >

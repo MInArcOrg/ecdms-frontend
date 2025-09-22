@@ -1,29 +1,31 @@
-import { Box } from '@mui/material';
-import { useState } from 'react';
+import { Box } from "@mui/material";
+import { useState } from "react";
 
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import projectReportApiService from 'src/services/project/project-report-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import projectReportApiService from "src/services/project/project-report-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
 
-import { ProjectReport } from 'src/types/project/project-report';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import ProjectReportCard from './project-report-card';
-import { projectReportColumns } from './project-report-row';
-import { useTranslation } from 'react-i18next';
-import ReportDetail from './project-report-detail';
-import ProjectReportDrawer from './project-report-drawer';
+import { ProjectReport } from "src/types/project/project-report";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import ProjectReportCard from "./project-report-card";
+import { projectReportColumns } from "./project-report-row";
+import { useTranslation } from "react-i18next";
+import ReportDetail from "./project-report-detail";
+import ProjectReportDrawer from "./project-report-drawer";
 
 function ProjectReportList({ projectId }: { projectId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
 
   const [selectedRow, setSelectedRow] = useState<ProjectReport | null>(null);
-  const fetchProjectReports = (params: GetRequestParam): Promise<IApiResponse<ProjectReport[]>> => {
+  const fetchProjectReports = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<ProjectReport[]>> => {
     return projectReportApiService.getAll({
       ...params,
-      filter: { ...params.filter }
+      filter: { ...params.filter },
     });
   };
   const toggleDetailDrawer = () => {
@@ -36,10 +38,10 @@ function ProjectReportList({ projectId }: { projectId: string }) {
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<ProjectReport[]>({
-    queryKey: ['projectReports'],
-    fetchFunction: fetchProjectReports
+    queryKey: ["projectReports"],
+    fetchFunction: fetchProjectReports,
   });
 
   const toggleDrawer = () => {
@@ -62,7 +64,11 @@ function ProjectReportList({ projectId }: { projectId: string }) {
   return (
     <Box>
       {showDetailDrawer && (
-        <ReportDetail projectReport={selectedRow as ProjectReport} show={showDetailDrawer} toggleDetail={toggleDetailDrawer} />
+        <ReportDetail
+          projectReport={selectedRow as ProjectReport}
+          show={showDetailDrawer}
+          toggleDetail={toggleDetailDrawer}
+        />
       )}
       {showDrawer && (
         <ProjectReportDrawer
@@ -88,16 +94,22 @@ function ProjectReportList({ projectId }: { projectId: string }) {
           />
         )}
         tableProps={{
-          headers: projectReportColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
+          headers: projectReportColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+            refetch,
+          ),
         }}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
           onlyIcon: true,
           permission: {
-            action: 'create',
-            subject: 'projectreport'
-          }
+            action: "create",
+            subject: "projectreport",
+          },
         }}
         fetchDataFunction={refetch}
         items={projectReports || []}

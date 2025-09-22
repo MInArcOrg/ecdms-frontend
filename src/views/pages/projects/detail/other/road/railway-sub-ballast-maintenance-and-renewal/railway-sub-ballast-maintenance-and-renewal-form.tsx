@@ -1,21 +1,25 @@
-import { Grid } from '@mui/material';
-import type { FormikProps } from 'formik';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { gridSpacing } from 'src/configs/app-constants';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import { Grid } from "@mui/material";
+import type { FormikProps } from "formik";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { gridSpacing } from "src/configs/app-constants";
+import CustomTextBox from "src/views/shared/form/custom-text-box";
 
 import {
-  RailwaySubBallastMaintenanceAndRenewal // Updated type import
-} from 'src/types/project/other';
+  RailwaySubBallastMaintenanceAndRenewal, // Updated type import
+} from "src/types/project/other";
 // Removed unused CustomSelectBox import as there are no enums for select for this model in the form
-import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
+import CustomDynamicDatePicker from "src/views/shared/form/custom-dynamic-date-box";
 
-interface RailwaySubBallastMaintenanceAndRenewalFormProps { // Renamed interface
+interface RailwaySubBallastMaintenanceAndRenewalFormProps {
+  // Renamed interface
   formik: FormikProps<RailwaySubBallastMaintenanceAndRenewal>; // Updated prop type
 }
 
-const RailwaySubBallastMaintenanceAndRenewalForm: React.FC<RailwaySubBallastMaintenanceAndRenewalFormProps> = ({ formik }) => { // Renamed component
+const RailwaySubBallastMaintenanceAndRenewalForm: React.FC<
+  RailwaySubBallastMaintenanceAndRenewalFormProps
+> = ({ formik }) => {
+  // Renamed component
   const { t } = useTranslation();
 
   // Removed enumToOptions as it's no longer used with the new model's fields
@@ -28,8 +32,12 @@ const RailwaySubBallastMaintenanceAndRenewalForm: React.FC<RailwaySubBallastMain
         <CustomTextBox
           formik={formik}
           fullWidth
-          label={t('project.other.railway-sub-ballast-maintenance-and-renewal.details.railway_line_section_name')}
-          placeholder={t('project.other.railway-sub-ballast-maintenance-and-renewal.details.railway_line_section_name')}
+          label={t(
+            "project.other.railway-sub-ballast-maintenance-and-renewal.details.railway_line_section_name",
+          )}
+          placeholder={t(
+            "project.other.railway-sub-ballast-maintenance-and-renewal.details.railway_line_section_name",
+          )}
           name="railway_line_section_name"
           size="small"
           sx={{ mb: 2 }}
@@ -39,8 +47,12 @@ const RailwaySubBallastMaintenanceAndRenewalForm: React.FC<RailwaySubBallastMain
         <CustomTextBox
           formik={formik}
           fullWidth
-          label={t('project.other.railway-sub-ballast-maintenance-and-renewal.details.scheduled_maintenance_activities')}
-          placeholder={t('project.other.railway-sub-ballast-maintenance-and-renewal.details.scheduled_maintenance_activities')}
+          label={t(
+            "project.other.railway-sub-ballast-maintenance-and-renewal.details.scheduled_maintenance_activities",
+          )}
+          placeholder={t(
+            "project.other.railway-sub-ballast-maintenance-and-renewal.details.scheduled_maintenance_activities",
+          )}
           name="scheduled_maintenance_activities"
           size="small"
           sx={{ mb: 2 }}
@@ -50,8 +62,12 @@ const RailwaySubBallastMaintenanceAndRenewalForm: React.FC<RailwaySubBallastMain
         <CustomTextBox
           formik={formik}
           fullWidth
-          label={t('project.other.railway-sub-ballast-maintenance-and-renewal.details.sub_ballast_renewal_history')}
-          placeholder={t('project.other.railway-sub-ballast-maintenance-and-renewal.details.sub_ballast_renewal_history')}
+          label={t(
+            "project.other.railway-sub-ballast-maintenance-and-renewal.details.sub_ballast_renewal_history",
+          )}
+          placeholder={t(
+            "project.other.railway-sub-ballast-maintenance-and-renewal.details.sub_ballast_renewal_history",
+          )}
           name="sub_ballast_renewal_history"
           size="small"
           sx={{ mb: 2 }}
@@ -63,8 +79,12 @@ const RailwaySubBallastMaintenanceAndRenewalForm: React.FC<RailwaySubBallastMain
         <CustomDynamicDatePicker
           formik={formik}
           fullWidth
-          label={t('project.other.railway-sub-ballast-maintenance-and-renewal.details.recent_maintenance_dates')}
-          placeholder={t('project.other.railway-sub-ballast-maintenance-and-renewal.details.recent_maintenance_dates')}
+          label={t(
+            "project.other.railway-sub-ballast-maintenance-and-renewal.details.recent_maintenance_dates",
+          )}
+          placeholder={t(
+            "project.other.railway-sub-ballast-maintenance-and-renewal.details.recent_maintenance_dates",
+          )}
           name="recent_maintenance_dates"
           showYearDropdown
           showMonthDropdown
@@ -75,8 +95,12 @@ const RailwaySubBallastMaintenanceAndRenewalForm: React.FC<RailwaySubBallastMain
         <CustomTextBox
           formik={formik}
           fullWidth
-          label={t('project.other.railway-sub-ballast-maintenance-and-renewal.details.inspection_reports_findings')}
-          placeholder={t('project.other.railway-sub-ballast-maintenance-and-renewal.details.inspection_reports_findings')}
+          label={t(
+            "project.other.railway-sub-ballast-maintenance-and-renewal.details.inspection_reports_findings",
+          )}
+          placeholder={t(
+            "project.other.railway-sub-ballast-maintenance-and-renewal.details.inspection_reports_findings",
+          )}
           name="inspection_reports_findings"
           size="small"
           sx={{ mb: 2 }}
@@ -88,8 +112,12 @@ const RailwaySubBallastMaintenanceAndRenewalForm: React.FC<RailwaySubBallastMain
         <CustomTextBox
           formik={formik}
           fullWidth
-          label={t('project.other.railway-sub-ballast-maintenance-and-renewal.details.remark')}
-          placeholder={t('project.other.railway-sub-ballast-maintenance-and-renewal.details.remark')}
+          label={t(
+            "project.other.railway-sub-ballast-maintenance-and-renewal.details.remark",
+          )}
+          placeholder={t(
+            "project.other.railway-sub-ballast-maintenance-and-renewal.details.remark",
+          )}
           name="remark"
           size="small"
           sx={{ mb: 2 }}

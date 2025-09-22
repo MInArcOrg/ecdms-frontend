@@ -1,24 +1,29 @@
-import { Box, Card } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Box, Card } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import addressApiService from 'src/services/general/address-service';
-import Address from 'src/types/general/address';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import AddressCard from './address-card';
-import AddressDrawer from './address-drawer';
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import addressApiService from "src/services/general/address-service";
+import Address from "src/types/general/address";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import AddressCard from "./address-card";
+import AddressDrawer from "./address-drawer";
 
 function AddressList({ modelId, type }: { modelId: string; type: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
 
   const [selectedRow, setSelectedRow] = useState<Address | null>(null);
   const { t: transl } = useTranslation();
-  const fetchAddresss = (params: GetRequestParam): Promise<IApiResponse<Address[]>> => {
-    return addressApiService.getAll({ ...params, filter: { ...params.filter, model_id: modelId } });
+  const fetchAddresss = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<Address[]>> => {
+    return addressApiService.getAll({
+      ...params,
+      filter: { ...params.filter, model_id: modelId },
+    });
   };
 
   const {
@@ -26,10 +31,10 @@ function AddressList({ modelId, type }: { modelId: string; type: string }) {
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<Address[]>({
-    queryKey: ['addresses'],
-    fetchFunction: fetchAddresss
+    queryKey: ["addresses"],
+    fetchFunction: fetchAddresss,
   });
 
   const toggleDrawer = () => {
@@ -50,7 +55,13 @@ function AddressList({ modelId, type }: { modelId: string; type: string }) {
     <Box>
       <Card>
         {showDrawer && (
-          <AddressDrawer open={showDrawer} toggle={toggleDrawer} address={selectedRow as Address} refetch={refetch} modelId={modelId} />
+          <AddressDrawer
+            open={showDrawer}
+            toggle={toggleDrawer}
+            address={selectedRow as Address}
+            refetch={refetch}
+            modelId={modelId}
+          />
         )}
         <ItemsListing
           pagination={pagination}
@@ -72,9 +83,9 @@ function AddressList({ modelId, type }: { modelId: string; type: string }) {
             onClick: toggleDrawer,
             onlyIcon: true,
             permission: {
-              action: 'create',
-              subject: 'address'
-            }
+              action: "create",
+              subject: "address",
+            },
           }}
           fetchDataFunction={refetch}
           items={addresss || []}

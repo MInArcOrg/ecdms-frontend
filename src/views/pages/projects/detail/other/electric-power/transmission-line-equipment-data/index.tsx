@@ -1,25 +1,28 @@
-'use client';
+"use client";
 
-import type React from 'react';
+import type React from "react";
 
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { TransmissionLineEquipmentData, TransmissionLineInformation } from 'src/types/project/other';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import ItemsListing from 'src/views/shared/listing';
-import { useQuery } from '@tanstack/react-query';
-import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
-import TransmissionLineEquipmentDataCard from './transmission-line-equipment-data-card';
-import TransmissionLineEquipmentDataDrawer from './transmission-line-equipment-data-drawer';
-import { transmissionLineEquipmentDataColumns } from './transmission-line-equipment-data-row';
+import { Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import projectOtherApiSecondService from "src/services/project/project-other-second-service";
+import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import type {
+  TransmissionLineEquipmentData,
+  TransmissionLineInformation,
+} from "src/types/project/other";
+import type { GetRequestParam, IApiResponse } from "src/types/requests";
+import { formatCreatedAt } from "src/utils/formatter/date";
+import ItemsListing from "src/views/shared/listing";
+import { useQuery } from "@tanstack/react-query";
+import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-detail-drawer";
+import TransmissionLineEquipmentDataCard from "./transmission-line-equipment-data-card";
+import TransmissionLineEquipmentDataDrawer from "./transmission-line-equipment-data-drawer";
+import { transmissionLineEquipmentDataColumns } from "./transmission-line-equipment-data-row";
 
 interface TransmissionLineEquipmentDataListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -27,22 +30,33 @@ interface TransmissionLineEquipmentDataListProps {
   projectId: string;
 }
 
-const TransmissionLineEquipmentDataList: React.FC<TransmissionLineEquipmentDataListProps> = ({ otherSubMenu, projectId, typeId }) => {
+const TransmissionLineEquipmentDataList: React.FC<
+  TransmissionLineEquipmentDataListProps
+> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<TransmissionLineEquipmentData | null>(null);
+  const [selectedRow, setSelectedRow] =
+    useState<TransmissionLineEquipmentData | null>(null);
   const { t } = useTranslation();
 
   const { data: transmissionLines } = useQuery({
-    queryKey: ['transmission-line-informations', projectId],
+    queryKey: ["transmission-line-informations", projectId],
     queryFn: () =>
-      projectOtherApiSecondService<TransmissionLineInformation>().getAll('transmission-line-informations', {
-        filter: { project_id: projectId }
-      })
+      projectOtherApiSecondService<TransmissionLineInformation>().getAll(
+        "transmission-line-informations",
+        {
+          filter: { project_id: projectId },
+        },
+      ),
   });
 
-  const fetchTransmissionLineEquipmentDatas = (params: GetRequestParam): Promise<IApiResponse<TransmissionLineEquipmentData[]>> => {
-    return projectOtherApiSecondService<TransmissionLineEquipmentData>().getAll(otherSubMenu?.apiRoute || '', {});
+  const fetchTransmissionLineEquipmentDatas = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<TransmissionLineEquipmentData[]>> => {
+    return projectOtherApiSecondService<TransmissionLineEquipmentData>().getAll(
+      otherSubMenu?.apiRoute || "",
+      {},
+    );
   };
 
   const {
@@ -50,10 +64,10 @@ const TransmissionLineEquipmentDataList: React.FC<TransmissionLineEquipmentDataL
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<TransmissionLineEquipmentData[]>({
-    queryKey: ['transmissionLineEquipmentDatas'],
-    fetchFunction: fetchTransmissionLineEquipmentDatas
+    queryKey: ["transmissionLineEquipmentDatas"],
+    fetchFunction: fetchTransmissionLineEquipmentDatas,
   });
 
   const toggleDrawer = () => {
@@ -66,86 +80,120 @@ const TransmissionLineEquipmentDataList: React.FC<TransmissionLineEquipmentDataL
     setShowDetailDrawer(!showDetailDrawer);
   };
 
-  const handleEdit = (transmissionLineEquipmentData: TransmissionLineEquipmentData) => {
+  const handleEdit = (
+    transmissionLineEquipmentData: TransmissionLineEquipmentData,
+  ) => {
     toggleDrawer();
     setSelectedRow(transmissionLineEquipmentData);
   };
 
   const handleDelete = async (transmissionLineEquipmentDataId: string) => {
     await projectOtherApiSecondService<TransmissionLineEquipmentData>().delete(
-      otherSubMenu?.apiRoute || '',
-      transmissionLineEquipmentDataId
+      otherSubMenu?.apiRoute || "",
+      transmissionLineEquipmentDataId,
     );
     refetch();
   };
 
-  const handleClickDetail = (transmissionLineEquipmentData: TransmissionLineEquipmentData) => {
+  const handleClickDetail = (
+    transmissionLineEquipmentData: TransmissionLineEquipmentData,
+  ) => {
     toggleDetailDrawer();
     setSelectedRow(transmissionLineEquipmentData);
   };
 
   const mapTransmissionLineEquipmentDataToDetailItems = (
-    transmissionLineEquipmentData: TransmissionLineEquipmentData
+    transmissionLineEquipmentData: TransmissionLineEquipmentData,
   ): { title: string; value: string }[] => [
     {
-      title: t('project.other.transmission-line-equipment-data.details.name'),
-      value: transmissionLineEquipmentData?.name || 'N/A'
+      title: t("project.other.transmission-line-equipment-data.details.name"),
+      value: transmissionLineEquipmentData?.name || "N/A",
     },
     {
-      title: t('project.other.transmission-line-equipment-data.details.transmission-line-id'),
-      value: transmissionLineEquipmentData?.transmission_line_id || 'N/A'
+      title: t(
+        "project.other.transmission-line-equipment-data.details.transmission-line-id",
+      ),
+      value: transmissionLineEquipmentData?.transmission_line_id || "N/A",
     },
     {
-      title: t('project.other.transmission-line-equipment-data.details.insulator-type'),
-      value: transmissionLineEquipmentData?.insulator_type || 'N/A'
+      title: t(
+        "project.other.transmission-line-equipment-data.details.insulator-type",
+      ),
+      value: transmissionLineEquipmentData?.insulator_type || "N/A",
     },
     {
-      title: t('project.other.transmission-line-equipment-data.details.ground-wire-type'),
-      value: transmissionLineEquipmentData?.ground_wire_type || 'N/A'
+      title: t(
+        "project.other.transmission-line-equipment-data.details.ground-wire-type",
+      ),
+      value: transmissionLineEquipmentData?.ground_wire_type || "N/A",
     },
     {
-      title: t('project.other.transmission-line-equipment-data.details.fiber-optics-number'),
+      title: t(
+        "project.other.transmission-line-equipment-data.details.fiber-optics-number",
+      ),
       value:
         transmissionLineEquipmentData?.fiber_optics_number !== undefined
           ? transmissionLineEquipmentData.fiber_optics_number.toString()
-          : 'N/A'
+          : "N/A",
     },
     {
-      title: t('project.other.transmission-line-equipment-data.details.opgw-uts'),
-      value: transmissionLineEquipmentData?.opgw_uts !== undefined ? transmissionLineEquipmentData.opgw_uts.toString() : 'N/A'
+      title: t(
+        "project.other.transmission-line-equipment-data.details.opgw-uts",
+      ),
+      value:
+        transmissionLineEquipmentData?.opgw_uts !== undefined
+          ? transmissionLineEquipmentData.opgw_uts.toString()
+          : "N/A",
     },
     {
-      title: t('project.other.transmission-line-equipment-data.details.opgw-weight'),
-      value: transmissionLineEquipmentData?.opgw_weight !== undefined ? transmissionLineEquipmentData.opgw_weight.toString() : 'N/A'
+      title: t(
+        "project.other.transmission-line-equipment-data.details.opgw-weight",
+      ),
+      value:
+        transmissionLineEquipmentData?.opgw_weight !== undefined
+          ? transmissionLineEquipmentData.opgw_weight.toString()
+          : "N/A",
     },
     {
-      title: t('project.other.transmission-line-equipment-data.details.owner-operator'),
-      value: transmissionLineEquipmentData?.owner_operator || 'N/A'
+      title: t(
+        "project.other.transmission-line-equipment-data.details.owner-operator",
+      ),
+      value: transmissionLineEquipmentData?.owner_operator || "N/A",
     },
     {
-      title: t('project.other.transmission-line-equipment-data.details.tower-grounding'),
-      value: transmissionLineEquipmentData?.tower_grounding || 'N/A'
+      title: t(
+        "project.other.transmission-line-equipment-data.details.tower-grounding",
+      ),
+      value: transmissionLineEquipmentData?.tower_grounding || "N/A",
     },
     {
-      title: t('project.other.transmission-line-equipment-data.details.tower-circuit-arrangement'),
-      value: transmissionLineEquipmentData?.tower_circuit_arrangement || 'N/A'
+      title: t(
+        "project.other.transmission-line-equipment-data.details.tower-circuit-arrangement",
+      ),
+      value: transmissionLineEquipmentData?.tower_circuit_arrangement || "N/A",
     },
     {
-      title: t('project.other.transmission-line-equipment-data.details.other-equipment'),
-      value: transmissionLineEquipmentData?.other_equipment || 'N/A'
+      title: t(
+        "project.other.transmission-line-equipment-data.details.other-equipment",
+      ),
+      value: transmissionLineEquipmentData?.other_equipment || "N/A",
     },
     {
-      title: t('project.other.transmission-line-equipment-data.details.remark'),
-      value: transmissionLineEquipmentData?.remark || 'N/A'
+      title: t("project.other.transmission-line-equipment-data.details.remark"),
+      value: transmissionLineEquipmentData?.remark || "N/A",
     },
     {
-      title: t('common.table-columns.created-at'),
-      value: transmissionLineEquipmentData?.created_at ? formatCreatedAt(transmissionLineEquipmentData.created_at) : 'N/A'
+      title: t("common.table-columns.created-at"),
+      value: transmissionLineEquipmentData?.created_at
+        ? formatCreatedAt(transmissionLineEquipmentData.created_at)
+        : "N/A",
     },
     {
-      title: t('common.table-columns.updated-at'),
-      value: transmissionLineEquipmentData?.updated_at ? formatCreatedAt(transmissionLineEquipmentData.updated_at) : 'N/A'
-    }
+      title: t("common.table-columns.updated-at"),
+      value: transmissionLineEquipmentData?.updated_at
+        ? formatCreatedAt(transmissionLineEquipmentData.updated_at)
+        : "N/A",
+    },
   ];
 
   return (
@@ -155,7 +203,9 @@ const TransmissionLineEquipmentDataList: React.FC<TransmissionLineEquipmentDataL
           otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
-          transmissionLineEquipmentData={selectedRow as TransmissionLineEquipmentData}
+          transmissionLineEquipmentData={
+            selectedRow as TransmissionLineEquipmentData
+          }
           refetch={refetch}
           projectId={projectId}
           transmissionLines={transmissionLines?.payload || []}
@@ -166,20 +216,32 @@ const TransmissionLineEquipmentDataList: React.FC<TransmissionLineEquipmentDataL
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapTransmissionLineEquipmentDataToDetailItems(selectedRow as TransmissionLineEquipmentData)}
+          data={mapTransmissionLineEquipmentDataToDetailItems(
+            selectedRow as TransmissionLineEquipmentData,
+          )}
           hasReference={true}
-          id={selectedRow?.id || ''}
-          fileType={uploadableProjectFileTypes.other.transmissionLineEquipmentData}
-          title={t('project.other.transmission-line-equipment-data.transmission-line-equipment-data-details')}
+          id={selectedRow?.id || ""}
+          fileType={
+            uploadableProjectFileTypes.other.transmissionLineEquipmentData
+          }
+          title={t(
+            "project.other.transmission-line-equipment-data.transmission-line-equipment-data-details",
+          )}
         />
       )}
 
       <ItemsListing
-        title={t('project.other.transmission-line-equipment-data.title')}
+        title={t("project.other.transmission-line-equipment-data.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: transmissionLineEquipmentDataColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
+          headers: transmissionLineEquipmentDataColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+            refetch,
+          ),
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -196,9 +258,9 @@ const TransmissionLineEquipmentDataList: React.FC<TransmissionLineEquipmentDataL
           onClick: toggleDrawer,
           onlyIcon: true,
           permission: {
-            action: 'create',
-            subject: 'transmissionlineequipmentdata'
-          }
+            action: "create",
+            subject: "transmissionlineequipmentdata",
+          },
         }}
         fetchDataFunction={refetch}
         items={transmissionLineEquipmentDatas || []}

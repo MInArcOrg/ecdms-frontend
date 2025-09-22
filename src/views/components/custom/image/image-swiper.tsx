@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { useGetMultiplePhotos, getStaticPhoto } from 'src/services/utils/file-utils'; // Adjust path as needed
-import { Box } from '@mui/material';
-import ShowImageDialog from './image-dialog';
+import React, { useState, useEffect } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import {
+  useGetMultiplePhotos,
+  getStaticPhoto,
+} from "src/services/utils/file-utils"; // Adjust path as needed
+import { Box } from "@mui/material";
+import ShowImageDialog from "./image-dialog";
 
 interface Props {
   id: string;
@@ -12,7 +15,11 @@ interface Props {
 }
 
 const ImageSlider: React.FC<Props> = ({ id, refetch }) => {
-  const { data: images, isLoading, refetch: refetchImages } = useGetMultiplePhotos({ filter: { model_id: id } });
+  const {
+    data: images,
+    isLoading,
+    refetch: refetchImages,
+  } = useGetMultiplePhotos({ filter: { model_id: id } });
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [open, setOpen] = useState<boolean>(false);
   useEffect(() => {
@@ -33,10 +40,10 @@ const ImageSlider: React.FC<Props> = ({ id, refetch }) => {
       {
         breakpoint: 768, // Adjust breakpoint as needed for different screen sizes
         settings: {
-          arrows: false // Hide arrows on smaller screens (optional)
-        }
-      }
-    ]
+          arrows: false, // Hide arrows on smaller screens (optional)
+        },
+      },
+    ],
   };
 
   const handleImageClick = (imageUrl: string) => {
@@ -53,12 +60,16 @@ const ImageSlider: React.FC<Props> = ({ id, refetch }) => {
         <>
           <Slider {...settings}>
             {images?.payload?.map((image) => (
-              <Box onClick={() => handleImageClick(image.url)} key={image.id} className="slide">
+              <Box
+                onClick={() => handleImageClick(image.url)}
+                key={image.id}
+                className="slide"
+              >
                 <img
                   src={getStaticPhoto(image.url)}
                   alt={image.title}
                   className="slider-image"
-                  style={{ objectFit: 'cover', width: '100%' }} // Use objectFit: cover for full image fit
+                  style={{ objectFit: "cover", width: "100%" }} // Use objectFit: cover for full image fit
                 />
               </Box>
             ))}

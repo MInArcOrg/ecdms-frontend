@@ -1,8 +1,11 @@
-import { AxiosResponse } from 'axios';
-import { GetRequestParam } from 'src/types/requests';
-import axiosServices from '../axios';
+import { AxiosResponse } from "axios";
+import { GetRequestParam } from "src/types/requests";
+import axiosServices from "../axios";
 
-export const buildGetRequest = async (url: string, params: GetRequestParam | null | undefined): Promise<AxiosResponse> => {
+export const buildGetRequest = async (
+  url: string,
+  params: GetRequestParam | null | undefined,
+): Promise<AxiosResponse> => {
   try {
     const requestParams: Record<string, any> = {};
 
@@ -19,7 +22,7 @@ export const buildGetRequest = async (url: string, params: GetRequestParam | nul
     }
 
     const response = await axiosServices.get(url, {
-      params: requestParams
+      params: requestParams,
     });
 
     return response;

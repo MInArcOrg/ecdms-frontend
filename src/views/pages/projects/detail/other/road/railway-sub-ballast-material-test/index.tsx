@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import type React from 'react';
-import { Box } from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import type React from "react";
+import { Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import projectOtherApiSecondService from "src/services/project/project-other-second-service";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import type { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer";
 
 // Assuming RailwaySubBallastMaterialTest is defined and imported correctly
 // For example: import { RailwaySubBallastMaterialTest } from 'src/types/project/other-tests';
@@ -33,34 +33,45 @@ interface RailwaySubBallastMaterialTest {
   updated_at?: string;
 }
 
+import RailwaySubBallastMaterialTestCard from "./railway-sub-ballast-material-test-card"; // Renamed import
+import RailwaySubBallastMaterialTestDrawer from "./railway-sub-ballast-material-test-drawer"; // Renamed import
+import { railwaySubBallastMaterialTestColumns } from "./railway-sub-ballast-material-test-row"; // Renamed import
 
-import RailwaySubBallastMaterialTestCard from './railway-sub-ballast-material-test-card'; // Renamed import
-import RailwaySubBallastMaterialTestDrawer from './railway-sub-ballast-material-test-drawer'; // Renamed import
-import { railwaySubBallastMaterialTestColumns } from './railway-sub-ballast-material-test-row'; // Renamed import
+import { formatCreatedAt } from "src/utils/formatter/date";
 
-import { formatCreatedAt } from 'src/utils/formatter/date';
-
-interface RailwaySubBallastMaterialTestListProps { // Renamed interface if component file is also renamed
+interface RailwaySubBallastMaterialTestListProps {
+  // Renamed interface if component file is also renamed
   otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
 
-const RailwaySubBallastMaterialTestList: React.FC<RailwaySubBallastMaterialTestListProps> = ({ // Renamed component
+const RailwaySubBallastMaterialTestList: React.FC<
+  RailwaySubBallastMaterialTestListProps
+> = ({
+  // Renamed component
   otherSubMenu,
   projectId,
   // typeId // This prop is unused in the core logic shown
 }) => {
   const [showCreateEditDrawer, setShowCreateEditDrawer] = useState(false); // Renamed state for clarity
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRailwaySubBallastMaterialTest, setSelectedRailwaySubBallastMaterialTest] = useState<RailwaySubBallastMaterialTest | null>(null); // Renamed state
+  const [
+    selectedRailwaySubBallastMaterialTest,
+    setSelectedRailwaySubBallastMaterialTest,
+  ] = useState<RailwaySubBallastMaterialTest | null>(null); // Renamed state
   const { t } = useTranslation();
 
-  const fetchData = (params: GetRequestParam): Promise<IApiResponse<RailwaySubBallastMaterialTest[]>> => {
-    return projectOtherApiSecondService<RailwaySubBallastMaterialTest>().getAll(otherSubMenu?.apiRoute || '', {
-      ...params,
-      filter: { ...params.filter, project_id: projectId }
-    });
+  const fetchData = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<RailwaySubBallastMaterialTest[]>> => {
+    return projectOtherApiSecondService<RailwaySubBallastMaterialTest>().getAll(
+      otherSubMenu?.apiRoute || "",
+      {
+        ...params,
+        filter: { ...params.filter, project_id: projectId },
+      },
+    );
   };
 
   const {
@@ -68,14 +79,17 @@ const RailwaySubBallastMaterialTestList: React.FC<RailwaySubBallastMaterialTestL
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<RailwaySubBallastMaterialTest[]>({
-    queryKey: ['railwaySubBallastMaterialTests', projectId], // Query key reflects list of tests
-    fetchFunction: fetchData
+    queryKey: ["railwaySubBallastMaterialTests", projectId], // Query key reflects list of tests
+    fetchFunction: fetchData,
   });
 
-  const toggleCreateEditDrawer = () => { // Renamed function
-    setSelectedRailwaySubBallastMaterialTest({} as RailwaySubBallastMaterialTest); // Use new state setter
+  const toggleCreateEditDrawer = () => {
+    // Renamed function
+    setSelectedRailwaySubBallastMaterialTest(
+      {} as RailwaySubBallastMaterialTest,
+    ); // Use new state setter
     setShowCreateEditDrawer(!showCreateEditDrawer); // Use new state
   };
 
@@ -83,74 +97,116 @@ const RailwaySubBallastMaterialTestList: React.FC<RailwaySubBallastMaterialTestL
     setShowDetailDrawer(!showDetailDrawer);
   };
 
-  const handleEdit = (testData: RailwaySubBallastMaterialTest) => { // Renamed parameter
+  const handleEdit = (testData: RailwaySubBallastMaterialTest) => {
+    // Renamed parameter
     setSelectedRailwaySubBallastMaterialTest(testData); // Use new state setter
     setShowCreateEditDrawer(true); // Use new state
   };
 
   const handleDelete = async (id: string) => {
-    await projectOtherApiSecondService<RailwaySubBallastMaterialTest>().delete(otherSubMenu?.apiRoute || '', id);
+    await projectOtherApiSecondService<RailwaySubBallastMaterialTest>().delete(
+      otherSubMenu?.apiRoute || "",
+      id,
+    );
     refetch();
   };
 
-  const handleClickDetail = (testData: RailwaySubBallastMaterialTest) => { // Renamed parameter
+  const handleClickDetail = (testData: RailwaySubBallastMaterialTest) => {
+    // Renamed parameter
     setSelectedRailwaySubBallastMaterialTest(testData); // Use new state setter
     setShowDetailDrawer(true);
   };
 
-  const mapToDetailItems = (testData: RailwaySubBallastMaterialTest): { title: string; value: string }[] => [ // Renamed parameter
+  const mapToDetailItems = (
+    testData: RailwaySubBallastMaterialTest,
+  ): { title: string; value: string }[] => [
+    // Renamed parameter
     {
-      title: t('common.table-columns.id'),
-      value: testData?.id || 'N/A'
+      title: t("common.table-columns.id"),
+      value: testData?.id || "N/A",
     },
     {
-      title: t('project.other.railway-sub-ballast-material-test.details.project-id', 'Project ID'), // Updated locale key
-      value: testData?.project_id || 'N/A'
+      title: t(
+        "project.other.railway-sub-ballast-material-test.details.project-id",
+        "Project ID",
+      ), // Updated locale key
+      value: testData?.project_id || "N/A",
     },
     {
-      title: t('project.other.railway-sub-ballast-material-test.details.railway-line-section-name', 'Railway Line Section Name'), // Updated locale key
-      value: testData?.railway_line_section_name || 'N/A'
+      title: t(
+        "project.other.railway-sub-ballast-material-test.details.railway-line-section-name",
+        "Railway Line Section Name",
+      ), // Updated locale key
+      value: testData?.railway_line_section_name || "N/A",
     },
     {
-      title: t('project.other.railway-sub-ballast-material-test.details.sub-ballast-material-type-id', 'Sub Ballast Material Type ID'), // Updated locale key
-      value: testData?.sub_ballast_material_type_id || 'N/A'
+      title: t(
+        "project.other.railway-sub-ballast-material-test.details.sub-ballast-material-type-id",
+        "Sub Ballast Material Type ID",
+      ), // Updated locale key
+      value: testData?.sub_ballast_material_type_id || "N/A",
     },
     {
-      title: t('project.other.railway-sub-ballast-material-test.details.testing-method-used', 'Testing Method Used'), // Updated locale key
-      value: testData?.testing_method_used || 'N/A'
+      title: t(
+        "project.other.railway-sub-ballast-material-test.details.testing-method-used",
+        "Testing Method Used",
+      ), // Updated locale key
+      value: testData?.testing_method_used || "N/A",
     },
     {
-      title: t('project.other.railway-sub-ballast-material-test.details.sampling-method', 'Sampling Method'), // Updated locale key
-      value: testData?.sampling_method || 'N/A'
+      title: t(
+        "project.other.railway-sub-ballast-material-test.details.sampling-method",
+        "Sampling Method",
+      ), // Updated locale key
+      value: testData?.sampling_method || "N/A",
     },
     {
-      title: t('project.other.railway-sub-ballast-material-test.details.sample-size', 'Sample Size'), // Updated locale key
-      value: testData?.sample_size?.toLocaleString() ?? 'N/A'
+      title: t(
+        "project.other.railway-sub-ballast-material-test.details.sample-size",
+        "Sample Size",
+      ), // Updated locale key
+      value: testData?.sample_size?.toLocaleString() ?? "N/A",
     },
     {
-      title: t('project.other.railway-sub-ballast-material-test.details.material-source', 'Material Source'), // Updated locale key
-      value: testData?.material_source || 'N/A'
+      title: t(
+        "project.other.railway-sub-ballast-material-test.details.material-source",
+        "Material Source",
+      ), // Updated locale key
+      value: testData?.material_source || "N/A",
     },
     {
-      title: t('project.other.railway-sub-ballast-material-test.details.sieve-analysis-results', 'Sieve Analysis Results'), // Updated locale key
-      value: testData?.sieve_analysis_results || 'N/A'
+      title: t(
+        "project.other.railway-sub-ballast-material-test.details.sieve-analysis-results",
+        "Sieve Analysis Results",
+      ), // Updated locale key
+      value: testData?.sieve_analysis_results || "N/A",
     },
     {
-      title: t('project.other.railway-sub-ballast-material-test.details.supplier', 'Supplier'), // Updated locale key
-      value: testData?.supplier || 'N/A'
+      title: t(
+        "project.other.railway-sub-ballast-material-test.details.supplier",
+        "Supplier",
+      ), // Updated locale key
+      value: testData?.supplier || "N/A",
     },
     {
-      title: t('project.other.railway-sub-ballast-material-test.details.remark', 'Remark'), // Updated locale key
-      value: testData?.remark || 'N/A'
+      title: t(
+        "project.other.railway-sub-ballast-material-test.details.remark",
+        "Remark",
+      ), // Updated locale key
+      value: testData?.remark || "N/A",
     },
     {
-      title: t('common.table-columns.created-at'),
-      value: testData?.created_at ? formatCreatedAt(testData.created_at) : 'N/A'
+      title: t("common.table-columns.created-at"),
+      value: testData?.created_at
+        ? formatCreatedAt(testData.created_at)
+        : "N/A",
     },
     {
-      title: t('common.table-columns.updated-at'),
-      value: testData?.updated_at ? formatCreatedAt(testData.updated_at) : 'N/A'
-    }
+      title: t("common.table-columns.updated-at"),
+      value: testData?.updated_at
+        ? formatCreatedAt(testData.updated_at)
+        : "N/A",
+    },
   ];
 
   return (
@@ -172,22 +228,34 @@ const RailwaySubBallastMaterialTestList: React.FC<RailwaySubBallastMaterialTestL
           toggleDrawer={toggleDetailDrawer}
           data={mapToDetailItems(selectedRailwaySubBallastMaterialTest)}
           hasReference={false}
-          id={selectedRailwaySubBallastMaterialTest?.id || ''}
+          id={selectedRailwaySubBallastMaterialTest?.id || ""}
           fileType=""
           // Updated locale key and default text
-          title={t('project.other.railway-sub-ballast-material-test.detail', 'Railway Sub Ballast Material Test Details')}
+          title={t(
+            "project.other.railway-sub-ballast-material-test.detail",
+            "Railway Sub Ballast Material Test Details",
+          )}
         />
       )}
 
       <ItemsListing
         // Updated locale key and default text
-        title={t('project.other.railway-sub-ballast-material-test.title', 'Railway Sub Ballast Material Tests')}
+        title={t(
+          "project.other.railway-sub-ballast-material-test.title",
+          "Railway Sub Ballast Material Tests",
+        )}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
           // NOTE: railwaySubBallastMaterialTestColumns must be updated to work with RailwaySubBallastMaterialTest
           // and its name changed if a global rename is applied
-          headers: railwaySubBallastMaterialTestColumns(handleClickDetail, handleEdit, handleDelete, t, refetch) // Renamed import
+          headers: railwaySubBallastMaterialTestColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+            refetch,
+          ), // Renamed import
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data: itemData }) => (
@@ -196,7 +264,9 @@ const RailwaySubBallastMaterialTestList: React.FC<RailwaySubBallastMaterialTestL
           <RailwaySubBallastMaterialTestCard
             onDetail={handleClickDetail}
             // Prop name changed to reflect the model specifically
-            railwaySubBallastMaterialTest={itemData as RailwaySubBallastMaterialTest}
+            railwaySubBallastMaterialTest={
+              itemData as RailwaySubBallastMaterialTest
+            }
             onEdit={handleEdit}
             refetch={refetch}
             onDelete={handleDelete}
@@ -207,9 +277,9 @@ const RailwaySubBallastMaterialTestList: React.FC<RailwaySubBallastMaterialTestL
           onClick: toggleCreateEditDrawer, // Use renamed function
           onlyIcon: true,
           permission: {
-            action: 'create',
-            subject: 'railwaysubballastmaterialtest' // Subject reflects the model
-          }
+            action: "create",
+            subject: "railwaysubballastmaterialtest", // Subject reflects the model
+          },
         }}
         fetchDataFunction={refetch}
         items={railwaySubBallastMaterialTestData || []} // Use renamed data variable

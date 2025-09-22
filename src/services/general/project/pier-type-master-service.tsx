@@ -1,10 +1,14 @@
-import type { AxiosResponse } from 'axios';
-import type { PierType } from 'src/types/general/general-master';
-import type { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
-import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
-import { buildPostRequest } from 'src/utils/requests/post-request';
-import { buildPutRequest } from 'src/utils/requests/put-request';
+import type { AxiosResponse } from "axios";
+import type { PierType } from "src/types/general/general-master";
+import type {
+  GetRequestParam,
+  IApiPayload,
+  IApiResponse,
+} from "src/types/requests";
+import axiosServices from "src/utils/axios";
+import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildPostRequest } from "src/utils/requests/post-request";
+import { buildPutRequest } from "src/utils/requests/put-request";
 
 const pierTypeMasterService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<PierType[]>> =>
@@ -22,7 +26,10 @@ const pierTypeMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/pier-types-search`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as PierType[])
+      .then(
+        (response: AxiosResponse<IApiResponse>) =>
+          response.data.payload as unknown as PierType[],
+      )
       .catch((error: any) => {
         throw error;
       }),
@@ -45,7 +52,7 @@ const pierTypeMasterService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
 };
 
 export default pierTypeMasterService;

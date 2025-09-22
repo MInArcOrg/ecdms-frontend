@@ -1,6 +1,6 @@
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import LoadingPlaceholder from 'src/views/components/loader';
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import LoadingPlaceholder from "src/views/components/loader";
 
 const ResourceWorkExperience = () => {
   const router = useRouter();

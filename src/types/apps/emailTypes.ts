@@ -1,10 +1,16 @@
 // ** Types
-import { Dispatch } from 'redux';
-import { ReactElement, SyntheticEvent } from 'react';
+import { Dispatch } from "redux";
+import { ReactElement, SyntheticEvent } from "react";
 
-export type MailLabelType = 'personal' | 'company' | 'important' | 'private';
+export type MailLabelType = "personal" | "company" | "important" | "private";
 
-export type MailFolderType = 'inbox' | 'sent' | 'draft' | 'starred' | 'spam' | 'trash';
+export type MailFolderType =
+  | "inbox"
+  | "sent"
+  | "draft"
+  | "starred"
+  | "spam"
+  | "trash";
 
 export type RouteParams = {
   label?: string;
@@ -33,7 +39,7 @@ export type FetchMailParamsType = {
 };
 
 export type PaginateMailParamsType = {
-  dir: 'next' | 'previous';
+  dir: "next" | "previous";
   emailId: number;
 };
 
@@ -135,7 +141,7 @@ export type MailLogType = {
   store: MailStore;
   lgAbove: boolean;
   dispatch: Dispatch<any>;
-  direction: 'ltr' | 'rtl';
+  direction: "ltr" | "rtl";
   mailDetailsOpen: boolean;
   routeParams: RouteParams;
   labelColors: MailLabelColors;
@@ -154,7 +160,7 @@ export type MailDetailsType = {
   mail: MailType;
   hidden: boolean;
   dispatch: Dispatch<any>;
-  direction: 'ltr' | 'rtl';
+  direction: "ltr" | "rtl";
   mailDetailsOpen: boolean;
   routeParams: RouteParams;
   labelColors: MailLabelColors;

@@ -1,9 +1,9 @@
-import { LoadingButton } from '@mui/lab';
-import { Box, Button, Grid } from '@mui/material';
-import { Formik, FormikProps } from 'formik';
-import React from 'react';
-import Translations from 'src/layouts/components/Translations';
-import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import { LoadingButton } from "@mui/lab";
+import { Box, Button, Grid } from "@mui/material";
+import { Formik, FormikProps } from "formik";
+import React from "react";
+import Translations from "src/layouts/components/Translations";
+import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
 
 interface FilterListProps {
   open: boolean;
@@ -12,12 +12,20 @@ interface FilterListProps {
   FilterComponentItems: React.ComponentType<{ formik: FormikProps<any> }>; // Correct prop type definition
 }
 
-const FilterList: React.FC<FilterListProps> = ({ open, toggle, handleFilter, FilterComponentItems }) => {
+const FilterList: React.FC<FilterListProps> = ({
+  open,
+  toggle,
+  handleFilter,
+  FilterComponentItems,
+}) => {
   const handleClose = () => {
     toggle();
   };
 
-  const handleApplyFilter = async (values: any, { setErrors, setStatus, setSubmitting }: any) => {
+  const handleApplyFilter = async (
+    values: any,
+    { setErrors, setStatus, setSubmitting }: any,
+  ) => {
     handleFilter(values);
     setStatus({ success: true });
   };
@@ -46,7 +54,7 @@ const FilterList: React.FC<FilterListProps> = ({ open, toggle, handleFilter, Fil
                         color="primary"
                       >
                         <span>
-                          <Translations text={'Search'} />
+                          <Translations text={"Search"} />
                         </span>
                       </LoadingButton>
                       <Button
@@ -58,7 +66,7 @@ const FilterList: React.FC<FilterListProps> = ({ open, toggle, handleFilter, Fil
                         variant="contained"
                         color="secondary"
                       >
-                        <Translations text={'cancel'} />
+                        <Translations text={"cancel"} />
                       </Button>
                     </Grid>
                   </Grid>

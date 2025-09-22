@@ -1,7 +1,7 @@
-import { Box, Card } from '@mui/material';
-import { StakeholderEmail } from 'src/types/stakeholder';
-import ModelActionComponent from 'src/views/components/custom/model-actions';
-import RowOptions from 'src/views/shared/listing/row-options';
+import { Box, Card } from "@mui/material";
+import { StakeholderEmail } from "src/types/stakeholder";
+import ModelActionComponent from "src/views/components/custom/model-actions";
+import RowOptions from "src/views/shared/listing/row-options";
 
 interface StakeholderEmailCardProps {
   stakeholderEmail: StakeholderEmail;
@@ -10,7 +10,12 @@ interface StakeholderEmailCardProps {
   onDelete: (id: string) => void;
 }
 
-const StakeholderEmailCard: React.FC<StakeholderEmailCardProps> = ({ stakeholderEmail, refetch, onEdit, onDelete }) => {
+const StakeholderEmailCard: React.FC<StakeholderEmailCardProps> = ({
+  stakeholderEmail,
+  refetch,
+  onEdit,
+  onDelete,
+}) => {
   return (
     <Card sx={{ p: 1 }}>
       <Box display="flex" justifyContent="space-between">
@@ -26,7 +31,7 @@ const StakeholderEmailCard: React.FC<StakeholderEmailCardProps> = ({ stakeholder
             resubmit={() => {
               /* Handle resubmit action */
             }}
-            title={'stakeholder.stakeholder-email.title'}
+            title={"stakeholder.stakeholder-email.title"}
             postAction={() => {
               /* Handle post action */
             }}
@@ -35,12 +40,12 @@ const StakeholderEmailCard: React.FC<StakeholderEmailCardProps> = ({ stakeholder
             onEdit={() => onEdit(stakeholderEmail)}
             onDelete={() => onDelete(stakeholderEmail.id)}
             deletePermissionRule={{
-              action: 'delete',
-              subject: 'stakeholderemail'
+              action: "delete",
+              subject: "stakeholderemail",
             }}
             editPermissionRule={{
-              action: 'update',
-              subject: 'stakeholderemail'
+              action: "update",
+              subject: "stakeholderemail",
             }}
             item={stakeholderEmail}
             options={[]}

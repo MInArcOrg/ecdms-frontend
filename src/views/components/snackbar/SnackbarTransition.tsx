@@ -1,12 +1,12 @@
 // ** React Imports
-import { ComponentType, Fragment, ReactElement, useState } from 'react';
+import { ComponentType, Fragment, ReactElement, useState } from "react";
 
 // ** MUI Imports
-import Button from '@mui/material/Button';
-import Snackbar from '@mui/material/Snackbar';
-import Grow, { GrowProps } from '@mui/material/Grow';
-import Fade, { FadeProps } from '@mui/material/Fade';
-import Slide, { SlideProps } from '@mui/material/Slide';
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
+import Grow, { GrowProps } from "@mui/material/Grow";
+import Fade, { FadeProps } from "@mui/material/Fade";
+import Slide, { SlideProps } from "@mui/material/Slide";
 
 const GrowTransition = (props: GrowProps) => {
   return <Grow {...props} />;
@@ -27,7 +27,7 @@ const SnackbarTransition = () => {
     >;
   }>({
     open: false,
-    Transition: Fade
+    Transition: Fade,
   });
 
   const handleClick =
@@ -36,19 +36,19 @@ const SnackbarTransition = () => {
         FadeProps & {
           children?: ReactElement<any>;
         }
-      >
+      >,
     ) =>
     () => {
       setState({
         open: true,
-        Transition
+        Transition,
       });
     };
 
   const handleClose = () => {
     setState({
       ...state,
-      open: false
+      open: false,
     });
   };
 

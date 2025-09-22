@@ -1,10 +1,12 @@
-import { useEffect } from 'react';
-import authConfig from 'src/configs/auth';
-import { useAuth } from 'src/hooks/useAuth';
-import axiosServices from 'src/utils/axios';
+import { useEffect } from "react";
+import authConfig from "src/configs/auth";
+import { useAuth } from "src/hooks/useAuth";
+import axiosServices from "src/utils/axios";
 
 const getToken = () => {
-  const storedToken = `Bearer ${window.localStorage.getItem(authConfig.storageTokenKeyName)}`;
+  const storedToken = `Bearer ${window.localStorage.getItem(
+    authConfig.storageTokenKeyName,
+  )}`;
   return storedToken;
 };
 
@@ -20,29 +22,34 @@ const useAxiosInterceptors = () => {
         }
         return config;
       },
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
 
     const responseInterceptor = axiosServices.interceptors.response.use(
       (response) => response,
       (error) => {
         if (error.response) {
-          console.log('API UNAUTHORIZED: ' + isGuestGuard);
+          console.log("API UNAUTHORIZED: " + isGuestGuard);
           if (error.response.status === 401 && !isGuestGuard) {
             const currentUrl = window.location.pathname;
-            if (!currentUrl.includes('login') && !currentUrl.includes('check-profile')) {
-              const loginRedirectURL = `/auth/login?returnUrl=${encodeURIComponent(currentUrl)}`;
+            if (
+              !currentUrl.includes("login") &&
+              !currentUrl.includes("check-profile")
+            ) {
+              const loginRedirectURL = `/auth/login?returnUrl=${encodeURIComponent(
+                currentUrl,
+              )}`;
               window.location.href = loginRedirectURL;
             }
           } else {
             // console.error('API Error Response:', error.response.data);
           }
-          return Promise.reject(error.response.data || 'API request failed');
+          return Promise.reject(error.response.data || "API request failed");
         } else {
-          console.error('Network or connection error:', error);
-          return Promise.reject('Network error');
+          console.error("Network or connection error:", error);
+          return Promise.reject("Network error");
         }
-      }
+      },
     );
 
     return () => {

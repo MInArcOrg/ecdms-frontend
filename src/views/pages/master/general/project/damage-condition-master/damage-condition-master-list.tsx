@@ -1,21 +1,23 @@
 // components/DamageConditionMasterList.tsx
-import { Card, CardContent } from '@mui/material';
-import React, { Fragment, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { DamageCondition } from 'src/types/general/general-master';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import DamageConditionMasterCard from './damage-condition-master-card';
-import DamageConditionMasterDrawer from './damage-condition-master-drawer';
-import damageConditionMasterService from 'src/services/general/project/damage-condition-master-service';
+import { Card, CardContent } from "@mui/material";
+import React, { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
+import usePaginatedFetch from "src/hooks/use-paginated-fetch";
+import { DamageCondition } from "src/types/general/general-master";
+import { defaultCreateActionConfig } from "src/types/general/listing";
+import { GetRequestParam, IApiResponse } from "src/types/requests";
+import ItemsListing from "src/views/shared/listing";
+import DamageConditionMasterCard from "./damage-condition-master-card";
+import DamageConditionMasterDrawer from "./damage-condition-master-drawer";
+import damageConditionMasterService from "src/services/general/project/damage-condition-master-service";
 
 const DamageConditionMasterList: React.FC = () => {
   const [selectedRow, setSelectedRow] = useState<DamageCondition | null>(null);
   const { t } = useTranslation();
-  const fetchDamageConditionMaster = (params: GetRequestParam): Promise<IApiResponse<DamageCondition[]>> => {
+  const fetchDamageConditionMaster = (
+    params: GetRequestParam,
+  ): Promise<IApiResponse<DamageCondition[]>> => {
     return damageConditionMasterService.getAll(params);
   };
   const [showDrawer, setShowDrawer] = useState<boolean>();
@@ -25,10 +27,10 @@ const DamageConditionMasterList: React.FC = () => {
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
   } = usePaginatedFetch<DamageCondition[]>({
-    queryKey: ['general-master', 'damage-condition'],
-    fetchFunction: fetchDamageConditionMaster
+    queryKey: ["general-master", "damage-condition"],
+    fetchFunction: fetchDamageConditionMaster,
   });
   const handleDelete = async (id: string) => {
     await damageConditionMasterService.delete(id);
@@ -62,7 +64,7 @@ const DamageConditionMasterList: React.FC = () => {
             title={t(`master-data.general-master.damage-conditions`)}
             ItemViewComponent={({ data }) => (
               <DamageConditionMasterCard
-                type={'damage-condition'}
+                type={"damage-condition"}
                 generalMaster={data}
                 onDelete={handleDelete}
                 onEdit={handleEdit}
@@ -76,9 +78,9 @@ const DamageConditionMasterList: React.FC = () => {
               onClick: toggleDrawer,
               onlyIcon: true,
               permission: {
-                action: 'create',
-                subject: `damagecondition`
-              }
+                action: "create",
+                subject: `damagecondition`,
+              },
             }}
             fetchDataFunction={refetch}
             items={types || []}

@@ -1,8 +1,8 @@
 // ** MUI Imports
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon';
+import Icon from "src/@core/components/icon";
 
 const ButtonsWithIconAndLabel = () => {
   return (
@@ -10,7 +10,11 @@ const ButtonsWithIconAndLabel = () => {
       <Button variant="contained" endIcon={<Icon icon="tabler:send" />}>
         Send
       </Button>
-      <Button variant="contained" color="secondary" startIcon={<Icon icon="tabler:trash" />}>
+      <Button
+        variant="contained"
+        color="secondary"
+        startIcon={<Icon icon="tabler:trash" />}
+      >
         Delete
       </Button>
     </div>
