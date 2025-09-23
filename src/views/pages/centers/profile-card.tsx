@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 import departmentApiService from "src/services/department/department-service";
 import Department from "src/types/department/department";
 import SubDepartmentDrawer from "./sub-department/sub-department-drawer";
+import LoadingPlaceholder from "src/views/components/loader";
 const ProfileCard = ({
   department,
   refetch,
@@ -75,16 +76,7 @@ const ProfileCard = ({
 
       <CardContent>
         {loading ? (
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "100%",
-            }}
-          >
-            <CircularProgress />
-          </Box>
+          <LoadingPlaceholder/>
         ) : (
           <Box>
             <Typography variant="h6" sx={{ color: "text.primary", mt: 0 }}>
