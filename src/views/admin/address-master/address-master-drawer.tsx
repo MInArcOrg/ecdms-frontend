@@ -60,7 +60,7 @@ const AddressMasterDrawer = (props: AddressMasterDrawerType) => {
       title={
         "address-master." +
         (isEdit ? "edit-" : "create-") +
-        type.toLocaleLowerCase().replace("_", " ")
+        type?.toLocaleLowerCase().replace("_", " ")
       }
       handleClose={handleClose}
       open={open}
@@ -72,7 +72,7 @@ const AddressMasterDrawer = (props: AddressMasterDrawerType) => {
             title={
               "address-master." +
               (isEdit ? "edit-" : "create-") +
-              type.toLocaleLowerCase().replace("_", " ")
+              type?.toLocaleLowerCase().replace("_", " ")
             }
             getPayload={getPayload}
             validationSchema={validationSchema}

@@ -2,6 +2,7 @@ import { FormHelperText } from "@mui/material";
 import { useField, useFormikContext } from "formik";
 import React from "react";
 import CustomTextField from "src/@core/components/mui/text-field";
+import { useRequiredFields } from "src/context/required-fields-context";
 
 interface CustomTextBoxProps {
   name: string;
@@ -29,6 +30,9 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
 
   // pick the right length limit
   const effectiveMaxLength = multiline ? multilineMaxLength : maxLength;
+   const requiredFields = useRequiredFields();
+
+  const isRequired = requiredFields.includes(name);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let value: string | number = event.target.value;
@@ -70,6 +74,7 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
         disabled={props?.disabled || isSubmitting}
         onChange={handleChange}
         value={field.value || ""}
+        required={isRequired}
         inputProps={{
           maxLength: effectiveMaxLength,
           ...props.inputProps,
