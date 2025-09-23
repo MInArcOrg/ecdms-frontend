@@ -113,6 +113,7 @@ const UserForm: React.FC<UserFormProps> = ({
         <Grid item sm={12}>
           <CustomSelectBox
             size="small"
+            required
             name="department_id"
             label={transl("department.user.form.department")}
             options={

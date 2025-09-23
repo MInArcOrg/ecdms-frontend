@@ -2,6 +2,7 @@ import { FormHelperText, MenuItem } from "@mui/material";
 import { useField, useFormikContext } from "formik";
 import React from "react";
 import CustomTextField from "src/@core/components/mui/text-field";
+import { useRequiredFields } from "src/context/required-fields-context";
 
 interface CustomSelectBoxProps {
   name: string;
@@ -18,6 +19,9 @@ const CustomSelectBox: React.FC<CustomSelectBoxProps> = ({
 }) => {
   const [field, meta, helpers] = useField(name);
   const { isSubmitting } = useFormikContext();
+  const requiredFields = useRequiredFields();
+
+  const isRequired = requiredFields.includes(name);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value =
@@ -40,6 +44,7 @@ const CustomSelectBox: React.FC<CustomSelectBoxProps> = ({
         type={type}
         disabled={props?.disabled || isSubmitting}
         onChange={handleChange}
+        required={isRequired}
         value={field.value || ""}
       >
         {props.options.map((option: any) => (
