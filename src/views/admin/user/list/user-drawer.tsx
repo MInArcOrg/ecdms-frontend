@@ -21,10 +21,17 @@ interface UserDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  first_name: yup.string().required(),
-  last_name: yup.string().required(),
-  email: yup.string().email(),
-  phone: yup.number().typeError("Contact Number field is required").min(10),
+  first_name: yup.string().max(36).required(),
+  middle_name: yup.string().max(36).nullable(),
+  last_name: yup.string().max(36).required(),
+  birth_date: yup.date().nullable(),
+  email: yup.string().email().required(),
+  phone: yup.number().required().min(10),
+  gender: yup.string().required(),
+  marital_status: yup.string().required(),
+  partner_name: yup.string().max(36).nullable(),
+  stakeholder_id: yup.string().nullable(),
+  is_activated: yup.boolean().nullable(),
 });
 
 const UserDrawer = (props: UserDrawerType) => {

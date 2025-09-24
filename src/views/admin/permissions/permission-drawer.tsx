@@ -15,8 +15,10 @@ interface PermissionDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  name: yup.string().required(),
-  description: yup.string().required(),
+  name: yup.string().max(36).required(),
+  model: yup.string().max(36).nullable(),
+  module: yup.string().max(36).nullable(),
+  description: yup.string().max(100).nullable(),
 });
 
 const PermissionDrawer = (props: PermissionDrawerType) => {
