@@ -20,13 +20,13 @@ const UserContactPersonDrawer = (props: UserContactPersonDrawerType) => {
   const { open, toggle, refetch, contactPerson, userId } = props;
 
   const validationSchema = yup.object().shape({
-    first_name: yup.string().required("First name is required"),
-    middle_name: yup.string().required("Middle name is required"),
-    last_name: yup.string().required("Last name is required"),
-    national_id_no: yup.string().optional(),
-    gender: yup.string().required("Gender is required"),
-    phone_no: yup.string().required("Phone number is required"),
-    email: yup.string().email("Invalid email").optional(),
+    first_name: yup.string().max(255).required("First name is required"),
+    middle_name: yup.string().max(255).required("Middle name is required"),
+    last_name: yup.string().max(255).required("Last name is required"),
+    national_id_no: yup.string().max(255).nullable(),
+    gender: yup.string().max(255).required("Gender is required"),
+    phone_no: yup.string().max(255).required("Phone number is required"),
+    email: yup.string().max(255).email("Invalid email").nullable(),
   });
 
   const isEdit = Boolean(contactPerson?.id);
