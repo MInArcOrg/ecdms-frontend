@@ -532,7 +532,7 @@
         "partner_name": "Partner Name",
         "position": "Position",
         "department": "Department",
-        "birth_data": "Birth Date"
+        "birth_date": "Birth Date"
       },
       "tabs": {
         "education": "Education",

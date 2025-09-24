@@ -27,8 +27,10 @@ const EducationDrawer = (props: EducationDrawerType) => {
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const validationSchema = yup.object().shape({
+    school_name: yup.string().max(255).nullable(),
+    education_level: yup.string().max(255).nullable(),
     study_field_id: yup.string().required("Study field is required"),
-    program_type: yup.string().required("Program type is required"),
+    program_type: yup.string().max(255).required("Program type is required"),
     start_date: yup.date().required("Start date is required"),
     end_date: yup.date().required("End date is required"),
     gpa: yup
