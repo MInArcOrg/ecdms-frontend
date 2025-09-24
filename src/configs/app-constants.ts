@@ -35,8 +35,12 @@ export const availableColors: ThemeColor[] = [
 export const genderList = (
   transl: (word: string) => string,
 ): { label: string; value: string }[] => [
-  { label: transl("department.user.male"), value: "Male" },
-  { label: transl("department.user.female"), value: "Female" },
+  { label: transl("department.user.male"), value: "M" },
+  { label: transl("department.user.female"), value: "F" },
+];
+export const maritalStatusList= (transl:(word:string)=>string,):{label:string,value:number}[]=>[
+  { label: transl("department.user.single"), value:  0},
+  { label: transl("department.user.married"), value: 1},
 ];
 export const gridSpacing = 2;
 export const acadamicLevels: string[] = [
@@ -56,3 +60,4 @@ export const appModulesNames = [
   "document",
   "infrastructure",
 ];
+

@@ -528,6 +528,8 @@
         "email": "Email",
         "gender": "Gender",
         "phone": "Phone",
+        "marital_status": "Marital Status",
+        "partner_name": "Partner Name",
         "position": "Position",
         "department": "Department",
         "birth_data": "Birth Date"
@@ -541,6 +543,9 @@
       "title": "Users",
       "male": "Male",
       "female": "Female",
+       "single": "Single",
+        "married": "Married",
+
       "edit-user": "Edit User",
       "create-user": "Create User",
       "education": {
