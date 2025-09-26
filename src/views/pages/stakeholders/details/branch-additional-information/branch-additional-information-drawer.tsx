@@ -35,7 +35,7 @@ const AdditionalInformationDrawer = (
     additional_information: yup
       .string()
       .required("Additional information is required"),
-    reference: yup.string().nullable(),
+    reference: yup.string().max(255).nullable(),
   });
 
   const isEdit = Boolean(additionalInfo?.id);

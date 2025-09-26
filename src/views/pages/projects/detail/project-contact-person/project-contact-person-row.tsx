@@ -24,7 +24,7 @@ export const contactPersonColumns = (
     flex: 0.2,
     minWidth: 200,
     field: "name",
-    headerName: t("project.project-contact-person.firstName"),
+    headerName: t("project.project-contact-person.form.firstName"),
     renderCell: ({ row }: CellType) => {
       const fullName = `${row.first_name} ${
         row.middle_name ? row.middle_name + " " : ""
@@ -50,7 +50,7 @@ export const contactPersonColumns = (
     flex: 0.2,
     minWidth: 200,
     field: "stakeholder",
-    headerName: t("project.project-contact-person.stakeholder"),
+    headerName: t("project.project-contact-person.form.stakeholder"),
     renderCell: ({ row }: CellType) => {
       const stakeholder = stakeholders.find((s) => s.id === row.stakeholder_id);
       return stakeholder ? stakeholder.trade_name : t("common.not-available");
@@ -60,7 +60,7 @@ export const contactPersonColumns = (
     flex: 0.15,
     minWidth: 150,
     field: "position",
-    headerName: t("project.project-contact-person.position"),
+    headerName: t("project.project-contact-person.form.position"),
     renderCell: ({ row }: CellType) =>
       row.position || t("common.not-available"),
   },
@@ -68,7 +68,7 @@ export const contactPersonColumns = (
     flex: 0.15,
     minWidth: 150,
     field: "department",
-    headerName: t("project.project-contact-person.department"),
+    headerName: t("project.project-contact-person.form.department"),
     renderCell: ({ row }: CellType) =>
       row.department || t("common.not-available"),
   },
@@ -76,14 +76,14 @@ export const contactPersonColumns = (
     flex: 0.2,
     minWidth: 180,
     field: "email",
-    headerName: t("project.project-contact-person.email"),
+    headerName: t("project.project-contact-person.form.email"),
     renderCell: ({ row }: CellType) => row.email,
   },
   {
     flex: 0.15,
     minWidth: 120,
     field: "phone",
-    headerName: t("project.project-contact-person.phone"),
+    headerName: t("project.project-contact-person.form.phone"),
     renderCell: ({ row }: CellType) => row.phone,
   },
   {

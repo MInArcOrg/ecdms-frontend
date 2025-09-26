@@ -33,7 +33,6 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
    const requiredFields = useRequiredFields();
 
   const isRequired = requiredFields.includes(name);
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let value: string | number = event.target.value;
 

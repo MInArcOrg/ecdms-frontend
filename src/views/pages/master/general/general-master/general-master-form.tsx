@@ -4,6 +4,8 @@ import { GeneralMaster } from "src/types/general/general-master";
 import CustomTextBox from "src/views/shared/form/custom-text-box";
 import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 import StudyFieldMasterForm from "./study-field-master-form";
+import CustomSelectBox from "src/views/shared/form/custom-select";
+import { masterDataFlagConstanct } from "src/configs/app-constants";
 
 // Extend GeneralMaster to include referenceFile for formik values
 
@@ -44,6 +46,15 @@ const GeneralMasterForm: React.FC<GeneralMasterFormProps> = ({
         multiline={true}
         rows="4"
         size="small"
+        sx={{ mb: 2 }}
+      />
+      <CustomSelectBox
+        fullWidth
+        label={transl("master-data.form.flag")}
+        placeholder={transl("master-data.form.flag")}
+        name="flag"
+        size="small"
+        options={masterDataFlagConstanct(transl)}
         sx={{ mb: 2 }}
       />
       {type === "study-fields" && <StudyFieldMasterForm />}

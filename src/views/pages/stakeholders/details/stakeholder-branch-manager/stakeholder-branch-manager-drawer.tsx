@@ -30,14 +30,15 @@ const BranchManagerDrawer = (props: BranchManagerDrawerType) => {
 
   const validationSchema = yup.object().shape({
     stakeholder_branch_id: yup.string().required("Branch is required"),
-    department: yup.string().required("Department is required"),
-    position: yup.string().required("Position is required"),
-    first_name: yup.string().required("First name is required"),
-    middle_name: yup.string().required("Middle name is required"),
-    last_name: yup.string().required("Last name is required"),
-    gender: yup.string().required("Gender is required"),
-    phone: yup.string().required("Phone number is required"),
-    email: yup.string().email("Invalid email").nullable(),
+    department: yup.string().max(255).required("Department is required"),
+    position: yup.string().max(255).required("Position is required"),
+    first_name: yup.string().max(255).required("First name is required"),
+    middle_name: yup.string().max(255).required("Middle name is required"),
+    last_name: yup.string().max(255).required("Last name is required"),
+    gender: yup.string().max(255).required("Gender is required"),
+    phone: yup.string().max(255).required("Phone number is required"),
+    email: yup.string().max(255).email("Invalid email").nullable(),
+    parent_id: yup.string().nullable(),
   });
 
   const isEdit = Boolean(branchManager?.id);

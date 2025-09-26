@@ -141,9 +141,14 @@ const FormPageWrapper = <T extends FormikValues>({
 };
 
 export default FormPageWrapper;
+
 export const getRequiredFields = (schema: Yup.ObjectSchema<any>): string[] => {
-  return Object.keys(schema.fields).filter((field) => {
-    const fieldSchema = schema.fields[field] as any; // cast to any
-    return fieldSchema?.tests?.some((t: any) => t.OPTIONS?.name === "required");
+  const schemaDescription = schema.describe();
+
+  return Object.keys(schemaDescription.fields).filter((field) => {
+    const fieldDesc = schemaDescription.fields[field] as any;
+    const hasRequiredTest = fieldDesc.tests?.some((t: any) => t.name === "required");
+    const isNonNullable = fieldDesc.nullable === false; // numbers, booleans
+    return hasRequiredTest || isNonNullable;
   });
 };
