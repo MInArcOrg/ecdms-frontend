@@ -42,6 +42,12 @@ export const maritalStatusList= (transl:(word:string)=>string,):{label:string,va
   { label: transl("department.user.single"), value:  0},
   { label: transl("department.user.married"), value: 1},
 ];
+export const masterDataFlagConstanct=(transl:(word:string)=>string)=>{
+  return [
+    { label: transl("common.status.active"), value: 1 },
+    { label: transl("common.status.inactive"), value: 0 },
+  ]
+}
 export const gridSpacing = 2;
 export const acadamicLevels: string[] = [
   "1-12",

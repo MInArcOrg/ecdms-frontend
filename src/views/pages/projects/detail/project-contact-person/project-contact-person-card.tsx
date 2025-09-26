@@ -69,21 +69,21 @@ const ProjectContactPersonCard: React.FC<ProjectContactPersonCardProps> = ({
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t("project.project-contact-person.position")}:{" "}
+            {t("project.project-contact-person.form.position")}:{" "}
             {contactPerson.position || t("common.not-available")}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("project.project-contact-person.department")}:{" "}
+            {t("project.project-contact-person.form.department")}:{" "}
             {contactPerson.department || t("common.not-available")}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("project.project-contact-person.email")}: {contactPerson.email}
+            {t("project.project-contact-person.form.email")}: {contactPerson.email}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("project.project-contact-person.phone")}: {contactPerson.phone}
+            {t("project.project-contact-person.form.phone")}: {contactPerson.phone}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("project.project-contact-person.stakeholder")}:{" "}
+            {t("project.project-contact-person.form.stakeholder")}:{" "}
             {getStakeholderName(contactPerson.stakeholder_id)}
           </Typography>
         </Box>

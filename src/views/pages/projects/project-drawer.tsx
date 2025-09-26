@@ -17,19 +17,20 @@ interface ProjectDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  projectcategory_id: yup.string().required("Project category is required"),
-  projectsubcategory_id: yup
-    .string()
-    .required("Project subcategory is required"),
-  status_id: yup.string().required("Project status is required"),
-  name: yup.string().required("Project name is required"),
-  contract_no: yup.string().required("Contract number is required"),
-  budget_code: yup.string().required("Budget code is required"),
-  procurement_no: yup.string().required("Procurement number is required"),
+  name: yup.string().max(255).required("Project name is required"),
+  parent_id: yup.string().length(36).nullable(),
+  department_id: yup.string().length(36).nullable(),
+  projectcategory_id: yup.string().length(36).nullable(),
+  projecttype_id: yup.string().length(36).nullable(),
+  projectsubcategory_id: yup.string().length(36).nullable(),
+  grade: yup.string().max(50).nullable(),
+  end_user: yup.string().max(255).nullable(),
+  function: yup.string().max(255).nullable(),
   remark: yup.string().nullable(),
-  grade: yup.string().nullable(),
-  end_user: yup.string().nullable(),
-  function: yup.string().nullable(),
+  contract_no: yup.string().max(255).nullable(),
+  budget_code: yup.string().max(255).nullable(),
+  procurement_no: yup.string().max(255).nullable(),
+  revision_no: yup.number().integer().nullable(),
 });
 
 const ProjectDrawer = (props: ProjectDrawerType) => {

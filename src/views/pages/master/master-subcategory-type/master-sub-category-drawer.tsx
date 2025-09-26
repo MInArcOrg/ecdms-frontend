@@ -20,8 +20,8 @@ interface MasterSubCategoryDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required("Title is required"),
-  description: yup.string().required("Description is required"),
+  title: yup.string().max(255).required("Title is required"),
+  description: yup.string().nullable(),
 });
 
 const MasterSubCategoryDrawer = (props: MasterSubCategoryDrawerType) => {

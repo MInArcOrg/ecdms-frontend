@@ -102,43 +102,43 @@ const ProjectContactPersonList: React.FC<ProjectContactPersonListProps> = ({
     contactPerson: ProjectContactPerson,
   ): { title: string; value: string }[] => [
     {
-      title: t("project.project-contact-person.firstName"),
+      title: t("project.project-contact-person.form.firstName"),
       value: contactPerson?.first_name || "N/A",
     },
     {
-      title: t("project.project-contact-person.middleName"),
+      title: t("project.project-contact-person.form.middleName"),
       value: contactPerson?.middle_name || "N/A",
     },
     {
-      title: t("project.project-contact-person.lastName"),
+      title: t("project.project-contact-person.form.lastName"),
       value: contactPerson?.last_name || "N/A",
     },
     {
-      title: t("project.project-contact-person.position"),
+      title: t("project.project-contact-person.form.position"),
       value: contactPerson?.position || "N/A",
     },
     {
-      title: t("project.project-contact-person.department"),
+      title: t("project.project-contact-person.form.department"),
       value: contactPerson?.department || "N/A",
     },
     {
-      title: t("project.project-contact-person.nationalIdNo"),
+      title: t("project.project-contact-person.form.nationalIdNo"),
       value: contactPerson?.national_id_no || "N/A",
     },
     {
-      title: t("project.project-contact-person.gender"),
+      title: t("project.project-contact-person.form.gender"),
       value: contactPerson?.gender || "N/A",
     },
     {
-      title: t("project.project-contact-person.phone"),
+      title: t("project.project-contact-person.form.phone"),
       value: contactPerson?.phone || "N/A",
     },
     {
-      title: t("project.project-contact-person.email"),
+      title: t("project.project-contact-person.form.email"),
       value: contactPerson?.email || "N/A",
     },
     {
-      title: t("project.project-contact-person.stakeholder"),
+      title: t("project.project-contact-person.form.stakeholder"),
       value: getStakeholderName(contactPerson?.stakeholder_id),
     },
     {
@@ -172,12 +172,12 @@ const ProjectContactPersonList: React.FC<ProjectContactPersonListProps> = ({
           id={selectedRow?.id || ""}
           hasReference={true}
           fileType="PROJECT_CONTACT_PERSON"
-          title={t("project.project-contact-person.details")}
+          title={t("project.project-contact-person.form.details")}
         />
       )}
 
       <ItemsListing
-        title={t("project.project-contact-person.title")}
+        title={t("project.project-contact-person.form.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

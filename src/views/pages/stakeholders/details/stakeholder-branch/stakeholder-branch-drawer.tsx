@@ -23,11 +23,12 @@ const BranchDrawer = (props: BranchDrawerType) => {
     props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
+    name: yup.string().max(255).required("Name is required"),
     business_field_id: yup.string().required("Business field is required"),
-    tin_number: yup.string(),
-    description: yup.string(),
-    reference: yup.string(),
+    tin_number: yup.string().max(255).nullable(),
+    description: yup.string().nullable(),
+    reference: yup.string().max(255).nullable(),
+    parent_id: yup.string().nullable(),
   });
 
   const isEdit = Boolean(branch?.id);

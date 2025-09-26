@@ -1,6 +1,8 @@
 import { FormikProps } from "formik";
 import { useTranslation } from "react-i18next";
+import { masterDataFlagConstanct } from "src/configs/app-constants";
 import { MasterType } from "src/types/master/master-types";
+import CustomSelectBox from "src/views/shared/form/custom-select";
 import CustomTextBox from "src/views/shared/form/custom-text-box";
 import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 
@@ -40,6 +42,16 @@ const MasterTypeForm: React.FC<MasterTypeFormProps> = ({
         multiline={true}
         rows="4"
         size="small"
+        sx={{ mb: 2 }}
+      />
+
+      <CustomSelectBox
+        fullWidth
+        label={transl("master-data.form.flag")}
+        placeholder={transl("master-data.form.flag")}
+        name="flag"
+        size="small"
+        options={masterDataFlagConstanct(transl)}
         sx={{ mb: 2 }}
       />
 

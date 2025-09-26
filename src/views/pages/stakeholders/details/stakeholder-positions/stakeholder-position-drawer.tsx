@@ -21,19 +21,19 @@ const PositionDrawer = (props: PositionDrawerType) => {
   const { open, toggle, refetch, position, stakeholderId, departments } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    stakeholder_department_id: yup
-      .string()
-      .required("Parent department is required"),
+    name: yup.string().max(255).required("Name is required"),
     description: yup.string().required("Description is required"),
-    required_education: yup.string(),
-    required_work_experience: yup.string(),
-    salary: yup.number().positive("Salary must be positive"),
+    stakeholder_id: yup.string().length(36).required("Stakeholder is required"),
+    stakeholder_department_id: yup.string().length(36).nullable(),
+    parent_id: yup.string().length(36).nullable(),
+    required_education: yup.string().max(255).nullable(),
+    required_work_experience: yup.string().max(255).nullable(),
+    salary: yup.number().nullable(),
     no_of_professionals: yup
       .number()
       .integer("Number of professionals must be an integer")
-      .positive("Number of professionals must be positive"),
-    reference: yup.string(),
+      .nullable(),
+    reference: yup.string().max(255).nullable(),
   });
 
   const isEdit = Boolean(position?.id);
@@ -74,6 +74,7 @@ const PositionDrawer = (props: PositionDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...(position as StakeholderPosition),
+            stakeholder_id: stakeholderId,
           }}
           createActionFunc={isEdit ? editPosition : createPosition}
           onActionSuccess={onActionSuccess}

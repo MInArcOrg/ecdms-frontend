@@ -43,7 +43,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
     <>
       <Box mb={2}>
         <FormControl fullWidth variant="outlined" sx={{ mb: 3 }}>
-          <FormLabel>{transl("address.form.country")}</FormLabel>
+          <FormLabel>{transl("address.form.country *")}</FormLabel>
           <Autocomplete
             options={countriesList.map((country) => ({
               value: country.title,
