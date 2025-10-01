@@ -1,6 +1,5 @@
 import { FormikProps } from "formik";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import projectPaymentApiService from "src/services/project/project-payment-service";
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
 import { uploadFile } from "src/services/utils/file-utils";

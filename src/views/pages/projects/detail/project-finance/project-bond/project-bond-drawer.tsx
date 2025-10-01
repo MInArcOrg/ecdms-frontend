@@ -1,6 +1,5 @@
 import { FormikProps } from "formik";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { institutionType } from "src/constants/bond-constants";
 import projectBondApiService from "src/services/project/project-bond-service";
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
