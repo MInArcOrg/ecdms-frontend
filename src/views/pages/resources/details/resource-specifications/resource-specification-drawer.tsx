@@ -23,9 +23,13 @@ interface ResourceSpecificationDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required(),
-  datasource: yup.string().required(),
-  description: yup.string().required(),
+  name: yup.string().required("Name is required").max(100, "Name cannot exceed 100 characters"),
+  product_type: yup
+    .string()
+    .nullable()
+    .max(100, "Product type cannot exceed 100 characters"),
+  specification: yup.string().nullable().max(100, "Specification cannot exceed 100 characters"),
+  remark: yup.string().nullable(),
 });
 
 const ResourceSpecificationDrawer: React.FC<ResourceSpecificationDrawerType> = (
