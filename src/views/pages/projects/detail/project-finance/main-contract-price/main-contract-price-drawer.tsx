@@ -29,7 +29,6 @@ const MainContractPriceDrawer = (props: MainContractPriceDrawerProps) => {
     projectId,
     projectGeneralFinance,
   } = props;
-  const { t } = useTranslation();
    
   const validationSchema = yup.object().shape({
     parent_id: yup.string().length(36).nullable(),

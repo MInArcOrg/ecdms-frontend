@@ -22,7 +22,6 @@ interface ProjectPaymentDrawerType {
 
 const ProjectPaymentDrawer = (props: ProjectPaymentDrawerType) => {
   const { open, toggle, refetch, projectPayment, projectId, type } = props;
-  const { t } = useTranslation();
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {

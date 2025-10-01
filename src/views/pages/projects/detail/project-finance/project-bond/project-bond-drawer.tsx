@@ -39,7 +39,6 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
     type,
     projectGeneralFinance,
   } = props;
-  const { t } = useTranslation();
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
