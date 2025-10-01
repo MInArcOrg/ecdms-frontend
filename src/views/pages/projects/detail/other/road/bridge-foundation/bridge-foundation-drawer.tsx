@@ -23,11 +23,30 @@ const BridgeFoundationDrawer = (props: BridgeFoundationDrawerType) => {
     props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    bridge_name: yup.string().required("Bridge name is required"),
-    abutment_type_id: yup.string().required("Abutment type is required"),
-    pier_type_id: yup.string().required("Pier type is required"),
-    soil_type_id: yup.string().required("Soil type is required"),
+    parent_id: yup.string().uuid().nullable(),
+    name: yup
+      .string()
+      .max(255, "Name must be at most 255 characters")
+      .required("Name is required"),
+    bridge_name: yup
+      .string()
+      .max(255, "Bridge name must be at most 255 characters")
+      .required("Bridge name is required"),
+    abutment_type_id: yup.string().uuid().required("Abutment type is required"),
+    pier_type_id: yup.string().uuid().required("Pier type is required"),
+    abutment_foundation_size: yup.number().nullable(),
+    pier_foundation_size: yup.number().nullable(),
+    abutment_pile_number: yup
+      .number()
+      .integer("Abutment pile number must be an integer")
+      .nullable(),
+    pier_pile_number: yup
+      .number()
+      .integer("Pier pile number must be an integer")
+      .nullable(),
+    abutment_pile_depth: yup.number().nullable(),
+    pier_pile_depth: yup.number().nullable(),
+    soil_type_id: yup.string().uuid().required("Soil type is required"),
   });
 
   const isEdit = Boolean(bridgeFoundation?.id);

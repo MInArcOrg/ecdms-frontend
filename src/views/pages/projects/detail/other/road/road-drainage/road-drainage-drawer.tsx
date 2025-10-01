@@ -32,9 +32,10 @@ const RoadDrainageDrawer = (props: RoadDrainageDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
+    name: yup.string().max(255).required("Name is required"),
     current_condition_id: yup
       .string()
+      .length(36)
       .required("Current condition is required"),
     length: yup.number().nullable().typeError("Length must be a number"),
     height: yup.number().nullable().typeError("Height must be a number"),
@@ -45,16 +46,20 @@ const RoadDrainageDrawer = (props: RoadDrainageDrawerType) => {
       .typeError("Weight limit must be a number"),
     design_life_span: yup
       .number()
+      .integer()
       .nullable()
       .typeError("Design life span must be a number"),
     inspection_frequency: yup
       .number()
+      .integer()
       .nullable()
       .typeError("Inspection frequency must be a number"),
     construction_completion_year: yup
       .number()
+      .integer()
       .nullable()
       .typeError("Construction completion year must be a number"),
+    remark: yup.string().nullable(),
   });
 
   const isEdit = Boolean(roadDrainage?.id);

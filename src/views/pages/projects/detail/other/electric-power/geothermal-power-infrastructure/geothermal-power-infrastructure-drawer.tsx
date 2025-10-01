@@ -38,25 +38,15 @@ const GeothermalPowerInfrastructureDrawer = (
   };
 
   const validationSchema = yup.object().shape({
-    turbine_manufacturer: yup.string().nullable(),
-    turbine_model: yup.string().nullable(),
-    turbine_type_id: yup.string().nullable(),
+    parent_id: yup.string().uuid().nullable(),
+    turbine_manufacturer: yup.string().max(100).nullable(),
+    turbine_model: yup.string().max(100).nullable(),
+    turbine_type_id: yup.string().uuid().required("Turbine type is required"),
     each_turbine_capacity: yup.number().nullable(),
-    remark: yup.string().nullable(),
+    remark: yup.string().max(100).nullable(),
   });
 
   const isEdit = Boolean(geothermalPowerInfrastructure?.id);
-
-  const initialValues = {
-    ...geothermalPowerInfrastructure,
-    turbine_manufacturer:
-      geothermalPowerInfrastructure?.turbine_manufacturer || "",
-    turbine_model: geothermalPowerInfrastructure?.turbine_model || "",
-    turbine_type_id: geothermalPowerInfrastructure?.turbine_type_id || "",
-    each_turbine_capacity:
-      geothermalPowerInfrastructure?.each_turbine_capacity || 0,
-    remark: geothermalPowerInfrastructure?.remark || "",
-  };
 
   const createGeothermalPowerInfrastructure = async (
     body: IApiPayload<GeothermalPowerInfrastructure>,
@@ -79,7 +69,6 @@ const GeothermalPowerInfrastructureDrawer = (
     return {
       data: {
         ...values,
-        id: geothermalPowerInfrastructure?.id,
         project_id: projectId,
       },
       files: uploadableFile ? [uploadableFile] : [],
@@ -125,7 +114,9 @@ const GeothermalPowerInfrastructureDrawer = (
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={initialValues}
+          initialValues={{
+            ...geothermalPowerInfrastructure,
+          }}
           createActionFunc={
             isEdit
               ? editGeothermalPowerInfrastructure

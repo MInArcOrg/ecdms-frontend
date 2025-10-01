@@ -41,10 +41,23 @@ const RoadMaintenanceActivityDrawer = (
   };
 
   const validationSchema = yup.object().shape({
-    road_segment: yup.string().required("Road segment is required"),
-    maintenance_frequency_id: yup.string().nullable(),
-    maintenance_type_id: yup.string().nullable(),
-    consultant: yup.string().nullable(),
+    parent_id: yup.string().uuid().nullable(),
+    road_segment: yup
+      .string()
+      .max(255, "Road segment must be at most 255 characters")
+      .required("Road segment is required"),
+    maintenance_frequency_id: yup
+      .string()
+      .uuid()
+      .required("Maintenance frequency is required"),
+    maintenance_type_id: yup
+      .string()
+      .uuid()
+      .required("Maintenance type is required"),
+    consultant: yup
+      .string()
+      .max(100, "Consultant must be at most 100 characters")
+      .nullable(),
     remark: yup.string().nullable(),
   });
 

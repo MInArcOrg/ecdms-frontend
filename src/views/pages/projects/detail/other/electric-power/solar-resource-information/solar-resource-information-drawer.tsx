@@ -60,7 +60,7 @@ const SolarResourceInformationDrawer = (
       .nullable()
       .integer("Must be an integer")
       .transform((value) => (isNaN(value) ? null : value)),
-    remark: yup.string().nullable(),
+    remark: yup.string().max(100).nullable(),
   });
 
   const isEdit = Boolean(solarResourceInformation?.id);

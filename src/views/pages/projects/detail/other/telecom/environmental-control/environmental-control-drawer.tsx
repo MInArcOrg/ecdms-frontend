@@ -37,9 +37,18 @@ const EnvironmentalControlDrawer = (props: EnvironmentalControlDrawerType) => {
 
   const validationSchema = yup.object().shape({
     data_center_id: yup.string().required("Data Center ID is required"),
-    temperature: yup.string().nullable(),
-    humidity: yup.string().nullable(),
-    air_quality: yup.string().nullable(),
+    temperature: yup
+      .string()
+      .nullable()
+      .max(100, "Temperature cannot exceed 100 characters"),
+    humidity: yup
+      .string()
+      .nullable()
+      .max(100, "Humidity cannot exceed 100 characters"),
+    air_quality: yup
+      .string()
+      .nullable()
+      .max(100, "Air quality cannot exceed 100 characters"),
     others: yup.string().nullable(),
   });
 

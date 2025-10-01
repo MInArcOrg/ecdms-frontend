@@ -22,7 +22,7 @@ interface ReportMonthSelectorProps {
   setQuarter: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 
-const ReportMonthSelector = ({
+const   ReportMonthSelector = ({
   fetchData,
   date,
   setDate,

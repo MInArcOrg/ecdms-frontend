@@ -70,7 +70,7 @@ function ProjectExtensionTimeList({
       <ItemsListing
         title={`project.project-extension-time.title`}
         pagination={pagination}
-        type={ITEMS_LISTING_TYPE.grid.value}
+        type={ITEMS_LISTING_TYPE.list.value}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
           <ProjectExtensionTimeCard

@@ -40,7 +40,8 @@ const RegulationAndPolicyDrawer = (props: RegulationAndPolicyDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
-    regulatory_body_overseeing_the_facility: yup.string().nullable(),
+    parent_id: yup.string().uuid().nullable(),
+    regulatory_body_overseeing_the_facility: yup.string().max(100).nullable(),
     regulatory_compliance_monitoring: yup.boolean().nullable(),
     environmental_and_social_regulation_compliance_monitoring: yup
       .boolean()
@@ -70,16 +71,8 @@ const RegulationAndPolicyDrawer = (props: RegulationAndPolicyDrawerType) => {
 
   const getPayload = (values: RegulationAndPolicy) => ({
     data: {
+      ...values,
       project_id: projectId,
-      regulatory_body_overseeing_the_facility:
-        values.regulatory_body_overseeing_the_facility,
-      regulatory_compliance_monitoring: values.regulatory_compliance_monitoring,
-      environmental_and_social_regulation_compliance_monitoring:
-        values.environmental_and_social_regulation_compliance_monitoring,
-      licensing_and_permit_requirements:
-        values.licensing_and_permit_requirements,
-      remark: values.remark,
-      id: regulationAndPolicy?.id,
     },
     files: uploadableFile ? [uploadableFile] : [],
   });

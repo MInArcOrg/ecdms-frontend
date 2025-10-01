@@ -80,12 +80,16 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
     remainingVariationPercent,
   );
   const validationSchema = yup.object().shape({
-    extension_time: yup
-      .number()
-      .required(`${t("Extension Time")} ${t("is required")}`),
+    parent_id: yup.string().length(36).nullable(),
+    project_id: yup.string().length(36).required("Project is required"),
+    type: yup.string().max(255).nullable(),
     approval_date: yup
       .date()
       .required(`${t("Approval Date")} ${t("is required")}`),
+    extension_time: yup.number().integer().nullable(),
+    extension_time_id: yup.string().length(36).nullable(),
+    justification: yup.string().nullable(),
+    remark: yup.string().nullable(),
     amount: yup
       .number()
       .required(`${t("Amount")} ${t("is required")}`)
@@ -106,6 +110,7 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
           value === variationConstants.VARIATION.value,
         then: (schema) => schema.max(remainingVariationPercent),
       }),
+    revision_no: yup.number().integer().nullable(),
   });
 
   const isEdit = Boolean(projectVariation?.id);

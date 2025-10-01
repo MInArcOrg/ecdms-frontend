@@ -45,14 +45,28 @@ const BroadcastingInfrastructureManufacturerDrawer = (
   };
 
   const validationSchema = yup.object().shape({
+    parent_id: yup.string().nullable(),
     broadcasting_infrastructure_id: yup
       .string()
       .required("Broadcasting Infrastructure is required"),
-    antennas: yup.string().nullable(),
-    transmitters: yup.string().nullable(),
-    towers: yup.string().nullable(),
-    cables: yup.string().nullable(),
-    others: yup.string().nullable(),
+    name: yup
+      .string()
+      .required("Name is required")
+      .max(100, "Name cannot exceed 100 characters"),
+    antennas: yup
+      .string()
+      .nullable()
+      .max(100, "Antennas cannot exceed 100 characters"),
+    transmitters: yup
+      .string()
+      .nullable()
+      .max(100, "Transmitters cannot exceed 100 characters"),
+    towers: yup.string().nullable().max(100, "Towers cannot exceed 100 characters"),
+    cables: yup.string().nullable().max(100, "Cables cannot exceed 100 characters"),
+    others: yup
+      .string()
+      .nullable()
+      .max(100, "Others cannot exceed 100 characters"),
   });
 
   const isEdit = Boolean(broadcastingInfrastructureManufacturer?.id);

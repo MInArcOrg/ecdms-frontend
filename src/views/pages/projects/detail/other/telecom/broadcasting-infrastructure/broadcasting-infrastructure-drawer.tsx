@@ -41,6 +41,7 @@ const BroadcastingInfrastructureDrawer = (
   };
 
   const validationSchema = yup.object().shape({
+    parent_id: yup.string().nullable(),
     broadcasting_infrastructure_type_id: yup
       .string()
       .required("Broadcasting infrastructure type is required"),
@@ -49,7 +50,10 @@ const BroadcastingInfrastructureDrawer = (
     transmitters: yup.boolean().nullable(),
     towers: yup.boolean().nullable(),
     cables: yup.boolean().nullable(),
-    others: yup.string().nullable(),
+    others: yup
+      .string()
+      .nullable()
+      .max(100, "Others cannot exceed 100 characters"),
   });
 
   const isEdit = Boolean(broadcastingInfrastructure?.id);

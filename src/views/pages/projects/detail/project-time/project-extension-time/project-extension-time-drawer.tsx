@@ -26,7 +26,13 @@ const ProjectExtensionTimeDrawer = (props: ProjectExtensionTimeDrawerType) => {
     setUploadableFile(file);
   };
 
-  const validationSchema = yup.object().shape({});
+  const validationSchema = yup.object().shape({
+    title: yup.string().max(255).nullable(),
+    parent_id: yup.string().length(36).nullable(),
+    project_id: yup.string().length(36).required("Project is required"),
+    number_of_days: yup.number().integer().required("Number of days is required"),
+    reason: yup.string().max(255).required("Reason is required"),
+  });
 
   const isEdit = Boolean(projectExtensionTime?.id);
 
@@ -81,9 +87,7 @@ const ProjectExtensionTimeDrawer = (props: ProjectExtensionTimeDrawerType) => {
           title={`project.project-extension-time.title`} // Adjust the title key if necessary
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{
-            ...projectExtensionTime,
-          }}
+          initialValues={projectExtensionTime?.id ? projectExtensionTime : { project_id: projectId } as ProjectExtensionTime}
           createActionFunc={
             isEdit ? editProjectExtensionTime : createProjectExtensionTime
           }

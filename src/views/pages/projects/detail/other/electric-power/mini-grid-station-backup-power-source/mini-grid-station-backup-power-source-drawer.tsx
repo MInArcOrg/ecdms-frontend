@@ -67,7 +67,7 @@ const MiniGridStationBackupPowerSourceDrawer = (
       .nullable()
       .transform((value) => (isNaN(value) ? null : value))
       .integer("Must be an integer"),
-    commissioning_date: yup.date().nullable(),
+    commissioning_date: yup.string().nullable(),
     other: yup.string().nullable(),
     remark: yup.string().nullable(),
   });

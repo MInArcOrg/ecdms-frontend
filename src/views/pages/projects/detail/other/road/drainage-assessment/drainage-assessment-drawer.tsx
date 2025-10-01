@@ -29,7 +29,18 @@ const DrainageAssessmentDrawer = (props: DrainageAssessmentDrawerType) => {
     setUploadableFile(file);
   };
 
-  const validationSchema = yup.object().shape({});
+  const validationSchema = yup.object().shape({
+    road_segment: yup
+      .string()
+      .max(255, "Road segment must be at most 255 characters")
+      .required("Road segment is required"),
+    drainage_type_id: yup.string().uuid().required("Drainage type is required"),
+    drainage_condition_id: yup
+      .string()
+      .uuid()
+      .required("Drainage condition is required"),
+    remark: yup.string().nullable(),
+  });
 
   const isEdit = Boolean(drainageAssessment?.id);
 

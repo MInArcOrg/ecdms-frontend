@@ -33,8 +33,9 @@ const WindTurbineDrawer = (props: WindTurbineDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
-    turbine_manufacturer: yup.string().nullable(),
-    turbine_model: yup.string().nullable(),
+    parent_id: yup.string().uuid().nullable(),
+    turbine_manufacturer: yup.string().max(100).nullable(),
+    turbine_model: yup.string().max(100).nullable(),
     rotor_diameter: yup
       .number()
       .nullable()
@@ -43,7 +44,7 @@ const WindTurbineDrawer = (props: WindTurbineDrawerType) => {
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value)),
-    tower_type_id: yup.string().nullable(),
+    tower_type_id: yup.string().uuid().required("Tower type is required"),
     blade_length: yup
       .number()
       .nullable()
@@ -53,14 +54,17 @@ const WindTurbineDrawer = (props: WindTurbineDrawerType) => {
       .nullable()
       .integer("Must be an integer")
       .transform((value) => (isNaN(value) ? null : value)),
-    gearbox_type: yup.string().nullable(),
-    generator_type_id: yup.string().nullable(),
+    gearbox_type: yup.string().max(100).nullable(),
+    generator_type_id: yup
+      .string()
+      .uuid()
+      .required("Generator type is required"),
     generators_number: yup
       .number()
       .nullable()
       .integer("Must be an integer")
       .transform((value) => (isNaN(value) ? null : value)),
-    remark: yup.string().nullable(),
+    remark: yup.string().max(100).nullable(),
   });
 
   const isEdit = Boolean(windTurbine?.id);
@@ -80,6 +84,7 @@ const WindTurbineDrawer = (props: WindTurbineDrawerType) => {
 
   const getPayload = (values: WindTurbine) => ({
     data: {
+      ...values,
       project_id: projectId,
       turbine_manufacturer: values.turbine_manufacturer,
       turbine_model: values.turbine_model,
@@ -93,6 +98,7 @@ const WindTurbineDrawer = (props: WindTurbineDrawerType) => {
       generators_number: values.generators_number,
       remark: values.remark,
       id: windTurbine?.id,
+      
     },
     files: uploadableFile ? [uploadableFile] : [],
   });

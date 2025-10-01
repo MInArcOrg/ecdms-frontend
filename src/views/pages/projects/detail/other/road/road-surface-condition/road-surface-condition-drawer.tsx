@@ -47,7 +47,7 @@ const RoadSurfaceConditionDrawer = (props: RoadSurfaceConditionDrawerType) => {
     drainage_problems: yup
       .string()
       .required("Drainage problems information is required"),
-    action_taken_date: yup.date().nullable(),
+    action_taken_date: yup.string().nullable(),
     action_taken: yup.string().nullable(),
     action_taken_cost: yup
       .number()

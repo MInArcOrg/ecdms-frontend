@@ -1,6 +1,5 @@
 import { FormikProps } from "formik";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import projectPaymentApiService from "src/services/project/project-payment-service";
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
 import { uploadFile } from "src/services/utils/file-utils";
@@ -22,16 +21,19 @@ interface ProjectPaymentDrawerType {
 
 const ProjectPaymentDrawer = (props: ProjectPaymentDrawerType) => {
   const { open, toggle, refetch, projectPayment, projectId, type } = props;
-  const { t } = useTranslation();
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
   const validationSchema = yup.object().shape({
-    title: yup.string().required(),
-    amount: yup.number().required(`${t("Amount")} ${t("is required")}`),
-    retention: yup.number().required(`${t("Retention")} ${t("is required")}`),
+    title: yup.string().max(255).required("Title is required"),
+    parent_id: yup.string().length(36).nullable(),
+    type: yup.string().max(255).nullable(),
+    description: yup.string().nullable(),
+    amount: yup.number().nullable(),
+    retention: yup.number().nullable(),
+    reference_number: yup.string().max(255).nullable(),
   });
 
   const isEdit = Boolean(projectPayment?.id);
@@ -92,6 +94,7 @@ const ProjectPaymentDrawer = (props: ProjectPaymentDrawerType) => {
           initialValues={{
             type,
             ...projectPayment,
+            project_id: projectId
           }}
           createActionFunc={isEdit ? editProjectPayment : createProjectPayment}
           onActionSuccess={onActionSuccess}

@@ -44,7 +44,7 @@ const EnvironmentalDataDrawer = (props: EnvironmentalDataDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
-    remark: yup.string().required("Remark is required"),
+    remark: yup.string(),
   });
 
   const isEdit = Boolean(environmentalData?.id);

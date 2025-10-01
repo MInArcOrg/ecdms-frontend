@@ -29,7 +29,28 @@ const HydroElectricDamDrawer = (props: HydroElectricDamDrawerType) => {
     setUploadableFile(file);
   };
 
-  const validationSchema = yup.object().shape({});
+  const validationSchema = yup.object().shape({
+    parent_id: yup.string().uuid().nullable(),
+    river_name: yup
+      .string()
+      .max(100, "River name must be at most 100 characters")
+      .required("River name is required"),
+    elevation_from_sea_level: yup
+      .string()
+      .max(100)
+      .nullable(),
+    elevation_from_ngl: yup.string().max(100).nullable(),
+    dam_type: yup.string().max(100).nullable(),
+    dam_volume: yup.string().max(100).nullable(),
+    gated_spillway_no: yup
+      .number()
+      .integer("Gated spillway number must be an integer")
+      .nullable(),
+    none_gated_spillway_no: yup
+      .number()
+      .integer("None-gated spillway number must be an integer")
+      .nullable(),
+  }); 
 
   const isEdit = Boolean(hydroElectricDam?.id);
 

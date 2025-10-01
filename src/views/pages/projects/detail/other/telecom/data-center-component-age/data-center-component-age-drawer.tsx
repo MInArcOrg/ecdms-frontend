@@ -39,11 +39,23 @@ const DataCenterComponentAgeDrawer = (
 
   const validationSchema = yup.object().shape({
     data_center_id: yup.string().required("Data Center ID is required"),
-    servers: yup.number().nullable(),
-    storage_devices: yup.number().nullable(),
-    networking_equipment: yup.number().nullable(),
-    cooling_systems: yup.number().nullable(),
-    backup_generators: yup.number().nullable(),
+    servers: yup.number().integer("Servers age must be an integer").nullable(),
+    storage_devices: yup
+      .number()
+      .integer("Storage devices age must be an integer")
+      .nullable(),
+    networking_equipment: yup
+      .number()
+      .integer("Networking equipment age must be an integer")
+      .nullable(),
+    cooling_systems: yup
+      .number()
+      .integer("Cooling systems age must be an integer")
+      .nullable(),
+    backup_generators: yup
+      .number()
+      .integer("Backup generators age must be an integer")
+      .nullable(),
     others: yup.string().nullable(),
   });
 

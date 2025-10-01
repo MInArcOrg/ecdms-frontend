@@ -42,6 +42,7 @@ const EnvironmentalAndSocialImpactDrawer = (
   };
 
   const validationSchema = yup.object().shape({
+    parent_id: yup.string().uuid().nullable(),
     environmental_impact_assessment_conducted: yup.boolean().nullable(),
     mitigation_measures_implemented: yup.boolean().nullable(),
     social_impact_assessment_conducted: yup.boolean().nullable(),
@@ -72,16 +73,8 @@ const EnvironmentalAndSocialImpactDrawer = (
 
   const getPayload = (values: EnvironmentalAndSocialImpact) => ({
     data: {
+      ...values,
       project_id: projectId,
-      environmental_impact_assessment_conducted:
-        values.environmental_impact_assessment_conducted,
-      mitigation_measures_implemented: values.mitigation_measures_implemented,
-      social_impact_assessment_conducted:
-        values.social_impact_assessment_conducted,
-      resettlement_and_compensation_measures_implemented:
-        values.resettlement_and_compensation_measures_implemented,
-      remark: values.remark,
-      id: environmentalAndSocialImpact?.id,
     },
     files: uploadableFile ? [uploadableFile] : [],
   });

@@ -40,9 +40,21 @@ const RoadProjectQualityControlDrawer = (
   };
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    project_phase_id: yup.string().required("Project phase is required"),
-    inspection_type_id: yup.string().required("Inspection type is required"),
+    parent_id: yup.string().uuid().nullable(),
+    name: yup
+      .string()
+      .max(255, "Name must be at most 255 characters")
+      .required("Name is required"),
+    project_phase_id: yup.string().uuid().required("Project phase is required"),
+    inspection_type_id: yup
+      .string()
+      .uuid()
+      .required("Inspection type is required"),
+    defect_encountered: yup
+      .string()
+      .max(255, "Defect encountered must be at most 255 characters")
+      .nullable(),
+    remark: yup.string().nullable(),
   });
 
   const isEdit = Boolean(roadProjectQualityControl?.id);

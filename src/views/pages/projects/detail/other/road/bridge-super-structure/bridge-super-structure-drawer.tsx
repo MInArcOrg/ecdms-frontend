@@ -29,16 +29,57 @@ const BridgeSuperStructureDrawer = (props: BridgeSuperStructureDrawerType) => {
   } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    bridge_name: yup.string().required("Bridge name is required"),
-    bridge_structure_type_id: yup
-      .string()
-      .required("Bridge structure type is required"),
-    span_support_type_id: yup
-      .string()
-      .required("Span support type is required"),
-    deck_slab_type_id: yup.string().required("Deck slab type is required"),
-  });
+
+  name: yup
+    .string()
+    .max(255, "Name must be at most 255 characters")
+    .required("Name is required"),
+
+  bridge_name: yup
+    .string()
+    .max(255, "Bridge name must be at most 255 characters")
+    .required("Bridge name is required"),
+
+  bridge_structure_type_id: yup
+    .string()
+    .uuid()
+    .required("Bridge structure type is required"),
+
+  span_number: yup
+    .number()
+    .integer("Span number must be an integer")
+    .nullable(),
+
+  span_composition: yup.string().max(255).nullable(),
+
+  total_span_length: yup.number().nullable(),
+  carriage_width: yup.number().nullable(),
+  side_walk_width: yup.number().nullable(),
+
+  lane_number: yup
+    .number()
+    .integer("Lane number must be an integer")
+    .nullable(),
+
+  span_support_type_id: yup
+    .string()
+    .uuid()
+    .required("Span support type is required"),
+
+  deck_slab_type_id: yup
+    .string()
+    .uuid()
+    .required("Deck slab type is required"),
+
+  girder_number: yup
+    .number()
+    .integer("Girder number must be an integer")
+    .nullable(),
+
+  girder_depth: yup.number().nullable(),
+  girder_spacing: yup.number().nullable(),
+  girder_width: yup.number().nullable(),
+});
 
   const isEdit = Boolean(bridgeSuperStructure?.id);
 

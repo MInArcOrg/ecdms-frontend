@@ -33,6 +33,7 @@ const SatelliteNetworkDrawer = (props: SatelliteNetworkDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
+    parent_id: yup.string().nullable(),
     satellite_network_type_id: yup
       .string()
       .required("Satellite network type is required"),
@@ -40,7 +41,7 @@ const SatelliteNetworkDrawer = (props: SatelliteNetworkDrawerType) => {
     ground_stations: yup.boolean().nullable(),
     modems: yup.boolean().nullable(),
     routers: yup.boolean().nullable(),
-    others: yup.string().nullable(),
+    others: yup.string().nullable().max(36, "Others cannot exceed 36 characters"),
   });
 
   const isEdit = Boolean(satelliteNetwork?.id);

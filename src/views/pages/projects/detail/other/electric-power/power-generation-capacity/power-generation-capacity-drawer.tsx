@@ -46,7 +46,7 @@ const PowerGenerationCapacityDrawer = (
   };
 
   const validationSchema = yup.object().shape({
-    owner_id: yup.string().required("Owner is required"),
+    owner_id: yup.string().uuid().required("Owner is required"),
     capacity: yup
       .number()
       .nullable()
@@ -66,7 +66,7 @@ const PowerGenerationCapacityDrawer = (
       .nullable()
       .integer("Must be an integer")
       .transform((value) => (isNaN(value) ? null : value)),
-    others: yup.string().nullable(),
+    others: yup.string().max(100).nullable(),
   });
 
   const isEdit = Boolean(powerGenerationCapacity?.id);

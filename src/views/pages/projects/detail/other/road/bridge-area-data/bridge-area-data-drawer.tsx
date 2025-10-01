@@ -23,10 +23,22 @@ const BridgeAreaDataDrawer = (props: BridgeAreaDataDrawerType) => {
     props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    bridge_name: yup.string().required("Bridge name is required"),
-    area_topography_id: yup.string().required("Area topography is required"),
+      parent_id: yup.string().uuid().nullable(),
+    name: yup.string().max(255).required("Name is required"),
+    bridge_name: yup.string().max(255).required("Bridge name is required"),
+    river_width: yup.number().nullable(),
+    highest_water_level: yup.number().nullable(),
+    lowest_water_level: yup.number().nullable(),
+    area_topography_id: yup
+      .string()
+      .uuid()
+      .required("Area topography is required"),
+    detour_possibility: yup.boolean().nullable(),
+    road_alignment: yup.string().max(255).nullable(),
+    altitude: yup.number().nullable(),
+    load_limit_sign: yup.boolean().nullable(),
   });
+ 
 
   const isEdit = Boolean(bridgeAreaData?.id);
 
