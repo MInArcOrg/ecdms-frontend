@@ -22,11 +22,43 @@ const BridgeSubStructureDrawer = (props: BridgeSubStructureDrawerType) => {
   const { open, toggle, refetch, bridgeSubStructure, projectId, otherSubMenu } =
     props;
 
-  const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    bridge_name: yup.string().required("Bridge name is required"),
-    pier_type_id: yup.string().required("Pier type is required"),
-  });
+const validationSchema = yup.object().shape({
+  parent_id: yup.string().uuid().nullable(), // optional reference
+  project_id: yup.string().uuid().required("Project ID is required"),
+
+  name: yup
+    .string()
+    .max(255, "Name must be at most 255 characters")
+    .required("Name is required"),
+
+  bridge_name: yup
+    .string()
+    .max(255, "Bridge name must be at most 255 characters")
+    .required("Bridge name is required"),
+
+  abutment_a1_height: yup.number().nullable(),
+  abutment_a1_width: yup.number().nullable(),
+  abutment_a2_height: yup.number().nullable(),
+  abutment_a2_width: yup.number().nullable(),
+  wing_wall_length: yup.number().nullable(),
+
+  pier_type_id: yup
+    .string()
+    .uuid()
+    .required("Pier type is required"),
+
+  piers_number: yup
+    .number()
+    .integer("Piers number must be an integer")
+    .nullable(),
+
+  piers_dimension: yup.string().max(255).nullable(),
+
+  pier1_height: yup.number().nullable(),
+  pier1_width: yup.number().nullable(),
+  pier2_height: yup.number().nullable(),
+  pier2_width: yup.number().nullable(),
+});
 
   const isEdit = Boolean(bridgeSubStructure?.id);
 

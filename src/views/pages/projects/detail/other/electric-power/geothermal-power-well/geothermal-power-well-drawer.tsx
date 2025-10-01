@@ -40,7 +40,8 @@ const GeothermalPowerWellDrawer = (props: GeothermalPowerWellDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
-    wells_name: yup.string().nullable(),
+    parent_id: yup.string().uuid().nullable(),
+    wells_name: yup.string().max(100).nullable(),
     wells_number: yup
       .number()
       .nullable()
@@ -54,7 +55,7 @@ const GeothermalPowerWellDrawer = (props: GeothermalPowerWellDrawerType) => {
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value)),
-    drilling_period: yup.date().nullable(),
+    drilling_period: yup.string().nullable(),
     temperature_at_bottom_hole: yup
       .number()
       .nullable()
@@ -64,7 +65,7 @@ const GeothermalPowerWellDrawer = (props: GeothermalPowerWellDrawerType) => {
       .nullable()
       .integer("Must be an integer")
       .transform((value) => (isNaN(value) ? null : value)),
-    remark: yup.string().nullable(),
+    remark: yup.string().max(100).nullable(),
   });
 
   const isEdit = Boolean(geothermalPowerWell?.id);

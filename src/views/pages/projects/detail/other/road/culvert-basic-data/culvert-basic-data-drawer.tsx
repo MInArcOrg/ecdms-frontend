@@ -23,9 +23,26 @@ const CulvertBasicDataDrawer = (props: CulvertBasicDataDrawerType) => {
     props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    culvert_name: yup.string().required("Culvert name is required"),
-    area_topography_id: yup.string().required("Area topography is required"),
+    parent_id: yup.string().length(36).nullable(),
+    project_id: yup.string().length(36).required("Project is required"),
+    name: yup.string().max(255).required("Name is required"),
+    culvert_name: yup.string().max(255).required("Culvert name is required"),
+    culvert_number: yup.number().integer().nullable(),
+    culvert_coordinate_x: yup.number().nullable(),
+    culvert_coordinate_y: yup.number().nullable(),
+    area_topography_id: yup
+      .string()
+      .length(36)
+      .required("Area topography is required"),
+    highest_water_level: yup.number().nullable(),
+    lowest_water_level: yup.number().nullable(),
+    construction_year: yup.number().integer().nullable(),
+    contractor: yup.string().max(255).nullable(),
+    designer: yup.string().max(255).nullable(),
+    culvert_cost: yup.number().nullable(),
+    detour_possibility: yup.boolean().nullable(),
+    road_alignment: yup.string().max(255).nullable(),
+    altitude: yup.number().nullable(),
   });
 
   const isEdit = Boolean(culvertBasicData?.id);
@@ -96,6 +113,7 @@ const CulvertBasicDataDrawer = (props: CulvertBasicDataDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...culvertBasicData,
+            project_id: projectId,
           }}
           createActionFunc={
             isEdit ? editCulvertBasicData : createCulvertBasicData

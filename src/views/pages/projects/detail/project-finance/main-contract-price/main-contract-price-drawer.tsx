@@ -30,20 +30,14 @@ const MainContractPriceDrawer = (props: MainContractPriceDrawerProps) => {
     projectGeneralFinance,
   } = props;
   const { t } = useTranslation();
-
+   
   const validationSchema = yup.object().shape({
-    main_contract_price_amount: yup
-      .number()
-      .required(`${t("Main Contract Price")} ${t("is required")}`)
-      .moreThan(0),
-    rebate: yup
-      .number()
-      .required(`${t("Rebate")} ${t("is required")}`)
-      .min(0)
-      .max(100),
-    source_of_finance: yup
-      .string()
-      .required(`${t("Source of Finance")} ${t("is required")}`),
+    parent_id: yup.string().length(36).nullable(),
+    main_contract_price_amount: yup.number().nullable(),
+    rebate: yup.number().nullable(),
+    remark: yup.string().nullable(),
+    source_of_finance: yup.string().max(255).nullable(),
+    revision_no: yup.number().integer().nullable(),
   });
 
   const isEdit = Boolean(projectFinance?.id);
@@ -97,6 +91,7 @@ const MainContractPriceDrawer = (props: MainContractPriceDrawerProps) => {
           validationSchema={validationSchema}
           initialValues={
             projectFinance || {
+              project_id: projectId,
               main_contract_price_amount: 0,
               rebate: 0,
               source_of_finance: "",

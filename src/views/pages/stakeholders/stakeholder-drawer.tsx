@@ -37,7 +37,7 @@ const validationSchema = yup.object().shape({
   trade_name: yup.string().max(255).required("Trade Name is required"),
   tin: yup.string().max(255).required("TIN is required"),
   origin: yup.string().max(255).required("Origin is required"),
-  license_issued_date: yup.date().nullable(),
+  license_issued_date: yup.string().nullable(),
   ownership_id: yup.string().max(36).required("Ownership is required"),
   businessfield_id: yup.string().max(36).nullable(),
   revision_no: yup.number().integer().nullable(),

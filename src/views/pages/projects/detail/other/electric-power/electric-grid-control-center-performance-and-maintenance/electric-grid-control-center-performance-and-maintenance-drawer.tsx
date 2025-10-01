@@ -47,12 +47,13 @@ const ElectricGridControlCenterPerformanceAndMaintenanceDrawer = (
   };
 
   const validationSchema = yup.object().shape({
+    parent_id: yup.string().uuid().nullable(),
     electric_grid_control_center_data_id: yup
       .string()
+      .uuid()
       .required("Electric Grid Control Center Data is required"),
-    name: yup.string().required("Name is required"),
-    maintenance_frequency_id: yup
-      .string()
+    name: yup.string().max(100).required("Name is required"),
+    maintenance_frequency_id: yup.string().uuid()
       .required("Maintenance Frequency is required"),
     total_system_downtime_outage_duration: yup
       .number()
@@ -63,8 +64,8 @@ const ElectricGridControlCenterPerformanceAndMaintenanceDrawer = (
       .nullable()
       .transform((value) => (isNaN(value) ? null : value))
       .integer("Total interruptions number must be an integer"),
-    saidi: yup.string().nullable(),
-    saifi: yup.string().nullable(),
+    saidi: yup.string().max(100).nullable(),
+    saifi: yup.string().max(100).nullable(),
     remark: yup.string().nullable(),
   });
 
@@ -93,18 +94,8 @@ const ElectricGridControlCenterPerformanceAndMaintenanceDrawer = (
     values: ElectricGridControlCenterPerformanceAndMaintenance,
   ) => ({
     data: {
+      ...values,
       project_id: projectId,
-      electric_grid_control_center_data_id:
-        values.electric_grid_control_center_data_id,
-      name: values.name,
-      maintenance_frequency_id: values.maintenance_frequency_id,
-      total_system_downtime_outage_duration:
-        values.total_system_downtime_outage_duration,
-      total_interruptions_number: values.total_interruptions_number,
-      saidi: values.saidi,
-      saifi: values.saifi,
-      remark: values.remark,
-      id: electricGridControlCenterPerformanceAndMaintenance?.id,
     },
     files: uploadableFile ? [uploadableFile] : [],
   });

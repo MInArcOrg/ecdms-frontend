@@ -19,6 +19,7 @@ const MainContractPriceForm: React.FC<MainContractPriceFormProps> = ({
 
   projectGeneralFinance,
 }) => {
+  console.log('formik errors', formik.errors,formik.values);
   const { t } = useTranslation();
 
   const calculatePriceAfterRebate = useCallback(

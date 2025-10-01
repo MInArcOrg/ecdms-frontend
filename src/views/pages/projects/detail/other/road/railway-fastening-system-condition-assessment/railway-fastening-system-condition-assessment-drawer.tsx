@@ -41,7 +41,7 @@ const RailwayFasteningSystemConditionAssessmentDrawer = ({
     railway_line_section_name: yup
       .string()
       .required("Railway line section name is required"),
-    inspection_date: yup.date().nullable(),
+    inspection_date: yup.string().nullable(),
     fastening_system_condition_rating: yup.string().nullable(),
     defect_presence: yup.string().nullable(),
     fastening_system_stability_and_alignment: yup.string().nullable(),

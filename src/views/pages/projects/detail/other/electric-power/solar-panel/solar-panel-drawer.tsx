@@ -33,9 +33,13 @@ const SolarPanelDrawer = (props: SolarPanelDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
-    manufacturer: yup.string().nullable(),
-    model: yup.string().nullable(),
-    solar_panel_type_id: yup.string().required("Solar panel type is required"),
+    parent_id: yup.string().uuid().nullable(),
+    manufacturer: yup.string().max(100).nullable(),
+    model: yup.string().max(100).nullable(),
+    solar_panel_type_id: yup
+      .string()
+      .uuid()
+      .required("Solar panel type is required"),
     solar_panels_number: yup
       .number()
       .nullable()
@@ -45,15 +49,15 @@ const SolarPanelDrawer = (props: SolarPanelDrawerType) => {
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value)),
-    inverter_manufacturer: yup.string().nullable(),
-    inverter_model: yup.string().nullable(),
+    inverter_manufacturer: yup.string().max(100).nullable(),
+    inverter_model: yup.string().max(100).nullable(),
     inverters_number: yup
       .number()
       .nullable()
       .integer("Must be an integer")
       .transform((value) => (isNaN(value) ? null : value)),
-    other_equipment: yup.string().nullable(),
-    remark: yup.string().nullable(),
+    other_equipment: yup.string().max(100).nullable(),
+    remark: yup.string().max(100).nullable(),
   });
 
   const isEdit = Boolean(solarPanel?.id);

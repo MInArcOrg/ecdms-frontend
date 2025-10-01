@@ -30,9 +30,23 @@ const NetworkCoverageDrawer = (props: NetworkCoverageDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
+    parent_id: yup.string().nullable(),
     network_infrastructure_type_id: yup
       .string()
       .required("Network infrastructure type is required"),
+    total_coverage_area: yup.number().nullable(),
+    coverage_population_number: yup
+      .number()
+      .integer("Coverage population must be an integer")
+      .nullable(),
+    active_users_number: yup
+      .number()
+      .integer("Active users must be an integer")
+      .nullable(),
+    average_download_speed: yup.number().nullable(),
+    average_upload_speed: yup.number().nullable(),
+    signal_strength: yup.number().nullable(),
+    others: yup.string().nullable(),
   });
 
   const isEdit = Boolean(networkCoverage?.id);

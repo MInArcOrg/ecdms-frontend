@@ -47,26 +47,38 @@ const BroadcastingInfrastructureAgeDrawer = (
   };
 
   const validationSchema = yup.object().shape({
+    parent_id: yup.string().nullable(),
     broadcasting_infrastructure_id: yup
       .string()
       .required("Broadcasting infrastructure is required"),
+    name: yup
+      .string()
+      .required("Name is required")
+      .max(100, "Name cannot exceed 100 characters"),
     antennas: yup
       .number()
       .nullable()
+      .integer("Antennas age must be an integer")
       .transform((value) => (isNaN(value) ? null : value)),
     transmitters: yup
       .number()
       .nullable()
+      .integer("Transmitters age must be an integer")
       .transform((value) => (isNaN(value) ? null : value)),
     towers: yup
       .number()
       .nullable()
+      .integer("Towers age must be an integer")
       .transform((value) => (isNaN(value) ? null : value)),
     cables: yup
       .number()
       .nullable()
+      .integer("Cables age must be an integer")
       .transform((value) => (isNaN(value) ? null : value)),
-    others: yup.string().nullable(),
+    others: yup
+      .string()
+      .nullable()
+      .max(100, "Others cannot exceed 100 characters"),
   });
 
   const isEdit = Boolean(broadcastingInfrastructureAge?.id);

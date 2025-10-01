@@ -38,11 +38,24 @@ const DataCenterFacilityCapacityDrawer = (
   };
 
   const validationSchema = yup.object().shape({
+    parent_id: yup.string().nullable(),
     data_center_id: yup.string().required("Data Center ID is required"),
-    total_floor_area: yup.string().nullable(),
-    power_capacity: yup.string().nullable(),
-    rack_space_capacity: yup.string().nullable(),
-    cooling_capacity: yup.string().nullable(),
+    total_floor_area: yup
+      .string()
+      .nullable()
+      .max(100, "Total floor area cannot exceed 100 characters"),
+    power_capacity: yup
+      .string()
+      .nullable()
+      .max(100, "Power capacity cannot exceed 100 characters"),
+    rack_space_capacity: yup
+      .string()
+      .nullable()
+      .max(100, "Rack space capacity cannot exceed 100 characters"),
+    cooling_capacity: yup
+      .string()
+      .nullable()
+      .max(100, "Cooling capacity cannot exceed 100 characters"),
     access_control: yup.boolean().nullable(),
     surveillance_cameras: yup.boolean().nullable(),
     fire_suppression_systems: yup.boolean().nullable(),

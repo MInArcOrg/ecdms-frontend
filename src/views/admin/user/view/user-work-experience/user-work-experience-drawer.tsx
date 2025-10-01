@@ -32,7 +32,7 @@ const WorkExperienceDrawer = (props: WorkExperienceDrawerType) => {
     position: yup.string().max(255).nullable(),
     task_description: yup.string().required("Task description is required"),
     start_date: yup.date().required("Start date is required"),
-    end_date: yup.date().nullable(),
+    end_date: yup.string().nullable(),
   });
 
   const isEdit = Boolean(workexperience?.id);

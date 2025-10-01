@@ -49,16 +49,20 @@ const ElectricGridControlCenterCyberSecurityDataDrawer = (
   };
 
   const validationSchema = yup.object().shape({
+    parent_id: yup.string().uuid().nullable(),
     electric_grid_control_center_data_id: yup
       .string()
+      .uuid()
       .required("Electric Grid Control Center Data is required"),
-    name: yup.string().required("Name is required"),
+    name: yup.string().max(100).required("Name is required"),
     cyber_security_measures_implemented: yup.boolean().nullable(),
     cyber_security_measures_type: yup
       .string()
+      .uuid()
       .required("Cyber Security Measures Type is required"),
     cyber_security_audits_frequency: yup
       .string()
+      .uuid()
       .required("Cyber Security Audits Frequency is required"),
     remark: yup.string().nullable(),
   });
@@ -84,16 +88,8 @@ const ElectricGridControlCenterCyberSecurityDataDrawer = (
 
   const getPayload = (values: ElectricGridControlCenterCyberSecurityData) => ({
     data: {
+      ...values,
       project_id: projectId,
-      electric_grid_control_center_data_id:
-        values.electric_grid_control_center_data_id,
-      name: values.name,
-      cyber_security_measures_implemented:
-        values.cyber_security_measures_implemented,
-      cyber_security_measures_type: values.cyber_security_measures_type,
-      cyber_security_audits_frequency: values.cyber_security_audits_frequency,
-      remark: values.remark,
-      id: electricGridControlCenterCyberSecurityData?.id,
     },
     files: uploadableFile ? [uploadableFile] : [],
   });

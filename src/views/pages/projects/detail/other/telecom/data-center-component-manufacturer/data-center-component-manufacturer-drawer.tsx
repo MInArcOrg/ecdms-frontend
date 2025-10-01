@@ -1,4 +1,4 @@
-import { FormikProps } from "formik";
+ import { FormikProps } from "formik";
 import { IApiPayload, IApiResponse } from "src/types/requests";
 import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
 import FormPageWrapper from "src/views/shared/form/form-wrapper";
@@ -38,12 +38,28 @@ const DataCenterComponentManufacturerDrawer = (
   };
 
   const validationSchema = yup.object().shape({
+    parent_id: yup.string().nullable(),
     data_center_id: yup.string().required("Data Center ID is required"),
-    servers: yup.string().nullable(),
-    storage_devices: yup.string().nullable(),
-    networking_equipment: yup.string().nullable(),
-    cooling_systems: yup.string().nullable(),
-    backup_generators: yup.string().nullable(),
+    servers: yup
+      .string()
+      .nullable()
+      .max(100, "Servers cannot exceed 100 characters"),
+    storage_devices: yup
+      .string()
+      .nullable()
+      .max(100, "Storage devices cannot exceed 100 characters"),
+    networking_equipment: yup
+      .string()
+      .nullable()
+      .max(100, "Networking equipment cannot exceed 100 characters"),
+    cooling_systems: yup
+      .string()
+      .nullable()
+      .max(100, "Cooling systems cannot exceed 100 characters"),
+    backup_generators: yup
+      .string()
+      .nullable()
+      .max(100, "Backup generators cannot exceed 100 characters"),
     others: yup.string().nullable(),
   });
 

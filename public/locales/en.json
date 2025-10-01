@@ -1475,7 +1475,8 @@
         "title": "Title",
         "amount": "Amount",
         "retention": "Retention",
-        "description": "Description"
+        "description": "Description",
+        "reference_number": "Reference Number"
       }
     },
     "project-advance_payment": {
@@ -1486,7 +1487,9 @@
         "title": "Title",
         "amount": "Amount",
         "retention": "Retention",
-        "description": "Description"
+        "description": "Description",
+        "reference_number": "Reference Number"
+
       }
     },
     "project-bond": {
@@ -1627,6 +1630,19 @@
         "description": "Description"
       }
     },
+    "main-contract-price": {
+      "title": "Main Contract Price",
+      "edit-main-contract-price": "Edit Main Contract Price",
+      "create-main-contract-price": "Create Main Contract Price",
+      "price-details":"Price Details",
+      "form": {
+        "main-contract-price": "Main Contract Price",
+        "rebate": "Rebate",
+        "remark": "Remark",
+        "source-of-finance": "Source of Finance"
+      }
+    },
+   
      "project-contact-person": {
       "create": "Create Contact Person",
       "edit": "Edit Contact Person",
@@ -4827,3 +4843,4 @@
     }
   }
 }
+ 

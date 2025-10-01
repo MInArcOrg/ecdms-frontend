@@ -32,14 +32,28 @@ const BridgeInspectionDrawer = (props: BridgeInspectionDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    bridge_name: yup.string().required("Bridge name is required"),
+    parent_id: yup.string().uuid().nullable(),
+    name: yup
+      .string()
+      .max(255, "Name must be at most 255 characters")
+      .required("Name is required"),
+    bridge_name: yup
+      .string()
+      .max(255, "Bridge name must be at most 255 characters")
+      .required("Bridge name is required"),
     bridge_part_defect_id: yup
       .string()
+      .uuid()
       .required("Bridge part defect is required"),
-    damage_type_id: yup.string().required("Damage type is required"),
-    damage_condition_id: yup.string().required("Damage condition is required"),
-    hydrology_defect_id: yup.string().required("Hydrology defect is required"),
+    damage_type_id: yup.string().uuid().required("Damage type is required"),
+    damage_condition_id: yup
+      .string()
+      .uuid()
+      .required("Damage condition is required"),
+    hydrology_defect_id: yup.string().uuid().required("Hydrology defect is required"),
+    maintenance_action: yup.string().nullable(),
+    bridge_history: yup.string().nullable(),
+    inspector_remark: yup.string().nullable(),
   });
 
   const isEdit = Boolean(bridgeInspection?.id);

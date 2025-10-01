@@ -29,9 +29,13 @@ const ProjectPaymentDrawer = (props: ProjectPaymentDrawerType) => {
     setUploadableFile(file);
   };
   const validationSchema = yup.object().shape({
-    title: yup.string().required(),
-    amount: yup.number().required(`${t("Amount")} ${t("is required")}`),
-    retention: yup.number().required(`${t("Retention")} ${t("is required")}`),
+    title: yup.string().max(255).required("Title is required"),
+    parent_id: yup.string().length(36).nullable(),
+    type: yup.string().max(255).nullable(),
+    description: yup.string().nullable(),
+    amount: yup.number().nullable(),
+    retention: yup.number().nullable(),
+    reference_number: yup.string().max(255).nullable(),
   });
 
   const isEdit = Boolean(projectPayment?.id);
@@ -92,6 +96,7 @@ const ProjectPaymentDrawer = (props: ProjectPaymentDrawerType) => {
           initialValues={{
             type,
             ...projectPayment,
+            project_id: projectId
           }}
           createActionFunc={isEdit ? editProjectPayment : createProjectPayment}
           onActionSuccess={onActionSuccess}

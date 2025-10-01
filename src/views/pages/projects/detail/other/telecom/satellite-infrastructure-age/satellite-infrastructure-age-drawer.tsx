@@ -46,24 +46,29 @@ const SatelliteInfrastructureAgeDrawer = (
   };
 
   const validationSchema = yup.object().shape({
+    parent_id: yup.string().nullable(),
     satellite_network_id: yup
       .string()
       .required("Satellite network is required"),
     satellite: yup
       .number()
       .nullable()
+      .min(0, "Age must be a positive number")
       .transform((value) => (isNaN(value) ? null : value)),
     ground_stations: yup
       .number()
       .nullable()
+      .min(0, "Age must be a positive number")
       .transform((value) => (isNaN(value) ? null : value)),
     modems: yup
       .number()
       .nullable()
+      .min(0, "Age must be a positive number")
       .transform((value) => (isNaN(value) ? null : value)),
     routers: yup
       .number()
       .nullable()
+      .min(0, "Age must be a positive number")
       .transform((value) => (isNaN(value) ? null : value)),
     others: yup.string().nullable(),
   });
@@ -89,6 +94,7 @@ const SatelliteInfrastructureAgeDrawer = (
 
   const getPayload = (values: SatelliteInfrastructureAge) => ({
     data: {
+      ...values,
       project_id: projectId,
       satellite_network_id: values.satellite_network_id,
       satellite: values.satellite,
