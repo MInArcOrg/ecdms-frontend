@@ -23,9 +23,13 @@ interface ResourceBrandDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required(),
-  datasource: yup.string().required(),
-  description: yup.string().required(),
+  parent_id: yup.string().nullable(),
+  name: yup.string().required("Name is required").max(100, "Name cannot exceed 100 characters"),
+  manufacturer: yup
+    .string()
+    .nullable()
+    .max(100, "Manufacturer cannot exceed 100 characters"),
+  remark: yup.string().nullable(),
 });
 
 const ResourceBrandDrawer: React.FC<ResourceBrandDrawerType> = (props) => {
