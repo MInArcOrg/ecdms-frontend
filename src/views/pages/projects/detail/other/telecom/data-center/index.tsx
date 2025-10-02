@@ -181,7 +181,7 @@ const DataCenterList: React.FC<DataCenterListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "datacenter",

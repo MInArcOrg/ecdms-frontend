@@ -68,7 +68,7 @@ const UserList = ({}) => {
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleUserDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: { action: "create", subject: "user" },
         }}
       />

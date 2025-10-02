@@ -76,388 +76,388 @@
     "resource": "Resource",
     "general-master": {
       "ownerships": "Ownership Types",
-      "create-ownerships": "Create Ownership Type",
+      "create-ownerships": "Add Ownership Type",
       "edit-ownerships": "Edit Ownership Type",
       "business-fields": "Business Fields",
-      "create-business-fields": "Create Business Field",
+      "create-business-fields": "Add Business Field",
       "edit-business-fields": "Edit Business Field",
       "study-levels": "Study Levels",
-      "create-study-levels": "Create Study Level",
+      "create-study-levels": "Add Study Level",
       "edit-study-levels": "Edit Study Level",
       "study-programs": "Study Programs",
-      "create-study-programs": "Create Study Program",
+      "create-study-programs": "Add Study Program",
       "edit-study-programs": "Edit Study Program",
       "study-fields": "Study Fields",
-      "create-study-fields": "Create Study Field",
+      "create-study-fields": "Add Study Field",
       "edit-study-fields": "Edit Study Field",
       "age-levels": "Age Levels",
-      "create-age-levels": "Create Age Level",
+      "create-age-levels": "Add Age Level",
       "edit-age-levels": "Edit Age Level",
       "work-experiences": "Work Experiences",
-      "create-work-experiences": "Create Work Experience",
+      "create-work-experiences": "Add Work Experience",
       "edit-work-experiences": "Edit Work Experience",
       "project-progress-statuses": "Project Progress Status",
-      "create-project-progress-statuses": "Create Project Progress Status",
+      "create-project-progress-statuses": "Add Project Progress Status",
       "edit-project-progress-statuses": "Edit Project Progress Status",
       "stakeholder-services": "Construction Related Service",
       "edit-stakeholder-services": "Edit Construction Related Service",
-      "create-stakeholder-services": "Create Construction Related Service",
+      "create-stakeholder-services": "Add Construction Related Service",
       "pedestrian-facilities": "Pedestrian Facilities",
-      "create-pedestrian-facility": "Create Pedestrian Facility",
+      "create-pedestrian-facility": "Add Pedestrian Facility",
       "edit-pedestrian-facility": "Edit Pedestrian Facility",
       "road-length-types": "Road Length Types",
-      "create-road-length-type": "Create Road Length Type",
+      "create-road-length-type": "Add Road Length Type",
       "edit-road-length-type": "Edit Road Length Type",
       "endwall-type-inlets": "Endwall Types Inlets",
-      "create-endwall-type-inlet": "Create Endwall Types Inlet",
+      "create-endwall-type-inlet": "Add Endwall Types Inlet",
       "edit-endwall-type-inlet": "Edit Endwall Types Inlet",
       "area-topographies": "Area Topographies",
-      "create-area-topography": "Create Area Topography",
+      "create-area-topography": "Add Area Topography",
       "edit-area-topography": "Edit Area Topography",
       "soil-types": "Soil Types",
-      "create-soil-type": "Create Soil Type",
+      "create-soil-type": "Add Soil Type",
       "edit-soil-type": "Edit Soil Type",
       "guard-rail-types": "Guard Rail Types",
-      "create-guard-rail-type": "Create Guard Rail Type",
+      "create-guard-rail-type": "Add Guard Rail Type",
       "edit-guard-rail-type": "Edit Guard Rail Type",
       "bridge-structure-types": "Bridge Structure Types",
-      "create-bridge-structure-type": "Create Bridge Structure Type",
+      "create-bridge-structure-type": "Add Bridge Structure Type",
       "edit-bridge-structure-type": "Edit Bridge Structure Type",
       "span-support-types": "Span Support Types",
-      "create-span-support-type": "Create Span Support Type",
+      "create-span-support-type": "Add Span Support Type",
       "edit-span-support-type": "Edit Span Support Type",
       "damage-conditions": "Damage Conditions",
-      "create-damage-condition": "Create Damage Conditions",
+      "create-damage-condition": "Add Damage Conditions",
       "edit-damage-condition": "Edit Damage Conditions",
       "hydrology-defects": "Hydrology Defects",
-      "create-hydrology-defect": "Create Hydrology Defect",
+      "create-hydrology-defect": "Add Hydrology Defect",
       "edit-hydrology-defect": "Edit Hydrology Defect",
       "count-types": "Count Types",
-      "create-count-type": "Create Count Type",
+      "create-count-type": "Add Count Type",
       "edit-count-type": "Edit Count Type",
       "road-safety-features": "Road Safety Features",
-      "create-road-safety-feature": "Create Road Safety Feature",
+      "create-road-safety-feature": "Add Road Safety Feature",
       "edit-road-safety-feature": "Edit Road Safety Feature",
       "current-conditions": "Current Conditions",
-      "create-current-condition": "Create Current Condition",
+      "create-current-condition": "Add Current Condition",
       "edit-current-condition": "Edit Current Condition",
       "ground-water-impacts": "Ground Water Impacts",
-      "create-ground-water-impact": "Create Ground Water Impact",
+      "create-ground-water-impact": "Add Ground Water Impact",
       "edit-ground-water-impact": "Edit Ground Water Impact",
       "maintenance-types": "Maintenance Types",
-      "create-maintenance-type": "Create Maintenance Type",
+      "create-maintenance-type": "Add Maintenance Type",
       "edit-maintenance-type": "Edit Maintenance Type",
       "slope-stabilities": "Slope Stabilities",
-      "create-slope-stability": "Create Slope Stability",
+      "create-slope-stability": "Add Slope Stability",
       "edit-slope-stability": "Edit Slope Stability",
       "drainage-types": "Drainage Types",
-      "create-drainage-type": "Create Drainage Type",
+      "create-drainage-type": "Add Drainage Type",
       "edit-drainage-type": "Edit Drainage Type",
       "maintenance-frequencies": "Maintenance Frequencies",
-      "edit-maintenance-frequency": "Create Maintenance Frequency",
+      "edit-maintenance-frequency": "Add Maintenance Frequency",
       "create-maintenance-frequency": "Edit Maintenance Frequency",
       "maintenance-frequency-types": "Maintenance Frequency Types",
-      "create-maintenance-frequency-type": "Create Maintenance Frequency Type",
+      "create-maintenance-frequency-type": "Add Maintenance Frequency Type",
       "edit-maintenance-frequency-type": "Edit Maintenance Frequency Type",
       "drainage-conditions": "Drainage Conditions",
-      "create-drainage-condition": "Create Drainage Condition",
+      "create-drainage-condition": "Add Drainage Condition",
       "edit-drainage-condition": "Edit Drainage Condition",
       "assessment-conditions": "Assessment Conditions",
-      "create-assessment-condition": "Create Assessment Conditions",
+      "create-assessment-condition": "Add Assessment Conditions",
       "edit-assessment-condition": "Edit Assessment Conditions",
       "severity-levels": "Severity Levels",
-      "create-severity-level": "Create Severity Level",
+      "create-severity-level": "Add Severity Level",
       "edit-severity-level": "Edit Severity Level",
       "hazard-types": "Hazard Types",
-      "create-hazard-type": "Create Hazard Type",
+      "create-hazard-type": "Add Hazard Type",
       "edit-hazard-type": "Edit Hazard Type",
       "suggested-repairs": "Suggested Repairs",
-      "create-suggested-repairs": "Create Suggested Repairs",
+      "create-suggested-repairs": "Add Suggested Repairs",
       "edit-suggested-repairs": "Edit Suggested Repairs",
       "recommended-action-urgencies": "Recommended Action Urgencies",
       "edit-recommended-action-urgency": "Edit Recommended Action Urgency",
-      "create-recommended-action-urgency": "Create Recommended Action Urgency",
+      "create-recommended-action-urgency": "Add Recommended Action Urgency",
       "potential-impacts": "Potential Impacts",
-      "create-potential-impact": "Create Potential Impacts",
+      "create-potential-impact": "Add Potential Impacts",
       "edit-potential-impact": "Edit Potential Impacts",
       "risk-levels": "Risk Levels",
-      "create-risk-level": "Create Risk Level",
+      "create-risk-level": "Add Risk Level",
       "edit-risk-level": "Edit Risk Level",
       "incident-types": "Incident Types",
-      "create-incident-type": "Create Incident Type",
+      "create-incident-type": "Add Incident Type",
       "edit-incident-type": "Edit Incident Type",
       "incident-times": "Incident Times",
-      "create-incident-time": "Create Incident Time",
+      "create-incident-time": "Add Incident Time",
       "edit-incident-time": "Edit Incident Time",
       "abutment-types": "Abutment Types",
-      "create-abutment-type": "Create Abutment Types",
+      "create-abutment-type": "Add Abutment Types",
       "edit-abutment-types": "Edit Abutment Types",
       "bridge-part-defects": "Bridge Part Defects",
-      "create-bridge-part-defect": "Create Bridge Part Defect",
+      "create-bridge-part-defect": "Add Bridge Part Defect",
       "edit-bridge-part-defect": "Edit Bridge Part Defect",
       "cross-section-types": "Cross Section Types",
-      "create-cross-section-type": "Create Cross Section Types",
+      "create-cross-section-type": "Add Cross Section Types",
       "edit-cross-section-type": "Edit Cross Section Types",
       "damage-types": "Damage Types",
-      "create-damage-type": "Create Damage Types",
+      "create-damage-type": "Add Damage Types",
       "edit-damage-type": "Edit Damage Types",
       "deck-slab-types": "Deck Slab Types",
-      "create-deck-slab-type": "Create Deck Slab Types",
+      "create-deck-slab-type": "Add Deck Slab Types",
       "edit-deck-slab-type": "Edit Deck Slab Types",
       "design-classifications": "Design Classifications",
-      "create-design-classification": "Create Design Classification",
+      "create-design-classification": "Add Design Classification",
       "edit-design-classification": "Edit Design Classification",
       "design-standards": "Design Standards",
-      "create-design-standard": "Create Design Standard",
+      "create-design-standard": "Add Design Standard",
       "edit-design-standard": "Edit Design Standard",
       "design-traffic-flows": "Design Traffic Flows",
-      "create-design-traffic-flow": "Create Design Traffic Flow",
+      "create-design-traffic-flow": "Add Design Traffic Flow",
       "edit-design-traffic-flow": "Edit Design Traffic Flow",
       "driveway-access-points": "Driveway Access Points",
-      "create-driveway-access-point": "Create Driveway Access Points",
+      "create-driveway-access-point": "Add Driveway Access Points",
       "edit-driveway-access-point": "Edit Driveway Access Points",
       "endwall-type-outlets": "Endwall Type Outlets",
-      "create-endwall-type-outlet": "Create Endwall Type Outlet",
+      "create-endwall-type-outlet": "Add Endwall Type Outlet",
       "edit-endwall-type-outlet": "Edit Endwall Type Outlet",
       "expansion-joint-types": "Expansion Joint Types",
-      "create-expansion-joint-type": "Create Expansion Joint Type",
+      "create-expansion-joint-type": "Add Expansion Joint Type",
       "edit-expansion-joint-type": "Edit Expansion Joint Type",
       "functional-classifications": "Functional Classifications",
-      "create-functional-classification": "Create Functional Classification",
+      "create-functional-classification": "Add Functional Classification",
       "edit-functional-classification": "Edit Functional Classification",
       "intersection-types": "Intersection Types",
-      "create-intersection-type": "Create Intersection Type",
+      "create-intersection-type": "Add Intersection Type",
       "edit-intersection-type": "Edit Intersection Type",
       "paved-water-way-types": "Paved Water Way Types",
-      "create-paved-water-way-type": "Create Paved Water Way Type",
+      "create-paved-water-way-type": "Add Paved Water Way Type",
       "edit-paved-water-way-type": "Edit Paved Water Way Type",
       "pier-types": "Pier Types",
-      "create-pier-type": "Create Pier Type",
+      "create-pier-type": "Add Pier Type",
       "edit-pier-type": "Edit Pier Type",
       "project-phases": "Project Phases",
-      "create-project-phase": "Create Project Phase",
+      "create-project-phase": "Add Project Phase",
       "edit-project-phase": "Edit Project Phase",
       "surface-types": "Surface Types",
-      "create-surface-type": "Create Surface Type",
+      "create-surface-type": "Add Surface Type",
       "edit-surface-type": "Edit Surface Type",
       "inspection-types": "Inspection Types",
-      "create-inspection-type": "Create Inspection Type",
+      "create-inspection-type": "Add Inspection Type",
       "edit-inspection-type": "Edit Inspection Type",
       "personal-protective-equipment-types": "Personal Protective Equipment Types",
-      "create-personal-protective-equipment-type": "Create Personal Protective Equipment Type",
+      "create-personal-protective-equipment-type": "Add Personal Protective Equipment Type",
       "edit-personal-protective-equipment-type": "Edit Personal Protective Equipment Type",
       "injury-severities": "Injury Severities",
-      "create-injury-severity": "Create Injury Severity",
+      "create-injury-severity": "Add Injury Severity",
       "edit-injury-severity": "Edit Injury Severity",
       "personal-protective-equipment-conditions": "Personal Protective Equipment Conditions",
-      "create-personal-protective-equipment-condition": "Create Personal Protective Equipment Condition",
+      "create-personal-protective-equipment-condition": "Add Personal Protective Equipment Condition",
       "edit-personal-protective-equipment-condition": "Edit Personal Protective Equipment Condition",
       "weather-condition-during-incidents": "Weather Conditions During Incident",
-      "create-weather-condition-during-incident": "Create Weather Condition During Incident",
+      "create-weather-condition-during-incident": "Add Weather Condition During Incident",
       "edit-weather-condition-during-incident": "Edit Weather Condition During Incident",
       "mobile-network-types": "Mobile Network Types",
-      "create-mobile-network-type": "Create Mobile Network Type",
+      "create-mobile-network-type": "Add Mobile Network Type",
       "edit-mobile-network-type": "Edit Mobile Network Type",
       "satellite-network-types": "Satellite Network Types",
-      "create-satellite-network-type": "Create Satellite Network Type",
+      "create-satellite-network-type": "Add Satellite Network Type",
       "edit-satellite-network-type": "Edit Satellite Network Type",
       "internet-connection-types": "Internet Connection Types",
-      "create-internet-connection-type": "Create Internet Connection Type",
+      "create-internet-connection-type": "Add Internet Connection Type",
       "edit-internet-connection-type": "Edit Internet Connection Type",
       "broadcasting-infrastructure-types": "Broadcasting Infrastructure Types",
-      "create-broadcasting-infrastructure-type": "Create Broadcasting Infrastructure Type",
+      "create-broadcasting-infrastructure-type": "Add Broadcasting Infrastructure Type",
       "edit-broadcasting-infrastructure-type": "Edit Broadcasting Infrastructure Type",
       "data-center-types": "Data Center Types",
-      "create-data-center-type": "Create Data Center Type",
+      "create-data-center-type": "Add Data Center Type",
       "edit-data-center-type": "Edit Data Center Type",
       "owners": "Owners",
-      "create-owner": "Create Owner",
+      "create-owner": "Add Owner",
       "edit-owner": "Edit Owner",
       "dam-types": "Dam Types",
-      "create-dam-type": "Create Dam Type",
+      "create-dam-type": "Add Dam Type",
       "edit-dam-type": "Edit Dam Type",
       "spillway-types": "Spillway Types",
-      "create-spillway-type": "Create Spillway Type",
+      "create-spillway-type": "Add Spillway Type",
       "edit-spillway-type": "Edit Spillway Type",
       "turbine-types": "Turbine Type",
-      "create-turbine-type": "Create Turbine Type",
+      "create-turbine-type": "Add Turbine Type",
       "edit-turbine-type": "Edit Turbine Type",
       "solar-panel-types": "Solar Panel Types",
-      "create-solar-panel-type": "Create Solar Panel Type",
+      "create-solar-panel-type": "Add Solar Panel Type",
       "edit-solar-panel-type": "Edit Solar Panel Type",
       "tower-types": "Tower Types",
-      "create-tower-type": "Create Tower Type",
+      "create-tower-type": "Add Tower Type",
       "edit-tower-type": "Edit Tower Type",
       "generator-types": "Generator Types",
-      "create-generator-type": "Create Generator Type",
+      "create-generator-type": "Add Generator Type",
       "edit-generator-type": "Edit Generator Type",
       "conductor-code-names": "Conductor Code Names",
-      "create-conductor-code-name": "Create Conductor Code Name",
+      "create-conductor-code-name": "Add Conductor Code Name",
       "edit-conductor-code-name": "Edit Conductor Code Name",
       "battery-types": "Battery Types",
-      "create-battery-type": "Create Battery Type",
+      "create-battery-type": "Add Battery Type",
       "edit-battery-type": "Edit Battery Type",
       "tower-foundation-types": "Tower Foundation Types",
-      "create-tower-foundation-type": "Create Tower Foundation Type",
+      "create-tower-foundation-type": "Add Tower Foundation Type",
       "edit-tower-foundation-type": "Edit Tower Foundation Type",
       "switchgear-types": "Switchgear Types",
-      "create-switchgear-type": "Create Switchgear Type",
+      "create-switchgear-type": "Add Switchgear Type",
       "edit-switchgear-type": "Edit Switchgear Type",
       "circuit-breaker-types": "Circuit Breaker Types",
-      "create-circuit-breaker-type": "Create Circuit Breaker Type",
+      "create-circuit-breaker-type": "Add Circuit Breaker Type",
       "edit-circuit-breaker-type": "Edit Circuit Breaker Type",
       "substation-communication-systems": "Substation Communication Systems",
-      "create-substation-communication-system": "Create Substation Communication System",
+      "create-substation-communication-system": "Add Substation Communication System",
       "edit-substation-communication-system": "Edit Substation Communication System",
       "transformer-types": "Transformer Types",
-      "create-transformer-type": "Create Transformer Type",
+      "create-transformer-type": "Add Transformer Type",
       "edit-transformer-type": "Edit Transformer Type",
       "substation-grounding-systems": "Substation Grounding Systems",
-      "create-substation-grounding-system": "Create Substation Grounding System",
+      "create-substation-grounding-system": "Add Substation Grounding System",
       "edit-substation-grounding-system": "Edit Substation Grounding System",
       "distribution-line-types": "Distribution Line Types",
-      "create-distribution-line-type": "Create Distribution Line Type",
+      "create-distribution-line-type": "Add Distribution Line Type",
       "edit-distribution-line-type": "Edit Distribution Line Type",
       "privacy-measures-types": "Privacy Measures Types",
-      "create-privacy-measures-type": "Create Privacy Measures Types",
+      "create-privacy-measures-type": "Add Privacy Measures Types",
       "edit-privacy-measures-type": "Edit Privacy Measures Types",
       "protection-installed": "Protection Installed",
-      "create-protection-installed": "Create Protection Installed",
+      "create-protection-installed": "Add Protection Installed",
       "edit-protection-installed": "Edit Protection Installed",
       "fire-extinguishing-technologies": "Fire Extinguishing Technologies",
-      "create-fire-extinguishing-technology": "Create Fire Extinguishing Technologies",
+      "create-fire-extinguishing-technology": "Add Fire Extinguishing Technologies",
       "edit-fire-extinguishing-technologgy": "Edit Fire Extinguishing Technologies",
       "models": "Models",
-      "create-model": "Create Model",
+      "create-model": "Add Model",
       "edit-model": "Edit Model",
       "smart-meter-types": "Smart Meter Types",
-      "create-smart-meter-type": "Create Smart Meter Type",
+      "create-smart-meter-type": "Add Smart Meter Type",
       "edit-smart-meter-type": "Edit Smart Meter Type",
       "customer-engagement-frequencies": "Customer Engagement Frequencies",
-      "create-customer-engagement-frequency": "Create Customer Engagement Frequency",
+      "create-customer-engagement-frequency": "Add Customer Engagement Frequency",
       "edit-customer-engagement-frequency": "Edit Customer Engagement Frequency",
       "customer-engagement-programs-types": "Customer Engagement Programs Types",
-      "create-customer-engagement-programs-type": "Create Customer Engagement Programs Type",
+      "create-customer-engagement-programs-type": "Add Customer Engagement Programs Type",
       "edit-customer-engagement-programs-type": "Edit Customer Engagement Programs Type",
       "control-system-types": "Control System Types",
-      "create-control-system-type": "Create Control System Types",
+      "create-control-system-type": "Add Control System Types",
       "edit-control-system-type": "Edit Control System Types",
       "communication-link-types": "Communication Link Types",
-      "create-communication-link-type": "Create Communication Link Types",
+      "create-communication-link-type": "Add Communication Link Types",
       "edit-communication-link-type": "Edit Communication Link Types",
       "cyber-security-measures-types": "Cyber Security Measures Types",
-      "create-cyber-security-measures-type": "Create Cyber Security Measures Types",
+      "create-cyber-security-measures-type": "Add Cyber Security Measures Types",
       "edit-cyber-security-measures-type": "Edit Cyber Security Measures Types",
       "cyber-security-audits-frequencies": "Cyber Security Audits Frequencies",
-      "create-cyber-security-audits-frequency": "Create Cyber Security Audits Frequencies",
+      "create-cyber-security-audits-frequency": "Add Cyber Security Audits Frequencies",
       "edit-cyber-security-audits-frequency": "Edit Cyber Security Audits Frequencies",
       "safety-problems-encountered": "Safety Problems Encountered",
-      "create-safety-problems-encountered": "Create Safety Problems Encountered",
+      "create-safety-problems-encountered": "Add Safety Problems Encountered",
       "edit-safety-problems-encountered": "Edit Safety Problems Encountered",
       "quantity-measurement-units": "Quantity Measurement Units",
-      "create-quantity-measurement-unit": "Create Quantity Measurement Unit",
+      "create-quantity-measurement-unit": "Add Quantity Measurement Unit",
       "edit-quantity-measurement-unit": "Edit Quantity Measurement Unit",
       "quality-measurement-units": "Quality Measurement Units",
-      "create-quality-measurement-unit": "Create Quality Measurement Unit",
+      "create-quality-measurement-unit": "Add Quality Measurement Unit",
       "edit-quality-measurement-unit": "Edit Quality Measurement Unit",
       "apron-surface-types": "Apron Surface Types",
-      "create-apron-surface-type": "Create Apron Surface Types",
+      "create-apron-surface-type": "Add Apron Surface Types",
       "edit-apron-surface-type": "Edit Apron Surface Types",
       "embedded-enstrument": "Embedded Enstrument",
-      "create-embedded-enstrument": "Create Embedded Enstrument",
+      "create-embedded-enstrument": "Add Embedded Enstrument",
       "edit-embedded-enstrument": "Edit Embedded Enstrument",
       "dam-purpose": "Dam Purpose",
-      "create-dam-purpose": "Create Dam Purpose",
+      "create-dam-purpose": "Add Dam Purpose",
       "edit-dam-purpose": "Edit Dam Purpose",
       "quality": "Quality",
-      "create-quality": "Create Quality",
+      "create-quality": "Add Quality",
       "edit-quality": "Edit Quality",
       "unit-price": "Unit Price",
-      "create-unit-price": "Create Unit Price",
+      "create-unit-price": "Add Unit Price",
       "edit-unit-price": "Edit Unit Price",
       "supplier-name": "Supplier Name",
-      "create-supplier-name": "Create Supplier Name",
+      "create-supplier-name": "Add Supplier Name",
       "edit-supplier-name": "Edit Supplier Name",
       "supplier-address": "Supplier Address",
-      "create-supplier-address": "Create Supplier Address",
+      "create-supplier-address": "Add Supplier Address",
       "edit-supplier-address": "Edit Supplier Address",
       "water-source": "Water Source",
-      "create-water-source": "Create Water Source",
+      "create-water-source": "Add Water Source",
       "edit-water-source": "Edit Water Source",
       "project-target": "Project Target",
-      "create-project-target": "Create Project Target",
+      "create-project-target": "Add Project Target",
       "edit-project-target": "Edit Project Target",
       "head-work-type": "Head Work Type",
-      "create-head-work-type": "Create Head Work Type",
+      "create-head-work-type": "Add Head Work Type",
       "edit-head-work-type": "Edit Head Work Type",
       "irrigation-technology": "Irrigation Technology",
-      "create-irrigation-technology": "Create Irrigation Technology",
+      "create-irrigation-technology": "Add Irrigation Technology",
       "edit-irrigation-technology": "Edit Irrigation Technology",
       "main-canal-type": "Main Canal Type",
-      "create-main-canal-type": "Create Main Canal Type",
+      "create-main-canal-type": "Add Main Canal Type",
       "edit-main-canal-type": "Edit Main Canal Type",
       "pump-type": "Pump Type",
-      "create-pump-type": "Create Pump Type",
+      "create-pump-type": "Add Pump Type",
       "edit-pump-type": "Edit Pump Type",
       "pumps-power-source": "Pumps Power Source",
-      "create-pumps-power-source": "Create Pumps Power Source",
+      "create-pumps-power-source": "Add Pumps Power Source",
       "edit-pumps-power-source": "Edit Pumps Power Source",
       "runway-surface-type": "Runway Surface Type",
-      "create-runway-surface-type": "Create Runway Surface Type",
+      "create-runway-surface-type": "Add Runway Surface Type",
       "edit-runway-surface-type": "Edit Runway Surface Type",
       "scheme-status": "Scheme Status",
-      "create-scheme-status": "Create Scheme Status",
+      "create-scheme-status": "Add Scheme Status",
       "edit-scheme-status": "Edit Scheme Status",
       "track-types": "Track Types",
-      "create-track-type": "Create Track Type",
+      "create-track-type": "Add Track Type",
       "edit-track-type": "Edit Track Type",
       "railway-track-infrastructures": "Railway Track Infrastructures",
-      "create-railway-track-infrastructure": "Create Railway Track Infrastructure",
+      "create-railway-track-infrastructure": "Add Railway Track Infrastructure",
       "edit-railway-track-infrastructure": "Edit Railway Track Infrastructure",
       "track-gauges": "Track Gauges",
-      "create-track-gauge": "Create Track Gauge",
+      "create-track-gauge": "Add Track Gauge",
       "edit-track-gauge": "Edit Track Gauge",
       "track-condition-ratings": "Track Condition Ratings",
-      "create-track-condition-rating": "Create Track Condition Rating",
+      "create-track-condition-rating": "Add Track Condition Rating",
       "edit-track-condition-rating": "Edit Track Condition Rating",
       "communication-links": "Communication Links",
-      "create-communication-link": "Create Communication Link",
+      "create-communication-link": "Add Communication Link",
       "edit-communication-link": "Edit Communication Link",
       "observed-defects": "Observed Defects",
-      "create-observed-defect": "Create Observed Defect",
+      "create-observed-defect": "Add Observed Defect",
       "edit-observed-defect": "Edit Observed Defect",
       "compaction-methods": "Compaction Methods",
-      "create-compaction-method": "Create Compaction Method",
+      "create-compaction-method": "Add Compaction Method",
       "edit-compaction-method": "Edit Compaction Method",
       "ballast-material-types": "Ballast Material Types",
-      "create-ballast-material-type": "Create Ballast Material Types",
+      "create-ballast-material-type": "Add Ballast Material Types",
       "edit-ballast-material-type": "Edit Ballast Material Types",
       "ballast-sources": "Ballast Sources",
-      "create-ballast-source": "Create Ballast Sources",
+      "create-ballast-source": "Add Ballast Sources",
       "edit-ballast-source": "Edit Ballast Sources",
       "ballast-degradation-indicators": "Ballast Degradation Indicators",
-      "create-ballast-degradation-indicator": "Create Ballast Degradation Indicators",
+      "create-ballast-degradation-indicator": "Add Ballast Degradation Indicators",
       "edit-ballast-degradation-indicator": "Edit Ballast Degradation Indicators",
       "sub-ballast-material-types": "Sub Ballast Material Types",
-      "create-sub-ballast-material-type": "Create Sub Ballast Material Types",
+      "create-sub-ballast-material-type": "Add Sub Ballast Material Types",
       "edit-sub-ballast-material-type": "Edit Sub Ballast Material Types",
       "distribution-line-materials": "Distribution Line Materials",
-      "create-distribution-line-material": "Create Distribution Line Materials",
+      "create-distribution-line-material": "Add Distribution Line Materials",
       "edit-distribution-line-material": "Edit Distribution Line Materials",
       "track-maintenance-frequencies": "Track Maintenance Frequencies",
-      "create-track-maintenance-frequency": "Create Track Maintenance Frequency",
+      "create-track-maintenance-frequency": "Add Track Maintenance Frequency",
       "edit-track-maintenance-frequency": "Edit Track Maintenance Frequency",
       "scheduled-maintenance-activities": "Scheduled Maintenance Activities",
-      "create-scheduled-maintenance-activity": "Create Scheduled Maintenance Activity",
+      "create-scheduled-maintenance-activity": "Add Scheduled Maintenance Activity",
       "edit-scheduled-maintenance-activity": "Edit Scheduled Maintenance Activity",
       "rehabilitation-renewal-method-used": "Rehabilitation Renewal Methods Used",
-      "create-rehabilitation-renewal-method-used": "Create Rehabilitation Renewal Method Used",
+      "create-rehabilitation-renewal-method-used": "Add Rehabilitation Renewal Method Used",
       "edit-rehabilitation-renewal-method-used": "Edit Rehabilitation Renewal Method Used",
       "track-inspection-frequencies": "Track Inspection Frequencies",
-      "create-track-inspection-frequency": "Create Track Inspection Frequency",
+      "create-track-inspection-frequency": "Add Track Inspection Frequency",
       "edit-track-inspection-frequency": "Edit Track Inspection Frequency",
       "track-safety-measures": "Track Safety Measures",
-      "create-track-safety-measure": "Create Track Safety Measure",
+      "create-track-safety-measure": "Add Track Safety Measure",
       "edit-track-safety-measure": "Edit Track Safety Measure"
     },
     "form": {
@@ -476,10 +476,10 @@
       "project-type": "Project Type",
       "resource-type": "Resource Type"
     },
-    "create-master-type": "Create Type",
+    "create-master-type": "Add Type",
     "edit-master-type": "Edit Type",
     "master-category": {
-      "create-master-category": "Create Master Category",
+      "create-master-category": "Add Master Category",
       "edit-master-category": "Edit Master Category",
       "master-category": "Category",
       "columns": {
@@ -502,7 +502,7 @@
         "description": "Description"
       }
     },
-    "create-master-sub-category": "Create Master SubCategory",
+    "create-master-sub-category": "Add Master SubCategory",
     "edit-master-sub-category": "Edit Master SubCategory"
   },
   "department": {
@@ -550,13 +550,13 @@
         "married": "Married",
 
       "edit-user": "Edit User",
-      "create-user": "Create User",
+      "create-user": "Add User",
       "education": {
         "title": "Education",
-        "create": "Create Education",
+        "create": "Add Education",
         "edit": "Edit Education",
         "details": "Education Details",
-        "create-education": "Create Education",
+        "create-education": "Add Education",
         "edit-education": "Edit Education",
         "study-field": "Study Field",
         "school-name": "School Name",
@@ -573,7 +573,7 @@
         "task-description": "Task Description",
         "start-date": "Start Date",
         "end-date": "End Date",
-        "create-work-experience": "Create Work Experience",
+        "create-work-experience": "Add Work Experience",
         "edit-work-experience": "Edit Work Experience",
         "title": "Work Experience"
       },
@@ -586,7 +586,7 @@
         "phoneNo": "Phone Number",
         "email": "Email",
         "title": "Contact Person",
-        "create-contact-person": "Create Contact Person",
+        "create-contact-person": "Add Contact Person",
         "edit-contact-person": "Edit Contact Person"
       },
       "activity-log": {
@@ -610,7 +610,7 @@
         "description": "Description"
       },
       "title": "Positions",
-      "create-position": "Create Position",
+      "create-position": "Add Position",
       "edit-position": "Edit Position"
     },
     "sub-department": {
@@ -623,7 +623,7 @@
         "description": "Description"
       },
       "title": "Sub Departments",
-      "create-sub-department": "Create Sub Department",
+      "create-sub-department": "Add Sub Department",
       "edit-sub-department": "Edit Sub Department"
     },
     "department-structure": "department-structure"
@@ -631,8 +631,8 @@
   "admin": {
     "role": {
       "roles": "Roles",
-      "create-role": "Create Role",
-      "update-role": "Create Role",
+      "create-role": "Add Role",
+      "update-role": "Add Role",
       "form": {
         "title": "Title",
         "description": "Description"
@@ -649,14 +649,14 @@
     "kebele": "Kebele",
     "other": "Other",
     "all": "All",
-    "create-region": "Create Region",
-    "create-city-administration": "Create City Administration",
-    "create-zone": "Create Zone",
-    "create-city": "Create City",
-    "create-sub-city": "Create Sub City",
-    "create-woreda": "Create Woreda",
-    "create-kebele": "Create Kebele",
-    "create-other": "Create Other",
+    "create-region": "Add Region",
+    "create-city-administration": "Add City Administration",
+    "create-zone": "Add Zone",
+    "create-city": "Add City",
+    "create-sub-city": "Add Sub City",
+    "create-woreda": "Add Woreda",
+    "create-kebele": "Add Kebele",
+    "create-other": "Add Other",
     "edit-region": "Edit Region",
     "edit-city-administration": "Edit City Administration",
     "edit-zone": "Edit Zone",
@@ -682,7 +682,7 @@
     "good-afternoon": "Good Afternoon"
   },
   "resource": {
-    "create-resource": "Create Resource",
+    "create-resource": "Add Resource",
     "edit-resource": "Edit Resource",
     "title": "Resource",
     "columns": {
@@ -771,7 +771,7 @@
     },
     "resource-specification": {
       "title": "Resource Specification",
-      "create-resource-specification": "Create Resource Specification",
+      "create-resource-specification": "Add Resource Specification",
       "edit-resource-specification": "Edit Resource Specification",
       "form": {
         "title": "Title",
@@ -781,7 +781,7 @@
     },
     "resource-brand": {
       "title": "Resource Brand",
-      "create-resource-brand": "Create Resource Brand",
+      "create-resource-brand": "Add Resource Brand",
       "edit-resource-brand": "Edit Resource Brand",
       "form": {
         "title": "Title",
@@ -791,7 +791,7 @@
     },
     "resource-study-field": {
       "title": "Filed of Study",
-      "create-resource-study-field": "Create Filed of Study",
+      "create-resource-study-field": "Add Filed of Study",
       "edit-resource-study-field": "Edit Filed of Study",
       "form": {
         "studyfield": "Study Field",
@@ -800,7 +800,7 @@
     },
     "resource-study-level": {
       "title": "Study Level",
-      "create-resource-study-level": "Create Study Level",
+      "create-resource-study-level": "Add Study Level",
       "edit-resource-study-level": "Edit Study Level",
       "form": {
         "studylevel": "Study Field",
@@ -809,7 +809,7 @@
     },
     "resource-salary": {
       "title": "Salary",
-      "create-resource-salary": "Create Salary",
+      "create-resource-salary": "Add Salary",
       "edit-resource-salary": "Edit Salary",
       "form": {
         "max_pay": "Max Pay",
@@ -820,7 +820,7 @@
     },
     "detail-resource-type": {
       "title": "Resource Brand",
-      "create-resource-brand": "Create Resource Brand",
+      "create-resource-brand": "Add Resource Brand",
       "edit-resource-brand": "Edit Resource Brand",
       "form": {
         "title": "Title",
@@ -830,7 +830,7 @@
     },
     "resource-quantity-price": {
       "title": "Unit Price & Quantity",
-      "create-resource-quantity-price": "Create Unit Price & Quantity",
+      "create-resource-quantity-price": "Add Unit Price & Quantity",
       "edit-resource-quantity-price": "Edit Unit Price & Quantity",
       "form": {
         "brand": "Brand",
@@ -848,7 +848,7 @@
     }
   },
   "document": {
-    "create-document": "Create Document",
+    "create-document": "Add Document",
     "edit-document": "Edit Document",
     "title": "Document",
     "columns": {},
@@ -866,7 +866,7 @@
     }
   },
   "project": {
-    "create-project": "Create Project",
+    "create-project": "Add Project",
     "edit-project": "Edit Project",
     "title": "Project",
     "form": {
@@ -881,6 +881,12 @@
       "grade": "Grade",
       "end-user": "End User",
       "function": "Function"
+    },
+    "column":{
+      "name": "Project Title",
+      "elapsed-time": "Elapsed Time",
+     "cpi": "CPI",
+     "spi": "SPI"
     },
     "general-information": {
       "client": "Client",
@@ -1387,7 +1393,7 @@
       "total-duration": "Total Duration",
       "elapsed-time": "Elapsed Time",
       "edit-project-time": "Edit Project Time",
-      "create-project-time": "Create Project Time",
+      "create-project-time": "Add Project Time",
       "form": {
         "contract-signing-date": "Contract Signing Date",
         "site-handover-date": "Site Handover Date",
@@ -1401,7 +1407,7 @@
     "project-extension-time": {
       "title": "Project Extension Time",
       "edit-project-extension-time": "Edit Project Extension Time",
-      "create-project-extension-time": "Create Project Extension Time",
+      "create-project-extension-time": "Add Project Extension Time",
       "form": {
         "number-of-days": "Number of days",
         "reason": "Reason"
@@ -1417,7 +1423,7 @@
     },
     "project-variation": {
       "edit-project-variation": "Edit Project Variation",
-      "create-project-variation": "Create Project Variation",
+      "create-project-variation": "Add Project Variation",
       "title": "Project Variation",
       "form": {
         "amount": "Amount",
@@ -1430,7 +1436,7 @@
     },
     "project-supplement": {
       "edit-project-supplement": "Edit Project Supplement",
-      "create-project-supplement": "Create Project Supplement",
+      "create-project-supplement": "Add Project Supplement",
       "title": "Project Supplement",
       "form": {
         "amount": "Amount",
@@ -1443,7 +1449,7 @@
     },
     "project-amendment": {
       "edit-project-amendment": "Edit Project Amendment",
-      "create-project-amendment": "Create Project Amendment",
+      "create-project-amendment": "Add Project Amendment",
       "title": "Project Amendment",
       "form": {
         "amount": "Amount",
@@ -1456,7 +1462,7 @@
     },
     "project-omission": {
       "edit-project-omission": "Edit Project Omission",
-      "create-project-omission": "Create Project Omission",
+      "create-project-omission": "Add Project Omission",
       "title": "Project Omission",
       "form": {
         "amount": "Amount",
@@ -1469,7 +1475,7 @@
     },
     "project-interim_payment": {
       "edit-project-interim_payment": "Edit Project Interim Payment",
-      "create-project-interim_payment": "Create Project Interim Payment",
+      "create-project-interim_payment": "Add Project Interim Payment",
       "title": "Project Interim Payment",
       "form": {
         "title": "Title",
@@ -1481,7 +1487,7 @@
     },
     "project-advance_payment": {
       "edit-project-advance_payment": "Edit Project Advance Payment",
-      "create-project-advance_payment": "Create Project Advance Payment",
+      "create-project-advance_payment": "Add Project Advance Payment",
       "title": "Project Advance Payment",
       "form": {
         "title": "Title",
@@ -1495,13 +1501,13 @@
     "project-bond": {
       "project-performance_bond": "Performance Bond",
       "edit-project-performance_bond": "Edit Performance Bond",
-      "create-project-performance_bond": "Create Performance Bond",
+      "create-project-performance_bond": "Add Performance Bond",
       "project-advance_bond": "Advance Bond",
       "edit-project-advance_bond": "Edit Advance Bond",
-      "create-project-advance_bond": "Create Advance Bond",
+      "create-project-advance_bond": "Add Advance Bond",
       "project-bid_bond": "Bid Bond",
       "edit-project-bid_bond": "Edit Bid Bond",
-      "create-project-bid_bond": "Create Bid Bond",
+      "create-project-bid_bond": "Add Bid Bond",
       "form": {
         "amount": "Amount",
         "percent": "Amount Percentage",
@@ -1518,7 +1524,7 @@
     "stakeholder": {
       "title": "Project Stakeholders",
       "edit-project-stakeholder": "Edit Project Stakeholder",
-      "create-project-stakeholder": "Create Project Stakeholder",
+      "create-project-stakeholder": "Add Project Stakeholder",
       "information": "Stakeholder Information",
       "client": "Client",
       "consultant": "Consultant",
@@ -1533,7 +1539,7 @@
     "plan": {
       "title": "Project Plan",
       "edit-project-plan": "Edit Project Plan",
-      "create-project-plan": "Create Project Plan",
+      "create-project-plan": "Add Project Plan",
       "form": {
         "type": "Type",
         "year": "Year",
@@ -1565,7 +1571,7 @@
     "report": {
       "title": "Project Report",
       "edit-project-report": "Edit Project Report",
-      "create-project-report": "Create Project Report",
+      "create-project-report": "Add Project Report",
       "form": {
         "type": "Type",
         "year": "Year",
@@ -1601,7 +1607,7 @@
     "resource": {
       "title": "Project Resource",
       "edit-project-resource": "Edit Project Resource",
-      "create-project-resource": "Create Project Resource",
+      "create-project-resource": "Add Project Resource",
       "form": {},
       "columns": {
         "type": "Type",
@@ -1616,11 +1622,11 @@
       "project-execution": "Execution File",
       "project-monitoring": "Monitoring File",
       "project-closing": "Closing File",
-      "create-project-initiation": "Create Intiation File",
-      "create-project-planning": "Create Planning File",
-      "create-project-execution": "Create Execution File",
-      "create-project-monitoring": "Create Monitoring File",
-      "create-project-closing": "Create Closing File",
+      "create-project-initiation": "Add Intiation File",
+      "create-project-planning": "Add Planning File",
+      "create-project-execution": "Add Execution File",
+      "create-project-monitoring": "Add Monitoring File",
+      "create-project-closing": "Add Closing File",
       "edit-project-initiation": "Edit Intiation File",
       "edit-project-planning": "Edit Planning File",
       "edit-project-execution": "Edit Execution File",
@@ -1633,7 +1639,7 @@
     "main-contract-price": {
       "title": "Main Contract Price",
       "edit-main-contract-price": "Edit Main Contract Price",
-      "create-main-contract-price": "Create Main Contract Price",
+      "create-main-contract-price": "Add Main Contract Price",
       "price-details":"Price Details",
       "form": {
         "main-contract-price": "Main Contract Price",
@@ -1644,7 +1650,7 @@
     },
    
      "project-contact-person": {
-      "create": "Create Contact Person",
+      "create": "Add Contact Person",
       "edit": "Edit Contact Person",
       "title": "Project Contact Person",
       "details": "Contact Person Details",
@@ -1659,12 +1665,12 @@
       "phone": "Phone",
       "email": "Email",
       "edit": "Edit Contact Person",
-      "create": "Create Contact Person"
+      "create": "Add Contact Person"
     }},
     "other": {
       "port": {
         "title": "Port",
-        "create-port": "Create Port",
+        "create-port": "Add Port",
         "edit-port": "Edit Port",
         "port-details": "Port Details",
         "columns": {
@@ -1686,12 +1692,12 @@
           "site-area": "Site Area",
           "annual-traffic-size": "Annual Traffic Size",
           "revision-no": "Revision No",
-          "created-at": "Created At"
+          "created-at": "Addd At"
         }
       },
       "telecom-infrastructure": {
         "title": "Telecom Infrastructure",
-        "create-telecom-infrastructure": "Create Telecom Infrastructure",
+        "create-telecom-infrastructure": "Add Telecom Infrastructure",
         "edit-telecom-infrastructure": "Edit Telecom Infrastructure",
         "telecom-infrastructure-details": "Telecom Infrastructure Details",
         "columns": {
@@ -1722,7 +1728,7 @@
       "mobile-network-component-age": {
         "title": "Mobile Network Component Age",
         "mobile-network-component-age-details": "Mobile Network Component Age Details",
-        "create-mobile-network-component-age": "Create Mobile Network Component Age",
+        "create-mobile-network-component-age": "Add Mobile Network Component Age",
         "edit-mobile-network-component-age": "Edit Mobile Network Component Age",
         "details": {
           "mobile-network-id": "Mobile Network ID",
@@ -1737,7 +1743,7 @@
       },
       "mobile-network": {
         "title": "Mobile Networks",
-        "create-mobile-network": "Create Mobile Network",
+        "create-mobile-network": "Add Mobile Network",
         "edit-mobile-network": "Edit Mobile Network",
         "mobile-network-details": "Mobile Network Details",
         "details": {
@@ -1753,7 +1759,7 @@
       "network-coverage": {
         "title": "Network Coverage",
         "network-coverage-details": "Network Coverage Details",
-        "create-network-coverage": "Create Network Coverage",
+        "create-network-coverage": "Add Network Coverage",
         "edit-network-coverage": "Edit Network Coverage",
         "details": {
           "network-infrastructure-type": "Network Infrastructure Type",
@@ -1769,7 +1775,7 @@
       "data-center": {
         "title": "Data Centers",
         "data-center-details": "Data Center Details",
-        "create-data-center": "Create Data Center",
+        "create-data-center": "Add Data Center",
         "edit-data-center": "Edit Data Center",
         "details": {
           "data-center-type-id": "Data Center Type",
@@ -1784,7 +1790,7 @@
       "environmental-control": {
         "environmental-control-details": "Environmental Control Details",
         "title": "Environmental Control",
-        "create-environmental-control": "Create Environmental Control",
+        "create-environmental-control": "Add Environmental Control",
         "edit-environmental-control": "Edit Environmental Control",
         "details": {
           "data-center-id": "Data Center ID",
@@ -1797,7 +1803,7 @@
       "data-center-facility-capacity": {
         "data-center-facility-capacity-details": "Data Center Facility Details",
         "title": "Data Center Facility",
-        "create-data-center-facility-capacity": "Create Data Center Facility",
+        "create-data-center-facility-capacity": "Add Data Center Facility",
         "edit-data-center-facility-capacity": "Edit Data Center Facility",
         "details": {
           "data-center-id": "Data Center ID",
@@ -1814,7 +1820,7 @@
       },
       "data-center-component-age": {
         "edit-data-center-component-age": "Edit Data Center Component Age",
-        "create-data-center-component-age": "Create Data Center Component Age",
+        "create-data-center-component-age": "Add Data Center Component Age",
         "data-center-component-age-details": "Data Center Component Age Details",
         "title": "Data Center Component Age",
         "details": {
@@ -1839,13 +1845,13 @@
         },
         "data-center-component-manufacturer-details": "Data Center Component Manufacturer Details",
         "title": "Data Center Component Manufacturer",
-        "create-data-center-component-manufacturer": "Create Data Center Component Manufacturer",
+        "create-data-center-component-manufacturer": "Add Data Center Component Manufacturer",
         "edit-data-center-component-manufacturer": "Edit Data Center Component Manufacturer"
       },
       "internet-connection-infrastructure-age": {
         "internet-connection-infrastructure-age-details": "Internet Connection Infrastructure Age Details",
         "title": "Internet Connection Infrastructure Age",
-        "create-internet-connection-infrastructure-age": "Create Internet Connection Infrastructure Age",
+        "create-internet-connection-infrastructure-age": "Add Internet Connection Infrastructure Age",
         "edit-internet-connection-infrastructure-age": "Edit Internet Connection Infrastructure Age",
         "details": {
           "internet-connection-id": "Internet Connection ID",
@@ -1858,7 +1864,7 @@
       },
       "building-dimension-detail": {
         "title": "Building Dimension Detail",
-        "create-building-dimension-detail": "Create Building Dimension Detail",
+        "create-building-dimension-detail": "Add Building Dimension Detail",
         "edit-building-dimension-detail": "Edit Building Dimension Detail",
         "building-dimension-detail-details": "Building Dimension Detail Details",
         "form": {
@@ -1886,7 +1892,7 @@
       },
       "building-envelop-material": {
         "title": "Building Envelop Materials",
-        "create-building-envelop-material": "Create Building Envelop Material",
+        "create-building-envelop-material": "Add Building Envelop Material",
         "edit-building-envelop-material": "Edit Building Envelop Material",
         "building-envelop-material-details": "Building Envelop Material Details",
         "form": {
@@ -1910,7 +1916,7 @@
       },
       "road-info": {
         "title": "Road Infos",
-        "create-road-info": "Create Road Info",
+        "create-road-info": "Add Road Info",
         "edit-road-info": "Edit Road Info",
         "road-info-details": "Road Info Details",
         "details": {
@@ -1926,7 +1932,7 @@
       },
       "road-segment": {
         "title": "Road Segments",
-        "create-road-segment": "Create Road Segment",
+        "create-road-segment": "Add Road Segment",
         "edit-road-segment": "Edit Road Segment",
         "road-segment-details": "Road Segment Details",
         "details": {
@@ -1941,7 +1947,7 @@
       },
       "road-layer": {
         "title": "Road Layers",
-        "create-road-layer": "Create Road Layer",
+        "create-road-layer": "Add Road Layer",
         "edit-road-layer": "Edit Road Layer",
         "road-layer-details": "Road Layer Details",
         "details": {
@@ -1956,7 +1962,7 @@
       },
       "traffic-parameter": {
         "title": "Traffic Parameters",
-        "create-traffic-parameter": "Create Traffic Parameter",
+        "create-traffic-parameter": "Add Traffic Parameter",
         "edit-traffic-parameter": "Edit Traffic Parameter",
         "traffic-parameter-details": "Traffic Parameter Details",
         "details": {
@@ -1970,7 +1976,7 @@
       },
       "accessory": {
         "title": "Accessories",
-        "create-accessory": "Create Accessory",
+        "create-accessory": "Add Accessory",
         "edit-accessory": "Edit Accessory",
         "accessory-details": "Accessory Details",
         "details": {
@@ -1987,7 +1993,7 @@
       },
       "pavement": {
         "title": "Pavements",
-        "create-pavement": "Create Pavement",
+        "create-pavement": "Add Pavement",
         "edit-pavement": "Edit Pavement",
         "pavement-details": "Pavement Details",
         "details": {
@@ -2001,7 +2007,7 @@
       },
       "culvert-basic-data": {
         "title": "Culvert Basic Data",
-        "create-culvert-basic-data": "Create Culvert Basic Data",
+        "create-culvert-basic-data": "Add Culvert Basic Data",
         "edit-culvert-basic-data": "Edit Culvert Basic Data",
         "culvert-basic-data-details": "Culvert Basic Data Details",
         "details": {
@@ -2024,7 +2030,7 @@
       },
       "culvert-structural-information": {
         "title": "Culvert Structural Information",
-        "create-culvert-structural-information": "Create Culvert Structural Information",
+        "create-culvert-structural-information": "Add Culvert Structural Information",
         "edit-culvert-structural-information": "Edit Culvert Structural Information",
         "culvert-structural-information-details": "Culvert Structural Information Details",
         "details": {
@@ -2050,7 +2056,7 @@
       },
       "culvert-road-over-information": {
         "title": "Culvert Road Over Information",
-        "create-culvert-road-over-information": "Create Culvert Road Over Information",
+        "create-culvert-road-over-information": "Add Culvert Road Over Information",
         "edit-culvert-road-over-information": "Edit Culvert Road Over Information",
         "culvert-road-over-information-details": "Culvert Road Over Information Details",
         "details": {
@@ -2066,7 +2072,7 @@
       },
       "bridge-basic-data": {
         "title": "Bridge Basic Data",
-        "create-bridge-basic-data": "Create Bridge Basic Data",
+        "create-bridge-basic-data": "Add Bridge Basic Data",
         "edit-bridge-basic-data": "Edit Bridge Basic Data",
         "bridge-basic-data-details": "Bridge Basic Data Details",
         "details": {
@@ -2085,7 +2091,7 @@
       },
       "bridge-area-data": {
         "title": "Bridge Area Data",
-        "create-bridge-area-data": "Create Bridge Area Data",
+        "create-bridge-area-data": "Add Bridge Area Data",
         "edit-bridge-area-data": "Edit Bridge Area Data",
         "bridge-area-data-details": "Bridge Area Data Details",
         "details": {
@@ -2103,7 +2109,7 @@
       },
       "bridge-sub-structure": {
         "title": "Bridge Sub Structure",
-        "create-bridge-sub-structure": "Create Bridge Sub Structure",
+        "create-bridge-sub-structure": "Add Bridge Sub Structure",
         "edit-bridge-sub-structure": "Edit Bridge Sub Structure",
         "bridge-sub-structure-details": "Bridge Sub Structure Details",
         "details": {
@@ -2125,7 +2131,7 @@
       },
       "bridge-foundation": {
         "title": "Bridge Foundation",
-        "create-bridge-foundation": "Create Bridge Foundation",
+        "create-bridge-foundation": "Add Bridge Foundation",
         "edit-bridge-foundation": "Edit Bridge Foundation",
         "bridge-foundation-details": "Bridge Foundation Details",
         "details": {
@@ -2144,7 +2150,7 @@
       },
       "bridge-inspection": {
         "title": "Bridge Inspection",
-        "create-bridge-inspection": "Create Bridge Inspection",
+        "create-bridge-inspection": "Add Bridge Inspection",
         "edit-bridge-inspection": "Edit Bridge Inspection",
         "bridge-inspection-details": "Bridge Inspection Details",
         "details": {
@@ -2161,7 +2167,7 @@
       },
       "railway-track-safety": {
         "title": "Railway Track Safety",
-        "create": "Create Railway Track Safety",
+        "create": "Add Railway Track Safety",
         "edit": "Edit Railway Track Safety",
         "detail": "Railway Track Safety Details",
         "details": {
@@ -2173,7 +2179,7 @@
       },
       "bridge-structure-information": {
         "title": "Bridge Structure Information",
-        "create-bridge-structure-information": "Create Bridge Structure Information",
+        "create-bridge-structure-information": "Add Bridge Structure Information",
         "edit-bridge-structure-information": "Edit Bridge Structure Information",
         "bridge-structure-information-details": "Bridge Structure Information Details",
         "details": {
@@ -2203,7 +2209,7 @@
       },
       "traffic-volume": {
         "title": "Traffic Volume",
-        "create-traffic-volume": "Create Traffic Volume",
+        "create-traffic-volume": "Add Traffic Volume",
         "edit-traffic-volume": "Edit Traffic Volume",
         "traffic-volume-details": "Traffic Volume Details",
         "details": {
@@ -2220,7 +2226,7 @@
       },
       "road-project-quality-control": {
         "title": "Road Project Quality Control",
-        "create-road-project-quality-control": "Create Road Project Quality Control",
+        "create-road-project-quality-control": "Add Road Project Quality Control",
         "edit-road-project-quality-control": "Edit Road Project Quality Control",
         "road-project-quality-control-details": "Road Project Quality Control Details",
         "details": {
@@ -2233,7 +2239,7 @@
       },
       "road-drainage": {
         "title": "Road Drainage",
-        "create-road-drainage": "Create Road Drainage",
+        "create-road-drainage": "Add Road Drainage",
         "edit-road-drainage": "Edit Road Drainage",
         "road-drainage-details": "Road Drainage Details",
         "details": {
@@ -2252,7 +2258,7 @@
       },
       "drainage-assessment": {
         "title": "Drainage Assessment",
-        "create-drainage-assessment": "Create Drainage Assessment",
+        "create-drainage-assessment": "Add Drainage Assessment",
         "edit-drainage-assessment": "Edit Drainage Assessment",
         "drainage-assessment-details": "Drainage Assessment Details",
         "details": {
@@ -2260,13 +2266,13 @@
           "drainage-type": "Drainage Type",
           "drainage-condition": "Drainage Condition",
           "remark": "Remarks",
-          "created-at": "Created At",
+          "created-at": "Addd At",
           "updated-at": "Updated At"
         }
       },
       "segment-geometry": {
         "title": "Segment Geometries",
-        "create-segment-geometry": "Create Segment Geometry",
+        "create-segment-geometry": "Add Segment Geometry",
         "edit-segment-geometry": "Edit Segment Geometry",
         "segment-geometry-details": "Segment Geometry Details",
         "details": {
@@ -2284,7 +2290,7 @@
       },
       "intersection-driveway": {
         "title": "Intersection and Driveway",
-        "create-intersection-driveway": "Create Intersection and Driveway",
+        "create-intersection-driveway": "Add Intersection and Driveway",
         "edit-intersection-driveway": "Edit Intersection and Driveway",
         "intersection-driveway-details": "Intersection and Driveway Details",
         "details": {
@@ -2293,13 +2299,13 @@
           "intersection-type": "Intersection Type",
           "driveway-access-point": "Driveway Access Point",
           "similar-for-all": "Similar For All",
-          "created-at": "Created At",
+          "created-at": "Addd At",
           "updated-at": "Updated At"
         }
       },
       "generating-capacity": {
         "title": "Generating Capacity",
-        "create-generating-capacity": "Create Generating Capacity",
+        "create-generating-capacity": "Add Generating Capacity",
         "edit-generating-capacity": "Edit Generating Capacity",
         "generating-capacity-details": "Generating Capacity Details",
         "details": {
@@ -2316,7 +2322,7 @@
       },
       "turbine-info": {
         "title": "Turbine Info",
-        "create-turbine-info": "Create Turbine Info",
+        "create-turbine-info": "Add Turbine Info",
         "edit-turbine-info": "Edit Turbine Info",
         "turbine-info-details": "Turbine Info Details",
         "details": {
@@ -2331,7 +2337,7 @@
       },
       "hydro-electric-dam": {
         "title": "Hydro Electric Dam",
-        "create-hydro-electric-dam": "Create Hydro Electric Dam",
+        "create-hydro-electric-dam": "Add Hydro Electric Dam",
         "edit-hydro-electric-dam": "Edit Hydro Electric Dam",
         "hydro-electric-dam-details": "Hydro Electric Dam Details",
         "details": {
@@ -2346,7 +2352,7 @@
       },
       "solar-energy": {
         "title": "Solar Energy",
-        "create-solar-energy": "Create Solar Energy",
+        "create-solar-energy": "Add Solar Energy",
         "edit-solar-energy": "Edit Solar Energy",
         "solar-energy-details": "Solar Energy Details",
         "details": {
@@ -2357,7 +2363,7 @@
       },
       "railway-station": {
         "title": "Railway Stations",
-        "create-railway-station": "Create Railway Station",
+        "create-railway-station": "Add Railway Station",
         "edit-railway-station": "Edit Railway Station",
         "railway-station-details": "Railway Station Details",
         "details": {
@@ -2376,7 +2382,7 @@
       },
       "railway-track-rehabilitation-or-renewal": {
         "title": "Railway Track Rehabilitation or renewal",
-        "create": "Create Railway Track Rehabilitation or renewal",
+        "create": "Add Railway Track Rehabilitation or renewal",
         "detail": "Railway Track Rehabilitation or renewal Detail",
         "details": {
           "track-renewal-history": "Track Renewal History",
@@ -2388,7 +2394,7 @@
       },
       "spillway-info": {
         "title": "Spillway Infos",
-        "create-spillway-info": "Create Spillway Info",
+        "create-spillway-info": "Add Spillway Info",
         "edit-spillway-info": "Edit Spillway Info",
         "spillway-info-details": "Spillway Info Details",
         "details": {
@@ -2401,7 +2407,7 @@
       },
       "irrigation-capacity": {
         "title": "Irrigation Capcities",
-        "create-irrigation-capacity": "Create Irrigation Capcity",
+        "create-irrigation-capacity": "Add Irrigation Capcity",
         "edit-irrigation-capacity": "Edit Irrigation Capcity",
         "irrigation-capacity-details": "Irrigation Capcity Details",
         "details": {
@@ -2412,7 +2418,7 @@
       },
       "water-irrigation-dam": {
         "title": "Irrigation Capcities",
-        "create-water-irrigation-dam": "Create Water Irrigation  Dam",
+        "create-water-irrigation-dam": "Add Water Irrigation  Dam",
         "edit-water-irrigation-dam": "Edit Water Irrigation  Dam",
         "water-irrigation-dam-details": "Water Irrigation  Dam Details",
         "details": {
@@ -2427,7 +2433,7 @@
       },
       "reservoir-info": {
         "title": "Reservoir Infos",
-        "create-reservoir-info": "Create Reservoir Info",
+        "create-reservoir-info": "Add Reservoir Info",
         "edit-reservoir-info": "Edit Reservoir Info",
         "reservoir-info-details": "Reservoir Info Details",
         "details": {
@@ -2441,7 +2447,7 @@
       },
       "wind-energy": {
         "title": "Wind Energy",
-        "create-wind-energy": "Create Wind Energy",
+        "create-wind-energy": "Add Wind Energy",
         "edit-wind-energy": "Edit Wind Energy",
         "wind-energy-details": "Wind Energy Details",
         "details": {
@@ -2452,7 +2458,7 @@
       },
       "transformer-type": {
         "title": "Transformer Type",
-        "create-transformer-type": "Create Transformer Type",
+        "create-transformer-type": "Add Transformer Type",
         "edit-transformer-type": "Edit Transformer Type",
         "transformer-type-details": "Transformer Type Details",
         "details": {
@@ -2462,7 +2468,7 @@
       },
       "transformer": {
         "title": "Transformer",
-        "create-transformer": "Create Transformer",
+        "create-transformer": "Add Transformer",
         "edit-transformer": "Edit Transformer",
         "transformer-details": "Transformer Details",
         "details": {
@@ -2478,7 +2484,7 @@
       },
       "transmission-line": {
         "title": "Transmission",
-        "create-transmission-line": "Create Transmission",
+        "create-transmission-line": "Add Transmission",
         "edit-transmission-line": "Edit Transmission",
         "transmission-line-details": "Transmission Details",
         "details": {
@@ -2498,7 +2504,7 @@
       "transmission-line-information": {
         "title": "Transmission Line Information",
         "transmission-line-information-details": "Transmission Line Information Details",
-        "create-transmission-line-information": "Create Transmission Line Information",
+        "create-transmission-line-information": "Add Transmission Line Information",
         "edit-transmission-line-information": "Edit Transmission Line Information",
         "details": {
           "name": "Name",
@@ -2515,7 +2521,7 @@
       },
       "electric-tower": {
         "title": "Electric Tower",
-        "create-electric-tower": "Create Electric Tower",
+        "create-electric-tower": "Add Electric Tower",
         "edit-electric-tower": "Edit Electric Tower",
         "electric-tower-details": "Electric Tower Details",
         "details": {
@@ -2532,7 +2538,7 @@
       "safety-and-health": {
         "title": "Safety and Health",
         "safety-and-health-details": "Safety and Health Details",
-        "create-safety-and-health": "Create Safety and Health Record",
+        "create-safety-and-health": "Add Safety and Health Record",
         "edit-safety-and-health": "Edit Safety and Health Record",
         "details": {
           "road-segment": "Road Segment",
@@ -2559,7 +2565,7 @@
       "maintenance-history": {
         "title": "Maintenance History",
         "maintenance-history-details": "Maintenance History Details",
-        "create-maintenance-history": "Create Maintenance History",
+        "create-maintenance-history": "Add Maintenance History",
         "edit-maintenance-history": "Edit Maintenance History",
         "details": {
           "road-segment": "Road Segment",
@@ -2575,7 +2581,7 @@
       "road-surface-condition": {
         "title": "Road Surface Condition",
         "road-surface-condition-details": "Road Surface Condition Details",
-        "create-road-surface-condition": "Create Road Surface Condition",
+        "create-road-surface-condition": "Add Road Surface Condition",
         "edit-road-surface-condition": "Edit Road Surface Condition",
         "details": {
           "road-segment": "Road Segment",
@@ -2593,12 +2599,12 @@
       },
       "environmental-data": {
         "title": "Environmental Data",
-        "create-environmental-data": "Create Environmental Data",
+        "create-environmental-data": "Add Environmental Data",
         "edit-environmental-data": "Edit Environmental Data",
         "environmental-data-details": "Environmental Data Details",
         "details": {
           "remark": "Remark",
-          "created-at": "Created At",
+          "created-at": "Addd At",
           "updated-at": "Updated At"
         },
         "file-types": {
@@ -2608,7 +2614,7 @@
         },
         "road-maintenance-data": {
           "title": "Road Maintenance Data",
-          "create-road-maintenance-data": "Create Road Maintenance Data",
+          "create-road-maintenance-data": "Add Road Maintenance Data",
           "edit-road-maintenance-data": "Edit Road Maintenance Data",
           "road-maintenance-data-details": "Road Maintenance Data Details",
           "details": {
@@ -2618,7 +2624,7 @@
             "weather-condition": "Weather Condition",
             "pavement-condition": "Pavement Condition",
             "remark": "Remark",
-            "created-at": "Created At",
+            "created-at": "Addd At",
             "updated-at": "Updated At"
           }
         }
@@ -2633,7 +2639,7 @@
         "price-details": "Price Details",
         "title": "Main Contract Price",
         "edit-main-contract-price": "Edit Main Contract Price",
-        "create-main-contract-price": "Create Main Contract Price",
+        "create-main-contract-price": "Add Main Contract Price",
         "add-main-contract-price": "Please Add Main Contract Price",
         "form": {
           "main-contract-price": "Main Contract Price",
@@ -2644,7 +2650,7 @@
       },
       "project-manager": {
         "title": "Project Managers",
-        "create": "Create Project Manager",
+        "create": "Add Project Manager",
         "edit": "Edit Project Manager",
         "details": "Project Manager Details",
         "position": "Position",
@@ -2670,7 +2676,7 @@
         "email": "Email",
         "stakeholder": "Stakeholder",
         "details": "Contact Person Details",
-        "create": "Create Contact Person",
+        "create": "Add Contact Person",
         "edit": "Edit Contact Person"
       },
       "safety-status": {
@@ -2681,7 +2687,7 @@
         "measures-taken": "Measures Taken",
         "lesson-learned": "Lesson Learned",
         "details": "Safety Status Details",
-        "create": "Create Safety Status",
+        "create": "Add Safety Status",
         "edit": "Edit Safety Status"
       },
       "weather-condition": {
@@ -2689,12 +2695,12 @@
         "weather-type": "Weather Type",
         "description": "Description",
         "details": "Weather Condition Details",
-        "create": "Create Weather Condition",
+        "create": "Add Weather Condition",
         "edit": "Edit Weather Condition"
       },
       "geotechnical-information": {
         "title": "Geotechnical Information",
-        "create-geotechnical-information": "Create Geotechnical Information",
+        "create-geotechnical-information": "Add Geotechnical Information",
         "edit-geotechnical-information": "Edit Geotechnical Information",
         "geotechnical-information-details": "Geotechnical Information Details",
         "details": {
@@ -2724,13 +2730,13 @@
           "remark": "Remark"
         },
         "geothermal-power-infrastructure-details": "Geothermal Power Infrastructure Details",
-        "create-geothermal-power-infrastructure": "Create Power Infrastructure Infrastructure",
+        "create-geothermal-power-infrastructure": "Add Power Infrastructure Infrastructure",
         "edit-geothermal-power-infrastructure": "Edit Power Infrastructure Infrastructure",
         "title": "Geothermal Power Infrastructure"
       },
       "road-maintenance-activity": {
         "title": "Road Maintenance Activity",
-        "create-road-maintenance-activity": "Create Road Maintenance Activity",
+        "create-road-maintenance-activity": "Add Road Maintenance Activity",
         "edit-road-maintenance-activity": "Edit Road Maintenance Activity",
         "road-maintenance-activity-details": "Road Maintenance Activity Details",
         "details": {
@@ -2743,7 +2749,7 @@
       },
       "telecom-infrastructure-component": {
         "title": "Telecom Infrastructure Component",
-        "create-telecom-infrastructure-component": "Create Telecom Infrastructure Component",
+        "create-telecom-infrastructure-component": "Add Telecom Infrastructure Component",
         "edit-telecom-infrastructure-component": "Edit Telecom Infrastructure Component",
         "telecom-infrastructure-component-details": "Telecom Infrastructure Component Details",
         "details": {
@@ -2761,7 +2767,7 @@
       },
       "telecom-infrastructure-age": {
         "title": "Telecom Infrastructure Age",
-        "create-telecom-infrastructure-age": "Create Telecom Infrastructure Age",
+        "create-telecom-infrastructure-age": "Add Telecom Infrastructure Age",
         "edit-telecom-infrastructure-age": "Edit Telecom Infrastructure Age",
         "telecom-infrastructure-age-details": "Telecom Infrastructure Age Details",
         "infrastructure-age": "Infrastructure Age",
@@ -2791,12 +2797,12 @@
         },
         "hydrological-information-details": "Hydrological Information Details",
         "title": "Hydrological Information",
-        "create-hydrological-information": "Create Hydrological Information",
+        "create-hydrological-information": "Add Hydrological Information",
         "edit-hydrological-information": "Edit Hydrological Information"
       },
       "maintenance": {
         "title": "Maintenance",
-        "create-maintenance": "Create Maintenance",
+        "create-maintenance": "Add Maintenance",
         "edit-maintenance": "Edit Maintenance",
         "maintenance-details": "Maintenance Details",
         "maintenance-record": "Maintenance Record",
@@ -2812,7 +2818,7 @@
       },
       "network-capacity": {
         "title": "Network Capacity",
-        "create-network-capacity": "Create Network Capacity",
+        "create-network-capacity": "Add Network Capacity",
         "edit-network-capacity": "Edit Network Capacity",
         "network-capacity-details": "Network Capacity Details",
         "details": {
@@ -2824,7 +2830,7 @@
       },
       "satellite-network": {
         "title": "Satellite Network",
-        "create-satellite-network": "Create Satellite Network",
+        "create-satellite-network": "Add Satellite Network",
         "edit-satellite-network": "Edit Satellite Network",
         "satellite-network-details": "Satellite Network Details",
         "network-components": "Network Components",
@@ -2839,7 +2845,7 @@
       },
       "satellite-infrastructure-age": {
         "title": "Satellite Infrastructure Age",
-        "create-satellite-infrastructure-age": "Create Satellite Infrastructure Age",
+        "create-satellite-infrastructure-age": "Add Satellite Infrastructure Age",
         "edit-satellite-infrastructure-age": "Edit Satellite Infrastructure Age",
         "satellite-infrastructure-age-details": "Satellite Infrastructure Age Details",
         "infrastructure-age": "Infrastructure Age (in years)",
@@ -2854,7 +2860,7 @@
       },
       "satellite-network-component-manufacturer": {
         "title": "Satellite Network Component Manufacturer",
-        "create-satellite-network-component-manufacturer": "Create Satellite Network Component Manufacturer",
+        "create-satellite-network-component-manufacturer": "Add Satellite Network Component Manufacturer",
         "edit-satellite-network-component-manufacturer": "Edit Satellite Network Component Manufacturer",
         "satellite-network-component-manufacturer-details": "Satellite Network Component Manufacturer Details",
         "component-manufacturers": "Component Manufacturers",
@@ -2869,7 +2875,7 @@
       },
       "internet-connection": {
         "title": "Internet Connection",
-        "create-internet-connection": "Create Internet Connection",
+        "create-internet-connection": "Add Internet Connection",
         "edit-internet-connection": "Edit Internet Connection",
         "internet-connection-details": "Internet Connection Details",
         "connection-components": "Connection Components",
@@ -2884,7 +2890,7 @@
       },
       "broadcasting-infrastructure-age": {
         "title": "Broadcasting Infrastructure Age",
-        "create-broadcasting-infrastructure-age": "Create Broadcasting Infrastructure Age",
+        "create-broadcasting-infrastructure-age": "Add Broadcasting Infrastructure Age",
         "edit-broadcasting-infrastructure-age": "Edit Broadcasting Infrastructure Age",
         "broadcasting-infrastructure-age-details": "Broadcasting Infrastructure Age Details",
         "infrastructure-age": "Infrastructure Age",
@@ -2909,12 +2915,12 @@
         },
         "internet-connection-infrastructure-manufacturer-details": "Internet Connection Infrastructure Manufacturer Details",
         "title": "Internet Connection Infrastructure Manufacturer",
-        "create-internet-connection-infrastructure-manufacturer": "Create Internet Connection Infrastructure Manufacturer",
+        "create-internet-connection-infrastructure-manufacturer": "Add Internet Connection Infrastructure Manufacturer",
         "edit-internet-connection-infrastructure-manufacturer": "Edit Internet Connection Infrastructure Manufacturer"
       },
       "broadcasting-infrastructure": {
         "title": "Broadcasting Infrastructure",
-        "create-broadcasting-infrastructure": "Create Broadcasting Infrastructure",
+        "create-broadcasting-infrastructure": "Add Broadcasting Infrastructure",
         "edit-broadcasting-infrastructure": "Edit Broadcasting Infrastructure",
         "broadcasting-infrastructure-details": "Broadcasting Infrastructure Details",
         "infrastructure-components": "Infrastructure Components",
@@ -2930,7 +2936,7 @@
       },
       "geothermal-power-well": {
         "title": "Geothermal Power Well",
-        "create-geothermal-power-well": "Create Geothermal Power Well",
+        "create-geothermal-power-well": "Add Geothermal Power Well",
         "edit-geothermal-power-well": "Edit Geothermal Power Well",
         "geothermal-power-well-details": "Geothermal Power Well Details",
         "well-specifications": "Well Specifications",
@@ -2947,7 +2953,7 @@
       },
       "solar-panel": {
         "title": "Solar Panel",
-        "create-solar-panel": "Create Solar Panel",
+        "create-solar-panel": "Add Solar Panel",
         "edit-solar-panel": "Edit Solar Panel",
         "solar-panel-details": "Solar Panel Details",
         "panel-details": "Panel Details",
@@ -2968,7 +2974,7 @@
       },
       "solar-resource-information": {
         "title": "Solar Resource Information",
-        "create-solar-resource-information": "Create Solar Resource Information",
+        "create-solar-resource-information": "Add Solar Resource Information",
         "edit-solar-resource-information": "Edit Solar Resource Information",
         "solar-resource-information-details": "Solar Resource Information Details",
         "solar-resource-record": "Solar Resource Record",
@@ -2984,7 +2990,7 @@
       },
       "wind-turbine": {
         "title": "Wind Turbines",
-        "create-wind-turbine": "Create Wind Turbine",
+        "create-wind-turbine": "Add Wind Turbine",
         "edit-wind-turbine": "Edit Wind Turbine",
         "wind-turbine-details": "Wind Turbine Details",
         "turbine-details": "Turbine Details",
@@ -3007,7 +3013,7 @@
       },
       "wind-resource": {
         "title": "Wind Resources",
-        "create-wind-resource": "Create Wind Resource",
+        "create-wind-resource": "Add Wind Resource",
         "edit-wind-resource": "Edit Wind Resource",
         "wind-resource-details": "Wind Resource Details",
         "resource-details": "Resource Details",
@@ -3022,7 +3028,7 @@
         "title": "Power Generation Capacity",
         "power-generation-capacity-details": "Power Generation Capacity Details",
         "power-generation-record": "Power Generation Record",
-        "create-power-generation-capacity": "Create Power Generation Capacity",
+        "create-power-generation-capacity": "Add Power Generation Capacity",
         "edit-power-generation-capacity": "Edit Power Generation Capacity",
         "details": {
           "capacity": "Capacity",
@@ -3036,7 +3042,7 @@
       },
       "regulation-and-policy": {
         "title": "Regulations and Policies",
-        "create-regulation-and-policy": "Create Regulation and Policy",
+        "create-regulation-and-policy": "Add Regulation and Policy",
         "edit-regulation-and-policy": "Edit Regulation and Policy",
         "regulation-and-policy-details": "Regulation and Policy Details",
         "regulatory-details": "Regulatory Details",
@@ -3052,7 +3058,7 @@
       },
       "environmental-and-social-impact": {
         "title": "Environmental and Social Impact",
-        "create-environmental-and-social-impact": "Create Environmental and Social Impact",
+        "create-environmental-and-social-impact": "Add Environmental and Social Impact",
         "edit-environmental-and-social-impact": "Edit Environmental and Social Impact",
         "environmental-and-social-impact-details": "Environmental and Social Impact Details",
         "environmental-impact-details": "Environmental Impact Details",
@@ -3068,7 +3074,7 @@
       },
       "reliability-and-maintenance": {
         "title": "Reliability & Maintenance",
-        "create-reliability-and-maintenance": "Create Reliability & Maintenance",
+        "create-reliability-and-maintenance": "Add Reliability & Maintenance",
         "edit-reliability-and-maintenance": "Edit Reliability & Maintenance",
         "reliability-and-maintenance-details": "Reliability & Maintenance Details",
         "maintenance-details": "Maintenance Details",
@@ -3086,7 +3092,7 @@
       },
       "transmission": {
         "title": "Transmissions",
-        "create-transmission": "Create Transmission",
+        "create-transmission": "Add Transmission",
         "edit-transmission": "Edit Transmission",
         "transmission-details": "Transmission Details",
         "additional-information": "Additional Information",
@@ -3099,7 +3105,7 @@
       },
       "dam": {
         "title": "Dams",
-        "create-dam": "Create Dam",
+        "create-dam": "Add Dam",
         "edit-dam": "Edit Dam",
         "dam-details": "Dam Details",
         "turbine-generator-details": "Turbine & Generator Details",
@@ -3119,7 +3125,7 @@
       },
       "transmission-line-conductor-and-tower-data": {
         "title": "Transmission Line Conductor And Tower Data",
-        "create-transmission-line-conductor-and-tower-data": "Create Transmission Line Conductor And Tower Data",
+        "create-transmission-line-conductor-and-tower-data": "Add Transmission Line Conductor And Tower Data",
         "edit-transmission-line-conductor-and-tower-data": "Edit Transmission Line Conductor And Tower Data",
         "transmission-line-conductor-and-tower-data-details": "Transmission Line Conductor And Tower Data Details",
         "general-information": "General Information",
@@ -3145,7 +3151,7 @@
       },
       "transmission-line-equipment-data": {
         "title": "Transmission Line Equipment Data",
-        "create-transmission-line-equipment-data": "Create Transmission Line Equipment Data",
+        "create-transmission-line-equipment-data": "Add Transmission Line Equipment Data",
         "edit-transmission-line-equipment-data": "Edit Transmission Line Equipment Data",
         "transmission-line-equipment-data-details": "Transmission Line Equipment Data Details",
         "general-information": "General Information",
@@ -3169,7 +3175,7 @@
       },
       "broadcasting-infrastructure-manufacturer": {
         "title": "Broadcasting Infrastructure Manufacturer",
-        "create-broadcasting-infrastructure-manufacturer": "Create Broadcasting Infrastructure Manufacturer",
+        "create-broadcasting-infrastructure-manufacturer": "Add Broadcasting Infrastructure Manufacturer",
         "edit-broadcasting-infrastructure-manufacturer": "Edit Broadcasting Infrastructure Manufacturer",
         "broadcasting-infrastructure-manufacturer-details": "Broadcasting Infrastructure Manufacturer Details",
         "general-information": "General Information",
@@ -3185,7 +3191,7 @@
       },
       "substation-transformer-and-switchgear-data": {
         "title": "Substation Transformer And Switchgear Data",
-        "create-substation-transformer-and-switchgear-data": "Create Substation Transformer And Switchgear Data",
+        "create-substation-transformer-and-switchgear-data": "Add Substation Transformer And Switchgear Data",
         "edit-substation-transformer-and-switchgear-data": "Edit Substation Transformer And Switchgear Data",
         "substation-transformer-and-switchgear-data-details": "Substation Transformer And Switchgear Data Details",
         "general-information": "General Information",
@@ -3208,7 +3214,7 @@
       },
       "substation-layout-and-communication-data": {
         "title": "Substation Layout And Communication Data",
-        "create-substation-layout-and-communication-data": "Create Substation Layout And Communication Data",
+        "create-substation-layout-and-communication-data": "Add Substation Layout And Communication Data",
         "edit-substation-layout-and-communication-data": "Edit Substation Layout And Communication Data",
         "substation-layout-and-communication-data-details": "Substation Layout And Communication Data Details",
         "general-information": "General Information",
@@ -3230,7 +3236,7 @@
       },
       "mini-grid-station": {
         "title": "Mini Grid Station",
-        "create-mini-grid-station": "Create Mini Grid Station",
+        "create-mini-grid-station": "Add Mini Grid Station",
         "edit-mini-grid-station": "Edit Mini Grid Station",
         "mini-grid-station-details": "Mini Grid Station Details",
         "general-information": "General Information",
@@ -3253,7 +3259,7 @@
       },
       "mini-grid-station-distribution-line": {
         "title": "Mini Grid Station Distribution Line",
-        "create-mini-grid-station-distribution-line": "Create Mini Grid Station Distribution Line",
+        "create-mini-grid-station-distribution-line": "Add Mini Grid Station Distribution Line",
         "edit-mini-grid-station-distribution-line": "Edit Mini Grid Station Distribution Line",
         "mini-grid-station-distribution-line-details": "Mini Grid Station Distribution Line Details",
         "general-information": "General Information",
@@ -3275,7 +3281,7 @@
       },
       "mini-grid-station-consumer": {
         "title": "Mini Grid Station Consumer",
-        "create-mini-grid-station-consumer": "Create Mini Grid Station Consumer",
+        "create-mini-grid-station-consumer": "Add Mini Grid Station Consumer",
         "edit-mini-grid-station-consumer": "Edit Mini Grid Station Consumer",
         "mini-grid-station-consumer-details": "Mini Grid Station Consumer Details",
         "general-information": "General Information",
@@ -3299,7 +3305,7 @@
       },
       "mini-grid-station-backup-power-source": {
         "title": "Mini Grid Station Backup Power Source",
-        "create-mini-grid-station-backup-power-source": "Create Mini Grid Station Backup Power Source",
+        "create-mini-grid-station-backup-power-source": "Add Mini Grid Station Backup Power Source",
         "edit-mini-grid-station-backup-power-source": "Edit Mini Grid Station Backup Power Source",
         "mini-grid-station-backup-power-source-details": "Mini Grid Station Backup Power Source Details",
         "general-information": "General Information",
@@ -3320,7 +3326,7 @@
       },
       "mini-grid-station-distribution-line-infrastructure": {
         "title": "Mini Grid Station Distribution Line Infrastructure",
-        "create-mini-grid-station-distribution-line-infrastructure": "Create Mini Grid Station Distribution Line Infrastructure",
+        "create-mini-grid-station-distribution-line-infrastructure": "Add Mini Grid Station Distribution Line Infrastructure",
         "edit-mini-grid-station-distribution-line-infrastructure": "Edit Mini Grid Station Distribution Line Infrastructure",
         "mini-grid-station-distribution-line-infrastructure-details": "Mini Grid Station Distribution Line Infrastructure Details",
         "general-information": "General Information",
@@ -3346,7 +3352,7 @@
       },
       "electric-distribution-transformer": {
         "title": "Electric Distribution Transformers",
-        "create-electric-distribution-transformer": "Create Electric Distribution Transformer",
+        "create-electric-distribution-transformer": "Add Electric Distribution Transformer",
         "edit-electric-distribution-transformer": "Edit Electric Distribution Transformer",
         "electric-distribution-transformer-details": "Electric Distribution Transformer Details",
         "general-information": "General Information",
@@ -3367,7 +3373,7 @@
       },
       "electric-distribution-transformer-type": {
         "title": "Electric Distribution Transformer Types",
-        "create-electric-distribution-transformer-type": "Create Electric Distribution Transformer Type",
+        "create-electric-distribution-transformer-type": "Add Electric Distribution Transformer Type",
         "edit-electric-distribution-transformer-type": "Edit Electric Distribution Transformer Type",
         "electric-distribution-transformer-type-details": "Electric Distribution Transformer Type Details",
         "general-information": "General Information",
@@ -3390,7 +3396,7 @@
       },
       "electric-smart-meters-data": {
         "title": "Electric Smart Meters Data",
-        "create-electric-smart-meters-data": "Create Electric Smart Meters Data",
+        "create-electric-smart-meters-data": "Add Electric Smart Meters Data",
         "edit-electric-smart-meters-data": "Edit Electric Smart Meters Data",
         "electric-smart-meters-data-details": "Electric Smart Meters Data Details",
         "general-information": "General Information",
@@ -3412,7 +3418,7 @@
       },
       "electric-smart-meters-ratings-data": {
         "title": "Electric Smart Meters Ratings Data",
-        "create-electric-smart-meters-ratings-data": "Create Electric Smart Meters Ratings Data",
+        "create-electric-smart-meters-ratings-data": "Add Electric Smart Meters Ratings Data",
         "edit-electric-smart-meters-ratings-data": "Edit Electric Smart Meters Ratings Data",
         "electric-smart-meters-ratings-data-details": "Electric Smart Meters Ratings Data Details",
         "general-information": "General Information",
@@ -3431,7 +3437,7 @@
       },
       "electric-smart-meters-performance-data": {
         "title": "Electric Smart Meters Performance Data",
-        "create-electric-smart-meters-performance-data": "Create Electric Smart Meters Performance Data",
+        "create-electric-smart-meters-performance-data": "Add Electric Smart Meters Performance Data",
         "edit-electric-smart-meters-performance-data": "Edit Electric Smart Meters Performance Data",
         "electric-smart-meters-performance-data-details": "Electric Smart Meters Performance Data Details",
         "general-information": "General Information",
@@ -3453,7 +3459,7 @@
       },
       "electric-smart-meters-privacy-and-security-data": {
         "title": "Electric Smart Meters Privacy And Security Data",
-        "create-electric-smart-meters-privacy-and-security-data": "Create Electric Smart Meters Privacy And Security Data",
+        "create-electric-smart-meters-privacy-and-security-data": "Add Electric Smart Meters Privacy And Security Data",
         "edit-electric-smart-meters-privacy-and-security-data": "Edit Electric Smart Meters Privacy And Security Data",
         "electric-smart-meters-privacy-and-security-data-details": "Electric Smart Meters Privacy And Security Data Details",
         "general-information": "General Information",
@@ -3476,7 +3482,7 @@
       },
       "electric-grid-control-center-data": {
         "title": "Electric Grid Control Center Data",
-        "create-electric-grid-control-center-data": "Create Electric Grid Control Center Data",
+        "create-electric-grid-control-center-data": "Add Electric Grid Control Center Data",
         "edit-electric-grid-control-center-data": "Edit Electric Grid Control Center Data",
         "electric-grid-control-center-data-details": "Electric Grid Control Center Data Details",
         "general-information": "General Information",
@@ -3497,7 +3503,7 @@
       },
       "railway-track-condition-assessment": {
         "title": "Railway Track Condition Assessment",
-        "create-railway-track-condition-assessment": "Create Railway Track Condition Assessment",
+        "create-railway-track-condition-assessment": "Add Railway Track Condition Assessment",
         "edit-railway-track-condition-assessment": "Edit Railway Track Condition Assessment",
         "railway-track-condition-assessment-details": "Railway Track Condition Assessment Details",
         "details": {
@@ -3511,7 +3517,7 @@
       },
       "railway-ballast": {
         "title": "Railway Ballast",
-        "create": "Create Railway Ballast",
+        "create": "Add Railway Ballast",
         "edit": "Edit Railway Ballast",
         "detail": "Railway Ballast Details",
         "details": {
@@ -3525,7 +3531,7 @@
       "railway-ballast-material-data": {
         "title": "Railway Ballast Materials",
         "detail": "Railway Ballast Detail",
-        "create": "Create Railway Ballast Material",
+        "create": "Add Railway Ballast Material",
         "edit": "Edit Railway Ballast Material",
         "details": {
           "railway-line-section-name": "Railway Line Section Name",
@@ -3541,7 +3547,7 @@
       },
       "railway-ballast-material-specification": {
         "title": "Railway Ballast Material Specification",
-        "create": "Create Railway Ballast Material Specification",
+        "create": "Add Railway Ballast Material Specification",
         "edit": "Edit Railway Ballast Material Specification",
         "detail": "Railway Ballast Material Specification Detail",
         "details": {
@@ -3559,7 +3565,7 @@
         "title": "Railway Ballast Condition Assessment",
         "detail": "Railway Ballast Condition Assessment Details",
         "edit": "Edit Railway Ballast Condition Assessment",
-        "create": "Create Railway Ballast Condition Assessment",
+        "create": "Add Railway Ballast Condition Assessment",
         "details": {
           "railway-line-section-name": "Railway Line Section Name",
           "inspection-dates": "Inspection Dates",
@@ -3578,7 +3584,7 @@
         "title": "Railway Ballast Maintenance and Renewal",
         "detail": "Railway Ballast Maintenance and Renewal Details",
         "edit": "Edit Railway Ballast Maintenance and Renewal",
-        "create": "Create Railway Ballast Maintenance and Renewal",
+        "create": "Add Railway Ballast Maintenance and Renewal",
         "details": {
           "railway-line-section-name": "Railway Line Section Name",
           "scheduled-maintenance-activities": "Scheduled Maintenance Activities",
@@ -3591,7 +3597,7 @@
         "title": "Railway Ballast Drainage and Water Management",
         "detail": "Railway Ballast Drainage and Water Management Details",
         "edit": "Edit Railway Ballast Drainage and Water Management",
-        "create": "Create Railway Ballast Drainage and Water Management",
+        "create": "Add Railway Ballast Drainage and Water Management",
         "details": {
           "railway-line-section-name": "Railway Line Section Name",
           "drainage-condition-assessment": "Drainage Condition Assessment",
@@ -3605,7 +3611,7 @@
         "title": "Railway Ballast Environmental and Other Factor",
         "detail": "Railway Ballast Environmental and Other Factor Details",
         "edit": "Edit Railway Ballast Environmental and Other Factor",
-        "create": "Create Railway Ballast Environmental and Other Factor",
+        "create": "Add Railway Ballast Environmental and Other Factor",
         "details": {
           "railway-line-section-name": "Railway Line Section Name",
           "environmental-compliance-measures": "Environmental Compliance Measures",
@@ -3617,7 +3623,7 @@
       "railway-sub-ballast-material": {
         "title": "Railway Sub-Ballast Material",
         "edit": "Edit Railway Sub-Ballast Material",
-        "create": "Create Railway Sub-Ballast Material",
+        "create": "Add Railway Sub-Ballast Material",
         "details": {
           "railway-line-section-name": "Railway Line Section Name",
           "sub-ballast-material-type-id": "Sub-Ballast Material Type",
@@ -3632,7 +3638,7 @@
       },
       "railway-sub-ballast-condition-assessment": {
         "edit": "Edit Railway Sub-Ballast Condition Assessment",
-        "create": "Create Railway Sub-Ballast Condition Assessment",
+        "create": "Add Railway Sub-Ballast Condition Assessment",
         "details": {
           "project_id": "Project ID",
           "railway_line_section_name": "Railway Line Section Name",
@@ -3652,7 +3658,7 @@
       "railway-sub-ballast-drainage-and-water-management": {
         "title": "Railway Sub-Ballast Drainage and Water Management Records",
         "detail": "Railway Sub-Ballast Drainage and Water Management Details",
-        "create": "Create Railway Sub-Ballast Drainage and Water Management Record",
+        "create": "Add Railway Sub-Ballast Drainage and Water Management Record",
         "edit": "Edit Railway Sub-Ballast Drainage and Water Management Record",
         "details": {
           "project_id": "Project ID",
@@ -3667,7 +3673,7 @@
       "railway-sub-ballast-environmental-and-other-factor": {
         "title": "Railway Sub-Ballast Environmental and Other Factor Records",
         "detail": "Railway Sub-Ballast Environmental and Other Factor Details",
-        "create": "Create Railway Sub-Ballast Environmental and Other Factor Record",
+        "create": "Add Railway Sub-Ballast Environmental and Other Factor Record",
         "edit": "Edit Railway Sub-Ballast Environmental and Other Factor Record",
         "details": {
           "project_id": "Project ID",
@@ -3680,7 +3686,7 @@
       "railway-sleeper-characteristic": {
         "title": "Railway Sleeper Characteristic Records",
         "detail": "Railway Sleeper Characteristic Details",
-        "create": "Create Railway Sleeper Characteristic Record",
+        "create": "Add Railway Sleeper Characteristic Record",
         "edit": "Edit Railway Sleeper Characteristic Record",
         "details": {
           "project_id": "Project ID",
@@ -3698,7 +3704,7 @@
       "railway-sleeper-condition-assessment": {
         "title": "Railway Sleeper Condition Assessment Records",
         "detail": "Railway Sleeper Condition Assessment Details",
-        "create": "Create Railway Sleeper Condition Assessment Record",
+        "create": "Add Railway Sleeper Condition Assessment Record",
         "edit": "Edit Railway Sleeper Condition Assessment Record",
         "details": {
           "project_id": "Project ID",
@@ -3716,7 +3722,7 @@
       "railway-sleeper-maintenance-and-replacement": {
         "title": "Railway Sleeper Maintenance and Replacement Records",
         "detail": "Railway Sleeper Maintenance and Replacement Details",
-        "create": "Create Railway Sleeper Maintenance and Replacement Record",
+        "create": "Add Railway Sleeper Maintenance and Replacement Record",
         "edit": "Edit Railway Sleeper Maintenance and Replacement Record",
         "details": {
           "project_id": "Project ID",
@@ -3731,7 +3737,7 @@
       "railway-sleeper-fastening-system": {
         "title": "Railway Sleeper Fastening System Records",
         "detail": "Railway Sleeper Fastening System Details",
-        "create": "Create Railway Sleeper Fastening System Record",
+        "create": "Add Railway Sleeper Fastening System Record",
         "edit": "Edit Railway Sleeper Fastening System Record",
         "details": {
           "project_id": "Project ID",
@@ -3744,7 +3750,7 @@
       "railway-sleeper-environmental-and-other-factor": {
         "title": "Railway Sleeper Environmental And Other Factor Records",
         "detail": "Railway Sleeper Environmental And Other Factor Details",
-        "create": "Create Railway Sleeper Environmental And Other Factor Record",
+        "create": "Add Railway Sleeper Environmental And Other Factor Record",
         "edit": "Edit Railway Sleeper Environmental And Other Factor Record",
         "details": {
           "project_id": "Project ID",
@@ -3758,7 +3764,7 @@
       "railway-fastening-system-characteristic": {
         "title": "Railway Fastening System Characteristics",
         "detail": "Railway Fastening System Characteristic Details",
-        "create": "Create Railway Fastening System Characteristic",
+        "create": "Add Railway Fastening System Characteristic",
         "edit": "Edit Railway Fastening System Characteristic",
         "details": {
           "project_id": "Project ID",
@@ -3775,7 +3781,7 @@
       "railway-fastening-system-condition-assessment": {
         "title": "Railway Fastening System Condition Assessments",
         "detail": "Railway Fastening System Condition Assessment Details",
-        "create": "Create Railway Fastening System Condition Assessment",
+        "create": "Add Railway Fastening System Condition Assessment",
         "edit": "Edit Railway Fastening System Condition Assessment",
         "details": {
           "project_id": "Project ID",
@@ -3794,7 +3800,7 @@
       "railway-fastening-system-maintenance-and-replacement": {
         "title": "Railway Fastening System Maintenance and Replacements",
         "detail": "Railway Fastening System Maintenance and Replacement Details",
-        "create": "Create Railway Fastening System Maintenance and Replacement",
+        "create": "Add Railway Fastening System Maintenance and Replacement",
         "edit": "Edit Railway Fastening System Maintenance and Replacement",
         "details": {
           "project_id": "Project ID",
@@ -3809,7 +3815,7 @@
       "railway-fastening-system-environmental-factor": {
         "title": "Railway Fastening System Environmental Factors",
         "detail": "Railway Fastening System Environmental Factor Details",
-        "create": "Create Railway Fastening System Environmental Factor",
+        "create": "Add Railway Fastening System Environmental Factor",
         "edit": "Edit Railway Fastening System Environmental Factor",
         "details": {
           "project_id": "Project ID",
@@ -3823,7 +3829,7 @@
       "railway-sub-ballast-maintenance-and-renewal": {
         "title": "Railway Sub-Ballast Maintenance and Renewal Records",
         "detail": "Railway Sub-Ballast Maintenance and Renewal Details",
-        "create": "Create Railway Sub-Ballast Maintenance and Renewal Record",
+        "create": "Add Railway Sub-Ballast Maintenance and Renewal Record",
         "edit": "Edit Railway Sub-Ballast Maintenance and Renewal Record",
         "details": {
           "project_id": "Project ID",
@@ -3837,7 +3843,7 @@
       },
       "railway-sub-ballast-material-test": {
         "edit": "Edit Railway Sub-Ballast Material Test",
-        "create": "Create Railway Sub-Ballast Material Test",
+        "create": "Add Railway Sub-Ballast Material Test",
         "details": {
           "railway-line-section-name": "Railway Line Section Name",
           "sub-ballast-material-type-id": "Sub-Ballast Material Type",
@@ -3852,7 +3858,7 @@
       },
       "railway-track-data": {
         "title": "Railway Track Data",
-        "create-railway-track-data": "Create Railway Track Data",
+        "create-railway-track-data": "Add Railway Track Data",
         "edit-railway-track-data": "Edit Railway Track Data",
         "railway-track-data-details": "Railway Track Data Details",
         "details": {
@@ -3871,7 +3877,7 @@
       },
       "railway-tracks-geometry-data": {
         "title": "Railway Tracks Geometry Data",
-        "create-railway-tracks-geometry-data": "Create Railway Tracks Geometry Data",
+        "create-railway-tracks-geometry-data": "Add Railway Tracks Geometry Data",
         "edit-railway-tracks-geometry-data": "Edit Railway Tracks Geometry Data",
         "railway-tracks-geometry-data-details": "Railway Tracks Geometry Data Details",
         "details": {
@@ -3888,7 +3894,7 @@
       },
       "railway-track-maintenance-and-inspection": {
         "title": "Railway Track Maintenance And Inspection",
-        "create-railway-track-maintenance-and-inspection": "Create Railway Track Maintenance And Inspection",
+        "create-railway-track-maintenance-and-inspection": "Add Railway Track Maintenance And Inspection",
         "edit-railway-track-maintenance-and-inspection": "Edit Railway Track Maintenance And Inspection",
         "railway-track-maintenance-and-inspection-details": "Railway Track Maintenance And Inspection Details",
         "details": {
@@ -3904,7 +3910,7 @@
       "railway-signaling-system": {
         "title": "Railway Signaling Systems",
         "detail": "Railway Signaling System Details",
-        "create": "Create Railway Signaling System",
+        "create": "Add Railway Signaling System",
         "edit": "Edit Railway Signaling System",
         "details": {
           "project_id": "Project ID",
@@ -3920,7 +3926,7 @@
       "railway-communication-system": {
         "title": "Railway Communication Systems",
         "detail": "Railway Communication System Details",
-        "create": "Create Railway Communication System",
+        "create": "Add Railway Communication System",
         "edit": "Edit Railway Communication System",
         "details": {
           "project_id": "Project ID",
@@ -3936,7 +3942,7 @@
       "railway-system-condition-assessment": {
         "title": "Railway System Condition Assessments",
         "detail": "Railway System Condition Assessment Details",
-        "create": "Create Railway System Condition Assessment",
+        "create": "Add Railway System Condition Assessment",
         "edit": "Edit Railway System Condition Assessment",
         "details": {
           "project_id": "Project ID",
@@ -3951,7 +3957,7 @@
       "railway-communication-system-maintenance-and-testing": {
         "title": "Railway Communication System Maintenance and Testing",
         "detail": "Railway Communication System Maintenance and Testing Details",
-        "create": "Create Railway Communication System Maintenance and Testing",
+        "create": "Add Railway Communication System Maintenance and Testing",
         "edit": "Edit Railway Communication System Maintenance and Testing",
         "details": {
           "project_id": "Project ID",
@@ -3967,7 +3973,7 @@
       },
       "electric-grid-control-center-performance-and-maintenance": {
         "title": "Electric Grid Control Center Performance And Maintenance",
-        "create-electric-grid-control-center-performance-and-maintenance": "Create Electric Grid Control Center Performance And Maintenance",
+        "create-electric-grid-control-center-performance-and-maintenance": "Add Electric Grid Control Center Performance And Maintenance",
         "edit-electric-grid-control-center-performance-and-maintenance": "Edit Electric Grid Control Center Performance And Maintenance",
         "electric-grid-control-center-performance-and-maintenance-details": "Electric Grid Control Center Performance And Maintenance Details",
         "general-information": "General Information",
@@ -3986,7 +3992,7 @@
       },
       "electric-grid-control-center-cyber-security-data": {
         "title": "Electric Grid Control Center Cyber Security Data",
-        "create-electric-grid-control-center-cyber-security-data": "Create Electric Grid Control Center Cyber Security Data",
+        "create-electric-grid-control-center-cyber-security-data": "Add Electric Grid Control Center Cyber Security Data",
         "edit-electric-grid-control-center-cyber-security-data": "Edit Electric Grid Control Center Cyber Security Data",
         "electric-grid-control-center-cyber-security-data-details": "Electric Grid Control Center Cyber Security Data Details",
         "general-information": "General Information",
@@ -4022,7 +4028,7 @@
     "remember-me": "Remember Me",
     "forgot-password": "Forgot Password?",
     "new-on-platform": "New on our platform?",
-    "create-account": "Create an account",
+    "create-account": "Add an account",
     "input-labels": {
       "email": "Email",
       "password": "Password"
@@ -4050,12 +4056,12 @@
     "no": "No",
     "not-available": "N/A",
     "edit": "Edit",
-    "create": "Create",
+    "create": "Add",
     "active": "Active",
     "inactive": "InActive",
     "meters": "Meters",
     "inches": "Inches",
-    "created-at": "Created At",
+    "created-at": "Addd At",
     "updated-at": "update At",
     "years": "Years",
     "kwh-per-m2": "kWh/m²",
@@ -4080,14 +4086,14 @@
     },
     "table-columns": {
       "id": "ID",
-      "created-at": "Created At",
+      "created-at": "Addd At",
       "updated-at": "update At",
       "status": "Status",
       "actions": "Actions"
     },
     "form": {
       "file-upload": "File Upload",
-      "success-created": "Successfully Created!",
+      "success-created": "Successfully Addd!",
       "success-updated": "Successfully updated!"
     },
     "listing": {
@@ -4095,7 +4101,7 @@
     }
   },
   "stakeholder": {
-    "create-stakeholder": "Create Stakeholder",
+    "create-stakeholder": "Add Stakeholder",
     "edit-stakeholder": "Edit Stakeholder",
     "title": "Stakeholders",
     "columns": {
@@ -4196,7 +4202,7 @@
     "stakeholder-info": {
       "title": "Stakeholder Info",
       "edit-stakeholder-info": "Edit Stakeholder Info",
-      "create-stakeholder-info": "Create Stakeholder Info",
+      "create-stakeholder-info": "Add Stakeholder Info",
       "form": {
         "capital": "Capital",
         "general-manager": "General Manager",
@@ -4205,7 +4211,7 @@
     },
     "stakeholder-certificate": {
       "title": "Stakeholder Certificate",
-      "create-stakeholder-certificate": "Create Stakeholder Certificate",
+      "create-stakeholder-certificate": "Add Stakeholder Certificate",
       "edit-stakeholder-certificate": "Edit Stakeholder Certificate",
       "form": {
         "title": "Title",
@@ -4221,7 +4227,7 @@
     "stakeholder-license": {
       "title": "Stakeholder Licenses",
       "detail": "Stakeholder License Detail",
-      "create": "Create Stakeholder License",
+      "create": "Add Stakeholder License",
       "edit": "Edit Stakeholder License",
       "form": {
         "license-type": "License Type",
@@ -4237,7 +4243,7 @@
     },
     "stakeholder-upgrade": {
       "title": "Stakholder Upgrades",
-      "create": "Create Stakeholder Upgrade",
+      "create": "Add Stakeholder Upgrade",
       "edit": "Edit Stakeholder Upgrade",
       "details": "Stakeholder Upgrade Details",
       "form": {
@@ -4266,12 +4272,12 @@
         "location": "Location"
       },
       "details": "Vehicle Details",
-      "create": "Create Vehicle",
+      "create": "Add Vehicle",
       "edit": "Edit Vehicle"
     },
     "stakeholder-training": {
       "title": "Stakeholder Training",
-      "create-stakeholder-training": "Create Stakeholder Training",
+      "create-stakeholder-training": "Add Stakeholder Training",
       "edit-stakeholder-training": "Edit Stakeholder Training",
       "form": {
         "title": "Title",
@@ -4284,7 +4290,7 @@
     },
     "stakeholder-regulation": {
       "title": "Stakeholder Regulation",
-      "create-stakeholder-regulation": "Create Stakeholder Regulation",
+      "create-stakeholder-regulation": "Add Stakeholder Regulation",
       "edit-stakeholder-regulation": "Edit Stakeholder Regulation",
       "form": {
         "title": "Title",
@@ -4298,7 +4304,7 @@
     },
     "stakeholder-email": {
       "title": "Stakeholder Email",
-      "create-stakeholder-email": "Create Stakeholder Email",
+      "create-stakeholder-email": "Add Stakeholder Email",
       "edit-stakeholder-email": "Edit Stakeholder Email",
       "form": {
         "email": "Email"
@@ -4306,7 +4312,7 @@
     },
     "stakeholder-phone": {
       "title": "Stakeholder Phone",
-      "create-stakeholder-phone": "Create Stakeholder Phone",
+      "create-stakeholder-phone": "Add Stakeholder Phone",
       "edit-stakeholder-phone": "Edit Stakeholder Phone",
       "form": {
         "phone": "Phone"
@@ -4314,7 +4320,7 @@
     },
     "stakeholder-contact-person": {
       "title": "Stakeholder Contact Person",
-      "create-stakeholder-contact-person": "Create Stakeholder Contact Person",
+      "create-stakeholder-contact-person": "Add Stakeholder Contact Person",
       "edit-stakeholder-contact-person": "Edit Stakeholder Contact Person",
       "form": {
         "first-name": "First Name",
@@ -4328,7 +4334,7 @@
     },
     "stakeholder-operation-location": {
       "title": "Stakeholder Operation Location",
-      "create-stakeholder-operation-location": "Create Stakeholder Operation Location",
+      "create-stakeholder-operation-location": "Add Stakeholder Operation Location",
       "edit-stakeholder-operation-location": "Edit Stakeholder Operation Location",
       "form": {
         "country": "Country",
@@ -4337,7 +4343,7 @@
     },
     "total-employee": {
       "title": "Total Employees",
-      "create-total-employee": "Create Total Employees",
+      "create-total-employee": "Add Total Employees",
       "edit-total-employee": "Edit Total Employees",
       "form": {
         "year": "Year",
@@ -4354,7 +4360,7 @@
     "other": {
       "stakeholder-study-field": {
         "title": "Study Field",
-        "create-stakeholder-study-field": "Create Study Field",
+        "create-stakeholder-study-field": "Add Study Field",
         "edit-stakeholder-study-field": "Edit Study Field",
         "details": {
           "title": "Title",
@@ -4364,7 +4370,7 @@
       },
       "study-period-cost": {
         "title": "Study Period Cost",
-        "create-study-period-cost": "Create Study Period Cost",
+        "create-study-period-cost": "Add Study Period Cost",
         "edit-study-period-cost": "Edit Study Period Cost",
         "study-period-cost-details": "Study Period Cost Detail",
         "details": {
@@ -4376,7 +4382,7 @@
       },
       "stakeholder-service": {
         "title": "Stakeholder Service",
-        "create-stakeholder-service": "Create Stakeholder Service",
+        "create-stakeholder-service": "Add Stakeholder Service",
         "edit-stakeholder-service": "Edit Stakeholder Service",
         "details": {
           "construction-related-service": "Construction Related Service",
@@ -4389,7 +4395,7 @@
       },
       "construction-related-service": {
         "title": "Construction Related Service",
-        "create-construction-related-service": "Create Construction Related Service",
+        "create-construction-related-service": "Add Construction Related Service",
         "edit-construction-related-service": "Edit Construction Related Service",
         "details": {
           "title": "Construction Related Service Detail",
@@ -4402,10 +4408,10 @@
     },
     "stakeholder-manager": {
       "title": "Stakeholder Managers",
-      "create": "Create Stakeholder Manager",
+      "create": "Add Stakeholder Manager",
       "edit": "Edit Stakeholder Manager",
       "details": "Stakeholder Manager Details",
-      "create-manager": "Create Stakeholder Manager",
+      "create-manager": "Add Stakeholder Manager",
       "edit-manager": "Edit Stakeholder Manager",
       "type": "Type",
       "firstName": "First Name",
@@ -4427,15 +4433,15 @@
       "description": "Description",
       "reference": "Reference",
       "details": "Joint Venture Details",
-      "create": "Create Joint Venture",
+      "create": "Add Joint Venture",
       "edit": "Edit Joint Venture"
     },
     "joint-venture-company": {
       "title": "Joint Venture Companies",
-      "create": "Create Joint Venture Company",
+      "create": "Add Joint Venture Company",
       "edit": "Edit Joint Venture Company",
       "details": "Joint Venture Company Details",
-      "create-joint-venture-company": "Create Joint Venture Company",
+      "create-joint-venture-company": "Add Joint Venture Company",
       "edit-joint-venture-company": "Edit Joint Venture Company",
       "jointVenture": "Joint Venture",
       "companyName": "Company Name",
@@ -4447,10 +4453,10 @@
     },
     "stakeholder-additional-information": {
       "title": "Additional Information",
-      "create": "Create Additional Information",
+      "create": "Add Additional Information",
       "edit": "Edit Additional Information",
       "details": "Additional Information Details",
-      "create-additional-information": "Create Additional Information",
+      "create-additional-information": "Add Additional Information",
       "edit-additional-information": "Edit Additional Information",
       "additionalInformation": "Additional Information",
       "reference": "Reference",
@@ -4458,7 +4464,7 @@
     },
     "stakeholder-branch": {
       "title": "Stakeholder Branches",
-      "create": "Create Branch",
+      "create": "Add Branch",
       "edit": "Edit Branch",
       "details": "Branch Details",
       "name": "Branch Name",
@@ -4469,7 +4475,7 @@
     },
     "stakeholder-branch-manager": {
       "title": "Stakeholder Branch Managers",
-      "create": "Create Branch Manager",
+      "create": "Add Branch Manager",
       "edit": "Edit Branch Manager",
       "details": "Branch Manager Details",
       "firstName": "First Name",
@@ -4484,7 +4490,7 @@
     },
     "stakeholder-branch-contact-person": {
       "title": "Branch Contact People",
-      "create": "Create Branch Contact Person",
+      "create": "Add Branch Contact Person",
       "edit": "Edit Branch Contact Person",
       "details": "Branch Contact Person Details",
       "name": "Name",
@@ -4500,7 +4506,7 @@
     },
     "stakeholder-department": {
       "title": "Stakeholder Departments",
-      "create": "Create Department",
+      "create": "Add Department",
       "edit": "Edit Department",
       "details": "Department Details",
       "name": "Department Name",
@@ -4510,7 +4516,7 @@
     },
     "position": {
       "title": "Stakeholder Positions",
-      "create": "Create Stakeholder Position",
+      "create": "Add Stakeholder Position",
       "edit": "Edit Stakeholder Position",
       "details": "Stakeholder Position Details",
       "name": "Name",
@@ -4524,7 +4530,7 @@
     },
     "machinery": {
       "title": "Stakeholder Machineries",
-      "create": "Create Stakeholder Machinery",
+      "create": "Add Stakeholder Machinery",
       "edit": "Edit Stakeholder Machinery",
       "details": "Stakeholder Machinery Details",
       "name": "Name",
@@ -4542,7 +4548,7 @@
     },
     "safety-equipment": {
       "title": "Safety Equipment",
-      "create": "Create Safety Equipment",
+      "create": "Add Safety Equipment",
       "edit": "Edit Safety Equipment",
       "details": "Safety Equipment Details",
       "name": "Name",
@@ -4558,7 +4564,7 @@
     },
     "branch-additional-information": {
       "title": "Branch Additional Information",
-      "create": "Create Additional Information",
+      "create": "Add Additional Information",
       "edit": "Edit Additional Information",
       "details": "Additional Information Details",
       "branch": "Branch",
@@ -4567,7 +4573,7 @@
     },
     "material": {
       "title": "Stakeholder Materials",
-      "create": "Create Stakeholder Material",
+      "create": "Add Stakeholder Material",
       "edit": "Edit Stakeholder Material",
       "details": "Stakeholder Material Details",
       "name": "Name",
@@ -4582,7 +4588,7 @@
     },
     "employee": {
       "title": "Stakeholder Employees",
-      "create": "Create Stakeholder Employee",
+      "create": "Add Stakeholder Employee",
       "edit": "Edit Stakeholder Employee",
       "details": "Stakeholder Employee Details",
       "firstName": "First Name",
@@ -4599,7 +4605,7 @@
   },
   "address": {
     "title": "Address",
-    "create-address": "Create Address",
+    "create-address": "Add Address",
     "edit-address": "Edit Address",
     "project-address": "Project Address",
     "stakeholder-address": "Stakeholder Address",
@@ -4618,7 +4624,7 @@
   "resources": {
     "professional": {
       "title": "Professionals",
-      "create": "Create Professional",
+      "create": "Add Professional",
       "edit": "Edit Professional",
       "details": "Professional Details",
       "firstName": "First Name",
@@ -4632,10 +4638,10 @@
       "name": "Name",
       "address": {
         "title": "Address",
-        "create": "Create Address",
+        "create": "Add Address",
         "edit": "Edit Address",
         "details": "Address Details",
-        "create-address": "Create Address",
+        "create-address": "Add Address",
         "edit-address": "Edit Address",
         "country": "Country",
         "region": "Region",
@@ -4650,10 +4656,10 @@
       },
       "contact": {
         "title": " Contact",
-        "create": "Create Contact",
+        "create": "Add Contact",
         "edit": "Edit Contact",
         "details": "Contact Details",
-        "create-contact": "Create Contact",
+        "create-contact": "Add Contact",
         "edit-contact": "Edit Contact",
         "phone": "Phone Number",
         "email": "Email",
@@ -4661,7 +4667,7 @@
       },
       "additional-info": {
         "title": "Additional Information",
-        "create": "Create Additional Information",
+        "create": "Add Additional Information",
         "edit": "Edit Additional Information",
         "details": "Additional Information Details",
         "information": "Additional Information",
@@ -4669,10 +4675,10 @@
       },
       "education": {
         "title": "Education",
-        "create": "Create Education",
+        "create": "Add Education",
         "edit": "Edit Education",
         "details": "Education Details",
-        "create-education": "Create Education",
+        "create-education": "Add Education",
         "edit-education": "Edit Education",
         "study-field": "Study Field",
         "school-name": "School Name",
@@ -4684,10 +4690,10 @@
       },
       "work-experience": {
         "title": "Work Experience",
-        "create": "Create Work Experience",
+        "create": "Add Work Experience",
         "edit": "Edit Work Experience",
         "details": "Work Experience Details",
-        "create-work-experience": "Create Work Experience",
+        "create-work-experience": "Add Work Experience",
         "edit-work-experience": "Edit Work Experience",
         "company-name": "Company Name",
         "department": "Department",
@@ -4698,10 +4704,10 @@
       },
       "association-membership": {
         "title": "Association Memberships",
-        "create": "Create Membership",
+        "create": "Add Membership",
         "edit": "Edit Membership",
         "details": "Membership Details",
-        "create-work-experience": "Create Membership",
+        "create-work-experience": "Add Membership",
         "edit-work-experience": "Edit Membership",
         "association-name": "Association Name",
         "membership-type": "Membership Type",
@@ -4715,7 +4721,7 @@
       },
       "certification": {
         "title": "Certifications",
-        "create": "Create Certification",
+        "create": "Add Certification",
         "edit": "Edit Certification",
         "details": "Certification Details",
         "certificate-title": "Certificate Title",
@@ -4732,7 +4738,7 @@
       },
       "contact-person": {
         "title": "Professional Contact Persons",
-        "create": "Create Contact Person",
+        "create": "Add Contact Person",
         "edit": "Edit Contact Person",
         "details": "Contact Person Details",
         "firstName": "First Name",
@@ -4750,10 +4756,10 @@
     },
     "education": {
       "title": "Education",
-      "create": "Create Education",
+      "create": "Add Education",
       "edit": "Edit Education",
       "details": "Education Details",
-      "create-education": "Create Education",
+      "create-education": "Add Education",
       "edit-education": "Edit Education",
       "study-field": "Study Field",
       "school-name": "School Name",
@@ -4765,10 +4771,10 @@
     },
     "work-experience": {
       "title": "Work Experience",
-      "create": "Create Work Experience",
+      "create": "Add Work Experience",
       "edit": "Edit Work Experience",
       "details": "Work Experience Details",
-      "create-work-experience": "Create Work Experience",
+      "create-work-experience": "Add Work Experience",
       "edit-work-experience": "Edit Work Experience",
       "company-name": "Company Name",
       "department": "Department",
@@ -4779,10 +4785,10 @@
     },
     "association-membership": {
       "title": "Association Memberships",
-      "create": "Create Membership",
+      "create": "Add Membership",
       "edit": "Edit Membership",
       "details": "Membership Details",
-      "create-work-experience": "Create Membership",
+      "create-work-experience": "Add Membership",
       "edit-work-experience": "Edit Membership",
       "association-name": "Association Name",
       "membership-type": "Membership Type",
@@ -4796,7 +4802,7 @@
     },
     "certification": {
       "title": "Certifications",
-      "create": "Create Certification",
+      "create": "Add Certification",
       "edit": "Edit Certification",
       "details": "Certification Details",
       "certificate-title": "Certificate Title",
@@ -4813,7 +4819,7 @@
     },
     "contact-person": {
       "title": "Professional Contact Persons",
-      "create": "Create Contact Person",
+      "create": "Add Contact Person",
       "edit": "Edit Contact Person",
       "details": "Contact Person Details",
       "firstName": "First Name",
@@ -4831,7 +4837,7 @@
   },
   "data-collection-guide": {
     "title": "Data Collection Guide",
-    "create": "Create Data Collection Guide",
+    "create": "Add Data Collection Guide",
     "edit": "Edit Data Collection Guide",
     "details": "Data Collection Guide Details",
     "form": {

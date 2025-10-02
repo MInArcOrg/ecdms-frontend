@@ -164,7 +164,7 @@ const SpillwayInfoList: React.FC<SpillwayInfoListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "spillwayInfo",

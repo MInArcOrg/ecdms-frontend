@@ -213,7 +213,7 @@ const RoadSurfaceConditionList: React.FC<RoadSurfaceConditionListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "roadsurfacecondition",

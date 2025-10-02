@@ -275,7 +275,7 @@ const RailwaySubBallastMaterialTestList: React.FC<
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleCreateEditDrawer, // Use renamed function
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "railwaysubballastmaterialtest", // Subject reflects the model

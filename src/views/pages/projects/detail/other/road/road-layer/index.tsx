@@ -167,7 +167,7 @@ const RoadLayerList: React.FC<RoadLayerListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "roadlayer",

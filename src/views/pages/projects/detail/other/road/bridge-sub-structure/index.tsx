@@ -216,7 +216,7 @@ const BridgeSubStructureList: React.FC<BridgeSubStructureListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "bridgesubstructure",

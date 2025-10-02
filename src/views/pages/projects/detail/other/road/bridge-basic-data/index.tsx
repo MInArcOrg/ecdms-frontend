@@ -198,7 +198,7 @@ const BridgeBasicDataList: React.FC<BridgeBasicDataListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "bridgebasicdata",

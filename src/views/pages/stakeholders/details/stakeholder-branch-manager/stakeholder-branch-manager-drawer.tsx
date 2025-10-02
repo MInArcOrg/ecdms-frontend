@@ -32,7 +32,7 @@ const BranchManagerDrawer = (props: BranchManagerDrawerType) => {
     stakeholder_branch_id: yup.string().required("Branch is required"),
     department: yup.string().max(255).required("Department is required"),
     position: yup.string().max(255).required("Position is required"),
-    first_name: yup.string().max(255).required("First name is required"),
+    first_name: yup.string().max(36).required("First name is required"),
     middle_name: yup.string().max(255).required("Middle name is required"),
     last_name: yup.string().max(255).required("Last name is required"),
     gender: yup.string().max(255).required("Gender is required"),

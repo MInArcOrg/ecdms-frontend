@@ -150,7 +150,7 @@ const SolarEnergyList: React.FC<SolarEnergyListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "generatingcapacity",

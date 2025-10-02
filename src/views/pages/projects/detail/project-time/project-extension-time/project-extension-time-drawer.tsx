@@ -27,7 +27,7 @@ const ProjectExtensionTimeDrawer = (props: ProjectExtensionTimeDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
-    title: yup.string().max(255).nullable(),
+    title: yup.string().max(36).nullable(),
     parent_id: yup.string().length(36).nullable(),
     project_id: yup.string().length(36).required("Project is required"),
     number_of_days: yup.number().integer().required("Number of days is required"),

@@ -243,7 +243,7 @@ const RailwayFasteningSystemConditionAssessmentList: React.FC<
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "railwayfasteningsystemconditionassessment", // Subject for permission control

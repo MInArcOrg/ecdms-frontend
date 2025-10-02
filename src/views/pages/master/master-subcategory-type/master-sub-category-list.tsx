@@ -85,7 +85,7 @@ const MasterSubCategoryList: React.FC<MasterSubCategoryListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "position",

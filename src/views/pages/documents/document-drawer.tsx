@@ -18,15 +18,26 @@ interface DocumentDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required(),
-  documentsubcategory_id: yup.string(),
-  author: yup.string().required(),
-  copy_right_notice: yup.string().required(),
-  description: yup.string().required(),
-  documentcategory_id: yup.string().required(),
-  edition: yup.string().required(),
-  isbn: yup.string().required(),
-  publication_date: yup.string().required(),
+  title: yup.string().required("Title is required").max(36),
+  documentcategory_id: yup.string().required("Document category is required"),
+  documentsubcategory_id: yup.string().nullable(),
+  description: yup.string().nullable(),
+  author: yup.string().nullable().max(36),
+  publishing_organization: yup.string().nullable().max(36),
+  publication_date: yup.date().nullable(),
+  reference_no: yup.string().nullable().max(100),
+  language: yup.string().nullable().max(100),
+  keywords: yup.string().nullable(),
+  country_or_region: yup.string().nullable().max(100),
+  sector_id: yup.string().nullable(),
+  related_entity_id: yup.string().nullable(),
+  legal_status: yup.string().nullable().max(50),
+  confidentiality_level: yup.string().nullable().max(50),
+  file_format: yup.string().nullable().max(20),
+  file_size_mb: yup.number().nullable(),
+  document_link: yup.string().nullable().max(100),
+  version_no: yup.number().integer().nullable(),
+  remark: yup.string().nullable(),
 });
 
 const DocumentDrawer = (props: DocumentDrawerType) => {

@@ -193,7 +193,7 @@ const BridgeInspectionList: React.FC<BridgeInspectionListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "bridgeinspection",

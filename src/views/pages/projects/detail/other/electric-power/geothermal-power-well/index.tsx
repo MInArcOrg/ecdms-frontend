@@ -212,7 +212,7 @@ const GeothermalPowerWellList: React.FC<GeothermalPowerWellListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "geothermalpowerwell",

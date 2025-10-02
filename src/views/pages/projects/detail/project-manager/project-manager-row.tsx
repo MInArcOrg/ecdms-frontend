@@ -23,7 +23,7 @@ export const managerColumns = (
     flex: 0.2,
     minWidth: 200,
     field: "name",
-    headerName: t("project.project-manager.firstName"),
+    headerName: t("project.other.project-manager.firstName"),
     renderCell: ({ row }: CellType) => {
       const fullName = `${row.first_name} ${
         row.middle_name ? row.middle_name + " " : ""
@@ -49,7 +49,7 @@ export const managerColumns = (
     flex: 0.2,
     minWidth: 200,
     field: "stakeholder",
-    headerName: t("project.project-manager.stakeholder"),
+    headerName: t("project.other.project-manager.stakeholder"),
     renderCell: ({ row }: CellType) => {
       const stakeholder = stakeholders.find((s) => s.id === row.stakeholder_id);
       return stakeholder ? stakeholder.trade_name : t("common.not-available");
@@ -59,7 +59,7 @@ export const managerColumns = (
     flex: 0.15,
     minWidth: 150,
     field: "position",
-    headerName: t("project.project-manager.position"),
+    headerName: t("project.other.project-manager.position"),
     renderCell: ({ row }: CellType) =>
       row.position || t("common.not-available"),
   },
@@ -67,14 +67,14 @@ export const managerColumns = (
     flex: 0.2,
     minWidth: 180,
     field: "email",
-    headerName: t("project.project-manager.email"),
+    headerName: t("project.other.project-manager.email"),
     renderCell: ({ row }: CellType) => row.email,
   },
   {
     flex: 0.15,
     minWidth: 120,
     field: "phone",
-    headerName: t("project.project-manager.phone"),
+    headerName: t("project.other.project-manager.phone"),
     renderCell: ({ row }: CellType) => row.phone,
   },
   {

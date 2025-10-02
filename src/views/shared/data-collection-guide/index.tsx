@@ -88,7 +88,7 @@ function DataCollectionGuideList({ model }: { model: string }) {
           createActionConfig={{
             ...defaultCreateActionConfig,
             onClick: toggleDrawer,
-            onlyIcon: true,
+            onlyIcon: false,
             permission: {
               action: "create",
               subject: "data-collection-guide",

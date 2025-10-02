@@ -175,7 +175,7 @@ const ReservoirInfoList: React.FC<ReservoirInfoListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "reservoirInfo",

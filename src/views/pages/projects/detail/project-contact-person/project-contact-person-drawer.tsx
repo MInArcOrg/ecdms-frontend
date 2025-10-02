@@ -26,7 +26,7 @@ const ProjectContactPersonDrawer: React.FC<ProjectContactPersonDrawerProps> = ({
   stakeholders,
 }) => {
   const validationSchema = yup.object().shape({
-    first_name: yup.string().max(255).required("First name is required"),
+    first_name: yup.string().max(36).required("First name is required"),
     middle_name: yup.string().max(255).required("Middle name is required"),
     last_name: yup.string().max(255).required("Last name is required"),
     gender: yup.string().max(255).required("Gender is required"),

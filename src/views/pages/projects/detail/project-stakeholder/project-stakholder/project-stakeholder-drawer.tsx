@@ -30,7 +30,7 @@ const ProjectStakeholderDrawer = (props: ProjectStakeholderDrawerType) => {
   const validationSchema = yup.object().shape({
     stakeholder_id: yup.string().length(36).required("Stakeholder is required"),
     project_id: yup.string().length(36).required("Project is required"),
-    title: yup.string().max(255).required("Title is required"),
+    title: yup.string().max(36).required("Title is required"),
     description: yup.string().nullable(),
     remark: yup.string().max(255).nullable(),
     parent_id: yup.string().length(36).nullable(),

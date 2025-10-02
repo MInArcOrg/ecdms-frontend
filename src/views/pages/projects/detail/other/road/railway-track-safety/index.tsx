@@ -192,7 +192,7 @@ const RailwayTrackSafetyList: React.FC<RailwayTrackSafetyListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "railwaytracksafety",

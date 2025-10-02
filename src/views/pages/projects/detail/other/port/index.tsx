@@ -157,7 +157,7 @@ const PortList: React.FC<PortListProps> = ({ model, projectId, typeId }) => {
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "port",

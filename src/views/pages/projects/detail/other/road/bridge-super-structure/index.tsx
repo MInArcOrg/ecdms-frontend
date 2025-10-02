@@ -228,7 +228,7 @@ const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "bridgesuperstructure",

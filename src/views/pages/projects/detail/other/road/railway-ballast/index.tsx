@@ -183,7 +183,7 @@ const RailwayBallastList: React.FC<RailwayBallastListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "railwayballast",

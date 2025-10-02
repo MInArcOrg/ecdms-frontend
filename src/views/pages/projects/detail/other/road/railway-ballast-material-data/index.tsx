@@ -225,7 +225,7 @@ const RailwayBallastMaterialDataList: React.FC<
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "railwayballastmaterialdata",

@@ -208,7 +208,7 @@ const TransmissionLineList: React.FC<TransmissionLineListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "transmissionline",

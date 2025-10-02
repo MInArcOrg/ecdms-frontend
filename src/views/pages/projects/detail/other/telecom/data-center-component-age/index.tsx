@@ -196,7 +196,7 @@ const DataCenterComponentAgeList: React.FC<DataCenterComponentAgeListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "datacentercomponentage",

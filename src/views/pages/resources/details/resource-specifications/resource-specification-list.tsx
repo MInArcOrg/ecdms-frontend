@@ -100,7 +100,7 @@ function ResourceSpecificationList({ resourceId }: { resourceId: string }) {
           createActionConfig={{
             ...defaultCreateActionConfig,
             onClick: toggleDrawer,
-            onlyIcon: true,
+            onlyIcon: false,
             permission: {
               action: "create",
               subject: "resourceSpecification",

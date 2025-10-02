@@ -56,7 +56,7 @@ const RoleDrawer = (props: RoleDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={isEdit ? "admin.roles.edit-role" : "admin.roles.create-role"}
+      title={isEdit ? "admin.role.edit-role" : "admin.role.create-role"}
       handleClose={handleClose}
       open={open}
     >

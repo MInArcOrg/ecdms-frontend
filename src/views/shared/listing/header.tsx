@@ -129,7 +129,7 @@ const ListHeader = (props: ListHeaderProps) => {
                   sx={{ "& svg": { mr: 2 } }}
                 >
                   <Icon fontSize="1.125rem" icon="tabler:plus" />
-                  {transl("create")}
+                  {transl("common.create")}
                 </Button>
               ))}
             {props.hasFilter && (

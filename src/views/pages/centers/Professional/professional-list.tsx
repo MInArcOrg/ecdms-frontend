@@ -92,7 +92,7 @@ function ProfessionalList({
           createActionConfig={{
             ...defaultCreateActionConfig,
             onClick: toggleDrawer,
-            onlyIcon: true,
+            onlyIcon: false,
             permission: { action: "create", subject: "user" },
           }}
           title={t("department.professional.title")}
