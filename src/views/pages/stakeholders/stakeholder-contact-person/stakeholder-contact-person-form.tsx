@@ -19,7 +19,7 @@ const StakeholderContactPersonForm: React.FC<
   StakeholderContactPersonFormProps
 > = ({ formik, file, onFileChange }) => {
   const { t: transl } = useTranslation();
-
+  console.log('forik errors',formik.errors)
   return (
     <Grid container spacing={3}>
       {/* First Name Field */}
@@ -91,6 +91,7 @@ const StakeholderContactPersonForm: React.FC<
             "stakeholder.stakeholder-contact-person.form.email",
           )}
           name="email"
+          type={"email"}
           size="small"
           sx={{ mb: 2 }}
         />

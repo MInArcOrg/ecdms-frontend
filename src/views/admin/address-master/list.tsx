@@ -74,7 +74,7 @@ const AddressMasterList = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleAddressMasterDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: { action: "create", subject: "addressMaster" },
         }}
       />

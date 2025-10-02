@@ -32,7 +32,7 @@ const ProjectContactPersonForm: React.FC<ProjectContactPersonFormProps> = ({
       <Grid item xs={12}>
         <CustomSelect
           fullWidth
-          label={t("project.project-contact-person.stakeholder")}
+          label={t("project.project-contact-person.form.stakeholder")}
           name="stakeholder_id"
           options={stakeholderOptions}
           size="small"
@@ -42,7 +42,7 @@ const ProjectContactPersonForm: React.FC<ProjectContactPersonFormProps> = ({
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t("project.project-contact-person.firstName")}
+          label={t("project.project-contact-person.form.firstName")}
           name="first_name"
           size="small"
           sx={{ mb: 2 }}
@@ -51,7 +51,7 @@ const ProjectContactPersonForm: React.FC<ProjectContactPersonFormProps> = ({
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t("project.project-contact-person.middleName")}
+          label={t("project.project-contact-person.form.middleName")}
           name="middle_name"
           size="small"
           sx={{ mb: 2 }}
@@ -60,7 +60,7 @@ const ProjectContactPersonForm: React.FC<ProjectContactPersonFormProps> = ({
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t("project.project-contact-person.lastName")}
+          label={t("project.project-contact-person.form.lastName")}
           name="last_name"
           size="small"
           sx={{ mb: 2 }}
@@ -69,7 +69,7 @@ const ProjectContactPersonForm: React.FC<ProjectContactPersonFormProps> = ({
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t("project.project-contact-person.position")}
+          label={t("project.project-contact-person.form.position")}
           name="position"
           size="small"
           sx={{ mb: 2 }}
@@ -78,7 +78,7 @@ const ProjectContactPersonForm: React.FC<ProjectContactPersonFormProps> = ({
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t("project.project-contact-person.department")}
+          label={t("project.project-contact-person.form.department")}
           name="department"
           size="small"
           sx={{ mb: 2 }}
@@ -87,7 +87,7 @@ const ProjectContactPersonForm: React.FC<ProjectContactPersonFormProps> = ({
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t("project.project-contact-person.nationalIdNo")}
+          label={t("project.project-contact-person.form.nationalIdNo")}
           name="national_id_no"
           size="small"
           sx={{ mb: 2 }}
@@ -95,7 +95,7 @@ const ProjectContactPersonForm: React.FC<ProjectContactPersonFormProps> = ({
       </Grid>
       <Grid item xs={12}>
         <CustomRadioBox
-          label={t("project.project-contact-person.gender")}
+          label={t("project.project-contact-person.form.gender")}
           name="gender"
           options={genderList(t)}
         />
@@ -103,7 +103,7 @@ const ProjectContactPersonForm: React.FC<ProjectContactPersonFormProps> = ({
       <Grid item xs={12}>
         <CustomPhoneInput
           fullWidth
-          label={t("project.project-contact-person.phone")}
+          label={t("project.project-contact-person.form.phone")}
           name="phone"
           size="small"
           sx={{ mb: 2 }}
@@ -112,7 +112,7 @@ const ProjectContactPersonForm: React.FC<ProjectContactPersonFormProps> = ({
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={t("project.project-contact-person.email")}
+          label={t("project.project-contact-person.form.email")}
           name="email"
           type="email"
           size="small"

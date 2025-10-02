@@ -38,14 +38,15 @@ const HydrologicalInformationDrawer = (
   };
 
   const validationSchema = yup.object().shape({
-    water_source: yup.string().nullable(),
+    parent_id: yup.string().uuid().nullable(),
+    water_source: yup.string().max(100).nullable(),
     catchment_area: yup.number().nullable(),
     elevation_change: yup.number().nullable(),
     head: yup.number().nullable(),
     total_inflow: yup.number().nullable(),
     active_storage_volume: yup.number().nullable(),
     water_stored: yup.number().nullable(),
-    remark: yup.string().nullable(),
+    remark: yup.string().max(100).nullable(),
   });
 
   const isEdit = Boolean(hydrologicalInformation?.id);

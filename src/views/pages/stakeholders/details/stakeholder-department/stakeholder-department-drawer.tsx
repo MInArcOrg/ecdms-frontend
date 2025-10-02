@@ -22,9 +22,14 @@ const DepartmentDrawer = (props: DepartmentDrawerType) => {
     props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    parent_department_id: yup.string().nullable(),
+    name: yup.string().max(255).required("Name is required"),
     description: yup.string().required("Description is required"),
+    stakeholder_id: yup.string().length(36).required("Stakeholder is required"),
+    stakeholder_department_id: yup.string().length(36).nullable(),
+    required_education: yup.string().max(255).nullable(),
+    required_work_experience: yup.string().max(255).nullable(),
+    salary: yup.number().nullable(),
+    no_of_professionals: yup.number().integer().nullable(),
     reference: yup.string().nullable(),
   });
 

@@ -28,10 +28,13 @@ const ProjectStakeholderDrawer = (props: ProjectStakeholderDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
-    stakeholder_id: yup.string().required(),
-    title: yup.string().required(),
-    description: yup.string().required(),
-    remark: yup.string().required(),
+    stakeholder_id: yup.string().length(36).required("Stakeholder is required"),
+    project_id: yup.string().length(36).required("Project is required"),
+    title: yup.string().max(36).required("Title is required"),
+    description: yup.string().nullable(),
+    remark: yup.string().max(255).nullable(),
+    parent_id: yup.string().length(36).nullable(),
+    revision_no: yup.number().integer().nullable(),
   });
 
   const isEdit = Boolean(projectStakeholder?.id);
@@ -92,6 +95,7 @@ const ProjectStakeholderDrawer = (props: ProjectStakeholderDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...projectStakeholder,
+            project_id: projectId,
           }}
           createActionFunc={
             isEdit ? editProjectStakeholder : createProjectStakeholder

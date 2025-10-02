@@ -205,7 +205,7 @@ const EnvironmentalDataList: React.FC<EnvironmentalDataListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "environmentaldata",

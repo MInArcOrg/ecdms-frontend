@@ -274,7 +274,7 @@ const MiniGridStationConsumerList: React.FC<
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "minigridstationconsumer",

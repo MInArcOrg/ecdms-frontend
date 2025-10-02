@@ -163,7 +163,7 @@ const RailwayStationList: React.FC<RailwayStationListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "railwayStation",

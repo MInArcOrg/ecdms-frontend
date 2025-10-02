@@ -18,8 +18,8 @@ interface MasterCategoryDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required(),
-  description: yup.string().required(),
+ title: yup.string().max(36).required("Title is required"),
+  description: yup.string().nullable(),
 });
 
 const MasterCategoryDrawer = (props: MasterCategoryDrawerType) => {
@@ -60,7 +60,7 @@ const MasterCategoryDrawer = (props: MasterCategoryDrawerType) => {
   };
   return (
     <CustomSideDrawer
-      title={`master-data.${
+      title={`master-data.master-category.${
         isEdit ? "edit-master-category" : "create-master-category"
       }`}
       handleClose={handleClose}

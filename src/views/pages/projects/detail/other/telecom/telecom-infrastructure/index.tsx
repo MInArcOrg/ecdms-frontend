@@ -183,7 +183,7 @@ const TelecomInfrastructureList: React.FC<TelecomInfrastructureListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "telecomInfrastructure",

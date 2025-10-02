@@ -32,7 +32,14 @@ const MobileNetworkDrawer = (props: MobileNetworkDrawerType) => {
   const validationSchema = yup.object().shape({
     mobile_network_type_id: yup
       .string()
+      .uuid()
       .required("Mobile network type is required"),
+    cell_towers: yup.boolean().nullable(),
+    antennas: yup.boolean().nullable(),
+    base_stations: yup.boolean().nullable(),
+    repeaters: yup.boolean().nullable(),
+    switches: yup.boolean().nullable(),
+    others: yup.string().nullable(),
   });
 
   const isEdit = Boolean(mobileNetwork?.id);
@@ -54,14 +61,6 @@ const MobileNetworkDrawer = (props: MobileNetworkDrawerType) => {
     data: {
       ...values,
       project_id: projectId,
-      mobile_network_type_id: values.mobile_network_type_id,
-      call_towers: values.call_towers || false,
-      antennas: values.antennas || false,
-      base_stations: values.base_stations || false,
-      repeaters: values.repeaters || false,
-      switches: values.switches || false,
-      others: values.others,
-      id: mobileNetwork?.id,
     },
     files: uploadableFile ? [uploadableFile] : [],
   });
@@ -103,12 +102,11 @@ const MobileNetworkDrawer = (props: MobileNetworkDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...mobileNetwork,
-            call_towers: mobileNetwork?.call_towers || false,
+            cell_towers: mobileNetwork?.cell_towers || false,
             antennas: mobileNetwork?.antennas || false,
             base_stations: mobileNetwork?.base_stations || false,
             repeaters: mobileNetwork?.repeaters || false,
             switches: mobileNetwork?.switches || false,
-            others: mobileNetwork?.others || "",
           }}
           createActionFunc={isEdit ? editMobileNetwork : createMobileNetwork}
           onActionSuccess={onActionSuccess}

@@ -29,13 +29,14 @@ const DataCenterDrawer = (props: DataCenterDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
+    parent_id: yup.string().nullable(),
     data_center_type_id: yup.string().required("Data center type is required"),
-    servers: yup.boolean(),
-    storage_devices: yup.boolean(),
-    networking_equipment: yup.boolean(),
-    cooling_systems: yup.boolean(),
-    backup_generators: yup.boolean(),
-    others: yup.string(),
+    servers: yup.boolean().nullable(),
+    storage_devices: yup.boolean().nullable(),
+    networking_equipment: yup.boolean().nullable(),
+    cooling_systems: yup.boolean().nullable(),
+    backup_generators: yup.boolean().nullable(),
+    others: yup.string().nullable(),
   });
 
   const isEdit = Boolean(dataCenter?.id);

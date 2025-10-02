@@ -10,10 +10,12 @@ import {
 import { useRouter } from "next/router";
 import { toast } from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import RequiredFieldsContext from "src/context/required-fields-context";
 import Translations from "src/layouts/components/Translations";
 import { IApiPayload, IApiResponse } from "src/types/requests";
 import { parseError } from "src/utils/parse/clean-error";
 import Page from "src/views/components/page/page";
+import * as Yup from "yup";
 
 interface FormPageWrapperProps<T extends FormikValues> {
   children: (formik: FormikProps<T>) => JSX.Element;
@@ -51,6 +53,7 @@ const FormPageWrapper = <T extends FormikValues>({
 }: FormPageWrapperProps<T>) => {
   const { t: intl } = useTranslation();
   const router = useRouter();
+  const requiredFields = getRequiredFields(validationSchema);
 
   const onSubmit = async (
     values: T,
@@ -100,6 +103,7 @@ const FormPageWrapper = <T extends FormikValues>({
       >
         {(formik: FormikProps<T>) => (
           <form onSubmit={formik.handleSubmit}>
+            <RequiredFieldsContext.Provider value={requiredFields}>
             <Grid container>
               <Grid item xs={12}>
                 <Box>{children(formik)}</Box>
@@ -128,6 +132,7 @@ const FormPageWrapper = <T extends FormikValues>({
                 </Button>
               </Grid>
             </Grid>
+            </RequiredFieldsContext.Provider>
           </form>
         )}
       </Formik>
@@ -136,3 +141,14 @@ const FormPageWrapper = <T extends FormikValues>({
 };
 
 export default FormPageWrapper;
+
+export const getRequiredFields = (schema: Yup.ObjectSchema<any>): string[] => {
+  const schemaDescription = schema.describe();
+
+  return Object.keys(schemaDescription.fields).filter((field) => {
+    const fieldDesc = schemaDescription.fields[field] as any;
+    const hasRequiredTest = fieldDesc.tests?.some((t: any) => t.name === "required");
+    const isNonNullable = fieldDesc.nullable === false; // numbers, booleans
+    return hasRequiredTest || isNonNullable;
+  });
+};

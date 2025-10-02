@@ -46,13 +46,23 @@ const SatelliteNetworkComponentManufacturerDrawer = (
   };
 
   const validationSchema = yup.object().shape({
+    parent_id: yup.string().nullable(),
     satellite_network_id: yup
       .string()
       .required("Satellite network is required"),
-    satellite: yup.string().nullable(),
-    ground_stations: yup.string().nullable(),
-    modems: yup.string().nullable(),
-    routers: yup.string().nullable(),
+    satellite: yup
+      .string()
+      .nullable()
+      .max(100, "Satellite manufacturer cannot exceed 100 characters"),
+    ground_stations: yup
+      .string()
+      .nullable()
+      .max(100, "Ground stations manufacturer cannot exceed 100 characters"),
+    modems: yup
+      .string()
+      .nullable()
+      .max(100, "Modems manufacturer cannot exceed 100 characters"),
+    routers: yup.string().nullable().max(100, "Routers manufacturer cannot exceed 100 characters"),
     others: yup.string().nullable(),
   });
 

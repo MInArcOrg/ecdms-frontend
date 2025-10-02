@@ -283,7 +283,7 @@ const RailwaySubBallastConditionAssessmentList: React.FC<
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleCreateEditDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             // Updated subject

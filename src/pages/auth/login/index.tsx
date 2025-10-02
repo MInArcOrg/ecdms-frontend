@@ -146,6 +146,9 @@ const Login = () => {
                 type={showPassword ? "text" : "password"}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                  onCopy={(e) => e.preventDefault()}
+                onCut={(e) => e.preventDefault()}
+                onPaste={(e) => e.preventDefault()}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">

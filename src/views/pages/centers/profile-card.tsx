@@ -1,6 +1,6 @@
 // ** MUI Imports
 import { Icon } from "@iconify/react";
-import { CircularProgress, Divider, IconButton, Tooltip } from "@mui/material";
+import { Divider, IconButton, Tooltip } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -14,6 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import departmentApiService from "src/services/department/department-service";
 import Department from "src/types/department/department";
+import LoadingPlaceholder from "src/views/components/loader";
 import SubDepartmentDrawer from "./sub-department/sub-department-drawer";
 const ProfileCard = ({
   department,
@@ -75,16 +76,7 @@ const ProfileCard = ({
 
       <CardContent>
         {loading ? (
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "100%",
-            }}
-          >
-            <CircularProgress />
-          </Box>
+          <LoadingPlaceholder/>
         ) : (
           <Box>
             <Typography variant="h6" sx={{ color: "text.primary", mt: 0 }}>

@@ -31,8 +31,19 @@ const CulvertRoadOverInformationDrawer = (
   } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    guard_rail_type_id: yup.string().required("Guard rail type is required"),
+    parent_id: yup.string().length(36).nullable(),
+    project_id: yup.string().length(36).required("Project is required"),
+    name: yup.string().max(255).required("Name is required"),
+    carriage_way_width: yup.number().nullable(),
+    side_walk_width: yup.number().nullable(),
+    lane_number: yup.number().integer().nullable(),
+    head_wall_to_head_wall: yup.number().nullable(),
+    average_fill_height: yup.number().nullable(),
+    guard_rail_type_id: yup
+      .string()
+      .length(36)
+      .required("Guard rail type is required"),
+    parapet_length: yup.number().nullable(),
   });
 
   const isEdit = Boolean(culvertRoadOverInformation?.id);
@@ -102,9 +113,7 @@ const CulvertRoadOverInformationDrawer = (
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{
-            ...culvertRoadOverInformation,
-          }}
+          initialValues={{ ...culvertRoadOverInformation, project_id: projectId }}
           createActionFunc={
             isEdit
               ? editCulvertRoadOverInformation

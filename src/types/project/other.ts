@@ -36,6 +36,7 @@ export interface MobileNetwork {
   mobilenetworktype: ProjectGeneralMaster;
   call_towers?: boolean;
   antennas?: boolean;
+  cell_towers?: boolean;
   base_stations?: boolean;
   repeaters?: boolean;
   switches?: boolean;

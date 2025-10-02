@@ -41,38 +41,42 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
     }));
   };
   const validationSchema = yup.object().shape({
-    quarter: yup.number().required(`${"Quarter"} ${"is required"}`),
-    financial_performance: yup
-      .number()
-      .required(`${"Financial Performance"} ${"is required"}`),
-    physical_performance: yup
-      .number()
-      .required(`${"Physical Performance"} ${"is required"}`),
+    parent_id: yup.string().length(36).nullable(), // Identifier of a related or parent report
+    start: yup.string().nullable(),
+    end: yup.string().nullable(),
+    type: yup.string().max(255).nullable(),
+    project_expense: yup.number().nullable(),
+    manpower: yup.number().nullable(),
     direct_labour: viewSections.manpower
-      ? yup.number().required(`${"Direct Labour"} ${"is required"}`)
-      : yup.mixed().notRequired(),
+      ? yup.number().required("Direct Labour is required")
+      : yup.number().nullable(),
     indirect_labour: viewSections.manpower
-      ? yup.number().required(`${"Indirect Labour"} ${"is required"}`)
-      : yup.mixed().notRequired(),
+      ? yup.number().required("Indirect Labour is required")
+      : yup.number().nullable(),
     material: viewSections.subtotal
-      ? yup.number().required(`${"Material"} ${"is required"}`)
-      : yup.mixed().notRequired(),
+      ? yup.number().required("Material is required")
+      : yup.number().nullable(),
     machinery: viewSections.subtotal
-      ? yup.number().required(`${"Machinery"} ${"is required"}`)
-      : yup.mixed().notRequired(),
+      ? yup.number().required("Machinery is required")
+      : yup.number().nullable(),
     other_expense: viewSections.subtotal
-      ? yup.number().required(`${"Other Expense"} ${"is required"}`)
-      : yup.mixed().notRequired(),
+      ? yup.number().required("Other Expense is required")
+      : yup.number().nullable(),
     sub_contractor_cost: viewSections.subtotal
-      ? yup.number().required(`${"Subcontractor Cost"} ${"is required"}`)
-      : yup.mixed().notRequired(),
+      ? yup.number().required("Subcontractor Cost is required")
+      : yup.number().nullable(),
     cost_due_to_rework: viewSections.subtotal
-      ? yup.number().required(`${"Cost due to rework"} ${"is required"}`)
-      : yup.mixed().notRequired(),
-    over_head_cost: yup
-      .number()
-      .required(`${"Over Head Cost"} ${"is required"}`),
-    subtotal: yup.number().required(`${"Subtotal"} ${"is required"}`),
+      ? yup.number().required("Cost due to rework is required")
+      : yup.number().nullable(),
+    financial_performance: yup.number().nullable(),
+    physical_performance: yup.number().nullable(),
+    over_head_cost: yup.number().nullable(),
+    profit: yup.number().nullable(),
+    year: yup.string().max(255).nullable(),
+    quarter: yup.string().max(255).nullable(),
+    is_summary: yup.boolean().nullable(),
+    remark: yup.string().nullable(),
+    revision_no: yup.number().integer().nullable(),
   });
 
   const isEdit = Boolean(projectPlan?.id);

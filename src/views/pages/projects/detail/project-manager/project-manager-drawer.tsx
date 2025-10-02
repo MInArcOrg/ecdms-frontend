@@ -48,14 +48,14 @@ const ManagerDrawer = (props: ManagerDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.project-manager.${isEdit ? "edit" : "create"}`}
+      title={`project.other.project-manager.${isEdit ? "edit" : "create"}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.project-manager.${isEdit ? "edit" : "create"}`}
+          title={`project.other.project-manager.${isEdit ? "edit" : "create"}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

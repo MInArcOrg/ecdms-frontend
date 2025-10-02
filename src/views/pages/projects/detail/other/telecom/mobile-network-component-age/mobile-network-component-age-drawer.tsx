@@ -38,7 +38,18 @@ const MobileNetworkComponentAgeDrawer = (
   };
 
   const validationSchema = yup.object().shape({
+    parent_id: yup.string().nullable(),
     mobile_network_id: yup.string().required("Mobile network ID is required"),
+    cell: yup.number().nullable().min(0, "Age must be a positive number"),
+    towers: yup.number().nullable().min(0, "Age must be a positive number"),
+    antennas: yup.number().nullable().min(0, "Age must be a positive number"),
+    base_stations: yup
+      .number()
+      .nullable()
+      .min(0, "Age must be a positive number"),
+    repeaters: yup.number().nullable().min(0, "Age must be a positive number"),
+    switches: yup.number().nullable().min(0, "Age must be a positive number"),
+    others: yup.string().nullable(),
   });
 
   const isEdit = Boolean(mobileNetworkComponentAge?.id);

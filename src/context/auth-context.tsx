@@ -71,7 +71,6 @@ const AuthProvider = ({ children }: Props) => {
             localStorage.removeItem("accessToken");
             setUser(null);
             setLoading(false);
-            console.log("isGuestGuard", isGuestGuard);
             if (authConfig.onTokenExpiration === "logout" && !isGuestGuard) {
               if (
                 !currentUrl.includes("login") &&

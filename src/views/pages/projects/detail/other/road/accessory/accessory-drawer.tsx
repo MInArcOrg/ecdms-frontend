@@ -22,7 +22,17 @@ const AccessoryDrawer = (props: AccessoryDrawerType) => {
   const { open, toggle, refetch, accessory, projectId, otherSubMenu } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
+    parent_id: yup.string().length(36).nullable(),
+    project_id: yup.string().length(36).required("Project is required"),
+    name: yup.string().max(255).required("Name is required"),
+    under_passes: yup.number().integer().nullable(),
+    ramps: yup.number().integer().nullable(),
+    traffic_signals: yup.number().integer().nullable(),
+    repair_stations: yup.number().integer().nullable(),
+    bicycle_lanes: yup.boolean().nullable(),
+    bicycle_signals: yup.number().integer().nullable(),
+    culvert: yup.boolean().nullable(),
+    bridge: yup.boolean().nullable(),
   });
 
   const isEdit = Boolean(accessory?.id);
@@ -75,9 +85,7 @@ const AccessoryDrawer = (props: AccessoryDrawerType) => {
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{
-            ...accessory,
-          }}
+          initialValues={{ ...accessory, project_id: projectId }}
           createActionFunc={isEdit ? editAccessory : createAccessory}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

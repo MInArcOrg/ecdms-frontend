@@ -98,7 +98,7 @@ function ProjectResourceList({ projectId }: { projectId: string }) {
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "projectresource",

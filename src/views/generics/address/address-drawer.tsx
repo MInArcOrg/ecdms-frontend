@@ -15,19 +15,23 @@ interface AddressDrawerType {
   modelId: string;
 }
 
-const validationSchema = yup.object().shape({
-  country: yup.string().required(),
-  region: yup.string(),
-  city: yup.string(),
-  subcity: yup.string(),
-  street: yup.string(),
-  block_number: yup.string(),
-  house_number: yup.string(),
-  northing: yup.number().required(),
-  easting: yup.number().required(),
-});
+
 
 const AddressDrawer = (props: AddressDrawerType) => {
+  const validationSchema = yup.object().shape({
+  country: yup.string().max(255).required("Country is required"),
+  region: yup.string().max(255).nullable(),
+  city: yup.string().max(255).required("City is required"),
+  northing: yup.number().required("Northing is required"),
+  easting: yup.number().required("Easting is required"),
+  subcity: yup.string().max(255).nullable(),
+  street: yup.string().max(255).nullable(),
+  block_number: yup.string().max(255).nullable(),
+  house_number: yup.string().max(255).nullable(),
+  hq: yup.boolean().nullable(),
+ 
+  revision_no: yup.number().integer().nullable(),
+});
   // ** Props
   const { open, toggle, refetch, address, modelId } = props;
 

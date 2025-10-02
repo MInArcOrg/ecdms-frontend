@@ -226,7 +226,7 @@ const SolarPanelList: React.FC<SolarPanelListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "solarpanel",

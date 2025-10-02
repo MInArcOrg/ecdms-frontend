@@ -40,13 +40,14 @@ const MiniGridStationDrawer = (props: MiniGridStationDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
-    substation_id: yup.string().required("Substation is required"),
-    name: yup.string().required("Name is required"),
+    parent_id: yup.string().uuid().nullable(),
+    substation_id: yup.string().uuid().required("Substation is required"),
+    name: yup.string().max(100).required("Name is required"),
     minigrid_size: yup
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value)),
-    battery_type_id: yup.string().nullable(),
+    battery_type_id: yup.string().uuid().nullable(),
     battery_size: yup
       .number()
       .nullable()
@@ -64,7 +65,7 @@ const MiniGridStationDrawer = (props: MiniGridStationDrawerType) => {
       .nullable()
       .transform((value) => (isNaN(value) ? null : value)),
     diesel_generator: yup.string().required("Diesel Generator is required"),
-    owner_operator: yup.string().nullable(),
+    owner_operator: yup.string().max(255).nullable(),
     remark: yup.string().nullable(),
   });
 
@@ -85,19 +86,8 @@ const MiniGridStationDrawer = (props: MiniGridStationDrawerType) => {
 
   const getPayload = (values: MiniGridStation) => ({
     data: {
+      ...values,
       project_id: projectId,
-      substation_id: values.substation_id,
-      name: values.name,
-      minigrid_size: values.minigrid_size,
-      battery_type_id: values.battery_type_id,
-      battery_size: values.battery_size,
-      inverter: values.inverter,
-      system_voltage: values.system_voltage,
-      expected_annual_generation: values.expected_annual_generation,
-      diesel_generator: values.diesel_generator,
-      owner_operator: values.owner_operator,
-      remark: values.remark,
-      id: miniGridStation?.id,
     },
     files: uploadableFile ? [uploadableFile] : [],
   });

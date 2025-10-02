@@ -205,7 +205,7 @@ const RailwayTrackDataList: React.FC<RailwayTrackDataListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "railwaytrackdata",

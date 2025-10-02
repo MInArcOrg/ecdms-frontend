@@ -197,7 +197,7 @@ const RegulationAndPolicyList: React.FC<RegulationAndPolicyListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "regulationandpolicy",

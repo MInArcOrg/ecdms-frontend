@@ -16,10 +16,9 @@ interface RoleDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  name: yup.string().required(),
-  description: yup.string().required(),
+  name: yup.string().max(36).required(),
+  description: yup.string().max(100).nullable(),
 });
-
 const RoleDrawer = (props: RoleDrawerType) => {
   // ** Props
   const { open, toggle, refetch, role } = props;
@@ -57,7 +56,7 @@ const RoleDrawer = (props: RoleDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={isEdit ? "admin.roles.edit-role" : "admin.roles.create-role"}
+      title={isEdit ? "admin.role.edit-role" : "admin.role.create-role"}
       handleClose={handleClose}
       open={open}
     >

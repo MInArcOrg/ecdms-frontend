@@ -200,7 +200,7 @@ const SegmentGeometryList: React.FC<SegmentGeometryListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "segmentgeometry",

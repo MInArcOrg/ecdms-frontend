@@ -196,7 +196,7 @@ const ElectricTowerList: React.FC<ElectricTowerListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "electrictower",

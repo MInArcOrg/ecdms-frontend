@@ -1,10 +1,9 @@
 import type { FormikProps } from "formik";
-import { useTranslation } from "react-i18next";
 import projectFinanceApiService from "src/services/project/project-finance-service";
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
 import { uploadFile } from "src/services/utils/file-utils";
-import type { ProjectGeneralFinance } from "src/types/project/project-finance";
 import type { ProjectFinance } from "src/types/project";
+import type { ProjectGeneralFinance } from "src/types/project/project-finance";
 import type { IApiPayload, IApiResponse } from "src/types/requests";
 import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
 import FormPageWrapper from "src/views/shared/form/form-wrapper";
@@ -29,21 +28,14 @@ const MainContractPriceDrawer = (props: MainContractPriceDrawerProps) => {
     projectId,
     projectGeneralFinance,
   } = props;
-  const { t } = useTranslation();
-
+   
   const validationSchema = yup.object().shape({
-    main_contract_price_amount: yup
-      .number()
-      .required(`${t("Main Contract Price")} ${t("is required")}`)
-      .moreThan(0),
-    rebate: yup
-      .number()
-      .required(`${t("Rebate")} ${t("is required")}`)
-      .min(0)
-      .max(100),
-    source_of_finance: yup
-      .string()
-      .required(`${t("Source of Finance")} ${t("is required")}`),
+    parent_id: yup.string().length(36).nullable(),
+    main_contract_price_amount: yup.number().nullable(),
+    rebate: yup.number().nullable(),
+    remark: yup.string().nullable(),
+    source_of_finance: yup.string().max(255).nullable(),
+    revision_no: yup.number().integer().nullable(),
   });
 
   const isEdit = Boolean(projectFinance?.id);
@@ -97,6 +89,7 @@ const MainContractPriceDrawer = (props: MainContractPriceDrawerProps) => {
           validationSchema={validationSchema}
           initialValues={
             projectFinance || {
+              project_id: projectId,
               main_contract_price_amount: 0,
               rebate: 0,
               source_of_finance: "",

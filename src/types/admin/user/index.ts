@@ -15,7 +15,7 @@ type User = {
   email: string;
   phone: string;
   gender: string;
-  marital_status: string | null;
+  marital_status: number | null;
   partner_name: string | null;
   birth_date: string | Date | EthiopianDate | undefined;
   position_name?: string;

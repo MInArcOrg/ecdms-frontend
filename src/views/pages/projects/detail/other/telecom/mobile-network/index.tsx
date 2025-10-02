@@ -179,7 +179,7 @@ const MobileNetworkList: React.FC<MobileNetworkListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "mobilenetwork",

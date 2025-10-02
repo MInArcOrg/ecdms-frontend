@@ -19,7 +19,7 @@ const ProjectPaymentForm: React.FC<ProjectPaymentFormProps> = ({
   const { t: transl } = useTranslation();
 
   // Handle value change and update the corresponding field
-
+console.log('project payment',formik.errors)
   return (
     <>
       <CustomTextBox
@@ -44,6 +44,15 @@ const ProjectPaymentForm: React.FC<ProjectPaymentFormProps> = ({
         label={transl("project.project-interim_payment.form.retention")}
         placeholder={transl("project.project-interim_payment.form.retention")}
         name="retention"
+        size="small"
+        type="number"
+        sx={{ mb: 2 }}
+      />
+        <CustomTextBox
+        fullWidth
+        label={transl("project.project-interim_payment.form.reference_number")}
+        placeholder={transl("project.project-interim_payment.form.reference_number")}
+        name="reference_number"
         size="small"
         type="number"
         sx={{ mb: 2 }}

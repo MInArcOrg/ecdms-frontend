@@ -195,7 +195,7 @@ const MaintenanceHistoryList: React.FC<MaintenanceHistoryListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "maintenancehistory",

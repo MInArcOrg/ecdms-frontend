@@ -49,15 +49,19 @@ const ElectricGridControlCenterDataDrawer = (
   };
 
   const validationSchema = yup.object().shape({
+    parent_id: yup.string().uuid().nullable(),
     mini_grid_station_id: yup
       .string()
+      .uuid()
       .required("Mini Grid Station is required"),
-    name: yup.string().required("Name is required"),
+    name: yup.string().max(100).required("Name is required"),
     control_system_type_id: yup
       .string()
+      .uuid()
       .required("Control System Type is required"),
     communication_links_id: yup
       .string()
+      .uuid()
       .required("Communication Links is required"),
     installation_year: yup
       .number()
@@ -94,6 +98,7 @@ const ElectricGridControlCenterDataDrawer = (
 
   const getPayload = (values: ElectricGridControlCenterData) => ({
     data: {
+      ...values,
       project_id: projectId,
       mini_grid_station_id: values.mini_grid_station_id,
       name: values.name,

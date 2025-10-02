@@ -44,7 +44,7 @@ const PermissionList = ({}) => {
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: togglePermissionDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: { action: "create", subject: "permission" },
         }}
       />

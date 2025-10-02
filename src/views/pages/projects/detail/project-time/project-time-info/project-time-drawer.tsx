@@ -24,7 +24,13 @@ interface ProjectTimeDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  description: yup.string(),
+  project_id: yup.string().length(36).required("Project is required"),
+  contract_signing_date: yup.string().nullable(),
+  site_handover_date: yup.string().nullable(),
+  mobilization_days_no: yup.number().integer().nullable(),
+  commencement_date: yup.string().nullable(),
+  original_contract_duration: yup.number().integer().nullable(),
+  revision_no: yup.number().integer().nullable(),
 });
 
 const ProjectTimeDrawer = (props: ProjectTimeDrawerType) => {
@@ -43,6 +49,7 @@ const ProjectTimeDrawer = (props: ProjectTimeDrawerType) => {
   const getPayload = (values: ProjectTime) => {
     const payload = {
       data: {
+        ...values,
         project_id: projectId,
         site_handover_date: convertDateToLocaleDate(values.site_handover_date),
         contract_signing_date: convertDateToLocaleDate(
@@ -95,6 +102,7 @@ const ProjectTimeDrawer = (props: ProjectTimeDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...projectTime,
+            project_id: projectId,
             contract_signing_date: formatInitialDateDate(
               projectTime?.contract_signing_date,
             ),

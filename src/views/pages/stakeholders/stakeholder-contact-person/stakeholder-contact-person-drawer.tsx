@@ -29,7 +29,14 @@ const StakeholderContactPersonDrawer = (
     setUploadableFile(file);
   };
 
-  const validationSchema = yup.object().shape({});
+  const validationSchema = yup.object().shape({
+    first_name: yup.string().max(36).required("First name is required"),
+    middle_name: yup.string().max(255).required("Middle name is required"),
+    last_name: yup.string().max(255).required("Last name is required"),
+    gender: yup.string().max(255).required("Gender is required"),
+    email: yup.string().max(255).email("Invalid email").required("Email is required"),
+    phone_number: yup.string().max(255).required("Phone number is required"),
+  });
 
   const isEdit = Boolean(stakeholderContactPerson?.id);
 

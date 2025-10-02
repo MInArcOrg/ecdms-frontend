@@ -25,7 +25,7 @@ const EducationForm: React.FC<EducationFormProps> = ({
 }) => {
   const { t } = useTranslation();
   const { data: studyFields } = useQuery({
-    queryKey: ["roles"],
+    queryKey: ["study-fields"],
     queryFn: () =>
       generalMasterDataApiService.getAll("study-fields", dropDownConfig()),
   });

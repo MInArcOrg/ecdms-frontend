@@ -68,6 +68,7 @@ function ProjectStakeholderList({ projectId }: { projectId: string }) {
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.grid.value}
         isLoading={isLoading}
+        breakpoints={{ xs: 12, sm: 6, md: 4}}
         ItemViewComponent={({ data }) => (
           <ProjectStakeholderCard
             onEdit={handleEdit}
@@ -79,7 +80,7 @@ function ProjectStakeholderList({ projectId }: { projectId: string }) {
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "projectstakeholder",

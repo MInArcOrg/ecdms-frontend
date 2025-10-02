@@ -62,7 +62,7 @@ const RailwayTrackMaintenanceAndInspectionDrawer = (
     scheduled_maintenance_activity_id: Yup.string().required(),
     maintenance_method: Yup.string().nullable(),
     track_maintenance_frequency_id: Yup.string().required(),
-    recent_maintenance_date: Yup.date().nullable(),
+    recent_maintenance_date: Yup.string().nullable(),
     inspection_reports_and_findings: Yup.string().nullable(),
     remark: Yup.string().nullable(),
   });

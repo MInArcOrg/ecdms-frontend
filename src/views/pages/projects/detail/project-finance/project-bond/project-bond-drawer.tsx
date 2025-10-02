@@ -1,6 +1,5 @@
 import { FormikProps } from "formik";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { institutionType } from "src/constants/bond-constants";
 import projectBondApiService from "src/services/project/project-bond-service";
 import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
@@ -39,7 +38,6 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
     type,
     projectGeneralFinance,
   } = props;
-  const { t } = useTranslation();
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
@@ -53,9 +51,20 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
     return projectGeneralFinance?.price_after_rebate * (event / 100);
   };
   const validationSchema = yup.object().shape({
+    parent_id: yup.string().length(36).nullable(),
+    type: yup.string().max(255).nullable(),
+    issue_date: yup.string().nullable(),
+    expiration_date: yup.string().nullable(),
+    issuing_institute: yup.string().max(255).nullable(),
+    institute_branch: yup.string().max(255).nullable(),
+    branch_address: yup.string().max(255).nullable(),
+    institution_type: yup.string().max(50).nullable(),
+    phone: yup.string().max(255).nullable(),
+    remark: yup.string().nullable(),
+    revision_no: yup.number().integer().nullable(),
     amount: yup
       .number()
-      .required(`${t("Amount")} ${t("is required")}`)
+      .nullable()
       .when("institution_type", {
         is: (value: string) => value === institutionType.bank.value,
         then: (schema) =>
@@ -70,6 +79,7 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
       }),
     percent: yup
       .number()
+      .nullable()
       .when("institution_type", {
         is: (value: string) => value === institutionType.bank.value,
         then: (schema) => schema.max(institutionType.bank.percent).min(0),
@@ -78,8 +88,6 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
         is: (value: string) => value === institutionType.insurance.value,
         then: (schema) => schema.max(institutionType.insurance.percent).min(0),
       }),
-    institute_branch: yup.string().required(),
-    branch_address: yup.string().required(),
   });
 
   const isEdit = Boolean(projectBond?.id);

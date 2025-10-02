@@ -170,7 +170,7 @@ const IrrigationCapacityList: React.FC<IrrigationCapacityListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "irrigationCapacity",

@@ -31,19 +31,38 @@ const CulvertStructuralInformationDrawer = (
   } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    pier_type_id: yup.string().required("Pier type is required"),
-    abutment_type_id: yup.string().required("Abutment type is required"),
+    parent_id: yup.string().length(36).nullable(),
+    project_id: yup.string().length(36).required("Project is required"),
+    name: yup.string().max(255).required("Name is required"),
+    culvert_type: yup.string().max(255).nullable(),
+    culvert_barrel_length: yup.number().nullable(),
+    culvert_height: yup.number().nullable(),
+    opening_number: yup.number().integer().nullable(),
+    opening_width: yup.number().nullable(),
+    total_culvert_width: yup.number().nullable(),
+    distance_between_barrels: yup.number().nullable(),
+    head_wall_length: yup.number().nullable(),
+    pier_type_id: yup.string().length(36).required("Pier type is required"),
+    pier_height: yup.number().nullable(),
+    abutment_type_id: yup
+      .string()
+      .length(36)
+      .required("Abutment type is required"),
+    abutment_average_height: yup.number().nullable(),
     endwall_type_inlet_id: yup
       .string()
+      .length(36)
       .required("Endwall type inlet is required"),
     endwall_type_outlet_id: yup
       .string()
+      .length(36)
       .required("Endwall type outlet is required"),
+    wingwall_average_length: yup.number().nullable(),
     paved_water_way_type_id: yup
       .string()
+      .length(36)
       .required("Paved water way type is required"),
-    soil_type_id: yup.string().required("Soil type is required"),
+    soil_type_id: yup.string().length(36).required("Soil type is required"),
   });
 
   const isEdit = Boolean(culvertStructuralInformation?.id);
@@ -123,9 +142,7 @@ const CulvertStructuralInformationDrawer = (
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{
-            ...culvertStructuralInformation,
-          }}
+          initialValues={{ ...culvertStructuralInformation, project_id: projectId }}
           createActionFunc={
             isEdit
               ? editCulvertStructuralInformation

@@ -23,8 +23,30 @@ const BridgeBasicDataDrawer = (props: BridgeBasicDataDrawerType) => {
     props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    bridge_name: yup.string().required("Bridge name is required"),
+     parent_id: yup.string().uuid().nullable(),
+    name: yup
+      .string()
+      .max(255)
+      .required("Name is required"),
+    bridge_name: yup
+      .string()
+      .max(255)
+      .required("Bridge name is required"),
+    bridge_number: yup
+      .string()
+      .max(255)
+      .nullable(),
+    bridge_length: yup.number().nullable(),
+    bridge_width: yup.number().nullable(),
+    construction_year: yup.number().integer().nullable(),
+    contractor: yup.string().max(255).nullable(),
+    designer: yup.string().max(255).nullable(),
+    bridge_cost: yup.number().nullable(),
+    land_capacity: yup.number().nullable(),
+    average_daily_traffic: yup
+      .number()
+      .integer()
+      .nullable(),
   });
 
   const isEdit = Boolean(bridgeBasicData?.id);

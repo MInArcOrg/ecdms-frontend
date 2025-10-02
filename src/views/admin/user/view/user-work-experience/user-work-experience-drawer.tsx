@@ -27,11 +27,12 @@ const WorkExperienceDrawer = (props: WorkExperienceDrawerType) => {
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const validationSchema = yup.object().shape({
-    company_name: yup.string().required("Company name is required"),
-    position: yup.string().required("Position is required"),
+    company_name: yup.string().max(255).required("Company name is required"),
+    department: yup.string().max(255).nullable(),
+    position: yup.string().max(255).nullable(),
+    task_description: yup.string().required("Task description is required"),
     start_date: yup.date().required("Start date is required"),
-    end_date: yup.date().required("End date is required"),
-    description: yup.string().optional(),
+    end_date: yup.string().nullable(),
   });
 
   const isEdit = Boolean(workexperience?.id);

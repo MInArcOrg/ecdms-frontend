@@ -91,7 +91,7 @@ const ResourceGeneralMasterList: React.FC<ResourceGeneralMasterProps> = ({
             createActionConfig={{
               ...defaultCreateActionConfig,
               onClick: toggleDrawer,
-              onlyIcon: true,
+              onlyIcon: false,
               permission: {
                 action: "create",
                 subject: resourceMasterModel.dbModel,
