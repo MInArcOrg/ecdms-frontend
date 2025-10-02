@@ -202,7 +202,7 @@ const BridgeFoundationList: React.FC<BridgeFoundationListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "bridgefoundation",

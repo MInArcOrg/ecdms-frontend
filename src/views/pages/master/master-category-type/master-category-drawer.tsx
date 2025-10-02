@@ -18,7 +18,7 @@ interface MasterCategoryDrawerType {
 }
 
 const validationSchema = yup.object().shape({
- title: yup.string().max(255).required("Title is required"),
+ title: yup.string().max(36).required("Title is required"),
   description: yup.string().nullable(),
 });
 

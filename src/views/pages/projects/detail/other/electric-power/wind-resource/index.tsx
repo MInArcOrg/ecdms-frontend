@@ -177,7 +177,7 @@ const WindResourceList: React.FC<WindResourceListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "windresource",

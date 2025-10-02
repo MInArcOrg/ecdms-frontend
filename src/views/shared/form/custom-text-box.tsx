@@ -20,8 +20,8 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
   onValueChange,
   type = "text",
   allowSpecialChars = false,
-  maxLength = 100,
-  multilineMaxLength = 500,
+  maxLength = 36,
+  multilineMaxLength = 150,
   multiline = false,
   ...props
 }) => {
@@ -44,7 +44,7 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
           value = value.replace(/[^a-zA-Z0-9@._\-+]/g, "");
         } else {
           // Default alphanumeric + space only
-          value = value.replace(/[^a-zA-Z0-9\s]/g, "");
+          value = value.replace(/[^a-zA-Z0-9\s./]/g, "");
         }
       }
 

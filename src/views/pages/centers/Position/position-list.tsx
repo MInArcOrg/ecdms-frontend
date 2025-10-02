@@ -88,7 +88,7 @@ function PositionList({ parentDepartment }: { parentDepartment: Department }) {
           createActionConfig={{
             ...defaultCreateActionConfig,
             onClick: toggleDrawer,
-            onlyIcon: true,
+            onlyIcon: false,
             permission: {
               action: "create",
               subject: "position",

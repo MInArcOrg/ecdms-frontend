@@ -177,7 +177,7 @@ const ProjectContactPersonList: React.FC<ProjectContactPersonListProps> = ({
       )}
 
       <ItemsListing
-        title={t("project.project-contact-person.form.title")}
+        title={t("project.project-contact-person.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

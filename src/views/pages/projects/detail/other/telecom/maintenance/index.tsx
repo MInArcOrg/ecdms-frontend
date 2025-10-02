@@ -190,7 +190,7 @@ const MaintenanceList: React.FC<MaintenanceListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "maintenance",

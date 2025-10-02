@@ -173,7 +173,7 @@ const WaterIrrigationDamList: React.FC<WaterIrrigationDamListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "waterIrrigationDam",

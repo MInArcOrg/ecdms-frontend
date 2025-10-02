@@ -97,39 +97,39 @@ const ManagerList: React.FC<ManagerListProps> = ({ projectId }) => {
     manager: ProjectManager,
   ): { title: string; value: string }[] => [
     {
-      title: t("project.project-manager.firstName"),
+      title: t("project.other.project-manager.firstName"),
       value: manager?.first_name || "N/A",
     },
     {
-      title: t("project.project-manager.middleName"),
+      title: t("project.other.project-manager.middleName"),
       value: manager?.middle_name || "N/A",
     },
     {
-      title: t("project.project-manager.lastName"),
+      title: t("project.other.project-manager.lastName"),
       value: manager?.last_name || "N/A",
     },
     {
-      title: t("project.project-manager.position"),
+      title: t("project.other.project-manager.position"),
       value: manager?.position || "N/A",
     },
     {
-      title: t("project.project-manager.nationalIdNo"),
+      title: t("project.other.project-manager.nationalIdNo"),
       value: manager?.national_id_no || "N/A",
     },
     {
-      title: t("project.project-manager.gender"),
+      title: t("project.other.project-manager.gender"),
       value: manager?.gender || "N/A",
     },
     {
-      title: t("project.project-manager.phone"),
+      title: t("project.other.project-manager.phone"),
       value: manager?.phone || "N/A",
     },
     {
-      title: t("project.project-manager.email"),
+      title: t("project.other.project-manager.email"),
       value: manager?.email || "N/A",
     },
     {
-      title: t("project.project-manager.stakeholder"),
+      title: t("project.other.project-manager.stakeholder"),
       value: getStakeholderName(manager?.stakeholder_id),
     },
     {
@@ -159,12 +159,12 @@ const ManagerList: React.FC<ManagerListProps> = ({ projectId }) => {
           id={selectedRow?.id || ""}
           hasReference={true}
           fileType="PROJECT_MANAGER"
-          title={t("project.project-manager.details")}
+          title={t("project.other.project-manager.details")}
         />
       )}
 
       <ItemsListing
-        title={t("project.project-manager.title")}
+        title={t("project.other.project-manager.title")}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

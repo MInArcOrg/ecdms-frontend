@@ -16,8 +16,8 @@ const RoleForm: React.FC<RoleFormProps> = ({}) => {
     <>
       <CustomTextBox
         fullWidth
-        label={transl("name")}
-        placeholder={transl("name")}
+        label={transl("admin.role.form.title")}
+        placeholder={transl("admin.role.form.title")}
         name="name"
         size="small"
         sx={{ mb: 2 }}
@@ -25,8 +25,8 @@ const RoleForm: React.FC<RoleFormProps> = ({}) => {
 
       <CustomTextBox
         fullWidth
-        label={transl("description")}
-        placeholder={transl("description")}
+        label={transl("admin.role.form.description")}
+        placeholder={transl("admin.role.form.description")}
         name="description"
         multiline
         rows={3}

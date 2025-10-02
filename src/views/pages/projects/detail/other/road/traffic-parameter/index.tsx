@@ -184,7 +184,7 @@ const TrafficParameterList: React.FC<TrafficParameterListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "trafficparameter",

@@ -238,7 +238,7 @@ const SafetyAndHealthList: React.FC<SafetyAndHealthListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "safetyandhealth",

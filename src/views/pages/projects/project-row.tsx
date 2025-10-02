@@ -22,8 +22,8 @@ export const projectColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t("project.columns.title"),
-      field: "title",
+      headerName: t("project.column.name"),
+      field: "name",
       renderCell: ({ row }: CellType) => {
         return (
           <Typography
@@ -45,7 +45,7 @@ export const projectColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t("project.columns.elapsed-time"),
+      headerName: t("project.column.elapsed-time"),
       field: "elapsed-time",
       renderCell: ({ row }: CellType) => {
         return (
@@ -58,7 +58,7 @@ export const projectColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t("project.columns.cpi"),
+      headerName: t("project.column.cpi"),
       field: "cpi",
       renderCell: ({ row }: CellType) => {
         return (
@@ -69,7 +69,7 @@ export const projectColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t("project.columns.spi"),
+      headerName: t("project.column.spi"),
       field: "spi",
       renderCell: ({ row }: CellType) => {
         return (

@@ -225,7 +225,7 @@ const InternetConnectionList: React.FC<InternetConnectionListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "internetconnection",

@@ -27,7 +27,7 @@ const ProjectPaymentDrawer = (props: ProjectPaymentDrawerType) => {
     setUploadableFile(file);
   };
   const validationSchema = yup.object().shape({
-    title: yup.string().max(255).required("Title is required"),
+    title: yup.string().max(36).required("Title is required"),
     parent_id: yup.string().length(36).nullable(),
     type: yup.string().max(255).nullable(),
     description: yup.string().nullable(),

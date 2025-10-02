@@ -214,7 +214,7 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "roadsegment",

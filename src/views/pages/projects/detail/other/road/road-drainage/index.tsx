@@ -197,7 +197,7 @@ const RoadDrainageList: React.FC<RoadDrainageListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "roaddrainage",

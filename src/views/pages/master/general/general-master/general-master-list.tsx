@@ -82,7 +82,7 @@ const GeneralGeneralMaster: React.FC<GeneralGeneralMasterProps> = () => {
             createActionConfig={{
               ...defaultCreateActionConfig,
               onClick: toggleDrawer,
-              onlyIcon: true,
+              onlyIcon: false,
               permission: {
                 action: "create",
                 subject: `${module}type`,

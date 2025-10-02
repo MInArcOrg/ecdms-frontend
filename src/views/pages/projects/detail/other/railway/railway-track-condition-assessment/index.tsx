@@ -181,7 +181,7 @@ value: assessment?.inspection_dates?.toLocaleString() || "N/A",
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "railwaytrackconditionassessment",

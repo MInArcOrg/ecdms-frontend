@@ -91,7 +91,7 @@ const ProjectGeneralMasterList: React.FC<ProjectGeneralMasterProps> = ({
             createActionConfig={{
               ...defaultCreateActionConfig,
               onClick: toggleDrawer,
-              onlyIcon: true,
+              onlyIcon: false,
               permission: {
                 action: "create",
                 subject: projectMasterModel.dbModel,

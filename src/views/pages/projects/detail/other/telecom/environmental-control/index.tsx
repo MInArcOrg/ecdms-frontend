@@ -176,7 +176,7 @@ const EnvironmentalControlList: React.FC<EnvironmentalControlListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "environmentalcontrol",

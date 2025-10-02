@@ -193,7 +193,7 @@ const NetworkCapacityList: React.FC<NetworkCapacityListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "networkcapacity",

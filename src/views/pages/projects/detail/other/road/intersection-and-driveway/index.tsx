@@ -185,7 +185,7 @@ const IntersectionDrivewayList: React.FC<IntersectionDrivewayListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "intersectiondriveway",

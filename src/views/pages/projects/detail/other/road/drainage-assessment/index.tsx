@@ -173,7 +173,7 @@ const DrainageAssessmentList: React.FC<DrainageAssessmentListProps> = ({
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true,
+          onlyIcon: false,
           permission: {
             action: "create",
             subject: "drainageassessment",

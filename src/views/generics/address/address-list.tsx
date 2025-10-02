@@ -81,7 +81,7 @@ function AddressList({ modelId, type }: { modelId: string; type: string }) {
           createActionConfig={{
             ...defaultCreateActionConfig,
             onClick: toggleDrawer,
-            onlyIcon: true,
+            onlyIcon: false,
             permission: {
               action: "create",
               subject: "address",

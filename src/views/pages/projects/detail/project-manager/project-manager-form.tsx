@@ -29,7 +29,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik, stakeholders }) => {
       <Grid item xs={12}>
         <CustomSelect
           fullWidth
-          label={t("project.project-manager.stakeholder")}
+          label={t("project.other.project-manager.stakeholder")}
           name="stakeholder_id"
           options={stakeholderOptions}
           size="small"
@@ -39,7 +39,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik, stakeholders }) => {
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t("project.project-manager.firstName")}
+          label={t("project.other.project-manager.firstName")}
           name="first_name"
           size="small"
           sx={{ mb: 2 }}
@@ -48,7 +48,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik, stakeholders }) => {
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t("project.project-manager.middleName")}
+          label={t("project.other.project-manager.middleName")}
           name="middle_name"
           size="small"
           sx={{ mb: 2 }}
@@ -57,7 +57,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik, stakeholders }) => {
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t("project.project-manager.lastName")}
+          label={t("project.other.project-manager.lastName")}
           name="last_name"
           size="small"
           sx={{ mb: 2 }}
@@ -66,7 +66,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik, stakeholders }) => {
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t("project.project-manager.position")}
+          label={t("project.other.project-manager.position")}
           name="position"
           size="small"
           sx={{ mb: 2 }}
@@ -75,7 +75,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik, stakeholders }) => {
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
-          label={t("project.project-manager.nationalIdNo")}
+          label={t("project.other.project-manager.nationalIdNo")}
           name="national_id_no"
           size="small"
           sx={{ mb: 2 }}
@@ -83,7 +83,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik, stakeholders }) => {
       </Grid>
       <Grid item xs={12}>
         <CustomRadioBox
-          label={t("project.project-manager.gender")}
+          label={t("project.other.project-manager.gender")}
           name="gender"
           options={genderList(t)}
         />
@@ -91,7 +91,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik, stakeholders }) => {
       <Grid item xs={12}>
         <CustomPhoneInput
           fullWidth
-          label={t("project.project-manager.phone")}
+          label={t("project.other.project-manager.phone")}
           name="phone"
           size="small"
           sx={{ mb: 2 }}
@@ -100,7 +100,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik, stakeholders }) => {
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={t("project.project-manager.email")}
+          label={t("project.other.project-manager.email")}
           name="email"
           type="email"
           size="small"
