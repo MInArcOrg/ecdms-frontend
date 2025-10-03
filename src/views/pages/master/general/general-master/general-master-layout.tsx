@@ -73,7 +73,7 @@ function GeneralMasterLayout({ children }: { children: ReactElement }) {
         <Grid xs={12}> 
           <MasterDataNavMenu
             activeMenu={{ id: activeModule.id, title: activeModule.name }}
-            menuItems={appModulesWithIds.filter((module) => ['master-data', 'stakeholder', 'document', 'infrastructure'].includes(module.id)).map((module) => ({ id: module.id, title: module.name }))}
+            menuItems={appModulesWithIds.filter((module) => ['project', 'resource'].includes(module.id)).map((module) => ({ id: module.id, title: module.name }))}
             setActiveMenu={handleModuleClick}
           />
         </Grid>
