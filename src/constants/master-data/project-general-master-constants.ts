@@ -6,6 +6,7 @@ export const projectMasterModels = {
     createTitle: "create-functional-classification",
     editTitle: "edit-functional-classification",
     fileType: "FUNCTIONAL_CLASSIFICATION",
+    flag: "ROAD",
   },
   roadLengthType: {
     model: "RoadLengthType",
@@ -14,6 +15,7 @@ export const projectMasterModels = {
     createTitle: "create-road-length-type",
     editTitle: "edit-road-length-type",
     fileType: "ROAD_LENGTH_TYPE",
+    flag: "ROAD",
   },
   areaTopography: {
     model: "AreaTopography",
@@ -22,6 +24,7 @@ export const projectMasterModels = {
     createTitle: "create-area-topography",
     editTitle: "edit-area-topography",
     fileType: "AREA_TOPOGRAPHY",
+    flag: "ROAD",
   },
   pierType: {
     model: "PierType",
@@ -30,6 +33,7 @@ export const projectMasterModels = {
     createTitle: "create-pier-type",
     editTitle: "edit-pier-type",
     fileType: "PIER_TYPE",
+    flag: "ROAD",
   },
   abutmentType: {
     model: "AbutmentType",
@@ -38,6 +42,7 @@ export const projectMasterModels = {
     createTitle: "create-abutment-type",
     editTitle: "edit-abutment-type",
     fileType: "ABUTMENT_TYPE",
+    flag: "ROAD",
   },
 
   mobileNetworkType: {
@@ -47,6 +52,7 @@ export const projectMasterModels = {
     createTitle: "create-mobile-network-type",
     editTitle: "edit-mobile-network-type",
     fileType: "MOBILE_NETWORK_TYPE",
+    flag: "TELECOMMUNICATION",
   },
   satelliteNetworkType: {
     model: "SatelliteNetworkType",
@@ -55,6 +61,7 @@ export const projectMasterModels = {
     createTitle: "create-satellite-network-type",
     editTitle: "edit-satellite-network-type",
     fileType: "SATELLITE_NETWORK_TYPE",
+    flag: "TELECOMMUNICATION",
   },
   internetConnectionType: {
     model: "InternetConnectionType",
@@ -63,6 +70,7 @@ export const projectMasterModels = {
     createTitle: "create-internet-connection-type",
     editTitle: "edit-internet-connection-type",
     fileType: "INTERNET_CONNECTION_TYPE",
+    flag: "TELECOMMUNICATION",
   },
   endwallTypeInlet: {
     model: "EndwallTypeInlet",
@@ -71,6 +79,7 @@ export const projectMasterModels = {
     createTitle: "create-endwall-type-inlet",
     editTitle: "edit-endwall-type-inlet",
     fileType: "ENDWALL_TYPE_INLET",
+    flag: "ROAD",
   },
   endwallTypeOutlet: {
     model: "EndwallTypeOutlet",
@@ -79,6 +88,7 @@ export const projectMasterModels = {
     createTitle: "create-endwall-type-outlet",
     editTitle: "edit-endwall-type-outlet",
     fileType: "ENDWALL_TYPE_OUTLET",
+    flag: "ROAD",
   },
   pavedWaterWayType: {
     model: "PavedWaterWayType",
@@ -87,6 +97,7 @@ export const projectMasterModels = {
     createTitle: "create-paved-water-way-type",
     editTitle: "edit-paved-water-way-type",
     fileType: "PAVED_WATER_WAY_TYPE",
+    flag: "ROAD",
   },
   soilType: {
     model: "SoilType",
@@ -95,6 +106,7 @@ export const projectMasterModels = {
     createTitle: "create-soil-type",
     editTitle: "edit-soil-type",
     fileType: "SOIL_TYPE",
+    flag: "ROAD",
   },
   guardRailType: {
     model: "GuardRailType",
@@ -103,6 +115,7 @@ export const projectMasterModels = {
     createTitle: "create-guard-rail-type",
     editTitle: "edit-guard-rail-type",
     fileType: "GUARD_RAIL_TYPE",
+    flag: "ROAD",
   },
   bridgeStructureType: {
     model: "BridgeStructureType",
@@ -111,6 +124,7 @@ export const projectMasterModels = {
     createTitle: "create-bridge-structure-type",
     editTitle: "edit-bridge-structure-type",
     fileType: "BRIDGE_STRUCTURE_TYPE",
+    flag: "ROAD",
   },
   owner: {
     model: "Owner",
@@ -119,6 +133,7 @@ export const projectMasterModels = {
     createTitle: "create-owner",
     editTitle: "edit-owner",
     fileType: "OWNER",
+    flag: "ELECTRIC",
   },
   spanSupportType: {
     model: "SpanSupportType",
@@ -127,6 +142,7 @@ export const projectMasterModels = {
     createTitle: "create-span-support-type",
     editTitle: "edit-span-support-type",
     fileType: "SPAN_SUPPORT_TYPE",
+    flag: "ROAD",
   },
   deckSlabType: {
     model: "DeckSlabType",
@@ -135,6 +151,7 @@ export const projectMasterModels = {
     createTitle: "create-deck-slab-type",
     editTitle: "edit-deck-slab-type",
     fileType: "DECK_SLAB_TYPE",
+    flag: "ROAD",
   },
   expansionJointType: {
     model: "ExpansionJointType",
@@ -143,6 +160,7 @@ export const projectMasterModels = {
     createTitle: "create-expansion-joint-type",
     editTitle: "edit-expansion-joint-type",
     fileType: "EXPANSION_JOINT_TYPE",
+    flag: "ROAD",
   },
   bridgePartDefect: {
     model: "BridgePartDefect",
@@ -151,6 +169,7 @@ export const projectMasterModels = {
     createTitle: "create-bridge-part-defect",
     editTitle: "edit-bridge-part-defect",
     fileType: "BRIDGE_PART_DEFECT",
+    flag: "ROAD",
   },
   damageType: {
     model: "DamageType",
@@ -159,6 +178,7 @@ export const projectMasterModels = {
     createTitle: "create-damage-type",
     editTitle: "edit-damage-type",
     fileType: "DAMAGE_TYPE",
+    flag: "ROAD",
   },
   damageCondition: {
     model: "DamageCondition",
@@ -167,6 +187,7 @@ export const projectMasterModels = {
     createTitle: "create-damage-condition",
     editTitle: "edit-damage-condition",
     fileType: "DAMAGE_CONDITION",
+    flag: "ROAD",
   },
   hydrologyDefect: {
     model: "HydrologyDefect",
@@ -175,6 +196,7 @@ export const projectMasterModels = {
     createTitle: "create-hydrology-defect",
     editTitle: "edit-hydrology-defect",
     fileType: "HYDROLOGY_DEFECT",
+    flag: "ROAD",
   },
   roadSafetyFeature: {
     model: "RoadSafetyFeature",
@@ -183,6 +205,7 @@ export const projectMasterModels = {
     createTitle: "create-road-safety-feature",
     editTitle: "edit-road-safety-feature",
     fileType: "ROAD_SAFETY_FEATURE",
+    flag: "ROAD",
   },
   countType: {
     model: "CountType",
@@ -191,6 +214,7 @@ export const projectMasterModels = {
     createTitle: "create-count-type",
     editTitle: "edit-count-type",
     fileType: "COUNT_TYPE",
+    flag: "ROAD",
   },
   projectPhase: {
     model: "ProjectPhase",
@@ -199,6 +223,7 @@ export const projectMasterModels = {
     createTitle: "create-project-phase",
     editTitle: "edit-project-phase",
     fileType: "PROJECT_PHASE",
+    flag: "ROAD",
   },
   inspectionType: {
     model: "InspectionType",
@@ -207,6 +232,7 @@ export const projectMasterModels = {
     createTitle: "create-inspection-type",
     editTitle: "edit-inspection-type",
     fileType: "INSPECTION_TYPE",
+    flag: "ROAD",
   },
   currentCondition: {
     model: "CurrentCondition",
@@ -215,6 +241,7 @@ export const projectMasterModels = {
     createTitle: "create-current-condition",
     editTitle: "edit-current-condition",
     fileType: "CURRENT_CONDITION",
+    flag: "ROAD",
   },
   groundWaterImpact: {
     model: "GroundWaterImpact",
@@ -223,6 +250,7 @@ export const projectMasterModels = {
     createTitle: "create-ground-water-impact",
     editTitle: "edit-ground-water-impact",
     fileType: "GROUND_WATER_IMPACT",
+    flag: "ROAD",
   },
   trackMaintenanceFrequency: {
     model: "TrackMaintenanceFrequency",
@@ -231,6 +259,7 @@ export const projectMasterModels = {
     createTitle: "create-track-maintenance-frequency",
     editTitle: "edit-track-maintenance-frequency",
     fileType: "TRACK_MAINTENANCE_FREQUENCY",
+    flag: "RAILWAY",
   },
   scheduledMaintenanceActivity: {
     model: "ScheduledMaintenanceActivity",
@@ -239,6 +268,7 @@ export const projectMasterModels = {
     createTitle: "create-scheduled-maintenance-activity",
     editTitle: "edit-scheduled-maintenance-activity",
     fileType: "SCHEDULED_MAINTENANCE_ACTIVITY",
+    flag: "RAILWAY",
   },
   rehabilitationRenewalMethodUsed: {
     model: "RehabilitationRenewalMethodUsed",
@@ -247,6 +277,7 @@ export const projectMasterModels = {
     createTitle: "create-rehabilitation-renewal-method-used",
     editTitle: "edit-rehabilitation-renewal-method-used",
     fileType: "REHABILITATION_RENEWAL_METHOD_USED",
+    flag: "RAILWAY",
   },
   trackInspectionFrequency: {
     model: "TrackInspectionFrequency",
@@ -255,6 +286,7 @@ export const projectMasterModels = {
     createTitle: "create-track-inspection-frequency",
     editTitle: "edit-track-inspection-frequency",
     fileType: "TRACK_INSPECTION_FREQUENCY",
+    flag: "RAILWAY",
   },
   trackSafetyMeasure: {
     model: "TrackSafetyMeasure",
@@ -263,6 +295,7 @@ export const projectMasterModels = {
     createTitle: "create-track-safety-measure",
     editTitle: "edit-track-safety-measure",
     fileType: "TRACK_SAFETY_MEASURE",
+    flag: "RAILWAY",
   },
   slopeStability: {
     model: "SlopeStability",
@@ -271,6 +304,7 @@ export const projectMasterModels = {
     createTitle: "create-slope-stability",
     editTitle: "edit-slope-stability",
     fileType: "SLOPE_STABILITY",
+    flag: "ROAD",
   },
   maintenanceFrequency: {
     model: "MaintenanceFrequency",
@@ -279,6 +313,7 @@ export const projectMasterModels = {
     createTitle: "create-maintenance-frequency",
     editTitle: "edit-maintenance-frequency",
     fileType: "MAINTENANCE_FREQUENCY",
+    flag: "ELECTRIC",
   },
   maintenanceType: {
     model: "MaintenanceType",
@@ -287,6 +322,7 @@ export const projectMasterModels = {
     createTitle: "create-maintenance-type",
     editTitle: "edit-maintenance-type",
     fileType: "MAINTENANCE_TYPE",
+    flag: "ROAD",
   },
   drainageType: {
     model: "DrainageType",
@@ -295,6 +331,7 @@ export const projectMasterModels = {
     createTitle: "create-drainage-type",
     editTitle: "edit-drainage-type",
     fileType: "DRAINAGE_TYPE",
+    flag: "ROAD",
   },
   drainageCondition: {
     model: "DrainageCondition",
@@ -303,6 +340,7 @@ export const projectMasterModels = {
     createTitle: "create-drainage-condition",
     editTitle: "edit-drainage-condition",
     fileType: "DRAINAGE_CONDITION",
+    flag: "ROAD",
   },
   assessmentCondition: {
     model: "AssessmentCondition",
@@ -311,6 +349,7 @@ export const projectMasterModels = {
     createTitle: "create-assessment-condition",
     editTitle: "edit-assessment-condition",
     fileType: "ASSESSMENT_CONDITION",
+    flag: "ROAD",
   },
   severityLevel: {
     model: "SeverityLevel",
@@ -319,6 +358,7 @@ export const projectMasterModels = {
     createTitle: "create-severity-level",
     editTitle: "edit-severity-level",
     fileType: "SEVERITY_LEVEL",
+    flag: "ROAD",
   },
   suggestedRepair: {
     model: "SuggestedRepair",
@@ -327,6 +367,7 @@ export const projectMasterModels = {
     createTitle: "create-suggested-repair",
     editTitle: "edit-suggested-repair",
     fileType: "SUGGESTED_REPAIR",
+    flag: "ROAD",
   },
   recommendedActionUrgency: {
     model: "RecommendedActionUrgency",
@@ -335,6 +376,7 @@ export const projectMasterModels = {
     createTitle: "create-recommended-action-urgency",
     editTitle: "edit-recommended-action-urgency",
     fileType: "RECOMMENDED_ACTION_URGENCY",
+    flag: "ROAD",
   },
   hazardType: {
     model: "HazardType",
@@ -343,6 +385,7 @@ export const projectMasterModels = {
     createTitle: "create-hazard-type",
     editTitle: "edit-hazard-type",
     fileType: "HAZARD_TYPE",
+    flag: "ROAD",
   },
   potentialImpact: {
     model: "PotentialImpact",
@@ -351,6 +394,7 @@ export const projectMasterModels = {
     createTitle: "create-potential-impact",
     editTitle: "edit-potential-impact",
     fileType: "POTENTIAL_IMPACT",
+    flag: "ROAD",
   },
   riskLevel: {
     model: "RiskLevel",
@@ -359,6 +403,7 @@ export const projectMasterModels = {
     createTitle: "create-risk-level",
     editTitle: "edit-risk-level",
     fileType: "RISK_LEVEL",
+    flag: "ROAD",
   },
   incidentType: {
     model: "IncidentType",
@@ -367,6 +412,7 @@ export const projectMasterModels = {
     createTitle: "create-incident-type",
     editTitle: "edit-incident-type",
     fileType: "INCIDENT_TYPE",
+    flag: "ROAD",
   },
   incidentTime: {
     model: "IncidentTime",
@@ -375,6 +421,7 @@ export const projectMasterModels = {
     createTitle: "create-incident-time",
     editTitle: "edit-incident-time",
     fileType: "INCIDENT_TIME",
+    flag: "ROAD",
   },
   designClassification: {
     model: "DesignClassification",
@@ -383,6 +430,7 @@ export const projectMasterModels = {
     createTitle: "create-design-classification",
     editTitle: "edit-design-classification",
     fileType: "DESIGN_CLASSIFICATION",
+    flag: "ROAD",
   },
   designStandard: {
     model: "DesignStandard",
@@ -391,6 +439,7 @@ export const projectMasterModels = {
     createTitle: "create-design-standard",
     editTitle: "edit-design-standard",
     fileType: "DESIGN_STANDARD",
+    flag: "ROAD",
   },
   designTrafficFlow: {
     model: "DesignTrafficFlow",
@@ -399,6 +448,7 @@ export const projectMasterModels = {
     createTitle: "create-design-traffic-flow",
     editTitle: "edit-design-traffic-flow",
     fileType: "DESIGN_TRAFFIC_FLOW",
+    flag: "ROAD",
   },
   surfaceType: {
     model: "SurfaceType",
@@ -407,6 +457,7 @@ export const projectMasterModels = {
     createTitle: "create-surface-type",
     editTitle: "edit-surface-type",
     fileType: "SURFACE_TYPE",
+    flag: "ROAD",
   },
   crossSectionType: {
     model: "CrossSectionType",
@@ -415,6 +466,7 @@ export const projectMasterModels = {
     createTitle: "create-cross-section-type",
     editTitle: "edit-cross-section-type",
     fileType: "CROSS_SECTION_TYPE",
+    flag: "ROAD",
   },
   intersectionType: {
     model: "IntersectionType",
@@ -423,6 +475,7 @@ export const projectMasterModels = {
     createTitle: "create-intersection-type",
     editTitle: "edit-intersection-type",
     fileType: "INTERSECTION_TYPE",
+    flag: "ROAD",
   },
   drivewayAccessPoint: {
     model: "DrivewayAccessPoint",
@@ -431,6 +484,7 @@ export const projectMasterModels = {
     createTitle: "create-driveway-access-point",
     editTitle: "edit-driveway-access-point",
     fileType: "DRIVEWAY_ACCESS_POINT",
+    flag: "ROAD",
   },
   pedestrianFacility: {
     model: "PedestrianFacility",
@@ -439,6 +493,7 @@ export const projectMasterModels = {
     createTitle: "create-pedestrian-facility",
     editTitle: "edit-pedestrian-facility",
     fileType: "PEDESTRIAN_FACILITY",
+    flag: "ROAD",
   },
   personalProtectiveEquipmentType: {
     model: "PersonalProtectiveEquipmentType",
@@ -447,6 +502,7 @@ export const projectMasterModels = {
     createTitle: "create-personal-protective-equipment-type",
     editTitle: "edit-personal-protective-equipment-type",
     fileType: "PERSONAL_PROTECTIVE_EQUIPMENT_TYPE",
+    flag: "ROAD",
   },
   injurySeverity: {
     model: "InjurySeverity",
@@ -455,6 +511,7 @@ export const projectMasterModels = {
     createTitle: "create-injury-severity",
     editTitle: "edit-injury-severity",
     fileType: "INJURY_SEVERITY",
+    flag: "ROAD",
   },
   personalProtectiveEquipmentCondition: {
     model: "PersonalProtectiveEquipmentCondition",
@@ -463,6 +520,7 @@ export const projectMasterModels = {
     createTitle: "create-personal-protective-equipment-condition",
     editTitle: "edit-personal-protective-equipment-condition",
     fileType: "PERSONAL_PROTECTIVE_EQUIPMENT_CONDITION",
+    flag: "ROAD",
   },
   weatherConditionDuringIncident: {
     model: "WeatherConditionDuringIncident",
@@ -471,6 +529,7 @@ export const projectMasterModels = {
     createTitle: "create-weather-condition-during-incident",
     editTitle: "edit-weather-condition-during-incident",
     fileType: "WEATHER_CONDITION_DURING_INCIDENT",
+    flag: "ROAD",
   },
   broadcastingInfrastructureType: {
     model: "BroadcastingInfrastructureType",
@@ -479,6 +538,7 @@ export const projectMasterModels = {
     createTitle: "create-broadcasting-infrastructure-type",
     editTitle: "edit-broadcasting-infrastructure-type",
     fileType: "BROADCASTING_INFRASTRUCTURE_TYPE",
+    flag: "TELECOMMUNICATION",
   },
   dataCenterType: {
     model: "DataCenterType",
@@ -487,6 +547,7 @@ export const projectMasterModels = {
     createTitle: "create-data-center-type",
     editTitle: "edit-data-center-type",
     fileType: "DATA_CENTER_TYPE",
+    flag: "TELECOMMUNICATION",
   },
   damType: {
     model: "DamType",
@@ -495,6 +556,7 @@ export const projectMasterModels = {
     createTitle: "create-dam-type",
     editTitle: "edit-dam-type",
     fileType: "DAM_TYPE",
+    flag: "WATER_INFRASTRUCTURE",
   },
   spillwayType: {
     model: "SpillwayType",
@@ -503,6 +565,7 @@ export const projectMasterModels = {
     createTitle: "create-spillway-type",
     editTitle: "edit-spillway-type",
     fileType: "SPILLWAY_TYPE",
+    flag: "WATER_INFRASTRUCTURE",
   },
   turbineType: {
     model: "TurbineType",
@@ -511,6 +574,7 @@ export const projectMasterModels = {
     createTitle: "create-turbine-type",
     editTitle: "edit-turbine-type",
     fileType: "TURBINE_TYPE",
+    flag: "ELECTRIC",
   },
   solarPanelType: {
     model: "SolarPanelType",
@@ -519,6 +583,7 @@ export const projectMasterModels = {
     createTitle: "create-solar-panel-type",
     editTitle: "edit-solar-panel-type",
     fileType: "SOLAR_PANEL_TYPE",
+    flag: "ELECTRIC",
   },
   towerType: {
     model: "TowerType",
@@ -527,6 +592,7 @@ export const projectMasterModels = {
     createTitle: "create-tower-type",
     editTitle: "edit-tower-type",
     fileType: "TOWER_TYPE",
+    flag: "ELECTRIC",
   },
   generatorType: {
     model: "GeneratorType",
@@ -535,6 +601,7 @@ export const projectMasterModels = {
     createTitle: "create-generator-type",
     editTitle: "edit-generator-type",
     fileType: "GENERATOR_TYPE",
+    flag: "ELECTRIC",
   },
   maintenanceFrequencyType: {
     model: "MaintenanceFrequencyType",
@@ -543,6 +610,7 @@ export const projectMasterModels = {
     createTitle: "create-maintenance-frequency-type",
     editTitle: "edit-maintenance-frequency-type",
     fileType: "MAINTENANCE_FREQUENCY_TYPE",
+    flag: "ELECTRIC",
   },
   conductorCodeName: {
     model: "ConductorCodeName",
@@ -551,6 +619,7 @@ export const projectMasterModels = {
     createTitle: "create-conductor-code-name",
     editTitle: "edit-conductor-code-name",
     fileType: "CONDUCTOR_CODE_NAME",
+    flag: "ELECTRIC",
   },
   batteryType: {
     model: "BatteryType",
@@ -559,6 +628,7 @@ export const projectMasterModels = {
     createTitle: "create-battery-type",
     editTitle: "edit-battery-type",
     fileType: "BATTERY_TYPE",
+    flag: "ELECTRIC",
   },
   towerFoundationType: {
     model: "TowerFoundationType",
@@ -567,6 +637,7 @@ export const projectMasterModels = {
     createTitle: "create-tower-foundation-type",
     editTitle: "edit-tower-foundation-type",
     fileType: "TOWER_FOUNDATION_TYPE",
+    flag: "ELECTRIC",
   },
   switchgearType: {
     model: "SwitchgearType",
@@ -575,6 +646,7 @@ export const projectMasterModels = {
     createTitle: "create-switchgear-type",
     editTitle: "edit-switchgear-type",
     fileType: "SWITCHGEAR_TYPE",
+    flag: "ELECTRIC",
   },
   circuitBreakerType: {
     model: "CircuitBreakerType",
@@ -583,6 +655,7 @@ export const projectMasterModels = {
     createTitle: "create-circuit-breaker-type",
     editTitle: "edit-circuit-breaker-type",
     fileType: "CIRCUIT_BREAKER_TYPE",
+    flag: "ELECTRIC",
   },
   substationCommunicationSystem: {
     model: "SubstationCommunicationSystem",
@@ -591,6 +664,7 @@ export const projectMasterModels = {
     createTitle: "create-substation-communication-system",
     editTitle: "edit-substation-communication-system",
     fileType: "SUBSTATION_COMMUNICATION_SYSTEM",
+    flag: "ELECTRIC",
   },
   transformerType: {
     model: "TransformerType",
@@ -599,6 +673,7 @@ export const projectMasterModels = {
     createTitle: "create-transformer-type",
     editTitle: "edit-transformer-type",
     fileType: "TRANSFORMER_TYPE",
+    flag: "ELECTRIC",
   },
   substationGroundingSystem: {
     model: "SubstationGroundingSystem",
@@ -607,6 +682,7 @@ export const projectMasterModels = {
     createTitle: "create-substation-grounding-system",
     editTitle: "edit-substation-grounding-system",
     fileType: "SUBSTATION_GROUNDING_SYSTEM",
+    flag: "ELECTRIC",
   },
   distributionLineType: {
     model: "DistributionLineType",
@@ -615,6 +691,7 @@ export const projectMasterModels = {
     createTitle: "create-distribution-line-type",
     editTitle: "edit-distribution-line-type",
     fileType: "DISTRIBUTION_LINE_TYPE",
+    flag: "ELECTRIC",
   },
   privacyMeasuresType: {
     model: "PrivacyMeasuresType",
@@ -623,6 +700,7 @@ export const projectMasterModels = {
     createTitle: "create-privacy-measures-type",
     editTitle: "edit-privacy-measures-type",
     fileType: "PRIVACY_MEASURES_TYPE",
+    flag: "ELECTRIC",
   },
   protectionInstalled: {
     model: "ProtectionInstalled",
@@ -631,6 +709,7 @@ export const projectMasterModels = {
     createTitle: "create-protection-installed",
     editTitle: "edit-protection-installed",
     fileType: "PROTECTION_INSTALLED",
+    flag: "ELECTRIC",
   },
   fireExtinguishingTechnology: {
     model: "FireExtinguishingTechnology",
@@ -639,6 +718,7 @@ export const projectMasterModels = {
     createTitle: "create-fire-extinguishing-technology",
     editTitle: "edit-fire-extinguishing-technology",
     fileType: "FIRE_EXTINGUISHING_TECHNOLOGY",
+    flag: "ELECTRIC",
   },
   model: {
     model: "model",
@@ -647,6 +727,7 @@ export const projectMasterModels = {
     createTitle: "create-model",
     editTitle: "edit-model",
     fileType: "MODEL",
+    flag: "ELECTRIC",
   },
   smartMeterType: {
     model: "SmartMeterType",
@@ -655,6 +736,7 @@ export const projectMasterModels = {
     createTitle: "create-smart-meter-type",
     editTitle: "edit-smart-meter-type",
     fileType: "SMART_METER_TYPE",
+    flag: "ELECTRIC",
   },
   customerEngagementFrequency: {
     model: "CustomerEngagementFrequency",
@@ -663,6 +745,7 @@ export const projectMasterModels = {
     createTitle: "create-customer-engagement-frequency",
     editTitle: "edit-customer-engagement-frequency",
     fileType: "CUSTOMER_ENGAGEMENT_FREQUENCY",
+    flag: "ELECTRIC",
   },
   customerEngagementProgramsType: {
     model: "CustomerEngagementProgramsType",
@@ -671,6 +754,7 @@ export const projectMasterModels = {
     createTitle: "create-customer-engagement-programs-type",
     editTitle: "edit-customer-engagement-programs-type",
     fileType: "CUSTOMER_ENGAGEMENT_PROGRAMS_TYPE",
+    flag: "ELECTRIC",
   },
   controlSystemType: {
     model: "ControlSystemType",
@@ -679,6 +763,7 @@ export const projectMasterModels = {
     createTitle: "create-control-system-type",
     editTitle: "edit-control-system-type",
     fileType: "CONTROL_SYSTEM_TYPE",
+    flag: "ELECTRIC",
   },
   communicationLinkType: {
     model: "CommunicationLinkType",
@@ -687,6 +772,7 @@ export const projectMasterModels = {
     createTitle: "create-communication-link-type",
     editTitle: "edit-communication-link-type",
     fileType: "COMMUNICATION_LINK_TYPE",
+    flag: "ELECTRIC",
   },
   cyberSecurityMeasuresType: {
     model: "CyberSecurityMeasuresType",
@@ -695,6 +781,7 @@ export const projectMasterModels = {
     createTitle: "create-cyber-security-measures-type",
     editTitle: "edit-cyber-security-measures-type",
     fileType: "CYBER_SECURITY_MEASURES_TYPE",
+    flag: "ELECTRIC",
   },
   cyberSecurityAuditsFrequency: {
     model: "CyberSecurityAuditsFrequency",
@@ -703,6 +790,7 @@ export const projectMasterModels = {
     createTitle: "create-cyber-security-audits-frequency",
     editTitle: "edit-cyber-security-audits-frequency",
     fileType: "CYBER_SECURITY_AUDITS_FREQUENCY",
+    flag: "ELECTRIC",
   },
   apronSurfaceType: {
     model: "ApronSurfaceType",
@@ -711,6 +799,7 @@ export const projectMasterModels = {
     createTitle: "create-apron-surface-type",
     editTitle: "edit-apron-surface-type",
     fileType: "APRON_SURFACE_TYPE",
+    flag: "AIRFILED_AIRPORT",
   },
   embeddedEnstrument: {
     model: "EmbeddedEnstrument",
@@ -719,6 +808,7 @@ export const projectMasterModels = {
     createTitle: "create-embedded-enstrument",
     editTitle: "edit-embedded-enstrument",
     fileType: "EMBEDDED_ENSTRUMENT",
+    flag: "WATER_INFRASTRUCTURE",
   },
   damPurpose: {
     model: "DamPurpose",
@@ -727,6 +817,7 @@ export const projectMasterModels = {
     createTitle: "create-dam-purpose",
     editTitle: "edit-dam-purpose",
     fileType: "DAM_PURPOSE",
+    flag: "WATER_INFRASTRUCTURE",
   },
   quality: {
     model: "Quality",
@@ -735,6 +826,7 @@ export const projectMasterModels = {
     createTitle: "create-quality",
     editTitle: "edit-quality",
     fileType: "DAM_PURPOSE",
+    flag: "RESOURCE",
   },
   safetyProblemsEncountered: {
     model: "SafetyProblemsEncountered",
@@ -743,6 +835,7 @@ export const projectMasterModels = {
     createTitle: "create-safety-problems-encountered",
     editTitle: "edit-safety-problems-encountered",
     fileType: "SAFETY_PROBLEMS_ENCOUNTERED",
+    flag: "ELECTRIC",
   },
   unitPrice: {
     model: "UnitPrice",
@@ -751,6 +844,7 @@ export const projectMasterModels = {
     createTitle: "create-unit-price",
     editTitle: "edit-unit-price",
     fileType: "UNIT_PRICE",
+    flag: "RESOURCE",
   },
   supplierName: {
     model: "SupplierName",
@@ -759,6 +853,7 @@ export const projectMasterModels = {
     createTitle: "create-supplier-name",
     editTitle: "edit-supplier-name",
     fileType: "SUPPLIER_NAME",
+    flag: "RESOURCE",
   },
   supplierAddress: {
     model: "SupplierAddress",
@@ -767,6 +862,7 @@ export const projectMasterModels = {
     createTitle: "create-supplier-address",
     editTitle: "edit-supplier-address",
     fileType: "SUPPLIER_ADDRESS",
+    flag: "RESOURCE",
   },
   distributionLineMaterial: {
     model: "DistributionLineMaterial",
@@ -775,6 +871,7 @@ export const projectMasterModels = {
     createTitle: "create-distribution-line-material",
     editTitle: "edit-distribution-line-material",
     fileType: "DISTRIBUTION_LINE_MATERIAL",
+    flag: "ELECTRIC",
   },
   communicationLinks: {
     model: "CommunicationLinks",
@@ -783,6 +880,7 @@ export const projectMasterModels = {
     createTitle: "create-communication-link",
     editTitle: "edit-communication-link",
     fileType: "COMMUNICATION_LINKS",
+    flag: "ELECTRIC",
   },
   waterSource: {
     model: "WaterSource",
@@ -791,6 +889,7 @@ export const projectMasterModels = {
     createTitle: "create-water-source",
     editTitle: "edit-water-source",
     fileType: "WATER_SOURCE",
+    flag: "WATER_INFRASTRUCTURE",
   },
   projectTarget: {
     model: "ProjectTarget",
@@ -799,6 +898,7 @@ export const projectMasterModels = {
     createTitle: "create-project-target",
     editTitle: "edit-project-target",
     fileType: "PROJECT_TARGET",
+    flag: "WATER_INFRASTRUCTURE",
   },
   headWorkType: {
     model: "HeadWorkType",
@@ -807,6 +907,7 @@ export const projectMasterModels = {
     createTitle: "create-head-work-type",
     editTitle: "edit-head-work-type",
     fileType: "HEAD_WORK_TYPE",
+    flag: "WATER_INFRASTRUCTURE",
   },
   irrigationTechnology: {
     model: "IrrigationTechnology",
@@ -815,6 +916,7 @@ export const projectMasterModels = {
     createTitle: "create-irrigation-technology",
     editTitle: "edit-irrigation-technology",
     fileType: "IRRIGATION_TECHNOLOGY",
+    flag: "WATER_INFRASTRUCTURE",
   },
   mainCanalType: {
     model: "MainCanalType",
@@ -823,6 +925,7 @@ export const projectMasterModels = {
     createTitle: "create-main-canal-type",
     editTitle: "edit-main-canal-type",
     fileType: "MAIN_CANAL_TYPE",
+    flag: "WATER_INFRASTRUCTURE",
   },
   pumpType: {
     model: "PumpType",
@@ -831,6 +934,7 @@ export const projectMasterModels = {
     createTitle: "create-pump-type",
     editTitle: "edit-pump-type",
     fileType: "PUMP_TYPE",
+    flag: "WATER_INFRASTRUCTURE",
   },
   pumpsPowerSource: {
     model: "PumpsPowerSource",
@@ -839,6 +943,7 @@ export const projectMasterModels = {
     createTitle: "create-pumps-power-source",
     editTitle: "edit-pumps-power-source",
     fileType: "PUMPS_POWER_SOURCE",
+    flag: "WATER_INFRASTRUCTURE",
   },
   runwaySurfaceType: {
     model: "RunwaySurfaceType",
@@ -847,6 +952,7 @@ export const projectMasterModels = {
     createTitle: "create-runway-surface-type",
     editTitle: "edit-runway-surface-type",
     fileType: "RUNWAY_SURFACE_TYPE",
+    flag: "AIRFILED_AIRPORT",
   },
   schemeStatus: {
     model: "SchemeStatus",
@@ -855,6 +961,7 @@ export const projectMasterModels = {
     createTitle: "create-scheme-status",
     editTitle: "edit-scheme-status",
     fileType: "SCHEME_STATUS",
+    flag: "WATER_INFRASTRUCTURE",
   },
   trackType: {
     model: "TrackType",
@@ -863,6 +970,7 @@ export const projectMasterModels = {
     createTitle: "create-track-type",
     editTitle: "edit-track-type",
     fileType: "TRACK_TYPE",
+    flag: "RAILWAY",
   },
   railwayTrackInfrastructure: {
     model: "RailwayTrackInfrastructure",
@@ -871,6 +979,7 @@ export const projectMasterModels = {
     createTitle: "create-railway-track-infrastructure",
     editTitle: "edit-railway-track-infrastructure",
     fileType: "RAILWAY_TRACK_INFRASTRUCTURE",
+    flag: "RAILWAY",
   },
   trackGauge: {
     model: "TrackGauge",
@@ -879,6 +988,7 @@ export const projectMasterModels = {
     createTitle: "create-track-gauge",
     editTitle: "edit-track-gauge",
     fileType: "TRACK_GAUGE",
+    flag: "RAILWAY",
   },
   trackConditionRating: {
     model: "TrackConditionRating",
@@ -887,6 +997,7 @@ export const projectMasterModels = {
     createTitle: "create-track-condition-rating",
     editTitle: "edit-track-condition-rating",
     fileType: "TRACK_CONDITION_RATING",
+    flag: "RAILWAY",
   },
   observedDefects: {
     model: "ObservedDefects",
@@ -895,6 +1006,7 @@ export const projectMasterModels = {
     createTitle: "create-observed-defect",
     editTitle: "edit-observed-defect",
     fileType: "OBSERVED_DEFECTS",
+    flag: "RAILWAY",
   },
   compactionMethod: {
     model: "CompactionMethod",
@@ -903,6 +1015,7 @@ export const projectMasterModels = {
     createTitle: "create-compaction-method",
     editTitle: "edit-compaction-method",
     fileType: "COMPACTION_METHOD",
+    flag: "RAILWAY",
   },
   ballastMaterialType: {
     model: "BallastMaterialType",
@@ -911,6 +1024,7 @@ export const projectMasterModels = {
     createTitle: "create-ballast-material-type",
     editTitle: "edit-ballast-material-type",
     fileType: "BALLAST_MATERIAL_TYPE",
+    flag: "RAILWAY",
   },
   ballastSource: {
     model: "BallastSource",
@@ -919,6 +1033,7 @@ export const projectMasterModels = {
     createTitle: "create-ballast-source",
     editTitle: "edit-ballast-source",
     fileType: "BALLAST_SOURCE",
+    flag: "RAILWAY",
   },
   ballastDegradationIndicator: {
     model: "BallastDegradationIndicator",
@@ -927,6 +1042,7 @@ export const projectMasterModels = {
     createTitle: "create-ballast-degradation-indicator",
     editTitle: "edit-ballast-degradation-indicator",
     fileType: "BALLAST_DEGRADATION_INDICATOR",
+    flag: "RAILWAY",
   },
   subBallastMaterialType: {
     model: "SubBallastMaterialType",
@@ -935,6 +1051,61 @@ export const projectMasterModels = {
     createTitle: "create-sub-ballast-material-type",
     editTitle: "edit-sub-ballast-material-type",
     fileType: "SUB_BALLAST_MATERIAL_TYPE",
+    flag: "RAILWAY",
+  },
+  powerSupplySystemType: {
+    model: "PowerSupplySystemType",
+    dbModel: "powersupplysystemtype",
+    title: "power-supply-system-types",
+    createTitle: "create-power-supply-system-type",
+    editTitle: "edit-power-supply-system-type",
+    fileType: "POWER_SUPPLY_SYSTEM_TYPE",
+    flag: "RAILWAY",
+  },
+  quantityMeasurementUnit: {
+    model: "QuantityMeasurementUnit",
+    dbModel: "quantitymeasurementunit",
+    title: "quantity-measurement-units",
+    createTitle: "create-quantity-measurement-unit",
+    editTitle: "edit-quantity-measurement-unit",
+    fileType: "QUANTITY_MEASUREMENT_UNIT",
+    flag: "RESOURCE",
+  },
+  qualityMeasurementUnit: {
+    model: "QualityMeasurementUnit",
+    dbModel: "qualitymeasurementunit",
+    title: "quality-measurement-units",
+    createTitle: "create-quality-measurement-unit",
+    editTitle: "edit-quality-measurement-unit",
+    fileType: "QUALITY_MEASUREMENT_UNIT",
+    flag: "RESOURCE",
+  },
+  roadWayCrossSectionType: {
+    model: "RoadWayCrossSectionType",
+    dbModel: "roadwaycrosssectiontype",
+    title: "road-way-cross-section-types",
+    createTitle: "create-road-way-cross-section-type",
+    editTitle: "edit-road-way-cross-section-type",
+    fileType: "ROAD_WAY_CROSS_SECTION_TYPE",
+    flag: "ROAD",
+  },
+  structureType: {
+    model: "StructureType",
+    dbModel: "structuretype",
+    title: "structure-types",
+    createTitle: "create-structure-type",
+    editTitle: "edit-structure-type",
+    fileType: "STRUCTURE_TYPE",
+    flag: "ROAD",
+  },
+  networkType: {
+    model: "NetworkType",
+    dbModel: "networktype",
+    title: "network-types",
+    createTitle: "create-network-type",
+    editTitle: "edit-network-type",
+    fileType: "NETWORK_TYPE",
+    flag: "TELECOMMUNICATION",
   },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
@@ -946,6 +1117,7 @@ export type ProjectMasterModel = {
   createTitle: string;
   editTitle: string;
   fileType: string;
+  flag?: string;
 };
 
 export type ProjectMasterModels = {

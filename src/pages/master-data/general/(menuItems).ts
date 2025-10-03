@@ -7,6 +7,7 @@ const menuItems = (t: (item: string) => void) => [
   {
     id: 1,
     title: t("master-data.stakeholder"),
+    basePath: `${baseUrl}/stakeholder`,
     children: [
       {
         id: 1,
@@ -49,6 +50,7 @@ const menuItems = (t: (item: string) => void) => [
   {
     id: 2,
     title: t("master-data.project"),
+    basePath: `${baseUrl}/project`,
     children: Object.values(projectMasterModels)
       .sort((a, b) => a.title.localeCompare(b.title))
       .map((item, index) => ({
@@ -60,6 +62,7 @@ const menuItems = (t: (item: string) => void) => [
   {
     id: 3,
     title: t("master-data.resource"),
+    basePath: `${baseUrl}/resource`,
     children: Object.values(resourceMasterModels)
       .sort((a, b) => a.title.localeCompare(b.title))
       .map((item, index) => ({
