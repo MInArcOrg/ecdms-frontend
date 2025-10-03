@@ -6,7 +6,7 @@ import ResourceGeneralMasterList from "src/views/pages/master/general/resource/r
 
 function GeneralResourceMasterData() {
 const router = useRouter();
-    const { flag, model } = router.query;
+    const { model } = router.query;
   return (
     <div>
       <GeneralMasterLayout>

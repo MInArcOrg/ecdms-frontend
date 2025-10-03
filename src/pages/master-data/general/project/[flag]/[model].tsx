@@ -6,7 +6,7 @@ import ProjectGeneralMasterList from "src/views/pages/master/general/project/pro
 
 function GeneralResourceMasterData() {
 const router = useRouter();
-    const { flag, model } = router.query;
+    const { model } = router.query;
     console.log('flag, model',model,flag, Object.values(projectMasterModels).find((projectModel) => projectModel.dbModel === model));
   return (
     <div>
