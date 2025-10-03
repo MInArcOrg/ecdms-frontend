@@ -1,6 +1,5 @@
 import { DetailMenuItem } from "src/types/layouts/detail-layout";
 
-// Define an object for ID constants
 export const projectMenuIds = {
   projectSetup: "PROJECT_SETUP",
   resource: "RESOURCE",
