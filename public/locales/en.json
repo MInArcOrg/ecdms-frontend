@@ -75,6 +75,8 @@
     "document": "Document",
     "resource": "Resource",
     "general-master": {
+        "select-module": "Please select a module from the menu above to get started.",
+      "select-item": "Please select an item from the side menu to view its details.",
       "ownerships": "Ownership Types",
       "create-ownerships": "Add Ownership Type",
       "edit-ownerships": "Edit Ownership Type",

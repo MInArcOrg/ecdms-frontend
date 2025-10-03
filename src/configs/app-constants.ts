@@ -33,21 +33,23 @@ export const availableColors: ThemeColor[] = [
   "info",
 ];
 export const genderList = (
-  transl: (word: string) => string,
+  transl: (word: string) => string
 ): { label: string; value: string }[] => [
   { label: transl("department.user.male"), value: "M" },
   { label: transl("department.user.female"), value: "F" },
 ];
-export const maritalStatusList= (transl:(word:string)=>string,):{label:string,value:number}[]=>[
-  { label: transl("department.user.single"), value:  0},
-  { label: transl("department.user.married"), value: 1},
+export const maritalStatusList = (
+  transl: (word: string) => string
+): { label: string; value: number }[] => [
+  { label: transl("department.user.single"), value: 0 },
+  { label: transl("department.user.married"), value: 1 },
 ];
-export const masterDataFlagConstanct=(transl:(word:string)=>string)=>{
+export const masterDataFlagConstanct = (transl: (word: string) => string) => {
   return [
     { label: transl("common.status.active"), value: 1 },
     { label: transl("common.status.inactive"), value: 0 },
-  ]
-}
+  ];
+};
 export const gridSpacing = 2;
 export const acadamicLevels: string[] = [
   "1-12",
@@ -66,4 +68,47 @@ export const appModulesNames = [
   "document",
   "infrastructure",
 ];
-
+export const appModulesWithIds = [
+  { id: "master-data", name: "Masterdata" },
+  {
+    id: "project",
+    name: "Project",
+    flags: [
+      {
+        id: "ELECTRIC",
+        name: "Electric",
+      },
+      {
+        id: "BUILDING",
+        name: "Building",
+      },
+      {
+        id: "AIRFILED_AIRPORT",
+        name: "Airfield/Airport",
+      },
+      {
+        id: "RAILWAY",
+        name: "Railway",
+      },
+      {
+        id: "TELECOMMUNICATION",
+        name: "Telecommunication",
+      },
+      {
+        id: "ROAD",
+        name: "Road",
+      },
+      {
+        id: "WATER_INFRASTRUCTURE",
+        name: "Water Infrastructure",
+      },
+    ],
+  },
+  { id: "stakeholder", name: "Stakeholder", flags: [] },
+  { id: "resource", name: "Resource", flags: [{
+    id: "RESOURCE",
+    name: "Resource",
+  }] },
+  { id: "document", name: "Document", flags: [] },
+  { id: "infrastructure", name: "Infrastructure", flags: [] },
+];

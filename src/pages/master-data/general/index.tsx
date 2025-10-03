@@ -1,13 +1,13 @@
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-import LoadingPlaceholder from "src/views/components/loader";
+import GeneralMasterLayout from "src/views/pages/master/general/general-master/general-master-layout";
 
-const GeneralMasterData = () => {
-  const router = useRouter();
-  useEffect(() => {
-    router.push("/master-data/general/stakeholder/ownerships/");
-  }, []);
-  return <LoadingPlaceholder></LoadingPlaceholder>;
-};
+function GeneralResourceMasterData() {
+  return (
+    <div>
+      <GeneralMasterLayout>
+      <></>
+      </GeneralMasterLayout>
+    </div>
+  );
+}
 
-export default GeneralMasterData;
+export default GeneralResourceMasterData;

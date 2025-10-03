@@ -1,4 +1,13 @@
 export const resourceMasterModels = {
+  quality: {
+    model: "Quality",
+    dbModel: "quality",
+    title: "quality",
+    createTitle: "create-quality",
+    editTitle: "edit-quality",
+    fileType: "QUALITY",
+    flag: "RESOURCE",
+  },
   quantityMeasurementUnit: {
     model: "QuantityMeasurementUnit",
     dbModel: "quantitymeasurementunit",
@@ -6,6 +15,7 @@ export const resourceMasterModels = {
     createTitle: "create-quantity-measurement-unit",
     editTitle: "edit-quantity-measurement-unit",
     fileType: "QUANTITY_MEASUREMENT_UNIT",
+    flag: "RESOURCE",
   },
   qualityMeasurementUnit: {
     model: "QualityMeasurementUnit",
@@ -14,6 +24,34 @@ export const resourceMasterModels = {
     createTitle: "create-quality-measurement-unit",
     editTitle: "edit-quality-measurement-unit",
     fileType: "QUALITY_MEASUREMENT_UNIT",
+    flag: "RESOURCE",
+  },
+  supplierAddress: {
+    model: "SupplierAddress",
+    dbModel: "supplieraddress",
+    title: "supplier-address",
+    createTitle: "create-supplier-address",
+    editTitle: "edit-supplier-address",
+    fileType: "SUPPLIER_ADDRESS",
+    flag: "RESOURCE",
+  },
+  supplierName: {
+    model: "SupplierName",
+    dbModel: "suppliername",
+    title: "supplier-name",
+    createTitle: "create-supplier-name",
+    editTitle: "edit-supplier-name",
+    fileType: "SUPPLIER_NAME",
+    flag: "RESOURCE",
+  },
+  unitPrice: {
+    model: "UnitPrice",
+    dbModel: "unitprice",
+    title: "unit-price",
+    createTitle: "create-unit-price",
+    editTitle: "edit-unit-price",
+    fileType: "UNIT_PRICE",
+    flag: "RESOURCE",
   },
 };
 export type ResourceMasterModelKey = keyof typeof resourceMasterModels;
@@ -25,6 +63,7 @@ export type ResourceMasterModel = {
   createTitle: string;
   editTitle: string;
   fileType: string;
+  flag?: string;
 };
 
 export type ResourceMasterModels = {
