@@ -10,11 +10,13 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import CardStatsHorizontal from "src/@core/components/card-statistics/card-stats-horizontal";
-import { gridSpacing } from "src/configs/app-constants";
+import { appModulesWithIds, gridSpacing } from "src/configs/app-constants";
 import useRole from "src/hooks/admin/role-hook";
 import User from "src/types/admin/user";
 import AssignPermissionComponent from "src/views/admin/roles/assign-permission/module-form";
+import MasterDataNavMenu from "src/views/components/custom/layout/master-data-nav-menu";
 
 const StyledCard = styled(Card)(({ theme }) => ({
   minWidth: 275,
@@ -43,7 +45,14 @@ const RoleDetail = () => {
   const { id } = router.query;
   const { useGetOneRole } = useRole();
   const { data: role, isLoading, error } = useGetOneRole(String(id));
-
+  const [activeModule, setActiveModule] = useState(appModulesWithIds[0]);
+  const handleModuleClick = (id: string) => {
+    const module = appModulesWithIds.find((m) => m.id === id);
+    const selectedModule = appModulesWithIds.find((m) => m.id === module?.id);
+    if (selectedModule) {
+      setActiveModule(selectedModule);
+    }
+  };
   if (isLoading) {
     return <CircularProgress />;
   }
@@ -56,6 +65,7 @@ const RoleDetail = () => {
     );
   }
 
+
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -65,34 +75,41 @@ const RoleDetail = () => {
       </Grid>
 
       <Grid item xs={12}>
-        <StyledCard>
-          <CardHeader title="Role Information" />
-          <CardContent>
-            <Title gutterBottom>Name</Title>
-            <Typography variant="h5" component="h2">
-              {role?.name}
-            </Typography>
-            <Pos>Description</Pos>
-            <Typography variant="body2" component="p">
-              {role?.description}
-            </Typography>
-          </CardContent>
-        </StyledCard>
         <Grid container spacing={gridSpacing}>
-          <Grid item md={6}>
-            <CardStatsHorizontal
-              icon="users"
-              stats={role?.totalUsers || 0}
-              title="Total Users"
-            />
+          <Grid item md={6} xs={12}>
+            <StyledCard>
+              <CardHeader title="Role Information" />
+              <CardContent>
+                <Title gutterBottom>Name</Title>
+                <Typography variant="h5" component="h2">
+                  {role?.name}
+                </Typography>
+                <Pos>Description</Pos>
+                <Typography variant="body2" component="p">
+                  {role?.description}
+                </Typography>
+              </CardContent>
+            </StyledCard>
           </Grid>
-          <Grid item md={6}>
-            {" "}
-            <CardStatsHorizontal
-              icon="permissions"
-              stats={role?.totalPermissions || 0}
-              title="Total Permissions"
-            />
+          <Grid item md={6} xs={12}>
+            <Grid container spacing={gridSpacing}>
+              <Grid item md={6}>
+                <CardStatsHorizontal
+                  icon="users"
+                  stats={role?.totalUsers || 0}
+                  title="Total Users"
+                />
+              </Grid>
+              <Grid item md={6}>
+                {" "}
+                <CardStatsHorizontal
+                  icon="permissions"
+                  stats={role?.totalPermissions || 0}
+                  title="Total Permissions"
+                />
+              </Grid>
+            </Grid>
+
           </Grid>
         </Grid>
 
@@ -114,11 +131,17 @@ const RoleDetail = () => {
           </Button>
         </ActionButtons>
       </Grid>
-
+      <Grid item xs={12}>
+        <MasterDataNavMenu
+          activeMenu={{ id: activeModule.id, title: activeModule.name }}
+          menuItems={appModulesWithIds.map((module) => ({ id: module.id, title: module.name }))}
+          setActiveMenu={handleModuleClick}
+        />
+      </Grid>
       <Grid item xs={12}>
         <StyledCard>
           <CardHeader title="Permissions" />
-          <AssignPermissionComponent roleId={String(id)} />
+          <AssignPermissionComponent module={activeModule} roleId={String(id)} />
         </StyledCard>
 
         <StyledCard>

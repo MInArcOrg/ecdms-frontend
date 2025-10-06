@@ -16,22 +16,37 @@ import Checkbox from "@mui/material/Checkbox";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import { GridExpandMoreIcon } from "@mui/x-data-grid";
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { appModulesNames } from "src/configs/app-constants";
+import { appModulesNames, appModulesWithIds } from "src/configs/app-constants";
 import usePermissionSelection from "src/hooks/admin/permission-selection-hook";
+import masterTypeApiService from "src/services/master-data/master-type-service";
+import { MasterType } from "src/types/master/master-types";
 
 // Define the types for permission and props
 interface AssignPermissionComponentProps {
   roleId: string;
+  module: {
+    id: string;
+    name: string;
+    flags?: undefined;
+  } | {
+    id: string;
+    name: string;
+    flags: {
+      id: string;
+      name: string;
+    }[];
+  };
 }
 
 interface AccordionDetailProps {
-  module: string;
+  type: string;
   roleId: string;
 }
 
 const AccordionDetail: React.FC<AccordionDetailProps> = ({
-  module,
+  type,
   roleId,
 }) => {
   const {
@@ -45,7 +60,7 @@ const AccordionDetail: React.FC<AccordionDetailProps> = ({
     handleModelSelectAll,
     handleSubmit,
     models,
-  } = usePermissionSelection(roleId, module);
+  } = usePermissionSelection(roleId, type);
 
   if (isLoading) {
     return <CircularProgress />;
@@ -169,12 +184,14 @@ const AccordionDetail: React.FC<AccordionDetailProps> = ({
 
 const AssignPermissionComponent: React.FC<AssignPermissionComponentProps> = ({
   roleId,
+  module
 }) => {
+
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
   return (
     <div>
-      {appModulesNames.map((module, index) => (
+      {module?.flags && module?.flags.map((flag, index) => (
         <Accordion
           key={index}
           expanded={expanded === `panel${index}`}
@@ -183,13 +200,13 @@ const AssignPermissionComponent: React.FC<AssignPermissionComponentProps> = ({
           }}
         >
           <AccordionSummary expandIcon={<GridExpandMoreIcon />}>
-            <Typography variant="h6">{module}</Typography>
+            <Typography variant="h6">{flag.name}</Typography>
           </AccordionSummary>
           {expanded === `panel${index}` && (
             <AccordionDetails>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  <AccordionDetail roleId={roleId} module={module} />
+                  <AccordionDetail roleId={roleId} type={flag.name} />
                 </Grid>
               </Grid>
             </AccordionDetails>

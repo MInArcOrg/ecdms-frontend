@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import roleApiService from "src/services/admin/role-service";
 import Permission from "src/types/admin/role/permission";
 
-const usePermissionSelection = (roleId: string, module: string) => {
+const usePermissionSelection = (roleId: string, type: string) => {
   const [permissions, setPermissions] = useState<Permission[]>([]);
   const [selectedPermissions, setSelectedPermissions] = useState<{
     [key: string]: boolean;
@@ -13,14 +13,14 @@ const usePermissionSelection = (roleId: string, module: string) => {
 
   // Use useCallback to memoize the fetchPermissions function
   const fetchPermissions = useCallback(async () => {
-    if (!roleId || !module) return;
+    if (!roleId || !type) return;
 
     try {
       setIsLoading(true);
       setError(null);
 
       const response = await roleApiService.getPermissionsByRole(roleId, {
-        filter: { module },
+        filter: { type },
       });
 
       const initialPermissions = response.payload;
@@ -42,7 +42,7 @@ const usePermissionSelection = (roleId: string, module: string) => {
     } finally {
       setIsLoading(false);
     }
-  }, [roleId, module]);
+  }, [roleId, type]);
 
   useEffect(() => {
     fetchPermissions();

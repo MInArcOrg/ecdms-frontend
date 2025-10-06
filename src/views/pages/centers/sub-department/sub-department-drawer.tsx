@@ -54,9 +54,8 @@ const SubDepartmentDrawer = (props: SubDepartmentDrawerType) => {
   };
   return (
     <CustomSideDrawer
-      title={`department.sub-department.${
-        isEdit ? "edit-sub-department" : "create-sub-department"
-      }`}
+      title={`department.sub-department.${isEdit ? "edit-sub-department" : "create-sub-department"
+        }`}
       handleClose={handleClose}
       open={open}
     >
@@ -74,6 +73,7 @@ const SubDepartmentDrawer = (props: SubDepartmentDrawerType) => {
           {(formik: FormikProps<Department>) => {
             return (
               <SubDepartmentForm
+                parentDepartmentId={props.departmentId}
                 formik={formik}
                 defaultLocaleData={{} as Department}
               />
