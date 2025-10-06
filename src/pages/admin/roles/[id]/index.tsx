@@ -47,10 +47,9 @@ const RoleDetail = () => {
   const { data: role, isLoading, error } = useGetOneRole(String(id));
   const [activeModule, setActiveModule] = useState(appModulesWithIds[0]);
   const handleModuleClick = (id: string) => {
-    let module = appModulesWithIds.find((m) => m.id === id);
-    const selectedModule = appModulesWithIds.find((m) => m.id === module?.id);
-    if (selectedModule) {
-      setActiveModule(selectedModule);
+    const foundModule = appModulesWithIds.find(m => m.id === id);
+    if (foundModule) {
+      setActiveModule(foundModule);
     }
   };
   if (isLoading) {
