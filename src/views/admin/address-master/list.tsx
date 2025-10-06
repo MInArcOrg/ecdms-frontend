@@ -29,7 +29,7 @@ const AddressMasterList = ({
   ): Promise<IApiResponse<AddressMaster[]>> => {
     return addressMasterApiService.getAll({
       ...params,
-      filter: { ...params.filter, type, parent_address_id: parentId },
+      filter: { ...params.filter, type, parent_address_id: parentId || null },
     });
   };
   const { data: parentAddressMaster } = useQuery({

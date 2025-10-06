@@ -16,14 +16,10 @@ import Checkbox from "@mui/material/Checkbox";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import { GridExpandMoreIcon } from "@mui/x-data-grid";
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { appModulesNames, appModulesWithIds } from "src/configs/app-constants";
 import usePermissionSelection from "src/hooks/admin/permission-selection-hook";
-import masterTypeApiService from "src/services/master-data/master-type-service";
-import { MasterType } from "src/types/master/master-types";
 
-// Define the types for permission and props
+// Define the types for permission and propsዖ
 interface AssignPermissionComponentProps {
   roleId: string;
   module: {

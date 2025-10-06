@@ -1,10 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { FormikProps } from "formik";
-import { isArray } from "lodash";
 import { useTranslation } from "react-i18next";
 import addressmasterApiService from "src/services/admin/address-master-service";
 import departmentApiService from "src/services/department/department-service";
-import addressApiService from "src/services/general/address-service";
 import Department from "src/types/department/department";
 import CustomSelectBox from "src/views/shared/form/custom-select";
 import CustomTextBox from "src/views/shared/form/custom-text-box";
