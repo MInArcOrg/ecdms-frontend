@@ -668,6 +668,8 @@
     "edit-woreda": "Edit Woreda",
     "edit-kebele": "Edit Kebele",
     "edit-other": "Edit Other",
+    "create-address": "Add Address",
+    "edit-address": "Edit Address",
     "columns": {
       "title": "Title",
       "description": "Description",
