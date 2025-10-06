@@ -3,6 +3,7 @@ type Department = {
   name: string;
   description: string;
   parent_department_id: string;
+  address_id: string;
   established_date: Date | string;
   created_at: Date | string;
 };

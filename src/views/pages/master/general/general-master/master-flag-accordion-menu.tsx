@@ -60,7 +60,7 @@ const MasterFlagAccordionMenu: React.FC<MasterFlagAccordionMenuProps> = ({
               {masterDataItemsByFlag[item.id]?.map((type: { id: string; path: string; title: string }) => (
                 <ListItem key={type.id} sx={{ pb: 0.7, pt: 0 }}>
                   <ListItemButton sx={{ borderRadius: "0.5rem", "&.Mui-selected": { backgroundColor: "primary.light", "&:hover": { backgroundColor: "primary.light" } } }} selected={router.asPath.startsWith(type.path)}
-                   onClick={() => handleSubMenuItemClick(type.path)}>
+                    onClick={() => handleSubMenuItemClick(type.path)}>
                     <Icon icon="tabler:chevron-right" fontSize="1rem" />
                     <ListItemText primary={type.title} />
                   </ListItemButton>

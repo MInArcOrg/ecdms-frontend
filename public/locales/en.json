@@ -75,7 +75,7 @@
     "document": "Document",
     "resource": "Resource",
     "general-master": {
-        "select-module": "Please select a module from the menu above to get started.",
+      "select-module": "Please select a module from the menu above to get started.",
       "select-item": "Please select an item from the side menu to view its details.",
       "ownerships": "Ownership Types",
       "create-ownerships": "Add Ownership Type",
@@ -548,8 +548,8 @@
       "title": "Users",
       "male": "Male",
       "female": "Female",
-       "single": "Single",
-        "married": "Married",
+      "single": "Single",
+      "married": "Married",
 
       "edit-user": "Edit User",
       "create-user": "Add User",
@@ -618,7 +618,8 @@
     "sub-department": {
       "form": {
         "name": "Name",
-        "description": "Description"
+        "description": "Description",
+        "address": "Address"
       },
       "columns": {
         "name": "Name",
@@ -886,11 +887,11 @@
       "end-user": "End User",
       "function": "Function"
     },
-    "column":{
+    "column": {
       "name": "Project Title",
       "elapsed-time": "Elapsed Time",
-     "cpi": "CPI",
-     "spi": "SPI"
+      "cpi": "CPI",
+      "spi": "SPI"
     },
     "general-information": {
       "client": "Client",
@@ -1499,7 +1500,6 @@
         "retention": "Retention",
         "description": "Description",
         "reference_number": "Reference Number"
-
       }
     },
     "project-bond": {
@@ -1644,7 +1644,7 @@
       "title": "Main Contract Price",
       "edit-main-contract-price": "Edit Main Contract Price",
       "create-main-contract-price": "Add Main Contract Price",
-      "price-details":"Price Details",
+      "price-details": "Price Details",
       "form": {
         "main-contract-price": "Main Contract Price",
         "rebate": "Rebate",
@@ -1652,25 +1652,27 @@
         "source-of-finance": "Source of Finance"
       }
     },
-   
-     "project-contact-person": {
+
+    "project-contact-person": {
       "create": "Add Contact Person",
       "edit": "Edit Contact Person",
       "title": "Project Contact Person",
       "details": "Contact Person Details",
-      "form":{"stakeholder": "Stakeholder",
-      "firstName": "First Name",
-      "middleName": "Middle Name",
-      "lastName": "Last Name",
-      "position": "Position",
-      "department": "Department",
-      "nationalIdNo": "National ID No",
-      "gender": "Gender",
-      "phone": "Phone",
-      "email": "Email",
-      "edit": "Edit Contact Person",
-      "create": "Add Contact Person"
-    }},
+      "form": {
+        "stakeholder": "Stakeholder",
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "position": "Position",
+        "department": "Department",
+        "nationalIdNo": "National ID No",
+        "gender": "Gender",
+        "phone": "Phone",
+        "email": "Email",
+        "edit": "Edit Contact Person",
+        "create": "Add Contact Person"
+      }
+    },
     "other": {
       "port": {
         "title": "Port",
@@ -4853,4 +4855,3 @@
     }
   }
 }
- 

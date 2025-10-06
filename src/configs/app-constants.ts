@@ -35,15 +35,15 @@ export const availableColors: ThemeColor[] = [
 export const genderList = (
   transl: (word: string) => string
 ): { label: string; value: string }[] => [
-  { label: transl("department.user.male"), value: "M" },
-  { label: transl("department.user.female"), value: "F" },
-];
+    { label: transl("department.user.male"), value: "M" },
+    { label: transl("department.user.female"), value: "F" },
+  ];
 export const maritalStatusList = (
   transl: (word: string) => string
 ): { label: string; value: number }[] => [
-  { label: transl("department.user.single"), value: 0 },
-  { label: transl("department.user.married"), value: 1 },
-];
+    { label: transl("department.user.single"), value: 0 },
+    { label: transl("department.user.married"), value: 1 },
+  ];
 export const masterDataFlagConstanct = (transl: (word: string) => string) => {
   return [
     { label: transl("common.status.active"), value: 1 },
@@ -104,11 +104,29 @@ export const appModulesWithIds = [
       },
     ],
   },
-  { id: "stakeholder", name: "Stakeholder", flags: [] },
-  { id: "resource", name: "Resource", flags: [{
-    id: "RESOURCE",
-    name: "Resource",
-  }] },
+  {
+    id: "stakeholder", name: "Stakeholder", flags:
+      [
+        {
+          id: "MSME",
+          name: "MSME",
+        },
+        { id: "EDUCATION_INSTITUTION", name: "EDUCATION_INSTITUTION" },
+        { id: "CONSULTANT", name: "CONSULTANT" },
+        { id: "ASSOCIATION", name: "ASSOCIATION" },
+        { id: "REGULATORY_BODY", name: "REGULATORY_BODY" },
+        { id: "REAL_ESTATE_DEVELOPER", name: "REAL_ESTATE_DEVELOPER" },
+        { id: "CONTRACTOR", name: "CONTRACTOR" },
+      ]
+  },
+  {
+    id: "resource", name: "Resource", flags: [
+      { id: "LEGAL_FRAMEWORK", name: "LEGAL_FRAMEWORK" },
+      { id: "RESEARCH", name: "RESEARCH" },
+      { id: "REFERENCE", name: "REFERENCE" },
+      { id: "BOOK", name: "BOOK" }
+    ]
+  },
   { id: "document", name: "Document", flags: [] },
   { id: "infrastructure", name: "Infrastructure", flags: [] },
 ];
