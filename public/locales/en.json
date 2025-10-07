@@ -643,6 +643,7 @@
     }
   },
   "address-master": {
+    "address-structure": "Address Structure",
     "region": "Region",
     "city-administration": "City Administration",
     "zone": "Zone",
@@ -678,7 +679,8 @@
     },
     "form": {
       "title": "Title",
-      "description": "Description"
+      "description": "Description",
+      "type": "Type"
     }
   },
   "greating": {
@@ -1698,7 +1700,7 @@
           "site-area": "Site Area",
           "annual-traffic-size": "Annual Traffic Size",
           "revision-no": "Revision No",
-          "created-at": "Addd At"
+          "created-at": "Created At"
         }
       },
       "telecom-infrastructure": {

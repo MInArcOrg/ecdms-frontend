@@ -18,7 +18,7 @@ const AddressMasterForm: React.FC<AddressMasterFormProps> = ({ type }) => {
         <CustomSelect
           size="small"
           name="type"
-          label={transl("type")}
+          label={transl("address-master.form.type")}
           options={Object.values(AddressType).map((type) => ({
             value: type,
             label: type.replace("_", " ").toUpperCase(),
@@ -29,16 +29,16 @@ const AddressMasterForm: React.FC<AddressMasterFormProps> = ({ type }) => {
 
       <CustomTextBox
         fullWidth
-        label={transl("title")}
-        placeholder={transl("title")}
+        label={transl("address-master.form.title")}
+        placeholder={transl("address-master.form.title")}
         name="title"
         size="small"
         sx={{ mb: 2 }}
       />
       <CustomTextBox
         fullWidth
-        label={transl("description")}
-        placeholder={transl("description")}
+        label={transl("address-master.form.description")}
+        placeholder={transl("address-master.form.description")}
         name="description"
         multiline
         rows={3}

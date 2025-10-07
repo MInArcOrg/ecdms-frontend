@@ -23,25 +23,15 @@ export const addressMasterColumns = (
       flex: 0.25,
       minWidth: 200,
       field: "title",
-      headerName: transl("title"),
+      headerName: transl("address-master.columns.title"),
       renderCell: ({ row }: CellType) => getTitleLinkOrText(row),
     },
-    {
-      flex: 0.2,
-      minWidth: 180,
-      field: "parent",
-      headerName: transl("parent"),
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: "text.secondary" }}>
-          {row?.parentAddress?.title || "-"}
-        </Typography>
-      ),
-    },
+
     {
       flex: 0.15,
       minWidth: 120,
       field: "type",
-      headerName: transl("type"),
+      headerName: transl("address-master.columns.type"),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: "text.secondary" }}>{row.type}</Typography>
       ),
@@ -50,7 +40,7 @@ export const addressMasterColumns = (
       flex: 0.3,
       minWidth: 250,
       field: "description",
-      headerName: transl("description"),
+      headerName: transl("address-master.columns.description"),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: "text.secondary" }}>
           {row.description || "-"}
@@ -60,7 +50,7 @@ export const addressMasterColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: transl("created_at"),
+      headerName: transl("common.table-columns.created-at"),
       field: "created_at",
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: "text.secondary" }}>
@@ -73,7 +63,7 @@ export const addressMasterColumns = (
       minWidth: 100,
       sortable: false,
       field: "actions",
-      headerName: transl("actions"),
+      headerName: transl("common.table-columns.actions"),
       renderCell: ({ row }: CellType) => (
         <RowOptions
           onEdit={onEdit}

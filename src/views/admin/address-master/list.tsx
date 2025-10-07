@@ -10,6 +10,8 @@ import { GetRequestParam, IApiResponse } from "src/types/requests";
 import AddressMasterDrawer from "src/views/admin/address-master/address-master-drawer";
 import { addressMasterColumns } from "src/views/admin/address-master/address-master-row-column";
 import ItemsListing from "src/views/shared/listing";
+import { Card, CardContent, Grid, Typography } from "@mui/material";
+import Link from "next/link";
 
 const AddressMasterList = ({
   type,
@@ -29,7 +31,7 @@ const AddressMasterList = ({
   ): Promise<IApiResponse<AddressMaster[]>> => {
     return addressMasterApiService.getAll({
       ...params,
-      filter: { ...params.filter, type, parent_address_id: parentId || null },
+      filter: { ...params.filter, type, parent_address_id: parentId, is_root: !parentId ? 1 : 0 },
     });
   };
   const { data: parentAddressMaster } = useQuery({
@@ -60,25 +62,77 @@ const AddressMasterList = ({
   };
   return (
     <>
-      <ItemsListing
-        pagination={pagination}
-        type={ITEMS_LISTING_TYPE.table.value}
-        title={t(`address-master.${type ? type?.toLocaleLowerCase() : "all"}`)}
-        isLoading={isLoading}
-        onCreateClick={toggleAddressMasterDrawer}
-        fetchDataFunction={fetchAddressMasters}
-        tableProps={{
-          headers: addressMasterColumns(handleEdit, handleDelete, t),
-        }}
-        items={addressMasters || []}
-        createActionConfig={{
-          ...defaultCreateActionConfig,
-          onClick: toggleAddressMasterDrawer,
-          onlyIcon: false,
-          permission: { action: "create", subject: "addressmaster" },
-        }}
-      />
+      <Grid container spacing={2}>
+        {/* LEFT: Parent Address Card */}
+        <Grid item xs={12} md={4} lg={3}>
+          {parentAddressMaster?.payload && (
+            <Card
+              sx={{
+                borderRadius: 3,
+                boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
+                backgroundColor: "background.paper",
+                height: "100%",
+              }}
+            >
+              <CardContent>
 
+                <Grid container spacing={2} sx={{ mt: 1 }}>
+                  <Grid item xs={12}>
+                    <Typography variant="h4" fontWeight={500}>
+                      {parentAddressMaster.payload.title || "-"}
+                    </Typography>
+                  </Grid>
+
+                  <Grid item xs={12}>
+                    <Typography variant="subtitle2" color="text.secondary">
+                      {t("address-master.columns.type")}
+                    </Typography>
+                    <Typography variant="body1" fontWeight={500}>
+                      {parentAddressMaster.payload.type || "-"}
+                    </Typography>
+                    <Typography
+                      href={`/address-master/structure/${parentAddressMaster.payload?.id}`}
+                      component={Link}
+                      sx={{
+                        textDecoration: "none",
+                        display: "block",
+                        color: "primary.main",
+                      }}
+                      mb={2}
+                    >
+                      {t("address-master.address-structure")}
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </CardContent>
+            </Card>
+          )}
+        </Grid>
+
+        {/* RIGHT: Items Listing */}
+        <Grid item xs={12} md={8} lg={9}>
+          <ItemsListing
+            pagination={pagination}
+            type={ITEMS_LISTING_TYPE.table.value}
+            title={t(`address-master.${type ? type?.toLocaleLowerCase() : "all"}`)}
+            isLoading={isLoading}
+            onCreateClick={toggleAddressMasterDrawer}
+            fetchDataFunction={fetchAddressMasters}
+            tableProps={{
+              headers: addressMasterColumns(handleEdit, handleDelete, t),
+            }}
+            items={addressMasters || []}
+            createActionConfig={{
+              ...defaultCreateActionConfig,
+              onClick: toggleAddressMasterDrawer,
+              onlyIcon: false,
+              permission: { action: "create", subject: "addressmaster" },
+            }}
+          />
+        </Grid>
+      </Grid>
+
+      {/* Drawer */}
       {addressMasterDrawerOpen && (
         <AddressMasterDrawer
           refetch={refetch}
@@ -91,6 +145,7 @@ const AddressMasterList = ({
       )}
     </>
   );
+
 };
 AddressMasterList.authGuard = true;
 export default AddressMasterList;
