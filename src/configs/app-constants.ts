@@ -70,6 +70,7 @@ export const appModulesNames = [
 ];
 export const appModulesWithIds = [
   { id: "master-data", name: "Masterdata" },
+  { id: "centers", name: "Centers" },
   {
     id: "project",
     name: "Project",
