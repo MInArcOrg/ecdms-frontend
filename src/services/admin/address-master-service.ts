@@ -14,13 +14,19 @@ const addressmasterApiService = {
         throw error;
       }),
 
-  getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
+  getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse<AddressMaster>> =>
     buildGetRequest(`/masterdata/address-master-data/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
-
+  getAddressStructure: (idx?: string): Promise<IApiResponse> =>
+    axiosServices
+      .get(`/masterdata/address-structure/${idx}`)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
       .delete(`/masterdata/address-master-data/${idx}`)
