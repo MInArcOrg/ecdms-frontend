@@ -46,7 +46,7 @@ const AddressCard = ({
                 justifyContent="space-between"
               >
                 <Typography variant="h6">
-                  {transl(`commmon.address.${type}-location`)}
+                  {transl(`address.${type}-address`)}
                 </Typography>
               </Box>
               <Box mt={3}>

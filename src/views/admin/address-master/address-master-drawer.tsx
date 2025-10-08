@@ -70,7 +70,7 @@ const AddressMasterDrawer = (props: AddressMasterDrawerType) => {
             title={`address-master.${isEdit ? "edit-" : "create-"}${
               type?.toLocaleLowerCase().replace("_", " ") || "address"
             }`}
-            getPayload={getPayload}
+             getPayload={getPayload}
             validationSchema={validationSchema}
             initialValues={addressMaster}
             createActionFunc={isEdit ? editAddressMaster : createAddressMaster}
