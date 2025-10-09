@@ -4120,6 +4120,7 @@
       "id": "ID",
       "created-at": "Addd At",
       "updated-at": "update At",
+      "files": "Files",
       "status": "Status",
       "actions": "Actions"
     },
