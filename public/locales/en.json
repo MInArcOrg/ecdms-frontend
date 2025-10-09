@@ -4081,6 +4081,21 @@
           "braking_system_type": "Braking System Type",
           "remark": "Remark"
         }
+      },
+
+      "railway-vehicle-maintenance-and-inspection": {
+        "title": "Vehicle Maintenance and Inspection",
+        "detail": "Maintenance and Inspection Details",
+        "create": "Create Maintenance and Inspection Record",
+        "edit": "Edit Maintenance and Inspection Record",
+        "details": {
+          "railway_vehicle_identification_id": "Vehicle Identification",
+          "maintenance_history_records": "Historical Maintenance Records",
+          "vehicle_weight_and_load_capacity": "Weight and Load Capacity",
+          "maximum_speed": "Maximum Speed (km/h)",
+          "braking_system_type": "Braking System Type",
+          "remark": "Remark"
+        }
       }
     }
   },
