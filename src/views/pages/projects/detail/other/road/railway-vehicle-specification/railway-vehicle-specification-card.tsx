@@ -87,6 +87,8 @@ const RailwayVehicleSpecificationCard: React.FC<
               {t(
                 "project.other.railway-vehicle-specification.details.vehicle_dimensions",
               )}
+
+
               :{" "}
               {railwayVehicleSpecification.vehicle_dimensions ||
                 "N/A"}
