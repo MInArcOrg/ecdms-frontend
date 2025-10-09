@@ -28,7 +28,6 @@ interface RailwayEnvironmentalAndOtherFactorCardProps {
   ) => void;
   otherSubMenu?: DetailSubMenuItemChild;
 }
-
 const RailwayEnvironmentalAndOtherFactorCard: React.FC<
   RailwayEnvironmentalAndOtherFactorCardProps
 > = ({
