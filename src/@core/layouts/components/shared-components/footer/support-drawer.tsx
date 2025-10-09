@@ -36,7 +36,7 @@ const SupportDrawer = (props: { open: boolean; toggle: () => void }) => {
               <Typography variant="subtitle2" fontWeight={600}>
                 📞 {t("footer.support.phoneLabel")}
               </Typography>
-              <Link href="tel:+1234567890" underline="hover">
+              <Link href="tel:+251900000000" underline="hover">
                 {t("footer.support.phone")}
               </Link>
             </Box>

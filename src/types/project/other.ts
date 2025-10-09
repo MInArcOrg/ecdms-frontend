@@ -2029,3 +2029,17 @@ export interface RailwayCommunicationSystemMaintenanceAndTesting {
   created_at?: string;
   updated_at?: string;
 }
+
+// New Interface for Railway Communication System Safety and Compliance
+export interface RailwayCommunicationSystemSafetyAndCompliance {
+  id?: string;
+  project_id: string; //
+  railway_line_section_name: string; //
+  safety_measures_and_protocols_done?: boolean | null; //
+  compliance_with_signaling_and_communication_standards?: boolean | null; //
+  incident_or_accident_records?: boolean | null; //
+  incident_date?: string | Date | EthiopianDate; // Data Type: Date
+  remark?: string | null; //
+  created_at?: string;
+  updated_at?: string;
+}
