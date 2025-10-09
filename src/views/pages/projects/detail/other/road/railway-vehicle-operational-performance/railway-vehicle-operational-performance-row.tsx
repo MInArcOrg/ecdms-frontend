@@ -2,19 +2,19 @@ import { Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import type { GridColDef } from "@mui/x-data-grid";
 import type { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
-import type { RailwayEnvironmentalAndOtherFactor } from "src/types/project/other";
-import { formatCreatedAt, formatDate } from "src/utils/formatter/date";
+import type { RailwayVehicleOperationalPerformance } from "src/types/project/other";
 import FileDrawer from "src/views/components/custom/files-drawer";
 import ModelAction from "src/views/components/custom/model-actions";
 import RowOptions from "src/views/shared/listing/row-options";
+import { formatCreatedAt } from "src/utils/formatter/date";
 
 interface CellType {
-  row: RailwayEnvironmentalAndOtherFactor;
+  row: RailwayVehicleOperationalPerformance;
 }
 
-export const railwayEnvironmentalAndOtherFactorColumns = (
-  onDetail: (row: RailwayEnvironmentalAndOtherFactor) => void,
-  onEdit: (row: RailwayEnvironmentalAndOtherFactor) => void,
+export const railwayVehicleOperationalPerformanceColumns = (
+  onDetail: (row: RailwayVehicleOperationalPerformance) => void,
+  onEdit: (row: RailwayVehicleOperationalPerformance) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
@@ -44,68 +44,56 @@ export const railwayEnvironmentalAndOtherFactorColumns = (
     {
       flex: 0.2,
       minWidth: 150,
-      field: "railway_line_section_name",
+      field: "railway_vehicle_identification_id",
       headerName: t(
-        "project.other.railway-environmental-and-other-factor.details.railway_line_section_name",
+        "project.other.railway-vehicle-operational-performance.details.railway_vehicle_identification_id",
       ),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: "text.secondary" }}>
-          {row?.railway_line_section_name || "N/A"}
-        </Typography>
-      ),
-    },
-    {
-      flex: 0.2,
-      minWidth: 200,
-      field: "environmental_compliance_measures",
-      headerName: t(
-        "project.other.railway-environmental-and-other-factor.details.environmental_compliance_measures",
-      ),
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: "text.secondary" }}>
-          {row?.environmental_compliance_measures ? 'Yes' : 'No'}
-        </Typography>
-      ),
-    },
-    {
-      flex: 0.2,
-      minWidth: 200,
-      field: "environmental_impact_assessment",
-      headerName: t(
-        "project.other.railway-environmental-and-other-factor.details.environmental_impact_assessment",
-      ),
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: "text.secondary" }}>
-          {row?.environmental_impact_assessment ? 'Yes' : 'No'}
+          {row?.railwayVehicleIndentification ?
+            row?.railwayVehicleIndentification + " - " + row?.railwayVehicleIndentification.manufacturer_supplier_name + " - " + row?.railwayVehicleIndentification.manufacture_year
 
+            : row?.id ||
+            "N/A"}
         </Typography>
       ),
     },
     {
       flex: 0.15,
-      minWidth: 120,
-      field: "data_recording_date",
+      minWidth: 150,
+      field: "fuel_or_energy_consumption",
       headerName: t(
-        "project.other.railway-environmental-and-other-factor.details.data_recording_date",
+        "project.other.railway-vehicle-operational-performance.details.fuel_or_energy_consumption",
       ),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: "text.secondary" }}>
-          {row?.data_recording_date
-            ? formatDate((row.data_recording_date), "yyyy-MM-dd")
-            : "N/A"}
+          {row?.fuel_or_energy_consumption || "N/A"}
         </Typography>
       ),
     },
     {
-      flex: 0.2,
+      flex: 0.15,
       minWidth: 150,
-      field: "remark",
+      field: "mileage_or_operating_hours",
       headerName: t(
-        "project.other.railway-environmental-and-other-factor.details.remark",
+        "project.other.railway-vehicle-operational-performance.details.mileage_or_operating_hours",
       ),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: "text.secondary" }}>
-          {row?.remark || "N/A"}
+          {row?.mileage_or_operating_hours || "N/A"}
+        </Typography>
+      ),
+    },
+    {
+      flex: 0.15,
+      minWidth: 150,
+      field: "reliability_and_availability",
+      headerName: t(
+        "project.other.railway-vehicle-operational-performance.details.reliability_and_availability",
+      ),
+      renderCell: ({ row }: CellType) => (
+        <Typography sx={{ color: "text.secondary" }}>
+          {row?.reliability_and_availability || "N/A"}
         </Typography>
       ),
     },
@@ -136,17 +124,6 @@ export const railwayEnvironmentalAndOtherFactorColumns = (
       ),
     },
     {
-      flex: 0.15,
-      minWidth: 150,
-      field: "updated_at",
-      headerName: t("common.table-columns.updated-at"),
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: "text.secondary" }}>
-          {row?.updated_at ? formatCreatedAt(row.updated_at) : "N/A"}
-        </Typography>
-      ),
-    },
-    {
       field: "actions",
       headerName: t("common.table-columns.actions"),
       minWidth: 250,
@@ -155,7 +132,7 @@ export const railwayEnvironmentalAndOtherFactorColumns = (
       renderCell: ({ row }: CellType) => (
         <>
           <ModelAction
-            model="RailwayEnvironmentalAndOtherFactor"
+            model="RailwayVehicleOperationalPerformance"
             model_id={row.id as string}
             refetchModel={refetch}
             resubmit={() => refetch()}
@@ -165,11 +142,11 @@ export const railwayEnvironmentalAndOtherFactorColumns = (
           <RowOptions
             deletePermissionRule={{
               action: "delete",
-              subject: "railwayenvironmentalandotherfactor",
+              subject: "railwayvehicleoperationalperformance",
             }}
             editPermissionRule={{
               action: "update",
-              subject: "railwayenvironmentalandotherfactor",
+              subject: "railwayvehicleoperationalperformance",
             }}
             onEdit={() => onEdit(row)}
             onDelete={() => onDelete(row.id as string)}

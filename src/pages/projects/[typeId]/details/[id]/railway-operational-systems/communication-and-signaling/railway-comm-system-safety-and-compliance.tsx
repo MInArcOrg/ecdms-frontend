@@ -1,12 +1,11 @@
 import { useRouter } from "next/router";
 import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
 import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
+import RailwayCommunicationSystemSafetyAndComplianceList from "src/views/pages/projects/detail/other/road/railway-communication-system-safety-and-compliance";
 import subMenuItems, {
   findSubMenuItem,
   railwayOperationalSystemsIds,
 } from "../(subMenuItems)";
-import RailwayCommunicationSystemMaintenanceAndTestingList from "src/views/pages/projects/detail/other/road/railway-communication-system-maintenance-and-testing";
-import RailwayCommunicationSystemSafetyAndComplianceList from "src/views/pages/projects/detail/other/road/railway-communication-system-safety-and-compliance";
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems("", ""),

@@ -32,7 +32,6 @@ const RailwayCommunicationSystemSafetyAndComplianceDrawer = ({
 }: RailwayCommunicationSystemSafetyAndComplianceDrawerProps) => {
   const isEdit = Boolean(railwayCommunicationSystemSafetyAndCompliance?.id);
   const [defaultFile, setDefaultFile] = useState<File | null>(null);
-  const [complianceFile, setComplianceFile] = useState<File | null>(null);
 
   const validationSchema = yup.object().shape({
     railway_line_section_name: yup.string().required('Railway line section name is required'),
@@ -76,7 +75,6 @@ const RailwayCommunicationSystemSafetyAndComplianceDrawer = ({
 
   const handleClose = () => {
     setDefaultFile(null);
-    setComplianceFile(null);
     toggle();
   };
 
@@ -129,9 +127,7 @@ const RailwayCommunicationSystemSafetyAndComplianceDrawer = ({
             <RailwayCommunicationSystemSafetyAndComplianceForm
               formik={formik}
               defaultFile={defaultFile}
-              complianceFile={complianceFile}
               onDefaultFileChange={setDefaultFile}
-              onComplianceFileChange={setComplianceFile}
             />
           )}
         </FormPageWrapper>

@@ -50,7 +50,10 @@ export const railwayVehicleMaintenanceAndInspectionColumns = (
       ),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: "text.secondary" }}>
-          {row?.railway_vehicle_identification_id?.slice(0, 8) || "N/A"}...
+          {row?.railwayVehicleIndentification ?
+            row?.railwayVehicleIndentification + " - " + row?.railwayVehicleIndentification.manufacturer_supplier_name + " - " + row?.railwayVehicleIndentification.manufacture_year
+            : row?.railway_vehicle_identification_id ||
+            "N/A"}
         </Typography>
       ),
     },
