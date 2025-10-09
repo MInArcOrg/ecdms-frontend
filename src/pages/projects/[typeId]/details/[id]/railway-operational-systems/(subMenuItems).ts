@@ -153,6 +153,9 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-operational-performance",
           path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-operational-performance`,
+          apiRoute: "railway-vehicle-operational-performances",
+          model: "railwayvehicleoperationalperformance",
+          fileType: railwayOperationalSystemsIds.rollingStockVehicles.id,
         },
         {
           id: railwayOperationalSystemsIds.rollingStockVehicles

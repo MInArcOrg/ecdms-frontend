@@ -53,7 +53,7 @@ export const railwayVehicleOperationalPerformanceColumns = (
           {row?.railwayVehicleIndentification ?
             row?.railwayVehicleIndentification + " - " + row?.railwayVehicleIndentification.manufacturer_supplier_name + " - " + row?.railwayVehicleIndentification.manufacture_year
 
-            : row?.id ||
+            : row?.railway_vehicle_identification_id ||
             "N/A"}
         </Typography>
       ),

@@ -103,7 +103,7 @@ const RailwayVehicleOperationalPerformanceList: React.FC<
         value: specs?.railwayVehicleIndentification ?
           specs?.railwayVehicleIndentification + " - " + specs?.railwayVehicleIndentification.manufacturer_supplier_name + " - " + specs?.railwayVehicleIndentification.manufacture_year
 
-          : specs?.id ||
+          : specs?.railway_vehicle_identification_id ||
           "N/A"
       },
       {

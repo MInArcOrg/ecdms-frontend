@@ -4096,6 +4096,20 @@
           "braking_system_type": "Braking System Type",
           "remark": "Remark"
         }
+      },
+      "railway-vehicle-operational-performance": {
+        "title": "Vehicle Operational Performance",
+        "detail": "Operational Performance Details",
+        "create": "Create Operational Performance Record",
+        "edit": "Edit Operational Performance Record",
+        "details": {
+          "railway_vehicle_identification_id": "Vehicle Identification",
+          "fuel_or_energy_consumption": "Fuel/Energy Consumption",
+          "mileage_or_operating_hours": "Mileage/Operating Hours",
+          "reliability_and_availability": "Reliability and Availability",
+          "performance_indicators": "Performance Indicators",
+          "remark": "Remark"
+        }
       }
     }
   },

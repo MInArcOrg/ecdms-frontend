@@ -5,6 +5,7 @@ import subMenuItems, {
   findSubMenuItem,
   railwayOperationalSystemsIds,
 } from "../(subMenuItems)";
+import RailwayVehicleOperationalPerformanceList from "src/views/pages/projects/detail/other/road/railway-vehicle-operational-performance";
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems("", ""),
@@ -32,7 +33,11 @@ const RailwayVehicleOperationalPerformancePage = () => {
       }
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Railway Vehicle Operational Performance Placeholder</div>
+      <RailwayVehicleOperationalPerformanceList
+        projectId={id as string}
+        typeId={typeId as string}
+        otherSubMenu={menuItem}
+      />
     </ProjectLayout>
   );
 };
