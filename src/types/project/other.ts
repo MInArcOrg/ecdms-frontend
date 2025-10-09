@@ -2043,3 +2043,14 @@ export interface RailwayCommunicationSystemSafetyAndCompliance {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayEnvironmentalAndOtherFactor {
+  id: string;
+  project_id: string;
+  railway_line_section_name: string;
+  environmental_compliance_measures?: boolean | null;
+  environmental_impact_assessment?: boolean | null;
+  data_recording_date?: string | Date | EthiopianDate; // Data Type: Datel;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}

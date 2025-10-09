@@ -4038,6 +4038,20 @@
           "incident_date": "Incident/Accident Date",
           "remark": "Remark"
         }
+      },
+      "railway-environmental-and-other-factor": {
+        "title": "Railway Environmental and Other Factors",
+        "detail": "Environmental Factor Details",
+        "create": "Create Environmental Factor Record",
+        "edit": "Edit Environmental Factor Record",
+        "details": {
+          "railway_line_section_name": "Railway Line Section Name",
+          "environmental_compliance_measures": "Environmental Compliance Measures",
+          "environmental_impact_assessment": "Environmental Impact Assessment",
+          "data_recording_date": "Data Recording Date",
+          "remark": "Remark",
+          "compliance-document-file-upload": "Compliance/Assessment Document Upload"
+        }
       }
     }
   },

@@ -5,14 +5,15 @@ import subMenuItems, {
   findSubMenuItem,
   railwayOperationalSystemsIds,
 } from "../(subMenuItems)";
+import RailwayEnvironmentalAndOtherFactorList from "src/views/pages/projects/detail/other/road/railway-environmental-and-other-factor";
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems("", ""),
   railwayOperationalSystemsIds.communicationAndSignaling
-    .railwayCommunicationSystem,
+    .railwayEnvironmentalAndOtherFactors,
 );
 
-const RailwayEnvironmentalAndOtherFactors = () => {
+const RailwayEnvironmentalAndOtherFactorsPage = () => {
   const router = useRouter();
   const { id = "", typeId = "" } = router.query;
 
@@ -32,14 +33,18 @@ const RailwayEnvironmentalAndOtherFactors = () => {
       }
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Railway Communication System Placeholder</div>
+      <RailwayEnvironmentalAndOtherFactorList
+        projectId={id as string}
+        typeId={typeId as string}
+        otherSubMenu={menuItem}
+      />
     </ProjectLayout>
   );
 };
 
-RailwayEnvironmentalAndOtherFactors.acl = {
+RailwayEnvironmentalAndOtherFactorsPage.acl = {
   subject: defaultMenuItem?.model,
   action: "view",
 };
 
-export default RailwayEnvironmentalAndOtherFactors;
+export default RailwayEnvironmentalAndOtherFactorsPage;

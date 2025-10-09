@@ -1,20 +1,21 @@
 import { Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import type { GridColDef } from "@mui/x-data-grid";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
-import type { RailwayCommunicationSystemMaintenanceAndTesting } from "src/types/project/other";
+import { format } from "date-fns";
+import type { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import type { RailwayEnvironmentalAndOtherFactor } from "src/types/project/other";
 import FileDrawer from "src/views/components/custom/files-drawer";
 import ModelAction from "src/views/components/custom/model-actions";
 import RowOptions from "src/views/shared/listing/row-options";
-import { formatCreatedAt } from "src/utils/formatter/date";
+import { formatCreatedAt, formatDate } from "src/utils/formatter/date";
 
 interface CellType {
-  row: RailwayCommunicationSystemMaintenanceAndTesting;
+  row: RailwayEnvironmentalAndOtherFactor;
 }
 
-export const railwayCommunicationSystemMaintenanceAndTestingColumns = (
-  onDetail: (row: RailwayCommunicationSystemMaintenanceAndTesting) => void,
-  onEdit: (row: RailwayCommunicationSystemMaintenanceAndTesting) => void,
+export const railwayEnvironmentalAndOtherFactorColumns = (
+  onDetail: (row: RailwayEnvironmentalAndOtherFactor) => void,
+  onEdit: (row: RailwayEnvironmentalAndOtherFactor) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
@@ -46,7 +47,7 @@ export const railwayCommunicationSystemMaintenanceAndTestingColumns = (
       minWidth: 150,
       field: "railway_line_section_name",
       headerName: t(
-        "project.other.railway-communication-system-maintenance-and-testing.details.railway_line_section_name",
+        "project.other.railway-environmental-and-other-factor.details.railway_line_section_name",
       ),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: "text.secondary" }}>
@@ -56,99 +57,56 @@ export const railwayCommunicationSystemMaintenanceAndTestingColumns = (
     },
     {
       flex: 0.2,
-      minWidth: 180,
-      field: "scheduled_maintenance_activities",
+      minWidth: 200,
+      field: "environmental_compliance_measures",
       headerName: t(
-        "project.other.railway-communication-system-maintenance-and-testing.details.scheduled_maintenance_activities",
+        "project.other.railway-environmental-and-other-factor.details.environmental_compliance_measures",
       ),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: "text.secondary" }}>
-          {row?.scheduled_maintenance_activities || "N/A"}
-        </Typography>
-      ),
-    },
-    {
-      flex: 0.1,
-      minWidth: 100,
-      field: "inspections",
-      headerName: t(
-        "project.other.railway-communication-system-maintenance-and-testing.details.inspections",
-      ),
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: "text.secondary" }}>
-          {row?.inspections ? "Yes" : "No"}
+          {row?.environmental_compliance_measures ? 'Yes' : 'No'}
         </Typography>
       ),
     },
     {
       flex: 0.2,
       minWidth: 200,
-      field: "recent_maintenance_records_and_dates",
+      field: "environmental_impact_assessment",
       headerName: t(
-        "project.other.railway-communication-system-maintenance-and-testing.details.recent_maintenance_records_and_dates",
+        "project.other.railway-environmental-and-other-factor.details.environmental_impact_assessment",
       ),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: "text.secondary" }}>
-          {row?.recent_maintenance_records_and_dates || "N/A"}
+          {row?.environmental_impact_assessment ? 'Yes' : 'No'}
+
+        </Typography>
+      ),
+    },
+    {
+      flex: 0.15,
+      minWidth: 120,
+      field: "data_recording_date",
+      headerName: t(
+        "project.other.railway-environmental-and-other-factor.details.data_recording_date",
+      ),
+      renderCell: ({ row }: CellType) => (
+        <Typography sx={{ color: "text.secondary" }}>
+          {row?.data_recording_date
+            ? formatDate((row.data_recording_date), "yyyy-MM-dd")
+            : "N/A"}
         </Typography>
       ),
     },
     {
       flex: 0.2,
-      minWidth: 250,
-      field: "testing_and_verification_procedures_prepared",
-      headerName: t(
-        "project.other.railway-communication-system-maintenance-and-testing.details.testing_and_verification_procedures_prepared",
-      ),
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: "text.secondary" }}>
-          {row?.testing_and_verification_procedures_prepared ? "Yes" : "No"}
-        </Typography>
-      ),
-    },
-    {
-      flex: 0.2,
-      minWidth: 250,
-      field: "maintenance_contracts_or_agreements_made",
-      headerName: t(
-        "project.other.railway-communication-system-maintenance-and-testing.details.maintenance_contracts_or_agreements_made",
-      ),
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: "text.secondary" }}>
-          {row?.maintenance_contracts_or_agreements_made || "N/A"}
-        </Typography>
-      ),
-    },
-    {
-      flex: 0.2,
-      minWidth: 200,
+      minWidth: 150,
       field: "remark",
       headerName: t(
-        "project.other.railway-communication-system-maintenance-and-testing.details.remark",
+        "project.other.railway-environmental-and-other-factor.details.remark",
       ),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: "text.secondary" }}>
           {row?.remark || "N/A"}
-        </Typography>
-      ),
-    },
-    {
-      flex: 0.2,
-      minWidth: 200,
-      field: "maintenance-contracts-file-upload",
-      headerName: t(
-        "project.other.railway-communication-system-maintenance-and-testing.details.maintenance-contracts-file-upload",
-      ),
-      renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: "text.secondary" }}>
-          {row.id ? (
-            <FileDrawer
-              id={row.id}
-              type={"MAINTENANCE_AND_TESTING_CONTRACTS_AGREEMENT" || ""}
-            />
-          ) : (
-            "N/A"
-          )}
         </Typography>
       ),
     },
@@ -198,7 +156,7 @@ export const railwayCommunicationSystemMaintenanceAndTestingColumns = (
       renderCell: ({ row }: CellType) => (
         <>
           <ModelAction
-            model="RailwayCommunicationSystemMaintenanceAndTesting"
+            model="RailwayEnvironmentalAndOtherFactor"
             model_id={row.id as string}
             refetchModel={refetch}
             resubmit={() => refetch()}
@@ -208,11 +166,11 @@ export const railwayCommunicationSystemMaintenanceAndTestingColumns = (
           <RowOptions
             deletePermissionRule={{
               action: "delete",
-              subject: "railwaycommunicationsystemmaintenanceandtesting",
+              subject: "railwayenvironmentalandotherfactor",
             }}
             editPermissionRule={{
               action: "update",
-              subject: "railwaycommunicationsystemmaintenanceandtesting",
+              subject: "railwayenvironmentalandotherfactor",
             }}
             onEdit={() => onEdit(row)}
             onDelete={() => onDelete(row.id as string)}
