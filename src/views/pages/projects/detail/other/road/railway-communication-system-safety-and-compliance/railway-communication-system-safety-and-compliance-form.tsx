@@ -1,28 +1,24 @@
-import { Grid, Checkbox, FormControlLabel } from '@mui/material';
+import { Grid } from '@mui/material';
 import type { FormikProps } from 'formik';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import type { RailwayCommunicationSystemSafetyAndCompliance } from 'src/types/project/other';
-import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
 import CustomSwitch from 'src/views/shared/form/custom-switch';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface RailwayCommunicationSystemSafetyAndComplianceFormProps {
   formik: FormikProps<RailwayCommunicationSystemSafetyAndCompliance>;
   defaultFile: File | null;
-  complianceFile: File | null;
   onDefaultFileChange: (file: File | null) => void;
-  onComplianceFileChange: (file: File | null) => void;
 }
 
 const RailwayCommunicationSystemSafetyAndComplianceForm: React.FC<RailwayCommunicationSystemSafetyAndComplianceFormProps> = ({
   formik,
   defaultFile,
-  complianceFile,
   onDefaultFileChange,
-  onComplianceFileChange
 }) => {
   const { t } = useTranslation();
 

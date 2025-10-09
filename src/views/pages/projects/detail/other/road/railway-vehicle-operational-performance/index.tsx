@@ -12,32 +12,32 @@ import { defaultCreateActionConfig } from "src/types/general/listing";
 import type { GetRequestParam, IApiResponse } from "src/types/requests";
 import ItemsListing from "src/views/shared/listing";
 import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer";
-import { RailwayVehicleMaintenanceAndInspection } from "src/types/project/other";
+import { RailwayVehicleOperationalPerformance } from "src/types/project/other";
 import { formatCreatedAt } from "src/utils/formatter/date";
-import RailwayVehicleMaintenanceAndInspectionCard from "./railway-vehicle-maintenance-and-inspection-card";
-import RailwayVehicleMaintenanceAndInspectionDrawer from "./railway-vehicle-maintenance-and-inspection-drawer";
-import { railwayVehicleMaintenanceAndInspectionColumns } from "./railway-vehicle-maintenance-and-inspection-row";
+import RailwayVehicleOperationalPerformanceCard from "./railway-vehicle-operational-performance-card";
+import RailwayVehicleOperationalPerformanceDrawer from "./railway-vehicle-operational-performance-drawer";
+import { railwayVehicleOperationalPerformanceColumns } from "./railway-vehicle-operational-performance-row";
 import FileDrawer from "src/views/components/custom/files-drawer";
 
-interface RailwayVehicleMaintenanceAndInspectionListProps {
+interface RailwayVehicleOperationalPerformanceListProps {
   otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
 
-const RailwayVehicleMaintenanceAndInspectionList: React.FC<
-  RailwayVehicleMaintenanceAndInspectionListProps
+const RailwayVehicleOperationalPerformanceList: React.FC<
+  RailwayVehicleOperationalPerformanceListProps
 > = ({ otherSubMenu, projectId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] =
-    useState<RailwayVehicleMaintenanceAndInspection | null>(null);
+    useState<RailwayVehicleOperationalPerformance | null>(null);
   const { t } = useTranslation();
 
-  const fetchMaintenanceAndInspection = (
+  const fetchOperationalPerformance = (
     params: GetRequestParam,
-  ): Promise<IApiResponse<RailwayVehicleMaintenanceAndInspection[]>> => {
-    return projectOtherApiSecondService<RailwayVehicleMaintenanceAndInspection>().getAll(
+  ): Promise<IApiResponse<RailwayVehicleOperationalPerformance[]>> => {
+    return projectOtherApiSecondService<RailwayVehicleOperationalPerformance>().getAll(
       otherSubMenu?.apiRoute || "",
       {
         ...params,
@@ -47,35 +47,35 @@ const RailwayVehicleMaintenanceAndInspectionList: React.FC<
   };
 
   const {
-    data: maintenanceAndInspection,
+    data: operationalPerformance,
     isLoading,
     pagination,
     handlePageChange,
     refetch,
-  } = usePaginatedFetch<RailwayVehicleMaintenanceAndInspection[]>({
-    queryKey: ["railwayVehicleMaintenanceAndInspection"],
-    fetchFunction: fetchMaintenanceAndInspection,
+  } = usePaginatedFetch<RailwayVehicleOperationalPerformance[]>({
+    queryKey: ["railwayVehicleOperationalPerformance"],
+    fetchFunction: fetchOperationalPerformance,
   });
 
   const toggleDrawer = () => {
-    setSelectedRow({} as RailwayVehicleMaintenanceAndInspection);
+    setSelectedRow({} as RailwayVehicleOperationalPerformance);
     setShowDrawer(!showDrawer);
   };
 
   const toggleDetailDrawer = () => {
-    setSelectedRow({} as RailwayVehicleMaintenanceAndInspection);
+    setSelectedRow({} as RailwayVehicleOperationalPerformance);
     setShowDetailDrawer(!showDetailDrawer);
   };
 
   const handleEdit = (
-    specs: RailwayVehicleMaintenanceAndInspection,
+    specs: RailwayVehicleOperationalPerformance,
   ) => {
     toggleDrawer();
     setSelectedRow(specs);
   };
 
   const handleDelete = async (id: string) => {
-    await projectOtherApiSecondService<RailwayVehicleMaintenanceAndInspection>().delete(
+    await projectOtherApiSecondService<RailwayVehicleOperationalPerformance>().delete(
       otherSubMenu?.apiRoute || "",
       id,
     );
@@ -83,14 +83,14 @@ const RailwayVehicleMaintenanceAndInspectionList: React.FC<
   };
 
   const handleClickDetail = (
-    specs: RailwayVehicleMaintenanceAndInspection,
+    specs: RailwayVehicleOperationalPerformance,
   ) => {
     toggleDetailDrawer();
     setSelectedRow(specs);
   };
 
-  const mapMaintenanceAndInspectionToDetailItems = (
-    specs: RailwayVehicleMaintenanceAndInspection,
+  const mapOperationalPerformanceToDetailItems = (
+    specs: RailwayVehicleOperationalPerformance,
   ): { title: string; value: any }[] => [
       {
         title: t("common.table-columns.id"),
@@ -98,7 +98,7 @@ const RailwayVehicleMaintenanceAndInspectionList: React.FC<
       },
       {
         title: t(
-          "project.other.railway-vehicle-maintenance-and-inspection.details.railway_vehicle_identification_id",
+          "project.other.railway-vehicle-operational-performance.details.railway_vehicle_identification_id",
         ),
         value: specs?.railwayVehicleIndentification ?
           specs?.railwayVehicleIndentification + " - " + specs?.railwayVehicleIndentification.manufacturer_supplier_name + " - " + specs?.railwayVehicleIndentification.manufacture_year
@@ -108,31 +108,31 @@ const RailwayVehicleMaintenanceAndInspectionList: React.FC<
       },
       {
         title: t(
-          "project.other.railway-vehicle-maintenance-and-inspection.details.maintenance_history_records",
+          "project.other.railway-vehicle-operational-performance.details.fuel_or_energy_consumption",
         ),
-        value: specs?.maintenance_history_records || "N/A",
+        value: specs?.fuel_or_energy_consumption || "N/A",
       },
       {
         title: t(
-          "project.other.railway-vehicle-maintenance-and-inspection.details.vehicle_weight_and_load_capacity",
+          "project.other.railway-vehicle-operational-performance.details.mileage_or_operating_hours",
         ),
-        value: specs?.vehicle_weight_and_load_capacity || "N/A",
+        value: specs?.mileage_or_operating_hours || "N/A",
       },
       {
         title: t(
-          "project.other.railway-vehicle-maintenance-and-inspection.details.maximum_speed",
+          "project.other.railway-vehicle-operational-performance.details.reliability_and_availability",
         ),
-        value: specs?.maximum_speed?.toString() || "N/A",
+        value: specs?.reliability_and_availability || "N/A",
       },
       {
         title: t(
-          "project.other.railway-vehicle-maintenance-and-inspection.details.braking_system_type",
+          "project.other.railway-vehicle-operational-performance.details.performance_indicators",
         ),
-        value: specs?.braking_system_type || "N/A",
+        value: specs?.performance_indicators || "N/A",
       },
       {
         title: t(
-          "project.other.railway-vehicle-maintenance-and-inspection.details.remark",
+          "project.other.railway-vehicle-operational-performance.details.remark",
         ),
         value: specs?.remark || "N/A",
       },
@@ -162,12 +162,12 @@ const RailwayVehicleMaintenanceAndInspectionList: React.FC<
   return (
     <Box>
       {showDrawer && (
-        <RailwayVehicleMaintenanceAndInspectionDrawer
+        <RailwayVehicleOperationalPerformanceDrawer
           otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
-          railwayVehicleMaintenanceAndInspection={
-            selectedRow as RailwayVehicleMaintenanceAndInspection
+          railwayVehicleOperationalPerformance={
+            selectedRow as RailwayVehicleOperationalPerformance
           }
           refetch={refetch}
           projectId={projectId}
@@ -178,26 +178,26 @@ const RailwayVehicleMaintenanceAndInspectionList: React.FC<
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapMaintenanceAndInspectionToDetailItems(
-            selectedRow as RailwayVehicleMaintenanceAndInspection,
+          data={mapOperationalPerformanceToDetailItems(
+            selectedRow as RailwayVehicleOperationalPerformance,
           )}
           hasReference={true}
           id={selectedRow?.id || ""}
-          fileType={"RAILWAY_VEHICLE_MAINTENANCE_AND_INSPECTION"}
+          fileType={"RAILWAY_VEHICLE_OPERATIONAL_PERFORMANCE"}
           title={t(
-            "project.other.railway-vehicle-maintenance-and-inspection.detail",
+            "project.other.railway-vehicle-operational-performance.detail",
           )}
         />
       )}
 
       <ItemsListing
         title={t(
-          "project.other.railway-vehicle-maintenance-and-inspection.title",
+          "project.other.railway-vehicle-operational-performance.title",
         )}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: railwayVehicleMaintenanceAndInspectionColumns(
+          headers: railwayVehicleOperationalPerformanceColumns(
             handleClickDetail,
             handleEdit,
             handleDelete,
@@ -208,10 +208,10 @@ const RailwayVehicleMaintenanceAndInspectionList: React.FC<
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <RailwayVehicleMaintenanceAndInspectionCard
+          <RailwayVehicleOperationalPerformanceCard
             onDetail={handleClickDetail}
-            railwayVehicleMaintenanceAndInspection={
-              data as RailwayVehicleMaintenanceAndInspection
+            railwayVehicleOperationalPerformance={
+              data as RailwayVehicleOperationalPerformance
             }
             onEdit={handleEdit}
             refetch={refetch}
@@ -225,15 +225,15 @@ const RailwayVehicleMaintenanceAndInspectionList: React.FC<
           onlyIcon: false,
           permission: {
             action: "create",
-            subject: "railwayvehiclemaintenanceandinspection",
+            subject: "railwayvehicleoperationalperformance",
           },
         }}
         fetchDataFunction={refetch}
-        items={maintenanceAndInspection || []}
+        items={operationalPerformance || []}
         onPaginationChange={handlePageChange}
       />
     </Box>
   );
 };
 
-export default RailwayVehicleMaintenanceAndInspectionList;
+export default RailwayVehicleOperationalPerformanceList;

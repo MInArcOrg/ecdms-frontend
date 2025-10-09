@@ -10,28 +10,28 @@ import {
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
-import type { RailwayVehicleMaintenanceAndInspection } from "src/types/project/other";
+import type { RailwayVehicleOperationalPerformance } from "src/types/project/other";
 import FileDrawer from "src/views/components/custom/files-drawer";
 import ModelAction from "src/views/components/custom/model-actions";
 import RowOptions from "src/views/shared/listing/row-options";
 
-interface RailwayVehicleMaintenanceAndInspectionCardProps {
-  railwayVehicleMaintenanceAndInspection: RailwayVehicleMaintenanceAndInspection;
+interface RailwayVehicleOperationalPerformanceCardProps {
+  railwayVehicleOperationalPerformance: RailwayVehicleOperationalPerformance;
   refetch: () => void;
   onEdit: (
-    specs: RailwayVehicleMaintenanceAndInspection,
+    specs: RailwayVehicleOperationalPerformance,
   ) => void;
   onDelete: (id: string) => void;
   onDetail: (
-    specs: RailwayVehicleMaintenanceAndInspection,
+    specs: RailwayVehicleOperationalPerformance,
   ) => void;
   otherSubMenu?: DetailSubMenuItemChild;
 }
 
-const RailwayVehicleMaintenanceAndInspectionCard: React.FC<
-  RailwayVehicleMaintenanceAndInspectionCardProps
+const RailwayVehicleOperationalPerformanceCard: React.FC<
+  RailwayVehicleOperationalPerformanceCardProps
 > = ({
-  railwayVehicleMaintenanceAndInspection,
+  railwayVehicleOperationalPerformance,
   refetch,
   onEdit,
   onDelete,
@@ -54,7 +54,7 @@ const RailwayVehicleMaintenanceAndInspectionCard: React.FC<
                 noWrap
                 component={Button}
                 onClick={() =>
-                  onDetail(railwayVehicleMaintenanceAndInspection)
+                  onDetail(railwayVehicleOperationalPerformance)
                 }
                 sx={{
                   fontWeight: 500,
@@ -63,7 +63,7 @@ const RailwayVehicleMaintenanceAndInspectionCard: React.FC<
                   "&:hover": { color: "primary.main" },
                 }}
               >
-                {railwayVehicleMaintenanceAndInspection?.id
+                {railwayVehicleOperationalPerformance?.id
                   ?.toString()
                   .slice(0, 5)}
                 ...
@@ -74,73 +74,73 @@ const RailwayVehicleMaintenanceAndInspectionCard: React.FC<
           <Box display="flex" flexDirection="column" gap={1} mt={2}>
             <Typography variant="body2" color="text.secondary">
               {t(
-                "project.other.railway-vehicle-maintenance-and-inspection.details.railway_vehicle_identification_id",
+                "project.other.railway-vehicle-operational-performance.details.railway_vehicle_identification_id",
               )}
               :{" "}
-              {railwayVehicleMaintenanceAndInspection?.railwayVehicleIndentification ?
-                railwayVehicleMaintenanceAndInspection?.railwayVehicleIndentification + " - " + railwayVehicleMaintenanceAndInspection?.railwayVehicleIndentification.manufacturer_supplier_name + " - " + railwayVehicleMaintenanceAndInspection?.railwayVehicleIndentification.manufacture_year
+              {railwayVehicleOperationalPerformance?.railwayVehicleIndentification ?
+                railwayVehicleOperationalPerformance?.railwayVehicleIndentification + " - " + railwayVehicleOperationalPerformance?.railwayVehicleIndentification.manufacturer_supplier_name + " - " + railwayVehicleOperationalPerformance?.railwayVehicleIndentification.manufacture_year
 
-                : railwayVehicleMaintenanceAndInspection?.railway_vehicle_identification_id ||
+                : railwayVehicleOperationalPerformance?.id ||
                 "N/A"}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {t(
-                "project.other.railway-vehicle-maintenance-and-inspection.details.maintenance_history_records",
+                "project.other.railway-vehicle-operational-performance.details.fuel_or_energy_consumption",
               )}
               :{" "}
-              {railwayVehicleMaintenanceAndInspection.maintenance_history_records ||
+              {railwayVehicleOperationalPerformance.fuel_or_energy_consumption ||
                 "N/A"}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {t(
-                "project.other.railway-vehicle-maintenance-and-inspection.details.vehicle_weight_and_load_capacity",
+                "project.other.railway-vehicle-operational-performance.details.mileage_or_operating_hours",
               )}
               :{" "}
-              {railwayVehicleMaintenanceAndInspection.vehicle_weight_and_load_capacity ||
+              {railwayVehicleOperationalPerformance.mileage_or_operating_hours ||
                 "N/A"}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {t(
-                "project.other.railway-vehicle-maintenance-and-inspection.details.maximum_speed",
+                "project.other.railway-vehicle-operational-performance.details.reliability_and_availability",
               )}
               :{" "}
-              {railwayVehicleMaintenanceAndInspection.maximum_speed ||
+              {railwayVehicleOperationalPerformance.reliability_and_availability ||
                 "N/A"}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {t(
-                "project.other.railway-vehicle-maintenance-and-inspection.details.braking_system_type",
+                "project.other.railway-vehicle-operational-performance.details.performance_indicators",
               )}
               :{" "}
-              {railwayVehicleMaintenanceAndInspection.braking_system_type ||
+              {railwayVehicleOperationalPerformance.performance_indicators ||
                 "N/A"}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {t(
-                "project.other.railway-vehicle-maintenance-and-inspection.details.remark",
+                "project.other.railway-vehicle-operational-performance.details.remark",
               )}
-              : {railwayVehicleMaintenanceAndInspection.remark || "N/A"}
+              : {railwayVehicleOperationalPerformance.remark || "N/A"}
             </Typography>
-            {railwayVehicleMaintenanceAndInspection.created_at && (
+            {railwayVehicleOperationalPerformance.created_at && (
               <Typography variant="body2" color="text.secondary">
                 {t("common.table-columns.created-at")}:{" "}
-                {railwayVehicleMaintenanceAndInspection.created_at}
+                {railwayVehicleOperationalPerformance.created_at}
               </Typography>
             )}
           </Box>
         </CardContent>
         <CardActions sx={{ justifyContent: "flex-end" }}>
-          {railwayVehicleMaintenanceAndInspection.id && (
+          {railwayVehicleOperationalPerformance.id && (
             <FileDrawer
-              id={railwayVehicleMaintenanceAndInspection.id}
+              id={railwayVehicleOperationalPerformance.id}
               type={otherSubMenu?.fileType || ""}
             />
           )}
 
-          {railwayVehicleMaintenanceAndInspection.id && (
+          {railwayVehicleOperationalPerformance.id && (
             <ModelAction
-              model="RailwayVehicleMaintenanceAndInspection"
-              model_id={railwayVehicleMaintenanceAndInspection.id}
+              model="RailwayVehicleOperationalPerformance"
+              model_id={railwayVehicleOperationalPerformance.id}
               refetchModel={refetch}
               resubmit={refetch}
               title=""
@@ -150,19 +150,19 @@ const RailwayVehicleMaintenanceAndInspectionCard: React.FC<
           <RowOptions
             deletePermissionRule={{
               action: "delete",
-              subject: "railwayvehiclemaintenanceandinspection",
+              subject: "railwayvehicleoperationalperformance",
             }}
             editPermissionRule={{
               action: "update",
-              subject: "railwayvehiclemaintenanceandinspection",
+              subject: "railwayvehicleoperationalperformance",
             }}
-            onEdit={() => onEdit(railwayVehicleMaintenanceAndInspection)}
+            onEdit={() => onEdit(railwayVehicleOperationalPerformance)}
             onDelete={() =>
               onDelete(
-                railwayVehicleMaintenanceAndInspection.id as string,
+                railwayVehicleOperationalPerformance.id as string,
               )
             }
-            item={railwayVehicleMaintenanceAndInspection}
+            item={railwayVehicleOperationalPerformance}
             options={[]}
           />
         </CardActions>
@@ -170,4 +170,4 @@ const RailwayVehicleMaintenanceAndInspectionCard: React.FC<
     );
   };
 
-export default RailwayVehicleMaintenanceAndInspectionCard;
+export default RailwayVehicleOperationalPerformanceCard;

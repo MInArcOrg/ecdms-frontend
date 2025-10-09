@@ -1735,7 +1735,7 @@ export enum ScheduledMaintenanceActivities {
 
 export interface RailwayBallastDrainageAndWaterManagement {
   id: string;
-  project_id: string; // UUID is typically represented as a string in TypeScript
+  project_id: string;
   railway_line_section_name: string; // STRING
   drainage_condition_assessment?: string; // STRING, Optional
   drainage_infrastructure_type?: string; // STRING, Optional
@@ -1749,7 +1749,7 @@ export interface RailwayBallastDrainageAndWaterManagement {
 
 export interface RailwayBallastEnvironmentalAndOtherFactor {
   id: string; // Added id field
-  project_id: string; // UUID is typically represented as a string in TypeScript
+  project_id: string;
   railway_line_section_name: string; // STRING
   environmental_compliance_measures?: string; // TEXT, Optional
   environmental_impact_assessment?: string; // TEXT, Optional
@@ -2084,12 +2084,27 @@ export interface RailwayVehicleSpecification {
 export interface RailwayVehicleMaintenanceAndInspection {
   id: string;
   project_id: string;
-  railway_vehicle_identification_id: string; // UUID is typically represented as a string
+  railway_vehicle_identification_id: string;
+  railwayVehicleIndentification?: RailwayVehicleIdentification;
   maintenance_history_records?: string | null;
   vehicle_weight_and_load_capacity?: string | null;
-  maximum_speed?: number | null; // Double is typically represented as a number
+  maximum_speed?: number | null;
   braking_system_type?: string | null;
   remark?: string | null;
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayVehicleOperationalPerformance {
+  id: string;
+  project_id: string;
+  railway_vehicle_identification_id: string;
+  fuel_or_energy_consumption?: string | null;
+  railwayVehicleIndentification: RailwayVehicleIdentification;
+  mileage_or_operating_hours?: string | null;
+  reliability_and_availability?: string | null;
+  performance_indicators?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
