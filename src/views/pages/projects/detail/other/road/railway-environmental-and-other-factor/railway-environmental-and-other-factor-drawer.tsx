@@ -11,6 +11,7 @@ import type { RailwayEnvironmentalAndOtherFactor } from "src/types/project/other
 import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
 import { useState } from "react";
 import { uploadFile } from "src/services/utils/file-utils";
+import { convertDateToLocaleDate, formatInitialDateDate } from "src/utils/formatter/date";
 
 interface RailwayEnvironmentalAndOtherFactorDrawerProps {
   open: boolean;
@@ -67,6 +68,7 @@ const RailwayEnvironmentalAndOtherFactorDrawer = ({
       data: {
         ...values,
         project_id: projectId,
+        data_recording_date: convertDateToLocaleDate(values.data_recording_date),
       },
       files: [],
     };
@@ -121,7 +123,11 @@ const RailwayEnvironmentalAndOtherFactorDrawer = ({
             }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={railwayEnvironmentalAndOtherFactor}
+          initialValues={{
+            ...railwayEnvironmentalAndOtherFactor, data_recording_date: formatInitialDateDate(
+              railwayEnvironmentalAndOtherFactor?.data_recording_date,
+            ),
+          }}
           createActionFunc={
             isEdit
               ? editRailwayEnvironmentalAndOtherFactor

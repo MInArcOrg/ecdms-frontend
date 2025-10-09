@@ -2080,3 +2080,16 @@ export interface RailwayVehicleSpecification {
   created_at?: string;
   updated_at?: string;
 }
+
+export interface RailwayVehicleMaintenanceAndInspection {
+  id: string;
+  project_id: string;
+  railway_vehicle_identification_id: string; // UUID is typically represented as a string
+  maintenance_history_records?: string | null;
+  vehicle_weight_and_load_capacity?: string | null;
+  maximum_speed?: number | null; // Double is typically represented as a number
+  braking_system_type?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
