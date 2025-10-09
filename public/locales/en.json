@@ -1675,14 +1675,14 @@
         "create": "Add Contact Person"
       }
     },
-     "construction-type": {
-        "title": "Construction Type",
-        "create": "Add Construction Type",
-        "edit": "Edit Construction Type",
-        "details": "Construction Type Details",
-        "construction-type": "Construction Type",
-        "description": "Description"
-      },
+    "construction-type": {
+      "title": "Construction Type",
+      "create": "Add Construction Type",
+      "edit": "Edit Construction Type",
+      "details": "Construction Type Details",
+      "construction-type": "Construction Type",
+      "description": "Description"
+    },
     "other": {
       "port": {
         "title": "Port",
@@ -2706,7 +2706,7 @@
         "create": "Add Safety Status",
         "edit": "Edit Safety Status"
       },
-     
+
       "weather-condition": {
         "title": "Weather Condition",
         "weather-type": "Weather Type",
@@ -4021,6 +4021,21 @@
           "cyber-security-measures-implemented": "Cyber Security Measures Implemented",
           "cyber-security-measures-type": "Cyber Security Measures Type",
           "cyber-security-audits-frequency": "Cyber Security Audits Frequency",
+          "remark": "Remark"
+        }
+      },
+      "railway-communication-system-safety-and-compliance": {
+        "title": "Railway Communication System Safety and Compliance",
+        "detail": "Safety and Compliance Details",
+        "create": "Create Safety and Compliance Record",
+        "edit": "Edit Safety and Compliance Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "safety_measures_and_protocols_done": "Safety Measures and Protocols Done",
+          "compliance_with_signaling_and_communication_standards": "Compliance with Standards",
+          "incident_or_accident_records": "Incident/Accident Records",
+          "incident_date": "Incident/Accident Date",
           "remark": "Remark"
         }
       }

@@ -5,6 +5,8 @@ import subMenuItems, {
   findSubMenuItem,
   railwayOperationalSystemsIds,
 } from "../(subMenuItems)";
+import RailwayCommunicationSystemMaintenanceAndTestingList from "src/views/pages/projects/detail/other/road/railway-communication-system-maintenance-and-testing";
+import RailwayCommunicationSystemSafetyAndComplianceList from "src/views/pages/projects/detail/other/road/railway-communication-system-safety-and-compliance";
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems("", ""),
@@ -27,12 +29,15 @@ const RailwayCommSystemSafetyAndCompliancePage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayOperationalSystems}
       activeSubMenuId={
-        railwayOperationalSystemsIds.communicationAndSignaling
-          .railwayCommSystemSafetyAndCompliance
+        railwayOperationalSystemsIds.communicationAndSignaling.railwayCommSystemSafetyAndCompliance
       }
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Railway Comm System Safety and Compliance Placeholder</div>
+      <RailwayCommunicationSystemSafetyAndComplianceList
+        projectId={id as string}
+        typeId={typeId as string}
+        otherSubMenu={menuItem}
+      />
     </ProjectLayout>
   );
 };
