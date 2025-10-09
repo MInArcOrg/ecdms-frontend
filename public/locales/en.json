@@ -1708,7 +1708,7 @@
           "site-area": "Site Area",
           "annual-traffic-size": "Annual Traffic Size",
           "revision-no": "Revision No",
-          "created-at": "Created At"
+          "created-at": "Addd At"
         }
       },
       "telecom-infrastructure": {
@@ -2729,7 +2729,7 @@
           "retaining-walls": "Retaining Walls",
           "geological-hazard": "Geological Hazard",
           "remark": "Remark",
-          "created-at": "Created At",
+          "created-at": "Addd At",
           "updated-at": "Updated At"
         },
         "file-types": {
@@ -4027,7 +4027,7 @@
       "railway-communication-system-safety-and-compliance": {
         "title": "Railway Communication System Safety and Compliance",
         "detail": "Safety and Compliance Details",
-        "create": "Create Safety and Compliance Record",
+        "create": "Add Safety and Compliance Record",
         "edit": "Edit Safety and Compliance Record",
         "details": {
           "project_id": "Project ID",
@@ -4042,7 +4042,7 @@
       "railway-environmental-and-other-factor": {
         "title": "Railway Environmental and Other Factors",
         "detail": "Environmental Factor Details",
-        "create": "Create Environmental Factor Record",
+        "create": "Add Environmental Factor Record",
         "edit": "Edit Environmental Factor Record",
         "details": {
           "railway_line_section_name": "Railway Line Section Name",
@@ -4056,7 +4056,7 @@
       "railway-vehicle-identification": {
         "title": "Railway Vehicle Identification",
         "detail": "Vehicle Identification Details",
-        "create": "Create Vehicle Identification Record",
+        "create": "Add Vehicle Identification Record",
         "edit": "Edit Vehicle Identification Record",
         "details": {
           "vehicle_identification_number": "Vehicle Identification Number (VIN)",
@@ -4065,6 +4065,20 @@
           "manufacturer_supplier_address": "Manufacturer/Supplier Address",
           "manufacture_year": "Manufacture Year",
           "ownership_or_leasing_details": "Ownership or Leasing Details",
+          "remark": "Remark"
+        }
+      },
+      "railway-vehicle-specification": {
+        "title": "Railway Vehicle Specification",
+        "detail": "Vehicle Specification Details",
+        "create": "Add Vehicle Specification Record",
+        "edit": "Edit Vehicle Specification Record",
+        "details": {
+          "railway_vehicle_identification_id": "Vehicle Identification",
+          "vehicle_dimensions": "Vehicle Dimensions",
+          "vehicle_weight_and_load_capacity": "Weight and Load Capacity",
+          "maximum_speed": "Maximum Speed (km/h)",
+          "braking_system_type": "Braking System Type",
           "remark": "Remark"
         }
       }

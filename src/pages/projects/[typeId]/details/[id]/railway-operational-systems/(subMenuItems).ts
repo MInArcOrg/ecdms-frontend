@@ -133,6 +133,9 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-specifications",
           path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-specifications`,
+          apiRoute: "railway-vehicle-specifications",
+          model: "railwayvehiclespecifications",
+          fileType: railwayOperationalSystemsIds.rollingStockVehicles.id,
         },
         {
           id: railwayOperationalSystemsIds.rollingStockVehicles
@@ -140,6 +143,9 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-maintenance-and-inspection",
           path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-maintenance-and-inspection`,
+          apiRoute: "railway-vehicle-maintenance-and-inspections",
+          model: "railwayvehiclemaintenanceandinspection",
+          fileType: railwayOperationalSystemsIds.rollingStockVehicles.id,
         },
         {
           id: railwayOperationalSystemsIds.rollingStockVehicles

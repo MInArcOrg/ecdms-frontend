@@ -2067,3 +2067,16 @@ export interface RailwayVehicleIdentification {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayVehicleSpecification {
+  id: string;
+  project_id: string;
+  railway_vehicle_identification_id: string;
+  railwayVehicleIndentification?: RailwayVehicleIdentification;
+  vehicle_dimensions?: string | null;
+  vehicle_weight_and_load_capacity?: string | null;
+  maximum_speed?: number | null;
+  braking_system_type?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
