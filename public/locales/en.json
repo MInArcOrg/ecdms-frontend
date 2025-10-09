@@ -4052,6 +4052,21 @@
           "remark": "Remark",
           "compliance-document-file-upload": "Compliance/Assessment Document Upload"
         }
+      },
+      "railway-vehicle-identification": {
+        "title": "Railway Vehicle Identification",
+        "detail": "Vehicle Identification Details",
+        "create": "Create Vehicle Identification Record",
+        "edit": "Edit Vehicle Identification Record",
+        "details": {
+          "vehicle_identification_number": "Vehicle Identification Number (VIN)",
+          "vehicle_type": "Vehicle Type",
+          "manufacturer_supplier_name": "Manufacturer/Supplier Name",
+          "manufacturer_supplier_address": "Manufacturer/Supplier Address",
+          "manufacture_year": "Manufacture Year",
+          "ownership_or_leasing_details": "Ownership or Leasing Details",
+          "remark": "Remark"
+        }
       }
     }
   },
@@ -4139,6 +4154,7 @@
       "actions": "Actions"
     },
     "form": {
+      "attachment": "Attachment",
       "file-upload": "File Upload",
       "success-created": "Successfully Addd!",
       "success-updated": "Successfully updated!"
