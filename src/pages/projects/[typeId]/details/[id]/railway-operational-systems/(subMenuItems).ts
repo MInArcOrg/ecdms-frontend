@@ -123,6 +123,9 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-identification",
           path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-identification`,
+          apiRoute: "railway-vehicle-identifications",
+          model: "railwayvehicleidentification",
+          fileType: railwayOperationalSystemsIds.rollingStockVehicles.id,
         },
         {
           id: railwayOperationalSystemsIds.rollingStockVehicles

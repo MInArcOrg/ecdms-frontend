@@ -2054,3 +2054,16 @@ export interface RailwayEnvironmentalAndOtherFactor {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayVehicleIdentification {
+  id: string;
+  project_id: string;
+  vehicle_identification_number?: string | null;
+  vehicle_type?: string | null;
+  manufacturer_supplier_name?: string | null;
+  manufacturer_supplier_address?: string | null;
+  manufacture_year?: number | null; // Based on Integer data type
+  ownership_or_leasing_details?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
