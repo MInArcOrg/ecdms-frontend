@@ -4124,6 +4124,19 @@
           "action_taken_to_accidents": "Action Taken to Incidents",
           "remark": "Remark"
         }
+      },
+      "railway-vehicle-interior-and-passenger-amenity": {
+        "title": "Vehicle Interior and Passenger Amenities",
+        "detail": "Interior and Amenity Details",
+        "create": "Create Interior and Amenity Record",
+        "edit": "Edit Interior and Amenity Record",
+        "details": {
+          "railway_vehicle_identification_id": "Vehicle Identification",
+          "seating_capacity": "Seating Capacity",
+          "passenger_amenities_availability": "Passenger Amenities Availability",
+          "accessibility_features_for_passengers_with_disabilities": "Accessibility Features for Passengers with Disabilities",
+          "remark": "Remark"
+        }
       }
     }
   },

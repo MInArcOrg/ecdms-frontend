@@ -2122,3 +2122,16 @@ export interface RailwayVehicleSafetyAndCompliance {
   created_at?: string;
   updated_at?: string;
 }
+
+export interface RailwayVehicleInteriorAndPassengerAmenity {
+  id: string;
+  project_id: string;
+  railway_vehicle_identification_id: string; // Foreign Key (UUID as String)
+  seating_capacity?: number | null; // Integer as number
+  passenger_amenities_availability?: string | null;
+  accessibility_features_for_passengers_with_disabilities?: boolean | null;
+  railwayVehicleIndentification?: RailwayVehicleIdentification; // Optional: Include related RailwayVehicleIdentification
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}

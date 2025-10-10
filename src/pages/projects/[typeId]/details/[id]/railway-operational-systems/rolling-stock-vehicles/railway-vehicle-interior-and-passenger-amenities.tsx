@@ -5,6 +5,7 @@ import subMenuItems, {
   findSubMenuItem,
   railwayOperationalSystemsIds,
 } from "../(subMenuItems)";
+import RailwayVehicleInteriorAndPassengerAmenityList from "src/views/pages/projects/detail/other/road/railway-vehicle-interior-and-passenger-amenity";
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems("", ""),
@@ -32,7 +33,11 @@ const RailwayVehicleInteriorAndPassengerAmenitiesPage = () => {
       }
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Railway Vehicle Interior and Passenger Amenities Placeholder</div>
+      <RailwayVehicleInteriorAndPassengerAmenityList
+        projectId={id as string}
+        typeId={typeId as string}
+        otherSubMenu={menuItem}
+      />
     </ProjectLayout>
   );
 };
