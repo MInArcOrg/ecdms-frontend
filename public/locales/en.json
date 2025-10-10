@@ -4110,6 +4110,20 @@
           "performance_indicators": "Performance Indicators",
           "remark": "Remark"
         }
+      },
+      "railway-vehicle-safety-and-compliance": {
+        "title": "Vehicle Safety and Compliance",
+        "detail": "Safety and Compliance Details",
+        "create": "Create Safety and Compliance Record",
+        "edit": "Edit Safety and Compliance Record",
+        "details": {
+          "railway_vehicle_identification_id": "Vehicle Identification",
+          "safety_features_and_systems": "Installed Safety Features/Systems",
+          "comply_with_regulatory_standards_and_certifications": "Regulatory Compliance/Certifications",
+          "incident_records_number": "Total Incident Records",
+          "action_taken_to_accidents": "Action Taken to Incidents",
+          "remark": "Remark"
+        }
       }
     }
   },

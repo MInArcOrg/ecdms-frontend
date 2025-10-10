@@ -2108,3 +2108,17 @@ export interface RailwayVehicleOperationalPerformance {
   updated_at?: string;
 }
 
+
+export interface RailwayVehicleSafetyAndCompliance {
+  id: string;
+  project_id: string;
+  railway_vehicle_identification_id: string; // Foreign Key (UUID as String)
+  safety_features_and_systems?: string | null;
+  comply_with_regulatory_standards_and_certifications?: boolean | null;
+  incident_records_number?: number | null; // Integer is represented as a number
+  action_taken_to_accidents?: string | null;
+  railwayVehicleIndentification?: RailwayVehicleIdentification; // Optional: Include related RailwayVehicleIdentification
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
