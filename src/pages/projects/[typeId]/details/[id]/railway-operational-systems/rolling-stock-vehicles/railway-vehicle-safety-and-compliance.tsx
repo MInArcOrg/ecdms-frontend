@@ -5,6 +5,7 @@ import subMenuItems, {
   findSubMenuItem,
   railwayOperationalSystemsIds,
 } from "../(subMenuItems)";
+import RailwayVehicleSafetyAndComplianceList from "src/views/pages/projects/detail/other/road/railway-vehicle-safety-and-compliance";
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems("", ""),
@@ -32,7 +33,11 @@ const RailwayVehicleSafetyAndCompliancePage = () => {
       }
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Railway Vehicle Safety and Compliance Placeholder</div>
+      <RailwayVehicleSafetyAndComplianceList
+        projectId={id as string}
+        typeId={typeId as string}
+        otherSubMenu={menuItem}
+      />
     </ProjectLayout>
   );
 };

@@ -163,6 +163,9 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-safety-and-compliance",
           path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-safety-and-compliance`,
+          apiRoute: "railway-vehicle-safety-and-compliances",
+          model: "railwayvehiclesafetyandcompliance",
+          fileType: railwayOperationalSystemsIds.rollingStockVehicles.id,
         },
         {
           id: railwayOperationalSystemsIds.rollingStockVehicles
