@@ -1,0 +1,81 @@
+import {
+  Card,
+  FormControl,
+  Grid,
+  InputLabel,
+  Select,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  MenuItem,
+  Typography
+} from '@mui/material'
+import { Box } from '@mui/system'
+import Icon from 'src/@core/components/icon'
+import { useTheme } from '@mui/material/styles'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import Can from 'src/layouts/components/acl/Can'
+
+function DetailMenu({ id, menuItems, activeMenu, setActiveMenu, goBack, typeid }) {
+  const theme = useTheme()
+  const desktop = useMediaQuery(theme.breakpoints.up('md'))
+
+  const setActive = id => {
+    setActiveTab(id)
+    setActiveMenu(1)
+  }
+
+  return (
+    <Card sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 2 }}>
+      {desktop ? (
+        <Grid container gap={2} sx={{ ml: 3 }}>
+          {menuItems.map(item => (
+            <Can do={item?.subject} key={item.id} on={item?.subject}>
+              <Grid item>
+                <ListItemButton
+                  onClick={() => setActiveMenu(item.path)}
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    py: 2,
+                    px: 3,
+                    borderRadius: 1,
+                    '&.Mui-selected': {
+                      textDecoration: 'underline'
+                    }
+                  }}
+                  selected={activeMenu === item.path}
+                >
+                  <ListItemText primary={item.title} />
+                </ListItemButton>
+              </Grid>
+            </Can>
+          ))}
+        </Grid>
+      ) : (
+        <FormControl sx={{ my: 2 }}>
+          <Select
+            id='demo-simple-select'
+            defaultValue={activeMenu}
+            value={activeMenu}
+            onChange={e => {
+              const path = menuItems.find(item => item.id === e.target.value).path
+              setActiveMenu(path)
+            }}
+          >
+            {menuItems.map(item => (
+              <MenuItem value={item.id} key={item.id}>
+                {item.title}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      )}
+    </Card>
+  )
+}
+
+export default DetailMenu
