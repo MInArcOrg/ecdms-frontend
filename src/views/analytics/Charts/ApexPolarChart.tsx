@@ -9,7 +9,10 @@ import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
 const donutColors = ['#fdd835', '#009933', '#826bf8', '#0099ff', '#ffa1a1']
 
-const ApexPolarChart = ({ title, labels }) => {
+const ApexPolarChart = ({ title, labels }: {
+  title: string,
+  labels: string[]
+}) => {
   // ** Hook
   const theme = useTheme()
 
@@ -23,7 +26,7 @@ const ApexPolarChart = ({ title, labels }) => {
     colors: donutColors,
     dataLabels: {
       enabled: true,
-      formatter: val => `${parseInt(val, 10)}%`
+      formatter: (val: any) => `${parseInt(val, 10)}%`
     },
     legend: {
       position: 'bottom',
@@ -45,7 +48,7 @@ const ApexPolarChart = ({ title, labels }) => {
             value: {
               fontSize: '1.2rem',
               color: theme.palette.text.secondary,
-              formatter: val => `${parseInt(val, 10)}`
+              formatter: (val: any) => `${parseInt(val, 10)}`
             }
           }
         }
@@ -100,7 +103,7 @@ const ApexPolarChart = ({ title, labels }) => {
         subheaderTypographyProps={{ sx: { color: theme => `${theme.palette.text.disabled} !important` } }}
       />
       <CardContent>
-        <ReactApexcharts type='polarArea' height={400} options={options} series={[14, 23, 21, 17, 15]} />
+        <ReactApexcharts type='polarArea' height={400} options={options as any} series={[14, 23, 21, 17, 15]} />
       </CardContent>
     </Card>
   )

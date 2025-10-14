@@ -17,6 +17,7 @@ import ProjectAnalyticsLayout from 'src/views/analytics/layouts/ProjectAnalytics
 
 // ** Chart & Component Imports
 import ApexPolarChart from 'src/views/analytics/Charts/ApexPolarChart'
+import GeneralTypeGrowthRate from 'src/views/analytics/Charts/General/GeneralTypeGrowthRate'
 import ReginalDistributionBarChart from 'src/views/analytics/Charts/General/ReginalDistributionBarChart'
 import GeneralCategoriesBarChart from 'src/views/analytics/Charts/GeneralCategories'
 import GeneralSubCategories from 'src/views/analytics/General/SubCategories'
@@ -24,7 +25,6 @@ import TypeCardStat from 'src/views/analytics/General/TypeCards'
 
 // ** API Services
 import masterTypeApiService from 'src/services/master-data/master-type-service'
-import GeneralTypeGrowthRate from 'src/views/analytics/Charts/General/GeneralTypeGrowthRate'
 
 const CrmDashboard = () => {
   const theme = useTheme()

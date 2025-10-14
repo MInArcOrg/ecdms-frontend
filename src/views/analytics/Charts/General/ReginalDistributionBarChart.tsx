@@ -20,7 +20,6 @@ import Icon from 'src/@core/components/icon'
 import OptionsMenu from 'src/@core/components/option-menu'
 import CustomAvatar from 'src/@core/components/mui/avatar'
 
-// ✅ Direct import from ApexCharts (NOT from your wrapper)
 import ReactApexcharts from 'react-apexcharts'
 
 // ** Utils & Hooks

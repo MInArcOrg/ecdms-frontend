@@ -11,7 +11,7 @@ import CustomAvatar from 'src/@core/components/mui/avatar'
 import { random } from 'lodash'
 import { Box } from '@mui/system'
 
-const TypeCardStat = props => {
+const TypeCardStat = (props: any) => {
   // ** Props
   const {
     sx,
@@ -64,7 +64,7 @@ const TypeCardStat = props => {
           <Icon fontSize='1.25rem' icon={chipText < 0 ? 'tabler:chevron-down' : 'tabler:chevron-up'} />
           <Typography sx={{ fontWeight: 500 }}>
             {`${chipText} `}
-            <Typography variant='' sx={{ mb: 1, color: 'text.disabled' }}>
+            <Typography sx={{ mb: 1, color: 'text.disabled' }}>
               from last year
             </Typography>
           </Typography>
