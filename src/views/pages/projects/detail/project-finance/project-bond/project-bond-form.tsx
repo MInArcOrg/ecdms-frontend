@@ -75,8 +75,8 @@ const ProjectBondForm: React.FC<ProjectBondFormProps> = ({
       <Grid item xs={12} md={6} lg={6}>
         <CustomTextBox
           fullWidth
-          label={transl("project.project-bond.form.amount-percent")}
-          placeholder={transl("project.project-bond.form.amount-percent")}
+          label={transl("project.project-bond.form.percent")}
+          placeholder={transl("project.project-bond.form.percent")}
           name="percent"
           size="small"
           type="number"

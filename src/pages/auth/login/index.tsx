@@ -102,7 +102,7 @@ const Login = () => {
   };
 
   return (
-    <AuthContainer illustrationName={`auth-v2-login-illustration`}>
+    <AuthContainer illustrationName={`minster-logo`}>
       <Logo width="60px" height="60px" />
       <Box sx={{ my: 6 }}>
         <Typography variant="h3" sx={{ mb: 1.5 }}>
@@ -146,7 +146,7 @@ const Login = () => {
                 type={showPassword ? "text" : "password"}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                  onCopy={(e) => e.preventDefault()}
+                onCopy={(e) => e.preventDefault()}
                 onCut={(e) => e.preventDefault()}
                 onPaste={(e) => e.preventDefault()}
                 InputProps={{

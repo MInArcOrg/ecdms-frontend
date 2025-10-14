@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
 import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
+import RailwayCommunicationSystemSafetyAndComplianceList from "src/views/pages/projects/detail/other/road/railway-communication-system-safety-and-compliance";
 import subMenuItems, {
   findSubMenuItem,
   railwayOperationalSystemsIds,
@@ -27,12 +28,15 @@ const RailwayCommSystemSafetyAndCompliancePage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayOperationalSystems}
       activeSubMenuId={
-        railwayOperationalSystemsIds.communicationAndSignaling
-          .railwayCommSystemSafetyAndCompliance
+        railwayOperationalSystemsIds.communicationAndSignaling.railwayCommSystemSafetyAndCompliance
       }
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Railway Comm System Safety and Compliance Placeholder</div>
+      <RailwayCommunicationSystemSafetyAndComplianceList
+        projectId={id as string}
+        typeId={typeId as string}
+        otherSubMenu={menuItem}
+      />
     </ProjectLayout>
   );
 };

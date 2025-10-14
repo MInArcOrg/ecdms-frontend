@@ -57,11 +57,9 @@ const AddressMasterDrawer = (props: AddressMasterDrawerType) => {
   };
   return (
     <CustomSideDrawer
-      title={
-        "address-master." +
-        (isEdit ? "edit-" : "create-") +
-        type?.toLocaleLowerCase().replace("_", " ")
-      }
+      title={`address-master.${isEdit ? "edit-" : "create-"}${
+        type?.toLocaleLowerCase().replace("_", " ") || "address"
+      }`}
       handleClose={handleClose}
       open={open}
     >
@@ -69,12 +67,10 @@ const AddressMasterDrawer = (props: AddressMasterDrawerType) => {
         addressMaster && (
           <FormPageWrapper
             edit={isEdit}
-            title={
-              "address-master." +
-              (isEdit ? "edit-" : "create-") +
-              type?.toLocaleLowerCase().replace("_", " ")
-            }
-            getPayload={getPayload}
+            title={`address-master.${isEdit ? "edit-" : "create-"}${
+              type?.toLocaleLowerCase().replace("_", " ") || "address"
+            }`}
+             getPayload={getPayload}
             validationSchema={validationSchema}
             initialValues={addressMaster}
             createActionFunc={isEdit ? editAddressMaster : createAddressMaster}

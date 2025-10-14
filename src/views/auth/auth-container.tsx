@@ -1,10 +1,9 @@
 // ** React Imports
 import { ReactElement, ReactNode } from "react";
 
-// ** Next Imports
-
 // ** MUI Components
 import Box, { BoxProps } from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import { styled, useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -15,20 +14,33 @@ import BlankLayout from "src/@core/layouts/BlankLayout";
 import FooterIllustrationsV2 from "src/views/pages/auth/FooterIllustrationsV2";
 import { useSettings } from "src/@core/hooks/useSettings";
 
-// ** Locale Imports
-
 // ** Styled Components
-const Illustration = styled("img")(({ theme }) => ({
+const CircleContainer = styled(Box)(({ theme }) => ({
   zIndex: 2,
-  maxHeight: 680,
-  marginTop: theme.spacing(12),
-  marginBottom: theme.spacing(12),
-  [theme.breakpoints.down(1540)]: {
-    maxHeight: 550,
-  },
+  borderRadius: "50%",
+  overflow: "hidden",
+  width: 400,
+  height: 400,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  backgroundColor: theme.palette.background.paper,
+  boxShadow: theme.shadows[5],
+  flexShrink: 0,
   [theme.breakpoints.down("lg")]: {
-    maxHeight: 500,
+    width: 300,
+    height: 300,
   },
+  [theme.breakpoints.down("md")]: {
+    width: 250,
+    height: 250,
+  },
+}));
+
+const Illustration = styled("img")(({ theme }) => ({
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
 }));
 
 const RightWrapper = styled(Box)<BoxProps>(({ theme }) => ({
@@ -47,35 +59,66 @@ const RightWrapper = styled(Box)<BoxProps>(({ theme }) => ({
 interface AuthContainerProps {
   children: ReactNode;
   illustrationName: string;
+  title?: string;
+  subtitle?: string;
 }
 
-const AuthContainer = ({ children, illustrationName }: AuthContainerProps) => {
+const AuthContainer = ({
+  children,
+  illustrationName,
+  title = "ECDMS",
+  subtitle = "Ethiopian Construction Data Managment System",
+}: AuthContainerProps) => {
   const theme = useTheme();
   const hidden = useMediaQuery(theme.breakpoints.down("md"));
   const { settings } = useSettings();
   const { skin } = settings;
+
   const imageSource =
     skin === "bordered" ? illustrationName + "bordered" : illustrationName;
   const illustrationSrc = `/images/pages/${imageSource}-${theme.palette.mode}.png`;
+
   return (
-    <Box className="content-right" sx={{ backgroundColor: "background.paper" }}>
-      {!hidden ? (
+    <Box
+      className="content-right"
+      sx={{
+        backgroundColor: "background.paper",
+        display: "flex",
+        minHeight: "100vh",
+      }}
+    >
+      {!hidden && (
         <Box
           sx={{
             flex: 1,
             display: "flex",
             position: "relative",
             alignItems: "center",
-            borderRadius: "20px",
             justifyContent: "center",
+            flexDirection: "column",
             backgroundColor: "customColors.bodyBg",
+            borderRadius: "20px",
             margin: (theme) => theme.spacing(8, 0, 8, 8),
           }}
         >
-          <Illustration alt="auth-illustration" src={illustrationSrc} />
+          <CircleContainer>
+            <Illustration alt="auth-illustration" src={illustrationSrc} />
+          </CircleContainer>
+
+          {/* Header and Subtitle below the illustration */}
+          <Box sx={{ mt: 4, textAlign: "center" }}>
+            <Typography variant="h1" sx={{ fontWeight: 600, mb: 1 }}>
+              {title}
+            </Typography>
+            <Typography variant="h4" sx={{ color: "text.secondary" }}>
+              {subtitle}
+            </Typography>
+          </Box>
+
           <FooterIllustrationsV2 />
         </Box>
-      ) : null}
+      )}
+
       <RightWrapper>
         <Box
           sx={{

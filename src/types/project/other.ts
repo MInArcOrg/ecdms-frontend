@@ -1735,7 +1735,7 @@ export enum ScheduledMaintenanceActivities {
 
 export interface RailwayBallastDrainageAndWaterManagement {
   id: string;
-  project_id: string; // UUID is typically represented as a string in TypeScript
+  project_id: string;
   railway_line_section_name: string; // STRING
   drainage_condition_assessment?: string; // STRING, Optional
   drainage_infrastructure_type?: string; // STRING, Optional
@@ -1749,7 +1749,7 @@ export interface RailwayBallastDrainageAndWaterManagement {
 
 export interface RailwayBallastEnvironmentalAndOtherFactor {
   id: string; // Added id field
-  project_id: string; // UUID is typically represented as a string in TypeScript
+  project_id: string;
   railway_line_section_name: string; // STRING
   environmental_compliance_measures?: string; // TEXT, Optional
   environmental_impact_assessment?: string; // TEXT, Optional
@@ -2026,6 +2026,112 @@ export interface RailwayCommunicationSystemMaintenanceAndTesting {
   testing_and_verification_procedures_prepared?: boolean | null; //
   maintenance_contracts_or_agreements_made?: string | null; //
   remark?: string | null; //
+  created_at?: string;
+  updated_at?: string;
+}
+
+// New Interface for Railway Communication System Safety and Compliance
+export interface RailwayCommunicationSystemSafetyAndCompliance {
+  id?: string;
+  project_id: string; //
+  railway_line_section_name: string; //
+  safety_measures_and_protocols_done?: boolean | null; //
+  compliance_with_signaling_and_communication_standards?: boolean | null; //
+  incident_or_accident_records?: boolean | null; //
+  incident_date?: string | Date | EthiopianDate; // Data Type: Date
+  remark?: string | null; //
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwayEnvironmentalAndOtherFactor {
+  id: string;
+  project_id: string;
+  railway_line_section_name: string;
+  environmental_compliance_measures?: boolean | null;
+  environmental_impact_assessment?: boolean | null;
+  data_recording_date?: string | Date | EthiopianDate; // Data Type: Datel;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwayVehicleIdentification {
+  id: string;
+  project_id: string;
+  vehicle_identification_number?: string | null;
+  vehicle_type?: string | null;
+  manufacturer_supplier_name?: string | null;
+  manufacturer_supplier_address?: string | null;
+  manufacture_year?: number | null; // Based on Integer data type
+  ownership_or_leasing_details?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwayVehicleSpecification {
+  id: string;
+  project_id: string;
+  railway_vehicle_identification_id: string;
+  railwayVehicleIndentification?: RailwayVehicleIdentification;
+  vehicle_dimensions?: string | null;
+  vehicle_weight_and_load_capacity?: string | null;
+  maximum_speed?: number | null;
+  braking_system_type?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface RailwayVehicleMaintenanceAndInspection {
+  id: string;
+  project_id: string;
+  railway_vehicle_identification_id: string;
+  railwayVehicleIndentification?: RailwayVehicleIdentification;
+  maintenance_history_records?: string | null;
+  vehicle_weight_and_load_capacity?: string | null;
+  maximum_speed?: number | null;
+  braking_system_type?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwayVehicleOperationalPerformance {
+  id: string;
+  project_id: string;
+  railway_vehicle_identification_id: string;
+  fuel_or_energy_consumption?: string | null;
+  railwayVehicleIndentification: RailwayVehicleIdentification;
+  mileage_or_operating_hours?: string | null;
+  reliability_and_availability?: string | null;
+  performance_indicators?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+
+export interface RailwayVehicleSafetyAndCompliance {
+  id: string;
+  project_id: string;
+  railway_vehicle_identification_id: string; // Foreign Key (UUID as String)
+  safety_features_and_systems?: string | null;
+  comply_with_regulatory_standards_and_certifications?: boolean | null;
+  incident_records_number?: number | null; // Integer is represented as a number
+  action_taken_to_accidents?: string | null;
+  railwayVehicleIndentification?: RailwayVehicleIdentification; // Optional: Include related RailwayVehicleIdentification
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface RailwayVehicleInteriorAndPassengerAmenity {
+  id: string;
+  project_id: string;
+  railway_vehicle_identification_id: string; // Foreign Key (UUID as String)
+  seating_capacity?: number | null; // Integer as number
+  passenger_amenities_availability?: string | null;
+  accessibility_features_for_passengers_with_disabilities?: boolean | null;
+  railwayVehicleIndentification?: RailwayVehicleIdentification; // Optional: Include related RailwayVehicleIdentification
+  remark?: string | null;
   created_at?: string;
   updated_at?: string;
 }

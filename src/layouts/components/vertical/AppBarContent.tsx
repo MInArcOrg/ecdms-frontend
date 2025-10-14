@@ -14,6 +14,7 @@ import ModeToggler from "src/@core/layouts/components/shared-components/ModeTogg
 import NotificationDropdown from "src/@core/layouts/components/shared-components/NotificationDropdown";
 import ShortcutsDropdown from "src/@core/layouts/components/shared-components/ShortcutsDropdown";
 import UserDropdown from "src/@core/layouts/components/shared-components/UserDropdown";
+import { styled } from "@mui/material/styles";
 
 // ** Hook Import
 import { useAuth } from "src/hooks/useAuth";
@@ -24,7 +25,17 @@ interface Props {
   toggleNavVisibility: () => void;
   saveSettings: (values: Settings) => void;
 }
-
+const LogoImg = styled("img")<{ width?: number; height?: number }>(({ width, height }) => ({
+  width: width ?? 120,
+  height: height ?? "auto",
+  objectFit: "contain",
+  display: "block",
+  marginLeft: "auto",
+  marginRight: "10px",
+  marginTop: "auto",
+  marginBottom: "auto",
+  borderRadius: "50%",
+}));
 const AppBarContent = (props: Props) => {
   // ** Props
   const { hidden, settings, saveSettings, toggleNavVisibility } = props;
@@ -59,6 +70,7 @@ const AppBarContent = (props: Props) => {
         className="actions-right"
         sx={{ display: "flex", alignItems: "center" }}
       >
+        <LogoImg src="/images/pages/minster-logo-light.png" width={50} height={50} />
         <LanguageDropdown settings={settings} saveSettings={saveSettings} />
         <ModeToggler settings={settings} saveSettings={saveSettings} />
         {auth.user && (

@@ -103,7 +103,7 @@ const ResetPassword = () => {
   };
 
   return (
-    <AuthContainer illustrationName={`auth-v2-reset-password-illustration`}>
+    <AuthContainer illustrationName={`minster-logo`}>
       <Logo width="80px" height="80px" />
       <Box sx={{ my: 6 }}>
         <Typography variant="h3" sx={{ mb: 1.5 }}>

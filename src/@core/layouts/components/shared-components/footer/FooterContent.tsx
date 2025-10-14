@@ -6,6 +6,8 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { Theme, useMediaQuery } from "@mui/material";
+import SupportDrawer from "./support-drawer";
+import { useState } from "react";
 
 const StyledCompanyName = styled(Link)(({ theme }) => ({
   fontWeight: 500,
@@ -24,7 +26,8 @@ const LinkStyled = styled(Link)(({ theme }) => ({
 const FooterContent = () => {
   // ** Var
   const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
-
+  const [openSupportDrawer, setOpenSupportDrawer] = useState(false);
+  const toggleSupportDrawer = () => setOpenSupportDrawer(!openSupportDrawer);
   return (
     <Box
       sx={{
@@ -67,12 +70,12 @@ const FooterContent = () => {
           </Typography>
         */}
           <Typography
-            target="_blank"
-            component={LinkStyled}
-            href="https://www.onespace.et"
+            onClick={toggleSupportDrawer}
+            sx={{ cursor: "pointer" }}
           >
             Support
           </Typography>
+          <SupportDrawer open={openSupportDrawer} toggle={toggleSupportDrawer} />
         </Box>
       )}
     </Box>

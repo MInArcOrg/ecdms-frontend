@@ -75,6 +75,8 @@
     "document": "Document",
     "resource": "Resource",
     "general-master": {
+      "select-module": "Please select a module from the menu above to get started.",
+      "select-item": "Please select an item from the side menu to view its details.",
       "ownerships": "Ownership Types",
       "create-ownerships": "Add Ownership Type",
       "edit-ownerships": "Edit Ownership Type",
@@ -546,8 +548,8 @@
       "title": "Users",
       "male": "Male",
       "female": "Female",
-       "single": "Single",
-        "married": "Married",
+      "single": "Single",
+      "married": "Married",
 
       "edit-user": "Edit User",
       "create-user": "Add User",
@@ -616,7 +618,8 @@
     "sub-department": {
       "form": {
         "name": "Name",
-        "description": "Description"
+        "description": "Description",
+        "address": "Address"
       },
       "columns": {
         "name": "Name",
@@ -640,6 +643,7 @@
     }
   },
   "address-master": {
+    "address-structure": "Address Structure",
     "region": "Region",
     "city-administration": "City Administration",
     "zone": "Zone",
@@ -665,6 +669,8 @@
     "edit-woreda": "Edit Woreda",
     "edit-kebele": "Edit Kebele",
     "edit-other": "Edit Other",
+    "create-address": "Add Address",
+    "edit-address": "Edit Address",
     "columns": {
       "title": "Title",
       "description": "Description",
@@ -673,7 +679,8 @@
     },
     "form": {
       "title": "Title",
-      "description": "Description"
+      "description": "Description",
+      "type": "Type"
     }
   },
   "greating": {
@@ -882,11 +889,11 @@
       "end-user": "End User",
       "function": "Function"
     },
-    "column":{
+    "column": {
       "name": "Project Title",
       "elapsed-time": "Elapsed Time",
-     "cpi": "CPI",
-     "spi": "SPI"
+      "cpi": "CPI",
+      "spi": "SPI"
     },
     "general-information": {
       "client": "Client",
@@ -1495,7 +1502,6 @@
         "retention": "Retention",
         "description": "Description",
         "reference_number": "Reference Number"
-
       }
     },
     "project-bond": {
@@ -1640,7 +1646,7 @@
       "title": "Main Contract Price",
       "edit-main-contract-price": "Edit Main Contract Price",
       "create-main-contract-price": "Add Main Contract Price",
-      "price-details":"Price Details",
+      "price-details": "Price Details",
       "form": {
         "main-contract-price": "Main Contract Price",
         "rebate": "Rebate",
@@ -1648,25 +1654,35 @@
         "source-of-finance": "Source of Finance"
       }
     },
-   
-     "project-contact-person": {
+
+    "project-contact-person": {
       "create": "Add Contact Person",
       "edit": "Edit Contact Person",
       "title": "Project Contact Person",
       "details": "Contact Person Details",
-      "form":{"stakeholder": "Stakeholder",
-      "firstName": "First Name",
-      "middleName": "Middle Name",
-      "lastName": "Last Name",
-      "position": "Position",
-      "department": "Department",
-      "nationalIdNo": "National ID No",
-      "gender": "Gender",
-      "phone": "Phone",
-      "email": "Email",
-      "edit": "Edit Contact Person",
-      "create": "Add Contact Person"
-    }},
+      "form": {
+        "stakeholder": "Stakeholder",
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "position": "Position",
+        "department": "Department",
+        "nationalIdNo": "National ID No",
+        "gender": "Gender",
+        "phone": "Phone",
+        "email": "Email",
+        "edit": "Edit Contact Person",
+        "create": "Add Contact Person"
+      }
+    },
+    "construction-type": {
+      "title": "Construction Type",
+      "create": "Add Construction Type",
+      "edit": "Edit Construction Type",
+      "details": "Construction Type Details",
+      "construction-type": "Construction Type",
+      "description": "Description"
+    },
     "other": {
       "port": {
         "title": "Port",
@@ -2690,6 +2706,7 @@
         "create": "Add Safety Status",
         "edit": "Edit Safety Status"
       },
+
       "weather-condition": {
         "title": "Weather Condition",
         "weather-type": "Weather Type",
@@ -2712,7 +2729,7 @@
           "retaining-walls": "Retaining Walls",
           "geological-hazard": "Geological Hazard",
           "remark": "Remark",
-          "created-at": "Created At",
+          "created-at": "Addd At",
           "updated-at": "Updated At"
         },
         "file-types": {
@@ -4006,6 +4023,120 @@
           "cyber-security-audits-frequency": "Cyber Security Audits Frequency",
           "remark": "Remark"
         }
+      },
+      "railway-communication-system-safety-and-compliance": {
+        "title": "Railway Communication System Safety and Compliance",
+        "detail": "Safety and Compliance Details",
+        "create": "Add Safety and Compliance Record",
+        "edit": "Edit Safety and Compliance Record",
+        "details": {
+          "project_id": "Project ID",
+          "railway_line_section_name": "Railway Line Section Name",
+          "safety_measures_and_protocols_done": "Safety Measures and Protocols Done",
+          "compliance_with_signaling_and_communication_standards": "Compliance with Standards",
+          "incident_or_accident_records": "Incident/Accident Records",
+          "incident_date": "Incident/Accident Date",
+          "remark": "Remark"
+        }
+      },
+      "railway-environmental-and-other-factor": {
+        "title": "Railway Environmental and Other Factors",
+        "detail": "Environmental Factor Details",
+        "create": "Add Environmental Factor Record",
+        "edit": "Edit Environmental Factor Record",
+        "details": {
+          "railway_line_section_name": "Railway Line Section Name",
+          "environmental_compliance_measures": "Environmental Compliance Measures",
+          "environmental_impact_assessment": "Environmental Impact Assessment",
+          "data_recording_date": "Data Recording Date",
+          "remark": "Remark",
+          "compliance-document-file-upload": "Compliance/Assessment Document Upload"
+        }
+      },
+      "railway-vehicle-identification": {
+        "title": "Railway Vehicle Identification",
+        "detail": "Vehicle Identification Details",
+        "create": "Add Vehicle Identification Record",
+        "edit": "Edit Vehicle Identification Record",
+        "details": {
+          "vehicle_identification_number": "Vehicle Identification Number (VIN)",
+          "vehicle_type": "Vehicle Type",
+          "manufacturer_supplier_name": "Manufacturer/Supplier Name",
+          "manufacturer_supplier_address": "Manufacturer/Supplier Address",
+          "manufacture_year": "Manufacture Year",
+          "ownership_or_leasing_details": "Ownership or Leasing Details",
+          "remark": "Remark"
+        }
+      },
+      "railway-vehicle-specification": {
+        "title": "Railway Vehicle Specification",
+        "detail": "Vehicle Specification Details",
+        "create": "Add Vehicle Specification Record",
+        "edit": "Edit Vehicle Specification Record",
+        "details": {
+          "railway_vehicle_identification_id": "Vehicle Identification",
+          "vehicle_dimensions": "Vehicle Dimensions",
+          "vehicle_weight_and_load_capacity": "Weight and Load Capacity",
+          "maximum_speed": "Maximum Speed (km/h)",
+          "braking_system_type": "Braking System Type",
+          "remark": "Remark"
+        }
+      },
+
+      "railway-vehicle-maintenance-and-inspection": {
+        "title": "Vehicle Maintenance and Inspection",
+        "detail": "Maintenance and Inspection Details",
+        "create": "Create Maintenance and Inspection Record",
+        "edit": "Edit Maintenance and Inspection Record",
+        "details": {
+          "railway_vehicle_identification_id": "Vehicle Identification",
+          "maintenance_history_records": "Historical Maintenance Records",
+          "vehicle_weight_and_load_capacity": "Weight and Load Capacity",
+          "maximum_speed": "Maximum Speed (km/h)",
+          "braking_system_type": "Braking System Type",
+          "remark": "Remark"
+        }
+      },
+      "railway-vehicle-operational-performance": {
+        "title": "Vehicle Operational Performance",
+        "detail": "Operational Performance Details",
+        "create": "Create Operational Performance Record",
+        "edit": "Edit Operational Performance Record",
+        "details": {
+          "railway_vehicle_identification_id": "Vehicle Identification",
+          "fuel_or_energy_consumption": "Fuel/Energy Consumption",
+          "mileage_or_operating_hours": "Mileage/Operating Hours",
+          "reliability_and_availability": "Reliability and Availability",
+          "performance_indicators": "Performance Indicators",
+          "remark": "Remark"
+        }
+      },
+      "railway-vehicle-safety-and-compliance": {
+        "title": "Vehicle Safety and Compliance",
+        "detail": "Safety and Compliance Details",
+        "create": "Create Safety and Compliance Record",
+        "edit": "Edit Safety and Compliance Record",
+        "details": {
+          "railway_vehicle_identification_id": "Vehicle Identification",
+          "safety_features_and_systems": "Installed Safety Features/Systems",
+          "comply_with_regulatory_standards_and_certifications": "Regulatory Compliance/Certifications",
+          "incident_records_number": "Total Incident Records",
+          "action_taken_to_accidents": "Action Taken to Incidents",
+          "remark": "Remark"
+        }
+      },
+      "railway-vehicle-interior-and-passenger-amenity": {
+        "title": "Vehicle Interior and Passenger Amenities",
+        "detail": "Interior and Amenity Details",
+        "create": "Create Interior and Amenity Record",
+        "edit": "Edit Interior and Amenity Record",
+        "details": {
+          "railway_vehicle_identification_id": "Vehicle Identification",
+          "seating_capacity": "Seating Capacity",
+          "passenger_amenities_availability": "Passenger Amenities Availability",
+          "accessibility_features_for_passengers_with_disabilities": "Accessibility Features for Passengers with Disabilities",
+          "remark": "Remark"
+        }
       }
     }
   },
@@ -4088,10 +4219,12 @@
       "id": "ID",
       "created-at": "Addd At",
       "updated-at": "update At",
+      "files": "Files",
       "status": "Status",
       "actions": "Actions"
     },
     "form": {
+      "attachment": "Attachment",
       "file-upload": "File Upload",
       "success-created": "Successfully Addd!",
       "success-updated": "Successfully updated!"
@@ -4847,6 +4980,17 @@
       "data_source": "Data Source",
       "responsible_data_collector_body": "Responsible Data Collector Body"
     }
+  },
+  "footer": {
+    "support": {
+      "title": "Support",
+      "heading": "Need Help?",
+      "description": "Our support team is here to assist you with any questions or issues.",
+      "emailLabel": "Email:",
+      "email": "support@example.com",
+      "phoneLabel": "Phone:",
+      "phone": "+1 (234) 567-890",
+      "hours": "We’re available Monday–Friday, 9:00 AM–6:00 PM (GMT)."
+    }
   }
 }
- 

@@ -24,7 +24,6 @@ interface ProjectTimeDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  project_id: yup.string().length(36).required("Project is required"),
   contract_signing_date: yup.string().nullable(),
   site_handover_date: yup.string().nullable(),
   mobilization_days_no: yup.number().integer().nullable(),
@@ -86,18 +85,16 @@ const ProjectTimeDrawer = (props: ProjectTimeDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.project-time.${
-        isEdit ? "edit-project-time" : "create-project-time"
-      }`}
+      title={`project.project-time.${isEdit ? "edit-project-time" : "create-project-time"
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.project-time.${
-            isEdit ? "edit-project-time" : "create-project-time"
-          }`}
+          title={`project.project-time.${isEdit ? "edit-project-time" : "create-project-time"
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

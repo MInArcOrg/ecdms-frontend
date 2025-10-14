@@ -92,7 +92,6 @@ const RailwayCommunicationSystemMaintenanceAndTestingDrawer = ({
       const recordId = response.payload.id;
 
       if (defaultFile) {
-        console.log("Uploading default file for record ID:", recordId);
         await uploadFile(
           defaultFile,
           otherSubMenu?.fileType || "",
@@ -103,10 +102,7 @@ const RailwayCommunicationSystemMaintenanceAndTestingDrawer = ({
       }
 
       if (maintenanceContractsFile) {
-        console.log(
-          "Uploading maintenance contracts file for record ID:",
-          recordId,
-        );
+
         await uploadFile(
           maintenanceContractsFile,
           "MAINTENANCE_AND_TESTING_CONTRACTS_AGREEMENT",
@@ -125,18 +121,16 @@ const RailwayCommunicationSystemMaintenanceAndTestingDrawer = ({
 
   return (
     <CustomSideDrawer
-      title={`project.other.railway-communication-system-maintenance-and-testing.${
-        isEdit ? "edit" : "create"
-      }`}
+      title={`project.other.railway-communication-system-maintenance-and-testing.${isEdit ? "edit" : "create"
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.railway-communication-system-maintenance-and-testing.${
-            isEdit ? "edit" : "create"
-          }`}
+          title={`project.other.railway-communication-system-maintenance-and-testing.${isEdit ? "edit" : "create"
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={railwayCommunicationSystemMaintenanceAndTesting}
