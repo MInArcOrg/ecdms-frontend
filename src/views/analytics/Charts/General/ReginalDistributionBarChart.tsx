@@ -5,27 +5,31 @@ import { useState } from 'react'
 import Tab from '@mui/material/Tab'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
-import TabList from '@mui/lab/TabList'
-import TabPanel from '@mui/lab/TabPanel'
-import Avatar from '@mui/material/Avatar'
-import TabContext from '@mui/lab/TabContext'
 import CardHeader from '@mui/material/CardHeader'
-import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
+import Typography from '@mui/material/Typography'
+import Avatar from '@mui/material/Avatar'
 import { useTheme } from '@mui/material/styles'
 
-// ** Custom Components Import
+// ** MUI Lab Imports
+import TabContext from '@mui/lab/TabContext'
+import TabPanel from '@mui/lab/TabPanel'
+
+// ** Custom Components
 import Icon from 'src/@core/components/icon'
 import OptionsMenu from 'src/@core/components/option-menu'
 import CustomAvatar from 'src/@core/components/mui/avatar'
-import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
-// ** Util Import
+// ✅ Direct import from ApexCharts (NOT from your wrapper)
+import ReactApexcharts from 'react-apexcharts'
+
+// ** Utils & Hooks
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
 import { useAuth } from 'src/hooks/useAuth'
 import { useQuery } from '@tanstack/react-query'
 import departmentApiService from 'src/services/department/department-service'
 
+// ** Dummy Tab Data
 const tabData = [
   {
     type: 'orders',
@@ -49,6 +53,7 @@ const tabData = [
   }
 ]
 
+// ** Tabs Renderer
 const renderTabs = (value: string, theme: any) => {
   return tabData.map((item, index) => {
     const RenderAvatar = item.type === value ? CustomAvatar : Avatar
@@ -89,11 +94,12 @@ const renderTabs = (value: string, theme: any) => {
   })
 }
 
+// ** Panels Renderer
 const renderTabPanels = (value: string, theme: any, options: any, colors: any) => {
   return tabData.map((item, index) => {
     const max = Math.max(...item.series[0].data)
     const seriesIndex = item.series[0].data.indexOf(max)
-    const finalColors = colors.map((color, i) => (seriesIndex === i ? hexToRGBA(theme.palette.primary.main, 1) : color))
+    const finalColors = colors.map((color: any, i: any) => (seriesIndex === i ? hexToRGBA(theme.palette.primary.main, 1) : color))
 
     return (
       <TabPanel key={index} value={item.type}>
@@ -103,25 +109,20 @@ const renderTabPanels = (value: string, theme: any, options: any, colors: any) =
   })
 }
 
+// ** Main Component
 const ReginalDistributionBarChart = ({ title }: { title: string }) => {
-  // ** State
-  const { user } = useAuth();
+  const { user } = useAuth()
   const [value, setValue] = useState('orders')
+
   const { data: labels } = useQuery({
     queryKey: ['subdepartments', user?.id],
-    queryFn: () => departmentApiService.getAll({
-      filter: {
-        parent_department_id: user?.department_id,
-      }
-    }),
+    queryFn: () =>
+      departmentApiService.getAll({
+        filter: { parent_department_id: user?.department_id }
+      })
   })
 
-  // ** Hook
   const theme = useTheme()
-
-  const handleChange = (event: any, newValue: string) => {
-    setValue(newValue)
-  }
   const colors = Array(9).fill(hexToRGBA(theme.palette.primary.main, 0.16))
 
   const options = {
@@ -142,7 +143,7 @@ const ReginalDistributionBarChart = ({ title }: { title: string }) => {
     tooltip: { enabled: false },
     dataLabels: {
       offsetY: -15,
-      formatter: val => `${val}k`,
+      formatter: (val: number) => `${val}k`,
       style: {
         fontWeight: 500,
         fontSize: '1rem',
@@ -151,26 +152,17 @@ const ReginalDistributionBarChart = ({ title }: { title: string }) => {
     },
     colors,
     states: {
-      hover: {
-        filter: { type: 'none' }
-      },
-      active: {
-        filter: { type: 'none' }
-      }
+      hover: { filter: { type: 'none' } },
+      active: { filter: { type: 'none' } }
     },
     grid: {
       show: false,
-      padding: {
-        top: 20,
-        left: -5,
-        right: -8,
-        bottom: -12
-      }
+      padding: { top: 20, left: -5, right: -8, bottom: -12 }
     },
     xaxis: {
       axisTicks: { show: false },
       axisBorder: { color: theme.palette.divider },
-      categories: labels?.payload?.map(label => label.name),
+      categories: labels?.payload?.map((label: any) => label.name) || [],
       labels: {
         style: {
           fontSize: '14px',
@@ -182,7 +174,7 @@ const ReginalDistributionBarChart = ({ title }: { title: string }) => {
     yaxis: {
       labels: {
         offsetX: -15,
-        formatter: val => `$${val}k`,
+        formatter: (val: number) => `$${val}k`,
         style: {
           fontSize: '14px',
           colors: theme.palette.text.disabled,
@@ -194,12 +186,8 @@ const ReginalDistributionBarChart = ({ title }: { title: string }) => {
       {
         breakpoint: theme.breakpoints.values.sm,
         options: {
-          plotOptions: {
-            bar: { columnWidth: '60%' }
-          },
-          grid: {
-            padding: { right: 20 }
-          }
+          plotOptions: { bar: { columnWidth: '60%' } },
+          grid: { padding: { right: 20 } }
         }
       }
     ]
@@ -208,7 +196,7 @@ const ReginalDistributionBarChart = ({ title }: { title: string }) => {
   return (
     <Card>
       <CardHeader
-        title={'Reginal Distribution of ' + title}
+        title={'Regional Distribution of ' + title}
         subheader='Yearly Earnings Overview'
         subheaderTypographyProps={{ sx: { mt: '0 !important' } }}
         action={
@@ -220,6 +208,7 @@ const ReginalDistributionBarChart = ({ title }: { title: string }) => {
       />
       <CardContent sx={{ '& .MuiTabPanel-root': { p: 0 } }}>
         <TabContext value={value}>
+          {/* Uncomment below if you want tab switching */}
           {/* <TabList
             variant='scrollable'
             scrollButtons='auto'
@@ -232,28 +221,6 @@ const ReginalDistributionBarChart = ({ title }: { title: string }) => {
             }}
           >
             {renderTabs(value, theme)}
-            <Tab
-              disabled
-              value='add'
-              label={
-                <Box
-                  sx={{
-                    width: 110,
-                    height: 94,
-                    display: 'flex',
-                    alignItems: 'center',
-                    borderRadius: '10px',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    border: `1px dashed ${theme.palette.divider}`
-                  }}
-                >
-                  <Avatar variant='rounded' sx={{ width: 34, height: 34, backgroundColor: 'action.selected' }}>
-                    <Icon icon='tabler:plus' />
-                  </Avatar>
-                </Box>
-              }
-            />
           </TabList> */}
           {labels && renderTabPanels(value, theme, options, colors)}
         </TabContext>

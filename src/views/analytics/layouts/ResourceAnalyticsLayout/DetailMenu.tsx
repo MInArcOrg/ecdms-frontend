@@ -2,29 +2,33 @@ import {
   Card,
   FormControl,
   Grid,
-  InputLabel,
-  Select,
-  List,
-  ListItem,
   ListItemButton,
-  ListItemIcon,
   ListItemText,
   MenuItem,
-  Typography
+  Select
 } from '@mui/material'
-import { Box } from '@mui/system'
-import Icon from 'src/@core/components/icon'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import Can from 'src/layouts/components/acl/Can'
 
-function DetailMenu({ id, menuItems, activeMenu, setActiveMenu, goBack, typeid }) {
+function DetailMenu({ id, menuItems, activeMenu, setActiveMenu, goBack, typeid }: {
+  id?: number,
+  menuItems: {
+    id: number;
+    title: string;
+    action: string;
+    subject: string;
+    path: string;
+  }[],
+  activeMenu: string,
+  setActiveMenu: (path: string) => void,
+  goBack?: () => void,
+  typeid?: string
+}) {
   const theme = useTheme()
   const desktop = useMediaQuery(theme.breakpoints.up('md'))
 
-  const setActive = id => {
-    setActiveMenu(1)
-  }
+
 
   return (
     <Card sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 2 }}>
@@ -61,7 +65,7 @@ function DetailMenu({ id, menuItems, activeMenu, setActiveMenu, goBack, typeid }
             defaultValue={activeMenu}
             value={activeMenu}
             onChange={e => {
-              const path = menuItems.find(item => item.id === e.target.value).path
+              const path = menuItems?.find(item => item.id === Number(e.target.value))?.path || ''
               setActiveMenu(path)
             }}
           >

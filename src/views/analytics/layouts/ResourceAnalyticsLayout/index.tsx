@@ -3,14 +3,18 @@ import { useRouter } from 'next/router'
 import DetailMenu from './DetailMenu'
 import { menuItems } from './tabs'
 
-function ResourceAnalyticsLayout({ activeMenu, setActiveMenu, children }) {
+function ResourceAnalyticsLayout({ activeMenu, setActiveMenu, children }: {
+  activeMenu?: string,
+  setActiveMenu?: (path: string) => void,
+  children: React.ReactNode
+}) {
   const router = useRouter()
-  const {} = router.query
+  const { } = router.query
 
   return (
     <Box>
       <DetailMenu
-        menuItems={menuItems()}
+        menuItems={menuItems() || []}
         activeMenu={router.pathname}
         setActiveMenu={path => {
           router.push(path)

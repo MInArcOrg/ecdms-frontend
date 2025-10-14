@@ -12,7 +12,7 @@ import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
 interface ProjectCategoryChartProps {
   series: { name: string; data: number[] }[]
-  labels: []
+  labels: any[]
   title: string
   height?: number
 }

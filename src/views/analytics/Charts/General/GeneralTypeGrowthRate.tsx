@@ -1,12 +1,11 @@
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
+import Typography from '@mui/material/Typography'
+import { useTheme } from '@mui/material/styles'
 
 // ** Custom Components Imports
-import CustomChip from 'src/@core/components/mui/chip'
 import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
 // ** Util Import
@@ -14,7 +13,7 @@ import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
 
 const series = [{ data: [32, 52, 72, 94, 116] }]
 
-const GeneralTypeGrowthRate = ({ title }) => {
+const GeneralTypeGrowthRate = ({ title }: { title: string }) => {
   // ** Hook
   const theme = useTheme()
 
@@ -84,7 +83,7 @@ const GeneralTypeGrowthRate = ({ title }) => {
           <Typography variant='h6' sx={{ mb: 1.5 }}>
             {title} growth rate
           </Typography>
-          <ReactApexcharts type='bar' width={'100%'} height={178} series={series} options={options} />
+          <ReactApexcharts type='bar' width={'100%'} height={178} series={series} options={options as any} />
         </Box>
       </CardContent>
     </Card>

@@ -21,7 +21,7 @@ function EVAPerformanceTable({ title }: { title: string }) {
     queryKey: ['departments', user?.id],
     queryFn: () =>
       departmentApiService.getAll({
-        filter: { parent_department_id: user?.id }
+        filter: { parent_department_id: user?.department_id }
       }),
     enabled: !!user?.id
   })

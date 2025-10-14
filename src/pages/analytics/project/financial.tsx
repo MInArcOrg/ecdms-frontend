@@ -27,14 +27,13 @@ function Financial() {
 
   const theme = useTheme()
   const { user } = useAuth()
-  const desktop = useMediaQuery(theme.breakpoints.up('md'))
 
   // Fetch departments (used as labels)
   const { data: labels } = useQuery({
     queryKey: ['departments', user?.id],
     queryFn: () =>
       departmentApiService.getAll({
-        filter: { parent_department_id: user?.id }
+        filter: { parent_department_id: user?.department_id }
       }),
     enabled: !!user?.id
   })
@@ -178,9 +177,9 @@ function Financial() {
           {graphView === Graph && (
             <ProjectCategoryChart
               series={series}
-              labels={labels?.payload}
+              labels={labels?.payload || []}
               title='Regional Distribution'
-              height={'400'}
+              height={400}
             />
           )}
           {graphView === Table && <ProjectCategoryAnalyticsTable regions={labels?.payload || []} />}
