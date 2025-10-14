@@ -7,15 +7,9 @@ import CardContent from '@mui/material/CardContent'
 // ** Component Import
 import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
-const donutColors = {
-  series1: '#fdd835',
-  series2: '#00d4bd',
-  series3: '#826bf8',
-  series4: '#1FD5EB',
-  series5: '#ffa1a1'
-}
 
-const GeneralInfoApexChart = ({ labels, series, title, subtitle, total }) => {
+
+const GeneralInfoApexChart = ({ labels, series, title, subtitle, total }: any) => {
   // ** Hook
   const theme = useTheme()
 
@@ -46,7 +40,7 @@ const GeneralInfoApexChart = ({ labels, series, title, subtitle, total }) => {
             value: {
               fontSize: '1.2rem',
               color: theme.palette.text.secondary,
-              formatter: val => `${parseInt(val, 10)}`
+              formatter: (val: any) => `${parseInt(val, 10)}`
             },
             total: {
               show: true,
@@ -108,7 +102,7 @@ const GeneralInfoApexChart = ({ labels, series, title, subtitle, total }) => {
         subheaderTypographyProps={{ sx: { color: theme => `${theme.palette.text.disabled} !important` } }}
       />
       <CardContent>
-        <ReactApexcharts type='donut' height={400} options={options} series={series} />
+        <ReactApexcharts type='donut' height={400} options={options as any} series={series} />
       </CardContent>
     </Card>
   )
