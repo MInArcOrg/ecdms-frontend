@@ -20,7 +20,7 @@ import Icon from 'src/@core/components/icon'
 import OptionsMenu from 'src/@core/components/option-menu'
 import CustomAvatar from 'src/@core/components/mui/avatar'
 
-import ReactApexcharts from 'react-apexcharts'
+import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
 // ** Utils & Hooks
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'

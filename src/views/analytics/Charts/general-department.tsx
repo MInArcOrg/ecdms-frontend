@@ -19,7 +19,7 @@ import Icon from 'src/@core/components/icon'
 // ** Component Import
 import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
-const GeneralInfoByDepartment = ({ labels, series, loading, error }) => {
+const GeneralInfoByDepartment = ({ labels, series, loading, error }: any) => {
   const theme = useTheme()
 
   // ** States
@@ -97,7 +97,7 @@ const GeneralInfoByDepartment = ({ labels, series, loading, error }) => {
     ]
   }
 
-  const CustomInput = forwardRef((props, ref) => {
+  const CustomInput = forwardRef((props: any, ref) => {
     const startDate = props.start !== null ? format(props.start, 'MM/dd/yyyy') : ''
     const endDate = props.end !== null ? ` - ${format(props.end, 'MM/dd/yyyy')}` : null
     const value = `${startDate}${endDate !== null ? endDate : ''}`
@@ -124,7 +124,7 @@ const GeneralInfoByDepartment = ({ labels, series, loading, error }) => {
     )
   })
 
-  const handleOnChange = dates => {
+  const handleOnChange = (dates: any) => {
     const [start, end] = dates
     setStartDate(start)
     setEndDate(end)
@@ -159,7 +159,7 @@ const GeneralInfoByDepartment = ({ labels, series, loading, error }) => {
         ) : error ? (
           <div>Error</div>
         ) : (
-          <ReactApexcharts options={options} series={series} type='bar' height={300} />
+          <ReactApexcharts options={options as any} series={series} type='bar' height={300} />
         )}
       </CardContent>
     </Card>
