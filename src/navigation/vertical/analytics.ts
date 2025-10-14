@@ -1,5 +1,8 @@
 export default [
   {
+    sectionTitle: "navigation.anlytics",
+  },
+  {
     title: "Analytics",
     icon: "tabler:chart-pie",
     children: [
