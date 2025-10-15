@@ -74,6 +74,7 @@
     "project": "Project",
     "document": "Document",
     "resource": "Resource",
+    "infrastructure": "Infrastructure",
     "general-master": {
       "select-module": "Please select a module from the menu above to get started.",
       "select-item": "Please select an item from the side menu to view its details.",
