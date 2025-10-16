@@ -50,7 +50,7 @@ export const railwayStationPlatformStructuralElementColumns = (
       ),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: "text.secondary" }}>
-          {row?.railway_station_platform_layout_id?.slice(0, 8) || "N/A"}...
+          {row?.railwayStationPlatformLayout ? row?.railwayStationPlatformLayout.name || row.railway_station_platform_layout_id : "N/A"}
         </Typography>
       ),
     },
@@ -95,7 +95,7 @@ export const railwayStationPlatformStructuralElementColumns = (
     },
     {
       flex: 0.1,
-      minWidth: 120,
+      minWidth: 240,
       field: "files",
       headerName: t("common.table-columns.files"),
       sortable: false,
@@ -106,6 +106,12 @@ export const railwayStationPlatformStructuralElementColumns = (
             <FileDrawer
               id={row.id}
               type={otherSubMenu?.fileType || "RAILWAY_STATION_PLATFORM_STRUCTURAL_ELEMENT"}
+            />
+          )}
+          {row.id && (
+            <FileDrawer
+              id={row.id}
+              type={"CANOPY_OR_SHELTER_DETAIL"}
             />
           )}
         </>

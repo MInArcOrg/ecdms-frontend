@@ -77,8 +77,8 @@ const RailwayStationPlatformStructuralElementCard: React.FC<
                 "project.other.railway-station-platform-structural-element.details.railway_station_platform_layout_id",
               )}
               :{" "}
-              {railwayStationPlatformStructuralElement.railway_station_platform_layout_id ||
-                "N/A"}
+              {railwayStationPlatformStructuralElement?.railwayStationPlatformLayout ? railwayStationPlatformStructuralElement?.railwayStationPlatformLayout.name || railwayStationPlatformStructuralElement.railway_station_platform_layout_id : "N/A"}
+
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {t(
@@ -115,10 +115,15 @@ const RailwayStationPlatformStructuralElementCard: React.FC<
         </CardContent>
         <CardActions sx={{ justifyContent: "flex-end" }}>
           {railwayStationPlatformStructuralElement.id && (
-            <FileDrawer
-              id={railwayStationPlatformStructuralElement.id}
-              type={otherSubMenu?.fileType || "RAILWAY_STATION_PLATFORM_STRUCTURAL_ELEMENT"}
-            />
+            <>
+              <FileDrawer
+                id={railwayStationPlatformStructuralElement.id}
+                type={otherSubMenu?.fileType || "RAILWAY_STATION_PLATFORM_STRUCTURAL_ELEMENT"}
+              />
+              <FileDrawer
+                id={railwayStationPlatformStructuralElement.id}
+                type={"CANOPY_OR_SHELTER_DETAIL"}
+              /></>
           )}
 
           {railwayStationPlatformStructuralElement.id && (

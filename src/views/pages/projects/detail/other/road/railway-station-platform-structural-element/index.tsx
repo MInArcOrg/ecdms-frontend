@@ -100,7 +100,8 @@ const RailwayStationPlatformStructuralElementList: React.FC<
         title: t(
           "project.other.railway-station-platform-structural-element.details.railway_station_platform_layout_id",
         ),
-        value: specs?.railway_station_platform_layout_id || "N/A",
+        value: specs?.railwayStationPlatformLayout ? specs?.railwayStationPlatformLayout.name || specs.railway_station_platform_layout_id : "N/A"
+
       },
       {
         title: t(
@@ -131,6 +132,13 @@ const RailwayStationPlatformStructuralElementList: React.FC<
           "project.other.railway-station-platform-structural-element.details.remark",
         ),
         value: specs?.remark || "N/A",
+      },
+      {
+        title: t("project.other.railway-station-platform-structural-element.details.canopy-or-shelter-detail-upload"),
+        value: <FileDrawer
+          id={specs.id}
+          type={"CANOPY_OR_SHELTER_DETAIL"}
+        />,
       },
       {
         title: t("common.form.attachments"),
