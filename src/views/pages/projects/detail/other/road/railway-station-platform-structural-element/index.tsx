@@ -133,6 +133,13 @@ const RailwayStationPlatformStructuralElementList: React.FC<
         value: specs?.remark || "N/A",
       },
       {
+        title: t("project.other.railway-station-platform-structural-element.details.canopy-or-shelter-detail-upload"),
+        value: <FileDrawer
+          id={specs.id}
+          type={"CANOPY_OR_SHELTER_DETAIL"}
+        />,
+      },
+      {
         title: t("common.form.attachments"),
         value: (
           <FileDrawer
