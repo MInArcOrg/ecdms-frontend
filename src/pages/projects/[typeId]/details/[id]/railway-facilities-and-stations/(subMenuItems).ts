@@ -54,7 +54,7 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-layout",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-layout`,
-          model: "stationplatformlayout",
+          model: "railwaystationplatformlayout",
           fileType: railwayFacilitiesAndStationsIds.stations_and_platforms.id,
           apiRoute: "railway-station-platform-layouts",
         },
@@ -64,7 +64,10 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-facilities",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-facilities`,
-          model: "stationplatformfacility",
+          model: "railwaystationplatformfacility",
+          fileType: railwayFacilitiesAndStationsIds.stations_and_platforms.id,
+          apiRoute: "railway-station-platform-facilities",
+
         },
         {
           id: railwayFacilitiesAndStationsIds.stations_and_platforms
