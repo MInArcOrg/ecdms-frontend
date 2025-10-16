@@ -2112,7 +2112,7 @@ export interface RailwayVehicleOperationalPerformance {
 export interface RailwayVehicleSafetyAndCompliance {
   id: string;
   project_id: string;
-  railway_vehicle_identification_id: string; // Foreign Key (UUID as String)
+  railway_vehicle_identification_id: string;
   safety_features_and_systems?: string | null;
   comply_with_regulatory_standards_and_certifications?: boolean | null;
   incident_records_number?: number | null; // Integer is represented as a number
@@ -2126,7 +2126,7 @@ export interface RailwayVehicleSafetyAndCompliance {
 export interface RailwayVehicleInteriorAndPassengerAmenity {
   id: string;
   project_id: string;
-  railway_vehicle_identification_id: string; // Foreign Key (UUID as String)
+  railway_vehicle_identification_id: string;
   seating_capacity?: number | null; // Integer as number
   passenger_amenities_availability?: string | null;
   accessibility_features_for_passengers_with_disabilities?: boolean | null;
@@ -2138,7 +2138,7 @@ export interface RailwayVehicleInteriorAndPassengerAmenity {
 export interface RailwayVehicleLoadAndCargoSpecification {
   id: string;
   project_id: string;
-  railway_vehicle_identification_id: string; // Foreign Key (UUID as String)
+  railway_vehicle_identification_id: string;
   railwayVehicleIndentification?: RailwayVehicleIdentification; // Optional: Include related RailwayVehicleIdentification
   load_capacity_and_weight_limits?: string | null;
   cargo_restrictions_or_special_requirements?: string | null;
@@ -2163,12 +2163,25 @@ export interface RailwayStationPlatformLayout {
 export interface RailwayStationPlatformFacility {
   id: string;
   project_id: string;
-  railway_station_platform_layout_id: string; // Foreign Key (UUID as String)
+  railway_station_platform_layout_id: string;
   railwayStationPlatformLayout?: RailwayStationPlatformLayout;
   waiting_areas_seating_capacity?: boolean | null;
   ticketing_facilities_availability?: boolean | null;
   restrooms_and_amenities_availability?: boolean | null;
   passenger_information_system?: string | null;
+  accessibility_features?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwayStationPlatformStructuralElement {
+  id: string;
+  project_id: string;
+  railway_station_platform_layout_id: string;
+  railwayStationPlatformLayout?: RailwayStationPlatformLayout;
+  materials_used?: string | null;
+  roofing_type_and_design?: string | null;
+  lighting_fixtures?: boolean | null;
   accessibility_features?: string | null;
   remark?: string | null;
   created_at?: string;

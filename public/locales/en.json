@@ -4181,6 +4181,21 @@
           "accessibility_features": "Accessibility Features",
           "remark": "Remark"
         }
+      },
+      "railway-station-platform-structural-element": {
+        "title": "Platform Structural Elements",
+        "detail": "Structural Element Details",
+        "create": "Create Structural Element Record",
+        "edit": "Edit Structural Element Record",
+        "details": {
+          "railway_station_platform_layout_id": "Platform Identification",
+          "materials_used": "Materials Used",
+          "roofing_type_and_design": "Roofing Type and Design",
+          "lighting_fixtures": "Lighting Installed",
+          "accessibility_features": "Accessibility Features",
+          "canopy-or-shelter-detail-upload": "Canopy or Shelter Detail Upload (CANOPY_OR_SHELTER_DETAIL)",
+          "remark": "Remark"
+        }
       }
     }
   },
