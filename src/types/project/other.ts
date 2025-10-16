@@ -2160,3 +2160,17 @@ export interface RailwayStationPlatformLayout {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayStationPlatformFacility {
+  id: string;
+  project_id: string;
+  railway_station_platform_layout_id: string; // Foreign Key (UUID as String)
+  railwayStationPlatformLayout?: RailwayStationPlatformLayout;
+  waiting_areas_seating_capacity?: boolean | null;
+  ticketing_facilities_availability?: boolean | null;
+  restrooms_and_amenities_availability?: boolean | null;
+  passenger_information_system?: string | null;
+  accessibility_features?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}

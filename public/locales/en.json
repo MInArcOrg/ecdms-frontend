@@ -4166,6 +4166,21 @@
           "accessibility_features": "Accessibility Features",
           "remark": "Remark"
         }
+      },
+      "railway-station-platform-facility": {
+        "title": "Platform Facilities",
+        "detail": "Platform Facility Details",
+        "create": "Create Platform Facility Record",
+        "edit": "Edit Platform Facility Record",
+        "details": {
+          "railway_station_platform_layout_id": "Platform Identification",
+          "waiting_areas_seating_capacity": "Waiting Areas / Seating Capacity",
+          "ticketing_facilities_availability": "Ticketing Facilities Availability",
+          "restrooms_and_amenities_availability": "Restrooms and Amenities Availability",
+          "passenger_information_system": "Passenger Information System",
+          "accessibility_features": "Accessibility Features",
+          "remark": "Remark"
+        }
       }
     }
   },
