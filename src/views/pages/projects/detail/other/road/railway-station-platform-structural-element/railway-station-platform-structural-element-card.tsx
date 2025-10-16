@@ -77,8 +77,8 @@ const RailwayStationPlatformStructuralElementCard: React.FC<
                 "project.other.railway-station-platform-structural-element.details.railway_station_platform_layout_id",
               )}
               :{" "}
-              {railwayStationPlatformStructuralElement.railway_station_platform_layout_id ||
-                "N/A"}
+              {railwayStationPlatformStructuralElement?.railwayStationPlatformLayout ? railwayStationPlatformStructuralElement?.railwayStationPlatformLayout.name || railwayStationPlatformStructuralElement.railway_station_platform_layout_id : "N/A"}
+
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {t(

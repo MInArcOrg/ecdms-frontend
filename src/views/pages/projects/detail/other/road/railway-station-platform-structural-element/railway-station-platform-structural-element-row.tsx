@@ -50,7 +50,7 @@ export const railwayStationPlatformStructuralElementColumns = (
       ),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: "text.secondary" }}>
-          {row?.railway_station_platform_layout_id?.slice(0, 8) || "N/A"}...
+          {row?.railwayStationPlatformLayout ? row?.railwayStationPlatformLayout.name || row.railway_station_platform_layout_id : "N/A"}
         </Typography>
       ),
     },

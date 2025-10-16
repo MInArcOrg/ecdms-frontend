@@ -100,7 +100,8 @@ const RailwayStationPlatformStructuralElementList: React.FC<
         title: t(
           "project.other.railway-station-platform-structural-element.details.railway_station_platform_layout_id",
         ),
-        value: specs?.railway_station_platform_layout_id || "N/A",
+        value: specs?.railwayStationPlatformLayout ? specs?.railwayStationPlatformLayout.name || specs.railway_station_platform_layout_id : "N/A"
+
       },
       {
         title: t(
