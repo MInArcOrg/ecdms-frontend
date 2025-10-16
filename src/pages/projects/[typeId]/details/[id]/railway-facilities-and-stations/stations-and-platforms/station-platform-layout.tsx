@@ -5,6 +5,8 @@ import subMenuItems, {
   findSubMenuItem,
   railwayFacilitiesAndStationsIds,
 } from "../(subMenuItems)";
+import RailwayStationPlatformLayoutCard from "src/views/pages/projects/detail/other/road/railway-station-platform-layout/railway-station-platform-layout-card";
+import RailwayStationPlatformLayoutList from "src/views/pages/projects/detail/other/road/railway-station-platform-layout";
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems("", ""),
@@ -32,7 +34,11 @@ const StationPlatformLayoutPage = () => {
       }
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Station Platform Layout Placeholder</div>
+      <RailwayStationPlatformLayoutList
+        projectId={id as string}
+        typeId={typeId as string}
+        otherSubMenu={menuItem}
+      />
     </ProjectLayout>
   );
 };
