@@ -2147,3 +2147,16 @@ export interface RailwayVehicleLoadAndCargoSpecification {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayStationPlatformLayout {
+  id: string;
+  project_id: string;
+  name: string;
+  platforms_number?: number | null; // Integer as number
+  platform_configuration?: string | null;
+  platform_length?: number | null; // Double as number
+  platform_width?: number | null; // Double as number
+  accessibility_features?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}

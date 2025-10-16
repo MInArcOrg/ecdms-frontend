@@ -4151,6 +4151,21 @@
           "coupling_and_uncoupling_procedures": "Standard Coupling/Uncoupling Procedures Defined",
           "remark": "Remark"
         }
+      },
+      "railway-station-platform-layout": {
+        "title": "Station Platform Layout",
+        "detail": "Platform Layout Details",
+        "create": "Create Platform Layout Record",
+        "edit": "Edit Platform Layout Record",
+        "details": {
+          "name": "Station/Platform Name",
+          "platforms_number": "Number of Platforms",
+          "platform_configuration": "Platform Configuration",
+          "platform_length": "Platform Length",
+          "platform_width": "Platform Width",
+          "accessibility_features": "Accessibility Features",
+          "remark": "Remark"
+        }
       }
     }
   },
