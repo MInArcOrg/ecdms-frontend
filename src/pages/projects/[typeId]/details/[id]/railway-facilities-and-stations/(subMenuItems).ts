@@ -76,6 +76,11 @@ export const subMenuItems = (
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-structural-elements",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-structural-elements`,
           model: "stationplatformstructurelelement",
+          fileType:
+            railwayFacilitiesAndStationsIds.stations_and_platforms
+              .station_platform_structural_elements,
+          apiRoute: "railway-station-platform-structural-elements",
+
         },
         {
           id: railwayFacilitiesAndStationsIds.stations_and_platforms
