@@ -4138,6 +4138,19 @@
           "accessibility_features_for_passengers_with_disabilities": "Accessibility Features for Passengers with Disabilities",
           "remark": "Remark"
         }
+      },
+      "railway-vehicle-load-and-cargo-specification": {
+        "title": "Vehicle Load and Cargo Specification",
+        "detail": "Load and Cargo Specification Details",
+        "create": "Create Load and Cargo Specification Record",
+        "edit": "Edit Load and Cargo Specification Record",
+        "details": {
+          "railway_vehicle_identification_id": "Vehicle Identification",
+          "load_capacity_and_weight_limits": "Load Capacity and Weight Limits",
+          "cargo_restrictions_or_special_requirements": "Cargo Restrictions / Special Requirements",
+          "coupling_and_uncoupling_procedures": "Standard Coupling/Uncoupling Procedures Defined",
+          "remark": "Remark"
+        }
       }
     }
   },

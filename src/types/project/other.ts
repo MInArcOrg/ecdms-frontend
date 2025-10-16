@@ -2135,3 +2135,15 @@ export interface RailwayVehicleInteriorAndPassengerAmenity {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayVehicleLoadAndCargoSpecification {
+  id: string;
+  project_id: string;
+  railway_vehicle_identification_id: string; // Foreign Key (UUID as String)
+  railwayVehicleIndentification?: RailwayVehicleIdentification; // Optional: Include related RailwayVehicleIdentification
+  load_capacity_and_weight_limits?: string | null;
+  cargo_restrictions_or_special_requirements?: string | null;
+  coupling_and_uncoupling_procedures?: boolean | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}

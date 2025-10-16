@@ -183,6 +183,9 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-load-and-cargo-specifications",
           path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-load-and-cargo-specifications`,
+          apiRoute: "railway-vehicle-load-and-cargo-specifications",
+          model: "railwayvehicleloadandcargospecifications",
+          fileType: railwayOperationalSystemsIds.rollingStockVehicles.id,
         },
       ],
     },

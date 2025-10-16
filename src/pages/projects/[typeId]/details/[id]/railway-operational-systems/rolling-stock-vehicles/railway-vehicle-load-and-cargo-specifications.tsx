@@ -5,6 +5,7 @@ import subMenuItems, {
   findSubMenuItem,
   railwayOperationalSystemsIds,
 } from "../(subMenuItems)";
+import RailwayVehicleLoadAndCargoSpecificationList from "src/views/pages/projects/detail/other/road/railway-vehicle-load-and-cargo-specification";
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems("", ""),
@@ -32,7 +33,11 @@ const RailwayVehicleLoadAndCargoSpecificationsPage = () => {
       }
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Railway Vehicle Load and Cargo Specifications Placeholder</div>
+      <RailwayVehicleLoadAndCargoSpecificationList
+        projectId={id as string}
+        typeId={typeId as string}
+        otherSubMenu={menuItem}
+      />
     </ProjectLayout>
   );
 };
