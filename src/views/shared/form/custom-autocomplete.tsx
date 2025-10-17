@@ -35,20 +35,25 @@ const CustomAutocomplete: React.FC<CustomAutocompleteProps> = ({
     helpers.setValue(value);
   };
 
-  // Memoize renderInput to avoid unnecessary re-renders
+
   const renderInput = React.useMemo(
-    () => (params: any) => (
-      <TextField
-        {...params}
-        label={label}
-        placeholder={placeholder}
-        error={meta.touched && Boolean(meta.error)}
-        helperText={meta.touched && meta.error ? meta.error : ''}
-      />
-    ),
+    () => {
+      const RenderInputComponent = (params: any) => (
+        <TextField
+          {...params}
+          label={label}
+          placeholder={placeholder}
+          error={meta.touched && Boolean(meta.error)}
+          helperText={meta.touched && meta.error ? meta.error : ''}
+        />
+      );
+
+      RenderInputComponent.displayName = 'RenderInputComponent';
+
+      return RenderInputComponent;
+    },
     [label, placeholder, meta.touched, meta.error]
   );
-
   return (
     <div>
       <InputLabel shrink>{label}</InputLabel>

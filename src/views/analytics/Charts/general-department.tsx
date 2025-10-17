@@ -123,7 +123,7 @@ const GeneralInfoByDepartment = ({ labels, series, loading, error }: any) => {
       />
     );
   });
-
+  CustomInput.displayName = 'CustomInput';
   const handleOnChange = (dates: any) => {
     const [start, end] = dates;
     setStartDate(start);

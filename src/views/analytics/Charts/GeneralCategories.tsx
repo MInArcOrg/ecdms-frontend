@@ -139,7 +139,7 @@ const GeneralCategoriesBarChart = ({ series }: { series: any[] }) => {
       />
     );
   });
-
+  CustomInput.displayName = 'CustomInput';
   const handleOnChange = (dates: any) => {
     const [start, end] = dates;
     setStartDate(start);

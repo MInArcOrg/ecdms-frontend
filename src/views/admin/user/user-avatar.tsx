@@ -31,5 +31,5 @@ const UserAvatar: FC<UserAvatarProps> = forwardRef(({ user, alt, photoSrc, ...ot
     </CustomAvatar>
   );
 });
-
+UserAvatar.displayName = 'UserAvatar';
 export default UserAvatar;

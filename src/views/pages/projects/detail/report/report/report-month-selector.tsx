@@ -17,6 +17,7 @@ const ReportMonthSelector = ({ fetchData, date, setDate, quarter, setQuarter }: 
   const CustomInput = forwardRef((props: any, ref: any) => {
     return <TextField size="small" fullWidth {...props} inputRef={ref} label={props.label || ''} autoComplete="off" />;
   });
+  CustomInput.displayName = 'CustomInput';
 
   return (
     <Card>
