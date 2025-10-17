@@ -4222,6 +4222,19 @@
           "surveillance_systems": "Surveillance Systems (CCTV)",
           "remark": "Remark"
         }
+      },
+      "railway-station-platform-surface-and-finish": {
+        "title": "Platform Surface & Finish",
+        "detail": "Surface & Finish Details",
+        "create": "Create Surface & Finish Record",
+        "edit": "Edit Surface & Finish Record",
+        "details": {
+          "railway_station_platform_layout_id": "Platform Identification",
+          "flooring_materials": "Flooring Materials",
+          "surface_treatment": "Surface Treatment",
+          "paint_or_color_schemes": "Paint/Color Schemes",
+          "remark": "Remark"
+        }
       }
     }
   },

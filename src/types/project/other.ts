@@ -2210,3 +2210,16 @@ export interface RailwayStationPlatformSafetyAndSecurity {
   updated_at?: string;
 
 }
+export interface RailwayStationPlatformSurfaceAndFinish {
+  id: string;
+  project_id: string;
+  railway_station_platform_layout_id: string; // Foreign Key (UUID as String)
+  flooring_materials?: string | null;
+  surface_treatment?: string | null;
+  paint_or_color_schemes?: string | null;
+  remark?: string | null;
+  // Include nested object for display in the list
+  railwayStationPlatformLayout?: RailwayStationPlatformLayout | null;
+  created_at?: string;
+  updated_at?: string;
+}

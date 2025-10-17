@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import RailwayStationPlatformSurfaceAndFinishList from 'src/views/pages/projects/detail/other/road/railway-station-platform-surface-and-finish';
 import subMenuItems, { findSubMenuItem, railwayFacilitiesAndStationsIds } from '../(subMenuItems)';
 
 const defaultMenuItem = findSubMenuItem(
@@ -24,7 +25,7 @@ const StationPlatformSurfaceAndFinishesPage = () => {
       activeSubMenuId={railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_surface_and_finishes}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Station Platform Surface and Finishes Placeholder</div>
+      <RailwayStationPlatformSurfaceAndFinishList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>
   );
 };
