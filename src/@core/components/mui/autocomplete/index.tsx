@@ -17,14 +17,12 @@ const CustomAutocomplete = forwardRef(
     ref: any
   ) => {
     return (
+      /* eslint-disable react/display-name */
       // eslint-disable-next-line lines-around-comment
       // @ts-expect-error - AutocompleteProps is not compatible with PaperProps
       <Autocomplete {...props} ref={ref} PaperComponent={(props) => <Paper {...props} className="custom-autocomplete-paper" />} />
     );
   }
-) as unknown as React.NamedExoticComponent<typeof Autocomplete>;
-
-// Add displayName for better debugging
-CustomAutocomplete.displayName = 'CustomAutocomplete';
+) as typeof Autocomplete;
 
 export default CustomAutocomplete;
