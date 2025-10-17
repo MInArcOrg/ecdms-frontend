@@ -1,11 +1,9 @@
-import { forwardRef, ReactNode, Ref } from 'react';
-
-// next
 import Head from 'next/head';
 
 // material-ui
 import { Box, BoxProps } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { forwardRef, ReactNode, Ref } from 'react';
 
 // ==============================|| Page - SET TITLE & META TAGS ||============================== //
 
@@ -32,5 +30,8 @@ const Page = forwardRef<HTMLDivElement, Props>(({ children, title = '', titleId,
     </>
   );
 });
+
+// Add displayName for better debugging
+Page.displayName = 'Page';
 
 export default Page;
