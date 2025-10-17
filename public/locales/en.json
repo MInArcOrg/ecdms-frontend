@@ -4209,6 +4209,19 @@
           "remark": "Remark",
           "way-finding-aid-document-upload": "Way Finding Aid Document Upload (WAY_FINDING_AID)"
         }
+      },
+      "railway-station-platform-safety-and-security": {
+        "title": "Platform Safety & Security",
+        "detail": "Safety & Security Details",
+        "create": "Create Safety & Security Record",
+        "edit": "Edit Safety & Security Record",
+        "details": {
+          "railway_station_platform_layout_id": "Platform Identification",
+          "platform_safety_and_security": "General Safety & Security Features",
+          "fire_safety_measures": "Fire Safety Measures",
+          "surveillance_systems": "Surveillance Systems (CCTV)",
+          "remark": "Remark"
+        }
       }
     }
   },
