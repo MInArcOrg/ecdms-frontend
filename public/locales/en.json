@@ -4196,6 +4196,19 @@
           "canopy-or-shelter-detail-upload": "Canopy or Shelter Detail Upload (CANOPY_OR_SHELTER_DETAIL)",
           "remark": "Remark"
         }
+      },
+      "railway-station-platform-signage-and-way-finding": {
+        "title": "Platform Signage & Way Finding",
+        "detail": "Signage Details",
+        "create": "Create Signage Record",
+        "edit": "Edit Signage Record",
+        "details": {
+          "railway_station_platform_layout_id": "Platform Identification",
+          "signage_type_and_placement": "Signage Type and Placement",
+          "accessibility_signage": "Accessibility Signage Info",
+          "remark": "Remark",
+          "way-finding-aid-document-upload": "Way Finding Aid Document Upload (WAY_FINDING_AID)"
+        }
       }
     }
   },

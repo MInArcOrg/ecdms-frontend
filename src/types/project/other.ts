@@ -2187,3 +2187,14 @@ export interface RailwayStationPlatformStructuralElement {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayStationPlatformSignageAndWayFinding {
+  id: string;
+  project_id: string;
+  railwayStationPlatformLayout?: RailwayStationPlatformLayout;
+  railway_station_platform_layout_id: string; // Foreign Key (UUID as String)
+  signage_type_and_placement?: string | null;
+  accessibility_signage?: string | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}

@@ -75,7 +75,7 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-structural-elements",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-structural-elements`,
-          model: "stationplatformstructurelelement",
+          model: "railwaystationplatformstructurelelement",
           fileType:
             railwayFacilitiesAndStationsIds.stations_and_platforms
               .station_platform_structural_elements,
@@ -88,7 +88,11 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-signage-and-wayfinding",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-signage-and-wayfinding`,
-          model: "stationplatformsignageandwayfinding",
+          fileType:
+            railwayFacilitiesAndStationsIds.stations_and_platforms
+              .station_platform_signage_and_wayfinding,
+          model: "railwaystationplatformsignageandwayfinding",
+          apiRoute: "railway-station-platform-signage-and-way-findings",
         },
         {
           id: railwayFacilitiesAndStationsIds.stations_and_platforms
@@ -96,7 +100,7 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-safety-and-security",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-safety-and-security`,
-          model: "stationplatformsafetyandsecurity",
+          model: "railwaystationplatformsafetyandsecurity",
         },
         {
           id: railwayFacilitiesAndStationsIds.stations_and_platforms
