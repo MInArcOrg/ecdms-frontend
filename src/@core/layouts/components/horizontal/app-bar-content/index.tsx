@@ -1,42 +1,35 @@
 // ** Next Import
-import Link from "next/link";
+import Link from 'next/link';
 
 // ** MUI Imports
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import { styled, useTheme } from "@mui/material/styles";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { styled, useTheme } from '@mui/material/styles';
 
 // ** Type Import
-import { LayoutProps } from "src/@core/layouts/types";
+import { LayoutProps } from 'src/@core/layouts/types';
 
 // ** Theme Config Import
-import themeConfig from "src/configs/themeConfig";
+import themeConfig from 'src/configs/themeConfig';
 
 interface Props {
-  hidden: LayoutProps["hidden"];
-  settings: LayoutProps["settings"];
-  saveSettings: LayoutProps["saveSettings"];
-  appBarContent: NonNullable<
-    NonNullable<LayoutProps["horizontalLayoutProps"]>["appBar"]
-  >["content"];
-  appBarBranding: NonNullable<
-    NonNullable<LayoutProps["horizontalLayoutProps"]>["appBar"]
-  >["branding"];
+  hidden: LayoutProps['hidden'];
+  settings: LayoutProps['settings'];
+  saveSettings: LayoutProps['saveSettings'];
+  appBarContent: NonNullable<NonNullable<LayoutProps['horizontalLayoutProps']>['appBar']>['content'];
+  appBarBranding: NonNullable<NonNullable<LayoutProps['horizontalLayoutProps']>['appBar']>['branding'];
 }
 
 const LinkStyled = styled(Link)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  textDecoration: "none",
-  marginRight: theme.spacing(8),
+  display: 'flex',
+  alignItems: 'center',
+  textDecoration: 'none',
+  marginRight: theme.spacing(8)
 }));
 
 const AppBarContent = (props: Props) => {
   // ** Props
-  const {
-    appBarContent: userAppBarContent,
-    appBarBranding: userAppBarBranding,
-  } = props;
+  const { appBarContent: userAppBarContent, appBarBranding: userAppBarBranding } = props;
 
   // ** Hooks
   const theme = useTheme();
@@ -44,22 +37,17 @@ const AppBarContent = (props: Props) => {
   return (
     <Box
       sx={{
-        width: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between'
       }}
     >
       {userAppBarBranding ? (
         userAppBarBranding(props)
       ) : (
         <LinkStyled href="/">
-          <svg
-            width={34}
-            viewBox="0 0 32 22"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width={34} viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -87,10 +75,7 @@ const AppBarContent = (props: Props) => {
               d="M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z"
             />
           </svg>
-          <Typography
-            variant="h4"
-            sx={{ ml: 2.5, fontWeight: 700, lineHeight: "24px" }}
-          >
+          <Typography variant="h4" sx={{ ml: 2.5, fontWeight: 700, lineHeight: '24px' }}>
             {themeConfig.templateName}
           </Typography>
         </LinkStyled>

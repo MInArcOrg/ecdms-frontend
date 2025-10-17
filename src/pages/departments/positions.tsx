@@ -1,11 +1,11 @@
 // ** MUI Imports
-import { TabPanel } from "@mui/lab";
-import TabsRoute from "./tab-routes";
-import UserLayout from "src/layouts/UserLayout";
-import Department from "src/types/department/department";
-import CentersLayout from "src/views/pages/centers/centers-layout";
-import PositionList from "src/views/pages/centers/Position/position-list";
-import { ReactElement } from "react";
+import { TabPanel } from '@mui/lab';
+import TabsRoute from './tab-routes';
+import UserLayout from 'src/layouts/UserLayout';
+import Department from 'src/types/department/department';
+import CentersLayout from 'src/views/pages/centers/centers-layout';
+import PositionList from 'src/views/pages/centers/Position/position-list';
+import { ReactElement } from 'react';
 
 const Positions = ({ parentDepartment }: { parentDepartment: Department }) => {
   return (
@@ -22,7 +22,7 @@ Positions.getLayout = (page: ReactElement) => (
   </UserLayout>
 );
 Positions.acl = {
-  action: "view_position",
-  subject: "position",
+  action: 'view_position',
+  subject: 'position'
 };
 export default Positions;

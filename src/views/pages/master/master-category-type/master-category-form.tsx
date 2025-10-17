@@ -1,7 +1,7 @@
-import { FormikProps } from "formik";
-import { useTranslation } from "react-i18next";
-import { MasterCategory } from "src/types/master/master-types";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
+import { FormikProps } from 'formik';
+import { useTranslation } from 'react-i18next';
+import { MasterCategory } from 'src/types/master/master-types';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface MasterCategoryFormProps {
   formik: FormikProps<MasterCategory>;
@@ -9,17 +9,14 @@ interface MasterCategoryFormProps {
   defaultLocaleData?: MasterCategory;
 }
 
-const MasterCategoryForm: React.FC<MasterCategoryFormProps> = ({
-  formik,
-  defaultLocaleData,
-}) => {
+const MasterCategoryForm: React.FC<MasterCategoryFormProps> = ({ formik, defaultLocaleData }) => {
   const { t: transl } = useTranslation();
   return (
     <>
       <CustomTextBox
         fullWidth
-        label={transl("master-data.master-category.form.title")}
-        placeholder={transl("master-data.master-category.form.title")}
+        label={transl('master-data.master-category.form.title')}
+        placeholder={transl('master-data.master-category.form.title')}
         name="title"
         size="small"
         sx={{ mb: 2 }}
@@ -27,8 +24,8 @@ const MasterCategoryForm: React.FC<MasterCategoryFormProps> = ({
 
       <CustomTextBox
         fullWidth
-        label={transl("master-data.master-category.form.description")}
-        placeholder={transl("master-data.master-category.form.description")}
+        label={transl('master-data.master-category.form.description')}
+        placeholder={transl('master-data.master-category.form.description')}
         name="description"
         multiline={true}
         rows="4"

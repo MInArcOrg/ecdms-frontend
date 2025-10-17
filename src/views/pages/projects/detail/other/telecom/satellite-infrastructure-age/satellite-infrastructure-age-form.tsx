@@ -1,17 +1,14 @@
-"use client";
+'use client';
 
-import { Grid, Typography, Divider } from "@mui/material";
-import type { FormikProps } from "formik";
-import type React from "react";
-import { useTranslation } from "react-i18next";
-import { gridSpacing } from "src/configs/app-constants";
-import type {
-  SatelliteInfrastructureAge,
-  SatelliteNetwork,
-} from "src/types/project/other";
-import CustomSelect from "src/views/shared/form/custom-select";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
-import CustomFileUpload from "src/views/shared/form/custome-file-selector";
+import { Grid, Typography, Divider } from '@mui/material';
+import type { FormikProps } from 'formik';
+import type React from 'react';
+import { useTranslation } from 'react-i18next';
+import { gridSpacing } from 'src/configs/app-constants';
+import type { SatelliteInfrastructureAge, SatelliteNetwork } from 'src/types/project/other';
+import CustomSelect from 'src/views/shared/form/custom-select';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface SatelliteInfrastructureAgeFormProps {
   formik: FormikProps<SatelliteInfrastructureAge>;
@@ -20,9 +17,12 @@ interface SatelliteInfrastructureAgeFormProps {
   satelliteNetworks: SatelliteNetwork[];
 }
 
-const SatelliteInfrastructureAgeForm: React.FC<
-  SatelliteInfrastructureAgeFormProps
-> = ({ formik, file, onFileChange, satelliteNetworks }) => {
+const SatelliteInfrastructureAgeForm: React.FC<SatelliteInfrastructureAgeFormProps> = ({
+  formik,
+  file,
+  onFileChange,
+  satelliteNetworks
+}) => {
   const { t: transl } = useTranslation();
 
   return (
@@ -30,27 +30,21 @@ const SatelliteInfrastructureAgeForm: React.FC<
       <Grid item xs={12}>
         <CustomSelect
           fullWidth
-          label={transl(
-            "project.other.satellite-infrastructure-age.details.satellite-network",
-          )}
-          placeholder={transl(
-            "project.other.satellite-infrastructure-age.details.satellite-network",
-          )}
+          label={transl('project.other.satellite-infrastructure-age.details.satellite-network')}
+          placeholder={transl('project.other.satellite-infrastructure-age.details.satellite-network')}
           name="satellite_network_id"
           size="small"
           sx={{ mb: 2 }}
           options={
             satelliteNetworks.map((network) => ({
               label: network.satellite_network_type_id || network.id,
-              value: network.id,
+              value: network.id
             })) || []
           }
         />
 
         <Typography variant="subtitle1" gutterBottom>
-          {transl(
-            "project.other.satellite-infrastructure-age.infrastructure-age",
-          )}
+          {transl('project.other.satellite-infrastructure-age.infrastructure-age')}
         </Typography>
         <Divider sx={{ mb: 2 }} />
 
@@ -58,12 +52,8 @@ const SatelliteInfrastructureAgeForm: React.FC<
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.satellite-infrastructure-age.details.satellite",
-              )}
-              placeholder={transl(
-                "project.other.satellite-infrastructure-age.details.satellite",
-              )}
+              label={transl('project.other.satellite-infrastructure-age.details.satellite')}
+              placeholder={transl('project.other.satellite-infrastructure-age.details.satellite')}
               name="satellite"
               type="number"
               size="small"
@@ -73,12 +63,8 @@ const SatelliteInfrastructureAgeForm: React.FC<
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.satellite-infrastructure-age.details.ground-stations",
-              )}
-              placeholder={transl(
-                "project.other.satellite-infrastructure-age.details.ground-stations",
-              )}
+              label={transl('project.other.satellite-infrastructure-age.details.ground-stations')}
+              placeholder={transl('project.other.satellite-infrastructure-age.details.ground-stations')}
               name="ground_stations"
               type="number"
               size="small"
@@ -91,12 +77,8 @@ const SatelliteInfrastructureAgeForm: React.FC<
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.satellite-infrastructure-age.details.modems",
-              )}
-              placeholder={transl(
-                "project.other.satellite-infrastructure-age.details.modems",
-              )}
+              label={transl('project.other.satellite-infrastructure-age.details.modems')}
+              placeholder={transl('project.other.satellite-infrastructure-age.details.modems')}
               name="modems"
               type="number"
               size="small"
@@ -106,12 +88,8 @@ const SatelliteInfrastructureAgeForm: React.FC<
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.satellite-infrastructure-age.details.routers",
-              )}
-              placeholder={transl(
-                "project.other.satellite-infrastructure-age.details.routers",
-              )}
+              label={transl('project.other.satellite-infrastructure-age.details.routers')}
+              placeholder={transl('project.other.satellite-infrastructure-age.details.routers')}
               name="routers"
               type="number"
               size="small"
@@ -122,12 +100,8 @@ const SatelliteInfrastructureAgeForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.satellite-infrastructure-age.details.others",
-          )}
-          placeholder={transl(
-            "project.other.satellite-infrastructure-age.details.others",
-          )}
+          label={transl('project.other.satellite-infrastructure-age.details.others')}
+          placeholder={transl('project.other.satellite-infrastructure-age.details.others')}
           name="others"
           size="small"
           multiline
@@ -137,11 +111,7 @@ const SatelliteInfrastructureAgeForm: React.FC<
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={transl("common.form.file-upload")}
-          file={file}
-          onFileChange={onFileChange}
-        />
+        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

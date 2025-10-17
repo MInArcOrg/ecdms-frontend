@@ -1,4 +1,4 @@
-import EthiopianDate from "src/views/components/custom/ethio-calendar/ethiopian-date";
+import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
 
 export interface StakeholderLicense {
   id: string; // UUID

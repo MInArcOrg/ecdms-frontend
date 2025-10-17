@@ -1,7 +1,7 @@
-import { Box, Grid } from "@mui/material";
-import { useRouter } from "next/router";
-import DetailMenu from "./DetailMenu";
-import { menuItems } from "./tabs";
+import { Box, Grid } from '@mui/material';
+import { useRouter } from 'next/router';
+import DetailMenu from './DetailMenu';
+import { menuItems } from './tabs';
 
 interface StakeholderAnalyticsLayoutProps {
   toggleForm?: () => void;
@@ -11,13 +11,7 @@ interface StakeholderAnalyticsLayoutProps {
   children: React.ReactNode;
 }
 
-const StakeholderAnalyticsLayout = ({
-  toggleForm,
-  activeMenu,
-  activeSubMenu,
-  subMenuItems,
-  children,
-}: StakeholderAnalyticsLayoutProps) => {
+const StakeholderAnalyticsLayout = ({ toggleForm, activeMenu, activeSubMenu, subMenuItems, children }: StakeholderAnalyticsLayoutProps) => {
   const router = useRouter();
 
   const handleSetActiveMenu = (path: string) => {
@@ -27,12 +21,8 @@ const StakeholderAnalyticsLayout = ({
   };
 
   return (
-    <Box sx={{ width: "100%", display: "flex", flexDirection: "column", gap: 2 }}>
-      <DetailMenu
-        menuItems={menuItems()}
-        activeMenu={router.pathname}
-        setActiveMenu={handleSetActiveMenu}
-      />
+    <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 2 }}>
+      <DetailMenu menuItems={menuItems()} activeMenu={router.pathname} setActiveMenu={handleSetActiveMenu} />
 
       <Box sx={{ pt: 5 }}>
         <Grid container spacing={2}>

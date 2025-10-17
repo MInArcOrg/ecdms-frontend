@@ -1,11 +1,11 @@
-import { Grid } from "@mui/material";
-import type { FormikProps } from "formik";
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { gridSpacing } from "src/configs/app-constants";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
+import { Grid } from '@mui/material';
+import type { FormikProps } from 'formik';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { gridSpacing } from 'src/configs/app-constants';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
-import type { RailwayBallast } from "src/types/project/other";
+import type { RailwayBallast } from 'src/types/project/other';
 
 interface RailwayBallastFormProps {
   formik: FormikProps<RailwayBallast>;
@@ -20,12 +20,8 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
         {/* railway_line_section_name */}
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-ballast.details.railway-line-section-name",
-          )}
-          placeholder={t(
-            "project.other.railway-ballast.details.railway-line-section-name",
-          )}
+          label={t('project.other.railway-ballast.details.railway-line-section-name')}
+          placeholder={t('project.other.railway-ballast.details.railway-line-section-name')}
           name="railway_line_section_name"
           size="small"
           sx={{ mb: 2 }}
@@ -34,12 +30,8 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
         {/* railway_ballast_name */}
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-ballast.details.railway-ballast-name",
-          )}
-          placeholder={t(
-            "project.other.railway-ballast.details.railway-ballast-name",
-          )}
+          label={t('project.other.railway-ballast.details.railway-ballast-name')}
+          placeholder={t('project.other.railway-ballast.details.railway-ballast-name')}
           name="railway_ballast_name"
           size="small"
           sx={{ mb: 2 }}
@@ -48,8 +40,8 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
         {/* ballast_id_no */}
         <CustomTextBox
           fullWidth
-          label={t("project.other.railway-ballast.details.ballast-id-no")}
-          placeholder={t("project.other.railway-ballast.details.ballast-id-no")}
+          label={t('project.other.railway-ballast.details.ballast-id-no')}
+          placeholder={t('project.other.railway-ballast.details.ballast-id-no')}
           name="ballast_id_no"
           size="small"
           sx={{ mb: 2 }}
@@ -58,12 +50,8 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
         {/* ballast_construction_cost */}
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-ballast.details.ballast-construction-cost",
-          )}
-          placeholder={t(
-            "project.other.railway-ballast.details.ballast-construction-cost",
-          )}
+          label={t('project.other.railway-ballast.details.ballast-construction-cost')}
+          placeholder={t('project.other.railway-ballast.details.ballast-construction-cost')}
           name="ballast_construction_cost"
           size="small"
           sx={{ mb: 2 }}
@@ -73,8 +61,8 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
         {/* remark */}
         <CustomTextBox
           fullWidth
-          label={t("project.other.railway-ballast.details.remark")}
-          placeholder={t("project.other.railway-ballast.details.remark")}
+          label={t('project.other.railway-ballast.details.remark')}
+          placeholder={t('project.other.railway-ballast.details.remark')}
           name="remark"
           size="small"
           sx={{ mb: 2 }}

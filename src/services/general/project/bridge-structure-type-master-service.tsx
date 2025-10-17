@@ -1,15 +1,13 @@
-import { AxiosResponse } from "axios";
-import { BridgeStructureType } from "src/types/general/general-master";
-import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
-import axiosServices from "src/utils/axios";
-import { buildGetRequest } from "src/utils/requests/get-request";
-import { buildPostRequest } from "src/utils/requests/post-request";
-import { buildPutRequest } from "src/utils/requests/put-request";
+import { AxiosResponse } from 'axios';
+import { BridgeStructureType } from 'src/types/general/general-master';
+import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
+import axiosServices from 'src/utils/axios';
+import { buildGetRequest } from 'src/utils/requests/get-request';
+import { buildPostRequest } from 'src/utils/requests/post-request';
+import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const bridgeStructureMasterService = {
-  getAll: (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<BridgeStructureType[]>> =>
+  getAll: (params: GetRequestParam): Promise<IApiResponse<BridgeStructureType[]>> =>
     buildGetRequest(`/masterdata/bridge-structure-types`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
@@ -24,10 +22,7 @@ const bridgeStructureMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/bridge-structure-types-search`, params)
-      .then(
-        (response: AxiosResponse<IApiResponse>) =>
-          response.data.payload as unknown as BridgeStructureType[],
-      )
+      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as BridgeStructureType[])
       .catch((error: any) => {
         throw error;
       }),
@@ -45,15 +40,12 @@ const bridgeStructureMasterService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (
-    id: string,
-    body: IApiPayload<BridgeStructureType>,
-  ): Promise<IApiResponse> =>
+  update: (id: string, body: IApiPayload<BridgeStructureType>): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/bridge-structure-types/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      }),
+      })
 };
 
 export default bridgeStructureMasterService;

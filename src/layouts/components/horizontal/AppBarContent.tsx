@@ -1,18 +1,18 @@
 // ** MUI Imports
-import Box from "@mui/material/Box";
+import Box from '@mui/material/Box';
 
 // ** Type Import
-import { Settings } from "src/@core/context/settingsContext";
+import { Settings } from 'src/@core/context/settingsContext';
 
 // ** Components
-import LanguageDropdown from "src/@core/layouts/components/shared-components/LanguageDropdown";
-import ModeToggler from "src/@core/layouts/components/shared-components/ModeToggler";
-import NotificationDropdown from "src/@core/layouts/components/shared-components/NotificationDropdown";
-import ShortcutsDropdown from "src/@core/layouts/components/shared-components/ShortcutsDropdown";
-import UserDropdown from "src/@core/layouts/components/shared-components/UserDropdown";
+import LanguageDropdown from 'src/@core/layouts/components/shared-components/LanguageDropdown';
+import ModeToggler from 'src/@core/layouts/components/shared-components/ModeToggler';
+import NotificationDropdown from 'src/@core/layouts/components/shared-components/NotificationDropdown';
+import ShortcutsDropdown from 'src/@core/layouts/components/shared-components/ShortcutsDropdown';
+import UserDropdown from 'src/@core/layouts/components/shared-components/UserDropdown';
 
 // ** Hook Import
-import { useAuth } from "src/hooks/useAuth";
+import { useAuth } from 'src/hooks/useAuth';
 
 interface Props {
   hidden: boolean;
@@ -28,7 +28,7 @@ const AppBarContent = (props: Props) => {
   const auth = useAuth();
 
   return (
-    <Box sx={{ display: "flex", alignItems: "center" }}>
+    <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <LanguageDropdown settings={settings} saveSettings={saveSettings} />
       <ModeToggler settings={settings} saveSettings={saveSettings} />
       {auth.user && (

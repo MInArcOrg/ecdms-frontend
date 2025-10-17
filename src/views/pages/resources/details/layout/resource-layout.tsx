@@ -1,12 +1,12 @@
-import { Box, Card, Grid } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/router";
-import { ReactNode, useMemo } from "react";
-import masterTypeApiService from "src/services/master-data/master-type-service";
-import { DetailSubMenuItem } from "src/types/layouts/detail-layout";
-import DetailMenu from "src/views/components/custom/layout/detail-menu";
-import DetailSubMenu from "src/views/components/custom/layout/detail-sub-menu";
-import menuTabs from "./resource-menu-items";
+import { Box, Card, Grid } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
+import { ReactNode, useMemo } from 'react';
+import masterTypeApiService from 'src/services/master-data/master-type-service';
+import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
+import DetailMenu from 'src/views/components/custom/layout/detail-menu';
+import DetailSubMenu from 'src/views/components/custom/layout/detail-sub-menu';
+import menuTabs from './resource-menu-items';
 
 interface ResourceLayoutProps {
   activeMenuId: string;
@@ -17,7 +17,7 @@ interface ResourceLayoutProps {
 
 // Utility functions (separation of concern)
 function normalizeType(type: unknown): string | string[] | undefined {
-  if (typeof type === "string") return type;
+  if (typeof type === 'string') return type;
   if (Array.isArray(type)) return type.map((t) => t.toString());
   if (type instanceof String) return type.toString();
   return undefined;
@@ -26,51 +26,38 @@ function normalizeType(type: unknown): string | string[] | undefined {
 function filterByType(type: unknown, flag: string): boolean {
   const normalizedType = normalizeType(type);
   if (!normalizedType) return true;
-  if (Array.isArray(normalizedType))
-    return !!flag && normalizedType.includes(flag);
+  if (Array.isArray(normalizedType)) return !!flag && normalizedType.includes(flag);
   return !!flag && normalizedType === flag;
 }
 
-function filterSubMenuItems(
-  items: DetailSubMenuItem[] | undefined,
-  flag: string,
-): DetailSubMenuItem[] {
+function filterSubMenuItems(items: DetailSubMenuItem[] | undefined, flag: string): DetailSubMenuItem[] {
   if (!items) return [];
   return items
     .filter((item) => filterByType(item.type, flag))
     .map((item) => ({
       ...item,
-      subItems: item.subItems
-        ? item.subItems.filter((subItem) => filterByType(subItem.type, flag))
-        : [],
+      subItems: item.subItems ? item.subItems.filter((subItem) => filterByType(subItem.type, flag)) : []
     }));
 }
 
-const ResourceLayout: React.FC<ResourceLayoutProps> = ({
-  activeMenuId,
-  activeSubMenuId,
-  subMenuItems,
-  children,
-}) => {
+const ResourceLayout: React.FC<ResourceLayoutProps> = ({ activeMenuId, activeSubMenuId, subMenuItems, children }) => {
   const router = useRouter();
   const { id, typeId } = router.query;
 
   const { data: masterType } = useQuery({
-    queryKey: ["masterType", "resource", typeId],
-    queryFn: () => masterTypeApiService.getOne("resource", String(typeId), {}),
+    queryKey: ['masterType', 'resource', typeId],
+    queryFn: () => masterTypeApiService.getOne('resource', String(typeId), {}),
     staleTime: Infinity,
     gcTime: 5 * 60 * 1000,
-    enabled: !!typeId,
+    enabled: !!typeId
   });
   const filteredMenuItems = useMemo(() => {
-    const flag = masterType?.payload?.flag ?? "";
-    return menuTabs(id as string, typeId as string).filter((item) =>
-      filterByType(item.type, flag),
-    );
+    const flag = masterType?.payload?.flag ?? '';
+    return menuTabs(id as string, typeId as string).filter((item) => filterByType(item.type, flag));
   }, [id, typeId, masterType?.payload?.flag]);
 
   const filteredSubMenuItems = useMemo(() => {
-    const flag = masterType?.payload?.flag ?? "";
+    const flag = masterType?.payload?.flag ?? '';
     return filterSubMenuItems(subMenuItems, flag);
   }, [subMenuItems, masterType?.payload?.flag]);
 

@@ -1,31 +1,31 @@
 export default [
   {
-    sectionTitle: "navigation.anlytics",
+    sectionTitle: 'navigation.anlytics'
   },
   {
-    title: "Analytics",
-    icon: "tabler:chart-pie",
+    title: 'Analytics',
+    icon: 'tabler:chart-pie',
     children: [
       {
-        title: "Stakeholder",
-        path: "/analytics/stakeholder",
-        icon: "tabler:users",
+        title: 'Stakeholder',
+        path: '/analytics/stakeholder',
+        icon: 'tabler:users'
       },
       {
-        title: "Project",
-        path: "/analytics/project",
-        icon: "tabler:box-multiple",
+        title: 'Project',
+        path: '/analytics/project',
+        icon: 'tabler:box-multiple'
       },
       {
-        title: "Resource",
-        path: "/analytics/resource",
-        icon: "tabler:calendar",
+        title: 'Resource',
+        path: '/analytics/resource',
+        icon: 'tabler:calendar'
       },
       {
-        title: "Document",
-        path: "/analytics/document",
-        icon: "tabler:file",
-      },
-    ],
-  },
+        title: 'Document',
+        path: '/analytics/document',
+        icon: 'tabler:file'
+      }
+    ]
+  }
 ];

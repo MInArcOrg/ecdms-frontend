@@ -1,40 +1,37 @@
-import {
-  Card,
-  FormControl,
-  Grid,
-  ListItemButton,
-  ListItemText,
-  MenuItem,
-  Select
-} from '@mui/material'
-import { useTheme } from '@mui/material/styles'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import Can from 'src/layouts/components/acl/Can'
+import { Card, FormControl, Grid, ListItemButton, ListItemText, MenuItem, Select } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import Can from 'src/layouts/components/acl/Can';
 
-function DetailMenu({ id, menuItems, activeMenu, setActiveMenu, goBack, typeid }: {
-  id?: number,
+function DetailMenu({
+  id,
+  menuItems,
+  activeMenu,
+  setActiveMenu,
+  goBack,
+  typeid
+}: {
+  id?: number;
   menuItems: {
     id: number;
     title: string;
     action: string;
     subject: string;
     path: string;
-  }[],
-  activeMenu: string,
-  setActiveMenu: (path: string) => void,
-  goBack?: () => void,
-  typeid?: string
+  }[];
+  activeMenu: string;
+  setActiveMenu: (path: string) => void;
+  goBack?: () => void;
+  typeid?: string;
 }) {
-  const theme = useTheme()
-  const desktop = useMediaQuery(theme.breakpoints.up('md'))
-
-
+  const theme = useTheme();
+  const desktop = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
     <Card sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 2 }}>
       {desktop ? (
         <Grid container gap={2} sx={{ ml: 3 }}>
-          {menuItems.map(item => (
+          {menuItems.map((item) => (
             <Can do={item?.subject} key={item.id} on={item?.subject}>
               <Grid item>
                 <ListItemButton
@@ -61,15 +58,15 @@ function DetailMenu({ id, menuItems, activeMenu, setActiveMenu, goBack, typeid }
       ) : (
         <FormControl sx={{ my: 2 }}>
           <Select
-            id='demo-simple-select'
+            id="demo-simple-select"
             defaultValue={activeMenu}
             value={activeMenu}
-            onChange={e => {
-              const path = menuItems?.find(item => item.id === Number(e.target.value))?.path || ''
-              setActiveMenu(path)
+            onChange={(e) => {
+              const path = menuItems?.find((item) => item.id === Number(e.target.value))?.path || '';
+              setActiveMenu(path);
             }}
           >
-            {menuItems.map(item => (
+            {menuItems.map((item) => (
               <MenuItem value={item.id} key={item.id}>
                 {item.title}
               </MenuItem>
@@ -78,7 +75,7 @@ function DetailMenu({ id, menuItems, activeMenu, setActiveMenu, goBack, typeid }
         </FormControl>
       )}
     </Card>
-  )
+  );
 }
 
-export default DetailMenu
+export default DetailMenu;

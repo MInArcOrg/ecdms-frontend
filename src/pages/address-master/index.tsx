@@ -1,4 +1,4 @@
-import AddressMasterList from "src/views/admin/address-master/list";
+import AddressMasterList from 'src/views/admin/address-master/list';
 
 const AddressMasterListPage = ({}) => {
   return <AddressMasterList />;

@@ -1,12 +1,12 @@
-import type { FormikProps } from "formik";
-import type { IApiPayload } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import ManagerForm from "./project-manager-form";
-import projectManagerApiService from "src/services/project/project-manager-service";
-import type { ProjectManager } from "src/types/project/project-manager";
-import type { Stakeholder } from "src/types/stakeholder";
+import type { FormikProps } from 'formik';
+import type { IApiPayload } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import ManagerForm from './project-manager-form';
+import projectManagerApiService from 'src/services/project/project-manager-service';
+import type { ProjectManager } from 'src/types/project/project-manager';
+import type { Stakeholder } from 'src/types/stakeholder';
 
 interface ManagerDrawerType {
   open: boolean;
@@ -24,19 +24,17 @@ const ManagerDrawer = (props: ManagerDrawerType) => {
 
   const isEdit = Boolean(manager?.id);
 
-  const createManager = async (body: IApiPayload<ProjectManager>) =>
-    projectManagerApiService.create(body);
+  const createManager = async (body: IApiPayload<ProjectManager>) => projectManagerApiService.create(body);
 
-  const editManager = async (body: IApiPayload<ProjectManager>) =>
-    projectManagerApiService.update(manager?.id || "", body);
+  const editManager = async (body: IApiPayload<ProjectManager>) => projectManagerApiService.update(manager?.id || '', body);
 
   const getPayload = (values: ProjectManager) => ({
     data: {
       ...values,
       id: manager?.id,
-      project_id: projectId,
+      project_id: projectId
     },
-    files: [],
+    files: []
   });
 
   const handleClose = () => toggle();
@@ -47,27 +45,21 @@ const ManagerDrawer = (props: ManagerDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer
-      title={`project.other.project-manager.${isEdit ? "edit" : "create"}`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`project.other.project-manager.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.project-manager.${isEdit ? "edit" : "create"}`}
+          title={`project.other.project-manager.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(manager as ProjectManager),
+            ...(manager as ProjectManager)
           }}
           createActionFunc={isEdit ? editManager : createManager}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<ProjectManager>) => (
-            <ManagerForm formik={formik} stakeholders={stakeholders} />
-          )}
+          {(formik: FormikProps<ProjectManager>) => <ManagerForm formik={formik} stakeholders={stakeholders} />}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

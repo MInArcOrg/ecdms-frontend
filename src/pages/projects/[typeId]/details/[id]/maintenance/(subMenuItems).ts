@@ -1,90 +1,84 @@
-import { DetailSubMenuItem } from "src/types/layouts/detail-layout";
+import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
 
 // Define an object for ID constants
 export const projectMaintenanceIds = {
   quality: {
-    quality: "QUALITY",
-    qualityControl: "QUALITY_CONTROL",
-    drainageEnvironmentalData: "DRAINAGE_ENVIRONMENTAL_DATA",
-    drainageAssessment: "DRAINAGE_ASSESSMENT",
+    quality: 'QUALITY',
+    qualityControl: 'QUALITY_CONTROL',
+    drainageEnvironmentalData: 'DRAINAGE_ENVIRONMENTAL_DATA',
+    drainageAssessment: 'DRAINAGE_ASSESSMENT'
   },
   maintenance: {
-    maintenance: "MAINTENANCE",
-    roadMaintenance: "ROAD_MAINTENANCE_ACTIVITIES",
-    maintenanceHistory: "MAINTENANCE_HISTORY",
-    trafficMaintenance: "TRAFFIC_MAINTENANCE",
-    drainageMaintenanceData: "DRAINAGE_MAINTENANCE_DATA",
-  },
+    maintenance: 'MAINTENANCE',
+    roadMaintenance: 'ROAD_MAINTENANCE_ACTIVITIES',
+    maintenanceHistory: 'MAINTENANCE_HISTORY',
+    trafficMaintenance: 'TRAFFIC_MAINTENANCE',
+    drainageMaintenanceData: 'DRAINAGE_MAINTENANCE_DATA'
+  }
 };
 
 const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
   {
     id: projectMaintenanceIds.quality.quality,
-    title: "project.navigation.submenu.maintenance.quality.title",
+    title: 'project.navigation.submenu.maintenance.quality.title',
     subItems: [
       {
         id: projectMaintenanceIds.quality.qualityControl,
-        title: "project.navigation.submenu.maintenance.quality.quality-control",
+        title: 'project.navigation.submenu.maintenance.quality.quality-control',
         path: `/projects/${typeId}/details/${id}/maintenance/quality/quality-control`,
-        model: "roadprojectqualitycontrol",
-        apiRoute: "road-project-quality-controls",
+        model: 'roadprojectqualitycontrol',
+        apiRoute: 'road-project-quality-controls'
       },
       {
         id: projectMaintenanceIds.quality.drainageEnvironmentalData,
-        title:
-          "project.navigation.submenu.maintenance.quality.drainage-environmental-data",
+        title: 'project.navigation.submenu.maintenance.quality.drainage-environmental-data',
         path: `/projects/${typeId}/details/${id}/maintenance/quality/drainage-environmental-data`,
-        model: "drainageenvironmentaldata",
-        apiRoute: "drainage-environmental-data",
+        model: 'drainageenvironmentaldata',
+        apiRoute: 'drainage-environmental-data'
       },
       {
         id: projectMaintenanceIds.quality.drainageAssessment,
-        title:
-          "project.navigation.submenu.maintenance.quality.drainage-assessment",
+        title: 'project.navigation.submenu.maintenance.quality.drainage-assessment',
         path: `/projects/${typeId}/details/${id}/maintenance/quality/drainage-assessment`,
-        model: "drainageassessment",
-        apiRoute: "drainage-assessments",
-      },
-    ],
+        model: 'drainageassessment',
+        apiRoute: 'drainage-assessments'
+      }
+    ]
   },
   {
     id: projectMaintenanceIds.maintenance.maintenance,
-    title: "project.navigation.submenu.maintenance.maintenance.title",
+    title: 'project.navigation.submenu.maintenance.maintenance.title',
     subItems: [
       {
         id: projectMaintenanceIds.maintenance.roadMaintenance,
-        title:
-          "project.navigation.submenu.maintenance.maintenance.road-maintenance-activities",
+        title: 'project.navigation.submenu.maintenance.maintenance.road-maintenance-activities',
         path: `/projects/${typeId}/details/${id}/maintenance/maintenance/road-maintenance-activities`,
-        model: "roadmaintenanceactivities",
-        apiRoute: "road-maintenance-activities",
+        model: 'roadmaintenanceactivities',
+        apiRoute: 'road-maintenance-activities'
       },
       {
         id: projectMaintenanceIds.maintenance.maintenanceHistory,
-        title:
-          "project.navigation.submenu.maintenance.maintenance.maintenance-history",
+        title: 'project.navigation.submenu.maintenance.maintenance.maintenance-history',
         path: `/projects/${typeId}/details/${id}/maintenance/maintenance/maintenance-history`,
-        model: "maintenancehistor",
-        apiRoute: "maintenance-histories",
+        model: 'maintenancehistor',
+        apiRoute: 'maintenance-histories'
       },
       {
         id: projectMaintenanceIds.maintenance.trafficMaintenance,
-        title:
-          "project.navigation.submenu.maintenance.maintenance.traffic-maintenance",
+        title: 'project.navigation.submenu.maintenance.maintenance.traffic-maintenance',
         path: `/projects/${typeId}/details/${id}/maintenance/maintenance/traffic-maintenance`,
-        model: "trafficmaintenance",
-        apiRoute: "traffic-maintenance",
+        model: 'trafficmaintenance',
+        apiRoute: 'traffic-maintenance'
       },
       {
         id: projectMaintenanceIds.maintenance.drainageMaintenanceData,
-        title:
-          "project.navigation.submenu.maintenance.maintenance.drainage-maintenance-data",
+        title: 'project.navigation.submenu.maintenance.maintenance.drainage-maintenance-data',
         path: `/projects/${typeId}/details/${id}/maintenance/maintenance/drainage-maintenance-data`,
-        model: "drainagemaintenancedata",
-        apiRoute: "drainage-maintenance-data",
-      },
-    ],
-  },
+        model: 'drainagemaintenancedata',
+        apiRoute: 'drainage-maintenance-data'
+      }
+    ]
+  }
 ];
 
 export const findSubMenuItem = (items: DetailSubMenuItem[], id: string) => {

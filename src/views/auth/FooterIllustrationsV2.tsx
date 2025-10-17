@@ -1,9 +1,9 @@
 // ** React Imports
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 // ** MUI Components
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { styled, useTheme } from "@mui/material/styles";
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { styled, useTheme } from '@mui/material/styles';
 
 interface FooterIllustrationsV2Prop {
   height?: number;
@@ -12,14 +12,14 @@ interface FooterIllustrationsV2Prop {
 }
 
 // Styled Components
-const MaskImg = styled("img")(({ theme }) => ({
+const MaskImg = styled('img')(({ theme }) => ({
   bottom: 0,
   height: 300,
-  width: "100%",
-  position: "absolute",
+  width: '100%',
+  position: 'absolute',
   [theme.breakpoints.down(1540)]: {
-    height: 250,
-  },
+    height: 250
+  }
 }));
 
 const FooterIllustrationsV2 = (props: FooterIllustrationsV2Prop) => {
@@ -30,7 +30,7 @@ const FooterIllustrationsV2 = (props: FooterIllustrationsV2Prop) => {
   const theme = useTheme();
 
   // ** Vars
-  const hidden = useMediaQuery(theme.breakpoints.down("md"));
+  const hidden = useMediaQuery(theme.breakpoints.down('md'));
 
   if (!hidden) {
     return (
@@ -42,13 +42,8 @@ const FooterIllustrationsV2 = (props: FooterIllustrationsV2Prop) => {
             {...(height && { height })}
             src={`/images/pages/auth-v2-mask-${theme.palette.mode}.png`}
           />
-        ) : typeof image === "string" ? (
-          <MaskImg
-            alt="mask"
-            src={image}
-            className={className}
-            {...(height && { height })}
-          />
+        ) : typeof image === 'string' ? (
+          <MaskImg alt="mask" src={image} className={className} {...(height && { height })} />
         ) : (
           image
         )}

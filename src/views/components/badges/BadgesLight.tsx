@@ -1,15 +1,15 @@
 // ** MUI Imports
-import Avatar from "@mui/material/Avatar";
-import { styled } from "@mui/material/styles";
+import Avatar from '@mui/material/Avatar';
+import { styled } from '@mui/material/styles';
 
 // ** Custom Components Imports
-import CustomBadge from "src/@core/components/mui/badge";
+import CustomBadge from 'src/@core/components/mui/badge';
 
 // Styled component for a wrapper
-const Wrapper = styled("div")(({ theme }) => ({
-  "& > *": {
-    marginRight: `${theme.spacing(6)} !important`,
-  },
+const Wrapper = styled('div')(({ theme }) => ({
+  '& > *': {
+    marginRight: `${theme.spacing(6)} !important`
+  }
 }));
 
 const BadgesLight = () => {

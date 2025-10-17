@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { Button } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import type { GridColDef } from "@mui/x-data-grid";
-import { Fragment } from "react";
-import type { BridgeAreaData } from "src/types/project/other";
-import { formatCreatedAt } from "src/utils/formatter/date";
-import ModelAction from "src/views/components/custom/model-actions";
-import RowOptions from "src/views/shared/listing/row-options";
+import { Button } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import type { GridColDef } from '@mui/x-data-grid';
+import { Fragment } from 'react';
+import type { BridgeAreaData } from 'src/types/project/other';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import ModelAction from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
   row: BridgeAreaData;
@@ -18,12 +18,12 @@ export const bridgeAreaDataColumns = (
   onEdit: (bridgeAreaData: BridgeAreaData) => void,
   onDelete: (id: string) => void,
   t: any,
-  refetch: () => void,
+  refetch: () => void
 ): GridColDef[] => [
   {
     flex: 0.15,
     minWidth: 120,
-    field: "id",
+    field: 'id',
     renderCell: ({ row }: CellType) => (
       <Typography
         noWrap
@@ -31,76 +31,62 @@ export const bridgeAreaDataColumns = (
         onClick={() => onDetail(row)}
         sx={{
           fontWeight: 500,
-          textDecoration: "none",
-          color: "text.secondary",
-          "&:hover": { color: "primary.main" },
+          textDecoration: 'none',
+          color: 'text.secondary',
+          '&:hover': { color: 'primary.main' }
         }}
       >
         {row?.id.slice(0, 5)}...
       </Typography>
-    ),
+    )
   },
 
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t("project.other.bridge-area-data.details.name"),
-    field: "name",
-    renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: "text.secondary" }}>
-        {row?.name || t("common.not-available")}
-      </Typography>
-    ),
+    headerName: t('project.other.bridge-area-data.details.name'),
+    field: 'name',
+    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.name || t('common.not-available')}</Typography>
   },
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t("project.other.bridge-area-data.details.bridge-name"),
-    field: "bridge_name",
+    headerName: t('project.other.bridge-area-data.details.bridge-name'),
+    field: 'bridge_name',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: "text.secondary" }}>
-        {row?.bridge_name || t("common.not-available")}
-      </Typography>
-    ),
+      <Typography sx={{ color: 'text.secondary' }}>{row?.bridge_name || t('common.not-available')}</Typography>
+    )
   },
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t("project.other.bridge-area-data.details.river-width"),
-    field: "river_width",
+    headerName: t('project.other.bridge-area-data.details.river-width'),
+    field: 'river_width',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: "text.secondary" }}>
-        {row?.river_width || t("common.not-available")}
-      </Typography>
-    ),
+      <Typography sx={{ color: 'text.secondary' }}>{row?.river_width || t('common.not-available')}</Typography>
+    )
   },
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t("project.other.bridge-area-data.details.area-topography-id"),
-    field: "area_topography_id",
+    headerName: t('project.other.bridge-area-data.details.area-topography-id'),
+    field: 'area_topography_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: "text.secondary" }}>
-        {row?.area_topography_id || t("common.not-available")}
-      </Typography>
-    ),
+      <Typography sx={{ color: 'text.secondary' }}>{row?.area_topography_id || t('common.not-available')}</Typography>
+    )
   },
   {
     flex: 0.15,
     minWidth: 120,
-    headerName: t("common.table-columns.created-at"),
-    field: "created_at",
-    renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: "text.secondary" }}>
-        {formatCreatedAt(row.created_at)}
-      </Typography>
-    ),
+    headerName: t('common.table-columns.created-at'),
+    field: 'created_at',
+    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{formatCreatedAt(row.created_at)}</Typography>
   },
   {
     minWidth: 150,
     sortable: false,
-    field: "actions",
-    headerName: t("common.table-columns.actions"),
+    field: 'actions',
+    headerName: t('common.table-columns.actions'),
     renderCell: ({ row }: CellType) => (
       <Fragment>
         <ModelAction
@@ -108,11 +94,11 @@ export const bridgeAreaDataColumns = (
           model_id={row.id}
           refetchModel={refetch}
           resubmit={(): void => {
-            throw new Error("Function not implemented.");
+            throw new Error('Function not implemented.');
           }}
           title=""
           postAction={(): void => {
-            throw new Error("Function not implemented.");
+            throw new Error('Function not implemented.');
           }}
         />
         <RowOptions
@@ -121,15 +107,15 @@ export const bridgeAreaDataColumns = (
           item={row}
           options={[]}
           deletePermissionRule={{
-            action: "delete",
-            subject: "bridgeareadata",
+            action: 'delete',
+            subject: 'bridgeareadata'
           }}
           editPermissionRule={{
-            action: "update",
-            subject: "bridgeareadata",
+            action: 'update',
+            subject: 'bridgeareadata'
           }}
         />
       </Fragment>
-    ),
-  },
+    )
+  }
 ];

@@ -1,7 +1,7 @@
-import i18n from "i18next";
-import Backend from "i18next-http-backend";
-import { initReactI18next } from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
+import i18n from 'i18next';
+import Backend from 'i18next-http-backend';
+import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
 
 i18n
   // Enables the i18next backend
@@ -15,17 +15,17 @@ i18n
   .init({
     backend: {
       /* translation file path */
-      loadPath: "/locales/{{lng}}.json",
+      loadPath: '/locales/{{lng}}.json'
     },
-    fallbackLng: "en", // Fallback to English if the detected language is not available
+    fallbackLng: 'en', // Fallback to English if the detected language is not available
     debug: false,
     react: {
-      useSuspense: false,
+      useSuspense: false
     },
     interpolation: {
       escapeValue: false,
-      formatSeparator: ",",
-    },
+      formatSeparator: ','
+    }
   });
 
 export default i18n;

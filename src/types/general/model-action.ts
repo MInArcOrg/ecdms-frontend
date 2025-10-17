@@ -1,4 +1,4 @@
-import User from "../admin/user";
+import User from '../admin/user';
 
 export interface ModelAction {
   id?: string;

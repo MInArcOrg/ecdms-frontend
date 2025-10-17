@@ -1,12 +1,12 @@
-import * as yup from "yup";
+import * as yup from 'yup';
 
-import { FormikProps } from "formik";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import AddressMasterForm from "./address-master-form";
-import { AddressMaster, AddressType } from "src/types/admin/address";
-import { IApiPayload } from "src/types/requests";
-import addressMasterApiService from "src/services/admin/address-master-service";
+import { FormikProps } from 'formik';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import AddressMasterForm from './address-master-form';
+import { AddressMaster, AddressType } from 'src/types/admin/address';
+import { IApiPayload } from 'src/types/requests';
+import addressMasterApiService from 'src/services/admin/address-master-service';
 
 interface AddressMasterDrawerType {
   open: boolean;
@@ -19,20 +19,19 @@ interface AddressMasterDrawerType {
 
 const validationSchema = yup.object().shape({
   title: yup.string().required(),
-  description: yup.string().required(),
+  description: yup.string().required()
 });
 
 const AddressMasterDrawer = (props: AddressMasterDrawerType) => {
   // ** Props
-  const { open, toggle, refetch, addressMaster, type, parentAddressMaster } =
-    props;
+  const { open, toggle, refetch, addressMaster, type, parentAddressMaster } = props;
 
   const isEdit = addressMaster?.id ? true : false;
   const createAddressMaster = async (body: IApiPayload<AddressMaster>) => {
     return await addressMasterApiService.create(body);
   };
   const editAddressMaster = async (body: IApiPayload<AddressMaster>) => {
-    return await addressMasterApiService.update(addressMaster?.id || "", body);
+    return await addressMasterApiService.update(addressMaster?.id || '', body);
   };
   const getPayload = (values: AddressMaster) => {
     const payload = {
@@ -40,9 +39,9 @@ const AddressMasterDrawer = (props: AddressMasterDrawerType) => {
         ...values,
         id: addressMaster?.id,
         type: values.type || type,
-        parent_address_id: parentAddressMaster?.id,
+        parent_address_id: parentAddressMaster?.id
       },
-      files: [],
+      files: []
     };
     return payload;
   };
@@ -57,9 +56,7 @@ const AddressMasterDrawer = (props: AddressMasterDrawerType) => {
   };
   return (
     <CustomSideDrawer
-      title={`address-master.${isEdit ? "edit-" : "create-"}${
-        type?.toLocaleLowerCase().replace("_", " ") || "address"
-      }`}
+      title={`address-master.${isEdit ? 'edit-' : 'create-'}${type?.toLocaleLowerCase().replace('_', ' ') || 'address'}`}
       handleClose={handleClose}
       open={open}
     >
@@ -67,10 +64,8 @@ const AddressMasterDrawer = (props: AddressMasterDrawerType) => {
         addressMaster && (
           <FormPageWrapper
             edit={isEdit}
-            title={`address-master.${isEdit ? "edit-" : "create-"}${
-              type?.toLocaleLowerCase().replace("_", " ") || "address"
-            }`}
-             getPayload={getPayload}
+            title={`address-master.${isEdit ? 'edit-' : 'create-'}${type?.toLocaleLowerCase().replace('_', ' ') || 'address'}`}
+            getPayload={getPayload}
             validationSchema={validationSchema}
             initialValues={addressMaster}
             createActionFunc={isEdit ? editAddressMaster : createAddressMaster}
@@ -78,13 +73,7 @@ const AddressMasterDrawer = (props: AddressMasterDrawerType) => {
             onCancel={handleClose}
           >
             {(formik: FormikProps<AddressMaster>) => {
-              return (
-                <AddressMasterForm
-                  type={type}
-                  formik={formik}
-                  defaultLocaleData={{} as AddressMaster}
-                />
-              );
+              return <AddressMasterForm type={type} formik={formik} defaultLocaleData={{} as AddressMaster} />;
             }}
           </FormPageWrapper>
         )

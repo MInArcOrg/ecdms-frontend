@@ -1,13 +1,13 @@
 // ** React Imports
-import { Fragment, SyntheticEvent, useState } from "react";
+import { Fragment, SyntheticEvent, useState } from 'react';
 
 // ** MUI Imports
-import Button from "@mui/material/Button";
-import Snackbar from "@mui/material/Snackbar";
-import IconButton from "@mui/material/IconButton";
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
 
 // ** Icon Imports
-import Icon from "src/@core/components/icon";
+import Icon from 'src/@core/components/icon';
 
 const SnackbarSimple = () => {
   // ** State
@@ -18,7 +18,7 @@ const SnackbarSimple = () => {
   };
 
   const handleClose = (event: Event | SyntheticEvent, reason?: string) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setOpen(false);
@@ -39,12 +39,7 @@ const SnackbarSimple = () => {
             <Button size="small" onClick={handleClose}>
               Undo
             </Button>
-            <IconButton
-              size="small"
-              aria-label="close"
-              color="inherit"
-              onClick={handleClose}
-            >
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
               <Icon icon="tabler:x" fontSize={20} />
             </IconButton>
           </Fragment>

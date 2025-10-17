@@ -1,6 +1,6 @@
-import { AxiosResponse } from "axios";
-import { IApiResponse } from "src/types/requests";
-import axios from "src/utils/axios";
+import { AxiosResponse } from 'axios';
+import { IApiResponse } from 'src/types/requests';
+import axios from 'src/utils/axios';
 
 interface ForgotPasswordPayload {
   email: string;
@@ -14,22 +14,20 @@ interface ResetPasswordPayload {
 }
 
 const authApiService = {
-  sendResetEmail: async (
-    payload: ForgotPasswordPayload,
-  ): Promise<IApiResponse> =>
+  sendResetEmail: async (payload: ForgotPasswordPayload): Promise<IApiResponse> =>
     axios
-      .post("/request-password-reset", payload)
+      .post('/request-password-reset', payload)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: IApiResponse) => {
         throw error;
       }),
   resetPassword: async (payload: ResetPasswordPayload): Promise<IApiResponse> =>
     axios
-      .post("/password-reset", payload)
+      .post('/password-reset', payload)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: IApiResponse) => {
         throw error;
-      }),
+      })
 };
 
 export default authApiService;

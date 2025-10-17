@@ -1,16 +1,8 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Divider,
-  Typography,
-} from "@mui/material";
-import type React from "react";
-import { useTranslation } from "react-i18next";
-import type { WeatherCondition } from "src/types/project/weather-condition";
-import RowOptions from "src/views/shared/listing/row-options";
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
+import type React from 'react';
+import { useTranslation } from 'react-i18next';
+import type { WeatherCondition } from 'src/types/project/weather-condition';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface WeatherConditionCardProps {
   weatherCondition: WeatherCondition;
@@ -20,24 +12,13 @@ interface WeatherConditionCardProps {
   onDetail: (weatherCondition: WeatherCondition) => void;
 }
 
-const WeatherConditionCard: React.FC<WeatherConditionCardProps> = ({
-  weatherCondition,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail,
-}) => {
+const WeatherConditionCard: React.FC<WeatherConditionCardProps> = ({ weatherCondition, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
     <Card sx={{ p: 2 }}>
       <CardContent>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          mb={1}
-        >
+        <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
           <Typography variant="h5" fontWeight="bold">
             <Typography
               noWrap
@@ -45,12 +26,12 @@ const WeatherConditionCard: React.FC<WeatherConditionCardProps> = ({
               onClick={() => onDetail(weatherCondition)}
               sx={{
                 fontWeight: 500,
-                textDecoration: "none",
-                color: "text.secondary",
-                "&:hover": { color: "primary.main" },
+                textDecoration: 'none',
+                color: 'text.secondary',
+                '&:hover': { color: 'primary.main' }
               }}
             >
-              {t("project.weather-condition.title")}
+              {t('project.weather-condition.title')}
             </Typography>
           </Typography>
         </Box>
@@ -59,28 +40,26 @@ const WeatherConditionCard: React.FC<WeatherConditionCardProps> = ({
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t("project.weather-condition.weather-type")}:{" "}
-            {weatherCondition.weather_type}
+            {t('project.weather-condition.weather-type')}: {weatherCondition.weather_type}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("project.weather-condition.description")}:{" "}
-            {weatherCondition.description}
+            {t('project.weather-condition.description')}: {weatherCondition.description}
           </Typography>
         </Box>
       </CardContent>
 
-      <CardActions sx={{ justifyContent: "flex-end" }}>
+      <CardActions sx={{ justifyContent: 'flex-end' }}>
         <RowOptions
           deletePermissionRule={{
-            action: "delete",
-            subject: "weathercondition",
+            action: 'delete',
+            subject: 'weathercondition'
           }}
           editPermissionRule={{
-            action: "edit",
-            subject: "weathercondition",
+            action: 'edit',
+            subject: 'weathercondition'
           }}
           onEdit={() => onEdit(weatherCondition)}
-          onDelete={() => onDelete(weatherCondition?.id || "")}
+          onDelete={() => onDelete(weatherCondition?.id || '')}
           item={weatherCondition}
           options={[]}
         />

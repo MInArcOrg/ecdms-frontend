@@ -1,12 +1,12 @@
 // ** React Imports
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 // ** MUI Imports
-import { GridProps } from "@mui/material/Grid";
+import { GridProps } from '@mui/material/Grid';
 
 // ** Type Imports
-import { IconProps } from "@iconify/react";
-import { ThemeColor } from "src/@core/layouts/types";
+import { IconProps } from '@iconify/react';
+import { ThemeColor } from 'src/@core/layouts/types';
 
 // ** Types of Basic Custom Checkboxes
 export type CustomCheckboxBasicData = {
@@ -50,7 +50,7 @@ export type CustomCheckboxIconsProps = {
   selected: string[];
   gridProps: GridProps;
   data: CustomCheckboxIconsData;
-  iconProps?: Omit<IconProps, "icon">;
+  iconProps?: Omit<IconProps, 'icon'>;
   handleChange: (value: string) => void;
 };
 

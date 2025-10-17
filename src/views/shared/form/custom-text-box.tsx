@@ -1,8 +1,8 @@
-import { FormHelperText } from "@mui/material";
-import { useField, useFormikContext } from "formik";
-import React from "react";
-import CustomTextField from "src/@core/components/mui/text-field";
-import { useRequiredFields } from "src/context/required-fields-context";
+import { FormHelperText } from '@mui/material';
+import { useField, useFormikContext } from 'formik';
+import React from 'react';
+import CustomTextField from 'src/@core/components/mui/text-field';
+import { useRequiredFields } from 'src/context/required-fields-context';
 
 interface CustomTextBoxProps {
   name: string;
@@ -18,7 +18,7 @@ interface CustomTextBoxProps {
 const CustomTextBox: React.FC<CustomTextBoxProps> = ({
   name,
   onValueChange,
-  type = "text",
+  type = 'text',
   allowSpecialChars = false,
   maxLength = 36,
   multilineMaxLength = 150,
@@ -30,21 +30,21 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
 
   // pick the right length limit
   const effectiveMaxLength = multiline ? multilineMaxLength : maxLength;
-   const requiredFields = useRequiredFields();
+  const requiredFields = useRequiredFields();
 
   const isRequired = requiredFields.includes(name);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let value: string | number = event.target.value;
 
-    if (typeof value === "string") {
+    if (typeof value === 'string') {
       // Restrict characters if not allowed
       if (!allowSpecialChars) {
-        if (type === "email") {
+        if (type === 'email') {
           // Allow email-specific characters
-          value = value.replace(/[^a-zA-Z0-9@._\-+]/g, "");
+          value = value.replace(/[^a-zA-Z0-9@._\-+]/g, '');
         } else {
           // Default alphanumeric + space only
-          value = value.replace(/[^a-zA-Z0-9\s./]/g, "");
+          value = value.replace(/[^a-zA-Z0-9\s./]/g, '');
         }
       }
 
@@ -55,7 +55,7 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
     }
 
     // Convert to number if type is number
-    if (type === "number") {
+    if (type === 'number') {
       value = event.target.value ? Number(value) : 0;
     }
 
@@ -72,11 +72,11 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
         type={type}
         disabled={props?.disabled || isSubmitting}
         onChange={handleChange}
-        value={field.value || ""}
+        value={field.value || ''}
         required={isRequired}
         inputProps={{
           maxLength: effectiveMaxLength,
-          ...props.inputProps,
+          ...props.inputProps
         }}
         multiline={multiline}
       />

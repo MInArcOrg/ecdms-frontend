@@ -1,15 +1,12 @@
-import { Stack } from "@mui/material";
-import { gridSpacing } from "src/configs/app-constants";
+import { Stack } from '@mui/material';
+import { gridSpacing } from 'src/configs/app-constants';
 
 interface ListListingProps<T> {
   items: T[];
   ItemViewComponent: React.ComponentType<{ data: T }>;
 }
 
-const ListListing = <T extends object>({
-  items,
-  ItemViewComponent,
-}: ListListingProps<T>) => {
+const ListListing = <T extends object>({ items, ItemViewComponent }: ListListingProps<T>) => {
   return (
     <Stack spacing={gridSpacing}>
       {items.map((item, index) => (

@@ -1,4 +1,4 @@
-import StakholdersList from "src/views/pages/stakeholders/stakeholder-list";
+import StakholdersList from 'src/views/pages/stakeholders/stakeholder-list';
 
 const StakeholderPage = () => {
   return <StakholdersList />;

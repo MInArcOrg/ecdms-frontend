@@ -1,15 +1,15 @@
 // ** MUI Imports
-import Card from '@mui/material/Card'
-import Chip from '@mui/material/Chip'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import Card from '@mui/material/Card';
+import Chip from '@mui/material/Chip';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // ** Custom Component Import
-import Icon from 'src/@core/components/icon'
-import CustomChip from 'src/@core/components/mui/chip'
-import CustomAvatar from 'src/@core/components/mui/avatar'
-import { random } from 'lodash'
-import { Box } from '@mui/system'
+import Icon from 'src/@core/components/icon';
+import CustomChip from 'src/@core/components/mui/chip';
+import CustomAvatar from 'src/@core/components/mui/avatar';
+import { random } from 'lodash';
+import { Box } from '@mui/system';
 
 const TypeCardStat = (props: any) => {
   // ** Props
@@ -24,24 +24,19 @@ const TypeCardStat = (props: any) => {
     avatarSize = 42,
     chipColor = 'primary',
     avatarColor = 'primary'
-  } = props
-  const RenderChip = chipColor === 'default' ? Chip : CustomChip
+  } = props;
+  const RenderChip = chipColor === 'default' ? Chip : CustomChip;
 
   return (
     <Card sx={{ ...sx }}>
       <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-        <CustomAvatar
-          skin='light'
-          variant='rounded'
-          color={avatarColor}
-          sx={{ mb: 3.5, width: avatarSize, height: avatarSize }}
-        >
+        <CustomAvatar skin="light" variant="rounded" color={avatarColor} sx={{ mb: 3.5, width: avatarSize, height: avatarSize }}>
           {random()}
         </CustomAvatar>
-        <Typography variant='h6' sx={{ mb: 1 }}>
+        <Typography variant="h6" sx={{ mb: 1 }}>
           {title}
         </Typography>
-        <Typography variant='body2' sx={{ mb: 1, color: 'text.disabled' }}>
+        <Typography variant="body2" sx={{ mb: 1, color: 'text.disabled' }}>
           {'commenced this year'}
         </Typography>
         <Typography sx={{ mb: 3.5, color: 'text.secondary' }}>{stats}</Typography>
@@ -61,17 +56,15 @@ const TypeCardStat = (props: any) => {
             '& > *': { color: chipText < 0 ? 'error.main' : 'success.main' }
           }}
         >
-          <Icon fontSize='1.25rem' icon={chipText < 0 ? 'tabler:chevron-down' : 'tabler:chevron-up'} />
+          <Icon fontSize="1.25rem" icon={chipText < 0 ? 'tabler:chevron-down' : 'tabler:chevron-up'} />
           <Typography sx={{ fontWeight: 500 }}>
             {`${chipText} `}
-            <Typography sx={{ mb: 1, color: 'text.disabled' }}>
-              from last year
-            </Typography>
+            <Typography sx={{ mb: 1, color: 'text.disabled' }}>from last year</Typography>
           </Typography>
         </Box>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default TypeCardStat
+export default TypeCardStat;

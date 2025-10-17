@@ -1,16 +1,16 @@
-import { Grid } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
-import { FormikProps } from "formik";
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { gridSpacing } from "src/configs/app-constants";
-import { projectMasterModels } from "src/constants/master-data/project-general-master-constants";
-import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service";
-import { MaintenanceHistory } from "src/types/project/other";
-import CustomDynamicDatePicker from "src/views/shared/form/custom-dynamic-date-box";
-import CustomSelect from "src/views/shared/form/custom-select";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
-import CustomFileUpload from "src/views/shared/form/custome-file-selector";
+import { Grid } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
+import { FormikProps } from 'formik';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { gridSpacing } from 'src/configs/app-constants';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
+import { MaintenanceHistory } from 'src/types/project/other';
+import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
+import CustomSelect from 'src/views/shared/form/custom-select';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface MaintenanceHistoryFormProps {
   formik: FormikProps<MaintenanceHistory>;
@@ -18,43 +18,39 @@ interface MaintenanceHistoryFormProps {
   onFileChange: (file: File | null) => void;
 }
 
-const MaintenanceHistoryForm: React.FC<MaintenanceHistoryFormProps> = ({
-  formik,
-  file,
-  onFileChange,
-}) => {
+const MaintenanceHistoryForm: React.FC<MaintenanceHistoryFormProps> = ({ formik, file, onFileChange }) => {
   const { t: transl } = useTranslation();
 
   const { data: maintenanceTypes } = useQuery({
-    queryKey: ["maintenance-types"],
+    queryKey: ['maintenance-types'],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll({
-        filter: { model: projectMasterModels.maintenanceType.model },
-      }),
+        filter: { model: projectMasterModels.maintenanceType.model }
+      })
   });
 
   const { data: severityLevels } = useQuery({
-    queryKey: ["severity-levels"],
+    queryKey: ['severity-levels'],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll({
-        filter: { model: projectMasterModels.severityLevel.model },
-      }),
+        filter: { model: projectMasterModels.severityLevel.model }
+      })
   });
 
   const { data: suggestedRepairs } = useQuery({
-    queryKey: ["suggested-repairs"],
+    queryKey: ['suggested-repairs'],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll({
-        filter: { model: projectMasterModels.suggestedRepair.model },
-      }),
+        filter: { model: projectMasterModels.suggestedRepair.model }
+      })
   });
 
   const { data: recommendedActionUrgencies } = useQuery({
-    queryKey: ["recommended-action-urgencies"],
+    queryKey: ['recommended-action-urgencies'],
     queryFn: () =>
       projectGeneralMasterDataApiService.getAll({
-        filter: { model: projectMasterModels.recommendedActionUrgency.model },
-      }),
+        filter: { model: projectMasterModels.recommendedActionUrgency.model }
+      })
   });
 
   return (
@@ -62,12 +58,8 @@ const MaintenanceHistoryForm: React.FC<MaintenanceHistoryFormProps> = ({
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.maintenance-history.details.road-segment",
-          )}
-          placeholder={transl(
-            "project.other.maintenance-history.details.road-segment",
-          )}
+          label={transl('project.other.maintenance-history.details.road-segment')}
+          placeholder={transl('project.other.maintenance-history.details.road-segment')}
           name="road_segment"
           size="small"
           sx={{ mb: 2 }}
@@ -75,9 +67,7 @@ const MaintenanceHistoryForm: React.FC<MaintenanceHistoryFormProps> = ({
 
         <CustomDynamicDatePicker
           fullWidth
-          label={transl(
-            "project.other.maintenance-history.details.last-maintenance-date",
-          )}
+          label={transl('project.other.maintenance-history.details.last-maintenance-date')}
           name="last_maintenance_date"
           required
           showYearDropdown
@@ -86,31 +76,23 @@ const MaintenanceHistoryForm: React.FC<MaintenanceHistoryFormProps> = ({
         />
         <CustomSelect
           fullWidth
-          label={transl(
-            "project.other.maintenance-history.details.maintenance-type",
-          )}
-          placeholder={transl(
-            "project.other.maintenance-history.details.maintenance-type",
-          )}
+          label={transl('project.other.maintenance-history.details.maintenance-type')}
+          placeholder={transl('project.other.maintenance-history.details.maintenance-type')}
           name="maintenance_type_id"
           size="small"
           sx={{ mb: 2 }}
           options={
             maintenanceTypes?.payload.map((type) => ({
               label: type.title,
-              value: type.id,
+              value: type.id
             })) || []
           }
         />
 
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.maintenance-history.details.maintenance-cost",
-          )}
-          placeholder={transl(
-            "project.other.maintenance-history.details.maintenance-cost",
-          )}
+          label={transl('project.other.maintenance-history.details.maintenance-cost')}
+          placeholder={transl('project.other.maintenance-history.details.maintenance-cost')}
           name="maintenance_cost"
           size="small"
           type="number"
@@ -119,67 +101,53 @@ const MaintenanceHistoryForm: React.FC<MaintenanceHistoryFormProps> = ({
 
         <CustomSelect
           fullWidth
-          label={transl(
-            "project.other.maintenance-history.details.severity-level",
-          )}
-          placeholder={transl(
-            "project.other.maintenance-history.details.severity-level",
-          )}
+          label={transl('project.other.maintenance-history.details.severity-level')}
+          placeholder={transl('project.other.maintenance-history.details.severity-level')}
           name="severity_level_id"
           size="small"
           sx={{ mb: 2 }}
           options={
             severityLevels?.payload.map((level) => ({
               label: level.title,
-              value: level.id,
+              value: level.id
             })) || []
           }
         />
 
         <CustomSelect
           fullWidth
-          label={transl(
-            "project.other.maintenance-history.details.suggested-repair",
-          )}
-          placeholder={transl(
-            "project.other.maintenance-history.details.suggested-repair",
-          )}
+          label={transl('project.other.maintenance-history.details.suggested-repair')}
+          placeholder={transl('project.other.maintenance-history.details.suggested-repair')}
           name="suggested_repair_id"
           size="small"
           sx={{ mb: 2 }}
           options={
             suggestedRepairs?.payload.map((repair) => ({
               label: repair.title,
-              value: repair.id,
+              value: repair.id
             })) || []
           }
         />
 
         <CustomSelect
           fullWidth
-          label={transl(
-            "project.other.maintenance-history.details.recommended-action-urgency",
-          )}
-          placeholder={transl(
-            "project.other.maintenance-history.details.recommended-action-urgency",
-          )}
+          label={transl('project.other.maintenance-history.details.recommended-action-urgency')}
+          placeholder={transl('project.other.maintenance-history.details.recommended-action-urgency')}
           name="recommended_action_urgency_id"
           size="small"
           sx={{ mb: 2 }}
           options={
             recommendedActionUrgencies?.payload.map((urgency) => ({
               label: urgency.title,
-              value: urgency.id,
+              value: urgency.id
             })) || []
           }
         />
 
         <CustomTextBox
           fullWidth
-          label={transl("project.other.maintenance-history.details.remark")}
-          placeholder={transl(
-            "project.other.maintenance-history.details.remark",
-          )}
+          label={transl('project.other.maintenance-history.details.remark')}
+          placeholder={transl('project.other.maintenance-history.details.remark')}
           name="remark"
           size="small"
           multiline
@@ -189,11 +157,7 @@ const MaintenanceHistoryForm: React.FC<MaintenanceHistoryFormProps> = ({
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={transl("common.form.file-upload")}
-          file={file}
-          onFileChange={onFileChange}
-        />
+        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

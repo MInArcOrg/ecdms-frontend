@@ -1,32 +1,24 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
+import { Box } from '@mui/material';
+import { useState } from 'react';
 
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import stakeholderRegulationApiService from "src/services/stakeholder/stakeholder-regulation-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import { StakeholderRegulation } from "src/types/stakeholder/stakeholder-regulation";
-import { GetRequestParam, IApiResponse } from "src/types/requests";
-import ItemsListing from "src/views/shared/listing";
-import StakeholderRegulationCard from "./stakeholder-regulation-card";
-import StakeholderRegulationDrawer from "./stakeholder-regulation-drawer";
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import stakeholderRegulationApiService from 'src/services/stakeholder/stakeholder-regulation-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { StakeholderRegulation } from 'src/types/stakeholder/stakeholder-regulation';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import ItemsListing from 'src/views/shared/listing';
+import StakeholderRegulationCard from './stakeholder-regulation-card';
+import StakeholderRegulationDrawer from './stakeholder-regulation-drawer';
 
-function StakeholderRegulationList({
-  stakeholderId,
-}: {
-  stakeholderId: string;
-}) {
+function StakeholderRegulationList({ stakeholderId }: { stakeholderId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
 
-  const [selectedRow, setSelectedRow] = useState<StakeholderRegulation | null>(
-    null,
-  );
-  const fetchStakeholderRegulations = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<StakeholderRegulation[]>> => {
+  const [selectedRow, setSelectedRow] = useState<StakeholderRegulation | null>(null);
+  const fetchStakeholderRegulations = (params: GetRequestParam): Promise<IApiResponse<StakeholderRegulation[]>> => {
     return stakeholderRegulationApiService.getAll({
       ...params,
-      filter: { ...params.filter },
+      filter: { ...params.filter }
     });
   };
 
@@ -35,10 +27,10 @@ function StakeholderRegulationList({
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<StakeholderRegulation[]>({
-    queryKey: ["stakeholderRegulations"],
-    fetchFunction: fetchStakeholderRegulations,
+    queryKey: ['stakeholderRegulations'],
+    fetchFunction: fetchStakeholderRegulations
   });
 
   const toggleDrawer = () => {
@@ -72,21 +64,16 @@ function StakeholderRegulationList({
         type={ITEMS_LISTING_TYPE.table.value}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <StakeholderRegulationCard
-            stakeholderRegulation={data}
-            onEdit={handleEdit}
-            refetch={refetch}
-            onDelete={handleDelete}
-          />
+          <StakeholderRegulationCard stakeholderRegulation={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "regulation",
-          },
+            action: 'create',
+            subject: 'regulation'
+          }
         }}
         fetchDataFunction={refetch}
         items={stakeholderRegulations || []}

@@ -1,13 +1,13 @@
-import { Box } from "@mui/material";
-import CustomChip from "src/@core/components/mui/chip";
-import Can from "src/layouts/components/acl/Can";
-import { ProjectStatus } from "src/types/project";
-import ModelActionComponent from "src/views/components/custom/model-actions";
+import { Box } from '@mui/material';
+import CustomChip from 'src/@core/components/mui/chip';
+import Can from 'src/layouts/components/acl/Can';
+import { ProjectStatus } from 'src/types/project';
+import ModelActionComponent from 'src/views/components/custom/model-actions';
 
 const ProjectStatusAction = ({
   projectStatus,
   refetch,
-  onStatusChangeClick,
+  onStatusChangeClick
 }: {
   projectStatus: ProjectStatus;
   refetch: () => void;
@@ -16,7 +16,7 @@ const ProjectStatusAction = ({
   return (
     <Box display="flex" justifyContent="end" alignItems="end">
       <Box display="flex" gap={2}>
-        <Can do={"register_projectstatus"} on={"projectstatus"}>
+        <Can do={'register_projectstatus'} on={'projectstatus'}>
           <CustomChip
             label="Change Status"
             color="primary"
@@ -24,10 +24,10 @@ const ProjectStatusAction = ({
             size="small"
             skin="light"
             sx={{
-              "& .MuiChip-label": { textTransform: "capitalize" },
-              "&:hover": { color: "#fff" },
-              cursor: "pointer",
-              height: 20,
+              '& .MuiChip-label': { textTransform: 'capitalize' },
+              '&:hover': { color: '#fff' },
+              cursor: 'pointer',
+              height: 20
             }}
             onClick={() => {
               onStatusChangeClick();
@@ -42,11 +42,11 @@ const ProjectStatusAction = ({
           model_id={projectStatus.id}
           refetchModel={refetch}
           resubmit={function (): void {
-            throw new Error("Function not implemented.");
+            throw new Error('Function not implemented.');
           }}
-          title={"project.project-status.project-status"}
+          title={'project.project-status.project-status'}
           postAction={function (): void {
-            throw new Error("Function not implemented.");
+            throw new Error('Function not implemented.');
           }}
         />
       </Box>

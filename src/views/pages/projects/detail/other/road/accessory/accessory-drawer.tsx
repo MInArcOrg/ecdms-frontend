@@ -1,13 +1,13 @@
-import type { FormikProps } from "formik";
-import type { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import AccessoryForm from "./accessory-form";
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import AccessoryForm from './accessory-form';
 
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import type { Accessory } from "src/types/project/other";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import type { Accessory } from 'src/types/project/other';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface AccessoryDrawerType {
   open: boolean;
@@ -23,8 +23,8 @@ const AccessoryDrawer = (props: AccessoryDrawerType) => {
 
   const validationSchema = yup.object().shape({
     parent_id: yup.string().length(36).nullable(),
-    project_id: yup.string().length(36).required("Project is required"),
-    name: yup.string().max(255).required("Name is required"),
+    project_id: yup.string().length(36).required('Project is required'),
+    name: yup.string().max(255).required('Name is required'),
     under_passes: yup.number().integer().nullable(),
     ramps: yup.number().integer().nullable(),
     traffic_signals: yup.number().integer().nullable(),
@@ -32,57 +32,43 @@ const AccessoryDrawer = (props: AccessoryDrawerType) => {
     bicycle_lanes: yup.boolean().nullable(),
     bicycle_signals: yup.number().integer().nullable(),
     culvert: yup.boolean().nullable(),
-    bridge: yup.boolean().nullable(),
+    bridge: yup.boolean().nullable()
   });
 
   const isEdit = Boolean(accessory?.id);
 
   const createAccessory = async (body: IApiPayload<Accessory>) =>
-    projectOtherApiSecondService<Accessory>().create(
-      otherSubMenu?.apiRoute || "",
-      body,
-    );
+    projectOtherApiSecondService<Accessory>().create(otherSubMenu?.apiRoute || '', body);
 
   const editAccessory = async (body: IApiPayload<Accessory>) =>
-    projectOtherApiSecondService<Accessory>().update(
-      otherSubMenu?.apiRoute || "",
-      accessory?.id || "",
-      body,
-    );
+    projectOtherApiSecondService<Accessory>().update(otherSubMenu?.apiRoute || '', accessory?.id || '', body);
 
   const getPayload = (values: Accessory): IApiPayload<Accessory> => ({
     data: {
       ...values,
       project_id: projectId,
-      id: accessory?.id,
+      id: accessory?.id
     } as Accessory,
-    files: [],
+    files: []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<Accessory>,
-    payload: IApiPayload<Accessory>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<Accessory>, payload: IApiPayload<Accessory>) => {
     refetch();
     handleClose();
   };
 
   return (
     <CustomSideDrawer
-      title={`project.other.accessory.${
-        isEdit ? `edit-accessory` : `create-accessory`
-      }`}
+      title={`project.other.accessory.${isEdit ? `edit-accessory` : `create-accessory`}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.accessory.${
-            isEdit ? `edit-accessory` : `create-accessory`
-          }`}
+          title={`project.other.accessory.${isEdit ? `edit-accessory` : `create-accessory`}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{ ...accessory, project_id: projectId }}

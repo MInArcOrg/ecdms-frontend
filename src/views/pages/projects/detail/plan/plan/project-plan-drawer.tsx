@@ -1,18 +1,18 @@
-import { FormikProps } from "formik";
-import { useState } from "react";
-import projectPlanApiService from "src/services/project/project-plan-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
+import { FormikProps } from 'formik';
+import { useState } from 'react';
+import projectPlanApiService from 'src/services/project/project-plan-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
 
-import moment from "moment";
-import { planReportTypeConstant } from "src/constants/project-plan-report-constants";
-import { ProjectPlan } from "src/types/project/project-plan";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import { getQuarterStartDate } from "src/utils/genertor/date";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import ProjectPlanForm from "./project-plan-form";
+import moment from 'moment';
+import { planReportTypeConstant } from 'src/constants/project-plan-report-constants';
+import { ProjectPlan } from 'src/types/project/project-plan';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import { getQuarterStartDate } from 'src/utils/genertor/date';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import ProjectPlanForm from './project-plan-form';
 
 interface ProjectPlanDrawerType {
   open: boolean;
@@ -31,13 +31,13 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
   };
   const [viewSections, setViewSections] = useState({
     manpower: true,
-    subtotal: true,
+    subtotal: true
   });
 
-  const toggleSection = (section: "manpower" | "subtotal") => {
+  const toggleSection = (section: 'manpower' | 'subtotal') => {
     setViewSections((prevState) => ({
       ...prevState,
-      [section]: !prevState[section],
+      [section]: !prevState[section]
     }));
   };
   const validationSchema = yup.object().shape({
@@ -47,27 +47,13 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
     type: yup.string().max(255).nullable(),
     project_expense: yup.number().nullable(),
     manpower: yup.number().nullable(),
-    direct_labour: viewSections.manpower
-      ? yup.number().required("Direct Labour is required")
-      : yup.number().nullable(),
-    indirect_labour: viewSections.manpower
-      ? yup.number().required("Indirect Labour is required")
-      : yup.number().nullable(),
-    material: viewSections.subtotal
-      ? yup.number().required("Material is required")
-      : yup.number().nullable(),
-    machinery: viewSections.subtotal
-      ? yup.number().required("Machinery is required")
-      : yup.number().nullable(),
-    other_expense: viewSections.subtotal
-      ? yup.number().required("Other Expense is required")
-      : yup.number().nullable(),
-    sub_contractor_cost: viewSections.subtotal
-      ? yup.number().required("Subcontractor Cost is required")
-      : yup.number().nullable(),
-    cost_due_to_rework: viewSections.subtotal
-      ? yup.number().required("Cost due to rework is required")
-      : yup.number().nullable(),
+    direct_labour: viewSections.manpower ? yup.number().required('Direct Labour is required') : yup.number().nullable(),
+    indirect_labour: viewSections.manpower ? yup.number().required('Indirect Labour is required') : yup.number().nullable(),
+    material: viewSections.subtotal ? yup.number().required('Material is required') : yup.number().nullable(),
+    machinery: viewSections.subtotal ? yup.number().required('Machinery is required') : yup.number().nullable(),
+    other_expense: viewSections.subtotal ? yup.number().required('Other Expense is required') : yup.number().nullable(),
+    sub_contractor_cost: viewSections.subtotal ? yup.number().required('Subcontractor Cost is required') : yup.number().nullable(),
+    cost_due_to_rework: viewSections.subtotal ? yup.number().required('Cost due to rework is required') : yup.number().nullable(),
     financial_performance: yup.number().nullable(),
     physical_performance: yup.number().nullable(),
     over_head_cost: yup.number().nullable(),
@@ -76,16 +62,14 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
     quarter: yup.string().max(255).nullable(),
     is_summary: yup.boolean().nullable(),
     remark: yup.string().nullable(),
-    revision_no: yup.number().integer().nullable(),
+    revision_no: yup.number().integer().nullable()
   });
 
   const isEdit = Boolean(projectPlan?.id);
 
-  const createProjectPlan = async (body: IApiPayload<ProjectPlan>) =>
-    projectPlanApiService.create(body);
+  const createProjectPlan = async (body: IApiPayload<ProjectPlan>) => projectPlanApiService.create(body);
 
-  const editProjectPlan = async (body: IApiPayload<ProjectPlan>) =>
-    projectPlanApiService.update(projectPlan?.id || "", body);
+  const editProjectPlan = async (body: IApiPayload<ProjectPlan>) => projectPlanApiService.update(projectPlan?.id || '', body);
 
   const getPayload = (values: ProjectPlan) => ({
     data: {
@@ -93,28 +77,16 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
       id: projectPlan?.id,
       project_id: projectId,
       year: moment(values.year).toDate().getFullYear().toString(),
-      start: getQuarterStartDate(
-        moment(values.year).toDate().getFullYear(),
-        Number(values.quarter),
-      ),
+      start: getQuarterStartDate(moment(values.year).toDate().getFullYear(), Number(values.quarter))
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<ProjectPlan>,
-    payload: IApiPayload<ProjectPlan>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<ProjectPlan>, payload: IApiPayload<ProjectPlan>) => {
     if (payload.files.length > 0) {
-      uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.plan,
-        response.payload.id,
-        "",
-        "",
-      );
+      uploadFile(payload.files[0], uploadableProjectFileTypes.plan, response.payload.id, '', '');
     }
     refetch();
     toggle();
@@ -124,9 +96,7 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.plan.${
-        isEdit ? `edit-project-plan` : `create-project-plan`
-      }`}
+      title={`project.plan.${isEdit ? `edit-project-plan` : `create-project-plan`}`}
       handleClose={handleClose}
       open={open}
       width={700}
@@ -134,9 +104,7 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.plan.${
-            isEdit ? `edit-project-plan` : `create-project-plan`
-          }`}
+          title={`project.plan.${isEdit ? `edit-project-plan` : `create-project-plan`}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
@@ -145,8 +113,8 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
             year: moment({
               year: Number(projectPlan.year || new Date().getFullYear()),
               month: 0,
-              day: 1,
-            }).toDate(),
+              day: 1
+            }).toDate()
           }}
           createActionFunc={isEdit ? editProjectPlan : createProjectPlan}
           onActionSuccess={onActionSuccess}

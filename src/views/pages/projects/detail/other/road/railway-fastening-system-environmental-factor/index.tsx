@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import type React from "react";
-import { Box } from "@mui/material";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import type { GetRequestParam, IApiResponse } from "src/types/requests";
-import ItemsListing from "src/views/shared/listing";
-import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer";
-import { RailwayFasteningSystemEnvironmentalFactor } from "src/types/project/other";
-import { formatCreatedAt } from "src/utils/formatter/date";
-import RailwayFasteningSystemEnvironmentalFactorCard from "./railway-fastening-system-environmental-factor-card";
-import RailwayFasteningSystemEnvironmentalFactorDrawer from "./railway-fastening-system-environmental-factor-drawer";
-import { railwayFasteningSystemEnvironmentalFactorColumns } from "./railway-fastening-system-environmental-factor-row";
+import type React from 'react';
+import { Box } from '@mui/material';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import type { GetRequestParam, IApiResponse } from 'src/types/requests';
+import ItemsListing from 'src/views/shared/listing';
+import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
+import { RailwayFasteningSystemEnvironmentalFactor } from 'src/types/project/other';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import RailwayFasteningSystemEnvironmentalFactorCard from './railway-fastening-system-environmental-factor-card';
+import RailwayFasteningSystemEnvironmentalFactorDrawer from './railway-fastening-system-environmental-factor-drawer';
+import { railwayFasteningSystemEnvironmentalFactorColumns } from './railway-fastening-system-environmental-factor-row';
 
 interface RailwayFasteningSystemEnvironmentalFactorListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -24,25 +24,22 @@ interface RailwayFasteningSystemEnvironmentalFactorListProps {
   projectId: string;
 }
 
-const RailwayFasteningSystemEnvironmentalFactorList: React.FC<
-  RailwayFasteningSystemEnvironmentalFactorListProps
-> = ({ otherSubMenu, projectId }) => {
+const RailwayFasteningSystemEnvironmentalFactorList: React.FC<RailwayFasteningSystemEnvironmentalFactorListProps> = ({
+  otherSubMenu,
+  projectId
+}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] =
-    useState<RailwayFasteningSystemEnvironmentalFactor | null>(null);
+  const [selectedRow, setSelectedRow] = useState<RailwayFasteningSystemEnvironmentalFactor | null>(null);
   const { t } = useTranslation();
 
   const fetchRailwayFasteningSystemEnvironmentalFactor = (
-    params: GetRequestParam,
+    params: GetRequestParam
   ): Promise<IApiResponse<RailwayFasteningSystemEnvironmentalFactor[]>> => {
-    return projectOtherApiSecondService<RailwayFasteningSystemEnvironmentalFactor>().getAll(
-      otherSubMenu?.apiRoute || "",
-      {
-        ...params,
-        filter: { ...params.filter, project_id: projectId },
-      },
-    );
+    return projectOtherApiSecondService<RailwayFasteningSystemEnvironmentalFactor>().getAll(otherSubMenu?.apiRoute || '', {
+      ...params,
+      filter: { ...params.filter, project_id: projectId }
+    });
   };
 
   const {
@@ -50,10 +47,10 @@ const RailwayFasteningSystemEnvironmentalFactorList: React.FC<
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<RailwayFasteningSystemEnvironmentalFactor[]>({
-    queryKey: ["railwayFasteningSystemEnvironmentalFactors"],
-    fetchFunction: fetchRailwayFasteningSystemEnvironmentalFactor,
+    queryKey: ['railwayFasteningSystemEnvironmentalFactors'],
+    fetchFunction: fetchRailwayFasteningSystemEnvironmentalFactor
   });
 
   const toggleDrawer = () => {
@@ -66,71 +63,52 @@ const RailwayFasteningSystemEnvironmentalFactorList: React.FC<
     setShowDetailDrawer(!showDetailDrawer);
   };
 
-  const handleEdit = (
-    environmentalFactor: RailwayFasteningSystemEnvironmentalFactor,
-  ) => {
+  const handleEdit = (environmentalFactor: RailwayFasteningSystemEnvironmentalFactor) => {
     toggleDrawer();
     setSelectedRow(environmentalFactor);
   };
 
   const handleDelete = async (id: string) => {
-    await projectOtherApiSecondService<RailwayFasteningSystemEnvironmentalFactor>().delete(
-      otherSubMenu?.apiRoute || "",
-      id,
-    );
+    await projectOtherApiSecondService<RailwayFasteningSystemEnvironmentalFactor>().delete(otherSubMenu?.apiRoute || '', id);
     refetch();
   };
 
-  const handleClickDetail = (
-    environmentalFactor: RailwayFasteningSystemEnvironmentalFactor,
-  ) => {
+  const handleClickDetail = (environmentalFactor: RailwayFasteningSystemEnvironmentalFactor) => {
     toggleDetailDrawer();
     setSelectedRow(environmentalFactor);
   };
 
   const mapRailwayFasteningSystemEnvironmentalFactorToDetailItems = (
-    environmentalFactor: RailwayFasteningSystemEnvironmentalFactor,
+    environmentalFactor: RailwayFasteningSystemEnvironmentalFactor
   ): { title: string; value: string }[] => [
     {
-      title: t("common.table-columns.id"),
-      value: environmentalFactor?.id || "N/A",
+      title: t('common.table-columns.id'),
+      value: environmentalFactor?.id || 'N/A'
     },
     {
-      title: t(
-        "project.other.railway-fastening-system-environmental-factor.details.railway_line_section_name",
-      ),
-      value: environmentalFactor?.railway_line_section_name || "N/A",
+      title: t('project.other.railway-fastening-system-environmental-factor.details.railway_line_section_name'),
+      value: environmentalFactor?.railway_line_section_name || 'N/A'
     },
     {
-      title: t(
-        "project.other.railway-fastening-system-environmental-factor.details.environmental_compliance_measures",
-      ),
-      value: environmentalFactor?.environmental_compliance_measures || "N/A",
+      title: t('project.other.railway-fastening-system-environmental-factor.details.environmental_compliance_measures'),
+      value: environmentalFactor?.environmental_compliance_measures || 'N/A'
     },
     {
-      title: t(
-        "project.other.railway-fastening-system-environmental-factor.details.environmental_impact_assessment",
-      ),
-      value: environmentalFactor?.environmental_impact_assessment || "N/A",
+      title: t('project.other.railway-fastening-system-environmental-factor.details.environmental_impact_assessment'),
+      value: environmentalFactor?.environmental_impact_assessment || 'N/A'
     },
     {
-      title: t(
-        "project.other.railway-fastening-system-environmental-factor.details.remark",
-      ),
-      value: environmentalFactor?.remark || "N/A",
+      title: t('project.other.railway-fastening-system-environmental-factor.details.remark'),
+      value: environmentalFactor?.remark || 'N/A'
     },
     {
-      title: t("common.table-columns.created-at"),
-      value: environmentalFactor?.created_at
-        ? formatCreatedAt(environmentalFactor.created_at)
-        : "N/A",
+      title: t('common.table-columns.created-at'),
+      value: environmentalFactor?.created_at ? formatCreatedAt(environmentalFactor.created_at) : 'N/A'
     },
     {
-      title: t("common.table-columns.updated-at"),
-      value: environmentalFactor?.updated_at
-        ? formatCreatedAt(environmentalFactor.updated_at)
-        : "N/A",
-    },
+      title: t('common.table-columns.updated-at'),
+      value: environmentalFactor?.updated_at ? formatCreatedAt(environmentalFactor.updated_at) : 'N/A'
+    }
   ];
 
   return (
@@ -140,9 +118,7 @@ const RailwayFasteningSystemEnvironmentalFactorList: React.FC<
           otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
-          railwayFasteningSystemEnvironmentalFactor={
-            selectedRow as RailwayFasteningSystemEnvironmentalFactor
-          }
+          railwayFasteningSystemEnvironmentalFactor={selectedRow as RailwayFasteningSystemEnvironmentalFactor}
           refetch={refetch}
           projectId={projectId}
         />
@@ -152,41 +128,26 @@ const RailwayFasteningSystemEnvironmentalFactorList: React.FC<
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapRailwayFasteningSystemEnvironmentalFactorToDetailItems(
-            selectedRow as RailwayFasteningSystemEnvironmentalFactor,
-          )}
+          data={mapRailwayFasteningSystemEnvironmentalFactorToDetailItems(selectedRow as RailwayFasteningSystemEnvironmentalFactor)}
           hasReference={true}
-          id={selectedRow?.id || ""}
-          fileType={otherSubMenu?.id || "DEFAULT_FILES"}
-          title={t(
-            "project.other.railway-fastening-system-environmental-factor.detail",
-          )}
+          id={selectedRow?.id || ''}
+          fileType={otherSubMenu?.id || 'DEFAULT_FILES'}
+          title={t('project.other.railway-fastening-system-environmental-factor.detail')}
         />
       )}
 
       <ItemsListing
-        title={t(
-          "project.other.railway-fastening-system-environmental-factor.title",
-        )}
+        title={t('project.other.railway-fastening-system-environmental-factor.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: railwayFasteningSystemEnvironmentalFactorColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-            otherSubMenu,
-          ),
+          headers: railwayFasteningSystemEnvironmentalFactorColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, otherSubMenu)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
           <RailwayFasteningSystemEnvironmentalFactorCard
             onDetail={handleClickDetail}
-            railwayFasteningSystemEnvironmentalFactor={
-              data as RailwayFasteningSystemEnvironmentalFactor
-            }
+            railwayFasteningSystemEnvironmentalFactor={data as RailwayFasteningSystemEnvironmentalFactor}
             onEdit={handleEdit}
             refetch={refetch}
             otherSubMenu={otherSubMenu}
@@ -198,9 +159,9 @@ const RailwayFasteningSystemEnvironmentalFactorList: React.FC<
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "railwayfasteningsystemenvironmentalfactor",
-          },
+            action: 'create',
+            subject: 'railwayfasteningsystemenvironmentalfactor'
+          }
         }}
         fetchDataFunction={refetch}
         items={railwayFasteningSystemEnvironmentalFactors || []}

@@ -1,17 +1,15 @@
-import { Box, Card, CardContent, CardHeader, CircularProgress, Grid, Typography } from '@mui/material'
-import { getStakeSummary } from 'src/services/analytics/general'
-import ApiErrors from 'src/views/components/ApiErrors'
+import { Box, Card, Typography } from '@mui/material';
 
 const AnalyticsPageLayout = ({ children }) => {
   return (
     <Box>
       <Card sx={{ display: 'flex', alignItems: 'center', p: 4, my: 6, gap: 8 }}>
         <Typography />
-        <Typography variant='h6' sx={{ textDecoration: 'underline' }}>
+        <Typography variant="h6" sx={{ textDecoration: 'underline' }}>
           General
         </Typography>
         <Typography
-          variant='h6'
+          variant="h6"
           sx={{
             color: 'secondary.main'
           }}
@@ -19,7 +17,7 @@ const AnalyticsPageLayout = ({ children }) => {
           Regional
         </Typography>
         <Typography
-          variant='h6'
+          variant="h6"
           sx={{
             color: 'secondary.main'
           }}
@@ -30,7 +28,7 @@ const AnalyticsPageLayout = ({ children }) => {
 
       <div>{children}</div>
     </Box>
-  )
-}
+  );
+};
 
-export default AnalyticsPageLayout
+export default AnalyticsPageLayout;

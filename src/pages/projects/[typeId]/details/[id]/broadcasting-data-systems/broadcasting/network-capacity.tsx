@@ -1,19 +1,13 @@
-import { useRouter } from "next/router";
-import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
-import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
-import subMenuItems, {
-  findSubMenuItem,
-  broadcastingDataSystemsId,
-} from "../(subMenuItems)";
+import { useRouter } from 'next/router';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
+import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import subMenuItems, { findSubMenuItem, broadcastingDataSystemsId } from '../(subMenuItems)';
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems("", ""),
-  broadcastingDataSystemsId.broadcasting.networkCapacity,
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), broadcastingDataSystemsId.broadcasting.networkCapacity);
 
 const BroadcastingNetworkCapacityPage = () => {
   const router = useRouter();
-  const { id = "", typeId = "" } = router.query;
+  const { id = '', typeId = '' } = router.query;
 
   return (
     <ProjectLayout
@@ -34,7 +28,7 @@ const BroadcastingNetworkCapacityPage = () => {
 // Access control configuration
 BroadcastingNetworkCapacityPage.acl = {
   subject: defaultMenuItem?.model,
-  action: "view",
+  action: 'view'
 };
 
 export default BroadcastingNetworkCapacityPage;

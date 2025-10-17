@@ -1,10 +1,10 @@
-import { Grid } from "@mui/material";
-import { FormikProps } from "formik";
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { FileModel } from "src/types/general/file";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
-import CustomFileUpload from "src/views/shared/form/custome-file-selector";
+import { Grid } from '@mui/material';
+import { FormikProps } from 'formik';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { FileModel } from 'src/types/general/file';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface ProjectFileFormProps {
   formik: FormikProps<FileModel>;
@@ -12,10 +12,7 @@ interface ProjectFileFormProps {
   onFileChange: (file: File | null) => void;
 }
 
-const ProjectFileForm: React.FC<ProjectFileFormProps> = ({
-  file,
-  onFileChange,
-}) => {
+const ProjectFileForm: React.FC<ProjectFileFormProps> = ({ file, onFileChange }) => {
   const { t: transl } = useTranslation();
   // Handle value change and update the corresponding field
 
@@ -24,8 +21,8 @@ const ProjectFileForm: React.FC<ProjectFileFormProps> = ({
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl("project.project-file.form.description")}
-          placeholder={transl("project.project-file.form.description")}
+          label={transl('project.project-file.form.description')}
+          placeholder={transl('project.project-file.form.description')}
           name="description"
           multiline
           rows={2}
@@ -33,11 +30,7 @@ const ProjectFileForm: React.FC<ProjectFileFormProps> = ({
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={transl("common.form.file-upload")}
-          file={file}
-          onFileChange={onFileChange}
-        />
+        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

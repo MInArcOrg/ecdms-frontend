@@ -1,20 +1,17 @@
 // ** MUI Imports
-import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
+import Card from '@mui/material/Card';
+import { useTheme } from '@mui/material/styles';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
 
 // ** Component Import
-import ReactApexcharts from 'src/@core/components/react-apexcharts'
+import ReactApexcharts from 'src/@core/components/react-apexcharts';
 
-const donutColors = ['#fdd835', '#009933', '#826bf8', '#0099ff', '#ffa1a1']
+const donutColors = ['#fdd835', '#009933', '#826bf8', '#0099ff', '#ffa1a1'];
 
-const ApexPolarChart = ({ title, labels }: {
-  title: string,
-  labels: string[]
-}) => {
+const ApexPolarChart = ({ title, labels }: { title: string; labels: string[] }) => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const options = {
     chart: {
@@ -93,20 +90,20 @@ const ApexPolarChart = ({ title, labels }: {
         }
       }
     ]
-  }
+  };
 
   return (
     <Card>
       <CardHeader
         title={title}
-        subheader='on various categories'
-        subheaderTypographyProps={{ sx: { color: theme => `${theme.palette.text.disabled} !important` } }}
+        subheader="on various categories"
+        subheaderTypographyProps={{ sx: { color: (theme) => `${theme.palette.text.disabled} !important` } }}
       />
       <CardContent>
-        <ReactApexcharts type='polarArea' height={400} options={options as any} series={[14, 23, 21, 17, 15]} />
+        <ReactApexcharts type="polarArea" height={400} options={options as any} series={[14, 23, 21, 17, 15]} />
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default ApexPolarChart
+export default ApexPolarChart;

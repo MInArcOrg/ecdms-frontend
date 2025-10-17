@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
-import roleApiService from "src/services/admin/role-service";
-import Permission from "src/types/admin/role/permission";
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import roleApiService from 'src/services/admin/role-service';
+import Permission from 'src/types/admin/role/permission';
 
 const usePermissionSelection = (roleId: string, type: string) => {
   const [permissions, setPermissions] = useState<Permission[]>([]);
@@ -20,7 +20,7 @@ const usePermissionSelection = (roleId: string, type: string) => {
       setError(null);
 
       const response = await roleApiService.getPermissionsByRole(roleId, {
-        filter: { type },
+        filter: { type }
       });
 
       const initialPermissions = response.payload;
@@ -32,13 +32,13 @@ const usePermissionSelection = (roleId: string, type: string) => {
           acc[permission.id] = permission.selected;
           return acc;
         },
-        {} as { [key: string]: boolean },
+        {} as { [key: string]: boolean }
       );
 
       setSelectedPermissions(initialSelections);
     } catch (err) {
-      setError("Error loading permissions");
-      console.error("Error fetching permissions:", err);
+      setError('Error loading permissions');
+      console.error('Error fetching permissions:', err);
     } finally {
       setIsLoading(false);
     }
@@ -49,11 +49,7 @@ const usePermissionSelection = (roleId: string, type: string) => {
   }, [fetchPermissions]);
 
   // Memoize derived data
-  const models = useMemo(
-    () =>
-      Array.from(new Set(permissions.map((permission) => permission.model))),
-    [permissions],
-  );
+  const models = useMemo(() => Array.from(new Set(permissions.map((permission) => permission.model))), [permissions]);
 
   /**
    * Applies all permission business logic for a single model.
@@ -69,32 +65,30 @@ const usePermissionSelection = (roleId: string, type: string) => {
 
     // Helper to find a permission ID for the current model by name
     const getPermId = (name: string): string | undefined => {
-      return permissions.find(
-        (p) => p.model === model && p.name.includes(name)
-      )?.id;
+      return permissions.find((p) => p.model === model && p.name.includes(name))?.id;
     };
 
     // Get IDs for all permissions in this model
     const permIds = {
-      create: getPermId("create"),
-      update: getPermId("update"),
-      delete: getPermId("delete"),
-      check: getPermId("check"),
-      approve: getPermId("approve"),
-      authorize: getPermId("authorize"),
-      view: getPermId("view"),
+      create: getPermId('create'),
+      update: getPermId('update'),
+      delete: getPermId('delete'),
+      check: getPermId('check'),
+      approve: getPermId('approve'),
+      authorize: getPermId('authorize'),
+      view: getPermId('view')
     };
 
     // Define permission groups based on rules
-    const linkGroup = ["create", "update"];
-    const exclusiveGroup = ["create", "check", "approve", "authorize"];
-    const standalonePrimary = "delete";
-    const dependentView = "view";
-    const allPrimaries = ["create", "update", "delete", "check", "approve", "authorize"];
+    const linkGroup = ['create', 'update'];
+    const exclusiveGroup = ['create', 'check', 'approve', 'authorize'];
+    const standalonePrimary = 'delete';
+    const dependentView = 'view';
+    const allPrimaries = ['create', 'update', 'delete', 'check', 'approve', 'authorize'];
 
     // Helper to turn off all primaries except the ones specified
     const turnOffAllPrimariesExcept = (except: string[] = []) => {
-      allPrimaries.forEach(name => {
+      allPrimaries.forEach((name) => {
         if (!except.includes(name)) {
           const id = permIds[name as keyof typeof permIds];
           if (id) updated[id] = false;
@@ -134,9 +128,9 @@ const usePermissionSelection = (roleId: string, type: string) => {
     // Note: Other permission types would be handled here if they existed.
 
     // --- 2. Final Rule Enforcement (View Dependency) ---
-    
+
     // Rule 3 & 5: Any primary permission grants 'view'
-    const anyPrimaryActive = allPrimaries.some(name => {
+    const anyPrimaryActive = allPrimaries.some((name) => {
       const id = permIds[name as keyof typeof permIds];
       return id && updated[id];
     });
@@ -158,7 +152,6 @@ const usePermissionSelection = (roleId: string, type: string) => {
     return updated;
   };
 
-
   const handleCheckboxChange = (permissionId: string, permissionName: string, model: string) => {
     setSelectedPermissions((prev) => {
       const isTurningOn = !prev[permissionId];
@@ -178,9 +171,8 @@ const usePermissionSelection = (roleId: string, type: string) => {
         return updated;
       });
     },
-    [models, permissions], // Re-run if models or permissions data changes
+    [models, permissions] // Re-run if models or permissions data changes
   );
-
 
   const handleSubmit = useCallback(async () => {
     if (isSubmitting) return;
@@ -190,23 +182,21 @@ const usePermissionSelection = (roleId: string, type: string) => {
       setError(null);
 
       // Transform selectedPermissions to array in one operation
-      const permissionsArray = Object.entries(selectedPermissions).map(
-        ([id, is_selected]) => ({
-          id,
-          is_selected,
-        }),
-      );
+      const permissionsArray = Object.entries(selectedPermissions).map(([id, is_selected]) => ({
+        id,
+        is_selected
+      }));
 
       await roleApiService.assignPermission({
         data: { permissions: permissionsArray, id: roleId },
-        files: [],
+        files: []
       });
 
       // Refresh permissions after successful submission
       await fetchPermissions();
     } catch (err) {
-      setError("Error assigning permissions");
-      console.error("Error submitting permissions:", err);
+      setError('Error assigning permissions');
+      console.error('Error submitting permissions:', err);
     } finally {
       setIsSubmitting(false);
     }
@@ -220,8 +210,8 @@ const usePermissionSelection = (roleId: string, type: string) => {
     error,
     models,
     handleCheckboxChange,
-    handleSelectAll, 
-    handleSubmit,
+    handleSelectAll,
+    handleSubmit
   };
 };
 

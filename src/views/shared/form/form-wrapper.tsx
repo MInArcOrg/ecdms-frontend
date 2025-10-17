@@ -1,21 +1,15 @@
-import { LoadingButton } from "@mui/lab";
-import { Box, Button, Grid } from "@mui/material";
-import {
-  Formik,
-  FormikProps,
-  FormikHelpers,
-  FormikValues,
-  FormikErrors,
-} from "formik";
-import { useRouter } from "next/router";
-import { toast } from "react-hot-toast";
-import { useTranslation } from "react-i18next";
-import RequiredFieldsContext from "src/context/required-fields-context";
-import Translations from "src/layouts/components/Translations";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import { parseError } from "src/utils/parse/clean-error";
-import Page from "src/views/components/page/page";
-import * as Yup from "yup";
+import { LoadingButton } from '@mui/lab';
+import { Box, Button, Grid } from '@mui/material';
+import { Formik, FormikProps, FormikHelpers, FormikValues, FormikErrors } from 'formik';
+import { useRouter } from 'next/router';
+import { toast } from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
+import RequiredFieldsContext from 'src/context/required-fields-context';
+import Translations from 'src/layouts/components/Translations';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import { parseError } from 'src/utils/parse/clean-error';
+import Page from 'src/views/components/page/page';
+import * as Yup from 'yup';
 
 interface FormPageWrapperProps<T extends FormikValues> {
   children: (formik: FormikProps<T>) => JSX.Element;
@@ -30,10 +24,7 @@ interface FormPageWrapperProps<T extends FormikValues> {
   fullLayout?: boolean;
   baseUrl?: string;
   headerActions?: any[];
-  onActionSuccess?: (
-    response: IApiResponse<T>,
-    payload: { data: T; files: any[] },
-  ) => void;
+  onActionSuccess?: (response: IApiResponse<T>, payload: { data: T; files: any[] }) => void;
 }
 
 const FormPageWrapper = <T extends FormikValues>({
@@ -41,24 +32,21 @@ const FormPageWrapper = <T extends FormikValues>({
   initialValues,
   children,
   edit = false,
-  title = "",
+  title = '',
   showTitle = true,
   onCancel,
   getPayload,
   createActionFunc,
   fullLayout = false,
-  baseUrl = "",
+  baseUrl = '',
   headerActions = [],
-  onActionSuccess,
+  onActionSuccess
 }: FormPageWrapperProps<T>) => {
   const { t: intl } = useTranslation();
   const router = useRouter();
   const requiredFields = getRequiredFields(validationSchema);
 
-  const onSubmit = async (
-    values: T,
-    { setErrors, setStatus, setSubmitting }: FormikHelpers<T>,
-  ) => {
+  const onSubmit = async (values: T, { setErrors, setStatus, setSubmitting }: FormikHelpers<T>) => {
     const payload = getPayload(values);
     try {
       const res = await createActionFunc(payload);
@@ -69,23 +57,17 @@ const FormPageWrapper = <T extends FormikValues>({
       } else {
         router.push(baseUrl);
       }
-      toast.success(
-        `${intl(title)} ${intl(
-          edit ? "common.form.success-updated" : "common.form.success-created",
-        )}`,
-      );
+      toast.success(`${intl(title)} ${intl(edit ? 'common.form.success-updated' : 'common.form.success-created')}`);
     } catch (err: any) {
       const apiError = err as IApiResponse;
       setStatus({ success: false });
       setErrors(parseError(apiError) as FormikErrors<T>);
       setSubmitting(false);
 
-      if (apiError._errors && typeof apiError._errors === "string") {
+      if (apiError._errors && typeof apiError._errors === 'string') {
         toast.error(apiError._errors);
       } else if (apiError._errors) {
-        toast.error(
-          `${intl(edit ? "error-update" : "error-create")} ${intl(title)}`,
-        );
+        toast.error(`${intl(edit ? 'error-update' : 'error-create')} ${intl(title)}`);
       }
     }
   };
@@ -96,42 +78,38 @@ const FormPageWrapper = <T extends FormikValues>({
 
   return (
     <Page titleId={title}>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
-      >
+      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
         {(formik: FormikProps<T>) => (
           <form onSubmit={formik.handleSubmit}>
             <RequiredFieldsContext.Provider value={requiredFields}>
-            <Grid container>
-              <Grid item xs={12}>
-                <Box>{children(formik)}</Box>
+              <Grid container>
+                <Grid item xs={12}>
+                  <Box>{children(formik)}</Box>
+                </Grid>
+                <Grid item xs={12} sx={{ mt: 5 }}>
+                  <LoadingButton
+                    loading={formik.isSubmitting}
+                    loadingPosition="center"
+                    disabled={formik.isSubmitting || !formik.isValid}
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                  >
+                    <Translations text={edit ? 'save' : 'submit'} />
+                  </LoadingButton>
+                  <Button
+                    onClick={() => {
+                      formik.resetForm();
+                      onCancel ? onCancel() : handleCancel();
+                    }}
+                    sx={{ ml: 2 }}
+                    variant="contained"
+                    color="secondary"
+                  >
+                    <Translations text="cancel" />
+                  </Button>
+                </Grid>
               </Grid>
-              <Grid item xs={12} sx={{ mt: 5 }}>
-                <LoadingButton
-                  loading={formik.isSubmitting}
-                  loadingPosition="center"
-                  disabled={formik.isSubmitting || !formik.isValid}
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                >
-                  <Translations text={edit ? "save" : "submit"} />
-                </LoadingButton>
-                <Button
-                  onClick={() => {
-                    formik.resetForm();
-                    onCancel ? onCancel() : handleCancel();
-                  }}
-                  sx={{ ml: 2 }}
-                  variant="contained"
-                  color="secondary"
-                >
-                  <Translations text="cancel" />
-                </Button>
-              </Grid>
-            </Grid>
             </RequiredFieldsContext.Provider>
           </form>
         )}
@@ -147,7 +125,7 @@ export const getRequiredFields = (schema: Yup.ObjectSchema<any>): string[] => {
 
   return Object.keys(schemaDescription.fields).filter((field) => {
     const fieldDesc = schemaDescription.fields[field] as any;
-    const hasRequiredTest = fieldDesc.tests?.some((t: any) => t.name === "required");
+    const hasRequiredTest = fieldDesc.tests?.some((t: any) => t.name === 'required');
     const isNonNullable = fieldDesc.nullable === false; // numbers, booleans
     return hasRequiredTest || isNonNullable;
   });

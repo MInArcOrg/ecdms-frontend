@@ -1,12 +1,6 @@
-import React from "react";
-import { useField, useFormikContext } from "formik";
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  FormHelperText,
-} from "@mui/material";
+import React from 'react';
+import { useField, useFormikContext } from 'formik';
+import { FormControl, InputLabel, MenuItem, Select, FormHelperText } from '@mui/material';
 
 const CustomMultiSelect: React.FC<any> = (props) => {
   const [field, meta] = useField(props);
@@ -31,9 +25,7 @@ const CustomMultiSelect: React.FC<any> = (props) => {
           </MenuItem>
         ))}
       </Select>
-      {meta.touched && meta.error && (
-        <FormHelperText>{meta.error}</FormHelperText>
-      )}
+      {meta.touched && meta.error && <FormHelperText>{meta.error}</FormHelperText>}
     </FormControl>
   );
 };

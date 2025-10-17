@@ -1,9 +1,9 @@
-import { Box } from "@mui/material";
-import { useRouter } from "next/router";
-import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
-import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
-import subMenuItems, { projectReportingIds } from "../(subMenuItems)";
-import ProjectPlanList from "src/views/pages/projects/detail/plan/plan";
+import { Box } from '@mui/material';
+import { useRouter } from 'next/router';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
+import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import subMenuItems, { projectReportingIds } from '../(subMenuItems)';
+import ProjectPlanList from 'src/views/pages/projects/detail/plan/plan';
 
 function ProjectPlanning() {
   const router = useRouter();
@@ -23,7 +23,7 @@ function ProjectPlanning() {
 }
 
 ProjectPlanning.acl = {
-  action: "view",
-  subject: "projectplanning",
+  action: 'view',
+  subject: 'projectplanning'
 };
 export default ProjectPlanning;

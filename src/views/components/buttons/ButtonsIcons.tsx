@@ -1,8 +1,8 @@
 // ** MUI Imports
-import IconButton from "@mui/material/IconButton";
+import IconButton from '@mui/material/IconButton';
 
 // ** Icon Imports
-import Icon from "src/@core/components/icon";
+import Icon from 'src/@core/components/icon';
 
 const ButtonsIcons = () => {
   return (

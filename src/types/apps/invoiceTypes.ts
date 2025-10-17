@@ -1,4 +1,4 @@
-export type InvoiceStatus = "Paid" | string;
+export type InvoiceStatus = 'Paid' | string;
 
 export type InvoiceLayoutProps = {
   id: string | undefined;

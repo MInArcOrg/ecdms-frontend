@@ -1,21 +1,21 @@
-import { Box } from "@mui/material";
-import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import professionalEducationApiService from "src/services/resource/professional-education-service";
-import generalMasterDataApiService from "src/services/general/general-master-data-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import type { GetRequestParam, IApiResponse } from "src/types/requests";
-import { formatCreatedAt } from "src/utils/formatter/date";
-import ItemsListing from "src/views/shared/listing";
-import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer";
-import EducationCard from "./professional-education-card";
-import EducationDrawer from "./professional-education-drawer";
-import type { ProfessionalEducation } from "src/types/resource";
-import type { StudyField } from "src/types/general/general-master";
-import { educationColumns } from "./professional-education-row";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import { Box } from '@mui/material';
+import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import professionalEducationApiService from 'src/services/resource/professional-education-service';
+import generalMasterDataApiService from 'src/services/general/general-master-data-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import type { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import ItemsListing from 'src/views/shared/listing';
+import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
+import EducationCard from './professional-education-card';
+import EducationDrawer from './professional-education-drawer';
+import type { ProfessionalEducation } from 'src/types/resource';
+import type { StudyField } from 'src/types/general/general-master';
+import { educationColumns } from './professional-education-row';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface ResourceEducationListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -23,15 +23,10 @@ interface ResourceEducationListProps {
   professionalId: string;
 }
 
-const ResourceEducationList: React.FC<ResourceEducationListProps> = ({
-  professionalId,
-  typeId,
-}) => {
+const ResourceEducationList: React.FC<ResourceEducationListProps> = ({ professionalId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<ProfessionalEducation | null>(
-    null,
-  );
+  const [selectedRow, setSelectedRow] = useState<ProfessionalEducation | null>(null);
   const [studyFields, setStudyFields] = useState<StudyField[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { t } = useTranslation();
@@ -39,19 +34,15 @@ const ResourceEducationList: React.FC<ResourceEducationListProps> = ({
   useEffect(() => {
     const fetchStudyFields = async () => {
       try {
-        const response =
-          await generalMasterDataApiService.getAllResourceGeneralMaster(
-            "study-fields",
-            {},
-          );
+        const response = await generalMasterDataApiService.getAllResourceGeneralMaster('study-fields', {});
         setStudyFields(
           response.payload.map((item: any) => ({
             id: item.id,
-            title: item.title,
-          })) as StudyField[],
+            title: item.title
+          })) as StudyField[]
         );
       } catch (error) {
-        console.error("Error fetching study fields:", error);
+        console.error('Error fetching study fields:', error);
       } finally {
         setIsLoading(false);
       }
@@ -60,12 +51,10 @@ const ResourceEducationList: React.FC<ResourceEducationListProps> = ({
     fetchStudyFields();
   }, []);
 
-  const fetchEducation = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<ProfessionalEducation[]>> => {
+  const fetchEducation = (params: GetRequestParam): Promise<IApiResponse<ProfessionalEducation[]>> => {
     return professionalEducationApiService.getAll({
       ...params,
-      filter: { ...params.filter, professional_id: professionalId },
+      filter: { ...params.filter, professional_id: professionalId }
     });
   };
 
@@ -73,10 +62,10 @@ const ResourceEducationList: React.FC<ResourceEducationListProps> = ({
     data: educations,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<ProfessionalEducation[]>({
-    queryKey: ["educations"],
-    fetchFunction: fetchEducation,
+    queryKey: ['educations'],
+    fetchFunction: fetchEducation
   });
 
   const toggleDrawer = () => {
@@ -105,48 +94,44 @@ const ResourceEducationList: React.FC<ResourceEducationListProps> = ({
   };
 
   const getStudyFieldTitle = (id: string) => {
-    if (!studyFields) return "N/A";
+    if (!studyFields) return 'N/A';
     const field = studyFields.find((f) => f.id === id);
-    return field ? field.title : "N/A";
+    return field ? field.title : 'N/A';
   };
 
-  const mapEducationToDetailItems = (
-    education: ProfessionalEducation,
-  ): { title: string; value: string }[] => [
+  const mapEducationToDetailItems = (education: ProfessionalEducation): { title: string; value: string }[] => [
     {
-      title: t("resources.professional.education.study-field"),
-      value: getStudyFieldTitle(education.study_field),
+      title: t('resources.professional.education.study-field'),
+      value: getStudyFieldTitle(education.study_field)
     },
     {
-      title: t("resources.professional.education.school-name"),
-      value: education?.school_name || "N/A",
+      title: t('resources.professional.education.school-name'),
+      value: education?.school_name || 'N/A'
     },
     {
-      title: t("resources.professional.education.education-level"),
-      value: education?.education_level || "N/A",
+      title: t('resources.professional.education.education-level'),
+      value: education?.education_level || 'N/A'
     },
     {
-      title: t("resources.professional.education.program-type"),
-      value: education?.program_type || "N/A",
+      title: t('resources.professional.education.program-type'),
+      value: education?.program_type || 'N/A'
     },
     {
-      title: t("resources.professional.education.start-date"),
-      value: education?.start_date || "N/A",
+      title: t('resources.professional.education.start-date'),
+      value: education?.start_date || 'N/A'
     },
     {
-      title: t("resources.professional.education.end-date"),
-      value: education?.end_date || "N/A",
+      title: t('resources.professional.education.end-date'),
+      value: education?.end_date || 'N/A'
     },
     {
-      title: t("resources.professional.education.gpa"),
-      value: education?.gpa?.toString() || "N/A",
+      title: t('resources.professional.education.gpa'),
+      value: education?.gpa?.toString() || 'N/A'
     },
     {
-      title: t("common.table-columns.created-at"),
-      value: education?.created_at
-        ? formatCreatedAt(education.created_at)
-        : "N/A",
-    },
+      title: t('common.table-columns.created-at'),
+      value: education?.created_at ? formatCreatedAt(education.created_at) : 'N/A'
+    }
   ];
 
   if (isLoading) {
@@ -171,25 +156,19 @@ const ResourceEducationList: React.FC<ResourceEducationListProps> = ({
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
           data={mapEducationToDetailItems(selectedRow as ProfessionalEducation)}
-          id={selectedRow?.id || ""}
+          id={selectedRow?.id || ''}
           hasReference={true}
           fileType="PROFESSIONAL_EDUCATION"
-          title={t("resources.professional.education.details")}
+          title={t('resources.professional.education.details')}
         />
       )}
 
       <ItemsListing
-        title={t("resources.professional.education.title")}
+        title={t('resources.professional.education.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: educationColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            studyFields,
-          ),
+          headers: educationColumns(handleClickDetail, handleEdit, handleDelete, t, studyFields)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -207,9 +186,9 @@ const ResourceEducationList: React.FC<ResourceEducationListProps> = ({
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "professionaleducation",
-          },
+            action: 'create',
+            subject: 'professionaleducation'
+          }
         }}
         fetchDataFunction={refetch}
         items={educations || []}

@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function time() {
-  return <div>time</div>
+  return <div>time</div>;
 }
 
-export default time
+export default time;

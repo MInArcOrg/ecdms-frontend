@@ -1,16 +1,16 @@
-"use client";
-import type { FormikProps } from "formik";
-import { useState } from "react";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
-import type { RailwayTrackData } from "src/types/project/other";
-import type { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import RailwayTrackDataForm from "./railway-track-data-form";
+'use client';
+import type { FormikProps } from 'formik';
+import { useState } from 'react';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import type { RailwayTrackData } from 'src/types/project/other';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import RailwayTrackDataForm from './railway-track-data-form';
 
 interface RailwayTrackDataDrawerType {
   open: boolean;
@@ -22,8 +22,7 @@ interface RailwayTrackDataDrawerType {
 }
 
 const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
-  const { open, toggle, refetch, railwayTrackData, projectId, otherSubMenu } =
-    props;
+  const { open, toggle, refetch, railwayTrackData, projectId, otherSubMenu } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
@@ -34,17 +33,10 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
   const isEdit = Boolean(railwayTrackData?.id);
 
   const createRailwayTrackData = async (body: IApiPayload<RailwayTrackData>) =>
-    projectOtherApiSecondService<RailwayTrackData>().create(
-      otherSubMenu?.apiRoute || "",
-      body,
-    );
+    projectOtherApiSecondService<RailwayTrackData>().create(otherSubMenu?.apiRoute || '', body);
 
   const editRailwayTrackData = async (body: IApiPayload<RailwayTrackData>) =>
-    projectOtherApiSecondService<RailwayTrackData>().update(
-      otherSubMenu?.apiRoute || "",
-      railwayTrackData?.id || "",
-      body,
-    );
+    projectOtherApiSecondService<RailwayTrackData>().update(otherSubMenu?.apiRoute || '', railwayTrackData?.id || '', body);
 
   const validationSchema = yup.object().shape({
     railway_track_infrastructure_type_id: yup.string().required(),
@@ -57,14 +49,13 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
     ballast_type_and_depth: yup.string().nullable(),
     track_connection_method: yup.string().nullable(),
     track_type: yup.string().nullable(),
-    remark: yup.string().nullable(),
+    remark: yup.string().nullable()
   });
 
   const getPayload = (values: RailwayTrackData) => ({
     data: {
       project_id: projectId,
-      railway_track_infrastructure_type_id:
-        values.railway_track_infrastructure_type_id,
+      railway_track_infrastructure_type_id: values.railway_track_infrastructure_type_id,
       track_type_id: values.track_type_id,
       track_gauge_id: values.track_gauge_id,
       track_length: values.track_length,
@@ -75,25 +66,16 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
       track_connection_method: values.track_connection_method,
       track_type: values.track_type,
       remark: values.remark,
-      id: railwayTrackData?.id,
+      id: railwayTrackData?.id
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<RailwayTrackData>,
-    payload: IApiPayload<RailwayTrackData>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<RailwayTrackData>, payload: IApiPayload<RailwayTrackData>) => {
     if (payload.files.length > 0) {
-      await uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.other.electric_grid_control_center_data,
-        response.payload.id,
-        "",
-        "",
-      );
+      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.electric_grid_control_center_data, response.payload.id, '', '');
     }
 
     refetch();
@@ -102,9 +84,7 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.other.railway-track-data.${
-        isEdit ? `edit-railway-track-data` : `create-railway-track-data`
-      }`}
+      title={`project.other.railway-track-data.${isEdit ? `edit-railway-track-data` : `create-railway-track-data`}`}
       handleClose={handleClose}
       open={open}
       model="railwaytrackdata"
@@ -113,29 +93,19 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
         <FormPageWrapper
           edit={isEdit}
           title={`project.other.railway-tracks-geometry-data.${
-            isEdit
-              ? `edit-railway-tracks-geometry-data`
-              : `create-railway-tracks-geometry-data`
+            isEdit ? `edit-railway-tracks-geometry-data` : `create-railway-tracks-geometry-data`
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...railwayTrackData,
+            ...railwayTrackData
           }}
-          createActionFunc={
-            isEdit ? editRailwayTrackData : createRailwayTrackData
-          }
+          createActionFunc={isEdit ? editRailwayTrackData : createRailwayTrackData}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<RailwayTrackData>) => {
-            return (
-              <RailwayTrackDataForm
-                file={uploadableFile}
-                onFileChange={onFileChange}
-                formik={formik}
-              />
-            );
+            return <RailwayTrackDataForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

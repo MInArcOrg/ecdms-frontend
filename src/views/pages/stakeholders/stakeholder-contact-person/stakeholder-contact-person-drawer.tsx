@@ -1,15 +1,15 @@
-import { FormikProps } from "formik";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import StakeholderContactPersonForm from "./stakeholder-contact-person-form";
+import { FormikProps } from 'formik';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import StakeholderContactPersonForm from './stakeholder-contact-person-form';
 
-import { useState } from "react";
-import stakeholderContactPersonApiService from "src/services/stakeholder/stakeholder-contact-person-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import { StakeholderContactPerson } from "src/types/stakeholder/stakeholder-contact-person";
+import { useState } from 'react';
+import stakeholderContactPersonApiService from 'src/services/stakeholder/stakeholder-contact-person-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { StakeholderContactPerson } from 'src/types/stakeholder/stakeholder-contact-person';
 
 interface StakeholderContactPersonDrawerType {
   open: boolean;
@@ -19,62 +19,44 @@ interface StakeholderContactPersonDrawerType {
   stakeholderId: string;
 }
 
-const StakeholderContactPersonDrawer = (
-  props: StakeholderContactPersonDrawerType,
-) => {
-  const { open, toggle, refetch, stakeholderContactPerson, stakeholderId } =
-    props;
+const StakeholderContactPersonDrawer = (props: StakeholderContactPersonDrawerType) => {
+  const { open, toggle, refetch, stakeholderContactPerson, stakeholderId } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
 
   const validationSchema = yup.object().shape({
-    first_name: yup.string().max(36).required("First name is required"),
-    middle_name: yup.string().max(255).required("Middle name is required"),
-    last_name: yup.string().max(255).required("Last name is required"),
-    gender: yup.string().max(255).required("Gender is required"),
-    email: yup.string().max(255).email("Invalid email").required("Email is required"),
-    phone_number: yup.string().max(255).required("Phone number is required"),
+    first_name: yup.string().max(36).required('First name is required'),
+    middle_name: yup.string().max(255).required('Middle name is required'),
+    last_name: yup.string().max(255).required('Last name is required'),
+    gender: yup.string().max(255).required('Gender is required'),
+    email: yup.string().max(255).email('Invalid email').required('Email is required'),
+    phone_number: yup.string().max(255).required('Phone number is required')
   });
 
   const isEdit = Boolean(stakeholderContactPerson?.id);
 
-  const createStakeholderContactPerson = async (
-    body: IApiPayload<StakeholderContactPerson>,
-  ) => stakeholderContactPersonApiService.create(body);
+  const createStakeholderContactPerson = async (body: IApiPayload<StakeholderContactPerson>) =>
+    stakeholderContactPersonApiService.create(body);
 
-  const editStakeholderContactPerson = async (
-    body: IApiPayload<StakeholderContactPerson>,
-  ) =>
-    stakeholderContactPersonApiService.update(
-      stakeholderContactPerson?.id || "",
-      body,
-    );
+  const editStakeholderContactPerson = async (body: IApiPayload<StakeholderContactPerson>) =>
+    stakeholderContactPersonApiService.update(stakeholderContactPerson?.id || '', body);
 
   const getPayload = (values: StakeholderContactPerson) => ({
     data: {
       ...values,
       id: stakeholderContactPerson?.id,
-      stakeholder_id: stakeholderId,
+      stakeholder_id: stakeholderId
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<StakeholderContactPerson>,
-    payload: IApiPayload<StakeholderContactPerson>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<StakeholderContactPerson>, payload: IApiPayload<StakeholderContactPerson>) => {
     if (payload.files.length > 0) {
-      uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.extension_time,
-        response.payload.id,
-        "",
-        "",
-      );
+      uploadFile(payload.files[0], uploadableProjectFileTypes.extension_time, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -82,11 +64,7 @@ const StakeholderContactPersonDrawer = (
 
   return (
     <CustomSideDrawer
-      title={`stakeholder.stakeholder-contact-person.${
-        isEdit
-          ? `edit-stakeholder-contact-person`
-          : `create-stakeholder-contact-person`
-      }`}
+      title={`stakeholder.stakeholder-contact-person.${isEdit ? `edit-stakeholder-contact-person` : `create-stakeholder-contact-person`}`}
       handleClose={handleClose}
       open={open}
     >
@@ -97,24 +75,14 @@ const StakeholderContactPersonDrawer = (
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...stakeholderContactPerson,
+            ...stakeholderContactPerson
           }}
-          createActionFunc={
-            isEdit
-              ? editStakeholderContactPerson
-              : createStakeholderContactPerson
-          }
+          createActionFunc={isEdit ? editStakeholderContactPerson : createStakeholderContactPerson}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<StakeholderContactPerson>) => {
-            return (
-              <StakeholderContactPersonForm
-                file={uploadableFile}
-                onFileChange={onFileChange}
-                formik={formik}
-              />
-            );
+            return <StakeholderContactPersonForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

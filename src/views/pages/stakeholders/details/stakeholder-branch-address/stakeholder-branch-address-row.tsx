@@ -1,12 +1,12 @@
-import { Button } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import type { GridColDef } from "@mui/x-data-grid";
-import { Fragment } from "react";
-import type { StakeholderBranchAddress } from "src/types/stakeholder/stakeholder-branch-address";
-import type { StakeholderBranch } from "src/types/stakeholder/stakeholder-branch";
-import { formatCreatedAt } from "src/utils/formatter/date";
-import ModelAction from "src/views/components/custom/model-actions";
-import RowOptions from "src/views/shared/listing/row-options";
+import { Button } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import type { GridColDef } from '@mui/x-data-grid';
+import { Fragment } from 'react';
+import type { StakeholderBranchAddress } from 'src/types/stakeholder/stakeholder-branch-address';
+import type { StakeholderBranch } from 'src/types/stakeholder/stakeholder-branch';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import ModelAction from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
   row: StakeholderBranchAddress;
@@ -17,17 +17,15 @@ export const branchAddressColumns = (
   onEdit: (branchAddress: StakeholderBranchAddress) => void,
   onDelete: (id: string) => void,
   t: any,
-  stakeholderBranches: StakeholderBranch[],
+  stakeholderBranches: StakeholderBranch[]
 ): GridColDef[] => [
   {
     flex: 0.2,
     minWidth: 200,
-    field: "branch",
-    headerName: t("stakeholder.stakeholder-branch-address.branch"),
+    field: 'branch',
+    headerName: t('stakeholder.stakeholder-branch-address.branch'),
     renderCell: ({ row }: CellType) => {
-      const branch = stakeholderBranches.find(
-        (b) => b.id === row.stakeholder_branch_id,
-      );
+      const branch = stakeholderBranches.find((b) => b.id === row.stakeholder_branch_id);
       return (
         <Typography
           noWrap
@@ -35,61 +33,61 @@ export const branchAddressColumns = (
           onClick={() => onDetail(row)}
           sx={{
             fontWeight: 500,
-            textDecoration: "none",
-            color: "text.secondary",
-            "&:hover": { color: "primary.main" },
+            textDecoration: 'none',
+            color: 'text.secondary',
+            '&:hover': { color: 'primary.main' }
           }}
         >
-          {branch ? branch.name : t("common.not-available")}
+          {branch ? branch.name : t('common.not-available')}
         </Typography>
       );
-    },
+    }
   },
   {
     flex: 0.15,
     minWidth: 150,
-    field: "country",
-    headerName: t("stakeholder.stakeholder-branch-address.country"),
-    renderCell: ({ row }: CellType) => row.country,
+    field: 'country',
+    headerName: t('stakeholder.stakeholder-branch-address.country'),
+    renderCell: ({ row }: CellType) => row.country
   },
   {
     flex: 0.15,
     minWidth: 150,
-    field: "region",
-    headerName: t("stakeholder.stakeholder-branch-address.region"),
-    renderCell: ({ row }: CellType) => row.region,
+    field: 'region',
+    headerName: t('stakeholder.stakeholder-branch-address.region'),
+    renderCell: ({ row }: CellType) => row.region
   },
   {
     flex: 0.15,
     minWidth: 150,
-    field: "city",
-    headerName: t("stakeholder.stakeholder-branch-address.city"),
-    renderCell: ({ row }: CellType) => row.city,
+    field: 'city',
+    headerName: t('stakeholder.stakeholder-branch-address.city'),
+    renderCell: ({ row }: CellType) => row.city
   },
   {
     flex: 0.15,
     minWidth: 150,
-    field: "subcity",
-    headerName: t("stakeholder.stakeholder-branch-address.subcity"),
-    renderCell: ({ row }: CellType) => row.subcity,
+    field: 'subcity',
+    headerName: t('stakeholder.stakeholder-branch-address.subcity'),
+    renderCell: ({ row }: CellType) => row.subcity
   },
   {
     flex: 0.15,
     minWidth: 120,
-    field: "created_at",
-    headerName: t("common.created-at"),
-    renderCell: ({ row }: CellType) => formatCreatedAt(row.created_at),
+    field: 'created_at',
+    headerName: t('common.created-at'),
+    renderCell: ({ row }: CellType) => formatCreatedAt(row.created_at)
   },
   {
     minWidth: 150,
     sortable: false,
-    field: "actions",
-    headerName: t("common.table-columns.actions"),
+    field: 'actions',
+    headerName: t('common.table-columns.actions'),
     renderCell: ({ row }: CellType) => (
       <Fragment>
         <ModelAction
           model="StakeholderBranchAddress"
-          model_id={row?.id || ""}
+          model_id={row?.id || ''}
           refetchModel={() => {}}
           resubmit={() => {}}
           title=""
@@ -97,19 +95,19 @@ export const branchAddressColumns = (
         />
         <RowOptions
           onEdit={() => onEdit(row)}
-          onDelete={() => onDelete(row?.id || "")}
+          onDelete={() => onDelete(row?.id || '')}
           item={row}
           deletePermissionRule={{
-            action: "delete",
-            subject: "stakeholderbranchaddress",
+            action: 'delete',
+            subject: 'stakeholderbranchaddress'
           }}
           editPermissionRule={{
-            action: "edit",
-            subject: "stakeholderbranchaddress",
+            action: 'edit',
+            subject: 'stakeholderbranchaddress'
           }}
           options={[]}
         />
       </Fragment>
-    ),
-  },
+    )
+  }
 ];

@@ -1,15 +1,15 @@
-import { FormikProps } from "formik";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import StakeholderEmailForm from "./stakeholder-email-form";
+import { FormikProps } from 'formik';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import StakeholderEmailForm from './stakeholder-email-form';
 
-import { useState } from "react";
-import stakeholderEmailApiService from "src/services/stakeholder/stakeholder-email-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import { StakeholderEmail } from "src/types/stakeholder";
+import { useState } from 'react';
+import stakeholderEmailApiService from 'src/services/stakeholder/stakeholder-email-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { StakeholderEmail } from 'src/types/stakeholder';
 
 interface StakeholderEmailDrawerType {
   open: boolean;
@@ -30,35 +30,25 @@ const StakeholderEmailDrawer = (props: StakeholderEmailDrawerType) => {
 
   const isEdit = Boolean(stakeholderEmail?.id);
 
-  const createStakeholderEmail = async (body: IApiPayload<StakeholderEmail>) =>
-    stakeholderEmailApiService.create(body);
+  const createStakeholderEmail = async (body: IApiPayload<StakeholderEmail>) => stakeholderEmailApiService.create(body);
 
   const editStakeholderEmail = async (body: IApiPayload<StakeholderEmail>) =>
-    stakeholderEmailApiService.update(stakeholderEmail?.id || "", body);
+    stakeholderEmailApiService.update(stakeholderEmail?.id || '', body);
 
   const getPayload = (values: StakeholderEmail) => ({
     data: {
       ...values,
       id: stakeholderEmail?.id,
-      stakeholder_id: stakeholderId,
+      stakeholder_id: stakeholderId
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<StakeholderEmail>,
-    payload: IApiPayload<StakeholderEmail>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<StakeholderEmail>, payload: IApiPayload<StakeholderEmail>) => {
     if (payload.files.length > 0) {
-      uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.extension_time,
-        response.payload.id,
-        "",
-        "",
-      );
+      uploadFile(payload.files[0], uploadableProjectFileTypes.extension_time, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -66,9 +56,7 @@ const StakeholderEmailDrawer = (props: StakeholderEmailDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`stakeholder.stakeholder-email.${
-        isEdit ? `edit-stakeholder-email` : `create-stakeholder-email`
-      }`}
+      title={`stakeholder.stakeholder-email.${isEdit ? `edit-stakeholder-email` : `create-stakeholder-email`}`}
       handleClose={handleClose}
       open={open}
     >
@@ -79,22 +67,14 @@ const StakeholderEmailDrawer = (props: StakeholderEmailDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...stakeholderEmail,
+            ...stakeholderEmail
           }}
-          createActionFunc={
-            isEdit ? editStakeholderEmail : createStakeholderEmail
-          }
+          createActionFunc={isEdit ? editStakeholderEmail : createStakeholderEmail}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<StakeholderEmail>) => {
-            return (
-              <StakeholderEmailForm
-                file={uploadableFile}
-                onFileChange={onFileChange}
-                formik={formik}
-              />
-            );
+            return <StakeholderEmailForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

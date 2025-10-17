@@ -1,24 +1,20 @@
 // ** React Imports
-import { useRef, useState, Fragment, SyntheticEvent } from "react";
+import { useRef, useState, Fragment, SyntheticEvent } from 'react';
 
 // ** MUI Imports
-import Grow from "@mui/material/Grow";
-import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
-import Popper from "@mui/material/Popper";
-import MenuItem from "@mui/material/MenuItem";
-import MenuList from "@mui/material/MenuList";
-import ButtonGroup from "@mui/material/ButtonGroup";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 // ** Icon Imports
-import Icon from "src/@core/components/icon";
+import Icon from 'src/@core/components/icon';
 
-const options = [
-  "Create a merge commit",
-  "Squash and merge",
-  "Rebase and merge",
-];
+const options = ['Create a merge commit', 'Squash and merge', 'Rebase and merge'];
 
 const ButtonGroupSplit = () => {
   // ** States
@@ -47,36 +43,25 @@ const ButtonGroupSplit = () => {
 
   return (
     <Fragment>
-      <ButtonGroup
-        variant="contained"
-        ref={anchorRef}
-        aria-label="split button"
-      >
+      <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button">
         <Button onClick={handleClick}>{options[selectedIndex]}</Button>
         <Button
-          sx={{ px: "0" }}
+          sx={{ px: '0' }}
           aria-haspopup="menu"
           onClick={handleToggle}
           aria-label="select merge strategy"
-          aria-expanded={open ? "true" : undefined}
-          aria-controls={open ? "split-button-menu" : undefined}
+          aria-expanded={open ? 'true' : undefined}
+          aria-controls={open ? 'split-button-menu' : undefined}
         >
           <Icon icon="tabler:chevron-down" />
         </Button>
       </ButtonGroup>
-      <Popper
-        open={open}
-        anchorEl={anchorRef.current}
-        role={undefined}
-        transition
-        disablePortal
-      >
+      <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}
             style={{
-              transformOrigin:
-                placement === "bottom" ? "center top" : "center bottom",
+              transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'
             }}
           >
             <Paper>

@@ -1,8 +1,8 @@
-import { useRouter } from "next/router";
-import StakeholderLayout from "src/views/pages/stakeholders/details/layout/stakeholder-layout";
-import MaterialList from "src/views/pages/stakeholders/details/stakeholder-materials";
-import subMenuItems, { stakeholderResourceIds } from "../(sub-menu-items)";
-import { stakeholderMenuIds } from "src/views/pages/stakeholders/details/layout/stakeholder-menu-items";
+import { useRouter } from 'next/router';
+import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
+import MaterialList from 'src/views/pages/stakeholders/details/stakeholder-materials';
+import subMenuItems, { stakeholderResourceIds } from '../(sub-menu-items)';
+import { stakeholderMenuIds } from 'src/views/pages/stakeholders/details/layout/stakeholder-menu-items';
 
 function StakeholderMaterialIndex() {
   const router = useRouter();
@@ -20,8 +20,8 @@ function StakeholderMaterialIndex() {
 }
 
 StakeholderMaterialIndex.acl = {
-  action: "view",
-  subject: "stakeholdermaterial",
+  action: 'view',
+  subject: 'stakeholdermaterial'
 };
 
 export default StakeholderMaterialIndex;

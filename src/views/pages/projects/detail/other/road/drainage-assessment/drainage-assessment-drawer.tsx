@@ -1,16 +1,16 @@
-import { FormikProps } from "formik";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import DrainageAssessmentForm from "./drainage-assessment-form";
+import { FormikProps } from 'formik';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import DrainageAssessmentForm from './drainage-assessment-form';
 
-import { useState } from "react";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import { DrainageAssessment } from "src/types/project/other"; // Update import
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import { useState } from 'react';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { DrainageAssessment } from 'src/types/project/other'; // Update import
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface DrainageAssessmentDrawerType {
   open: boolean;
@@ -22,44 +22,26 @@ interface DrainageAssessmentDrawerType {
 }
 
 const DrainageAssessmentDrawer = (props: DrainageAssessmentDrawerType) => {
-  const { open, toggle, refetch, drainageAssessment, projectId, otherSubMenu } =
-    props;
+  const { open, toggle, refetch, drainageAssessment, projectId, otherSubMenu } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
 
   const validationSchema = yup.object().shape({
-    road_segment: yup
-      .string()
-      .max(255, "Road segment must be at most 255 characters")
-      .required("Road segment is required"),
-    drainage_type_id: yup.string().uuid().required("Drainage type is required"),
-    drainage_condition_id: yup
-      .string()
-      .uuid()
-      .required("Drainage condition is required"),
-    remark: yup.string().nullable(),
+    road_segment: yup.string().max(255, 'Road segment must be at most 255 characters').required('Road segment is required'),
+    drainage_type_id: yup.string().uuid().required('Drainage type is required'),
+    drainage_condition_id: yup.string().uuid().required('Drainage condition is required'),
+    remark: yup.string().nullable()
   });
 
   const isEdit = Boolean(drainageAssessment?.id);
 
-  const createDrainageAssessment = async (
-    body: IApiPayload<DrainageAssessment>,
-  ) =>
-    projectOtherApiSecondService<DrainageAssessment>().create(
-      otherSubMenu?.apiRoute || "",
-      body,
-    );
+  const createDrainageAssessment = async (body: IApiPayload<DrainageAssessment>) =>
+    projectOtherApiSecondService<DrainageAssessment>().create(otherSubMenu?.apiRoute || '', body);
 
-  const editDrainageAssessment = async (
-    body: IApiPayload<DrainageAssessment>,
-  ) =>
-    projectOtherApiSecondService<DrainageAssessment>().update(
-      otherSubMenu?.apiRoute || "",
-      drainageAssessment?.id || "",
-      body,
-    );
+  const editDrainageAssessment = async (body: IApiPayload<DrainageAssessment>) =>
+    projectOtherApiSecondService<DrainageAssessment>().update(otherSubMenu?.apiRoute || '', drainageAssessment?.id || '', body);
 
   const getPayload = (values: DrainageAssessment) => ({
     data: {
@@ -68,25 +50,16 @@ const DrainageAssessmentDrawer = (props: DrainageAssessmentDrawerType) => {
       drainage_type_id: values.drainage_type_id,
       drainage_condition_id: values.drainage_condition_id,
       remark: values.remark,
-      id: drainageAssessment?.id,
+      id: drainageAssessment?.id
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<DrainageAssessment>,
-    payload: IApiPayload<DrainageAssessment>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<DrainageAssessment>, payload: IApiPayload<DrainageAssessment>) => {
     if (payload.files.length > 0) {
-      uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.other.drainageAssessment,
-        response.payload.id,
-        "",
-        "",
-      );
+      uploadFile(payload.files[0], uploadableProjectFileTypes.other.drainageAssessment, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -94,37 +67,25 @@ const DrainageAssessmentDrawer = (props: DrainageAssessmentDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.other.drainage-assessment.${
-        isEdit ? `edit-drainage-assessment` : `create-drainage-assessment`
-      }`}
+      title={`project.other.drainage-assessment.${isEdit ? `edit-drainage-assessment` : `create-drainage-assessment`}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.drainage-assessment.${
-            isEdit ? `edit-drainage-assessment` : `create-drainage-assessment`
-          }`}
+          title={`project.other.drainage-assessment.${isEdit ? `edit-drainage-assessment` : `create-drainage-assessment`}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...drainageAssessment,
+            ...drainageAssessment
           }}
-          createActionFunc={
-            isEdit ? editDrainageAssessment : createDrainageAssessment
-          }
+          createActionFunc={isEdit ? editDrainageAssessment : createDrainageAssessment}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<DrainageAssessment>) => {
-            return (
-              <DrainageAssessmentForm
-                file={uploadableFile}
-                onFileChange={onFileChange}
-                formik={formik}
-              />
-            );
+            return <DrainageAssessmentForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

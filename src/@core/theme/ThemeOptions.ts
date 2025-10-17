@@ -1,25 +1,22 @@
 // ** MUI Theme Provider
-import { deepmerge } from "@mui/utils";
-import { PaletteMode, ThemeOptions } from "@mui/material";
+import { deepmerge } from '@mui/utils';
+import { PaletteMode, ThemeOptions } from '@mui/material';
 
 // ** User Theme Options
-import UserThemeOptions from "src/layouts/UserThemeOptions";
+import UserThemeOptions from 'src/layouts/UserThemeOptions';
 
 // ** Type Import
-import { Settings } from "src/@core/context/settingsContext";
+import { Settings } from 'src/@core/context/settingsContext';
 
 // ** Theme Override Imports
-import palette from "./palette";
-import spacing from "./spacing";
-import shadows from "./shadows";
-import overrides from "./overrides";
-import typography from "./typography";
-import breakpoints from "./breakpoints";
+import palette from './palette';
+import spacing from './spacing';
+import shadows from './shadows';
+import overrides from './overrides';
+import typography from './typography';
+import breakpoints from './breakpoints';
 
-const themeOptions = (
-  settings: Settings,
-  overrideMode: PaletteMode,
-): ThemeOptions => {
+const themeOptions = (settings: Settings, overrideMode: PaletteMode): ThemeOptions => {
   // ** Vars
   const { skin, mode, direction, themeColor } = settings;
 
@@ -31,20 +28,20 @@ const themeOptions = (
       breakpoints: breakpoints(),
       direction,
       components: overrides(settings),
-      palette: palette(mode === "semi-dark" ? overrideMode : mode, skin),
+      palette: palette(mode === 'semi-dark' ? overrideMode : mode, skin),
       ...spacing,
       shape: {
-        borderRadius: 6,
+        borderRadius: 6
       },
       mixins: {
         toolbar: {
-          minHeight: 64,
-        },
+          minHeight: 64
+        }
       },
-      shadows: shadows(mode === "semi-dark" ? overrideMode : mode),
-      typography,
+      shadows: shadows(mode === 'semi-dark' ? overrideMode : mode),
+      typography
     },
-    userThemeConfig,
+    userThemeConfig
   );
 
   return deepmerge(mergedThemeConfig, {
@@ -52,9 +49,9 @@ const themeOptions = (
       primary: {
         ...(mergedThemeConfig.palette
           ? mergedThemeConfig.palette[themeColor]
-          : palette(mode === "semi-dark" ? overrideMode : mode, skin).primary),
-      },
-    },
+          : palette(mode === 'semi-dark' ? overrideMode : mode, skin).primary)
+      }
+    }
   });
 };
 

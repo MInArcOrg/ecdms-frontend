@@ -1,13 +1,13 @@
-import type { FormikProps } from "formik";
-import type { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import TrafficParameterForm from "./traffic-parameter-form";
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import TrafficParameterForm from './traffic-parameter-form';
 
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import type { TrafficParameter } from "src/types/project/other";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import type { TrafficParameter } from 'src/types/project/other';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface TrafficParameterDrawerType {
   open: boolean;
@@ -19,74 +19,53 @@ interface TrafficParameterDrawerType {
 }
 
 const TrafficParameterDrawer = (props: TrafficParameterDrawerType) => {
-  const { open, toggle, refetch, trafficParameter, projectId, otherSubMenu } =
-    props;
+  const { open, toggle, refetch, trafficParameter, projectId, otherSubMenu } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    pedestrian_facility_id: yup
-      .string()
-      .required("Pedestrian Facility is required"),
+    name: yup.string().required('Name is required'),
+    pedestrian_facility_id: yup.string().required('Pedestrian Facility is required')
   });
 
   const isEdit = Boolean(trafficParameter?.id);
 
   const createTrafficParameter = async (body: IApiPayload<TrafficParameter>) =>
-    projectOtherApiSecondService<TrafficParameter>().create(
-      otherSubMenu?.apiRoute || "",
-      body,
-    );
+    projectOtherApiSecondService<TrafficParameter>().create(otherSubMenu?.apiRoute || '', body);
 
   const editTrafficParameter = async (body: IApiPayload<TrafficParameter>) =>
-    projectOtherApiSecondService<TrafficParameter>().update(
-      otherSubMenu?.apiRoute || "",
-      trafficParameter?.id || "",
-      body,
-    );
+    projectOtherApiSecondService<TrafficParameter>().update(otherSubMenu?.apiRoute || '', trafficParameter?.id || '', body);
 
-  const getPayload = (
-    values: TrafficParameter,
-  ): IApiPayload<TrafficParameter> => ({
+  const getPayload = (values: TrafficParameter): IApiPayload<TrafficParameter> => ({
     data: {
       ...values,
       project_id: projectId,
-      id: trafficParameter?.id,
+      id: trafficParameter?.id
     } as TrafficParameter,
-    files: [],
+    files: []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<TrafficParameter>,
-    payload: IApiPayload<TrafficParameter>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<TrafficParameter>, payload: IApiPayload<TrafficParameter>) => {
     refetch();
     handleClose();
   };
 
   return (
     <CustomSideDrawer
-      title={`project.other.traffic-parameter.${
-        isEdit ? `edit-traffic-parameter` : `create-traffic-parameter`
-      }`}
+      title={`project.other.traffic-parameter.${isEdit ? `edit-traffic-parameter` : `create-traffic-parameter`}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.traffic-parameter.${
-            isEdit ? `edit-traffic-parameter` : `create-traffic-parameter`
-          }`}
+          title={`project.other.traffic-parameter.${isEdit ? `edit-traffic-parameter` : `create-traffic-parameter`}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...trafficParameter,
+            ...trafficParameter
           }}
-          createActionFunc={
-            isEdit ? editTrafficParameter : createTrafficParameter
-          }
+          createActionFunc={isEdit ? editTrafficParameter : createTrafficParameter}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

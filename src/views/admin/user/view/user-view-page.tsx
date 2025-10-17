@@ -1,12 +1,12 @@
 // ** MUI Imports
-import Grid from "@mui/material/Grid";
-import User from "src/types/admin/user";
+import Grid from '@mui/material/Grid';
+import User from 'src/types/admin/user';
 
 // ** Types
 
 // ** Demo Components Imports
-import UserViewLeft from "src/views/admin/user/view/user-view-left";
-import UserViewRight from "./user-view-right";
+import UserViewLeft from 'src/views/admin/user/view/user-view-left';
+import UserViewRight from './user-view-right';
 
 type Props = {
   tab: string;

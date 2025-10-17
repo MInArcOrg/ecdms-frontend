@@ -1,6 +1,6 @@
-import React from "react";
-import { useField, useFormikContext } from "formik";
-import { Switch, FormControlLabel, FormHelperText } from "@mui/material";
+import React from 'react';
+import { useField, useFormikContext } from 'formik';
+import { Switch, FormControlLabel, FormHelperText } from '@mui/material';
 
 const CustomSwitch: React.FC<any> = (props) => {
   const [field, meta] = useField(props);
@@ -17,7 +17,7 @@ const CustomSwitch: React.FC<any> = (props) => {
             checked={field.value}
             onChange={() => {
               field.onChange({
-                target: { name: field.name, value: !field.value },
+                target: { name: field.name, value: !field.value }
               });
             }}
             disabled={props?.disabled || isSubmitting}

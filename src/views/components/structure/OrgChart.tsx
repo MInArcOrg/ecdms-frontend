@@ -1,28 +1,28 @@
-import { useEffect, useRef, useState } from 'react'
-import ReactDOMServer from 'react-dom/server'
-import StructureCard from './card'
+import { useEffect, useRef, useState } from 'react';
+import ReactDOMServer from 'react-dom/server';
+import StructureCard from './card';
 
 interface ObsProps {
-  data: any
-  showAvatar: boolean
+  data: any;
+  showAvatar: boolean;
 }
 
 const Obs = ({ data, showAvatar }: ObsProps) => {
-  const d3Container = useRef<HTMLDivElement | null>(null)
-  const [chart, setChart] = useState<any>(null)
+  const d3Container = useRef<HTMLDivElement | null>(null);
+  const [chart, setChart] = useState<any>(null);
 
   // Dynamically import OrgChart once
   const initializeChart = async () => {
-    const { OrgChart } = await import('d3-org-chart')
-    setChart(new OrgChart())
-  }
+    const { OrgChart } = await import('d3-org-chart');
+    setChart(new OrgChart());
+  };
 
   // Initialize data and render chart
   useEffect(() => {
-    if (!data) return
+    if (!data) return;
     if (!chart) {
-      initializeChart()
-      return
+      initializeChart();
+      return;
     }
 
     if (d3Container.current) {
@@ -37,16 +37,12 @@ const Obs = ({ data, showAvatar }: ObsProps) => {
         .compactMarginBetween(() => 35)
         .compactMarginPair(() => 80)
         .onNodeClick((d: any) => console.log('Clicked node:', d))
-        .nodeContent((d: any) =>
-          ReactDOMServer.renderToStaticMarkup(
-            <StructureCard d={d} showAvatar={showAvatar} />
-          )
-        )
-        .render()
+        .nodeContent((d: any) => ReactDOMServer.renderToStaticMarkup(<StructureCard d={d} showAvatar={showAvatar} />))
+        .render();
     }
-  }, [data, chart])
+  }, [data, chart]);
 
-  return <div ref={d3Container} />
-}
+  return <div ref={d3Container} />;
+};
 
-export default Obs
+export default Obs;

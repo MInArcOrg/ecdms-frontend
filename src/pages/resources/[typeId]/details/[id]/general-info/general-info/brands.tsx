@@ -1,20 +1,14 @@
-import { useRouter } from "next/router";
-import ResourceLayout from "src/views/pages/resources/details/layout/resource-layout";
-import { resourceMenuIds } from "src/views/pages/resources/details/layout/resource-menu-items";
-import ResourceBrandList from "src/views/pages/resources/details/resource-brands/resource-brand-list";
-import subMenuItems, {
-  findSubMenuItem,
-  generalInfoMenuIds,
-} from "../(sub-menu-items)";
+import { useRouter } from 'next/router';
+import ResourceLayout from 'src/views/pages/resources/details/layout/resource-layout';
+import { resourceMenuIds } from 'src/views/pages/resources/details/layout/resource-menu-items';
+import ResourceBrandList from 'src/views/pages/resources/details/resource-brands/resource-brand-list';
+import subMenuItems, { findSubMenuItem, generalInfoMenuIds } from '../(sub-menu-items)';
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems("", ""),
-  generalInfoMenuIds.generalInfo.brands,
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), generalInfoMenuIds.generalInfo.brands);
 
 const ResourceBrandPage = () => {
   const router = useRouter();
-  const { id = "", typeId = "" } = router.query;
+  const { id = '', typeId = '' } = router.query;
 
   return (
     <ResourceLayout
@@ -32,7 +26,7 @@ const ResourceBrandPage = () => {
 // Access control configuration
 ResourceBrandPage.acl = {
   subject: defaultMenuItem?.model,
-  action: "view",
+  action: 'view'
 };
 
 export default ResourceBrandPage;

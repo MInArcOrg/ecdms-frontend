@@ -1,55 +1,55 @@
 // ** Next Import
-import Link from "next/link";
+import Link from 'next/link';
 
 // ** MUI Imports
-import Box, { BoxProps } from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Typography, { TypographyProps } from "@mui/material/Typography";
-import { styled } from "@mui/material/styles";
+import Box, { BoxProps } from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import Typography, { TypographyProps } from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
 
 // ** Type Import
-import { LayoutProps } from "src/@core/layouts/types";
+import { LayoutProps } from 'src/@core/layouts/types';
 
 // ** Custom Icon Import
-import Icon from "src/@core/components/icon";
+import Icon from 'src/@core/components/icon';
 
 // ** Configs
-import themeConfig from "src/configs/themeConfig";
-import Logo from "src/layouts/components/logo";
+import themeConfig from 'src/configs/themeConfig';
+import Logo from 'src/layouts/components/logo';
 
 interface Props {
   navHover: boolean;
   collapsedNavWidth: number;
-  hidden: LayoutProps["hidden"];
+  hidden: LayoutProps['hidden'];
   navigationBorderWidth: number;
   toggleNavVisibility: () => void;
-  settings: LayoutProps["settings"];
-  saveSettings: LayoutProps["saveSettings"];
-  navMenuBranding?: LayoutProps["verticalLayoutProps"]["navMenu"]["branding"];
-  menuLockedIcon?: LayoutProps["verticalLayoutProps"]["navMenu"]["lockedIcon"];
-  menuUnlockedIcon?: LayoutProps["verticalLayoutProps"]["navMenu"]["unlockedIcon"];
+  settings: LayoutProps['settings'];
+  saveSettings: LayoutProps['saveSettings'];
+  navMenuBranding?: LayoutProps['verticalLayoutProps']['navMenu']['branding'];
+  menuLockedIcon?: LayoutProps['verticalLayoutProps']['navMenu']['lockedIcon'];
+  menuUnlockedIcon?: LayoutProps['verticalLayoutProps']['navMenu']['unlockedIcon'];
 }
 
 // ** Styled Components
 const MenuHeaderWrapper = styled(Box)<BoxProps>(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
   paddingRight: theme.spacing(3.5),
-  transition: "padding .25s ease-in-out",
-  minHeight: theme.mixins.toolbar.minHeight,
+  transition: 'padding .25s ease-in-out',
+  minHeight: theme.mixins.toolbar.minHeight
 }));
 
 const HeaderTitle = styled(Typography)<TypographyProps>({
   fontWeight: 700,
-  lineHeight: "24px",
-  transition: "opacity .25s ease-in-out, margin .25s ease-in-out",
+  lineHeight: '24px',
+  transition: 'opacity .25s ease-in-out, margin .25s ease-in-out'
 });
 
 const LinkStyled = styled(Link)({
-  display: "flex",
-  alignItems: "center",
-  textDecoration: "none",
+  display: 'flex',
+  alignItems: 'center',
+  textDecoration: 'none'
 });
 
 const VerticalNavHeader = (props: Props) => {
@@ -64,14 +64,13 @@ const VerticalNavHeader = (props: Props) => {
     navigationBorderWidth,
     menuLockedIcon: userMenuLockedIcon,
     navMenuBranding: userNavMenuBranding,
-    menuUnlockedIcon: userMenuUnlockedIcon,
+    menuUnlockedIcon: userMenuUnlockedIcon
   } = props;
 
   // ** Hooks & Vars
   const { navCollapsed } = settings;
 
-  const menuCollapsedStyles =
-    navCollapsed && !navHover ? { opacity: 0 } : { opacity: 1 };
+  const menuCollapsedStyles = navCollapsed && !navHover ? { opacity: 0 } : { opacity: 1 };
 
   const menuHeaderPaddingLeft = () => {
     if (navCollapsed && !navHover) {
@@ -85,17 +84,12 @@ const VerticalNavHeader = (props: Props) => {
     }
   };
 
-  const MenuLockedIcon = () =>
-    userMenuLockedIcon || <Icon icon="tabler:circle-dot" />;
+  const MenuLockedIcon = () => userMenuLockedIcon || <Icon icon="tabler:circle-dot" />;
 
-  const MenuUnlockedIcon = () =>
-    userMenuUnlockedIcon || <Icon icon="tabler:circle" />;
+  const MenuUnlockedIcon = () => userMenuUnlockedIcon || <Icon icon="tabler:circle" />;
 
   return (
-    <MenuHeaderWrapper
-      className="nav-header"
-      sx={{ pl: menuHeaderPaddingLeft() }}
-    >
+    <MenuHeaderWrapper className="nav-header" sx={{ pl: menuHeaderPaddingLeft() }}>
       {userNavMenuBranding ? (
         userNavMenuBranding(props)
       ) : (
@@ -106,7 +100,7 @@ const VerticalNavHeader = (props: Props) => {
             variant="h4"
             sx={{
               ...menuCollapsedStyles,
-              ...(navCollapsed && !navHover ? {} : { ml: 2.5 }),
+              ...(navCollapsed && !navHover ? {} : { ml: 2.5 })
             }}
           >
             {themeConfig.templateName}
@@ -121,29 +115,26 @@ const VerticalNavHeader = (props: Props) => {
           onClick={toggleNavVisibility}
           sx={{
             p: 0,
-            color: "text.secondary",
-            backgroundColor: "transparent !important",
+            color: 'text.secondary',
+            backgroundColor: 'transparent !important'
           }}
         >
           <Icon icon="tabler:x" fontSize="1.25rem" />
         </IconButton>
-      ) : userMenuLockedIcon === null &&
-        userMenuUnlockedIcon === null ? null : (
+      ) : userMenuLockedIcon === null && userMenuUnlockedIcon === null ? null : (
         <IconButton
           disableRipple
           disableFocusRipple
-          onClick={() =>
-            saveSettings({ ...settings, navCollapsed: !navCollapsed })
-          }
+          onClick={() => saveSettings({ ...settings, navCollapsed: !navCollapsed })}
           sx={{
             p: 0,
-            color: "text.primary",
-            backgroundColor: "transparent !important",
-            "& svg": {
-              fontSize: "1.25rem",
+            color: 'text.primary',
+            backgroundColor: 'transparent !important',
+            '& svg': {
+              fontSize: '1.25rem',
               ...menuCollapsedStyles,
-              transition: "opacity .25s ease-in-out",
-            },
+              transition: 'opacity .25s ease-in-out'
+            }
           }}
         >
           {navCollapsed ? MenuUnlockedIcon() : MenuLockedIcon()}

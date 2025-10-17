@@ -1,78 +1,66 @@
 // ** Redux Imports
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 // ** Axios Imports
-import axios from "axios";
+import axios from 'axios';
 
 // ** Types
-import { Dispatch } from "redux";
-import { SendMsgParamsType } from "src/types/apps/chatTypes";
+import { Dispatch } from 'redux';
+import { SendMsgParamsType } from 'src/types/apps/chatTypes';
 
 // ** Fetch User Profile
-export const fetchUserProfile = createAsyncThunk(
-  "appChat/fetchUserProfile",
-  async () => {
-    const response = await axios.get("/apps/chat/users/profile-user");
+export const fetchUserProfile = createAsyncThunk('appChat/fetchUserProfile', async () => {
+  const response = await axios.get('/apps/chat/users/profile-user');
 
-    return response.data;
-  },
-);
+  return response.data;
+});
 
 // ** Fetch Chats & Contacts
-export const fetchChatsContacts = createAsyncThunk(
-  "appChat/fetchChatsContacts",
-  async () => {
-    const response = await axios.get("/apps/chat/chats-and-contacts");
+export const fetchChatsContacts = createAsyncThunk('appChat/fetchChatsContacts', async () => {
+  const response = await axios.get('/apps/chat/chats-and-contacts');
 
-    return response.data;
-  },
-);
+  return response.data;
+});
 
 // ** Select Chat
-export const selectChat = createAsyncThunk(
-  "appChat/selectChat",
-  async (id: number | string, { dispatch }: { dispatch: Dispatch<any> }) => {
-    const response = await axios.get("/apps/chat/get-chat", {
-      params: {
-        id,
-      },
-    });
-    await dispatch(fetchChatsContacts());
+export const selectChat = createAsyncThunk('appChat/selectChat', async (id: number | string, { dispatch }: { dispatch: Dispatch<any> }) => {
+  const response = await axios.get('/apps/chat/get-chat', {
+    params: {
+      id
+    }
+  });
+  await dispatch(fetchChatsContacts());
 
-    return response.data;
-  },
-);
+  return response.data;
+});
 
 // ** Send Msg
-export const sendMsg = createAsyncThunk(
-  "appChat/sendMsg",
-  async (obj: SendMsgParamsType, { dispatch }) => {
-    const response = await axios.post("/apps/chat/send-msg", {
-      data: {
-        obj,
-      },
-    });
-    if (obj.contact) {
-      await dispatch(selectChat(obj.contact.id));
+export const sendMsg = createAsyncThunk('appChat/sendMsg', async (obj: SendMsgParamsType, { dispatch }) => {
+  const response = await axios.post('/apps/chat/send-msg', {
+    data: {
+      obj
     }
-    await dispatch(fetchChatsContacts());
+  });
+  if (obj.contact) {
+    await dispatch(selectChat(obj.contact.id));
+  }
+  await dispatch(fetchChatsContacts());
 
-    return response.data;
-  },
-);
+  return response.data;
+});
 
 export const appChatSlice = createSlice({
-  name: "appChat",
+  name: 'appChat',
   initialState: {
     chats: null,
     contacts: null,
     userProfile: null,
-    selectedChat: null,
+    selectedChat: null
   },
   reducers: {
     removeSelectedChat: (state) => {
       state.selectedChat = null;
-    },
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchUserProfile.fulfilled, (state, action) => {
@@ -85,7 +73,7 @@ export const appChatSlice = createSlice({
     builder.addCase(selectChat.fulfilled, (state, action) => {
       state.selectedChat = action.payload;
     });
-  },
+  }
 });
 
 export const { removeSelectedChat } = appChatSlice.actions;

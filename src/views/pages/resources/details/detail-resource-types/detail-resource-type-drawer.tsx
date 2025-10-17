@@ -1,18 +1,14 @@
-import { FormikProps } from "formik";
-import React, { useEffect, useState } from "react";
-import detailResourceTypeApiService from "src/services/resource/resource-detail-type-service";
-import {
-  deletePhoto,
-  useGetMultiplePhotos,
-  uploadImage,
-} from "src/services/utils/file-utils";
-import { FileWithId } from "src/types/general/file";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import { DetailResourceType } from "src/types/resource";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import DetailResourceTypeForm from "./detail-resource-type-form";
+import { FormikProps } from 'formik';
+import React, { useEffect, useState } from 'react';
+import detailResourceTypeApiService from 'src/services/resource/resource-detail-type-service';
+import { deletePhoto, useGetMultiplePhotos, uploadImage } from 'src/services/utils/file-utils';
+import { FileWithId } from 'src/types/general/file';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import { DetailResourceType } from 'src/types/resource';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import DetailResourceTypeForm from './detail-resource-type-form';
 
 interface DetailResourceTypeDrawerType {
   open: boolean;
@@ -25,35 +21,26 @@ interface DetailResourceTypeDrawerType {
 const validationSchema = yup.object().shape({
   title: yup.string().required(),
   datasource: yup.string().required(),
-  description: yup.string().required(),
+  description: yup.string().required()
 });
 
-const DetailResourceTypeDrawer: React.FC<DetailResourceTypeDrawerType> = (
-  props,
-) => {
+const DetailResourceTypeDrawer: React.FC<DetailResourceTypeDrawerType> = (props) => {
   const { open, toggle, refetch, detailResourceType, resourceId } = props;
 
   const { data: fetchedImages } = useGetMultiplePhotos({
-    filter: { model_id: detailResourceType?.id || "" },
+    filter: { model_id: detailResourceType?.id || '' }
   });
   const [uploadableFiles, setUploadableFiles] = useState<FileWithId[]>([]);
   const [fetchedImageIds, setFetchedImageIds] = useState<string[]>([]);
 
   const isEdit = detailResourceType?.id ? true : false;
 
-  const createDetailResourceType = async (
-    body: IApiPayload<DetailResourceType>,
-  ) => {
+  const createDetailResourceType = async (body: IApiPayload<DetailResourceType>) => {
     return await detailResourceTypeApiService.create(body);
   };
 
-  const editDetailResourceType = async (
-    body: IApiPayload<DetailResourceType>,
-  ) => {
-    return await detailResourceTypeApiService.update(
-      detailResourceType?.id || "",
-      body,
-    );
+  const editDetailResourceType = async (body: IApiPayload<DetailResourceType>) => {
+    return await detailResourceTypeApiService.update(detailResourceType?.id || '', body);
   };
 
   useEffect(() => {
@@ -64,8 +51,8 @@ const DetailResourceTypeDrawer: React.FC<DetailResourceTypeDrawerType> = (
           const blob = await response.blob();
           return {
             id: image.id,
-            file: new File([blob], image.title || "image", { type: blob.type }),
-            isFetched: true,
+            file: new File([blob], image.title || 'image', { type: blob.type }),
+            isFetched: true
           };
         });
         const convertedFiles = await Promise.all(fetchedFiles);
@@ -89,9 +76,9 @@ const DetailResourceTypeDrawer: React.FC<DetailResourceTypeDrawerType> = (
     data: {
       ...values,
       id: detailResourceType?.id,
-      resource_id: resourceId,
+      resource_id: resourceId
     },
-    files: [],
+    files: []
   });
 
   const handleClose = () => {
@@ -99,22 +86,13 @@ const DetailResourceTypeDrawer: React.FC<DetailResourceTypeDrawerType> = (
     setUploadableFiles([]);
   };
 
-  const onActionSuccess = async (
-    response: IApiResponse<DetailResourceType>,
-    payload: IApiPayload<DetailResourceType>,
-  ) => {
-    const uploadableFilesToUpload = uploadableFiles.filter(
-      (file) => !file.isFetched,
-    );
-    const uploadPromises = uploadableFilesToUpload.map((file) =>
-      uploadImage(file.file, "RESOURCE_DETAIL_TYPE", response.payload.id),
-    );
+  const onActionSuccess = async (response: IApiResponse<DetailResourceType>, payload: IApiPayload<DetailResourceType>) => {
+    const uploadableFilesToUpload = uploadableFiles.filter((file) => !file.isFetched);
+    const uploadPromises = uploadableFilesToUpload.map((file) => uploadImage(file.file, 'RESOURCE_DETAIL_TYPE', response.payload.id));
     await Promise.all(uploadPromises);
 
     const uploadableFileIds = uploadableFiles.map((file) => file.id);
-    const idsToRemove = fetchedImageIds.filter(
-      (id) => !uploadableFileIds.includes(id),
-    );
+    const idsToRemove = fetchedImageIds.filter((id) => !uploadableFileIds.includes(id));
 
     const removePromises = idsToRemove.map((id) => deletePhoto(id));
     await Promise.all(removePromises);
@@ -126,9 +104,7 @@ const DetailResourceTypeDrawer: React.FC<DetailResourceTypeDrawerType> = (
 
   return (
     <CustomSideDrawer
-      title={`resource.resource-type.${
-        isEdit ? "edit-resource-type" : "create-resource-type"
-      }`}
+      title={`resource.resource-type.${isEdit ? 'edit-resource-type' : 'create-resource-type'}`}
       handleClose={handleClose}
       open={open}
     >
@@ -139,9 +115,7 @@ const DetailResourceTypeDrawer: React.FC<DetailResourceTypeDrawerType> = (
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={detailResourceType}
-          createActionFunc={
-            isEdit ? editDetailResourceType : createDetailResourceType
-          }
+          createActionFunc={isEdit ? editDetailResourceType : createDetailResourceType}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

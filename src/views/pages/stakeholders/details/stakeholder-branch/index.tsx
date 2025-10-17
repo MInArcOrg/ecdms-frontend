@@ -1,20 +1,20 @@
-import { Box } from "@mui/material";
-import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import stakeholderBranchApiService from "src/services/stakeholder/stakeholder-branch-service";
-import generalMasterDataApiService from "src/services/general/general-master-data-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import type { GetRequestParam, IApiResponse } from "src/types/requests";
-import { formatCreatedAt } from "src/utils/formatter/date";
-import ItemsListing from "src/views/shared/listing";
-import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer";
-import BranchCard from "./stakeholder-branch-card";
-import BranchDrawer from "./stakeholder-branch-drawer";
-import type { StakeholderBranch } from "src/types/stakeholder/stakeholder-branch";
-import type { BusinessFields } from "src/types/general/general-master";
-import { branchColumns } from "./stakeholder-branch-row";
+import { Box } from '@mui/material';
+import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import stakeholderBranchApiService from 'src/services/stakeholder/stakeholder-branch-service';
+import generalMasterDataApiService from 'src/services/general/general-master-data-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import type { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import ItemsListing from 'src/views/shared/listing';
+import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
+import BranchCard from './stakeholder-branch-card';
+import BranchDrawer from './stakeholder-branch-drawer';
+import type { StakeholderBranch } from 'src/types/stakeholder/stakeholder-branch';
+import type { BusinessFields } from 'src/types/general/general-master';
+import { branchColumns } from './stakeholder-branch-row';
 
 interface BranchListProps {
   model: string;
@@ -25,9 +25,7 @@ interface BranchListProps {
 const BranchList: React.FC<BranchListProps> = ({ stakeholderId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<StakeholderBranch | null>(
-    null,
-  );
+  const [selectedRow, setSelectedRow] = useState<StakeholderBranch | null>(null);
   const [businessFields, setBusinessFields] = useState<BusinessFields[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { t } = useTranslation();
@@ -35,19 +33,15 @@ const BranchList: React.FC<BranchListProps> = ({ stakeholderId }) => {
   useEffect(() => {
     const fetchBusinessFields = async () => {
       try {
-        const response =
-          await generalMasterDataApiService.getAllResourceGeneralMaster(
-            "business-fields",
-            {},
-          );
+        const response = await generalMasterDataApiService.getAllResourceGeneralMaster('business-fields', {});
         setBusinessFields(
           response.payload.map((item: any) => ({
             id: item.id,
-            title: item.title,
-          })) as BusinessFields[],
+            title: item.title
+          })) as BusinessFields[]
         );
       } catch (error) {
-        console.error("Error fetching business fields:", error);
+        console.error('Error fetching business fields:', error);
       } finally {
         setIsLoading(false);
       }
@@ -56,12 +50,10 @@ const BranchList: React.FC<BranchListProps> = ({ stakeholderId }) => {
     fetchBusinessFields();
   }, []);
 
-  const fetchBranches = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<StakeholderBranch[]>> => {
+  const fetchBranches = (params: GetRequestParam): Promise<IApiResponse<StakeholderBranch[]>> => {
     return stakeholderBranchApiService.getAll({
       ...params,
-      filter: { ...params.filter, stakeholder_id: stakeholderId },
+      filter: { ...params.filter, stakeholder_id: stakeholderId }
     });
   };
 
@@ -69,10 +61,10 @@ const BranchList: React.FC<BranchListProps> = ({ stakeholderId }) => {
     data: branches,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<StakeholderBranch[]>({
-    queryKey: ["branches"],
-    fetchFunction: fetchBranches,
+    queryKey: ['branches'],
+    fetchFunction: fetchBranches
   });
 
   const toggleDrawer = () => {
@@ -101,35 +93,33 @@ const BranchList: React.FC<BranchListProps> = ({ stakeholderId }) => {
   };
 
   const getBusinessFieldTitle = (id: string) => {
-    if (!businessFields) return "N/A";
+    if (!businessFields) return 'N/A';
     const field = businessFields.find((f) => f.id === id);
-    return field ? field.title : "N/A";
+    return field ? field.title : 'N/A';
   };
 
-  const mapBranchToDetailItems = (
-    branch: StakeholderBranch,
-  ): { title: string; value: string }[] => [
-    { title: t("stakeholder.stakeholder-branch.name"), value: branch.name },
+  const mapBranchToDetailItems = (branch: StakeholderBranch): { title: string; value: string }[] => [
+    { title: t('stakeholder.stakeholder-branch.name'), value: branch.name },
     {
-      title: t("stakeholder.stakeholder-branch.tinNumber"),
-      value: branch.tin_number || "N/A",
+      title: t('stakeholder.stakeholder-branch.tinNumber'),
+      value: branch.tin_number || 'N/A'
     },
     {
-      title: t("stakeholder.stakeholder-branch.businessFieldId"),
-      value: getBusinessFieldTitle(branch.business_field_id),
+      title: t('stakeholder.stakeholder-branch.businessFieldId'),
+      value: getBusinessFieldTitle(branch.business_field_id)
     },
     {
-      title: t("stakeholder.stakeholder-branch.description"),
-      value: branch.description || "N/A",
+      title: t('stakeholder.stakeholder-branch.description'),
+      value: branch.description || 'N/A'
     },
     {
-      title: t("stakeholder.stakeholder-branch.reference"),
-      value: branch.reference || "N/A",
+      title: t('stakeholder.stakeholder-branch.reference'),
+      value: branch.reference || 'N/A'
     },
     {
-      title: t("common.table-columns.created-at"),
-      value: branch?.created_at ? formatCreatedAt(branch.created_at) : "N/A",
-    },
+      title: t('common.table-columns.created-at'),
+      value: branch?.created_at ? formatCreatedAt(branch.created_at) : 'N/A'
+    }
   ];
 
   if (isLoading) {
@@ -154,25 +144,19 @@ const BranchList: React.FC<BranchListProps> = ({ stakeholderId }) => {
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
           data={mapBranchToDetailItems(selectedRow as StakeholderBranch)}
-          id={selectedRow?.id || ""}
+          id={selectedRow?.id || ''}
           hasReference={true}
           fileType="STAKEHOLDER_BRANCH"
-          title={t("stakeholder.stakeholder-branch.details")}
+          title={t('stakeholder.stakeholder-branch.details')}
         />
       )}
 
       <ItemsListing
-        title={t("stakeholder.stakeholder-branch.title")}
+        title={t('stakeholder.stakeholder-branch.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: branchColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            businessFields,
-          ),
+          headers: branchColumns(handleClickDetail, handleEdit, handleDelete, t, businessFields)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -190,9 +174,9 @@ const BranchList: React.FC<BranchListProps> = ({ stakeholderId }) => {
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "stakeholderbranch",
-          },
+            action: 'create',
+            subject: 'stakeholderbranch'
+          }
         }}
         fetchDataFunction={refetch}
         items={branches || []}

@@ -1,15 +1,15 @@
-import { Grid } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
-import type { FormikProps } from "formik";
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { dropDownConfig } from "src/configs/api-constants";
-import { gridSpacing } from "src/configs/app-constants";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import type { RailwayVehicleIdentification, RailwayVehicleMaintenanceAndInspection } from "src/types/project/other";
-import CustomSelectBox from "src/views/shared/form/custom-select";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
-import CustomFileUpload from "src/views/shared/form/custome-file-selector";
+import { Grid } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
+import type { FormikProps } from 'formik';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { dropDownConfig } from 'src/configs/api-constants';
+import { gridSpacing } from 'src/configs/app-constants';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import type { RailwayVehicleIdentification, RailwayVehicleMaintenanceAndInspection } from 'src/types/project/other';
+import CustomSelectBox from 'src/views/shared/form/custom-select';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface RailwayVehicleMaintenanceAndInspectionFormProps {
   formik: FormikProps<RailwayVehicleMaintenanceAndInspection>;
@@ -17,14 +17,15 @@ interface RailwayVehicleMaintenanceAndInspectionFormProps {
   onDefaultFileChange: (file: File | null) => void;
 }
 
-const RailwayVehicleMaintenanceAndInspectionForm: React.FC<
-  RailwayVehicleMaintenanceAndInspectionFormProps
-> = ({ formik, defaultFile, onDefaultFileChange }) => {
+const RailwayVehicleMaintenanceAndInspectionForm: React.FC<RailwayVehicleMaintenanceAndInspectionFormProps> = ({
+  formik,
+  defaultFile,
+  onDefaultFileChange
+}) => {
   const { t } = useTranslation();
   const { data: vehicleIdentifications } = useQuery({
-    queryKey: ["vehicle-identifications"],
-    queryFn: () =>
-      projectOtherApiSecondService<RailwayVehicleIdentification>().getAll('railway-vehicle-identifications', dropDownConfig()),
+    queryKey: ['vehicle-identifications'],
+    queryFn: () => projectOtherApiSecondService<RailwayVehicleIdentification>().getAll('railway-vehicle-identifications', dropDownConfig())
   });
   return (
     <Grid container spacing={gridSpacing}>
@@ -32,27 +33,22 @@ const RailwayVehicleMaintenanceAndInspectionForm: React.FC<
         <CustomSelectBox
           fullWidth
           required
-          label={t(
-            "project.other.railway-vehicle-specification.details.railway_vehicle_identification_id",
-          )}
+          label={t('project.other.railway-vehicle-specification.details.railway_vehicle_identification_id')}
           name="railway_vehicle_identification_id"
-          options={vehicleIdentifications?.payload.map(
-            (item) => ({
-              label: item.vehicle_type + " - " + item.manufacturer_supplier_name + " - " + item.manufacture_year,
-              value: item.id,
-            }),
-          ) || []}
+          options={
+            vehicleIdentifications?.payload.map((item) => ({
+              label: item.vehicle_type + ' - ' + item.manufacturer_supplier_name + ' - ' + item.manufacture_year,
+              value: item.id
+            })) || []
+          }
           value={formik.values.railway_vehicle_identification_id}
           size="small"
           sx={{ mb: 2 }}
         />
 
-
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-vehicle-maintenance-and-inspection.details.maintenance_history_records",
-          )}
+          label={t('project.other.railway-vehicle-maintenance-and-inspection.details.maintenance_history_records')}
           placeholder="Summarize historical maintenance records"
           name="maintenance_history_records"
           value={formik.values.maintenance_history_records}
@@ -64,9 +60,7 @@ const RailwayVehicleMaintenanceAndInspectionForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-vehicle-maintenance-and-inspection.details.vehicle_weight_and_load_capacity",
-          )}
+          label={t('project.other.railway-vehicle-maintenance-and-inspection.details.vehicle_weight_and_load_capacity')}
           placeholder="e.g. Total Weight: 50t, Payload: 100t"
           name="vehicle_weight_and_load_capacity"
           value={formik.values.vehicle_weight_and_load_capacity}
@@ -76,9 +70,7 @@ const RailwayVehicleMaintenanceAndInspectionForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-vehicle-maintenance-and-inspection.details.maximum_speed",
-          )}
+          label={t('project.other.railway-vehicle-maintenance-and-inspection.details.maximum_speed')}
           placeholder="e.g. 160 (km/h)"
           name="maximum_speed"
           value={formik.values.maximum_speed}
@@ -89,9 +81,7 @@ const RailwayVehicleMaintenanceAndInspectionForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-vehicle-maintenance-and-inspection.details.braking_system_type",
-          )}
+          label={t('project.other.railway-vehicle-maintenance-and-inspection.details.braking_system_type')}
           placeholder="e.g. Air brake"
           name="braking_system_type"
           value={formik.values.braking_system_type}
@@ -101,10 +91,8 @@ const RailwayVehicleMaintenanceAndInspectionForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-vehicle-maintenance-and-inspection.details.remark",
-          )}
-          placeholder={t("common.form.remark-placeholder")}
+          label={t('project.other.railway-vehicle-maintenance-and-inspection.details.remark')}
+          placeholder={t('common.form.remark-placeholder')}
           name="remark"
           value={formik.values.remark}
           size="small"
@@ -114,11 +102,7 @@ const RailwayVehicleMaintenanceAndInspectionForm: React.FC<
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={t("common.form.technical-document-upload")}
-          file={defaultFile}
-          onFileChange={onDefaultFileChange}
-        />
+        <CustomFileUpload label={t('common.form.technical-document-upload')} file={defaultFile} onFileChange={onDefaultFileChange} />
       </Grid>
     </Grid>
   );

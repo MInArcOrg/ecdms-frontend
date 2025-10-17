@@ -1,12 +1,12 @@
 // ** MUI Imports
-import TreeView from "@mui/lab/TreeView";
-import TreeItem from "@mui/lab/TreeItem";
+import TreeView from '@mui/lab/TreeView';
+import TreeItem from '@mui/lab/TreeItem';
 
 // ** Icon Imports
-import Icon from "src/@core/components/icon";
+import Icon from 'src/@core/components/icon';
 
 interface Props {
-  direction: "ltr" | "rtl";
+  direction: 'ltr' | 'rtl';
 }
 
 interface RenderTree {
@@ -16,42 +16,39 @@ interface RenderTree {
 }
 
 const data: RenderTree = {
-  id: "root",
-  name: "Parent",
+  id: 'root',
+  name: 'Parent',
   children: [
     {
-      id: "1",
-      name: "Child - 1",
+      id: '1',
+      name: 'Child - 1'
     },
     {
-      id: "3",
-      name: "Child - 3",
+      id: '3',
+      name: 'Child - 3',
       children: [
         {
-          id: "4",
-          name: "Child - 4",
-        },
-      ],
-    },
-  ],
+          id: '4',
+          name: 'Child - 4'
+        }
+      ]
+    }
+  ]
 };
 
 const TreeViewRichObject = ({ direction }: Props) => {
   const renderTree = (nodes: RenderTree) => (
     <TreeItem key={nodes.id} nodeId={nodes.id} label={nodes.name}>
-      {Array.isArray(nodes.children)
-        ? nodes.children.map((node) => renderTree(node))
-        : null}
+      {Array.isArray(nodes.children) ? nodes.children.map((node) => renderTree(node)) : null}
     </TreeItem>
   );
 
-  const ExpandIcon =
-    direction === "rtl" ? "tabler:chevron-left" : "tabler:chevron-right";
+  const ExpandIcon = direction === 'rtl' ? 'tabler:chevron-left' : 'tabler:chevron-right';
 
   return (
     <TreeView
       sx={{ minHeight: 240 }}
-      defaultExpanded={["root"]}
+      defaultExpanded={['root']}
       defaultExpandIcon={<Icon icon={ExpandIcon} />}
       defaultCollapseIcon={<Icon icon="tabler:chevron-down" />}
     >

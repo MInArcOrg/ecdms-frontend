@@ -1,17 +1,17 @@
-import { DetailSubMenuItem } from "src/types/layouts/detail-layout";
+import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
 
 // Store the IDs in one place
 export const educationMenuIds = {
-  section: "EDUCATION_SECTION",
-  education: "EDUCATION",
+  section: 'EDUCATION_SECTION',
+  education: 'EDUCATION'
 };
 
 const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
   {
     id: educationMenuIds.education,
-    title: "resource.navigation.submenu.education.education",
-    path: `/resources/${typeId}/details/${id}/education`,
-  },
+    title: 'resource.navigation.submenu.education.education',
+    path: `/resources/${typeId}/details/${id}/education`
+  }
 ];
 export const findSubMenuItem = (items: DetailSubMenuItem[], id: string) => {
   for (const item of items) {

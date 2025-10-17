@@ -1,23 +1,14 @@
-"use client";
+'use client';
 
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Divider,
-  Typography,
-  Grid,
-} from "@mui/material";
-import type React from "react";
-import { useTranslation } from "react-i18next";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import type { SatelliteInfrastructureAge } from "src/types/project/other";
-import FileDrawer from "src/views/components/custom/files-drawer";
-import ModelAction from "src/views/components/custom/model-actions";
-import RowOptions from "src/views/shared/listing/row-options";
-import { formatCreatedAt } from "src/utils/formatter/date";
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography, Grid } from '@mui/material';
+import type React from 'react';
+import { useTranslation } from 'react-i18next';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import type { SatelliteInfrastructureAge } from 'src/types/project/other';
+import FileDrawer from 'src/views/components/custom/files-drawer';
+import ModelAction from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
+import { formatCreatedAt } from 'src/utils/formatter/date';
 
 interface SatelliteInfrastructureAgeCardProps {
   satelliteInfrastructureAge: SatelliteInfrastructureAge;
@@ -28,27 +19,20 @@ interface SatelliteInfrastructureAgeCardProps {
   satelliteNetworkMap: Map<string, string>;
 }
 
-const SatelliteInfrastructureAgeCard: React.FC<
-  SatelliteInfrastructureAgeCardProps
-> = ({
+const SatelliteInfrastructureAgeCard: React.FC<SatelliteInfrastructureAgeCardProps> = ({
   satelliteInfrastructureAge,
   refetch,
   onEdit,
   onDelete,
   onDetail,
-  satelliteNetworkMap,
+  satelliteNetworkMap
 }) => {
   const { t } = useTranslation();
 
   return (
     <Card sx={{ p: 2 }}>
       <CardContent>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          mb={1}
-        >
+        <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
           <Typography variant="h5" fontWeight="bold">
             <Typography
               noWrap
@@ -56,14 +40,13 @@ const SatelliteInfrastructureAgeCard: React.FC<
               onClick={() => onDetail(satelliteInfrastructureAge)}
               sx={{
                 fontWeight: 500,
-                textDecoration: "none",
-                color: "text.secondary",
-                "&:hover": { color: "primary.main" },
+                textDecoration: 'none',
+                color: 'text.secondary',
+                '&:hover': { color: 'primary.main' }
               }}
             >
-              {satelliteNetworkMap.get(
-                satelliteInfrastructureAge?.satellite_network_id,
-              ) || satelliteInfrastructureAge?.id.slice(0, 8) + "..."}
+              {satelliteNetworkMap.get(satelliteInfrastructureAge?.satellite_network_id) ||
+                satelliteInfrastructureAge?.id.slice(0, 8) + '...'}
             </Typography>
           </Typography>
         </Box>
@@ -74,10 +57,8 @@ const SatelliteInfrastructureAgeCard: React.FC<
           {satelliteInfrastructureAge?.satellite !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t(
-                  "project.other.satellite-infrastructure-age.details.satellite",
-                )}
-                : {satelliteInfrastructureAge.satellite} {t("common.years")}
+                {t('project.other.satellite-infrastructure-age.details.satellite')}: {satelliteInfrastructureAge.satellite}{' '}
+                {t('common.years')}
               </Typography>
             </Grid>
           )}
@@ -85,11 +66,8 @@ const SatelliteInfrastructureAgeCard: React.FC<
           {satelliteInfrastructureAge?.ground_stations !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t(
-                  "project.other.satellite-infrastructure-age.details.ground-stations",
-                )}
-                : {satelliteInfrastructureAge.ground_stations}{" "}
-                {t("common.years")}
+                {t('project.other.satellite-infrastructure-age.details.ground-stations')}: {satelliteInfrastructureAge.ground_stations}{' '}
+                {t('common.years')}
               </Typography>
             </Grid>
           )}
@@ -97,8 +75,7 @@ const SatelliteInfrastructureAgeCard: React.FC<
           {satelliteInfrastructureAge?.modems !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t("project.other.satellite-infrastructure-age.details.modems")}
-                : {satelliteInfrastructureAge.modems} {t("common.years")}
+                {t('project.other.satellite-infrastructure-age.details.modems')}: {satelliteInfrastructureAge.modems} {t('common.years')}
               </Typography>
             </Grid>
           )}
@@ -106,10 +83,7 @@ const SatelliteInfrastructureAgeCard: React.FC<
           {satelliteInfrastructureAge?.routers !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t(
-                  "project.other.satellite-infrastructure-age.details.routers",
-                )}
-                : {satelliteInfrastructureAge.routers} {t("common.years")}
+                {t('project.other.satellite-infrastructure-age.details.routers')}: {satelliteInfrastructureAge.routers} {t('common.years')}
               </Typography>
             </Grid>
           )}
@@ -118,25 +92,20 @@ const SatelliteInfrastructureAgeCard: React.FC<
         {satelliteInfrastructureAge?.others && (
           <Box mt={2}>
             <Typography variant="body2" color="text.secondary">
-              {t("project.other.satellite-infrastructure-age.details.others")}:{" "}
-              {satelliteInfrastructureAge.others}
+              {t('project.other.satellite-infrastructure-age.details.others')}: {satelliteInfrastructureAge.others}
             </Typography>
           </Box>
         )}
 
         {satelliteInfrastructureAge?.created_at && (
           <Typography variant="body2" color="text.secondary" mt={2}>
-            {t("common.table-columns.created-at")}:{" "}
-            {formatCreatedAt(satelliteInfrastructureAge.created_at)}
+            {t('common.table-columns.created-at')}: {formatCreatedAt(satelliteInfrastructureAge.created_at)}
           </Typography>
         )}
       </CardContent>
 
-      <CardActions sx={{ justifyContent: "space-between" }}>
-        <FileDrawer
-          id={satelliteInfrastructureAge.id}
-          type={uploadableProjectFileTypes.other.satelliteInfrastructureAge}
-        />
+      <CardActions sx={{ justifyContent: 'space-between' }}>
+        <FileDrawer id={satelliteInfrastructureAge.id} type={uploadableProjectFileTypes.other.satelliteInfrastructureAge} />
 
         <Box display="flex">
           <ModelAction
@@ -149,12 +118,12 @@ const SatelliteInfrastructureAgeCard: React.FC<
           />
           <RowOptions
             deletePermissionRule={{
-              action: "delete",
-              subject: "satelliteinfrastructureage",
+              action: 'delete',
+              subject: 'satelliteinfrastructureage'
             }}
             editPermissionRule={{
-              action: "update",
-              subject: "satelliteinfrastructureage",
+              action: 'update',
+              subject: 'satelliteinfrastructureage'
             }}
             onEdit={() => onEdit(satelliteInfrastructureAge)}
             onDelete={() => onDelete(satelliteInfrastructureAge.id)}

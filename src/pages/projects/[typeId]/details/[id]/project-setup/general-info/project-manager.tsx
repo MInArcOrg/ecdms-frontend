@@ -1,8 +1,8 @@
-import { useRouter } from "next/router";
-import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
-import ProjectManagerComponent from "src/views/pages/projects/detail/project-manager";
-import subMenuItems, { projectSetupIds } from "../(subMenuItems)";
-import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
+import { useRouter } from 'next/router';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
+import ProjectManagerComponent from 'src/views/pages/projects/detail/project-manager';
+import subMenuItems, { projectSetupIds } from '../(subMenuItems)';
+import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 
 const ProjectManager = () => {
   const router = useRouter();
@@ -20,8 +20,8 @@ const ProjectManager = () => {
 };
 
 ProjectManager.acl = {
-  subject: "projectManager",
-  action: "view_projectmanager",
+  subject: 'projectManager',
+  action: 'view_projectmanager'
 };
 
 export default ProjectManager;

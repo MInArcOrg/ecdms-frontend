@@ -1,25 +1,25 @@
-import { Box, CircularProgress } from '@mui/material'
-import { Fragment, useEffect, useState } from 'react'
-import { MapContainer, Marker, TileLayer } from 'react-leaflet'
-import L, { DivIcon, DivIconOptions } from 'leaflet'
-import 'leaflet/dist/leaflet.css'
-import locationAnalticsApiService from 'src/services/analytics/location-service'
+import { Box, CircularProgress } from '@mui/material';
+import { Fragment, useEffect, useState } from 'react';
+import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import L, { DivIcon, DivIconOptions } from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import locationAnalticsApiService from 'src/services/analytics/location-service';
 
 interface MarkerData {
-  p: [number, number]
-  icon: DivIcon
-  id?: string | number
+  p: [number, number];
+  icon: DivIcon;
+  id?: string | number;
 }
 
 interface MapViewProps {
-  position?: [number, number]
-  width?: string | number
-  height?: string | number
-  colors: string[]
-  categories?: any[]
-  baseUrl?: string
-  loading?: boolean
-  catLoading?: boolean
+  position?: [number, number];
+  width?: string | number;
+  height?: string | number;
+  colors: string[];
+  categories?: any[];
+  baseUrl?: string;
+  loading?: boolean;
+  catLoading?: boolean;
 }
 
 const MapView: React.FC<MapViewProps> = ({
@@ -32,27 +32,23 @@ const MapView: React.FC<MapViewProps> = ({
   loading = false,
   catLoading = false
 }) => {
-  const [markers, setMarkers] = useState<MarkerData[]>([])
+  const [markers, setMarkers] = useState<MarkerData[]>([]);
 
   useEffect(() => {
     if (colors.length > 0 && categories.length > 0) {
       const fetchMarkers = async () => {
-        const allMarkers: MarkerData[] = []
+        const allMarkers: MarkerData[] = [];
 
         await Promise.all(
           categories.map(async (category, index) => {
             try {
-              const response = await locationAnalticsApiService.getLocationCordinates(
-                baseUrl || '',
-                category.id || '',
-                {}
-              )
+              const response = await locationAnalticsApiService.getLocationCordinates(baseUrl || '', category.id || '', {});
 
-              const coordinates = response?.payload || []
-              console.log('allMarkers', coordinates)
+              const coordinates = response?.payload || [];
+              console.log('allMarkers', coordinates);
 
               coordinates.forEach((cor: [number, number, string | number]) => {
-                const [lng, lat, id] = cor
+                const [lng, lat, id] = cor;
 
                 const iconHtml = `
                   <div>
@@ -64,55 +60,49 @@ const MapView: React.FC<MapViewProps> = ({
                       </g>
                     </svg>
                   </div>
-                `
+                `;
 
                 const myIcon = L.divIcon({
                   className: 'my-custom-pin-svg',
                   iconAnchor: [0, 24],
                   popupAnchor: [0, -36],
                   html: iconHtml
-                } as DivIconOptions)
+                } as DivIconOptions);
 
                 allMarkers.push({
                   p: [lat, lng],
                   icon: myIcon,
                   id
-                })
-              })
+                });
+              });
             } catch (err) {
-              console.error(`Error fetching coordinates for ${category.title}:`, err)
+              console.error(`Error fetching coordinates for ${category.title}:`, err);
             }
           })
-        )
+        );
 
-        setMarkers(allMarkers)
+        setMarkers(allMarkers);
+      };
 
-      }
-
-      fetchMarkers()
+      fetchMarkers();
     }
-  }, [colors, categories, baseUrl])
+  }, [colors, categories, baseUrl]);
   return (
     <Fragment>
       {loading || catLoading ? (
-        <Box display='flex' justifyContent='center' alignItems='center' height={height}>
+        <Box display="flex" justifyContent="center" alignItems="center" height={height}>
           <CircularProgress />
         </Box>
       ) : (
-        <MapContainer
-          center={position}
-          zoom={6}
-          scrollWheelZoom
-          style={{ height, width }}
-        >
-          <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
+        <MapContainer center={position} zoom={6} scrollWheelZoom style={{ height, width }}>
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {markers.map((marker, index) => (
             <Marker key={marker.id || index} position={marker.p} icon={marker.icon} />
           ))}
         </MapContainer>
       )}
     </Fragment>
-  )
-}
+  );
+};
 
-export default MapView
+export default MapView;

@@ -1,7 +1,7 @@
-import { Box, CardContent, Drawer, Typography } from "@mui/material";
-import { Fragment } from "react";
-import { useTranslation } from "react-i18next";
-import Icon from "src/@core/components/icon";
+import { Box, CardContent, Drawer, Typography } from '@mui/material';
+import { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
+import Icon from 'src/@core/components/icon';
 import {
   ACTION_APPROVED,
   ACTION_AUTHORIZED,
@@ -13,15 +13,12 @@ import {
   REQUEST_CHECK,
   isAllowedToApprove,
   isAllowedToAuthorize,
-  isAllowedToCheck,
-} from "src/configs/action-status";
-import ActionForm from "./action-form";
-import ActionItem from "./action-item";
-import {
-  ActionReply,
-  AuthorizationResponse,
-} from "src/types/general/model-action";
-import User from "src/types/admin/user";
+  isAllowedToCheck
+} from 'src/configs/action-status';
+import ActionForm from './action-form';
+import ActionItem from './action-item';
+import { ActionReply, AuthorizationResponse } from 'src/types/general/model-action';
+import User from 'src/types/admin/user';
 
 interface StatusSidebarProps {
   actions: AuthorizationResponse;
@@ -34,16 +31,7 @@ interface StatusSidebarProps {
   title: string;
 }
 
-function StatusSidebar({
-  actions,
-  show,
-  toggleDrawer,
-  model_id,
-  model,
-  refetchModel,
-  refetchAction,
-  title,
-}: StatusSidebarProps) {
+function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchModel, refetchAction, title }: StatusSidebarProps) {
   const { t } = useTranslation();
 
   return (
@@ -52,23 +40,23 @@ function StatusSidebar({
         anchor="right"
         open={show}
         sx={{
-          "& .MuiDrawer-paper": {
+          '& .MuiDrawer-paper': {
             width: {
-              sm: "100%",
-              md: "36%",
-              lg: "26%",
+              sm: '100%',
+              md: '36%',
+              lg: '26%'
             },
-            boxSizing: "border-box",
-          },
+            boxSizing: 'border-box'
+          }
         }}
       >
         <Box>
           <Box
             sx={{
-              display: "flex",
-              justifyContent: "space-between",
+              display: 'flex',
+              justifyContent: 'space-between',
               boxShadow: 1,
-              p: 3,
+              p: 3
             }}
           >
             <Typography variant="body1">{t(title)}</Typography>
@@ -79,12 +67,11 @@ function StatusSidebar({
               replyData={
                 {
                   type: ACTION_REGISTERED,
-                  actionstate_id:
-                    actions?.authorization_data?.registered_data?.user_id,
+                  actionstate_id: actions?.authorization_data?.registered_data?.user_id
                 } as ActionReply
               }
               refetchAction={refetchModel}
-              title={t("model-action.registered-data")}
+              title={t('model-action.registered-data')}
               user={actions?.authorization_data?.registered_data?.user as User}
               actionData={actions?.authorization_data?.registered_data}
             />
@@ -95,12 +82,11 @@ function StatusSidebar({
                   replyData={
                     {
                       type: ACTION_CHECKED,
-                      actionstate_id:
-                        actions?.authorization_data?.checked_data?.user_id,
+                      actionstate_id: actions?.authorization_data?.checked_data?.user_id
                     } as ActionReply
                   }
                   refetchAction={refetchModel}
-                  title={t("model-action.checked-data")}
+                  title={t('model-action.checked-data')}
                   user={actions?.authorization_data?.checked_data?.user as User}
                   actionData={actions?.authorization_data?.checked_data}
                 />
@@ -113,15 +99,12 @@ function StatusSidebar({
                   replyData={
                     {
                       type: ACTION_APPROVED,
-                      actionstate_id:
-                        actions?.authorization_data?.approved_data?.user_id,
+                      actionstate_id: actions?.authorization_data?.approved_data?.user_id
                     } as ActionReply
                   }
                   refetchAction={refetchModel}
-                  title={t("model-action.approved-data")}
-                  user={
-                    actions?.authorization_data?.approved_data?.user as User
-                  }
+                  title={t('model-action.approved-data')}
+                  user={actions?.authorization_data?.approved_data?.user as User}
                   actionData={actions?.authorization_data?.approved_data}
                 />
               </div>
@@ -133,15 +116,12 @@ function StatusSidebar({
                   replyData={
                     {
                       type: ACTION_AUTHORIZED,
-                      actionstate_id:
-                        actions?.authorization_data?.authorized_data?.user_id,
+                      actionstate_id: actions?.authorization_data?.authorized_data?.user_id
                     } as ActionReply
                   }
                   refetchAction={refetchModel}
-                  title={t("model-action.authorized-data")}
-                  user={
-                    actions?.authorization_data?.authorized_data?.user as User
-                  }
+                  title={t('model-action.authorized-data')}
+                  user={actions?.authorization_data?.authorized_data?.user as User}
                   actionData={actions?.authorization_data?.authorized_data}
                 />
               </div>
@@ -153,25 +133,19 @@ function StatusSidebar({
                   replyData={
                     {
                       type: ACTION_REJECTED,
-                      actionstate_id:
-                        actions?.authorization_data?.rejected_data?.user_id,
+                      actionstate_id: actions?.authorization_data?.rejected_data?.user_id
                     } as ActionReply
                   }
                   refetchAction={refetchModel}
-                  title={t("model-action.rejected-data")}
-                  user={
-                    actions?.authorization_data?.rejected_data?.user as User
-                  }
+                  title={t('model-action.rejected-data')}
+                  user={actions?.authorization_data?.rejected_data?.user as User}
                   actionData={actions?.authorization_data?.rejected_data}
                 />
               </div>
             )}
 
-            <Box sx={{ marginTop: "10px" }}>
-              {isAllowedToCheck(
-                actions?.status,
-                actions?.authorization_data?.registered_data?.user_id,
-              ) && (
+            <Box sx={{ marginTop: '10px' }}>
+              {isAllowedToCheck(actions?.status, actions?.authorization_data?.registered_data?.user_id) && (
                 <ActionForm
                   actionType={REQUEST_CHECK}
                   toggleDrawer={toggleDrawer}
@@ -183,7 +157,7 @@ function StatusSidebar({
               {isAllowedToApprove(
                 actions?.status,
                 actions?.authorization_data?.registered_data?.user_id,
-                actions?.authorization_data?.checked_data?.user_id,
+                actions?.authorization_data?.checked_data?.user_id
               ) && (
                 <ActionForm
                   actionType={REQUEST_APPROVE}
@@ -197,7 +171,7 @@ function StatusSidebar({
                 actions?.status,
                 actions?.authorization_data?.registered_data?.user_id,
                 actions?.authorization_data?.checked_data?.user_id,
-                actions?.authorization_data?.approved_data?.user_id,
+                actions?.authorization_data?.approved_data?.user_id
               ) && (
                 <ActionForm
                   actionType={REQUEST_AUTHORIZE}

@@ -1,10 +1,10 @@
-import { AxiosResponse } from "axios";
-import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
-import { ResourceBrand } from "src/types/resource";
-import axiosServices from "src/utils/axios";
-import { buildGetRequest } from "src/utils/requests/get-request";
-import { buildPostRequest } from "src/utils/requests/post-request";
-import { buildPutRequest } from "src/utils/requests/put-request";
+import { AxiosResponse } from 'axios';
+import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
+import { ResourceBrand } from 'src/types/resource';
+import axiosServices from 'src/utils/axios';
+import { buildGetRequest } from 'src/utils/requests/get-request';
+import { buildPostRequest } from 'src/utils/requests/post-request';
+import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const resourceBrandApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<ResourceBrand[]>> =>
@@ -22,10 +22,7 @@ const resourceBrandApiService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/resources/construction-resource-brands-search`, params)
-      .then(
-        (response: AxiosResponse<IApiResponse>) =>
-          response.data.payload as unknown as ResourceBrand[],
-      )
+      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as ResourceBrand[])
       .catch((error: any) => {
         throw error;
       }),
@@ -43,15 +40,12 @@ const resourceBrandApiService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (
-    id: string,
-    body: IApiPayload<ResourceBrand>,
-  ): Promise<IApiResponse> =>
+  update: (id: string, body: IApiPayload<ResourceBrand>): Promise<IApiResponse> =>
     buildPutRequest(`/resources/construction-resource-brands/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      }),
+      })
 };
 
 export default resourceBrandApiService;

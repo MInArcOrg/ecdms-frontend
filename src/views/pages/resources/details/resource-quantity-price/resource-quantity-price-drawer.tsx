@@ -1,14 +1,14 @@
-import { FormikProps } from "formik";
-import React, { useState } from "react";
-import resourceQuantityPriceApiService from "src/services/resource/resource-quantity-price-service";
-import { uploadFile } from "src/services/utils/file-utils";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import { ResourceQuantityPrice } from "src/types/resource";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import ResourceQuantityPriceForm from "./resource-quantity-price-form";
-import { uploadableResourceFileTypes } from "src/services/utils/file-constants";
+import { FormikProps } from 'formik';
+import React, { useState } from 'react';
+import resourceQuantityPriceApiService from 'src/services/resource/resource-quantity-price-service';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import { ResourceQuantityPrice } from 'src/types/resource';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import ResourceQuantityPriceForm from './resource-quantity-price-form';
+import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
 
 interface ResourceQuantityPriceDrawerType {
   open: boolean;
@@ -24,12 +24,10 @@ const validationSchema = yup.object().shape({
   quantity: yup.number().required(),
   unit_price: yup.number().required(),
   store_address: yup.string().required(),
-  datasource: yup.string().required(),
+  datasource: yup.string().required()
 });
 
-const ResourceQuantityPriceDrawer: React.FC<ResourceQuantityPriceDrawerType> = (
-  props,
-) => {
+const ResourceQuantityPriceDrawer: React.FC<ResourceQuantityPriceDrawerType> = (props) => {
   const { open, toggle, refetch, resourceQuantityPrice, resourceId } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
@@ -38,28 +36,21 @@ const ResourceQuantityPriceDrawer: React.FC<ResourceQuantityPriceDrawerType> = (
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
-  const createResourceQuantityPrice = async (
-    body: IApiPayload<ResourceQuantityPrice>,
-  ) => {
+  const createResourceQuantityPrice = async (body: IApiPayload<ResourceQuantityPrice>) => {
     return await resourceQuantityPriceApiService.create(body);
   };
 
-  const editResourceQuantityPrice = async (
-    body: IApiPayload<ResourceQuantityPrice>,
-  ) => {
-    return await resourceQuantityPriceApiService.update(
-      resourceQuantityPrice?.id || "",
-      body,
-    );
+  const editResourceQuantityPrice = async (body: IApiPayload<ResourceQuantityPrice>) => {
+    return await resourceQuantityPriceApiService.update(resourceQuantityPrice?.id || '', body);
   };
 
   const getPayload = (values: ResourceQuantityPrice) => ({
     data: {
       ...values,
       id: resourceQuantityPrice?.id,
-      resource_id: resourceId,
+      resource_id: resourceId
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => {
@@ -67,18 +58,9 @@ const ResourceQuantityPriceDrawer: React.FC<ResourceQuantityPriceDrawerType> = (
     setUploadableFile(null);
   };
 
-  const onActionSuccess = async (
-    response: IApiResponse<ResourceQuantityPrice>,
-    payload: IApiPayload<ResourceQuantityPrice>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<ResourceQuantityPrice>, payload: IApiPayload<ResourceQuantityPrice>) => {
     if (payload.files.length > 0) {
-      uploadFile(
-        payload.files[0],
-        uploadableResourceFileTypes.resourceQuantityPrice,
-        response.payload.id,
-        "",
-        "",
-      );
+      uploadFile(payload.files[0], uploadableResourceFileTypes.resourceQuantityPrice, response.payload.id, '', '');
     }
     refetch();
     toggle();
@@ -88,11 +70,7 @@ const ResourceQuantityPriceDrawer: React.FC<ResourceQuantityPriceDrawerType> = (
 
   return (
     <CustomSideDrawer
-      title={`resource.resource-quantity-price.${
-        isEdit
-          ? "edit-resource-quantity-price"
-          : "create-resource-quantity-price"
-      }`}
+      title={`resource.resource-quantity-price.${isEdit ? 'edit-resource-quantity-price' : 'create-resource-quantity-price'}`}
       handleClose={handleClose}
       open={open}
     >
@@ -103,9 +81,7 @@ const ResourceQuantityPriceDrawer: React.FC<ResourceQuantityPriceDrawerType> = (
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={resourceQuantityPrice}
-          createActionFunc={
-            isEdit ? editResourceQuantityPrice : createResourceQuantityPrice
-          }
+          createActionFunc={isEdit ? editResourceQuantityPrice : createResourceQuantityPrice}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

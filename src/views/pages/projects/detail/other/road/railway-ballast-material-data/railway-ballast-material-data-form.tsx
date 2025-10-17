@@ -1,16 +1,16 @@
-import { Grid } from "@mui/material";
-import type { FormikProps } from "formik";
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { gridSpacing } from "src/configs/app-constants";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
+import { Grid } from '@mui/material';
+import type { FormikProps } from 'formik';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { gridSpacing } from 'src/configs/app-constants';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
-import type { RailwayBallastMaterialData } from "src/types/project/other";
-import { useQuery } from "@tanstack/react-query";
-import { projectMasterModels } from "src/constants/master-data/project-general-master-constants";
-import projectGeneralMasterDataApiService from "src/services/general/project-general-master-data-service";
-import CustomSelectBox from "src/views/shared/form/custom-select";
-import { dropDownConfig } from "src/configs/api-constants";
+import type { RailwayBallastMaterialData } from 'src/types/project/other';
+import { useQuery } from '@tanstack/react-query';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
+import CustomSelectBox from 'src/views/shared/form/custom-select';
+import { dropDownConfig } from 'src/configs/api-constants';
 
 interface RailwayBallastFormProps {
   formik: FormikProps<RailwayBallastMaterialData>;
@@ -24,10 +24,10 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
       projectGeneralMasterDataApiService.getAll(
         dropDownConfig({
           filter: {
-            model: projectMasterModels.ballastMaterialType.model,
-          },
-        }),
-      ),
+            model: projectMasterModels.ballastMaterialType.model
+          }
+        })
+      )
   });
   const { data: ballastSources } = useQuery({
     queryKey: [projectMasterModels.ballastSource.model],
@@ -35,10 +35,10 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
       projectGeneralMasterDataApiService.getAll(
         dropDownConfig({
           filter: {
-            model: projectMasterModels.ballastSource.model,
-          },
-        }),
-      ),
+            model: projectMasterModels.ballastSource.model
+          }
+        })
+      )
   });
   const { data: compactionMethods } = useQuery({
     queryKey: [projectMasterModels.compactionMethod.model],
@@ -46,10 +46,10 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
       projectGeneralMasterDataApiService.getAll(
         dropDownConfig({
           filter: {
-            model: projectMasterModels.compactionMethod.model,
-          },
-        }),
-      ),
+            model: projectMasterModels.compactionMethod.model
+          }
+        })
+      )
   });
 
   return (
@@ -58,12 +58,8 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
         {/* railway_line_section_name */}
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-ballast-material-data.details.railway-line-section-name",
-          )}
-          placeholder={t(
-            "project.other.railway-ballast-material-data.details.railway-line-section-name",
-          )}
+          label={t('project.other.railway-ballast-material-data.details.railway-line-section-name')}
+          placeholder={t('project.other.railway-ballast-material-data.details.railway-line-section-name')}
           name="railway_line_section_name"
           size="small"
           sx={{ mb: 2 }}
@@ -72,19 +68,15 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
         {/* ballast_material_type_id */}
         <CustomSelectBox
           fullWidth
-          label={t(
-            "project.other.railway-ballast-material-data.details.ballast-material-type-id",
-          )}
-          placeholder={t(
-            "project.other.railway-ballast-material-data.details.ballast-material-type",
-          )}
+          label={t('project.other.railway-ballast-material-data.details.ballast-material-type-id')}
+          placeholder={t('project.other.railway-ballast-material-data.details.ballast-material-type')}
           name="ballast_material_type_id"
           size="small"
           sx={{ mb: 2 }}
           options={
             ballasterMaterialType?.payload.map((type) => ({
               label: type.title,
-              value: type.id,
+              value: type.id
             })) ||
             [] ||
             []
@@ -94,12 +86,8 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
         {/* particle_size_distribution_grading */}
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-ballast-material-data.details.particle-size-distribution-grading",
-          )}
-          placeholder={t(
-            "project.other.railway-ballast-material-data.details.particle-size-distribution-grading",
-          )}
+          label={t('project.other.railway-ballast-material-data.details.particle-size-distribution-grading')}
+          placeholder={t('project.other.railway-ballast-material-data.details.particle-size-distribution-grading')}
           name="particle_size_distribution_grading"
           size="small"
           sx={{ mb: 2 }}
@@ -108,12 +96,8 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
         {/* ballast_used_quantity */}
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-ballast-material-data.details.ballast-used-quantity",
-          )}
-          placeholder={t(
-            "project.other.railway-ballast-material-data.details.ballast-used-quantity",
-          )}
+          label={t('project.other.railway-ballast-material-data.details.ballast-used-quantity')}
+          placeholder={t('project.other.railway-ballast-material-data.details.ballast-used-quantity')}
           name="ballast_used_quantity"
           size="small"
           sx={{ mb: 2 }}
@@ -123,19 +107,15 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
         {/* ballast_source_id */}
         <CustomSelectBox
           fullWidth
-          label={t(
-            "project.other.railway-ballast-material-data.details.ballast-source-id",
-          )}
-          placeholder={t(
-            "project.other.railway-ballast-material-data.details.ballast-source-id",
-          )}
+          label={t('project.other.railway-ballast-material-data.details.ballast-source-id')}
+          placeholder={t('project.other.railway-ballast-material-data.details.ballast-source-id')}
           name="ballast_source_id"
           size="small"
           sx={{ mb: 2 }}
           options={
             ballastSources?.payload.map((type) => ({
               label: type.title,
-              value: type.id,
+              value: type.id
             })) ||
             [] ||
             []
@@ -145,12 +125,8 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
         {/* ballast_material_size */}
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-ballast-material-data.details.ballast-material-size",
-          )}
-          placeholder={t(
-            "project.other.railway-ballast-material-data.details.ballast-material-size",
-          )}
+          label={t('project.other.railway-ballast-material-data.details.ballast-material-size')}
+          placeholder={t('project.other.railway-ballast-material-data.details.ballast-material-size')}
           name="ballast_material_size"
           size="small"
           sx={{ mb: 2 }}
@@ -160,12 +136,8 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
         {/* ballast_layer_thickness */}
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-ballast-material-data.details.ballast-layer-thickness",
-          )}
-          placeholder={t(
-            "project.other.railway-ballast-material-data.details.ballast-layer-thickness",
-          )}
+          label={t('project.other.railway-ballast-material-data.details.ballast-layer-thickness')}
+          placeholder={t('project.other.railway-ballast-material-data.details.ballast-layer-thickness')}
           name="ballast_layer_thickness"
           size="small"
           sx={{ mb: 2 }}
@@ -175,19 +147,15 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
         {/* compaction_method_id */}
         <CustomSelectBox
           fullWidth
-          label={t(
-            "project.other.railway-ballast-material-data.details.compaction-method-id",
-          )}
-          placeholder={t(
-            "project.other.railway-ballast-material-data.details.compaction-method-id",
-          )}
+          label={t('project.other.railway-ballast-material-data.details.compaction-method-id')}
+          placeholder={t('project.other.railway-ballast-material-data.details.compaction-method-id')}
           name="compaction_method_id"
           size="small"
           sx={{ mb: 2 }}
           options={
             compactionMethods?.payload.map((type) => ({
               label: type.title,
-              value: type.id,
+              value: type.id
             })) ||
             [] ||
             []
@@ -197,12 +165,8 @@ const RailwayBallastForm: React.FC<RailwayBallastFormProps> = ({ formik }) => {
         {/* remark */}
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-ballast-material-data.details.remark",
-          )}
-          placeholder={t(
-            "project.other.railway-ballast-material-data.details.remark",
-          )}
+          label={t('project.other.railway-ballast-material-data.details.remark')}
+          placeholder={t('project.other.railway-ballast-material-data.details.remark')}
           name="remark"
           size="small"
           sx={{ mb: 2 }}

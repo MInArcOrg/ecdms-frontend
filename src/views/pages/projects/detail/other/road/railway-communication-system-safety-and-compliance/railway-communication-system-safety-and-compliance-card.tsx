@@ -50,39 +50,28 @@ const RailwayCommunicationSystemSafetyAndComplianceCard: React.FC<RailwayCommuni
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t(
-              'project.other.railway-communication-system-safety-and-compliance.details.railway_line_section_name'
-            )}
-            :{' '}
+            {t('project.other.railway-communication-system-safety-and-compliance.details.railway_line_section_name')}:{' '}
             {railwayCommunicationSystemSafetyAndCompliance.railway_line_section_name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t(
-              'project.other.railway-communication-system-safety-and-compliance.details.safety_measures_and_protocols_done'
-            )}
-            :{' '}
+            {t('project.other.railway-communication-system-safety-and-compliance.details.safety_measures_and_protocols_done')}:{' '}
             {railwayCommunicationSystemSafetyAndCompliance.safety_measures_and_protocols_done ? 'Yes' : 'No'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t(
               'project.other.railway-communication-system-safety-and-compliance.details.compliance_with_signaling_and_communication_standards'
             )}
-            :{' '}
-            {railwayCommunicationSystemSafetyAndCompliance.compliance_with_signaling_and_communication_standards ? 'Yes' : 'No'}
+            : {railwayCommunicationSystemSafetyAndCompliance.compliance_with_signaling_and_communication_standards ? 'Yes' : 'No'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t(
-              'project.other.railway-communication-system-safety-and-compliance.details.incident_or_accident_records'
-            )}
-            :{' '}
+            {t('project.other.railway-communication-system-safety-and-compliance.details.incident_or_accident_records')}:{' '}
             {railwayCommunicationSystemSafetyAndCompliance.incident_or_accident_records ? 'Yes' : 'No'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t(
-              'project.other.railway-communication-system-safety-and-compliance.details.incident_date'
-            )}
-            :{' '}
-            {railwayCommunicationSystemSafetyAndCompliance.incident_date ? formatDate(railwayCommunicationSystemSafetyAndCompliance.incident_date) : 'N/A'}
+            {t('project.other.railway-communication-system-safety-and-compliance.details.incident_date')}:{' '}
+            {railwayCommunicationSystemSafetyAndCompliance.incident_date
+              ? formatDate(railwayCommunicationSystemSafetyAndCompliance.incident_date)
+              : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-communication-system-safety-and-compliance.details.remark')}:{' '}
@@ -91,12 +80,9 @@ const RailwayCommunicationSystemSafetyAndComplianceCard: React.FC<RailwayCommuni
         </Box>
       </CardContent>
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        {railwayCommunicationSystemSafetyAndCompliance.id &&
-          <FileDrawer
-            id={railwayCommunicationSystemSafetyAndCompliance.id}
-            type={otherSubMenu?.fileType || ''}
-          />
-        }
+        {railwayCommunicationSystemSafetyAndCompliance.id && (
+          <FileDrawer id={railwayCommunicationSystemSafetyAndCompliance.id} type={otherSubMenu?.fileType || ''} />
+        )}
 
         {railwayCommunicationSystemSafetyAndCompliance.id && (
           <ModelAction

@@ -1,10 +1,10 @@
-import { AxiosResponse } from "axios";
-import { InspectionType } from "src/types/general/general-master";
-import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
-import axiosServices from "src/utils/axios";
-import { buildGetRequest } from "src/utils/requests/get-request";
-import { buildPostRequest } from "src/utils/requests/post-request";
-import { buildPutRequest } from "src/utils/requests/put-request";
+import { AxiosResponse } from 'axios';
+import { InspectionType } from 'src/types/general/general-master';
+import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
+import axiosServices from 'src/utils/axios';
+import { buildGetRequest } from 'src/utils/requests/get-request';
+import { buildPostRequest } from 'src/utils/requests/post-request';
+import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const inspectionTypeMasterService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<InspectionType[]>> =>
@@ -23,10 +23,7 @@ const inspectionTypeMasterService = {
 
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/inspection-types-search`, params)
-      .then(
-        (response: AxiosResponse<IApiResponse>) =>
-          response.data.payload as unknown as InspectionType[],
-      )
+      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as InspectionType[])
       .catch((error: any) => {
         throw error;
       }),
@@ -46,15 +43,12 @@ const inspectionTypeMasterService = {
         throw error;
       }),
 
-  update: (
-    id: string,
-    body: IApiPayload<InspectionType>,
-  ): Promise<IApiResponse> =>
+  update: (id: string, body: IApiPayload<InspectionType>): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/inspection-types/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      }),
+      })
 };
 
 export default inspectionTypeMasterService;

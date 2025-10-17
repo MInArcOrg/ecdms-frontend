@@ -1,22 +1,22 @@
 // ** React Imports
-import { createContext, useEffect, useState, ReactNode } from "react";
+import { createContext, useEffect, useState, ReactNode } from 'react';
 
 // ** Next Import
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
 // ** Axios
 
 // ** Config
-import authConfig from "src/configs/auth";
+import authConfig from 'src/configs/auth';
 
 // ** Types
-import { AuthValuesType, LoginParams, ErrCallbackType } from "./types";
-import User from "src/types/admin/user";
-import { buildPostRequest } from "src/utils/requests/post-request";
-import { IApiResponse } from "src/types/requests";
-import { AxiosResponse } from "axios";
-import { buildGetRequest } from "src/utils/requests/get-request";
-import getHomeRoute from "src/layouts/components/acl/getHomeRoute";
+import { AuthValuesType, LoginParams, ErrCallbackType } from './types';
+import User from 'src/types/admin/user';
+import { buildPostRequest } from 'src/utils/requests/post-request';
+import { IApiResponse } from 'src/types/requests';
+import { AxiosResponse } from 'axios';
+import { buildGetRequest } from 'src/utils/requests/get-request';
+import getHomeRoute from 'src/layouts/components/acl/getHomeRoute';
 
 // ** Defaults
 const defaultProvider: AuthValuesType = {
@@ -28,7 +28,7 @@ const defaultProvider: AuthValuesType = {
   setAuthLoading: () => Boolean,
   login: () => Promise.resolve(),
   logout: () => Promise.resolve(),
-  isGuestGuard: false,
+  isGuestGuard: false
 };
 
 const AuthContext = createContext(defaultProvider);
@@ -48,15 +48,13 @@ const AuthProvider = ({ children }: Props) => {
 
   // Get guestGuard and authGuard from window object set in _app.tsx
   let isGuestGuard = false;
-  if (typeof window !== "undefined" && window.__NEXT_GUARD_PROPS__) {
+  if (typeof window !== 'undefined' && window.__NEXT_GUARD_PROPS__) {
     isGuestGuard = window.__NEXT_GUARD_PROPS__.guestGuard;
   }
 
   useEffect(() => {
     const initAuth = async (): Promise<void> => {
-      const storedToken = `Bearer ${window.localStorage.getItem(
-        authConfig.storageTokenKeyName,
-      )!}`;
+      const storedToken = `Bearer ${window.localStorage.getItem(authConfig.storageTokenKeyName)!}`;
       if (storedToken) {
         setLoading(true);
         await buildGetRequest(authConfig.meEndpoint, {})
@@ -67,18 +65,13 @@ const AuthProvider = ({ children }: Props) => {
             const currentUrl = window.location.pathname;
 
             localStorage.removeItem(authConfig.storageUserKeyName);
-            localStorage.removeItem("refreshToken");
-            localStorage.removeItem("accessToken");
+            localStorage.removeItem('refreshToken');
+            localStorage.removeItem('accessToken');
             setUser(null);
             setLoading(false);
-            if (authConfig.onTokenExpiration === "logout" && !isGuestGuard) {
-              if (
-                !currentUrl.includes("login") &&
-                !currentUrl.includes("check-profile")
-              ) {
-                const loginRedirectURL = `/auth/login?returnUrl=${encodeURIComponent(
-                  currentUrl,
-                )}`;
+            if (authConfig.onTokenExpiration === 'logout' && !isGuestGuard) {
+              if (!currentUrl.includes('login') && !currentUrl.includes('check-profile')) {
+                const loginRedirectURL = `/auth/login?returnUrl=${encodeURIComponent(currentUrl)}`;
                 window.location.href = loginRedirectURL;
               }
             }
@@ -95,41 +88,29 @@ const AuthProvider = ({ children }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleLogin = (
-    params: LoginParams,
-    errorCallback?: ErrCallbackType,
-  ) => {
+  const handleLogin = (params: LoginParams, errorCallback?: ErrCallbackType) => {
     setAuthLoading(true);
 
     buildPostRequest(authConfig.loginEndpoint, {
-      data: params,
+      data: params
     })
       .then(async (response: AxiosResponse<IApiResponse>) => {
         const loginResponse: IApiResponse = response.data;
-        params.rememberMe
-          ? window.localStorage.setItem(
-              authConfig.storageTokenKeyName,
-              loginResponse.payload.access_token,
-            )
-          : null;
+        params.rememberMe ? window.localStorage.setItem(authConfig.storageTokenKeyName, loginResponse.payload.access_token) : null;
         const returnUrl = router.query.returnUrl;
-        console.log("returnUrl", returnUrl);
+        console.log('returnUrl', returnUrl);
         setUser({ ...loginResponse.payload.user_data });
         params.rememberMe
-          ? window.localStorage.setItem(
-              authConfig.storageUserKeyName,
-              JSON.stringify(loginResponse.payload.user_data),
-            )
+          ? window.localStorage.setItem(authConfig.storageUserKeyName, JSON.stringify(loginResponse.payload.user_data))
           : null;
 
-        const redirectURL =
-          returnUrl && returnUrl !== "/" ? returnUrl : getHomeRoute("admin");
-        console.log("redirectURL", redirectURL);
+        const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : getHomeRoute('admin');
+        console.log('redirectURL', redirectURL);
         router.replace(redirectURL as string);
       })
 
       .catch((err) => {
-        console.log("login error", err);
+        console.log('login error', err);
         if (errorCallback) errorCallback(err);
       })
       .finally(() => {
@@ -141,7 +122,7 @@ const AuthProvider = ({ children }: Props) => {
     setUser(null);
     window.localStorage.removeItem(authConfig.storageUserKeyName);
     window.localStorage.removeItem(authConfig.storageTokenKeyName);
-    router.push("/auth/login");
+    router.push('/auth/login');
   };
 
   const values = {
@@ -154,7 +135,7 @@ const AuthProvider = ({ children }: Props) => {
     login: handleLogin,
     logout: handleLogout,
     // Remove setIsGuestGuard,
-    isGuestGuard,
+    isGuestGuard
   };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;

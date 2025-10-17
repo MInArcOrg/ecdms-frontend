@@ -1,17 +1,8 @@
 // ** React Imports
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 // ** MUI Imports
-import {
-  Paper,
-  Table,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TablePagination,
-} from "@mui/material";
+import { Paper, Table, TableRow, TableHead, TableBody, TableCell, TableContainer, TablePagination } from '@mui/material';
 
 interface Year {
   id: string | number;
@@ -33,19 +24,17 @@ interface TableViewProps {
 const TableView = ({ years, baseYear, regions, data = [] }: TableViewProps) => {
   // Columns
   const columns = [
-    { id: "label", label: "Region", minWidth: 170 },
+    { id: 'label', label: 'Region', minWidth: 170 },
     ...years.map((year) => ({
       id: year.id,
       label: year.name,
-      minWidth: 100,
-    })),
+      minWidth: 100
+    }))
   ];
 
   function createData(label: string, values: number[]) {
     // Normalize each value as % of base year value
-    const normalized = values.map((v, i) =>
-      Number((v / values[baseYear]) * 100).toFixed(0)
-    );
+    const normalized = values.map((v, i) => Number((v / values[baseYear]) * 100).toFixed(0));
     return { label, ...normalized };
   }
 
@@ -67,9 +56,7 @@ const TableView = ({ years, baseYear, regions, data = [] }: TableViewProps) => {
   useEffect(() => {
     if (regions?.length > 0) {
       const mockValues = [100, 120, 140, 150, 155, 160, 170, 175, 180, 185];
-      const newRows = regions.map((region) =>
-        createData(region.name, mockValues)
-      );
+      const newRows = regions.map((region) => createData(region.name, mockValues));
       setRows(newRows);
     }
   }, [regions, baseYear]);
@@ -77,37 +64,31 @@ const TableView = ({ years, baseYear, regions, data = [] }: TableViewProps) => {
   const displayRows = rows.length > 0 ? rows : data;
 
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="regional-growth-table">
           <TableHead>
             <TableRow>
               {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align="left"
-                  sx={{ minWidth: column.minWidth, fontWeight: 600 }}
-                >
+                <TableCell key={column.id} align="left" sx={{ minWidth: column.minWidth, fontWeight: 600 }}>
                   {column.label}
                 </TableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
-            {displayRows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row: any, index: number) => (
-                <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                  {columns.map((column) => {
-                    const value = row[column.id];
-                    return (
-                      <TableCell key={column.id} align="left">
-                        {value !== undefined ? value : "-"}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              ))}
+            {displayRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row: any, index: number) => (
+              <TableRow hover role="checkbox" tabIndex={-1} key={index}>
+                {columns.map((column) => {
+                  const value = row[column.id];
+                  return (
+                    <TableCell key={column.id} align="left">
+                      {value !== undefined ? value : '-'}
+                    </TableCell>
+                  );
+                })}
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>

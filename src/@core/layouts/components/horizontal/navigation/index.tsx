@@ -1,21 +1,19 @@
 // ** MUI Imports
-import Box from "@mui/material/Box";
+import Box from '@mui/material/Box';
 
 // ** Type Import
-import { LayoutProps } from "src/@core/layouts/types";
+import { LayoutProps } from 'src/@core/layouts/types';
 
 // ** Config Import
-import themeConfig from "src/configs/themeConfig";
+import themeConfig from 'src/configs/themeConfig';
 
 // ** Menu Components
-import HorizontalNavItems from "./HorizontalNavItems";
+import HorizontalNavItems from './HorizontalNavItems';
 
 // ** Types
 interface Props {
-  settings: LayoutProps["settings"];
-  horizontalNavItems: NonNullable<
-    NonNullable<LayoutProps["horizontalLayoutProps"]>["navMenu"]
-  >["navItems"];
+  settings: LayoutProps['settings'];
+  horizontalNavItems: NonNullable<NonNullable<LayoutProps['horizontalLayoutProps']>['navMenu']>['navItems'];
 }
 
 const Navigation = (props: Props) => {
@@ -23,13 +21,13 @@ const Navigation = (props: Props) => {
     <Box
       className="menu-content"
       sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        alignItems: "center",
-        "& > *": {
-          "&:not(:last-child)": { mr: 1 },
-          ...(themeConfig.menuTextTruncate && { maxWidth: 200 }),
-        },
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        '& > *': {
+          '&:not(:last-child)': { mr: 1 },
+          ...(themeConfig.menuTextTruncate && { maxWidth: 200 })
+        }
       }}
     >
       <HorizontalNavItems {...props} />

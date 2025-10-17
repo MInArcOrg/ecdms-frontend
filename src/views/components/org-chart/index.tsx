@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import ReactDOMServer from "react-dom/server";
-import StructureCard from "./card";
+import { useEffect, useRef, useState } from 'react';
+import ReactDOMServer from 'react-dom/server';
+import StructureCard from './card';
 
 const Obs = (props: any) => {
   const d3Container = useRef<HTMLDivElement>(null);
@@ -10,7 +10,7 @@ const Obs = (props: any) => {
 
   useEffect(() => {
     const initializeChart = async () => {
-      const { OrgChart } = await import("d3-org-chart");
+      const { OrgChart } = await import('d3-org-chart');
       setChart(new OrgChart<any>());
     };
 
@@ -35,7 +35,7 @@ const Obs = (props: any) => {
         .compactMarginBetween((d: any) => 35)
         .compactMarginPair((d: any) => 80)
         .onNodeClick((d: any) => {
-          console.log(d, "Id of clicked node ");
+          console.log(d, 'Id of clicked node ');
         })
         .nodeContent(function (d: any) {
           return ReactDOMServer.renderToStaticMarkup(<StructureCard d={d} />);

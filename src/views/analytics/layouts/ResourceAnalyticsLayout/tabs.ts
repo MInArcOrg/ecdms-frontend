@@ -34,4 +34,4 @@ export const menuItems = () => [
     subject: 'projectinfo',
     path: '/analytics/resource/matrixTree'
   }
-]
+];

@@ -1,5 +1,5 @@
 // ** MUI Imports
-import CircularProgress from "@mui/material/CircularProgress";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const ProgressCircularIndeterminate = () => {
   return <CircularProgress />;

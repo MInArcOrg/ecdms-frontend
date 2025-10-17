@@ -1,6 +1,6 @@
-import React from "react";
-import { Box, Slider } from "@mui/material";
-import { Field, ErrorMessage, FieldProps } from "formik";
+import React from 'react';
+import { Box, Slider } from '@mui/material';
+import { Field, ErrorMessage, FieldProps } from 'formik';
 
 interface CustomRangeSliderProps {
   name: string;
@@ -9,12 +9,7 @@ interface CustomRangeSliderProps {
   defaultValue: [number, number]; // Define defaultValue prop
 }
 
-const CustomRangeSlider: React.FC<CustomRangeSliderProps> = ({
-  name,
-  min,
-  max,
-  defaultValue,
-}) => {
+const CustomRangeSlider: React.FC<CustomRangeSliderProps> = ({ name, min, max, defaultValue }) => {
   return (
     <Box sx={{ width: 300 }}>
       <Field name={name}>
@@ -32,9 +27,7 @@ const CustomRangeSlider: React.FC<CustomRangeSliderProps> = ({
           />
         )}
       </Field>
-      <ErrorMessage name={name}>
-        {(msg) => <div style={{ color: "red" }}>{msg}</div>}
-      </ErrorMessage>
+      <ErrorMessage name={name}>{(msg) => <div style={{ color: 'red' }}>{msg}</div>}</ErrorMessage>
     </Box>
   );
 };

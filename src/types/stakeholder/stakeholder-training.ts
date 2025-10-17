@@ -1,9 +1,9 @@
-import EthiopianDate from "src/views/components/custom/ethio-calendar/ethiopian-date";
+import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
 
 // Define the enum for training types
 export enum TrainingType {
-  TRAINING = "TRAINING",
-  SUPPORT = "SUPPORT",
+  TRAINING = 'TRAINING',
+  SUPPORT = 'SUPPORT'
 }
 
 export interface StakeholderTraining {

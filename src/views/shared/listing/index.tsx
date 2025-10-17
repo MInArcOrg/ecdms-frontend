@@ -1,23 +1,20 @@
-import { Container, GridProps, Typography, useMediaQuery } from "@mui/material";
-import { GridColDef } from "@mui/x-data-grid";
-import { isArray } from "lodash";
-import { Fragment, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import {
-  CreateActionConfig,
-  defaultCreateActionConfig,
-} from "src/types/general/listing";
-import { GetRequestParam, defaultGetRequestParam } from "src/types/requests";
-import { Pagination } from "src/types/requests/pagination";
-import Loader from "src/views/components/loader";
-import Page from "src/views/components/page/page";
-import PaginationComponent from "../pagination";
-import ListHeader from "./header";
-import GridListing from "./list-types/grid-listing";
-import ListListing from "./list-types/list-listing";
-import MasonryListing from "./list-types/masonry-listing";
-import TableListing from "./list-types/table-listing";
+import { Container, GridProps, Typography, useMediaQuery } from '@mui/material';
+import { GridColDef } from '@mui/x-data-grid';
+import { isArray } from 'lodash';
+import { Fragment, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import { CreateActionConfig, defaultCreateActionConfig } from 'src/types/general/listing';
+import { GetRequestParam, defaultGetRequestParam } from 'src/types/requests';
+import { Pagination } from 'src/types/requests/pagination';
+import Loader from 'src/views/components/loader';
+import Page from 'src/views/components/page/page';
+import PaginationComponent from '../pagination';
+import ListHeader from './header';
+import GridListing from './list-types/grid-listing';
+import ListListing from './list-types/list-listing';
+import MasonryListing from './list-types/masonry-listing';
+import TableListing from './list-types/table-listing';
 
 const ItemsListing = <T extends object>({
   items,
@@ -38,7 +35,7 @@ const ItemsListing = <T extends object>({
   FilterComponentItems,
   searchKeys = [],
   createActionConfig = defaultCreateActionConfig,
-  breakpoints,
+  breakpoints
 }: {
   items: T[];
   pagination?: Pagination | null;
@@ -63,19 +60,17 @@ const ItemsListing = <T extends object>({
   hasListHeader?: boolean;
   createActionConfig: CreateActionConfig;
   breakpoints?: {
-    xs?: GridProps["xs"];
-    sm?: GridProps["sm"];
-    md?: GridProps["md"];
-    lg?: GridProps["lg"];
-    xl?: GridProps["xl"];
+    xs?: GridProps['xs'];
+    sm?: GridProps['sm'];
+    md?: GridProps['md'];
+    lg?: GridProps['lg'];
+    xl?: GridProps['xl'];
   };
 }) => {
   const { i18n } = useTranslation();
-  const isSmallScreen = useMediaQuery("(max-width:600px)");
+  const isSmallScreen = useMediaQuery('(max-width:600px)');
 
-  const [fetchRequestParams, setFetchRequestParams] = useState<GetRequestParam>(
-    defaultGetRequestParam,
-  );
+  const [fetchRequestParams, setFetchRequestParams] = useState<GetRequestParam>(defaultGetRequestParam);
   const onPagination =
     onPaginationChange ||
     ((pageSize: any, page: any) => {
@@ -83,7 +78,7 @@ const ItemsListing = <T extends object>({
         ...fetchRequestParams,
         locale: i18n.language,
         ...additionalParams,
-        pagination: { pageSize: pageSize, page: page },
+        pagination: { pageSize: pageSize, page: page }
       };
       fetchDataFunction(fetchParam);
     });
@@ -96,18 +91,10 @@ const ItemsListing = <T extends object>({
   const adjustedType = getAdjustedListingType(type, isSmallScreen);
 
   const listingComponents = {
-    [ITEMS_LISTING_TYPE.masonry.value]: ItemViewComponent && (
-      <MasonryListing ItemViewComponent={ItemViewComponent} items={items} />
-    ),
-    [ITEMS_LISTING_TYPE.list.value]: ItemViewComponent && (
-      <ListListing ItemViewComponent={ItemViewComponent} items={items} />
-    ),
+    [ITEMS_LISTING_TYPE.masonry.value]: ItemViewComponent && <MasonryListing ItemViewComponent={ItemViewComponent} items={items} />,
+    [ITEMS_LISTING_TYPE.list.value]: ItemViewComponent && <ListListing ItemViewComponent={ItemViewComponent} items={items} />,
     [ITEMS_LISTING_TYPE.grid.value]: ItemViewComponent && (
-      <GridListing
-        ItemViewComponent={ItemViewComponent}
-        items={items}
-        breakpoints={breakpoints}
-      />
+      <GridListing ItemViewComponent={ItemViewComponent} items={items} breakpoints={breakpoints} />
     ),
     [ITEMS_LISTING_TYPE.table.value]: tableProps?.headers && (
       <TableListing
@@ -118,9 +105,7 @@ const ItemsListing = <T extends object>({
         columns={tableProps?.headers}
       />
     ),
-    default: ItemViewComponent && (
-      <GridListing ItemViewComponent={ItemViewComponent} items={items} />
-    ),
+    default: ItemViewComponent && <GridListing ItemViewComponent={ItemViewComponent} items={items} />
   };
 
   return (
@@ -134,7 +119,7 @@ const ItemsListing = <T extends object>({
           hasExport={hasExport}
           hasSearch={hasSearch}
           searchKeys={searchKeys}
-          title={title || ""}
+          title={title || ''}
         ></ListHeader>
       )}
 
@@ -147,21 +132,17 @@ const ItemsListing = <T extends object>({
           <Fragment>
             {items.length === 0 ? (
               <Typography variant="h6" align="center" sx={{ m: 5 }}>
-                {i18n.t("common.listing.no-items-available")}
+                {i18n.t('common.listing.no-items-available')}
               </Typography>
             ) : (
               <>
                 {listingComponents[adjustedType] || listingComponents.default}
                 <></>
-                {adjustedType !== ITEMS_LISTING_TYPE.table.value &&
-                  pagination && (
-                    <Container>
-                      <PaginationComponent
-                        onPaginationChange={onPagination}
-                        pagination={pagination}
-                      ></PaginationComponent>
-                    </Container>
-                  )}
+                {adjustedType !== ITEMS_LISTING_TYPE.table.value && pagination && (
+                  <Container>
+                    <PaginationComponent onPaginationChange={onPagination} pagination={pagination}></PaginationComponent>
+                  </Container>
+                )}
               </>
             )}
           </Fragment>

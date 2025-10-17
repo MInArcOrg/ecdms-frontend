@@ -1,10 +1,10 @@
-import { AxiosResponse } from "axios";
-import { CountType } from "src/types/general/general-master";
-import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
-import axiosServices from "src/utils/axios";
-import { buildGetRequest } from "src/utils/requests/get-request";
-import { buildPostRequest } from "src/utils/requests/post-request";
-import { buildPutRequest } from "src/utils/requests/put-request";
+import { AxiosResponse } from 'axios';
+import { CountType } from 'src/types/general/general-master';
+import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
+import axiosServices from 'src/utils/axios';
+import { buildGetRequest } from 'src/utils/requests/get-request';
+import { buildPostRequest } from 'src/utils/requests/post-request';
+import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const countTypeMasterService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<CountType[]>> =>
@@ -22,10 +22,7 @@ const countTypeMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/count-types-search`, params)
-      .then(
-        (response: AxiosResponse<IApiResponse>) =>
-          response.data.payload as unknown as CountType[],
-      )
+      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as CountType[])
       .catch((error: any) => {
         throw error;
       }),
@@ -48,7 +45,7 @@ const countTypeMasterService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      }),
+      })
 };
 
 export default countTypeMasterService;

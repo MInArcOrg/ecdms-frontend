@@ -1,13 +1,13 @@
-import type { FormikProps } from "formik";
-import type { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import BridgeStructureInformationForm from "./bridge-structure-information-form";
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import BridgeStructureInformationForm from './bridge-structure-information-form';
 
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import type { BridgeStructureInformation } from "src/types/project/other";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import type { BridgeStructureInformation } from 'src/types/project/other';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface BridgeStructureInformationDrawerType {
   open: boolean;
@@ -18,62 +18,39 @@ interface BridgeStructureInformationDrawerType {
   otherSubMenu?: DetailSubMenuItemChild;
 }
 
-const BridgeStructureInformationDrawer = (
-  props: BridgeStructureInformationDrawerType,
-) => {
-  const {
-    open,
-    toggle,
-    refetch,
-    bridgeStructureInformation,
-    projectId,
-    otherSubMenu,
-  } = props;
+const BridgeStructureInformationDrawer = (props: BridgeStructureInformationDrawerType) => {
+  const { open, toggle, refetch, bridgeStructureInformation, projectId, otherSubMenu } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    bridge_name: yup.string().required("Bridge name is required"),
-    bridge_structure_type_id: yup
-      .string()
-      .required("Bridge structure type is required"),
+    name: yup.string().required('Name is required'),
+    bridge_name: yup.string().required('Bridge name is required'),
+    bridge_structure_type_id: yup.string().required('Bridge structure type is required')
   });
 
   const isEdit = Boolean(bridgeStructureInformation?.id);
 
-  const createBridgeStructureInformation = async (
-    body: IApiPayload<BridgeStructureInformation>,
-  ) =>
-    projectOtherApiSecondService<BridgeStructureInformation>().create(
-      otherSubMenu?.apiRoute || "",
-      body,
-    );
+  const createBridgeStructureInformation = async (body: IApiPayload<BridgeStructureInformation>) =>
+    projectOtherApiSecondService<BridgeStructureInformation>().create(otherSubMenu?.apiRoute || '', body);
 
-  const editBridgeStructureInformation = async (
-    body: IApiPayload<BridgeStructureInformation>,
-  ) =>
+  const editBridgeStructureInformation = async (body: IApiPayload<BridgeStructureInformation>) =>
     projectOtherApiSecondService<BridgeStructureInformation>().update(
-      otherSubMenu?.apiRoute || "",
-      bridgeStructureInformation?.id || "",
-      body,
+      otherSubMenu?.apiRoute || '',
+      bridgeStructureInformation?.id || '',
+      body
     );
 
-  const getPayload = (
-    values: BridgeStructureInformation,
-  ): IApiPayload<BridgeStructureInformation> => ({
+  const getPayload = (values: BridgeStructureInformation): IApiPayload<BridgeStructureInformation> => ({
     data: {
       ...values,
       project_id: projectId,
-      id: bridgeStructureInformation?.id,
+      id: bridgeStructureInformation?.id
     } as BridgeStructureInformation,
-    files: [],
+    files: []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<BridgeStructureInformation>,
-    payload: IApiPayload<BridgeStructureInformation>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<BridgeStructureInformation>, payload: IApiPayload<BridgeStructureInformation>) => {
     refetch();
     handleClose();
   };
@@ -81,9 +58,7 @@ const BridgeStructureInformationDrawer = (
   return (
     <CustomSideDrawer
       title={`project.other.bridge-structure-information.${
-        isEdit
-          ? `edit-bridge-structure-information`
-          : `create-bridge-structure-information`
+        isEdit ? `edit-bridge-structure-information` : `create-bridge-structure-information`
       }`}
       handleClose={handleClose}
       open={open}
@@ -92,20 +67,14 @@ const BridgeStructureInformationDrawer = (
         <FormPageWrapper
           edit={isEdit}
           title={`project.other.bridge-structure-information.${
-            isEdit
-              ? `edit-bridge-structure-information`
-              : `create-bridge-structure-information`
+            isEdit ? `edit-bridge-structure-information` : `create-bridge-structure-information`
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...bridgeStructureInformation,
+            ...bridgeStructureInformation
           }}
-          createActionFunc={
-            isEdit
-              ? editBridgeStructureInformation
-              : createBridgeStructureInformation
-          }
+          createActionFunc={isEdit ? editBridgeStructureInformation : createBridgeStructureInformation}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

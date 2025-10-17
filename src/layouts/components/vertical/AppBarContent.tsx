@@ -1,23 +1,23 @@
 // ** MUI Imports
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
 
 // ** Icon Imports
-import Icon from "src/@core/components/icon";
+import Icon from 'src/@core/components/icon';
 
 // ** Type Import
-import { Settings } from "src/@core/context/settingsContext";
+import { Settings } from 'src/@core/context/settingsContext';
 
 // ** Components
-import LanguageDropdown from "src/@core/layouts/components/shared-components/LanguageDropdown";
-import ModeToggler from "src/@core/layouts/components/shared-components/ModeToggler";
-import NotificationDropdown from "src/@core/layouts/components/shared-components/NotificationDropdown";
-import ShortcutsDropdown from "src/@core/layouts/components/shared-components/ShortcutsDropdown";
-import UserDropdown from "src/@core/layouts/components/shared-components/UserDropdown";
-import { styled } from "@mui/material/styles";
+import LanguageDropdown from 'src/@core/layouts/components/shared-components/LanguageDropdown';
+import ModeToggler from 'src/@core/layouts/components/shared-components/ModeToggler';
+import NotificationDropdown from 'src/@core/layouts/components/shared-components/NotificationDropdown';
+import ShortcutsDropdown from 'src/@core/layouts/components/shared-components/ShortcutsDropdown';
+import UserDropdown from 'src/@core/layouts/components/shared-components/UserDropdown';
+import { styled } from '@mui/material/styles';
 
 // ** Hook Import
-import { useAuth } from "src/hooks/useAuth";
+import { useAuth } from 'src/hooks/useAuth';
 
 interface Props {
   hidden: boolean;
@@ -25,16 +25,16 @@ interface Props {
   toggleNavVisibility: () => void;
   saveSettings: (values: Settings) => void;
 }
-const LogoImg = styled("img")<{ width?: number; height?: number }>(({ width, height }) => ({
+const LogoImg = styled('img')<{ width?: number; height?: number }>(({ width, height }) => ({
   width: width ?? 120,
-  height: height ?? "auto",
-  objectFit: "contain",
-  display: "block",
-  marginLeft: "auto",
-  marginRight: "10px",
-  marginTop: "auto",
-  marginBottom: "auto",
-  borderRadius: "50%",
+  height: height ?? 'auto',
+  objectFit: 'contain',
+  display: 'block',
+  marginLeft: 'auto',
+  marginRight: '10px',
+  marginTop: 'auto',
+  marginBottom: 'auto',
+  borderRadius: '50%'
 }));
 const AppBarContent = (props: Props) => {
   // ** Props
@@ -46,30 +46,20 @@ const AppBarContent = (props: Props) => {
   return (
     <Box
       sx={{
-        width: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between'
       }}
     >
-      <Box
-        className="actions-left"
-        sx={{ mr: 2, display: "flex", alignItems: "center" }}
-      >
+      <Box className="actions-left" sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
         {hidden && !settings.navHidden ? (
-          <IconButton
-            color="inherit"
-            sx={{ ml: -2.75 }}
-            onClick={toggleNavVisibility}
-          >
+          <IconButton color="inherit" sx={{ ml: -2.75 }} onClick={toggleNavVisibility}>
             <Icon fontSize="1.5rem" icon="tabler:menu-2" />
           </IconButton>
         ) : null}
       </Box>
-      <Box
-        className="actions-right"
-        sx={{ display: "flex", alignItems: "center" }}
-      >
+      <Box className="actions-right" sx={{ display: 'flex', alignItems: 'center' }}>
         <LogoImg src="/images/pages/minster-logo-light.png" width={50} height={50} />
         <LanguageDropdown settings={settings} saveSettings={saveSettings} />
         <ModeToggler settings={settings} saveSettings={saveSettings} />

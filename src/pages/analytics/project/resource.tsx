@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function resource() {
-  return <div>resource</div>
+  return <div>resource</div>;
 }
 
-export default resource
+export default resource;

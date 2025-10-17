@@ -1,32 +1,24 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
+import { Box } from '@mui/material';
+import { useState } from 'react';
 
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import projectPaymentApiService from "src/services/project/project-payment-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import { ProjectPayment } from "src/types/project/project-finance";
-import { GetRequestParam, IApiResponse } from "src/types/requests";
-import ItemsListing from "src/views/shared/listing";
-import ProjectPaymentCard from "./project-payment-card";
-import ProjectPaymentDrawer from "./project-payment-drawer";
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import projectPaymentApiService from 'src/services/project/project-payment-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { ProjectPayment } from 'src/types/project/project-finance';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import ItemsListing from 'src/views/shared/listing';
+import ProjectPaymentCard from './project-payment-card';
+import ProjectPaymentDrawer from './project-payment-drawer';
 
-function ProjectPaymentList({
-  type,
-  projectId,
-}: {
-  type: string;
-  projectId: string;
-}) {
+function ProjectPaymentList({ type, projectId }: { type: string; projectId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
 
   const [selectedRow, setSelectedRow] = useState<ProjectPayment | null>(null);
-  const fetchProjectPayments = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<ProjectPayment[]>> => {
+  const fetchProjectPayments = (params: GetRequestParam): Promise<IApiResponse<ProjectPayment[]>> => {
     return projectPaymentApiService.getAll({
       ...params,
-      filter: { ...params.filter, type: type },
+      filter: { ...params.filter, type: type }
     });
   };
 
@@ -35,10 +27,10 @@ function ProjectPaymentList({
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<ProjectPayment[]>({
-    queryKey: ["projectPayments", type],
-    fetchFunction: fetchProjectPayments,
+    queryKey: ['projectPayments', type],
+    fetchFunction: fetchProjectPayments
   });
 
   const toggleDrawer = () => {
@@ -73,22 +65,16 @@ function ProjectPaymentList({
         type={ITEMS_LISTING_TYPE.list.value}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <ProjectPaymentCard
-            type={type}
-            onEdit={handleEdit}
-            refetch={refetch}
-            projectPayment={data}
-            onDelete={handleDelete}
-          />
+          <ProjectPaymentCard type={type} onEdit={handleEdit} refetch={refetch} projectPayment={data} onDelete={handleDelete} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "payments",
-          },
+            action: 'create',
+            subject: 'payments'
+          }
         }}
         fetchDataFunction={refetch}
         items={projectPayments || []}

@@ -1,10 +1,10 @@
-import { AxiosResponse } from "axios";
-import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
-import axiosServices from "src/utils/axios";
-import { buildGetRequest } from "src/utils/requests/get-request";
-import { buildPostRequest } from "src/utils/requests/post-request";
-import { buildPutRequest } from "src/utils/requests/put-request";
-import { ProjectBond } from "src/types/project/project-finance";
+import { AxiosResponse } from 'axios';
+import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
+import axiosServices from 'src/utils/axios';
+import { buildGetRequest } from 'src/utils/requests/get-request';
+import { buildPostRequest } from 'src/utils/requests/post-request';
+import { buildPutRequest } from 'src/utils/requests/put-request';
+import { ProjectBond } from 'src/types/project/project-finance';
 
 const projectBondApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<ProjectBond[]>> =>
@@ -41,7 +41,7 @@ const projectBondApiService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      }),
+      })
 };
 
 export default projectBondApiService;

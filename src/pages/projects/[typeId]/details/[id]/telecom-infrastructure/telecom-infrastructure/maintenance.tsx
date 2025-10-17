@@ -1,25 +1,16 @@
-import { useRouter } from "next/router";
-import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
-import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
-import MaintenanceList from "src/views/pages/projects/detail/other/telecom/maintenance";
-import subMenuItems, {
-  findSubMenuItem,
-  telecomInfrastructureId,
-} from "../(subMenuItems)";
+import { useRouter } from 'next/router';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
+import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import MaintenanceList from 'src/views/pages/projects/detail/other/telecom/maintenance';
+import subMenuItems, { findSubMenuItem, telecomInfrastructureId } from '../(subMenuItems)';
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems("", ""),
-  telecomInfrastructureId.telecom.maintenance,
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), telecomInfrastructureId.telecom.maintenance);
 
 const Maintenance = () => {
   const router = useRouter();
-  const { id = "", typeId = "" } = router.query;
+  const { id = '', typeId = '' } = router.query;
 
-  const menuItem = findSubMenuItem(
-    subMenuItems(id as string, typeId as string),
-    telecomInfrastructureId.telecom.maintenance,
-  );
+  const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), telecomInfrastructureId.telecom.maintenance);
 
   return (
     <ProjectLayout
@@ -27,11 +18,7 @@ const Maintenance = () => {
       activeSubMenuId={telecomInfrastructureId.telecom.maintenance}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <MaintenanceList
-        otherSubMenu={menuItem}
-        typeId={String(typeId)}
-        projectId={String(id)}
-      />
+      <MaintenanceList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>
   );
 };
@@ -39,7 +26,7 @@ const Maintenance = () => {
 // Access control configuration
 Maintenance.acl = {
   subject: defaultMenuItem?.model,
-  action: "view",
+  action: 'view'
 };
 
 export default Maintenance;

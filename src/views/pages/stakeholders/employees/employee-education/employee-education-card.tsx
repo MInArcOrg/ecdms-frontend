@@ -1,8 +1,8 @@
-import { Box, Card, Typography } from "@mui/material";
-import { useTranslation } from "react-i18next";
-import { EmployeeEducation } from "src/types/stakeholder/employee-education";
-import ModelActionComponent from "src/views/components/custom/model-actions";
-import RowOptions from "src/views/shared/listing/row-options";
+import { Box, Card, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import { EmployeeEducation } from 'src/types/stakeholder/employee-education';
+import ModelActionComponent from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface EmployeeEducationCardProps {
   employeeEducation: EmployeeEducation;
@@ -11,12 +11,7 @@ interface EmployeeEducationCardProps {
   onDelete: (id: string) => void;
 }
 
-const EmployeeEducationCard: React.FC<EmployeeEducationCardProps> = ({
-  employeeEducation,
-  refetch,
-  onEdit,
-  onDelete,
-}) => {
+const EmployeeEducationCard: React.FC<EmployeeEducationCardProps> = ({ employeeEducation, refetch, onEdit, onDelete }) => {
   const { t } = useTranslation();
 
   return (
@@ -25,38 +20,31 @@ const EmployeeEducationCard: React.FC<EmployeeEducationCardProps> = ({
         {/* Info Column */}
         <Box mt={2}>
           <Typography variant="h6" fontWeight="bold">
-            {t("stakeholder.employee-education.form.year")}:{" "}
-            {new Date(employeeEducation.year).getFullYear()}
+            {t('stakeholder.employee-education.form.year')}: {new Date(employeeEducation.year).getFullYear()}
           </Typography>
 
           <Typography variant="body1">
-            {t("stakeholder.employee-education.form.domain")}:{" "}
-            {employeeEducation.domain}
+            {t('stakeholder.employee-education.form.domain')}: {employeeEducation.domain}
           </Typography>
 
           <Typography variant="body2">
-            {t("stakeholder.employee-education.form.department-name")}:{" "}
-            {employeeEducation.department_name || t("common.none")}
+            {t('stakeholder.employee-education.form.department-name')}: {employeeEducation.department_name || t('common.none')}
           </Typography>
 
           <Typography variant="body2">
-            {t("stakeholder.employee-education.form.nationality")}:{" "}
-            {employeeEducation.nationality as string}
+            {t('stakeholder.employee-education.form.nationality')}: {employeeEducation.nationality as string}
           </Typography>
 
           <Typography variant="body2">
-            {t("stakeholder.employee-education.form.male")}:{" "}
-            {employeeEducation.male}
+            {t('stakeholder.employee-education.form.male')}: {employeeEducation.male}
           </Typography>
 
           <Typography variant="body2">
-            {t("stakeholder.employee-education.form.female")}:{" "}
-            {employeeEducation.female}
+            {t('stakeholder.employee-education.form.female')}: {employeeEducation.female}
           </Typography>
 
           <Typography variant="body2">
-            {t("stakeholder.employee-education.form.employee-educations")}:{" "}
-            {employeeEducation.total_employees}
+            {t('stakeholder.employee-education.form.employee-educations')}: {employeeEducation.total_employees}
           </Typography>
         </Box>
 
@@ -69,7 +57,7 @@ const EmployeeEducationCard: React.FC<EmployeeEducationCardProps> = ({
             resubmit={() => {
               /* Handle resubmit action */
             }}
-            title={t("stakeholder.employee-education.form.title")}
+            title={t('stakeholder.employee-education.form.title')}
             postAction={() => {
               /* Handle post action */
             }}
@@ -79,12 +67,12 @@ const EmployeeEducationCard: React.FC<EmployeeEducationCardProps> = ({
             onEdit={() => onEdit(employeeEducation)}
             onDelete={() => onDelete(employeeEducation.id)}
             deletePermissionRule={{
-              action: "delete",
-              subject: "totalemployee",
+              action: 'delete',
+              subject: 'totalemployee'
             }}
             editPermissionRule={{
-              action: "update",
-              subject: "totalemployee",
+              action: 'update',
+              subject: 'totalemployee'
             }}
             item={employeeEducation}
             options={[]}

@@ -1,18 +1,10 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Divider,
-  Typography,
-} from "@mui/material";
-import type React from "react";
-import { useTranslation } from "react-i18next";
-import type { StakeholderBranch } from "src/types/stakeholder/stakeholder-branch";
-import type { BusinessFields } from "src/types/general/general-master";
-import ModelAction from "src/views/components/custom/model-actions";
-import RowOptions from "src/views/shared/listing/row-options";
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
+import type React from 'react';
+import { useTranslation } from 'react-i18next';
+import type { StakeholderBranch } from 'src/types/stakeholder/stakeholder-branch';
+import type { BusinessFields } from 'src/types/general/general-master';
+import ModelAction from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface BranchCardProps {
   branch: StakeholderBranch;
@@ -23,30 +15,18 @@ interface BranchCardProps {
   businessFields: BusinessFields[];
 }
 
-const BranchCard: React.FC<BranchCardProps> = ({
-  branch,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail,
-  businessFields,
-}) => {
+const BranchCard: React.FC<BranchCardProps> = ({ branch, refetch, onEdit, onDelete, onDetail, businessFields }) => {
   const { t } = useTranslation();
 
   const getBusinessFieldTitle = (id: string) => {
     const field = businessFields.find((f) => f.id === id);
-    return field ? field.title : "N/A";
+    return field ? field.title : 'N/A';
   };
 
   return (
     <Card sx={{ p: 2 }}>
       <CardContent>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          mb={1}
-        >
+        <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
           <Typography variant="h5" fontWeight="bold">
             <Typography
               noWrap
@@ -54,9 +34,9 @@ const BranchCard: React.FC<BranchCardProps> = ({
               onClick={() => onDetail(branch)}
               sx={{
                 fontWeight: 500,
-                textDecoration: "none",
-                color: "text.secondary",
-                "&:hover": { color: "primary.main" },
+                textDecoration: 'none',
+                color: 'text.secondary',
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {branch.name}
@@ -68,24 +48,21 @@ const BranchCard: React.FC<BranchCardProps> = ({
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t("stakeholder.stakeholder-branch.tinNumber")}:{" "}
-            {branch.tin_number || t("common.not-available")}
+            {t('stakeholder.stakeholder-branch.tinNumber')}: {branch.tin_number || t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("stakeholder.stakeholder-branch.businessFieldId")}:{" "}
-            {getBusinessFieldTitle(branch.business_field_id)}
+            {t('stakeholder.stakeholder-branch.businessFieldId')}: {getBusinessFieldTitle(branch.business_field_id)}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("stakeholder.stakeholder-branch.description")}:{" "}
-            {branch.description || t("common.not-available")}
+            {t('stakeholder.stakeholder-branch.description')}: {branch.description || t('common.not-available')}
           </Typography>
         </Box>
       </CardContent>
 
-      <CardActions sx={{ justifyContent: "flex-end" }}>
+      <CardActions sx={{ justifyContent: 'flex-end' }}>
         <ModelAction
           model="StakeholderBranch"
-          model_id={branch?.id || ""}
+          model_id={branch?.id || ''}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
@@ -93,15 +70,15 @@ const BranchCard: React.FC<BranchCardProps> = ({
         />
         <RowOptions
           deletePermissionRule={{
-            action: "delete",
-            subject: "stakeholderbranch",
+            action: 'delete',
+            subject: 'stakeholderbranch'
           }}
           editPermissionRule={{
-            action: "update",
-            subject: "stakeholderbranch",
+            action: 'update',
+            subject: 'stakeholderbranch'
           }}
           onEdit={() => onEdit(branch)}
-          onDelete={() => onDelete(branch?.id || "")}
+          onDelete={() => onDelete(branch?.id || '')}
           item={branch}
           options={[]}
         />

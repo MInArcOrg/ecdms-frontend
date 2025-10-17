@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function other() {
-  return <div>other</div>
+  return <div>other</div>;
 }
 
-export default other
+export default other;

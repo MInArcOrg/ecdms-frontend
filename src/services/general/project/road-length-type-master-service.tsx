@@ -1,10 +1,10 @@
-import { AxiosResponse } from "axios";
-import { RoadLengthType } from "src/types/general/general-master";
-import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
-import axiosServices from "src/utils/axios";
-import { buildGetRequest } from "src/utils/requests/get-request";
-import { buildPostRequest } from "src/utils/requests/post-request";
-import { buildPutRequest } from "src/utils/requests/put-request";
+import { AxiosResponse } from 'axios';
+import { RoadLengthType } from 'src/types/general/general-master';
+import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
+import axiosServices from 'src/utils/axios';
+import { buildGetRequest } from 'src/utils/requests/get-request';
+import { buildPostRequest } from 'src/utils/requests/post-request';
+import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const roadLengthTypeMasterService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<RoadLengthType[]>> =>
@@ -22,10 +22,7 @@ const roadLengthTypeMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/road-length-types-search`, params)
-      .then(
-        (response: AxiosResponse<IApiResponse>) =>
-          response.data.payload as unknown as RoadLengthType[],
-      )
+      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as RoadLengthType[])
       .catch((error: any) => {
         throw error;
       }),
@@ -43,15 +40,12 @@ const roadLengthTypeMasterService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (
-    id: string,
-    body: IApiPayload<RoadLengthType>,
-  ): Promise<IApiResponse> =>
+  update: (id: string, body: IApiPayload<RoadLengthType>): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/road-length-types/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      }),
+      })
 };
 
 export default roadLengthTypeMasterService;

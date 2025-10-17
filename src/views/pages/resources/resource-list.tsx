@@ -1,18 +1,18 @@
-import { Box, Card } from "@mui/material";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { Box, Card } from '@mui/material';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { useRouter } from "next/router";
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import resourceApiService from "src/services/resource/resource-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import { GetRequestParam, IApiResponse } from "src/types/requests";
-import { Resource } from "src/types/resource";
-import ItemsListing from "src/views/shared/listing";
-import ResourceCard from "./resource-card";
-import ResourceDrawer from "./resource-drawer";
-import { resourceColumns } from "./resource-row";
+import { useRouter } from 'next/router';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import resourceApiService from 'src/services/resource/resource-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { Resource } from 'src/types/resource';
+import ItemsListing from 'src/views/shared/listing';
+import ResourceCard from './resource-card';
+import ResourceDrawer from './resource-drawer';
+import { resourceColumns } from './resource-row';
 
 function ResourceList() {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -20,12 +20,10 @@ function ResourceList() {
   const { t } = useTranslation();
   const router = useRouter();
   const { typeId } = router.query;
-  const fetchResources = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<Resource[]>> => {
+  const fetchResources = (params: GetRequestParam): Promise<IApiResponse<Resource[]>> => {
     return resourceApiService.getAll({
       ...params,
-      filter: { ...params.filter, resourcetype_id: typeId },
+      filter: { ...params.filter, resourcetype_id: typeId }
     });
   };
 
@@ -34,10 +32,10 @@ function ResourceList() {
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<Resource[]>({
-    queryKey: ["resources", String(typeId)],
-    fetchFunction: fetchResources,
+    queryKey: ['resources', String(typeId)],
+    fetchFunction: fetchResources
   });
 
   const toggleDrawer = () => {
@@ -71,33 +69,21 @@ function ResourceList() {
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
           ItemViewComponent={({ data }) => (
-            <ResourceCard
-              resource={data}
-              onDelete={handleDelete}
-              onEdit={handleEdit}
-              t={t}
-              refetch={refetch}
-            />
+            <ResourceCard resource={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
           )}
-          title={t("resource.title")}
+          title={t('resource.title')}
           createActionConfig={{
             ...defaultCreateActionConfig,
             onClick: toggleDrawer,
             onlyIcon: false,
             permission: {
-              action: "create",
-              subject: "resource",
-            },
+              action: 'create',
+              subject: 'resource'
+            }
           }}
           fetchDataFunction={refetch}
           tableProps={{
-            headers: resourceColumns(
-              handleEdit,
-              handleDelete,
-              t,
-              refetch,
-              String(typeId),
-            ),
+            headers: resourceColumns(handleEdit, handleDelete, t, refetch, String(typeId))
           }}
           items={resources || []}
           onPaginationChange={handlePageChange}

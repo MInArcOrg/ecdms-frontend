@@ -1,19 +1,13 @@
-import { useRouter } from "next/router";
-import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
-import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
-import subMenuItems, {
-  findSubMenuItem,
-  telecomInfrastructureId,
-} from "../(subMenuItems)";
+import { useRouter } from 'next/router';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
+import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import subMenuItems, { findSubMenuItem, telecomInfrastructureId } from '../(subMenuItems)';
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems("", ""),
-  telecomInfrastructureId.telecom.telecomNetwork,
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), telecomInfrastructureId.telecom.telecomNetwork);
 
 const IntersectionAndDriveWay = () => {
   const router = useRouter();
-  const { id = "", typeId = "" } = router.query;
+  const { id = '', typeId = '' } = router.query;
 
   // const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), telecomInfrastructureId.telecom.telecomNetwork);
 
@@ -36,7 +30,7 @@ const IntersectionAndDriveWay = () => {
 // Access control configuration
 IntersectionAndDriveWay.acl = {
   subject: defaultMenuItem?.model,
-  action: "view",
+  action: 'view'
 };
 
 export default IntersectionAndDriveWay;

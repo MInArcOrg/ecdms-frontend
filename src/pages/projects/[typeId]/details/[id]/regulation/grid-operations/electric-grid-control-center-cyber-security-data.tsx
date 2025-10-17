@@ -1,19 +1,13 @@
-import { useRouter } from "next/router";
-import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
-import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
-import subMenuItems, {
-  findSubMenuItem,
-  regulationIds,
-} from "../(subMenuItems)";
+import { useRouter } from 'next/router';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
+import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import subMenuItems, { findSubMenuItem, regulationIds } from '../(subMenuItems)';
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems("", ""),
-  regulationIds.gridOperations.electricGridControlCenterCyberSecurityData,
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), regulationIds.gridOperations.electricGridControlCenterCyberSecurityData);
 
 const ElectricGridControlCenterCyberSecurityDataPage = () => {
   const router = useRouter();
-  const { id = "", typeId = "" } = router.query;
+  const { id = '', typeId = '' } = router.query;
 
   // const menuItem = findSubMenuItem(
   //   subMenuItems(id as string, typeId as string),
@@ -23,9 +17,7 @@ const ElectricGridControlCenterCyberSecurityDataPage = () => {
   return (
     <ProjectLayout
       activeMenuId={projectMenuIds.regulation}
-      activeSubMenuId={
-        regulationIds.gridOperations.electricGridControlCenterCyberSecurityData
-      }
+      activeSubMenuId={regulationIds.gridOperations.electricGridControlCenterCyberSecurityData}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       {/* <ElectricGridControlCenterCyberSecurityDataList
@@ -42,7 +34,7 @@ const ElectricGridControlCenterCyberSecurityDataPage = () => {
 // Access control configuration
 ElectricGridControlCenterCyberSecurityDataPage.acl = {
   subject: defaultMenuItem?.model,
-  action: "view",
+  action: 'view'
 };
 
 export default ElectricGridControlCenterCyberSecurityDataPage;

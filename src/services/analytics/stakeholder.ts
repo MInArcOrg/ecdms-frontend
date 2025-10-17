@@ -1,15 +1,14 @@
-import { AxiosResponse } from "axios";
-import { GetRequestParam, IApiResponse } from "src/types/requests";
-import { buildGetRequest } from "src/utils/requests/get-request";
+import { AxiosResponse } from 'axios';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { buildGetRequest } from 'src/utils/requests/get-request';
 
 const stakeholderAnalticsService = {
-    getMatrixTree: (params: GetRequestParam): Promise<IApiResponse<any>> =>
-        buildGetRequest(`/stakeholders/matrix/stakeholder`, params)
-            .then((response: AxiosResponse<IApiResponse>) => response.data)
-            .catch((error: any) => {
-                throw error;
-            }),
-
+  getMatrixTree: (params: GetRequestParam): Promise<IApiResponse<any>> =>
+    buildGetRequest(`/stakeholders/matrix/stakeholder`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      })
 };
 
 export default stakeholderAnalticsService;

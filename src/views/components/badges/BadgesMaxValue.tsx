@@ -1,13 +1,13 @@
 // ** MUI Imports
-import Badge from "@mui/material/Badge";
-import Avatar from "@mui/material/Avatar";
-import { styled } from "@mui/material/styles";
+import Badge from '@mui/material/Badge';
+import Avatar from '@mui/material/Avatar';
+import { styled } from '@mui/material/styles';
 
 // Styled component for the wrapper
-const Wrapper = styled("div")(({ theme }) => ({
-  "& > *": {
-    marginRight: `${theme.spacing(6)} !important`,
-  },
+const Wrapper = styled('div')(({ theme }) => ({
+  '& > *': {
+    marginRight: `${theme.spacing(6)} !important`
+  }
 }));
 
 const BadgesMaxValue = () => {

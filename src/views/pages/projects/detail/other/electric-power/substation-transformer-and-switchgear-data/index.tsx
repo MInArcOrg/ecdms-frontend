@@ -1,28 +1,25 @@
-"use client";
+'use client';
 
-import type React from "react";
+import type React from 'react';
 
-import { Box } from "@mui/material";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import type {
-  SubstationTransformerAndSwitchgearData,
-  TransmissionLine,
-} from "src/types/project/other";
-import type { GetRequestParam, IApiResponse } from "src/types/requests";
-import { formatCreatedAt } from "src/utils/formatter/date";
-import ItemsListing from "src/views/shared/listing";
-import { useQuery } from "@tanstack/react-query";
-import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-detail-drawer";
-import SubstationTransformerAndSwitchgearDataCard from "./substation-transformer-and-switchgear-data-card";
-import SubstationTransformerAndSwitchgearDataDrawer from "./substation-transformer-and-switchgear-data-drawer";
-import { substationTransformerAndSwitchgearDataColumns } from "./substation-transformer-and-switchgear-data-row";
+import { Box } from '@mui/material';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import type { SubstationTransformerAndSwitchgearData, TransmissionLine } from 'src/types/project/other';
+import type { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import ItemsListing from 'src/views/shared/listing';
+import { useQuery } from '@tanstack/react-query';
+import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
+import SubstationTransformerAndSwitchgearDataCard from './substation-transformer-and-switchgear-data-card';
+import SubstationTransformerAndSwitchgearDataDrawer from './substation-transformer-and-switchgear-data-drawer';
+import { substationTransformerAndSwitchgearDataColumns } from './substation-transformer-and-switchgear-data-row';
 
 interface SubstationTransformerAndSwitchgearDataListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -30,33 +27,28 @@ interface SubstationTransformerAndSwitchgearDataListProps {
   projectId: string;
 }
 
-const SubstationTransformerAndSwitchgearDataList: React.FC<
-  SubstationTransformerAndSwitchgearDataListProps
-> = ({ otherSubMenu, projectId, typeId }) => {
+const SubstationTransformerAndSwitchgearDataList: React.FC<SubstationTransformerAndSwitchgearDataListProps> = ({
+  otherSubMenu,
+  projectId,
+  typeId
+}) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] =
-    useState<SubstationTransformerAndSwitchgearData | null>(null);
+  const [selectedRow, setSelectedRow] = useState<SubstationTransformerAndSwitchgearData | null>(null);
   const { t } = useTranslation();
 
   const { data: transmissionLines } = useQuery({
-    queryKey: ["transmission-line-informations", projectId],
+    queryKey: ['transmission-line-informations', projectId],
     queryFn: () =>
-      projectOtherApiSecondService<TransmissionLine>().getAll(
-        "transmission-line-informations",
-        {
-          filter: { project_id: projectId },
-        },
-      ),
+      projectOtherApiSecondService<TransmissionLine>().getAll('transmission-line-informations', {
+        filter: { project_id: projectId }
+      })
   });
 
   const fetchSubstationTransformerAndSwitchgearDatas = (
-    params: GetRequestParam,
+    params: GetRequestParam
   ): Promise<IApiResponse<SubstationTransformerAndSwitchgearData[]>> => {
-    return projectOtherApiSecondService<SubstationTransformerAndSwitchgearData>().getAll(
-      otherSubMenu?.apiRoute || "",
-      {},
-    );
+    return projectOtherApiSecondService<SubstationTransformerAndSwitchgearData>().getAll(otherSubMenu?.apiRoute || '', {});
   };
 
   const {
@@ -64,10 +56,10 @@ const SubstationTransformerAndSwitchgearDataList: React.FC<
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<SubstationTransformerAndSwitchgearData[]>({
-    queryKey: ["substationTransformerAndSwitchgearDatas"],
-    fetchFunction: fetchSubstationTransformerAndSwitchgearDatas,
+    queryKey: ['substationTransformerAndSwitchgearDatas'],
+    fetchFunction: fetchSubstationTransformerAndSwitchgearDatas
   });
 
   const toggleDrawer = () => {
@@ -80,144 +72,96 @@ const SubstationTransformerAndSwitchgearDataList: React.FC<
     setShowDetailDrawer(!showDetailDrawer);
   };
 
-  const handleEdit = (
-    substationTransformerAndSwitchgearData: SubstationTransformerAndSwitchgearData,
-  ) => {
+  const handleEdit = (substationTransformerAndSwitchgearData: SubstationTransformerAndSwitchgearData) => {
     toggleDrawer();
     setSelectedRow(substationTransformerAndSwitchgearData);
   };
 
-  const handleDelete = async (
-    substationTransformerAndSwitchgearDataId: string,
-  ) => {
+  const handleDelete = async (substationTransformerAndSwitchgearDataId: string) => {
     await projectOtherApiSecondService<SubstationTransformerAndSwitchgearData>().delete(
-      otherSubMenu?.apiRoute || "",
-      substationTransformerAndSwitchgearDataId,
+      otherSubMenu?.apiRoute || '',
+      substationTransformerAndSwitchgearDataId
     );
     refetch();
   };
 
-  const handleClickDetail = (
-    substationTransformerAndSwitchgearData: SubstationTransformerAndSwitchgearData,
-  ) => {
+  const handleClickDetail = (substationTransformerAndSwitchgearData: SubstationTransformerAndSwitchgearData) => {
     toggleDetailDrawer();
     setSelectedRow(substationTransformerAndSwitchgearData);
   };
 
-  const transmissionLinesMap = new Map(
-    transmissionLines?.payload.map((item) => [item.id, item.name || ""]) || [],
-  );
+  const transmissionLinesMap = new Map(transmissionLines?.payload.map((item) => [item.id, item.name || '']) || []);
 
   const mapSubstationTransformerAndSwitchgearDataToDetailItems = (
-    substationTransformerAndSwitchgearData: SubstationTransformerAndSwitchgearData,
+    substationTransformerAndSwitchgearData: SubstationTransformerAndSwitchgearData
   ): { title: string; value: string }[] => [
     {
-      title: t(
-        "project.other.substation-transformer-and-switchgear-data.details.name",
-      ),
-      value: substationTransformerAndSwitchgearData?.name || "N/A",
+      title: t('project.other.substation-transformer-and-switchgear-data.details.name'),
+      value: substationTransformerAndSwitchgearData?.name || 'N/A'
     },
     {
-      title: t(
-        "project.other.substation-transformer-and-switchgear-data.details.transmission-line-id",
-      ),
+      title: t('project.other.substation-transformer-and-switchgear-data.details.transmission-line-id'),
       value: substationTransformerAndSwitchgearData?.transmission_line_id
-        ? transmissionLinesMap.get(
-            substationTransformerAndSwitchgearData?.transmission_line_id,
-          ) || substationTransformerAndSwitchgearData?.transmission_line_id
-        : "N/A",
+        ? transmissionLinesMap.get(substationTransformerAndSwitchgearData?.transmission_line_id) ||
+          substationTransformerAndSwitchgearData?.transmission_line_id
+        : 'N/A'
     },
     {
-      title: t(
-        "project.other.substation-transformer-and-switchgear-data.details.transformers-number",
-      ),
+      title: t('project.other.substation-transformer-and-switchgear-data.details.transformers-number'),
       value:
-        substationTransformerAndSwitchgearData?.transformers_number !==
-        undefined
+        substationTransformerAndSwitchgearData?.transformers_number !== undefined
           ? substationTransformerAndSwitchgearData.transformers_number.toString()
-          : "N/A",
+          : 'N/A'
     },
     {
-      title: t(
-        "project.other.substation-transformer-and-switchgear-data.details.transformer-type",
-      ),
-      value: substationTransformerAndSwitchgearData?.transformer_type || "N/A",
+      title: t('project.other.substation-transformer-and-switchgear-data.details.transformer-type'),
+      value: substationTransformerAndSwitchgearData?.transformer_type || 'N/A'
     },
     {
-      title: t(
-        "project.other.substation-transformer-and-switchgear-data.details.transformer-capacity",
-      ),
+      title: t('project.other.substation-transformer-and-switchgear-data.details.transformer-capacity'),
       value:
-        substationTransformerAndSwitchgearData?.transformer_capacity !==
-        undefined
-          ? `${substationTransformerAndSwitchgearData.transformer_capacity} ${t(
-              "common.mva",
-            )}`
-          : "N/A",
+        substationTransformerAndSwitchgearData?.transformer_capacity !== undefined
+          ? `${substationTransformerAndSwitchgearData.transformer_capacity} ${t('common.mva')}`
+          : 'N/A'
     },
     {
-      title: t(
-        "project.other.substation-transformer-and-switchgear-data.details.input-voltage-level",
-      ),
+      title: t('project.other.substation-transformer-and-switchgear-data.details.input-voltage-level'),
       value:
-        substationTransformerAndSwitchgearData?.input_voltage_level !==
-        undefined
-          ? `${substationTransformerAndSwitchgearData.input_voltage_level} ${t(
-              "common.kv",
-            )}`
-          : "N/A",
+        substationTransformerAndSwitchgearData?.input_voltage_level !== undefined
+          ? `${substationTransformerAndSwitchgearData.input_voltage_level} ${t('common.kv')}`
+          : 'N/A'
     },
     {
-      title: t(
-        "project.other.substation-transformer-and-switchgear-data.details.output-voltage-level",
-      ),
+      title: t('project.other.substation-transformer-and-switchgear-data.details.output-voltage-level'),
       value:
-        substationTransformerAndSwitchgearData?.output_voltage_level !==
-        undefined
-          ? `${substationTransformerAndSwitchgearData.output_voltage_level} ${t(
-              "common.kv",
-            )}`
-          : "N/A",
+        substationTransformerAndSwitchgearData?.output_voltage_level !== undefined
+          ? `${substationTransformerAndSwitchgearData.output_voltage_level} ${t('common.kv')}`
+          : 'N/A'
     },
     {
-      title: t(
-        "project.other.substation-transformer-and-switchgear-data.details.switchgear-type-id",
-      ),
-      value:
-        substationTransformerAndSwitchgearData?.switchgear_type_id || "N/A",
+      title: t('project.other.substation-transformer-and-switchgear-data.details.switchgear-type-id'),
+      value: substationTransformerAndSwitchgearData?.switchgear_type_id || 'N/A'
     },
     {
-      title: t(
-        "project.other.substation-transformer-and-switchgear-data.details.circuit-breaker-type-id",
-      ),
-      value:
-        substationTransformerAndSwitchgearData?.circuit_breaker_type_id ||
-        "N/A",
+      title: t('project.other.substation-transformer-and-switchgear-data.details.circuit-breaker-type-id'),
+      value: substationTransformerAndSwitchgearData?.circuit_breaker_type_id || 'N/A'
     },
     {
-      title: t(
-        "project.other.substation-transformer-and-switchgear-data.details.other-equipment",
-      ),
-      value: substationTransformerAndSwitchgearData?.other_equipment || "N/A",
+      title: t('project.other.substation-transformer-and-switchgear-data.details.other-equipment'),
+      value: substationTransformerAndSwitchgearData?.other_equipment || 'N/A'
     },
     {
-      title: t(
-        "project.other.substation-transformer-and-switchgear-data.details.remark",
-      ),
-      value: substationTransformerAndSwitchgearData?.remark || "N/A",
+      title: t('project.other.substation-transformer-and-switchgear-data.details.remark'),
+      value: substationTransformerAndSwitchgearData?.remark || 'N/A'
     },
     {
-      title: t("common.table-columns.created-at"),
-      value: substationTransformerAndSwitchgearData?.created_at
-        ? formatCreatedAt(substationTransformerAndSwitchgearData.created_at)
-        : "N/A",
+      title: t('common.table-columns.created-at'),
+      value: substationTransformerAndSwitchgearData?.created_at ? formatCreatedAt(substationTransformerAndSwitchgearData.created_at) : 'N/A'
     },
     {
-      title: t("common.table-columns.updated-at"),
-      value: substationTransformerAndSwitchgearData?.updated_at
-        ? formatCreatedAt(substationTransformerAndSwitchgearData.updated_at)
-        : "N/A",
-    },
+      title: t('common.table-columns.updated-at'),
+      value: substationTransformerAndSwitchgearData?.updated_at ? formatCreatedAt(substationTransformerAndSwitchgearData.updated_at) : 'N/A'
+    }
   ];
 
   return (
@@ -227,9 +171,7 @@ const SubstationTransformerAndSwitchgearDataList: React.FC<
           otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
-          substationTransformerAndSwitchgearData={
-            selectedRow as SubstationTransformerAndSwitchgearData
-          }
+          substationTransformerAndSwitchgearData={selectedRow as SubstationTransformerAndSwitchgearData}
           refetch={refetch}
           projectId={projectId}
           transmissionLines={transmissionLines?.payload || []}
@@ -240,35 +182,20 @@ const SubstationTransformerAndSwitchgearDataList: React.FC<
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapSubstationTransformerAndSwitchgearDataToDetailItems(
-            selectedRow as SubstationTransformerAndSwitchgearData,
-          )}
+          data={mapSubstationTransformerAndSwitchgearDataToDetailItems(selectedRow as SubstationTransformerAndSwitchgearData)}
           hasReference={true}
-          id={selectedRow?.id || ""}
-          fileType={
-            uploadableProjectFileTypes.other
-              .SUBSTATION_TRANSFORMER_AND_SWITCH_GEAR_DATA
-          }
-          title={t(
-            "project.other.substation-transformer-and-switchgear-data.substation-transformer-and-switchgear-data-details",
-          )}
+          id={selectedRow?.id || ''}
+          fileType={uploadableProjectFileTypes.other.SUBSTATION_TRANSFORMER_AND_SWITCH_GEAR_DATA}
+          title={t('project.other.substation-transformer-and-switchgear-data.substation-transformer-and-switchgear-data-details')}
         />
       )}
 
       <ItemsListing
-        title={t(
-          "project.other.substation-transformer-and-switchgear-data.title",
-        )}
+        title={t('project.other.substation-transformer-and-switchgear-data.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: substationTransformerAndSwitchgearDataColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-          ),
+          headers: substationTransformerAndSwitchgearDataColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -285,9 +212,9 @@ const SubstationTransformerAndSwitchgearDataList: React.FC<
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "substationtransformerandswitchgeardata",
-          },
+            action: 'create',
+            subject: 'substationtransformerandswitchgeardata'
+          }
         }}
         fetchDataFunction={refetch}
         items={substationTransformerAndSwitchgearDatas || []}

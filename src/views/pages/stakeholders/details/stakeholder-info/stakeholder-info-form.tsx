@@ -1,7 +1,7 @@
-import { FormikProps } from "formik";
-import { useTranslation } from "react-i18next";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
-import CustomFileUpload from "src/views/shared/form/custome-file-selector";
+import { FormikProps } from 'formik';
+import { useTranslation } from 'react-i18next';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 // StakeholderInfo interface
 export interface StakeholderInfo {
@@ -23,11 +23,7 @@ interface StakeholderInfoFormProps {
   onFileChange: (file: File | null) => void;
 }
 
-const StakeholderInfoForm: React.FC<StakeholderInfoFormProps> = ({
-  formik,
-  file,
-  onFileChange,
-}) => {
+const StakeholderInfoForm: React.FC<StakeholderInfoFormProps> = ({ formik, file, onFileChange }) => {
   const { t: transl } = useTranslation();
 
   return (
@@ -35,8 +31,8 @@ const StakeholderInfoForm: React.FC<StakeholderInfoFormProps> = ({
       {/* Capital */}
       <CustomTextBox
         fullWidth
-        label={transl("stakeholder.stakeholder-info.form.capital")}
-        placeholder={transl("stakeholder.stakeholder-info.form.capital")}
+        label={transl('stakeholder.stakeholder-info.form.capital')}
+        placeholder={transl('stakeholder.stakeholder-info.form.capital')}
         name="capital"
         size="small"
         sx={{ mb: 2 }}
@@ -45,10 +41,8 @@ const StakeholderInfoForm: React.FC<StakeholderInfoFormProps> = ({
       {/* General Manager */}
       <CustomTextBox
         fullWidth
-        label={transl("stakeholder.stakeholder-info.form.general-manager")}
-        placeholder={transl(
-          "stakeholder.stakeholder-info.form.general-manager",
-        )}
+        label={transl('stakeholder.stakeholder-info.form.general-manager')}
+        placeholder={transl('stakeholder.stakeholder-info.form.general-manager')}
         name="general_manager"
         size="small"
         sx={{ mb: 2 }}
@@ -57,8 +51,8 @@ const StakeholderInfoForm: React.FC<StakeholderInfoFormProps> = ({
       {/* Description */}
       <CustomTextBox
         fullWidth
-        label={transl("stakeholder.stakeholder-info.form.description")}
-        placeholder={transl("stakeholder.stakeholder-info.form.description")}
+        label={transl('stakeholder.stakeholder-info.form.description')}
+        placeholder={transl('stakeholder.stakeholder-info.form.description')}
         name="description"
         size="small"
         multiline
@@ -67,11 +61,7 @@ const StakeholderInfoForm: React.FC<StakeholderInfoFormProps> = ({
       />
 
       {/* File Upload */}
-      <CustomFileUpload
-        label={transl("common.form.file-upload")}
-        file={file}
-        onFileChange={onFileChange}
-      />
+      <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
     </>
   );
 };

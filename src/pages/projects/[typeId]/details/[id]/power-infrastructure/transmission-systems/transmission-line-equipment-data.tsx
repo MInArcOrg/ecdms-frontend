@@ -1,39 +1,27 @@
-import { useRouter } from "next/router";
-import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
-import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
-import subMenuItems, {
-  findSubMenuItem,
-  powerInfrastructureIds,
-} from "../(subMenuItems)";
-import TransmissionLineEquipmentDataList from "src/views/pages/projects/detail/other/electric-power/transmission-line-equipment-data";
+import { useRouter } from 'next/router';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
+import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import subMenuItems, { findSubMenuItem, powerInfrastructureIds } from '../(subMenuItems)';
+import TransmissionLineEquipmentDataList from 'src/views/pages/projects/detail/other/electric-power/transmission-line-equipment-data';
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems("", ""),
-  powerInfrastructureIds.transmissionSystems.transmissionLineEquipmentData,
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), powerInfrastructureIds.transmissionSystems.transmissionLineEquipmentData);
 
 const TransmissionLineEquipmentDataPage = () => {
   const router = useRouter();
-  const { id = "", typeId = "" } = router.query;
+  const { id = '', typeId = '' } = router.query;
 
   const menuItem = findSubMenuItem(
     subMenuItems(id as string, typeId as string),
-    powerInfrastructureIds.transmissionSystems.transmissionLineEquipmentData,
+    powerInfrastructureIds.transmissionSystems.transmissionLineEquipmentData
   );
 
   return (
     <ProjectLayout
       activeMenuId={projectMenuIds.powerInfrastructure}
-      activeSubMenuId={
-        powerInfrastructureIds.transmissionSystems.transmissionLineEquipmentData
-      }
+      activeSubMenuId={powerInfrastructureIds.transmissionSystems.transmissionLineEquipmentData}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <TransmissionLineEquipmentDataList
-        otherSubMenu={menuItem}
-        typeId={String(typeId)}
-        projectId={String(id)}
-      />
+      <TransmissionLineEquipmentDataList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>
   );
 };
@@ -41,7 +29,7 @@ const TransmissionLineEquipmentDataPage = () => {
 // Access control configuration
 TransmissionLineEquipmentDataPage.acl = {
   subject: defaultMenuItem?.model,
-  action: "view",
+  action: 'view'
 };
 
 export default TransmissionLineEquipmentDataPage;

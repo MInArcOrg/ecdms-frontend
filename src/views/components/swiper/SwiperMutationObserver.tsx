@@ -1,15 +1,15 @@
 // ** React Imports
-import { useState } from "react";
+import { useState } from 'react';
 
 // ** MUI Imports
-import Box from "@mui/material/Box";
-import { Direction } from "@mui/material";
-import Button from "@mui/material/Button";
-import { useTheme } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import { Direction } from '@mui/material';
+import Button from '@mui/material/Button';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 
 // ** Third Party Components
-import { useKeenSlider, KeenSliderPlugin } from "keen-slider/react";
+import { useKeenSlider, KeenSliderPlugin } from 'keen-slider/react';
 
 const MutationPlugin: KeenSliderPlugin = (slider) => {
   const observer = new MutationObserver((mutations) => {
@@ -19,10 +19,10 @@ const MutationPlugin: KeenSliderPlugin = (slider) => {
   });
   const config = { childList: true };
 
-  slider.on("created", () => {
+  slider.on('created', () => {
     observer.observe(slider.container, config);
   });
-  slider.on("destroyed", () => {
+  slider.on('destroyed', () => {
     observer.disconnect();
   });
 };
@@ -35,18 +35,18 @@ const SwiperMutationObserver = ({ direction }: { direction: Direction }) => {
   const theme = useTheme();
   const [ref] = useKeenSlider<HTMLDivElement>(
     {
-      rtl: direction === "rtl",
+      rtl: direction === 'rtl',
       slides: {
         perView: 3,
-        spacing: 16,
+        spacing: 16
       },
       breakpoints: {
         [`(max-width: ${theme.breakpoints.values.sm}px)`]: {
-          slides: { perView: 1, spacing: 16 },
-        },
-      },
+          slides: { perView: 1, spacing: 16 }
+        }
+      }
     },
-    [MutationPlugin],
+    [MutationPlugin]
   );
 
   return (
@@ -61,17 +61,10 @@ const SwiperMutationObserver = ({ direction }: { direction: Direction }) => {
         })}
       </Box>
       <Box sx={{ mt: 4 }} className="demo-space-x">
-        <Button
-          variant="contained"
-          onClick={() => setSlides([...slides, slides.length + 1])}
-        >
+        <Button variant="contained" onClick={() => setSlides([...slides, slides.length + 1])}>
           Add
         </Button>
-        <Button
-          variant="contained"
-          color="error"
-          onClick={() => setSlides(slides.slice(0, -1))}
-        >
+        <Button variant="contained" color="error" onClick={() => setSlides(slides.slice(0, -1))}>
           Remove
         </Button>
       </Box>

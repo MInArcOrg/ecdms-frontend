@@ -1,31 +1,31 @@
 // ** React Imports
-import { forwardRef, useState } from 'react'
+import { forwardRef, useState } from 'react';
 
 // ** MUI Imports
-import Card from '@mui/material/Card'
-import TextField from '@mui/material/TextField'
-import { useTheme } from '@mui/material/styles'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import InputAdornment from '@mui/material/InputAdornment'
+import Card from '@mui/material/Card';
+import TextField from '@mui/material/TextField';
+import { useTheme } from '@mui/material/styles';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
+import InputAdornment from '@mui/material/InputAdornment';
 
 // ** Third Party Imports
-import format from 'date-fns/format'
-import DatePicker from 'react-datepicker'
+import format from 'date-fns/format';
+import DatePicker from 'react-datepicker';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Component Import
-import ReactApexcharts from 'src/@core/components/react-apexcharts'
+import ReactApexcharts from 'src/@core/components/react-apexcharts';
 
 const GeneralInfoByDepartment = ({ labels, series, loading, error }: any) => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   // ** States
 
-  const [endDate, setEndDate] = useState(null)
-  const [startDate, setStartDate] = useState(null)
+  const [endDate, setEndDate] = useState(null);
+  const [startDate, setStartDate] = useState(null);
 
   const options = {
     chart: {
@@ -95,45 +95,45 @@ const GeneralInfoByDepartment = ({ labels, series, loading, error }: any) => {
         }
       }
     ]
-  }
+  };
 
   const CustomInput = forwardRef((props: any, ref) => {
-    const startDate = props.start !== null ? format(props.start, 'MM/dd/yyyy') : ''
-    const endDate = props.end !== null ? ` - ${format(props.end, 'MM/dd/yyyy')}` : null
-    const value = `${startDate}${endDate !== null ? endDate : ''}`
+    const startDate = props.start !== null ? format(props.start, 'MM/dd/yyyy') : '';
+    const endDate = props.end !== null ? ` - ${format(props.end, 'MM/dd/yyyy')}` : null;
+    const value = `${startDate}${endDate !== null ? endDate : ''}`;
 
     return (
       <TextField
         {...props}
-        size='small'
+        size="small"
         value={value}
         inputRef={ref}
         InputProps={{
           startAdornment: (
-            <InputAdornment position='start'>
-              <Icon icon='tabler:calendar-event' />
+            <InputAdornment position="start">
+              <Icon icon="tabler:calendar-event" />
             </InputAdornment>
           ),
           endAdornment: (
-            <InputAdornment position='end'>
-              <Icon icon='tabler:chevron-down' />
+            <InputAdornment position="end">
+              <Icon icon="tabler:chevron-down" />
             </InputAdornment>
           )
         }}
       />
-    )
-  })
+    );
+  });
 
   const handleOnChange = (dates: any) => {
-    const [start, end] = dates
-    setStartDate(start)
-    setEndDate(end)
-  }
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+  };
 
   return (
     <Card>
       <CardHeader
-        title='Data Science'
+        title="Data Science"
         sx={{
           flexDirection: ['column', 'row'],
           alignItems: ['flex-start', 'center'],
@@ -145,10 +145,10 @@ const GeneralInfoByDepartment = ({ labels, series, loading, error }: any) => {
             selectsRange
             endDate={endDate}
             selected={startDate}
-            id='apexchart-column'
+            id="apexchart-column"
             startDate={startDate}
             onChange={handleOnChange}
-            placeholderText='Click to select a date'
+            placeholderText="Click to select a date"
             customInput={<CustomInput start={startDate} end={endDate} />}
           />
         }
@@ -159,11 +159,11 @@ const GeneralInfoByDepartment = ({ labels, series, loading, error }: any) => {
         ) : error ? (
           <div>Error</div>
         ) : (
-          <ReactApexcharts options={options as any} series={series} type='bar' height={300} />
+          <ReactApexcharts options={options as any} series={series} type="bar" height={300} />
         )}
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default GeneralInfoByDepartment
+export default GeneralInfoByDepartment;

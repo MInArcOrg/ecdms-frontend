@@ -1,6 +1,5 @@
-import { Card, CardContent, Grid, Typography, TextField, CircularProgress, Autocomplete } from '@mui/material'
-import { Fragment } from 'react'
-
+import { Card, CardContent, Grid, Typography, TextField, CircularProgress, Autocomplete } from '@mui/material';
+import { Fragment } from 'react';
 
 const ResourceFilter = ({
   type,
@@ -24,15 +23,7 @@ const ResourceFilter = ({
   setBaseYear,
   inflation
 }: any) => {
-
-  const AutocompleteField = ({
-    label,
-    options,
-    value,
-    onChange,
-    loading,
-    getOptionLabel = (option: any) => option.title,
-  }: any) => (
+  const AutocompleteField = ({ label, options, value, onChange, loading, getOptionLabel = (option: any) => option.title }: any) => (
     <Autocomplete
       size="small"
       options={options ?? []}
@@ -57,40 +48,46 @@ const ResourceFilter = ({
         />
       )}
     />
-  )
+  );
   return (
     <Card>
       <CardContent>
         <Grid container spacing={3}>
           <Grid item xs={12} md={2.4}>
-            <Typography sx={{ fontWeight: 'bolder' }} variant="body1">Type</Typography>
+            <Typography sx={{ fontWeight: 'bolder' }} variant="body1">
+              Type
+            </Typography>
             <AutocompleteField
               label="Select Type"
               options={resourceTypes}
               value={type}
               loading={resourceTypesLoading}
               onChange={(newVal: any) => {
-                setType(newVal)
-                setCategory(null)
+                setType(newVal);
+                setCategory(null);
               }}
             />
           </Grid>
 
           <Grid item xs={12} md={2.4}>
-            <Typography sx={{ pl: 1 }} variant="body1">Category</Typography>
+            <Typography sx={{ pl: 1 }} variant="body1">
+              Category
+            </Typography>
             <AutocompleteField
               label="Select Category"
               options={resourceCategories}
               value={category}
               loading={isCategoryLoading}
               onChange={(newVal: any) => {
-                setCategory(newVal)
+                setCategory(newVal);
               }}
             />
           </Grid>
 
           <Grid item xs={12} md={2.4}>
-            <Typography sx={{ pl: 1 }} variant="body1">Subcategory</Typography>
+            <Typography sx={{ pl: 1 }} variant="body1">
+              Subcategory
+            </Typography>
             <AutocompleteField
               label="Select Subcategory"
               options={resourceSubCategories || []}
@@ -101,15 +98,15 @@ const ResourceFilter = ({
           </Grid>
 
           <Grid item xs={12} md={2.4}>
-            <Typography sx={{ pl: 1 }} variant="body1">Item</Typography>
+            <Typography sx={{ pl: 1 }} variant="body1">
+              Item
+            </Typography>
             <AutocompleteField
               label="Select Item"
-              options={resources?.map(
-                (resource: any) => ({
-                  id: resource.id,
-                  title: resource.name
-                })
-              )}
+              options={resources?.map((resource: any) => ({
+                id: resource.id,
+                title: resource.name
+              }))}
               value={item}
               loading={loading}
               onChange={setItem}
@@ -117,7 +114,9 @@ const ResourceFilter = ({
           </Grid>
 
           <Grid item xs={12} md={2.4}>
-            <Typography sx={{ pl: 1 }} variant="body1">{inflation ? 'Starting Cost Year' : 'Base Year'}</Typography>
+            <Typography sx={{ pl: 1 }} variant="body1">
+              {inflation ? 'Starting Cost Year' : 'Base Year'}
+            </Typography>
             <AutocompleteField
               label="Select Year"
               options={years}
@@ -129,7 +128,7 @@ const ResourceFilter = ({
         </Grid>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default ResourceFilter
+export default ResourceFilter;

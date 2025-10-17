@@ -1,7 +1,7 @@
-import { useRouter } from "next/router";
-import StakeholderLayout from "src/views/pages/stakeholders/details/layout/stakeholder-layout";
-import { stakeholderMenuIds } from "src/views/pages/stakeholders/details/layout/stakeholder-menu-items";
-import subMenuItems, { stakeholderResourceIds } from "../(sub-menu-items)";
+import { useRouter } from 'next/router';
+import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
+import { stakeholderMenuIds } from 'src/views/pages/stakeholders/details/layout/stakeholder-menu-items';
+import subMenuItems, { stakeholderResourceIds } from '../(sub-menu-items)';
 
 function StakeholderInformation() {
   const router = useRouter();
@@ -19,8 +19,8 @@ function StakeholderInformation() {
 }
 
 StakeholderInformation.acl = {
-  subject: "stakeholderinfo",
-  action: "view_stakeholderinfo",
+  subject: 'stakeholderinfo',
+  action: 'view_stakeholderinfo'
 };
 
 export default StakeholderInformation;

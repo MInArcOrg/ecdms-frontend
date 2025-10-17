@@ -1,10 +1,10 @@
 // ** MUI Imports
-import { TabPanel } from "@mui/lab";
-import TabsRoute from "./tab-routes";
-import UserLayout from "src/layouts/UserLayout";
-import { ReactElement } from "react";
-import CentersLayout from "src/views/pages/centers/centers-layout";
-import Document from "src/views/pages/centers/document";
+import { TabPanel } from '@mui/lab';
+import TabsRoute from './tab-routes';
+import UserLayout from 'src/layouts/UserLayout';
+import { ReactElement } from 'react';
+import CentersLayout from 'src/views/pages/centers/centers-layout';
+import Document from 'src/views/pages/centers/document';
 
 const centerDocuments = () => {
   return (

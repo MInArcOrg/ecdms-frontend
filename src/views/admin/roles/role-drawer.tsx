@@ -1,12 +1,12 @@
-import * as yup from "yup";
+import * as yup from 'yup';
 
-import { FormikProps } from "formik";
-import roleApiService from "src/services/admin/role-service";
-import Role from "src/types/admin/role";
-import { IApiPayload } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import RoleForm from "./role-form";
+import { FormikProps } from 'formik';
+import roleApiService from 'src/services/admin/role-service';
+import Role from 'src/types/admin/role';
+import { IApiPayload } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import RoleForm from './role-form';
 
 interface RoleDrawerType {
   open: boolean;
@@ -17,7 +17,7 @@ interface RoleDrawerType {
 
 const validationSchema = yup.object().shape({
   name: yup.string().max(36).required(),
-  description: yup.string().max(100).nullable(),
+  description: yup.string().max(100).nullable()
 });
 const RoleDrawer = (props: RoleDrawerType) => {
   // ** Props
@@ -28,7 +28,7 @@ const RoleDrawer = (props: RoleDrawerType) => {
     return await roleApiService.create(body);
   };
   const editRole = async (body: IApiPayload<Role>) => {
-    return await roleApiService.update(role?.id || "", body);
+    return await roleApiService.update(role?.id || '', body);
   };
   const isEdit = role?.id ? true : false;
 
@@ -36,9 +36,9 @@ const RoleDrawer = (props: RoleDrawerType) => {
     const payload = {
       data: {
         ...values,
-        id: role?.id,
+        id: role?.id
       },
-      files: [],
+      files: []
     };
 
     return payload;
@@ -55,11 +55,7 @@ const RoleDrawer = (props: RoleDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer
-      title={isEdit ? "admin.role.edit-role" : "admin.role.create-role"}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={isEdit ? 'admin.role.edit-role' : 'admin.role.create-role'} handleClose={handleClose} open={open}>
       {() =>
         role && (
           <FormPageWrapper
@@ -73,9 +69,7 @@ const RoleDrawer = (props: RoleDrawerType) => {
             onCancel={handleClose}
           >
             {(formik: FormikProps<Role>) => {
-              return (
-                <RoleForm formik={formik} defaultLocaleData={{} as Role} />
-              );
+              return <RoleForm formik={formik} defaultLocaleData={{} as Role} />;
             }}
           </FormPageWrapper>
         )

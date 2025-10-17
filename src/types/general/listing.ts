@@ -1,4 +1,4 @@
-import { AbilityRule } from "./permission";
+import { AbilityRule } from './permission';
 
 export interface CreateActionConfig {
   onClick: () => void;
@@ -8,7 +8,7 @@ export interface CreateActionConfig {
 }
 export const defaultCreateActionConfig = {
   show: true,
-  permission: { action: "", subject: "" },
+  permission: { action: '', subject: '' },
   onlyIcon: false,
-  onClick: () => {},
+  onClick: () => {}
 };

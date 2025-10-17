@@ -1,10 +1,10 @@
-import { AxiosResponse } from "axios";
-import { HazardType } from "src/types/general/general-master";
-import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
-import axiosServices from "src/utils/axios";
-import { buildGetRequest } from "src/utils/requests/get-request";
-import { buildPostRequest } from "src/utils/requests/post-request";
-import { buildPutRequest } from "src/utils/requests/put-request";
+import { AxiosResponse } from 'axios';
+import { HazardType } from 'src/types/general/general-master';
+import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
+import axiosServices from 'src/utils/axios';
+import { buildGetRequest } from 'src/utils/requests/get-request';
+import { buildPostRequest } from 'src/utils/requests/post-request';
+import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const hazardTypeMasterService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<HazardType[]>> =>
@@ -22,10 +22,7 @@ const hazardTypeMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/hazard-types-search`, params)
-      .then(
-        (response: AxiosResponse<IApiResponse>) =>
-          response.data.payload as unknown as HazardType[],
-      )
+      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as HazardType[])
       .catch((error: any) => {
         throw error;
       }),
@@ -48,7 +45,7 @@ const hazardTypeMasterService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      }),
+      })
 };
 
 export default hazardTypeMasterService;

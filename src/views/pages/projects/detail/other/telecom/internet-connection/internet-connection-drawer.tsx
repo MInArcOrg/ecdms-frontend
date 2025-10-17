@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import type { FormikProps } from "formik";
-import type { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import InternetConnectionForm from "./internet-connection-form";
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import InternetConnectionForm from './internet-connection-form';
 
-import { useState } from "react";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import type { InternetConnection } from "src/types/project/other";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import { useState } from 'react';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import type { InternetConnection } from 'src/types/project/other';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface InternetConnectionDrawerType {
   open: boolean;
@@ -24,8 +24,7 @@ interface InternetConnectionDrawerType {
 }
 
 const InternetConnectionDrawer = (props: InternetConnectionDrawerType) => {
-  const { open, toggle, refetch, internetConnection, projectId, otherSubMenu } =
-    props;
+  const { open, toggle, refetch, internetConnection, projectId, otherSubMenu } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const onFileChange = (file: File | null) => {
@@ -33,34 +32,21 @@ const InternetConnectionDrawer = (props: InternetConnectionDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
-    internet_connection_type_id: yup
-      .string()
-      .required("Internet connection type is required"),
+    internet_connection_type_id: yup.string().required('Internet connection type is required'),
     routers: yup.boolean().nullable(),
     switches: yup.boolean().nullable(),
     modems: yup.boolean().nullable(),
     cables: yup.boolean().nullable(),
-    others: yup.string().nullable(),
+    others: yup.string().nullable()
   });
 
   const isEdit = Boolean(internetConnection?.id);
 
-  const createInternetConnection = async (
-    body: IApiPayload<InternetConnection>,
-  ) =>
-    projectOtherApiSecondService<InternetConnection>().create(
-      otherSubMenu?.apiRoute || "",
-      body,
-    );
+  const createInternetConnection = async (body: IApiPayload<InternetConnection>) =>
+    projectOtherApiSecondService<InternetConnection>().create(otherSubMenu?.apiRoute || '', body);
 
-  const editInternetConnection = async (
-    body: IApiPayload<InternetConnection>,
-  ) =>
-    projectOtherApiSecondService<InternetConnection>().update(
-      otherSubMenu?.apiRoute || "",
-      internetConnection?.id || "",
-      body,
-    );
+  const editInternetConnection = async (body: IApiPayload<InternetConnection>) =>
+    projectOtherApiSecondService<InternetConnection>().update(otherSubMenu?.apiRoute || '', internetConnection?.id || '', body);
 
   const getPayload = (values: InternetConnection) => ({
     data: {
@@ -72,25 +58,16 @@ const InternetConnectionDrawer = (props: InternetConnectionDrawerType) => {
       modems: values.modems,
       cables: values.cables,
       others: values.others,
-      id: internetConnection?.id,
+      id: internetConnection?.id
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<InternetConnection>,
-    payload: IApiPayload<InternetConnection>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<InternetConnection>, payload: IApiPayload<InternetConnection>) => {
     if (payload.files.length > 0) {
-      await uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.other.internetConnection,
-        response.payload.id,
-        "",
-        "",
-      );
+      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.internetConnection, response.payload.id, '', '');
     }
 
     refetch();
@@ -99,37 +76,25 @@ const InternetConnectionDrawer = (props: InternetConnectionDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.other.internet-connection.${
-        isEdit ? `edit-internet-connection` : `create-internet-connection`
-      }`}
+      title={`project.other.internet-connection.${isEdit ? `edit-internet-connection` : `create-internet-connection`}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.internet-connection.${
-            isEdit ? `edit-internet-connection` : `create-internet-connection`
-          }`}
+          title={`project.other.internet-connection.${isEdit ? `edit-internet-connection` : `create-internet-connection`}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...internetConnection,
+            ...internetConnection
           }}
-          createActionFunc={
-            isEdit ? editInternetConnection : createInternetConnection
-          }
+          createActionFunc={isEdit ? editInternetConnection : createInternetConnection}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<InternetConnection>) => {
-            return (
-              <InternetConnectionForm
-                file={uploadableFile}
-                onFileChange={onFileChange}
-                formik={formik}
-              />
-            );
+            return <InternetConnectionForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

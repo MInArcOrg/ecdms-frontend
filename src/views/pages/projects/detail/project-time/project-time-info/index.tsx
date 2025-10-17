@@ -1,33 +1,30 @@
-import { Box, Card, CardContent, IconButton } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
-import LoadingPlaceholder from "src/views/components/loader";
+import { Box, Card, CardContent, IconButton } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
+import React, { useState } from 'react';
+import LoadingPlaceholder from 'src/views/components/loader';
 
-import ProjectTimeAction from "./project-time-action";
-import ProjectTimeDrawer from "./project-time-drawer";
-import TimelineSection from "./project-time-line";
-import { ProjectTime } from "src/types/project/project-time";
-import Can from "src/layouts/components/acl/Can";
-import Icon from "src/@core/components/icon";
-import projectTimeApiService from "src/services/project/project-time-service";
+import ProjectTimeAction from './project-time-action';
+import ProjectTimeDrawer from './project-time-drawer';
+import TimelineSection from './project-time-line';
+import { ProjectTime } from 'src/types/project/project-time';
+import Can from 'src/layouts/components/acl/Can';
+import Icon from 'src/@core/components/icon';
+import projectTimeApiService from 'src/services/project/project-time-service';
 
 interface ProjectTimeComponentProps {
   projectId: string;
 }
 
-const ProjectTimeComponent: React.FC<ProjectTimeComponentProps> = ({
-  projectId,
-}) => {
+const ProjectTimeComponent: React.FC<ProjectTimeComponentProps> = ({ projectId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const {
     data: projectTime,
     isLoading,
-    refetch,
+    refetch
   } = useQuery({
-    queryKey: ["project-status", projectId],
-    queryFn: () =>
-      projectTimeApiService.getAll({ filter: { project_id: projectId } }),
-    select: (data) => data.payload?.[0] ?? null, // Extract the first item from the array
+    queryKey: ['project-status', projectId],
+    queryFn: () => projectTimeApiService.getAll({ filter: { project_id: projectId } }),
+    select: (data) => data.payload?.[0] ?? null // Extract the first item from the array
   });
 
   const toggleDrawer = () => {
@@ -68,14 +65,7 @@ const ProjectTimeComponent: React.FC<ProjectTimeComponentProps> = ({
         <Card>
           <CardContent>
             {projectTime && <TimelineSection data={projectTime} />}
-            {projectTime && (
-              <ProjectTimeAction
-                refetch={refetch}
-                projectTime={projectTime}
-                onDelete={handleDelete}
-                onEdit={handleEdit}
-              />
-            )}
+            {projectTime && <ProjectTimeAction refetch={refetch} projectTime={projectTime} onDelete={handleDelete} onEdit={handleEdit} />}
           </CardContent>
         </Card>
       </Box>

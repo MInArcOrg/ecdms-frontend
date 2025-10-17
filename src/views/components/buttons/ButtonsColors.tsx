@@ -1,8 +1,8 @@
 // ** React Imports
-import { Fragment } from "react";
+import { Fragment } from 'react';
 
 // ** MUI Imports
-import Button from "@mui/material/Button";
+import Button from '@mui/material/Button';
 
 const ButtonsColors = () => {
   return (
