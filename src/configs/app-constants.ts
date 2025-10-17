@@ -69,8 +69,13 @@ export const appModulesNames = [
   "infrastructure",
 ];
 export const appModulesWithIds = [
-  { id: "master-data", name: "Masterdata" },
-  { id: "centers", name: "Centers" },
+  { id: "master-data", name: "Masterdata",flags: [
+     {id: "MASTERDATA", name: "Masterdata"},
+     {id: "GENERAL", name: "General"}
+  ] },
+  { id: "centers", name: "Centers", flags: [
+    { id: "CENTER", name: "Center Management" },
+  ]},
   {
     id: "project",
     name: "Project",
