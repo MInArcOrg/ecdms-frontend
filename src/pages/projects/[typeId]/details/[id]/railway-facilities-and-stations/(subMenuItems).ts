@@ -25,127 +25,167 @@ export const railwayFacilitiesAndStationsIds = {
   }
 };
 
-export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
-  {
-    id: railwayFacilitiesAndStationsIds.stations_and_platforms.id,
-    title: 'project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.title',
-    subItems: [
-      {
-        id: railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_layout,
-        title: 'project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-layout',
-        path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-layout`,
-        model: 'railwaystationplatformlayout',
-        fileType: railwayFacilitiesAndStationsIds.stations_and_platforms.id,
-        apiRoute: 'railway-station-platform-layouts'
-      },
-      {
-        id: railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_facilities,
-        title: 'project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-facilities',
-        path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-facilities`,
-        model: 'railwaystationplatformfacility',
-        fileType: railwayFacilitiesAndStationsIds.stations_and_platforms.id,
-        apiRoute: 'railway-station-platform-facilities'
-      },
-      {
-        id: railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_structural_elements,
-        title: 'project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-structural-elements',
-        path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-structural-elements`,
-        model: 'stationplatformstructurelelement',
-        fileType: railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_structural_elements,
-        apiRoute: 'railway-station-platform-structural-elements'
-      },
-      {
-        id: railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_signage_and_wayfinding,
-        title: 'project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-signage-and-wayfinding',
-        path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-signage-and-wayfinding`,
-        model: 'stationplatformsignageandwayfinding'
-      },
-      {
-        id: railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_safety_and_security,
-        title: 'project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-safety-and-security',
-        path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-safety-and-security`,
-        model: 'stationplatformsafetyandsecurity'
-      },
-      {
-        id: railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_surface_and_finishes,
-        title: 'project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-surface-and-finishes',
-        path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-surface-and-finishes`,
-        model: 'stationplatformsurfaceandfinish'
-      },
-      {
-        id: railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_passenger_flow_and_capacity,
-        title:
-          'project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-passenger-flow-and-capacity',
-        path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-passenger-flow-and-capacity`,
-        model: 'stationplatformpassengerflowandcapacity'
-      },
-      {
-        id: railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_environmental_and_other_factors,
-        title:
-          'project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-environmental-and-other-factors',
-        path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-environmental-and-other-factors`,
-        model: 'stationplatformenvironmentalandotherfactor'
-      }
-    ]
-  },
-  {
-    id: railwayFacilitiesAndStationsIds.maintenance_facilities.id,
-    title: 'project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.title',
-    subItems: [
-      {
-        id: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_type_and_purpose,
-        title: 'project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-type-and-purpose',
-        path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-type-and-purpose`,
-        model: 'maintenancefacilitytypeandpurpose'
-      },
-      {
-        id: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_layout_and_design,
-        title: 'project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-layout-and-design',
-        path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-layout-and-design`,
-        model: 'maintenancefacilitylayoutanddesign'
-      },
-      {
-        id: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_equipment_and_tools,
-        title: 'project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-equipment-and-tools',
-        path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-equipment-and-tools`,
-        model: 'maintenancefacilityequipmentandtool' //TODO: add
-      },
-      {
-        id: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_infrastructure_and_utilities,
-        title:
-          'project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-infrastructure-and-utilities',
-        path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-infrastructure-and-utilities`,
-        model: 'maintenancefacilityinfrastructureandutility'
-      },
-      {
-        id: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_workforce_and_staff,
-        title: 'project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-workforce-and-staff',
-        path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-workforce-and-staff`,
-        model: 'maintenancefacilityworkforceandstaff'
-      },
-      {
-        id: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_schedules_and_procedures,
-        title:
-          'project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-schedules-and-procedures',
-        path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-schedules-and-procedures`,
-        model: 'maintenancefacilityscheduleandprocedure'
-      },
-      {
-        id: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_safety_and_security,
-        title: 'project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-safety-and-security',
-        path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-safety-and-security`,
-        model: 'maintenancefacilitysafetyandsecurity'
-      },
-      {
-        id: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_environmental_and_other_factors,
-        title:
-          'project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-environmental-and-other-factors',
-        path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-environmental-and-other-factors`,
-        model: 'maintenancefacilityenvironmentalandotherfactor'
-      }
-    ]
-  }
-];
+export const subMenuItems = (
+  id: string,
+  typeId: string,
+): DetailSubMenuItem[] => [
+    {
+      id: railwayFacilitiesAndStationsIds.stations_and_platforms.id,
+      title:
+        "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.title",
+      subItems: [
+        {
+          id: railwayFacilitiesAndStationsIds.stations_and_platforms
+            .station_platform_layout,
+          title:
+            "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-layout",
+          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-layout`,
+          model: "railwaystationplatformlayout",
+          fileType: railwayFacilitiesAndStationsIds.stations_and_platforms.id,
+          apiRoute: "railway-station-platform-layouts",
+        },
+        {
+          id: railwayFacilitiesAndStationsIds.stations_and_platforms
+            .station_platform_facilities,
+          title:
+            "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-facilities",
+          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-facilities`,
+          model: "railwaystationplatformfacility",
+          fileType: railwayFacilitiesAndStationsIds.stations_and_platforms.id,
+          apiRoute: "railway-station-platform-facilities",
+
+        },
+        {
+          id: railwayFacilitiesAndStationsIds.stations_and_platforms
+            .station_platform_structural_elements,
+          title:
+            "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-structural-elements",
+          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-structural-elements`,
+          model: "railwaystationplatformstructurelelement",
+          fileType:
+            railwayFacilitiesAndStationsIds.stations_and_platforms
+              .station_platform_structural_elements,
+          apiRoute: "railway-station-platform-structural-elements",
+
+        },
+        {
+          id: railwayFacilitiesAndStationsIds.stations_and_platforms
+            .station_platform_signage_and_wayfinding,
+          title:
+            "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-signage-and-wayfinding",
+          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-signage-and-wayfinding`,
+          fileType:
+            railwayFacilitiesAndStationsIds.stations_and_platforms
+              .station_platform_signage_and_wayfinding,
+          model: "railwaystationplatformsignageandwayfinding",
+          apiRoute: "railway-station-platform-signage-and-way-findings",
+        },
+        {
+          id: railwayFacilitiesAndStationsIds.stations_and_platforms
+            .station_platform_safety_and_security,
+          title:
+            "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-safety-and-security",
+          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-safety-and-security`,
+          model: "railwaystationplatformsafetyandsecurity",
+        },
+        {
+          id: railwayFacilitiesAndStationsIds.stations_and_platforms
+            .station_platform_surface_and_finishes,
+          title:
+            "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-surface-and-finishes",
+          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-surface-and-finishes`,
+          model: "stationplatformsurfaceandfinish",
+        },
+        {
+          id: railwayFacilitiesAndStationsIds.stations_and_platforms
+            .station_platform_passenger_flow_and_capacity,
+          title:
+            "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-passenger-flow-and-capacity",
+          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-passenger-flow-and-capacity`,
+          model: "stationplatformpassengerflowandcapacity",
+        },
+        {
+          id: railwayFacilitiesAndStationsIds.stations_and_platforms
+            .station_platform_environmental_and_other_factors,
+          title:
+            "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-environmental-and-other-factors",
+          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-environmental-and-other-factors`,
+          model: "stationplatformenvironmentalandotherfactor",
+        },
+      ],
+    },
+    {
+      id: railwayFacilitiesAndStationsIds.maintenance_facilities.id,
+      title:
+        "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.title",
+      subItems: [
+        {
+          id: railwayFacilitiesAndStationsIds.maintenance_facilities
+            .maintenance_facility_type_and_purpose,
+          title:
+            "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-type-and-purpose",
+          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-type-and-purpose`,
+          model: "maintenancefacilitytypeandpurpose",
+        },
+        {
+          id: railwayFacilitiesAndStationsIds.maintenance_facilities
+            .maintenance_facility_layout_and_design,
+          title:
+            "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-layout-and-design",
+          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-layout-and-design`,
+          model: "maintenancefacilitylayoutanddesign",
+        },
+        {
+          id: railwayFacilitiesAndStationsIds.maintenance_facilities
+            .maintenance_facility_equipment_and_tools,
+          title:
+            "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-equipment-and-tools",
+          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-equipment-and-tools`,
+          model: "maintenancefacilityequipmentandtool", //TODO: add
+        },
+        {
+          id: railwayFacilitiesAndStationsIds.maintenance_facilities
+            .maintenance_facility_infrastructure_and_utilities,
+          title:
+            "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-infrastructure-and-utilities",
+          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-infrastructure-and-utilities`,
+          model: "maintenancefacilityinfrastructureandutility",
+        },
+        {
+          id: railwayFacilitiesAndStationsIds.maintenance_facilities
+            .maintenance_facility_workforce_and_staff,
+          title:
+            "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-workforce-and-staff",
+          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-workforce-and-staff`,
+          model: "maintenancefacilityworkforceandstaff",
+        },
+        {
+          id: railwayFacilitiesAndStationsIds.maintenance_facilities
+            .maintenance_facility_schedules_and_procedures,
+          title:
+            "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-schedules-and-procedures",
+          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-schedules-and-procedures`,
+          model: "maintenancefacilityscheduleandprocedure",
+        },
+        {
+          id: railwayFacilitiesAndStationsIds.maintenance_facilities
+            .maintenance_facility_safety_and_security,
+          title:
+            "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-safety-and-security",
+          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-safety-and-security`,
+          model: "maintenancefacilitysafetyandsecurity",
+        },
+        {
+          id: railwayFacilitiesAndStationsIds.maintenance_facilities
+            .maintenance_facility_environmental_and_other_factors,
+          title:
+            "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-environmental-and-other-factors",
+          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-environmental-and-other-factors`,
+          model: "maintenancefacilityenvironmentalandotherfactor",
+        },
+      ],
+    },
+  ];
 export const findSubMenuItem = (items: DetailSubMenuItem[], id: string) => {
   for (const item of items) {
     if (item.subItems) {
