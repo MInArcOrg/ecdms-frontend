@@ -1,18 +1,15 @@
-import type { FormikProps } from "formik";
-import { useState } from "react";
-import { uploadableUserFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import { UserWorkExperience } from "src/types/admin/user";
-import type { IApiPayload, IApiResponse } from "src/types/requests";
-import {
-  convertDateToLocaleDate,
-  formatInitialDateDate,
-} from "src/utils/formatter/date";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import WorkExperienceForm from "./user-work-experience-form";
-import userWorkExperienceApiService from "src/services/admin/user-educaion-experience-service";
+import type { FormikProps } from 'formik';
+import { useState } from 'react';
+import { uploadableUserFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { UserWorkExperience } from 'src/types/admin/user';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import WorkExperienceForm from './user-work-experience-form';
+import userWorkExperienceApiService from 'src/services/admin/user-educaion-experience-service';
 
 interface WorkExperienceDrawerType {
   open: boolean;
@@ -27,26 +24,22 @@ const WorkExperienceDrawer = (props: WorkExperienceDrawerType) => {
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const validationSchema = yup.object().shape({
-    company_name: yup.string().max(255).required("Company name is required"),
+    company_name: yup.string().max(255).required('Company name is required'),
     department: yup.string().max(255).nullable(),
     position: yup.string().max(255).nullable(),
-    task_description: yup.string().required("Task description is required"),
-    start_date: yup.date().required("Start date is required"),
-    end_date: yup.string().nullable(),
+    task_description: yup.string().required('Task description is required'),
+    start_date: yup.date().required('Start date is required'),
+    end_date: yup.string().nullable()
   });
 
   const isEdit = Boolean(workexperience?.id);
 
-  const createWorkExperience = async (
-    body: IApiPayload<UserWorkExperience>,
-  ): Promise<IApiResponse<UserWorkExperience>> => {
+  const createWorkExperience = async (body: IApiPayload<UserWorkExperience>): Promise<IApiResponse<UserWorkExperience>> => {
     return userWorkExperienceApiService.create(body);
   };
 
-  const editWorkExperience = async (
-    body: IApiPayload<UserWorkExperience>,
-  ): Promise<IApiResponse<UserWorkExperience>> => {
-    return userWorkExperienceApiService.update(workexperience?.id || "", body);
+  const editWorkExperience = async (body: IApiPayload<UserWorkExperience>): Promise<IApiResponse<UserWorkExperience>> => {
+    return userWorkExperienceApiService.update(workexperience?.id || '', body);
   };
 
   const getPayload = (values: UserWorkExperience) => ({
@@ -55,9 +48,9 @@ const WorkExperienceDrawer = (props: WorkExperienceDrawerType) => {
       id: workexperience?.id,
       start_date: convertDateToLocaleDate(values.start_date),
       end_date: convertDateToLocaleDate(values.end_date),
-      user_id: userId,
+      user_id: userId
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => {
@@ -65,66 +58,48 @@ const WorkExperienceDrawer = (props: WorkExperienceDrawerType) => {
     setUploadableFile(null);
   };
 
-  const onActionSuccess = async (
-    response: IApiResponse<UserWorkExperience>,
-    payload: IApiPayload<UserWorkExperience>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<UserWorkExperience>, payload: IApiPayload<UserWorkExperience>) => {
     try {
-      console.log("API Response:", response); // Debug log
-      if (!response.payload?.id)
-        throw new Error("Missing workexperience ID in response");
+      console.log('API Response:', response); // Debug log
+      if (!response.payload?.id) throw new Error('Missing workexperience ID in response');
 
       const workexperienceId = response.payload.id;
 
       if (payload.files?.length) {
-        console.log("Uploading file for workexperience ID:", workexperienceId); // Debug log
-        await uploadFile(
-          payload.files[0],
-          uploadableUserFileTypes.userWorkExperience,
-          workexperienceId,
-          "",
-          "",
-        );
+        console.log('Uploading file for workexperience ID:', workexperienceId); // Debug log
+        await uploadFile(payload.files[0], uploadableUserFileTypes.userWorkExperience, workexperienceId, '', '');
       }
       refetch();
       handleClose();
     } catch (error) {
-      console.error("File upload failed:", error);
+      console.error('File upload failed:', error);
       // Handle error appropriately
     }
   };
 
   return (
     <CustomSideDrawer
-      title={`department.user.work-experience.${
-        isEdit ? "edit" : "create"
-      }-work-experience`}
+      title={`department.user.work-experience.${isEdit ? 'edit' : 'create'}-work-experience`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`department.user.work-experience.${
-            isEdit ? "edit" : "create-work-experience"
-          }`}
+          title={`department.user.work-experience.${isEdit ? 'edit' : 'create-work-experience'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
             ...(workexperience as UserWorkExperience),
             start_date: formatInitialDateDate(workexperience?.start_date),
-            end_date: formatInitialDateDate(workexperience?.end_date),
+            end_date: formatInitialDateDate(workexperience?.end_date)
           }}
           createActionFunc={isEdit ? editWorkExperience : createWorkExperience}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<UserWorkExperience>) => (
-            <WorkExperienceForm
-              formik={formik}
-              file={uploadableFile}
-              onFileChange={setUploadableFile}
-            />
+            <WorkExperienceForm formik={formik} file={uploadableFile} onFileChange={setUploadableFile} />
           )}
         </FormPageWrapper>
       )}

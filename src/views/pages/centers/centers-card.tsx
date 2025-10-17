@@ -1,7 +1,7 @@
-import { Icon } from "@iconify/react";
-import { CardContent, Typography, Card } from "@mui/material";
-import { Box } from "@mui/system";
-import { useTranslation } from "react-i18next";
+import { Icon } from '@iconify/react';
+import { CardContent, Typography, Card } from '@mui/material';
+import { Box } from '@mui/system';
+import { useTranslation } from 'react-i18next';
 
 function CompanyCard(props: any) {
   const { t } = useTranslation();

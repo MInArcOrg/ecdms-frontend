@@ -1,15 +1,15 @@
-import { FormikProps } from "formik";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import TurbineInfoForm from "./turbine-info-form";
+import { FormikProps } from 'formik';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import TurbineInfoForm from './turbine-info-form';
 
-import { useState } from "react";
-import projectOtherApiService from "src/services/project/project-other-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import { TurbineInfo } from "src/types/project/other";
+import { useState } from 'react';
+import projectOtherApiService from 'src/services/project/project-other-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { TurbineInfo } from 'src/types/project/other';
 
 interface TurbineInfoDrawerType {
   open: boolean;
@@ -31,41 +31,27 @@ const TurbineInfoDrawer = (props: TurbineInfoDrawerType) => {
 
   const isEdit = Boolean(turbineInfo?.id);
 
-  const createTurbineInfo = async (body: IApiPayload<TurbineInfo>) =>
-    projectOtherApiService<TurbineInfo>().create(model, body);
+  const createTurbineInfo = async (body: IApiPayload<TurbineInfo>) => projectOtherApiService<TurbineInfo>().create(model, body);
 
   const editTurbineInfo = async (body: IApiPayload<TurbineInfo>) =>
-    projectOtherApiService<TurbineInfo>().update(
-      model,
-      turbineInfo?.id || "",
-      body,
-    );
+    projectOtherApiService<TurbineInfo>().update(model, turbineInfo?.id || '', body);
 
   const getPayload = (values: TurbineInfo) => {
     return {
       data: {
         ...values,
         id: turbineInfo?.id,
-        project_id: projectId,
+        project_id: projectId
       },
-      files: uploadableFile ? [uploadableFile] : [],
+      files: uploadableFile ? [uploadableFile] : []
     };
   };
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<TurbineInfo>,
-    payload: IApiPayload<TurbineInfo>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<TurbineInfo>, payload: IApiPayload<TurbineInfo>) => {
     if (payload.files.length > 0) {
-      uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.other.turbineInfo,
-        response.payload.id,
-        "",
-        "",
-      );
+      uploadFile(payload.files[0], uploadableProjectFileTypes.other.turbineInfo, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -73,36 +59,25 @@ const TurbineInfoDrawer = (props: TurbineInfoDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.other.turbine-info.${
-        isEdit ? `edit-turbine-info` : `create-turbine-info`
-      }`}
+      title={`project.other.turbine-info.${isEdit ? `edit-turbine-info` : `create-turbine-info`}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.turbine-info.${
-            isEdit ? `edit-turbine-info` : `create-turbine-info`
-          }`}
+          title={`project.other.turbine-info.${isEdit ? `edit-turbine-info` : `create-turbine-info`}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...turbineInfo,
+            ...turbineInfo
           }}
           createActionFunc={isEdit ? editTurbineInfo : createTurbineInfo}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<TurbineInfo>) => {
-            return (
-              <TurbineInfoForm
-                projectId={projectId}
-                file={uploadableFile}
-                onFileChange={onFileChange}
-                formik={formik}
-              />
-            );
+            return <TurbineInfoForm projectId={projectId} file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

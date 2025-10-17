@@ -1,17 +1,14 @@
-import { Grid } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
-import { FormikProps } from "formik";
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { gridSpacing } from "src/configs/app-constants";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import {
-  DataCenter,
-  DataCenterFacilityCapacity,
-} from "src/types/project/other";
-import CustomSelectBox from "src/views/shared/form/custom-select";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
-import CustomFileUpload from "src/views/shared/form/custome-file-selector";
+import { Grid } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
+import { FormikProps } from 'formik';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { gridSpacing } from 'src/configs/app-constants';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { DataCenter, DataCenterFacilityCapacity } from 'src/types/project/other';
+import CustomSelectBox from 'src/views/shared/form/custom-select';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface DataCenterFacilityCapacityFormProps {
   formik: FormikProps<DataCenterFacilityCapacity>;
@@ -20,35 +17,29 @@ interface DataCenterFacilityCapacityFormProps {
   projectId: String;
 }
 
-const DataCenterFacilityCapacityForm: React.FC<
-  DataCenterFacilityCapacityFormProps
-> = ({ formik, projectId, file, onFileChange }) => {
+const DataCenterFacilityCapacityForm: React.FC<DataCenterFacilityCapacityFormProps> = ({ formik, projectId, file, onFileChange }) => {
   const { t: transl } = useTranslation();
   const { data: dataCenters } = useQuery({
-    queryKey: ["data-centers"],
+    queryKey: ['data-centers'],
     queryFn: () =>
-      projectOtherApiSecondService<DataCenter>().getAll("data-centers", {
-        filter: { project_id: projectId },
-      }),
+      projectOtherApiSecondService<DataCenter>().getAll('data-centers', {
+        filter: { project_id: projectId }
+      })
   });
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
         <CustomSelectBox
           fullWidth
-          label={transl(
-            "project.other.data-center-facility-capacity.details.data-center-id",
-          )}
-          placeholder={transl(
-            "project.other.data-center-facility-capacity.details.data-center-id",
-          )}
+          label={transl('project.other.data-center-facility-capacity.details.data-center-id')}
+          placeholder={transl('project.other.data-center-facility-capacity.details.data-center-id')}
           name="data_center_id"
           size="small"
           sx={{ mb: 2 }}
           options={
             dataCenters?.payload.map((type) => ({
               label: type?.dataCenterType?.title,
-              value: type.id,
+              value: type.id
             })) || []
           }
         />
@@ -57,12 +48,8 @@ const DataCenterFacilityCapacityForm: React.FC<
           <Grid item xs={12} sm={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.data-center-facility-capacity.details.total-floor-area",
-              )}
-              placeholder={transl(
-                "project.other.data-center-facility-capacity.details.total-floor-area",
-              )}
+              label={transl('project.other.data-center-facility-capacity.details.total-floor-area')}
+              placeholder={transl('project.other.data-center-facility-capacity.details.total-floor-area')}
               name="total_floor_area"
               type="text"
               size="small"
@@ -72,12 +59,8 @@ const DataCenterFacilityCapacityForm: React.FC<
           <Grid item xs={12} sm={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.data-center-facility-capacity.details.power-capacity",
-              )}
-              placeholder={transl(
-                "project.other.data-center-facility-capacity.details.power-capacity",
-              )}
+              label={transl('project.other.data-center-facility-capacity.details.power-capacity')}
+              placeholder={transl('project.other.data-center-facility-capacity.details.power-capacity')}
               name="power_capacity"
               type="text"
               size="small"
@@ -87,12 +70,8 @@ const DataCenterFacilityCapacityForm: React.FC<
           <Grid item xs={12} sm={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.data-center-facility-capacity.details.rack-space-capacity",
-              )}
-              placeholder={transl(
-                "project.other.data-center-facility-capacity.details.rack-space-capacity",
-              )}
+              label={transl('project.other.data-center-facility-capacity.details.rack-space-capacity')}
+              placeholder={transl('project.other.data-center-facility-capacity.details.rack-space-capacity')}
               name="rack_space_capacity"
               type="text"
               size="small"
@@ -102,12 +81,8 @@ const DataCenterFacilityCapacityForm: React.FC<
           <Grid item xs={12} sm={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.data-center-facility-capacity.details.cooling-capacity",
-              )}
-              placeholder={transl(
-                "project.other.data-center-facility-capacity.details.cooling-capacity",
-              )}
+              label={transl('project.other.data-center-facility-capacity.details.cooling-capacity')}
+              placeholder={transl('project.other.data-center-facility-capacity.details.cooling-capacity')}
               name="cooling_capacity"
               type="text"
               size="small"
@@ -117,60 +92,52 @@ const DataCenterFacilityCapacityForm: React.FC<
           <Grid item xs={12} sm={6}>
             <CustomSelectBox
               fullWidth
-              label={transl(
-                "project.other.data-center-facility-capacity.details.access-control",
-              )}
+              label={transl('project.other.data-center-facility-capacity.details.access-control')}
               name="access_control"
               size="small"
               sx={{ mb: 2 }}
               options={[
-                { label: transl("common.yes"), value: true },
-                { label: transl("common.no"), value: false },
+                { label: transl('common.yes'), value: true },
+                { label: transl('common.no'), value: false }
               ]}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <CustomSelectBox
               fullWidth
-              label={transl(
-                "project.other.data-center-facility-capacity.details.surveillance-cameras",
-              )}
+              label={transl('project.other.data-center-facility-capacity.details.surveillance-cameras')}
               name="surveillance_cameras"
               size="small"
               sx={{ mb: 2 }}
               options={[
-                { label: transl("common.yes"), value: true },
-                { label: transl("common.no"), value: false },
+                { label: transl('common.yes'), value: true },
+                { label: transl('common.no'), value: false }
               ]}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <CustomSelectBox
               fullWidth
-              label={transl(
-                "project.other.data-center-facility-capacity.details.fire-suppression-systems",
-              )}
+              label={transl('project.other.data-center-facility-capacity.details.fire-suppression-systems')}
               name="fire_suppression_systems"
               size="small"
               sx={{ mb: 2 }}
               options={[
-                { label: transl("common.yes"), value: true },
-                { label: transl("common.no"), value: false },
+                { label: transl('common.yes'), value: true },
+                { label: transl('common.no'), value: false }
               ]}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <CustomSelectBox
               fullWidth
-              label={transl(
-                "project.other.data-center-facility-capacity.details.intrusion-detection-systems",
-              )}
+              label={transl('project.other.data-center-facility-capacity.details.intrusion-detection-systems')}
               name="intrusion_detection_systems"
               size="small"
               sx={{ mb: 2 }}
               options={[
-                { label: transl("common.yes"), value: true },
-                { label: transl("common.no"), value: false },
+                { label: transl('common.yes'), value: true },
+                { label: transl('common.no'), value: false }
               ]}
             />
           </Grid>
@@ -178,12 +145,8 @@ const DataCenterFacilityCapacityForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.data-center-facility-capacity.details.others",
-          )}
-          placeholder={transl(
-            "project.other.data-center-facility-capacity.details.others",
-          )}
+          label={transl('project.other.data-center-facility-capacity.details.others')}
+          placeholder={transl('project.other.data-center-facility-capacity.details.others')}
           name="others"
           size="small"
           multiline
@@ -193,11 +156,7 @@ const DataCenterFacilityCapacityForm: React.FC<
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={transl("common.form.file-upload")}
-          file={file}
-          onFileChange={onFileChange}
-        />
+        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

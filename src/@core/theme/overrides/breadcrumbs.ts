@@ -1,24 +1,24 @@
 // ** Type Import
-import { OwnerStateThemeType } from "./";
+import { OwnerStateThemeType } from './';
 
 const Breadcrumbs = () => {
   return {
     MuiBreadcrumbs: {
       styleOverrides: {
         root: ({ theme }: OwnerStateThemeType) => ({
-          "& a": {
-            textDecoration: "none",
-            color: theme.palette.primary.main,
-          },
+          '& a': {
+            textDecoration: 'none',
+            color: theme.palette.primary.main
+          }
         }),
         li: ({ theme }: OwnerStateThemeType) => ({
           color: theme.palette.text.primary,
-          "& .MuiTypography-root": {
-            color: "inherit",
-          },
-        }),
-      },
-    },
+          '& .MuiTypography-root': {
+            color: 'inherit'
+          }
+        })
+      }
+    }
   };
 };
 

@@ -1,13 +1,13 @@
 // ** MUI Imports
-import { CardContent } from "@mui/material";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import { useTheme } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
-import { useTranslation } from "react-i18next";
+import { CardContent } from '@mui/material';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import { useTranslation } from 'react-i18next';
 
 // ** Custom Components Imports
-import ReactApexcharts from "src/@core/components/react-apexcharts";
+import ReactApexcharts from 'src/@core/components/react-apexcharts';
 
 interface ProjectEarnedValueStatisticsCardProps {
   data: {
@@ -22,9 +22,7 @@ interface ProjectEarnedValueStatisticsCardProps {
   };
 }
 
-const ProjectEarnedValueStatisticsCard: React.FC<
-  ProjectEarnedValueStatisticsCardProps
-> = ({ data }) => {
+const ProjectEarnedValueStatisticsCard: React.FC<ProjectEarnedValueStatisticsCardProps> = ({ data }) => {
   // const remaingIpc = data?.total_contract_amount! - data?.paid_ipc!;
   // ** Hook
   const theme = useTheme();
@@ -35,15 +33,15 @@ const ProjectEarnedValueStatisticsCard: React.FC<
     plotOptions: {
       radialBar: {
         hollow: {
-          size: "40%",
+          size: '40%'
         },
         dataLabels: {
-          show: false,
-        },
-      },
+          show: false
+        }
+      }
     },
     colors: [theme.palette.primary.main],
-    labels: [""],
+    labels: ['']
   };
 
   const { t } = useTranslation();
@@ -53,18 +51,11 @@ const ProjectEarnedValueStatisticsCard: React.FC<
       <CardContent>
         <Box display="flex" justifyContent="space-between" pb={2} pt={5}>
           <Box>
-            <Typography
-              variant="subtitle1"
-              sx={{ mb: 0.5, ml: 1, pl: 2, pt: 2 }}
-              fontWeight="bold"
-            >
-              {t("Earned Value")}
+            <Typography variant="subtitle1" sx={{ mb: 0.5, ml: 1, pl: 2, pt: 2 }} fontWeight="bold">
+              {t('Earned Value')}
             </Typography>
             <Typography variant="subtitle2" ml={1} pl={2} fontSize={20}>
-              {data?.financial_percent
-                ? data?.financial_percent.toFixed(2)
-                : ""}
-              %
+              {data?.financial_percent ? data?.financial_percent.toFixed(2) : ''}%
             </Typography>
             <Typography variant="subtitle2" ml={1} pl={2}>
               {data?.financial ? data?.financial : 0}
@@ -80,15 +71,11 @@ const ProjectEarnedValueStatisticsCard: React.FC<
         </Box>
         <Box display="flex" justifyContent="space-between" pb={2}>
           <Box>
-            <Typography
-              variant="subtitle1"
-              sx={{ mb: 0.5, ml: 1, pl: 2, pt: 2 }}
-              fontWeight="bold"
-            >
-              {t("Paid IPC")}
+            <Typography variant="subtitle1" sx={{ mb: 0.5, ml: 1, pl: 2, pt: 2 }} fontWeight="bold">
+              {t('Paid IPC')}
             </Typography>
             <Typography variant="subtitle2" ml={1} pl={2} fontSize={20}>
-              {data?.paid_percent ? data?.paid_percent?.toFixed(2) : ""}%
+              {data?.paid_percent ? data?.paid_percent?.toFixed(2) : ''}%
             </Typography>
             <Typography variant="subtitle2" ml={1} pl={2}>
               {data?.paid ? data?.paid : 0}
@@ -104,15 +91,11 @@ const ProjectEarnedValueStatisticsCard: React.FC<
         </Box>
         <Box display="flex" justifyContent="space-between" pb={5}>
           <Box>
-            <Typography
-              variant="subtitle1"
-              sx={{ mb: 0.5, ml: 1, pl: 2, pt: 2 }}
-              fontWeight="bold"
-            >
-              {t("Elapsed Time")}
+            <Typography variant="subtitle1" sx={{ mb: 0.5, ml: 1, pl: 2, pt: 2 }} fontWeight="bold">
+              {t('Elapsed Time')}
             </Typography>
             <Typography variant="subtitle2" ml={1} pl={2} fontSize={20}>
-              {data?.time_percent ? data?.time_percent?.toFixed(2) : ""} %
+              {data?.time_percent ? data?.time_percent?.toFixed(2) : ''} %
             </Typography>
             <Typography variant="subtitle2" ml={1} pl={2}>
               {/* {data?.time ? data?.time : 0} */}

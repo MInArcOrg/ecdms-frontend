@@ -1,25 +1,25 @@
-"use client";
+'use client';
 
-import type React from "react";
+import type React from 'react';
 
-import { Box } from "@mui/material";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import type { EnvironmentalData } from "src/types/project/other";
-import type { GetRequestParam, IApiResponse } from "src/types/requests";
-import { formatCreatedAt } from "src/utils/formatter/date";
-import ItemsListing from "src/views/shared/listing";
-import EnvironmentalDataCard from "./environmental-data-card";
-import EnvironmentalDataDrawer from "./environmental-data-drawer";
-import { environmentalDataColumns } from "./environmental-data-row";
-import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-detail-drawer";
-import FileDrawer from "src/views/components/custom/files-drawer";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { Box } from '@mui/material';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import type { EnvironmentalData } from 'src/types/project/other';
+import type { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import ItemsListing from 'src/views/shared/listing';
+import EnvironmentalDataCard from './environmental-data-card';
+import EnvironmentalDataDrawer from './environmental-data-drawer';
+import { environmentalDataColumns } from './environmental-data-row';
+import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
+import FileDrawer from 'src/views/components/custom/files-drawer';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 
 interface EnvironmentalDataListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -27,28 +27,17 @@ interface EnvironmentalDataListProps {
   projectId: string;
 }
 
-const EnvironmentalDataList: React.FC<EnvironmentalDataListProps> = ({
-  otherSubMenu,
-  projectId,
-  typeId,
-}) => {
+const EnvironmentalDataList: React.FC<EnvironmentalDataListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<EnvironmentalData | null>(
-    null,
-  );
+  const [selectedRow, setSelectedRow] = useState<EnvironmentalData | null>(null);
   const { t } = useTranslation();
 
-  const fetchEnvironmentalData = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<EnvironmentalData[]>> => {
-    return projectOtherApiSecondService<EnvironmentalData>().getAll(
-      otherSubMenu?.apiRoute || "",
-      {
-        ...params,
-        filter: { ...params.filter, project_id: projectId },
-      },
-    );
+  const fetchEnvironmentalData = (params: GetRequestParam): Promise<IApiResponse<EnvironmentalData[]>> => {
+    return projectOtherApiSecondService<EnvironmentalData>().getAll(otherSubMenu?.apiRoute || '', {
+      ...params,
+      filter: { ...params.filter, project_id: projectId }
+    });
   };
 
   const {
@@ -56,10 +45,10 @@ const EnvironmentalDataList: React.FC<EnvironmentalDataListProps> = ({
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<EnvironmentalData[]>({
-    queryKey: ["environmentalData"],
-    fetchFunction: fetchEnvironmentalData,
+    queryKey: ['environmentalData'],
+    fetchFunction: fetchEnvironmentalData
   });
 
   const toggleDrawer = () => {
@@ -78,10 +67,7 @@ const EnvironmentalDataList: React.FC<EnvironmentalDataListProps> = ({
   };
 
   const handleDelete = async (environmentalDataId: string) => {
-    await projectOtherApiSecondService<EnvironmentalData>().delete(
-      otherSubMenu?.apiRoute || "",
-      environmentalDataId,
-    );
+    await projectOtherApiSecondService<EnvironmentalData>().delete(otherSubMenu?.apiRoute || '', environmentalDataId);
     refetch();
   };
 
@@ -90,25 +76,19 @@ const EnvironmentalDataList: React.FC<EnvironmentalDataListProps> = ({
     setSelectedRow(environmentalData);
   };
 
-  const mapEnvironmentalDataToDetailItems = (
-    environmentalData: EnvironmentalData,
-  ): { title: string; value: string }[] => [
+  const mapEnvironmentalDataToDetailItems = (environmentalData: EnvironmentalData): { title: string; value: string }[] => [
     {
-      title: t("project.other.environmental-data.details.remark"),
-      value: environmentalData?.remark || "N/A",
+      title: t('project.other.environmental-data.details.remark'),
+      value: environmentalData?.remark || 'N/A'
     },
     {
-      title: t("common.table-columns.created-at"),
-      value: environmentalData?.created_at
-        ? formatCreatedAt(environmentalData.created_at)
-        : "N/A",
+      title: t('common.table-columns.created-at'),
+      value: environmentalData?.created_at ? formatCreatedAt(environmentalData.created_at) : 'N/A'
     },
     {
-      title: t("common.table-columns.updated-at"),
-      value: environmentalData?.updated_at
-        ? formatCreatedAt(environmentalData.updated_at)
-        : "N/A",
-    },
+      title: t('common.table-columns.updated-at'),
+      value: environmentalData?.updated_at ? formatCreatedAt(environmentalData.updated_at) : 'N/A'
+    }
   ];
 
   return (
@@ -130,67 +110,33 @@ const EnvironmentalDataList: React.FC<EnvironmentalDataListProps> = ({
           toggleDrawer={toggleDetailDrawer}
           //   data={mapDrainageAssessmentToDetailItems(selectedRow as DrainageAssessment)}
           data={[
-            ...mapEnvironmentalDataToDetailItems(
-              selectedRow as EnvironmentalData,
-            ),
+            ...mapEnvironmentalDataToDetailItems(selectedRow as EnvironmentalData),
             {
-              title: t(
-                "project.other.environmental-data.file-types.impact-assessment",
-              ),
-              value: (
-                <FileDrawer
-                  id={selectedRow?.id || ""}
-                  type={
-                    uploadableProjectFileTypes.other
-                      .environmentalImpactAssessment
-                  }
-                />
-              ),
+              title: t('project.other.environmental-data.file-types.impact-assessment'),
+              value: <FileDrawer id={selectedRow?.id || ''} type={uploadableProjectFileTypes.other.environmentalImpactAssessment} />
             },
             {
-              title: t(
-                "project.other.environmental-data.file-types.community-feedback",
-              ),
-              value: (
-                <FileDrawer
-                  id={selectedRow?.id || ""}
-                  type={uploadableProjectFileTypes.other.communityFeedback}
-                />
-              ),
+              title: t('project.other.environmental-data.file-types.community-feedback'),
+              value: <FileDrawer id={selectedRow?.id || ''} type={uploadableProjectFileTypes.other.communityFeedback} />
             },
             {
-              title: t(
-                "project.other.environmental-data.file-types.mitigation-measures",
-              ),
-              value: (
-                <FileDrawer
-                  id={selectedRow?.id || ""}
-                  type={uploadableProjectFileTypes.other.mitigationMeasures}
-                />
-              ),
-            },
+              title: t('project.other.environmental-data.file-types.mitigation-measures'),
+              value: <FileDrawer id={selectedRow?.id || ''} type={uploadableProjectFileTypes.other.mitigationMeasures} />
+            }
           ]}
           hasReference={true}
-          id={selectedRow?.id || ""}
+          id={selectedRow?.id || ''}
           fileType={uploadableProjectFileTypes.other.environmentalData}
-          title={t(
-            "project.other.environmental-data.environmental-data-details",
-          )}
+          title={t('project.other.environmental-data.environmental-data-details')}
         />
       )}
 
       <ItemsListing
-        title={t("project.other.environmental-data.title")}
+        title={t('project.other.environmental-data.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: environmentalDataColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-          ),
+          headers: environmentalDataColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -207,9 +153,9 @@ const EnvironmentalDataList: React.FC<EnvironmentalDataListProps> = ({
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "environmentaldata",
-          },
+            action: 'create',
+            subject: 'environmentaldata'
+          }
         }}
         fetchDataFunction={refetch}
         items={environmentalDataList || []}

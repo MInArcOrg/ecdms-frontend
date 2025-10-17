@@ -1,25 +1,16 @@
-import { useRouter } from "next/router";
-import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
-import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
-import TelecomInfrastructureAgeList from "src/views/pages/projects/detail/other/telecom/telecom-infrastructure-age";
-import subMenuItems, {
-  findSubMenuItem,
-  telecomInfrastructureId,
-} from "../(subMenuItems)";
+import { useRouter } from 'next/router';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
+import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import TelecomInfrastructureAgeList from 'src/views/pages/projects/detail/other/telecom/telecom-infrastructure-age';
+import subMenuItems, { findSubMenuItem, telecomInfrastructureId } from '../(subMenuItems)';
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems("", ""),
-  telecomInfrastructureId.telecom.telecomInfrastructureAge,
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), telecomInfrastructureId.telecom.telecomInfrastructureAge);
 
 const TelecomInfrastructureAge = () => {
   const router = useRouter();
-  const { id = "", typeId = "" } = router.query;
+  const { id = '', typeId = '' } = router.query;
 
-  const menuItem = findSubMenuItem(
-    subMenuItems(id as string, typeId as string),
-    telecomInfrastructureId.telecom.telecomInfrastructureAge,
-  );
+  const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), telecomInfrastructureId.telecom.telecomInfrastructureAge);
 
   return (
     <ProjectLayout
@@ -27,11 +18,7 @@ const TelecomInfrastructureAge = () => {
       activeSubMenuId={telecomInfrastructureId.telecom.telecomInfrastructureAge}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <TelecomInfrastructureAgeList
-        otherSubMenu={menuItem}
-        typeId={String(typeId)}
-        projectId={String(id)}
-      />
+      <TelecomInfrastructureAgeList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>
   );
 };
@@ -39,7 +26,7 @@ const TelecomInfrastructureAge = () => {
 // Access control configuration
 TelecomInfrastructureAge.acl = {
   subject: defaultMenuItem?.model,
-  action: "view",
+  action: 'view'
 };
 
 export default TelecomInfrastructureAge;

@@ -1,33 +1,21 @@
-import { useState } from 'react'
-import {
-  Autocomplete,
-  Box,
-  Card,
-  CardContent,
-  TextField,
-  Typography
-} from '@mui/material'
-import { useTheme } from '@mui/material/styles'
-import ReactApexcharts from 'src/@core/components/react-apexcharts'
+import { useState } from 'react';
+import { Autocomplete, Box, Card, CardContent, TextField, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import ReactApexcharts from 'src/@core/components/react-apexcharts';
 
 interface ProjectCategoryChartProps {
-  series: { name: string; data: number[] }[]
-  labels: any[]
-  title: string
-  height?: number
+  series: { name: string; data: number[] }[];
+  labels: any[];
+  title: string;
+  height?: number;
 }
 
-const columnColors = ['#E6E6E7', '#FF9F43', '#00E396', '#008FFB']
+const columnColors = ['#E6E6E7', '#FF9F43', '#00E396', '#008FFB'];
 
-const ProjectCategoryChart = ({
-  series,
-  labels,
-  title,
-  height = 320
-}: ProjectCategoryChartProps) => {
-  const theme = useTheme()
-  const years = ['2024', '2023', '2022', '2021', '2020']
-  const [year, setYear] = useState(years[0])
+const ProjectCategoryChart = ({ series, labels, title, height = 320 }: ProjectCategoryChartProps) => {
+  const theme = useTheme();
+  const years = ['2024', '2023', '2022', '2021', '2020'];
+  const [year, setYear] = useState(years[0]);
 
   const options: ApexCharts.ApexOptions = {
     chart: {
@@ -61,7 +49,7 @@ const ProjectCategoryChart = ({
       labels: { style: { colors: theme.palette.text.disabled } }
     },
     xaxis: {
-      categories: labels?.map(l => l) ?? [],
+      categories: labels?.map((l) => l) ?? [],
       axisBorder: { show: false },
       axisTicks: { color: theme.palette.divider },
       crosshairs: { stroke: { color: theme.palette.divider } },
@@ -75,7 +63,7 @@ const ProjectCategoryChart = ({
         }
       }
     ]
-  }
+  };
 
   return (
     <Card>
@@ -90,20 +78,13 @@ const ProjectCategoryChart = ({
             value={year}
             isOptionEqualToValue={(option, value) => option === value}
             onChange={(_, value) => setYear(value)}
-            renderInput={params => (
-              <TextField {...params} label="Year" variant="outlined" />
-            )}
+            renderInput={(params) => <TextField {...params} label="Year" variant="outlined" />}
             sx={{ width: 120 }}
           />
         </Box>
 
         {labels?.length && series?.length ? (
-          <ReactApexcharts
-            type="bar"
-            height={height}
-            options={options}
-            series={series}
-          />
+          <ReactApexcharts type="bar" height={height} options={options} series={series} />
         ) : (
           <Typography variant="body2" color="text.secondary">
             No data available
@@ -111,7 +92,7 @@ const ProjectCategoryChart = ({
         )}
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default ProjectCategoryChart
+export default ProjectCategoryChart;

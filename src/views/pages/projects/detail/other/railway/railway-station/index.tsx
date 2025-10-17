@@ -1,19 +1,19 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import projectOtherApiService from "src/services/project/project-other-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import { GetRequestParam, IApiResponse } from "src/types/requests";
-import { formatCreatedAt } from "src/utils/formatter/date";
-import ItemsListing from "src/views/shared/listing";
-import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-detail-drawer";
-import RailwayStationCard from "./railway-station-card";
-import RailwayStationDrawer from "./railway-station-drawer";
-import { RailwayStation } from "src/types/project/other";
-import { railwayStationColumns } from "./railway-station-row";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { Box } from '@mui/material';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import projectOtherApiService from 'src/services/project/project-other-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import ItemsListing from 'src/views/shared/listing';
+import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
+import RailwayStationCard from './railway-station-card';
+import RailwayStationDrawer from './railway-station-drawer';
+import { RailwayStation } from 'src/types/project/other';
+import { railwayStationColumns } from './railway-station-row';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 
 interface RailwayStationListProps {
   model: string;
@@ -21,22 +21,16 @@ interface RailwayStationListProps {
   projectId: string;
 }
 
-const RailwayStationList: React.FC<RailwayStationListProps> = ({
-  model,
-  projectId,
-  typeId,
-}) => {
+const RailwayStationList: React.FC<RailwayStationListProps> = ({ model, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<RailwayStation | null>(null);
   const { t } = useTranslation();
 
-  const fetchRailwayStations = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<RailwayStation[]>> => {
+  const fetchRailwayStations = (params: GetRequestParam): Promise<IApiResponse<RailwayStation[]>> => {
     return projectOtherApiService<RailwayStation>().getAll(model, {
       ...params,
-      filter: { ...params.filter, project_id: projectId },
+      filter: { ...params.filter, project_id: projectId }
     });
   };
 
@@ -45,10 +39,10 @@ const RailwayStationList: React.FC<RailwayStationListProps> = ({
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<RailwayStation[]>({
-    queryKey: ["railwayStations"],
-    fetchFunction: fetchRailwayStations,
+    queryKey: ['railwayStations'],
+    fetchFunction: fetchRailwayStations
   });
 
   const toggleDrawer = () => {
@@ -67,10 +61,7 @@ const RailwayStationList: React.FC<RailwayStationListProps> = ({
   };
 
   const handleDelete = async (railwayStationId: string) => {
-    await projectOtherApiService<RailwayStation>().delete(
-      model,
-      railwayStationId,
-    );
+    await projectOtherApiService<RailwayStation>().delete(model, railwayStationId);
     refetch();
   };
 
@@ -79,37 +70,31 @@ const RailwayStationList: React.FC<RailwayStationListProps> = ({
     setShowDetailDrawer(true);
   };
 
-  const mapRailwayStationToDetailItems = (
-    railwayStation: RailwayStation,
-  ): { title: string; value: string }[] => [
+  const mapRailwayStationToDetailItems = (railwayStation: RailwayStation): { title: string; value: string }[] => [
     {
-      title: t("project.other.railway-station.details.specifications"),
-      value: railwayStation.specifications || "N/A",
+      title: t('project.other.railway-station.details.specifications'),
+      value: railwayStation.specifications || 'N/A'
     },
     {
-      title: t("project.other.railway-station.details.northing"),
-      value: railwayStation.northing?.toString() || "N/A",
+      title: t('project.other.railway-station.details.northing'),
+      value: railwayStation.northing?.toString() || 'N/A'
     },
     {
-      title: t("project.other.railway-station.details.easting"),
-      value: railwayStation.easting?.toString() || "N/A",
+      title: t('project.other.railway-station.details.easting'),
+      value: railwayStation.easting?.toString() || 'N/A'
     },
     {
-      title: t("project.other.railway-station.details.revision-no"),
-      value: railwayStation.revision_no?.toString() || "N/A",
+      title: t('project.other.railway-station.details.revision-no'),
+      value: railwayStation.revision_no?.toString() || 'N/A'
     },
     {
-      title: t("common.table-columns.created-at"),
-      value: railwayStation.created_at
-        ? formatCreatedAt(railwayStation.created_at)
-        : "N/A",
+      title: t('common.table-columns.created-at'),
+      value: railwayStation.created_at ? formatCreatedAt(railwayStation.created_at) : 'N/A'
     },
     {
-      title: t("common.table-columns.updated-at"),
-      value: railwayStation.updated_at
-        ? formatCreatedAt(railwayStation.updated_at)
-        : "N/A",
-    },
+      title: t('common.table-columns.updated-at'),
+      value: railwayStation.updated_at ? formatCreatedAt(railwayStation.updated_at) : 'N/A'
+    }
   ];
 
   return (
@@ -131,24 +116,18 @@ const RailwayStationList: React.FC<RailwayStationListProps> = ({
           toggleDrawer={toggleDetailDrawer}
           data={mapRailwayStationToDetailItems(selectedRow!)}
           hasReference={true}
-          id={selectedRow?.id || ""}
+          id={selectedRow?.id || ''}
           fileType={uploadableProjectFileTypes.other.railwayStation}
-          title={t("project.other.railway-station.railway-station-details")}
+          title={t('project.other.railway-station.railway-station-details')}
         />
       )}
 
       <ItemsListing
-        title={t("project.other.railway-station.title")}
+        title={t('project.other.railway-station.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: railwayStationColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-          ),
+          headers: railwayStationColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -165,9 +144,9 @@ const RailwayStationList: React.FC<RailwayStationListProps> = ({
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "railwayStation",
-          },
+            action: 'create',
+            subject: 'railwayStation'
+          }
         }}
         fetchDataFunction={refetch}
         items={railwayStations || []}

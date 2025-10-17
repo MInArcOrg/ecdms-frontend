@@ -1,23 +1,23 @@
 // ** Next Import
-import Link from "next/link";
+import Link from 'next/link';
 
 // ** MUI Imports
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import { styled, useTheme } from "@mui/material/styles";
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import { styled, useTheme } from '@mui/material/styles';
 
 // ** Configs
-import themeConfig from "src/configs/themeConfig";
+import themeConfig from 'src/configs/themeConfig';
 
 // ** Hook
-import { useSettings } from "src/@core/hooks/useSettings";
+import { useSettings } from 'src/@core/hooks/useSettings';
 
 const LinkStyled = styled(Link)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  textDecoration: "none",
-  marginRight: theme.spacing(8),
+  display: 'flex',
+  alignItems: 'center',
+  textDecoration: 'none',
+  marginRight: theme.spacing(8)
 }));
 
 const BlankLayoutAppBar = () => {
@@ -30,31 +30,23 @@ const BlankLayoutAppBar = () => {
     <AppBar
       color="default"
       position="sticky"
-      elevation={skin === "bordered" ? 0 : 3}
+      elevation={skin === 'bordered' ? 0 : 3}
       sx={{
-        backgroundColor: "background.paper",
-        ...(skin === "bordered" && {
-          borderBottom: `1px solid ${theme.palette.divider}`,
-        }),
+        backgroundColor: 'background.paper',
+        ...(skin === 'bordered' && {
+          borderBottom: `1px solid ${theme.palette.divider}`
+        })
       }}
     >
       <Toolbar
         sx={{
-          justifyContent: "space-between",
+          justifyContent: 'space-between',
           p: (theme) => `${theme.spacing(0, 6)} !important`,
-          minHeight: `${
-            (theme.mixins.toolbar.minHeight as number) -
-            (skin === "bordered" ? 1 : 0)
-          }px !important`,
+          minHeight: `${(theme.mixins.toolbar.minHeight as number) - (skin === 'bordered' ? 1 : 0)}px !important`
         }}
       >
         <LinkStyled href="/">
-          <svg
-            width={34}
-            viewBox="0 0 32 22"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width={34} viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -82,10 +74,7 @@ const BlankLayoutAppBar = () => {
               d="M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z"
             />
           </svg>
-          <Typography
-            variant="h4"
-            sx={{ ml: 2.5, fontWeight: 700, lineHeight: "24px" }}
-          >
+          <Typography variant="h4" sx={{ ml: 2.5, fontWeight: 700, lineHeight: '24px' }}>
             {themeConfig.templateName}
           </Typography>
         </LinkStyled>

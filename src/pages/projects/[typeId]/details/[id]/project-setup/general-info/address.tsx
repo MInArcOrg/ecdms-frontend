@@ -1,9 +1,9 @@
-import { Box } from "@mui/material";
-import { useRouter } from "next/router";
-import AddressList from "src/views/generics/address/address-list";
-import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
-import subMenuItems, { projectSetupIds } from "../(subMenuItems)";
-import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
+import { Box } from '@mui/material';
+import { useRouter } from 'next/router';
+import AddressList from 'src/views/generics/address/address-list';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
+import subMenuItems, { projectSetupIds } from '../(subMenuItems)';
+import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 
 function ProjectLocation() {
   // states / hooks / variables
@@ -17,15 +17,15 @@ function ProjectLocation() {
         activeSubMenuId={projectSetupIds.generalInfo.address}
         subMenuItems={subMenuItems(id as string, typeId as string)}
       >
-        <AddressList modelId={String(id)} type={"project"} />
+        <AddressList modelId={String(id)} type={'project'} />
       </ProjectLayout>
     </Box>
   );
 }
 
 ProjectLocation.acl = {
-  subject: "projectinfo",
-  action: "view_projectinfo",
+  subject: 'projectinfo',
+  action: 'view_projectinfo'
 };
 
 export default ProjectLocation;

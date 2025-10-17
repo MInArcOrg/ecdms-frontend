@@ -1,17 +1,15 @@
 // ** MUI Imports
-import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
+import Card from '@mui/material/Card';
+import { useTheme } from '@mui/material/styles';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
 
 // ** Component Import
-import ReactApexcharts from 'src/@core/components/react-apexcharts'
-
-
+import ReactApexcharts from 'src/@core/components/react-apexcharts';
 
 const GeneralInfoApexChart = ({ labels, series, title, subtitle, total }: any) => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const options = {
     stroke: { width: 0 },
@@ -92,20 +90,20 @@ const GeneralInfoApexChart = ({ labels, series, title, subtitle, total }: any) =
         }
       }
     ]
-  }
+  };
 
   return (
     <Card>
       <CardHeader
         title={title}
         subheader={subtitle}
-        subheaderTypographyProps={{ sx: { color: theme => `${theme.palette.text.disabled} !important` } }}
+        subheaderTypographyProps={{ sx: { color: (theme) => `${theme.palette.text.disabled} !important` } }}
       />
       <CardContent>
-        <ReactApexcharts type='donut' height={400} options={options as any} series={series} />
+        <ReactApexcharts type="donut" height={400} options={options as any} series={series} />
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default GeneralInfoApexChart
+export default GeneralInfoApexChart;

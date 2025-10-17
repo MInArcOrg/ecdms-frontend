@@ -42,17 +42,10 @@ const RailwayCommunicationSystemSafetyAndComplianceDrawer = ({
     remark: yup.string().nullable()
   });
 
-  const createRailwayCommunicationSystemSafetyAndCompliance = async (
-    body: IApiPayload<RailwayCommunicationSystemSafetyAndCompliance>
-  ) =>
-    projectOtherApiSecondService<RailwayCommunicationSystemSafetyAndCompliance>().create(
-      otherSubMenu?.apiRoute || '',
-      body
-    );
+  const createRailwayCommunicationSystemSafetyAndCompliance = async (body: IApiPayload<RailwayCommunicationSystemSafetyAndCompliance>) =>
+    projectOtherApiSecondService<RailwayCommunicationSystemSafetyAndCompliance>().create(otherSubMenu?.apiRoute || '', body);
 
-  const editRailwayCommunicationSystemSafetyAndCompliance = async (
-    body: IApiPayload<RailwayCommunicationSystemSafetyAndCompliance>
-  ) =>
+  const editRailwayCommunicationSystemSafetyAndCompliance = async (body: IApiPayload<RailwayCommunicationSystemSafetyAndCompliance>) =>
     projectOtherApiSecondService<RailwayCommunicationSystemSafetyAndCompliance>().update(
       otherSubMenu?.apiRoute || '',
       railwayCommunicationSystemSafetyAndCompliance.id as string,
@@ -66,8 +59,7 @@ const RailwayCommunicationSystemSafetyAndComplianceDrawer = ({
       data: {
         ...values,
         project_id: projectId,
-        incident_date: convertDateToLocaleDate(values.incident_date),
-
+        incident_date: convertDateToLocaleDate(values.incident_date)
       },
       files: []
     };
@@ -86,8 +78,7 @@ const RailwayCommunicationSystemSafetyAndComplianceDrawer = ({
       const recordId = response.payload.id;
 
       if (defaultFile) {
-        await uploadFile(defaultFile, otherSubMenu?.fileType || "",
-          recordId, '', '');
+        await uploadFile(defaultFile, otherSubMenu?.fileType || '', recordId, '', '');
       }
 
       refetch();
@@ -111,14 +102,10 @@ const RailwayCommunicationSystemSafetyAndComplianceDrawer = ({
           validationSchema={validationSchema}
           initialValues={{
             ...railwayCommunicationSystemSafetyAndCompliance,
-            incident_date: formatInitialDateDate(
-              railwayCommunicationSystemSafetyAndCompliance?.incident_date,
-            ),
+            incident_date: formatInitialDateDate(railwayCommunicationSystemSafetyAndCompliance?.incident_date)
           }}
           createActionFunc={
-            isEdit
-              ? editRailwayCommunicationSystemSafetyAndCompliance
-              : createRailwayCommunicationSystemSafetyAndCompliance
+            isEdit ? editRailwayCommunicationSystemSafetyAndCompliance : createRailwayCommunicationSystemSafetyAndCompliance
           }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

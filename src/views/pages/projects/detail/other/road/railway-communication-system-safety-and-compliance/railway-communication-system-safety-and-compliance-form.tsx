@@ -18,7 +18,7 @@ interface RailwayCommunicationSystemSafetyAndComplianceFormProps {
 const RailwayCommunicationSystemSafetyAndComplianceForm: React.FC<RailwayCommunicationSystemSafetyAndComplianceFormProps> = ({
   formik,
   defaultFile,
-  onDefaultFileChange,
+  onDefaultFileChange
 }) => {
   const { t } = useTranslation();
 
@@ -27,12 +27,8 @@ const RailwayCommunicationSystemSafetyAndComplianceForm: React.FC<RailwayCommuni
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={t(
-            'project.other.railway-communication-system-safety-and-compliance.details.railway_line_section_name'
-          )}
-          placeholder={t(
-            'project.other.railway-communication-system-safety-and-compliance.details.railway_line_section_name'
-          )}
+          label={t('project.other.railway-communication-system-safety-and-compliance.details.railway_line_section_name')}
+          placeholder={t('project.other.railway-communication-system-safety-and-compliance.details.railway_line_section_name')}
           name="railway_line_section_name"
           value={formik.values.railway_line_section_name}
           onChange={formik.handleChange}
@@ -44,16 +40,16 @@ const RailwayCommunicationSystemSafetyAndComplianceForm: React.FC<RailwayCommuni
         />
 
         <CustomSwitch
-
           name="safety_measures_and_protocols_done"
-
           label={t('project.other.railway-communication-system-safety-and-compliance.details.safety_measures_and_protocols_done')}
           sx={{ mb: 2 }}
         />
 
         <CustomSwitch
           name="compliance_with_signaling_and_communication_standards"
-          label={t('project.other.railway-communication-system-safety-and-compliance.details.compliance_with_signaling_and_communication_standards')}
+          label={t(
+            'project.other.railway-communication-system-safety-and-compliance.details.compliance_with_signaling_and_communication_standards'
+          )}
           sx={{ mb: 2 }}
         />
 
@@ -62,7 +58,6 @@ const RailwayCommunicationSystemSafetyAndComplianceForm: React.FC<RailwayCommuni
           label={t('project.other.railway-communication-system-safety-and-compliance.details.incident_or_accident_records')}
           sx={{ mb: 2 }}
         />
-
 
         <CustomDynamicDatePicker
           fullWidth
@@ -93,7 +88,6 @@ const RailwayCommunicationSystemSafetyAndComplianceForm: React.FC<RailwayCommuni
       <Grid item xs={12}>
         <CustomFileUpload label={t('common.form.file-upload')} file={defaultFile} onFileChange={onDefaultFileChange} />
       </Grid>
-
     </Grid>
   );
 };

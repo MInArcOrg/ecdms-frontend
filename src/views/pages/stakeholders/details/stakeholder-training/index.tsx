@@ -1,28 +1,24 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
+import { Box } from '@mui/material';
+import { useState } from 'react';
 
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import stakeholderTrainingApiService from "src/services/stakeholder/stakeholder-training-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import { StakeholderTraining } from "src/types/stakeholder/stakeholder-training";
-import { GetRequestParam, IApiResponse } from "src/types/requests";
-import ItemsListing from "src/views/shared/listing";
-import StakeholderTrainingCard from "./stakeholder-training-card";
-import StakeholderTrainingDrawer from "./stakeholder-training-drawer";
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import stakeholderTrainingApiService from 'src/services/stakeholder/stakeholder-training-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { StakeholderTraining } from 'src/types/stakeholder/stakeholder-training';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import ItemsListing from 'src/views/shared/listing';
+import StakeholderTrainingCard from './stakeholder-training-card';
+import StakeholderTrainingDrawer from './stakeholder-training-drawer';
 
 function StakeholderTrainingList({ stakeholderId }: { stakeholderId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
 
-  const [selectedRow, setSelectedRow] = useState<StakeholderTraining | null>(
-    null,
-  );
-  const fetchStakeholderTrainings = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<StakeholderTraining[]>> => {
+  const [selectedRow, setSelectedRow] = useState<StakeholderTraining | null>(null);
+  const fetchStakeholderTrainings = (params: GetRequestParam): Promise<IApiResponse<StakeholderTraining[]>> => {
     return stakeholderTrainingApiService.getAll({
       ...params,
-      filter: { ...params.filter },
+      filter: { ...params.filter }
     });
   };
 
@@ -31,10 +27,10 @@ function StakeholderTrainingList({ stakeholderId }: { stakeholderId: string }) {
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<StakeholderTraining[]>({
-    queryKey: ["stakeholderTrainings"],
-    fetchFunction: fetchStakeholderTrainings,
+    queryKey: ['stakeholderTrainings'],
+    fetchFunction: fetchStakeholderTrainings
   });
 
   const toggleDrawer = () => {
@@ -68,21 +64,16 @@ function StakeholderTrainingList({ stakeholderId }: { stakeholderId: string }) {
         type={ITEMS_LISTING_TYPE.table.value}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <StakeholderTrainingCard
-            stakeholderTraining={data}
-            onEdit={handleEdit}
-            refetch={refetch}
-            onDelete={handleDelete}
-          />
+          <StakeholderTrainingCard stakeholderTraining={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "training",
-          },
+            action: 'create',
+            subject: 'training'
+          }
         }}
         fetchDataFunction={refetch}
         items={stakeholderTrainings || []}

@@ -1,14 +1,14 @@
-import { FormikProps } from "formik";
-import React, { useState } from "react";
-import resourceSalaryApiService from "src/services/resource/resource-salary-service";
-import { uploadFile } from "src/services/utils/file-utils";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import { ResourceSalary } from "src/types/resource";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import ResourceSalaryForm from "./resource-salary-form";
-import { uploadableResourceFileTypes } from "src/services/utils/file-constants";
+import { FormikProps } from 'formik';
+import React, { useState } from 'react';
+import resourceSalaryApiService from 'src/services/resource/resource-salary-service';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import { ResourceSalary } from 'src/types/resource';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import ResourceSalaryForm from './resource-salary-form';
+import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
 
 interface ResourceSalaryDrawerType {
   open: boolean;
@@ -22,7 +22,7 @@ const validationSchema = yup.object().shape({
   year: yup.string().required(),
   min_pay: yup.number().required(),
   max_pay: yup.number().required(),
-  salary_type: yup.string().required(),
+  salary_type: yup.string().required()
 });
 
 const ResourceSalaryDrawer: React.FC<ResourceSalaryDrawerType> = (props) => {
@@ -39,19 +39,16 @@ const ResourceSalaryDrawer: React.FC<ResourceSalaryDrawerType> = (props) => {
   };
 
   const editResourceSalary = async (body: IApiPayload<ResourceSalary>) => {
-    return await resourceSalaryApiService.update(
-      resourceSalary?.id || "",
-      body,
-    );
+    return await resourceSalaryApiService.update(resourceSalary?.id || '', body);
   };
 
   const getPayload = (values: ResourceSalary) => ({
     data: {
       ...values,
       id: resourceSalary?.id,
-      resource_id: resourceId,
+      resource_id: resourceId
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => {
@@ -59,18 +56,9 @@ const ResourceSalaryDrawer: React.FC<ResourceSalaryDrawerType> = (props) => {
     setUploadableFile(null);
   };
 
-  const onActionSuccess = async (
-    response: IApiResponse<ResourceSalary>,
-    payload: IApiPayload<ResourceSalary>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<ResourceSalary>, payload: IApiPayload<ResourceSalary>) => {
     if (payload.files.length > 0) {
-      uploadFile(
-        payload.files[0],
-        uploadableResourceFileTypes.resourceSalary,
-        response.payload.id,
-        "",
-        "",
-      );
+      uploadFile(payload.files[0], uploadableResourceFileTypes.resourceSalary, response.payload.id, '', '');
     }
     refetch();
     toggle();
@@ -80,9 +68,7 @@ const ResourceSalaryDrawer: React.FC<ResourceSalaryDrawerType> = (props) => {
 
   return (
     <CustomSideDrawer
-      title={`resource.resource-salary.${
-        isEdit ? "edit-resource-salary" : "create-resource-salary"
-      }`}
+      title={`resource.resource-salary.${isEdit ? 'edit-resource-salary' : 'create-resource-salary'}`}
       handleClose={handleClose}
       open={open}
     >

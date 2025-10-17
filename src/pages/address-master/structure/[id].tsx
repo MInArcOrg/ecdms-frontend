@@ -1,5 +1,5 @@
-import { useRouter } from "next/router";
-import AddressStructureComponent from "src/views/admin/address-master/address-structure-component";
+import { useRouter } from 'next/router';
+import AddressStructureComponent from 'src/views/admin/address-master/address-structure-component';
 
 const MainDepartmentStructure = () => {
   const { id } = useRouter().query;

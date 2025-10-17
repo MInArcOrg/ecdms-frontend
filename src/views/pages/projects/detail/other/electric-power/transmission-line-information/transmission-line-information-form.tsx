@@ -1,10 +1,10 @@
-import { Grid } from "@mui/material";
-import { FormikProps } from "formik";
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { TransmissionLineInformation } from "src/types/project/other";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
-import CustomFileUpload from "src/views/shared/form/custome-file-selector";
+import { Grid } from '@mui/material';
+import { FormikProps } from 'formik';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { TransmissionLineInformation } from 'src/types/project/other';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface TransmissionLineInformationFormProps {
   formik: FormikProps<TransmissionLineInformation>;
@@ -12,9 +12,7 @@ interface TransmissionLineInformationFormProps {
   onFileChange: (file: File | null) => void;
 }
 
-const TransmissionLineInformationForm: React.FC<
-  TransmissionLineInformationFormProps
-> = ({ formik, file, onFileChange }) => {
+const TransmissionLineInformationForm: React.FC<TransmissionLineInformationFormProps> = ({ formik, file, onFileChange }) => {
   const { t: transl } = useTranslation();
 
   return (
@@ -22,12 +20,8 @@ const TransmissionLineInformationForm: React.FC<
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.transmission-line-information.details.name",
-          )}
-          placeholder={transl(
-            "project.other.transmission-line-information.details.name",
-          )}
+          label={transl('project.other.transmission-line-information.details.name')}
+          placeholder={transl('project.other.transmission-line-information.details.name')}
           name="name"
           size="small"
           sx={{ mb: 2 }}
@@ -36,12 +30,8 @@ const TransmissionLineInformationForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.transmission-line-information.details.transmission-voltage",
-          )}
-          placeholder={transl(
-            "project.other.transmission-line-information.details.transmission-voltage",
-          )}
+          label={transl('project.other.transmission-line-information.details.transmission-voltage')}
+          placeholder={transl('project.other.transmission-line-information.details.transmission-voltage')}
           name="transmission_voltage"
           size="small"
           type="number"
@@ -50,12 +40,8 @@ const TransmissionLineInformationForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.transmission-line-information.details.transmission-line-route-length",
-          )}
-          placeholder={transl(
-            "project.other.transmission-line-information.details.transmission-line-route-length",
-          )}
+          label={transl('project.other.transmission-line-information.details.transmission-line-route-length')}
+          placeholder={transl('project.other.transmission-line-information.details.transmission-line-route-length')}
           name="transmission_line_route_length"
           size="small"
           type="number"
@@ -64,12 +50,8 @@ const TransmissionLineInformationForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.transmission-line-information.details.circuit-number",
-          )}
-          placeholder={transl(
-            "project.other.transmission-line-information.details.circuit-number",
-          )}
+          label={transl('project.other.transmission-line-information.details.circuit-number')}
+          placeholder={transl('project.other.transmission-line-information.details.circuit-number')}
           name="circuit_number"
           size="small"
           type="number"
@@ -78,12 +60,8 @@ const TransmissionLineInformationForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.transmission-line-information.details.starting-point-northing",
-          )}
-          placeholder={transl(
-            "project.other.transmission-line-information.details.starting-point-northing",
-          )}
+          label={transl('project.other.transmission-line-information.details.starting-point-northing')}
+          placeholder={transl('project.other.transmission-line-information.details.starting-point-northing')}
           name="starting_point_northing"
           size="small"
           type="number"
@@ -92,12 +70,8 @@ const TransmissionLineInformationForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.transmission-line-information.details.starting-point-easting",
-          )}
-          placeholder={transl(
-            "project.other.transmission-line-information.details.starting-point-easting",
-          )}
+          label={transl('project.other.transmission-line-information.details.starting-point-easting')}
+          placeholder={transl('project.other.transmission-line-information.details.starting-point-easting')}
           name="starting_point_easting"
           size="small"
           type="number"
@@ -106,12 +80,8 @@ const TransmissionLineInformationForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.transmission-line-information.details.ending-point-northing",
-          )}
-          placeholder={transl(
-            "project.other.transmission-line-information.details.ending-point-northing",
-          )}
+          label={transl('project.other.transmission-line-information.details.ending-point-northing')}
+          placeholder={transl('project.other.transmission-line-information.details.ending-point-northing')}
           name="ending_point_northing"
           size="small"
           type="number"
@@ -120,12 +90,8 @@ const TransmissionLineInformationForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.transmission-line-information.details.ending-point-easting",
-          )}
-          placeholder={transl(
-            "project.other.transmission-line-information.details.ending-point-easting",
-          )}
+          label={transl('project.other.transmission-line-information.details.ending-point-easting')}
+          placeholder={transl('project.other.transmission-line-information.details.ending-point-easting')}
           name="ending_point_easting"
           size="small"
           type="number"
@@ -134,12 +100,8 @@ const TransmissionLineInformationForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.transmission-line-information.details.lifetime",
-          )}
-          placeholder={transl(
-            "project.other.transmission-line-information.details.lifetime",
-          )}
+          label={transl('project.other.transmission-line-information.details.lifetime')}
+          placeholder={transl('project.other.transmission-line-information.details.lifetime')}
           name="lifetime"
           size="small"
           type="number"
@@ -148,12 +110,8 @@ const TransmissionLineInformationForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.transmission-line-information.details.remark",
-          )}
-          placeholder={transl(
-            "project.other.transmission-line-information.details.remark",
-          )}
+          label={transl('project.other.transmission-line-information.details.remark')}
+          placeholder={transl('project.other.transmission-line-information.details.remark')}
           name="remark"
           size="small"
           multiline
@@ -163,11 +121,7 @@ const TransmissionLineInformationForm: React.FC<
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={transl("common.form.file-upload")}
-          file={file}
-          onFileChange={onFileChange}
-        />
+        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

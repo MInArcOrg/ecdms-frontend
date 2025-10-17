@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import type { FormikProps } from "formik";
-import type { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import RoadSegmentForm from "./road-segment-form";
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import RoadSegmentForm from './road-segment-form';
 
-import { useState } from "react";
-import projectOtherApiService from "src/services/project/project-other-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import type { RoadSegment } from "src/types/project/other";
+import { useState } from 'react';
+import projectOtherApiService from 'src/services/project/project-other-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import type { RoadSegment } from 'src/types/project/other';
 
 interface RoadSegmentDrawerType {
   open: boolean;
@@ -30,47 +30,33 @@ const RoadSegmentDrawer = (props: RoadSegmentDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    surface_type_id: yup.string().required("Surface type is required"),
+    name: yup.string().required('Name is required'),
+    surface_type_id: yup.string().required('Surface type is required')
   });
 
   const isEdit = Boolean(roadSegment?.id);
 
-  const createRoadSegment = async (body: IApiPayload<RoadSegment>) =>
-    projectOtherApiService<RoadSegment>().create(model, body);
+  const createRoadSegment = async (body: IApiPayload<RoadSegment>) => projectOtherApiService<RoadSegment>().create(model, body);
 
   const editRoadSegment = async (body: IApiPayload<RoadSegment>) =>
-    projectOtherApiService<RoadSegment>().update(
-      model,
-      roadSegment?.id || "",
-      body,
-    );
+    projectOtherApiService<RoadSegment>().update(model, roadSegment?.id || '', body);
 
   const getPayload = (values: RoadSegment) => {
     return {
       data: {
         ...values,
         id: roadSegment?.id,
-        project_id: projectId,
+        project_id: projectId
       },
-      files: uploadableFile ? [uploadableFile] : [],
+      files: uploadableFile ? [uploadableFile] : []
     };
   };
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<RoadSegment>,
-    payload: IApiPayload<RoadSegment>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<RoadSegment>, payload: IApiPayload<RoadSegment>) => {
     if (payload.files.length > 0) {
-      uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.other.roadSegment,
-        response.payload.id,
-        "",
-        "",
-      );
+      uploadFile(payload.files[0], uploadableProjectFileTypes.other.roadSegment, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -78,35 +64,25 @@ const RoadSegmentDrawer = (props: RoadSegmentDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.other.road-segment.${
-        isEdit ? `edit-road-segment` : `create-road-segment`
-      }`}
+      title={`project.other.road-segment.${isEdit ? `edit-road-segment` : `create-road-segment`}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.road-segment.${
-            isEdit ? `edit-road-segment` : `create-road-segment`
-          }`}
+          title={`project.other.road-segment.${isEdit ? `edit-road-segment` : `create-road-segment`}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...roadSegment,
+            ...roadSegment
           }}
           createActionFunc={isEdit ? editRoadSegment : createRoadSegment}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<RoadSegment>) => {
-            return (
-              <RoadSegmentForm
-                file={uploadableFile}
-                onFileChange={onFileChange}
-                formik={formik}
-              />
-            );
+            return <RoadSegmentForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

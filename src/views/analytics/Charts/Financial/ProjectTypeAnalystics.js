@@ -1,23 +1,23 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import CardHeader from '@mui/material/CardHeader'
-import Grid from '@mui/material/Grid'
-import LinearProgress from '@mui/material/LinearProgress'
-import Typography from '@mui/material/Typography'
-import { styled, useTheme } from '@mui/material/styles'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Grid from '@mui/material/Grid';
+import LinearProgress from '@mui/material/LinearProgress';
+import Typography from '@mui/material/Typography';
+import { styled, useTheme } from '@mui/material/styles';
 
 // ** Custom Components Imports
-import Icon from 'src/@core/components/icon'
-import CustomAvatar from 'src/@core/components/mui/avatar'
-import CustomChip from 'src/@core/components/mui/chip'
-import ReactApexcharts from 'src/@core/components/react-apexcharts'
+import Icon from 'src/@core/components/icon';
+import CustomAvatar from 'src/@core/components/mui/avatar';
+import CustomChip from 'src/@core/components/mui/chip';
+import ReactApexcharts from 'src/@core/components/react-apexcharts';
 
 // ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
 
-const series = [{ data: [37, 76, 65, 41, 99, 53, 70, 40, 23, 56, 23, 67] }]
+const series = [{ data: [37, 76, 65, 41, 99, 53, 70, 40, 23, 56, 23, 67] }];
 
 const data = [
   {
@@ -52,17 +52,17 @@ const data = [
     progressColor: 'warning',
     avatarIcon: 'tabler:chart-dots-3'
   }
-]
+];
 
 const StyledGrid = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     paddingTop: '0 !important'
   }
-}))
+}));
 
 const ProjectTypeAnalystics = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const options = {
     chart: {
@@ -125,21 +125,21 @@ const ProjectTypeAnalystics = () => {
       }
     },
     yaxis: { show: false }
-  }
+  };
 
   return (
     <Card>
       <CardHeader
         sx={{ pb: 0 }}
-        title='Road Analytics'
+        title="Road Analytics"
         // subheader='Weekly Earnings Overview'
         subheaderTypographyProps={{ sx: { mt: '0 !important' } }}
-      // action={
-      //   <OptionsMenu
-      //     options={['Last Week', 'Last Month', 'Last Year']}
-      //     iconButtonProps={{ size: 'small', sx: { color: 'text.disabled' } }}
-      //   />
-      // }
+        // action={
+        //   <OptionsMenu
+        //     options={['Last Week', 'Last Month', 'Last Year']}
+        //     iconButtonProps={{ size: 'small', sx: { color: 'text.disabled' } }}
+        //   />
+        // }
       />
 
       <CardContent>
@@ -151,13 +151,13 @@ const ProjectTypeAnalystics = () => {
             sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-end' }}
           >
             <Box sx={{ mb: 3, rowGap: 1, columnGap: 2.5, display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
-              <Typography variant='h6'>4,000,000,000 ETB </Typography>
-              <CustomChip rounded size='small' skin='light' color='success' label='+4.2%' />
+              <Typography variant="h6">4,000,000,000 ETB </Typography>
+              <CustomChip rounded size="small" skin="light" color="success" label="+4.2%" />
             </Box>
-            <Typography variant='body2'>You informed of this year compared to last year</Typography>
+            <Typography variant="body2">You informed of this year compared to last year</Typography>
           </StyledGrid>
           <StyledGrid item xs={12} sm={7.2}>
-            <ReactApexcharts type='bar' height={180} series={series} options={options} />
+            <ReactApexcharts type="bar" height={180} series={series} options={options} />
           </StyledGrid>
         </Grid>
         <Box sx={{ mt: 6, borderRadius: 1, p: theme.spacing(4, 5), border: `1px solid {theme ETB.palette.divider}` }}>
@@ -165,32 +165,22 @@ const ProjectTypeAnalystics = () => {
             {data.map((item, index) => (
               <Grid item xs={12} sm={3} key={index}>
                 <Box sx={{ mb: 2.5, display: 'flex', alignItems: 'center' }}>
-                  <CustomAvatar
-                    skin='light'
-                    variant='rounded'
-                    color={item.avatarColor}
-                    sx={{ mr: 2, width: 26, height: 26 }}
-                  >
-                    <Icon fontSize='1.125rem' icon={item.avatarIcon} />
+                  <CustomAvatar skin="light" variant="rounded" color={item.avatarColor} sx={{ mr: 2, width: 26, height: 26 }}>
+                    <Icon fontSize="1.125rem" icon={item.avatarIcon} />
                   </CustomAvatar>
                   <Typography sx={{ fontWeight: 500 }}>{item.title}</Typography>
                 </Box>
-                <Typography variant='h5' sx={{ mb: 2.5 }}>
+                <Typography variant="h5" sx={{ mb: 2.5 }}>
                   {item.stats}
                 </Typography>
-                <LinearProgress
-                  variant='determinate'
-                  value={item.progress}
-                  color={item.progressColor}
-                  sx={{ height: 4 }}
-                />
+                <LinearProgress variant="determinate" value={item.progress} color={item.progressColor} sx={{ height: 4 }} />
               </Grid>
             ))}
           </Grid>
         </Box>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default ProjectTypeAnalystics
+export default ProjectTypeAnalystics;

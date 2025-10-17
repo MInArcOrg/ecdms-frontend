@@ -1,6 +1,6 @@
 // ** MUI Imports
-import Avatar from "@mui/material/Avatar";
-import AvatarGroup from "@mui/material/AvatarGroup";
+import Avatar from '@mui/material/Avatar';
+import AvatarGroup from '@mui/material/AvatarGroup';
 
 const AvatarsGroupedPullUp = () => {
   return (

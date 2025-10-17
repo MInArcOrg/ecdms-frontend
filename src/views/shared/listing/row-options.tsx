@@ -1,9 +1,9 @@
-import React, { useState, MouseEvent, useContext } from "react";
-import { IconButton, Menu, MenuItem } from "@mui/material";
-import { Icon } from "@iconify/react";
-import DeleteConfirmationDialog from "../dialog/delete-confirmation-dialog";
-import { AbilityRule } from "src/types/general/permission";
-import { AbilityContext } from "src/layouts/components/acl/Can";
+import React, { useState, MouseEvent, useContext } from 'react';
+import { IconButton, Menu, MenuItem } from '@mui/material';
+import { Icon } from '@iconify/react';
+import DeleteConfirmationDialog from '../dialog/delete-confirmation-dialog';
+import { AbilityRule } from 'src/types/general/permission';
+import { AbilityContext } from 'src/layouts/components/acl/Can';
 
 interface RowOption {
   name: string;
@@ -21,14 +21,7 @@ interface RowOptionsProps<T> {
   editPermissionRule?: AbilityRule;
 }
 
-const RowOptions = <T,>({
-  item,
-  options,
-  onEdit,
-  onDelete,
-  deletePermissionRule,
-  editPermissionRule,
-}: RowOptionsProps<T>) => {
+const RowOptions = <T,>({ item, options, onEdit, onDelete, deletePermissionRule, editPermissionRule }: RowOptionsProps<T>) => {
   const [isDeleteDialogOpen, setDeleteDialogOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const ability = useContext(AbilityContext);
@@ -67,48 +60,33 @@ const RowOptions = <T,>({
         open={rowOptionsOpen}
         onClose={handleRowOptionsClose}
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
+          vertical: 'bottom',
+          horizontal: 'right'
         }}
         transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
+          vertical: 'top',
+          horizontal: 'right'
         }}
-        PaperProps={{ style: { minWidth: "8rem" } }}
+        PaperProps={{ style: { minWidth: '8rem' } }}
       >
         {options?.map((option, index) => (
-          <MenuItem
-            key={index}
-            onClick={option.onClick}
-            sx={{ "& svg": { mr: 2 } }}
-          >
+          <MenuItem key={index} onClick={option.onClick} sx={{ '& svg': { mr: 2 } }}>
             <Icon icon={option.icon} fontSize={20} />
             {option.name}
           </MenuItem>
         ))}
-        {onEdit &&
-          ability.can(
-            editPermissionRule?.action,
-            editPermissionRule?.subject,
-          ) && (
-            <MenuItem onClick={handleEdit} sx={{ "& svg": { mr: 2 } }}>
-              <Icon icon="tabler:edit" fontSize={20} />
-              Edit
-            </MenuItem>
-          )}
-        {onDelete &&
-          ability.can(
-            deletePermissionRule?.action,
-            deletePermissionRule?.subject,
-          ) && (
-            <MenuItem
-              onClick={handleOpenDeleteDialog}
-              sx={{ "& svg": { mr: 2 } }}
-            >
-              <Icon icon="tabler:trash" fontSize={20} />
-              Delete
-            </MenuItem>
-          )}
+        {onEdit && ability.can(editPermissionRule?.action, editPermissionRule?.subject) && (
+          <MenuItem onClick={handleEdit} sx={{ '& svg': { mr: 2 } }}>
+            <Icon icon="tabler:edit" fontSize={20} />
+            Edit
+          </MenuItem>
+        )}
+        {onDelete && ability.can(deletePermissionRule?.action, deletePermissionRule?.subject) && (
+          <MenuItem onClick={handleOpenDeleteDialog} sx={{ '& svg': { mr: 2 } }}>
+            <Icon icon="tabler:trash" fontSize={20} />
+            Delete
+          </MenuItem>
+        )}
       </Menu>
       <DeleteConfirmationDialog
         handleClose={handleCloseDeleteDialog}

@@ -1,19 +1,16 @@
-"use client";
-import type { FormikProps } from "formik";
-import { useState } from "react";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
-import type {
-  ElectricGridControlCenterData,
-  ElectricGridControlCenterPerformanceAndMaintenance,
-} from "src/types/project/other";
-import type { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import ElectricGridControlCenterPerformanceAndMaintenanceForm from "./electric-grid-control-center-performance-and-maintenance-form";
+'use client';
+import type { FormikProps } from 'formik';
+import { useState } from 'react';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import type { ElectricGridControlCenterData, ElectricGridControlCenterPerformanceAndMaintenance } from 'src/types/project/other';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import ElectricGridControlCenterPerformanceAndMaintenanceForm from './electric-grid-control-center-performance-and-maintenance-form';
 
 interface ElectricGridControlCenterPerformanceAndMaintenanceDrawerType {
   open: boolean;
@@ -26,9 +23,7 @@ interface ElectricGridControlCenterPerformanceAndMaintenanceDrawerType {
   maintenanceFrequencies: any[];
 }
 
-const ElectricGridControlCenterPerformanceAndMaintenanceDrawer = (
-  props: ElectricGridControlCenterPerformanceAndMaintenanceDrawerType,
-) => {
+const ElectricGridControlCenterPerformanceAndMaintenanceDrawer = (props: ElectricGridControlCenterPerformanceAndMaintenanceDrawerType) => {
   const {
     open,
     toggle,
@@ -37,7 +32,7 @@ const ElectricGridControlCenterPerformanceAndMaintenanceDrawer = (
     projectId,
     otherSubMenu,
     electricGridControlCenterData,
-    maintenanceFrequencies,
+    maintenanceFrequencies
   } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
@@ -48,13 +43,9 @@ const ElectricGridControlCenterPerformanceAndMaintenanceDrawer = (
 
   const validationSchema = yup.object().shape({
     parent_id: yup.string().uuid().nullable(),
-    electric_grid_control_center_data_id: yup
-      .string()
-      .uuid()
-      .required("Electric Grid Control Center Data is required"),
-    name: yup.string().max(100).required("Name is required"),
-    maintenance_frequency_id: yup.string().uuid()
-      .required("Maintenance Frequency is required"),
+    electric_grid_control_center_data_id: yup.string().uuid().required('Electric Grid Control Center Data is required'),
+    name: yup.string().max(100).required('Name is required'),
+    maintenance_frequency_id: yup.string().uuid().required('Maintenance Frequency is required'),
     total_system_downtime_outage_duration: yup
       .number()
       .nullable()
@@ -63,57 +54,48 @@ const ElectricGridControlCenterPerformanceAndMaintenanceDrawer = (
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value))
-      .integer("Total interruptions number must be an integer"),
+      .integer('Total interruptions number must be an integer'),
     saidi: yup.string().max(100).nullable(),
     saifi: yup.string().max(100).nullable(),
-    remark: yup.string().nullable(),
+    remark: yup.string().nullable()
   });
 
-  const isEdit = Boolean(
-    electricGridControlCenterPerformanceAndMaintenance?.id,
-  );
+  const isEdit = Boolean(electricGridControlCenterPerformanceAndMaintenance?.id);
 
   const createElectricGridControlCenterPerformanceAndMaintenance = async (
-    body: IApiPayload<ElectricGridControlCenterPerformanceAndMaintenance>,
-  ) =>
-    projectOtherApiSecondService<ElectricGridControlCenterPerformanceAndMaintenance>().create(
-      otherSubMenu?.apiRoute || "",
-      body,
-    );
+    body: IApiPayload<ElectricGridControlCenterPerformanceAndMaintenance>
+  ) => projectOtherApiSecondService<ElectricGridControlCenterPerformanceAndMaintenance>().create(otherSubMenu?.apiRoute || '', body);
 
   const editElectricGridControlCenterPerformanceAndMaintenance = async (
-    body: IApiPayload<ElectricGridControlCenterPerformanceAndMaintenance>,
+    body: IApiPayload<ElectricGridControlCenterPerformanceAndMaintenance>
   ) =>
     projectOtherApiSecondService<ElectricGridControlCenterPerformanceAndMaintenance>().update(
-      otherSubMenu?.apiRoute || "",
-      electricGridControlCenterPerformanceAndMaintenance?.id || "",
-      body,
+      otherSubMenu?.apiRoute || '',
+      electricGridControlCenterPerformanceAndMaintenance?.id || '',
+      body
     );
 
-  const getPayload = (
-    values: ElectricGridControlCenterPerformanceAndMaintenance,
-  ) => ({
+  const getPayload = (values: ElectricGridControlCenterPerformanceAndMaintenance) => ({
     data: {
       ...values,
-      project_id: projectId,
+      project_id: projectId
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
   const onActionSuccess = async (
     response: IApiResponse<ElectricGridControlCenterPerformanceAndMaintenance>,
-    payload: IApiPayload<ElectricGridControlCenterPerformanceAndMaintenance>,
+    payload: IApiPayload<ElectricGridControlCenterPerformanceAndMaintenance>
   ) => {
     if (payload.files.length > 0) {
       await uploadFile(
         payload.files[0],
-        uploadableProjectFileTypes.other
-          .electric_grid_control_center_performance_and_maintenance,
+        uploadableProjectFileTypes.other.electric_grid_control_center_performance_and_maintenance,
         response.payload.id,
-        "",
-        "",
+        '',
+        ''
       );
     }
 
@@ -143,16 +125,12 @@ const ElectricGridControlCenterPerformanceAndMaintenanceDrawer = (
           validationSchema={validationSchema}
           initialValues={electricGridControlCenterPerformanceAndMaintenance}
           createActionFunc={
-            isEdit
-              ? editElectricGridControlCenterPerformanceAndMaintenance
-              : createElectricGridControlCenterPerformanceAndMaintenance
+            isEdit ? editElectricGridControlCenterPerformanceAndMaintenance : createElectricGridControlCenterPerformanceAndMaintenance
           }
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(
-            formik: FormikProps<ElectricGridControlCenterPerformanceAndMaintenance>,
-          ) => {
+          {(formik: FormikProps<ElectricGridControlCenterPerformanceAndMaintenance>) => {
             return (
               <ElectricGridControlCenterPerformanceAndMaintenanceForm
                 file={uploadableFile}

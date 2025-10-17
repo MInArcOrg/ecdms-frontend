@@ -1,5 +1,5 @@
 // ** MUI Imports
-import Button from "@mui/material/Button";
+import Button from '@mui/material/Button';
 
 const ButtonsContained = () => {
   return (

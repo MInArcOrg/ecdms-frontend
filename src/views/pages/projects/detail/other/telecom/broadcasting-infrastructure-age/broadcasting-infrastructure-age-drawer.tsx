@@ -1,21 +1,18 @@
-"use client";
+'use client';
 
-import type { FormikProps } from "formik";
-import type { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import BroadcastingInfrastructureAgeForm from "./broadcasting-infrastructure-age-form";
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import BroadcastingInfrastructureAgeForm from './broadcasting-infrastructure-age-form';
 
-import { useState } from "react";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import type {
-  BroadcastingInfrastructureAge,
-  BroadcastingInfrastructure,
-} from "src/types/project/other";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import { useState } from 'react';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import type { BroadcastingInfrastructureAge, BroadcastingInfrastructure } from 'src/types/project/other';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface BroadcastingInfrastructureAgeDrawerType {
   open: boolean;
@@ -27,18 +24,8 @@ interface BroadcastingInfrastructureAgeDrawerType {
   broadcastingInfrastructures: BroadcastingInfrastructure[];
 }
 
-const BroadcastingInfrastructureAgeDrawer = (
-  props: BroadcastingInfrastructureAgeDrawerType,
-) => {
-  const {
-    open,
-    toggle,
-    refetch,
-    broadcastingInfrastructureAge,
-    projectId,
-    otherSubMenu,
-    broadcastingInfrastructures,
-  } = props;
+const BroadcastingInfrastructureAgeDrawer = (props: BroadcastingInfrastructureAgeDrawerType) => {
+  const { open, toggle, refetch, broadcastingInfrastructureAge, projectId, otherSubMenu, broadcastingInfrastructures } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
@@ -48,56 +35,41 @@ const BroadcastingInfrastructureAgeDrawer = (
 
   const validationSchema = yup.object().shape({
     parent_id: yup.string().nullable(),
-    broadcasting_infrastructure_id: yup
-      .string()
-      .required("Broadcasting infrastructure is required"),
-    name: yup
-      .string()
-      .required("Name is required")
-      .max(100, "Name cannot exceed 100 characters"),
+    broadcasting_infrastructure_id: yup.string().required('Broadcasting infrastructure is required'),
+    name: yup.string().required('Name is required').max(100, 'Name cannot exceed 100 characters'),
     antennas: yup
       .number()
       .nullable()
-      .integer("Antennas age must be an integer")
+      .integer('Antennas age must be an integer')
       .transform((value) => (isNaN(value) ? null : value)),
     transmitters: yup
       .number()
       .nullable()
-      .integer("Transmitters age must be an integer")
+      .integer('Transmitters age must be an integer')
       .transform((value) => (isNaN(value) ? null : value)),
     towers: yup
       .number()
       .nullable()
-      .integer("Towers age must be an integer")
+      .integer('Towers age must be an integer')
       .transform((value) => (isNaN(value) ? null : value)),
     cables: yup
       .number()
       .nullable()
-      .integer("Cables age must be an integer")
+      .integer('Cables age must be an integer')
       .transform((value) => (isNaN(value) ? null : value)),
-    others: yup
-      .string()
-      .nullable()
-      .max(100, "Others cannot exceed 100 characters"),
+    others: yup.string().nullable().max(100, 'Others cannot exceed 100 characters')
   });
 
   const isEdit = Boolean(broadcastingInfrastructureAge?.id);
 
-  const createBroadcastingInfrastructureAge = async (
-    body: IApiPayload<BroadcastingInfrastructureAge>,
-  ) =>
-    projectOtherApiSecondService<BroadcastingInfrastructureAge>().create(
-      otherSubMenu?.apiRoute || "",
-      body,
-    );
+  const createBroadcastingInfrastructureAge = async (body: IApiPayload<BroadcastingInfrastructureAge>) =>
+    projectOtherApiSecondService<BroadcastingInfrastructureAge>().create(otherSubMenu?.apiRoute || '', body);
 
-  const editBroadcastingInfrastructureAge = async (
-    body: IApiPayload<BroadcastingInfrastructureAge>,
-  ) =>
+  const editBroadcastingInfrastructureAge = async (body: IApiPayload<BroadcastingInfrastructureAge>) =>
     projectOtherApiSecondService<BroadcastingInfrastructureAge>().update(
-      otherSubMenu?.apiRoute || "",
-      broadcastingInfrastructureAge?.id || "",
-      body,
+      otherSubMenu?.apiRoute || '',
+      broadcastingInfrastructureAge?.id || '',
+      body
     );
 
   const getPayload = (values: BroadcastingInfrastructureAge) => ({
@@ -110,25 +82,19 @@ const BroadcastingInfrastructureAgeDrawer = (
       towers: values.towers,
       cables: values.cables,
       others: values.others,
-      id: broadcastingInfrastructureAge?.id,
+      id: broadcastingInfrastructureAge?.id
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
   const onActionSuccess = async (
     response: IApiResponse<BroadcastingInfrastructureAge>,
-    payload: IApiPayload<BroadcastingInfrastructureAge>,
+    payload: IApiPayload<BroadcastingInfrastructureAge>
   ) => {
     if (payload.files.length > 0) {
-      await uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.other.broadcastingInfrastructureAge,
-        response.payload.id,
-        "",
-        "",
-      );
+      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.broadcastingInfrastructureAge, response.payload.id, '', '');
     }
 
     refetch();
@@ -138,9 +104,7 @@ const BroadcastingInfrastructureAgeDrawer = (
   return (
     <CustomSideDrawer
       title={`project.other.broadcasting-infrastructure-age.${
-        isEdit
-          ? `edit-broadcasting-infrastructure-age`
-          : `create-broadcasting-infrastructure-age`
+        isEdit ? `edit-broadcasting-infrastructure-age` : `create-broadcasting-infrastructure-age`
       }`}
       handleClose={handleClose}
       open={open}
@@ -149,20 +113,14 @@ const BroadcastingInfrastructureAgeDrawer = (
         <FormPageWrapper
           edit={isEdit}
           title={`project.other.broadcasting-infrastructure-age.${
-            isEdit
-              ? `edit-broadcasting-infrastructure-age`
-              : `create-broadcasting-infrastructure-age`
+            isEdit ? `edit-broadcasting-infrastructure-age` : `create-broadcasting-infrastructure-age`
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...broadcastingInfrastructureAge,
+            ...broadcastingInfrastructureAge
           }}
-          createActionFunc={
-            isEdit
-              ? editBroadcastingInfrastructureAge
-              : createBroadcastingInfrastructureAge
-          }
+          createActionFunc={isEdit ? editBroadcastingInfrastructureAge : createBroadcastingInfrastructureAge}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

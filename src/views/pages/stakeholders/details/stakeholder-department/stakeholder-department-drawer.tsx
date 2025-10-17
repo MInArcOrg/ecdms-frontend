@@ -1,12 +1,12 @@
-import type { FormikProps } from "formik";
-import type { IApiPayload } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import DepartmentForm from "./stakeholder-department-form";
-import stakeholderDepartmentApiService from "src/services/stakeholder/stakeholder-department-service";
-import type { StakeholderDepartment } from "src/types/stakeholder/stakeholder-department";
-import type { IApiResponse } from "src/types/requests";
+import type { FormikProps } from 'formik';
+import type { IApiPayload } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import DepartmentForm from './stakeholder-department-form';
+import stakeholderDepartmentApiService from 'src/services/stakeholder/stakeholder-department-service';
+import type { StakeholderDepartment } from 'src/types/stakeholder/stakeholder-department';
+import type { IApiResponse } from 'src/types/requests';
 
 interface DepartmentDrawerType {
   open: boolean;
@@ -18,79 +18,64 @@ interface DepartmentDrawerType {
 }
 
 const DepartmentDrawer = (props: DepartmentDrawerType) => {
-  const { open, toggle, refetch, department, stakeholderId, departments } =
-    props;
+  const { open, toggle, refetch, department, stakeholderId, departments } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().max(255).required("Name is required"),
-    description: yup.string().required("Description is required"),
-    stakeholder_id: yup.string().length(36).required("Stakeholder is required"),
+    name: yup.string().max(255).required('Name is required'),
+    description: yup.string().required('Description is required'),
+    stakeholder_id: yup.string().length(36).required('Stakeholder is required'),
     stakeholder_department_id: yup.string().length(36).nullable(),
     required_education: yup.string().max(255).nullable(),
     required_work_experience: yup.string().max(255).nullable(),
     salary: yup.number().nullable(),
     no_of_professionals: yup.number().integer().nullable(),
-    reference: yup.string().nullable(),
+    reference: yup.string().nullable()
   });
 
   const isEdit = Boolean(department?.id);
 
-  const createDepartment = async (
-    body: IApiPayload<StakeholderDepartment>,
-  ): Promise<IApiResponse<StakeholderDepartment>> => {
+  const createDepartment = async (body: IApiPayload<StakeholderDepartment>): Promise<IApiResponse<StakeholderDepartment>> => {
     return stakeholderDepartmentApiService.create(body);
   };
 
-  const editDepartment = async (
-    body: IApiPayload<StakeholderDepartment>,
-  ): Promise<IApiResponse<StakeholderDepartment>> => {
-    return stakeholderDepartmentApiService.update(department?.id || "", body);
+  const editDepartment = async (body: IApiPayload<StakeholderDepartment>): Promise<IApiResponse<StakeholderDepartment>> => {
+    return stakeholderDepartmentApiService.update(department?.id || '', body);
   };
 
   const getPayload = (values: StakeholderDepartment) => ({
     data: {
       ...values,
       id: department?.id,
-      stakeholder_id: stakeholderId,
+      stakeholder_id: stakeholderId
     },
-    files: [],
+    files: []
   });
 
   const handleClose = () => {
     toggle();
   };
 
-  const onActionSuccess = async (
-    response: IApiResponse<StakeholderDepartment>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<StakeholderDepartment>) => {
     refetch();
     handleClose();
   };
 
   return (
-    <CustomSideDrawer
-      title={`stakeholder.stakeholder-department.${isEdit ? "edit" : "create"}`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`stakeholder.stakeholder-department.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`stakeholder.stakeholder-department.${
-            isEdit ? "edit" : "create"
-          }`}
+          title={`stakeholder.stakeholder-department.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(department as StakeholderDepartment),
+            ...(department as StakeholderDepartment)
           }}
           createActionFunc={isEdit ? editDepartment : createDepartment}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<StakeholderDepartment>) => (
-            <DepartmentForm formik={formik} departments={departments} />
-          )}
+          {(formik: FormikProps<StakeholderDepartment>) => <DepartmentForm formik={formik} departments={departments} />}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

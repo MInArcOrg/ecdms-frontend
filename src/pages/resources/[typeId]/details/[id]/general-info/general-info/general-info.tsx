@@ -1,19 +1,13 @@
-import { useRouter } from "next/router";
-import ResourceLayout from "src/views/pages/resources/details/layout/resource-layout";
-import { resourceMenuIds } from "src/views/pages/resources/details/layout/resource-menu-items";
-import subMenuItems, {
-  findSubMenuItem,
-  generalInfoMenuIds,
-} from "../(sub-menu-items)";
+import { useRouter } from 'next/router';
+import ResourceLayout from 'src/views/pages/resources/details/layout/resource-layout';
+import { resourceMenuIds } from 'src/views/pages/resources/details/layout/resource-menu-items';
+import subMenuItems, { findSubMenuItem, generalInfoMenuIds } from '../(sub-menu-items)';
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems("", ""),
-  generalInfoMenuIds.generalInfo.generalInfo,
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), generalInfoMenuIds.generalInfo.generalInfo);
 
 const GeneralInfoPage = () => {
   const router = useRouter();
-  const { id = "", typeId = "" } = router.query;
+  const { id = '', typeId = '' } = router.query;
 
   return (
     <ResourceLayout
@@ -29,7 +23,7 @@ const GeneralInfoPage = () => {
 // Access control configuration
 GeneralInfoPage.acl = {
   subject: defaultMenuItem?.model,
-  action: "view",
+  action: 'view'
 };
 
 export default GeneralInfoPage;

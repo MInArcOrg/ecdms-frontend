@@ -1,4 +1,4 @@
-import { Card, CardContent, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material'
+import { Card, CardContent, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 
 function ProjectCategoryAnalyticsTable({ regions }: { regions: any[] }) {
   return (
@@ -18,7 +18,7 @@ function ProjectCategoryAnalyticsTable({ regions }: { regions: any[] }) {
           <TableBody>
             <TableRow
               sx={{
-                backgroundColor: theme => theme.palette.customColors.trackBg
+                backgroundColor: (theme) => theme.palette.customColors.trackBg
               }}
             >
               <TableCell>Total</TableCell>
@@ -42,7 +42,7 @@ function ProjectCategoryAnalyticsTable({ regions }: { regions: any[] }) {
         </Table>
       </CardContent>
     </Card>
-  )
+  );
 }
 
-export default ProjectCategoryAnalyticsTable
+export default ProjectCategoryAnalyticsTable;

@@ -1,19 +1,19 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import projectOtherApiService from "src/services/project/project-other-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import { GetRequestParam, IApiResponse } from "src/types/requests";
-import { formatCreatedAt } from "src/utils/formatter/date";
-import ItemsListing from "src/views/shared/listing";
-import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-detail-drawer";
-import WaterIrrigationDamCard from "./water-irrigation-dam-card";
-import WaterIrrigationDamDrawer from "./water-irrigation-dam-drawer";
-import { WaterIrrigationDam } from "src/types/project/other";
-import { waterIrrigationDamColumns } from "./water-irrigation-dam-row";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
+import { Box } from '@mui/material';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import projectOtherApiService from 'src/services/project/project-other-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import ItemsListing from 'src/views/shared/listing';
+import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
+import WaterIrrigationDamCard from './water-irrigation-dam-card';
+import WaterIrrigationDamDrawer from './water-irrigation-dam-drawer';
+import { WaterIrrigationDam } from 'src/types/project/other';
+import { waterIrrigationDamColumns } from './water-irrigation-dam-row';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 
 interface WaterIrrigationDamListProps {
   model: string;
@@ -21,24 +21,16 @@ interface WaterIrrigationDamListProps {
   projectId: string;
 }
 
-const WaterIrrigationDamList: React.FC<WaterIrrigationDamListProps> = ({
-  model,
-  projectId,
-  typeId,
-}) => {
+const WaterIrrigationDamList: React.FC<WaterIrrigationDamListProps> = ({ model, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<WaterIrrigationDam | null>(
-    null,
-  );
+  const [selectedRow, setSelectedRow] = useState<WaterIrrigationDam | null>(null);
   const { t } = useTranslation();
 
-  const fetchWaterIrrigationDams = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<WaterIrrigationDam[]>> => {
+  const fetchWaterIrrigationDams = (params: GetRequestParam): Promise<IApiResponse<WaterIrrigationDam[]>> => {
     return projectOtherApiService<WaterIrrigationDam>().getAll(model, {
       ...params,
-      filter: { ...params.filter, project_id: projectId },
+      filter: { ...params.filter, project_id: projectId }
     });
   };
 
@@ -47,10 +39,10 @@ const WaterIrrigationDamList: React.FC<WaterIrrigationDamListProps> = ({
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<WaterIrrigationDam[]>({
-    queryKey: ["waterIrrigationDams"],
-    fetchFunction: fetchWaterIrrigationDams,
+    queryKey: ['waterIrrigationDams'],
+    fetchFunction: fetchWaterIrrigationDams
   });
 
   const toggleDrawer = () => {
@@ -69,10 +61,7 @@ const WaterIrrigationDamList: React.FC<WaterIrrigationDamListProps> = ({
   };
 
   const handleDelete = async (waterIrrigationDamId: string) => {
-    await projectOtherApiService<WaterIrrigationDam>().delete(
-      model,
-      waterIrrigationDamId,
-    );
+    await projectOtherApiService<WaterIrrigationDam>().delete(model, waterIrrigationDamId);
     refetch();
   };
 
@@ -81,45 +70,39 @@ const WaterIrrigationDamList: React.FC<WaterIrrigationDamListProps> = ({
     setShowDetailDrawer(true);
   };
 
-  const mapWaterIrrigationDamToDetailItems = (
-    waterIrrigationDam: WaterIrrigationDam,
-  ): { title: string; value: string }[] => [
+  const mapWaterIrrigationDamToDetailItems = (waterIrrigationDam: WaterIrrigationDam): { title: string; value: string }[] => [
     {
-      title: t("project.other.water-irrigation-dam.details.dam-volume"),
-      value: waterIrrigationDam.dam_volume?.toString() || "N/A",
+      title: t('project.other.water-irrigation-dam.details.dam-volume'),
+      value: waterIrrigationDam.dam_volume?.toString() || 'N/A'
     },
     {
-      title: t("project.other.water-irrigation-dam.details.total-capacity"),
-      value: waterIrrigationDam.total_capacity?.toString() || "N/A",
+      title: t('project.other.water-irrigation-dam.details.total-capacity'),
+      value: waterIrrigationDam.total_capacity?.toString() || 'N/A'
     },
     {
-      title: t("project.other.water-irrigation-dam.details.active-capacity"),
-      value: waterIrrigationDam.active_capacity?.toString() || "N/A",
+      title: t('project.other.water-irrigation-dam.details.active-capacity'),
+      value: waterIrrigationDam.active_capacity?.toString() || 'N/A'
     },
     {
-      title: t("project.other.water-irrigation-dam.details.inactive-capacity"),
-      value: waterIrrigationDam.inactive_capacity?.toString() || "N/A",
+      title: t('project.other.water-irrigation-dam.details.inactive-capacity'),
+      value: waterIrrigationDam.inactive_capacity?.toString() || 'N/A'
     },
     {
-      title: t("project.other.water-irrigation-dam.details.catchment-area"),
-      value: waterIrrigationDam.catchment_area?.toString() || "N/A",
+      title: t('project.other.water-irrigation-dam.details.catchment-area'),
+      value: waterIrrigationDam.catchment_area?.toString() || 'N/A'
     },
     {
-      title: t("project.other.water-irrigation-dam.details.surface-area"),
-      value: waterIrrigationDam.surface_area?.toString() || "N/A",
+      title: t('project.other.water-irrigation-dam.details.surface-area'),
+      value: waterIrrigationDam.surface_area?.toString() || 'N/A'
     },
     {
-      title: t("common.table-columns.created-at"),
-      value: waterIrrigationDam.created_at
-        ? formatCreatedAt(waterIrrigationDam.created_at)
-        : "N/A",
+      title: t('common.table-columns.created-at'),
+      value: waterIrrigationDam.created_at ? formatCreatedAt(waterIrrigationDam.created_at) : 'N/A'
     },
     {
-      title: t("common.table-columns.updated-at"),
-      value: waterIrrigationDam.updated_at
-        ? formatCreatedAt(waterIrrigationDam.updated_at)
-        : "N/A",
-    },
+      title: t('common.table-columns.updated-at'),
+      value: waterIrrigationDam.updated_at ? formatCreatedAt(waterIrrigationDam.updated_at) : 'N/A'
+    }
   ];
 
   return (
@@ -141,24 +124,18 @@ const WaterIrrigationDamList: React.FC<WaterIrrigationDamListProps> = ({
           toggleDrawer={toggleDetailDrawer}
           data={mapWaterIrrigationDamToDetailItems(selectedRow!)}
           hasReference={true}
-          id={selectedRow?.id || ""}
+          id={selectedRow?.id || ''}
           fileType={uploadableProjectFileTypes.other.waterIrrigationDam}
-          title={t("project.other.water-irrigation-dam.details.title")}
+          title={t('project.other.water-irrigation-dam.details.title')}
         />
       )}
 
       <ItemsListing
-        title={t("project.other.water-irrigation-dam.title")}
+        title={t('project.other.water-irrigation-dam.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: waterIrrigationDamColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-          ),
+          headers: waterIrrigationDamColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -175,9 +152,9 @@ const WaterIrrigationDamList: React.FC<WaterIrrigationDamListProps> = ({
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "waterIrrigationDam",
-          },
+            action: 'create',
+            subject: 'waterIrrigationDam'
+          }
         }}
         fetchDataFunction={refetch}
         items={waterIrrigationDams || []}

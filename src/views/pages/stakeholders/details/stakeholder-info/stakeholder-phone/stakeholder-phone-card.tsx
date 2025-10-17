@@ -1,7 +1,7 @@
-import { Box, Card } from "@mui/material";
-import { StakeholderPhone } from "src/types/stakeholder";
-import ModelActionComponent from "src/views/components/custom/model-actions";
-import RowOptions from "src/views/shared/listing/row-options";
+import { Box, Card } from '@mui/material';
+import { StakeholderPhone } from 'src/types/stakeholder';
+import ModelActionComponent from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface StakeholderPhoneCardProps {
   stakeholderPhone: StakeholderPhone;
@@ -10,12 +10,7 @@ interface StakeholderPhoneCardProps {
   onDelete: (id: string) => void;
 }
 
-const StakeholderPhoneCard: React.FC<StakeholderPhoneCardProps> = ({
-  stakeholderPhone,
-  refetch,
-  onEdit,
-  onDelete,
-}) => {
+const StakeholderPhoneCard: React.FC<StakeholderPhoneCardProps> = ({ stakeholderPhone, refetch, onEdit, onDelete }) => {
   return (
     <Card sx={{ p: 1 }}>
       <Box display="flex" justifyContent="space-between">
@@ -31,7 +26,7 @@ const StakeholderPhoneCard: React.FC<StakeholderPhoneCardProps> = ({
             resubmit={() => {
               /* Handle resubmit action */
             }}
-            title={"stakeholder.stakeholder-phone.title"}
+            title={'stakeholder.stakeholder-phone.title'}
             postAction={() => {
               /* Handle post action */
             }}
@@ -40,12 +35,12 @@ const StakeholderPhoneCard: React.FC<StakeholderPhoneCardProps> = ({
             onEdit={() => onEdit(stakeholderPhone)}
             onDelete={() => onDelete(stakeholderPhone.id)}
             deletePermissionRule={{
-              action: "delete",
-              subject: "stakeholderphone",
+              action: 'delete',
+              subject: 'stakeholderphone'
             }}
             editPermissionRule={{
-              action: "update",
-              subject: "stakeholderphone",
+              action: 'update',
+              subject: 'stakeholderphone'
             }}
             item={stakeholderPhone}
             options={[]}

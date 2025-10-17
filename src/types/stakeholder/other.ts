@@ -1,4 +1,4 @@
-import { StudyField } from "../general/general-master";
+import { StudyField } from '../general/general-master';
 
 export interface StakeholderStudyField {
   id: string;

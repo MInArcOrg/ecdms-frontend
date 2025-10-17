@@ -1,6 +1,6 @@
-import { Grid } from '@mui/material'
-import ProjectCategoryChart from 'src/views/analytics/Charts/Financial/ProjectCategoryChart'
-import ProjectAnalyticsLayout from 'src/views/analytics/layouts/ProjectAnalyticsLayout'
+import { Grid } from '@mui/material';
+import ProjectCategoryChart from 'src/views/analytics/Charts/Financial/ProjectCategoryChart';
+import ProjectAnalyticsLayout from 'src/views/analytics/layouts/ProjectAnalyticsLayout';
 
 function plan() {
   const Months = [
@@ -40,7 +40,7 @@ function plan() {
     {
       name: 'Aug'
     }
-  ]
+  ];
 
   const series = [
     {
@@ -59,17 +59,17 @@ function plan() {
       name: 'Authorized',
       data: [85, 100, 30, 40, 20, 30, 40, 20, 30, 40, 20, 30]
     }
-  ]
+  ];
 
   return (
     <ProjectAnalyticsLayout>
       <Grid container spacing={2}>
         <Grid item xs={12} md={12}>
-          <ProjectCategoryChart labels={Months} series={series} title='Project Plan Analytics' height={400} />
+          <ProjectCategoryChart labels={Months} series={series} title="Project Plan Analytics" height={400} />
         </Grid>
       </Grid>
     </ProjectAnalyticsLayout>
-  )
+  );
 }
 
-export default plan
+export default plan;

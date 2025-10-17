@@ -1,12 +1,12 @@
-import { Box, Card, Grid } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/router";
-import { ReactNode, useMemo } from "react";
-import masterTypeApiService from "src/services/master-data/master-type-service";
-import { DetailSubMenuItem } from "src/types/layouts/detail-layout";
-import DetailMenu from "src/views/components/custom/layout/detail-menu";
-import DetailSubMenu from "src/views/components/custom/layout/detail-sub-menu";
-import menuTabs from "./project-menu-items";
+import { Box, Card, Grid } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
+import { ReactNode, useMemo } from 'react';
+import masterTypeApiService from 'src/services/master-data/master-type-service';
+import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
+import DetailMenu from 'src/views/components/custom/layout/detail-menu';
+import DetailSubMenu from 'src/views/components/custom/layout/detail-sub-menu';
+import menuTabs from './project-menu-items';
 
 interface ProjectLayoutProps {
   activeMenuId: string;
@@ -15,39 +15,28 @@ interface ProjectLayoutProps {
   children: ReactNode;
 }
 
-const ProjectLayout: React.FC<ProjectLayoutProps> = ({
-  activeMenuId,
-  activeSubMenuId,
-  subMenuItems,
-  children,
-}) => {
+const ProjectLayout: React.FC<ProjectLayoutProps> = ({ activeMenuId, activeSubMenuId, subMenuItems, children }) => {
   const router = useRouter();
   const { id, typeId } = router.query;
   const isProject = true;
 
   const { data: masterType } = useQuery({
-    queryKey: ["masterType", "project", typeId],
-    queryFn: () => masterTypeApiService.getOne("project", String(typeId), {}),
+    queryKey: ['masterType', 'project', typeId],
+    queryFn: () => masterTypeApiService.getOne('project', String(typeId), {}),
     staleTime: Infinity, // Data never goes stale
     gcTime: 5 * 60 * 1000, // Cached for 5 minutes
-    enabled: !!typeId, // Only fetch if typeId is available
+    enabled: !!typeId // Only fetch if typeId is available
   });
 
   // Memoize values derived from props and query
   const filteredMenuItems = useMemo(
-    () =>
-      menuTabs(id as string, typeId as string).filter(
-        (item) => !item.type || item.type === masterType?.payload?.flag,
-      ),
-    [id, typeId, masterType?.payload?.flag],
+    () => menuTabs(id as string, typeId as string).filter((item) => !item.type || item.type === masterType?.payload?.flag),
+    [id, typeId, masterType?.payload?.flag]
   );
 
   const filteredSubMenuItems = useMemo(
-    () =>
-      subMenuItems?.filter(
-        (item) => !item.type || item.type === masterType?.payload?.flag,
-      ) || [],
-    [subMenuItems, masterType?.payload?.flag],
+    () => subMenuItems?.filter((item) => !item.type || item.type === masterType?.payload?.flag) || [],
+    [subMenuItems, masterType?.payload?.flag]
   );
 
   return (

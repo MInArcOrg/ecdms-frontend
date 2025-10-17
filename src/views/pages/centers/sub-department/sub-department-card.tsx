@@ -1,17 +1,17 @@
-import { Typography } from "@mui/material";
-import Link from "next/link";
-import Department from "src/types/department/department";
-import FileDrawer from "src/views/components/custom/files-drawer";
-import ModelActionComponent from "src/views/components/custom/model-actions";
-import RowOptions from "src/views/shared/listing/row-options";
-import SharedItemViewCard from "src/views/shared/listing/shared-item-view-card";
+import { Typography } from '@mui/material';
+import Link from 'next/link';
+import Department from 'src/types/department/department';
+import FileDrawer from 'src/views/components/custom/files-drawer';
+import ModelActionComponent from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
+import SharedItemViewCard from 'src/views/shared/listing/shared-item-view-card';
 
 const DepartmentCard = ({
   department,
   onEdit,
   onDelete,
   refetch,
-  t,
+  t
 }: {
   department: Department;
   onEdit: (department: Department) => void;
@@ -38,8 +38,8 @@ const DepartmentCard = ({
             onEdit={onEdit}
             onDelete={() => onDelete(department.id)}
             item={department}
-            deletePermissionRule={{ action: "delete", subject: "department" }}
-            editPermissionRule={{ action: "update", subject: "department" }}
+            deletePermissionRule={{ action: 'delete', subject: 'department' }}
+            editPermissionRule={{ action: 'update', subject: 'department' }}
             options={[]}
           />
         </>
@@ -50,20 +50,16 @@ const DepartmentCard = ({
         component={Link}
         href={`/departments/sub-departements/${department.id}`}
         sx={{
-          textDecoration: "none",
-          color: "text.secondary",
-          "&:hover": { color: "primary.main" },
+          textDecoration: 'none',
+          color: 'text.secondary',
+          '&:hover': { color: 'primary.main' }
         }}
       >
         {department?.name}
       </Typography>
 
-      <Typography
-        variant="body2"
-        color="text.secondary"
-        sx={{ mt: 0.5, fontSize: "1rem", lineHeight: 1.5 }}
-      >
-        {department.description || t("common.not-available")}
+      <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5, fontSize: '1rem', lineHeight: 1.5 }}>
+        {department.description || t('common.not-available')}
       </Typography>
     </SharedItemViewCard>
   );

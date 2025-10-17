@@ -48,4 +48,4 @@ export const menuItems = () => [
     subject: 'stakeholdernote',
     path: '/analytics/stakeholder/matrixTree'
   }
-]
+];

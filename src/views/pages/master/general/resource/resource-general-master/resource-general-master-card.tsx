@@ -1,18 +1,18 @@
 // components/ResourceGeneralMasterList.tsx
-import { Box, CardActions, CardContent, Grid, Typography } from "@mui/material";
-import { Fragment } from "react";
-import { ResourceMasterModel } from "src/constants/master-data/resource-general-master-constants";
-import { ResourceGeneralMaster } from "src/types/general/general-master";
-import FileDrawer from "src/views/components/custom/files-drawer";
-import ModelActionComponent from "src/views/components/custom/model-actions";
-import RowOptions from "src/views/shared/listing/row-options";
+import { Box, CardActions, CardContent, Grid, Typography } from '@mui/material';
+import { Fragment } from 'react';
+import { ResourceMasterModel } from 'src/constants/master-data/resource-general-master-constants';
+import { ResourceGeneralMaster } from 'src/types/general/general-master';
+import FileDrawer from 'src/views/components/custom/files-drawer';
+import ModelActionComponent from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 const ResourceGeneralMasterCard = ({
   resourceMasterModel,
   resourceGeneralMaster,
   onEdit,
   onDelete,
-  refetch,
+  refetch
 }: {
   resourceMasterModel: ResourceMasterModel;
   resourceGeneralMaster: ResourceGeneralMaster;
@@ -26,7 +26,7 @@ const ResourceGeneralMasterCard = ({
       <CardContent>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-            <Box sx={{ display: "flex" }}>
+            <Box sx={{ display: 'flex' }}>
               <Box>
                 <Typography variant="h5" component="div">
                   {resourceGeneralMaster.title}
@@ -38,23 +38,19 @@ const ResourceGeneralMasterCard = ({
             </Box>
           </Grid>
           <Grid item>
-            <CardActions style={{ justifyContent: "flex-end" }}>
+            <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
-                <FileDrawer
-                  id={resourceGeneralMaster.id}
-                  type={resourceMasterModel.fileType}
-                />{" "}
-                &nbsp;
+                <FileDrawer id={resourceGeneralMaster.id} type={resourceMasterModel.fileType} /> &nbsp;
                 <ModelActionComponent
                   model={resourceMasterModel.dbModel}
                   model_id={resourceGeneralMaster.id}
                   refetchModel={refetch}
                   resubmit={function (): void {
-                    throw new Error("Function not implemented.");
+                    throw new Error('Function not implemented.');
                   }}
-                  title={""}
+                  title={''}
                   postAction={function (): void {
-                    throw new Error("Function not implemented.");
+                    throw new Error('Function not implemented.');
                   }}
                 />
                 <RowOptions
@@ -63,12 +59,12 @@ const ResourceGeneralMasterCard = ({
                   item={resourceGeneralMaster}
                   options={[]}
                   deletePermissionRule={{
-                    action: "delete",
-                    subject: resourceMasterModel.dbModel,
+                    action: 'delete',
+                    subject: resourceMasterModel.dbModel
                   }}
                   editPermissionRule={{
-                    action: "update",
-                    subject: resourceMasterModel.dbModel,
+                    action: 'update',
+                    subject: resourceMasterModel.dbModel
                   }}
                 />
               </Fragment>

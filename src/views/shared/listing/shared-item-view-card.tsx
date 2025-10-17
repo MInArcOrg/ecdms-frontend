@@ -1,13 +1,6 @@
-import {
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  Grid,
-  Typography,
-} from "@mui/material";
-import { ReactNode } from "react";
-import { formatCreatedAt } from "src/utils/formatter/date";
+import { Box, Card, CardActions, CardContent, Grid, Typography } from '@mui/material';
+import { ReactNode } from 'react';
+import { formatCreatedAt } from 'src/utils/formatter/date';
 
 interface SharedItemViewCardProps {
   children: ReactNode;
@@ -16,20 +9,15 @@ interface SharedItemViewCardProps {
   t: any;
 }
 
-const SharedItemViewCard = ({
-  children,
-  createdAt,
-  actions,
-  t,
-}: SharedItemViewCardProps) => {
+const SharedItemViewCard = ({ children, createdAt, actions, t }: SharedItemViewCardProps) => {
   return (
     <Card
       sx={{
         p: 3,
         borderRadius: 3,
         boxShadow: 3,
-        background: "background.paper",
-        minWidth: 320,
+        background: 'background.paper',
+        minWidth: 320
       }}
     >
       <CardContent sx={{ pb: 1 }}>
@@ -43,14 +31,12 @@ const SharedItemViewCard = ({
                 color="text.disabled"
                 sx={{
                   mt: 1,
-                  display: "block",
-                  fontStyle: "italic",
-                  fontSize: "0.85rem",
+                  display: 'block',
+                  fontStyle: 'italic',
+                  fontSize: '0.85rem'
                 }}
               >
-                {createdAt
-                  ? formatCreatedAt(createdAt)
-                  : t("common.not-available")}
+                {createdAt ? formatCreatedAt(createdAt) : t('common.not-available')}
               </Typography>
             </Box>
           </Grid>
@@ -60,13 +46,13 @@ const SharedItemViewCard = ({
       {actions && (
         <CardActions
           sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "flex-end",
-            pt: 0,
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'flex-end',
+            pt: 0
           }}
         >
-          <Box sx={{ display: "flex", gap: 1 }}>{actions}</Box>
+          <Box sx={{ display: 'flex', gap: 1 }}>{actions}</Box>
         </CardActions>
       )}
     </Card>

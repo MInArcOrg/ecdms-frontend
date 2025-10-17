@@ -1,16 +1,16 @@
-import { FormikProps } from "formik";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import MobileNetworkComponentAgeForm from "./mobile-network-component-age-form";
+import { FormikProps } from 'formik';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import MobileNetworkComponentAgeForm from './mobile-network-component-age-form';
 
-import { useState } from "react";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import { MobileNetworkComponentAge } from "src/types/project/other";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import { useState } from 'react';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { MobileNetworkComponentAge } from 'src/types/project/other';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface MobileNetworkComponentAgeDrawerType {
   open: boolean;
@@ -21,17 +21,8 @@ interface MobileNetworkComponentAgeDrawerType {
   otherSubMenu?: DetailSubMenuItemChild;
 }
 
-const MobileNetworkComponentAgeDrawer = (
-  props: MobileNetworkComponentAgeDrawerType,
-) => {
-  const {
-    open,
-    toggle,
-    refetch,
-    mobileNetworkComponentAge,
-    projectId,
-    otherSubMenu,
-  } = props;
+const MobileNetworkComponentAgeDrawer = (props: MobileNetworkComponentAgeDrawerType) => {
+  const { open, toggle, refetch, mobileNetworkComponentAge, projectId, otherSubMenu } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
@@ -39,60 +30,41 @@ const MobileNetworkComponentAgeDrawer = (
 
   const validationSchema = yup.object().shape({
     parent_id: yup.string().nullable(),
-    mobile_network_id: yup.string().required("Mobile network ID is required"),
-    cell: yup.number().nullable().min(0, "Age must be a positive number"),
-    towers: yup.number().nullable().min(0, "Age must be a positive number"),
-    antennas: yup.number().nullable().min(0, "Age must be a positive number"),
-    base_stations: yup
-      .number()
-      .nullable()
-      .min(0, "Age must be a positive number"),
-    repeaters: yup.number().nullable().min(0, "Age must be a positive number"),
-    switches: yup.number().nullable().min(0, "Age must be a positive number"),
-    others: yup.string().nullable(),
+    mobile_network_id: yup.string().required('Mobile network ID is required'),
+    cell: yup.number().nullable().min(0, 'Age must be a positive number'),
+    towers: yup.number().nullable().min(0, 'Age must be a positive number'),
+    antennas: yup.number().nullable().min(0, 'Age must be a positive number'),
+    base_stations: yup.number().nullable().min(0, 'Age must be a positive number'),
+    repeaters: yup.number().nullable().min(0, 'Age must be a positive number'),
+    switches: yup.number().nullable().min(0, 'Age must be a positive number'),
+    others: yup.string().nullable()
   });
 
   const isEdit = Boolean(mobileNetworkComponentAge?.id);
 
-  const createMobileNetworkComponentAge = async (
-    body: IApiPayload<MobileNetworkComponentAge>,
-  ) =>
-    projectOtherApiSecondService<MobileNetworkComponentAge>().create(
-      otherSubMenu?.apiRoute || "",
-      body,
-    );
+  const createMobileNetworkComponentAge = async (body: IApiPayload<MobileNetworkComponentAge>) =>
+    projectOtherApiSecondService<MobileNetworkComponentAge>().create(otherSubMenu?.apiRoute || '', body);
 
-  const editMobileNetworkComponentAge = async (
-    body: IApiPayload<MobileNetworkComponentAge>,
-  ) =>
+  const editMobileNetworkComponentAge = async (body: IApiPayload<MobileNetworkComponentAge>) =>
     projectOtherApiSecondService<MobileNetworkComponentAge>().update(
-      otherSubMenu?.apiRoute || "",
-      mobileNetworkComponentAge?.id || "",
-      body,
+      otherSubMenu?.apiRoute || '',
+      mobileNetworkComponentAge?.id || '',
+      body
     );
 
   const getPayload = (values: MobileNetworkComponentAge) => ({
     data: {
       ...values,
-      project_id: projectId,
+      project_id: projectId
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<MobileNetworkComponentAge>,
-    payload: IApiPayload<MobileNetworkComponentAge>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<MobileNetworkComponentAge>, payload: IApiPayload<MobileNetworkComponentAge>) => {
     if (payload.files.length > 0) {
-      uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.other.mobileNetworkComponentAge,
-        response.payload.id,
-        "",
-        "",
-      );
+      uploadFile(payload.files[0], uploadableProjectFileTypes.other.mobileNetworkComponentAge, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -101,9 +73,7 @@ const MobileNetworkComponentAgeDrawer = (
   return (
     <CustomSideDrawer
       title={`project.other.mobile-network-component-age.${
-        isEdit
-          ? `edit-mobile-network-component-age`
-          : `create-mobile-network-component-age`
+        isEdit ? `edit-mobile-network-component-age` : `create-mobile-network-component-age`
       }`}
       handleClose={handleClose}
       open={open}
@@ -112,31 +82,20 @@ const MobileNetworkComponentAgeDrawer = (
         <FormPageWrapper
           edit={isEdit}
           title={`project.other.mobile-network-component-age.${
-            isEdit
-              ? `edit-mobile-network-component-age`
-              : `create-mobile-network-component-age`
+            isEdit ? `edit-mobile-network-component-age` : `create-mobile-network-component-age`
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...mobileNetworkComponentAge,
+            ...mobileNetworkComponentAge
           }}
-          createActionFunc={
-            isEdit
-              ? editMobileNetworkComponentAge
-              : createMobileNetworkComponentAge
-          }
+          createActionFunc={isEdit ? editMobileNetworkComponentAge : createMobileNetworkComponentAge}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<MobileNetworkComponentAge>) => {
             return (
-              <MobileNetworkComponentAgeForm
-                projectId={projectId}
-                file={uploadableFile}
-                onFileChange={onFileChange}
-                formik={formik}
-              />
+              <MobileNetworkComponentAgeForm projectId={projectId} file={uploadableFile} onFileChange={onFileChange} formik={formik} />
             );
           }}
         </FormPageWrapper>

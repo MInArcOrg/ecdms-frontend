@@ -1,8 +1,8 @@
 // ** MUI Imports
-import Box from "@mui/material/Box";
+import Box from '@mui/material/Box';
 
 // ** Third Party Components
-import { useKeenSlider } from "keen-slider/react";
+import { useKeenSlider } from 'keen-slider/react';
 
 const SwiperVertical = () => {
   // ** Hook
@@ -10,8 +10,8 @@ const SwiperVertical = () => {
     vertical: true,
     slides: {
       perView: 2,
-      spacing: 8,
-    },
+      spacing: 8
+    }
   });
 
   return (

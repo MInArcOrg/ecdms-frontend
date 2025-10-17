@@ -1,42 +1,28 @@
-import { DetailSubMenuItem } from "src/types/layouts/detail-layout";
+import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
 
 export const railwayFacilitiesAndStationsIds = {
   stations_and_platforms: {
-    id: "STATIONS_AND_PLATFORMS",
-    station_platform_layout: "STATION_PLATFORM_LAYOUT",
-    station_platform_facilities: "STATION_PLATFORM_FACILITIES",
-    station_platform_structural_elements:
-      "STATION_PLATFORM_STRUCTURAL_ELEMENTS",
-    station_platform_signage_and_wayfinding:
-      "STATION_PLATFORM_SIGNAGE_AND_WAYFINDING",
-    station_platform_safety_and_security:
-      "STATION_PLATFORM_SAFETY_AND_SECURITY",
-    station_platform_surface_and_finishes:
-      "STATION_PLATFORM_SURFACE_AND_FINISHES",
-    station_platform_passenger_flow_and_capacity:
-      "STATION_PLATFORM_PASSENGER_FLOW_AND_CAPACITY",
-    station_platform_environmental_and_other_factors:
-      "STATION_PLATFORM_ENVIRONMENTAL_AND_OTHER_FACTORS",
+    id: 'STATIONS_AND_PLATFORMS',
+    station_platform_layout: 'STATION_PLATFORM_LAYOUT',
+    station_platform_facilities: 'STATION_PLATFORM_FACILITIES',
+    station_platform_structural_elements: 'STATION_PLATFORM_STRUCTURAL_ELEMENTS',
+    station_platform_signage_and_wayfinding: 'STATION_PLATFORM_SIGNAGE_AND_WAYFINDING',
+    station_platform_safety_and_security: 'STATION_PLATFORM_SAFETY_AND_SECURITY',
+    station_platform_surface_and_finishes: 'STATION_PLATFORM_SURFACE_AND_FINISHES',
+    station_platform_passenger_flow_and_capacity: 'STATION_PLATFORM_PASSENGER_FLOW_AND_CAPACITY',
+    station_platform_environmental_and_other_factors: 'STATION_PLATFORM_ENVIRONMENTAL_AND_OTHER_FACTORS'
   },
   maintenance_facilities: {
-    id: "MAINTENANCE_FACILITIES",
-    maintenance_facility_type_and_purpose:
-      "MAINTENANCE_FACILITY_TYPE_AND_PURPOSE",
-    maintenance_facility_layout_and_design:
-      "MAINTENANCE_FACILITY_LAYOUT_AND_DESIGN",
-    maintenance_facility_equipment_and_tools:
-      "MAINTENANCE_FACILITY_EQUIPMENT_AND_TOOLS",
-    maintenance_facility_infrastructure_and_utilities:
-      "MAINTENANCE_FACILITY_INFRASTRUCTURE_AND_UTILITIES",
-    maintenance_facility_workforce_and_staff:
-      "MAINTENANCE_FACILITY_WORKFORCE_AND_STAFF",
-    maintenance_facility_schedules_and_procedures:
-      "MAINTENANCE_FACILITY_SCHEDULES_AND_PROCEDURES",
-    maintenance_facility_safety_and_security:
-      "MAINTENANCE_FACILITY_SAFETY_AND_SECURITY",
-    maintenance_facility_environmental_and_other_factors:
-      "MAINTENANCE_FACILITY_ENVIRONMENTAL_AND_OTHER_FACTORS",
-  },
+    id: 'MAINTENANCE_FACILITIES',
+    maintenance_facility_type_and_purpose: 'MAINTENANCE_FACILITY_TYPE_AND_PURPOSE',
+    maintenance_facility_layout_and_design: 'MAINTENANCE_FACILITY_LAYOUT_AND_DESIGN',
+    maintenance_facility_equipment_and_tools: 'MAINTENANCE_FACILITY_EQUIPMENT_AND_TOOLS',
+    maintenance_facility_infrastructure_and_utilities: 'MAINTENANCE_FACILITY_INFRASTRUCTURE_AND_UTILITIES',
+    maintenance_facility_workforce_and_staff: 'MAINTENANCE_FACILITY_WORKFORCE_AND_STAFF',
+    maintenance_facility_schedules_and_procedures: 'MAINTENANCE_FACILITY_SCHEDULES_AND_PROCEDURES',
+    maintenance_facility_safety_and_security: 'MAINTENANCE_FACILITY_SAFETY_AND_SECURITY',
+    maintenance_facility_environmental_and_other_factors: 'MAINTENANCE_FACILITY_ENVIRONMENTAL_AND_OTHER_FACTORS'
+  }
 };
 
 export const subMenuItems = (

@@ -1,8 +1,8 @@
-import { FormikProps } from "formik";
-import { useTranslation } from "react-i18next";
-import { GeneralMasterResource } from "src/types/general/general-master";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
-import CustomFileUpload from "src/views/shared/form/custome-file-selector";
+import { FormikProps } from 'formik';
+import { useTranslation } from 'react-i18next';
+import { GeneralMasterResource } from 'src/types/general/general-master';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 // Extend GeneralMaster to include referenceFile for formik values
 
@@ -20,7 +20,7 @@ const GeneralMasterResourceForm: React.FC<GeneralMasterResourceFormProps> = ({
 
   file,
   onFileChange,
-  type,
+  type
 }) => {
   const { t: transl } = useTranslation();
 
@@ -28,8 +28,8 @@ const GeneralMasterResourceForm: React.FC<GeneralMasterResourceFormProps> = ({
     <>
       <CustomTextBox
         fullWidth
-        label={transl("master-data.form.service_type")}
-        placeholder={transl("master-data.form.service_type")}
+        label={transl('master-data.form.service_type')}
+        placeholder={transl('master-data.form.service_type')}
         name="service_type"
         size="small"
         sx={{ mb: 2 }}
@@ -37,8 +37,8 @@ const GeneralMasterResourceForm: React.FC<GeneralMasterResourceFormProps> = ({
 
       <CustomTextBox
         fullWidth
-        label={transl("master-data.form.specification_detail")}
-        placeholder={transl("master-data.form.specification_detail")}
+        label={transl('master-data.form.specification_detail')}
+        placeholder={transl('master-data.form.specification_detail')}
         name="specification_detail"
         multiline={true}
         rows="4"
@@ -47,17 +47,13 @@ const GeneralMasterResourceForm: React.FC<GeneralMasterResourceFormProps> = ({
       />
       <CustomTextBox
         fullWidth
-        label={transl("master-data.form.measurement_unit")}
-        placeholder={transl("master-data.form.measurement_unit")}
+        label={transl('master-data.form.measurement_unit')}
+        placeholder={transl('master-data.form.measurement_unit')}
         name="measurement_unit"
         size="small"
         sx={{ mb: 2 }}
       />
-      <CustomFileUpload
-        label={"File Upload"}
-        file={file}
-        onFileChange={onFileChange}
-      />
+      <CustomFileUpload label={'File Upload'} file={file} onFileChange={onFileChange} />
     </>
   );
 };

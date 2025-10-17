@@ -1,14 +1,14 @@
-import { Grid } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
-import { FormikProps } from "formik";
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { gridSpacing } from "src/configs/app-constants";
-import projectOtherApiService from "src/services/project/project-other-service";
-import { ElectricTower, TransmissionLine } from "src/types/project/other";
-import CustomSelectBox from "src/views/shared/form/custom-select";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
-import CustomFileUpload from "src/views/shared/form/custome-file-selector";
+import { Grid } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
+import { FormikProps } from 'formik';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { gridSpacing } from 'src/configs/app-constants';
+import projectOtherApiService from 'src/services/project/project-other-service';
+import { ElectricTower, TransmissionLine } from 'src/types/project/other';
+import CustomSelectBox from 'src/views/shared/form/custom-select';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface ElectricTowerFormProps {
   formik: FormikProps<ElectricTower>;
@@ -17,19 +17,14 @@ interface ElectricTowerFormProps {
   projectId: string;
 }
 
-const ElectricTowerForm: React.FC<ElectricTowerFormProps> = ({
-  formik,
-  file,
-  onFileChange,
-  projectId,
-}) => {
+const ElectricTowerForm: React.FC<ElectricTowerFormProps> = ({ formik, file, onFileChange, projectId }) => {
   const { t } = useTranslation();
   const { data: transmissionLines } = useQuery({
-    queryKey: ["transmissionline", projectId],
+    queryKey: ['transmissionline', projectId],
     queryFn: () =>
-      projectOtherApiService<TransmissionLine>().getAll("transmissionline", {
-        filter: { project_id: projectId },
-      }),
+      projectOtherApiService<TransmissionLine>().getAll('transmissionline', {
+        filter: { project_id: projectId }
+      })
   });
   return (
     <Grid container spacing={gridSpacing}>
@@ -37,82 +32,74 @@ const ElectricTowerForm: React.FC<ElectricTowerFormProps> = ({
         <CustomSelectBox
           size="small"
           name="transmissionline_id"
-          label={t("project.other.transformer.details.transmissionline")}
+          label={t('project.other.transformer.details.transmissionline')}
           options={
             transmissionLines?.payload?.map((tranmissionLine) => ({
               value: tranmissionLine.id,
-              label: tranmissionLine.name,
+              label: tranmissionLine.name
             })) || []
           }
         />
         <CustomTextBox
           fullWidth
-          label={t("project.other.electric-tower.details.overall-length")}
-          placeholder={t("project.other.electric-tower.details.overall-length")}
+          label={t('project.other.electric-tower.details.overall-length')}
+          placeholder={t('project.other.electric-tower.details.overall-length')}
           name="overall_length"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t("project.other.electric-tower.details.embedded-length")}
-          placeholder={t(
-            "project.other.electric-tower.details.embedded-length",
-          )}
+          label={t('project.other.electric-tower.details.embedded-length')}
+          placeholder={t('project.other.electric-tower.details.embedded-length')}
           name="embedded_length"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t("project.other.electric-tower.details.columns")}
-          placeholder={t("project.other.electric-tower.details.columns")}
+          label={t('project.other.electric-tower.details.columns')}
+          placeholder={t('project.other.electric-tower.details.columns')}
           name="columns"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t("project.other.electric-tower.details.braces")}
-          placeholder={t("project.other.electric-tower.details.braces")}
+          label={t('project.other.electric-tower.details.braces')}
+          placeholder={t('project.other.electric-tower.details.braces')}
           name="braces"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t("project.other.electric-tower.details.beam-cross-arms")}
-          placeholder={t(
-            "project.other.electric-tower.details.beam-cross-arms",
-          )}
+          label={t('project.other.electric-tower.details.beam-cross-arms')}
+          placeholder={t('project.other.electric-tower.details.beam-cross-arms')}
           name="beam_cross_arms"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t("project.other.electric-tower.details.brace-cross-arm")}
-          placeholder={t(
-            "project.other.electric-tower.details.brace-cross-arm",
-          )}
+          label={t('project.other.electric-tower.details.brace-cross-arm')}
+          placeholder={t('project.other.electric-tower.details.brace-cross-arm')}
           name="brace_cross_arm"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t("project.other.electric-tower.details.elasticity-modulus")}
-          placeholder={t(
-            "project.other.electric-tower.details.elasticity-modulus",
-          )}
+          label={t('project.other.electric-tower.details.elasticity-modulus')}
+          placeholder={t('project.other.electric-tower.details.elasticity-modulus')}
           name="elasticity_modulus"
           size="small"
           sx={{ mb: 2 }}
         />
         <CustomTextBox
           fullWidth
-          label={t("project.other.electric-tower.details.poission-ratio")}
-          placeholder={t("project.other.electric-tower.details.poission-ratio")}
+          label={t('project.other.electric-tower.details.poission-ratio')}
+          placeholder={t('project.other.electric-tower.details.poission-ratio')}
           name="poission_ratio"
           size="small"
           sx={{ mb: 2 }}
@@ -120,11 +107,7 @@ const ElectricTowerForm: React.FC<ElectricTowerFormProps> = ({
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={t("common.form.file-upload")}
-          file={file}
-          onFileChange={onFileChange}
-        />
+        <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

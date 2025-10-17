@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import type React from "react";
+import type React from 'react';
 
-import { Box } from "@mui/material";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import type { BridgeSuperStructure } from "src/types/project/other";
-import type { GetRequestParam, IApiResponse } from "src/types/requests";
-import { formatCreatedAt } from "src/utils/formatter/date";
-import ItemsListing from "src/views/shared/listing";
-import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-detail-drawer";
-import BridgeSuperStructureCard from "./bridge-super-structure-card";
-import BridgeSuperStructureDrawer from "./bridge-super-structure-drawer";
-import { bridgeSuperStructureColumns } from "./bridge-super-structure-row";
+import { Box } from '@mui/material';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import type { BridgeSuperStructure } from 'src/types/project/other';
+import type { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import ItemsListing from 'src/views/shared/listing';
+import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
+import BridgeSuperStructureCard from './bridge-super-structure-card';
+import BridgeSuperStructureDrawer from './bridge-super-structure-drawer';
+import { bridgeSuperStructureColumns } from './bridge-super-structure-row';
 
 interface BridgeSuperStructureListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -25,28 +25,17 @@ interface BridgeSuperStructureListProps {
   projectId: string;
 }
 
-const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({
-  otherSubMenu,
-  projectId,
-  typeId,
-}) => {
+const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<BridgeSuperStructure | null>(
-    null,
-  );
+  const [selectedRow, setSelectedRow] = useState<BridgeSuperStructure | null>(null);
   const { t } = useTranslation();
 
-  const fetchBridgeSuperStructures = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<BridgeSuperStructure[]>> => {
-    return projectOtherApiSecondService<BridgeSuperStructure>().getAll(
-      otherSubMenu?.apiRoute || "",
-      {
-        ...params,
-        filter: { ...params.filter, project_id: projectId },
-      },
-    );
+  const fetchBridgeSuperStructures = (params: GetRequestParam): Promise<IApiResponse<BridgeSuperStructure[]>> => {
+    return projectOtherApiSecondService<BridgeSuperStructure>().getAll(otherSubMenu?.apiRoute || '', {
+      ...params,
+      filter: { ...params.filter, project_id: projectId }
+    });
   };
 
   const {
@@ -54,10 +43,10 @@ const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<BridgeSuperStructure[]>({
-    queryKey: ["bridgeSuperStructures"],
-    fetchFunction: fetchBridgeSuperStructures,
+    queryKey: ['bridgeSuperStructures'],
+    fetchFunction: fetchBridgeSuperStructures
   });
 
   const toggleDrawer = () => {
@@ -76,10 +65,7 @@ const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({
   };
 
   const handleDelete = async (bridgeSuperStructureId: string) => {
-    await projectOtherApiSecondService<BridgeSuperStructure>().delete(
-      otherSubMenu?.apiRoute || "",
-      bridgeSuperStructureId,
-    );
+    await projectOtherApiSecondService<BridgeSuperStructure>().delete(otherSubMenu?.apiRoute || '', bridgeSuperStructureId);
     refetch();
   };
 
@@ -88,89 +74,75 @@ const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({
     setSelectedRow(bridgeSuperStructure);
   };
 
-  const mapBridgeSuperStructureToDetailItems = (
-    bridgeSuperStructure: BridgeSuperStructure,
-  ): { title: string; value: string }[] => [
+  const mapBridgeSuperStructureToDetailItems = (bridgeSuperStructure: BridgeSuperStructure): { title: string; value: string }[] => [
     {
-      title: t("project.other.bridge-super-structure.details.name"),
-      value: bridgeSuperStructure?.name || "N/A",
+      title: t('project.other.bridge-super-structure.details.name'),
+      value: bridgeSuperStructure?.name || 'N/A'
     },
     {
-      title: t("project.other.bridge-super-structure.details.bridge-name"),
-      value: bridgeSuperStructure?.bridge_name || "N/A",
+      title: t('project.other.bridge-super-structure.details.bridge-name'),
+      value: bridgeSuperStructure?.bridge_name || 'N/A'
     },
     {
-      title: t(
-        "project.other.bridge-super-structure.details.bridge-structure-type-id",
-      ),
-      value: bridgeSuperStructure?.bridge_structure_type_id || "N/A",
+      title: t('project.other.bridge-super-structure.details.bridge-structure-type-id'),
+      value: bridgeSuperStructure?.bridge_structure_type_id || 'N/A'
     },
     {
-      title: t("project.other.bridge-super-structure.details.span-number"),
-      value: bridgeSuperStructure?.span_number?.toString() || "N/A",
+      title: t('project.other.bridge-super-structure.details.span-number'),
+      value: bridgeSuperStructure?.span_number?.toString() || 'N/A'
     },
     {
-      title: t("project.other.bridge-super-structure.details.span-composition"),
-      value: bridgeSuperStructure?.span_composition || "N/A",
+      title: t('project.other.bridge-super-structure.details.span-composition'),
+      value: bridgeSuperStructure?.span_composition || 'N/A'
     },
     {
-      title: t(
-        "project.other.bridge-super-structure.details.total-span-length",
-      ),
-      value: bridgeSuperStructure?.total_span_length?.toString() || "N/A",
+      title: t('project.other.bridge-super-structure.details.total-span-length'),
+      value: bridgeSuperStructure?.total_span_length?.toString() || 'N/A'
     },
     {
-      title: t("project.other.bridge-super-structure.details.carriage-width"),
-      value: bridgeSuperStructure?.carriage_width?.toString() || "N/A",
+      title: t('project.other.bridge-super-structure.details.carriage-width'),
+      value: bridgeSuperStructure?.carriage_width?.toString() || 'N/A'
     },
     {
-      title: t("project.other.bridge-super-structure.details.side-walk-width"),
-      value: bridgeSuperStructure?.side_walk_width?.toString() || "N/A",
+      title: t('project.other.bridge-super-structure.details.side-walk-width'),
+      value: bridgeSuperStructure?.side_walk_width?.toString() || 'N/A'
     },
     {
-      title: t("project.other.bridge-super-structure.details.lane-number"),
-      value: bridgeSuperStructure?.lane_number?.toString() || "N/A",
+      title: t('project.other.bridge-super-structure.details.lane-number'),
+      value: bridgeSuperStructure?.lane_number?.toString() || 'N/A'
     },
     {
-      title: t(
-        "project.other.bridge-super-structure.details.span-support-type-id",
-      ),
-      value: bridgeSuperStructure?.span_support_type_id || "N/A",
+      title: t('project.other.bridge-super-structure.details.span-support-type-id'),
+      value: bridgeSuperStructure?.span_support_type_id || 'N/A'
     },
     {
-      title: t(
-        "project.other.bridge-super-structure.details.deck-slab-type-id",
-      ),
-      value: bridgeSuperStructure?.deck_slab_type_id || "N/A",
+      title: t('project.other.bridge-super-structure.details.deck-slab-type-id'),
+      value: bridgeSuperStructure?.deck_slab_type_id || 'N/A'
     },
     {
-      title: t("project.other.bridge-super-structure.details.girder-number"),
-      value: bridgeSuperStructure?.girder_number?.toString() || "N/A",
+      title: t('project.other.bridge-super-structure.details.girder-number'),
+      value: bridgeSuperStructure?.girder_number?.toString() || 'N/A'
     },
     {
-      title: t("project.other.bridge-super-structure.details.girder-depth"),
-      value: bridgeSuperStructure?.girder_depth?.toString() || "N/A",
+      title: t('project.other.bridge-super-structure.details.girder-depth'),
+      value: bridgeSuperStructure?.girder_depth?.toString() || 'N/A'
     },
     {
-      title: t("project.other.bridge-super-structure.details.girder-spacing"),
-      value: bridgeSuperStructure?.girder_spacing?.toString() || "N/A",
+      title: t('project.other.bridge-super-structure.details.girder-spacing'),
+      value: bridgeSuperStructure?.girder_spacing?.toString() || 'N/A'
     },
     {
-      title: t("project.other.bridge-super-structure.details.girder-width"),
-      value: bridgeSuperStructure?.girder_width?.toString() || "N/A",
+      title: t('project.other.bridge-super-structure.details.girder-width'),
+      value: bridgeSuperStructure?.girder_width?.toString() || 'N/A'
     },
     {
-      title: t("common.table-columns.created-at"),
-      value: bridgeSuperStructure?.created_at
-        ? formatCreatedAt(bridgeSuperStructure.created_at)
-        : "N/A",
+      title: t('common.table-columns.created-at'),
+      value: bridgeSuperStructure?.created_at ? formatCreatedAt(bridgeSuperStructure.created_at) : 'N/A'
     },
     {
-      title: t("common.table-columns.updated-at"),
-      value: bridgeSuperStructure?.updated_at
-        ? formatCreatedAt(bridgeSuperStructure.updated_at)
-        : "N/A",
-    },
+      title: t('common.table-columns.updated-at'),
+      value: bridgeSuperStructure?.updated_at ? formatCreatedAt(bridgeSuperStructure.updated_at) : 'N/A'
+    }
   ];
 
   return (
@@ -190,30 +162,20 @@ const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapBridgeSuperStructureToDetailItems(
-            selectedRow as BridgeSuperStructure,
-          )}
+          data={mapBridgeSuperStructureToDetailItems(selectedRow as BridgeSuperStructure)}
           hasReference={false}
-          id={selectedRow?.id || ""}
+          id={selectedRow?.id || ''}
           fileType=""
-          title={t(
-            "project.other.bridge-super-structure.bridge-super-structure-details",
-          )}
+          title={t('project.other.bridge-super-structure.bridge-super-structure-details')}
         />
       )}
 
       <ItemsListing
-        title={t("project.other.bridge-super-structure.title")}
+        title={t('project.other.bridge-super-structure.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: bridgeSuperStructureColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-          ),
+          headers: bridgeSuperStructureColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -230,9 +192,9 @@ const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "bridgesuperstructure",
-          },
+            action: 'create',
+            subject: 'bridgesuperstructure'
+          }
         }}
         fetchDataFunction={refetch}
         items={bridgeSuperStructures || []}

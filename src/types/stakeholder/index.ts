@@ -1,11 +1,7 @@
-import EthiopianDate from "src/views/components/custom/ethio-calendar/ethiopian-date";
-import {
-  MasterCategory,
-  MasterSubCategory,
-  MasterType,
-} from "../master/master-types";
-import { GeneralMaster } from "../general/general-master";
-import Department from "../department/department";
+import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
+import { MasterCategory, MasterSubCategory, MasterType } from '../master/master-types';
+import { GeneralMaster } from '../general/general-master';
+import Department from '../department/department';
 
 export interface Stakeholder {
   id: string;

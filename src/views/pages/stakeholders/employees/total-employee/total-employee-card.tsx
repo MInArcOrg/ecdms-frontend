@@ -1,8 +1,8 @@
-import { Box, Card, Typography } from "@mui/material";
-import { useTranslation } from "react-i18next";
-import { TotalEmployee } from "src/types/stakeholder/total-employee";
-import ModelActionComponent from "src/views/components/custom/model-actions";
-import RowOptions from "src/views/shared/listing/row-options";
+import { Box, Card, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import { TotalEmployee } from 'src/types/stakeholder/total-employee';
+import ModelActionComponent from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface TotalEmployeeCardProps {
   totalEmployee: TotalEmployee;
@@ -11,12 +11,7 @@ interface TotalEmployeeCardProps {
   onDelete: (id: string) => void;
 }
 
-const TotalEmployeeCard: React.FC<TotalEmployeeCardProps> = ({
-  totalEmployee,
-  refetch,
-  onEdit,
-  onDelete,
-}) => {
+const TotalEmployeeCard: React.FC<TotalEmployeeCardProps> = ({ totalEmployee, refetch, onEdit, onDelete }) => {
   const { t } = useTranslation();
 
   return (
@@ -25,37 +20,31 @@ const TotalEmployeeCard: React.FC<TotalEmployeeCardProps> = ({
         {/* Info Column */}
         <Box mt={2}>
           <Typography variant="h6" fontWeight="bold">
-            {t("stakeholder.total-employee.form.year")}:{" "}
-            {new Date(totalEmployee.year).getFullYear()}
+            {t('stakeholder.total-employee.form.year')}: {new Date(totalEmployee.year).getFullYear()}
           </Typography>
 
           <Typography variant="body1">
-            {t("stakeholder.total-employee.form.domain")}:{" "}
-            {totalEmployee.domain}
+            {t('stakeholder.total-employee.form.domain')}: {totalEmployee.domain}
           </Typography>
 
           <Typography variant="body2">
-            {t("stakeholder.total-employee.form.department-name")}:{" "}
-            {totalEmployee.department_name || t("common.none")}
+            {t('stakeholder.total-employee.form.department-name')}: {totalEmployee.department_name || t('common.none')}
           </Typography>
 
           <Typography variant="body2">
-            {t("stakeholder.total-employee.form.nationality")}:{" "}
-            {totalEmployee.nationality as string}
+            {t('stakeholder.total-employee.form.nationality')}: {totalEmployee.nationality as string}
           </Typography>
 
           <Typography variant="body2">
-            {t("stakeholder.total-employee.form.male")}: {totalEmployee.male}
+            {t('stakeholder.total-employee.form.male')}: {totalEmployee.male}
           </Typography>
 
           <Typography variant="body2">
-            {t("stakeholder.total-employee.form.female")}:{" "}
-            {totalEmployee.female}
+            {t('stakeholder.total-employee.form.female')}: {totalEmployee.female}
           </Typography>
 
           <Typography variant="body2">
-            {t("stakeholder.total-employee.form.total-employees")}:{" "}
-            {totalEmployee.total_employees}
+            {t('stakeholder.total-employee.form.total-employees')}: {totalEmployee.total_employees}
           </Typography>
         </Box>
 
@@ -68,7 +57,7 @@ const TotalEmployeeCard: React.FC<TotalEmployeeCardProps> = ({
             resubmit={() => {
               /* Handle resubmit action */
             }}
-            title={t("stakeholder.total-employee.form.title")}
+            title={t('stakeholder.total-employee.form.title')}
             postAction={() => {
               /* Handle post action */
             }}
@@ -78,12 +67,12 @@ const TotalEmployeeCard: React.FC<TotalEmployeeCardProps> = ({
             onEdit={() => onEdit(totalEmployee)}
             onDelete={() => onDelete(totalEmployee.id)}
             deletePermissionRule={{
-              action: "delete",
-              subject: "totalemployee",
+              action: 'delete',
+              subject: 'totalemployee'
             }}
             editPermissionRule={{
-              action: "update",
-              subject: "totalemployee",
+              action: 'update',
+              subject: 'totalemployee'
             }}
             item={totalEmployee}
             options={[]}

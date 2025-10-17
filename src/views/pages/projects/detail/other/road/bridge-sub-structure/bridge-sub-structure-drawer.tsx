@@ -1,13 +1,13 @@
-import type { FormikProps } from "formik";
-import type { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import BridgeSubStructureForm from "./bridge-sub-structure-form";
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import BridgeSubStructureForm from './bridge-sub-structure-form';
 
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import type { BridgeSubStructure } from "src/types/project/other";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import type { BridgeSubStructure } from 'src/types/project/other';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface BridgeSubStructureDrawerType {
   open: boolean;
@@ -19,109 +19,74 @@ interface BridgeSubStructureDrawerType {
 }
 
 const BridgeSubStructureDrawer = (props: BridgeSubStructureDrawerType) => {
-  const { open, toggle, refetch, bridgeSubStructure, projectId, otherSubMenu } =
-    props;
+  const { open, toggle, refetch, bridgeSubStructure, projectId, otherSubMenu } = props;
 
-const validationSchema = yup.object().shape({
-  parent_id: yup.string().uuid().nullable(), // optional reference
-  project_id: yup.string().uuid().required("Project ID is required"),
+  const validationSchema = yup.object().shape({
+    parent_id: yup.string().uuid().nullable(), // optional reference
+    project_id: yup.string().uuid().required('Project ID is required'),
 
-  name: yup
-    .string()
-    .max(255, "Name must be at most 255 characters")
-    .required("Name is required"),
+    name: yup.string().max(255, 'Name must be at most 255 characters').required('Name is required'),
 
-  bridge_name: yup
-    .string()
-    .max(255, "Bridge name must be at most 255 characters")
-    .required("Bridge name is required"),
+    bridge_name: yup.string().max(255, 'Bridge name must be at most 255 characters').required('Bridge name is required'),
 
-  abutment_a1_height: yup.number().nullable(),
-  abutment_a1_width: yup.number().nullable(),
-  abutment_a2_height: yup.number().nullable(),
-  abutment_a2_width: yup.number().nullable(),
-  wing_wall_length: yup.number().nullable(),
+    abutment_a1_height: yup.number().nullable(),
+    abutment_a1_width: yup.number().nullable(),
+    abutment_a2_height: yup.number().nullable(),
+    abutment_a2_width: yup.number().nullable(),
+    wing_wall_length: yup.number().nullable(),
 
-  pier_type_id: yup
-    .string()
-    .uuid()
-    .required("Pier type is required"),
+    pier_type_id: yup.string().uuid().required('Pier type is required'),
 
-  piers_number: yup
-    .number()
-    .integer("Piers number must be an integer")
-    .nullable(),
+    piers_number: yup.number().integer('Piers number must be an integer').nullable(),
 
-  piers_dimension: yup.string().max(255).nullable(),
+    piers_dimension: yup.string().max(255).nullable(),
 
-  pier1_height: yup.number().nullable(),
-  pier1_width: yup.number().nullable(),
-  pier2_height: yup.number().nullable(),
-  pier2_width: yup.number().nullable(),
-});
+    pier1_height: yup.number().nullable(),
+    pier1_width: yup.number().nullable(),
+    pier2_height: yup.number().nullable(),
+    pier2_width: yup.number().nullable()
+  });
 
   const isEdit = Boolean(bridgeSubStructure?.id);
 
-  const createBridgeSubStructure = async (
-    body: IApiPayload<BridgeSubStructure>,
-  ) =>
-    projectOtherApiSecondService<BridgeSubStructure>().create(
-      otherSubMenu?.apiRoute || "",
-      body,
-    );
+  const createBridgeSubStructure = async (body: IApiPayload<BridgeSubStructure>) =>
+    projectOtherApiSecondService<BridgeSubStructure>().create(otherSubMenu?.apiRoute || '', body);
 
-  const editBridgeSubStructure = async (
-    body: IApiPayload<BridgeSubStructure>,
-  ) =>
-    projectOtherApiSecondService<BridgeSubStructure>().update(
-      otherSubMenu?.apiRoute || "",
-      bridgeSubStructure?.id || "",
-      body,
-    );
+  const editBridgeSubStructure = async (body: IApiPayload<BridgeSubStructure>) =>
+    projectOtherApiSecondService<BridgeSubStructure>().update(otherSubMenu?.apiRoute || '', bridgeSubStructure?.id || '', body);
 
-  const getPayload = (
-    values: BridgeSubStructure,
-  ): IApiPayload<BridgeSubStructure> => ({
+  const getPayload = (values: BridgeSubStructure): IApiPayload<BridgeSubStructure> => ({
     data: {
       ...values,
       project_id: projectId,
-      id: bridgeSubStructure?.id,
+      id: bridgeSubStructure?.id
     } as BridgeSubStructure,
-    files: [],
+    files: []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<BridgeSubStructure>,
-    payload: IApiPayload<BridgeSubStructure>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<BridgeSubStructure>, payload: IApiPayload<BridgeSubStructure>) => {
     refetch();
     handleClose();
   };
 
   return (
     <CustomSideDrawer
-      title={`project.other.bridge-sub-structure.${
-        isEdit ? `edit-bridge-sub-structure` : `create-bridge-sub-structure`
-      }`}
+      title={`project.other.bridge-sub-structure.${isEdit ? `edit-bridge-sub-structure` : `create-bridge-sub-structure`}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.bridge-sub-structure.${
-            isEdit ? `edit-bridge-sub-structure` : `create-bridge-sub-structure`
-          }`}
+          title={`project.other.bridge-sub-structure.${isEdit ? `edit-bridge-sub-structure` : `create-bridge-sub-structure`}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...bridgeSubStructure,
+            ...bridgeSubStructure
           }}
-          createActionFunc={
-            isEdit ? editBridgeSubStructure : createBridgeSubStructure
-          }
+          createActionFunc={isEdit ? editBridgeSubStructure : createBridgeSubStructure}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

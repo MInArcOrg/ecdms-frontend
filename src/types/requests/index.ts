@@ -1,4 +1,4 @@
-import type { Pagination } from "./pagination";
+import type { Pagination } from './pagination';
 
 export type GetRequestParam = {
   pagination?: { pageSize: number; page: number } | null;
@@ -9,7 +9,7 @@ export type GetRequestParam = {
 export const defaultGetRequestParam: GetRequestParam = {
   pagination: null,
   filter: undefined,
-  sorting: undefined,
+  sorting: undefined
 };
 
 export type PostRequestParam = {

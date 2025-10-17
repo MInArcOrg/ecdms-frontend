@@ -1,12 +1,12 @@
-import * as yup from "yup";
+import * as yup from 'yup';
 
-import { FormikProps } from "formik";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import PositionForm from "./position-form";
-import Position from "src/types/department/position";
-import positionApiService from "src/services/department/position-service";
-import { IApiPayload } from "src/types/requests";
+import { FormikProps } from 'formik';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import PositionForm from './position-form';
+import Position from 'src/types/department/position';
+import positionApiService from 'src/services/department/position-service';
+import { IApiPayload } from 'src/types/requests';
 
 interface PositionDrawerType {
   open: boolean;
@@ -18,7 +18,7 @@ interface PositionDrawerType {
 
 const validationSchema = yup.object().shape({
   name: yup.string().max(36).required(),
-  description: yup.string().max(100).nullable(),
+  description: yup.string().max(100).nullable()
 });
 
 const PositionDrawer = (props: PositionDrawerType) => {
@@ -30,7 +30,7 @@ const PositionDrawer = (props: PositionDrawerType) => {
     return await positionApiService.create(body);
   };
   const editPosition = async (body: IApiPayload<Position>) => {
-    return await positionApiService.update(position?.id || "", body);
+    return await positionApiService.update(position?.id || '', body);
   };
 
   const getPayload = (values: Position) => {
@@ -38,9 +38,9 @@ const PositionDrawer = (props: PositionDrawerType) => {
       data: {
         ...values,
         id: position?.id,
-        department_id: props.departmentId,
+        department_id: props.departmentId
       },
-      files: [],
+      files: []
     };
     return payload;
   };
@@ -54,13 +54,7 @@ const PositionDrawer = (props: PositionDrawerType) => {
     handleClose();
   };
   return (
-    <CustomSideDrawer
-      title={`department.position.${
-        isEdit ? "edit-position" : "create-position"
-      }`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`department.position.${isEdit ? 'edit-position' : 'create-position'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
@@ -73,12 +67,7 @@ const PositionDrawer = (props: PositionDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<Position>) => {
-            return (
-              <PositionForm
-                formik={formik}
-                defaultLocaleData={{} as Position}
-              />
-            );
+            return <PositionForm formik={formik} defaultLocaleData={{} as Position} />;
           }}
         </FormPageWrapper>
       )}

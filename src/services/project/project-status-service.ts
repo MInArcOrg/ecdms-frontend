@@ -1,10 +1,10 @@
-import { AxiosResponse } from "axios";
-import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
-import { ProjectStatus } from "src/types/project";
-import axiosServices from "src/utils/axios";
-import { buildGetRequest } from "src/utils/requests/get-request";
-import { buildPostRequest } from "src/utils/requests/post-request";
-import { buildPutRequest } from "src/utils/requests/put-request";
+import { AxiosResponse } from 'axios';
+import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
+import { ProjectStatus } from 'src/types/project';
+import axiosServices from 'src/utils/axios';
+import { buildGetRequest } from 'src/utils/requests/get-request';
+import { buildPostRequest } from 'src/utils/requests/post-request';
+import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const projectStatusApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<ProjectStatus[]>> =>
@@ -36,15 +36,12 @@ const projectStatusApiService = {
         throw error;
       }),
 
-  update: (
-    id: string,
-    body: IApiPayload<ProjectStatus>,
-  ): Promise<IApiResponse> =>
+  update: (id: string, body: IApiPayload<ProjectStatus>): Promise<IApiResponse> =>
     buildPutRequest(`/projects/project-statuses/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      }),
+      })
 };
 
 export default projectStatusApiService;

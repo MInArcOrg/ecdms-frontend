@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function stakeholder() {
-  return <div>stakeholder</div>
+  return <div>stakeholder</div>;
 }
 
-export default stakeholder
+export default stakeholder;

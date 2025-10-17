@@ -1,32 +1,24 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
+import { Box } from '@mui/material';
+import { useState } from 'react';
 
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import fileModelApiService from "src/services/general/file-api-service";
-import { FileModel } from "src/types/general/file";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import { GetRequestParam, IApiResponse } from "src/types/requests";
-import ItemsListing from "src/views/shared/listing";
-import ProjectFileCard from "./project-file-card";
-import ProjectFileDrawer from "./project-file-drawer";
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import fileModelApiService from 'src/services/general/file-api-service';
+import { FileModel } from 'src/types/general/file';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import ItemsListing from 'src/views/shared/listing';
+import ProjectFileCard from './project-file-card';
+import ProjectFileDrawer from './project-file-drawer';
 
-function ProjectFileList({
-  type,
-  projectId,
-}: {
-  type: string;
-  projectId: string;
-}) {
+function ProjectFileList({ type, projectId }: { type: string; projectId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
 
   const [selectedRow, setSelectedRow] = useState<FileModel | null>(null);
-  const fetchProjectFiles = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<FileModel[]>> => {
+  const fetchProjectFiles = (params: GetRequestParam): Promise<IApiResponse<FileModel[]>> => {
     return fileModelApiService.getAll({
       ...params,
-      filter: { ...params.filter, type: type, reference_id: projectId },
+      filter: { ...params.filter, type: type, reference_id: projectId }
     });
   };
 
@@ -35,10 +27,10 @@ function ProjectFileList({
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<FileModel[]>({
-    queryKey: ["projectFiles", type],
-    fetchFunction: fetchProjectFiles,
+    queryKey: ['projectFiles', type],
+    fetchFunction: fetchProjectFiles
   });
 
   const toggleDrawer = () => {
@@ -73,22 +65,16 @@ function ProjectFileList({
         type={ITEMS_LISTING_TYPE.list.value}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <ProjectFileCard
-            type={type}
-            onEdit={handleEdit}
-            refetch={refetch}
-            projectFile={data}
-            onDelete={handleDelete}
-          />
+          <ProjectFileCard type={type} onEdit={handleEdit} refetch={refetch} projectFile={data} onDelete={handleDelete} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "files",
-          },
+            action: 'create',
+            subject: 'files'
+          }
         }}
         fetchDataFunction={refetch}
         items={projectFiles || []}

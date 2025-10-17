@@ -1,10 +1,10 @@
-import { AxiosResponse } from "axios";
-import { MaintenanceType } from "src/types/general/general-master";
-import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
-import axiosServices from "src/utils/axios";
-import { buildGetRequest } from "src/utils/requests/get-request";
-import { buildPostRequest } from "src/utils/requests/post-request";
-import { buildPutRequest } from "src/utils/requests/put-request";
+import { AxiosResponse } from 'axios';
+import { MaintenanceType } from 'src/types/general/general-master';
+import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
+import axiosServices from 'src/utils/axios';
+import { buildGetRequest } from 'src/utils/requests/get-request';
+import { buildPostRequest } from 'src/utils/requests/post-request';
+import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const maintenanceTypeMasterService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<MaintenanceType[]>> =>
@@ -22,10 +22,7 @@ const maintenanceTypeMasterService = {
       }),
   searchResource: (params: GetRequestParam) =>
     buildGetRequest(`/masterdata/maintenance-types-search`, params)
-      .then(
-        (response: AxiosResponse<IApiResponse>) =>
-          response.data.payload as unknown as MaintenanceType[],
-      )
+      .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as MaintenanceType[])
       .catch((error: any) => {
         throw error;
       }),
@@ -43,15 +40,12 @@ const maintenanceTypeMasterService = {
       .catch((error: any) => {
         throw error;
       }),
-  update: (
-    id: string,
-    body: IApiPayload<MaintenanceType>,
-  ): Promise<IApiResponse> =>
+  update: (id: string, body: IApiPayload<MaintenanceType>): Promise<IApiResponse> =>
     buildPutRequest(`/masterdata/maintenance-types/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      }),
+      })
 };
 
 export default maintenanceTypeMasterService;

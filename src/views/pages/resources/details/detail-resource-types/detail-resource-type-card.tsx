@@ -1,18 +1,10 @@
-import {
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Grid,
-  Typography,
-} from "@mui/material";
-import { ReactElement } from "react";
-import FileDrawer from "src/views/components/custom/files-drawer";
-import ModelActionComponent from "src/views/components/custom/model-actions";
-import RowOptions from "src/views/shared/listing/row-options";
-import DescCollapse from "../desc-collapse";
-import { DetailResourceType } from "src/types/resource";
+import { Box, Card, CardActions, CardContent, CardHeader, Grid, Typography } from '@mui/material';
+import { ReactElement } from 'react';
+import FileDrawer from 'src/views/components/custom/files-drawer';
+import ModelActionComponent from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
+import DescCollapse from '../desc-collapse';
+import { DetailResourceType } from 'src/types/resource';
 
 interface DetailResourceTypeCardProps {
   detailResourceType: DetailResourceType;
@@ -23,16 +15,9 @@ interface DetailResourceTypeCardProps {
   children: ReactElement;
 }
 
-const DetailResourceTypeCard: React.FC<DetailResourceTypeCardProps> = ({
-  detailResourceType,
-  onEdit,
-  onDelete,
-  refetch,
-  t,
-  children,
-}) => {
+const DetailResourceTypeCard: React.FC<DetailResourceTypeCardProps> = ({ detailResourceType, onEdit, onDelete, refetch, t, children }) => {
   return (
-    <Card sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
+    <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <CardContent>
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -49,17 +34,14 @@ const DetailResourceTypeCard: React.FC<DetailResourceTypeCardProps> = ({
           <Grid item xs={12}>
             <Box display="flex" alignItems="center">
               <Typography variant="subtitle1">
-                <strong>
-                  {t("resource.detail-resource-type.form.datasource")}:
-                </strong>{" "}
-                {detailResourceType.datasource}
+                <strong>{t('resource.detail-resource-type.form.datasource')}:</strong> {detailResourceType.datasource}
               </Typography>
             </Box>
           </Grid>
         </Grid>
       </CardContent>
       <Box sx={{ flexGrow: 1 }} />
-      <CardActions sx={{ justifyContent: "flex-end" }}>
+      <CardActions sx={{ justifyContent: 'flex-end' }}>
         <Box>
           <FileDrawer id={detailResourceType.id} type="" />
           <Box display="flex" alignItems="end">
@@ -71,12 +53,7 @@ const DetailResourceTypeCard: React.FC<DetailResourceTypeCardProps> = ({
               title=""
               postAction={() => {}}
             />
-            <RowOptions
-              onEdit={onEdit}
-              onDelete={() => onDelete(detailResourceType.id)}
-              item={detailResourceType}
-              options={[]}
-            />
+            <RowOptions onEdit={onEdit} onDelete={() => onDelete(detailResourceType.id)} item={detailResourceType} options={[]} />
           </Box>
         </Box>
       </CardActions>

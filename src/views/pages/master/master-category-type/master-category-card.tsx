@@ -1,9 +1,9 @@
 // components/MasterCategoryList.tsx
-import { Box, IconButton, ListItemButton, ListItemText } from "@mui/material";
-import { Fragment, useState } from "react";
-import Icon from "src/@core/components/icon";
-import { MasterCategory } from "src/types/master/master-types";
-import MasterCategoryDetailDrawer from "./master-category-detail-drawer";
+import { Box, IconButton, ListItemButton, ListItemText } from '@mui/material';
+import { Fragment, useState } from 'react';
+import Icon from 'src/@core/components/icon';
+import { MasterCategory } from 'src/types/master/master-types';
+import MasterCategoryDetailDrawer from './master-category-detail-drawer';
 
 const MasterCategoryCard = ({
   masterCategory,
@@ -12,7 +12,7 @@ const MasterCategoryCard = ({
   onDelete,
   refetch,
   onCategorySelect,
-  selectedCategory,
+  selectedCategory
 }: {
   masterCategory: MasterCategory;
   model: string;
@@ -30,11 +30,11 @@ const MasterCategoryCard = ({
 
   return (
     <Fragment>
-      <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
         <ListItemButton
           sx={{
-            borderRadius: "0.5rem",
-            flex: 1,
+            borderRadius: '0.5rem',
+            flex: 1
           }}
           selected={masterCategory.id === selectedCategory?.id}
           onClick={() => onCategorySelect(masterCategory.id)}
@@ -42,12 +42,10 @@ const MasterCategoryCard = ({
           <ListItemText
             primaryTypographyProps={{
               style: {
-                color: `${
-                  masterCategory?.id === selectedCategory?.id ? "#fff" : ""
-                }`,
-                wordWrap: "break-word",
-                maxWidth: "95%",
-              },
+                color: `${masterCategory?.id === selectedCategory?.id ? '#fff' : ''}`,
+                wordWrap: 'break-word',
+                maxWidth: '95%'
+              }
             }}
             primary={masterCategory.title}
           />

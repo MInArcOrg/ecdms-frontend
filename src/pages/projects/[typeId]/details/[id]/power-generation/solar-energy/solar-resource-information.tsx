@@ -1,25 +1,16 @@
-import { useRouter } from "next/router";
-import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
-import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
-import subMenuItems, {
-  findSubMenuItem,
-  powerGenerationIds,
-} from "../(subMenuItems)";
-import SolarResourceInformationList from "src/views/pages/projects/detail/other/electric-power/solar-resource-information";
+import { useRouter } from 'next/router';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
+import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import subMenuItems, { findSubMenuItem, powerGenerationIds } from '../(subMenuItems)';
+import SolarResourceInformationList from 'src/views/pages/projects/detail/other/electric-power/solar-resource-information';
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems("", ""),
-  powerGenerationIds.solarEnergy.solarResourceInformation,
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), powerGenerationIds.solarEnergy.solarResourceInformation);
 
 const SolarResourceInformationPage = () => {
   const router = useRouter();
-  const { id = "", typeId = "" } = router.query;
+  const { id = '', typeId = '' } = router.query;
 
-  const menuItem = findSubMenuItem(
-    subMenuItems(id as string, typeId as string),
-    powerGenerationIds.solarEnergy.solarResourceInformation,
-  );
+  const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), powerGenerationIds.solarEnergy.solarResourceInformation);
 
   return (
     <ProjectLayout
@@ -27,11 +18,7 @@ const SolarResourceInformationPage = () => {
       activeSubMenuId={powerGenerationIds.solarEnergy.solarResourceInformation}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <SolarResourceInformationList
-        otherSubMenu={menuItem}
-        typeId={String(typeId)}
-        projectId={String(id)}
-      />
+      <SolarResourceInformationList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>
   );
 };
@@ -39,7 +26,7 @@ const SolarResourceInformationPage = () => {
 // Access control configuration
 SolarResourceInformationPage.acl = {
   subject: defaultMenuItem?.model,
-  action: "view",
+  action: 'view'
 };
 
 export default SolarResourceInformationPage;

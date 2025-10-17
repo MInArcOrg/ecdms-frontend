@@ -1,18 +1,15 @@
-import { Grid } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
-import { FormikProps } from "formik";
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { dropDownConfig } from "src/configs/api-constants";
-import { gridSpacing } from "src/configs/app-constants";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import {
-  InternetConnection,
-  InternetConnectionInfrastructureManufacturer,
-} from "src/types/project/other";
-import CustomSelect from "src/views/shared/form/custom-select";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
-import CustomFileUpload from "src/views/shared/form/custome-file-selector";
+import { Grid } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
+import { FormikProps } from 'formik';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { dropDownConfig } from 'src/configs/api-constants';
+import { gridSpacing } from 'src/configs/app-constants';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { InternetConnection, InternetConnectionInfrastructureManufacturer } from 'src/types/project/other';
+import CustomSelect from 'src/views/shared/form/custom-select';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface InternetConnectionInfrastructureManufacturerFormProps {
   formik: FormikProps<InternetConnectionInfrastructureManufacturer>;
@@ -21,22 +18,24 @@ interface InternetConnectionInfrastructureManufacturerFormProps {
   projectId: string;
 }
 
-const InternetConnectionInfrastructureManufacturerForm: React.FC<
-  InternetConnectionInfrastructureManufacturerFormProps
-> = ({ projectId, file, onFileChange }) => {
+const InternetConnectionInfrastructureManufacturerForm: React.FC<InternetConnectionInfrastructureManufacturerFormProps> = ({
+  projectId,
+  file,
+  onFileChange
+}) => {
   const { t: transl } = useTranslation();
 
   const { data: internetConnections } = useQuery({
-    queryKey: ["internet-connections"],
+    queryKey: ['internet-connections'],
     queryFn: () =>
       projectOtherApiSecondService<InternetConnection>().getAll(
-        "internet-connections",
+        'internet-connections',
         dropDownConfig({
           filter: {
-            project_id: projectId,
-          },
-        }),
-      ),
+            project_id: projectId
+          }
+        })
+      )
   });
 
   return (
@@ -44,19 +43,15 @@ const InternetConnectionInfrastructureManufacturerForm: React.FC<
       <Grid item xs={12}>
         <CustomSelect
           fullWidth
-          label={transl(
-            "project.other.internet-connection-infrastructure-manufacturer.details.internet-connection-id",
-          )}
-          placeholder={transl(
-            "project.other.internet-connection-infrastructure-manufacturer.details.internet-connection-id",
-          )}
+          label={transl('project.other.internet-connection-infrastructure-manufacturer.details.internet-connection-id')}
+          placeholder={transl('project.other.internet-connection-infrastructure-manufacturer.details.internet-connection-id')}
           name="internet_connection_id"
           size="small"
           sx={{ mb: 2 }}
           options={
             internetConnections?.payload.map((connection) => ({
               label: connection.internetConnectionType?.title,
-              value: connection.id,
+              value: connection.id
             })) || []
           }
         />
@@ -65,12 +60,8 @@ const InternetConnectionInfrastructureManufacturerForm: React.FC<
           <Grid item xs={12}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.internet-connection-infrastructure-manufacturer.details.routers",
-              )}
-              placeholder={transl(
-                "project.other.internet-connection-infrastructure-manufacturer.details.routers",
-              )}
+              label={transl('project.other.internet-connection-infrastructure-manufacturer.details.routers')}
+              placeholder={transl('project.other.internet-connection-infrastructure-manufacturer.details.routers')}
               name="routers"
               type="text"
               size="small"
@@ -80,12 +71,8 @@ const InternetConnectionInfrastructureManufacturerForm: React.FC<
           <Grid item xs={12}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.internet-connection-infrastructure-manufacturer.details.switches",
-              )}
-              placeholder={transl(
-                "project.other.internet-connection-infrastructure-manufacturer.details.switches",
-              )}
+              label={transl('project.other.internet-connection-infrastructure-manufacturer.details.switches')}
+              placeholder={transl('project.other.internet-connection-infrastructure-manufacturer.details.switches')}
               name="switches"
               type="text"
               size="small"
@@ -95,12 +82,8 @@ const InternetConnectionInfrastructureManufacturerForm: React.FC<
           <Grid item xs={12}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.internet-connection-infrastructure-manufacturer.details.modems",
-              )}
-              placeholder={transl(
-                "project.other.internet-connection-infrastructure-manufacturer.details.modems",
-              )}
+              label={transl('project.other.internet-connection-infrastructure-manufacturer.details.modems')}
+              placeholder={transl('project.other.internet-connection-infrastructure-manufacturer.details.modems')}
               name="modems"
               type="text"
               size="small"
@@ -110,12 +93,8 @@ const InternetConnectionInfrastructureManufacturerForm: React.FC<
           <Grid item xs={12}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.internet-connection-infrastructure-manufacturer.details.cables",
-              )}
-              placeholder={transl(
-                "project.other.internet-connection-infrastructure-manufacturer.details.cables",
-              )}
+              label={transl('project.other.internet-connection-infrastructure-manufacturer.details.cables')}
+              placeholder={transl('project.other.internet-connection-infrastructure-manufacturer.details.cables')}
               name="cables"
               type="text"
               size="small"
@@ -126,12 +105,8 @@ const InternetConnectionInfrastructureManufacturerForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.internet-connection-infrastructure-manufacturer.details.others",
-          )}
-          placeholder={transl(
-            "project.other.internet-connection-infrastructure-manufacturer.details.others",
-          )}
+          label={transl('project.other.internet-connection-infrastructure-manufacturer.details.others')}
+          placeholder={transl('project.other.internet-connection-infrastructure-manufacturer.details.others')}
           name="others"
           size="small"
           multiline
@@ -141,11 +116,7 @@ const InternetConnectionInfrastructureManufacturerForm: React.FC<
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={transl("common.form.file-upload")}
-          file={file}
-          onFileChange={onFileChange}
-        />
+        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

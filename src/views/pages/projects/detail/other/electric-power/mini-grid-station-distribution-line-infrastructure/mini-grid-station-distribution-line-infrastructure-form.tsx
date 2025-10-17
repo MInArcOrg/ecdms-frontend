@@ -1,23 +1,14 @@
-"use client";
+'use client';
 
-import {
-  Grid,
-  Typography,
-  Divider,
-  FormControlLabel,
-  Checkbox,
-} from "@mui/material";
-import type { FormikProps } from "formik";
-import type React from "react";
-import { useTranslation } from "react-i18next";
-import { gridSpacing } from "src/configs/app-constants";
-import type {
-  MiniGridStationDistributionLineInfrastructure,
-  MiniGridStation,
-} from "src/types/project/other";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
-import CustomFileUpload from "src/views/shared/form/custome-file-selector";
-import CustomSelect from "src/views/shared/form/custom-select";
+import { Grid, Typography, Divider, FormControlLabel, Checkbox } from '@mui/material';
+import type { FormikProps } from 'formik';
+import type React from 'react';
+import { useTranslation } from 'react-i18next';
+import { gridSpacing } from 'src/configs/app-constants';
+import type { MiniGridStationDistributionLineInfrastructure, MiniGridStation } from 'src/types/project/other';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
+import CustomSelect from 'src/views/shared/form/custom-select';
 
 interface MiniGridStationDistributionLineInfrastructureFormProps {
   formik: FormikProps<MiniGridStationDistributionLineInfrastructure>;
@@ -28,40 +19,32 @@ interface MiniGridStationDistributionLineInfrastructureFormProps {
   distributionLineMaterials: any[];
 }
 
-const MiniGridStationDistributionLineInfrastructureForm: React.FC<
-  MiniGridStationDistributionLineInfrastructureFormProps
-> = ({
+const MiniGridStationDistributionLineInfrastructureForm: React.FC<MiniGridStationDistributionLineInfrastructureFormProps> = ({
   formik,
   file,
   onFileChange,
   miniGridStations,
   distributionLineTypes,
-  distributionLineMaterials,
+  distributionLineMaterials
 }) => {
   const { t: transl } = useTranslation();
 
   const topologyOptions = [
     {
-      label: transl(
-        "project.other.mini-grid-station-distribution-line-infrastructure.topology-options.radial",
-      ),
-      value: "Radial",
+      label: transl('project.other.mini-grid-station-distribution-line-infrastructure.topology-options.radial'),
+      value: 'Radial'
     },
     {
-      label: transl(
-        "project.other.mini-grid-station-distribution-line-infrastructure.topology-options.ring",
-      ),
-      value: "Ring",
-    },
+      label: transl('project.other.mini-grid-station-distribution-line-infrastructure.topology-options.ring'),
+      value: 'Ring'
+    }
   ];
 
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
         <Typography variant="subtitle1" gutterBottom>
-          {transl(
-            "project.other.mini-grid-station-distribution-line-infrastructure.general-information",
-          )}
+          {transl('project.other.mini-grid-station-distribution-line-infrastructure.general-information')}
         </Typography>
         <Divider sx={{ mb: 2 }} />
 
@@ -70,16 +53,14 @@ const MiniGridStationDistributionLineInfrastructureForm: React.FC<
             <CustomSelect
               fullWidth
               required
-              label={transl(
-                "project.other.mini-grid-station-distribution-line-infrastructure.details.mini-grid-station-id",
-              )}
+              label={transl('project.other.mini-grid-station-distribution-line-infrastructure.details.mini-grid-station-id')}
               name="mini_grid_station_id"
               size="small"
               sx={{ mb: 2 }}
               options={
                 miniGridStations?.map((station: MiniGridStation) => ({
                   label: station.name,
-                  value: station.id,
+                  value: station.id
                 })) || []
               }
             />
@@ -91,12 +72,8 @@ const MiniGridStationDistributionLineInfrastructureForm: React.FC<
             <CustomTextBox
               fullWidth
               required
-              label={transl(
-                "project.other.mini-grid-station-distribution-line-infrastructure.details.name",
-              )}
-              placeholder={transl(
-                "project.other.mini-grid-station-distribution-line-infrastructure.details.name",
-              )}
+              label={transl('project.other.mini-grid-station-distribution-line-infrastructure.details.name')}
+              placeholder={transl('project.other.mini-grid-station-distribution-line-infrastructure.details.name')}
               name="name"
               size="small"
               sx={{ mb: 2 }}
@@ -105,9 +82,7 @@ const MiniGridStationDistributionLineInfrastructureForm: React.FC<
         </Grid>
 
         <Typography variant="subtitle1" gutterBottom sx={{ mt: 2 }}>
-          {transl(
-            "project.other.mini-grid-station-distribution-line-infrastructure.technical-specifications",
-          )}
+          {transl('project.other.mini-grid-station-distribution-line-infrastructure.technical-specifications')}
         </Typography>
         <Divider sx={{ mb: 2 }} />
 
@@ -116,16 +91,14 @@ const MiniGridStationDistributionLineInfrastructureForm: React.FC<
             <CustomSelect
               fullWidth
               required
-              label={transl(
-                "project.other.mini-grid-station-distribution-line-infrastructure.details.distribution-line-type-id",
-              )}
+              label={transl('project.other.mini-grid-station-distribution-line-infrastructure.details.distribution-line-type-id')}
               name="distribution_line_type_id"
               size="small"
               sx={{ mb: 2 }}
               options={
                 distributionLineTypes?.map((type: any) => ({
                   label: type.name,
-                  value: type.id,
+                  value: type.id
                 })) || []
               }
             />
@@ -134,16 +107,14 @@ const MiniGridStationDistributionLineInfrastructureForm: React.FC<
             <CustomSelect
               fullWidth
               required
-              label={transl(
-                "project.other.mini-grid-station-distribution-line-infrastructure.details.distribution-line-material-id",
-              )}
+              label={transl('project.other.mini-grid-station-distribution-line-infrastructure.details.distribution-line-material-id')}
               name="distribution_line_material_id"
               size="small"
               sx={{ mb: 2 }}
               options={
                 distributionLineMaterials?.map((material: any) => ({
                   label: material.name,
-                  value: material.id,
+                  value: material.id
                 })) || []
               }
             />
@@ -154,33 +125,27 @@ const MiniGridStationDistributionLineInfrastructureForm: React.FC<
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.mini-grid-station-distribution-line-infrastructure.details.distribution-line-conductor-size",
-              )}
+              label={transl('project.other.mini-grid-station-distribution-line-infrastructure.details.distribution-line-conductor-size')}
               placeholder={transl(
-                "project.other.mini-grid-station-distribution-line-infrastructure.details.distribution-line-conductor-size",
+                'project.other.mini-grid-station-distribution-line-infrastructure.details.distribution-line-conductor-size'
               )}
               name="distribution_line_conductor_size"
               type="number"
               size="small"
               sx={{ mb: 2 }}
-              helperText={transl("common.mm2")}
+              helperText={transl('common.mm2')}
             />
           </Grid>
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.mini-grid-station-distribution-line-infrastructure.details.voltage-level",
-              )}
-              placeholder={transl(
-                "project.other.mini-grid-station-distribution-line-infrastructure.details.voltage-level",
-              )}
+              label={transl('project.other.mini-grid-station-distribution-line-infrastructure.details.voltage-level')}
+              placeholder={transl('project.other.mini-grid-station-distribution-line-infrastructure.details.voltage-level')}
               name="voltage_level"
               type="number"
               size="small"
               sx={{ mb: 2 }}
-              helperText={transl("common.kv")}
+              helperText={transl('common.kv')}
             />
           </Grid>
         </Grid>
@@ -189,9 +154,7 @@ const MiniGridStationDistributionLineInfrastructureForm: React.FC<
           <Grid item xs={6}>
             <CustomSelect
               fullWidth
-              label={transl(
-                "project.other.mini-grid-station-distribution-line-infrastructure.details.topology",
-              )}
+              label={transl('project.other.mini-grid-station-distribution-line-infrastructure.details.topology')}
               name="topology"
               size="small"
               sx={{ mb: 2 }}
@@ -201,9 +164,7 @@ const MiniGridStationDistributionLineInfrastructureForm: React.FC<
         </Grid>
 
         <Typography variant="subtitle1" gutterBottom sx={{ mt: 2 }}>
-          {transl(
-            "project.other.mini-grid-station-distribution-line-infrastructure.connection-information",
-          )}
+          {transl('project.other.mini-grid-station-distribution-line-infrastructure.connection-information')}
         </Typography>
         <Divider sx={{ mb: 2 }} />
 
@@ -214,17 +175,12 @@ const MiniGridStationDistributionLineInfrastructureForm: React.FC<
                 <Checkbox
                   checked={formik.values.switching_station_connection || false}
                   onChange={(e) => {
-                    formik.setFieldValue(
-                      "switching_station_connection",
-                      e.target.checked,
-                    );
+                    formik.setFieldValue('switching_station_connection', e.target.checked);
                   }}
                   name="switching_station_connection"
                 />
               }
-              label={transl(
-                "project.other.mini-grid-station-distribution-line-infrastructure.details.switching-station-connection",
-              )}
+              label={transl('project.other.mini-grid-station-distribution-line-infrastructure.details.switching-station-connection')}
             />
           </Grid>
         </Grid>
@@ -233,12 +189,8 @@ const MiniGridStationDistributionLineInfrastructureForm: React.FC<
           <Grid item xs={12}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.mini-grid-station-distribution-line-infrastructure.details.station-name",
-              )}
-              placeholder={transl(
-                "project.other.mini-grid-station-distribution-line-infrastructure.details.station-name",
-              )}
+              label={transl('project.other.mini-grid-station-distribution-line-infrastructure.details.station-name')}
+              placeholder={transl('project.other.mini-grid-station-distribution-line-infrastructure.details.station-name')}
               name="station_name"
               size="small"
               sx={{ mb: 2 }}
@@ -247,20 +199,14 @@ const MiniGridStationDistributionLineInfrastructureForm: React.FC<
         </Grid>
 
         <Typography variant="subtitle1" gutterBottom sx={{ mt: 2 }}>
-          {transl(
-            "project.other.mini-grid-station-distribution-line-infrastructure.additional-information",
-          )}
+          {transl('project.other.mini-grid-station-distribution-line-infrastructure.additional-information')}
         </Typography>
         <Divider sx={{ mb: 2 }} />
 
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.mini-grid-station-distribution-line-infrastructure.details.remark",
-          )}
-          placeholder={transl(
-            "project.other.mini-grid-station-distribution-line-infrastructure.details.remark",
-          )}
+          label={transl('project.other.mini-grid-station-distribution-line-infrastructure.details.remark')}
+          placeholder={transl('project.other.mini-grid-station-distribution-line-infrastructure.details.remark')}
           name="remark"
           size="small"
           multiline
@@ -270,11 +216,7 @@ const MiniGridStationDistributionLineInfrastructureForm: React.FC<
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={transl("common.form.file-upload")}
-          file={file}
-          onFileChange={onFileChange}
-        />
+        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

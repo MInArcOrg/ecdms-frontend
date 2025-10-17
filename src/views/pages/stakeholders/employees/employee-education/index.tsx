@@ -1,30 +1,26 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
+import { Box } from '@mui/material';
+import { useState } from 'react';
 
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import employeeEducationApiService from "src/services/stakeholder/employee-education-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import { GetRequestParam, IApiResponse } from "src/types/requests";
-import ItemsListing from "src/views/shared/listing";
-import EmployeeEducationCard from "./employee-education-card";
-import EmployeeEducationDrawer from "./employee-education-drawer";
-import { EmployeeEducation } from "src/types/stakeholder/employee-education";
-import { employeeEducationColumns } from "./employee-education-row";
-import { useTranslation } from "react-i18next";
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import employeeEducationApiService from 'src/services/stakeholder/employee-education-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import ItemsListing from 'src/views/shared/listing';
+import EmployeeEducationCard from './employee-education-card';
+import EmployeeEducationDrawer from './employee-education-drawer';
+import { EmployeeEducation } from 'src/types/stakeholder/employee-education';
+import { employeeEducationColumns } from './employee-education-row';
+import { useTranslation } from 'react-i18next';
 
 function EmployeeEducationList({ stakeholderId }: { stakeholderId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
   const { t } = useTranslation();
-  const [selectedRow, setSelectedRow] = useState<EmployeeEducation | null>(
-    null,
-  );
-  const fetchEmployeeEducations = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<EmployeeEducation[]>> => {
+  const [selectedRow, setSelectedRow] = useState<EmployeeEducation | null>(null);
+  const fetchEmployeeEducations = (params: GetRequestParam): Promise<IApiResponse<EmployeeEducation[]>> => {
     return employeeEducationApiService.getAll({
       ...params,
-      filter: { ...params.filter, stakeholder_id: stakeholderId },
+      filter: { ...params.filter, stakeholder_id: stakeholderId }
     });
   };
 
@@ -33,10 +29,10 @@ function EmployeeEducationList({ stakeholderId }: { stakeholderId: string }) {
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<EmployeeEducation[]>({
-    queryKey: ["employeeEducations"],
-    fetchFunction: fetchEmployeeEducations,
+    queryKey: ['employeeEducations'],
+    fetchFunction: fetchEmployeeEducations
   });
 
   const toggleDrawer = () => {
@@ -70,29 +66,19 @@ function EmployeeEducationList({ stakeholderId }: { stakeholderId: string }) {
         type={ITEMS_LISTING_TYPE.table.value}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <EmployeeEducationCard
-            employeeEducation={data}
-            onEdit={handleEdit}
-            refetch={refetch}
-            onDelete={handleDelete}
-          />
+          <EmployeeEducationCard employeeEducation={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
         tableProps={{
-          headers: employeeEducationColumns(
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-          ),
+          headers: employeeEducationColumns(handleEdit, handleDelete, t, refetch)
         }}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "certificate",
-          },
+            action: 'create',
+            subject: 'certificate'
+          }
         }}
         fetchDataFunction={refetch}
         items={employeeEducations || []}

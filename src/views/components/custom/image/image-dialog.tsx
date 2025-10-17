@@ -1,14 +1,6 @@
-import Dialog from "@mui/material/Dialog";
+import Dialog from '@mui/material/Dialog';
 
-function ShowImageDialog({
-  open,
-  setOpen,
-  image,
-}: {
-  open: boolean;
-  setOpen: (item: boolean) => void;
-  image: any;
-}) {
+function ShowImageDialog({ open, setOpen, image }: { open: boolean; setOpen: (item: boolean) => void; image: any }) {
   return (
     <Dialog open={open} onClose={() => setOpen(false)} fullWidth>
       {/* <DialogTitle>
@@ -30,8 +22,8 @@ function ShowImageDialog({
       {image && (
         <img
           style={{
-            width: "100%",
-            maxHeight: "500px",
+            width: '100%',
+            maxHeight: '500px'
           }}
           src={image}
           alt="Selected Image"

@@ -36,13 +36,10 @@ const RailwayCommunicationSystemSafetyAndComplianceList: React.FC<RailwayCommuni
   const fetchRailwayCommunicationSystemSafetyAndCompliance = (
     params: GetRequestParam
   ): Promise<IApiResponse<RailwayCommunicationSystemSafetyAndCompliance[]>> => {
-    return projectOtherApiSecondService<RailwayCommunicationSystemSafetyAndCompliance>().getAll(
-      otherSubMenu?.apiRoute || '',
-      {
-        ...params,
-        filter: { ...params.filter, project_id: projectId }
-      }
-    );
+    return projectOtherApiSecondService<RailwayCommunicationSystemSafetyAndCompliance>().getAll(otherSubMenu?.apiRoute || '', {
+      ...params,
+      filter: { ...params.filter, project_id: projectId }
+    });
   };
 
   const {
@@ -72,10 +69,7 @@ const RailwayCommunicationSystemSafetyAndComplianceList: React.FC<RailwayCommuni
   };
 
   const handleDelete = async (id: string) => {
-    await projectOtherApiSecondService<RailwayCommunicationSystemSafetyAndCompliance>().delete(
-      otherSubMenu?.apiRoute || '',
-      id
-    );
+    await projectOtherApiSecondService<RailwayCommunicationSystemSafetyAndCompliance>().delete(otherSubMenu?.apiRoute || '', id);
     refetch();
   };
 
@@ -87,53 +81,45 @@ const RailwayCommunicationSystemSafetyAndComplianceList: React.FC<RailwayCommuni
   const mapSafetyAndComplianceToDetailItems = (
     safetyAndCompliance: RailwayCommunicationSystemSafetyAndCompliance
   ): { title: string; value: string }[] => [
-      {
-        title: t('common.table-columns.id'),
-        value: safetyAndCompliance?.id || 'N/A'
-      },
-      {
-        title: t(
-          'project.other.railway-communication-system-safety-and-compliance.details.railway_line_section_name'
-        ),
-        value: safetyAndCompliance?.railway_line_section_name || 'N/A'
-      },
-      {
-        title: t(
-          'project.other.railway-communication-system-safety-and-compliance.details.safety_measures_and_protocols_done'
-        ),
-        value: safetyAndCompliance?.safety_measures_and_protocols_done ? 'Yes' : 'No'
-      },
-      {
-        title: t(
-          'project.other.railway-communication-system-safety-and-compliance.details.compliance_with_signaling_and_communication_standards'
-        ),
-        value: safetyAndCompliance?.compliance_with_signaling_and_communication_standards ? 'Yes' : 'No'
-      },
-      {
-        title: t(
-          'project.other.railway-communication-system-safety-and-compliance.details.incident_or_accident_records'
-        ),
-        value: safetyAndCompliance?.incident_or_accident_records ? 'Yes' : 'No'
-      },
-      {
-        title: t(
-          'project.other.railway-communication-system-safety-and-compliance.details.incident_date'
-        ),
-        value: safetyAndCompliance?.incident_date ? formatDate(safetyAndCompliance.incident_date) : 'N/A'
-      },
-      {
-        title: t('project.other.railway-communication-system-safety-and-compliance.details.remark'),
-        value: safetyAndCompliance?.remark || 'N/A'
-      },
-      {
-        title: t('common.table-columns.created-at'),
-        value: safetyAndCompliance?.created_at ? formatCreatedAt(safetyAndCompliance.created_at) : 'N/A'
-      },
-      {
-        title: t('common.table-columns.updated-at'),
-        value: safetyAndCompliance?.updated_at ? formatCreatedAt(safetyAndCompliance.updated_at) : 'N/A'
-      }
-    ];
+    {
+      title: t('common.table-columns.id'),
+      value: safetyAndCompliance?.id || 'N/A'
+    },
+    {
+      title: t('project.other.railway-communication-system-safety-and-compliance.details.railway_line_section_name'),
+      value: safetyAndCompliance?.railway_line_section_name || 'N/A'
+    },
+    {
+      title: t('project.other.railway-communication-system-safety-and-compliance.details.safety_measures_and_protocols_done'),
+      value: safetyAndCompliance?.safety_measures_and_protocols_done ? 'Yes' : 'No'
+    },
+    {
+      title: t(
+        'project.other.railway-communication-system-safety-and-compliance.details.compliance_with_signaling_and_communication_standards'
+      ),
+      value: safetyAndCompliance?.compliance_with_signaling_and_communication_standards ? 'Yes' : 'No'
+    },
+    {
+      title: t('project.other.railway-communication-system-safety-and-compliance.details.incident_or_accident_records'),
+      value: safetyAndCompliance?.incident_or_accident_records ? 'Yes' : 'No'
+    },
+    {
+      title: t('project.other.railway-communication-system-safety-and-compliance.details.incident_date'),
+      value: safetyAndCompliance?.incident_date ? formatDate(safetyAndCompliance.incident_date) : 'N/A'
+    },
+    {
+      title: t('project.other.railway-communication-system-safety-and-compliance.details.remark'),
+      value: safetyAndCompliance?.remark || 'N/A'
+    },
+    {
+      title: t('common.table-columns.created-at'),
+      value: safetyAndCompliance?.created_at ? formatCreatedAt(safetyAndCompliance.created_at) : 'N/A'
+    },
+    {
+      title: t('common.table-columns.updated-at'),
+      value: safetyAndCompliance?.updated_at ? formatCreatedAt(safetyAndCompliance.updated_at) : 'N/A'
+    }
+  ];
 
   return (
     <Box>

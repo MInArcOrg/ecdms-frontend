@@ -1,29 +1,26 @@
-import React, { FunctionComponent, ReactElement, ReactNode } from "react";
+import React, { FunctionComponent, ReactElement, ReactNode } from 'react';
 
-declare module "react" {
+declare module 'react' {
   interface CSSProperties {
-    "--tree-view-color"?: string;
-    "--tree-view-bg-color"?: string;
+    '--tree-view-color'?: string;
+    '--tree-view-bg-color'?: string;
   }
 }
 
 // material-ui
-import { ChipProps, SvgIconTypeMap, TableCellProps } from "@mui/material";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
+import { ChipProps, SvgIconTypeMap, TableCellProps } from '@mui/material';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 // project imports
-import User from "./admin/user";
+import User from './admin/user';
 
-export type ArrangementOrder = "asc" | "desc" | undefined;
+export type ArrangementOrder = 'asc' | 'desc' | undefined;
 
 export type DateRange = { start: number | Date; end: number | Date };
 
-export type GetComparator = (
-  o: ArrangementOrder,
-  o1: string,
-) => (a: KeyedObject, b: KeyedObject) => number;
+export type GetComparator = (o: ArrangementOrder, o1: string) => (a: KeyedObject, b: KeyedObject) => number;
 
-export type Direction = "up" | "down" | "right" | "left";
+export type Direction = 'up' | 'down' | 'right' | 'left';
 
 export interface TabsProps {
   children?: React.ReactElement | React.ReactNode | string;
@@ -44,7 +41,7 @@ export interface GenericCardProps {
 }
 
 export type OverrideIcon =
-  | (OverridableComponent<SvgIconTypeMap<any, "svg">> & {
+  | (OverridableComponent<SvgIconTypeMap<any, 'svg'>> & {
       muiName: string;
     })
   | React.ComponentClass<any>
@@ -68,10 +65,10 @@ export type HeadCell = {
   numeric: boolean;
   label: string;
   disablePadding?: string | boolean | undefined;
-  align?: "left" | "right" | "inherit" | "center" | "justify" | undefined;
+  align?: 'left' | 'right' | 'inherit' | 'center' | 'justify' | undefined;
 };
 
-export type LinkTarget = "_blank" | "_self" | "_parent" | "_top";
+export type LinkTarget = '_blank' | '_self' | '_parent' | '_top';
 
 export type NavItemTypeObject = {
   children?: NavItemType[];
@@ -81,13 +78,13 @@ export type NavItemTypeObject = {
 
 export type NavItemType = {
   id?: string;
-  icon?: GenericCardProps["iconPrimary"];
+  icon?: GenericCardProps['iconPrimary'];
   target?: boolean;
   external?: boolean;
   url?: string | undefined;
   type?: string;
   title?: ReactNode | string;
-  color?: "primary" | "secondary" | "default" | undefined;
+  color?: 'primary' | 'secondary' | 'default' | undefined;
   caption?: ReactNode | string;
   breadcrumbs?: boolean;
   disabled?: boolean;
@@ -131,14 +128,14 @@ export type KeyedObject = {
 export interface InitialLoginContextProps {
   isLoggedIn: boolean;
   isInitialized?: boolean;
-  type: "admin" | "institute" | "mc";
+  type: 'admin' | 'institute' | 'mc';
   user?: User | null;
 }
 
 export interface FormInputProps {
   bug: KeyedObject;
   fullWidth?: boolean;
-  size?: "small" | "medium" | undefined;
+  size?: 'small' | 'medium' | undefined;
   label: string;
   name: string;
   required?: boolean;
@@ -150,7 +147,7 @@ export interface FormInputProps {
 
 export type HandleFunction = (i: string, s: string) => Promise<void>;
 
-export type LayoutType = "authGuard" | "guestGuard" | "minimalLayout";
+export type LayoutType = 'authGuard' | 'guestGuard' | 'minimalLayout';
 /** ---- Common Functions types ---- */
 
 export type StringBoolFunc = (s: string) => boolean;

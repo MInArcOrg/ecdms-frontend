@@ -1,15 +1,15 @@
 // ** MUI Imports
-import { useTheme } from "@mui/material/styles";
-import MuiTimelineDot from "@mui/lab/TimelineDot";
+import { useTheme } from '@mui/material/styles';
+import MuiTimelineDot from '@mui/lab/TimelineDot';
 
 // ** Hooks Imports
-import useBgColor, { UseBgColorType } from "src/@core/hooks/useBgColor";
+import useBgColor, { UseBgColorType } from 'src/@core/hooks/useBgColor';
 
 // ** Util Import
-import { hexToRGBA } from "src/@core/utils/hex-to-rgba";
+import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
 
 // ** Types
-import { CustomTimelineDotProps, ColorsType } from "./types";
+import { CustomTimelineDotProps, ColorsType } from './types';
 
 const TimelineDot = (props: CustomTimelineDotProps) => {
   // ** Props
@@ -21,57 +21,48 @@ const TimelineDot = (props: CustomTimelineDotProps) => {
 
   const colors: ColorsType = {
     primary: {
-      boxShadow: "none",
+      boxShadow: 'none',
       color: theme.palette.primary.main,
-      backgroundColor: bgColors.primaryLight.backgroundColor,
+      backgroundColor: bgColors.primaryLight.backgroundColor
     },
     secondary: {
-      boxShadow: "none",
+      boxShadow: 'none',
       color: theme.palette.secondary.main,
-      backgroundColor: bgColors.secondaryLight.backgroundColor,
+      backgroundColor: bgColors.secondaryLight.backgroundColor
     },
     success: {
-      boxShadow: "none",
+      boxShadow: 'none',
       color: theme.palette.success.main,
-      backgroundColor: bgColors.successLight.backgroundColor,
+      backgroundColor: bgColors.successLight.backgroundColor
     },
     error: {
-      boxShadow: "none",
+      boxShadow: 'none',
       color: theme.palette.error.main,
-      backgroundColor: bgColors.errorLight.backgroundColor,
+      backgroundColor: bgColors.errorLight.backgroundColor
     },
     warning: {
-      boxShadow: "none",
+      boxShadow: 'none',
       color: theme.palette.warning.main,
-      backgroundColor: bgColors.warningLight.backgroundColor,
+      backgroundColor: bgColors.warningLight.backgroundColor
     },
     info: {
-      boxShadow: "none",
+      boxShadow: 'none',
       color: theme.palette.info.main,
-      backgroundColor: bgColors.infoLight.backgroundColor,
+      backgroundColor: bgColors.infoLight.backgroundColor
     },
     grey: {
-      boxShadow: "none",
+      boxShadow: 'none',
       color: theme.palette.grey[500],
-      backgroundColor: hexToRGBA(theme.palette.grey[500], 0.12),
-    },
+      backgroundColor: hexToRGBA(theme.palette.grey[500], 0.12)
+    }
   };
 
-  return (
-    <MuiTimelineDot
-      {...props}
-      sx={
-        color && skin === "light" && variant === "filled"
-          ? Object.assign(colors[color], sx)
-          : sx
-      }
-    />
-  );
+  return <MuiTimelineDot {...props} sx={color && skin === 'light' && variant === 'filled' ? Object.assign(colors[color], sx) : sx} />;
 };
 
 TimelineDot.defaultProps = {
-  color: "grey",
-  variant: "filled",
+  color: 'grey',
+  variant: 'filled'
 };
 
 export default TimelineDot;

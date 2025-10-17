@@ -1,20 +1,20 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
-import { DrainageAssessment } from "src/types/project/other";
-import { GetRequestParam, IApiResponse } from "src/types/requests";
-import { formatCreatedAt } from "src/utils/formatter/date";
-import ItemsListing from "src/views/shared/listing";
-import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-detail-drawer";
-import DrainageAssessmentCard from "./drainage-assessment-card";
-import DrainageAssessmentDrawer from "./drainage-assessment-drawer";
-import { drainageAssessmentColumns } from "./drainage-assessment-row";
+import { Box } from '@mui/material';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import { DrainageAssessment } from 'src/types/project/other';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import ItemsListing from 'src/views/shared/listing';
+import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
+import DrainageAssessmentCard from './drainage-assessment-card';
+import DrainageAssessmentDrawer from './drainage-assessment-drawer';
+import { drainageAssessmentColumns } from './drainage-assessment-row';
 
 interface DrainageAssessmentListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -22,28 +22,17 @@ interface DrainageAssessmentListProps {
   projectId: string;
 }
 
-const DrainageAssessmentList: React.FC<DrainageAssessmentListProps> = ({
-  otherSubMenu,
-  projectId,
-  typeId,
-}) => {
+const DrainageAssessmentList: React.FC<DrainageAssessmentListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<DrainageAssessment | null>(
-    null,
-  );
+  const [selectedRow, setSelectedRow] = useState<DrainageAssessment | null>(null);
   const { t } = useTranslation();
 
-  const fetchDrainageAssessments = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<DrainageAssessment[]>> => {
-    return projectOtherApiSecondService<DrainageAssessment>().getAll(
-      otherSubMenu?.apiRoute || "",
-      {
-        ...params,
-        filter: { ...params.filter, project_id: projectId },
-      },
-    );
+  const fetchDrainageAssessments = (params: GetRequestParam): Promise<IApiResponse<DrainageAssessment[]>> => {
+    return projectOtherApiSecondService<DrainageAssessment>().getAll(otherSubMenu?.apiRoute || '', {
+      ...params,
+      filter: { ...params.filter, project_id: projectId }
+    });
   };
 
   const {
@@ -51,10 +40,10 @@ const DrainageAssessmentList: React.FC<DrainageAssessmentListProps> = ({
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<DrainageAssessment[]>({
-    queryKey: ["drainageAssessments"],
-    fetchFunction: fetchDrainageAssessments,
+    queryKey: ['drainageAssessments'],
+    fetchFunction: fetchDrainageAssessments
   });
 
   const toggleDrawer = () => {
@@ -73,10 +62,7 @@ const DrainageAssessmentList: React.FC<DrainageAssessmentListProps> = ({
   };
 
   const handleDelete = async (drainageAssessmentId: string) => {
-    await projectOtherApiSecondService<DrainageAssessment>().delete(
-      otherSubMenu?.apiRoute || "",
-      drainageAssessmentId,
-    );
+    await projectOtherApiSecondService<DrainageAssessment>().delete(otherSubMenu?.apiRoute || '', drainageAssessmentId);
     refetch();
   };
 
@@ -85,37 +71,31 @@ const DrainageAssessmentList: React.FC<DrainageAssessmentListProps> = ({
     setSelectedRow(drainageAssessment);
   };
 
-  const mapDrainageAssessmentToDetailItems = (
-    drainageAssessment: DrainageAssessment,
-  ): { title: string; value: string }[] => [
+  const mapDrainageAssessmentToDetailItems = (drainageAssessment: DrainageAssessment): { title: string; value: string }[] => [
     {
-      title: t("project.other.drainage-assessment.details.road-segment"),
-      value: drainageAssessment?.road_segment || "N/A",
+      title: t('project.other.drainage-assessment.details.road-segment'),
+      value: drainageAssessment?.road_segment || 'N/A'
     },
     {
-      title: t("project.other.drainage-assessment.details.drainage-type"),
-      value: drainageAssessment?.drainage_type_id || "N/A",
+      title: t('project.other.drainage-assessment.details.drainage-type'),
+      value: drainageAssessment?.drainage_type_id || 'N/A'
     },
     {
-      title: t("project.other.drainage-assessment.details.drainage-condition"),
-      value: drainageAssessment?.drainage_condition_id || "N/A",
+      title: t('project.other.drainage-assessment.details.drainage-condition'),
+      value: drainageAssessment?.drainage_condition_id || 'N/A'
     },
     {
-      title: t("project.other.drainage-assessment.details.remark"),
-      value: drainageAssessment?.remark || "N/A",
+      title: t('project.other.drainage-assessment.details.remark'),
+      value: drainageAssessment?.remark || 'N/A'
     },
     {
-      title: t("common.table-columns.created-at"),
-      value: drainageAssessment?.created_at
-        ? formatCreatedAt(drainageAssessment.created_at)
-        : "N/A",
+      title: t('common.table-columns.created-at'),
+      value: drainageAssessment?.created_at ? formatCreatedAt(drainageAssessment.created_at) : 'N/A'
     },
     {
-      title: t("common.table-columns.updated-at"),
-      value: drainageAssessment?.updated_at
-        ? formatCreatedAt(drainageAssessment.updated_at)
-        : "N/A",
-    },
+      title: t('common.table-columns.updated-at'),
+      value: drainageAssessment?.updated_at ? formatCreatedAt(drainageAssessment.updated_at) : 'N/A'
+    }
   ];
 
   return (
@@ -135,30 +115,20 @@ const DrainageAssessmentList: React.FC<DrainageAssessmentListProps> = ({
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapDrainageAssessmentToDetailItems(
-            selectedRow as DrainageAssessment,
-          )}
+          data={mapDrainageAssessmentToDetailItems(selectedRow as DrainageAssessment)}
           hasReference={true}
-          id={selectedRow?.id || ""}
+          id={selectedRow?.id || ''}
           fileType={uploadableProjectFileTypes.other.drainageAssessment}
-          title={t(
-            "project.other.drainage-assessment.drainage-assessment-details",
-          )}
+          title={t('project.other.drainage-assessment.drainage-assessment-details')}
         />
       )}
 
       <ItemsListing
-        title={t("project.other.drainage-assessment.title")}
+        title={t('project.other.drainage-assessment.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: drainageAssessmentColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-          ),
+          headers: drainageAssessmentColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -175,9 +145,9 @@ const DrainageAssessmentList: React.FC<DrainageAssessmentListProps> = ({
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "drainageassessment",
-          },
+            action: 'create',
+            subject: 'drainageassessment'
+          }
         }}
         fetchDataFunction={refetch}
         items={drainageAssessments || []}

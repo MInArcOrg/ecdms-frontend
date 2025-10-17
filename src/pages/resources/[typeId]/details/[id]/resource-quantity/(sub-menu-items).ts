@@ -1,28 +1,26 @@
 // Define TypeScript types for menu items
 
-import { DetailSubMenuItem } from "src/types/layouts/detail-layout";
+import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
 
 // Define an object for ID constants
 export const resourceQuantityMenuIds = {
   resourceQuantity: {
-    resourceQuantity: "RESOURCE_QUANTITY",
-  },
+    resourceQuantity: 'RESOURCE_QUANTITY'
+  }
 };
 
 const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
   {
     id: resourceQuantityMenuIds.resourceQuantity.resourceQuantity,
-    title:
-      "resource.navigation.submenu.resource-quantity.resource-quantity-section", // locale key
+    title: 'resource.navigation.submenu.resource-quantity.resource-quantity-section', // locale key
     subItems: [
       {
         id: resourceQuantityMenuIds.resourceQuantity.resourceQuantity,
-        title:
-          "resource.navigation.submenu.resource-quantity.resource-quantity", // locale key
-        path: `/resources/${typeId}/details/${id}/resource-quantity/resource-quantity`,
-      },
-    ],
-  },
+        title: 'resource.navigation.submenu.resource-quantity.resource-quantity', // locale key
+        path: `/resources/${typeId}/details/${id}/resource-quantity/resource-quantity`
+      }
+    ]
+  }
 ];
 export const findSubMenuItem = (items: DetailSubMenuItem[], id: string) => {
   for (const item of items) {

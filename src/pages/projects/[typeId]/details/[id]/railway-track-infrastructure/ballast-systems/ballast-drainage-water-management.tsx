@@ -1,49 +1,36 @@
-import { useRouter } from "next/router";
-import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
-import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
-import subMenuItems, {
-  findSubMenuItem,
-  railwayTrackInfrastructureIds,
-} from "../(subMenuItems)";
-import RailwayBallastDrainageAndWaterManagementList from "src/views/pages/projects/detail/other/road/railway-ballast-drainage-and-water-management";
+import { useRouter } from 'next/router';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
+import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import subMenuItems, { findSubMenuItem, railwayTrackInfrastructureIds } from '../(subMenuItems)';
+import RailwayBallastDrainageAndWaterManagementList from 'src/views/pages/projects/detail/other/road/railway-ballast-drainage-and-water-management';
 // Placeholder import, replace with actual component when available
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems("", ""),
-  railwayTrackInfrastructureIds.ballastSystems.ballastDrainageWaterManagement,
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), railwayTrackInfrastructureIds.ballastSystems.ballastDrainageWaterManagement);
 
 const BallastDrainageWaterManagementPage = () => {
   const router = useRouter();
-  const { id = "", typeId = "" } = router.query;
+  const { id = '', typeId = '' } = router.query;
 
   const menuItem = findSubMenuItem(
     subMenuItems(id as string, typeId as string),
-    railwayTrackInfrastructureIds.ballastSystems.ballastDrainageWaterManagement,
+    railwayTrackInfrastructureIds.ballastSystems.ballastDrainageWaterManagement
   );
   menuItem;
 
   return (
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayTrackInfrastructure}
-      activeSubMenuId={
-        railwayTrackInfrastructureIds.ballastSystems
-          .ballastDrainageWaterManagement
-      }
+      activeSubMenuId={railwayTrackInfrastructureIds.ballastSystems.ballastDrainageWaterManagement}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <RailwayBallastDrainageAndWaterManagementList
-        projectId={id as string}
-        typeId={typeId as string}
-        otherSubMenu={menuItem}
-      />
+      <RailwayBallastDrainageAndWaterManagementList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>
   );
 };
 
 BallastDrainageWaterManagementPage.acl = {
   subject: defaultMenuItem?.model,
-  action: "view",
+  action: 'view'
 };
 
 export default BallastDrainageWaterManagementPage;

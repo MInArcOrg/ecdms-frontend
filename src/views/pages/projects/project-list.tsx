@@ -1,18 +1,18 @@
-import { Box, Card } from "@mui/material";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { Box, Card } from '@mui/material';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { useRouter } from "next/router";
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import projectApiService from "src/services/project/project-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import { GetRequestParam, IApiResponse } from "src/types/requests";
-import { Project } from "src/types/project";
-import ItemsListing from "src/views/shared/listing";
-import ProjectCard from "./project-card";
-import ProjectDrawer from "./project-drawer";
-import { projectColumns } from "./project-row";
+import { useRouter } from 'next/router';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import projectApiService from 'src/services/project/project-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { Project } from 'src/types/project';
+import ItemsListing from 'src/views/shared/listing';
+import ProjectCard from './project-card';
+import ProjectDrawer from './project-drawer';
+import { projectColumns } from './project-row';
 
 function ProjectList() {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -21,12 +21,10 @@ function ProjectList() {
   const { t } = useTranslation();
   const router = useRouter();
   const { typeId } = router.query;
-  const fetchProjects = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<Project[]>> => {
+  const fetchProjects = (params: GetRequestParam): Promise<IApiResponse<Project[]>> => {
     return projectApiService.getAll({
       ...params,
-      filter: { ...params.filter, projecttype_id: typeId },
+      filter: { ...params.filter, projecttype_id: typeId }
     });
   };
 
@@ -35,10 +33,10 @@ function ProjectList() {
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<Project[]>({
-    queryKey: ["projects", String(typeId)],
-    fetchFunction: fetchProjects,
+    queryKey: ['projects', String(typeId)],
+    fetchFunction: fetchProjects
   });
 
   const toggleDrawer = () => {
@@ -72,34 +70,21 @@ function ProjectList() {
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
           ItemViewComponent={({ data }) => (
-            <ProjectCard
-              onDetail={() => {}}
-              project={data}
-              onDelete={handleDelete}
-              onEdit={handleEdit}
-              t={t}
-              refetch={refetch}
-            />
+            <ProjectCard onDetail={() => {}} project={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
           )}
-          title={t("project.title")}
+          title={t('project.title')}
           createActionConfig={{
             ...defaultCreateActionConfig,
             onClick: toggleDrawer,
             onlyIcon: false,
             permission: {
-              action: "create",
-              subject: "project",
-            },
+              action: 'create',
+              subject: 'project'
+            }
           }}
           fetchDataFunction={refetch}
           tableProps={{
-            headers: projectColumns(
-              handleEdit,
-              handleDelete,
-              t,
-              refetch,
-              String(typeId),
-            ),
+            headers: projectColumns(handleEdit, handleDelete, t, refetch, String(typeId))
           }}
           items={projects || []}
           onPaginationChange={handlePageChange}

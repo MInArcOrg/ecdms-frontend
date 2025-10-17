@@ -1,20 +1,20 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import { DataCenterComponentAge } from "src/types/project/other";
-import { GetRequestParam, IApiResponse } from "src/types/requests";
-import { formatCreatedAt } from "src/utils/formatter/date";
-import ItemsListing from "src/views/shared/listing";
-import OtherDetailSidebar from "../../../../../../shared/layouts/other/other-detail-drawer";
-import DataCenterComponentAgeCard from "./data-center-component-age-card";
-import DataCenterComponentAgeDrawer from "./data-center-component-age-drawer";
-import { dataCenterComponentAgeColumns } from "./data-center-component-age-row";
+import { Box } from '@mui/material';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { DataCenterComponentAge } from 'src/types/project/other';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import ItemsListing from 'src/views/shared/listing';
+import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
+import DataCenterComponentAgeCard from './data-center-component-age-card';
+import DataCenterComponentAgeDrawer from './data-center-component-age-drawer';
+import { dataCenterComponentAgeColumns } from './data-center-component-age-row';
 
 interface DataCenterComponentAgeListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -22,27 +22,16 @@ interface DataCenterComponentAgeListProps {
   projectId: string;
 }
 
-const DataCenterComponentAgeList: React.FC<DataCenterComponentAgeListProps> = ({
-  otherSubMenu,
-  projectId,
-  typeId,
-}) => {
+const DataCenterComponentAgeList: React.FC<DataCenterComponentAgeListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<DataCenterComponentAge | null>(
-    null,
-  );
+  const [selectedRow, setSelectedRow] = useState<DataCenterComponentAge | null>(null);
   const { t } = useTranslation();
 
-  const fetchDataCenterComponentAges = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<DataCenterComponentAge[]>> => {
-    return projectOtherApiSecondService<DataCenterComponentAge>().getAll(
-      otherSubMenu?.apiRoute || "",
-      {
-        ...params,
-      },
-    );
+  const fetchDataCenterComponentAges = (params: GetRequestParam): Promise<IApiResponse<DataCenterComponentAge[]>> => {
+    return projectOtherApiSecondService<DataCenterComponentAge>().getAll(otherSubMenu?.apiRoute || '', {
+      ...params
+    });
   };
 
   const {
@@ -50,10 +39,10 @@ const DataCenterComponentAgeList: React.FC<DataCenterComponentAgeListProps> = ({
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<DataCenterComponentAge[]>({
-    queryKey: ["dataCenterComponentAges"],
-    fetchFunction: fetchDataCenterComponentAges,
+    queryKey: ['dataCenterComponentAges'],
+    fetchFunction: fetchDataCenterComponentAges
   });
 
   const toggleDrawer = () => {
@@ -72,73 +61,52 @@ const DataCenterComponentAgeList: React.FC<DataCenterComponentAgeListProps> = ({
   };
 
   const handleDelete = async (dataCenterComponentAgeId: string) => {
-    await projectOtherApiSecondService<DataCenterComponentAge>().delete(
-      otherSubMenu?.apiRoute || "",
-      dataCenterComponentAgeId,
-    );
+    await projectOtherApiSecondService<DataCenterComponentAge>().delete(otherSubMenu?.apiRoute || '', dataCenterComponentAgeId);
     refetch();
   };
 
-  const handleClickDetail = (
-    dataCenterComponentAge: DataCenterComponentAge,
-  ) => {
+  const handleClickDetail = (dataCenterComponentAge: DataCenterComponentAge) => {
     toggleDetailDrawer();
     setSelectedRow(dataCenterComponentAge);
   };
 
-  const mapDataCenterComponentAgeToDetailItems = (
-    dataCenterComponentAge: DataCenterComponentAge,
-  ): { title: string; value: string }[] => [
+  const mapDataCenterComponentAgeToDetailItems = (dataCenterComponentAge: DataCenterComponentAge): { title: string; value: string }[] => [
     {
-      title: t(
-        "project.other.data-center-component-age.details.data-center-id",
-      ),
-      value: dataCenterComponentAge?.data_center_id || "N/A",
+      title: t('project.other.data-center-component-age.details.data-center-id'),
+      value: dataCenterComponentAge?.data_center_id || 'N/A'
     },
     {
-      title: t("project.other.data-center-component-age.details.servers"),
-      value: dataCenterComponentAge?.servers?.toString() || "N/A",
+      title: t('project.other.data-center-component-age.details.servers'),
+      value: dataCenterComponentAge?.servers?.toString() || 'N/A'
     },
     {
-      title: t(
-        "project.other.data-center-component-age.details.storage-devices",
-      ),
-      value: dataCenterComponentAge?.storage_devices?.toString() || "N/A",
+      title: t('project.other.data-center-component-age.details.storage-devices'),
+      value: dataCenterComponentAge?.storage_devices?.toString() || 'N/A'
     },
     {
-      title: t(
-        "project.other.data-center-component-age.details.networking-equipment",
-      ),
-      value: dataCenterComponentAge?.networking_equipment?.toString() || "N/A",
+      title: t('project.other.data-center-component-age.details.networking-equipment'),
+      value: dataCenterComponentAge?.networking_equipment?.toString() || 'N/A'
     },
     {
-      title: t(
-        "project.other.data-center-component-age.details.cooling-systems",
-      ),
-      value: dataCenterComponentAge?.cooling_systems?.toString() || "N/A",
+      title: t('project.other.data-center-component-age.details.cooling-systems'),
+      value: dataCenterComponentAge?.cooling_systems?.toString() || 'N/A'
     },
     {
-      title: t(
-        "project.other.data-center-component-age.details.backup-generators",
-      ),
-      value: dataCenterComponentAge?.backup_generators?.toString() || "N/A",
+      title: t('project.other.data-center-component-age.details.backup-generators'),
+      value: dataCenterComponentAge?.backup_generators?.toString() || 'N/A'
     },
     {
-      title: t("project.other.data-center-component-age.details.others"),
-      value: dataCenterComponentAge?.others || "N/A",
+      title: t('project.other.data-center-component-age.details.others'),
+      value: dataCenterComponentAge?.others || 'N/A'
     },
     {
-      title: t("common.table-columns.created-at"),
-      value: dataCenterComponentAge?.created_at
-        ? formatCreatedAt(dataCenterComponentAge.created_at)
-        : "N/A",
+      title: t('common.table-columns.created-at'),
+      value: dataCenterComponentAge?.created_at ? formatCreatedAt(dataCenterComponentAge.created_at) : 'N/A'
     },
     {
-      title: t("common.table-columns.updated-at"),
-      value: dataCenterComponentAge?.updated_at
-        ? formatCreatedAt(dataCenterComponentAge.updated_at)
-        : "N/A",
-    },
+      title: t('common.table-columns.updated-at'),
+      value: dataCenterComponentAge?.updated_at ? formatCreatedAt(dataCenterComponentAge.updated_at) : 'N/A'
+    }
   ];
 
   return (
@@ -158,30 +126,20 @@ const DataCenterComponentAgeList: React.FC<DataCenterComponentAgeListProps> = ({
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapDataCenterComponentAgeToDetailItems(
-            selectedRow as DataCenterComponentAge,
-          )}
+          data={mapDataCenterComponentAgeToDetailItems(selectedRow as DataCenterComponentAge)}
           hasReference={true}
-          id={selectedRow?.id || ""}
+          id={selectedRow?.id || ''}
           fileType={uploadableProjectFileTypes.other.dataCenterComponentAge}
-          title={t(
-            "project.other.data-center-component-age.data-center-component-age-details",
-          )}
+          title={t('project.other.data-center-component-age.data-center-component-age-details')}
         />
       )}
 
       <ItemsListing
-        title={t("project.other.data-center-component-age.title")}
+        title={t('project.other.data-center-component-age.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: dataCenterComponentAgeColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-            refetch,
-          ),
+          headers: dataCenterComponentAgeColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -198,9 +156,9 @@ const DataCenterComponentAgeList: React.FC<DataCenterComponentAgeListProps> = ({
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "datacentercomponentage",
-          },
+            action: 'create',
+            subject: 'datacentercomponentage'
+          }
         }}
         fetchDataFunction={refetch}
         items={dataCenterComponentAges || []}

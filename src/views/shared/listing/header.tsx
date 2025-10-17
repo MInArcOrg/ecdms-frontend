@@ -1,18 +1,18 @@
 // ** MUI Imports
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 
 // ** Custom Component Import
-import CustomTextField from "src/@core/components/mui/text-field";
+import CustomTextField from 'src/@core/components/mui/text-field';
 
 // ** Icon Imports
-import Icon from "src/@core/components/icon";
-import FilterList from "./filter";
-import { Fragment, useContext, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { CreateActionConfig } from "src/types/general/listing";
-import { AbilityContext } from "src/layouts/components/acl/Can";
-import { IconButton, Typography } from "@mui/material";
+import Icon from 'src/@core/components/icon';
+import FilterList from './filter';
+import { Fragment, useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { CreateActionConfig } from 'src/types/general/listing';
+import { AbilityContext } from 'src/layouts/components/acl/Can';
+import { IconButton, Typography } from '@mui/material';
 
 interface ListHeaderProps {
   createActionConfig: CreateActionConfig;
@@ -33,7 +33,7 @@ const ListHeader = (props: ListHeaderProps) => {
   };
   const { t: transl } = useTranslation();
 
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
   const ability = useContext(AbilityContext);
 
@@ -75,10 +75,10 @@ const ListHeader = (props: ListHeaderProps) => {
           px: 6,
           rowGap: 2,
           columnGap: 4,
-          display: "flex",
-          flexWrap: "wrap",
-          alignItems: "center",
-          justifyContent: "space-between",
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between'
         }}
       >
         <Box>
@@ -87,9 +87,9 @@ const ListHeader = (props: ListHeaderProps) => {
         <Box
           sx={{
             rowGap: 2,
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center'
           }}
         >
           <Box>
@@ -97,7 +97,7 @@ const ListHeader = (props: ListHeaderProps) => {
               <CustomTextField
                 value={searchTerm}
                 sx={{ mr: 4 }}
-                placeholder={"Search " + transl(props.title)}
+                placeholder={'Search ' + transl(props.title)}
                 onChange={handleSearchChange}
               />
             )}
@@ -105,41 +105,27 @@ const ListHeader = (props: ListHeaderProps) => {
           <Box
             sx={{
               rowGap: 2,
-              display: "flex",
-              flexWrap: "wrap",
-              alignItems: "center",
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center'
             }}
           >
             {props.createActionConfig.show &&
-              ability.can(
-                props.createActionConfig.permission.action,
-                props.createActionConfig.permission.subject,
-              ) &&
+              ability.can(props.createActionConfig.permission.action, props.createActionConfig.permission.subject) &&
               (props.createActionConfig.onlyIcon ? (
-                <IconButton
-                  color="primary"
-                  onClick={props.createActionConfig.onClick}
-                >
+                <IconButton color="primary" onClick={props.createActionConfig.onClick}>
                   <Icon icon="tabler:plus" fontSize={20} />
                 </IconButton>
               ) : (
-                <Button
-                  onClick={props.createActionConfig.onClick}
-                  variant="contained"
-                  sx={{ "& svg": { mr: 2 } }}
-                >
+                <Button onClick={props.createActionConfig.onClick} variant="contained" sx={{ '& svg': { mr: 2 } }}>
                   <Icon fontSize="1.125rem" icon="tabler:plus" />
-                  {transl("common.create")}
+                  {transl('common.create')}
                 </Button>
               ))}
             {props.hasFilter && (
-              <Button
-                onClick={toggleFilter}
-                variant="contained"
-                sx={{ "& svg": { mr: 2 }, ml: 2 }}
-              >
+              <Button onClick={toggleFilter} variant="contained" sx={{ '& svg': { mr: 2 }, ml: 2 }}>
                 <Icon fontSize="1.125rem" icon="tabler:adjustments" />
-                {transl("filter")}
+                {transl('filter')}
               </Button>
             )}
           </Box>

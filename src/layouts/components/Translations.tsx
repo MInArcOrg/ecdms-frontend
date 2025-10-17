@@ -1,5 +1,5 @@
 // ** Third Party Import
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   text: string;

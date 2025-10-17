@@ -1,15 +1,15 @@
 // ** React Imports
-import { useState } from "react";
+import { useState } from 'react';
 
 // ** MUI Imports
-import List from "@mui/material/List";
-import Avatar from "@mui/material/Avatar";
-import ListItem from "@mui/material/ListItem";
-import Checkbox from "@mui/material/Checkbox";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemSecondaryAction from "@mui/material/ListItemSecondaryAction";
+import List from '@mui/material/List';
+import Avatar from '@mui/material/Avatar';
+import ListItem from '@mui/material/ListItem';
+import Checkbox from '@mui/material/Checkbox';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
 
 const ListWithCheckbox = () => {
   // ** State
@@ -33,11 +33,7 @@ const ListWithCheckbox = () => {
       <ListItem disablePadding>
         <ListItemButton onClick={handleToggle(0)}>
           <ListItemAvatar>
-            <Avatar
-              src="/images/avatars/2.png"
-              alt="Caroline Black"
-              sx={{ height: 32, width: 32 }}
-            />
+            <Avatar src="/images/avatars/2.png" alt="Caroline Black" sx={{ height: 32, width: 32 }} />
           </ListItemAvatar>
           <ListItemText id="checkbox-list-label-0" primary="Caroline Black" />
           <ListItemSecondaryAction>
@@ -47,7 +43,7 @@ const ListWithCheckbox = () => {
               disableRipple
               onChange={handleToggle(0)}
               checked={checked.indexOf(0) !== -1}
-              inputProps={{ "aria-labelledby": "checkbox-list-label-0" }}
+              inputProps={{ 'aria-labelledby': 'checkbox-list-label-0' }}
             />
           </ListItemSecondaryAction>
         </ListItemButton>
@@ -55,11 +51,7 @@ const ListWithCheckbox = () => {
       <ListItem disablePadding>
         <ListItemButton onClick={handleToggle(1)}>
           <ListItemAvatar>
-            <Avatar
-              src="/images/avatars/1.png"
-              alt="Alfred Copeland"
-              sx={{ height: 32, width: 32 }}
-            />
+            <Avatar src="/images/avatars/1.png" alt="Alfred Copeland" sx={{ height: 32, width: 32 }} />
           </ListItemAvatar>
           <ListItemText id="checkbox-list-label-1" primary="Alfred Copeland" />
           <ListItemSecondaryAction>
@@ -69,7 +61,7 @@ const ListWithCheckbox = () => {
               disableRipple
               onChange={handleToggle(1)}
               checked={checked.indexOf(1) !== -1}
-              inputProps={{ "aria-labelledby": "checkbox-list-label-1" }}
+              inputProps={{ 'aria-labelledby': 'checkbox-list-label-1' }}
             />
           </ListItemSecondaryAction>
         </ListItemButton>
@@ -77,11 +69,7 @@ const ListWithCheckbox = () => {
       <ListItem disablePadding>
         <ListItemButton onClick={handleToggle(2)}>
           <ListItemAvatar>
-            <Avatar
-              src="/images/avatars/8.png"
-              alt="Celia Schneider"
-              sx={{ height: 32, width: 32 }}
-            />
+            <Avatar src="/images/avatars/8.png" alt="Celia Schneider" sx={{ height: 32, width: 32 }} />
           </ListItemAvatar>
           <ListItemText id="checkbox-list-label-2" primary="Celia Schneider" />
           <ListItemSecondaryAction>
@@ -91,7 +79,7 @@ const ListWithCheckbox = () => {
               disableRipple
               onChange={handleToggle(2)}
               checked={checked.indexOf(2) !== -1}
-              inputProps={{ "aria-labelledby": "checkbox-list-label-2" }}
+              inputProps={{ 'aria-labelledby': 'checkbox-list-label-2' }}
             />
           </ListItemSecondaryAction>
         </ListItemButton>

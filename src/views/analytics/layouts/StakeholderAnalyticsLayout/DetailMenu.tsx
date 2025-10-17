@@ -1,15 +1,7 @@
-import {
-  Card,
-  FormControl,
-  Grid,
-  ListItemButton,
-  ListItemText,
-  MenuItem,
-  Select,
-} from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import Can from "src/layouts/components/acl/Can";
+import { Card, FormControl, Grid, ListItemButton, ListItemText, MenuItem, Select } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import Can from 'src/layouts/components/acl/Can';
 
 interface MenuItemType {
   id: number;
@@ -28,24 +20,17 @@ interface DetailMenuProps {
   typeid?: string;
 }
 
-const DetailMenu = ({
-  id,
-  menuItems,
-  activeMenu,
-  setActiveMenu,
-  goBack,
-  typeid,
-}: DetailMenuProps) => {
+const DetailMenu = ({ id, menuItems, activeMenu, setActiveMenu, goBack, typeid }: DetailMenuProps) => {
   const theme = useTheme();
-  const desktop = useMediaQuery(theme.breakpoints.up("md"));
+  const desktop = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
     <Card
       sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        p: 2,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        p: 2
       }}
     >
       {desktop ? (
@@ -56,16 +41,16 @@ const DetailMenu = ({
                 <ListItemButton
                   onClick={() => setActiveMenu(item.path)}
                   sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     py: 2,
                     px: 3,
                     borderRadius: 1,
-                    "&.Mui-selected": {
-                      textDecoration: "underline",
-                      backgroundColor: theme.palette.action.hover,
-                    },
+                    '&.Mui-selected': {
+                      textDecoration: 'underline',
+                      backgroundColor: theme.palette.action.hover
+                    }
                   }}
                   selected={activeMenu === item.path}
                 >
@@ -73,8 +58,8 @@ const DetailMenu = ({
                     primary={item.title}
                     primaryTypographyProps={{
                       sx: {
-                        fontWeight: activeMenu === item.path ? 600 : 400,
-                      },
+                        fontWeight: activeMenu === item.path ? 600 : 400
+                      }
                     }}
                   />
                 </ListItemButton>
@@ -83,16 +68,12 @@ const DetailMenu = ({
           ))}
         </Grid>
       ) : (
-        <FormControl sx={{ my: 2, width: "100%" }}>
+        <FormControl sx={{ my: 2, width: '100%' }}>
           <Select
             id="detail-menu-select"
-            value={
-              menuItems.find((item) => item.path === activeMenu)?.id || ""
-            }
+            value={menuItems.find((item) => item.path === activeMenu)?.id || ''}
             onChange={(e) => {
-              const selectedItem = menuItems.find(
-                (item) => item.id === e.target.value
-              );
+              const selectedItem = menuItems.find((item) => item.id === e.target.value);
               if (selectedItem) setActiveMenu(selectedItem.path);
             }}
           >

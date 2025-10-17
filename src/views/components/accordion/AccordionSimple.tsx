@@ -1,11 +1,11 @@
 // ** MUI Imports
-import Accordion from "@mui/material/Accordion";
-import Typography from "@mui/material/Typography";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
+import Accordion from '@mui/material/Accordion';
+import Typography from '@mui/material/Typography';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
 
 // ** Icon Imports
-import Icon from "src/@core/components/icon";
+import Icon from 'src/@core/components/icon';
 
 const AccordionSimple = () => {
   return (
@@ -19,9 +19,8 @@ const AccordionSimple = () => {
           <Typography>Accordion 1</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography sx={{ color: "text.secondary" }}>
-            Wafer sesame snaps chocolate bar candy canes halvah. Cupcake sesame
-            snaps sweet tart dessert biscuit. Topping soufflé tart sweet
+          <Typography sx={{ color: 'text.secondary' }}>
+            Wafer sesame snaps chocolate bar candy canes halvah. Cupcake sesame snaps sweet tart dessert biscuit. Topping soufflé tart sweet
             croissant.
           </Typography>
         </AccordionDetails>
@@ -36,10 +35,9 @@ const AccordionSimple = () => {
           <Typography>Accordion 2</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography sx={{ color: "text.secondary" }}>
-            Sugar plum sesame snaps caramels. Cake pie tart fruitcake sesame
-            snaps donut cupcake macaroon. Gingerbread pudding cheesecake pie ice
-            cream.
+          <Typography sx={{ color: 'text.secondary' }}>
+            Sugar plum sesame snaps caramels. Cake pie tart fruitcake sesame snaps donut cupcake macaroon. Gingerbread pudding cheesecake
+            pie ice cream.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -53,9 +51,9 @@ const AccordionSimple = () => {
           <Typography>Accordion 3</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography sx={{ color: "text.secondary" }}>
-            Gingerbread lemon drops bear claw gummi bears bonbon wafer jujubes
-            tiramisu. Jelly pie cake. Sweet roll dessert sweet pastry powder.
+          <Typography sx={{ color: 'text.secondary' }}>
+            Gingerbread lemon drops bear claw gummi bears bonbon wafer jujubes tiramisu. Jelly pie cake. Sweet roll dessert sweet pastry
+            powder.
           </Typography>
         </AccordionDetails>
       </Accordion>

@@ -1,19 +1,19 @@
 // ** MUI Imports
-import Box from "@mui/material/Box";
-import { Direction } from "@mui/material";
+import Box from '@mui/material/Box';
+import { Direction } from '@mui/material';
 
 // ** Third Party Components
-import { useKeenSlider } from "keen-slider/react";
+import { useKeenSlider } from 'keen-slider/react';
 
 const SwiperCentered = ({ direction }: { direction: Direction }) => {
   // ** Hook
   const [ref] = useKeenSlider<HTMLDivElement>({
-    rtl: direction === "rtl",
+    rtl: direction === 'rtl',
     slides: {
       perView: 2,
       spacing: 16,
-      origin: "center",
-    },
+      origin: 'center'
+    }
   });
 
   return (

@@ -1,19 +1,13 @@
-import { useRouter } from "next/router";
-import ResourceLayout from "src/views/pages/resources/details/layout/resource-layout";
-import { resourceMenuIds } from "src/views/pages/resources/details/layout/resource-menu-items";
-import subMenuItems, {
-  findSubMenuItem,
-  resourcePriceMenuIds,
-} from "../(sub-menu-items)";
+import { useRouter } from 'next/router';
+import ResourceLayout from 'src/views/pages/resources/details/layout/resource-layout';
+import { resourceMenuIds } from 'src/views/pages/resources/details/layout/resource-menu-items';
+import subMenuItems, { findSubMenuItem, resourcePriceMenuIds } from '../(sub-menu-items)';
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems("", ""),
-  resourceMenuIds.price,
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), resourceMenuIds.price);
 
 const ResourcePricePage = () => {
   const router = useRouter();
-  const { id = "", typeId = "" } = router.query;
+  const { id = '', typeId = '' } = router.query;
 
   return (
     <ResourceLayout
@@ -29,7 +23,7 @@ const ResourcePricePage = () => {
 // Access control configuration
 ResourcePricePage.acl = {
   subject: defaultMenuItem?.model,
-  action: "view",
+  action: 'view'
 };
 
 export default ResourcePricePage;

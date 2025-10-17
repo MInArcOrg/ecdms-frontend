@@ -1,26 +1,18 @@
-import { useRouter } from "next/router";
-import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
-import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
-import subMenuItems, {
-  findSubMenuItem,
-  projectMaintenanceIds,
-} from "../(subMenuItems)";
+import { useRouter } from 'next/router';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
+import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import subMenuItems, { findSubMenuItem, projectMaintenanceIds } from '../(subMenuItems)';
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems("", ""),
-  projectMaintenanceIds.maintenance.drainageMaintenanceData,
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), projectMaintenanceIds.maintenance.drainageMaintenanceData);
 
 const DrainageMaintenanceData = () => {
   const router = useRouter();
-  const { id = "", typeId = "" } = router.query;
+  const { id = '', typeId = '' } = router.query;
 
   return (
     <ProjectLayout
       activeMenuId={projectMenuIds.maintenance}
-      activeSubMenuId={
-        projectMaintenanceIds.maintenance.drainageMaintenanceData
-      }
+      activeSubMenuId={projectMaintenanceIds.maintenance.drainageMaintenanceData}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       {/* <DrainageMaintenance
@@ -36,7 +28,7 @@ const DrainageMaintenanceData = () => {
 // Access control configuration
 DrainageMaintenanceData.acl = {
   subject: defaultMenuItem?.model,
-  action: "view",
+  action: 'view'
 };
 
 export default DrainageMaintenanceData;

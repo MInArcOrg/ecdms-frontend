@@ -1,5 +1,5 @@
 // ** MUI Imports
-import Chip from "@mui/material/Chip";
+import Chip from '@mui/material/Chip';
 
 const ChipsDisabled = () => {
   return (

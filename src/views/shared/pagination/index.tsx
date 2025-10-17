@@ -1,6 +1,6 @@
-import React, { Fragment, useState } from "react";
-import TablePagination from "@mui/material/TablePagination";
-import Typography from "@mui/material/Typography";
+import React, { Fragment, useState } from 'react';
+import TablePagination from '@mui/material/TablePagination';
+import Typography from '@mui/material/Typography';
 
 interface CustomTablePaginationProps {
   onPaginationChange: (pageSize: number, page: number) => void;
@@ -12,26 +12,18 @@ interface CustomTablePaginationProps {
   } | null;
 }
 
-const CustomTablePagination: React.FC<CustomTablePaginationProps> = ({
-  onPaginationChange,
-  pagination,
-}) => {
+const CustomTablePagination: React.FC<CustomTablePaginationProps> = ({ onPaginationChange, pagination }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(pagination?.pageSize || 10);
 
-  const handleChangePage = (
-    event: React.MouseEvent<HTMLButtonElement> | null,
-    newPage: number,
-  ) => {
+  const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     setPage(newPage);
     if (pagination?.pageSize) {
       onPaginationChange(pagination.pageSize, newPage + 1); // Adjust page number (+1) to match your backend's page numbering
     }
   };
 
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const newRowsPerPage = parseInt(event.target.value, 10);
     setRowsPerPage(newRowsPerPage);
     setPage(0);
@@ -45,12 +37,12 @@ const CustomTablePagination: React.FC<CustomTablePaginationProps> = ({
   return totalRows >= rowsPerPage ? (
     <div
       style={{
-        display: "flex",
-        justifyContent: "flex-end",
-        alignItems: "center",
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'center'
       }}
     >
-      <Typography sx={{ mr: 2, whiteSpace: "nowrap" }}>
+      <Typography sx={{ mr: 2, whiteSpace: 'nowrap' }}>
         <TablePagination
           component="div"
           count={totalRows}

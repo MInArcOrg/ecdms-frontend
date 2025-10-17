@@ -1,11 +1,11 @@
-import Typography from "@mui/material/Typography";
-import { GridColDef } from "@mui/x-data-grid";
-import Link from "next/link";
-import { Fragment } from "react";
-import { Project } from "src/types/project";
-import { formatCreatedAt } from "src/utils/formatter/date";
-import ModelAction from "src/views/components/custom/model-actions";
-import RowOptions from "src/views/shared/listing/row-options";
+import Typography from '@mui/material/Typography';
+import { GridColDef } from '@mui/x-data-grid';
+import Link from 'next/link';
+import { Fragment } from 'react';
+import { Project } from 'src/types/project';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import ModelAction from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
   row: Project;
@@ -16,14 +16,14 @@ export const projectColumns = (
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
-  typeId: string,
+  typeId: string
 ) =>
   [
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t("project.column.name"),
-      field: "name",
+      headerName: t('project.column.name'),
+      field: 'name',
       renderCell: ({ row }: CellType) => {
         return (
           <Typography
@@ -32,70 +32,58 @@ export const projectColumns = (
             href={`/projects/${typeId}/details/${row.id}`}
             sx={{
               fontWeight: 500,
-              textDecoration: "none",
-              color: "text.secondary",
-              "&:hover": { color: "primary.main" },
+              textDecoration: 'none',
+              color: 'text.secondary',
+              '&:hover': { color: 'primary.main' }
             }}
           >
             {row.name}
           </Typography>
         );
-      },
+      }
     },
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t("project.column.elapsed-time"),
-      field: "elapsed-time",
+      headerName: t('project.column.elapsed-time'),
+      field: 'elapsed-time',
       renderCell: ({ row }: CellType) => {
-        return (
-          <Typography sx={{ color: "text.secondary" }}>
-            {row?.elapsed_time}
-          </Typography>
-        );
-      },
+        return <Typography sx={{ color: 'text.secondary' }}>{row?.elapsed_time}</Typography>;
+      }
     },
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t("project.column.cpi"),
-      field: "cpi",
+      headerName: t('project.column.cpi'),
+      field: 'cpi',
       renderCell: ({ row }: CellType) => {
-        return (
-          <Typography sx={{ color: "text.secondary" }}>{row?.cpi}</Typography>
-        );
-      },
+        return <Typography sx={{ color: 'text.secondary' }}>{row?.cpi}</Typography>;
+      }
     },
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t("project.column.spi"),
-      field: "spi",
+      headerName: t('project.column.spi'),
+      field: 'spi',
       renderCell: ({ row }: CellType) => {
-        return (
-          <Typography sx={{ color: "text.secondary" }}>{row?.spi}</Typography>
-        );
-      },
+        return <Typography sx={{ color: 'text.secondary' }}>{row?.spi}</Typography>;
+      }
     },
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t("common.table-columns.created-at"),
-      field: "created_at",
+      headerName: t('common.table-columns.created-at'),
+      field: 'created_at',
       renderCell: ({ row }: CellType) => {
-        return (
-          <Typography sx={{ color: "text.secondary" }}>
-            {formatCreatedAt(row.created_at)}
-          </Typography>
-        );
-      },
+        return <Typography sx={{ color: 'text.secondary' }}>{formatCreatedAt(row.created_at)}</Typography>;
+      }
     },
     {
       flex: 0.15,
       minWidth: 100,
       sortable: false,
-      field: "actions",
-      headerName: t("common.table-columns.actions"),
+      field: 'actions',
+      headerName: t('common.table-columns.actions'),
       renderCell: ({ row }: CellType) => (
         <Fragment>
           <ModelAction
@@ -103,20 +91,15 @@ export const projectColumns = (
             model_id={row.id}
             refetchModel={refetch}
             resubmit={function (): void {
-              throw new Error("Function not implemented.");
+              throw new Error('Function not implemented.');
             }}
-            title={""}
+            title={''}
             postAction={function (): void {
-              throw new Error("Function not implemented.");
+              throw new Error('Function not implemented.');
             }}
           />
-          <RowOptions
-            onEdit={onEdit}
-            onDelete={() => onDelete(row.id)}
-            item={row}
-            options={[]}
-          />
+          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
         </Fragment>
-      ),
-    },
+      )
+    }
   ] as GridColDef[];

@@ -1,33 +1,24 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
+import { Box } from '@mui/material';
+import { useState } from 'react';
 
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import projectExtensionTimeApiService from "src/services/project/project-extension-time-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import { ProjectExtensionTime } from "src/types/project/project-time";
-import { GetRequestParam, IApiResponse } from "src/types/requests";
-import ItemsListing from "src/views/shared/listing";
-import ProjectExtensionTimeCard from "./project-extension-time-card";
-import ProjectExtensionTimeDrawer from "./project-extension-time-drawer";
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import projectExtensionTimeApiService from 'src/services/project/project-extension-time-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import { ProjectExtensionTime } from 'src/types/project/project-time';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import ItemsListing from 'src/views/shared/listing';
+import ProjectExtensionTimeCard from './project-extension-time-card';
+import ProjectExtensionTimeDrawer from './project-extension-time-drawer';
 
-function ProjectExtensionTimeList({
-  projectId,
-}: {
-  type: string;
-  projectId: string;
-}) {
+function ProjectExtensionTimeList({ projectId }: { type: string; projectId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
 
-  const [selectedRow, setSelectedRow] = useState<ProjectExtensionTime | null>(
-    null,
-  );
-  const fetchProjectExtensionTimes = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<ProjectExtensionTime[]>> => {
+  const [selectedRow, setSelectedRow] = useState<ProjectExtensionTime | null>(null);
+  const fetchProjectExtensionTimes = (params: GetRequestParam): Promise<IApiResponse<ProjectExtensionTime[]>> => {
     return projectExtensionTimeApiService.getAll({
       ...params,
-      filter: { ...params.filter },
+      filter: { ...params.filter }
     });
   };
 
@@ -36,10 +27,10 @@ function ProjectExtensionTimeList({
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<ProjectExtensionTime[]>({
-    queryKey: ["projectExtensionTimes"],
-    fetchFunction: fetchProjectExtensionTimes,
+    queryKey: ['projectExtensionTimes'],
+    fetchFunction: fetchProjectExtensionTimes
   });
 
   const toggleDrawer = () => {
@@ -73,21 +64,16 @@ function ProjectExtensionTimeList({
         type={ITEMS_LISTING_TYPE.list.value}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <ProjectExtensionTimeCard
-            projectExtensionTime={data}
-            onEdit={handleEdit}
-            refetch={refetch}
-            onDelete={handleDelete}
-          />
+          <ProjectExtensionTimeCard projectExtensionTime={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "variations",
-          },
+            action: 'create',
+            subject: 'variations'
+          }
         }}
         fetchDataFunction={refetch}
         items={projectExtensionTimes || []}

@@ -1,24 +1,14 @@
-import ConfirmationDialog, {
-  ConfirmationDialogProps,
-} from "./confirmation-dialog";
-type DeleteConfirmationDialogProps = Omit<
-  ConfirmationDialogProps,
-  "title" | "content"
->;
+import ConfirmationDialog, { ConfirmationDialogProps } from './confirmation-dialog';
+type DeleteConfirmationDialogProps = Omit<ConfirmationDialogProps, 'title' | 'content'>;
 
-const DeleteConfirmationDialog: React.FC<DeleteConfirmationDialogProps> = ({
-  open,
-  handleClose,
-  onConfirm,
-  onCancel,
-}) => {
+const DeleteConfirmationDialog: React.FC<DeleteConfirmationDialogProps> = ({ open, handleClose, onConfirm, onCancel }) => {
   const confirmationDialogProps: ConfirmationDialogProps = {
     open,
     handleClose,
-    title: "Delete Confirmation",
-    content: "Are you sure you want to delete this item?",
+    title: 'Delete Confirmation',
+    content: 'Are you sure you want to delete this item?',
     onConfirm: onConfirm,
-    onCancel,
+    onCancel
   };
 
   return <ConfirmationDialog {...confirmationDialogProps} />;

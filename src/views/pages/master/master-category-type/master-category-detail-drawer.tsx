@@ -1,16 +1,16 @@
 // components/MasterCategoryDetailDrawer.tsx
-import { Box, Card, CardContent, Typography } from "@mui/material";
-import { useRouter } from "next/router";
+import { Box, Card, CardContent, Typography } from '@mui/material';
+import { useRouter } from 'next/router';
 
-import { Fragment, useState } from "react";
-import { useTranslation } from "react-i18next";
-import masterCategoryApiService from "src/services/master-data/master-type-service";
-import { MasterCategory } from "src/types/master/master-types";
-import { capitalizeFirstLetter } from "src/utils/string";
-import FileDrawer from "src/views/components/custom/files-drawer";
-import ModelActionComponent from "src/views/components/custom/model-actions";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import RowOptions from "src/views/shared/listing/row-options";
+import { Fragment, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import masterCategoryApiService from 'src/services/master-data/master-type-service';
+import { MasterCategory } from 'src/types/master/master-types';
+import { capitalizeFirstLetter } from 'src/utils/string';
+import FileDrawer from 'src/views/components/custom/files-drawer';
+import ModelActionComponent from 'src/views/components/custom/model-actions';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface MasterCategoryDetailDrawerProps {
   masterCategory: MasterCategory;
@@ -20,13 +20,7 @@ interface MasterCategoryDetailDrawerProps {
   handleClose: () => void;
 }
 
-const DetailRow = ({
-  label,
-  value,
-}: {
-  label: string;
-  value: React.ReactNode;
-}) => (
+const DetailRow = ({ label, value }: { label: string; value: React.ReactNode }) => (
   <Box display="flex" justifyContent="space-between">
     <Typography variant="subtitle1">
       <strong>{label}: </strong>
@@ -35,13 +29,7 @@ const DetailRow = ({
   </Box>
 );
 
-const MasterCategoryDetailDrawer: React.FC<MasterCategoryDetailDrawerProps> = ({
-  masterCategory,
-  refetch,
-  model,
-  open,
-  handleClose,
-}) => {
+const MasterCategoryDetailDrawer: React.FC<MasterCategoryDetailDrawerProps> = ({ masterCategory, refetch, model, open, handleClose }) => {
   const router = useRouter();
 
   const { t } = useTranslation();
@@ -60,43 +48,26 @@ const MasterCategoryDetailDrawer: React.FC<MasterCategoryDetailDrawerProps> = ({
   };
 
   return (
-    <CustomSideDrawer
-      title={`master-category-detail`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`master-category-detail`} handleClose={handleClose} open={open}>
       {() => (
         <Card>
           <CardContent>
             <Fragment>
               {
                 <Box>
-                  <DetailRow label={t("Title")} value={masterCategory?.title} />
-                  <DetailRow
-                    label={t("Description")}
-                    value={masterCategory?.description}
-                  />
-                  <DetailRow
-                    label={t("Date")}
-                    value={masterCategory?.created_at}
-                  />
-                  <DetailRow
-                    label={`${t("Reference")} ${t("File")}`}
-                    value={masterCategory?.file_id}
-                  />
+                  <DetailRow label={t('Title')} value={masterCategory?.title} />
+                  <DetailRow label={t('Description')} value={masterCategory?.description} />
+                  <DetailRow label={t('Date')} value={masterCategory?.created_at} />
+                  <DetailRow label={`${t('Reference')} ${t('File')}`} value={masterCategory?.file_id} />
 
-                  <Box sx={{ display: "flex", justifyContent: "end" }}>
-                    <FileDrawer
-                      id={masterCategory?.id}
-                      type={`${model.toLocaleUpperCase()}_TYPE`}
-                    />{" "}
-                    &nbsp;
+                  <Box sx={{ display: 'flex', justifyContent: 'end' }}>
+                    <FileDrawer id={masterCategory?.id} type={`${model.toLocaleUpperCase()}_TYPE`} /> &nbsp;
                     <ModelActionComponent
                       model={`${capitalizeFirstLetter(model)}type`}
                       model_id={masterCategory?.id}
                       refetchModel={refetch}
                       resubmit={() => {}}
-                      title={""}
+                      title={''}
                       postAction={() => {}}
                     />
                     <RowOptions
@@ -105,12 +76,12 @@ const MasterCategoryDetailDrawer: React.FC<MasterCategoryDetailDrawerProps> = ({
                       item={masterCategory}
                       options={[]}
                       deletePermissionRule={{
-                        action: "delete",
-                        subject: `${model}type`,
+                        action: 'delete',
+                        subject: `${model}type`
                       }}
                       editPermissionRule={{
-                        action: "update",
-                        subject: `${model}type`,
+                        action: 'update',
+                        subject: `${model}type`
                       }}
                     />
                   </Box>

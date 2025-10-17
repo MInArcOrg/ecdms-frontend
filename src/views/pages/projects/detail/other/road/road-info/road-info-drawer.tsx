@@ -1,15 +1,15 @@
-import { FormikProps } from "formik";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import RoadInfoForm from "./road-info-form";
+import { FormikProps } from 'formik';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import RoadInfoForm from './road-info-form';
 
-import { useState } from "react";
-import projectOtherApiService from "src/services/project/project-other-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import { RoadInfo } from "src/types/project/other";
+import { useState } from 'react';
+import projectOtherApiService from 'src/services/project/project-other-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { RoadInfo } from 'src/types/project/other';
 
 interface RoadInfoDrawerType {
   open: boolean;
@@ -31,37 +31,26 @@ const RoadInfoDrawer = (props: RoadInfoDrawerType) => {
 
   const isEdit = Boolean(roadInfo?.id);
 
-  const createRoadInfo = async (body: IApiPayload<RoadInfo>) =>
-    projectOtherApiService<RoadInfo>().create(model, body);
+  const createRoadInfo = async (body: IApiPayload<RoadInfo>) => projectOtherApiService<RoadInfo>().create(model, body);
 
-  const editRoadInfo = async (body: IApiPayload<RoadInfo>) =>
-    projectOtherApiService<RoadInfo>().update(model, roadInfo?.id || "", body);
+  const editRoadInfo = async (body: IApiPayload<RoadInfo>) => projectOtherApiService<RoadInfo>().update(model, roadInfo?.id || '', body);
 
   const getPayload = (values: RoadInfo) => {
     return {
       data: {
         ...values,
         id: roadInfo?.id,
-        project_id: projectId,
+        project_id: projectId
       },
-      files: uploadableFile ? [uploadableFile] : [],
+      files: uploadableFile ? [uploadableFile] : []
     };
   };
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<RoadInfo>,
-    payload: IApiPayload<RoadInfo>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<RoadInfo>, payload: IApiPayload<RoadInfo>) => {
     if (payload.files.length > 0) {
-      uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.other.roadInfo,
-        response.payload.id,
-        "",
-        "",
-      );
+      uploadFile(payload.files[0], uploadableProjectFileTypes.other.roadInfo, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -69,35 +58,25 @@ const RoadInfoDrawer = (props: RoadInfoDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.other.road-info.${
-        isEdit ? `edit-road-info` : `create-road-info`
-      }`}
+      title={`project.other.road-info.${isEdit ? `edit-road-info` : `create-road-info`}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.road-info.${
-            isEdit ? `edit-road-info` : `create-road-info`
-          }`}
+          title={`project.other.road-info.${isEdit ? `edit-road-info` : `create-road-info`}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...roadInfo,
+            ...roadInfo
           }}
           createActionFunc={isEdit ? editRoadInfo : createRoadInfo}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<RoadInfo>) => {
-            return (
-              <RoadInfoForm
-                file={uploadableFile}
-                onFileChange={onFileChange}
-                formik={formik}
-              />
-            );
+            return <RoadInfoForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

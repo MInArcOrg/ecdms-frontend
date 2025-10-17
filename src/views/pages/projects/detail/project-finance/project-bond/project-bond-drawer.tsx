@@ -1,22 +1,16 @@
-import { FormikProps } from "formik";
-import { useState } from "react";
-import { institutionType } from "src/constants/bond-constants";
-import projectBondApiService from "src/services/project/project-bond-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import {
-  ProjectBond,
-  ProjectGeneralFinance,
-} from "src/types/project/project-finance";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import {
-  convertDateToLocaleDate,
-  formatInitialDateDate,
-} from "src/utils/formatter/date";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import ProjectBondForm from "./project-bond-form";
+import { FormikProps } from 'formik';
+import { useState } from 'react';
+import { institutionType } from 'src/constants/bond-constants';
+import projectBondApiService from 'src/services/project/project-bond-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { ProjectBond, ProjectGeneralFinance } from 'src/types/project/project-finance';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import ProjectBondForm from './project-bond-form';
 
 interface ProjectBondDrawerType {
   open: boolean;
@@ -29,15 +23,7 @@ interface ProjectBondDrawerType {
 }
 
 const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
-  const {
-    open,
-    toggle,
-    refetch,
-    projectBond,
-    projectId,
-    type,
-    projectGeneralFinance,
-  } = props;
+  const { open, toggle, refetch, projectBond, projectId, type, projectGeneralFinance } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
@@ -65,38 +51,32 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
     amount: yup
       .number()
       .nullable()
-      .when("institution_type", {
+      .when('institution_type', {
         is: (value: string) => value === institutionType.bank.value,
-        then: (schema) =>
-          schema.max(amountCalculator(institutionType.bank.percent)).min(0),
+        then: (schema) => schema.max(amountCalculator(institutionType.bank.percent)).min(0)
       })
-      .when("institution_type", {
+      .when('institution_type', {
         is: (value: string) => value === institutionType.insurance.value,
-        then: (schema) =>
-          schema
-            .max(amountCalculator(institutionType.insurance.percent))
-            .min(0),
+        then: (schema) => schema.max(amountCalculator(institutionType.insurance.percent)).min(0)
       }),
     percent: yup
       .number()
       .nullable()
-      .when("institution_type", {
+      .when('institution_type', {
         is: (value: string) => value === institutionType.bank.value,
-        then: (schema) => schema.max(institutionType.bank.percent).min(0),
+        then: (schema) => schema.max(institutionType.bank.percent).min(0)
       })
-      .when("institution_type", {
+      .when('institution_type', {
         is: (value: string) => value === institutionType.insurance.value,
-        then: (schema) => schema.max(institutionType.insurance.percent).min(0),
-      }),
+        then: (schema) => schema.max(institutionType.insurance.percent).min(0)
+      })
   });
 
   const isEdit = Boolean(projectBond?.id);
 
-  const createProjectBond = async (body: IApiPayload<ProjectBond>) =>
-    projectBondApiService.create(body);
+  const createProjectBond = async (body: IApiPayload<ProjectBond>) => projectBondApiService.create(body);
 
-  const editProjectBond = async (body: IApiPayload<ProjectBond>) =>
-    projectBondApiService.update(projectBond?.id || "", body);
+  const editProjectBond = async (body: IApiPayload<ProjectBond>) => projectBondApiService.update(projectBond?.id || '', body);
 
   const getPayload = (values: ProjectBond) => ({
     data: {
@@ -105,25 +85,16 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
       project_id: projectId,
       expiration_date: convertDateToLocaleDate(values.expiration_date),
       issue_date: convertDateToLocaleDate(values.issue_date),
-      type,
+      type
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<ProjectBond>,
-    payload: IApiPayload<ProjectBond>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<ProjectBond>, payload: IApiPayload<ProjectBond>) => {
     if (payload.files.length > 0) {
-      uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.bond,
-        response.payload.id,
-        "",
-        "",
-      );
+      uploadFile(payload.files[0], uploadableProjectFileTypes.bond, response.payload.id, '', '');
     }
     refetch();
     toggle();
@@ -133,11 +104,7 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.project-bond.${
-        isEdit
-          ? `edit-project-${type.toLocaleLowerCase()}`
-          : `create-project-${type.toLocaleLowerCase()}`
-      }`}
+      title={`project.project-bond.${isEdit ? `edit-project-${type.toLocaleLowerCase()}` : `create-project-${type.toLocaleLowerCase()}`}`}
       handleClose={handleClose}
       open={open}
     >
@@ -151,9 +118,7 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
             type,
             ...projectBond,
             issue_date: formatInitialDateDate(projectBond?.issue_date),
-            expiration_date: formatInitialDateDate(
-              projectBond?.expiration_date,
-            ),
+            expiration_date: formatInitialDateDate(projectBond?.expiration_date)
           }}
           createActionFunc={isEdit ? editProjectBond : createProjectBond}
           onActionSuccess={onActionSuccess}

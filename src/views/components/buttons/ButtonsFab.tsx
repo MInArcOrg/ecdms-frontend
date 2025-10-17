@@ -1,10 +1,10 @@
 // ** MUI Imports
-import Box from "@mui/material/Box";
-import Fab from "@mui/material/Fab";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Fab from '@mui/material/Fab';
+import Typography from '@mui/material/Typography';
 
 // ** Icon Imports
-import Icon from "src/@core/components/icon";
+import Icon from 'src/@core/components/icon';
 
 const ButtonsFab = () => {
   return (
@@ -38,35 +38,35 @@ const ButtonsFab = () => {
       </Box>
       <Typography sx={{ fontWeight: 500 }}>Extended Variant</Typography>
       <div className="demo-space-x">
-        <Fab variant="extended" sx={{ "& svg": { mr: 1 } }}>
+        <Fab variant="extended" sx={{ '& svg': { mr: 1 } }}>
           <Icon icon="tabler:plus" />
           Add
         </Fab>
-        <Fab color="primary" variant="extended" sx={{ "& svg": { mr: 1 } }}>
+        <Fab color="primary" variant="extended" sx={{ '& svg': { mr: 1 } }}>
           <Icon icon="tabler:plus" />
           Add
         </Fab>
-        <Fab color="secondary" variant="extended" sx={{ "& svg": { mr: 1 } }}>
+        <Fab color="secondary" variant="extended" sx={{ '& svg': { mr: 1 } }}>
           <Icon icon="tabler:plus" />
           Add
         </Fab>
-        <Fab color="success" variant="extended" sx={{ "& svg": { mr: 1 } }}>
+        <Fab color="success" variant="extended" sx={{ '& svg': { mr: 1 } }}>
           <Icon icon="tabler:plus" />
           Add
         </Fab>
-        <Fab color="error" variant="extended" sx={{ "& svg": { mr: 1 } }}>
+        <Fab color="error" variant="extended" sx={{ '& svg': { mr: 1 } }}>
           <Icon icon="tabler:plus" />
           Add
         </Fab>
-        <Fab color="warning" variant="extended" sx={{ "& svg": { mr: 1 } }}>
+        <Fab color="warning" variant="extended" sx={{ '& svg': { mr: 1 } }}>
           <Icon icon="tabler:plus" />
           Add
         </Fab>
-        <Fab color="info" variant="extended" sx={{ "& svg": { mr: 1 } }}>
+        <Fab color="info" variant="extended" sx={{ '& svg': { mr: 1 } }}>
           <Icon icon="tabler:plus" />
           Add
         </Fab>
-        <Fab disabled variant="extended" sx={{ "& svg": { mr: 1 } }}>
+        <Fab disabled variant="extended" sx={{ '& svg': { mr: 1 } }}>
           <Icon icon="tabler:plus" />
           Add
         </Fab>

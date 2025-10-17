@@ -1,18 +1,18 @@
-import { FormikProps } from "formik";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import EmployeeEducationForm from "./employee-education-form";
+import { FormikProps } from 'formik';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import EmployeeEducationForm from './employee-education-form';
 
-import { useState } from "react";
-import employeeEducationApiService from "src/services/stakeholder/employee-education-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import { EmployeeEducation } from "src/types/stakeholder/employee-education";
-import countriesList from "src/constants/countries";
-import { useQuery } from "@tanstack/react-query";
-import totalEmployeeApiService from "src/services/stakeholder/total-employee-service";
+import { useState } from 'react';
+import employeeEducationApiService from 'src/services/stakeholder/employee-education-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { EmployeeEducation } from 'src/types/stakeholder/employee-education';
+import countriesList from 'src/constants/countries';
+import { useQuery } from '@tanstack/react-query';
+import totalEmployeeApiService from 'src/services/stakeholder/total-employee-service';
 
 interface EmployeeEducationDrawerType {
   open: boolean;
@@ -29,52 +29,38 @@ const EmployeeEducationDrawer = (props: EmployeeEducationDrawerType) => {
     setUploadableFile(file);
   };
   const { data: totalEmployees } = useQuery({
-    queryKey: ["totalEmployee"],
+    queryKey: ['totalEmployee'],
     queryFn: () =>
       totalEmployeeApiService.getAll({
         filter: { stakeholder_id: stakeholderId },
-        pagination: { page: 1, pageSize: 1000 },
-      }),
+        pagination: { page: 1, pageSize: 1000 }
+      })
   });
 
   const validationSchema = yup.object().shape({});
 
   const isEdit = Boolean(employeeEducation?.id);
 
-  const createEmployeeEducation = async (
-    body: IApiPayload<EmployeeEducation>,
-  ) => employeeEducationApiService.create(body);
+  const createEmployeeEducation = async (body: IApiPayload<EmployeeEducation>) => employeeEducationApiService.create(body);
 
   const editEmployeeEducation = async (body: IApiPayload<EmployeeEducation>) =>
-    employeeEducationApiService.update(employeeEducation?.id || "", body);
+    employeeEducationApiService.update(employeeEducation?.id || '', body);
 
   const getPayload = (values: EmployeeEducation) => ({
     data: {
       ...values,
       id: employeeEducation?.id,
       stakeholder_id: stakeholderId,
-      nationality:
-        typeof values.nationality === "object"
-          ? values.nationality.value
-          : values.nationality,
+      nationality: typeof values.nationality === 'object' ? values.nationality.value : values.nationality
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<EmployeeEducation>,
-    payload: IApiPayload<EmployeeEducation>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<EmployeeEducation>, payload: IApiPayload<EmployeeEducation>) => {
     if (payload.files.length > 0) {
-      uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.extension_time,
-        response.payload.id,
-        "",
-        "",
-      );
+      uploadFile(payload.files[0], uploadableProjectFileTypes.extension_time, response.payload.id, '', '');
     }
     refetch();
     handleClose();
@@ -82,9 +68,7 @@ const EmployeeEducationDrawer = (props: EmployeeEducationDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`stakeholder.employee-education.${
-        isEdit ? `edit-employee-education` : `create-employee-education`
-      }`}
+      title={`stakeholder.employee-education.${isEdit ? `edit-employee-education` : `create-employee-education`}`}
       handleClose={handleClose}
       open={open}
     >
@@ -99,15 +83,11 @@ const EmployeeEducationDrawer = (props: EmployeeEducationDrawerType) => {
             nationality: countriesList
               .map((country) => ({
                 label: country.title,
-                value: country.title,
+                value: country.title
               }))
-              .find(
-                (country) => country.value === employeeEducation.nationality,
-              ),
+              .find((country) => country.value === employeeEducation.nationality)
           }}
-          createActionFunc={
-            isEdit ? editEmployeeEducation : createEmployeeEducation
-          }
+          createActionFunc={isEdit ? editEmployeeEducation : createEmployeeEducation}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >

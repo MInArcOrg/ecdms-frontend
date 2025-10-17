@@ -1,12 +1,12 @@
-import type { FormikProps } from "formik";
-import type { IApiPayload } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import JointVentureForm from "./joint-venture-form";
-import jointVentureApiService from "src/services/stakeholder/joint-venture-service";
-import type { JointVenture } from "src/types/stakeholder/joint-venture";
-import type { IApiResponse } from "src/types/requests";
+import type { FormikProps } from 'formik';
+import type { IApiPayload } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import JointVentureForm from './joint-venture-form';
+import jointVentureApiService from 'src/services/stakeholder/joint-venture-service';
+import type { JointVenture } from 'src/types/stakeholder/joint-venture';
+import type { IApiResponse } from 'src/types/requests';
 
 interface JointVentureDrawerType {
   open: boolean;
@@ -20,37 +20,29 @@ const JointVentureDrawer = (props: JointVentureDrawerType) => {
   const { open, toggle, refetch, jointVenture, stakeholderId } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    member_companies_no: yup
-      .number()
-      .required("Number of member companies is required")
-      .positive()
-      .integer(),
-    description: yup.string().required("Description is required"),
-    reference: yup.string().nullable(),
+    name: yup.string().required('Name is required'),
+    member_companies_no: yup.number().required('Number of member companies is required').positive().integer(),
+    description: yup.string().required('Description is required'),
+    reference: yup.string().nullable()
   });
 
   const isEdit = Boolean(jointVenture?.id);
 
-  const createJointVenture = async (
-    body: IApiPayload<JointVenture>,
-  ): Promise<IApiResponse<JointVenture>> => {
+  const createJointVenture = async (body: IApiPayload<JointVenture>): Promise<IApiResponse<JointVenture>> => {
     return jointVentureApiService.create(body);
   };
 
-  const editJointVenture = async (
-    body: IApiPayload<JointVenture>,
-  ): Promise<IApiResponse<JointVenture>> => {
-    return jointVentureApiService.update(jointVenture?.id || "", body);
+  const editJointVenture = async (body: IApiPayload<JointVenture>): Promise<IApiResponse<JointVenture>> => {
+    return jointVentureApiService.update(jointVenture?.id || '', body);
   };
 
   const getPayload = (values: JointVenture): IApiPayload<JointVenture> => ({
     data: {
       ...values,
       id: jointVenture?.id,
-      stakeholder_id: stakeholderId,
+      stakeholder_id: stakeholderId
     },
-    files: [],
+    files: []
   });
 
   const handleClose = () => {
@@ -63,15 +55,11 @@ const JointVentureDrawer = (props: JointVentureDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer
-      title={`stakeholder.joint-venture.${isEdit ? "edit" : "create"}`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`stakeholder.joint-venture.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`stakeholder.joint-venture.${isEdit ? "edit" : "create"}`}
+          title={`stakeholder.joint-venture.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={jointVenture}
@@ -79,9 +67,7 @@ const JointVentureDrawer = (props: JointVentureDrawerType) => {
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<JointVenture>) => (
-            <JointVentureForm formik={formik} />
-          )}
+          {(formik: FormikProps<JointVenture>) => <JointVentureForm formik={formik} />}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

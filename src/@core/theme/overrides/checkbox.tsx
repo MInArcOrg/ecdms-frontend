@@ -1,20 +1,14 @@
 // ** MUI Import
-import { useTheme } from "@mui/material/styles";
+import { useTheme } from '@mui/material/styles';
 
 // ** Type Import
-import { OwnerStateThemeType } from "./";
+import { OwnerStateThemeType } from './';
 
 const CheckedIcon = () => {
   const theme = useTheme();
 
   return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         fill={theme.palette.primary.main}
         d="M17.5514 3H6.75137C4.76314 3 3.15137 4.61177 3.15137 6.6V17.4C3.15137 19.3882 4.76314 21 6.75137 21H17.5514C19.5396 21 21.1514 19.3882 21.1514 17.4V6.6C21.1514 4.61177 19.5396 3 17.5514 3Z"
@@ -33,14 +27,7 @@ const Icon = () => {
   const theme = useTheme();
 
   return (
-    <svg
-      width="24"
-      height="24"
-      fill="none"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      stroke={theme.palette.text.disabled}
-    >
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke={theme.palette.text.disabled}>
       <path d="M17.2105 3.5H6.78947C4.69661 3.5 3 5.19661 3 7.28947V17.7105C3 19.8034 4.69661 21.5 6.78947 21.5H17.2105C19.3034 21.5 21 19.8034 21 17.7105V7.28947C21 5.19661 19.3034 3.5 17.2105 3.5Z" />
     </svg>
   );
@@ -50,13 +37,7 @@ const IndeterminateIcon = () => {
   const theme = useTheme();
 
   return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill={theme.palette.primary.main}
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill={theme.palette.primary.main} xmlns="http://www.w3.org/2000/svg">
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -72,50 +53,48 @@ const Checkbox = () => {
       defaultProps: {
         icon: <Icon />,
         checkedIcon: <CheckedIcon />,
-        indeterminateIcon: <IndeterminateIcon />,
+        indeterminateIcon: <IndeterminateIcon />
       },
       styleOverrides: {
         root: ({ theme }: OwnerStateThemeType) => ({
-          "&.Mui-checked": {
-            "& svg": {
+          '&.Mui-checked': {
+            '& svg': {
               filter: `drop-shadow(0 2px 3px rgba(${
-                theme.palette.mode === "light"
-                  ? theme.palette.customColors.main
-                  : "12, 16, 27"
-              }, 0.16))`,
+                theme.palette.mode === 'light' ? theme.palette.customColors.main : '12, 16, 27'
+              }, 0.16))`
             },
-            "&.Mui-disabled svg": {
-              filter: "none",
-              "& path:first-of-type": {
-                fill: theme.palette.action.disabled,
+            '&.Mui-disabled svg': {
+              filter: 'none',
+              '& path:first-of-type': {
+                fill: theme.palette.action.disabled
               },
-              "& path:last-of-type": {
+              '& path:last-of-type': {
                 fill: theme.palette.background.paper,
-                stroke: theme.palette.background.paper,
-              },
-            },
+                stroke: theme.palette.background.paper
+              }
+            }
           },
-          "&.Mui-disabled:not(.Mui-checked) svg": {
-            stroke: theme.palette.action.disabled,
+          '&.Mui-disabled:not(.Mui-checked) svg': {
+            stroke: theme.palette.action.disabled
           },
-          "&.Mui-checked.MuiCheckbox-colorSecondary svg path:first-of-type": {
-            fill: theme.palette.secondary.main,
+          '&.Mui-checked.MuiCheckbox-colorSecondary svg path:first-of-type': {
+            fill: theme.palette.secondary.main
           },
-          "&.Mui-checked.MuiCheckbox-colorSuccess svg path:first-of-type": {
-            fill: theme.palette.success.main,
+          '&.Mui-checked.MuiCheckbox-colorSuccess svg path:first-of-type': {
+            fill: theme.palette.success.main
           },
-          "&.Mui-checked.MuiCheckbox-colorError svg path:first-of-type": {
-            fill: theme.palette.error.main,
+          '&.Mui-checked.MuiCheckbox-colorError svg path:first-of-type': {
+            fill: theme.palette.error.main
           },
-          "&.Mui-checked.MuiCheckbox-colorWarning svg path:first-of-type": {
-            fill: theme.palette.warning.main,
+          '&.Mui-checked.MuiCheckbox-colorWarning svg path:first-of-type': {
+            fill: theme.palette.warning.main
           },
-          "&.Mui-checked.MuiCheckbox-colorInfo svg path:first-of-type": {
-            fill: theme.palette.info.main,
-          },
-        }),
-      },
-    },
+          '&.Mui-checked.MuiCheckbox-colorInfo svg path:first-of-type': {
+            fill: theme.palette.info.main
+          }
+        })
+      }
+    }
   };
 };
 export default Checkbox;

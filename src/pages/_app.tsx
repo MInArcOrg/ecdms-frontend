@@ -1,72 +1,69 @@
 // ** React Imports
-import { ReactNode, useState } from "react";
+import { ReactNode, useState } from 'react';
 
 // ** Next Imports
-import type { NextPage } from "next";
-import type { AppProps } from "next/app";
-import Head from "next/head";
-import { Router } from "next/router";
+import type { NextPage } from 'next';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { Router } from 'next/router';
 
 // ** Store Imports
-import { Provider } from "react-redux";
-import { store } from "src/store";
+import { Provider } from 'react-redux';
+import { store } from 'src/store';
 
 // ** Loader Import
-import NProgress from "nprogress";
+import NProgress from 'nprogress';
 
 // ** Emotion Imports
-import type { EmotionCache } from "@emotion/cache";
-import { CacheProvider } from "@emotion/react";
+import type { EmotionCache } from '@emotion/cache';
+import { CacheProvider } from '@emotion/react';
 
 // ** Config Imports
-import { defaultACLObj } from "src/configs/acl";
-import "src/configs/i18n";
-import themeConfig from "src/configs/themeConfig";
+import { defaultACLObj } from 'src/configs/acl';
+import 'src/configs/i18n';
+import themeConfig from 'src/configs/themeConfig';
 
 // ** Fake-DB Import
 // import 'src/@fake-db'
 
 // ** Third Party Import
-import { Toaster } from "react-hot-toast";
+import { Toaster } from 'react-hot-toast';
 
 // ** Component Imports
-import AclGuard from "src/@core/components/auth/AclGuard";
-import AuthGuard from "src/@core/components/auth/AuthGuard";
-import GuestGuard from "src/@core/components/auth/GuestGuard";
-import ThemeComponent from "src/@core/theme/ThemeComponent";
-import UserLayout from "src/layouts/UserLayout";
+import AclGuard from 'src/@core/components/auth/AclGuard';
+import AuthGuard from 'src/@core/components/auth/AuthGuard';
+import GuestGuard from 'src/@core/components/auth/GuestGuard';
+import ThemeComponent from 'src/@core/theme/ThemeComponent';
+import UserLayout from 'src/layouts/UserLayout';
 
 // ** Spinner Import
-import Spinner from "src/@core/components/spinner";
+import Spinner from 'src/@core/components/spinner';
 
 // ** Contexts
-import {
-  SettingsConsumer,
-  SettingsProvider,
-} from "src/@core/context/settingsContext";
-import { AuthProvider } from "src/context/auth-context";
+import { SettingsConsumer, SettingsProvider } from 'src/@core/context/settingsContext';
+import { AuthProvider } from 'src/context/auth-context';
 
 // ** Styled Components
-import ReactHotToast from "src/@core/styles/libs/react-hot-toast";
+import ReactHotToast from 'src/@core/styles/libs/react-hot-toast';
 
 // ** Utils Imports
-import { createEmotionCache } from "src/@core/utils/create-emotion-cache";
+import { createEmotionCache } from 'src/@core/utils/create-emotion-cache';
 
 // ** Prismjs Styles
-import "prismjs";
-import "prismjs/components/prism-jsx";
-import "prismjs/components/prism-tsx";
-import "prismjs/themes/prism-tomorrow.css";
+import 'prismjs';
+import 'prismjs/components/prism-jsx';
+import 'prismjs/components/prism-tsx';
+import 'prismjs/themes/prism-tomorrow.css';
 
 // ** React Perfect Scrollbar Style
-import "react-perfect-scrollbar/dist/css/styles.css";
+import 'react-perfect-scrollbar/dist/css/styles.css';
 
-import "src/iconify-bundle/icons-bundle-react";
+import 'src/iconify-bundle/icons-bundle-react';
 
 // ** Global css styles
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import "../../styles/globals.css";
-import useAxiosInterceptors from "src/utils/use-axios-interceptor";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import '../../styles/globals.css';
+import useAxiosInterceptors from 'src/utils/use-axios-interceptor';
 // ** Extend App Props with Emotion
 type ExtendedAppProps = AppProps & {
   Component: NextPage;
@@ -83,13 +80,13 @@ const clientSideEmotionCache = createEmotionCache();
 
 // ** Pace Loader
 if (themeConfig.routingLoader) {
-  Router.events.on("routeChangeStart", () => {
+  Router.events.on('routeChangeStart', () => {
     NProgress.start();
   });
-  Router.events.on("routeChangeError", () => {
+  Router.events.on('routeChangeError', () => {
     NProgress.done();
   });
-  Router.events.on("routeChangeComplete", () => {
+  Router.events.on('routeChangeComplete', () => {
     NProgress.done();
   });
 }
@@ -111,11 +108,7 @@ const App = (props: ExtendedAppProps) => {
 
   // Variables
   const contentHeightFixed = Component.contentHeightFixed ?? false;
-  const getLayout =
-    Component.getLayout ??
-    ((page) => (
-      <UserLayout contentHeightFixed={contentHeightFixed}>{page}</UserLayout>
-    ));
+  const getLayout = Component.getLayout ?? ((page) => <UserLayout contentHeightFixed={contentHeightFixed}>{page}</UserLayout>);
 
   const setConfig = Component.setConfig ?? undefined;
 
@@ -123,7 +116,7 @@ const App = (props: ExtendedAppProps) => {
   const guestGuard = Component.guestGuard ?? false;
 
   // Set guard props on window for use in AuthProvider
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     window.__NEXT_GUARD_PROPS__ = { guestGuard, authGuard };
   }
 
@@ -139,35 +132,20 @@ const App = (props: ExtendedAppProps) => {
               name="description"
               content={`${themeConfig.templateName} – ECDMS is Ethiopia's integrated platform for the collection, organization, and dissemination of construction industry data by federal, regional and wereda administrations as well as the city administrations of Addis Ababa and Dire Dawa and also private sector key actors in the construction industry..`}
             />
-            <meta
-              name="keywords"
-              content="1space Ethiopian Construction Data Platform"
-            />
-            <meta
-              name="viewport"
-              content="initial-scale=1, width=device-width"
-            />
+            <meta name="keywords" content="1space Ethiopian Construction Data Platform" />
+            <meta name="viewport" content="initial-scale=1, width=device-width" />
           </Head>
           <AuthProvider>
-            <SettingsProvider
-              {...(setConfig ? { pageSettings: setConfig() } : {})}
-            >
+            <SettingsProvider {...(setConfig ? { pageSettings: setConfig() } : {})}>
               <SettingsConsumer>
                 {({ settings }) => {
                   return (
                     <ThemeComponent settings={settings}>
                       <ReactHotToast>
-                        <Toaster
-                          position={settings.toastPosition}
-                          toastOptions={{ className: "react-hot-toast" }}
-                        />
+                        <Toaster position={settings.toastPosition} toastOptions={{ className: 'react-hot-toast' }} />
                       </ReactHotToast>
                       <Guard authGuard={authGuard} guestGuard={guestGuard}>
-                        <AclGuard
-                          aclAbilities={aclAbilities}
-                          guestGuard={guestGuard}
-                          authGuard={authGuard}
-                        >
+                        <AclGuard aclAbilities={aclAbilities} guestGuard={guestGuard} authGuard={authGuard}>
                           {getLayout(<Component {...pageProps} />)}
                         </AclGuard>
                       </Guard>

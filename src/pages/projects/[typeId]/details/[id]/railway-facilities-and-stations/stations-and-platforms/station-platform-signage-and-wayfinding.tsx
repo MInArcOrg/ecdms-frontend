@@ -8,29 +8,24 @@ import subMenuItems, {
 } from "../(subMenuItems)";
 
 const defaultMenuItem = findSubMenuItem(
-  subMenuItems("", ""),
-  railwayFacilitiesAndStationsIds.stations_and_platforms
-    .station_platform_signage_and_wayfinding,
+  subMenuItems('', ''),
+  railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_signage_and_wayfinding
 );
 
 const StationPlatformSignageAndWayfindingPage = () => {
   const router = useRouter();
-  const { id = "", typeId = "" } = router.query;
+  const { id = '', typeId = '' } = router.query;
 
   const menuItem = findSubMenuItem(
     subMenuItems(id as string, typeId as string),
-    railwayFacilitiesAndStationsIds.stations_and_platforms
-      .station_platform_signage_and_wayfinding,
+    railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_signage_and_wayfinding
   );
   menuItem;
 
   return (
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayFacilitiesAndStations}
-      activeSubMenuId={
-        railwayFacilitiesAndStationsIds.stations_and_platforms
-          .station_platform_signage_and_wayfinding
-      }
+      activeSubMenuId={railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_signage_and_wayfinding}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <RailwayStationPlatformSignageAndWayFindingList
@@ -44,7 +39,7 @@ const StationPlatformSignageAndWayfindingPage = () => {
 
 StationPlatformSignageAndWayfindingPage.acl = {
   subject: defaultMenuItem?.model,
-  action: "view",
+  action: 'view'
 };
 
 export default StationPlatformSignageAndWayfindingPage;

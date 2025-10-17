@@ -1,8 +1,8 @@
 // ** React Imports
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
 // ** MUI Imports
-import LinearProgress from "@mui/material/LinearProgress";
+import LinearProgress from '@mui/material/LinearProgress';
 
 const ProcessLinearBuffer = () => {
   // ** States
@@ -36,9 +36,7 @@ const ProcessLinearBuffer = () => {
     };
   }, []);
 
-  return (
-    <LinearProgress variant="buffer" value={progress} valueBuffer={buffer} />
-  );
+  return <LinearProgress variant="buffer" value={progress} valueBuffer={buffer} />;
 };
 
 export default ProcessLinearBuffer;

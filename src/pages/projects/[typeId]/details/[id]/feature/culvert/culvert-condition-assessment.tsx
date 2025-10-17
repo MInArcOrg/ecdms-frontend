@@ -1,24 +1,15 @@
-import { useRouter } from "next/router";
-import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
-import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
-import subMenuItems, {
-  findSubMenuItem,
-  projectFeatureIds,
-} from "../(subMenuItems)";
+import { useRouter } from 'next/router';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
+import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import subMenuItems, { findSubMenuItem, projectFeatureIds } from '../(subMenuItems)';
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems("", ""),
-  projectFeatureIds.culvert.culvertConditionAssessment,
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), projectFeatureIds.culvert.culvertConditionAssessment);
 
 const CulvertConditionAssessment = () => {
   const router = useRouter();
-  const { id = "", typeId = "" } = router.query;
+  const { id = '', typeId = '' } = router.query;
 
-  const menuItem = findSubMenuItem(
-    subMenuItems(id as string, typeId as string),
-    projectFeatureIds.culvert.culvertConditionAssessment,
-  );
+  const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), projectFeatureIds.culvert.culvertConditionAssessment);
   menuItem;
   return (
     <ProjectLayout
@@ -38,7 +29,7 @@ const CulvertConditionAssessment = () => {
 
 CulvertConditionAssessment.acl = {
   subject: defaultMenuItem?.model,
-  action: "view",
+  action: 'view'
 };
 
 export default CulvertConditionAssessment;

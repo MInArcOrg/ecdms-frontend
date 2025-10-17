@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import type { FormikProps } from "formik";
-import type { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import ReliabilityAndMaintenanceForm from "./reliability-and-maintenance-form";
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import ReliabilityAndMaintenanceForm from './reliability-and-maintenance-form';
 
-import { useState } from "react";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import type { ReliabilityAndMaintenance } from "src/types/project/other";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import { useState } from 'react';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import type { ReliabilityAndMaintenance } from 'src/types/project/other';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface ReliabilityAndMaintenanceDrawerType {
   open: boolean;
@@ -23,17 +23,8 @@ interface ReliabilityAndMaintenanceDrawerType {
   otherSubMenu?: DetailSubMenuItemChild;
 }
 
-const ReliabilityAndMaintenanceDrawer = (
-  props: ReliabilityAndMaintenanceDrawerType,
-) => {
-  const {
-    open,
-    toggle,
-    refetch,
-    reliabilityAndMaintenance,
-    projectId,
-    otherSubMenu,
-  } = props;
+const ReliabilityAndMaintenanceDrawer = (props: ReliabilityAndMaintenanceDrawerType) => {
+  const { open, toggle, refetch, reliabilityAndMaintenance, projectId, otherSubMenu } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
@@ -42,9 +33,7 @@ const ReliabilityAndMaintenanceDrawer = (
   };
 
   const validationSchema = yup.object().shape({
-    maintenance_frequency_id: yup
-      .string()
-      .required("Maintenance frequency is required"),
+    maintenance_frequency_id: yup.string().required('Maintenance frequency is required'),
     total_outage_duration: yup
       .number()
       .nullable()
@@ -52,7 +41,7 @@ const ReliabilityAndMaintenanceDrawer = (
     total_interruption_number: yup
       .number()
       .nullable()
-      .integer("Must be an integer")
+      .integer('Must be an integer')
       .transform((value) => (isNaN(value) ? null : value)),
     saidi: yup
       .number()
@@ -62,29 +51,20 @@ const ReliabilityAndMaintenanceDrawer = (
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value)),
-    automatic_fault_detection_restoration_system_installed: yup
-      .boolean()
-      .nullable(),
-    remark: yup.string().nullable(),
+    automatic_fault_detection_restoration_system_installed: yup.boolean().nullable(),
+    remark: yup.string().nullable()
   });
 
   const isEdit = Boolean(reliabilityAndMaintenance?.id);
 
-  const createReliabilityAndMaintenance = async (
-    body: IApiPayload<ReliabilityAndMaintenance>,
-  ) =>
-    projectOtherApiSecondService<ReliabilityAndMaintenance>().create(
-      otherSubMenu?.apiRoute || "",
-      body,
-    );
+  const createReliabilityAndMaintenance = async (body: IApiPayload<ReliabilityAndMaintenance>) =>
+    projectOtherApiSecondService<ReliabilityAndMaintenance>().create(otherSubMenu?.apiRoute || '', body);
 
-  const editReliabilityAndMaintenance = async (
-    body: IApiPayload<ReliabilityAndMaintenance>,
-  ) =>
+  const editReliabilityAndMaintenance = async (body: IApiPayload<ReliabilityAndMaintenance>) =>
     projectOtherApiSecondService<ReliabilityAndMaintenance>().update(
-      otherSubMenu?.apiRoute || "",
-      reliabilityAndMaintenance?.id || "",
-      body,
+      otherSubMenu?.apiRoute || '',
+      reliabilityAndMaintenance?.id || '',
+      body
     );
 
   const getPayload = (values: ReliabilityAndMaintenance) => ({
@@ -95,28 +75,18 @@ const ReliabilityAndMaintenanceDrawer = (
       total_interruption_number: values.total_interruption_number,
       saidi: values.saidi,
       saifi: values.saifi,
-      automatic_fault_detection_restoration_system_installed:
-        values.automatic_fault_detection_restoration_system_installed,
+      automatic_fault_detection_restoration_system_installed: values.automatic_fault_detection_restoration_system_installed,
       remark: values.remark,
-      id: reliabilityAndMaintenance?.id,
+      id: reliabilityAndMaintenance?.id
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<ReliabilityAndMaintenance>,
-    payload: IApiPayload<ReliabilityAndMaintenance>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<ReliabilityAndMaintenance>, payload: IApiPayload<ReliabilityAndMaintenance>) => {
     if (payload.files.length > 0) {
-      await uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.other.reliabilityAndMaintenance,
-        response.payload.id,
-        "",
-        "",
-      );
+      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.reliabilityAndMaintenance, response.payload.id, '', '');
     }
 
     refetch();
@@ -126,9 +96,7 @@ const ReliabilityAndMaintenanceDrawer = (
   return (
     <CustomSideDrawer
       title={`project.other.reliability-and-maintenance.${
-        isEdit
-          ? `edit-reliability-and-maintenance`
-          : `create-reliability-and-maintenance`
+        isEdit ? `edit-reliability-and-maintenance` : `create-reliability-and-maintenance`
       }`}
       handleClose={handleClose}
       open={open}
@@ -137,31 +105,19 @@ const ReliabilityAndMaintenanceDrawer = (
         <FormPageWrapper
           edit={isEdit}
           title={`project.other.reliability-and-maintenance.${
-            isEdit
-              ? `edit-reliability-and-maintenance`
-              : `create-reliability-and-maintenance`
+            isEdit ? `edit-reliability-and-maintenance` : `create-reliability-and-maintenance`
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...reliabilityAndMaintenance,
+            ...reliabilityAndMaintenance
           }}
-          createActionFunc={
-            isEdit
-              ? editReliabilityAndMaintenance
-              : createReliabilityAndMaintenance
-          }
+          createActionFunc={isEdit ? editReliabilityAndMaintenance : createReliabilityAndMaintenance}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<ReliabilityAndMaintenance>) => {
-            return (
-              <ReliabilityAndMaintenanceForm
-                file={uploadableFile}
-                onFileChange={onFileChange}
-                formik={formik}
-              />
-            );
+            return <ReliabilityAndMaintenanceForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

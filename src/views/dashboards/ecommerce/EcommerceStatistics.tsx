@@ -1,19 +1,19 @@
 // ** MUI Imports
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import Typography from "@mui/material/Typography";
-import CardContent from "@mui/material/CardContent";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from "src/@core/components/icon";
+import Icon from 'src/@core/components/icon';
 
 // ** Types
-import { ThemeColor } from "src/@core/layouts/types";
+import { ThemeColor } from 'src/@core/layouts/types';
 
 // ** Custom Components Imports
-import CustomAvatar from "src/@core/components/mui/avatar";
+import CustomAvatar from 'src/@core/components/mui/avatar';
 
 interface DataType {
   icon: string;
@@ -24,43 +24,39 @@ interface DataType {
 
 const data: DataType[] = [
   {
-    stats: "230k",
-    title: "Sales",
-    color: "primary",
-    icon: "tabler:chart-pie-2",
+    stats: '230k',
+    title: 'Sales',
+    color: 'primary',
+    icon: 'tabler:chart-pie-2'
   },
   {
-    color: "info",
-    stats: "8.549k",
-    title: "Customers",
-    icon: "tabler:users",
+    color: 'info',
+    stats: '8.549k',
+    title: 'Customers',
+    icon: 'tabler:users'
   },
   {
-    color: "error",
-    stats: "1.423k",
-    title: "Products",
-    icon: "tabler:shopping-cart",
+    color: 'error',
+    stats: '1.423k',
+    title: 'Products',
+    icon: 'tabler:shopping-cart'
   },
   {
-    stats: "$9745",
-    color: "success",
-    title: "Revenue",
-    icon: "tabler:currency-dollar",
-  },
+    stats: '$9745',
+    color: 'success',
+    title: 'Revenue',
+    icon: 'tabler:currency-dollar'
+  }
 ];
 
 const renderStats = () => {
   return data.map((sale: DataType, index: number) => (
     <Grid item xs={6} md={3} key={index}>
-      <Box key={index} sx={{ display: "flex", alignItems: "center" }}>
-        <CustomAvatar
-          skin="light"
-          color={sale.color}
-          sx={{ mr: 4, width: 42, height: 42 }}
-        >
+      <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
+        <CustomAvatar skin="light" color={sale.color} sx={{ mr: 4, width: 42, height: 42 }}>
           <Icon icon={sale.icon} fontSize="1.5rem" />
         </CustomAvatar>
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Typography variant="h5">{sale.stats}</Typography>
           <Typography variant="body2">{sale.title}</Typography>
         </Box>
@@ -74,9 +70,9 @@ const EcommerceStatistics = () => {
     <Card>
       <CardHeader
         title="Statistics"
-        sx={{ "& .MuiCardHeader-action": { m: 0, alignSelf: "center" } }}
+        sx={{ '& .MuiCardHeader-action': { m: 0, alignSelf: 'center' } }}
         action={
-          <Typography variant="body2" sx={{ color: "text.disabled" }}>
+          <Typography variant="body2" sx={{ color: 'text.disabled' }}>
             Updated 1 month ago
           </Typography>
         }
@@ -84,7 +80,7 @@ const EcommerceStatistics = () => {
       <CardContent
         sx={{
           pt: (theme) => `${theme.spacing(7)} !important`,
-          pb: (theme) => `${theme.spacing(7.5)} !important`,
+          pb: (theme) => `${theme.spacing(7.5)} !important`
         }}
       >
         <Grid container spacing={6}>

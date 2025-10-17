@@ -1,10 +1,10 @@
-import { Box, Card, Grid } from "@mui/material";
-import { useRouter } from "next/router";
-import { ReactNode } from "react";
-import DetailMenu from "src/views/components/custom/layout/detail-menu";
-import menuTabs from "./stakeholder-menu-items";
-import DetailSubMenu from "src/views/components/custom/layout/detail-sub-menu";
-import { DetailSubMenuItem } from "src/types/layouts/detail-layout";
+import { Box, Card, Grid } from '@mui/material';
+import { useRouter } from 'next/router';
+import { ReactNode } from 'react';
+import DetailMenu from 'src/views/components/custom/layout/detail-menu';
+import menuTabs from './stakeholder-menu-items';
+import DetailSubMenu from 'src/views/components/custom/layout/detail-sub-menu';
+import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
 
 interface StakeholderLayoutProps {
   activeMenuId: string;
@@ -13,12 +13,7 @@ interface StakeholderLayoutProps {
   children: ReactNode;
 }
 
-const StakeholderLayout: React.FC<StakeholderLayoutProps> = ({
-  activeMenuId,
-  activeSubMenuId,
-  subMenuItems,
-  children,
-}) => {
+const StakeholderLayout: React.FC<StakeholderLayoutProps> = ({ activeMenuId, activeSubMenuId, subMenuItems, children }) => {
   const router = useRouter();
   const { id, typeId } = router.query;
   return (

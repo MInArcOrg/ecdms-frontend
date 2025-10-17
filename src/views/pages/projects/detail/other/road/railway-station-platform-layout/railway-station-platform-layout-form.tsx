@@ -1,11 +1,11 @@
-import { Grid } from "@mui/material";
-import type { FormikProps } from "formik";
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { gridSpacing } from "src/configs/app-constants";
-import type { RailwayStationPlatformLayout } from "src/types/project/other";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
-import CustomFileUpload from "src/views/shared/form/custome-file-selector";
+import { Grid } from '@mui/material';
+import type { FormikProps } from 'formik';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { gridSpacing } from 'src/configs/app-constants';
+import type { RailwayStationPlatformLayout } from 'src/types/project/other';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface RailwayStationPlatformLayoutFormProps {
   formik: FormikProps<RailwayStationPlatformLayout>;
@@ -13,9 +13,11 @@ interface RailwayStationPlatformLayoutFormProps {
   onDefaultFileChange: (file: File | null) => void;
 }
 
-const RailwayStationPlatformLayoutForm: React.FC<
-  RailwayStationPlatformLayoutFormProps
-> = ({ formik, defaultFile, onDefaultFileChange }) => {
+const RailwayStationPlatformLayoutForm: React.FC<RailwayStationPlatformLayoutFormProps> = ({
+  formik,
+  defaultFile,
+  onDefaultFileChange
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -24,9 +26,7 @@ const RailwayStationPlatformLayoutForm: React.FC<
         <CustomTextBox
           fullWidth
           required
-          label={t(
-            "project.other.railway-station-platform-layout.details.name",
-          )}
+          label={t('project.other.railway-station-platform-layout.details.name')}
           placeholder="e.g. Central Station, Platform Layout A"
           name="name"
           value={formik.values.name}
@@ -36,9 +36,7 @@ const RailwayStationPlatformLayoutForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-station-platform-layout.details.platforms_number",
-          )}
+          label={t('project.other.railway-station-platform-layout.details.platforms_number')}
           placeholder="e.g. 5"
           name="platforms_number"
           value={formik.values.platforms_number}
@@ -49,9 +47,7 @@ const RailwayStationPlatformLayoutForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-station-platform-layout.details.platform_configuration",
-          )}
+          label={t('project.other.railway-station-platform-layout.details.platform_configuration')}
           placeholder="e.g. Island platform, Side platform"
           name="platform_configuration"
           value={formik.values.platform_configuration}
@@ -61,9 +57,7 @@ const RailwayStationPlatformLayoutForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-station-platform-layout.details.platform_length",
-          )}
+          label={t('project.other.railway-station-platform-layout.details.platform_length')}
           placeholder="e.g. 150.5 (meters)"
           name="platform_length"
           value={formik.values.platform_length}
@@ -74,9 +68,7 @@ const RailwayStationPlatformLayoutForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-station-platform-layout.details.platform_width",
-          )}
+          label={t('project.other.railway-station-platform-layout.details.platform_width')}
           placeholder="e.g. 3.5 (meters)"
           name="platform_width"
           value={formik.values.platform_width}
@@ -87,9 +79,7 @@ const RailwayStationPlatformLayoutForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-station-platform-layout.details.accessibility_features",
-          )}
+          label={t('project.other.railway-station-platform-layout.details.accessibility_features')}
           placeholder="e.g. Ramps, Tactile paving, Elevators"
           name="accessibility_features"
           value={formik.values.accessibility_features}
@@ -99,10 +89,8 @@ const RailwayStationPlatformLayoutForm: React.FC<
 
         <CustomTextBox
           fullWidth
-          label={t(
-            "project.other.railway-station-platform-layout.details.remark",
-          )}
-          placeholder={t("common.form.remark-placeholder")}
+          label={t('project.other.railway-station-platform-layout.details.remark')}
+          placeholder={t('common.form.remark-placeholder')}
           name="remark"
           value={formik.values.remark}
           size="small"
@@ -112,11 +100,7 @@ const RailwayStationPlatformLayoutForm: React.FC<
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={t("common.form.station-layout-document-upload")}
-          file={defaultFile}
-          onFileChange={onDefaultFileChange}
-        />
+        <CustomFileUpload label={t('common.form.station-layout-document-upload')} file={defaultFile} onFileChange={onDefaultFileChange} />
       </Grid>
     </Grid>
   );

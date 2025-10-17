@@ -1,12 +1,12 @@
 // ** React Imports
-import { Fragment } from "react";
+import { Fragment } from 'react';
 
 // ** MUI Imports
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 
 // ** Icon Imports
-import Icon from "src/@core/components/icon";
+import Icon from 'src/@core/components/icon';
 
 const ButtonsSizes = () => {
   return (
@@ -56,11 +56,7 @@ const ButtonsSizes = () => {
         </Button>
       </div>
       <div className="demo-space-x">
-        <IconButton
-          aria-label="capture screenshot"
-          color="secondary"
-          size="small"
-        >
+        <IconButton aria-label="capture screenshot" color="secondary" size="small">
           <Icon icon="tabler:aperture" fontSize="inherit" />
         </IconButton>
         <IconButton aria-label="capture screenshot" color="secondary">
@@ -69,11 +65,7 @@ const ButtonsSizes = () => {
         <IconButton aria-label="capture screenshot" color="secondary">
           <Icon icon="tabler:aperture" />
         </IconButton>
-        <IconButton
-          aria-label="capture screenshot"
-          color="secondary"
-          size="large"
-        >
+        <IconButton aria-label="capture screenshot" color="secondary" size="large">
           <Icon icon="tabler:aperture" fontSize={35} />
         </IconButton>
       </div>

@@ -1,16 +1,16 @@
 // ** MUI Imports
-import Box from "@mui/material/Box";
-import { Direction } from "@mui/material";
+import Box from '@mui/material/Box';
+import { Direction } from '@mui/material';
 
 // ** Third Party Components
-import { useKeenSlider } from "keen-slider/react";
+import { useKeenSlider } from 'keen-slider/react';
 
 const SwiperAutoSwitch = ({ direction }: { direction: Direction }) => {
   // ** Hook
   const [ref] = useKeenSlider<HTMLDivElement>(
     {
       loop: true,
-      rtl: direction === "rtl",
+      rtl: direction === 'rtl'
     },
     [
       (slider) => {
@@ -26,22 +26,22 @@ const SwiperAutoSwitch = ({ direction }: { direction: Direction }) => {
             slider.next();
           }, 2000);
         };
-        slider.on("created", () => {
-          slider.container.addEventListener("mouseover", () => {
+        slider.on('created', () => {
+          slider.container.addEventListener('mouseover', () => {
             mouseOver = true;
             clearNextTimeout();
           });
-          slider.container.addEventListener("mouseout", () => {
+          slider.container.addEventListener('mouseout', () => {
             mouseOver = false;
             nextTimeout();
           });
           nextTimeout();
         });
-        slider.on("dragStarted", clearNextTimeout);
-        slider.on("animationEnded", nextTimeout);
-        slider.on("updated", nextTimeout);
-      },
-    ],
+        slider.on('dragStarted', clearNextTimeout);
+        slider.on('animationEnded', nextTimeout);
+        slider.on('updated', nextTimeout);
+      }
+    ]
   );
 
   return (

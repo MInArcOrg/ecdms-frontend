@@ -1,5 +1,5 @@
 // ** MUI Imports
-import Pagination from "@mui/material/Pagination";
+import Pagination from '@mui/material/Pagination';
 
 const PaginationOutlined = () => {
   return (

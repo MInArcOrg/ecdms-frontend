@@ -1,7 +1,7 @@
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import CustomChip from "src/@core/components/mui/chip";
-import { useTranslation } from "react-i18next";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import CustomChip from 'src/@core/components/mui/chip';
+import { useTranslation } from 'react-i18next';
 
 interface EarnedValueAnalysisProps {
   data: any;
@@ -13,13 +13,11 @@ const EarnedValueAnalysis: React.FC<EarnedValueAnalysisProps> = ({ data }) => {
   return (
     <Box>
       <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
-        <strong>
-          {t("project.earned-value-analysis.earned-value-analysis")}
-        </strong>
+        <strong>{t('project.earned-value-analysis.earned-value-analysis')}</strong>
       </Typography>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
-          {t("project.earned-value-analysis.planned-value")}
+          {t('project.earned-value-analysis.planned-value')}
         </Typography>
         <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
           {data.planned_revenue}
@@ -27,7 +25,7 @@ const EarnedValueAnalysis: React.FC<EarnedValueAnalysisProps> = ({ data }) => {
       </Box>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
-          {t("project.earned-value-analysis.earned-value")}
+          {t('project.earned-value-analysis.earned-value')}
         </Typography>
         <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
           {data.earned_revenue}
@@ -35,7 +33,7 @@ const EarnedValueAnalysis: React.FC<EarnedValueAnalysisProps> = ({ data }) => {
       </Box>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
-          {t("project.earned-value-analysis.actual-cost")}
+          {t('project.earned-value-analysis.actual-cost')}
         </Typography>
         <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
           {data.actual_cost}
@@ -47,14 +45,14 @@ const EarnedValueAnalysis: React.FC<EarnedValueAnalysisProps> = ({ data }) => {
         </Typography>
         <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
           <CustomChip
-            label={`${data.cpi ? data.cpi.toFixed(2) : "0"}`}
+            label={`${data.cpi ? data.cpi.toFixed(2) : '0'}`}
             color="primary"
             rounded
             size="small"
             skin="light"
             sx={{
-              "& .MuiChip-label": { textTransform: "capitalize" },
-              height: 20,
+              '& .MuiChip-label': { textTransform: 'capitalize' },
+              height: 20
             }}
           />
         </Typography>
@@ -73,14 +71,14 @@ const EarnedValueAnalysis: React.FC<EarnedValueAnalysisProps> = ({ data }) => {
         </Typography>
         <Typography variant="subtitle1" fontWeight="light" fontSize="14px">
           <CustomChip
-            label={`${data.spi ? data.spi.toFixed(2) : "0"} %`}
+            label={`${data.spi ? data.spi.toFixed(2) : '0'} %`}
             color="primary"
             rounded
             size="small"
             skin="light"
             sx={{
-              "& .MuiChip-label": { textTransform: "capitalize" },
-              height: 20,
+              '& .MuiChip-label': { textTransform: 'capitalize' },
+              height: 20
             }}
           />
         </Typography>

@@ -1,29 +1,25 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
+import { Box } from '@mui/material';
+import { useState } from 'react';
 
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import projectStakeholderApiService from "src/services/project/project-stakeholder-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import projectStakeholderApiService from 'src/services/project/project-stakeholder-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
 
-import { ProjectStakeholder } from "src/types/project/project-stakeholder";
-import { GetRequestParam, IApiResponse } from "src/types/requests";
-import ItemsListing from "src/views/shared/listing";
-import ProjectStakeholderCard from "./project-stakeholder-card";
-import ProjectStakeholderDrawer from "./project-stakeholder-drawer";
+import { ProjectStakeholder } from 'src/types/project/project-stakeholder';
+import { GetRequestParam, IApiResponse } from 'src/types/requests';
+import ItemsListing from 'src/views/shared/listing';
+import ProjectStakeholderCard from './project-stakeholder-card';
+import ProjectStakeholderDrawer from './project-stakeholder-drawer';
 
 function ProjectStakeholderList({ projectId }: { projectId: string }) {
   const [showDrawer, setShowDrawer] = useState(false);
 
-  const [selectedRow, setSelectedRow] = useState<ProjectStakeholder | null>(
-    null,
-  );
-  const fetchProjectStakeholders = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<ProjectStakeholder[]>> => {
+  const [selectedRow, setSelectedRow] = useState<ProjectStakeholder | null>(null);
+  const fetchProjectStakeholders = (params: GetRequestParam): Promise<IApiResponse<ProjectStakeholder[]>> => {
     return projectStakeholderApiService.getAll({
       ...params,
-      filter: { ...params.filter },
+      filter: { ...params.filter }
     });
   };
 
@@ -32,10 +28,10 @@ function ProjectStakeholderList({ projectId }: { projectId: string }) {
     isLoading,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<ProjectStakeholder[]>({
-    queryKey: ["projectStakeholders"],
-    fetchFunction: fetchProjectStakeholders,
+    queryKey: ['projectStakeholders'],
+    fetchFunction: fetchProjectStakeholders
   });
 
   const toggleDrawer = () => {
@@ -68,23 +64,18 @@ function ProjectStakeholderList({ projectId }: { projectId: string }) {
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.grid.value}
         isLoading={isLoading}
-        breakpoints={{ xs: 12, sm: 6, md: 4}}
+        breakpoints={{ xs: 12, sm: 6, md: 4 }}
         ItemViewComponent={({ data }) => (
-          <ProjectStakeholderCard
-            onEdit={handleEdit}
-            projectStakeholder={data}
-            onDelete={handleDelete}
-            refetch={refetch}
-          />
+          <ProjectStakeholderCard onEdit={handleEdit} projectStakeholder={data} onDelete={handleDelete} refetch={refetch} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "projectstakeholder",
-          },
+            action: 'create',
+            subject: 'projectstakeholder'
+          }
         }}
         fetchDataFunction={refetch}
         items={projectStakeholders || []}

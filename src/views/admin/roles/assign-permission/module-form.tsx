@@ -1,39 +1,29 @@
-import {
-  Accordion,
-  AccordionSummary,
-  Box,
-  Button,
-  Grid,
-  Switch,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from "@mui/material";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Checkbox from "@mui/material/Checkbox";
-import CircularProgress from "@mui/material/CircularProgress";
-import Typography from "@mui/material/Typography";
-import { GridExpandMoreIcon } from "@mui/x-data-grid";
-import React from "react";
-import usePermissionSelection from "src/hooks/admin/permission-selection-hook";
+import { Accordion, AccordionSummary, Box, Button, Grid, Switch, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Checkbox from '@mui/material/Checkbox';
+import CircularProgress from '@mui/material/CircularProgress';
+import Typography from '@mui/material/Typography';
+import { GridExpandMoreIcon } from '@mui/x-data-grid';
+import React from 'react';
+import usePermissionSelection from 'src/hooks/admin/permission-selection-hook';
 
-// Define the types for permission and propsዖ
+// Define the types for permission and props
 interface AssignPermissionComponentProps {
   roleId: string;
-  module: {
-    id: string;
-    name: string;
-    flags?: undefined;
-  } | {
-    id: string;
-    name: string;
-    flags: {
-      id: string;
-      name: string;
-    }[];
-  };
+  module:
+    | {
+        id: string;
+        name: string;
+        flags?: undefined;
+      }
+    | {
+        id: string;
+        name: string;
+        flags: {
+          id: string;
+          name: string;
+        }[];
+      };
 }
 
 interface AccordionDetailProps {
@@ -41,10 +31,7 @@ interface AccordionDetailProps {
   roleId: string;
 }
 
-const AccordionDetail: React.FC<AccordionDetailProps> = ({
-  type,
-  roleId,
-}) => {
+const AccordionDetail: React.FC<AccordionDetailProps> = ({ type, roleId }) => {
   const {
     permissions,
     selectedPermissions,
@@ -52,10 +39,9 @@ const AccordionDetail: React.FC<AccordionDetailProps> = ({
     isSubmitting,
     error,
     handleCheckboxChange,
-    handleSelectAll,
-    handleModelSelectAll,
+    handleSelectAll, // Added back
     handleSubmit,
-    models,
+    models
   } = usePermissionSelection(roleId, type);
 
   if (isLoading) {
@@ -65,35 +51,20 @@ const AccordionDetail: React.FC<AccordionDetailProps> = ({
     return <Typography color="error">{error}</Typography>;
   }
 
-  // Remove console.log to improve performance
-  const permissionHeaders = [
-    "create",
-    "update",
-    "delete",
-    "view",
-    "approve",
-    "check",
-    "authorize",
-  ];
+  const permissionHeaders = ['create', 'update', 'delete', 'view', 'approve', 'check', 'authorize'];
 
   return (
     <AccordionDetails>
-      <Box sx={{ overflowX: "auto" }}>
+      <Box sx={{ overflowX: 'auto' }}>
         <Table sx={{ minWidth: 650 }}>
           <TableHead>
             <TableRow>
               <TableCell>Model</TableCell>
               {permissionHeaders.map((header, index) => {
-                // Check if there are any permissions with this action name
-                const headerPermissions = permissions.filter((p) =>
-                  p.name.includes(header),
-                );
-                const allChecked =
-                  headerPermissions.length > 0 &&
-                  headerPermissions.every((p) => selectedPermissions[p.id]);
-                const someChecked = headerPermissions.some(
-                  (p) => selectedPermissions[p.id],
-                );
+                // Logic for header checkbox state
+                const headerPermissions = permissions.filter((p) => p.name.includes(header));
+                const allChecked = headerPermissions.length > 0 && headerPermissions.every((p) => selectedPermissions[p.id]);
+                const someChecked = headerPermissions.some((p) => selectedPermissions[p.id]);
 
                 return (
                   <TableCell key={index}>
@@ -101,9 +72,7 @@ const AccordionDetail: React.FC<AccordionDetailProps> = ({
                       <Checkbox
                         checked={allChecked}
                         indeterminate={someChecked && !allChecked}
-                        onChange={(e) =>
-                          handleSelectAll(e.target.checked, header)
-                        }
+                        onChange={(e) => handleSelectAll(header, e.target.checked)}
                         disabled={headerPermissions.length === 0}
                       />
                       <Typography>{header}</Typography>
@@ -115,44 +84,37 @@ const AccordionDetail: React.FC<AccordionDetailProps> = ({
           </TableHead>
           <TableBody>
             {models.map((model) => {
-              const modelPermissions = permissions.filter(
-                (p) => p.model === model,
-              );
-              const allModelChecked =
-                modelPermissions.length > 0 &&
-                modelPermissions.every((p) => selectedPermissions[p.id]);
-              const someModelChecked = modelPermissions.some(
-                (p) => selectedPermissions[p.id],
-              );
-
               return (
                 <TableRow key={model}>
                   <TableCell>
                     <Box display="flex" alignItems="center">
-                      <Checkbox
-                        checked={allModelChecked}
-                        indeterminate={someModelChecked && !allModelChecked}
-                        onChange={(e) =>
-                          handleModelSelectAll(model, e.target.checked)
-                        }
-                      />
+                      {/* Model-level "select all" is still removed */}
                       <Typography>{model}</Typography>
                     </Box>
                   </TableCell>
                   {permissionHeaders.map((permissionName) => {
-                    const permission = permissions.find(
-                      (p) =>
-                        p.model === model && p.name.includes(permissionName),
-                    );
+                    const permission = permissions.find((p) => p.model === model && p.name.includes(permissionName));
+
+                    // Only disable "view" if any primary is selected
+                    let disabled = false;
+                    if (permissionName === 'view') {
+                      const primaries = ['create', 'update', 'delete', 'check', 'approve', 'authorize'];
+                      const selectedPrimary = primaries.find((name) => {
+                        const perm = permissions.find((p) => p.model === model && p.name.includes(name));
+                        return perm && selectedPermissions[perm.id];
+                      });
+                      if (selectedPrimary) {
+                        disabled = true;
+                      }
+                    }
 
                     return (
                       <TableCell key={`${model}-${permissionName}`}>
                         {permission && (
                           <Switch
-                            checked={
-                              selectedPermissions[permission.id] || false
-                            }
-                            onChange={() => handleCheckboxChange(permission.id)}
+                            checked={selectedPermissions[permission.id] || false}
+                            onChange={() => handleCheckboxChange(permission.id, permissionName, model)}
+                            disabled={disabled}
                           />
                         )}
                       </TableCell>
@@ -165,50 +127,42 @@ const AccordionDetail: React.FC<AccordionDetailProps> = ({
         </Table>
       </Box>
       <Box mt={2} display="flex" justifyContent="flex-end">
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleSubmit}
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? <CircularProgress size={24} /> : "Assign Permissions"}
+        <Button variant="contained" color="primary" onClick={handleSubmit} disabled={isSubmitting}>
+          {isSubmitting ? <CircularProgress size={24} /> : 'Assign Permissions'}
         </Button>
       </Box>
     </AccordionDetails>
   );
 };
 
-const AssignPermissionComponent: React.FC<AssignPermissionComponentProps> = ({
-  roleId,
-  module
-}) => {
-
+const AssignPermissionComponent: React.FC<AssignPermissionComponentProps> = ({ roleId, module }) => {
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
   return (
     <div>
-      {module?.flags && module?.flags.map((flag, index) => (
-        <Accordion
-          key={index}
-          expanded={expanded === `panel${index}`}
-          onChange={(event, isExpanded) => {
-            setExpanded(isExpanded ? `panel${index}` : false);
-          }}
-        >
-          <AccordionSummary expandIcon={<GridExpandMoreIcon />}>
-            <Typography variant="h6">{flag.name}</Typography>
-          </AccordionSummary>
-          {expanded === `panel${index}` && (
-            <AccordionDetails>
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <AccordionDetail roleId={roleId} type={flag.name} />
+      {module?.flags &&
+        module?.flags.map((flag, index) => (
+          <Accordion
+            key={index}
+            expanded={expanded === `panel${index}`}
+            onChange={(event, isExpanded) => {
+              setExpanded(isExpanded ? `panel${index}` : false);
+            }}
+          >
+            <AccordionSummary expandIcon={<GridExpandMoreIcon />}>
+              <Typography variant="h6">{flag.name}</Typography>
+            </AccordionSummary>
+            {expanded === `panel${index}` && (
+              <AccordionDetails>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <AccordionDetail roleId={roleId} type={flag.name} />
+                  </Grid>
                 </Grid>
-              </Grid>
-            </AccordionDetails>
-          )}
-        </Accordion>
-      ))}
+              </AccordionDetails>
+            )}
+          </Accordion>
+        ))}
     </div>
   );
 };

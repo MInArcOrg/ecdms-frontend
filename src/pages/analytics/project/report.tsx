@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function report() {
-  return <div>report</div>
+  return <div>report</div>;
 }
 
-export default report
+export default report;

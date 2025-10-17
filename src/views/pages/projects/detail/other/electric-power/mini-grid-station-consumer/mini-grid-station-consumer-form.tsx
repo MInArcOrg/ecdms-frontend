@@ -1,17 +1,14 @@
-"use client";
+'use client';
 
-import { Grid, Typography, Divider } from "@mui/material";
-import type { FormikProps } from "formik";
-import type React from "react";
-import { useTranslation } from "react-i18next";
-import { gridSpacing } from "src/configs/app-constants";
-import type {
-  MiniGridStationConsumer,
-  MiniGridStation,
-} from "src/types/project/other";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
-import CustomFileUpload from "src/views/shared/form/custome-file-selector";
-import CustomSelect from "src/views/shared/form/custom-select";
+import { Grid, Typography, Divider } from '@mui/material';
+import type { FormikProps } from 'formik';
+import type React from 'react';
+import { useTranslation } from 'react-i18next';
+import { gridSpacing } from 'src/configs/app-constants';
+import type { MiniGridStationConsumer, MiniGridStation } from 'src/types/project/other';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
+import CustomSelect from 'src/views/shared/form/custom-select';
 
 interface MiniGridStationConsumerFormProps {
   formik: FormikProps<MiniGridStationConsumer>;
@@ -20,18 +17,14 @@ interface MiniGridStationConsumerFormProps {
   miniGridStations: MiniGridStation[];
 }
 
-const MiniGridStationConsumerForm: React.FC<
-  MiniGridStationConsumerFormProps
-> = ({ formik, file, onFileChange, miniGridStations }) => {
+const MiniGridStationConsumerForm: React.FC<MiniGridStationConsumerFormProps> = ({ formik, file, onFileChange, miniGridStations }) => {
   const { t: transl } = useTranslation();
 
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
         <Typography variant="subtitle1" gutterBottom>
-          {transl(
-            "project.other.mini-grid-station-consumer.general-information",
-          )}
+          {transl('project.other.mini-grid-station-consumer.general-information')}
         </Typography>
         <Divider sx={{ mb: 2 }} />
 
@@ -40,16 +33,14 @@ const MiniGridStationConsumerForm: React.FC<
             <CustomSelect
               fullWidth
               required
-              label={transl(
-                "project.other.mini-grid-station-consumer.details.mini-grid-station-id",
-              )}
+              label={transl('project.other.mini-grid-station-consumer.details.mini-grid-station-id')}
               name="mini_grid_station_id"
               size="small"
               sx={{ mb: 2 }}
               options={
                 miniGridStations?.map((station: MiniGridStation) => ({
                   label: station.name,
-                  value: station.id,
+                  value: station.id
                 })) || []
               }
             />
@@ -61,12 +52,8 @@ const MiniGridStationConsumerForm: React.FC<
             <CustomTextBox
               fullWidth
               required
-              label={transl(
-                "project.other.mini-grid-station-consumer.details.name",
-              )}
-              placeholder={transl(
-                "project.other.mini-grid-station-consumer.details.name",
-              )}
+              label={transl('project.other.mini-grid-station-consumer.details.name')}
+              placeholder={transl('project.other.mini-grid-station-consumer.details.name')}
               name="name"
               size="small"
               sx={{ mb: 2 }}
@@ -75,7 +62,7 @@ const MiniGridStationConsumerForm: React.FC<
         </Grid>
 
         <Typography variant="subtitle1" gutterBottom sx={{ mt: 2 }}>
-          {transl("project.other.mini-grid-station-consumer.consumer-types")}
+          {transl('project.other.mini-grid-station-consumer.consumer-types')}
         </Typography>
         <Divider sx={{ mb: 2 }} />
 
@@ -83,12 +70,8 @@ const MiniGridStationConsumerForm: React.FC<
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.mini-grid-station-consumer.details.residential",
-              )}
-              placeholder={transl(
-                "project.other.mini-grid-station-consumer.details.residential",
-              )}
+              label={transl('project.other.mini-grid-station-consumer.details.residential')}
+              placeholder={transl('project.other.mini-grid-station-consumer.details.residential')}
               name="residential"
               type="number"
               size="small"
@@ -98,12 +81,8 @@ const MiniGridStationConsumerForm: React.FC<
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.mini-grid-station-consumer.details.commercial",
-              )}
-              placeholder={transl(
-                "project.other.mini-grid-station-consumer.details.commercial",
-              )}
+              label={transl('project.other.mini-grid-station-consumer.details.commercial')}
+              placeholder={transl('project.other.mini-grid-station-consumer.details.commercial')}
               name="commercial"
               type="number"
               size="small"
@@ -116,12 +95,8 @@ const MiniGridStationConsumerForm: React.FC<
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.mini-grid-station-consumer.details.productive-industrial",
-              )}
-              placeholder={transl(
-                "project.other.mini-grid-station-consumer.details.productive-industrial",
-              )}
+              label={transl('project.other.mini-grid-station-consumer.details.productive-industrial')}
+              placeholder={transl('project.other.mini-grid-station-consumer.details.productive-industrial')}
               name="productive_industrial"
               type="number"
               size="small"
@@ -131,12 +106,8 @@ const MiniGridStationConsumerForm: React.FC<
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.mini-grid-station-consumer.details.health-centers",
-              )}
-              placeholder={transl(
-                "project.other.mini-grid-station-consumer.details.health-centers",
-              )}
+              label={transl('project.other.mini-grid-station-consumer.details.health-centers')}
+              placeholder={transl('project.other.mini-grid-station-consumer.details.health-centers')}
               name="health_centers"
               type="number"
               size="small"
@@ -149,12 +120,8 @@ const MiniGridStationConsumerForm: React.FC<
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.mini-grid-station-consumer.details.schools",
-              )}
-              placeholder={transl(
-                "project.other.mini-grid-station-consumer.details.schools",
-              )}
+              label={transl('project.other.mini-grid-station-consumer.details.schools')}
+              placeholder={transl('project.other.mini-grid-station-consumer.details.schools')}
               name="schools"
               type="number"
               size="small"
@@ -164,12 +131,8 @@ const MiniGridStationConsumerForm: React.FC<
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.mini-grid-station-consumer.details.street-lighting",
-              )}
-              placeholder={transl(
-                "project.other.mini-grid-station-consumer.details.street-lighting",
-              )}
+              label={transl('project.other.mini-grid-station-consumer.details.street-lighting')}
+              placeholder={transl('project.other.mini-grid-station-consumer.details.street-lighting')}
               name="street_lighting"
               type="number"
               size="small"
@@ -182,12 +145,8 @@ const MiniGridStationConsumerForm: React.FC<
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.mini-grid-station-consumer.details.other",
-              )}
-              placeholder={transl(
-                "project.other.mini-grid-station-consumer.details.other",
-              )}
+              label={transl('project.other.mini-grid-station-consumer.details.other')}
+              placeholder={transl('project.other.mini-grid-station-consumer.details.other')}
               name="other"
               type="number"
               size="small"
@@ -197,9 +156,7 @@ const MiniGridStationConsumerForm: React.FC<
         </Grid>
 
         <Typography variant="subtitle1" gutterBottom sx={{ mt: 2 }}>
-          {transl(
-            "project.other.mini-grid-station-consumer.electricity-information",
-          )}
+          {transl('project.other.mini-grid-station-consumer.electricity-information')}
         </Typography>
         <Divider sx={{ mb: 2 }} />
 
@@ -207,52 +164,38 @@ const MiniGridStationConsumerForm: React.FC<
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.mini-grid-station-consumer.details.expected-electricity-sales",
-              )}
-              placeholder={transl(
-                "project.other.mini-grid-station-consumer.details.expected-electricity-sales",
-              )}
+              label={transl('project.other.mini-grid-station-consumer.details.expected-electricity-sales')}
+              placeholder={transl('project.other.mini-grid-station-consumer.details.expected-electricity-sales')}
               name="expected_electricity_sales"
               type="number"
               size="small"
               sx={{ mb: 2 }}
-              helperText={transl("common.kwh")}
+              helperText={transl('common.kwh')}
             />
           </Grid>
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl(
-                "project.other.mini-grid-station-consumer.details.electricity-tariff",
-              )}
-              placeholder={transl(
-                "project.other.mini-grid-station-consumer.details.electricity-tariff",
-              )}
+              label={transl('project.other.mini-grid-station-consumer.details.electricity-tariff')}
+              placeholder={transl('project.other.mini-grid-station-consumer.details.electricity-tariff')}
               name="electricity_tariff"
               type="number"
               size="small"
               sx={{ mb: 2 }}
-              helperText={transl("common.currency")}
+              helperText={transl('common.currency')}
             />
           </Grid>
         </Grid>
 
         <Typography variant="subtitle1" gutterBottom sx={{ mt: 2 }}>
-          {transl(
-            "project.other.mini-grid-station-consumer.additional-information",
-          )}
+          {transl('project.other.mini-grid-station-consumer.additional-information')}
         </Typography>
         <Divider sx={{ mb: 2 }} />
 
         <CustomTextBox
           fullWidth
-          label={transl(
-            "project.other.mini-grid-station-consumer.details.remark",
-          )}
-          placeholder={transl(
-            "project.other.mini-grid-station-consumer.details.remark",
-          )}
+          label={transl('project.other.mini-grid-station-consumer.details.remark')}
+          placeholder={transl('project.other.mini-grid-station-consumer.details.remark')}
           name="remark"
           size="small"
           multiline
@@ -262,11 +205,7 @@ const MiniGridStationConsumerForm: React.FC<
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={transl("common.form.file-upload")}
-          file={file}
-          onFileChange={onFileChange}
-        />
+        <CustomFileUpload label={transl('common.form.file-upload')} file={file} onFileChange={onFileChange} />
       </Grid>
     </Grid>
   );

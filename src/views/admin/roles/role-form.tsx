@@ -1,7 +1,7 @@
-import { FormikProps } from "formik";
-import { useTranslation } from "react-i18next";
-import Role from "src/types/admin/role";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
+import { FormikProps } from 'formik';
+import { useTranslation } from 'react-i18next';
+import Role from 'src/types/admin/role';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface RoleFormProps {
   formik: FormikProps<Role>;
@@ -16,8 +16,8 @@ const RoleForm: React.FC<RoleFormProps> = ({}) => {
     <>
       <CustomTextBox
         fullWidth
-        label={transl("admin.role.form.title")}
-        placeholder={transl("admin.role.form.title")}
+        label={transl('admin.role.form.title')}
+        placeholder={transl('admin.role.form.title')}
         name="name"
         size="small"
         sx={{ mb: 2 }}
@@ -25,8 +25,8 @@ const RoleForm: React.FC<RoleFormProps> = ({}) => {
 
       <CustomTextBox
         fullWidth
-        label={transl("admin.role.form.description")}
-        placeholder={transl("admin.role.form.description")}
+        label={transl('admin.role.form.description')}
+        placeholder={transl('admin.role.form.description')}
         name="description"
         multiline
         rows={3}

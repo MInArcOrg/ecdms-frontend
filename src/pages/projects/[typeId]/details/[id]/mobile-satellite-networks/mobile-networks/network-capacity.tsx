@@ -1,25 +1,16 @@
-import { useRouter } from "next/router";
-import ProjectLayout from "src/views/pages/projects/detail/layout/project-layout";
-import { projectMenuIds } from "src/views/pages/projects/detail/layout/project-menu-items";
-import subMenuItems, {
-  findSubMenuItem,
-  mobileSatelliteNetworksId,
-} from "../(subMenuItems)";
-import NetworkCapacityList from "src/views/pages/projects/detail/other/telecom/network-capacity";
+import { useRouter } from 'next/router';
+import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
+import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import subMenuItems, { findSubMenuItem, mobileSatelliteNetworksId } from '../(subMenuItems)';
+import NetworkCapacityList from 'src/views/pages/projects/detail/other/telecom/network-capacity';
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems("", ""),
-  mobileSatelliteNetworksId.mobileNetworks.networkCapacity,
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), mobileSatelliteNetworksId.mobileNetworks.networkCapacity);
 
 const NetworkCapacityPage = () => {
   const router = useRouter();
-  const { id = "", typeId = "" } = router.query;
+  const { id = '', typeId = '' } = router.query;
 
-  const menuItem = findSubMenuItem(
-    subMenuItems(id as string, typeId as string),
-    mobileSatelliteNetworksId.mobileNetworks.networkCapacity,
-  );
+  const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), mobileSatelliteNetworksId.mobileNetworks.networkCapacity);
 
   return (
     <ProjectLayout
@@ -27,11 +18,7 @@ const NetworkCapacityPage = () => {
       activeSubMenuId={mobileSatelliteNetworksId.mobileNetworks.networkCapacity}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <NetworkCapacityList
-        otherSubMenu={menuItem}
-        typeId={String(typeId)}
-        projectId={String(id)}
-      />
+      <NetworkCapacityList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>
   );
 };
@@ -39,7 +26,7 @@ const NetworkCapacityPage = () => {
 // Access control configuration
 NetworkCapacityPage.acl = {
   subject: defaultMenuItem?.model,
-  action: "view",
+  action: 'view'
 };
 
 export default NetworkCapacityPage;

@@ -84,4 +84,4 @@ export const menuItems = (baseUrl: string) => [
     subject: 'matrix',
     path: `${baseUrl}/matrixTree`
   }
-]
+];

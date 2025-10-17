@@ -1,17 +1,9 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Divider,
-  Typography,
-} from "@mui/material";
-import type React from "react";
-import { useTranslation } from "react-i18next";
-import type { JointVenture } from "src/types/stakeholder/joint-venture";
-import ModelAction from "src/views/components/custom/model-actions";
-import RowOptions from "src/views/shared/listing/row-options";
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
+import type React from 'react';
+import { useTranslation } from 'react-i18next';
+import type { JointVenture } from 'src/types/stakeholder/joint-venture';
+import ModelAction from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface JointVentureCardProps {
   jointVenture: JointVenture;
@@ -21,24 +13,13 @@ interface JointVentureCardProps {
   onDetail: (jointVenture: JointVenture) => void;
 }
 
-const JointVentureCard: React.FC<JointVentureCardProps> = ({
-  jointVenture,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail,
-}) => {
+const JointVentureCard: React.FC<JointVentureCardProps> = ({ jointVenture, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
     <Card sx={{ p: 2 }}>
       <CardContent>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          mb={1}
-        >
+        <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
           <Typography variant="h5" fontWeight="bold">
             <Typography
               noWrap
@@ -46,9 +27,9 @@ const JointVentureCard: React.FC<JointVentureCardProps> = ({
               onClick={() => onDetail(jointVenture)}
               sx={{
                 fontWeight: 500,
-                textDecoration: "none",
-                color: "text.secondary",
-                "&:hover": { color: "primary.main" },
+                textDecoration: 'none',
+                color: 'text.secondary',
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {jointVenture.name}
@@ -60,20 +41,18 @@ const JointVentureCard: React.FC<JointVentureCardProps> = ({
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t("stakeholder.joint-venture.memberCompaniesNo")}:{" "}
-            {jointVenture.member_companies_no}
+            {t('stakeholder.joint-venture.memberCompaniesNo')}: {jointVenture.member_companies_no}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("stakeholder.joint-venture.reference")}:{" "}
-            {jointVenture.reference || "N/A"}
+            {t('stakeholder.joint-venture.reference')}: {jointVenture.reference || 'N/A'}
           </Typography>
         </Box>
       </CardContent>
 
-      <CardActions sx={{ justifyContent: "flex-end" }}>
+      <CardActions sx={{ justifyContent: 'flex-end' }}>
         <ModelAction
           model="JointVenture"
-          model_id={jointVenture?.id || ""}
+          model_id={jointVenture?.id || ''}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
@@ -81,15 +60,15 @@ const JointVentureCard: React.FC<JointVentureCardProps> = ({
         />
         <RowOptions
           deletePermissionRule={{
-            action: "delete",
-            subject: "jointventure",
+            action: 'delete',
+            subject: 'jointventure'
           }}
           editPermissionRule={{
-            action: "update",
-            subject: "jointventure",
+            action: 'update',
+            subject: 'jointventure'
           }}
           onEdit={() => onEdit(jointVenture)}
-          onDelete={() => onDelete(jointVenture?.id || "")}
+          onDelete={() => onDelete(jointVenture?.id || '')}
           item={jointVenture}
           options={[]}
         />

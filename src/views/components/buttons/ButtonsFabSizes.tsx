@@ -1,11 +1,11 @@
 // ** React Imports
-import { Fragment } from "react";
+import { Fragment } from 'react';
 
 // ** MUI Imports
-import Fab from "@mui/material/Fab";
+import Fab from '@mui/material/Fab';
 
 // ** Icon Imports
-import Icon from "src/@core/components/icon";
+import Icon from 'src/@core/components/icon';
 
 const ButtonsFabSizes = () => {
   return (
@@ -22,15 +22,15 @@ const ButtonsFabSizes = () => {
         </Fab>
       </div>
       <div className="demo-space-x">
-        <Fab variant="extended" size="small" sx={{ "& svg": { mr: 1 } }}>
+        <Fab variant="extended" size="small" sx={{ '& svg': { mr: 1 } }}>
           <Icon icon="tabler:navigation" />
           Navigate
         </Fab>
-        <Fab variant="extended" size="medium" sx={{ "& svg": { mr: 1 } }}>
+        <Fab variant="extended" size="medium" sx={{ '& svg': { mr: 1 } }}>
           <Icon icon="tabler:navigation" />
           Navigate
         </Fab>
-        <Fab variant="extended" size="large" sx={{ "& svg": { mr: 1 } }}>
+        <Fab variant="extended" size="large" sx={{ '& svg': { mr: 1 } }}>
           <Icon icon="tabler:navigation" />
           Navigate
         </Fab>

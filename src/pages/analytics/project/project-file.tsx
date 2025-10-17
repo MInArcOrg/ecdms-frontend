@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function projectFile() {
-  return <div>projectFile</div>
+  return <div>projectFile</div>;
 }
 
-export default projectFile
+export default projectFile;

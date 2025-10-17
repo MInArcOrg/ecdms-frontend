@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import type { FormikProps } from "formik";
-import type { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import type { RailwayStationPlatformStructuralElement } from "src/types/project/other";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
-import { useState } from "react";
-import { uploadFile } from "src/services/utils/file-utils";
-import RailwayStationPlatformStructuralElementForm from "./railway-station-platform-structural-element-form";
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import type { RailwayStationPlatformStructuralElement } from 'src/types/project/other';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import { useState } from 'react';
+import { uploadFile } from 'src/services/utils/file-utils';
+import RailwayStationPlatformStructuralElementForm from './railway-station-platform-structural-element-form';
 
 interface RailwayStationPlatformStructuralElementDrawerProps {
   open: boolean;
@@ -27,7 +27,7 @@ const RailwayStationPlatformStructuralElementDrawer = ({
   refetch,
   railwayStationPlatformStructuralElement,
   projectId,
-  otherSubMenu,
+  otherSubMenu
 }: RailwayStationPlatformStructuralElementDrawerProps) => {
   const isEdit = Boolean(railwayStationPlatformStructuralElement?.id);
   // Primary file upload state
@@ -36,42 +36,31 @@ const RailwayStationPlatformStructuralElementDrawer = ({
   const [canopyDetailFile, setCanopyDetailFile] = useState<File | null>(null);
 
   const validationSchema = yup.object().shape({
-    railway_station_platform_layout_id: yup
-      .string()
-      .required("Platform Layout ID is required"),
+    railway_station_platform_layout_id: yup.string().required('Platform Layout ID is required'),
     materials_used: yup.string().nullable(),
     roofing_type_and_design: yup.string().nullable(),
     lighting_fixtures: yup.boolean().nullable(),
     accessibility_features: yup.string().nullable(),
-    remark: yup.string().nullable(),
+    remark: yup.string().nullable()
   });
 
-  const createStructuralElement = async (
-    body: IApiPayload<RailwayStationPlatformStructuralElement>,
-  ) =>
-    projectOtherApiSecondService<RailwayStationPlatformStructuralElement>().create(
-      otherSubMenu?.apiRoute || "",
-      body,
-    );
+  const createStructuralElement = async (body: IApiPayload<RailwayStationPlatformStructuralElement>) =>
+    projectOtherApiSecondService<RailwayStationPlatformStructuralElement>().create(otherSubMenu?.apiRoute || '', body);
 
-  const editStructuralElement = async (
-    body: IApiPayload<RailwayStationPlatformStructuralElement>,
-  ) =>
+  const editStructuralElement = async (body: IApiPayload<RailwayStationPlatformStructuralElement>) =>
     projectOtherApiSecondService<RailwayStationPlatformStructuralElement>().update(
-      otherSubMenu?.apiRoute || "",
+      otherSubMenu?.apiRoute || '',
       railwayStationPlatformStructuralElement.id as string,
-      body,
+      body
     );
 
-  const getPayload = (
-    values: RailwayStationPlatformStructuralElement,
-  ): IApiPayload<RailwayStationPlatformStructuralElement> => {
+  const getPayload = (values: RailwayStationPlatformStructuralElement): IApiPayload<RailwayStationPlatformStructuralElement> => {
     return {
       data: {
         ...values,
-        project_id: projectId,
+        project_id: projectId
       },
-      files: [],
+      files: []
     };
   };
 
@@ -81,72 +70,54 @@ const RailwayStationPlatformStructuralElementDrawer = ({
     toggle();
   };
 
-  const onActionSuccess = async (
-    response: IApiResponse<RailwayStationPlatformStructuralElement>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<RailwayStationPlatformStructuralElement>) => {
     try {
-      if (!response.payload?.id)
-        throw new Error("Missing record ID in response");
+      if (!response.payload?.id) throw new Error('Missing record ID in response');
 
       const recordId = response.payload.id;
-      const primaryFileType =
-        otherSubMenu?.fileType || "RAILWAY_STATION_PLATFORM_STRUCTURAL_ELEMENT";
+      const primaryFileType = otherSubMenu?.fileType || 'RAILWAY_STATION_PLATFORM_STRUCTURAL_ELEMENT';
 
       // 1. Upload Primary Document (e.g., General Structural Document)
       if (defaultFile) {
-        await uploadFile(
-          defaultFile,
-          primaryFileType,
-          recordId,
-          "structural_element_document",
-          "",
-        );
+        await uploadFile(defaultFile, primaryFileType, recordId, 'structural_element_document', '');
       }
 
       // 2. Upload Secondary Document (CANOPY_OR_SHELTER_DETAIL)
       if (canopyDetailFile) {
         await uploadFile(
           canopyDetailFile,
-          "CANOPY_OR_SHELTER_DETAIL", // Specific file type for this upload
+          'CANOPY_OR_SHELTER_DETAIL', // Specific file type for this upload
           recordId,
-          "canopy_or_shelter_detail_document",
-          "",
+          'canopy_or_shelter_detail_document',
+          ''
         );
       }
 
       refetch();
       handleClose();
     } catch (error) {
-      console.error("File upload failed or record ID missing:", error);
+      console.error('File upload failed or record ID missing:', error);
     }
   };
 
   return (
     <CustomSideDrawer
-      title={`project.other.railway-station-platform-structural-element.${isEdit ? "edit" : "create"
-        }`}
+      title={`project.other.railway-station-platform-structural-element.${isEdit ? 'edit' : 'create'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.railway-station-platform-structural-element.${isEdit ? "edit" : "create"
-            }`}
+          title={`project.other.railway-station-platform-structural-element.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={railwayStationPlatformStructuralElement}
-          createActionFunc={
-            isEdit
-              ? editStructuralElement
-              : createStructuralElement
-          }
+          createActionFunc={isEdit ? editStructuralElement : createStructuralElement}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(
-            formik: FormikProps<RailwayStationPlatformStructuralElement>,
-          ) => (
+          {(formik: FormikProps<RailwayStationPlatformStructuralElement>) => (
             <RailwayStationPlatformStructuralElementForm
               formik={formik}
               defaultFile={defaultFile}

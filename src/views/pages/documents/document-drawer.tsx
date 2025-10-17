@@ -1,13 +1,13 @@
-import * as yup from "yup";
+import * as yup from 'yup';
 
-import { FormikProps } from "formik";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import DocumentForm from "./document-form";
-import { IApiPayload } from "src/types/requests";
-import documentApiService from "src/services/document/document-service";
-import { Document } from "src/types/document";
-import moment from "moment";
+import { FormikProps } from 'formik';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import DocumentForm from './document-form';
+import { IApiPayload } from 'src/types/requests';
+import documentApiService from 'src/services/document/document-service';
+import { Document } from 'src/types/document';
+import moment from 'moment';
 
 interface DocumentDrawerType {
   open: boolean;
@@ -18,8 +18,8 @@ interface DocumentDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  title: yup.string().required("Title is required").max(36),
-  documentcategory_id: yup.string().required("Document category is required"),
+  title: yup.string().required('Title is required').max(36),
+  documentcategory_id: yup.string().required('Document category is required'),
   documentsubcategory_id: yup.string().nullable(),
   description: yup.string().nullable(),
   author: yup.string().nullable().max(36),
@@ -37,7 +37,7 @@ const validationSchema = yup.object().shape({
   file_size_mb: yup.number().nullable(),
   document_link: yup.string().nullable().max(100),
   version_no: yup.number().integer().nullable(),
-  remark: yup.string().nullable(),
+  remark: yup.string().nullable()
 });
 
 const DocumentDrawer = (props: DocumentDrawerType) => {
@@ -49,7 +49,7 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
     return await documentApiService.create(body);
   };
   const editDocument = async (body: IApiPayload<Document>) => {
-    return await documentApiService.update(document?.id || "", body);
+    return await documentApiService.update(document?.id || '', body);
   };
 
   const getPayload = (values: Document) => {
@@ -57,9 +57,9 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
       data: {
         ...values,
         id: document?.id,
-        documenttype_id: typeId,
+        documenttype_id: typeId
       },
-      files: [],
+      files: []
     };
     return payload;
   };
@@ -72,11 +72,7 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
     handleClose();
   };
   return (
-    <CustomSideDrawer
-      title={`document.${isEdit ? "edit-document" : "create-document"}`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`document.${isEdit ? 'edit-document' : 'create-document'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
@@ -85,7 +81,7 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...document,
-            publication_date: moment(document.publication_date).toDate(),
+            publication_date: moment(document.publication_date).toDate()
           }}
           createActionFunc={isEdit ? editDocument : createDocument}
           onActionSuccess={onActionSuccess}

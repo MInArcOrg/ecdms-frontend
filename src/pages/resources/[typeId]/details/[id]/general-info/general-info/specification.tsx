@@ -1,20 +1,14 @@
-import { useRouter } from "next/router";
-import ResourceLayout from "src/views/pages/resources/details/layout/resource-layout";
-import { resourceMenuIds } from "src/views/pages/resources/details/layout/resource-menu-items";
-import ResourceSpecificationList from "src/views/pages/resources/details/resource-specifications/resource-specification-list";
-import subMenuItems, {
-  findSubMenuItem,
-  generalInfoMenuIds,
-} from "../(sub-menu-items)";
+import { useRouter } from 'next/router';
+import ResourceLayout from 'src/views/pages/resources/details/layout/resource-layout';
+import { resourceMenuIds } from 'src/views/pages/resources/details/layout/resource-menu-items';
+import ResourceSpecificationList from 'src/views/pages/resources/details/resource-specifications/resource-specification-list';
+import subMenuItems, { findSubMenuItem, generalInfoMenuIds } from '../(sub-menu-items)';
 
-const defaultMenuItem = findSubMenuItem(
-  subMenuItems("", ""),
-  generalInfoMenuIds.generalInfo.specification,
-);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), generalInfoMenuIds.generalInfo.specification);
 
 const ResourceSpecificationPage = () => {
   const router = useRouter();
-  const { id = "", typeId = "" } = router.query;
+  const { id = '', typeId = '' } = router.query;
 
   return (
     <ResourceLayout
@@ -32,7 +26,7 @@ const ResourceSpecificationPage = () => {
 // Access control configuration
 ResourceSpecificationPage.acl = {
   subject: defaultMenuItem?.model,
-  action: "view",
+  action: 'view'
 };
 
 export default ResourceSpecificationPage;

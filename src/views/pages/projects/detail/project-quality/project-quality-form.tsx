@@ -1,9 +1,9 @@
-import { Box } from "@mui/material";
-import { FormikProps } from "formik";
-import { useTranslation } from "react-i18next";
-import { ProjectQuality } from "src/types/project/project-quality";
-import CustomTextBox from "src/views/shared/form/custom-text-box";
-import CustomFileUpload from "src/views/shared/form/custome-file-selector";
+import { Box } from '@mui/material';
+import { FormikProps } from 'formik';
+import { useTranslation } from 'react-i18next';
+import { ProjectQuality } from 'src/types/project/project-quality';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface ProjectQualityFormProps {
   formik: FormikProps<ProjectQuality>;
@@ -13,12 +13,7 @@ interface ProjectQualityFormProps {
   projectId: string;
 }
 
-const ProjectQualityForm: React.FC<ProjectQualityFormProps> = ({
-  formik,
-  file,
-  onFileChange,
-  projectId,
-}) => {
+const ProjectQualityForm: React.FC<ProjectQualityFormProps> = ({ formik, file, onFileChange, projectId }) => {
   const { t } = useTranslation();
 
   return (
@@ -26,7 +21,7 @@ const ProjectQualityForm: React.FC<ProjectQualityFormProps> = ({
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t("project.quality.major-quality-problem-encountered")}
+          label={t('project.quality.major-quality-problem-encountered')}
           name="major_quality_problem_encountered"
           size="small"
           sx={{ mb: 2 }}
@@ -35,7 +30,7 @@ const ProjectQualityForm: React.FC<ProjectQualityFormProps> = ({
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t("project.quality.description")}
+          label={t('project.quality.description')}
           name="description"
           size="small"
           multiline
@@ -46,7 +41,7 @@ const ProjectQualityForm: React.FC<ProjectQualityFormProps> = ({
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t("project.quality.measures-taken")}
+          label={t('project.quality.measures-taken')}
           name="measures_taken"
           size="small"
           multiline
@@ -57,7 +52,7 @@ const ProjectQualityForm: React.FC<ProjectQualityFormProps> = ({
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t("project.quality.lesson-learned")}
+          label={t('project.quality.lesson-learned')}
           name="lesson_learned"
           size="small"
           multiline
@@ -65,11 +60,7 @@ const ProjectQualityForm: React.FC<ProjectQualityFormProps> = ({
           sx={{ mb: 2 }}
         />
       </Box>
-      <CustomFileUpload
-        label={t("common.form.file-upload")}
-        file={file}
-        onFileChange={onFileChange}
-      />
+      <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />
     </>
   );
 };

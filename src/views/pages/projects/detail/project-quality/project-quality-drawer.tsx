@@ -1,14 +1,14 @@
-import { FormikProps } from "formik";
-import React, { useState } from "react";
-import projectQualityApiService from "src/services/project/project-quality-service";
-import { uploadFile } from "src/services/utils/file-utils";
-import { IApiPayload, IApiResponse } from "src/types/requests";
-import { ProjectQuality } from "src/types/project/project-quality";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import ProjectQualityForm from "./project-quality-form";
-import { uploadableResourceFileTypes } from "src/services/utils/file-constants";
+import { FormikProps } from 'formik';
+import React, { useState } from 'react';
+import projectQualityApiService from 'src/services/project/project-quality-service';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import { ProjectQuality } from 'src/types/project/project-quality';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import ProjectQualityForm from './project-quality-form';
+import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
 
 interface ProjectQualityDrawerType {
   open: boolean;
@@ -25,9 +25,7 @@ interface ProjectQualityDrawerType {
 // });
 
 const validationSchema = yup.object().shape({
-  major_quality_problem_encountered: yup
-    .string()
-    .required("Major Quality Problem Encountered is required"),
+  major_quality_problem_encountered: yup.string().required('Major Quality Problem Encountered is required')
 });
 
 const ProjectQualityDrawer: React.FC<ProjectQualityDrawerType> = (props) => {
@@ -45,19 +43,16 @@ const ProjectQualityDrawer: React.FC<ProjectQualityDrawerType> = (props) => {
   };
 
   const editProjectQuality = async (body: IApiPayload<ProjectQuality>) => {
-    return await projectQualityApiService.update(
-      projectQuality?.id || "",
-      body,
-    );
+    return await projectQualityApiService.update(projectQuality?.id || '', body);
   };
 
   const getPayload = (values: ProjectQuality) => ({
     data: {
       ...values,
       id: projectQuality?.id,
-      project_id: projectId,
+      project_id: projectId
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => {
@@ -65,19 +60,10 @@ const ProjectQualityDrawer: React.FC<ProjectQualityDrawerType> = (props) => {
     setUploadableFile(null);
   };
 
-  const onActionSuccess = async (
-    response: IApiResponse<ProjectQuality>,
-    payload: IApiPayload<ProjectQuality>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<ProjectQuality>, payload: IApiPayload<ProjectQuality>) => {
     if (payload.files.length > 0) {
       if (response.payload.id) {
-        uploadFile(
-          payload.files[0],
-          uploadableResourceFileTypes.projectQuality,
-          response.payload.id,
-          "",
-          "",
-        );
+        uploadFile(payload.files[0], uploadableResourceFileTypes.projectQuality, response.payload.id, '', '');
       }
     }
     refetch();
@@ -87,15 +73,11 @@ const ProjectQualityDrawer: React.FC<ProjectQualityDrawerType> = (props) => {
   };
 
   return (
-    <CustomSideDrawer
-      title={`project.quality.${isEdit ? "edit" : "create"}`}
-      handleClose={handleClose}
-      open={open}
-    >
+    <CustomSideDrawer title={`project.quality.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.quality.${isEdit ? "edit" : "create"}`}
+          title={`project.quality.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={projectQuality}

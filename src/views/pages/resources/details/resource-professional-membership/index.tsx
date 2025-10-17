@@ -1,40 +1,34 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { ITEMS_LISTING_TYPE } from "src/configs/app-constants";
-import usePaginatedFetch from "src/hooks/use-paginated-fetch";
-import professionalMembershipApiService from "src/services/resource/professional-membership-service";
-import { defaultCreateActionConfig } from "src/types/general/listing";
-import type { GetRequestParam, IApiResponse } from "src/types/requests";
-import { formatCreatedAt } from "src/utils/formatter/date";
-import ItemsListing from "src/views/shared/listing";
-import OtherDetailSidebar from "src/views/shared/layouts/other/other-detail-drawer";
-import MembershipCard from "./professional-membership-card";
-import MembershipDrawer from "./professional-membership-drawer";
-import type { ProfessionalMembership } from "src/types/resource";
-import { membershipColumns } from "./professional-membership-row";
+import { Box } from '@mui/material';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import professionalMembershipApiService from 'src/services/resource/professional-membership-service';
+import { defaultCreateActionConfig } from 'src/types/general/listing';
+import type { GetRequestParam, IApiResponse } from 'src/types/requests';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import ItemsListing from 'src/views/shared/listing';
+import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
+import MembershipCard from './professional-membership-card';
+import MembershipDrawer from './professional-membership-drawer';
+import type { ProfessionalMembership } from 'src/types/resource';
+import { membershipColumns } from './professional-membership-row';
 
 interface ResourceProfessionalMembershipProps {
   professionalId: string;
   typeId: string;
 }
 
-const ResourceProfessionalMembership: React.FC<
-  ResourceProfessionalMembershipProps
-> = ({ professionalId }) => {
+const ResourceProfessionalMembership: React.FC<ResourceProfessionalMembershipProps> = ({ professionalId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<ProfessionalMembership | null>(
-    null,
-  );
+  const [selectedRow, setSelectedRow] = useState<ProfessionalMembership | null>(null);
   const { t } = useTranslation();
 
-  const fetchMemberships = (
-    params: GetRequestParam,
-  ): Promise<IApiResponse<ProfessionalMembership[]>> => {
+  const fetchMemberships = (params: GetRequestParam): Promise<IApiResponse<ProfessionalMembership[]>> => {
     return professionalMembershipApiService.getAll({
       ...params,
-      filter: { ...params.filter, professional_id: professionalId },
+      filter: { ...params.filter, professional_id: professionalId }
     });
   };
 
@@ -42,10 +36,10 @@ const ResourceProfessionalMembership: React.FC<
     data: memberships,
     pagination,
     handlePageChange,
-    refetch,
+    refetch
   } = usePaginatedFetch<ProfessionalMembership[]>({
-    queryKey: ["association-memberships"],
-    fetchFunction: fetchMemberships,
+    queryKey: ['association-memberships'],
+    fetchFunction: fetchMemberships
   });
 
   const toggleDrawer = () => {
@@ -73,43 +67,35 @@ const ResourceProfessionalMembership: React.FC<
     setSelectedRow(membership);
   };
 
-  const mapMembershipToDetailItems = (
-    membership: ProfessionalMembership,
-  ): { title: string; value: string }[] => [
+  const mapMembershipToDetailItems = (membership: ProfessionalMembership): { title: string; value: string }[] => [
     {
-      title: t(
-        "resources.professional.association-membership.association-name",
-      ),
-      value: membership.association_name,
+      title: t('resources.professional.association-membership.association-name'),
+      value: membership.association_name
     },
     {
-      title: t("resources.professional.association-membership.membership-type"),
-      value: membership.membership_type || "N/A",
+      title: t('resources.professional.association-membership.membership-type'),
+      value: membership.membership_type || 'N/A'
     },
     {
-      title: t("resources.professional.association-membership.position"),
-      value: membership.position || "N/A",
+      title: t('resources.professional.association-membership.position'),
+      value: membership.position || 'N/A'
     },
     {
-      title: t("resources.professional.association-membership.description"),
-      value: membership.description || "N/A",
+      title: t('resources.professional.association-membership.description'),
+      value: membership.description || 'N/A'
     },
     {
-      title: t(
-        "resources.professional.association-membership.registration-date",
-      ),
-      value: membership.registration_date || "N/A",
+      title: t('resources.professional.association-membership.registration-date'),
+      value: membership.registration_date || 'N/A'
     },
     {
-      title: t("resources.professional.association-membership.end-date"),
-      value: membership.end_date || "N/A",
+      title: t('resources.professional.association-membership.end-date'),
+      value: membership.end_date || 'N/A'
     },
     {
-      title: t("common.created-at"),
-      value: membership.created_at
-        ? formatCreatedAt(membership.created_at)
-        : "N/A",
-    },
+      title: t('common.created-at'),
+      value: membership.created_at ? formatCreatedAt(membership.created_at) : 'N/A'
+    }
   ];
 
   return (
@@ -128,46 +114,33 @@ const ResourceProfessionalMembership: React.FC<
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapMembershipToDetailItems(
-            selectedRow as ProfessionalMembership,
-          )}
-          id={selectedRow?.id || ""}
+          data={mapMembershipToDetailItems(selectedRow as ProfessionalMembership)}
+          id={selectedRow?.id || ''}
           hasReference={true}
           fileType="PROFESSIONAL_ASSOCIATION_MEMBERSHIP"
-          title={t("resources.professional.association-membership.details")}
+          title={t('resources.professional.association-membership.details')}
         />
       )}
 
       <ItemsListing
-        title={t("resources.professional.association-membership.title")}
+        title={t('resources.professional.association-membership.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: membershipColumns(
-            handleClickDetail,
-            handleEdit,
-            handleDelete,
-            t,
-          ),
+          headers: membershipColumns(handleClickDetail, handleEdit, handleDelete, t)
         }}
         isLoading={false}
         ItemViewComponent={({ data }) => (
-          <MembershipCard
-            onDetail={handleClickDetail}
-            membership={data}
-            onEdit={handleEdit}
-            refetch={refetch}
-            onDelete={handleDelete}
-          />
+          <MembershipCard onDetail={handleClickDetail} membership={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
           onlyIcon: false,
           permission: {
-            action: "create",
-            subject: "ProfessionalMembership",
-          },
+            action: 'create',
+            subject: 'ProfessionalMembership'
+          }
         }}
         fetchDataFunction={refetch}
         items={memberships || []}

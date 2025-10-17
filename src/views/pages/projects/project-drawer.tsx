@@ -1,12 +1,12 @@
-import * as yup from "yup";
+import * as yup from 'yup';
 
-import { FormikProps } from "formik";
-import projectApiService from "src/services/project/project-service";
-import { Project } from "src/types/project";
-import { IApiPayload } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import ProjectForm from "./project-form";
+import { FormikProps } from 'formik';
+import projectApiService from 'src/services/project/project-service';
+import { Project } from 'src/types/project';
+import { IApiPayload } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import ProjectForm from './project-form';
 
 interface ProjectDrawerType {
   open: boolean;
@@ -17,7 +17,7 @@ interface ProjectDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  name: yup.string().max(255).required("Project name is required"),
+  name: yup.string().max(255).required('Project name is required'),
   parent_id: yup.string().length(36).nullable(),
   department_id: yup.string().length(36).nullable(),
   projectcategory_id: yup.string().length(36).nullable(),
@@ -30,7 +30,7 @@ const validationSchema = yup.object().shape({
   contract_no: yup.string().max(255).nullable(),
   budget_code: yup.string().max(255).nullable(),
   procurement_no: yup.string().max(255).nullable(),
-  revision_no: yup.number().integer().nullable(),
+  revision_no: yup.number().integer().nullable()
 });
 
 const ProjectDrawer = (props: ProjectDrawerType) => {
@@ -42,7 +42,7 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
     return await projectApiService.create(body);
   };
   const editProject = async (body: IApiPayload<Project>) => {
-    return await projectApiService.update(project?.id || "", body);
+    return await projectApiService.update(project?.id || '', body);
   };
 
   const getPayload = (values: Project) => {
@@ -50,9 +50,9 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
       data: {
         ...values,
         id: project?.id,
-        projecttype_id: typeId,
+        projecttype_id: typeId
       },
-      files: [],
+      files: []
     };
     return payload;
   };
@@ -66,8 +66,8 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
   };
   return (
     <CustomSideDrawer
-      model={"project"}
-      title={`project.${isEdit ? "edit-project" : "create-project"}`}
+      model={'project'}
+      title={`project.${isEdit ? 'edit-project' : 'create-project'}`}
       handleClose={handleClose}
       open={open}
     >

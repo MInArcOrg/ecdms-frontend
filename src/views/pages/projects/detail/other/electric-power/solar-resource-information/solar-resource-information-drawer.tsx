@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import type { FormikProps } from "formik";
-import type { IApiPayload, IApiResponse } from "src/types/requests";
-import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
-import FormPageWrapper from "src/views/shared/form/form-wrapper";
-import * as yup from "yup";
-import SolarResourceInformationForm from "./solar-resource-information-form";
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
+import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
+import FormPageWrapper from 'src/views/shared/form/form-wrapper';
+import * as yup from 'yup';
+import SolarResourceInformationForm from './solar-resource-information-form';
 
-import { useState } from "react";
-import projectOtherApiSecondService from "src/services/project/project-other-second-service";
-import { uploadableProjectFileTypes } from "src/services/utils/file-constants";
-import { uploadFile } from "src/services/utils/file-utils";
-import type { SolarResourceInformation } from "src/types/project/other";
-import { DetailSubMenuItemChild } from "src/types/layouts/detail-layout";
+import { useState } from 'react';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import type { SolarResourceInformation } from 'src/types/project/other';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface SolarResourceInformationDrawerType {
   open: boolean;
@@ -23,17 +23,8 @@ interface SolarResourceInformationDrawerType {
   otherSubMenu?: DetailSubMenuItemChild;
 }
 
-const SolarResourceInformationDrawer = (
-  props: SolarResourceInformationDrawerType,
-) => {
-  const {
-    open,
-    toggle,
-    refetch,
-    solarResourceInformation,
-    projectId,
-    otherSubMenu,
-  } = props;
+const SolarResourceInformationDrawer = (props: SolarResourceInformationDrawerType) => {
+  const { open, toggle, refetch, solarResourceInformation, projectId, otherSubMenu } = props;
 
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
@@ -50,7 +41,7 @@ const SolarResourceInformationDrawer = (
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value))
-      .max(100, "Efficiency cannot exceed 100%"),
+      .max(100, 'Efficiency cannot exceed 100%'),
     annual_energy_production: yup
       .number()
       .nullable()
@@ -58,29 +49,18 @@ const SolarResourceInformationDrawer = (
     plant_life: yup
       .number()
       .nullable()
-      .integer("Must be an integer")
+      .integer('Must be an integer')
       .transform((value) => (isNaN(value) ? null : value)),
-    remark: yup.string().max(100).nullable(),
+    remark: yup.string().max(100).nullable()
   });
 
   const isEdit = Boolean(solarResourceInformation?.id);
 
-  const createSolarResourceInformation = async (
-    body: IApiPayload<SolarResourceInformation>,
-  ) =>
-    projectOtherApiSecondService<SolarResourceInformation>().create(
-      otherSubMenu?.apiRoute || "",
-      body,
-    );
+  const createSolarResourceInformation = async (body: IApiPayload<SolarResourceInformation>) =>
+    projectOtherApiSecondService<SolarResourceInformation>().create(otherSubMenu?.apiRoute || '', body);
 
-  const editSolarResourceInformation = async (
-    body: IApiPayload<SolarResourceInformation>,
-  ) =>
-    projectOtherApiSecondService<SolarResourceInformation>().update(
-      otherSubMenu?.apiRoute || "",
-      solarResourceInformation?.id || "",
-      body,
-    );
+  const editSolarResourceInformation = async (body: IApiPayload<SolarResourceInformation>) =>
+    projectOtherApiSecondService<SolarResourceInformation>().update(otherSubMenu?.apiRoute || '', solarResourceInformation?.id || '', body);
 
   const getPayload = (values: SolarResourceInformation) => ({
     data: {
@@ -90,25 +70,16 @@ const SolarResourceInformationDrawer = (
       annual_energy_production: values.annual_energy_production,
       plant_life: values.plant_life,
       remark: values.remark,
-      id: solarResourceInformation?.id,
+      id: solarResourceInformation?.id
     },
-    files: uploadableFile ? [uploadableFile] : [],
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (
-    response: IApiResponse<SolarResourceInformation>,
-    payload: IApiPayload<SolarResourceInformation>,
-  ) => {
+  const onActionSuccess = async (response: IApiResponse<SolarResourceInformation>, payload: IApiPayload<SolarResourceInformation>) => {
     if (payload.files.length > 0) {
-      await uploadFile(
-        payload.files[0],
-        uploadableProjectFileTypes.other.solarResourceInformation,
-        response.payload.id,
-        "",
-        "",
-      );
+      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.solarResourceInformation, response.payload.id, '', '');
     }
 
     refetch();
@@ -117,11 +88,7 @@ const SolarResourceInformationDrawer = (
 
   return (
     <CustomSideDrawer
-      title={`project.other.solar-resource-information.${
-        isEdit
-          ? `edit-solar-resource-information`
-          : `create-solar-resource-information`
-      }`}
+      title={`project.other.solar-resource-information.${isEdit ? `edit-solar-resource-information` : `create-solar-resource-information`}`}
       handleClose={handleClose}
       open={open}
     >
@@ -129,31 +96,19 @@ const SolarResourceInformationDrawer = (
         <FormPageWrapper
           edit={isEdit}
           title={`project.other.solar-resource-information.${
-            isEdit
-              ? `edit-solar-resource-information`
-              : `create-solar-resource-information`
+            isEdit ? `edit-solar-resource-information` : `create-solar-resource-information`
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...solarResourceInformation,
+            ...solarResourceInformation
           }}
-          createActionFunc={
-            isEdit
-              ? editSolarResourceInformation
-              : createSolarResourceInformation
-          }
+          createActionFunc={isEdit ? editSolarResourceInformation : createSolarResourceInformation}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<SolarResourceInformation>) => {
-            return (
-              <SolarResourceInformationForm
-                file={uploadableFile}
-                onFileChange={onFileChange}
-                formik={formik}
-              />
-            );
+            return <SolarResourceInformationForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

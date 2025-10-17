@@ -1,12 +1,12 @@
-import { Box, Grid } from "@mui/material";
-import { useRouter } from "next/router";
-import DetailMenu from "./DetailMenu";
-import { menuItems } from "./tabs";
+import { Box, Grid } from '@mui/material';
+import { useRouter } from 'next/router';
+import DetailMenu from './DetailMenu';
+import { menuItems } from './tabs';
 
 function ProjectAnalyticsLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const { } = router.query;
-  const baseUrl = "/analytics/project";
+  const {} = router.query;
+  const baseUrl = '/analytics/project';
 
   return (
     <Box>

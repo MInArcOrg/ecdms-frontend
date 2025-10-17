@@ -1,23 +1,16 @@
-import {
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  IconButton,
-  Typography,
-} from "@mui/material";
-import { Fragment, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { Box, Card, CardActions, CardContent, IconButton, Typography } from '@mui/material';
+import { Fragment, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import Icon from "src/@core/components/icon";
-import stakeholderInfoApiService from "src/services/stakeholder/stakeholder-info-service";
-import { uploadableStakeholderFileTypes } from "src/services/utils/file-constants";
-import FileDrawer from "src/views/components/custom/files-drawer";
-import ModelActionComponent from "src/views/components/custom/model-actions";
-import RowOptions from "src/views/shared/listing/row-options";
-import StakeholderInfoDrawer from "./stakeholder-info-drawer";
-import { StakeholderInfo } from "./stakeholder-info-form";
-import { formatCurrency } from "src/utils/formatter/currency";
+import Icon from 'src/@core/components/icon';
+import stakeholderInfoApiService from 'src/services/stakeholder/stakeholder-info-service';
+import { uploadableStakeholderFileTypes } from 'src/services/utils/file-constants';
+import FileDrawer from 'src/views/components/custom/files-drawer';
+import ModelActionComponent from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
+import StakeholderInfoDrawer from './stakeholder-info-drawer';
+import { StakeholderInfo } from './stakeholder-info-form';
+import { formatCurrency } from 'src/utils/formatter/currency';
 
 interface StakeholderInfoDetailComponentProps {
   stakeholderInfo: StakeholderInfo;
@@ -25,9 +18,7 @@ interface StakeholderInfoDetailComponentProps {
   stakeholder_id: string;
 }
 
-const StakeholderInfoDetailComponent: React.FC<
-  StakeholderInfoDetailComponentProps
-> = ({ stakeholderInfo, refetch, stakeholder_id }) => {
+const StakeholderInfoDetailComponent: React.FC<StakeholderInfoDetailComponentProps> = ({ stakeholderInfo, refetch, stakeholder_id }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const { t } = useTranslation();
 
@@ -48,11 +39,11 @@ const StakeholderInfoDetailComponent: React.FC<
       <Card>
         <Box
           sx={{
-            display: "flex",
-            flexDirection: "row-reverse",
+            display: 'flex',
+            flexDirection: 'row-reverse',
             p: 1,
             m: 1,
-            borderRadius: 1,
+            borderRadius: 1
           }}
         >
           <></>
@@ -61,9 +52,7 @@ const StakeholderInfoDetailComponent: React.FC<
           </IconButton>
         </Box>
         <CardContent>
-          <Typography variant="body1">
-            {t("No stakeholder information available")}
-          </Typography>
+          <Typography variant="body1">{t('No stakeholder information available')}</Typography>
         </CardContent>
 
         {showDrawer && (
@@ -93,26 +82,15 @@ const StakeholderInfoDetailComponent: React.FC<
       <Card>
         <CardContent>
           {/* Optional fields from the StakeholderInfo interface */}
-          <Box
-            sx={{ display: { md: "flex" } }}
-            alignItems="start"
-            justifyContent="space-between"
-            mt={3}
-          >
+          <Box sx={{ display: { md: 'flex' } }} alignItems="start" justifyContent="space-between" mt={3}>
             {stakeholderInfo.capital && (
               <Typography variant="body1">
-                <strong>
-                  {t("stakeholder.stakeholder-info.form.capital")}:
-                </strong>{" "}
-                {formatCurrency(Number(stakeholderInfo.capital))}
+                <strong>{t('stakeholder.stakeholder-info.form.capital')}:</strong> {formatCurrency(Number(stakeholderInfo.capital))}
               </Typography>
             )}
             {stakeholderInfo.general_manager && (
               <Typography variant="body1">
-                <strong>
-                  {t("stakeholder.stakeholder-info.form.general-manager")}:
-                </strong>{" "}
-                {stakeholderInfo.general_manager}
+                <strong>{t('stakeholder.stakeholder-info.form.general-manager')}:</strong> {stakeholderInfo.general_manager}
               </Typography>
             )}
           </Box>
@@ -120,23 +98,16 @@ const StakeholderInfoDetailComponent: React.FC<
           {stakeholderInfo.description && (
             <Box mt={3}>
               <Typography variant="body1">
-                <strong>
-                  {t("stakeholder.stakeholder-info.form.description")}:
-                </strong>{" "}
-                {stakeholderInfo.description}
+                <strong>{t('stakeholder.stakeholder-info.form.description')}:</strong> {stakeholderInfo.description}
               </Typography>
             </Box>
           )}
         </CardContent>
 
-        <CardActions style={{ justifyContent: "flex-end" }}>
+        <CardActions style={{ justifyContent: 'flex-end' }}>
           <Box>
-            <FileDrawer
-              id={stakeholderInfo.id}
-              type={uploadableStakeholderFileTypes.stakeholderInfo}
-            />{" "}
-            &nbsp;
-            <Box sx={{ display: "flex" }}>
+            <FileDrawer id={stakeholderInfo.id} type={uploadableStakeholderFileTypes.stakeholderInfo} /> &nbsp;
+            <Box sx={{ display: 'flex' }}>
               <ModelActionComponent
                 model="StakeholderInfo"
                 model_id={stakeholderInfo.id}
@@ -150,12 +121,12 @@ const StakeholderInfoDetailComponent: React.FC<
                 onDelete={() => handleDelete(stakeholderInfo.id)}
                 item={stakeholderInfo}
                 deletePermissionRule={{
-                  action: "delete",
-                  subject: "stakeholderinfo",
+                  action: 'delete',
+                  subject: 'stakeholderinfo'
                 }}
                 editPermissionRule={{
-                  action: "update",
-                  subject: "stakeholderinfo",
+                  action: 'update',
+                  subject: 'stakeholderinfo'
                 }}
                 options={[]}
               />

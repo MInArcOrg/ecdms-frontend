@@ -1,19 +1,11 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Divider,
-  Typography,
-} from "@mui/material";
-import type React from "react";
-import { useTranslation } from "react-i18next";
-import { uploadableResourceFileTypes } from "src/services/utils/file-constants";
-import type { ProfessionalWorkExperience } from "src/types/resource";
-import FileDrawer from "src/views/components/custom/files-drawer";
-import ModelAction from "src/views/components/custom/model-actions";
-import RowOptions from "src/views/shared/listing/row-options";
+import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
+import type React from 'react';
+import { useTranslation } from 'react-i18next';
+import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
+import type { ProfessionalWorkExperience } from 'src/types/resource';
+import FileDrawer from 'src/views/components/custom/files-drawer';
+import ModelAction from 'src/views/components/custom/model-actions';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface ExperienceCardProps {
   experience: ProfessionalWorkExperience;
@@ -23,24 +15,13 @@ interface ExperienceCardProps {
   onDetail: (experience: ProfessionalWorkExperience) => void;
 }
 
-const ExperienceCard: React.FC<ExperienceCardProps> = ({
-  experience,
-  refetch,
-  onEdit,
-  onDelete,
-  onDetail,
-}) => {
+const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
     <Card sx={{ p: 2 }}>
       <CardContent>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          mb={1}
-        >
+        <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
           <Typography variant="h5" fontWeight="bold">
             <Typography
               noWrap
@@ -48,9 +29,9 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
               onClick={() => onDetail(experience)}
               sx={{
                 fontWeight: 500,
-                textDecoration: "none",
-                color: "text.secondary",
-                "&:hover": { color: "primary.main" },
+                textDecoration: 'none',
+                color: 'text.secondary',
+                '&:hover': { color: 'primary.main' }
               }}
             >
               {experience.company_name}
@@ -62,28 +43,22 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t("resources.professional.work-experience.position")}:{" "}
-            {experience?.position || "N/A"}
+            {t('resources.professional.work-experience.position')}: {experience?.position || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("resources.professional.work-experience.department")}:{" "}
-            {experience?.department || "N/A"}
+            {t('resources.professional.work-experience.department')}: {experience?.department || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t("resources.professional.work-experience.task-description")}:{" "}
-            {experience?.task_description || "N/A"}
+            {t('resources.professional.work-experience.task-description')}: {experience?.task_description || 'N/A'}
           </Typography>
         </Box>
       </CardContent>
 
-      <CardActions sx={{ justifyContent: "flex-end" }}>
-        <FileDrawer
-          id={experience?.id || ""}
-          type={uploadableResourceFileTypes.professionalWorkExperience}
-        />
+      <CardActions sx={{ justifyContent: 'flex-end' }}>
+        <FileDrawer id={experience?.id || ''} type={uploadableResourceFileTypes.professionalWorkExperience} />
         <ModelAction
           model="ProfessionalWorkExperience"
-          model_id={experience?.id || ""}
+          model_id={experience?.id || ''}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
@@ -91,15 +66,15 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         />
         <RowOptions
           deletePermissionRule={{
-            action: "delete",
-            subject: "professionalworkexperience",
+            action: 'delete',
+            subject: 'professionalworkexperience'
           }}
           editPermissionRule={{
-            action: "update",
-            subject: "professionalworkexperience",
+            action: 'update',
+            subject: 'professionalworkexperience'
           }}
           onEdit={() => onEdit(experience)}
-          onDelete={() => onDelete(experience?.id || "")}
+          onDelete={() => onDelete(experience?.id || '')}
           item={experience}
           options={[]}
         />
