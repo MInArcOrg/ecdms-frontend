@@ -87,6 +87,10 @@ export const subMenuItems = (
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-safety-and-security",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-safety-and-security`,
           model: "railwaystationplatformsafetyandsecurity",
+          fileType:
+            railwayFacilitiesAndStationsIds.stations_and_platforms
+              .station_platform_safety_and_security,
+          apiRoute: "railway-station-platform-safety-and-securities",
         },
         {
           id: railwayFacilitiesAndStationsIds.stations_and_platforms

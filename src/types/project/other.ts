@@ -2197,3 +2197,16 @@ export interface RailwayStationPlatformSignageAndWayFinding {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayStationPlatformSafetyAndSecurity {
+  id: string;
+  project_id: string;
+  railway_station_platform_layout_id: string; // Foreign Key (UUID as String)
+  platform_safety_and_security?: string | null;
+  fire_safety_measures?: string | null;
+  surveillance_systems?: string | null;
+  remark?: string | null;
+  railwayStationPlatformLayout?: RailwayStationPlatformLayout | null;
+  created_at?: string;
+  updated_at?: string;
+
+}
