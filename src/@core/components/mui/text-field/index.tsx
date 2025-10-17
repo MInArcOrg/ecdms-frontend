@@ -163,5 +163,5 @@ const CustomTextField = forwardRef((props: TextFieldProps, ref) => {
 
   return <TextFieldStyled size={size} inputRef={ref} {...rest} variant="filled" InputLabelProps={{ ...InputLabelProps, shrink: true }} />;
 });
-
+CustomTextField.displayName = 'CustomTextField';
 export default CustomTextField;

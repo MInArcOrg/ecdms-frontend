@@ -22,6 +22,9 @@ const CustomAutocomplete = forwardRef(
       <Autocomplete {...props} ref={ref} PaperComponent={(props) => <Paper {...props} className="custom-autocomplete-paper" />} />
     );
   }
-) as typeof Autocomplete;
+) as unknown as React.NamedExoticComponent<typeof Autocomplete>;
+
+// Add displayName for better debugging
+CustomAutocomplete.displayName = 'CustomAutocomplete';
 
 export default CustomAutocomplete;

@@ -53,5 +53,5 @@ Avatar.defaultProps = {
   skin: 'filled',
   color: 'primary'
 };
-
+Avatar.displayName = 'Avatar';
 export default Avatar;
