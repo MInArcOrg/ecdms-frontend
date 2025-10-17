@@ -99,6 +99,9 @@ export const subMenuItems = (
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-surface-and-finishes",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-surface-and-finishes`,
           model: "stationplatformsurfaceandfinish",
+          apiRoute: "railway-station-platform-surface-and-finishes",
+          fileType: railwayFacilitiesAndStationsIds.stations_and_platforms
+            .station_platform_surface_and_finishes,
         },
         {
           id: railwayFacilitiesAndStationsIds.stations_and_platforms
