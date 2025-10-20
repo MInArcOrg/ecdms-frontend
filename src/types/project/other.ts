@@ -2236,3 +2236,18 @@ export interface RailwayStationPlatformPassengerFlowAndCapacity {
   created_at?: string;
   updated_at?: string;
 }
+
+export interface RailwayStationPlatformEnvironmentalAndOtherFactor {
+  id: string;
+  project_id: string;
+  railway_station_platform_layout_id: string; // Foreign Key (UUID as String)
+  environmental_compliance_measures?: string | null;
+  noise_and_vibration_control_measures?: string | null;
+  sustainable_design_features?: string | null;
+  remark?: string | null;
+  // Include nested object for display in the list
+  railwayStationPlatformLayout?: RailwayStationPlatformLayout | null;
+  created_at?: string;
+  updated_at?: string;
+
+}

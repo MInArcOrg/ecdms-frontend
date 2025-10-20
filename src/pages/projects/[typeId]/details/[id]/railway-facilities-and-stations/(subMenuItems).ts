@@ -121,6 +121,9 @@ export const subMenuItems = (
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-environmental-and-other-factors",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-environmental-and-other-factors`,
           model: "stationplatformenvironmentalandotherfactor",
+          apiRoute: "railway-station-platform-environmental-and-other-factors",
+          fileType: railwayFacilitiesAndStationsIds.stations_and_platforms
+            .station_platform_environmental_and_other_factors,
         },
       ],
     },

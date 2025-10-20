@@ -4248,6 +4248,19 @@
           "capacity_assessment": "Capacity Assessment",
           "remark": "Remark"
         }
+      },
+      "railway-station-platform-environmental-and-other-factor": {
+        "title": "Platform Environmental & Other Factors",
+        "detail": "Environmental Factor Details",
+        "create": "Create Environmental Factor Record",
+        "edit": "Edit Environmental Factor Record",
+        "details": {
+          "railway_station_platform_layout_id": "Platform Identification",
+          "environmental_compliance_measures": "Environmental Compliance Measures",
+          "noise_and_vibration_control_measures": "Noise/Vibration Control Measures",
+          "sustainable_design_features": "Sustainable Design Features",
+          "remark": "Remark"
+        }
       }
     }
   },
