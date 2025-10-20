@@ -461,7 +461,10 @@
       "edit-track-inspection-frequency": "Edit Track Inspection Frequency",
       "track-safety-measures": "Track Safety Measures",
       "create-track-safety-measure": "Add Track Safety Measure",
-      "edit-track-safety-measure": "Edit Track Safety Measure"
+      "edit-track-safety-measure": "Edit Track Safety Measure",
+      "power-supply-system-types": "Power Supply System Types",
+      "create-power-supply-system-type": "Add Power Supply System Type",
+      "edit-power-supply-system-type": "Edit Power Supply System Type"
     },
     "form": {
       "title": "Title",
