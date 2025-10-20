@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayFacilitiesAndStationsIds } from '../(subMenuItems)';
+import RailwayStationPlatformEnvironmentalAndOtherFactorList from 'src/views/pages/projects/detail/other/road/railway-station-platform-environmental-and-other-factor';
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems('', ''),
@@ -24,7 +25,9 @@ const StationPlatformEnvironmentalAndOtherFactorsPage = () => {
       activeSubMenuId={railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_environmental_and_other_factors}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Station Platform Environmental and Other Factors Placeholder</div>
+      <RailwayStationPlatformEnvironmentalAndOtherFactorList
+        projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem}
+      />
     </ProjectLayout>
   );
 };
