@@ -110,6 +110,9 @@ export const subMenuItems = (
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-passenger-flow-and-capacity",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-passenger-flow-and-capacity`,
           model: "stationplatformpassengerflowandcapacity",
+          apiRoute: "railway-station-platform-passenger-flow-and-capacities",
+          fileType: railwayFacilitiesAndStationsIds.stations_and_platforms
+            .station_platform_passenger_flow_and_capacity,
         },
         {
           id: railwayFacilitiesAndStationsIds.stations_and_platforms

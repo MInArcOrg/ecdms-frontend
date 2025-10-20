@@ -4235,6 +4235,19 @@
           "paint_or_color_schemes": "Paint/Color Schemes",
           "remark": "Remark"
         }
+      },
+      "railway-station-platform-passenger-flow-and-capacity": {
+        "title": "Platform Passenger Flow & Capacity",
+        "detail": "Flow & Capacity Details",
+        "create": "Create Flow & Capacity Record",
+        "edit": "Edit Flow & Capacity Record",
+        "details": {
+          "railway_station_platform_layout_id": "Platform Identification",
+          "passenger_flow_during_peak_hour": "Peak Hour Passenger Flow",
+          "minimum_passenger_flow": "Minimum Passenger Flow",
+          "capacity_assessment": "Capacity Assessment",
+          "remark": "Remark"
+        }
       }
     }
   },
