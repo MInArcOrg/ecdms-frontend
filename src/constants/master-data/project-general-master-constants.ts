@@ -1106,7 +1106,8 @@ export const projectMasterModels = {
     editTitle: 'edit-network-type',
     fileType: 'NETWORK_TYPE',
     flag: 'TELECOMMUNICATION'
-  }
+  },
+
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 
