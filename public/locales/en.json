@@ -1709,7 +1709,7 @@
           "site-area": "Site Area",
           "annual-traffic-size": "Annual Traffic Size",
           "revision-no": "Revision No",
-          "created-at": "Addd At"
+          "created-at": "Created At"
         }
       },
       "telecom-infrastructure": {
@@ -2283,7 +2283,7 @@
           "drainage-type": "Drainage Type",
           "drainage-condition": "Drainage Condition",
           "remark": "Remarks",
-          "created-at": "Addd At",
+          "created-at": "Created At",
           "updated-at": "Updated At"
         }
       },
@@ -2316,7 +2316,7 @@
           "intersection-type": "Intersection Type",
           "driveway-access-point": "Driveway Access Point",
           "similar-for-all": "Similar For All",
-          "created-at": "Addd At",
+          "created-at": "Created At",
           "updated-at": "Updated At"
         }
       },
@@ -2621,7 +2621,7 @@
         "environmental-data-details": "Environmental Data Details",
         "details": {
           "remark": "Remark",
-          "created-at": "Addd At",
+          "created-at": "Created At",
           "updated-at": "Updated At"
         },
         "file-types": {
@@ -2641,7 +2641,7 @@
             "weather-condition": "Weather Condition",
             "pavement-condition": "Pavement Condition",
             "remark": "Remark",
-            "created-at": "Addd At",
+            "created-at": "Created At",
             "updated-at": "Updated At"
           }
         }
@@ -2730,7 +2730,7 @@
           "retaining-walls": "Retaining Walls",
           "geological-hazard": "Geological Hazard",
           "remark": "Remark",
-          "created-at": "Addd At",
+          "created-at": "Created At",
           "updated-at": "Updated At"
         },
         "file-types": {
@@ -4328,7 +4328,7 @@
     "inactive": "InActive",
     "meters": "Meters",
     "inches": "Inches",
-    "created-at": "Addd At",
+    "created-at": "Created At",
     "updated-at": "update At",
     "years": "Years",
     "kwh-per-m2": "kWh/m²",
@@ -4353,7 +4353,7 @@
     },
     "table-columns": {
       "id": "ID",
-      "created-at": "Addd At",
+      "created-at": "Created At",
       "updated-at": "update At",
       "files": "Files",
       "status": "Status",
