@@ -461,10 +461,7 @@
       "edit-track-inspection-frequency": "Edit Track Inspection Frequency",
       "track-safety-measures": "Track Safety Measures",
       "create-track-safety-measure": "Add Track Safety Measure",
-      "edit-track-safety-measure": "Edit Track Safety Measure",
-      "power-supply-system-types": "Power Supply System Types",
-      "create-power-supply-system-type": "Add Power Supply System Type",
-      "edit-power-supply-system-type": "Edit Power Supply System Type"
+      "edit-track-safety-measure": "Edit Track Safety Measure"
     },
     "form": {
       "title": "Title",
@@ -4263,6 +4260,18 @@
           "noise_and_vibration_control_measures": "Noise/Vibration Control Measures",
           "sustainable_design_features": "Sustainable Design Features",
           "remark": "Remark"
+        }
+      },
+      "railway-power-substations-and-equipment": {
+        "title": "Railway Power Substations and Equipment",
+        "create": "Create Railway Power Substation Record",
+        "detail": "Railway Power Substation Record Details",
+        "edit": "Edit Railway Power Substation Record",
+        "details": {
+          "railway_station_platform_layout_id": "Platform Identification",
+          "substation_capacity_and_equipment_specifications": "Substation Capacity and Equipment Specifications",
+          "remark": "Remark",
+          "transformer-component-document-upload": "Transformer/Switchgear Component File (TRANSFORMER_SWITCHGEAR_OTHER_COMPONENT_FILE)"
         }
       }
     }
