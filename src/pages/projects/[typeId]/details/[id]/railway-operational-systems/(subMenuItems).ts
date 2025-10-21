@@ -182,7 +182,10 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyMaintenanceAndTesting,
         title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-supply-maintenance-and-testing',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-maintenance-and-testing`
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-maintenance-and-testing`,
+        apiRoute: 'railway-power-supply-maintenance-and-testings',
+        model: 'railwaypowersupplymaintenanceandtesting',
+        fileType: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyMaintenanceAndTesting
       },
       {
         id: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplySafetyAndCompliance,
