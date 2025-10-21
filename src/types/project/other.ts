@@ -2251,6 +2251,14 @@ export interface RailwayStationPlatformEnvironmentalAndOtherFactor {
   updated_at?: string;
 
 }
+export interface RailwayPowerSupplyConfiguration {
+  id: string;
+  project_id: string;
+  power_supply_system_type_id: string;
+  voltage_level_and_frequency?: string | null;
+  power_supply_capacity_and_load_requirements?: string | null;
+  remark?: string | null;
+}
 export interface RailwayPowerSubstationAndEquipment {
   id: string;
   project_id: string;

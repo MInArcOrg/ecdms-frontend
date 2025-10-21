@@ -4262,6 +4262,19 @@
           "remark": "Remark"
         }
       },
+      "railway-power-supply-configuration": {
+        "title": "Railway Power Supply Configuration",
+        "title-short": "Power Supply Config",
+        "detail": "Power Supply Configuration Details",
+        "create": "Create Power Supply Configuration Record",
+        "edit": "Edit Power Supply Configuration Record",
+        "details": {
+          "power_supply_system_type_id": "System Type",
+          "voltage_level_and_frequency": "Voltage Level and Frequency",
+          "power_supply_capacity_and_load_requirements": "Capacity and Load Requirements",
+          "remark": "Remark"
+        }
+      },
       "railway-power-substations-and-equipment": {
         "title": "Railway Power Substations and Equipment",
         "create": "Create Railway Power Substation Record",
