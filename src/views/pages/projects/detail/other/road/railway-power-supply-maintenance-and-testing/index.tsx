@@ -13,7 +13,7 @@ import { defaultCreateActionConfig } from 'src/types/general/listing';
 import {
   RAILWAY_POWER_SUPPLY_MAINTENANCE_AND_TESTING_FILE_TYPES,
   RAILWAY_POWER_SUPPLY_MAINTENANCE_AND_TESTING_ENTITY_SUBJECT
-} from './filet-type-config';
+} from './file-type-config';
 
 // Hook and Service Imports
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';

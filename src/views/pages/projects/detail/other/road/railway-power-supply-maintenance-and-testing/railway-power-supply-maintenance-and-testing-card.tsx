@@ -9,7 +9,7 @@ import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import { gridSpacing } from 'src/configs/app-constants';
-import type { FileTypeConfig } from './filet-type-config';
+import type { FileTypeConfig } from './file-type-config';
 import { formatDate } from 'src/utils/formatter/date';
 
 interface RailwayPowerSupplyMaintenanceAndTestingCardProps {

@@ -12,7 +12,7 @@ import type { RailwayPowerSupplyMaintenanceAndTesting, RailwayStationPlatformLay
 import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
-import type { FileTypeConfig } from './filet-type-config';
+import type { FileTypeConfig } from './file-type-config';
 import CustomSwitch from 'src/views/shared/form/custom-switch';
 import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
 
