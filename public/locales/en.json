@@ -4303,6 +4303,27 @@
           "distribution-transformer-specification": "Distribution Transformer Specification",
           "main-document": "Main Document"
         }
+      },
+      "railway-power-supply-maintenance-and-testing": {
+        "title": "Power Supply Maintenance & Testing",
+        "title-short": "Power Maint.",
+        "detail": "Maintenance & Testing Details",
+        "create": "Create Maintenance Record",
+        "edit": "Edit Maintenance Record",
+        "details": {
+          "platform-layout": "Platform Layout / Station",
+          "maintenance-schedules-and-activities": "Has Maintenance Schedules/Activities?",
+          "testing-and-commissioning-procedures": "Has Testing/Commissioning Procedures?",
+          "recent-maintenance-records-date": "Recent Maintenance Date",
+          "recent-records-date": "Recent Maint. Date",
+          "maintenance-schedules": "Maint. Schedules",
+          "testing-procedures": "Testing Procedures",
+          "remark": "Remark"
+        },
+        "file-types": {
+          "main-document": "Main Document",
+          "recent-records": "Recent Records File"
+        }
       }
     }
   },

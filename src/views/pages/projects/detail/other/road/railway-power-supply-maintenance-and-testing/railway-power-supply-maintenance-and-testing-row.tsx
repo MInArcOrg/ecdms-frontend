@@ -1,33 +1,33 @@
-// src/views/project/other/railway-power-distribution/railway-power-distribution-row.tsx
+// src/views/project/other/railway-power-supply-maintenance-and-testing/railway-power-supply-maintenance-and-testing-row.tsx
 
 import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import type { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import type { RailwayPowerDistribution } from 'src/types/project/other';
+import type { RailwayPowerSupplyMaintenanceAndTesting } from 'src/types/project/other';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
-import { formatCreatedAt } from 'src/utils/formatter/date';
-import type { FileTypeConfig, RAILWAY_POWER_DISTRIBUTION_ENTITY_SUBJECT } from './filet-type-config';
+import { formatCreatedAt, formatDate } from 'src/utils/formatter/date';
+import type { FileTypeConfig } from './filet-type-config';
+import CustomChip from 'src/views/components/custom/custom-chip';
 
 interface CellType {
-  row: RailwayPowerDistribution;
+  row: RailwayPowerSupplyMaintenanceAndTesting;
 }
 
-const entitySubject = 'railwaypowerdistribution';
+const entitySubject = 'railwaypowersupplymaintenanceandtesting';
 
-export const railwayPowerDistributionColumns = (
-  onDetail: (row: RailwayPowerDistribution) => void,
-  onEdit: (row: RailwayPowerDistribution) => void,
+export const railwayPowerSupplyMaintenanceAndTestingColumns = (
+  onDetail: (row: RailwayPowerSupplyMaintenanceAndTesting) => void,
+  onEdit: (row: RailwayPowerSupplyMaintenanceAndTesting) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
   otherSubMenu?: DetailSubMenuItemChild,
-  fileTypesConfig?: FileTypeConfig[] // Dynamic file types array
+  fileTypesConfig?: FileTypeConfig[]
 ): GridColDef[] => {
-  // Use the primary file type from the config for the generic file drawer column
-  const PRIMARY_FILE_TYPE = fileTypesConfig?.[0]?.type || 'RAILWAY_POWER_DISTRIBUTION';
+  const PRIMARY_FILE_TYPE = fileTypesConfig?.[0]?.type || 'RAILWAY_POWER_SUPPLY_MAINTENANCE_AND_TESTING';
 
   return [
     {
@@ -52,10 +52,10 @@ export const railwayPowerDistributionColumns = (
       )
     },
     {
-      flex: 0.25,
-      minWidth: 200,
+      flex: 0.2,
+      minWidth: 150,
       field: 'railway_station_platform_layout_id',
-      headerName: t('project.other.railway-power-distribution.details.railway_station_platform_layout_id'),
+      headerName: t('common.table-columns.platform-layout'),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>
           {row?.railwayStationPlatformLayout?.name || row?.railway_station_platform_layout_id?.slice(0, 8) + '...' || 'N/A'}
@@ -63,12 +63,42 @@ export const railwayPowerDistributionColumns = (
       )
     },
     {
-      flex: 0.25,
-      minWidth: 200,
-      field: 'remark',
-      headerName: t('project.other.railway-power-distribution.details.remark'),
+      flex: 0.15,
+      minWidth: 150,
+      field: 'recent_maintenance_records_date',
+      headerName: t('project.other.railway-power-supply-maintenance-and-testing.details.recent-records-date'),
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary', whiteSpace: 'pre-wrap' }}>{row.remark || 'N/A'}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>
+          {row?.recent_maintenance_records_date ? formatDate(row.recent_maintenance_records_date) : 'N/A'}
+        </Typography>
+      )
+    },
+    {
+      flex: 0.15,
+      minWidth: 120,
+      field: 'maintenance_schedules_and_activities',
+      headerName: t('project.other.railway-power-supply-maintenance-and-testing.details.maintenance-schedules'),
+      renderCell: ({ row }: CellType) => (
+        <CustomChip
+          skin='light'
+          color={row.maintenance_schedules_and_activities ? 'success' : 'warning'}
+          label={row.maintenance_schedules_and_activities ? t('common.yes') : t('common.no')}
+          sx={{ '& .MuiChip-label': { lineHeight: '18px' } }}
+        />
+      )
+    },
+    {
+      flex: 0.15,
+      minWidth: 120,
+      field: 'testing_and_commissioning_procedures',
+      headerName: t('project.other.railway-power-supply-maintenance-and-testing.details.testing-procedures'),
+      renderCell: ({ row }: CellType) => (
+        <CustomChip
+          skin='light'
+          color={row.testing_and_commissioning_procedures ? 'success' : 'warning'}
+          label={row.testing_and_commissioning_procedures ? t('common.yes') : t('common.no')}
+          sx={{ '& .MuiChip-label': { lineHeight: '18px' } }}
+        />
       )
     },
     {
@@ -86,7 +116,9 @@ export const railwayPowerDistributionColumns = (
       field: 'created_at',
       headerName: t('common.table-columns.created-at'),
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.created_at ? formatCreatedAt(row.created_at) : 'N/A'}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>
+          {row?.created_at ? formatCreatedAt(row.created_at) : 'N/A'}
+        </Typography>
       )
     },
     {
@@ -98,7 +130,7 @@ export const railwayPowerDistributionColumns = (
       renderCell: ({ row }: CellType) => (
         <>
           <ModelAction
-            model="RailwayPowerDistribution"
+            model="RailwayPowerSupplyMaintenanceAndTesting"
             model_id={row.id as string}
             refetchModel={refetch}
             resubmit={() => refetch()}
