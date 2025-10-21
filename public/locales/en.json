@@ -4286,6 +4286,23 @@
           "remark": "Remark",
           "transformer-component-document-upload": "Transformer/Switchgear Component File (TRANSFORMER_SWITCHGEAR_OTHER_COMPONENT_FILE)"
         }
+      },
+      "railway-power-distribution": {
+        "title": "Railway Power Distribution",
+        "title-short": "Power Distribution",
+        "detail": "Power Distribution Details",
+        "create": "Create Power Distribution Record",
+        "edit": "Edit Power Distribution Record",
+        "details": {
+          "railway_station_platform_layout_id": "Platform Layout",
+          "remark": "Remark"
+        },
+        "file-types": {
+          "distribution-network-layout": "Distribution Network Layout Configuration",
+          "feeder-route-section": "Feeder Route Section",
+          "distribution-transformer-specification": "Distribution Transformer Specification",
+          "main-document": "Main Document"
+        }
       }
     }
   },

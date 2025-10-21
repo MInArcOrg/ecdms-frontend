@@ -2258,6 +2258,8 @@ export interface RailwayPowerSupplyConfiguration {
   voltage_level_and_frequency?: string | null;
   power_supply_capacity_and_load_requirements?: string | null;
   remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
 }
 export interface RailwayPowerSubstationAndEquipment {
   id: string;
@@ -2266,6 +2268,16 @@ export interface RailwayPowerSubstationAndEquipment {
   substation_capacity_and_equipment_specifications?: string | null;
   remark?: string | null;
   railwayStationPlatformLayout?: RailwayStationPlatformLayout | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface RailwayPowerDistribution {
+  id: string;
+  project_id: string;
+  railway_station_platform_layout_id: string;
+  railwayStationPlatformLayout?: RailwayStationPlatformLayout | null;
+  remark?: string | null;
   created_at?: string;
   updated_at?: string;
 }
