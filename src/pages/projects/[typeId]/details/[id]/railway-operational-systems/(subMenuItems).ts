@@ -168,7 +168,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
         title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-substations-and-equipment',
         path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-substations-and-equipment`,
         apiRoute: 'railway-power-substations-and-equipments',
-        model: 'railwaypowersubstationsandequipments',
+        model: 'railwaypowersubstationandequipment',
         fileType: railwayOperationalSystemsIds.powerSystems.id
       },
       {
