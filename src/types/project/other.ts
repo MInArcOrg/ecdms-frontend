@@ -2360,3 +2360,15 @@ export interface RailwayMaintenanceFacilityEquipmentAndTool {
   created_at?: string;
   updated_at?: string;
 }
+
+export interface RailwayMaintenanceFacilityInfrastructureAndUtility {
+  id?: string;
+  project_id: string; // From route props
+  facility_name: string; // STRING field
+  rail_tracks_and_turnout_availability: boolean; // BOOLEAN field
+  fueling_and_refueling_facility_availability: boolean; // BOOLEAN field
+  compressed_air_system_availability: boolean; // BOOLEAN field
+  remarks: string | null; // TEXT field
+  created_at?: string;
+  updated_at?: string;
+}

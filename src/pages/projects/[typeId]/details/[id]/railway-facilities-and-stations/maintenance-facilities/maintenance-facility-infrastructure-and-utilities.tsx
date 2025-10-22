@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayFacilitiesAndStationsIds } from '../(subMenuItems)';
+import RailwayMaintenanceFacilityInfrastructureAndUtilityList from 'src/views/pages/projects/detail/other/road/railway-maintenance-facility-infrastructure-and-utility';
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems('', ''),
@@ -24,7 +25,11 @@ const MaintenanceFacilityInfrastructureAndUtilitiesPage = () => {
       activeSubMenuId={railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_infrastructure_and_utilities}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Maintenance Facility Infrastructure and Utilities Placeholder</div>
+      <RailwayMaintenanceFacilityInfrastructureAndUtilityList
+        projectId={id as string}
+        typeId={typeId as string}
+        otherSubMenu={menuItem}
+      />
     </ProjectLayout>
   );
 };
