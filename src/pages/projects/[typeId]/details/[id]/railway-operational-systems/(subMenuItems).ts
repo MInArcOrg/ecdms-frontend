@@ -190,12 +190,18 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplySafetyAndCompliance,
         title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-supply-safety-and-compliance',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-safety-and-compliance`
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-safety-and-compliance`,
+        apiRoute: 'railway-power-supply-safety-and-compliances',
+        model: 'railwaypowersupplysafetyandcompliance',
+        fileType: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplySafetyAndCompliance
       },
       {
         id: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyEnvironmentalAndOtherFactors,
         title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-supply-environmental-and-other-factors',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-environmental-and-other-factors`
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-environmental-and-other-factors`,
+        apiRoute: 'railway-power-supply-environmental-and-other-factors',
+        model: 'railwaypowersupplyenvironmentalandotherfactors',
+        fileType: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyEnvironmentalAndOtherFactors
       }
     ]
   }
