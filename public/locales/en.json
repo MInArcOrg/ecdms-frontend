@@ -4358,6 +4358,22 @@
           "station-platform-photo": "Station Platform Photo",
           "main-document": "Main Document"
         }
+      },
+      "railway-maintenance-facility-type-and-purpose": {
+        "title": "Railway Maintenance Facility & Purpose",
+        "title-short": "Maintenance Facility",
+        "detail": "Maintenance Facility Details",
+        "create": "Create Maintenance Facility Record",
+        "edit": "Edit Maintenance Facility Record",
+        "details": {
+          "facility-name": "Facility Name",
+          "maintenance-facility-type": "Facility Type",
+          "maintenance-activities-conducted": "Activities Conducted",
+          "remark": "Remarks / Notes"
+        },
+        "file-types": {
+          "main-document": "Main Facility Document/Layout"
+        }
       }
     }
   },

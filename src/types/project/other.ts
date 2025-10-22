@@ -2319,3 +2319,15 @@ export interface RailwayPowerSupplyEnvironmentalAndOtherFactor {
   created_at?: string;
   updated_at?: string;
 }
+
+// New Model Definition
+export interface RailwayMaintenanceFacilityTypeAndPurpose {
+  id?: string;
+  project_id: string; // From route props
+  facility_name: string; // STRING field
+  maintenance_facility_type: string; // STRING field
+  maintenance_activities_conducted: string | null; // TEXT field
+  remark: string | null; // TEXT field
+  created_at?: string;
+  updated_at?: string;
+}
