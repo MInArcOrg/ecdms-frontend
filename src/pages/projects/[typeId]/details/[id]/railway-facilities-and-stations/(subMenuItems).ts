@@ -98,7 +98,7 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-surface-and-finishes",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-surface-and-finishes`,
-          model: "stationplatformsurfaceandfinish",
+          model: "railwaystationplatformsurfaceandfinish",
           apiRoute: "railway-station-platform-surface-and-finishes",
           fileType: railwayFacilitiesAndStationsIds.stations_and_platforms
             .station_platform_surface_and_finishes,
@@ -109,7 +109,7 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-passenger-flow-and-capacity",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-passenger-flow-and-capacity`,
-          model: "stationplatformpassengerflowandcapacity",
+          model: "railwaystationplatformpassengerflowandcapacity",
           apiRoute: "railway-station-platform-passenger-flow-and-capacities",
           fileType: railwayFacilitiesAndStationsIds.stations_and_platforms
             .station_platform_passenger_flow_and_capacity,
@@ -120,7 +120,7 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-environmental-and-other-factors",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-environmental-and-other-factors`,
-          model: "stationplatformenvironmentalandotherfactor",
+          model: "railwaystationplatformenvironmentalandotherfactor",
           apiRoute: "railway-station-platform-environmental-and-other-factors",
           fileType: railwayFacilitiesAndStationsIds.stations_and_platforms
             .station_platform_environmental_and_other_factors,
@@ -138,7 +138,7 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-type-and-purpose",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-type-and-purpose`,
-          model: "maintenancefacilitytypeandpurpose",
+          model: "railwaymaintenancefacilitytypeandpurpose",
           apiRoute: "railway-maintenance-facility-type-and-purposes",
           fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.id,
         },
@@ -148,7 +148,7 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-layout-and-design",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-layout-and-design`,
-          model: "maintenancefacilitylayoutanddesign",
+          model: "railwaymaintenancefacilitylayoutanddesign",
           fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.id,
           apiRoute: "railway-maintenance-facility-layout-and-designs",
         },
@@ -158,7 +158,9 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-equipment-and-tools",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-equipment-and-tools`,
-          model: "maintenancefacilityequipmentandtool", //TODO: add
+          model: "railwaymaintenancefacilityequipmentandtool",
+          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.id,
+          apiRoute: "railway-maintenance-facility-equipment-and-tools",
         },
         {
           id: railwayFacilitiesAndStationsIds.maintenance_facilities

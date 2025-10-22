@@ -192,7 +192,7 @@ const RailwayMaintenanceFacilityTypeAndPurposeList: React.FC<RailwayMaintenanceF
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: entitySubject
+            subject: otherSubMenu?.model || entitySubject
           }
         }}
         fetchDataFunction={refetch}

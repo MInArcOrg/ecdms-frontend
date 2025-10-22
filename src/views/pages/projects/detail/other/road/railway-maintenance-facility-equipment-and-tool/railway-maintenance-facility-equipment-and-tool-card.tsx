@@ -1,40 +1,42 @@
-// src/views/project/other/railway-power-supply-safety-and-compliance/railway-power-supply-safety-and-compliance-card.tsx
+// src/views/project/other/railway-maintenance-facility-equipment-and-tool/railway-maintenance-facility-equipment-and-tool-card.tsx
 
 import { Box, Button, Card, CardActions, CardContent, Divider, Typography, Grid } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import type { RailwayPowerSupplySafetyAndCompliance } from 'src/types/project/other';
+import type { RailwayMaintenanceFacilityEquipmentAndTool } from 'src/types/project/other';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import { gridSpacing } from 'src/configs/app-constants';
 import type { FileTypeConfig } from './file-type-config';
 
-interface RailwayPowerSupplySafetyAndComplianceCardProps {
-  railwayPowerSupplySafetyAndCompliance: RailwayPowerSupplySafetyAndCompliance;
+interface RailwayMaintenanceFacilityEquipmentAndToolCardProps {
+  railwayMaintenanceFacilityEquipmentAndTool: RailwayMaintenanceFacilityEquipmentAndTool;
   refetch: () => void;
-  onEdit: (data: RailwayPowerSupplySafetyAndCompliance) => void;
+  onEdit: (data: RailwayMaintenanceFacilityEquipmentAndTool) => void;
   onDelete: (id: string) => void;
-  onDetail: (data: RailwayPowerSupplySafetyAndCompliance) => void;
+  onDetail: (data: RailwayMaintenanceFacilityEquipmentAndTool) => void;
   otherSubMenu?: DetailSubMenuItemChild;
   fileTypesConfig: FileTypeConfig[];
 }
 
-const entitySubject = 'railwaypowersupplysafetyandcompliance';
+const entitySubject = 'railwaymaintenancefacilityequipmentandtool';
 
-const RailwayPowerSupplySafetyAndComplianceCard: React.FC<
-  RailwayPowerSupplySafetyAndComplianceCardProps
-> = ({ railwayPowerSupplySafetyAndCompliance: data, refetch, onEdit, onDelete, onDetail, otherSubMenu, fileTypesConfig }) => {
+const RailwayMaintenanceFacilityEquipmentAndToolCard: React.FC<
+  RailwayMaintenanceFacilityEquipmentAndToolCardProps
+> = ({ railwayMaintenanceFacilityEquipmentAndTool: data, refetch, onEdit, onDelete, onDetail, otherSubMenu, fileTypesConfig }) => {
   const { t } = useTranslation();
 
-  const PRIMARY_FILE_TYPE = fileTypesConfig.find(f => f.key === 'mainDocument')?.type || fileTypesConfig[0].type;
+  const PRIMARY_FILE_TYPE = fileTypesConfig[0].type;
 
   const booleanToText = (value: boolean | undefined) => (value === true ? t('common.yes') : value === false ? t('common.no') : t('common.na'));
 
-  const platformLayoutDisplay = data?.railwayStationPlatformLayout?.name || data?.railway_station_platform_layout_id || t('common.na');
-  const safetyMeasures = booleanToText(data.safety_measures_and_protocols);
-  const compliance = booleanToText(data.compliance_with_electrical_safety_standards_and_regulations);
+  const facilityName = data.facility_name || t('common.na');
+  const availableTypes = data.maintenance_equipment_and_tool_available_type || t('common.na');
+  const hoistsCranes = booleanToText(data.hoists_cranes_and_lifting_equipment);
+  const diagnosticEquipment = data.diagnostic_and_testing_equipment || t('common.na');
+  const specificTools = data.tools_and_machinery_specific_to_maintenance_activities || t('common.na');
   const remark = data.remark || t('common.na');
 
 
@@ -54,7 +56,7 @@ const RailwayPowerSupplySafetyAndComplianceCard: React.FC<
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {platformLayoutDisplay} ({t('project.other.railway-power-supply-safety-and-compliance.title-short')})
+              {facilityName} ({t('project.other.railway-maintenance-facility-equipment-and-tool.title-short')})
             </Typography>
           </Typography>
         </Box>
@@ -63,31 +65,39 @@ const RailwayPowerSupplySafetyAndComplianceCard: React.FC<
           {/* Data Fields */}
           <Grid item xs={12} sm={6}>
             <Typography variant="subtitle2" color="text.secondary">
-              {t('project.other.railway-power-supply-safety-and-compliance.details.platform-layout')}
+              {t('project.other.railway-maintenance-facility-equipment-and-tool.details.maintenance-equipment-and-tool-available-type')}
             </Typography>
             <Typography variant="body1" sx={{ mt: 0.5 }}>
-              {platformLayoutDisplay}
+              {availableTypes}
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography variant="subtitle2" color="text.secondary">
-              {t('project.other.railway-power-supply-safety-and-compliance.details.safety-measures-and-protocols')}
+              {t('project.other.railway-maintenance-facility-equipment-and-tool.details.hoists-cranes-and-lifting-equipment')}
             </Typography>
             <Typography variant="body1" sx={{ mt: 0.5 }}>
-              {safetyMeasures}
+              {hoistsCranes}
             </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="subtitle2" color="text.secondary">
-              {t('project.other.railway-power-supply-safety-and-compliance.details.compliance-with-electrical-safety-standards-and-regulations')}
+              {t('project.other.railway-maintenance-facility-equipment-and-tool.details.diagnostic-and-testing-equipment')}
             </Typography>
-            <Typography variant="body1" sx={{ mt: 0.5 }}>
-              {compliance}
+            <Typography variant="body1" sx={{ mt: 0.5, whiteSpace: 'pre-wrap' }}>
+              {diagnosticEquipment}
             </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="subtitle2" color="text.secondary">
-              {t('project.other.railway-power-supply-safety-and-compliance.details.remark')}
+              {t('project.other.railway-maintenance-facility-equipment-and-tool.details.tools-and-machinery-specific-to-maintenance-activities')}
+            </Typography>
+            <Typography variant="body1" sx={{ mt: 0.5, whiteSpace: 'pre-wrap' }}>
+              {specificTools}
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="subtitle2" color="text.secondary">
+              {t('project.other.railway-maintenance-facility-equipment-and-tool.details.remark')}
             </Typography>
             <Typography variant="body1" sx={{ mt: 0.5, whiteSpace: 'pre-wrap' }}>
               {remark}
@@ -122,7 +132,7 @@ const RailwayPowerSupplySafetyAndComplianceCard: React.FC<
 
         {data.id && (
           <ModelAction
-            model="RailwayPowerSupplySafetyAndCompliance"
+            model="RailwayMaintenanceFacilityEquipmentAndTool"
             model_id={data.id}
             refetchModel={refetch}
             resubmit={refetch}
@@ -149,4 +159,4 @@ const RailwayPowerSupplySafetyAndComplianceCard: React.FC<
   );
 };
 
-export default RailwayPowerSupplySafetyAndComplianceCard;
+export default RailwayMaintenanceFacilityEquipmentAndToolCard;

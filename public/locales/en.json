@@ -4392,6 +4392,24 @@
         "file-types": {
           "main-layout-design": "Main Facility Layout/Design Document"
         }
+      },
+      "railway-maintenance-facility-equipment-and-tool": {
+        "title": "Facility Equipment & Tools",
+        "title-short": "Equipment/Tools",
+        "detail": "Equipment & Tool Details",
+        "create": "Create Equipment & Tool Record",
+        "edit": "Edit Equipment & Tool Record",
+        "details": {
+          "facility-name": "Facility Name",
+          "maintenance-equipment-and-tool-available-type": "Available Equipment/Tool Types",
+          "hoists-cranes-and-lifting-equipment": "Hoists, Cranes, Lifting Equipment Available",
+          "diagnostic-and-testing-equipment": "Diagnostic & Testing Equipment",
+          "tools-and-machinery-specific-to-maintenance-activities": "Activity-Specific Tools & Machinery",
+          "remark": "Remarks / Notes"
+        },
+        "file-types": {
+          "main-equipment-tool-doc": "Equipment/Tool List Document"
+        }
       }
     }
   },

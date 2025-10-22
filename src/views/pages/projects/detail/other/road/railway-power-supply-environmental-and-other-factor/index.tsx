@@ -186,7 +186,7 @@ const RailwayPowerSupplyEnvironmentalAndOtherFactorList: React.FC<RailwayPowerSu
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: entitySubject
+            subject: otherSubMenu?.model || entitySubject
           }
         }}
         fetchDataFunction={refetch}

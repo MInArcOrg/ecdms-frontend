@@ -2345,3 +2345,18 @@ export interface RailwayMaintenanceFacilityLayoutAndDesign {
   created_at?: string;
   updated_at?: string;
 }
+// src/types/project/other.d.ts (Addition)
+
+// New Model Definition
+export interface RailwayMaintenanceFacilityEquipmentAndTool {
+  id?: string;
+  project_id: string; // From route props
+  facility_name: string; // STRING field
+  maintenance_equipment_and_tool_available_type: string | null; // STRING field
+  hoists_cranes_and_lifting_equipment: boolean; // BOOLEAN field
+  diagnostic_and_testing_equipment: string | null; // STRING field
+  tools_and_machinery_specific_to_maintenance_activities: string | null; // STRING field
+  remark: string | null; // TEXT field
+  created_at?: string;
+  updated_at?: string;
+}
