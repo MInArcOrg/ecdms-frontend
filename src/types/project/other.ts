@@ -2331,3 +2331,17 @@ export interface RailwayMaintenanceFacilityTypeAndPurpose {
   created_at?: string;
   updated_at?: string;
 }
+
+
+export interface RailwayMaintenanceFacilityLayoutAndDesign {
+  id?: string;
+  project_id: string; // From route props
+  facility_name: string; // STRING field
+  facility_layout_and_dimension: string | null; // TEXT field
+  maintenance_bays_number_and_size: string | null; // STRING field
+  spare_parts_and_equipment_storage_areas: string | null; // STRING field
+  office_and_administrative_areas_availability: boolean; // BOOLEAN field
+  remark: string | null; // TEXT field
+  created_at?: string;
+  updated_at?: string;
+}

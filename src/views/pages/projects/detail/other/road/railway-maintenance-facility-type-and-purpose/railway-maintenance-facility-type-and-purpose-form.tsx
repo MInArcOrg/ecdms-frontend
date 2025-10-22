@@ -36,7 +36,7 @@ const RailwayMaintenanceFacilityTypeAndPurposeForm: React.FC<RailwayMaintenanceF
           fullWidth
           required
           label={t('project.other.railway-maintenance-facility-type-and-purpose.details.facility-name')}
-          placeholder={t('common.form.facility-name-placeholder')}
+          placeholder={t('project.other.railway-maintenance-facility-type-and-purpose.details.facility-name')}
           name="facility_name"
           value={formik.values.facility_name}
           size="small"
@@ -48,7 +48,7 @@ const RailwayMaintenanceFacilityTypeAndPurposeForm: React.FC<RailwayMaintenanceF
           fullWidth
           required
           label={t('project.other.railway-maintenance-facility-type-and-purpose.details.maintenance-facility-type')}
-          placeholder={t('common.form.facility-type-placeholder')}
+          placeholder={t('project.other.railway-maintenance-facility-type-and-purpose.details.maintenance-facility-type')}
           name="maintenance_facility_type"
           value={formik.values.maintenance_facility_type}
           size="small"
