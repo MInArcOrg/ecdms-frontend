@@ -4294,7 +4294,7 @@
         "create": "Create Power Distribution Record",
         "edit": "Edit Power Distribution Record",
         "details": {
-          "railway_station_platform_layout_id": "Platform Layout",
+          "railway_station_platform_layout_id": "Platform Layout / Station",
           "remark": "Remark"
         },
         "file-types": {
@@ -4323,6 +4323,25 @@
         "file-types": {
           "main-document": "Main Document",
           "recent-records": "Recent Records File"
+        }
+      },
+      "railway-power-supply-safety-and-compliance": {
+        "title": "Power Supply Safety & Compliance",
+        "title-short": "Power Safety",
+        "detail": "Safety & Compliance Details",
+        "create": "Create Safety Record",
+        "edit": "Edit Safety Record",
+        "details": {
+          "platform-layout": "Platform Layout / Station",
+          "safety-measures-and-protocols": "Safety Measures & Protocols in Place?",
+          "compliance-with-electrical-safety-standards-and-regulations": "Complies with Electrical Safety Standards?",
+          "has-safety-measures": "Has Safety Measures",
+          "is-compliant": "Is Compliant",
+          "remark": "Remark"
+        },
+        "file-types": {
+          "safety-protocols": "Safety Protocols",
+          "compliance-certificates": "Compliance Certificates"
         }
       }
     }

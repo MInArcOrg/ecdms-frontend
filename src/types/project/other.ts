@@ -2295,3 +2295,18 @@ export interface RailwayPowerSupplyMaintenanceAndTesting {
   // Relations (for display in List/Card/Detail)
   railwayStationPlatformLayout?: RailwayStationPlatformLayout;
 }
+
+
+export interface RailwayPowerSupplySafetyAndCompliance {
+  id: string | null;
+  project_id: string;
+  railway_station_platform_layout_id: string;
+  safety_measures_and_protocols: boolean | null; // BOOLEAN
+  compliance_with_electrical_safety_standards_and_regulations: boolean | null; // BOOLEAN
+  remark: string | null; // TEXT
+  created_at?: string;
+  updated_at?: string;
+
+  // Relations (for display in List/Card/Detail)
+  railwayStationPlatformLayout?: RailwayStationPlatformLayout;
+}

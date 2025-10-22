@@ -13,7 +13,7 @@ import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import { useState } from 'react';
 import { uploadFile } from 'src/services/utils/file-utils';
 import RailwayPowerSupplyMaintenanceAndTestingForm from './railway-power-supply-maintenance-and-testing-form';
-import type { FileTypeConfig } from './filet-type-config';
+import type { FileTypeConfig } from './file-type-config';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
 interface RailwayPowerSupplyMaintenanceAndTestingDrawerProps {
