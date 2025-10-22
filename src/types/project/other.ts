@@ -2310,3 +2310,12 @@ export interface RailwayPowerSupplySafetyAndCompliance {
   // Relations (for display in List/Card/Detail)
   railwayStationPlatformLayout?: RailwayStationPlatformLayout;
 }
+export interface RailwayPowerSupplyEnvironmentalAndOtherFactor {
+  id?: string;
+  project_id: string; // From route props
+  railway_station_platform_layout_id: string; // Required Foreign Key
+  railwayStationPlatformLayout?: RailwayStationPlatformLayout; // Relation data
+  environmental_compliance_measures: string | null; // TEXT field
+  created_at?: string;
+  updated_at?: string;
+}
