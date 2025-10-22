@@ -2271,3 +2271,42 @@ export interface RailwayPowerSubstationAndEquipment {
   created_at?: string;
   updated_at?: string;
 }
+
+export interface RailwayPowerDistribution {
+  id: string;
+  project_id: string;
+  railway_station_platform_layout_id: string;
+  railwayStationPlatformLayout?: RailwayStationPlatformLayout | null;
+  remark?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+export interface RailwayPowerSupplyMaintenanceAndTesting {
+  id: string | null;
+  project_id: string;
+  railway_station_platform_layout_id: string;
+  maintenance_schedules_and_activities: boolean | null; // BOOLEAN
+  testing_and_commissioning_procedures: boolean | null; // BOOLEAN
+  recent_maintenance_records_date?: string | Date | EthiopianDate; // DATE
+  remark: string | null; // TEXT
+  created_at?: string;
+  updated_at?: string;
+
+  // Relations (for display in List/Card/Detail)
+  railwayStationPlatformLayout?: RailwayStationPlatformLayout;
+}
+
+
+export interface RailwayPowerSupplySafetyAndCompliance {
+  id: string | null;
+  project_id: string;
+  railway_station_platform_layout_id: string;
+  safety_measures_and_protocols: boolean | null; // BOOLEAN
+  compliance_with_electrical_safety_standards_and_regulations: boolean | null; // BOOLEAN
+  remark: string | null; // TEXT
+  created_at?: string;
+  updated_at?: string;
+
+  // Relations (for display in List/Card/Detail)
+  railwayStationPlatformLayout?: RailwayStationPlatformLayout;
+}

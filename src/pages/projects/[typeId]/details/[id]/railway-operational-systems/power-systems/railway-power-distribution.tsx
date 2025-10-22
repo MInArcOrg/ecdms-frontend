@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayOperationalSystemsIds } from '../(subMenuItems)';
+import RailwayPowerDistributionList from 'src/views/pages/projects/detail/other/road/railway-power-distribution';
 
 const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), railwayOperationalSystemsIds.powerSystems.railwayPowerDistribution);
 
@@ -21,7 +22,7 @@ const RailwayPowerDistributionPage = () => {
       activeSubMenuId={railwayOperationalSystemsIds.powerSystems.railwayPowerDistribution}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Railway Power Distribution Placeholder</div>
+      <RailwayPowerDistributionList otherSubMenu={menuItem} projectId={id as string} typeId={typeId as string} />
     </ProjectLayout>
   );
 };

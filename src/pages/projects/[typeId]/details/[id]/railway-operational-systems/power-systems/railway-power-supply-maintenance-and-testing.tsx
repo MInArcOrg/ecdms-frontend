@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, railwayOperationalSystemsIds } from '../(subMenuItems)';
+import RailwayPowerSupplyMaintenanceAndTestingList from 'src/views/pages/projects/detail/other/road/railway-power-supply-maintenance-and-testing';
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems('', ''),
@@ -24,7 +25,9 @@ const RailwayPowerSupplyMaintenanceAndTestingPage = () => {
       activeSubMenuId={railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyMaintenanceAndTesting}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <div>Railway Power Supply Maintenance and Testing Placeholder</div>
+      <RailwayPowerSupplyMaintenanceAndTestingList
+        otherSubMenu={menuItem}
+        projectId={id as string} typeId={typeId as string} />
     </ProjectLayout>
   );
 };

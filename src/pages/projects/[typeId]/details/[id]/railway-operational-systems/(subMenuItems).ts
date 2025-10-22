@@ -161,7 +161,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
         path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-configuration`,
         apiRoute: 'railway-power-supply-configurations',
         model: 'railwaypowersupplyconfiguration',
-        fileType: railwayOperationalSystemsIds.powerSystems.id
+        fileType: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyConfiguration
       },
       {
         id: railwayOperationalSystemsIds.powerSystems.railwayPowerSubstationsAndEquipment,
@@ -169,17 +169,23 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
         path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-substations-and-equipment`,
         apiRoute: 'railway-power-substations-and-equipments',
         model: 'railwaypowersubstationandequipment',
-        fileType: railwayOperationalSystemsIds.powerSystems.id
+        fileType: railwayOperationalSystemsIds.powerSystems.railwayPowerSubstationsAndEquipment
       },
       {
         id: railwayOperationalSystemsIds.powerSystems.railwayPowerDistribution,
         title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-distribution',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-distribution`
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-distribution`,
+        apiRoute: 'railway-power-distributions',
+        model: 'railwaypowerdistribution',
+        fileType: railwayOperationalSystemsIds.powerSystems.railwayPowerDistribution
       },
       {
         id: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyMaintenanceAndTesting,
         title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-supply-maintenance-and-testing',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-maintenance-and-testing`
+        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-maintenance-and-testing`,
+        apiRoute: 'railway-power-supply-maintenance-and-testings',
+        model: 'railwaypowersupplymaintenanceandtesting',
+        fileType: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyMaintenanceAndTesting
       },
       {
         id: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplySafetyAndCompliance,
