@@ -4343,6 +4343,23 @@
           "safety-protocols": "Safety Protocols",
           "compliance-certificates": "Compliance Certificates"
         }
+      },
+      "railway-power-supply-environmental-and-other-factor": {
+        "title": "Railway Power Supply Environmental and Other Factors",
+        "title-short": "Environmental Factor",
+        "detail": "Environmental Factor Details",
+        "create": "Create Environmental Factor Record",
+        "edit": "Edit Environmental Factor Record",
+        "details": {
+          "platform-layout": "Platform/Layout",
+          "environmental-compliance-measures": "Environmental Compliance Measures"
+        },
+        "file-types": {
+          "environmental-impact-assessment": "Environmental Impact Assessment File",
+          "system-documentation": "System Documentation File",
+          "station-platform-photo": "Station Platform Photo",
+          "main-document": "Main Document"
+        }
       }
     }
   },

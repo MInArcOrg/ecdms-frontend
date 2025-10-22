@@ -1,4 +1,4 @@
-// src/views/project/other/railway-power-supply-maintenance-and-testing/railway-power-supply-maintenance-and-testing-drawer.tsx
+// src/views/project/other/railway-power-supply-environmental-and-other-factor/railway-power-supply-environmental-and-other-factor-drawer.tsx
 
 'use client';
 
@@ -8,33 +8,33 @@ import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import type { RailwayPowerSupplyMaintenanceAndTesting } from 'src/types/project/other';
+import type { RailwayPowerSupplyEnvironmentalAndOtherFactor } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import { useState } from 'react';
 import { uploadFile } from 'src/services/utils/file-utils';
-import RailwayPowerSupplyMaintenanceAndTestingForm from './railway-power-supply-maintenance-and-testing-form';
+import RailwayPowerSupplyEnvironmentalAndOtherFactorForm from './railway-power-supply-environmental-and-other-factor-form';
 import type { FileTypeConfig } from './file-type-config';
-import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
-interface RailwayPowerSupplyMaintenanceAndTestingDrawerProps {
+
+interface RailwayPowerSupplyEnvironmentalAndOtherFactorDrawerProps {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  railwayPowerSupplyMaintenanceAndTesting: RailwayPowerSupplyMaintenanceAndTesting;
+  railwayPowerSupplyEnvironmentalAndOtherFactor: RailwayPowerSupplyEnvironmentalAndOtherFactor;
   projectId: string;
   otherSubMenu?: DetailSubMenuItemChild;
   fileTypesConfig: FileTypeConfig[];
 }
 
-const RailwayPowerSupplyMaintenanceAndTestingDrawer = ({
+const RailwayPowerSupplyEnvironmentalAndOtherFactorDrawer = ({
   open,
   toggle,
   refetch,
-  railwayPowerSupplyMaintenanceAndTesting: data,
+  railwayPowerSupplyEnvironmentalAndOtherFactor: data,
   projectId,
   otherSubMenu,
   fileTypesConfig
-}: RailwayPowerSupplyMaintenanceAndTestingDrawerProps) => {
+}: RailwayPowerSupplyEnvironmentalAndOtherFactorDrawerProps) => {
   const isEdit = Boolean(data?.id);
 
   // Dynamic state initialization for all files
@@ -53,30 +53,26 @@ const RailwayPowerSupplyMaintenanceAndTestingDrawer = ({
     railway_station_platform_layout_id: yup
       .string()
       .required('Platform Layout ID is required'),
-    maintenance_schedules_and_activities: yup.boolean().nullable(),
-    testing_and_commissioning_procedures: yup.boolean().nullable(),
-    recent_maintenance_records_date: yup.date().nullable(),
-    remark: yup.string().nullable()
+    environmental_compliance_measures: yup.string().nullable(),
   });
 
-  const createRecord = async (body: IApiPayload<RailwayPowerSupplyMaintenanceAndTesting>) =>
-    projectOtherApiSecondService<RailwayPowerSupplyMaintenanceAndTesting>().create(otherSubMenu?.apiRoute || '', body);
+  const createRecord = async (body: IApiPayload<RailwayPowerSupplyEnvironmentalAndOtherFactor>) =>
+    projectOtherApiSecondService<RailwayPowerSupplyEnvironmentalAndOtherFactor>().create(otherSubMenu?.apiRoute || '', body);
 
-  const editRecord = async (body: IApiPayload<RailwayPowerSupplyMaintenanceAndTesting>) =>
-    projectOtherApiSecondService<RailwayPowerSupplyMaintenanceAndTesting>().update(
+  const editRecord = async (body: IApiPayload<RailwayPowerSupplyEnvironmentalAndOtherFactor>) =>
+    projectOtherApiSecondService<RailwayPowerSupplyEnvironmentalAndOtherFactor>().update(
       otherSubMenu?.apiRoute || '',
       data.id as string,
       body
     );
 
   const getPayload = (
-    values: RailwayPowerSupplyMaintenanceAndTesting
-  ): IApiPayload<RailwayPowerSupplyMaintenanceAndTesting> => {
+    values: RailwayPowerSupplyEnvironmentalAndOtherFactor
+  ): IApiPayload<RailwayPowerSupplyEnvironmentalAndOtherFactor> => {
     return {
       data: {
         ...values,
         project_id: projectId,
-        recent_maintenance_records_date: convertDateToLocaleDate(values.recent_maintenance_records_date)
       },
       files: []
     };
@@ -88,7 +84,7 @@ const RailwayPowerSupplyMaintenanceAndTestingDrawer = ({
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<RailwayPowerSupplyMaintenanceAndTesting>) => {
+  const onActionSuccess = async (response: IApiResponse<RailwayPowerSupplyEnvironmentalAndOtherFactor>) => {
     try {
       if (!response.payload?.id) throw new Error('Missing record ID in response');
 
@@ -119,26 +115,25 @@ const RailwayPowerSupplyMaintenanceAndTestingDrawer = ({
 
   return (
     <CustomSideDrawer
-      title={`project.other.railway-power-supply-maintenance-and-testing.${isEdit ? 'edit' : 'create'}`}
+      title={`project.other.railway-power-supply-environmental-and-other-factor.${isEdit ? 'edit' : 'create'}`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.railway-power-supply-maintenance-and-testing.${isEdit ? 'edit' : 'create'}`}
+          title={`project.other.railway-power-supply-environmental-and-other-factor.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
             ...data,
-            recent_maintenance_records_date: formatInitialDateDate(data.recent_maintenance_records_date)
           }}
           createActionFunc={isEdit ? editRecord : createRecord}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<RailwayPowerSupplyMaintenanceAndTesting>) => (
-            <RailwayPowerSupplyMaintenanceAndTestingForm
+          {(formik: FormikProps<RailwayPowerSupplyEnvironmentalAndOtherFactor>) => (
+            <RailwayPowerSupplyEnvironmentalAndOtherFactorForm
               formik={formik}
               fileTypesConfig={fileTypesConfig}
               fileStates={fileStates}
@@ -151,4 +146,4 @@ const RailwayPowerSupplyMaintenanceAndTestingDrawer = ({
   );
 };
 
-export default RailwayPowerSupplyMaintenanceAndTestingDrawer;
+export default RailwayPowerSupplyEnvironmentalAndOtherFactorDrawer;
