@@ -1,25 +1,28 @@
 // src/views/project/other/railway-power-supply-safety-and-compliance/file-type-config.ts
 
+// Define the core type structure for a file configuration item
 export interface FileTypeConfig {
     type: string;
+    key: string; // Used for form state names (e.g., 'recentRecords')
     titleTKey: string; // Title translation key for card/drawer display
-    key: string; // Key used for form state and file handling
+    descriptionTKey: string; // Form description translation key
 }
-// The entity subject for permission checks (e.g., in the create button)
-export const RAILWAY_POWER_SUPPLY_SAFETY_AND_COMPLIANCE_ENTITY_SUBJECT =
-    'RAILWAY_POWER_SUPPLY_SAFETY_AND_COMPLIANCE';
 
-// File types defined in the schema (image_db8c3b.png)
+// 1. Entity Subject Constant
+export const RAILWAY_POWER_SUPPLY_SAFETY_AND_COMPLIANCE_ENTITY_SUBJECT = 'railwaypowersupplysafetyandcompliance';
+
+// 2. File Types Array
 export const RAILWAY_POWER_SUPPLY_SAFETY_AND_COMPLIANCE_FILE_TYPES: FileTypeConfig[] = [
     {
-        type: 'INCIDENT_ACCIDENT_RECORDS_TYPE', // File type 1 from image_db8c3b.png
-        titleTKey: 'common.form.safety-protocols-document-upload',
-        key: 'safetyProtocolsFile'
-
+        type: 'INCIDENT_ACCIDENT_RECORDS_TYPE',
+        key: 'incidentRecords',
+        titleTKey: 'project.other.railway-power-supply-safety-and-compliance.file-types.incident-accident-records',
+        descriptionTKey: 'common.form.incident-accident-records-upload'
     },
     {
-        type: 'RAILWAY_POWER_SUPPLY_SAFETY_AND_COMPLIANCE', // File type 2 from image_db8c3b.png
-        titleTKey: 'common.form.compliance-certificates-upload',
-        key: 'complianceCertificatesFile'
+        type: 'RAILWAY_POWER_SUPPLY_SAFETY_AND_COMPLIANCE',
+        key: 'mainDocument',
+        titleTKey: 'project.other.railway-power-supply-safety-and-compliance.file-types.main-document',
+        descriptionTKey: 'common.form.main-document-upload'
     }
 ];

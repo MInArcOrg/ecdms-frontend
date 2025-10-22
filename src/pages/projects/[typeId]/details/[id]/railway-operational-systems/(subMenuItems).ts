@@ -27,7 +27,7 @@ export const railwayOperationalSystemsIds = {
     railwayPowerDistribution: 'RAILWAY_POWER_DISTRIBUTION',
     railwayPowerSupplyMaintenanceAndTesting: 'RAILWAY_POWER_SUPPLY_MAINTENANCE_AND_TESTING',
     railwayPowerSupplySafetyAndCompliance: 'RAILWAY_POWER_SUPPLY_SAFETY_AND_COMPLIANCE',
-    railwayPowerSupplyEnvironmentalAndOtherFactors: 'RAILWAY_POWER_SUPPLY_ENVIRONMENTAL_AND_OTHER_FACTORS'
+    railwayPowerSupplyEnvironmentalAndOtherFactors: 'RAILWAY_POWER_SUPPLY_ENVIRONMENTAL_AND_OTHER_FACTOR'
   }
 };
 

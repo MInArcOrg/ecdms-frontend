@@ -22,7 +22,8 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 // Type Imports
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { RailwayPowerSupplySafetyAndCompliance } from 'src/types/project/other';
+import { RailwayPowerSupplySafetyAndCompliance } from 'src/types/project/other'; // Model from types file
+import type { RailwayStationPlatformLayout } from 'src/types/project/other';
 
 // Utility Imports
 import { formatCreatedAt } from 'src/utils/formatter/date';
@@ -36,13 +37,13 @@ import RailwayPowerSupplySafetyAndComplianceDrawer from './railway-power-supply-
 import { railwayPowerSupplySafetyAndComplianceColumns } from './railway-power-supply-safety-and-compliance-row';
 
 
-interface ListProps {
+interface RailwayPowerSupplySafetyAndComplianceListProps {
   otherSubMenu?: DetailSubMenuItemChild;
   projectId: string;
   typeId?: string
 }
 
-const RailwayPowerSupplySafetyAndComplianceList: React.FC<ListProps> = ({ otherSubMenu, projectId, typeId }) => {
+const RailwayPowerSupplySafetyAndComplianceList: React.FC<RailwayPowerSupplySafetyAndComplianceListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<RailwayPowerSupplySafetyAndCompliance | null>(null);
@@ -50,10 +51,10 @@ const RailwayPowerSupplySafetyAndComplianceList: React.FC<ListProps> = ({ otherS
 
   // Use config constant
   const entitySubject = RAILWAY_POWER_SUPPLY_SAFETY_AND_COMPLIANCE_ENTITY_SUBJECT;
-  const FILE_TYPE_DEFAULT = RAILWAY_POWER_SUPPLY_SAFETY_AND_COMPLIANCE_FILE_TYPES[0].type;
+  const FILE_TYPE_DEFAULT = RAILWAY_POWER_SUPPLY_SAFETY_AND_COMPLIANCE_FILE_TYPES.find(f => f.key === 'mainDocument')?.type || RAILWAY_POWER_SUPPLY_SAFETY_AND_COMPLIANCE_FILE_TYPES[0].type;
 
 
-  const fetchSafetyAndCompliance = (params: GetRequestParam): Promise<IApiResponse<RailwayPowerSupplySafetyAndCompliance[]>> => {
+  const fetchRecord = (params: GetRequestParam): Promise<IApiResponse<RailwayPowerSupplySafetyAndCompliance[]>> => {
     return projectOtherApiSecondService<RailwayPowerSupplySafetyAndCompliance>().getAll(otherSubMenu?.apiRoute || '', {
       ...params,
       filter: { ...params.filter, project_id: projectId }
@@ -61,15 +62,16 @@ const RailwayPowerSupplySafetyAndComplianceList: React.FC<ListProps> = ({ otherS
   };
 
   const {
-    data: safetyAndComplianceData,
+    data: recordData,
     isLoading,
     pagination,
     handlePageChange,
     refetch
   } = usePaginatedFetch<RailwayPowerSupplySafetyAndCompliance[]>({
     queryKey: ['railwayPowerSupplySafetyAndCompliance'],
-    fetchFunction: fetchSafetyAndCompliance
+    fetchFunction: fetchRecord
   });
+
 
   const toggleDrawer = () => {
     setSelectedRow({} as RailwayPowerSupplySafetyAndCompliance);
@@ -92,11 +94,14 @@ const RailwayPowerSupplySafetyAndComplianceList: React.FC<ListProps> = ({ otherS
   };
 
   const handleClickDetail = (data: RailwayPowerSupplySafetyAndCompliance) => {
-    setShowDetailDrawer(true);
+    setShowDetailDrawer(true); // Open detail drawer first
     setSelectedRow(data);
   };
 
-  const mapToDetailItems = (data: RailwayPowerSupplySafetyAndCompliance): { title: string; value: any }[] => [
+  const booleanToText = (value: boolean | undefined) => (value === true ? t('common.yes') : value === false ? t('common.no') : t('common.na'));
+
+
+  const mapRecordToDetailItems = (data: RailwayPowerSupplySafetyAndCompliance): { title: string; value: any }[] => [
     {
       title: t('common.table-columns.id'),
       value: data?.id || 'N/A'
@@ -107,11 +112,11 @@ const RailwayPowerSupplySafetyAndComplianceList: React.FC<ListProps> = ({ otherS
     },
     {
       title: t('project.other.railway-power-supply-safety-and-compliance.details.safety-measures-and-protocols'),
-      value: data?.safety_measures_and_protocols ? t('common.yes') : t('common.no')
+      value: booleanToText(data?.safety_measures_and_protocols)
     },
     {
       title: t('project.other.railway-power-supply-safety-and-compliance.details.compliance-with-electrical-safety-standards-and-regulations'),
-      value: data?.compliance_with_electrical_safety_standards_and_regulations ? t('common.yes') : t('common.no')
+      value: booleanToText(data?.compliance_with_electrical_safety_standards_and_regulations)
     },
     {
       title: t('project.other.railway-power-supply-safety-and-compliance.details.remark'),
@@ -138,10 +143,10 @@ const RailwayPowerSupplySafetyAndComplianceList: React.FC<ListProps> = ({ otherS
           otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
-          safetyAndCompliance={selectedRow as RailwayPowerSupplySafetyAndCompliance}
+          railwayPowerSupplySafetyAndCompliance={selectedRow as RailwayPowerSupplySafetyAndCompliance}
           refetch={refetch}
           projectId={projectId}
-          fileTypesConfig={[]}
+          fileTypesConfig={RAILWAY_POWER_SUPPLY_SAFETY_AND_COMPLIANCE_FILE_TYPES}
         />
       )}
 
@@ -149,7 +154,7 @@ const RailwayPowerSupplySafetyAndComplianceList: React.FC<ListProps> = ({ otherS
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapToDetailItems(selectedRow as RailwayPowerSupplySafetyAndCompliance)}
+          data={mapRecordToDetailItems(selectedRow as RailwayPowerSupplySafetyAndCompliance)}
           hasReference={true}
           id={selectedRow?.id || ''}
           fileType={otherSubMenu?.fileType || FILE_TYPE_DEFAULT}
@@ -176,7 +181,7 @@ const RailwayPowerSupplySafetyAndComplianceList: React.FC<ListProps> = ({ otherS
         ItemViewComponent={({ data }) => (
           <RailwayPowerSupplySafetyAndComplianceCard
             onDetail={handleClickDetail}
-            safetyAndCompliance={data as RailwayPowerSupplySafetyAndCompliance}
+            railwayPowerSupplySafetyAndCompliance={data as RailwayPowerSupplySafetyAndCompliance}
             onEdit={handleEdit}
             refetch={refetch}
             otherSubMenu={otherSubMenu}
@@ -194,7 +199,7 @@ const RailwayPowerSupplySafetyAndComplianceList: React.FC<ListProps> = ({ otherS
           }
         }}
         fetchDataFunction={refetch}
-        items={safetyAndComplianceData || []}
+        items={recordData || []}
         onPaginationChange={handlePageChange}
       />
     </Box>

@@ -1,60 +1,41 @@
 // src/views/project/other/railway-power-supply-safety-and-compliance/railway-power-supply-safety-and-compliance-row.tsx
 
-import React from 'react';
-import { Box, Tooltip, IconButton, Typography, Button } from '@mui/material';
-import { GridColDef } from '@mui/x-data-grid';
-import type { TFunction } from 'i18next';
-
-// Type Imports
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import { RailwayPowerSupplySafetyAndCompliance } from 'src/types/project/other';
-import CustomChip from 'src/views/components/custom/custom-chip';
-import { useTranslation } from 'react-i18next';
-import { FileTypeConfig } from './file-type-config';
+import { Button } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import type { GridColDef } from '@mui/x-data-grid';
+import type { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import type { RailwayPowerSupplySafetyAndCompliance } from 'src/types/project/other';
+import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
-import FileDrawer from 'src/views/components/custom/files-drawer';
+import { formatCreatedAt } from 'src/utils/formatter/date';
+import type { FileTypeConfig } from './file-type-config';
 
-// Define the type for the cell data (the row)
-type CellType = { row: RailwayPowerSupplySafetyAndCompliance };
-
-// --- Chip Renderer Component ---
-interface ChipCellProps {
+interface CellType {
   row: RailwayPowerSupplySafetyAndCompliance;
-  attribute: keyof RailwayPowerSupplySafetyAndCompliance;
 }
 
-const ChipRenderer: React.FC<ChipCellProps> = ({ row, attribute }) => {
-  const { t } = useTranslation(); // Assuming useTranslation is imported here
-
-  const value = row[attribute] as boolean | null;
-  const isPresent = value === true;
-
-  return (
-    <CustomChip
-      skin='light'
-      color={isPresent ? 'success' : 'warning'}
-      label={isPresent ? t('common.yes') : t('common.no')}
-      sx={{ '& .MuiChip-label': { lineHeight: '18px' } }}
-    />
-  );
-};
 const entitySubject = 'railwaypowersupplysafetyandcompliance';
+
 export const railwayPowerSupplySafetyAndComplianceColumns = (
-  onDetail: (data: RailwayPowerSupplySafetyAndCompliance) => void,
-  onEdit: (data: RailwayPowerSupplySafetyAndCompliance) => void,
+  onDetail: (row: RailwayPowerSupplySafetyAndCompliance) => void,
+  onEdit: (row: RailwayPowerSupplySafetyAndCompliance) => void,
   onDelete: (id: string) => void,
-  t: TFunction,
+  t: any,
   refetch: () => void,
-  otherSubMenu: DetailSubMenuItemChild | undefined,
-  fileTypesConfig: FileTypeConfig[] // Unused here, but part of the standard signature
+  otherSubMenu?: DetailSubMenuItemChild,
+  fileTypesConfig?: FileTypeConfig[]
 ): GridColDef[] => {
+  const PRIMARY_FILE_TYPE = otherSubMenu?.fileType || fileTypesConfig?.find(f => f.key === 'mainDocument')?.type || 'RAILWAY_POWER_SUPPLY_SAFETY_AND_COMPLIANCE';
+
+  const booleanToText = (value: boolean | undefined) => (value === true ? t('common.yes') : value === false ? t('common.no') : t('common.na'));
+
   return [
     {
-      flex: 0.25,
-      minWidth: 150,
-      field: 'platform_layout',
-      headerName: t('common.table-columns.platform-layout'),
+      flex: 0.1,
+      minWidth: 80,
+      field: 'id',
+      headerName: t('common.table-columns.id'),
       renderCell: ({ row }: CellType) => (
         <Typography
           noWrap
@@ -67,35 +48,41 @@ export const railwayPowerSupplySafetyAndComplianceColumns = (
             '&:hover': { color: 'primary.main' }
           }}
         >
-          {row.railwayStationPlatformLayout?.name || 'N/A'}
+          {row?.id?.toString().slice(0, 5) || 'N/A'}
         </Typography>
       )
     },
     {
-      flex: 0.15,
-      minWidth: 120,
-      field: 'safety_measures_and_protocols',
-      headerName: t('project.other.railway-power-supply-safety-and-compliance.details.has-safety-measures'),
+      flex: 0.2,
+      minWidth: 150,
+      field: 'railway_station_platform_layout_id',
+      headerName: t('common.table-columns.platform-layout'),
       renderCell: ({ row }: CellType) => (
-        <ChipRenderer row={row} attribute='safety_measures_and_protocols' />
+        <Typography sx={{ color: 'text.secondary' }}>
+          {row?.railwayStationPlatformLayout?.name || row?.railway_station_platform_layout_id?.slice(0, 8) + '...' || 'N/A'}
+        </Typography>
       )
     },
     {
       flex: 0.2,
-      minWidth: 180,
-      field: 'compliance_with_electrical_safety_standards_and_regulations',
-      headerName: t('project.other.railway-power-supply-safety-and-compliance.details.is-compliant'),
+      minWidth: 120,
+      field: 'safety_measures_and_protocols',
+      headerName: t('project.other.railway-power-supply-safety-and-compliance.details.safety-measures-and-protocols'),
       renderCell: ({ row }: CellType) => (
-        <ChipRenderer row={row} attribute='compliance_with_electrical_safety_standards_and_regulations' />
+        <Typography sx={{ color: 'text.secondary' }}>
+          {booleanToText(row?.safety_measures_and_protocols)}
+        </Typography>
       )
     },
     {
-      flex: 0.25,
-      minWidth: 200,
-      field: 'remark',
-      headerName: t('project.other.railway-power-supply-safety-and-compliance.details.remark'),
+      flex: 0.2,
+      minWidth: 120,
+      field: 'compliance_with_electrical_safety_standards_and_regulations',
+      headerName: t('project.other.railway-power-supply-safety-and-compliance.details.compliance-with-electrical-safety-standards-and-regulations'),
       renderCell: ({ row }: CellType) => (
-        <span>{row.remark || '-'}</span>
+        <Typography sx={{ color: 'text.secondary' }}>
+          {booleanToText(row?.compliance_with_electrical_safety_standards_and_regulations)}
+        </Typography>
       )
     },
     {
@@ -105,7 +92,18 @@ export const railwayPowerSupplySafetyAndComplianceColumns = (
       headerName: t('common.table-columns.files'),
       sortable: false,
       filterable: false,
-      renderCell: ({ row }: CellType) => <>{row.id && <FileDrawer id={row.id} type={otherSubMenu?.fileType || fileTypesConfig[0].type} />}</>
+      renderCell: ({ row }: CellType) => <>{row.id && <FileDrawer id={row.id} type={otherSubMenu?.fileType || PRIMARY_FILE_TYPE} />}</>
+    },
+    {
+      flex: 0.2,
+      minWidth: 150,
+      field: 'created_at',
+      headerName: t('common.table-columns.created-at'),
+      renderCell: ({ row }: CellType) => (
+        <Typography sx={{ color: 'text.secondary' }}>
+          {row?.created_at ? formatCreatedAt(row.created_at) : 'N/A'}
+        </Typography>
+      )
     },
     {
       field: 'actions',
@@ -116,7 +114,7 @@ export const railwayPowerSupplySafetyAndComplianceColumns = (
       renderCell: ({ row }: CellType) => (
         <>
           <ModelAction
-            model="RailwayPowerSupplyMaintenanceAndTesting"
+            model="RailwayPowerSupplySafetyAndCompliance"
             model_id={row.id as string}
             refetchModel={refetch}
             resubmit={() => refetch()}

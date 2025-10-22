@@ -4326,22 +4326,20 @@
         }
       },
       "railway-power-supply-safety-and-compliance": {
-        "title": "Power Supply Safety & Compliance",
-        "title-short": "Power Safety",
+        "title": "Railway Power Supply Safety & Compliance",
+        "title-short": "Safety & Compliance",
         "detail": "Safety & Compliance Details",
-        "create": "Create Safety Record",
-        "edit": "Edit Safety Record",
+        "create": "Create Safety & Compliance Record",
+        "edit": "Edit Safety & Compliance Record",
         "details": {
-          "platform-layout": "Platform Layout / Station",
-          "safety-measures-and-protocols": "Safety Measures & Protocols in Place?",
-          "compliance-with-electrical-safety-standards-and-regulations": "Complies with Electrical Safety Standards?",
-          "has-safety-measures": "Has Safety Measures",
-          "is-compliant": "Is Compliant",
-          "remark": "Remark"
+          "platform-layout": "Platform/Layout",
+          "safety-measures-and-protocols": "Safety Measures and Protocols in Place",
+          "compliance-with-electrical-safety-standards-and-regulations": "Compliance with Electrical Safety Standards",
+          "remark": "Remarks / Notes"
         },
         "file-types": {
-          "safety-protocols": "Safety Protocols",
-          "compliance-certificates": "Compliance Certificates"
+          "incident-accident-records": "Incident/Accident Records",
+          "main-document": "Main Safety Compliance Document"
         }
       },
       "railway-power-supply-environmental-and-other-factor": {
