@@ -4410,6 +4410,23 @@
         "file-types": {
           "main-equipment-tool-doc": "Equipment/Tool List Document"
         }
+      },
+      "railway-maintenance-facility-infrastructure-and-utilities": {
+        "title": "Facility Infrastructure & Utilities",
+        "title-short": "Infra/Utilities",
+        "detail": "Infrastructure & Utility Details",
+        "create": "Create Infrastructure & Utility Record",
+        "edit": "Edit Infrastructure & Utility Record",
+        "details": {
+          "facility-name": "Facility Name",
+          "rail-tracks-and-turnout-availability": "Rail Tracks/Turnouts Available",
+          "fueling-and-refueling-facility-availability": "Fueling/Refueling Facility Available",
+          "compressed-air-system-availability": "Compressed Air System Available",
+          "remarks": "Remarks"
+        },
+        "file-types": {
+          "main-infra-doc": "Facility Infrastructure Documentation"
+        }
       }
     }
   },
