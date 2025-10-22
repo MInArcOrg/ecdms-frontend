@@ -163,7 +163,7 @@ const RailwayPowerSupplyConfigurationList: React.FC<RailwayPowerSupplyConfigurat
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: entitySubject
+            subject: otherSubMenu?.model || entitySubject
           }
         }}
         fetchDataFunction={refetch}

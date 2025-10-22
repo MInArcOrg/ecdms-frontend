@@ -140,11 +140,11 @@ export const railwayPowerSupplyMaintenanceAndTestingColumns = (
           <RowOptions
             deletePermissionRule={{
               action: 'delete',
-              subject: entitySubject
+              subject: otherSubMenu?.model || entitySubject
             }}
             editPermissionRule={{
               action: 'update',
-              subject: entitySubject
+              subject: otherSubMenu?.model || entitySubject
             }}
             onEdit={() => onEdit(row)}
             onDelete={() => onDelete(row.id as string)}
