@@ -4374,6 +4374,24 @@
         "file-types": {
           "main-document": "Main Facility Document/Layout"
         }
+      },
+      "railway-maintenance-facility-layout-and-design": {
+        "title": "Railway Facility Layout & Design",
+        "title-short": "Facility Layout",
+        "detail": "Facility Layout Details",
+        "create": "Create Facility Layout Record",
+        "edit": "Edit Facility Layout Record",
+        "details": {
+          "facility-name": "Facility Name",
+          "facility-layout-and-dimension": "Layout and Dimensions",
+          "maintenance-bays-number-and-size": "Maintenance Bays (No./Size)",
+          "spare-parts-and-equipment-storage-areas": "Storage Areas",
+          "office-and-administrative-areas-availability": "Office/Admin Areas Available",
+          "remark": "Remarks / Notes"
+        },
+        "file-types": {
+          "main-layout-design": "Main Facility Layout/Design Document"
+        }
       }
     }
   },

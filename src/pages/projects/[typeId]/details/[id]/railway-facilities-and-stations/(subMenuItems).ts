@@ -149,6 +149,8 @@ export const subMenuItems = (
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-layout-and-design",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-layout-and-design`,
           model: "maintenancefacilitylayoutanddesign",
+          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.id,
+          apiRoute: "railway-maintenance-facility-layout-and-designs",
         },
         {
           id: railwayFacilitiesAndStationsIds.maintenance_facilities
