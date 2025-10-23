@@ -102,7 +102,7 @@ export const railwayMaintenanceEnvironmentalAndOtherFactorColumns = (
       headerName: t('common.table-columns.files'),
       sortable: false,
       filterable: false,
-      renderCell: ({ row }: CellType) => <>{row.id && <FileDrawer id={row.id} type={otherSubMenu?.fileType || PRIMARY_FILE_TYPE} />}</>
+      renderCell: ({ row }: CellType) => <>{row.id && <FileDrawer id={row.id} type={PRIMARY_FILE_TYPE} />}</>
     },
     {
       flex: 0.15,
@@ -134,11 +134,11 @@ export const railwayMaintenanceEnvironmentalAndOtherFactorColumns = (
           <RowOptions
             deletePermissionRule={{
               action: 'delete',
-              subject: entitySubject
+              subject: otherSubMenu?.model || entitySubject
             }}
             editPermissionRule={{
               action: 'update',
-              subject: entitySubject
+              subject: otherSubMenu?.model || entitySubject
             }}
             onEdit={() => onEdit(row)}
             onDelete={() => onDelete(row.id as string)}

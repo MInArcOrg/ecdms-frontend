@@ -132,11 +132,11 @@ const RailwayMaintenanceEnvironmentalAndOtherFactorCard: React.FC<
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: entitySubject
+            subject: otherSubMenu?.model || entitySubject
           }}
           editPermissionRule={{
             action: 'update',
-            subject: entitySubject
+            subject: otherSubMenu?.model || entitySubject
           }}
           onEdit={() => onEdit(data)}
           onDelete={() => onDelete(data.id as string)}
