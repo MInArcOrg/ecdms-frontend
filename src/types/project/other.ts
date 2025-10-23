@@ -2397,3 +2397,16 @@ export interface RailwayMaintenanceFacilityScheduleAndProcedure {
   created_at?: string;
   updated_at?: string;
 }
+
+
+export interface RailwayMaintenanceEnvironmentalAndOtherFactor {
+  id?: string;
+  project_id: string; // From route props
+  facility_name: string; // STRING field
+  environmental_compliance_measures: string; // STRING field
+  noise_reduction_measures: string; // STRING field
+  sustainable_design_features: string; // STRING field
+  remark: string | null; // TEXT field
+  created_at?: string;
+  updated_at?: string;
+}
