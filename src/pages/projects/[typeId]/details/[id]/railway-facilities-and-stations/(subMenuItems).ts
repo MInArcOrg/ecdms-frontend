@@ -198,9 +198,9 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-safety-and-security",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-safety-and-security`,
-          model: "railwaymaintenancefacilitysafetyandsecurity",
+          model: "railwaymaintenancefacilityandsecurity",
           fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_safety_and_security,
-          apiRoute: "railway-maintenance-facility-safety-and-securities",
+          apiRoute: "railway-maintenance-facility-and-securities",
         },
         {
           id: railwayFacilitiesAndStationsIds.maintenance_facilities

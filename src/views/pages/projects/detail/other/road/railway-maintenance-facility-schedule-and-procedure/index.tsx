@@ -198,7 +198,7 @@ const RailwayMaintenanceFacilityScheduleAndProcedureList: React.FC<RailwayMainte
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: entitySubject
+            subject: otherSubMenu?.model || entitySubject
           }
         }}
         fetchDataFunction={refetch}

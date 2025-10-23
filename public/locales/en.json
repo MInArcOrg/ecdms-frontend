@@ -4479,6 +4479,23 @@
         "file-types": {
           "environmental-doc": "Environmental Compliance Documentation"
         }
+      },
+      "railway-maintenance-facility-and-security": {
+        "title": "Facility Security",
+        "title-short": "Security",
+        "detail": "Facility Security Details",
+        "create": "Create Facility Security Record",
+        "edit": "Edit Facility Security Record",
+        "details": {
+          "facility-name": "Facility Name",
+          "fire-safety-measures": "Fire Safety Measures",
+          "ventilations-and-exhaust-system-availability": "Ventilation & Exhaust System Availability",
+          "security-measures": "Security Measures",
+          "remark": "Remark"
+        },
+        "file-types": {
+          "security-doc": "Security and Safety Documentation"
+        }
       }
     }
   },

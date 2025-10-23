@@ -1,10 +1,10 @@
-// src/views/project/other/railway-maintenance-facility-infrastructure-and-utility/railway-maintenance-facility-infrastructure-and-utility-row.tsx
+// src/views/project/other/railway-maintenance-facility-and-security/railway-maintenance-facility-and-security-row.tsx
 
 import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import type { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import type { RailwayMaintenanceFacilityInfrastructureAndUtility } from 'src/types/project/other';
+import type { RailwayMaintenanceFacilityAndSecurity } from 'src/types/project/other';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
@@ -12,21 +12,21 @@ import { formatCreatedAt } from 'src/utils/formatter/date';
 import type { FileTypeConfig } from './file-type-config';
 
 interface CellType {
-  row: RailwayMaintenanceFacilityInfrastructureAndUtility;
+  row: RailwayMaintenanceFacilityAndSecurity;
 }
 
-const entitySubject = 'railwaymaintenancefacilityinfrastructureandutility';
+const entitySubject = 'railwaymaintenancefacilityandsecurity';
 
-export const railwayMaintenanceFacilityInfrastructureAndUtilityColumns = (
-  onDetail: (row: RailwayMaintenanceFacilityInfrastructureAndUtility) => void,
-  onEdit: (row: RailwayMaintenanceFacilityInfrastructureAndUtility) => void,
+export const railwayMaintenanceFacilityAndSecurityColumns = (
+  onDetail: (row: RailwayMaintenanceFacilityAndSecurity) => void,
+  onEdit: (row: RailwayMaintenanceFacilityAndSecurity) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
   otherSubMenu?: DetailSubMenuItemChild,
   fileTypesConfig?: FileTypeConfig[]
 ): GridColDef[] => {
-  const PRIMARY_FILE_TYPE = fileTypesConfig?.[0]?.type || 'RAILWAY_MAINTENANCE_FACILITY_INFRASTRUCTURE_AND_UTILITIES';
+  const PRIMARY_FILE_TYPE = fileTypesConfig?.[0]?.type || 'RAILWAY_MAINTENANCE_FACILITY_AND_SECURITY';
 
   const booleanToText = (value: boolean | undefined) => (value === true ? t('common.yes') : value === false ? t('common.no') : t('common.na'));
 
@@ -56,7 +56,7 @@ export const railwayMaintenanceFacilityInfrastructureAndUtilityColumns = (
       flex: 0.2,
       minWidth: 150,
       field: 'facility_name',
-      headerName: t('project.other.railway-maintenance-facility-infrastructure-and-utilities.details.facility-name'),
+      headerName: t('project.other.railway-maintenance-facility-and-security.details.facility-name'),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>
           {row?.facility_name || 'N/A'}
@@ -64,24 +64,35 @@ export const railwayMaintenanceFacilityInfrastructureAndUtilityColumns = (
       )
     },
     {
-      flex: 0.15,
-      minWidth: 120,
-      field: 'rail_tracks_and_turnout_availability',
-      headerName: t('project.other.railway-maintenance-facility-infrastructure-and-utilities.details.rail-tracks-and-turnout-availability'),
+      flex: 0.25,
+      minWidth: 200,
+      field: 'fire_safety_measures',
+      headerName: t('project.other.railway-maintenance-facility-and-security.details.fire-safety-measures'),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>
-          {booleanToText(row?.rail_tracks_and_turnout_availability)}
+          {row?.fire_safety_measures || 'N/A'}
+        </Typography>
+      )
+    },
+    {
+      flex: 0.2,
+      minWidth: 120,
+      field: 'ventilation_availability',
+      headerName: t('project.other.railway-maintenance-facility-and-security.details.ventilations-and-exhaust-system-availability'),
+      renderCell: ({ row }: CellType) => (
+        <Typography sx={{ color: 'text.secondary' }}>
+          {booleanToText(row?.ventilation_and_exhaust_system_availability)}
         </Typography>
       )
     },
     {
       flex: 0.15,
-      minWidth: 120,
-      field: 'fueling_and_refueling_facility_availability',
-      headerName: t('project.other.railway-maintenance-facility-infrastructure-and-utilities.details.fueling-and-refueling-facility-availability'),
+      minWidth: 150,
+      field: 'security_measures',
+      headerName: t('project.other.railway-maintenance-facility-and-security.details.security-measures'),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>
-          {booleanToText(row?.fueling_and_refueling_facility_availability)}
+          {row?.security_measures || 'N/A'}
         </Typography>
       )
     },
@@ -92,7 +103,7 @@ export const railwayMaintenanceFacilityInfrastructureAndUtilityColumns = (
       headerName: t('common.table-columns.files'),
       sortable: false,
       filterable: false,
-      renderCell: ({ row }: CellType) => <>{row.id && <FileDrawer id={row.id} type={otherSubMenu?.fileType || PRIMARY_FILE_TYPE} />}</>
+      renderCell: ({ row }: CellType) => <>{row.id && <FileDrawer id={row.id} type={PRIMARY_FILE_TYPE} />}</>
     },
     {
       flex: 0.15,
@@ -114,7 +125,7 @@ export const railwayMaintenanceFacilityInfrastructureAndUtilityColumns = (
       renderCell: ({ row }: CellType) => (
         <>
           <ModelAction
-            model="RailwayMaintenanceFacilityInfrastructureAndUtility"
+            model="RailwayMaintenanceFacilityAndSecurity"
             model_id={row.id as string}
             refetchModel={refetch}
             resubmit={() => refetch()}
