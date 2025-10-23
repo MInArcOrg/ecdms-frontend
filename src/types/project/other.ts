@@ -2372,3 +2372,15 @@ export interface RailwayMaintenanceFacilityInfrastructureAndUtility {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayMaintenanceWorkforceAndFacilityStaff {
+  id?: string;
+  project_id: string; // From route props
+  facility_name: string; // STRING field
+  maintenance_personnel_number: number | null; // INTEGER field
+  staff_facilities: boolean; // BOOLEAN field
+  training_facilities_and_resources: boolean; // BOOLEAN field
+  trainers_instructors_number: number | null; // INTEGER field
+  remark: string | null; // TEXT field
+  created_at?: string;
+  updated_at?: string;
+}

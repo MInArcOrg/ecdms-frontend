@@ -179,6 +179,8 @@ export const subMenuItems = (
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-workforce-and-staff",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-workforce-and-staff`,
           model: "maintenancefacilityworkforceandstaff",
+          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.id,
+          apiRoute: "railway-maintenance-workforce-and-facility-staffs",
         },
         {
           id: railwayFacilitiesAndStationsIds.maintenance_facilities
