@@ -4427,6 +4427,24 @@
         "file-types": {
           "main-infra-doc": "Facility Infrastructure Documentation"
         }
+      },
+      "railway-maintenance-workforce-and-facility-staff": {
+        "title": "Workforce & Staff",
+        "title-short": "Workforce",
+        "detail": "Workforce & Staff Details",
+        "create": "Create Workforce & Staff Record",
+        "edit": "Edit Workforce & Staff Record",
+        "details": {
+          "facility-name": "Facility Name",
+          "maintenance-personnel-number": "Maintenance Personnel Number",
+          "staff-facilities": "Staff Facilities Available",
+          "training-facilities-and-resources": "Training Facilities & Resources Available",
+          "trainers-instructors-number": "Trainers/Instructors Number",
+          "remark": "Remark"
+        },
+        "file-types": {
+          "main-workforce-doc": "Workforce and Staff Documentation"
+        }
       }
     }
   },
