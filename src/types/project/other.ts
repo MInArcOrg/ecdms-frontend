@@ -2384,3 +2384,16 @@ export interface RailwayMaintenanceWorkforceAndFacilityStaff {
   created_at?: string;
   updated_at?: string;
 }
+
+export interface RailwayMaintenanceFacilityScheduleAndProcedure {
+  id?: string;
+  project_id: string; // From route props
+  facility_name: string; // STRING field
+  maintenance_schedules_and_routines_availability: boolean; // BOOLEAN field
+  procedures_for_planned_and_preventive_maintenance_availability: boolean; // BOOLEAN field
+  documentation_and_record_keeping_practices_availability: boolean; // BOOLEAN field
+
+  remark: string | null; // TEXT field
+  created_at?: string;
+  updated_at?: string;
+}

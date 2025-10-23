@@ -4445,6 +4445,23 @@
         "file-types": {
           "main-workforce-doc": "Workforce and Staff Documentation"
         }
+      },
+      "railway-maintenance-facility-schedule-and-procedure": {
+        "title": "Schedule & Procedure",
+        "title-short": "Schedule",
+        "detail": "Facility Schedule & Procedure Details",
+        "create": "Create Facility Schedule & Procedure Record",
+        "edit": "Edit Facility Schedule & Procedure Record",
+        "details": {
+          "facility-name": "Facility Name",
+          "maintenance-schedules-and-routines-availability": "Maintenance Schedules/Routines Availability",
+          "procedures-for-planned-and-preventive-maintenance-availability": "Planned/Preventive Maintenance Procedures Availability",
+          "documentation-and-record-keeping-practices-availability": "Documentation & Record Keeping Practices Availability",
+          "remark": "Remark"
+        },
+        "file-types": {
+          "main-schedule-doc": "Facility Schedule and Procedure Documentation"
+        }
       }
     }
   },
