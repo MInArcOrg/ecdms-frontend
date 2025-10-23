@@ -4462,6 +4462,23 @@
         "file-types": {
           "main-schedule-doc": "Facility Schedule and Procedure Documentation"
         }
+      },
+      "railway-maintenance-environmental-and-other-factor": {
+        "title": "Environmental Factors",
+        "title-short": "Environmental",
+        "detail": "Environmental Factor Details",
+        "create": "Create Environmental Factor Record",
+        "edit": "Edit Environmental Factor Record",
+        "details": {
+          "facility-name": "Facility Name",
+          "environmental-compliance-measures": "Environmental Compliance Measures",
+          "noise-reduction-measures": "Noise Reduction Measures",
+          "sustainable-design-features": "Sustainable Design Features",
+          "remark": "Remark"
+        },
+        "file-types": {
+          "environmental-doc": "Environmental Compliance Documentation"
+        }
       }
     }
   },

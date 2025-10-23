@@ -140,7 +140,7 @@ export const subMenuItems = (
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-type-and-purpose`,
           model: "railwaymaintenancefacilitytypeandpurpose",
           apiRoute: "railway-maintenance-facility-type-and-purposes",
-          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.id,
+          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_type_and_purpose,
         },
         {
           id: railwayFacilitiesAndStationsIds.maintenance_facilities
@@ -149,7 +149,7 @@ export const subMenuItems = (
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-layout-and-design",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-layout-and-design`,
           model: "railwaymaintenancefacilitylayoutanddesign",
-          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.id,
+          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_layout_and_design,
           apiRoute: "railway-maintenance-facility-layout-and-designs",
         },
         {
@@ -159,7 +159,7 @@ export const subMenuItems = (
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-equipment-and-tools",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-equipment-and-tools`,
           model: "railwaymaintenancefacilityequipmentandtool",
-          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.id,
+          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_equipment_and_tools,
           apiRoute: "railway-maintenance-facility-equipment-and-tools",
         },
         {
@@ -169,7 +169,7 @@ export const subMenuItems = (
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-infrastructure-and-utilities",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-infrastructure-and-utilities`,
           model: "railwaymaintenancefacilityinfrastructureandutility",
-          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.id,
+          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_infrastructure_and_utilities,
           apiRoute: "railway-maintenance-facility-infrastructure-and-utilities",
         },
         {
@@ -179,7 +179,7 @@ export const subMenuItems = (
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-workforce-and-staff",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-workforce-and-staff`,
           model: "railwaymaintenancefacilityworkforceandstaff",
-          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.id,
+          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_workforce_and_staff,
           apiRoute: "railway-maintenance-workforce-and-facility-staffs",
         },
         {
@@ -189,7 +189,7 @@ export const subMenuItems = (
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-schedules-and-procedures",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-schedules-and-procedures`,
           model: "railwaymaintenancefacilityscheduleandprocedure",
-          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.id,
+          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_schedules_and_procedures,
           apiRoute: "railway-maintenance-facility-schedule-and-procedures",
         },
         {
@@ -199,6 +199,8 @@ export const subMenuItems = (
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-safety-and-security",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-safety-and-security`,
           model: "railwaymaintenancefacilitysafetyandsecurity",
+          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_safety_and_security,
+          apiRoute: "railway-maintenance-facility-safety-and-securities",
         },
         {
           id: railwayFacilitiesAndStationsIds.maintenance_facilities
@@ -206,7 +208,9 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-environmental-and-other-factors",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-environmental-and-other-factors`,
-          model: "railwaymaintenancefacilityenvironmentalandotherfactor",
+          model: "railwaymaintenanceenvironmentalandotherfactor",
+          fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_environmental_and_other_factors,
+          apiRoute: "railway-maintenance-environmental-and-other-factors",
         },
       ],
     },
