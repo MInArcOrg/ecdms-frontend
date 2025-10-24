@@ -11,10 +11,10 @@ function EmployeeBranchIndex() {
   return (
     <StakeholderLayout
       activeMenuId={stakeholderMenuIds.ORGANIZATION}
-      activeSubMenuId={stakeholderOrganizationIds.generalInfo.additionalInfo}
+      activeSubMenuId={stakeholderOrganizationIds.branches.branches}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <StakeholderBranchList model="stakeholder-branch" stakeholderId={String(id)} typeId={String(typeId)} />
+      <StakeholderBranchList model="stakeholderbranch" stakeholderId={String(id)} typeId={String(typeId)} />
     </StakeholderLayout>
   );
 }

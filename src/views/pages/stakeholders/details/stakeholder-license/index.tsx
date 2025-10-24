@@ -115,9 +115,7 @@ const StakeholderLicenseList: React.FC<StakeholderLicenseListProps> = ({ stakeho
     setIsLoading(false);
   }, []);
 
-  if (isLoading) {
-    return <Box>Loading...</Box>;
-  }
+
 
   return (
     <Box>

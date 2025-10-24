@@ -4479,6 +4479,23 @@
         "file-types": {
           "environmental-doc": "Environmental Compliance Documentation"
         }
+      },
+      "railway-maintenance-facility-and-security": {
+        "title": "Facility Security",
+        "title-short": "Security",
+        "detail": "Facility Security Details",
+        "create": "Create Facility Security Record",
+        "edit": "Edit Facility Security Record",
+        "details": {
+          "facility-name": "Facility Name",
+          "fire-safety-measures": "Fire Safety Measures",
+          "ventilations-and-exhaust-system-availability": "Ventilation & Exhaust System Availability",
+          "security-measures": "Security Measures",
+          "remark": "Remark"
+        },
+        "file-types": {
+          "security-doc": "Security and Safety Documentation"
+        }
       }
     }
   },
@@ -5076,6 +5093,71 @@
       "name": "Name",
       "department": "Department",
       "position": "Position"
+    },
+    "document": {
+      "title": "Documents",
+      "title-short": "Document",
+      "detail": "Document Details",
+      "create": "Create New Document Record",
+      "edit": "Edit Document Record",
+      "type": {
+        "strategy": {
+          "title": "Strategy Documents",
+          "detail": "Strategy Document Details",
+          "create": "Create Strategy Document",
+          "edit": "Edit Strategy Document Record"
+        },
+        "planning": {
+          "title": "Planning Documents",
+          "detail": "Planning Document Details",
+          "create": "Create Planning Document",
+          "edit": "Edit Planning Document Record"
+        },
+        "research": {
+          "title": "Research Papers",
+          "detail": "Research Paper Details",
+          "create": "Create Research Paper",
+          "edit": "Edit Research Paper Record"
+        },
+        "innovation": {
+          "title": "Innovation Records",
+          "detail": "Innovation Record Details",
+          "create": "Create Innovation Record",
+          "edit": "Edit Innovation Record"
+        },
+        "code-of-conduct": {
+          "title": "Codes of Conduct",
+          "detail": "Code of Conduct Details",
+          "create": "Create Code of Conduct",
+          "edit": "Edit Code of Conduct Record"
+        },
+        "manual": {
+          "title": "Manuals and Guides",
+          "detail": "Manual/Guide Details",
+          "create": "Create Manual/Guide",
+          "edit": "Edit Manual/Guide Record"
+        },
+        "other-document": {
+          "title": "Other Documents",
+          "detail": "Other Document Details",
+          "create": "Create Other Document",
+          "edit": "Edit Other Document Record"
+        }
+      },
+      "details": {
+        "document-type": "Document Type",
+        "title": "Title",
+        "description": "Description",
+        "author": "Author",
+        "edition": "Edition",
+        "publication-date": "Publication Date",
+        "isbn": "ISBN/Reference Number",
+        "copy-right-notice": "Copyright Notice",
+        "remark": "Remark"
+      },
+      "file-types": {
+        "document-file": "Document File Attachment"
+      }
     }
   },
   "address": {

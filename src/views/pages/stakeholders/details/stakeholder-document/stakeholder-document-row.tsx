@@ -1,34 +1,33 @@
-// src/views/project/other/railway-maintenance-facility-infrastructure-and-utility/railway-maintenance-facility-infrastructure-and-utility-row.tsx
+// src/views/stakeholder/document/document-row.tsx
 
 import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
-import type { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import type { RailwayMaintenanceFacilityInfrastructureAndUtility } from 'src/types/project/other';
+import { parseISO } from 'date-fns';
+import { formatCreatedAt, formatDynamicDate } from 'src/utils/formatter/date';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
-import { formatCreatedAt } from 'src/utils/formatter/date';
 import type { FileTypeConfig } from './file-type-config';
+import { StakeholderDocument } from 'src/types/stakeholder/other';
 
 interface CellType {
-  row: RailwayMaintenanceFacilityInfrastructureAndUtility;
+  row: StakeholderDocument;
 }
 
-const entitySubject = 'railwaymaintenancefacilityinfrastructureandutility';
+const entitySubject = 'stakeholder-document';
 
-export const railwayMaintenanceFacilityInfrastructureAndUtilityColumns = (
-  onDetail: (row: RailwayMaintenanceFacilityInfrastructureAndUtility) => void,
-  onEdit: (row: RailwayMaintenanceFacilityInfrastructureAndUtility) => void,
+export const stakeholderDocumentColumns = (
+  onDetail: (row: StakeholderDocument) => void,
+  onEdit: (row: StakeholderDocument) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
-  otherSubMenu?: DetailSubMenuItemChild,
+  model?: string,
   fileTypesConfig?: FileTypeConfig[]
 ): GridColDef[] => {
-  const PRIMARY_FILE_TYPE = fileTypesConfig?.[0]?.type || 'RAILWAY_MAINTENANCE_FACILITY_INFRASTRUCTURE_AND_UTILITIES';
+  const PRIMARY_FILE_TYPE = fileTypesConfig?.[0]?.type || 'STAKEHOLDER_DOCUMENT';
 
-  const booleanToText = (value: boolean | undefined) => (value === true ? t('common.yes') : value === false ? t('common.no') : t('common.na'));
 
   return [
     {
@@ -55,33 +54,44 @@ export const railwayMaintenanceFacilityInfrastructureAndUtilityColumns = (
     {
       flex: 0.2,
       minWidth: 150,
-      field: 'facility_name',
-      headerName: t('project.other.railway-maintenance-facility-infrastructure-and-utilities.details.facility-name'),
+      field: 'title',
+      headerName: t('stakeholder.document.details.title'),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>
-          {row?.facility_name || 'N/A'}
+          {row?.title || 'N/A'}
         </Typography>
       )
     },
     {
       flex: 0.15,
-      minWidth: 120,
-      field: 'rail_tracks_and_turnout_availability',
-      headerName: t('project.other.railway-maintenance-facility-infrastructure-and-utilities.details.rail-tracks-and-turnout-availability'),
+      minWidth: 150,
+      field: 'document_type',
+      headerName: t('stakeholder.document.details.document-type'),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>
-          {booleanToText(row?.rail_tracks_and_turnout_availability)}
+          {row?.document_type || 'N/A'}
         </Typography>
       )
     },
     {
       flex: 0.15,
-      minWidth: 120,
-      field: 'fueling_and_refueling_facility_availability',
-      headerName: t('project.other.railway-maintenance-facility-infrastructure-and-utilities.details.fueling-and-refueling-facility-availability'),
+      minWidth: 150,
+      field: 'author',
+      headerName: t('stakeholder.document.details.author'),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>
-          {booleanToText(row?.fueling_and_refueling_facility_availability)}
+          {row?.author || 'N/A'}
+        </Typography>
+      )
+    },
+    {
+      flex: 0.15,
+      minWidth: 150,
+      field: 'publication_date',
+      headerName: t('stakeholder.document.details.publication-date'),
+      renderCell: ({ row }: CellType) => (
+        <Typography sx={{ color: 'text.secondary' }}>
+          {row?.publication_date ? formatDynamicDate((row.publication_date)) : 'N/A'}
         </Typography>
       )
     },
@@ -92,7 +102,7 @@ export const railwayMaintenanceFacilityInfrastructureAndUtilityColumns = (
       headerName: t('common.table-columns.files'),
       sortable: false,
       filterable: false,
-      renderCell: ({ row }: CellType) => <>{row.id && <FileDrawer id={row.id} type={otherSubMenu?.fileType || PRIMARY_FILE_TYPE} />}</>
+      renderCell: ({ row }: CellType) => <>{row.id && <FileDrawer id={row.id} type={PRIMARY_FILE_TYPE} />}</>
     },
     {
       flex: 0.15,
@@ -114,7 +124,7 @@ export const railwayMaintenanceFacilityInfrastructureAndUtilityColumns = (
       renderCell: ({ row }: CellType) => (
         <>
           <ModelAction
-            model="RailwayMaintenanceFacilityInfrastructureAndUtility"
+            model="StakeholderDocument"
             model_id={row.id as string}
             refetchModel={refetch}
             resubmit={() => refetch()}
@@ -124,11 +134,11 @@ export const railwayMaintenanceFacilityInfrastructureAndUtilityColumns = (
           <RowOptions
             deletePermissionRule={{
               action: 'delete',
-              subject: otherSubMenu?.model || entitySubject
+              subject: entitySubject
             }}
             editPermissionRule={{
               action: 'update',
-              subject: otherSubMenu?.model || entitySubject
+              subject: entitySubject
             }}
             onEdit={() => onEdit(row)}
             onDelete={() => onDelete(row.id as string)}

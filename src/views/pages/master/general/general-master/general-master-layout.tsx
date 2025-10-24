@@ -15,7 +15,6 @@ type MasterModelItem = {
   title: string;
   dbModel: string;
   flag?: string;
-  // Allow other properties from different models
   [key: string]: any;
 };
 
@@ -26,7 +25,7 @@ function GeneralMasterLayout({ children }: { children: ReactElement }) {
   const { activeModule, masterDataItemsByFlag, isMasterDataSelected } = useMemo(() => {
     const pathSegments = router.asPath.split('/');
     const moduleId = pathSegments.length > 3 ? pathSegments[3] : undefined;
-    const activeModule = appModulesWithIds.find((m) => m.id === moduleId) || { id: '', name: '' };
+    const activeModule: { id: string; name: string; flags?: { id: string }[] } = appModulesWithIds.find((m) => m.id === moduleId) || { id: '', name: '' };
 
     const isMasterDataSelected = pathSegments.length > 5;
 
@@ -89,7 +88,9 @@ function GeneralMasterLayout({ children }: { children: ReactElement }) {
         ) : (
           <Fragment>
             <Grid xs={12} md={3}>
-              <MasterFlagAccordionMenu activeModule={activeModule} masterDataItemsByFlag={masterDataItemsByFlag} />
+              <MasterFlagAccordionMenu
+                activeModule={activeModule as any}
+                masterDataItemsByFlag={masterDataItemsByFlag} />
             </Grid>
             <Grid xs={12} md={9}>
               {isMasterDataSelected ? (

@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
 import subMenuItems, { stakeholderResourceIds } from '../(sub-menu-items)';
 import { stakeholderMenuIds } from 'src/views/pages/stakeholders/details/layout/stakeholder-menu-items';
+import StakeholderDocumentList from 'src/views/pages/stakeholders/details/stakeholder-document';
+import { documentTypeVariantObjects } from 'src/views/pages/stakeholders/details/stakeholder-document/file-type-config';
 
 function StakeholderStrategyIndex() {
   const router = useRouter();
@@ -13,14 +15,18 @@ function StakeholderStrategyIndex() {
       activeSubMenuId={stakeholderResourceIds.documents.documents}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <>documents need to be added here</>
+      <StakeholderDocumentList
+        model="stakeholderdocument"
+        stakeholderId={String(id)}
+        typeId={String(typeId)}
+        documentType={documentTypeVariantObjects.otherDocument.value} />
     </StakeholderLayout>
   );
 }
 
 StakeholderStrategyIndex.acl = {
   action: 'view',
-  subject: 'stakeholdermaterial'
+  subject: 'stakeholderdocument'
 };
 
 export default StakeholderStrategyIndex;

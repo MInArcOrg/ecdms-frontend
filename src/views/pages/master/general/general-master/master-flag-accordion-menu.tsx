@@ -8,7 +8,7 @@ interface MasterFlagAccordionMenuProps {
   activeModule: {
     id: string;
     name: string;
-    flags?: { id: string; name: string }[];
+    flags: { id: string; name: string }[];
   };
   masterDataItemsByFlag: Record<string, any[]>;
 }

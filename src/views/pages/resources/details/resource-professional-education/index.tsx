@@ -134,9 +134,7 @@ const ResourceEducationList: React.FC<ResourceEducationListProps> = ({ professio
     }
   ];
 
-  if (isLoading) {
-    return <Box>Loading...</Box>;
-  }
+
 
   return (
     <Box>

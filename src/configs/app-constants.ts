@@ -50,7 +50,7 @@ export const acadamicLevels: string[] = [
   'others'
 ];
 export const appModulesNames = ['Masterdata', 'project', 'stakeholder', 'resource', 'document', 'infrastructure'];
-export const appModulesWithIds = [
+export const appModulesWithIds: { id: string; name: string; flags: { id: string; name: string }[] }[] = [
   {
     id: 'master-data',
     name: 'Masterdata',

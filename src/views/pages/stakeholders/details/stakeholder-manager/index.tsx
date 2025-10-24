@@ -125,9 +125,7 @@ const ManagerList: React.FC<ManagerListProps> = ({ stakeholderId }) => {
     setIsLoading(false);
   }, []);
 
-  if (isLoading) {
-    return <Box>Loading...</Box>;
-  }
+
 
   return (
     <Box>

@@ -127,9 +127,7 @@ const StakeholderVehicleList: React.FC<StakeholderVehicleListProps> = ({ stakeho
     setIsLoading(false);
   }, []);
 
-  if (isLoading) {
-    return <Box>Loading...</Box>;
-  }
+
 
   return (
     <Box>

@@ -11,10 +11,10 @@ function StakeholderBranchContactPersonIndex() {
   return (
     <StakeholderLayout
       activeMenuId={stakeholderMenuIds.ORGANIZATION}
-      activeSubMenuId={stakeholderOrganizationIds.branches.additionalInfo}
+      activeSubMenuId={stakeholderOrganizationIds.branches.branchContactPerson}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <StakeholderBranchContactPersonList model="stakeholder-branch-contact-person" stakeholderId={String(id)} typeId={String(typeId)} />
+      <StakeholderBranchContactPersonList model="stakeholderbranchcontactperson" stakeholderId={String(id)} typeId={String(typeId)} />
     </StakeholderLayout>
   );
 }

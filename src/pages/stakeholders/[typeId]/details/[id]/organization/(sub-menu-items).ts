@@ -86,6 +86,11 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
     title: 'stakeholder.navigation.submenu.organization.branches.branches',
     subItems: [
       {
+        id: stakeholderOrganizationIds.branches.branches,
+        title: 'stakeholder.navigation.submenu.organization.branches.branches',
+        path: `/stakeholders/${typeId}/details/${id}/organization/branches/branches`
+      },
+      {
         id: stakeholderOrganizationIds.branches.branchManager,
         title: 'stakeholder.navigation.submenu.organization.branches.branch-manager',
         path: `/stakeholders/${typeId}/details/${id}/organization/branches/branch-manager`

@@ -2410,3 +2410,14 @@ export interface RailwayMaintenanceEnvironmentalAndOtherFactor {
   created_at?: string;
   updated_at?: string;
 }
+export interface RailwayMaintenanceFacilityAndSecurity {
+  id?: string;
+  project_id: string; // From route props
+  facility_name: string; // STRING field
+  fire_safety_measures: string; // STRING field
+  ventilation_and_exhaust_system_availability: boolean; // BOOLEAN field
+  security_measures: string; // STRING field
+  remark: string | null; // TEXT field
+  created_at?: string;
+  updated_at?: string;
+}

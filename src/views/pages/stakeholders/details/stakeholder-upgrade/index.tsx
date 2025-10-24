@@ -104,9 +104,7 @@ const StakeholderUpgradeList: React.FC<StakeholderUpgradeListProps> = ({ stakeho
     setIsLoading(false);
   }, []);
 
-  if (isLoading) {
-    return <Box>Loading...</Box>;
-  }
+
 
   return (
     <Box>

@@ -101,6 +101,7 @@ const BranchContactPersonForm: React.FC<BranchContactPersonFormProps> = ({ formi
       </Grid>
       <Grid item xs={12}>
         <CustomTextBox
+          type="email"
           fullWidth
           label={t('stakeholder.stakeholder-branch-contact-person.email')}
           name="email"

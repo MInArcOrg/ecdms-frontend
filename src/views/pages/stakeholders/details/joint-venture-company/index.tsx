@@ -104,9 +104,7 @@ const JointVentureCompanyList: React.FC<JointVentureCompanyListProps> = ({ stake
     setIsLoading(false);
   }, []);
 
-  if (isLoading) {
-    return <Box>Loading...</Box>;
-  }
+
 
   return (
     <Box>
