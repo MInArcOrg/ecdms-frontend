@@ -109,9 +109,7 @@ const AdditionalInformationList: React.FC<AdditionalInformationListProps> = ({ s
     }
   ];
 
-  if (isLoading) {
-    return <Box>Loading...</Box>;
-  }
+
 
   return (
     <Box>

@@ -93,9 +93,7 @@ const JointVentureList: React.FC<JointVentureListProps> = ({ stakeholderId }) =>
     setIsLoading(false);
   }, []);
 
-  if (isLoading) {
-    return <Box>Loading...</Box>;
-  }
+
 
   return (
     <Box>

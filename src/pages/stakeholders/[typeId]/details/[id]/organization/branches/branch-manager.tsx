@@ -14,7 +14,7 @@ function StakeholderBranchManagerIndex() {
       activeSubMenuId={stakeholderOrganizationIds.branches.branchManager}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <StakeholderBranchManagerList model="stakeholder-branch-manager" stakeholderId={String(id)} typeId={String(typeId)} />
+      <StakeholderBranchManagerList model="stakeholderbranchmanager" stakeholderId={String(id)} typeId={String(typeId)} />
     </StakeholderLayout>
   );
 }

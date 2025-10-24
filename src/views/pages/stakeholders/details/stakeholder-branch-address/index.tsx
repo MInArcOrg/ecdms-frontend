@@ -147,9 +147,7 @@ const BranchAddressList: React.FC<BranchAddressListProps> = ({ stakeholderId }) 
     }
   ];
 
-  if (isLoading) {
-    return <Box>Loading...</Box>;
-  }
+
 
   return (
     <Box>

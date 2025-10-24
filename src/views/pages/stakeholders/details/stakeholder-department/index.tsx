@@ -113,9 +113,7 @@ const DepartmentList: React.FC<DepartmentListProps> = ({ stakeholderId }) => {
     }
   ];
 
-  if (isLoading) {
-    return <Box>Loading...</Box>;
-  }
+
 
   return (
     <Box>

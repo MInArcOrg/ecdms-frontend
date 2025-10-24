@@ -13,6 +13,7 @@ interface BranchContactPersonCardProps {
   onDelete: (id: string) => void;
   onDetail: (branchContactPerson: StakeholderBranchContactPerson) => void;
   stakeholderBranches: StakeholderBranch[];
+  model: string;
 }
 
 const BranchContactPersonCard: React.FC<BranchContactPersonCardProps> = ({
@@ -21,7 +22,8 @@ const BranchContactPersonCard: React.FC<BranchContactPersonCardProps> = ({
   onEdit,
   onDelete,
   onDetail,
-  stakeholderBranches
+  stakeholderBranches,
+  model
 }) => {
   const { t } = useTranslation();
 
@@ -84,11 +86,11 @@ const BranchContactPersonCard: React.FC<BranchContactPersonCardProps> = ({
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'stakeholderbranchcontactperson'
+            subject: model
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'stakeholderbranchcontactperson'
+            subject: model
           }}
           onEdit={() => onEdit(branchContactPerson)}
           onDelete={() => onDelete(branchContactPerson?.id || '')}

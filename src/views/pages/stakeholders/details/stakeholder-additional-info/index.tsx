@@ -88,9 +88,7 @@ const AdditionalInformationList: React.FC<AdditionalInformationListProps> = ({ s
     setIsLoading(false);
   }, []);
 
-  if (isLoading) {
-    return <Box>Loading...</Box>;
-  }
+
 
   return (
     <Box>

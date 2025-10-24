@@ -122,9 +122,7 @@ const BranchList: React.FC<BranchListProps> = ({ stakeholderId }) => {
     }
   ];
 
-  if (isLoading) {
-    return <Box>Loading...</Box>;
-  }
+
 
   return (
     <Box>

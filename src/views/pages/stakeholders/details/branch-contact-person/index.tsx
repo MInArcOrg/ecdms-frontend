@@ -24,7 +24,7 @@ interface BranchContactPersonListProps {
   typeId: string;
 }
 
-const BranchContactPersonList: React.FC<BranchContactPersonListProps> = ({ stakeholderId }) => {
+const BranchContactPersonList: React.FC<BranchContactPersonListProps> = ({ stakeholderId, model }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<StakeholderBranchContactPerson | null>(null);
@@ -139,9 +139,7 @@ const BranchContactPersonList: React.FC<BranchContactPersonListProps> = ({ stake
     }
   ];
 
-  if (isLoading) {
-    return <Box>Loading...</Box>;
-  }
+
 
   return (
     <Box>
@@ -173,7 +171,7 @@ const BranchContactPersonList: React.FC<BranchContactPersonListProps> = ({ stake
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: branchContactPersonColumns(handleClickDetail, handleEdit, handleDelete, t, stakeholderBranches)
+          headers: branchContactPersonColumns(handleClickDetail, handleEdit, handleDelete, model, t, stakeholderBranches)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -184,6 +182,7 @@ const BranchContactPersonList: React.FC<BranchContactPersonListProps> = ({ stake
             refetch={refetch}
             onDelete={handleDelete}
             stakeholderBranches={stakeholderBranches}
+            model={model}
           />
         )}
         createActionConfig={{
@@ -192,7 +191,7 @@ const BranchContactPersonList: React.FC<BranchContactPersonListProps> = ({ stake
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'stakeholderbranchcontactperson'
+            subject: model
           }
         }}
         fetchDataFunction={refetch}
