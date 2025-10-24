@@ -1,3 +1,4 @@
+import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
 import { StudyField } from '../general/general-master';
 
 export interface StakeholderStudyField {
@@ -43,4 +44,19 @@ export interface ConstructionRelatedService {
   measurement_unit: string;
   created_at?: Date;
   updated_at?: Date;
+}
+
+export interface StakeholderDocument {
+  id?: string;
+  stakeholder_id: string; // From route props
+  document_type: string; // STRING field
+  title: string; // STRING field
+  description: string | null; // TEXT field
+  author: string; // STRING field
+  edition: string; // STRING field
+  publication_date?: string | Date | EthiopianDate; // DATE field (stored as string/ISO)
+  isbn: string; // STRING field
+  copy_right_notice: string; // STRING field
+  created_at?: string;
+  updated_at?: string;
 }
