@@ -10,7 +10,7 @@ import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import { formatCreatedAt, formatDate } from 'src/utils/formatter/date';
 import type { FileTypeConfig } from './file-type-config';
-import CustomChip from 'src/views/components/custom/custom-chip';
+import CustomChip from 'src/@core/components/mui/chip';
 
 interface CellType {
   row: RailwayPowerSupplyMaintenanceAndTesting;
