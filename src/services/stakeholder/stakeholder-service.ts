@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 
 import { AxiosResponse } from "axios";
+import { Project } from "src/types/project";
 import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
 import { Stakeholder } from "src/types/stakeholder";
 
@@ -49,6 +50,12 @@ const stakeholderApiService = {
 
   update: (id: string, body: IApiPayload<Stakeholder>): Promise<IApiResponse> =>
     buildPutRequest(`/stakeholders/stakeholders/${id}`, body)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
+  getStakeholderProjects: (stakeholderId: string, params: GetRequestParam): Promise<IApiResponse<Project[]>> =>
+    buildGetRequest(`/stakeholders/stakeholder-projects/${stakeholderId}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
