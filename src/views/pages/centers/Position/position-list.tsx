@@ -44,8 +44,9 @@ function PositionList({ parentDepartment }: { parentDepartment: Department }) {
     toggleDrawer();
     setSelectedRow(position);
   };
-  const handleDelete = (positionId: string) => {
-    // Handle delete logic
+  const handleDelete = async (positionId: string) => {
+    await positionApiService.delete(positionId);
+    refetch();
   };
 
   return (

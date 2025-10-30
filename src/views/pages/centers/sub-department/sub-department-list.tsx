@@ -32,10 +32,9 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
     queryKey: ['subDepartments', parentDepartment?.id],
     fetchFunction: fetchSubDepartments
   });
-  console.log('subDepartments', subDepartments);
-  const handleDelete = (subDepartmentId: string) => {
-    return departmentApiService.delete(subDepartmentId);
-    // Handle delete logic
+  const handleDelete = async(subDepartmentId: string) => {
+    await departmentApiService.delete(subDepartmentId);
+    refetch();
   };
   const toggleDrawer = () => {
     setSelectedRow({} as Department);

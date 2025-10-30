@@ -18,10 +18,10 @@ const createData = (title: any, description: any, role: any, Action: any) => {
 };
 
 const rows = [
-  createData('Frozen yoghurt', 159, 'admin', 24),
-  createData('Ice cream sandwich', 237, 'notadmin', 37),
-  createData('Eclair', 262, 'admin', 24),
-  createData('Cupcake', 305, 'superadmin', 67)
+  createData('Document 1', 159, 'admin', 24),
+  createData('Document 2', 237, 'notadmin', 37),
+  createData('Document 3', 262, 'admin', 24),
+  createData('Document 4', 305, 'superadmin', 67)
 ];
 function Document() {
   // const [selectedRow, setSelectedRow] = useState(undefined);
