@@ -177,10 +177,10 @@ const Customizer = () => {
                     backgroundColor: '#7367F0',
                     ...(themeColor === 'primary'
                       ? {
-                          width: 53,
-                          height: 53,
-                          m: (theme) => theme.spacing(1.5, 0.75, 0)
-                        }
+                        width: 53,
+                        height: 53,
+                        m: (theme) => theme.spacing(1.5, 0.75, 0)
+                      }
                       : {})
                   }}
                 />
@@ -190,10 +190,10 @@ const Customizer = () => {
                     backgroundColor: 'secondary.main',
                     ...(themeColor === 'secondary'
                       ? {
-                          width: 53,
-                          height: 53,
-                          m: (theme) => theme.spacing(1.5, 0.75, 0)
-                        }
+                        width: 53,
+                        height: 53,
+                        m: (theme) => theme.spacing(1.5, 0.75, 0)
+                      }
                       : {})
                   }}
                 />
@@ -203,10 +203,10 @@ const Customizer = () => {
                     backgroundColor: 'success.main',
                     ...(themeColor === 'success'
                       ? {
-                          width: 53,
-                          height: 53,
-                          m: (theme) => theme.spacing(1.5, 0.75, 0)
-                        }
+                        width: 53,
+                        height: 53,
+                        m: (theme) => theme.spacing(1.5, 0.75, 0)
+                      }
                       : {})
                   }}
                 />
@@ -216,10 +216,10 @@ const Customizer = () => {
                     backgroundColor: 'error.main',
                     ...(themeColor === 'error'
                       ? {
-                          width: 53,
-                          height: 53,
-                          m: (theme) => theme.spacing(1.5, 0.75, 0)
-                        }
+                        width: 53,
+                        height: 53,
+                        m: (theme) => theme.spacing(1.5, 0.75, 0)
+                      }
                       : {})
                   }}
                 />
@@ -229,10 +229,10 @@ const Customizer = () => {
                     backgroundColor: 'warning.main',
                     ...(themeColor === 'warning'
                       ? {
-                          width: 53,
-                          height: 53,
-                          m: (theme) => theme.spacing(1.5, 0.75, 0)
-                        }
+                        width: 53,
+                        height: 53,
+                        m: (theme) => theme.spacing(1.5, 0.75, 0)
+                      }
                       : {})
                   }}
                 />
@@ -242,10 +242,10 @@ const Customizer = () => {
                     backgroundColor: 'info.main',
                     ...(themeColor === 'info'
                       ? {
-                          width: 53,
-                          height: 53,
-                          m: (theme) => theme.spacing(1.5, 0.75, 0)
-                        }
+                        width: 53,
+                        height: 53,
+                        m: (theme) => theme.spacing(1.5, 0.75, 0)
+                      }
                       : {})
                   }}
                 />
@@ -276,51 +276,11 @@ const Customizer = () => {
               </RadioGroup>
             </Box>
 
-            {/* AppBar */}
-            <Box sx={{ mb: 5 }}>
-              <Typography>AppBar Type</Typography>
-              <RadioGroup
-                row
-                value={appBar}
-                sx={{
-                  '& .MuiFormControlLabel-label': { color: 'text.secondary' }
-                }}
-                onChange={(e) => handleChange('appBar', e.target.value as Settings['appBar'])}
-              >
-                <FormControlLabel value="fixed" label="Fixed" control={<Radio />} />
-                <FormControlLabel value="static" label="Static" control={<Radio />} />
-                {layout === 'horizontal' ? null : <FormControlLabel value="hidden" label="Hidden" control={<Radio />} />}
-              </RadioGroup>
-            </Box>
 
-            {/* Footer */}
-            <Box sx={{ mb: 5 }}>
-              <Typography>Footer Type</Typography>
-              <RadioGroup
-                row
-                value={footer}
-                sx={{
-                  '& .MuiFormControlLabel-label': { color: 'text.secondary' }
-                }}
-                onChange={(e) => handleChange('footer', e.target.value as Settings['footer'])}
-              >
-                <FormControlLabel value="fixed" label="Fixed" control={<Radio />} />
-                <FormControlLabel value="static" label="Static" control={<Radio />} />
-                <FormControlLabel value="hidden" label="Hidden" control={<Radio />} />
-              </RadioGroup>
-            </Box>
 
-            {/* AppBar Blur */}
-            <Box
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between'
-              }}
-            >
-              <Typography>AppBar Blur</Typography>
-              <Switch name="appBarBlur" checked={appBarBlur} onChange={(e) => handleChange('appBarBlur', e.target.checked)} />
-            </Box>
+
+
+
           </CustomizerSpacing>
 
           <Divider sx={{ m: '0 !important' }} />

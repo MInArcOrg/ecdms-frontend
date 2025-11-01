@@ -15,13 +15,14 @@ import HorizontalNavItems from 'src/navigation/horizontal';
 // ** Component Import
 // Uncomment the below line (according to the layout type) when using server-side menu
 import ServerSideVerticalNavItems from './components/vertical/ServerSideNavItems';
-// import ServerSideHorizontalNavItems from './components/horizontal/ServerSideNavItems'
+import ServerSideHorizontalItems from './components/horizontal/ServerSideNavItems';
 
 import HorizontalAppBarContent from './components/horizontal/AppBarContent';
 import VerticalAppBarContent from './components/vertical/AppBarContent';
 
 // ** Hook Import
 import { useSettings } from 'src/@core/hooks/useSettings';
+import { HorizontalNavItemsType } from 'src/@core/layouts/types';
 
 interface Props {
   children: ReactNode;
@@ -34,6 +35,7 @@ const UserLayout = ({ children, contentHeightFixed }: Props) => {
 
   // ** Vars for server side navigation
   const { menuItems: verticalMenuItems } = ServerSideVerticalNavItems();
+  const { menuItems: horizontalMenuItems } = ServerSideHorizontalItems();
   // const { menuItems: horizontalMenuItems } = ServerSideHorizontalNavItems()
 
   /**
@@ -56,6 +58,11 @@ const UserLayout = ({ children, contentHeightFixed }: Props) => {
       settings={settings}
       saveSettings={saveSettings}
       contentHeightFixed={contentHeightFixed}
+      horizontalLayoutProps={{
+        navMenu: {
+          navItems: horizontalMenuItems as HorizontalNavItemsType
+        },
+      }}
       verticalLayoutProps={{
         navMenu: {
           // navItems: VerticalNavItems()

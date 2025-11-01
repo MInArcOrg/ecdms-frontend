@@ -9,12 +9,11 @@ import Icon from 'src/@core/components/icon';
 import { Settings } from 'src/@core/context/settingsContext';
 
 // ** Components
+import { styled } from '@mui/material/styles';
 import LanguageDropdown from 'src/@core/layouts/components/shared-components/LanguageDropdown';
 import ModeToggler from 'src/@core/layouts/components/shared-components/ModeToggler';
 import NotificationDropdown from 'src/@core/layouts/components/shared-components/NotificationDropdown';
-import ShortcutsDropdown from 'src/@core/layouts/components/shared-components/ShortcutsDropdown';
 import UserDropdown from 'src/@core/layouts/components/shared-components/UserDropdown';
-import { styled } from '@mui/material/styles';
 
 // ** Hook Import
 import { useAuth } from 'src/hooks/useAuth';
@@ -65,7 +64,6 @@ const AppBarContent = (props: Props) => {
         <ModeToggler settings={settings} saveSettings={saveSettings} />
         {auth.user && (
           <>
-            <ShortcutsDropdown settings={settings} shortcuts={[]} />
             <NotificationDropdown settings={settings} notifications={[]} />
             <UserDropdown settings={settings} />
           </>

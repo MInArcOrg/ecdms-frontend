@@ -55,8 +55,13 @@ export const appModulesWithIds: { id: string; name: string; flags: { id: string;
     id: 'master-data',
     name: 'Masterdata',
     flags: [
-      { id: 'MASTERDATA', name: 'Masterdata' },
-      { id: 'GENERAL', name: 'General' }
+      { id: 'GENERAL', name: 'General' },
+      { id: 'PROJECT', name: 'Project' },
+      { id: 'STAKEHOLDER', name: 'Stakeholder' },
+      { id: 'INFRASTRUCTURE', name: 'Infrastructure' },
+      { id: 'RESOURCE', name: 'Resource' },
+      { id: 'DOCUMENT', name: 'Document' },
+
     ]
   },
   { id: 'centers', name: 'Centers', flags: [{ id: 'CENTER', name: 'Center Management' }] },

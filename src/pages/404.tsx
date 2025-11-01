@@ -7,7 +7,7 @@ import Link from 'next/link';
 import Box, { BoxProps } from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 
 // ** Layout Import
 import BlankLayout from 'src/@core/layouts/BlankLayout';
@@ -37,6 +37,8 @@ const Img = styled('img')(({ theme }) => ({
 }));
 
 const Error404 = () => {
+  const theme = useTheme();
+
   return (
     <Box className="content-center">
       <Box
@@ -57,7 +59,7 @@ const Error404 = () => {
             Back to Home
           </Button>
         </BoxWrapper>
-        <Img height="500" alt="error-illustration" src="/images/pages/404.png" />
+        <Img height="500" alt="error-illustration" src={`/images/pages/404-${theme.palette.mode}.png`} />
       </Box>
       <FooterIllustrations />
     </Box>
