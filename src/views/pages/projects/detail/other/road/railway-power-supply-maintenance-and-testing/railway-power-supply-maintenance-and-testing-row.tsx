@@ -85,6 +85,7 @@ export const railwayPowerSupplyMaintenanceAndTestingColumns = (
           label={row.maintenance_schedules_and_activities ? t('common.yes') : t('common.no')}
           sx={{ '& .MuiChip-label': { lineHeight: '18px' } }}
         />
+
       )
     },
     {
