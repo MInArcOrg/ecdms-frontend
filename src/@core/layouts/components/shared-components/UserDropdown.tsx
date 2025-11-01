@@ -51,6 +51,7 @@ const UserDropdown = (props: Props) => {
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
   // ** Hooks
   const router = useRouter();
+
   const { logout, user } = useAuth();
   // ** Vars
   const { direction } = settings;
@@ -118,18 +119,18 @@ const UserDropdown = (props: Props) => {
           <UserProfileSmall user={user as User} />
         </Box>
         <Divider sx={{ my: (theme) => `${theme.spacing(2)} !important` }} />
-        <MenuItemStyled sx={{ p: 0 }} onClick={() => handleDropdownClose('/pages/user-profile/profile')}>
+        <MenuItemStyled sx={{ p: 0 }} onClick={() => handleDropdownClose(`/admin/users/${user?.id}/account`)}>
           <Box sx={styles}>
             <Icon icon="tabler:user-check" />
-            My Profile
+
           </Box>
         </MenuItemStyled>
-        <MenuItemStyled sx={{ p: 0 }} onClick={() => handleDropdownClose('/pages/account-settings/account')}>
+        {/* <MenuItemStyled sx={{ p: 0 }} onClick={() => handleDropdownClose('/pages/account-settings/account')}>
           <Box sx={styles}>
             <Icon icon="tabler:settings" />
             Settings
           </Box>
-        </MenuItemStyled>
+        </MenuItemStyled> */}
 
         <Divider sx={{ my: (theme) => `${theme.spacing(2)} !important` }} />
         <MenuItemStyled sx={{ p: 0 }} onClick={handleLogout}>
