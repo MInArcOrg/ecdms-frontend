@@ -73,9 +73,7 @@ const initialSettings: Settings = {
 const staticSettings = {
   appBar: initialSettings.appBar,
   footer: initialSettings.footer,
-  layout: initialSettings.layout,
   navHidden: initialSettings.navHidden,
-  lastLayout: initialSettings.lastLayout,
   toastPosition: initialSettings.toastPosition
 };
 
@@ -84,7 +82,7 @@ const restoreSettings = (): Settings | null => {
 
   try {
     const storedData: string | null = window.localStorage.getItem('settings');
-
+    console.log('stored data', storedData,)
     if (storedData) {
       settings = { ...JSON.parse(storedData), ...staticSettings };
     } else {
@@ -101,12 +99,6 @@ const restoreSettings = (): Settings | null => {
 const storeSettings = (settings: Settings) => {
   const initSettings = Object.assign({}, settings);
 
-  delete initSettings.appBar;
-  delete initSettings.footer;
-  delete initSettings.layout;
-  delete initSettings.navHidden;
-  delete initSettings.lastLayout;
-  delete initSettings.toastPosition;
   window.localStorage.setItem('settings', JSON.stringify(initSettings));
 };
 
@@ -122,7 +114,7 @@ export const SettingsProvider = ({ children, pageSettings }: SettingsProviderPro
 
   useEffect(() => {
     const restoredSettings = restoreSettings();
-
+    console.log('restored setting', restoredSettings)
     if (restoredSettings) {
       setSettings({ ...restoredSettings });
     }
@@ -145,6 +137,7 @@ export const SettingsProvider = ({ children, pageSettings }: SettingsProviderPro
   }, [settings.layout]);
 
   const saveSettings = (updatedSettings: Settings) => {
+    console.log('updated settings', updatedSettings.layout)
     storeSettings(updatedSettings);
     setSettings(updatedSettings);
   };
