@@ -9,8 +9,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 // !Do not remove this Layout import
 import Layout from 'src/@core/layouts/Layout';
 
-// ** Navigation Imports
-import HorizontalNavItems from 'src/navigation/horizontal';
+
 
 // ** Component Import
 // Uncomment the below line (according to the layout type) when using server-side menu
@@ -37,7 +36,7 @@ const UserLayout = ({ children, contentHeightFixed }: Props) => {
   const { menuItems: verticalMenuItems } = ServerSideVerticalNavItems();
   const { menuItems: horizontalMenuItems } = ServerSideHorizontalItems();
   // const { menuItems: horizontalMenuItems } = ServerSideHorizontalNavItems()
-
+  console.log('horizontalMenuItems', horizontalMenuItems);
   /**
    *  The below variable will hide the current layout menu at given screen size.
    *  The menu will be accessible from the Hamburger icon only (Vertical Overlay Menu).
@@ -58,11 +57,7 @@ const UserLayout = ({ children, contentHeightFixed }: Props) => {
       settings={settings}
       saveSettings={saveSettings}
       contentHeightFixed={contentHeightFixed}
-      horizontalLayoutProps={{
-        navMenu: {
-          navItems: horizontalMenuItems as HorizontalNavItemsType
-        },
-      }}
+
       verticalLayoutProps={{
         navMenu: {
           // navItems: VerticalNavItems()
@@ -84,7 +79,7 @@ const UserLayout = ({ children, contentHeightFixed }: Props) => {
       {...(settings.layout === 'horizontal' && {
         horizontalLayoutProps: {
           navMenu: {
-            navItems: HorizontalNavItems()
+            navItems: horizontalMenuItems as HorizontalNavItemsType
 
             // Uncomment the below line when using server-side menu in horizontal layout and comment the above line
             // navItems: horizontalMenuItems

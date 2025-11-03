@@ -110,8 +110,8 @@ const HorizontalLayout = (props: LayoutProps) => {
               ...(navHidden
                 ? {}
                 : {
-                    borderBottom: (theme) => `1px solid ${theme.palette.divider}`
-                  })
+                  borderBottom: (theme) => `1px solid ${theme.palette.divider}`
+                })
             }}
           >
             <Toolbar
