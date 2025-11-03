@@ -82,7 +82,6 @@ const restoreSettings = (): Settings | null => {
 
   try {
     const storedData: string | null = window.localStorage.getItem('settings');
-    console.log('stored data', storedData,)
     if (storedData) {
       settings = { ...JSON.parse(storedData), ...staticSettings };
     } else {
@@ -114,7 +113,6 @@ export const SettingsProvider = ({ children, pageSettings }: SettingsProviderPro
 
   useEffect(() => {
     const restoredSettings = restoreSettings();
-    console.log('restored setting', restoredSettings)
     if (restoredSettings) {
       setSettings({ ...restoredSettings });
     }
@@ -137,7 +135,6 @@ export const SettingsProvider = ({ children, pageSettings }: SettingsProviderPro
   }, [settings.layout]);
 
   const saveSettings = (updatedSettings: Settings) => {
-    console.log('updated settings', updatedSettings.layout)
     storeSettings(updatedSettings);
     setSettings(updatedSettings);
   };
