@@ -10,10 +10,11 @@ import ReactApexcharts from 'src/@core/components/react-apexcharts';
 
 // ** Util Import
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
+import { MasterType } from 'src/types/master/master-types';
 
 const series = [{ data: [32, 52, 72, 94, 116] }];
 
-const GeneralTypeGrowthRate = ({ title }: { title: string }) => {
+const GeneralTypeGrowthRate = ({ selectedType }: { selectedType: MasterType }) => {
   // ** Hook
   const theme = useTheme();
 
@@ -77,11 +78,11 @@ const GeneralTypeGrowthRate = ({ title }: { title: string }) => {
   };
 
   return (
-    <Card>
+    <Card sx={{ mt: 3 }}>
       <CardContent>
         <Box sx={{ gap: 2, display: '', alignItems: 'stretch', justifyContent: 'space-between' }}>
           <Typography variant="h6" sx={{ mb: 1.5 }}>
-            {title} growth rate
+            {selectedType?.title} growth rate
           </Typography>
           <ReactApexcharts type="bar" width={'100%'} height={178} series={series} options={options as any} />
         </Box>

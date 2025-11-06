@@ -6,10 +6,11 @@ import CardContent from '@mui/material/CardContent';
 
 // ** Component Import
 import ReactApexcharts from 'src/@core/components/react-apexcharts';
+import { MasterType } from 'src/types/master/master-types';
 
 const donutColors = ['#fdd835', '#009933', '#826bf8', '#0099ff', '#ffa1a1'];
 
-const ApexPolarChart = ({ title, labels }: { title: string; labels: string[] }) => {
+const ApexPolarChart = ({ selectedType, labels }: { selectedType: MasterType; labels: string[] }) => {
   // ** Hook
   const theme = useTheme();
 
@@ -95,7 +96,7 @@ const ApexPolarChart = ({ title, labels }: { title: string; labels: string[] }) 
   return (
     <Card>
       <CardHeader
-        title={title}
+        title={selectedType?.title}
         subheader="on various categories"
         subheaderTypographyProps={{ sx: { color: (theme) => `${theme.palette.text.disabled} !important` } }}
       />

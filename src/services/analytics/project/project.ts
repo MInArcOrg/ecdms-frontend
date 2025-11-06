@@ -8,7 +8,9 @@ const projectAnalticsService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
+
+
 };
 
 export default projectAnalticsService;

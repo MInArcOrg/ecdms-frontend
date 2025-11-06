@@ -5,13 +5,14 @@ import { Icon } from '@iconify/react';
 import dynamic from 'next/dynamic';
 import { CardContent } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { MasterCategory } from 'src/types/master/master-types';
 
 const MapView = dynamic(() => import('src/views/analytics/layouts/ProjectAnalyticsLayout/MapView'), {
   ssr: false
 });
 
 interface LocationCardProps {
-  categories: { id: number; title: string }[];
+  categories: MasterCategory[];
   loading: boolean;
   baseUrl: string;
   isProject?: boolean;
