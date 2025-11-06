@@ -36,7 +36,6 @@ const UserLayout = ({ children, contentHeightFixed }: Props) => {
   const { menuItems: verticalMenuItems } = ServerSideVerticalNavItems();
   const { menuItems: horizontalMenuItems } = ServerSideHorizontalItems();
   // const { menuItems: horizontalMenuItems } = ServerSideHorizontalNavItems()
-  console.log('horizontalMenuItems', horizontalMenuItems);
   /**
    *  The below variable will hide the current layout menu at given screen size.
    *  The menu will be accessible from the Hamburger icon only (Vertical Overlay Menu).

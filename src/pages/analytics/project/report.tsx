@@ -1,7 +1,7 @@
-import React from 'react';
+import ProjectPlanReportAnalytics from 'src/views/analytics/project/general/ProjectPlanReportAnalytics'
 
-function report() {
-  return <div>report</div>;
+const ProjectPlanAnalytics = () => {
+  return <ProjectPlanReportAnalytics mode='report' /> 
 }
-
-export default report;
+  
+export default ProjectPlanAnalytics
