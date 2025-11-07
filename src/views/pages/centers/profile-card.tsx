@@ -48,8 +48,7 @@ const ProfileCard = ({ department, refetch, loading }: { department: Department;
       <label htmlFor="upload-avatar-pic">
         <Tooltip title="Upload Profile Picture" placement="top" arrow>
           <Avatar
-            alt="Robert Meyer"
-            src="/images/avatars/1.png"
+            alt={departmentHead?.payload.name}
             sx={{
               width: 90,
               height: 90,
