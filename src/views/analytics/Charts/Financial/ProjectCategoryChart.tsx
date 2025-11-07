@@ -6,13 +6,12 @@ import ReactApexcharts from 'src/@core/components/react-apexcharts';
 interface ProjectCategoryChartProps {
   series: { name: string; data: number[] }[];
   labels: any[];
-  title: string;
   height?: number;
 }
 
 const columnColors = ['#E6E6E7', '#FF9F43', '#00E396', '#008FFB'];
 
-const ProjectCategoryChart = ({ series, labels, title, height = 320 }: ProjectCategoryChartProps) => {
+const ProjectCategoryChart = ({ series, labels, height = 320 }: ProjectCategoryChartProps) => {
   const theme = useTheme();
   const years = ['2024', '2023', '2022', '2021', '2020'];
   const [year, setYear] = useState(years[0]);
@@ -66,23 +65,7 @@ const ProjectCategoryChart = ({ series, labels, title, height = 320 }: ProjectCa
   };
 
   return (
-    <Card>
-      <CardContent>
-        <Box display="flex" alignItems="center" justifyContent="space-between" mb={2}>
-          <Typography variant="h6">{title}</Typography>
-
-          <Autocomplete
-            disableClearable
-            size="small"
-            options={years}
-            value={year}
-            isOptionEqualToValue={(option, value) => option === value}
-            onChange={(_, value) => setYear(value)}
-            renderInput={(params) => <TextField {...params} label="Year" variant="outlined" />}
-            sx={{ width: 120 }}
-          />
-        </Box>
-
+    <Box>
         {labels?.length && series?.length ? (
           <ReactApexcharts type="bar" height={height} options={options} series={series} />
         ) : (
@@ -90,8 +73,7 @@ const ProjectCategoryChart = ({ series, labels, title, height = 320 }: ProjectCa
             No data available
           </Typography>
         )}
-      </CardContent>
-    </Card>
+     </Box>
   );
 };
 
