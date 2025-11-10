@@ -68,7 +68,7 @@ function Location() {
         <CardContent>
           <Grid container spacing={3} mt={3}>
             <Grid item xs={12} md={3}>
-              <ProjectTypes data={types || []} title="Types" maxHeight="100%" activeType={activeType} setActiveType={setActiveType} />
+              <ProjectTypes rawData={types || []} title="Types" maxHeight="100%" activeType={activeType} setActiveType={setActiveType} />
             </Grid>
             <Grid item xs={12} sm={9}>
               <LocationCard

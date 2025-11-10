@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import projectAnalticsService from 'src/services/analytics/project';
+import projectAnalticsService from 'src/services/analytics/project/project';
 
 import ProjectAnalyticsLayout from 'src/views/analytics/layouts/ProjectAnalyticsLayout';
 import LoadingPlaceholder from 'src/views/components/loader';

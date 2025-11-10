@@ -1,7 +1,7 @@
-import ProjectPlanReportAnalytics from 'src/views/analytics/project/general/ProjectPlanReportAnalytics'
+import ProjectPlanReportAnalytics from 'src/views/analytics/projects/plan-report/ProjectPlanReportAnalytics'
 
 const ProjectPlanAnalytics = () => {
-  return <ProjectPlanReportAnalytics mode='report' /> 
+  return <ProjectPlanReportAnalytics mode='report' />
 }
-  
+
 export default ProjectPlanAnalytics

@@ -1,48 +1,61 @@
-import { Card, CardContent, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+// src/views/analytics/Charts/Financial/ProjectCategoryAnalyticsTable.tsx
 
-function ProjectCategoryAnalyticsTable({ regions }: { regions: any[] }) {
-  return (
-    <Card>
-      <CardContent>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell />
-              <TableCell>Total Contract Price</TableCell>
-              <TableCell>Main Contract Price</TableCell>
-              <TableCell>Supplement</TableCell>
-              <TableCell>Variation</TableCell>
-              <TableCell>Omission</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow
-              sx={{
-                backgroundColor: (theme) => theme.palette.customColors.trackBg
-              }}
-            >
-              <TableCell>Total</TableCell>
-              <TableCell>1,000,000 ETB</TableCell>
-              <TableCell>1,000,000 ETB</TableCell>
-              <TableCell>1,000,000 ETB</TableCell>
-              <TableCell>1,000,000 ETB</TableCell>
-              <TableCell>1,000,000 ETB</TableCell>
-            </TableRow>
-            {regions?.map((region, index) => (
-              <TableRow key={index}>
-                <TableCell>{region.name}</TableCell>
-                <TableCell>1,000,000 ETB</TableCell>
-                <TableCell>1,000,000 ETB</TableCell>
-                <TableCell>1,000,000 ETB</TableCell>
-                <TableCell>1,000,000 ETB</TableCell>
-                <TableCell>1,000,000 ETB</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </CardContent>
-    </Card>
-  );
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, CircularProgress, Box } from '@mui/material'
+
+interface ProjectCategoryAnalyticsTableProps {
+  regions?: string[]
+  series?: { name: string; data: number[] }[]
+  loading?: boolean
 }
 
-export default ProjectCategoryAnalyticsTable;
+export default function ProjectCategoryAnalyticsTable({
+  regions = [],
+  series = [],
+  loading = false
+}: ProjectCategoryAnalyticsTableProps) {
+  if (loading) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" height={200}>
+        <CircularProgress />
+      </Box>
+    )
+  }
+
+  if (!series?.length) {
+    return (
+      <Box textAlign="center" py={4} color="text.secondary">
+        No data available
+      </Box>
+    )
+  }
+
+  return (
+    <TableContainer component={Paper} sx={{ borderRadius: 2, boxShadow: 1 }}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Department</TableCell>
+            {series.map((s) => (
+              <TableCell key={s.name} align="right">
+                {s.name}
+              </TableCell>
+            ))}
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+          {regions.map((region, i) => (
+            <TableRow key={region}>
+              <TableCell>{region}</TableCell>
+              {series.map((s) => (
+                <TableCell key={s.name + i} align="right">
+                  {s.data[i] ?? 0}
+                </TableCell>
+              ))}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  )
+}

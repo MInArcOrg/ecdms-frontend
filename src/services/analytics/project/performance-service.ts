@@ -4,11 +4,17 @@ import { buildGetRequest } from 'src/utils/requests/get-request';
 
 const projectPerformanceAnalticsService = {
   getFinancialPhysicalPerformanceExpense: (id: string, params: GetRequestParam): Promise<IApiResponse<any>> =>
-buildGetRequest(`/analytics/project-type-category-departments-plan-report/${id}`, params)
+    buildGetRequest(`/analytics/project-annual-financial-performance/projectexpense/${id}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
+  getEVAperformance: (id: string, params: GetRequestParam): Promise<IApiResponse<any>> =>
+    buildGetRequest(`/analytics/project-annual-cost-schedule-variance/${id}`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
 };
 
 export default projectPerformanceAnalticsService;
