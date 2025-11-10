@@ -13,6 +13,7 @@ import {
 import { styled } from '@mui/material/styles'
 import PerfectScrollbarComponent from 'react-perfect-scrollbar'
 import { formatCurrency } from 'src/utils/formatter/currency'
+import { MasterCategory, MasterType } from 'src/types/master/master-types'
 
 // ** Styled Scrollbar
 const PerfectScrollbar = styled(PerfectScrollbarComponent)<{ maxHeight: string }>(({ maxHeight }) => ({
@@ -20,7 +21,7 @@ const PerfectScrollbar = styled(PerfectScrollbarComponent)<{ maxHeight: string }
 }))
 
 interface ProjectTypesProps {
-  rawData: any[]
+  rawData: MasterType[] | MasterCategory[],
   title: string
   maxHeight?: string
   activeType: any
