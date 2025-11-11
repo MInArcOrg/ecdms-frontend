@@ -2,41 +2,43 @@
 import { useEffect, useState } from 'react';
 
 // ** MUI Imports
-import { Paper, Table, TableRow, TableHead, TableBody, TableCell, TableContainer, TablePagination } from '@mui/material';
+import {
+  Paper,
+  Table,
+  TableRow,
+  TableHead,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TablePagination
+} from '@mui/material';
 
 interface Year {
   id: string | number;
   name: string;
 }
 
-interface Region {
-  id: string | number;
-  name: string;
+interface RegionData {
+  label: string;
+  data: number[];
 }
 
 interface TableViewProps {
-  years: Year[];
-  baseYear: number;
-  regions: Region[];
-  data?: any[];
+  years: Year[]; // Example: [{id: 2024, name: "2024"}, {id: 2025, name: "2025"}]
+  baseYear: number; // index of base year
+  data: RegionData[]; // from your API {label, data[]}
 }
 
-const TableView = ({ years, baseYear, regions, data = [] }: TableViewProps) => {
+const TableView = ({ years, baseYear, data = [] }: TableViewProps) => {
   // Columns
   const columns = [
     { id: 'label', label: 'Region', minWidth: 170 },
     ...years.map((year) => ({
-      id: year.id,
+      id: year.name,
       label: year.name,
       minWidth: 100
     }))
   ];
-
-  function createData(label: string, values: number[]) {
-    // Normalize each value as % of base year value
-    const normalized = values.map((v, i) => Number((v / values[baseYear]) * 100).toFixed(0));
-    return { label, ...normalized };
-  }
 
   // ** States
   const [page, setPage] = useState(0);
@@ -52,43 +54,64 @@ const TableView = ({ years, baseYear, regions, data = [] }: TableViewProps) => {
     setPage(0);
   };
 
+  // Normalize values based on baseYear (percentage)
+  const normalizeValues = (values: number[]) => {
+    const baseValue = values[baseYear];
+    if (!baseValue || baseValue === 0) return values.map(() => 0);
+    return values.map((v) => Number(((v / baseValue) * 100).toFixed(1)));
+  };
+
   // Build table rows dynamically
   useEffect(() => {
-    if (regions?.length > 0) {
-      const mockValues = [100, 120, 140, 150, 155, 160, 170, 175, 180, 185];
-      const newRows = regions.map((region) => createData(region.name, mockValues));
-      setRows(newRows);
-    }
-  }, [regions, baseYear]);
+    if (data?.length > 0) {
+      const newRows = data.map((item) => {
+        const normalized = normalizeValues(item.data);
+        // Map each year to its corresponding normalized value
+        const yearData = years.reduce((acc, year, index) => {
+          acc[year.name] = normalized[index] ?? '-';
+          return acc;
+        }, {} as Record<string, number | string>);
 
-  const displayRows = rows.length > 0 ? rows : data;
+        return {
+          label: item.label,
+          ...yearData
+        };
+      });
+      setRows(newRows);
+    } else {
+      setRows([]);
+    }
+  }, [data, years, baseYear]);
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 440 }}>
-        <Table stickyHeader aria-label="regional-growth-table">
+        <Table stickyHeader aria-label="resource-analytics-table">
           <TableHead>
             <TableRow>
               {columns.map((column) => (
-                <TableCell key={column.id} align="left" sx={{ minWidth: column.minWidth, fontWeight: 600 }}>
+                <TableCell
+                  key={column.id}
+                  align="left"
+                  sx={{ minWidth: column.minWidth, fontWeight: 600 }}
+                >
                   {column.label}
                 </TableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
-            {displayRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row: any, index: number) => (
-              <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                {columns.map((column) => {
-                  const value = row[column.id];
-                  return (
+            {rows
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row: any, index: number) => (
+                <TableRow hover tabIndex={-1} key={index}>
+                  {columns.map((column) => (
                     <TableCell key={column.id} align="left">
-                      {value !== undefined ? value : '-'}
+                      {row[column.id] !== undefined ? row[column.id] : '-'}
                     </TableCell>
-                  );
-                })}
-              </TableRow>
-            ))}
+                  ))}
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
@@ -96,7 +119,7 @@ const TableView = ({ years, baseYear, regions, data = [] }: TableViewProps) => {
       <TablePagination
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
-        count={displayRows.length}
+        count={rows.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

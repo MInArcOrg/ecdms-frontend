@@ -21,7 +21,7 @@ const ProjectPlanReportAnalytics = ({ mode }: ProjectPlanReportAnalyticsProps) =
     activeCategory,
     setActiveCategory,
     isCategoryLoading
-  } = useProjectTypeCategory()
+  } = useProjectTypeCategory('project')
 
   // ✅ Fetch analytics data (plan/report)
   const {

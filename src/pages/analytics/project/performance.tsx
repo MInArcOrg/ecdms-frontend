@@ -121,7 +121,7 @@ const Performance = () => {
     types,
     activeType,
     setActiveType
-  } = useProjectTypeCategory()
+  } = useProjectTypeCategory('project')
   const { user } = useAuth()
   const { data: departments, isLoading: isCategoryLoading } = useQuery({
     queryKey: ['departments', user?.department_id],

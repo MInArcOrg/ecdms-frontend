@@ -18,7 +18,7 @@ import 'react-perfect-scrollbar/dist/css/styles.css'
 
 // ** API Services
 import masterTypeApiService from 'src/services/master-data/master-type-service'
-import TypeCardStat from '../../General/TypeCards'
+import TypeCardStat from '../../General/type-cards'
 
 // ** Props
 interface ScrollableStatCardsProps {

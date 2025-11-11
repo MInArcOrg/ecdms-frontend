@@ -1,6 +1,6 @@
 import { Box, Grid } from '@mui/material';
 import { useRouter } from 'next/router';
-import DetailMenu from './DetailMenu';
+import DetailMenu from '../../layout/DetailMenu';
 import { menuItems } from './tabs';
 
 interface StakeholderAnalyticsLayoutProps {

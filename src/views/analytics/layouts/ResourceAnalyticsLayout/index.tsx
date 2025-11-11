@@ -1,6 +1,6 @@
 import { Box, Grid } from '@mui/material';
 import { useRouter } from 'next/router';
-import DetailMenu from './DetailMenu';
+import DetailMenu from '../../layout/DetailMenu';
 import { menuItems } from './tabs';
 
 function ResourceAnalyticsLayout({
@@ -13,7 +13,7 @@ function ResourceAnalyticsLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
-  const {} = router.query;
+  const { } = router.query;
 
   return (
     <Box>
