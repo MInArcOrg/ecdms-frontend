@@ -29,11 +29,11 @@ interface TableViewProps {
   data: RegionData[]; // from your API {label, data[]}
 }
 
-const TableView = ({ years, baseYear, data = [] }: TableViewProps) => {
+const TableView = ({ years = [], baseYear, data = [] }: TableViewProps) => {
   // Columns
   const columns = [
     { id: 'label', label: 'Region', minWidth: 170 },
-    ...years.map((year) => ({
+    ...years?.map((year) => ({
       id: year.name,
       label: year.name,
       minWidth: 100
