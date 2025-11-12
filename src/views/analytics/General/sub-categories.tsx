@@ -90,7 +90,7 @@ const GeneralSubCategories = ({
     const category = categoryList.find((c: MasterCategory) => c.id === categoryId) || null;
     setSelectedCategory(category);
     setSelectedSub(null);
-    if (onSelectCategory) onSelectCategory(category);
+    if (onSelectCategory) onSelectCategory(category as MasterCategory);
   };
 
   // 🔹 Handle Subcategory Selection

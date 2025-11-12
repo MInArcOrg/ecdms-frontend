@@ -41,7 +41,7 @@ const ProfessionalForm: React.FC<ProfessionalFormProps> = ({ formik }) => {
         <CustomPhoneInput fullWidth label={t('resources.professional.phoneNo')} name="phone_no" size="small" />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('resources.professional.email')} name="email" size="small" />
+        <CustomTextBox fullWidth label={t('resources.professional.email')} name="email" type='email' size="small" />
       </Grid>
     </Grid>
   );

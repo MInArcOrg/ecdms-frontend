@@ -1,139 +1,108 @@
-import { useState, useEffect } from 'react';
-import { Box, Card, IconButton, Typography, useTheme } from '@mui/material';
+// ResourceAnalytics.tsx
+import { Box, Card, IconButton, Typography } from '@mui/material';
 import { Icon } from '@iconify/react';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { indexOf } from 'lodash';
+
+import { useAuth } from 'src/hooks/useAuth';
+import departmentApiService from 'src/services/department/department-service';
+import resourceApiService from 'src/services/resource/resource-service';
+import { defaultGetRequestParam } from 'src/types/requests';
 
 import ResourceAnalyticsLayout from 'src/views/analytics/layouts/ResourceAnalyticsLayout';
 import ResourceFilter from 'src/views/analytics/layouts/ResourceAnalyticsLayout/ResourceFilter';
 import TableView from 'src/views/analytics/layouts/ResourceAnalyticsLayout/TableView';
 import ChartView from 'src/views/analytics/layouts/ResourceAnalyticsLayout/ChartView';
 import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker';
-
-import masterTypeApiService from 'src/services/master-data/master-type-service';
-import masterCategoryApiService from 'src/services/master-data/master-category-service';
-import masterSubCategoryApiService from 'src/services/master-data/master-sub-category-service';
-import departmentApiService from 'src/services/department/department-service';
-import resourceApiService from 'src/services/resource/resource-service';
-import { useAuth } from 'src/hooks/useAuth';
+import useModelTypeCategory from 'src/hooks/analytics/use-master-data';
+import resourceGeneralAnalyticsService from 'src/services/analytics/resource/general';
 
 const years = Array.from({ length: 10 }, (_, i) => ({ id: i, name: (2021 + i).toString() }));
 
-const Inflation = () => {
-  const theme = useTheme();
-  const whiteColor = '#fff';
-  const lineChartYellow = '#d4e157';
-  const lineChartPrimary = theme.palette.primary.main;
-  const lineChartWarning = '#ff9800';
-  const borderColor = theme.palette.divider;
-  const labelColor = theme.palette.text.disabled;
-  const legendColor = theme.palette.text.secondary;
-
-  const [baseYear, setBaseYear] = useState(years[0]);
-  const [type, setType] = useState<any>(null);
-  const [category, setCategory] = useState<any>(null);
-  const [subCategory, setSubCategory] = useState<any>(null);
-  const [subCategoryOptions, setSubcategoryOptions] = useState<any[]>([]);
+const InflationAnalytics = () => {
+  const { user } = useAuth();
   const [item, setItem] = useState<any>(null);
+  const [baseYear, setBaseYear] = useState(years[0]);
   const [tableView, setTableView] = useState(true);
   const [rows, setRows] = useState<any[]>([]);
+  const [resourceParams, setResourceParams] = useState(defaultGetRequestParam);
 
-  const [resourceParams, setResourceParams] = useState({ filter: {} });
+  const {
+    types,
+    categories,
+    subCategories,
+    activeType,
+    setActiveType,
+    activeCategory,
+    setActiveCategory,
+    activeSubCategory,
+    setActiveSubCategory,
+    isTypeLoading,
+    isCategoryLoading,
+    isSubCategoryLoading
+  } = useModelTypeCategory('resource');
 
-  // --- Fetch resource types ---
-  const { data: resourceTypes, isLoading: resourceTypesLoading } = useQuery({
-    queryKey: ['masterType', 'resource'],
-    queryFn: () => masterTypeApiService.getAll('resource', {})
-  });
-
-  // --- Fetch categories based on type ---
-  const { data: categories, isLoading: isCategoryLoading } = useQuery({
-    queryKey: ['categories', type?.id],
-    queryFn: () =>
-      masterCategoryApiService.getAll('resource', {
-        filter: { resourcetype_id: type?.id }
-      }),
-    enabled: !!type?.id
-  });
-
-  // --- Fetch subcategories based on category ---
-  const { data: subcategories, isLoading: isSubCategoryLoading } = useQuery({
-    queryKey: ['subcategories', category?.id],
-    queryFn: () =>
-      masterSubCategoryApiService.getAll('resource', {
-        filter: { resourcecategory_id: category?.id }
-      }),
-    enabled: !!category?.id
-  });
-  const { user } = useAuth();
-  // --- Fetch departments ---
-  const { data: labels } = useQuery({
-    queryKey: ['departments'],
-    queryFn: () => departmentApiService.getAll({ filter: { parent_department_id: user?.department_id } }), // Replace 1 with logged-in user id
-    enabled: true
-  });
-
-  // --- Fetch resources ---
+  // Fetch resources based on selected type/category/subcategory
   const { data: resources, isLoading: resourceLoading } = useQuery({
     queryKey: ['resources', resourceParams],
     queryFn: () => resourceApiService.getAll(resourceParams)
   });
 
+
+
+  // Update query params when selection changes
   useEffect(() => {
     setResourceParams({
       filter: {
-        resourcetype_id: type?.id,
-        resourcecategory_id: category?.id,
-        resourcesubcategory_id: subCategory?.id
+        resourcetype_id: activeType?.id,
+        resourcecategory_id: activeCategory?.id,
+        resourcesubcategory_id: activeSubCategory?.id
       }
     });
-  }, [type?.id, category?.id, subCategory?.id]);
-
-  const createData = (label: string, rest: number[]) => {
-    const baseIndex = indexOf(years, baseYear);
-    const data = rest.map((item) => Number((item / rest[baseIndex]) * 100).toFixed(0));
-    return { label, ...data };
-  };
-
-  useEffect(() => {
-    if (labels?.payload?.length) {
-      setRows(labels?.payload?.map((region) => createData(region.name, [100, 120, 140, 150, 155, 160, 170, 175, 180, 180])) || []);
-    }
-  }, [labels, baseYear]);
+  }, [activeType?.id, activeCategory?.id, activeSubCategory?.id]);
+  const { data } = useQuery({
+    queryKey: ['resource-price-index', item?.id],
+    queryFn: () => resourceGeneralAnalyticsService.resourceInflation( item?.id, {}),
+    enabled: !!item?.id
+  });
 
   return (
     <ResourceAnalyticsLayout>
       <ResourceFilter
-        inflation
-        type={type}
-        setType={setType}
-        category={category}
-        setCategory={setCategory}
-        subCategory={subCategory}
-        setSubCategory={setSubCategory}
+        type={activeType}
+        setType={setActiveType}
+        category={activeCategory}
+        setCategory={setActiveCategory}
+        subCategory={activeSubCategory}
+        setSubCategory={setActiveSubCategory}
         item={item}
         setItem={setItem}
-        resourceTypes={resourceTypes?.payload}
-        resourceTypesLoading={resourceTypesLoading}
-        resourceCategories={categories?.payload}
+        resourceTypes={types}
+        resourceTypesLoading={isTypeLoading}
+        resourceCategories={categories}
         isCategoryLoading={isCategoryLoading}
-        resourceSubCategories={subcategories?.payload}
+        resourceSubCategories={subCategories}
         isSubCategoryLoading={isSubCategoryLoading}
-        subCategoryOptions={subCategoryOptions}
-        setSubcategoryOptions={setSubcategoryOptions}
-        baseYear={baseYear}
-        setBaseYear={setBaseYear}
-        loading={resourceLoading}
         resources={resources?.payload}
-        years={years}
+        loading={resourceLoading}
       />
 
       <Box display="flex" gap={2} my={3} alignItems="center">
-        <IconButton color={tableView ? 'primary' : 'secondary'} onClick={() => setTableView(true)}>
+        <IconButton
+          color={tableView ? 'primary' : 'secondary'}
+          onClick={() => setTableView(true)}
+          sx={{ display: 'flex', gap: 1 }}
+        >
           <Icon icon="mdi:table" />
           <Typography>Table</Typography>
         </IconButton>
-        <IconButton color={!tableView ? 'primary' : 'secondary'} onClick={() => setTableView(false)}>
+
+        <IconButton
+          color={!tableView ? 'primary' : 'secondary'}
+          onClick={() => setTableView(false)}
+          sx={{ display: 'flex', gap: 1 }}
+        >
           <Icon icon="mdi:chart-bar" />
           <Typography>Graph</Typography>
         </IconButton>
@@ -141,10 +110,18 @@ const Inflation = () => {
 
       <Card>
         {tableView ? (
-          <TableView years={years} baseYear={indexOf(years, baseYear)} regions={labels?.payload ?? []} data={rows} />
+          <TableView
+            years={data?.payload?.labels?.map((year: number, index: number) => ({ id: index, name: year }))}
+            baseYear={indexOf(years, baseYear)}
+            data={data?.payload.data}
+          />
         ) : (
           <DatePickerWrapper>
-            <ChartView years={years} regions={labels?.payload ?? []} baseYear={indexOf(years, baseYear)} inflation />
+            <ChartView
+              years={data?.payload?.labels?.map((year: number, index: number) => ({ id: index, name: year }))}
+              baseYear={indexOf(years, baseYear)}
+              data={data?.payload.data}
+            />
           </DatePickerWrapper>
         )}
       </Card>
@@ -152,4 +129,4 @@ const Inflation = () => {
   );
 };
 
-export default Inflation;
+export default InflationAnalytics;
