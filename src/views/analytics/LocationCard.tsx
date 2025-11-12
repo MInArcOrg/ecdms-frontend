@@ -23,7 +23,7 @@ function LocationCard({ categories: propCategories, loading, baseUrl, isProject 
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [categories, setCategories] = useState(propCategories);
   const [filterColor, setFilterColor] = useState<string[]>([]);
-  const [removedCategories, setRemovedCategories] = useState<{ id: number; title: string }[]>([]);
+  const [removedCategories, setRemovedCategories] = useState<MasterCategory[]>([]);
 
   useEffect(() => {
     if (propCategories?.length > 0) {
