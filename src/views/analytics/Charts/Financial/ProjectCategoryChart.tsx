@@ -7,11 +7,12 @@ interface ProjectCategoryChartProps {
   series: { name: string; data: number[] }[];
   labels: any[];
   height?: number;
+  title?: string;
 }
 
 const columnColors = ['#E6E6E7', '#FF9F43', '#00E396', '#008FFB'];
 
-const ProjectCategoryChart = ({ series, labels, height = 320 }: ProjectCategoryChartProps) => {
+const ProjectCategoryChart = ({ series, labels, height = 320,title }: ProjectCategoryChartProps) => {
   const theme = useTheme();
   const years = ['2024', '2023', '2022', '2021', '2020'];
   const [year, setYear] = useState(years[0]);
@@ -66,6 +67,11 @@ const ProjectCategoryChart = ({ series, labels, height = 320 }: ProjectCategoryC
 
   return (
     <Box>
+      {title && (
+        <Typography variant="h6" sx={{ mb: 2 }}>
+          {title}
+        </Typography>
+      )}
         {labels?.length && series?.length ? (
           <ReactApexcharts type="bar" height={height} options={options} series={series} />
         ) : (

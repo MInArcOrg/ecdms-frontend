@@ -102,7 +102,7 @@ export default function AnalyticsViewTabs({
                         {value === 'Location' && (
                             <LocationCard
                                 categories={categories}
-                                loading={isCategoryLoading}
+                                loading={isCategoryLoading||false}
                                 baseUrl=""
                             />
                         )}

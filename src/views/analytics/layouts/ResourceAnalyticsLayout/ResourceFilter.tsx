@@ -108,8 +108,9 @@ const ResourceFilter = ({
               onChange={setItem}
             />
           </Grid>
-
-          <Grid item xs={12} md={2.4}>
+            {
+              baseYear&&
+ <Grid item xs={12} md={2.4}>
             <Typography sx={{ pl: 1 }} variant="body1">
               {inflation ? 'Starting Cost Year' : 'Base Year'}
             </Typography>
@@ -120,6 +121,8 @@ const ResourceFilter = ({
               getOptionLabel={(option: any) => option.name}
             />
           </Grid>
+            }
+         
         </Grid>
       </CardContent>
     </Card>
