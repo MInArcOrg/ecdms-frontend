@@ -58,7 +58,6 @@ const ResourceFilter = ({
               Type
             </Typography>
             <AutocompleteField
-              label="Select Type"
               options={resourceTypes}
               value={type}
               loading={resourceTypesLoading}
@@ -74,7 +73,6 @@ const ResourceFilter = ({
               Category
             </Typography>
             <AutocompleteField
-              label="Select Category"
               options={resourceCategories}
               value={category}
               loading={isCategoryLoading}
@@ -89,7 +87,6 @@ const ResourceFilter = ({
               Subcategory
             </Typography>
             <AutocompleteField
-              label="Select Subcategory"
               options={resourceSubCategories || []}
               loading={isSubCategoryLoading}
               value={subCategory}
@@ -102,7 +99,6 @@ const ResourceFilter = ({
               Item
             </Typography>
             <AutocompleteField
-              label="Select Item"
               options={resources?.map((resource: any) => ({
                 id: resource.id,
                 title: resource.name
@@ -118,7 +114,6 @@ const ResourceFilter = ({
               {inflation ? 'Starting Cost Year' : 'Base Year'}
             </Typography>
             <AutocompleteField
-              label="Select Year"
               options={years}
               value={baseYear}
               onChange={setBaseYear}

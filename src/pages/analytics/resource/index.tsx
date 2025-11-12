@@ -7,99 +7,88 @@ import { indexOf } from 'lodash';
 
 import { useAuth } from 'src/hooks/useAuth';
 import departmentApiService from 'src/services/department/department-service';
-import masterCategoryApiService from 'src/services/master-data/master-category-service';
-import masterTypeApiService from 'src/services/master-data/master-type-service';
-import masterSubCategoryApiService from 'src/services/master-data/master-sub-category-service';
 import resourceApiService from 'src/services/resource/resource-service';
 import { defaultGetRequestParam } from 'src/types/requests';
-import { MasterCategory, MasterSubCategory, MasterType } from 'src/types/master/master-types';
 
 import ResourceAnalyticsLayout from 'src/views/analytics/layouts/ResourceAnalyticsLayout';
 import ResourceFilter from 'src/views/analytics/layouts/ResourceAnalyticsLayout/ResourceFilter';
 import TableView from 'src/views/analytics/layouts/ResourceAnalyticsLayout/TableView';
 import ChartView from 'src/views/analytics/layouts/ResourceAnalyticsLayout/ChartView';
 import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker';
+import useModelTypeCategory from 'src/hooks/analytics/use-master-data';
+import resourceGeneralAnalyticsService from 'src/services/analytics/resource/general';
 
 const years = Array.from({ length: 10 }, (_, i) => ({ id: i, name: (2021 + i).toString() }));
 
 const ResourceAnalytics = () => {
   const { user } = useAuth();
-
-  const [type, setType] = useState<MasterType | null>(null);
-  const [category, setCategory] = useState<MasterCategory | null>(null);
-  const [subCategory, setSubCategory] = useState<MasterSubCategory | null>(null);
   const [item, setItem] = useState<any>(null);
   const [baseYear, setBaseYear] = useState(years[0]);
   const [tableView, setTableView] = useState(true);
   const [rows, setRows] = useState<any[]>([]);
   const [resourceParams, setResourceParams] = useState(defaultGetRequestParam);
 
-  // --- Queries using the object form (v5 compatible) ---
-  const { data: resourceTypes, isLoading: resourceTypesLoading } = useQuery({
-    queryKey: ['masterType', 'resource'],
-    queryFn: () => masterTypeApiService.getAll('resource', {})
-  });
+  const {
+    types,
+    categories,
+    subCategories,
+    activeType,
+    setActiveType,
+    activeCategory,
+    setActiveCategory,
+    activeSubCategory,
+    setActiveSubCategory,
+    isTypeLoading,
+    isCategoryLoading,
+    isSubCategoryLoading
+  } = useModelTypeCategory('resource');
 
-  const { data: categories, isLoading: isCategoryLoading } = useQuery({
-    queryKey: ['categories', type?.id],
-    queryFn: () => masterCategoryApiService.getAll('resource', { filter: { resourcetype_id: type!.id } }),
-    enabled: !!type?.id
-  });
-
-  const { data: subcategories, isLoading: isSubCategoryLoading } = useQuery({
-    queryKey: ['subcategories', category?.id],
-    queryFn: () => masterSubCategoryApiService.getAll('resource', { filter: { resourcecategory_id: category!.id } }),
-    enabled: !!category?.id
-  });
-
+  // Fetch resources based on selected type/category/subcategory
   const { data: resources, isLoading: resourceLoading } = useQuery({
     queryKey: ['resources', resourceParams],
     queryFn: () => resourceApiService.getAll(resourceParams)
   });
 
+  // Fetch department labels
   const { data: labels } = useQuery({
     queryKey: ['departments', user?.id],
     queryFn: () => departmentApiService.getAll({ filter: { parent_department_id: user?.department_id } }),
     enabled: !!user?.id
   });
+
+  // Update query params when selection changes
   useEffect(() => {
     setResourceParams({
       filter: {
-        resourcetype_id: type?.id,
-        resourcecategory_id: category?.id,
-        resourcesubcategory_id: subCategory?.id
+        resourcetype_id: activeType?.id,
+        resourcecategory_id: activeCategory?.id,
+        resourcesubcategory_id: activeSubCategory?.id
       }
     });
-  }, [type?.id, category?.id, subCategory?.id]);
-
-  const createData = (label: string, rest: number[]) => {
-    const baseIndex = indexOf(years, baseYear);
-    const data = rest.map((item) => Number((item / rest[baseIndex]) * 100).toFixed(0));
-    return { label, ...data };
-  };
-
-  useEffect(() => {
-    if (labels?.payload?.length) {
-      setRows(labels?.payload?.map((region) => createData(region.name, [100, 120, 140, 150, 155, 160, 170, 175, 180, 180])) || []);
-    }
-  }, [labels, baseYear]);
+  }, [activeType?.id, activeCategory?.id, activeSubCategory?.id]);
+  const { data } = useQuery({
+    queryKey: ['resource-price-index', item?.id],
+    queryFn: () => resourceGeneralAnalyticsService.resourcePriceIndex(Number(baseYear.name), item?.id, {}),
+    enabled: !!item?.id
+  });
+  console.log('resource price index', data)
 
   return (
     <ResourceAnalyticsLayout>
       <ResourceFilter
-        type={type}
-        setType={setType}
-        category={category}
-        setCategory={setCategory}
-        subCategory={subCategory}
-        setSubCategory={setSubCategory}
+        type={activeType}
+        setType={setActiveType}
+        category={activeCategory}
+        setCategory={setActiveCategory}
+        subCategory={activeSubCategory}
+        setSubCategory={setActiveSubCategory}
         item={item}
         setItem={setItem}
-        resourceTypes={resourceTypes?.payload}
-        resourceTypesLoading={resourceTypesLoading}
-        resourceCategories={categories?.payload}
+        resourceTypes={types}
+        resourceTypesLoading={isTypeLoading}
+        resourceCategories={categories}
         isCategoryLoading={isCategoryLoading}
-        resourceSubCategories={subcategories?.payload}
+        resourceSubCategories={subCategories}
         isSubCategoryLoading={isSubCategoryLoading}
         resources={resources?.payload}
         loading={resourceLoading}
@@ -109,12 +98,20 @@ const ResourceAnalytics = () => {
       />
 
       <Box display="flex" gap={2} my={3} alignItems="center">
-        <IconButton color={tableView ? 'primary' : 'secondary'} onClick={() => setTableView(true)} sx={{ display: 'flex', gap: 1 }}>
+        <IconButton
+          color={tableView ? 'primary' : 'secondary'}
+          onClick={() => setTableView(true)}
+          sx={{ display: 'flex', gap: 1 }}
+        >
           <Icon icon="mdi:table" />
           <Typography>Table</Typography>
         </IconButton>
 
-        <IconButton color={!tableView ? 'primary' : 'secondary'} onClick={() => setTableView(false)} sx={{ display: 'flex', gap: 1 }}>
+        <IconButton
+          color={!tableView ? 'primary' : 'secondary'}
+          onClick={() => setTableView(false)}
+          sx={{ display: 'flex', gap: 1 }}
+        >
           <Icon icon="mdi:chart-bar" />
           <Typography>Graph</Typography>
         </IconButton>
@@ -122,10 +119,18 @@ const ResourceAnalytics = () => {
 
       <Card>
         {tableView ? (
-          <TableView years={years} baseYear={indexOf(years, baseYear)} regions={labels?.payload ?? []} data={rows} />
+          <TableView
+            years={data?.payload?.labels?.map((year: number, index: number) => ({ id: index, name: year }))}
+            baseYear={indexOf(years, baseYear)}
+            data={data?.payload.data}
+          />
         ) : (
           <DatePickerWrapper>
-            <ChartView years={years} regions={labels?.payload ?? []} baseYear={indexOf(years, baseYear)} />
+            <ChartView
+              years={data?.payload?.labels?.map((year: number, index: number) => ({ id: index, name: year }))}
+              baseYear={indexOf(years, baseYear)}
+              data={data?.payload.data}
+            />
           </DatePickerWrapper>
         )}
       </Card>

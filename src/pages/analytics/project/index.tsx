@@ -6,12 +6,11 @@ import ProjectAnalyticsLayout from 'src/views/analytics/layouts/ProjectAnalytics
 import { Typography } from '@mui/material';
 import { MasterCategory, MasterSubCategory, MasterType } from 'src/types/master/master-types';
 import GeneralTypeGrowthRate from 'src/views/analytics/Charts/General/GeneralTypeGrowthRate';
-import ReginalDistributionBarChart from 'src/views/analytics/Charts/General/ReginalDistributionBarChart';
 import ScrollableStatCards from 'src/views/analytics/Charts/General/ScrollableStatCards';
-import GeneralSubCategories from 'src/views/analytics/General/SubCategories';
-import ProjectRegionalCategoryDistribution from 'src/views/analytics/projects/general/project-regional-category-distribution';
-import ProjectVariousCategory from 'src/views/analytics/projects/general/project-variouse-category';
-import ProjectRegionalSubCategoryDistribution from 'src/views/analytics/projects/general/project-regional-subcatagory-distribution';
+import ProjectVariousCategory from 'src/views/analytics/General/model-variouse-category';
+import ProjectRegionalCategoryDistribution from 'src/views/analytics/General/project-regional-category-distribution';
+import GeneralSubCategories from 'src/views/analytics/General/sub-categories';
+import ProjectRegionalSubCategoryDistribution from 'src/views/analytics/General/project-regional-subcatagory-distribution';
 
 const CrmDashboard = () => {
   const [selectedType, onTypeSelected] = useState<MasterType>({} as MasterType);
@@ -43,6 +42,7 @@ const CrmDashboard = () => {
           {/* Polar Chart */}
           <Grid item xs={12} md={6}>
             <ProjectVariousCategory
+              model='project'
               selectedType={selectedType}
             />
           </Grid>
@@ -51,6 +51,7 @@ const CrmDashboard = () => {
           <Grid item xs={12} md={6}>
             <ProjectRegionalCategoryDistribution
               selectedType={selectedType}
+              model='project'
             />
           </Grid>
 
@@ -70,7 +71,7 @@ const CrmDashboard = () => {
           </Grid>
 
           <Grid item xs={12} md={8}>
-            <ProjectRegionalSubCategoryDistribution selectedSubCategory={selectedSubCategory} />
+            <ProjectRegionalSubCategoryDistribution model='project' selectedSubCategory={selectedSubCategory} />
           </Grid>
         </Grid>
       </ApexChartWrapper>

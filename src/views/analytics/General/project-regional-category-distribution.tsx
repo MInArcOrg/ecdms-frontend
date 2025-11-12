@@ -30,13 +30,13 @@ import Icon from 'src/@core/components/icon'
 
 const columnColors = ['#fdd835', '#009933', '#826bf8', '#0099ff', '#ffa1a1']
 
-const ProjectRegionalCategoryDistribution = ({ selectedType }: { selectedType: MasterType }) => {
+const ModelRegionalCategoryDistribution = ({ selectedType, model }: { selectedType: MasterType, model: string }) => {
   const theme = useTheme()
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['projectCategoryMappingDepartment', selectedType?.id],
+    queryKey: ['CategoryMappingDepartment', model, selectedType?.id],
     queryFn: () =>
-      projectGeneralAnalyticsService.projectCategoryMappingDepartment(selectedType?.id, {}),
+      projectGeneralAnalyticsService.projectCategoryMappingDepartment(model, selectedType?.id, {}),
     enabled: !!selectedType?.id,
   })
 
@@ -180,4 +180,4 @@ const ProjectRegionalCategoryDistribution = ({ selectedType }: { selectedType: M
   )
 }
 
-export default ProjectRegionalCategoryDistribution
+export default ModelRegionalCategoryDistribution

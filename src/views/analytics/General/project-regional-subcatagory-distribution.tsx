@@ -21,15 +21,16 @@ import { MasterSubCategory } from 'src/types/master/master-types';
 
 interface Props {
   selectedSubCategory: MasterSubCategory;
+  model: string;
 }
 
-const ProjectRegionalSubCategoryDistribution = ({ selectedSubCategory }: Props) => {
+const ModelRegionalSubCategoryDistribution = ({ selectedSubCategory, model }: Props) => {
   const theme = useTheme();
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['projectSubcategoryMappingDepartment', selectedSubCategory?.id],
+    queryKey: ['SubcategoryMappingDepartment', model, selectedSubCategory?.id],
     queryFn: () =>
-      projectGeneralAnalyticsService.projectSubcategoryMappingDepartment(selectedSubCategory?.id, {}),
+      projectGeneralAnalyticsService.projectSubcategoryMappingDepartment(model, selectedSubCategory?.id, {}),
     enabled: !!selectedSubCategory?.id,
   });
 
@@ -156,4 +157,4 @@ const ProjectRegionalSubCategoryDistribution = ({ selectedSubCategory }: Props) 
   );
 };
 
-export default ProjectRegionalSubCategoryDistribution;
+export default ModelRegionalSubCategoryDistribution;

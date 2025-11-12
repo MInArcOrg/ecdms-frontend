@@ -15,20 +15,20 @@ import ReactApexcharts from 'src/@core/components/react-apexcharts'
 import { ApexOptions } from 'apexcharts'
 
 // ** Types
-import { MasterType } from 'src/types/master/master-types'
 
 // ** Service & Query
 import projectGeneralAnalyticsService from 'src/services/analytics/project/general'
 import { useQuery } from '@tanstack/react-query'
+import { MasterType } from 'src/types/master/master-types'
 
 const donutColors = ['#fdd835', '#009933', '#826bf8', '#0099ff', '#ffa1a1']
 
-const ProjectVariousCategory = ({ selectedType }: { selectedType: MasterType }) => {
+const ModelVariousCategory = ({ selectedType, model }: { selectedType: MasterType, model: string }) => {
     const theme = useTheme()
 
     const { data, isLoading, isError } = useQuery({
-        queryKey: ['projectCategoryMapping', selectedType?.id],
-        queryFn: () => projectGeneralAnalyticsService.projectCategoryMapping(selectedType?.id, {}),
+        queryKey: ['CategoryMapping', model, selectedType?.id],
+        queryFn: () => projectGeneralAnalyticsService.projectCategoryMapping(model, selectedType?.id, {}),
         enabled: !!selectedType?.id,
     })
 
@@ -101,4 +101,4 @@ const ProjectVariousCategory = ({ selectedType }: { selectedType: MasterType }) 
     )
 }
 
-export default ProjectVariousCategory
+export default ModelVariousCategory
