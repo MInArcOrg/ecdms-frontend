@@ -11,19 +11,19 @@ import usePermissionSelection from 'src/hooks/admin/permission-selection-hook';
 interface AssignPermissionComponentProps {
   roleId: string;
   module:
-    | {
-        id: string;
-        name: string;
-        flags?: undefined;
-      }
-    | {
-        id: string;
-        name: string;
-        flags: {
-          id: string;
-          name: string;
-        }[];
-      };
+  | {
+    id: string;
+    name: string;
+    flags?: undefined;
+  }
+  | {
+    id: string;
+    name: string;
+    flags: {
+      id: string;
+      name: string;
+    }[];
+  };
 }
 
 interface AccordionDetailProps {
