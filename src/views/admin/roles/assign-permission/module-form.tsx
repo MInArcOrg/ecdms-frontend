@@ -156,7 +156,7 @@ const AssignPermissionComponent: React.FC<AssignPermissionComponentProps> = ({ r
               <AccordionDetails>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
-                    <AccordionDetail roleId={roleId} type={flag.name} />
+                    <AccordionDetail roleId={roleId} type={flag.id} />
                   </Grid>
                 </Grid>
               </AccordionDetails>

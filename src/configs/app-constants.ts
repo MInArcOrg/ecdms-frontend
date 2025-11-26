@@ -64,7 +64,15 @@ export const appModulesWithIds: { id: string; name: string; flags: { id: string;
 
     ]
   },
-  { id: 'centers', name: 'Centers', flags: [{ id: 'CENTER', name: 'Center Management' }] },
+  {
+    id: 'centers', name: 'Centers',
+    flags: [
+      { id: 'USER', name: 'User' },
+      { id: 'DEPARTMENT', name: 'Department' },
+      { id: 'ROLE', name: 'Role' },
+      { id: 'POSITION', name: 'Position' }
+    ]
+  },
   {
     id: 'project',
     name: 'Project',
@@ -78,7 +86,7 @@ export const appModulesWithIds: { id: string; name: string; flags: { id: string;
         name: 'Building'
       },
       {
-        id: 'AIRFILED_AIRPORT',
+        id: 'AIRFIELD_AIRPORT',
         name: 'Airfield/Airport'
       },
       {
