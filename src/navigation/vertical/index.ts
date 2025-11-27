@@ -15,14 +15,13 @@ const navigation = (): VerticalNavItemsType => {
     {
       title: 'navigation.centers',
       icon: 'tabler:building',
-      path: '/centers'
+      path: '/departments'
     },
     {
       title: 'navigation.address',
       icon: 'tabler:location',
       path: '/address-master'
     },
-
     {
       title: 'navigation.roles',
       icon: 'tabler:settings',
