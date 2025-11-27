@@ -646,6 +646,9 @@
   },
   "address-master": {
     "address-structure": "Address Structure",
+    "country":"Country",
+    "add-country":"Add Country",
+    "edit-country":"Edit Country",
     "region": "Region",
     "city-administration": "City Administration",
     "zone": "Zone",

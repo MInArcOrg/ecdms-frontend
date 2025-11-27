@@ -37,6 +37,9 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
     let value: string | number = event.target.value;
 
     if (typeof value === 'string') {
+       if (value.length === 1 && value.startsWith(' ')) {
+        value = '';
+      }
       // Restrict characters if not allowed
       if (!allowSpecialChars) {
         if (type === 'email') {

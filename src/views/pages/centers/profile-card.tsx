@@ -41,7 +41,7 @@ const ProfileCard = ({ department, refetch, loading }: { department: Department;
       <input id="upload-cover-pic" type="file" hidden />
       <Tooltip title="Upload Cover Picture" placement="top" arrow>
         <label htmlFor="upload-cover-pic">
-          <CardMedia sx={{ height: '6rem', cursor: 'pointer' }} image="/images/cards/background-user.png" />
+          <CardMedia sx={{ height: '6rem', cursor: 'pointer' }} image="/images/pages/addis-ababa-city-cover.jpg" />
         </label>
       </Tooltip>
       <input id="upload-avatar-pic" type="file" hidden />
@@ -58,6 +58,7 @@ const ProfileCard = ({ department, refetch, loading }: { department: Department;
 
               border: (theme) => `solid ${theme.palette.common.white}`
             }}
+            src="/images/pages/minster-logo-light.png"
           />
         </Tooltip>
       </label>

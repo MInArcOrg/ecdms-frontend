@@ -1,7 +1,8 @@
-import AddressMasterList from 'src/views/admin/address-master/list';
+import { AddressType } from 'src/types/admin/address';
+import AddressMasterView from 'src/views/admin/address-master/view';
 
-const AddressMasterListPage = ({}) => {
-  return <AddressMasterList />;
+const AddressMasterViewPage = ({}) => {
+  return <AddressMasterView initialType={AddressType.COUNTRY} />;
 };
-AddressMasterListPage.authGuard = true;
-export default AddressMasterListPage;
+AddressMasterViewPage.authGuard = true;
+export default AddressMasterViewPage;
