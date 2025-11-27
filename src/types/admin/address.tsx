@@ -19,35 +19,46 @@ export const addressTypes = [
   {
     type: AddressType.REGION,
     parent: [AddressType.COUNTRY],
-    children: [AddressType.ZONE, AddressType.CITY],
+    children: [AddressType.ZONE],
   },
+
   {
     type: AddressType.CITY_ADMINISTRATION,
     parent: [AddressType.COUNTRY],
     children: [AddressType.SUB_CITY],
   },
+
   {
     type: AddressType.ZONE,
     parent: [AddressType.REGION],
-    children: [AddressType.CITY, AddressType.WOREDA],
+    children: [AddressType.CITY, AddressType.WOREDA], // Rural & urban branches
   },
+
   {
     type: AddressType.CITY,
     parent: [AddressType.ZONE],
-    children: [AddressType.WOREDA, AddressType.SUB_CITY],
+    children: [AddressType.SUB_CITY],
   },
+
   {
     type: AddressType.SUB_CITY,
-    parent: [AddressType.CITY],
+    parent: [AddressType.CITY, AddressType.CITY_ADMINISTRATION],
     children: [AddressType.WOREDA],
   },
+
   {
     type: AddressType.WOREDA,
-    parent: [AddressType.SUB_CITY],
+    parent: [AddressType.SUB_CITY, AddressType.ZONE], // Urban & rural parents
     children: [AddressType.KEBELE],
   },
-  { type: AddressType.KEBELE, parent: [AddressType.WOREDA], children: [] },
+
+  {
+    type: AddressType.KEBELE,
+    parent: [AddressType.WOREDA],
+    children: [],
+  },
 ];
+
 
 export type AddressMaster = {
   id: string;

@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ResourceLayout from 'src/views/pages/resources/details/layout/resource-layout';
 import { resourceMenuIds } from 'src/views/pages/resources/details/layout/resource-menu-items';
 import subMenuItems, { findSubMenuItem, generalInfoMenuIds } from '../(sub-menu-items)';
+import ProfessionalContactList from 'src/views/pages/resources/details/resource-professional-contact';
 
 const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), generalInfoMenuIds.generalInfo.contact);
 
@@ -17,8 +18,8 @@ const ContactPage = () => {
     >
       <>
         {/* Replace with your actual component */}
-        <div>Contact Content</div>
-      </>
+        <ProfessionalContactList professionalId={id as string} typeId={typeId as string} model={defaultMenuItem?.model || ''} />  
+      </> 
     </ResourceLayout>
   );
 };

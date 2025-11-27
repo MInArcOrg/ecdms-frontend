@@ -43,7 +43,7 @@ const ProfessionalContactPersonForm: React.FC<ProfessionalContactPersonFormProps
         <CustomPhoneInput fullWidth label={t('resources.professional.contact-person.phoneNo')} name="phone_no" size="small" />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('resources.professional.contact-person.email')} name="email" size="small" />
+        <CustomTextBox fullWidth label={t('resources.professional.contact-person.email')} type='email' name="email" size="small" />
       </Grid>
     </Grid>
   );

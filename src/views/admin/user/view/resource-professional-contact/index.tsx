@@ -78,12 +78,12 @@ const ContactList: React.FC<ContactListProps> = ({ professionalId }) => {
 
   const mapContactToDetailItems = (contact: ProfessionalContact): { title: string; value: string }[] => [
     {
-      title: t('professional.contact.phone'),
+      title: t('resources.professional.contact.phone'),
       value: contact?.phone_no || 'N/A'
     },
-    { title: t('professional.contact.email'), value: contact?.email || 'N/A' },
+    { title: t('resources.professional.contact.email'), value: contact?.email || 'N/A' },
     {
-      title: t('professional.contact.website'),
+      title: t('resources.professional.contact.website'),
       value: contact?.website || 'N/A'
     },
     {
@@ -112,12 +112,12 @@ const ContactList: React.FC<ContactListProps> = ({ professionalId }) => {
           id={selectedRow?.id || ''}
           hasReference={true}
           fileType="contact"
-          title={t('professional.contact.details')}
+          title={t('resources.professional.contact.details')}
         />
       )}
 
       <ItemsListing
-        title={t('professional.contact.title')}
+        title={t('resources.professional.contact.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

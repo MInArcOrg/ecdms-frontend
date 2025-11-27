@@ -14,13 +14,13 @@ import AdditionalInfoDrawer from './professional-additional-info-drawer';
 import type { ProfessionalAdditionalInfo } from 'src/types/resource';
 import { additionalInfoColumns } from './professional-additional-info-row';
 
-interface AdditionalInfoListProps {
+interface ProfessionalAdditionalInfoListProps {
   model: string;
   professionalId: string;
   typeId: string;
 }
 
-const AdditionalInfoList: React.FC<AdditionalInfoListProps> = ({ professionalId }) => {
+const ProfessionalAdditionalInfoList: React.FC<ProfessionalAdditionalInfoListProps> = ({ professionalId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<ProfessionalAdditionalInfo | null>(null);
@@ -71,11 +71,11 @@ const AdditionalInfoList: React.FC<AdditionalInfoListProps> = ({ professionalId 
 
   const mapAdditionalInfoToDetailItems = (additionalInfo: ProfessionalAdditionalInfo): { title: string; value: string }[] => [
     {
-      title: t('professional.additional-info.information'),
+      title: t('resources.professional.additional-info.information'),
       value: additionalInfo?.additional_information || 'N/A'
     },
     {
-      title: t('professional.additional-info.reference'),
+      title: t('resources.professional.additional-info.reference'),
       value: additionalInfo?.reference || 'N/A'
     },
     {
@@ -104,12 +104,12 @@ const AdditionalInfoList: React.FC<AdditionalInfoListProps> = ({ professionalId 
           id={selectedRow?.id || ''}
           hasReference={true}
           fileType="additional-info"
-          title={t('professional.additional-info.details')}
+          title={t('resources.professional.additional-info.details')}
         />
       )}
 
       <ItemsListing
-        title={t('professional.additional-info.title')}
+        title={t('resources.professional.additional-info.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
@@ -142,4 +142,4 @@ const AdditionalInfoList: React.FC<AdditionalInfoListProps> = ({ professionalId 
   );
 };
 
-export default AdditionalInfoList;
+export default ProfessionalAdditionalInfoList;

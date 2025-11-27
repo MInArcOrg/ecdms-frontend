@@ -46,11 +46,11 @@ const ContactDrawer = (props: ContactDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`professional.contact.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`resources.professional.contact.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`professional.contact.${isEdit ? 'edit' : 'create'}`}
+          title={`resources.professional.contact.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

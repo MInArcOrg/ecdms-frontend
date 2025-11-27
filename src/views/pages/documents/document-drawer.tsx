@@ -8,6 +8,8 @@ import { IApiPayload } from 'src/types/requests';
 import documentApiService from 'src/services/document/document-service';
 import { Document } from 'src/types/document';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
+import { MasterType } from 'src/types/master/master-types';
 
 interface DocumentDrawerType {
   open: boolean;
@@ -15,6 +17,7 @@ interface DocumentDrawerType {
   refetch: () => void;
   document: Document;
   typeId: string;
+  type: MasterType | undefined;
 }
 
 const validationSchema = yup.object().shape({
@@ -42,8 +45,9 @@ const validationSchema = yup.object().shape({
 
 const DocumentDrawer = (props: DocumentDrawerType) => {
   // ** Props
-  const { open, toggle, refetch, document, typeId } = props;
-
+  const { open, toggle, refetch, document, typeId, type } = props;
+  
+  const { t } = useTranslation();
   const isEdit = document?.id ? true : false;
   const createDocument = async (body: IApiPayload<Document>) => {
     return await documentApiService.create(body);
@@ -71,8 +75,10 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
     refetch();
     handleClose();
   };
+    const translatedTitle = t(`common.${isEdit ? 'edit' : 'create'}`)+" "+ type?.title+" "+t('document.title');
+  
   return (
-    <CustomSideDrawer title={`document.${isEdit ? 'edit-document' : 'create-document'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={translatedTitle} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}

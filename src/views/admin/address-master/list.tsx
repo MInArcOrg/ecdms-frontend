@@ -1,5 +1,4 @@
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
@@ -23,7 +22,6 @@ const AddressMasterList = ({ type, parentId, parentAddressMaster }: AddressMaste
   // --- Local State for Drawer ---
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const [editableItem, setEditableItem] = useState<AddressMaster>();
-  const route=useRouter();
   // --- Data Fetching ---
   const fetchAddressMasters = (params: GetRequestParam): Promise<IApiResponse<AddressMaster[]>> => {
     return addressMasterApiService.getAll({
@@ -32,7 +30,6 @@ const AddressMasterList = ({ type, parentId, parentAddressMaster }: AddressMaste
         ...params.filter, 
         type: type, // Uses the prop passed from View
         parent_address_id: parentId, 
-        is_root: !parentId ? 1 : 0 
       }
     });
   };
@@ -64,11 +61,7 @@ const AddressMasterList = ({ type, parentId, parentAddressMaster }: AddressMaste
     await addressMasterApiService.delete(id);
     refetch();
   }
- useEffect(() => {
-    if(type===AddressType.COUNTRY&&addressMasters&&addressMasters.length>0){
-      route.push(`/address-master/${type}/${addressMasters[0].id || ''}`);
-    }
-  }, [type]);
+
   return (
     <>
       <ItemsListing

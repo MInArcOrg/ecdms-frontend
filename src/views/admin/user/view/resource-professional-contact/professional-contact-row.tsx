@@ -21,7 +21,7 @@ export const contactColumns = (
     flex: 0.2,
     minWidth: 150,
     field: 'email',
-    headerName: t('professional.contact.email'),
+    headerName: t('resources.professional.contact.email'),
     renderCell: ({ row }: CellType) => (
       <Typography
         noWrap
@@ -42,14 +42,14 @@ export const contactColumns = (
     flex: 0.2,
     minWidth: 150,
     field: 'phone_no',
-    headerName: t('professional.contact.phone'),
+    headerName: t('resources.professional.contact.phone'),
     renderCell: ({ row }: CellType) => row.phone_no || t('common.not-available')
   },
   {
     flex: 0.2,
     minWidth: 150,
     field: 'website',
-    headerName: t('professional.contact.website'),
+    headerName: t('resources.professional.contact.website'),
     renderCell: ({ row }: CellType) => row.website || t('common.not-available')
   },
   {

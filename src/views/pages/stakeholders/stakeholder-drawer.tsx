@@ -22,6 +22,8 @@ import CustomSideDrawer from "src/views/shared/drawer/side-drawer";
 import FormPageWrapper from "src/views/shared/form/form-wrapper";
 import StakeholderForm from "./stakeholder-form";
 import { convertDateToLocaleDate } from "src/utils/formatter/date";
+import { MasterType } from "src/types/master/master-types";
+import { useTranslation } from "react-i18next";
 
 interface StakeholderDrawerType {
   open: boolean;
@@ -29,6 +31,7 @@ interface StakeholderDrawerType {
   refetch: () => void;
   stakeholder: Stakeholder;
   typeId: string;
+  type?: MasterType
 }
 
 const validationSchema = yup.object().shape({
@@ -45,8 +48,9 @@ const validationSchema = yup.object().shape({
 
 const StakeholderDrawer = (props: StakeholderDrawerType) => {
   // ** Props
-  const { open, toggle, refetch, stakeholder, typeId } = props;
+  const { open, toggle, refetch, stakeholder, typeId,type } = props;
 
+  const { t } = useTranslation();
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
@@ -154,20 +158,18 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
     }
   };
 
+  const translatedTitle = t(`common.${isEdit ? 'edit' : 'create'}`)+" "+ type?.title+" "+t('stakeholder.title');
+
   return (
     <CustomSideDrawer
-      title={`stakeholder.${
-        isEdit ? "edit-stakeholder" : "create-stakeholder"
-      }`}
+      translatedTitle={translatedTitle}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`stakeholder.${
-            isEdit ? "edit-stakeholder" : "create-stakeholder"
-          }`}
+          translatedTitle={translatedTitle}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

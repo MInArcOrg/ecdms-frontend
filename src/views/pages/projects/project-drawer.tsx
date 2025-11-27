@@ -7,6 +7,8 @@ import { IApiPayload } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import ProjectForm from './project-form';
+import { MasterType } from 'src/types/master/master-types';
+import { useTranslation } from 'react-i18next';
 
 interface ProjectDrawerType {
   open: boolean;
@@ -14,6 +16,7 @@ interface ProjectDrawerType {
   refetch: () => void;
   project: Project;
   typeId: string;
+  type: MasterType | undefined;
 }
 
 const validationSchema = yup.object().shape({
@@ -35,8 +38,8 @@ const validationSchema = yup.object().shape({
 
 const ProjectDrawer = (props: ProjectDrawerType) => {
   // ** Props
-  const { open, toggle, refetch, project, typeId } = props;
-
+  const { open, toggle, refetch, project, typeId,type } = props;
+  const { t } = useTranslation();
   const isEdit = project?.id ? true : false;
   const createProject = async (body: IApiPayload<Project>) => {
     return await projectApiService.create(body);
@@ -64,17 +67,18 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
     refetch();
     handleClose();
   };
+  const translatedTitle = t(`common.${isEdit ? 'edit' : 'create'}`)+" "+ type?.title+" "+t('project.title');
   return (
     <CustomSideDrawer
       model={'project'}
-      title={`project.${isEdit ? 'edit-project' : 'create-project'}`}
-      handleClose={handleClose}
+      translatedTitle={translatedTitle}
+      handleClose={handleClose}      
       open={open}
     >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title="project.title"
+          translatedTitle={translatedTitle}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{ ...project }}

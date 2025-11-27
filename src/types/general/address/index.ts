@@ -5,6 +5,12 @@ interface Address {
   country: string;
   region?: string;
   city?: string;
+  //additional fields
+  zone?: string;
+  city_administration?: string;
+  sub_city?: string;
+  woreda?: string;
+  kebele?: string;
   subcity?: string;
   street?: string;
   block_number?: string;

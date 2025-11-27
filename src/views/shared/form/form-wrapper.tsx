@@ -17,6 +17,7 @@ interface FormPageWrapperProps<T extends FormikValues> {
   initialValues: T;
   edit?: boolean;
   title?: string;
+  translatedTitle?: string;
   showTitle?: boolean;
   onCancel?: () => void;
   getPayload: (values: T) => IApiPayload<T>;
@@ -33,6 +34,7 @@ const FormPageWrapper = <T extends FormikValues>({
   children,
   edit = false,
   title = '',
+  translatedTitle = '',
   showTitle = true,
   onCancel,
   getPayload,
@@ -77,7 +79,9 @@ const FormPageWrapper = <T extends FormikValues>({
   };
 
   return (
-    <Page titleId={title}>
+    <Page titleId={title}
+      title={translatedTitle}
+    >
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
         {(formik: FormikProps<T>) => (
           <form onSubmit={formik.handleSubmit}>

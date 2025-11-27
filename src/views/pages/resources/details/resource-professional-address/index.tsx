@@ -14,13 +14,13 @@ import AddressDrawer from './professional-address-drawer';
 import { ProfessionalAddress } from 'src/types/resource/index';
 import { addressColumns } from './professional-address-row';
 
-interface AddressListProps {
+interface ProfessionalAddressListProps {
   model: string;
   professionalId: string;
   typeId: string;
 }
 
-const AddressList: React.FC<AddressListProps> = ({ professionalId }) => {
+const ProfessionalAddressList: React.FC<ProfessionalAddressListProps> = ({ professionalId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<ProfessionalAddress | null>(null);
@@ -164,4 +164,4 @@ const AddressList: React.FC<AddressListProps> = ({ professionalId }) => {
   );
 };
 
-export default AddressList;
+export default ProfessionalAddressList;

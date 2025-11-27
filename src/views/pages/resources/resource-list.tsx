@@ -13,6 +13,8 @@ import ItemsListing from 'src/views/shared/listing';
 import ResourceCard from './resource-card';
 import ResourceDrawer from './resource-drawer';
 import { resourceColumns } from './resource-row';
+import { useQuery } from '@tanstack/react-query';
+import masterTypeApiService from 'src/services/master-data/master-type-service';
 
 function ResourceList() {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -26,6 +28,15 @@ function ResourceList() {
       filter: { ...params.filter, resourcetype_id: typeId }
     });
   };
+  
+
+    const {data:type,isLoading:typeIsLoading}=useQuery(
+      {
+        queryKey:['project-type',String(typeId)],
+        queryFn:()=>masterTypeApiService.getOne('resource',String(typeId),{}),
+        enabled:!!typeId
+      }
+    )
 
   const {
     data: resources,
@@ -61,6 +72,7 @@ function ResourceList() {
           resource={selectedRow as Resource}
           refetch={refetch}
           typeId={String(typeId)}
+          type={type?.payload}
         />
       )}
       <Card>
@@ -71,7 +83,7 @@ function ResourceList() {
           ItemViewComponent={({ data }) => (
             <ResourceCard resource={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
           )}
-          title={t('resource.title')}
+          title={`${type?.payload?.title} ${t('resource.title')}`}
           createActionConfig={{
             ...defaultCreateActionConfig,
             onClick: toggleDrawer,

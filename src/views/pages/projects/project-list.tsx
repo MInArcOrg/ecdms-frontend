@@ -13,6 +13,8 @@ import ItemsListing from 'src/views/shared/listing';
 import ProjectCard from './project-card';
 import ProjectDrawer from './project-drawer';
 import { projectColumns } from './project-row';
+import { useQuery } from '@tanstack/react-query';
+import masterTypeApiService from 'src/services/master-data/master-type-service';
 
 function ProjectList() {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -27,6 +29,13 @@ function ProjectList() {
       filter: { ...params.filter, projecttype_id: typeId }
     });
   };
+  const {data:type,isLoading:typeIsLoading}=useQuery(
+    {
+      queryKey:['project-type',String(typeId)],
+      queryFn:()=>masterTypeApiService.getOne('project',String(typeId),{}),
+      enabled:!!typeId
+    }
+  )
 
   const {
     data: projects,
@@ -62,6 +71,7 @@ function ProjectList() {
             toggle={toggleDrawer}
             project={selectedRow as Project}
             refetch={refetch}
+            type={type?.payload}
             typeId={String(typeId)}
           />
         )}
@@ -72,7 +82,7 @@ function ProjectList() {
           ItemViewComponent={({ data }) => (
             <ProjectCard onDetail={() => {}} project={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
           )}
-          title={t('project.title')}
+          title={`${type?.payload?.title} ${t('project.title')}`}
           createActionConfig={{
             ...defaultCreateActionConfig,
             onClick: toggleDrawer,

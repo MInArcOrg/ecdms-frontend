@@ -23,6 +23,8 @@ import { Settings } from 'src/@core/context/settingsContext';
 import User from 'src/types/admin/user';
 import UserAvatar from 'src/views/admin/user/user-avatar';
 import UserProfileSmall from 'src/views/admin/user/user-profile-small';
+import { IconButton } from '@mui/material';
+import Customizer from 'src/@core/components/customizer';
 
 interface Props {
   settings: Settings;
@@ -87,6 +89,10 @@ const UserDropdown = (props: Props) => {
     handleDropdownClose();
   };
 
+  const [openSetting,setOpenSetting] = useState(false);
+  const toggleSettingDrawer = () => {
+    setOpenSetting(!openSetting);
+  }
   return (
     <Fragment>
       <Badge
@@ -119,18 +125,14 @@ const UserDropdown = (props: Props) => {
           <UserProfileSmall user={user as User} />
         </Box>
         <Divider sx={{ my: (theme) => `${theme.spacing(2)} !important` }} />
-        <MenuItemStyled sx={{ p: 0 }} onClick={() => handleDropdownClose(`/admin/users/${user?.id}/account`)}>
-          <Box sx={styles}>
-            <Icon icon="tabler:user-check" />
-
-          </Box>
-        </MenuItemStyled>
-        {/* <MenuItemStyled sx={{ p: 0 }} onClick={() => handleDropdownClose('/pages/account-settings/account')}>
+       
+         <MenuItemStyled sx={{ p: 0 }} onClick={toggleSettingDrawer}>
           <Box sx={styles}>
             <Icon icon="tabler:settings" />
             Settings
           </Box>
-        </MenuItemStyled> */}
+          <Customizer open={openSetting} handleToggle={toggleSettingDrawer} />
+        </MenuItemStyled>
 
         <Divider sx={{ my: (theme) => `${theme.spacing(2)} !important` }} />
         <MenuItemStyled sx={{ p: 0 }} onClick={handleLogout}>

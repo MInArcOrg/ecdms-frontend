@@ -15,6 +15,8 @@ import StakeholderCard from "./stakeholder-card";
 import { StakeholderRow } from "./stakeholder-row";
 import { Stakeholder } from "src/types/stakeholder";
 import stakeholderApiService from "src/services/stakeholder/stakeholder-service";
+import { useQuery } from "@tanstack/react-query";
+import masterTypeApiService from "src/services/master-data/master-type-service";
 
 function StakholdersList() {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -56,6 +58,13 @@ function StakholdersList() {
     refetch();
   };
 
+    const {data:type,isLoading:typeIsLoading}=useQuery(
+      {
+        queryKey:['stakeholder-type',String(typeId)],
+        queryFn:()=>masterTypeApiService.getOne('stakeholder',String(typeId),{}),
+        enabled:!!typeId
+      }
+    )
   return (
     <Box>
       {showDrawer && (
@@ -65,11 +74,12 @@ function StakholdersList() {
           stakeholder={selectedRow as Stakeholder}
           refetch={refetch}
           typeId={String(typeId)}
+          type={type?.payload}
         />
       )}
       <Card>
         <ItemsListing
-          title={t("stakeholder.title")}
+          title={`${type?.payload?.title} ${t('stakeholder.title')}`}
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}

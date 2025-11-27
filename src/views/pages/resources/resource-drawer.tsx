@@ -7,6 +7,8 @@ import ResourceForm from './resource-form';
 import { IApiPayload } from 'src/types/requests';
 import resourceApiService from 'src/services/resource/resource-service';
 import { Resource } from 'src/types/resource';
+import { MasterType } from 'src/types/master/master-types';
+import { useTranslation } from 'react-i18next';
 
 interface ResourceDrawerType {
   open: boolean;
@@ -14,6 +16,7 @@ interface ResourceDrawerType {
   refetch: () => void;
   resource: Resource;
   typeId: string;
+  type: MasterType | undefined;
 }
 
 const validationSchema = yup.object().shape({
@@ -28,9 +31,11 @@ const validationSchema = yup.object().shape({
 });
 
 const ResourceDrawer = (props: ResourceDrawerType) => {
-  // ** Props
-  const { open, toggle, refetch, resource, typeId } = props;
 
+  // ** Props
+  const { open, toggle, refetch, resource, typeId,type } = props;
+
+  const { t } = useTranslation();
   const isEdit = resource?.id ? true : false;
   const createResource = async (body: IApiPayload<Resource>) => {
     return await resourceApiService.create(body);
@@ -59,12 +64,16 @@ const ResourceDrawer = (props: ResourceDrawerType) => {
     refetch();
     handleClose();
   };
+    const translatedTitle = t(`common.${isEdit ? 'edit' : 'create'}`)+" "+ type?.title+" "+t('resource.title');
+
   return (
-    <CustomSideDrawer title={`resource.${isEdit ? 'edit-resource' : 'create-resource'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer 
+      translatedTitle={translatedTitle}
+     handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title="resource.title"
+      translatedTitle={translatedTitle}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={resource}

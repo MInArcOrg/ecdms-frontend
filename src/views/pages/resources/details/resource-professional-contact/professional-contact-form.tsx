@@ -4,6 +4,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
 import { ProfessionalContact } from 'src/types/resource';
+import CustomPhoneInput from 'src/views/shared/form/custom-phone-box';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface ContactFormProps {
@@ -16,13 +17,13 @@ const ContactForm: React.FC<ContactFormProps> = ({ formik }) => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('professional.contact.phone')} name="phone_no" size="small" sx={{ mb: 2 }} />
+        <CustomPhoneInput fullWidth label={t('resources.professional.contact.phone')} name="phone_no" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('professional.contact.email')} name="email" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('resources.professional.contact.email')} type='email' name="email" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('professional.contact.website')} name="website" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('resources.professional.contact.website')} name="website" size="small" sx={{ mb: 2 }} />
       </Grid>
     </Grid>
   );

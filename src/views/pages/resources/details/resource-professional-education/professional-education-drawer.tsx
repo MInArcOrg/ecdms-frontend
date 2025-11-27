@@ -78,11 +78,11 @@ const EducationDrawer = (props: EducationDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`professional.education.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`resources.professional.education.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`professional.education.${isEdit ? 'edit' : 'create'}`}
+          title={`resources.professional.education.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

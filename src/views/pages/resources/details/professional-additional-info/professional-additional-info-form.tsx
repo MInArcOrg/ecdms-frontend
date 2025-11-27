@@ -18,7 +18,7 @@ const AdditionalInfoForm: React.FC<AdditionalInfoFormProps> = ({ formik }) => {
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={t('professional.additional-info.information')}
+          label={t('resources.professional.additional-info.information')}
           name="additional_information"
           size="small"
           multiline
@@ -27,7 +27,7 @@ const AdditionalInfoForm: React.FC<AdditionalInfoFormProps> = ({ formik }) => {
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('professional.additional-info.reference')} name="reference" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('resources.professional.additional-info.reference')} name="reference" size="small" sx={{ mb: 2 }} />
       </Grid>
     </Grid>
   );

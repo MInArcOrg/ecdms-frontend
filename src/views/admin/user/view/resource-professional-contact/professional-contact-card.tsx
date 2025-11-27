@@ -43,10 +43,10 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact, refetch, onEdit, onD
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.contact.phone')}: {contact?.phone_no || 'N/A'}
+            {t('resources.professional.contact.phone')}: {contact?.phone_no || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.contact.website')}: {contact?.website || 'N/A'}
+            {t('resources.professional.contact.website')}: {contact?.website || 'N/A'}
           </Typography>
         </Box>
       </CardContent>

@@ -21,7 +21,7 @@ export const additionalInfoColumns = (
     flex: 0.3,
     minWidth: 200,
     field: 'additional_information',
-    headerName: t('professional.additional-info.information'),
+    headerName: t('resources.professional.additional-info.information'),
     renderCell: ({ row }: CellType) => (
       <Typography
         noWrap
@@ -42,7 +42,7 @@ export const additionalInfoColumns = (
     flex: 0.2,
     minWidth: 150,
     field: 'reference',
-    headerName: t('professional.additional-info.reference'),
+    headerName: t('resources.professional.additional-info.reference'),
     renderCell: ({ row }: CellType) => row.reference || t('common.not-available')
   },
   {

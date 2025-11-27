@@ -7,7 +7,8 @@ import DataCollectionGuideList from '../data-collection-guide';
 interface CustomSideDrawerProps {
   open: boolean;
   handleClose: () => void;
-  title: string;
+  title?: string;
+  translatedTitle?: string;
   children: () => JSX.Element;
   width?: number; // Optional width prop
   model?: string;
@@ -20,7 +21,7 @@ const Header = styled(Box)<BoxProps>(({ theme }) => ({
   justifyContent: 'space-between'
 }));
 
-const CustomSideDrawer: React.FC<CustomSideDrawerProps> = ({ open, handleClose, title, children, width, model }) => {
+const CustomSideDrawer: React.FC<CustomSideDrawerProps> = ({ open, handleClose, title, translatedTitle, children, width, model }) => {
   const { t: transl } = useTranslation();
   const [tab, setTab] = React.useState(0);
 
@@ -43,7 +44,7 @@ const CustomSideDrawer: React.FC<CustomSideDrawerProps> = ({ open, handleClose, 
         }}
       >
         <Header>
-          <Typography variant="h5">{transl(title)}</Typography>
+          <Typography variant="h5">{translatedTitle || transl(title || '')}</Typography>
           <IconButton
             size="small"
             onClick={handleClose}

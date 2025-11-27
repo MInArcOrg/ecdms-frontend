@@ -14,6 +14,8 @@ import DocumentCard from './document-card';
 import DocumentDrawer from './document-drawer';
 import { documentColumns } from './document-row';
 import DocumentDetail from './document-detail';
+import { useQuery } from '@tanstack/react-query';
+import masterTypeApiService from 'src/services/master-data/master-type-service';
 
 function DocumentList() {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -62,6 +64,14 @@ function DocumentList() {
     toggleDetailDrawer();
     setSelectedRow(document);
   };
+  
+    const {data:type,isLoading:typeIsLoading}=useQuery(
+      {
+        queryKey:['document-type',String(typeId)],
+        queryFn:()=>masterTypeApiService.getOne('document',String(typeId),{}),
+        enabled:!!typeId
+      }
+    )
   return (
     <Box>
       {showDrawer && (
@@ -71,10 +81,12 @@ function DocumentList() {
           document={selectedRow as Document}
           refetch={refetch}
           typeId={String(typeId)}
+          type={type?.payload}
         />
       )}
       <Card>
         <ItemsListing
+          title={`${type?.payload?.title} ${t('document.title')}`}
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}

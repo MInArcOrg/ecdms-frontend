@@ -46,11 +46,11 @@ const AdditionalInfoDrawer = (props: AdditionalInfoDrawerType) => {
   };
 
   return (
-    <CustomSideDrawer title={`professional.additional-info.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`resources.professional.additional-info.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`professional.additional-info.${isEdit ? 'edit' : 'create'}`}
+          title={`resources.professional.additional-info.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

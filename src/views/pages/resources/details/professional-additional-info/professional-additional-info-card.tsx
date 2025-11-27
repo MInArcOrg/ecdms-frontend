@@ -43,7 +43,7 @@ const AdditionalInfoCard: React.FC<AdditionalInfoCardProps> = ({ additionalInfo,
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('professional.additional-info.reference')}: {additionalInfo?.reference || 'N/A'}
+            {t('resources.professional.additional-info.reference')}: {additionalInfo?.reference || 'N/A'}
           </Typography>
         </Box>
       </CardContent>

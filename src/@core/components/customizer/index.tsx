@@ -70,10 +70,14 @@ const ColorBox = styled(Box)<BoxProps>(({ theme }) => ({
   }
 }));
 
-const Customizer = () => {
+const Customizer = ({
+  open,
+  handleToggle
+}: {
+  open: boolean;
+  handleToggle: () => void;
+}) => {
   // ** State
-  const [open, setOpen] = useState<boolean>(false);
-
   // ** Hook
   const { settings, saveSettings } = useSettings();
 
@@ -99,9 +103,6 @@ const Customizer = () => {
 
   return (
     <div className="customizer">
-      <Toggler className="customizer-toggler" onClick={() => setOpen(true)}>
-        <Icon icon="tabler:settings" />
-      </Toggler>
       <Drawer open={open} hideBackdrop anchor="right" variant="persistent">
         <Box
           className="customizer-header"
@@ -116,7 +117,7 @@ const Customizer = () => {
           </Typography>
           <Typography sx={{ color: 'text.secondary' }}>Customize & Preview in Real Time</Typography>
           <IconButton
-            onClick={() => setOpen(false)}
+            onClick={() => handleToggle && handleToggle()}
             sx={{
               right: 20,
               top: '50%',

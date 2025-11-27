@@ -67,6 +67,7 @@ export const addressMasterColumns = (
 
 const getTitleLinkOrText = (row: AddressMaster) => {
   const childTypeObj = addressTypes.find((typeObj) => typeObj.parent.includes(row?.type as AddressType));
+  console.log('childTypeObj', childTypeObj);
   if (childTypeObj) {
     return (
       <Typography
