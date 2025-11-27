@@ -13,20 +13,16 @@ const navigation = (): VerticalNavItemsType => {
       sectionTitle: 'navigation.admin-module'
     },
     {
-      title: 'navigation.department',
+      title: 'navigation.centers',
       icon: 'tabler:building',
-      path: '/departments'
+      path: '/centers'
     },
     {
       title: 'navigation.address',
       icon: 'tabler:location',
       path: '/address-master'
     },
-    {
-      title: 'navigation.user',
-      icon: 'tabler:user',
-      path: '/admin/users'
-    },
+
     {
       title: 'navigation.roles',
       icon: 'tabler:settings',

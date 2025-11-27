@@ -49,6 +49,7 @@
     "depamrtent-module": "Department Module",
     "main-modules": "Main Modules",
     "department": "Department",
+    "centers": "Centers",
     "address": "Address",
     "user": "User",
     "user-list": "User List",
@@ -519,7 +520,7 @@
     "tabs": {
       "professionals": "Professionals",
       "positions": "Positions",
-      "sub-departments": "Sub Departments",
+      "sub-departments": "Sub Centers",
       "documents": "Documents",
       "structure": "Structure"
     },
@@ -626,11 +627,11 @@
         "name": "Name",
         "description": "Description"
       },
-      "title": "Sub Departments",
-      "create-sub-department": "Add Sub Department",
-      "edit-sub-department": "Edit Sub Department"
+      "title": "Sub Centers",
+      "create-sub-department": "Add Sub Center",
+      "edit-sub-department": "Edit Sub Center"
     },
-    "department-structure": "department-structure"
+    "department-structure": "Center Structure"
   },
   "admin": {
     "role": {
@@ -4650,7 +4651,7 @@
           },
           "company-structure": {
             "company-structure": "Company Structure",
-            "departments": "Departments",
+            "departments": "Centers",
             "positions": "Positions"
           }
         },

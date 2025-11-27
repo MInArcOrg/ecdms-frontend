@@ -8,10 +8,8 @@ const navigation = (): HorizontalNavItemsType => {
       icon: 'tabler:smart-home',
       path: '/dashboard'
     },
-
-
     {
-      title: 'navigation.department',
+      title: 'navigation.centers',
       icon: 'tabler:building',
       path: '/departments'
     },

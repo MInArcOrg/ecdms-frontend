@@ -127,12 +127,29 @@ export const appModulesWithIds: { id: string; name: string; flags: { id: string;
     id: 'resource',
     name: 'Resource',
     flags: [
+
+    ]
+  },
+  {
+    id: 'document', name: 'Document', flags: [
       { id: 'LEGAL_FRAMEWORK', name: 'LEGAL_FRAMEWORK' },
       { id: 'RESEARCH', name: 'RESEARCH' },
       { id: 'REFERENCE', name: 'REFERENCE' },
       { id: 'BOOK', name: 'BOOK' }
     ]
   },
-  { id: 'document', name: 'Document', flags: [] },
-  { id: 'infrastructure', name: 'Infrastructure', flags: [] }
+  {
+    id: 'infrastructure', name: 'Infrastructure', flags: [{
+      id: 'ELECTRIC',
+      name: 'Electric'
+    },
+    {
+      id: 'BUILDING',
+      name: 'Building'
+    },
+    {
+      id: 'AIRFIELD_AIRPORT',
+      name: 'Airfield/Airport'
+    },]
+  }
 ];
