@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
 import { useTranslation } from 'react-i18next';
+import { dropDownConfig } from 'src/configs/api-constants';
 import addressmasterApiService from 'src/services/admin/address-master-service';
 import departmentApiService from 'src/services/department/department-service';
 import Department from 'src/types/department/department';
@@ -21,8 +22,9 @@ const SubDepartmentForm: React.FC<SubDepartmentFormProps> = ({ formik, defaultLo
   });
   const { data: addresses } = useQuery({
     queryKey: ['general-master', parentDepartment?.payload?.address_id],
-    queryFn: () => addressmasterApiService.getAll({ filter: { parent_address_id: parentDepartment?.payload?.address_id || null } })
+    queryFn: () => addressmasterApiService.getAll(dropDownConfig({ filter: { parent_address_id: parentDepartment?.payload?.address_id, is_root: parentDepartment?.payload?.address_id ? 0 : 1 } }))
   });
+  console.log('parentDepartment?.payload?.address_id', parentDepartment?.payload?.address_id)
   return (
     <>
       <CustomTextBox

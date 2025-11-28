@@ -17,7 +17,7 @@ interface SubDepartmentDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  name: yup.string().max(36).required(),
+  name: yup.string().max(50).required(),
   description: yup.string().max(100).nullable()
 });
 
