@@ -21,7 +21,7 @@ function JointVentureIndex() {
 
 JointVentureIndex.acl = {
   subject: 'jointventure',
-  action: 'view_jointventure'
+  action: 'view'
 };
 
 export default JointVentureIndex;

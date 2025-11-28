@@ -24,7 +24,7 @@ function StakeholderContactPersonIndex() {
 
 StakeholderContactPersonIndex.acl = {
   subject: 'stakeholdercontactperson',
-  action: 'view_stakeholdercontactperson'
+  action: 'view'
 };
 
 export default StakeholderContactPersonIndex;

@@ -14,42 +14,42 @@ const menuItems = (id: string, typeId: string): MenuItem[] => {
       id: 1,
       title: 'stakeholder.navigation.menu.general-info',
       path: `${baseUrl}/general-info`,
-      action: 'view_stakeholderinfo',
+      action: 'view',
       subject: 'stakeholderinfo'
     },
     {
       id: 6,
       title: 'stakeholder.navigation.menu.branches',
       path: `${baseUrl}/branches`,
-      action: 'view_stakeholderbranch',
+      action: 'view',
       subject: 'stakeholderbranch'
     },
     {
       id: 2,
       title: 'stakeholder.navigation.menu.employees',
       path: `${baseUrl}/employees/statistics`,
-      action: 'view_stakeholderemployee',
+      action: 'view',
       subject: 'stakeholderemployee'
     },
     {
       id: 3,
       title: 'stakeholder.navigation.menu.other',
       path: `${baseUrl}/other`,
-      action: 'view_stakeholderspecific',
+      action: 'view',
       subject: 'stakeholderspecific'
     },
     {
       id: 4,
       title: 'stakeholder.navigation.menu.projects',
       path: `${baseUrl}/stakeProjects`,
-      action: 'view_stakeholderproject',
+      action: 'view',
       subject: 'stakeholderproject'
     },
     {
       id: 5,
       title: 'stakeholder.navigation.menu.files',
       path: `${baseUrl}/files`,
-      action: 'view_stakeholderfile',
+      action: 'view',
       subject: 'stakeholderfile'
     }
   ];

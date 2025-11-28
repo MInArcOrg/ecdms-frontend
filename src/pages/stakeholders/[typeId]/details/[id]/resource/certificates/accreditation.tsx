@@ -20,7 +20,7 @@ function StakeholderInformation() {
 
 StakeholderInformation.acl = {
   subject: 'stakeholderinfo',
-  action: 'view_stakeholderinfo'
+  action: 'view'
 };
 
 export default StakeholderInformation;

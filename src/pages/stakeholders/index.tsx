@@ -4,4 +4,8 @@ const StakeholderPage = () => {
   return <StakholdersList />;
 };
 
+StakeholderPage.acl = {
+  action: 'view',
+  subject: 'stakeholder'
+};
 export default StakeholderPage;

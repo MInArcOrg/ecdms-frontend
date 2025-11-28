@@ -23,7 +23,7 @@ Professionals.getLayout = (page: ReactElement) => (
   </UserLayout>
 );
 Professionals.acl = {
-  action: 'view_professional',
+  action: 'view',
   subject: 'professional'
 };
 

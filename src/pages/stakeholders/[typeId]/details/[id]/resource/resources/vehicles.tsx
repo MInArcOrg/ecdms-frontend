@@ -20,7 +20,7 @@ function StakeholderMaterialIndex() {
 }
 
 StakeholderMaterialIndex.acl = {
-  action: 'view_stakeholdermachinery',
+  action: 'view',
   subject: 'stakeholdermachinery'
 };
 

@@ -19,4 +19,8 @@ const EcommerceDashboard = () => {
   );
 };
 
+EcommerceDashboard.acl = {
+  action: 'view',
+  subject: 'project'
+};
 export default EcommerceDashboard;

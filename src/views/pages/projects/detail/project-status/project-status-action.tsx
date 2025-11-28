@@ -16,7 +16,7 @@ const ProjectStatusAction = ({
   return (
     <Box display="flex" justifyContent="end" alignItems="end">
       <Box display="flex" gap={2}>
-        <Can do={'register_projectstatus'} on={'projectstatus'}>
+        <Can do={'register'} on={'projectstatus'}>
           <CustomChip
             label="Change Status"
             color="primary"

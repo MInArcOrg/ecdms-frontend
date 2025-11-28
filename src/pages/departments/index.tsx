@@ -16,7 +16,7 @@ function Index() {
   );
 }
 Index.acl = {
-  action: 'view_department',
+  action: 'view',
   subject: 'department'
 };
 

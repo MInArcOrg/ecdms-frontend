@@ -22,7 +22,7 @@ Positions.getLayout = (page: ReactElement) => (
   </UserLayout>
 );
 Positions.acl = {
-  action: 'view_position',
+  action: 'view',
   subject: 'position'
 };
 export default Positions;

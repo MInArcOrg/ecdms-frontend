@@ -21,7 +21,7 @@ function CompanyStructureIndex() {
 
 CompanyStructureIndex.acl = {
   subject: 'stakeholder',
-  action: 'view_stakeholder'
+  action: 'view'
 };
 
 export default CompanyStructureIndex;

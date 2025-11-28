@@ -21,7 +21,7 @@ function StakeholderDepartmentIndex() {
 
 StakeholderDepartmentIndex.acl = {
   subject: 'stakeholder',
-  action: 'view_stakeholder'
+  action: 'view'
 };
 
 export default StakeholderDepartmentIndex;

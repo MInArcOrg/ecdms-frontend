@@ -21,7 +21,7 @@ function StakeholderManagerIndex() {
 
 StakeholderManagerIndex.acl = {
   subject: 'stakeholderadditionalinformation',
-  action: 'view_stakeholderadditionalinformation'
+  action: 'view'
 };
 
 export default StakeholderManagerIndex;

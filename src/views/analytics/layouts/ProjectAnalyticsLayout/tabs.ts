@@ -2,49 +2,49 @@ export const menuItems = (baseUrl: string) => [
   {
     id: 1,
     title: 'General Info',
-    action: 'view_projectinfo',
-    subject: 'projectinfo',
+    action: 'view',
+    subject: 'project',
     path: `${baseUrl}`
   },
   {
     id: 2,
     title: 'Financial',
-    action: 'view_projectfinance',
+    action: 'view',
     subject: 'projectfinance',
     path: `${baseUrl}/financial`
   },
   {
     id: 3,
     title: 'Time',
-    action: 'view_projecttime',
+    action: 'view',
     subject: 'projecttime',
     path: `${baseUrl}/time`
   },
   {
     id: 4,
     title: 'Stakeholder',
-    action: 'view_projectstakeholder',
+    action: 'view',
     subject: 'projectstakeholder',
     path: `${baseUrl}/stakeholder`
   },
   {
     id: 5,
     title: 'Project File',
-    action: 'view_projectfile',
+    action: 'view',
     subject: 'projectfile',
     path: `${baseUrl}/project-file`
   },
   {
     id: 6,
     title: 'Plan',
-    action: 'view_projectplan',
+    action: 'view',
     subject: 'projectplan',
     path: `${baseUrl}/plan`
   },
   {
     id: 7,
     title: 'Resource',
-    action: 'view_projectresource',
+    action: 'view',
     subject: 'projectresource',
     path: `${baseUrl}/resource`
   },
@@ -52,35 +52,35 @@ export const menuItems = (baseUrl: string) => [
   {
     id: 8,
     title: 'Report',
-    action: 'view_projectreport',
+    action: 'view',
     subject: 'projectreport',
     path: `${baseUrl}/report`
   },
   {
     id: 9,
     title: 'Other',
-    action: 'view_other',
+    action: 'view',
     subject: 'other',
     path: `${baseUrl}/other`
   },
   {
     id: 10,
     title: 'Location',
-    action: 'view_location',
+    action: 'view',
     subject: 'location',
     path: `${baseUrl}/location`
   },
   {
     id: 11,
     title: 'Performance',
-    action: 'view_performance',
+    action: 'view',
     subject: 'performance',
     path: `${baseUrl}/performance`
   },
   {
     id: 12,
     title: 'Matrix',
-    action: 'view_matrix',
+    action: 'view',
     subject: 'matrix',
     path: `${baseUrl}/matrixTree`
   }

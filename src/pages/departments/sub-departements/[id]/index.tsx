@@ -24,7 +24,7 @@ Index.getLayout = (page: ReactElement) => {
   );
 };
 Index.acl = {
-  action: 'view_department',
+  action: 'view',
   subject: 'department'
 };
 

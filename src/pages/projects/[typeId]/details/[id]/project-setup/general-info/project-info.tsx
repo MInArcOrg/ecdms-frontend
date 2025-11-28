@@ -132,8 +132,8 @@ function ProjectGeneralInformation() {
 }
 
 ProjectGeneralInformation.acl = {
-  subject: 'projectinfo',
-  action: 'view_projectinfo'
+  subject: 'project',
+  action: 'view'
 };
 
 export default ProjectGeneralInformation;

@@ -20,7 +20,7 @@ function BranchAdditionalInformationIndex() {
 
 BranchAdditionalInformationIndex.acl = {
   subject: 'stakeholder',
-  action: 'view_stakeholder'
+  action: 'view'
 };
 
 export default BranchAdditionalInformationIndex;

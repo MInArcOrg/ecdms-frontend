@@ -21,7 +21,7 @@ const ProjectManager = () => {
 
 ProjectManager.acl = {
   subject: 'projectManager',
-  action: 'view_projectmanager'
+  action: 'view'
 };
 
 export default ProjectManager;

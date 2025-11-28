@@ -4,4 +4,8 @@ const ProjectPage = () => {
   return <ProjectList />;
 };
 
+ProjectPage.acl = {
+  action: 'view',
+  subject: 'project'
+};
 export default ProjectPage;

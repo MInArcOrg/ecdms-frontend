@@ -18,7 +18,7 @@ Departments.getLayout = (page: ReactElement) => (
   </UserLayout>
 );
 Departments.acl = {
-  action: 'view_department',
+  action: 'view',
   subject: 'department'
 };
 

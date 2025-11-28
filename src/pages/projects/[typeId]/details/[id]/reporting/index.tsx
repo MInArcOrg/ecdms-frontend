@@ -24,5 +24,9 @@ const ProjectGeneral = () => {
     </>
   );
 };
+ProjectGeneral.acl = {
+  action: 'view',
+  subject: 'project'
+};
 
 export default ProjectGeneral;

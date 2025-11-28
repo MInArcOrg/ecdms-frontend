@@ -21,7 +21,7 @@ const ProjectContactPerson = () => {
 
 ProjectContactPerson.acl = {
   subject: 'projectstatus',
-  action: 'view_projectstatus'
+  action: 'view'
 };
 
 export default ProjectContactPerson;

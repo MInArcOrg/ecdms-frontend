@@ -21,7 +21,7 @@ function StakeholderGeneralInoIndex() {
 
 StakeholderGeneralInoIndex.acl = {
   subject: 'stakeholder',
-  action: 'view_stakeholder'
+  action: 'view'
 };
 
 export default StakeholderGeneralInoIndex;

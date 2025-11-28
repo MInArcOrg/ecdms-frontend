@@ -24,7 +24,7 @@ function StakeholderLocation() {
 
 StakeholderLocation.acl = {
   subject: 'address',
-  action: 'view_address'
+  action: 'view'
 };
 
 export default StakeholderLocation;

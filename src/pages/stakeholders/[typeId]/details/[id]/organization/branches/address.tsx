@@ -24,7 +24,7 @@ function StakeholderBranchAddressIndex() {
 
 StakeholderBranchAddressIndex.acl = {
   subject: 'stakeholder',
-  action: 'view_stakeholder'
+  action: 'view'
 };
 
 export default StakeholderBranchAddressIndex;

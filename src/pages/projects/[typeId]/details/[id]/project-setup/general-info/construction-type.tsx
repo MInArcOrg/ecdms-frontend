@@ -22,7 +22,7 @@ function ProjectConstructionTypeIndex() {
 
 ProjectConstructionTypeIndex.acl = {
   subject: 'projectconstructiontype',
-  action: 'view_project_construction_type'
+  action: 'view'
 };
 
 export default ProjectConstructionTypeIndex;

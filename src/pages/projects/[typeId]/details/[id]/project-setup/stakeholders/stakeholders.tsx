@@ -22,7 +22,7 @@ const ProjectStakeholder = () => {
 
 ProjectStakeholder.acl = {
   subject: 'projectstakeholder',
-  action: 'view_projectstakeholder'
+  action: 'view'
 };
 
 export default ProjectStakeholder;

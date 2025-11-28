@@ -23,7 +23,7 @@ function ProjectAdvancePayment() {
 }
 
 ProjectAdvancePayment.acl = {
-  action: 'view_payment',
+  action: 'view',
   subject: 'payment'
 };
 export default ProjectAdvancePayment;

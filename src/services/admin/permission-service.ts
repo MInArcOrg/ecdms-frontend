@@ -43,12 +43,13 @@ const permissionApiService = {
         throw error;
       }),
 
-  getMe: (params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest('/me', params)
+  getUserPermission: (params: GetRequestParam): Promise<IApiResponse> =>
+    buildGetRequest('/departments/user-permissions', params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       })
+    
 };
 
 export default permissionApiService;

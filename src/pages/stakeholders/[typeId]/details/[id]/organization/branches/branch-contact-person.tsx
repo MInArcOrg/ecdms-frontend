@@ -21,7 +21,7 @@ function StakeholderBranchContactPersonIndex() {
 
 StakeholderBranchContactPersonIndex.acl = {
   subject: 'resource',
-  action: 'view_resource'
+  action: 'view'
 };
 
 export default StakeholderBranchContactPersonIndex;

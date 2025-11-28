@@ -25,7 +25,7 @@ Professionals.getLayout = (page: ReactElement) => {
   );
 };
 Professionals.acl = {
-  action: 'view_professional',
+  action: 'view',
   subject: 'professional'
 };
 

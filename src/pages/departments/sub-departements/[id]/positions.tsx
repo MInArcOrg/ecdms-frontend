@@ -25,7 +25,7 @@ Positions.getLayout = (page: ReactElement) => {
   );
 };
 Positions.acl = {
-  action: 'view_position',
+  action: 'view',
   subject: 'position'
 };
 

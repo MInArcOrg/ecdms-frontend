@@ -87,22 +87,22 @@ const ServerSideNavItems = () => {
             title: 'Projects',
             icon: 'tabler:box-multiple',
             path: '#',
-            action: 'view_projectinfo',
-            subject: 'projectinfo'
+            action: 'view',
+            subject: 'project'
           }
         ]
       : [
           {
             title: 'Projects',
             icon: 'tabler:box-multiple',
-            action: 'view_projectinfo',
-            subject: 'projectinfo',
+            action: 'view',
+            subject: 'project',
             path: '/projects',
             children: projectTypes?.payload?.map((type: MasterType) => {
               return {
                 title: type.title,
-                action: 'view_projectinfo',
-                subject: 'projectinfo',
+                action: 'view',
+                subject: 'project',
                 path: `/projects/${type.id}`
               };
             })
@@ -117,8 +117,8 @@ const ServerSideNavItems = () => {
             title: 'Resources',
             icon: 'tabler:calendar',
             path: '#',
-            action: 'view_projectresource',
-            subject: 'projectresource'
+            action: 'view',
+            subject: 'resource'
           }
         ]
       : [
@@ -126,13 +126,13 @@ const ServerSideNavItems = () => {
             title: 'Resources',
             icon: 'tabler:calendar',
             path: '/resources',
-            action: 'register_projectresource',
-            subject: 'projectresource',
+            action: 'register',
+            subject: 'resource',
             children: resourceTypes?.payload?.map((type: MasterType) => {
               return {
                 title: type.title,
-                action: 'register_projectresource',
-                subject: 'projectresource',
+                action: 'register',
+                subject: 'resource',
                 path: `/resources/${type.id}`
               };
             })
