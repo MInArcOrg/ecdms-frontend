@@ -6,7 +6,9 @@ const navigation = (): VerticalNavItemsType => {
     {
       title: 'navigation.dashboard',
       icon: 'tabler:smart-home',
-      path: '/dashboard'
+      path: '/dashboard',
+      action: 'view',
+      subject: 'all'
     },
 
     {
@@ -15,17 +17,23 @@ const navigation = (): VerticalNavItemsType => {
     {
       title: 'navigation.centers',
       icon: 'tabler:building',
-      path: '/departments'
+      path: '/departments',
+      action: 'view',
+      subject: 'department'
     },
     {
       title: 'navigation.address',
       icon: 'tabler:location',
-      path: '/address-master'
+      path: '/address-master',
+      action: 'view',
+      subject: 'addressmaster'
     },
     {
       title: 'navigation.roles',
       icon: 'tabler:settings',
-      path: '/admin/roles'
+      path: '/admin/roles',
+      action: 'view',
+      subject: 'role'
     },
     {
       sectionTitle: 'navigation.master-data.master-data'
@@ -37,7 +45,7 @@ const navigation = (): VerticalNavItemsType => {
         {
           title: 'navigation.master-data.stakeholder',
           path: '/master-data/stakeholder',
-          icon: 'tabler:users'
+          icon: 'tabler:users',
         },
         {
           title: 'navigation.master-data.project',

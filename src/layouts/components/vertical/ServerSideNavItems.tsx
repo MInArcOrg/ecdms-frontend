@@ -126,12 +126,12 @@ const ServerSideNavItems = () => {
             title: 'Resources',
             icon: 'tabler:calendar',
             path: '/resources',
-            action: 'register',
+            action: 'view',
             subject: 'resource',
             children: resourceTypes?.payload?.map((type: MasterType) => {
               return {
                 title: type.title,
-                action: 'register',
+                action: 'view',
                 subject: 'resource',
                 path: `/resources/${type.id}`
               };
@@ -148,8 +148,13 @@ const ServerSideNavItems = () => {
             title: 'Documents',
             icon: 'tabler:files',
             path: '/documents',
+            action: 'view',
+            subject: 'document',
             children: documentTypes?.payload?.map((type: MasterType) => {
-              return { title: type.title, path: `/documents/${type.id}` };
+              return { title: type.title,
+                action: 'view',
+                subject: 'document',
+                path: `/documents/${type.id}` };
             })
           }
         ];

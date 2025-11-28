@@ -25,89 +25,119 @@ const menuItems = (id: string, typeId: string): DetailMenuItem[] => {
     {
       id: projectMenuIds.projectSetup,
       title: 'project.navigation.menu.project-setup',
-      path: `${baseUrl}/project-setup`
+      path: `${baseUrl}/project-setup`,
+      action: 'view',
+      subject: 'project'
     },
     {
       id: projectMenuIds.resource,
       title: 'project.navigation.menu.resource',
-      path: `${baseUrl}/resource`
+      path: `${baseUrl}/resource`,
+      action: 'view',
+      subject: 'projectresource'
     },
     {
       id: projectMenuIds.reporting,
       title: 'project.navigation.menu.reporting',
-      path: `${baseUrl}/reporting`
+      path: `${baseUrl}/reporting`,
+      action: 'view',
+      subject: 'project'
     },
     {
       id: projectMenuIds.segment,
       title: 'project.navigation.menu.segment',
       path: `${baseUrl}/segment`,
-      type: projectTypesMaster.road
+      type: projectTypesMaster.road,
+      action: 'view',
+      subject: 'project'
     },
     {
       id: projectMenuIds.feature,
       title: 'project.navigation.menu.feature',
       path: `${baseUrl}/feature`,
+      action: 'view',
+      subject: 'project',
       type: projectTypesMaster.road
     },
     {
       id: projectMenuIds.maintenance,
       title: 'project.navigation.menu.maintenance',
       path: `${baseUrl}/maintenance`,
-      type: projectTypesMaster.road
+      type: projectTypesMaster.road,
+      action: 'view',
+      subject: 'project'
     },
     {
       id: projectMenuIds.telecomInfrastructure,
       title: 'project.navigation.menu.telecom-infrastructure',
       path: `${baseUrl}/telecom-infrastructure`,
-      type: projectTypesMaster.telecommunication
+      type: projectTypesMaster.telecommunication,
+      action: 'view',
+      subject: 'project'
     },
     {
       id: projectMenuIds.mobileSatelliteNetworks,
       title: 'project.navigation.menu.mobile-satellite-networks',
       path: `${baseUrl}/mobile-satellite-networks`,
-      type: projectTypesMaster.telecommunication
+      type: projectTypesMaster.telecommunication,
+      action: 'view',
+      subject: 'project'
     },
     {
       id: projectMenuIds.broadcastingDataSystems,
       title: 'project.navigation.menu.broadcasting-data-systems',
       path: `${baseUrl}/broadcasting-data-systems`,
-      type: projectTypesMaster.telecommunication
+      type: projectTypesMaster.telecommunication,
+      action: 'view',
+      subject: 'project'
     },
     {
       id: projectMenuIds.powerGeneration,
       title: 'project.navigation.menu.power-generation',
       path: `${baseUrl}/power-generation`,
-      type: projectTypesMaster.eletric
+      type: projectTypesMaster.eletric,
+      action: 'view',
+      subject: 'project'
     },
     {
       id: projectMenuIds.powerInfrastructure,
       title: 'project.navigation.menu.power-infrastructure',
       path: `${baseUrl}/power-infrastructure`,
-      type: projectTypesMaster.eletric
+      type: projectTypesMaster.eletric,
+      action: 'view',
+      subject: 'project'
     },
     {
       id: projectMenuIds.regulation,
       title: 'project.navigation.menu.regulation',
       path: `${baseUrl}/regulation`,
-      type: projectTypesMaster.eletric
+      type: projectTypesMaster.eletric,
+      action: 'view',
+      subject: 'project'
     },
     {
       id: projectMenuIds.railwayTrackInfrastructure,
       title: 'project.navigation.menu.railway-track-infrastructure',
       path: `${baseUrl}/railway-track-infrastructure`,
-      type: projectTypesMaster.railway
+      type: projectTypesMaster.railway,
+      action: 'view',
+      subject: 'project'
     },
     {
       id: projectMenuIds.railwayOperationalSystems,
       title: 'project.navigation.menu.railway-operational-systems',
       path: `${baseUrl}/railway-operational-systems`,
-      type: projectTypesMaster.railway
+      type: projectTypesMaster.railway,
+      action: 'view',
+      subject: 'project'
     },
     {
       id: projectMenuIds.railwayFacilitiesAndStations,
       title: 'project.navigation.menu.railway-facilities-and-stations',
       path: `${baseUrl}/railway-facilities-and-stations`,
-      type: projectTypesMaster.railway
+      type: projectTypesMaster.railway,
+      action: 'view',
+      subject: 'project'
     }
   ];
 };

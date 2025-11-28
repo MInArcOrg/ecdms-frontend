@@ -95,6 +95,13 @@ const AclGuard = (props: AclGuardProps) => {
   // D. Authorized
   // Check if the loaded ability (from API rules) allows the required action/subject 
   // (which is defined by Component.acl OR the defaultACLObj: {manage: all}).
+  if(ability && aclAbilities.action=='manage' && aclAbilities.subject==='all'){
+    return (
+      <AbilityContext.Provider value={ability}>
+        {children}
+      </AbilityContext.Provider>
+    );
+  }
   if (ability && ability.can(aclAbilities.action, aclAbilities.subject)) {
     return (
       <AbilityContext.Provider value={ability}>

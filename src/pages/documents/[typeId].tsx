@@ -4,4 +4,8 @@ const DocumentPage = () => {
   return <DocumentList />;
 };
 
+DocumentPage.acl = {
+  action: 'view',
+  subject: 'document'
+};
 export default DocumentPage;

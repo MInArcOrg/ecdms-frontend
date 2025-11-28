@@ -118,7 +118,7 @@ const ServerSideNavItems = () => {
           icon: 'tabler:calendar',
           path: '#',
           action: 'view',
-          subject: 'projectresource'
+          subject: 'resource'
         }
       ]
       : [
@@ -126,13 +126,13 @@ const ServerSideNavItems = () => {
           title: 'Resources',
           icon: 'tabler:calendar',
           path: '/resources',
-          action: 'register',
-          subject: 'projectresource',
+          action: 'view',
+          subject: 'resource',
           children: resourceTypes?.payload?.map((type: MasterType) => {
             return {
               title: type.title,
-              action: 'register',
-              subject: 'projectresource',
+              action: 'view',
+              subject: 'resource',
               path: `/resources/${type.id}`
             };
           })

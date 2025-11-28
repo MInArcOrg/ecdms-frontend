@@ -104,7 +104,7 @@ const AuthProvider = ({ children }: Props) => {
           ? window.localStorage.setItem(authConfig.storageUserKeyName, JSON.stringify(loginResponse.payload.user_data))
           : null;
 
-        const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : getHomeRoute('admin');
+        const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/'
         console.log('redirectURL', redirectURL);
         router.replace(redirectURL as string);
       })
