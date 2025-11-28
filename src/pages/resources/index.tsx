@@ -18,4 +18,8 @@ const ResourcePage = () => {
   return masterType?.payload.flag === resourceTypesMaster.professional ? <ProfessionalList /> : <ResourceList />;
 };
 
+ResourcePage.acl = {
+  subject: 'resource',
+  actions: 'view'
+};
 export default ResourcePage;

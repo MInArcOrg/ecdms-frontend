@@ -14,7 +14,13 @@ const dashboardApiService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
+  getProjectTypeStats: (params: GetRequestParam): Promise<IApiResponse> =>
+    buildGetRequest(`/departments/user-dashboard`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
 };
 
 export default dashboardApiService;
