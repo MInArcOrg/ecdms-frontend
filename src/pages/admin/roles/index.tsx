@@ -13,7 +13,7 @@ import Role from 'src/types/admin/role';
 import RoleDrawer from 'src/views/admin/roles/role-drawer';
 import { roleColumns } from 'src/views/admin/roles/role-row-column';
 
-const RoleList: React.FC = () => {
+const RoleList = () => {
   const [selectedRow, setSelectedRow] = useState<Role | null>(null);
   const { t } = useTranslation();
   const fetchRole = (params: GetRequestParam): Promise<IApiResponse<Role[]>> => {
@@ -73,5 +73,9 @@ const RoleList: React.FC = () => {
     </Fragment>
   );
 };
+RoleList.acl = {
+  subject:'role',
+  action:'view'
+}
 
 export default RoleList;

@@ -1,28 +1,33 @@
-import { Box } from '@mui/material';
 import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { projectReportingIds } from '../(subMenuItems)';
+import subMenuItems, { findSubMenuItem, projectReportingIds } from '../(subMenuItems)';
+// Placeholder import, replace with actual component when available
 
-function ProjectPlanning() {
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), projectReportingIds.report.qualityInspection);
+
+const ProjectQualityInspectionPage = () => {
   const router = useRouter();
-  const { id, typeId } = router.query;
+  const { id = '', typeId = '' } = router.query;
+
+  const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), projectReportingIds.report.qualityInspection);
+  menuItem;
 
   return (
-    <Box>
-      <ProjectLayout
-        activeMenuId={projectMenuIds.reporting}
-        activeSubMenuId={projectReportingIds.report.qualityInspection}
-        subMenuItems={subMenuItems(id as string, typeId as string)}
-      >
-        <>quality inspection here</>
-      </ProjectLayout>
-    </Box>
+    <ProjectLayout
+      activeMenuId={projectMenuIds.reporting}
+      activeSubMenuId={projectReportingIds.report.claim}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <></>
+      {/* <ProjectQualityInspection projectId={String(id)} typeId={String(typeId)}  model={menuItem?.model||''}/> */}
+    </ProjectLayout>
   );
-}
-
-ProjectPlanning.acl = {
-  action: 'view',
-  subject: 'projectplanning'
 };
-export default ProjectPlanning;
+
+ProjectQualityInspectionPage.acl = {
+  subject: defaultMenuItem?.model,
+  action: 'view'
+};
+
+export default ProjectQualityInspectionPage;

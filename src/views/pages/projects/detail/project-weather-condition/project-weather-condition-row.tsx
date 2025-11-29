@@ -20,7 +20,7 @@ export const weatherConditionColumns = (
     flex: 0.2,
     minWidth: 200,
     field: 'weather_type',
-    headerName: t('project.weather-condition.weather-type'),
+    headerName: t('project.other.weather-condition.weather-type'),
     renderCell: ({ row }: CellType) => (
       <Typography
         noWrap
@@ -41,7 +41,7 @@ export const weatherConditionColumns = (
     flex: 0.2,
     minWidth: 200,
     field: 'description',
-    headerName: t('project.weather-condition.description'),
+    headerName: t('project.other.weather-condition.description'),
     renderCell: ({ row }: CellType) => row.description
   },
   {

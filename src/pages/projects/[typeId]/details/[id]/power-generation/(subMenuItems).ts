@@ -101,7 +101,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: powerGenerationIds.geothermalEnergy.geothermalPowerWells,
         title: 'project.navigation.submenu.power-generation.geothermal-energy.geothermal-power-wells',
         path: `/projects/${typeId}/details/${id}/power-generation/geothermal-energy/geothermal-power-wells`,
-        model: 'geothermalpowerwells',
+        model: 'geothermalpowerwell',
         apiRoute: 'geothermal-power-wells'
       },
       {

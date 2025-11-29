@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import countriesList from 'src/constants/countries';
 import Address from 'src/types/general/address';
-import CustomSelectBox from 'src/views/shared/form/custom-select';
 
 interface AddressFormProps {
   formik: FormikProps<Address>;
@@ -35,19 +34,22 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
       <Box mb={2}>
         <FormControl fullWidth variant="outlined" sx={{ mb: 3 }}>
           <FormLabel>{transl('address.form.country')}</FormLabel>
-          <CustomSelectBox
+          <Autocomplete
             options={countriesList.map((country) => ({
               value: country.title,
               label: country.title
             }))}
-            name="country"
-            label={transl('address.form.country')}
-            placeholder={transl('address.form.country')}
             size="small"
             disableClearable
             id="autocomplete-outlined"
             value={country || { value: '', label: '' }}
-           
+            isOptionEqualToValue={(option, value) => option.value === value.value}
+            onChange={(event, newValue) => {
+              setCountry(newValue);
+              formik.setFieldValue('country', newValue?.value || '');
+            }}
+            renderInput={(params) => <TextField {...params} />}
+            onBlur={formik.handleBlur}
           />
           {formik.touched.country && formik.errors.country ? <FormHelperText error>{formik.errors.country}</FormHelperText> : null}
         </FormControl>
@@ -55,7 +57,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
 
       <Grid container columnSpacing={5} rowSpacing={3}>
         <Grid item xs={6}>
-          <CustomSelectBox
+          <CustomTextBox
             fullWidth
             label={transl('address.form.state-region')}
             placeholder={transl('address.form.state-region')}
@@ -66,7 +68,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
         </Grid>
 
         <Grid item xs={6}>
-          <CustomSelectBox
+          <CustomTextBox
             fullWidth
             label={transl('address.form.city')}
             placeholder={transl('address.form.city')}
@@ -77,12 +79,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
         </Grid>
 
         <Grid item xs={6}>
-          <CustomSelectBox
-            options={[
-              { value: 'subcity1', label: 'Subcity 1' },
-              { value: 'subcity2', label: 'Subcity 2' },
-              { value: 'subcity3', label: 'Subcity 3' },
-            ]}
+          <CustomTextBox
             fullWidth
             label={transl('address.form.subcity')}
             placeholder={transl('address.form.subcity')}

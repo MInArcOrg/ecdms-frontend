@@ -19,6 +19,10 @@ const ServerSideNavItems = () => {
     queryKey: ['project'],
     queryFn: () => masterTypeApiService.getAll('project', {})
   });
+  const { data: infrastructureTypes } = useQuery({
+    queryKey: ['infrastructure'],
+    queryFn: () => masterTypeApiService.getAll('infrastructure', {})
+  });
   const { data: resourceTypes } = useQuery({
     queryKey: ['resource'],
     queryFn: () => masterTypeApiService.getAll('resource', {})
@@ -110,6 +114,37 @@ const ServerSideNavItems = () => {
         ];
   };
 
+  const infrastructureNavigation = (): NavigationItem[] => {
+    return infrastructureTypes?.length < 1
+      ? [
+          {
+            title: 'infrastructures',
+            icon: 'tabler:box-multiple',
+            path: '#',
+            action: 'view',
+            subject: 'infrastructure'
+          }
+        ]
+      : [
+          {
+            title: 'infrastructures',
+            icon: 'tabler:box-multiple',
+            action: 'view',
+            subject: 'infrastructure',
+            path: '/infrastructures',
+            children: infrastructureTypes?.payload?.map((type: MasterType) => {
+              return {
+                title: type.title,
+                action: 'view',
+                subject:
+                 'infrastructure',
+                path: `/infrastructures/${type.id}`
+              };
+            })
+          }
+        ];
+  };
+
   const resourceNavigation = (): NavigationItem[] => {
     return resourceTypes?.length < 1
       ? [
@@ -139,6 +174,7 @@ const ServerSideNavItems = () => {
           }
         ];
   };
+
 
   const documentNavigation = (): NavigationItem[] => {
     return documentTypes?.length < 1

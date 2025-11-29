@@ -79,9 +79,7 @@ const AclGuard = (props: AclGuardProps) => {
   // B. Loading/Authentication State
   if (auth.loading || isLoading) {
     return (
-      <BlankLayout>
-        <Spinner sx={{ height: '100%' }} />
-      </BlankLayout>
+        <Spinner />
     );
   }
 

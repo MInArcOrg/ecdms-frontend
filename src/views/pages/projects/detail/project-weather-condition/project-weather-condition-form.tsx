@@ -16,12 +16,12 @@ const WeatherConditionForm: React.FC<WeatherConditionFormProps> = ({ formik, pro
   return (
     <>
       <Box mb={2}>
-        <CustomTextBox fullWidth label={t('project.weather-condition.weather-type')} name="weather_type" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('project.other.weather-condition.weather-type')} name="weather_type" size="small" sx={{ mb: 2 }} />
       </Box>
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t('project.weather-condition.description')}
+          label={t('project.other.weather-condition.description')}
           name="description"
           size="small"
           multiline

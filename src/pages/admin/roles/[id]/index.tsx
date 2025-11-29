@@ -134,7 +134,7 @@ const RoleDetail = () => {
   }
 };
 RoleDetail.acl = {
-  action: 'read',
+  action: 'view',
   subject: 'role'
 };
 export default RoleDetail;

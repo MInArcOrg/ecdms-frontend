@@ -1,28 +1,33 @@
-import { Box } from '@mui/material';
 import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { projectReportingIds } from '../(subMenuItems)';
+import subMenuItems, { findSubMenuItem, projectReportingIds } from '../(subMenuItems)';
+import WeatherConditionList from 'src/views/pages/projects/detail/project-weather-condition';
+// Placeholder import, replace with actual component when available
 
-function ProjectPlanning() {
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), projectReportingIds.report.weatherCondition);
+
+const ActualStatusPage = () => {
   const router = useRouter();
-  const { id, typeId } = router.query;
+  const { id = '', typeId = '' } = router.query;
+
+  const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), projectReportingIds.report.weatherCondition);
+  menuItem;
 
   return (
-    <Box>
-      <ProjectLayout
-        activeMenuId={projectMenuIds.reporting}
-        activeSubMenuId={projectReportingIds.report.actualStatus}
-        subMenuItems={subMenuItems(id as string, typeId as string)}
-      >
-        <>actual status goes here</>
-      </ProjectLayout>
-    </Box>
+    <ProjectLayout
+      activeMenuId={projectMenuIds.railwayTrackInfrastructure}
+      activeSubMenuId={projectReportingIds.report.weatherCondition}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <WeatherConditionList projectId={String(id)} typeId={String(typeId)}  model={menuItem?.model||''}/>
+    </ProjectLayout>
   );
-}
-
-ProjectPlanning.acl = {
-  action: 'view',
-  subject: 'projectplanning'
 };
-export default ProjectPlanning;
+
+ActualStatusPage.acl = {
+  subject: defaultMenuItem?.model,
+  action: 'view'
+};
+
+export default ActualStatusPage;

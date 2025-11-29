@@ -40,12 +40,15 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: projectReportingIds.report.weatherCondition,
         title: 'project.navigation.submenu.reporting.report.weather-condition',
-        path: `/projects/${typeId}/details/${id}/reporting/report/weather-condition`
+        path: `/projects/${typeId}/details/${id}/reporting/report/weather-condition`,
+        model: 'weathercondition',
+        action: 'view'
       },
       {
         id: projectReportingIds.report.claim,
         title: 'project.navigation.submenu.reporting.report.claim',
-        path: `/projects/${typeId}/details/${id}/reporting/report/claim`
+        path: `/projects/${typeId}/details/${id}/reporting/report/claim`,
+        
       },
       {
         id: projectReportingIds.report.challenges,
@@ -65,5 +68,15 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
     ]
   }
 ];
+export const findSubMenuItem = (items: DetailSubMenuItem[], id: string) => {
+  for (const item of items) {
+    if (item.subItems) {
+      for (const subItem of item.subItems) {
+        if (subItem.id === id) return subItem;
+      }
+    }
+  }
+  return undefined;
+};
 
 export default subMenuItems;

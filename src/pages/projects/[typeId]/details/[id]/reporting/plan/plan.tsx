@@ -24,6 +24,6 @@ function ProjectPlanning() {
 
 ProjectPlanning.acl = {
   action: 'view',
-  subject: 'projectplanning'
+  subject: 'projectplan'
 };
 export default ProjectPlanning;

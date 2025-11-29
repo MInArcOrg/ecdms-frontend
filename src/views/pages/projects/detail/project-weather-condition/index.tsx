@@ -73,11 +73,11 @@ const WeatherConditionList: React.FC<WeatherConditionListProps> = ({ projectId }
 
   const mapWeatherConditionToDetailItems = (weatherCondition: WeatherCondition): { title: string; value: string }[] => [
     {
-      title: t('project.weather-condition.weather-type'),
+      title: t('project.other.weather-condition.weather-type'),
       value: weatherCondition?.weather_type || 'N/A'
     },
     {
-      title: t('project.weather-condition.description'),
+      title: t('project.other.weather-condition.description'),
       value: weatherCondition?.description || 'N/A'
     },
     {
@@ -105,13 +105,13 @@ const WeatherConditionList: React.FC<WeatherConditionListProps> = ({ projectId }
           data={mapWeatherConditionToDetailItems(selectedRow as WeatherCondition)}
           id={selectedRow?.id || ''}
           hasReference={false}
-          title={t('project.weather-condition.details')}
+          title={t('project.other.weather-condition.details')}
           fileType="weatherCondition"
         />
       )}
 
       <ItemsListing
-        title={t('project.weather-condition.title')}
+        title={t('project.other.weather-condition.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

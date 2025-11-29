@@ -108,7 +108,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: powerInfrastructureIds.miniGridSystems.miniGridStationConsumers,
         title: 'project.navigation.submenu.power-infrastructure.mini-grid-systems.mini-grid-station-consumers',
         path: `/projects/${typeId}/details/${id}/power-infrastructure/mini-grid-systems/mini-grid-station-consumers`,
-        model: 'minigridstationconsumers',
+        model: 'minigridstationconsumer',
         apiRoute: 'mini-grid-station-consumers'
       },
       {
