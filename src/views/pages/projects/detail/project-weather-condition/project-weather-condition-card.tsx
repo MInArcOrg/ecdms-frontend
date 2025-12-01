@@ -31,7 +31,7 @@ const WeatherConditionCard: React.FC<WeatherConditionCardProps> = ({ weatherCond
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {t('project.weather-condition.title')}
+              {t('project.other.weather-condition.title')}
             </Typography>
           </Typography>
         </Box>
@@ -40,10 +40,10 @@ const WeatherConditionCard: React.FC<WeatherConditionCardProps> = ({ weatherCond
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.weather-condition.weather-type')}: {weatherCondition.weather_type}
+            {t('project.other.weather-condition.weather-type')}: {weatherCondition.weather_type}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.weather-condition.description')}: {weatherCondition.description}
+            {t('project.other.weather-condition.description')}: {weatherCondition.description}
           </Typography>
         </Box>
       </CardContent>

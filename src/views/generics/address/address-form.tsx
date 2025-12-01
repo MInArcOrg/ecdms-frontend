@@ -1,18 +1,15 @@
-import React, { useEffect } from 'react';
-import { Box, Grid, FormControl, FormLabel, FormHelperText } from '@mui/material';
-import { FormikProps } from 'formik';
-import { useTranslation } from 'react-i18next';
+import { Box, FormControl, FormHelperText, FormLabel, Grid } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
-import { AddressType } from 'src/types/admin/address';
-import Address from 'src/types/general/address';
-import addressApiService from 'src/services/general/address-service';
+import { FormikProps } from 'formik';
+import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { dropDownConfig } from 'src/configs/api-constants';
 import countriesList from 'src/constants/countries';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
-import CustomSelectBox from 'src/views/shared/form/custom-select';
 import addressmasterApiService from 'src/services/admin/address-master-service';
-
-// --- Types & Interfaces ---
+import { AddressType } from 'src/types/admin/address';
+import Address from 'src/types/general/address';
+import CustomSelectBox from 'src/views/shared/form/custom-select';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface AddressFormProps {
   formik: FormikProps<Address>;
@@ -139,13 +136,19 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
       {/* --- COUNTRY --- */}
       <Box mb={2}>
         <FormControl fullWidth variant="outlined" sx={{ mb: 3 }}>
+          <FormLabel>{transl('address.form.country')}</FormLabel>
           <CustomSelectBox
-            options={countryOptions}
+            options={countriesList.map((country) => ({
+              value: country.title,
+              label: country.title
+            }))}
             name="country"
             label={transl('address.form.country')}
             placeholder={transl('address.form.country')}
             size="small"
             disableClearable
+            id="autocomplete-outlined"
+
           />
           {touched.country && errors.country && <FormHelperText error>{errors.country}</FormHelperText>}
         </FormControl>
@@ -156,7 +159,6 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
         {/* --- LEVEL 2: REGION vs CITY ADMIN --- */}
         <Grid item xs={6}>
           <CustomSelectBox
-            options={regions}
             fullWidth
             label={transl('address.form.state-region')}
             placeholder={transl('address.form.state-region')}
@@ -170,36 +172,6 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
 
         <Grid item xs={6}>
           <CustomSelectBox
-            options={cityAdmins}
-            fullWidth
-            label={transl('address.form.city_administration')}
-            placeholder={transl('address.form.city_administration')}
-            name="city_administration"
-            size="small"
-            sx={{ mb: 2 }}
-            // Disable if Region is selected
-            disabled={!values.country || !!values.region}
-          />
-        </Grid>
-
-        {/* --- LEVEL 3: ZONE (Only if Region selected) --- */}
-        <Grid item xs={6}>
-          <CustomSelectBox
-            options={zones}
-            fullWidth
-            label={transl('address.form.zone')}
-            placeholder={transl('address.form.zone')}
-            name="zone"
-            size="small"
-            sx={{ mb: 2 }}
-            disabled={!values.region || zones.length === 0}
-          />
-        </Grid>
-
-        {/* --- CITY (Depends on Zone OR Region) --- */}
-        <Grid item xs={6}>
-          <CustomSelectBox
-            options={cities}
             fullWidth
             label={transl('address.form.city')}
             placeholder={transl('address.form.city')}
@@ -214,7 +186,11 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
         {/* --- SUB CITY (Depends on City OR City Admin) --- */}
         <Grid item xs={6}>
           <CustomSelectBox
-            options={subcities}
+            options={[
+              { value: 'subcity1', label: 'Subcity 1' },
+              { value: 'subcity2', label: 'Subcity 2' },
+              { value: 'subcity3', label: 'Subcity 3' },
+            ]}
             fullWidth
             label={transl('address.form.subcity')}
             placeholder={transl('address.form.subcity')}

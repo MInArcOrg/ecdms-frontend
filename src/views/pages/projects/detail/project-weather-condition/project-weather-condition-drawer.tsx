@@ -53,11 +53,11 @@ const WeatherConditionDrawer: React.FC<WeatherConditionDrawerType> = (props) => 
   };
 
   return (
-    <CustomSideDrawer title={`project.weather-condition.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`project.other.weather-condition.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.weather-condition.${isEdit ? 'edit' : 'create'}`}
+          title={`project.other.weather-condition.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={weatherCondition}

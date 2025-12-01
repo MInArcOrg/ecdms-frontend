@@ -10,6 +10,8 @@ import { Note } from 'src/types/general/note';
 import { IApiResponse } from 'src/types/requests';
 import { parseError } from 'src/utils/parse/clean-error';
 import * as Yup from 'yup';
+import Can from 'src/layouts/components/acl/Can';
+
 
 interface ActionFormProps {
   actionType: string;
@@ -118,7 +120,7 @@ const ActionForm: React.FC<ActionFormProps> = ({ actionType, model_id, model, re
   //     alert('Could not upload the file!');
   //   }
   // };
-
+console.log('actionType.toLocaleLowerCase',actionType.toLocaleLowerCase(),model)
   return (
     <>
       <form
@@ -146,6 +148,7 @@ const ActionForm: React.FC<ActionFormProps> = ({ actionType, model_id, model, re
             <FormHelperText error>{validation.errors.description}</FormHelperText>
           )}
         </FormControl>
+        <Can do={actionType}  on={model.toLocaleLowerCase()}>
         <LoadingButton
           variant="outlined"
           color="primary"
@@ -156,9 +159,12 @@ const ActionForm: React.FC<ActionFormProps> = ({ actionType, model_id, model, re
         >
           {actionType}
         </LoadingButton>
+        </Can>
+        <Can do={actionType}  on={model.toLocaleLowerCase()}>
         <Button variant="outlined" color="error" onClick={rejectModel}>
           Reject
         </Button>
+        </Can>
       </form>
       <Backdrop
         open={actionLoading || actionLoading}

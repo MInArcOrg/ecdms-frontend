@@ -4,7 +4,7 @@ import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { projectReportingIds } from '../(subMenuItems)';
 
-function ProjectPlanning() {
+function ProjectReport() {
   const router = useRouter();
   const { id, typeId } = router.query;
 
@@ -21,8 +21,8 @@ function ProjectPlanning() {
   );
 }
 
-ProjectPlanning.acl = {
+ProjectReport.acl = {
   action: 'view',
-  subject: 'projectplanning'
+  subject: 'projectplan'
 };
-export default ProjectPlanning;
+export default ProjectReport;
