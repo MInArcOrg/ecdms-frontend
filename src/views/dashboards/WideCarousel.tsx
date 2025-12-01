@@ -36,7 +36,11 @@ const slides = [
 ]
 
 
-const WideCarousel: React.FC = () => {
+interface WideCarouselProps {
+  overlay?: React.ReactNode
+}
+
+const WideCarousel: React.FC<WideCarouselProps> = ({ overlay }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -49,7 +53,7 @@ const WideCarousel: React.FC = () => {
   } as const
 
   return (
-    <Card>
+    <Card sx={{ position: 'relative' }}>
       <CardContent sx={{ p: 0 }}>
         <Slider {...settings}>
           {slides.map((slide) => (
@@ -72,16 +76,14 @@ const WideCarousel: React.FC = () => {
                   backdropFilter: 'blur(2px)'
                 }}
               >
-                <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                  {slide.title}
-                </Typography>
-                <Typography variant="body2" sx={{ opacity: 0.9 }}>
-                  {slide.subtitle}
-                </Typography>
+             
               </Box>
             </Box>
           ))}
         </Slider>
+        {overlay ? (
+          <Box sx={{ position: 'absolute', left: 20, bottom: -36, zIndex: 6 }}>{overlay}</Box>
+        ) : null}
       </CardContent>
     </Card>
   )

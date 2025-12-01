@@ -91,7 +91,7 @@ const usePaginatedFetch = <T,>({ queryKey, fetchFunction, initialQueryParams = d
   // useEffect(() => {
   //     refetch();
   // }, [queryParams]);
-
+  console.log('page changed',data);
   return {
     data,
     isLoading,

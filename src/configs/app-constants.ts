@@ -127,7 +127,8 @@ export const appModulesWithIds: { id: string; name: string; flags: { id: string;
     id: 'resource',
     name: 'Resource',
     flags: [
-
+      { id: 'RESOURCE', name: 'RESOURCE' },
+      { id: 'PROFESSIONAL', name: 'PROFESSIONAL' }
     ]
   },
   {

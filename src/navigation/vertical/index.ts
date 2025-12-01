@@ -21,13 +21,7 @@ const navigation = (): VerticalNavItemsType => {
       action: 'view',
       subject: 'department'
     },
-    {
-      title: 'navigation.address',
-      icon: 'tabler:location',
-      path: '/address-master',
-      action: 'view',
-      subject: 'addressmaster'
-    },
+ 
     {
       title: 'navigation.roles',
       icon: 'tabler:settings',
@@ -77,13 +71,13 @@ const navigation = (): VerticalNavItemsType => {
           action: 'view',
           subject: 'documentmasterdata'
         },
-         {
-      title: 'navigation.address',
-      icon: 'tabler:location',
-      path: '/address-master',
-      action: 'view',
-      subject: 'addressmasterdata'
-    },
+        {
+          title: 'navigation.address',
+          icon: 'tabler:location',
+          path: '/address-master',
+          action: 'view',
+          subject: 'addressmasterdata'
+        },
         {
           title: 'navigation.master-data.general',
           path: '/master-data/general',
