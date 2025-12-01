@@ -8,14 +8,14 @@ import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const permissionApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest('/permissions', params)
+    buildGetRequest('/departments/permissions', params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/permissions/${idx}`, params)
+    buildGetRequest(`/departments/permissions/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
@@ -23,21 +23,21 @@ const permissionApiService = {
 
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
-      .delete(`/permissions/${idx}`)
+      .delete(`/departments/permissions/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   create: (body: { data: permission; files: any[] }): Promise<IApiResponse> =>
-    buildPostRequest('/permissions', body, false)
+    buildPostRequest('/departments/permissions', body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   update: (id: string, body: { data: permission; files: any[] }): Promise<IApiResponse> =>
-    buildPutRequest(`/permissions/${id}`, body)
+    buildPutRequest(`/departments/permissions/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
@@ -49,7 +49,7 @@ const permissionApiService = {
       .catch((error: any) => {
         throw error;
       })
-    
+
 };
 
 export default permissionApiService;

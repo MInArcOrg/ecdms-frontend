@@ -45,25 +45,27 @@ const AclGuard = (props: AclGuardProps) => {
 
   // 1. FETCH PERMISSIONS VIA useQuery
   const { data: ability, isLoading } = useQuery<AppAbility>({
-    queryKey: ['userPermissions', userId], 
+    queryKey: ['userPermissions', userId],
     enabled: queryEnabled,
-    staleTime: 5 * 60 * 1000, 
+    staleTime: 5 * 60 * 1000,
     queryFn: async () => {
-      const response = await permissionApiService.getUserPermission({}); 
+      const response = await permissionApiService.getUserPermission({});
       // Ensure fetchedRules is an array 
-      let fetchedRules = response.payload || []; 
+      let fetchedRules = response.payload || [];
 
       if (!Array.isArray(fetchedRules)) {
-          console.warn("Permission API did not return an array. Using empty array.");
-          fetchedRules = [];
+        console.warn("Permission API did not return an array. Using empty array.");
+        fetchedRules = [];
       }
-      
+
       // ❌ REMOVED: Role-based check is gone. 
       // Permissions (including 'manage: all', if granted) must come from the API payload.
 
       // Creates the CASL ability instance from the rules
       // Casting is necessary to satisfy TypeScript's strict type checking between useQuery and CASL.
-      return createMongoAbility(fetchedRules) as AppAbility; 
+      fetchedRules.push({ action: 'view', subject: 'Dashboard' });
+      fetchedRules.push({ action: 'manage', subject: 'all' })
+      return createMongoAbility(fetchedRules) as AppAbility;
     },
   });
 
@@ -88,14 +90,14 @@ const AclGuard = (props: AclGuardProps) => {
   // C. Not Logged In (For Protected Routes)
   if (!auth.user) {
     // Redirect to login page
-    router.replace('/login'); 
-    return <Spinner />; 
+    router.replace('/login');
+    return <Spinner />;
   }
 
   // D. Authorized
   // Check if the loaded ability (from API rules) allows the required action/subject 
   // (which is defined by Component.acl OR the defaultACLObj: {manage: all}).
-  if(ability && aclAbilities.action=='manage' && aclAbilities.subject==='all'){
+  if (ability && aclAbilities.action == 'manage' && aclAbilities.subject === 'all') {
     return (
       <AbilityContext.Provider value={ability}>
         {children}
