@@ -38,6 +38,7 @@ const ServerSideNavItems = () => {
       ...VerticalNavItems(),
       ...stakeNavigation(),
       ...projectNavigation(),
+      ...infrastructureNavigation(),
       ...resourceNavigation(),
       ...documentNavigation(),
       ...vertical
@@ -121,8 +122,8 @@ const ServerSideNavItems = () => {
             title: 'infrastructures',
             icon: 'tabler:box-multiple',
             path: '#',
-            action: 'view',
-            subject: 'infrastructure'
+            action: "view",
+            subject: "infrastructure"
           }
         ]
       : [

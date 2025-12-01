@@ -88,19 +88,8 @@ const {data:departmentData}=useQuery({
   return (
     <ApexChartWrapper>
       <Grid container spacing={6}>
-        <Grid item xs={12} md={8}>
-          <WideCarousel overlay={<HeroProfileOverlay avatarSrc={'/images/logos/logo-2.png'} />} />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Card sx={{ height: '100%' }}>
-            <CardContent sx={{ display: 'flex', alignItems: 'flex-end', height: '100%' }}>
-              <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                {departmentData?.payload?.name
-                  ? `${departmentData?.payload?.name} Department`
-                  : 'Ethiopian Construction data compilation Department'}
-              </Typography>
-            </CardContent>
-          </Card>
+        <Grid item xs={12}>
+          <WideCarousel overlay={<HeroProfileOverlay department={departmentData?.payload} />} />
         </Grid>
 
         <Grid item xs={12} md={3}>

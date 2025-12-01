@@ -17,7 +17,6 @@ const HeroProfileCard: React.FC<HeroProfileCardProps> = ({
     <Card sx={{ overflow: 'hidden' }}>
       <Box
         sx={{
-          height: 147 ,
           background: 'linear-gradient(135deg, #f2c6ff 0%, #b9d6ff 100%)'
         }}
       />
@@ -25,14 +24,14 @@ const HeroProfileCard: React.FC<HeroProfileCardProps> = ({
         <Avatar
           alt="Profile"
           sx={{
-            width: 88,
-            height: 88,
+            width: 200,
+            height: 200,
             position: 'absolute',
             top: 20,
             left: 5,
             border: (theme) => `4px solid ${theme.palette.background.paper}`,
             boxShadow: 3
-          }}
+          }}  
         />
         <Box sx={{ ml: 20 }}>
           <Typography variant="h6" sx={{ mb: 1 }}>

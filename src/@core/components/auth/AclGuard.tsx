@@ -58,10 +58,10 @@ const AclGuard = (props: AclGuardProps) => {
         fetchedRules = [];
       }
       fetchedRules.push(
-      //   {
-      //   action: 'manage',
-      //   subject: 'all',
-      // },
+        {
+        action: 'manage',
+        subject: 'all',
+      },
        {
         action:'view',
         subject:'dashboard'
@@ -89,6 +89,12 @@ const AclGuard = (props: AclGuardProps) => {
   }
 
   // B. Loading/Authentication State
+  if(auth.loading){
+    console.log('loading auth')
+  }else{
+    console.log('not loading auth')
+  }
+
   if (auth.loading || isLoading) {
     return (
         <Spinner />

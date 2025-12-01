@@ -140,17 +140,35 @@ export const appModulesWithIds: { id: string; name: string; flags: { id: string;
     ]
   },
   {
-    id: 'infrastructure', name: 'Infrastructure', flags: [{
-      id: 'ELECTRIC',
-      name: 'Electric'
-    },
-    {
-      id: 'BUILDING',
-      name: 'Building'
-    },
-    {
-      id: 'AIRFIELD_AIRPORT',
-      name: 'Airfield/Airport'
-    },]
+    id: 'infrastructure', name: 'Infrastructure', flags: [
+      {
+        id: 'ELECTRIC',
+        name: 'Electric'
+      },
+      {
+        id: 'INFRASTRUCTURE',
+        name: 'Infrastructure'
+      },
+      {
+        id: 'AIRFIELD_AIRPORT',
+        name: 'Airfield/Airport'
+      },
+      {
+        id: 'RAILWAY',
+        name: 'Railway'
+      },
+      {
+        id: 'TELECOMMUNICATION',
+        name: 'Telecommunication'
+      },
+      {
+        id: 'ROAD',
+        name: 'Road'
+      },
+      {
+        id: 'WATER_INFRASTRUCTURE',
+        name: 'Water Infrastructure'
+      }
+    ]
   }
 ];

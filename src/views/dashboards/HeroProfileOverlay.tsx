@@ -18,14 +18,20 @@ const HeroProfileOverlay: React.FC<HeroProfileOverlayProps> = ({
       <Avatar
         src={avatarSrc}
         sx={{
-          width: 80,
-          height: 80,
+          width: 130,
+          height: 130,
           boxShadow: 6,
           border: '4px solid',
           borderColor: 'background.paper',
           bgcolor: 'background.paper'
         }}
       />
+       <Box sx={{ textAlign:'center' }}>
+                <Typography variant="h4" sx={{ mb: 1 }}>
+                  {department?.name || 'Department'}
+                </Typography>
+               
+              </Box>
     </Box>
   )
 }

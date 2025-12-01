@@ -42,26 +42,26 @@ interface WideCarouselProps {
 
 const WideCarousel: React.FC<WideCarouselProps> = ({ overlay }) => {
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 3000,
     arrows: false
   } as const
 
   return (
     <Card sx={{ position: 'relative' }}>
-      <CardContent sx={{ p: 0 }}>
+      <CardContent 
+             sx={{ width: '100%', height: 360, objectFit: 'cover' }}
+      >
         <Slider {...settings}>
-          {slides.map((slide) => (
-            <Box key={slide.title} sx={{ position: 'relative' }}>
+          {[1, 2, 4, 8].map((slide) => (
+            <Box key={slide} sx={{ position: 'relative' }}>
               <Box
                 component="img"
-                src={slide.img}
-                alt={slide.title}
+                src={'/images/slider/'+slide.toString()+'.jpg'}
                 sx={{ width: '100%', height: 240, objectFit: 'cover' }}
               />
               <Box
@@ -82,7 +82,7 @@ const WideCarousel: React.FC<WideCarouselProps> = ({ overlay }) => {
           ))}
         </Slider>
         {overlay ? (
-          <Box sx={{ position: 'absolute', left: 20, bottom: -36, zIndex: 6 }}>{overlay}</Box>
+          <Box sx={{ position: 'absolute', left: 35, bottom: 23, zIndex: 6 }}>{overlay}</Box>
         ) : null}
       </CardContent>
     </Card>
