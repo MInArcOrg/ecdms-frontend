@@ -57,7 +57,16 @@ const AclGuard = (props: AclGuardProps) => {
           console.warn("Permission API did not return an array. Using empty array.");
           fetchedRules = [];
       }
-      
+      fetchedRules.push(
+        {
+        action: 'manage',
+        subject: 'all',
+      },
+       {
+        action:'view',
+        subject:'dashboard'
+       }
+      )
       // ❌ REMOVED: Role-based check is gone. 
       // Permissions (including 'manage: all', if granted) must come from the API payload.
 

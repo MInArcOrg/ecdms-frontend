@@ -1,73 +1,81 @@
-import { useState } from 'react';
+// components/UserList.tsx
+import React, { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import userApiService from 'src/services/admin/user-service';
-import User from 'src/types/admin/user';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
-import UserCard from 'src/views/admin/user/list/user-card';
-import UserDrawer from 'src/views/admin/user/list/user-drawer';
-import { userColumns } from 'src/views/admin/user/list/user-row-column';
 import ItemsListing from 'src/views/shared/listing';
 
-const UserList = ({}) => {
-  const [userDrawerOpen, setAddUserOpen] = useState<boolean>(false);
-  const [editableUser, setEditableUser] = useState<User>();
+import userApiService from 'src/services/admin/user-service';
+import userService from 'src/services/general/project/soil-type-master-service';
+import User from 'src/types/admin/user';
+import UserDrawer from 'src/views/admin/user/list/user-drawer';
+import { userColumns } from 'src/views/admin/user/list/user-row-column';
 
+const UserList = () => {
+  const [selectedRow, setSelectedRow] = useState<User | null>(null);
   const { t } = useTranslation();
-  // Access the hook methods and state
-  const fetchUsers = (params: GetRequestParam): Promise<IApiResponse<User[]>> => {
+  const fetchUser = (params: GetRequestParam): Promise<IApiResponse<User[]>> => {
     return userApiService.getAll(params);
   };
+  const [showDrawer, setShowDrawer] = useState<boolean>();
 
   const {
     data: users,
     isLoading,
     pagination,
+    handlePageChange,
     refetch
   } = usePaginatedFetch<User[]>({
-    queryKey: ['system-users'],
-    fetchFunction: fetchUsers
+    queryKey: ['users'],
+    fetchFunction: fetchUser
   });
-  const toggleUserDrawer = () => {
-    setEditableUser({} as User);
-    setAddUserOpen(!userDrawerOpen);
-  };
-  async function handleDelete(id: string): Promise<void> {
-    await userApiService.delete(id);
+  const handleDelete = async (id: string) => {
+    await userService.delete(id);
     refetch();
-  }
-  const handleEdit = (user: User) => {
-    toggleUserDrawer();
-    setEditableUser(user);
+  };
+
+  const toggleDrawer = () => {
+    setSelectedRow({} as User);
+    setShowDrawer(!showDrawer);
+  };
+
+  const handleEdit = (generalMaster: User) => {
+    toggleDrawer();
+    setSelectedRow(generalMaster);
   };
   return (
-    <>
+    <Fragment>
+      {showDrawer && <UserDrawer departmentId='' open={showDrawer} toggle={toggleDrawer} user={selectedRow as User} refetch={refetch} />}
+
       <ItemsListing
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
+        title={t(`department.user.title`)}
         isLoading={isLoading}
-        onCreateClick={toggleUserDrawer}
-        fetchDataFunction={fetchUsers}
         tableProps={{
           headers: userColumns(handleEdit, handleDelete, t, refetch)
         }}
-        ItemViewComponent={({ data }) => <UserCard user={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />}
-        items={users || []}
         createActionConfig={{
           ...defaultCreateActionConfig,
-          onClick: toggleUserDrawer,
+          onClick: toggleDrawer,
           onlyIcon: false,
-          permission: { action: 'create', subject: 'user' }
+          permission: {
+            action: 'create',
+            subject: `user`
+          }
         }}
+        fetchDataFunction={refetch}
+        items={users || []}
+        onPaginationChange={handlePageChange}
       />
-
-      {userDrawerOpen && (
-        <UserDrawer refetch={refetch} open={userDrawerOpen} toggle={toggleUserDrawer} user={editableUser as User} departmentId={''} />
-      )}
-    </>
+    </Fragment>
   );
 };
-UserList.authGuard = true;
+UserList.acl = {
+  subject:'user',
+  action:'view'
+}
+
 export default UserList;
