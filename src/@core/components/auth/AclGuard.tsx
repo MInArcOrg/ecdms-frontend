@@ -58,10 +58,6 @@ const AclGuard = (props: AclGuardProps) => {
         fetchedRules = [];
       }
       fetchedRules.push(
-        {
-        action: 'manage',
-        subject: 'all',
-      },
        {
         action:'view',
         subject:'dashboard'
