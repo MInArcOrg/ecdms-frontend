@@ -8,7 +8,7 @@ import { permissionColumns } from 'src/views/admin/permissions/permission-row-co
 
 import ItemsListing from 'src/views/shared/listing';
 
-const PermissionList = ({}) => {
+const PermissionList = ({ }) => {
   const [permissionDrawerOpen, setAddPermissionOpen] = useState<boolean>(false);
   const [editablePermission, setEditablePermission] = useState<Permission>();
   const handleEdit = (permission: Permission) => {
@@ -53,5 +53,9 @@ const PermissionList = ({}) => {
       )}
     </>
   );
+};
+PermissionList.acl = {
+  action: 'view',
+  subject: 'permission'
 };
 export default PermissionList;

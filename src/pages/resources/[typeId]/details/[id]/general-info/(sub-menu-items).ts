@@ -21,30 +21,42 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
   {
     id: 'GENERAL_INFO_SECTION',
     title: 'resource.navigation.submenu.general-info.general-info-section',
+    subject: 'resource',
+    action: 'view',
     subItems: [
       {
         id: generalInfoMenuIds.generalInfo.generalInfo,
         title: 'resource.navigation.submenu.general-info.general-info', // locale key
         path: `/resources/${typeId}/details/${id}/general-info/general-info/general-info`,
-        type: [resourceTypesMaster.material, resourceTypesMaster.machineryAndEquipment]
+        type: [resourceTypesMaster.material, resourceTypesMaster.machineryAndEquipment],
+        subject: 'resource',
+        action: 'view',
+        model: 'resource'
       },
       {
         id: generalInfoMenuIds.generalInfo.professionalRegistration,
         title: 'resource.navigation.submenu.general-info.professional-registration',
         path: `/resources/${typeId}/details/${id}/general-info/general-info/professional-registration`,
-        type: [resourceTypesMaster.professional]
+        type: [resourceTypesMaster.professional],
+        subject: 'resource',
+        action: 'view'
       },
       {
         id: generalInfoMenuIds.generalInfo.address,
         title: 'resource.navigation.submenu.general-info.address',
         path: `/resources/${typeId}/details/${id}/general-info/general-info/address`,
-        type: [resourceTypesMaster.professional]
+        type: [resourceTypesMaster.professional],
+        subject: 'resource',
+        action: 'view',
+        model: 'resource'
       },
       {
         id: generalInfoMenuIds.generalInfo.contact,
         title: 'resource.navigation.submenu.general-info.contact',
         path: `/resources/${typeId}/details/${id}/general-info/general-info/contact`,
-        type: [resourceTypesMaster.professional]
+        type: [resourceTypesMaster.professional],
+        subject: 'resource',
+        action: 'view'
       },
       {
         id: generalInfoMenuIds.generalInfo.contactPerson,
@@ -56,19 +68,25 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: generalInfoMenuIds.generalInfo.additionalInfo,
         title: 'resource.navigation.submenu.general-info.additional-info',
         path: `/resources/${typeId}/details/${id}/general-info/general-info/additional-info`,
-        type: [resourceTypesMaster.professional]
+        type: [resourceTypesMaster.professional],
+        subject: 'professionaladditionalinfo',
+        action: 'view'
       },
       {
         id: generalInfoMenuIds.generalInfo.brands,
         title: 'resource.navigation.submenu.general-info.brands',
         path: `/resources/${typeId}/details/${id}/general-info/general-info/brands`,
-        type: [resourceTypesMaster.material, resourceTypesMaster.machineryAndEquipment]
+        type: [resourceTypesMaster.material, resourceTypesMaster.machineryAndEquipment],
+        subject: 'resourcebrand',
+        action: 'view'
       },
       {
         id: generalInfoMenuIds.generalInfo.specification,
         title: 'resource.navigation.submenu.general-info.specification',
         path: `/resources/${typeId}/details/${id}/general-info/general-info/specification`,
-        type: [resourceTypesMaster.material, resourceTypesMaster.machineryAndEquipment]
+        type: [resourceTypesMaster.material, resourceTypesMaster.machineryAndEquipment],
+        subject: 'resourcespecification',
+        action: 'view'
       }
     ]
   }
