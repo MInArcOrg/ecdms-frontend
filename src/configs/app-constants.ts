@@ -133,10 +133,10 @@ export const appModulesWithIds: { id: string; name: string; flags: { id: string;
   },
   {
     id: 'document', name: 'Document', flags: [
-      { id: 'LEGAL_FRAMEWORK', name: 'LEGAL_FRAMEWORK' },
-      { id: 'RESEARCH', name: 'RESEARCH' },
-      { id: 'REFERENCE', name: 'REFERENCE' },
-      { id: 'BOOK', name: 'BOOK' }
+      {
+        id: 'DOCUMENT',
+        name: 'Document'
+      }
     ]
   },
   {
