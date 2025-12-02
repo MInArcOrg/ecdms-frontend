@@ -133,7 +133,7 @@ const ServerSideNavItems = () => {
             action: 'view',
             subject: 'infrastructure',
             path: '/infrastructure',
-            children: infrastructureTypes?.payload?.map((type: MasterType) => {
+            children: projectTypes?.payload?.map((type: MasterType) => {
               return {
                 title: type.title,
                 action: 'view',
