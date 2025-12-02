@@ -2390,8 +2390,8 @@
         "details": {
           "name": "Name",
           "specifications": "Specifications",
-          "northing": "Northing",
-          "easting": "Easting",
+          "northing": "Y Coordinate",
+          "easting": "X Coordinate",
           "revision-no": "Revision Number",
           "energy-source": "Energy Source",
           "major-operator": "Major Operator",
@@ -2499,8 +2499,8 @@
           "input-voltage": "Input Voltage",
           "output-current": "Output Current",
           "output-voltage": "Output Voltage",
-          "northing": "Northing",
-          "easting": "Easting"
+          "northing": "Y Coordinate",
+          "easting": "X Coordinate"
         }
       },
       "transmission-line": {
@@ -4512,8 +4512,8 @@
       "street": "Street",
       "block_number": "Block Number",
       "house_number": "House Number",
-      "northing": "Northing",
-      "easting": "Easting"
+      "northing": "Y Coordinate",
+      "easting": "X Coordinate"
     }
   },
   "login": {
@@ -5184,8 +5184,8 @@
       "street": "Street",
       "block_number": "Block Number",
       "house_number": "House Number",
-      "northing": "Northing",
-      "easting": "Easting"
+      "northing": "Y Coordinate",
+      "easting": "X Coordinate"
     }
   },
   "resources": {
@@ -5218,8 +5218,8 @@
         "street": "Street",
         "block_no": "Block Number",
         "website": "Website",
-        "northing": "Northing",
-        "easting": "Easting"
+        "northing": "Y Coordinate",
+        "easting": "X Coordinate"
       },
       "contact": {
         "title": " Contact",
