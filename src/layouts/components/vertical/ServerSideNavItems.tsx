@@ -119,7 +119,7 @@ const ServerSideNavItems = () => {
     return infrastructureTypes?.length < 1
       ? [
           {
-            title: 'infrastructures',
+            title: 'infrastructure',
             icon: 'tabler:box-multiple',
             path: '#',
             action: "view",
@@ -128,18 +128,18 @@ const ServerSideNavItems = () => {
         ]
       : [
           {
-            title: 'infrastructures',
+            title: 'infrastructure',
             icon: 'tabler:box-multiple',
             action: 'view',
             subject: 'infrastructure',
-            path: '/infrastructures',
+            path: '/infrastructure',
             children: infrastructureTypes?.payload?.map((type: MasterType) => {
               return {
                 title: type.title,
                 action: 'view',
                 subject:
                  'infrastructure',
-                path: `/infrastructures/${type.id}`
+                path: `/infrastructure/${type.id}`
               };
             })
           }
