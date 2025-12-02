@@ -19,7 +19,7 @@ const AddressDrawer = (props: AddressDrawerType) => {
   const validationSchema = yup.object().shape({
     country: yup.string().max(255).required('Country is required'),
     region: yup.string().max(255).nullable(),
-    city: yup.string().max(255).required('City is required'),
+    city: yup.string().max(255),
     northing: yup.number().required('Northing is required'),
     easting: yup.number().required('Easting is required'),
     subcity: yup.string().max(255).nullable(),

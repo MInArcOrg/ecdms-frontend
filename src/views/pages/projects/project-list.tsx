@@ -31,8 +31,8 @@ function ProjectList() {
   };
   const {data:type,isLoading:typeIsLoading}=useQuery(
     {
-      queryKey:['project-type',String(typeId)],
-      queryFn:()=>masterTypeApiService.getOne('project',String(typeId),{}),
+      queryKey:['stakeholder-type',String(typeId)],
+      queryFn:()=>masterTypeApiService.getOne('stakeholder',String(typeId),{}),
       enabled:!!typeId
     }
   )
