@@ -16,7 +16,11 @@ import { projectColumns } from './project-row';
 import { useQuery } from '@tanstack/react-query';
 import masterTypeApiService from 'src/services/master-data/master-type-service';
 
-function ProjectList() {
+function ProjectList({
+  module = 'project'
+}: {
+  module?: 'project' | 'infrastructure'
+}) {
   const [showDrawer, setShowDrawer] = useState(false);
 
   const [selectedRow, setSelectedRow] = useState<Project | null>(null);
@@ -31,8 +35,8 @@ function ProjectList() {
   };
   const {data:type,isLoading:typeIsLoading}=useQuery(
     {
-      queryKey:['stakeholder-type',String(typeId)],
-      queryFn:()=>masterTypeApiService.getOne('stakeholder',String(typeId),{}),
+      queryKey:[module+'-project-type',String(typeId)],
+      queryFn:()=>masterTypeApiService.getOne(module,String(typeId),{}),
       enabled:!!typeId
     }
   )
