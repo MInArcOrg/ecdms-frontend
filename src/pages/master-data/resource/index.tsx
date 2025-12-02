@@ -2,8 +2,13 @@
 import React from 'react';
 import MasterDataDetail from 'src/views/pages/master/master-data';
 
-const MasterDataDetailPage: React.FC = () => {
+const MasterDataDetailPage = () => {
   return <MasterDataDetail model="resource" />;
+};
+
+MasterDataDetailPage.acl = {
+  action: 'view',
+  subject: 'resourcemasterdata'
 };
 
 export default MasterDataDetailPage;
