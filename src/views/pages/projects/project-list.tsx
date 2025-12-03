@@ -46,10 +46,14 @@ function ProjectList({
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
+    handleExport,
   } = usePaginatedFetch<Project[]>({
     queryKey: ['projects', String(typeId)],
-    fetchFunction: fetchProjects
+    fetchFunction: fetchProjects,
+    exportApiCall(exportParams) {
+      return projectApiService.export({ ...exportParams });
+    },
   });
 
   const toggleDrawer = () => {
@@ -96,6 +100,20 @@ function ProjectList({
               subject: 'project'
             }
           }}
+          features={
+            {
+               export: {
+                  onExport: handleExport,
+                  enabled: true,
+                  availableFields: [
+                  ],
+                  permission: {
+                    action: "view",
+                    subject: "project",
+                  }
+                }
+            }
+          }
           fetchDataFunction={refetch}
           tableProps={{
             headers: projectColumns(handleEdit, handleDelete, t, refetch, String(typeId))

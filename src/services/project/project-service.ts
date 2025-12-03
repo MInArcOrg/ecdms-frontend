@@ -40,16 +40,14 @@ const projectApiService = {
       .catch((error: any) => {
         throw error;
       }),
-
   update: (id: string, body: IApiPayload<Project>): Promise<IApiResponse> =>
     buildPutRequest(`/projects/projects/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
-
-  getProjectGeneralInformation: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/projects/project-general-information/${idx}`, params)
+  export: (params: GetRequestParam): Promise<Blob> =>
+    buildGetRequest(`/generics/project-export`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;

@@ -17,6 +17,10 @@ export const buildGetRequest = async (url: string, params: GetRequestParam | nul
     if (params?.sorting !== null) {
       requestParams.sorting = params?.sorting;
     }
+    
+    if (params?.export !== null) {
+      requestParams.export = params?.export;
+    }
 
     const response = await axiosServices.get(url, {
       params: requestParams

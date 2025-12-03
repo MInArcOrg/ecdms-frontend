@@ -48,6 +48,13 @@ const stakeholderApiService = {
         throw error;
       }),
 
+  export: (params: GetRequestParam): Promise<IApiResponse> =>
+    buildGetRequest(`/generics/stakeholder-export`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
+
   update: (id: string, body: IApiPayload<Stakeholder>): Promise<IApiResponse> =>
     buildPutRequest(`/stakeholders/stakeholders/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)

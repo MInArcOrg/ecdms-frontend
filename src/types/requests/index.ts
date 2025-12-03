@@ -4,6 +4,7 @@ export type GetRequestParam = {
   pagination?: { pageSize: number; page: number } | null;
   filter?: any;
   sorting?: { property: string; direction: string } | null;
+  export?: ExportParam | null;
 };
 
 export const defaultGetRequestParam: GetRequestParam = {
@@ -11,7 +12,11 @@ export const defaultGetRequestParam: GetRequestParam = {
   filter: undefined,
   sorting: undefined
 };
-
+export type ExportParam = {
+  format: 'csv' | 'excel' | 'pdf' | string;
+  fields?: string[];
+  currentPageOnly?: boolean;
+};
 export type PostRequestParam = {
   files?: { type: string; file: File }[] | null;
   data?: any | null;

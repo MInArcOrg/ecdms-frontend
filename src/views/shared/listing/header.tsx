@@ -13,26 +13,42 @@ import { useTranslation } from 'react-i18next';
 import { CreateActionConfig } from 'src/types/general/listing';
 import { AbilityContext } from 'src/layouts/components/acl/Can';
 import { IconButton, Typography } from '@mui/material';
+import ExportComponentOption, { ExportConfigValues, ExportFieldOption } from './export';
 
 interface ListHeaderProps {
   createActionConfig: CreateActionConfig;
   hasFilter: boolean;
   hasSearch: boolean;
-  hasExport: boolean;
   handleFilter: (val: { [key: string]: any }) => void;
+  export?: {
+        enabled: boolean;
+        onExport?: (exportConfig: {
+          export: ExportConfigValues;
+        }) => Promise<void>;
+        availableFields?: ExportFieldOption[];
+        permission: {
+          action: string;
+          subject: string;
+        };
+  };
   FilterComponentItems?: React.ComponentType<any>;
   searchKeys: string[];
   title: string;
 }
 
 const ListHeader = (props: ListHeaderProps) => {
+
+  const {export:exportFeature}=props
   // ** Props
   const [filterOpen, setFilterOpen] = useState<boolean>(false);
   const toggleFilter = () => {
     setFilterOpen(!filterOpen);
   };
   const { t: transl } = useTranslation();
-
+  const [exportOpen, setExportOpen] = useState<boolean>(false);
+  const toggleExport = () => {
+    setExportOpen(!exportOpen);
+  };
   const [searchTerm, setSearchTerm] = useState('');
   const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
   const ability = useContext(AbilityContext);
@@ -59,6 +75,22 @@ const ListHeader = (props: ListHeaderProps) => {
 
     setTimerId(newTimerId);
   };
+  console.log('export feature',exportFeature)
+   const handleExportSubmit = (exportConfig: {
+    format: string;
+    fields: string[];
+    currentPageOnly: boolean;
+  }) => {
+    if (exportFeature?.onExport) {
+      exportFeature.onExport({
+        export: {
+          format: exportConfig.format,
+          fields: exportConfig.fields,
+          currentPageOnly: exportConfig.currentPageOnly,
+        },
+      });
+    }
+  };
   return (
     <Fragment>
       {props.FilterComponentItems && (
@@ -67,6 +99,15 @@ const ListHeader = (props: ListHeaderProps) => {
           toggle={toggleFilter}
           handleFilter={props.handleFilter}
           FilterComponentItems={props.FilterComponentItems}
+        />
+      )}
+        {exportFeature?.enabled && (
+        <ExportComponentOption
+          open={exportOpen}
+          toggle={toggleExport}
+          handleExport={handleExportSubmit}
+          availableFields={exportFeature?.availableFields || []}
+          availableFormats={["excel", "pdf"]}
         />
       )}
       <Box
@@ -126,6 +167,16 @@ const ListHeader = (props: ListHeaderProps) => {
               <Button onClick={toggleFilter} variant="contained" sx={{ '& svg': { mr: 2 }, ml: 2 }}>
                 <Icon fontSize="1.125rem" icon="tabler:adjustments" />
                 {transl('filter')}
+              </Button>
+            )}
+              {exportFeature?.enabled && exportFeature.onExport && (
+              <Button
+                onClick={toggleExport}
+                variant="contained"
+                sx={{ "& svg": { mr: 2 }, ml: 2 }}
+              >
+                <Icon fontSize="1.125rem" icon="tabler:file-export" />
+                {transl("export")}
               </Button>
             )}
           </Box>

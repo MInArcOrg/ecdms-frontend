@@ -15,6 +15,7 @@ import GridListing from './list-types/grid-listing';
 import ListListing from './list-types/list-listing';
 import MasonryListing from './list-types/masonry-listing';
 import TableListing from './list-types/table-listing';
+import { ExportConfigValues, ExportFieldOption } from "./export";
 
 const ItemsListing = <T extends object>({
   items,
@@ -31,10 +32,10 @@ const ItemsListing = <T extends object>({
   hasListHeader = true,
   hasFilter = false,
   hasSearch = false,
-  hasExport = false,
   FilterComponentItems,
   searchKeys = [],
   createActionConfig = defaultCreateActionConfig,
+  features = {},
   breakpoints
 }: {
   items: T[];
@@ -54,11 +55,41 @@ const ItemsListing = <T extends object>({
   hasCreate?: boolean;
   hasFilter?: boolean;
   hasSearch?: boolean;
-  hasExport?: boolean;
   FilterComponentItems?: React.ComponentType<any>;
   searchKeys?: string[];
   hasListHeader?: boolean;
   createActionConfig: CreateActionConfig;
+  features?: {
+      filter?: {
+        enabled: boolean;
+        onFilter: (values: Record<string, any>) => void;
+        permission: {
+          action: string;
+          subject: string;
+        };
+        component?: React.ComponentType<any>;
+      };
+      search?: {
+        enabled: boolean;
+        onSearch: (searchTerm: string, searchKeys: string[]) => void;
+        searchKeys: string[],
+        permission: {
+          action: string;
+          subject: string;
+        };
+      };
+      export?: {
+        enabled: boolean;
+        onExport?: (exportConfig: {
+          export: ExportConfigValues;
+        }) => Promise<void>;
+        availableFields?: ExportFieldOption[];
+        permission: {
+          action: string;
+          subject: string;
+        };
+      };
+  };
   breakpoints?: {
     xs?: GridProps['xs'];
     sm?: GridProps['sm'];
@@ -89,7 +120,7 @@ const ItemsListing = <T extends object>({
   };
 
   const adjustedType = getAdjustedListingType(type, isSmallScreen);
-
+  console.log('export feature',features)
   const listingComponents = {
     [ITEMS_LISTING_TYPE.masonry.value]: ItemViewComponent && <MasonryListing ItemViewComponent={ItemViewComponent} items={items} />,
     [ITEMS_LISTING_TYPE.list.value]: ItemViewComponent && <ListListing ItemViewComponent={ItemViewComponent} items={items} />,
@@ -116,10 +147,10 @@ const ItemsListing = <T extends object>({
           hasFilter={hasFilter}
           FilterComponentItems={FilterComponentItems}
           handleFilter={handleFilter}
-          hasExport={hasExport}
           hasSearch={hasSearch}
           searchKeys={searchKeys}
           title={title || ''}
+          export={features?.export}
         ></ListHeader>
       )}
 
