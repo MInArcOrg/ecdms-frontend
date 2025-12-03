@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
 import { Document } from 'src/types/document';
 import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
+import { buildFileGetRequest, buildGetRequest } from 'src/utils/requests/get-request';
 import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
@@ -46,7 +46,14 @@ const documentApiService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
-      })
+      }),
+  export: (params: GetRequestParam): Promise<Blob> =>
+    buildFileGetRequest(`/generics/document-export`, params)
+      .then((response: AxiosResponse<Blob>) => response.data)
+      .catch((error: any) => {
+        console.error('Member export API error:', error);
+        throw error;
+      }),
   // uploadImage: (id:string) =>
   //   customAxios.post('/generics/files', formData, {
   //     headers: {

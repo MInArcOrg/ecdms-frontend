@@ -28,25 +28,29 @@ function ResourceList() {
       filter: { ...params.filter, resourcetype_id: typeId }
     });
   };
-  
 
-    const {data:type,isLoading:typeIsLoading}=useQuery(
-      {
-        queryKey:['project-type',String(typeId)],
-        queryFn:()=>masterTypeApiService.getOne('resource',String(typeId),{}),
-        enabled:!!typeId
-      }
-    )
+
+  const { data: type, isLoading: typeIsLoading } = useQuery(
+    {
+      queryKey: ['project-type', String(typeId)],
+      queryFn: () => masterTypeApiService.getOne('resource', String(typeId), {}),
+      enabled: !!typeId
+    }
+  )
 
   const {
     data: resources,
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
+    handleExport
   } = usePaginatedFetch<Resource[]>({
     queryKey: ['resources', String(typeId)],
-    fetchFunction: fetchResources
+    fetchFunction: fetchResources,
+    exportApiCall(exportParams) {
+      return resourceApiService.export({ ...exportParams });
+    },
   });
 
   const toggleDrawer = () => {
@@ -77,6 +81,20 @@ function ResourceList() {
       )}
       <Card>
         <ItemsListing
+          features={
+            {
+              export: {
+                onExport: handleExport,
+                enabled: true,
+                availableFields: [
+                ],
+                permission: {
+                  action: "view",
+                  subject: "resource",
+                }
+              }
+            }
+          }
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}

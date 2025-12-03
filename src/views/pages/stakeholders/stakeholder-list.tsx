@@ -39,9 +39,13 @@ function StakholdersList() {
     pagination,
     handlePageChange,
     refetch,
+    handleExport
   } = usePaginatedFetch<Stakeholder[]>({
     queryKey: ["stakesholders", typeId as string],
     fetchFunction: fetchResources,
+    exportApiCall(exportParams) {
+      return stakeholderApiService.export({ ...exportParams });
+    },
   });
 
   const toggleDrawer = () => {
@@ -58,13 +62,13 @@ function StakholdersList() {
     refetch();
   };
 
-    const {data:type,isLoading:typeIsLoading}=useQuery(
-      {
-        queryKey:['stakeholder-type',String(typeId)],
-        queryFn:()=>masterTypeApiService.getOne('stakeholder',String(typeId),{}),
-        enabled:!!typeId
-      }
-    )
+  const { data: type, isLoading: typeIsLoading } = useQuery(
+    {
+      queryKey: ['stakeholder-type', String(typeId)],
+      queryFn: () => masterTypeApiService.getOne('stakeholder', String(typeId), {}),
+      enabled: !!typeId
+    }
+  )
   return (
     <Box>
       {showDrawer && (
@@ -79,6 +83,20 @@ function StakholdersList() {
       )}
       <Card>
         <ItemsListing
+          features={
+            {
+              export: {
+                onExport: handleExport,
+                enabled: true,
+                availableFields: [
+                ],
+                permission: {
+                  action: "view",
+                  subject: "stakeholder",
+                }
+              }
+            }
+          }
           title={`${type?.payload?.title} ${t('stakeholder.title')}`}
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.table.value}

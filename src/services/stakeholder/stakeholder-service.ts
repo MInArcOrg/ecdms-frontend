@@ -6,7 +6,7 @@ import { GetRequestParam, IApiPayload, IApiResponse } from "src/types/requests";
 import { Stakeholder } from "src/types/stakeholder";
 
 import axiosServices from "src/utils/axios";
-import { buildGetRequest } from "src/utils/requests/get-request";
+import { buildFileGetRequest, buildGetRequest } from "src/utils/requests/get-request";
 import { buildPostRequest } from "src/utils/requests/post-request";
 import { buildPutRequest } from "src/utils/requests/put-request";
 
@@ -40,16 +40,15 @@ const stakeholderApiService = {
       .catch((error: any) => {
         throw error;
       }),
-
-  create: (body: IApiPayload<Stakeholder>): Promise<IApiResponse> =>
-    buildPostRequest(`/stakeholders/stakeholders`, body, false)
-      .then((response: AxiosResponse<IApiResponse>) => response.data)
+  export: (params: GetRequestParam): Promise<Blob> =>
+    buildFileGetRequest(`/generics/stakeholder-export`, params)
+      .then((response: AxiosResponse<Blob>) => response.data)
       .catch((error: any) => {
+        console.error('Member export API error:', error);
         throw error;
       }),
-
-  export: (params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/generics/stakeholder-export`, params)
+  create: (body: IApiPayload<Stakeholder>): Promise<IApiResponse> =>
+    buildPostRequest(`/stakeholders/stakeholders`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;

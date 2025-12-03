@@ -37,10 +37,14 @@ function DocumentList() {
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
+    handleExport
   } = usePaginatedFetch<Document[]>({
     queryKey: ['documents'],
-    fetchFunction: fetchDocuments
+    fetchFunction: fetchDocuments,
+    exportApiCall(exportParams) {
+      return documentApiService.export({ ...exportParams });
+    },
   });
 
   const toggleDrawer = () => {
@@ -64,14 +68,14 @@ function DocumentList() {
     toggleDetailDrawer();
     setSelectedRow(document);
   };
-  
-    const {data:type,isLoading:typeIsLoading}=useQuery(
-      {
-        queryKey:['document-type',String(typeId)],
-        queryFn:()=>masterTypeApiService.getOne('document',String(typeId),{}),
-        enabled:!!typeId
-      }
-    )
+
+  const { data: type, isLoading: typeIsLoading } = useQuery(
+    {
+      queryKey: ['document-type', String(typeId)],
+      queryFn: () => masterTypeApiService.getOne('document', String(typeId), {}),
+      enabled: !!typeId
+    }
+  )
   return (
     <Box>
       {showDrawer && (
@@ -87,6 +91,19 @@ function DocumentList() {
       <Card>
         <ItemsListing
           title={`${type?.payload?.title} ${t('document.title')}`}
+          features={
+            {
+              export: {
+                onExport: handleExport,
+                enabled: true,
+                availableFields: [],
+                permission: {
+                  action: 'view',
+                  subject: 'document',
+                }
+              },
+            }
+          }
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}

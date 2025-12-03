@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import { GetRequestParam, IApiPayload, IApiResponse } from 'src/types/requests';
 import { Project } from 'src/types/project';
 import axiosServices from 'src/utils/axios';
-import { buildGetRequest } from 'src/utils/requests/get-request';
+import { buildFileGetRequest, buildGetRequest } from 'src/utils/requests/get-request';
 import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
@@ -47,9 +47,10 @@ const projectApiService = {
         throw error;
       }),
   export: (params: GetRequestParam): Promise<Blob> =>
-    buildGetRequest(`/generics/project-export`, params)
-      .then((response: AxiosResponse<IApiResponse>) => response.data)
+    buildFileGetRequest(`/generics/project-export`, params)
+      .then((response: AxiosResponse<Blob>) => response.data)
       .catch((error: any) => {
+        console.error('Member export API error:', error);
         throw error;
       }),
   getProjectDetailInformation: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
