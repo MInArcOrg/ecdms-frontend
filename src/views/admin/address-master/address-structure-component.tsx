@@ -4,7 +4,7 @@ import Obs from 'src/views/components/org-chart';
 
 function AddressStructureComponent({ parentAddressId, viewAll }: { parentAddressId: string; viewAll: boolean }) {
   const { data } = useQuery({
-    queryKey: ['head-department', parentAddressId],
+    queryKey: ['address-structure', parentAddressId],
     queryFn: () =>
       viewAll ? addressmasterApiService.getAddressStructure(parentAddressId) : addressmasterApiService.getAddressStructure(parentAddressId)
   });
@@ -15,10 +15,10 @@ function AddressStructureComponent({ parentAddressId, viewAll }: { parentAddress
       data={
         data?.payload
           ? data?.payload?.map((item: any) => ({
-              ...item,
-              name: item?.title,
-              parentNodeId: parentAddressId != item.id ? item?.parent_address_id : null
-            }))
+            ...item,
+            name: item?.title,
+            parentNodeId: parentAddressId != item.id ? item?.parent_address_id : null
+          }))
           : []
       }
     />

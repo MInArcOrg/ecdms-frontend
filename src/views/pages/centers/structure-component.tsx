@@ -4,7 +4,7 @@ import Obs from 'src/views/components/org-chart';
 
 function StructureComponent({ parentDepartmentId, viewAll }: { parentDepartmentId: string; viewAll: boolean }) {
   const { data } = useQuery({
-    queryKey: ['head-department', parentDepartmentId],
+    queryKey: ['department-structure', parentDepartmentId],
     queryFn: () =>
       viewAll ? departmentApiService.getDepartmentStructure() : departmentApiService.getDepartmentStructure(parentDepartmentId)
   });
@@ -13,9 +13,9 @@ function StructureComponent({ parentDepartmentId, viewAll }: { parentDepartmentI
       data={
         data?.payload
           ? data?.payload?.map((item: any) => ({
-              ...item,
-              parentNodeId: item?.parent_node_id
-            }))
+            ...item,
+            parentNodeId: item?.parent_node_id
+          }))
           : []
       }
     />
