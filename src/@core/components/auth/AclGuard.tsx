@@ -57,14 +57,13 @@ const AclGuard = (props: AclGuardProps) => {
         console.warn("Permission API did not return an array. Using empty array.");
         fetchedRules = [];
       }
-     
+
 
       // ❌ REMOVED: Role-based check is gone. 
       // Permissions (including 'manage: all', if granted) must come from the API payload.
 
       // Creates the CASL ability instance from the rules
       // Casting is necessary to satisfy TypeScript's strict type checking between useQuery and CASL.
-      fetchedRules.push({ action: 'manage', subject: 'all' });
       fetchedRules.push({ action: 'view', subject: 'dashboard' });
       return createMongoAbility(fetchedRules) as AppAbility;
     },
@@ -80,15 +79,15 @@ const AclGuard = (props: AclGuardProps) => {
   }
 
   // B. Loading/Authentication State
-  if(auth.loading){
+  if (auth.loading) {
     console.log('loading auth')
-  }else{
+  } else {
     console.log('not loading auth')
   }
 
   if (auth.loading || isLoading) {
     return (
-        <Spinner />
+      <Spinner />
     );
   }
 

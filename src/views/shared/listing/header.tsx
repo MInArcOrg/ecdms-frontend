@@ -20,16 +20,36 @@ interface ListHeaderProps {
   hasFilter: boolean;
   hasSearch: boolean;
   handleFilter: (val: { [key: string]: any }) => void;
-  export?: {
-        enabled: boolean;
-        onExport?: (exportConfig: {
-          export: ExportConfigValues;
-        }) => Promise<void>;
-        availableFields?: ExportFieldOption[];
-        permission: {
-          action: string;
-          subject: string;
-        };
+  features: {
+    filter?: {
+      enabled: boolean;
+      onFilter: (values: Record<string, any>) => void;
+      permission: {
+        action: string;
+        subject: string;
+      };
+      component?: React.ComponentType<any>;
+    };
+    search?: {
+      enabled: boolean;
+      onSearch: (searchTerm: string, searchingKey: string[]) => void;
+      searchKeys?: string[];
+      permission: {
+        action: string;
+        subject: string;
+      };
+    };
+    export?: {
+      enabled: boolean;
+      onExport?: (exportConfig: {
+        export: ExportConfigValues;
+      }) => Promise<void>;
+      availableFields?: ExportFieldOption[];
+      permission: {
+        action: string;
+        subject: string;
+      };
+    };
   };
   FilterComponentItems?: React.ComponentType<any>;
   searchKeys: string[];
@@ -37,13 +57,15 @@ interface ListHeaderProps {
 }
 
 const ListHeader = (props: ListHeaderProps) => {
+  const { title, features } = props;
 
-  const {export:exportFeature}=props
+  const { filter, export: exportFeature } = features
   // ** Props
   const [filterOpen, setFilterOpen] = useState<boolean>(false);
   const toggleFilter = () => {
     setFilterOpen(!filterOpen);
   };
+
   const { t: transl } = useTranslation();
   const [exportOpen, setExportOpen] = useState<boolean>(false);
   const toggleExport = () => {
@@ -75,8 +97,9 @@ const ListHeader = (props: ListHeaderProps) => {
 
     setTimerId(newTimerId);
   };
-  console.log('export feature',exportFeature)
-   const handleExportSubmit = (exportConfig: {
+  const handleFilterSubmit = (values: Record<string, any>) => {
+    filter?.onFilter?.(values);
+  }; const handleExportSubmit = (exportConfig: {
     format: string;
     fields: string[];
     currentPageOnly: boolean;
@@ -93,15 +116,18 @@ const ListHeader = (props: ListHeaderProps) => {
   };
   return (
     <Fragment>
-      {props.FilterComponentItems && (
+      {filter?.enabled && filter.component && (
         <FilterList
           open={filterOpen}
           toggle={toggleFilter}
-          handleFilter={props.handleFilter}
-          FilterComponentItems={props.FilterComponentItems}
+          handleFilter={handleFilterSubmit}
+          FilterComponentItems={filter.component}
+          initialValues={{
+            is_child: false,
+          }}
         />
       )}
-        {exportFeature?.enabled && (
+      {exportFeature?.enabled && (
         <ExportComponentOption
           open={exportOpen}
           toggle={toggleExport}
@@ -163,13 +189,17 @@ const ListHeader = (props: ListHeaderProps) => {
                   {transl('common.create')}
                 </Button>
               ))}
-            {props.hasFilter && (
-              <Button onClick={toggleFilter} variant="contained" sx={{ '& svg': { mr: 2 }, ml: 2 }}>
+            {filter?.enabled && (
+              <Button
+                onClick={toggleFilter}
+                variant="contained"
+                sx={{ "& svg": { mr: 2 }, ml: 2 }}
+              >
                 <Icon fontSize="1.125rem" icon="tabler:adjustments" />
-                {transl('filter')}
+                {transl("filter")}
               </Button>
             )}
-              {exportFeature?.enabled && exportFeature.onExport && (
+            {exportFeature?.enabled && exportFeature.onExport && (
               <Button
                 onClick={toggleExport}
                 variant="contained"

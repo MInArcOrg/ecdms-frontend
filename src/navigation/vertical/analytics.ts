@@ -9,22 +9,30 @@ export default [
       {
         title: 'Stakeholder',
         path: '/analytics/stakeholder',
-        icon: 'tabler:users'
+        icon: 'tabler:users',
+        action: 'view',
+        subject: 'stakeholder'
       },
       {
         title: 'Project',
         path: '/analytics/project',
-        icon: 'tabler:box-multiple'
+        icon: 'tabler:box-multiple',
+        action: 'view',
+        subject: 'project'
       },
       {
         title: 'Resource',
         path: '/analytics/resource',
-        icon: 'tabler:calendar'
+        icon: 'tabler:calendar',
+        action: 'view',
+        subject: 'resource'
       },
       {
         title: 'Document',
         path: '/analytics/document',
-        icon: 'tabler:file'
+        icon: 'tabler:file',
+        action: 'view',
+        subject: 'document'
       }
     ]
   }

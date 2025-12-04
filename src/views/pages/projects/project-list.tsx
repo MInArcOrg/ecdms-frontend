@@ -15,6 +15,7 @@ import ProjectDrawer from './project-drawer';
 import { projectColumns } from './project-row';
 import { useQuery } from '@tanstack/react-query';
 import masterTypeApiService from 'src/services/master-data/master-type-service';
+import ProjectFilterItems from './project-filter';
 
 function ProjectList({
   module = 'project'
@@ -33,11 +34,11 @@ function ProjectList({
       filter: { ...params.filter, projecttype_id: typeId }
     });
   };
-  const {data:type,isLoading:typeIsLoading}=useQuery(
+  const { data: type, isLoading: typeIsLoading } = useQuery(
     {
-      queryKey:[module+'-project-type',String(typeId)],
-      queryFn:()=>masterTypeApiService.getOne(module,String(typeId),{}),
-      enabled:!!typeId
+      queryKey: [module + '-project-type', String(typeId)],
+      queryFn: () => masterTypeApiService.getOne(module, String(typeId), {}),
+      enabled: !!typeId
     }
   )
 
@@ -48,6 +49,7 @@ function ProjectList({
     handlePageChange,
     refetch,
     handleExport,
+    handleFilter
   } = usePaginatedFetch<Project[]>({
     queryKey: ['projects', String(typeId)],
     fetchFunction: fetchProjects,
@@ -88,7 +90,7 @@ function ProjectList({
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
           ItemViewComponent={({ data }) => (
-            <ProjectCard onDetail={() => {}} project={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
+            <ProjectCard onDetail={() => { }} project={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
           )}
           title={`${type?.payload?.title} ${t('project.title')}`}
           createActionConfig={{
@@ -102,16 +104,26 @@ function ProjectList({
           }}
           features={
             {
-               export: {
-                  onExport: handleExport,
-                  enabled: true,
-                  availableFields: [
-                  ],
-                  permission: {
-                    action: "view",
-                    subject: "project",
-                  }
+              export: {
+                onExport: handleExport,
+                enabled: true,
+                availableFields: [
+                ],
+                permission: {
+                  action: "view",
+                  subject: "project",
                 }
+              },
+              filter: {
+                enabled: true,
+                permission: {
+                  action: "read",
+                  subject: "project",
+                },
+                onFilter: handleFilter,
+                component: ProjectFilterItems
+              },
+
             }
           }
           fetchDataFunction={refetch}

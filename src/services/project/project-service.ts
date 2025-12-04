@@ -53,6 +53,12 @@ const projectApiService = {
         console.error('Member export API error:', error);
         throw error;
       }),
+  getProjectGeneralInformation: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
+    buildGetRequest(`/projects/project-general-information/${idx}`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
   getProjectDetailInformation: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
     buildGetRequest(`/projects/project-detail/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
