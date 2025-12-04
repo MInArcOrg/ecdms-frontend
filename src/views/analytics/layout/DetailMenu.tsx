@@ -26,27 +26,27 @@ function DetailMenu({
       {desktop ? (
         <Grid container gap={2} sx={{ ml: 3 }}>
           {menuItems.map((item) => (
-            <Can do={item?.subject} key={item.id} on={item?.subject}>
-              <Grid item>
-                <ListItemButton
-                  onClick={() => setActiveMenu(item.path)}
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    py: 2,
-                    px: 3,
-                    borderRadius: 1,
-                    '&.Mui-selected': {
-                      textDecoration: 'underline'
-                    }
-                  }}
-                  selected={activeMenu === item.path}
-                >
-                  <ListItemText primary={item.title} />
-                </ListItemButton>
-              </Grid>
-            </Can>
+            // <Can do={item?.subject} key={item.id} on={item?.subject}>
+            <Grid item>
+              <ListItemButton
+                onClick={() => setActiveMenu(item.path)}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  py: 2,
+                  px: 3,
+                  borderRadius: 1,
+                  '&.Mui-selected': {
+                    textDecoration: 'underline'
+                  }
+                }}
+                selected={activeMenu === item.path}
+              >
+                <ListItemText primary={item.title} />
+              </ListItemButton>
+            </Grid>
+            // </Can>
           ))}
         </Grid>
       ) : (
