@@ -15,6 +15,7 @@ import ResourceDrawer from './resource-drawer';
 import { resourceColumns } from './resource-row';
 import { useQuery } from '@tanstack/react-query';
 import masterTypeApiService from 'src/services/master-data/master-type-service';
+import ResourceFilterItems from './resource-filter';
 
 function ResourceList() {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -44,7 +45,8 @@ function ResourceList() {
     pagination,
     handlePageChange,
     refetch,
-    handleExport
+    handleExport,
+    handleFilter
   } = usePaginatedFetch<Resource[]>({
     queryKey: ['resources', String(typeId)],
     fetchFunction: fetchResources,
@@ -87,11 +89,49 @@ function ResourceList() {
                 onExport: handleExport,
                 enabled: true,
                 availableFields: [
+
+                  {
+                    key: 'name',
+                    label: t('resource.form.name'),
+                  },
+                  {
+                    key: 'type',
+                    label: t('resource.form.type'),
+                  },
+                  {
+                    key: 'category',
+                    label: t('resource.form.category'),
+                  },
+                  {
+                    key: 'subcategory',
+                    label: t('resource.form.sub-category'),
+                  },
+                  {
+                    key: 'center',
+                    label: t('resource.form.center'),
+                  },
+                  {
+                    key: 'quantity_measurement_unit',
+                    label: t('resource.form.quantity_measurement_unit_id')
+                  },
+                  {
+                    key: 'quantity_measurement_unit',
+                    label: t('resource.form.quantity_measurement_unit_id')
+                  },
                 ],
                 permission: {
                   action: "view",
                   subject: "resource",
                 }
+              },
+              filter: {
+                enabled: true,
+                permission: {
+                  action: "view",
+                  subject: "resource",
+                },
+                onFilter: handleFilter,
+                component: ResourceFilterItems
               }
             }
           }

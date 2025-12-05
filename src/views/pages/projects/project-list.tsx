@@ -89,6 +89,7 @@ function ProjectList({
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
+
           ItemViewComponent={({ data }) => (
             <ProjectCard onDetail={() => { }} project={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
           )}
@@ -108,6 +109,50 @@ function ProjectList({
                 onExport: handleExport,
                 enabled: true,
                 availableFields: [
+                  {
+                    label: t('project.form.name'),
+                    key: 'name',
+                  },
+                  {
+                    label: t('project.form.type'),
+                    key: 'type',
+                  },
+                  {
+                    label: t('project.form.category'),
+                    key: 'category',
+                  },
+                  {
+                    label: t('project.form.sub-category'),
+                    key: 'sub_category',
+                  },
+                  {
+                    label: t('project.form.end-user'),
+                    key: 'end_user',
+                  },
+                  {
+                    label: t('project.form.center'),
+                    key: 'center',
+                  },
+                  {
+                    label: t('project.form.grade'),
+                    key: 'grade',
+                  },
+                  {
+                    label: t('project.form.function'),
+                    key: 'function',
+                  },
+                  {
+                    label: t('project.form.contract-no'),
+                    key: 'contract_no',
+                  },
+                  {
+                    label: t('project.form.budget-code'),
+                    key: 'budget_code',
+                  },
+                  {
+                    label: t('project.form.procurement-number'),
+                    key: 'procurement_no',
+                  }
                 ],
                 permission: {
                   action: "view",

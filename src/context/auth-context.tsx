@@ -1,24 +1,13 @@
-// ** React Imports
 import { createContext, useEffect, useState, ReactNode } from 'react';
-
-// ** Next Import
 import { useRouter } from 'next/router';
-
-// ** Axios
-
-// ** Config
 import authConfig from 'src/configs/auth';
-
-// ** Types
 import { AuthValuesType, LoginParams, ErrCallbackType } from './types';
 import User from 'src/types/admin/user';
 import { buildPostRequest } from 'src/utils/requests/post-request';
 import { IApiResponse } from 'src/types/requests';
 import { AxiosResponse } from 'axios';
 import { buildGetRequest } from 'src/utils/requests/get-request';
-import getHomeRoute from 'src/layouts/components/acl/getHomeRoute';
 
-// ** Defaults
 const defaultProvider: AuthValuesType = {
   user: null,
   loading: true,
@@ -28,89 +17,81 @@ const defaultProvider: AuthValuesType = {
   setAuthLoading: () => Boolean,
   login: () => Promise.resolve(),
   logout: () => Promise.resolve(),
-  isGuestGuard: false
+  isGuestGuard: false,
 };
 
 const AuthContext = createContext(defaultProvider);
 
-type Props = {
-  children: ReactNode;
-};
+type Props = { children: ReactNode };
 
 const AuthProvider = ({ children }: Props) => {
-  // ** States
   const [user, setUser] = useState<User | null>(defaultProvider.user);
   const [loading, setLoading] = useState<boolean>(defaultProvider.loading);
   const [authLoading, setAuthLoading] = useState<boolean>(false);
-  // Remove isGuestGuard state and setIsGuestGuard
-  // ** Hooks
+
   const router = useRouter();
 
-  // Get guestGuard and authGuard from window object set in _app.tsx
   let isGuestGuard = false;
   if (typeof window !== 'undefined' && window.__NEXT_GUARD_PROPS__) {
     isGuestGuard = window.__NEXT_GUARD_PROPS__.guestGuard;
   }
 
+  // Handle token expiration
+  const handleTokenExpiration = () => {
+    localStorage.removeItem(authConfig.storageUserKeyName);
+    localStorage.removeItem(authConfig.storageTokenKeyName);
+    localStorage.removeItem('refreshToken'); // if using refresh token
+    setUser(null);
+
+    if (authConfig.onTokenExpiration === 'logout' && !isGuestGuard) {
+      const currentUrl = window.location.pathname;
+      if (!currentUrl.includes('login') && !currentUrl.includes('check-profile')) {
+        const loginRedirectURL = `/auth/login?returnUrl=${encodeURIComponent(currentUrl)}`;
+        window.location.href = loginRedirectURL;
+      }
+    }
+  };
+
   useEffect(() => {
     const initAuth = async (): Promise<void> => {
-      const storedToken = `Bearer ${window.localStorage.getItem(authConfig.storageTokenKeyName)!}`;
-      if (storedToken) {
-        setLoading(true);
-        await buildGetRequest(authConfig.meEndpoint, {})
-          .then(async (response: AxiosResponse<IApiResponse>) => {
-            setUser({ ...response.data.payload.user_data });
-          })
-          .catch((error) => {
-            const currentUrl = window.location.pathname;
+      const storedToken = localStorage.getItem(authConfig.storageTokenKeyName);
+      if (!storedToken) {
+        setLoading(false);
+        return;
+      }
 
-            localStorage.removeItem(authConfig.storageUserKeyName);
-            localStorage.removeItem('refreshToken');
-            localStorage.removeItem('accessToken');
-            setUser(null);
-            setLoading(false);
-            if (authConfig.onTokenExpiration === 'logout' && !isGuestGuard) {
-              if (!currentUrl.includes('login') && !currentUrl.includes('check-profile')) {
-                const loginRedirectURL = `/auth/login?returnUrl=${encodeURIComponent(currentUrl)}`;
-                window.location.href = loginRedirectURL;
-              }
-            }
-          })
-          .finally(() => {
-            setLoading(false);
-          });
-      } else {
+      setLoading(true);
+
+      try {
+        const response: AxiosResponse<IApiResponse> = await buildGetRequest(authConfig.meEndpoint, {});
+        setUser({ ...response.data.payload.user_data });
+      } catch (error) {
+        handleTokenExpiration();
+      } finally {
         setLoading(false);
       }
     };
 
     initAuth();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleLogin = (params: LoginParams, errorCallback?: ErrCallbackType) => {
     setAuthLoading(true);
 
-    buildPostRequest(authConfig.loginEndpoint, {
-      data: params
-    })
-      .then(async (response: AxiosResponse<IApiResponse>) => {
-        const loginResponse: IApiResponse = response.data;
-        params.rememberMe ? window.localStorage.setItem(authConfig.storageTokenKeyName, loginResponse.payload.access_token) : null;
-        const returnUrl = router.query.returnUrl;
-        console.log('returnUrl', returnUrl);
+    buildPostRequest(authConfig.loginEndpoint, { data: params })
+      .then((response: AxiosResponse<IApiResponse>) => {
+        const loginResponse = response.data;
+
+        // Store token and user
+        localStorage.setItem(authConfig.storageTokenKeyName, loginResponse.payload.access_token);
+        localStorage.setItem(authConfig.storageUserKeyName, JSON.stringify(loginResponse.payload.user_data));
+
         setUser({ ...loginResponse.payload.user_data });
-        params.rememberMe
-          ? window.localStorage.setItem(authConfig.storageUserKeyName, JSON.stringify(loginResponse.payload.user_data))
-          : null;
 
-        const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/'
-        console.log('redirectURL', redirectURL);
-        router.replace(redirectURL as string);
+        const returnUrl = router.query.returnUrl as string;
+        router.replace(returnUrl && returnUrl !== '/' ? returnUrl : '/');
       })
-
       .catch((err) => {
-        console.log('login error', err);
         if (errorCallback) errorCallback(err);
       })
       .finally(() => {
@@ -119,26 +100,29 @@ const AuthProvider = ({ children }: Props) => {
   };
 
   const handleLogout = () => {
+    localStorage.removeItem(authConfig.storageUserKeyName);
+    localStorage.removeItem(authConfig.storageTokenKeyName);
     setUser(null);
-    window.localStorage.removeItem(authConfig.storageUserKeyName);
-    window.localStorage.removeItem(authConfig.storageTokenKeyName);
     router.push('/auth/login');
   };
 
-  const values = {
-    user,
-    loading,
-    authLoading,
-    setUser,
-    setLoading,
-    setAuthLoading,
-    login: handleLogin,
-    logout: handleLogout,
-    // Remove setIsGuestGuard,
-    isGuestGuard
-  };
-
-  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider
+      value={{
+        user,
+        loading,
+        authLoading,
+        setUser,
+        setLoading,
+        setAuthLoading,
+        login: handleLogin,
+        logout: handleLogout,
+        isGuestGuard,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export { AuthContext, AuthProvider };

@@ -150,17 +150,13 @@ const Login = () => {
             </Box>
             <Box
               sx={{
-                mb: 1.75,
+                mb: 3,
                 display: 'flex',
                 flexWrap: 'wrap',
                 alignItems: 'center',
                 justifyContent: 'space-between'
               }}
             >
-              <FormControlLabel
-                label={t('login.remember-me')}
-                control={<Checkbox checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />}
-              />
               <Typography component={LinkStyled} href="/auth/forgot-password">
                 {t('login.forgot-password')}
               </Typography>

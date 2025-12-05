@@ -17,6 +17,7 @@ import { Stakeholder } from "src/types/stakeholder";
 import stakeholderApiService from "src/services/stakeholder/stakeholder-service";
 import { useQuery } from "@tanstack/react-query";
 import masterTypeApiService from "src/services/master-data/master-type-service";
+import StakeholderFilterItems from "./stakeholder-filter";
 
 function StakholdersList() {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -39,7 +40,8 @@ function StakholdersList() {
     pagination,
     handlePageChange,
     refetch,
-    handleExport
+    handleExport,
+    handleFilter
   } = usePaginatedFetch<Stakeholder[]>({
     queryKey: ["stakesholders", typeId as string],
     fetchFunction: fetchResources,
@@ -89,11 +91,53 @@ function StakholdersList() {
                 onExport: handleExport,
                 enabled: true,
                 availableFields: [
+                  {
+                    key: 'name',
+                    label: t('stakeholder.form.name'),
+                  },
+                  {
+                    key: 'type',
+                    label: t('stakeholder.form.type'),
+                  },
+                  {
+                    key: 'category',
+                    label: t('stakeholder.form.category'),
+                  },
+                  {
+                    key: 'subcategory',
+                    label: t('stakeholder.form.sub_category'),
+                  },
+                  {
+                    key: 'center',
+                    label: t('stakeholder.form.center'),
+                  },
+                  {
+                    key: 'tin',
+                    label: t('stakeholder.form.tin'),
+                  },
+                  {
+                    key: 'origin',
+                    label: t('stakeholder.form.origin'),
+                  },
+                  {
+                    key: 'license_issued_date',
+                    label: t('stakeholder.form.license_issued_date'),
+                  },
+
                 ],
                 permission: {
                   action: "view",
                   subject: "stakeholder",
                 }
+              },
+              filter: {
+                enabled: true,
+                permission: {
+                  action: "read",
+                  subject: "project",
+                },
+                onFilter: handleFilter,
+                component: StakeholderFilterItems
               }
             }
           }

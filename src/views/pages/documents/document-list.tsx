@@ -16,6 +16,7 @@ import { documentColumns } from './document-row';
 import DocumentDetail from './document-detail';
 import { useQuery } from '@tanstack/react-query';
 import masterTypeApiService from 'src/services/master-data/master-type-service';
+import DocumentFilterItems from './document-filter';
 
 function DocumentList() {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -38,7 +39,8 @@ function DocumentList() {
     pagination,
     handlePageChange,
     refetch,
-    handleExport
+    handleExport,
+    handleFilter
   } = usePaginatedFetch<Document[]>({
     queryKey: ['documents'],
     fetchFunction: fetchDocuments,
@@ -96,12 +98,23 @@ function DocumentList() {
               export: {
                 onExport: handleExport,
                 enabled: true,
-                availableFields: [],
+                availableFields: [
+
+                ],
                 permission: {
                   action: 'view',
                   subject: 'document',
                 }
               },
+              filter: {
+                onFilter: handleFilter,
+                enabled: true,
+                component: DocumentFilterItems,
+                permission: {
+                  action: 'view',
+                  subject: 'document'
+                }
+              }
             }
           }
           pagination={pagination}

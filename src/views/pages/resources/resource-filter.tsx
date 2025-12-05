@@ -1,0 +1,126 @@
+// ResourceFilterItems.tsx
+import { Box } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
+import { FormikProps } from "formik";
+import { isArray } from "lodash";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { dropDownConfig } from "src/configs/api-constants";
+import { resourceMasterModels } from "src/constants/master-data/resource-general-master-constants";
+import generalMasterDataApiService from "src/services/general/general-master-data-service";
+import resourceGeneralMasterDataApiService from "src/services/general/resource-general-master-data-service";
+import masterCategoryApiService from "src/services/master-data/master-category-service";
+import masterSubCategoryApiService from "src/services/master-data/master-sub-category-service";
+import { Resource } from "src/types/resource";
+import CustomSelect from "src/views/shared/form/custom-select";
+
+interface ResourceFilterItemsProps {
+    formik: FormikProps<Resource>;
+}
+
+const ResourceFilterItems: React.FC<ResourceFilterItemsProps> = ({ formik }) => {
+    // const {typeId}=
+    const route = useRouter()
+    const { typeId } = route.query;
+    const { data: resourceCategories } = useQuery({
+        queryKey: ['masterCategory', 'resource'],
+        queryFn: () =>
+            masterCategoryApiService.getAll('resource', {
+                filter: {
+                    resourcetype_id: typeId
+                }
+            })
+    });
+    const { data: resourceSubCategories, refetch: refetchSubCategories } = useQuery({
+        queryKey: ['masterSubCategory', 'resource'],
+        queryFn: () =>
+            masterSubCategoryApiService.getAll('resource', {
+                filter: {
+                    resourcecategory_id: formik.values.resourcecategory_id
+                }
+            }),
+        enabled: !!formik.values.resourcecategory_id // Only fetch subcategories when a category is selected
+    });
+    const { data: qualityMeasurementUnits } = useQuery({
+        queryKey: ['quality-measurement-units', resourceMasterModels.qualityMeasurementUnit.model],
+        queryFn: () =>
+            resourceGeneralMasterDataApiService.getAll(
+                dropDownConfig({
+                    filter: {
+                        model: resourceMasterModels.qualityMeasurementUnit.model
+                    }
+                })
+            )
+    });
+    const { data: quantityMeasurementUnits } = useQuery({
+        queryKey: ['quantity-measurement-units', resourceMasterModels.quantityMeasurementUnit.model],
+        queryFn: () =>
+            resourceGeneralMasterDataApiService.getAll(
+                dropDownConfig({
+                    filter: {
+                        model: resourceMasterModels.quantityMeasurementUnit.model
+                    }
+                })
+            )
+    });
+    const { t: transl } = useTranslation();
+
+    return (
+        <>
+            <Box mb={2}>
+                <CustomSelect
+                    size="small"
+                    name="resourcecategory_id"
+                    label={transl('resource.form.resourcecategory_id')}
+                    options={
+                        resourceCategories?.payload?.map((resourceCategory) => ({
+                            value: resourceCategory.id,
+                            label: resourceCategory.title
+                        })) || []
+                    }
+                />
+            </Box>
+            <Box mb={2}>
+                <CustomSelect
+                    size="small"
+                    name="resourcesubcategory_id"
+                    label={transl('resource.form.resourcesubcategory_id')}
+                    options={
+                        resourceSubCategories?.payload?.map((resourceCategory) => ({
+                            value: resourceCategory.id,
+                            label: resourceCategory.title
+                        })) || []
+                    }
+                />
+            </Box>
+
+            <CustomSelect
+                size="small"
+                name="quantity_measurement_unit_id"
+                label={transl('resource.form.quantity_measurement_unit_id')}
+                options={
+                    qualityMeasurementUnits?.payload?.map((qualityMeasurementUnit) => ({
+                        label: qualityMeasurementUnit.title,
+                        value: qualityMeasurementUnit.id
+                    })) || []
+                }
+                sx={{ mb: 2 }}
+            />
+            <CustomSelect
+                size="small"
+                name="quality_measurement_unit_id"
+                label={transl('resource.form.quality_measurement_unit_id')}
+                options={
+                    quantityMeasurementUnits?.payload?.map((qualityMeasurementUnit) => ({
+                        label: qualityMeasurementUnit.title,
+                        value: qualityMeasurementUnit.id
+                    })) || []
+                }
+                sx={{ mb: 2 }}
+            />
+        </>
+    );
+};
+
+export default ResourceFilterItems;

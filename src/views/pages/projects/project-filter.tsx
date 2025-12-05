@@ -11,6 +11,7 @@ import masterCategoryApiService from "src/services/master-data/master-category-s
 import masterSubCategoryApiService from "src/services/master-data/master-sub-category-service";
 import { Project } from "src/types/project";
 import CustomSelect from "src/views/shared/form/custom-select";
+import CustomTextBox from "src/views/shared/form/custom-text-box";
 
 interface ProjectFilterItemsProps {
     formik: FormikProps<Project>;
@@ -78,6 +79,16 @@ const ProjectFilterItems: React.FC<ProjectFilterItemsProps> = ({ formik }) => {
                             }))
                             : []
                     }
+                />
+            </Box>
+            <Box mb={2}>
+                <CustomTextBox
+                    fullWidth
+                    label={transl('project.form.grade')}
+                    placeholder={transl('project.form.grade')}
+                    name="grade"
+                    size="small"
+                    sx={{ mb: 2 }}
                 />
             </Box>
             <Box mb={2}>

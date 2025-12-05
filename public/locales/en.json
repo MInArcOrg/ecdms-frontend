@@ -713,7 +713,11 @@
       "resourcecategory_id": "Resource Category",
       "resourcesubcategory_id": "Resource Subcategory",
       "quantity_measurement_unit_id": "Quantity Measurement Unit",
-      "quality_measurement_unit_id": "Quality Measurement Unit"
+      "quality_measurement_unit_id": "Quality Measurement Unit",
+      "category": "Category",
+      "sub-category": "Sub Category",
+      "type": "Type",
+      "center": "Center"
     },
     "navigation": {
       "menu": {
@@ -882,6 +886,7 @@
     "edit-project": "Edit Project",
     "title": "Project",
     "form": {
+      "type": "Type",
       "category": "Category",
       "sub-category": "Sub-category",
       "name": "Project Name",
@@ -4608,6 +4613,8 @@
       "category": "Category"
     },
     "form": {
+      "type": "Type",
+      "center": "Center",
       "category": "Category",
       "sub_category": "Sub Category",
       "businessfield": "Business Field",
@@ -4619,6 +4626,7 @@
       "phone": "Phone",
       "is_primary_phone": "Is Primary Phone",
       "trade_name": "Trade Name",
+      "name": "Name",
       "tin": "TIN",
       "origin": "Origin",
       "license_issued_date": "License Issued Date",
