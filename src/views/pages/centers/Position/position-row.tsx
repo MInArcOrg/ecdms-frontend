@@ -51,7 +51,7 @@ export const positionColumns = (onEdit: (user: Position) => void, onDelete: (id:
               throw new Error('Function not implemented.');
             }}
           />
-          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
+          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} editPermissionRule={{ action: 'update', subject: 'position' }} deletePermissionRule={{ action: 'delete', subject: 'position' }} />
         </Fragment>
       )
     }

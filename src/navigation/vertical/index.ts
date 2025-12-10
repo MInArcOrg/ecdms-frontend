@@ -21,7 +21,7 @@ const navigation = (): VerticalNavItemsType => {
       action: 'view',
       subject: 'department'
     },
- 
+
     {
       title: 'navigation.roles',
       icon: 'tabler:settings',
@@ -81,7 +81,9 @@ const navigation = (): VerticalNavItemsType => {
         {
           title: 'navigation.master-data.general',
           path: '/master-data/general',
-          icon: 'tabler:tools'
+          icon: 'tabler:tools',
+          action: 'view',
+          subject: 'generalmasterdata'
         }
       ]
     },

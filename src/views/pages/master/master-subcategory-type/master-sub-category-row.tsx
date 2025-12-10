@@ -14,7 +14,8 @@ export const masterSubCategoryRowColumns = (
   onEdit: (category: MasterSubCategory) => void,
   onDelete: (id: string) => void,
   t: any,
-  refetch: () => void
+  refetch: () => void,
+  model: string
 ) =>
   [
     {
@@ -65,7 +66,14 @@ export const masterSubCategoryRowColumns = (
               throw new Error('Function not implemented.');
             }}
           />
-          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
+          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} deletePermissionRule={{
+            action: 'delete',
+            subject: model + 'category'
+          }}
+            editPermissionRule={{
+              action: 'edit',
+              subject: model + 'category'
+            }} />
         </Fragment>
       )
     }

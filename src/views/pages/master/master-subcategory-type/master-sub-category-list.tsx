@@ -78,7 +78,7 @@ const MasterSubCategoryList: React.FC<MasterSubCategoryListProps> = ({ model, se
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'position'
+            subject: model + 'category'
           }
         }}
         ItemViewComponent={({ data }) => (
@@ -92,7 +92,7 @@ const MasterSubCategoryList: React.FC<MasterSubCategoryListProps> = ({ model, se
           />
         )}
         tableProps={{
-          headers: masterSubCategoryRowColumns(handleEdit, handleDelete, t, refetch)
+          headers: masterSubCategoryRowColumns(handleEdit, handleDelete, t, refetch, model)
         }}
         fetchDataFunction={refetch}
         items={categorys || []}

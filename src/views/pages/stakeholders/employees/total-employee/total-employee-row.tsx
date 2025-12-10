@@ -99,7 +99,7 @@ export const totalEmployeeColumns = (
               /* Handle post action */
             }}
           />
-          <RowOptions onEdit={() => onEdit(row)} onDelete={() => onDelete(row.id)} item={row} options={[]} />
+          <RowOptions onEdit={() => onEdit(row)} onDelete={() => onDelete(row.id)} item={row} options={[]} editPermissionRule={{ action: 'update', subject: 'total-employee' }} deletePermissionRule={{ action: 'delete', subject: 'totalemployee' }} />
         </Fragment>
       )
     }

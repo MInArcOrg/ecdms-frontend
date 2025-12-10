@@ -53,7 +53,10 @@ const GeneralMasterCard = ({
                     throw new Error('Function not implemented.');
                   }}
                 />
-                <RowOptions onEdit={onEdit} onDelete={() => onDelete(generalMaster.id)} item={generalMaster} options={[]} />
+                <RowOptions onEdit={onEdit} onDelete={() => onDelete(generalMaster.id)} item={generalMaster} options={[]}
+
+                  editPermissionRule={{ action: 'update', subject: `${module}type` }} deletePermissionRule={{ action: 'delete', subject: `${module}type` }}
+                />
               </Fragment>
             </CardActions>
           </Grid>

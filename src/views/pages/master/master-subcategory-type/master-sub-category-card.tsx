@@ -64,7 +64,16 @@ const MasterSubCategoryCard = ({
                         throw new Error('Function not implemented.');
                       }}
                     />
-                    <RowOptions onEdit={onEdit} onDelete={() => onDelete(masterSubCategory.id)} item={masterSubCategory} options={[]} />
+                    <RowOptions onEdit={onEdit} onDelete={() => onDelete(masterSubCategory.id)} item={masterSubCategory} options={[]}
+                      deletePermissionRule={{
+                        action: 'delete',
+                        subject: model + 'category'
+                      }}
+                      editPermissionRule={{
+                        action: 'edit',
+                        subject: model + 'category'
+                      }}
+                    />
                   </Box>
                 </Box>
               </Fragment>

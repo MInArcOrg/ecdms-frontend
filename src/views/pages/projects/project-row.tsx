@@ -98,7 +98,8 @@ export const projectColumns = (
               throw new Error('Function not implemented.');
             }}
           />
-          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
+          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} deletePermissionRule={{ action: 'delete', subject: 'project' }} editPermissionRule={{ action: 'update', subject: 'project' }}
+            item={row} options={[]} />
         </Fragment>
       )
     }

@@ -3,7 +3,7 @@ import { IconButton, Menu, MenuItem } from '@mui/material';
 import { Icon } from '@iconify/react';
 import DeleteConfirmationDialog from '../dialog/delete-confirmation-dialog';
 import { AbilityRule } from 'src/types/general/permission';
-import { AbilityContext } from 'src/layouts/components/acl/Can';
+import Can, { AbilityContext } from 'src/layouts/components/acl/Can';
 
 interface RowOption {
   name: string;
@@ -75,18 +75,18 @@ const RowOptions = <T,>({ item, options, onEdit, onDelete, deletePermissionRule,
             {option.name}
           </MenuItem>
         ))}
-        {onEdit && ability.can(editPermissionRule?.action, editPermissionRule?.subject) && (
+        {onEdit && <Can do={editPermissionRule?.action} on={editPermissionRule?.subject}>
           <MenuItem onClick={handleEdit} sx={{ '& svg': { mr: 2 } }}>
             <Icon icon="tabler:edit" fontSize={20} />
             Edit
           </MenuItem>
-        )}
-        {onDelete && ability.can(deletePermissionRule?.action, deletePermissionRule?.subject) && (
+        </Can>}
+        {onDelete && <Can do={deletePermissionRule?.action} on={deletePermissionRule?.subject}>
           <MenuItem onClick={handleOpenDeleteDialog} sx={{ '& svg': { mr: 2 } }}>
             <Icon icon="tabler:trash" fontSize={20} />
             Delete
           </MenuItem>
-        )}
+        </Can>}
       </Menu>
       <DeleteConfirmationDialog
         handleClose={handleCloseDeleteDialog}

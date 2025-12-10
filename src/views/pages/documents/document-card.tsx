@@ -64,7 +64,7 @@ const DocumentCard = ({
                         throw new Error('Function not implemented.');
                       }}
                     />
-                    <RowOptions onEdit={onEdit} onDelete={() => onDelete(document.id)} item={document} options={[]} />
+                    <RowOptions onEdit={onEdit} onDelete={() => onDelete(document.id)} item={document} options={[]} deletePermissionRule={{ action: 'delete', subject: 'document' }} editPermissionRule={{ action: 'update', subject: 'document' }} />
                   </Box>
                 </Box>
               </Fragment>

@@ -69,7 +69,7 @@ export const subDepartmentColumns = (
               throw new Error('Function not implemented.');
             }}
           />
-          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
+          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} editPermissionRule={{ action: 'update', subject: 'department' }} deletePermissionRule={{ action: 'delete', subject: 'department' }} />
         </Fragment>
       )
     }
