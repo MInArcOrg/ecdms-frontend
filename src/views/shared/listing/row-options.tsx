@@ -1,8 +1,8 @@
-import React, { useState, MouseEvent, useContext } from 'react';
-import { IconButton, Menu, MenuItem } from '@mui/material';
 import { Icon } from '@iconify/react';
-import DeleteConfirmationDialog from '../dialog/delete-confirmation-dialog';
+import { IconButton, Menu, MenuItem } from '@mui/material';
+import { MouseEvent, useState } from 'react';
 import { AbilityRule } from 'src/types/general/permission';
+import DeleteConfirmationDialog from '../dialog/delete-confirmation-dialog';
 import Can, { AbilityContext } from 'src/layouts/components/acl/Can';
 import toast from 'react-hot-toast';
 
@@ -25,7 +25,6 @@ interface RowOptionsProps<T> {
 const RowOptions = <T,>({ item, options, onEdit, onDelete, deletePermissionRule, editPermissionRule }: RowOptionsProps<T>) => {
   const [isDeleteDialogOpen, setDeleteDialogOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const ability = useContext(AbilityContext);
 
   const handleOpenDeleteDialog = () => setDeleteDialogOpen(true);
   const handleCloseDeleteDialog = () => setDeleteDialogOpen(false);

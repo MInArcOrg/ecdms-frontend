@@ -48,7 +48,7 @@ const DocumentFilterItems: React.FC<DocumentFilterItemsProps> = ({ formik }) => 
                 <CustomSelect
                     size="small"
                     name="documentcategory_id"
-                    label={transl('document.form.documentcategory_id')}
+                    label={transl('document.form.category')}
                     options={
                         documentCategories?.payload?.map((documentCategory) => ({
                             value: documentCategory.id,
@@ -61,12 +61,14 @@ const DocumentFilterItems: React.FC<DocumentFilterItemsProps> = ({ formik }) => 
                 <CustomSelect
                     size="small"
                     name="documentsubcategory_id"
-                    label={transl('document.form.documentsubcategory_id')}
+                    label={transl('document.form.sub-category')}
                     options={
-                        documentSubCategories?.payload?.map((documentCategory) => ({
-                            value: documentCategory.id,
-                            label: documentCategory.title
-                        })) || []
+                        (documentSubCategories?.payload)
+                            ? documentSubCategories?.payload?.map((documentSubCategory) => ({
+                                value: documentSubCategory.id,
+                                label: documentSubCategory.title
+                            }))
+                            : [] || []
                     }
                 />
             </Box>
