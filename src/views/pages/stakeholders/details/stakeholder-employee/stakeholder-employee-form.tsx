@@ -79,7 +79,7 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({ formik, departments, positi
         <CustomPhoneInput fullWidth label={t('stakeholder.employee.phone')} name="phone" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholder.employee.email')} name="email" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.employee.email')} name="email" type='email' size="small" sx={{ mb: 2 }} />
       </Grid>
     </Grid>
   );

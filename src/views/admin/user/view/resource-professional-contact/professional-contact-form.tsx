@@ -19,7 +19,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formik }) => {
         <CustomTextBox fullWidth label={t('resources.professional.contact.phone')} name="phone_no" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('resources.professional.contact.email')} name="email" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('resources.professional.contact.email')} name="email" type="email" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
         <CustomTextBox fullWidth label={t('resources.professional.contact.website')} name="website" size="small" sx={{ mb: 2 }} />

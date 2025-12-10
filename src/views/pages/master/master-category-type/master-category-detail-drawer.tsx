@@ -4,13 +4,13 @@ import { useRouter } from 'next/router';
 
 import { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import masterCategoryApiService from 'src/services/master-data/master-type-service';
 import { MasterCategory } from 'src/types/master/master-types';
 import { capitalizeFirstLetter } from 'src/utils/string';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import RowOptions from 'src/views/shared/listing/row-options';
+import MasterCategoryDrawer from './master-category-drawer';
 
 interface MasterCategoryDetailDrawerProps {
   masterCategory: MasterCategory;
@@ -18,6 +18,9 @@ interface MasterCategoryDetailDrawerProps {
   model: string;
   open: boolean;
   handleClose: () => void;
+  typeId: string;
+  onEdit: (category: MasterCategory) => void;
+  onDelete: (id: string) => void;
 }
 
 const DetailRow = ({ label, value }: { label: string; value: React.ReactNode }) => (
@@ -29,23 +32,10 @@ const DetailRow = ({ label, value }: { label: string; value: React.ReactNode }) 
   </Box>
 );
 
-const MasterCategoryDetailDrawer: React.FC<MasterCategoryDetailDrawerProps> = ({ masterCategory, refetch, model, open, handleClose }) => {
+const MasterCategoryDetailDrawer: React.FC<MasterCategoryDetailDrawerProps> = ({ masterCategory, refetch, model, open, handleClose, typeId, onEdit, onDelete }) => {
   const router = useRouter();
 
   const { t } = useTranslation();
-  const [showDrawer, setShowDrawer] = useState<boolean>(false);
-  const toggleDrawer = () => {
-    setShowDrawer(!showDrawer);
-  };
-
-  async function handleDelete(id: string): Promise<void> {
-    await masterCategoryApiService.delete(model, id);
-    router.push(`/master-data/${model}`);
-  }
-
-  const handleEdit = () => {
-    toggleDrawer();
-  };
 
   return (
     <CustomSideDrawer title={`master-category-detail`} handleClose={handleClose} open={open}>
@@ -53,6 +43,7 @@ const MasterCategoryDetailDrawer: React.FC<MasterCategoryDetailDrawerProps> = ({
         <Card>
           <CardContent>
             <Fragment>
+
               {
                 <Box>
                   <DetailRow label={t('Title')} value={masterCategory?.title} />
@@ -66,13 +57,13 @@ const MasterCategoryDetailDrawer: React.FC<MasterCategoryDetailDrawerProps> = ({
                       model={`${capitalizeFirstLetter(model)}type`}
                       model_id={masterCategory?.id}
                       refetchModel={refetch}
-                      resubmit={() => {}}
+                      resubmit={() => { }}
                       title={''}
-                      postAction={() => {}}
+                      postAction={() => { }}
                     />
                     <RowOptions
-                      onEdit={handleEdit}
-                      onDelete={() => handleDelete(masterCategory.id)}
+                      onEdit={onEdit}
+                      onDelete={() => onDelete(masterCategory.id)}
                       item={masterCategory}
                       options={[]}
                       deletePermissionRule={{

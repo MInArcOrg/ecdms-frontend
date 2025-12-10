@@ -49,7 +49,8 @@ function ProjectList({
     handlePageChange,
     refetch,
     handleExport,
-    handleFilter
+    handleFilter,
+    handleSearch
   } = usePaginatedFetch<Project[]>({
     queryKey: ['projects', String(typeId)],
     fetchFunction: fetchProjects,
@@ -168,7 +169,15 @@ function ProjectList({
                 onFilter: handleFilter,
                 component: ProjectFilterItems
               },
-
+              search: {
+                enabled: true,
+                searchKeys: ['project_name'],
+                permission: {
+                  action: "read",
+                  subject: "project",
+                },
+                onSearch: handleSearch,
+              },
             }
           }
           fetchDataFunction={refetch}

@@ -17,7 +17,11 @@ interface SubDepartmentDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  name: yup.string().max(50).required(),
+  name: yup
+    .string()
+    .max(50, 'Name must be at most 50 characters')
+    .matches(/^[A-Za-z0-9 ]+$/, 'Name cannot contain special characters')
+    .required('Name is required'),
   description: yup.string().max(100).nullable()
 });
 

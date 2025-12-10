@@ -120,7 +120,6 @@ const ItemsListing = <T extends object>({
   };
 
   const adjustedType = getAdjustedListingType(type, isSmallScreen);
-  console.log('export feature', features)
   const listingComponents = {
     [ITEMS_LISTING_TYPE.masonry.value]: ItemViewComponent && <MasonryListing ItemViewComponent={ItemViewComponent} items={items} />,
     [ITEMS_LISTING_TYPE.list.value]: ItemViewComponent && <ListListing ItemViewComponent={ItemViewComponent} items={items} />,

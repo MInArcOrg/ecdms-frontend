@@ -38,7 +38,6 @@ const MasterCategoryDrawer = (props: MasterCategoryDrawerType) => {
     const payload = {
       data: {
         ...values,
-        id: masterData?.id,
         [`${props.model}type_id`]: props.typeId
       },
       files: []

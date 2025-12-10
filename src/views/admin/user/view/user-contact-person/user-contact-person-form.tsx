@@ -37,7 +37,7 @@ const UserContactPersonForm: React.FC<UserContactPersonFormProps> = ({ formik })
         <CustomPhoneInput fullWidth label={t('department.user.contact-person.phoneNo')} name="phone_no" size="small" />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('department.user.contact-person.email')} name="email" size="small" />
+        <CustomTextBox fullWidth label={t('department.user.contact-person.email')} name="email" type='email' size="small" />
       </Grid>
     </Grid>
   );

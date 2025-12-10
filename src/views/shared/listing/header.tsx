@@ -59,7 +59,7 @@ interface ListHeaderProps {
 const ListHeader = (props: ListHeaderProps) => {
   const { title, features } = props;
 
-  const { filter, export: exportFeature } = features
+  const { filter, export: exportFeature, search } = features
   // ** Props
   const [filterOpen, setFilterOpen] = useState<boolean>(false);
   const toggleFilter = () => {
@@ -92,8 +92,8 @@ const ListHeader = (props: ListHeaderProps) => {
     }
 
     const newTimerId = setTimeout(() => {
-      performSearch(term);
-    }, 3000);
+      search?.onSearch?.(term, features?.search?.searchKeys || []);
+    }, 2000);
 
     setTimerId(newTimerId);
   };
@@ -159,16 +159,14 @@ const ListHeader = (props: ListHeaderProps) => {
             alignItems: 'center'
           }}
         >
-          <Box>
-            {props.hasSearch && (
-              <CustomTextField
-                value={searchTerm}
-                sx={{ mr: 4 }}
-                placeholder={'Search ' + transl(props.title)}
-                onChange={handleSearchChange}
-              />
-            )}
-          </Box>
+          {search?.enabled && (
+            <CustomTextField
+              value={searchTerm}
+              sx={{ mr: 4 }}
+              placeholder={"Search " + transl(title)}
+              onChange={handleSearchChange}
+            />
+          )}
           <Box
             sx={{
               rowGap: 2,

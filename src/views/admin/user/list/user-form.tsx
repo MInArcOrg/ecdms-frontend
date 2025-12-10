@@ -44,6 +44,7 @@ const UserForm: React.FC<UserFormProps> = ({ formik, departmentId, isEdit }) => 
       formik.setFieldValue('department_id', departmentId);
     }
   }, [departmentId, formik.values.department_id]);
+  console.log('user form', formik.values)
   return (
     <Grid container spacing={gridSpacing}>
       {/* First & Middle Name */}

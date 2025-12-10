@@ -12,7 +12,8 @@ const MasterCategoryCard = ({
   onDelete,
   refetch,
   onCategorySelect,
-  selectedCategory
+  selectedCategory,
+  typeId
 }: {
   masterCategory: MasterCategory;
   model: string;
@@ -22,6 +23,7 @@ const MasterCategoryCard = ({
   refetch: () => void;
   onCategorySelect: (id: string) => void;
   selectedCategory: MasterCategory | null;
+  typeId: string;
 }) => {
   const [showDetailDrawer, setShowDetailDrawer] = useState<boolean>(false);
   const toggleDrawer = () => {
@@ -60,6 +62,9 @@ const MasterCategoryCard = ({
           model={model}
           open={showDetailDrawer}
           refetch={refetch}
+          typeId={typeId}
+          onEdit={onEdit}
+          onDelete={onDelete}
         />
       </Box>
     </Fragment>

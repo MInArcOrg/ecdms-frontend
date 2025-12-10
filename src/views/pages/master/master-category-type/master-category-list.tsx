@@ -10,6 +10,7 @@ import { MasterCategory, MasterType } from 'src/types/master/master-types';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
 import MasterCategoryCard from './master-category-card';
+import MasterCategoryDetailDrawer from './master-category-detail-drawer';
 import MasterCategoryDrawer from './master-category-drawer';
 
 interface MasterCategoryListProps {
@@ -26,13 +27,19 @@ const MasterCategoryList: React.FC<MasterCategoryListProps> = ({ model, selected
       filter: { ...params.filter, [`${model}type_id`]: selectedType?.id }
     });
   };
-  const [showDrawer, setShowDrawer] = useState<boolean>();
+  const [showDetailDrawer, setShowDetailDrawer] = useState<boolean>();
+  const [showFormDrawer, setShowFormDrawer] = useState<boolean>(false);
+
   const [selectedRow, setSelectedRow] = useState<MasterCategory | null>(null);
   const { t } = useTranslation();
 
-  const toggleDrawer = () => {
+  const toggleDetailDrawer = () => {
     setSelectedRow({} as MasterCategory);
-    setShowDrawer(!showDrawer);
+    setShowDetailDrawer(!showDetailDrawer);
+  };
+  const toggleFormDrawer = () => {
+    setSelectedRow({} as MasterCategory);
+    setShowFormDrawer(!showFormDrawer);
   };
   const {
     data: categorys,
@@ -47,21 +54,37 @@ const MasterCategoryList: React.FC<MasterCategoryListProps> = ({ model, selected
 
   const handleDelete = async (masterCategoryId: string) => {
     await masterCategoryApiService.delete(model, masterCategoryId);
+    setShowDetailDrawer(false);
+    refetch();
+
   };
   const handleEdit = (masterCategory: MasterCategory) => {
-    toggleDrawer();
+    toggleFormDrawer();
     setSelectedRow(masterCategory);
   };
+
   return (
     <Fragment>
-      {showDrawer && (
+      {showFormDrawer && (
         <MasterCategoryDrawer
           typeId={selectedType?.id}
           model={model}
-          open={showDrawer}
-          toggle={toggleDrawer}
+          open={showFormDrawer}
+          toggle={toggleFormDrawer}
           masterData={selectedRow as MasterCategory}
           refetch={refetch}
+        />
+      )}
+      {showDetailDrawer && (
+        <MasterCategoryDetailDrawer
+          typeId={selectedType?.id || ""}
+          model={model}
+          open={showDetailDrawer}
+          handleClose={toggleDetailDrawer}
+          masterCategory={selectedRow as MasterCategory}
+          refetch={refetch}
+          onDelete={handleDelete}
+          onEdit={handleEdit}
         />
       )}
       <Card>
@@ -73,7 +96,7 @@ const MasterCategoryList: React.FC<MasterCategoryListProps> = ({ model, selected
             isLoading={isLoading}
             createActionConfig={{
               ...defaultCreateActionConfig,
-              onClick: toggleDrawer,
+              onClick: toggleFormDrawer,
               onlyIcon: false,
               permission: {
                 action: 'create',
@@ -89,6 +112,7 @@ const MasterCategoryList: React.FC<MasterCategoryListProps> = ({ model, selected
                 onEdit={handleEdit}
                 refetch={refetch}
                 t={t}
+                typeId={selectedType?.id || ''}
                 selectedCategory={selectedCategory}
               />
             )}

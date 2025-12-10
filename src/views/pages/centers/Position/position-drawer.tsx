@@ -17,7 +17,7 @@ interface PositionDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  name: yup.string().max(36).required(),
+  name: yup.string().max(36).required().matches(/^[A-Za-z0-9 ]+$/, 'Name cannot contain special characters'),
   description: yup.string().max(100).nullable()
 });
 

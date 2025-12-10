@@ -18,8 +18,8 @@ const ConfirmationDialog: ComponentType<ConfirmationDialogProps> = ({ open, hand
           <DialogContentText id="alert-dialog-description">{content}</DialogContentText>
         </DialogContent>
         <DialogActions className="dialog-actions-dense">
-          <Button onClick={onCancel}>Disagree</Button>
-          <Button onClick={onConfirm}>Agree</Button>
+          <Button onClick={onCancel}>No</Button>
+          <Button onClick={onConfirm}>Yes</Button>
         </DialogActions>
       </Dialog>
     </Fragment>

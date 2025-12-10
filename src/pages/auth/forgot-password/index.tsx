@@ -104,6 +104,7 @@ const ForgotPassword = () => {
                 autoFocus
                 label={t('forgot-password.input-labels.email')}
                 name="email"
+                type='email'
                 placeholder="example@example.com"
                 error={Boolean(touched.email && errors.email)}
                 helperText={touched.email && errors.email}

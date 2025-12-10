@@ -36,6 +36,7 @@ export const MuiPhone: React.FC<MUIPhoneProps> = ({ value, onChange, ...restProp
             <Select
               MenuProps={{}}
               value={country.iso2}
+              disabled
               onChange={(e) => setCountry(e.target.value as CountryIso2)}
               renderValue={(value) => <FlagImage iso2={value} style={{ display: 'flex' }} />}
               sx={{ maxWidth: '75px' }}

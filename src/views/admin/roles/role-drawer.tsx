@@ -17,7 +17,8 @@ interface RoleDrawerType {
 
 const validationSchema = yup.object().shape({
   name: yup.string().max(36).required(),
-  description: yup.string().max(100).nullable()
+  description: yup.string().max(100).nullable(),
+
 });
 const RoleDrawer = (props: RoleDrawerType) => {
   // ** Props

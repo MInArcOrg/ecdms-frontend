@@ -11,20 +11,94 @@ import { IApiResponse } from 'src/types/requests';
 import { parseError } from 'src/utils/parse/clean-error';
 import * as Yup from 'yup';
 import Can from 'src/layouts/components/acl/Can';
-
+import ConfirmationDialog from 'src/views/shared/dialog/confirmation-dialog';
 
 interface ActionFormProps {
   actionType: string;
   model_id: string;
   model: string;
   refetchAction: () => void;
-  toggleDrawer: () => void;
+  toggleDrawer?: () => void;
 }
 
 const ActionForm: React.FC<ActionFormProps> = ({ actionType, model_id, model, refetchAction }) => {
   const [actionData, setActionData] = useState<any>();
   const [actionLoading, setActionLoading] = useState(false);
-  actionData;
+
+  // Confirmation dialog states
+  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
+  const [confirmType, setConfirmType] = useState<'main' | 'reject'>('main');
+
+  const openConfirmDialog = (type: 'main' | 'reject') => {
+    setConfirmType(type);
+    setIsConfirmDialogOpen(true);
+  };
+
+  const handleCloseConfirmDialog = () => {
+    setIsConfirmDialogOpen(false);
+  };
+
+  // MAIN ACTION
+  const performMainAction = async (values: any) => {
+    setActionLoading(true);
+    try {
+      const res = await modelActionApiService.performCAActions(
+        {
+          data: { model_id, model } as ModelAction,
+          files: []
+        },
+        actionType
+      );
+
+      const data: ModelAction = res.payload;
+      setActionData(data);
+
+      // Add note
+      if (values.description.length > 0) {
+        await modelActionApiService.addCAActionNote({
+          data: {
+            ...values,
+            model: 'actionstate',
+            model_id: data.id
+          } as Note,
+          files: []
+        });
+      }
+
+      toast.success(`${model} successfully ${actionType}!`);
+      refetchAction();
+    } catch (error) {
+      const backendErrors = parseError(error as IApiResponse);
+      if (backendErrors?.message) {
+        toast.error(backendErrors.message);
+      }
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
+  // REJECT ACTION
+  const rejectModel = async () => {
+    setActionLoading(true);
+    try {
+      const res = await modelActionApiService.performCAActions(
+        {
+          data: { model_id, model } as ModelAction,
+          files: []
+        },
+        REQUEST_REJECT
+      );
+      setActionData(res);
+      refetchAction();
+      toast.success(`${model} rejected!`);
+    } catch (error) {
+      console.log('error', error);
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
+  // FORMIK
   const validation = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -33,47 +107,8 @@ const ActionForm: React.FC<ActionFormProps> = ({ actionType, model_id, model, re
     validationSchema: Yup.object({
       description: Yup.string().required('Description is required')
     }),
-    onSubmit: async (values) => {
-      setActionLoading(true);
-      try {
-        modelActionApiService
-          .performCAActions(
-            {
-              data: {
-                model_id,
-                model
-              } as ModelAction,
-              files: []
-            },
-            actionType
-          )
-          .then(async (res) => {
-            const data: ModelAction = res.payload;
-            setActionData(data);
-            if (values.description.length > 0) {
-              await modelActionApiService.addCAActionNote({
-                data: {
-                  ...values,
-                  model: 'actionstate',
-                  model_id: data.id
-                } as Note,
-                files: []
-              });
-            }
-            toast.success(`${model} 'successfully' ${actionType}!`);
-            refetchAction();
-          })
-          .catch((error) => {
-            const backendErrors = parseError(error as IApiResponse);
-            if (backendErrors?.message) {
-              toast.error(backendErrors.message);
-            }
-          });
-      } catch (error) {
-        console.log('error', error);
-      } finally {
-        setActionLoading(false);
-      }
+    onSubmit: () => {
+      openConfirmDialog('main');
     }
   });
 
@@ -81,46 +116,17 @@ const ActionForm: React.FC<ActionFormProps> = ({ actionType, model_id, model, re
     validation.setFieldValue('description', '');
   }, []);
 
-  const rejectModel = async () => {
-    setActionLoading(true);
-    try {
-      const res = await modelActionApiService.performCAActions(
-        {
-          data: {
-            model_id,
-            model
-          } as ModelAction,
-          files: []
-        },
-        REQUEST_REJECT
-      );
-      setActionData(res);
-      refetchAction();
-    } catch (error) {
-      console.log('error', error);
-    } finally {
-      setActionLoading(false);
+  // FINAL CONFIRM ACTION
+  const handleConfirm = async () => {
+    handleCloseConfirmDialog();
+
+    if (confirmType === 'main') {
+      await performMainAction(validation.values);
+    } else {
+      await rejectModel();
     }
   };
 
-  // const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
-
-  // const selectFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setSelectedFile(event.target.files ? event.target.files[0] : undefined);
-  // };
-
-  // const upload = async () => {
-  //   if (!selectedFile || !actionData?.id) return;
-  //   try {
-  //     await uploadFiles(selectedFile, actionType.toUpperCase(), actionData.id, null, null);
-  //     await refetchAction();
-  //     alert('Image upload success');
-  //   } catch (error) {
-  //     console.log('error', error);
-  //     alert('Could not upload the file!');
-  //   }
-  // };
-console.log('actionType.toLocaleLowerCase',actionType.toLocaleLowerCase(),model)
   return (
     <>
       <form
@@ -130,6 +136,21 @@ console.log('actionType.toLocaleLowerCase',actionType.toLocaleLowerCase(),model)
           validation.handleSubmit();
         }}
       >
+        {/* CONFIRMATION DIALOG */}
+        <ConfirmationDialog
+          open={isConfirmDialogOpen}
+          handleClose={handleCloseConfirmDialog}
+          onConfirm={handleConfirm}
+          onCancel={handleCloseConfirmDialog}
+          title="Confirm Action"
+          content={
+            confirmType === 'main'
+              ? `Are you sure you want to ${actionType} this item?`
+              : `Are you sure you want to reject this item?`
+          }
+        />
+
+        {/* NOTE FIELD */}
         <FormControl fullWidth variant="outlined" sx={{ mb: 3 }}>
           <FormLabel component="legend">Note</FormLabel>
           <OutlinedInput
@@ -148,26 +169,35 @@ console.log('actionType.toLocaleLowerCase',actionType.toLocaleLowerCase(),model)
             <FormHelperText error>{validation.errors.description}</FormHelperText>
           )}
         </FormControl>
-        <Can do={actionType}  on={model.toLocaleLowerCase()}>
-        <LoadingButton
-          variant="outlined"
-          color="primary"
-          type="submit"
-          sx={{ mr: 2 }}
-          disabled={validation.isSubmitting}
-          loading={validation.isSubmitting}
-        >
-          {actionType}
-        </LoadingButton>
+
+        {/* MAIN ACTION BUTTON */}
+        <Can do={actionType} on={model.toLocaleLowerCase()}>
+          <LoadingButton
+            variant="outlined"
+            color="primary"
+            type="submit"
+            sx={{ mr: 2 }}
+            loading={actionLoading}
+          >
+            {actionType}
+          </LoadingButton>
         </Can>
-        <Can do={actionType}  on={model.toLocaleLowerCase()}>
-        <Button variant="outlined" color="error" onClick={rejectModel}>
-          Reject
-        </Button>
+
+        {/* REJECT BUTTON */}
+        <Can do={actionType} on={model.toLocaleLowerCase()}>
+          <Button
+            variant="outlined"
+            color="error"
+            onClick={() => openConfirmDialog('reject')}
+          >
+            Reject
+          </Button>
         </Can>
       </form>
+
+      {/* BACKDROP LOADING */}
       <Backdrop
-        open={actionLoading || actionLoading}
+        open={actionLoading}
         transitionDuration={250}
         sx={{
           position: 'absolute',

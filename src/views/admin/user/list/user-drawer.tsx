@@ -8,6 +8,7 @@ import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import UserForm from './user-form';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import { isAtLeastAge } from 'src/utils/validator/age';
 
 interface UserDrawerType {
   open: boolean;
@@ -18,10 +19,10 @@ interface UserDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  first_name: yup.string().max(36).required(),
-  middle_name: yup.string().max(36).nullable(),
-  last_name: yup.string().max(36).required(),
-  birth_date: yup.string().nullable(),
+  first_name: yup.string().max(36).required().matches(/^[A-Za-z0-9 ]+$/, 'First Name cannot contain special characters'),
+  middle_name: yup.string().max(36).nullable().matches(/^[A-Za-z0-9 ]+$/, 'Middle Name cannot contain special characters'),
+  last_name: yup.string().max(36).required().matches(/^[A-Za-z0-9 ]+$/, 'Last Name cannot contain special characters'),
+  birth_date: yup.string().test("is-18", "User must be at least 18 years old", isAtLeastAge(18)).required(),
   email: yup.string().email().required(),
   phone: yup.number().required().min(10),
   gender: yup.string().required(),
@@ -78,7 +79,8 @@ const UserDrawer = (props: UserDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...user,
-            birth_date: formatInitialDateDate(user?.birth_date)
+            birth_date: formatInitialDateDate(user?.birth_date),
+            marital_status: user?.marital_status ? 1 : 0
           }}
           createActionFunc={isEdit ? editUser : createUser}
           onActionSuccess={onActionSuccess}

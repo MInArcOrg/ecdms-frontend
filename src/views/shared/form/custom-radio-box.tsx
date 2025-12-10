@@ -1,15 +1,18 @@
 import { FormHelperText, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material';
 import { useField, useFormikContext } from 'formik';
 import React from 'react';
+import { useRequiredFields } from 'src/context/required-fields-context';
 
 const CustomRadioBox: React.FC<any> = ({ name, label, options, ...otherProps }) => {
   const [field, meta] = useField(name);
   const { isSubmitting } = useFormikContext();
   const hasError = !!(meta.touched && meta.error);
+  const requiredFields = useRequiredFields();
 
+  const isRequired = requiredFields.includes(name);
   return (
     <FormControl component="fieldset" fullWidth>
-      {label && <FormLabel component="legend">{label}</FormLabel>}
+      {label && <FormLabel component="legend" required={isRequired}>{label}</FormLabel>}
       <RadioGroup name={name} value={field.value} onChange={field.onChange} onBlur={field.onBlur} {...otherProps}>
         {options.map((option: any) => (
           <FormControlLabel
