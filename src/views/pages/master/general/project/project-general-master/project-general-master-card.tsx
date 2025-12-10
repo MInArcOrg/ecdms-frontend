@@ -21,7 +21,6 @@ const ProjectGeneralMasterCard = ({
   t: any;
   refetch: () => void;
 }) => {
-  console.log('projectMasterModel.dbModel', projectMasterModel.dbModel)
   return (
     <Fragment>
       <CardContent>
@@ -43,7 +42,7 @@ const ProjectGeneralMasterCard = ({
               <Fragment>
                 <FileDrawer id={projectGeneralMaster.id} type={projectMasterModel.fileType} /> &nbsp;
                 <ModelActionComponent
-                  model={projectMasterModel.dbModel}
+                  model={'projectmasterdata'}
                   model_id={projectGeneralMaster.id}
                   refetchModel={refetch}
                   resubmit={function (): void {
@@ -61,11 +60,11 @@ const ProjectGeneralMasterCard = ({
                   options={[]}
                   deletePermissionRule={{
                     action: 'delete',
-                    subject: projectMasterModel.dbModel
+                    subject: 'projectmasterdata'
                   }}
                   editPermissionRule={{
                     action: 'update',
-                    subject: projectMasterModel.dbModel
+                    subject: 'projectmasterdata'
                   }}
                 />
               </Fragment>

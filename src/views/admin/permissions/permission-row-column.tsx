@@ -19,87 +19,12 @@ import Icon from 'src/@core/components/icon';
 import moment from 'moment';
 import DeleteConfirmationDialog from 'src/views/shared/dialog/delete-confirmation-dialog';
 import Permission from 'src/types/admin/role/permission';
+import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
   row: Permission;
 }
 
-const RowOptions = ({
-  permission,
-  onEdit,
-  onDelete
-}: {
-  permission: Permission;
-  onEdit: (permission: Permission) => void;
-  onDelete: (id: string) => void;
-}) => {
-  // ** Hooks
-
-  const [isDeleteDialogOpen, setDeleteDialogOpen] = useState<boolean>(false);
-
-  const handleOpenDeleteDialog = () => setDeleteDialogOpen(true);
-  const handleCloseDeleteDialog = () => setDeleteDialogOpen(false);
-
-  const handleDelete = () => {
-    onDelete(permission.id);
-    handleCloseDeleteDialog();
-  };
-
-  // ** State
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
-  const rowOptionsOpen = Boolean(anchorEl);
-
-  const handleRowOptionsClick = (event: MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleRowOptionsClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleEdit = () => {
-    onEdit(permission);
-    handleRowOptionsClose();
-  };
-
-  return (
-    <>
-      <IconButton size="small" onClick={handleRowOptionsClick}>
-        <Icon icon="tabler:dots-vertical" />
-      </IconButton>
-      <Menu
-        keepMounted
-        anchorEl={anchorEl}
-        open={rowOptionsOpen}
-        onClose={handleRowOptionsClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right'
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right'
-        }}
-        PaperProps={{ style: { minWidth: '8rem' } }}
-      >
-        <MenuItem onClick={handleEdit} sx={{ '& svg': { mr: 2 } }}>
-          <Icon icon="tabler:edit" fontSize={20} />
-          Edit
-        </MenuItem>
-        <MenuItem onClick={handleOpenDeleteDialog} sx={{ '& svg': { mr: 2 } }}>
-          <Icon icon="tabler:trash" fontSize={20} />
-          Delete
-          <DeleteConfirmationDialog
-            handleClose={handleCloseDeleteDialog}
-            open={isDeleteDialogOpen}
-            onCancel={handleCloseDeleteDialog}
-            onConfirm={handleDelete}
-          />
-        </MenuItem>
-      </Menu>
-    </>
-  );
-};
 
 export const permissionColumns = (onEdit: (permission: Permission) => void, onDelete: (id: string) => void) =>
   [
@@ -149,6 +74,13 @@ export const permissionColumns = (onEdit: (permission: Permission) => void, onDe
       sortable: false,
       field: 'actions',
       headerName: 'Actions',
-      renderCell: ({ row }: CellType) => <RowOptions onEdit={onEdit} onDelete={onDelete} permission={row} />
+      renderCell: ({ row }: CellType) => <RowOptions item={row} onEdit={onEdit} onDelete={() => onDelete(row.id)}
+        deletePermissionRule={{
+          action: 'delete',
+          subject: 'permission'
+        }} editPermissionRule={{
+          action: 'update',
+          subject: 'permission'
+        }} />
     }
   ] as GridColDef[];

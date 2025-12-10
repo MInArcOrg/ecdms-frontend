@@ -9,6 +9,7 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import UserForm from './user-form';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 import { isAtLeastAge } from 'src/utils/validator/age';
+import { nameRule } from 'src/utils/validator/name';
 
 interface UserDrawerType {
   open: boolean;
@@ -19,9 +20,9 @@ interface UserDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  first_name: yup.string().max(36).required().matches(/^[A-Za-z0-9 ]+$/, 'First Name cannot contain special characters'),
-  middle_name: yup.string().max(36).nullable().matches(/^[A-Za-z0-9 ]+$/, 'Middle Name cannot contain special characters'),
-  last_name: yup.string().max(36).required().matches(/^[A-Za-z0-9 ]+$/, 'Last Name cannot contain special characters'),
+  first_name: nameRule.required("First Name is required"),
+  middle_name: nameRule.nullable(), // <--- Correctly applied
+  last_name: nameRule.required("Last Name is required"), //
   birth_date: yup.string().test("is-18", "User must be at least 18 years old", isAtLeastAge(18)).required(),
   email: yup.string().email().required(),
   phone: yup.number().required().min(10),

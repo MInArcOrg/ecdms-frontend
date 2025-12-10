@@ -8,9 +8,9 @@ interface CustomTextBoxProps {
   name: string;
   onValueChange?: (value: string | number) => void;
   type?: string;
-  allowSpecialChars?: boolean; // restrict special chars (except for email)
-  maxLength?: number; // single-line max length
-  multilineMaxLength?: number; // multiline max length
+  allowSpecialChars?: boolean;
+  maxLength?: number;
+  multilineMaxLength?: number;
   multiline?: boolean;
   [key: string]: any;
 }
@@ -28,36 +28,39 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
   const [field, meta, helpers] = useField(name);
   const { isSubmitting } = useFormikContext();
 
-  // pick the right length limit
   const effectiveMaxLength = multiline ? multilineMaxLength : maxLength;
   const requiredFields = useRequiredFields();
 
   const isRequired = requiredFields.includes(name);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let value: string | number = event.target.value;
 
     if (typeof value === 'string') {
-       if (value.length === 1 && value.startsWith(' ')) {
+
+      // prevent starting with space
+      if (value.length === 1 && value.startsWith(' ')) {
         value = '';
       }
-      // Restrict characters if not allowed
+
+      // block special chars if not allowed
       if (!allowSpecialChars) {
         if (type === 'email') {
-          // Allow email-specific characters
+          // allowed chars for email only
           value = value.replace(/[^a-zA-Z0-9@._\-+]/g, '');
         } else {
-          // Default alphanumeric + space only
-          value = value.replace(/[^a-zA-Z0-9\s./]/g, '');
+          // allow only alphanumeric + space
+          value = value.replace(/[^A-Za-z0-9 ]/g, '');
         }
       }
 
-      // Enforce max length
-      if (effectiveMaxLength && value.length > effectiveMaxLength) {
+      // enforce max length
+      if (value.length > effectiveMaxLength) {
         value = value.substring(0, effectiveMaxLength);
       }
     }
 
-    // Convert to number if type is number
+    // convert to number
     if (type === 'number') {
       value = event.target.value ? Number(value) : 0;
     }
@@ -83,6 +86,7 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
         }}
         multiline={multiline}
       />
+
       {(meta.touched || !isSubmitting) && meta.error && (
         <FormHelperText error id={`helper-text-${name}`}>
           {meta.error}

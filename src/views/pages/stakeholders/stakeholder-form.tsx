@@ -137,6 +137,8 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
         label={transl("stakeholder.form.tin")}
         placeholder={transl("stakeholder.form.tin")}
         name="tin"
+        maxLength={10}
+        minLength={10}
         size="small"
         sx={{ mb: 2 }}
       />
@@ -192,6 +194,7 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
                           placeholder={transl("stakeholder.form.email")}
                           name={`stakeholderemails[${index}].email`}
                           size="small"
+                          type="email"
                           sx={{ mb: 1 }}
                         />
                         <CustomSwitch

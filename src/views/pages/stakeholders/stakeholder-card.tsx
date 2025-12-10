@@ -31,7 +31,7 @@ const StakeholderCard = ({
       <CardActions style={{ justifyContent: "flex-end" }}>
         <Fragment>
           <Box>
-            <FileDrawer id={stakeholder.id} type={"RESOURCE"} /> &nbsp;
+            <FileDrawer id={stakeholder.id} type={'STAKEHOLDER'} /> &nbsp;
             <Box sx={{ display: "flex" }}>
               <ModelActionComponent
                 model="Stakeholder"

@@ -4,6 +4,7 @@ interface Position {
   name: string;
   description: string;
   department_id: string;
+  role_id: string;
   created_at: Date | string;
   quantity_needed: number;
 }

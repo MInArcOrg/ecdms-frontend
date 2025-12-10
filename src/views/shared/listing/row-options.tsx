@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react';
 import DeleteConfirmationDialog from '../dialog/delete-confirmation-dialog';
 import { AbilityRule } from 'src/types/general/permission';
 import Can, { AbilityContext } from 'src/layouts/components/acl/Can';
+import toast from 'react-hot-toast';
 
 interface RowOption {
   name: string;
@@ -28,10 +29,15 @@ const RowOptions = <T,>({ item, options, onEdit, onDelete, deletePermissionRule,
 
   const handleOpenDeleteDialog = () => setDeleteDialogOpen(true);
   const handleCloseDeleteDialog = () => setDeleteDialogOpen(false);
-  const handleDelete = () => {
+  const handleDelete = async () => {
     if (onDelete) {
-      onDelete();
-      handleCloseDeleteDialog();
+      try {
+        await onDelete();
+        toast.success(`item successfully deleted`);
+        handleCloseDeleteDialog();
+      } catch (err) {
+        toast.error(`item failed to delete`);
+      }
     }
   };
   const handleRowOptionsClick = (event: MouseEvent<HTMLElement>) => {

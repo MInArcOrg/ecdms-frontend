@@ -55,7 +55,7 @@ const MasterFlagAccordionMenu: React.FC<MasterFlagAccordionMenuProps> = ({ activ
                       borderRadius: '0.5rem',
                       '&.Mui-selected': { backgroundColor: 'primary.light', '&:hover': { backgroundColor: 'primary.light' } }
                     }}
-                    selected={router.asPath.startsWith(type.path)}
+                    selected={router.asPath == type.path + '/'}
                     onClick={() => handleSubMenuItemClick(type.path)}
                   >
                     <Icon icon="tabler:chevron-right" fontSize="1rem" />

@@ -86,7 +86,7 @@ const ResourceGeneralMasterList: React.FC<ResourceGeneralMasterProps> = ({ resou
               onlyIcon: false,
               permission: {
                 action: 'create',
-                subject: resourceMasterModel.dbModel
+                subject: 'resourcemasterdata'
               }
             }}
             fetchDataFunction={refetch}

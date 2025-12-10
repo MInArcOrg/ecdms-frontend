@@ -42,7 +42,7 @@ const ResourceGeneralMasterCard = ({
               <Fragment>
                 <FileDrawer id={resourceGeneralMaster.id} type={resourceMasterModel.fileType} /> &nbsp;
                 <ModelActionComponent
-                  model={resourceMasterModel.dbModel}
+                  model={'resourcemasterdata'}
                   model_id={resourceGeneralMaster.id}
                   refetchModel={refetch}
                   resubmit={function (): void {
@@ -60,11 +60,11 @@ const ResourceGeneralMasterCard = ({
                   options={[]}
                   deletePermissionRule={{
                     action: 'delete',
-                    subject: resourceMasterModel.dbModel
+                    subject: 'resourcemasterdata'
                   }}
                   editPermissionRule={{
                     action: 'update',
-                    subject: resourceMasterModel.dbModel
+                    subject: 'resourcemasterdata'
                   }}
                 />
               </Fragment>
