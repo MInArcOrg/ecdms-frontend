@@ -20,7 +20,6 @@ export const MuiPhone: React.FC<MUIPhoneProps> = ({ value, onChange, ...restProp
     },
     defaultMask: '... ... ...'
   });
-
   return (
     <CustomTextField
       size="medium"

@@ -25,7 +25,7 @@ const validationSchema = yup.object().shape({
   last_name: nameRule.required("Last Name is required"), //
   birth_date: yup.string().test("is-18", "User must be at least 18 years old", isAtLeastAge(18)).required(),
   email: yup.string().email().required(),
-  phone: yup.number().required().min(10),
+  phone: yup.string().required().min(10),
   gender: yup.string().required(),
   marital_status: yup.string().required(),
   partner_name: yup.string().max(36).nullable(),

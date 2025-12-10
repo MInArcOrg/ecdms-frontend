@@ -12,7 +12,6 @@ const CustomPhoneInput: React.FC<any> = ({ label, ...props }) => {
     helpers.setValue(phone);
   };
   const requiredFields = useRequiredFields();
-
   const isRequired = requiredFields.includes(props.name);
   return (
     <>
