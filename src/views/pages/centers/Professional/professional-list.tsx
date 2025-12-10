@@ -78,7 +78,7 @@ function ProfessionalList({ parentDepartment }: { parentDepartment: Department }
             onlyIcon: false,
             permission: { action: 'create', subject: 'user' }
           }}
-          title={t('department.professional.title')}
+          title={t('department.expert.title')}
           fetchDataFunction={refetch}
           tableProps={{
             headers: userColumns(handleEdit, handleDelete, t, refetch, true)

@@ -80,7 +80,16 @@ export const userColumns = (
               throw new Error('Function not implemented.');
             }}
           />
-          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
+          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]}
+            deletePermissionRule={{
+              action: 'delete',
+              subject: 'user'
+            }}
+            editPermissionRule={{
+              action: 'update',
+              subject: 'user'
+            }}
+          />
         </Fragment>
       )
     }

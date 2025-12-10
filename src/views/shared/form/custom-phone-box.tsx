@@ -17,7 +17,7 @@ const CustomPhoneInput: React.FC<any> = ({ label, ...props }) => {
   return (
     <>
       <MuiPhone required={isRequired} {...props} label={label} value={field.value} onChange={handleChange} />
-      {meta.touched && meta.error && <FormHelperText error>{meta.error}</FormHelperText>}
+      {meta.error && <FormHelperText error>{meta.error}</FormHelperText>}
     </>
   );
 };

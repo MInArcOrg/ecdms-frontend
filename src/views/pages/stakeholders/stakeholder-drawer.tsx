@@ -38,9 +38,27 @@ const validationSchema = yup.object().shape({
   stakeholdercategory_id: yup.string().max(36).required("Category is required"),
   stakeholdersubcategory_id: yup.string().max(36).nullable(),
   trade_name: yup.string().max(255).required("Trade Name is required"),
-  tin: yup.string().max(255).required("TIN is required"),
+  tin: yup
+    .string()
+    .matches(/^\d+$/, "TIN must contain only numbers")
+    .length(10, "TIN must be exactly 10 digits")
+    .required("TIN is required"),
   origin: yup.string().max(255).required("Origin is required"),
-  license_issued_date: yup.string().nullable(),
+  license_issued_date: yup
+    .string()
+    .nullable()
+    .test("not-future", "Issued date cannot be in the future", (value) => {
+      if (!value) return true; // allow null
+      const selected = new Date(value);
+      const today = new Date();
+
+      // Remove time portion to compare only the date
+      selected.setHours(0, 0, 0, 0);
+      today.setHours(0, 0, 0, 0);
+
+      return selected <= today;
+    }),
+
   ownership_id: yup.string().max(36).required("Ownership is required"),
   businessfield_id: yup.string().max(36).nullable(),
   revision_no: yup.number().integer().nullable(),
@@ -48,7 +66,7 @@ const validationSchema = yup.object().shape({
 
 const StakeholderDrawer = (props: StakeholderDrawerType) => {
   // ** Props
-  const { open, toggle, refetch, stakeholder, typeId,type } = props;
+  const { open, toggle, refetch, stakeholder, typeId, type } = props;
 
   const { t } = useTranslation();
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
@@ -158,7 +176,7 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
     }
   };
 
-  const translatedTitle = t(`common.${isEdit ? 'edit' : 'create'}`)+" "+ type?.title+" "+t('stakeholder.title');
+  const translatedTitle = t(`common.${isEdit ? 'edit' : 'create'}`) + " " + type?.title + " " + t('stakeholder.title');
 
   return (
     <CustomSideDrawer
@@ -176,9 +194,9 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
             ...stakeholder,
             license_issued_date: stakeholder?.license_issued_date
               ? getDynamicDate(
-                  i18n,
-                  moment(String(stakeholder?.license_issued_date)).toDate(),
-                )
+                i18n,
+                moment(String(stakeholder?.license_issued_date)).toDate(),
+              )
               : undefined,
           }}
           createActionFunc={isEdit ? editResource : createResource}

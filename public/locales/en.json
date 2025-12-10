@@ -518,14 +518,14 @@
       "position": "Position"
     },
     "tabs": {
-      "professionals": "Professionals",
+      "experts": "Experts",
       "positions": "Positions",
       "sub-departments": "Sub Centers",
       "documents": "Documents",
       "structure": "Structure"
     },
-    "professional": {
-      "title": "Professionals"
+    "expert": {
+      "title": "Experts"
     },
     "user": {
       "form": {
@@ -547,14 +547,14 @@
         "contact-person": "Contact Person",
         "activity-log": "Activity Log"
       },
-      "title": "Users",
+      "title": "Experts",
       "male": "Male",
       "female": "Female",
       "single": "Single",
       "married": "Married",
 
-      "edit-user": "Edit User",
-      "create-user": "Add User",
+      "edit-user": "Edit Expert",
+      "create-user": "Add Expert",
       "education": {
         "title": "Education",
         "create": "Add Education",

@@ -45,8 +45,9 @@ function DataCollectionGuideList({ model }: { model: string }) {
     toggleDrawer();
     setSelectedRow(dataCollectionGuide);
   };
-  const handleDelete = (dataCollectionGuide: string) => {
-    // Handle delete logic
+  const handleDelete = async (dataCollectionGuide: string) => {
+    await dataCollectionGuideApiService.delete(dataCollectionGuide);
+    refetch();
   };
 
   return (

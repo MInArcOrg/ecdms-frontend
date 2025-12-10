@@ -119,7 +119,7 @@ const CentersLayout = ({ children, value, routes }: CentersLayoutProps) => {
                     <Tab value="2" component={Link} label={t('department.tabs.positions')} href={currentRoutes[1].path} />
                   )}
                   {ability.can('view', 'professional') && (
-                    <Tab value="3" component={Link} label={t('department.tabs.professionals')} href={currentRoutes[2].path} />
+                    <Tab value="3" component={Link} label={t('department.tabs.experts')} href={currentRoutes[2].path} />
                   )}
                   <Tab value="4" component={Link} label={t('department.tabs.documents')} href={currentRoutes[3].path} />
                 </TabList>

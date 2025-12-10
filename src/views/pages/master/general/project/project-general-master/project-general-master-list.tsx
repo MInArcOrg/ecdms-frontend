@@ -86,7 +86,7 @@ const ProjectGeneralMasterList: React.FC<ProjectGeneralMasterProps> = ({ project
               onlyIcon: false,
               permission: {
                 action: 'create',
-                subject: projectMasterModel.dbModel
+                subject: 'projectmasterdata'
               }
             }}
             fetchDataFunction={refetch}

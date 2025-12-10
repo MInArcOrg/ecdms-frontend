@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Fragment } from "react";
 import { Stakeholder } from "src/types/stakeholder";
 import { formatCreatedAt } from "src/utils/formatter/date";
+import FileDrawer from "src/views/components/custom/files-drawer";
 import ModelAction from "src/views/components/custom/model-actions";
 import RowOptions from "src/views/shared/listing/row-options";
 
@@ -76,6 +77,8 @@ export const StakeholderRow = (
       headerName: t("common.table-columns.actions"),
       renderCell: ({ row }: CellType) => (
         <Fragment>
+          <FileDrawer id={row.id} type={'STAKEHOLDER'} /> &nbsp;
+
           <ModelAction
             model="Stakeholder"
             model_id={row.id}

@@ -79,7 +79,7 @@ const CustomDynamicDatePicker: React.FC<CustomDynamicDatePickerProps> = ({ name,
   return (
     <>
       {renderPicker()}
-      {meta.touched && meta.error && (
+      {meta.error && (
         <FormHelperText error id="standard-weight-helper-text-user-title">
           {meta.error}
         </FormHelperText>
