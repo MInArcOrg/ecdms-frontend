@@ -65,7 +65,7 @@ const AclGuard = (props: AclGuardProps) => {
       // Creates the CASL ability instance from the rules
       // Casting is necessary to satisfy TypeScript's strict type checking between useQuery and CASL.
       fetchedRules.push({ action: 'view', subject: 'dashboard' });
-      fetchedRules.push({ action: 'manage', subject: 'all' })
+      // fetchedRules.push({ action: 'manage', subject: 'all' })
       return createMongoAbility(fetchedRules) as AppAbility;
     },
   });
