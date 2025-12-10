@@ -21,6 +21,7 @@ const ProjectGeneralMasterCard = ({
   t: any;
   refetch: () => void;
 }) => {
+  console.log('projectMasterModel.dbModel', projectMasterModel.dbModel)
   return (
     <Fragment>
       <CardContent>

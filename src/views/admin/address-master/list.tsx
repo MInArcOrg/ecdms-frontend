@@ -26,10 +26,10 @@ const AddressMasterList = ({ type, parentId, parentAddressMaster }: AddressMaste
   const fetchAddressMasters = (params: GetRequestParam): Promise<IApiResponse<AddressMaster[]>> => {
     return addressMasterApiService.getAll({
       ...params,
-      filter: { 
-        ...params.filter, 
+      filter: {
+        ...params.filter,
         type: type, // Uses the prop passed from View
-        parent_address_id: parentId, 
+        parent_address_id: parentId,
       }
     });
   };
@@ -50,12 +50,12 @@ const AddressMasterList = ({ type, parentId, parentAddressMaster }: AddressMaste
     setEditableItem({} as AddressMaster);
     setDrawerOpen(!drawerOpen);
   };
-  
+
   const handleEdit = (addressMaster: AddressMaster) => {
     toggleDrawer();
     setEditableItem(addressMaster);
   };
- 
+
 
   async function handleDelete(id: string): Promise<void> {
     await addressMasterApiService.delete(id);
@@ -79,7 +79,7 @@ const AddressMasterList = ({ type, parentId, parentAddressMaster }: AddressMaste
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
           onlyIcon: false,
-          permission: { action: 'create', subject: 'addressmaster' }
+          permission: { action: 'create', subject: 'addressmasterdata' }
         }}
       />
 

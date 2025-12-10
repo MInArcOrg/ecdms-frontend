@@ -58,8 +58,8 @@ export const addressMasterColumns = (
           onDelete={() => onDelete(row.id)}
           item={row}
           options={[]}
-          editPermissionRule={{ action: 'update', subject: 'address-master' }}
-          deletePermissionRule={{ action: 'delete', subject: 'address-master' }}
+          editPermissionRule={{ action: 'update', subject: 'addressmasterdata' }}
+          deletePermissionRule={{ action: 'delete', subject: 'addressmasterdata' }}
         />
       )
     }
