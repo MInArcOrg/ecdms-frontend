@@ -20,7 +20,7 @@ function StakeholderManagerIndex() {
 }
 
 StakeholderManagerIndex.acl = {
-  subject: 'resource',
+  subject: 'stakeholderownerormanager',
   action: 'view'
 };
 

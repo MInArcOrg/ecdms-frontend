@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 export const nameRule = yup
     .string()
-    .max(36, "Name must be 36 characters or less.")
+    .max(50, "Name must be 50 characters or less.")
     .trim() // Removes spaces at start and end
     .matches(/^[A-Za-z]+$/, "Only letters allowed, no spaces or special characters.")
     .transform((value) => {

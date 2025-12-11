@@ -168,7 +168,7 @@ const ManagerList: React.FC<ManagerListProps> = ({ stakeholderId }) => {
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'stakeholdermanager'
+            subject: 'stakeholderownerormanager'
           }
         }}
         fetchDataFunction={refetch}

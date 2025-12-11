@@ -7,6 +7,7 @@ import ManagerForm from './stakeholder-manager-form';
 import stakeholderManagerApiService from 'src/services/stakeholder/stakeholder-manager-service';
 import type { StakeholderManager } from 'src/types/stakeholder/stakeholder-manager';
 import type { IApiResponse } from 'src/types/requests';
+import { nameRule } from 'src/utils/validator/name';
 
 interface ManagerDrawerType {
   open: boolean;
@@ -20,13 +21,16 @@ const ManagerDrawer = (props: ManagerDrawerType) => {
   const { open, toggle, refetch, manager, stakeholderId } = props;
 
   const validationSchema = yup.object().shape({
-    first_name: yup.string().required('First name is required'),
-    last_name: yup.string().required('Last name is required'),
+    first_name: nameRule.required('First name is required'),
+    last_name: nameRule.required('Last name is required'),
     department: yup.string().required('Department is required'),
     birth_date: yup.date().required('Birth date is required'),
     gender: yup.string().required('Gender is required'),
     phone_no: yup.string().required('Phone number is required'),
-    email: yup.string().email('Invalid email').required('Email is required')
+    email: yup.string().email('Invalid email').required('Email is required'),
+    position: yup.string().required('Position is required').matches(/^[a-zA-Z ]+$/, 'Invalid position'),
+    nationality: yup.string().required('Nationality is required'),
+    national_id_no: yup.string().required('National ID number is required'),
   });
 
   const isEdit = Boolean(manager?.id);

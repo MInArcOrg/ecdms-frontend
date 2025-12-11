@@ -53,6 +53,7 @@ const UserForm: React.FC<UserFormProps> = ({ formik, departmentId, isEdit }) => 
           placeholder={transl('department.user.form.first_name')}
           name="first_name"
           size="small"
+
           sx={{ mb: 2 }}
         />
       </Grid>

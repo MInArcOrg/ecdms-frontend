@@ -9,6 +9,9 @@ import CustomDatePicker from 'src/views/shared/form/custom-date-box';
 import CustomPhoneInput from 'src/views/shared/form/custom-phone-box';
 import CustomRadioBox from 'src/views/shared/form/custom-radio-box';
 import { genderList } from 'src/configs/app-constants';
+import CustomSelectBox from 'src/views/shared/form/custom-select';
+import { CountrySelector } from 'react-international-phone';
+import countriesList from 'src/constants/countries';
 
 interface ManagerFormProps {
   formik: FormikProps<StakeholderManager>;
@@ -35,7 +38,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik }) => {
         <CustomTextBox fullWidth label={t('stakeholder.stakeholder-manager.position')} name="position" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-manager.nationality')} name="nationality" size="small" sx={{ mb: 2 }} />
+        <CustomSelectBox fullWidth label={t('stakeholder.stakeholder-manager.nationality')} options={countriesList.map((country) => ({ value: country.title, label: country.title }))} name="nationality" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
         <CustomTextBox
