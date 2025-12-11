@@ -44,15 +44,21 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
       }
 
       // block special chars if not allowed
+    // block special chars if not allowed
       if (!allowSpecialChars) {
         if (type === 'email') {
-          // allowed chars for email only
           value = value.replace(/[^a-zA-Z0-9@._\-+]/g, '');
-        } else {
-          // allow only alphanumeric + space
+        } 
+        else if (type === 'number') {
+          // allow digits and dot
+          value = value.replace(/[^0-9.]/g, '');
+        } 
+        else {
+          // allow alphanumeric + space
           value = value.replace(/[^A-Za-z0-9 ]/g, '');
         }
       }
+
 
       // enforce max length
       if (value.length > effectiveMaxLength) {

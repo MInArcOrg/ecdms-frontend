@@ -61,7 +61,7 @@ export const subMenuItems = (
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-structural-elements",
           path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-structural-elements`,
-          model: "railwaystationplatformstructurelelement",
+          model: "railwaystationplatformstructuralelement",
           fileType:
             railwayFacilitiesAndStationsIds.stations_and_platforms
               .station_platform_structural_elements,

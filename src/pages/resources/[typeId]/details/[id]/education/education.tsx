@@ -11,7 +11,6 @@ const ResourceEducationPage = () => {
   const { id = '', typeId = '' } = router.query;
 
   const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), educationMenuIds.education);
-
   return (
     <ResourceLayout
       activeMenuId={resourceMenuIds.education}

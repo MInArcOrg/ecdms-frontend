@@ -17,7 +17,6 @@ const ContactPage = () => {
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <>
-        {/* Replace with your actual component */}
         <ProfessionalContactList professionalId={id as string} typeId={typeId as string} model={defaultMenuItem?.model || ''} />  
       </> 
     </ResourceLayout>

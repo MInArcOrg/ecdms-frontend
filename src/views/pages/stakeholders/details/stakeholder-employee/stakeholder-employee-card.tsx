@@ -87,7 +87,7 @@ const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee, refetch, onEdit, 
             subject: 'stakeholderemployee'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholderemployee'
           }}
           onEdit={() => onEdit(employee)}

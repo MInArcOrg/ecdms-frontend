@@ -108,7 +108,7 @@ export const materialColumns = (
             subject: 'stakeholdermaterial'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholdermaterial'
           }}
           options={[]}

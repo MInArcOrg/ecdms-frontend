@@ -86,7 +86,7 @@ const PositionCard: React.FC<PositionCardProps> = ({ position, refetch, onEdit, 
             subject: 'stakeholderposition'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholderposition'
           }}
           onEdit={() => onEdit(position)}

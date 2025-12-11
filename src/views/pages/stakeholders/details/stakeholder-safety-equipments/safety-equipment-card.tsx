@@ -73,7 +73,7 @@ const SafetyEquipmentCard: React.FC<SafetyEquipmentCardProps> = ({ equipment, re
             subject: 'safetyequipment'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'safetyequipment'
           }}
           onEdit={() => onEdit(equipment)}

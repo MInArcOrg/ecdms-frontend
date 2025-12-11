@@ -18,12 +18,14 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: certificatesMenuIds.certificates,
         title: 'resource.navigation.submenu.certificates.certificates',
-        path: `/resources/${typeId}/details/${id}/certificates/certificates`
+        path: `/resources/${typeId}/details/${id}/certificates/certificates`,
+        model: 'professionalcertification'
       },
       {
         id: certificatesMenuIds.recommendations,
         title: 'resource.navigation.submenu.certificates.recommendations',
-        path: `/resources/${typeId}/details/${id}/certificates/recommendations`
+        path: `/resources/${typeId}/details/${id}/certificates/recommendations`,
+        model: 'professionalrecommendation'
       },
       {
         id: certificatesMenuIds.license,

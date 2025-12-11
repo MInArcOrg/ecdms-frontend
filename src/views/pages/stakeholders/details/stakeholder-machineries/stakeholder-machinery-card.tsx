@@ -73,7 +73,7 @@ const MachineryCard: React.FC<MachineryCardProps> = ({ machinery, refetch, onEdi
             subject: 'stakeholdermachinery'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholdermachinery'
           }}
           onEdit={() => onEdit(machinery)}

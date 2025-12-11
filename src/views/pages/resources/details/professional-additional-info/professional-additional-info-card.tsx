@@ -61,11 +61,11 @@ const AdditionalInfoCard: React.FC<AdditionalInfoCardProps> = ({ additionalInfo,
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'professionaladditionalinfo'
+            subject: 'professionaladditionalinformation'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'professionaladditionalinfo'
+            subject: 'professionaladditionalinformation'
           }}
           onEdit={() => onEdit(additionalInfo)}
           onDelete={() => onDelete(additionalInfo?.id || '')}

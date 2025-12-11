@@ -14,6 +14,8 @@ type User = {
   name: string;
   email: string;
   phone: string;
+  useremails?: { id: string; email: string }[];
+  userphones?: { id: string; phone: string }[];
   gender: string;
   marital_status: number | null;
   partner_name: string | null;

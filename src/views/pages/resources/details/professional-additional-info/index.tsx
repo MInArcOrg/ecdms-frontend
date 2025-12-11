@@ -131,7 +131,7 @@ const ProfessionalAdditionalInfoList: React.FC<ProfessionalAdditionalInfoListPro
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'professionaladditionalinfo'
+            subject: 'professionaladditionalinformation'
           }
         }}
         fetchDataFunction={refetch}

@@ -79,7 +79,7 @@ const MaterialCard: React.FC<MaterialCardProps> = ({ material, refetch, onEdit, 
             subject: 'stakeholdermaterial'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholdermaterial'
           }}
           onEdit={() => onEdit(material)}

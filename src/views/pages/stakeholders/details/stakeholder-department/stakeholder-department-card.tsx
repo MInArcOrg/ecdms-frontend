@@ -73,7 +73,7 @@ const DepartmentCard: React.FC<DepartmentCardProps> = ({ department, refetch, on
             subject: 'stakeholderdepartment'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholderdepartment'
           }}
           onEdit={() => onEdit(department)}

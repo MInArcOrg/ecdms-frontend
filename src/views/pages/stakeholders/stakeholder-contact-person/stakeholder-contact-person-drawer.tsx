@@ -10,6 +10,8 @@ import stakeholderContactPersonApiService from 'src/services/stakeholder/stakeho
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { StakeholderContactPerson } from 'src/types/stakeholder/stakeholder-contact-person';
+import { nameRule } from 'src/utils/validator/name';
+import { phoneRule } from 'src/utils/validator/phone';
 
 interface StakeholderContactPersonDrawerType {
   open: boolean;
@@ -27,12 +29,12 @@ const StakeholderContactPersonDrawer = (props: StakeholderContactPersonDrawerTyp
   };
 
   const validationSchema = yup.object().shape({
-    first_name: yup.string().max(36).required('First name is required'),
-    middle_name: yup.string().max(255).required('Middle name is required'),
-    last_name: yup.string().max(255).required('Last name is required'),
+    first_name: nameRule.required('First name is required'),
+    middle_name: nameRule.required('Middle name is required'),
+    last_name: nameRule.required('Last name is required'),
     gender: yup.string().max(255).required('Gender is required'),
     email: yup.string().max(255).email('Invalid email').required('Email is required'),
-    phone_number: yup.string().max(255).required('Phone number is required')
+    phone_number: phoneRule.required('Phone number is required')
   });
 
   const isEdit = Boolean(stakeholderContactPerson?.id);

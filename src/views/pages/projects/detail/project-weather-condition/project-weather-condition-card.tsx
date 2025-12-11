@@ -55,7 +55,7 @@ const WeatherConditionCard: React.FC<WeatherConditionCardProps> = ({ weatherCond
             subject: 'weathercondition'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'weathercondition'
           }}
           onEdit={() => onEdit(weatherCondition)}

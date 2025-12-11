@@ -70,7 +70,7 @@ const MasterSubCategoryCard = ({
                         subject: model + 'category'
                       }}
                       editPermissionRule={{
-                        action: 'edit',
+                        action: 'update',
                         subject: model + 'category'
                       }}
                     />

@@ -70,7 +70,7 @@ const ProfessionalCard: React.FC<ProfessionalCardProps> = ({ professional, refet
             subject: 'professional'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'professional'
           }}
           onEdit={() => onEdit(professional)}

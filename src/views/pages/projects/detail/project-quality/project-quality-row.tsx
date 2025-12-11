@@ -90,7 +90,7 @@ export const qualityColumns = (
             subject: 'projectquality'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'projectquality'
           }}
           options={[]}

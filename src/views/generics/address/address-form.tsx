@@ -238,6 +238,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
             fullWidth
             label={transl('address.form.northing')}
             name="northing"
+            type='number'
             size="small"
             sx={{ mb: 2 }}
           />
@@ -247,6 +248,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
             fullWidth
             label={transl('address.form.easting')}
             name="easting"
+            type='number'
             size="small"
             sx={{ mb: 2 }}
           />

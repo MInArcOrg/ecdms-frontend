@@ -99,7 +99,7 @@ export const professionalContactPersonColumns = (
             subject: 'professionalcontactperson'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'professionalcontactperson'
           }}
           options={[]}

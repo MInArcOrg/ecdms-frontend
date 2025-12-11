@@ -104,7 +104,7 @@ export const safetyEquipmentColumns = (
             subject: 'safetyequipment'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'safetyequipment'
           }}
           options={[]}

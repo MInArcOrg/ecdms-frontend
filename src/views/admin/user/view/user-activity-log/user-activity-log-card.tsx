@@ -62,7 +62,7 @@ const UserUserActivityLogCard: React.FC<UserUserActivityLogCardProps> = ({ userA
             subject: 'useractivitylog'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'useractivitylog'
           }}
           item={userActivityLog}

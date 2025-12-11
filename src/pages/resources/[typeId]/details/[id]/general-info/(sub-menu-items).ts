@@ -55,6 +55,7 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         title: 'resource.navigation.submenu.general-info.contact',
         path: `/resources/${typeId}/details/${id}/general-info/general-info/contact`,
         type: [resourceTypesMaster.professional],
+        model: 'professionalcontact',
         subject: 'resource',
         action: 'view'
       },
@@ -62,15 +63,17 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: generalInfoMenuIds.generalInfo.contactPerson,
         title: 'resource.navigation.submenu.general-info.contact-person',
         path: `/resources/${typeId}/details/${id}/general-info/general-info/contact-person`,
-        type: [resourceTypesMaster.professional]
+        type: [resourceTypesMaster.professional],
+        model: 'professionalcontactperson'
       },
       {
         id: generalInfoMenuIds.generalInfo.additionalInfo,
         title: 'resource.navigation.submenu.general-info.additional-info',
         path: `/resources/${typeId}/details/${id}/general-info/general-info/additional-info`,
         type: [resourceTypesMaster.professional],
-        subject: 'professionaladditionalinfo',
-        action: 'view'
+        subject: 'professionaladditionalinformation',
+        action: 'view',
+        model: 'professionaladditionalinformation'
       },
       {
         id: generalInfoMenuIds.generalInfo.brands,

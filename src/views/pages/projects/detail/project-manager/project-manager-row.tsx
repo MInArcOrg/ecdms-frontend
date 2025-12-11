@@ -105,7 +105,7 @@ export const managerColumns = (
             subject: 'projectmanager'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'projectmanager'
           }}
           options={[]}

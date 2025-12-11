@@ -73,11 +73,11 @@ export const additionalInfoColumns = (
           item={row}
           deletePermissionRule={{
             action: 'delete',
-            subject: 'professionaladditionalinfo'
+            subject: 'professionaladditionalinformation'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'professionaladditionalinfo'
+            subject: 'professionaladditionalinformation'
           }}
           options={[]}
         />

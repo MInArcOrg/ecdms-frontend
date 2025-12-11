@@ -99,7 +99,7 @@ export const professionalColumns = (onEdit: (professional: Professional) => void
             subject: 'professional'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'professional'
           }}
           options={[]}

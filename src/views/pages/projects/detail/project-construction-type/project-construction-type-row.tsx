@@ -76,7 +76,7 @@ export const constructionTypeColumns = (
             subject: 'projectconstructiontype'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'projectconstructiontype'
           }}
           options={[]}

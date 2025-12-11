@@ -76,7 +76,7 @@ const SafetyStatusCard: React.FC<SafetyStatusCardProps> = ({ safetyStatus, refet
             subject: 'projectsafetystatus'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'projectsafetystatus'
           }}
           onEdit={() => onEdit(safetyStatus)}

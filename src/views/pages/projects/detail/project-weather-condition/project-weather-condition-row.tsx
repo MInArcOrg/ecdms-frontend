@@ -67,7 +67,7 @@ export const weatherConditionColumns = (
             subject: 'weathercondition'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'weathercondition'
           }}
           options={[]}

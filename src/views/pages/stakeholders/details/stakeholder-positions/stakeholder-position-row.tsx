@@ -109,7 +109,7 @@ export const positionColumns = (
             subject: 'stakeholderposition'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholderposition'
           }}
           options={[]}

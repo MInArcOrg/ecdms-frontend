@@ -102,7 +102,7 @@ export const branchAddressColumns = (
             subject: 'stakeholderbranchaddress'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholderbranchaddress'
           }}
           options={[]}

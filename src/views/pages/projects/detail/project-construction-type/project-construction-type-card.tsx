@@ -67,7 +67,7 @@ const ConstructionTypeCard: React.FC<ConstructionTypeCardProps> = ({ constructio
             subject: 'projectconstructiontype'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'projectconstructiontype'
           }}
           onEdit={() => onEdit(constructionType)}

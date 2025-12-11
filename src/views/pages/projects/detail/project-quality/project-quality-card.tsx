@@ -73,7 +73,7 @@ const QualityCard: React.FC<QualityCardProps> = ({ quality, refetch, onEdit, onD
             subject: 'projectquality'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'projectquality'
           }}
           onEdit={() => onEdit(quality)}

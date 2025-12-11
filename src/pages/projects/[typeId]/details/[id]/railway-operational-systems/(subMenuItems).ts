@@ -41,7 +41,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
         title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-signaling-system',
         path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-signaling-system`,
         apiRoute: 'railway-signaling-systems',
-        model: 'railwaysignaling',
+        model: 'railwaysignalingsystem',
         fileType: railwayOperationalSystemsIds.communicationAndSignaling.id
       },
       {
@@ -104,7 +104,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
         title: 'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-specifications',
         path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-specifications`,
         apiRoute: 'railway-vehicle-specifications',
-        model: 'railwayvehiclespecifications',
+        model: 'railwayvehiclespecification',
         fileType: railwayOperationalSystemsIds.rollingStockVehicles.id
       },
       {
@@ -137,7 +137,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
           'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-interior-and-passenger-amenities',
         path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-interior-and-passenger-amenities`,
         apiRoute: 'railway-vehicle-interior-and-passenger-amenities',
-        model: 'railwayvehicleinteriorandpassengeramenities',
+        model: 'railwayvehicleinteriorandpassengeramenity',
         fileType: railwayOperationalSystemsIds.rollingStockVehicles.id
       },
       {
@@ -146,7 +146,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
           'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-load-and-cargo-specifications',
         path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-load-and-cargo-specifications`,
         apiRoute: 'railway-vehicle-load-and-cargo-specifications',
-        model: 'railwayvehicleloadandcargospecifications',
+        model: 'railwayvehicleloadandcargospecification',
         fileType: railwayOperationalSystemsIds.rollingStockVehicles.id
       }
     ]
@@ -200,7 +200,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
         title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-supply-environmental-and-other-factors',
         path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-environmental-and-other-factors`,
         apiRoute: 'railway-power-supply-environmental-and-other-factors',
-        model: 'railwaypowersupplyenvironmentalandotherfactors',
+        model: 'railwaypowersupplyenvironmentalandotherfactor',
         fileType: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyEnvironmentalAndOtherFactors
       }
     ]

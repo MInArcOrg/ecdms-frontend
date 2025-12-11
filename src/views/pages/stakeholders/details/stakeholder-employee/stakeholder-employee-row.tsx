@@ -107,7 +107,7 @@ export const employeeColumns = (
             subject: 'stakeholderemployee'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'stakeholderemployee'
           }}
           options={[]}

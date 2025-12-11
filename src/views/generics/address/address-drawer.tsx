@@ -27,7 +27,7 @@ const AddressDrawer = (props: AddressDrawerType) => {
     block_number: yup.string().max(255).nullable(),
     house_number: yup.string().max(255).nullable(),
     hq: yup.boolean().nullable(),
-
+    
     revision_no: yup.number().integer().nullable()
   });
   // ** Props

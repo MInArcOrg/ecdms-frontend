@@ -73,7 +73,7 @@ const ProfessionalContactPersonCard: React.FC<ProfessionalContactPersonCardProps
             subject: 'professionalcontactperson'
           }}
           editPermissionRule={{
-            action: 'edit',
+            action: 'update',
             subject: 'professionalcontactperson'
           }}
           onEdit={() => onEdit(contactPerson)}

@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, regulationIds } from '../(subMenuItems)';
+import ElectricGridControlCenterPerformanceAndMaintenanceList from 'src/views/pages/projects/detail/other/electric-power/electric-grid-control-center-performance-and-maintenance';
 
 const defaultMenuItem = findSubMenuItem(
   subMenuItems('', ''),
@@ -12,10 +13,10 @@ const ElectricGridControlCenterPerformanceAndMaintenancePage = () => {
   const router = useRouter();
   const { id = '', typeId = '' } = router.query;
 
-  // const menuItem = findSubMenuItem(
-  //   subMenuItems(id as string, typeId as string),
-  //   regulationIds.gridOperations.electricGridControlCenterPerformanceAndMaintenance
-  // );
+  const menuItem = findSubMenuItem(
+    subMenuItems(id as string, typeId as string),
+    regulationIds.gridOperations.electricGridControlCenterPerformanceAndMaintenance
+  );
 
   return (
     <ProjectLayout
@@ -23,7 +24,7 @@ const ElectricGridControlCenterPerformanceAndMaintenancePage = () => {
       activeSubMenuId={regulationIds.gridOperations.electricGridControlCenterPerformanceAndMaintenance}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <>Electric Grid Control Center Performance and Maintenance</>
+      <Electric Grid control center cyber security data otherSubMenu={menuItem}  projectId={id as string} typeId={typeId as string} />
     </ProjectLayout>
   );
 };

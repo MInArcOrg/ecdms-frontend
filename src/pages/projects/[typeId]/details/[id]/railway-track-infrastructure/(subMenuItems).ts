@@ -52,7 +52,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: railwayTrackInfrastructureIds.trackSystems.tracksData,
         title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-data',
         path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-data`,
-        model: 'railwaytracksdata',
+        model: 'railwaytrackdata',
         apiRoute: 'railway-track-data'
       },
       {
