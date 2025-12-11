@@ -6,7 +6,7 @@ import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
 import stakeholderManagerApiService from 'src/services/stakeholder/stakeholder-manager-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
+import { formatCreatedAt, formatDynamicDate } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
 import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
 import ManagerCard from './stakeholder-manager-card';
@@ -104,7 +104,7 @@ const ManagerList: React.FC<ManagerListProps> = ({ stakeholderId }) => {
     },
     {
       title: t('stakeholder.stakeholder-manager.birthDate'),
-      value: manager.birth_date
+      value: formatDynamicDate(manager.birth_date)
     },
     {
       title: t('stakeholder.stakeholder-manager.gender'),
