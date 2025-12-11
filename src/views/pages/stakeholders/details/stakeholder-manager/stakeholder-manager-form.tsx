@@ -19,7 +19,7 @@ interface ManagerFormProps {
 
 const ManagerForm: React.FC<ManagerFormProps> = ({ formik }) => {
   const { t } = useTranslation();
-
+  console.log('fomik values',formik.values.phone_no, formik.values.phone_no?.length);
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12} sm={6}>

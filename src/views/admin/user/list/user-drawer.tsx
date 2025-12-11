@@ -8,8 +8,9 @@ import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import UserForm from './user-form';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
-import { isAtLeastAge } from 'src/utils/validator/age';
+import { birthDateRule } from 'src/utils/validator/age';
 import { nameRule } from 'src/utils/validator/name';
+import { phoneRule } from 'src/utils/validator/phone';
 
 interface UserDrawerType {
   open: boolean;
@@ -23,9 +24,9 @@ const validationSchema = yup.object().shape({
   first_name: nameRule.required("First Name is required"),
   middle_name: nameRule.nullable(), // <--- Correctly applied
   last_name: nameRule.required("Last Name is required"), //
-  birth_date: yup.string().test("is-18", "User must be at least 18 years old", isAtLeastAge(18)).required(),
+  birth_date: birthDateRule(18).required("Birth Date is required"),
   email: yup.string().email().required(),
-  phone: yup.string().required().min(10),
+  phone: phoneRule.required(),
   gender: yup.string().required(),
   marital_status: yup.string().required(),
   partner_name: yup.string().max(36).nullable(),
@@ -55,7 +56,7 @@ const UserDrawer = (props: UserDrawerType) => {
         department_id: props.departmentId,
         gender: values.gender,
         birth_date: convertDateToLocaleDate(values.birth_date),
-        redirect_url: process.env.NEXT_PUBLIC_APP_URL || window.location.origin + '/auth/' + 'reset-password'
+        redirect_url: process.env.NEXT_PUBLIC_APP_URL || window.location.origin + '/auth/' + 'reset-password',
       },
       files: []
     };
@@ -81,7 +82,7 @@ const UserDrawer = (props: UserDrawerType) => {
           initialValues={{
             ...user,
             birth_date: formatInitialDateDate(user?.birth_date),
-            marital_status: user?.marital_status ? 1 : 0
+            marital_status: user?.marital_status ? 1 : 0,
           }}
           createActionFunc={isEdit ? editUser : createUser}
           onActionSuccess={onActionSuccess}

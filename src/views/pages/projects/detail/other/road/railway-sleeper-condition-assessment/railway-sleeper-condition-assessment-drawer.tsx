@@ -9,6 +9,7 @@ import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import type { RailwaySleeperConditionAssessment } from 'src/types/project/other';
 import RailwaySleeperConditionAssessmentForm from './railway-sleeper-condition-assessment-form';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import { phoneRule } from 'src/utils/validator/phone';
 
 interface RailwaySleeperConditionAssessmentDrawerProps {
   open: boolean;
@@ -40,7 +41,7 @@ const RailwaySleeperConditionAssessmentDrawer = ({
     sleeper_stability_and_alignment: yup.string().nullable(),
     sleepers_required_number: yup.number().nullable().typeError('Sleepers required number must be a number'),
     supplier_name: yup.string().nullable(),
-    supplier_phone: yup.string().nullable(),
+    supplier_phone: phoneRule.nullable(),
     remark: yup.string().nullable()
   });
 

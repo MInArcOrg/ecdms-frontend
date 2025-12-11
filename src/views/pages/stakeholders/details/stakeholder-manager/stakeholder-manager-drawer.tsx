@@ -8,6 +8,9 @@ import stakeholderManagerApiService from 'src/services/stakeholder/stakeholder-m
 import type { StakeholderManager } from 'src/types/stakeholder/stakeholder-manager';
 import type { IApiResponse } from 'src/types/requests';
 import { nameRule } from 'src/utils/validator/name';
+import { phoneRule } from 'src/utils/validator/phone';
+import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import { birthDateRule } from 'src/utils/validator/age';
 
 interface ManagerDrawerType {
   open: boolean;
@@ -24,13 +27,13 @@ const ManagerDrawer = (props: ManagerDrawerType) => {
     first_name: nameRule.required('First name is required'),
     last_name: nameRule.required('Last name is required'),
     department: yup.string().required('Department is required'),
-    birth_date: yup.date().required('Birth date is required'),
+    birth_date: birthDateRule(18).required('Birth date is required'),
     gender: yup.string().required('Gender is required'),
-    phone_no: yup.string().required('Phone number is required'),
+    phone_no: phoneRule.required('Phone number is required'),
     email: yup.string().email('Invalid email').required('Email is required'),
     position: yup.string().required('Position is required').matches(/^[a-zA-Z ]+$/, 'Invalid position'),
     nationality: yup.string().required('Nationality is required'),
-    national_id_no: yup.string().required('National ID number is required'),
+    national_id_no: yup.string().required('National ID number is required').length(16).matches(/^[0-9]+$/, 'Invalid national ID number')
   });
 
   const isEdit = Boolean(manager?.id);
@@ -47,7 +50,8 @@ const ManagerDrawer = (props: ManagerDrawerType) => {
     data: {
       ...values,
       id: manager?.id,
-      stakeholder_id: stakeholderId
+      stakeholder_id: stakeholderId,
+      birth_date: convertDateToLocaleDate(values.birth_date),
     },
     files: []
   });
@@ -71,7 +75,9 @@ const ManagerDrawer = (props: ManagerDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...(manager as StakeholderManager),
-            birth_date: manager?.birth_date ? manager.birth_date.split('T')[0] : ''
+            birth_date: formatInitialDateDate(manager?.birth_date),
+            nationality: manager?.nationality || '',
+            
           }}
           createActionFunc={isEdit ? editManager : createManager}
           onActionSuccess={onActionSuccess}

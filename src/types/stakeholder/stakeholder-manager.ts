@@ -1,3 +1,5 @@
+import EthiopianDate from "src/views/components/custom/ethio-calendar/ethiopian-date";
+
 export interface StakeholderManager {
   id?: string;
   stakeholder_id: string;
@@ -9,7 +11,7 @@ export interface StakeholderManager {
   position?: string;
   nationality?: string;
   national_id_no?: string;
-  birth_date: string;
+  birth_date?: string | Date | EthiopianDate;
   gender: string;
   phone_no: string;
   email: string;

@@ -8,6 +8,7 @@ export interface ProjectContactPerson {
   middle_name: string;
   last_name: string;
   national_id_no?: string;
+  nationality?: string;
   gender: string;
   phone: string;
   email?: string;

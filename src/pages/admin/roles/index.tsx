@@ -8,7 +8,6 @@ import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import ItemsListing from 'src/views/shared/listing';
 
 import roleApiService from 'src/services/admin/role-service';
-import roleService from 'src/services/general/project/soil-type-master-service';
 import Role from 'src/types/admin/role';
 import RoleDrawer from 'src/views/admin/roles/role-drawer';
 import { roleColumns } from 'src/views/admin/roles/role-row-column';
@@ -32,7 +31,7 @@ const RoleList = () => {
     fetchFunction: fetchRole
   });
   const handleDelete = async (id: string) => {
-    await roleService.delete(id);
+    await roleApiService.delete(id);
     refetch();
   };
 

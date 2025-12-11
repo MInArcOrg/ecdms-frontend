@@ -11,6 +11,7 @@ import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import ProjectBondForm from './project-bond-form';
+import { phoneRule } from 'src/utils/validator/phone';
 
 interface ProjectBondDrawerType {
   open: boolean;
@@ -45,7 +46,7 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
     institute_branch: yup.string().max(255).nullable(),
     branch_address: yup.string().max(255).nullable(),
     institution_type: yup.string().max(50).nullable(),
-    phone: yup.string().max(255).nullable(),
+    phone: phoneRule.nullable(),
     remark: yup.string().nullable(),
     revision_no: yup.number().integer().nullable(),
     amount: yup
