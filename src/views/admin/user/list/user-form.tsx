@@ -53,7 +53,7 @@ const UserForm: React.FC<UserFormProps> = ({ formik, departmentId, isEdit }) => 
           placeholder={transl('department.user.form.first_name')}
           name="first_name"
           size="small"
-
+          formatAsName={true}
           sx={{ mb: 2 }}
         />
       </Grid>
@@ -63,6 +63,7 @@ const UserForm: React.FC<UserFormProps> = ({ formik, departmentId, isEdit }) => 
           label={transl('department.user.form.middle_name')}
           placeholder={transl('department.user.form.middle_name')}
           name="middle_name"
+          formatAsName={true}
           size="small"
           sx={{ mb: 2 }}
         />
@@ -75,6 +76,7 @@ const UserForm: React.FC<UserFormProps> = ({ formik, departmentId, isEdit }) => 
           label={transl('department.user.form.last_name')}
           placeholder={transl('department.user.form.last_name')}
           name="last_name"
+          formatAsName={true}
           size="small"
           sx={{ mb: 2 }}
         />

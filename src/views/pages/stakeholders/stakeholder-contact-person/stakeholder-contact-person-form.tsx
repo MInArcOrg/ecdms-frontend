@@ -27,6 +27,7 @@ const StakeholderContactPersonForm: React.FC<StakeholderContactPersonFormProps> 
           label={transl('stakeholder.stakeholder-contact-person.form.first-name')}
           placeholder={transl('stakeholder.stakeholder-contact-person.form.first-name')}
           name="first_name"
+          formatAsName={true}
           size="small"
           sx={{ mb: 2 }}
         />
@@ -39,6 +40,7 @@ const StakeholderContactPersonForm: React.FC<StakeholderContactPersonFormProps> 
           label={transl('stakeholder.stakeholder-contact-person.form.middle-name')}
           placeholder={transl('stakeholder.stakeholder-contact-person.form.middle-name')}
           name="middle_name"
+          formatAsName={true}
           size="small"
           sx={{ mb: 2 }}
         />
@@ -51,6 +53,7 @@ const StakeholderContactPersonForm: React.FC<StakeholderContactPersonFormProps> 
           label={transl('stakeholder.stakeholder-contact-person.form.last-name')}
           placeholder={transl('stakeholder.stakeholder-contact-person.form.last-name')}
           name="last_name"
+          formatAsName={true}
           size="small"
           sx={{ mb: 2 }}
         />

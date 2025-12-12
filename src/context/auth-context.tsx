@@ -88,8 +88,14 @@ const AuthProvider = ({ children }: Props) => {
 
         setUser({ ...loginResponse.payload.user_data });
 
+        // 🌟 FIX: Ensure returnUrl is correctly parsed and defaults to '/' 🌟
         const returnUrl = router.query.returnUrl as string;
-        router.replace(returnUrl && returnUrl !== '/' ? returnUrl : '/');
+
+        // Determine the final redirect path: use returnUrl if it exists and is not just '/', otherwise default to '/'
+        const redirectPath = (returnUrl && returnUrl !== '/') ? returnUrl : '/';
+        console.log('redirectPath', redirectPath);
+        // Use router.replace to navigate to the intended page without adding login to history
+        router.replace(redirectPath);
       })
       .catch((err) => {
         if (errorCallback) errorCallback(err);

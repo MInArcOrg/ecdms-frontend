@@ -19,13 +19,16 @@ const UserContactPersonForm: React.FC<UserContactPersonFormProps> = ({ formik })
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('department.user.contact-person.firstName')} name="first_name" size="small" />
+        <CustomTextBox fullWidth label={t('department.user.contact-person.firstName')} name="first_name"
+          formatAsName={true} size="small" />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('department.user.contact-person.middleName')} name="middle_name" size="small" />
+        <CustomTextBox fullWidth label={t('department.user.contact-person.middleName')} name="middle_name"
+          formatAsName={true} size="small" />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('department.user.contact-person.lastName')} name="last_name" size="small" />
+        <CustomTextBox fullWidth label={t('department.user.contact-person.lastName')} name="last_name"
+          formatAsName={true} size="small" />
       </Grid>
       <Grid item xs={12} sm={6}>
         <CustomTextBox fullWidth label={t('department.user.contact-person.nationalIdNo')} name="national_id_no" size="small" />

@@ -1,4 +1,19 @@
 {
+  "validation": {
+    "password": {
+      "required": "Password is required.",
+      "min": "Password must be at least {{min}} characters long.",
+      "max": "Password cannot exceed {{max}} characters.",
+      "uppercase": "Must contain at least one uppercase letter (A-Z).",
+      "lowercase": "Must contain at least one lowercase letter (a-z).",
+      "digit": "Must contain at least one number (0-9).",
+      "special": "Must contain at least one special character (e.g., !, @, #)."
+    },
+    "passwordConfirm": {
+      "required": "Password confirmation is required.",
+      "match": "Passwords do not match."
+    }
+  },
   "forgot-password": {
     "title": "Forgot your password?",
     "instructions": "Enter your email and we'll send you instructions to reset your password.",
@@ -4588,6 +4603,19 @@
     "km2": "Square Kilometer",
     "currency": "Currency",
     "km": "Kilometers",
+    "dialog":{
+      "delete": "Delete",
+      "delete-title": "Delete",
+      "delete-message": "Are you sure you want to delete this item?",
+      "delete-button": "Delete",
+      "cancel-button": "Cancel",
+      "confirm-edit-title": "Confirm Edit",
+      "confirm-edit-message": "Are you sure you want to edit this item?",
+      "confirm-edit-button": "Edit",
+      "confirm-delete-title": "Confirm Delete",
+      "confirm-delete-message": "Are you sure you want to delete this item?",
+      "confirm-delete-button": "Delete"
+    },
     "status": {
       "active": "Active",
       "inactive": "InActive"

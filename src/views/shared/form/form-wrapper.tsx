@@ -1,5 +1,5 @@
 import { LoadingButton } from '@mui/lab';
-import { Box, Button, Grid } from '@mui/material';
+import { Box, Button, Grid, Dialog, DialogTitle, DialogContent, DialogActions, Typography } from '@mui/material'; // <-- Imported Dialog components
 import { Formik, FormikProps, FormikHelpers, FormikValues, FormikErrors } from 'formik';
 import { useRouter } from 'next/router';
 import { toast } from 'react-hot-toast';
@@ -10,6 +10,20 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import { parseError } from 'src/utils/parse/clean-error';
 import Page from 'src/views/components/page/page';
 import * as Yup from 'yup';
+import { useState } from 'react'; // <-- Imported useState
+import ConfirmationDialog from '../dialog/confirmation-dialog';
+
+// --- Confirmation Dialog Component (Local Mock) ---
+interface ConfirmDialogProps {
+  open: boolean;
+  onClose: () => void;
+  onConfirm: () => void;
+  title: string;
+  content: string;
+}
+
+// ----------------------------------------------------
+
 
 interface FormPageWrapperProps<T extends FormikValues> {
   children: (formik: FormikProps<T>) => JSX.Element;
@@ -48,7 +62,14 @@ const FormPageWrapper = <T extends FormikValues>({
   const router = useRouter();
   const requiredFields = getRequiredFields(validationSchema);
 
-  const onSubmit = async (values: T, { setErrors, setStatus, setSubmitting }: FormikHelpers<T>) => {
+  // 🌟 NEW STATE for Confirmation Dialog 🌟
+  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
+  // State to hold the values and helpers temporarily when submission is paused by the dialog
+  const [formikSubmissionContext, setFormikSubmissionContext] = useState<{ values: T; helpers: FormikHelpers<T> } | null>(null);
+
+  // Core API submission logic, extracted for reuse
+  const executeSubmit = async (values: T, helpers: FormikHelpers<T>) => {
+    const { setErrors, setStatus, setSubmitting } = helpers;
     const payload = getPayload(values);
     try {
       const res = await createActionFunc(payload);
@@ -74,6 +95,37 @@ const FormPageWrapper = <T extends FormikValues>({
     }
   };
 
+
+  const onSubmit = async (values: T, helpers: FormikHelpers<T>) => {
+    if (edit) {
+      // 1. In edit mode, save context and open dialog
+      setFormikSubmissionContext({ values, helpers });
+      setIsConfirmDialogOpen(true);
+
+      // 2. Prevent the LoadingButton from spinning while the dialog is open
+      helpers.setSubmitting(false);
+    } else {
+      // 3. For creation, submit immediately
+      await executeSubmit(values, helpers);
+    }
+  };
+
+  const handleConfirm = async () => {
+    if (formikSubmissionContext) {
+      const { values, helpers } = formikSubmissionContext;
+      setIsConfirmDialogOpen(false); // Close the dialog
+      helpers.setSubmitting(true); // Re-enable loading state
+      await executeSubmit(values, helpers);
+      setFormikSubmissionContext(null); // Clear context after submission attempt
+    }
+  };
+
+  const handleDialogClose = () => {
+    setIsConfirmDialogOpen(false);
+    setFormikSubmissionContext(null);
+  };
+
+
   const handleCancel = () => {
     router.push(baseUrl);
   };
@@ -84,38 +136,51 @@ const FormPageWrapper = <T extends FormikValues>({
     >
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
         {(formik: FormikProps<T>) => (
-          <form onSubmit={formik.handleSubmit}>
-            <RequiredFieldsContext.Provider value={requiredFields}>
-              <Grid container>
-                <Grid item xs={12}>
-                  <Box>{children(formik)}</Box>
+          <>
+            {/* 🌟 Confirmation Dialog Rendering 🌟 */}
+            {edit && (
+              <ConfirmationDialog
+                open={isConfirmDialogOpen}
+                handleClose={handleDialogClose}
+                onConfirm={handleConfirm}
+                title={intl('common.dialog.confirm-edit-title')}
+                content={intl('common.dialog.confirm-edit-message')}
+                onCancel={handleDialogClose} />
+            )}
+
+            <form onSubmit={formik.handleSubmit}>
+              <RequiredFieldsContext.Provider value={requiredFields}>
+                <Grid container>
+                  <Grid item xs={12}>
+                    <Box>{children(formik)}</Box>
+                  </Grid>
+                  <Grid item xs={12} sx={{ mt: 5 }}>
+                    <LoadingButton
+                      loading={formik.isSubmitting}
+                      loadingPosition="center"
+                      disabled={formik.isSubmitting || !formik.isValid}
+                      type="submit"
+                      variant="contained"
+                      color="primary"
+                    >
+                      <Translations text={edit ? 'save' : 'submit'} />
+                    </LoadingButton>
+                    <Button
+                      onClick={() => {
+                        formik.resetForm();
+                        onCancel ? onCancel() : handleCancel();
+                      }}
+                      sx={{ ml: 2 }}
+                      variant="contained"
+                      color="secondary"
+                    >
+                      <Translations text="cancel" />
+                    </Button>
+                  </Grid>
                 </Grid>
-                <Grid item xs={12} sx={{ mt: 5 }}>
-                  <LoadingButton
-                    loading={formik.isSubmitting}
-                    loadingPosition="center"
-                    disabled={formik.isSubmitting || !formik.isValid}
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                  >
-                    <Translations text={edit ? 'save' : 'submit'} />
-                  </LoadingButton>
-                  <Button
-                    onClick={() => {
-                      formik.resetForm();
-                      onCancel ? onCancel() : handleCancel();
-                    }}
-                    sx={{ ml: 2 }}
-                    variant="contained"
-                    color="secondary"
-                  >
-                    <Translations text="cancel" />
-                  </Button>
-                </Grid>
-              </Grid>
-            </RequiredFieldsContext.Provider>
-          </form>
+              </RequiredFieldsContext.Provider>
+            </form>
+          </>
         )}
       </Formik>
     </Page>

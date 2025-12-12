@@ -54,13 +54,16 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({ formik, departments, positi
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholder.employee.firstName')} name="first_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.employee.firstName')} name="first_name"
+          formatAsName={true} size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholder.employee.middleName')} name="middle_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.employee.middleName')} name="middle_name"
+          formatAsName={true} size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('stakeholder.employee.lastName')} name="last_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.employee.lastName')} name="last_name"
+          formatAsName={true} size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
         <CustomTextBox fullWidth label={t('stakeholder.employee.nationalIdNo')} name="national_id_no" size="small" sx={{ mb: 2 }} />

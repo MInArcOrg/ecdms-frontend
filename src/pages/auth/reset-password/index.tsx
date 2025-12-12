@@ -16,6 +16,7 @@ import { useRouter } from 'next/router';
 import { useAuth } from 'src/hooks/useAuth';
 import AuthContainer from 'src/views/auth/auth-container';
 import authApiService from 'src/services/auth/auth-api-service';
+import { createPasswordValidationSchema } from 'src/utils/validator/password';
 
 const LinkStyled = styled(Link)(({ theme }) => ({
   textDecoration: 'none',
@@ -46,16 +47,7 @@ const ResetPassword = () => {
     }
   }, [token, router]);
 
-  const schema = yup.object().shape({
-    password: yup
-      .string()
-      .min(8, t('reset-password.validation-messages.password.min').toString())
-      .required(t('reset-password.validation-messages.password.required').toString()),
-    passwordConfirm: yup
-      .string()
-      .oneOf([yup.ref('password')], t('reset-password.validation-messages.passwordConfirm.match').toString())
-      .required(t('reset-password.validation-messages.passwordConfirm.required').toString())
-  });
+  const schema = createPasswordValidationSchema(t as any)
 
   const handleSubmit = async (values: FormData, { setSubmitting, setErrors }: { setSubmitting: any; setErrors: any }) => {
     try {
@@ -87,7 +79,6 @@ const ResetPassword = () => {
       setSubmitting(false);
     }
   };
-
   return (
     <AuthContainer illustrationName={`minster-logo`}>
       <Logo width="80px" height="80px" />
@@ -99,7 +90,7 @@ const ResetPassword = () => {
       </Box>
 
       <Formik initialValues={defaultValues} validationSchema={schema} onSubmit={handleSubmit}>
-        {({ errors, touched, handleChange, handleBlur, isSubmitting }) => (
+        {({ errors, touched, handleChange, handleBlur, isSubmitting, isValid }) => (
           <Form noValidate autoComplete="off">
             <Box sx={{ mb: 4 }}>
               <CustomTextField
@@ -133,7 +124,7 @@ const ResetPassword = () => {
               type="submit"
               variant="contained"
               sx={{ mb: 4 }}
-              disabled={isSubmitting || authLoading}
+              disabled={isSubmitting || authLoading || !isValid}
               loading={isSubmitting || authLoading}
             >
               {t('reset-password.submit-button')}

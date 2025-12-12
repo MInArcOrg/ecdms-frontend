@@ -13,6 +13,7 @@ interface CustomTextBoxProps {
   multilineMaxLength?: number;
   multiline?: boolean;
   [key: string]: any;
+  formatAsName?: boolean;
 }
 
 const CustomTextBox: React.FC<CustomTextBoxProps> = ({
@@ -23,6 +24,7 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
   maxLength = 36,
   multilineMaxLength = 150,
   multiline = false,
+  formatAsName = false,
   ...props
 }) => {
   const [field, meta, helpers] = useField(name);
@@ -34,45 +36,51 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
   const isRequired = requiredFields.includes(name);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let value: string | number = event.target.value;
+    let value = event.target.value; // Start value as string (or potentially empty)
 
     if (typeof value === 'string') {
 
-      // prevent starting with space
-      if (value.length === 1 && value.startsWith(' ')) {
-        value = '';
-      }
+      // 1. 🛑 DENY ALL LEADING SPACES (Robust Fix for "by any means")
+      // This removes any leading spaces, whether typed or pasted.
+      value = value.trimStart();
 
-      // block special chars if not allowed
-    // block special chars if not allowed
+      // 2. Block special chars if not allowed (Kept your existing logic)
       if (!allowSpecialChars) {
         if (type === 'email') {
           value = value.replace(/[^a-zA-Z0-9@._\-+]/g, '');
-        } 
+        }
         else if (type === 'number') {
-          // allow digits and dot
           value = value.replace(/[^0-9.]/g, '');
-        } 
+        }
         else {
           // allow alphanumeric + space
           value = value.replace(/[^A-Za-z0-9 ]/g, '');
         }
       }
 
+      // 3. 🌟 CONDITIONAL NAME FORMATTING (Title Case)
+      if (formatAsName && value.length > 0) {
+        // Your existing single-word Title Case logic
+        value = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+      }
 
-      // enforce max length
+      // 4. Enforce max length
       if (value.length > effectiveMaxLength) {
         value = value.substring(0, effectiveMaxLength);
       }
     }
 
-    // convert to number
+    // 5. Convert to number (needs to happen last if type is 'number')
+    let finalValue: string | number;
     if (type === 'number') {
-      value = event.target.value ? Number(value) : 0;
+      // Convert to number, or 0 if empty
+      finalValue = value ? Number(value) : 0;
+    } else {
+      finalValue = value;
     }
 
-    if (onValueChange) onValueChange(value);
-    helpers.setValue(value);
+    if (onValueChange) onValueChange(finalValue);
+    helpers.setValue(finalValue);
   };
 
   return (

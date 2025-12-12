@@ -59,6 +59,7 @@ const BranchContactPersonForm: React.FC<BranchContactPersonFormProps> = ({ formi
           fullWidth
           label={t('stakeholder.stakeholder-branch-contact-person.firstName')}
           name="first_name"
+          formatAsName={true}
           size="small"
           sx={{ mb: 2 }}
         />
@@ -68,6 +69,7 @@ const BranchContactPersonForm: React.FC<BranchContactPersonFormProps> = ({ formi
           fullWidth
           label={t('stakeholder.stakeholder-branch-contact-person.middleName')}
           name="middle_name"
+          formatAsName={true}
           size="small"
           sx={{ mb: 2 }}
         />
@@ -77,6 +79,7 @@ const BranchContactPersonForm: React.FC<BranchContactPersonFormProps> = ({ formi
           fullWidth
           label={t('stakeholder.stakeholder-branch-contact-person.lastName')}
           name="last_name"
+          formatAsName={true}
           size="small"
           sx={{ mb: 2 }}
         />

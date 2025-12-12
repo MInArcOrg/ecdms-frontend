@@ -37,19 +37,22 @@ const ProjectContactPersonForm: React.FC<ProjectContactPersonFormProps> = ({ for
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('project.project-contact-person.form.firstName')} name="first_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('project.project-contact-person.form.firstName')} name="first_name"
+          formatAsName={true} size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
         <CustomTextBox
           fullWidth
           label={t('project.project-contact-person.form.middleName')}
           name="middle_name"
+          formatAsName={true}
           size="small"
           sx={{ mb: 2 }}
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('project.project-contact-person.form.lastName')} name="last_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('project.project-contact-person.form.lastName')} name="last_name"
+          formatAsName={true} size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
         <CustomTextBox fullWidth label={t('project.project-contact-person.form.position')} name="position" size="small" sx={{ mb: 2 }} />

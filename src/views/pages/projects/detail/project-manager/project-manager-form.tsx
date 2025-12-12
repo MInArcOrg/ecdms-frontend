@@ -37,13 +37,16 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik, stakeholders }) => {
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('project.other.project-manager.firstName')} name="first_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('project.other.project-manager.firstName')} name="first_name"
+          formatAsName={true} size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('project.other.project-manager.middleName')} name="middle_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('project.other.project-manager.middleName')} name="middle_name"
+          formatAsName={true} size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('project.other.project-manager.lastName')} name="last_name" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('project.other.project-manager.lastName')} name="last_name"
+          formatAsName={true} size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
         <CustomTextBox fullWidth label={t('project.other.project-manager.position')} name="position" size="small" sx={{ mb: 2 }} />

@@ -53,6 +53,7 @@ const BranchManagerForm: React.FC<BranchManagerFormProps> = ({ formik, stakehold
           fullWidth
           label={t('stakeholder.stakeholder-branch-manager.firstName')}
           name="first_name"
+          formatAsName={true}
           size="small"
           sx={{ mb: 2 }}
         />
@@ -62,6 +63,7 @@ const BranchManagerForm: React.FC<BranchManagerFormProps> = ({ formik, stakehold
           fullWidth
           label={t('stakeholder.stakeholder-branch-manager.middleName')}
           name="middle_name"
+          formatAsName={true}
           size="small"
           sx={{ mb: 2 }}
         />
@@ -71,6 +73,7 @@ const BranchManagerForm: React.FC<BranchManagerFormProps> = ({ formik, stakehold
           fullWidth
           label={t('stakeholder.stakeholder-branch-manager.lastName')}
           name="last_name"
+          formatAsName={true}
           size="small"
           sx={{ mb: 2 }}
         />
