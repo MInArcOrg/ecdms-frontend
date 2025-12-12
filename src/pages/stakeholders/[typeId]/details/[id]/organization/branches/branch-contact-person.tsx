@@ -14,13 +14,13 @@ function StakeholderBranchContactPersonIndex() {
       activeSubMenuId={stakeholderOrganizationIds.branches.branchContactPerson}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <StakeholderBranchContactPersonList model="stakeholderbranchcontactperson" stakeholderId={String(id)} typeId={String(typeId)} />
+      <StakeholderBranchContactPersonList model="branchcontactperson" stakeholderId={String(id)} typeId={String(typeId)} />
     </StakeholderLayout>
   );
 }
 
 StakeholderBranchContactPersonIndex.acl = {
-  subject: 'resource',
+  subject: 'branchcontactperson',
   action: 'view'
 };
 

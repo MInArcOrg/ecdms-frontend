@@ -79,7 +79,7 @@ function ProjectBondList({ type, projectId }: { type: string; projectId: string 
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'bonds'
+            subject: 'projectbond'
           }
         }}
         fetchDataFunction={refetch}

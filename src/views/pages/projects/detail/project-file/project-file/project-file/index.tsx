@@ -73,7 +73,7 @@ function ProjectFileList({ type, projectId }: { type: string; projectId: string 
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'files'
+            subject: 'projectdocument'
           }
         }}
         fetchDataFunction={refetch}

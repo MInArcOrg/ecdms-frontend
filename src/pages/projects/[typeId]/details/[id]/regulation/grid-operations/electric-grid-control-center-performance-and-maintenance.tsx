@@ -24,7 +24,7 @@ const ElectricGridControlCenterPerformanceAndMaintenancePage = () => {
       activeSubMenuId={regulationIds.gridOperations.electricGridControlCenterPerformanceAndMaintenance}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <Electric Grid control center cyber security data otherSubMenu={menuItem}  projectId={id as string} typeId={typeId as string} />
+      <ElectricGridControlCenterPerformanceAndMaintenanceList otherSubMenu={menuItem} projectId={id as string} typeId={typeId as string} />
     </ProjectLayout>
   );
 };

@@ -11,9 +11,10 @@ interface JointVentureCardProps {
   onEdit: (jointVenture: JointVenture) => void;
   onDelete: (id: string) => void;
   onDetail: (jointVenture: JointVenture) => void;
+  model: string
 }
 
-const JointVentureCard: React.FC<JointVentureCardProps> = ({ jointVenture, refetch, onEdit, onDelete, onDetail }) => {
+const JointVentureCard: React.FC<JointVentureCardProps> = ({ jointVenture, refetch, onEdit, onDelete, onDetail, model }) => {
   const { t } = useTranslation();
 
   return (
@@ -61,11 +62,11 @@ const JointVentureCard: React.FC<JointVentureCardProps> = ({ jointVenture, refet
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'jointventure'
+            subject: model
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'jointventure'
+            subject: model
           }}
           onEdit={() => onEdit(jointVenture)}
           onDelete={() => onDelete(jointVenture?.id || '')}

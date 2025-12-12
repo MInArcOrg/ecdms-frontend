@@ -8,6 +8,7 @@ import stakeholderBranchManagerApiService from 'src/services/stakeholder/stakeho
 import type { StakeholderBranchManager } from 'src/types/stakeholder/stakeholder-branch-manager';
 import type { IApiResponse } from 'src/types/requests';
 import type { StakeholderBranch } from 'src/types/stakeholder/stakeholder-branch';
+import { phoneRule } from 'src/utils/validator/phone';
 
 interface BranchManagerDrawerType {
   open: boolean;
@@ -29,7 +30,7 @@ const BranchManagerDrawer = (props: BranchManagerDrawerType) => {
     middle_name: yup.string().max(255).required('Middle name is required'),
     last_name: yup.string().max(255).required('Last name is required'),
     gender: yup.string().max(255).required('Gender is required'),
-    phone: yup.string().max(255).required('Phone number is required'),
+    phone: phoneRule.required('Phone number is required'),
     email: yup.string().max(255).email('Invalid email').nullable(),
     parent_id: yup.string().nullable()
   });

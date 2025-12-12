@@ -30,6 +30,12 @@ export const birthDateRule = (minAge: number) =>
     .nullable()
     .test(
       "age-check",
-      `You must be at least ${minAge} years old`,
+      `User must be at least ${minAge} years old`,
       isAtLeastAge(minAge)
     );
+export const pastDateRule = () => yup.string().nullable().test("past-date", "Date must be in the past", (value) => {
+  if (!value) return true;
+  const date = new Date(value);
+  const today = new Date();
+  return date.getTime() < today.getTime();
+});

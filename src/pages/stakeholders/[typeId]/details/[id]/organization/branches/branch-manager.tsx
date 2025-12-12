@@ -14,13 +14,13 @@ function StakeholderBranchManagerIndex() {
       activeSubMenuId={stakeholderOrganizationIds.branches.branchManager}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <StakeholderBranchManagerList model="stakeholderbranchmanager" stakeholderId={String(id)} typeId={String(typeId)} />
+      <StakeholderBranchManagerList model="branchmanager" stakeholderId={String(id)} typeId={String(typeId)} />
     </StakeholderLayout>
   );
 }
 
 StakeholderBranchManagerIndex.acl = {
-  subject: 'resource',
+  subject: 'branchmanager',
   action: 'view'
 };
 

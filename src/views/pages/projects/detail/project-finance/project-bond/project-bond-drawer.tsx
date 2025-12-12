@@ -12,6 +12,7 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import ProjectBondForm from './project-bond-form';
 import { phoneRule } from 'src/utils/validator/phone';
+import { birthDateRule, pastDateRule } from 'src/utils/validator/age';
 
 interface ProjectBondDrawerType {
   open: boolean;
@@ -40,8 +41,8 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
   const validationSchema = yup.object().shape({
     parent_id: yup.string().length(36).nullable(),
     type: yup.string().max(255).nullable(),
-    issue_date: yup.string().nullable(),
-    expiration_date: yup.string().nullable(),
+    issue_date: pastDateRule().nullable(),
+    expiration_date: pastDateRule().nullable(),
     issuing_institute: yup.string().max(255).nullable(),
     institute_branch: yup.string().max(255).nullable(),
     branch_address: yup.string().max(255).nullable(),

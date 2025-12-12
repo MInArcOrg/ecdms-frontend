@@ -8,6 +8,8 @@ import stakeholderBranchContactPersonApiService from 'src/services/stakeholder/b
 import type { StakeholderBranchContactPerson } from 'src/types/stakeholder/branch-contact-person';
 import type { StakeholderBranch } from 'src/types/stakeholder/stakeholder-branch';
 import type { IApiResponse } from 'src/types/requests';
+import { nameRule } from 'src/utils/validator/name';
+import { phoneRule } from 'src/utils/validator/phone';
 
 interface BranchContactPersonDrawerType {
   open: boolean;
@@ -25,11 +27,11 @@ const BranchContactPersonDrawer = (props: BranchContactPersonDrawerType) => {
     stakeholder_branch_id: yup.string().required('Branch is required'),
     department: yup.string().required('Department is required'),
     position: yup.string().required('Position is required'),
-    first_name: yup.string().required('First name is required'),
-    middle_name: yup.string().required('Middle name is required'),
-    last_name: yup.string().required('Last name is required'),
+    first_name: nameRule.required('First name is required'),
+    middle_name: nameRule.required('Middle name is required'),
+    last_name: nameRule.required('Last name is required'),
     gender: yup.string().required('Gender is required'),
-    phone: yup.string().required('Phone number is required'),
+    phone: phoneRule.required('Phone number is required'),
     email: yup.string().email('Invalid email').nullable()
   });
 

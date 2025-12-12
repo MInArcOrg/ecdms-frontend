@@ -24,7 +24,7 @@ interface BranchManagerListProps {
   typeId: string;
 }
 
-const BranchManagerList: React.FC<BranchManagerListProps> = ({ stakeholderId }) => {
+const BranchManagerList: React.FC<BranchManagerListProps> = ({ model, stakeholderId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<StakeholderBranchManager | null>(null);
@@ -168,7 +168,7 @@ const BranchManagerList: React.FC<BranchManagerListProps> = ({ stakeholderId }) 
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: branchManagerColumns(handleClickDetail, handleEdit, handleDelete, t, stakeholderBranches)
+          headers: branchManagerColumns(handleClickDetail, handleEdit, handleDelete, t, stakeholderBranches, model)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -179,6 +179,7 @@ const BranchManagerList: React.FC<BranchManagerListProps> = ({ stakeholderId }) 
             refetch={refetch}
             onDelete={handleDelete}
             stakeholderBranches={stakeholderBranches}
+            model={model}
           />
         )}
         createActionConfig={{
@@ -187,7 +188,7 @@ const BranchManagerList: React.FC<BranchManagerListProps> = ({ stakeholderId }) 
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'stakeholderbranchmanager'
+            subject: model
           }
         }}
         fetchDataFunction={refetch}

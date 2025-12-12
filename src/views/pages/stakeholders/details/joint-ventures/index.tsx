@@ -20,7 +20,7 @@ interface JointVentureListProps {
   typeId: string;
 }
 
-const JointVentureList: React.FC<JointVentureListProps> = ({ stakeholderId }) => {
+const JointVentureList: React.FC<JointVentureListProps> = ({ stakeholderId, model }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<JointVenture | null>(null);
@@ -124,7 +124,7 @@ const JointVentureList: React.FC<JointVentureListProps> = ({ stakeholderId }) =>
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: jointVentureColumns(handleClickDetail, handleEdit, handleDelete, t)
+          headers: jointVentureColumns(handleClickDetail, handleEdit, handleDelete, t, model)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -134,6 +134,7 @@ const JointVentureList: React.FC<JointVentureListProps> = ({ stakeholderId }) =>
             onEdit={handleEdit}
             refetch={refetch}
             onDelete={handleDelete}
+            model={model}
           />
         )}
         createActionConfig={{
@@ -142,7 +143,7 @@ const JointVentureList: React.FC<JointVentureListProps> = ({ stakeholderId }) =>
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'jointventure'
+            subject: model
           }
         }}
         fetchDataFunction={refetch}
