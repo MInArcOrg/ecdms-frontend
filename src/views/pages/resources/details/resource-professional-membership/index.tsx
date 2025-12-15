@@ -13,13 +13,15 @@ import MembershipCard from './professional-membership-card';
 import MembershipDrawer from './professional-membership-drawer';
 import type { ProfessionalMembership } from 'src/types/resource';
 import { membershipColumns } from './professional-membership-row';
+import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
 
 interface ResourceProfessionalMembershipProps {
   professionalId: string;
   typeId: string;
+  otherSubMenu?: DetailSubMenuItem;
 }
 
-const ResourceProfessionalMembership: React.FC<ResourceProfessionalMembershipProps> = ({ professionalId }) => {
+const ResourceProfessionalMembership: React.FC<ResourceProfessionalMembershipProps> = ({ professionalId, otherSubMenu }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<ProfessionalMembership | null>(null);
@@ -107,6 +109,7 @@ const ResourceProfessionalMembership: React.FC<ResourceProfessionalMembershipPro
           membership={selectedRow as ProfessionalMembership}
           refetch={refetch}
           professionalId={professionalId}
+          otherSubMenu={otherSubMenu}
         />
       )}
 
@@ -117,7 +120,7 @@ const ResourceProfessionalMembership: React.FC<ResourceProfessionalMembershipPro
           data={mapMembershipToDetailItems(selectedRow as ProfessionalMembership)}
           id={selectedRow?.id || ''}
           hasReference={true}
-          fileType="PROFESSIONAL_ASSOCIATION_MEMBERSHIP"
+          fileType={otherSubMenu?.type?.toString() || ''}
           title={t('resources.professional.association-membership.details')}
         />
       )}
@@ -127,11 +130,11 @@ const ResourceProfessionalMembership: React.FC<ResourceProfessionalMembershipPro
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: membershipColumns(handleClickDetail, handleEdit, handleDelete, t)
+          headers: membershipColumns(handleClickDetail, handleEdit, handleDelete, t, otherSubMenu)
         }}
         isLoading={false}
         ItemViewComponent={({ data }) => (
-          <MembershipCard onDetail={handleClickDetail} membership={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
+          <MembershipCard onDetail={handleClickDetail} membership={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} otherSubMenu={otherSubMenu} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
@@ -139,7 +142,7 @@ const ResourceProfessionalMembership: React.FC<ResourceProfessionalMembershipPro
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'ProfessionalMembership'
+            subject: otherSubMenu?.model || 'ProfessionalMembership'
           }
         }}
         fetchDataFunction={refetch}

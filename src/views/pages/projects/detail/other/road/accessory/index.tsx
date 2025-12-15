@@ -18,6 +18,7 @@ import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-det
 import AccessoryCard from './accessory-card';
 import AccessoryDrawer from './accessory-drawer';
 import { accessoryColumns } from './accessory-row';
+import { sub } from 'date-fns';
 
 interface AccessoryListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -151,11 +152,11 @@ const AccessoryList: React.FC<AccessoryListProps> = ({ otherSubMenu, projectId, 
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: accessoryColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
+          headers: accessoryColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, otherSubMenu?.model || 'accessory')
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <AccessoryCard onDetail={handleClickDetail} accessory={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
+          <AccessoryCard onDetail={handleClickDetail} accessory={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} model={otherSubMenu?.model || 'accessory'} />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
@@ -163,7 +164,7 @@ const AccessoryList: React.FC<AccessoryListProps> = ({ otherSubMenu, projectId, 
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'accessory'
+            subject: otherSubMenu?.model || ''
           }
         }}
         fetchDataFunction={refetch}

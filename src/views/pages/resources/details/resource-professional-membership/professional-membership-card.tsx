@@ -2,6 +2,7 @@ import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
+import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
 import type { ProfessionalMembership } from 'src/types/resource';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
@@ -13,9 +14,10 @@ interface MembershipCardProps {
   onEdit: (membership: ProfessionalMembership) => void;
   onDelete: (id: string) => void;
   onDetail: (membership: ProfessionalMembership) => void;
+  otherSubMenu?: DetailSubMenuItem;
 }
 
-const MembershipCard: React.FC<MembershipCardProps> = ({ membership, refetch, onEdit, onDelete, onDetail }) => {
+const MembershipCard: React.FC<MembershipCardProps> = ({ membership, refetch, onEdit, onDelete, onDetail, otherSubMenu }) => {
   const { t } = useTranslation();
 
   return (
@@ -55,9 +57,9 @@ const MembershipCard: React.FC<MembershipCardProps> = ({ membership, refetch, on
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={membership?.id || ''} type={uploadableResourceFileTypes.professionalAssociationMembership} />
+        <FileDrawer id={membership?.id || ''} type={otherSubMenu?.type?.toString() || ''} />
         <ModelAction
-          model="ProfessionalMembership"
+          model={otherSubMenu?.model || 'ProfessionalMembership'}
           model_id={membership?.id || ''}
           refetchModel={refetch}
           resubmit={() => refetch()}
@@ -67,11 +69,11 @@ const MembershipCard: React.FC<MembershipCardProps> = ({ membership, refetch, on
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'ProfessionalMembership'
+            subject: otherSubMenu?.model || 'ProfessionalMembership'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'ProfessionalMembership'
+            subject: otherSubMenu?.model || 'ProfessionalMembership'
           }}
           onEdit={() => onEdit(membership)}
           onDelete={() => onDelete(membership?.id || '')}

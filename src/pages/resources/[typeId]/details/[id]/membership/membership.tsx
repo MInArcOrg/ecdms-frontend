@@ -10,7 +10,7 @@ const ResourceMembershipPage = () => {
   const router = useRouter();
   const { id = '', typeId = '' } = router.query;
 
-  // const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), membershipMenuIds.membership);
+  const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), membershipMenuIds.membership);
 
   return (
     <ResourceLayout
@@ -18,7 +18,7 @@ const ResourceMembershipPage = () => {
       activeSubMenuId={membershipMenuIds.membership}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <ResourceProfessionalMembership typeId={String(typeId)} professionalId={String(id)} />
+      <ResourceProfessionalMembership typeId={String(typeId)} professionalId={String(id)} otherSubMenu={menuItem} />
     </ResourceLayout>
   );
 };

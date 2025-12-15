@@ -36,14 +36,14 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: projectFeatureIds.accessories.accessories,
         title: 'project.navigation.submenu.feature.accessories.accessories',
         path: `/projects/${typeId}/details/${id}/feature/accessories/accessories`,
-        model: 'accessories',
+        model: 'accessory',
         apiRoute: 'accessories'
       },
       {
         id: projectFeatureIds.accessories.roadSafetyFeatures,
         title: 'project.navigation.submenu.feature.accessories.road-safety-features',
         path: `/projects/${typeId}/details/${id}/feature/accessories/road-safety-features`,
-        model: 'roadsafetyfeatures',
+        model: 'roadsafetyfeature',
         apiRoute: 'road-safety-features'
       },
       {

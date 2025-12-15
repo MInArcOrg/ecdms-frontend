@@ -10,7 +10,16 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
   {
     id: membershipMenuIds.membership,
     title: 'resource.navigation.submenu.membership.membership',
-    path: `/resources/${typeId}/details/${id}/membership`
+    path: `/resources/${typeId}/details/${id}/membership`,
+    model: 'professionalassociationmembership',
+    subItems: [
+      {
+        id: membershipMenuIds.membership,
+        title: 'resource.navigation.submenu.membership.membership',
+        path: `/resources/${typeId}/details/${id}/membership`,
+        model: 'professionalassociationmembership'
+      }
+    ]
   }
 ];
 export const findSubMenuItem = (items: DetailSubMenuItem[], id: string) => {

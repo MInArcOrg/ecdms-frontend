@@ -9,6 +9,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 import type { RailwaySleeperMaintenanceAndReplacement } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import { pastDateRule } from 'src/utils/validator/age';
 
 interface RailwaySleeperMaintenanceAndReplacementDrawerProps {
   open: boolean;
@@ -32,10 +33,7 @@ const RailwaySleeperMaintenanceAndReplacementDrawer = ({
   const validationSchema = yup.object().shape({
     railway_line_section_name: yup.string().required('Railway line section name is required'),
     scheduled_maintenance_activities: yup.string().nullable(),
-    recent_maintenance_date: yup
-      .date()
-      .nullable()
-      .transform((curr, orig) => (orig === '' ? null : curr)),
+    recent_maintenance_date: pastDateRule().nullable(),
     inspection_reports: yup.string().nullable(),
     sleeper_replacement_history: yup.string().nullable(),
     remark: yup.string().nullable()

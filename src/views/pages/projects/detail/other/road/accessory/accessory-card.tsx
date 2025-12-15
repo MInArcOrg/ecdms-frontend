@@ -13,9 +13,10 @@ interface AccessoryCardProps {
   onEdit: (accessory: Accessory) => void;
   onDelete: (id: string) => void;
   onDetail: (accessory: Accessory) => void;
+  model: string;
 }
 
-const AccessoryCard: React.FC<AccessoryCardProps> = ({ accessory, refetch, onEdit, onDelete, onDetail }) => {
+const AccessoryCard: React.FC<AccessoryCardProps> = ({ accessory, refetch, onEdit, onDelete, onDetail, model }) => {
   const { t } = useTranslation();
 
   return (
@@ -68,11 +69,11 @@ const AccessoryCard: React.FC<AccessoryCardProps> = ({ accessory, refetch, onEdi
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'accessory'
+            subject: model
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'accessory'
+            subject: model
           }}
           onEdit={() => onEdit(accessory)}
           onDelete={() => onDelete(accessory.id)}

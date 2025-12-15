@@ -39,3 +39,9 @@ export const pastDateRule = () => yup.string().nullable().test("past-date", "Dat
   const today = new Date();
   return date.getTime() < today.getTime();
 });
+export const featureDateRule = () => yup.string().nullable().test("feature-date", "Date must be in the future", (value) => {
+  if (!value) return true;
+  const date = new Date(value);
+  const today = new Date();
+  return date.getTime() > today.getTime();
+});

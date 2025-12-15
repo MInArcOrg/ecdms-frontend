@@ -11,6 +11,7 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import RailwayBallastMaintenanceAndRenewalForm from './railway-ballast-maintenance-and-renewal-form'; // Updated component import
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import { pastDateRule } from 'src/utils/validator/age';
 
 interface RailwayBallastMaintenanceAndRenewalDrawerProps {
   // Renamed interface
@@ -37,7 +38,9 @@ const RailwayBallastMaintenanceAndRenewalDrawer = ({
     railway_line_section_name: yup.string().required('Railway line section name is required'),
     scheduled_maintenance_activities: yup.string().required('Scheduled maintenance activities are required'),
     inspection_reports_findings: yup.string().nullable().optional(),
-    remark: yup.string().nullable().optional()
+    remark: yup.string().nullable().optional(),
+    recent_maintenance_dates: pastDateRule().nullable().optional(),
+
   });
 
   const createRailwayBallastMaintenanceAndRenewal = async (

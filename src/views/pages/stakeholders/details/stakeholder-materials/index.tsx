@@ -24,24 +24,14 @@ const MaterialList: React.FC<MaterialListProps> = ({ stakeholderId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<StakeholderMaterial | null>(null);
-  const [materialCategories, setMaterialCategories] = useState<StakeholderMaterial[]>([]);
   const { t } = useTranslation();
 
-  useEffect(() => {
-    const fetchMaterialCategories = async () => {
-      try {
-        const response = await stakeholderMaterialApiService.getAll({
-          filter: { stakeholder_id: stakeholderId }
-        });
-        setMaterialCategories(response.payload);
-      } catch (error) {
-        console.error('Error fetching material categories:', error);
-      }
-    };
-
-    fetchMaterialCategories();
-  }, [stakeholderId]);
-
+  const { data: materialCategories } = usePaginatedFetch<StakeholderMaterial[]>({
+    queryKey: ['material-categories'],
+    fetchFunction: () => stakeholderMaterialApiService.getAll({
+      filter: { stakeholder_id: stakeholderId }
+    })
+  });
   const fetchMaterials = (params: GetRequestParam): Promise<IApiResponse<StakeholderMaterial[]>> => {
     return stakeholderMaterialApiService.getAll({
       ...params,

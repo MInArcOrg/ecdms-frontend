@@ -10,6 +10,8 @@ import type { IApiResponse } from 'src/types/requests';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
 import { useState } from 'react';
+import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
+import { featureDateRule, pastDateRule } from 'src/utils/validator/age';
 
 interface MembershipDrawerType {
   open: boolean;
@@ -17,18 +19,19 @@ interface MembershipDrawerType {
   refetch: () => void;
   membership: ProfessionalMembership;
   professionalId: string;
+  otherSubMenu?: DetailSubMenuItem;
 }
 
 const MembershipDrawer = (props: MembershipDrawerType) => {
-  const { open, toggle, refetch, membership, professionalId } = props;
+  const { open, toggle, refetch, membership, professionalId, otherSubMenu } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const validationSchema = yup.object().shape({
     association_name: yup.string().required('Association name is required'),
     membership_type: yup.string().required('Membership type is required'),
     description: yup.string().required('Description is required'),
-    registration_date: yup.date().required('Registration date is required'),
-    end_date: yup.date().required('End date is required')
+    registration_date: pastDateRule().required('Registration date is required'),
+    end_date: featureDateRule().required('End date is required')
   });
 
   const isEdit = Boolean(membership?.id);
@@ -61,11 +64,11 @@ const MembershipDrawer = (props: MembershipDrawerType) => {
       const membershipId = response.payload.id;
 
       if (payload.files?.length) {
-        await uploadFile(payload.files[0], uploadableResourceFileTypes.professionalAssociationMembership, membershipId, '', '');
+        await uploadFile(payload.files[0], otherSubMenu?.type?.toString() || '', membershipId, '', '');
       }
       refetch();
       handleClose();
-    } catch (error) {}
+    } catch (error) { }
   };
 
   return (

@@ -2,8 +2,8 @@
 
 'use client';
 
-import type React from 'react';
 import { Box } from '@mui/material';
+import type React from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -11,8 +11,8 @@ import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import {
-  RAILWAY_POWER_SUPPLY_MAINTENANCE_AND_TESTING_FILE_TYPES,
-  RAILWAY_POWER_SUPPLY_MAINTENANCE_AND_TESTING_ENTITY_SUBJECT
+  RAILWAY_POWER_SUPPLY_MAINTENANCE_AND_TESTING_ENTITY_SUBJECT,
+  RAILWAY_POWER_SUPPLY_MAINTENANCE_AND_TESTING_FILE_TYPES
 } from './file-type-config';
 
 // Hook and Service Imports
@@ -21,17 +21,16 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 
 // Type Imports
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { RailwayPowerSupplyMaintenanceAndTesting } from 'src/types/project/other'; // Assume this type exists
-import type { RailwayStationPlatformLayout } from 'src/types/project/other';
+import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 
 // Utility Imports
 import { formatCreatedAt, formatDate } from 'src/utils/formatter/date';
 
 // Component Imports
-import ItemsListing from 'src/views/shared/listing';
-import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
 import FileDrawer from 'src/views/components/custom/files-drawer';
+import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
+import ItemsListing from 'src/views/shared/listing';
 import RailwayPowerSupplyMaintenanceAndTestingCard from './railway-power-supply-maintenance-and-testing-card';
 import RailwayPowerSupplyMaintenanceAndTestingDrawer from './railway-power-supply-maintenance-and-testing-drawer';
 import { railwayPowerSupplyMaintenanceAndTestingColumns } from './railway-power-supply-maintenance-and-testing-row';
