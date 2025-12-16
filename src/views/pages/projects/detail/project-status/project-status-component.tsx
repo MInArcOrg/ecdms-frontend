@@ -64,14 +64,12 @@ const ProjectStatusComponent: React.FC<ProjectStatusComponentProps> = ({ project
       {showDetailDrawer && selectedRow && (
         <ProjectStatusDetail open={showDetailDrawer} projectStatus={selectedRow} toggleDrawer={handleDetailDrawerClose} refetch={refetch} />
       )}
-      <Card>
-        <CardContent>
-          <TimelineSection data={projectStatus?.payload || []} onStatusClick={handleStatusClick} />
-          {projectStatus?.payload && projectStatus?.payload?.length > 0 && (
-            <ProjectStatusAction refetch={refetch} projectStatus={projectStatus.payload[0]} onStatusChangeClick={handleChangeStatusClick} />
-          )}
-        </CardContent>
-      </Card>
+
+      <TimelineSection data={projectStatus?.payload || []} onStatusClick={handleStatusClick} />
+      {projectStatus?.payload && projectStatus?.payload?.length > 0 && (
+        <ProjectStatusAction refetch={refetch} projectStatus={projectStatus.payload[0]} onStatusChangeClick={handleChangeStatusClick} />
+      )}
+
     </>
   );
 };

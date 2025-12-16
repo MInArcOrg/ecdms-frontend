@@ -896,6 +896,11 @@
       "publication_date": "Publication Date"
     }
   },
+  "infrastructure":{
+    "create-infrastructure": "Create Infrastructure",
+    "edit-infrastructure": "Edit Infrastructure",
+    "title": "Infrastructure"
+  },
   "project": {
     "create-project": "Add Project",
     "edit-project": "Edit Project",

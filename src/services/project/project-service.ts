@@ -7,8 +7,8 @@ import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const projectApiService = {
-  getAll: (params: GetRequestParam): Promise<IApiResponse<Project[]>> =>
-    buildGetRequest(`/projects/projects`, params)
+  getAll: (params: GetRequestParam, status?: string): Promise<IApiResponse<Project[]>> =>
+    buildGetRequest(`/projects/projects?status=${status}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;

@@ -17,6 +17,7 @@ interface ProjectDrawerType {
   project: Project;
   typeId: string;
   type: MasterType | undefined;
+  module?: 'project' | 'infrastructure'
 }
 
 const validationSchema = yup.object().shape({
@@ -38,7 +39,7 @@ const validationSchema = yup.object().shape({
 
 const ProjectDrawer = (props: ProjectDrawerType) => {
   // ** Props
-  const { open, toggle, refetch, project, typeId,type } = props;
+  const { open, toggle, refetch, project, typeId, type, module } = props;
   const { t } = useTranslation();
   const isEdit = project?.id ? true : false;
   const createProject = async (body: IApiPayload<Project>) => {
@@ -67,12 +68,12 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
     refetch();
     handleClose();
   };
-  const translatedTitle = t(`common.${isEdit ? 'edit' : 'create'}`)+" "+ type?.title+" "+t('project.title');
+  const translatedTitle = t(`common.${isEdit ? 'edit' : 'create'}`) + " " + type?.title + " " + (module == 'infrastructure' ? t('infrastructure.title') : t('project.title'));
   return (
     <CustomSideDrawer
       model={'project'}
       translatedTitle={translatedTitle}
-      handleClose={handleClose}      
+      handleClose={handleClose}
       open={open}
     >
       {() => (

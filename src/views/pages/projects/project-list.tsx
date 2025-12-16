@@ -32,7 +32,7 @@ function ProjectList({
     return projectApiService.getAll({
       ...params,
       filter: { ...params.filter, projecttype_id: typeId }
-    });
+    }, module == 'infrastructure' ? 'infrastructure' : undefined);
   };
   const { data: type, isLoading: typeIsLoading } = useQuery(
     {
@@ -84,6 +84,7 @@ function ProjectList({
             refetch={refetch}
             type={type?.payload}
             typeId={String(typeId)}
+            module={module}
           />
         )}
         <ItemsListing
@@ -94,7 +95,7 @@ function ProjectList({
           ItemViewComponent={({ data }) => (
             <ProjectCard onDetail={() => { }} project={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
           )}
-          title={`${type?.payload?.title} ${t('project.title')}`}
+          title={`${type?.payload?.title}   ${module == 'infrastructure' ? t('infrastructure.title') : t('project.title')}`}
           createActionConfig={{
             ...defaultCreateActionConfig,
             onClick: toggleDrawer,

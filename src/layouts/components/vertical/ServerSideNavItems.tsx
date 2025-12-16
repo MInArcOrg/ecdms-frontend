@@ -58,122 +58,122 @@ const ServerSideNavItems = () => {
   const stakeNavigation = (): NavigationItem[] => {
     return stakeTypes?.length < 1
       ? [
-          {
-            title: t('navigation.stakeholder'),
-            icon: 'tabler:user',
-            path: '#',
-            action: 'view',
-            subject: 'stakeholder'
-          }
-        ]
+        {
+          title: t('navigation.stakeholder'),
+          icon: 'tabler:user',
+          path: '#',
+          action: 'view',
+          subject: 'stakeholder'
+        }
+      ]
       : [
-          {
-            title: t('navigation.stakeholder'),
-            icon: 'tabler:user',
-            path: '/stakeholders',
-            action: 'view',
-            subject: 'stakeholder',
-            children: stakeTypes?.payload?.map((type: MasterType) => {
-              return {
-                title: type.title,
-                action: 'view',
-                subject: 'stakeholder',
-                path: `/stakeholders/${type.id}`
-              };
-            })
-          }
-        ];
+        {
+          title: t('navigation.stakeholder'),
+          icon: 'tabler:user',
+          path: '/stakeholders',
+          action: 'view',
+          subject: 'stakeholder',
+          children: stakeTypes?.payload?.map((type: MasterType) => {
+            return {
+              title: type.title,
+              action: 'view',
+              subject: 'stakeholder',
+              path: `/stakeholders/${type.id}`
+            };
+          })
+        }
+      ];
   };
 
   const projectNavigation = (): NavigationItem[] => {
     return projectTypes?.length < 1
       ? [
-          {
-            title: 'Projects',
-            icon: 'tabler:box-multiple',
-            path: '#',
-            action: 'view',
-            subject: 'project'
-          }
-        ]
+        {
+          title: 'Projects',
+          icon: 'tabler:box-multiple',
+          path: '#',
+          action: 'view',
+          subject: 'project'
+        }
+      ]
       : [
-          {
-            title: 'Projects',
-            icon: 'tabler:box-multiple',
-            action: 'view',
-            subject: 'project',
-            path: '/projects',
-            children: projectTypes?.payload?.map((type: MasterType) => {
-              return {
-                title: type.title,
-                action: 'view',
-                subject: 'project',
-                path: `/projects/${type.id}`
-              };
-            })
-          }
-        ];
+        {
+          title: 'Projects',
+          icon: 'tabler:box-multiple',
+          action: 'view',
+          subject: 'project',
+          path: '/projects',
+          children: projectTypes?.payload?.map((type: MasterType) => {
+            return {
+              title: type.title,
+              action: 'view',
+              subject: 'project',
+              path: `/projects/${type.id}`
+            };
+          })
+        }
+      ];
   };
 
   const infrastructureNavigation = (): NavigationItem[] => {
     return infrastructureTypes?.length < 1
       ? [
-          {
-            title: 'infrastructure',
-            icon: 'tabler:box-multiple',
-            path: '#',
-            action: "view",
-            subject: "infrastructure"
-          }
-        ]
+        {
+          title: 'Infrastructure',
+          icon: 'tabler:box-multiple',
+          path: '#',
+          action: "view",
+          subject: "infrastructure"
+        }
+      ]
       : [
-          {
-            title: 'infrastructure',
-            icon: 'tabler:box-multiple',
-            action: 'view',
-            subject: 'infrastructure',
-            path: '/infrastructure',
-            children: projectTypes?.payload?.map((type: MasterType) => {
-              return {
-                title: type.title,
-                action: 'view',
-                subject:
-                 'infrastructure',
-                path: `/infrastructure/${type.id}`
-              };
-            })
-          }
-        ];
+        {
+          title: 'Infrastructure',
+          icon: 'tabler:box-multiple',
+          action: 'view',
+          subject: 'infrastructure',
+          path: '/infrastructure',
+          children: projectTypes?.payload?.map((type: MasterType) => {
+            return {
+              title: type.title,
+              action: 'view',
+              subject:
+                'infrastructure',
+              path: `/infrastructure/${type.id}`
+            };
+          })
+        }
+      ];
   };
 
   const resourceNavigation = (): NavigationItem[] => {
     return resourceTypes?.length < 1
       ? [
-          {
-            title: 'Resources',
-            icon: 'tabler:calendar',
-            path: '#',
-            action: 'view',
-            subject: 'resource'
-          }
-        ]
+        {
+          title: 'Resources',
+          icon: 'tabler:calendar',
+          path: '#',
+          action: 'view',
+          subject: 'resource'
+        }
+      ]
       : [
-          {
-            title: 'Resources',
-            icon: 'tabler:calendar',
-            path: '/resources',
-            action: 'view',
-            subject: 'resource',
-            children: resourceTypes?.payload?.map((type: MasterType) => {
-              return {
-                title: type.title,
-                action: 'view',
-                subject: 'resource',
-                path: `/resources/${type.id}`
-              };
-            })
-          }
-        ];
+        {
+          title: 'Resources',
+          icon: 'tabler:calendar',
+          path: '/resources',
+          action: 'view',
+          subject: 'resource',
+          children: resourceTypes?.payload?.map((type: MasterType) => {
+            return {
+              title: type.title,
+              action: 'view',
+              subject: 'resource',
+              path: `/resources/${type.id}`
+            };
+          })
+        }
+      ];
   };
 
 
@@ -181,20 +181,22 @@ const ServerSideNavItems = () => {
     return documentTypes?.length < 1
       ? [{ title: 'Documents', icon: 'tabler:calendar' }]
       : [
-          {
-            title: 'Documents',
-            icon: 'tabler:files',
-            path: '/documents',
-            action: 'view',
-            subject: 'document',
-            children: documentTypes?.payload?.map((type: MasterType) => {
-              return { title: type.title,
-                action: 'view',
-                subject: 'document',
-                path: `/documents/${type.id}` };
-            })
-          }
-        ];
+        {
+          title: 'Documents',
+          icon: 'tabler:files',
+          path: '/documents',
+          action: 'view',
+          subject: 'document',
+          children: documentTypes?.payload?.map((type: MasterType) => {
+            return {
+              title: type.title,
+              action: 'view',
+              subject: 'document',
+              path: `/documents/${type.id}`
+            };
+          })
+        }
+      ];
   };
 
   return { menuItems };
