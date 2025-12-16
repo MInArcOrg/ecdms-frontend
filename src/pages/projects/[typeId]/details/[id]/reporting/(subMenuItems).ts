@@ -53,7 +53,9 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: projectReportingIds.report.challenges,
         title: 'project.navigation.submenu.reporting.report.challenges',
-        path: `/projects/${typeId}/details/${id}/reporting/report/challenges`
+        path: `/projects/${typeId}/details/${id}/reporting/report/challenges`,
+        model: 'projectchallenge',
+        action: 'view'
       },
       {
         id: projectReportingIds.report.qualityInspection,

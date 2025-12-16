@@ -1,28 +1,31 @@
-import { Box } from '@mui/material';
 import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
-import subMenuItems, { projectReportingIds } from '../(subMenuItems)';
+import subMenuItems, { findSubMenuItem, projectReportingIds } from '../(subMenuItems)';
+import ProjectChallengeList from 'src/views/pages/projects/detail/project-challenges';
 
-function ProjectReport() {
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), projectReportingIds.report.challenges);
+
+const ChallengesPage = () => {
   const router = useRouter();
-  const { id, typeId } = router.query;
+  const { id = '', typeId = '' } = router.query;
+
+  const menuItem = findSubMenuItem(subMenuItems(id as string, typeId as string), projectReportingIds.report.challenges);
 
   return (
-    <Box>
-      <ProjectLayout
-        activeMenuId={projectMenuIds.reporting}
-        activeSubMenuId={projectReportingIds.report.challenges}
-        subMenuItems={subMenuItems(id as string, typeId as string)}
-      >
-        <>Challenges goes here</>
-      </ProjectLayout>
-    </Box>
+    <ProjectLayout
+      activeMenuId={projectMenuIds.reporting}
+      activeSubMenuId={projectReportingIds.report.challenges}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
+    >
+      <ProjectChallengeList projectId={String(id)} typeId={String(typeId)} model={menuItem?.model || ''} />
+    </ProjectLayout>
   );
-}
-
-ProjectReport.acl = {
-  action: 'view',
-  subject: 'projectplan'
 };
-export default ProjectReport;
+
+ChallengesPage.acl = {
+  subject: defaultMenuItem?.model,
+  action: 'view'
+};
+
+export default ChallengesPage;
