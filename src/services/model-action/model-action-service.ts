@@ -18,6 +18,12 @@ const modelActionApiService = {
       .catch((error: any) => {
         throw error;
       }),
+  getLatestModelAction: (model_id: string, params: GetRequestParam): Promise<IApiResponse<ModelAction>> =>
+    buildGetRequest(`/generics/latest-model-action/${model_id}`, params)
+      .then((response: AxiosResponse<IApiResponse<ModelAction>>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
   addCAActionNote: (body: { data: Note; files: any[] }): Promise<IApiResponse> =>
     buildPostRequest('/generics/notes', body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)

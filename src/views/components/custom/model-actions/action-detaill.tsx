@@ -159,28 +159,28 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
                 actions?.authorization_data?.registered_data?.user_id,
                 actions?.authorization_data?.checked_data?.user_id
               ) && (
-                <ActionForm
-                  actionType={REQUEST_APPROVE}
-                  toggleDrawer={toggleDrawer}
-                  model_id={model_id}
-                  model={model}
-                  refetchAction={refetchAction}
-                />
-              )}
+                  <ActionForm
+                    actionType={REQUEST_APPROVE}
+                    toggleDrawer={toggleDrawer}
+                    model_id={model_id}
+                    model={model}
+                    refetchAction={refetchAction}
+                  />
+                )}
               {isAllowedToAuthorize(
                 actions?.status,
                 actions?.authorization_data?.registered_data?.user_id,
                 actions?.authorization_data?.checked_data?.user_id,
                 actions?.authorization_data?.approved_data?.user_id
               ) && (
-                <ActionForm
-                  actionType={REQUEST_AUTHORIZE}
-                  toggleDrawer={toggleDrawer}
-                  model_id={model_id}
-                  model={model}
-                  refetchAction={refetchAction}
-                />
-              )}
+                  <ActionForm
+                    actionType={REQUEST_AUTHORIZE}
+                    toggleDrawer={toggleDrawer}
+                    model_id={model_id}
+                    model={model}
+                    refetchAction={refetchAction}
+                  />
+                )}
             </Box>
           </CardContent>
         </Box>

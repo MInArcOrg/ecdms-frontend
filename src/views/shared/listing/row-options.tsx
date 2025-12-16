@@ -5,6 +5,9 @@ import { AbilityRule } from 'src/types/general/permission';
 import DeleteConfirmationDialog from '../dialog/delete-confirmation-dialog';
 import Can, { AbilityContext } from 'src/layouts/components/acl/Can';
 import toast from 'react-hot-toast';
+import { useQuery } from '@tanstack/react-query';
+import modelActionApiService from 'src/services/model-action/model-action-service';
+import { ACTION_REJECTED } from 'src/configs/action-status';
 
 interface RowOption {
   name: string;
@@ -25,7 +28,10 @@ interface RowOptionsProps<T> {
 const RowOptions = <T,>({ item, options, onEdit, onDelete, deletePermissionRule, editPermissionRule }: RowOptionsProps<T>) => {
   const [isDeleteDialogOpen, setDeleteDialogOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
+  const { data: actions, refetch } = useQuery({
+    queryKey: ['model-action', item.id],
+    queryFn: () => modelActionApiService.getByModelId(item.id, {})
+  });
   const handleOpenDeleteDialog = () => setDeleteDialogOpen(true);
   const handleCloseDeleteDialog = () => setDeleteDialogOpen(false);
   const handleDelete = async () => {
@@ -86,7 +92,7 @@ const RowOptions = <T,>({ item, options, onEdit, onDelete, deletePermissionRule,
             Edit
           </MenuItem>
         </Can>}
-        {onDelete && <Can do={deletePermissionRule?.action} on={deletePermissionRule?.subject}>
+        {onDelete && actions?.payload?.status === ACTION_REJECTED && <Can do={deletePermissionRule?.action} on={deletePermissionRule?.subject}>
           <MenuItem onClick={handleOpenDeleteDialog} sx={{ '& svg': { mr: 2 } }}>
             <Icon icon="tabler:trash" fontSize={20} />
             Delete
