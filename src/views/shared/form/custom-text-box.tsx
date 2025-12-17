@@ -21,7 +21,7 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
   onValueChange,
   type = 'text',
   allowSpecialChars = false,
-  maxLength = 36,
+  maxLength = 50,
   multilineMaxLength = 150,
   multiline = false,
   formatAsName = false,

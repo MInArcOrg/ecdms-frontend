@@ -652,7 +652,7 @@
     "role": {
       "roles": "Roles",
       "create-role": "Add Role",
-      "update-role": "Add Role",
+      "edit-role": "Add Role",
       "form": {
         "title": "Title",
         "description": "Description"

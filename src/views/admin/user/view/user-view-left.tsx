@@ -61,7 +61,7 @@ const UserViewLeft = ({ user }: { user: User }) => {
                       color: 'text.secondary',
                       textTransform: 'capitalize'
                     }}
-                  ></Typography>
+                  >{user?.position.name}</Typography>
                 </Box>
 
                 <Box sx={{ display: 'flex', mb: 3 }}>

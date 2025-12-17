@@ -56,7 +56,7 @@ export const userColumns = (
       headerName: t('department.user-columns.phone'),
       field: 'phone',
       renderCell: ({ row }: CellType) => {
-        return <Typography sx={{ color: 'text.secondary' }}>{row?.userphones?.map((phone) => phone.phone).join(', ')}</Typography>;
+        return <Typography sx={{ color: 'text.secondary' }}>{row?.phone}</Typography>;
       }
     },
     {

@@ -7,7 +7,7 @@ import Can from 'src/layouts/components/acl/Can';
 import toast from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
 import modelActionApiService from 'src/services/model-action/model-action-service';
-import { ACTION_REJECTED } from 'src/configs/action-status';
+import { ACTION_STATUS } from 'src/configs/action-status';
 
 interface RowOption {
   name: string;
@@ -91,7 +91,7 @@ const RowOptions = <T extends { id?: string }>({
           </MenuItem>
         ))}
 
-        {onEdit && editPermissionRule && (
+        {onEdit && actions?.payload?.status !== ACTION_STATUS.DEFAULT && editPermissionRule && (
           <Can do={editPermissionRule.action} on={editPermissionRule.subject}>
             <MenuItem onClick={handleEdit} sx={{ '& svg': { mr: 2 } }}>
               <Icon icon="tabler:edit" fontSize={20} />
@@ -100,7 +100,7 @@ const RowOptions = <T extends { id?: string }>({
           </Can>
         )}
 
-        {onDelete && deletePermissionRule && actions?.payload?.status === ACTION_REJECTED && (
+        {onDelete && deletePermissionRule && actions?.payload?.status === ACTION_STATUS.REJECTED && (
           <Can do={deletePermissionRule.action} on={deletePermissionRule.subject}>
             <MenuItem onClick={handleOpenDeleteDialog} sx={{ '& svg': { mr: 2 } }}>
               <Icon icon="tabler:trash" fontSize={20} />

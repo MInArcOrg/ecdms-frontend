@@ -1,59 +1,115 @@
-export const ACTION_APPROVED = 'APPROVED';
-export const ACTION_CHECKED = 'CHECKED';
-export const ACTION_REGISTERED = 'REGISTERED';
-export const ACTION_REJECTED = 'REJECTED';
-export const ACTION_AUTHORIZED = 'AUTHORIZED';
+import { ChipProps } from '@mui/material';
 
-export const TITLE_APPROVER = 'APPROVER';
-export const TITLE_CHECKER = 'CHECKER';
-export const TITLE_REGISTER = 'REGISTER';
-export const TITLE_AUTHORIZER = 'AUTHORIZER';
-export const TITLE_REJECT = 'REJECT';
+/* =======================
+   ACTION STATUS
+======================= */
 
-export const REQUEST_APPROVE = 'approve';
-export const REQUEST_CHECK = 'check';
-export const REQUEST_REGISTER = 'register';
-export const REQUEST_AUTHORIZE = 'authorize';
-export const REQUEST_REJECT = 'reject';
+export const ACTION_STATUS = {
+  AUTHORIZED: 'AUTHORIZED',
+  APPROVED: 'APPROVED',
+  CHECKED: 'CHECKED',
+  REGISTERED: 'REGISTERED',
+  REJECTED: 'REJECTED',
+  DEFAULT: 'DEFAULT',
+} as const;
 
-export const statusColors: Record<string, string> = {
-  [ACTION_AUTHORIZED]: 'success',
-  [ACTION_APPROVED]: 'primary',
-  [ACTION_CHECKED]: 'warning',
-  [ACTION_REGISTERED]: 'secondary',
-  [ACTION_REJECTED]: 'error'
+export type ActionStatus =
+  typeof ACTION_STATUS[keyof typeof ACTION_STATUS];
+
+/* =======================
+   TITLES
+======================= */
+
+export const TITLES = {
+  AUTHORIZER: 'AUTHORIZER',
+  APPROVER: 'APPROVER',
+  CHECKER: 'CHECKER',
+  REGISTER: 'REGISTER',
+  REJECT: 'REJECT',
+  DEFAULT: 'DEFAULT',
+} as const;
+
+export type ActionTitle =
+  typeof TITLES[keyof typeof TITLES];
+
+/* =======================
+   REQUESTS
+======================= */
+
+export const REQUESTS = {
+  REGISTER: 'register',
+  CHECK: 'check',
+  APPROVE: 'approve',
+  AUTHORIZE: 'authorize',
+  REJECT: 'reject',
+} as const;
+
+export type ActionRequest =
+  typeof REQUESTS[keyof typeof REQUESTS];
+
+/* =======================
+   COLOR MAPS
+======================= */
+
+export const statusColors: Record<ActionStatus, ChipProps['color']> = {
+  AUTHORIZED: 'success',
+  APPROVED: 'primary',
+  CHECKED: 'warning',
+  REGISTERED: 'secondary',
+  REJECTED: 'error',
+  DEFAULT: 'default',
 };
 
-export const notificationStatusColors: Record<string, string> = {
-  [TITLE_AUTHORIZER]: 'success',
-  [TITLE_APPROVER]: 'primary',
-  [TITLE_CHECKER]: 'warning',
-  [TITLE_REGISTER]: 'secondary',
-  [TITLE_REJECT]: 'error'
+export const notificationStatusColors: Record<ActionTitle, ChipProps['color']> = {
+  AUTHORIZER: 'success',
+  APPROVER: 'primary',
+  CHECKER: 'warning',
+  REGISTER: 'secondary',
+  REJECT: 'error',
+  DEFAULT: 'default',
 };
 
-export const isAllowedToCheck = (status: string, registerId: string): boolean => {
-  return status === ACTION_REGISTERED;
-  // && getLoggedInUser().id !== registerId
-};
+/* =======================
+   SAFE RESOLVERS
+======================= */
 
-export const isAllowedToApprove = (status: string, registerId: string, checkerId: string): boolean => {
-  return status === ACTION_CHECKED;
-  // && getLoggedInUser().id !== registerId && getLoggedInUser().id !== checkerId
-};
+export const resolveStatus = (status?: string): ActionStatus =>
+  Object.values(ACTION_STATUS).includes(status as ActionStatus)
+    ? (status as ActionStatus)
+    : ACTION_STATUS.DEFAULT;
 
-export const isAllowedToReject = (status: string): boolean => {
-  return status !== ACTION_APPROVED;
-};
+/* =======================
+   PERMISSION HELPERS
+======================= */
 
-export const isAllowedToAuthorize = (status: string, registerId: string, checkerId: string, approverId: string): boolean => {
-  return (
-    status === ACTION_APPROVED
-    // &&
-    // getLoggedInUser().id !== registerId &&
-    // getLoggedInUser().id !== checkerId &&
-    // getLoggedInUser().id !== approverId
-  );
-};
+export const isAllowedToCheck = (
+  status: ActionStatus,
+  _registerId: string
+): boolean => status === ACTION_STATUS.REGISTERED;
 
-export const MODEL_ACTIONS: string[] = [REQUEST_REGISTER, REQUEST_CHECK, REQUEST_APPROVE, REQUEST_AUTHORIZE, 'view'];
+export const isAllowedToApprove = (
+  status: ActionStatus,
+  _registerId: string,
+  _checkerId: string
+): boolean => status === ACTION_STATUS.CHECKED;
+
+export const isAllowedToReject = (status: ActionStatus): boolean =>
+  status !== ACTION_STATUS.APPROVED;
+
+export const isAllowedToAuthorize = (
+  status: ActionStatus,
+  _registerId: string,
+  _checkerId: string,
+  _approverId: string
+): boolean => status === ACTION_STATUS.APPROVED;
+
+/* =======================
+   MODEL ACTIONS
+======================= */
+
+export const MODEL_ACTIONS: ActionRequest[] = [
+  REQUESTS.REGISTER,
+  REQUESTS.CHECK,
+  REQUESTS.APPROVE,
+  REQUESTS.AUTHORIZE,
+];

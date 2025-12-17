@@ -16,6 +16,7 @@ type User = {
   phone: string;
   useremails?: { id: string; email: string }[];
   userphones?: { id: string; phone: string }[];
+  positions?: Position;
   gender: string;
   marital_status: number | null;
   partner_name: string | null;

@@ -3,17 +3,12 @@ import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import Icon from 'src/@core/components/icon';
 import {
-  ACTION_APPROVED,
-  ACTION_AUTHORIZED,
-  ACTION_CHECKED,
-  ACTION_REGISTERED,
-  ACTION_REJECTED,
-  REQUEST_APPROVE,
-  REQUEST_AUTHORIZE,
-  REQUEST_CHECK,
+
+  ACTION_STATUS,
   isAllowedToApprove,
   isAllowedToAuthorize,
-  isAllowedToCheck
+  isAllowedToCheck,
+  REQUESTS
 } from 'src/configs/action-status';
 import ActionForm from './action-form';
 import ActionItem from './action-item';
@@ -66,7 +61,7 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
             <ActionItem
               replyData={
                 {
-                  type: ACTION_REGISTERED,
+                  type: ACTION_STATUS.REGISTERED,
                   actionstate_id: actions?.authorization_data?.registered_data?.user_id
                 } as ActionReply
               }
@@ -81,7 +76,7 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
                 <ActionItem
                   replyData={
                     {
-                      type: ACTION_CHECKED,
+                      type: ACTION_STATUS.CHECKED,
                       actionstate_id: actions?.authorization_data?.checked_data?.user_id
                     } as ActionReply
                   }
@@ -98,7 +93,7 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
                 <ActionItem
                   replyData={
                     {
-                      type: ACTION_APPROVED,
+                      type: ACTION_STATUS.APPROVED,
                       actionstate_id: actions?.authorization_data?.approved_data?.user_id
                     } as ActionReply
                   }
@@ -115,7 +110,7 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
                 <ActionItem
                   replyData={
                     {
-                      type: ACTION_AUTHORIZED,
+                      type: ACTION_STATUS.AUTHORIZED,
                       actionstate_id: actions?.authorization_data?.authorized_data?.user_id
                     } as ActionReply
                   }
@@ -132,7 +127,7 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
                 <ActionItem
                   replyData={
                     {
-                      type: ACTION_REJECTED,
+                      type: ACTION_STATUS.REJECTED,
                       actionstate_id: actions?.authorization_data?.rejected_data?.user_id
                     } as ActionReply
                   }
@@ -143,11 +138,28 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
                 />
               </div>
             )}
-
+            {
+              actions?.status === ACTION_STATUS.DEFAULT && (
+                <div>
+                  <ActionItem
+                    replyData={
+                      {
+                        type: ACTION_STATUS.DEFAULT,
+                        actionstate_id: actions?.authorization_data?.default_data?.user_id
+                      } as ActionReply
+                    }
+                    refetchAction={refetchModel}
+                    title={t('model-action.default-data')}
+                    user={actions?.authorization_data?.default_data?.user as User}
+                    actionData={actions?.authorization_data?.default_data}
+                  />
+                </div>
+              )
+            }
             <Box sx={{ marginTop: '10px' }}>
               {isAllowedToCheck(actions?.status, actions?.authorization_data?.registered_data?.user_id) && (
                 <ActionForm
-                  actionType={REQUEST_CHECK}
+                  actionType={REQUESTS.CHECK}
                   toggleDrawer={toggleDrawer}
                   model_id={model_id}
                   model={model}
@@ -160,7 +172,7 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
                 actions?.authorization_data?.checked_data?.user_id
               ) && (
                   <ActionForm
-                    actionType={REQUEST_APPROVE}
+                    actionType={REQUESTS.APPROVE}
                     toggleDrawer={toggleDrawer}
                     model_id={model_id}
                     model={model}
@@ -174,7 +186,7 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
                 actions?.authorization_data?.approved_data?.user_id
               ) && (
                   <ActionForm
-                    actionType={REQUEST_AUTHORIZE}
+                    actionType={REQUESTS.AUTHORIZE}
                     toggleDrawer={toggleDrawer}
                     model_id={model_id}
                     model={model}

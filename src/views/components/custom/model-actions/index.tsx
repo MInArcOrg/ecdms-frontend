@@ -1,11 +1,11 @@
 import { Box, ChipPropsColorOverrides } from '@mui/material';
 import React, { useState } from 'react';
-import CustomChip from 'src/@core/components/mui/chip';
 import { statusColors } from 'src/configs/action-status';
 import modelActionApiService from 'src/services/model-action/model-action-service';
 import ActionDetail from './action-detaill';
 import { useQuery } from '@tanstack/react-query';
 import { AuthorizationResponse } from 'src/types/general/model-action';
+import StatusChip from './status-chip';
 
 interface ModelActionProps {
   model: string;
@@ -52,19 +52,9 @@ const ModelActionComponent: React.FC<ModelActionProps> = ({ model, model_id, ref
         }}
         gap={2}
       >
-        <CustomChip
+        <StatusChip
           onClick={toggleDrawer}
-          rounded
-          size="small"
-          label={actions?.payload?.status}
-          color={statusColors[actions?.payload?.status || 'secondary'] as keyof ChipPropsColorOverrides}
-          skin="light"
-          sx={{
-            '& .MuiChip-label': { textTransform: 'capitalize' },
-            '&:hover': { color: '#fff' },
-            cursor: 'pointer',
-            height: 15
-          }}
+          status={actions?.payload?.status}
         />
         {/* {actions?.status === rejectedAction && (
           <span className='btn btn-sm btn-light ml-1' onClick={() => resubmit(model_id)}>

@@ -84,8 +84,8 @@ const UserDrawer = (props: UserDrawerType) => {
             ...user,
             birth_date: formatInitialDateDate(user?.birth_date),
             marital_status: user?.marital_status ? 1 : 0,
-            email: user?.useremails && user.useremails.length > 0 ? user.useremails[0].email : '',
-            phone: user?.userphones && user.userphones.length > 0 ? user.userphones[0].phone : ''
+            email: user?.email,
+            phone: user?.phone
           }}
           createActionFunc={isEdit ? editUser : createUser}
           onActionSuccess={onActionSuccess}

@@ -1,3 +1,4 @@
+import { ActionStatus } from 'src/configs/action-status';
 import User from '../admin/user';
 
 export interface ModelAction {
@@ -17,12 +18,13 @@ interface AuthorizationData {
   approved_data: ModelAction;
   authorized_data: ModelAction;
   rejected_data: ModelAction;
+  default_data: ModelAction;
 }
 
 export interface AuthorizationResponse {
   authorization_data: AuthorizationData;
   id: string;
-  status: string;
+  status: ActionStatus;
 }
 
 export interface ActionReply {

@@ -37,11 +37,10 @@ function ProjectList({
   const { data: type, isLoading: typeIsLoading } = useQuery(
     {
       queryKey: [module + '-project-type', String(typeId)],
-      queryFn: () => masterTypeApiService.getOne(module, String(typeId), {}),
+      queryFn: () => masterTypeApiService.getOne('project', String(typeId), {}),
       enabled: !!typeId
     }
   )
-
   const {
     data: projects,
     isLoading,

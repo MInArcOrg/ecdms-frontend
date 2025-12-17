@@ -8,6 +8,7 @@ import UserProfileMd from 'src/views/admin/user/user-profile-md';
 import { ActionReply, ModelAction } from 'src/types/general/model-action';
 import { statusColors } from 'src/configs/action-status';
 import Icon from 'src/@core/components/icon';
+import StatusChip from './status-chip';
 
 interface ActionItemProps {
   user: User;
@@ -39,11 +40,7 @@ const ActionItem: React.FC<ActionItemProps> = ({ user, actionData, title, refetc
             <UserProfileMd user={user} position={String(replyData?.type)} />
             <Box alignItems="end" display="flex" flexDirection="column" gap={3}>
               <Typography variant="body2">{moment(actionData?.time).fromNow()}</Typography>
-              <CustomChip
-                label={title}
-                color={`${statusColors[replyData?.type || 'secondary']}` as keyof ChipPropsColorOverrides}
-                size="small"
-              />
+              <StatusChip status={replyData?.type} />
             </Box>
           </Box>
         </CardContent>
