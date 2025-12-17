@@ -45,6 +45,10 @@ const UserList = () => {
     toggleDrawer();
     setSelectedRow(generalMaster);
   };
+  const hanldeStatusChange = async (user: User, status: string) => {
+    await userApiService.handleAccountAction(user.id, status);
+    refetch();
+  };
   return (
     <Fragment>
       {showDrawer && <UserDrawer departmentId='' open={showDrawer} toggle={toggleDrawer} user={selectedRow as User} refetch={refetch} />}
@@ -55,7 +59,7 @@ const UserList = () => {
         title={t(`department.user.title`)}
         isLoading={isLoading}
         tableProps={{
-          headers: userColumns(handleEdit, handleDelete, t, refetch)
+          headers: userColumns(handleEdit, handleDelete, t, refetch, false, hanldeStatusChange)
         }}
         createActionConfig={{
           ...defaultCreateActionConfig,
@@ -74,8 +78,8 @@ const UserList = () => {
   );
 };
 UserList.acl = {
-  subject:'user',
-  action:'view'
+  subject: 'user',
+  action: 'view'
 }
 
 export default UserList;

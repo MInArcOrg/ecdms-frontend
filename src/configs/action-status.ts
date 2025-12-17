@@ -73,11 +73,17 @@ export const notificationStatusColors: Record<ActionTitle, ChipProps['color']> =
    SAFE RESOLVERS
 ======================= */
 
-export const resolveStatus = (status?: string) =>
-  Object.values(ACTION_STATUS).includes(status as ActionStatus)
-    ? (status as ActionStatus)
-    : '';
+export const resolveStatus = (status?: string): ActionStatus => {
+  if (!status) return ACTION_STATUS.DEFAULT;
 
+  const normalized = status.toLowerCase();
+
+  const validStatuses = Object.values(ACTION_STATUS);
+
+  return validStatuses.includes(normalized as ActionStatus)
+    ? (normalized as ActionStatus)
+    : ACTION_STATUS.DEFAULT;
+};
 /* =======================
    PERMISSION HELPERS
 ======================= */
