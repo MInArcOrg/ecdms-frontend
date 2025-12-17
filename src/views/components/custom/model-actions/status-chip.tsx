@@ -26,7 +26,7 @@ const StatusChip = ({ status, onClick }: StatusChipProps) => {
             onClick={onClick}
             rounded
             size="small"
-            label={resolvedStatus.toLowerCase()}
+            label={resolvedStatus}
             color={color}
             skin={skin}
             sx={{
