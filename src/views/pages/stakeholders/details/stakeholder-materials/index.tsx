@@ -25,13 +25,13 @@ const MaterialList: React.FC<MaterialListProps> = ({ stakeholderId }) => {
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<StakeholderMaterial | null>(null);
   const { t } = useTranslation();
-
-  const { data: materialCategories } = usePaginatedFetch<StakeholderMaterial[]>({
-    queryKey: ['material-categories'],
-    fetchFunction: () => stakeholderMaterialApiService.getAll({
-      filter: { stakeholder_id: stakeholderId }
-    })
-  });
+  const materialCategories: StakeholderMaterial[] = []
+  // const { data: materialCategories } = usePaginatedFetch<StakeholderMaterial[]>({
+  //   queryKey: ['material-categories'],
+  //   fetchFunction: () => stakeholderMaterialApiService.getAll({
+  //     filter: { stakeholder_id: stakeholderId }
+  //   })
+  // });
   const fetchMaterials = (params: GetRequestParam): Promise<IApiResponse<StakeholderMaterial[]>> => {
     return stakeholderMaterialApiService.getAll({
       ...params,

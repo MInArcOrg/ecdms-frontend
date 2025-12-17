@@ -2282,7 +2282,7 @@ export interface RailwayPowerDistribution {
   updated_at?: string;
 }
 export interface RailwayPowerSupplyMaintenanceAndTesting {
-  id: string | null;
+  id: string;
   project_id: string;
   railway_station_platform_layout_id: string;
   maintenance_schedules_and_activities: boolean | null; // BOOLEAN
@@ -2298,7 +2298,7 @@ export interface RailwayPowerSupplyMaintenanceAndTesting {
 
 
 export interface RailwayPowerSupplySafetyAndCompliance {
-  id: string | null;
+  id: string;
   project_id: string;
   railway_station_platform_layout_id: string;
   safety_measures_and_protocols: boolean; // BOOLEAN
