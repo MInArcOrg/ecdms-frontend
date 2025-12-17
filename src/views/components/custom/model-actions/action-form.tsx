@@ -3,7 +3,6 @@ import { Backdrop, Button, FormControl, FormHelperText, FormLabel, OutlinedInput
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { REQUEST_REJECT } from 'src/configs/action-status';
 import modelActionApiService from 'src/services/model-action/model-action-service';
 import { ModelAction } from 'src/types/general/model-action';
 import { Note } from 'src/types/general/note';
@@ -12,6 +11,7 @@ import { parseError } from 'src/utils/parse/clean-error';
 import * as Yup from 'yup';
 import Can from 'src/layouts/components/acl/Can';
 import ConfirmationDialog from 'src/views/shared/dialog/confirmation-dialog';
+import { ACTION_STATUS } from 'src/configs/action-status';
 
 interface ActionFormProps {
   actionType: string;
@@ -86,7 +86,7 @@ const ActionForm: React.FC<ActionFormProps> = ({ actionType, model_id, model, re
           data: { model_id, model } as ModelAction,
           files: []
         },
-        REQUEST_REJECT
+        ACTION_STATUS.REJECTED
       );
       setActionData(res);
       refetchAction();
