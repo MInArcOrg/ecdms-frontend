@@ -63,6 +63,7 @@ export const uploadableProjectFileTypes = {
   training: 'TRAINING',
   regulation: 'REGULATION',
   license: 'LICENSE',
+  jointVentureCompany: 'JOINT_VENTURE_COMPANY',
   other: {
     buildingDimensionDetail: 'BUILDING_DIMENSION_DETAIL',
     port: 'PORT',

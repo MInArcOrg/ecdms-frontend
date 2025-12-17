@@ -6,18 +6,21 @@ import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import SharedItemViewCard from 'src/views/shared/listing/shared-item-view-card';
 import UserProfileSmall from '../user-profile-small';
+import Icon from 'src/@core/components/icon';
 
 const UserCard = ({
   user,
   onEdit,
   onDelete,
   refetch,
+  hanldeStatusChange,
   t
 }: {
   user: User;
   onEdit: (user: User) => void;
   onDelete: (id: string) => void;
   refetch: () => void;
+  hanldeStatusChange: (user: User, status: string) => void;
   t: any;
 }) => {
   return (
@@ -27,14 +30,28 @@ const UserCard = ({
       actions={
         <>
           <FileDrawer id={user.id} type="USER" />
-          <ModelActionComponent model="User" model_id={user.id} refetchModel={refetch} resubmit={() => {}} title="" postAction={() => {}} />
+          <ModelActionComponent model="User" model_id={user.id} refetchModel={refetch} resubmit={() => { }} title="" postAction={() => { }} />
           <RowOptions
             onEdit={onEdit}
             onDelete={() => onDelete(user.id)}
             item={user}
             deletePermissionRule={{ action: 'delete', subject: 'user' }}
             editPermissionRule={{ action: 'update', subject: 'user' }}
-            options={[]}
+            options={[
+              {
+                name: t('common.status.active'),
+                onClick: () => hanldeStatusChange(user, 'ACTIVATE'),
+                icon: "tabler:check",
+                permission: { action: 'update', subject: 'user' }
+              },
+              {
+                name: t('common.status.inactive'),
+                onClick: () => hanldeStatusChange(user, 'DEACTIVATE'),
+                icon: "tabler:x",
+                permission: { action: 'update', subject: 'user' }
+
+              }
+            ]}
           />
         </>
       }

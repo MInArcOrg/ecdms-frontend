@@ -47,6 +47,23 @@ const userApiService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
+      }),
+  handleAccountAction: (id: string, action: string): Promise<IApiResponse> =>
+    axiosServices
+      .post(`/departments/account-action/${id}/${action}`)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
+  changePassword: ({ old_password, new_password }: { old_password: string, new_password: string }): Promise<IApiResponse> =>
+    axiosServices
+      .post(`/departments/change-password`, {
+        old_password,
+        new_password
+      })
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
       })
 };
 

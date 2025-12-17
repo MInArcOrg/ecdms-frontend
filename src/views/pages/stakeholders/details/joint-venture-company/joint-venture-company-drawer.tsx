@@ -7,6 +7,9 @@ import JointVentureCompanyForm from './joint-venture-company-form';
 import jointVentureCompanyApiService from 'src/services/stakeholder/joint-venture-company-service';
 import type { JointVentureCompany } from 'src/types/stakeholder/joint-venture-company';
 import type { IApiResponse } from 'src/types/requests';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { useState } from 'react';
 
 interface JointVentureCompanyDrawerType {
   open: boolean;
@@ -18,6 +21,10 @@ interface JointVentureCompanyDrawerType {
 
 const JointVentureCompanyDrawer = (props: JointVentureCompanyDrawerType) => {
   const { open, toggle, refetch, jointVentureCompany, stakeholderId } = props;
+  const [uploadableFile, setUploadableFile] = useState<File | null>(null);
+  const onFileChange = (file: File | null) => {
+    setUploadableFile(file);
+  };
 
   const validationSchema = yup.object().shape({
     joint_venture_id: yup.string().required('Joint Venture is required'),
@@ -52,7 +59,10 @@ const JointVentureCompanyDrawer = (props: JointVentureCompanyDrawerType) => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<JointVentureCompany>) => {
+  const onActionSuccess = async (response: IApiResponse<JointVentureCompany>, payload: IApiPayload<JointVentureCompany>) => {
+    if (payload.files.length > 0) {
+      uploadFile(payload.files[0], uploadableProjectFileTypes.jointVentureCompany, response.payload.id || '', '', '');
+    }
     refetch();
     handleClose();
   };
@@ -70,7 +80,7 @@ const JointVentureCompanyDrawer = (props: JointVentureCompanyDrawerType) => {
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<JointVentureCompany>) => <JointVentureCompanyForm formik={formik} stakeholderId={stakeholderId} />}
+          {(formik: FormikProps<JointVentureCompany>) => <JointVentureCompanyForm file={uploadableFile} onFileChange={onFileChange} formik={formik} stakeholderId={stakeholderId} />}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

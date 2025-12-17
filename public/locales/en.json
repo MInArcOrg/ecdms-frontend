@@ -58,6 +58,17 @@
       }
     }
   },
+  "user": {
+    "password": {
+      "change-password": "Change Password",
+      "old-password": "Old Password",
+      "new-password": "New Password",
+      "confirm-password": "Confirm Password",
+      "password-requirements": "Password must be 8-50 characters with uppercase, lowercase, digit, and special character",
+      "change-success": "Password changed successfully",
+      "change-error": "Failed to change password"
+    }
+  },
   "navigation": {
     "dashboard": "Dashboard",
     "admin-module": "Admin Module",
@@ -530,7 +541,8 @@
       "role": "Role",
       "phone": "Phone",
       "department": "Department",
-      "position": "Position"
+      "position": "Position",
+      "status":"Status"
     },
     "tabs": {
       "experts": "Experts",
@@ -4587,6 +4599,7 @@
     "create": "Add",
     "active": "Active",
     "inactive": "InActive",
+   
     "meters": "Meters",
     "inches": "Inches",
     "created-at": "Created At",
@@ -4623,7 +4636,9 @@
     },
     "status": {
       "active": "Active",
-      "inactive": "InActive"
+      "inactive": "InActive",
+      "activate": "Activate",
+      "deactivate": "Deactivate"
     },
     "table-columns": {
       "id": "ID",

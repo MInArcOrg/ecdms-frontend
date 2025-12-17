@@ -1,4 +1,5 @@
 // ** React Imports
+import { useState } from 'react';
 
 // ** MUI Imports
 import Box from '@mui/material/Box';
@@ -7,20 +8,26 @@ import CardContent from '@mui/material/CardContent';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 // ** Icon Imports
+import Icon from 'src/@core/components/icon';
 
 // ** Custom Components
 import CustomChip from 'src/@core/components/mui/chip';
+import ChangePasswordDrawer from './change-password-drawer';
 
 // ** Types
+import { useTranslation } from 'react-i18next';
 
 // ** Utils Import
 import User from 'src/types/admin/user';
 import UserAvatar from '../user-avatar';
 
 const UserViewLeft = ({ user }: { user: User }) => {
+  const { t } = useTranslation();
   // ** States
+  const [openPasswordDialog, setOpenPasswordDialog] = useState(false);
 
   if (user) {
     return (
@@ -70,8 +77,27 @@ const UserViewLeft = ({ user }: { user: User }) => {
                 </Box>
               </Box>
             </CardContent>
+
+            <Divider sx={{ my: '0 !important', mx: 6 }} />
+
+            <CardContent>
+              <Button
+                fullWidth
+                variant="contained"
+                startIcon={<Icon icon="tabler:lock" />}
+                onClick={() => setOpenPasswordDialog(true)}
+              >
+                {t('user.password.change-password')}
+              </Button>
+            </CardContent>
           </Card>
         </Grid>
+
+        <ChangePasswordDrawer
+          open={openPasswordDialog}
+          toggle={() => setOpenPasswordDialog(false)}
+          userId={user.id}
+        />
       </Grid>
     );
   } else {

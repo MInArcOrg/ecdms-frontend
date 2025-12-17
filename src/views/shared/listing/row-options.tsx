@@ -85,7 +85,14 @@ const RowOptions = <T extends { id?: string }>({
         PaperProps={{ style: { minWidth: '8rem' } }}
       >
         {options?.map((option, index) => (
-          <MenuItem key={index} onClick={option.onClick} sx={{ '& svg': { mr: 2 } }}>
+          <MenuItem
+            key={index}
+            onClick={() => {
+              option.onClick();
+              handleRowOptionsClose();
+            }}
+            sx={{ '& svg': { mr: 2 } }}
+          >
             <Icon icon={option.icon} fontSize={20} />
             {option.name}
           </MenuItem>
@@ -102,7 +109,13 @@ const RowOptions = <T extends { id?: string }>({
 
         {onDelete && deletePermissionRule && actions?.payload?.status === ACTION_STATUS.REJECTED && (
           <Can do={deletePermissionRule.action} on={deletePermissionRule.subject}>
-            <MenuItem onClick={handleOpenDeleteDialog} sx={{ '& svg': { mr: 2 } }}>
+            <MenuItem
+              onClick={() => {
+                handleOpenDeleteDialog();
+                handleRowOptionsClose();
+              }}
+              sx={{ '& svg': { mr: 2 } }}
+            >
               <Icon icon="tabler:trash" fontSize={20} />
               Delete
             </MenuItem>

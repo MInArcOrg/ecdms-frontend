@@ -49,6 +49,10 @@ function ProfessionalList({ parentDepartment }: { parentDepartment: Department }
     toggleDrawer();
     setSelectedRow(user);
   };
+  const hanldeStatusChange = async (user: User, status: string) => {
+    await userApiService.handleAccountAction(user.id, status);
+    refetch();
+  };
   return (
     <Box
       sx={{
@@ -68,7 +72,7 @@ function ProfessionalList({ parentDepartment }: { parentDepartment: Department }
       )}
       <Container>
         <ItemsListing
-          ItemViewComponent={({ data }) => <UserCard user={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />}
+          ItemViewComponent={({ data }) => <UserCard user={data} onDelete={handleDelete} onEdit={handleEdit} hanldeStatusChange={hanldeStatusChange} t={t} refetch={refetch} />}
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
@@ -81,7 +85,7 @@ function ProfessionalList({ parentDepartment }: { parentDepartment: Department }
           title={t('department.expert.title')}
           fetchDataFunction={refetch}
           tableProps={{
-            headers: userColumns(handleEdit, handleDelete, t, refetch, true)
+            headers: userColumns(handleEdit, handleDelete, t, refetch, true, hanldeStatusChange)
           }}
           items={professionals || []}
           onPaginationChange={handlePageChange}

@@ -45,7 +45,7 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
       value = value.trimStart();
 
       // 2. Block special chars if not allowed (Kept your existing logic)
-      if (!allowSpecialChars) {
+      if (!allowSpecialChars && type !== 'password') {
         if (type === 'email') {
           value = value.replace(/[^a-zA-Z0-9@._\-+]/g, '');
         }

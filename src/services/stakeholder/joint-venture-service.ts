@@ -30,7 +30,7 @@ const jointVentureApiService = {
       }),
 
   create: (body: IApiPayload<JointVenture>): Promise<IApiResponse> =>
-    buildPostRequest('/stakeholders/joint-ventures', body, false)
+    buildPostRequest('/stakeholders/joint-ventures', body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;

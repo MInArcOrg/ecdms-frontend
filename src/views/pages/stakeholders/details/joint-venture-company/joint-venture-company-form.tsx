@@ -8,10 +8,13 @@ import type { JointVentureCompany } from 'src/types/stakeholder/joint-venture-co
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import jointVentureApiService from 'src/services/stakeholder/joint-venture-service';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface JointVentureCompanyFormProps {
   formik: FormikProps<JointVentureCompany>;
   stakeholderId: string;
+  file: File | null;
+  onFileChange: (file: File | null) => void;
 }
 
 interface ApiResponse {
@@ -29,7 +32,7 @@ interface ApiResponse {
   };
 }
 
-const JointVentureCompanyForm: React.FC<JointVentureCompanyFormProps> = ({ formik, stakeholderId }) => {
+const JointVentureCompanyForm: React.FC<JointVentureCompanyFormProps> = ({ formik, stakeholderId, onFileChange, file }) => {
   const { t } = useTranslation();
   const [jointVentures, setJointVentures] = useState<{ value: string; label: string }[]>([]);
 
@@ -125,6 +128,13 @@ const JointVentureCompanyForm: React.FC<JointVentureCompanyFormProps> = ({ formi
       </Grid>
       <Grid item xs={12}>
         <CustomTextBox fullWidth label={t('stakeholder.joint-venture-company.reference')} name="reference" size="small" sx={{ mb: 2 }} />
+      </Grid>
+      <Grid item xs={12}>
+        <CustomFileUpload
+          file={file}
+          onFileChange={onFileChange}
+          label={t('common.form.file-upload')}
+        />
       </Grid>
     </Grid>
   );
