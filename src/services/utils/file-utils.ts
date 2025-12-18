@@ -29,20 +29,25 @@ export const customAxios = axios.create({
 });
 
 const getAccessToken = () => {
-  // Check if window and localStorage are available
   if (typeof window === 'undefined' || !window.localStorage) {
-    return null; // Or handle as appropriate for your application
+    return null;
   }
-
-  // Replace with your logic to retrieve the token from local storage, cookies, etc.
-  // This example assumes a `token` key in local storage
-  const storedToken = `Bearer ${window.localStorage.getItem(authConfig.storageTokenKeyName)}`;
-
-  return storedToken;
+  const token = window.localStorage.getItem(authConfig.storageTokenKeyName);
+  return token ? `Bearer ${token}` : null;
 };
 
-customAxios.defaults.headers.common['Authorization'] = getAccessToken();
-
+customAxios.interceptors.request.use(
+  (config) => {
+    const token = getAccessToken();
+    if (token) {
+      config.headers.Authorization = token;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 // Upload files
 export const uploadFile = (
   file: File,
@@ -140,6 +145,15 @@ export const useGetMultiplePhotos = (params: GetRequestParam) => {
     }
   });
 };
+export const useGetMultipleFiles = (params: GetRequestParam) => {
+  return useQuery({
+    queryKey: ['multiple-file', params],
+    queryFn: async () => {
+      const response: AxiosResponse<IApiResponse<FileModel[]>> = await buildGetRequest(`/generics/files`, params);
+      return response.data; // Assuming response.data is of type FileModel[]
+    }
+  });
+}
 
 // Delete photo
 export const deletePhoto = (id: string | number): Promise<AxiosResponse<FileUploadResponse>> =>

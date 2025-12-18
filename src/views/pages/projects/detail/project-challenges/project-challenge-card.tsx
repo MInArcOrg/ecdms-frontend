@@ -12,7 +12,7 @@ interface ProjectChallengeCardProps {
   onDetail: (projectChallenge: ProjectChallenge) => void;
 }
 
-const ProjectChallengeCard: React.FC<ProjectChallengeCardProps> = ({ projectChallenge, refetch, onEdit, onDelete, onDetail }) => {
+const ProjectChallengeCard: React.FC<ProjectChallengeCardProps> = ({ projectChallenge, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
   return (
@@ -31,7 +31,7 @@ const ProjectChallengeCard: React.FC<ProjectChallengeCardProps> = ({ projectChal
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {t('project.other.challenges.title')}
+              {projectChallenge.title}
             </Typography>
           </Typography>
         </Box>
@@ -40,10 +40,10 @@ const ProjectChallengeCard: React.FC<ProjectChallengeCardProps> = ({ projectChal
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.challenges.challenge-type')}: {projectChallenge.challenge_type}
+            {t('project.challenges.description')}: {projectChallenge.description}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.challenges.description')}: {projectChallenge.description}
+            {t('project.challenges.measures_taken')}: {projectChallenge.measures_taken}
           </Typography>
         </Box>
       </CardContent>
@@ -52,11 +52,11 @@ const ProjectChallengeCard: React.FC<ProjectChallengeCardProps> = ({ projectChal
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'projectchallenge'
+            subject: 'challenge'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'projectchallenge'
+            subject: 'challenge'
           }}
           onEdit={() => onEdit(projectChallenge)}
           onDelete={() => onDelete(projectChallenge?.id || '')}

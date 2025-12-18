@@ -17,7 +17,7 @@ interface ProjectChallengeDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  challenge_type: yup.string().required('Challenge Type is Required')
+  title: yup.string().required('Title is Required')
 });
 
 const ProjectChallengeDrawer: React.FC<ProjectChallengeDrawerType> = (props) => {
@@ -53,11 +53,11 @@ const ProjectChallengeDrawer: React.FC<ProjectChallengeDrawerType> = (props) => 
   };
 
   return (
-    <CustomSideDrawer title={`project.other.challenges.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer title={`project.challenges.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.challenges.${isEdit ? 'edit' : 'create'}`}
+          title={`project.challenges.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={projectChallenge}

@@ -4,12 +4,15 @@ import { FormikProps } from 'formik';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import DocumentForm from './document-form';
-import { IApiPayload } from 'src/types/requests';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
 import documentApiService from 'src/services/document/document-service';
 import { Document } from 'src/types/document';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { MasterType } from 'src/types/master/master-types';
+import { deleteFile, uploadFile, useGetMultiplePhotos } from 'src/services/utils/file-utils';
+import { useEffect, useState } from 'react';
+import { FileWithId } from 'src/types/general/file';
 
 interface DocumentDrawerType {
   open: boolean;
@@ -46,14 +49,48 @@ const validationSchema = yup.object().shape({
 const DocumentDrawer = (props: DocumentDrawerType) => {
   // ** Props
   const { open, toggle, refetch, document, typeId, type } = props;
-  
+
   const { t } = useTranslation();
+
+  const { data: fetchedFiles } = useGetMultiplePhotos({
+    filter: { model_id: document?.id || '' }
+  });
+  const [uploadableFiles, setUploadableFiles] = useState<FileWithId[]>([]);
+  const [fetchedFileIds, setFetchedFileIds] = useState<string[]>([]);
   const isEdit = document?.id ? true : false;
   const createDocument = async (body: IApiPayload<Document>) => {
     return await documentApiService.create(body);
   };
   const editDocument = async (body: IApiPayload<Document>) => {
     return await documentApiService.update(document?.id || '', body);
+  };
+  useEffect(() => {
+    const fetchAndConvertFiles = async () => {
+      if (fetchedFiles) {
+        const _fetchedFiles = fetchedFiles.payload.map(async (file) => {
+          const response = await fetch(file.url);
+          const blob = await response.blob();
+          return {
+            id: file.id,
+            file: new File([blob], file.title || 'file', { type: blob.type }),
+            isFetched: true
+          };
+        });
+        const convertedFiles = await Promise.all(_fetchedFiles);
+        setUploadableFiles(convertedFiles);
+        setFetchedFileIds(fetchedFiles.payload.map((file) => file.id));
+      }
+    };
+
+    if (open) {
+      fetchAndConvertFiles();
+    }
+  }, [fetchedFiles, open]);
+
+  const onFilesChange = (files: FileWithId[] | null) => {
+    if (files) {
+      setUploadableFiles(files);
+    }
   };
 
   const getPayload = (values: Document) => {
@@ -67,16 +104,27 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
     };
     return payload;
   };
+
   const handleClose = () => {
     toggle();
   };
-  const onActionSuccess = () => {
+  const onActionSuccess = async (response: IApiResponse<Document>, payload: IApiPayload<Document>) => {
+    const uploadableFilesToUpload = uploadableFiles.filter((file) => !file.isFetched);
+    const uploadPromises = uploadableFilesToUpload.map((file) => uploadFile(file.file, 'DOCUMENT', response.payload.id));
+    await Promise.all(uploadPromises);
+
+    const uploadableFileIds = uploadableFiles.map((file) => file.id);
+    const idsToRemove = fetchedFileIds.filter((id) => !uploadableFileIds.includes(id));
+
+    const removePromises = idsToRemove.map((id) => deleteFile(id));
+    await Promise.all(removePromises);
+
     toggle();
     refetch();
     handleClose();
   };
-    const translatedTitle = t(`common.${isEdit ? 'edit' : 'create'}`)+" "+ type?.title+" "+t('document.title');
-  
+  const translatedTitle = t(`common.${isEdit ? 'edit' : 'create'}`) + " " + type?.title + " " + t('document.title');
+
   return (
     <CustomSideDrawer title={translatedTitle} handleClose={handleClose} open={open}>
       {() => (
@@ -94,7 +142,7 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<Document>) => {
-            return <DocumentForm typeId={typeId} formik={formik} />;
+            return <DocumentForm onFilesChange={onFilesChange} typeId={typeId} formik={formik} files={uploadableFiles} />;
           }}
         </FormPageWrapper>
       )}

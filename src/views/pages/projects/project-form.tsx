@@ -74,9 +74,9 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
           options={
             isArray(projectSubCategories?.payload)
               ? projectSubCategories?.payload?.map((projectSubCategory) => ({
-                  value: projectSubCategory.id,
-                  label: projectSubCategory.title
-                }))
+                value: projectSubCategory.id,
+                label: projectSubCategory.title
+              }))
               : []
           }
         />
@@ -89,9 +89,9 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
           options={
             isArray(projectStatus?.payload)
               ? projectStatus?.payload?.map((projectSubCategory) => ({
-                  value: projectSubCategory.id,
-                  label: projectSubCategory.title
-                }))
+                value: projectSubCategory.id,
+                label: projectSubCategory.title
+              }))
               : []
           }
         />

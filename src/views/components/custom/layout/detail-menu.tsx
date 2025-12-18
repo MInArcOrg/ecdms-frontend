@@ -62,25 +62,25 @@ const DetailMenu: React.FC<DetailMenuProps> = ({ id, menuItems, activeMenuId, se
         <Grid container gap={2} sx={{ ml: 3 }}>
           {menuItems.map((item) => (
             // <Can do={item.action} key={item.id} on={item.subject}>
-              <Grid item>
-                <ListItemButton
-                  onClick={() => setActiveMenu(item.path)}
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    py: 2,
-                    px: 3,
-                    borderRadius: 1,
-                    '&.Mui-selected': {
-                      textDecoration: 'underline'
-                    }
-                  }}
-                  selected={activeMenuId === item.id}
-                >
-                  <ListItemText primary={t(item.title)} />
-                </ListItemButton>
-              </Grid>
+            <Grid item>
+              <ListItemButton
+                onClick={() => setActiveMenu(item.path)}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  py: 2,
+                  px: 3,
+                  borderRadius: 1,
+                  '&.Mui-selected': {
+                    textDecoration: 'underline'
+                  }
+                }}
+                selected={activeMenuId === item.id}
+              >
+                <ListItemText primary={t(item.title)} />
+              </ListItemButton>
+            </Grid>
             // </Can>
           ))}
         </Grid>

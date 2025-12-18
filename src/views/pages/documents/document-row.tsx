@@ -4,6 +4,7 @@ import { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
 import { Document } from 'src/types/document';
 import { formatCreatedAt } from 'src/utils/formatter/date';
+import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
@@ -58,6 +59,15 @@ export const documentColumns = (
       field: 'created_at',
       renderCell: ({ row }: CellType) => {
         return <Typography sx={{ color: 'text.secondary' }}>{formatCreatedAt(row.created_at)}</Typography>;
+      }
+    },
+    {
+      flex: 0.1,
+      minWidth: 100,
+      headerName: t('common.table-columns.files'),
+      field: 'files',
+      renderCell: ({ row }: CellType) => {
+        return <FileDrawer id={row.id} type='DOCUMENT' />
       }
     },
 

@@ -10,18 +10,18 @@ interface ProjectChallengeFormProps {
   projectId: string;
 }
 
-const ProjectChallengeForm: React.FC<ProjectChallengeFormProps> = ({ formik, projectId }) => {
+const ProjectChallengeForm: React.FC<ProjectChallengeFormProps> = ({ formik }) => {
   const { t } = useTranslation();
 
   return (
     <>
       <Box mb={2}>
-        <CustomTextBox fullWidth label={t('project.other.challenges.challenge-type')} name="challenge_type" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('project.challenges.title')} name="title" size="small" sx={{ mb: 2 }} />
       </Box>
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t('project.other.challenges.description')}
+          label={t('project.challenges.description')}
           name="description"
           size="small"
           multiline
@@ -32,8 +32,8 @@ const ProjectChallengeForm: React.FC<ProjectChallengeFormProps> = ({ formik, pro
       <Box mb={2}>
         <CustomTextBox
           fullWidth
-          label={t('project.other.challenges.mitigation-strategy')}
-          name="mitigation_strategy"
+          label={t('project.challenges.measures_taken')}
+          name="measures_taken"
           size="small"
           multiline
           rows={3}

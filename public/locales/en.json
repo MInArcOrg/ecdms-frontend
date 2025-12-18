@@ -1,4 +1,5 @@
 {
+
   "validation": {
     "password": {
       "required": "Password is required.",
@@ -894,7 +895,18 @@
     "create-document": "Add Document",
     "edit-document": "Edit Document",
     "title": "Document",
-    "columns": {},
+    "columns": {
+      "title": "Title",
+      "category": "Category",
+      "sub-category": "Sub-category",
+      "measurement_unit": "Measurement Unit",
+      "description": "Description",
+      "author": "Author",
+      "copy_right_notice": "Copyright Notice",
+      "edition": "Edition",
+      "isbn": "ISBN",
+      "publication_date": "Publication Date"
+    },
     "form": {
       "category": "Category",
       "sub-category": "Sub-category",
@@ -1028,6 +1040,12 @@
             "actual-status": "Actual Status",
             "weather-condition": "Weather Condition",
             "claim": "Claim",
+            "claim-title": "Title",
+            "claim-description": "Description",
+            "claim-measures-taken": "Measures Taken",
+            "claim-create": "Add Claim",
+            "claim-edit": "Edit Claim",
+            "claim-details": "Claim Details",
             "challenges": "Challenges",
             "quality-inspection": "Quality Inspection",
             "site-pictures": "Site Pictures"
@@ -1616,6 +1634,14 @@
         "project-expense": "Project Expense"
       }
     },
+    "challenges": {
+      "title": "Title",
+      "description": "Description",
+      "measures_taken": "Measures Taken",
+      "create": "Add Challenge",
+      "edit": "Edit Challenge",
+      "details": "Challenge Details"
+    },
     "report": {
       "title": "Project Report",
       "edit-project-report": "Edit Project Report",
@@ -1651,7 +1677,15 @@
         "project-expense": "Project Expense"
       }
     },
-
+    "quality":{
+      "title": "Quality Inspection",
+      "edit": "Edit Quality Inspection",
+      "create": "Add Quality Inspection",
+      "major-quality-problem-encountered":"Major Quality Problem Encountered",
+      "description":"Description",
+      "measures-taken": "Measures Taken",
+      "lesson-learned":"Lesson Learned"
+    },
     "resource": {
       "title": "Project Resource",
       "edit-project-resource": "Edit Project Resource",
@@ -4592,6 +4626,7 @@
     "rejected-data": "Rejected Data"
   },
   "common": {
+    "loading": "Loading...",
     "yes": "Yes",
     "no": "No",
     "not-available": "N/A",

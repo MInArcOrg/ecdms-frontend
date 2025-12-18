@@ -7,17 +7,20 @@ import { useTranslation } from 'react-i18next';
 import masterCategoryApiService from 'src/services/master-data/master-category-service';
 import masterSubCategoryApiService from 'src/services/master-data/master-sub-category-service';
 import { Document } from 'src/types/document';
+import { FileWithId } from 'src/types/general/file';
 import CustomDateSelector from 'src/views/shared/form/custom-date-box';
+import CustomMultiFileUpload from 'src/views/shared/form/custom-multi-file-selector';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface DocumentFormProps {
   formik: FormikProps<Document>;
-
+  files: FileWithId[];
+  onFilesChange: (files: FileWithId[]) => void;
   typeId: string;
 }
 
-const DocumentForm: React.FC<DocumentFormProps> = ({ formik, typeId }) => {
+const DocumentForm: React.FC<DocumentFormProps> = ({ formik, typeId, files, onFilesChange }) => {
   const { t: transl } = useTranslation();
 
   const { data: documentCategories } = useQuery({
@@ -70,10 +73,10 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, typeId }) => {
           options={
             isArray(documentSubCategories?.payload)
               ? documentSubCategories?.payload?.map((documentSubCategory) => ({
-                  value: documentSubCategory.id,
-                  label: documentSubCategory.title
-                }))
-              : [] || []
+                value: documentSubCategory.id,
+                label: documentSubCategory.title
+              }))
+              : []
           }
         />
       </Box>
@@ -137,6 +140,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, typeId }) => {
         size="small"
         sx={{ mb: 2 }}
       />
+      <CustomMultiFileUpload label={transl('common.form.file-upload')} files={files} onFilesChange={onFilesChange} />
     </>
   );
 };

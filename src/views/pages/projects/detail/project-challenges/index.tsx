@@ -42,7 +42,7 @@ const ProjectChallengeList: React.FC<ProjectChallengeListProps> = ({ projectId }
     handlePageChange,
     refetch
   } = usePaginatedFetch<ProjectChallenge[]>({
-    queryKey: ['projectChallenges'],
+    queryKey: ['projectChallenges', projectId],
     fetchFunction: fetchProjectChallenges
   });
 
@@ -57,8 +57,8 @@ const ProjectChallengeList: React.FC<ProjectChallengeListProps> = ({ projectId }
   };
 
   const handleEdit = (projectChallenge: ProjectChallenge) => {
-    toggleDrawer();
     setSelectedRow(projectChallenge);
+    setShowDrawer(true);
   };
 
   const handleDelete = async (projectChallengeId: string) => {
@@ -67,18 +67,22 @@ const ProjectChallengeList: React.FC<ProjectChallengeListProps> = ({ projectId }
   };
 
   const handleClickDetail = (projectChallenge: ProjectChallenge) => {
-    toggleDetailDrawer();
     setSelectedRow(projectChallenge);
+    setShowDetailDrawer(true);
   };
 
   const mapProjectChallengeToDetailItems = (projectChallenge: ProjectChallenge): { title: string; value: string }[] => [
     {
-      title: t('project.other.challenges.challenge-type'),
-      value: projectChallenge?.challenge_type || 'N/A'
+      title: t('project.challenges.title'),
+      value: projectChallenge?.title || 'N/A'
     },
     {
-      title: t('project.other.challenges.description'),
+      title: t('project.challenges.description'),
       value: projectChallenge?.description || 'N/A'
+    },
+    {
+      title: t('project.challenges.measures_taken'),
+      value: projectChallenge?.measures_taken || 'N/A'
     },
     {
       title: t('common.table-columns.created-at'),
@@ -105,13 +109,13 @@ const ProjectChallengeList: React.FC<ProjectChallengeListProps> = ({ projectId }
           data={mapProjectChallengeToDetailItems(selectedRow as ProjectChallenge)}
           id={selectedRow?.id || ''}
           hasReference={false}
-          title={t('project.other.challenges.details')}
+          title={t('project.challenges.details')}
           fileType="projectChallenge"
         />
       )}
 
       <ItemsListing
-        title={t('project.other.challenges.title')}
+        title={t('project.navigation.submenu.reporting.report.challenges')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
@@ -133,7 +137,7 @@ const ProjectChallengeList: React.FC<ProjectChallengeListProps> = ({ projectId }
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'projectchallenge'
+            subject: 'challenge'
           }
         }}
         fetchDataFunction={refetch}

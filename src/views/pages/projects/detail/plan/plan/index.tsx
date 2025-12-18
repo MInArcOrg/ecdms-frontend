@@ -23,7 +23,7 @@ function ProjectPlanList({ projectId }: { projectId: string }) {
   const fetchProjectPlans = (params: GetRequestParam): Promise<IApiResponse<ProjectPlan[]>> => {
     return projectPlanApiService.getAll({
       ...params,
-      filter: { ...params.filter }
+      filter: { ...params.filter, project_id: projectId }
     });
   };
   const toggleDetailDrawer = () => {

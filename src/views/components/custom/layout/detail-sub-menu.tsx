@@ -62,6 +62,7 @@ const DetailSubMenu: React.FC<DetailSubMenuProps> = ({ subMenuItems, activeSubMe
                       selected={activeSubMenuId === subItem.id}
                       onClick={() => handleSubMenuItemClick(subItem.path)}
                     >
+
                       <Icon icon="tabler:chevron-right" fontSize="1rem" />
                       <ListItemText primary={t(subItem.title)} />
                     </ListItemButton>
