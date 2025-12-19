@@ -22,15 +22,16 @@ const MachineryDrawer = (props: MachineryDrawerType) => {
     name: yup.string().required('Name is required'),
     plate_no: yup.string().required('Plate number is required'),
     model: yup.string().required('Model is required'),
-    engine_number: yup.string().required('Engine number is required'),
     brand_name: yup.string(),
-    year: yup.number().integer('Year must be an integer').positive('Year must be positive'),
+    year: yup.string().required('Year is required'),
     chassis_number: yup.string(),
-    capacity: yup.string(),
+    engine_number: yup.string().matches(/^[A-Za-z0-9]+$/, 'Only letters and numbers allowed'),
+    capacity: yup.string().matches(/^[A-Za-z0-9]+$/, 'Only letters and numbers allowed'),
     purpose: yup.string(),
     quantity: yup.number().integer('Quantity must be an integer').positive('Quantity must be positive'),
     current_situation: yup.string(),
-    location: yup.string()
+    latitude: yup.number(),
+    longitude: yup.number()
   });
 
   const isEdit = Boolean(machinery?.id);

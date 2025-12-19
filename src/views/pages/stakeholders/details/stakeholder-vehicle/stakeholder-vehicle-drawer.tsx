@@ -26,12 +26,13 @@ const VehicleDrawer = (props: VehicleDrawerType) => {
     brand_name: yup.string(),
     year: yup.number().integer('Year must be an integer').positive('Year must be positive'),
     chassis_number: yup.string(),
-    engine_number: yup.string(),
-    capacity: yup.string(),
+    engine_number: yup.string().matches(/^[A-Za-z0-9]+$/, 'Only letters and numbers allowed'),
+    capacity: yup.string().matches(/^[A-Za-z0-9]+$/, 'Only letters and numbers allowed'),
     purpose: yup.string(),
     quantity: yup.number().integer('Quantity must be an integer').positive('Quantity must be positive'),
     current_situation: yup.string(),
-    location: yup.string()
+    latitude: yup.number(),
+    longitude: yup.number()
   });
 
   const isEdit = Boolean(vehicle?.id);

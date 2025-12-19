@@ -12,7 +12,7 @@ import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
 import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
 import MachineryCard from './stakeholder-machinery-card';
-import MachineryDrawer from './stakeholder-machinery-drawe';
+import MachineryDrawer from './stakeholder-machinery-drawer';
 import type { StakeholderMachinery } from 'src/types/stakeholder/stakeholder-machinery';
 import { machineryColumns } from './stakeholder-machinery-row';
 
@@ -112,8 +112,12 @@ const StakeholderMachineryList: React.FC<StakeholderMachineryListProps> = ({ sta
       value: machinery?.current_situation || 'N/A'
     },
     {
-      title: t('stakeholder.machinery.location'),
-      value: machinery?.location || 'N/A'
+      title: t('stakeholder.machinery.latitude'),
+      value: machinery?.latitude?.toString() || 'N/A'
+    },
+    {
+      title: t('stakeholder.machinery.longitude'),
+      value: machinery?.longitude?.toString() || 'N/A'
     },
     {
       title: t('common.table-columns.created-at'),

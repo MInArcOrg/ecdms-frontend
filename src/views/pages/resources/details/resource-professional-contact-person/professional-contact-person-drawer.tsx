@@ -7,6 +7,7 @@ import ProfessionalContactPersonForm from './professional-contact-person-form';
 import professionalContactPersonApiService from 'src/services/resource/professional-contact-person-service';
 import type { ProfessionalContactPerson } from 'src/types/resource/index';
 import type { IApiResponse } from 'src/types/requests';
+import { nationalIdRule } from 'src/utils/validator/id';
 
 interface ProfessionalContactPersonDrawerType {
   open: boolean;
@@ -22,7 +23,7 @@ const ProfessionalContactPersonDrawer = (props: ProfessionalContactPersonDrawerT
   const validationSchema = yup.object().shape({
     first_name: yup.string().required('First name is required'),
     last_name: yup.string().required('Last name is required'),
-    national_id_no: yup.string().required('National ID number is required'),
+    national_id_no: nationalIdRule.nullable(),
     gender: yup.string().required('Gender is required'),
     phone_no: yup.string().required('Phone number is required'),
     email: yup.string().email('Invalid email').required('Email is required')

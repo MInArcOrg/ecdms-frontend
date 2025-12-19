@@ -10,6 +10,7 @@ import MasterFlagAccordionMenu from './master-flag-accordion-menu';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Icon from 'src/@core/components/icon';
+import { stakeholderMasterModels } from 'src/constants/master-data/stakeholder-general-master-constants';
 
 type MasterModelItem = {
   title: string;
@@ -38,7 +39,7 @@ function GeneralMasterLayout({ children }: { children: ReactElement }) {
         case 'document':
           return projectMasterModels;
         case 'stakeholder':
-          return projectMasterModels;
+          return stakeholderMasterModels;
         default:
           return {};
       }
@@ -73,7 +74,7 @@ function GeneralMasterLayout({ children }: { children: ReactElement }) {
           <MasterDataNavMenu
             activeMenu={{ id: activeModule.id, title: activeModule.name }}
             menuItems={appModulesWithIds
-              .filter((module) => ['project', 'resource'].includes(module.id))
+              .filter((module) => ['project', 'resource', 'stakeholder'].includes(module.id))
               .map((module) => ({ id: module.id, title: module.name }))}
             setActiveMenu={handleModuleClick}
           />

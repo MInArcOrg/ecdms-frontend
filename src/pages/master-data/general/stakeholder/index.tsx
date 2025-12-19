@@ -1,17 +1,13 @@
-import { Fragment } from 'react';
-import GeneralMasterType from 'src/views/pages/master/general/general-master/general-master-list';
-import GeneralMasterLayout from '../../../../views/pages/master/general/general-master/general-master-layout';
+import GeneralMasterLayout from 'src/views/pages/master/general/general-master/general-master-layout';
 
-function GeneralStakeholderMasterData() {
+function GeneralResourceMasterData() {
   return (
     <div>
       <GeneralMasterLayout>
-        <Fragment>
-          <GeneralMasterType />
-        </Fragment>
+        <></>
       </GeneralMasterLayout>
     </div>
   );
 }
 
-export default GeneralStakeholderMasterData;
+export default GeneralResourceMasterData;

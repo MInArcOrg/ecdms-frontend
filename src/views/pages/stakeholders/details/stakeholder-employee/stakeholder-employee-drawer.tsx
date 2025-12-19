@@ -10,6 +10,7 @@ import type { StakeholderDepartment } from 'src/types/stakeholder/stakeholder-de
 import type { StakeholderPosition } from 'src/types/stakeholder/stakeholder-positions';
 import { phoneRule } from 'src/utils/validator/phone';
 import { nameRule } from 'src/utils/validator/name';
+import { nationalIdRule } from 'src/utils/validator/id';
 
 interface EmployeeDrawerType {
   open: boolean;
@@ -27,7 +28,7 @@ const EmployeeDrawer = (props: EmployeeDrawerType) => {
   const validationSchema = yup.object().shape({
     first_name: nameRule.required('First name is required'),
     last_name: nameRule.required('Last name is required'),
-    national_id_no: yup.string().required('National ID number is required'),
+    national_id_no: nationalIdRule.required('National ID number is required'),
     gender: yup.string().required('Gender is required'),
     phone: phoneRule.required('Phone number is required'),
     email: yup.string().email('Invalid email').nullable(),

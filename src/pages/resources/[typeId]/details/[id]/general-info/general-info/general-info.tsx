@@ -8,7 +8,8 @@ const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), generalInfoMenuIds
 const GeneralInfoPage = () => {
   const router = useRouter();
   const { id = '', typeId = '' } = router.query;
-
+  console.log('id', id);
+  console.log('typeId', typeId, defaultMenuItem);
   return (
     <ResourceLayout
       activeMenuId={resourceMenuIds.generalInfo}

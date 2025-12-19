@@ -5,6 +5,9 @@ import type { FormikProps } from 'formik';
 import { gridSpacing } from 'src/configs/app-constants';
 import type { StakeholderVehicle } from 'src/types/stakeholder/stakeholder-vehicle';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import CustomSelectBox from 'src/views/shared/form/custom-select';
+import { generateYears } from 'src/utils/genertor/date';
+import moment from 'moment';
 
 interface VehicleFormProps {
   formik: FormikProps<StakeholderVehicle>;
@@ -12,7 +15,7 @@ interface VehicleFormProps {
 
 const VehicleForm: React.FC<VehicleFormProps> = ({ formik }) => {
   const { t } = useTranslation();
-
+  const years = generateYears(1990, moment().year()).map((year) => ({ label: year.toString(), value: year.toString() }));
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={6}>
@@ -46,10 +49,11 @@ const VehicleForm: React.FC<VehicleFormProps> = ({ formik }) => {
         <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.model')} name="model" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={6}>
-        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.year')} name="year" size="small" sx={{ mb: 2 }} />
+        <CustomSelectBox options={years} fullWidth label={t('stakeholder.stakeholder-vehicle.form.year')} name="year" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={6}>
         <CustomTextBox
+          allowSpecialChars={true}
           fullWidth
           label={t('stakeholder.stakeholder-vehicle.form.chassis-number')}
           name="chassis_number"
@@ -60,6 +64,7 @@ const VehicleForm: React.FC<VehicleFormProps> = ({ formik }) => {
       <Grid item xs={6}>
         <CustomTextBox
           fullWidth
+          allowSpecialChars={true}
           label={t('stakeholder.stakeholder-vehicle.form.engine-number')}
           name="engine_number"
           size="small"
@@ -75,17 +80,22 @@ const VehicleForm: React.FC<VehicleFormProps> = ({ formik }) => {
       <Grid item xs={6}>
         <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.quantity')} name="quantity" size="small" sx={{ mb: 2 }} />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12}>
         <CustomTextBox
           fullWidth
           label={t('stakeholder.stakeholder-vehicle.form.current-situation')}
           name="current_situation"
           size="small"
           sx={{ mb: 2 }}
+          multiline={true}
+          rows={4}
         />
       </Grid>
       <Grid item xs={6}>
-        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.location')} name="location" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.latitude')} name="latitude" size="small" sx={{ mb: 2 }} />
+      </Grid>
+      <Grid item xs={6}>
+        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-vehicle.form.longitude')} name="longitude" size="small" sx={{ mb: 2 }} />
       </Grid>
     </Grid>
   );

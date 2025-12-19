@@ -12,7 +12,8 @@ export interface StakeholderVehicle {
   purpose?: string;
   quantity?: number;
   current_situation?: string;
-  location?: string;
+  latitude?: number;
+  longitude?: number;
   created_at: Date; // Timestamp for creation
   updated_at: Date; // Timestamp for updates
 }

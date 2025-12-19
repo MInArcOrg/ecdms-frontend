@@ -15,6 +15,7 @@ import type { FileTypeConfig } from './file-type-config';
 import stakeholderDocumentApiService from 'src/services/stakeholder/stakeholder-document-service';
 import { StakeholderDocument } from 'src/types/stakeholder/other';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import { pastDateRule } from 'src/utils/validator/age';
 
 
 interface StakeholderDocumentDrawerProps {
@@ -71,7 +72,7 @@ const StakeholderDocumentDrawer = ({
       .string()
       .required('Author is required'),
     edition: yup.string().nullable(),
-    publication_date: yup.string().required('Publication Date is required'),
+    publication_date: pastDateRule().required('Publication Date is required'),
     isbn: yup.string().nullable(),
     copy_right_notice: yup.string().nullable(),
   });

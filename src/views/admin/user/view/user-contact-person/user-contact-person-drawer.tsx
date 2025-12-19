@@ -7,6 +7,7 @@ import UserContactPersonForm from './user-contact-person-form';
 import type { IApiResponse } from 'src/types/requests';
 import { UserContactPerson } from 'src/types/admin/user';
 import userContactPersonApiService from 'src/services/admin/user-contact-person-service';
+import { nationalIdRule } from 'src/utils/validator/id';
 
 interface UserContactPersonDrawerType {
   open: boolean;
@@ -23,7 +24,7 @@ const UserContactPersonDrawer = (props: UserContactPersonDrawerType) => {
     first_name: yup.string().max(36).required('First name is required'),
     middle_name: yup.string().max(36).required('Middle name is required'),
     last_name: yup.string().max(36).required('Last name is required'),
-    national_id_no: yup.string().max(36).nullable(),
+    national_id_no: nationalIdRule.nullable(),
     gender: yup.string().required('Gender is required'),
     phone_no: yup.string().min(10).required('Phone number is required'),
     email: yup.string().max(36).email('Invalid email').nullable()

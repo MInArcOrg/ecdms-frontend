@@ -372,3 +372,13 @@ export interface ResourceGeneralMaster {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface StakeholderGeneralMaster {
+  id: string;
+  title?: string;
+  description?: string;
+  project_type_id: string;
+  model: string;
+  created_at?: Date;
+  updated_at?: Date;
+}

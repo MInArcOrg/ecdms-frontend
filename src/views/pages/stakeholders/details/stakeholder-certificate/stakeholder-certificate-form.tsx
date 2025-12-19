@@ -30,18 +30,6 @@ const StakeholderCertificateForm: React.FC<StakeholderCertificateFormProps> = ({
         />
       </Grid>
 
-      {/* Date of Issue */}
-      <Grid item xs={12}>
-        <CustomDynamicDatePicker
-          fullWidth
-          label={transl('stakeholder.stakeholder-certificate.form.issue-date')}
-          name="issue_date"
-          required
-          showYearDropdown
-          showMonthDropdown
-          customInput={<CustomTextBox name="issue_date" />}
-        />
-      </Grid>
 
       {/* Type Field */}
       <Grid item xs={12}>

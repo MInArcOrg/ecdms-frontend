@@ -114,8 +114,12 @@ const StakeholderVehicleList: React.FC<StakeholderVehicleListProps> = ({ stakeho
       value: vehicle.current_situation || 'N/A'
     },
     {
-      title: t('stakeholder.stakeholder-vehicle.form.location'),
-      value: vehicle.location || 'N/A'
+      title: t('stakeholder.stakeholder-vehicle.form.latitude'),
+      value: vehicle.latitude?.toString() || 'N/A'
+    },
+    {
+      title: t('stakeholder.stakeholder-vehicle.form.longitude'),
+      value: vehicle.longitude?.toString() || 'N/A'
     },
     {
       title: t('common.table-columns.created-at'),

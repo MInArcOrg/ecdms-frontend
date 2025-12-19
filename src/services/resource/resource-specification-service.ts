@@ -8,40 +8,40 @@ import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const resourceSpecificationApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<ResourceSpecification[]>> =>
-    buildGetRequest(`/resources/construction-resource-specifications`, params)
+    buildGetRequest(`/resources/resource-specifications`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   getOne: (idx: string, params: GetRequestParam): Promise<IApiResponse> =>
-    buildGetRequest(`/resources/construction-resource-specifications/${idx}`, params)
+    buildGetRequest(`/resources/resource-specifications/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
   searchResource: (params: GetRequestParam) =>
-    buildGetRequest(`/resources/construction-resource-specifications-search`, params)
+    buildGetRequest(`/resources/resource-specifications-search`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data.payload as unknown as ResourceSpecification[])
       .catch((error: any) => {
         throw error;
       }),
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
-      .delete(`/resources/construction-resource-specifications/${idx}`)
+      .delete(`/resources/resource-specifications/${idx}`)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
 
   create: (body: IApiPayload<ResourceSpecification>): Promise<IApiResponse> =>
-    buildPostRequest(`/resources/construction-resource-specifications`, body, false)
+    buildPostRequest(`/resources/resource-specifications`, body, false)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
       }),
   update: (id: string, body: IApiPayload<ResourceSpecification>): Promise<IApiResponse> =>
-    buildPutRequest(`/resources/construction-resource-specifications/${id}`, body)
+    buildPutRequest(`/resources/resource-specifications/${id}`, body)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;

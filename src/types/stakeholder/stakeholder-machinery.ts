@@ -12,7 +12,8 @@ export interface StakeholderMachinery {
   purpose?: string;
   quantity?: number;
   current_situation?: string;
-  location?: string;
+  latitude?: number;
+  longitude?: number;
   created_at?: Date;
   updated_at?: Date;
 }

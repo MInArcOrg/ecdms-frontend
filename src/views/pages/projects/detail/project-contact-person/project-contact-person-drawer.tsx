@@ -9,6 +9,7 @@ import type { ProjectContactPerson } from 'src/types/project/projext-contact-per
 import type { Stakeholder } from 'src/types/stakeholder';
 import { phoneRule } from 'src/utils/validator/phone';
 import { nameRule } from 'src/utils/validator/name';
+import { nationalIdRule } from 'src/utils/validator/id';
 
 interface ProjectContactPersonDrawerProps {
   open: boolean;
@@ -39,7 +40,7 @@ const ProjectContactPersonDrawer: React.FC<ProjectContactPersonDrawerProps> = ({
     parent_id: yup.string().length(36).nullable(),
     department: yup.string().max(255).nullable(),
     position: yup.string().max(255).nullable(),
-    national_id_no: yup.string().max(255).nullable(),
+    national_id_no: nationalIdRule.nullable(),
   });
 
   const isEdit = Boolean(contactPerson?.id);

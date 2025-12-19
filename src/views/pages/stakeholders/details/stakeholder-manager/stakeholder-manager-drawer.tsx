@@ -11,6 +11,7 @@ import { nameRule } from 'src/utils/validator/name';
 import { phoneRule } from 'src/utils/validator/phone';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 import { birthDateRule } from 'src/utils/validator/age';
+import { nationalIdRule } from 'src/utils/validator/id';
 
 interface ManagerDrawerType {
   open: boolean;
@@ -33,7 +34,7 @@ const ManagerDrawer = (props: ManagerDrawerType) => {
     email: yup.string().email('Invalid email').required('Email is required'),
     position: yup.string().required('Position is required').matches(/^[a-zA-Z ]+$/, 'Invalid position'),
     nationality: yup.string().required('Nationality is required'),
-    national_id_no: yup.string().required('National ID number is required').length(16).matches(/^[0-9]+$/, 'Invalid national ID number')
+    national_id_no: nationalIdRule.nullable()
   });
 
   const isEdit = Boolean(manager?.id);
@@ -77,7 +78,7 @@ const ManagerDrawer = (props: ManagerDrawerType) => {
             ...(manager as StakeholderManager),
             birth_date: formatInitialDateDate(manager?.birth_date),
             nationality: manager?.nationality || '',
-            
+
           }}
           createActionFunc={isEdit ? editManager : createManager}
           onActionSuccess={onActionSuccess}

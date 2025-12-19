@@ -7,6 +7,7 @@ import ProfessionalForm from './professional-form';
 import professionalApiService from 'src/services/resource/professional-service';
 import type { Professional } from 'src/types/resource/index';
 import type { IApiResponse } from 'src/types/requests';
+import { nationalIdRule } from 'src/utils/validator/id';
 
 interface ProfessionalDrawerType {
   open: boolean;
@@ -21,7 +22,7 @@ const ProfessionalDrawer = (props: ProfessionalDrawerType) => {
   const validationSchema = yup.object().shape({
     first_name: yup.string().required('First name is required'),
     last_name: yup.string().required('Last name is required'),
-    national_id_no: yup.string().required('National ID number is required'),
+    national_id_no: nationalIdRule.required('National ID number is required'),
     date_of_birth: yup.date().required('Date of birth is required'),
     gender: yup.string().required('Gender is required'),
     phone_no: yup.string().required('Phone number is required'),

@@ -17,7 +17,8 @@ const StakeholderOther = () => {
       router.push(newUrl); // Redirect to the constructed URL
     }
   }, [typeId, id, router]);
-
+  console.log('typeId', typeId);
+  console.log('id', id);
   return (
     <>
       <LoadingPlaceholder />

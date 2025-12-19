@@ -11,7 +11,7 @@ import { uploadFile } from 'src/services/utils/file-utils';
 import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
 import { useState } from 'react';
 import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
-import { featureDateRule, pastDateRule } from 'src/utils/validator/age';
+import { futureDateRule, pastDateRule } from 'src/utils/validator/age';
 
 interface MembershipDrawerType {
   open: boolean;
@@ -31,7 +31,7 @@ const MembershipDrawer = (props: MembershipDrawerType) => {
     membership_type: yup.string().required('Membership type is required'),
     description: yup.string().required('Description is required'),
     registration_date: pastDateRule().required('Registration date is required'),
-    end_date: featureDateRule().required('End date is required')
+    end_date: futureDateRule().required('End date is required')
   });
 
   const isEdit = Boolean(membership?.id);
