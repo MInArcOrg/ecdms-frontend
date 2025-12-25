@@ -104,12 +104,15 @@ const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, refetch, onEdit, onD
           {t('stakeholder.stakeholder-vehicle.form.current-situation')}: {vehicle.current_situation || 'N/A'}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {t('stakeholder.stakeholder-vehicle.form.location')}: {vehicle.location || 'N/A'}
+          {t('stakeholder.stakeholder-vehicle.form.latitude')}: {vehicle.latitude || 'N/A'}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {t('stakeholder.stakeholder-vehicle.form.longitude')}: {vehicle.longitude || 'N/A'}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {t('common.created-at')}: {vehicle.created_at ? new Date(vehicle.created_at).toLocaleDateString() : 'N/A'}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondarya">
           {t('common.updated-at')}: {vehicle.updated_at ? new Date(vehicle.updated_at).toLocaleDateString() : 'N/A'}
         </Typography>
       </Box>
