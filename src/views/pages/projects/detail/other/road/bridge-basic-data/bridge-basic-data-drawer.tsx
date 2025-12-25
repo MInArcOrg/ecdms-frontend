@@ -24,7 +24,6 @@ const BridgeBasicDataDrawer = (props: BridgeBasicDataDrawerType) => {
   const validationSchema = yup.object().shape({
     parent_id: yup.string().uuid().nullable(),
     name: yup.string().max(255).required('Name is required'),
-    bridge_name: yup.string().max(255).required('Bridge name is required'),
     bridge_number: yup.string().max(255).nullable(),
     bridge_length: yup.number().nullable(),
     bridge_width: yup.number().nullable(),
@@ -73,7 +72,8 @@ const BridgeBasicDataDrawer = (props: BridgeBasicDataDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...bridgeBasicData
+            ...bridgeBasicData,
+            project_id: projectId
           }}
           createActionFunc={isEdit ? editBridgeBasicData : createBridgeBasicData}
           onActionSuccess={onActionSuccess}

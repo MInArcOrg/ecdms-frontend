@@ -8,7 +8,9 @@ import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
-import type { IntersectionAndDriveway } from 'src/types/project/other';
+import projectOtherApiService from 'src/services/project/project-other-service';
+import { dropDownConfig } from 'src/configs/api-constants';
+import type { IntersectionAndDriveway, RoadSegment } from 'src/types/project/other';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomSwitch from 'src/views/shared/form/custom-switch';
@@ -36,16 +38,33 @@ const IntersectionDrivewayForm: React.FC<IntersectionDrivewayFormProps> = ({ for
       })
   });
 
+  const { data: roadSegments } = useQuery({
+    queryKey: ['roadSegments', formik.values.project_id],
+    queryFn: () =>
+      projectOtherApiService<RoadSegment>().getAll('roadsegment', dropDownConfig({
+        filter: {
+          project_id: formik.values.project_id
+        }
+      }))
+  });
+
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <CustomTextBox
+
+        <CustomSelect
           fullWidth
-          label={transl('project.other.intersection-driveway.details.name')}
-          placeholder={transl('project.other.intersection-driveway.details.name')}
-          name="name"
+          label={transl('project.other.intersection-driveway.details.road-segment')}
+          placeholder={transl('project.other.intersection-driveway.details.road-segment')}
+          name="road_segment_id"
           size="small"
           sx={{ mb: 2 }}
+          options={
+            roadSegments?.payload.map((segment) => ({
+              label: segment.name,
+              value: segment.id
+            })) || []
+          }
         />
 
         <CustomTextBox

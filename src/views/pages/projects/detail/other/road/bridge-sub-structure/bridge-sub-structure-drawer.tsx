@@ -26,8 +26,9 @@ const BridgeSubStructureDrawer = (props: BridgeSubStructureDrawerType) => {
     project_id: yup.string().uuid().required('Project ID is required'),
 
     name: yup.string().max(255, 'Name must be at most 255 characters').required('Name is required'),
+    bridge_id: yup.string().uuid().required('Bridge Name is Required'),
 
-    bridge_name: yup.string().max(255, 'Bridge name must be at most 255 characters').required('Bridge name is required'),
+
 
     abutment_a1_height: yup.number().nullable(),
     abutment_a1_width: yup.number().nullable(),

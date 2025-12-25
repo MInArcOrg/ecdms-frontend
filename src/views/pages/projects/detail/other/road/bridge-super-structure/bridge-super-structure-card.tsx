@@ -51,7 +51,7 @@ const BridgeSuperStructureCard: React.FC<BridgeSuperStructureCardProps> = ({
             {t('project.other.bridge-super-structure.details.name')}: {bridgeSuperStructure?.name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-super-structure.details.bridge-name')}: {bridgeSuperStructure?.bridge_name || 'N/A'}
+            {t('project.other.bridge-super-structure.details.bridge-name')}: {bridgeSuperStructure?.bridgeBasicData?.name || bridgeSuperStructure?.bridge_name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.bridge-super-structure.details.bridge-structure-type')}:{' '}

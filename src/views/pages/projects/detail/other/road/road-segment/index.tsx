@@ -21,14 +21,15 @@ import { roadSegmentColumns } from './road-segment-row';
 import { useQuery } from '@tanstack/react-query';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface RoadSegmentListProps {
-  model: string;
+  otherSubMenu?: DetailSubMenuItemChild;
   typeId: string;
   projectId: string;
 }
 
-const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typeId }) => {
+const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<RoadSegment | null>(null);
@@ -68,7 +69,7 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
   }
 
   const fetchRoadSegments = (params: GetRequestParam): Promise<IApiResponse<RoadSegment[]>> => {
-    return projectOtherApiService<RoadSegment>().getAll(model, {
+    return projectOtherApiService<RoadSegment>().getAll(otherSubMenu?.model || '', {
       ...params,
       filter: { ...params.filter, project_id: projectId }
     });
@@ -101,7 +102,7 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
   };
 
   const handleDelete = async (roadSegmentId: string) => {
-    await projectOtherApiService<RoadSegment>().delete(model, roadSegmentId);
+    await projectOtherApiService<RoadSegment>().delete(otherSubMenu?.model || '', roadSegmentId);
     refetch();
   };
 
@@ -153,7 +154,7 @@ const RoadSegmentList: React.FC<RoadSegmentListProps> = ({ model, projectId, typ
     <Box>
       {showDrawer && (
         <RoadSegmentDrawer
-          model={model}
+          model={otherSubMenu?.model || ''}
           open={showDrawer}
           toggle={toggleDrawer}
           roadSegment={selectedRow as RoadSegment}

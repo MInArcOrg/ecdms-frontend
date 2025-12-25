@@ -42,10 +42,10 @@ const BridgeBasicDataCard: React.FC<BridgeBasicDataCardProps> = ({ bridgeBasicDa
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-basic-data.details.name')}: {bridgeBasicData?.name || 'N/A'}
+            {t('project.other.bridge-basic-data.details.road-segment-id')}: {bridgeBasicData?.road_segment_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-basic-data.details.bridge-name')}: {bridgeBasicData?.bridge_name || 'N/A'}
+            {t('project.other.bridge-basic-data.details.name')}: {bridgeBasicData?.name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.bridge-basic-data.details.bridge-number')}: {bridgeBasicData?.bridge_number || 'N/A'}

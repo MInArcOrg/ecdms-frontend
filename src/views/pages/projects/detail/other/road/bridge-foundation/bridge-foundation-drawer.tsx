@@ -24,7 +24,8 @@ const BridgeFoundationDrawer = (props: BridgeFoundationDrawerType) => {
   const validationSchema = yup.object().shape({
     parent_id: yup.string().uuid().nullable(),
     name: yup.string().max(255, 'Name must be at most 255 characters').required('Name is required'),
-    bridge_name: yup.string().max(255, 'Bridge name must be at most 255 characters').required('Bridge name is required'),
+    bridge_id: yup.string().uuid().required('Bridge Name is Required'),
+
     abutment_type_id: yup.string().uuid().required('Abutment type is required'),
     pier_type_id: yup.string().uuid().required('Pier type is required'),
     abutment_foundation_size: yup.number().nullable(),

@@ -77,11 +77,7 @@ const BridgeAreaDataList: React.FC<BridgeAreaDataListProps> = ({ otherSubMenu, p
   const mapBridgeAreaDataToDetailItems = (bridgeAreaData: BridgeAreaData): { title: string; value: string }[] => [
     {
       title: t('project.other.bridge-area-data.details.name'),
-      value: bridgeAreaData?.name || 'N/A'
-    },
-    {
-      title: t('project.other.bridge-area-data.details.bridge-name'),
-      value: bridgeAreaData?.bridge_name || 'N/A'
+      value: bridgeAreaData?.bridgeBasicData?.name || 'N/A'
     },
     {
       title: t('project.other.bridge-area-data.details.river-width'),

@@ -23,8 +23,7 @@ const BridgeAreaDataDrawer = (props: BridgeAreaDataDrawerType) => {
 
   const validationSchema = yup.object().shape({
     parent_id: yup.string().uuid().nullable(),
-    name: yup.string().max(255).required('Name is required'),
-    bridge_name: yup.string().max(255).required('Bridge name is required'),
+    bridge_id: yup.string().uuid().required('Bridge Name is Required'),
     river_width: yup.number().nullable(),
     highest_water_level: yup.number().nullable(),
     lowest_water_level: yup.number().nullable(),

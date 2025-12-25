@@ -44,7 +44,7 @@ const BridgeInspectionCard: React.FC<BridgeInspectionCardProps> = ({ bridgeInspe
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-inspection.details.bridge-name')}: {bridgeInspection?.name || 'N/A'}
+            {t('project.other.bridge-inspection.details.bridge-name')}: {bridgeInspection?.bridgeBasicData?.name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.bridge-inspection.details.bridge-part-defect-id')}: {bridgeInspection?.bridge_part_defect_id || 'N/A'}

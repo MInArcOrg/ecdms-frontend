@@ -2,6 +2,7 @@
 
 import { Grid, Typography } from '@mui/material';
 import type { RailwayTrackMaintenanceAndInspection } from 'src/types/project/other';
+import { formatDynamicDate } from 'src/utils/formatter/date';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
@@ -85,7 +86,7 @@ const RailwayTrackMaintenanceAndInspectionCard = ({
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-track-maintenance-and-inspection.details.recent-maintenance-date')}:{' '}
-            {railwayTrackMaintenanceAndInspection?.recent_maintenance_date ?? t('common.not-available')}
+            {formatDynamicDate(railwayTrackMaintenanceAndInspection?.recent_maintenance_date) ?? t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>

@@ -2185,8 +2185,8 @@
         "edit-bridge-basic-data": "Edit Bridge Basic Data",
         "bridge-basic-data-details": "Bridge Basic Data Details",
         "details": {
+          "road_segment_id": "Road Segment",
           "name": "Name",
-          "bridge-name": "Bridge Name",
           "bridge-number": "Bridge Number",
           "bridge-length": "Bridge Length",
           "bridge-width": "Bridge Width",
@@ -2204,7 +2204,7 @@
         "edit-bridge-area-data": "Edit Bridge Area Data",
         "bridge-area-data-details": "Bridge Area Data Details",
         "details": {
-          "name": "Name",
+          "road_segment_id": "Road Segment",
           "bridge-name": "Bridge Name",
           "river-width": "River Width",
           "highest-water-level": "Highest Water Level",
@@ -2385,6 +2385,7 @@
         "edit-segment-geometry": "Edit Segment Geometry",
         "segment-geometry-details": "Segment Geometry Details",
         "details": {
+          "road-segment": "Road Segment",
           "name": "Name",
           "carriage-way-width": "Carriage Way Width",
           "lane-width": "Lane Width",
@@ -2403,6 +2404,7 @@
         "edit-intersection-driveway": "Edit Intersection and Driveway",
         "intersection-driveway-details": "Intersection and Driveway Details",
         "details": {
+          "road-segment": "Road Segment",
           "name": "Name",
           "number-of-intersections": "Number of Intersections",
           "intersection-type": "Intersection Type",

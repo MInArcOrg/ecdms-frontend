@@ -11,6 +11,8 @@ import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as Yup from 'yup';
 import RailwayTrackMaintenanceAndInspectionForm from './railway-track-maintenance-inspection-form';
+import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import { pastDateRule } from 'src/utils/validator/age';
 
 interface RailwayTrackMaintenanceAndInspectionDrawerType {
   open: boolean;
@@ -46,7 +48,7 @@ const RailwayTrackMaintenanceAndInspectionDrawer = (props: RailwayTrackMaintenan
     scheduled_maintenance_activity_id: Yup.string().required(),
     maintenance_method: Yup.string().nullable(),
     track_maintenance_frequency_id: Yup.string().required(),
-    recent_maintenance_date: Yup.string().nullable(),
+    recent_maintenance_date: pastDateRule().nullable(),
     inspection_reports_and_findings: Yup.string().nullable(),
     remark: Yup.string().nullable()
   });
@@ -57,7 +59,7 @@ const RailwayTrackMaintenanceAndInspectionDrawer = (props: RailwayTrackMaintenan
       scheduled_maintenance_activity_id: values.scheduled_maintenance_activity_id,
       maintenance_method: values.maintenance_method,
       track_maintenance_frequency_id: values.track_maintenance_frequency_id,
-      recent_maintenance_date: values.recent_maintenance_date,
+      recent_maintenance_date: convertDateToLocaleDate(values.recent_maintenance_date),
       inspection_reports_and_findings: values.inspection_reports_and_findings,
       remark: values.remark,
       id: railwayTrackMaintenanceAndInspection?.id
@@ -80,9 +82,8 @@ const RailwayTrackMaintenanceAndInspectionDrawer = (props: RailwayTrackMaintenan
 
   return (
     <CustomSideDrawer
-      title={`project.other.railway-track-maintenance-and-inspection.${
-        isEdit ? `edit-railway-track-maintenance-and-inspection` : `create-railway-track-maintenance-and-inspection`
-      }`}
+      title={`project.other.railway-track-maintenance-and-inspection.${isEdit ? `edit-railway-track-maintenance-and-inspection` : `create-railway-track-maintenance-and-inspection`
+        }`}
       handleClose={handleClose}
       open={open}
       model="railwaytrackmaintenanceandinspection"
@@ -90,13 +91,13 @@ const RailwayTrackMaintenanceAndInspectionDrawer = (props: RailwayTrackMaintenan
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.railway-track-maintenance-and-inspection.${
-            isEdit ? `edit-railway-track-maintenance-and-inspection` : `create-railway-track-maintenance-and-inspection`
-          }`}
+          title={`project.other.railway-track-maintenance-and-inspection.${isEdit ? `edit-railway-track-maintenance-and-inspection` : `create-railway-track-maintenance-and-inspection`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...railwayTrackMaintenanceAndInspection
+            ...railwayTrackMaintenanceAndInspection,
+            recent_maintenance_date: formatInitialDateDate(railwayTrackMaintenanceAndInspection?.recent_maintenance_date)
           }}
           createActionFunc={isEdit ? editRailwayTrackMaintenanceAndInspection : createRailwayTrackMaintenanceAndInspection}
           onActionSuccess={onActionSuccess}

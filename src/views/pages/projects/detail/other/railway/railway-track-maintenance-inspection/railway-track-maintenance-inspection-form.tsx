@@ -8,6 +8,7 @@ import { gridSpacing } from 'src/configs/app-constants';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 import type { RailwayTrackMaintenanceAndInspection } from 'src/types/project/other';
+import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
@@ -93,14 +94,15 @@ const RailwayTrackMaintenanceAndInspectionForm: React.FC<RailwayTrackMaintenance
         />
       </Grid>
 
-      <Grid item xs={12}>
-        <CustomTextBox
+      <Grid item xs={12} md={6} lg={6}>
+        <CustomDynamicDatePicker
           fullWidth
           label={t('project.other.railway-track-maintenance-and-inspection.details.recent-maintenance-date')}
           name="recent_maintenance_date"
-          type="date"
-          size="small"
-          sx={{ mb: 2 }}
+          required
+          showYearDropdown
+          showMonthDropdown
+          customInput={<CustomTextBox name="recent_maintenance_date" />}
         />
       </Grid>
       <Grid item xs={12}>

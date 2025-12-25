@@ -22,7 +22,7 @@ const SegmentGeometryDrawer = (props: SegmentGeometryDrawerType) => {
   const { open, toggle, refetch, segmentGeometry, projectId, otherSubMenu } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required('Name is required'),
+    road_segment_id: yup.string().required('Road Segment is required'),
     cross_section_type_id: yup.string().required('Cross Section Type is required')
   });
 

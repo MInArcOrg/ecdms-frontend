@@ -19,6 +19,7 @@ import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-det
 import RailwayTrackDataCard from './railway-track-maintenance-inspection-card';
 import RailwayTrackDataDrawer from './railway-track-maintenance-inspection-data-drawer';
 import { railwayTrackMaintenanceAndInspectionColumns } from './railway-track-maintenance-inspection-row';
+import { formatDynamicDate } from 'src/utils/formatter/date';
 
 interface RailwayTrackMaintenanceAndInspectionListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -94,7 +95,7 @@ const RailwayTrackMaintenanceAndInspectionList: React.FC<RailwayTrackMaintenance
     },
     {
       title: t('project.other.railway-track-maintenance-and-inspection.details.recent-maintenance-date'),
-      value: row?.recent_maintenance_date || 'N/A'
+      value: formatDynamicDate(row?.recent_maintenance_date) || 'N/A'
     },
     {
       title: t('project.other.railway-track-maintenance-and-inspection.details.inspection-reports-and-findings'),

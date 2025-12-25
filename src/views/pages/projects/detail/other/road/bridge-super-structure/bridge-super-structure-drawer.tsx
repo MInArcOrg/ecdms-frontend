@@ -23,8 +23,9 @@ const BridgeSuperStructureDrawer = (props: BridgeSuperStructureDrawerType) => {
 
   const validationSchema = yup.object().shape({
     name: yup.string().max(255, 'Name must be at most 255 characters').required('Name is required'),
+    bridge_id: yup.string().uuid().required('Bridge Name is Required'),
 
-    bridge_name: yup.string().max(255, 'Bridge name must be at most 255 characters').required('Bridge name is required'),
+
 
     bridge_structure_type_id: yup.string().uuid().required('Bridge structure type is required'),
 

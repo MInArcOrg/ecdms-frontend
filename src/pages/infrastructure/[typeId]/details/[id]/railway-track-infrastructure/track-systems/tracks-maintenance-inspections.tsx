@@ -15,7 +15,6 @@ const TracksMaintenanceInspectionsPage = () => {
     subMenuItems(id as string, typeId as string),
     railwayTrackInfrastructureIds.trackSystems.tracksMaintenanceInspections
   );
-  menuItem;
   return (
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayTrackInfrastructure}

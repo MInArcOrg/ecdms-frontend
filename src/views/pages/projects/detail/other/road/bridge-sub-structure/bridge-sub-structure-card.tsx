@@ -45,7 +45,7 @@ const BridgeSubStructureCard: React.FC<BridgeSubStructureCardProps> = ({ bridgeS
             {t('project.other.bridge-sub-structure.details.name')}: {bridgeSubStructure?.name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-sub-structure.details.bridge-name')}: {bridgeSubStructure?.bridge_name || 'N/A'}
+            {t('project.other.bridge-sub-structure.details.bridge-name')}: {bridgeSubStructure?.bridgeBasicData?.name || bridgeSubStructure?.bridge_name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.bridge-sub-structure.details.pier-type-id')}: {bridgeSubStructure?.pier_type_id || 'N/A'}

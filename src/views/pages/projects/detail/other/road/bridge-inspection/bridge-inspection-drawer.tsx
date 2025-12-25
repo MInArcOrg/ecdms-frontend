@@ -33,7 +33,8 @@ const BridgeInspectionDrawer = (props: BridgeInspectionDrawerType) => {
   const validationSchema = yup.object().shape({
     parent_id: yup.string().uuid().nullable(),
     name: yup.string().max(255, 'Name must be at most 255 characters').required('Name is required'),
-    bridge_name: yup.string().max(255, 'Bridge name must be at most 255 characters').required('Bridge name is required'),
+    bridge_id: yup.string().uuid().required('Bridge Name is Required'),
+
     bridge_part_defect_id: yup.string().uuid().required('Bridge part defect is required'),
     damage_type_id: yup.string().uuid().required('Damage type is required'),
     damage_condition_id: yup.string().uuid().required('Damage condition is required'),
@@ -55,7 +56,8 @@ const BridgeInspectionDrawer = (props: BridgeInspectionDrawerType) => {
     data: {
       project_id: projectId,
       name: values.name,
-      bridge_name: values.name,
+
+      bridge_id: values.bridge_id,
       bridge_part_defect_id: values.bridge_part_defect_id,
       damage_type_id: values.damage_type_id,
       damage_condition_id: values.damage_condition_id,

@@ -7,8 +7,10 @@ import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import { dropDownConfig } from 'src/configs/api-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
-import type { BridgeFoundation } from 'src/types/project/other';
+import projectOtherApiService from 'src/services/project/project-other-service';
+import type { BridgeBasicData, BridgeFoundation } from 'src/types/project/other';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
@@ -43,6 +45,16 @@ const BridgeFoundationForm: React.FC<BridgeFoundationFormProps> = ({ formik }) =
       })
   });
 
+  const { data: bridges } = useQuery({
+    queryKey: ['bridges', formik.values.project_id],
+    queryFn: () =>
+      projectOtherApiService<BridgeBasicData>().getAll('bridge-basic-data', dropDownConfig({
+        filter: {
+          project_id: formik.values.project_id
+        }
+      }))
+  });
+
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -55,13 +67,20 @@ const BridgeFoundationForm: React.FC<BridgeFoundationFormProps> = ({ formik }) =
           sx={{ mb: 2 }}
         />
 
-        <CustomTextBox
+        <CustomSelect
           fullWidth
           label={transl('project.other.bridge-foundation.details.bridge-name')}
           placeholder={transl('project.other.bridge-foundation.details.bridge-name')}
-          name="bridge_name"
+          name="bridge_id"
           size="small"
           sx={{ mb: 2 }}
+          options={
+            bridges?.payload.map((bridge) => ({
+              label: bridge.name,
+              value: bridge.id
+            })) || []
+          }
+
         />
 
         <CustomSelect

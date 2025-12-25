@@ -76,12 +76,12 @@ const BridgeBasicDataList: React.FC<BridgeBasicDataListProps> = ({ otherSubMenu,
 
   const mapBridgeBasicDataToDetailItems = (bridgeBasicData: BridgeBasicData): { title: string; value: string }[] => [
     {
-      title: t('project.other.bridge-basic-data.details.name'),
-      value: bridgeBasicData?.name || 'N/A'
+      title: t('project.other.bridge-basic-data.details.road_segment_id'),
+      value: bridgeBasicData?.roadSegment?.name || 'N/A'
     },
     {
-      title: t('project.other.bridge-basic-data.details.bridge-name'),
-      value: bridgeBasicData?.bridge_name || 'N/A'
+      title: t('project.other.bridge-basic-data.details.name'),
+      value: bridgeBasicData?.name || 'N/A'
     },
     {
       title: t('project.other.bridge-basic-data.details.bridge-number'),

@@ -416,6 +416,8 @@ export interface RoadSurfaceCondition {
   project_id: string;
   road_segment: string;
   cracks?: boolean;
+  road_segment_id?: string;
+  roadSegment?: RoadSegment;
   rutting?: boolean;
   patching?: boolean;
   drainage_problems?: boolean;
@@ -464,6 +466,8 @@ export interface SegmentGeometry {
   project_id: string;
   name: string;
   carriage_way_width?: number;
+  road_segment_id?: string;
+  roadSegment?: RoadSegment;
   lane_width?: number;
   shoulder_width?: number;
   cross_section_type_id: string;
@@ -480,6 +484,8 @@ export interface IntersectionAndDriveway {
   project_id: string;
   name: string;
   number_of_intersections?: number;
+  road_segment_id?: string;
+  roadSegment?: RoadSegment;
   intersection_type_id: string;
   driveway_access_point_id: string;
   similar_for_all?: boolean;
@@ -492,6 +498,8 @@ export interface TrafficParameter {
   name: string;
   pedestrian_facility_id: string;
   parking?: number;
+  road_segment_id?: string;
+  roadSegment?: RoadSegment;
   design_traffic_flow?: number;
   design_speed?: number;
   similar_for_all?: boolean;
@@ -518,6 +526,8 @@ export interface Pavement {
   project_id: string;
   name: string;
   tangent_length?: number;
+  road_segment_id?: string;
+  roadSegment?: RoadSegment;
   curve_length?: number;
   road_length_type_id: string;
   road_pavement_thickness?: number;
@@ -600,6 +610,8 @@ export interface BridgeFoundation {
   pier_pile_depth?: number;
   soil_type_id: string;
   created_at: Date;
+  bridge_id: string;
+  bridgeBasicData?: BridgeBasicData;
   updated_at: Date;
 }
 
@@ -622,6 +634,8 @@ export interface BridgeSubStructure {
   pier2_height?: number | null; // Optional Double - Height of pier 2
   pier2_width?: number | null; // Optional Double - Width of pier 2
   created_at?: Date;
+  bridge_id: string;
+  bridgeBasicData?: BridgeBasicData;
   updated_at?: Date;
 }
 // Bridge Structure Information model
@@ -644,14 +658,17 @@ export interface BridgeSuperStructure {
   girder_spacing?: number | null;
   girder_width?: number | null;
   created_at: Date;
+  bridge_id: string;
+  bridgeBasicData?: BridgeBasicData;
   updated_at: Date;
 }
 // Bridge Basic Data model
 export interface BridgeBasicData {
   id: string;
   project_id: string; // Required UUID - Reference to the related project
-  name: string; // Required String - Name of the bridge record
-  bridge_name: string;
+  name: string;
+  road_segment_id: string;
+  roadSegment: RoadSegment;
   bridge_number: string | null; // Optional String - Identification number for the bridge
   bridge_length: number | null; // Optional Double - Length of the bridge (in meters)
   bridge_width: number | null; // Optional Double - Width of the bridge (in meters)
@@ -668,7 +685,7 @@ export interface BridgeBasicData {
 export interface BridgeAreaData {
   id: string;
   project_id: string; // Required UUID
-  name: string; // Required String
+  road_segment_id: string; // Required String
   bridge_name: string; // Required String
   river_width: number | null; // Optional Double
   highest_water_level: number | null; // Optional Double
@@ -679,6 +696,8 @@ export interface BridgeAreaData {
   altitude: number | null; // Optional Double
   load_limit_sign: boolean | null; // Optional Boolean
   created_at?: string;
+  bridge_id: string;
+  bridgeBasicData?: BridgeBasicData;
   updated_at?: string;
 }
 export interface BridgeSuperStructure {
@@ -715,6 +734,8 @@ export interface BridgeInspection {
   maintenance_action?: string;
   bridge_history?: string;
   inspector_remark?: string;
+  bridge_id: string;
+  bridgeBasicData?: BridgeBasicData;
   created_at: Date;
   updated_at: Date;
 }
@@ -724,6 +745,8 @@ export interface TrafficVolume {
   name: string;
   count_type_id: string;
   count_location_coordinate_x?: number;
+  road_segment_id?: string;
+  roadSegment?: RoadSegment;
   count_location_coordinate_y?: number;
   count_time?: Date;
   lane_number?: number;
@@ -1579,7 +1602,7 @@ export interface RailwayTrackMaintenanceAndInspection {
   scheduled_maintenance_activity_id: string;
   maintenance_method?: string;
   track_maintenance_frequency_id: string;
-  recent_maintenance_date?: string;
+  recent_maintenance_date?: string | Date | EthiopianDate; // ISO date string;
   inspection_reports_and_findings?: string;
   remark?: string;
   created_at?: string;

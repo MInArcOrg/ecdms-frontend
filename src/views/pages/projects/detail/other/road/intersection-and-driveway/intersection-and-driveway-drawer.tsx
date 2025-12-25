@@ -22,7 +22,7 @@ const IntersectionDrivewayDrawer = (props: IntersectionDrivewayDrawerType) => {
   const { open, toggle, refetch, intersectionDriveway, projectId, otherSubMenu } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required('Name is required'),
+    road_segment_id: yup.string().required('Road Segment is required'),
     intersection_type_id: yup.string().required('Intersection Type is required'),
     driveway_access_point_id: yup.string().required('Driveway Access Point is required')
   });
