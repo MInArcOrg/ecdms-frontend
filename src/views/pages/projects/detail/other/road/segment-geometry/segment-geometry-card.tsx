@@ -45,7 +45,7 @@ const SegmentGeometryCard: React.FC<SegmentGeometryCardProps> = ({ segmentGeomet
             {t('project.other.segment-geometry.details.name')}: {segmentGeometry?.name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.segment-geometry.details.cross-section-type')}: {segmentGeometry?.cross_section_type_id || 'N/A'}
+            {t('project.other.segment-geometry.details.cross-section-type-id')}: {segmentGeometry?.cross_section_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.segment-geometry.details.carriage-way-width')}: {segmentGeometry?.carriage_way_width || 'N/A'}
