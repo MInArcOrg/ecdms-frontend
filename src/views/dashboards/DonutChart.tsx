@@ -11,7 +11,7 @@ interface DonutChartProps {
   height?: number
 }
 
-const DonutChart: React.FC<DonutChartProps> = ({ data, height = 300 }) => {
+const DonutChart: React.FC<DonutChartProps> = ({ data, height = 220 }) => {
   const theme = useTheme()
   const labels = (data || []).map(obj => Object.keys(obj)[0])
   const series = (data || []).map(obj => Number(Object.values(obj)[0] || 0))
@@ -43,14 +43,9 @@ const DonutChart: React.FC<DonutChartProps> = ({ data, height = 300 }) => {
     plotOptions: {
       pie: {
         donut: {
-          size: '72%',
           labels: {
-            show: true,
-            total: {
-              show: true,
-              label: 'Total',
-              formatter: () => series.reduce((acc, v) => acc + v, 0).toString()
-            }
+            show: false,
+           
           }
         }
       }
@@ -70,3 +65,4 @@ const DonutChart: React.FC<DonutChartProps> = ({ data, height = 300 }) => {
 }
 
 export default DonutChart
+
