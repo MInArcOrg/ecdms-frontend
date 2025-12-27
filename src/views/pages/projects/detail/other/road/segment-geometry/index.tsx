@@ -92,7 +92,7 @@ const SegmentGeometryList: React.FC<SegmentGeometryListProps> = ({ otherSubMenu,
       value: segmentGeometry?.shoulder_width?.toString() || 'N/A'
     },
     {
-      title: t('project.other.segment-geometry.details.cross-section-type'),
+      title: t('project.other.segment-geometry.details.cross-section-type-id'),
       value: segmentGeometry?.cross_section_type_id || 'N/A'
     },
     {

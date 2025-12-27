@@ -60,8 +60,8 @@ const SegmentGeometryForm: React.FC<SegmentGeometryFormProps> = ({ formik }) => 
 
         <CustomSelect
           fullWidth
-          label={transl('project.other.segment-geometry.details.cross-section-type')}
-          placeholder={transl('project.other.segment-geometry.details.cross-section-type')}
+          label={transl('project.other.segment-geometry.details.cross-section-type-id')}
+          placeholder={transl('project.other.segment-geometry.details.cross-section-type-id')}
           name="cross_section_type_id"
           size="small"
           sx={{ mb: 2 }}
