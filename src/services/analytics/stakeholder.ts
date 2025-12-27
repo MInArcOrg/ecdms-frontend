@@ -8,6 +8,12 @@ const stakeholderAnalticsService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
+      }),
+  getTypeSummary: (params: GetRequestParam): Promise<IApiResponse<any>> =>
+    buildGetRequest(`/analytics/type-summary/stakeholder`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
       })
 };
 
