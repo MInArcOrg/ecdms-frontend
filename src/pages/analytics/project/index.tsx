@@ -11,7 +11,8 @@ import {
   MenuItem,
   Select,
   Skeleton,
-  Typography
+  Typography,
+  Menu
 } from '@mui/material';
 
 // ** Third-Party Imports
@@ -137,63 +138,99 @@ const ProjectAnlytics = () => {
 
   const projectTypes: MasterType[] = projectTypesData?.payload || [];
   const [isExporting, setIsExporting] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const handlePrint = () => {
-    const content = reportRef.current;
-    if (!content) return;
+  const handlePrintClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
 
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handlePrint = (orientation: 'portrait' | 'landscape') => {
+    handleClose();
     setIsExporting(true);
 
-    const printWindow = window.open('', '_blank');
-    if (!printWindow) {
+    // Create a style element for print settings
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @media print {
+        /* Reset body/html for full scrolling/printing */
+        html, body {
+          height: auto !important;
+          overflow: visible !important;
+          background-color: white !important;
+        }
+
+        /* Hide everything primarily */
+        body * {
+          visibility: hidden;
+        }
+
+        /* Target the print section */
+        #print-section, #print-section * {
+          visibility: visible;
+        }
+
+        #print-section {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100% !important;
+          margin: 0 !important;
+          padding: 10px !important;
+          background-color: white;
+          /* Ensure it sits on top of everything */
+          z-index: 9999;
+        }
+
+        /* Handle Page Breaks */
+        .MuiCard-root {
+          break-inside: avoid;
+          page-break-inside: avoid;
+          margin-bottom: 16px;
+          box-shadow: none !important;
+          border: 1px solid #e0e0e0;
+        }
+
+        .MuiGrid-item {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+
+        /* Orientation specific adjustments */
+        @page {
+          size: ${orientation};
+          margin: 10mm;
+        }
+
+        /* Utility to hide elements explicitly marked */
+        .no-print {
+          display: none !important;
+        }
+
+        /* Fix Charts */
+        .apexcharts-canvas {
+          width: 100% !important;
+          height: auto !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Give a small delay for styles to apply if needed, though usually instant
+    setTimeout(() => {
+      window.print();
       setIsExporting(false);
-      return;
-    }
-
-    const styles = Array.from(document.querySelectorAll('style, link[rel="stylesheet"]'))
-      .map(node => node.outerHTML)
-      .join('');
-
-    printWindow.document.write(`
-      <html>
-        <head>
-          <title>Project Analytics</title>
-          ${styles}
-          <style>
-             @media print {
-               @page { size: landscape; margin: 10mm; }
-               body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-               .no-print { display: none !important; }
-               /* Ensure charts are visible */
-               .apexcharts-canvas { width: 100% !important; height: auto !important; }
-             }
-             body { background-color: white; padding: 20px; }
-          </style>
-        </head>
-        <body>
-          <div id="print-content">
-            ${content.innerHTML}
-          </div>
-          <script>
-            window.onload = () => {
-              // Give some time for styles and charts to settle
-              setTimeout(() => {
-                window.print();
-                // window.close();
-              }, 1000);
-            };
-          </script>
-        </body>
-      </html>
-    `);
-    printWindow.document.close();
-    setIsExporting(false);
+      document.head.removeChild(style);
+    }, 100);
   };
 
   return (
     <ProjectAnalyticsLayout>
       <ApexChartWrapper>
-        <Grid container spacing={6} ref={reportRef}>
+        <Grid container spacing={6} ref={reportRef} id="print-section">
           {/* Header Stats */}
           <Grid item xs={12}>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2, gap: 2 }}>
@@ -201,11 +238,19 @@ const ProjectAnlytics = () => {
                 variant="tonal"
                 color="secondary"
                 startIcon={<Icon icon="tabler:printer" />}
-                onClick={handlePrint}
+                onClick={handlePrintClick}
                 className="no-print"
               >
                 Print
               </Button>
+              <Menu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={() => handlePrint('portrait')}>Print Portrait</MenuItem>
+                <MenuItem onClick={() => handlePrint('landscape')}>Print Landscape</MenuItem>
+              </Menu>
               <Typography variant="body2" sx={{ alignSelf: 'center', fontWeight: 'bold' }}>Registered</Typography>
               <FormControl size="small" sx={{ minWidth: 100 }}>
                 <Select value="2025">
