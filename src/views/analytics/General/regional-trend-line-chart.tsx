@@ -87,7 +87,8 @@ const RegionalTrendLineChart = ({
         type: 'line',
         toolbar: { show: false },
         parentHeightOffset: 0,
-        zoom: { enabled: false }
+        zoom: { enabled: false },
+        height: 400 // Explicit height
       },
       stroke: {
         curve: 'smooth',
@@ -98,11 +99,19 @@ const RegionalTrendLineChart = ({
       grid: {
         borderColor: theme.palette.divider,
         xaxis: { lines: { show: true } },
+        padding: { bottom: 80 } // Add padding to bottom of chart to prevent label cutoff
       },
       xaxis: {
         categories,
         axisTicks: { color: theme.palette.divider },
-        labels: { style: { colors: theme.palette.text.disabled } },
+        labels: {
+          style: { colors: theme.palette.text.disabled },
+          rotate: -45,
+          rotateAlways: true, // Force rotation
+          hideOverlappingLabels: false,
+          trim: false,
+          maxHeight: 150,
+        },
       },
       yaxis: {
         labels: { style: { colors: theme.palette.text.disabled } },

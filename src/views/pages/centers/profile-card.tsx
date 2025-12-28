@@ -69,7 +69,7 @@ const ProfileCard = ({ department, refetch, loading }: { department: Department;
         ) : (
           <Box>
             <Typography variant="h6" sx={{ color: 'text.primary', mt: 0 }}>
-              {department?.name}
+              {department?.name + " Construction Data Management Center"}
             </Typography>
             <IconButton
               sx={{
