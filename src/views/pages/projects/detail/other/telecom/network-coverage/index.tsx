@@ -17,6 +17,7 @@ import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-det
 import NetworkCoverageCard from './network-coverage-card';
 import NetworkCoverageDrawer from './network-coverage-drawer';
 import { networkCoverageColumns } from './network-coverage-row';
+import { dropDownConfig } from 'src/configs/api-constants';
 
 interface NetworkCoverageListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -33,9 +34,10 @@ const NetworkCoverageList: React.FC<NetworkCoverageListProps> = ({ otherSubMenu,
   const { data: telecomInfrastructures } = useQuery({
     queryKey: ['telecom-infrastructures', projectId],
     queryFn: () =>
-      projectOtherApiService<TelecomInfrastructure>().getAll('telecom_infrastructure', {
+      projectOtherApiService<TelecomInfrastructure>().getAll('telecom_infrastructure', dropDownConfig({
         filter: { project_id: projectId }
       })
+      )
   });
 
   const telecomInfrastructureMap = new Map(telecomInfrastructures?.payload.map((item) => [item.id, item.name || 'N/A']) || []);
@@ -145,15 +147,18 @@ const NetworkCoverageList: React.FC<NetworkCoverageListProps> = ({ otherSubMenu,
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         isLoading={isLoading}
-        columns={networkCoverageColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, telecomInfrastructureMap)}
-        data={networkCoverages || []}
-        onPageChange={handlePageChange}
+        tableProps={{
+          headers: networkCoverageColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, telecomInfrastructureMap)
+        }}
+        items={networkCoverages || []}
+
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
           onlyIcon: true
         }}
         fetchDataFunction={refetch}
+        onPaginationChange={handlePageChange}
       />
 
       <NetworkCoverageDrawer

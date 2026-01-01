@@ -104,7 +104,7 @@ const NetworkCapacityDrawer = (props: NetworkCapacityDrawerType) => {
                 file={uploadableFile}
                 onFileChange={onFileChange}
                 formik={formik}
-                telecomInfrastructures={telecomInfrastructures}
+                telecomInfrastructures={telecomInfrastructures || []}
               />
             );
           }}

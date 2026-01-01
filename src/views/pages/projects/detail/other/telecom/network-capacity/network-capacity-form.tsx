@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
-import type { NetworkCapacity } from 'src/types/project/other';
+import type { NetworkCapacity, TelecomInfrastructure } from 'src/types/project/other';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
@@ -15,9 +15,10 @@ interface NetworkCapacityFormProps {
   formik: FormikProps<NetworkCapacity>;
   file: File | null;
   onFileChange: (file: File | null) => void;
+  telecomInfrastructures: TelecomInfrastructure[];
 }
 
-const NetworkCapacityForm: React.FC<NetworkCapacityFormProps> = ({ formik, file, onFileChange }) => {
+const NetworkCapacityForm: React.FC<NetworkCapacityFormProps> = ({ formik, file, onFileChange, telecomInfrastructures }) => {
   const { t: transl } = useTranslation();
 
   const { data: networkTypes } = useQuery({
