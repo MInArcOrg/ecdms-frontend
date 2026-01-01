@@ -11,7 +11,7 @@ import { useState } from 'react';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
-import type { NetworkCapacity } from 'src/types/project/other';
+import type { NetworkCapacity, TelecomInfrastructure } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface NetworkCapacityDrawerType {
@@ -21,10 +21,11 @@ interface NetworkCapacityDrawerType {
   networkCapacity: NetworkCapacity;
   projectId: string;
   otherSubMenu?: DetailSubMenuItemChild;
+  telecomInfrastructures: TelecomInfrastructure[];
 }
 
 const NetworkCapacityDrawer = (props: NetworkCapacityDrawerType) => {
-  const { open, toggle, refetch, networkCapacity, projectId, otherSubMenu } = props;
+  const { open, toggle, refetch, networkCapacity, projectId, otherSubMenu, telecomInfrastructures } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const onFileChange = (file: File | null) => {
@@ -33,6 +34,7 @@ const NetworkCapacityDrawer = (props: NetworkCapacityDrawerType) => {
 
   const validationSchema = yup.object().shape({
     network_type_id: yup.string().required('Network type is required'),
+    telecom_infrastructure_id: yup.string().required(),
     total_bandwidth: yup
       .number()
       .nullable()
@@ -56,6 +58,7 @@ const NetworkCapacityDrawer = (props: NetworkCapacityDrawerType) => {
   const getPayload = (values: NetworkCapacity) => ({
     data: {
       project_id: projectId,
+      telecom_infrastructure_id: values.telecom_infrastructure_id,
       network_type_id: values.network_type_id,
       total_bandwidth: values.total_bandwidth,
       users_number: values.users_number,
@@ -96,7 +99,14 @@ const NetworkCapacityDrawer = (props: NetworkCapacityDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<NetworkCapacity>) => {
-            return <NetworkCapacityForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
+            return (
+              <NetworkCapacityForm
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+                telecomInfrastructures={telecomInfrastructures}
+              />
+            );
           }}
         </FormPageWrapper>
       )}

@@ -1,31 +1,31 @@
 'use client';
 
-import { Button, Chip } from '@mui/material';
+import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import type { Maintenance } from 'src/types/project/other';
+import type { TelecomInfrastructureManufacturer } from 'src/types/project/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
-  row: Maintenance;
+  row: TelecomInfrastructureManufacturer;
 }
 
-export const maintenanceColumns = (
-  onDetail: (maintenance: Maintenance) => void,
-  onEdit: (maintenance: Maintenance) => void,
+export const telecomInfrastructureManufacturerColumns = (
+  onDetail: (telecomInfrastructureManufacturer: TelecomInfrastructureManufacturer) => void,
+  onEdit: (telecomInfrastructureManufacturer: TelecomInfrastructureManufacturer) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
   telecomInfrastructureMap: Map<string, string>
 ): GridColDef[] => [
   {
-    flex: 0.15,
-    minWidth: 120,
-    field: 'id',
-    headerName: t('common.table-columns.id'),
+    flex: 0.2,
+    minWidth: 150,
+    field: 'name',
+    headerName: t('project.other.telecom-infrastructure-manufacturer.details.name'),
     renderCell: ({ row }: CellType) => (
       <Typography
         noWrap
@@ -38,7 +38,7 @@ export const maintenanceColumns = (
           '&:hover': { color: 'primary.main' }
         }}
       >
-        {row?.id.slice(0, 8) + '...'}
+        {row?.name || t('common.not-available')}
       </Typography>
     )
   },
@@ -56,33 +56,29 @@ export const maintenanceColumns = (
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('project.other.maintenance.details.maintenance-frequency'),
-    field: 'maintenance_frequency',
+    headerName: t('project.other.telecom-infrastructure-manufacturer.details.country'),
+    field: 'country',
     renderCell: ({ row }: CellType) => (
-      <Chip
-        size="small"
-        label={row?.maintenance_frequency ? t('common.yes') : t('common.no')}
-        color={row?.maintenance_frequency ? 'success' : 'default'}
-      />
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.country || t('common.not-available')}
+      </Typography>
     )
   },
   {
     flex: 0.2,
     minWidth: 150,
-    headerName: t('project.other.maintenance.details.service-level-agreement'),
-    field: 'service_level_agreement',
+    headerName: t('project.other.telecom-infrastructure-manufacturer.details.website'),
+    field: 'website',
     renderCell: ({ row }: CellType) => (
-      <Chip
-        size="small"
-        label={row?.service_level_agreement ? t('common.yes') : t('common.no')}
-        color={row?.service_level_agreement ? 'success' : 'default'}
-      />
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.website || t('common.not-available')}
+      </Typography>
     )
   },
   {
     flex: 0.25,
     minWidth: 150,
-    headerName: t('project.other.maintenance.details.remark'),
+    headerName: t('project.other.telecom-infrastructure-manufacturer.details.remark'),
     field: 'remark',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
@@ -105,7 +101,7 @@ export const maintenanceColumns = (
     renderCell: ({ row }: CellType) => (
       <Fragment>
         <ModelAction
-          model="Maintenance"
+          model="TelecomInfrastructureManufacturer"
           model_id={row.id}
           refetchModel={refetch}
           resubmit={() => refetch()}
@@ -119,11 +115,11 @@ export const maintenanceColumns = (
           options={[]}
           deletePermissionRule={{
             action: 'delete',
-            subject: 'maintenance'
+            subject: 'telecominfrastructuremanufacturer'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'maintenance'
+            subject: 'telecominfrastructuremanufacturer'
           }}
         />
       </Fragment>

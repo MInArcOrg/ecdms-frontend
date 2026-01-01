@@ -11,7 +11,7 @@ import { useState } from 'react';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
-import type { TelecomInfrastructureAge } from 'src/types/project/other';
+import type { TelecomInfrastructureAge, TelecomInfrastructure } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface TelecomInfrastructureAgeDrawerType {
@@ -21,10 +21,11 @@ interface TelecomInfrastructureAgeDrawerType {
   telecomInfrastructureAge: TelecomInfrastructureAge;
   projectId: string;
   otherSubMenu?: DetailSubMenuItemChild;
+  telecomInfrastructures: TelecomInfrastructure[];
 }
 
 const TelecomInfrastructureAgeDrawer = (props: TelecomInfrastructureAgeDrawerType) => {
-  const { open, toggle, refetch, telecomInfrastructureAge, projectId, otherSubMenu } = props;
+  const { open, toggle, refetch, telecomInfrastructureAge, projectId, otherSubMenu, telecomInfrastructures } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const onFileChange = (file: File | null) => {
@@ -32,6 +33,7 @@ const TelecomInfrastructureAgeDrawer = (props: TelecomInfrastructureAgeDrawerTyp
   };
 
   const validationSchema = yup.object().shape({
+    telecom_infrastructure_id: yup.string().required(),
     cables: yup.boolean().nullable(),
     wires: yup.boolean().nullable(),
     routers: yup.boolean().nullable(),
@@ -54,6 +56,7 @@ const TelecomInfrastructureAgeDrawer = (props: TelecomInfrastructureAgeDrawerTyp
   const getPayload = (values: TelecomInfrastructureAge) => ({
     data: {
       project_id: projectId,
+      telecom_infrastructure_id: values.telecom_infrastructure_id,
       cables: values.cables,
       wires: values.wires,
       routers: values.routers,
@@ -88,9 +91,8 @@ const TelecomInfrastructureAgeDrawer = (props: TelecomInfrastructureAgeDrawerTyp
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.telecom-infrastructure-age.${
-            isEdit ? `edit-telecom-infrastructure-age` : `create-telecom-infrastructure-age`
-          }`}
+          title={`project.other.telecom-infrastructure-age.${isEdit ? `edit-telecom-infrastructure-age` : `create-telecom-infrastructure-age`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

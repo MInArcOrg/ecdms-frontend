@@ -11,7 +11,7 @@ import { useState } from 'react';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
-import type { Maintenance } from 'src/types/project/other';
+import type { Maintenance, TelecomInfrastructure } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface MaintenanceDrawerType {
@@ -21,10 +21,11 @@ interface MaintenanceDrawerType {
   maintenance: Maintenance;
   projectId: string;
   otherSubMenu?: DetailSubMenuItemChild;
+  telecomInfrastructures: TelecomInfrastructure[];
 }
 
 const MaintenanceDrawer = (props: MaintenanceDrawerType) => {
-  const { open, toggle, refetch, maintenance, projectId, otherSubMenu } = props;
+  const { open, toggle, refetch, maintenance, projectId, otherSubMenu, telecomInfrastructures } = props;
   const [uploadableFiles, setUploadableFiles] = useState<{
     maintenanceDocument: File | null;
     infrastructureImage: File | null;
@@ -41,6 +42,7 @@ const MaintenanceDrawer = (props: MaintenanceDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
+    telecom_infrastructure_id: yup.string().required(),
     maintenance_frequency: yup.boolean().nullable(),
     service_level_agreement: yup.boolean().nullable(),
     remark: yup.string().nullable()
@@ -57,6 +59,7 @@ const MaintenanceDrawer = (props: MaintenanceDrawerType) => {
   const getPayload = (values: Maintenance) => ({
     data: {
       project_id: projectId,
+      telecom_infrastructure_id: values.telecom_infrastructure_id,
       maintenance_frequency: values.maintenance_frequency,
       service_level_agreement: values.service_level_agreement,
       remark: values.remark,
@@ -104,7 +107,14 @@ const MaintenanceDrawer = (props: MaintenanceDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<Maintenance>) => {
-            return <MaintenanceForm files={uploadableFiles} onFileChange={onFileChange} formik={formik} />;
+            return (
+              <MaintenanceForm
+                files={uploadableFiles}
+                onFileChange={onFileChange}
+                formik={formik}
+                telecomInfrastructures={telecomInfrastructures}
+              />
+            );
           }}
         </FormPageWrapper>
       )}

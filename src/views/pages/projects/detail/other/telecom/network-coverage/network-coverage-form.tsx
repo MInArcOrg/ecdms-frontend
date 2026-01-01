@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { dropDownConfig } from 'src/configs/api-constants';
 import { gridSpacing } from 'src/configs/app-constants';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { MobileNetwork, NetworkCoverage } from 'src/types/project/other';
+import { MobileNetwork, NetworkCoverage, TelecomInfrastructure } from 'src/types/project/other';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
@@ -16,9 +16,10 @@ interface NetworkCoverageFormProps {
   file: File | null;
   onFileChange: (file: File | null) => void;
   projectId: String;
+  telecomInfrastructures: TelecomInfrastructure[];
 }
 
-const NetworkCoverageForm: React.FC<NetworkCoverageFormProps> = ({ projectId, file, onFileChange }) => {
+const NetworkCoverageForm: React.FC<NetworkCoverageFormProps> = ({ projectId, file, onFileChange, telecomInfrastructures }) => {
   const { t: transl } = useTranslation();
 
   const { data: mobileNetworks } = useQuery({
@@ -37,6 +38,14 @@ const NetworkCoverageForm: React.FC<NetworkCoverageFormProps> = ({ projectId, fi
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
+        <CustomSelect
+          fullWidth
+          label={transl('project.other.telecom-infrastructure.title')}
+          name="telecom_infrastructure_id"
+          options={telecomInfrastructures.map((item) => ({ value: item.id, label: item.name }))}
+          size="small"
+          sx={{ mb: 2 }}
+        />
         <CustomSelect
           fullWidth
           label={transl('project.other.network-coverage.details.network-infrastructure-type')}

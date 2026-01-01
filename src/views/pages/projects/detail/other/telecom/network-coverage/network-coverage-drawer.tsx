@@ -9,7 +9,7 @@ import { useState } from 'react';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
-import { NetworkCoverage } from 'src/types/project/other';
+import { NetworkCoverage, TelecomInfrastructure } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface NetworkCoverageDrawerType {
@@ -19,10 +19,11 @@ interface NetworkCoverageDrawerType {
   networkCoverage: NetworkCoverage;
   projectId: string;
   otherSubMenu?: DetailSubMenuItemChild;
+  telecomInfrastructures: TelecomInfrastructure[];
 }
 
 const NetworkCoverageDrawer = (props: NetworkCoverageDrawerType) => {
-  const { open, toggle, refetch, networkCoverage, projectId, otherSubMenu } = props;
+  const { open, toggle, refetch, networkCoverage, projectId, otherSubMenu, telecomInfrastructures } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
@@ -30,6 +31,7 @@ const NetworkCoverageDrawer = (props: NetworkCoverageDrawerType) => {
 
   const validationSchema = yup.object().shape({
     parent_id: yup.string().nullable(),
+    telecom_infrastructure_id: yup.string().required(),
     network_infrastructure_type_id: yup.string().required('Network infrastructure type is required'),
     total_coverage_area: yup.number().nullable(),
     coverage_population_number: yup.number().integer('Coverage population must be an integer').nullable(),
@@ -86,7 +88,15 @@ const NetworkCoverageDrawer = (props: NetworkCoverageDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<NetworkCoverage>) => {
-            return <NetworkCoverageForm projectId={projectId} file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
+            return (
+              <NetworkCoverageForm
+                projectId={projectId}
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+                telecomInfrastructures={telecomInfrastructures}
+              />
+            );
           }}
         </FormPageWrapper>
       )}

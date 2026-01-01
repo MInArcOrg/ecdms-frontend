@@ -109,17 +109,6 @@ const MaintenanceList: React.FC<MaintenanceListProps> = ({ otherSubMenu, project
 
   return (
     <Box>
-      {showDrawer && (
-        <MaintenanceDrawer
-          otherSubMenu={otherSubMenu}
-          open={showDrawer}
-          toggle={toggleDrawer}
-          maintenance={selectedRow as Maintenance}
-          refetch={refetch}
-          projectId={projectId}
-        />
-      )}
-
       {showDetailDrawer && (
         <OtherDetailSidebar
           show={showDetailDrawer}
@@ -136,25 +125,26 @@ const MaintenanceList: React.FC<MaintenanceListProps> = ({ otherSubMenu, project
         title={t('project.other.maintenance.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
-        tableProps={{
-          headers: maintenanceColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
-        }}
         isLoading={isLoading}
-        ItemViewComponent={({ data }) => (
-          <MaintenanceCard onDetail={handleClickDetail} maintenance={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
-        )}
+        columns={maintenanceColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, telecomInfrastructureMap)}
+        data={maintenanceList || []}
+        onPageChange={handlePageChange}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: false,
-          permission: {
-            action: 'create',
-            subject: 'maintenance'
-          }
+          onlyIcon: true
         }}
         fetchDataFunction={refetch}
-        items={maintenanceList || []}
-        onPaginationChange={handlePageChange}
+      />
+
+      <MaintenanceDrawer
+        open={showDrawer}
+        toggle={toggleDrawer}
+        refetch={refetch}
+        maintenance={selectedRow as Maintenance}
+        projectId={projectId}
+        otherSubMenu={otherSubMenu}
+        telecomInfrastructures={telecomInfrastructures?.payload || []}
       />
     </Box>
   );

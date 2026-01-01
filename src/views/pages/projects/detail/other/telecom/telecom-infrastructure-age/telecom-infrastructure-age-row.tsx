@@ -18,7 +18,8 @@ export const telecomInfrastructureAgeColumns = (
   onEdit: (telecomInfrastructureAge: TelecomInfrastructureAge) => void,
   onDelete: (id: string) => void,
   t: any,
-  refetch: () => void
+  refetch: () => void,
+  telecomInfrastructureMap: Map<string, string>
 ): GridColDef[] => [
   {
     flex: 0.15,
@@ -38,6 +39,17 @@ export const telecomInfrastructureAgeColumns = (
         }}
       >
         {row?.id.slice(0, 8) + '...'}
+      </Typography>
+    )
+  },
+  {
+    flex: 0.2,
+    minWidth: 150,
+    headerName: t('project.other.telecom-infrastructure.title'),
+    field: 'telecom_infrastructure_id',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>
+        {telecomInfrastructureMap.get(row.telecom_infrastructure_id) || t('common.not-available')}
       </Typography>
     )
   },

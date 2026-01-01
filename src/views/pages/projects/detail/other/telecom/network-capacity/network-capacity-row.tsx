@@ -19,7 +19,8 @@ export const networkCapacityColumns = (
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
-  networkTypeMap: Map<string, string>
+  networkTypeMap: Map<string, string>,
+  telecomInfrastructureMap: Map<string, string>
 ): GridColDef[] => [
   {
     flex: 0.2,
@@ -39,6 +40,17 @@ export const networkCapacityColumns = (
         }}
       >
         {networkTypeMap.get(row?.network_type_id) || t('common.not-available')}
+      </Typography>
+    )
+  },
+  {
+    flex: 0.2,
+    minWidth: 150,
+    headerName: t('project.other.telecom-infrastructure.title'),
+    field: 'telecom_infrastructure_id',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>
+        {telecomInfrastructureMap.get(row.telecom_infrastructure_id) || t('common.not-available')}
       </Typography>
     )
   },

@@ -1,13 +1,15 @@
+import { useQuery } from '@tanstack/react-query';
 import { Box } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { NetworkCoverage } from 'src/types/project/other';
+import { NetworkCoverage, TelecomInfrastructure } from 'src/types/project/other';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
@@ -27,6 +29,16 @@ const NetworkCoverageList: React.FC<NetworkCoverageListProps> = ({ otherSubMenu,
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<NetworkCoverage | null>(null);
   const { t } = useTranslation();
+
+  const { data: telecomInfrastructures } = useQuery({
+    queryKey: ['telecom-infrastructures', projectId],
+    queryFn: () =>
+      projectOtherApiService<TelecomInfrastructure>().getAll('telecom_infrastructure', {
+        filter: { project_id: projectId }
+      })
+  });
+
+  const telecomInfrastructureMap = new Map(telecomInfrastructures?.payload.map((item) => [item.id, item.name || 'N/A']) || []);
 
   const fetchNetworkCoverages = (params: GetRequestParam): Promise<IApiResponse<NetworkCoverage[]>> => {
     return projectOtherApiSecondService<NetworkCoverage>().getAll(otherSubMenu?.apiRoute || '', {
@@ -116,17 +128,6 @@ const NetworkCoverageList: React.FC<NetworkCoverageListProps> = ({ otherSubMenu,
 
   return (
     <Box>
-      {showDrawer && (
-        <NetworkCoverageDrawer
-          otherSubMenu={otherSubMenu}
-          open={showDrawer}
-          toggle={toggleDrawer}
-          networkCoverage={selectedRow as NetworkCoverage}
-          refetch={refetch}
-          projectId={projectId}
-        />
-      )}
-
       {showDetailDrawer && (
         <OtherDetailSidebar
           show={showDetailDrawer}
@@ -143,31 +144,26 @@ const NetworkCoverageList: React.FC<NetworkCoverageListProps> = ({ otherSubMenu,
         title={t('project.other.network-coverage.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
-        tableProps={{
-          headers: networkCoverageColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
-        }}
         isLoading={isLoading}
-        ItemViewComponent={({ data }) => (
-          <NetworkCoverageCard
-            onDetail={handleClickDetail}
-            networkCoverage={data}
-            onEdit={handleEdit}
-            refetch={refetch}
-            onDelete={handleDelete}
-          />
-        )}
+        columns={networkCoverageColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, telecomInfrastructureMap)}
+        data={networkCoverages || []}
+        onPageChange={handlePageChange}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: false,
-          permission: {
-            action: 'create',
-            subject: 'networkcoverage'
-          }
+          onlyIcon: true
         }}
         fetchDataFunction={refetch}
-        items={networkCoverages || []}
-        onPaginationChange={handlePageChange}
+      />
+
+      <NetworkCoverageDrawer
+        open={showDrawer}
+        toggle={toggleDrawer}
+        refetch={refetch}
+        networkCoverage={selectedRow as NetworkCoverage}
+        projectId={projectId}
+        otherSubMenu={otherSubMenu}
+        telecomInfrastructures={telecomInfrastructures?.payload || []}
       />
     </Box>
   );

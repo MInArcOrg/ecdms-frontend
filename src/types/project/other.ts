@@ -448,6 +448,7 @@ export interface MobileNetworkComponentAge {
 export interface NetworkCoverage {
   id: string;
   project_id: string;
+  telecom_infrastructure_id: string;
   network_infrastructure_type_id: string;
   networkinfrastructuretype: MobileNetwork;
   total_coverage_area?: number;
@@ -459,6 +460,18 @@ export interface NetworkCoverage {
   others?: string;
   created_at?: string;
   updated_at?: string;
+}
+
+export interface TelecomInfrastructureManufacturer {
+  id: string;
+  project_id: string;
+  telecom_infrastructure_id: string;
+  name: string;
+  country?: string;
+  website?: string;
+  remark?: string;
+  created_at?: string | Date;
+  updated_at?: string | Date;
 }
 
 export interface SegmentGeometry {
@@ -891,6 +904,7 @@ export interface TelecomInfrastructureComponent {
 export interface TelecomInfrastructureAge {
   id: string;
   project_id: string;
+  telecom_infrastructure_id: string;
   cables?: boolean;
   wires?: boolean;
   routers?: boolean;
@@ -907,6 +921,7 @@ export interface TelecomInfrastructureAge {
 export interface Maintenance {
   id: string;
   project_id: string;
+  telecom_infrastructure_id: string;
   maintenance_frequency?: boolean;
   service_level_agreement?: boolean;
   remark?: string;
@@ -917,6 +932,7 @@ export interface Maintenance {
 export interface NetworkCapacity {
   id: string;
   project_id: string;
+  telecom_infrastructure_id: string;
   network_type_id: string;
   total_bandwidth?: number;
   users_number?: number;

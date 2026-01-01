@@ -11,7 +11,7 @@ import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { NetworkCapacity } from 'src/types/project/other';
+import type { NetworkCapacity, TelecomInfrastructure } from 'src/types/project/other';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
@@ -22,6 +22,7 @@ import { networkCapacityColumns } from './network-capacity-row';
 import { useQuery } from '@tanstack/react-query';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 
 interface NetworkCapacityListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -44,8 +45,17 @@ const NetworkCapacityList: React.FC<NetworkCapacityListProps> = ({ otherSubMenu,
       })
   });
 
+  const { data: telecomInfrastructures } = useQuery({
+    queryKey: ['telecom-infrastructures', projectId],
+    queryFn: () =>
+      projectOtherApiService<TelecomInfrastructure>().getAll('telecom_infrastructure', {
+        filter: { project_id: projectId }
+      })
+  });
+
   // Create maps for quick lookup
   const networkTypeMap = new Map(networkTypes?.payload.map((item) => [item.id, item.title || '']) || []);
+  const telecomInfrastructureMap = new Map(telecomInfrastructures?.payload.map((item) => [item.id, item.name || 'N/A']) || []);
 
   const fetchNetworkCapacities = (params: GetRequestParam): Promise<IApiResponse<NetworkCapacity[]>> => {
     return projectOtherApiSecondService<NetworkCapacity>().getAll(otherSubMenu?.apiRoute || '', {
@@ -127,6 +137,7 @@ const NetworkCapacityList: React.FC<NetworkCapacityListProps> = ({ otherSubMenu,
           networkCapacity={selectedRow as NetworkCapacity}
           refetch={refetch}
           projectId={projectId}
+          telecomInfrastructures={telecomInfrastructures?.payload || []}
         />
       )}
 
@@ -147,7 +158,15 @@ const NetworkCapacityList: React.FC<NetworkCapacityListProps> = ({ otherSubMenu,
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: networkCapacityColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, networkTypeMap)
+          headers: networkCapacityColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+            refetch,
+            networkTypeMap,
+            telecomInfrastructureMap
+          )
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (

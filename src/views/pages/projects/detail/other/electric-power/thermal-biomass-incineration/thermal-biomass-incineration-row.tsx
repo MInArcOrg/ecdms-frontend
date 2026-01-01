@@ -78,7 +78,7 @@ export const thermalBiomassIncinerationColumns = (
       renderCell: ({ row }: CellType) => (
         <Fragment>
           <ModelAction
-            model="SolarResourceInformation"
+            model="ThermalBiomassIncinerationData"
             model_id={row.id}
             refetchModel={refetch}
             resubmit={() => refetch()}
@@ -92,11 +92,11 @@ export const thermalBiomassIncinerationColumns = (
             options={[]}
             deletePermissionRule={{
               action: 'delete',
-              subject: 'solarresourceinformation'
+              subject: 'thermalbiomassincinerationdata'
             }}
             editPermissionRule={{
               action: 'update',
-              subject: 'solarresourceinformation'
+              subject: 'thermalbiomassincinerationdata'
             }}
           />
         </Fragment>

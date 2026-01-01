@@ -2,16 +2,18 @@
 
 import type React from 'react';
 
+import { useQuery } from '@tanstack/react-query';
 import { Box } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { TelecomInfrastructureAge } from 'src/types/project/other';
+import type { TelecomInfrastructureAge, TelecomInfrastructure } from 'src/types/project/other';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
@@ -31,6 +33,16 @@ const TelecomInfrastructureAgeList: React.FC<TelecomInfrastructureAgeListProps> 
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<TelecomInfrastructureAge | null>(null);
   const { t } = useTranslation();
+
+  const { data: telecomInfrastructures } = useQuery({
+    queryKey: ['telecom-infrastructures', projectId],
+    queryFn: () =>
+      projectOtherApiService<TelecomInfrastructure>().getAll('telecom_infrastructure', {
+        filter: { project_id: projectId }
+      })
+  });
+
+  const telecomInfrastructureMap = new Map(telecomInfrastructures?.payload.map((item) => [item.id, item.name || 'N/A']) || []);
 
   const fetchTelecomInfrastructureAges = (params: GetRequestParam): Promise<IApiResponse<TelecomInfrastructureAge[]>> => {
     return projectOtherApiSecondService<TelecomInfrastructureAge>().getAll(otherSubMenu?.apiRoute || '', {
@@ -78,51 +90,51 @@ const TelecomInfrastructureAgeList: React.FC<TelecomInfrastructureAgeListProps> 
   const mapTelecomInfrastructureAgeToDetailItems = (
     telecomInfrastructureAge: TelecomInfrastructureAge
   ): { title: string; value: string }[] => [
-    {
-      title: t('project.other.telecom-infrastructure-age.details.cables'),
-      value: telecomInfrastructureAge?.cables ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.telecom-infrastructure-age.details.wires'),
-      value: telecomInfrastructureAge?.wires ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.telecom-infrastructure-age.details.routers'),
-      value: telecomInfrastructureAge?.routers ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.telecom-infrastructure-age.details.switches'),
-      value: telecomInfrastructureAge?.switches ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.telecom-infrastructure-age.details.hubs'),
-      value: telecomInfrastructureAge?.hubs ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.telecom-infrastructure-age.details.repeaters'),
-      value: telecomInfrastructureAge?.repeaters ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.telecom-infrastructure-age.details.antennas'),
-      value: telecomInfrastructureAge?.antennas ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.telecom-infrastructure-age.details.towers'),
-      value: telecomInfrastructureAge?.towers ? t('common.yes') : t('common.no')
-    },
-    {
-      title: t('project.other.telecom-infrastructure-age.details.remark'),
-      value: telecomInfrastructureAge?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: telecomInfrastructureAge?.created_at ? formatCreatedAt(telecomInfrastructureAge.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: telecomInfrastructureAge?.updated_at ? formatCreatedAt(telecomInfrastructureAge.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.telecom-infrastructure-age.details.cables'),
+        value: telecomInfrastructureAge?.cables ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.telecom-infrastructure-age.details.wires'),
+        value: telecomInfrastructureAge?.wires ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.telecom-infrastructure-age.details.routers'),
+        value: telecomInfrastructureAge?.routers ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.telecom-infrastructure-age.details.switches'),
+        value: telecomInfrastructureAge?.switches ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.telecom-infrastructure-age.details.hubs'),
+        value: telecomInfrastructureAge?.hubs ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.telecom-infrastructure-age.details.repeaters'),
+        value: telecomInfrastructureAge?.repeaters ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.telecom-infrastructure-age.details.antennas'),
+        value: telecomInfrastructureAge?.antennas ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.telecom-infrastructure-age.details.towers'),
+        value: telecomInfrastructureAge?.towers ? t('common.yes') : t('common.no')
+      },
+      {
+        title: t('project.other.telecom-infrastructure-age.details.remark'),
+        value: telecomInfrastructureAge?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: telecomInfrastructureAge?.created_at ? formatCreatedAt(telecomInfrastructureAge.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: telecomInfrastructureAge?.updated_at ? formatCreatedAt(telecomInfrastructureAge.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>
@@ -134,6 +146,7 @@ const TelecomInfrastructureAgeList: React.FC<TelecomInfrastructureAgeListProps> 
           telecomInfrastructureAge={selectedRow as TelecomInfrastructureAge}
           refetch={refetch}
           projectId={projectId}
+          telecomInfrastructures={telecomInfrastructures?.payload || []}
         />
       )}
 
@@ -154,7 +167,7 @@ const TelecomInfrastructureAgeList: React.FC<TelecomInfrastructureAgeListProps> 
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: telecomInfrastructureAgeColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
+          headers: telecomInfrastructureAgeColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, telecomInfrastructureMap)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (

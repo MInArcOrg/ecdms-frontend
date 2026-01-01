@@ -33,6 +33,14 @@ const NetworkCapacityForm: React.FC<NetworkCapacityFormProps> = ({ formik, file,
       <Grid item xs={12}>
         <CustomSelect
           fullWidth
+          label={transl('project.other.telecom-infrastructure.title')}
+          name="telecom_infrastructure_id"
+          options={telecomInfrastructures.map((item) => ({ value: item.id, label: item.name }))}
+          size="small"
+          sx={{ mb: 2 }}
+        />
+        <CustomSelect
+          fullWidth
           label={transl('project.other.network-capacity.details.network-type')}
           placeholder={transl('project.other.network-capacity.details.network-type')}
           name="network_type_id"
