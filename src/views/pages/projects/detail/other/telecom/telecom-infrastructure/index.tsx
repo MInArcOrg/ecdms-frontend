@@ -16,7 +16,7 @@ import { TelecomInfrastructure } from 'src/types/project/other';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 
 interface TelecomInfrastructureListProps {
-  model: string;
+  otherSubMenu: SubMenuItem;
   typeId: string;
   projectId: string;
 }

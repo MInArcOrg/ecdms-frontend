@@ -1137,7 +1137,7 @@
         "telecom-infrastructure": {
           "telecom-infrastructure": {
             "title": "Telecom",
-            "telecom-network": "Telecom Network",
+            "telecom-infrastructure": "Telecom Infrastructure",
             "telecom-infrastructure-age": "Infrastructure Age",
             "telecom-infrastructure-manufacturer": "Infrastructure Manufacturer",
             "network-capacity": "Network Capacity",
@@ -2014,6 +2014,19 @@
           "height-above-natural-ground": "Height Above Natural Ground",
           "depth-below-natural-ground": "Depth Below Natural Ground",
           "remark": "Remark"
+        }
+      },
+      "thermal-biomass-incineration": {
+        "title": "Thermal Biomass Incineration Data",
+        "create": "Add Thermal Biomass Incineration Data",
+        "edit": "Edit Thermal Biomass Incineration Data",
+        "details": "Thermal Biomass Incineration Details",
+        "form": {
+          "type": "Type",
+          "fuel-source": "Fuel Source",
+          "heat-rate-at-max-capacity": "Heat Rate at Max Capacity",
+          "remark": "Remark",
+          "upload-file": "Upload File"
         }
       },
       "building-envelop-material": {

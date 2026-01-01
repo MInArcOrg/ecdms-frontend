@@ -585,6 +585,24 @@ export const projectMasterModels = {
     fileType: 'SOLAR_PANEL_TYPE',
     flag: 'ELECTRIC'
   },
+  thermalBiomassIncinerationType: {
+    model: 'ThermalBiomassIncinerationType',
+    dbModel: 'thermalbiomassincinerationtype',
+    title: 'thermal-biomass-incineration-types',
+    createTitle: 'create-thermal-biomass-incineration-type',
+    editTitle: 'edit-thermal-biomass-incineration-type',
+    fileType: 'THERMAL_BIOMASS_INCINERATION_TYPE',
+    flag: 'ELECTRIC'
+  },
+  fuelSource: {
+    model: 'FuelSource',
+    dbModel: 'fuelsource',
+    title: 'fuel-sources',
+    createTitle: 'create-fuel-source',
+    editTitle: 'edit-fuel-source',
+    fileType: 'FUEL_SOURCE',
+    flag: 'ELECTRIC'
+  },
   towerType: {
     model: 'TowerType',
     dbModel: 'towertype',

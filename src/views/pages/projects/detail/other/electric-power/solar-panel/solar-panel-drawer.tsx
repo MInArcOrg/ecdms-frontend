@@ -41,6 +41,7 @@ const SolarPanelDrawer = (props: SolarPanelDrawerType) => {
       .number()
       .nullable()
       .integer('Must be an integer')
+      .max(100000, 'Must be less than or equal to 100000')
       .transform((value) => (isNaN(value) ? null : value)),
     each_solar_panel_capacity: yup
       .number()

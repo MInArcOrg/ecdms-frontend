@@ -55,6 +55,7 @@ const MiniGridStationDrawer = (props: MiniGridStationDrawerType) => {
     expected_annual_generation: yup
       .number()
       .nullable()
+      .max(1000000, 'Must be less than or equal to 1000000')
       .transform((value) => (isNaN(value) ? null : value)),
     diesel_generator: yup.string().required('Diesel Generator is required'),
     owner_operator: yup.string().max(255).nullable(),

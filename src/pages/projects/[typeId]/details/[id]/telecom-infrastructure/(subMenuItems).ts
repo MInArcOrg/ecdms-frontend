@@ -4,7 +4,7 @@ import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
 export const telecomInfrastructureId = {
   telecom: {
     telecom: 'TELECOM',
-    telecomNetwork: 'TELECOM_NETWORK',
+    telecomInfrastructure: 'TELECOM_NETWORK',
     telecomInfrastructureAge: 'TELECOM_INFRASTRUCTURE_AGE',
     telecomInfrastructureManufacturer: 'TELECOM_INFRASTRUCTURE_MANUFACTURER',
     networkCapacity: 'NETWORK_CAPACITY',
@@ -19,11 +19,11 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
     title: 'project.navigation.submenu.telecom-infrastructure.telecom-infrastructure.title',
     subItems: [
       {
-        id: telecomInfrastructureId.telecom.telecomNetwork,
-        title: 'project.navigation.submenu.telecom-infrastructure.telecom-infrastructure.telecom-network',
-        path: `/projects/${typeId}/details/${id}/telecom-infrastructure/telecom-infrastructure/telecom-network`,
-        model: 'telecomnetwork',
-        apiRoute: 'telecom-networks'
+        id: telecomInfrastructureId.telecom.telecomInfrastructure,
+        title: 'project.navigation.submenu.telecom-infrastructure.telecom-infrastructure.telecom-infrastructure',
+        path: `/projects/${typeId}/details/${id}/telecom-infrastructure/telecom-infrastructure/telecom-infrastructure`,
+        model: 'telecominfrastructure',
+        apiRoute: 'telecom-infrastructures'
       },
       {
         id: telecomInfrastructureId.telecom.telecomInfrastructureAge,

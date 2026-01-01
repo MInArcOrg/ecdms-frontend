@@ -80,6 +80,7 @@ export const uploadableProjectFileTypes = {
     turbineInfo: 'TURBINE_INFO',
     hydroElectricDam: 'HYDRO_ELECTRIC_DAM',
     solarEnergy: 'SOLAR_ENERGY',
+    thermalBiomassIncinerationData: 'THERMAL_BIOMASS_INCINERATION_DATA',
     windEnergy: 'WIND_ENERGY',
     transformerType: 'TRANSFORMER_TYPE',
     transformer: 'TRANSFORMER',

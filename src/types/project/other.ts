@@ -2444,3 +2444,13 @@ export interface RailwayMaintenanceFacilityAndSecurity {
   created_at?: string;
   updated_at?: string;
 }
+export interface ThermalBiomassIncinerationData {
+  id: string;
+  project_id: string;
+  type_id: string;
+  fuel_source_id: string;
+  heat_rate_at_max_capacity?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
