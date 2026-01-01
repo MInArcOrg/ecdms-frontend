@@ -23,7 +23,6 @@ const DepartmentDrawer = (props: DepartmentDrawerType) => {
   const validationSchema = yup.object().shape({
     name: yup.string().max(255).required('Name is required'),
     description: yup.string().required('Description is required'),
-    stakeholder_id: yup.string().length(36).required('Stakeholder is required'),
     stakeholder_department_id: yup.string().length(36).nullable(),
     required_education: yup.string().max(255).nullable(),
     required_work_experience: yup.string().max(255).nullable(),
@@ -69,7 +68,8 @@ const DepartmentDrawer = (props: DepartmentDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(department as StakeholderDepartment)
+            ...(department as StakeholderDepartment),
+            stakeholder_id: stakeholderId,
           }}
           createActionFunc={isEdit ? editDepartment : createDepartment}
           onActionSuccess={onActionSuccess}

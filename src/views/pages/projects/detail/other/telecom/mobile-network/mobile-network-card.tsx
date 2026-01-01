@@ -45,7 +45,7 @@ const MobileNetworkCard: React.FC<MobileNetworkCardProps> = ({ mobileNetwork, re
             {t('project.other.mobile-network.details.mobile-network-type')}: {mobileNetwork?.mobilenetworktype.title || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.mobile-network.details.call-towers')}: {mobileNetwork?.call_towers ? t('common.yes') : t('common.no')}
+            {t('project.other.mobile-network.details.call-towers')}: {mobileNetwork?.cell_towers ? t('common.yes') : t('common.no')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.mobile-network.details.antennas')}: {mobileNetwork?.antennas ? t('common.yes') : t('common.no')}

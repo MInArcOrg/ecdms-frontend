@@ -7,6 +7,9 @@ import AdditionalInformationForm from './stakeholder-additional-info-form';
 import stakeholderAdditionalInformationApiService from 'src/services/stakeholder/stakeholder-additional-information-service';
 import type { StakeholderAdditionalInformation } from 'src/types/stakeholder/stakeholder-additional-information';
 import type { IApiResponse } from 'src/types/requests';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { useState } from 'react';
 
 interface AdditionalInformationDrawerType {
   open: boolean;
@@ -18,7 +21,10 @@ interface AdditionalInformationDrawerType {
 
 const AdditionalInformationDrawer = (props: AdditionalInformationDrawerType) => {
   const { open, toggle, refetch, additionalInfo, stakeholderId } = props;
-
+  const [uploadableFile, setUploadableFile] = useState<File | null>(null);
+  const onFileChange = (file: File | null) => {
+    setUploadableFile(file);
+  };
   const validationSchema = yup.object().shape({
     additional_information: yup.string().required('Additional information is required'),
     reference: yup.string().max(255).nullable()
@@ -44,18 +50,21 @@ const AdditionalInformationDrawer = (props: AdditionalInformationDrawerType) => 
       id: additionalInfo?.id,
       stakeholder_id: stakeholderId
     },
-    files: []
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => {
     toggle();
+    setUploadableFile(null);
   };
 
-  const onActionSuccess = async (response: IApiResponse<StakeholderAdditionalInformation>) => {
+  const onActionSuccess = async (response: IApiResponse<StakeholderAdditionalInformation>, payload: IApiPayload<StakeholderAdditionalInformation>) => {
+    if (payload.files.length > 0) {
+      uploadFile(payload.files[0], uploadableProjectFileTypes.stakeholderAdditionalInformation, response.payload.id || '', '', '');
+    }
     refetch();
     handleClose();
   };
-
   return (
     <CustomSideDrawer
       title={`stakeholder.stakeholder-additional-information.${isEdit ? 'edit' : 'create'}`}
@@ -76,7 +85,9 @@ const AdditionalInformationDrawer = (props: AdditionalInformationDrawerType) => 
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<StakeholderAdditionalInformation>) => <AdditionalInformationForm formik={formik} />}
+          {(formik: FormikProps<StakeholderAdditionalInformation>) => (
+            <AdditionalInformationForm formik={formik} onFileChange={onFileChange} file={uploadableFile} />
+          )}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

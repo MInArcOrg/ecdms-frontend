@@ -136,6 +136,7 @@ const JointVentureCompanyForm: React.FC<JointVentureCompanyFormProps> = ({ formi
           label={t('common.form.file-upload')}
         />
       </Grid>
+
     </Grid>
   );
 };

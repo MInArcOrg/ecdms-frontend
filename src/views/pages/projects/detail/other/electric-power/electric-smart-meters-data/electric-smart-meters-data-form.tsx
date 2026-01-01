@@ -9,6 +9,8 @@ import type { ElectricSmartMetersData, MiniGridStation } from 'src/types/project
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 import CustomSelect from 'src/views/shared/form/custom-select';
+import { generateYears } from 'src/utils/genertor/date';
+import moment from 'moment';
 
 interface ElectricSmartMetersDataFormProps {
   formik: FormikProps<ElectricSmartMetersData>;
@@ -28,6 +30,7 @@ const ElectricSmartMetersDataForm: React.FC<ElectricSmartMetersDataFormProps> = 
   smartMeterTypes
 }) => {
   const { t: transl } = useTranslation();
+  const years = generateYears(1990, moment().year()).map((year) => ({ label: year.toString(), value: year.toString() }));
 
   return (
     <Grid container spacing={gridSpacing}>

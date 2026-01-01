@@ -76,7 +76,7 @@ const ProjectConstructionTypeList: React.FC<ProjectConstructionTypeListProps> = 
   const mapConstructionTypeToDetailItems = (constructionType: ProjectConstructionType): { title: string; value: string }[] => [
     {
       title: t('project.construction-type.construction-type'),
-      value: constructionType?.construction_type || 'N/A'
+      value: constructionType?.construction_type_id || 'N/A'
     },
     {
       title: t('project.construction-type.description'),

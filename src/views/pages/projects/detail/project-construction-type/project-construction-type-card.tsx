@@ -43,7 +43,7 @@ const ConstructionTypeCard: React.FC<ConstructionTypeCardProps> = ({ constructio
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.construction-type.construction-type')}: {constructionType.construction_type}
+            {t('project.construction-type.construction-type')}: {constructionType.construction_type_id}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.construction-type.description')}: {constructionType.description}
@@ -52,7 +52,7 @@ const ConstructionTypeCard: React.FC<ConstructionTypeCardProps> = ({ constructio
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <FileDrawer id={constructionType?.id || ''} type={uploadableResourceFileTypes.project_construction_type} />
+        <FileDrawer id={constructionType?.id || ''} type={uploadableResourceFileTypes.project_construction_type_id} />
         <ModelAction
           model="ProjectConstructionType"
           model_id={constructionType?.id || ''}

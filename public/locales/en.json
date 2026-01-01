@@ -1,5 +1,4 @@
 {
-
   "validation": {
     "password": {
       "required": "Password is required.",
@@ -124,7 +123,9 @@
       "ownership-types": "Ownership Types",
       "create-ownership-type": "Add Ownership Type",
       "edit-ownership-type": "Edit Ownership Type",
-
+      "upgrade-types": "Upgrade Types",
+      "create-upgrade-type": "Add Upgrade Type",
+      "edit-upgrade-type": "Edit Upgrade Type",
       "study-fields": "Study Fields",
       "create-study-field": "Add Study Field",
       "edit-study-field": "Edit Study Field",
@@ -496,7 +497,10 @@
       "edit-track-inspection-frequency": "Edit Track Inspection Frequency",
       "track-safety-measures": "Track Safety Measures",
       "create-track-safety-measure": "Add Track Safety Measure",
-      "edit-track-safety-measure": "Edit Track Safety Measure"
+      "edit-track-safety-measure": "Edit Track Safety Measure",
+      "construction-methods": "Construction Methods",
+      "create-construction-method": "Add Construction Method",
+      "edit-construction-method": "Edit Construction Method"
     },
     "form": {
       "title": "Title",
@@ -513,7 +517,10 @@
       "measurement_unit": "Measurement` Unit",
       "project-type": "Project Type",
       "resource-type": "Resource Type",
-      "stakeholder-type": "Stakeholder Type"
+      "stakeholder-type": "Stakeholder Type",
+      "construction-types": "Construction Types",
+      "create-construction-type": "Add Construction Type",
+      "edit-construction-type": "Edit Construction Type"
     },
     "create-master-type": "Add Type",
     "edit-master-type": "Edit Type",
@@ -551,7 +558,7 @@
       "phone": "Phone",
       "department": "Department",
       "position": "Position",
-      "status":"Status"
+      "status": "Status"
     },
     "tabs": {
       "experts": "Experts",
@@ -928,7 +935,7 @@
       "publication_date": "Publication Date"
     }
   },
-  "infrastructure":{
+  "infrastructure": {
     "create-infrastructure": "Create Infrastructure",
     "edit-infrastructure": "Edit Infrastructure",
     "title": "Infrastructure"
@@ -987,6 +994,15 @@
       "cv": "CV",
       "spi": "SPI",
       "sv": "SV"
+    },
+    "construction-method": {
+      "title": "Construction Methods",
+      "create": "Add Construction Method",
+      "edit": "Edit Construction Method",
+      "method": "Method",
+      "description": "Description",
+      "method-required": "Method is required",
+      "details": "Construction Method Details"
     },
     "navigation": {
       "submenu": {
@@ -1685,14 +1701,14 @@
         "project-expense": "Project Expense"
       }
     },
-    "quality":{
+    "quality": {
       "title": "Quality Inspection",
       "edit": "Edit Quality Inspection",
       "create": "Add Quality Inspection",
-      "major-quality-problem-encountered":"Major Quality Problem Encountered",
-      "description":"Description",
+      "major-quality-problem-encountered": "Major Quality Problem Encountered",
+      "description": "Description",
       "measures-taken": "Measures Taken",
-      "lesson-learned":"Lesson Learned"
+      "lesson-learned": "Lesson Learned"
     },
     "resource": {
       "title": "Project Resource",
@@ -1728,8 +1744,8 @@
       "edit-project-execution": "Edit Execution Document",
       "edit-project-monitoring": "Edit Monitoring Document",
       "edit-project-construction": "Edit Construction Document",
-      "edit-project-design": "Edit Design Document",  
-      "edit-project-closing": "Edit Closing Document",  
+      "edit-project-design": "Edit Design Document",
+      "edit-project-closing": "Edit Closing Document",
       "edit-project-other": "Edit Other Document",
       "form": {
         "description": "Description"
@@ -1858,6 +1874,7 @@
         "details": {
           "mobile-network-type": "Mobile Network Type",
           "call-towers": "Call Towers",
+          "cell-towers": "Cell Towers",
           "antennas": "Antennas",
           "base-stations": "Base Stations",
           "repeaters": "Repeaters",
@@ -4644,7 +4661,7 @@
     "create": "Add",
     "active": "Active",
     "inactive": "InActive",
-   
+
     "meters": "Meters",
     "inches": "Inches",
     "created-at": "Created At",
@@ -4666,7 +4683,7 @@
     "km2": "Square Kilometer",
     "currency": "Currency",
     "km": "Kilometers",
-    "dialog":{
+    "dialog": {
       "delete": "Delete",
       "delete-title": "Delete",
       "delete-message": "Are you sure you want to delete this item?",
@@ -4766,7 +4783,7 @@
           },
           "company-structure": {
             "company-structure": "Company Structure",
-            "departments": "Centers",
+            "departments": "Departments",
             "positions": "Positions"
           }
         },

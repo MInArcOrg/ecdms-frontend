@@ -20,7 +20,7 @@ interface ProjectConstructionTypeDrawerProps {
 }
 
 const validationSchema = yup.object().shape({
-  construction_type: yup.string().required('Construction Type is required')
+  construction_type_id: yup.string().required('Construction Type is required')
 });
 
 const ProjectConstructionTypeDrawer: React.FC<ProjectConstructionTypeDrawerProps> = (props) => {
@@ -58,7 +58,7 @@ const ProjectConstructionTypeDrawer: React.FC<ProjectConstructionTypeDrawerProps
   const onActionSuccess = async (response: IApiResponse<ProjectConstructionType>, payload: IApiPayload<ProjectConstructionType>) => {
     if (payload.files.length > 0) {
       if (response.payload.id) {
-        uploadFile(payload.files[0], uploadableResourceFileTypes.project_construction_type, response.payload.id, '', '');
+        uploadFile(payload.files[0], uploadableResourceFileTypes.project_construction_type_id, response.payload.id, '', '');
       }
     }
     refetch();

@@ -21,7 +21,7 @@ interface WindTurbineFormProps {
 
 const WindTurbineForm: React.FC<WindTurbineFormProps> = ({ formik, file, onFileChange }) => {
   const { t: transl } = useTranslation();
-
+  console.log('formik values', formik.values.tower_type_id)
   const { data: towerTypes } = useQuery({
     queryKey: ['tower-types'],
     queryFn: () =>

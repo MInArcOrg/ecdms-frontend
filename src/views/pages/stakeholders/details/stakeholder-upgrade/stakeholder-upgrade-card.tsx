@@ -41,7 +41,7 @@ const UpgradeCard: React.FC<UpgradeCardProps> = ({ upgrade, refetch, onEdit, onD
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.stakeholder-upgrade.form.upgrade-type')}: {upgrade.upgrade_type}
+            {t('stakeholder.stakeholder-upgrade.form.upgrade-type')}: {upgrade.upgrade_type_id}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('stakeholder.stakeholder-upgrade.form.previous-level')}: {upgrade.previous_level || 'N/A'}
@@ -70,11 +70,11 @@ const UpgradeCard: React.FC<UpgradeCardProps> = ({ upgrade, refetch, onEdit, onD
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'stakeholderupgrade'
+            subject: 'upgrade'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'stakeholderupgrade'
+            subject: 'upgrade'
           }}
           onEdit={() => onEdit(upgrade)}
           onDelete={() => onDelete(upgrade?.id || '')}

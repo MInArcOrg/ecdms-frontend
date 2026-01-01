@@ -16,6 +16,7 @@ import departmentApiService from 'src/services/department/department-service';
 import Department from 'src/types/department/department';
 import LoadingPlaceholder from 'src/views/components/loader';
 import SubDepartmentDrawer from './sub-department/sub-department-drawer';
+import { formatDepartmentName } from 'src/utils/formatter/department';
 const ProfileCard = ({ department, refetch, loading }: { department: Department; refetch: () => void; loading: boolean }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const { data: departmentHead } = useQuery({
@@ -69,7 +70,7 @@ const ProfileCard = ({ department, refetch, loading }: { department: Department;
         ) : (
           <Box>
             <Typography variant="h6" sx={{ color: 'text.primary', mt: 0 }}>
-              {department?.name + " Construction Data Management Center"}
+              {formatDepartmentName(department?.name)}
             </Typography>
             <IconButton
               sx={{

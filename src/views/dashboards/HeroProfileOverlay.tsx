@@ -2,6 +2,7 @@ import React from 'react'
 import Box from '@mui/material/Box'
 import Avatar from '@mui/material/Avatar'
 import Typography from '@mui/material/Typography'
+import { formatDepartmentName } from 'src/utils/formatter/department'
 
 interface HeroProfileOverlayProps {
   department?: { name?: string } | null
@@ -26,12 +27,12 @@ const HeroProfileOverlay: React.FC<HeroProfileOverlayProps> = ({
           bgcolor: 'background.paper'
         }}
       />
-       <Box sx={{ textAlign:'center' }}>
-                <Typography variant="h4" sx={{ mb: 1 }}>
-                  {department?.name || 'Department'}
-                </Typography>
-               
-              </Box>
+      <Box sx={{ textAlign: 'center' }}>
+        <Typography variant="h4" sx={{ mb: 1 }}>
+          {formatDepartmentName(department?.name || '')}
+        </Typography>
+
+      </Box>
     </Box>
   )
 }

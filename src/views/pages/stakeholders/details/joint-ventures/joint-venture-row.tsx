@@ -2,8 +2,10 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import type { JointVenture } from 'src/types/stakeholder/joint-venture';
 import { formatCreatedAt } from 'src/utils/formatter/date';
+import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
@@ -70,6 +72,17 @@ export const jointVentureColumns = (
       renderCell: ({ row }: CellType) => formatCreatedAt(row.created_at)
     },
     {
+      flex: 0.15,
+      minWidth: 120,
+      field: 'files',
+      headerName: t('common.table-columns.files'),
+      renderCell: ({ row }: CellType) => <FileDrawer
+        type={uploadableProjectFileTypes.jointVenture}
+        id={row?.id || ''}
+      />
+    },
+
+    {
       minWidth: 150,
       sortable: false,
       field: 'actions',
@@ -84,6 +97,7 @@ export const jointVentureColumns = (
             title=""
             postAction={() => { }}
           />
+
           <RowOptions
             onEdit={() => onEdit(row)}
             onDelete={() => onDelete(row?.id || '')}

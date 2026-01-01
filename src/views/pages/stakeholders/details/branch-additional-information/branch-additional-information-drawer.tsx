@@ -8,6 +8,9 @@ import branchAdditionalInformationApiService from 'src/services/stakeholder/bran
 import type { BranchAdditionalInformation } from 'src/types/stakeholder/branch-additional-information';
 import type { IApiResponse } from 'src/types/requests';
 import type { StakeholderBranch } from 'src/types/stakeholder/stakeholder-branch';
+import { useState } from 'react';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 
 interface AdditionalInformationDrawerType {
   open: boolean;
@@ -20,7 +23,10 @@ interface AdditionalInformationDrawerType {
 
 const AdditionalInformationDrawer = (props: AdditionalInformationDrawerType) => {
   const { open, toggle, refetch, additionalInfo, stakeholderId, stakeholderBranches } = props;
-
+  const [uploadableFile, setUploadableFile] = useState<File | null>(null);
+  const onFileChange = (file: File | null) => {
+    setUploadableFile(file);
+  };
   const validationSchema = yup.object().shape({
     stakeholder_branch_id: yup.string().required('Branch is required'),
     additional_information: yup.string().required('Additional information is required'),
@@ -45,14 +51,17 @@ const AdditionalInformationDrawer = (props: AdditionalInformationDrawerType) => 
       id: additionalInfo?.id,
       stakeholder_id: stakeholderId
     },
-    files: []
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => {
     toggle();
   };
 
-  const onActionSuccess = async (response: IApiResponse<BranchAdditionalInformation>) => {
+  const onActionSuccess = async (response: IApiResponse<BranchAdditionalInformation>, payload: IApiPayload<BranchAdditionalInformation>) => {
+    if (payload.files.length > 0) {
+      uploadFile(payload.files[0], uploadableProjectFileTypes.branchAdditionalInformation, response.payload.id || '', '', '');
+    }
     refetch();
     handleClose();
   };
@@ -78,7 +87,7 @@ const AdditionalInformationDrawer = (props: AdditionalInformationDrawerType) => 
           onCancel={handleClose}
         >
           {(formik: FormikProps<BranchAdditionalInformation>) => (
-            <AdditionalInformationForm formik={formik} stakeholderBranches={stakeholderBranches} />
+            <AdditionalInformationForm formik={formik} stakeholderBranches={stakeholderBranches} onFileChange={onFileChange} file={uploadableFile} />
           )}
         </FormPageWrapper>
       )}

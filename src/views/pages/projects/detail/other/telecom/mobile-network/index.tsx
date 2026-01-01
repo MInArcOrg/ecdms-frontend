@@ -78,7 +78,7 @@ const MobileNetworkList: React.FC<MobileNetworkListProps> = ({ otherSubMenu, pro
     },
     {
       title: t('project.other.mobile-network.details.call-towers'),
-      value: mobileNetwork?.call_towers ? t('common.yes') : t('common.no')
+      value: mobileNetwork?.cell_towers ? t('common.yes') : t('common.no')
     },
     {
       title: t('project.other.mobile-network.details.antennas'),

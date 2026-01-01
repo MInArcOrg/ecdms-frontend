@@ -52,11 +52,12 @@ const JointVentureCompanyDrawer = (props: JointVentureCompanyDrawerType) => {
       id: jointVentureCompany?.id,
       stakeholder_id: stakeholderId
     },
-    files: []
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => {
     toggle();
+    setUploadableFile(null);
   };
 
   const onActionSuccess = async (response: IApiResponse<JointVentureCompany>, payload: IApiPayload<JointVentureCompany>) => {

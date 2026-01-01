@@ -62,6 +62,15 @@ export const stakeholderMasterModels = {
         editTitle: 'edit-experience-level',
         fileType: 'EXPERIENCE_LEVEL',
         flag: 'EDUCATION_INSTITUTION'
+    },
+    upgradeType: {
+        model: 'UpgradeType',
+        dbModel: 'upgradetype',
+        title: 'upgrade-types',
+        createTitle: 'create-upgrade-type',
+        editTitle: 'edit-upgrade-type',
+        fileType: 'UPGRADE_TYPE',
+        flag: 'EDUCATION_INSTITUTION'
     }
 }
 export type StakeholderMasterModel = {

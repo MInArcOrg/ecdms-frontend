@@ -35,12 +35,12 @@ import { generateYears } from 'src/utils/genertor/date';
 import { MasterType } from 'src/types/master/master-types';
 
 interface AnalyticsDashboardProps {
-  module: 'project' | 'stakeholder';
+  module: 'project' | 'stakeholder' | 'infrastructure';
   Layout: React.ComponentType<{ children: React.ReactNode }>;
   summaryService: { getTypeSummary: (params: any) => Promise<any> };
 }
 
-const TypeRegionalTrendChart = ({ type, module }: { type: MasterType; module: 'project' | 'stakeholder' }) => {
+const TypeRegionalTrendChart = ({ type, module }: { type: MasterType; module: 'project' | 'stakeholder' | 'infrastructure' }) => {
   // 1. Fetch Categories for this Type
   const { data: categoriesData, isLoading: isCategoriesLoading } = useQuery({
     queryKey: [`${module}Categories`, type.id],

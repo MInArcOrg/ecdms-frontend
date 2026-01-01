@@ -15,7 +15,7 @@ interface DepartmentFormProps {
 const DepartmentForm: React.FC<DepartmentFormProps> = ({ formik, departments }) => {
   const { t } = useTranslation();
   const { touched, errors } = formik;
-
+  console.log('formik errors', formik.errors)
   const departmentOptions = departments.map((department) => ({
     value: department.id,
     label: department.name

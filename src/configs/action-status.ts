@@ -76,12 +76,11 @@ export const notificationStatusColors: Record<ActionTitle, ChipProps['color']> =
 export const resolveStatus = (status?: string): ActionStatus => {
   if (!status) return ACTION_STATUS.DEFAULT;
 
-  const normalized = status.toLowerCase();
 
   const validStatuses = Object.values(ACTION_STATUS);
-
-  return validStatuses.includes(normalized as ActionStatus)
-    ? (normalized as ActionStatus)
+  console.log('valid statuses', status, validStatuses)
+  return validStatuses.includes(status as ActionStatus)
+    ? (status as ActionStatus)
     : ACTION_STATUS.DEFAULT;
 };
 /* =======================

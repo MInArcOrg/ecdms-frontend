@@ -2,10 +2,13 @@
 
 import { Checkbox, Divider, FormControlLabel, Grid, Typography } from '@mui/material';
 import type { FormikProps } from 'formik';
+import moment from 'moment';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
 import type { ElectricGridControlCenterData, MiniGridStation } from 'src/types/project/other';
+import { generateYears } from 'src/utils/genertor/date';
+import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
@@ -28,6 +31,7 @@ const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataF
   communicationLinks
 }) => {
   const { t: transl } = useTranslation();
+  const years = generateYears(1990, moment().year()).map((year) => ({ label: year.toString(), value: year.toString() }));
 
   return (
     <Grid container spacing={gridSpacing}>
@@ -72,7 +76,7 @@ const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataF
 
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <CustomTextBox
+            <CustomSelectBox
               fullWidth
               label={transl('project.other.electric-grid-control-center-data.details.installation-year')}
               placeholder={transl('project.other.electric-grid-control-center-data.details.installation-year')}
@@ -80,6 +84,7 @@ const ElectricGridControlCenterDataForm: React.FC<ElectricGridControlCenterDataF
               type="number"
               size="small"
               sx={{ mb: 2 }}
+              options={years}
             />
           </Grid>
         </Grid>

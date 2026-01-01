@@ -10,6 +10,7 @@ import { ProjectTime } from 'src/types/project/project-time';
 import Can from 'src/layouts/components/acl/Can';
 import Icon from 'src/@core/components/icon';
 import projectTimeApiService from 'src/services/project/project-time-service';
+import { AddButton } from 'src/views/shared/listing/header';
 
 interface ProjectTimeComponentProps {
   projectId: string;
@@ -44,11 +45,9 @@ const ProjectTimeComponent: React.FC<ProjectTimeComponentProps> = ({ projectId }
     <>
       <Box display="flex" flexDirection="column" gap={3}>
         {!projectTime && (
-          <Can do="register" on="projecttime">
+          <Can do="create" on="projecttime">
             <Box alignSelf="end">
-              <IconButton onClick={() => setShowDrawer(true)}>
-                <Icon icon="tabler:plus" width="25" height="25" />
-              </IconButton>
+              <AddButton onClick={() => setShowDrawer(true)} onlyIcon={false} />
             </Box>
           </Can>
         )}

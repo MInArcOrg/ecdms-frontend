@@ -33,7 +33,7 @@ const ProjectPaymentDrawer = (props: ProjectPaymentDrawerType) => {
     description: yup.string().nullable(),
     amount: yup.number().nullable(),
     retention: yup.number().nullable(),
-    reference_number: yup.string().max(255).nullable()
+    reference_number: yup.string().max(255).nullable().max(16)
   });
 
   const isEdit = Boolean(projectPayment?.id);
@@ -66,9 +66,8 @@ const ProjectPaymentDrawer = (props: ProjectPaymentDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.project-${type.toLocaleLowerCase()}.${
-        isEdit ? `edit-project-${type.toLocaleLowerCase()}` : `create-project-${type.toLocaleLowerCase()}`
-      }`}
+      title={`project.project-${type.toLocaleLowerCase()}.${isEdit ? `edit-project-${type.toLocaleLowerCase()}` : `create-project-${type.toLocaleLowerCase()}`
+        }`}
       handleClose={handleClose}
       open={open}
     >

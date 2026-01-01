@@ -7,6 +7,10 @@ import JointVentureForm from './joint-venture-form';
 import jointVentureApiService from 'src/services/stakeholder/joint-venture-service';
 import type { JointVenture } from 'src/types/stakeholder/joint-venture';
 import type { IApiResponse } from 'src/types/requests';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
+import { useState } from 'react';
+import { nameRule } from 'src/utils/validator/name';
 
 interface JointVentureDrawerType {
   open: boolean;
@@ -18,9 +22,12 @@ interface JointVentureDrawerType {
 
 const JointVentureDrawer = (props: JointVentureDrawerType) => {
   const { open, toggle, refetch, jointVenture, stakeholderId } = props;
-
+  const [uploadableFile, setUploadableFile] = useState<File | null>(null);
+  const onFileChange = (file: File | null) => {
+    setUploadableFile(file);
+  };
   const validationSchema = yup.object().shape({
-    name: yup.string().required('Name is required'),
+    name: nameRule.required('Name is required'),
     member_companies_no: yup.number().required('Number of member companies is required').positive().integer(),
     description: yup.string().required('Description is required'),
     reference: yup.string().nullable()
@@ -42,18 +49,21 @@ const JointVentureDrawer = (props: JointVentureDrawerType) => {
       id: jointVenture?.id,
       stakeholder_id: stakeholderId
     },
-    files: []
+    files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => {
     toggle();
+    setUploadableFile(null);
   };
 
-  const onActionSuccess = async (response: IApiResponse<JointVenture>) => {
+  const onActionSuccess = async (response: IApiResponse<JointVenture>, payload: IApiPayload<JointVenture>) => {
+    if (payload.files.length > 0) {
+      uploadFile(payload.files[0], uploadableProjectFileTypes.jointVenture, response.payload.id || '', '', '');
+    }
     refetch();
     handleClose();
   };
-
   return (
     <CustomSideDrawer title={`stakeholder.joint-venture.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
       {() => (
@@ -67,7 +77,7 @@ const JointVentureDrawer = (props: JointVentureDrawerType) => {
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<JointVenture>) => <JointVentureForm formik={formik} />}
+          {(formik: FormikProps<JointVenture>) => <JointVentureForm formik={formik} file={uploadableFile} onFileChange={onFileChange} />}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

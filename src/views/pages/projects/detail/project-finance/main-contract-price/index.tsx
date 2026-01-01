@@ -1,96 +1,74 @@
-'use client';
-
-import { Box } from '@mui/material';
-import { useState } from 'react';
+import { Box, Card, CardContent, IconButton } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
-import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
-import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import projectFinanceApiService from 'src/services/project/project-finance-service';
-import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { ProjectGeneralFinance } from 'src/types/project/project-finance';
-import type { ProjectFinance } from 'src/types/project';
-import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import ItemsListing from 'src/views/shared/listing';
-import MainContractPriceCard from './main-contract-price-card';
+import React, { useState } from 'react';
+import Can from 'src/layouts/components/acl/Can';
+import LoadingPlaceholder from 'src/views/components/loader';
+import { AddButton } from 'src/views/shared/listing/header';
 import MainContractPriceDrawer from './main-contract-price-drawer';
+import MainContractPriceCard from './main-contract-price-card';
+import { ProjectFinance } from 'src/types/project';
+import { ProjectGeneralFinance } from 'src/types/project/project-finance';
+import projectFinanceApiService from 'src/services/project/project-finance-service';
 
-function MainContractPriceList({ projectId }: { projectId: string }) {
+interface ProjectFinanceComponentProps {
+  projectId: string;
+}
+
+const projectFinanceComponent: React.FC<ProjectFinanceComponentProps> = ({ projectId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<ProjectFinance | null>(null);
-
-  const fetchMainContractPrices = (params: GetRequestParam): Promise<IApiResponse<ProjectFinance[]>> => {
-    return projectFinanceApiService.getAll({
-      ...params,
-      filter: { ...params.filter, project_id: projectId }
-    });
-  };
-
   const {
-    data: mainContractPrices,
+    data: projectFinance,
     isLoading,
-    pagination,
-    handlePageChange,
     refetch
-  } = usePaginatedFetch<ProjectFinance[]>({
-    queryKey: ['mainContractPrices', projectId],
-    fetchFunction: fetchMainContractPrices
+  } = useQuery({
+    queryKey: ['project-status', projectId],
+    queryFn: () => projectFinanceApiService.getAll({ filter: { project_id: projectId } }),
+    select: (data) => data.payload?.[0] ?? null // Extract the first item from the array
   });
 
   const toggleDrawer = () => {
-    setSelectedRow({} as ProjectFinance);
     setShowDrawer(!showDrawer);
   };
 
   const handleEdit = (projectFinance: ProjectFinance) => {
     toggleDrawer();
-    setSelectedRow(projectFinance);
   };
-
   const handleDelete = async (projectFinanceId: string) => {
     await projectFinanceApiService.delete(projectFinanceId);
     refetch();
   };
-
   const { data: projectGeneralFinance } = useQuery({
     queryKey: ['projectFinanceData', projectId],
     queryFn: () => projectFinanceApiService.getProjectGeneralFinance(projectId, {})
   });
-
-  return (
-    <Box>
-      {showDrawer && (
-        <MainContractPriceDrawer
-          open={showDrawer}
-          toggle={toggleDrawer}
-          projectFinance={selectedRow as ProjectFinance}
-          refetch={refetch}
-          projectId={projectId}
-          projectGeneralFinance={projectGeneralFinance?.payload as ProjectGeneralFinance}
-        />
-      )}
-      <ItemsListing
-        title="project.main-contract-price.title"
-        pagination={pagination}
-        type={ITEMS_LISTING_TYPE.list.value}
-        isLoading={isLoading}
-        ItemViewComponent={({ data }) => (
-          <MainContractPriceCard onDelete={handleDelete} onEdit={handleEdit} refetch={refetch} projectFinance={data} />
+  return isLoading ? (
+    <LoadingPlaceholder />
+  ) : (
+    <>
+      <Box display="flex" flexDirection="column" gap={3}>
+        {!projectFinance && (
+          <Can do="create" on="projectfinance">
+            <Box alignSelf="end">
+              <AddButton onClick={() => setShowDrawer(true)} onlyIcon={false} />
+            </Box>
+          </Can>
         )}
-        createActionConfig={{
-          ...defaultCreateActionConfig,
-          onClick: toggleDrawer,
-          onlyIcon: false,
-          permission: {
-            action: 'create',
-            subject: 'projectfinance'
-          }
-        }}
-        fetchDataFunction={refetch}
-        items={mainContractPrices || []}
-        onPaginationChange={handlePageChange}
-      />
-    </Box>
-  );
-}
+        {showDrawer && (
+          <MainContractPriceDrawer
+            open={showDrawer}
+            toggle={toggleDrawer}
+            refetch={refetch}
+            projectId={projectId}
+            projectFinance={projectFinance as ProjectFinance}
+            projectGeneralFinance={projectGeneralFinance?.payload as ProjectGeneralFinance}
+          />
+        )}
 
-export default MainContractPriceList;
+        {projectFinance && <MainContractPriceCard projectFinance={projectFinance as ProjectFinance} refetch={refetch} onEdit={handleEdit} onDelete={handleDelete} />}
+
+      </Box>
+    </>
+  );
+};
+
+export default projectFinanceComponent;

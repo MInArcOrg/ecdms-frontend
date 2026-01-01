@@ -7,13 +7,16 @@ import type { BranchAdditionalInformation } from 'src/types/stakeholder/branch-a
 import type { StakeholderBranch } from 'src/types/stakeholder/stakeholder-branch';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomSelect from 'src/views/shared/form/custom-select';
+import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface AdditionalInformationFormProps {
   formik: FormikProps<BranchAdditionalInformation>;
   stakeholderBranches: StakeholderBranch[];
+  file: File | null;
+  onFileChange: (file: File | null) => void;
 }
 
-const AdditionalInformationForm: React.FC<AdditionalInformationFormProps> = ({ formik, stakeholderBranches }) => {
+const AdditionalInformationForm: React.FC<AdditionalInformationFormProps> = ({ formik, stakeholderBranches, file, onFileChange }) => {
   const { t } = useTranslation();
   const { touched, errors } = formik;
 
@@ -61,6 +64,10 @@ const AdditionalInformationForm: React.FC<AdditionalInformationFormProps> = ({ f
           error={showError('reference')}
         />
       </Grid>
+      <Grid item xs={12}>
+        <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />
+      </Grid>
+
     </Grid>
   );
 };

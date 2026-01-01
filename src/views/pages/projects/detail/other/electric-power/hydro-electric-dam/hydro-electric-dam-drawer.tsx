@@ -31,8 +31,8 @@ const HydroElectricDamDrawer = (props: HydroElectricDamDrawerType) => {
   const validationSchema = yup.object().shape({
     parent_id: yup.string().uuid().nullable(),
     river_name: yup.string().max(100, 'River name must be at most 100 characters').required('River name is required'),
-    elevation_from_sea_level: yup.string().max(100).nullable(),
-    elevation_from_ngl: yup.string().max(100).nullable(),
+    elevation_from_sea_level: yup.number().max(10000, 'Elevation from sea level must be at most 10000').nullable(),
+    elevation_from_ngl: yup.number().max(10000, 'Elevation from NGL must be at most 10000').nullable(),
     dam_type: yup.string().max(100).nullable(),
     dam_volume: yup.string().max(100).nullable(),
     gated_spillway_no: yup.number().integer('Gated spillway number must be an integer').nullable(),

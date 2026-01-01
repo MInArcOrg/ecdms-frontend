@@ -24,8 +24,8 @@ const MainContractPriceDrawer = (props: MainContractPriceDrawerProps) => {
 
   const validationSchema = yup.object().shape({
     parent_id: yup.string().length(36).nullable(),
-    main_contract_price_amount: yup.number().nullable(),
-    rebate: yup.number().nullable(),
+    main_contract_price_amount: yup.number().required(),
+    rebate: yup.number().required(),
     remark: yup.string().nullable(),
     source_of_finance: yup.string().max(255).nullable(),
     revision_no: yup.number().integer().nullable()

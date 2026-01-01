@@ -44,7 +44,7 @@ const WindTurbineDrawer = (props: WindTurbineDrawerType) => {
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value)),
-    tower_type_id: yup.string().uuid().required('Tower type is required'),
+    tower_type_id: yup.string().required('Tower type is required'),
     blade_length: yup
       .number()
       .nullable()

@@ -23,6 +23,6 @@ function ProjectVariation() {
 
 ProjectVariation.acl = {
   action: 'view',
-  subject: 'projectextensiontime'
+  subject: 'projecttime'
 };
 export default ProjectVariation;

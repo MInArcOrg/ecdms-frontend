@@ -76,7 +76,7 @@ const StakeholderUpgradeList: React.FC<StakeholderUpgradeListProps> = ({ stakeho
     },
     {
       title: t('stakeholder.stakeholder-upgrade.form.upgrade-type'),
-      value: upgrade.upgrade_type || 'N/A'
+      value: upgrade.upgrade_type_id || 'N/A'
     },
     {
       title: t('stakeholder.stakeholder-upgrade.form.previous-level'),
@@ -147,7 +147,7 @@ const StakeholderUpgradeList: React.FC<StakeholderUpgradeListProps> = ({ stakeho
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'stakeholderupgrade'
+            subject: 'upgrade'
           }
         }}
         fetchDataFunction={refetch}

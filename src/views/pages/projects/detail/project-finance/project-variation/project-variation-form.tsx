@@ -23,7 +23,7 @@ const ProjectVariationForm: React.FC<ProjectVariationFormProps> = ({
   onFileChange
 }) => {
   const { t: transl } = useTranslation();
-
+  console.log('formik errors', formik.errors)
   // Handle value change and update the corresponding field
   const handleValueChange = useCallback(
     (name: keyof ProjectVariation, value: number) => {

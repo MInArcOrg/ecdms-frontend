@@ -20,7 +20,7 @@ const ProjectManager = () => {
 };
 
 ProjectManager.acl = {
-  subject: 'projectManager',
+  subject: 'projectmanager',
   action: 'view'
 };
 

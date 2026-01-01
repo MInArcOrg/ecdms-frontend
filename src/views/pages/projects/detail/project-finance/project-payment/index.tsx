@@ -73,7 +73,7 @@ function ProjectPaymentList({ type, projectId }: { type: string; projectId: stri
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'payments'
+            subject: 'payment'
           }
         }}
         fetchDataFunction={refetch}

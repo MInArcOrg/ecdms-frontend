@@ -21,6 +21,13 @@ export default [
         subject: 'project'
       },
       {
+        title: 'Infrastructure',
+        path: '/analytics/infrastructure',
+        icon: 'tabler:box-multiple',
+        action: 'view',
+        subject: 'project'
+      },
+      {
         title: 'Resource',
         path: '/analytics/resource',
         icon: 'tabler:calendar',

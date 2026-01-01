@@ -62,7 +62,6 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
   console.log('remaining variation percent', remainingVariation, remainingVariationPercent);
   const validationSchema = yup.object().shape({
     parent_id: yup.string().length(36).nullable(),
-    project_id: yup.string().length(36).required('Project is required'),
     type: yup.string().max(255).nullable(),
     approval_date: yup.date().required(`${t('Approval Date')} ${t('is required')}`),
     extension_time: yup.number().integer().nullable(),
@@ -118,9 +117,8 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
 
   return (
     <CustomSideDrawer
-      title={`project.project-${type.toLocaleLowerCase()}.${
-        isEdit ? `edit-project-${type.toLocaleLowerCase()}` : `create-project-${type.toLocaleLowerCase()}`
-      }`}
+      title={`project.project-${type.toLocaleLowerCase()}.${isEdit ? `edit-project-${type.toLocaleLowerCase()}` : `create-project-${type.toLocaleLowerCase()}`
+        }`}
       handleClose={handleClose}
       open={open}
     >

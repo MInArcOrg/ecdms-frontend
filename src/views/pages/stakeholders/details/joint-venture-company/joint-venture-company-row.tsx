@@ -56,7 +56,16 @@ export const jointVentureCompanyColumns = (
       headerName: t('stakeholder.joint-venture-company.ownershipPercentage'),
       renderCell: ({ row }: CellType) => (row.ownership_percentage ? `${row.ownership_percentage}%` : t('common.not-available'))
     },
-
+    {
+      flex: 0.15,
+      minWidth: 120,
+      field: 'files',
+      headerName: t('common.table-columns.files'),
+      renderCell: ({ row }: CellType) => <FileDrawer
+        type={uploadableProjectFileTypes.jointVentureCompany}
+        id={row?.id || ''}
+      />
+    },
     {
       flex: 0.15,
       minWidth: 120,
@@ -84,10 +93,6 @@ export const jointVentureCompanyColumns = (
               subject: 'jointventurecompany'
             }}
             options={[]}
-          />
-          <FileDrawer
-            type={uploadableProjectFileTypes.jointVentureCompany}
-            id={row?.id || ''}
           />
           <ModelAction
             model="JointVentureCompany"

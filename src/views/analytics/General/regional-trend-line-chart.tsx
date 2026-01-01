@@ -53,6 +53,12 @@ const RegionalTrendLineChart = ({
   onFilterChange
 }: RegionalTrendLineChartProps) => {
   const theme = useTheme()
+  const chartColors = [
+    theme.palette.primary.main,
+    theme.palette.warning.main,
+    theme.palette.success.main,
+    theme.palette.info.main
+  ]
 
   // ========================
   // ✅ States
@@ -94,7 +100,7 @@ const RegionalTrendLineChart = ({
         curve: 'smooth',
         width: 3
       },
-      colors: [theme.palette.primary.main, theme.palette.warning.main, theme.palette.success.main, theme.palette.info.main],
+      colors: chartColors,
       dataLabels: { enabled: false },
       grid: {
         borderColor: theme.palette.divider,
@@ -117,13 +123,10 @@ const RegionalTrendLineChart = ({
         labels: { style: { colors: theme.palette.text.disabled } },
       },
       legend: {
-        position: 'top',
-        horizontalAlign: 'right',
-        labels: { colors: theme.palette.text.secondary },
-        itemMargin: { vertical: 3, horizontal: 10 },
+        show: false
       },
     }),
-    [categories, theme.palette]
+    [categories, theme.palette, chartColors]
   )
 
   // ========================
@@ -180,6 +183,16 @@ const RegionalTrendLineChart = ({
       />
 
       <CardContent>
+        {series.length > 0 && (
+          <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 2, mb: 2 }}>
+            {series.map((s, i) => (
+              <Box key={s.name} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Box sx={{ width: 12, height: 12, borderRadius: 1, bgcolor: chartColors[i % chartColors.length], border: theme => `1px solid ${theme.palette.divider}` }} />
+                <Typography variant="caption" color="text.secondary">{s.name}</Typography>
+              </Box>
+            ))}
+          </Box>
+        )}
         {loading ? (
           <Box display="flex" justifyContent="center" alignItems="center" height={350}>
             <Typography>Loading...</Typography>

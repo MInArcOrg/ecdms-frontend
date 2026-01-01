@@ -31,15 +31,14 @@ const HydrologicalInformationDrawer = (props: HydrologicalInformationDrawerType)
   const validationSchema = yup.object().shape({
     parent_id: yup.string().uuid().nullable(),
     water_source: yup.string().max(100).nullable(),
-    catchment_area: yup.number().nullable(),
-    elevation_change: yup.number().nullable(),
-    head: yup.number().nullable(),
-    total_inflow: yup.number().nullable(),
-    active_storage_volume: yup.number().nullable(),
-    water_stored: yup.number().nullable(),
+    catchment_area: yup.number().max(9999999999999).nullable(),
+    elevation_change: yup.number().max(9999999999999).nullable(),
+    head: yup.number().max(9999999999999).nullable(),
+    total_inflow: yup.number().max(9999999999999).nullable(),
+    active_storage_volume: yup.number().max(9999999999999).nullable(),
+    water_stored: yup.number().max(9999999999999).nullable(),
     remark: yup.string().max(100).nullable()
   });
-
   const isEdit = Boolean(hydrologicalInformation?.id);
 
   const initialValues = {

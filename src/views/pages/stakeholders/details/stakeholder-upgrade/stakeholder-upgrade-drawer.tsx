@@ -21,10 +21,10 @@ const UpgradeDrawer = (props: UpgradeDrawerType) => {
 
   const validationSchema = yup.object().shape({
     stakeholder_id: yup.string().required('Stakeholder is required'),
-    upgrade_type: yup.string().required('Upgrade type is required'),
+    upgrade_type_id: yup.string().required('Upgrade type is required'),
     previous_level: yup.string().required('Previous level is required'),
     upgraded_level: yup.string().required('Upgraded level is required'),
-    ownership_percentage: yup.number().typeError('Ownership percentage must be a number').required('Ownership percentage is required'),
+    ownership_percentage: yup.number().typeError('Ownership percentage must be a number').required('Ownership percentage is required').max(100, 'Ownership percentage must be less than or equal to 100'),
     description: yup.string().required('Description is required')
   });
 
@@ -66,7 +66,7 @@ const UpgradeDrawer = (props: UpgradeDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             stakeholder_id: stakeholderId,
-            upgrade_type: upgrade?.upgrade_type || '',
+            upgrade_type_id: upgrade?.upgrade_type_id || '',
             previous_level: upgrade?.previous_level || '',
             upgraded_level: upgrade?.upgraded_level || '',
             ownership_percentage: upgrade?.ownership_percentage || undefined,

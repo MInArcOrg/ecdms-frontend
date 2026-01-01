@@ -50,7 +50,6 @@ const ProjectPaymentForm: React.FC<ProjectPaymentFormProps> = ({ formik, file, o
         placeholder={transl('project.project-interim_payment.form.reference_number')}
         name="reference_number"
         size="small"
-        type="number"
         sx={{ mb: 2 }}
       />
       <CustomTextBox

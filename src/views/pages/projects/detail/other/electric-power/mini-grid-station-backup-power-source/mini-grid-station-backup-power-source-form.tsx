@@ -10,6 +10,9 @@ import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomDatePicker from 'src/views/shared/form/custom-date-box';
+import { generateYears } from 'src/utils/genertor/date';
+import moment from 'moment';
+import CustomSelectBox from 'src/views/shared/form/custom-select';
 
 interface MiniGridStationBackupPowerSourceFormProps {
   formik: FormikProps<MiniGridStationBackupPowerSource>;
@@ -25,6 +28,7 @@ const MiniGridStationBackupPowerSourceForm: React.FC<MiniGridStationBackupPowerS
   miniGridStations
 }) => {
   const { t: transl } = useTranslation();
+  const years = generateYears(1990, moment().year()).map((year) => ({ label: year.toString(), value: year.toString() }));
 
   return (
     <Grid container spacing={gridSpacing}>
@@ -106,7 +110,7 @@ const MiniGridStationBackupPowerSourceForm: React.FC<MiniGridStationBackupPowerS
 
         <Grid container spacing={2}>
           <Grid item xs={6}>
-            <CustomTextBox
+            <CustomSelectBox
               fullWidth
               label={transl('project.other.mini-grid-station-backup-power-source.details.installation-year')}
               placeholder={transl('project.other.mini-grid-station-backup-power-source.details.installation-year')}
@@ -114,7 +118,9 @@ const MiniGridStationBackupPowerSourceForm: React.FC<MiniGridStationBackupPowerS
               type="number"
               size="small"
               sx={{ mb: 2 }}
+              options={years}
             />
+
           </Grid>
           <Grid item xs={6}>
             <CustomTextBox

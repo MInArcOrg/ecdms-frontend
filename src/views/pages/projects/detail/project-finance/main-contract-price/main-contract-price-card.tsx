@@ -22,7 +22,7 @@ const MainContractPriceCard = ({
   const { t } = useTranslation();
 
   return (
-    <Card sx={{ mx: 'auto', mt: 4 }}>
+    <Card >
       <CardContent>
         <Typography variant="h6" gutterBottom>
           {t('project.main-contract-price.price-details')}

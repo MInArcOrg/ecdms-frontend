@@ -12,7 +12,7 @@ import { Fragment, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CreateActionConfig } from 'src/types/general/listing';
 import { AbilityContext } from 'src/layouts/components/acl/Can';
-import { IconButton, Typography } from '@mui/material';
+import { IconButton, SxProps, Theme, Typography } from '@mui/material';
 import ExportComponentOption, { ExportConfigValues, ExportFieldOption } from './export';
 
 interface ListHeaderProps {
@@ -177,16 +177,8 @@ const ListHeader = (props: ListHeaderProps) => {
           >
             {props.createActionConfig.show &&
               ability.can(props.createActionConfig.permission.action, props.createActionConfig.permission.subject) &&
-              (props.createActionConfig.onlyIcon ? (
-                <IconButton color="primary" onClick={props.createActionConfig.onClick}>
-                  <Icon icon="tabler:plus" fontSize={20} />
-                </IconButton>
-              ) : (
-                <Button onClick={props.createActionConfig.onClick} variant="contained" sx={{ '& svg': { mr: 2 } }}>
-                  <Icon fontSize="1.125rem" icon="tabler:plus" />
-                  {transl('common.create')}
-                </Button>
-              ))}
+              <AddButton onClick={props.createActionConfig.onClick} onlyIcon={props.createActionConfig.onlyIcon} />
+            }
             {filter?.enabled && (
               <Button
                 onClick={toggleFilter}
@@ -213,5 +205,17 @@ const ListHeader = (props: ListHeaderProps) => {
     </Fragment>
   );
 };
-
+export const AddButton = ({ text, onClick, onlyIcon }: { text?: string; onClick: () => void; sx?: SxProps<Theme>; onlyIcon?: boolean }) => {
+  const { t: transl } = useTranslation();
+  return (onlyIcon ? (
+    <IconButton color="primary" onClick={onClick}>
+      <Icon icon="tabler:plus" fontSize={20} />
+    </IconButton>
+  ) :
+    <Button onClick={onClick} variant="contained" sx={{ '& svg': { mr: 2 } }}>
+      <Icon fontSize="1.125rem" icon="tabler:plus" />
+      {text || transl('common.create')}
+    </Button>
+  )
+}
 export default ListHeader;

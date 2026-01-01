@@ -21,7 +21,14 @@ interface ProjectTimeDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  contract_signing_date: yup.string().nullable(),
+  contract_signing_date: yup
+    .string()
+    .nullable()
+    .test('signing-date-order', 'Signing date must be on or before site handover date.', function (value) {
+      const { site_handover_date } = this.parent as ProjectTime;
+      if (!value || !site_handover_date) return true;
+      return moment(value).isSameOrBefore(moment(site_handover_date), 'day');
+    }),
   site_handover_date: yup.string().nullable(),
   mobilization_days_no: yup.number().integer().nullable(),
   commencement_date: yup.string().nullable(),

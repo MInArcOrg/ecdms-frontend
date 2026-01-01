@@ -60,10 +60,10 @@ const MachineryForm: React.FC<MachineryFormProps> = ({ formik }) => {
         />
       </Grid>
       <Grid item xs={6}>
-        <CustomTextBox fullWidth label={t('stakeholder.machinery.form.latitude')} name="latitude" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.machinery.latitude')} name="latitude" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={6}>
-        <CustomTextBox fullWidth label={t('stakeholder.machinery.form.longitude')} name="longitude" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth label={t('stakeholder.machinery.longitude')} name="longitude" size="small" sx={{ mb: 2 }} />
       </Grid>
     </Grid>
   );

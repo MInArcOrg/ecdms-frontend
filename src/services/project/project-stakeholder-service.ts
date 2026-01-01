@@ -7,7 +7,7 @@ import { buildPutRequest } from 'src/utils/requests/put-request';
 import { ProjectGeneralFinance } from 'src/types/project/project-finance';
 import { ProjectStakeholder } from 'src/types/project/project-stakeholder';
 
-const projectFinanceApiService = {
+const projectStakeholderApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<ProjectStakeholder[]>> =>
     buildGetRequest(`/projects/project-stakeholders`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
@@ -51,4 +51,4 @@ const projectFinanceApiService = {
       })
 };
 
-export default projectFinanceApiService;
+export default projectStakeholderApiService;

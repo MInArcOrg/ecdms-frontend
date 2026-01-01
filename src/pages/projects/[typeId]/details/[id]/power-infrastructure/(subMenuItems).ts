@@ -40,7 +40,8 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         title: 'project.navigation.submenu.power-infrastructure.transmission-systems.transmission',
         path: `/projects/${typeId}/details/${id}/power-infrastructure/transmission-systems/transmission`,
         model: 'transmission',
-        apiRoute: 'transmissions'
+        apiRoute: 'transmissions',
+        subject: 'transmission'
       },
       {
         id: powerInfrastructureIds.transmissionSystems.transmissionLineInformation,

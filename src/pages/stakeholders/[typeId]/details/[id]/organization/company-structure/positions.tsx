@@ -21,7 +21,7 @@ function StakeholderPositionIndex() {
 
 StakeholderPositionIndex.acl = {
   action: 'view',
-  subject: 'stakeholder-position'
+  subject: 'stakeholderposition'
 };
 
 export default StakeholderPositionIndex;

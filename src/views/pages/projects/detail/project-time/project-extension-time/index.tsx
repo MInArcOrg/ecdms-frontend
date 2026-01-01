@@ -72,7 +72,7 @@ function ProjectExtensionTimeList({ projectId }: { type: string; projectId: stri
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'variations'
+            subject: 'projectvariation'
           }
         }}
         fetchDataFunction={refetch}

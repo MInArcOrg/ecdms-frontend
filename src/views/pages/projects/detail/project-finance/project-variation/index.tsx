@@ -81,7 +81,7 @@ function ProjectVariationList({ type, projectId }: { type: string; projectId: st
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'variations'
+            subject: 'projectvariation'
           }
         }}
         fetchDataFunction={refetch}

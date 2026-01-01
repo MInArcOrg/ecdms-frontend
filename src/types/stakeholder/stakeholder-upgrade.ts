@@ -1,7 +1,7 @@
 export interface StakeholderUpgrade {
   id?: string; // UUID, required
   stakeholder_id: string; // UUID, required
-  upgrade_type: string; // required
+  upgrade_type_id: string; // required
   previous_level?: string;
   upgraded_level?: string;
   ownership_percentage?: number;

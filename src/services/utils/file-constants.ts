@@ -18,10 +18,11 @@ export const uploadableResourceFileTypes = {
   professionalAssociationMembership: 'PROFESSIONAL_ASSOCIATION_MEMBERSHIP',
   professionalCertification: 'PROFESSIONAL_CERTIFICATION',
 
-  project_construction_type: 'PROJECT_CONSTRUCTION_TYPE',
+  project_construction_type_id: 'PROJECT_CONSTRUCTION_TYPE',
   project_quality: 'PROJECT_QUALITY',
   project_safety_status: 'PROJECT_SAFTEY_STATUS',
-  projectQuality: 'PROJECT_QUALITY'
+  projectQuality: 'PROJECT_QUALITY',
+  constructionMethod: 'CONSTRUCTION_METHOD'
 } as const;
 export const uploadablePhotoTypes = {
   stakeholder_profile_photo: 'STAKEHOLDER_PROFILE_PHOTO',
@@ -64,6 +65,9 @@ export const uploadableProjectFileTypes = {
   regulation: 'REGULATION',
   license: 'LICENSE',
   jointVentureCompany: 'JOINT_VENTURE_COMPANY',
+  jointVenture: 'JOINT_VENTURE',
+  stakeholderAdditionalInformation: 'STAKEHOLDER_ADDITIONAL_INFORMATION',
+  branchAdditionalInformation: 'BRANCH_ADDITIONAL_INFORMATION',
   other: {
     buildingDimensionDetail: 'BUILDING_DIMENSION_DETAIL',
     port: 'PORT',

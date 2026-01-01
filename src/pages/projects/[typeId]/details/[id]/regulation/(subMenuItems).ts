@@ -56,14 +56,14 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         title: 'project.navigation.submenu.regulation.regulatory-and-environmental-oversight.regulation-and-policy',
         path: `/projects/${typeId}/details/${id}/regulation/regulatory-and-environmental-oversight/regulation-and-policy`,
         model: 'regulationandpolicy',
-        apiRoute: 'regulation-and-policy'
+        apiRoute: 'regulation-and-policies'
       },
       {
         id: regulationIds.regulatoryAndEnvironmentalOversight.environmentalAndSocialImpact,
         title: 'project.navigation.submenu.regulation.regulatory-and-environmental-oversight.environmental-and-social-impact',
         path: `/projects/${typeId}/details/${id}/regulation/regulatory-and-environmental-oversight/environmental-and-social-impact`,
         model: 'environmentalandsocialimpact',
-        apiRoute: 'environmental-and-social-impact'
+        apiRoute: 'environmental-and-social-impacts'
       }
     ]
   },

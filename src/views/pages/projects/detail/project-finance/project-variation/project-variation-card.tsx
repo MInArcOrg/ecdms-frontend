@@ -61,11 +61,11 @@ const ProjectVariationCard = ({
             onDelete={() => onDelete(projectVariation.id)}
             deletePermissionRule={{
               action: 'delete',
-              subject: 'variation'
+              subject: 'projectvariation'
             }}
             editPermissionRule={{
               action: 'update',
-              subject: 'variation'
+              subject: 'projectvariation'
             }}
             item={projectVariation}
             options={[]}
