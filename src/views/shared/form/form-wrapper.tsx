@@ -61,7 +61,6 @@ const FormPageWrapper = <T extends FormikValues>({
   const { t: intl } = useTranslation();
   const router = useRouter();
   const requiredFields = getRequiredFields(validationSchema);
-
   // 🌟 NEW STATE for Confirmation Dialog 🌟
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
   // State to hold the values and helpers temporarily when submission is paused by the dialog

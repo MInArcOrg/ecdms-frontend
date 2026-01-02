@@ -9,7 +9,7 @@ export const telecomInfrastructureId = {
     telecomInfrastructureManufacturer: 'TELECOM_INFRASTRUCTURE_MANUFACTURER',
     networkCapacity: 'NETWORK_CAPACITY',
     networkCoverage: 'NETWORK_COVERAGE',
-    maintenance: 'MAINTENANCE'
+    maintenance: 'MAINTENANCE',
   }
 };
 
@@ -59,7 +59,8 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         path: `/projects/${typeId}/details/${id}/telecom-infrastructure/telecom-infrastructure/maintenance`,
         model: 'maintenance',
         apiRoute: 'maintenances'
-      }
+      },
+
     ]
   }
 ];

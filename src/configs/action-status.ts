@@ -78,7 +78,6 @@ export const resolveStatus = (status?: string): ActionStatus => {
 
 
   const validStatuses = Object.values(ACTION_STATUS);
-  console.log('valid statuses', status, validStatuses)
   return validStatuses.includes(status as ActionStatus)
     ? (status as ActionStatus)
     : ACTION_STATUS.DEFAULT;

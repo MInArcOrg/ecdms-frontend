@@ -469,17 +469,32 @@ export interface TelecomInfrastructureManufacturer {
   project_id: string;
   telecom_infrastructure_id: string;
   telecomInfrastructureComponent?: TelecomInfrastructureComponent;
-  cables?: number | null;
-  wires?: number | null;
-  routers?: number | null;
-  switches?: number | null;
-  hubs?: number | null;
-  repeaters?: number | null;
-  antennas?: number | null;
-  towers?: number | null;
+  cables?: string | null;
+  wires?: string | null;
+  routers?: string | null;
+  switches?: string | null;
+  hubs?: string | null;
+  repeaters?: string | null;
+  antennas?: string | null;
+  towers?: string | null;
   remark?: string;
   created_at?: string | Date;
   updated_at?: string | Date;
+}
+
+export interface ManufacturerOfMobileNetworkComponent {
+  id: string;
+  project_id: string;
+  mobile_network_id: string;
+  cell?: string;
+  towers?: string;
+  antennas?: string;
+  base_stations?: string;
+  repeaters?: string;
+  switches?: string;
+  others?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface SegmentGeometry {

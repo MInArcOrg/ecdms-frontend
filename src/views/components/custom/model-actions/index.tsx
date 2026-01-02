@@ -31,7 +31,6 @@ const ModelActionComponent: React.FC<ModelActionProps> = ({ model, model_id, ref
   const toggleDrawer = () => {
     setShowDrawer(!show);
   };
-  console.log('authorization status', actions?.payload)
   return (
     <React.Fragment>
       <ActionDetail

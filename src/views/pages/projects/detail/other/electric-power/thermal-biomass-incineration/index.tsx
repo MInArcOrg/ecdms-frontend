@@ -159,8 +159,12 @@ const ThermalBiomassIncinerationList: React.FC<ThermalBiomassIncinerationListPro
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,
+          permission: {
+            subject: otherSubMenu?.model || '',
+            action: 'create'
+          },
           onClick: toggleDrawer,
-          onlyIcon: true
+          onlyIcon: false
         }}
         fetchDataFunction={refetch}
         tableProps={{

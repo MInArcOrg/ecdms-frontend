@@ -91,6 +91,7 @@ const TelecomInfrastructureAgeDrawer = (props: TelecomInfrastructureAgeDrawerTyp
     >
       {() => (
         <FormPageWrapper
+          key={telecomInfrastructureAge?.id || 'new'}
           edit={isEdit}
           title={`project.other.telecom-infrastructure-age.${isEdit ? `edit-telecom-infrastructure-age` : `create-telecom-infrastructure-age`
             }`}

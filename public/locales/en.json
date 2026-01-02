@@ -1850,6 +1850,23 @@
           "inauguration-date": "Inauguration Date"
         }
       },
+      "mobile-network-component-manufacturer": {
+        "title": "Mobile Network Component Manufacturer",
+        "create-mobile-network-component-manufacturer": "Add Mobile Network Component Manufacturer",
+        "edit-mobile-network-component-manufacturer": "Edit Mobile Network Component Manufacturer",
+        "mobile-network-component-manufacturer-details": "Mobile Network Component Manufacturer Details",
+        "details": {
+          "mobile_network_id": "Mobile Network",
+          "title": "Mobile Network Component Manufacturer Details",
+          "cell": "Cell",
+          "towers": "Towers",
+          "antennas": "Antennas",
+          "base-stations": "Base Stations",
+          "repeaters": "Repeaters",
+          "switches": "Switches",
+          "others": "Other Components"
+        }
+      },
       "telecom-infrastructure-manufacturer": {
         "title": "Telecom Infrastructure Manufacturer",
         "create-telecom-infrastructure-manufacturer": "Add Telecom Infrastructure Manufacturer",

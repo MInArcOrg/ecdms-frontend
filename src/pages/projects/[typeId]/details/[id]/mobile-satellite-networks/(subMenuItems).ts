@@ -43,8 +43,8 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: mobileSatelliteNetworksId.mobileNetworks.manufacturerOfMobileNetworkComponents,
         title: 'project.navigation.submenu.mobile-satellite.mobile-networks.manufacturer-of-mobile-network-components',
         path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/manufacturer-of-mobile-network-components`,
-        model: 'manufacturerofmobilenetworkcomponents',
-        apiRoute: 'manufacturer-of-mobile-network-components'
+        model: 'mobilenetworkcomponentmanufacturer',
+        apiRoute: 'mobile-network-component-manufacturers'
       },
       {
         id: mobileSatelliteNetworksId.mobileNetworks.networkCapacity,

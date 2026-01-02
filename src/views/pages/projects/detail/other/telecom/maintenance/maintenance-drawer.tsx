@@ -96,6 +96,7 @@ const MaintenanceDrawer = (props: MaintenanceDrawerType) => {
     >
       {() => (
         <FormPageWrapper
+          key={maintenance?.id || 'new'}
           edit={isEdit}
           title={`project.other.maintenance.${isEdit ? `edit-maintenance` : `create-maintenance`}`}
           getPayload={getPayload}

@@ -77,6 +77,7 @@ const NetworkCoverageDrawer = (props: NetworkCoverageDrawerType) => {
     >
       {() => (
         <FormPageWrapper
+          key={networkCoverage?.id || 'new'}
           edit={isEdit}
           title={`project.other.network-coverage.${isEdit ? `edit-network-coverage` : `create-network-coverage`}`}
           getPayload={getPayload}

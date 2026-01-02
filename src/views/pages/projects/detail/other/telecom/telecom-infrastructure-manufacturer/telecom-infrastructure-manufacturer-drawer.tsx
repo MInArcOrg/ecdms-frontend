@@ -7,10 +7,9 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import TelecomInfrastructureManufacturerForm from './telecom-infrastructure-manufacturer-form';
 
-import { useState } from 'react';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import type { TelecomInfrastructureManufacturer, TelecomInfrastructureComponent } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import type { TelecomInfrastructureComponent, TelecomInfrastructureManufacturer } from 'src/types/project/other';
 
 interface TelecomInfrastructureManufacturerDrawerType {
   open: boolean;
@@ -28,14 +27,14 @@ const TelecomInfrastructureManufacturerDrawer = (props: TelecomInfrastructureMan
 
   const validationSchema = yup.object().shape({
     telecom_infrastructure_id: yup.string().required(),
-    cables: yup.number().nullable(),
-    wires: yup.number().nullable(),
-    routers: yup.number().nullable(),
-    switches: yup.number().nullable(),
-    hubs: yup.number().nullable(),
-    repeaters: yup.number().nullable(),
-    antennas: yup.number().nullable(),
-    towers: yup.number().nullable(),
+    cables: yup.string().nullable(),
+    wires: yup.string().nullable(),
+    routers: yup.string().nullable(),
+    switches: yup.string().nullable(),
+    hubs: yup.string().nullable(),
+    repeaters: yup.string().nullable(),
+    antennas: yup.string().nullable(),
+    towers: yup.string().nullable(),
     remark: yup.string().nullable()
   });
 
@@ -78,34 +77,22 @@ const TelecomInfrastructureManufacturerDrawer = (props: TelecomInfrastructureMan
     refetch();
     handleClose();
   };
-
   return (
     <CustomSideDrawer
-      title={`project.other.telecom-infrastructure-manufacturer.${
-        isEdit ? `edit-telecom-infrastructure-manufacturer` : `create-telecom-infrastructure-manufacturer`
-      }`}
+      title={`project.other.telecom-infrastructure-manufacturer.${isEdit ? `edit-telecom-infrastructure-manufacturer` : `create-telecom-infrastructure-manufacturer`
+        }`}
       handleClose={handleClose}
       open={open}
     >
       {() => (
         <FormPageWrapper
+          key={telecomInfrastructureManufacturer?.id || 'new'}
           edit={isEdit}
-          title={`project.other.telecom-infrastructure-manufacturer.${
-            isEdit ? `edit-telecom-infrastructure-manufacturer` : `create-telecom-infrastructure-manufacturer`
-          }`}
+          title={`project.other.telecom-infrastructure-manufacturer.${isEdit ? `edit-telecom-infrastructure-manufacturer` : `create-telecom-infrastructure-manufacturer`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            telecom_infrastructure_id: '',
-            cables: null,
-            wires: null,
-            routers: null,
-            switches: null,
-            hubs: null,
-            repeaters: null,
-            antennas: null,
-            towers: null,
-            remark: '',
             ...telecomInfrastructureManufacturer
           }}
           createActionFunc={isEdit ? editTelecomInfrastructureManufacturer : createTelecomInfrastructureManufacturer}
@@ -113,6 +100,7 @@ const TelecomInfrastructureManufacturerDrawer = (props: TelecomInfrastructureMan
           onCancel={handleClose}
         >
           {(formik: FormikProps<TelecomInfrastructureManufacturer>) => {
+
             return (
               <TelecomInfrastructureManufacturerForm
                 formik={formik}

@@ -88,6 +88,7 @@ const NetworkCapacityDrawer = (props: NetworkCapacityDrawerType) => {
     >
       {() => (
         <FormPageWrapper
+          key={networkCapacity?.id || 'new'}
           edit={isEdit}
           title={`project.other.network-capacity.${isEdit ? `edit-network-capacity` : `create-network-capacity`}`}
           getPayload={getPayload}

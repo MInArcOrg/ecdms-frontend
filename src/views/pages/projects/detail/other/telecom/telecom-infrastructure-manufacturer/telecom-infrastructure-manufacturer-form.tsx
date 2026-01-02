@@ -21,7 +21,7 @@ const TelecomInfrastructureManufacturerForm: React.FC<TelecomInfrastructureManuf
   mobileNetworkTypeMap
 }) => {
   const { t: transl } = useTranslation();
-
+  console.log('formik values', formik.values)
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -47,7 +47,6 @@ const TelecomInfrastructureManufacturerForm: React.FC<TelecomInfrastructureManuf
           placeholder={transl('project.other.telecom-infrastructure-manufacturer.details.cables')}
           name="cables"
           size="small"
-          type="number"
           sx={{ mb: 2 }}
         />
 
@@ -57,7 +56,6 @@ const TelecomInfrastructureManufacturerForm: React.FC<TelecomInfrastructureManuf
           placeholder={transl('project.other.telecom-infrastructure-manufacturer.details.wires')}
           name="wires"
           size="small"
-          type="number"
           sx={{ mb: 2 }}
         />
 
@@ -67,7 +65,6 @@ const TelecomInfrastructureManufacturerForm: React.FC<TelecomInfrastructureManuf
           placeholder={transl('project.other.telecom-infrastructure-manufacturer.details.routers')}
           name="routers"
           size="small"
-          type="number"
           sx={{ mb: 2 }}
         />
 
@@ -77,7 +74,6 @@ const TelecomInfrastructureManufacturerForm: React.FC<TelecomInfrastructureManuf
           placeholder={transl('project.other.telecom-infrastructure-manufacturer.details.switches')}
           name="switches"
           size="small"
-          type="number"
           sx={{ mb: 2 }}
         />
 
@@ -87,7 +83,6 @@ const TelecomInfrastructureManufacturerForm: React.FC<TelecomInfrastructureManuf
           placeholder={transl('project.other.telecom-infrastructure-manufacturer.details.hubs')}
           name="hubs"
           size="small"
-          type="number"
           sx={{ mb: 2 }}
         />
 
@@ -97,7 +92,6 @@ const TelecomInfrastructureManufacturerForm: React.FC<TelecomInfrastructureManuf
           placeholder={transl('project.other.telecom-infrastructure-manufacturer.details.repeaters')}
           name="repeaters"
           size="small"
-          type="number"
           sx={{ mb: 2 }}
         />
 
@@ -107,7 +101,6 @@ const TelecomInfrastructureManufacturerForm: React.FC<TelecomInfrastructureManuf
           placeholder={transl('project.other.telecom-infrastructure-manufacturer.details.antennas')}
           name="antennas"
           size="small"
-          type="number"
           sx={{ mb: 2 }}
         />
 
@@ -117,7 +110,6 @@ const TelecomInfrastructureManufacturerForm: React.FC<TelecomInfrastructureManuf
           placeholder={transl('project.other.telecom-infrastructure-manufacturer.details.towers')}
           name="towers"
           size="small"
-          type="number"
           sx={{ mb: 2 }}
         />
 

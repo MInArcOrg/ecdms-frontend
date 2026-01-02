@@ -188,8 +188,12 @@ const NetworkCoverageList: React.FC<NetworkCoverageListProps> = ({ otherSubMenu,
 
         createActionConfig={{
           ...defaultCreateActionConfig,
+          permission: {
+            subject: otherSubMenu?.model || '',
+            action: 'create'
+          },
           onClick: toggleDrawer,
-          onlyIcon: true
+          onlyIcon: false
         }}
         fetchDataFunction={refetch}
         onPaginationChange={handlePageChange}

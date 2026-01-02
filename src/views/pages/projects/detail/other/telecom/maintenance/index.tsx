@@ -169,8 +169,12 @@ const MaintenanceList: React.FC<MaintenanceListProps> = ({ otherSubMenu, project
         onPaginationChange={handlePageChange}
         createActionConfig={{
           ...defaultCreateActionConfig,
+          permission: {
+            subject: otherSubMenu?.model || '',
+            action: 'create'
+          },
           onClick: toggleDrawer,
-          onlyIcon: true
+          onlyIcon: false
         }}
         fetchDataFunction={refetch}
       />

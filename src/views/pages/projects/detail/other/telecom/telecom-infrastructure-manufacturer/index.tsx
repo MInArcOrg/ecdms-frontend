@@ -80,7 +80,7 @@ const TelecomInfrastructureManufacturerList: React.FC<TelecomInfrastructureManuf
     queryKey: ['telecomInfrastructureManufacturer'],
     fetchFunction: fetchTelecomInfrastructureManufacturer
   });
-  console.log('telecomInfrastructureManufacturerList',telecomInfrastructureManufacturerList)
+  console.log('telecomInfrastructureManufacturerList', telecomInfrastructureManufacturerList)
 
   const toggleDrawer = () => {
     setSelectedRow({} as TelecomInfrastructureManufacturer);
@@ -93,8 +93,8 @@ const TelecomInfrastructureManufacturerList: React.FC<TelecomInfrastructureManuf
   };
 
   const handleEdit = (telecomInfrastructureManufacturer: TelecomInfrastructureManufacturer) => {
-    toggleDrawer();
     setSelectedRow(telecomInfrastructureManufacturer);
+    setShowDrawer(true);
   };
 
   const handleDelete = async (telecomInfrastructureManufacturerId: string) => {
@@ -113,35 +113,59 @@ const TelecomInfrastructureManufacturerList: React.FC<TelecomInfrastructureManuf
   const mapTelecomInfrastructureManufacturerToDetailItems = (
     telecomInfrastructureManufacturer: TelecomInfrastructureManufacturer
   ): { title: string; value: string | React.ReactNode }[] => [
-    {
-      title: t('project.other.telecom-infrastructure-manufacturer.details.name'),
-      value: telecomInfrastructureManufacturer?.name || 'N/A'
-    },
-    {
-      title: t('project.other.telecom-infrastructure-manufacturer.details.country'),
-      value: telecomInfrastructureManufacturer?.country || 'N/A'
-    },
-    {
-      title: t('project.other.telecom-infrastructure-manufacturer.details.website'),
-      value: telecomInfrastructureManufacturer?.website || 'N/A'
-    },
-    {
-      title: t('project.other.telecom-infrastructure-manufacturer.details.remark'),
-      value: telecomInfrastructureManufacturer?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: telecomInfrastructureManufacturer?.created_at
-        ? formatCreatedAt(telecomInfrastructureManufacturer.created_at)
-        : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: telecomInfrastructureManufacturer?.updated_at
-        ? formatCreatedAt(telecomInfrastructureManufacturer.updated_at)
-        : 'N/A'
-    }
-  ];
+      {
+        title: t('project.other.telecom-infrastructure.title'),
+        value: telecomInfrastructureComponentMap.get(telecomInfrastructureManufacturer?.telecom_infrastructure_id) || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-manufacturer.details.cables'),
+        value: telecomInfrastructureManufacturer?.cables || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-manufacturer.details.wires'),
+        value: telecomInfrastructureManufacturer?.wires || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-manufacturer.details.routers'),
+        value: telecomInfrastructureManufacturer?.routers || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-manufacturer.details.switches'),
+        value: telecomInfrastructureManufacturer?.switches || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-manufacturer.details.hubs'),
+        value: telecomInfrastructureManufacturer?.hubs || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-manufacturer.details.repeaters'),
+        value: telecomInfrastructureManufacturer?.repeaters || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-manufacturer.details.antennas'),
+        value: telecomInfrastructureManufacturer?.antennas || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-manufacturer.details.towers'),
+        value: telecomInfrastructureManufacturer?.towers || 'N/A'
+      },
+      {
+        title: t('project.other.telecom-infrastructure-manufacturer.details.remark'),
+        value: telecomInfrastructureManufacturer?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: telecomInfrastructureManufacturer?.created_at
+          ? formatCreatedAt(telecomInfrastructureManufacturer.created_at)
+          : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: telecomInfrastructureManufacturer?.updated_at
+          ? formatCreatedAt(telecomInfrastructureManufacturer.updated_at)
+          : 'N/A'
+      }
+    ];
 
   return (
     <Box>
@@ -152,7 +176,7 @@ const TelecomInfrastructureManufacturerList: React.FC<TelecomInfrastructureManuf
           data={mapTelecomInfrastructureManufacturerToDetailItems(selectedRow as TelecomInfrastructureManufacturer)}
           hasReference={true}
           id={selectedRow?.id || ''}
-          fileType={uploadableProjectFileTypes.other.telecomInfrastructure} 
+          fileType={uploadableProjectFileTypes.other.telecomInfrastructure}
           title={t('project.other.telecom-infrastructure-manufacturer.telecom-infrastructure-manufacturer-details')}
         />
       )}
@@ -179,21 +203,23 @@ const TelecomInfrastructureManufacturerList: React.FC<TelecomInfrastructureManuf
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: true
+          onlyIcon: false
         }}
         fetchDataFunction={refetch}
       />
+      {
+        showDrawer && <TelecomInfrastructureManufacturerDrawer
+          open={showDrawer}
+          toggle={toggleDrawer}
+          refetch={refetch}
+          telecomInfrastructureManufacturer={selectedRow as TelecomInfrastructureManufacturer}
+          projectId={projectId}
+          otherSubMenu={otherSubMenu}
+          telecomInfrastructureComponents={telecomInfrastructureComponents?.payload || []}
+          mobileNetworkTypeMap={mobileNetworkTypeMap}
+        />
+      }
 
-      <TelecomInfrastructureManufacturerDrawer
-        open={showDrawer}
-        toggle={toggleDrawer}
-        refetch={refetch}
-        telecomInfrastructureManufacturer={selectedRow as TelecomInfrastructureManufacturer}
-        projectId={projectId}
-        otherSubMenu={otherSubMenu}
-        telecomInfrastructureComponents={telecomInfrastructureComponents?.payload || []}
-        mobileNetworkTypeMap={mobileNetworkTypeMap}
-      />
     </Box>
   );
 };
