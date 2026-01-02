@@ -19,13 +19,13 @@ export const telecomInfrastructureManufacturerColumns = (
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
-  telecomInfrastructureMap: Map<string, string>
+  telecomInfrastructureComponentMap: Map<string, string>
 ): GridColDef[] => [
   {
     flex: 0.2,
     minWidth: 150,
-    field: 'name',
-    headerName: t('project.other.telecom-infrastructure-manufacturer.details.name'),
+    headerName: t('project.other.telecom-infrastructure.title'),
+    field: 'telecom_infrastructure_id',
     renderCell: ({ row }: CellType) => (
       <Typography
         noWrap
@@ -35,43 +35,99 @@ export const telecomInfrastructureManufacturerColumns = (
           fontWeight: 500,
           textDecoration: 'none',
           color: 'text.secondary',
-          '&:hover': { color: 'primary.main' }
+          '&:hover': { color: 'primary.main' },
+          textTransform: 'none'
         }}
       >
-        {row?.name || t('common.not-available')}
+        {telecomInfrastructureComponentMap.get(row.telecom_infrastructure_id) || t('common.not-available')}
       </Typography>
     )
   },
   {
-    flex: 0.2,
-    minWidth: 150,
-    headerName: t('project.other.telecom-infrastructure.title'),
-    field: 'telecom_infrastructure_id',
+    flex: 0.1,
+    minWidth: 100,
+    headerName: t('project.other.telecom-infrastructure-manufacturer.details.cables'),
+    field: 'cables',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {telecomInfrastructureMap.get(row.telecom_infrastructure_id) || t('common.not-available')}
+        {row.cables ?? t('common.not-available')}
       </Typography>
     )
   },
   {
-    flex: 0.2,
-    minWidth: 150,
-    headerName: t('project.other.telecom-infrastructure-manufacturer.details.country'),
-    field: 'country',
+    flex: 0.1,
+    minWidth: 100,
+    headerName: t('project.other.telecom-infrastructure-manufacturer.details.wires'),
+    field: 'wires',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.country || t('common.not-available')}
+        {row.wires ?? t('common.not-available')}
       </Typography>
     )
   },
   {
-    flex: 0.2,
-    minWidth: 150,
-    headerName: t('project.other.telecom-infrastructure-manufacturer.details.website'),
-    field: 'website',
+    flex: 0.1,
+    minWidth: 100,
+    headerName: t('project.other.telecom-infrastructure-manufacturer.details.routers'),
+    field: 'routers',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.website || t('common.not-available')}
+        {row.routers ?? t('common.not-available')}
+      </Typography>
+    )
+  },
+  {
+    flex: 0.1,
+    minWidth: 100,
+    headerName: t('project.other.telecom-infrastructure-manufacturer.details.switches'),
+    field: 'switches',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row.switches ?? t('common.not-available')}
+      </Typography>
+    )
+  },
+  {
+    flex: 0.1,
+    minWidth: 100,
+    headerName: t('project.other.telecom-infrastructure-manufacturer.details.hubs'),
+    field: 'hubs',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row.hubs ?? t('common.not-available')}
+      </Typography>
+    )
+  },
+  {
+    flex: 0.1,
+    minWidth: 100,
+    headerName: t('project.other.telecom-infrastructure-manufacturer.details.repeaters'),
+    field: 'repeaters',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row.repeaters ?? t('common.not-available')}
+      </Typography>
+    )
+  },
+  {
+    flex: 0.1,
+    minWidth: 100,
+    headerName: t('project.other.telecom-infrastructure-manufacturer.details.antennas'),
+    field: 'antennas',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row.antennas ?? t('common.not-available')}
+      </Typography>
+    )
+  },
+  {
+    flex: 0.1,
+    minWidth: 100,
+    headerName: t('project.other.telecom-infrastructure-manufacturer.details.towers'),
+    field: 'towers',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row.towers ?? t('common.not-available')}
       </Typography>
     )
   },

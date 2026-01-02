@@ -5,7 +5,7 @@ import type { FormikProps } from 'formik';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
-import type { TelecomInfrastructureAge, TelecomInfrastructure } from 'src/types/project/other';
+import type { TelecomInfrastructureAge, TelecomInfrastructureComponent } from 'src/types/project/other';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
@@ -14,10 +14,11 @@ interface TelecomInfrastructureAgeFormProps {
   formik: FormikProps<TelecomInfrastructureAge>;
   file: File | null;
   onFileChange: (file: File | null) => void;
-  telecomInfrastructures: TelecomInfrastructure[];
+  telecomInfrastructureComponents: TelecomInfrastructureComponent[];
+  mobileNetworkTypeMap: Map<string, string>;
 }
 
-const TelecomInfrastructureAgeForm: React.FC<TelecomInfrastructureAgeFormProps> = ({ formik, file, onFileChange, telecomInfrastructures }) => {
+const TelecomInfrastructureAgeForm: React.FC<TelecomInfrastructureAgeFormProps> = ({ formik, file, onFileChange, telecomInfrastructureComponents, mobileNetworkTypeMap }) => {
   const { t: transl } = useTranslation();
 
   return (
@@ -27,7 +28,10 @@ const TelecomInfrastructureAgeForm: React.FC<TelecomInfrastructureAgeFormProps> 
           fullWidth
           label={transl('project.other.telecom-infrastructure.title')}
           name="telecom_infrastructure_id"
-          options={telecomInfrastructures.map((item) => ({ value: item.id, label: item.name }))}
+          options={telecomInfrastructureComponents.map((item) => ({
+            value: item.id,
+            label: mobileNetworkTypeMap.get(item.mobile_network_type_id) || 'N/A'
+          }))}
           size="small"
           sx={{ mb: 2 }}
         />

@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
-import type { NetworkCapacity, TelecomInfrastructure } from 'src/types/project/other';
+import type { NetworkCapacity, TelecomInfrastructureComponent } from 'src/types/project/other';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
@@ -15,10 +15,11 @@ interface NetworkCapacityFormProps {
   formik: FormikProps<NetworkCapacity>;
   file: File | null;
   onFileChange: (file: File | null) => void;
-  telecomInfrastructures: TelecomInfrastructure[];
+  telecomInfrastructureComponents: TelecomInfrastructureComponent[];
+  mobileNetworkTypeMap: Map<string, string>;
 }
 
-const NetworkCapacityForm: React.FC<NetworkCapacityFormProps> = ({ formik, file, onFileChange, telecomInfrastructures }) => {
+const NetworkCapacityForm: React.FC<NetworkCapacityFormProps> = ({ formik, file, onFileChange, telecomInfrastructureComponents, mobileNetworkTypeMap }) => {
   const { t: transl } = useTranslation();
 
   const { data: networkTypes } = useQuery({
@@ -36,7 +37,10 @@ const NetworkCapacityForm: React.FC<NetworkCapacityFormProps> = ({ formik, file,
           fullWidth
           label={transl('project.other.telecom-infrastructure.title')}
           name="telecom_infrastructure_id"
-          options={telecomInfrastructures.map((item) => ({ value: item.id, label: item.name }))}
+          options={telecomInfrastructureComponents.map((item) => ({
+            value: item.id,
+            label: mobileNetworkTypeMap.get(item.mobile_network_type_id) || 'N/A'
+          }))}
           size="small"
           sx={{ mb: 2 }}
         />

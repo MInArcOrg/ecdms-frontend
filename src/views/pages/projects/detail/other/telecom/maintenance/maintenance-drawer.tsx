@@ -11,7 +11,7 @@ import { useState } from 'react';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
-import type { Maintenance, TelecomInfrastructure } from 'src/types/project/other';
+import type { Maintenance, TelecomInfrastructureComponent } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface MaintenanceDrawerType {
@@ -21,11 +21,12 @@ interface MaintenanceDrawerType {
   maintenance: Maintenance;
   projectId: string;
   otherSubMenu?: DetailSubMenuItemChild;
-  telecomInfrastructures: TelecomInfrastructure[];
+  telecomInfrastructureComponents: TelecomInfrastructureComponent[];
+  mobileNetworkTypeMap: Map<string, string>;
 }
 
 const MaintenanceDrawer = (props: MaintenanceDrawerType) => {
-  const { open, toggle, refetch, maintenance, projectId, otherSubMenu, telecomInfrastructures } = props;
+  const { open, toggle, refetch, maintenance, projectId, otherSubMenu, telecomInfrastructureComponents, mobileNetworkTypeMap } = props;
   const [uploadableFiles, setUploadableFiles] = useState<{
     maintenanceDocument: File | null;
     infrastructureImage: File | null;
@@ -112,7 +113,8 @@ const MaintenanceDrawer = (props: MaintenanceDrawerType) => {
                 files={uploadableFiles}
                 onFileChange={onFileChange}
                 formik={formik}
-                telecomInfrastructures={telecomInfrastructures}
+                telecomInfrastructureComponents={telecomInfrastructureComponents}
+                mobileNetworkTypeMap={mobileNetworkTypeMap}
               />
             );
           }}

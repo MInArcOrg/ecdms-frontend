@@ -5,7 +5,7 @@ import type { FormikProps } from 'formik';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
-import type { Maintenance, TelecomInfrastructure } from 'src/types/project/other';
+import type { Maintenance, TelecomInfrastructureComponent } from 'src/types/project/other';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
@@ -17,10 +17,11 @@ interface MaintenanceFormProps {
     infrastructureImage: File | null;
   };
   onFileChange: (fileType: string, file: File | null) => void;
-  telecomInfrastructures: TelecomInfrastructure[];
+  telecomInfrastructureComponents: TelecomInfrastructureComponent[];
+  mobileNetworkTypeMap: Map<string, string>;
 }
 
-const MaintenanceForm: React.FC<MaintenanceFormProps> = ({ formik, files, onFileChange, telecomInfrastructures }) => {
+const MaintenanceForm: React.FC<MaintenanceFormProps> = ({ formik, files, onFileChange, telecomInfrastructureComponents, mobileNetworkTypeMap }) => {
   const { t: transl } = useTranslation();
 
   return (
@@ -30,7 +31,10 @@ const MaintenanceForm: React.FC<MaintenanceFormProps> = ({ formik, files, onFile
           fullWidth
           label={transl('project.other.telecom-infrastructure.title')}
           name="telecom_infrastructure_id"
-          options={telecomInfrastructures.map((item) => ({ value: item.id, label: item.name }))}
+          options={telecomInfrastructureComponents.map((item) => ({
+            value: item.id,
+            label: mobileNetworkTypeMap.get(item.mobile_network_type_id) || 'N/A'
+          }))}
           size="small"
           sx={{ mb: 2 }}
         />

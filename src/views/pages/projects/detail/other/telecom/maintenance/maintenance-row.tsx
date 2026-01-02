@@ -19,7 +19,7 @@ export const maintenanceColumns = (
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
-  telecomInfrastructureMap: Map<string, string>
+  telecomInfrastructureComponentMap: Map<string, string>
 ): GridColDef[] => [
   {
     flex: 0.15,
@@ -49,7 +49,7 @@ export const maintenanceColumns = (
     field: 'telecom_infrastructure_id',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {telecomInfrastructureMap.get(row.telecom_infrastructure_id) || t('common.not-available')}
+        {telecomInfrastructureComponentMap.get(row.telecom_infrastructure_id) || t('common.not-available')}
       </Typography>
     )
   },

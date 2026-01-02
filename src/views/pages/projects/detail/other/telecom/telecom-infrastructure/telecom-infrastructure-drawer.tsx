@@ -11,6 +11,8 @@ import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { TelecomInfrastructure } from 'src/types/project/other';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 
 interface TelecomInfrastructureDrawerType {
   open: boolean;
@@ -19,10 +21,11 @@ interface TelecomInfrastructureDrawerType {
   telecomInfrastructure: TelecomInfrastructure;
   projectId: string;
   model: string;
+  otherSubMenu: DetailSubMenuItemChild;
 }
 
 const TelecomInfrastructureDrawer = (props: TelecomInfrastructureDrawerType) => {
-  const { open, toggle, refetch, telecomInfrastructure, projectId, model } = props;
+  const { open, toggle, refetch, telecomInfrastructure, projectId, otherSubMenu } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
@@ -33,10 +36,10 @@ const TelecomInfrastructureDrawer = (props: TelecomInfrastructureDrawerType) => 
   const isEdit = Boolean(telecomInfrastructure?.id);
 
   const createTelecomInfrastructure = async (body: IApiPayload<TelecomInfrastructure>) =>
-    projectOtherApiService<TelecomInfrastructure>().create(model, body);
+    projectOtherApiSecondService<TelecomInfrastructure>().create(otherSubMenu?.apiRoute, body);
 
   const editTelecomInfrastructure = async (body: IApiPayload<TelecomInfrastructure>) =>
-    projectOtherApiService<TelecomInfrastructure>().update(model, telecomInfrastructure?.id || '', body);
+    projectOtherApiSecondService<TelecomInfrastructure>().update(otherSubMenu?.apiRoute, telecomInfrastructure?.id || '', body);
 
   const getPayload = (values: TelecomInfrastructure) => {
     return {

@@ -2,18 +2,19 @@
 
 import type React from 'react';
 
-import { useQuery } from '@tanstack/react-query';
 import { Box } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import projectOtherApiService from 'src/services/project/project-other-service';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { TelecomInfrastructureAge, TelecomInfrastructure } from 'src/types/project/other';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import type { TelecomInfrastructureAge, TelecomInfrastructureComponent } from 'src/types/project/other';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
@@ -34,15 +35,30 @@ const TelecomInfrastructureAgeList: React.FC<TelecomInfrastructureAgeListProps> 
   const [selectedRow, setSelectedRow] = useState<TelecomInfrastructureAge | null>(null);
   const { t } = useTranslation();
 
-  const { data: telecomInfrastructures } = useQuery({
+  const { data: mobileNetworkTypes } = useQuery({
+    queryKey: ['mobile-network-types'],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.mobileNetworkType.model }
+      })
+  });
+
+  const mobileNetworkTypeMap = new Map(mobileNetworkTypes?.payload.map((item) => [item.id, item.title || 'N/A']) || []);
+
+  const { data: telecomInfrastructureComponents } = useQuery({
     queryKey: ['telecom-infrastructures', projectId],
     queryFn: () =>
-      projectOtherApiService<TelecomInfrastructure>().getAll('telecom_infrastructure', {
+      projectOtherApiSecondService<TelecomInfrastructureComponent>().getAll('telecom-infrastructures', {
         filter: { project_id: projectId }
       })
   });
 
-  const telecomInfrastructureMap = new Map(telecomInfrastructures?.payload.map((item) => [item.id, item.name || 'N/A']) || []);
+  const telecomInfrastructureComponentMap = new Map(
+    telecomInfrastructureComponents?.payload.map((item) => [
+      item.id,
+      mobileNetworkTypeMap.get(item.mobile_network_type_id) || 'N/A'
+    ]) || []
+  );
 
   const fetchTelecomInfrastructureAges = (params: GetRequestParam): Promise<IApiResponse<TelecomInfrastructureAge[]>> => {
     return projectOtherApiSecondService<TelecomInfrastructureAge>().getAll(otherSubMenu?.apiRoute || '', {
@@ -146,7 +162,8 @@ const TelecomInfrastructureAgeList: React.FC<TelecomInfrastructureAgeListProps> 
           telecomInfrastructureAge={selectedRow as TelecomInfrastructureAge}
           refetch={refetch}
           projectId={projectId}
-          telecomInfrastructures={telecomInfrastructures?.payload || []}
+          telecomInfrastructureComponents={telecomInfrastructureComponents?.payload || []}
+          mobileNetworkTypeMap={mobileNetworkTypeMap}
         />
       )}
 
@@ -167,7 +184,14 @@ const TelecomInfrastructureAgeList: React.FC<TelecomInfrastructureAgeListProps> 
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: telecomInfrastructureAgeColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, telecomInfrastructureMap)
+          headers: telecomInfrastructureAgeColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+            refetch,
+            telecomInfrastructureComponentMap
+          )
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (

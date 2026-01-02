@@ -27,7 +27,7 @@ const TelecomInfrastructureList: React.FC<TelecomInfrastructureListProps> = ({ o
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<TelecomInfrastructure | null>(null); // Updated type
   const { t } = useTranslation();
-
+  console.log('other sub menu',otherSubMenu)
   const fetchTelecomInfrastructures = (params: GetRequestParam): Promise<IApiResponse<TelecomInfrastructure[]>> => {
     // Updated type
     return projectOtherApiSecondService<TelecomInfrastructure>().getAll(otherSubMenu?.apiRoute || '', {
@@ -113,6 +113,7 @@ const TelecomInfrastructureList: React.FC<TelecomInfrastructureListProps> = ({ o
           telecomInfrastructure={selectedRow as TelecomInfrastructure}
           refetch={refetch}
           projectId={projectId}
+          otherSubMenu={otherSubMenu as DetailSubMenuItemChild}
         />
       )}
 

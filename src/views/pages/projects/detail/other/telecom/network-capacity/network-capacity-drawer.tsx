@@ -11,7 +11,7 @@ import { useState } from 'react';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
-import type { NetworkCapacity, TelecomInfrastructure } from 'src/types/project/other';
+import type { NetworkCapacity, TelecomInfrastructureComponent } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface NetworkCapacityDrawerType {
@@ -21,11 +21,12 @@ interface NetworkCapacityDrawerType {
   networkCapacity: NetworkCapacity;
   projectId: string;
   otherSubMenu?: DetailSubMenuItemChild;
-  telecomInfrastructures: TelecomInfrastructure[];
+  telecomInfrastructureComponents: TelecomInfrastructureComponent[];
+  mobileNetworkTypeMap: Map<string, string>;
 }
 
 const NetworkCapacityDrawer = (props: NetworkCapacityDrawerType) => {
-  const { open, toggle, refetch, networkCapacity, projectId, otherSubMenu, telecomInfrastructures } = props;
+  const { open, toggle, refetch, networkCapacity, projectId, otherSubMenu, telecomInfrastructureComponents, mobileNetworkTypeMap } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const onFileChange = (file: File | null) => {
@@ -104,7 +105,8 @@ const NetworkCapacityDrawer = (props: NetworkCapacityDrawerType) => {
                 file={uploadableFile}
                 onFileChange={onFileChange}
                 formik={formik}
-                telecomInfrastructures={telecomInfrastructures || []}
+                telecomInfrastructureComponents={telecomInfrastructureComponents}
+                mobileNetworkTypeMap={mobileNetworkTypeMap}
               />
             );
           }}

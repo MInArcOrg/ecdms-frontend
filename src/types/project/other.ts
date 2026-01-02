@@ -449,6 +449,7 @@ export interface NetworkCoverage {
   id: string;
   project_id: string;
   telecom_infrastructure_id: string;
+  telecomInfrastructureComponent?: TelecomInfrastructureComponent;
   network_infrastructure_type_id: string;
   networkinfrastructuretype: MobileNetwork;
   total_coverage_area?: number;
@@ -464,11 +465,18 @@ export interface NetworkCoverage {
 
 export interface TelecomInfrastructureManufacturer {
   id: string;
+  parent_id?: string | null;
   project_id: string;
   telecom_infrastructure_id: string;
-  name: string;
-  country?: string;
-  website?: string;
+  telecomInfrastructureComponent?: TelecomInfrastructureComponent;
+  cables?: number | null;
+  wires?: number | null;
+  routers?: number | null;
+  switches?: number | null;
+  hubs?: number | null;
+  repeaters?: number | null;
+  antennas?: number | null;
+  towers?: number | null;
   remark?: string;
   created_at?: string | Date;
   updated_at?: string | Date;
@@ -933,6 +941,7 @@ export interface NetworkCapacity {
   id: string;
   project_id: string;
   telecom_infrastructure_id: string;
+  telecomInfrastructureComponent?: TelecomInfrastructureComponent;
   network_type_id: string;
   total_bandwidth?: number;
   users_number?: number;

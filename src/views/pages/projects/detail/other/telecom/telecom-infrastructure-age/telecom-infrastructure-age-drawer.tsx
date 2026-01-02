@@ -11,7 +11,7 @@ import { useState } from 'react';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
-import type { TelecomInfrastructureAge, TelecomInfrastructure } from 'src/types/project/other';
+import type { TelecomInfrastructureAge, TelecomInfrastructureComponent } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface TelecomInfrastructureAgeDrawerType {
@@ -21,11 +21,12 @@ interface TelecomInfrastructureAgeDrawerType {
   telecomInfrastructureAge: TelecomInfrastructureAge;
   projectId: string;
   otherSubMenu?: DetailSubMenuItemChild;
-  telecomInfrastructures: TelecomInfrastructure[];
+  telecomInfrastructureComponents: TelecomInfrastructureComponent[];
+  mobileNetworkTypeMap: Map<string, string>;
 }
 
 const TelecomInfrastructureAgeDrawer = (props: TelecomInfrastructureAgeDrawerType) => {
-  const { open, toggle, refetch, telecomInfrastructureAge, projectId, otherSubMenu, telecomInfrastructures } = props;
+  const { open, toggle, refetch, telecomInfrastructureAge, projectId, otherSubMenu, telecomInfrastructureComponents, mobileNetworkTypeMap } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const onFileChange = (file: File | null) => {
@@ -103,7 +104,15 @@ const TelecomInfrastructureAgeDrawer = (props: TelecomInfrastructureAgeDrawerTyp
           onCancel={handleClose}
         >
           {(formik: FormikProps<TelecomInfrastructureAge>) => {
-            return <TelecomInfrastructureAgeForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
+            return (
+              <TelecomInfrastructureAgeForm
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+                telecomInfrastructureComponents={telecomInfrastructureComponents}
+                mobileNetworkTypeMap={mobileNetworkTypeMap}
+              />
+            );
           }}
         </FormPageWrapper>
       )}

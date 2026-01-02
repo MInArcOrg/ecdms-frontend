@@ -11,7 +11,7 @@ import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { NetworkCapacity, TelecomInfrastructure } from 'src/types/project/other';
+import type { NetworkCapacity, TelecomInfrastructureComponent } from 'src/types/project/other';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
@@ -45,17 +45,22 @@ const NetworkCapacityList: React.FC<NetworkCapacityListProps> = ({ otherSubMenu,
       })
   });
 
-  const { data: telecomInfrastructures } = useQuery({
+  const { data: telecomInfrastructureComponents } = useQuery({
     queryKey: ['telecom-infrastructures', projectId],
     queryFn: () =>
-      projectOtherApiService<TelecomInfrastructure>().getAll('telecom_infrastructure', {
+      projectOtherApiSecondService<TelecomInfrastructureComponent>().getAll('telecom-infrastructures', {
         filter: { project_id: projectId }
       })
   });
 
   // Create maps for quick lookup
   const networkTypeMap = new Map(networkTypes?.payload.map((item) => [item.id, item.title || '']) || []);
-  const telecomInfrastructureMap = new Map(telecomInfrastructures?.payload.map((item) => [item.id, item.name || 'N/A']) || []);
+  const telecomInfrastructureComponentMap = new Map(
+    telecomInfrastructureComponents?.payload.map((item) => [
+      item.id,
+      networkTypeMap.get(item.mobile_network_type_id) || 'N/A'
+    ]) || []
+  );
 
   const fetchNetworkCapacities = (params: GetRequestParam): Promise<IApiResponse<NetworkCapacity[]>> => {
     return projectOtherApiSecondService<NetworkCapacity>().getAll(otherSubMenu?.apiRoute || '', {
@@ -137,7 +142,8 @@ const NetworkCapacityList: React.FC<NetworkCapacityListProps> = ({ otherSubMenu,
           networkCapacity={selectedRow as NetworkCapacity}
           refetch={refetch}
           projectId={projectId}
-          telecomInfrastructures={telecomInfrastructures?.payload || []}
+          telecomInfrastructureComponents={telecomInfrastructureComponents?.payload || []}
+          mobileNetworkTypeMap={networkTypeMap}
         />
       )}
 
@@ -165,7 +171,7 @@ const NetworkCapacityList: React.FC<NetworkCapacityListProps> = ({ otherSubMenu,
             t,
             refetch,
             networkTypeMap,
-            telecomInfrastructureMap
+            telecomInfrastructureComponentMap
           )
         }}
         isLoading={isLoading}

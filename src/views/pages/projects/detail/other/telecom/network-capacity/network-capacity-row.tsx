@@ -20,7 +20,7 @@ export const networkCapacityColumns = (
   t: any,
   refetch: () => void,
   networkTypeMap: Map<string, string>,
-  telecomInfrastructureMap: Map<string, string>
+  telecomInfrastructureComponentMap: Map<string, string>
 ): GridColDef[] => [
   {
     flex: 0.2,
@@ -50,7 +50,7 @@ export const networkCapacityColumns = (
     field: 'telecom_infrastructure_id',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {telecomInfrastructureMap.get(row.telecom_infrastructure_id) || t('common.not-available')}
+        {telecomInfrastructureComponentMap.get(row.telecom_infrastructure_id) || t('common.not-available')}
       </Typography>
     )
   },

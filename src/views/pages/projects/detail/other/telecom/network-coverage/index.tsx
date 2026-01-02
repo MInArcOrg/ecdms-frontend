@@ -1,23 +1,23 @@
-import { useQuery } from '@tanstack/react-query';
 import { Box } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { dropDownConfig } from 'src/configs/api-constants';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
-import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import projectOtherApiService from 'src/services/project/project-other-service';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
-import { NetworkCoverage, TelecomInfrastructure } from 'src/types/project/other';
+import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import { NetworkCoverage, TelecomInfrastructureComponent } from 'src/types/project/other';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
 import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
-import NetworkCoverageCard from './network-coverage-card';
 import NetworkCoverageDrawer from './network-coverage-drawer';
 import { networkCoverageColumns } from './network-coverage-row';
-import { dropDownConfig } from 'src/configs/api-constants';
 
 interface NetworkCoverageListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -31,16 +31,31 @@ const NetworkCoverageList: React.FC<NetworkCoverageListProps> = ({ otherSubMenu,
   const [selectedRow, setSelectedRow] = useState<NetworkCoverage | null>(null);
   const { t } = useTranslation();
 
-  const { data: telecomInfrastructures } = useQuery({
+  const { data: mobileNetworkTypes } = useQuery({
+    queryKey: ['mobile-network-types'],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.mobileNetworkType.model }
+      })
+  });
+
+  const mobileNetworkTypeMap = new Map(mobileNetworkTypes?.payload.map((item) => [item.id, item.title || 'N/A']) || []);
+
+  const { data: telecomInfrastructureComponents } = useQuery({
     queryKey: ['telecom-infrastructures', projectId],
     queryFn: () =>
-      projectOtherApiService<TelecomInfrastructure>().getAll('telecom_infrastructure', dropDownConfig({
+      projectOtherApiSecondService<TelecomInfrastructureComponent>().getAll('telecom-infrastructures', dropDownConfig({
         filter: { project_id: projectId }
       })
       )
   });
 
-  const telecomInfrastructureMap = new Map(telecomInfrastructures?.payload.map((item) => [item.id, item.name || 'N/A']) || []);
+  const telecomInfrastructureComponentMap = new Map(
+    telecomInfrastructureComponents?.payload.map((item) => [
+      item.id,
+      mobileNetworkTypeMap.get(item.mobile_network_type_id) || 'N/A'
+    ]) || []
+  );
 
   const fetchNetworkCoverages = (params: GetRequestParam): Promise<IApiResponse<NetworkCoverage[]>> => {
     return projectOtherApiSecondService<NetworkCoverage>().getAll(otherSubMenu?.apiRoute || '', {
@@ -130,6 +145,19 @@ const NetworkCoverageList: React.FC<NetworkCoverageListProps> = ({ otherSubMenu,
 
   return (
     <Box>
+      {showDrawer && (
+        <NetworkCoverageDrawer
+          otherSubMenu={otherSubMenu}
+          open={showDrawer}
+          toggle={toggleDrawer}
+          networkCoverage={selectedRow as NetworkCoverage}
+          refetch={refetch}
+          projectId={projectId}
+          telecomInfrastructureComponents={telecomInfrastructureComponents?.payload || []}
+          mobileNetworkTypeMap={mobileNetworkTypeMap}
+        />
+      )}
+
       {showDetailDrawer && (
         <OtherDetailSidebar
           show={showDetailDrawer}
@@ -146,9 +174,15 @@ const NetworkCoverageList: React.FC<NetworkCoverageListProps> = ({ otherSubMenu,
         title={t('project.other.network-coverage.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
-        isLoading={isLoading}
         tableProps={{
-          headers: networkCoverageColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, telecomInfrastructureMap)
+          headers: networkCoverageColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+            refetch,
+            telecomInfrastructureComponentMap
+          )
         }}
         items={networkCoverages || []}
 
@@ -168,7 +202,8 @@ const NetworkCoverageList: React.FC<NetworkCoverageListProps> = ({ otherSubMenu,
         networkCoverage={selectedRow as NetworkCoverage}
         projectId={projectId}
         otherSubMenu={otherSubMenu}
-        telecomInfrastructures={telecomInfrastructures?.payload || []}
+        telecomInfrastructureComponents={telecomInfrastructureComponents?.payload || []}
+        mobileNetworkTypeMap={mobileNetworkTypeMap}
       />
     </Box>
   );

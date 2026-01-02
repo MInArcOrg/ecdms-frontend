@@ -11,13 +11,15 @@ import projectOtherApiService from 'src/services/project/project-other-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import type { TelecomInfrastructure, TelecomInfrastructureManufacturer } from 'src/types/project/other';
+import type { TelecomInfrastructureManufacturer, TelecomInfrastructureComponent } from 'src/types/project/other';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
 import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
 import TelecomInfrastructureManufacturerDrawer from './telecom-infrastructure-manufacturer-drawer';
 import { telecomInfrastructureManufacturerColumns } from './telecom-infrastructure-manufacturer-row';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 
 interface TelecomInfrastructureManufacturerListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -35,16 +37,29 @@ const TelecomInfrastructureManufacturerList: React.FC<TelecomInfrastructureManuf
   const [selectedRow, setSelectedRow] = useState<TelecomInfrastructureManufacturer | null>(null);
   const { t } = useTranslation();
 
-  const { data: telecomInfrastructures } = useQuery({
+  const { data: mobileNetworkTypes } = useQuery({
+    queryKey: ['mobile-network-types'],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.mobileNetworkType.model }
+      })
+  });
+
+  const mobileNetworkTypeMap = new Map(mobileNetworkTypes?.payload.map((item) => [item.id, item.title || 'N/A']) || []);
+
+  const { data: telecomInfrastructureComponents } = useQuery({
     queryKey: ['telecom-infrastructures', projectId],
     queryFn: () =>
-      projectOtherApiService<TelecomInfrastructure>().getAll('telecom_infrastructure', {
+      projectOtherApiSecondService<TelecomInfrastructureComponent>().getAll('telecom-infrastructures', {
         filter: { project_id: projectId }
       })
   });
 
-  const telecomInfrastructureMap = new Map(
-    telecomInfrastructures?.payload.map((item) => [item.id, item.name || 'N/A']) || []
+  const telecomInfrastructureComponentMap = new Map(
+    telecomInfrastructureComponents?.payload.map((item) => [
+      item.id,
+      mobileNetworkTypeMap.get(item.mobile_network_type_id) || 'N/A'
+    ]) || []
   );
 
   const fetchTelecomInfrastructureManufacturer = (
@@ -55,7 +70,6 @@ const TelecomInfrastructureManufacturerList: React.FC<TelecomInfrastructureManuf
       filter: { ...params.filter, project_id: projectId }
     });
   };
-
   const {
     data: telecomInfrastructureManufacturerList,
     isLoading,
@@ -66,6 +80,7 @@ const TelecomInfrastructureManufacturerList: React.FC<TelecomInfrastructureManuf
     queryKey: ['telecomInfrastructureManufacturer'],
     fetchFunction: fetchTelecomInfrastructureManufacturer
   });
+  console.log('telecomInfrastructureManufacturerList',telecomInfrastructureManufacturerList)
 
   const toggleDrawer = () => {
     setSelectedRow({} as TelecomInfrastructureManufacturer);
@@ -145,18 +160,22 @@ const TelecomInfrastructureManufacturerList: React.FC<TelecomInfrastructureManuf
       <ItemsListing
         title={t('project.other.telecom-infrastructure-manufacturer.title')}
         pagination={pagination}
-        type={ITEMS_LISTING_TYPE.table}
+        type={ITEMS_LISTING_TYPE.table.value}
         isLoading={isLoading}
-        columns={telecomInfrastructureManufacturerColumns(
-          handleClickDetail,
-          handleEdit,
-          handleDelete,
-          t,
-          refetch,
-          telecomInfrastructureMap
-        )}
-        data={telecomInfrastructureManufacturerList || []}
-        onPageChange={handlePageChange}
+        tableProps={
+          {
+            headers: telecomInfrastructureManufacturerColumns(
+              handleClickDetail,
+              handleEdit,
+              handleDelete,
+              t,
+              refetch,
+              telecomInfrastructureComponentMap
+            ),
+          }
+        }
+        items={telecomInfrastructureManufacturerList || []}
+        onPaginationChange={handlePageChange}
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
@@ -172,7 +191,8 @@ const TelecomInfrastructureManufacturerList: React.FC<TelecomInfrastructureManuf
         telecomInfrastructureManufacturer={selectedRow as TelecomInfrastructureManufacturer}
         projectId={projectId}
         otherSubMenu={otherSubMenu}
-        telecomInfrastructures={telecomInfrastructures?.payload || []}
+        telecomInfrastructureComponents={telecomInfrastructureComponents?.payload || []}
+        mobileNetworkTypeMap={mobileNetworkTypeMap}
       />
     </Box>
   );
