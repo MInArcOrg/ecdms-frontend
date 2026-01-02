@@ -50,14 +50,6 @@ const MobileNetworkForm: React.FC<MobileNetworkFormProps> = ({ formik, file, onF
         <Grid container spacing={2} sx={{ mb: 2 }}>
           <Grid item xs={12} sm={6} md={4}>
             <CustomSwitch
-              name="call_towers"
-              label={transl('project.other.mobile-network.details.call-towers')}
-              checked={formik.values.call_towers || false}
-              onChange={formik.handleChange}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <CustomSwitch
               name="antennas"
               label={transl('project.other.mobile-network.details.antennas')}
               checked={formik.values.antennas || false}

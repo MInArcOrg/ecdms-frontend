@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { findSubMenuItem, mobileSatelliteNetworksId } from '../(subMenuItems)';
-import NetworkCapacityList from 'src/views/pages/projects/detail/other/telecom/network-capacity';
+import MobileNetworkCapacityList from 'src/views/pages/projects/detail/other/telecom/mobile-network-capacity';
 
 const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), mobileSatelliteNetworksId.mobileNetworks.networkCapacity);
 
@@ -17,8 +17,8 @@ const NetworkCapacityPage = () => {
       activeMenuId={projectMenuIds.mobileSatelliteNetworks}
       activeSubMenuId={mobileSatelliteNetworksId.mobileNetworks.networkCapacity}
       subMenuItems={subMenuItems(id as string, typeId as string)}
-    >
-      <NetworkCapacityList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
+    > 
+      <MobileNetworkCapacityList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>
   );
 };
@@ -30,3 +30,4 @@ NetworkCapacityPage.acl = {
 };
 
 export default NetworkCapacityPage;
+  

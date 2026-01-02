@@ -198,17 +198,6 @@ const NetworkCoverageList: React.FC<NetworkCoverageListProps> = ({ otherSubMenu,
         fetchDataFunction={refetch}
         onPaginationChange={handlePageChange}
       />
-
-      <NetworkCoverageDrawer
-        open={showDrawer}
-        toggle={toggleDrawer}
-        refetch={refetch}
-        networkCoverage={selectedRow as NetworkCoverage}
-        projectId={projectId}
-        otherSubMenu={otherSubMenu}
-        telecomInfrastructureComponents={telecomInfrastructureComponents?.payload || []}
-        mobileNetworkTypeMap={mobileNetworkTypeMap}
-      />
     </Box>
   );
 };

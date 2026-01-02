@@ -1,39 +1,40 @@
-import { FormikProps } from 'formik';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
+'use client';
+
+import type { FormikProps } from 'formik';
+import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
-import NetworkCoverageForm from './network-coverage-form';
+import MobileNetworkCoverageForm from './mobile-network-coverage-form';
 
 import { useState } from 'react';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
-import { NetworkCoverage, TelecomInfrastructureComponent } from 'src/types/project/other';
+import type { MobileNetwork, MobileNetworkCoverage } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
-interface NetworkCoverageDrawerType {
+interface MobileNetworkCoverageDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  networkCoverage: NetworkCoverage;
+  mobileNetworkCoverage: MobileNetworkCoverage;
   projectId: string;
   otherSubMenu?: DetailSubMenuItemChild;
-  telecomInfrastructureComponents: TelecomInfrastructureComponent[];
-  mobileNetworkTypeMap: Map<string, string>;
+  mobileNetworks: MobileNetwork[];
 }
 
-const NetworkCoverageDrawer = (props: NetworkCoverageDrawerType) => {
-  const { open, toggle, refetch, networkCoverage, projectId, otherSubMenu, telecomInfrastructureComponents, mobileNetworkTypeMap } = props;
+const MobileNetworkCoverageDrawer = (props: MobileNetworkCoverageDrawerType) => {
+  const { open, toggle, refetch, mobileNetworkCoverage, projectId, otherSubMenu, mobileNetworks } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
+
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
 
   const validationSchema = yup.object().shape({
-    parent_id: yup.string().nullable(),
-    telecom_infrastructure_id: yup.string().required(),
     network_infrastructure_type_id: yup.string().required('Network infrastructure type is required'),
+    mobile_network_id: yup.string().required(),
     total_coverage_area: yup
       .number()
       .nullable()
@@ -63,28 +64,38 @@ const NetworkCoverageDrawer = (props: NetworkCoverageDrawerType) => {
     others: yup.string().nullable()
   });
 
-  const isEdit = Boolean(networkCoverage?.id);
+  const isEdit = Boolean(mobileNetworkCoverage?.id);
 
-  const createNetworkCoverage = async (body: IApiPayload<NetworkCoverage>) =>
-    projectOtherApiSecondService<NetworkCoverage>().create(otherSubMenu?.apiRoute || '', body);
+  const createMobileNetworkCoverage = async (body: IApiPayload<MobileNetworkCoverage>) =>
+    projectOtherApiSecondService<MobileNetworkCoverage>().create(otherSubMenu?.apiRoute || '', body);
 
-  const editNetworkCoverage = async (body: IApiPayload<NetworkCoverage>) =>
-    projectOtherApiSecondService<NetworkCoverage>().update(otherSubMenu?.apiRoute || '', networkCoverage?.id || '', body);
+  const editMobileNetworkCoverage = async (body: IApiPayload<MobileNetworkCoverage>) =>
+    projectOtherApiSecondService<MobileNetworkCoverage>().update(otherSubMenu?.apiRoute || '', mobileNetworkCoverage?.id || '', body);
 
-  const getPayload = (values: NetworkCoverage) => ({
+  const getPayload = (values: MobileNetworkCoverage) => ({
     data: {
-      ...values,
-      project_id: projectId
+      project_id: projectId,
+      mobile_network_id: values.mobile_network_id,
+      network_infrastructure_type_id: values.network_infrastructure_type_id,
+      total_coverage_area: values.total_coverage_area,
+      coverage_population_number: values.coverage_population_number,
+      active_users_number: values.active_users_number,
+      average_download_speed: values.average_download_speed,
+      average_upload_speed: values.average_upload_speed,
+      signal_strength: values.signal_strength,
+      others: values.others,
+      id: mobileNetworkCoverage?.id
     },
     files: uploadableFile ? [uploadableFile] : []
   });
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<NetworkCoverage>, payload: IApiPayload<NetworkCoverage>) => {
+  const onActionSuccess = async (response: IApiResponse<MobileNetworkCoverage>, payload: IApiPayload<MobileNetworkCoverage>) => {
     if (payload.files.length > 0) {
-      uploadFile(payload.files[0], uploadableProjectFileTypes.other.networkCoverage, response.payload.id, '', '');
+      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.networkCoverage, response.payload.id, '', '');
     }
+
     refetch();
     handleClose();
   };
@@ -97,27 +108,25 @@ const NetworkCoverageDrawer = (props: NetworkCoverageDrawerType) => {
     >
       {() => (
         <FormPageWrapper
-          key={networkCoverage?.id || 'new'}
+          key={mobileNetworkCoverage?.id || 'new'}
           edit={isEdit}
           title={`project.other.network-coverage.${isEdit ? `edit-network-coverage` : `create-network-coverage`}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...networkCoverage
+            ...mobileNetworkCoverage
           }}
-          createActionFunc={isEdit ? editNetworkCoverage : createNetworkCoverage}
+          createActionFunc={isEdit ? editMobileNetworkCoverage : createMobileNetworkCoverage}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<NetworkCoverage>) => {
+          {(formik: FormikProps<MobileNetworkCoverage>) => {
             return (
-              <NetworkCoverageForm
-                projectId={projectId}
+              <MobileNetworkCoverageForm
                 file={uploadableFile}
                 onFileChange={onFileChange}
                 formik={formik}
-                telecomInfrastructureComponents={telecomInfrastructureComponents}
-                mobileNetworkTypeMap={mobileNetworkTypeMap}
+                mobileNetworks={mobileNetworks}
               />
             );
           }}
@@ -127,4 +136,4 @@ const NetworkCoverageDrawer = (props: NetworkCoverageDrawerType) => {
   );
 };
 
-export default NetworkCoverageDrawer;
+export default MobileNetworkCoverageDrawer;

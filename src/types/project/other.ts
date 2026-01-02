@@ -34,7 +34,6 @@ export interface MobileNetwork {
   project_id: string;
   mobile_network_type_id: string;
   mobilenetworktype: ProjectGeneralMaster;
-  call_towers?: boolean;
   antennas?: boolean;
   cell_towers?: boolean;
   base_stations?: boolean;
@@ -948,6 +947,36 @@ export interface Maintenance {
   maintenance_frequency?: boolean;
   service_level_agreement?: boolean;
   remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface MobileNetworkCapacity {
+  id: string;
+  project_id: string;
+  mobile_network_id: string;
+  mobileNetwork?: MobileNetwork;
+  network_type_id: string;
+  total_bandwidth?: number;
+  users_number?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface MobileNetworkCoverage {
+  id: string;
+  project_id: string;
+  mobile_network_id: string;
+  mobileNetwork?: MobileNetwork;
+  network_infrastructure_type_id: string;
+  total_coverage_area?: number;
+  coverage_population_number?: number;
+  active_users_number?: number;
+  average_download_speed?: number;
+  average_upload_speed?: number;
+  signal_strength?: number;
+  others?: string;
   created_at?: Date;
   updated_at?: Date;
 }

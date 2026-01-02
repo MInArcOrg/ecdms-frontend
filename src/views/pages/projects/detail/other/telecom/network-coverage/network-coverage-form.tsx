@@ -3,10 +3,10 @@ import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { dropDownConfig } from 'src/configs/api-constants';
 import { gridSpacing } from 'src/configs/app-constants';
-import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { MobileNetwork, NetworkCoverage, TelecomInfrastructureComponent } from 'src/types/project/other';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
+import { NetworkCoverage, TelecomInfrastructureComponent } from 'src/types/project/other';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
@@ -23,17 +23,12 @@ interface NetworkCoverageFormProps {
 const NetworkCoverageForm: React.FC<NetworkCoverageFormProps> = ({ projectId, file, onFileChange, telecomInfrastructureComponents, mobileNetworkTypeMap }) => {
   const { t: transl } = useTranslation();
 
-  const { data: mobileNetworks } = useQuery({
-    queryKey: ['mobile-networks'],
+  const { data: networkTypes } = useQuery({
+    queryKey: ['network-types'],
     queryFn: () =>
-      projectOtherApiSecondService<MobileNetwork>().getAll(
-        'mobile-networks',
-        dropDownConfig({
-          filter: {
-            project_id: projectId
-          }
-        })
-      )
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.mobileNetworkType.model }
+      })
   });
 
   return (
@@ -58,8 +53,8 @@ const NetworkCoverageForm: React.FC<NetworkCoverageFormProps> = ({ projectId, fi
           size="small"
           sx={{ mb: 2 }}
           options={
-            mobileNetworks?.payload.map((type) => ({
-              label: type.mobilenetworktype.title,
+            networkTypes?.payload.map((type) => ({
+              label: type.title,
               value: type.id
             })) || []
           }

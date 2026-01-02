@@ -49,16 +49,16 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: mobileSatelliteNetworksId.mobileNetworks.networkCapacity,
         title: 'project.navigation.submenu.mobile-satellite.mobile-networks.network-capacity',
-        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/network-capacity`,
-        model: 'networkcapacity',
-        apiRoute: 'network-capacities'
+        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/mobile-network-capacity`,
+        model: 'mobilenetworkcapacity',
+        apiRoute: 'mobile-network-capacities'
       },
       {
         id: mobileSatelliteNetworksId.mobileNetworks.networkCoverage,
         title: 'project.navigation.submenu.mobile-satellite.mobile-networks.network-coverage',
-        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/network-coverage`,
-        model: 'networkcoverage',
-        apiRoute: 'network-coverages'
+        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/mobile-network-coverage`,
+        model: 'mobilenetworkcoverage',
+        apiRoute: 'mobile-network-coverages'
       }
     ]
   },

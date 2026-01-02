@@ -50,7 +50,7 @@ export const mobileNetworkColumns = (
     {
       flex: 0.12,
       minWidth: 100,
-      headerName: t('project.other.mobile-network.details.call-towers'),
+      headerName: t('project.other.mobile-network.details.cell-towers'),
       field: 'cell_towers',
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>{row?.cell_towers ? t('common.yes') : t('common.no')}</Typography>
