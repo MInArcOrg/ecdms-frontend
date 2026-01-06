@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import { Settings } from 'src/@core/context/settingsContext';
 
 // ** Components
+import GoogleTranslate from 'src/@core/layouts/components/shared-components/GoogleTranslate';
 import LanguageDropdown from 'src/@core/layouts/components/shared-components/LanguageDropdown';
 import ModeToggler from 'src/@core/layouts/components/shared-components/ModeToggler';
 import NotificationDropdown from 'src/@core/layouts/components/shared-components/NotificationDropdown';
@@ -29,6 +30,7 @@ const AppBarContent = (props: Props) => {
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <GoogleTranslate />
       <LanguageDropdown settings={settings} saveSettings={saveSettings} />
       <ModeToggler settings={settings} saveSettings={saveSettings} />
       {auth.user && (

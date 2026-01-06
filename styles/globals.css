@@ -33,3 +33,35 @@ code:not([class*="language-"]):after {
 code[class*="language-"] {
   padding: 0;
 }
+
+/* Hide Google Translate Top Bar */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+}
+
+/* Hide Google Translate Tooltip */
+.goog-tooltip {
+  display: none !important;
+}
+.goog-tooltip:hover {
+  display: none !important;
+}
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Hide the Google Translate Element Badge */
+iframe.goog-te-banner-frame {
+  display: none !important;
+}
+
+/* Ensure no shift in body */
+body > .skiptranslate {
+  display: none !important;
+}
