@@ -38,7 +38,8 @@ const AddressMasterList = ({ type, parentId, parentAddressMaster }: AddressMaste
     data: addressMasters,
     isLoading,
     pagination,
-    refetch
+    refetch,
+    handlePageChange
   } = usePaginatedFetch<AddressMaster[]>({
     // Query key depends on 'type' and 'parentId'
     // When the View changes the 'type' prop, this automatically refetches
@@ -71,6 +72,7 @@ const AddressMasterList = ({ type, parentId, parentAddressMaster }: AddressMaste
         isLoading={isLoading}
         onCreateClick={toggleDrawer}
         fetchDataFunction={fetchAddressMasters}
+        onPaginationChange={handlePageChange}
         tableProps={{
           headers: addressMasterColumns(handleEdit, handleDelete, t)
         }}
