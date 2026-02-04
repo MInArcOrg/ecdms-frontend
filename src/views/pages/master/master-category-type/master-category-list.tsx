@@ -100,7 +100,7 @@ const MasterCategoryList: React.FC<MasterCategoryListProps> = ({ model, selected
               onlyIcon: false,
               permission: {
                 action: 'create',
-                subject: ''
+                subject: `${model}category`
               }
             }}
             ItemViewComponent={({ data }) => (

@@ -78,7 +78,7 @@ const MasterSubCategoryList: React.FC<MasterSubCategoryListProps> = ({ model, se
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: model + 'category'
+            subject: model + 'subcategory'
           }
         }}
         ItemViewComponent={({ data }) => (
