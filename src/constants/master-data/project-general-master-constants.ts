@@ -1,4 +1,13 @@
 export const projectMasterModels = {
+  projectStatus: {
+    model: 'projectStatus',
+    dbModel: 'projectStatus',
+    title: 'project-status',
+    createTitle: 'create-project-status',
+    editTitle: 'edit-project-status',
+    fileType: 'PROJECT_STATUS',
+    flag: 'COMMON'
+  },
   functionalClassification: {
     model: 'FunctionalClassification',
     dbModel: 'functionalclassification',

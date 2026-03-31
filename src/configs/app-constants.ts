@@ -104,7 +104,9 @@ export const appModulesWithIds: { id: string; name: string; flags: { id: string;
       {
         id: 'WATER_INFRASTRUCTURE',
         name: 'Water Infrastructure'
-      }
+      },
+      { id: 'COMMON', name: 'Common' }
+
     ]
   },
   {
@@ -121,7 +123,7 @@ export const appModulesWithIds: { id: string; name: string; flags: { id: string;
       { id: 'REGULATORY_BODY', name: 'REGULATORY_BODY' },
       { id: 'REAL_ESTATE_DEVELOPER', name: 'REAL_ESTATE_DEVELOPER' },
       { id: 'CONTRACTOR', name: 'CONTRACTOR' },
-      { id: 'COMMON', name: 'COMMON' }
+      { id: 'COMMON', name: 'Common' }
     ]
   },
   {
@@ -169,6 +171,10 @@ export const appModulesWithIds: { id: string; name: string; flags: { id: string;
       {
         id: 'WATER_INFRASTRUCTURE',
         name: 'Water Infrastructure'
+      },
+      {
+        id: 'COMMON',
+        name: 'Common'
       }
     ]
   }

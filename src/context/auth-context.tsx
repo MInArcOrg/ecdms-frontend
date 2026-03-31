@@ -88,13 +88,21 @@ const AuthProvider = ({ children }: Props) => {
 
         setUser({ ...loginResponse.payload.user_data });
 
-        // 🌟 FIX: Ensure returnUrl is correctly parsed and defaults to '/' 🌟
-        const returnUrl = router.query.returnUrl as string;
+        const returnUrlQuery = router.query.returnUrl;
+        const returnUrlFromQuery = Array.isArray(returnUrlQuery) ? returnUrlQuery[0] : returnUrlQuery;
+        const returnUrlFromStorage = typeof window !== 'undefined' ? localStorage.getItem('returnUrl') : null;
 
-        // Determine the final redirect path: use returnUrl if it exists and is not just '/', otherwise default to '/'
-        const redirectPath = (returnUrl && returnUrl !== '/') ? returnUrl : '/';
-        console.log('redirectPath', redirectPath);
-        // Use router.replace to navigate to the intended page without adding login to history
+        const rawReturnUrl = returnUrlFromQuery || returnUrlFromStorage || '/';
+        const redirectPath = (() => {
+          try {
+            const decoded = decodeURIComponent(rawReturnUrl);
+            return decoded && decoded !== '/' ? decoded : '/';
+          } catch {
+            return rawReturnUrl && rawReturnUrl !== '/' ? rawReturnUrl : '/';
+          }
+        })();
+
+        if (typeof window !== 'undefined') localStorage.removeItem('returnUrl');
         router.replace(redirectPath);
       })
       .catch((err) => {
@@ -118,6 +126,7 @@ const AuthProvider = ({ children }: Props) => {
       return;
     }
 
+    localStorage.setItem('returnUrl', currentUrl);
     router.replace({
       pathname: '/auth/login',
       query: { returnUrl: currentUrl }

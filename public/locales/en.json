@@ -500,7 +500,11 @@
       "edit-track-safety-measure": "Edit Track Safety Measure",
       "construction-methods": "Construction Methods",
       "create-construction-method": "Add Construction Method",
-      "edit-construction-method": "Edit Construction Method"
+      "edit-construction-method": "Edit Construction Method",
+      "common": "Common",
+      "project-status": "Project Status",
+      "create-project-status": "Add Project Status",
+      "edit-project-status": "Edit Project Status"
     },
     "form": {
       "title": "Title",
@@ -1758,6 +1762,7 @@
       "price-details": "Price Details",
       "form": {
         "main-contract-price": "Main Contract Price",
+        "main-contract-price-amount": "Main Contract Price Amount",
         "rebate": "Rebate",
         "remark": "Remark",
         "source-of-finance": "Source of Finance"

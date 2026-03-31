@@ -26,6 +26,7 @@ export interface Project {
   main_contract_price_amount?: number;
   source_of_finance?: string;
   commencement_date?: string | Date | EthiopianDate;
+  completion_date?: string | Date | EthiopianDate;
   original_contract_duration?: number;
 }
 

@@ -2,15 +2,20 @@ import { Card, CardContent, Divider, Grid, Stack, Typography } from '@mui/materi
 import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
 import { isArray } from 'lodash';
+import moment from 'moment';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import generalMasterDataApiService from 'src/services/general/general-master-data-service';
 import masterCategoryApiService from 'src/services/master-data/master-category-service';
 import masterSubCategoryApiService from 'src/services/master-data/master-sub-category-service';
 import { Project } from 'src/types/project';
+import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
+import { convertToGC, getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
 import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 
 interface ProjectFormProps {
   formik: FormikProps<Project>;
@@ -19,16 +24,33 @@ interface ProjectFormProps {
 }
 
 const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
-  const { t: transl } = useTranslation();
+  const { t: transl, i18n } = useTranslation();
 
   const handleNumberChange = (field: keyof Project, value: string | number) => {
     const v = value === '' ? null : Number(value);
     formik.setFieldValue(field, Number.isNaN(v as number) ? null : v);
   };
 
+  const toGregorian = (dateValue?: string | Date | EthiopianDate | null) => {
+    if (!dateValue) return null;
+    if (i18n.language === 'am' && dateValue instanceof EthiopianDate) return convertToGC(dateValue);
+    return dateValue instanceof Date ? dateValue : new Date(dateValue as any);
+  };
+
+  const isSameDay = (a?: string | Date | EthiopianDate | null, b?: string | Date | EthiopianDate | null) => {
+    const dateA = toGregorian(a);
+    const dateB = toGregorian(b);
+    if (!dateA || !dateB) return false;
+    return moment(dateA).isSame(dateB, 'day');
+  };
+
   const { data: projectStatus } = useQuery({
-    queryKey: ['general-master', 'project-progress-statuses'],
-    queryFn: () => generalMasterDataApiService.getAll('project-progress-statuses', {})
+    queryKey: ["ownershipTypes", projectMasterModels.projectStatus.model],
+    queryFn: () => projectGeneralMasterDataApiService.getAll({
+      filter: {
+        model: projectMasterModels.projectStatus.model,
+      }
+    }),
   });
   const { data: projectCategories } = useQuery({
     queryKey: ['masterCategory', 'project'],
@@ -56,6 +78,30 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
       refetchSubCategories();
     }
   }, [formik.values.projectcategory_id, refetchSubCategories]);
+
+  useEffect(() => {
+    const commencementDate = toGregorian(formik.values.commencement_date);
+    const duration = formik.values.original_contract_duration;
+    if (!commencementDate || duration === undefined || duration === null) return;
+
+    const computedCompletion = moment(commencementDate).add(duration || 0, 'days').toDate();
+    const dynamicCompletion = getDynamicDate(i18n, computedCompletion);
+
+    if (!isSameDay(formik.values.completion_date, dynamicCompletion)) {
+      formik.setFieldValue('completion_date', dynamicCompletion, false);
+    }
+  }, [formik.values.commencement_date, formik.values.original_contract_duration, i18n.language]);
+
+  useEffect(() => {
+    const commencementDate = toGregorian(formik.values.commencement_date);
+    const completionDate = toGregorian(formik.values.completion_date);
+    if (!commencementDate || !completionDate) return;
+
+    const computedDuration = moment(completionDate).diff(moment(commencementDate), 'days');
+    if (formik.values.original_contract_duration !== computedDuration) {
+      formik.setFieldValue('original_contract_duration', computedDuration, false);
+    }
+  }, [formik.values.commencement_date, formik.values.completion_date, i18n.language]);
 
   return (
     <>
@@ -199,7 +245,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
 
         <Grid item xs={12} md={4}>
           <Stack spacing={3}>
-            <Card variant="outlined">
+            {/* <Card variant="outlined">
               <CardContent>
                 <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
                   Additional
@@ -229,7 +275,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
                   />
                 </Stack>
               </CardContent>
-            </Card>
+            </Card> */}
 
             <Card variant="outlined">
               <CardContent>
@@ -254,6 +300,14 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
                     size="small"
                     type="number"
                     onValueChange={(value: string | number) => handleNumberChange('original_contract_duration', value)}
+                  />
+                  <CustomDynamicDatePicker
+                    fullWidth
+                    label={transl('project.project-time.completion-date')}
+                    name="completion_date"
+                    showYearDropdown
+                    showMonthDropdown
+                    customInput={<CustomTextBox name="completion_date" />}
                   />
                 </Stack>
               </CardContent>

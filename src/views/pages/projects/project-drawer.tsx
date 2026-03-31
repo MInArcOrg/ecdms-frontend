@@ -38,6 +38,7 @@ const validationSchema = yup.object().shape({
   main_contract_price_amount: yup.number().nullable(),
   source_of_finance: yup.string().max(255).nullable(),
   commencement_date: yup.mixed().nullable(),
+  completion_date: yup.mixed().nullable(),
   original_contract_duration: yup.number().integer().nullable(),
   revision_no: yup.number().integer().nullable()
 });
@@ -65,6 +66,7 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
             ? undefined
             : Number(values.main_contract_price_amount),
         commencement_date: convertDateToLocaleDate(values.commencement_date),
+        completion_date: convertDateToLocaleDate(values.completion_date),
         original_contract_duration:
           values.original_contract_duration === undefined || values.original_contract_duration === null
             ? undefined
@@ -97,7 +99,11 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
           translatedTitle={translatedTitle}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{ ...project, commencement_date: formatInitialDateDate(project?.commencement_date) }}
+          initialValues={{
+            ...project,
+            commencement_date: formatInitialDateDate(project?.commencement_date),
+            completion_date: formatInitialDateDate(project?.completion_date)
+          }}
           createActionFunc={isEdit ? editProject : createProject}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
