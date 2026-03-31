@@ -27,6 +27,12 @@ const addressmasterApiService = {
       .catch((error: any) => {
         throw error;
       }),
+  getAllParentAddressMastersTree: (idx: string, params?: GetRequestParam): Promise<IApiResponse<AddressMaster[]>> =>
+    buildGetRequest(`/masterdata/address-master-data/all-parents${idx ? '/' + idx : ''}`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
+      }),
   delete: (idx: string): Promise<IApiResponse> =>
     axiosServices
       .delete(`/masterdata/address-master-data/${idx}`)

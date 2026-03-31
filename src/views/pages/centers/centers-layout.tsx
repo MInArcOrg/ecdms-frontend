@@ -107,7 +107,7 @@ const CentersLayout = ({ children, value, routes }: CentersLayoutProps) => {
               <CompanyCard name="Position" count="14" iconName="tabler:note" />
             </Grid>
             <Grid item xs={12} md={4}>
-              <CompanyCard name="Professional" count="15" iconName="tabler:message-dots" />
+              <CompanyCard name="Expert" count="15" iconName="tabler:message-dots" />
             </Grid>
             <Grid item xs={12} md={12}>
               <TabContext value={value}>
@@ -121,7 +121,6 @@ const CentersLayout = ({ children, value, routes }: CentersLayoutProps) => {
                   {ability.can('view', 'professional') && (
                     <Tab value="3" component={Link} label={t('department.tabs.experts')} href={currentRoutes[2].path} />
                   )}
-                  <Tab value="4" component={Link} label={t('department.tabs.documents')} href={currentRoutes[3].path} />
                 </TabList>
                 {cloneElement(children, {
                   parentDepartment: department?.payload

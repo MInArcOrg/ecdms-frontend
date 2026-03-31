@@ -13,8 +13,9 @@ function StructureComponent({ parentDepartmentId, viewAll }: { parentDepartmentI
       data={
         data?.payload
           ? data?.payload?.map((item: any) => ({
-            ...item,
-            parentNodeId: item?.parent_node_id
+            id: item.id,
+            name: item.name,
+            parentNodeId: item.parent_node_id || item.parentNodeId,
           }))
           : []
       }

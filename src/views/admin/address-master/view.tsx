@@ -43,6 +43,12 @@ const AddressMasterView = (props: AddressMasterViewProps) => {
 
   const parentAddressMaster = parentAddressMasterResponse?.payload;
 
+  const { data: addressTree } = useQuery({
+    queryKey: ['address-master-tree', parentId],
+    queryFn: () => addressmasterApiService.getAllParentAddressMastersTree(parentId as string),
+    enabled: !!parentId
+  });
+
   // 2. Fetch the root data (used for redirection if at root level /country)
   const { data: rootAddressMaster, isLoading: isRootLoading } = useQuery({
     queryKey: ['root-address-master'],
@@ -109,8 +115,32 @@ const AddressMasterView = (props: AddressMasterViewProps) => {
     );
   }
 
+  const renderBreadcrumbs = () => {
+    if (!addressTree?.payload?.length) return null;
+
+    return (
+      <Typography variant="subtitle1" sx={{ alignSelf: 'end', textDecoration: 'none' }} paddingBottom={2} fontSize={13}>
+        {addressTree.payload.map((item: AddressMaster) => (
+          <span key={item.id}>
+            <Typography
+              component={Link}
+              href={`/address-master/${item.type}/${item.id}`}
+              sx={{ textDecoration: 'none' }}
+            >
+              {item.title}/
+            </Typography>
+            &nbsp;&nbsp;
+          </span>
+        ))}
+      </Typography>
+    );
+  };
+
   return (
     <Grid container spacing={2}>
+      <Grid item xs={12}>
+        {renderBreadcrumbs()}
+      </Grid>
       {/* LEFT: Parent Address Card */}
       <Grid item xs={12} md={4} lg={3}>
         {parentAddressMaster && (

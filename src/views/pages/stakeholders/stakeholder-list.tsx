@@ -160,7 +160,7 @@ function StakholdersList() {
             onlyIcon: false,
             permission: {
               action: "create",
-              subject: "resource",
+              subject: "stakeholder",
             },
           }}
           fetchDataFunction={refetch}
