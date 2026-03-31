@@ -9,6 +9,7 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import ProjectForm from './project-form';
 import { MasterType } from 'src/types/master/master-types';
 import { useTranslation } from 'react-i18next';
+import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
 interface ProjectDrawerType {
   open: boolean;
@@ -34,6 +35,10 @@ const validationSchema = yup.object().shape({
   contract_no: yup.string().max(255).nullable(),
   budget_code: yup.string().max(255).nullable(),
   procurement_no: yup.string().max(255).nullable(),
+  main_contract_price_amount: yup.number().nullable(),
+  source_of_finance: yup.string().max(255).nullable(),
+  commencement_date: yup.mixed().nullable(),
+  original_contract_duration: yup.number().integer().nullable(),
   revision_no: yup.number().integer().nullable()
 });
 
@@ -54,7 +59,16 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
       data: {
         ...values,
         id: project?.id,
-        projecttype_id: typeId
+        projecttype_id: typeId,
+        main_contract_price_amount:
+          values.main_contract_price_amount === undefined || values.main_contract_price_amount === null
+            ? undefined
+            : Number(values.main_contract_price_amount),
+        commencement_date: convertDateToLocaleDate(values.commencement_date),
+        original_contract_duration:
+          values.original_contract_duration === undefined || values.original_contract_duration === null
+            ? undefined
+            : Number(values.original_contract_duration)
       },
       files: []
     };
@@ -75,6 +89,7 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
       translatedTitle={translatedTitle}
       handleClose={handleClose}
       open={open}
+      width={1000}
     >
       {() => (
         <FormPageWrapper
@@ -82,7 +97,7 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
           translatedTitle={translatedTitle}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{ ...project }}
+          initialValues={{ ...project, commencement_date: formatInitialDateDate(project?.commencement_date) }}
           createActionFunc={isEdit ? editProject : createProject}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

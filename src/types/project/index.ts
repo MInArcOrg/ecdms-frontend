@@ -1,4 +1,5 @@
 import { GeneralMaster } from '../general/general-master';
+import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
 
 export interface Project {
   id: string;
@@ -22,6 +23,10 @@ export interface Project {
   grade?: string;
   end_user?: string;
   function?: string;
+  main_contract_price_amount?: number;
+  source_of_finance?: string;
+  commencement_date?: string | Date | EthiopianDate;
+  original_contract_duration?: number;
 }
 
 export interface ProjectStatus {

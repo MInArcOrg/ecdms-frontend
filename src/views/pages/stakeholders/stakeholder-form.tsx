@@ -15,6 +15,8 @@ import { Icon } from "@iconify/react";
 import CustomDynamicDatePicker from "src/views/shared/form/custom-dynamic-date-box";
 import CustomPhoneInput from "src/views/shared/form/custom-phone-box";
 import CustomFileUpload from "src/views/shared/form/custome-file-selector";
+import stakeholderGeneralMasterDataApiService from "src/services/general/stakeholder-general-master-data-service";
+import { stakeholderMasterModels } from "src/constants/master-data/stakeholder-general-master-constants";
 
 interface StakeholderFormProps {
   formik: FormikProps<Stakeholder>;
@@ -60,13 +62,21 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
   }, [formik.values.stakeholdercategory_id]);
 
   const { data: ownershipTypes } = useQuery({
-    queryKey: ["ownershipTypes"],
-    queryFn: () => generalMasterDataApiService.getAll("ownerships", {}),
+    queryKey: ["ownershipTypes", stakeholderMasterModels.businessfield.model],
+    queryFn: () => stakeholderGeneralMasterDataApiService.getAll({
+      filter: {
+        model: stakeholderMasterModels.ownershiptype.model,
+      }
+    }),
   });
 
   const { data: businessfields } = useQuery({
-    queryKey: ["businessfields"],
-    queryFn: () => generalMasterDataApiService.getAll("business-fields", {}),
+    queryKey: ["businessfields", stakeholderMasterModels.businessfield.model],
+    queryFn: () => stakeholderGeneralMasterDataApiService.getAll({
+      filter: {
+        model: stakeholderMasterModels.businessfield.model,
+      }
+    }),
   });
 
   // Utility to check if there's a primary email or phone

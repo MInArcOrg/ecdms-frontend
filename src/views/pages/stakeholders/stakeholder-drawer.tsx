@@ -41,8 +41,7 @@ const validationSchema = yup.object().shape({
   tin: yup
     .string()
     .matches(/^\d+$/, "TIN must contain only numbers")
-    .length(10, "TIN must be exactly 10 digits")
-    .required("TIN is required"),
+    .length(10, "TIN must be exactly 10 digits"),
   origin: yup.string().max(255).required("Origin is required"),
   license_issued_date: yup
     .string()
