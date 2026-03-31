@@ -11,7 +11,7 @@ export interface Stakeholder {
   stakeholdercategory_id: string;
   stakeholdersubcategory_id?: string;
   trade_name: string; // decrypted version
-  tin: string;
+  tin?: string | null;
   ownership_id: string;
   businessfield_id?: string;
   origin: string;

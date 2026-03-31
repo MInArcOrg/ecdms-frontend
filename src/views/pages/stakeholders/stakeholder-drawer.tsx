@@ -40,8 +40,11 @@ const validationSchema = yup.object().shape({
   trade_name: yup.string().max(255).required("Trade Name is required"),
   tin: yup
     .string()
-    .matches(/^\d+$/, "TIN must contain only numbers")
-    .length(10, "TIN must be exactly 10 digits"),
+    .optional()
+    .nullable()
+    .transform((value) => (value === "" ? null : value))
+    .matches(/^\d+$/, { message: "TIN must contain only numbers", excludeEmptyString: true })
+    .test("tin-length", "TIN must be exactly 10 digits", (value) => !value || value.length === 10),
   origin: yup.string().max(255).required("Origin is required"),
   license_issued_date: yup
     .string()
@@ -87,6 +90,7 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
         ...values,
         id: stakeholder?.id,
         stakeholdertype_id: typeId,
+        tin: values.tin ? values.tin : null,
         license_issued_date: convertDateToLocaleDate(
           values.license_issued_date,
         ),
@@ -191,6 +195,8 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...stakeholder,
+            origin: isEdit ? stakeholder?.origin : stakeholder?.origin || 'Ethiopia',
+            tin: stakeholder?.tin ?? '',
             license_issued_date: stakeholder?.license_issued_date
               ? getDynamicDate(
                 i18n,

@@ -106,10 +106,22 @@ const AuthProvider = ({ children }: Props) => {
   };
 
   const handleLogout = () => {
+    const currentUrl =
+      typeof window !== 'undefined' ? `${window.location.pathname}${window.location.search}` : router.asPath;
+
     localStorage.removeItem(authConfig.storageUserKeyName);
     localStorage.removeItem(authConfig.storageTokenKeyName);
+    localStorage.removeItem('refreshToken');
     setUser(null);
-    router.push('/auth/login');
+    if (currentUrl.includes('login') || currentUrl.includes('check-profile')) {
+      router.replace('/auth/login');
+      return;
+    }
+
+    router.replace({
+      pathname: '/auth/login',
+      query: { returnUrl: currentUrl }
+    });
   };
 
   return (

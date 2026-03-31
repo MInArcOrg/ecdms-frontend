@@ -17,6 +17,7 @@ import CustomPhoneInput from "src/views/shared/form/custom-phone-box";
 import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 import stakeholderGeneralMasterDataApiService from "src/services/general/stakeholder-general-master-data-service";
 import { stakeholderMasterModels } from "src/constants/master-data/stakeholder-general-master-constants";
+import countriesList from "src/constants/countries";
 
 interface StakeholderFormProps {
   formik: FormikProps<Stakeholder>;
@@ -148,18 +149,21 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
         placeholder={transl("stakeholder.form.tin")}
         name="tin"
         maxLength={10}
-        minLength={10}
         size="small"
         sx={{ mb: 2 }}
       />
-      <CustomTextBox
-        fullWidth
-        label={transl("stakeholder.form.origin")}
-        placeholder={transl("stakeholder.form.origin")}
-        name="origin"
-        size="small"
-        sx={{ mb: 2 }}
-      />
+      <Box mb={2}>
+        <CustomSelect
+          name="origin"
+          label={transl("stakeholder.form.origin")}
+          options={
+            countriesList.map((country) => ({
+              value: country.title,
+              label: country.title,
+            })) || []
+          }
+        />
+      </Box>
 
       <CustomDynamicDatePicker
         fullWidth

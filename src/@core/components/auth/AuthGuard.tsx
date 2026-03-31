@@ -24,14 +24,13 @@ const AuthGuard = (props: AuthGuardProps) => {
       }
 
       if (auth.user === null && !window.localStorage.getItem('userData')) {
-        if (!router.asPath.match('login')) {
-          router.replace({
-            pathname: '/auth/login',
-            query: { returnUrl: router.asPath }
-          });
-        } else {
-          router.replace('/auth/login');
-        }
+        const isOnLoginPage = router.pathname === '/auth/login' || router.asPath.startsWith('/auth/login');
+        if (isOnLoginPage) return;
+
+        router.replace({
+          pathname: '/auth/login',
+          query: { returnUrl: router.asPath }
+        });
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
