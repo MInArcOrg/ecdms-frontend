@@ -6,7 +6,7 @@ export const stakeholderMasterModels = {
         createTitle: 'create-ownership-type',
         editTitle: 'edit-ownership-type',
         fileType: 'OWNERSHIP_TYPE',
-        flag: 'EDUCATION_INSTITUTION'
+        flag: 'COMMON'
     },
     businessfield: {
         model: 'BusinessField',
@@ -15,7 +15,7 @@ export const stakeholderMasterModels = {
         createTitle: 'create-business-field',
         editTitle: 'edit-business-field',
         fileType: 'BUSINESS_FIELD',
-        flag: 'EDUCATION_INSTITUTION'
+        flag: 'COMMON'
     },
     studylevel: {
         model: 'StudyLevel',

@@ -120,7 +120,8 @@ export const appModulesWithIds: { id: string; name: string; flags: { id: string;
       { id: 'ASSOCIATION', name: 'ASSOCIATION' },
       { id: 'REGULATORY_BODY', name: 'REGULATORY_BODY' },
       { id: 'REAL_ESTATE_DEVELOPER', name: 'REAL_ESTATE_DEVELOPER' },
-      { id: 'CONTRACTOR', name: 'CONTRACTOR' }
+      { id: 'CONTRACTOR', name: 'CONTRACTOR' },
+      { id: 'COMMON', name: 'COMMON' }
     ]
   },
   {
