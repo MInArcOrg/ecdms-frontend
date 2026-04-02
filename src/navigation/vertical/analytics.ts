@@ -34,13 +34,6 @@ export default [
         action: 'view',
         subject: 'resource'
       },
-      {
-        title: 'Document',
-        path: '/analytics/document',
-        icon: 'tabler:file',
-        action: 'view',
-        subject: 'document'
-      }
     ]
   }
 ];
