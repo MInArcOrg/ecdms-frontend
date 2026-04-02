@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
 import { isArray } from 'lodash';
 import moment from 'moment';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import generalMasterDataApiService from 'src/services/general/general-master-data-service';
 import masterCategoryApiService from 'src/services/master-data/master-category-service';
@@ -25,24 +25,28 @@ interface ProjectFormProps {
 
 const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
   const { t: transl, i18n } = useTranslation();
+  const { values, setFieldValue } = formik;
 
   const handleNumberChange = (field: keyof Project, value: string | number) => {
     const v = value === '' ? null : Number(value);
-    formik.setFieldValue(field, Number.isNaN(v as number) ? null : v);
+    setFieldValue(field, Number.isNaN(v as number) ? null : v);
   };
 
-  const toGregorian = (dateValue?: string | Date | EthiopianDate | null) => {
+  const toGregorian = useCallback((dateValue?: string | Date | EthiopianDate | null) => {
     if (!dateValue) return null;
     if (i18n.language === 'am' && dateValue instanceof EthiopianDate) return convertToGC(dateValue);
     return dateValue instanceof Date ? dateValue : new Date(dateValue as any);
-  };
+  }, [i18n.language]);
 
-  const isSameDay = (a?: string | Date | EthiopianDate | null, b?: string | Date | EthiopianDate | null) => {
-    const dateA = toGregorian(a);
-    const dateB = toGregorian(b);
-    if (!dateA || !dateB) return false;
-    return moment(dateA).isSame(dateB, 'day');
-  };
+  const isSameDay = useCallback(
+    (a?: string | Date | EthiopianDate | null, b?: string | Date | EthiopianDate | null) => {
+      const dateA = toGregorian(a);
+      const dateB = toGregorian(b);
+      if (!dateA || !dateB) return false;
+      return moment(dateA).isSame(dateB, 'day');
+    },
+    [toGregorian]
+  );
 
   const { data: projectStatus } = useQuery({
     queryKey: ["ownershipTypes", projectMasterModels.projectStatus.model],
@@ -67,41 +71,49 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
     queryFn: () =>
       masterSubCategoryApiService.getAll('project', {
         filter: {
-          projectcategory_id: formik.values.projectcategory_id
+          projectcategory_id: values.projectcategory_id
         }
       }),
-    enabled: !!formik.values.projectcategory_id // Only fetch subcategories when a category is selected
+    enabled: !!values.projectcategory_id // Only fetch subcategories when a category is selected
   });
 
   useEffect(() => {
-    if (formik.values.projectcategory_id) {
+    if (values.projectcategory_id) {
       refetchSubCategories();
     }
-  }, [formik.values.projectcategory_id, refetchSubCategories]);
+  }, [values.projectcategory_id, refetchSubCategories]);
 
   useEffect(() => {
-    const commencementDate = toGregorian(formik.values.commencement_date);
-    const duration = formik.values.original_contract_duration;
+    const commencementDate = toGregorian(values.commencement_date);
+    const duration = values.original_contract_duration;
     if (!commencementDate || duration === undefined || duration === null) return;
 
     const computedCompletion = moment(commencementDate).add(duration || 0, 'days').toDate();
     const dynamicCompletion = getDynamicDate(i18n, computedCompletion);
 
-    if (!isSameDay(formik.values.completion_date, dynamicCompletion)) {
-      formik.setFieldValue('completion_date', dynamicCompletion, false);
+    if (!isSameDay(values.completion_date, dynamicCompletion)) {
+      setFieldValue('completion_date', dynamicCompletion, false);
     }
-  }, [formik.values.commencement_date, formik.values.original_contract_duration, i18n.language]);
+  }, [
+    i18n,
+    isSameDay,
+    setFieldValue,
+    toGregorian,
+    values.commencement_date,
+    values.completion_date,
+    values.original_contract_duration
+  ]);
 
   useEffect(() => {
-    const commencementDate = toGregorian(formik.values.commencement_date);
-    const completionDate = toGregorian(formik.values.completion_date);
+    const commencementDate = toGregorian(values.commencement_date);
+    const completionDate = toGregorian(values.completion_date);
     if (!commencementDate || !completionDate) return;
 
     const computedDuration = moment(completionDate).diff(moment(commencementDate), 'days');
-    if (formik.values.original_contract_duration !== computedDuration) {
-      formik.setFieldValue('original_contract_duration', computedDuration, false);
+    if (values.original_contract_duration !== computedDuration) {
+      setFieldValue('original_contract_duration', computedDuration, false);
     }
-  }, [formik.values.commencement_date, formik.values.completion_date, i18n.language]);
+  }, [setFieldValue, toGregorian, values.commencement_date, values.completion_date, values.original_contract_duration]);
 
   return (
     <>

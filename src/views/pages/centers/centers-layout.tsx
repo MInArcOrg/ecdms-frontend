@@ -32,7 +32,6 @@ const CentersLayout = ({ children, value, routes }: CentersLayoutProps) => {
   const ability = useContext(AbilityContext);
   const { t } = useTranslation();
 
-  // routes(id)[0]
 
   // const [{ data: department, loading, error }, refetch] = getDepartmentById(id);
   const {
@@ -55,6 +54,12 @@ const CentersLayout = ({ children, value, routes }: CentersLayoutProps) => {
     enabled: !!id
   });
 
+  const { data: centerStat, isLoading: isCenterStatLoading } = useQuery({
+    queryKey: ['department-center-stat', id],
+    queryFn: () => departmentApiService.getCenterStat(String(id), {}),
+    enabled: !!id
+  });
+
   const currentRoutes = useMemo(() => (id ? routes(String(id)) : routes()), [id, routes]);
 
   if (departmentError || treeError) {
@@ -72,6 +77,26 @@ const CentersLayout = ({ children, value, routes }: CentersLayoutProps) => {
       </Box>
     );
   }
+
+  const statValue = (keys: string[], fallback = 0) => {
+    const payload = centerStat?.payload as Record<string, unknown> | undefined;
+    if (!payload) return fallback;
+
+    for (const key of keys) {
+      const v = payload[key];
+      if (typeof v === 'number') return v;
+      if (typeof v === 'string' && v.trim() !== '' && !Number.isNaN(Number(v))) return Number(v);
+    }
+
+    return fallback;
+  };
+
+  const departmentCount = statValue(
+    ['department', 'departments', 'sub_department', 'sub_departments', 'department_count', 'departments_count', 'sub_department_count'],
+    0
+  );
+  const positionCount = statValue(['position', 'positions', 'position_count', 'positions_count'], 0);
+  const expertCount = statValue(['expert', 'experts', 'professional', 'professionals', 'expert_count', 'experts_count'], 0);
 
   const renderBreadcrumbs = () => {
     if (!departmentsTree?.payload) return null;
@@ -101,13 +126,17 @@ const CentersLayout = ({ children, value, routes }: CentersLayoutProps) => {
         <Grid item xs={12} md={8}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={4}>
-              <CompanyCard name="Department" count="34" iconName="tabler:book-2" />
+              <CompanyCard
+                name="Department"
+                count={isCenterStatLoading ? '...' : String(departmentCount)}
+                iconName="tabler:book-2"
+              />
             </Grid>
             <Grid item xs={12} md={4}>
-              <CompanyCard name="Position" count="14" iconName="tabler:note" />
+              <CompanyCard name="Position" count={isCenterStatLoading ? '...' : String(positionCount)} iconName="tabler:note" />
             </Grid>
             <Grid item xs={12} md={4}>
-              <CompanyCard name="Expert" count="15" iconName="tabler:message-dots" />
+              <CompanyCard name="Expert" count={isCenterStatLoading ? '...' : String(expertCount)} iconName="tabler:message-dots" />
             </Grid>
             <Grid item xs={12} md={12}>
               <TabContext value={value}>

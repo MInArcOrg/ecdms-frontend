@@ -89,6 +89,13 @@ const departmentApiService = {
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;
+      }),
+
+  getCenterStat: (idx: string, params?: GetRequestParam): Promise<IApiResponse> =>
+    buildGetRequest(`/departments/center-stat/${idx}`, params)
+      .then((response: AxiosResponse<IApiResponse>) => response.data)
+      .catch((error: any) => {
+        throw error;
       })
 };
 
