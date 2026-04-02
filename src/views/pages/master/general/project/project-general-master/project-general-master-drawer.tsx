@@ -45,7 +45,7 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
         ...values,
         id: masterData?.id,
         model: projectMasterModel.model,
-        project_type_id: values.project_type_id || null,
+        project_type_id: values.project_type_id,
       },
       files: uploadableFile ? [uploadableFile] : []
     };
