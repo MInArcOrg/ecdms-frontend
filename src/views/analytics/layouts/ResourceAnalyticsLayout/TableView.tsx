@@ -1,5 +1,5 @@
 // ** React Imports
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 // ** MUI Imports
 import {
@@ -43,7 +43,6 @@ const TableView = ({ years = [], baseYear, data = [] }: TableViewProps) => {
   // ** States
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [rows, setRows] = useState<any[]>([]);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -56,31 +55,27 @@ const TableView = ({ years = [], baseYear, data = [] }: TableViewProps) => {
 
   // Normalize values based on baseYear (percentage)
   const normalizeValues = (values: number[]) => {
-    const baseValue = values[baseYear];
+    const safeIndex = baseYear >= 0 && baseYear < values.length ? baseYear : 0;
+    const baseValue = values[safeIndex];
     if (!baseValue || baseValue === 0) return values.map(() => 0);
     return values.map((v) => Number(((v / baseValue) * 100).toFixed(1)));
   };
 
-  // Build table rows dynamically
-  useEffect(() => {
-    if (data?.length > 0) {
-      const newRows = data.map((item) => {
-        const normalized = normalizeValues(item.data);
-        // Map each year to its corresponding normalized value
-        const yearData = years.reduce((acc, year, index) => {
-          acc[year.name] = normalized[index] ?? '-';
-          return acc;
-        }, {} as Record<string, number | string>);
+  const rows = useMemo(() => {
+    if (!data?.length) return [];
 
-        return {
-          label: item.label,
-          ...yearData
-        };
-      });
-      setRows(newRows);
-    } else {
-      setRows([]);
-    }
+    return data.map((item) => {
+      const normalized = normalizeValues(item.data);
+      const yearData = years.reduce((acc, year, index) => {
+        acc[year.name] = normalized[index] ?? '-';
+        return acc;
+      }, {} as Record<string, number | string>);
+
+      return {
+        label: item.label,
+        ...yearData
+      };
+    });
   }, [data, years, baseYear]);
 
   return (

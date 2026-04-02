@@ -6,27 +6,27 @@ export const menuItems = () => [
     subject: 'stakeholderinfo',
     path: '/analytics/stakeholder'
   },
-  {
-    id: 2,
-    title: 'Employees',
-    action: 'view',
-    subject: 'stakeholderemployee',
-    path: '/analytics/stakeholder/employees'
-  },
-  {
-    id: 3,
-    title: 'Specific',
-    action: 'view',
-    subject: 'stakeholderspecific',
-    path: '/analytics/stakeholder/specific'
-  },
-  {
-    id: 4,
-    title: 'Projects',
-    action: 'view',
-    subject: 'stakeholderproject',
-    path: '/analytics/stakeholder/projects'
-  },
+  // {
+  //   id: 2,
+  //   title: 'Employees',
+  //   action: 'view',
+  //   subject: 'stakeholderemployee',
+  //   path: '/analytics/stakeholder/employees'
+  // },
+  // {
+  //   id: 3,
+  //   title: 'Specific',
+  //   action: 'view',
+  //   subject: 'stakeholderspecific',
+  //   path: '/analytics/stakeholder/specific'
+  // },
+  // {
+  //   id: 4,
+  //   title: 'Projects',
+  //   action: 'view',
+  //   subject: 'stakeholderproject',
+  //   path: '/analytics/stakeholder/projects'
+  // },
   {
     id: 5,
     title: 'Files',

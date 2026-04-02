@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import masterTypeApiService from 'src/services/master-data/master-type-service';
 import { ProjectGeneralMaster } from 'src/types/general/general-master';
@@ -15,28 +16,21 @@ interface ProjectGeneralMasterFormProps {
   defaultLocaleData?: ProjectGeneralMaster;
   onFileChange: (file: File | null) => void;
   file: File | null;
+  flag: string;
 }
 
-const ProjectGeneralMasterForm: React.FC<ProjectGeneralMasterFormProps> = ({ formik, file, onFileChange }) => {
+const ProjectGeneralMasterForm: React.FC<ProjectGeneralMasterFormProps> = ({ formik, file, onFileChange, flag }) => {
   const { data: projectTypes } = useQuery({
     queryKey: ['masterCategory', 'project'],
     queryFn: () => masterTypeApiService.getAll('project', {})
   });
   const { t: transl } = useTranslation();
-
+  useEffect(() => {
+    formik.setFieldValue('project_type_id', projectTypes?.payload?.find((projectType) => projectType.flag === flag)?.id || '')
+  }, [flag])
   return (
     <>
-      <CustomSelectBox
-        size="small"
-        name="project_type_id"
-        label={transl('master-data.form.project-type')}
-        options={
-          projectTypes?.payload?.map((projectType) => ({
-            value: projectType.id,
-            label: projectType.title
-          })) || []
-        }
-      />
+
       <CustomTextBox
         fullWidth
         label={transl('master-data.form.title')}

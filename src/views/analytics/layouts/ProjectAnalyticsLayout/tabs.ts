@@ -13,27 +13,27 @@ export const menuItems = (baseUrl: string) => [
     subject: 'projectfinance',
     path: `${baseUrl}/financial`
   },
-  {
-    id: 3,
-    title: 'Time',
-    action: 'view',
-    subject: 'projecttime',
-    path: `${baseUrl}/time`
-  },
-  {
-    id: 4,
-    title: 'Stakeholder',
-    action: 'view',
-    subject: 'projectstakeholder',
-    path: `${baseUrl}/stakeholder`
-  },
-  {
-    id: 5,
-    title: 'Project File',
-    action: 'view',
-    subject: 'projectfile',
-    path: `${baseUrl}/project-file`
-  },
+  // {
+  //   id: 3,
+  //   title: 'Time',
+  //   action: 'view',
+  //   subject: 'projecttime',
+  //   path: `${baseUrl}/time`
+  // },
+  // {
+  //   id: 4,
+  //   title: 'Stakeholder',
+  //   action: 'view',
+  //   subject: 'projectstakeholder',
+  //   path: `${baseUrl}/stakeholder`
+  // },
+  // {
+  //   id: 5,
+  //   title: 'Project File',
+  //   action: 'view',
+  //   subject: 'projectfile',
+  //   path: `${baseUrl}/project-file`
+  // },
   {
     id: 6,
     title: 'Plan',
@@ -41,13 +41,13 @@ export const menuItems = (baseUrl: string) => [
     subject: 'projectplan',
     path: `${baseUrl}/plan`
   },
-  {
-    id: 7,
-    title: 'Resource',
-    action: 'view',
-    subject: 'projectresource',
-    path: `${baseUrl}/resource`
-  },
+  // {
+  //   id: 7,
+  //   title: 'Resource',
+  //   action: 'view',
+  //   subject: 'projectresource',
+  //   path: `${baseUrl}/resource`
+  // },
 
   {
     id: 8,
@@ -56,13 +56,13 @@ export const menuItems = (baseUrl: string) => [
     subject: 'projectreport',
     path: `${baseUrl}/report`
   },
-  {
-    id: 9,
-    title: 'Other',
-    action: 'view',
-    subject: 'other',
-    path: `${baseUrl}/other`
-  },
+  // {
+  //   id: 9,
+  //   title: 'Other',
+  //   action: 'view',
+  //   subject: 'other',
+  //   path: `${baseUrl}/other`
+  // },
   {
     id: 10,
     title: 'Location',

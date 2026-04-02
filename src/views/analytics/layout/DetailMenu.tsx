@@ -53,15 +53,13 @@ function DetailMenu({
         <FormControl sx={{ my: 2 }}>
           <Select
             id="demo-simple-select"
-            defaultValue={activeMenu}
             value={activeMenu}
             onChange={(e) => {
-              const path = menuItems?.find((item) => item.id === Number(e.target.value))?.path || '';
-              setActiveMenu(path);
+              setActiveMenu(String(e.target.value));
             }}
           >
             {menuItems.map((item) => (
-              <MenuItem value={item.id} key={item.id}>
+              <MenuItem value={item.path} key={item.id}>
                 {item.title}
               </MenuItem>
             ))}

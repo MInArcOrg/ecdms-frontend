@@ -19,7 +19,6 @@ interface GeneralMasterDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  project_type_id: yup.string().required('Project Type is required'),
   title: yup.string().required('Title is required'),
   description: yup.string().required('Description is required')
 });
@@ -45,7 +44,8 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
       data: {
         ...values,
         id: masterData?.id,
-        model: projectMasterModel.model
+        model: projectMasterModel.model,
+        project_type_id: values.project_type_id || null,
       },
       files: uploadableFile ? [uploadableFile] : []
     };
@@ -89,6 +89,7 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
                   onFileChange={onFileChange}
                   formik={formik}
                   defaultLocaleData={{} as ProjectGeneralMaster}
+                  flag={projectMasterModel.flag || ''}
                 />
               </>
             );
