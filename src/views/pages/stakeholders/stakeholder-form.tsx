@@ -165,6 +165,15 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
         />
       </Box>
 
+      <CustomTextBox
+        fullWidth
+        label="License Number"
+        placeholder="License Number"
+        name="license_number"
+        size="small"
+        sx={{ mb: 2 }}
+      />
+
       <CustomDynamicDatePicker
         fullWidth
         label={transl("stakeholder.form.license_issued_date")}

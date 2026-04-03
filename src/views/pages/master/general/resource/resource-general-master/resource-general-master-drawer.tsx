@@ -89,6 +89,7 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
                   onFileChange={onFileChange}
                   formik={formik}
                   defaultLocaleData={{} as ResourceGeneralMaster}
+                  flag={resourceMasterModel.flag || ''}
                 />
               </>
             );

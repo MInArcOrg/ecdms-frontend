@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import masterTypeApiService from 'src/services/master-data/master-type-service';
 import { ResourceGeneralMaster } from 'src/types/general/general-master';
@@ -15,28 +16,22 @@ interface ResourceGeneralMasterFormProps {
   defaultLocaleData?: ResourceGeneralMaster;
   onFileChange: (file: File | null) => void;
   file: File | null;
+  flag: string;
 }
 
-const ResourceGeneralMasterForm: React.FC<ResourceGeneralMasterFormProps> = ({ formik, file, onFileChange }) => {
+const ResourceGeneralMasterForm: React.FC<ResourceGeneralMasterFormProps> = ({ formik, file, onFileChange, flag }) => {
   const { data: resourceTypes } = useQuery({
     queryKey: ['masterCategory', 'resource'],
-    queryFn: () => masterTypeApiService.getAll('resource', {})
+    queryFn: () => masterTypeApiService.getAll('resource', {}),
   });
-  const { t: transl } = useTranslation();
 
+  const { t: transl } = useTranslation();
+  useEffect(() => {
+    formik.setFieldValue('resource_type_id', resourceTypes?.payload?.find((resourceType) => resourceType.flag === flag)?.id || '')
+  }, [flag])
   return (
     <>
-      <CustomSelectBox
-        size="small"
-        name="resource_type_id"
-        label={transl('master-data.form.resource-type')}
-        options={
-          resourceTypes?.payload?.map((resourceType) => ({
-            value: resourceType.id,
-            label: resourceType.title
-          })) || []
-        }
-      />
+
       <CustomTextBox
         fullWidth
         label={transl('master-data.form.title')}

@@ -1484,7 +1484,7 @@
     "project-time": {
       "information": "Time Information",
       "commencement-date": "Commencement Date",
-      "completion-date": "Completion Date",
+      "completion-date": "Original Completion Date",
       "total-duration": "Total Duration",
       "elapsed-time": "Elapsed Time",
       "edit-project-time": "Edit Project Time",

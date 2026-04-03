@@ -60,6 +60,12 @@ const validationSchema = yup.object().shape({
 
       return selected <= today;
     }),
+  license_number: yup
+    .string()
+    .optional()
+    .nullable()
+    .transform((value) => (value === "" ? null : value))
+    .matches(/^[A-Za-z0-9/#*_]+$/, "License Number can only contain letters, numbers, /, #, *, _"),
 
   ownership_id: yup.string().max(36).required("Ownership is required"),
   businessfield_id: yup.string().max(36).nullable(),
@@ -94,6 +100,7 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
         license_issued_date: convertDateToLocaleDate(
           values.license_issued_date,
         ),
+        license_number: values.license_number || null,
       },
       files: uploadableFile ? [uploadableFile] : [],
     };
@@ -203,6 +210,7 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
                 moment(String(stakeholder?.license_issued_date)).toDate(),
               )
               : undefined,
+            license_number: stakeholder?.license_number ?? '',
           }}
           createActionFunc={isEdit ? editResource : createResource}
           onActionSuccess={onActionSuccess}

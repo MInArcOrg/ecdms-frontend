@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import masterTypeApiService from 'src/services/master-data/master-type-service';
 import { StakeholderGeneralMaster } from 'src/types/general/general-master';
@@ -15,28 +16,22 @@ interface StakeholderGeneralMasterFormProps {
   defaultLocaleData?: StakeholderGeneralMaster;
   onFileChange: (file: File | null) => void;
   file: File | null;
+  flag?: string;
 }
 
-const StakeholderGeneralMasterForm: React.FC<StakeholderGeneralMasterFormProps> = ({ formik, file, onFileChange }) => {
+const StakeholderGeneralMasterForm: React.FC<StakeholderGeneralMasterFormProps> = ({ formik, file, onFileChange, flag }) => {
   const { data: stakeholderTypes } = useQuery({
     queryKey: ['masterData', 'stakeholder'],
     queryFn: () => masterTypeApiService.getAll('stakeholder', {})
   });
   const { t: transl } = useTranslation();
+  useEffect(() => {
+    formik.setFieldValue('stakeholder_type_id', stakeholderTypes?.payload?.find((stakeholderType) => stakeholderType.flag === flag)?.id || '')
+  }, [flag])
 
   return (
     <>
-      <CustomSelectBox
-        size="small"
-        name="stakeholder_type_id"
-        label={transl('master-data.form.stakeholder-type')}
-        options={
-          stakeholderTypes?.payload?.map((stakeholderType) => ({
-            value: stakeholderType.id,
-            label: stakeholderType.title
-          })) || []
-        }
-      />
+
       <CustomTextBox
         fullWidth
         label={transl('master-data.form.title')}

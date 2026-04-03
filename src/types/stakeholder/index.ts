@@ -16,6 +16,7 @@ export interface Stakeholder {
   businessfield_id?: string;
   origin: string;
   license_issued_date?: string | Date | EthiopianDate;
+  license_number?: string | null;
   revision_no?: number;
   created_at?: Date;
   updated_at?: Date;
