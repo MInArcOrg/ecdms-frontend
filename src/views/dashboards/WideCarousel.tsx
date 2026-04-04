@@ -1,46 +1,54 @@
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
+import { alpha, useTheme } from '@mui/material/styles'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-const slides = [
-  {
-    img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1920',
-    title: 'National Infrastructure Overview',
-    subtitle: 'Latest Updates and KPIs'
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1581091870627-3a6109ad7c9f?q=80&w=1920',
-    title: 'Resource Allocation',
-    subtitle: 'Materials • Equipment • Labor'
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920',
-    title: 'Stakeholder Engagement',
-    subtitle: 'Contractors • Consultants • Clients'
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?q=80&w=1920',
-    title: 'Projects Pipeline',
-    subtitle: 'Road • Water • Energy'
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1504933551745-14af2f079ba9?q=80&w=1920',
-    title: 'Compliance & Documents',
-    subtitle: 'Permits • Reports • Drawings'
-  }
-]
-
-
 interface WideCarouselProps {
   overlay?: React.ReactNode
+  height?: number
+  slides?: number[]
 }
 
-const WideCarousel: React.FC<WideCarouselProps> = ({ overlay }) => {
+const SlideImage = ({ slide, height }: { slide: number; height: number }) => {
+  const candidates = useMemo(
+    () => [
+      `/images/slider/IMAGES/${slide}.webp`,
+      `/images/slider/IMAGES/${slide}.jpg`,
+      `/images/slider/${slide}.webp`,
+      `/images/slider/${slide}.jpg`
+    ],
+    [slide]
+  )
+  const [index, setIndex] = useState(0)
+  const src = candidates[index]
+
+  return (
+    <Box
+      component="img"
+      alt={`Slide ${slide}`}
+      src={src}
+      onError={() => setIndex((current) => (current + 1 < candidates.length ? current + 1 : current))}
+      sx={{ width: '100%', height, objectFit: 'cover', display: 'block' }}
+    />
+  )
+}
+
+const WideCarousel: React.FC<WideCarouselProps> = ({ overlay, height = 280, slides: slidesProp }) => {
+  const theme = useTheme()
+  const slides = useMemo(
+    () => (slidesProp?.length ? slidesProp : Array.from({ length: 20 }, (_, i) => i + 1)),
+    [slidesProp]
+  )
+  const overlayGradient = useMemo(() => {
+    const primary = alpha(theme.palette.primary.main, 0.68)
+    const secondary = alpha(theme.palette.secondary.main, 0.52)
+    const clear = alpha(theme.palette.common.black, 0)
+    return `linear-gradient(90deg, ${primary} 0%, ${secondary} 48%, ${clear} 100%)`
+  }, [theme.palette.common.black, theme.palette.primary.main, theme.palette.secondary.main])
   const settings = {
     infinite: true,
     speed: 500,
@@ -53,37 +61,23 @@ const WideCarousel: React.FC<WideCarouselProps> = ({ overlay }) => {
 
   return (
     <Card sx={{ position: 'relative' }}>
-      <CardContent 
-             sx={{ width: '100%', height: 360, objectFit: 'cover' }}
-      >
+      <CardContent sx={{ p: 0, width: '100%' }}>
         <Slider {...settings}>
-          {[1, 2, 4, 8].map((slide) => (
+          {slides.map((slide) => (
             <Box key={slide} sx={{ position: 'relative' }}>
-              <Box
-                component="img"
-                src={'/images/slider/'+slide.toString()+'.jpg'}
-                sx={{ width: '100%', height: 240, objectFit: 'cover' }}
-              />
-              <Box
-                sx={{
-                  position: 'absolute',
-                  left: 16,
-                  bottom: 20,
-                  bgcolor: 'rgba(0,0,0,0.48)',
-                  color: '#fff',
-                  p: 2.5,
-                  borderRadius: 3,
-                  backdropFilter: 'blur(2px)'
-                }}
-              >
-             
-              </Box>
+              <SlideImage slide={slide} height={height} />
             </Box>
           ))}
         </Slider>
-        {overlay ? (
-          <Box sx={{ position: 'absolute', left: 35, bottom: 23, zIndex: 6 }}>{overlay}</Box>
-        ) : null}
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            background: overlayGradient,
+            pointerEvents: 'none'
+          }}
+        />
+        {overlay ? <Box sx={{ position: 'absolute', inset: 0, p: 6, zIndex: 2 }}>{overlay}</Box> : null}
       </CardContent>
     </Card>
   )

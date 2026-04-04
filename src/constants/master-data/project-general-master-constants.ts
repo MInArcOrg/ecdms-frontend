@@ -8,6 +8,15 @@ export const projectMasterModels = {
     fileType: 'PROJECT_STATUS',
     flag: 'COMMON'
   },
+  sourceOfFund: {
+    model: 'SourceOfFund',
+    dbModel: 'sourceoffund',
+    title: 'source-of-funds',
+    createTitle: 'create-source-of-fund',
+    editTitle: 'edit-source-of-fund',
+    fileType: 'SOURCE_OF_FUND',
+    flag: 'COMMON'
+  },
   functionalClassification: {
     model: 'FunctionalClassification',
     dbModel: 'functionalclassification',

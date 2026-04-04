@@ -47,6 +47,28 @@ export const StakeholderRow = (
     {
       flex: 0.15,
       minWidth: 120,
+      headerName: t("stakeholder.columns.category"),
+      field: "category",
+      renderCell: ({ row }: CellType) => {
+        return (
+          <Typography sx={{ color: "text.secondary" }}>{row?.stakeholdercategory?.title}</Typography>
+        );
+      },
+    },
+    {
+      flex: 0.15,
+      minWidth: 120,
+      headerName: t("stakeholder.columns.sub-category"),
+      field: "subCategory",
+      renderCell: ({ row }: CellType) => {
+        return (
+          <Typography sx={{ color: "text.secondary" }}>{row?.stakeholdersubcategory?.title}</Typography>
+        );
+      },
+    },
+    {
+      flex: 0.15,
+      minWidth: 120,
       headerName: t("stakeholder.columns.tin"),
       field: "tin",
       renderCell: ({ row }: CellType) => {

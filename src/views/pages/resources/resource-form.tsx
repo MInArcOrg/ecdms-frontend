@@ -32,11 +32,11 @@ const ResourceForm: React.FC<ResourceFormProps> = ({ formik, typeId }) => {
   const { data: resourceSubCategories, refetch: refetchSubCategories } = useQuery({
     queryKey: ['masterSubCategory', 'resource'],
     queryFn: () =>
-      masterSubCategoryApiService.getAll('resource', {
+      masterSubCategoryApiService.getAll('resource', dropDownConfig({
         filter: {
           resourcecategory_id: formik.values.resourcecategory_id
         }
-      }),
+      })),
     enabled: !!formik.values.resourcecategory_id // Only fetch subcategories when a category is selected
   });
   const { data: qualityMeasurementUnits } = useQuery({

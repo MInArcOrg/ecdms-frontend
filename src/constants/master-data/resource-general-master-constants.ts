@@ -6,7 +6,7 @@ export const resourceMasterModels = {
     createTitle: 'create-quality',
     editTitle: 'edit-quality',
     fileType: 'QUALITY',
-    flag: 'RESOURCE'
+    flag: 'COMMON'
   },
   quantityMeasurementUnit: {
     model: 'QuantityMeasurementUnit',
@@ -15,7 +15,7 @@ export const resourceMasterModels = {
     createTitle: 'create-quantity-measurement-unit',
     editTitle: 'edit-quantity-measurement-unit',
     fileType: 'QUANTITY_MEASUREMENT_UNIT',
-    flag: 'RESOURCE'
+    flag: 'COMMON'
   },
   qualityMeasurementUnit: {
     model: 'QualityMeasurementUnit',

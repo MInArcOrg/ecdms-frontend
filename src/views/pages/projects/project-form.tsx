@@ -16,6 +16,7 @@ import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
+import { dropDownConfig } from 'src/configs/api-constants';
 
 interface ProjectFormProps {
   formik: FormikProps<Project>;
@@ -50,30 +51,38 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
 
   const { data: projectStatus } = useQuery({
     queryKey: ["ownershipTypes", projectMasterModels.projectStatus.model],
-    queryFn: () => projectGeneralMasterDataApiService.getAll({
+    queryFn: () => projectGeneralMasterDataApiService.getAll(dropDownConfig({
       filter: {
         model: projectMasterModels.projectStatus.model,
       }
-    }),
+    })),
+  });
+  const { data: sourceOffunds } = useQuery({
+    queryKey: ["sourceOfFunds", projectMasterModels.sourceOfFund.model],
+    queryFn: () => projectGeneralMasterDataApiService.getAll(dropDownConfig({
+      filter: {
+        model: projectMasterModels.sourceOfFund.model,
+      }
+    })),
   });
   const { data: projectCategories } = useQuery({
     queryKey: ['masterCategory', 'project'],
     queryFn: () =>
-      masterCategoryApiService.getAll('project', {
+      masterCategoryApiService.getAll('project', dropDownConfig({
         filter: {
           projecttype_id: typeId
         }
-      })
+      }))
   });
 
   const { data: projectSubCategories, refetch: refetchSubCategories } = useQuery({
     queryKey: ['masterSubCategory', 'project'],
     queryFn: () =>
-      masterSubCategoryApiService.getAll('project', {
+      masterSubCategoryApiService.getAll('project', dropDownConfig({
         filter: {
           projectcategory_id: values.projectcategory_id
         }
-      }),
+      })),
     enabled: !!values.projectcategory_id // Only fetch subcategories when a category is selected
   });
 
@@ -242,12 +251,19 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
                     type="number"
                     onValueChange={(value: string | number) => handleNumberChange('main_contract_price_amount', value)}
                   />
-                  <CustomTextBox
+                  <CustomSelect
                     fullWidth
-                    label={transl('project.main-contract-price.form.source-of-finance')}
-                    placeholder={transl('project.main-contract-price.form.source-of-finance')}
-                    name="source_of_finance"
                     size="small"
+                    name="source_of_fund_id"
+                    label={transl('project.main-contract-price.form.source-of-finance')}
+                    options={
+                      isArray(sourceOffunds?.payload)
+                        ? sourceOffunds?.payload?.map((sourceOfFund) => ({
+                          value: sourceOfFund.id,
+                          label: sourceOfFund.title
+                        }))
+                        : []
+                    }
                   />
                 </Stack>
               </CardContent>

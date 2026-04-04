@@ -504,7 +504,10 @@
       "common": "Common",
       "project-status": "Project Status",
       "create-project-status": "Add Project Status",
-      "edit-project-status": "Edit Project Status"
+      "edit-project-status": "Edit Project Status",
+      "source-of-funds": "Source of Funds",
+      "create-source-of-fund": "Add Source of Fund",
+      "edit-source-of-fund": "Edit Source of Fund"
     },
     "form": {
       "title": "Title",

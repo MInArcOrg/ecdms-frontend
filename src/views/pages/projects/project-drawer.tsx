@@ -36,7 +36,7 @@ const validationSchema = yup.object().shape({
   budget_code: yup.string().max(255).nullable(),
   procurement_no: yup.string().max(255).nullable(),
   main_contract_price_amount: yup.number().nullable(),
-  source_of_finance: yup.string().max(255).nullable(),
+  source_of_fund_id: yup.string().max(255).nullable(),
   commencement_date: yup.mixed().nullable(),
   completion_date: yup.mixed().nullable(),
   original_contract_duration: yup.number().integer().nullable(),

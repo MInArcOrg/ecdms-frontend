@@ -18,6 +18,7 @@ import CustomFileUpload from "src/views/shared/form/custome-file-selector";
 import stakeholderGeneralMasterDataApiService from "src/services/general/stakeholder-general-master-data-service";
 import { stakeholderMasterModels } from "src/constants/master-data/stakeholder-general-master-constants";
 import countriesList from "src/constants/countries";
+import { dropDownConfig } from "src/configs/api-constants";
 
 interface StakeholderFormProps {
   formik: FormikProps<Stakeholder>;
@@ -41,20 +42,20 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
   const { data: resourceCategories } = useQuery({
     queryKey: ["masterCategory", "stakeholder"],
     queryFn: () =>
-      masterCategoryApiService.getAll("stakeholder", {
+      masterCategoryApiService.getAll("stakeholder", dropDownConfig({
         filter: { stakeholdertype_id: typeId },
-      }),
+      })),
   });
 
   const { data: resourceSubCategories, refetch: refetchSubCategories } =
     useQuery({
       queryKey: ["masterSubCategory", "stakeholder"],
       queryFn: () =>
-        masterSubCategoryApiService.getAll("stakeholder", {
+        masterSubCategoryApiService.getAll("stakeholder", dropDownConfig({
           filter: {
             stakeholdercategory_id: formik.values.stakeholdercategory_id,
           },
-        }),
+        })),
       enabled: !!formik.values.stakeholdercategory_id,
     });
 
@@ -64,20 +65,20 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
 
   const { data: ownershipTypes } = useQuery({
     queryKey: ["ownershipTypes", stakeholderMasterModels.businessfield.model],
-    queryFn: () => stakeholderGeneralMasterDataApiService.getAll({
+    queryFn: () => stakeholderGeneralMasterDataApiService.getAll(dropDownConfig({
       filter: {
         model: stakeholderMasterModels.ownershiptype.model,
       }
-    }),
+    })),
   });
 
   const { data: businessfields } = useQuery({
     queryKey: ["businessfields", stakeholderMasterModels.businessfield.model],
-    queryFn: () => stakeholderGeneralMasterDataApiService.getAll({
+    queryFn: () => stakeholderGeneralMasterDataApiService.getAll(dropDownConfig({
       filter: {
         model: stakeholderMasterModels.businessfield.model,
       }
-    }),
+    })),
   });
 
   // Utility to check if there's a primary email or phone
