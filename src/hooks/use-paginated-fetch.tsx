@@ -56,6 +56,7 @@ const usePaginatedFetch = <T,>({ queryKey, fetchFunction, exportApiCall, initial
         // Use the actual export configuration (assuming the caller component wraps it)
         const actualExportConfig = exportConfig.export;
         const format = actualExportConfig.format; // e.g., 'xlsx' or 'csv'
+        const downloadExtension = String(format).toLowerCase() === 'excel' ? 'xlsx' : String(format);
 
         // 1. Construct the ExportParam
         const exportParam: ExportParam = {
@@ -85,7 +86,7 @@ const usePaginatedFetch = <T,>({ queryKey, fetchFunction, exportApiCall, initial
             // NOTE: Since Blob/Axios usually don't give direct header access here, 
             // we use a simple default name. If using fetch, you'd extract the filename 
             // from the Content-Disposition header (like in the helper function above).
-            const defaultFilename = `export_data.${format}`;
+            const defaultFilename = `export_data.${downloadExtension}`;
 
             link.setAttribute('download', defaultFilename);
             document.body.appendChild(link);

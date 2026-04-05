@@ -8,7 +8,7 @@ import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const masterTypeApiService = {
   getAll: (model: string, params: GetRequestParam): Promise<IApiResponse<MasterType[]>> =>
-    buildGetRequest(`/masterdata/${model}-types`, params)
+    buildGetRequest(`/masterdata/${model}-types`, { ...params, sorting: { property: 'title', direction: 'asc' } })
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;

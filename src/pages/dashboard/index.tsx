@@ -10,6 +10,9 @@ import Alert from '@mui/material/Alert';
 import Skeleton from '@mui/material/Skeleton';
 import Chip from '@mui/material/Chip';
 import LinearProgress from '@mui/material/LinearProgress';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import { useQuery } from '@tanstack/react-query';
 import { useTheme } from '@mui/material/styles';
 import type { ApexOptions } from 'apexcharts';
@@ -24,7 +27,7 @@ import dashboardApiService from 'src/services/dashboard/dashboard-service';
 import departmentApiService from 'src/services/department/department-service';
 import DonutChart from 'src/views/dashboards/DonutChart';
 import WideCarousel from 'src/views/dashboards/WideCarousel';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import Icon from 'src/@core/components/icon';
 import { timeGreating } from 'src/utils/formatter/date';
@@ -44,6 +47,35 @@ const formatCompactNumber = (value: number) => {
 };
 
 type BreakdownType = Record<string, number>;
+
+const getTypeCount = (types: BreakdownType[] | undefined, matchers: string[]) => {
+  const matcherSet = matchers.map((m) => m.toLowerCase());
+  return (types || []).reduce((sum, obj) => {
+    const entry = Object.entries(obj)[0];
+    if (!entry) return sum;
+    const [label, value] = entry;
+    const lower = String(label || '').toLowerCase();
+    const matched = matcherSet.some((m) => lower.includes(m));
+    return matched ? sum + safeNumber(value) : sum;
+  }, 0);
+};
+
+const humanizeKey = (key: string) => {
+  const withSpaces = String(key || '').replace(/_/g, ' ');
+  return withSpaces.replace(/\b\w/g, (m) => m.toUpperCase());
+};
+
+const normalizeBreakdown = (types: BreakdownType[] | undefined) => {
+  return (types || [])
+    .map((obj) => {
+      const entry = Object.entries(obj)[0];
+      const key = String(entry?.[0] || '');
+      const value = safeNumber(entry?.[1]);
+      return { key, label: humanizeKey(key), value };
+    })
+    .filter((x) => x.key)
+    .sort((a, b) => b.value - a.value);
+};
 
 const KpiCard = ({
   title,
@@ -104,57 +136,229 @@ const ModuleBreakdownCard = ({
   loading: boolean;
 }) => {
   const breakdown = useMemo(() => types || [], [types]);
-  const top3 = breakdown.slice(0, 3);
+  const top3 = useMemo(() => normalizeBreakdown(types).slice(0, 3), [types]);
   const colors = ['primary.main', 'secondary.main', 'success.main'];
 
   return (
     <Card>
       <CardHeader title={<Typography sx={{ fontWeight: 800 }}>{title}</Typography>} subheader={subtitle} />
-      <CardContent sx={{ pt: 2, display: 'flex', flexDirection: 'column', gap: 3 }}>
-        {loading ? (
-          <Skeleton variant="rounded" height={180} />
-        ) : (
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <DonutChart data={breakdown} height={180} showLegend={false} centerLabel="TOTAL" centerValue={safeNumber(total)} />
-          </Box>
-        )}
-        {loading ? (
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-            <Skeleton width="70%" />
-            <Skeleton width="60%" />
-            <Skeleton width="55%" />
-          </Box>
-        ) : (
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25 }}>
-            {top3.map((obj, idx) => {
-              const [label, value] = Object.entries(obj)[0] || [];
-              return (
-                <Box
-                  key={`${label}-${idx}`}
-                  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2 }}
-                >
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, minWidth: 0 }}>
-                    <Box sx={{ width: 8, height: 8, borderRadius: 10, bgcolor: colors[idx] || 'grey.400' }} />
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: 'text.secondary',
-                        whiteSpace: 'nowrap',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis'
-                      }}
-                    >
-                      {String(label || '')}
+      <CardContent sx={{ pt: 2 }}>
+        <Grid container spacing={6} alignItems="center">
+          <Grid item xs={12} md={6}>
+            {loading ? (
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+                <Skeleton width="70%" />
+                <Skeleton width="60%" />
+                <Skeleton width="55%" />
+              </Box>
+            ) : (
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25 }}>
+                {top3.map((item, idx) => (
+                  <Box
+                    key={`${item.key}-${idx}`}
+                    sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2 }}
+                  >
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, minWidth: 0 }}>
+                      <Box sx={{ width: 8, height: 8, borderRadius: 10, bgcolor: colors[idx] || 'grey.400' }} />
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: 'text.secondary',
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis'
+                        }}
+                      >
+                        {item.label}
+                      </Typography>
+                    </Box>
+                    <Typography variant="body2" sx={{ fontWeight: 800 }}>
+                      {item.value}
                     </Typography>
                   </Box>
-                  <Typography variant="body2" sx={{ fontWeight: 800 }}>
-                    {safeNumber(value)}
-                  </Typography>
-                </Box>
-              );
-            })}
-          </Box>
-        )}
+                ))}
+              </Box>
+            )}
+          </Grid>
+          <Grid item xs={12} md={6}>
+            {loading ? (
+              <Skeleton variant="rounded" height={180} />
+            ) : (
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <DonutChart data={breakdown} height={180} showLegend={false} centerLabel="TOTAL" centerValue={safeNumber(total)} />
+              </Box>
+            )}
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
+  );
+};
+
+const SplitBreakdownChartCard = ({
+  title,
+  total,
+  items,
+  details,
+  fetchDetails,
+  loading,
+  theme
+}: {
+  title: string;
+  total: number;
+  items: { key: string; label: string; value: number }[];
+  details?: Record<string, { label: string; value: number }[]>;
+  fetchDetails?: (key: string) => Promise<{ label: string; value: number }[]>;
+  loading: boolean;
+  theme: any;
+}) => {
+  const topList = items.slice(0, 4);
+  const firstKey = items[0]?.key || '';
+  const [selectedKey, setSelectedKey] = useState<string>(firstKey);
+  useEffect(() => {
+    if (!items.some((x) => x.key === selectedKey)) {
+      setSelectedKey(firstKey);
+    }
+  }, [firstKey, items, selectedKey]);
+
+  const selectedLabel = items.find((x) => x.key === selectedKey)?.label || topList[0]?.label || 'Overview';
+  const { data: fetchedDetails, isLoading: isDetailsLoading } = useQuery({
+    queryKey: ['dashboard-split-breakdown-details', title, selectedKey],
+    queryFn: () => fetchDetails?.(selectedKey) as Promise<{ label: string; value: number }[]>,
+    enabled: Boolean(fetchDetails && selectedKey)
+  });
+
+  const selectedSeries = details?.[selectedKey] || fetchedDetails || [];
+  const chartItems = selectedSeries.length
+    ? selectedSeries.map((x) => ({ label: x.label, value: x.value }))
+    : items.slice(0, 6);
+  const computedTotal = total > 0 ? total : items.reduce((sum, item) => sum + safeNumber(item.value), 0);
+
+  const chartOptions: ApexOptions = useMemo(
+    () => ({
+      chart: { type: 'bar', toolbar: { show: false } },
+      plotOptions: { bar: { borderRadius: 6, columnWidth: '55%' } },
+      dataLabels: { enabled: false },
+      colors: [theme.palette.primary.main],
+      grid: { borderColor: theme.palette.divider, padding: { left: 8, right: 8 } },
+      xaxis: {
+        categories: chartItems.map((x) => x.label),
+        axisBorder: { show: false },
+        axisTicks: { show: false },
+        labels: { style: { colors: theme.palette.text.disabled } }
+      },
+      yaxis: {
+        labels: {
+          formatter: (val: number) => formatCompactNumber(Math.round(val)),
+          style: { colors: theme.palette.text.disabled }
+        }
+      },
+      tooltip: { theme: theme.palette.mode }
+    }),
+    [chartItems, theme.palette]
+  );
+
+  return (
+    <Card>
+      <CardHeader
+        title={<Typography sx={{ fontWeight: 800 }}>{title}</Typography>}
+        subheader={loading ? '' : formatCompactNumber(computedTotal)}
+        action={
+          <FormControl size="small" sx={{ minWidth: 110 }}>
+            <Select value="ALL" disabled>
+              <MenuItem value="ALL">ALL</MenuItem>
+            </Select>
+          </FormControl>
+        }
+      />
+      <CardContent sx={{ pt: 2 }}>
+        <Grid container spacing={6}>
+          <Grid item xs={12} md={5}>
+            <Typography variant="subtitle2" sx={{ fontWeight: 800, mb: 3 }}>
+              Categories
+            </Typography>
+            {loading ? (
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <Skeleton width="80%" />
+                <Skeleton width="75%" />
+                <Skeleton width="70%" />
+                <Skeleton width="65%" />
+              </Box>
+            ) : (
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                {topList.map((item) => {
+                  const pct = computedTotal > 0 ? Math.round((item.value / computedTotal) * 100) : 0;
+                  const isSelected = item.key === selectedKey;
+                  return (
+                    <Box
+                      key={item.key}
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => setSelectedKey(item.key)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') setSelectedKey(item.key);
+                      }}
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 1,
+                        cursor: 'pointer',
+                        borderRadius: 2,
+                        p: 2,
+                        bgcolor: isSelected ? 'action.hover' : 'transparent'
+                      }}
+                    >
+                      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2 }}>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: 'text.secondary',
+                            fontWeight: 700,
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis'
+                          }}
+                        >
+                          {formatCompactNumber(item.value)} - {item.label}
+                        </Typography>
+                        <Typography variant="body2" sx={{ fontWeight: 900 }}>
+                          {pct}%
+                        </Typography>
+                      </Box>
+                      <LinearProgress
+                        variant="determinate"
+                        value={pct}
+                        sx={{
+                          height: 8,
+                          borderRadius: 10,
+                          bgcolor: 'action.hover',
+                          '& .MuiLinearProgress-bar': { borderRadius: 10 }
+                        }}
+                      />
+                    </Box>
+                  );
+                })}
+              </Box>
+            )}
+          </Grid>
+          <Grid item xs={12} md={7}>
+            <Typography variant="subtitle2" sx={{ fontWeight: 800, mb: 3 }}>
+              {selectedLabel}
+            </Typography>
+            {loading ? (
+              <Skeleton variant="rounded" height={260} />
+            ) : isDetailsLoading ? (
+              <Skeleton variant="rounded" height={260} />
+            ) : (
+              <ReactApexcharts
+                type="bar"
+                height={260}
+                options={chartOptions}
+                series={[{ name: title, data: chartItems.map((x) => x.value) }]}
+              />
+            )}
+          </Grid>
+        </Grid>
       </CardContent>
     </Card>
   );
@@ -298,6 +502,51 @@ const EcommerceDashboard = () => {
     };
   }, [summary?.project?.types]);
 
+  const kpis = useMemo(() => {
+    const contractors = getTypeCount(summary?.stakeholder?.types, ['contractor']);
+    const consultants = getTypeCount(summary?.stakeholder?.types, ['consultants']);
+    const roadProjects = getTypeCount(summary?.project?.types, ['road']);
+    const buildingProjects = getTypeCount(summary?.project?.types, ['building']);
+    const machinery = getTypeCount(summary?.resource?.types, ['machinery_and_equipment']);
+    return { contractors, consultants, roadProjects, buildingProjects, machinery };
+  }, [summary?.project?.types, summary?.resource?.types, summary?.stakeholder?.types]);
+
+  const dummySplit = useMemo(
+    () => ({
+      contractors: [
+        { key: 'general_contractors', label: 'General Contractors', value: 37 },
+        { key: 'building_contractors', label: 'Building Contractors', value: 23 },
+        { key: 'road_contractors', label: 'Road Contractors', value: 21 },
+        { key: 'special_contractors', label: 'Special Contractors', value: 19 }
+      ],
+      consultants: [
+        { key: 'general_consultants', label: 'General Consultants', value: 42 },
+        { key: 'design_consultants', label: 'Design Consultants', value: 26 },
+        { key: 'supervision_consultants', label: 'Supervision Consultants', value: 20 },
+        { key: 'special_consultants', label: 'Special Consultants', value: 12 }
+      ],
+      roadProjects: [
+        { key: 'asphalt', label: 'Asphalt', value: 12 },
+        { key: 'gravel', label: 'Gravel', value: 7 },
+        { key: 'cobblestone', label: 'Cobblestone', value: 8 },
+        { key: 'bridge', label: 'Bridge', value: 10 }
+      ],
+      buildingProjects: [
+        { key: 'residential', label: 'Residential', value: 14 },
+        { key: 'commercial', label: 'Commercial', value: 9 },
+        { key: 'public', label: 'Public', value: 11 },
+        { key: 'industrial', label: 'Industrial', value: 6 }
+      ],
+      machinery: [
+        { key: 'excavator', label: 'Excavators', value: 12 },
+        { key: 'grader', label: 'Graders', value: 7 },
+        { key: 'loader', label: 'Loaders', value: 8 },
+        { key: 'roller', label: 'Rollers', value: 10 }
+      ]
+    }),
+    []
+  );
+
   const projectTypeMixOptions: ApexOptions = useMemo(
     () => ({
       chart: { type: 'bar', toolbar: { show: false } },
@@ -348,7 +597,7 @@ const EcommerceDashboard = () => {
                     {t(greeting.greating)}, {user?.name || ''}
                   </Typography>
                   <Typography sx={{ mt: 2.5, color: 'rgba(255,255,255,0.85)', maxWidth: 520 }}>
-                    Welcome back to your ECDMS command center. Here is the latest overview of your enterprise assets and
+                    Welcome back to your <span className="notranslate" translate="no">ECDMS</span> command center. Here is the latest overview of your enterprise assets and
                     stakeholder distribution.
                   </Typography>
                   <Typography sx={{ mt: 1.5, color: 'rgba(255,255,255,0.75)' }}>
@@ -407,62 +656,57 @@ const EcommerceDashboard = () => {
           </Grid>
         ) : null}
 
-        <Grid item xs={12} md={2}>
-          <KpiCard
-            title="Reporting Coverage"
-            value={isDashboardLoading ? '' : '—'}
-            subtitle="Cities/zones/regions reporting this period"
-            icon="tabler:building-community"
-            loading={isDashboardLoading}
-          />
-        </Grid>
-        <Grid item xs={12} md={2}>
-          <KpiCard
-            title="Active Projects"
-            value={isDashboardLoading ? '' : formatCompactNumber(totals.projectTotal)}
-            subtitle="Projects currently in the pipeline"
-            icon="tabler:briefcase"
-            loading={isDashboardLoading}
-          />
-        </Grid>
-        <Grid item xs={12} md={2}>
-          <KpiCard
-            title="Investment (ETB)"
-            value={isDashboardLoading ? '' : '—'}
-            subtitle="Total contract value / budget"
-            icon="tabler:currency-dollar"
-            loading={isDashboardLoading}
-          />
-        </Grid>
-        <Grid item xs={12} md={2}>
-          <KpiCard
-            title="Completion Rate"
-            value={isDashboardLoading ? '' : '—'}
-            subtitle="Completed vs started (period)"
-            icon="tabler:circle-check"
-            loading={isDashboardLoading}
-          />
-        </Grid>
-        <Grid item xs={12} md={2}>
-          <KpiCard
-            title="Stakeholders"
-            value={isDashboardLoading ? '' : formatCompactNumber(totals.stakeholderTotal)}
-            subtitle="Registered contractors & consultants"
-            icon="tabler:users"
-            loading={isDashboardLoading}
-          />
-        </Grid>
-        <Grid item xs={12} md={2}>
-          <KpiCard
-            title="Documents"
-            value={isDashboardLoading ? '' : formatCompactNumber(totals.documentTotal)}
-            subtitle="Submitted documents and records"
-            icon="tabler:file-text"
-            loading={isDashboardLoading}
-          />
+        <Grid item xs={12}>
+          <Grid container spacing={6} columns={{ xs: 12, md: 10 }}>
+            <Grid item xs={12} sm={6} md={2}>
+              <KpiCard
+                title="Contractors"
+                value={isDashboardLoading ? '' : formatCompactNumber(kpis.contractors)}
+                subtitle="Registered contractors"
+                icon="tabler:helmet"
+                loading={isDashboardLoading}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={2}>
+              <KpiCard
+                title="Consultants"
+                value={isDashboardLoading ? '' : formatCompactNumber(kpis.consultants)}
+                subtitle="Registered consultants"
+                icon="tabler:briefcase"
+                loading={isDashboardLoading}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={2}>
+              <KpiCard
+                title="Road Projects"
+                value={isDashboardLoading ? '' : formatCompactNumber(kpis.roadProjects)}
+                subtitle="Road sector portfolio"
+                icon="tabler:road"
+                loading={isDashboardLoading}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={2}>
+              <KpiCard
+                title="Building Projects"
+                value={isDashboardLoading ? '' : formatCompactNumber(kpis.buildingProjects)}
+                subtitle="Building sector portfolio"
+                icon="tabler:building"
+                loading={isDashboardLoading}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={2}>
+              <KpiCard
+                title="Machinery"
+                value={isDashboardLoading ? '' : formatCompactNumber(kpis.machinery)}
+                subtitle="Machinery & equipment resources"
+                icon="tabler:tools"
+                loading={isDashboardLoading}
+              />
+            </Grid>
+          </Grid>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <ModuleBreakdownCard
             title="Stakeholders"
             subtitle="Distribution by type"
@@ -471,7 +715,7 @@ const EcommerceDashboard = () => {
             loading={isDashboardLoading}
           />
         </Grid>
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <ModuleBreakdownCard
             title="Projects"
             subtitle="Distribution by type"
@@ -480,7 +724,7 @@ const EcommerceDashboard = () => {
             loading={isDashboardLoading}
           />
         </Grid>
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <ModuleBreakdownCard
             title="Resources"
             subtitle="Distribution by type"
@@ -489,13 +733,59 @@ const EcommerceDashboard = () => {
             loading={isDashboardLoading}
           />
         </Grid>
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <ModuleBreakdownCard
             title="Documents"
             subtitle="Distribution by type"
             total={totals.documentTotal}
             types={summary?.document?.types || []}
             loading={isDashboardLoading}
+          />
+        </Grid>
+
+        <Grid item xs={12} md={6}>
+          <SplitBreakdownChartCard
+            title="Contractors"
+            total={kpis.contractors}
+            items={dummySplit.contractors}
+            loading={isDashboardLoading}
+            theme={theme}
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <SplitBreakdownChartCard
+            title="Consultants"
+            total={kpis.consultants}
+            items={dummySplit.consultants}
+            loading={isDashboardLoading}
+            theme={theme}
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <SplitBreakdownChartCard
+            title="Road Projects"
+            total={kpis.roadProjects}
+            items={dummySplit.roadProjects}
+            loading={isDashboardLoading}
+            theme={theme}
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <SplitBreakdownChartCard
+            title="Building Projects"
+            total={kpis.buildingProjects}
+            items={dummySplit.buildingProjects}
+            loading={isDashboardLoading}
+            theme={theme}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <SplitBreakdownChartCard
+            title="Machinery"
+            total={kpis.machinery}
+            items={dummySplit.machinery}
+            loading={isDashboardLoading}
+            theme={theme}
           />
         </Grid>
 
