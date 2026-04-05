@@ -1,6 +1,6 @@
-import { Box, Card, CardContent, IconButton } from '@mui/material';
+import { Box } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Can from 'src/layouts/components/acl/Can';
 import LoadingPlaceholder from 'src/views/components/loader';
 import { AddButton } from 'src/views/shared/listing/header';
@@ -14,7 +14,7 @@ interface ProjectFinanceComponentProps {
   projectId: string;
 }
 
-const projectFinanceComponent: React.FC<ProjectFinanceComponentProps> = ({ projectId }) => {
+const ProjectFinanceComponent: React.FC<ProjectFinanceComponentProps> = ({ projectId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const {
     data: projectFinance,
@@ -71,4 +71,4 @@ const projectFinanceComponent: React.FC<ProjectFinanceComponentProps> = ({ proje
   );
 };
 
-export default projectFinanceComponent;
+export default ProjectFinanceComponent;

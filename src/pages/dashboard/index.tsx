@@ -340,16 +340,7 @@ const EcommerceDashboard = () => {
                 }}
               >
                 <Box sx={{ color: 'common.white', maxWidth: 560 }}>
-                  <Chip
-                    label="EXECUTIVE DASHBOARD"
-                    size="small"
-                    sx={{
-                      bgcolor: 'rgba(255,255,255,0.18)',
-                      color: 'common.white',
-                      fontWeight: 700,
-                      letterSpacing: 0.7
-                    }}
-                  />
+
                   <Typography
                     variant="h3"
                     sx={{ mt: 3, fontWeight: 900, color: 'common.white', lineHeight: 1.05 }}

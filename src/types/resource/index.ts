@@ -219,3 +219,32 @@ export interface Professional {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface MachineryInformation {
+  id?: string;
+  department_id: string;
+  type: string;
+  plate_no: string;
+  owner_name: string;
+  engine_no: string;
+  serial_no: string;
+  title_certificate_no: string;
+  registration_date: string;
+  make: string;
+  model: string;
+  capacity: number | string;
+  engine_power_hp: number | string;
+  manufacture_year: number | string;
+  tell: string;
+  ts_no: string;
+  date: string;
+  duty: string;
+  data: string;
+  remark: string;
+  edesate: string;
+  eged: string;
+  eged_d: string;
+  eged_n: string;
+  created_at?: string;
+  updated_at?: string;
+}
