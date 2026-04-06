@@ -227,9 +227,12 @@ const SplitBreakdownChartCard = ({
   });
 
   const selectedSeries = details?.[selectedKey] || fetchedDetails || [];
+  const selectedItem = items.find((x) => x.key === selectedKey);
   const chartItems = selectedSeries.length
     ? selectedSeries.map((x) => ({ label: x.label, value: x.value }))
-    : items.slice(0, 6);
+    : (selectedItem ? [selectedItem, ...items.filter((x) => x.key !== selectedKey)] : items)
+      .slice(0, 6)
+      .map((x) => ({ label: x.label, value: x.value }));
   const computedTotal = total > 0 ? total : items.reduce((sum, item) => sum + safeNumber(item.value), 0);
 
   const chartOptions: ApexOptions = useMemo(
@@ -362,6 +365,93 @@ const SplitBreakdownChartCard = ({
   );
 };
 
+const MachineryBarChartCard = ({
+  title,
+  total,
+  items,
+  loading,
+  theme
+}: {
+  title: string;
+  total: number;
+  items: { key: string; label: string; value: number }[];
+  loading: boolean;
+  theme: any;
+}) => {
+  const machineryKeys = useMemo(
+    () => [
+      { key: 'compactor', label: 'COMPACTOR' },
+      { key: 'roller', label: 'ROLLER' },
+      { key: 'asphalt_paver', label: 'ASPHALT PAVER' },
+      { key: 'asphalt_mixer', label: 'ASPHALT MIXER' },
+      { key: 'con_batch_plant', label: 'CON/BATCH PLANT' },
+      { key: 'concrete_mixer', label: 'CONCRETE MIXER' },
+      { key: 'crane', label: 'CRANE' },
+      { key: 'dozer', label: 'DOZER' },
+      { key: 'excavator', label: 'EXCAVATOR' },
+      { key: 'loader', label: 'LOADER' }
+    ],
+    []
+  );
+
+  const byKey = useMemo(() => {
+    return items.reduce((acc, item) => {
+      acc[item.key] = safeNumber(item.value);
+      return acc;
+    }, {} as Record<string, number>);
+  }, [items]);
+
+  const values = useMemo(() => machineryKeys.map((x) => byKey[x.key] ?? 0), [byKey, machineryKeys]);
+  const computedTotal = total > 0 ? total : values.reduce((sum, v) => sum + safeNumber(v), 0);
+
+  const chartOptions: ApexOptions = useMemo(
+    () => ({
+      chart: { type: 'bar', toolbar: { show: false } },
+      plotOptions: { bar: { borderRadius: 6, columnWidth: '55%' } },
+      dataLabels: { enabled: false },
+      colors: [theme.palette.primary.main],
+      grid: { borderColor: theme.palette.divider, padding: { left: 8, right: 8 } },
+      xaxis: {
+        categories: machineryKeys.map((x) => x.label),
+        axisBorder: { show: false },
+        axisTicks: { show: false },
+        labels: { style: { colors: theme.palette.text.disabled } }
+      },
+      yaxis: {
+        labels: {
+          formatter: (val: number) => formatCompactNumber(Math.round(val)),
+          style: { colors: theme.palette.text.disabled }
+        }
+      },
+      tooltip: { theme: theme.palette.mode }
+    }),
+    [machineryKeys, theme.palette]
+  );
+
+  return (
+    <Card>
+      <CardHeader
+        title={<Typography sx={{ fontWeight: 800 }}>{title}</Typography>}
+        subheader={loading ? '' : formatCompactNumber(computedTotal)}
+        action={
+          <FormControl size="small" sx={{ minWidth: 110 }}>
+            <Select value="ALL" disabled>
+              <MenuItem value="ALL">ALL</MenuItem>
+            </Select>
+          </FormControl>
+        }
+      />
+      <CardContent sx={{ pt: 2 }}>
+        {loading ? (
+          <Skeleton variant="rounded" height={260} />
+        ) : (
+          <ReactApexcharts type="bar" height={260} options={chartOptions} series={[{ name: title, data: values }]} />
+        )}
+      </CardContent>
+    </Card>
+  );
+};
+
 const EcommerceDashboard = () => {
   const { user } = useAuth();
   const router = useRouter();
@@ -439,7 +529,18 @@ const EcommerceDashboard = () => {
     const [generalConsultants, designConsultants, supervisionConsultants, specialConsultants] = allocate(consultantTotal, [0.38, 0.24, 0.2, 0.18]);
     const [asphalt, gravel, cobblestone, bridge] = allocate(roadTotal, [0.33, 0.18, 0.22, 0.27]);
     const [residential, commercial, publicBuilding, industrial] = allocate(buildingTotal, [0.36, 0.22, 0.26, 0.16]);
-    const [excavators, graders, loaders, rollers] = allocate(machineryTotal, [0.31, 0.22, 0.25, 0.22]);
+    const [
+      compactors,
+      rollers,
+      asphaltPavers,
+      asphaltMixers,
+      conBatchPlants,
+      concreteMixers,
+      cranes,
+      dozers,
+      excavators,
+      loaders
+    ] = allocate(machineryTotal, [0.08, 0.11, 0.1, 0.09, 0.08, 0.11, 0.1, 0.09, 0.13, 0.11]);
 
     return {
       contractors: [
@@ -467,10 +568,16 @@ const EcommerceDashboard = () => {
         { key: 'industrial', label: 'Industrial', value: industrial }
       ],
       machinery: [
-        { key: 'excavator', label: 'Excavators', value: excavators },
-        { key: 'grader', label: 'Graders', value: graders },
-        { key: 'loader', label: 'Loaders', value: loaders },
-        { key: 'roller', label: 'Rollers', value: rollers }
+        { key: 'compactor', label: 'Compactor', value: compactors },
+        { key: 'roller', label: 'Roller', value: rollers },
+        { key: 'asphalt_paver', label: 'Asphalt Paver', value: asphaltPavers },
+        { key: 'asphalt_mixer', label: 'Asphalt Mixer', value: asphaltMixers },
+        { key: 'con_batch_plant', label: 'Con/Batch Plant', value: conBatchPlants },
+        { key: 'concrete_mixer', label: 'Concrete Mixer', value: concreteMixers },
+        { key: 'crane', label: 'Crane', value: cranes },
+        { key: 'dozer', label: 'Dozer', value: dozers },
+        { key: 'excavator', label: 'Excavator', value: excavators },
+        { key: 'loader', label: 'Loader', value: loaders }
       ]
     };
   }, [kpis.buildingProjects, kpis.consultants, kpis.contractors, kpis.machinery, kpis.roadProjects]);
@@ -758,13 +865,7 @@ const EcommerceDashboard = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <SplitBreakdownChartCard
-            title="Machinery"
-            total={kpis.machinery}
-            items={dummySplit.machinery}
-            loading={isDashboardLoading}
-            theme={theme}
-          />
+          <MachineryBarChartCard title="Machinery" total={kpis.machinery} items={dummySplit.machinery} loading={isDashboardLoading} theme={theme} />
         </Grid>
       </Grid>
     </ApexChartWrapper>

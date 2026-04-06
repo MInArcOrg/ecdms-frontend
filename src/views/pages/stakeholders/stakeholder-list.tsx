@@ -46,7 +46,10 @@ function StakholdersList() {
     queryKey: ["stakesholders", typeId as string],
     fetchFunction: fetchResources,
     exportApiCall(exportParams) {
-      return stakeholderApiService.export({ ...exportParams });
+      return stakeholderApiService.export({
+        ...exportParams,
+        filter: { ...exportParams.filter, stakeholdertype_id: typeId }
+      });
     },
   });
 
