@@ -4,11 +4,9 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Alert from '@mui/material/Alert';
 import Skeleton from '@mui/material/Skeleton';
-import Chip from '@mui/material/Chip';
 import LinearProgress from '@mui/material/LinearProgress';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
@@ -404,17 +402,22 @@ const EcommerceDashboard = () => {
     };
   }, [summary]);
 
-  const trend = useMemo(() => {
-    const monthCount = 6;
-    const now = new Date();
-    const monthLabels = Array.from({ length: monthCount }, (_, idx) => {
-      const d = new Date(now.getFullYear(), now.getMonth() - (monthCount - 1 - idx), 1);
-      return d.toLocaleString('en-US', { month: 'short' });
-    });
+  const kpis = useMemo(() => {
+    const contractors = getTypeCount(summary?.stakeholder?.types, ['contractor']);
+    const consultants = getTypeCount(summary?.stakeholder?.types, ['consultants']);
+    const roadProjects = getTypeCount(summary?.project?.types, ['road']);
+    const buildingProjects = getTypeCount(summary?.project?.types, ['building']);
+    const machinery = getTypeCount(summary?.resource?.types, ['machinery_and_equipment']);
+    return { contractors, consultants, roadProjects, buildingProjects, machinery };
+  }, [summary?.project?.types, summary?.resource?.types, summary?.stakeholder?.types]);
 
-    const distribute = (total: number, weights: number[]) => {
+  const dummySplit = useMemo(() => {
+    const allocate = (total: number, weights: number[]) => {
       const safeTotal = Math.max(0, Math.floor(total));
-      const raw = weights.map((w) => safeTotal * w);
+      const normalizedWeights = weights.map((w) => (Number.isFinite(w) ? Math.max(0, w) : 0));
+      const sumWeights = normalizedWeights.reduce((a, b) => a + b, 0);
+      if (!safeTotal || !sumWeights) return normalizedWeights.map(() => 0);
+      const raw = normalizedWeights.map((w) => (safeTotal * w) / sumWeights);
       const floors = raw.map((v) => Math.floor(v));
       let remainder = safeTotal - floors.reduce((a, b) => a + b, 0);
       const order = raw
@@ -426,150 +429,124 @@ const EcommerceDashboard = () => {
       return result;
     };
 
-    const weights = [0.12, 0.14, 0.15, 0.16, 0.19, 0.24];
-    const projects = distribute(totals.projectTotal, weights);
-    const documents = distribute(totals.documentTotal, weights);
+    const contractorTotal = kpis.contractors > 0 ? kpis.contractors : 128;
+    const consultantTotal = kpis.consultants > 0 ? kpis.consultants : 110;
+    const roadTotal = kpis.roadProjects > 0 ? kpis.roadProjects : 65;
+    const buildingTotal = kpis.buildingProjects > 0 ? kpis.buildingProjects : 52;
+    const machineryTotal = kpis.machinery > 0 ? kpis.machinery : 44;
+
+    const [generalContractors, buildingContractors, roadContractors, specialContractors] = allocate(contractorTotal, [0.34, 0.24, 0.22, 0.2]);
+    const [generalConsultants, designConsultants, supervisionConsultants, specialConsultants] = allocate(consultantTotal, [0.38, 0.24, 0.2, 0.18]);
+    const [asphalt, gravel, cobblestone, bridge] = allocate(roadTotal, [0.33, 0.18, 0.22, 0.27]);
+    const [residential, commercial, publicBuilding, industrial] = allocate(buildingTotal, [0.36, 0.22, 0.26, 0.16]);
+    const [excavators, graders, loaders, rollers] = allocate(machineryTotal, [0.31, 0.22, 0.25, 0.22]);
 
     return {
-      monthLabels,
-      series: [
-        { name: 'Projects', data: projects },
-        { name: 'Documents', data: documents }
-      ]
-    };
-  }, [totals.documentTotal, totals.projectTotal]);
-
-  const trendOptions: ApexOptions = useMemo(
-    () => ({
-      chart: {
-        type: 'area',
-        toolbar: { show: false },
-        animations: { enabled: true }
-      },
-      colors: [theme.palette.primary.main, theme.palette.info.main],
-      dataLabels: { enabled: false },
-      stroke: { curve: 'smooth', width: 3 },
-      fill: {
-        type: 'gradient',
-        gradient: {
-          shadeIntensity: 0.35,
-          opacityFrom: 0.45,
-          opacityTo: 0.05,
-          stops: [0, 90, 100]
-        }
-      },
-      grid: {
-        borderColor: theme.palette.divider,
-        padding: { left: 8, right: 8, top: 0, bottom: 0 }
-      },
-      xaxis: {
-        categories: trend.monthLabels,
-        axisBorder: { show: false },
-        axisTicks: { show: false },
-        labels: { style: { colors: theme.palette.text.disabled } }
-      },
-      yaxis: {
-        labels: {
-          formatter: (val: number) => formatCompactNumber(Math.round(val)),
-          style: { colors: theme.palette.text.disabled }
-        }
-      },
-      legend: {
-        position: 'top',
-        horizontalAlign: 'right',
-        labels: { colors: theme.palette.text.secondary }
-      },
-      tooltip: {
-        theme: theme.palette.mode
-      }
-    }),
-    [theme.palette, trend.monthLabels]
-  );
-
-  const projectTypeMix = useMemo(() => {
-    const types = (summary?.project?.types || []) as BreakdownType[];
-    const normalized = types
-      .map((obj) => {
-        const [label, value] = Object.entries(obj)[0] || [];
-        return { label: String(label || ''), value: safeNumber(value) };
-      })
-      .filter((x) => x.label)
-      .sort((a, b) => b.value - a.value)
-      .slice(0, 8);
-    return {
-      labels: normalized.map((x) => x.label),
-      values: normalized.map((x) => x.value)
-    };
-  }, [summary?.project?.types]);
-
-  const kpis = useMemo(() => {
-    const contractors = getTypeCount(summary?.stakeholder?.types, ['contractor']);
-    const consultants = getTypeCount(summary?.stakeholder?.types, ['consultants']);
-    const roadProjects = getTypeCount(summary?.project?.types, ['road']);
-    const buildingProjects = getTypeCount(summary?.project?.types, ['building']);
-    const machinery = getTypeCount(summary?.resource?.types, ['machinery_and_equipment']);
-    return { contractors, consultants, roadProjects, buildingProjects, machinery };
-  }, [summary?.project?.types, summary?.resource?.types, summary?.stakeholder?.types]);
-
-  const dummySplit = useMemo(
-    () => ({
       contractors: [
-        { key: 'general_contractors', label: 'General Contractors', value: 37 },
-        { key: 'building_contractors', label: 'Building Contractors', value: 23 },
-        { key: 'road_contractors', label: 'Road Contractors', value: 21 },
-        { key: 'special_contractors', label: 'Special Contractors', value: 19 }
+        { key: 'general_contractors', label: 'General Contractors', value: generalContractors },
+        { key: 'building_contractors', label: 'Building Contractors', value: buildingContractors },
+        { key: 'road_contractors', label: 'Road Contractors', value: roadContractors },
+        { key: 'special_contractors', label: 'Special Contractors', value: specialContractors }
       ],
       consultants: [
-        { key: 'general_consultants', label: 'General Consultants', value: 42 },
-        { key: 'design_consultants', label: 'Design Consultants', value: 26 },
-        { key: 'supervision_consultants', label: 'Supervision Consultants', value: 20 },
-        { key: 'special_consultants', label: 'Special Consultants', value: 12 }
+        { key: 'general_consultants', label: 'General Consultants', value: generalConsultants },
+        { key: 'design_consultants', label: 'Design Consultants', value: designConsultants },
+        { key: 'supervision_consultants', label: 'Supervision Consultants', value: supervisionConsultants },
+        { key: 'special_consultants', label: 'Special Consultants', value: specialConsultants }
       ],
       roadProjects: [
-        { key: 'asphalt', label: 'Asphalt', value: 12 },
-        { key: 'gravel', label: 'Gravel', value: 7 },
-        { key: 'cobblestone', label: 'Cobblestone', value: 8 },
-        { key: 'bridge', label: 'Bridge', value: 10 }
+        { key: 'asphalt', label: 'Asphalt', value: asphalt },
+        { key: 'gravel', label: 'Gravel', value: gravel },
+        { key: 'cobblestone', label: 'Cobblestone', value: cobblestone },
+        { key: 'bridge', label: 'Bridge', value: bridge }
       ],
       buildingProjects: [
-        { key: 'residential', label: 'Residential', value: 14 },
-        { key: 'commercial', label: 'Commercial', value: 9 },
-        { key: 'public', label: 'Public', value: 11 },
-        { key: 'industrial', label: 'Industrial', value: 6 }
+        { key: 'residential', label: 'Residential', value: residential },
+        { key: 'commercial', label: 'Commercial', value: commercial },
+        { key: 'public', label: 'Public', value: publicBuilding },
+        { key: 'industrial', label: 'Industrial', value: industrial }
       ],
       machinery: [
-        { key: 'excavator', label: 'Excavators', value: 12 },
-        { key: 'grader', label: 'Graders', value: 7 },
-        { key: 'loader', label: 'Loaders', value: 8 },
-        { key: 'roller', label: 'Rollers', value: 10 }
+        { key: 'excavator', label: 'Excavators', value: excavators },
+        { key: 'grader', label: 'Graders', value: graders },
+        { key: 'loader', label: 'Loaders', value: loaders },
+        { key: 'roller', label: 'Rollers', value: rollers }
       ]
-    }),
-    []
-  );
+    };
+  }, [kpis.buildingProjects, kpis.consultants, kpis.contractors, kpis.machinery, kpis.roadProjects]);
 
-  const projectTypeMixOptions: ApexOptions = useMemo(
-    () => ({
-      chart: { type: 'bar', toolbar: { show: false } },
-      plotOptions: { bar: { borderRadius: 8, columnWidth: '55%' } },
-      dataLabels: { enabled: false },
-      colors: [theme.palette.primary.main],
-      grid: { borderColor: theme.palette.divider, padding: { left: 8, right: 8 } },
-      xaxis: {
-        categories: projectTypeMix.labels,
-        axisBorder: { show: false },
-        axisTicks: { show: false },
-        labels: { style: { colors: theme.palette.text.disabled } }
-      },
-      yaxis: {
-        labels: {
-          formatter: (val: number) => formatCompactNumber(Math.round(val)),
-          style: { colors: theme.palette.text.disabled }
+  const dummySplitDetails = useMemo(() => {
+    const seedToInt = (seed: string) => {
+      let h = 2166136261;
+      for (let i = 0; i < seed.length; i += 1) {
+        h ^= seed.charCodeAt(i);
+        h = Math.imul(h, 16777619);
+      }
+      return h >>> 0;
+    };
+
+    const createRng = (seed: string) => {
+      let state = seedToInt(seed) || 1;
+      return () => {
+        state = (state * 1664525 + 1013904223) >>> 0;
+        return state / 4294967296;
+      };
+    };
+
+    const allocateByWeights = (total: number, weights: number[]) => {
+      const safeTotal = Math.max(0, Math.floor(total));
+      const normalizedWeights = weights.map((w) => (Number.isFinite(w) ? Math.max(0, w) : 0));
+      const sumWeights = normalizedWeights.reduce((a, b) => a + b, 0);
+      if (!safeTotal || !sumWeights) return normalizedWeights.map(() => 0);
+      const raw = normalizedWeights.map((w) => (safeTotal * w) / sumWeights);
+      const floors = raw.map((v) => Math.floor(v));
+      let remainder = safeTotal - floors.reduce((a, b) => a + b, 0);
+      const order = raw
+        .map((v, i) => ({ i, frac: v - Math.floor(v) }))
+        .sort((a, b) => b.frac - a.frac)
+        .map((x) => x.i);
+      const result = [...floors];
+      for (let k = 0; k < remainder; k += 1) result[order[k % order.length]] += 1;
+      return result;
+    };
+
+    const distribute = (total: number, count: number, seed: string) => {
+      const safeCount = Math.max(1, Math.floor(count));
+      const rng = createRng(seed);
+      const peak1 = rng() < 0.2 ? 0 : rng() > 0.8 ? safeCount - 1 : 1 + Math.floor(rng() * Math.max(1, safeCount - 2));
+      const sigma1 = 0.9 + rng() * 1.4;
+      const hasSecondPeak = rng() < 0.35 && safeCount > 3;
+      const peak2 = hasSecondPeak ? Math.floor(rng() * safeCount) : peak1;
+      const sigma2 = hasSecondPeak ? 0.8 + rng() * 1.2 : sigma1;
+
+      const weights = Array.from({ length: safeCount }, (_, idx) => {
+        const d1 = (idx - peak1) / sigma1;
+        const base1 = Math.exp(-0.5 * d1 * d1);
+        let combined = base1;
+        if (hasSecondPeak) {
+          const d2 = (idx - peak2) / sigma2;
+          combined += 0.65 * Math.exp(-0.5 * d2 * d2);
         }
-      },
-      tooltip: { theme: theme.palette.mode }
-    }),
-    [projectTypeMix.labels, theme.palette]
-  );
+        const jitter = 0.75 + rng() * 0.55;
+        return combined * jitter;
+      });
+
+      return allocateByWeights(total, weights);
+    };
+
+    const build = (items: { key: string; value: number }[], gradeCount: number) => {
+      return items.reduce((acc, item) => {
+        const values = distribute(item.value, gradeCount, item.key);
+        acc[item.key] = values.map((value, idx) => ({ label: `Grade ${idx + 1}`, value }));
+        return acc;
+      }, {} as Record<string, { label: string; value: number }[]>);
+    };
+
+    return {
+      contractors: build(dummySplit.contractors, 7),
+      consultants: build(dummySplit.consultants, 5)
+    };
+  }, [dummySplit.contractors, dummySplit.consultants]);
 
   return (
     <ApexChartWrapper>
@@ -597,8 +574,7 @@ const EcommerceDashboard = () => {
                     {t(greeting.greating)}, {user?.name || ''}
                   </Typography>
                   <Typography sx={{ mt: 2.5, color: 'rgba(255,255,255,0.85)', maxWidth: 520 }}>
-                    Welcome back to your <span className="notranslate" translate="no">ECDMS</span> command center. Here is the latest overview of your enterprise assets and
-                    stakeholder distribution.
+                    Welcome back to your <span className="notranslate" translate="no">ECDMS</span> command center.
                   </Typography>
                   <Typography sx={{ mt: 1.5, color: 'rgba(255,255,255,0.75)' }}>
                     {isDepartmentLoading ? <Skeleton width={260} /> : departmentName}
@@ -748,6 +724,7 @@ const EcommerceDashboard = () => {
             title="Contractors"
             total={kpis.contractors}
             items={dummySplit.contractors}
+            details={dummySplitDetails.contractors}
             loading={isDashboardLoading}
             theme={theme}
           />
@@ -757,6 +734,7 @@ const EcommerceDashboard = () => {
             title="Consultants"
             total={kpis.consultants}
             items={dummySplit.consultants}
+            details={dummySplitDetails.consultants}
             loading={isDashboardLoading}
             theme={theme}
           />
@@ -787,140 +765,6 @@ const EcommerceDashboard = () => {
             loading={isDashboardLoading}
             theme={theme}
           />
-        </Grid>
-
-        <Grid item xs={12} md={8}>
-          <Card>
-            <CardHeader
-              title={<Typography sx={{ fontWeight: 800 }}>Pipeline Trend</Typography>}
-              subheader="Projects and documents over the last 6 months"
-              action={<Chip label="Last 6 months" size="small" />}
-            />
-            <CardContent>
-              {isDashboardLoading ? (
-                <Skeleton variant="rounded" height={310} />
-              ) : (
-                <ReactApexcharts type="area" height={310} options={trendOptions} series={trend.series} />
-              )}
-            </CardContent>
-          </Card>
-        </Grid>
-
-        <Grid item xs={12} md={4}>
-          <Card sx={{ height: '100%' }}>
-            <CardHeader
-              title={<Typography sx={{ fontWeight: 800 }}>Project Type Mix</Typography>}
-              subheader="Top categories by count"
-            />
-            <CardContent>
-              {isDashboardLoading ? (
-                <Skeleton variant="rounded" height={310} />
-              ) : (
-                <ReactApexcharts
-                  type="bar"
-                  height={310}
-                  options={projectTypeMixOptions}
-                  series={[{ name: 'Projects', data: projectTypeMix.values }]}
-                />
-              )}
-            </CardContent>
-          </Card>
-        </Grid>
-
-        <Grid item xs={12} md={8}>
-          <Card>
-            <CardHeader
-              title={<Typography sx={{ fontWeight: 800 }}>Recent Activity</Typography>}
-              action={
-                <Button size="small" sx={{ fontWeight: 800 }} onClick={() => router.push('/analytics/project')}>
-                  Open Analytics
-                </Button>
-              }
-            />
-            <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-              {[
-                {
-                  icon: 'tabler:file-upload',
-                  title: 'Document submitted',
-                  subtitle: 'New project report uploaded by a regional office',
-                  time: 'Today'
-                },
-                {
-                  icon: 'tabler:users',
-                  title: 'Stakeholder registration updated',
-                  subtitle: 'License information revised for an active contractor',
-                  time: 'Yesterday'
-                },
-                {
-                  icon: 'tabler:briefcase',
-                  title: 'Project record created',
-                  subtitle: 'New project entry added for the current reporting period',
-                  time: 'This week'
-                }
-              ].map((item) => (
-                <Box
-                  key={item.title}
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: 3,
-                    p: 3,
-                    borderRadius: 3,
-                    bgcolor: 'action.hover'
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: 44,
-                      height: 44,
-                      borderRadius: 100,
-                      bgcolor: 'background.paper',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
-                  >
-                    <Icon icon={item.icon} fontSize={22} color="inherit" />
-                  </Box>
-                  <Box sx={{ flex: 1, minWidth: 0 }}>
-                    <Typography sx={{ fontWeight: 900 }}>{item.title}</Typography>
-                    <Typography variant="body2" sx={{ mt: 0.5, color: 'text.secondary' }}>
-                      {item.subtitle}
-                    </Typography>
-                    <Typography variant="caption" sx={{ mt: 1, color: 'text.disabled', display: 'block' }}>
-                      {item.time}
-                    </Typography>
-                  </Box>
-                </Box>
-              ))}
-            </CardContent>
-          </Card>
-        </Grid>
-
-        <Grid item xs={12} md={4}>
-          <Card sx={{ height: '100%' }}>
-            <CardHeader
-              title={<Typography sx={{ fontWeight: 800 }}>Risk & Compliance</Typography>}
-              subheader="High-level signals (requires compliance endpoints)"
-            />
-            <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-              {[
-                { label: 'Delayed Projects', value: '—', color: 'warning' as const },
-                { label: 'Missing Key Documents', value: '—', color: 'error' as const },
-                { label: 'Expiring Licenses', value: '—', color: 'info' as const }
-              ].map((item) => (
-                <Box key={item.label}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1.5 }}>
-                    <Typography variant="body2" sx={{ color: 'text.secondary', fontWeight: 800 }}>
-                      {item.label}
-                    </Typography>
-                    <Chip label={item.value} size="small" color={item.color} />
-                  </Box>
-                  <LinearProgress value={0} variant="determinate" color={item.color} sx={{ height: 10, borderRadius: 999 }} />
-                </Box>
-              ))}
-            </CardContent>
-          </Card>
         </Grid>
       </Grid>
     </ApexChartWrapper>
