@@ -40,7 +40,8 @@ function DocumentList() {
     handlePageChange,
     refetch,
     handleExport,
-    handleFilter
+    handleFilter,
+    handleSearch
   } = usePaginatedFetch<Document[]>({
     queryKey: ['documents'],
     fetchFunction: fetchDocuments,
@@ -114,6 +115,15 @@ function DocumentList() {
                   action: 'view',
                   subject: 'document'
                 }
+              },
+               search: {
+                enabled: true,
+                permission: {
+                  action: "read",
+                  subject: "document",
+                },
+                searchKeys: ['title', 'description'],
+                onSearch: handleSearch,
               }
             }
           }

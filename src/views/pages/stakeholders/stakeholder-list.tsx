@@ -148,7 +148,7 @@ function StakholdersList() {
                 enabled: true,
                 permission: {
                   action: "read",
-                  subject: "project",
+                  subject: "stakeholder",
                 },
                 searchKeys: ['trade_name', 'name', 'tin', 'origin', 'license_issued_date'],
                 onSearch: handleSearch,
