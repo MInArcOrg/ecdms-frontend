@@ -22,11 +22,13 @@ interface ProjectFormProps {
   formik: FormikProps<Project>;
 
   typeId: string;
+  module?: 'project' | 'infrastructure';
 }
 
-const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
+const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId, module }) => {
   const { t: transl, i18n } = useTranslation();
   const { values, setFieldValue } = formik;
+  const isInfrastructure = module === 'infrastructure';
 
   const handleNumberChange = (field: keyof Project, value: string | number) => {
     const v = value === '' ? null : Number(value);
@@ -127,7 +129,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={isInfrastructure ? 12 : 4}>
           <Stack spacing={3}>
             <Card variant="outlined">
               <CardContent>
@@ -201,78 +203,81 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
           </Stack>
         </Grid>
 
-        <Grid item xs={12} md={4}>
-          <Stack spacing={3}>
-            <Card variant="outlined">
-              <CardContent>
-                <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                  Contract & Codes
-                </Typography>
-                <Divider sx={{ my: 2 }} />
-                <Stack spacing={2}>
-                  <CustomTextBox
-                    fullWidth
-                    label={transl('project.form.contract-no')}
-                    placeholder={transl('project.form.contract-no')}
-                    name="contract_no"
-                    size="small"
-                  />
-                  <CustomTextBox
-                    fullWidth
-                    label={transl('project.form.budget-code')}
-                    placeholder={transl('project.form.budget-code')}
-                    name="budget_code"
-                    size="small"
-                  />
-                  <CustomTextBox
-                    fullWidth
-                    label={transl('project.form.procurement-number')}
-                    placeholder={transl('project.form.procurement-number')}
-                    name="procurement_no"
-                    size="small"
-                  />
-                </Stack>
-              </CardContent>
-            </Card>
+        {!isInfrastructure && (
+          <Grid item xs={12} md={4}>
+            <Stack spacing={3}>
+              <Card variant="outlined">
+                <CardContent>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                    Contract & Codes
+                  </Typography>
+                  <Divider sx={{ my: 2 }} />
+                  <Stack spacing={2}>
+                    <CustomTextBox
+                      fullWidth
+                      label={transl('project.form.contract-no')}
+                      placeholder={transl('project.form.contract-no')}
+                      name="contract_no"
+                      size="small"
+                    />
+                    <CustomTextBox
+                      fullWidth
+                      label={transl('project.form.budget-code')}
+                      placeholder={transl('project.form.budget-code')}
+                      name="budget_code"
+                      size="small"
+                    />
+                    <CustomTextBox
+                      fullWidth
+                      label={transl('project.form.procurement-number')}
+                      placeholder={transl('project.form.procurement-number')}
+                      name="procurement_no"
+                      size="small"
+                    />
+                  </Stack>
+                </CardContent>
+              </Card>
 
-            <Card variant="outlined">
-              <CardContent>
-                <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                  {transl('project.main-contract-price.price-details')}
-                </Typography>
-                <Divider sx={{ my: 2 }} />
-                <Stack spacing={2}>
-                  <CustomTextBox
-                    fullWidth
-                    label={transl('project.main-contract-price.form.main-contract-price-amount')}
-                    placeholder={transl('project.main-contract-price.form.main-contract-price-amount')}
-                    name="main_contract_price_amount"
-                    size="small"
-                    type="number"
-                    onValueChange={(value: string | number) => handleNumberChange('main_contract_price_amount', value)}
-                  />
-                  <CustomSelect
-                    fullWidth
-                    size="small"
-                    name="source_of_fund_id"
-                    label={transl('project.main-contract-price.form.source-of-finance')}
-                    options={
-                      isArray(sourceOffunds?.payload)
-                        ? sourceOffunds?.payload?.map((sourceOfFund) => ({
-                          value: sourceOfFund.id,
-                          label: sourceOfFund.title
-                        }))
-                        : []
-                    }
-                  />
-                </Stack>
-              </CardContent>
-            </Card>
-          </Stack>
-        </Grid>
+              <Card variant="outlined">
+                <CardContent>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                    {transl('project.main-contract-price.price-details')}
+                  </Typography>
+                  <Divider sx={{ my: 2 }} />
+                  <Stack spacing={2}>
+                    <CustomTextBox
+                      fullWidth
+                      label={transl('project.main-contract-price.form.main-contract-price-amount')}
+                      placeholder={transl('project.main-contract-price.form.main-contract-price-amount')}
+                      name="main_contract_price_amount"
+                      size="small"
+                      type="number"
+                      onValueChange={(value: string | number) => handleNumberChange('main_contract_price_amount', value)}
+                    />
+                    <CustomSelect
+                      fullWidth
+                      size="small"
+                      name="source_of_fund_id"
+                      label={transl('project.main-contract-price.form.source-of-finance')}
+                      options={
+                        isArray(sourceOffunds?.payload)
+                          ? sourceOffunds?.payload?.map((sourceOfFund) => ({
+                            value: sourceOfFund.id,
+                            label: sourceOfFund.title
+                          }))
+                          : []
+                      }
+                    />
+                  </Stack>
+                </CardContent>
+              </Card>
+            </Stack>
+          </Grid>
+        )}
 
-        <Grid item xs={12} md={4}>
-          <Stack spacing={3}>
+        {!isInfrastructure && (
+          <Grid item xs={12} md={4}>
+            <Stack spacing={3}>
             {/* <Card variant="outlined">
               <CardContent>
                 <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
@@ -340,8 +345,9 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId }) => {
                 </Stack>
               </CardContent>
             </Card>
-          </Stack>
-        </Grid>
+            </Stack>
+          </Grid>
+        )}
 
 
       </Grid>

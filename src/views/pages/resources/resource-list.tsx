@@ -46,7 +46,8 @@ function ResourceList() {
     handlePageChange,
     refetch,
     handleExport,
-    handleFilter
+    handleFilter,
+    handleSearch
   } = usePaginatedFetch<Resource[]>({
     queryKey: ['resources', String(typeId)],
     fetchFunction: fetchResources,
@@ -119,6 +120,15 @@ function ResourceList() {
                     label: t('resource.form.quantity_measurement_unit_id')
                   },
                 ],
+                permission: {
+                  action: "view",
+                  subject: "resource",
+                }
+              },
+              search:{
+                enabled: true,
+                onSearch: handleSearch,
+                searchKeys: ['name', 'type', 'category', 'subcategory', 'center'],
                 permission: {
                   action: "view",
                   subject: "resource",

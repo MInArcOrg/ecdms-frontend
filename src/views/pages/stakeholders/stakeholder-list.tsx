@@ -31,6 +31,7 @@ function StakholdersList() {
     return stakeholderApiService.getAll({
       ...params,
       filter: { ...params.filter, stakeholdertype_id: typeId },
+      sorting: { property: 'trade_name', direction: 'DESC' }
     });
   };
 
@@ -41,7 +42,8 @@ function StakholdersList() {
     handlePageChange,
     refetch,
     handleExport,
-    handleFilter
+    handleFilter,
+    handleSearch
   } = usePaginatedFetch<Stakeholder[]>({
     queryKey: ["stakesholders", typeId as string],
     fetchFunction: fetchResources,
@@ -141,6 +143,15 @@ function StakholdersList() {
                 },
                 onFilter: handleFilter,
                 component: StakeholderFilterItems
+              },
+              search: {
+                enabled: true,
+                permission: {
+                  action: "read",
+                  subject: "project",
+                },
+                searchKeys: ['trade_name', 'name', 'tin', 'origin', 'license_issued_date'],
+                onSearch: handleSearch,
               }
             }
           }

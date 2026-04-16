@@ -55,9 +55,9 @@ const CentersLayout = ({ children, value, routes }: CentersLayoutProps) => {
   });
 
   const { data: centerStat, isLoading: isCenterStatLoading } = useQuery({
-    queryKey: ['department-center-stat', id],
-    queryFn: () => departmentApiService.getCenterStat(String(id), {}),
-    enabled: !!id
+    queryKey: ['department-center-stat', department?.payload.id],
+    queryFn: () => departmentApiService.getCenterStat(String(department?.payload.id || ''), {}),
+    enabled: !!department?.payload.id
   });
 
   const currentRoutes = useMemo(() => (id ? routes(String(id)) : routes()), [id, routes]);
@@ -127,7 +127,7 @@ const CentersLayout = ({ children, value, routes }: CentersLayoutProps) => {
           <Grid container spacing={3}>
             <Grid item xs={12} md={4}>
               <CompanyCard
-                name="Department"
+                name="Centers"
                 count={isCenterStatLoading ? '...' : String(departmentCount)}
                 iconName="tabler:book-2"
               />

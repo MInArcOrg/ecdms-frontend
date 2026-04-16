@@ -27,7 +27,7 @@ const NameCell = ({ row }: CellType) => {
         '&:hover': { color: 'primary.main' }
       }}
     >
-      {`${row.first_name} ${row.last_name}`}
+      {`${row.full_name}`}
     </Typography>
   );
 };

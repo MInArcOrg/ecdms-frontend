@@ -31,7 +31,7 @@ const AppBarContent = (props: Props) => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <GoogleTranslate />
-      <LanguageDropdown settings={settings} saveSettings={saveSettings} />
+      {/* <LanguageDropdown settings={settings} saveSettings={saveSettings} /> */}
       <ModeToggler settings={settings} saveSettings={saveSettings} />
       {auth.user && (
         <>

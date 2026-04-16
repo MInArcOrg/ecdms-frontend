@@ -142,7 +142,7 @@ const ModuleBreakdownCard = ({
       <CardHeader title={<Typography sx={{ fontWeight: 800 }}>{title}</Typography>} subheader={subtitle} />
       <CardContent sx={{ pt: 2 }}>
         <Grid container spacing={6} alignItems="center">
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} lg={6}>
             {loading ? (
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
                 <Skeleton width="70%" />
@@ -178,11 +178,11 @@ const ModuleBreakdownCard = ({
               </Box>
             )}
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} lg={6}>
             {loading ? (
               <Skeleton variant="rounded" height={180} />
             ) : (
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: 240 }}>
                 <DonutChart data={breakdown} height={180} showLegend={false} centerLabel="TOTAL" centerValue={safeNumber(total)} />
               </Box>
             )}
@@ -789,7 +789,7 @@ const EcommerceDashboard = () => {
           </Grid>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={4}>
           <ModuleBreakdownCard
             title="Stakeholders"
             subtitle="Distribution by type"
@@ -798,7 +798,7 @@ const EcommerceDashboard = () => {
             loading={isDashboardLoading}
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={4}>
           <ModuleBreakdownCard
             title="Projects"
             subtitle="Distribution by type"
@@ -807,21 +807,12 @@ const EcommerceDashboard = () => {
             loading={isDashboardLoading}
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={4}>
           <ModuleBreakdownCard
             title="Resources"
             subtitle="Distribution by type"
             total={totals.resourceTotal}
             types={summary?.resource?.types || []}
-            loading={isDashboardLoading}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <ModuleBreakdownCard
-            title="Documents"
-            subtitle="Distribution by type"
-            total={totals.documentTotal}
-            types={summary?.document?.types || []}
             loading={isDashboardLoading}
           />
         </Grid>

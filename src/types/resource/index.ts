@@ -216,8 +216,19 @@ export interface Professional {
   gender: string;
   phone_no: string;
   email: string;
-  created_at?: Date;
-  updated_at?: Date;
+  parent_id?: string | null;
+  department_id?: string | null;
+  full_name?: string;
+  study_field?: string;
+  license_no?: string;
+  license_category?: string;
+  license_grade?: string;
+  region?: string;
+  city?: string;
+  license_given_data?: string;
+  remark?: string | null;
+  created_at?: string | Date;
+  updated_at?: string | Date;
 }
 
 export interface MachineryInformation {

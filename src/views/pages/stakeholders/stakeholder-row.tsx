@@ -56,8 +56,8 @@ export const StakeholderRow = (
       },
     },
     {
-      flex: 0.15,
-      minWidth: 120,
+      width:140,
+      minWidth: 140,
       headerName: t("stakeholder.columns.sub-category"),
       field: "subCategory",
       renderCell: ({ row }: CellType) => {
@@ -67,8 +67,8 @@ export const StakeholderRow = (
       },
     },
     {
-      flex: 0.15,
-      minWidth: 120,
+      width: 140,
+      minWidth: 140,
       headerName: t("stakeholder.columns.tin"),
       field: "tin",
       renderCell: ({ row }: CellType) => {
@@ -78,8 +78,8 @@ export const StakeholderRow = (
       },
     },
     {
-      flex: 0.15,
-      minWidth: 120,
+      width: 100,
+      minWidth: 100,
       headerName: t("common.table-columns.created-at"),
       field: "created_at",
       renderCell: ({ row }: CellType) => {

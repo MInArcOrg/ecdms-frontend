@@ -14,6 +14,10 @@ export const buildGetRequest = async (url: string, params: GetRequestParam | nul
       requestParams.filter = params?.filter;
     }
 
+    if (params?.search !== null && params?.search !== undefined) {
+      requestParams.search = params?.search;
+    }
+
     if (params?.sorting !== null) {
       requestParams.sorting = params?.sorting;
     }
@@ -39,7 +43,7 @@ export const buildFileGetRequest = async (
       if (params.pagination !== null && params.pagination !== undefined) requestParams.pagination = params.pagination;
       if (params.filter !== null && params.filter !== undefined) requestParams.filter = params.filter;
       if (params.sorting !== null && params.sorting !== undefined) requestParams.sorting = params.sorting;
-      // if (params.search !== null && params.search !== undefined) requestParams.search = params.search;
+      if (params.search !== null && params.search !== undefined) requestParams.search = params.search;
       // if (params.includes !== null && params.includes !== undefined) requestParams.includes = params.includes;
       if (params.export !== null && params.export !== undefined) requestParams.export = params.export;
     }

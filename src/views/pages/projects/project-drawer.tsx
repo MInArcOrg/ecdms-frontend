@@ -109,7 +109,7 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<Project>) => {
-            return <ProjectForm typeId={typeId} formik={formik} />;
+            return <ProjectForm typeId={typeId} formik={formik} module={module} />;
           }}
         </FormPageWrapper>
       )}

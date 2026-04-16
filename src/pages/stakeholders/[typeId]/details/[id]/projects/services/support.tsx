@@ -1,3 +1,4 @@
+import { Card, CardContent, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
 import { stakeholderMenuIds } from 'src/views/pages/stakeholders/details/layout/stakeholder-menu-items';
@@ -12,7 +13,11 @@ function BranchAdditionalInformationIndex() {
       activeSubMenuId={stakeholderProjectIds.services.support}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <>training goes here!</>
+      <Card sx={{ border: 1, borderColor: 'divider', borderRadius: 1 }}>
+        <CardContent>
+          <Typography variant="h6">Support</Typography>
+        </CardContent>
+      </Card>
     </StakeholderLayout>
   );
 }

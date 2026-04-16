@@ -26,13 +26,11 @@ const usePaginatedFetch = <T,>({ queryKey, fetchFunction, exportApiCall, initial
         queryClient.invalidateQueries({ queryKey: [queryKey] });
     };
 
-    const handleSearch = (searchTerm: string, searchKeys: string[]) => {
+    const handleSearch = (searchTerm: string, _searchKeys: string | string[]) => {
+        const hasTerm = !StringHelpers.isNullOrWhitespace(searchTerm);
         setQueryParams((prevParams: GetRequestParam): GetRequestParam => ({
             ...prevParams,
-            filter: {
-                ...prevParams.filter,
-                ...StringHelpers.createSearchFilter(searchTerm, searchKeys)
-            },
+            search: hasTerm ? searchTerm : null,
             pagination: {
                 ...prevParams.pagination,
                 page: 1,

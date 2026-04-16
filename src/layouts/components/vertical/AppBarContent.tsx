@@ -62,7 +62,7 @@ const AppBarContent = (props: Props) => {
       <Box className="actions-right" sx={{ display: 'flex', alignItems: 'center' }}>
         <LogoImg src="/images/pages/minster-logo-light.png" width={50} height={50} />
         <GoogleTranslate />
-        <LanguageDropdown settings={settings} saveSettings={saveSettings} />
+        {/* <LanguageDropdown settings={settings} saveSettings={saveSettings} /> */}
         <ModeToggler settings={settings} saveSettings={saveSettings} />
         {auth.user && (
           <>

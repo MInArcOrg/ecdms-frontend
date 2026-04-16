@@ -69,9 +69,9 @@ const DonutChart: React.FC<DonutChartProps> = ({ data, height = 220, showLegend 
   }
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', minWidth: 240 }}>
       {series.length ? (
-        <ReactApexChart type='donut' height={height} options={options} series={series} />
+        <ReactApexChart type='donut' width='100%' height={height} options={options} series={series} />
       ) : (
         <Box sx={{ color: 'text.secondary', textAlign: 'center', py: 6 }}>No data</Box>
       )}

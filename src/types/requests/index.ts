@@ -3,6 +3,7 @@ import type { Pagination } from './pagination';
 export type GetRequestParam = {
   pagination?: { pageSize: number; page: number } | null;
   filter?: any;
+  search?: string | null;
   sorting?: { property: string; direction: string } | null;
   export?: ExportParam | null;
 };
@@ -10,6 +11,7 @@ export type GetRequestParam = {
 export const defaultGetRequestParam: GetRequestParam = {
   pagination: null,
   filter: undefined,
+  search: null,
   sorting: undefined
 };
 export type ExportParam = {

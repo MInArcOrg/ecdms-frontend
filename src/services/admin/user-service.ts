@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import User from 'src/types/admin/user';
+import User, { DepartmentProfessional } from 'src/types/admin/user';
 import { GetRequestParam, IApiResponse } from 'src/types/requests';
 import axiosServices from 'src/utils/axios';
 import { buildGetRequest } from 'src/utils/requests/get-request';
@@ -42,7 +42,7 @@ const userApiService = {
       .catch((error: any) => {
         throw error;
       }),
-  getProfessionalByDepartmentId: (idx: string, params: GetRequestParam): Promise<IApiResponse<User[]>> =>
+  getProfessionalByDepartmentId: (idx: string, params: GetRequestParam): Promise<IApiResponse<DepartmentProfessional[]>> =>
     buildGetRequest(`/departments/department-users/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {

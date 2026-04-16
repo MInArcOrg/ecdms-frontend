@@ -53,15 +53,17 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
           value = value.replace(/[^0-9.]/g, '');
         }
         else {
-          // allow alphanumeric + space
-          value = value.replace(/[^A-Za-z0-9 ]/g, '');
+          // allow unicode letters/numbers + space (supports Amharic and other locales)
+          value = value.replace(/[^\p{L}\p{M}\p{N} ]/gu, '');
         }
       }
 
       // 3. 🌟 CONDITIONAL NAME FORMATTING (Title Case)
       if (formatAsName && value.length > 0) {
-        // Your existing single-word Title Case logic
-        value = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+        // Apply latin-only title-case formatting (avoid breaking non-latin inputs like Amharic)
+        if (/^[A-Za-z]/.test(value)) {
+          value = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+        }
       }
 
       // 4. Enforce max length

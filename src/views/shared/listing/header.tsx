@@ -125,6 +125,7 @@ const ListHeader = (props: ListHeaderProps) => {
           initialValues={{
             is_child: false,
           }}
+          variant="inline"
         />
       )}
       {exportFeature?.enabled && (

@@ -1,10 +1,30 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Icon from 'src/@core/components/icon'
 import OptionsMenu from 'src/@core/components/option-menu'
+import { useTranslation } from 'react-i18next'
 
 const GoogleTranslate = () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [isReady, setIsReady] = useState(false)
+    const { i18n } = useTranslation()
+
+    const languages = useMemo(
+        () => [
+            { code: 'en', label: 'English' },
+            { code: 'am', label: 'Amharic' }
+        ],
+        []
+    )
+
+    const applyGoogleTranslateLanguage = (langCode: string) => {
+        const normalizedLangCode = langCode?.split('-')[0] || 'en'
+        document.cookie = `googtrans=/en/${normalizedLangCode};path=/`
+
+        const combo = document.querySelector('.goog-te-combo') as HTMLSelectElement | null
+        if (combo) {
+            combo.value = normalizedLangCode
+            combo.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }))
+        }
+    }
 
     useEffect(() => {
         const initializeGoogleTranslate = () => {
@@ -14,7 +34,7 @@ const GoogleTranslate = () => {
                 new window.google.translate.TranslateElement(
                     {
                         pageLanguage: 'en',
-                        includedLanguages: 'en,am',
+                        includedLanguages: languages.map((l) => l.code).join(','),
                         autoDisplay: false
                     },
                     'google_translate_element'
@@ -40,18 +60,14 @@ const GoogleTranslate = () => {
         }
     }, [])
 
-    const handleLanguageChange = (langCode: string) => {
-        const combo = document.querySelector('.goog-te-combo') as HTMLSelectElement
-        if (combo) {
-            combo.value = langCode
-            combo.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }))
-        }
-    }
+    useEffect(() => {
+        document.documentElement.setAttribute('lang', i18n.language)
+    }, [i18n.language])
 
-    const languages = [
-        { code: 'en', label: 'English' },
-        { code: 'am', label: 'Amharic' }
-    ]
+    useEffect(() => {
+        if (!isReady) return
+        applyGoogleTranslateLanguage(i18n.language)
+    }, [i18n.language, isReady])
 
     return (
         <>
@@ -71,11 +87,17 @@ const GoogleTranslate = () => {
                 icon={<Icon icon='tabler:language' fontSize='1.5rem' />}
                 iconButtonProps={{ color: 'inherit' }}
                 menuProps={{ sx: { '& .MuiMenu-paper': { mt: 4.25, minWidth: 130 } } }}
-                options={languages.map(lang => ({
+                options={languages.map((lang) => ({
                     text: lang.label,
                     menuItemProps: {
-                        onClick: () => handleLanguageChange(lang.code)
-                    }
+                        sx: { py: 2, display: 'flex', alignItems: 'center', gap: 1 },
+                        selected: i18n.language === lang.code,
+                        onClick: () => {
+                            i18n.changeLanguage(lang.code)
+                            applyGoogleTranslateLanguage(lang.code)
+                        }
+                    },
+                    icon: null
                 }))}
             />
         </>
