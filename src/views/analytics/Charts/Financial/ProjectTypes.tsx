@@ -15,6 +15,22 @@ import PerfectScrollbarComponent from 'react-perfect-scrollbar'
 import { formatCurrency } from 'src/utils/formatter/currency'
 import { MasterCategory, MasterType } from 'src/types/master/master-types'
 
+const hashString = (value: string) => {
+  let hash = 0
+  for (let i = 0; i < value.length; i++) hash = (hash * 31 + value.charCodeAt(i)) | 0
+  return Math.abs(hash)
+}
+
+const mulberry32 = (seed: number) => {
+  let t = seed >>> 0
+  return () => {
+    t += 0x6d2b79f5
+    let x = Math.imul(t ^ (t >>> 15), t | 1)
+    x ^= x + Math.imul(x ^ (x >>> 7), x | 61)
+    return ((x ^ (x >>> 14)) >>> 0) / 4294967296
+  }
+}
+
 // ** Styled Scrollbar
 const PerfectScrollbar = styled(PerfectScrollbarComponent)<{ maxHeight: string }>(({ maxHeight }) => ({
   maxHeight
@@ -33,13 +49,29 @@ const ProjectTypes = React.memo(
   ({ rawData = [], title, maxHeight = '18.6rem', activeType, setActiveType, loading }: ProjectTypesProps) => {
     // ✅ Map and enrich data locally
     const data = useMemo(() => {
-      return rawData.map((item: any) => ({
-        ...item,
-        progress: Math.floor(Math.random() * 100),
-        percentage: `${Math.floor(Math.random() * 50)}%`,
-        progressColor: 'primary',
-        amount: formatCurrency(Math.floor(Math.random() * 1_000_000))
-      }))
+      const itemsWithAmount = rawData.map((item: any) => {
+        const seed = hashString(`${item?.id || ''}:${item?.title || ''}:${title}`)
+        const r = mulberry32(seed)
+        const amountNumber = typeof item?.amountNumber === 'number' ? item.amountNumber : 75_000 + Math.round(r() * 1_250_000)
+        return { item, amountNumber, seed }
+      })
+
+      const total = itemsWithAmount.reduce((sum, x) => sum + x.amountNumber, 0) || 1
+
+      return itemsWithAmount.map(({ item, amountNumber, seed }) => {
+        const r = mulberry32(seed + 11)
+        const percentageValue = Math.max(1, Math.min(99, Math.round((amountNumber / total) * 100)))
+        const progressValue = Math.max(8, Math.min(95, Math.round(percentageValue * (0.75 + r() * 0.5))))
+
+        return {
+          ...item,
+          amountNumber,
+          progress: typeof item?.progress === 'number' ? item.progress : progressValue,
+          percentage: typeof item?.percentage === 'string' ? item.percentage : `${percentageValue}%`,
+          progressColor: item?.progressColor || 'primary',
+          amount: typeof item?.amount === 'string' ? item.amount : formatCurrency(amountNumber)
+        }
+      })
     }, [rawData])
 
     const ScrollWrapper = useMemo(

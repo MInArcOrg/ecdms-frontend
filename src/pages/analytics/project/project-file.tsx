@@ -1,7 +1,11 @@
-import React from 'react';
+import ProjectAnalyticsLayout from 'src/views/analytics/layouts/ProjectAnalyticsLayout';
 
 function projectFile() {
-  return <div>projectFile</div>;
+  return (
+    <ProjectAnalyticsLayout>
+      <div>projectFile</div>
+    </ProjectAnalyticsLayout>
+  );
 }
 
 export default projectFile;

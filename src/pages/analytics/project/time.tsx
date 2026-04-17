@@ -1,7 +1,11 @@
-import React from 'react';
+import ProjectAnalyticsLayout from 'src/views/analytics/layouts/ProjectAnalyticsLayout';
 
 function time() {
-  return <div>time</div>;
+  return (
+    <ProjectAnalyticsLayout>
+      <div>time</div>
+    </ProjectAnalyticsLayout>
+  );
 }
 
 export default time;

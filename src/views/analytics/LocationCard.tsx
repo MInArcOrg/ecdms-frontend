@@ -27,11 +27,17 @@ function LocationCard({ categories: propCategories, loading, baseUrl, isProject 
 
   useEffect(() => {
     if (propCategories?.length > 0) {
-      const newColors = propCategories.map(() => colors[Math.floor(Math.random() * colors.length)]);
+      const newColors = propCategories.map((_, index) => colors[index % colors.length]);
       setCategories(propCategories);
       setSelectedColors(newColors);
       setFilterColor(newColors);
+      setRemovedCategories([]);
+      return;
     }
+    setCategories([]);
+    setSelectedColors([]);
+    setFilterColor([]);
+    setRemovedCategories([]);
   }, [propCategories]);
 
   return (
@@ -54,20 +60,19 @@ function LocationCard({ categories: propCategories, loading, baseUrl, isProject 
                   cursor="pointer"
                   onClick={() => {
                     const isRemoved = removedCategories.some((c) => c.id === category.id);
+                    const nextRemoved = isRemoved
+                      ? removedCategories.filter((c) => c.id !== category.id)
+                      : [...removedCategories, category];
 
-                    if (isRemoved) {
-                      // Add back the category
-                      const updatedRemoved = removedCategories.filter((c) => c.id !== category.id);
-                      setRemovedCategories(updatedRemoved);
-                      setCategories([...categories, category]);
-                      setFilterColor([...filterColor, selectedColors[index]]);
-                    } else {
-                      // Remove the category
-                      const updatedCategories = categories.filter((c) => c.id !== category.id);
-                      setRemovedCategories([...removedCategories, category]);
-                      setCategories(updatedCategories);
-                      setFilterColor(filterColor.filter((c) => c !== selectedColors[index]));
-                    }
+                    const visible = propCategories.filter((c) => !nextRemoved.some((r) => r.id === c.id));
+                    const visibleColors = visible.map((c) => {
+                      const idx = propCategories.findIndex((x) => x.id === c.id);
+                      return selectedColors[idx] || colors[idx % colors.length];
+                    });
+
+                    setRemovedCategories(nextRemoved);
+                    setCategories(visible);
+                    setFilterColor(visibleColors);
                   }}
                 />
                 <span>{removedCategories.some((c) => c.id === category.id) ? <>{category.title}</> : category.title}</span>

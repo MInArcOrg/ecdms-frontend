@@ -6,9 +6,11 @@ import {
   Select
 } from '@mui/material'
 import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useProjectTypeCategory from 'src/hooks/analytics/use-master-data'
 import { useAuth } from 'src/hooks/useAuth'
+import useLocalStorage from 'src/hooks/use-local-storage'
+import { ANALYTICS_DUMMY_DATA_STORAGE_KEY } from 'src/configs/app-constants'
 import projectPerformanceAnalticsService from 'src/services/analytics/project/performance-service'
 import departmentApiService from 'src/services/department/department-service'
 import Department from 'src/types/department/department'
@@ -20,7 +22,7 @@ import FinancialPhysicalPerformanceExpense from 'src/views/analytics/projects/pe
 
 const availableYears = [2023, 2024, 2025]
 
-const usePerformanceData = (typeId: string, departmentId?: string, year?: number) => {
+const usePerformanceData = (typeId: string, dummyEnabled: boolean, departmentId?: string, year?: number) => {
   const buildFilter = (attr?: string) => {
     const filter: Record<string, any> = {}
     if (departmentId) filter.department_id = departmentId
@@ -36,7 +38,7 @@ const usePerformanceData = (typeId: string, departmentId?: string, year?: number
         projectPerformanceAnalticsService.getFinancialPhysicalPerformanceExpense(typeId, {
           filter: buildFilter(attr)
         }),
-      enabled: !!typeId
+      enabled: !!typeId && !dummyEnabled
     })
 
   const fetchEVAPerformance = () =>
@@ -46,7 +48,7 @@ const usePerformanceData = (typeId: string, departmentId?: string, year?: number
         projectPerformanceAnalticsService.getEVAperformance(typeId, {
           filter: buildFilter()
         }),
-      enabled: !!typeId
+      enabled: !!typeId && !dummyEnabled
     })
 
   const evaPerformance = fetchEVAPerformance()
@@ -54,11 +56,18 @@ const usePerformanceData = (typeId: string, departmentId?: string, year?: number
   const physical = fetchPerformance('physical_performance')
   const expense = fetchPerformance('expense')
 
+  const dummy = {
+    financial: [{ name: 'Planned', data: [120000, 130000, 110000, 150000] }, { name: 'Actual', data: [100000, 125000, 105000, 140000] }],
+    physical: [{ name: 'Planned', data: [40, 55, 60, 80] }, { name: 'Actual', data: [35, 50, 58, 75] }],
+    expense: [{ name: 'Planned', data: [90000, 95000, 87000, 120000] }, { name: 'Actual', data: [85000, 92000, 86000, 110000] }],
+    evaPerformance: [{ name: 'SV', data: [2, -1, 3, 1] }, { name: 'CV', data: [1, 0, 2, -1] }]
+  }
+
   return {
-    financial: financial.data?.payload || [{ name: 'Financial', data: [] }],
-    physical: physical.data?.payload || [{ name: 'Physical', data: [] }],
-    expense: expense.data?.payload || [{ name: 'Expense', data: [] }],
-    evaPerformance: evaPerformance.data?.payload || [{ name: 'Financial', data: [] }]
+    financial: dummyEnabled ? dummy.financial : financial.data?.payload || [{ name: 'Financial', data: [] }],
+    physical: dummyEnabled ? dummy.physical : physical.data?.payload || [{ name: 'Physical', data: [] }],
+    expense: dummyEnabled ? dummy.expense : expense.data?.payload || [{ name: 'Expense', data: [] }],
+    evaPerformance: dummyEnabled ? dummy.evaPerformance : evaPerformance.data?.payload || [{ name: 'Financial', data: [] }]
   }
 }
 
@@ -117,6 +126,7 @@ const Filters = ({
 
 // -------------------- MAIN COMPONENT --------------------
 const Performance = () => {
+  const [dummyEnabled] = useLocalStorage<boolean>(ANALYTICS_DUMMY_DATA_STORAGE_KEY, false)
   const {
     types,
     activeType,
@@ -129,12 +139,28 @@ const Performance = () => {
       departmentApiService.getAll({
         filter: { parent_department_id: user?.department_id }
       }),
+    enabled: !!user?.department_id && !dummyEnabled
   })
+  const dummyDepartments: Department[] = [
+    { id: 'd-1', name: 'Addis Ababa' } as Department,
+    { id: 'd-2', name: 'Oromia' } as Department,
+    { id: 'd-3', name: 'Amhara' } as Department
+  ]
+
   const [selectedDepartmentId, setSelectedDepartmentId] = useState(user?.department_id)
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
 
+  useEffect(() => {
+    if (dummyEnabled) {
+      setSelectedDepartmentId(dummyDepartments[0].id)
+    } else if (user?.department_id) {
+      setSelectedDepartmentId(user.department_id)
+    }
+  }, [dummyEnabled, user?.department_id])
+
   const { financial, physical, expense, evaPerformance } = usePerformanceData(
     activeType.id,
+    dummyEnabled,
     selectedDepartmentId || "",
     selectedYear
   )
@@ -149,7 +175,7 @@ const Performance = () => {
   return (
     <ProjectAnalyticsLayout>
       <Filters
-        departments={departments?.payload || []}
+        departments={dummyEnabled ? dummyDepartments : departments?.payload || []}
         years={availableYears}
         selectedDepartment={selectedDepartmentId || ""}
         setSelectedDepartment={setSelectedDepartmentId}

@@ -16,8 +16,15 @@ export default function useLocalStorage<ValueType>(key: string, defaultValue: Va
     };
     window.addEventListener('storage', listener);
 
+    const customListener = (e: Event) => {
+      const detail = (e as CustomEvent<{ key: string; value: ValueType }>).detail;
+      if (detail?.key === key) setValue(detail.value);
+    };
+    window.addEventListener('local-storage', customListener as EventListener);
+
     return () => {
       window.removeEventListener('storage', listener);
+      window.removeEventListener('local-storage', customListener as EventListener);
     };
   }, [key, defaultValue]);
 
@@ -25,6 +32,9 @@ export default function useLocalStorage<ValueType>(key: string, defaultValue: Va
     setValue((currentValue: any) => {
       const result = typeof newValue === 'function' ? newValue(currentValue) : newValue;
       if (typeof window !== 'undefined') localStorage.setItem(key, JSON.stringify(result));
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('local-storage', { detail: { key, value: result } }));
+      }
       return result;
     });
   };

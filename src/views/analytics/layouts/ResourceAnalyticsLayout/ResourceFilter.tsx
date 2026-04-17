@@ -27,11 +27,11 @@ const ResourceFilter = ({
     <Autocomplete
       size="small"
       options={options ?? []}
-      value={value}
-      getOptionLabel={getOptionLabel}
-      isOptionEqualToValue={(option, value) => option.id === value.id}
+      value={value ?? null}
+      getOptionLabel={(option: any) => String(getOptionLabel(option) ?? '')}
+      isOptionEqualToValue={(option: any, value: any) => option?.id === value?.id}
       loading={loading}
-      onChange={(event, newValue) => onChange(newValue)}
+      onChange={(event, newValue) => onChange(newValue ?? null)}
       renderInput={(params) => (
         <TextField
           {...params}
@@ -64,6 +64,8 @@ const ResourceFilter = ({
               onChange={(newVal: any) => {
                 setType(newVal);
                 setCategory(null);
+                setSubCategory(null);
+                setItem(null);
               }}
             />
           </Grid>
@@ -78,6 +80,8 @@ const ResourceFilter = ({
               loading={isCategoryLoading}
               onChange={(newVal: any) => {
                 setCategory(newVal);
+                setSubCategory(null);
+                setItem(null);
               }}
             />
           </Grid>
@@ -90,7 +94,10 @@ const ResourceFilter = ({
               options={resourceSubCategories || []}
               loading={isSubCategoryLoading}
               value={subCategory}
-              onChange={setSubCategory}
+              onChange={(newVal: any) => {
+                setSubCategory(newVal);
+                setItem(null);
+              }}
             />
           </Grid>
 
@@ -99,7 +106,7 @@ const ResourceFilter = ({
               Item
             </Typography>
             <AutocompleteField
-              options={resources?.map((resource: any) => ({
+              options={(resources ?? []).map((resource: any) => ({
                 id: resource.id,
                 title: resource.name
               }))}

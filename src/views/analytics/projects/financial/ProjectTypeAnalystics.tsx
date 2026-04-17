@@ -19,6 +19,27 @@ import ReactApexcharts from 'src/@core/components/react-apexcharts'
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
 import projectFinanceAnalyticsService from 'src/services/analytics/project/finanace'
 import { MasterType } from 'src/types/master/master-types'
+import useLocalStorage from 'src/hooks/use-local-storage'
+import { ANALYTICS_DUMMY_DATA_STORAGE_KEY } from 'src/configs/app-constants'
+
+const hashString = (value: string) => {
+  let hash = 0
+  for (let i = 0; i < value.length; i++) hash = (hash * 31 + value.charCodeAt(i)) | 0
+  return Math.abs(hash)
+}
+
+const mulberry32 = (seed: number) => {
+  let t = seed >>> 0
+  return () => {
+    t += 0x6d2b79f5
+    let x = Math.imul(t ^ (t >>> 15), t | 1)
+    x ^= x + Math.imul(x ^ (x >>> 7), x | 61)
+    return ((x ^ (x >>> 14)) >>> 0) / 4294967296
+  }
+}
+
+const formatInt = (value: number) =>
+  new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(Math.round(value))
 
 // ** Styled Component
 const StyledGrid = styled(Grid)(({ theme }) => ({
@@ -29,16 +50,77 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
 
 const ProjectTypeFinanceAnalystics = ({ selectedType }: { selectedType: MasterType }) => {
   const theme = useTheme()
+  const [dummyEnabled] = useLocalStorage<boolean>(ANALYTICS_DUMMY_DATA_STORAGE_KEY, false)
 
   // ** Fetch Analytics Data
-  const { data, isLoading, isError } = useQuery({
+  const { data: apiResponse, isLoading, isError } = useQuery({
     queryKey: ['projectTypeProjectFinance', selectedType?.id],
     queryFn: () => projectFinanceAnalyticsService.projectTypeProjectFinance(selectedType?.id, {}),
-    enabled: !!selectedType?.id
+    enabled: !!selectedType?.id && !dummyEnabled
   })
 
+  const seed = hashString(`${selectedType?.id || 'none'}:${selectedType?.title || ''}`)
+  const r = mulberry32(seed)
+  const main = 250_000 + r() * 1_250_000
+  const supplement = main * (0.12 + r() * 0.18)
+  const variation = main * (0.08 + r() * 0.22)
+  const omission = main * (r() * 0.06)
+  const total = main + supplement + variation - omission
+  const growth = -2 + r() * 18
+
+  const dummyResponse = {
+    payload: {
+      summary: {
+        total: formatInt(total),
+        growth,
+        subtitle: 'Q4 Overview',
+        description: 'This year compared to last year'
+      },
+      series: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+        data: Array.from({ length: 8 }).map((_, i) => {
+          const rr = mulberry32(hashString(`${seed}:m:${i}`))
+          const v = (total / 8) * (0.75 + rr() * 0.6)
+          return Math.round(v / 10_000)
+        })
+      },
+      data: [
+        {
+          title: 'Main Contract',
+          stats: `ETB ${formatInt(main)}`,
+          progress: Math.min(100, Math.max(5, Math.round((main / total) * 100))),
+          avatarColor: 'primary',
+          avatarIcon: 'tabler:file-invoice'
+        },
+        {
+          title: 'Supplement',
+          stats: `ETB ${formatInt(supplement)}`,
+          progress: Math.min(100, Math.max(5, Math.round((supplement / total) * 100))),
+          avatarColor: 'warning',
+          avatarIcon: 'tabler:plus'
+        },
+        {
+          title: 'Variation',
+          stats: `ETB ${formatInt(variation)}`,
+          progress: Math.min(100, Math.max(5, Math.round((variation / total) * 100))),
+          avatarColor: 'success',
+          avatarIcon: 'tabler:adjustments'
+        },
+        {
+          title: 'Omission',
+          stats: `ETB ${formatInt(omission)}`,
+          progress: Math.min(100, Math.max(5, Math.round((omission / total) * 100))),
+          avatarColor: 'info',
+          avatarIcon: 'tabler:minus'
+        }
+      ]
+    }
+  }
+
+  const resolvedResponse = (dummyEnabled ? dummyResponse : apiResponse) as any
+
   // ** Handle Loading or Error
-  if (isLoading) {
+  if (!dummyEnabled && isLoading) {
     return (
       <Card>
         <CardContent>
@@ -48,7 +130,7 @@ const ProjectTypeFinanceAnalystics = ({ selectedType }: { selectedType: MasterTy
     )
   }
 
-  if (isError || !data) {
+  if (!dummyEnabled && (isError || !resolvedResponse)) {
     return (
       <Card>
         <CardContent>
@@ -59,7 +141,7 @@ const ProjectTypeFinanceAnalystics = ({ selectedType }: { selectedType: MasterTy
   }
 
   // Assume API returns { summary, series, details }
-  const { data: details, series, summary } = data.payload
+  const { data: details, series, summary } = resolvedResponse.payload
 
   const options = {
     chart: {

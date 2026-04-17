@@ -1,7 +1,9 @@
-import { Card, FormControl, Grid, ListItemButton, ListItemText, MenuItem, Select } from '@mui/material';
+import { Card, FormControl, FormControlLabel, Grid, ListItemButton, ListItemText, MenuItem, Select, Switch } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Can from 'src/layouts/components/acl/Can';
+import useLocalStorage from 'src/hooks/use-local-storage';
+import { ANALYTICS_DUMMY_DATA_STORAGE_KEY } from 'src/configs/app-constants';
 
 function DetailMenu({
   id,
@@ -20,6 +22,7 @@ function DetailMenu({
 }) {
   const theme = useTheme();
   const desktop = useMediaQuery(theme.breakpoints.up('md'));
+  const [dummyEnabled, setDummyEnabled] = useLocalStorage<boolean>(ANALYTICS_DUMMY_DATA_STORAGE_KEY, false);
 
   return (
     <Card sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 2 }}>
@@ -66,6 +69,10 @@ function DetailMenu({
           </Select>
         </FormControl>
       )}
+      <FormControlLabel
+        label="Dummy Data"
+        control={<Switch checked={Boolean(dummyEnabled)} onChange={(e) => setDummyEnabled(e.target.checked)} />}
+      />
     </Card>
   );
 }

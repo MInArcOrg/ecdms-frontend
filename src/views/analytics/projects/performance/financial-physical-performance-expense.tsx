@@ -7,6 +7,8 @@ import departmentApiService from 'src/services/department/department-service';
 import PerformanceTable from './financial-physical-performance-expense-table';
 import { formatCurrency } from 'src/utils/formatter/currency';
 import { ApexOptions } from 'apexcharts';
+import useLocalStorage from 'src/hooks/use-local-storage';
+import { ANALYTICS_DUMMY_DATA_STORAGE_KEY } from 'src/configs/app-constants';
 
 // -------------------- Types --------------------
 interface SeriesData {
@@ -23,6 +25,7 @@ interface FinancialPhysicalPerformanceExpenseProps {
 const FinancialPhysicalPerformanceExpense = ({ title, data = [] }: FinancialPhysicalPerformanceExpenseProps) => {
     const theme = useTheme();
     const { user } = useAuth();
+    const [dummyEnabled] = useLocalStorage<boolean>(ANALYTICS_DUMMY_DATA_STORAGE_KEY, false);
 
     const [checked, setChecked] = useState(false);
     const [chartSeries, setChartSeries] = useState<SeriesData[]>(data);
@@ -35,14 +38,25 @@ const FinancialPhysicalPerformanceExpense = ({ title, data = [] }: FinancialPhys
         queryKey: ['departments', user?.id],
         queryFn: () =>
             departmentApiService.getAll({ filter: { parent_department_id: user?.department_id } }),
-        enabled: !!user?.id
+        enabled: !!user?.id && !dummyEnabled
     });
+
+    const dummyRegions = [
+        { id: 'd-1', name: 'Addis Ababa' },
+        { id: 'd-2', name: 'Oromia' },
+        { id: 'd-3', name: 'Amhara' },
+        { id: 'd-4', name: 'SNNPR' }
+    ];
 
     const [region, setRegion] = useState<any>(null);
 
     useEffect(() => {
+        if (dummyEnabled) {
+            setRegion(dummyRegions[0]);
+            return;
+        }
         if (labels?.payload?.length) setRegion(labels.payload[0]);
-    }, [labels]);
+    }, [labels, dummyEnabled]);
 
     // -------------------- Helper: calculate percent --------------------
     const calculatePercent = (planned: number[], actual: number[]) => {
@@ -93,7 +107,7 @@ const FinancialPhysicalPerformanceExpense = ({ title, data = [] }: FinancialPhys
                 <Grid item xs={12} md={6}>
                     <PerformanceTable
                         title={title}
-                        regions={labels?.payload ?? []}
+                        regions={(dummyEnabled ? dummyRegions : labels?.payload) ?? []}
                         year={year}
                         setYear={setYear}
                         region={region}

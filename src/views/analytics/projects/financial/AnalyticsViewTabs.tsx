@@ -10,6 +10,24 @@ import LocationCard from 'src/views/analytics/LocationCard'
 
 import projectFinanceAnalyticsService from 'src/services/analytics/project/finanace'
 import { MasterCategory } from 'src/types/master/master-types'
+import useLocalStorage from 'src/hooks/use-local-storage'
+import { ANALYTICS_DUMMY_DATA_STORAGE_KEY } from 'src/configs/app-constants'
+
+const hashString = (value: string) => {
+    let hash = 0
+    for (let i = 0; i < value.length; i++) hash = (hash * 31 + value.charCodeAt(i)) | 0
+    return Math.abs(hash)
+}
+
+const mulberry32 = (seed: number) => {
+    let t = seed >>> 0
+    return () => {
+        t += 0x6d2b79f5
+        let x = Math.imul(t ^ (t >>> 15), t | 1)
+        x ^= x + Math.imul(x ^ (x >>> 7), x | 61)
+        return ((x ^ (x >>> 14)) >>> 0) / 4294967296
+    }
+}
 
 interface AnalyticsViewTabsProps {
     value: string
@@ -34,21 +52,83 @@ export default function AnalyticsViewTabs({
     selectedCategory,
     isCategoryLoading
 }: AnalyticsViewTabsProps) {
-    const { data, isLoading, isError } = useQuery({
+    const [dummyEnabled] = useLocalStorage<boolean>(ANALYTICS_DUMMY_DATA_STORAGE_KEY, false)
+
+    const { data: apiResponse, isLoading, isError } = useQuery({
         queryKey: ['projectCategoryDepartmentsFinance', selectedCategory?.id],
         queryFn: () =>
             projectFinanceAnalyticsService.projectCategoryDepartmentsfinance(
                 selectedCategory?.id || '',
                 {}
             ),
-        enabled: !!selectedCategory?.id
+        enabled: !!selectedCategory?.id && !dummyEnabled
     })
 
-    // Safely extract payload data
-    const series = data?.payload?.series || []
-    const labels = data?.payload?.departments || []
+    const regions = [
+        'FDRE',
+        'Dire Dawa',
+        'Southwest Ethiopia',
+        'Benishangul',
+        'Somali',
+        'Harari',
+        'Afar',
+        'Sidama',
+        'Addis Ababa',
+        'Tigray',
+        'Amhara',
+        'Central Ethiopia',
+        'South Ethiopia',
+        'Oromia'
+    ]
 
-    const showLoader = isLoading || isCategoryLoading
+    const buildDummyFinanceSeries = () => {
+        const seed = hashString(`${selectedCategory?.id || 'none'}:${selectedCategory?.title || ''}`)
+        const r = mulberry32(seed)
+
+        const main = regions.map((region) => {
+            const rr = mulberry32(hashString(`${seed}:main:${region}`))
+            const base = 0.35 + r() * 1.15
+            const regionBias = 0.75 + rr() * 0.9
+            const noise = (rr() - 0.5) * 0.25
+            return Math.max(0, Number(((base + noise) * regionBias).toFixed(2)))
+        })
+
+        const supplement = main.map((v, i) => {
+            const rr = mulberry32(hashString(`${seed}:supp:${regions[i]}`))
+            return Number((v * (0.08 + rr() * 0.22)).toFixed(2))
+        })
+        const variation = main.map((v, i) => {
+            const rr = mulberry32(hashString(`${seed}:var:${regions[i]}`))
+            return Number((v * (0.05 + rr() * 0.2)).toFixed(2))
+        })
+        const omission = main.map((v, i) => {
+            const rr = mulberry32(hashString(`${seed}:omi:${regions[i]}`))
+            const val = v * (rr() * 0.06)
+            return rr() < 0.15 ? 0 : Number(val.toFixed(2))
+        })
+
+        return [
+            { name: 'Main Contract', data: main },
+            { name: 'Supplement', data: supplement },
+            { name: 'Variation', data: variation },
+            { name: 'Omission', data: omission }
+        ]
+    }
+
+    const dummyResponse = {
+        payload: {
+            series: buildDummyFinanceSeries(),
+            departments: regions
+        }
+    }
+
+    const resolvedResponse = (dummyEnabled ? dummyResponse : apiResponse) as any
+
+    // Safely extract payload data
+    const series = resolvedResponse?.payload?.series || []
+    const labels = resolvedResponse?.payload?.departments || []
+
+    const showLoader = (!dummyEnabled && isLoading) || isCategoryLoading
 
     return (
         <Box>

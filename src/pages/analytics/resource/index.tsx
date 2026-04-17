@@ -17,15 +17,17 @@ import ChartView from 'src/views/analytics/layouts/ResourceAnalyticsLayout/Chart
 import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker';
 import useModelTypeCategory from 'src/hooks/analytics/use-master-data';
 import resourceGeneralAnalyticsService from 'src/services/analytics/resource/general';
+import useLocalStorage from 'src/hooks/use-local-storage';
+import { ANALYTICS_DUMMY_DATA_STORAGE_KEY } from 'src/configs/app-constants';
 
 const years = Array.from({ length: 10 }, (_, i) => ({ id: i, name: (2021 + i).toString() }));
 
 const ResourceAnalytics = () => {
   const { user } = useAuth();
+  const [dummyEnabled] = useLocalStorage<boolean>(ANALYTICS_DUMMY_DATA_STORAGE_KEY, false);
   const [item, setItem] = useState<any>(null);
   const [baseYear, setBaseYear] = useState(years[0]);
   const [tableView, setTableView] = useState(true);
-  const [rows, setRows] = useState<any[]>([]);
   const [resourceParams, setResourceParams] = useState(defaultGetRequestParam);
 
   const {
@@ -46,14 +48,15 @@ const ResourceAnalytics = () => {
   // Fetch resources based on selected type/category/subcategory
   const { data: resources, isLoading: resourceLoading } = useQuery({
     queryKey: ['resources', resourceParams],
-    queryFn: () => resourceApiService.getAll(resourceParams)
+    queryFn: () => resourceApiService.getAll(resourceParams),
+    enabled: !!activeType?.id && !dummyEnabled
   });
 
   // Fetch department labels
   const { data: labels } = useQuery({
     queryKey: ['departments', user?.id],
     queryFn: () => departmentApiService.getAll({ filter: { parent_department_id: user?.department_id } }),
-    enabled: !!user?.id
+    enabled: !!user?.id && !dummyEnabled
   });
 
   // Update query params when selection changes
@@ -69,18 +72,34 @@ const ResourceAnalytics = () => {
   const { data } = useQuery({
     queryKey: ['resource-price-index', item?.id],
     queryFn: () => resourceGeneralAnalyticsService.resourcePriceIndex(Number(baseYear.name), item?.id, {}),
-    enabled: !!item?.id
+    enabled: !!item?.id && !dummyEnabled
   });
-  console.log('resource price index', data)
+
+  const dummyResources = [
+    { id: 'r-1', name: 'Cement' },
+    { id: 'r-2', name: 'Rebar' },
+    { id: 'r-3', name: 'Sand' }
+  ];
+
+  const dummyPriceIndex = {
+    payload: {
+      labels: [2021, 2022, 2023, 2024, 2025],
+      data: [{ name: 'Price Index', data: [100, 112, 121, 135, 148] }]
+    }
+  };
+
+  const safeType = activeType?.id ? activeType : null;
+  const safeCategory = activeCategory?.id ? activeCategory : null;
+  const safeSubCategory = activeSubCategory?.id ? activeSubCategory : null;
 
   return (
     <ResourceAnalyticsLayout>
       <ResourceFilter
-        type={activeType}
+        type={safeType}
         setType={setActiveType}
-        category={activeCategory}
+        category={safeCategory}
         setCategory={setActiveCategory}
-        subCategory={activeSubCategory}
+        subCategory={safeSubCategory}
         setSubCategory={setActiveSubCategory}
         item={item}
         setItem={setItem}
@@ -90,8 +109,8 @@ const ResourceAnalytics = () => {
         isCategoryLoading={isCategoryLoading}
         resourceSubCategories={subCategories}
         isSubCategoryLoading={isSubCategoryLoading}
-        resources={resources?.payload}
-        loading={resourceLoading}
+        resources={dummyEnabled ? dummyResources : resources?.payload}
+        loading={!dummyEnabled && resourceLoading}
         years={years}
         baseYear={baseYear}
         setBaseYear={setBaseYear}
@@ -120,16 +139,16 @@ const ResourceAnalytics = () => {
       <Card>
         {tableView ? (
           <TableView
-            years={data?.payload?.labels?.map((year: number, index: number) => ({ id: index, name: year }))}
+            years={(dummyEnabled ? dummyPriceIndex : data)?.payload?.labels?.map((year: number, index: number) => ({ id: index, name: year }))}
             baseYear={indexOf(years, baseYear)}
-            data={data?.payload.data}
+            data={(dummyEnabled ? dummyPriceIndex : data)?.payload.data}
           />
         ) : (
           <DatePickerWrapper>
             <ChartView
-              years={data?.payload?.labels?.map((year: number, index: number) => ({ id: index, name: year }))}
+              years={(dummyEnabled ? dummyPriceIndex : data)?.payload?.labels?.map((year: number, index: number) => ({ id: index, name: year }))}
               baseYear={indexOf(years, baseYear)}
-              data={data?.payload.data}
+              data={(dummyEnabled ? dummyPriceIndex : data)?.payload.data}
             />
           </DatePickerWrapper>
         )}
