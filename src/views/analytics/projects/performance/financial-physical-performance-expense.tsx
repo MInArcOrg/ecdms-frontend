@@ -86,6 +86,23 @@ const FinancialPhysicalPerformanceExpense = ({ title, data = [] }: FinancialPhys
     }, [checked, data]);
 
     const quarters = ['Q1', 'Q2', 'Q3', 'Q4'];
+    const normalizeToQuarters = (values: number[]) => {
+        const next = values.slice(0, quarters.length);
+        while (next.length < quarters.length) next.push(0);
+        return next;
+    };
+
+    const plannedSeries = data.find((s) => s.name.toLowerCase() === 'planned') ?? data[0];
+    const actualSeries = data.find((s) => s.name.toLowerCase() === 'actual') ?? data[1];
+
+    const performanceData =
+        plannedSeries && actualSeries
+            ? {
+                quarters,
+                planned: normalizeToQuarters(plannedSeries.data ?? []),
+                actual: normalizeToQuarters(actualSeries.data ?? [])
+            }
+            : undefined;
 
     const chartOptions: ApexOptions = {
         chart: { type: 'bar', height: 350 },
@@ -113,6 +130,7 @@ const FinancialPhysicalPerformanceExpense = ({ title, data = [] }: FinancialPhys
                         region={region}
                         setRegion={setRegion}
                         years={years}
+                        performanceData={performanceData}
                     />
                 </Grid>
 

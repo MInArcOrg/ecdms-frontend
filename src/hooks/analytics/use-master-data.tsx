@@ -79,14 +79,39 @@ const DUMMY_STAKEHOLDER_TYPES: MasterType[] = [
     makeDummyType('Regulatory Body')
 ]
 
+const DUMMY_RESOURCE_TYPES: MasterType[] = [
+    makeDummyType('Construction Materials'),
+    makeDummyType('Steel & Metals'),
+    makeDummyType('Aggregates'),
+    makeDummyType('Electrical Materials'),
+    makeDummyType('Fuel & Lubricants'),
+    makeDummyType('Machinery & Equipment'),
+    makeDummyType('Timber & Finishes')
+]
+
 const getDummyTypesForModel = (model: string) => {
     if (model === 'stakeholder') return DUMMY_STAKEHOLDER_TYPES
+    if (model === 'resource') return DUMMY_RESOURCE_TYPES
     if (model === 'project' || model === 'infrastructure') return DUMMY_PROJECT_INFRA_TYPES
     return DUMMY_PROJECT_INFRA_TYPES
 }
 
 const getDummyCategoryTitles = (typeTitle: string) => {
     const key = typeTitle.toLowerCase()
+    if (key.includes('construction') && key.includes('material'))
+        return ['Cement & Concrete', 'Bricks & Blocks', 'Ceramics & Tiles', 'Admixtures & Additives']
+    if (key.includes('steel') || key.includes('metal'))
+        return ['Rebar', 'Structural Steel', 'Sheets & Pipes', 'Fasteners']
+    if (key.includes('aggregate'))
+        return ['Sand', 'Gravel', 'Crushed Stone', 'Fill Material']
+    if (key.includes('electrical'))
+        return ['Cables', 'Transformers', 'Switchgear', 'Poles & Accessories']
+    if (key.includes('fuel') || key.includes('lubric'))
+        return ['Diesel', 'Petrol', 'Lubricants', 'Gas']
+    if (key.includes('machinery') || key.includes('equipment'))
+        return ['Earthmoving', 'Lifting', 'Hauling', 'Compaction']
+    if (key.includes('timber') || key.includes('finish'))
+        return ['Timber', 'Paints', 'Glass', 'Doors & Fixtures']
     if (key.includes('road')) return ['Gravel Road', 'Asphalt Road', 'Asphalt Concrete Road', 'Reed Road']
     if (key.includes('water')) return ['Water Supply', 'Wastewater', 'Irrigation', 'Drainage']
     if (key.includes('electric')) return ['Generation', 'Transmission', 'Distribution', 'Electrification']
@@ -116,6 +141,45 @@ const getDummyCategoryTitles = (typeTitle: string) => {
 const getDummySubCategoryTitles = (typeTitle: string, categoryTitle: string) => {
     const t = typeTitle.toLowerCase()
     const c = categoryTitle.toLowerCase()
+
+    if ((t.includes('construction') && t.includes('material')) || t.includes('steel') || t.includes('metal') || t.includes('aggregate') || t.includes('electrical') || t.includes('fuel') || t.includes('lubric') || t.includes('machinery') || t.includes('equipment') || t.includes('timber') || t.includes('finish')) {
+        if (c.includes('cement')) return ['OPC 42.5', 'OPC 52.5', 'PPC', 'Ready-mix Concrete']
+        if (c.includes('brick') || c.includes('block')) return ['Hollow Blocks', 'Solid Blocks', 'Bricks', 'Pavers']
+        if (c.includes('tile') || c.includes('ceramic')) return ['Floor Tiles', 'Wall Tiles', 'Roof Tiles', 'Porcelain']
+        if (c.includes('admixture') || c.includes('additive')) return ['Water Reducer', 'Accelerator', 'Retarder', 'Waterproofing']
+
+        if (c.includes('rebar')) return ['8mm', '10mm', '12mm', '16mm']
+        if (c.includes('structural')) return ['I-Beam', 'H-Beam', 'Angle', 'Channel']
+        if (c.includes('sheet') || c.includes('pipe')) return ['GI Sheets', 'Steel Pipes', 'Aluminum Sheets', 'PVC Pipes']
+        if (c.includes('fastener')) return ['Bolts', 'Nuts', 'Screws', 'Nails']
+
+        if (c.includes('sand')) return ['River Sand', 'Washed Sand', 'Plaster Sand', 'Fine Sand']
+        if (c.includes('gravel')) return ['10mm', '20mm', '40mm', 'Mixed']
+        if (c.includes('crushed')) return ['Base Course', 'Sub-base', 'Crusher Dust', 'Ballast']
+        if (c.includes('fill')) return ['Selected Fill', 'Common Fill', 'Laterite', 'Borrow Material']
+
+        if (c.includes('cable')) return ['LV Cable', 'MV Cable', 'Armored', 'Control Cable']
+        if (c.includes('transformer')) return ['Distribution', 'Power', 'Pole-mounted', 'Pad-mounted']
+        if (c.includes('switch')) return ['Circuit Breaker', 'Isolator', 'Panel Board', 'Protection Relay']
+        if (c.includes('pole') || c.includes('accessor')) return ['Concrete Poles', 'Cross Arms', 'Insulators', 'Clamps']
+
+        if (c.includes('diesel')) return ['Retail', 'Bulk Supply', 'Generator Fuel', 'Industrial']
+        if (c.includes('petrol')) return ['Regular', 'Premium', 'Bulk Supply', 'Transport']
+        if (c.includes('lubric')) return ['Engine Oil', 'Hydraulic Oil', 'Grease', 'Gear Oil']
+        if (c.includes('gas')) return ['LPG', 'Industrial Gas', 'Welding Gas', 'CNG']
+
+        if (c.includes('earth')) return ['Excavator', 'Loader', 'Bulldozer', 'Backhoe']
+        if (c.includes('lift')) return ['Crane', 'Forklift', 'Hoist', 'Manlift']
+        if (c.includes('haul')) return ['Tipper Truck', 'Flatbed', 'Trailer', 'Water Truck']
+        if (c.includes('compact')) return ['Roller', 'Plate Compactor', 'Rammer', 'Paver']
+
+        if (c.includes('timber')) return ['Eucalyptus', 'Plywood', 'Hardwood', 'Formwork']
+        if (c.includes('paint')) return ['Primer', 'Emulsion', 'Enamel', 'Epoxy']
+        if (c.includes('glass')) return ['Clear Glass', 'Tinted Glass', 'Tempered', 'Laminated']
+        if (c.includes('door') || c.includes('fixture')) return ['Wood Doors', 'Metal Doors', 'Sanitary Fixtures', 'Cabinetry']
+
+        return ['Grade A', 'Grade B', 'Grade C', 'Other']
+    }
 
     if (t.includes('road')) {
         if (c.includes('gravel')) return ['New Construction', 'Rehabilitation', 'Routine Maintenance', 'Upgrading']

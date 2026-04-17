@@ -5,6 +5,8 @@ import { useState } from 'react';
 import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker';
 import { dropDownConfig } from 'src/configs/api-constants';
 import { useAuth } from 'src/hooks/useAuth';
+import useLocalStorage from 'src/hooks/use-local-storage';
+import { ANALYTICS_DUMMY_DATA_STORAGE_KEY } from 'src/configs/app-constants';
 import departmentApiService from 'src/services/department/department-service';
 import generalMasterDataApiService from 'src/services/general/general-master-data-service';
 import ResourceAnalyticsLayout from 'src/views/analytics/layouts/ResourceAnalyticsLayout';
@@ -17,35 +19,104 @@ const years = Array.from({ length: 10 }, (_, i) => ({
   name: (2021 + i).toString()
 }));
 
+const hashString = (value: string) => {
+  let hash = 0;
+  for (let i = 0; i < value.length; i++) {
+    hash = (hash * 31 + value.charCodeAt(i)) | 0;
+  }
+  return Math.abs(hash);
+};
+
+const mulberry32 = (seed: number) => {
+  let t = seed >>> 0;
+  return () => {
+    t += 0x6d2b79f5;
+    let x = Math.imul(t ^ (t >>> 15), t | 1);
+    x ^= x + Math.imul(x ^ (x >>> 7), x | 61);
+    return ((x ^ (x >>> 14)) >>> 0) / 4294967296;
+  };
+};
+
+type SalaryRow = {
+  region: string;
+  totalPublc: number;
+  totalPrivate: number;
+  malePblic: number;
+  femalePublic: number;
+  malePrivate: number;
+  femalePrivate: number;
+  totalAverage: number;
+};
+
 function Salary() {
   const { user } = useAuth();
+  const [dummyEnabled] = useLocalStorage<boolean>(ANALYTICS_DUMMY_DATA_STORAGE_KEY, false);
 
   // --- Fetch master data ---
   const { data: departments } = useQuery({
     queryKey: ['departments', user?.department_id],
     queryFn: () => departmentApiService.getAll({ filter: { parent_department_id: user?.department_id } }),
-    enabled: !!user?.department_id
+    enabled: !!user?.department_id && !dummyEnabled
   });
 
   const { data: studyFields, isLoading: fieldsLoading } = useQuery({
     queryKey: ['study-fields'],
-    queryFn: () => generalMasterDataApiService.getAll('study-fields', dropDownConfig())
+    queryFn: () => generalMasterDataApiService.getAll('study-fields', dropDownConfig()),
+    enabled: !dummyEnabled
   });
 
   const { data: studyLevels, isLoading: studyLevelsLoading } = useQuery({
     queryKey: ['study-levels'],
-    queryFn: () => generalMasterDataApiService.getAll('study-levels', dropDownConfig())
+    queryFn: () => generalMasterDataApiService.getAll('study-levels', dropDownConfig()),
+    enabled: !dummyEnabled
   });
 
   const { data: workExp, isLoading: workExpLoading } = useQuery({
     queryKey: ['work-experiences'],
-    queryFn: () => generalMasterDataApiService.getAll('work-experiences', dropDownConfig())
+    queryFn: () => generalMasterDataApiService.getAll('work-experiences', dropDownConfig()),
+    enabled: !dummyEnabled
   });
 
   const { data: resourceSubCategories, isLoading: subCatLoading } = useQuery({
     queryKey: ['resource-subcategories'],
-    queryFn: () => generalMasterDataApiService.getAll('resource-subcategories', dropDownConfig())
+    queryFn: () => generalMasterDataApiService.getAll('resource-subcategories', dropDownConfig()),
+    enabled: !dummyEnabled
   });
+
+  const dummyDepartments = [
+    { id: 'd-1', name: 'Addis Ababa' },
+    { id: 'd-2', name: 'Oromia' },
+    { id: 'd-3', name: 'Amhara' },
+    { id: 'd-4', name: 'Tigray' }
+  ];
+
+  const dummyStudyFields = [
+    { id: 'sf-1', title: 'Civil Engineering' },
+    { id: 'sf-2', title: 'Electrical Engineering' },
+    { id: 'sf-3', title: 'Architecture' },
+    { id: 'sf-4', title: 'Project Management' }
+  ];
+
+  const dummyStudyLevels = [
+    { id: 'sl-1', title: 'Diploma' },
+    { id: 'sl-2', title: 'BSc' },
+    { id: 'sl-3', title: 'MSc' },
+    { id: 'sl-4', title: 'PhD' }
+  ];
+
+  const dummyWorkExp = [
+    { id: 'we-1', title: '0-2 years' },
+    { id: 'we-2', title: '2-5 years' },
+    { id: 'we-3', title: '5-10 years' },
+    { id: 'we-4', title: '10+ years' }
+  ];
+
+  const dummyResourceSubCategories = [
+    { id: 'rsub-1', title: 'Skilled Labor' },
+    { id: 'rsub-2', title: 'Unskilled Labor' },
+    { id: 'rsub-3', title: 'Technicians' },
+    { id: 'rsub-4', title: 'Supervision' }
+  ];
 
   // --- States ---
   const [baseYear, setBaseYear] = useState<{ id: number; name: string } | null>(null);
@@ -56,6 +127,31 @@ function Salary() {
   const [tableView, setTableView] = useState(true);
 
   const baseYearIndex = years.findIndex((y) => y.id === baseYear?.id);
+  const regions = (dummyEnabled ? dummyDepartments : departments?.payload) || [];
+
+  const salarySeedKey = [
+    selectedSubCategory?.id ?? '',
+    selectedStudyField?.id ?? '',
+    selectedStudyLevel?.id ?? '',
+    selectedWorkExp?.id ?? '',
+    baseYear?.id ?? ''
+  ].join('|');
+
+  const rowsOverride: SalaryRow[] = regions.map((region: any, index: number) => {
+    const regionName = String(region.name ?? region.title ?? region.label ?? `Region ${index + 1}`);
+    const baseSeed = hashString(`${salarySeedKey}:${String(baseYearIndex ?? '')}`);
+    const rand = mulberry32(hashString(`${baseSeed}:${regionName}:${index}`));
+
+    const totalPublc = 8000 + Math.floor(rand() * 17000);
+    const totalPrivate = 7000 + Math.floor(rand() * 20000);
+    const malePblic = Math.round(totalPublc * (0.55 + rand() * 0.15));
+    const femalePublic = Math.max(0, totalPublc - malePblic);
+    const malePrivate = Math.round(totalPrivate * (0.6 + rand() * 0.18));
+    const femalePrivate = Math.max(0, totalPrivate - malePrivate);
+    const totalAverage = Math.round((totalPublc + totalPrivate) / 2);
+
+    return { region: regionName, totalPublc, totalPrivate, malePblic, femalePublic, malePrivate, femalePrivate, totalAverage };
+  });
 
   return (
     <ResourceAnalyticsLayout>
@@ -69,11 +165,11 @@ function Salary() {
               </Typography>
               <Autocomplete
                 size="small"
-                options={resourceSubCategories?.payload || []}
+                options={(dummyEnabled ? dummyResourceSubCategories : resourceSubCategories?.payload) || []}
                 value={selectedSubCategory}
                 onChange={(_, v) => setSelectedSubCategory(v)}
                 getOptionLabel={(option) => option.title || ''}
-                loading={subCatLoading}
+                loading={!dummyEnabled && subCatLoading}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -82,7 +178,7 @@ function Salary() {
                       ...params.InputProps,
                       endAdornment: (
                         <>
-                          {subCatLoading ? <CircularProgress size={20} /> : null}
+                          {!dummyEnabled && subCatLoading ? <CircularProgress size={20} /> : null}
                           {params.InputProps.endAdornment}
                         </>
                       )
@@ -99,11 +195,11 @@ function Salary() {
               </Typography>
               <Autocomplete
                 size="small"
-                options={studyFields?.payload || []}
+                options={(dummyEnabled ? dummyStudyFields : studyFields?.payload) || []}
                 value={selectedStudyField}
                 onChange={(_, v) => setSelectedStudyField(v)}
                 getOptionLabel={(option) => option.title || ''}
-                loading={fieldsLoading}
+                loading={!dummyEnabled && fieldsLoading}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -112,7 +208,7 @@ function Salary() {
                       ...params.InputProps,
                       endAdornment: (
                         <>
-                          {fieldsLoading ? <CircularProgress size={20} /> : null}
+                          {!dummyEnabled && fieldsLoading ? <CircularProgress size={20} /> : null}
                           {params.InputProps.endAdornment}
                         </>
                       )
@@ -129,11 +225,11 @@ function Salary() {
               </Typography>
               <Autocomplete
                 size="small"
-                options={studyLevels?.payload || []}
+                options={(dummyEnabled ? dummyStudyLevels : studyLevels?.payload) || []}
                 value={selectedStudyLevel}
                 onChange={(_, v) => setSelectedStudyLevel(v)}
                 getOptionLabel={(option) => option.title || ''}
-                loading={studyLevelsLoading}
+                loading={!dummyEnabled && studyLevelsLoading}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -142,7 +238,7 @@ function Salary() {
                       ...params.InputProps,
                       endAdornment: (
                         <>
-                          {studyLevelsLoading ? <CircularProgress size={20} /> : null}
+                          {!dummyEnabled && studyLevelsLoading ? <CircularProgress size={20} /> : null}
                           {params.InputProps.endAdornment}
                         </>
                       )
@@ -159,11 +255,11 @@ function Salary() {
               </Typography>
               <Autocomplete
                 size="small"
-                options={workExp?.payload || []}
+                options={(dummyEnabled ? dummyWorkExp : workExp?.payload) || []}
                 value={selectedWorkExp}
                 onChange={(_, v) => setSelectedWorkExp(v)}
                 getOptionLabel={(option) => option.title || ''}
-                loading={workExpLoading}
+                loading={!dummyEnabled && workExpLoading}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -172,7 +268,7 @@ function Salary() {
                       ...params.InputProps,
                       endAdornment: (
                         <>
-                          {workExpLoading ? <CircularProgress size={20} /> : null}
+                          {!dummyEnabled && workExpLoading ? <CircularProgress size={20} /> : null}
                           {params.InputProps.endAdornment}
                         </>
                       )
@@ -223,12 +319,12 @@ function Salary() {
         {tableView ? (
           <Card>
             <CardContent>
-              <StickyHeaderTable regions={departments?.payload || []} baseYear={baseYearIndex} years={years} />
+              <StickyHeaderTable regions={regions} baseYear={baseYearIndex} years={years} rowsOverride={rowsOverride} seedKey={salarySeedKey} />
             </CardContent>
           </Card>
         ) : (
           <DatePickerWrapper>
-            <SalaryChart years={years} regions={departments?.payload || []} baseYear={baseYearIndex} />
+            <SalaryChart years={years} regions={regions} baseYear={baseYearIndex} rowsOverride={rowsOverride} seedKey={salarySeedKey} />
           </DatePickerWrapper>
         )}
       </Box>

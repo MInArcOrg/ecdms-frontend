@@ -27,9 +27,10 @@ interface TableViewProps {
   years: Year[]; // Example: [{id: 2024, name: "2024"}, {id: 2025, name: "2025"}]
   baseYear: number; // index of base year
   data: RegionData[]; // from your API {label, data[]}
+  inflation?: boolean;
 }
 
-const TableView = ({ years = [], baseYear, data = [] }: TableViewProps) => {
+const TableView = ({ years = [], baseYear, data = [], inflation }: TableViewProps) => {
   // Columns
   const columns = [
     { id: 'label', label: 'Region', minWidth: 170 },
@@ -58,7 +59,10 @@ const TableView = ({ years = [], baseYear, data = [] }: TableViewProps) => {
     const safeIndex = baseYear >= 0 && baseYear < values.length ? baseYear : 0;
     const baseValue = values[safeIndex];
     if (!baseValue || baseValue === 0) return values.map(() => 0);
-    return values.map((v) => Number(((v / baseValue) * 100).toFixed(1)));
+    return values.map((v) => {
+      const val = inflation ? ((v - baseValue) / baseValue) * 100 : (v / baseValue) * 100;
+      return Number(val.toFixed(1));
+    });
   };
 
   const rows = useMemo(() => {

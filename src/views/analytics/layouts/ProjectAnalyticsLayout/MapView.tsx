@@ -48,6 +48,8 @@ const ETHIOPIA_ANCHORS: Array<[number, number]> = [
   [4.18, 34.35]
 ];
 
+const isInEthiopia = (lat: number, lng: number) => lat >= 3.0 && lat <= 15.5 && lng >= 33.0 && lng <= 48.5;
+
 interface MapViewProps {
   position?: [number, number];
   width?: string | number;
@@ -133,6 +135,7 @@ const MapView: React.FC<MapViewProps> = ({
 
               coordinates.forEach((cor: [number, number, string | number]) => {
                 const [lng, lat, id] = cor;
+                if (!isInEthiopia(lat, lng)) return;
 
                 const iconHtml = `
                   <div>
