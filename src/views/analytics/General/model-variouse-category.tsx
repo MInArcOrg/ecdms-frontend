@@ -50,9 +50,7 @@ const ModelVariousCategory = ({ selectedType, model }: { selectedType: MasterTyp
                 style: { fontSize: '12px' },
             },
             legend: {
-                position: 'bottom',
-                labels: { colors: theme.palette.text.secondary },
-                itemMargin: { vertical: 3, horizontal: 10 },
+                show: false,
             },
             fill: { opacity: 0.9 },
             yaxis: { show: false },

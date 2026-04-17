@@ -42,7 +42,7 @@ const TimelineSection: React.FC<TimelineSectionProps> = ({ data, onStatusClick }
               </Typography>
 
               <ProjectStatusChip
-                data={item.status.title}
+                data={item?.status?.title}
                 onClick={() => {
                   onStatusClick(item);
                 }}

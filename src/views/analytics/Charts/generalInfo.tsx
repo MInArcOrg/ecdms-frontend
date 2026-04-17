@@ -19,13 +19,7 @@ const GeneralInfoApexChart = ({ labels, series, title, subtitle, total }: any) =
       // formatter: val => `${parseInt(val, 10)}%`
     },
     legend: {
-      position: 'bottom',
-      markers: { offsetX: -3 },
-      labels: { colors: theme.palette.text.secondary },
-      itemMargin: {
-        vertical: 3,
-        horizontal: 10
-      }
+      show: false
     },
     plotOptions: {
       pie: {

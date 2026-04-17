@@ -27,13 +27,7 @@ const ApexPolarChart = ({ selectedType, labels }: { selectedType: MasterType; la
       formatter: (val: any) => `${parseInt(val, 10)}%`
     },
     legend: {
-      position: 'bottom',
-      markers: { offsetX: -3 },
-      labels: { colors: theme.palette.text.secondary },
-      itemMargin: {
-        vertical: 3,
-        horizontal: 10
-      }
+      show: false
     },
     plotOptions: {
       pie: {
@@ -60,7 +54,7 @@ const ApexPolarChart = ({ selectedType, labels }: { selectedType: MasterType; la
             height: 380
           },
           legend: {
-            position: 'bottom'
+            show: false
           }
         }
       },

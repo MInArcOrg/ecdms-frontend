@@ -982,10 +982,8 @@ const AnalyticsDashboard = ({ module, Layout, summaryService }: AnalyticsDashboa
         ]
       };
 
-  const { data: typeSummaryData, isLoading: isTypeSummaryLoading } = useQuery({
-    queryKey: [`${module}TypeSummary`],
-    queryFn: () => (dummyEnabled ? Promise.resolve(dummyTypeSummary as any) : summaryService.getTypeSummary({}))
-  });
+  const typeSummaryData = dummyTypeSummary;
+  const isTypeSummaryLoading = false;
 
   // Fetch all types for the module
   const { data: typesData, isLoading: isTypesLoading } = useQuery({
