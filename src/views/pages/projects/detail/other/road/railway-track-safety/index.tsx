@@ -81,17 +81,17 @@ const RailwayTrackSafetyList: React.FC<RailwayTrackSafetyListProps> = ({ otherSu
     },
     {
       title: t('project.other.railway-track-safety.details.railway-track-safety-measures-id'),
-      value: railwayTrackSafety?.railway_track_safety_measures_id || 'N/A'
+      value: railwayTrackSafety?.railwayTrackSafetyMeasure?.title || 'N/A'
     },
     {
       title: t('project.other.railway-track-safety.details.track-inspection-frequency-id'),
-      value: railwayTrackSafety?.track_inspection_frequency_id || 'N/A'
+      value: railwayTrackSafety?.trackInspectionFrequency?.title || 'N/A'
     },
     {
       title: t('project.other.railway-track-safety.details.is-compliant-with-safety-regulations-standards'),
       value:
         railwayTrackSafety?.is_compliant_with_safety_regulations_standards !== undefined &&
-        railwayTrackSafety?.is_compliant_with_safety_regulations_standards !== null
+          railwayTrackSafety?.is_compliant_with_safety_regulations_standards !== null
           ? railwayTrackSafety?.is_compliant_with_safety_regulations_standards.toString()
           : 'N/A'
     },
@@ -130,12 +130,12 @@ const RailwayTrackSafetyList: React.FC<RailwayTrackSafetyListProps> = ({ otherSu
           hasReference={false}
           id={selectedRow?.id || ''}
           fileType=""
-          title={t('project.other.railway-track-rehabilitation-or-renewal.detail')}
+          title={t('project.other.railway-track-safety.detail')}
         />
       )}
 
       <ItemsListing
-        title={t('project.other.railway-track-rehabilitation-or-renewal.title')}
+        title={t('project.other.railway-track-safety.title')}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

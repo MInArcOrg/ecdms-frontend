@@ -203,7 +203,12 @@ const TelecomInfrastructureManufacturerList: React.FC<TelecomInfrastructureManuf
         createActionConfig={{
           ...defaultCreateActionConfig,
           onClick: toggleDrawer,
-          onlyIcon: false
+          onlyIcon: false,
+          permission: {
+            action: 'create',
+            subject: otherSubMenu?.model || ''
+          }
+
         }}
         fetchDataFunction={refetch}
       />

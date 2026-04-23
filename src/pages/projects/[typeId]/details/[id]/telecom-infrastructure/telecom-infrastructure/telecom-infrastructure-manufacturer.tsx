@@ -22,10 +22,10 @@ const TelecomInfrastructureManufacturer = () => {
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <TelecomInfrastructureManufacturerList
-                otherSubMenu={menuItem}
-                typeId={String(typeId)}
-                projectId={String(id)}
-            /> 
+        otherSubMenu={menuItem}
+        typeId={String(typeId)}
+        projectId={String(id)}
+      />
     </ProjectLayout>
   );
 };

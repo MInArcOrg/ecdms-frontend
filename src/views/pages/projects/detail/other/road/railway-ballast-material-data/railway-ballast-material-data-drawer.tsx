@@ -46,7 +46,7 @@ const RailwayBallastMaterialDataDrawer = ({
   const editRailwayBallastMaterialData = async (body: IApiPayload<RailwayBallastMaterialData>) =>
     projectOtherApiSecondService<RailwayBallastMaterialData>().update(
       otherSubMenu?.apiRoute || '',
-      railwayBallastMaterialData.project_id, // assuming project_id is the unique id here, change if not correct
+      railwayBallastMaterialData.id, // assuming project_id is the unique id here, change if not correct
       body
     );
 

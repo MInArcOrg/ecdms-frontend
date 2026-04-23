@@ -40,11 +40,11 @@ const RailwayTrackSafetyCard: React.FC<RailwayTrackSafetyCardProps> = ({ railway
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-track-safety.details.railway-track-safety-measures-id')}:{' '}
-            {railwayTrackSafety?.railway_track_safety_measures_id || 'N/A'}
+            {railwayTrackSafety?.railwayTrackSafetyMeasure?.title || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-track-safety.details.track-inspection-frequency-id')}:{' '}
-            {railwayTrackSafety?.track_inspection_frequency_id || 'N/A'}
+            {railwayTrackSafety?.trackInspectionFrequency?.title || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-track-safety.details.is-compliant-with-safety-regulations-standards')}:{' '}

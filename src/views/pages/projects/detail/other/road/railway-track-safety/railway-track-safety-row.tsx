@@ -43,7 +43,7 @@ export const railwayTrackSafetryColumns = (
       field: 'railway_track_safety_measures_id',
       headerName: t('project.other.railway-track-safety.details.railway-track-safety-measures-id'),
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.railway_track_safety_measures_id || 'N/A'}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.railwayTrackSafetyMeasure?.title || 'N/A'}</Typography>
       )
     },
     {
@@ -52,7 +52,7 @@ export const railwayTrackSafetryColumns = (
       field: 'track_inspection_frequency_id',
       headerName: t('project.other.railway-track-safety.details.track-inspection-frequency-id'),
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.track_inspection_frequency_id || 'N/A'}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.trackInspectionFrequency?.title || 'N/A'}</Typography>
       )
     },
     {

@@ -12,6 +12,7 @@ import projectOtherApiSecondService from 'src/services/project/project-other-sec
 // Assuming the form component is also renamed
 import RailwaySubBallastMaintenanceAndRenewalForm from './railway-sub-ballast-maintenance-and-renewal-form';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import { pastDateRule } from 'src/utils/validator/age';
 
 interface RailwaySubBallastMaintenanceAndRenewalDrawerProps {
   // Renamed interface
@@ -40,7 +41,7 @@ const RailwaySubBallastMaintenanceAndRenewalDrawer = ({
     railway_line_section_name: yup.string().required('Railway line section name is required'),
     scheduled_maintenance_activities: yup.string().nullable().optional(),
     sub_ballast_renewal_history: yup.string().nullable().optional(),
-    recent_maintenance_dates: yup.string().nullable().optional(), // Date field, optional
+    recent_maintenance_dates: pastDateRule().nullable().optional(),
     inspection_reports_findings: yup.string().nullable().optional(),
     remark: yup.string().nullable().optional()
   });

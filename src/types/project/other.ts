@@ -1696,6 +1696,8 @@ export interface RailwayTrackSafety {
   track_inspection_frequency_id: string; // Required UUID
   is_compliant_with_safety_regulations_standards?: boolean; // Optional Boolean
   remark?: string; // Optional Text
+  railwayTrackSafetyMeasure: ProjectGeneralMaster;
+  trackInspectionFrequency: ProjectGeneralMaster;
   created_at?: string;
   updated_at?: string;
 }

@@ -507,7 +507,10 @@
       "edit-project-status": "Edit Project Status",
       "source-of-funds": "Source of Funds",
       "create-source-of-fund": "Add Source of Fund",
-      "edit-source-of-fund": "Edit Source of Fund"
+      "edit-source-of-fund": "Edit Source of Fund",
+      "thermal-biomass-incineration-types": "Thermal Biomass Incineration Types",
+      "create-thermal-biomass-incineration-type": "Add Thermal Biomass Incineration Type",
+      "edit-thermal-biomass-incineration-type": "Edit Thermal Biomass Incineration Type"
     },
     "form": {
       "title": "Title",

@@ -33,7 +33,7 @@ function ProjectGeneralInformation() {
   }, [id, refetch]);
 
   const { t } = useTranslation();
-
+  console.log(projectGeneralInformation?.payload.project_status)
   return (
     <ProjectLayout
       activeMenuId={projectMenuIds.projectSetup}
