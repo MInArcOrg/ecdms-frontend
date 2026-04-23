@@ -52,7 +52,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId, module }) => 
   );
 
   const { data: projectStatus } = useQuery({
-    queryKey: ["ownershipTypes", projectMasterModels.projectStatus.model],
+    queryKey: ["projectTypes", projectMasterModels.projectStatus.model],
     queryFn: () => projectGeneralMasterDataApiService.getAll(dropDownConfig({
       filter: {
         model: projectMasterModels.projectStatus.model,
@@ -278,7 +278,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId, module }) => 
         {!isInfrastructure && (
           <Grid item xs={12} md={4}>
             <Stack spacing={3}>
-            {/* <Card variant="outlined">
+              {/* <Card variant="outlined">
               <CardContent>
                 <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
                   Additional
@@ -310,41 +310,41 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId, module }) => 
               </CardContent>
             </Card> */}
 
-            <Card variant="outlined">
-              <CardContent>
-                <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                  {transl('project.project-time.information')}
-                </Typography>
-                <Divider sx={{ my: 2 }} />
-                <Stack spacing={2}>
-                  <CustomDynamicDatePicker
-                    fullWidth
-                    label={transl('project.project-time.form.commencement-date')}
-                    name="commencement_date"
-                    showYearDropdown
-                    showMonthDropdown
-                    customInput={<CustomTextBox name="commencement_date" />}
-                  />
-                  <CustomTextBox
-                    fullWidth
-                    label={transl('project.project-time.form.original-contract-duration')}
-                    placeholder={transl('project.project-time.form.original-contract-duration')}
-                    name="original_contract_duration"
-                    size="small"
-                    type="number"
-                    onValueChange={(value: string | number) => handleNumberChange('original_contract_duration', value)}
-                  />
-                  <CustomDynamicDatePicker
-                    fullWidth
-                    label={transl('project.project-time.completion-date')}
-                    name="completion_date"
-                    showYearDropdown
-                    showMonthDropdown
-                    customInput={<CustomTextBox name="completion_date" />}
-                  />
-                </Stack>
-              </CardContent>
-            </Card>
+              <Card variant="outlined">
+                <CardContent>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                    {transl('project.project-time.information')}
+                  </Typography>
+                  <Divider sx={{ my: 2 }} />
+                  <Stack spacing={2}>
+                    <CustomDynamicDatePicker
+                      fullWidth
+                      label={transl('project.project-time.form.commencement-date')}
+                      name="commencement_date"
+                      showYearDropdown
+                      showMonthDropdown
+                      customInput={<CustomTextBox name="commencement_date" />}
+                    />
+                    <CustomTextBox
+                      fullWidth
+                      label={transl('project.project-time.form.original-contract-duration')}
+                      placeholder={transl('project.project-time.form.original-contract-duration')}
+                      name="original_contract_duration"
+                      size="small"
+                      type="number"
+                      onValueChange={(value: string | number) => handleNumberChange('original_contract_duration', value)}
+                    />
+                    <CustomDynamicDatePicker
+                      fullWidth
+                      label={transl('project.project-time.completion-date')}
+                      name="completion_date"
+                      showYearDropdown
+                      showMonthDropdown
+                      customInput={<CustomTextBox name="completion_date" />}
+                    />
+                  </Stack>
+                </CardContent>
+              </Card>
             </Stack>
           </Grid>
         )}

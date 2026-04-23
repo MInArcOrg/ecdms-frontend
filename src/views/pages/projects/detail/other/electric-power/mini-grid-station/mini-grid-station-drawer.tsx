@@ -11,6 +11,7 @@ import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { MiniGridStation } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import { limitNumberDigits } from 'src/utils/validator/number';
 
 interface MiniGridStationDrawerType {
   open: boolean;
@@ -52,14 +53,14 @@ const MiniGridStationDrawer = (props: MiniGridStationDrawerType) => {
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value)),
-    expected_annual_generation: yup
-      .number()
-      .nullable()
-      .max(1000000, 'Must be less than or equal to 1000000')
-      .transform((value) => (isNaN(value) ? null : value)),
-    diesel_generator: yup.string().required('Diesel Generator is required'),
-    owner_operator: yup.string().max(255).nullable(),
-    remark: yup.string().nullable()
+    expected_annual_generation: limitNumberDigits(
+      yup
+        .number()
+        .nullable()
+        .max(1000000, 'Must be less than or equal to 1000000')
+        .transform((value) => (isNaN(value) ? null : value)),
+      { maxIntegerDigits: 7, maxDecimalPlaces: 2 }
+    ),
   });
 
   const isEdit = Boolean(miniGridStation?.id);

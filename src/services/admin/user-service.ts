@@ -42,7 +42,7 @@ const userApiService = {
       .catch((error: any) => {
         throw error;
       }),
-  getProfessionalByDepartmentId: (idx: string, params: GetRequestParam): Promise<IApiResponse<DepartmentProfessional[]>> =>
+  getProfessionalByDepartmentId: (idx: string, params: GetRequestParam): Promise<IApiResponse<User[]>> =>
     buildGetRequest(`/departments/department-users/${idx}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {

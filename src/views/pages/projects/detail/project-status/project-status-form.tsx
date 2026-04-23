@@ -2,7 +2,10 @@ import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { dropDownConfig } from 'src/configs/api-constants';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import generalMasterDataApiService from 'src/services/general/general-master-data-service';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 import { ProjectStatus } from 'src/types/project';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
@@ -13,9 +16,14 @@ interface ProjectStatusFormProps {
 
 const ProjectStatusForm: React.FC<ProjectStatusFormProps> = ({ formik }) => {
   const { t: transl } = useTranslation();
-  const { data: statuses } = useQuery({
-    queryKey: ['general-master', 'project-progress-statuses'],
-    queryFn: () => generalMasterDataApiService.getAll('project-progress-statuses', {})
+
+  const { data: projectStatus } = useQuery({
+    queryKey: ["ownershipTypes", projectMasterModels.projectStatus.model],
+    queryFn: () => projectGeneralMasterDataApiService.getAll(dropDownConfig({
+      filter: {
+        model: projectMasterModels.projectStatus.model,
+      }
+    })),
   });
   return (
     <>
@@ -24,7 +32,7 @@ const ProjectStatusForm: React.FC<ProjectStatusFormProps> = ({ formik }) => {
         name="status_id"
         label={transl('project.project-status.form.status')}
         options={
-          statuses?.payload?.map((status) => ({
+          projectStatus?.payload?.map((status) => ({
             value: status.id,
             label: status.title
           })) || []

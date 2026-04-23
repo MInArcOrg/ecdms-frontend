@@ -107,7 +107,7 @@ const RowOptions = <T extends { id?: string }>({
           </Can>
         )}
 
-        {onDelete && deletePermissionRule && (
+        {onDelete && deletePermissionRule && actions?.payload?.status === ACTION_STATUS.REJECTED && (
           <Can do={deletePermissionRule.action} on={deletePermissionRule.subject}>
             <MenuItem
               onClick={() => {

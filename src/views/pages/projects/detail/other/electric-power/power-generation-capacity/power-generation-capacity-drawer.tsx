@@ -14,6 +14,7 @@ import { uploadFile } from 'src/services/utils/file-utils';
 import type { PowerGenerationCapacity } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import { limitNumberDigits } from 'src/utils/validator/number';
 
 interface PowerGenerationCapacityDrawerType {
   open: boolean;
@@ -43,17 +44,23 @@ const PowerGenerationCapacityDrawer = (props: PowerGenerationCapacityDrawerType)
       .number()
       .nullable()
       .transform((value) => (isNaN(value) ? null : value)),
-    units_number: yup
-      .number()
-      .nullable()
-      .integer('Must be an integer')
-      .transform((value) => (isNaN(value) ? null : value)),
+    units_number: limitNumberDigits(
+      yup
+        .number()
+        .nullable()
+        .integer('Must be an integer')
+        .transform((value) => (isNaN(value) ? null : value)),
+      { maxIntegerDigits: 6, maxDecimalPlaces: 0 }
+    ),
     commissioning_date: yup.string().nullable(),
-    plant_life: yup
-      .number()
-      .nullable()
-      .integer('Must be an integer')
-      .transform((value) => (isNaN(value) ? null : value)),
+    plant_life: limitNumberDigits(
+      yup
+        .number()
+        .nullable()
+        .integer('Must be an integer')
+        .transform((value) => (isNaN(value) ? null : value)),
+      { maxIntegerDigits: 3, maxDecimalPlaces: 0 }
+    ),
     others: yup.string().max(100).nullable()
   });
 
@@ -94,9 +101,8 @@ const PowerGenerationCapacityDrawer = (props: PowerGenerationCapacityDrawerType)
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.power-generation-capacity.${
-            isEdit ? `edit-power-generation-capacity` : `create-power-generation-capacity`
-          }`}
+          title={`project.other.power-generation-capacity.${isEdit ? `edit-power-generation-capacity` : `create-power-generation-capacity`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

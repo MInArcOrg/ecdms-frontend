@@ -13,6 +13,7 @@ import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { SolarPanel } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import { limitNumberDigits } from 'src/utils/validator/number';
 
 interface SolarPanelDrawerType {
   open: boolean;
@@ -37,23 +38,32 @@ const SolarPanelDrawer = (props: SolarPanelDrawerType) => {
     manufacturer: yup.string().max(100).nullable(),
     model: yup.string().max(100).nullable(),
     solar_panel_type_id: yup.string().uuid().required('Solar panel type is required'),
-    solar_panels_number: yup
-      .number()
-      .nullable()
-      .integer('Must be an integer')
-      .max(100000, 'Must be less than or equal to 100000')
-      .transform((value) => (isNaN(value) ? null : value)),
-    each_solar_panel_capacity: yup
-      .number()
-      .nullable()
-      .transform((value) => (isNaN(value) ? null : value)),
+    solar_panels_number: limitNumberDigits(
+      yup
+        .number()
+        .nullable()
+        .integer('Must be an integer')
+        .max(100000, 'Must be less than or equal to 100000')
+        .transform((value) => (isNaN(value) ? null : value)),
+      { maxIntegerDigits: 6, maxDecimalPlaces: 0 }
+    ),
+    each_solar_panel_capacity: limitNumberDigits(
+      yup
+        .number()
+        .nullable()
+        .transform((value) => (isNaN(value) ? null : value)),
+      { maxIntegerDigits: 13, maxDecimalPlaces: 2 }
+    ),
     inverter_manufacturer: yup.string().max(100).nullable(),
     inverter_model: yup.string().max(100).nullable(),
-    inverters_number: yup
-      .number()
-      .nullable()
-      .integer('Must be an integer')
-      .transform((value) => (isNaN(value) ? null : value)),
+    inverters_number: limitNumberDigits(
+      yup
+        .number()
+        .nullable()
+        .integer('Must be an integer')
+        .transform((value) => (isNaN(value) ? null : value)),
+      { maxIntegerDigits: 6, maxDecimalPlaces: 0 }
+    ),
     other_equipment: yup.string().max(100).nullable(),
     remark: yup.string().max(100).nullable()
   });

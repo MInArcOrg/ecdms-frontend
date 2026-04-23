@@ -13,6 +13,7 @@ import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { SolarResourceInformation } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import { limitNumberDigits } from 'src/utils/validator/number';
 
 interface SolarResourceInformationDrawerType {
   open: boolean;
@@ -33,24 +34,39 @@ const SolarResourceInformationDrawer = (props: SolarResourceInformationDrawerTyp
   };
 
   const validationSchema = yup.object().shape({
-    annual_solar_radiation: yup
-      .number()
-      .nullable()
-      .transform((value) => (isNaN(value) ? null : value)),
-    solar_panel_efficiency: yup
-      .number()
-      .nullable()
-      .transform((value) => (isNaN(value) ? null : value))
-      .max(100, 'Efficiency cannot exceed 100%'),
-    annual_energy_production: yup
-      .number()
-      .nullable()
-      .transform((value) => (isNaN(value) ? null : value)),
-    plant_life: yup
-      .number()
-      .nullable()
-      .integer('Must be an integer')
-      .transform((value) => (isNaN(value) ? null : value)),
+    annual_solar_radiation: limitNumberDigits(
+      yup
+        .number()
+        .nullable()
+        .transform((value) => (isNaN(value) ? null : value))
+        .max(9999999999999, 'Value is too large'),
+      { maxIntegerDigits: 13, maxDecimalPlaces: 2 }
+    ),
+    solar_panel_efficiency: limitNumberDigits(
+      yup
+        .number()
+        .nullable()
+        .transform((value) => (isNaN(value) ? null : value))
+        .max(100, 'Efficiency cannot exceed 100%'),
+      { maxIntegerDigits: 3, maxDecimalPlaces: 2 }
+    ),
+    annual_energy_production: limitNumberDigits(
+      yup
+        .number()
+        .nullable()
+        .transform((value) => (isNaN(value) ? null : value))
+        .max(9999999999999, 'Value is too large'),
+      { maxIntegerDigits: 13, maxDecimalPlaces: 2 }
+    ),
+    plant_life: limitNumberDigits(
+      yup
+        .number()
+        .nullable()
+        .integer('Must be an integer')
+        .transform((value) => (isNaN(value) ? null : value))
+        .max(999, 'Plant life cannot exceed 999'),
+      { maxIntegerDigits: 3, maxDecimalPlaces: 0 }
+    ),
     remark: yup.string().max(100).nullable()
   });
 
@@ -95,9 +111,8 @@ const SolarResourceInformationDrawer = (props: SolarResourceInformationDrawerTyp
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.solar-resource-information.${
-            isEdit ? `edit-solar-resource-information` : `create-solar-resource-information`
-          }`}
+          title={`project.other.solar-resource-information.${isEdit ? `edit-solar-resource-information` : `create-solar-resource-information`
+            }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
