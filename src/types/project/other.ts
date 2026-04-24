@@ -370,6 +370,26 @@ export interface DrainageAssessment {
   updated_at?: Date;
 }
 
+export interface DesignStandard {
+  id: string;
+  project_id: string;
+  road_segment_id?: string;
+  roadSegment?: RoadSegment;
+  functional_classification_id: string;
+  functionalClassification?: ProjectGeneralMaster;
+  design_classification_id: string;
+  designClassification?: ProjectGeneralMaster;
+  design_standard_id: string;
+  designStandard?: ProjectGeneralMaster;
+  design_traffic_flow_id: string;
+  designTrafficFlow?: ProjectGeneralMaster;
+  design_life_time_years?: number;
+  segment_number?: number;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
 export interface SafetyAndHealth {
   id: string;
   project_id: string;

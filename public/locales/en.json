@@ -2722,6 +2722,22 @@
           "poission-ratio": "Poisson Ratio"
         }
       },
+      "design-standard": {
+        "title": "Design Standards",
+        "create-design-standard": "Add Design Standard",
+        "edit-design-standard": "Edit Design Standard",
+        "design-standard-details": "Design Standard Details",
+        "details": {
+          "road-segment": "Road Segment",
+          "functional-classification": "Functional Classification",
+          "design-classification": "Design Classification",
+          "design-standard-id": "Design Standard",
+          "design-traffic-flow": "Design Traffic Flow",
+          "design-life-time-years": "Design Life Time Years",
+          "segment-number": "Segment Number",
+          "remark": "Remark"
+        }
+      },
       "safety-and-health": {
         "title": "Safety and Health",
         "safety-and-health-details": "Safety and Health Details",
