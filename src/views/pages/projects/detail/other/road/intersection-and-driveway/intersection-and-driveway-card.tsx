@@ -48,18 +48,19 @@ const IntersectionDrivewayCard: React.FC<IntersectionDrivewayCardProps> = ({
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.intersection-driveway.details.name')}: {intersectionDriveway?.name || 'N/A'}
+            {t('project.other.intersection-driveway.details.name')}: {intersectionDriveway?.roadSegment?.name ?? intersectionDriveway?.name ?? 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.intersection-driveway.details.number-of-intersections')}:{' '}
             {intersectionDriveway?.number_of_intersections || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.intersection-driveway.details.intersection-type')}: {intersectionDriveway?.intersection_type_id || 'N/A'}
+            {t('project.other.intersection-driveway.details.intersection-type')}:{' '}
+            {intersectionDriveway?.intersectionType?.title ?? intersectionDriveway?.intersection_type_id ?? 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.intersection-driveway.details.driveway-access-point')}:{' '}
-            {intersectionDriveway?.driveway_access_point_id || 'N/A'}
+            {intersectionDriveway?.drivewayAccessPoint?.title ?? intersectionDriveway?.driveway_access_point_id ?? 'N/A'}
           </Typography>
         </Box>
       </CardContent>

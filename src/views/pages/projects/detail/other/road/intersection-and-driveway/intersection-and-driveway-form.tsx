@@ -4,6 +4,7 @@ import { Grid } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import type { FormikProps } from 'formik';
 import type React from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
@@ -47,6 +48,14 @@ const IntersectionDrivewayForm: React.FC<IntersectionDrivewayFormProps> = ({ for
         }
       }))
   });
+
+  useEffect(() => {
+    const segmentName = roadSegments?.payload?.find((segment) => segment.id === formik.values.road_segment_id)?.name;
+
+    if (segmentName && formik.values.name !== segmentName) {
+      formik.setFieldValue('name', segmentName, false);
+    }
+  }, [formik.values.road_segment_id, formik.values.name, roadSegments?.payload]);
 
   return (
     <Grid container spacing={gridSpacing}>

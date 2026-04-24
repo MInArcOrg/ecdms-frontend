@@ -45,16 +45,20 @@ const SafetyAndHealthCard: React.FC<SafetyAndHealthCardProps> = ({ safetyAndHeal
             {t('project.other.safety-and-health.details.road-segment')}: {safetyAndHealth?.road_segment || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.safety-and-health.details.hazard-type')}: {safetyAndHealth?.hazard_type_id || 'N/A'}
+            {t('project.other.safety-and-health.details.hazard-type')}:{' '}
+            {safetyAndHealth?.hazardType?.title ?? safetyAndHealth?.hazard_type_id ?? 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.safety-and-health.details.risk-level')}: {safetyAndHealth?.risk_level_id || 'N/A'}
+            {t('project.other.safety-and-health.details.risk-level')}:{' '}
+            {safetyAndHealth?.riskLevel?.title ?? safetyAndHealth?.risk_level_id ?? 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.safety-and-health.details.incident-type')}: {safetyAndHealth?.incident_type_id || 'N/A'}
+            {t('project.other.safety-and-health.details.incident-type')}:{' '}
+            {safetyAndHealth?.incidentType?.title ?? safetyAndHealth?.incident_type_id ?? 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.safety-and-health.details.injury-severity')}: {safetyAndHealth?.injury_severity_id || 'N/A'}
+            {t('project.other.safety-and-health.details.injury-severity')}:{' '}
+            {safetyAndHealth?.injurySeverity?.title ?? safetyAndHealth?.injury_severity_id ?? 'N/A'}
           </Typography>
           {safetyAndHealth?.remark && (
             <Typography variant="body2" color="text.secondary">

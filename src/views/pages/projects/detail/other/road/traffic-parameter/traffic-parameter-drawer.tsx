@@ -22,7 +22,7 @@ const TrafficParameterDrawer = (props: TrafficParameterDrawerType) => {
   const { open, toggle, refetch, trafficParameter, projectId, otherSubMenu } = props;
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required('Name is required'),
+    road_segment_id: yup.string().required('Road Segment is required'),
     pedestrian_facility_id: yup.string().required('Pedestrian Facility is required')
   });
 

@@ -77,11 +77,11 @@ const TrafficParameterList: React.FC<TrafficParameterListProps> = ({ otherSubMen
   const mapTrafficParameterToDetailItems = (trafficParameter: TrafficParameter): { title: string; value: string }[] => [
     {
       title: t('project.other.traffic-parameter.details.name'),
-      value: trafficParameter?.name || 'N/A'
+      value: trafficParameter?.roadSegment?.name ?? trafficParameter?.name ?? 'N/A'
     },
     {
       title: t('project.other.traffic-parameter.details.pedestrian-facility-id'),
-      value: trafficParameter?.pedestrian_facility_id || 'N/A'
+      value: trafficParameter?.pedestrianFacility?.title ?? trafficParameter?.pedestrian_facility_id ?? 'N/A'
     },
     {
       title: t('project.other.traffic-parameter.details.parking'),

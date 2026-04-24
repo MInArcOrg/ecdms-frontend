@@ -77,7 +77,7 @@ const IntersectionDrivewayList: React.FC<IntersectionDrivewayListProps> = ({ oth
   const mapIntersectionDrivewayToDetailItems = (intersectionDriveway: IntersectionAndDriveway): { title: string; value: string }[] => [
     {
       title: t('project.other.intersection-driveway.details.name'),
-      value: intersectionDriveway?.name || 'N/A'
+      value: intersectionDriveway?.roadSegment?.name ?? intersectionDriveway?.name ?? 'N/A'
     },
     {
       title: t('project.other.intersection-driveway.details.number-of-intersections'),
@@ -85,11 +85,11 @@ const IntersectionDrivewayList: React.FC<IntersectionDrivewayListProps> = ({ oth
     },
     {
       title: t('project.other.intersection-driveway.details.intersection-type'),
-      value: intersectionDriveway?.intersection_type_id || 'N/A'
+      value: intersectionDriveway?.intersectionType?.title ?? intersectionDriveway?.intersection_type_id ?? 'N/A'
     },
     {
       title: t('project.other.intersection-driveway.details.driveway-access-point'),
-      value: intersectionDriveway?.driveway_access_point_id || 'N/A'
+      value: intersectionDriveway?.drivewayAccessPoint?.title ?? intersectionDriveway?.driveway_access_point_id ?? 'N/A'
     },
     {
       title: t('project.other.intersection-driveway.details.similar-for-all'),
@@ -153,7 +153,7 @@ const IntersectionDrivewayList: React.FC<IntersectionDrivewayListProps> = ({ oth
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'intersectiondriveway'
+            subject: otherSubMenu?.model || ''
           }
         }}
         fetchDataFunction={refetch}

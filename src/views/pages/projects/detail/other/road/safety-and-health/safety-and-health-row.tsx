@@ -54,7 +54,7 @@ export const safetyAndHealthColumns = (
     headerName: t('project.other.safety-and-health.details.hazard-type'),
     field: 'hazard_type_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.hazard_type_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.hazardType?.title ?? row?.hazard_type_id ?? t('common.not-available')}</Typography>
     )
   },
   {
@@ -63,7 +63,7 @@ export const safetyAndHealthColumns = (
     headerName: t('project.other.safety-and-health.details.risk-level'),
     field: 'risk_level_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.risk_level_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.riskLevel?.title ?? row?.risk_level_id ?? t('common.not-available')}</Typography>
     )
   },
   {
@@ -72,7 +72,7 @@ export const safetyAndHealthColumns = (
     headerName: t('project.other.safety-and-health.details.incident-type'),
     field: 'incident_type_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.incident_type_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.incidentType?.title ?? row?.incident_type_id ?? t('common.not-available')}</Typography>
     )
   },
   {
@@ -81,7 +81,7 @@ export const safetyAndHealthColumns = (
     headerName: t('project.other.safety-and-health.details.injury-severity'),
     field: 'injury_severity_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.injury_severity_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.injurySeverity?.title ?? row?.injury_severity_id ?? t('common.not-available')}</Typography>
     )
   },
   {

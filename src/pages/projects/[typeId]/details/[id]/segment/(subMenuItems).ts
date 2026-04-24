@@ -70,7 +70,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: projectSegmentIds.segment.intersectionAndDriveway,
         title: 'project.navigation.submenu.segment.segment.intersection-and-driveway',
         path: `/projects/${typeId}/details/${id}/segment/segment/intersection-and-driveway`,
-        model: 'intersectiondriveway',
+        model: 'intersectionanddriveway',
         apiRoute: 'intersection-and-driveways'
       },
       {

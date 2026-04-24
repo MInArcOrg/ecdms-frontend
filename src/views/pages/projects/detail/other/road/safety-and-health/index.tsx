@@ -78,15 +78,15 @@ const SafetyAndHealthList: React.FC<SafetyAndHealthListProps> = ({ otherSubMenu,
     },
     {
       title: t('project.other.safety-and-health.details.hazard-type'),
-      value: safetyAndHealth?.hazard_type_id || 'N/A'
+      value: safetyAndHealth?.hazardType?.title ?? safetyAndHealth?.hazard_type_id ?? 'N/A'
     },
     {
       title: t('project.other.safety-and-health.details.potential-impact'),
-      value: safetyAndHealth?.potential_impact_id || 'N/A'
+      value: safetyAndHealth?.potentialImpact?.title ?? safetyAndHealth?.potential_impact_id ?? 'N/A'
     },
     {
       title: t('project.other.safety-and-health.details.risk-level'),
-      value: safetyAndHealth?.risk_level_id || 'N/A'
+      value: safetyAndHealth?.riskLevel?.title ?? safetyAndHealth?.risk_level_id ?? 'N/A'
     },
     {
       title: t('project.other.safety-and-health.details.immediate-action-taken'),
@@ -94,7 +94,7 @@ const SafetyAndHealthList: React.FC<SafetyAndHealthListProps> = ({ otherSubMenu,
     },
     {
       title: t('project.other.safety-and-health.details.incident-type'),
-      value: safetyAndHealth?.incident_type_id || 'N/A'
+      value: safetyAndHealth?.incidentType?.title ?? safetyAndHealth?.incident_type_id ?? 'N/A'
     },
     {
       title: t('project.other.safety-and-health.details.incident-time'),
@@ -114,11 +114,17 @@ const SafetyAndHealthList: React.FC<SafetyAndHealthListProps> = ({ otherSubMenu,
     },
     {
       title: t('project.other.safety-and-health.details.ppe-type'),
-      value: safetyAndHealth?.personal_protective_equipment_type_id || 'N/A'
+      value:
+        safetyAndHealth?.personalProtectiveEquipmentType?.title ??
+        safetyAndHealth?.personal_protective_equipment_type_id ??
+        'N/A'
     },
     {
       title: t('project.other.safety-and-health.details.ppe-condition'),
-      value: safetyAndHealth?.personal_protective_equipment_condition_id || 'N/A'
+      value:
+        safetyAndHealth?.personalProtectiveEquipmentCondition?.title ??
+        safetyAndHealth?.personal_protective_equipment_condition_id ??
+        'N/A'
     },
     {
       title: t('project.other.safety-and-health.details.trained-on-equipment-usage'),
@@ -130,11 +136,14 @@ const SafetyAndHealthList: React.FC<SafetyAndHealthListProps> = ({ otherSubMenu,
     },
     {
       title: t('project.other.safety-and-health.details.weather-condition'),
-      value: safetyAndHealth?.weather_condition_during_incident_id || 'N/A'
+      value:
+        safetyAndHealth?.weatherConditionDuringIncident?.title ??
+        safetyAndHealth?.weather_condition_during_incident_id ??
+        'N/A'
     },
     {
       title: t('project.other.safety-and-health.details.injury-severity'),
-      value: safetyAndHealth?.injury_severity_id || 'N/A'
+      value: safetyAndHealth?.injurySeverity?.title ?? safetyAndHealth?.injury_severity_id ?? 'N/A'
     },
     {
       title: t('project.other.safety-and-health.details.fatality-number'),

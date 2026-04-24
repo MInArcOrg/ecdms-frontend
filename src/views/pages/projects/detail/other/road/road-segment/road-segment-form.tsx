@@ -47,6 +47,7 @@ const RoadSegmentForm: React.FC<RoadSegmentFormProps> = ({ formik, file, onFileC
           name="name"
           size="small"
           sx={{ mb: 2 }}
+          allowSpecialChars
         />
         <CustomSelectBox
           size="small"

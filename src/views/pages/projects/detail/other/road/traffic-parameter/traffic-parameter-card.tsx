@@ -42,10 +42,11 @@ const TrafficParameterCard: React.FC<TrafficParameterCardProps> = ({ trafficPara
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.traffic-parameter.details.name')}: {trafficParameter?.name || 'N/A'}
+            {t('project.other.traffic-parameter.details.name')}: {trafficParameter?.roadSegment?.name ?? trafficParameter?.name ?? 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.traffic-parameter.details.pedestrian-facility-id')}: {trafficParameter?.pedestrian_facility_id || 'N/A'}
+            {t('project.other.traffic-parameter.details.pedestrian-facility-id')}:{' '}
+            {trafficParameter?.pedestrianFacility?.title ?? trafficParameter?.pedestrian_facility_id ?? 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.traffic-parameter.details.design-speed')}: {trafficParameter?.design_speed || 'N/A'}
