@@ -12,6 +12,7 @@ import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import { useState } from 'react';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import { pastDateRule } from 'src/utils/validator/age';
 
 interface RailwayEnvironmentalAndOtherFactorDrawerProps {
   open: boolean;
@@ -38,7 +39,7 @@ const RailwayEnvironmentalAndOtherFactorDrawer = ({
     railway_line_section_name: yup.string().required('Railway line section name is required'),
     environmental_compliance_measures: yup.boolean().nullable(),
     environmental_impact_assessment: yup.boolean().nullable(),
-    data_recording_date: yup.string().nullable(),
+    data_recording_date: pastDateRule().nullable(),
     remark: yup.string().nullable()
   });
 

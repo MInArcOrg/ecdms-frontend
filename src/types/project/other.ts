@@ -1723,6 +1723,9 @@ export interface RailwayBallastMaterialData {
   ballast_material_size?: number; // DOUBLE
   ballast_layer_thickness?: number; // DOUBLE
   compaction_method_id: string; // UUID
+  compactionMethod?: ProjectGeneralMaster;
+  ballastSource?: ProjectGeneralMaster;
+  ballastMaterialType?: ProjectGeneralMaster;
   remark?: string; // TEXT
   created_at?: string;
   updated_at?: string;
@@ -1732,6 +1735,7 @@ export interface RailwayBallastMaterialSpecification {
   project_id: string; // UUID
   railway_line_section_name: string;
   ballast_material_type_id: string; // UUID
+  ballastMaterialType?: ProjectGeneralMaster;
   specific_gravity?: number;
   porosity?: number;
   water_absorption?: number;

@@ -46,7 +46,7 @@ const RailwaySleeperCharacteristicDrawer = ({
   const editRailwaySleeperCharacteristic = async (body: IApiPayload<RailwaySleeperCharacteristic>) =>
     projectOtherApiSecondService<RailwaySleeperCharacteristic>().update(
       otherSubMenu?.apiRoute || '',
-      railwaySleeperCharacteristic.project_id,
+      railwaySleeperCharacteristic.id,
       body
     );
 

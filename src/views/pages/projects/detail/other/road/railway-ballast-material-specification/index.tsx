@@ -83,7 +83,7 @@ const RailwayBallastMaterialSpecificationList: React.FC<RailwayBallastMaterialSp
     },
     {
       title: t('project.other.railway-ballast-material-specification.details.ballast-material-type-id'),
-      value: row?.ballast_material_type_id || 'N/A'
+      value: row?.ballastMaterialType?.title ?? row?.ballast_material_type_id ?? 'N/A'
     },
     {
       title: t('project.other.railway-ballast-material-specification.details.specific-gravity'),

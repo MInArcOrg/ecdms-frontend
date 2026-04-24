@@ -41,7 +41,7 @@ const RailwaySleeperFasteningSystemDrawer = ({
   const editRailwaySleeperFasteningSystem = async (body: IApiPayload<RailwaySleeperFasteningSystem>) =>
     projectOtherApiSecondService<RailwaySleeperFasteningSystem>().update(
       otherSubMenu?.apiRoute || '',
-      railwaySleeperFasteningSystem.project_id,
+      railwaySleeperFasteningSystem.id,
       body
     );
 

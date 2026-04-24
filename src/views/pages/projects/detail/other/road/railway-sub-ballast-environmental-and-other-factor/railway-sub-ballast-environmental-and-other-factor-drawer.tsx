@@ -41,7 +41,7 @@ const RailwaySubBallastEnvironmentalAndOtherFactorDrawer = ({
   const editRailwaySubBallastEnvironmentalAndOtherFactor = async (body: IApiPayload<RailwaySubBallastEnvironmentalAndOtherFactor>) =>
     projectOtherApiSecondService<RailwaySubBallastEnvironmentalAndOtherFactor>().update(
       otherSubMenu?.apiRoute || '',
-      railwaySubBallastEnvironmentalAndOtherFactor.project_id,
+      railwaySubBallastEnvironmentalAndOtherFactor.id,
       body
     );
 

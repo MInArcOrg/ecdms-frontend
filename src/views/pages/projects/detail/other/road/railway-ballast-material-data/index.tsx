@@ -77,64 +77,64 @@ const RailwayBallastMaterialDataList: React.FC<railwayBallastMaterialDataProps> 
   const mapRailwayBallastMaterialDataToDetailItems = (
     railwayBallastMaterialData: RailwayBallastMaterialData
   ): { title: string; value: string }[] => [
-    {
-      title: t('common.table-columns.id'),
-      value: railwayBallastMaterialData?.project_id || 'N/A'
-    },
-    {
-      title: t('project.other.railway-ballast-material-data.details.railway-line-section-name'),
-      value: railwayBallastMaterialData?.railway_line_section_name || 'N/A'
-    },
-    {
-      title: t('project.other.railway-ballast-material-data.details.ballast-material-type-id'),
-      value: railwayBallastMaterialData?.ballast_material_type_id || 'N/A'
-    },
-    {
-      title: t('project.other.railway-ballast-material-data.details.particle-size-distribution-grading'),
-      value: railwayBallastMaterialData?.particle_size_distribution_grading || 'N/A'
-    },
-    {
-      title: t('project.other.railway-ballast-material-data.details.ballast-used-quantity'),
-      value:
-        railwayBallastMaterialData?.ballast_used_quantity !== undefined
-          ? railwayBallastMaterialData.ballast_used_quantity.toLocaleString()
-          : 'N/A'
-    },
-    {
-      title: t('project.other.railway-ballast-material-data.details.ballast-source-id'),
-      value: railwayBallastMaterialData?.ballast_source_id || 'N/A'
-    },
-    {
-      title: t('project.other.railway-ballast-material-data.details.ballast-material-size'),
-      value:
-        railwayBallastMaterialData?.ballast_material_size !== undefined
-          ? railwayBallastMaterialData.ballast_material_size.toLocaleString()
-          : 'N/A'
-    },
-    {
-      title: t('project.other.railway-ballast-material-data.details.ballast-layer-thickness'),
-      value:
-        railwayBallastMaterialData?.ballast_layer_thickness !== undefined
-          ? railwayBallastMaterialData.ballast_layer_thickness.toLocaleString()
-          : 'N/A'
-    },
-    {
-      title: t('project.other.railway-ballast-material-data.details.compaction-method-id'),
-      value: railwayBallastMaterialData?.compaction_method_id || 'N/A'
-    },
-    {
-      title: t('project.other.railway-ballast-material-data.details.remark'),
-      value: railwayBallastMaterialData?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: railwayBallastMaterialData?.created_at ? formatCreatedAt(railwayBallastMaterialData.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: railwayBallastMaterialData?.updated_at ? formatCreatedAt(railwayBallastMaterialData.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('common.table-columns.id'),
+        value: railwayBallastMaterialData?.project_id || 'N/A'
+      },
+      {
+        title: t('project.other.railway-ballast-material-data.details.railway-line-section-name'),
+        value: railwayBallastMaterialData?.railway_line_section_name || 'N/A'
+      },
+      {
+        title: t('project.other.railway-ballast-material-data.details.ballast-material-type-id'),
+        value: railwayBallastMaterialData?.ballastMaterialType?.title ?? railwayBallastMaterialData?.ballast_material_type_id ?? 'N/A'
+      },
+      {
+        title: t('project.other.railway-ballast-material-data.details.particle-size-distribution-grading'),
+        value: railwayBallastMaterialData?.particle_size_distribution_grading || 'N/A'
+      },
+      {
+        title: t('project.other.railway-ballast-material-data.details.ballast-used-quantity'),
+        value:
+          railwayBallastMaterialData?.ballast_used_quantity !== undefined
+            ? railwayBallastMaterialData.ballast_used_quantity.toLocaleString()
+            : 'N/A'
+      },
+      {
+        title: t('project.other.railway-ballast-material-data.details.ballast-source-id'),
+        value: railwayBallastMaterialData?.ballastSource?.title ?? railwayBallastMaterialData?.ballast_source_id ?? 'N/A'
+      },
+      {
+        title: t('project.other.railway-ballast-material-data.details.ballast-material-size'),
+        value:
+          railwayBallastMaterialData?.ballast_material_size !== undefined
+            ? railwayBallastMaterialData.ballast_material_size.toLocaleString()
+            : 'N/A'
+      },
+      {
+        title: t('project.other.railway-ballast-material-data.details.ballast-layer-thickness'),
+        value:
+          railwayBallastMaterialData?.ballast_layer_thickness !== undefined
+            ? railwayBallastMaterialData.ballast_layer_thickness.toLocaleString()
+            : 'N/A'
+      },
+      {
+        title: t('project.other.railway-ballast-material-data.details.compaction-method-id'),
+        value: railwayBallastMaterialData?.compactionMethod?.title ?? railwayBallastMaterialData?.compaction_method_id ?? 'N/A'
+      },
+      {
+        title: t('project.other.railway-ballast-material-data.details.remark'),
+        value: railwayBallastMaterialData?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: railwayBallastMaterialData?.created_at ? formatCreatedAt(railwayBallastMaterialData.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: railwayBallastMaterialData?.updated_at ? formatCreatedAt(railwayBallastMaterialData.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

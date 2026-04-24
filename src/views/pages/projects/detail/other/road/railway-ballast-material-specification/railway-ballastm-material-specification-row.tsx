@@ -49,7 +49,9 @@ export const railwayBallastMaterialSpecificationColumns = (
     minWidth: 180,
     field: 'ballast_material_type_id',
     headerName: t('project.other.railway-ballast-material-specification.details.ballast-material-type'),
-    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row.ballast_material_type_id || 'N/A'}</Typography>
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>{row.ballastMaterialType?.title ?? row.ballast_material_type_id ?? 'N/A'}</Typography>
+    )
   },
   {
     flex: 0.15,

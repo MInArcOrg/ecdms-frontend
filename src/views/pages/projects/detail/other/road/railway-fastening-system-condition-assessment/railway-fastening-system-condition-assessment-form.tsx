@@ -22,22 +22,15 @@ const RailwayFasteningSystemConditionAssessmentForm: React.FC<RailwayFasteningSy
 }) => {
   const { t } = useTranslation();
 
-  const conditionRatingOptions = [
-    { value: 'Excellent', label: t('common.options.excellent') },
-    { value: 'Good', label: t('common.options.good') },
-    { value: 'Fair', label: t('common.options.fair') },
-    { value: 'Poor', label: t('common.options.poor') },
-    { value: 'Critical', label: t('common.options.critical') }
-  ];
+  const conditionRatingOptions = ['Excellent', 'Good', 'Fair', 'Poor', 'Critical'].map((value) => ({
+    value,
+    label: t(`common.options.${value.toLowerCase()}`)
+  }));
 
-  const defectPresenceOptions = [
-    { value: 'Cracks', label: t('common.options.cracks') },
-    { value: 'Corrosion', label: t('common.options.corrosion') },
-    { value: 'Loose', label: t('common.options.loose') },
-    { value: 'Missing', label: t('common.options.missing') },
-    { value: 'Deformed', label: t('common.options.deformed') },
-    { value: 'Other', label: t('common.options.other') }
-  ];
+  const defectPresenceOptions = ['Cracks', 'Corrosion', 'Loose', 'Missing', 'Deformed', 'Other'].map((value) => ({
+    value,
+    label: t(`common.options.${value.toLowerCase()}`)
+  }));
 
   const booleanOptions = [
     { value: true, label: t('common.options.yes') },

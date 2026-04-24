@@ -49,7 +49,9 @@ export const railwayBallastMaterialDataColumns = (
     minWidth: 180,
     field: 'ballast_material_type_id',
     headerName: t('project.other.railway-ballast-material-data.details.ballast-material-type'),
-    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.ballast_material_type_id || 'N/A'}</Typography>
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>{row?.ballastMaterialType?.title ?? row?.ballast_material_type_id ?? 'N/A'}</Typography>
+    )
   },
   {
     flex: 0.2,
@@ -80,7 +82,9 @@ export const railwayBallastMaterialDataColumns = (
     minWidth: 180,
     field: 'ballast_source_id',
     headerName: t('project.other.railway-ballast-material-data.details.ballast-source'),
-    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.ballast_source_id || 'N/A'}</Typography>
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>{row?.ballastSource?.title ?? row?.ballast_source_id ?? 'N/A'}</Typography>
+    )
   },
   {
     flex: 0.15,
@@ -117,7 +121,9 @@ export const railwayBallastMaterialDataColumns = (
     minWidth: 180,
     field: 'compaction_method_id',
     headerName: t('project.other.railway-ballast-material-data.details.compaction-method'),
-    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.compaction_method_id || 'N/A'}</Typography>
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>{row?.compactionMethod?.title ?? row?.compaction_method_id ?? 'N/A'}</Typography>
+    )
   },
   {
     flex: 0.2,

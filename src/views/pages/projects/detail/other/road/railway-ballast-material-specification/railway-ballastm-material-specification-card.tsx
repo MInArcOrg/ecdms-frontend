@@ -51,7 +51,9 @@ const RailwayBallastMaterialSpecificationCard: React.FC<RailwayBallastMaterialSp
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-ballast-material-specification.details.ballast-material-type-id')}:{' '}
-            {railwayBallastMaterialSpecification.ballast_material_type_id}
+            {railwayBallastMaterialSpecification.ballastMaterialType?.title ??
+              railwayBallastMaterialSpecification.ballast_material_type_id ??
+              'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-ballast-material-specification.details.specific-gravity')}:{' '}

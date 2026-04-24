@@ -50,7 +50,7 @@ const RailwayBallastMaterialDataCard: React.FC<RailwayBallastMaterialDataCardPro
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-ballast-material-data.details.ballast-material-type-id')}:{' '}
-            {railwayBallastMaterialData.ballast_material_type_id}
+            {railwayBallastMaterialData.ballastMaterialType?.title ?? railwayBallastMaterialData.ballast_material_type_id ?? 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-ballast-material-data.details.particle-size-distribution-grading')}:{' '}
@@ -63,7 +63,8 @@ const RailwayBallastMaterialDataCard: React.FC<RailwayBallastMaterialDataCardPro
               : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-ballast-material-data.details.ballast-source-id')}: {railwayBallastMaterialData.ballast_source_id}
+            {t('project.other.railway-ballast-material-data.details.ballast-source-id')}:{' '}
+            {railwayBallastMaterialData.ballastSource?.title ?? railwayBallastMaterialData.ballast_source_id ?? 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-ballast-material-data.details.ballast-material-size')}:{' '}
@@ -79,7 +80,7 @@ const RailwayBallastMaterialDataCard: React.FC<RailwayBallastMaterialDataCardPro
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-ballast-material-data.details.compaction-method-id')}:{' '}
-            {railwayBallastMaterialData.compaction_method_id}
+            {railwayBallastMaterialData.compactionMethod?.title ?? railwayBallastMaterialData.compaction_method_id ?? 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-ballast-material-data.details.remark')}: {railwayBallastMaterialData.remark ?? 'N/A'}
