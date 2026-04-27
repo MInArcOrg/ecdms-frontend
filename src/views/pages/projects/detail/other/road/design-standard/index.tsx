@@ -18,6 +18,7 @@ import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-det
 import DesignStandardCard from './design-standard-card';
 import DesignStandardDrawer from './design-standard-drawer';
 import { designStandardColumns } from './design-standard-row';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 
 interface DesignStandardListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -126,6 +127,7 @@ const DesignStandardList: React.FC<DesignStandardListProps> = ({ otherSubMenu, p
           toggle={toggleDrawer}
           designStandard={selectedRow as DesignStandard}
           refetch={refetch}
+
           projectId={projectId}
         />
       )}
@@ -137,7 +139,7 @@ const DesignStandardList: React.FC<DesignStandardListProps> = ({ otherSubMenu, p
           data={mapDesignStandardToDetailItems(selectedRow as DesignStandard)}
           hasReference={false}
           id={selectedRow?.id || ''}
-          fileType=""
+          fileType={uploadableProjectFileTypes.other.designStandard}
           title={t('project.other.design-standard.design-standard-details')}
         />
       )}

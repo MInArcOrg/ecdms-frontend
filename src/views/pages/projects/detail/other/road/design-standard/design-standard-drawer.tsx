@@ -7,6 +7,8 @@ import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import DesignStandardForm from './design-standard-form';
+import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { uploadFile } from 'src/services/utils/file-utils';
 
 interface DesignStandardDrawerType {
   open: boolean;
@@ -19,7 +21,6 @@ interface DesignStandardDrawerType {
 
 const DesignStandardDrawer = (props: DesignStandardDrawerType) => {
   const { open, toggle, refetch, designStandard, projectId, otherSubMenu } = props;
-
   const validationSchema = yup.object().shape({
     road_segment_id: yup.string().required('Road Segment is required'),
     functional_classification_id: yup.string().required('Functional Classification is required'),
@@ -50,6 +51,9 @@ const DesignStandardDrawer = (props: DesignStandardDrawerType) => {
   const handleClose = () => toggle();
 
   const onActionSuccess = async (response: IApiResponse<DesignStandard>, payload: IApiPayload<DesignStandard>) => {
+    if (payload.files.length > 0) {
+      uploadFile(payload.files[0], uploadableProjectFileTypes.other.designStandard, response.payload.id, '', '');
+    }
     refetch();
     handleClose();
   };
