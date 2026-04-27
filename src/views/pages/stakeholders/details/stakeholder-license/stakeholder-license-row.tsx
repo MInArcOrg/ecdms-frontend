@@ -122,11 +122,11 @@ export const licenseColumns = (
           item={row}
           deletePermissionRule={{
             action: 'delete',
-            subject: 'stakeholderlicense'
+            subject: 'license'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'stakeholderlicense'
+            subject: 'license'
           }}
           options={[]}
         />

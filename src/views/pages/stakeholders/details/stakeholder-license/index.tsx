@@ -164,7 +164,7 @@ const StakeholderLicenseList: React.FC<StakeholderLicenseListProps> = ({ stakeho
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'stakeholderlicense'
+            subject: 'license'
           }
         }}
         fetchDataFunction={refetch}
