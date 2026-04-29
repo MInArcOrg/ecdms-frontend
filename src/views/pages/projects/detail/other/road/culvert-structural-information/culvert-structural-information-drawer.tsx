@@ -25,7 +25,7 @@ const CulvertStructuralInformationDrawer = (props: CulvertStructuralInformationD
     parent_id: yup.string().length(36).nullable(),
     project_id: yup.string().length(36).required('Project is required'),
     name: yup.string().max(255).required('Name is required'),
-    culvert_type: yup.string().max(255).nullable(),
+    culvertTypeId: yup.string().length(36).nullable(),
     culvert_barrel_length: yup.number().nullable(),
     culvert_height: yup.number().nullable(),
     opening_number: yup.number().integer().nullable(),
@@ -60,7 +60,7 @@ const CulvertStructuralInformationDrawer = (props: CulvertStructuralInformationD
     data: {
       project_id: projectId,
       name: values.name,
-      culvert_type: values.culvert_type,
+      culvert_type_id: values.culvertTypeId,
       culvert_barrel_length: values.culvert_barrel_length,
       culvert_height: values.culvert_height,
       opening_number: values.opening_number,
@@ -110,7 +110,14 @@ const CulvertStructuralInformationDrawer = (props: CulvertStructuralInformationD
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{ ...culvertStructuralInformation, project_id: projectId }}
+          initialValues={{
+            ...culvertStructuralInformation,
+            culvertTypeId:
+              culvertStructuralInformation?.culvertTypeId ||
+              (culvertStructuralInformation as any)?.culvert_type_id ||
+              culvertStructuralInformation?.culvertType?.id,
+            project_id: projectId
+          }}
           createActionFunc={isEdit ? editCulvertStructuralInformation : createCulvertStructuralInformation}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

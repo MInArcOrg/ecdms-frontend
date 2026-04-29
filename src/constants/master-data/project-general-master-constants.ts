@@ -225,6 +225,15 @@ export const projectMasterModels = {
     fileType: 'ROAD_SAFETY_FEATURE',
     flag: 'ROAD'
   },
+  culvertType:{
+    model: 'CulvertType',
+    dbModel: 'culverttype',
+    title: 'culvert-types',
+    createTitle: 'create-culvert-type',
+    editTitle: 'edit-culvert-type',
+    fileType: 'CULVERT_TYPE',
+    flag: 'ROAD'
+  },
   countType: {
     model: 'CountType',
     dbModel: 'counttype',

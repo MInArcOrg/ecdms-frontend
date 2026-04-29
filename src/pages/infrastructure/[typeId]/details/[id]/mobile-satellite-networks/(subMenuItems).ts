@@ -77,7 +77,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: mobileSatelliteNetworksId.satelliteNetworks.ageOfSatelliteNetworkComponents,
         title: 'project.navigation.submenu.mobile-satellite.satellite-networks.age-of-satellite-network-components',
         path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/satellite-networks/age-of-satellite-network-components`,
-        model: 'ageofsatellitenetworkcomponents',
+        model: 'satellitenetworkcomponentmanufacturer',
         apiRoute: 'age-of-satellite-network-components'
       },
       {

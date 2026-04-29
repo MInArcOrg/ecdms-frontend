@@ -20,7 +20,7 @@ const CulvertStructuralInformation = () => {
     >
       {/* <div>Culvert Structural Information Page</div> */}
       <CulvertStructuralInformationList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
-    </ProjectLayout>
+    </ProjectLayout>   
   );
 };
 

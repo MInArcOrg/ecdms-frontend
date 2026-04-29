@@ -65,6 +65,14 @@ const CulvertStructuralInformationForm: React.FC<CulvertStructuralInformationFor
       })
   });
 
+  const { data: culvertTypes } = useQuery({
+    queryKey: ['culvert-types'],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.culvertType.model }
+      })
+  });
+
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -77,13 +85,19 @@ const CulvertStructuralInformationForm: React.FC<CulvertStructuralInformationFor
           sx={{ mb: 2 }}
         />
 
-        <CustomTextBox
+        <CustomSelect
           fullWidth
           label={transl('project.other.culvert-structural-information.details.culvert-type')}
           placeholder={transl('project.other.culvert-structural-information.details.culvert-type')}
-          name="culvert_type"
+          name="culvertTypeId"
           size="small"
           sx={{ mb: 2 }}
+          options={
+            culvertTypes?.payload.map((type) => ({
+              label: type.title,
+              value: type.id
+            })) || []
+          }
         />
 
         <CustomTextBox

@@ -85,11 +85,11 @@ const GeotechnicalInformationList: React.FC<GeotechnicalInformationListProps> = 
     },
     {
       title: t('project.other.geotechnical-information.details.soil-type'),
-      value: geotechnicalInformation?.soil_type_id || 'N/A'
+      value: geotechnicalInformation?.soilType?.title || geotechnicalInformation?.soil_type_id || 'N/A'
     },
     {
       title: t('project.other.geotechnical-information.details.ground-water-impact'),
-      value: geotechnicalInformation?.ground_water_impact_id || 'N/A'
+      value: geotechnicalInformation?.groundWaterImpact?.title || geotechnicalInformation?.ground_water_impact_id || 'N/A'
     },
     {
       title: t('project.other.geotechnical-information.details.soil-bearing-capacity'),
@@ -97,7 +97,7 @@ const GeotechnicalInformationList: React.FC<GeotechnicalInformationListProps> = 
     },
     {
       title: t('project.other.geotechnical-information.details.slope-stability'),
-      value: geotechnicalInformation?.slope_stability_id || 'N/A'
+      value: geotechnicalInformation?.slopeStability?.title || geotechnicalInformation?.slope_stability_id || 'N/A'
     },
     {
       title: t('project.other.geotechnical-information.details.retaining-walls'),

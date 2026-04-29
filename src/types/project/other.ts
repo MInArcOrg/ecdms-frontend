@@ -610,6 +610,7 @@ export interface CulvertBasicData {
   culvert_coordinate_x?: number;
   culvert_coordinate_y?: number;
   area_topography_id: string;
+  culvert_type_id: string;
   highest_water_level?: number;
   lowest_water_level?: number;
   construction_year?: number;
@@ -627,6 +628,8 @@ export interface CulvertStructuralInformation {
   project_id: string;
   name: string;
   culvert_type?: string;
+  culvertTypeId?: string;
+  culvertType?: ProjectGeneralMaster;
   culvert_barrel_length?: number;
   culvert_height?: number;
   opening_number?: number;
@@ -849,6 +852,20 @@ export interface RoadDrainage {
   created_at: Date;
   updated_at: Date;
 }
+export interface ProjectRoadSafetyFeature {
+  id: string;
+  project_id: string;
+  road_segment_id: string;
+  road_safety_feature_id: string;
+  safety_feature_condition?: string;
+  description?: string;
+  roadSegment?: RoadSegment;
+  roadsegment?: RoadSegment;
+  roadSafetyFeature?: { id: string; title?: string; description?: string };
+  roadsafetyfeature?: { id: string; title?: string; description?: string };
+  created_at?: Date | string;
+  updated_at?: Date | string;
+}
 export interface EnvironmentalData {
   id: string;
   project_id: string;
@@ -891,9 +908,12 @@ export interface GeotechnicalInformation {
   project_id: string;
   name: string;
   soil_type_id: string;
+  soilType?: ProjectGeneralMaster;
   ground_water_impact_id: string;
+  groundWaterImpact?: ProjectGeneralMaster;
   soil_bearing_capacity?: number;
   slope_stability_id: string;
+  slopeStability?: ProjectGeneralMaster;
   retaining_walls?: boolean;
   geological_hazard?: string;
   remark?: string;
@@ -1012,6 +1032,37 @@ export interface MobileNetworkCoverage {
   updated_at?: Date;
 }
 
+export interface SatelliteNetworkCoverage {
+  id: string;
+  project_id: string;
+  satellite_network_id: string;
+  satelliteNetwork?: SatelliteNetwork;
+  network_infrastructure_type_id: string;
+  total_coverage_area?: number;
+  coverage_population_no?: number;
+  active_users_no?: number;
+  average_download_speed?: number;
+  average_upload_speed?: number;
+  signal_strength?: number;
+  others?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface SatelliteNetworkCapacity {
+  id: string;
+  project_id: string;
+  satellite_network_id: string;
+  satelliteNetwork?: SatelliteNetwork;
+  network_type_id: string;
+  networkType?: ProjectGeneralMaster;
+  total_bandwidth?: number;
+  users_number?: number;
+  remark?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
 export interface NetworkCapacity {
   id: string;
   project_id: string;
@@ -1088,6 +1139,20 @@ export interface SatelliteInfrastructureAge {
   ground_stations?: number;
   modems?: number;
   routers?: number;
+  others?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface SatelliteNetworkComponentAge {
+  id: string;
+  project_id: string;
+  satellite_network_id: string;
+  cell_towers?: number;
+  antennas?: number;
+  base_stations?: number;
+  repeaters?: number;
+  switches?: number;
   others?: string;
   created_at?: Date;
   updated_at?: Date;
@@ -1390,6 +1455,38 @@ export interface BroadcastingInfrastructureManufacturer {
   others?: string;
   created_at?: Date;
   updated_at?: Date;
+}
+
+export interface BroadcastingNetworkCoverage {
+  id: string;
+  project_id: string;
+  broadcasting_infrastructure_id: string;
+  broadcastingInfrastructure?: BroadcastingInfrastructure;
+  network_infrastructure_type_id: string;
+  networkInfrastructureType?: ProjectGeneralMaster;
+  total_coverage_area?: number;
+  coverage_population_no?: number;
+  active_users_no?: number;
+  average_download_speed?: number;
+  average_upload_speed?: number;
+  signal_strength?: number;
+  others?: string;
+  created_at?: string | Date;
+  updated_at?: string | Date;
+}
+
+export interface BroadcastingNetworkCapacity {
+  id: string;
+  project_id: string;
+  broadcasting_infrastructure_id: string;
+  broadcastingInfrastructure?: BroadcastingInfrastructure;
+  network_type_id: string;
+  networkType?: ProjectGeneralMaster;
+  total_bandwidth?: number;
+  users_number?: number;
+  remark?: string;
+  created_at?: string | Date;
+  updated_at?: string | Date;
 }
 
 export interface SubstationTransformerAndSwitchgearData {

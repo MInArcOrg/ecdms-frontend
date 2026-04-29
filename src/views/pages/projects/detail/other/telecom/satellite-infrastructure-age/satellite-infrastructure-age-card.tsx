@@ -4,18 +4,18 @@ import { Box, Button, Card, CardActions, CardContent, Divider, Typography, Grid 
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import type { SatelliteInfrastructureAge } from 'src/types/project/other';
+import type { SatelliteNetworkComponentAge } from 'src/types/project/other';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 
 interface SatelliteInfrastructureAgeCardProps {
-  satelliteInfrastructureAge: SatelliteInfrastructureAge;
+  satelliteInfrastructureAge: SatelliteNetworkComponentAge;
   refetch: () => void;
-  onEdit: (satelliteInfrastructureAge: SatelliteInfrastructureAge) => void;
+  onEdit: (satelliteInfrastructureAge: SatelliteNetworkComponentAge) => void;
   onDelete: (id: string) => void;
-  onDetail: (satelliteInfrastructureAge: SatelliteInfrastructureAge) => void;
+  onDetail: (satelliteInfrastructureAge: SatelliteNetworkComponentAge) => void;
   satelliteNetworkMap: Map<string, string>;
 }
 
@@ -54,36 +54,47 @@ const SatelliteInfrastructureAgeCard: React.FC<SatelliteInfrastructureAgeCardPro
         <Divider sx={{ my: 1 }} />
 
         <Grid container spacing={2} mt={1}>
-          {satelliteInfrastructureAge?.satellite !== undefined && (
+          {satelliteInfrastructureAge?.cell_towers !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t('project.other.satellite-infrastructure-age.details.satellite')}: {satelliteInfrastructureAge.satellite}{' '}
+                {t('project.other.satellite-infrastructure-age.details.cell-towers')}: {satelliteInfrastructureAge.cell_towers}{' '}
                 {t('common.years')}
               </Typography>
             </Grid>
           )}
 
-          {satelliteInfrastructureAge?.ground_stations !== undefined && (
+          {satelliteInfrastructureAge?.antennas !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t('project.other.satellite-infrastructure-age.details.ground-stations')}: {satelliteInfrastructureAge.ground_stations}{' '}
+                {t('project.other.satellite-infrastructure-age.details.antennas')}: {satelliteInfrastructureAge.antennas}{' '}
                 {t('common.years')}
               </Typography>
             </Grid>
           )}
 
-          {satelliteInfrastructureAge?.modems !== undefined && (
+          {satelliteInfrastructureAge?.base_stations !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t('project.other.satellite-infrastructure-age.details.modems')}: {satelliteInfrastructureAge.modems} {t('common.years')}
+                {t('project.other.satellite-infrastructure-age.details.base-stations')}: {satelliteInfrastructureAge.base_stations}{' '}
+                {t('common.years')}
               </Typography>
             </Grid>
           )}
 
-          {satelliteInfrastructureAge?.routers !== undefined && (
+          {satelliteInfrastructureAge?.repeaters !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">
-                {t('project.other.satellite-infrastructure-age.details.routers')}: {satelliteInfrastructureAge.routers} {t('common.years')}
+                {t('project.other.satellite-infrastructure-age.details.repeaters')}: {satelliteInfrastructureAge.repeaters}{' '}
+                {t('common.years')}
+              </Typography>
+            </Grid>
+          )}
+
+          {satelliteInfrastructureAge?.switches !== undefined && (
+            <Grid item xs={6}>
+              <Typography variant="body2" color="text.secondary">
+                {t('project.other.satellite-infrastructure-age.details.switches')}: {satelliteInfrastructureAge.switches}{' '}
+                {t('common.years')}
               </Typography>
             </Grid>
           )}
@@ -105,11 +116,11 @@ const SatelliteInfrastructureAgeCard: React.FC<SatelliteInfrastructureAgeCardPro
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'space-between' }}>
-        <FileDrawer id={satelliteInfrastructureAge.id} type={uploadableProjectFileTypes.other.satelliteInfrastructureAge} />
+        <FileDrawer id={satelliteInfrastructureAge.id} type={uploadableProjectFileTypes.other.satelliteNetworkComponentAge} />
 
         <Box display="flex">
           <ModelAction
-            model="SatelliteInfrastructureAge"
+            model="SatelliteNetworkComponentAge"
             model_id={satelliteInfrastructureAge.id}
             refetchModel={refetch}
             resubmit={() => refetch()}
@@ -119,11 +130,11 @@ const SatelliteInfrastructureAgeCard: React.FC<SatelliteInfrastructureAgeCardPro
           <RowOptions
             deletePermissionRule={{
               action: 'delete',
-              subject: 'satelliteinfrastructureage'
+              subject: 'satellitenetworkcomponentage'
             }}
             editPermissionRule={{
               action: 'update',
-              subject: 'satelliteinfrastructureage'
+              subject: 'satellitenetworkcomponentage'
             }}
             onEdit={() => onEdit(satelliteInfrastructureAge)}
             onDelete={() => onDelete(satelliteInfrastructureAge.id)}

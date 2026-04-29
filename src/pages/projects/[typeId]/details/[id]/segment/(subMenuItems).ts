@@ -22,26 +22,6 @@ export const projectSegmentIds = {
 
 const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
   {
-    id: projectSegmentIds.design.design,
-    title: 'project.navigation.submenu.segment.design.title',
-    subItems: [
-      {
-        id: projectSegmentIds.design.designStandard,
-        title: 'project.navigation.submenu.segment.design.design-standard',
-        path: `/projects/${typeId}/details/${id}/segment/design/design-standard`,
-        model: 'designstandard',
-        apiRoute: 'design-standards'
-      },
-      {
-        id: projectSegmentIds.design.safetyAndHealth,
-        title: 'project.navigation.submenu.segment.design.safety-and-health',
-        path: `/projects/${typeId}/details/${id}/segment/design/safety-and-health`,
-        model: 'safetyandhealth',
-        apiRoute: 'safety-and-healths'
-      }
-    ]
-  },
-  {
     id: projectSegmentIds.segment.segment,
     title: 'project.navigation.submenu.segment.segment.title',
     subItems: [
@@ -102,7 +82,26 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         apiRoute: 'road-surface-conditions'
       }
     ]
-  }
+  }, {
+    id: projectSegmentIds.design.design,
+    title: 'project.navigation.submenu.segment.design.title',
+    subItems: [
+      {
+        id: projectSegmentIds.design.designStandard,
+        title: 'project.navigation.submenu.segment.design.design-standard',
+        path: `/projects/${typeId}/details/${id}/segment/design/design-standard`,
+        model: 'designstandard',
+        apiRoute: 'design-standards'
+      },
+      {
+        id: projectSegmentIds.design.safetyAndHealth,
+        title: 'project.navigation.submenu.segment.design.safety-and-health',
+        path: `/projects/${typeId}/details/${id}/segment/design/safety-and-health`,
+        model: 'safetyandhealth',
+        apiRoute: 'safety-and-healths'
+      }
+    ]
+  },
 ];
 
 export const findSubMenuItem = (items: DetailSubMenuItem[], id: string) => {

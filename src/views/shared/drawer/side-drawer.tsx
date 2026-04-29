@@ -25,9 +25,9 @@ const CustomSideDrawer: React.FC<CustomSideDrawerProps> = ({ open, handleClose, 
   const { t: transl } = useTranslation();
   const [tab, setTab] = React.useState(0);
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
-    setTab(newValue);
-  };
+  // const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+  //   setTab(newValue);
+  // };
 
   return (
     <div className="customizer">
@@ -62,7 +62,7 @@ const CustomSideDrawer: React.FC<CustomSideDrawerProps> = ({ open, handleClose, 
           </IconButton>
         </Header>
         <Box sx={{ p: (theme) => theme.spacing(0, 6, 6) }}>
-          {model ? (
+          {/* {model ? (
             <>
               <Tabs value={tab} onChange={handleTabChange} aria-label="side drawer tabs">
                 <Tab label={transl('Form')} />
@@ -73,9 +73,9 @@ const CustomSideDrawer: React.FC<CustomSideDrawerProps> = ({ open, handleClose, 
                 {tab === 1 && <DataCollectionGuideList model={model} />}
               </Box>
             </>
-          ) : (
+          ) : ( */}
             <Box>{children()}</Box>
-          )}
+          {/* )} */}
         </Box>
       </Drawer>
     </div>

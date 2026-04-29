@@ -51,8 +51,11 @@ const CulvertStructuralInformationCard: React.FC<CulvertStructuralInformationCar
             {t('project.other.culvert-structural-information.details.name')}: {culvertStructuralInformation?.name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.culvert-structural-information.details.culvert-type-id')}:{' '}
-            {culvertStructuralInformation?.culvert_type || 'N/A'}
+            {t('project.other.culvert-structural-information.details.culvert-type')}:{' '}
+            {culvertStructuralInformation?.culvertType?.title ||
+              culvertStructuralInformation?.culvertTypeId ||
+              culvertStructuralInformation?.culvert_type ||
+              'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.culvert-structural-information.details.pier-type-id')}: {culvertStructuralInformation?.pier_type_id || 'N/A'}

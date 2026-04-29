@@ -83,7 +83,11 @@ const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationLis
     },
     {
       title: t('project.other.culvert-structural-information.details.culvert-type'),
-      value: culvertStructuralInformation?.culvert_type || 'N/A'
+      value:
+        culvertStructuralInformation?.culvertType?.title ||
+        culvertStructuralInformation?.culvertTypeId ||
+        culvertStructuralInformation?.culvert_type ||
+        'N/A'
     },
     {
       title: t('project.other.culvert-structural-information.details.culvert-barrel-length'),

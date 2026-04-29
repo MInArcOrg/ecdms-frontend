@@ -11,14 +11,14 @@ import { useState } from 'react';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
-import type { SatelliteInfrastructureAge, SatelliteNetwork } from 'src/types/project/other';
+import type { SatelliteNetworkComponentAge, SatelliteNetwork } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
 interface SatelliteInfrastructureAgeDrawerType {
   open: boolean;
   toggle: () => void;
   refetch: () => void;
-  satelliteInfrastructureAge: SatelliteInfrastructureAge;
+  satelliteInfrastructureAge: SatelliteNetworkComponentAge;
   projectId: string;
   otherSubMenu?: DetailSubMenuItemChild;
   satelliteNetworks: SatelliteNetwork[];
@@ -35,50 +35,36 @@ const SatelliteInfrastructureAgeDrawer = (props: SatelliteInfrastructureAgeDrawe
   const validationSchema = yup.object().shape({
     parent_id: yup.string().nullable(),
     satellite_network_id: yup.string().required('Satellite network is required'),
-    satellite: yup
-      .number()
-      .nullable()
-      .min(0, 'Age must be a positive number')
-      .transform((value) => (isNaN(value) ? null : value)),
-    ground_stations: yup
-      .number()
-      .nullable()
-      .min(0, 'Age must be a positive number')
-      .transform((value) => (isNaN(value) ? null : value)),
-    modems: yup
-      .number()
-      .nullable()
-      .min(0, 'Age must be a positive number')
-      .transform((value) => (isNaN(value) ? null : value)),
-    routers: yup
-      .number()
-      .nullable()
-      .min(0, 'Age must be a positive number')
-      .transform((value) => (isNaN(value) ? null : value)),
+    cell_towers: yup.number().integer().nullable().min(0, 'Age must be a positive number').transform((value) => (isNaN(value) ? null : value)),
+    antennas: yup.number().integer().nullable().min(0, 'Age must be a positive number').transform((value) => (isNaN(value) ? null : value)),
+    base_stations: yup.number().integer().nullable().min(0, 'Age must be a positive number').transform((value) => (isNaN(value) ? null : value)),
+    repeaters: yup.number().integer().nullable().min(0, 'Age must be a positive number').transform((value) => (isNaN(value) ? null : value)),
+    switches: yup.number().integer().nullable().min(0, 'Age must be a positive number').transform((value) => (isNaN(value) ? null : value)),
     others: yup.string().nullable()
   });
 
   const isEdit = Boolean(satelliteInfrastructureAge?.id);
 
-  const createSatelliteInfrastructureAge = async (body: IApiPayload<SatelliteInfrastructureAge>) =>
-    projectOtherApiSecondService<SatelliteInfrastructureAge>().create(otherSubMenu?.apiRoute || '', body);
+  const createSatelliteInfrastructureAge = async (body: IApiPayload<SatelliteNetworkComponentAge>) =>
+    projectOtherApiSecondService<SatelliteNetworkComponentAge>().create(otherSubMenu?.apiRoute || '', body);
 
-  const editSatelliteInfrastructureAge = async (body: IApiPayload<SatelliteInfrastructureAge>) =>
-    projectOtherApiSecondService<SatelliteInfrastructureAge>().update(
+  const editSatelliteInfrastructureAge = async (body: IApiPayload<SatelliteNetworkComponentAge>) =>
+    projectOtherApiSecondService<SatelliteNetworkComponentAge>().update(
       otherSubMenu?.apiRoute || '',
       satelliteInfrastructureAge?.id || '',
       body
     );
 
-  const getPayload = (values: SatelliteInfrastructureAge) => ({
+  const getPayload = (values: SatelliteNetworkComponentAge) => ({
     data: {
       ...values,
       project_id: projectId,
       satellite_network_id: values.satellite_network_id,
-      satellite: values.satellite,
-      ground_stations: values.ground_stations,
-      modems: values.modems,
-      routers: values.routers,
+      cell_towers: values.cell_towers,
+      antennas: values.antennas,
+      base_stations: values.base_stations,
+      repeaters: values.repeaters,
+      switches: values.switches,
       others: values.others,
       id: satelliteInfrastructureAge?.id
     },
@@ -87,9 +73,12 @@ const SatelliteInfrastructureAgeDrawer = (props: SatelliteInfrastructureAgeDrawe
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<SatelliteInfrastructureAge>, payload: IApiPayload<SatelliteInfrastructureAge>) => {
+  const onActionSuccess = async (
+    response: IApiResponse<SatelliteNetworkComponentAge>,
+    payload: IApiPayload<SatelliteNetworkComponentAge>
+  ) => {
     if (payload.files.length > 0) {
-      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.satelliteInfrastructureAge, response.payload.id, '', '');
+      await uploadFile(payload.files[0], uploadableProjectFileTypes.other.satelliteNetworkComponentAge, response.payload.id, '', '');
     }
 
     refetch();
@@ -119,7 +108,7 @@ const SatelliteInfrastructureAgeDrawer = (props: SatelliteInfrastructureAgeDrawe
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<SatelliteInfrastructureAge>) => {
+          {(formik: FormikProps<SatelliteNetworkComponentAge>) => {
             return (
               <SatelliteInfrastructureAgeForm
                 file={uploadableFile}

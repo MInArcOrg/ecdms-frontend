@@ -57,8 +57,8 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: projectFeatureIds.accessories.drainageGeotechnicalData,
         title: 'project.navigation.submenu.feature.accessories.drainage-geotechnical-data',
         path: `/projects/${typeId}/details/${id}/feature/accessories/drainage-geotechnical-data`,
-        model: 'drainagegeotechnicaldata',
-        apiRoute: 'drainage-geotechnical-data'
+        model: 'geotechnicalinformation',
+        apiRoute: 'geotechnical-informations'
       }
     ]
   },
@@ -77,7 +77,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: projectFeatureIds.culvert.culvertStructuralData,
         title: 'project.navigation.submenu.feature.culvert.culvert-structural-information',
         path: `/projects/${typeId}/details/${id}/feature/culvert/culvert-structural-information`,
-        model: 'culvertstructuraldata',
+        model: 'culvertstructuralinformation',
         apiRoute: 'culvert-structural-informations'
       },
       {

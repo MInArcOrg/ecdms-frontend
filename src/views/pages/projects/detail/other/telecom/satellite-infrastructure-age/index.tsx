@@ -11,7 +11,7 @@ import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
-import type { SatelliteInfrastructureAge, SatelliteNetwork } from 'src/types/project/other';
+import type { SatelliteNetworkComponentAge, SatelliteNetwork } from 'src/types/project/other';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
@@ -30,7 +30,7 @@ interface SatelliteInfrastructureAgeListProps {
 const SatelliteInfrastructureAgeList: React.FC<SatelliteInfrastructureAgeListProps> = ({ otherSubMenu, projectId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<SatelliteInfrastructureAge | null>(null);
+  const [selectedRow, setSelectedRow] = useState<SatelliteNetworkComponentAge | null>(null);
   const { t } = useTranslation();
 
   // Fetch satellite networks for dropdown
@@ -45,9 +45,10 @@ const SatelliteInfrastructureAgeList: React.FC<SatelliteInfrastructureAgeListPro
   // Create maps for quick lookup
   const satelliteNetworkMap = new Map(satelliteNetworks?.payload.map((network) => [network.id, network.name]) || []);
 
-  const fetchSatelliteInfrastructureAges = (params: GetRequestParam): Promise<IApiResponse<SatelliteInfrastructureAge[]>> => {
-    return projectOtherApiSecondService<SatelliteInfrastructureAge>().getAll(otherSubMenu?.apiRoute || '', {
-      ...params
+  const fetchSatelliteInfrastructureAges = (params: GetRequestParam): Promise<IApiResponse<SatelliteNetworkComponentAge[]>> => {
+    return projectOtherApiSecondService<SatelliteNetworkComponentAge>().getAll(otherSubMenu?.apiRoute || '', {
+      ...params,
+      filter: { ...params.filter, project_id: projectId }
     });
   };
 
@@ -57,38 +58,38 @@ const SatelliteInfrastructureAgeList: React.FC<SatelliteInfrastructureAgeListPro
     pagination,
     handlePageChange,
     refetch
-  } = usePaginatedFetch<SatelliteInfrastructureAge[]>({
+  } = usePaginatedFetch<SatelliteNetworkComponentAge[]>({
     queryKey: ['satelliteInfrastructureAges'],
     fetchFunction: fetchSatelliteInfrastructureAges
   });
 
   const toggleDrawer = () => {
-    setSelectedRow({} as SatelliteInfrastructureAge);
+    setSelectedRow({} as SatelliteNetworkComponentAge);
     setShowDrawer(!showDrawer);
   };
 
   const toggleDetailDrawer = () => {
-    setSelectedRow({} as SatelliteInfrastructureAge);
+    setSelectedRow({} as SatelliteNetworkComponentAge);
     setShowDetailDrawer(!showDetailDrawer);
   };
 
-  const handleEdit = (satelliteInfrastructureAge: SatelliteInfrastructureAge) => {
+  const handleEdit = (satelliteInfrastructureAge: SatelliteNetworkComponentAge) => {
     toggleDrawer();
     setSelectedRow(satelliteInfrastructureAge);
   };
 
   const handleDelete = async (satelliteInfrastructureAgeId: string) => {
-    await projectOtherApiSecondService<SatelliteInfrastructureAge>().delete(otherSubMenu?.apiRoute || '', satelliteInfrastructureAgeId);
+    await projectOtherApiSecondService<SatelliteNetworkComponentAge>().delete(otherSubMenu?.apiRoute || '', satelliteInfrastructureAgeId);
     refetch();
   };
 
-  const handleClickDetail = (satelliteInfrastructureAge: SatelliteInfrastructureAge) => {
+  const handleClickDetail = (satelliteInfrastructureAge: SatelliteNetworkComponentAge) => {
     toggleDetailDrawer();
     setSelectedRow(satelliteInfrastructureAge);
   };
 
   const mapSatelliteInfrastructureAgeToDetailItems = (
-    satelliteInfrastructureAge: SatelliteInfrastructureAge
+    satelliteInfrastructureAge: SatelliteNetworkComponentAge
   ): { title: string; value: string }[] => [
     {
       title: t('project.other.satellite-infrastructure-age.details.satellite-network'),
@@ -98,20 +99,24 @@ const SatelliteInfrastructureAgeList: React.FC<SatelliteInfrastructureAgeListPro
         'N/A'
     },
     {
-      title: t('project.other.satellite-infrastructure-age.details.satellite'),
-      value: satelliteInfrastructureAge?.satellite?.toString() || 'N/A'
+      title: t('project.other.satellite-infrastructure-age.details.cell-towers'),
+      value: satelliteInfrastructureAge?.cell_towers?.toString() || 'N/A'
     },
     {
-      title: t('project.other.satellite-infrastructure-age.details.ground-stations'),
-      value: satelliteInfrastructureAge?.ground_stations?.toString() || 'N/A'
+      title: t('project.other.satellite-infrastructure-age.details.antennas'),
+      value: satelliteInfrastructureAge?.antennas?.toString() || 'N/A'
     },
     {
-      title: t('project.other.satellite-infrastructure-age.details.modems'),
-      value: satelliteInfrastructureAge?.modems?.toString() || 'N/A'
+      title: t('project.other.satellite-infrastructure-age.details.base-stations'),
+      value: satelliteInfrastructureAge?.base_stations?.toString() || 'N/A'
     },
     {
-      title: t('project.other.satellite-infrastructure-age.details.routers'),
-      value: satelliteInfrastructureAge?.routers?.toString() || 'N/A'
+      title: t('project.other.satellite-infrastructure-age.details.repeaters'),
+      value: satelliteInfrastructureAge?.repeaters?.toString() || 'N/A'
+    },
+    {
+      title: t('project.other.satellite-infrastructure-age.details.switches'),
+      value: satelliteInfrastructureAge?.switches?.toString() || 'N/A'
     },
     {
       title: t('project.other.satellite-infrastructure-age.details.others'),
@@ -134,7 +139,7 @@ const SatelliteInfrastructureAgeList: React.FC<SatelliteInfrastructureAgeListPro
           otherSubMenu={otherSubMenu}
           open={showDrawer}
           toggle={toggleDrawer}
-          satelliteInfrastructureAge={selectedRow as SatelliteInfrastructureAge}
+          satelliteInfrastructureAge={selectedRow as SatelliteNetworkComponentAge}
           refetch={refetch}
           projectId={projectId}
           satelliteNetworks={satelliteNetworks?.payload || []}
@@ -145,10 +150,10 @@ const SatelliteInfrastructureAgeList: React.FC<SatelliteInfrastructureAgeListPro
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapSatelliteInfrastructureAgeToDetailItems(selectedRow as SatelliteInfrastructureAge)}
+          data={mapSatelliteInfrastructureAgeToDetailItems(selectedRow as SatelliteNetworkComponentAge)}
           hasReference={true}
           id={selectedRow?.id || ''}
-          fileType={uploadableProjectFileTypes.other.satelliteInfrastructureAge}
+          fileType={uploadableProjectFileTypes.other.satelliteNetworkComponentAge}
           title={t('project.other.satellite-infrastructure-age.satellite-infrastructure-age-details')}
         />
       )}
@@ -177,7 +182,7 @@ const SatelliteInfrastructureAgeList: React.FC<SatelliteInfrastructureAgeListPro
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'satelliteinfrastructureage'
+            subject: 'satellitenetworkcomponentage'
           }
         }}
         fetchDataFunction={refetch}

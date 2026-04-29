@@ -5,13 +5,13 @@ import type { FormikProps } from 'formik';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
-import type { SatelliteInfrastructureAge, SatelliteNetwork } from 'src/types/project/other';
+import type { SatelliteNetworkComponentAge, SatelliteNetwork } from 'src/types/project/other';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface SatelliteInfrastructureAgeFormProps {
-  formik: FormikProps<SatelliteInfrastructureAge>;
+  formik: FormikProps<SatelliteNetworkComponentAge>;
   file: File | null;
   onFileChange: (file: File | null) => void;
   satelliteNetworks: SatelliteNetwork[];
@@ -37,7 +37,7 @@ const SatelliteInfrastructureAgeForm: React.FC<SatelliteInfrastructureAgeFormPro
           sx={{ mb: 2 }}
           options={
             satelliteNetworks.map((network) => ({
-              label: network.satellite_network_type_id || network.id,
+              label: network.name || network.satellite_network_type_id || network.id,
               value: network.id
             })) || []
           }
@@ -52,9 +52,9 @@ const SatelliteInfrastructureAgeForm: React.FC<SatelliteInfrastructureAgeFormPro
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl('project.other.satellite-infrastructure-age.details.satellite')}
-              placeholder={transl('project.other.satellite-infrastructure-age.details.satellite')}
-              name="satellite"
+              label={transl('project.other.satellite-infrastructure-age.details.cell-towers')}
+              placeholder={transl('project.other.satellite-infrastructure-age.details.cell-towers')}
+              name="cell_towers"
               type="number"
               size="small"
               sx={{ mb: 2 }}
@@ -63,9 +63,9 @@ const SatelliteInfrastructureAgeForm: React.FC<SatelliteInfrastructureAgeFormPro
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl('project.other.satellite-infrastructure-age.details.ground-stations')}
-              placeholder={transl('project.other.satellite-infrastructure-age.details.ground-stations')}
-              name="ground_stations"
+              label={transl('project.other.satellite-infrastructure-age.details.antennas')}
+              placeholder={transl('project.other.satellite-infrastructure-age.details.antennas')}
+              name="antennas"
               type="number"
               size="small"
               sx={{ mb: 2 }}
@@ -77,9 +77,9 @@ const SatelliteInfrastructureAgeForm: React.FC<SatelliteInfrastructureAgeFormPro
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl('project.other.satellite-infrastructure-age.details.modems')}
-              placeholder={transl('project.other.satellite-infrastructure-age.details.modems')}
-              name="modems"
+              label={transl('project.other.satellite-infrastructure-age.details.base-stations')}
+              placeholder={transl('project.other.satellite-infrastructure-age.details.base-stations')}
+              name="base_stations"
               type="number"
               size="small"
               sx={{ mb: 2 }}
@@ -88,15 +88,25 @@ const SatelliteInfrastructureAgeForm: React.FC<SatelliteInfrastructureAgeFormPro
           <Grid item xs={6}>
             <CustomTextBox
               fullWidth
-              label={transl('project.other.satellite-infrastructure-age.details.routers')}
-              placeholder={transl('project.other.satellite-infrastructure-age.details.routers')}
-              name="routers"
+              label={transl('project.other.satellite-infrastructure-age.details.repeaters')}
+              placeholder={transl('project.other.satellite-infrastructure-age.details.repeaters')}
+              name="repeaters"
               type="number"
               size="small"
               sx={{ mb: 2 }}
             />
           </Grid>
         </Grid>
+
+        <CustomTextBox
+          fullWidth
+          label={transl('project.other.satellite-infrastructure-age.details.switches')}
+          placeholder={transl('project.other.satellite-infrastructure-age.details.switches')}
+          name="switches"
+          type="number"
+          size="small"
+          sx={{ mb: 2 }}
+        />
 
         <CustomTextBox
           fullWidth

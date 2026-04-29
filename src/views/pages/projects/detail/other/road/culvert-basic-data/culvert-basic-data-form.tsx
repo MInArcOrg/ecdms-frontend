@@ -25,6 +25,14 @@ const CulvertBasicDataForm: React.FC<CulvertBasicDataFormProps> = ({ formik }) =
       })
   });
 
+  const { data: culvertTypes } = useQuery({
+    queryKey: ['culvert-types'],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.culvertType.model }
+      })
+  });
+
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -85,6 +93,21 @@ const CulvertBasicDataForm: React.FC<CulvertBasicDataFormProps> = ({ formik }) =
           sx={{ mb: 2 }}
           options={
             areaTopographies?.payload.map((type) => ({
+              label: type.title,
+              value: type.id
+            })) || []
+          }
+        />
+
+        <CustomSelect
+          fullWidth
+          label={transl('project.other.culvert-basic-data.details.culvert-type-id')}
+          placeholder={transl('project.other.culvert-basic-data.details.culvert-type-id')}
+          name="culvert_type_id"
+          size="small"
+          sx={{ mb: 2 }}
+          options={
+            culvertTypes?.payload.map((type) => ({
               label: type.title,
               value: type.id
             })) || []

@@ -12,15 +12,12 @@ import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
+import { GEOTECHNICAL_INFORMATION_FILE_TYPES, GeotechnicalInformationFileKey } from './filet-type-config';
 
 interface GeotechnicalInformationFormProps {
   formik: FormikProps<GeotechnicalInformation>;
-  files: {
-    seismicDesign: File | null;
-    geotechnicalReport: File | null;
-    foundationDesign: File | null;
-  };
-  onFileChange: (fileType: string, file: File | null) => void;
+  files: Record<GeotechnicalInformationFileKey, File | null>;
+  onFileChange: (fileType: GeotechnicalInformationFileKey, file: File | null) => void;
 }
 
 const GeotechnicalInformationForm: React.FC<GeotechnicalInformationFormProps> = ({ formik, files, onFileChange }) => {
@@ -156,27 +153,14 @@ const GeotechnicalInformationForm: React.FC<GeotechnicalInformationFormProps> = 
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={transl('project.other.geotechnical-information.file-types.seismic-design')}
-          file={files.seismicDesign}
-          onFileChange={(file) => onFileChange('seismicDesign', file)}
-        />
-      </Grid>
-
-      <Grid item xs={12}>
-        <CustomFileUpload
-          label={transl('project.other.geotechnical-information.file-types.geotechnical-report')}
-          file={files.geotechnicalReport}
-          onFileChange={(file) => onFileChange('geotechnicalReport', file)}
-        />
-      </Grid>
-
-      <Grid item xs={12}>
-        <CustomFileUpload
-          label={transl('project.other.geotechnical-information.file-types.foundation-design')}
-          file={files.foundationDesign}
-          onFileChange={(file) => onFileChange('foundationDesign', file)}
-        />
+        {GEOTECHNICAL_INFORMATION_FILE_TYPES.map((fileType) => (
+          <CustomFileUpload
+            key={fileType.key}
+            label={transl(fileType.titleTKey)}
+            file={files[fileType.key]}
+            onFileChange={(file) => onFileChange(fileType.key, file)}
+          />
+        ))}
       </Grid>
     </Grid>
   );

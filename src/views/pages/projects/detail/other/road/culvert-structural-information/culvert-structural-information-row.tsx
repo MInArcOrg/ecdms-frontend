@@ -52,9 +52,11 @@ export const culvertStructuralInformationColumns = (
     flex: 0.15,
     minWidth: 120,
     headerName: t('project.other.culvert-structural-information.details.culvert-type'),
-    field: 'culvert_type',
+    field: 'culvertTypeId',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.culvert_type || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.culvertType?.title || row?.culvertTypeId || row?.culvert_type || t('common.not-available')}
+      </Typography>
     )
   },
   {

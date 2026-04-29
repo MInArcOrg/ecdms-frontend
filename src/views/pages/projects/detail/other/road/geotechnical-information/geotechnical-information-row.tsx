@@ -6,8 +6,10 @@ import type { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
 import type { GeotechnicalInformation } from 'src/types/project/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
+import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
+import { GEOTECHNICAL_INFORMATION_FILE_TYPES } from './filet-type-config';
 
 interface CellType {
   row: GeotechnicalInformation;
@@ -54,7 +56,9 @@ export const geotechnicalInformationColumns = (
     headerName: t('project.other.geotechnical-information.details.soil-type'),
     field: 'soil_type_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.soil_type_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.soilType?.title || row?.soil_type_id || t('common.not-available')}
+      </Typography>
     )
   },
   {
@@ -63,7 +67,9 @@ export const geotechnicalInformationColumns = (
     headerName: t('project.other.geotechnical-information.details.ground-water-impact'),
     field: 'ground_water_impact_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.ground_water_impact_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.groundWaterImpact?.title || row?.ground_water_impact_id || t('common.not-available')}
+      </Typography>
     )
   },
   {
@@ -72,6 +78,19 @@ export const geotechnicalInformationColumns = (
     headerName: t('common.table-columns.created-at'),
     field: 'created_at',
     renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{formatCreatedAt(row.created_at)}</Typography>
+  },
+  {
+    flex: 0.12,
+    minWidth: 120,
+    headerName: t('common.table-columns.files'),
+    field: 'file_id',
+    renderCell: ({ row }: CellType) => (
+      <Fragment>
+        {GEOTECHNICAL_INFORMATION_FILE_TYPES.map((fileType) => (
+          <FileDrawer key={fileType.key} id={row.id} type={fileType.type} />
+        ))}
+      </Fragment>
+    )
   },
   {
     minWidth: 150,

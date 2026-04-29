@@ -34,13 +34,13 @@ export const menuItems = (baseUrl: string) => [
   //   subject: 'projectfile',
   //   path: `${baseUrl}/project-file`
   // },
-  {
-    id: 6,
-    title: 'Plan',
-    action: 'view',
-    subject: 'projectplan',
-    path: `${baseUrl}/plan`
-  },
+  // {
+  //   id: 6,
+  //   title: 'Plan',
+  //   action: 'view',
+  //   subject: 'projectplan',
+  //   path: `${baseUrl}/plan`
+  // },
   // {
   //   id: 7,
   //   title: 'Resource',
@@ -49,13 +49,13 @@ export const menuItems = (baseUrl: string) => [
   //   path: `${baseUrl}/resource`
   // },
 
-  {
-    id: 8,
-    title: 'Report',
-    action: 'view',
-    subject: 'projectreport',
-    path: `${baseUrl}/report`
-  },
+  // {
+  //   id: 8,
+  //   title: 'Report',
+  //   action: 'view',
+  //   subject: 'projectreport',
+  //   path: `${baseUrl}/report`
+  // },
   // {
   //   id: 9,
   //   title: 'Other',

@@ -510,7 +510,10 @@
       "edit-source-of-fund": "Edit Source of Fund",
       "thermal-biomass-incineration-types": "Thermal Biomass Incineration Types",
       "create-thermal-biomass-incineration-type": "Add Thermal Biomass Incineration Type",
-      "edit-thermal-biomass-incineration-type": "Edit Thermal Biomass Incineration Type"
+      "edit-thermal-biomass-incineration-type": "Edit Thermal Biomass Incineration Type",
+      "culvert-types": "Culvert Types",
+      "create-culvert-type": "Add Culvert Type",
+      "edit-culvert-type": "Edit Culvert Type"
     },
     "form": {
       "title": "Title",
@@ -1944,6 +1947,22 @@
           "others": "Others"
         }
       },
+      "satellite-network-coverage": {
+        "title": "Satellite Network Coverage",
+        "satellite-network-coverage-details": "Satellite Network Coverage Details",
+        "create-satellite-network-coverage": "Add Satellite Network Coverage",
+        "edit-satellite-network-coverage": "Edit Satellite Network Coverage",
+        "details": {
+          "network-infrastructure-type-id": "Network Infrastructure Type",
+          "total-coverage-area": "Total Coverage Area",
+          "coverage-population-no": "Coverage Population Number",
+          "active-users-no": "Active Users Number",
+          "average-download-speed": "Average Download Speed",
+          "average-upload-speed": "Average Upload Speed",
+          "signal-strength": "Signal Strength",
+          "others": "Others"
+        }
+      },
       "data-center": {
         "title": "Data Centers",
         "data-center-details": "Data Center Details",
@@ -2202,6 +2221,7 @@
           "culvert-coordinate-x": "Culvert Coordinate X",
           "culvert-coordinate-y": "Culvert Coordinate Y",
           "area-topography-id": "Area Topography",
+          "culvert-type-id": "Culvert Type",
           "highest-water-level": "Highest Water Level",
           "lowest-water-level": "Lowest Water Level",
           "construction-year": "Construction Year",
@@ -2439,6 +2459,18 @@
           "construction-completion-year": "Construction Completion Year",
           "remark": "Remark",
           "dimensions": "Dimensions"
+        }
+      },
+      "road-safety-features": {
+        "title": "Road Safety Features",
+        "create-road-safety-feature": "Add Road Safety Feature",
+        "edit-road-safety-feature": "Edit Road Safety Feature",
+        "details": {
+          "title": "Road Safety Feature Details",
+          "road-segment": "Road Segment",
+          "road-safety-feature": "Road Safety Feature",
+          "safety-feature-condition": "Safety Feature Condition",
+          "description": "Description"
         }
       },
       "drainage-assessment": {
@@ -3032,6 +3064,18 @@
           "remark": "Remark"
         }
       },
+      "satellite-network-capacity": {
+        "title": "Satellite Network Capacity",
+        "create-satellite-network-capacity": "Add Satellite Network Capacity",
+        "edit-satellite-network-capacity": "Edit Satellite Network Capacity",
+        "satellite-network-capacity-details": "Satellite Network Capacity Details",
+        "details": {
+          "network-type-id": "Network Type",
+          "total-bandwidth": "Total Bandwidth",
+          "users-number": "Number of Users",
+          "remark": "Remark"
+        }
+      },
       "satellite-network": {
         "title": "Satellite Network",
         "create-satellite-network": "Add Satellite Network",
@@ -3048,17 +3092,18 @@
         }
       },
       "satellite-infrastructure-age": {
-        "title": "Satellite Infrastructure Age",
-        "create-satellite-infrastructure-age": "Add Satellite Infrastructure Age",
-        "edit-satellite-infrastructure-age": "Edit Satellite Infrastructure Age",
-        "satellite-infrastructure-age-details": "Satellite Infrastructure Age Details",
+        "title": "Age of Satellite Network Components",
+        "create-satellite-infrastructure-age": "Add Satellite Network Component Age",
+        "edit-satellite-infrastructure-age": "Edit Satellite Network Component Age",
+        "satellite-infrastructure-age-details": "Satellite Network Component Age Details",
         "infrastructure-age": "Infrastructure Age (in years)",
         "details": {
           "satellite-network": "Satellite Network",
-          "satellite": "Satellite Age",
-          "ground-stations": "Ground Stations Age",
-          "modems": "Modems Age",
-          "routers": "Routers Age",
+          "cell-towers": "Cell Towers Age",
+          "antennas": "Antennas Age",
+          "base-stations": "Base Stations Age",
+          "repeaters": "Repeaters Age",
+          "switches": "Switches Age",
           "others": "Others"
         }
       },
@@ -3136,6 +3181,36 @@
           "towers": "Towers",
           "cables": "Cables",
           "others": "Others"
+        }
+      },
+      "broadcasting-network-coverage": {
+        "title": "Broadcasting Network Coverage",
+        "create-broadcasting-network-coverage": "Add Broadcasting Network Coverage",
+        "edit-broadcasting-network-coverage": "Edit Broadcasting Network Coverage",
+        "broadcasting-network-coverage-details": "Broadcasting Network Coverage Details",
+        "details": {
+          "broadcasting-infrastructure": "Broadcasting Infrastructure",
+          "network-infrastructure-type": "Network Infrastructure Type",
+          "total-coverage-area": "Total Coverage Area",
+          "coverage-population-no": "Coverage Population No",
+          "active-users-no": "Active Users No",
+          "average-download-speed": "Average Download Speed",
+          "average-upload-speed": "Average Upload Speed",
+          "signal-strength": "Signal Strength",
+          "others": "Others"
+        }
+      },
+      "broadcasting-network-capacity": {
+        "title": "Broadcasting Network Capacity",
+        "create-broadcasting-network-capacity": "Add Broadcasting Network Capacity",
+        "edit-broadcasting-network-capacity": "Edit Broadcasting Network Capacity",
+        "broadcasting-network-capacity-details": "Broadcasting Network Capacity Details",
+        "details": {
+          "broadcasting-infrastructure": "Broadcasting Infrastructure",
+          "network-type": "Network Type",
+          "total-bandwidth": "Total Bandwidth",
+          "users-number": "Users Number",
+          "remark": "Remark"
         }
       },
       "geothermal-power-well": {

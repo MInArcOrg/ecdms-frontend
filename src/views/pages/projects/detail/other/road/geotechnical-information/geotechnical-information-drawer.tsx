@@ -9,10 +9,10 @@ import GeotechnicalInformationForm from './geotechnical-information-form';
 
 import { useState } from 'react';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { GeotechnicalInformation } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import { GEOTECHNICAL_INFORMATION_FILE_TYPES, GeotechnicalInformationFileKey } from './filet-type-config';
 
 interface GeotechnicalInformationDrawerType {
   open: boolean;
@@ -25,17 +25,13 @@ interface GeotechnicalInformationDrawerType {
 
 const GeotechnicalInformationDrawer = (props: GeotechnicalInformationDrawerType) => {
   const { open, toggle, refetch, geotechnicalInformation, projectId, otherSubMenu } = props;
-  const [uploadableFiles, setUploadableFiles] = useState<{
-    seismicDesign: File | null;
-    geotechnicalReport: File | null;
-    foundationDesign: File | null;
-  }>({
+  const [uploadableFiles, setUploadableFiles] = useState<Record<GeotechnicalInformationFileKey, File | null>>({
     seismicDesign: null,
     geotechnicalReport: null,
     foundationDesign: null
   });
 
-  const onFileChange = (fileType: string, file: File | null) => {
+  const onFileChange = (fileType: GeotechnicalInformationFileKey, file: File | null) => {
     setUploadableFiles((prev) => ({
       ...prev,
       [fileType]: file
@@ -79,21 +75,16 @@ const GeotechnicalInformationDrawer = (props: GeotechnicalInformationDrawerType)
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<GeotechnicalInformation>, payload: IApiPayload<GeotechnicalInformation>) => {
+  const onActionSuccess = async (response: IApiResponse<GeotechnicalInformation>, _payload: IApiPayload<GeotechnicalInformation>) => {
     const recordId = response.payload.id;
 
-    // Upload each file type if provided
-    if (uploadableFiles.seismicDesign) {
-      await uploadFile(uploadableFiles.seismicDesign, uploadableProjectFileTypes.other.seismicDesign, recordId, '', '');
-    }
-
-    if (uploadableFiles.geotechnicalReport) {
-      await uploadFile(uploadableFiles.geotechnicalReport, uploadableProjectFileTypes.other.geotechnicalReport, recordId, '', '');
-    }
-
-    if (uploadableFiles.foundationDesign) {
-      await uploadFile(uploadableFiles.foundationDesign, uploadableProjectFileTypes.other.foundationDesign, recordId, '', '');
-    }
+    await Promise.all(
+      GEOTECHNICAL_INFORMATION_FILE_TYPES.map(async (fileType) => {
+        const file = uploadableFiles[fileType.key];
+        if (!file) return;
+        await uploadFile(file, fileType.type, recordId, '', '');
+      })
+    );
 
     refetch();
     handleClose();

@@ -4,18 +4,18 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
-import type { SatelliteInfrastructureAge } from 'src/types/project/other';
+import type { SatelliteNetworkComponentAge } from 'src/types/project/other';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
 interface CellType {
-  row: SatelliteInfrastructureAge;
+  row: SatelliteNetworkComponentAge;
 }
 
 export const satelliteInfrastructureAgeColumns = (
-  onDetail: (satelliteInfrastructureAge: SatelliteInfrastructureAge) => void,
-  onEdit: (satelliteInfrastructureAge: SatelliteInfrastructureAge) => void,
+  onDetail: (satelliteInfrastructureAge: SatelliteNetworkComponentAge) => void,
+  onEdit: (satelliteInfrastructureAge: SatelliteNetworkComponentAge) => void,
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
@@ -45,44 +45,44 @@ export const satelliteInfrastructureAgeColumns = (
   {
     flex: 0.15,
     minWidth: 100,
-    headerName: t('project.other.satellite-infrastructure-age.details.satellite'),
-    field: 'satellite',
+    headerName: t('project.other.satellite-infrastructure-age.details.cell-towers'),
+    field: 'cell_towers',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.satellite !== undefined ? `${row.satellite} ${t('common.years')}` : t('common.not-available')}
+        {row?.cell_towers !== undefined ? `${row.cell_towers} ${t('common.years')}` : t('common.not-available')}
       </Typography>
     )
   },
   {
     flex: 0.15,
     minWidth: 100,
-    headerName: t('project.other.satellite-infrastructure-age.details.ground-stations'),
-    field: 'ground_stations',
+    headerName: t('project.other.satellite-infrastructure-age.details.antennas'),
+    field: 'antennas',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.ground_stations !== undefined ? `${row.ground_stations} ${t('common.years')}` : t('common.not-available')}
+        {row?.antennas !== undefined ? `${row.antennas} ${t('common.years')}` : t('common.not-available')}
       </Typography>
     )
   },
   {
     flex: 0.15,
     minWidth: 100,
-    headerName: t('project.other.satellite-infrastructure-age.details.modems'),
-    field: 'modems',
+    headerName: t('project.other.satellite-infrastructure-age.details.base-stations'),
+    field: 'base_stations',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.modems !== undefined ? `${row.modems} ${t('common.years')}` : t('common.not-available')}
+        {row?.base_stations !== undefined ? `${row.base_stations} ${t('common.years')}` : t('common.not-available')}
       </Typography>
     )
   },
   {
     flex: 0.15,
     minWidth: 100,
-    headerName: t('project.other.satellite-infrastructure-age.details.routers'),
-    field: 'routers',
+    headerName: t('project.other.satellite-infrastructure-age.details.repeaters'),
+    field: 'repeaters',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.routers !== undefined ? `${row.routers} ${t('common.years')}` : t('common.not-available')}
+        {row?.repeaters !== undefined ? `${row.repeaters} ${t('common.years')}` : t('common.not-available')}
       </Typography>
     )
   },
@@ -101,7 +101,7 @@ export const satelliteInfrastructureAgeColumns = (
     renderCell: ({ row }: CellType) => (
       <Fragment>
         <ModelAction
-          model="SatelliteInfrastructureAge"
+          model="SatelliteNetworkComponentAge"
           model_id={row.id}
           refetchModel={refetch}
           resubmit={() => refetch()}
@@ -115,11 +115,11 @@ export const satelliteInfrastructureAgeColumns = (
           options={[]}
           deletePermissionRule={{
             action: 'delete',
-            subject: 'satelliteinfrastructureage'
+            subject: 'satellitenetworkcomponentage'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'satelliteinfrastructureage'
+            subject: 'satellitenetworkcomponentage'
           }}
         />
       </Fragment>

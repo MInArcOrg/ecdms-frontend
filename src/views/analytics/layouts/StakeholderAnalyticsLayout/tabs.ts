@@ -27,13 +27,13 @@ export const menuItems = () => [
   //   subject: 'stakeholderproject',
   //   path: '/analytics/stakeholder/projects'
   // },
-  {
-    id: 5,
-    title: 'Files',
-    action: 'view',
-    subject: 'stakeholderfile',
-    path: '/analytics/stakeholder/files'
-  },
+  // {
+  //   id: 5,
+  //   title: 'Files',
+  //   action: 'view',
+  //   subject: 'stakeholderfile',
+  //   path: '/analytics/stakeholder/files'
+  // },
   {
     id: 6,
     title: 'Location',

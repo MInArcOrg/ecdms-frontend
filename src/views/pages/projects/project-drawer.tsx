@@ -90,8 +90,8 @@ const ProjectDrawer = (props: ProjectDrawerType) => {
       model={'project'}
       translatedTitle={translatedTitle}
       handleClose={handleClose}
-      open={open}
-      width={1000}
+      open={open} 
+      width={module === 'project' ? 1000 : undefined}
     >
       {() => (
         <FormPageWrapper
