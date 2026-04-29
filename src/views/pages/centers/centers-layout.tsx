@@ -150,6 +150,12 @@ const CentersLayout = ({ children, value, routes }: CentersLayoutProps) => {
                   {ability.can('view', 'professional') && (
                     <Tab value="3" component={Link} label={t('department.tabs.experts')} href={currentRoutes[2].path} />
                   )}
+                    {ability.can('view', 'department') && (
+                      <Tab value="4" component={Link} label={t('department.tabs.center-documents')} href={currentRoutes[3].path} />
+                    )}
+                    {ability.can('view', 'department') && (
+                      <Tab value="5" component={Link} label={t('department.tabs.structure')} href={currentRoutes[4].path} />
+                    )}
                 </TabList>
                 {cloneElement(children, {
                   parentDepartment: department?.payload

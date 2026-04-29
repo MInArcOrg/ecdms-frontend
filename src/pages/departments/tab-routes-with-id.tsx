@@ -9,7 +9,7 @@ const CentersTabRoutesWithId = (id?: string) => [
     path: `/departments/sub-departements/${id}/professionals`
   },
   {
-    path: `/departments/sub-departements/${id}/center-documents`
+    path: `/departments/sub-departements/${id}/centerDocuments`
   },
   {
     path: `/departments/sub-departements/${id}/structure`

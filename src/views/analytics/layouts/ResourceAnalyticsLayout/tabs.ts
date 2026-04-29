@@ -13,13 +13,13 @@ export const menuItems = () => [
     subject: 'resourceinfo',
     path: '/analytics/resource/inflation'
   },
-  {
-    id: 3,
-    title: 'Salary',
-    action: 'view',
-    subject: 'resourceinfo',
-    path: '/analytics/resource/salary'
-  },
+  // {
+  //   id: 3,
+  //   title: 'Salary',
+  //   action: 'view',
+  //   subject: 'resourceinfo',
+  //   path: '/analytics/resource/salary'
+  // },
   {
     id: 4,
     title: 'Location',

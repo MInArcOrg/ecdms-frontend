@@ -5,11 +5,12 @@ import UserLayout from 'src/layouts/UserLayout';
 import { ReactElement } from 'react';
 import CentersLayout from 'src/views/pages/centers/centers-layout';
 import Document from 'src/views/pages/centers/document';
+import Department from 'src/types/department/department';
 
-const centerDocuments = () => {
+const centerDocuments = ({ parentDepartment }: { parentDepartment: Department }) => {
   return (
     <TabPanel value="4">
-      <Document />
+      <Document parentDepartment={parentDepartment} />
     </TabPanel>
   );
 };

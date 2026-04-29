@@ -11,7 +11,6 @@ import { useTranslation } from 'react-i18next';
 interface ChangePasswordDrawerProps {
     open: boolean;
     toggle: () => void;
-    userId: string;
 }
 
 interface ChangePasswordFormData {
@@ -21,7 +20,7 @@ interface ChangePasswordFormData {
 }
 
 const ChangePasswordDrawer = (props: ChangePasswordDrawerProps) => {
-    const { open, toggle, userId } = props;
+    const { open, toggle } = props;
     const { t } = useTranslation();
 
     const validationSchema = yup.object().shape({

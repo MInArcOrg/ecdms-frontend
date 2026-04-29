@@ -23,9 +23,12 @@ import { useTranslation } from 'react-i18next';
 // ** Utils Import
 import User from 'src/types/admin/user';
 import UserAvatar from '../user-avatar';
+import { useAuth } from 'src/hooks/useAuth';
 
 const UserViewLeft = ({ user }: { user: User }) => {
   const { t } = useTranslation();
+  const auth = useAuth();
+  const isOwnProfile = Boolean(auth.user?.id && user?.id && auth.user.id === user.id);
   // ** States
   const [openPasswordDialog, setOpenPasswordDialog] = useState(false);
 
@@ -80,24 +83,22 @@ const UserViewLeft = ({ user }: { user: User }) => {
 
             <Divider sx={{ my: '0 !important', mx: 6 }} />
 
-            <CardContent>
-              <Button
-                fullWidth
-                variant="contained"
-                startIcon={<Icon icon="tabler:lock" />}
-                onClick={() => setOpenPasswordDialog(true)}
-              >
-                {t('user.password.change-password')}
-              </Button>
-            </CardContent>
+            {isOwnProfile && (
+              <CardContent>
+                <Button
+                  fullWidth
+                  variant="contained"
+                  startIcon={<Icon icon="tabler:lock" />}
+                  onClick={() => setOpenPasswordDialog(true)}
+                >
+                  {t('user.password.change-password')}
+                </Button>
+              </CardContent>
+            )}
           </Card>
         </Grid>
 
-        <ChangePasswordDrawer
-          open={openPasswordDialog}
-          toggle={() => setOpenPasswordDialog(false)}
-          userId={user.id}
-        />
+        {isOwnProfile && <ChangePasswordDrawer open={openPasswordDialog} toggle={() => setOpenPasswordDialog(false)} />}
       </Grid>
     );
   } else {

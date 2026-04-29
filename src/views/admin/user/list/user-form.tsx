@@ -8,9 +8,11 @@ import { genderList, gridSpacing, maritalStatusList } from 'src/configs/app-cons
 import departmentApiService from 'src/services/department/department-service';
 import positionApiService from 'src/services/department/position-service';
 import User from 'src/types/admin/user';
+import type Department from 'src/types/department/department';
 import CustomDateSelector from 'src/views/shared/form/custom-date-box';
 import CustomPhoneInput from 'src/views/shared/form/custom-phone-box';
 import CustomRadioBox from 'src/views/shared/form/custom-radio-box';
+import CustomAutocomplete from 'src/views/shared/form/custom-autocomplete';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
@@ -22,11 +24,6 @@ interface UserFormProps {
 
 const UserForm: React.FC<UserFormProps> = ({ formik, departmentId, isEdit }) => {
   const { t: transl } = useTranslation();
-  const { data: departments } = useQuery({
-    queryKey: ['departments'],
-    queryFn: () => departmentApiService.getAll(dropDownConfig())
-  });
-
   const { data: positions } = useQuery({
     queryKey: ['positions', departmentId, formik.values.department_id],
     queryFn: () =>
@@ -112,17 +109,15 @@ const UserForm: React.FC<UserFormProps> = ({ formik, departmentId, isEdit }) => 
       {/* Department & Position */}
       {isEdit && (
         <Grid item xs={12} md={12}>
-          <CustomSelectBox
-            size="small"
-            required
-            name="department_id"
+          <CustomAutocomplete<Department>
             label={transl('department.user.form.department')}
-            options={
-              departments?.payload?.map((department) => ({
-                value: department.id,
-                label: department.name
-              })) || []
-            }
+            placeholder={transl('department.user.form.department')}
+            name="department_id"
+            size="small"
+            fetchOptions={(params) => departmentApiService.getAll(params)}
+            getOptionLabel={(option) => option?.name || ''}
+            valueProp="id"
+            minSearchLength={2}
           />
         </Grid>
       )}

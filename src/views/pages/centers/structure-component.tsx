@@ -8,6 +8,7 @@ function StructureComponent({ parentDepartmentId, viewAll }: { parentDepartmentI
     queryFn: () =>
       viewAll ? departmentApiService.getDepartmentStructure() : departmentApiService.getDepartmentStructure(parentDepartmentId)
   });
+  console.log('data', data);
   return data?.payload ? (
     <Obs
       data={
