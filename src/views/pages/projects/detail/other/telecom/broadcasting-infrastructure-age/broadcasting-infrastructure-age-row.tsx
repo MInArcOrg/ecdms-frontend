@@ -38,7 +38,9 @@ export const broadcastingInfrastructureAgeColumns = (
           '&:hover': { color: 'primary.main' }
         }}
       >
-        {broadcastingInfrastructureMap.get(row?.broadcasting_infrastructure_id) || t('common.not-available')}
+        {row?.broadcastingInfrastructure?.name ||
+          broadcastingInfrastructureMap.get(row?.broadcasting_infrastructure_id) ||
+          t('common.not-available')}
       </Typography>
     )
   },

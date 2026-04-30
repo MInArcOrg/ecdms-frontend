@@ -20,11 +20,11 @@ export const broadcastingInfrastructureManufacturerColumns = (
   t: any,
   refetch: () => void
 ): GridColDef[] => [
-  {
+ {
     flex: 0.2,
     minWidth: 150,
-    field: 'id',
-    headerName: 'ID',
+    field: 'broadcasting_infrastructure_id',
+    headerName: t('project.other.broadcasting-infrastructure-age.details.broadcasting-infrastructure'),
     renderCell: ({ row }: CellType) => (
       <Typography
         noWrap
@@ -37,7 +37,8 @@ export const broadcastingInfrastructureManufacturerColumns = (
           '&:hover': { color: 'primary.main' }
         }}
       >
-        {row?.id.slice(0, 8) + '...'}
+        {row?.broadcastingInfrastructure?.name ||
+          t('common.not-available')}
       </Typography>
     )
   },

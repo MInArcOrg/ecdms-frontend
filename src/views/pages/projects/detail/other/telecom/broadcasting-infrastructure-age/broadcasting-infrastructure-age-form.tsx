@@ -37,7 +37,7 @@ const BroadcastingInfrastructureAgeForm: React.FC<BroadcastingInfrastructureAgeF
           sx={{ mb: 2 }}
           options={
             broadcastingInfrastructures.map((infra) => ({
-              label: infra.broadcasting_infrastructure_type_id || infra.id,
+              label: infra.name || infra.id,
               value: infra.id
             })) || []
           }

@@ -28,7 +28,7 @@ interface OtherDetailSidebarProps {
 
 const OtherDetailSidebar: React.FC<OtherDetailSidebarProps> = ({ show, toggleDrawer, data, hasReference, id, title, fileType }) => {
   const { t } = useTranslation();
-
+  console.log('other details data',data)
   return (
     <Fragment>
       <CustomSideDrawer handleClose={toggleDrawer} open={show} title={title}>

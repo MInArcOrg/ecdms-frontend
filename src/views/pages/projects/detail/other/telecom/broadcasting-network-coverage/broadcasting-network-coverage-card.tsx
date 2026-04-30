@@ -14,6 +14,7 @@ interface BroadcastingNetworkCoverageCardProps {
   onDelete: (id: string) => void;
   onDetail: (broadcastingNetworkCoverage: BroadcastingNetworkCoverage) => void;
   networkInfrastructureTypeMap: Map<string, string>;
+  broadcastingInfrastructureMap: Map<string, string>;
 }
 
 const BroadcastingNetworkCoverageCard: React.FC<BroadcastingNetworkCoverageCardProps> = ({
@@ -22,7 +23,8 @@ const BroadcastingNetworkCoverageCard: React.FC<BroadcastingNetworkCoverageCardP
   onEdit,
   onDelete,
   onDetail,
-  networkInfrastructureTypeMap
+  networkInfrastructureTypeMap,
+  broadcastingInfrastructureMap
 }) => {
   const { t } = useTranslation();
 
@@ -51,7 +53,10 @@ const BroadcastingNetworkCoverageCard: React.FC<BroadcastingNetworkCoverageCardP
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.broadcasting-network-coverage.details.broadcasting-infrastructure')}:{' '}
-            {broadcastingNetworkCoverage?.broadcasting_infrastructure_id || 'N/A'}
+            {broadcastingNetworkCoverage?.broadcastingInfrastructure?.name ||
+              broadcastingInfrastructureMap.get(broadcastingNetworkCoverage?.broadcasting_infrastructure_id) ||
+              broadcastingNetworkCoverage?.broadcasting_infrastructure_id ||
+              'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.broadcasting-network-coverage.details.network-infrastructure-type')}:{' '}

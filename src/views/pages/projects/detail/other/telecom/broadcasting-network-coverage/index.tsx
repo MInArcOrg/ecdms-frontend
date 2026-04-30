@@ -13,7 +13,7 @@ import projectGeneralMasterDataApiService from 'src/services/general/project-gen
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import type { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import type { BroadcastingNetworkCoverage } from 'src/types/project/other';
+import type { BroadcastingInfrastructure, BroadcastingNetworkCoverage } from 'src/types/project/other';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
@@ -44,6 +44,18 @@ const BroadcastingNetworkCoverageList: React.FC<BroadcastingNetworkCoverageListP
 
   const networkInfrastructureTypeMap = new Map<string, string>(
     networkInfrastructureTypes?.payload.map((item) => [item.id, item.title || '']) || []
+  );
+
+  const { data: broadcastingInfrastructures } = useQuery({
+    queryKey: ['broadcasting-infrastructures', projectId],
+    queryFn: () =>
+      projectOtherApiSecondService<BroadcastingInfrastructure>().getAll('broadcasting-infrastructures', {
+        filter: { project_id: projectId }
+      })
+  });
+
+  const broadcastingInfrastructureMap = new Map<string, string>(
+    broadcastingInfrastructures?.payload.map((item) => [item.id, item.name || '']) || []
   );
 
   const fetchBroadcastingNetworkCoverages = (params: GetRequestParam): Promise<IApiResponse<BroadcastingNetworkCoverage[]>> => {
@@ -94,7 +106,11 @@ const BroadcastingNetworkCoverageList: React.FC<BroadcastingNetworkCoverageListP
   ): { title: string; value: string }[] => [
     {
       title: t('project.other.broadcasting-network-coverage.details.broadcasting-infrastructure'),
-      value: broadcastingNetworkCoverage?.broadcasting_infrastructure_id || 'N/A'
+      value:
+        broadcastingNetworkCoverage?.broadcastingInfrastructure?.name ||
+        broadcastingInfrastructureMap.get(broadcastingNetworkCoverage?.broadcasting_infrastructure_id) ||
+        broadcastingNetworkCoverage?.broadcasting_infrastructure_id ||
+        'N/A'
     },
     {
       title: t('project.other.broadcasting-network-coverage.details.network-infrastructure-type'),
@@ -178,7 +194,8 @@ const BroadcastingNetworkCoverageList: React.FC<BroadcastingNetworkCoverageListP
             handleDelete,
             t,
             refetch,
-            networkInfrastructureTypeMap
+            networkInfrastructureTypeMap,
+            broadcastingInfrastructureMap
           )
         }}
         isLoading={isLoading}
@@ -190,6 +207,7 @@ const BroadcastingNetworkCoverageList: React.FC<BroadcastingNetworkCoverageListP
             refetch={refetch}
             onDelete={handleDelete}
             networkInfrastructureTypeMap={networkInfrastructureTypeMap}
+            broadcastingInfrastructureMap={broadcastingInfrastructureMap}
           />
         )}
         createActionConfig={{

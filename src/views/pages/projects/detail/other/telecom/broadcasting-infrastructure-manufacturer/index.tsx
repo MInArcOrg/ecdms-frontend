@@ -89,13 +89,17 @@ const BroadcastingInfrastructureManufacturerList: React.FC<BroadcastingInfrastru
     toggleDetailDrawer();
     setSelectedRow(broadcastingInfrastructureManufacturer);
   };
-
+  
   const mapBroadcastingInfrastructureManufacturerToDetailItems = (
     broadcastingInfrastructureManufacturer: BroadcastingInfrastructureManufacturer
   ): { title: string; value: string }[] => [
     {
-      title: t('project.other.broadcasting-infrastructure-manufacturer.details.broadcasting-infrastructure-id'),
-      value: broadcastingInfrastructureManufacturer?.broadcasting_infrastructure_id || 'N/A'
+      title: t('project.other.broadcasting-infrastructure-manufacturer.details.name'),
+      value: broadcastingInfrastructureManufacturer?.name || 'N/A'
+    },
+    {
+      title: t('project.other.broadcasting-infrastructure-manufacturer.details.broadcasting-infrastructure'),
+      value: broadcastingInfrastructureManufacturer?.broadcastingInfrastructure?.name || 'N/A'
     },
     {
       title: t('project.other.broadcasting-infrastructure-manufacturer.details.antennas'),

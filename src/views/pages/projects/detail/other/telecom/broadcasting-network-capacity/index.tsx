@@ -13,7 +13,7 @@ import projectGeneralMasterDataApiService from 'src/services/general/project-gen
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import type { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import type { BroadcastingNetworkCapacity } from 'src/types/project/other';
+import type { BroadcastingInfrastructure, BroadcastingNetworkCapacity } from 'src/types/project/other';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
@@ -43,6 +43,18 @@ const BroadcastingNetworkCapacityList: React.FC<BroadcastingNetworkCapacityListP
   });
 
   const networkTypeMap = new Map<string, string>(networkTypes?.payload.map((item) => [item.id, item.title || '']) || []);
+
+  const { data: broadcastingInfrastructures } = useQuery({
+    queryKey: ['broadcasting-infrastructures', projectId],
+    queryFn: () =>
+      projectOtherApiSecondService<BroadcastingInfrastructure>().getAll('broadcasting-infrastructures', {
+        filter: { project_id: projectId }
+      })
+  });
+
+  const broadcastingInfrastructureMap = new Map<string, string>(
+    broadcastingInfrastructures?.payload.map((item) => [item.id, item.name || '']) || []
+  );
 
   const fetchBroadcastingNetworkCapacities = (params: GetRequestParam): Promise<IApiResponse<BroadcastingNetworkCapacity[]>> => {
     return projectOtherApiSecondService<BroadcastingNetworkCapacity>().getAll(otherSubMenu?.apiRoute || '', {
@@ -92,7 +104,11 @@ const BroadcastingNetworkCapacityList: React.FC<BroadcastingNetworkCapacityListP
   ): { title: string; value: string }[] => [
     {
       title: t('project.other.broadcasting-network-capacity.details.broadcasting-infrastructure'),
-      value: broadcastingNetworkCapacity?.broadcasting_infrastructure_id || 'N/A'
+      value:
+        broadcastingNetworkCapacity?.broadcastingInfrastructure?.name ||
+        broadcastingInfrastructureMap.get(broadcastingNetworkCapacity?.broadcasting_infrastructure_id) ||
+        broadcastingNetworkCapacity?.broadcasting_infrastructure_id ||
+        'N/A'
     },
     {
       title: t('project.other.broadcasting-network-capacity.details.network-type'),
@@ -154,7 +170,15 @@ const BroadcastingNetworkCapacityList: React.FC<BroadcastingNetworkCapacityListP
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: broadcastingNetworkCapacityColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, networkTypeMap)
+          headers: broadcastingNetworkCapacityColumns(
+            handleClickDetail,
+            handleEdit,
+            handleDelete,
+            t,
+            refetch,
+            networkTypeMap,
+            broadcastingInfrastructureMap
+          )
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -165,6 +189,7 @@ const BroadcastingNetworkCapacityList: React.FC<BroadcastingNetworkCapacityListP
             refetch={refetch}
             onDelete={handleDelete}
             networkTypeMap={networkTypeMap}
+            broadcastingInfrastructureMap={broadcastingInfrastructureMap}
           />
         )}
         createActionConfig={{

@@ -19,7 +19,8 @@ export const broadcastingNetworkCoverageColumns = (
   onDelete: (id: string) => void,
   t: any,
   refetch: () => void,
-  networkInfrastructureTypeMap: Map<string, string>
+  networkInfrastructureTypeMap: Map<string, string>,
+  broadcastingInfrastructureMap: Map<string, string>
 ): GridColDef[] => [
   {
     flex: 0.15,
@@ -47,7 +48,12 @@ export const broadcastingNetworkCoverageColumns = (
     headerName: t('project.other.broadcasting-network-coverage.details.broadcasting-infrastructure'),
     field: 'broadcasting_infrastructure_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.broadcasting_infrastructure_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.broadcastingInfrastructure?.name ||
+          broadcastingInfrastructureMap.get(row?.broadcasting_infrastructure_id) ||
+          row?.broadcasting_infrastructure_id ||
+          t('common.not-available')}
+      </Typography>
     )
   },
   {

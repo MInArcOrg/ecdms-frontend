@@ -63,11 +63,13 @@ const BroadcastingNetworkCoverageForm: React.FC<BroadcastingNetworkCoverageFormP
           options={
             broadcastingInfrastructures?.payload.map((item) => ({
               value: item.id,
-              label: `${
-                broadcastingInfrastructureTypeMap.get(item.broadcasting_infrastructure_type_id) ||
-                item.broadcasting_infrastructure_type_id ||
-                'N/A'
-              } (${item.id.slice(0, 5)}...)`
+              label:
+                item.name ||
+                `${
+                  broadcastingInfrastructureTypeMap.get(item.broadcasting_infrastructure_type_id) ||
+                  item.broadcasting_infrastructure_type_id ||
+                  'N/A'
+                } (${item.id.slice(0, 5)}...)`
             })) || []
           }
         />

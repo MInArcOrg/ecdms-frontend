@@ -44,7 +44,7 @@ const BroadcastingInfrastructureManufacturerForm: React.FC<BroadcastingInfrastru
               sx={{ mb: 2 }}
               options={
                 broadcastingInfrastructures?.map((infrastructure: any) => ({
-                  label: infrastructure.id,
+                  label: infrastructure.name,
                   value: infrastructure.id
                 })) || []
               }

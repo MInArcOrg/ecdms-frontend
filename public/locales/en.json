@@ -3478,6 +3478,8 @@
         "general-information": "General Information",
         "manufacturer-information": "Manufacturer Information",
         "details": {
+          "name": "Name",
+          "broadcasting-infrastructure": "Broadcasting Infrastructure",
           "broadcasting-infrastructure-id": "Broadcasting Infrastructure",
           "antennas": "Antennas",
           "transmitters": "Transmitters",
