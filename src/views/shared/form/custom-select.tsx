@@ -8,6 +8,7 @@ interface CustomSelectBoxProps {
   name: string;
   onValueChange?: (value: string | number) => void; // Allow string or number
   type?: string; // Optional type to handle different input types
+  options?: any[];
   [key: string]: any; // To allow any additional props
 }
 
@@ -17,6 +18,7 @@ const CustomSelectBox: React.FC<CustomSelectBoxProps> = ({ name, onValueChange, 
   const requiredFields = useRequiredFields();
 
   const isRequired = requiredFields.includes(name);
+  const options = Array.isArray(props.options) ? props.options : Array.isArray(props.options?.payload) ? props.options.payload : [];
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = type === 'number' ? (event.target.value ? Number(event.target.value) : 0) : event.target.value;
@@ -37,7 +39,7 @@ const CustomSelectBox: React.FC<CustomSelectBoxProps> = ({ name, onValueChange, 
         required={isRequired}
         value={field.value || ''}
       >
-        {props.options.map((option: any) => (
+        {options.map((option: any) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
           </MenuItem>

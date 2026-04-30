@@ -24,7 +24,11 @@ const SubDepartmentForm: React.FC<SubDepartmentFormProps> = ({ formik, defaultLo
     queryKey: ['general-master', parentDepartment?.payload?.address_id],
     queryFn: () => addressmasterApiService.getAll(dropDownConfig({ filter: { parent_address_id: parentDepartment?.payload?.address_id, is_root: parentDepartment?.payload?.address_id ? 0 : 1 } }))
   });
-  console.log('parentDepartment?.payload?.address_id', parentDepartment?.payload?.address_id)
+  const {data: parentAddress,isLoading: parentAddressLoading} = useQuery({
+    queryKey: ['parent-master', parentDepartment?.payload?.address_id],
+    queryFn: () => addressmasterApiService.getOne(parentDepartment?.payload?.address_id || '', {}),
+    enabled: Boolean(parentDepartment?.payload?.address_id)
+  });
   return (
     <>
       <CustomTextBox
@@ -41,12 +45,21 @@ const SubDepartmentForm: React.FC<SubDepartmentFormProps> = ({ formik, defaultLo
         placeholder={transl('department.sub-department.form.address')}
         name="address_id"
         size="small"
-        options={
-          addresses?.payload?.map((address) => ({
+        options={[
+          ...(parentAddress?.payload
+            ? [
+                {
+                  value: parentAddress.payload.id,
+                  label: parentAddress.payload.title
+                }
+              ]
+            : [])
+          ,
+          ...(addresses?.payload?.map((address) => ({
             value: address.id,
             label: address.title
-          })) || []
-        }
+          })) || [])
+        ]}
         sx={{ mb: 2 }}
       />
       <CustomTextBox

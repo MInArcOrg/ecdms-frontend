@@ -29,7 +29,8 @@ function PositionList({ parentDepartment }: { parentDepartment: Department }) {
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
+    handleSearch
   } = usePaginatedFetch<Position[]>({
     queryKey: ['positions', parentDepartment?.id],
     fetchFunction: fetchPositions
@@ -72,6 +73,14 @@ function PositionList({ parentDepartment }: { parentDepartment: Department }) {
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
           title={t('department.position.title')}
+          features={{
+            search: {
+              enabled: true,
+              permission: { action: 'view', subject: 'position' },
+              searchKeys: ['name'],
+              onSearch: handleSearch
+            }
+          }}
           ItemViewComponent={({ data }) => (
             <PositionCard position={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch} />
           )}

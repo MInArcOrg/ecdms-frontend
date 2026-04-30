@@ -8,7 +8,7 @@ import { buildPutRequest } from 'src/utils/requests/put-request';
 
 const projectApiService = {
   getAll: (params: GetRequestParam, status?: string): Promise<IApiResponse<Project[]>> =>
-    buildGetRequest(`/projects/projects?status=${status}`, params)
+    buildGetRequest(`/projects/projects`, { ...params, status: status ?? null })
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {
         throw error;

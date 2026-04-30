@@ -101,7 +101,7 @@ const UserWorkExperienceList: React.FC<UserWorkExperienceListProps> = ({ userId 
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'userworkexperience'
+            subject: 'jobexperience'
           }
         }}
         fetchDataFunction={refetch}

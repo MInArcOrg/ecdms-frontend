@@ -95,7 +95,7 @@ const UserEducationList: React.FC<UserEducationListProps> = ({ userId }) => {
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'usereducation'
+            subject: 'educationstatus'
           }
         }}
         fetchDataFunction={refetch}

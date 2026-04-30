@@ -39,11 +39,11 @@ const WorkExperienceCard: React.FC<WorkExperienceCardProps> = ({ workexperience,
           <RowOptions
             deletePermissionRule={{
               action: 'delete',
-              subject: 'userworkexperience'
+              subject: 'jobexperience'
             }}
             editPermissionRule={{
               action: 'update',
-              subject: 'userworkexperience'
+              subject: 'jobexperience'
             }}
             onEdit={() => onEdit(workexperience)}
             onDelete={() => onDelete(workexperience?.id || '')}

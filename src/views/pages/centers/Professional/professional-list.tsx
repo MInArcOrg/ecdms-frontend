@@ -29,7 +29,8 @@ function ProfessionalList({ parentDepartment }: { parentDepartment: Department }
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
+    handleSearch
   } = usePaginatedFetch<User[]>({
     queryKey: ['professionals', parentDepartment?.id],
     fetchFunction: fetchProfessionals
@@ -76,6 +77,14 @@ function ProfessionalList({ parentDepartment }: { parentDepartment: Department }
           pagination={pagination}
           type={ITEMS_LISTING_TYPE.table.value}
           isLoading={isLoading}
+          features={{
+            search: {
+              enabled: true,
+              permission: { action: 'view', subject: 'professional' },
+              searchKeys: ['name', 'email', 'phone'],
+              onSearch: handleSearch
+            }
+          }}
           createActionConfig={{
             ...defaultCreateActionConfig,
             onClick: toggleDrawer,

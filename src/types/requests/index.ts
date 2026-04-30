@@ -4,6 +4,7 @@ export type GetRequestParam = {
   pagination?: { pageSize: number; page: number } | null;
   filter?: any;
   search?: string | null;
+  status?: string | null;
   sorting?: { property: string; direction: string } | null;
   export?: ExportParam | null;
 };
@@ -12,6 +13,7 @@ export const defaultGetRequestParam: GetRequestParam = {
   pagination: null,
   filter: undefined,
   search: null,
+  status: null,
   sorting: undefined
 };
 export type ExportParam = {

@@ -577,9 +577,22 @@
       "experts": "Experts",
       "positions": "Positions",
       "sub-departments": "Sub Centers",
-      "center-documents": "Center Documents",
       "documents": "Documents",
       "structure": "Structure"
+    },
+    "center-documents": {
+      "create": "Create Document",
+      "edit": "Edit Document",
+      "columns": {
+        "title": "Title",
+        "description": "Description",
+        "file-type": "Document Type"
+      },
+      "form": {
+        "title": "Title",
+        "description": "Description",
+        "file-type": "Document Type"
+      }
     },
     "expert": {
       "title": "Experts"

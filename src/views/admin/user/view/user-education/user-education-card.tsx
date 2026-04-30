@@ -39,11 +39,11 @@ const EducationCard: React.FC<EducationCardProps> = ({ education, refetch, onEdi
           <RowOptions
             deletePermissionRule={{
               action: 'delete',
-              subject: 'usereducation'
+              subject: 'educationstatus'
             }}
             editPermissionRule={{
               action: 'update',
-              subject: 'usereducation'
+              subject: 'educationstatus'
             }}
             onEdit={() => onEdit(education)}
             onDelete={() => onDelete(education?.id || '')}

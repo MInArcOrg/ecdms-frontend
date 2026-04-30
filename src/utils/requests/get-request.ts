@@ -1,25 +1,33 @@
 import { AxiosResponse } from 'axios';
 import { GetRequestParam } from 'src/types/requests';
+import { StringHelpers } from 'src/utils/string-helpers';
 import axiosServices from '../axios';
 
 export const buildGetRequest = async (url: string, params: GetRequestParam | null | undefined): Promise<AxiosResponse> => {
   try {
     const requestParams: Record<string, any> = {};
 
-    if (params?.pagination !== null) {
-      requestParams.pagination = params?.pagination;
+    if (params?.pagination !== null && params?.pagination !== undefined) {
+      requestParams.pagination = params.pagination;
     }
 
-    if (params?.filter !== null) {
-      requestParams.filter = params?.filter;
+    if (params?.filter !== null && params?.filter !== undefined) {
+      const cleanedFilter = StringHelpers.cleanObject(params.filter || {});
+      if (Object.keys(cleanedFilter).length > 0) {
+        requestParams.filter = cleanedFilter;
+      }
     }
 
-    if (params?.search !== null && params?.search !== undefined) {
-      requestParams.search = params?.search;
+    if (params?.search !== null && params?.search !== undefined && !StringHelpers.isNullOrWhitespace(params.search)) {
+      requestParams.search = params.search;
     }
 
-    if (params?.sorting !== null) {
-      requestParams.sorting = params?.sorting;
+    if (params?.status !== null && params?.status !== undefined && !StringHelpers.isNullOrWhitespace(params.status)) {
+      requestParams.status = params.status;
+    }
+
+    if (params?.sorting !== null && params?.sorting !== undefined) {
+      requestParams.sorting = params.sorting;
     }
 
     const response = await axiosServices.get(url, {
@@ -41,9 +49,17 @@ export const buildFileGetRequest = async (
     // Parameter merging logic (same as above)
     if (params) {
       if (params.pagination !== null && params.pagination !== undefined) requestParams.pagination = params.pagination;
-      if (params.filter !== null && params.filter !== undefined) requestParams.filter = params.filter;
+      if (params.filter !== null && params.filter !== undefined) {
+        const cleanedFilter = StringHelpers.cleanObject(params.filter || {});
+        if (Object.keys(cleanedFilter).length > 0) requestParams.filter = cleanedFilter;
+      }
       if (params.sorting !== null && params.sorting !== undefined) requestParams.sorting = params.sorting;
-      if (params.search !== null && params.search !== undefined) requestParams.search = params.search;
+      if (params.search !== null && params.search !== undefined && !StringHelpers.isNullOrWhitespace(params.search)) {
+        requestParams.search = params.search;
+      }
+      if (params.status !== null && params.status !== undefined && !StringHelpers.isNullOrWhitespace(params.status)) {
+        requestParams.status = params.status;
+      }
       // if (params.includes !== null && params.includes !== undefined) requestParams.includes = params.includes;
       if (params.export !== null && params.export !== undefined) requestParams.export = params.export;
     }

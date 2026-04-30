@@ -27,7 +27,8 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
     isLoading,
     pagination,
     handlePageChange,
-    refetch
+    refetch,
+    handleSearch
   } = usePaginatedFetch<Department[]>({
     queryKey: ['subDepartments', parentDepartment?.id],
     fetchFunction: fetchSubDepartments
@@ -64,6 +65,14 @@ function SubDepartmentList({ parentDepartment }: { parentDepartment: Department 
           isLoading={isLoading}
           fetchDataFunction={refetch}
           title={t('department.sub-department.title')}
+          features={{
+            search: {
+              enabled: true,
+              permission: { action: 'view', subject: 'department' },
+              searchKeys: ['name'],
+              onSearch: handleSearch
+            }
+          }}
           tableProps={{
             headers: subDepartmentColumns(handleEdit, handleDelete, t, refetch)
           }}
