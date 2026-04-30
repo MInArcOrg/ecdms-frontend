@@ -32,6 +32,7 @@ const StakeholderContactPersonDrawer = (props: StakeholderContactPersonDrawerTyp
     first_name: nameRule.required('First name is required'),
     middle_name: nameRule.required('Middle name is required'),
     last_name: nameRule.required('Last name is required'),
+    nationality: yup.string().required('Nationality is required'),
     gender: yup.string().max(255).required('Gender is required'),
     email: yup.string().max(255).email('Invalid email').required('Email is required'),
     phone_number: phoneRule.required('Phone number is required')
@@ -77,7 +78,8 @@ const StakeholderContactPersonDrawer = (props: StakeholderContactPersonDrawerTyp
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...stakeholderContactPerson
+            ...stakeholderContactPerson,
+            nationality: stakeholderContactPerson?.nationality || ''
           }}
           createActionFunc={isEdit ? editStakeholderContactPerson : createStakeholderContactPerson}
           onActionSuccess={onActionSuccess}

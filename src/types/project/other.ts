@@ -33,6 +33,7 @@ export interface MobileNetwork {
   id: string;
   project_id: string;
   mobile_network_type_id: string;
+  name: string;
   mobilenetworktype: ProjectGeneralMaster;
   antennas?: boolean;
   cell_towers?: boolean;
@@ -961,6 +962,7 @@ export interface TelecomInfrastructureComponent {
   id: string;
   project_id: string;
   mobile_network_type_id: string;
+  name: string;
   cables?: number;
   wires?: number;
   routers?: number;
@@ -1189,6 +1191,7 @@ export interface BroadcastingInfrastructure {
   id: string;
   project_id: string;
   broadcasting_infrastructure_type_id: string;
+  name: string;
   broadcasting_network?: boolean;
   antennas?: boolean;
   transmitters?: boolean;

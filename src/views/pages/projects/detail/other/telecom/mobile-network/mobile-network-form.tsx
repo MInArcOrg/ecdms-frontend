@@ -32,6 +32,14 @@ const MobileNetworkForm: React.FC<MobileNetworkFormProps> = ({ formik, file, onF
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
+        <CustomTextBox
+          fullWidth
+          label={transl('project.other.mobile-network.details.name')}
+          placeholder={transl('project.other.mobile-network.details.name')}
+          name="name"
+          size="small"
+          sx={{ mb: 2 }}
+        />
         <CustomSelect
           fullWidth
           label={transl('project.other.mobile-network.details.mobile-network-type')}

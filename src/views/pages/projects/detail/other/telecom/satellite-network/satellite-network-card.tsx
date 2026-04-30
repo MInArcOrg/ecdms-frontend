@@ -49,7 +49,7 @@ const SatelliteNetworkCard: React.FC<SatelliteNetworkCardProps> = ({
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {satelliteNetworkTypeMap.get(satelliteNetwork?.satellite_network_type_id) || satelliteNetwork?.id.slice(0, 8) + '...'}
+              {satelliteNetwork?.name || satelliteNetworkTypeMap.get(satelliteNetwork?.satellite_network_type_id) || satelliteNetwork?.id.slice(0, 8) + '...'}
             </Typography>
           </Typography>
         </Box>
@@ -57,6 +57,12 @@ const SatelliteNetworkCard: React.FC<SatelliteNetworkCardProps> = ({
         <Divider sx={{ my: 1 }} />
 
         <Grid container spacing={2} mt={1}>
+          <Grid item xs={12}>
+            <Typography variant="body2" color="text.secondary">
+              {t('project.other.satellite-network.details.satellite-network-type')}:{' '}
+              {satelliteNetworkTypeMap.get(satelliteNetwork?.satellite_network_type_id) || 'N/A'}
+            </Typography>
+          </Grid>
           <Grid item xs={6}>
             <Typography variant="body2" color="text.secondary" display="flex" alignItems="center" gap={1}>
               {t('project.other.satellite-network.details.satellite')}: {renderStatusChip(satelliteNetwork?.satellite)}

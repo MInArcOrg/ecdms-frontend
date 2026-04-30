@@ -30,7 +30,7 @@ const TelecomInfrastructureAgeForm: React.FC<TelecomInfrastructureAgeFormProps> 
           name="telecom_infrastructure_id"
           options={telecomInfrastructureComponents.map((item) => ({
             value: item.id,
-            label: mobileNetworkTypeMap.get(item.mobile_network_type_id) || 'N/A'
+            label: item.name || 'N/A'
           }))}
           size="small"
           sx={{ mb: 2 }}

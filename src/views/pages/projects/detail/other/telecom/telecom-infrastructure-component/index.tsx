@@ -97,6 +97,10 @@ const TelecomInfrastructureComponentList: React.FC<TelecomInfrastructureComponen
     telecomInfrastructureComponent: TelecomInfrastructureComponent
   ): { title: string; value: string }[] => [
     {
+      title: t('project.other.telecom-infrastructure-component.details.name'),
+      value: telecomInfrastructureComponent?.name || 'N/A'
+    },
+    {
       title: t('project.other.telecom-infrastructure-component.details.mobile-network-type'),
       value:
         mobileNetworkTypeMap.get(telecomInfrastructureComponent?.mobile_network_type_id) ||

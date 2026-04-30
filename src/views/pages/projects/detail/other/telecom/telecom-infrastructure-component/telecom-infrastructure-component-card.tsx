@@ -44,7 +44,8 @@ const TelecomInfrastructureComponentCard: React.FC<TelecomInfrastructureComponen
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {mobileNetworkTypeMap.get(telecomInfrastructureComponent?.mobile_network_type_id) ||
+              {telecomInfrastructureComponent?.name ||
+                mobileNetworkTypeMap.get(telecomInfrastructureComponent?.mobile_network_type_id) ||
                 telecomInfrastructureComponent?.id.slice(0, 8) + '...'}
             </Typography>
           </Typography>
@@ -53,6 +54,12 @@ const TelecomInfrastructureComponentCard: React.FC<TelecomInfrastructureComponen
         <Divider sx={{ my: 1 }} />
 
         <Grid container spacing={2} mt={1}>
+          <Grid item xs={12}>
+            <Typography variant="body2" color="text.secondary">
+              {t('project.other.telecom-infrastructure-component.details.mobile-network-type')}:{' '}
+              {mobileNetworkTypeMap.get(telecomInfrastructureComponent?.mobile_network_type_id) || 'N/A'}
+            </Typography>
+          </Grid>
           <Grid item xs={6}>
             <Typography variant="body2" color="text.secondary">
               {t('project.other.telecom-infrastructure-component.details.cables')}: {telecomInfrastructureComponent?.cables || 0}

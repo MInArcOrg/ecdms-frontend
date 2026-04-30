@@ -1935,6 +1935,7 @@
         "edit-mobile-network": "Edit Mobile Network",
         "mobile-network-details": "Mobile Network Details",
         "details": {
+          "name": "Name",
           "mobile-network-type": "Mobile Network Type",
           "call-towers": "Call Towers",
           "cell-towers": "Cell Towers",
@@ -3003,6 +3004,7 @@
         "edit-telecom-infrastructure-component": "Edit Telecom Infrastructure Component",
         "telecom-infrastructure-component-details": "Telecom Infrastructure Component Details",
         "details": {
+          "name": "Name",
           "mobile-network-type": "Mobile Network Type",
           "cables": "Cables",
           "wires": "Wires",
@@ -3097,6 +3099,7 @@
         "satellite-network-details": "Satellite Network Details",
         "network-components": "Network Components",
         "details": {
+          "name": "Name",
           "satellite-network-type": "Satellite Network Type",
           "satellite": "Satellite",
           "ground-stations": "Ground Stations",
@@ -3188,6 +3191,7 @@
         "broadcasting-infrastructure-details": "Broadcasting Infrastructure Details",
         "infrastructure-components": "Infrastructure Components",
         "details": {
+          "name": "Name",
           "broadcasting-infrastructure-type": "Broadcasting Infrastructure Type",
           "broadcasting-network": "Broadcasting Network",
           "antennas": "Antennas",
@@ -5134,6 +5138,7 @@
         "gender": "Gender",
         "email": "Email",
         "phone-number": "Phone Number",
+        "nationality": "Nationality",
         "name": "Name"
       }
     },

@@ -57,7 +57,7 @@ const MobileNetworkCapacityList: React.FC<MobileNetworkCapacityListProps> = ({ o
   const mobileNetworkMap = new Map(
     mobileNetworks?.payload.map((item) => [
       item.id,
-      item.mobilenetworktype.title || 'N/A'
+      item.name || 'N/A'
     ]) || []
   );
 

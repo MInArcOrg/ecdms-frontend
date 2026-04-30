@@ -24,8 +24,16 @@ const AddressDrawer = (props: AddressDrawerType) => {
     easting: yup.number().required('Easting is required'),
     subcity: yup.string().max(255).nullable(),
     street: yup.string().max(255).nullable(),
-    block_number: yup.string().max(255).nullable(),
-    house_number: yup.string().max(255).nullable(),
+    block_number: yup
+      .string()
+      .max(10, 'Block number must be at most 10 characters')
+      .matches(/^[A-Za-z0-9/-]*$/, 'Block number can only contain letters, numbers, / and -')
+      .nullable(),
+    house_number: yup
+      .string()
+      .max(10, 'House number must be at most 10 characters')
+      .matches(/^[A-Za-z0-9/-]*$/, 'House number can only contain letters, numbers, / and -')
+      .nullable(),
     hq: yup.boolean().nullable(),
     
     revision_no: yup.number().integer().nullable()

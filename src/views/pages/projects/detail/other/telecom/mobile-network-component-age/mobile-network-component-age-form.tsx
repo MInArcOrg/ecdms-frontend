@@ -46,7 +46,7 @@ const MobileNetworkComponentAgeForm: React.FC<MobileNetworkComponentAgeFormProps
           sx={{ mb: 2 }}
           options={
             mobileNetworks?.payload.map((network) => ({
-              label: network.mobilenetworktype.title,
+              label: network.name || network.mobilenetworktype.title,
               value: network.id
             })) || []
           }

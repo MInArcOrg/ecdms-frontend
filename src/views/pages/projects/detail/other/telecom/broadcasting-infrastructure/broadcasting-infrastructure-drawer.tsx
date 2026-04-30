@@ -33,6 +33,7 @@ const BroadcastingInfrastructureDrawer = (props: BroadcastingInfrastructureDrawe
 
   const validationSchema = yup.object().shape({
     parent_id: yup.string().nullable(),
+    name: yup.string().required('Name is required'),
     broadcasting_infrastructure_type_id: yup.string().required('Broadcasting infrastructure type is required'),
     broadcasting_network: yup.boolean().nullable(),
     antennas: yup.boolean().nullable(),
@@ -57,6 +58,7 @@ const BroadcastingInfrastructureDrawer = (props: BroadcastingInfrastructureDrawe
   const getPayload = (values: BroadcastingInfrastructure) => ({
     data: {
       project_id: projectId,
+      name: values.name,
       broadcasting_infrastructure_type_id: values.broadcasting_infrastructure_type_id,
       broadcasting_network: values.broadcasting_network,
       antennas: values.antennas,
@@ -97,7 +99,8 @@ const BroadcastingInfrastructureDrawer = (props: BroadcastingInfrastructureDrawe
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...broadcastingInfrastructure
+            ...broadcastingInfrastructure,
+            name: broadcastingInfrastructure?.name || ''
           }}
           createActionFunc={isEdit ? editBroadcastingInfrastructure : createBroadcastingInfrastructure}
           onActionSuccess={onActionSuccess}

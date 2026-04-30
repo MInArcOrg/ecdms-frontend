@@ -24,6 +24,27 @@ export const satelliteNetworkColumns = (
   {
     flex: 0.2,
     minWidth: 150,
+    field: 'name',
+    headerName: t('project.other.satellite-network.details.name'),
+    renderCell: ({ row }: CellType) => (
+      <Typography
+        noWrap
+        component={Button}
+        onClick={() => onDetail(row)}
+        sx={{
+          fontWeight: 500,
+          textDecoration: 'none',
+          color: 'text.secondary',
+          '&:hover': { color: 'primary.main' }
+        }}
+      >
+        {row?.name || t('common.not-available')}
+      </Typography>
+    )
+  },
+  {
+    flex: 0.2,
+    minWidth: 150,
     field: 'satellite_network_type_id',
     headerName: t('project.other.satellite-network.details.satellite-network-type'),
     renderCell: ({ row }: CellType) => (

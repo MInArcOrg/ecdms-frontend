@@ -56,7 +56,7 @@ const TelecomInfrastructureAgeList: React.FC<TelecomInfrastructureAgeListProps> 
   const telecomInfrastructureComponentMap = new Map(
     telecomInfrastructureComponents?.payload.map((item) => [
       item.id,
-      mobileNetworkTypeMap.get(item.mobile_network_type_id) || 'N/A'
+      item.name || mobileNetworkTypeMap.get(item.mobile_network_type_id) || 'N/A'
     ]) || []
   );
 

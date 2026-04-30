@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import { GridColDef } from "@mui/x-data-grid";
 import Link from "next/link";
 import { Fragment } from "react";
+import { uploadableStakeholderFileTypes } from "src/services/utils/file-utils";
 import { Stakeholder } from "src/types/stakeholder";
 import { formatCreatedAt } from "src/utils/formatter/date";
 import FileDrawer from "src/views/components/custom/files-drawer";
@@ -99,7 +100,7 @@ export const StakeholderRow = (
       headerName: t("common.table-columns.actions"),
       renderCell: ({ row }: CellType) => (
         <Fragment>
-          <FileDrawer id={row.id} type={'STAKEHOLDER'} /> &nbsp;
+          <FileDrawer id={row.id} type={uploadableStakeholderFileTypes.stakeholder} /> &nbsp;
 
           <ModelAction
             model="Stakeholder"

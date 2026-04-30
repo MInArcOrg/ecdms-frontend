@@ -115,15 +115,9 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
     payload: IApiPayload<Stakeholder>,
   ) => {
     // Handle file upload if there are files present
-    if (payload.files.length > 0) {
-      uploadFile(
-        payload.files[0],
-        uploadableStakeholderFileTypes.stakeholder,
-        response.payload.id,
-        "",
-        "",
-      );
-    }
+       if (payload.files.length > 0) {
+          await uploadFile(payload.files[0],uploadableStakeholderFileTypes.stakeholder, response.payload.id, '', '');
+        }
 
     // Submit stakeholder phones and emails
     const { stakeholderemails, stakeholderphones } = payload.data;

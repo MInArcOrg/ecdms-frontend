@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Box, Typography } from "@mui/material";
+import { Box, FormControlLabel, Switch, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { FormikProps } from "formik";
 import { useEffect } from "react";
@@ -8,7 +8,6 @@ import masterCategoryApiService from "src/services/master-data/master-category-s
 import masterSubCategoryApiService from "src/services/master-data/master-sub-category-service";
 import { Stakeholder } from "src/types/stakeholder";
 import CustomSelect from "src/views/shared/form/custom-select";
-import CustomSwitch from "src/views/shared/form/custom-switch";
 import CustomTextBox from "src/views/shared/form/custom-text-box";
 import CustomDynamicDatePicker from "src/views/shared/form/custom-dynamic-date-box";
 import CustomPhoneInput from "src/views/shared/form/custom-phone-box";
@@ -232,18 +231,8 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
       {/* Emails Section */}
       {!isEdit && (
         <Box mb={2}>
-          <Typography variant="h6" gutterBottom>
-            {transl("stakeholder.form.emails")}
-          </Typography>
-          <Box
-            mb={2}
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              p: 1,
-              m: 1,
-            }}
-          >
+  
+          
             <Box>
               <CustomTextBox
                 fullWidth
@@ -256,7 +245,6 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
               />
             </Box>
           </Box>
-        </Box>
       )}
       {/* Phones Section */}
       {!isEdit && (
@@ -264,44 +252,56 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
           <Typography variant="h6" gutterBottom>
             {transl("stakeholder.form.phones")}
           </Typography>
-          {[0, 1].map((index) => (
-            <Box
-              key={index}
-              mb={2}
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                p: 1,
-                m: 1,
-              }}
-            >
-              <Box>
-                <CustomPhoneInput
-                  fullWidth
-                  label={`${transl("stakeholder.form.phone")} ${index + 1}`}
-                  placeholder={transl("stakeholder.form.phone")}
-                  name={`stakeholderphones[${index}].phone`}
-                  size="small"
-                  sx={{ mb: 1 }}
-                />
-                <CustomSwitch
-                  sx={{ mb: 2 }}
-                  name={`stakeholderphones[${index}].is_primary`}
-                  label={transl("stakeholder.form.is_primary_phone")}
-                  checked={!!formik.values.stakeholderphones?.[index]?.is_primary}
-                  onChange={() => {
-                    formik.setFieldValue(
-                      `stakeholderphones`,
-                      (formik.values?.stakeholderphones || []).map((p: any, i: number) => ({
-                        ...p,
-                        is_primary: i === index,
-                      })),
-                    );
-                  }}
-                />
+          {(() => {
+            const stakeholderPhones = Array.isArray(formik.values?.stakeholderphones)
+              ? (formik.values.stakeholderphones as any[])
+              : [];
+            const primaryIndex = stakeholderPhones.findIndex((p: any) => !!p?.is_primary);
+            const resolvedPrimaryIndex = primaryIndex === -1 ? 0 : primaryIndex;
+
+            return [0, 1].map((index) => (
+              <Box
+                key={index}
+                mb={2}
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  p: 1,
+                  m: 1,
+                }}
+              >
+                <Box>
+                  <CustomPhoneInput
+                    fullWidth
+                    label={`${transl("stakeholder.form.phone")} ${index + 1}`}
+                    placeholder={transl("stakeholder.form.phone")}
+                    name={`stakeholderphones[${index}].phone`}
+                    size="small"
+                    sx={{ mb: 1 }}
+                  />
+                  <FormControlLabel
+                    label={transl("stakeholder.form.is_primary_phone")}
+                    control={
+                      <Switch
+                        checked={index === resolvedPrimaryIndex}
+                        onChange={(_event, nextChecked) => {
+                          if (!nextChecked) return;
+                          formik.setFieldValue(
+                            "stakeholderphones",
+                            stakeholderPhones.map((p: any, i: number) => ({
+                              ...p,
+                              is_primary: i === index,
+                            }))
+                          );
+                        }}
+                      />
+                    }
+                    sx={{ mb: 2 }}
+                  />
+                </Box>
               </Box>
-            </Box>
-          ))}
+            ));
+          })()}
         </Box>
       )}
       <CustomFileUpload

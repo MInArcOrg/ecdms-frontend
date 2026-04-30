@@ -34,9 +34,16 @@ export const mobileNetworkColumns = (
             '&:hover': { color: 'primary.main' }
           }}
         >
-          {row?.id.slice(0, 5)}...
+          {row?.name || `${row?.id.slice(0, 5)}...`}
         </Typography>
       )
+    },
+    {
+      flex: 0.2,
+      minWidth: 150,
+      headerName: t('project.other.mobile-network.details.name'),
+      field: 'name',
+      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.name || t('common.not-available')}</Typography>
     },
     {
       flex: 0.15,

@@ -3,9 +3,11 @@ import { FormikProps } from 'formik';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { genderList } from 'src/configs/app-constants';
+import countriesList from 'src/constants/countries';
 import { StakeholderContactPerson } from 'src/types/stakeholder/stakeholder-contact-person';
 import CustomPhoneInput from 'src/views/shared/form/custom-phone-box';
 import CustomRadioBox from 'src/views/shared/form/custom-radio-box';
+import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
@@ -66,6 +68,17 @@ const StakeholderContactPersonForm: React.FC<StakeholderContactPersonFormProps> 
           placeholder={transl('stakeholder.stakeholder-contact-person.form.gender')}
           name="gender"
           options={genderList(transl)}
+        />
+      </Grid>
+
+      <Grid item xs={12} sm={6}>
+        <CustomSelectBox
+          fullWidth
+          label={transl('stakeholder.stakeholder-contact-person.form.nationality')}
+          name="nationality"
+          options={countriesList.map((country) => ({ value: country.title, label: country.title }))}
+          size="small"
+          sx={{ mb: 2 }}
         />
       </Grid>
 

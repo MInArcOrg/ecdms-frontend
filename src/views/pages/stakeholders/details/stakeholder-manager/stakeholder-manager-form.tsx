@@ -27,7 +27,7 @@ const ManagerForm: React.FC<ManagerFormProps> = ({ formik }) => {
           formatAsName={true} size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('stakeholder.stakeholder-manager.middleName')} name="middle_name"
+         <CustomTextBox fullWidth label={t('stakeholder.stakeholder-manager.middleName')} name="middle_name"
           formatAsName={true} size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12} sm={6}>

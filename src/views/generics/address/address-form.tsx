@@ -142,8 +142,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
             name="region"
             size="small"
             sx={{ mb: 2 }}
-            // Disable if City Admin is selected
-            disabled={!values.country || !!values.city_administration}
+            disabled={!values.country}
           />
         </Grid>
 
@@ -157,8 +156,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
             name="city_administration"
             size="small"
             sx={{ mb: 2 }}
-            // Disable if Region is selected
-            disabled={!values.country || !!values.region}
+            disabled={!values.country}
           />
         </Grid>
 
@@ -231,6 +229,30 @@ const AddressForm: React.FC<AddressFormProps> = ({ formik }) => {
         {/* --- TEXT INPUTS --- */}
         <Grid item xs={6}>
           <CustomTextBox fullWidth label={transl('address.form.street')} name="street" size="small" />
+        </Grid>
+
+        <Grid item xs={6}>
+          <CustomTextBox
+            fullWidth
+            label={transl('address.form.house_number')}
+            name="house_number"
+            size="small"
+            maxLength={10}
+            allowedCharsRegex={/^[A-Za-z0-9/-]$/}
+            sx={{ mb: 2 }}
+          />
+        </Grid>
+
+        <Grid item xs={6}>
+          <CustomTextBox
+            fullWidth
+            label={transl('address.form.block_number')}
+            name="block_number"
+            size="small"
+            maxLength={10}
+            allowedCharsRegex={/^[A-Za-z0-9/-]$/}
+            sx={{ mb: 2 }}
+          />
         </Grid>
      
          <Grid item xs={6}>

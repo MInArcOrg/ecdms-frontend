@@ -29,6 +29,7 @@ const MobileNetworkDrawer = (props: MobileNetworkDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
+    name: yup.string().required('Name is required'),
     mobile_network_type_id: yup.string().uuid().required('Mobile network type is required'),
     cell_towers: yup.boolean().nullable(),
     antennas: yup.boolean().nullable(),
@@ -78,6 +79,7 @@ const MobileNetworkDrawer = (props: MobileNetworkDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...mobileNetwork,
+            name: mobileNetwork?.name || '',
             cell_towers: mobileNetwork?.cell_towers || false,
             antennas: mobileNetwork?.antennas || false,
             base_stations: mobileNetwork?.base_stations || false,

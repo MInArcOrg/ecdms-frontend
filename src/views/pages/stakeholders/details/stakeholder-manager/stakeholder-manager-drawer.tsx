@@ -27,6 +27,7 @@ const ManagerDrawer = (props: ManagerDrawerType) => {
   const validationSchema = yup.object().shape({
     first_name: nameRule.required('First name is required'),
     last_name: nameRule.required('Last name is required'),
+    middle_name: nameRule.nullable(''),
     department: yup.string().required('Department is required'),
     birth_date: birthDateRule(18).required('Birth date is required'),
     gender: yup.string().required('Gender is required'),

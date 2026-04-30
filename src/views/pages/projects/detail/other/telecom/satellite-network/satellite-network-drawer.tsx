@@ -33,6 +33,7 @@ const SatelliteNetworkDrawer = (props: SatelliteNetworkDrawerType) => {
 
   const validationSchema = yup.object().shape({
     parent_id: yup.string().nullable(),
+    name: yup.string().required('Name is required'),
     satellite_network_type_id: yup.string().required('Satellite network type is required'),
     satellite: yup.boolean().nullable(),
     ground_stations: yup.boolean().nullable(),
@@ -53,6 +54,7 @@ const SatelliteNetworkDrawer = (props: SatelliteNetworkDrawerType) => {
     data: {
       ...values,
       project_id: projectId,
+      name: values.name,
       satellite_network_type_id: values.satellite_network_type_id,
       satellite: values.satellite,
       ground_stations: values.ground_stations,
@@ -88,7 +90,8 @@ const SatelliteNetworkDrawer = (props: SatelliteNetworkDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...satelliteNetwork
+            ...satelliteNetwork,
+            name: satelliteNetwork?.name || ''
           }}
           createActionFunc={isEdit ? editSatelliteNetwork : createSatelliteNetwork}
           onActionSuccess={onActionSuccess}

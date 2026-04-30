@@ -32,6 +32,9 @@ const StakeholderContactPersonCard = ({
               {t('stakeholder.stakeholder-contact-person.form.phone-number')} : {stakeholderContactPerson?.phone_number}
             </Typography>
             <Typography variant="subtitle2">
+              {t('stakeholder.stakeholder-contact-person.form.nationality')} : {stakeholderContactPerson?.nationality}
+            </Typography>
+            <Typography variant="subtitle2">
               {t('stakeholder.stakeholder-contact-person.form.email')} : {stakeholderContactPerson?.email}
             </Typography>
           </Box>

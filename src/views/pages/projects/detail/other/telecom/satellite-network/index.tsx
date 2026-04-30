@@ -91,6 +91,10 @@ const SatelliteNetworkList: React.FC<SatelliteNetworkListProps> = ({ otherSubMen
 
   const mapSatelliteNetworkToDetailItems = (satelliteNetwork: SatelliteNetwork): { title: string; value: string }[] => [
     {
+      title: t('project.other.satellite-network.details.name'),
+      value: satelliteNetwork?.name || 'N/A'
+    },
+    {
       title: t('project.other.satellite-network.details.satellite-network-type'),
       value:
         satelliteNetworkTypeMap.get(satelliteNetwork?.satellite_network_type_id) || satelliteNetwork?.satellite_network_type_id || 'N/A'

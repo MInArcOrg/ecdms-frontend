@@ -1,6 +1,8 @@
 import { Box, Card, CardActions, CardContent, Grid, Typography } from '@mui/material';
+import { useQueries } from '@tanstack/react-query';
 import dynamic from 'next/dynamic';
 import { Fragment } from 'react';
+import addressmasterApiService from 'src/services/admin/address-master-service';
 import Address from 'src/types/general/address';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
@@ -27,6 +29,57 @@ const AddressCard = ({
   refetch: () => void;
   type: string;
 }) => {
+  const isUuid = (value?: string) =>
+    typeof value === 'string' &&
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value);
+
+  const addressIds = [
+    address.country,
+    address.region,
+    address.city_administration,
+    address.zone,
+    address.city,
+    address.subcity,
+    address.sub_city,
+    address.woreda,
+    address.kebele
+  ].filter((v): v is string => Boolean(v) && isUuid(v));
+
+  const addressMasterResults = useQueries({
+    queries: addressIds.map((id) => ({
+      queryKey: ['address-master-data', id],
+      queryFn: () => addressmasterApiService.getOne(id, {}),
+      enabled: isUuid(id),
+      staleTime: 10 * 60 * 1000
+    }))
+  });
+
+  const addressTitleById = new Map(
+    addressIds.map((id, idx) => [id, addressMasterResults[idx]?.data?.payload?.title]).filter(([, title]) => Boolean(title))
+  );
+
+  const resolveTitle = (value?: string) => {
+    if (!value) return '';
+    return addressTitleById.get(value) || value;
+  };
+
+  const addressLine = [
+    resolveTitle(address.country),
+    resolveTitle(address.region),
+    resolveTitle(address.city_administration),
+    resolveTitle(address.zone),
+    resolveTitle(address.city),
+    resolveTitle(address.subcity || address.sub_city),
+    resolveTitle(address.woreda),
+    (address.kebele || '').toString(),
+    address.street || '',
+    address.house_number || '',
+    address.block_number || ''
+  ]
+    .map((v) => (typeof v === 'string' ? v.trim() : String(v)))
+    .filter((v) => v.length > 0)
+    .join(', ');
+
   return (
     <Card>
       <CardContent>
@@ -41,8 +94,7 @@ const AddressCard = ({
               </Box>
               <Box mt={3} display="flex" gap={3}>
                 <Typography variant="body1">
-                  <strong>{transl('address.title')}:</strong> {address.country}, {address.city}, {address.region}, {address.subcity},{' '}
-                  {address.street}, {address.block_number}, {address.house_number}
+                  <strong>{transl('address.title')}:</strong> {addressLine || transl('common.not-available')}
                 </Typography>
               </Box>
             </CardContent>

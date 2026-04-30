@@ -38,7 +38,7 @@ const MobileNetworkCoverageForm: React.FC<MobileNetworkCoverageFormProps> = ({ f
           name="mobile_network_id"
           options={mobileNetworks.map((item) => ({
             value: item.id,
-            label: item.mobilenetworktype.title || 'N/A'
+            label: item.name || 'N/A'
           }))}
           size="small"
           sx={{ mb: 2 }}

@@ -34,13 +34,16 @@ const MobileNetworkCard: React.FC<MobileNetworkCardProps> = ({ mobileNetwork, re
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {mobileNetwork?.id.slice(0, 5)}...
+              {mobileNetwork?.name || `${mobileNetwork?.id.slice(0, 5)}...`}
             </Typography>
           </Typography>
         </Box>
 
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
+          <Typography variant="body2" color="text.secondary">
+            {t('project.other.mobile-network.details.name')}: {mobileNetwork?.name || 'N/A'}
+          </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.mobile-network.details.mobile-network-type')}: {mobileNetwork?.mobilenetworktype.title || 'N/A'}
           </Typography>

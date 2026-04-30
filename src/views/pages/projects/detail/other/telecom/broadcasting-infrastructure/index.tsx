@@ -98,6 +98,10 @@ const BroadcastingInfrastructureList: React.FC<BroadcastingInfrastructureListPro
     broadcastingInfrastructure: BroadcastingInfrastructure
   ): { title: string; value: string }[] => [
     {
+      title: t('project.other.broadcasting-infrastructure.details.name'),
+      value: broadcastingInfrastructure?.name || 'N/A'
+    },
+    {
       title: t('project.other.broadcasting-infrastructure.details.broadcasting-infrastructure-type'),
       value:
         broadcastingInfrastructureTypeMap.get(broadcastingInfrastructure?.broadcasting_infrastructure_type_id) ||

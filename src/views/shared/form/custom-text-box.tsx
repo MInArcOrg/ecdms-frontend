@@ -9,6 +9,7 @@ interface CustomTextBoxProps {
   onValueChange?: (value: string | number) => void;
   type?: string;
   allowSpecialChars?: boolean;
+  allowedCharsRegex?: RegExp;
   maxLength?: number;
   multilineMaxLength?: number;
   multiline?: boolean;
@@ -21,6 +22,7 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
   onValueChange,
   type = 'text',
   allowSpecialChars = false,
+  allowedCharsRegex,
   maxLength = 50,
   multilineMaxLength = 150,
   multiline = false,
@@ -45,7 +47,14 @@ const CustomTextBox: React.FC<CustomTextBoxProps> = ({
       value = value.trimStart();
 
       // 2. Block special chars if not allowed (Kept your existing logic)
-      if (!allowSpecialChars && type !== 'password') {
+      if (allowedCharsRegex && type !== 'password') {
+        value = Array.from(value)
+          .filter((ch) => {
+            allowedCharsRegex.lastIndex = 0;
+            return allowedCharsRegex.test(ch);
+          })
+          .join('');
+      } else if (!allowSpecialChars && type !== 'password') {
         if (type === 'email') {
           value = value.replace(/[^a-zA-Z0-9@._\-+]/g, '');
         }

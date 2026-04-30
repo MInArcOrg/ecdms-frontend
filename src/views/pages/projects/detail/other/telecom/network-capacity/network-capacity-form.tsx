@@ -39,7 +39,7 @@ const NetworkCapacityForm: React.FC<NetworkCapacityFormProps> = ({ formik, file,
           name="telecom_infrastructure_id"
           options={telecomInfrastructureComponents.map((item) => ({
             value: item.id,
-            label: mobileNetworkTypeMap.get(item.mobile_network_type_id) || 'N/A'
+            label: item.name || 'N/A'
           }))}
           size="small"
           sx={{ mb: 2 }}

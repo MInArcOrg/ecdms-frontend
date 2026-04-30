@@ -32,6 +32,7 @@ const TelecomInfrastructureComponentDrawer = (props: TelecomInfrastructureCompon
   };
 
   const validationSchema = yup.object().shape({
+    name: yup.string().required('Name is required'),
     mobile_network_type_id: yup.string().required('Mobile network type is required'),
     cables: yup
       .number()
@@ -83,6 +84,7 @@ const TelecomInfrastructureComponentDrawer = (props: TelecomInfrastructureCompon
   const getPayload = (values: TelecomInfrastructureComponent) => ({
     data: {
       project_id: projectId,
+      name: values.name,
       mobile_network_type_id: values.mobile_network_type_id,
       cables: values.cables,
       wires: values.wires,
@@ -129,7 +131,8 @@ const TelecomInfrastructureComponentDrawer = (props: TelecomInfrastructureCompon
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...telecomInfrastructureComponent
+            ...telecomInfrastructureComponent,
+            name: telecomInfrastructureComponent?.name || ''
           }}
           createActionFunc={isEdit ? editTelecomInfrastructureComponent : createTelecomInfrastructureComponent}
           onActionSuccess={onActionSuccess}
