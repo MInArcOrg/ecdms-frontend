@@ -1438,7 +1438,7 @@ export interface BroadcastingInfrastructureAge {
   project_id: string;
   name: string;
   broadcasting_infrastructure_id: string;
-  broadcastingInfrastructure: BroadcastingInfrastructure;
+  broadcastingInfrastructure?: BroadcastingInfrastructure;
   antennas?: number;
   transmitters?: number;
   towers?: number;
@@ -1451,7 +1451,7 @@ export interface BroadcastingInfrastructureAge {
 export interface BroadcastingInfrastructureManufacturer {
   id: string;
   broadcasting_infrastructure_id: string;
-  broadcastingInfrastructure: BroadcastingInfrastructure;
+  broadcastingInfrastructure?: BroadcastingInfrastructure;
   name: string;
   antennas?: string;
   transmitters?: string;
