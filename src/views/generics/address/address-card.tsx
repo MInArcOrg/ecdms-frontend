@@ -54,8 +54,10 @@ const AddressCard = ({
     }))
   });
 
-  const addressTitleById = new Map(
-    addressIds.map((id, idx) => [id, addressMasterResults[idx]?.data?.payload?.title]).filter(([, title]) => Boolean(title))
+  const addressTitleById = new Map<string, string>(
+    addressIds
+      .map((id, idx) => [id, addressMasterResults[idx]?.data?.payload?.title] as const)
+      .filter((entry): entry is readonly [string, string] => Boolean(entry[1]))
   );
 
   const resolveTitle = (value?: string) => {
