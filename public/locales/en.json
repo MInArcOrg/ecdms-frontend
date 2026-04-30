@@ -4926,7 +4926,7 @@
       "trade_name": "Trade Name",
       "name": "Name",
       "tin": "TIN",
-      "origin": "Origin",
+      "origin": "Country of origion",
       "license_issued_date": "License Issued Date",
       "revision_no": "Revision No",
       "add_email": "Add Email",

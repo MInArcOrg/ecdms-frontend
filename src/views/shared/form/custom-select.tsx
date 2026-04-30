@@ -18,7 +18,7 @@ const CustomSelectBox: React.FC<CustomSelectBoxProps> = ({ name, onValueChange, 
   const requiredFields = useRequiredFields();
 
   const isRequired = requiredFields.includes(name);
-  const options = Array.isArray(props.options) ? props.options : Array.isArray(props.options?.payload) ? props.options.payload : [];
+  const options = Array.isArray(props.options) ? props.options : [];
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = type === 'number' ? (event.target.value ? Number(event.target.value) : 0) : event.target.value;
