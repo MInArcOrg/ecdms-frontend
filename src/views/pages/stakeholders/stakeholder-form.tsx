@@ -1,17 +1,15 @@
 /* eslint-disable prettier/prettier */
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import { FieldArray, FormikProps } from "formik";
+import { FormikProps } from "formik";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import generalMasterDataApiService from "src/services/general/general-master-data-service";
 import masterCategoryApiService from "src/services/master-data/master-category-service";
 import masterSubCategoryApiService from "src/services/master-data/master-sub-category-service";
 import { Stakeholder } from "src/types/stakeholder";
 import CustomSelect from "src/views/shared/form/custom-select";
 import CustomSwitch from "src/views/shared/form/custom-switch";
 import CustomTextBox from "src/views/shared/form/custom-text-box";
-import { Icon } from "@iconify/react";
 import CustomDynamicDatePicker from "src/views/shared/form/custom-dynamic-date-box";
 import CustomPhoneInput from "src/views/shared/form/custom-phone-box";
 import CustomFileUpload from "src/views/shared/form/custome-file-selector";
@@ -81,9 +79,55 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
     })),
   });
 
-  // Utility to check if there's a primary email or phone
-  const hasPrimary = (array: any[], key: string) =>
-    array.some((item) => item[key]);
+  useEffect(() => {
+    if (isEdit) return;
+
+    const currentEmails = Array.isArray(formik.values.stakeholderemails)
+      ? formik.values.stakeholderemails
+      : [];
+    const nextEmails = currentEmails.slice(0, 1);
+
+    if (nextEmails.length === 0) {
+      nextEmails.push({ email: "", is_primary: true } as any);
+    } else {
+      nextEmails[0] = { ...nextEmails[0], is_primary: true } as any;
+    }
+
+    const emailsOk =
+      Array.isArray(formik.values.stakeholderemails) &&
+      formik.values.stakeholderemails.length === 1 &&
+      !!(formik.values.stakeholderemails[0] as any)?.is_primary;
+
+    if (!emailsOk) {
+      formik.setFieldValue("stakeholderemails", nextEmails);
+    }
+
+    const currentPhones = Array.isArray(formik.values.stakeholderphones)
+      ? formik.values.stakeholderphones
+      : [];
+    const nextPhones = currentPhones.slice(0, 2);
+
+    while (nextPhones.length < 2) {
+      nextPhones.push({ phone: "", is_primary: false } as any);
+    }
+
+    const primaryIndex = nextPhones.findIndex((p: any) => !!p?.is_primary);
+    const resolvedPrimaryIndex = primaryIndex === -1 ? 0 : primaryIndex;
+    const normalizedPhones = nextPhones.map((p: any, i: number) => ({
+      ...p,
+      is_primary: i === resolvedPrimaryIndex,
+    }));
+
+    const phonesOk =
+      Array.isArray(formik.values.stakeholderphones) &&
+      formik.values.stakeholderphones.length === 2 &&
+      formik.values.stakeholderphones.filter((p: any) => !!p?.is_primary)
+        .length === 1;
+
+    if (!phonesOk) {
+      formik.setFieldValue("stakeholderphones", normalizedPhones);
+    }
+  }, [isEdit, formik.values.stakeholderemails, formik.values.stakeholderphones]);
 
   return (
     <>
@@ -191,70 +235,27 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
           <Typography variant="h6" gutterBottom>
             {transl("stakeholder.form.emails")}
           </Typography>
-          <FieldArray name="stakeholderemails">
-            {({ push, remove }) => {
-              const hasPrimaryEmail = hasPrimary(
-                formik.values.stakeholderemails || [],
-                "is_primary",
-              );
-
-              return (
-                <>
-                  {formik.values.stakeholderemails?.map((email, index) => (
-                    <Box
-                      key={index}
-                      mb={2}
-                      sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        p: 1,
-                        m: 1,
-                      }}
-                    >
-                      <Box>
-                        <CustomTextBox
-                          fullWidth
-                          label={transl("stakeholder.form.email")}
-                          placeholder={transl("stakeholder.form.email")}
-                          name={`stakeholderemails[${index}].email`}
-                          size="small"
-                          type="email"
-                          sx={{ mb: 1 }}
-                        />
-                        <CustomSwitch
-                          sx={{ mb: 2 }}
-                          name={`stakeholderemails[${index}].is_primary`}
-                          label={transl("stakeholder.form.is_primary_email")}
-                          checked={email.is_primary}
-                          onChange={() => {
-                            formik.setFieldValue(
-                              `stakeholderemails`,
-                              formik.values?.stakeholderemails?.map((e, i) =>
-                                i === index
-                                  ? { ...e, is_primary: !e.is_primary }
-                                  : { ...e, is_primary: false },
-                              ),
-                            );
-                          }}
-                          disabled={hasPrimaryEmail && !email.is_primary}
-                        />
-                      </Box>
-                      <Box>
-                        <Button onClick={() => remove(index)} sx={{ mt: 1 }}>
-                          <Icon icon="tabler:trash" fontSize={20} />
-                        </Button>
-                      </Box>
-                    </Box>
-                  ))}
-                  <Button
-                    onClick={() => push({ email: "", is_primary: false })}
-                  >
-                    <Icon icon="tabler:plus" fontSize={20} />
-                  </Button>
-                </>
-              );
+          <Box
+            mb={2}
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              p: 1,
+              m: 1,
             }}
-          </FieldArray>
+          >
+            <Box>
+              <CustomTextBox
+                fullWidth
+                label={transl("stakeholder.form.email")}
+                placeholder={transl("stakeholder.form.email")}
+                name="stakeholderemails[0].email"
+                size="small"
+                type="email"
+                sx={{ mb: 1 }}
+              />
+            </Box>
+          </Box>
         </Box>
       )}
       {/* Phones Section */}
@@ -263,69 +264,44 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({
           <Typography variant="h6" gutterBottom>
             {transl("stakeholder.form.phones")}
           </Typography>
-          <FieldArray name="stakeholderphones">
-            {({ push, remove }) => {
-              const hasPrimaryPhone = hasPrimary(
-                formik?.values?.stakeholderphones || [],
-                "is_primary",
-              );
-
-              return (
-                <>
-                  {formik.values.stakeholderphones?.map((phone, index) => (
-                    <Box
-                      key={index}
-                      mb={2}
-                      sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        p: 1,
-                        m: 1,
-                      }}
-                    >
-                      <Box>
-                        <CustomPhoneInput
-                          fullWidth
-                          label={transl("stakeholder.form.phone")}
-                          placeholder={transl("stakeholder.form.phone")}
-                          name={`stakeholderphones[${index}].phone`}
-                          size="small"
-                          sx={{ mb: 1 }}
-                        />
-                        <CustomSwitch
-                          sx={{ mb: 2 }}
-                          name={`stakeholderphones[${index}].is_primary`}
-                          label={transl("stakeholder.form.is_primary_phone")}
-                          checked={phone.is_primary}
-                          onChange={() => {
-                            formik.setFieldValue(
-                              `stakeholderphones`,
-                              formik.values?.stakeholderphones?.map((p, i) =>
-                                i === index
-                                  ? { ...p, is_primary: !p.is_primary }
-                                  : { ...p, is_primary: false },
-                              ),
-                            );
-                          }}
-                          disabled={hasPrimaryPhone && !phone.is_primary}
-                        />
-                      </Box>
-                      <Box>
-                        <Button onClick={() => remove(index)} sx={{ mt: 1 }}>
-                          <Icon icon="tabler:trash" fontSize={20} />
-                        </Button>
-                      </Box>
-                    </Box>
-                  ))}
-                  <Button
-                    onClick={() => push({ phone: "", is_primary: false })}
-                  >
-                    <Icon icon="tabler:plus" fontSize={20} />
-                  </Button>
-                </>
-              );
-            }}
-          </FieldArray>
+          {[0, 1].map((index) => (
+            <Box
+              key={index}
+              mb={2}
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                p: 1,
+                m: 1,
+              }}
+            >
+              <Box>
+                <CustomPhoneInput
+                  fullWidth
+                  label={`${transl("stakeholder.form.phone")} ${index + 1}`}
+                  placeholder={transl("stakeholder.form.phone")}
+                  name={`stakeholderphones[${index}].phone`}
+                  size="small"
+                  sx={{ mb: 1 }}
+                />
+                <CustomSwitch
+                  sx={{ mb: 2 }}
+                  name={`stakeholderphones[${index}].is_primary`}
+                  label={transl("stakeholder.form.is_primary_phone")}
+                  checked={!!formik.values.stakeholderphones?.[index]?.is_primary}
+                  onChange={() => {
+                    formik.setFieldValue(
+                      `stakeholderphones`,
+                      (formik.values?.stakeholderphones || []).map((p: any, i: number) => ({
+                        ...p,
+                        is_primary: i === index,
+                      })),
+                    );
+                  }}
+                />
+              </Box>
+            </Box>
+          ))}
         </Box>
       )}
       <CustomFileUpload

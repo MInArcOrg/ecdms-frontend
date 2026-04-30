@@ -128,12 +128,19 @@ const StakeholderDrawer = (props: StakeholderDrawerType) => {
     // Submit stakeholder phones and emails
     const { stakeholderemails, stakeholderphones } = payload.data;
     // Assuming you have a function to update or submit stakeholder's phones and emails
-    if (stakeholderemails && stakeholderemails.length > 0) {
-      await submitStakeholderEmails(response.payload.id, stakeholderemails);
+    const emailsToSubmit = (stakeholderemails || [])
+      .filter((e: any) => String(e?.email || "").trim().length > 0)
+      .slice(0, 1);
+    const phonesToSubmit = (stakeholderphones || [])
+      .filter((p: any) => String(p?.phone || "").trim().length > 0)
+      .slice(0, 2);
+
+    if (emailsToSubmit.length > 0) {
+      await submitStakeholderEmails(response.payload.id, emailsToSubmit);
     }
 
-    if (stakeholderphones && stakeholderphones.length > 0) {
-      await submitStakeholderPhones(response.payload.id, stakeholderphones);
+    if (phonesToSubmit.length > 0) {
+      await submitStakeholderPhones(response.payload.id, phonesToSubmit);
     }
 
     // Refetch data and close the form/modal
