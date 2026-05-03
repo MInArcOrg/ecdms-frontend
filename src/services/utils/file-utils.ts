@@ -132,8 +132,44 @@ export const uploadProfilePicture = (user_id: string | number, type: string, fil
 
 // Get photo
 export const getPhoto = (id: string | number, type: string): string => `${process.env.NEXT_PUBLIC_API_URL}/api/photo/${type}/${id}`;
-export const getStaticPhoto = (path: string) => `${process.env.NEXT_PUBLIC_API_URL}${path}`;
-export const getStaticFile = (path: string) => `${process.env.NEXT_PUBLIC_API_URL}${path}`;
+const resolvePublicUrl = (pathOrUrl: string) => {
+  if (!pathOrUrl) return '';
+  if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
+
+  const base =
+    process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_BASE_API_URL || (typeof window !== 'undefined' ? window.location.origin : '');
+  const safeBase = (base || '').replace(/\/+$/g, '');
+  const safePath = pathOrUrl.startsWith('/') ? pathOrUrl : `/${pathOrUrl}`;
+
+  return `${safeBase}${safePath}`;
+};
+
+export const getStaticPhoto = (pathOrUrl: string) => resolvePublicUrl(pathOrUrl);
+export const getStaticFile = (pathOrUrl: string) => resolvePublicUrl(pathOrUrl);
+
+export const downloadStaticFile = async (pathOrUrl: string, fileName?: string) => {
+  const url = resolvePublicUrl(pathOrUrl);
+  if (!url) return;
+
+  const token = getAccessToken();
+  const response = await fetch(url, {
+    headers: token ? { Authorization: token } : undefined
+  });
+
+  if (!response.ok) throw new Error('Failed to download file');
+
+  const blob = await response.blob();
+  const blobUrl = window.URL.createObjectURL(blob);
+
+  const anchor = document.createElement('a');
+  anchor.href = blobUrl;
+  anchor.download = fileName || 'download';
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+
+  window.URL.revokeObjectURL(blobUrl);
+};
 
 // Get multiple photos
 export const useGetMultiplePhotos = (params: GetRequestParam) => {

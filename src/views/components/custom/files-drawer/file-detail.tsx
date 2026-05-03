@@ -3,6 +3,7 @@ import {
   Box,
   CardContent,
   Drawer,
+  IconButton,
   TableContainer,
   Typography,
   Paper,
@@ -17,7 +18,7 @@ import {
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getDynamicDate } from '../ethio-calendar/ethio-calendar-utils';
-import { deleteFile } from 'src/services/utils/file-utils';
+import { deleteFile, downloadStaticFile, getStaticFile } from 'src/services/utils/file-utils';
 import { FileModel } from 'src/types/general/file';
 import RowOptions from 'src/views/shared/listing/row-options';
 
@@ -32,6 +33,54 @@ interface FileDetailProps {
 function FileDetail({ show, toggleDrawer, data, refetch, dataLoading }: FileDetailProps) {
   const { t, i18n } = useTranslation();
   const [loading, setLoading] = useState<boolean>();
+
+  const normalizeExtension = (value: string) => {
+    const raw = (value || '').trim();
+    if (!raw) return '';
+
+    const lower = raw.toLowerCase();
+    if (lower.includes('vnd.openxmlformats-officedocument.spreadsheetml.sheet')) return 'xlsx';
+    if (lower.includes('spreadsheetml.sheet')) return 'xlsx';
+    if (lower.includes('ms-excel')) return 'xls';
+    if (lower.includes('wordprocessingml.document')) return 'docx';
+    if (lower === 'application/pdf' || lower.includes('pdf')) return 'pdf';
+    if (lower.includes('image/png')) return 'png';
+    if (lower.includes('image/jpeg')) return 'jpg';
+    if (lower.includes('text/csv') || lower.includes('csv')) return 'csv';
+    if (lower.includes('/')) return '';
+
+    return raw.startsWith('.') ? raw.slice(1) : raw;
+  };
+
+  const getDownloadFileName = (row: FileModel) => {
+    const baseName = (row.title || 'file').trim() || 'file';
+    const ext = normalizeExtension(row.extension || '');
+    if (!ext) return baseName;
+
+    const lowerBase = baseName.toLowerCase();
+    const lowerExt = ext.toLowerCase();
+    if (lowerBase.endsWith(`.${lowerExt}`)) return baseName;
+
+    return `${baseName}.${ext}`;
+  };
+
+  const handleDownload = async (event: React.MouseEvent, row: FileModel) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const fileName = getDownloadFileName(row);
+    try {
+      await downloadStaticFile(row.url || '', fileName);
+    } catch {
+      const anchor = document.createElement('a');
+      anchor.href = getStaticFile(row.url || '');
+      anchor.download = fileName;
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+    }
+  };
+
   const handleDelete = async (masterSubCategoryId: string) => {
     setLoading(true);
     await deleteFile(String(masterSubCategoryId));
@@ -94,7 +143,7 @@ function FileDetail({ show, toggleDrawer, data, refetch, dataLoading }: FileDeta
                     <TableCell component="th" scope="row" style={{ paddingRight: 0 }}>
                       <Typography
                         component="a"
-                        href={`${process.env.NEXT_PUBLIC_API_URL}${row.url}`}
+                        href={getStaticFile(row.url || '')}
                         target="_blank"
                         color="primary"
                         variant="body2"
@@ -115,15 +164,9 @@ function FileDetail({ show, toggleDrawer, data, refetch, dataLoading }: FileDeta
                     <TableCell>{row.size}KB</TableCell>
                     <TableCell>
                       <Box display="flex" justifyContent="space-between" alignItems="center">
-                        <Typography
-                          component="a"
-                          color="primary"
-                          href={`${process.env.NEXT_PUBLIC_API_URL}${row.url}`}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
+                        <IconButton color="primary" onClick={(e) => handleDownload(e, row)}>
                           <Icon icon="tabler:download" fontSize="1.5rem" />
-                        </Typography>
+                        </IconButton>
 
                         <RowOptions
                           item={row}

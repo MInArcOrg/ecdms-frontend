@@ -2,7 +2,7 @@ import { Box, Card, CardContent, IconButton, Typography } from '@mui/material';
 import Icon from 'src/@core/components/icon';
 import CustomChip from 'src/@core/components/mui/chip';
 import i18n from 'src/configs/i18n';
-import { getStaticFile } from 'src/services/utils/file-utils';
+import { downloadStaticFile, getStaticFile } from 'src/services/utils/file-utils';
 import { FileModel } from 'src/types/general/file';
 import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
@@ -21,9 +21,27 @@ const ProjectFileCard = ({
   onEdit: (projectFile: FileModel) => void;
   onDelete: (id: string) => void;
 }) => {
+  const normalizeExtension = (value: string) => {
+    const raw = (value || '').trim();
+    if (!raw) return '';
+
+    const lower = raw.toLowerCase();
+    if (lower.includes('vnd.openxmlformats-officedocument.spreadsheetml.sheet')) return 'xlsx';
+    if (lower.includes('spreadsheetml.sheet')) return 'xlsx';
+    if (lower.includes('ms-excel')) return 'xls';
+    if (lower.includes('wordprocessingml.document')) return 'docx';
+    if (lower === 'application/pdf' || lower.includes('pdf')) return 'pdf';
+    if (lower.includes('image/png')) return 'png';
+    if (lower.includes('image/jpeg')) return 'jpg';
+    if (lower.includes('text/csv') || lower.includes('csv')) return 'csv';
+    if (lower.includes('/')) return '';
+
+    return raw.startsWith('.') ? raw.slice(1) : raw;
+  };
+
   const getDownloadFileName = () => {
     const baseName = (projectFile.title || 'file').trim() || 'file';
-    const ext = (projectFile.extension || '').trim();
+    const ext = normalizeExtension(projectFile.extension || '');
     if (!ext) return baseName;
 
     const lowerBase = baseName.toLowerCase();
@@ -37,26 +55,12 @@ const ProjectFileCard = ({
     event.preventDefault();
     event.stopPropagation();
 
-    const url = getStaticFile(projectFile?.url || '');
     const fileName = getDownloadFileName();
 
     try {
-      const response = await fetch(url);
-
-      if (!response.ok) throw new Error('Failed to download file');
-
-      const blob = await response.blob();
-      const blobUrl = window.URL.createObjectURL(blob);
-
-      const anchor = document.createElement('a');
-      anchor.href = blobUrl;
-      anchor.download = fileName;
-      document.body.appendChild(anchor);
-      anchor.click();
-      anchor.remove();
-
-      window.URL.revokeObjectURL(blobUrl);
+      await downloadStaticFile(projectFile?.url || '', fileName);
     } catch {
+      const url = getStaticFile(projectFile?.url || '');
       const anchor = document.createElement('a');
       anchor.href = url;
       anchor.download = fileName;
