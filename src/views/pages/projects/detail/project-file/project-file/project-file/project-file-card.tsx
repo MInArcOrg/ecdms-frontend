@@ -1,7 +1,6 @@
 import { Box, Card, CardContent, IconButton, Typography } from '@mui/material';
 import Icon from 'src/@core/components/icon';
 import CustomChip from 'src/@core/components/mui/chip';
-import authConfig from 'src/configs/auth';
 import i18n from 'src/configs/i18n';
 import { getStaticFile } from 'src/services/utils/file-utils';
 import { FileModel } from 'src/types/general/file';
@@ -42,12 +41,7 @@ const ProjectFileCard = ({
     const fileName = getDownloadFileName();
 
     try {
-      const token =
-        typeof window !== 'undefined' && window.localStorage ? window.localStorage.getItem(authConfig.storageTokenKeyName) : null;
-
-      const response = await fetch(url, {
-        headers: token ? { Authorization: `Bearer ${token}` } : undefined
-      });
+      const response = await fetch(url);
 
       if (!response.ok) throw new Error('Failed to download file');
 
@@ -63,7 +57,12 @@ const ProjectFileCard = ({
 
       window.URL.revokeObjectURL(blobUrl);
     } catch {
-      window.open(url, '_blank', 'noopener,noreferrer');
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = fileName;
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
     }
   };
 
