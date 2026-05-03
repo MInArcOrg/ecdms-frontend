@@ -137,9 +137,15 @@ const resolvePublicUrl = (pathOrUrl: string) => {
   if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
 
   const base =
-    process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_BASE_API_URL || (typeof window !== 'undefined' ? window.location.origin : '');
+    process.env.NEXT_PUBLIC_BASE_API_URL || process.env.NEXT_PUBLIC_API_URL || (typeof window !== 'undefined' ? window.location.origin : '');
   const safeBase = (base || '').replace(/\/+$/g, '');
-  const safePath = pathOrUrl.startsWith('/') ? pathOrUrl : `/${pathOrUrl}`;
+  let safePath = pathOrUrl.startsWith('/') ? pathOrUrl : `/${pathOrUrl}`;
+
+  if (safeBase.endsWith('/api') && safePath.startsWith('/api/')) {
+    safePath = safePath.slice('/api'.length);
+  } else if (safeBase.endsWith('/api') && safePath === '/api') {
+    safePath = '';
+  }
 
   return `${safeBase}${safePath}`;
 };

@@ -72,12 +72,7 @@ function FileDetail({ show, toggleDrawer, data, refetch, dataLoading }: FileDeta
     try {
       await downloadStaticFile(row.url || '', fileName);
     } catch {
-      const anchor = document.createElement('a');
-      anchor.href = getStaticFile(row.url || '');
-      anchor.download = fileName;
-      document.body.appendChild(anchor);
-      anchor.click();
-      anchor.remove();
+      return;
     }
   };
 
