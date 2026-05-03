@@ -64,15 +64,6 @@ const UpgradeForm: React.FC<UpgradeFormProps> = ({ formik }) => {
       <Grid item xs={12}>
         <CustomTextBox
           fullWidth
-          label={t('stakeholder.stakeholder-upgrade.form.ownership-percentage')}
-          name="ownership_percentage"
-          size="small"
-          sx={{ mb: 2 }}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <CustomTextBox
-          fullWidth
           multiline
           rows={4}
           label={t('stakeholder.stakeholder-upgrade.form.description')}

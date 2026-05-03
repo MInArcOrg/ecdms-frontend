@@ -174,7 +174,7 @@ const StakeholderVehicleList: React.FC<StakeholderVehicleListProps> = ({ stakeho
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'stakeholdervehicle'
+            subject: 'vehicle'
           }
         }}
         fetchDataFunction={refetch}

@@ -42,16 +42,18 @@ function FileDrawer({ id, type, onRefetch }: { id: string; type: string; onRefet
           <Icon icon="mdi:file-document-outline" fontSize="1.2rem" />
           {data?.payload?.length || 0} {t('Files')}
           <Tooltip title={t('Refresh Files')}>
-            <IconButton
-              size="small"
-              onClick={(e) => {
-                e.stopPropagation();
-                refetch();
-              }}
-              disabled={isFetching}
-            >
-              <Icon icon="mdi:refresh" />
-            </IconButton>
+            <span>
+              <IconButton
+                size="small"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  refetch();
+                }}
+                disabled={isFetching}
+              >
+                {isFetching ? <CircularProgress size={16} color="inherit" /> : <Icon icon="mdi:refresh" />}
+              </IconButton>
+            </span>
           </Tooltip>
         </Typography>
       )}

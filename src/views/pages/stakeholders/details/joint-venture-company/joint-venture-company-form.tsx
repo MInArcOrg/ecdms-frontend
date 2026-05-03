@@ -1,5 +1,5 @@
 import type React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Grid } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import type { FormikProps } from 'formik';
@@ -34,7 +34,18 @@ interface ApiResponse {
 
 const JointVentureCompanyForm: React.FC<JointVentureCompanyFormProps> = ({ formik, stakeholderId, onFileChange, file }) => {
   const { t } = useTranslation();
-  const [jointVentures, setJointVentures] = useState<{ value: string; label: string }[]>([]);
+  const [jointVentures, setJointVentures] = useState<Array<{ id: string; name: string }>>([]);
+
+  const jointVentureOptions = useMemo(() => {
+    return jointVentures.map((jv) => ({ value: jv.name, label: jv.name }));
+  }, [jointVentures]);
+
+  const jointVentureIdByTitle = useMemo(() => {
+    return jointVentures.reduce<Record<string, string>>((acc, jv) => {
+      acc[jv.name] = jv.id;
+      return acc;
+    }, {});
+  }, [jointVentures]);
 
   useEffect(() => {
     const fetchJointVentures = async () => {
@@ -45,12 +56,7 @@ const JointVentureCompanyForm: React.FC<JointVentureCompanyFormProps> = ({ formi
         const apiResponse = response as ApiResponse;
 
         if (apiResponse?.payload && Array.isArray(apiResponse.payload)) {
-          setJointVentures(
-            apiResponse.payload.map((jv) => ({
-              value: jv.id,
-              label: jv.name
-            }))
-          );
+          setJointVentures(apiResponse.payload.map((jv) => ({ id: jv.id, name: jv.name })));
         } else {
           console.error('Unexpected API response format:', apiResponse);
           setJointVentures([]);
@@ -64,14 +70,27 @@ const JointVentureCompanyForm: React.FC<JointVentureCompanyFormProps> = ({ formi
     fetchJointVentures();
   }, [stakeholderId]);
 
+  useEffect(() => {
+    if (!jointVentures.length) return;
+
+    if (formik.values.title && !formik.values.joint_venture_id) {
+      const id = jointVentureIdByTitle[formik.values.title];
+      if (id) formik.setFieldValue('joint_venture_id', id, false);
+    }
+
+    if (formik.values.joint_venture_id && !formik.values.title) {
+      const title = jointVentures.find((jv) => jv.id === formik.values.joint_venture_id)?.name;
+      if (title) formik.setFieldValue('title', title, false);
+    }
+  }, [formik.values.joint_venture_id, formik.values.title, jointVentureIdByTitle, jointVentures]);
+
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <CustomSelect
+        <CustomTextBox
           fullWidth
-          label={t('stakeholder.joint-venture-company.jointVenture')}
-          name="joint_venture_id"
-          options={jointVentures}
+          label={t('stakeholder.joint-venture-company.title')}
+          name="title"
           size="small"
           sx={{ mb: 2 }}
         />

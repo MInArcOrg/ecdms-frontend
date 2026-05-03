@@ -40,7 +40,8 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: stakeholderResourceIds.resources.vehicles,
         title: 'stakeholder.navigation.submenu.resource.resources.vehicles',
-        path: `/stakeholders/${typeId}/details/${id}/resource/resources/vehicles`
+        path: `/stakeholders/${typeId}/details/${id}/resource/resources/vehicles`,
+        model: 'vehicle'
       },
       {
         id: stakeholderResourceIds.resources.safetyEquipment,

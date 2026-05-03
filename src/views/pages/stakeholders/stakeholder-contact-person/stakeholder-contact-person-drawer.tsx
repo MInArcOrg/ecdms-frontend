@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import StakeholderContactPersonForm from './stakeholder-contact-person-form';
 
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import stakeholderContactPersonApiService from 'src/services/stakeholder/stakeholder-contact-person-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
@@ -19,11 +20,13 @@ interface StakeholderContactPersonDrawerType {
   refetch: () => void;
   stakeholderContactPerson: StakeholderContactPerson;
   stakeholderId: string;
+  typeTitle?: string;
 }
 
 const StakeholderContactPersonDrawer = (props: StakeholderContactPersonDrawerType) => {
-  const { open, toggle, refetch, stakeholderContactPerson, stakeholderId } = props;
+  const { open, toggle, refetch, stakeholderContactPerson, stakeholderId, typeTitle } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
+  const { t } = useTranslation();
   const onFileChange = (file: File | null) => {
     setUploadableFile(file);
   };
@@ -65,9 +68,25 @@ const StakeholderContactPersonDrawer = (props: StakeholderContactPersonDrawerTyp
     handleClose();
   };
 
+  const formatTitleWithType = (key: string) => {
+    const base = t(key);
+    if (!typeTitle) return base;
+    if (/\b(Stakeholder|Stakholder)\b/i.test(base)) {
+      return base.replace(/\b(Stakeholder|Stakholder)\b/gi, typeTitle);
+    }
+    if (/^(Add|Edit)\b/i.test(base)) {
+      return base.replace(/^(Add|Edit)\b/i, `$1 ${typeTitle}`);
+    }
+    return `${typeTitle} ${base}`;
+  };
+
+  const drawerTitleKey = `stakeholder.stakeholder-contact-person.${isEdit ? `edit-stakeholder-contact-person` : `create-stakeholder-contact-person`}`;
+  const translatedDrawerTitle = formatTitleWithType(drawerTitleKey);
+
   return (
     <CustomSideDrawer
-      title={`stakeholder.stakeholder-contact-person.${isEdit ? `edit-stakeholder-contact-person` : `create-stakeholder-contact-person`}`}
+      title={drawerTitleKey}
+      translatedTitle={typeTitle ? translatedDrawerTitle : undefined}
       handleClose={handleClose}
       open={open}
     >
@@ -75,6 +94,7 @@ const StakeholderContactPersonDrawer = (props: StakeholderContactPersonDrawerTyp
         <FormPageWrapper
           edit={isEdit}
           title={`stakeholder.stakeholder-contact-person.title`} // Adjust the title key if necessary
+          translatedTitle={typeTitle ? formatTitleWithType('stakeholder.stakeholder-contact-person.title') : undefined}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

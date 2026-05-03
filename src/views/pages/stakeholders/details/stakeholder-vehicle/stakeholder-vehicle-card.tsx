@@ -30,11 +30,11 @@ const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, refetch, onEdit, onD
       <RowOptions
         deletePermissionRule={{
           action: 'delete',
-          subject: 'stakeholdervehicle'
+          subject: 'vehicle'
         }}
         editPermissionRule={{
           action: 'update',
-          subject: 'stakeholdervehicle'
+          subject: 'vehicle'
         }}
         onEdit={() => onEdit(vehicle)}
         onDelete={() => onDelete(vehicle?.id || '')}

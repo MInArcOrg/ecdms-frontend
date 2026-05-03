@@ -8,6 +8,7 @@ import stakeholderLicenseApiService from 'src/services/stakeholder/stakeholder-l
 import type { StakeholderLicense } from 'src/types/stakeholder/stakeholder-license';
 import type { IApiResponse } from 'src/types/requests';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import { useTranslation } from 'react-i18next';
 
 interface LicenseDrawerType {
   open: boolean;
@@ -15,10 +16,12 @@ interface LicenseDrawerType {
   refetch: () => void;
   license: StakeholderLicense;
   stakeholderId: string;
+  typeTitle?: string;
 }
 
 const LicenseDrawer = (props: LicenseDrawerType) => {
-  const { open, toggle, refetch, license, stakeholderId } = props;
+  const { open, toggle, refetch, license, stakeholderId, typeTitle } = props;
+  const { t } = useTranslation();
 
   const validationSchema = yup.object().shape({
     license_type: yup.string().required('License type is required'),
@@ -69,12 +72,33 @@ const LicenseDrawer = (props: LicenseDrawerType) => {
     handleClose();
   };
 
+  const formatTitleWithType = (key: string) => {
+    const base = t(key);
+    if (!typeTitle) return base;
+    if (/\b(Stakeholder|Stakholder)\b/i.test(base)) {
+      return base.replace(/\b(Stakeholder|Stakholder)\b/gi, typeTitle);
+    }
+    if (/^(Add|Edit)\b/i.test(base)) {
+      return base.replace(/^(Add|Edit)\b/i, `$1 ${typeTitle}`);
+    }
+    return `${typeTitle} ${base}`;
+  };
+
+  const titleKey = `stakeholder.stakeholder-license.${isEdit ? 'edit' : 'create'}`;
+  const translatedTitle = formatTitleWithType(titleKey);
+
   return (
-    <CustomSideDrawer title={`stakeholder.stakeholder-license.${isEdit ? 'edit' : 'create'}`} handleClose={handleClose} open={open}>
+    <CustomSideDrawer
+      title={titleKey}
+      translatedTitle={typeTitle ? translatedTitle : undefined}
+      handleClose={handleClose}
+      open={open}
+    >
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`stakeholder.stakeholder-license.${isEdit ? 'edit' : 'create'}`}
+          title={titleKey}
+          translatedTitle={typeTitle ? translatedTitle : undefined}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

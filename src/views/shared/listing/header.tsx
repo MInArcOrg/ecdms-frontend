@@ -97,6 +97,14 @@ const ListHeader = (props: ListHeaderProps) => {
 
     setTimerId(newTimerId);
   };
+
+  const submitSearch = () => {
+    if (timerId) {
+      clearTimeout(timerId);
+      setTimerId(null);
+    }
+    search?.onSearch?.(searchTerm, features?.search?.searchKeys || []);
+  };
   const handleFilterSubmit = (values: Record<string, any>) => {
     filter?.onFilter?.(values);
   }; const handleExportSubmit = (exportConfig: {
@@ -161,12 +169,22 @@ const ListHeader = (props: ListHeaderProps) => {
           }}
         >
           {search?.enabled && (
-            <CustomTextField
-              value={searchTerm}
-              sx={{ mr: 4 }}
-              placeholder={"Search " + transl(title)}
-              onChange={handleSearchChange}
-            />
+            <Box sx={{ display: 'flex', alignItems: 'center', mr: 4 }}>
+              <CustomTextField
+                value={searchTerm}
+                placeholder={"Search " + transl(title)}
+                onChange={handleSearchChange}
+                onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    submitSearch();
+                  }
+                }}
+              />
+              <IconButton color="primary" onClick={submitSearch} sx={{ ml: 1 }}>
+                <Icon icon="tabler:search" fontSize={20} />
+              </IconButton>
+            </Box>
           )}
           <Box
             sx={{

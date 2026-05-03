@@ -1,9 +1,11 @@
 import { Box } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
 import stakeholderLicenseApiService from 'src/services/stakeholder/stakeholder-license-service';
+import masterTypeApiService from 'src/services/master-data/master-type-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
@@ -19,12 +21,29 @@ interface StakeholderLicenseListProps {
   typeId: string;
 }
 
-const StakeholderLicenseList: React.FC<StakeholderLicenseListProps> = ({ stakeholderId }) => {
+const StakeholderLicenseList: React.FC<StakeholderLicenseListProps> = ({ stakeholderId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<StakeholderLicense | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
   const { t } = useTranslation();
+
+  const { data: stakeholderType } = useQuery({
+    queryKey: ['stakeholder-type', String(typeId)],
+    queryFn: () => masterTypeApiService.getOne('stakeholder', String(typeId), {}),
+    enabled: !!typeId
+  });
+
+  const stripStakeholderFromTitle = (value: string) =>
+    value.replace(/\b(Stakeholder|Stakholder)\b/gi, '').replace(/\s+/g, ' ').trim();
+
+  const typeTitle = stakeholderType?.payload?.title;
+  const listingTitle = typeTitle
+    ? `${typeTitle} ${stripStakeholderFromTitle(t('stakeholder.stakeholder-license.title'))}`
+    : t('stakeholder.stakeholder-license.title');
+
+  const detailTitle = typeTitle
+    ? `${typeTitle} ${stripStakeholderFromTitle(t('stakeholder.stakeholder-license.detail'))}`
+    : t('stakeholder.stakeholder-license.detail');
 
   const fetchLicenses = (params: GetRequestParam): Promise<IApiResponse<StakeholderLicense[]>> => {
     return stakeholderLicenseApiService.getAll({
@@ -35,6 +54,7 @@ const StakeholderLicenseList: React.FC<StakeholderLicenseListProps> = ({ stakeho
 
   const {
     data: licenses,
+    isLoading,
     pagination,
     handlePageChange,
     refetch
@@ -111,12 +131,6 @@ const StakeholderLicenseList: React.FC<StakeholderLicenseListProps> = ({ stakeho
     }
   ];
 
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
-
-
   return (
     <Box>
       {showDrawer && (
@@ -126,6 +140,7 @@ const StakeholderLicenseList: React.FC<StakeholderLicenseListProps> = ({ stakeho
           license={selectedRow as StakeholderLicense}
           refetch={refetch}
           stakeholderId={stakeholderId}
+          typeTitle={typeTitle}
         />
       )}
 
@@ -137,12 +152,12 @@ const StakeholderLicenseList: React.FC<StakeholderLicenseListProps> = ({ stakeho
           id={selectedRow?.id || ''}
           hasReference={true}
           fileType="STAKEHOLDER_LICENSE"
-          title={t('stakeholder.stakeholder-license.details')}
+          title={detailTitle}
         />
       )}
 
       <ItemsListing
-        title={t('stakeholder.stakeholder-license.title')}
+        title={listingTitle}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{

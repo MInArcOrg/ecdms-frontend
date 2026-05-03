@@ -71,6 +71,10 @@ const JointVentureCompanyList: React.FC<JointVentureCompanyListProps> = ({ stake
 
   const mapJointVentureCompanyToDetailItems = (jointVentureCompany: JointVentureCompany): { title: string; value: string }[] => [
     {
+      title: t('stakeholder.joint-venture-company.jointVenture'),
+      value: jointVentureCompany.title || 'N/A'
+    },
+    {
       title: t('stakeholder.joint-venture-company.companyName'),
       value: jointVentureCompany.company_name
     },

@@ -19,12 +19,10 @@ interface BranchDrawerType {
 }
 
 const BranchDrawer = (props: BranchDrawerType) => {
-  const { open, toggle, refetch, branch, stakeholderId, businessFields } = props;
+  const { open, toggle, refetch, branch, stakeholderId } = props;
 
   const validationSchema = yup.object().shape({
     name: yup.string().max(255).required('Name is required'),
-    business_field_id: yup.string().required('Business field is required'),
-    tin_number: yup.string().max(255).nullable(),
     description: yup.string().nullable(),
     reference: yup.string().max(255).nullable(),
     parent_id: yup.string().nullable()
@@ -40,14 +38,18 @@ const BranchDrawer = (props: BranchDrawerType) => {
     return stakeholderBranchApiService.update(branch?.id || '', body);
   };
 
-  const getPayload = (values: StakeholderBranch) => ({
-    data: {
-      ...values,
-      id: branch?.id,
-      stakeholder_id: stakeholderId
-    },
-    files: []
-  });
+  const getPayload = (values: StakeholderBranch) => {
+    const { tin_number, business_field_id, ...rest } = values as any;
+
+    return {
+      data: {
+        ...rest,
+        id: branch?.id,
+        stakeholder_id: stakeholderId
+      },
+      files: []
+    };
+  };
 
   const handleClose = () => {
     toggle();
@@ -73,7 +75,7 @@ const BranchDrawer = (props: BranchDrawerType) => {
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<StakeholderBranch>) => <BranchForm formik={formik} businessFields={businessFields} />}
+          {(formik: FormikProps<StakeholderBranch>) => <BranchForm formik={formik} />}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

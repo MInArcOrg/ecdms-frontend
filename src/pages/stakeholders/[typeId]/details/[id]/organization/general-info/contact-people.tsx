@@ -16,7 +16,7 @@ function StakeholderContactPersonIndex() {
         activeSubMenuId={stakeholderOrganizationIds.generalInfo.contactPerson}
         subMenuItems={subMenuItems(id as string, typeId as string)}
       >
-        <StakeholderContactPersonList type={'project'} stakeholderId={String(id)} />
+        <StakeholderContactPersonList type={'project'} stakeholderId={String(id)} typeId={String(typeId)} />
       </StakeholderLayout>
     </Box>
   );

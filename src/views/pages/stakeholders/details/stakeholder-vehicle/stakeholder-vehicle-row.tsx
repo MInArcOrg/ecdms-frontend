@@ -137,11 +137,11 @@ export const vehicleColumns = (
             item={row}
             deletePermissionRule={{
               action: 'delete',
-              subject: 'stakeholdervehicle'
+              subject: 'vehicle'
             }}
             editPermissionRule={{
               action: 'update',
-              subject: 'stakeholdervehicle'
+              subject: 'vehicle'
             }}
             options={[]}
           />

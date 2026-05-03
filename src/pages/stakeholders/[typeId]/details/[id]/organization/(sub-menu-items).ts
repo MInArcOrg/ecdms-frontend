@@ -59,11 +59,11 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         title: 'stakeholder.navigation.submenu.organization.general-info.address',
         path: `/stakeholders/${typeId}/details/${id}/organization/general-info/address`
       },
-      {
-        id: stakeholderOrganizationIds.generalInfo.jointVenture,
-        title: 'stakeholder.navigation.submenu.organization.general-info.joint-venture',
-        path: `/stakeholders/${typeId}/details/${id}/organization/general-info/joint-venture`
-      },
+      // {
+      //   id: stakeholderOrganizationIds.generalInfo.jointVenture,
+      //   title: 'stakeholder.navigation.submenu.organization.general-info.joint-venture',
+      //   path: `/stakeholders/${typeId}/details/${id}/organization/general-info/joint-venture`
+      // },
       {
         id: stakeholderOrganizationIds.generalInfo.jointVentureCompany,
         title: 'stakeholder.navigation.submenu.organization.general-info.joint-venture-company',

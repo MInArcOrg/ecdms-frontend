@@ -28,6 +28,7 @@ const EmployeeDrawer = (props: EmployeeDrawerType) => {
   const validationSchema = yup.object().shape({
     first_name: nameRule.required('First name is required'),
     last_name: nameRule.required('Last name is required'),
+    middle_name: nameRule.required('Middle name is required'),
     national_id_no: nationalIdRule.required('National ID number is required'),
     gender: yup.string().required('Gender is required'),
     phone: phoneRule.required('Phone number is required'),

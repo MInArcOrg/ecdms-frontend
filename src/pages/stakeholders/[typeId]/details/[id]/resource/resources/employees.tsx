@@ -21,7 +21,7 @@ function StakeholderEmployeeIndex() {
 
 StakeholderEmployeeIndex.acl = {
   action: 'view',
-  subject: 'stakeholder-machinery'
+  subject: 'stakeholderemployee'
 };
 
 export default StakeholderEmployeeIndex;

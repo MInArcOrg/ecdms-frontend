@@ -1,7 +1,8 @@
 export interface JointVentureCompany {
   id?: string;
   stakeholder_id: string;
-  joint_venture_id: string;
+  joint_venture_id?: string;
+  title: string;
   company_name: string;
   specialization?: string;
   roles_and_responsibilities?: string;

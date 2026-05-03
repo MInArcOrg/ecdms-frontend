@@ -27,7 +27,7 @@ const JointVentureCompanyDrawer = (props: JointVentureCompanyDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
-    joint_venture_id: yup.string().required('Joint Venture is required'),
+    title: yup.string().required('Joint Venture is required'),
     company_name: yup.string().required('Company name is required'),
     specialization: yup.string(),
     roles_and_responsibilities: yup.string(),

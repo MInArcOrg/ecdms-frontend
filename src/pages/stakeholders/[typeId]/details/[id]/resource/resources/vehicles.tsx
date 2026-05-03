@@ -21,7 +21,7 @@ function StakeholderMaterialIndex() {
 
 StakeholderMaterialIndex.acl = {
   action: 'view',
-  subject: 'stakeholdermachinery'
+  subject: 'vehicle'
 };
 
 export default StakeholderMaterialIndex;

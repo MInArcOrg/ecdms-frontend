@@ -24,7 +24,6 @@ const UpgradeDrawer = (props: UpgradeDrawerType) => {
     upgrade_type_id: yup.string().required('Upgrade type is required'),
     previous_level: yup.string().required('Previous level is required'),
     upgraded_level: yup.string().required('Upgraded level is required'),
-    ownership_percentage: yup.number().typeError('Ownership percentage must be a number').required('Ownership percentage is required').max(100, 'Ownership percentage must be less than or equal to 100'),
     description: yup.string().required('Description is required')
   });
 

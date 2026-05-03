@@ -1,9 +1,11 @@
 import { Box } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
 import stakeholderManagerApiService from 'src/services/stakeholder/stakeholder-manager-service';
+import masterTypeApiService from 'src/services/master-data/master-type-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt, formatDynamicDate } from 'src/utils/formatter/date';
@@ -20,12 +22,29 @@ interface ManagerListProps {
   typeId: string;
 }
 
-const ManagerList: React.FC<ManagerListProps> = ({ stakeholderId }) => {
+const ManagerList: React.FC<ManagerListProps> = ({ stakeholderId, typeId }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<StakeholderManager | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
   const { t } = useTranslation();
+
+  const { data: stakeholderType } = useQuery({
+    queryKey: ['stakeholder-type', String(typeId)],
+    queryFn: () => masterTypeApiService.getOne('stakeholder', String(typeId), {}),
+    enabled: !!typeId
+  });
+
+  const stripStakeholderFromTitle = (value: string) =>
+    value.replace(/\b(Stakeholder|Stakholder)\b/gi, '').replace(/\s+/g, ' ').trim();
+
+  const typeTitle = stakeholderType?.payload?.title;
+  const listingTitle = typeTitle
+    ? `${typeTitle} ${stripStakeholderFromTitle(t('stakeholder.stakeholder-manager.title'))}`
+    : t('stakeholder.stakeholder-manager.title');
+
+  const detailTitle = typeTitle
+    ? `${typeTitle} ${stripStakeholderFromTitle(t('stakeholder.stakeholder-manager.details'))}`
+    : t('stakeholder.stakeholder-manager.details');
 
   const fetchManagers = (params: GetRequestParam): Promise<IApiResponse<StakeholderManager[]>> => {
     return stakeholderManagerApiService.getAll({
@@ -36,6 +55,7 @@ const ManagerList: React.FC<ManagerListProps> = ({ stakeholderId }) => {
 
   const {
     data: managers,
+    isLoading,
     pagination,
     handlePageChange,
     refetch
@@ -121,12 +141,6 @@ const ManagerList: React.FC<ManagerListProps> = ({ stakeholderId }) => {
     }
   ];
 
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
-
-
   return (
     <Box>
       {showDrawer && (
@@ -136,6 +150,7 @@ const ManagerList: React.FC<ManagerListProps> = ({ stakeholderId }) => {
           manager={selectedRow as StakeholderManager}
           refetch={refetch}
           stakeholderId={stakeholderId}
+          typeTitle={typeTitle}
         />
       )}
 
@@ -147,12 +162,12 @@ const ManagerList: React.FC<ManagerListProps> = ({ stakeholderId }) => {
           id={selectedRow?.id || ''}
           hasReference={true}
           fileType="STAKEHOLDER_MANAGER"
-          title={t('stakeholder.stakeholder-manager.details')}
+          title={detailTitle}
         />
       )}
 
       <ItemsListing
-        title={t('stakeholder.stakeholder-manager.title')}
+        title={listingTitle}
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
