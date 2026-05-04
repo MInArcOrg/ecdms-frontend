@@ -189,7 +189,7 @@ const StakeholderDocumentList: React.FC<StakeholderDocumentListProps> = ({ model
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: entitySubject
+            subject: 'stakeholderdocument'
           }
         }}
         fetchDataFunction={refetch}
