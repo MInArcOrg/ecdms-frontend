@@ -38,7 +38,7 @@ const DataCenterComponentAgeForm: React.FC<DataCenterComponentAgeFormProps> = ({
           sx={{ mb: 2 }}
           options={
             dataCenters?.payload.map((type) => ({
-              label: type?.dataCenterType?.title,
+              label: type?.name || type?.dataCenterType?.title || `${type.id.slice(0, 5)}...`,
               value: type.id
             })) || []
           }

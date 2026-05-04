@@ -44,7 +44,9 @@ export const dataCenterComponentManufacturerColumns = (
     headerName: t('project.other.data-center-component-manufacturer.details.data-center-id'),
     field: 'data_center_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.data_center_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.dataCenter?.name || row?.data_center_id || t('common.not-available')}
+      </Typography>
     )
   },
   {

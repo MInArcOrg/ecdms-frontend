@@ -72,8 +72,8 @@ const EnvironmentalControlList: React.FC<EnvironmentalControlListProps> = ({ oth
 
   const mapEnvironmentalControlToDetailItems = (environmentalControl: EnvironmentalControl): { title: string; value: string }[] => [
     {
-      title: t('project.other.environmental-control.details.data-center'),
-      value: environmentalControl?.data_center_id || 'N/A'
+      title: t('project.other.environmental-control.details.data-center-id'),
+      value: environmentalControl?.dataCenter?.name || environmentalControl?.data_center_id || 'N/A'
     },
     {
       title: t('project.other.environmental-control.details.temperature'),

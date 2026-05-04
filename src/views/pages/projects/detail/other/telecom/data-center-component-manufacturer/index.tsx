@@ -78,7 +78,7 @@ const DataCenterComponentManufacturerList: React.FC<DataCenterComponentManufactu
   ): { title: string; value: string }[] => [
     {
       title: t('project.other.data-center-component-manufacturer.details.data-center-id'),
-      value: dataCenterComponentManufacturer?.data_center_id || 'N/A'
+      value: dataCenterComponentManufacturer?.dataCenter?.name || dataCenterComponentManufacturer?.data_center_id || 'N/A'
     },
     {
       title: t('project.other.data-center-component-manufacturer.details.servers'),

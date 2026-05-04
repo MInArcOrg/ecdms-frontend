@@ -73,7 +73,7 @@ const DataCenterComponentAgeList: React.FC<DataCenterComponentAgeListProps> = ({
   const mapDataCenterComponentAgeToDetailItems = (dataCenterComponentAge: DataCenterComponentAge): { title: string; value: string }[] => [
     {
       title: t('project.other.data-center-component-age.details.data-center-id'),
-      value: dataCenterComponentAge?.data_center_id || 'N/A'
+      value: dataCenterComponentAge?.dataCenter?.name || dataCenterComponentAge?.data_center_id || 'N/A'
     },
     {
       title: t('project.other.data-center-component-age.details.servers'),

@@ -49,7 +49,7 @@ const DataCenterComponentManufacturerCard: React.FC<DataCenterComponentManufactu
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.data-center-component-manufacturer.details.data-center-id')}:{' '}
-            {dataCenterComponentManufacturer?.data_center_id || 'N/A'}
+            {dataCenterComponentManufacturer?.dataCenter?.name || dataCenterComponentManufacturer?.data_center_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.data-center-component-manufacturer.details.servers')}: {dataCenterComponentManufacturer?.servers || 'N/A'}

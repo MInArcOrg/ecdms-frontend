@@ -46,8 +46,13 @@ const EnvironmentalControlDrawer = (props: EnvironmentalControlDrawerType) => {
 
   const getPayload = (values: EnvironmentalControl) => ({
     data: {
-      ...values,
-      project_id: projectId
+      project_id: projectId,
+      data_center_id: values.data_center_id,
+      temperature: values.temperature,
+      humidity: values.humidity,
+      air_quality: values.air_quality,
+      others: values.others,
+      id: environmentalControl?.id
     },
     files: uploadableFile ? [uploadableFile] : []
   });

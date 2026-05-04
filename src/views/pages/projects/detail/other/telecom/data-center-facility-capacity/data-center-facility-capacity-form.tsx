@@ -7,6 +7,7 @@ import { gridSpacing } from 'src/configs/app-constants';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { DataCenter, DataCenterFacilityCapacity } from 'src/types/project/other';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
+import CustomSwitch from 'src/views/shared/form/custom-switch';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
@@ -38,7 +39,7 @@ const DataCenterFacilityCapacityForm: React.FC<DataCenterFacilityCapacityFormPro
           sx={{ mb: 2 }}
           options={
             dataCenters?.payload.map((type) => ({
-              label: type?.dataCenterType?.title,
+              label: type?.name || type?.dataCenterType?.title || `${type.id.slice(0, 5)}...`,
               value: type.id
             })) || []
           }
@@ -90,55 +91,31 @@ const DataCenterFacilityCapacityForm: React.FC<DataCenterFacilityCapacityFormPro
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <CustomSelectBox
-              fullWidth
+            <CustomSwitch
               label={transl('project.other.data-center-facility-capacity.details.access-control')}
               name="access_control"
-              size="small"
               sx={{ mb: 2 }}
-              options={[
-                { label: transl('common.yes'), value: true },
-                { label: transl('common.no'), value: false }
-              ]}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <CustomSelectBox
-              fullWidth
+            <CustomSwitch
               label={transl('project.other.data-center-facility-capacity.details.surveillance-cameras')}
               name="surveillance_cameras"
-              size="small"
               sx={{ mb: 2 }}
-              options={[
-                { label: transl('common.yes'), value: true },
-                { label: transl('common.no'), value: false }
-              ]}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <CustomSelectBox
-              fullWidth
+            <CustomSwitch
               label={transl('project.other.data-center-facility-capacity.details.fire-suppression-systems')}
               name="fire_suppression_systems"
-              size="small"
               sx={{ mb: 2 }}
-              options={[
-                { label: transl('common.yes'), value: true },
-                { label: transl('common.no'), value: false }
-              ]}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <CustomSelectBox
-              fullWidth
+            <CustomSwitch
               label={transl('project.other.data-center-facility-capacity.details.intrusion-detection-systems')}
               name="intrusion_detection_systems"
-              size="small"
               sx={{ mb: 2 }}
-              options={[
-                { label: transl('common.yes'), value: true },
-                { label: transl('common.no'), value: false }
-              ]}
             />
           </Grid>
         </Grid>

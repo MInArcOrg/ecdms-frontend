@@ -13,9 +13,10 @@ interface DataCenterCardProps {
   onEdit: (dataCenter: DataCenter) => void;
   onDelete: (id: string) => void;
   onDetail: (dataCenter: DataCenter) => void;
+  dataCenterTypeMap: Map<string, string>;
 }
 
-const DataCenterCard: React.FC<DataCenterCardProps> = ({ dataCenter, refetch, onEdit, onDelete, onDetail }) => {
+const DataCenterCard: React.FC<DataCenterCardProps> = ({ dataCenter, refetch, onEdit, onDelete, onDetail, dataCenterTypeMap }) => {
   const { t } = useTranslation();
 
   return (
@@ -34,7 +35,7 @@ const DataCenterCard: React.FC<DataCenterCardProps> = ({ dataCenter, refetch, on
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {dataCenter?.id.slice(0, 5)}...
+              {dataCenter?.name || `${dataCenter?.id.slice(0, 5)}...`}
             </Typography>
           </Typography>
         </Box>
@@ -42,7 +43,14 @@ const DataCenterCard: React.FC<DataCenterCardProps> = ({ dataCenter, refetch, on
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.data-center.details.data-center-type-id')}: {dataCenter?.data_center_type_id || 'N/A'}
+            {t('project.other.data-center.details.name')}: {dataCenter?.name || 'N/A'}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {t('project.other.data-center.details.data-center-type-id')}:{' '}
+            {dataCenter?.dataCenterType?.title ||
+              dataCenterTypeMap.get(dataCenter?.data_center_type_id) ||
+              dataCenter?.data_center_type_id ||
+              'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.data-center.details.servers')}: {dataCenter?.servers ? t('common.yes') : t('common.no')}

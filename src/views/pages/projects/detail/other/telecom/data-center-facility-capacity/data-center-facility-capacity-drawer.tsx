@@ -56,8 +56,18 @@ const DataCenterFacilityCapacityDrawer = (props: DataCenterFacilityCapacityDrawe
 
   const getPayload = (values: DataCenterFacilityCapacity) => ({
     data: {
-      ...values,
-      project_id: projectId
+      project_id: projectId,
+      data_center_id: values.data_center_id,
+      total_floor_area: values.total_floor_area,
+      power_capacity: values.power_capacity,
+      rack_space_capacity: values.rack_space_capacity,
+      cooling_capacity: values.cooling_capacity,
+      access_control: values.access_control,
+      surveillance_cameras: values.surveillance_cameras,
+      fire_suppression_systems: values.fire_suppression_systems,
+      intrusion_detection_systems: values.intrusion_detection_systems,
+      others: values.others,
+      id: dataCenterFacilityCapacity?.id
     },
     files: uploadableFile ? [uploadableFile] : []
   });

@@ -1,8 +1,12 @@
 import { Box } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { dropDownConfig } from 'src/configs/api-constants';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
@@ -27,6 +31,20 @@ const DataCenterList: React.FC<DataCenterListProps> = ({ otherSubMenu, projectId
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<DataCenter | null>(null);
   const { t } = useTranslation();
+
+  const { data: dataCenterTypes } = useQuery({
+    queryKey: ['data-center-types', projectMasterModels.dataCenterType.model],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll(
+        dropDownConfig({
+          filter: {
+            model: projectMasterModels.dataCenterType.model
+          }
+        })
+      )
+  });
+
+  const dataCenterTypeMap = new Map<string, string>(dataCenterTypes?.payload.map((item) => [item.id, item.title || '']) || []);
 
   const fetchDataCenters = (params: GetRequestParam): Promise<IApiResponse<DataCenter[]>> => {
     return projectOtherApiSecondService<DataCenter>().getAll(otherSubMenu?.apiRoute || '', {
@@ -73,8 +91,16 @@ const DataCenterList: React.FC<DataCenterListProps> = ({ otherSubMenu, projectId
 
   const mapDataCenterToDetailItems = (dataCenter: DataCenter): { title: string; value: string }[] => [
     {
+      title: t('project.other.data-center.details.name'),
+      value: dataCenter?.name || 'N/A'
+    },
+    {
       title: t('project.other.data-center.details.data-center-type-id'),
-      value: dataCenter?.data_center_type_id || 'N/A'
+      value:
+        dataCenter?.dataCenterType?.title ||
+        dataCenterTypeMap.get(dataCenter?.data_center_type_id) ||
+        dataCenter?.data_center_type_id ||
+        'N/A'
     },
     {
       title: t('project.other.data-center.details.servers'),
@@ -140,11 +166,18 @@ const DataCenterList: React.FC<DataCenterListProps> = ({ otherSubMenu, projectId
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: dataCenterColumns(handleClickDetail, handleEdit, handleDelete, t, refetch)
+          headers: dataCenterColumns(handleClickDetail, handleEdit, handleDelete, t, refetch, dataCenterTypeMap)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
-          <DataCenterCard onDetail={handleClickDetail} dataCenter={data} onEdit={handleEdit} refetch={refetch} onDelete={handleDelete} />
+          <DataCenterCard
+            onDetail={handleClickDetail}
+            dataCenter={data}
+            onEdit={handleEdit}
+            refetch={refetch}
+            onDelete={handleDelete}
+            dataCenterTypeMap={dataCenterTypeMap}
+          />
         )}
         createActionConfig={{
           ...defaultCreateActionConfig,

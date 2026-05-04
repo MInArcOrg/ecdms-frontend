@@ -16,12 +16,13 @@ export const dataCenterColumns = (
   onEdit: (dataCenter: DataCenter) => void,
   onDelete: (id: string) => void,
   t: any,
-  refetch: () => void
+  refetch: () => void,
+  dataCenterTypeMap: Map<string, string>
 ): GridColDef[] => [
   {
     flex: 0.15,
     minWidth: 120,
-    field: 'id',
+    field: 'name',
     renderCell: ({ row }: CellType) => (
       <Typography
         noWrap
@@ -34,17 +35,23 @@ export const dataCenterColumns = (
           '&:hover': { color: 'primary.main' }
         }}
       >
-        {row?.id.slice(0, 5)}...
+        {row?.name ? `${row.name.slice(0, 8)}...` : `${row?.id?.slice(0, 5)}...`}
       </Typography>
     )
   },
+  
   {
     flex: 0.15,
     minWidth: 120,
     headerName: t('project.other.data-center.details.data-center-type-id'),
     field: 'data_center_type_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.data_center_type_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.dataCenterType?.title ||
+          dataCenterTypeMap.get(row?.data_center_type_id) ||
+          row?.data_center_type_id ||
+          t('common.not-available')}
+      </Typography>
     )
   },
   {

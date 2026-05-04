@@ -44,7 +44,9 @@ export const environmentalControlColumns = (
     headerName: t('project.other.environmental-control.details.data-center-id'),
     field: 'data_center_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.data_center_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.dataCenter?.name || row?.data_center_id || t('common.not-available')}
+      </Typography>
     )
   },
   {

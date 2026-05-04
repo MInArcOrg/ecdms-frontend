@@ -1984,6 +1984,7 @@
         "create-data-center": "Add Data Center",
         "edit-data-center": "Edit Data Center",
         "details": {
+          "name": "Name",
           "data-center-type-id": "Data Center Type",
           "servers": "Servers",
           "storage-devices": "Storage Devices",
@@ -1999,7 +2000,7 @@
         "create-environmental-control": "Add Environmental Control",
         "edit-environmental-control": "Edit Environmental Control",
         "details": {
-          "data-center-id": "Data Center ID",
+          "data-center-id": "Data Center",
           "temperature": "Temperature",
           "humidity": "Humidity",
           "air-quality": "Air Quality",
@@ -2012,7 +2013,7 @@
         "create-data-center-facility-capacity": "Add Data Center Facility",
         "edit-data-center-facility-capacity": "Edit Data Center Facility",
         "details": {
-          "data-center-id": "Data Center ID",
+          "data-center-id": "Data Center",
           "total-floor-area": "Total Floor Area",
           "power-capacity": "Power Capacity",
           "rack-space-capacity": "Rack Space Capacity",
@@ -2030,7 +2031,7 @@
         "data-center-component-age-details": "Data Center Component Age Details",
         "title": "Data Center Component Age",
         "details": {
-          "data-center-id": "Data Center ID",
+          "data-center-id": "Data Center",
           "servers": "Servers",
           "storage-devices": "Storage Devices",
           "networking-equipment": "Networking Equipment",
@@ -2041,7 +2042,7 @@
       },
       "data-center-component-manufacturer": {
         "details": {
-          "data-center-id": "Data Center ID",
+          "data-center-id": "Data Center",
           "servers": "Servers",
           "storage-devices": "Storage Devices",
           "networking-equipment": "Networking Equipment",

@@ -924,6 +924,7 @@ export interface GeotechnicalInformation {
 export interface EnvironmentalControl {
   id: string;
   data_center_id: string;
+  dataCenter?: DataCenter;
   temperature?: string;
   humidity?: string;
   air_quality?: string;
@@ -946,8 +947,9 @@ export interface RoadMaintenanceActivity {
 export interface DataCenter {
   id: string;
   project_id: string;
+  name: string;
   data_center_type_id: string;
-  dataCenterType: ProjectGeneralMaster;
+  dataCenterType?: ProjectGeneralMaster;
   servers?: boolean;
   storage_devices?: boolean;
   networking_equipment?: boolean;
@@ -1080,6 +1082,7 @@ export interface NetworkCapacity {
 export interface DataCenterFacilityCapacity {
   id: string;
   data_center_id: string; // Required UUID
+  dataCenter?: DataCenter;
   total_floor_area?: string; // Optional String
   power_capacity?: string; // Optional String
   rack_space_capacity?: string; // Optional String
@@ -1097,6 +1100,7 @@ export interface DataCenterComponentAge {
   id: string;
 
   data_center_id: string; // Required UUID
+  dataCenter?: DataCenter;
   servers?: number; // Optional Integer
   storage_devices?: number; // Optional Integer
   networking_equipment?: number; // Optional Integer
@@ -1123,6 +1127,7 @@ export interface SatelliteNetwork {
 export interface DataCenterComponentManufacturer {
   id: string;
   data_center_id: string; // Required UUID
+  dataCenter?: DataCenter;
   servers?: string; // Optional String
   storage_devices?: string; // Optional String
   networking_equipment?: string; // Optional String

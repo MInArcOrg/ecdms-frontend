@@ -2,7 +2,7 @@ import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { DataCenterComponentAge } from 'src/types/project/other';
+import { DataCenter, DataCenterComponentAge } from 'src/types/project/other';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
@@ -48,7 +48,8 @@ const DataCenterComponentAgeCard: React.FC<DataCenterComponentAgeCardProps> = ({
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.data-center-component-age.details.data-center-id')}: {dataCenterComponentAge?.data_center_id || 'N/A'}
+            {t('project.other.data-center-component-age.details.data-center-id')}:{' '}
+            {dataCenterComponentAge?.dataCenter?.name || dataCenterComponentAge?.data_center_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.data-center-component-age.details.servers')}: {dataCenterComponentAge?.servers || 'N/A'}

@@ -75,7 +75,7 @@ const DataCenterFacilityCapacityList: React.FC<DataCenterFacilityCapacityListPro
   ): { title: string; value: string }[] => [
     {
       title: t('project.other.data-center-facility-capacity.details.data-center-id'),
-      value: dataCenterFacilityCapacity?.data_center_id || 'N/A'
+      value: dataCenterFacilityCapacity?.dataCenter?.name || dataCenterFacilityCapacity?.data_center_id || 'N/A'
     },
     {
       title: t('project.other.data-center-facility-capacity.details.total-floor-area'),

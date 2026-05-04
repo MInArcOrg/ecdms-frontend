@@ -53,8 +53,15 @@ const DataCenterComponentManufacturerDrawer = (props: DataCenterComponentManufac
 
   const getPayload = (values: DataCenterComponentManufacturer) => ({
     data: {
-      ...values,
-      project_id: projectId
+      project_id: projectId,
+      data_center_id: values.data_center_id,
+      servers: values.servers,
+      storage_devices: values.storage_devices,
+      networking_equipment: values.networking_equipment,
+      cooling_systems: values.cooling_systems,
+      backup_generators: values.backup_generators,
+      others: values.others,
+      id: dataCenterComponentManufacturer?.id
     },
     files: uploadableFile ? [uploadableFile] : []
   });

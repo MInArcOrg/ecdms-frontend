@@ -30,6 +30,7 @@ const DataCenterDrawer = (props: DataCenterDrawerType) => {
 
   const validationSchema = yup.object().shape({
     parent_id: yup.string().nullable(),
+    name: yup.string().required('Name is required').max(100, 'Name cannot exceed 100 characters'),
     data_center_type_id: yup.string().required('Data center type is required'),
     servers: yup.boolean().nullable(),
     storage_devices: yup.boolean().nullable(),
@@ -49,8 +50,16 @@ const DataCenterDrawer = (props: DataCenterDrawerType) => {
 
   const getPayload = (values: DataCenter) => ({
     data: {
-      ...values,
-      project_id: projectId
+      project_id: projectId,
+      name: values.name,
+      data_center_type_id: values.data_center_type_id,
+      servers: values.servers,
+      storage_devices: values.storage_devices,
+      networking_equipment: values.networking_equipment,
+      cooling_systems: values.cooling_systems,
+      backup_generators: values.backup_generators,
+      others: values.others,
+      id: dataCenter?.id
     },
     files: uploadableFile ? [uploadableFile] : []
   });
@@ -79,6 +88,7 @@ const DataCenterDrawer = (props: DataCenterDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...dataCenter,
+            name: dataCenter?.name || '',
             data_center_type_id: dataCenter?.data_center_type_id || '',
             servers: dataCenter?.servers || false,
             storage_devices: dataCenter?.storage_devices || false,

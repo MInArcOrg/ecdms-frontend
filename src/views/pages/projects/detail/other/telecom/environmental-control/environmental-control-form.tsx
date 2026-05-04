@@ -31,14 +31,14 @@ const EnvironmentalControlForm: React.FC<EnvironmentalControlFormProps> = ({ for
       <Grid item xs={12}>
         <CustomSelectBox
           fullWidth
-          label={transl('project.other.data-center.details.data-center-type-id')}
-          placeholder={transl('project.other.data-center.details.data-center-type-id')}
+          label={transl('project.other.environmental-control.details.data-center-id')}
+          placeholder={transl('project.other.environmental-control.details.data-center-id')}
           name="data_center_id"
           size="small"
           sx={{ mb: 2 }}
           options={
             dataCenters?.payload.map((type) => ({
-              label: type?.dataCenterType?.title,
+              label: type?.name || type?.dataCenterType?.title || `${type.id.slice(0, 5)}...`,
               value: type.id
             })) || []
           }

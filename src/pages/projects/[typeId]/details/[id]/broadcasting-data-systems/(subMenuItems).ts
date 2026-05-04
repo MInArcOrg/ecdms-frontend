@@ -91,7 +91,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: broadcastingDataSystemsId.dataSystems.dataCenterFacilityCapacity,
         title: 'project.navigation.submenu.broadcasting-data.data-systems.data-center-facility-capacity',
         path: `/projects/${typeId}/details/${id}/broadcasting-data-systems/data-systems/data-center-facility-capacity`,
-        model: '  ',
+        model: 'datacenterfacilitycapacity',
         apiRoute: 'data-center-facility-capacities'
       },
       {

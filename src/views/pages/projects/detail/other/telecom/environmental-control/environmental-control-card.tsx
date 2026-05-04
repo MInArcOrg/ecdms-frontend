@@ -48,7 +48,8 @@ const EnvironmentalControlCard: React.FC<EnvironmentalControlCardProps> = ({
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.environmental-control.details.data-center-id')}: {environmentalControl?.data_center_id || 'N/A'}
+            {t('project.other.environmental-control.details.data-center-id')}:{' '}
+            {environmentalControl?.dataCenter?.name || environmentalControl?.data_center_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.environmental-control.details.temperature')}: {environmentalControl?.temperature || 'N/A'}

@@ -20,7 +20,7 @@ const DataCenterFacilityCapacityCard: React.FC<DataCenterFacilityCapacityCardPro
   refetch,
   onEdit,
   onDelete,
-  onDetail
+  onDetail,
 }) => {
   const { t } = useTranslation();
 
@@ -48,7 +48,8 @@ const DataCenterFacilityCapacityCard: React.FC<DataCenterFacilityCapacityCardPro
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.data-center-facility-capacity.details.data-center-id')}: {dataCenterFacilityCapacity?.data_center_id || 'N/A'}
+            {t('project.other.data-center-facility-capacity.details.data-center-id')}:{' '}
+            {dataCenterFacilityCapacity?.dataCenter?.name || dataCenterFacilityCapacity?.data_center_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.data-center-facility-capacity.details.total-floor-area')}:{' '}
