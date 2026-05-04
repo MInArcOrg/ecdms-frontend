@@ -4889,6 +4889,7 @@
       "deactivate": "Deactivate"
     },
     "table-columns": {
+      "details": "Details",
       "id": "ID",
       "created-at": "Created At",
       "updated-at": "update At",

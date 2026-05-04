@@ -34,7 +34,7 @@ export const mobileNetworkColumns = (
             '&:hover': { color: 'primary.main' }
           }}
         >
-          {row?.name || `${row?.id.slice(0, 5)}...`}
+          {row?.name || `$t('common.table-columns.details')`}
         </Typography>
       )
     },

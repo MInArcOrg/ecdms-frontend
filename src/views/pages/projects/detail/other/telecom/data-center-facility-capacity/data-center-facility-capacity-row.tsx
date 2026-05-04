@@ -16,7 +16,7 @@ export const dataCenterFacilityCapacityColumns = (
   onEdit: (dataCenterFacilityCapacity: DataCenterFacilityCapacity) => void,
   onDelete: (id: string) => void,
   t: any,
-  refetch: () => void,
+  refetch: () => void
 ): GridColDef[] => [
   {
     flex: 0.15,
@@ -34,7 +34,9 @@ export const dataCenterFacilityCapacityColumns = (
           '&:hover': { color: 'primary.main' }
         }}
       >
-        {row?.id.slice(0, 5)}...
+        {
+          t('common.table-columns.details')
+        }
       </Typography>
     )
   },
@@ -44,9 +46,7 @@ export const dataCenterFacilityCapacityColumns = (
     headerName: t('project.other.data-center-facility-capacity.details.data-center-id'),
     field: 'data_center_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>
-        {row?.dataCenter?.name || row?.data_center_id || t('common.not-available')}
-      </Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.data_center_id || t('common.not-available')}</Typography>
     )
   },
   {

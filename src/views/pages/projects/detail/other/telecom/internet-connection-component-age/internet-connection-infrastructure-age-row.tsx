@@ -34,7 +34,7 @@ export const internetConnectionInfrastructureAgeColumns = (
           '&:hover': { color: 'primary.main' }
         }}
       >
-        {row?.id.slice(0, 5)}...
+        t('common.table-columns.details')
       </Typography>
     )
   },
