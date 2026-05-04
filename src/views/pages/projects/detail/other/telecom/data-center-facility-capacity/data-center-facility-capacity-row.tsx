@@ -34,9 +34,8 @@ export const dataCenterFacilityCapacityColumns = (
           '&:hover': { color: 'primary.main' }
         }}
       >
-        {
+    
           {t('common.table-columns.details')}
-        }
       </Typography>
     )
   },
