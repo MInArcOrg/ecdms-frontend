@@ -177,6 +177,57 @@ export const downloadStaticFile = async (pathOrUrl: string, fileName?: string) =
   window.URL.revokeObjectURL(blobUrl);
 };
 
+const extractFilenameFromContentDisposition = (contentDisposition?: string | null) => {
+  if (!contentDisposition) return '';
+
+  const matchUtf8 = contentDisposition.match(/filename\*\s*=\s*UTF-8''([^;]+)/i);
+  if (matchUtf8?.[1]) {
+    try {
+      return decodeURIComponent(matchUtf8[1].trim().replace(/^"|"$/g, ''));
+    } catch {
+      return matchUtf8[1].trim().replace(/^"|"$/g, '');
+    }
+  }
+
+  const match = contentDisposition.match(/filename\s*=\s*([^;]+)/i);
+  if (!match?.[1]) return '';
+  return match[1].trim().replace(/^"|"$/g, '');
+};
+
+export const downloadFileById = async (fileId: string, fileName?: string, fallbackPathOrUrl?: string) => {
+  const endpoints = [
+    `/generics/download-file/${fileId}`,
+    `/generics/files/${fileId}/download`,
+    `/generics/files/download/${fileId}`
+  ];
+
+  for (const endpoint of endpoints) {
+    try {
+      const response = await customAxios.get<Blob>(endpoint, { responseType: 'blob' });
+
+      const headerName = extractFilenameFromContentDisposition((response.headers as any)?.['content-disposition']);
+      const resolvedFileName = (fileName || headerName || 'download').trim() || 'download';
+
+      const blobUrl = window.URL.createObjectURL(response.data);
+      const anchor = document.createElement('a');
+      anchor.href = blobUrl;
+      anchor.download = resolvedFileName;
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      window.URL.revokeObjectURL(blobUrl);
+
+      return;
+    } catch {
+      continue;
+    }
+  }
+
+  if (fallbackPathOrUrl) {
+    await downloadStaticFile(fallbackPathOrUrl, fileName);
+  }
+};
+
 // Get multiple photos
 export const useGetMultiplePhotos = (params: GetRequestParam) => {
   return useQuery({

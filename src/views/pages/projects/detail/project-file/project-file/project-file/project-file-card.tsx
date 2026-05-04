@@ -2,7 +2,7 @@ import { Box, Card, CardContent, IconButton, Typography } from '@mui/material';
 import Icon from 'src/@core/components/icon';
 import CustomChip from 'src/@core/components/mui/chip';
 import i18n from 'src/configs/i18n';
-import { downloadStaticFile } from 'src/services/utils/file-utils';
+import { downloadFileById } from 'src/services/utils/file-utils';
 import { FileModel } from 'src/types/general/file';
 import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio-calendar-utils';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
@@ -58,7 +58,7 @@ const ProjectFileCard = ({
     const fileName = getDownloadFileName();
 
     try {
-      await downloadStaticFile(projectFile?.url || '', fileName);
+      await downloadFileById(projectFile.id, fileName, projectFile?.url || '');
     } catch {
       return;
     }

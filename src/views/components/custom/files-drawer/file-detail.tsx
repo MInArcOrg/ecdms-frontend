@@ -18,7 +18,7 @@ import {
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getDynamicDate } from '../ethio-calendar/ethio-calendar-utils';
-import { deleteFile, downloadStaticFile, getStaticFile } from 'src/services/utils/file-utils';
+import { deleteFile, downloadFileById } from 'src/services/utils/file-utils';
 import { FileModel } from 'src/types/general/file';
 import RowOptions from 'src/views/shared/listing/row-options';
 
@@ -70,7 +70,7 @@ function FileDetail({ show, toggleDrawer, data, refetch, dataLoading }: FileDeta
 
     const fileName = getDownloadFileName(row);
     try {
-      await downloadStaticFile(row.url || '', fileName);
+      await downloadFileById(row.id, fileName, row.url || '');
     } catch {
       return;
     }
@@ -137,12 +137,16 @@ function FileDetail({ show, toggleDrawer, data, refetch, dataLoading }: FileDeta
                   <TableRow key={row.id}>
                     <TableCell component="th" scope="row" style={{ paddingRight: 0 }}>
                       <Typography
-                        component="a"
-                        href={getStaticFile(row.url || '')}
-                        target="_blank"
+                        component="button"
+                        onClick={(e) => handleDownload(e, row)}
                         color="primary"
                         variant="body2"
                         sx={{
+                          width: '100%',
+                          background: 'transparent',
+                          border: 'none',
+                          padding: 0,
+                          cursor: 'pointer',
                           display: 'flex',
                           alignItems: 'center',
                           gap: 1,
