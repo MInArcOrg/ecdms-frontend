@@ -35,7 +35,7 @@ export const dataCenterFacilityCapacityColumns = (
         }}
       >
         {
-          t('common.table-columns.details')
+          {t('common.table-columns.details')}
         }
       </Typography>
     )

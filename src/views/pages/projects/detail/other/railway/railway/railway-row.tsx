@@ -34,7 +34,7 @@ export const railwayColumns = (
           '&:hover': { color: 'primary.main' }
         }}
       >
-        t('common.table-columns.details')
+        {t('common.table-columns.details')}
       </Typography>
     )
   },
