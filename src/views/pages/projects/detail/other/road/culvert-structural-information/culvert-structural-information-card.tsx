@@ -48,21 +48,19 @@ const CulvertStructuralInformationCard: React.FC<CulvertStructuralInformationCar
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.culvert-structural-information.details.name')}: {culvertStructuralInformation?.name || 'N/A'}
+            {t('project.other.culvert-structural-information.details.culvert-id')}:{' '}
+            {culvertStructuralInformation?.culvert?.name || culvertStructuralInformation?.culvertBasicData?.name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.culvert-structural-information.details.culvert-type')}:{' '}
-            {culvertStructuralInformation?.culvertType?.title ||
-              culvertStructuralInformation?.culvertTypeId ||
-              culvertStructuralInformation?.culvert_type ||
-              'N/A'}
+            {culvertStructuralInformation?.culvertType?.title || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.culvert-structural-information.details.pier-type-id')}: {culvertStructuralInformation?.pier_type_id || 'N/A'}
+            {t('project.other.culvert-structural-information.details.pier-type-id')}: {culvertStructuralInformation?.pierType?.title || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.culvert-structural-information.details.abutment-type-id')}:{' '}
-            {culvertStructuralInformation?.abutment_type_id || 'N/A'}
+            {culvertStructuralInformation?.abutmentType?.title || 'N/A'}
           </Typography>
         </Box>
       </CardContent>

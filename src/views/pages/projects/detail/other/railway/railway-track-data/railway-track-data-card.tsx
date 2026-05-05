@@ -54,24 +54,33 @@ const RailwayTrackDataCard = ({
       }
     >
       <Typography variant="h5" component="div">
-        {railwayTrackData?.railway_track_infrastructure_type_id || railwayTrackData?.id?.slice(0, 8) + '...'}
+        {railwayTrackData?.name || railwayTrackData?.railwayTrackInfrastructureType?.title || railwayTrackData?.railway_track_infrastructure_type_id || railwayTrackData?.id?.slice(0, 8) + '...'}
       </Typography>
 
       <Grid container spacing={2} sx={{ mt: 1 }}>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
+            {t('project.other.railway-track-data.details.name')}: {railwayTrackData?.name || t('common.not-available')}
+          </Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-track-data.details.railway-track-infrastructure-type-id')}:{' '}
-            {railwayTrackData?.railway_track_infrastructure_type_id ?? t('common.not-available')}
+            {railwayTrackData?.railwayTrackInfrastructureType?.title ||
+              railwayTrackData?.railway_track_infrastructure_type_id ||
+              t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-data.details.track-type-id')}: {railwayTrackData?.track_type_id ?? t('common.not-available')}
+            {t('project.other.railway-track-data.details.track-type-id')}:{' '}
+            {railwayTrackData?.trackType?.title || railwayTrackData?.track_type_id || t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.railway-track-data.details.track-gauge-id')}: {railwayTrackData?.track_gauge_id ?? t('common.not-available')}
+            {t('project.other.railway-track-data.details.track-gauge-id')}:{' '}
+            {railwayTrackData?.trackGauge?.title || railwayTrackData?.track_gauge_id || t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>

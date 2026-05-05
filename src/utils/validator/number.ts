@@ -1,5 +1,13 @@
 import * as yup from 'yup';
 
+export const nullableNumberSchema = () =>
+  yup
+    .number()
+    .transform((value, originalValue) => (originalValue === '' || Number.isNaN(value) ? null : value))
+    .nullable();
+
+export const nullableIntegerSchema = (integerMessage = 'Must be an integer') => nullableNumberSchema().integer(integerMessage);
+
 export const limitNumberDigits = (
   schema: yup.NumberSchema<number | null | undefined>,
   {

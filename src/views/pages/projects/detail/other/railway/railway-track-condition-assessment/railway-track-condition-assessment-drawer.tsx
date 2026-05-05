@@ -12,6 +12,7 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import RailwayTrackConditionAssessmentForm from './railway-track-condition-assessment-form';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
+import { pastDateRule } from 'src/utils/validator/age';
 
 interface RailwayTrackConditionAssessmentDrawerType {
   open: boolean;
@@ -40,8 +41,8 @@ const RailwayTrackConditionAssessmentDrawer = (props: RailwayTrackConditionAsses
     projectOtherApiSecondService<RailwayTrackConditionAssessment>().update(otherSubMenu?.apiRoute || '', assessment?.id || '', body);
 
   const validationSchema = yup.object().shape({
-    project_id: yup.string().required(),
-    inspection_dates: yup.string().nullable(),
+    inspection_dates: pastDateRule().nullable(),
+    railway_track_data_id: yup.string().required(),
     track_condition_rating_id: yup.string().required(),
     observed_defects_id: yup.string().required(),
     track_settlement_irregularities: yup.string().nullable(),
@@ -52,6 +53,7 @@ const RailwayTrackConditionAssessmentDrawer = (props: RailwayTrackConditionAsses
     data: {
       project_id: projectId,
       inspection_dates: convertDateToLocaleDate(values.inspection_dates),
+      railway_track_data_id: values.railway_track_data_id,
       track_condition_rating_id: values.track_condition_rating_id,
       observed_defects_id: values.observed_defects_id,
       track_settlement_irregularities: values.track_settlement_irregularities,
@@ -100,7 +102,14 @@ const RailwayTrackConditionAssessmentDrawer = (props: RailwayTrackConditionAsses
           onCancel={handleClose}
         >
           {(formik: FormikProps<RailwayTrackConditionAssessment>) => {
-            return <RailwayTrackConditionAssessmentForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
+            return (
+              <RailwayTrackConditionAssessmentForm
+                projectId={projectId}
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+              />
+            );
           }}
         </FormPageWrapper>
       )}

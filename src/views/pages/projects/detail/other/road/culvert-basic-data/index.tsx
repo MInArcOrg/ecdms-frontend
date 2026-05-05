@@ -80,8 +80,8 @@ const CulvertBasicDataList: React.FC<CulvertBasicDataListProps> = ({ otherSubMen
       value: culvertBasicData?.name || 'N/A'
     },
     {
-      title: t('project.other.culvert-basic-data.details.culvert-name'),
-      value: culvertBasicData?.culvert_name || 'N/A'
+      title: t('project.other.culvert-basic-data.details.road-segment-id'),
+      value: culvertBasicData?.roadSegment?.name || 'N/A'
     },
     {
       title: t('project.other.culvert-basic-data.details.culvert-number'),
@@ -97,7 +97,7 @@ const CulvertBasicDataList: React.FC<CulvertBasicDataListProps> = ({ otherSubMen
     },
     {
       title: t('project.other.culvert-basic-data.details.area-topography-id'),
-      value: culvertBasicData?.area_topography_id || 'N/A'
+      value: culvertBasicData?.areaTopography?.title || 'N/A'
     },
     {
       title: t('project.other.culvert-basic-data.details.highest-water-level'),
@@ -129,7 +129,7 @@ const CulvertBasicDataList: React.FC<CulvertBasicDataListProps> = ({ otherSubMen
     },
     {
       title: t('project.other.culvert-basic-data.details.road-alignment'),
-      value: culvertBasicData?.road_alignment || 'N/A'
+      value: culvertBasicData?.road_allignment || 'N/A'
     },
     {
       title: t('project.other.culvert-basic-data.details.altitude'),

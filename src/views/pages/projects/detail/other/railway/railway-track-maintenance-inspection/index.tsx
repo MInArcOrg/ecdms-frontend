@@ -82,6 +82,10 @@ const RailwayTrackMaintenanceAndInspectionList: React.FC<RailwayTrackMaintenance
       value: row?.project_id || 'N/A'
     },
     {
+      title: t('project.other.railway-track-maintenance-and-inspection.details.railway-track-data-id'),
+      value: row?.railwayTrackData?.name || row?.railway_track_data_id || 'N/A'
+    },
+    {
       title: t('project.other.railway-track-maintenance-and-inspection.details.scheduled-maintenance-activity-id'),
       value: row?.scheduled_maintenance_activity_id || 'N/A'
     },

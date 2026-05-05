@@ -1159,7 +1159,7 @@ export const projectMasterModels = {
     createTitle: 'create-construction-method',
     editTitle: 'edit-construction-method',
     fileType: 'CONSTRUCTION_METHOD',
-    flag: 'ROAD' // Assuming ROAD for now, or generic
+    flag: 'COMMON' // Assuming ROAD for now, or generic
   },
   constructionType: {
     model: 'ConstructionType',
@@ -1168,7 +1168,7 @@ export const projectMasterModels = {
     createTitle: 'create-construction-type',
     editTitle: 'edit-construction-type',
     fileType: 'CONSTRUCTION_TYPE',
-    flag: 'ROAD'
+    flag: 'COMMON'
   },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;

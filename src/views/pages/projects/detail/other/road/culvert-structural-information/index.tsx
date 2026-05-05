@@ -78,16 +78,12 @@ const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationLis
     culvertStructuralInformation: CulvertStructuralInformation
   ): { title: string; value: string }[] => [
     {
-      title: t('project.other.culvert-structural-information.details.name'),
-      value: culvertStructuralInformation?.name || 'N/A'
+      title: t('project.other.culvert-structural-information.details.culvert-id'),
+      value: culvertStructuralInformation?.culvert?.name || culvertStructuralInformation?.culvertBasicData?.name || 'N/A'
     },
     {
       title: t('project.other.culvert-structural-information.details.culvert-type'),
-      value:
-        culvertStructuralInformation?.culvertType?.title ||
-        culvertStructuralInformation?.culvertTypeId ||
-        culvertStructuralInformation?.culvert_type ||
-        'N/A'
+      value: culvertStructuralInformation?.culvertType?.title || 'N/A'
     },
     {
       title: t('project.other.culvert-structural-information.details.culvert-barrel-length'),
@@ -119,7 +115,7 @@ const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationLis
     },
     {
       title: t('project.other.culvert-structural-information.details.pier-type-id'),
-      value: culvertStructuralInformation?.pier_type_id || 'N/A'
+      value: culvertStructuralInformation?.pierType?.title || 'N/A'
     },
     {
       title: t('project.other.culvert-structural-information.details.pier-height'),
@@ -127,7 +123,7 @@ const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationLis
     },
     {
       title: t('project.other.culvert-structural-information.details.abutment-type-id'),
-      value: culvertStructuralInformation?.abutment_type_id || 'N/A'
+      value: culvertStructuralInformation?.abutmentType?.title || 'N/A'
     },
     {
       title: t('project.other.culvert-structural-information.details.abutment-average-height'),
@@ -135,11 +131,11 @@ const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationLis
     },
     {
       title: t('project.other.culvert-structural-information.details.endwall-type-inlet-id'),
-      value: culvertStructuralInformation?.endwall_type_inlet_id || 'N/A'
+      value: culvertStructuralInformation?.endwallTypeInlet?.title || 'N/A'
     },
     {
       title: t('project.other.culvert-structural-information.details.endwall-type-outlet-id'),
-      value: culvertStructuralInformation?.endwall_type_outlet_id || 'N/A'
+      value: culvertStructuralInformation?.endwallTypeOutlet?.title || 'N/A'
     },
     {
       title: t('project.other.culvert-structural-information.details.wingwall-average-length'),
@@ -147,11 +143,11 @@ const CulvertStructuralInformationList: React.FC<CulvertStructuralInformationLis
     },
     {
       title: t('project.other.culvert-structural-information.details.paved-water-way-type-id'),
-      value: culvertStructuralInformation?.paved_water_way_type_id || 'N/A'
+      value: culvertStructuralInformation?.pavedWaterWayType?.title || 'N/A'
     },
     {
       title: t('project.other.culvert-structural-information.details.soil-type-id'),
-      value: culvertStructuralInformation?.soil_type_id || 'N/A'
+      value: culvertStructuralInformation?.soilType?.title || 'N/A'
     },
     {
       title: t('common.table-columns.created-at'),

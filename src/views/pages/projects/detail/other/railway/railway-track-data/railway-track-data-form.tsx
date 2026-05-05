@@ -57,6 +57,11 @@ const RailwayTrackDataForm: React.FC<RailwayTrackDataFormProps> = ({ formik, fil
       <Grid item xs={12}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
+            <CustomTextBox fullWidth label={t('project.other.railway-track-data.details.name')} name="name" size="small" sx={{ mb: 2 }} />
+          </Grid>
+        </Grid>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
             <CustomSelectBox
               fullWidth
               label={t('project.other.railway-track-data.details.railway-track-infrastructure-type-id')}

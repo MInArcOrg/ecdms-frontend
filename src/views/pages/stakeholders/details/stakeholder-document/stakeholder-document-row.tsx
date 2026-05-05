@@ -134,11 +134,11 @@ export const stakeholderDocumentColumns = (
           <RowOptions
             deletePermissionRule={{
               action: 'delete',
-              subject: entitySubject
+              subject: 'stakeholderdocument'
             }}
             editPermissionRule={{
               action: 'update',
-              subject: entitySubject
+              subject: 'stakeholderdocument'
             }}
             onEdit={() => onEdit(row)}
             onDelete={() => onDelete(row.id as string)}

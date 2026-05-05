@@ -23,8 +23,7 @@ export const railwayTrackConditionAssessmentColumns = (
   {
     flex: 0.2,
     minWidth: 150,
-    field: 'project_id',
-    headerName: t('project.other.railway-track-condition-assessment.details.project-id'),
+    field: 'id',
     renderCell: ({ row }: AssessmentCellType) => (
       <Typography
         noWrap
@@ -37,7 +36,18 @@ export const railwayTrackConditionAssessmentColumns = (
           '&:hover': { color: 'primary.main' }
         }}
       >
-        {row?.project_id || row?.id?.slice(0, 8) + '...'}
+        {t('common.table-columns.details')}
+      </Typography>
+    )
+  },
+  {
+    flex: 0.2,
+    minWidth: 150,
+    field: 'railway_track_data_id',
+    headerName: t('project.other.railway-track-condition-assessment.details.railway-track-data-id'),
+    renderCell: ({ row }: AssessmentCellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.railwayTrackData?.name || row?.railway_track_data_id || t('common.not-available')}
       </Typography>
     )
   },
@@ -59,7 +69,7 @@ export const railwayTrackConditionAssessmentColumns = (
     headerName: t('project.other.railway-track-condition-assessment.details.track-condition-rating-id'),
     renderCell: ({ row }: AssessmentCellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.track_condition_rating_id !== undefined ? row.track_condition_rating_id : t('common.not-available')}
+        {row?.trackConditionRating?.title || row?.track_condition_rating_id || t('common.not-available')}
       </Typography>
     )
   },
@@ -70,7 +80,7 @@ export const railwayTrackConditionAssessmentColumns = (
     headerName: t('project.other.railway-track-condition-assessment.details.observed-defects-id'),
     renderCell: ({ row }: AssessmentCellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.observed_defects_id !== undefined ? row.observed_defects_id : t('common.not-available')}
+        {row?.observedDefects?.title || row?.observed_defects_id || t('common.not-available')}
       </Typography>
     )
   },

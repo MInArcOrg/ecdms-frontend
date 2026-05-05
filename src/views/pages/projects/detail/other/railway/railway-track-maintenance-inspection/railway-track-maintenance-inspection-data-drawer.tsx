@@ -45,6 +45,7 @@ const RailwayTrackMaintenanceAndInspectionDrawer = (props: RailwayTrackMaintenan
     );
 
   const validationSchema = Yup.object().shape({
+    railway_track_data_id: Yup.string().required(),
     scheduled_maintenance_activity_id: Yup.string().required(),
     maintenance_method: Yup.string().nullable(),
     track_maintenance_frequency_id: Yup.string().required(),
@@ -56,6 +57,7 @@ const RailwayTrackMaintenanceAndInspectionDrawer = (props: RailwayTrackMaintenan
   const getPayload = (values: RailwayTrackMaintenanceAndInspection) => ({
     data: {
       project_id: projectId,
+      railway_track_data_id: values.railway_track_data_id,
       scheduled_maintenance_activity_id: values.scheduled_maintenance_activity_id,
       maintenance_method: values.maintenance_method,
       track_maintenance_frequency_id: values.track_maintenance_frequency_id,
@@ -104,7 +106,14 @@ const RailwayTrackMaintenanceAndInspectionDrawer = (props: RailwayTrackMaintenan
           onCancel={handleClose}
         >
           {(formik: FormikProps<RailwayTrackMaintenanceAndInspection>) => {
-            return <RailwayTrackMaintenanceAndInspectionForm file={uploadableFile} onFileChange={onFileChange} formik={formik} />;
+            return (
+              <RailwayTrackMaintenanceAndInspectionForm
+                projectId={projectId}
+                file={uploadableFile}
+                onFileChange={onFileChange}
+                formik={formik}
+              />
+            );
           }}
         </FormPageWrapper>
       )}

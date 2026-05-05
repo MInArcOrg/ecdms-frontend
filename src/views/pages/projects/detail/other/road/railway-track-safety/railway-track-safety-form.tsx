@@ -6,17 +6,26 @@ import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
-import type { RailwayTrackSafety } from 'src/types/project/other';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import type { RailwayTrackData, RailwayTrackSafety } from 'src/types/project/other';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomSwitch from 'src/views/shared/form/custom-switch';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface RailwayTrackSafetyFormProps {
   formik: FormikProps<RailwayTrackSafety>;
+  projectId: string;
 }
 
-const RailwayTrackSafetyForm: React.FC<RailwayTrackSafetyFormProps> = ({ formik }) => {
+const RailwayTrackSafetyForm: React.FC<RailwayTrackSafetyFormProps> = ({ formik, projectId }) => {
   const { t } = useTranslation();
+  const { data: railwayTrackData } = useQuery({
+    queryKey: ['railway-track-data', projectId],
+    queryFn: () =>
+      projectOtherApiSecondService<RailwayTrackData>().getAll('railway-track-data', {
+        filter: { project_id: projectId }
+      })
+  });
 
   const { data: trackSafetyMeasures } = useQuery({
     queryKey: [projectMasterModels.trackSafetyMeasure.model],
@@ -36,6 +45,20 @@ const RailwayTrackSafetyForm: React.FC<RailwayTrackSafetyFormProps> = ({ formik 
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
+        <CustomSelectBox
+          fullWidth
+          label={t('project.other.railway-track-safety.details.railway-track-data-id')}
+          placeholder={t('project.other.railway-track-safety.details.railway-track-data-id')}
+          name="railway_track_data_id"
+          size="small"
+          sx={{ mb: 2 }}
+          options={
+            railwayTrackData?.payload?.map((item) => ({
+              label: item?.name || item?.railwayTrackInfrastructureType?.title || `${item.id.slice(0, 5)}...`,
+              value: item.id
+            })) || []
+          }
+        />
         {/* railway_track_safety_measures_id - Assuming this is a required UUID, use a Select box */}
         <CustomSelectBox
           fullWidth

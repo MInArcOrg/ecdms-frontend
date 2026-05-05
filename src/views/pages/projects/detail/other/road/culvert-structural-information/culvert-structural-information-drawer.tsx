@@ -24,7 +24,7 @@ const CulvertStructuralInformationDrawer = (props: CulvertStructuralInformationD
   const validationSchema = yup.object().shape({
     parent_id: yup.string().length(36).nullable(),
     project_id: yup.string().length(36).required('Project is required'),
-    name: yup.string().max(255).required('Name is required'),
+    culvert_id: yup.string().length(36).required('Culvert is required'),
     culvertTypeId: yup.string().length(36).nullable(),
     culvert_barrel_length: yup.number().nullable(),
     culvert_height: yup.number().nullable(),
@@ -59,8 +59,8 @@ const CulvertStructuralInformationDrawer = (props: CulvertStructuralInformationD
   const getPayload = (values: CulvertStructuralInformation) => ({
     data: {
       project_id: projectId,
-      name: values.name,
-      culvert_type_id: values.culvertTypeId,
+      culvert_id: values.culvert_id,
+      culvert_type_id: values.culvertTypeId || values.culvert_type_id,
       culvert_barrel_length: values.culvert_barrel_length,
       culvert_height: values.culvert_height,
       opening_number: values.opening_number,
@@ -112,10 +112,17 @@ const CulvertStructuralInformationDrawer = (props: CulvertStructuralInformationD
           validationSchema={validationSchema}
           initialValues={{
             ...culvertStructuralInformation,
+            culvert_id:
+              culvertStructuralInformation?.culvert_id ||
+              culvertStructuralInformation?.culvert?.id ||
+              culvertStructuralInformation?.culvertBasicData?.id ||
+              '',
             culvertTypeId:
               culvertStructuralInformation?.culvertTypeId ||
+              culvertStructuralInformation?.culvert_type_id ||
               (culvertStructuralInformation as any)?.culvert_type_id ||
-              culvertStructuralInformation?.culvertType?.id,
+              culvertStructuralInformation?.culvertType?.id ||
+              '',
             project_id: projectId
           }}
           createActionFunc={isEdit ? editCulvertStructuralInformation : createCulvertStructuralInformation}
@@ -123,7 +130,7 @@ const CulvertStructuralInformationDrawer = (props: CulvertStructuralInformationD
           onCancel={handleClose}
         >
           {(formik: FormikProps<CulvertStructuralInformation>) => {
-            return <CulvertStructuralInformationForm formik={formik} />;
+            return <CulvertStructuralInformationForm projectId={projectId} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

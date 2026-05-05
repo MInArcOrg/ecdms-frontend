@@ -23,8 +23,8 @@ export const railwayTrackDataColumns = (
   {
     flex: 0.2,
     minWidth: 150,
-    field: 'railway_track_infrastructure_type_id',
-    headerName: t('project.other.railway-track-data.details.railway-track-infrastructure-type-id'),
+    field: 'name',
+    headerName: t('project.other.railway-track-data.details.name'),
     renderCell: ({ row }: CellType) => (
       <Typography
         noWrap
@@ -37,7 +37,18 @@ export const railwayTrackDataColumns = (
           '&:hover': { color: 'primary.main' }
         }}
       >
-        {row?.railway_track_infrastructure_type_id || row?.id.slice(0, 8) + '...'}
+        {row?.name || row?.railwayTrackInfrastructureType?.title || row?.railway_track_infrastructure_type_id || row?.id.slice(0, 8) + '...'}
+      </Typography>
+    )
+  },
+  {
+    flex: 0.2,
+    minWidth: 150,
+    field: 'railway_track_infrastructure_type_id',
+    headerName: t('project.other.railway-track-data.details.railway-track-infrastructure-type-id'),
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.railwayTrackInfrastructureType?.title || row?.railway_track_infrastructure_type_id || t('common.not-available')}
       </Typography>
     )
   },
@@ -48,7 +59,7 @@ export const railwayTrackDataColumns = (
     headerName: t('project.other.railway-track-data.details.track-type-id'),
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.track_type_id !== undefined ? row.track_type_id : t('common.not-available')}
+        {row?.trackType?.title || row?.track_type_id || t('common.not-available')}
       </Typography>
     )
   },
@@ -59,7 +70,7 @@ export const railwayTrackDataColumns = (
     headerName: t('project.other.railway-track-data.details.track-gauge-id'),
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.track_gauge_id !== undefined ? row.track_gauge_id : t('common.not-available')}
+        {row?.trackGauge?.title || row?.track_gauge_id || t('common.not-available')}
       </Typography>
     )
   },
@@ -144,7 +155,7 @@ export const railwayTrackDataColumns = (
     renderCell: ({ row }: CellType) => (
       <Fragment>
         <ModelAction
-          model="RailwayTracksGeometryData"
+          model="RailwayTrackData"
           model_id={row.id}
           refetchModel={refetch}
           resubmit={() => refetch()}
@@ -158,11 +169,11 @@ export const railwayTrackDataColumns = (
           options={[]}
           deletePermissionRule={{
             action: 'delete',
-            subject: 'railwaytracksgeometrydata'
+            subject: 'railwaytrackdata'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'railwaytracksgeometrydata'
+            subject: 'railwaytrackdata'
           }}
         />
       </Fragment>

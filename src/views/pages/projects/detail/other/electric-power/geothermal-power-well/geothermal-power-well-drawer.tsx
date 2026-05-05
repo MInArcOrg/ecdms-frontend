@@ -34,10 +34,10 @@ const GeothermalPowerWellDrawer = (props: GeothermalPowerWellDrawerType) => {
 
   const validationSchema = yup.object().shape({
     parent_id: yup.string().uuid().nullable(),
-    wells_name: yup.string().max(100).nullable(),
+    wells_name: yup.string().max(100).required(),
     wells_number: yup
       .number()
-      .nullable()
+      .required('Wells number is required.')
       .integer('Must be an integer')
       .transform((value) => (isNaN(value) ? null : value)),
     depth: yup

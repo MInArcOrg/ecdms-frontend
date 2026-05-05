@@ -6,16 +6,25 @@ import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
-import type { RailwayTrackRehabilitationOrRenewal } from 'src/types/project/other';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import type { RailwayTrackData, RailwayTrackRehabilitationOrRenewal } from 'src/types/project/other';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface RailwayTrackRehabilitationOrRenewalFormProps {
   formik: FormikProps<RailwayTrackRehabilitationOrRenewal>;
+  projectId: string;
 }
 
-const RailwayTrackRehabilitationOrRenewalForm: React.FC<RailwayTrackRehabilitationOrRenewalFormProps> = ({ formik }) => {
+const RailwayTrackRehabilitationOrRenewalForm: React.FC<RailwayTrackRehabilitationOrRenewalFormProps> = ({ formik, projectId }) => {
   const { t } = useTranslation();
+  const { data: railwayTrackData } = useQuery({
+    queryKey: ['railway-track-data', projectId],
+    queryFn: () =>
+      projectOtherApiSecondService<RailwayTrackData>().getAll('railway-track-data', {
+        filter: { project_id: projectId }
+      })
+  });
 
   const { data: rehabilitationRenewalMethods } = useQuery({
     queryKey: [projectMasterModels.rehabilitationRenewalMethodUsed.title],
@@ -29,6 +38,20 @@ const RailwayTrackRehabilitationOrRenewalForm: React.FC<RailwayTrackRehabilitati
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
+        <CustomSelectBox
+          fullWidth
+          label={t('project.other.railway-track-rehabilitation-or-renewal.details.railway-track-data-id')}
+          placeholder={t('project.other.railway-track-rehabilitation-or-renewal.details.railway-track-data-id')}
+          name="railway_track_data_id"
+          size="small"
+          sx={{ mb: 2 }}
+          options={
+            railwayTrackData?.payload?.map((item) => ({
+              label: item?.name || item?.railwayTrackInfrastructureType?.title || `${item.id.slice(0, 5)}...`,
+              value: item.id
+            })) || []
+          }
+        />
         <CustomSelectBox
           fullWidth
           label={t('project.other.railway-track-rehabilitation-or-renewal.details.rehabilitation-renewal-methods-used-id')}

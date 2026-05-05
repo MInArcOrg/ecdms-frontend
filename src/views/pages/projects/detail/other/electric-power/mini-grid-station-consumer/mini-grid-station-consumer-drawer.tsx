@@ -11,6 +11,7 @@ import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { MiniGridStationConsumer, MiniGridStation } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import { limitNumberDigits } from 'src/utils/validator/number';
 
 interface MiniGridStationConsumerDrawerType {
   open: boolean;
@@ -69,14 +70,20 @@ const MiniGridStationConsumerDrawer = (props: MiniGridStationConsumerDrawerType)
       .nullable()
       .transform((value) => (isNaN(value) ? null : value))
       .integer('Must be an integer'),
-    expected_electricity_sales: yup
-      .number()
-      .nullable()
-      .transform((value) => (isNaN(value) ? null : value)),
-    electricity_tariff: yup
-      .number()
-      .nullable()
-      .transform((value) => (isNaN(value) ? null : value)),
+    expected_electricity_sales:  limitNumberDigits(
+              yup
+                .number()
+                .nullable()
+                .transform((value) => (isNaN(value) ? null : value)),
+              { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
+            ),
+    electricity_tariff:  limitNumberDigits(
+              yup
+                .number()
+                .nullable()
+                .transform((value) => (isNaN(value) ? null : value)),
+              { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
+            ),
     remark: yup.string().nullable()
   });
 

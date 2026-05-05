@@ -604,14 +604,16 @@ export interface Pavement {
 }
 export interface CulvertBasicData {
   id: string;
+  parent_id?: string | null;
   project_id: string;
   name: string;
-  culvert_name: string;
+  road_segment_id?: string;
+  roadSegment?: RoadSegment;
   culvert_number?: number;
   culvert_coordinate_x?: number;
   culvert_coordinate_y?: number;
   area_topography_id: string;
-  culvert_type_id: string;
+  areaTopography?: ProjectGeneralMaster;
   highest_water_level?: number;
   lowest_water_level?: number;
   construction_year?: number;
@@ -619,16 +621,17 @@ export interface CulvertBasicData {
   designer?: string;
   culvert_cost?: number;
   detour_possibility?: boolean;
-  road_alignment?: string;
+  road_allignment?: string;
   altitude?: number;
   created_at: Date;
   updated_at: Date;
 }
 export interface CulvertStructuralInformation {
   id: string;
+  parent_id?: string | null;
   project_id: string;
-  name: string;
   culvert_type?: string;
+  culvert_type_id?: string;
   culvertTypeId?: string;
   culvertType?: ProjectGeneralMaster;
   culvert_barrel_length?: number;
@@ -639,32 +642,42 @@ export interface CulvertStructuralInformation {
   distance_between_barrels?: number;
   head_wall_length?: number;
   pier_type_id: string;
+  pierType?: ProjectGeneralMaster;
   pier_height?: number;
   abutment_type_id: string;
+  abutmentType?: ProjectGeneralMaster;
   abutment_average_height?: number;
   endwall_type_inlet_id: string;
+  endwallTypeInlet?: ProjectGeneralMaster;
   endwall_type_outlet_id: string;
+  endwallTypeOutlet?: ProjectGeneralMaster;
   wingwall_average_length?: number;
   paved_water_way_type_id: string;
+  pavedWaterWayType?: ProjectGeneralMaster;
   soil_type_id: string;
-  created_at: Date;
-  updated_at: Date;
+  soilType?: ProjectGeneralMaster;
+  created_at?: string | Date;
+  culvert_id: string;
+  culvertBasicData?: CulvertBasicData;
+  culvert?: CulvertBasicData;
+  updated_at?: string | Date;
 }
 export interface CulvertRoadOverInformation {
   id: string;
   project_id: string;
-  name: string;
+  culvert_id: string;
+  culvert?: CulvertBasicData;
   carriage_way_width?: number;
   side_walk_width?: number;
   lane_number?: number;
   head_wall_to_head_wall?: number;
   average_fill_height?: number;
   guard_rail_type_id: string;
+  guardRailType?: ProjectGeneralMaster;
   parapet_length?: number;
   created_at: Date;
   updated_at: Date;
 }
-
 export interface BridgeFoundation {
   id: string;
   project_id: string;
@@ -1777,9 +1790,13 @@ export interface RailwayTracksGeometryData {
 export interface RailwayTrackData {
   id: string;
   project_id: string;
+  name: string;
   railway_track_infrastructure_type_id: string;
+  railwayTrackInfrastructureType?: ProjectGeneralMaster;
   track_type_id: string;
+  trackType?: ProjectGeneralMaster;
   track_gauge_id: string;
+  trackGauge?: ProjectGeneralMaster;
   track_length?: number;
   rail_type_and_size?: string;
   sleepers_type_and_spacing?: string;
@@ -1795,9 +1812,13 @@ export interface RailwayTrackData {
 export interface RailwayTrackConditionAssessment {
   id: string;
   project_id: string;
+  railway_track_data_id: string;
+  railwayTrackData?: RailwayTrackData;
   inspection_dates?: string | Date | EthiopianDate; // ISO date string
   track_condition_rating_id: string;
+  trackConditionRating?: ProjectGeneralMaster;
   observed_defects_id: string;
+  observedDefects?: ProjectGeneralMaster;
   track_settlement_irregularities?: string;
   remark?: string;
   created_at?: string;
@@ -1806,6 +1827,8 @@ export interface RailwayTrackConditionAssessment {
 export interface RailwayTrackMaintenanceAndInspection {
   id: string;
   project_id: string;
+  railway_track_data_id: string;
+  railwayTrackData?: RailwayTrackData;
   scheduled_maintenance_activity_id: string;
   maintenance_method?: string;
   track_maintenance_frequency_id: string;
@@ -1819,6 +1842,8 @@ export interface RailwayTrackMaintenanceAndInspection {
 export interface RailwayTrackRehabilitationOrRenewal {
   id: string;
   project_id: string;
+  railway_track_data_id: string;
+  railwayTrackData?: RailwayTrackData;
   track_renewal_history?: string;
   plans_or_schedules?: string;
   rehabilitation_renewal_methods_used_id: string;
@@ -1830,6 +1855,8 @@ export interface RailwayTrackRehabilitationOrRenewal {
 export interface RailwayTrackSafety {
   id: string; // Required string
   project_id: string; // Required UUID
+  railway_track_data_id: string; // Required UUID
+  railwayTrackData?: RailwayTrackData;
   railway_track_safety_measures_id: string; // Required UUID
   track_inspection_frequency_id: string; // Required UUID
   is_compliant_with_safety_regulations_standards?: boolean; // Optional Boolean

@@ -11,6 +11,7 @@ import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { HydrologicalInformation } from 'src/types/project/other';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import { limitNumberDigits } from 'src/utils/validator/number';
 
 interface HydrologicalInformationDrawerType {
   open: boolean;
@@ -30,12 +31,48 @@ const HydrologicalInformationDrawer = (props: HydrologicalInformationDrawerType)
 
   const validationSchema = yup.object().shape({
     water_source: yup.string().nullable(),
-    catchment_area: yup.number().nullable(),
-    elevation_change: yup.number().nullable(),
-    head: yup.number().nullable(),
-    total_inflow: yup.number().nullable(),
-    active_storage_volume: yup.number().nullable(),
-    water_stored: yup.number().nullable(),
+    catchment_area:  limitNumberDigits(
+          yup
+            .number()
+            .nullable()
+            .transform((value) => (isNaN(value) ? null : value)),
+          { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
+        ),
+    elevation_change: limitNumberDigits(
+          yup
+            .number()
+            .nullable()
+            .transform((value) => (isNaN(value) ? null : value)),
+          { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
+        ),
+    head: limitNumberDigits(
+          yup
+            .number()
+            .nullable()
+            .transform((value) => (isNaN(value) ? null : value)),
+          { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
+        ),
+    total_inflow: limitNumberDigits(
+          yup
+            .number()
+            .nullable()
+            .transform((value) => (isNaN(value) ? null : value)),
+          { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
+        ),
+    active_storage_volume: limitNumberDigits(
+          yup
+            .number()
+            .nullable()
+            .transform((value) => (isNaN(value) ? null : value)),
+          { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
+        ),
+    water_stored: limitNumberDigits(
+          yup
+            .number()
+            .nullable()
+            .transform((value) => (isNaN(value) ? null : value)),
+          { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
+        ),
     remark: yup.string().nullable()
   });
 

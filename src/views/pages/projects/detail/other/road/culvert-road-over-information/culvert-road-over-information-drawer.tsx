@@ -22,9 +22,8 @@ const CulvertRoadOverInformationDrawer = (props: CulvertRoadOverInformationDrawe
   const { open, toggle, refetch, culvertRoadOverInformation, projectId, otherSubMenu } = props;
 
   const validationSchema = yup.object().shape({
-    parent_id: yup.string().length(36).nullable(),
     project_id: yup.string().length(36).required('Project is required'),
-    name: yup.string().max(255).required('Name is required'),
+    culvert_id: yup.string().length(36).required('Culvert is required'),
     carriage_way_width: yup.number().nullable(),
     side_walk_width: yup.number().nullable(),
     lane_number: yup.number().integer().nullable(),
@@ -49,7 +48,7 @@ const CulvertRoadOverInformationDrawer = (props: CulvertRoadOverInformationDrawe
   const getPayload = (values: CulvertRoadOverInformation) => ({
     data: {
       project_id: projectId,
-      name: values.name,
+      culvert_id: values.culvert_id,
       carriage_way_width: values.carriage_way_width,
       side_walk_width: values.side_walk_width,
       lane_number: values.lane_number,
@@ -58,8 +57,8 @@ const CulvertRoadOverInformationDrawer = (props: CulvertRoadOverInformationDrawe
       guard_rail_type_id: values.guard_rail_type_id,
       parapet_length: values.parapet_length,
       id: culvertRoadOverInformation?.id,
-      created_at: culvertRoadOverInformation?.created_at,
-      updated_at: culvertRoadOverInformation?.updated_at
+      created_at: values.created_at,
+      updated_at: values.updated_at
     },
     files: []
   });
@@ -87,13 +86,19 @@ const CulvertRoadOverInformationDrawer = (props: CulvertRoadOverInformationDrawe
           }`}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{ ...culvertRoadOverInformation, project_id: projectId }}
+          initialValues={{
+            ...culvertRoadOverInformation,
+            culvert_id: culvertRoadOverInformation?.culvert_id || culvertRoadOverInformation?.culvert?.id || '',
+            guard_rail_type_id:
+              culvertRoadOverInformation?.guard_rail_type_id || culvertRoadOverInformation?.guardRailType?.id || '',
+            project_id: projectId
+          }}
           createActionFunc={isEdit ? editCulvertRoadOverInformation : createCulvertRoadOverInformation}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<CulvertRoadOverInformation>) => {
-            return <CulvertRoadOverInformationForm formik={formik} />;
+            return <CulvertRoadOverInformationForm projectId={projectId} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

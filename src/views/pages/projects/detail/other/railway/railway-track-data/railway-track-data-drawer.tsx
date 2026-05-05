@@ -39,6 +39,7 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
     projectOtherApiSecondService<RailwayTrackData>().update(otherSubMenu?.apiRoute || '', railwayTrackData?.id || '', body);
 
   const validationSchema = yup.object().shape({
+    name: yup.string().required(),
     railway_track_infrastructure_type_id: yup.string().required(),
     track_type_id: yup.string().required(),
     track_gauge_id: yup.string().required(),
@@ -55,6 +56,7 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
   const getPayload = (values: RailwayTrackData) => ({
     data: {
       project_id: projectId,
+      name: values.name,
       railway_track_infrastructure_type_id: values.railway_track_infrastructure_type_id,
       track_type_id: values.track_type_id,
       track_gauge_id: values.track_gauge_id,
@@ -92,9 +94,7 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
       {() => (
         <FormPageWrapper
           edit={isEdit}
-          title={`project.other.railway-tracks-geometry-data.${
-            isEdit ? `edit-railway-tracks-geometry-data` : `create-railway-tracks-geometry-data`
-          }`}
+          title={`project.other.railway-track-data.${isEdit ? `edit-railway-track-data` : `create-railway-track-data`}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{

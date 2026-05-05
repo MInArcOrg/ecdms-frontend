@@ -40,13 +40,16 @@ export const culvertStructuralInformationColumns = (
       </Typography>
     )
   },
-
   {
-    flex: 0.15,
-    minWidth: 120,
-    headerName: t('project.other.culvert-structural-information.details.name'),
-    field: 'name',
-    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.name || t('common.not-available')}</Typography>
+    flex: 0.2,
+    minWidth: 180,
+    headerName: t('project.other.culvert-structural-information.details.culvert-id'),
+    field: 'culvert_id',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.culvert?.name || row?.culvertBasicData?.name || t('common.not-available')}
+      </Typography>
+    )
   },
   {
     flex: 0.15,
@@ -54,9 +57,7 @@ export const culvertStructuralInformationColumns = (
     headerName: t('project.other.culvert-structural-information.details.culvert-type'),
     field: 'culvertTypeId',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>
-        {row?.culvertType?.title || row?.culvertTypeId || row?.culvert_type || t('common.not-available')}
-      </Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.culvertType?.title || t('common.not-available')}</Typography>
     )
   },
   {
@@ -65,7 +66,7 @@ export const culvertStructuralInformationColumns = (
     headerName: t('project.other.culvert-structural-information.details.pier-type-id'),
     field: 'pier_type_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.pier_type_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.pierType?.title || t('common.not-available')}</Typography>
     )
   },
   {
@@ -74,7 +75,7 @@ export const culvertStructuralInformationColumns = (
     headerName: t('project.other.culvert-structural-information.details.abutment-type-id'),
     field: 'abutment_type_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.abutment_type_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.abutmentType?.title || t('common.not-available')}</Typography>
     )
   },
   {

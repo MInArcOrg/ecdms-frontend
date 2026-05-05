@@ -77,16 +77,20 @@ const RailwayTrackDataList: React.FC<RailwayTrackDataListProps> = ({ otherSubMen
       value: railwayTrackData?.project_id || 'N/A'
     },
     {
+      title: t('project.other.railway-track-data.details.name'),
+      value: railwayTrackData?.name || 'N/A'
+    },
+    {
       title: t('project.other.railway-track-data.details.railway-track-infrastructure-type-id'),
-      value: railwayTrackData?.railway_track_infrastructure_type_id || 'N/A'
+      value: railwayTrackData?.railwayTrackInfrastructureType?.title || railwayTrackData?.railway_track_infrastructure_type_id || 'N/A'
     },
     {
       title: t('project.other.railway-track-data.details.track-type-id'),
-      value: railwayTrackData?.track_type_id || 'N/A'
+      value: railwayTrackData?.trackType?.title || railwayTrackData?.track_type_id || 'N/A'
     },
     {
       title: t('project.other.railway-track-data.details.track-gauge-id'),
-      value: railwayTrackData?.track_gauge_id || 'N/A'
+      value: railwayTrackData?.trackGauge?.title || railwayTrackData?.track_gauge_id || 'N/A'
     },
     {
       title: t('project.other.railway-track-data.details.track-length'),

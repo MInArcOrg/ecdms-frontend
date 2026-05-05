@@ -20,10 +20,16 @@ export const railwayTrackMaintenanceAndInspectionColumns = (
   refetch: () => void
 ): GridColDef[] => [
     {
+      field: 'railway_track_data_id',
+      headerName: t('project.other.railway-track-maintenance-and-inspection.details.railway-track-data-id'),
+      flex: 1,
+      renderCell: (params: any) => params.row?.railwayTrackData?.name || params.row?.railway_track_data_id || 'N/A'
+    },
+    {
       field: 'project_id',
       headerName: t('project.other.railway-track-maintenance-and-inspection.details.project-id'),
       flex: 1,
-      renderCell: (params: any) => params.row.id || 'N/A'
+      renderCell: (params: any) => params.row.project_id || 'N/A'
     },
     {
       field: 'scheduled_maintenance_activity_id',
@@ -76,7 +82,7 @@ export const railwayTrackMaintenanceAndInspectionColumns = (
       renderCell: ({ row }: CellType) => (
         <Fragment>
           <ModelAction
-            model="RailwayTracksGeometryData"
+            model="RailwayTrackMaintenanceAndInspection"
             model_id={row.id}
             refetchModel={refetch}
             resubmit={() => refetch()}
@@ -90,11 +96,11 @@ export const railwayTrackMaintenanceAndInspectionColumns = (
             options={[]}
             deletePermissionRule={{
               action: 'delete',
-              subject: 'railwaytracksgeometrydata'
+              subject: 'railwaytrackmaintenanceandinspection'
             }}
             editPermissionRule={{
               action: 'update',
-              subject: 'railwaytracksgeometrydata'
+              subject: 'railwaytrackmaintenanceandinspection'
             }}
           />
         </Fragment>

@@ -32,12 +32,17 @@ const RailwayTrackSafetyCard: React.FC<RailwayTrackSafetyCardProps> = ({ railway
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {railwayTrackSafety?.id?.toString().slice(0, 5)}...
+              {railwayTrackSafety?.railwayTrackData?.name ||
+                railwayTrackSafety?.railway_track_data_id ||
+                railwayTrackSafety?.id?.toString().slice(0, 5) + '...'}
             </Typography>
           </Typography>
         </Box>
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
+          <Typography variant="body2" color="text.secondary">
+            {t('project.other.railway-track-safety.details.railway-track-data-id')}: {railwayTrackSafety?.railwayTrackData?.name || railwayTrackSafety?.railway_track_data_id || 'N/A'}
+          </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-track-safety.details.railway-track-safety-measures-id')}:{' '}
             {railwayTrackSafety?.railwayTrackSafetyMeasure?.title || 'N/A'}

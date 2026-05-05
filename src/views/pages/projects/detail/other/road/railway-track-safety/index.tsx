@@ -80,6 +80,10 @@ const RailwayTrackSafetyList: React.FC<RailwayTrackSafetyListProps> = ({ otherSu
       value: railwayTrackSafety?.id || 'N/A'
     },
     {
+      title: t('project.other.railway-track-safety.details.railway-track-data-id'),
+      value: railwayTrackSafety?.railwayTrackData?.name || railwayTrackSafety?.railway_track_data_id || 'N/A'
+    },
+    {
       title: t('project.other.railway-track-safety.details.railway-track-safety-measures-id'),
       value: railwayTrackSafety?.railwayTrackSafetyMeasure?.title || 'N/A'
     },

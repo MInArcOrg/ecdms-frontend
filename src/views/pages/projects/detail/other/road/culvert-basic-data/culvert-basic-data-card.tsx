@@ -45,13 +45,15 @@ const CulvertBasicDataCard: React.FC<CulvertBasicDataCardProps> = ({ culvertBasi
             {t('project.other.culvert-basic-data.details.name')}: {culvertBasicData?.name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.culvert-basic-data.details.culvert-name')}: {culvertBasicData?.culvert_name || 'N/A'}
+            {t('project.other.culvert-basic-data.details.road-segment-id')}:{' '}
+            {culvertBasicData?.roadSegment?.name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.culvert-basic-data.details.culvert-number')}: {culvertBasicData?.culvert_number || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.culvert-basic-data.details.area-topography-id')}: {culvertBasicData?.area_topography_id || 'N/A'}
+            {t('project.other.culvert-basic-data.details.area-topography-id')}:{' '}
+            {culvertBasicData?.areaTopography?.title || 'N/A'}
           </Typography>
         </Box>
       </CardContent>

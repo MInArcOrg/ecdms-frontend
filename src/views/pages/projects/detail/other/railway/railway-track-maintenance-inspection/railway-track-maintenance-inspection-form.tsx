@@ -7,7 +7,8 @@ import { dropDownConfig } from 'src/configs/api-constants';
 import { gridSpacing } from 'src/configs/app-constants';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
-import type { RailwayTrackMaintenanceAndInspection } from 'src/types/project/other';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import type { RailwayTrackData, RailwayTrackMaintenanceAndInspection } from 'src/types/project/other';
 import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
 import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
@@ -17,14 +18,23 @@ interface RailwayTrackMaintenanceAndInspectionFormProps {
   formik: FormikProps<RailwayTrackMaintenanceAndInspection>;
   file: File | null;
   onFileChange: (file: File | null) => void;
+  projectId: string;
 }
 
 const RailwayTrackMaintenanceAndInspectionForm: React.FC<RailwayTrackMaintenanceAndInspectionFormProps> = ({
   formik,
   file,
-  onFileChange
+  onFileChange,
+  projectId
 }) => {
   const { t } = useTranslation();
+  const { data: railwayTrackData } = useQuery({
+    queryKey: ['railway-track-data', projectId],
+    queryFn: () =>
+      projectOtherApiSecondService<RailwayTrackData>().getAll('railway-track-data', {
+        filter: { project_id: projectId }
+      })
+  });
   const { data: scheduledMaintenanceActivities } = useQuery({
     queryKey: [projectMasterModels.scheduledMaintenanceActivity.title],
     queryFn: () =>
@@ -50,6 +60,23 @@ const RailwayTrackMaintenanceAndInspectionForm: React.FC<RailwayTrackMaintenance
   console.log('formik error', formik.errors);
   return (
     <Grid container spacing={gridSpacing}>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <CustomSelectBox
+            fullWidth
+            label={t('project.other.railway-track-maintenance-and-inspection.details.railway-track-data-id')}
+            name="railway_track_data_id"
+            size="small"
+            sx={{ mb: 2 }}
+            options={
+              railwayTrackData?.payload?.map((item) => ({
+                label: item?.name || item?.railwayTrackInfrastructureType?.title || `${item.id.slice(0, 5)}...`,
+                value: item.id
+              })) || []
+            }
+          />
+        </Grid>
+      </Grid>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <CustomSelectBox

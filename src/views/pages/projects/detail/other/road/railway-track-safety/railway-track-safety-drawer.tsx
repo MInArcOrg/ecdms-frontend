@@ -21,6 +21,7 @@ interface RailwayTrackSafetyDrawerType {
 const RailwayTrackSafetyDrawer = (props: RailwayTrackSafetyDrawerType) => {
   const { open, toggle, refetch, railwayTrackSafety, projectId, otherSubMenu } = props;
   const validationSchema = yup.object().shape({
+    railway_track_data_id: yup.string().required(),
     railway_track_safety_measures_id: yup.string().required('Railway Track Safety Measures is required'),
     track_inspection_frequency_id: yup.string().required('Track Inspection Frequency is required')
   });
@@ -35,8 +36,12 @@ const RailwayTrackSafetyDrawer = (props: RailwayTrackSafetyDrawerType) => {
 
   const getPayload = (values: RailwayTrackSafety): IApiPayload<RailwayTrackSafety> => ({
     data: {
-      ...values,
       project_id: projectId,
+      railway_track_data_id: values.railway_track_data_id,
+      railway_track_safety_measures_id: values.railway_track_safety_measures_id,
+      track_inspection_frequency_id: values.track_inspection_frequency_id,
+      is_compliant_with_safety_regulations_standards: values.is_compliant_with_safety_regulations_standards,
+      remark: values.remark,
       id: railwayTrackSafety?.id
     } as RailwayTrackSafety,
     files: []
@@ -65,7 +70,7 @@ const RailwayTrackSafetyDrawer = (props: RailwayTrackSafetyDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<RailwayTrackSafety>) => {
-            return <RailwayTrackSafetyForm formik={formik} />;
+            return <RailwayTrackSafetyForm projectId={projectId} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

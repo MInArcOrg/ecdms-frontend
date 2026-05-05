@@ -38,13 +38,18 @@ const RailwayTrackRehabilitationOrRenewalCard: React.FC<RailwayTrackRehabilitati
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {railwayTrackRehabilitationOrRenewal?.id?.toString().slice(0, 5)}
-              ...
+              {railwayTrackRehabilitationOrRenewal?.railwayTrackData?.name ||
+                railwayTrackRehabilitationOrRenewal?.railway_track_data_id ||
+                railwayTrackRehabilitationOrRenewal?.id?.toString().slice(0, 5) + '...'}
             </Typography>
           </Typography>
         </Box>
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
+          <Typography variant="body2" color="text.secondary">
+            {t('project.other.railway-track-rehabilitation-or-renewal.details.railway-track-data-id')}:{' '}
+            {railwayTrackRehabilitationOrRenewal?.railwayTrackData?.name || railwayTrackRehabilitationOrRenewal?.railway_track_data_id || 'N/A'}
+          </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-track-rehabilitation-or-renewal.track_renewal_history')}:{' '}
             {railwayTrackRehabilitationOrRenewal?.track_renewal_history || 'N/A'}

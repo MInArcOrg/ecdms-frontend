@@ -87,6 +87,13 @@ const RailwayTrackRehabilitationOrRenewalList: React.FC<RailwayTrackRehabilitati
     railwayTrackRehabilitationOrRenewal: RailwayTrackRehabilitationOrRenewal
   ): { title: string; value: string }[] => [
     {
+      title: t('project.other.railway-track-rehabilitation-or-renewal.details.railway-track-data-id'),
+      value:
+        railwayTrackRehabilitationOrRenewal?.railwayTrackData?.name ||
+        railwayTrackRehabilitationOrRenewal?.railway_track_data_id ||
+        'N/A'
+    },
+    {
       title: t('project.other.railway-track-rehabilitation-or-renewal.details.track-renewal-history'),
       value: railwayTrackRehabilitationOrRenewal?.track_renewal_history || 'N/A'
     },

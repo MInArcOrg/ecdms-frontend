@@ -106,11 +106,11 @@ const ProjectFileCard = ({
                 <RowOptions
                   deletePermissionRule={{
                     action: 'delete',
-                    subject: 'file'
+                    subject: 'projectdocument'
                   }}
                   editPermissionRule={{
                     action: 'update',
-                    subject: 'file'
+                    subject: 'projectdocument'
                   }}
                   onEdit={onEdit}
                   onDelete={() => onDelete(projectFile.id)}

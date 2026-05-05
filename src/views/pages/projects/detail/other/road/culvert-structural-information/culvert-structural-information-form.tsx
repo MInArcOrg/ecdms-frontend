@@ -3,19 +3,33 @@ import { useQuery } from '@tanstack/react-query';
 import type { FormikProps } from 'formik';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
+import { dropDownConfig } from 'src/configs/api-constants';
 import { gridSpacing } from 'src/configs/app-constants';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
-import type { CulvertStructuralInformation } from 'src/types/project/other';
+import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
+import type { CulvertBasicData, CulvertStructuralInformation } from 'src/types/project/other';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface CulvertStructuralInformationFormProps {
   formik: FormikProps<CulvertStructuralInformation>;
+  projectId: string;
 }
 
-const CulvertStructuralInformationForm: React.FC<CulvertStructuralInformationFormProps> = ({ formik }) => {
+const CulvertStructuralInformationForm: React.FC<CulvertStructuralInformationFormProps> = ({ formik, projectId }) => {
   const { t: transl } = useTranslation();
+
+  const { data: culverts } = useQuery({
+    queryKey: ['culvert-basic-datas', projectId],
+    queryFn: () =>
+      projectOtherApiSecondService<CulvertBasicData>().getAll(
+        'culvert-basic-datas',
+        dropDownConfig({
+          filter: { project_id: projectId }
+        })
+      )
+  });
 
   const { data: pierTypes } = useQuery({
     queryKey: ['pier-types'],
@@ -76,13 +90,19 @@ const CulvertStructuralInformationForm: React.FC<CulvertStructuralInformationFor
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <CustomTextBox
+        <CustomSelect
           fullWidth
-          label={transl('project.other.culvert-structural-information.details.name')}
-          placeholder={transl('project.other.culvert-structural-information.details.name')}
-          name="name"
+          label={transl('project.other.culvert-structural-information.details.culvert-id')}
+          placeholder={transl('project.other.culvert-structural-information.details.culvert-id')}
+          name="culvert_id"
           size="small"
           sx={{ mb: 2 }}
+          options={
+            culverts?.payload?.map((item) => ({
+              label: item?.name || `${item.id.slice(0, 5)}...`,
+              value: item.id
+            })) || []
+          }
         />
 
         <CustomSelect

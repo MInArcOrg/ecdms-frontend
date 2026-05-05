@@ -513,7 +513,10 @@
       "edit-thermal-biomass-incineration-type": "Edit Thermal Biomass Incineration Type",
       "culvert-types": "Culvert Types",
       "create-culvert-type": "Add Culvert Type",
-      "edit-culvert-type": "Edit Culvert Type"
+      "edit-culvert-type": "Edit Culvert Type",
+      "construction-types": "Construction Types",
+      "create-construction-type": "Add Construction Type",
+      "edit-construction-type": "Edit Construction Type"
     },
     "form": {
       "title": "Title",
@@ -2232,6 +2235,7 @@
         "culvert-basic-data-details": "Culvert Basic Data Details",
         "details": {
           "name": "Name",
+          "road-segment-id": "Road Segment",
           "culvert-name": "Culvert Name",
           "culvert-number": "Culvert Number",
           "culvert-coordinate-x": "Culvert Coordinate X",
@@ -2255,6 +2259,7 @@
         "edit-culvert-structural-information": "Edit Culvert Structural Information",
         "culvert-structural-information-details": "Culvert Structural Information Details",
         "details": {
+          "culvert-id": "Culvert",
           "name": "Name",
           "culvert-type": "Culvert Type",
           "culvert-barrel-length": "Culvert Barrel Length",
@@ -2288,7 +2293,25 @@
           "head-wall-to-head-wall": "Head Wall to Head Wall",
           "average-fill-height": "Average Fill Height",
           "guard-rail-type-id": "Guard Rail Type",
-          "parapet-length": "Parapet Length"
+          "parapet-length": "Parapet Length",
+          "culvert-id": "Culvert",
+          "culvert-type-id": "Culvert Type",
+          "culvert-barrel-length": "Culvert Barrel Length",
+          "culvert-height": "Culvert Height",
+          "opening-number": "Opening Number",
+          "opening-width": "Opening Width",
+          "total-culvert-width": "Total Culvert Width",
+          "distance-between-barrels": "Distance Between Barrels",
+          "head-wall-length": "Head Wall Length",
+          "pier-type-id": "Pier Type",
+          "pier-height": "Pier Height",
+          "abutment-type-id": "Abutment Type",
+          "abutment-average-height": "Abutment Average Height",
+          "endwall-type-inlet-id": "Endwall Type Inlet",
+          "endwall-type-outlet-id": "Endwall Type Outlet",
+          "wingwall-average-length": "Wingwall Average Length",
+          "paved-water-way-type-id": "Paved Water Way Type",
+          "soil-type-id": "Soil Type"
         }
       },
       "bridge-basic-data": {
@@ -2392,6 +2415,7 @@
         "edit": "Edit Railway Track Safety",
         "detail": "Railway Track Safety Details",
         "details": {
+          "railway-track-data-id": "Railway Track Data",
           "railway-track-safety-measures-id": "Safety Measures",
           "track-inspection-frequency-id": "Inspection Frequency",
           "is-compliant-with-safety-regulations-standards": "Compliant with Safety Regulations",
@@ -2620,6 +2644,7 @@
         "create": "Add Railway Track Rehabilitation or renewal",
         "detail": "Railway Track Rehabilitation or renewal Detail",
         "details": {
+          "railway-track-data-id": "Railway Track Data",
           "track-renewal-history": "Track Renewal History",
           "plans-or-schedules": "Plans or Schedules",
           "rehabilitation-renewal-methods-used-id": "Rehabilitation/Renewal Methods Used",
@@ -3808,9 +3833,10 @@
         "railway-track-condition-assessment-details": "Railway Track Condition Assessment Details",
         "details": {
           "project-id": "Project ID",
+          "railway-track-data-id": "Railway Track Data",
           "inspection-dates": "Inspection Dates",
-          "track-condition-rating-id": "Track Condition Rating ID",
-          "observed-defects-id": "Observed Defects ID",
+          "track-condition-rating-id": "Track Condition Rating",
+          "observed-defects-id": "Observed Defects",
           "track-settlement-irregularities": "Track Settlement Irregularities",
           "remark": "Remark"
         }
@@ -4162,6 +4188,7 @@
         "edit-railway-track-data": "Edit Railway Track Data",
         "railway-track-data-details": "Railway Track Data Details",
         "details": {
+          "name": "Name",
           "railway-track-infrastructure-type-id": "Railway Track Infrastructure Type",
           "track-type-id": "Track Type",
           "track-gauge-id": "Track Gauge",
@@ -4199,6 +4226,7 @@
         "railway-track-maintenance-and-inspection-details": "Railway Track Maintenance And Inspection Details",
         "details": {
           "project-id": "Project ID",
+          "railway-track-data-id": "Railway Track Data",
           "scheduled-maintenance-activity-id": "Scheduled Maintenance Activity",
           "maintenance-method": "Maintenance Method",
           "track-maintenance-frequency-id": "Track Maintenance Frequency",

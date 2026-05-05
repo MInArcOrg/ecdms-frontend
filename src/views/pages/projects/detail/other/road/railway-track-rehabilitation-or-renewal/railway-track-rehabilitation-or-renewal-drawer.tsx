@@ -22,6 +22,7 @@ const RailwayTrackRehabilitationOrRenewalDrawer = (props: RailwayTrackRehabilita
   const { open, toggle, refetch, railwayTrackRehabilitationOrRenewal, projectId, otherSubMenu } = props;
 
   const validationSchema = yup.object().shape({
+    railway_track_data_id: yup.string().required(),
     track_renewal_history: yup.string().required('Track renewal history is required'),
     rehabilitation_renewal_methods_used_id: yup.string().required('Rehabilitation/renewal methods used is required'),
     rehabilitation_renewal_types: yup.string().required('Rehabilitation/renewal types is required')
@@ -41,8 +42,13 @@ const RailwayTrackRehabilitationOrRenewalDrawer = (props: RailwayTrackRehabilita
 
   const getPayload = (values: RailwayTrackRehabilitationOrRenewal): IApiPayload<RailwayTrackRehabilitationOrRenewal> => ({
     data: {
-      ...values,
       project_id: projectId,
+      railway_track_data_id: values.railway_track_data_id,
+      track_renewal_history: values.track_renewal_history,
+      plans_or_schedules: values.plans_or_schedules,
+      rehabilitation_renewal_methods_used_id: values.rehabilitation_renewal_methods_used_id,
+      rehabilitation_renewal_types: values.rehabilitation_renewal_types,
+      remark: values.remark,
       id: railwayTrackRehabilitationOrRenewal?.id
     } as RailwayTrackRehabilitationOrRenewal,
     files: []
@@ -78,7 +84,7 @@ const RailwayTrackRehabilitationOrRenewalDrawer = (props: RailwayTrackRehabilita
           onCancel={handleClose}
         >
           {(formik: FormikProps<RailwayTrackRehabilitationOrRenewal>) => {
-            return <RailwayTrackRehabilitationOrRenewalForm formik={formik} />;
+            return <RailwayTrackRehabilitationOrRenewalForm projectId={projectId} formik={formik} />;
           }}
         </FormPageWrapper>
       )}

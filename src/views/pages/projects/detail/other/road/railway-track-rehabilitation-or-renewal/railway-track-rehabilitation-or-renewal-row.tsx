@@ -39,6 +39,17 @@ export const railwayTrackRehabilitationOrRenewalColumns = (
   },
   {
     flex: 0.15,
+    minWidth: 140,
+    headerName: t('project.other.railway-track-rehabilitation-or-renewal.details.railway-track-data-id'),
+    field: 'railway_track_data_id',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.railwayTrackData?.name || row?.railway_track_data_id || t('common.not-available')}
+      </Typography>
+    )
+  },
+  {
+    flex: 0.15,
     minWidth: 120,
     headerName: t('project.other.railway-track-rehabilitation-or-renewal.details.track-renewal-history'),
     field: 'track_renewal_history',

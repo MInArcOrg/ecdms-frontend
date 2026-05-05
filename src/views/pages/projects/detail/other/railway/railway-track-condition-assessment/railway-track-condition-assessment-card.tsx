@@ -53,13 +53,23 @@ const RailwayTrackConditionAssessmentCard = ({
       }
     >
       <Typography variant="h5" component="div">
-        {assessment?.track_condition_rating_id || assessment?.id?.slice(0, 8) + '...'}
+        {assessment?.railwayTrackData?.name ||
+          assessment?.railway_track_data_id ||
+          assessment?.trackConditionRating?.title ||
+          assessment?.track_condition_rating_id ||
+          assessment?.id?.slice(0, 8) + '...'}
       </Typography>
       <Grid container spacing={2} sx={{ mt: 1 }}>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-track-condition-assessment.details.project-id')}:{' '}
             {assessment?.project_id ?? t('common.not-available')}
+          </Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <Typography variant="body2" color="text.secondary">
+            {t('project.other.railway-track-condition-assessment.details.railway-track-data-id')}:{' '}
+            {assessment?.railwayTrackData?.name || assessment?.railway_track_data_id || t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>
@@ -71,13 +81,13 @@ const RailwayTrackConditionAssessmentCard = ({
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-track-condition-assessment.details.track-condition-rating-id')}:{' '}
-            {assessment?.track_condition_rating_id ?? t('common.not-available')}
+            {assessment?.trackConditionRating?.title || assessment?.track_condition_rating_id || t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-track-condition-assessment.details.observed-defects-id')}:{' '}
-            {assessment?.observed_defects_id ?? t('common.not-available')}
+            {assessment?.observedDefects?.title || assessment?.observed_defects_id || t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>

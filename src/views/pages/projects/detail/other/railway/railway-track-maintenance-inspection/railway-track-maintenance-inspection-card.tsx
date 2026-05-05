@@ -56,13 +56,24 @@ const RailwayTrackMaintenanceAndInspectionCard = ({
       }
     >
       <Typography variant="h5" component="div">
-        {railwayTrackMaintenanceAndInspection?.project_id || railwayTrackMaintenanceAndInspection?.id?.slice(0, 8) + '...'}
+        {railwayTrackMaintenanceAndInspection?.railwayTrackData?.name ||
+          railwayTrackMaintenanceAndInspection?.railway_track_data_id ||
+          railwayTrackMaintenanceAndInspection?.project_id ||
+          railwayTrackMaintenanceAndInspection?.id?.slice(0, 8) + '...'}
       </Typography>
       <Grid container spacing={2} sx={{ mt: 1 }}>
         <Grid item xs={6}>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-track-maintenance-and-inspection.details.project-id')}:{' '}
             {railwayTrackMaintenanceAndInspection?.project_id ?? t('common.not-available')}
+          </Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <Typography variant="body2" color="text.secondary">
+            {t('project.other.railway-track-maintenance-and-inspection.details.railway-track-data-id')}:{' '}
+            {railwayTrackMaintenanceAndInspection?.railwayTrackData?.name ||
+              railwayTrackMaintenanceAndInspection?.railway_track_data_id ||
+              t('common.not-available')}
           </Typography>
         </Grid>
         <Grid item xs={6}>

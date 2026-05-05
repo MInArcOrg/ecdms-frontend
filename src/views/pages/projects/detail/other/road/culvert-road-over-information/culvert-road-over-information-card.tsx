@@ -48,7 +48,7 @@ const CulvertRoadOverInformationCard: React.FC<CulvertRoadOverInformationCardPro
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.culvert-road-over-information.details.name')}: {culvertRoadOverInformation?.name || 'N/A'}
+            {t('project.other.culvert-road-over-information.details.culvert-id')}: {culvertRoadOverInformation?.culvert?.name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.culvert-road-over-information.details.carriage-way-width')}:{' '}
@@ -59,7 +59,7 @@ const CulvertRoadOverInformationCard: React.FC<CulvertRoadOverInformationCardPro
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.culvert-road-over-information.details.guard-rail-type-id')}:{' '}
-            {culvertRoadOverInformation?.guard_rail_type_id || 'N/A'}
+            {culvertRoadOverInformation?.guardRailType?.title || 'N/A'}
           </Typography>
         </Box>
       </CardContent>

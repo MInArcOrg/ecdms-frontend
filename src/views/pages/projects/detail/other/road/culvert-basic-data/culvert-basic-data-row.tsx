@@ -48,15 +48,17 @@ export const culvertBasicDataColumns = (
     field: 'name',
     renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.name || t('common.not-available')}</Typography>
   },
+
   {
     flex: 0.15,
-    minWidth: 120,
-    headerName: t('project.other.culvert-basic-data.details.culvert-name'),
-    field: 'culvert_name',
+    minWidth: 160,
+    headerName: t('project.other.culvert-basic-data.details.road-segment-id'),
+    field: 'road_segment_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.culvert_name || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.roadSegment?.name || t('common.not-available')}</Typography>
     )
   },
+
   {
     flex: 0.15,
     minWidth: 120,
@@ -72,7 +74,9 @@ export const culvertBasicDataColumns = (
     headerName: t('project.other.culvert-basic-data.details.area-topography-id'),
     field: 'area_topography_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.area_topography_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.areaTopography?.title || t('common.not-available')}
+      </Typography>
     )
   },
   {

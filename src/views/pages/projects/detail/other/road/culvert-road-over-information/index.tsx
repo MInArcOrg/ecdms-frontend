@@ -78,8 +78,8 @@ const CulvertRoadOverInformationList: React.FC<CulvertRoadOverInformationListPro
     culvertRoadOverInformation: CulvertRoadOverInformation
   ): { title: string; value: string }[] => [
     {
-      title: t('project.other.culvert-road-over-information.details.name'),
-      value: culvertRoadOverInformation?.name || 'N/A'
+      title: t('project.other.culvert-road-over-information.details.culvert-id'),
+      value: culvertRoadOverInformation?.culvert?.name || 'N/A'
     },
     {
       title: t('project.other.culvert-road-over-information.details.carriage-way-width'),
@@ -103,7 +103,7 @@ const CulvertRoadOverInformationList: React.FC<CulvertRoadOverInformationListPro
     },
     {
       title: t('project.other.culvert-road-over-information.details.guard-rail-type-id'),
-      value: culvertRoadOverInformation?.guard_rail_type_id || 'N/A'
+      value: culvertRoadOverInformation?.guardRailType?.title || 'N/A'
     },
     {
       title: t('project.other.culvert-road-over-information.details.parapet-length'),

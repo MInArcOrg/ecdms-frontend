@@ -77,16 +77,20 @@ const RailwayTrackConditionAssesmentList: React.FC<RailwayTrackConditionAssesmen
       value: assessment?.project_id || 'N/A'
     },
     {
+      title: t('project.other.railway-track-condition-assessment.details.railway-track-data-id'),
+      value: assessment?.railwayTrackData?.name || assessment?.railway_track_data_id || 'N/A'
+    },
+    {
       title: t('project.other.railway-track-condition-assessment.details.inspection-dates'),
       value: assessment?.inspection_dates?.toLocaleString() || 'N/A'
     },
     {
       title: t('project.other.railway-track-condition-assessment.details.track-condition-rating-id'),
-      value: assessment?.track_condition_rating_id || 'N/A'
+      value: assessment?.trackConditionRating?.title || assessment?.track_condition_rating_id || 'N/A'
     },
     {
       title: t('project.other.railway-track-condition-assessment.details.observed-defects-id'),
-      value: assessment?.observed_defects_id || 'N/A'
+      value: assessment?.observedDefects?.title || assessment?.observed_defects_id || 'N/A'
     },
     {
       title: t('project.other.railway-track-condition-assessment.details.track-settlement-irregularities'),

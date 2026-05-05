@@ -40,14 +40,16 @@ export const culvertRoadOverInformationColumns = (
       </Typography>
     )
   },
-
   {
-    flex: 0.15,
-    minWidth: 120,
-    headerName: t('project.other.culvert-road-over-information.details.name'),
-    field: 'name',
-    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.name || t('common.not-available')}</Typography>
+    flex: 0.2,
+    minWidth: 180,
+    headerName: t('project.other.culvert-road-over-information.details.culvert-id'),
+    field: 'culvert_id',
+    renderCell: ({ row }: CellType) => (
+      <Typography sx={{ color: 'text.secondary' }}>{row?.culvert?.name || t('common.not-available')}</Typography>
+    )
   },
+
   {
     flex: 0.15,
     minWidth: 120,
@@ -72,7 +74,7 @@ export const culvertRoadOverInformationColumns = (
     headerName: t('project.other.culvert-road-over-information.details.guard-rail-type-id'),
     field: 'guard_rail_type_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.guard_rail_type_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.guardRailType?.title || t('common.not-available')}</Typography>
     )
   },
   {

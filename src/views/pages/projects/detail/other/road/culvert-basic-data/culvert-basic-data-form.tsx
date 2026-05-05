@@ -6,16 +6,26 @@ import { useTranslation } from 'react-i18next';
 import { gridSpacing } from 'src/configs/app-constants';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
-import type { CulvertBasicData } from 'src/types/project/other';
+import projectOtherApiService from 'src/services/project/project-other-service';
+import type { CulvertBasicData, RoadSegment } from 'src/types/project/other';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
 interface CulvertBasicDataFormProps {
   formik: FormikProps<CulvertBasicData>;
+  projectId: string;
 }
 
-const CulvertBasicDataForm: React.FC<CulvertBasicDataFormProps> = ({ formik }) => {
+const CulvertBasicDataForm: React.FC<CulvertBasicDataFormProps> = ({ formik, projectId }) => {
   const { t: transl } = useTranslation();
+
+  const { data: roadSegments } = useQuery({
+    queryKey: ['road-segments', projectId],
+    queryFn: () =>
+      projectOtherApiService<RoadSegment>().getAll('roadsegment', {
+        filter: { project_id: projectId }
+      })
+  });
 
   const { data: areaTopographies } = useQuery({
     queryKey: ['area-topographies'],
@@ -25,31 +35,29 @@ const CulvertBasicDataForm: React.FC<CulvertBasicDataFormProps> = ({ formik }) =
       })
   });
 
-  const { data: culvertTypes } = useQuery({
-    queryKey: ['culvert-types'],
-    queryFn: () =>
-      projectGeneralMasterDataApiService.getAll({
-        filter: { model: projectMasterModels.culvertType.model }
-      })
-  });
-
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
+        <CustomSelect
+          fullWidth
+          label={transl('project.other.culvert-basic-data.details.road-segment-id')}
+          placeholder={transl('project.other.culvert-basic-data.details.road-segment-id')}
+          name="road_segment_id"
+          size="small"
+          sx={{ mb: 2 }}
+          options={
+            roadSegments?.payload?.map((segment) => ({
+              label: segment.name,
+              value: segment.id
+            })) || []
+          }
+        />
+
         <CustomTextBox
           fullWidth
           label={transl('project.other.culvert-basic-data.details.name')}
           placeholder={transl('project.other.culvert-basic-data.details.name')}
           name="name"
-          size="small"
-          sx={{ mb: 2 }}
-        />
-
-        <CustomTextBox
-          fullWidth
-          label={transl('project.other.culvert-basic-data.details.culvert-name')}
-          placeholder={transl('project.other.culvert-basic-data.details.culvert-name')}
-          name="culvert_name"
           size="small"
           sx={{ mb: 2 }}
         />
@@ -93,21 +101,6 @@ const CulvertBasicDataForm: React.FC<CulvertBasicDataFormProps> = ({ formik }) =
           sx={{ mb: 2 }}
           options={
             areaTopographies?.payload.map((type) => ({
-              label: type.title,
-              value: type.id
-            })) || []
-          }
-        />
-
-        <CustomSelect
-          fullWidth
-          label={transl('project.other.culvert-basic-data.details.culvert-type-id')}
-          placeholder={transl('project.other.culvert-basic-data.details.culvert-type-id')}
-          name="culvert_type_id"
-          size="small"
-          sx={{ mb: 2 }}
-          options={
-            culvertTypes?.payload.map((type) => ({
               label: type.title,
               value: type.id
             })) || []
@@ -188,7 +181,7 @@ const CulvertBasicDataForm: React.FC<CulvertBasicDataFormProps> = ({ formik }) =
           fullWidth
           label={transl('project.other.culvert-basic-data.details.road-alignment')}
           placeholder={transl('project.other.culvert-basic-data.details.road-alignment')}
-          name="road_alignment"
+          name="road_allignment"
           size="small"
           sx={{ mb: 2 }}
         />

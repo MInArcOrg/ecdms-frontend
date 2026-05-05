@@ -18,6 +18,17 @@ export const railwayTrackSafetryColumns = (
 ): GridColDef[] => [
     {
       flex: 0.15,
+      minWidth: 140,
+      field: 'railway_track_data_id',
+      headerName: t('project.other.railway-track-safety.details.railway-track-data-id'),
+      renderCell: ({ row }: CellType) => (
+        <Typography sx={{ color: 'text.secondary' }}>
+          {row?.railwayTrackData?.name || row?.railway_track_data_id || 'N/A'}
+        </Typography>
+      )
+    },
+    {
+      flex: 0.15,
       minWidth: 120,
       field: 'id',
       headerName: t('common.table-columns.id'),
@@ -87,7 +98,7 @@ export const railwayTrackSafetryColumns = (
       renderCell: ({ row }: CellType) => (
         <>
           <ModelAction
-            model="RailwayTrackRehabilitationOrRenewal"
+            model="RailwayTrackSafety"
             model_id={row.id}
             refetchModel={refetch}
             resubmit={() => refetch()}
