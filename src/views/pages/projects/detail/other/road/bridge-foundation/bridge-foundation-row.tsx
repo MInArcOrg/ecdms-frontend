@@ -45,9 +45,9 @@ export const bridgeFoundationColumns = (
       flex: 0.15,
       minWidth: 120,
       headerName: t('project.other.bridge-foundation.details.bridge-name'),
-      field: 'bridge_name',
+      field: 'bridge_id',
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.bridgeBasicData?.name || row?.bridge_name || t('common.not-available')}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.bridgeBasicData?.name || t('common.not-available')}</Typography>
       )
     },
     {
@@ -56,7 +56,7 @@ export const bridgeFoundationColumns = (
       headerName: t('project.other.bridge-foundation.details.abutment-type-id'),
       field: 'abutment_type_id',
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.abutment_type_id || t('common.not-available')}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.abutmentType?.title || row?.abutment_type_id || t('common.not-available')}</Typography>
       )
     },
     {
@@ -65,7 +65,7 @@ export const bridgeFoundationColumns = (
       headerName: t('project.other.bridge-foundation.details.soil-type-id'),
       field: 'soil_type_id',
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.soil_type_id || t('common.not-available')}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.soilType?.title || row?.soil_type_id || t('common.not-available')}</Typography>
       )
     },
     {

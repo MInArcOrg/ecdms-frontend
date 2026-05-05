@@ -77,28 +77,24 @@ const BridgeInspectionList: React.FC<BridgeInspectionListProps> = ({ otherSubMen
 
   const mapBridgeInspectionToDetailItems = (bridgeInspection: BridgeInspection): { title: string; value: string }[] => [
     {
-      title: t('project.other.bridge-inspection.details.name'),
-      value: bridgeInspection?.name || 'N/A'
-    },
-    {
       title: t('project.other.bridge-inspection.details.bridge-name'),
-      value: bridgeInspection?.name || 'N/A'
+      value: bridgeInspection?.bridge?.name || 'N/A'
     },
     {
       title: t('project.other.bridge-inspection.details.bridge-part-defect-id'),
-      value: bridgeInspection?.bridge_part_defect_id || 'N/A'
+      value: bridgeInspection?.bridgePartDefect?.title || bridgeInspection?.bridge_part_defect_id || 'N/A'
     },
     {
       title: t('project.other.bridge-inspection.details.damage-type-id'),
-      value: bridgeInspection?.damage_type_id || 'N/A'
+      value: bridgeInspection?.damageType?.title || bridgeInspection?.damage_type_id || 'N/A'
     },
     {
       title: t('project.other.bridge-inspection.details.damage-condition-id'),
-      value: bridgeInspection?.damage_condition_id || 'N/A'
+      value: bridgeInspection?.damageCondition?.title || bridgeInspection?.damage_condition_id || 'N/A'
     },
     {
       title: t('project.other.bridge-inspection.details.hydrology-defect-id'),
-      value: bridgeInspection?.hydrology_defect_id || 'N/A'
+      value: bridgeInspection?.hydrologyDefect?.title || bridgeInspection?.hydrology_defect_id || 'N/A'
     },
     {
       title: t('project.other.bridge-inspection.details.maintenance-action'),

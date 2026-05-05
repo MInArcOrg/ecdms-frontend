@@ -67,15 +67,6 @@ const BridgeInspectionForm: React.FC<BridgeInspectionFormProps> = ({ formik, fil
     return (
         <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>
-                <CustomTextBox
-                    fullWidth
-                    label={transl('project.other.bridge-inspection.details.name')}
-                    placeholder={transl('project.other.bridge-inspection.details.name')}
-                    name="name"
-                    size="small"
-                    sx={{ mb: 2 }}
-                />
-
                 <CustomSelect
                     fullWidth
                     label={transl('project.other.bridge-inspection.details.bridge-name')}

@@ -44,17 +44,10 @@ export const bridgeSubStructureColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('project.other.bridge-sub-structure.details.name'),
-      field: 'name',
-      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.name || t('common.not-available')}</Typography>
-    },
-    {
-      flex: 0.15,
-      minWidth: 120,
       headerName: t('project.other.bridge-sub-structure.details.bridge-name'),
-      field: 'bridge_name',
+      field: 'bridge_id',
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.bridgeBasicData?.name || row?.bridge_name || t('common.not-available')}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.bridge?.name || t('common.not-available')}</Typography>
       )
     },
     {
@@ -63,7 +56,7 @@ export const bridgeSubStructureColumns = (
       headerName: t('project.other.bridge-sub-structure.details.pier-type-id'),
       field: 'pier_type_id',
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.pier_type_id || t('common.not-available')}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.pierType?.title || row?.pier_type_id || t('common.not-available')}</Typography>
       )
     },
     {
@@ -72,7 +65,7 @@ export const bridgeSubStructureColumns = (
       headerName: t('project.other.bridge-sub-structure.details.piers-number'),
       field: 'piers_number',
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.piers_number || t('common.not-available')}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.piers_number ?? t('common.not-available')}</Typography>
       )
     },
     {

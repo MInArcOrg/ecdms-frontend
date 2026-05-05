@@ -23,8 +23,7 @@ export const bridgeInspectionColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      field: 'name',
-      headerName: t('project.other.bridge-inspection.details.name'),
+      field: 'id',
       renderCell: ({ row }: CellType) => (
         <Typography
           noWrap
@@ -37,7 +36,7 @@ export const bridgeInspectionColumns = (
             '&:hover': { color: 'primary.main' }
           }}
         >
-          {row?.name || row?.id.slice(0, 5) + '...'}
+          {t('common.table-columns.details')}
         </Typography>
       )
     },
@@ -46,8 +45,8 @@ export const bridgeInspectionColumns = (
       flex: 0.15,
       minWidth: 120,
       headerName: t('project.other.bridge-inspection.details.bridge-name'),
-      field: 'bridge_name',
-      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.bridgeBasicData?.name || t('common.not-available')}</Typography>
+      field: 'bridge_id',
+      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.bridge?.name || t('common.not-available')}</Typography>
     },
     {
       flex: 0.15,
@@ -55,7 +54,7 @@ export const bridgeInspectionColumns = (
       headerName: t('project.other.bridge-inspection.details.bridge-part-defect-id'),
       field: 'bridge_part_defect_id',
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.bridge_part_defect_id || t('common.not-available')}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.bridgePartDefect?.title || row?.bridge_part_defect_id || t('common.not-available')}</Typography>
       )
     },
     {
@@ -64,7 +63,7 @@ export const bridgeInspectionColumns = (
       headerName: t('project.other.bridge-inspection.details.damage-type-id'),
       field: 'damage_type_id',
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.damage_type_id || t('common.not-available')}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.damageType?.title || row?.damage_type_id || t('common.not-available')}</Typography>
       )
     },
     {
@@ -73,7 +72,7 @@ export const bridgeInspectionColumns = (
       headerName: t('project.other.bridge-inspection.details.damage-condition-id'),
       field: 'damage_condition_id',
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.damage_condition_id || t('common.not-available')}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.damageCondition?.title || row?.damage_condition_id || t('common.not-available')}</Typography>
       )
     },
     {

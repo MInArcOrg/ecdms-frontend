@@ -8,6 +8,7 @@ import BridgeBasicDataForm from './bridge-basic-data-form';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import type { BridgeBasicData } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import { limitNumberDigits, nullableIntegerSchema, nullableNumberSchema } from 'src/utils/validator/number';
 
 interface BridgeBasicDataDrawerType {
   open: boolean;
@@ -21,18 +22,45 @@ interface BridgeBasicDataDrawerType {
 const BridgeBasicDataDrawer = (props: BridgeBasicDataDrawerType) => {
   const { open, toggle, refetch, bridgeBasicData, projectId, otherSubMenu } = props;
 
+  const currentYear = new Date().getFullYear();
+  const numberField = nullableNumberSchema();
+  const integerField = nullableIntegerSchema();
+
   const validationSchema = yup.object().shape({
     parent_id: yup.string().uuid().nullable(),
+    project_id: yup.string().length(36).required('Project is required'),
+    road_segment_id: yup.string().length(36).required('Road segment is required'),
     name: yup.string().max(255).required('Name is required'),
     bridge_number: yup.string().max(255).nullable(),
-    bridge_length: yup.number().nullable(),
-    bridge_width: yup.number().nullable(),
-    construction_year: yup.number().integer().nullable(),
+    bridge_length: limitNumberDigits(numberField.min(0, 'Bridge length must be greater than or equal to 0'), {
+      maxIntegerDigits: 12,
+      maxDecimalPlaces: 2
+    }),
+    bridge_width: limitNumberDigits(numberField.min(0, 'Bridge width must be greater than or equal to 0'), {
+      maxIntegerDigits: 12,
+      maxDecimalPlaces: 2
+    }),
+    construction_year: limitNumberDigits(
+      integerField.min(1900, 'Construction year must be greater than or equal to 1900').max(
+        currentYear,
+        `Construction year must be less than or equal to ${currentYear}`
+      ),
+      { maxIntegerDigits: 4, maxDecimalPlaces: 0 }
+    ),
     contractor: yup.string().max(255).nullable(),
     designer: yup.string().max(255).nullable(),
-    bridge_cost: yup.number().nullable(),
-    land_capacity: yup.number().nullable(),
-    average_daily_traffic: yup.number().integer().nullable()
+    bridge_cost: limitNumberDigits(numberField.min(0, 'Bridge cost must be greater than or equal to 0'), {
+      maxIntegerDigits: 15,
+      maxDecimalPlaces: 2
+    }),
+    land_capacity: limitNumberDigits(numberField.min(0, 'Land capacity must be greater than or equal to 0'), {
+      maxIntegerDigits: 12,
+      maxDecimalPlaces: 2
+    }),
+    average_daily_traffic: limitNumberDigits(integerField.min(0, 'Average daily traffic must be greater than or equal to 0'), {
+      maxIntegerDigits: 9,
+      maxDecimalPlaces: 0
+    })
   });
 
   const isEdit = Boolean(bridgeBasicData?.id);
@@ -47,7 +75,20 @@ const BridgeBasicDataDrawer = (props: BridgeBasicDataDrawerType) => {
     data: {
       ...values,
       project_id: projectId,
-      id: bridgeBasicData?.id
+      road_segment_id: values.road_segment_id,
+      name: values.name,
+      bridge_number: values.bridge_number,
+      bridge_length: values.bridge_length,
+      bridge_width: values.bridge_width,
+      construction_year: values.construction_year,
+      contractor: values.contractor,
+      designer: values.designer,
+      bridge_cost: values.bridge_cost,
+      land_capacity: values.land_capacity,
+      average_daily_traffic: values.average_daily_traffic,
+      id: bridgeBasicData?.id,
+      created_at: values.created_at,
+      updated_at: values.updated_at
     } as BridgeBasicData,
     files: []
   });
@@ -73,6 +114,7 @@ const BridgeBasicDataDrawer = (props: BridgeBasicDataDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...bridgeBasicData,
+            road_segment_id: bridgeBasicData?.road_segment_id || bridgeBasicData?.roadSegment?.id,
             project_id: projectId
           }}
           createActionFunc={isEdit ? editBridgeBasicData : createBridgeBasicData}

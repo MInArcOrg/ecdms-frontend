@@ -678,13 +678,39 @@ export interface CulvertRoadOverInformation {
   created_at: Date;
   updated_at: Date;
 }
+
+export interface CulvertConditionAssessment {
+  id: string;
+  project_id: string;
+  culvert_basic_data_id: string;
+  culvertBasicData?: CulvertBasicData;
+  name: string;
+  structure_type_id: string;
+  structureType?: ProjectGeneralMaster;
+  north_id: string;
+  north?: ProjectGeneralMaster;
+  east_id: string;
+  east?: ProjectGeneralMaster;
+  west_id: string;
+  west?: ProjectGeneralMaster;
+  south_id: string;
+  south?: ProjectGeneralMaster;
+  central_id: string;
+  central?: ProjectGeneralMaster;
+  assessment_date?: string | Date | EthiopianDate;
+  created_at?: string | Date;
+  updated_at?: string | Date;
+}
 export interface BridgeFoundation {
   id: string;
   project_id: string;
-  name: string;
-  bridge_name: string;
+  parent_id?: string | null;
   abutment_type_id: string;
   pier_type_id: string;
+  bridge_id: string;
+  bridgeBasicData?: BridgeBasicData;
+  abutmentType?: ProjectGeneralMaster;
+  pierType?: ProjectGeneralMaster;
   abutment_foundation_size?: number;
   pier_foundation_size?: number;
   abutment_pile_number?: number;
@@ -692,42 +718,43 @@ export interface BridgeFoundation {
   abutment_pile_depth?: number;
   pier_pile_depth?: number;
   soil_type_id: string;
-  created_at: Date;
-  bridge_id: string;
-  bridgeBasicData?: BridgeBasicData;
-  updated_at: Date;
+  soilType?: ProjectGeneralMaster;
+  created_at?: string | Date;
+  updated_at?: string | Date;
 }
 
 // Bridge SubStructure model
 export interface BridgeSubStructure {
   id: string;
+  parent_id?: string | null;
   project_id: string; // Required UUID - Reference to the related project
-  name: string; // Required String - Name of the bridge substructure
-  bridge_name: string; // Required String - Official name of the bridge
+  bridge_id: string;
+  bridge?: BridgeBasicData;
+  bridge_name?: string | null;
   abutment_a1_height?: number | null; // Optional Double - Height of abutment A1
   abutment_a1_width?: number | null; // Optional Double - Width of abutment A1
   abutment_a2_height?: number | null; // Optional Double - Height of abutment A2
   abutment_a2_width?: number | null; // Optional Double - Width of abutment A2
   wing_wall_length?: number | null; // Optional Double - Length of the wing wall
   pier_type_id: string; // Required UUID - Reference to the pier type
+  pierType?: ProjectGeneralMaster;
   piers_number?: number | null; // Optional Integer - Number of piers
   piers_dimension?: string | null; // Optional String - Dimension of piers
   pier1_height?: number | null; // Optional Double - Height of pier 1
   pier1_width?: number | null; // Optional Double - Width of pier 1
   pier2_height?: number | null; // Optional Double - Height of pier 2
   pier2_width?: number | null; // Optional Double - Width of pier 2
-  created_at?: Date;
-  bridge_id: string;
-  bridgeBasicData?: BridgeBasicData;
-  updated_at?: Date;
+  created_at?: string | Date;
+  updated_at?: string | Date;
 }
-// Bridge Structure Information model
+// Bridge Super Structure model
 export interface BridgeSuperStructure {
   id: string;
   project_id: string;
-  name: string;
-  bridge_name: string;
+  bridge_id: string;
+  bridge?: BridgeBasicData;
   bridge_structure_type_id: string;
+  bridgeStructureType?: ProjectGeneralMaster;
   span_number?: number | null;
   span_composition?: string | null;
   total_span_length?: number | null;
@@ -736,14 +763,14 @@ export interface BridgeSuperStructure {
   lane_number?: number | null;
   span_support_type_id?: string | null;
   deck_slab_type_id?: string | null;
+  spanSupportType?: ProjectGeneralMaster;
+  deckSlabType?: ProjectGeneralMaster;
   girder_number?: number | null;
   girder_depth?: number | null;
   girder_spacing?: number | null;
   girder_width?: number | null;
-  created_at: Date;
-  bridge_id: string;
-  bridgeBasicData?: BridgeBasicData;
-  updated_at: Date;
+  created_at?: string | Date;
+  updated_at?: string | Date;
 }
 // Bridge Basic Data model
 export interface BridgeBasicData {
@@ -768,59 +795,41 @@ export interface BridgeBasicData {
 export interface BridgeAreaData {
   id: string;
   project_id: string; // Required UUID
-  road_segment_id: string; // Required String
-  bridge_name: string; // Required String
+  parent_id?: string | null;
   river_width: number | null; // Optional Double
   highest_water_level: number | null; // Optional Double
   lowest_water_level: number | null; // Optional Double
   area_topography_id: string; // Required UUID
+  areaTopography?: ProjectGeneralMaster;
   detour_possibility: boolean | null; // Optional Boolean
   road_alignment: string | null; // Optional String
   altitude: number | null; // Optional Double
   load_limit_sign: boolean | null; // Optional Boolean
   created_at?: string;
   bridge_id: string;
-  bridgeBasicData?: BridgeBasicData;
+  bridge?: BridgeBasicData;
   updated_at?: string;
-}
-export interface BridgeSuperStructure {
-  id: string;
-  project_id: string;
-  name: string;
-  bridge_name: string;
-  bridge_structure_type_id: string;
-  span_number?: number | null;
-  span_composition?: string | null;
-  total_span_length?: number | null;
-  carriage_width?: number | null;
-  side_walk_width?: number | null;
-  lane_number?: number | null;
-  span_support_type_id?: string | null;
-  deck_slab_type_id?: string | null;
-  girder_number?: number | null;
-  girder_depth?: number | null;
-  girder_spacing?: number | null;
-  girder_width?: number | null;
-  created_at: Date;
-  updated_at: Date;
 }
 
 // Bridge Inspection model
 export interface BridgeInspection {
   id: string;
   project_id: string;
-  name: string;
   bridge_part_defect_id: string;
+  bridgePartDefect?: ProjectGeneralMaster;
   damage_type_id: string;
+  damageType?: ProjectGeneralMaster;
   damage_condition_id: string;
+  damageCondition?: ProjectGeneralMaster;
   hydrology_defect_id: string;
+  hydrologyDefect?: ProjectGeneralMaster;
   maintenance_action?: string;
   bridge_history?: string;
   inspector_remark?: string;
   bridge_id: string;
-  bridgeBasicData?: BridgeBasicData;
-  created_at: Date;
-  updated_at: Date;
+  bridge?: BridgeBasicData;
+  created_at?: string | Date;
+  updated_at?: string | Date;
 }
 export interface TrafficVolume {
   id: string;

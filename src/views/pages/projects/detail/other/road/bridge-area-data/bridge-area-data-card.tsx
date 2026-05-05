@@ -42,16 +42,16 @@ const BridgeAreaDataCard: React.FC<BridgeAreaDataCardProps> = ({ bridgeAreaData,
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-area-data.details.road-segment-id')}: {bridgeAreaData?.road_segment_id || 'N/A'}
+            {t('project.other.bridge-area-data.details.bridge-name')}: {bridgeAreaData?.bridge?.name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-area-data.details.bridge-name')}: {bridgeAreaData?.bridgeBasicData?.name || bridgeAreaData?.bridge_name || 'N/A'}
+            {t('project.other.bridge-area-data.details.area-topography-id')}: {bridgeAreaData?.areaTopography?.title || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.bridge-area-data.details.river-width')}: {bridgeAreaData?.river_width || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-area-data.details.area-topography-id')}: {bridgeAreaData?.area_topography_id || 'N/A'}
+            {t('project.other.bridge-area-data.details.highest-water-level')}: {bridgeAreaData?.highest_water_level || 'N/A'}
           </Typography>
         </Box>
       </CardContent>

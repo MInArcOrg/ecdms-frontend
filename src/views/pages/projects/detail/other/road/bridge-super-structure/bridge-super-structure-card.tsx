@@ -48,17 +48,14 @@ const BridgeSuperStructureCard: React.FC<BridgeSuperStructureCardProps> = ({
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-super-structure.details.name')}: {bridgeSuperStructure?.name || 'N/A'}
+            {t('project.other.bridge-super-structure.details.bridge-name')}: {bridgeSuperStructure?.bridge?.name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-super-structure.details.bridge-name')}: {bridgeSuperStructure?.bridgeBasicData?.name || bridgeSuperStructure?.bridge_name || 'N/A'}
+            {t('project.other.bridge-super-structure.details.bridge-structure-type-id')}:{' '}
+            {bridgeSuperStructure?.bridgeStructureType?.title || bridgeSuperStructure?.bridge_structure_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-super-structure.details.bridge-structure-type')}:{' '}
-            {bridgeSuperStructure?.bridge_structure_type_id || 'N/A'}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-super-structure.details.span-number')}: {bridgeSuperStructure?.span_number || 'N/A'}
+            {t('project.other.bridge-super-structure.details.span-number')}: {bridgeSuperStructure?.span_number ?? 'N/A'}
           </Typography>
         </Box>
       </CardContent>

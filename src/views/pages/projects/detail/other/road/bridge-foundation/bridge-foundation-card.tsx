@@ -42,13 +42,13 @@ const BridgeFoundationCard: React.FC<BridgeFoundationCardProps> = ({ bridgeFound
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-foundation.details.bridge-name')}: {bridgeFoundation?.bridgeBasicData?.name || bridgeFoundation?.bridge_name || 'N/A'}
+            {t('project.other.bridge-foundation.details.bridge-name')}: {bridgeFoundation?.bridgeBasicData?.name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-foundation.details.abutment-type-id')}: {bridgeFoundation?.abutment_type_id || 'N/A'}
+            {t('project.other.bridge-foundation.details.abutment-type-id')}: {bridgeFoundation?.abutmentType?.title || bridgeFoundation?.abutment_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-foundation.details.soil-type-id')}: {bridgeFoundation?.soil_type_id || 'N/A'}
+            {t('project.other.bridge-foundation.details.soil-type-id')}: {bridgeFoundation?.soilType?.title || bridgeFoundation?.soil_type_id || 'N/A'}
           </Typography>
         </Box>
       </CardContent>

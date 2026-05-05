@@ -76,40 +76,51 @@ const BridgeSubStructureList: React.FC<BridgeSubStructureListProps> = ({ otherSu
 
   const mapBridgeSubStructureToDetailItems = (bridgeSubStructure: BridgeSubStructure): { title: string; value: string }[] => [
     {
-      title: t('project.other.bridge-sub-structure.details.name'),
-      value: bridgeSubStructure?.name || 'N/A'
-    },
-    {
       title: t('project.other.bridge-sub-structure.details.bridge-name'),
-      value: bridgeSubStructure?.bridge_name || 'N/A'
+      value: bridgeSubStructure?.bridge?.name || 'N/A'
     },
     {
       title: t('project.other.bridge-sub-structure.details.abutment-a1-height'),
-      value: bridgeSubStructure?.abutment_a1_height?.toString() || 'N/A'
+      value:
+        bridgeSubStructure?.abutment_a1_height !== null && bridgeSubStructure?.abutment_a1_height !== undefined
+          ? bridgeSubStructure.abutment_a1_height.toString()
+          : 'N/A'
     },
     {
       title: t('project.other.bridge-sub-structure.details.abutment-a1-width'),
-      value: bridgeSubStructure?.abutment_a1_width?.toString() || 'N/A'
+      value:
+        bridgeSubStructure?.abutment_a1_width !== null && bridgeSubStructure?.abutment_a1_width !== undefined
+          ? bridgeSubStructure.abutment_a1_width.toString()
+          : 'N/A'
     },
     {
       title: t('project.other.bridge-sub-structure.details.abutment-a2-height'),
-      value: bridgeSubStructure?.abutment_a2_height?.toString() || 'N/A'
+      value:
+        bridgeSubStructure?.abutment_a2_height !== null && bridgeSubStructure?.abutment_a2_height !== undefined
+          ? bridgeSubStructure.abutment_a2_height.toString()
+          : 'N/A'
     },
     {
       title: t('project.other.bridge-sub-structure.details.abutment-a2-width'),
-      value: bridgeSubStructure?.abutment_a2_width?.toString() || 'N/A'
+      value:
+        bridgeSubStructure?.abutment_a2_width !== null && bridgeSubStructure?.abutment_a2_width !== undefined
+          ? bridgeSubStructure.abutment_a2_width.toString()
+          : 'N/A'
     },
     {
       title: t('project.other.bridge-sub-structure.details.wing-wall-length'),
-      value: bridgeSubStructure?.wing_wall_length?.toString() || 'N/A'
+      value:
+        bridgeSubStructure?.wing_wall_length !== null && bridgeSubStructure?.wing_wall_length !== undefined
+          ? bridgeSubStructure.wing_wall_length.toString()
+          : 'N/A'
     },
     {
       title: t('project.other.bridge-sub-structure.details.pier-type-id'),
-      value: bridgeSubStructure?.pier_type_id || 'N/A'
+      value: bridgeSubStructure?.pierType?.title || bridgeSubStructure?.pier_type_id || 'N/A'
     },
     {
       title: t('project.other.bridge-sub-structure.details.piers-number'),
-      value: bridgeSubStructure?.piers_number?.toString() || 'N/A'
+      value: bridgeSubStructure?.piers_number !== null && bridgeSubStructure?.piers_number !== undefined ? bridgeSubStructure.piers_number.toString() : 'N/A'
     },
     {
       title: t('project.other.bridge-sub-structure.details.piers-dimension'),
@@ -117,19 +128,19 @@ const BridgeSubStructureList: React.FC<BridgeSubStructureListProps> = ({ otherSu
     },
     {
       title: t('project.other.bridge-sub-structure.details.pier1-height'),
-      value: bridgeSubStructure?.pier1_height?.toString() || 'N/A'
+      value: bridgeSubStructure?.pier1_height !== null && bridgeSubStructure?.pier1_height !== undefined ? bridgeSubStructure.pier1_height.toString() : 'N/A'
     },
     {
       title: t('project.other.bridge-sub-structure.details.pier1-width'),
-      value: bridgeSubStructure?.pier1_width?.toString() || 'N/A'
+      value: bridgeSubStructure?.pier1_width !== null && bridgeSubStructure?.pier1_width !== undefined ? bridgeSubStructure.pier1_width.toString() : 'N/A'
     },
     {
       title: t('project.other.bridge-sub-structure.details.pier2-height'),
-      value: bridgeSubStructure?.pier2_height?.toString() || 'N/A'
+      value: bridgeSubStructure?.pier2_height !== null && bridgeSubStructure?.pier2_height !== undefined ? bridgeSubStructure.pier2_height.toString() : 'N/A'
     },
     {
       title: t('project.other.bridge-sub-structure.details.pier2-width'),
-      value: bridgeSubStructure?.pier2_width?.toString() || 'N/A'
+      value: bridgeSubStructure?.pier2_width !== null && bridgeSubStructure?.pier2_width !== undefined ? bridgeSubStructure.pier2_width.toString() : 'N/A'
     },
     {
       title: t('common.table-columns.created-at'),

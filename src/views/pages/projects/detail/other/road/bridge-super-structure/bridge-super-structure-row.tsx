@@ -44,26 +44,21 @@ export const bridgeSuperStructureColumns = (
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('project.other.bridge-super-structure.details.name'),
-      field: 'name',
-      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.name || t('common.not-available')}</Typography>
-    },
-    {
-      flex: 0.15,
-      minWidth: 120,
       headerName: t('project.other.bridge-super-structure.details.bridge-name'),
-      field: 'bridge_name',
+      field: 'bridge_id',
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.bridgeBasicData?.name || row?.bridge_name || t('common.not-available')}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.bridge?.name || t('common.not-available')}</Typography>
       )
     },
     {
       flex: 0.15,
       minWidth: 120,
-      headerName: t('project.other.bridge-super-structure.details.bridge-structure-type'),
+      headerName: t('project.other.bridge-super-structure.details.bridge-structure-type-id'),
       field: 'bridge_structure_type_id',
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.bridge_structure_type_id || t('common.not-available')}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>
+          {row?.bridgeStructureType?.title || row?.bridge_structure_type_id || t('common.not-available')}
+        </Typography>
       )
     },
     {
@@ -72,7 +67,7 @@ export const bridgeSuperStructureColumns = (
       headerName: t('project.other.bridge-super-structure.details.span-number'),
       field: 'span_number',
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.span_number || t('common.not-available')}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.span_number ?? t('common.not-available')}</Typography>
       )
     },
     {

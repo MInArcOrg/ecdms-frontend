@@ -22,7 +22,7 @@ const BridgeSuperStructure = () => {
   );
 };
 
-BridgeSuperStructure.acl = {
+BridgeSuperStructure.acl = {  
   subject: defaultMenuItem?.model,
   action: 'view'
 };

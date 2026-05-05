@@ -92,7 +92,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         title: 'project.navigation.submenu.feature.culvert.culvert-condition-assessment',
         path: `/projects/${typeId}/details/${id}/feature/culvert/culvert-condition-assessment`,
         model: 'culvertconditionassessment',
-        apiRoute: 'culvert-condition-assessment'
+        apiRoute: 'culvert-condition-assessments'
       }
     ]
   },

@@ -76,8 +76,8 @@ const BridgeAreaDataList: React.FC<BridgeAreaDataListProps> = ({ otherSubMenu, p
 
   const mapBridgeAreaDataToDetailItems = (bridgeAreaData: BridgeAreaData): { title: string; value: string }[] => [
     {
-      title: t('project.other.bridge-area-data.details.name'),
-      value: bridgeAreaData?.bridgeBasicData?.name || 'N/A'
+      title: t('project.other.bridge-area-data.details.bridge-name'),
+      value: bridgeAreaData?.bridge?.name || 'N/A'
     },
     {
       title: t('project.other.bridge-area-data.details.river-width'),
@@ -93,7 +93,7 @@ const BridgeAreaDataList: React.FC<BridgeAreaDataListProps> = ({ otherSubMenu, p
     },
     {
       title: t('project.other.bridge-area-data.details.area-topography-id'),
-      value: bridgeAreaData?.area_topography_id || 'N/A'
+      value: bridgeAreaData?.areaTopography?.title || 'N/A'
     },
     {
       title: t('project.other.bridge-area-data.details.detour-possibility'),

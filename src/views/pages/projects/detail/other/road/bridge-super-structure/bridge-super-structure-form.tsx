@@ -58,15 +58,6 @@ const BridgeSuperStructureForm: React.FC<BridgeSuperStructureFormProps> = ({ for
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <CustomTextBox
-          fullWidth
-          label={transl('project.other.bridge-super-structure.details.name')}
-          placeholder={transl('project.other.bridge-super-structure.details.name')}
-          name="name"
-          size="small"
-          sx={{ mb: 2 }}
-        />
-
         <CustomSelect
           fullWidth
           label={transl('project.other.bridge-super-structure.details.bridge-name')}

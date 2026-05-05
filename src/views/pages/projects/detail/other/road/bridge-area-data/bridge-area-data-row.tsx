@@ -46,9 +46,9 @@ export const bridgeAreaDataColumns = (
       flex: 0.15,
       minWidth: 120,
       headerName: t('project.other.bridge-area-data.details.bridge-name'),
-      field: 'bridge_name',
+      field: 'bridge_id',
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.bridgeBasicData?.name || row?.bridge_name || t('common.not-available')}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.bridge?.name || t('common.not-available')}</Typography>
       )
     },
     {
@@ -66,7 +66,7 @@ export const bridgeAreaDataColumns = (
       headerName: t('project.other.bridge-area-data.details.area-topography-id'),
       field: 'area_topography_id',
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.area_topography_id || t('common.not-available')}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.areaTopography?.title || t('common.not-available')}</Typography>
       )
     },
     {

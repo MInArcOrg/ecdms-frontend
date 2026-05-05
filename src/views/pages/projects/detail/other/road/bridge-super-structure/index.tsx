@@ -76,20 +76,16 @@ const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({ oth
 
   const mapBridgeSuperStructureToDetailItems = (bridgeSuperStructure: BridgeSuperStructure): { title: string; value: string }[] => [
     {
-      title: t('project.other.bridge-super-structure.details.name'),
-      value: bridgeSuperStructure?.name || 'N/A'
-    },
-    {
       title: t('project.other.bridge-super-structure.details.bridge-name'),
-      value: bridgeSuperStructure?.bridge_name || 'N/A'
+      value: bridgeSuperStructure?.bridge?.name || 'N/A'
     },
     {
       title: t('project.other.bridge-super-structure.details.bridge-structure-type-id'),
-      value: bridgeSuperStructure?.bridge_structure_type_id || 'N/A'
+      value: bridgeSuperStructure?.bridgeStructureType?.title || bridgeSuperStructure?.bridge_structure_type_id || 'N/A'
     },
     {
       title: t('project.other.bridge-super-structure.details.span-number'),
-      value: bridgeSuperStructure?.span_number?.toString() || 'N/A'
+      value: bridgeSuperStructure?.span_number !== null && bridgeSuperStructure?.span_number !== undefined ? bridgeSuperStructure.span_number.toString() : 'N/A'
     },
     {
       title: t('project.other.bridge-super-structure.details.span-composition'),
@@ -109,31 +105,37 @@ const BridgeSuperStructureList: React.FC<BridgeSuperStructureListProps> = ({ oth
     },
     {
       title: t('project.other.bridge-super-structure.details.lane-number'),
-      value: bridgeSuperStructure?.lane_number?.toString() || 'N/A'
+      value: bridgeSuperStructure?.lane_number !== null && bridgeSuperStructure?.lane_number !== undefined ? bridgeSuperStructure.lane_number.toString() : 'N/A'
     },
     {
       title: t('project.other.bridge-super-structure.details.span-support-type-id'),
-      value: bridgeSuperStructure?.span_support_type_id || 'N/A'
+      value: bridgeSuperStructure?.spanSupportType?.title || bridgeSuperStructure?.span_support_type_id || 'N/A'
     },
     {
       title: t('project.other.bridge-super-structure.details.deck-slab-type-id'),
-      value: bridgeSuperStructure?.deck_slab_type_id || 'N/A'
+      value: bridgeSuperStructure?.deckSlabType?.title || bridgeSuperStructure?.deck_slab_type_id || 'N/A'
     },
     {
       title: t('project.other.bridge-super-structure.details.girder-number'),
-      value: bridgeSuperStructure?.girder_number?.toString() || 'N/A'
+      value:
+        bridgeSuperStructure?.girder_number !== null && bridgeSuperStructure?.girder_number !== undefined ? bridgeSuperStructure.girder_number.toString() : 'N/A'
     },
     {
       title: t('project.other.bridge-super-structure.details.girder-depth'),
-      value: bridgeSuperStructure?.girder_depth?.toString() || 'N/A'
+      value:
+        bridgeSuperStructure?.girder_depth !== null && bridgeSuperStructure?.girder_depth !== undefined ? bridgeSuperStructure.girder_depth.toString() : 'N/A'
     },
     {
       title: t('project.other.bridge-super-structure.details.girder-spacing'),
-      value: bridgeSuperStructure?.girder_spacing?.toString() || 'N/A'
+      value:
+        bridgeSuperStructure?.girder_spacing !== null && bridgeSuperStructure?.girder_spacing !== undefined
+          ? bridgeSuperStructure.girder_spacing.toString()
+          : 'N/A'
     },
     {
       title: t('project.other.bridge-super-structure.details.girder-width'),
-      value: bridgeSuperStructure?.girder_width?.toString() || 'N/A'
+      value:
+        bridgeSuperStructure?.girder_width !== null && bridgeSuperStructure?.girder_width !== undefined ? bridgeSuperStructure.girder_width.toString() : 'N/A'
     },
     {
       title: t('common.table-columns.created-at'),

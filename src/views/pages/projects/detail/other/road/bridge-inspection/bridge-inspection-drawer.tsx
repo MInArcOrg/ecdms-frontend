@@ -32,7 +32,6 @@ const BridgeInspectionDrawer = (props: BridgeInspectionDrawerType) => {
 
   const validationSchema = yup.object().shape({
     parent_id: yup.string().uuid().nullable(),
-    name: yup.string().max(255, 'Name must be at most 255 characters').required('Name is required'),
     bridge_id: yup.string().uuid().required('Bridge Name is Required'),
 
     bridge_part_defect_id: yup.string().uuid().required('Bridge part defect is required'),
@@ -55,8 +54,6 @@ const BridgeInspectionDrawer = (props: BridgeInspectionDrawerType) => {
   const getPayload = (values: BridgeInspection) => ({
     data: {
       project_id: projectId,
-      name: values.name,
-
       bridge_id: values.bridge_id,
       bridge_part_defect_id: values.bridge_part_defect_id,
       damage_type_id: values.damage_type_id,
@@ -95,7 +92,13 @@ const BridgeInspectionDrawer = (props: BridgeInspectionDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...bridgeInspection
+            ...bridgeInspection,
+            bridge_id: bridgeInspection?.bridge_id || bridgeInspection?.bridge?.id || '',
+            bridge_part_defect_id: bridgeInspection?.bridge_part_defect_id || bridgeInspection?.bridgePartDefect?.id || '',
+            damage_type_id: bridgeInspection?.damage_type_id || bridgeInspection?.damageType?.id || '',
+            damage_condition_id: bridgeInspection?.damage_condition_id || bridgeInspection?.damageCondition?.id || '',
+            hydrology_defect_id: bridgeInspection?.hydrology_defect_id || bridgeInspection?.hydrologyDefect?.id || '',
+            project_id: projectId
           }}
           createActionFunc={isEdit ? editBridgeInspection : createBridgeInspection}
           onActionSuccess={onActionSuccess}

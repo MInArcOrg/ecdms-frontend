@@ -76,48 +76,62 @@ const BridgeFoundationList: React.FC<BridgeFoundationListProps> = ({ otherSubMen
 
   const mapBridgeFoundationToDetailItems = (bridgeFoundation: BridgeFoundation): { title: string; value: string }[] => [
     {
-      title: t('project.other.bridge-foundation.details.name'),
-      value: bridgeFoundation?.name || 'N/A'
-    },
-    {
       title: t('project.other.bridge-foundation.details.bridge-name'),
-      value: bridgeFoundation?.bridge_name || 'N/A'
+      value: bridgeFoundation?.bridgeBasicData?.name || 'N/A'
     },
     {
       title: t('project.other.bridge-foundation.details.abutment-type-id'),
-      value: bridgeFoundation?.abutment_type_id || 'N/A'
+      value: bridgeFoundation?.abutmentType?.title || bridgeFoundation?.abutment_type_id || 'N/A'
     },
     {
       title: t('project.other.bridge-foundation.details.pier-type-id'),
-      value: bridgeFoundation?.pier_type_id || 'N/A'
+      value: bridgeFoundation?.pierType?.title || bridgeFoundation?.pier_type_id || 'N/A'
     },
     {
       title: t('project.other.bridge-foundation.details.abutment-foundation-size'),
-      value: bridgeFoundation?.abutment_foundation_size?.toString() || 'N/A'
+      value:
+        bridgeFoundation?.abutment_foundation_size !== null && bridgeFoundation?.abutment_foundation_size !== undefined
+          ? bridgeFoundation.abutment_foundation_size.toString()
+          : 'N/A'
     },
     {
       title: t('project.other.bridge-foundation.details.pier-foundation-size'),
-      value: bridgeFoundation?.pier_foundation_size?.toString() || 'N/A'
+      value:
+        bridgeFoundation?.pier_foundation_size !== null && bridgeFoundation?.pier_foundation_size !== undefined
+          ? bridgeFoundation.pier_foundation_size.toString()
+          : 'N/A'
     },
     {
       title: t('project.other.bridge-foundation.details.abutment-pile-number'),
-      value: bridgeFoundation?.abutment_pile_number?.toString() || 'N/A'
+      value:
+        bridgeFoundation?.abutment_pile_number !== null && bridgeFoundation?.abutment_pile_number !== undefined
+          ? bridgeFoundation.abutment_pile_number.toString()
+          : 'N/A'
     },
     {
       title: t('project.other.bridge-foundation.details.pier-pile-number'),
-      value: bridgeFoundation?.pier_pile_number?.toString() || 'N/A'
+      value:
+        bridgeFoundation?.pier_pile_number !== null && bridgeFoundation?.pier_pile_number !== undefined
+          ? bridgeFoundation.pier_pile_number.toString()
+          : 'N/A'
     },
     {
       title: t('project.other.bridge-foundation.details.abutment-pile-depth'),
-      value: bridgeFoundation?.abutment_pile_depth?.toString() || 'N/A'
+      value:
+        bridgeFoundation?.abutment_pile_depth !== null && bridgeFoundation?.abutment_pile_depth !== undefined
+          ? bridgeFoundation.abutment_pile_depth.toString()
+          : 'N/A'
     },
     {
       title: t('project.other.bridge-foundation.details.pier-pile-depth'),
-      value: bridgeFoundation?.pier_pile_depth?.toString() || 'N/A'
+      value:
+        bridgeFoundation?.pier_pile_depth !== null && bridgeFoundation?.pier_pile_depth !== undefined
+          ? bridgeFoundation.pier_pile_depth.toString()
+          : 'N/A'
     },
     {
       title: t('project.other.bridge-foundation.details.soil-type-id'),
-      value: bridgeFoundation?.soil_type_id || 'N/A'
+      value: bridgeFoundation?.soilType?.title || bridgeFoundation?.soil_type_id || 'N/A'
     },
     {
       title: t('common.table-columns.created-at'),

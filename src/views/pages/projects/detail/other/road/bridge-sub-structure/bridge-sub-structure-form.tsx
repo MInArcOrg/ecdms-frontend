@@ -42,15 +42,6 @@ const BridgeSubStructureForm: React.FC<BridgeSubStructureFormProps> = ({ formik 
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <CustomTextBox
-          fullWidth
-          label={transl('project.other.bridge-sub-structure.details.name')}
-          placeholder={transl('project.other.bridge-sub-structure.details.name')}
-          name="name"
-          size="small"
-          sx={{ mb: 2 }}
-        />
-
         <CustomSelect
           fullWidth
           label={transl('project.other.bridge-sub-structure.details.bridge-name')}

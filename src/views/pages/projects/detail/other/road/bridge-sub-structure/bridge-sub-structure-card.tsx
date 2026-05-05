@@ -42,16 +42,13 @@ const BridgeSubStructureCard: React.FC<BridgeSubStructureCardProps> = ({ bridgeS
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-sub-structure.details.name')}: {bridgeSubStructure?.name || 'N/A'}
+            {t('project.other.bridge-sub-structure.details.bridge-name')}: {bridgeSubStructure?.bridge?.name || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-sub-structure.details.bridge-name')}: {bridgeSubStructure?.bridgeBasicData?.name || bridgeSubStructure?.bridge_name || 'N/A'}
+            {t('project.other.bridge-sub-structure.details.pier-type-id')}: {bridgeSubStructure?.pierType?.title || bridgeSubStructure?.pier_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-sub-structure.details.pier-type-id')}: {bridgeSubStructure?.pier_type_id || 'N/A'}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {t('project.other.bridge-sub-structure.details.piers-number')}: {bridgeSubStructure?.piers_number || 'N/A'}
+            {t('project.other.bridge-sub-structure.details.piers-number')}: {bridgeSubStructure?.piers_number ?? 'N/A'}
           </Typography>
         </Box>
       </CardContent>

@@ -46,7 +46,9 @@ export const bridgeBasicDataColumns = (
       minWidth: 120,
       headerName: t('project.other.bridge-basic-data.details.road_segment_id'),
       field: 'road_segment_id',
-      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.road_segment_id || t('common.not-available')}</Typography>
+      renderCell: ({ row }: CellType) => (
+        <Typography sx={{ color: 'text.secondary' }}>{row?.roadSegment?.name || t('common.not-available')}</Typography>
+      )
     },
     {
       flex: 0.15,

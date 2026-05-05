@@ -2314,6 +2314,23 @@
           "soil-type-id": "Soil Type"
         }
       },
+      "culvert-condition-assessment": {
+        "title": "Culvert Condition Assessment",
+        "create-culvert-condition-assessment": "Add Culvert Condition Assessment",
+        "edit-culvert-condition-assessment": "Edit Culvert Condition Assessment",
+        "culvert-condition-assessment-details": "Culvert Condition Assessment Details",
+        "details": {
+          "culvert-basic-data-id": "Culvert",
+          "name": "Name",
+          "structure-type-id": "Structure Type",
+          "north-id": "North",
+          "east-id": "East",
+          "west-id": "West",
+          "south-id": "South",
+          "central-id": "Central",
+          "assessment-date": "Assessment Date"
+        }
+      },
       "bridge-basic-data": {
         "title": "Bridge Basic Data",
         "create-bridge-basic-data": "Add Bridge Basic Data",
@@ -2390,6 +2407,28 @@
           "abutment-pile-depth": "Abutment Pile Depth",
           "pier-pile-depth": "Pier Pile Depth",
           "soil-type-id": "Soil Type"
+        }
+      },
+      "bridge-super-structure": {
+        "title": "Bridge Super Structure",
+        "create-bridge-super-structure": "Add Bridge Super Structure",
+        "edit-bridge-super-structure": "Edit Bridge Super Structure",
+        "bridge-super-structure-details": "Bridge Super Structure Details",
+        "details": {
+          "bridge-name": "Bridge Name",
+          "bridge-structure-type-id": "Bridge Structure Type",
+          "span-number": "Span Number",
+          "span-composition": "Span Composition",
+          "total-span-length": "Total Span Length",
+          "carriage-width": "Carriage Width",
+          "side-walk-width": "Side Walk Width",
+          "lane-number": "Lane Number",
+          "span-support-type-id": "Span Support Type",
+          "deck-slab-type-id": "Deck Slab Type",
+          "girder-number": "Girder Number",
+          "girder-depth": "Girder Depth",
+          "girder-spacing": "Girder Spacing",
+          "girder-width": "Girder Width"
         }
       },
       "bridge-inspection": {
