@@ -45,7 +45,7 @@ const ActionItem: React.FC<ActionItemProps> = ({ user, actionData, title, refetc
           </Box>
         </CardContent>
         <Divider />
-        <CardContent>
+        {/* <CardContent>
           <Box display="flex" justifyContent="space-between" mb={3}>
             <Box
               onClick={() => {
@@ -72,7 +72,7 @@ const ActionItem: React.FC<ActionItemProps> = ({ user, actionData, title, refetc
           <Collapse in={replies} timeout="auto" unmountOnExit>
             <ActionRepliesComponent actionData={actionData} replyData={replyData} />
           </Collapse>
-        </CardContent>
+        </CardContent> */}
       </Card>
     </React.Fragment>
   );
