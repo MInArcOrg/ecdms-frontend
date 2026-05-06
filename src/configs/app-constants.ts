@@ -18,6 +18,7 @@ export const LANG_CONST_ARRAY: LangType[] = [
     default: false
   }
 ];
+export const ANALYTICS_DUMMY_DATA_STORAGE_KEY = 'analyticsDummyData';
 export const ITEMS_LISTING_TYPE = {
   grid: { label: 'Grid', value: 'grid' },
   masonry: { label: 'Masonry', value: 'masonry' },
