@@ -34,7 +34,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         title: 'project.navigation.submenu.maintenance.quality.drainage-environmental-data',
         path: `/projects/${typeId}/details/${id}/maintenance/quality/drainage-environmental-data`,
         model: 'environmentaldata',
-        apiRoute: 'environmental-data'
+        apiRoute: 'environmental-datas'
       },
       {
         id: projectMaintenanceIds.quality.drainageAssessment,

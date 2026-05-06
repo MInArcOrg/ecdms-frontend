@@ -3,12 +3,12 @@
 import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import type { EnvironmentalData } from 'src/types/project/other';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import { formatCreatedAt } from 'src/utils/formatter/date';
+import { ENVIRONMENTAL_DATA_FILE_TYPES } from './filet-type-config';
 
 interface EnvironmentalDataCardProps {
   environmentalData: EnvironmentalData;
@@ -54,26 +54,14 @@ const EnvironmentalDataCard: React.FC<EnvironmentalDataCardProps> = ({ environme
       </CardContent>
 
       <CardActions sx={{ flexDirection: 'column', alignItems: 'flex-start' }}>
-        <Box width="100%" display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-          <Typography variant="subtitle2" fontWeight="medium">
-            {t('project.other.environmental-data.file-types.impact-assessment')}:
-          </Typography>
-          <FileDrawer id={environmentalData.id} type={uploadableProjectFileTypes.other.environmentalImpactAssessment} />
-        </Box>
-
-        <Box width="100%" display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-          <Typography variant="subtitle2" fontWeight="medium">
-            {t('project.other.environmental-data.file-types.community-feedback')}:
-          </Typography>
-          <FileDrawer id={environmentalData.id} type={uploadableProjectFileTypes.other.communityFeedback} />
-        </Box>
-
-        <Box width="100%" display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-          <Typography variant="subtitle2" fontWeight="medium">
-            {t('project.other.environmental-data.file-types.mitigation-measures')}:
-          </Typography>
-          <FileDrawer id={environmentalData.id} type={uploadableProjectFileTypes.other.mitigationMeasures} />
-        </Box>
+        {ENVIRONMENTAL_DATA_FILE_TYPES.map((fileType) => (
+          <Box key={fileType.key} width="100%" display="flex" justifyContent="space-between" alignItems="center" mb={1}>
+            <Typography variant="subtitle2" fontWeight="medium">
+              {t(fileType.titleTKey)}:
+            </Typography>
+            <FileDrawer id={environmentalData.id} type={fileType.type} />
+          </Box>
+        ))}
 
         <Box width="100%" display="flex" justifyContent="flex-end" mt={1}>
           <ModelAction

@@ -9,10 +9,10 @@ import EnvironmentalDataForm from './environmental-data-form';
 
 import { useState } from 'react';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { EnvironmentalData } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
+import { ENVIRONMENTAL_DATA_FILE_TYPES, EnvironmentalDataFileKey } from './filet-type-config';
 
 interface EnvironmentalDataDrawerType {
   open: boolean;
@@ -25,17 +25,13 @@ interface EnvironmentalDataDrawerType {
 
 const EnvironmentalDataDrawer = (props: EnvironmentalDataDrawerType) => {
   const { open, toggle, refetch, environmentalData, projectId, otherSubMenu } = props;
-  const [uploadableFiles, setUploadableFiles] = useState<{
-    environmentalImpactAssessment: File | null;
-    communityFeedback: File | null;
-    mitigationMeasures: File | null;
-  }>({
+  const [uploadableFiles, setUploadableFiles] = useState<Record<EnvironmentalDataFileKey, File | null>>({
     environmentalImpactAssessment: null,
     communityFeedback: null,
     mitigationMeasures: null
   });
 
-  const onFileChange = (fileType: string, file: File | null) => {
+  const onFileChange = (fileType: EnvironmentalDataFileKey, file: File | null) => {
     setUploadableFiles((prev) => ({
       ...prev,
       [fileType]: file
@@ -65,27 +61,16 @@ const EnvironmentalDataDrawer = (props: EnvironmentalDataDrawerType) => {
 
   const handleClose = () => toggle();
 
-  const onActionSuccess = async (response: IApiResponse<EnvironmentalData>, payload: IApiPayload<EnvironmentalData>) => {
+  const onActionSuccess = async (response: IApiResponse<EnvironmentalData>, _payload: IApiPayload<EnvironmentalData>) => {
     const recordId = response.payload.id;
 
-    // Upload each file type if provided
-    if (uploadableFiles.environmentalImpactAssessment) {
-      await uploadFile(
-        uploadableFiles.environmentalImpactAssessment,
-        uploadableProjectFileTypes.other.environmentalImpactAssessment,
-        recordId,
-        '',
-        ''
-      );
-    }
-
-    if (uploadableFiles.communityFeedback) {
-      await uploadFile(uploadableFiles.communityFeedback, uploadableProjectFileTypes.other.communityFeedback, recordId, '', '');
-    }
-
-    if (uploadableFiles.mitigationMeasures) {
-      await uploadFile(uploadableFiles.mitigationMeasures, uploadableProjectFileTypes.other.mitigationMeasures, recordId, '', '');
-    }
+    await Promise.all(
+      ENVIRONMENTAL_DATA_FILE_TYPES.map(async (fileType) => {
+        const file = uploadableFiles[fileType.key];
+        if (!file) return;
+        await uploadFile(file, fileType.type, recordId, '', '');
+      })
+    );
 
     refetch();
     handleClose();

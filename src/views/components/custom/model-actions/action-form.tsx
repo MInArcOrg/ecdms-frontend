@@ -11,7 +11,7 @@ import { parseError } from 'src/utils/parse/clean-error';
 import * as Yup from 'yup';
 import Can from 'src/layouts/components/acl/Can';
 import ConfirmationDialog from 'src/views/shared/dialog/confirmation-dialog';
-import { ACTION_STATUS } from 'src/configs/action-status';
+import { REQUESTS } from 'src/configs/action-status';
 
 interface ActionFormProps {
   actionType: string;
@@ -86,7 +86,7 @@ const ActionForm: React.FC<ActionFormProps> = ({ actionType, model_id, model, re
           data: { model_id, model } as ModelAction,
           files: []
         },
-        ACTION_STATUS.REJECTED
+        REQUESTS.REJECT
       );
       setActionData(res);
       refetchAction();

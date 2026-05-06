@@ -20,6 +20,7 @@ import { environmentalDataColumns } from './environmental-data-row';
 import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-detail-drawer';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
+import { ENVIRONMENTAL_DATA_FILE_TYPES } from './filet-type-config';
 
 interface EnvironmentalDataListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -76,7 +77,9 @@ const EnvironmentalDataList: React.FC<EnvironmentalDataListProps> = ({ otherSubM
     setSelectedRow(environmentalData);
   };
 
-  const mapEnvironmentalDataToDetailItems = (environmentalData: EnvironmentalData): { title: string; value: string }[] => [
+  const mapEnvironmentalDataToDetailItems = (
+    environmentalData: EnvironmentalData
+  ): { title: string; value: string | React.ReactNode }[] => [
     {
       title: t('project.other.environmental-data.details.remark'),
       value: environmentalData?.remark || 'N/A'
@@ -108,21 +111,12 @@ const EnvironmentalDataList: React.FC<EnvironmentalDataListProps> = ({ otherSubM
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          //   data={mapDrainageAssessmentToDetailItems(selectedRow as DrainageAssessment)}
           data={[
             ...mapEnvironmentalDataToDetailItems(selectedRow as EnvironmentalData),
-            {
-              title: t('project.other.environmental-data.file-types.impact-assessment'),
-              value: <FileDrawer id={selectedRow?.id || ''} type={uploadableProjectFileTypes.other.environmentalImpactAssessment} />
-            },
-            {
-              title: t('project.other.environmental-data.file-types.community-feedback'),
-              value: <FileDrawer id={selectedRow?.id || ''} type={uploadableProjectFileTypes.other.communityFeedback} />
-            },
-            {
-              title: t('project.other.environmental-data.file-types.mitigation-measures'),
-              value: <FileDrawer id={selectedRow?.id || ''} type={uploadableProjectFileTypes.other.mitigationMeasures} />
-            }
+            ...ENVIRONMENTAL_DATA_FILE_TYPES.map((fileType) => ({
+              title: t(fileType.titleTKey),
+              value: <FileDrawer id={selectedRow?.id || ''} type={fileType.type} />
+            }))
           ]}
           hasReference={true}
           id={selectedRow?.id || ''}

@@ -6,15 +6,12 @@ import { gridSpacing } from 'src/configs/app-constants';
 import type { EnvironmentalData } from 'src/types/project/other';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
+import { ENVIRONMENTAL_DATA_FILE_TYPES, EnvironmentalDataFileKey } from './filet-type-config';
 
 interface EnvironmentalDataFormProps {
   formik: FormikProps<EnvironmentalData>;
-  files: {
-    environmentalImpactAssessment: File | null;
-    communityFeedback: File | null;
-    mitigationMeasures: File | null;
-  };
-  onFileChange: (fileType: string, file: File | null) => void;
+  files: Record<EnvironmentalDataFileKey, File | null>;
+  onFileChange: (fileType: EnvironmentalDataFileKey, file: File | null) => void;
 }
 
 const EnvironmentalDataForm: React.FC<EnvironmentalDataFormProps> = ({ formik, files, onFileChange }) => {
@@ -36,27 +33,14 @@ const EnvironmentalDataForm: React.FC<EnvironmentalDataFormProps> = ({ formik, f
       </Grid>
 
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={transl('project.other.environmental-data.file-types.impact-assessment')}
-          file={files.environmentalImpactAssessment}
-          onFileChange={(file) => onFileChange('environmentalImpactAssessment', file)}
-        />
-      </Grid>
-
-      <Grid item xs={12}>
-        <CustomFileUpload
-          label={transl('project.other.environmental-data.file-types.community-feedback')}
-          file={files.communityFeedback}
-          onFileChange={(file) => onFileChange('communityFeedback', file)}
-        />
-      </Grid>
-
-      <Grid item xs={12}>
-        <CustomFileUpload
-          label={transl('project.other.environmental-data.file-types.mitigation-measures')}
-          file={files.mitigationMeasures}
-          onFileChange={(file) => onFileChange('mitigationMeasures', file)}
-        />
+        {ENVIRONMENTAL_DATA_FILE_TYPES.map((fileType) => (
+          <CustomFileUpload
+            key={fileType.key}
+            label={transl(fileType.titleTKey)}
+            file={files[fileType.key]}
+            onFileChange={(file) => onFileChange(fileType.key, file)}
+          />
+        ))}
       </Grid>
     </Grid>
   );
