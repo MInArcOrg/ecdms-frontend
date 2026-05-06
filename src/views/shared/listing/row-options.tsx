@@ -68,6 +68,10 @@ const RowOptions = <T extends { id?: string }>({
   };
 
   const rowOptionsOpen = Boolean(anchorEl);
+  const actionStatus = actions?.payload?.status;
+  const editRule = editPermissionRule;
+  const canShowEdit =
+    Boolean(onEdit && editRule) && (actionStatus === ACTION_STATUS.REGISTERED || actionStatus === ACTION_STATUS.REJECTED);
 
   return (
     <>
@@ -98,8 +102,8 @@ const RowOptions = <T extends { id?: string }>({
           </MenuItem>
         ))}
 
-        {onEdit && actions?.payload?.status !== ACTION_STATUS.DEFAULT && editPermissionRule && (
-          <Can do={editPermissionRule.action} on={editPermissionRule.subject}>
+        {canShowEdit && editRule && (
+          <Can do={editRule.action} on={editRule.subject}>
             <MenuItem onClick={handleEdit} sx={{ '& svg': { mr: 2 } }}>
               <Icon icon="tabler:edit" fontSize={20} />
               Edit

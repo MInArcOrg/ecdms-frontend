@@ -84,11 +84,12 @@ const usePermissionSelection = (roleId: string, type: string) => {
     const exclusiveGroup = ['create', 'check', 'approve', 'authorize'];
     const standalonePrimary = 'delete';
     const dependentView = 'view';
-    const allPrimaries = ['create', 'update', 'delete', 'check', 'approve', 'authorize'];
+    const exclusivePrimaries = ['create', 'update', 'check', 'approve', 'authorize'];
+    const allPrimariesForView = [...exclusivePrimaries, 'delete'];
 
-    // Helper to turn off all primaries except the ones specified
-    const turnOffAllPrimariesExcept = (except: string[] = []) => {
-      allPrimaries.forEach((name) => {
+    // Helper to turn off exclusive primaries except the ones specified (delete is independent)
+    const turnOffExclusivePrimariesExcept = (except: string[] = []) => {
+      exclusivePrimaries.forEach((name) => {
         if (!except.includes(name)) {
           const id = permIds[name as keyof typeof permIds];
           if (id) updated[id] = false;
@@ -103,23 +104,19 @@ const usePermissionSelection = (roleId: string, type: string) => {
       if (permIds.create) updated[permIds.create] = isTurningOn;
       if (permIds.update) updated[permIds.update] = isTurningOn;
       if (isTurningOn) {
-        // Rule 2 & 4: Single primary & exclusivity
-        turnOffAllPrimariesExcept(linkGroup);
+        // Rule 2 & 4: Single primary & exclusivity (excluding delete)
+        turnOffExclusivePrimariesExcept(linkGroup);
       }
     } else if (permissionName === standalonePrimary) {
-      // Rule 6: delete is standalone
+      // Delete is standalone/independent
       if (permIds.delete) updated[permIds.delete] = isTurningOn;
-      if (isTurningOn) {
-        // Rule 2: Single primary
-        turnOffAllPrimariesExcept([standalonePrimary]);
-      }
     } else if (exclusiveGroup.includes(permissionName)) {
       // Rule 4: check, approve, authorize are exclusive
       const id = permIds[permissionName as keyof typeof permIds];
       if (id) updated[id] = isTurningOn;
       if (isTurningOn) {
-        // Rule 2 & 4: Single primary & exclusivity
-        turnOffAllPrimariesExcept([permissionName]);
+        // Rule 2 & 4: Single primary & exclusivity (excluding delete)
+        turnOffExclusivePrimariesExcept([permissionName]);
       }
     } else if (permissionName === dependentView) {
       // Rule 5: View clicked manually
@@ -130,7 +127,7 @@ const usePermissionSelection = (roleId: string, type: string) => {
     // --- 2. Final Rule Enforcement (View Dependency) ---
 
     // Rule 3 & 5: Any primary permission grants 'view'
-    const anyPrimaryActive = allPrimaries.some((name) => {
+    const anyPrimaryActive = allPrimariesForView.some((name) => {
       const id = permIds[name as keyof typeof permIds];
       return id && updated[id];
     });
