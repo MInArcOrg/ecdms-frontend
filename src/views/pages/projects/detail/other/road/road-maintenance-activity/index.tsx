@@ -104,7 +104,7 @@ const RoadMaintenanceActivityList: React.FC<RoadMaintenanceActivityListProps> = 
   ): { title: string; value: string }[] => [
     {
       title: t('project.other.road-maintenance-activity.details.road-segment'),
-      value: roadMaintenanceActivity?.road_segment || 'N/A'
+      value: roadMaintenanceActivity?.roadSegment?.name || roadMaintenanceActivity?.road_segment_id || 'N/A'
     },
     {
       title: t('project.other.road-maintenance-activity.details.maintenance-frequency'),

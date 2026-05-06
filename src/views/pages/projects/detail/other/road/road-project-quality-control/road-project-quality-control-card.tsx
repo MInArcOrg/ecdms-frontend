@@ -51,11 +51,11 @@ const RoadProjectQualityControlCard: React.FC<RoadProjectQualityControlCardProps
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.road-project-quality-control.details.project-phase-id')}:{' '}
-            {roadProjectQualityControl?.project_phase_id || 'N/A'}
+            {roadProjectQualityControl?.projectPhase?.title || roadProjectQualityControl?.project_phase_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.road-project-quality-control.details.inspection-type-id')}:{' '}
-            {roadProjectQualityControl?.inspection_type_id || 'N/A'}
+            {roadProjectQualityControl?.inspectionType?.title || roadProjectQualityControl?.inspection_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.road-project-quality-control.details.defect-encountered')}:{' '}

@@ -15,7 +15,7 @@ export const resourceMasterModels = {
     createTitle: 'create-quantity-measurement-unit',
     editTitle: 'edit-quantity-measurement-unit',
     fileType: 'QUANTITY_MEASUREMENT_UNIT',
-    flag: 'COMMON'
+    flag: 'PROFESSIONAL'
   },
   qualityMeasurementUnit: {
     model: 'QualityMeasurementUnit',
@@ -24,7 +24,7 @@ export const resourceMasterModels = {
     createTitle: 'create-quality-measurement-unit',
     editTitle: 'edit-quality-measurement-unit',
     fileType: 'QUALITY_MEASUREMENT_UNIT',
-    flag: 'RESOURCE'
+    flag: 'PROFESSIONAL'
   },
   supplierAddress: {
     model: 'SupplierAddress',

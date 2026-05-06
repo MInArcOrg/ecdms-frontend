@@ -20,12 +20,46 @@ interface EducationFormProps {
 
 const EducationForm: React.FC<EducationFormProps> = ({ formik, file, onFileChange }) => {
   const { t } = useTranslation();
-  const { data: studyFields } = useQuery({
-    queryKey: ['study-fields'],
-    queryFn: () => generalMasterDataApiService.getAll('study-fields', dropDownConfig())
+
+  const { data: studyLevels } = useQuery({
+    queryKey: ['study-levels'],
+    queryFn: () => generalMasterDataApiService.getAll('study-levels', dropDownConfig())
   });
+
+  const selectedStudyLevelId = formik.values.studylevel_id || '';
+  
+  const { data: studyFields } = useQuery({
+    queryKey: ['study-fields', selectedStudyLevelId],
+    queryFn: () =>
+      generalMasterDataApiService.getAll(
+        'study-fields',
+        dropDownConfig({
+          filter: selectedStudyLevelId ? { studylevel_id: selectedStudyLevelId } : {}
+        })
+      )});
   return (
+
     <Grid container spacing={gridSpacing}>
+      <Grid item xs={12}>
+        <CustomSelect
+          fullWidth
+          label={t('department.user.education.education-level')}
+          name="studylevel_id"
+          options={
+            studyLevels?.payload.map((level) => ({
+              value: level.id,
+              label: level.title
+            })) || []
+          }
+          onValueChange={(value) => {
+            const selected = studyLevels?.payload?.find((l) => l.id === value);
+            formik.setFieldValue('education_level', selected?.title || '');
+            formik.setFieldValue('study_field_id', '');
+          }}
+          size="small"
+          sx={{ mb: 2 }}
+        />
+      </Grid>
       <Grid item xs={12}>
         <CustomSelect
           fullWidth
@@ -38,6 +72,7 @@ const EducationForm: React.FC<EducationFormProps> = ({ formik, file, onFileChang
             })) || []
           }
           size="small"
+          disabled={!selectedStudyLevelId}
           sx={{ mb: 2 }}
         />
       </Grid>
@@ -45,17 +80,9 @@ const EducationForm: React.FC<EducationFormProps> = ({ formik, file, onFileChang
         <CustomTextBox fullWidth label={t('department.user.education.school-name')} name="school_name" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox
-          fullWidth
-          label={t('department.user.education.education-level')}
-          name="education_level"
-          size="small"
-          sx={{ mb: 2 }}
-        />
-      </Grid>
-      <Grid item xs={12}>
         <CustomTextBox fullWidth label={t('department.user.education.program-type')} name="program_type" size="small" sx={{ mb: 2 }} />
       </Grid>
+
 
       <Grid item xs={12} md={6} lg={6}>
         <CustomDynamicDatePicker

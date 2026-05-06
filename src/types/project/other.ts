@@ -1,5 +1,5 @@
 import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
-import { ProjectGeneralMaster } from '../general/general-master';
+import { DrainageCondition, DrainageType, ProjectGeneralMaster } from '../general/general-master';
 
 export interface Port {
   id: string;
@@ -427,13 +427,18 @@ export interface SafetyAndHealth {
 export interface MaintenanceHistory {
   id: string;
   project_id: string;
-  road_segment: string;
+  road_segment_id: string;
+  roadSegment?: RoadSegment;
   last_maintenance_date?: Date;
   maintenance_type_id: string;
+  maintenanceType?: ProjectGeneralMaster;
   maintenance_cost?: number;
   severity_level_id: string;
+  severityLevel?: ProjectGeneralMaster;
   suggested_repair_id: string;
+  suggestedRepair?: ProjectGeneralMaster;
   recommended_action_urgency_id: string;
+  recommendedActionUrgency?: ProjectGeneralMaster;
   remark?: string;
   created_at?: string;
   updated_at?: string;
@@ -723,6 +728,25 @@ export interface BridgeFoundation {
   updated_at?: string | Date;
 }
 
+export interface BridgeComponentAndAncillaries {
+  id: string;
+  project_id: string;
+  parent_id?: string | null;
+  bridge_id: string;
+  bridgeBasicData?: BridgeBasicData;
+  expansion_joint_type_id: string;
+  expansionJointType?: ProjectGeneralMaster;
+  guard_railing_type_id: string;
+  guardRailType?: ProjectGeneralMaster;
+  abutment_bearing_type_id: string;
+  piers_bearing_type_id: string;
+  surface_type_id: string;
+  surfaceType?: ProjectGeneralMaster;
+  remark?: string | null;
+  created_at?: string | Date;
+  updated_at?: string | Date;
+}
+
 // Bridge SubStructure model
 export interface BridgeSubStructure {
   id: string;
@@ -850,14 +874,17 @@ export interface TrafficVolume {
 }
 export interface RoadProjectQualityControl {
   id: string;
+  parent_id?: string | null;
   project_id: string;
   name: string;
   project_phase_id: string;
+  projectPhase?: ProjectGeneralMaster;
   inspection_type_id: string;
+  inspectionType?: ProjectGeneralMaster;
   defect_encountered?: string;
   remark?: string;
-  created_at: Date;
-  updated_at: Date;
+  created_at?: string | Date;
+  updated_at?: string | Date;
 }
 export interface RoadDrainage {
   id: string;
@@ -900,7 +927,8 @@ export interface EnvironmentalData {
 export interface RoadMaintenanceData {
   id: string;
   project_id: string;
-  road_segment: string;
+  road_segment_id: string;
+  roadSegment?: RoadSegment;
   maintenance_start_date?: Date;
   maintenance_end_date?: Date;
   weather_condition?: string;
@@ -958,13 +986,45 @@ export interface EnvironmentalControl {
 export interface RoadMaintenanceActivity {
   id: string;
   project_id: string;
-  road_segment: string;
+  road_segment_id: string;
+  roadSegment?: RoadSegment;
   maintenance_frequency_id?: string;
   maintenance_type_id?: string;
   consultant?: string;
   remark?: string;
   created_at?: Date;
   updated_at?: Date;
+}
+
+export interface TrafficMaintenance {
+  id: string;
+  parent_id?: string | null;
+  project_id: string;
+  road_segment_id: string;
+  roadSegment?: RoadSegment;
+  maintenance_date?: string | Date | EthiopianDate;
+  maintenance_activity?: string;
+  maintenance_cost?: number;
+  remark?: string;
+  created_at?: string | Date;
+  updated_at?: string | Date;
+}
+
+export interface DrainageMaintenanceData {
+  id: string;
+  parent_id?: string | null;
+  project_id: string;
+  road_segment_id: string;
+  roadSegment?: RoadSegment;
+  drainage_type_id?: string;
+  drainageType?: DrainageType;
+  drainage_condition_id?: string;
+  drainageCondition?: DrainageCondition;
+  maintenance_date?: string | Date | EthiopianDate;
+  maintenance_activity?: string;
+  remark?: string;
+  created_at?: string | Date;
+  updated_at?: string | Date;
 }
 export interface DataCenter {
   id: string;

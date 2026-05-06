@@ -33,7 +33,7 @@ const RoadMaintenanceActivityDrawer = (props: RoadMaintenanceActivityDrawerType)
 
   const validationSchema = yup.object().shape({
     parent_id: yup.string().uuid().nullable(),
-    road_segment: yup.string().max(255, 'Road segment must be at most 255 characters').required('Road segment is required'),
+    road_segment_id: yup.string().uuid().required('Road segment is required'),
     maintenance_frequency_id: yup.string().uuid().required('Maintenance frequency is required'),
     maintenance_type_id: yup.string().uuid().required('Maintenance type is required'),
     consultant: yup.string().max(100, 'Consultant must be at most 100 characters').nullable(),
@@ -50,8 +50,9 @@ const RoadMaintenanceActivityDrawer = (props: RoadMaintenanceActivityDrawerType)
 
   const getPayload = (values: RoadMaintenanceActivity) => ({
     data: {
+      ...values, 
       project_id: projectId,
-      road_segment: values.road_segment,
+      road_segment_id: values.road_segment_id,
       maintenance_frequency_id: values.maintenance_frequency_id,
       maintenance_type_id: values.maintenance_type_id,
       consultant: values.consultant,
@@ -87,7 +88,9 @@ const RoadMaintenanceActivityDrawer = (props: RoadMaintenanceActivityDrawerType)
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...roadMaintenanceActivity
+            ...roadMaintenanceActivity,
+            road_segment_id: roadMaintenanceActivity?.road_segment_id || roadMaintenanceActivity?.roadSegment?.id || '',
+            project_id: projectId
           }}
           createActionFunc={isEdit ? editRoadMaintenanceActivity : createRoadMaintenanceActivity}
           onActionSuccess={onActionSuccess}

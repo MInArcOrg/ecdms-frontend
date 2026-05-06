@@ -74,7 +74,7 @@ const MaintenanceHistoryList: React.FC<MaintenanceHistoryListProps> = ({ otherSu
   const mapMaintenanceHistoryToDetailItems = (maintenanceHistory: MaintenanceHistory): { title: string; value: string }[] => [
     {
       title: t('project.other.maintenance-history.details.road-segment'),
-      value: maintenanceHistory?.road_segment || 'N/A'
+      value: maintenanceHistory?.roadSegment?.name || maintenanceHistory?.road_segment_id || 'N/A'
     },
     {
       title: t('project.other.maintenance-history.details.last-maintenance-date'),
@@ -82,7 +82,7 @@ const MaintenanceHistoryList: React.FC<MaintenanceHistoryListProps> = ({ otherSu
     },
     {
       title: t('project.other.maintenance-history.details.maintenance-type'),
-      value: maintenanceHistory?.maintenance_type_id || 'N/A'
+      value: maintenanceHistory?.maintenanceType?.title || maintenanceHistory?.maintenance_type_id || 'N/A'
     },
     {
       title: t('project.other.maintenance-history.details.maintenance-cost'),
@@ -90,15 +90,16 @@ const MaintenanceHistoryList: React.FC<MaintenanceHistoryListProps> = ({ otherSu
     },
     {
       title: t('project.other.maintenance-history.details.severity-level'),
-      value: maintenanceHistory?.severity_level_id || 'N/A'
+      value: maintenanceHistory?.severityLevel?.title || maintenanceHistory?.severity_level_id || 'N/A'
     },
     {
       title: t('project.other.maintenance-history.details.suggested-repair'),
-      value: maintenanceHistory?.suggested_repair_id || 'N/A'
+      value: maintenanceHistory?.suggestedRepair?.title || maintenanceHistory?.suggested_repair_id || 'N/A'
     },
     {
       title: t('project.other.maintenance-history.details.recommended-action-urgency'),
-      value: maintenanceHistory?.recommended_action_urgency_id || 'N/A'
+      value:
+        maintenanceHistory?.recommendedActionUrgency?.title || maintenanceHistory?.recommended_action_urgency_id || 'N/A'
     },
     {
       title: t('project.other.maintenance-history.details.remark'),

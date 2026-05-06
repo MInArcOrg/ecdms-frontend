@@ -25,6 +25,7 @@ const EducationDrawer = (props: EducationDrawerType) => {
 
   const validationSchema = yup.object().shape({
     school_name: yup.string().max(255).nullable(),
+    studylevel_id: yup.string().required('Education level is required'),
     education_level: yup.string().max(255).nullable(),
     study_field_id: yup.string().required('Study field is required'),
     program_type: yup.string().max(255).required('Program type is required'),
@@ -89,6 +90,7 @@ const EducationDrawer = (props: EducationDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...(education as UserEducation),
+            studylevel_id: (education as any)?.studylevel_id || (education as any)?.studyField?.studylevel_id || '',
             start_date: formatInitialDateDate(education?.start_date),
             end_date: formatInitialDateDate(education?.end_date)
           }}

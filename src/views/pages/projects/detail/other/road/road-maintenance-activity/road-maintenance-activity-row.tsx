@@ -25,7 +25,7 @@ export const roadMaintenanceActivityColumns = (
   {
     flex: 0.2,
     minWidth: 150,
-    field: 'road_segment',
+    field: 'road_segment_id',
     headerName: t('project.other.road-maintenance-activity.details.road-segment'),
     renderCell: ({ row }: CellType) => (
       <Typography
@@ -39,7 +39,7 @@ export const roadMaintenanceActivityColumns = (
           '&:hover': { color: 'primary.main' }
         }}
       >
-        {row?.road_segment || t('common.not-available')}
+        {row?.roadSegment?.name || row?.road_segment_id || t('common.not-available')}
       </Typography>
     )
   },

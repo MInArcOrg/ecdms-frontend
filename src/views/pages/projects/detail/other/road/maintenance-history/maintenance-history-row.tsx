@@ -42,9 +42,11 @@ export const maintenanceHistoryColumns = (
     flex: 0.15,
     minWidth: 120,
     headerName: t('project.other.maintenance-history.details.road-segment'),
-    field: 'road_segment',
+    field: 'road_segment_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.road_segment || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.roadSegment?.name || row?.road_segment_id || t('common.not-available')}
+      </Typography>
     )
   },
   {
@@ -64,7 +66,9 @@ export const maintenanceHistoryColumns = (
     headerName: t('project.other.maintenance-history.details.maintenance-type'),
     field: 'maintenance_type_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.maintenance_type_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.maintenanceType?.title || row?.maintenance_type_id || t('common.not-available')}
+      </Typography>
     )
   },
   {
@@ -73,7 +77,9 @@ export const maintenanceHistoryColumns = (
     headerName: t('project.other.maintenance-history.details.severity-level'),
     field: 'severity_level_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.severity_level_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.severityLevel?.title || row?.severity_level_id || t('common.not-available')}
+      </Typography>
     )
   },
   {
@@ -82,7 +88,9 @@ export const maintenanceHistoryColumns = (
     headerName: t('project.other.maintenance-history.details.suggested-repair'),
     field: 'suggested_repair_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.suggested_repair_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.suggestedRepair?.title || row?.suggested_repair_id || t('common.not-available')}
+      </Typography>
     )
   },
   {

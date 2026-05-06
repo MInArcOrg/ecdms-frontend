@@ -43,20 +43,24 @@ const MaintenanceHistoryCard: React.FC<MaintenanceHistoryCardProps> = ({ mainten
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.maintenance-history.details.road-segment')}: {maintenanceHistory?.road_segment || 'N/A'}
+            {t('project.other.maintenance-history.details.road-segment')}:{' '}
+            {maintenanceHistory?.roadSegment?.name || maintenanceHistory?.road_segment_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.maintenance-history.details.last-maintenance-date')}:
             {maintenanceHistory?.last_maintenance_date ? formatCreatedAt(maintenanceHistory.last_maintenance_date) : 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.maintenance-history.details.maintenance-type')}: {maintenanceHistory?.maintenance_type_id || 'N/A'}
+            {t('project.other.maintenance-history.details.maintenance-type')}:{' '}
+            {maintenanceHistory?.maintenanceType?.title || maintenanceHistory?.maintenance_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.maintenance-history.details.severity-level')}: {maintenanceHistory?.severity_level_id || 'N/A'}
+            {t('project.other.maintenance-history.details.severity-level')}:{' '}
+            {maintenanceHistory?.severityLevel?.title || maintenanceHistory?.severity_level_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.maintenance-history.details.suggested-repair')}: {maintenanceHistory?.suggested_repair_id || 'N/A'}
+            {t('project.other.maintenance-history.details.suggested-repair')}:{' '}
+            {maintenanceHistory?.suggestedRepair?.title || maintenanceHistory?.suggested_repair_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.maintenance-history.details.remark')}: {maintenanceHistory?.remark || 'N/A'}

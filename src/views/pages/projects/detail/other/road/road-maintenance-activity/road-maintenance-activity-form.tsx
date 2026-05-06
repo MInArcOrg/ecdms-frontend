@@ -3,10 +3,12 @@ import { useQuery } from '@tanstack/react-query';
 import type { FormikProps } from 'formik';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
+import { dropDownConfig } from 'src/configs/api-constants';
 import { gridSpacing } from 'src/configs/app-constants';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
-import type { RoadMaintenanceActivity } from 'src/types/project/other';
+import projectOtherApiService from 'src/services/project/project-other-service';
+import type { RoadMaintenanceActivity, RoadSegment } from 'src/types/project/other';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
@@ -19,6 +21,17 @@ interface RoadMaintenanceActivityFormProps {
 
 const RoadMaintenanceActivityForm: React.FC<RoadMaintenanceActivityFormProps> = ({ formik, file, onFileChange }) => {
   const { t: transl } = useTranslation();
+
+  const { data: roadSegments } = useQuery({
+    queryKey: ['roadSegments', formik.values.project_id],
+    queryFn: () =>
+      projectOtherApiService<RoadSegment>().getAll(
+        'roadsegment',
+        dropDownConfig({
+          filter: { project_id: formik.values.project_id }
+        })
+      )
+  });
 
   const { data: maintenanceFrequencies } = useQuery({
     queryKey: ['maintenance-frequencies'],
@@ -39,13 +52,14 @@ const RoadMaintenanceActivityForm: React.FC<RoadMaintenanceActivityFormProps> = 
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
-        <CustomTextBox
+        <CustomSelect
           fullWidth
           label={transl('project.other.road-maintenance-activity.details.road-segment')}
           placeholder={transl('project.other.road-maintenance-activity.details.road-segment')}
-          name="road_segment"
+          name="road_segment_id"
           size="small"
           sx={{ mb: 2 }}
+          options={roadSegments?.payload.map((item) => ({ label: item.name, value: item.id })) || []}
         />
 
         <CustomSelect

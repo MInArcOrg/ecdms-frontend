@@ -28,7 +28,16 @@ const MaintenanceHistoryDrawer = (props: MaintenanceHistoryDrawerType) => {
     setUploadableFile(file);
   };
 
-  const validationSchema = yup.object().shape({});
+  const validationSchema = yup.object().shape({
+    road_segment_id: yup.string().uuid().required('Road segment is required'),
+    last_maintenance_date: yup.mixed().required('Last maintenance date is required'),
+    maintenance_type_id: yup.string().uuid().required('Maintenance type is required'),
+    severity_level_id: yup.string().uuid().required('Severity level is required'),
+    suggested_repair_id: yup.string().uuid().required('Suggested repair is required'),
+    recommended_action_urgency_id: yup.string().uuid().required('Recommended action urgency is required'),
+    maintenance_cost: yup.number().nullable().typeError('Maintenance cost must be a number'),
+    remark: yup.string().nullable()
+  });
 
   const isEdit = Boolean(maintenanceHistory?.id);
 
@@ -41,7 +50,7 @@ const MaintenanceHistoryDrawer = (props: MaintenanceHistoryDrawerType) => {
   const getPayload = (values: MaintenanceHistory) => ({
     data: {
       project_id: projectId,
-      road_segment: values.road_segment,
+      road_segment_id: values.road_segment_id,
       last_maintenance_date: values.last_maintenance_date,
       maintenance_type_id: values.maintenance_type_id,
       maintenance_cost: values.maintenance_cost,
@@ -77,7 +86,14 @@ const MaintenanceHistoryDrawer = (props: MaintenanceHistoryDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...maintenanceHistory
+            ...maintenanceHistory,
+            project_id: projectId,
+            road_segment_id: maintenanceHistory?.road_segment_id || maintenanceHistory?.roadSegment?.id || '',
+            maintenance_type_id: maintenanceHistory?.maintenance_type_id || maintenanceHistory?.maintenanceType?.id || '',
+            severity_level_id: maintenanceHistory?.severity_level_id || maintenanceHistory?.severityLevel?.id || '',
+            suggested_repair_id: maintenanceHistory?.suggested_repair_id || maintenanceHistory?.suggestedRepair?.id || '',
+            recommended_action_urgency_id:
+              maintenanceHistory?.recommended_action_urgency_id || maintenanceHistory?.recommendedActionUrgency?.id || ''
           }}
           createActionFunc={isEdit ? editMaintenanceHistory : createMaintenanceHistory}
           onActionSuccess={onActionSuccess}

@@ -40,7 +40,6 @@ export const masterDataFlagConstanct = (transl: (word: string) => string) => {
   ];
 };
 export const gridSpacing = 2;
-export const ANALYTICS_DUMMY_DATA_STORAGE_KEY = 'ecdms.analytics.dummy-data';
 export const acadamicLevels: string[] = [
   '1-12',
   'Certificate',

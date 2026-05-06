@@ -2,23 +2,25 @@
 
 import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
 import type React from 'react';
-import { useTranslation } from 'react-i18next';
-import type { RoadMaintenanceData } from 'src/types/project/other';
-import { formatDate } from 'src/utils/formatter/date';
+import type { BridgeComponentAndAncillaries } from 'src/types/project/other';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
-interface RoadMaintenanceDataCardProps {
-  roadMaintenanceData: RoadMaintenanceData;
+interface BridgeComponentsAncillariesCardProps {
+  item: BridgeComponentAndAncillaries;
   refetch: () => void;
-  onEdit: (roadMaintenanceData: RoadMaintenanceData) => void;
+  onEdit: (item: BridgeComponentAndAncillaries) => void;
   onDelete: (id: string) => void;
-  onDetail: (roadMaintenanceData: RoadMaintenanceData) => void;
+  onDetail: (item: BridgeComponentAndAncillaries) => void;
 }
 
-const RoadMaintenanceDataCard: React.FC<RoadMaintenanceDataCardProps> = ({ roadMaintenanceData, refetch, onEdit, onDelete, onDetail }) => {
-  const { t } = useTranslation();
-
+const BridgeComponentsAncillariesCard: React.FC<BridgeComponentsAncillariesCardProps> = ({
+  item,
+  refetch,
+  onEdit,
+  onDelete,
+  onDetail
+}) => {
   return (
     <Card sx={{ p: 2 }}>
       <CardContent>
@@ -27,7 +29,7 @@ const RoadMaintenanceDataCard: React.FC<RoadMaintenanceDataCardProps> = ({ roadM
             <Typography
               noWrap
               component={Button}
-              onClick={() => onDetail(roadMaintenanceData)}
+              onClick={() => onDetail(item)}
               sx={{
                 fontWeight: 500,
                 textDecoration: 'none',
@@ -35,7 +37,7 @@ const RoadMaintenanceDataCard: React.FC<RoadMaintenanceDataCardProps> = ({ roadM
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {roadMaintenanceData?.id.slice(0, 5)}...
+              {item?.bridgeBasicData?.name || item?.bridge_id || item?.id.slice(0, 8) + '...'}
             </Typography>
           </Typography>
         </Box>
@@ -43,27 +45,33 @@ const RoadMaintenanceDataCard: React.FC<RoadMaintenanceDataCardProps> = ({ roadM
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.road-maintenance-data.details.road-segment')}:{' '}
-            {roadMaintenanceData?.roadSegment?.name || roadMaintenanceData?.road_segment_id || 'N/A'}
+            Bridge Name: {item?.bridgeBasicData?.name || item?.bridge_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.road-maintenance-data.details.maintenance-start-date')}:{' '}
-            {roadMaintenanceData?.maintenance_start_date ? formatDate(roadMaintenanceData.maintenance_start_date) : 'N/A'}
+            Expansion Joint Type: {item?.expansionJointType?.title || item?.expansion_joint_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.road-maintenance-data.details.maintenance-end-date')}:{' '}
-            {roadMaintenanceData?.maintenance_end_date ? formatDate(roadMaintenanceData.maintenance_end_date) : 'N/A'}
+            Guard Railing Type: {item?.guardRailType?.title || item?.guard_railing_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('project.other.road-maintenance-data.details.weather-condition')}: {roadMaintenanceData?.weather_condition || 'N/A'}
+            Abutment Bearing Type: {item?.abutment_bearing_type_id || 'N/A'}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Piers Bearing Type: {item?.piers_bearing_type_id || 'N/A'}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Surface Type: {item?.surfaceType?.title || item?.surface_type_id || 'N/A'}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Remark: {item?.remark || 'N/A'}
           </Typography>
         </Box>
       </CardContent>
 
       <CardActions sx={{ justifyContent: 'flex-end' }}>
         <ModelAction
-          model="RoadMaintenanceData"
-          model_id={roadMaintenanceData.id}
+          model="BridgeComponentAndAncillaries"
+          model_id={item.id}
           refetchModel={refetch}
           resubmit={() => refetch()}
           title=""
@@ -72,19 +80,21 @@ const RoadMaintenanceDataCard: React.FC<RoadMaintenanceDataCardProps> = ({ roadM
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'roadmaintenancedata'
+            subject: 'bridgecomponentandancillaries'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'roadmaintenancedata'
+            subject: 'bridgecomponentandancillaries'
           }}
-          onEdit={() => onEdit(roadMaintenanceData)}
-          onDelete={() => onDelete(roadMaintenanceData.id)}
-          item={roadMaintenanceData}
+          onEdit={() => onEdit(item)}
+          onDelete={() => onDelete(item.id)}
+          item={item}
           options={[]}
         />
       </CardActions>
     </Card>
   );
 };
-export default RoadMaintenanceDataCard;
+
+export default BridgeComponentsAncillariesCard;
+

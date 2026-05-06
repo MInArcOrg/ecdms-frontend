@@ -139,8 +139,8 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: projectFeatureIds.bridge.bridgeComponentsAncillaries,
         title: 'project.navigation.submenu.feature.bridge.bridge-components-ancillaries',
         path: `/projects/${typeId}/details/${id}/feature/bridge/bridge-components-ancillaries`,
-        model: 'bridgecomponentsancillaries',
-        apiRoute: 'bridge-components-ancillaries'
+        model: 'bridgecomponentandancillaries',
+        apiRoute: 'bridge-component-and-ancillaries'
       },
       {
         id: projectFeatureIds.bridge.bridgeInspection,

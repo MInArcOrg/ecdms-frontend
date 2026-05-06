@@ -47,7 +47,9 @@ const RoadMaintenanceActivityCard: React.FC<RoadMaintenanceActivityCardProps> = 
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {roadMaintenanceActivity?.road_segment || roadMaintenanceActivity?.id.slice(0, 8) + '...'}
+              {roadMaintenanceActivity?.roadSegment?.name ||
+                roadMaintenanceActivity?.road_segment_id ||
+                roadMaintenanceActivity?.id.slice(0, 8) + '...'}
             </Typography>
           </Typography>
         </Box>

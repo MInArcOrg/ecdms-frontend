@@ -77,7 +77,7 @@ const RoadMaintenanceDataList: React.FC<RoadMaintenanceDataListProps> = ({ other
   const mapRoadMaintenanceDataToDetailItems = (roadMaintenanceData: RoadMaintenanceData): { title: string; value: string }[] => [
     {
       title: t('project.other.road-maintenance-data.details.road-segment'),
-      value: roadMaintenanceData?.road_segment || 'N/A'
+      value: roadMaintenanceData?.roadSegment?.name || roadMaintenanceData?.road_segment_id || 'N/A'
     },
     {
       title: t('project.other.road-maintenance-data.details.maintenance-start-date'),

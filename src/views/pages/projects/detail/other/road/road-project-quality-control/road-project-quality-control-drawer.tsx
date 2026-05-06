@@ -54,6 +54,7 @@ const RoadProjectQualityControlDrawer = (props: RoadProjectQualityControlDrawerT
   const getPayload = (values: RoadProjectQualityControl) => ({
     data: {
       project_id: projectId,
+      parent_id: values.parent_id,
       name: values.name,
       project_phase_id: values.project_phase_id,
       inspection_type_id: values.inspection_type_id,
@@ -93,7 +94,10 @@ const RoadProjectQualityControlDrawer = (props: RoadProjectQualityControlDrawerT
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...roadProjectQualityControl
+            ...roadProjectQualityControl,
+            project_phase_id: roadProjectQualityControl?.project_phase_id || roadProjectQualityControl?.projectPhase?.id || '',
+            inspection_type_id:
+              roadProjectQualityControl?.inspection_type_id || roadProjectQualityControl?.inspectionType?.id || ''
           }}
           createActionFunc={isEdit ? editRoadProjectQualityControl : createRoadProjectQualityControl}
           onActionSuccess={onActionSuccess}

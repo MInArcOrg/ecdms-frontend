@@ -19,7 +19,6 @@ interface GeneralMasterDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  resource_type_id: yup.string().required('Resource Type is required'),
   title: yup.string().required('Title is required'),
   description: yup.string().required('Description is required')
 });
@@ -45,7 +44,8 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
       data: {
         ...values,
         id: masterData?.id,
-        model: resourceMasterModel.model
+        model: resourceMasterModel.model,
+        resource_type_id: values.resource_type_id,
       },
       files: uploadableFile ? [uploadableFile] : []
     };

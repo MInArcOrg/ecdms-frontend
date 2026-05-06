@@ -23,7 +23,7 @@ const RoadMaintenanceDataDrawer = (props: RoadMaintenanceDataDrawerType) => {
 
   const validationSchema = yup.object().shape({
     parent_id: yup.string().uuid().nullable(),
-    road_segment: yup.string().max(100, 'Road segment must be at most 100 characters').required('Road segment is required'),
+    road_segment_id: yup.string().uuid().required('Road segment is required'),
     maintenance_start_date: yup.string().nullable(),
     maintenance_end_date: yup.string().nullable(),
     weather_condition: yup.string().max(100, 'Weather condition must be at most 100 characters').nullable(),
@@ -68,7 +68,9 @@ const RoadMaintenanceDataDrawer = (props: RoadMaintenanceDataDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...roadMaintenanceData
+            ...roadMaintenanceData,
+            road_segment_id: roadMaintenanceData?.road_segment_id || roadMaintenanceData?.roadSegment?.id || '',
+            project_id: projectId
           }}
           createActionFunc={isEdit ? editRoadMaintenanceData : createRoadMaintenanceData}
           onActionSuccess={onActionSuccess}

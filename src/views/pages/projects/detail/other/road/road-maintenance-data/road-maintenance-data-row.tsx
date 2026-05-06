@@ -45,9 +45,11 @@ export const roadMaintenanceDataColumns = (
     flex: 0.15,
     minWidth: 120,
     headerName: t('project.other.road-maintenance-data.details.road-segment'),
-    field: 'road_segment',
+    field: 'road_segment_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.road_segment || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.roadSegment?.name || row?.road_segment_id || t('common.not-available')}
+      </Typography>
     )
   },
   {

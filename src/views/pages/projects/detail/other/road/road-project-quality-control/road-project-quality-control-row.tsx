@@ -47,7 +47,9 @@ export const roadProjectQualityControlColumns = (
     headerName: t('project.other.road-project-quality-control.details.project-phase-id'),
     field: 'project_phase_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.project_phase_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.projectPhase?.title || row?.project_phase_id || t('common.not-available')}
+      </Typography>
     )
   },
   {
@@ -56,7 +58,9 @@ export const roadProjectQualityControlColumns = (
     headerName: t('project.other.road-project-quality-control.details.inspection-type-id'),
     field: 'inspection_type_id',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.inspection_type_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>
+        {row?.inspectionType?.title || row?.inspection_type_id || t('common.not-available')}
+      </Typography>
     )
   },
   {

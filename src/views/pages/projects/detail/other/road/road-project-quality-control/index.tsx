@@ -84,11 +84,11 @@ const RoadProjectQualityControlList: React.FC<RoadProjectQualityControlListProps
     },
     {
       title: t('project.other.road-project-quality-control.details.project-phase-id'),
-      value: roadProjectQualityControl?.project_phase_id || 'N/A'
+      value: roadProjectQualityControl?.projectPhase?.title || roadProjectQualityControl?.project_phase_id || 'N/A'
     },
     {
       title: t('project.other.road-project-quality-control.details.inspection-type-id'),
-      value: roadProjectQualityControl?.inspection_type_id || 'N/A'
+      value: roadProjectQualityControl?.inspectionType?.title || roadProjectQualityControl?.inspection_type_id || 'N/A'
     },
     {
       title: t('project.other.road-project-quality-control.details.defect-encountered'),
