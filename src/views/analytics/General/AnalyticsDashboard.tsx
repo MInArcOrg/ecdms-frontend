@@ -982,8 +982,13 @@ const AnalyticsDashboard = ({ module, Layout, summaryService }: AnalyticsDashboa
         ]
       };
 
-  const typeSummaryData = dummyTypeSummary;
-  const isTypeSummaryLoading = false;
+  const { data: typeSummaryDataFromApi, isLoading: isTypeSummaryLoading } = useQuery({
+    queryKey: ['analytics', module, 'type-summary'],
+    queryFn: () => summaryService.getTypeSummary({}),
+    enabled: !dummyEnabled
+  });
+
+  const typeSummaryData = dummyEnabled ? dummyTypeSummary : typeSummaryDataFromApi;
 
   // Fetch all types for the module
   const { data: typesData, isLoading: isTypesLoading } = useQuery({
@@ -1187,7 +1192,7 @@ const AnalyticsDashboard = ({ module, Layout, summaryService }: AnalyticsDashboa
                 ))
               ) : (
                 typeSummaryData?.payload?.map((item: any, index: number) => (
-                  <Grid item xs={12} sm={6} md={3} key={index}>
+                  <Grid item xs={12} sm={6} md={3} key={item?.id || index}>
                     <StatCard title={item.name} count={item.count} />
                   </Grid>
                 ))
