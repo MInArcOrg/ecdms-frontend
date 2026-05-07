@@ -88,7 +88,9 @@ const CulvertStructuralInformationForm: React.FC<CulvertStructuralInformationFor
       })
   });
     useEffect(() => {
-      formik.setFieldValue('road_segment_id', culverts?.payload?.find((item) => item.id === formik.values.culvert_id)?.road_segment_id || '');
+         if(!formik.values.culvert_id) return;
+    formik.setFieldValue('road_segment_id', culverts?.payload?.find((item) => item.id === formik.values.culvert_id)?.road_segment_id || '');
+
     }, [formik.values.culvert_id]);
   
 

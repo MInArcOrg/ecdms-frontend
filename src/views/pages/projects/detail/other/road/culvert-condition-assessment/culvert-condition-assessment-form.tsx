@@ -61,11 +61,11 @@ const CulvertConditionAssessmentForm: React.FC<CulvertConditionAssessmentFormPro
       value: item.id
     })) || [];
   useEffect(() => {
+    if(!formik.values.culvert_id) return;
+       if(!formik.values.culvert_id) return;
     formik.setFieldValue('road_segment_id', culverts?.payload?.find((item) => item.id === formik.values.culvert_id)?.road_segment_id || '');
-    console.log('road_segment_id',formik.values.road_segment_id);
-    console.log('culvert_id',formik.values.culvert_id);
-
   }, [formik.values.culvert_id]);
+  console.log('formik errors', formik.errors)
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
