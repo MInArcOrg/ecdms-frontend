@@ -6,21 +6,21 @@ import { gridSpacing } from 'src/configs/app-constants';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import type { RailwayFasteningSystemEnvironmentalFactor } from 'src/types/project/other';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector'; // Updated import path
+import {
+  RAILWAY_FASTENING_SYSTEM_ENVIRONMENTAL_FACTOR_FILE_TYPES,
+  RailwayFasteningSystemEnvironmentalFactorFileKey
+} from './filet-type-config';
 
 interface RailwayFasteningSystemEnvironmentalFactorFormProps {
   formik: FormikProps<RailwayFasteningSystemEnvironmentalFactor>;
-  fasteningSystemConditionDocumentationFile: File | null;
-  onFasteningSystemConditionDocumentationFileChange: (file: File | null) => void;
-  defaultFile: File | null;
-  onDefaultFileChange: (file: File | null) => void; // Renamed from 'onFileChange' for clarity
+  files: Record<RailwayFasteningSystemEnvironmentalFactorFileKey, File | null>;
+  onFileChange: (fileType: RailwayFasteningSystemEnvironmentalFactorFileKey, file: File | null) => void;
 }
 
 const RailwayFasteningSystemEnvironmentalFactorForm: React.FC<RailwayFasteningSystemEnvironmentalFactorFormProps> = ({
   formik,
-  fasteningSystemConditionDocumentationFile,
-  onFasteningSystemConditionDocumentationFileChange,
-  defaultFile, // Used renamed prop
-  onDefaultFileChange // Used renamed prop
+  files,
+  onFileChange
 }) => {
   const { t } = useTranslation();
 
@@ -90,14 +90,14 @@ const RailwayFasteningSystemEnvironmentalFactorForm: React.FC<RailwayFasteningSy
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomFileUpload
-          label={t('project.other.railway-fastening-system-environmental-factor.details.fastening_system_condition_documentation')}
-          file={fasteningSystemConditionDocumentationFile}
-          onFileChange={onFasteningSystemConditionDocumentationFileChange}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <CustomFileUpload label={t('common.form.file-upload')} file={defaultFile} onFileChange={onDefaultFileChange} />
+        {RAILWAY_FASTENING_SYSTEM_ENVIRONMENTAL_FACTOR_FILE_TYPES.map((fileType) => (
+          <CustomFileUpload
+            key={fileType.key}
+            label={t(fileType.titleTKey)}
+            file={files[fileType.key]}
+            onFileChange={(file) => onFileChange(fileType.key, file)}
+          />
+        ))}
       </Grid>
     </Grid>
   );

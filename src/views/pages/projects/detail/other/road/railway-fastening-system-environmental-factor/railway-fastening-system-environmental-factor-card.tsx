@@ -6,6 +6,7 @@ import type { RailwayFasteningSystemEnvironmentalFactor } from 'src/types/projec
 import FileDrawer from 'src/views/components/custom/files-drawer'; // Assuming this is your FileDrawer component for display
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
+import { RAILWAY_FASTENING_SYSTEM_ENVIRONMENTAL_FACTOR_FILE_TYPES } from './filet-type-config';
 
 interface RailwayFasteningSystemEnvironmentalFactorCardProps {
   railwayFasteningSystemEnvironmentalFactor: RailwayFasteningSystemEnvironmentalFactor;
@@ -77,38 +78,46 @@ const RailwayFasteningSystemEnvironmentalFactorCard: React.FC<RailwayFasteningSy
           )}
         </Box>
       </CardContent>
-      <CardActions sx={{ justifyContent: 'flex-end' }}>
-        {railwayFasteningSystemEnvironmentalFactor.id && (
-          <FileDrawer id={railwayFasteningSystemEnvironmentalFactor.id} type={'FASTENING_SYSTEM_CONDITION_DOCUMENTATION'} />
-        )}
-        {railwayFasteningSystemEnvironmentalFactor.id && (
-          <FileDrawer id={railwayFasteningSystemEnvironmentalFactor.id} type={otherSubMenu?.id || 'DEFAULT_FILES'} />
-        )}
+      <CardActions sx={{ flexDirection: 'column', alignItems: 'flex-start' }}>
+        {railwayFasteningSystemEnvironmentalFactor.id &&
+          RAILWAY_FASTENING_SYSTEM_ENVIRONMENTAL_FACTOR_FILE_TYPES.map((fileType) => {
+            const resolvedType = fileType.key === 'defaultFiles' ? otherSubMenu?.fileType || fileType.type : fileType.type;
+            return (
+              <Box key={fileType.key} width="100%" display="flex" justifyContent="space-between" alignItems="center" mb={1}>
+                <Typography variant="subtitle2" fontWeight="medium">
+                  {t(fileType.titleTKey)}:
+                </Typography>
+                <FileDrawer id={railwayFasteningSystemEnvironmentalFactor.id} type={resolvedType} />
+              </Box>
+            );
+          })}
 
-        {railwayFasteningSystemEnvironmentalFactor.id && (
-          <ModelAction
-            model="RailwayFasteningSystemEnvironmentalFactor"
-            model_id={railwayFasteningSystemEnvironmentalFactor.id}
-            refetchModel={refetch}
-            resubmit={refetch}
-            title=""
-            postAction={refetch}
+        <Box width="100%" display="flex" justifyContent="flex-end" mt={1}>
+          {railwayFasteningSystemEnvironmentalFactor.id && (
+            <ModelAction
+              model="RailwayFasteningSystemEnvironmentalFactor"
+              model_id={railwayFasteningSystemEnvironmentalFactor.id}
+              refetchModel={refetch}
+              resubmit={refetch}
+              title=""
+              postAction={refetch}
+            />
+          )}
+          <RowOptions
+            deletePermissionRule={{
+              action: 'delete',
+              subject: 'railwayfasteningsystemenvironmentalFactor'
+            }}
+            editPermissionRule={{
+              action: 'update',
+              subject: 'railwayfasteningsystemenvironmentalFactor'
+            }}
+            onEdit={() => onEdit(railwayFasteningSystemEnvironmentalFactor)}
+            onDelete={() => onDelete(railwayFasteningSystemEnvironmentalFactor.id as string)}
+            item={railwayFasteningSystemEnvironmentalFactor}
+            options={[]}
           />
-        )}
-        <RowOptions
-          deletePermissionRule={{
-            action: 'delete',
-            subject: 'railwayfasteningsystemenvironmentalFactor'
-          }}
-          editPermissionRule={{
-            action: 'update',
-            subject: 'railwayfasteningsystemenvironmentalFactor'
-          }}
-          onEdit={() => onEdit(railwayFasteningSystemEnvironmentalFactor)}
-          onDelete={() => onDelete(railwayFasteningSystemEnvironmentalFactor.id as string)}
-          item={railwayFasteningSystemEnvironmentalFactor}
-          options={[]}
-        />
+        </Box>
       </CardActions>
     </Card>
   );

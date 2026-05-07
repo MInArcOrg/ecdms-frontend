@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
@@ -6,6 +6,7 @@ import type { RailwayFasteningSystemEnvironmentalFactor } from 'src/types/projec
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
+import { RAILWAY_FASTENING_SYSTEM_ENVIRONMENTAL_FACTOR_FILE_TYPES } from './filet-type-config';
 
 interface CellType {
   row: RailwayFasteningSystemEnvironmentalFactor;
@@ -75,20 +76,23 @@ export const railwayFasteningSystemEnvironmentalFactorColumns = (
   {
     flex: 0.1,
     minWidth: 120,
-    field: 'fastening_system_condition_documentation',
-    headerName: t('project.other.railway-fastening-system-environmental-factor.details.fastening_system_condition_documentation'),
-    sortable: false,
-    filterable: false,
-    renderCell: ({ row }: CellType) => <>{row.id && <FileDrawer id={row.id} type={'FASTENING_SYSTEM_CONDITION_DOCUMENTATION'} />}</>
-  },
-  {
-    flex: 0.1,
-    minWidth: 120,
-    field: 'default_files',
     headerName: t('common.table-columns.files'),
+    field: 'file_id',
     sortable: false,
     filterable: false,
-    renderCell: ({ row }: CellType) => <>{row.id && <FileDrawer id={row.id} type={otherSubMenu?.fileType || ''} />}</>
+    renderCell: ({ row }: CellType) => (
+      <Box display="flex" flexDirection="column">
+        {row.id &&
+          RAILWAY_FASTENING_SYSTEM_ENVIRONMENTAL_FACTOR_FILE_TYPES.map((fileType) => {
+            const resolvedType = fileType.key === 'defaultFiles' ? otherSubMenu?.fileType || fileType.type : fileType.type;
+            return (
+              <Box key={fileType.key} sx={{ mb: 1 }}>
+                <FileDrawer id={row.id} type={resolvedType} />
+              </Box>
+            );
+          })}
+      </Box>
+    )
   },
   {
     field: 'actions',
@@ -109,11 +113,11 @@ export const railwayFasteningSystemEnvironmentalFactorColumns = (
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'railwayfasteningsystemenvironmentalFactor'
+            subject: 'railwayfasteningsystemenvironmentalfactor'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'railwayfasteningsystemenvironmentalFactor'
+            subject: 'railwayfasteningsystemenvironmentalfactor'
           }}
           onEdit={() => onEdit(row)}
           onDelete={() => onDelete(row.id as string)}

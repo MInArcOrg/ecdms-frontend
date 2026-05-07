@@ -12,6 +12,7 @@ export interface Project {
   remark?: string;
   contract_no?: string;
   status_id?: string;
+  status_title?: string;
   budget_code?: string;
   procurement_no?: string;
   revision_no?: number;

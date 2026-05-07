@@ -59,6 +59,11 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId, module }) => 
       }
     })),
   });
+
+  const infrastructureDefaultStatusId =
+    isInfrastructure && isArray(projectStatus?.payload)
+      ? projectStatus?.payload?.find((status) => status?.title?.toString().trim().toLowerCase() === 'completed')?.id
+      : undefined;
   const { data: sourceOffunds } = useQuery({
     queryKey: ["sourceOfFunds", projectMasterModels.sourceOfFund.model],
     queryFn: () => projectGeneralMasterDataApiService.getAll(dropDownConfig({
@@ -126,6 +131,14 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId, module }) => 
     }
   }, [setFieldValue, toGregorian, values.commencement_date, values.completion_date, values.original_contract_duration]);
 
+  useEffect(() => {
+    if (!isInfrastructure) return;
+    if (!infrastructureDefaultStatusId) return;
+    if (values.status_id !== infrastructureDefaultStatusId) {
+      setFieldValue('status_id', infrastructureDefaultStatusId, false);
+    }
+  }, [infrastructureDefaultStatusId, isInfrastructure, setFieldValue, values.status_id]);
+
   return (
     <>
       <Grid container spacing={3}>
@@ -134,7 +147,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId, module }) => 
             <Card variant="outlined">
               <CardContent>
                 <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                  Project Setup
+                  {isInfrastructure ? 'General Info' : 'Project Setup'}
                 </Typography>
                 <Divider sx={{ my: 2 }} />
                 <Stack spacing={2}>
@@ -169,6 +182,8 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId, module }) => 
                     size="small"
                     name="status_id"
                     label={transl('project.form.status')}
+                    required={true}
+                    disabled={isInfrastructure}
                     options={
                       isArray(projectStatus?.payload)
                         ? projectStatus?.payload?.map((projectSubCategory) => ({
@@ -180,8 +195,8 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId, module }) => 
                   />
                   <CustomTextBox
                     fullWidth
-                    label={transl('project.form.name')}
-                    placeholder={transl('project.form.name')}
+                    label={isInfrastructure ? 'Name' : transl('project.form.name')}
+                    placeholder={isInfrastructure ? 'Name' : transl('project.form.name')}
                     name="name"
                     size="small"
                   />

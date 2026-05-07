@@ -11,6 +11,10 @@ import type { RailwayFasteningSystemEnvironmentalFactor } from 'src/types/projec
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 import { useState } from 'react';
 import { uploadFile } from 'src/services/utils/file-utils';
+import {
+  RAILWAY_FASTENING_SYSTEM_ENVIRONMENTAL_FACTOR_FILE_TYPES,
+  RailwayFasteningSystemEnvironmentalFactorFileKey
+} from './filet-type-config';
 
 interface RailwayFasteningSystemEnvironmentalFactorDrawerProps {
   open: boolean;
@@ -30,8 +34,17 @@ const RailwayFasteningSystemEnvironmentalFactorDrawer = ({
   otherSubMenu
 }: RailwayFasteningSystemEnvironmentalFactorDrawerProps) => {
   const isEdit = Boolean(railwayFasteningSystemEnvironmentalFactor?.id);
-  const [fasteningSystemConditionDocumentationFile, setFasteningSystemConditionDocumentationFile] = useState<File | null>(null);
-  const [defaultFile, setDefaultFile] = useState<File | null>(null);
+  const [uploadableFiles, setUploadableFiles] = useState<Record<RailwayFasteningSystemEnvironmentalFactorFileKey, File | null>>({
+    fasteningSystemConditionDocumentation: null,
+    defaultFiles: null
+  });
+
+  const onFileChange = (fileType: RailwayFasteningSystemEnvironmentalFactorFileKey, file: File | null) => {
+    setUploadableFiles((prev) => ({
+      ...prev,
+      [fileType]: file
+    }));
+  };
 
   const validationSchema = yup.object().shape({
     railway_line_section_name: yup.string().required('Railway line section name is required'),
@@ -61,8 +74,10 @@ const RailwayFasteningSystemEnvironmentalFactorDrawer = ({
   };
 
   const handleClose = () => {
-    setFasteningSystemConditionDocumentationFile(null);
-    setDefaultFile(null);
+    setUploadableFiles({
+      fasteningSystemConditionDocumentation: null,
+      defaultFiles: null
+    });
     toggle();
   };
 
@@ -73,14 +88,15 @@ const RailwayFasteningSystemEnvironmentalFactorDrawer = ({
 
       const recordId = response.payload.id;
 
-      if (fasteningSystemConditionDocumentationFile) {
-        console.log('Uploading fastening system condition documentation file for record ID:', recordId);
-        await uploadFile(fasteningSystemConditionDocumentationFile, 'FASTENING_SYSTEM_CONDITION_DOCUMENTATION', recordId, '', '');
-      }
+      await Promise.all(
+        RAILWAY_FASTENING_SYSTEM_ENVIRONMENTAL_FACTOR_FILE_TYPES.map(async (fileType) => {
+          const file = uploadableFiles[fileType.key];
+          if (!file) return;
 
-      if (defaultFile) {
-        await uploadFile(defaultFile, otherSubMenu?.fileType || '', recordId, '', '');
-      }
+          const resolvedType = fileType.key === 'defaultFiles' ? otherSubMenu?.fileType || fileType.type : fileType.type;
+          await uploadFile(file, resolvedType, recordId, '', '');
+        })
+      );
 
       refetch();
       handleClose();
@@ -109,10 +125,8 @@ const RailwayFasteningSystemEnvironmentalFactorDrawer = ({
           {(formik: FormikProps<RailwayFasteningSystemEnvironmentalFactor>) => (
             <RailwayFasteningSystemEnvironmentalFactorForm
               formik={formik}
-              fasteningSystemConditionDocumentationFile={fasteningSystemConditionDocumentationFile}
-              onFasteningSystemConditionDocumentationFileChange={setFasteningSystemConditionDocumentationFile}
-              defaultFile={defaultFile}
-              onDefaultFileChange={setDefaultFile}
+              files={uploadableFiles}
+              onFileChange={onFileChange}
             />
           )}
         </FormPageWrapper>

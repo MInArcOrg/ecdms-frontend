@@ -80,6 +80,15 @@ export const projectColumns = (
     },
     {
       flex: 0.15,
+      minWidth: 120,
+      headerName: t('project.column.status'),
+      field: 'status',
+      renderCell: ({ row }: CellType) => {
+        return <Typography sx={{ color: 'text.secondary' }}>{row?.status_title}</Typography>;
+      }
+    },
+    {
+      flex: 0.15,
       minWidth: 100,
       sortable: false,
       field: 'actions',

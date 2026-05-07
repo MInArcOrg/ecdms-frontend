@@ -17,6 +17,8 @@ import { formatCreatedAt } from 'src/utils/formatter/date';
 import RailwayFasteningSystemEnvironmentalFactorCard from './railway-fastening-system-environmental-factor-card';
 import RailwayFasteningSystemEnvironmentalFactorDrawer from './railway-fastening-system-environmental-factor-drawer';
 import { railwayFasteningSystemEnvironmentalFactorColumns } from './railway-fastening-system-environmental-factor-row';
+import FileDrawer from 'src/views/components/custom/files-drawer';
+import { RAILWAY_FASTENING_SYSTEM_ENVIRONMENTAL_FACTOR_FILE_TYPES } from './filet-type-config';
 
 interface RailwayFasteningSystemEnvironmentalFactorListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -80,7 +82,7 @@ const RailwayFasteningSystemEnvironmentalFactorList: React.FC<RailwayFasteningSy
 
   const mapRailwayFasteningSystemEnvironmentalFactorToDetailItems = (
     environmentalFactor: RailwayFasteningSystemEnvironmentalFactor
-  ): { title: string; value: string }[] => [
+  ): { title: string; value: string | React.ReactNode }[] => [
     {
       title: t('common.table-columns.id'),
       value: environmentalFactor?.id || 'N/A'
@@ -128,10 +130,19 @@ const RailwayFasteningSystemEnvironmentalFactorList: React.FC<RailwayFasteningSy
         <OtherDetailSidebar
           show={showDetailDrawer}
           toggleDrawer={toggleDetailDrawer}
-          data={mapRailwayFasteningSystemEnvironmentalFactorToDetailItems(selectedRow as RailwayFasteningSystemEnvironmentalFactor)}
+          data={[
+            ...mapRailwayFasteningSystemEnvironmentalFactorToDetailItems(selectedRow as RailwayFasteningSystemEnvironmentalFactor),
+            ...RAILWAY_FASTENING_SYSTEM_ENVIRONMENTAL_FACTOR_FILE_TYPES.map((fileType) => {
+              const resolvedType = fileType.key === 'defaultFiles' ? otherSubMenu?.fileType || fileType.type : fileType.type;
+              return {
+                title: t(fileType.titleTKey),
+                value: <FileDrawer id={selectedRow?.id || ''} type={resolvedType} />
+              };
+            })
+          ]}
           hasReference={true}
           id={selectedRow?.id || ''}
-          fileType={otherSubMenu?.id || 'DEFAULT_FILES'}
+          fileType={otherSubMenu?.fileType || 'DEFAULT_FILES'}
           title={t('project.other.railway-fastening-system-environmental-factor.detail')}
         />
       )}
