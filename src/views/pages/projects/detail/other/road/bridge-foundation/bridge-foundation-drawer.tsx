@@ -108,7 +108,7 @@ const BridgeFoundationDrawer = (props: BridgeFoundationDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...bridgeFoundation,
-            bridge_id: bridgeFoundation?.bridge_id || bridgeFoundation?.bridgeBasicData?.id || '',
+            bridge_id: bridgeFoundation?.bridge_id || bridgeFoundation?.bridge?.id || '',
             abutment_type_id: bridgeFoundation?.abutment_type_id || bridgeFoundation?.abutmentType?.id || '',
             pier_type_id: bridgeFoundation?.pier_type_id || bridgeFoundation?.pierType?.id || '',
             soil_type_id: bridgeFoundation?.soil_type_id || bridgeFoundation?.soilType?.id || '',
