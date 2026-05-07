@@ -43,13 +43,6 @@ export const culvertConditionAssessmentColumns = (
   {
     flex: 0.2,
     minWidth: 160,
-    headerName: t('project.other.culvert-condition-assessment.details.name'),
-    field: 'name',
-    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row?.name || t('common.not-available')}</Typography>
-  },
-  {
-    flex: 0.2,
-    minWidth: 160,
     headerName: t('project.other.culvert-condition-assessment.details.culvert-basic-data-id'),
     field: 'culvert_basic_data_id',
     renderCell: ({ row }: CellType) => (

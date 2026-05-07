@@ -125,11 +125,11 @@ export const bridgeComponentsAncillariesColumns = (
           options={[]}
           deletePermissionRule={{
             action: 'delete',
-            subject: 'bridgecomponentandancillaries'
+            subject: 'bridgecomponentandancillary'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'bridgecomponentandancillaries'
+            subject: 'bridgecomponentandancillary'
           }}
         />
       </Fragment>

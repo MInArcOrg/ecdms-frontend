@@ -77,7 +77,7 @@ const BridgeFoundationList: React.FC<BridgeFoundationListProps> = ({ otherSubMen
   const mapBridgeFoundationToDetailItems = (bridgeFoundation: BridgeFoundation): { title: string; value: string }[] => [
     {
       title: t('project.other.bridge-foundation.details.bridge-name'),
-      value: bridgeFoundation?.bridgeBasicData?.name || 'N/A'
+      value: bridgeFoundation?.bridge?.name || 'N/A'
     },
     {
       title: t('project.other.bridge-foundation.details.abutment-type-id'),

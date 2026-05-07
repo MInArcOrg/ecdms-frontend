@@ -78,10 +78,6 @@ const CulvertConditionAssessmentList: React.FC<CulvertConditionAssessmentListPro
     culvertConditionAssessment: CulvertConditionAssessment
   ): { title: string; value: string }[] => [
     {
-      title: t('project.other.culvert-condition-assessment.details.name'),
-      value: culvertConditionAssessment?.name || 'N/A'
-    },
-    {
       title: t('project.other.culvert-condition-assessment.details.culvert-basic-data-id'),
       value: culvertConditionAssessment?.culvertBasicData?.name || 'N/A'
     },

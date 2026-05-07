@@ -78,6 +78,7 @@ const CulvertStructuralInformationDrawer = (props: CulvertStructuralInformationD
       paved_water_way_type_id: values.paved_water_way_type_id,
       soil_type_id: values.soil_type_id,
       id: culvertStructuralInformation?.id,
+      road_segment_id: values.road_segment_id,
       created_at: values.created_at,
       updated_at: values.updated_at
     },

@@ -628,6 +628,7 @@ export interface CulvertBasicData {
   detour_possibility?: boolean;
   road_allignment?: string;
   altitude?: number;
+  culvert_type?: string;
   created_at: Date;
   updated_at: Date;
 }
@@ -664,6 +665,7 @@ export interface CulvertStructuralInformation {
   created_at?: string | Date;
   culvert_id: string;
   culvertBasicData?: CulvertBasicData;
+  road_segment_id?: string;
   culvert?: CulvertBasicData;
   updated_at?: string | Date;
 }
@@ -674,6 +676,7 @@ export interface CulvertRoadOverInformation {
   culvert?: CulvertBasicData;
   carriage_way_width?: number;
   side_walk_width?: number;
+  road_segment_id?: string;
   lane_number?: number;
   head_wall_to_head_wall?: number;
   average_fill_height?: number;
@@ -689,6 +692,8 @@ export interface CulvertConditionAssessment {
   project_id: string;
   culvert_basic_data_id: string;
   culvertBasicData?: CulvertBasicData;
+  culvert_id: string;
+  road_segment_id?: string;
   name: string;
   structure_type_id: string;
   structureType?: ProjectGeneralMaster;
@@ -713,7 +718,7 @@ export interface BridgeFoundation {
   abutment_type_id: string;
   pier_type_id: string;
   bridge_id: string;
-  bridgeBasicData?: BridgeBasicData;
+  bridge?: BridgeBasicData;
   abutmentType?: ProjectGeneralMaster;
   pierType?: ProjectGeneralMaster;
   abutment_foundation_size?: number;

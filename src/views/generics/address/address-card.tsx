@@ -92,7 +92,7 @@ const AddressCard = ({
                 <Typography variant="h6">{transl(`address.${type}-address`)}</Typography>
               </Box>
               <Box mt={3}>
-                <MapView position={[address.northing, address.easting]} />
+                <MapView position={[address.easting, address.northing]} />
               </Box>
               <Box mt={3} display="flex" gap={3}>
                 <Typography variant="body1">

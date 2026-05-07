@@ -51,6 +51,7 @@ const CulvertRoadOverInformationDrawer = (props: CulvertRoadOverInformationDrawe
       culvert_id: values.culvert_id,
       carriage_way_width: values.carriage_way_width,
       side_walk_width: values.side_walk_width,
+      road_segment_id: values.road_segment_id,
       lane_number: values.lane_number,
       head_wall_to_head_wall: values.head_wall_to_head_wall,
       average_fill_height: values.average_fill_height,

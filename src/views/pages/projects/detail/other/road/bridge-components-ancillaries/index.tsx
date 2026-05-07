@@ -155,7 +155,7 @@ const BridgeComponentsAncillariesList: React.FC<BridgeComponentsAncillariesListP
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'bridgecomponentandancillaries'
+            subject: 'bridgecomponentandancillary'
           }
         }}
         fetchDataFunction={refetch}

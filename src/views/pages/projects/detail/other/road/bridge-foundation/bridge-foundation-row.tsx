@@ -47,7 +47,7 @@ export const bridgeFoundationColumns = (
       headerName: t('project.other.bridge-foundation.details.bridge-name'),
       field: 'bridge_id',
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.bridgeBasicData?.name || t('common.not-available')}</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.bridge?.name || t('common.not-available')}</Typography>
       )
     },
     {

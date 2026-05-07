@@ -55,6 +55,8 @@ const CulvertConditionAssessmentDrawer = (props: CulvertConditionAssessmentDrawe
       central_id: values.central_id,
       assessment_date: values.assessment_date,
       id: culvertConditionAssessment?.id,
+      culvert_id: values.culvert_id,
+      road_segment_id: values.road_segment_id,
       created_at: values.created_at,
       updated_at: values.updated_at
     } as CulvertConditionAssessment,

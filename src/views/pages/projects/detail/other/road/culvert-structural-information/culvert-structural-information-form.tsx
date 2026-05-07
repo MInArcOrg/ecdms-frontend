@@ -2,6 +2,7 @@ import { Grid } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import type { FormikProps } from 'formik';
 import type React from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { dropDownConfig } from 'src/configs/api-constants';
 import { gridSpacing } from 'src/configs/app-constants';
@@ -86,6 +87,10 @@ const CulvertStructuralInformationForm: React.FC<CulvertStructuralInformationFor
         filter: { model: projectMasterModels.culvertType.model }
       })
   });
+    useEffect(() => {
+      formik.setFieldValue('road_segment_id', culverts?.payload?.find((item) => item.id === formik.values.culvert_id)?.road_segment_id || '');
+    }, [formik.values.culvert_id]);
+  
 
   return (
     <Grid container spacing={gridSpacing}>

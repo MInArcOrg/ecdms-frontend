@@ -4,6 +4,7 @@ import { Grid } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import type { FormikProps } from 'formik';
 import type React from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { dropDownConfig } from 'src/configs/api-constants';
 import { gridSpacing } from 'src/configs/app-constants';
@@ -59,7 +60,12 @@ const CulvertConditionAssessmentForm: React.FC<CulvertConditionAssessmentFormPro
       label: item.title,
       value: item.id
     })) || [];
+  useEffect(() => {
+    formik.setFieldValue('road_segment_id', culverts?.payload?.find((item) => item.id === formik.values.culvert_id)?.road_segment_id || '');
+    console.log('road_segment_id',formik.values.road_segment_id);
+    console.log('culvert_id',formik.values.culvert_id);
 
+  }, [formik.values.culvert_id]);
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -67,7 +73,7 @@ const CulvertConditionAssessmentForm: React.FC<CulvertConditionAssessmentFormPro
           fullWidth
           label={t('project.other.culvert-condition-assessment.details.culvert-basic-data-id')}
           placeholder={t('project.other.culvert-condition-assessment.details.culvert-basic-data-id')}
-          name="culvert_basic_data_id"
+          name="culvert_id"
           size="small"
           sx={{ mb: 2 }}
           options={
