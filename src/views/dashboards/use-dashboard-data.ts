@@ -90,15 +90,30 @@ export const useDashboardData = (departmentId?: string) => {
 
   const departmentName = selectedDepartmentId === 'ALL' ? 'All Departments' : formatDepartmentName(selectedDepartmentData?.payload?.name || '');
 
-  const dummySummary: DashboardSummary = useMemo(
-    () => ({
-      stakeholder: { types: [{ contractors: 128 }, { consultants: 110 }, { suppliers: 46 }, { government: 22 }] },
-      project: { types: [{ road_projects: 65 }, { building_projects: 52 }, { bridge_projects: 18 }, { other_projects: 9 }] },
-      resource: { types: [{ machinery_and_equipment: 44 }, { materials: 88 }, { labor: 61 }] },
-      document: { types: [{ reports: 140 }, { contracts: 96 }, { drawings: 120 }] }
-    }),
-    []
-  );
+  const dummySummary: DashboardSummary = useMemo(() => {
+    const makeBreakdown = (key: string, value: number): BreakdownType => ({ [key]: value });
+
+    return {
+      stakeholder: {
+        types: [
+          makeBreakdown('contractors', 128),
+          makeBreakdown('consultants', 110),
+          makeBreakdown('suppliers', 46),
+          makeBreakdown('government', 22)
+        ]
+      },
+      project: {
+        types: [
+          makeBreakdown('road_projects', 65),
+          makeBreakdown('building_projects', 52),
+          makeBreakdown('bridge_projects', 18),
+          makeBreakdown('other_projects', 9)
+        ]
+      },
+      resource: { types: [makeBreakdown('machinery_and_equipment', 44), makeBreakdown('materials', 88), makeBreakdown('labor', 61)] },
+      document: { types: [makeBreakdown('reports', 140), makeBreakdown('contracts', 96), makeBreakdown('drawings', 120)] }
+    };
+  }, []);
 
   const dummySummaryWithTotals: DashboardSummary = useMemo(() => {
     const sumTypes = (types?: BreakdownType[]) =>
