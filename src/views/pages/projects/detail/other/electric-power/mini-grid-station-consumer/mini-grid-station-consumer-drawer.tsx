@@ -11,7 +11,7 @@ import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
 import type { MiniGridStationConsumer, MiniGridStation } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
-import { limitNumberDigits } from 'src/utils/validator/number';
+import { limitNumberDigits, nullableIntegerSchema, nullableNumberSchema } from 'src/utils/validator/number';
 
 interface MiniGridStationConsumerDrawerType {
   open: boolean;
@@ -32,58 +32,48 @@ const MiniGridStationConsumerDrawer = (props: MiniGridStationConsumerDrawerType)
     setUploadableFile(file);
   };
 
+  const numberField = nullableNumberSchema();
+  const integerField = nullableIntegerSchema();
+
   const validationSchema = yup.object().shape({
     mini_grid_station_id: yup.string().required('Mini Grid Station is required'),
     name: yup.string().required('Name is required'),
-    residential: yup
-      .number()
-      .nullable()
-      .transform((value) => (isNaN(value) ? null : value))
-      .integer('Must be an integer'),
-    commercial: yup
-      .number()
-      .nullable()
-      .transform((value) => (isNaN(value) ? null : value))
-      .integer('Must be an integer'),
-    productive_industrial: yup
-      .number()
-      .nullable()
-      .transform((value) => (isNaN(value) ? null : value))
-      .integer('Must be an integer'),
-    health_centers: yup
-      .number()
-      .nullable()
-      .transform((value) => (isNaN(value) ? null : value))
-      .integer('Must be an integer'),
-    schools: yup
-      .number()
-      .nullable()
-      .transform((value) => (isNaN(value) ? null : value))
-      .integer('Must be an integer'),
-    street_lighting: yup
-      .number()
-      .nullable()
-      .transform((value) => (isNaN(value) ? null : value))
-      .integer('Must be an integer'),
-    other: yup
-      .number()
-      .nullable()
-      .transform((value) => (isNaN(value) ? null : value))
-      .integer('Must be an integer'),
-    expected_electricity_sales:  limitNumberDigits(
-              yup
-                .number()
-                .nullable()
-                .transform((value) => (isNaN(value) ? null : value)),
-              { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
-            ),
-    electricity_tariff:  limitNumberDigits(
-              yup
-                .number()
-                .nullable()
-                .transform((value) => (isNaN(value) ? null : value)),
-              { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
-            ),
+    residential: limitNumberDigits(integerField.min(0, 'Residential must be greater than or equal to 0'), {
+      maxIntegerDigits: 9,
+      maxDecimalPlaces: 0
+    }),
+    commercial: limitNumberDigits(integerField.min(0, 'Commercial must be greater than or equal to 0'), {
+      maxIntegerDigits: 9,
+      maxDecimalPlaces: 0
+    }),
+    productive_industrial: limitNumberDigits(integerField.min(0, 'Productive industrial must be greater than or equal to 0'), {
+      maxIntegerDigits: 9,
+      maxDecimalPlaces: 0
+    }),
+    health_centers: limitNumberDigits(integerField.min(0, 'Health centers must be greater than or equal to 0'), {
+      maxIntegerDigits: 9,
+      maxDecimalPlaces: 0
+    }),
+    schools: limitNumberDigits(integerField.min(0, 'Schools must be greater than or equal to 0'), {
+      maxIntegerDigits: 9,
+      maxDecimalPlaces: 0
+    }),
+    street_lighting: limitNumberDigits(integerField.min(0, 'Street lighting must be greater than or equal to 0'), {
+      maxIntegerDigits: 9,
+      maxDecimalPlaces: 0
+    }),
+    other: limitNumberDigits(integerField.min(0, 'Other must be greater than or equal to 0'), {
+      maxIntegerDigits: 9,
+      maxDecimalPlaces: 0
+    }),
+    expected_electricity_sales: limitNumberDigits(numberField.min(0, 'Expected electricity sales must be greater than or equal to 0'), {
+      maxIntegerDigits: 12,
+      maxDecimalPlaces: 2
+    }),
+    electricity_tariff: limitNumberDigits(numberField.min(0, 'Electricity tariff must be greater than or equal to 0'), {
+      maxIntegerDigits: 12,
+      maxDecimalPlaces: 2
+    }),
     remark: yup.string().nullable()
   });
 

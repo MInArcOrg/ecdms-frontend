@@ -39,7 +39,7 @@ const ConstructionMethodCard: React.FC<ConstructionMethodCardProps> = ({
                 textTransform: 'none'
               }}
             >
-              {constructionMethod.project_method?.title || constructionMethod.project_method_id}
+              {constructionMethod.projectMethod?.title || constructionMethod.project_method?.title || constructionMethod.project_method_id}
             </Typography>
           </Typography>
         </Box>

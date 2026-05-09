@@ -34,9 +34,10 @@ type User = {
 export interface UserEducation {
   id?: string;
   user_id: string;
-  studylevel_id?: string;
+  study_level_id?: string;
   study_field_id: string;
-  studyField: GeneralMaster;
+  studyLevel?: GeneralMaster;
+  studyField?: GeneralMaster;
   school_name?: string;
   education_level?: string;
   program_type: string;

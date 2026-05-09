@@ -22,6 +22,27 @@ export const transmissionColumns = (
 ): GridColDef[] => [
   {
     flex: 0.2,
+    minWidth: 180,
+    field: 'name',
+    headerName: t('project.other.transmission.details.name'),
+    renderCell: ({ row }: CellType) => (
+      <Typography
+        noWrap
+        component={Button}
+        onClick={() => onDetail(row)}
+        sx={{
+          fontWeight: 500,
+          textDecoration: 'none',
+          color: 'text.secondary',
+          '&:hover': { color: 'primary.main' }
+        }}
+      >
+        {row?.name || t('common.not-available')}
+      </Typography>
+    )
+  },
+  {
+    flex: 0.2,
     minWidth: 150,
     field: 'transmission_voltage',
     headerName: t('project.other.transmission.details.transmission-voltage'),

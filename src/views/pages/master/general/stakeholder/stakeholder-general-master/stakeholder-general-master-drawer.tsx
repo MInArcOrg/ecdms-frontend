@@ -19,7 +19,6 @@ interface GeneralMasterDrawerType {
 }
 
 const validationSchema = yup.object().shape({
-  stakeholder_type_id: yup.string().required('Stakeholder Type is required'),
   title: yup.string().required('Title is required'),
   description: yup.string().required('Description is required')
 });
@@ -41,11 +40,13 @@ const GeneralMasterDrawer = (props: GeneralMasterDrawerType) => {
   };
 
   const getPayload = (values: StakeholderGeneralMaster) => {
+    console.log('values',values,stakeholderMasterModel.flag );
     const payload = {
       data: {
         ...values,
         id: masterData?.id,
-        model: stakeholderMasterModel.model
+        model: stakeholderMasterModel.model,
+        stakeholder_type_id: values.stakeholder_type_id || '',
       },
       files: uploadableFile ? [uploadableFile] : []
     };

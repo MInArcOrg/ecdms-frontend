@@ -78,8 +78,9 @@ const ConstructionMethodDrawer: React.FC<ConstructionMethodDrawerProps> = (props
           getPayload={getPayload as (values: ConstructionMethod) => IApiPayload<ConstructionMethod>}
           validationSchema={validationSchema}
           initialValues={{
-            project_method_id: '',
-            description: '',
+            project_method_id:
+              constructionMethod?.project_method_id || constructionMethod?.projectMethod?.id || constructionMethod?.project_method?.id || '',
+            description: constructionMethod?.description || '',
             ...constructionMethod
           } as ConstructionMethod}
           createActionFunc={isEdit ? editConstructionMethod : createConstructionMethod}

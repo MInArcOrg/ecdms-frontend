@@ -3459,6 +3459,7 @@
         "transmission-details": "Transmission Details",
         "additional-information": "Additional Information",
         "details": {
+          "name": "Name",
           "transmission-voltage": "Transmission Voltage",
           "distance-to-substation": "Distance to Substation",
           "transmission-lines-number": "Number of Transmission Lines",

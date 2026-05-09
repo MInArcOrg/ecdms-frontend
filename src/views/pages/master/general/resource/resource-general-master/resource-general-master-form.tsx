@@ -28,7 +28,7 @@ const ResourceGeneralMasterForm: React.FC<ResourceGeneralMasterFormProps> = ({ f
   const { t: transl } = useTranslation();
   useEffect(() => {
     formik.setFieldValue('resource_type_id', resourceTypes?.payload?.find((resourceType) => resourceType.flag === flag)?.id || '')
-  }, [flag])
+  }, [flag,resourceTypes])
   return (
     <>
 

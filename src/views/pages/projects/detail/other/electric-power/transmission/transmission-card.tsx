@@ -23,9 +23,10 @@ const TransmissionCard: React.FC<TransmissionCardProps> = ({ transmission, refet
 
   // Create a display title from the transmission voltage or ID
   const displayTitle =
-    transmission?.transmission_voltage !== undefined
+    transmission?.name ||
+    (transmission?.transmission_voltage !== undefined
       ? `${transmission.transmission_voltage} ${t('common.kv')}`
-      : transmission?.id.slice(0, 8) + '...';
+      : transmission?.id.slice(0, 8) + '...');
 
   return (
     <Card sx={{ p: 2 }}>
@@ -51,6 +52,13 @@ const TransmissionCard: React.FC<TransmissionCardProps> = ({ transmission, refet
         <Divider sx={{ my: 1 }} />
 
         <Grid container spacing={2} mt={1}>
+          {transmission?.name && (
+            <Grid item xs={6}>
+              <Typography variant="body2" color="text.secondary">
+                {t('project.other.transmission.details.name')}: {transmission.name}
+              </Typography>
+            </Grid>
+          )}
           {transmission?.distance_to_substation !== undefined && (
             <Grid item xs={6}>
               <Typography variant="body2" color="text.secondary">

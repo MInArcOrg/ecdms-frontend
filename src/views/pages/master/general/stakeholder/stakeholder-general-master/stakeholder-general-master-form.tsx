@@ -27,9 +27,8 @@ const StakeholderGeneralMasterForm: React.FC<StakeholderGeneralMasterFormProps> 
   const { t: transl } = useTranslation();
   useEffect(() => {
     formik.setFieldValue('stakeholder_type_id', stakeholderTypes?.payload?.find((stakeholderType) => stakeholderType.flag === flag)?.id || '')
-  }, [flag])
-
-  return (
+  }, [flag,stakeholderTypes])
+   return (
     <>
 
       <CustomTextBox

@@ -58,7 +58,8 @@ const EducationCard: React.FC<EducationCardProps> = ({ education, refetch, onEdi
         <Box>
           <Typography variant="subtitle1">{education.school_name || 'N/A'}</Typography>
           <Typography variant="subtitle2">
-            {education.education_level} {t('in')} {education.studyField?.title}
+            {education.studyLevel?.title || education.education_level || education.study_level_id || t('common.not-available')} {t('in')}{' '}
+            {education.studyField?.title || education.study_field_id || t('common.not-available')}
           </Typography>
           <Typography variant="subtitle2">
             {formatDynamicDate(education.start_date)} - {formatDynamicDate(education.end_date)}

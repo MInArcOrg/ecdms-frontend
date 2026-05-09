@@ -7,6 +7,12 @@ import { buildGetRequest } from 'src/utils/requests/get-request';
 import { buildPostRequest } from 'src/utils/requests/post-request';
 import { buildPutRequest } from 'src/utils/requests/put-request';
 
+type MonthlyProjectReportPayload = {
+  data: MonthlyReport;
+  plan: ProjectPlan;
+  report: ProjectReport | null;
+};
+
 const projectReportApiService = {
   getAll: (params: GetRequestParam): Promise<IApiResponse<ProjectReport[]>> =>
     buildGetRequest(`/projects/project-reports`, params)
@@ -43,7 +49,7 @@ const projectReportApiService = {
       .catch((error: any) => {
         throw error;
       }),
-  getMonthlyProjectReport: (id: string, params: any): Promise<IApiResponse<{ data: MonthlyReport; plan: ProjectPlan }>> =>
+  getMonthlyProjectReport: (id: string, params: any): Promise<IApiResponse<MonthlyProjectReportPayload>> =>
     buildGetRequest(`/projects/monthly-project-report/${id}`, params)
       .then((response: AxiosResponse<IApiResponse>) => response.data)
       .catch((error: any) => {

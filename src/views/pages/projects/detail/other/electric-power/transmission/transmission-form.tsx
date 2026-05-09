@@ -30,6 +30,17 @@ const TransmissionForm: React.FC<TransmissionFormProps> = ({ formik, file, onFil
           <Grid item xs={12}>
             <CustomTextBox
               fullWidth
+              required
+              label={transl('project.other.transmission.details.name')}
+              placeholder={transl('project.other.transmission.details.name')}
+              name="name"
+              size="small"
+              sx={{ mb: 2 }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <CustomTextBox
+              fullWidth
               label={transl('project.other.transmission.details.transmission-voltage')}
               placeholder={transl('project.other.transmission.details.transmission-voltage')}
               name="transmission_voltage"

@@ -62,6 +62,15 @@ const ProjectReportFormWrapper = (props: ProjectReportFormWrapperType) => {
 
   const editProjectReport = async (body: IApiPayload<ProjectReport>) => projectReportApiService.update(projectReport?.id || '', body);
 
+  const initialValues = {
+    ...projectReport,
+    project_id: projectId,
+    projectplan_id: projectPlan?.id,
+    monthlyreport_id: monthlyReport?.id,
+    year: projectReport?.year ?? monthlyReport?.year ?? null,
+    quarter: projectReport?.quarter ?? monthlyReport?.quarter
+  } as ProjectReport;
+
   const getPayload = (values: ProjectReport) => ({
     data: {
       ...values,
@@ -87,13 +96,12 @@ const ProjectReportFormWrapper = (props: ProjectReportFormWrapperType) => {
 
   return (
     <FormPageWrapper
+      key={projectReport?.id || `${projectId}-${monthlyReport?.id || 'no-monthly-report'}`}
       edit={isEdit}
       title={`project.report.${isEdit ? `edit-project-report` : `create-project-report`}`}
       getPayload={getPayload}
       validationSchema={validationSchema}
-      initialValues={{
-        ...projectReport
-      }}
+      initialValues={initialValues}
       createActionFunc={isEdit ? editProjectReport : createProjectReport}
       onActionSuccess={onActionSuccess}
       onCancel={handleClose}

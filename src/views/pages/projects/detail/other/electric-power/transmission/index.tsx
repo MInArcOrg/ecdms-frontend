@@ -77,6 +77,10 @@ const TransmissionList: React.FC<TransmissionListProps> = ({ otherSubMenu, proje
 
   const mapTransmissionToDetailItems = (transmission: Transmission): { title: string; value: string }[] => [
     {
+      title: t('project.other.transmission.details.name'),
+      value: transmission?.name || 'N/A'
+    },
+    {
       title: t('project.other.transmission.details.transmission-voltage'),
       value: transmission?.transmission_voltage !== undefined ? `${transmission.transmission_voltage} ${t('common.kv')}` : 'N/A'
     },

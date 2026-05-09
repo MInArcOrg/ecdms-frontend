@@ -33,6 +33,7 @@ const TransmissionDrawer = (props: TransmissionDrawerType) => {
   };
 
   const validationSchema = yup.object().shape({
+    name: yup.string().required('Name is required'),
     transmission_voltage: yup
       .number()
       .nullable()
@@ -60,6 +61,7 @@ const TransmissionDrawer = (props: TransmissionDrawerType) => {
   const getPayload = (values: Transmission) => ({
     data: {
       project_id: projectId,
+      name: values.name,
       transmission_voltage: values.transmission_voltage,
       distance_to_substation: values.distance_to_substation,
       transmission_lines_number: values.transmission_lines_number,
@@ -93,7 +95,8 @@ const TransmissionDrawer = (props: TransmissionDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...transmission
+            ...transmission,
+            name: transmission?.name || ''
           }}
           createActionFunc={isEdit ? editTransmission : createTransmission}
           onActionSuccess={onActionSuccess}

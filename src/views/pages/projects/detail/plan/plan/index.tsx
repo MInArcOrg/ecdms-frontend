@@ -20,12 +20,12 @@ function ProjectPlanList({ projectId }: { projectId: string }) {
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
 
   const [selectedRow, setSelectedRow] = useState<ProjectPlan | null>(null);
-  const fetchProjectPlans = (params: GetRequestParam): Promise<IApiResponse<ProjectPlan[]>> => {
-    return projectPlanApiService.getAll({
-      ...params,
-      filter: { ...params.filter, project_id: projectId }
-    });
-  };
+const fetchProjectPlans = (params: GetRequestParam): Promise<IApiResponse<ProjectPlan[]>> => {
+  return projectPlanApiService.getAll({
+    ...params,
+    filter: { ...params.filter, project_id: projectId }
+  });
+};
   const toggleDetailDrawer = () => {
     setSelectedRow({} as ProjectPlan);
     setShowDetailDrawer(!showDetailDrawer);
@@ -38,7 +38,7 @@ function ProjectPlanList({ projectId }: { projectId: string }) {
     handlePageChange,
     refetch
   } = usePaginatedFetch<ProjectPlan[]>({
-    queryKey: ['projectPlans'],
+    queryKey: ['projectPlans', projectId],
     fetchFunction: fetchProjectPlans
   });
 

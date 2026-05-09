@@ -27,7 +27,7 @@ const ProjectGeneralMasterForm: React.FC<ProjectGeneralMasterFormProps> = ({ for
   const { t: transl } = useTranslation();
   useEffect(() => {
     formik.setFieldValue('project_type_id', projectTypes?.payload?.find((projectType) => projectType.flag === flag)?.id || '')
-  }, [flag])
+  }, [flag,projectTypes])
   return (
     <>
 

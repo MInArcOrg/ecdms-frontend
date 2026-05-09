@@ -36,7 +36,7 @@ export const constructionMethodColumns = (
             p: 0
           }}
         >
-          {row.project_method?.title || row.project_method_id}
+          {row.projectMethod?.title || row.project_method?.title || row.project_method_id}
         </Typography>
       )
     },
@@ -77,6 +77,18 @@ export const constructionMethodColumns = (
             onEdit={() => onEdit(row)}
             onDelete={() => onDelete(row.id)}
             item={row}
+            editPermissionRule={
+              {
+                action:'update',
+                subject:'constructionmethod'
+              }
+            }
+            deletePermissionRule={
+              {
+                action:'delete',
+                subject:'constructionmethod'
+              }
+            }
             options={[]}
           />
         </Fragment>

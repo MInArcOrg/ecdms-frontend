@@ -16,7 +16,7 @@ export const educationColumns = (onEdit: (education: UserEducation) => void, onD
     field: 'study_field',
     headerName: t('department.user.education.study-field'),
     renderCell: ({ row }: CellType) => {
-      return row.studyField.title;
+      return row.studyField?.title || row.study_field_id || t('common.not-available');
     }
   },
   {

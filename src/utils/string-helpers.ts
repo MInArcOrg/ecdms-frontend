@@ -4,8 +4,10 @@ export const StringHelpers = {
    * @param value - The string to check
    * @returns boolean - True if the string is empty or whitespace
    */
-  isNullOrWhitespace: (value: string | null | undefined): boolean => {
-    return !value || value.trim().length === 0;
+  isNullOrWhitespace: (value: any): boolean => {
+    if (value === null || value === undefined) return true;
+    if (typeof value === 'string') return value.trim().length === 0;
+    return false;
   },
 
   /**

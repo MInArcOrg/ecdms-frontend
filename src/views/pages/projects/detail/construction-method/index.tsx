@@ -76,7 +76,7 @@ const ConstructionMethodList: React.FC<ConstructionMethodListProps> = ({ project
   const mapMethodToDetailItems = (method: ConstructionMethod): { title: string; value: string }[] => [
     {
       title: t('project.construction-method.method'),
-      value: method?.project_method?.title || method?.project_method_id || 'N/A'
+      value: method?.projectMethod?.title || method?.project_method?.title || method?.project_method_id || 'N/A'
     },
     {
       title: t('project.construction-method.description'),

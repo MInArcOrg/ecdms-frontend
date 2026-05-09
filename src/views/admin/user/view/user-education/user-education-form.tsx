@@ -5,7 +5,8 @@ import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import { dropDownConfig } from 'src/configs/api-constants';
 import { gridSpacing } from 'src/configs/app-constants';
-import generalMasterDataApiService from 'src/services/general/general-master-data-service';
+import { stakeholderMasterModels } from 'src/constants/master-data/stakeholder-general-master-constants';
+import stakeholderGeneralMasterDataApiService from 'src/services/general/stakeholder-general-master-data-service';
 import { UserEducation } from 'src/types/admin/user';
 import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
 import CustomSelect from 'src/views/shared/form/custom-select';
@@ -22,40 +23,41 @@ const EducationForm: React.FC<EducationFormProps> = ({ formik, file, onFileChang
   const { t } = useTranslation();
 
   const { data: studyLevels } = useQuery({
-    queryKey: ['study-levels'],
-    queryFn: () => generalMasterDataApiService.getAll('study-levels', dropDownConfig())
-  });
-
-  const selectedStudyLevelId = formik.values.studylevel_id || '';
-  
-  const { data: studyFields } = useQuery({
-    queryKey: ['study-fields', selectedStudyLevelId],
+    queryKey: ['study-levels', stakeholderMasterModels.studylevel.model],
     queryFn: () =>
-      generalMasterDataApiService.getAll(
-        'study-fields',
+      stakeholderGeneralMasterDataApiService.getAll(
         dropDownConfig({
-          filter: selectedStudyLevelId ? { studylevel_id: selectedStudyLevelId } : {}
+          filter: {
+            model: stakeholderMasterModels.studylevel.model
+          }
         })
-      )});
+      )
+  });
+  const { data: studyFields } = useQuery({
+    queryKey: ['study-fields', stakeholderMasterModels.studyfield.model],
+    queryFn: () =>
+      stakeholderGeneralMasterDataApiService.getAll(
+        dropDownConfig({
+          filter: {
+            model: stakeholderMasterModels.studyfield.model
+          }
+        })
+      )
+  });
   return (
 
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
         <CustomSelect
-          fullWidth
+          fullWidth 
           label={t('department.user.education.education-level')}
-          name="studylevel_id"
+          name="study_level_id"
           options={
             studyLevels?.payload.map((level) => ({
               value: level.id,
               label: level.title
             })) || []
           }
-          onValueChange={(value) => {
-            const selected = studyLevels?.payload?.find((l) => l.id === value);
-            formik.setFieldValue('education_level', selected?.title || '');
-            formik.setFieldValue('study_field_id', '');
-          }}
           size="small"
           sx={{ mb: 2 }}
         />
@@ -72,7 +74,6 @@ const EducationForm: React.FC<EducationFormProps> = ({ formik, file, onFileChang
             })) || []
           }
           size="small"
-          disabled={!selectedStudyLevelId}
           sx={{ mb: 2 }}
         />
       </Grid>

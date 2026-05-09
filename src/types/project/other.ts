@@ -1462,6 +1462,7 @@ export interface ReliabilityAndMaintenance {
 export interface Transmission {
   id: string;
   project_id: string;
+  name?: string;
   transmission_voltage?: number;
   distance_to_substation?: number;
   transmission_lines_number?: number;
