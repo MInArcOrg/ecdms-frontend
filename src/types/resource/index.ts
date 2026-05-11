@@ -3,6 +3,7 @@ import { GeneralMaster } from '../general/general-master';
 export interface Resource {
   id: string;
   resourcetype_id: string;
+  parent?: string;
   resourcecategory_id: string;
   resourcesubcategory_id: string;
   name: string;
@@ -217,6 +218,7 @@ export interface Professional {
   phone_no: string;
   email: string;
   parent_id?: string | null;
+  parent?: string | null;
   department_id?: string | null;
   full_name?: string;
   study_field?: string;
@@ -234,6 +236,7 @@ export interface Professional {
 export interface MachineryInformation {
   id?: string;
   department_id: string;
+  parent?: string;
   type: string;
   plate_no: string;
   owner_name: string;

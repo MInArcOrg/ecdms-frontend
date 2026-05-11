@@ -167,7 +167,7 @@ const ElectricSmartMetersDataForm: React.FC<ElectricSmartMetersDataFormProps> = 
             />
           </Grid>
           <Grid item xs={6}>
-              <CustomSelect options={years} fullWidth label={transl('stakeholder.safety-equipment.year')} name="year" size="small" sx={{ mb: 2 }} />
+            <CustomSelect options={years} fullWidth label={transl('stakeholder.safety-equipment.year')} name="installation_year" size="small" sx={{ mb: 2 }} />
           </Grid>
         </Grid>
 

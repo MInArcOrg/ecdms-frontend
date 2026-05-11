@@ -1,5 +1,6 @@
 export interface StakeholderMaterial {
   id?: string;
+  parent?: string;
   stakeholder_id: string;
   material_category: string;
   material_subcategory?: string;

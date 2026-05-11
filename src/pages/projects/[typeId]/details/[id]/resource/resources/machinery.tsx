@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { projectResourceIds } from '../(subMenuItems)';
+import MachineryInformationList from 'src/views/pages/projects/detail/resource/resources/machinery-information';
 
 function ProjectVariation() {
   const router = useRouter();
@@ -15,7 +16,7 @@ function ProjectVariation() {
         activeSubMenuId={projectResourceIds.resources.machinery}
         subMenuItems={subMenuItems(id as string, typeId as string)}
       >
-        <>machinery goes here</>
+        <MachineryInformationList projectId={id as string} />
       </ProjectLayout>
     </Box>
   );

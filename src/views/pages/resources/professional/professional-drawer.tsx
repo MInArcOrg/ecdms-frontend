@@ -18,6 +18,16 @@ interface ProfessionalDrawerType {
 
 const ProfessionalDrawer = (props: ProfessionalDrawerType) => {
   const { open, toggle, refetch, professional } = props;
+  const emptyProfessional: Professional = {
+    first_name: '',
+    middle_name: '',
+    last_name: '',
+    national_id_no: '',
+    date_of_birth: '',
+    gender: '',
+    phone_no: '',
+    email: ''
+  };
 
   const validationSchema = yup.object().shape({
     first_name: yup.string().required('First name is required'),
@@ -64,9 +74,7 @@ const ProfessionalDrawer = (props: ProfessionalDrawerType) => {
           title={`resources.professional.${isEdit ? 'edit' : 'create'}`}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={{
-            ...(professional as Professional)
-          }}
+          initialValues={professional || emptyProfessional}
           createActionFunc={isEdit ? editProfessional : createProfessional}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
