@@ -43,7 +43,7 @@ const ReportMonthSelector = ({
               size="small"
               disableClearable
               options={availableYears}
-              value={selectedYear ?? null}
+              value={selectedYear}
               getOptionLabel={(option) => String(option)}
               onChange={(_event, newValue) => {
                 const year = Number(newValue);
@@ -71,7 +71,7 @@ const ReportMonthSelector = ({
                 const qLabel = q ? `Q${String(q)}` : '';
                 return option.title ? `${qLabel} - ${option.title}` : qLabel || option.id;
               }}
-              value={selectedPlan}
+              value={selectedPlan ?? undefined}
               onChange={(_event, newValue) => {
                 setSelectedPlan(newValue);
                 const q = newValue ? Number((newValue as any)?.quarter) : undefined;
