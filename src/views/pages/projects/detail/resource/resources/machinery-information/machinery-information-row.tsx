@@ -72,8 +72,8 @@ export const machineryInformationColumns = (
           onEdit={() => onEdit(row)}
           onDelete={() => onDelete(row?.id || '')}
           item={row}
-          deletePermissionRule={{ action: 'delete', subject: 'resource' }}
-          editPermissionRule={{ action: 'update', subject: 'resource' }}
+          deletePermissionRule={{ action: 'delete', subject: 'projectmachinery' }}
+          editPermissionRule={{ action: 'update', subject: 'projectmachinery' }}
           options={[]}
         />
       </Fragment>

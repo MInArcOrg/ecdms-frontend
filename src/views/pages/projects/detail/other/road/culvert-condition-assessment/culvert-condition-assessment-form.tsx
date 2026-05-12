@@ -23,7 +23,7 @@ interface CulvertConditionAssessmentFormProps {
 
 const CulvertConditionAssessmentForm: React.FC<CulvertConditionAssessmentFormProps> = ({ formik, projectId }) => {
   const { t } = useTranslation();
-
+  console.log('formik errors',formik.errors);
   const { data: culverts } = useQuery({
     queryKey: ['culvert-basic-datas', projectId],
     queryFn: () =>
@@ -73,7 +73,7 @@ const CulvertConditionAssessmentForm: React.FC<CulvertConditionAssessmentFormPro
           fullWidth
           label={t('project.other.culvert-condition-assessment.details.culvert-basic-data-id')}
           placeholder={t('project.other.culvert-condition-assessment.details.culvert-basic-data-id')}
-          name="culvert_id"
+          name="culvert_basic_data_id"
           size="small"
           sx={{ mb: 2 }}
           options={

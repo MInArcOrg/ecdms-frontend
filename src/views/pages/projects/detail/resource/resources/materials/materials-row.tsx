@@ -49,8 +49,8 @@ export const materialColumns = (
           onEdit={() => onEdit(row)}
           onDelete={() => onDelete(row.id)}
           item={row}
-          deletePermissionRule={{ action: 'delete', subject: 'resource' }}
-          editPermissionRule={{ action: 'update', subject: 'resource' }}
+          deletePermissionRule={{ action: 'delete', subject: 'projectmaterial' }}
+          editPermissionRule={{ action: 'update', subject: 'projectmaterial' }}
           options={[]}
         />
       </Fragment>

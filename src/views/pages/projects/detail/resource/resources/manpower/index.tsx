@@ -20,7 +20,7 @@ const ManpowerList = ({ projectId }: { projectId: string }) => {
     return professionalApiService.getAll({
       ...params,
       filter: {
-        project: projectId
+        parent: projectId
       }
     });
   };
@@ -73,7 +73,7 @@ const ManpowerList = ({ projectId }: { projectId: string }) => {
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'professional'
+            subject: 'projectmanpower'
           }
         }}
         fetchDataFunction={refetch}
