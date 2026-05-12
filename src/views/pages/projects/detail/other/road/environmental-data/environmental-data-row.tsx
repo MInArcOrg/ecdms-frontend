@@ -39,7 +39,7 @@ export const environmentalDataColumns = (
           '&:hover': { color: 'primary.main' }
         }}
       >
-        {row?.id.slice(0, 8) + '...'}
+        {t('common.table-columns.details')}
       </Typography>
     )
   },

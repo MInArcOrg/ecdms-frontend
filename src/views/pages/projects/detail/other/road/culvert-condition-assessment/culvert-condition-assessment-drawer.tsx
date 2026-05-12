@@ -23,7 +23,6 @@ const CulvertConditionAssessmentDrawer = (props: CulvertConditionAssessmentDrawe
 
   const validationSchema = yup.object().shape({
     project_id: yup.string().length(36).required('Project is required'),
-    culvert_basic_data_id: yup.string().uuid().required('Culvert is required'),
     name: yup.string().max(255).required('Name is required'),
     structure_type_id: yup.string().uuid().required('Structure type is required'),
     north_id: yup.string().uuid().required('North is required'),

@@ -75,8 +75,8 @@ export const manpowerColumns = (
             onEdit={() => onEdit(row)}
             onDelete={() => onDelete(row?.id || '')}
             item={row}
-            deletePermissionRule={{ action: 'delete', subject: 'professional' }}
-            editPermissionRule={{ action: 'update', subject: 'professional' }}
+            deletePermissionRule={{ action: 'delete', subject: 'projectmanpower' }}
+            editPermissionRule={{ action: 'update', subject: 'projectmanpower' }}
             options={[]}
           />
         </Fragment>

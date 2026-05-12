@@ -96,7 +96,7 @@ const ProjectMaterialsList = ({ projectId }: { projectId: string }) => {
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'resource'
+            subject: 'projectmaterial'
           }
         }}
         fetchDataFunction={refetch}

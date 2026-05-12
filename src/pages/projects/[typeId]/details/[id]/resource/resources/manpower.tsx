@@ -24,6 +24,6 @@ function ProjectVariation() {
 
 ProjectVariation.acl = {
   action: 'view',
-  subject: 'projectfinance'
+  subject: 'projectmanpower'
 };
 export default ProjectVariation;

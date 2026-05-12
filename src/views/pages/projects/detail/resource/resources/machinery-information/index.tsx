@@ -79,7 +79,7 @@ const MachineryInformationList = ({ projectId }: { projectId: string }) => {
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'resource'
+            subject: 'projectmachinery'
           }
         }}
         fetchDataFunction={refetch}
