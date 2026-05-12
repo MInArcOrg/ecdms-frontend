@@ -80,7 +80,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ projectInfo, time }) => {
           justifyContent: { xs: 'center', md: 'flex-start' }
         }}
       >
-        <input id="upload-avatar-pic" type="file" hidden onChange={changeProfilePicture} accept="image/*" />
+        <input id="upload-avatar-pic" type="file" hidden onChange={changeProfilePicture} accept="image/png,image/jpeg,image/gif,image/webp" />
         <label htmlFor="upload-avatar-pic">
           <Tooltip title={t('project.general-information.upload-profile-picture')} placement="top" arrow>
             <Avatar
