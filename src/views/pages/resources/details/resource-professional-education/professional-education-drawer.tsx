@@ -6,11 +6,11 @@ import * as yup from 'yup';
 import EducationForm from './professional-education-form';
 import professionalEducationApiService from 'src/services/resource/professional-education-service';
 import type { ProfessionalEducation } from 'src/types/resource';
-import type { StudyField } from 'src/types/general/general-master';
 import type { IApiResponse } from 'src/types/requests';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
 import { useState } from 'react';
+import { pastDateRule } from 'src/utils/validator/age';
 
 interface EducationDrawerType {
   open: boolean;
@@ -18,17 +18,16 @@ interface EducationDrawerType {
   refetch: () => void;
   education: ProfessionalEducation;
   professionalId: string;
-  studyFields: StudyField[];
 }
 
 const EducationDrawer = (props: EducationDrawerType) => {
-  const { open, toggle, refetch, education, professionalId, studyFields } = props;
+  const { open, toggle, refetch, education, professionalId } = props;
   const [uploadableFile, setUploadableFile] = useState<File | null>(null);
 
   const validationSchema = yup.object().shape({
     study_field: yup.string().required('Study field is required'),
     program_type: yup.string().required('Program type is required'),
-    start_date: yup.date().required('Start date is required'),
+    start_date: pastDateRule().required('Start date is required'),
     end_date: yup.date().required('End date is required'),
     gpa: yup.number().required('GPA is required').min(0, 'GPA must be positive').max(4, 'GPA must be 4 or less')
   });
@@ -95,7 +94,7 @@ const EducationDrawer = (props: EducationDrawerType) => {
           onCancel={handleClose}
         >
           {(formik: FormikProps<ProfessionalEducation>) => (
-            <EducationForm formik={formik} studyFields={studyFields || []} file={uploadableFile} onFileChange={setUploadableFile} />
+            <EducationForm formik={formik} file={uploadableFile} onFileChange={setUploadableFile} />
           )}
         </FormPageWrapper>
       )}

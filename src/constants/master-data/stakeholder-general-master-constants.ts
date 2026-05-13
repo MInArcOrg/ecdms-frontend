@@ -35,6 +35,15 @@ export const stakeholderMasterModels = {
         fileType: 'STUDY_PROGRAM',
         flag: 'EDUCATION_INSTITUTION'
     },
+    programType: {
+        model: 'ProgramType',
+        dbModel: 'programtype',
+        title: 'program-types',
+        createTitle: 'create-program-type',
+        editTitle: 'edit-program-type',
+        fileType: 'PROGRAM_TYPE',
+        flag: 'EDUCATION_INSTITUTION'
+    },
     studyfield: {
         model: 'StudyField',
         dbModel: 'studyfield',
@@ -43,7 +52,6 @@ export const stakeholderMasterModels = {
         editTitle: 'edit-study-field',
         fileType: 'STUDY_FIELD',
         flag: 'EDUCATION_INSTITUTION'
-
     },
     agelevel: {
         model: 'AgeLevel',

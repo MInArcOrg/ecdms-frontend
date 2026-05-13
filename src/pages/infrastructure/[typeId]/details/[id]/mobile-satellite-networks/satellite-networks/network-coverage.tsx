@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import SatelliteNetworkCoverageList from 'src/views/pages/projects/detail/other/telecom/satellite-network-coverage';
 import subMenuItems, { findSubMenuItem, mobileSatelliteNetworksId } from '../(subMenuItems)';
 
 const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), mobileSatelliteNetworksId.satelliteNetworks.networkCoverage);
@@ -9,10 +10,10 @@ const SatelliteNetworkCoveragePage = () => {
   const router = useRouter();
   const { id = '', typeId = '' } = router.query;
 
-  // const menuItem = findSubMenuItem(
-  //   subMenuItems(id as string, typeId as string),
-  //   mobileSatelliteNetworksId.satelliteNetworks.networkCoverage
-  // );
+  const menuItem = findSubMenuItem(
+    subMenuItems(id as string, typeId as string),
+    mobileSatelliteNetworksId.satelliteNetworks.networkCoverage
+  );
 
   return (
     <ProjectLayout
@@ -20,12 +21,7 @@ const SatelliteNetworkCoveragePage = () => {
       activeSubMenuId={mobileSatelliteNetworksId.satelliteNetworks.networkCoverage}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      {/* <SatelliteNetworkCoverageList
-                otherSubMenu={menuItem}
-                typeId={String(typeId)}
-                projectId={String(id)}
-            /> */}
-      <>Network coverage</>
+      <SatelliteNetworkCoverageList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>
   );
 };

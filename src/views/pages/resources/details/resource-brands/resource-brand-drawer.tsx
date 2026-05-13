@@ -1,7 +1,7 @@
 import { FormikProps } from 'formik';
 import React, { useEffect, useState } from 'react';
 import resourceBrandApiService from 'src/services/resource/resource-brand-service';
-import { deletePhoto, useGetMultiplePhotos, uploadImage } from 'src/services/utils/file-utils';
+import { deletePhoto, useGetMultiplePhotos, uploadImage, uploadableResourceFileTypes } from 'src/services/utils/file-utils';
 import { FileWithId } from 'src/types/general/file';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
 import { ResourceBrand } from 'src/types/resource';
@@ -28,9 +28,15 @@ const validationSchema = yup.object().shape({
 const ResourceBrandDrawer: React.FC<ResourceBrandDrawerType> = (props) => {
   const { open, toggle, refetch, resourceBrand, resourceId } = props;
 
-  const { data: fetchedImages } = useGetMultiplePhotos({
-    filter: { model_id: resourceBrand?.id || '' }
-  });
+  const { data: fetchedImages } = useGetMultiplePhotos(
+    {
+      filter: {
+        model_id: resourceBrand?.id || '',
+        type: uploadableResourceFileTypes.resourceBrand
+      }
+    },
+    { enabled: !!resourceBrand?.id }
+  );
   const [uploadableFiles, setUploadableFiles] = useState<FileWithId[]>([]);
   const [fetchedImageIds, setFetchedImageIds] = useState<string[]>([]);
 
@@ -89,7 +95,9 @@ const ResourceBrandDrawer: React.FC<ResourceBrandDrawerType> = (props) => {
 
   const onActionSuccess = async (response: IApiResponse<ResourceBrand>, payload: IApiPayload<ResourceBrand>) => {
     const uploadableFilesToUpload = uploadableFiles.filter((file) => !file.isFetched);
-    const uploadPromises = uploadableFilesToUpload.map((file) => uploadImage(file.file, 'RESOURCE_BRAND', response.payload.id));
+    const uploadPromises = uploadableFilesToUpload.map((file) =>
+      uploadImage(file.file, uploadableResourceFileTypes.resourceBrand, response.payload.id)
+    );
     await Promise.all(uploadPromises);
 
     const uploadableFileIds = uploadableFiles.map((file) => file.id);

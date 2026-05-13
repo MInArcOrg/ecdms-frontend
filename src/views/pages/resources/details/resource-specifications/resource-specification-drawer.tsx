@@ -1,7 +1,7 @@
 import { FormikProps } from 'formik';
 import React, { useEffect, useState } from 'react';
 import resourceSpecificationApiService from 'src/services/resource/resource-specification-service';
-import { deletePhoto, useGetMultiplePhotos, uploadImage } from 'src/services/utils/file-utils';
+import { deletePhoto, useGetMultiplePhotos, uploadImage, uploadableResourceFileTypes } from 'src/services/utils/file-utils';
 import { FileWithId } from 'src/types/general/file';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
 import { ResourceSpecification } from 'src/types/resource';
@@ -28,9 +28,15 @@ const validationSchema = yup.object().shape({
 const ResourceSpecificationDrawer: React.FC<ResourceSpecificationDrawerType> = (props) => {
   const { open, toggle, refetch, resourceSpecification, resourceId } = props;
 
-  const { data: fetchedImages } = useGetMultiplePhotos({
-    filter: { model_id: resourceSpecification?.id || '' }
-  });
+  const { data: fetchedImages } = useGetMultiplePhotos(
+    {
+      filter: {
+        model_id: resourceSpecification?.id || '',
+        type: uploadableResourceFileTypes.resourceSpecification
+      }
+    },
+    { enabled: !!resourceSpecification?.id }
+  );
   const [uploadableFiles, setUploadableFiles] = useState<FileWithId[]>([]);
   const [fetchedImageIds, setFetchedImageIds] = useState<string[]>([]);
 
@@ -89,7 +95,9 @@ const ResourceSpecificationDrawer: React.FC<ResourceSpecificationDrawerType> = (
 
   const onActionSuccess = async (response: IApiResponse<ResourceSpecification>, payload: IApiPayload<ResourceSpecification>) => {
     const uploadableFilesToUpload = uploadableFiles.filter((file) => !file.isFetched);
-    const uploadPromises = uploadableFilesToUpload.map((file) => uploadImage(file.file, 'resourcespecification', response.payload.id));
+    const uploadPromises = uploadableFilesToUpload.map((file) =>
+      uploadImage(file.file, uploadableResourceFileTypes.resourceSpecification, response.payload.id)
+    );
     await Promise.all(uploadPromises);
 
     const uploadableFileIds = uploadableFiles.map((file) => file.id);

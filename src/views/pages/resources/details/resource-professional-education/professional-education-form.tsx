@@ -1,24 +1,40 @@
 import { Grid } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
 import type { FormikProps } from 'formik';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
+import { dropDownConfig } from 'src/configs/api-constants';
 import { gridSpacing } from 'src/configs/app-constants';
+import { stakeholderMasterModels } from 'src/constants/master-data/stakeholder-general-master-constants';
+import stakeholderGeneralMasterDataApiService from 'src/services/general/stakeholder-general-master-data-service';
 import type { ProfessionalEducation } from 'src/types/resource';
-import type { StudyField } from 'src/types/general/general-master';
-import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomDatePicker from 'src/views/shared/form/custom-date-box';
+import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomSelect from 'src/views/shared/form/custom-select';
+import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
 interface EducationFormProps {
   formik: FormikProps<ProfessionalEducation>;
-  studyFields: StudyField[];
   file: File | null;
   onFileChange: (file: File | null) => void;
 }
 
-const EducationForm: React.FC<EducationFormProps> = ({ formik, studyFields, file, onFileChange }) => {
+const EducationForm: React.FC<EducationFormProps> = ({ formik, file, onFileChange }) => {
   const { t } = useTranslation();
+
+  const { data: studyFields } = useQuery({
+    queryKey: ['study-fields', stakeholderMasterModels.studyfield.model],
+    queryFn: () =>
+          stakeholderGeneralMasterDataApiService.getAll(
+        dropDownConfig({
+          filter: {
+            model: stakeholderMasterModels.studyfield.model
+          }
+        })
+      )
+  });
+  
 
   return (
     <Grid container spacing={gridSpacing}>
@@ -28,7 +44,7 @@ const EducationForm: React.FC<EducationFormProps> = ({ formik, studyFields, file
           label={t('resources.professional.education.study-field')}
           name="study_field"
           options={
-            studyFields?.map((field) => ({
+            studyFields?.payload?.map((field) => ({
               value: field.id,
               label: field.title
             })) || []
@@ -50,12 +66,18 @@ const EducationForm: React.FC<EducationFormProps> = ({ formik, studyFields, file
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox
+        <CustomSelectBox
           fullWidth
           label={t('resources.professional.education.program-type')}
           name="program_type"
           size="small"
           sx={{ mb: 2 }}
+          options={
+            studyFields?.payload?.map((field) => ({
+              value: field.id,
+              label: field.title
+            })) || []
+          }
         />
       </Grid>
       <Grid item xs={12} sm={6}>

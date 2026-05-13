@@ -1,10 +1,9 @@
 import { Box } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ITEMS_LISTING_TYPE } from 'src/configs/app-constants';
 import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
 import professionalEducationApiService from 'src/services/resource/professional-education-service';
-import generalMasterDataApiService from 'src/services/general/general-master-data-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
 import { formatCreatedAt } from 'src/utils/formatter/date';
@@ -13,7 +12,6 @@ import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-draw
 import EducationCard from './professional-education-card';
 import EducationDrawer from './professional-education-drawer';
 import type { ProfessionalEducation } from 'src/types/resource';
-import type { StudyField } from 'src/types/general/general-master';
 import { educationColumns } from './professional-education-row';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
 
@@ -27,29 +25,8 @@ const ResourceEducationList: React.FC<ResourceEducationListProps> = ({ professio
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDetailDrawer, setShowDetailDrawer] = useState(false);
   const [selectedRow, setSelectedRow] = useState<ProfessionalEducation | null>(null);
-  const [studyFields, setStudyFields] = useState<StudyField[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const { t } = useTranslation();
-
-  useEffect(() => {
-    const fetchStudyFields = async () => {
-      try {
-        const response = await generalMasterDataApiService.getAllResourceGeneralMaster('study-fields', {});
-        setStudyFields(
-          response.payload.map((item: any) => ({
-            id: item.id,
-            title: item.title
-          })) as StudyField[]
-        );
-      } catch (error) {
-        console.error('Error fetching study fields:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchStudyFields();
-  }, []);
 
   const fetchEducation = (params: GetRequestParam): Promise<IApiResponse<ProfessionalEducation[]>> => {
     return professionalEducationApiService.getAll({
@@ -93,16 +70,14 @@ const ResourceEducationList: React.FC<ResourceEducationListProps> = ({ professio
     setSelectedRow(education);
   };
 
-  const getStudyFieldTitle = (id: string) => {
-    if (!studyFields) return 'N/A';
-    const field = studyFields.find((f) => f.id === id);
-    return field ? field.title : 'N/A';
+  const getStudyFieldTitle = (education: ProfessionalEducation) => {
+    return education.studyfield ? education.studyfield.title : education.study_field || 'N/A';
   };
 
   const mapEducationToDetailItems = (education: ProfessionalEducation): { title: string; value: string }[] => [
     {
       title: t('resources.professional.education.study-field'),
-      value: getStudyFieldTitle(education.study_field)
+      value: getStudyFieldTitle(education)
     },
     {
       title: t('resources.professional.education.school-name'),
@@ -145,7 +120,6 @@ const ResourceEducationList: React.FC<ResourceEducationListProps> = ({ professio
           education={selectedRow as ProfessionalEducation}
           refetch={refetch}
           professionalId={professionalId}
-          studyFields={studyFields || []}
         />
       )}
 
@@ -166,7 +140,7 @@ const ResourceEducationList: React.FC<ResourceEducationListProps> = ({ professio
         pagination={pagination}
         type={ITEMS_LISTING_TYPE.table.value}
         tableProps={{
-          headers: educationColumns(handleClickDetail, handleEdit, handleDelete, t, studyFields)
+          headers: educationColumns(handleClickDetail, handleEdit, handleDelete, t)
         }}
         isLoading={isLoading}
         ItemViewComponent={({ data }) => (
@@ -176,7 +150,6 @@ const ResourceEducationList: React.FC<ResourceEducationListProps> = ({ professio
             onEdit={handleEdit}
             refetch={refetch}
             onDelete={handleDelete}
-            studyFields={studyFields || []}
           />
         )}
         createActionConfig={{

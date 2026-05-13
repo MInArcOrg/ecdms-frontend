@@ -229,22 +229,24 @@ export const downloadFileById = async (fileId: string, fileName?: string, fallba
 };
 
 // Get multiple photos
-export const useGetMultiplePhotos = (params: GetRequestParam) => {
+export const useGetMultiplePhotos = (params: GetRequestParam, options?: any) => {
   return useQuery({
     queryKey: ['multiple-photo', params],
     queryFn: async () => {
       const response: AxiosResponse<IApiResponse<ImageModel[]>> = await buildGetRequest(`/generics/photos`, params);
       return response.data; // Assuming response.data is of type ImageModel[]
-    }
+    },
+    ...options
   });
 };
-export const useGetMultipleFiles = (params: GetRequestParam) => {
+export const useGetMultipleFiles = (params: GetRequestParam, options?: any) => {
   return useQuery({
     queryKey: ['multiple-file', params],
     queryFn: async () => {
       const response: AxiosResponse<IApiResponse<FileModel[]>> = await buildGetRequest(`/generics/files`, params);
       return response.data; // Assuming response.data is of type FileModel[]
-    }
+    },
+    ...options
   });
 }
 
@@ -298,6 +300,9 @@ export const uploadableResourceFileTypes = {
   resourceType: 'RESOURCE_TYPE',
   resourceCategory: 'RESOURCE_CATEGORY',
   resourceSubCategory: 'RESOURCE_SUB_CATEGORY',
+  resourceBrand: 'RESOURCE_BRAND',
+  resourceSpecification: 'RESOURCE_SPECIFICATION',
+  resourceDetailType: 'RESOURCE_DETAIL_TYPE',
   crs: 'CONSTRUCTION_RELATED_SERVICES',
   studyField: 'RESOURCE_STUDY_FIELD',
   studyLevel: 'RESOURCE_STUDY_LEVEL',

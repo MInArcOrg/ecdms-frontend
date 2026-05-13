@@ -15,13 +15,14 @@ interface ResourceBrandFormProps {
 
 const ResourceBrandForm: React.FC<ResourceBrandFormProps> = ({ formik, files, onFilesChange }) => {
   const { t: transl } = useTranslation();
+  console.log('errors', formik.errors)
   return (
     <>
       <CustomTextBox
         fullWidth
-        label={transl('resource.resource-brand.form.title')}
-        placeholder={transl('resource.resource-brand.form.title')}
-        name="title"
+        label={transl('resource.resource-brand.form.name')}
+        placeholder={transl('resource.resource-brand.form.name')}
+        name="name"
         size="small"
         sx={{ mb: 2 }}
       />
@@ -32,8 +33,15 @@ const ResourceBrandForm: React.FC<ResourceBrandFormProps> = ({ formik, files, on
         name="datasource"
         size="small"
         sx={{ mb: 2 }}
-      />
-
+        />
+         <CustomTextBox
+        fullWidth
+        label={transl('resource.resource-brand.form.manufacturer')}
+        placeholder={transl('resource.resource-brand.form.manufacturer')}
+        name="manufacturer"
+        size="small"
+        sx={{ mb: 2 }}
+        />
       <CustomTextBox
         fullWidth
         label={transl('resource.resource-brand.form.description')}

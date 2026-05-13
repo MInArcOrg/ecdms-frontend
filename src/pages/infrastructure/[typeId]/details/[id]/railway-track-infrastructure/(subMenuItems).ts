@@ -52,14 +52,14 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: railwayTrackInfrastructureIds.trackSystems.tracksData,
         title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-data',
         path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-data`,
-        model: 'railwaytracksdata',
+        model: 'railwaytrackdata',
         apiRoute: 'railway-track-data'
       },
       {
         id: railwayTrackInfrastructureIds.trackSystems.tracksGeometryData,
         title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-geometry-data',
         path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-geometry-data`,
-        model: 'railwaytracksgeometrydata',
+        model: 'railwaytrackgeometrydata',
         apiRoute: 'railway-track-geometry-data'
       },
       {
@@ -67,21 +67,21 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-condition-assessment',
         path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-condition-assessment`,
         apiRoute: 'railway-track-condition-assessments',
-        model: 'railwaytracksconditionassessment'
+        model: 'railwaytrackconditionassessment'
       },
       {
         id: railwayTrackInfrastructureIds.trackSystems.tracksMaintenanceInspections,
         title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-maintenance-inspections',
         path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-maintenance-inspections`,
         apiRoute: 'railway-track-maintenance-and-inspections',
-        model: 'railwaytracksmaintenanceandinspection'
+        model: 'railwaytrackmaintenanceandinspection'
       },
       {
         id: railwayTrackInfrastructureIds.trackSystems.tracksRehabilitationRenewal,
         title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-rehabilitation-renewal',
         path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-rehabilitation-renewal`,
         apiRoute: 'railway-track-rehabilitation-or-renewals',
-        model: 'railwaytracksrehabilitationorrenewal'
+        model: 'railwaytrackrehabilitationorrenewal'
       },
       {
         id: railwayTrackInfrastructureIds.trackSystems.trackSafety,
@@ -267,7 +267,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
           'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.fastening-system-environmental-factors',
         path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-environmental-factors`,
         apiRoute: 'railway-fastening-system-environmental-factors',
-        model: 'railwayfasteningsystem',
+        model: 'railwayfasteningsystemenvironmentalfactor',
         fileType: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemEnvironmentalFactors
       }
     ]

@@ -26,7 +26,6 @@ const ElectricGridControlCenterDataPage = () => {
   );
 };
 
-// Access control configuration
 ElectricGridControlCenterDataPage.acl = {
   subject: defaultMenuItem?.model,
   action: 'view'

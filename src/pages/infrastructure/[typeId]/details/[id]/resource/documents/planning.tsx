@@ -6,7 +6,7 @@ import subMenuItems, { projectResourceIds } from '../(subMenuItems)';
 import { projectFileConstant } from 'src/constants/project-file-contant';
 import ProjectFileList from 'src/views/pages/projects/detail/project-file/project-file/project-file';
 
-function ProjectPlanning() {
+function ProjectDocument() {
   const router = useRouter();
   const { id, typeId } = router.query;
 
@@ -23,8 +23,8 @@ function ProjectPlanning() {
   );
 }
 
-ProjectPlanning.acl = {
+ProjectDocument.acl = {
   action: 'view',
-  subject: 'projectplan'
+  subject: 'projectdocument'
 };
-export default ProjectPlanning;
+export default ProjectDocument;

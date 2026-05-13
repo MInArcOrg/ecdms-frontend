@@ -35,7 +35,9 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: projectReportingIds.report.actualStatus,
         title: 'project.navigation.submenu.reporting.report.actual-status',
-        path: `/projects/${typeId}/details/${id}/reporting/report/actual-status`
+        path: `/projects/${typeId}/details/${id}/reporting/report/actual-status`,
+        model: 'projectreport',
+        action: 'view'
       },
       {
         id: projectReportingIds.report.weatherCondition,
@@ -48,17 +50,23 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: projectReportingIds.report.claim,
         title: 'project.navigation.submenu.reporting.report.claim',
         path: `/projects/${typeId}/details/${id}/reporting/report/claim`,
-        
+        model: 'claim',
+        action: 'view'
+
       },
       {
         id: projectReportingIds.report.challenges,
         title: 'project.navigation.submenu.reporting.report.challenges',
-        path: `/projects/${typeId}/details/${id}/reporting/report/challenges`
+        path: `/projects/${typeId}/details/${id}/reporting/report/challenges`,
+        model: 'challenge',
+        action: 'view'
       },
       {
         id: projectReportingIds.report.qualityInspection,
         title: 'project.navigation.submenu.reporting.report.quality-inspection',
-        path: `/projects/${typeId}/details/${id}/reporting/report/quality-inspection`
+        path: `/projects/${typeId}/details/${id}/reporting/report/quality-inspection`,
+        model: 'projectquality',
+        action: 'view'
       },
       {
         id: projectReportingIds.report.sitePictures,

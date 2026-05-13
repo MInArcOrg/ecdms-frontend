@@ -81,6 +81,7 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         path: `/resources/${typeId}/details/${id}/general-info/general-info/brands`,
         type: [resourceTypesMaster.material, resourceTypesMaster.machineryAndEquipment],
         subject: 'resourcebrand',
+        model:'resourcebrand',
         action: 'view'
       },
       {

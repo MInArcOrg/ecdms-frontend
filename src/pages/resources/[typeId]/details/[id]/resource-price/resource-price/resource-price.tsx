@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import ResourceLayout from 'src/views/pages/resources/details/layout/resource-layout';
 import { resourceMenuIds } from 'src/views/pages/resources/details/layout/resource-menu-items';
+import ResourcePriceList from 'src/views/pages/resources/details/resource-price/resource-price-list';
 import subMenuItems, { findSubMenuItem, resourcePriceMenuIds } from '../(sub-menu-items)';
 
 const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), resourceMenuIds.price);
@@ -15,7 +16,7 @@ const ResourcePricePage = () => {
       activeSubMenuId={resourcePriceMenuIds.resourcePrice.resourcePrice}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <>Resource Price Page Containe</>
+      <ResourcePriceList resourceId={id as string} />
     </ResourceLayout>
   );
 };
@@ -25,5 +26,4 @@ ResourcePricePage.acl = {
   subject: defaultMenuItem?.model,
   action: 'view'
 };
-
 export default ResourcePricePage;

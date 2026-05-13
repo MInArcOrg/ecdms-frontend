@@ -43,22 +43,22 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: mobileSatelliteNetworksId.mobileNetworks.manufacturerOfMobileNetworkComponents,
         title: 'project.navigation.submenu.mobile-satellite.mobile-networks.manufacturer-of-mobile-network-components',
         path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/manufacturer-of-mobile-network-components`,
-        model: 'manufacturerofmobilenetworkcomponents',
-        apiRoute: 'manufacturer-of-mobile-network-components'
+        model: 'mobilenetworkcomponentmanufacturer',
+        apiRoute: 'mobile-network-component-manufacturers'
       },
       {
         id: mobileSatelliteNetworksId.mobileNetworks.networkCapacity,
         title: 'project.navigation.submenu.mobile-satellite.mobile-networks.network-capacity',
-        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/network-capacity`,
-        model: 'networkcapacity',
-        apiRoute: 'network-capacities'
+        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/mobile-network-capacity`,
+        model: 'mobilenetworkcapacity',
+        apiRoute: 'mobile-network-capacities'
       },
       {
         id: mobileSatelliteNetworksId.mobileNetworks.networkCoverage,
         title: 'project.navigation.submenu.mobile-satellite.mobile-networks.network-coverage',
-        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/network-coverage`,
-        model: 'networkcoverage',
-        apiRoute: 'network-coverages'
+        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/mobile-network-coverage`,
+        model: 'mobilenetworkcoverage',
+        apiRoute: 'mobile-network-coverages'
       }
     ]
   },
@@ -77,8 +77,8 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: mobileSatelliteNetworksId.satelliteNetworks.ageOfSatelliteNetworkComponents,
         title: 'project.navigation.submenu.mobile-satellite.satellite-networks.age-of-satellite-network-components',
         path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/satellite-networks/age-of-satellite-network-components`,
-        model: 'satellitenetworkcomponentmanufacturer',
-        apiRoute: 'age-of-satellite-network-components'
+        model: 'satellitenetworkcomponentage',
+        apiRoute: 'satellite-network-component-ages'
       },
       {
         id: mobileSatelliteNetworksId.satelliteNetworks.manufacturerOfSatelliteNetworkComponents,

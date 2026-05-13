@@ -93,7 +93,7 @@ function ResourceBrandList({ resourceId }: { resourceId: string }) {
             onlyIcon: false,
             permission: {
               action: 'create',
-              subject: 'resourceBrand'
+              subject: 'resourcebrand'
             }
           }}
           fetchDataFunction={refetch}

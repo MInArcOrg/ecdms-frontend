@@ -3,7 +3,6 @@ import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
 import type { ProfessionalEducation } from 'src/types/resource';
-import type { StudyField } from 'src/types/general/general-master';
 import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
@@ -14,15 +13,13 @@ interface EducationCardProps {
   onEdit: (education: ProfessionalEducation) => void;
   onDelete: (id: string) => void;
   onDetail: (education: ProfessionalEducation) => void;
-  studyFields: StudyField[];
 }
 
-const EducationCard: React.FC<EducationCardProps> = ({ education, refetch, onEdit, onDelete, onDetail, studyFields }) => {
+const EducationCard: React.FC<EducationCardProps> = ({ education, refetch, onEdit, onDelete, onDetail }) => {
   const { t } = useTranslation();
 
-  const getStudyFieldTitle = (id: string) => {
-    const field = studyFields.find((f) => f.id === id);
-    return field ? field.title : 'N/A';
+  const getStudyFieldTitle = () => {
+    return education.studyfield ? education.studyfield.title : education.study_field || 'N/A';
   };
 
   return (
@@ -41,7 +38,7 @@ const EducationCard: React.FC<EducationCardProps> = ({ education, refetch, onEdi
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {getStudyFieldTitle(education.study_field)}
+              {getStudyFieldTitle()}
             </Typography>
           </Typography>
         </Box>

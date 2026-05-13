@@ -3,7 +3,6 @@ import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
 import type { ProfessionalEducation } from 'src/types/resource';
-import type { StudyField } from 'src/types/general/general-master';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
@@ -16,8 +15,7 @@ export const educationColumns = (
   onDetail: (education: ProfessionalEducation) => void,
   onEdit: (education: ProfessionalEducation) => void,
   onDelete: (id: string) => void,
-  t: any,
-  studyFields?: StudyField[]
+  t: any
 ): GridColDef[] => [
   {
     flex: 0.2,
@@ -25,7 +23,6 @@ export const educationColumns = (
     field: 'study_field',
     headerName: t('resources.professional.education.study-field'),
     renderCell: ({ row }: CellType) => {
-      const studyField = studyFields?.find((field) => field.id === row.study_field);
       return (
         <Typography
           noWrap
@@ -38,7 +35,7 @@ export const educationColumns = (
             '&:hover': { color: 'primary.main' }
           }}
         >
-          {studyField ? studyField.title : t('common.not-available')}
+          {row.studyfield ? row.studyfield.title : row.study_field || t('common.not-available')}
         </Typography>
       );
     }

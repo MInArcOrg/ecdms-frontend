@@ -19,6 +19,7 @@ const DetailResourceTypeForm: React.FC<DetailResourceTypeFormProps> = ({
   files,
   onFilesChange
 }) => {
+  console.log('error', formik.errors);
   const { t: transl } = useTranslation();
   return (
     <>

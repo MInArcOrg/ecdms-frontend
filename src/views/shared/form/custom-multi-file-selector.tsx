@@ -34,7 +34,7 @@ const CustomMultiFileUpload: React.FC<CustomMultiFileUploadProps> = ({ label, fi
       {files.length > 0 && (
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, my: 2 }}>
           {files.map((file, index) => (
-            <Box key={file.id} sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
               <Icon icon="mdi:file-document-outline" color="#ffcc00" width={25} height={25} />
               <Typography variant="body1">{file.file.name}</Typography>
               <IconButton onClick={() => handleRemoveFile(file.id)}>

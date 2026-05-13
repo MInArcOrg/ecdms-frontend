@@ -23,7 +23,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formik }) => {
         <CustomTextBox fullWidth label={t('resources.professional.contact.email')} type='email' name="email" size="small" sx={{ mb: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <CustomTextBox fullWidth label={t('resources.professional.contact.website')} name="website" size="small" sx={{ mb: 2 }} />
+        <CustomTextBox fullWidth allowSpecialChars={true} label={t('resources.professional.contact.website')} name="website" size="small" sx={{ mb: 2 }} />
       </Grid>
     </Grid>
   );

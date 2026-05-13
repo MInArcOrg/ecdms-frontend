@@ -25,7 +25,7 @@ const ElectricGridControlCenterCyberSecurityDataPage = () => {
                 otherSubMenu={menuItem}
                 typeId={String(typeId)}
                 projectId={String(id)}
-            /> 
+            />
       <>Electric grid control center</>
     </ProjectLayout>
   );

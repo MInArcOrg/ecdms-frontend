@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
 import subMenuItems, { projectResourceIds } from '../(subMenuItems)';
+import ProjectMaterialsList from 'src/views/pages/projects/detail/resource/resources/materials';
 
 function ProjectVariation() {
   const router = useRouter();
@@ -15,7 +16,7 @@ function ProjectVariation() {
         activeSubMenuId={projectResourceIds.resources.materials}
         subMenuItems={subMenuItems(id as string, typeId as string)}
       >
-        <>Materials</>
+        <ProjectMaterialsList projectId={id as string} />
       </ProjectLayout>
     </Box>
   );
@@ -23,6 +24,6 @@ function ProjectVariation() {
 
 ProjectVariation.acl = {
   action: 'view',
-  subject: 'projectfinance'
+  subject: 'projectmaterial'
 };
 export default ProjectVariation;

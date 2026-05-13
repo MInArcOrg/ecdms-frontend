@@ -12,6 +12,7 @@ import ProjectStatusChip from 'src/views/pages/projects/detail/general-info/proj
 import ProjectLayout from 'src/views/pages/projects/detail/layout/project-layout';
 import subMenuItems, { projectSetupIds } from '../(subMenuItems)';
 import { projectMenuIds } from 'src/views/pages/projects/detail/layout/project-menu-items';
+import ProjectStatusComponent from 'src/views/pages/projects/detail/project-status/project-status-component';
 
 function ProjectGeneralInformation() {
   const router = useRouter();
@@ -32,7 +33,7 @@ function ProjectGeneralInformation() {
   }, [id, refetch]);
 
   const { t } = useTranslation();
-
+  console.log(projectGeneralInformation?.payload.project_status)
   return (
     <ProjectLayout
       activeMenuId={projectMenuIds.projectSetup}
@@ -118,13 +119,19 @@ function ProjectGeneralInformation() {
                       }
                     />
                     <Box pt={3}>
-                      <ProjectStatusChip data={projectGeneralInformation?.payload?.project_status} onClick={function (): void {}} />
+                      <ProjectStatusChip data={projectGeneralInformation?.payload?.project_status} onClick={function (): void { }} />
                     </Box>
                   </Box>
                 </Grid>
               </Grid>
             </CardContent>
           </Card>
+          <Card sx={{ mt: 3 }}>
+            <CardContent>
+              <ProjectStatusComponent projectId={String(id)} />
+            </CardContent>
+          </Card>
+
         </>
       )}
     </ProjectLayout>

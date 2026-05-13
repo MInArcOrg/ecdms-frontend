@@ -12,7 +12,11 @@ interface Props {
 }
 
 const ImageSlider: React.FC<Props> = ({ id, refetch }) => {
-  const { data: images, isLoading, refetch: refetchImages } = useGetMultiplePhotos({ filter: { model_id: id } });
+  const {
+    data: images,
+    isLoading,
+    refetch: refetchImages
+  } = useGetMultiplePhotos({ filter: { model_id: id } }, { enabled: !!id });
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [open, setOpen] = useState<boolean>(false);
   useEffect(() => {

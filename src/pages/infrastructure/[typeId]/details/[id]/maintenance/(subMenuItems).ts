@@ -33,8 +33,8 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: projectMaintenanceIds.quality.drainageEnvironmentalData,
         title: 'project.navigation.submenu.maintenance.quality.drainage-environmental-data',
         path: `/projects/${typeId}/details/${id}/maintenance/quality/drainage-environmental-data`,
-        model: 'drainageenvironmentaldata',
-        apiRoute: 'drainage-environmental-data'
+        model: 'environmentaldata',
+        apiRoute: 'environmental-datas'
       },
       {
         id: projectMaintenanceIds.quality.drainageAssessment,
@@ -53,14 +53,14 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: projectMaintenanceIds.maintenance.roadMaintenance,
         title: 'project.navigation.submenu.maintenance.maintenance.road-maintenance-activities',
         path: `/projects/${typeId}/details/${id}/maintenance/maintenance/road-maintenance-activities`,
-        model: 'roadmaintenanceactivities',
+        model: 'roadmaintenanceactivity',
         apiRoute: 'road-maintenance-activities'
       },
       {
         id: projectMaintenanceIds.maintenance.maintenanceHistory,
         title: 'project.navigation.submenu.maintenance.maintenance.maintenance-history',
         path: `/projects/${typeId}/details/${id}/maintenance/maintenance/maintenance-history`,
-        model: 'maintenancehistor',
+        model: 'maintenancehistory',
         apiRoute: 'maintenance-histories'
       },
       {

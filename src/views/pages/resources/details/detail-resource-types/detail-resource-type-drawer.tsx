@@ -1,7 +1,7 @@
 import { FormikProps } from 'formik';
 import React, { useEffect, useState } from 'react';
 import detailResourceTypeApiService from 'src/services/resource/resource-detail-type-service';
-import { deletePhoto, useGetMultiplePhotos, uploadImage } from 'src/services/utils/file-utils';
+import { deletePhoto, useGetMultiplePhotos, uploadImage, uploadableResourceFileTypes } from 'src/services/utils/file-utils';
 import { FileWithId } from 'src/types/general/file';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
 import { DetailResourceType } from 'src/types/resource';
@@ -27,9 +27,15 @@ const validationSchema = yup.object().shape({
 const DetailResourceTypeDrawer: React.FC<DetailResourceTypeDrawerType> = (props) => {
   const { open, toggle, refetch, detailResourceType, resourceId } = props;
 
-  const { data: fetchedImages } = useGetMultiplePhotos({
-    filter: { model_id: detailResourceType?.id || '' }
-  });
+  const { data: fetchedImages } = useGetMultiplePhotos(
+    {
+      filter: {
+        model_id: detailResourceType?.id || '',
+        type: uploadableResourceFileTypes.resourceDetailType
+      }
+    },
+    { enabled: !!detailResourceType?.id }
+  );
   const [uploadableFiles, setUploadableFiles] = useState<FileWithId[]>([]);
   const [fetchedImageIds, setFetchedImageIds] = useState<string[]>([]);
 
@@ -88,7 +94,9 @@ const DetailResourceTypeDrawer: React.FC<DetailResourceTypeDrawerType> = (props)
 
   const onActionSuccess = async (response: IApiResponse<DetailResourceType>, payload: IApiPayload<DetailResourceType>) => {
     const uploadableFilesToUpload = uploadableFiles.filter((file) => !file.isFetched);
-    const uploadPromises = uploadableFilesToUpload.map((file) => uploadImage(file.file, 'RESOURCE_DETAIL_TYPE', response.payload.id));
+    const uploadPromises = uploadableFilesToUpload.map((file) =>
+      uploadImage(file.file, uploadableResourceFileTypes.resourceDetailType, response.payload.id)
+    );
     await Promise.all(uploadPromises);
 
     const uploadableFileIds = uploadableFiles.map((file) => file.id);

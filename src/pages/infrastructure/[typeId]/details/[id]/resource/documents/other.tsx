@@ -5,7 +5,7 @@ import subMenuItems, { projectResourceIds } from '../(subMenuItems)';
 import { projectFileConstant } from 'src/constants/project-file-contant';
 import ProjectFileList from 'src/views/pages/projects/detail/project-file/project-file/project-file';
 
-const ProjectStakeholder = () => {
+const ProjectDocument = () => {
   const router = useRouter();
   const { id, typeId } = router.query;
 
@@ -20,9 +20,9 @@ const ProjectStakeholder = () => {
   );
 };
 
-ProjectStakeholder.acl = {
-  subject: 'projectdesign',
+ProjectDocument.acl = {
+  subject: 'projectdocument',
   action: 'view'
 };
 
-export default ProjectStakeholder;
+export default ProjectDocument;

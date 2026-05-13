@@ -1,4 +1,4 @@
-import { GeneralMaster } from '../general/general-master';
+import { GeneralMaster, StudyField } from '../general/general-master';
 
 export interface Resource {
   id: string;
@@ -151,6 +151,7 @@ export interface ProfessionalEducation {
   gpa: number;
   created_at?: Date;
   updated_at?: Date;
+  studyfield?: StudyField;
 }
 
 export interface ProfessionalWorkExperience {
@@ -259,6 +260,22 @@ export interface MachineryInformation {
   eged: string;
   eged_d: string;
   eged_n: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface ResourcePrice {
+  id?: string;
+  resource_id: string;
+  resource_brand_id: string;
+  resource_specification_id: string;
+  unit_price_id?: string;
+  total_quantity_available?: number;
+  price_date?: string;
+  supplier_name_id: string;
+  supplier_address_id: string;
+  quality_id: string;
+  remark?: string;
   created_at?: string;
   updated_at?: string;
 }
