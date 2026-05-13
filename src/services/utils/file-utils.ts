@@ -28,12 +28,90 @@ export const customAxios = axios.create({
   baseURL
 });
 
+const blockedFileExtensions = new Set([
+  'svg',
+  'svgz',
+  'html',
+  'htm',
+  'xhtml',
+  'xml',
+  'js',
+  'mjs',
+  'cjs',
+  'vbs',
+  'vbe',
+  'wsf',
+  'wsh',
+  'hta',
+  'cmd',
+  'bat',
+  'ps1',
+  'psm1',
+  'sh',
+  'exe',
+  'dll',
+  'msi',
+  'com',
+  'scr',
+  'jar'
+]);
+
+const blockedMimeTypes = new Set([
+  'image/svg+xml',
+  'text/html',
+  'application/xhtml+xml',
+  'text/xml',
+  'application/xml',
+  'application/x-msdownload',
+  'application/x-msdos-program',
+  'application/x-dosexec',
+  'application/x-sh',
+  'text/javascript',
+  'application/javascript'
+]);
+
+const allowedImageExtensions = new Set(['png', 'jpg', 'jpeg', 'gif', 'webp']);
+const allowedImageMimeTypes = new Set(['image/png', 'image/jpeg', 'image/gif', 'image/webp']);
+
+const getFileExtension = (name: string) => {
+  const value = (name || '').trim();
+  if (!value) return '';
+  const idx = value.lastIndexOf('.');
+  if (idx === -1) return '';
+  return value.slice(idx + 1).toLowerCase();
+};
+
+const assertSafeUploadFile = (file: File, kind: 'file' | 'image') => {
+  const ext = getFileExtension(file?.name || '');
+  const mime = (file?.type || '').toLowerCase().trim();
+
+  if (mime && blockedMimeTypes.has(mime)) {
+    throw new Error('Unsupported or unsafe file type');
+  }
+  if (ext && blockedFileExtensions.has(ext)) {
+    throw new Error('Unsupported or unsafe file type');
+  }
+
+  if (kind === 'image') {
+    if (mime && !allowedImageMimeTypes.has(mime)) {
+      throw new Error('Only PNG, JPG, GIF, and WEBP images are allowed');
+    }
+    if (ext && !allowedImageExtensions.has(ext)) {
+      throw new Error('Only PNG, JPG, GIF, and WEBP images are allowed');
+    }
+    if (!mime && !ext) {
+      throw new Error('Only PNG, JPG, GIF, and WEBP images are allowed');
+    }
+  }
+};
+
 const getAccessToken = () => {
   if (typeof window === 'undefined' || !window.localStorage) {
     return null;
   }
-  const token = window.localStorage.getItem(authConfig.storageTokenKeyName);
-  return token ? `Bearer ${token}` : null;
+  const raw = window.localStorage.getItem(authConfig.storageTokenKeyName);
+  if (!raw) return null;
+  return raw.startsWith('Bearer ') ? raw : `Bearer ${raw}`;
 };
 
 customAxios.interceptors.request.use(
@@ -56,6 +134,8 @@ export const uploadFile = (
   fileName: string | null = null,
   file_description: string | null = null
 ): Promise<AxiosResponse<FileUploadResponse>> => {
+  assertSafeUploadFile(file, 'file');
+
   const formData = new FormData();
   formData.append('type', type);
   formData.append('reference_id', ownerObjectID.toString());
@@ -69,6 +149,8 @@ export const uploadFile = (
   });
 };
 export const uploadImage = (file: File, type: string, ownerObjectID: string | number): Promise<AxiosResponse<FileUploadResponse>> => {
+  assertSafeUploadFile(file, 'image');
+
   const formData = new FormData();
   formData.append('type', type);
   formData.append('model_id', ownerObjectID.toString());
@@ -119,6 +201,8 @@ export const deleteFile = (id: string | number): Promise<AxiosResponse<FileUploa
 };
 
 export const uploadProfilePicture = (user_id: string | number, type: string, file: File): Promise<AxiosResponse<FileUploadResponse>> => {
+  assertSafeUploadFile(file, 'image');
+
   const formData = new FormData();
   formData.append('upload', file);
   formData.append('type', type);

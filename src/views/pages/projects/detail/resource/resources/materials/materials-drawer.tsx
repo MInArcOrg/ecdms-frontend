@@ -8,8 +8,6 @@ import type { Resource } from 'src/types/resource';
 import resourceApiService from 'src/services/resource/resource-service';
 import MaterialsForm from './materials-form';
 
-type ProjectMaterialPayload = Resource & { parent: string };
-
 interface MaterialsDrawerProps {
   open: boolean;
   toggle: () => void;
@@ -44,23 +42,30 @@ const MaterialsDrawer: React.FC<MaterialsDrawerProps> = ({ open, toggle, refetch
     updated_at: ''
   };
 
-  const createMaterial = async (body: IApiPayload<ProjectMaterialPayload>): Promise<IApiResponse<Resource>> => {
-    return resourceApiService.create(body as unknown as IApiPayload<Resource>);
+  const createMaterial = async (body: IApiPayload<Resource>): Promise<IApiResponse<Resource>> => {
+    return resourceApiService.create(body);
   };
 
-  const updateMaterial = async (body: IApiPayload<ProjectMaterialPayload>): Promise<IApiResponse<Resource>> => {
-    return resourceApiService.update(material?.id || '', body as unknown as IApiPayload<Resource>);
+  const updateMaterial = async (body: IApiPayload<Resource>): Promise<IApiResponse<Resource>> => {
+    return resourceApiService.update(material?.id || '', body);
   };
 
-  const getPayload = (values: Resource): IApiPayload<ProjectMaterialPayload> => ({
-    data: {
-      ...(values as ProjectMaterialPayload),
-      id: material?.id,
+  const getPayload = (values: Resource): IApiPayload<Resource> => {
+    const data: any = {
+      ...values,
       parent: projectId,
       resourcetype_id: resourceTypeId
-    },
-    files: []
-  });
+    };
+
+    if (material?.id) {
+      data.id = material.id;
+    }
+
+    return {
+      data,
+      files: []
+    };
+  };
 
   const onActionSuccess = async (_response: IApiResponse<Resource>) => {
     refetch();

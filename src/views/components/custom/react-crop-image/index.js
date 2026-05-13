@@ -148,7 +148,7 @@ export default function ReactCropImage({ open, setOpen, onCropComplete }) {
           <Box className="Crop-Controls">
             <Button variant="contained" fullWidth component="label">
               Choose an Image
-              <input type="file" hidden onChange={onSelectFile} accept="image/*" />
+              <input type="file" hidden onChange={onSelectFile} accept="image/png,image/jpeg,image/gif,image/webp" />
             </Button>
           </Box>
 
