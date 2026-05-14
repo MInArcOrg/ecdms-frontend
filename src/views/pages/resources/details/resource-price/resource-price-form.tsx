@@ -13,6 +13,7 @@ import CustomDateSelector from 'src/views/shared/form/custom-date-box';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
+import resourceGeneralMasterDataApiService from 'src/services/general/resource-general-master-data-service';
 
 interface ResourcePriceFormProps {
   formik: FormikProps<ResourcePrice>;
@@ -49,32 +50,34 @@ const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
       )
   });
 
-  const fetchMasterData = (modelKey: keyof typeof resourceMasterModels) => {
-    const model = resourceMasterModels[modelKey];
-    return generalMasterDataApiService.getAllResourceGeneralMaster(
-      model.dbModel,
-      dropDownConfig()
+  const fetchMasterData = (model: string) => {
+    return resourceGeneralMasterDataApiService.getAll(
+      dropDownConfig({
+        filter: {
+          model: model
+        }
+      })
     );
   };
 
   const { data: qualities } = useQuery({
-    queryKey: ['master-data', 'quality'],
-    queryFn: () => fetchMasterData('quality')
+    queryKey: ['master-data', resourceMasterModels.quality.model],
+    queryFn: () => fetchMasterData(resourceMasterModels.quality.model)
   });
 
   const { data: supplierNames } = useQuery({
-    queryKey: ['master-data', 'supplierName'],
-    queryFn: () => fetchMasterData('supplierName')
+    queryKey: ['master-data', resourceMasterModels.supplierName.model],
+    queryFn: () => fetchMasterData(resourceMasterModels.supplierName.model)
   });
 
   const { data: supplierAddresses } = useQuery({
-    queryKey: ['master-data', 'supplierAddress'],
-    queryFn: () => fetchMasterData('supplierAddress')
+    queryKey: ['master-data', resourceMasterModels.supplierAddress.model],
+    queryFn: () => fetchMasterData(resourceMasterModels.supplierAddress.model)
   });
 
   const { data: unitPrices } = useQuery({
-    queryKey: ['master-data', 'unitPrice'],
-    queryFn: () => fetchMasterData('unitPrice')
+    queryKey: ['master-data', resourceMasterModels.unitPrice.model],
+    queryFn: () => fetchMasterData(resourceMasterModels.unitPrice.model)
   });
 
   return (
@@ -88,7 +91,7 @@ const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
           options={
             resourceBrands?.payload?.map((item) => ({
               value: item.id,
-              label: item.name
+              label: item.title
             })) || []
           }
         />
@@ -158,7 +161,7 @@ const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
           options={
             unitPrices?.payload?.map((item) => ({
               value: item.id,
-              label: item.title
+              label: item
             })) || []
           }
         />

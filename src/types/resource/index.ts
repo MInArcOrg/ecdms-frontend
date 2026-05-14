@@ -1,4 +1,4 @@
-import { GeneralMaster, StudyField } from '../general/general-master';
+import { GeneralMaster, ResourceGeneralMaster, StudyField } from '../general/general-master';
 
 export interface Resource {
   id: string;
@@ -269,12 +269,18 @@ export interface ResourcePrice {
   resource_id: string;
   resource_brand_id: string;
   resource_specification_id: string;
+  resourceSpecification?: ResourceSpecification;
+  resourceBrand?: ResourceBrand;
   unit_price_id?: string;
+  unitPrice?: ResourceGeneralMaster;
   total_quantity_available?: number;
   price_date?: string;
   supplier_name_id: string;
+  supplierName?: ResourceGeneralMaster;
   supplier_address_id: string;
+  supplierAddress?: ResourceGeneralMaster;
   quality_id: string;
+  quality?: ResourceGeneralMaster;
   remark?: string;
   created_at?: string;
   updated_at?: string;
