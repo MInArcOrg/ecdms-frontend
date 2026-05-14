@@ -15,7 +15,7 @@ const BridgeBasicData = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.feature}
       activeSubMenuId={projectFeatureIds.bridge.bridgeBasicData}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <BridgeBasicDataList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>

@@ -16,7 +16,7 @@ const Accessories = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.feature}
       activeSubMenuId={projectFeatureIds.accessories.accessories}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <AccessoryList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

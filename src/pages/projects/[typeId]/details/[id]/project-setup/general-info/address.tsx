@@ -15,7 +15,7 @@ function ProjectLocation() {
       <ProjectLayout
         activeMenuId={projectMenuIds.projectSetup}
         activeSubMenuId={projectSetupIds.generalInfo.address}
-        subMenuItems={subMenuItems(id as string, typeId as string)}
+        subMenuItems={subMenuItems}
       >
         <AddressList modelId={String(id)} type={'project'} />
       </ProjectLayout>

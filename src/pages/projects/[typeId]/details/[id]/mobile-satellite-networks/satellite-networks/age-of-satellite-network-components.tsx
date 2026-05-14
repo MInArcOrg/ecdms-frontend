@@ -19,7 +19,7 @@ const AgeOfSatelliteNetworkComponentsPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.mobileSatelliteNetworks}
       activeSubMenuId={mobileSatelliteNetworksId.satelliteNetworks.ageOfSatelliteNetworkComponents}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <SatelliteInfrastructureAgeList
         otherSubMenu={menuItem}

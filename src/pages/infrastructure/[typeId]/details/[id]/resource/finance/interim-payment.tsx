@@ -14,7 +14,7 @@ function ProjectInterimPayment() {
       <ProjectLayout
         activeMenuId={projectMenuIds.resource}
         activeSubMenuId={projectResourceIds.finance.interimPayment}
-        subMenuItems={subMenuItems(id as string, typeId as string)}
+        subMenuItems={subMenuItems}
       >
         {' '}
         <ProjectPaymentList projectId={String(id)} type={paymentConstants.INTERIM_PAYMENT.value} />

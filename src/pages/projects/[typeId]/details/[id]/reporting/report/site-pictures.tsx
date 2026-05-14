@@ -13,7 +13,7 @@ function ProjectPlanning() {
       <ProjectLayout
         activeMenuId={projectMenuIds.reporting}
         activeSubMenuId={projectReportingIds.report.sitePictures}
-        subMenuItems={subMenuItems(id as string, typeId as string)}
+        subMenuItems={subMenuItems}
       >
         <>site pictures goes here</>
       </ProjectLayout>

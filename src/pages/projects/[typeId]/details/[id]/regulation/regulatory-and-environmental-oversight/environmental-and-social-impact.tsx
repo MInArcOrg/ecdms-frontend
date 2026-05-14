@@ -22,7 +22,7 @@ const EnvironmentalAndSocialImpactPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.regulation}
       activeSubMenuId={regulationIds.regulatoryAndEnvironmentalOversight.environmentalAndSocialImpact}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <EnvironmentalAndSocialImpactList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

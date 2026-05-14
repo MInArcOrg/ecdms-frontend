@@ -16,7 +16,7 @@ const TrafficVolume = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.segment}
       activeSubMenuId={projectSegmentIds.segment.trafficVolume}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <TrafficVolumeList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

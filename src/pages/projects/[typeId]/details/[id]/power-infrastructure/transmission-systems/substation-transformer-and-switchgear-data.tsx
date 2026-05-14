@@ -22,7 +22,7 @@ const SubstationTransformerAndSwitchgearDataPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.powerInfrastructure}
       activeSubMenuId={powerInfrastructureIds.transmissionSystems.substationTransformerAndSwitchgearData}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <SubstationTransformerAndSwitchgearDataList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

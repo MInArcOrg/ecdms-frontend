@@ -39,7 +39,7 @@ export const subMenuItems = (
             .station_platform_layout,
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-layout",
-          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-layout`,
+          path: `/${module}/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-layout`,
           model: "railwaystationplatformlayout",
           fileType: railwayFacilitiesAndStationsIds.stations_and_platforms.id,
           apiRoute: "railway-station-platform-layouts",
@@ -49,7 +49,7 @@ export const subMenuItems = (
             .station_platform_facilities,
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-facilities",
-          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-facilities`,
+          path: `/${module}/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-facilities`,
           model: "railwaystationplatformfacility",
           fileType: railwayFacilitiesAndStationsIds.stations_and_platforms.id,
           apiRoute: "railway-station-platform-facilities",
@@ -60,7 +60,7 @@ export const subMenuItems = (
             .station_platform_structural_elements,
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-structural-elements",
-          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-structural-elements`,
+          path: `/${module}/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-structural-elements`,
           model: "railwaystationplatformstructurelelement",
           fileType:
             railwayFacilitiesAndStationsIds.stations_and_platforms
@@ -73,7 +73,7 @@ export const subMenuItems = (
             .station_platform_signage_and_wayfinding,
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-signage-and-wayfinding",
-          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-signage-and-wayfinding`,
+          path: `/${module}/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-signage-and-wayfinding`,
           fileType:
             railwayFacilitiesAndStationsIds.stations_and_platforms
               .station_platform_signage_and_wayfinding,
@@ -85,7 +85,7 @@ export const subMenuItems = (
             .station_platform_safety_and_security,
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-safety-and-security",
-          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-safety-and-security`,
+          path: `/${module}/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-safety-and-security`,
           model: "railwaystationplatformsafetyandsecurity",
           fileType:
             railwayFacilitiesAndStationsIds.stations_and_platforms
@@ -97,7 +97,7 @@ export const subMenuItems = (
             .station_platform_surface_and_finishes,
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-surface-and-finishes",
-          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-surface-and-finishes`,
+          path: `/${module}/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-surface-and-finishes`,
           model: "railwaystationplatformsurfaceandfinish",
           apiRoute: "railway-station-platform-surface-and-finishes",
           fileType: railwayFacilitiesAndStationsIds.stations_and_platforms
@@ -108,7 +108,7 @@ export const subMenuItems = (
             .station_platform_passenger_flow_and_capacity,
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-passenger-flow-and-capacity",
-          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-passenger-flow-and-capacity`,
+          path: `/${module}/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-passenger-flow-and-capacity`,
           model: "railwaystationplatformpassengerflowandcapacity",
           apiRoute: "railway-station-platform-passenger-flow-and-capacities",
           fileType: railwayFacilitiesAndStationsIds.stations_and_platforms
@@ -119,7 +119,7 @@ export const subMenuItems = (
             .station_platform_environmental_and_other_factors,
           title:
             "project.navigation.submenu.railway-facilities-and-stations.stations-and-platforms.station-platform-environmental-and-other-factors",
-          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-environmental-and-other-factors`,
+          path: `/${module}/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-environmental-and-other-factors`,
           model: "railwaystationplatformenvironmentalandotherfactor",
           apiRoute: "railway-station-platform-environmental-and-other-factors",
           fileType: railwayFacilitiesAndStationsIds.stations_and_platforms
@@ -137,7 +137,7 @@ export const subMenuItems = (
             .maintenance_facility_type_and_purpose,
           title:
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-type-and-purpose",
-          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-type-and-purpose`,
+          path: `/${module}/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-type-and-purpose`,
           model: "railwaymaintenancefacilitytypeandpurpose",
           apiRoute: "railway-maintenance-facility-type-and-purposes",
           fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_type_and_purpose,
@@ -147,7 +147,7 @@ export const subMenuItems = (
             .maintenance_facility_layout_and_design,
           title:
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-layout-and-design",
-          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-layout-and-design`,
+          path: `/${module}/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-layout-and-design`,
           model: "railwaymaintenancefacilitylayoutanddesign",
           fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_layout_and_design,
           apiRoute: "railway-maintenance-facility-layout-and-designs",
@@ -157,7 +157,7 @@ export const subMenuItems = (
             .maintenance_facility_equipment_and_tools,
           title:
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-equipment-and-tools",
-          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-equipment-and-tools`,
+          path: `/${module}/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-equipment-and-tools`,
           model: "railwaymaintenancefacilityequipmentandtool",
           fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_equipment_and_tools,
           apiRoute: "railway-maintenance-facility-equipment-and-tools",
@@ -167,7 +167,7 @@ export const subMenuItems = (
             .maintenance_facility_infrastructure_and_utilities,
           title:
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-infrastructure-and-utilities",
-          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-infrastructure-and-utilities`,
+          path: `/${module}/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-infrastructure-and-utilities`,
           model: "railwaymaintenancefacilityinfrastructureandutility",
           fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_infrastructure_and_utilities,
           apiRoute: "railway-maintenance-facility-infrastructure-and-utilities",
@@ -177,7 +177,7 @@ export const subMenuItems = (
             .maintenance_facility_workforce_and_staff,
           title:
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-workforce-and-staff",
-          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-workforce-and-staff`,
+          path: `/${module}/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-workforce-and-staff`,
           model: "railwaymaintenancefacilityworkforceandstaff",
           fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_workforce_and_staff,
           apiRoute: "railway-maintenance-workforce-and-facility-staffs",
@@ -187,7 +187,7 @@ export const subMenuItems = (
             .maintenance_facility_schedules_and_procedures,
           title:
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-schedules-and-procedures",
-          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-schedules-and-procedures`,
+          path: `/${module}/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-schedules-and-procedures`,
           model: "railwaymaintenancefacilityscheduleandprocedure",
           fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_schedules_and_procedures,
           apiRoute: "railway-maintenance-facility-schedule-and-procedures",
@@ -197,7 +197,7 @@ export const subMenuItems = (
             .maintenance_facility_safety_and_security,
           title:
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-safety-and-security",
-          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-safety-and-security`,
+          path: `/${module}/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-safety-and-security`,
           model: "railwaymaintenancefacilityandsecurity",
           fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_safety_and_security,
           apiRoute: "railway-maintenance-facility-and-securities",
@@ -207,7 +207,7 @@ export const subMenuItems = (
             .maintenance_facility_environmental_and_other_factors,
           title:
             "project.navigation.submenu.railway-facilities-and-stations.maintenance-facilities.maintenance-facility-environmental-and-other-factors",
-          path: `/projects/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-environmental-and-other-factors`,
+          path: `/${module}/${typeId}/details/${id}/railway-facilities-and-stations/maintenance-facilities/maintenance-facility-environmental-and-other-factors`,
           model: "railwaymaintenanceenvironmentalandotherfactor",
           fileType: railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_environmental_and_other_factors,
           apiRoute: "railway-maintenance-environmental-and-other-factors",

@@ -13,7 +13,7 @@ function ProjectVariation() {
       <ProjectLayout
         activeMenuId={projectMenuIds.projectSetup}
         activeSubMenuId={projectSetupIds.time.contractPeriod}
-        subMenuItems={subMenuItems(id as string, typeId as string)}
+        subMenuItems={subMenuItems}
       >
         <ProjectTimeComponent projectId={String(id)} />
       </ProjectLayout>

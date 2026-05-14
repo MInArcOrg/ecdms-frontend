@@ -18,7 +18,7 @@ const WhetherConditionPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.reporting}
       activeSubMenuId={projectReportingIds.report.weatherCondition}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <WeatherConditionList projectId={String(id)} typeId={String(typeId)}  model={menuItem?.model||''}/>
     </ProjectLayout>

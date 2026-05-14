@@ -11,7 +11,7 @@ const ProjectGeneral = () => {
   useEffect(() => {
     if (typeId && id) {
       // Build the new URL dynamically
-      const newUrl = `/projects/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-layout`;
+      const newUrl = `/infrastructure/${typeId}/details/${id}/railway-facilities-and-stations/stations-and-platforms/station-platform-layout`;
 
       // Simulate a condition or action before redirecting
       router.push(newUrl); // Redirect to the constructed URL

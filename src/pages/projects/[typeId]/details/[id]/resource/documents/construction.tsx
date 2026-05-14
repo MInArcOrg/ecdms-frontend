@@ -13,7 +13,7 @@ const ProjectDocument = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.resource}
       activeSubMenuId={projectResourceIds.documents.construction}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       {' '}
       <ProjectFileList projectId={String(id)} type={projectFileConstant.CONSTRUCTION.value} />

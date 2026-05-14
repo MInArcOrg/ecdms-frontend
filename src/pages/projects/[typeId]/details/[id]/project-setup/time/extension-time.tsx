@@ -13,7 +13,7 @@ function ProjectVariation() {
       <ProjectLayout
         activeMenuId={projectMenuIds.projectSetup}
         activeSubMenuId={projectSetupIds.time.extensionTime}
-        subMenuItems={subMenuItems(id as string, typeId as string)}
+        subMenuItems={subMenuItems}
       >
         <ProjectExtensionTimeList projectId={String(id)} type={''} />
       </ProjectLayout>

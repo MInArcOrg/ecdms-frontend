@@ -19,7 +19,7 @@ const MiniGridStationBackupPowerSourcePage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.powerInfrastructure}
       activeSubMenuId={powerInfrastructureIds.miniGridSystems.miniGridStationBackupPowerSource}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <MiniGridStationBackupPowerSourceList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

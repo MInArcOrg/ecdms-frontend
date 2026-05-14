@@ -14,7 +14,7 @@ function ProjectAdvanceBond() {
       <ProjectLayout
         activeMenuId={projectMenuIds.resource}
         activeSubMenuId={projectResourceIds.finance.bidBond}
-        subMenuItems={subMenuItems(id as string, typeId as string)}
+        subMenuItems={subMenuItems}
       >
         {' '}
         <ProjectBondList projectId={String(id)} type={bondConstants.BID_BOND.value} />

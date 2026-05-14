@@ -13,7 +13,7 @@ const DrainageGeotechnicalData = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.feature}
       activeSubMenuId={projectFeatureIds.accessories.drainageGeotechnicalData}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       {/* <DrainageGeotechnicalData
                 otherSubMenu={menuItem}

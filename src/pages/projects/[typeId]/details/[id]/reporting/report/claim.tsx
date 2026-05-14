@@ -17,7 +17,7 @@ const ProjectClaimPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.reporting}
       activeSubMenuId={projectReportingIds.report.claim}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <ProjectClaimList projectId={id as string} />
     </ProjectLayout>

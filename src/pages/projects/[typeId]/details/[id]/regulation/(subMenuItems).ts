@@ -19,7 +19,7 @@ export const regulationIds = {
   }
 };
 
-const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
+const subMenuItems = (id: string, typeId: string, module: string = "projects"): DetailSubMenuItem[] => [
   {
     id: regulationIds.gridOperations.gridOperations,
     title: 'project.navigation.submenu.regulation.grid-operations.title',
@@ -27,21 +27,21 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: regulationIds.gridOperations.electricGridControlCenterData,
         title: 'project.navigation.submenu.regulation.grid-operations.electric-grid-control-center-data',
-        path: `/projects/${typeId}/details/${id}/regulation/grid-operations/electric-grid-control-center-data`,
+        path: `/${module}/${typeId}/details/${id}/regulation/grid-operations/electric-grid-control-center-data`,
         model: 'electricgridcontrolcenterdata',
         apiRoute: 'electric-grid-control-center-data'
       },
       {
         id: regulationIds.gridOperations.electricGridControlCenterPerformanceAndMaintenance,
         title: 'project.navigation.submenu.regulation.grid-operations.electric-grid-control-center-performance-and-maintenance',
-        path: `/projects/${typeId}/details/${id}/regulation/grid-operations/electric-grid-control-center-performance-and-maintenance`,
+        path: `/${module}/${typeId}/details/${id}/regulation/grid-operations/electric-grid-control-center-performance-and-maintenance`,
         model: 'electricgridcontrolcenterperformanceandmaintenance',
         apiRoute: 'electric-grid-control-center-performance-and-maintenance'
       },
       {
         id: regulationIds.gridOperations.electricGridControlCenterCyberSecurityData,
         title: 'project.navigation.submenu.regulation.grid-operations.electric-grid-control-center-cyber-security-data',
-        path: `/projects/${typeId}/details/${id}/regulation/grid-operations/electric-grid-control-center-cyber-security-data`,
+        path: `/${module}/${typeId}/details/${id}/regulation/grid-operations/electric-grid-control-center-cyber-security-data`,
         model: 'electricgridcontrolcentercybersecuritydata',
         apiRoute: 'electric-grid-control-center-cyber-security-data'
       }
@@ -54,14 +54,14 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: regulationIds.regulatoryAndEnvironmentalOversight.regulationAndPolicy,
         title: 'project.navigation.submenu.regulation.regulatory-and-environmental-oversight.regulation-and-policy',
-        path: `/projects/${typeId}/details/${id}/regulation/regulatory-and-environmental-oversight/regulation-and-policy`,
+        path: `/${module}/${typeId}/details/${id}/regulation/regulatory-and-environmental-oversight/regulation-and-policy`,
         model: 'regulationandpolicy',
         apiRoute: 'regulation-and-policies'
       },
       {
         id: regulationIds.regulatoryAndEnvironmentalOversight.environmentalAndSocialImpact,
         title: 'project.navigation.submenu.regulation.regulatory-and-environmental-oversight.environmental-and-social-impact',
-        path: `/projects/${typeId}/details/${id}/regulation/regulatory-and-environmental-oversight/environmental-and-social-impact`,
+        path: `/${module}/${typeId}/details/${id}/regulation/regulatory-and-environmental-oversight/environmental-and-social-impact`,
         model: 'environmentalandsocialimpact',
         apiRoute: 'environmental-and-social-impacts'
       }
@@ -74,7 +74,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: regulationIds.maintenanceAndReliability.reliabilityAndMaintenance,
         title: 'project.navigation.submenu.regulation.maintenance-and-reliability.reliability-and-maintenance',
-        path: `/projects/${typeId}/details/${id}/regulation/maintenance-and-reliability/reliability-and-maintenance`,
+        path: `/${module}/${typeId}/details/${id}/regulation/maintenance-and-reliability/reliability-and-maintenance`,
         model: 'reliabilityandmaintenance',
         apiRoute: 'reliability-and-maintenance'
       }

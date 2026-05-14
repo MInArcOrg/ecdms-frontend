@@ -16,7 +16,7 @@ export const projectReportingIds = {
   }
 };
 
-const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
+const subMenuItems = (id: string, typeId: string, module: string = "projects"): DetailSubMenuItem[] => [
   {
     id: projectReportingIds.plan.plan,
     title: 'project.navigation.submenu.reporting.plan.title',
@@ -24,7 +24,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: projectReportingIds.plan.plan,
         title: 'project.navigation.submenu.reporting.plan.plan',
-        path: `/projects/${typeId}/details/${id}/reporting/plan/plan`
+        path: `/${module}/${typeId}/details/${id}/reporting/plan/plan`
       }
     ]
   },
@@ -35,35 +35,35 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: projectReportingIds.report.actualStatus,
         title: 'project.navigation.submenu.reporting.report.actual-status',
-        path: `/projects/${typeId}/details/${id}/reporting/report/actual-status`
+        path: `/${module}/${typeId}/details/${id}/reporting/report/actual-status`
       },
       {
         id: projectReportingIds.report.weatherCondition,
         title: 'project.navigation.submenu.reporting.report.weather-condition',
-        path: `/projects/${typeId}/details/${id}/reporting/report/weather-condition`,
+        path: `/${module}/${typeId}/details/${id}/reporting/report/weather-condition`,
         model: 'weathercondition',
         action: 'view'
       },
       {
         id: projectReportingIds.report.claim,
         title: 'project.navigation.submenu.reporting.report.claim',
-        path: `/projects/${typeId}/details/${id}/reporting/report/claim`,
+        path: `/${module}/${typeId}/details/${id}/reporting/report/claim`,
         
       },
       {
         id: projectReportingIds.report.challenges,
         title: 'project.navigation.submenu.reporting.report.challenges',
-        path: `/projects/${typeId}/details/${id}/reporting/report/challenges`
+        path: `/${module}/${typeId}/details/${id}/reporting/report/challenges`
       },
       {
         id: projectReportingIds.report.qualityInspection,
         title: 'project.navigation.submenu.reporting.report.quality-inspection',
-        path: `/projects/${typeId}/details/${id}/reporting/report/quality-inspection`
+        path: `/${module}/${typeId}/details/${id}/reporting/report/quality-inspection`
       },
       {
         id: projectReportingIds.report.sitePictures,
         title: 'project.navigation.submenu.reporting.report.site-pictures',
-        path: `/projects/${typeId}/details/${id}/reporting/report/site-pictures`
+        path: `/${module}/${typeId}/details/${id}/reporting/report/site-pictures`
       }
     ]
   }

@@ -18,7 +18,7 @@ const ActualStatusPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayTrackInfrastructure}
       activeSubMenuId={projectReportingIds.report.actualStatus}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <ProjectReportList projectId={String(id)} />
     </ProjectLayout>

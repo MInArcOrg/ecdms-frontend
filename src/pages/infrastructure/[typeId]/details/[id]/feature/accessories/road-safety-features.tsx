@@ -13,7 +13,7 @@ const RoadSafetyFeatures = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.feature}
       activeSubMenuId={projectFeatureIds.accessories.roadSafetyFeatures}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <>Road Safety Features</>
     </ProjectLayout>

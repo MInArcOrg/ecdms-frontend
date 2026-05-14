@@ -15,7 +15,7 @@ const SegmentCoordinate = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.segment}
       activeSubMenuId={projectSegmentIds.segment.segmentCoordinates}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <>Segment coordinates</>
     </ProjectLayout>

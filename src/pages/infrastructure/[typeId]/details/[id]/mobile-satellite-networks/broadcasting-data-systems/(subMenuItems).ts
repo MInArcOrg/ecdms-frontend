@@ -20,7 +20,7 @@ export const mobileSatelliteNetworksId = {
   }
 };
 
-const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
+const subMenuItems = (id: string, typeId: string, module: string = "projects"): DetailSubMenuItem[] => [
   {
     id: mobileSatelliteNetworksId.mobileNetworks.mobileNetworks,
     title: 'project.navigation.submenu.mobile-satellite.mobile-networks.title',
@@ -28,35 +28,35 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: mobileSatelliteNetworksId.mobileNetworks.mobileNetwork,
         title: 'project.navigation.submenu.mobile-satellite.mobile-networks.mobile-network',
-        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/mobile-network`,
+        path: `/${module}/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/mobile-network`,
         model: 'mobilenetwork',
         apiRoute: 'mobile-networks'
       },
       {
         id: mobileSatelliteNetworksId.mobileNetworks.ageOfMobileNetworkComponents,
         title: 'project.navigation.submenu.mobile-satellite.mobile-networks.age-of-mobile-network-components',
-        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/age-of-mobile-network-components`,
+        path: `/${module}/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/age-of-mobile-network-components`,
         model: 'mobilenetworkcomponentage',
         apiRoute: 'mobile-network-component-ages'
       },
       {
         id: mobileSatelliteNetworksId.mobileNetworks.manufacturerOfMobileNetworkComponents,
         title: 'project.navigation.submenu.mobile-satellite.mobile-networks.manufacturer-of-mobile-network-components',
-        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/manufacturer-of-mobile-network-components`,
+        path: `/${module}/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/manufacturer-of-mobile-network-components`,
         model: 'manufacturerofmobilenetworkcomponents',
         apiRoute: 'manufacturer-of-mobile-network-components'
       },
       {
         id: mobileSatelliteNetworksId.mobileNetworks.networkCapacity,
         title: 'project.navigation.submenu.mobile-satellite.mobile-networks.network-capacity',
-        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/network-capacity`,
+        path: `/${module}/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/network-capacity`,
         model: 'networkcapacity',
         apiRoute: 'network-capacities'
       },
       {
         id: mobileSatelliteNetworksId.mobileNetworks.networkCoverage,
         title: 'project.navigation.submenu.mobile-satellite.mobile-networks.network-coverage',
-        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/network-coverage`,
+        path: `/${module}/${typeId}/details/${id}/mobile-satellite-networks/mobile-networks/network-coverage`,
         model: 'networkcoverage',
         apiRoute: 'network-coverages'
       }
@@ -69,35 +69,35 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: mobileSatelliteNetworksId.satelliteNetworks.satelliteNetwork,
         title: 'project.navigation.submenu.mobile-satellite.satellite-networks.satellite-network',
-        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/satellite-networks/satellite-network`,
+        path: `/${module}/${typeId}/details/${id}/mobile-satellite-networks/satellite-networks/satellite-network`,
         model: 'satellitenetwork',
         apiRoute: 'satellite-networks'
       },
       {
         id: mobileSatelliteNetworksId.satelliteNetworks.ageOfSatelliteNetworkComponents,
         title: 'project.navigation.submenu.mobile-satellite.satellite-networks.age-of-satellite-network-components',
-        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/satellite-networks/age-of-satellite-network-components`,
+        path: `/${module}/${typeId}/details/${id}/mobile-satellite-networks/satellite-networks/age-of-satellite-network-components`,
         model: 'ageofsatellitenetworkcomponents',
         apiRoute: 'age-of-satellite-network-components'
       },
       {
         id: mobileSatelliteNetworksId.satelliteNetworks.manufacturerOfSatelliteNetworkComponents,
         title: 'project.navigation.submenu.mobile-satellite.satellite-networks.manufacturer-of-satellite-network-components',
-        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/satellite-networks/manufacturer-of-satellite-network-components`,
+        path: `/${module}/${typeId}/details/${id}/mobile-satellite-networks/satellite-networks/manufacturer-of-satellite-network-components`,
         model: 'satellitenetworkcomponentmanufacturer',
         apiRoute: 'satellite-network-component-manufacturers'
       },
       {
         id: mobileSatelliteNetworksId.satelliteNetworks.networkCapacity,
         title: 'project.navigation.submenu.mobile-satellite.satellite-networks.network-capacity',
-        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/satellite-networks/network-capacity`,
+        path: `/${module}/${typeId}/details/${id}/mobile-satellite-networks/satellite-networks/network-capacity`,
         model: 'satellitenetworkcapacity',
         apiRoute: 'satellite-network-capacities'
       },
       {
         id: mobileSatelliteNetworksId.satelliteNetworks.networkCoverage,
         title: 'project.navigation.submenu.mobile-satellite.satellite-networks.network-coverage',
-        path: `/projects/${typeId}/details/${id}/mobile-satellite-networks/satellite-networks/network-coverage`,
+        path: `/${module}/${typeId}/details/${id}/mobile-satellite-networks/satellite-networks/network-coverage`,
         model: 'satellitenetworkcoverage',
         apiRoute: 'satellite-network-coverages'
       }

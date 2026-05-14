@@ -18,7 +18,7 @@ const SatelliteNetworkCoveragePage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.mobileSatelliteNetworks}
       activeSubMenuId={mobileSatelliteNetworksId.satelliteNetworks.networkCoverage}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       {/* <SatelliteNetworkCoverageList
                 otherSubMenu={menuItem}

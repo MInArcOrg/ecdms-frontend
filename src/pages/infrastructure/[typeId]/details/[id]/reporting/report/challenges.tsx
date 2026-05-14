@@ -13,7 +13,7 @@ function ProjectReport() {
       <ProjectLayout
         activeMenuId={projectMenuIds.reporting}
         activeSubMenuId={projectReportingIds.report.challenges}
-        subMenuItems={subMenuItems(id as string, typeId as string)}
+        subMenuItems={subMenuItems}
       >
         <>Challenges goes here</>
       </ProjectLayout>

@@ -23,7 +23,7 @@ const StationPlatformStructuralElementsPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayFacilitiesAndStations}
       activeSubMenuId={railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_structural_elements}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <RailwayStationPlatformStructuralElementList projectId={id as string} otherSubMenu={menuItem} typeId={typeId as string} />
     </ProjectLayout>

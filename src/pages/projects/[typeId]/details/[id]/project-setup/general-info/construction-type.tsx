@@ -12,7 +12,7 @@ function ProjectConstructionTypeIndex() {
     <ProjectLayout
       activeMenuId={projectMenuIds.projectSetup}
       activeSubMenuId={projectSetupIds.generalInfo.constructionType}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       {' '}
       <ProjectConstructionTypeList model="project-construction-type" projectId={String(id)} typeId={String(typeId)} />

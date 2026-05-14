@@ -15,7 +15,7 @@ const IntersectionAndDriveWay = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.telecomInfrastructure}
       activeSubMenuId={telecomInfrastructureId.telecom.telecomNetwork}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       {/* <
                 otherSubMenu={menuItem}

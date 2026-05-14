@@ -31,7 +31,7 @@ export const railwayOperationalSystemsIds = {
   }
 };
 
-export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
+export const subMenuItems = (id: string, typeId: string, module: string = "projects"): DetailSubMenuItem[] => [
   {
     id: railwayOperationalSystemsIds.communicationAndSignaling.id,
     title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.title',
@@ -39,7 +39,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.communicationAndSignaling.railwaySignalingSystem,
         title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-signaling-system',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-signaling-system`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-signaling-system`,
         apiRoute: 'railway-signaling-systems',
         model: 'railwaysignaling',
         fileType: railwayOperationalSystemsIds.communicationAndSignaling.id
@@ -47,7 +47,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.communicationAndSignaling.railwayCommunicationSystem,
         title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-communication-system',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-communication-system`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-communication-system`,
         apiRoute: 'railway-communication-systems',
         model: 'railwaycommunicationsystem',
         fileType: railwayOperationalSystemsIds.communicationAndSignaling.id
@@ -55,7 +55,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.communicationAndSignaling.railwaySystemConditionAssessment,
         title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-system-condition-assessment',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-system-condition-assessment`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-system-condition-assessment`,
         apiRoute: 'railway-system-condition-assessments',
         model: 'railwaysystemconditionassessment',
         fileType: railwayOperationalSystemsIds.communicationAndSignaling.id
@@ -64,7 +64,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
         id: railwayOperationalSystemsIds.communicationAndSignaling.railwayCommSystemMaintenanceAndTesting,
         title:
           'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-comm-system-maintenance-and-testing',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-comm-system-maintenance-and-testing`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-comm-system-maintenance-and-testing`,
         apiRoute: 'railway-communication-system-maintenance-and-testings',
         model: 'railwaycommunicationsystemmaintenanceandtesting',
         fileType: railwayOperationalSystemsIds.communicationAndSignaling.id
@@ -73,7 +73,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
         id: railwayOperationalSystemsIds.communicationAndSignaling.railwayCommSystemSafetyAndCompliance,
         title:
           'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-comm-system-safety-and-compliance',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-comm-system-safety-and-compliance`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-comm-system-safety-and-compliance`,
         model: 'railwaycommunicationsystemsafetyandcompliance',
         apiRoute: 'railway-communication-system-safety-and-compliances',
         fileType: railwayOperationalSystemsIds.communicationAndSignaling.id
@@ -81,7 +81,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.communicationAndSignaling.railwayEnvironmentalAndOtherFactors,
         title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-environmental-and-other-factors',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-environmental-and-other-factors`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-environmental-and-other-factors`,
         apiRoute: 'railway-environmental-and-other-factors',
         model: 'railwayenvironmentalandotherfactors'
       }
@@ -94,7 +94,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleIdentification,
         title: 'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-identification',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-identification`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-identification`,
         apiRoute: 'railway-vehicle-identifications',
         model: 'railwayvehicleidentification',
         fileType: railwayOperationalSystemsIds.rollingStockVehicles.id
@@ -102,7 +102,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleSpecifications,
         title: 'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-specifications',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-specifications`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-specifications`,
         apiRoute: 'railway-vehicle-specifications',
         model: 'railwayvehiclespecifications',
         fileType: railwayOperationalSystemsIds.rollingStockVehicles.id
@@ -110,7 +110,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleMaintenanceAndInspection,
         title: 'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-maintenance-and-inspection',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-maintenance-and-inspection`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-maintenance-and-inspection`,
         apiRoute: 'railway-vehicle-maintenance-and-inspections',
         model: 'railwayvehiclemaintenanceandinspection',
         fileType: railwayOperationalSystemsIds.rollingStockVehicles.id
@@ -118,7 +118,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleOperationalPerformance,
         title: 'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-operational-performance',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-operational-performance`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-operational-performance`,
         apiRoute: 'railway-vehicle-operational-performances',
         model: 'railwayvehicleoperationalperformance',
         fileType: railwayOperationalSystemsIds.rollingStockVehicles.id
@@ -126,7 +126,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleSafetyAndCompliance,
         title: 'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-safety-and-compliance',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-safety-and-compliance`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-safety-and-compliance`,
         apiRoute: 'railway-vehicle-safety-and-compliances',
         model: 'railwayvehiclesafetyandcompliance',
         fileType: railwayOperationalSystemsIds.rollingStockVehicles.id
@@ -135,7 +135,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
         id: railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleInteriorAndPassengerAmenities,
         title:
           'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-interior-and-passenger-amenities',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-interior-and-passenger-amenities`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-interior-and-passenger-amenities`,
         apiRoute: 'railway-vehicle-interior-and-passenger-amenities',
         model: 'railwayvehicleinteriorandpassengeramenities',
         fileType: railwayOperationalSystemsIds.rollingStockVehicles.id
@@ -144,7 +144,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
         id: railwayOperationalSystemsIds.rollingStockVehicles.railwayVehicleLoadAndCargoSpecifications,
         title:
           'project.navigation.submenu.railway-operational-systems.rolling-stock-vehicles.railway-vehicle-load-and-cargo-specifications',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-load-and-cargo-specifications`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/rolling-stock-vehicles/railway-vehicle-load-and-cargo-specifications`,
         apiRoute: 'railway-vehicle-load-and-cargo-specifications',
         model: 'railwayvehicleloadandcargospecifications',
         fileType: railwayOperationalSystemsIds.rollingStockVehicles.id
@@ -158,7 +158,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyConfiguration,
         title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-supply-configuration',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-configuration`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-configuration`,
         apiRoute: 'railway-power-supply-configurations',
         model: 'railwaypowersupplyconfiguration',
         fileType: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyConfiguration
@@ -166,7 +166,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.powerSystems.railwayPowerSubstationsAndEquipment,
         title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-substations-and-equipment',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-substations-and-equipment`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-substations-and-equipment`,
         apiRoute: 'railway-power-substations-and-equipments',
         model: 'railwaypowersubstationandequipment',
         fileType: railwayOperationalSystemsIds.powerSystems.railwayPowerSubstationsAndEquipment
@@ -174,7 +174,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.powerSystems.railwayPowerDistribution,
         title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-distribution',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-distribution`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-distribution`,
         apiRoute: 'railway-power-distributions',
         model: 'railwaypowerdistribution',
         fileType: railwayOperationalSystemsIds.powerSystems.railwayPowerDistribution
@@ -182,7 +182,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyMaintenanceAndTesting,
         title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-supply-maintenance-and-testing',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-maintenance-and-testing`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-maintenance-and-testing`,
         apiRoute: 'railway-power-supply-maintenance-and-testings',
         model: 'railwaypowersupplymaintenanceandtesting',
         fileType: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyMaintenanceAndTesting
@@ -190,7 +190,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplySafetyAndCompliance,
         title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-supply-safety-and-compliance',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-safety-and-compliance`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-safety-and-compliance`,
         apiRoute: 'railway-power-supply-safety-and-compliances',
         model: 'railwaypowersupplysafetyandcompliance',
         fileType: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplySafetyAndCompliance
@@ -198,7 +198,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
       {
         id: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyEnvironmentalAndOtherFactors,
         title: 'project.navigation.submenu.railway-operational-systems.power-systems.railway-power-supply-environmental-and-other-factors',
-        path: `/projects/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-environmental-and-other-factors`,
+        path: `/${module}/${typeId}/details/${id}/railway-operational-systems/power-systems/railway-power-supply-environmental-and-other-factors`,
         apiRoute: 'railway-power-supply-environmental-and-other-factors',
         model: 'railwaypowersupplyenvironmentalandotherfactors',
         fileType: railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyEnvironmentalAndOtherFactors

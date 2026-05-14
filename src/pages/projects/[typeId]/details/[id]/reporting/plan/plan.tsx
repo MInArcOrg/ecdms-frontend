@@ -14,7 +14,7 @@ function ProjectPlanning() {
       <ProjectLayout
         activeMenuId={projectMenuIds.reporting}
         activeSubMenuId={projectReportingIds.plan.plan}
-        subMenuItems={subMenuItems(id as string, typeId as string)}
+        subMenuItems={subMenuItems}
       >
         <ProjectPlanList projectId={String(id)} />
       </ProjectLayout>

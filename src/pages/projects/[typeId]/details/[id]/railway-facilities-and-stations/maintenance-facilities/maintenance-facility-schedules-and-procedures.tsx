@@ -23,7 +23,7 @@ const MaintenanceFacilitySchedulesAndProceduresPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayFacilitiesAndStations}
       activeSubMenuId={railwayFacilitiesAndStationsIds.maintenance_facilities.maintenance_facility_schedules_and_procedures}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <RailwayMaintenanceFacilityScheduleAndProcedureList
         projectId={id as string}

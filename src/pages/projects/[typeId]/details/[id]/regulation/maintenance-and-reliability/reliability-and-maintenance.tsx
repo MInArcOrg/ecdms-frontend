@@ -19,7 +19,7 @@ const ReliabilityAndMaintenancePage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.regulation}
       activeSubMenuId={regulationIds.maintenanceAndReliability.reliabilityAndMaintenance}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <ReliabilityAndMaintenanceList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

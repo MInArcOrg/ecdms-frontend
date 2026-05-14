@@ -19,7 +19,7 @@ const TelecomInfrastructureManufacturer = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.telecomInfrastructure}
       activeSubMenuId={telecomInfrastructureId.telecom.telecomInfrastructureManufacturer}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <TelecomInfrastructureManufacturerList
         otherSubMenu={menuItem}

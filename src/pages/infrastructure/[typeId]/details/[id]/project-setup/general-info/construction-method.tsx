@@ -11,7 +11,7 @@ function ProjectConstructionTypeIndex() {
     <ProjectLayout
       activeMenuId={projectMenuIds.projectSetup}
       activeSubMenuId={projectSetupIds.generalInfo.constructionMethod}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <>construction method here</>
     </ProjectLayout>

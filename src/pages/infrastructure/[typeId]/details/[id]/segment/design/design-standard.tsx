@@ -15,7 +15,7 @@ const DesignStandard = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.segment}
       activeSubMenuId={projectSegmentIds.design.designStandard}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <>Design Standard list</>
     </ProjectLayout>

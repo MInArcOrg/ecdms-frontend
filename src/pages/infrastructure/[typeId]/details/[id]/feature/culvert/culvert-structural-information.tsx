@@ -16,7 +16,7 @@ const CulvertStructuralInformation = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.feature}
       activeSubMenuId={projectFeatureIds.culvert.culvertStructuralData}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       {/* <div>Culvert Structural Information Page</div> */}
       <CulvertStructuralInformationList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />

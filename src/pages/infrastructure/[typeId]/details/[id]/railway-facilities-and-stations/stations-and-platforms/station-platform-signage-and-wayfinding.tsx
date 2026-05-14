@@ -26,7 +26,7 @@ const StationPlatformSignageAndWayfindingPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayFacilitiesAndStations}
       activeSubMenuId={railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_signage_and_wayfinding}
-      subMenuItems={subMenuItems(id as string, typeId as string)}
+      subMenuItems={subMenuItems}
     >
       <RailwayStationPlatformSignageAndWayFindingList
         projectId={id as string}
