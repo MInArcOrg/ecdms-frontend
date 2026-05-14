@@ -21,7 +21,7 @@ export const projectSetupIds = {
   }
 };
 
-const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
+const subMenuItems = (id: string, typeId: string, module: string = "infrastructure"): DetailSubMenuItem[] => [
   {
     id: projectSetupIds.generalInfo.generalInfo,
     title: 'project.navigation.submenu.project-setup.general-info.title',
@@ -29,32 +29,32 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: projectSetupIds.generalInfo.projectInfo,
         title: 'project.navigation.submenu.project-setup.general-info.project-info',
-        path: `/projects/${typeId}/details/${id}/project-setup/general-info/project-info`
+        path: `/${module}/${typeId}/details/${id}/project-setup/general-info/project-info`
       },
       {
         id: projectSetupIds.generalInfo.address,
         title: 'project.navigation.submenu.project-setup.general-info.address',
-        path: `/projects/${typeId}/details/${id}/project-setup/general-info/address`
+        path: `/${module}/${typeId}/details/${id}/project-setup/general-info/address`
       },
       {
         id: projectSetupIds.generalInfo.projectManager,
         title: 'project.navigation.submenu.project-setup.general-info.project-manager',
-        path: `/projects/${typeId}/details/${id}/project-setup/general-info/project-manager`
+        path: `/${module}/${typeId}/details/${id}/project-setup/general-info/project-manager`
       },
       {
         id: projectSetupIds.generalInfo.contactPerson,
         title: 'project.navigation.submenu.project-setup.general-info.contact-person',
-        path: `/projects/${typeId}/details/${id}/project-setup/general-info/contact-person`
+        path: `/${module}/${typeId}/details/${id}/project-setup/general-info/contact-person`
       },
       {
         id: projectSetupIds.generalInfo.constructionType,
         title: 'project.navigation.submenu.project-setup.general-info.construction-type',
-        path: `/projects/${typeId}/details/${id}/project-setup/general-info/construction-type`
+        path: `/${module}/${typeId}/details/${id}/project-setup/general-info/construction-type`
       },
       {
         id: projectSetupIds.generalInfo.constructionMethod,
         title: 'project.navigation.submenu.project-setup.general-info.construction-method',
-        path: `/projects/${typeId}/details/${id}/project-setup/general-info/construction-method`
+        path: `/${module}/${typeId}/details/${id}/project-setup/general-info/construction-method`
       }
     ]
   },
@@ -65,7 +65,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: projectSetupIds.stakeholders.stakeholders,
         title: 'project.navigation.submenu.project-setup.stakeholders.stakeholders',
-        path: `/projects/${typeId}/details/${id}/project-setup/stakeholders/stakeholders`
+        path: `/${module}/${typeId}/details/${id}/project-setup/stakeholders/stakeholders`
       }
     ]
   },
@@ -76,12 +76,12 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: projectSetupIds.time.contractPeriod,
         title: 'project.navigation.submenu.project-setup.time.contract-period',
-        path: `/projects/${typeId}/details/${id}/project-setup/time/contract-period`
+        path: `/${module}/${typeId}/details/${id}/project-setup/time/contract-period`
       },
       {
         id: projectSetupIds.time.extensionTime,
         title: 'project.navigation.submenu.project-setup.time.extension-time',
-        path: `/projects/${typeId}/details/${id}/project-setup/time/extension-time`
+        path: `/${module}/${typeId}/details/${id}/project-setup/time/extension-time`
       }
     ]
   }

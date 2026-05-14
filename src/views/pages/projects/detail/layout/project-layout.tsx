@@ -18,7 +18,9 @@ interface ProjectLayoutProps {
 const ProjectLayout: React.FC<ProjectLayoutProps> = ({ activeMenuId, activeSubMenuId, subMenuItems, children }) => {
   const router = useRouter();
   const { id, typeId } = router.query;
-  const isProject = true;
+  const moduleName = router.pathname.includes('/infrastructure') ? 'infrastructure' : 'projects';
+  const prefix = `/${moduleName}`;
+  const isProject = moduleName === 'projects';
 
   const { data: masterType } = useQuery({
     queryKey: ['masterType', 'project', typeId],
@@ -30,8 +32,8 @@ const ProjectLayout: React.FC<ProjectLayoutProps> = ({ activeMenuId, activeSubMe
 
   // Memoize values derived from props and query
   const filteredMenuItems = useMemo(
-    () => menuTabs(id as string, typeId as string).filter((item) => !item.type || item.type === masterType?.payload?.flag),
-    [id, typeId, masterType?.payload?.flag]
+    () => menuTabs(id as string, typeId as string, prefix).filter((item) => !item.type || item.type === masterType?.payload?.flag),
+    [id, typeId, masterType?.payload?.flag, prefix]
   );
 
   const filteredSubMenuItems = useMemo(
@@ -46,7 +48,7 @@ const ProjectLayout: React.FC<ProjectLayoutProps> = ({ activeMenuId, activeSubMe
         menuItems={filteredMenuItems}
         activeMenuId={activeMenuId}
         setActiveMenu={(path) => router.push(path)}
-        goBack={() => router.replace(`/projects/${typeId}`)}
+        goBack={() => router.replace(`/${moduleName}/${typeId}`)}
         typeId={String(typeId)}
         isProject={isProject}
       />

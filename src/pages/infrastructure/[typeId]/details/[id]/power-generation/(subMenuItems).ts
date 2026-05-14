@@ -32,7 +32,7 @@ export const powerGenerationIds = {
   }
 };
 
-const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
+const subMenuItems = (id: string, typeId: string, module: string = "infrastructure"): DetailSubMenuItem[] => [
   {
     id: powerGenerationIds.hydropower.hydropower,
     title: 'project.navigation.submenu.power-generation.hydropower.title',
@@ -40,14 +40,14 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: powerGenerationIds.hydropower.hydroelectricDam,
         title: 'project.navigation.submenu.power-generation.hydropower.hydroelectric-dam',
-        path: `/projects/${typeId}/details/${id}/power-generation/hydropower/hydroelectric-dam`,
+        path: `/${module}/${typeId}/details/${id}/power-generation/hydropower/hydroelectric-dam`,
         model: 'hydroelectricdam',
         apiRoute: 'hydroelectricdams'
       },
       {
         id: powerGenerationIds.hydropower.hydrologicalInformation,
         title: 'project.navigation.submenu.power-generation.hydropower.hydrological-information',
-        path: `/projects/${typeId}/details/${id}/power-generation/hydropower/hydrological-information`,
+        path: `/${module}/${typeId}/details/${id}/power-generation/hydropower/hydrological-information`,
         model: 'hydrologicalinformation',
         apiRoute: 'hydrological-informations'
       }
@@ -60,14 +60,14 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: powerGenerationIds.windEnergy.windResource,
         title: 'project.navigation.submenu.power-generation.wind-energy.wind-resource',
-        path: `/projects/${typeId}/details/${id}/power-generation/wind-energy/wind-resource`,
+        path: `/${module}/${typeId}/details/${id}/power-generation/wind-energy/wind-resource`,
         model: 'windresource',
         apiRoute: 'wind-resources'
       },
       {
         id: powerGenerationIds.windEnergy.windTurbine,
         title: 'project.navigation.submenu.power-generation.wind-energy.wind-turbine',
-        path: `/projects/${typeId}/details/${id}/power-generation/wind-energy/wind-turbine`,
+        path: `/${module}/${typeId}/details/${id}/power-generation/wind-energy/wind-turbine`,
         model: 'windturbine',
         apiRoute: 'wind-turbines'
       }
@@ -80,14 +80,14 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: powerGenerationIds.solarEnergy.solarResourceInformation,
         title: 'project.navigation.submenu.power-generation.solar-energy.solar-resource-information',
-        path: `/projects/${typeId}/details/${id}/power-generation/solar-energy/solar-resource-information`,
+        path: `/${module}/${typeId}/details/${id}/power-generation/solar-energy/solar-resource-information`,
         model: 'solarresourceinformation',
         apiRoute: 'solar-resource-informations'
       },
       {
         id: powerGenerationIds.solarEnergy.solarPanel,
         title: 'project.navigation.submenu.power-generation.solar-energy.solar-panel',
-        path: `/projects/${typeId}/details/${id}/power-generation/solar-energy/solar-panel`,
+        path: `/${module}/${typeId}/details/${id}/power-generation/solar-energy/solar-panel`,
         model: 'solarpanel',
         apiRoute: 'solar-panels'
       }
@@ -100,14 +100,14 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: powerGenerationIds.geothermalEnergy.geothermalPowerWells,
         title: 'project.navigation.submenu.power-generation.geothermal-energy.geothermal-power-wells',
-        path: `/projects/${typeId}/details/${id}/power-generation/geothermal-energy/geothermal-power-wells`,
+        path: `/${module}/${typeId}/details/${id}/power-generation/geothermal-energy/geothermal-power-wells`,
         model: 'geothermalpowerwell',
         apiRoute: 'geothermal-power-wells'
       },
       {
         id: powerGenerationIds.geothermalEnergy.geothermalPowerInfrastructure,
         title: 'project.navigation.submenu.power-generation.geothermal-energy.geothermal-power-infrastructure',
-        path: `/projects/${typeId}/details/${id}/power-generation/geothermal-energy/geothermal-power-infrastructure`,
+        path: `/${module}/${typeId}/details/${id}/power-generation/geothermal-energy/geothermal-power-infrastructure`,
         model: 'geothermalpowerinfrastructure',
         apiRoute: 'geothermal-power-infrastructures'
       }
@@ -120,7 +120,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: powerGenerationIds.thermalBiomass.thermalBiomassIncinerationData,
         title: 'project.navigation.submenu.power-generation.thermal-biomass.thermal-biomass-incineration-data',
-        path: `/projects/${typeId}/details/${id}/power-generation/thermal-biomass/thermal-biomass-incineration-data`,
+        path: `/${module}/${typeId}/details/${id}/power-generation/thermal-biomass/thermal-biomass-incineration-data`,
         model: 'thermalbiomassincinerationdata',
         apiRoute: 'thermal-biomass-incineration-data'
       }
@@ -133,7 +133,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: powerGenerationIds.capacity.powerGenerationCapacity,
         title: 'project.navigation.submenu.power-generation.capacity.power-generation-capacity',
-        path: `/projects/${typeId}/details/${id}/power-generation/capacity/power-generation-capacity`,
+        path: `/${module}/${typeId}/details/${id}/power-generation/capacity/power-generation-capacity`,
         model: 'powergenerationcapacity',
         apiRoute: 'power-generation-capacities'
       }
