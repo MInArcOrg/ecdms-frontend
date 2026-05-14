@@ -19,7 +19,7 @@ const ElectricGridControlCenterDataPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.regulation}
       activeSubMenuId={regulationIds.gridOperations.electricGridControlCenterData}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <ElectricGridControlCenterDataList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

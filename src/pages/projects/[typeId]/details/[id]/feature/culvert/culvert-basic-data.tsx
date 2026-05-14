@@ -16,7 +16,7 @@ const CulvertBasicData = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.feature}
       activeSubMenuId={projectFeatureIds.culvert.culvertBasicData}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <CulvertBasicDataList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>

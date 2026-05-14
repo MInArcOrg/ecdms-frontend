@@ -21,7 +21,7 @@ const BallastMaterialSpecificationPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayTrackInfrastructure}
       activeSubMenuId={railwayTrackInfrastructureIds.ballastSystems.ballastMaterialSpecification}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <RailwayBallastMaterialSpecificationList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>

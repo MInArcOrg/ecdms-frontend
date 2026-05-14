@@ -12,7 +12,7 @@ function ConstructionMethodIndex() {
     <ProjectLayout
       activeMenuId={projectMenuIds.projectSetup}
       activeSubMenuId={projectSetupIds.generalInfo.constructionMethod}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <ConstructionMethodList projectId={String(id)} />
     </ProjectLayout>

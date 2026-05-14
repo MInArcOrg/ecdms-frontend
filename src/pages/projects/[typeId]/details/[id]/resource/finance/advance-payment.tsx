@@ -14,7 +14,7 @@ function ProjectAdvancePayment() {
       <ProjectLayout
         activeMenuId={projectMenuIds.resource}
         activeSubMenuId={projectResourceIds.finance.advancePayment}
-        subMenuItems={subMenuItems}
+        subMenuItems={subMenuItems(id as string, typeId as string)}
       >
         <ProjectPaymentList projectId={String(id)} type={paymentConstants.ADVANCE_PAYMENT.value} />
       </ProjectLayout>

@@ -19,7 +19,7 @@ const EnvironmentalControlPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.broadcastingDataSystems}
       activeSubMenuId={broadcastingDataSystemsId.dataSystems.environmentalControl}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <EnvironmentalControlList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

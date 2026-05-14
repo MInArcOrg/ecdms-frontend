@@ -19,7 +19,7 @@ const AgeOfBroadcastingInfrastructurePage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.broadcastingDataSystems}
       activeSubMenuId={broadcastingDataSystemsId.broadcasting.ageOfBroadcastingInfrastructure}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <BroadcastingInfrastructureAgeList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

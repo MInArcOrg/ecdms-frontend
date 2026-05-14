@@ -22,7 +22,7 @@ const SubBallastDrainageWaterManagementPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayTrackInfrastructure}
       activeSubMenuId={railwayTrackInfrastructureIds.subBallastSystems.subBallastDrainageWaterManagement}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <RailwaySubBallastDrainageAndWaterManagementList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>

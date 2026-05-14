@@ -16,7 +16,7 @@ const IntersectionAndDriveWay = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.segment}
       activeSubMenuId={projectSegmentIds.segment.intersectionAndDriveway}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <IntersectionDrivewayList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

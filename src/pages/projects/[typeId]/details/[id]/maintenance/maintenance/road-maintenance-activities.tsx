@@ -16,7 +16,7 @@ const RoadMaintenanceActivities = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.maintenance}
       activeSubMenuId={projectMaintenanceIds.maintenance.roadMaintenance}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <RoadMaintenanceActivityList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

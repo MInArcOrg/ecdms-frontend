@@ -23,7 +23,7 @@ const RailwaySignalingSystemPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayOperationalSystems}
       activeSubMenuId={railwayOperationalSystemsIds.communicationAndSignaling.railwaySignalingSystem}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <RailwaySignalingSystemList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>

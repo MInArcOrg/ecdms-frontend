@@ -19,7 +19,7 @@ const ElectricDistributionTransformerPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.powerInfrastructure}
       activeSubMenuId={powerInfrastructureIds.distributionSystems.electricDistributionTransformer}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <ElectricDistributionTransformerList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

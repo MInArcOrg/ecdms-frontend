@@ -19,7 +19,7 @@ const ElectricGridControlCenterCyberSecurityDataPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.regulation}
       activeSubMenuId={regulationIds.gridOperations.electricGridControlCenterCyberSecurityData}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <ElectricGridControlCenterCyberSecurityDataList
                 otherSubMenu={menuItem}

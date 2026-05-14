@@ -38,7 +38,7 @@ function ProjectGeneralInformation() {
     <ProjectLayout
       activeMenuId={projectMenuIds.projectSetup}
       activeSubMenuId={projectSetupIds.generalInfo.projectInfo}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       {' '}
       {isLoading ? (

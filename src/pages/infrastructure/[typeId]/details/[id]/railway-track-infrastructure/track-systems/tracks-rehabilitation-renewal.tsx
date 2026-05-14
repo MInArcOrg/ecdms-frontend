@@ -21,7 +21,7 @@ const TracksRehabilitationRenewalPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayTrackInfrastructure}
       activeSubMenuId={railwayTrackInfrastructureIds.trackSystems.tracksRehabilitationRenewal}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <RailwayTrackRehabilitationOrRenewalList projectId={String(id)} typeId={String(typeId)} otherSubMenu={menuItem} />
     </ProjectLayout>

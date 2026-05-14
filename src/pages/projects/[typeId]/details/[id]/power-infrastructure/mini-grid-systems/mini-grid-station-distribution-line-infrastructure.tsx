@@ -22,7 +22,7 @@ const MiniGridStationDistributionLineInfrastructurePage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.powerInfrastructure}
       activeSubMenuId={powerInfrastructureIds.miniGridSystems.miniGridStationDistributionLineInfrastructure}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <MiniGridStationDistributionLineInfrastructureList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

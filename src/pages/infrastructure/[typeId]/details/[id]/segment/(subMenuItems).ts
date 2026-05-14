@@ -20,7 +20,7 @@ export const projectSegmentIds = {
   }
 };
 
-const subMenuItems = (id: string, typeId: string, module: string = "projects"): DetailSubMenuItem[] => [
+const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
   {
     id: projectSegmentIds.design.design,
     title: 'project.navigation.submenu.segment.design.title',
@@ -28,14 +28,14 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       {
         id: projectSegmentIds.design.designStandard,
         title: 'project.navigation.submenu.segment.design.design-standard',
-        path: `/${module}/${typeId}/details/${id}/segment/design/design-standard`,
+        path: `/projects/${typeId}/details/${id}/segment/design/design-standard`,
         model: 'designstandard',
         apiRoute: 'design-standards'
       },
       {
         id: projectSegmentIds.design.safetyAndHealth,
         title: 'project.navigation.submenu.segment.design.safety-and-health',
-        path: `/${module}/${typeId}/details/${id}/segment/design/safety-and-health`,
+        path: `/projects/${typeId}/details/${id}/segment/design/safety-and-health`,
         model: 'safetyandhealth',
         apiRoute: 'safety-and-healths'
       }
@@ -48,56 +48,56 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       {
         id: projectSegmentIds.segment.roadSegment,
         title: 'project.navigation.submenu.segment.segment.road-segment',
-        path: `/${module}/${typeId}/details/${id}/segment/segment/road-segment`,
+        path: `/projects/${typeId}/details/${id}/segment/segment/road-segment`,
         model: 'roadsegment',
         apiRoute: 'road-segments'
       },
       {
         id: projectSegmentIds.segment.segmentCoordinates,
         title: 'project.navigation.submenu.segment.segment.segment-coordinates',
-        path: `/${module}/${typeId}/details/${id}/segment/segment/segment-coordinates`,
+        path: `/projects/${typeId}/details/${id}/segment/segment/segment-coordinates`,
         model: 'segmentcoordinates',
         apiRoute: 'segment-coordinates'
       },
       {
         id: projectSegmentIds.segment.segmentGeometry,
         title: 'project.navigation.submenu.segment.segment.segment-geometry',
-        path: `/${module}/${typeId}/details/${id}/segment/segment/segment-geometry`,
+        path: `/projects/${typeId}/details/${id}/segment/segment/segment-geometry`,
         model: 'segmentgeometry',
         apiRoute: 'segment-geometries'
       },
       {
         id: projectSegmentIds.segment.intersectionAndDriveway,
         title: 'project.navigation.submenu.segment.segment.intersection-and-driveway',
-        path: `/${module}/${typeId}/details/${id}/segment/segment/intersection-and-driveway`,
+        path: `/projects/${typeId}/details/${id}/segment/segment/intersection-and-driveway`,
         model: 'intersectiondriveway',
         apiRoute: 'intersection-and-driveways'
       },
       {
         id: projectSegmentIds.segment.trafficParameters,
         title: 'project.navigation.submenu.segment.segment.traffic-parameters',
-        path: `/${module}/${typeId}/details/${id}/segment/segment/traffic-parameters`,
+        path: `/projects/${typeId}/details/${id}/segment/segment/traffic-parameters`,
         model: 'trafficparameter',
         apiRoute: 'traffic-parameters'
       },
       {
         id: projectSegmentIds.segment.trafficVolume,
         title: 'project.navigation.submenu.segment.segment.traffic-volume',
-        path: `/${module}/${typeId}/details/${id}/segment/segment/traffic-volume`,
+        path: `/projects/${typeId}/details/${id}/segment/segment/traffic-volume`,
         model: 'trafficvolume',
         apiRoute: 'traffic-volumes'
       },
       {
         id: projectSegmentIds.segment.pavement,
         title: 'project.navigation.submenu.segment.segment.pavement',
-        path: `/${module}/${typeId}/details/${id}/segment/segment/pavement`,
+        path: `/projects/${typeId}/details/${id}/segment/segment/pavement`,
         model: 'pavement',
         apiRoute: 'pavements'
       },
       {
         id: projectSegmentIds.segment.roadSurfaceCondition,
         title: 'project.navigation.submenu.segment.segment.road-surface-condition',
-        path: `/${module}/${typeId}/details/${id}/segment/segment/road-surface-condition`,
+        path: `/projects/${typeId}/details/${id}/segment/segment/road-surface-condition`,
         model: 'roadsurfacecondition',
         apiRoute: 'road-surface-conditions'
       }

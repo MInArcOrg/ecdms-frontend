@@ -43,7 +43,7 @@ export const railwayTrackInfrastructureIds = {
   }
 };
 
-const subMenuItems = (id: string, typeId: string, module: string = "projects"): DetailSubMenuItem[] => [
+const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
   {
     id: railwayTrackInfrastructureIds.trackSystems.trackSystems,
     title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.title',
@@ -51,42 +51,42 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       {
         id: railwayTrackInfrastructureIds.trackSystems.tracksData,
         title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-data',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-data`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-data`,
         model: 'railwaytrackdata',
         apiRoute: 'railway-track-data'
       },
       {
         id: railwayTrackInfrastructureIds.trackSystems.tracksGeometryData,
         title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-geometry-data',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-geometry-data`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-geometry-data`,
         model: 'railwaytrackgeometrydata',
         apiRoute: 'railway-track-geometry-data'
       },
       {
         id: railwayTrackInfrastructureIds.trackSystems.tracksConditionAssessment,
         title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-condition-assessment',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-condition-assessment`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-condition-assessment`,
         apiRoute: 'railway-track-condition-assessments',
         model: 'railwaytrackconditionassessment'
       },
       {
         id: railwayTrackInfrastructureIds.trackSystems.tracksMaintenanceInspections,
         title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-maintenance-inspections',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-maintenance-inspections`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-maintenance-inspections`,
         apiRoute: 'railway-track-maintenance-and-inspections',
         model: 'railwaytrackmaintenanceandinspection'
       },
       {
         id: railwayTrackInfrastructureIds.trackSystems.tracksRehabilitationRenewal,
         title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.tracks-rehabilitation-renewal',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-rehabilitation-renewal`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/tracks-rehabilitation-renewal`,
         apiRoute: 'railway-track-rehabilitation-or-renewals',
         model: 'railwaytrackrehabilitationorrenewal'
       },
       {
         id: railwayTrackInfrastructureIds.trackSystems.trackSafety,
         title: 'project.navigation.submenu.railway-track-infrastructure.track-systems.track-safety',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/track-systems/track-safety`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/track-systems/track-safety`,
         apiRoute: 'railway-track-safeties',
         model: 'railwaytracksafety'
       }
@@ -99,49 +99,49 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       {
         id: railwayTrackInfrastructureIds.ballastSystems.ballast,
         title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast`,
         apiRoute: 'railway-ballasts',
         model: 'railwayballast'
       },
       {
         id: railwayTrackInfrastructureIds.ballastSystems.ballastMaterialData,
         title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast-material-data',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-material-data`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-material-data`,
         apiRoute: 'railway-ballast-material-data',
         model: 'railwayballastmaterialdata'
       },
       {
         id: railwayTrackInfrastructureIds.ballastSystems.ballastMaterialSpecification,
         title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast-material-specification',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-material-specification`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-material-specification`,
         apiRoute: 'railway-ballast-material-specifications',
         model: 'railwayballastmaterialspecification'
       },
       {
         id: railwayTrackInfrastructureIds.ballastSystems.ballastConditionAssessment,
         title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast-condition-assessment',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-condition-assessment`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-condition-assessment`,
         apiRoute: 'railway-ballast-condition-assessments',
         model: 'railwayballastconditionassessment'
       },
       {
         id: railwayTrackInfrastructureIds.ballastSystems.ballastMaintenanceRenewal,
         title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast-maintenance-renewal',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-maintenance-renewal`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-maintenance-renewal`,
         apiRoute: 'railway-ballast-maintenance-and-renewals',
         model: 'railwayballastmaintenanceandrenewal'
       },
       {
         id: railwayTrackInfrastructureIds.ballastSystems.ballastDrainageWaterManagement,
         title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast-drainage-water-management',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-drainage-water-management`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-drainage-water-management`,
         apiRoute: 'railway-ballast-drainage-and-water-managements',
         model: 'railwayballastdrainageandwatermanagement'
       },
       {
         id: railwayTrackInfrastructureIds.ballastSystems.ballastEnvironmentalFactors,
         title: 'project.navigation.submenu.railway-track-infrastructure.ballast-systems.ballast-environmental-factors',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-environmental-factors`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/ballast-systems/ballast-environmental-factors`,
         apiRoute: 'railway-ballast-environmental-and-other-factors',
         model: 'railwayballastenvironmentalandotherfactor'
       }
@@ -154,42 +154,42 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       {
         id: railwayTrackInfrastructureIds.subBallastSystems.subBallastMaterials,
         title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.sub-ballast-materials',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-materials`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-materials`,
         apiRoute: 'railway-sub-ballast-materials',
         model: 'railwaysubballastmaterial'
       },
       {
         id: railwayTrackInfrastructureIds.subBallastSystems.subBallastMaterialTest,
         title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.sub-ballast-material-test',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-material-test`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-material-test`,
         apiRoute: 'railway-sub-ballast-material-tests',
         model: 'railwaysubballastmaterialtest'
       },
       {
         id: railwayTrackInfrastructureIds.subBallastSystems.subBallastConditionAssessment,
         title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.sub-ballast-condition-assessment',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-condition-assessment`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-condition-assessment`,
         apiRoute: 'railway-sub-ballast-condition-assessments',
         model: 'railwaysubballastconditionassessment'
       },
       {
         id: railwayTrackInfrastructureIds.subBallastSystems.subBallastMaintenanceRenewal,
         title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.sub-ballast-maintenance-renewal',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-maintenance-renewal`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-maintenance-renewal`,
         apiRoute: 'railway-sub-ballast-maintenance-and-renewals',
         model: 'railwaysubballastmaintenanceandrenewal'
       },
       {
         id: railwayTrackInfrastructureIds.subBallastSystems.subBallastDrainageWaterManagement,
         title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.sub-ballast-drainage-water-management',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-drainage-water-management`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-drainage-water-management`,
         apiRoute: 'railway-sub-ballast-drainage-and-water-managements',
         model: 'railwaysubballastdrainageandwatermanagement'
       },
       {
         id: railwayTrackInfrastructureIds.subBallastSystems.subBallastEnvironmentalFactors,
         title: 'project.navigation.submenu.railway-track-infrastructure.sub-ballast-systems.sub-ballast-environmental-factors',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-environmental-factors`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sub-ballast-systems/sub-ballast-environmental-factors`,
         apiRoute: 'railway-sub-ballast-environmental-and-other-factors',
         model: 'railwaysubballastenvironmentalandotherfactor'
       }
@@ -202,35 +202,35 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       {
         id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperCharacteristics,
         title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.sleeper-characteristics',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-characteristics`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-characteristics`,
         apiRoute: 'railway-sleeper-characteristics',
         model: 'railwaysleepercharacteristic'
       },
       {
         id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperConditionAssessment,
         title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.sleeper-condition-assessment',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-condition-assessment`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-condition-assessment`,
         apiRoute: 'railway-sleeper-condition-assessments',
         model: 'railwaysleeperconditionassessment'
       },
       {
         id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperMaintenanceReplacement,
         title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.sleeper-maintenance-replacement',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-maintenance-replacement`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-maintenance-replacement`,
         apiRoute: 'railway-sleeper-maintenance-and-replacements',
         model: 'railwaysleepermaintenanceandreplacement'
       },
       {
         id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperFasteningSystems,
         title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.sleeper-fastening-systems',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-fastening-systems`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-fastening-systems`,
         apiRoute: 'railway-sleeper-fastening-systems',
         model: 'railwaysleeperfasteningsystem'
       },
       {
         id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperEnvironmentalFactors,
         title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.sleeper-environmental-factors',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-environmental-factors`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/sleeper-environmental-factors`,
         apiRoute: 'railway-sleeper-environmental-and-other-factors',
         model: 'railwaysleeperenvironmentalandotherfactor',
         fileType: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.sleeperEnvironmentalFactors
@@ -238,7 +238,7 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       {
         id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemCharacteristics,
         title: 'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.fastening-system-characteristics',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-characteristics`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-characteristics`,
         apiRoute: 'railway-fastening-system-characteristics',
         model: 'railwayfasteningsystemcharacteristic',
         fileType: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemCharacteristics
@@ -247,7 +247,7 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
         id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemConditionAssessment,
         title:
           'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.fastening-system-condition-assessment',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-condition-assessment`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-condition-assessment`,
         apiRoute: 'railway-fastening-system-condition-assessments',
         model: 'railwayfasteningsystemconditionassessment',
         fileType: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemConditionAssessment
@@ -256,7 +256,7 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
         id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemMaintenanceReplacement,
         title:
           'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.fastening-system-maintenance-replacement',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-maintenance-replacement`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-maintenance-replacement`,
         apiRoute: 'railway-fastening-system-maintenance-and-replacements',
         model: 'railwayfasteningsystemmaintenanceandreplacement',
         fileType: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemMaintenanceReplacement
@@ -265,7 +265,7 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
         id: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemEnvironmentalFactors,
         title:
           'project.navigation.submenu.railway-track-infrastructure.sleeper-and-fastening-systems.fastening-system-environmental-factors',
-        path: `/${module}/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-environmental-factors`,
+        path: `/projects/${typeId}/details/${id}/railway-track-infrastructure/sleeper-and-fastening-systems/fastening-system-environmental-factors`,
         apiRoute: 'railway-fastening-system-environmental-factors',
         model: 'railwayfasteningsystemenvironmentalfactor',
         fileType: railwayTrackInfrastructureIds.sleeperAndFasteningSystems.fasteningSystemEnvironmentalFactors

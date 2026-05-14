@@ -14,7 +14,7 @@ function ProjectVariation() {
       <ProjectLayout
         activeMenuId={projectMenuIds.resource}
         activeSubMenuId={projectResourceIds.resources.machinery}
-        subMenuItems={subMenuItems}
+        subMenuItems={subMenuItems(id as string, typeId as string)}
       >
         <MachineryInformationList projectId={id as string} />
       </ProjectLayout>

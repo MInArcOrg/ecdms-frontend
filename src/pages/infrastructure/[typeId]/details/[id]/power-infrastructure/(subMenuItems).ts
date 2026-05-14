@@ -30,7 +30,7 @@ export const powerInfrastructureIds = {
   }
 };
 
-const subMenuItems = (id: string, typeId: string, module: string = "projects"): DetailSubMenuItem[] => [
+const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
   {
     id: powerInfrastructureIds.transmissionSystems.transmissionSystems,
     title: 'project.navigation.submenu.power-infrastructure.transmission-systems.title',
@@ -38,42 +38,42 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       {
         id: powerInfrastructureIds.transmissionSystems.transmission,
         title: 'project.navigation.submenu.power-infrastructure.transmission-systems.transmission',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/transmission-systems/transmission`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/transmission-systems/transmission`,
         model: 'transmission',
         apiRoute: 'transmissions'
       },
       {
         id: powerInfrastructureIds.transmissionSystems.transmissionLineInformation,
         title: 'project.navigation.submenu.power-infrastructure.transmission-systems.transmission-line-information',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/transmission-systems/transmission-line-information`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/transmission-systems/transmission-line-information`,
         model: 'transmissionlineinformation',
         apiRoute: 'transmission-line-informations'
       },
       {
         id: powerInfrastructureIds.transmissionSystems.transmissionLineConductorAndTowerData,
         title: 'project.navigation.submenu.power-infrastructure.transmission-systems.transmission-line-conductor-and-tower-data',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/transmission-systems/transmission-line-conductor-and-tower-data`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/transmission-systems/transmission-line-conductor-and-tower-data`,
         model: 'transmissionlineconductorandtowerdata',
         apiRoute: 'transmission-line-conductor-and-tower-datas'
       },
       {
         id: powerInfrastructureIds.transmissionSystems.transmissionLineEquipmentData,
         title: 'project.navigation.submenu.power-infrastructure.transmission-systems.transmission-line-equipment-data',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/transmission-systems/transmission-line-equipment-data`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/transmission-systems/transmission-line-equipment-data`,
         model: 'transmissionlineequipmentdata',
         apiRoute: 'transmission-line-equipment-datas'
       },
       {
         id: powerInfrastructureIds.transmissionSystems.substationTransformerAndSwitchgearData,
         title: 'project.navigation.submenu.power-infrastructure.transmission-systems.substation-transformer-and-switchgear-data',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/transmission-systems/substation-transformer-and-switchgear-data`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/transmission-systems/substation-transformer-and-switchgear-data`,
         model: 'substationtransformerandswitchgeardata',
         apiRoute: 'substation-transformer-and-switchgear-datas'
       },
       {
         id: powerInfrastructureIds.transmissionSystems.substationLayoutAndCommunicationData,
         title: 'project.navigation.submenu.power-infrastructure.transmission-systems.substation-layout-and-communication-data',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/transmission-systems/substation-layout-and-communication-data`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/transmission-systems/substation-layout-and-communication-data`,
         model: 'substationlayoutandcommunicationdata',
         apiRoute: 'substation-layout-and-communication-datas'
       }
@@ -86,35 +86,35 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       {
         id: powerInfrastructureIds.miniGridSystems.miniGridStation,
         title: 'project.navigation.submenu.power-infrastructure.mini-grid-systems.mini-grid-station',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/mini-grid-systems/mini-grid-station`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/mini-grid-systems/mini-grid-station`,
         model: 'minigridstation',
         apiRoute: 'mini-grid-stations'
       },
       {
         id: powerInfrastructureIds.miniGridSystems.miniGridStationDistributionLine,
         title: 'project.navigation.submenu.power-infrastructure.mini-grid-systems.mini-grid-station-distribution-line',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/mini-grid-systems/mini-grid-station-distribution-line`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/mini-grid-systems/mini-grid-station-distribution-line`,
         model: 'minigridstationdistributionline',
         apiRoute: 'mini-grid-station-distribution-lines'
       },
       {
         id: powerInfrastructureIds.miniGridSystems.miniGridStationDistributionLineInfrastructure,
         title: 'project.navigation.submenu.power-infrastructure.mini-grid-systems.mini-grid-station-distribution-line-infrastructure',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/mini-grid-systems/mini-grid-station-distribution-line-infrastructure`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/mini-grid-systems/mini-grid-station-distribution-line-infrastructure`,
         model: 'minigridstationdistributionlineinfrastructure',
         apiRoute: 'mini-grid-station-distribution-line-infrastructures'
       },
       {
         id: powerInfrastructureIds.miniGridSystems.miniGridStationConsumers,
         title: 'project.navigation.submenu.power-infrastructure.mini-grid-systems.mini-grid-station-consumers',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/mini-grid-systems/mini-grid-station-consumers`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/mini-grid-systems/mini-grid-station-consumers`,
         model: 'minigridstationconsumer',
         apiRoute: 'mini-grid-station-consumers'
       },
       {
         id: powerInfrastructureIds.miniGridSystems.miniGridStationBackupPowerSource,
         title: 'project.navigation.submenu.power-infrastructure.mini-grid-systems.mini-grid-station-backup-power-source',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/mini-grid-systems/mini-grid-station-backup-power-source`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/mini-grid-systems/mini-grid-station-backup-power-source`,
         model: 'minigridstationbackuppowersource',
         apiRoute: 'mini-grid-station-backup-power-sources'
       }
@@ -127,42 +127,42 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       {
         id: powerInfrastructureIds.distributionSystems.electricDistributionTransformer,
         title: 'project.navigation.submenu.power-infrastructure.distribution-systems.electric-distribution-transformer',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/distribution-systems/electric-distribution-transformer`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/distribution-systems/electric-distribution-transformer`,
         model: 'electricdistributiontransformer',
         apiRoute: 'electric-distribution-transformers'
       },
       {
         id: powerInfrastructureIds.distributionSystems.electricDistributionTransformerType,
         title: 'project.navigation.submenu.power-infrastructure.distribution-systems.electric-distribution-transformer-type',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/distribution-systems/electric-distribution-transformer-type`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/distribution-systems/electric-distribution-transformer-type`,
         model: 'electricdistributiontransformertype',
         apiRoute: 'electric-distribution-transformer-types'
       },
       {
         id: powerInfrastructureIds.distributionSystems.electricSmartMetersData,
         title: 'project.navigation.submenu.power-infrastructure.distribution-systems.electric-smart-meters-data',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/distribution-systems/electric-smart-meters-data`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/distribution-systems/electric-smart-meters-data`,
         model: 'electricsmartmetersdata',
         apiRoute: 'electric-smart-meters-data'
       },
       {
         id: powerInfrastructureIds.distributionSystems.electricSmartMetersRatingsData,
         title: 'project.navigation.submenu.power-infrastructure.distribution-systems.electric-smart-meters-ratings-data',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/distribution-systems/electric-smart-meters-ratings-data`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/distribution-systems/electric-smart-meters-ratings-data`,
         model: 'electricsmartmetersratingsdata',
         apiRoute: 'electric-smart-meters-ratings-data'
       },
       {
         id: powerInfrastructureIds.distributionSystems.electricSmartMetersPerformanceData,
         title: 'project.navigation.submenu.power-infrastructure.distribution-systems.electric-smart-meters-performance-data',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/distribution-systems/electric-smart-meters-performance-data`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/distribution-systems/electric-smart-meters-performance-data`,
         model: 'electricsmartmetersperformancedata',
         apiRoute: 'electric-smart-meters-performance-data'
       },
       {
         id: powerInfrastructureIds.distributionSystems.electricSmartMetersPrivacyAndSecurityData,
         title: 'project.navigation.submenu.power-infrastructure.distribution-systems.electric-smart-meters-privacy-and-security-data',
-        path: `/${module}/${typeId}/details/${id}/power-infrastructure/distribution-systems/electric-smart-meters-privacy-and-security-data`,
+        path: `/projects/${typeId}/details/${id}/power-infrastructure/distribution-systems/electric-smart-meters-privacy-and-security-data`,
         model: 'electricsmartmetersprivacyandsecuritydata',
         apiRoute: 'electric-smart-meters-privacy-and-security-data'
       }

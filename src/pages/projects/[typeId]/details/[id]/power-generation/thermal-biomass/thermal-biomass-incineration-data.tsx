@@ -19,7 +19,7 @@ const ThermalBiomassIncinerationDataPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.powerGeneration}
       activeSubMenuId={powerGenerationIds.thermalBiomass.thermalBiomassIncinerationData}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <ThermalBiomassIncinerationList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>

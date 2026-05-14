@@ -22,7 +22,7 @@ const ManufacturerOfSatelliteNetworkComponentsPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.mobileSatelliteNetworks}
       activeSubMenuId={mobileSatelliteNetworksId.satelliteNetworks.manufacturerOfSatelliteNetworkComponents}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <SatelliteNetworkComponentManufacturerList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

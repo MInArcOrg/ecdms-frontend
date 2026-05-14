@@ -16,7 +16,7 @@ const ChallengesPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.reporting}
       activeSubMenuId={projectReportingIds.report.challenges}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <ProjectChallengeList projectId={String(id)} typeId={String(typeId)} model={menuItem?.model || ''} />
     </ProjectLayout>

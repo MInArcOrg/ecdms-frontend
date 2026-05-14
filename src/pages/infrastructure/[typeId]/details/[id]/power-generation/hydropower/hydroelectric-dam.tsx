@@ -16,7 +16,7 @@ const HydroelectricDamPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.powerGeneration}
       activeSubMenuId={powerGenerationIds.hydropower.hydroelectricDam}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <HydroElectricDamList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

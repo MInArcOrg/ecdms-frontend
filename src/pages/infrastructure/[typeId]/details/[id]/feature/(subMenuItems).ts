@@ -27,7 +27,7 @@ export const projectFeatureIds = {
   }
 };
 
-const subMenuItems = (id: string, typeId: string, module: string = "projects"): DetailSubMenuItem[] => [
+const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
   {
     id: projectFeatureIds.accessories.accessories,
     title: 'project.navigation.submenu.feature.accessories.title',
@@ -35,28 +35,28 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       {
         id: projectFeatureIds.accessories.accessories,
         title: 'project.navigation.submenu.feature.accessories.accessories',
-        path: `/${module}/${typeId}/details/${id}/feature/accessories/accessories`,
+        path: `/projects/${typeId}/details/${id}/feature/accessories/accessories`,
         model: 'accessories',
         apiRoute: 'accessories'
       },
       {
         id: projectFeatureIds.accessories.roadSafetyFeatures,
         title: 'project.navigation.submenu.feature.accessories.road-safety-features',
-        path: `/${module}/${typeId}/details/${id}/feature/accessories/road-safety-features`,
+        path: `/projects/${typeId}/details/${id}/feature/accessories/road-safety-features`,
         model: 'roadsafetyfeatures',
         apiRoute: 'road-safety-features'
       },
       {
         id: projectFeatureIds.accessories.roadDrainage,
         title: 'project.navigation.submenu.feature.accessories.road-drainage',
-        path: `/${module}/${typeId}/details/${id}/feature/accessories/road-drainage`,
+        path: `/projects/${typeId}/details/${id}/feature/accessories/road-drainage`,
         model: 'roaddrainage',
         apiRoute: 'road-drainages'
       },
       {
         id: projectFeatureIds.accessories.drainageGeotechnicalData,
         title: 'project.navigation.submenu.feature.accessories.drainage-geotechnical-data',
-        path: `/${module}/${typeId}/details/${id}/feature/accessories/drainage-geotechnical-data`,
+        path: `/projects/${typeId}/details/${id}/feature/accessories/drainage-geotechnical-data`,
         model: 'drainagegeotechnicaldata',
         apiRoute: 'drainage-geotechnical-data'
       }
@@ -69,28 +69,28 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       {
         id: projectFeatureIds.culvert.culvertBasicData,
         title: 'project.navigation.submenu.feature.culvert.culvert-basic-data',
-        path: `/${module}/${typeId}/details/${id}/feature/culvert/culvert-basic-data`,
+        path: `/projects/${typeId}/details/${id}/feature/culvert/culvert-basic-data`,
         model: 'culvertbasicdata',
         apiRoute: 'culvert-basic-datas'
       },
       {
         id: projectFeatureIds.culvert.culvertStructuralData,
         title: 'project.navigation.submenu.feature.culvert.culvert-structural-information',
-        path: `/${module}/${typeId}/details/${id}/feature/culvert/culvert-structural-information`,
+        path: `/projects/${typeId}/details/${id}/feature/culvert/culvert-structural-information`,
         model: 'culvertstructuraldata',
         apiRoute: 'culvert-structural-informations'
       },
       {
         id: projectFeatureIds.culvert.culvertRoadOverInformation,
         title: 'project.navigation.submenu.feature.culvert.culvert-road-over-information',
-        path: `/${module}/${typeId}/details/${id}/feature/culvert/culvert-road-over-information`,
+        path: `/projects/${typeId}/details/${id}/feature/culvert/culvert-road-over-information`,
         model: 'culvertroadoverinformation',
         apiRoute: 'culvert-road-over-informations'
       },
       {
         id: projectFeatureIds.culvert.culvertConditionAssessment,
         title: 'project.navigation.submenu.feature.culvert.culvert-condition-assessment',
-        path: `/${module}/${typeId}/details/${id}/feature/culvert/culvert-condition-assessment`,
+        path: `/projects/${typeId}/details/${id}/feature/culvert/culvert-condition-assessment`,
         model: 'culvertconditionassessment',
         apiRoute: 'culvert-condition-assessment'
       }
@@ -103,49 +103,49 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       {
         id: projectFeatureIds.bridge.bridgeBasicData,
         title: 'project.navigation.submenu.feature.bridge.bridge-basic-data',
-        path: `/${module}/${typeId}/details/${id}/feature/bridge/bridge-basic-data`,
+        path: `/projects/${typeId}/details/${id}/feature/bridge/bridge-basic-data`,
         model: 'bridgebasicdata',
         apiRoute: 'bridge-basic-datas'
       },
       {
         id: projectFeatureIds.bridge.bridgeAreaData,
         title: 'project.navigation.submenu.feature.bridge.bridge-area-data',
-        path: `/${module}/${typeId}/details/${id}/feature/bridge/bridge-area-data`,
+        path: `/projects/${typeId}/details/${id}/feature/bridge/bridge-area-data`,
         model: 'bridgeareadata',
         apiRoute: 'bridge-area-datas'
       },
       {
         id: projectFeatureIds.bridge.bridgeSuperStructure,
         title: 'project.navigation.submenu.feature.bridge.bridge-super-structure',
-        path: `/${module}/${typeId}/details/${id}/feature/bridge/bridge-super-structure`,
+        path: `/projects/${typeId}/details/${id}/feature/bridge/bridge-super-structure`,
         model: 'bridgesuperstructure',
         apiRoute: 'bridge-super-structures'
       },
       {
         id: projectFeatureIds.bridge.bridgeSubStructure,
         title: 'project.navigation.submenu.feature.bridge.bridge-sub-structure',
-        path: `/${module}/${typeId}/details/${id}/feature/bridge/bridge-sub-structure`,
+        path: `/projects/${typeId}/details/${id}/feature/bridge/bridge-sub-structure`,
         model: 'bridgesubstructure',
         apiRoute: 'bridge-sub-structures'
       },
       {
         id: projectFeatureIds.bridge.bridgeFoundation,
         title: 'project.navigation.submenu.feature.bridge.bridge-foundation',
-        path: `/${module}/${typeId}/details/${id}/feature/bridge/bridge-foundation`,
+        path: `/projects/${typeId}/details/${id}/feature/bridge/bridge-foundation`,
         model: 'bridgefoundation',
         apiRoute: 'bridge-foundations'
       },
       {
         id: projectFeatureIds.bridge.bridgeComponentsAncillaries,
         title: 'project.navigation.submenu.feature.bridge.bridge-components-ancillaries',
-        path: `/${module}/${typeId}/details/${id}/feature/bridge/bridge-components-ancillaries`,
+        path: `/projects/${typeId}/details/${id}/feature/bridge/bridge-components-ancillaries`,
         model: 'bridgecomponentsancillaries',
         apiRoute: 'bridge-components-ancillaries'
       },
       {
         id: projectFeatureIds.bridge.bridgeInspection,
         title: 'project.navigation.submenu.feature.bridge.bridge-inspection',
-        path: `/${module}/${typeId}/details/${id}/feature/bridge/bridge-inspection`,
+        path: `/projects/${typeId}/details/${id}/feature/bridge/bridge-inspection`,
         model: 'bridgeinspection',
         apiRoute: 'bridge-inspections'
       }

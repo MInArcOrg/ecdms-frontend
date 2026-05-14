@@ -19,7 +19,7 @@ const TransmissionLineEquipmentDataPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.powerInfrastructure}
       activeSubMenuId={powerInfrastructureIds.transmissionSystems.transmissionLineEquipmentData}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <TransmissionLineEquipmentDataList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

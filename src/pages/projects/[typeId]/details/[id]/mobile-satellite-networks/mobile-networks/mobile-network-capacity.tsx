@@ -16,7 +16,7 @@ const NetworkCapacityPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.mobileSatelliteNetworks}
       activeSubMenuId={mobileSatelliteNetworksId.mobileNetworks.networkCapacity}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     > 
       <MobileNetworkCapacityList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

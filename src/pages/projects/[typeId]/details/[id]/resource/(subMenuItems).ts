@@ -30,7 +30,7 @@ export const projectResourceIds = {
   }
 };
 
-const subMenuItems = (id: string, typeId: string, module: string = "projects"): DetailSubMenuItem[] => [
+const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
   {
     id: projectResourceIds.finance.finance,
     title: 'project.navigation.submenu.resource.finance.title',
@@ -38,52 +38,52 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       {
         id: projectResourceIds.finance.contractAmount,
         title: 'project.navigation.submenu.resource.finance.contract-amount',
-        path: `/${module}/${typeId}/details/${id}/resource/finance/contract-amount`
+        path: `/projects/${typeId}/details/${id}/resource/finance/contract-amount`
       },
       {
         id: projectResourceIds.finance.amendments,
         title: 'project.navigation.submenu.resource.finance.amendments',
-        path: `/${module}/${typeId}/details/${id}/resource/finance/amendments`
+        path: `/projects/${typeId}/details/${id}/resource/finance/amendments`
       },
       {
         id: projectResourceIds.finance.supplements,
         title: 'project.navigation.submenu.resource.finance.supplements',
-        path: `/${module}/${typeId}/details/${id}/resource/finance/supplements`
+        path: `/projects/${typeId}/details/${id}/resource/finance/supplements`
       },
       {
         id: projectResourceIds.finance.variations,
         title: 'project.navigation.submenu.resource.finance.variations',
-        path: `/${module}/${typeId}/details/${id}/resource/finance/variations`
+        path: `/projects/${typeId}/details/${id}/resource/finance/variations`
       },
       {
         id: projectResourceIds.finance.omission,
         title: 'project.navigation.submenu.resource.finance.omission',
-        path: `/${module}/${typeId}/details/${id}/resource/finance/omission`
+        path: `/projects/${typeId}/details/${id}/resource/finance/omission`
       },
       {
         id: projectResourceIds.finance.performanceBond,
         title: 'project.navigation.submenu.resource.finance.performance-bond',
-        path: `/${module}/${typeId}/details/${id}/resource/finance/performance-bond`
+        path: `/projects/${typeId}/details/${id}/resource/finance/performance-bond`
       },
       {
         id: projectResourceIds.finance.advanceBond,
         title: 'project.navigation.submenu.resource.finance.advance-bond',
-        path: `/${module}/${typeId}/details/${id}/resource/finance/advance-bond`
+        path: `/projects/${typeId}/details/${id}/resource/finance/advance-bond`
       },
       {
         id: projectResourceIds.finance.bidBond,
         title: 'project.navigation.submenu.resource.finance.bid-bond',
-        path: `/${module}/${typeId}/details/${id}/resource/finance/bid-bond`
+        path: `/projects/${typeId}/details/${id}/resource/finance/bid-bond`
       },
       {
         id: projectResourceIds.finance.interimPayment,
         title: 'project.navigation.submenu.resource.finance.interim-payment',
-        path: `/${module}/${typeId}/details/${id}/resource/finance/interim-payment`
+        path: `/projects/${typeId}/details/${id}/resource/finance/interim-payment`
       },
       {
         id: projectResourceIds.finance.advancePayment,
         title: 'project.navigation.submenu.resource.finance.advance-payment',
-        path: `/${module}/${typeId}/details/${id}/resource/finance/advance-payment`
+        path: `/projects/${typeId}/details/${id}/resource/finance/advance-payment`
       }
     ]
   },
@@ -94,17 +94,17 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       {
         id: projectResourceIds.resources.materials,
         title: 'project.navigation.submenu.resource.resources.materials',
-        path: `/${module}/${typeId}/details/${id}/resource/resources/materials`
+        path: `/projects/${typeId}/details/${id}/resource/resources/materials`
       },
       {
         id: projectResourceIds.resources.machinery,
         title: 'project.navigation.submenu.resource.resources.machinery',
-        path: `/${module}/${typeId}/details/${id}/resource/resources/machinery`
+        path: `/projects/${typeId}/details/${id}/resource/resources/machinery`
       },
       {
         id: projectResourceIds.resources.manpower,
         title: 'project.navigation.submenu.resource.resources.manpower',
-        path: `/${module}/${typeId}/details/${id}/resource/resources/manpower`
+        path: `/projects/${typeId}/details/${id}/resource/resources/manpower`
       }
     ]
   },
@@ -115,22 +115,22 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       {
         id: projectResourceIds.documents.planning,
         title: 'project.navigation.submenu.resource.documents.planning',
-        path: `/${module}/${typeId}/details/${id}/resource/documents/planning`
+        path: `/projects/${typeId}/details/${id}/resource/documents/planning`
       },
       {
         id: projectResourceIds.documents.design,
         title: 'project.navigation.submenu.resource.documents.design',
-        path: `/${module}/${typeId}/details/${id}/resource/documents/design`
+        path: `/projects/${typeId}/details/${id}/resource/documents/design`
       },
       {
         id: projectResourceIds.documents.construction,
         title: 'project.navigation.submenu.resource.documents.construction',
-        path: `/${module}/${typeId}/details/${id}/resource/documents/construction`
+        path: `/projects/${typeId}/details/${id}/resource/documents/construction`
       },
       {
         id: projectResourceIds.documents.other,
         title: 'project.navigation.submenu.resource.documents.other',
-        path: `/${module}/${typeId}/details/${id}/resource/documents/other`
+        path: `/projects/${typeId}/details/${id}/resource/documents/other`
       }
     ]
   }

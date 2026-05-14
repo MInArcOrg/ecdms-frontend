@@ -22,7 +22,7 @@ const ElectricGridControlCenterPerformanceAndMaintenancePage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.regulation}
       activeSubMenuId={regulationIds.gridOperations.electricGridControlCenterPerformanceAndMaintenance}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <ElectricGridControlCenterPerformanceAndMaintenanceList otherSubMenu={menuItem}  projectId={id as string} typeId={typeId as string} />
     </ProjectLayout>
