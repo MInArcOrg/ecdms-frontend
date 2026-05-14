@@ -314,7 +314,7 @@ export const downloadFileById = async (fileId: string, fileName?: string, fallba
 
 // Get multiple photos
 export const useGetMultiplePhotos = (params: GetRequestParam, options?: any) => {
-  return useQuery({
+  return useQuery<IApiResponse<ImageModel[]>>({
     queryKey: ['multiple-photo', params],
     queryFn: async () => {
       const response: AxiosResponse<IApiResponse<ImageModel[]>> = await buildGetRequest(`/generics/photos`, params);
@@ -324,7 +324,7 @@ export const useGetMultiplePhotos = (params: GetRequestParam, options?: any) => 
   });
 };
 export const useGetMultipleFiles = (params: GetRequestParam, options?: any) => {
-  return useQuery({
+  return useQuery<IApiResponse<FileModel[]>>({
     queryKey: ['multiple-file', params],
     queryFn: async () => {
       const response: AxiosResponse<IApiResponse<FileModel[]>> = await buildGetRequest(`/generics/files`, params);
