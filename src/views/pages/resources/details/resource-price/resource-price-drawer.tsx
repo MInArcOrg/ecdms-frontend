@@ -62,7 +62,7 @@ const ResourcePriceDrawer: React.FC<ResourcePriceDrawerType> = (props) => {
 
   const onActionSuccess = async (response: IApiResponse<ResourcePrice>, payload: IApiPayload<ResourcePrice>) => {
     if (payload.files.length > 0) {
-      await uploadFile(payload.files[0], uploadableResourceFileTypes.resourceType, response.payload.id, '', '');
+      await uploadFile(payload.files[0], uploadableResourceFileTypes.resourceType, response?.payload?.id || '', '', '');
     }
     refetch();
     handleClose();
