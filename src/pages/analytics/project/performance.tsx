@@ -31,30 +31,41 @@ const usePerformanceData = (typeId: string, dummyEnabled: boolean, departmentId?
     return filter
   }
 
-  const fetchPerformance = (attr: 'financial_performance' | 'physical_performance' | 'expense') =>
-    useQuery({
-      queryKey: ['performance', attr, typeId, departmentId, year],
-      queryFn: () =>
-        projectPerformanceAnalticsService.getFinancialPhysicalPerformanceExpense(typeId, {
-          filter: buildFilter(attr)
-        }),
-      enabled: !!typeId && !dummyEnabled
-    })
+  const evaPerformance = useQuery({
+    queryKey: ['eva-performance', typeId, departmentId, year],
+    queryFn: () =>
+      projectPerformanceAnalticsService.getEVAperformance(typeId, {
+        filter: buildFilter()
+      }),
+    enabled: !!typeId && !dummyEnabled
+  })
 
-  const fetchEVAPerformance = () =>
-    useQuery({
-      queryKey: ['eva-performance', typeId, departmentId, year],
-      queryFn: () =>
-        projectPerformanceAnalticsService.getEVAperformance(typeId, {
-          filter: buildFilter()
-        }),
-      enabled: !!typeId && !dummyEnabled
-    })
+  const financial = useQuery({
+    queryKey: ['performance', 'financial_performance', typeId, departmentId, year],
+    queryFn: () =>
+      projectPerformanceAnalticsService.getFinancialPhysicalPerformanceExpense(typeId, {
+        filter: buildFilter('financial_performance')
+      }),
+    enabled: !!typeId && !dummyEnabled
+  })
 
-  const evaPerformance = fetchEVAPerformance()
-  const financial = fetchPerformance('financial_performance')
-  const physical = fetchPerformance('physical_performance')
-  const expense = fetchPerformance('expense')
+  const physical = useQuery({
+    queryKey: ['performance', 'physical_performance', typeId, departmentId, year],
+    queryFn: () =>
+      projectPerformanceAnalticsService.getFinancialPhysicalPerformanceExpense(typeId, {
+        filter: buildFilter('physical_performance')
+      }),
+    enabled: !!typeId && !dummyEnabled
+  })
+
+  const expense = useQuery({
+    queryKey: ['performance', 'expense', typeId, departmentId, year],
+    queryFn: () =>
+      projectPerformanceAnalticsService.getFinancialPhysicalPerformanceExpense(typeId, {
+        filter: buildFilter('expense')
+      }),
+    enabled: !!typeId && !dummyEnabled
+  })
 
   const dummy = {
     financial: [{ name: 'Planned', data: [120000, 130000, 110000, 150000] }, { name: 'Actual', data: [100000, 125000, 105000, 140000] }],

@@ -30,7 +30,7 @@ function DetailMenu({
         <Grid container gap={2} sx={{ ml: 3 }}>
           {menuItems.map((item) => (
             // <Can do={item?.subject} key={item.id} on={item?.subject}>
-            <Grid item>
+            <Grid item key={item.id}>
               <ListItemButton
                 onClick={() => setActiveMenu(item.path)}
                 sx={{

@@ -62,7 +62,7 @@ const DetailMenu: React.FC<DetailMenuProps> = ({ id, menuItems, activeMenuId, se
         <Grid container gap={2} sx={{ ml: 3 }}>
           {menuItems.map((item) => (
             // <Can do={item.action} key={item.id} on={item.subject}>
-            <Grid item>
+            <Grid item key={item.id}>
               <ListItemButton
                 onClick={() => setActiveMenu(item.path)}
                 sx={{

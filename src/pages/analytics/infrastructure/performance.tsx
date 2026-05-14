@@ -29,30 +29,41 @@ const usePerformanceData = (typeId: string, departmentId?: string, year?: number
     return filter
   }
 
-  const fetchPerformance = (attr: 'financial_performance' | 'physical_performance' | 'expense') =>
-    useQuery({
-      queryKey: ['performance', attr, typeId, departmentId, year],
-      queryFn: () =>
-        projectPerformanceAnalticsService.getFinancialPhysicalPerformanceExpense(typeId, {
-          filter: buildFilter(attr)
-        }),
-      enabled: !!typeId
-    })
+  const evaPerformance = useQuery({
+    queryKey: ['eva-performance', typeId, departmentId, year],
+    queryFn: () =>
+      projectPerformanceAnalticsService.getEVAperformance(typeId, {
+        filter: buildFilter()
+      }),
+    enabled: !!typeId
+  })
 
-  const fetchEVAPerformance = () =>
-    useQuery({
-      queryKey: ['eva-performance', typeId, departmentId, year],
-      queryFn: () =>
-        projectPerformanceAnalticsService.getEVAperformance(typeId, {
-          filter: buildFilter()
-        }),
-      enabled: !!typeId
-    })
+  const financial = useQuery({
+    queryKey: ['performance', 'financial_performance', typeId, departmentId, year],
+    queryFn: () =>
+      projectPerformanceAnalticsService.getFinancialPhysicalPerformanceExpense(typeId, {
+        filter: buildFilter('financial_performance')
+      }),
+    enabled: !!typeId
+  })
 
-  const evaPerformance = fetchEVAPerformance()
-  const financial = fetchPerformance('financial_performance')
-  const physical = fetchPerformance('physical_performance')
-  const expense = fetchPerformance('expense')
+  const physical = useQuery({
+    queryKey: ['performance', 'physical_performance', typeId, departmentId, year],
+    queryFn: () =>
+      projectPerformanceAnalticsService.getFinancialPhysicalPerformanceExpense(typeId, {
+        filter: buildFilter('physical_performance')
+      }),
+    enabled: !!typeId
+  })
+
+  const expense = useQuery({
+    queryKey: ['performance', 'expense', typeId, departmentId, year],
+    queryFn: () =>
+      projectPerformanceAnalticsService.getFinancialPhysicalPerformanceExpense(typeId, {
+        filter: buildFilter('expense')
+      }),
+    enabled: !!typeId
+  })
 
   return {
     financial: financial.data?.payload || [{ name: 'Financial', data: [] }],
