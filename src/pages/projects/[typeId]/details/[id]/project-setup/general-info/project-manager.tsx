@@ -12,7 +12,7 @@ const ProjectManager = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.projectSetup}
       activeSubMenuId={projectSetupIds.generalInfo.projectManager}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'projects')}
     >
       <ProjectManagerComponent projectId={String(id)} />
     </ProjectLayout>

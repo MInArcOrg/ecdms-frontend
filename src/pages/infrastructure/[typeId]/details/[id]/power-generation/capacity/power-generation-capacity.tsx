@@ -16,7 +16,7 @@ const PowerGenerationCapacityPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.powerGeneration}
       activeSubMenuId={powerGenerationIds.capacity.powerGenerationCapacity}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'infrastructure')}
     >
       <PowerGenerationCapacityList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

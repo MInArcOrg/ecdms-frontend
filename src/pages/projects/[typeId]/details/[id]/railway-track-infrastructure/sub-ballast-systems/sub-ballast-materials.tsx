@@ -19,7 +19,7 @@ const SubBallastMaterialsPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayTrackInfrastructure}
       activeSubMenuId={railwayTrackInfrastructureIds.subBallastSystems.subBallastMaterials}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'projects')}
     >
       <RailwaySubBallastMaterialList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>

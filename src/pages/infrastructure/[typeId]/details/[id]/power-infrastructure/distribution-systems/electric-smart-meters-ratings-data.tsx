@@ -19,7 +19,7 @@ const ElectricSmartMetersRatingsDataPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.powerInfrastructure}
       activeSubMenuId={powerInfrastructureIds.distributionSystems.electricSmartMetersRatingsData}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'infrastructure')}
     >
       <ElectricSmartMetersRatingsDataList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

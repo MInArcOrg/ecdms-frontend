@@ -16,7 +16,7 @@ const WindResourcePage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.powerGeneration}
       activeSubMenuId={powerGenerationIds.windEnergy.windResource}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'infrastructure')}
     >
       <WindResourceList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

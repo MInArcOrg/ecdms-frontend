@@ -19,7 +19,7 @@ const ProjectQualityInspectionPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.reporting}
       activeSubMenuId={projectReportingIds.report.qualityInspection}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'projects')}
     >
       <></>
       <ProjectQualityList projectId={String(id)} typeId={String(typeId)} model={menuItem?.model || ''} />

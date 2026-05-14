@@ -23,7 +23,7 @@ const StationPlatformSafetyAndSecurityPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayFacilitiesAndStations}
       activeSubMenuId={railwayFacilitiesAndStationsIds.stations_and_platforms.station_platform_safety_and_security}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'infrastructure')}
     >
       <RailwayStationPlatformSafetyAndSecurityList
         projectId={id as string}

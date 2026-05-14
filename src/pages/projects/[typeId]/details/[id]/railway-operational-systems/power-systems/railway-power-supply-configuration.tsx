@@ -20,7 +20,7 @@ const RailwayPowerSupplyConfigurationPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayOperationalSystems}
       activeSubMenuId={railwayOperationalSystemsIds.powerSystems.railwayPowerSupplyConfiguration}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'projects')}
     >
       <RailwayPowerSupplyConfigurationList
         otherSubMenu={menuItem}

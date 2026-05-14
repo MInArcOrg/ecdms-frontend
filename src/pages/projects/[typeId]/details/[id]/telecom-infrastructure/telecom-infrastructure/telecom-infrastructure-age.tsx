@@ -16,7 +16,7 @@ const TelecomInfrastructureAge = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.telecomInfrastructure}
       activeSubMenuId={telecomInfrastructureId.telecom.telecomInfrastructureAge}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'projects')}
     >
       <TelecomInfrastructureAgeList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

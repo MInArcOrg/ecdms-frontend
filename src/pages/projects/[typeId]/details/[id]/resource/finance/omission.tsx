@@ -15,7 +15,7 @@ function ProjectVariation() {
       <ProjectLayout
         activeMenuId={projectMenuIds.resource}
         activeSubMenuId={projectResourceIds.finance.omission}
-        subMenuItems={subMenuItems}
+        subMenuItems={subMenuItems(id as string, typeId as string, 'projects')}
       >
         {' '}
         <ProjectVariationList projectId={String(id)} type={variationConstants.OMISSION.value} />

@@ -20,7 +20,7 @@ const TracksGeometryDataPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayTrackInfrastructure}
       activeSubMenuId={railwayTrackInfrastructureIds.trackSystems.tracksGeometryData}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'projects')}
     >
       <RailwayTracksGeometryDataList projectId={String(id)} typeId={String(typeId)} otherSubMenu={menuItem} />
     </ProjectLayout>

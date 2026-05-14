@@ -16,7 +16,7 @@ const GeothermalPowerWellsPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.powerGeneration}
       activeSubMenuId={powerGenerationIds.geothermalEnergy.geothermalPowerWells}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'infrastructure')}
     >
       <GeothermalPowerWellList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

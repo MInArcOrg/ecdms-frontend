@@ -13,7 +13,7 @@ const CulvertConditionAssessment = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.feature}
       activeSubMenuId={projectFeatureIds.culvert.culvertConditionAssessment}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'infrastructure')}
     >
       {/* <CulvertConditionAssessmentList
                 otherSubMenu={menuItem}

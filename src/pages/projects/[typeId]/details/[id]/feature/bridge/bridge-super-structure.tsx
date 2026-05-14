@@ -15,14 +15,14 @@ const BridgeSuperStructure = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.feature}
       activeSubMenuId={projectFeatureIds.bridge.bridgeSuperStructure}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'projects')}
     >
       <BridgeSuperStructureList projectId={id as string} typeId={typeId as string} otherSubMenu={menuItem} />
     </ProjectLayout>
   );
 };
 
-BridgeSuperStructure.acl = {  
+BridgeSuperStructure.acl = {
   subject: defaultMenuItem?.model,
   action: 'view'
 };

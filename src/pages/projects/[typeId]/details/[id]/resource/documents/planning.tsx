@@ -15,7 +15,7 @@ function ProjectDocument() {
       <ProjectLayout
         activeMenuId={projectMenuIds.resource}
         activeSubMenuId={projectResourceIds.documents.planning}
-        subMenuItems={subMenuItems}
+        subMenuItems={subMenuItems(id as string, typeId as string, 'projects')}
       >
         <ProjectFileList projectId={String(id)} type={projectFileConstant.PLANNING.value} />
       </ProjectLayout>

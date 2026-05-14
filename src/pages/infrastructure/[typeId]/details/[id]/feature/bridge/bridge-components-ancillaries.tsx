@@ -15,7 +15,7 @@ const BridgeComponentsAncillaries = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.feature}
       activeSubMenuId={projectFeatureIds.bridge.bridgeComponentsAncillaries}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'infrastructure')}
     >
       {/* <BridgeComponentsAncillariesList
 

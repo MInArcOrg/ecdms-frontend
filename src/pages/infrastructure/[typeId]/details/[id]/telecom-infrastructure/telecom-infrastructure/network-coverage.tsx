@@ -16,7 +16,7 @@ const NetworkCoverage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.telecomInfrastructure}
       activeSubMenuId={telecomInfrastructureId.telecom.networkCoverage}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'infrastructure')}
     >
       <NetworkCoverageList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

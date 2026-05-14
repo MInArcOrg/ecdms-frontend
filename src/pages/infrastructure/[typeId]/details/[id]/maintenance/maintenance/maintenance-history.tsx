@@ -16,7 +16,7 @@ const MaintenanceHistory = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.maintenance}
       activeSubMenuId={projectMaintenanceIds.maintenance.maintenanceHistory}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'infrastructure')}
     >
       <MaintenanceHistoryList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

@@ -12,7 +12,7 @@ const ProjectStakeholder = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.projectSetup}
       activeSubMenuId={projectSetupIds.stakeholders.stakeholders}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'infrastructure')}
     >
       {' '}
       <ProjectStakeholderList projectId={String(id)} />

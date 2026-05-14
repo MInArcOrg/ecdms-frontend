@@ -18,9 +18,9 @@ const ActualStatusPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayTrackInfrastructure}
       activeSubMenuId={projectReportingIds.report.weatherCondition}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'infrastructure')}
     >
-      <WeatherConditionList projectId={String(id)} typeId={String(typeId)}  model={menuItem?.model||''}/>
+      <WeatherConditionList projectId={String(id)} typeId={String(typeId)} model={menuItem?.model || ''} />
     </ProjectLayout>
   );
 };

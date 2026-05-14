@@ -19,7 +19,7 @@ const SatelliteNetworkPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.mobileSatelliteNetworks}
       activeSubMenuId={mobileSatelliteNetworksId.satelliteNetworks.satelliteNetwork}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'projects')}
     >
       <SatelliteNetworkList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

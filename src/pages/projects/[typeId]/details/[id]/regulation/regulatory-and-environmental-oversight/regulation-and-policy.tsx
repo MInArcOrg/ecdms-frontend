@@ -19,7 +19,7 @@ const RegulationAndPolicyPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.regulation}
       activeSubMenuId={regulationIds.regulatoryAndEnvironmentalOversight.regulationAndPolicy}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'projects')}
     >
       <RegulationAndPolicyList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

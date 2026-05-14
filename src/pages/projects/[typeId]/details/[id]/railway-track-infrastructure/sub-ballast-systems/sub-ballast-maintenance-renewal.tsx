@@ -19,7 +19,7 @@ const SubBallastMaintenanceRenewalPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayTrackInfrastructure}
       activeSubMenuId={railwayTrackInfrastructureIds.subBallastSystems.subBallastMaintenanceRenewal}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'projects')}
     >
       <RailwaySubBallastMaintenanceAndRenewalList typeId={typeId as string} otherSubMenu={menuItem} projectId={id as string} />
     </ProjectLayout>

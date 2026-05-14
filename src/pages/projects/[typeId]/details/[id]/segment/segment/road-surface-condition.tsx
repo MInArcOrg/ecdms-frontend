@@ -16,7 +16,7 @@ const RoadSurfaceCondition = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.segment}
       activeSubMenuId={projectSegmentIds.segment.roadSurfaceCondition}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'projects')}
     >
       <IntersectionDrivewayList otherSubMenu={menuItem} typeId={String(typeId)} projectId={String(id)} />
     </ProjectLayout>

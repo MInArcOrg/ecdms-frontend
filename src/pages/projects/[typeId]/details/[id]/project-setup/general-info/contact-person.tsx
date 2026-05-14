@@ -12,7 +12,7 @@ const ProjectContactPerson = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.projectSetup}
       activeSubMenuId={projectSetupIds.generalInfo.contactPerson}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'projects')}
     >
       <ProjectContactPersonList projectId={String(id)} />
     </ProjectLayout>

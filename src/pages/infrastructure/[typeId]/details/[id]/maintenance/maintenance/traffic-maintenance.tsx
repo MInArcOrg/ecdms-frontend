@@ -13,7 +13,7 @@ const TrafficMaintenance = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.maintenance}
       activeSubMenuId={projectMaintenanceIds.maintenance.trafficMaintenance}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'infrastructure')}
     >
       {/* <TrafficMaintenanceList
                 otherSubMenu={menuItem}

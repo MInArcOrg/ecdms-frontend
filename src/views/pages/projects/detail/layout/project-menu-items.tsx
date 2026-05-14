@@ -18,9 +18,8 @@ export const projectMenuIds = {
   railwayFacilitiesAndStations: 'RAILWAY_FACILITIES_AND_STATIONS'
 };
 
-const menuItems = (id: string, typeId: string): DetailMenuItem[] => {
-  const baseUrl = `/projects/${typeId}/details/${id}`;
-
+const menuItems = (id: string, typeId: string, prefix: string = '/projects'): DetailMenuItem[] => {
+  const baseUrl = `${prefix}/${typeId}/details/${id}`;
   return [
     {
       id: projectMenuIds.projectSetup,

@@ -18,7 +18,7 @@ const TrackSafetyPage = () => {
     <ProjectLayout
       activeMenuId={projectMenuIds.railwayTrackInfrastructure}
       activeSubMenuId={railwayTrackInfrastructureIds.trackSystems.trackSafety}
-      subMenuItems={subMenuItems}
+      subMenuItems={subMenuItems(id as string, typeId as string, 'projects')}
     >
       <RailwayTrackSafetyList projectId={String(id)} typeId={String(typeId)} otherSubMenu={menuItem} />
     </ProjectLayout>
