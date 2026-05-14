@@ -85,13 +85,7 @@ const StakeholderDetailComponent: React.FC<StakeholderDetailComponentProps> = ({
             justifyContent: { xs: 'center', md: 'flex-start' }
           }}
         >
-          <input
-            id="upload-avatar-pic"
-            type="file"
-            hidden
-            onChange={changeProfilePicture}
-            accept="image/png,image/jpeg,image/gif,image/webp"
-          />
+          <input id="upload-avatar-pic" type="file" hidden onChange={changeProfilePicture} accept="image/*" />
           <label htmlFor="upload-avatar-pic">
             <Tooltip title={t('project.general-information.upload-profile-picture')} placement="top" arrow>
               <Avatar
