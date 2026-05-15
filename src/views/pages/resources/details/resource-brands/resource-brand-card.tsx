@@ -4,6 +4,7 @@ import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import DescCollapse from '../desc-collapse';
+import { useAuthenticatedImage, useGetMultiplePhotos } from 'src/services/utils/file-utils';
 import { ResourceBrand } from 'src/types/resource';
 
 interface ResourceBrandCardProps {
@@ -16,12 +17,31 @@ interface ResourceBrandCardProps {
 }
 
 const ResourceBrandCard: React.FC<ResourceBrandCardProps> = ({ resourceBrand, onEdit, onDelete, refetch, t, children }) => {
+  const { data: brandPhoto } = useGetMultiplePhotos({
+    filter: {
+      model_id: resourceBrand.id,
+      type: 'RESOURCE_BRAND'
+    }
+  });
+
+  const photoUrl = brandPhoto?.payload?.[0]?.url;
+  const authenticatedSrc = useAuthenticatedImage(photoUrl);
+
   return (
     <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <CardContent>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <CardHeader title={resourceBrand.title} />
+            <CardHeader title={resourceBrand.name} />
+            {authenticatedSrc && (
+              <Box mt={2} display="flex" justifyContent="center">
+                <img
+                  src={authenticatedSrc}
+                  alt={resourceBrand.name || 'Brand Image'}
+                  style={{ maxWidth: '100%', maxHeight: '400px', objectFit: 'contain', borderRadius: '8px' }}
+                />
+              </Box>
+            )}
             <Box mt={2}>
               <Typography variant="body1" component="div">
                 <DescCollapse desc={resourceBrand.description} />
@@ -49,9 +69,9 @@ const ResourceBrandCard: React.FC<ResourceBrandCardProps> = ({ resourceBrand, on
               model="ResourceBrand"
               model_id={resourceBrand.id}
               refetchModel={refetch}
-              resubmit={() => {}}
+              resubmit={() => { }}
               title=""
-              postAction={() => {}}
+              postAction={() => { }}
             />
             <RowOptions onEdit={onEdit} onDelete={() => onDelete(resourceBrand.id)} item={resourceBrand} options={[]} />
           </Box>

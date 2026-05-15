@@ -34,7 +34,7 @@ const ProfessionalCard: React.FC<ProfessionalCardProps> = ({ professional, refet
                   '&:hover': { color: 'primary.main' }
                 }}
               >
-                {`${professional.first_name} ${professional.last_name}`}
+                {`${professional.full_name}`}
               </Typography>
             </Link>
           </Typography>
@@ -67,11 +67,11 @@ const ProfessionalCard: React.FC<ProfessionalCardProps> = ({ professional, refet
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'professional'
+            subject: 'resource'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'professional'
+            subject: 'resource'
           }}
           onEdit={() => onEdit(professional)}
           onDelete={() => onDelete(professional?.id || '')}

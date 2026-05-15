@@ -8,21 +8,21 @@ import resourceBrandApiService from 'src/services/resource/resource-brand-servic
 import resourceSpecificationApiService from 'src/services/resource/resource-specification-service';
 import generalMasterDataApiService from 'src/services/general/general-master-data-service';
 import { resourceMasterModels } from 'src/constants/master-data/resource-general-master-constants';
-import { ResourcePrice } from 'src/types/resource';
+import { ResourceQuantity } from 'src/types/resource';
 import CustomDateSelector from 'src/views/shared/form/custom-date-box';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 import resourceGeneralMasterDataApiService from 'src/services/general/resource-general-master-data-service';
 
-interface ResourcePriceFormProps {
-  formik: FormikProps<ResourcePrice>;
+interface ResourceQuantityFormProps {
+  formik: FormikProps<ResourceQuantity>;
   file: File | null;
   onFileChange: (file: File | null) => void;
   resourceId: string;
 }
 
-const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
+const ResourceQuantityForm: React.FC<ResourceQuantityFormProps> = ({
   formik,
   file,
   onFileChange,
@@ -87,7 +87,7 @@ const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
           fullWidth
           size="small"
           name="resource_brand_id"
-          label={t('resource.resource-price.form.brand')}
+          label={t('resource.resource-quantity.form.brand')}
           options={
             resourceBrands?.payload?.map((item) => ({
               value: item.id,
@@ -101,7 +101,7 @@ const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
           fullWidth
           size="small"
           name="resource_specification_id"
-          label={t('resource.resource-price.form.specification')}
+          label={t('resource.resource-quantity.form.specification')}
           options={
             resourceSpecifications?.payload?.map((item) => ({
               value: item.id,
@@ -115,7 +115,7 @@ const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
           fullWidth
           size="small"
           name="supplier_name_id"
-          label={t('resource.resource-price.form.supplier-name')}
+          label={t('resource.resource-quantity.form.supplier-name')}
           options={
             supplierNames?.payload?.map((item) => ({
               value: item.id,
@@ -129,7 +129,7 @@ const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
           fullWidth
           size="small"
           name="supplier_address_id"
-          label={t('resource.resource-price.form.supplier-address')}
+          label={t('resource.resource-quantity.form.supplier-address')}
           options={
             supplierAddresses?.payload?.map((item) => ({
               value: item.id,
@@ -143,7 +143,7 @@ const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
           fullWidth
           size="small"
           name="quality_id"
-          label={t('resource.resource-price.form.quality')}
+          label={t('resource.resource-quantity.form.quality')}
           options={
             qualities?.payload?.map((item) => ({
               value: item.id,
@@ -157,7 +157,7 @@ const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
           fullWidth
           size="small"
           name="unit_price_id"
-          label={t('resource.resource-price.form.unit-price')}
+          label={t('resource.resource-quantity.form.unit-price')}
           options={
             unitPrices?.payload?.map((item) => ({
               value: item.id,
@@ -172,7 +172,7 @@ const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
           type="number"
           size="small"
           name="total_quantity_available"
-          label={t('resource.resource-price.form.total-quantity-available')}
+          label={t('resource.resource-quantity.form.total-quantity-available')}
         />
       </Grid>
       <Grid item xs={12} sm={6}>
@@ -180,7 +180,7 @@ const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
           fullWidth
           size="small"
           name="price_date"
-          label={t('resource.resource-price.form.price-date')}
+          label={t('resource.resource-quantity.form.price-date')}
         />
       </Grid>
       <Grid item xs={12}>
@@ -190,7 +190,7 @@ const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
           rows={3}
           size="small"
           name="remark"
-          label={t('resource.resource-price.form.remark')}
+          label={t('resource.resource-quantity.form.remark')}
         />
       </Grid>
       <Grid item xs={12}>
@@ -200,4 +200,4 @@ const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
   );
 };
 
-export default ResourcePriceForm;
+export default ResourceQuantityForm;

@@ -53,7 +53,16 @@ const ResourceCard = ({
                         throw new Error('Function not implemented.');
                       }}
                     />
-                    <RowOptions onEdit={onEdit} onDelete={() => onDelete(resource.id)} item={resource} options={[]} />
+                    <RowOptions onEdit={onEdit} onDelete={() => onDelete(resource.id)} item={resource} options={[]}
+                      deletePermissionRule={{
+                        action: 'delete',
+                        subject: 'resource'
+                      }}
+                      editPermissionRule={{
+                        action: 'update',
+                        subject: 'resource'
+                      }}
+                    />
                   </Box>
                 </Box>
               </Fragment>

@@ -18,7 +18,9 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: resourcePriceMenuIds.resourcePrice.resourcePrice,
         title: 'resource.navigation.submenu.resource-price.resource-price', // locale key
         path: `/resources/${typeId}/details/${id}/resource-price/resource-price`,
-        model: 'resourceprice'
+        model: 'resourceprice',
+        subject: 'resourceprice',
+        action: 'view'
       }
     ]
   }

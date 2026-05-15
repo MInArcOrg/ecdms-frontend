@@ -39,7 +39,8 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         path: `/resources/${typeId}/details/${id}/general-info/general-info/professional-registration`,
         type: [resourceTypesMaster.professional],
         subject: 'resource',
-        action: 'view'
+        action: 'view',
+        model: 'resource'
       },
       {
         id: generalInfoMenuIds.generalInfo.address,
@@ -81,7 +82,7 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         path: `/resources/${typeId}/details/${id}/general-info/general-info/brands`,
         type: [resourceTypesMaster.material, resourceTypesMaster.machineryAndEquipment],
         subject: 'resourcebrand',
-        model:'resourcebrand',
+        model: 'resourcebrand',
         action: 'view'
       },
       {
@@ -90,6 +91,7 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         path: `/resources/${typeId}/details/${id}/general-info/general-info/specification`,
         type: [resourceTypesMaster.material, resourceTypesMaster.machineryAndEquipment],
         subject: 'resourcespecification',
+        model: 'resourcespecification',
         action: 'view'
       }
     ]

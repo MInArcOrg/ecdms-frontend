@@ -20,13 +20,15 @@ const ResourceSpecificationForm: React.FC<ResourceSpecificationFormProps> = ({
   onFilesChange
 }) => {
   const { t: transl } = useTranslation();
+  console.log('formik error', formik.errors)
+
   return (
     <>
       <CustomTextBox
         fullWidth
-        label={transl('resource.resource-specification.form.title')}
-        placeholder={transl('resource.resource-specification.form.title')}
-        name="title"
+        label={transl('resource.resource-specification.form.name')}
+        placeholder={transl('resource.resource-specification.form.name')}
+        name="name"
         size="small"
         sx={{ mb: 2 }}
       />

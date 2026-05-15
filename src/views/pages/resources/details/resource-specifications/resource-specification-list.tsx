@@ -93,7 +93,7 @@ function ResourceSpecificationList({ resourceId }: { resourceId: string }) {
             onlyIcon: false,
             permission: {
               action: 'create',
-              subject: 'resourceSpecification'
+              subject: 'resourcespecification'
             }
           }}
           fetchDataFunction={refetch}

@@ -5,6 +5,7 @@ import ModelActionComponent from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 import DescCollapse from '../desc-collapse';
 import { ResourceSpecification } from 'src/types/resource';
+import { Formik } from 'formik';
 
 interface ResourceSpecificationCardProps {
   resourceSpecification: ResourceSpecification;
@@ -56,11 +57,18 @@ const ResourceSpecificationCard: React.FC<ResourceSpecificationCardProps> = ({
               model="ResourceSpecification"
               model_id={resourceSpecification.id}
               refetchModel={refetch}
-              resubmit={() => {}}
+              resubmit={() => { }}
               title=""
-              postAction={() => {}}
+              postAction={() => { }}
             />
-            <RowOptions onEdit={onEdit} onDelete={() => onDelete(resourceSpecification.id)} item={resourceSpecification} options={[]} />
+            <RowOptions
+              onEdit={onEdit}
+              onDelete={() => onDelete(resourceSpecification.id)}
+              item={resourceSpecification}
+              options={[]}
+              editPermissionRule={{ subject: 'resourcespecification', action: 'update' }}
+              deletePermissionRule={{ subject: 'resourcespecification', action: 'delete' }}
+            />
           </Box>
         </Box>
       </CardActions>

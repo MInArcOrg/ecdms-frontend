@@ -3,6 +3,7 @@ import ResourceLayout from 'src/views/pages/resources/details/layout/resource-la
 import { resourceMenuIds } from 'src/views/pages/resources/details/layout/resource-menu-items';
 import { certificatesMenuIds } from './(sub-menu-items)';
 import subMenuItems, { findSubMenuItem } from './(sub-menu-items)';
+import CertificationList from 'src/views/pages/resources/details/resource-professional-certification';
 
 const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), certificatesMenuIds.certificates);
 
@@ -18,7 +19,7 @@ const CertificatesPage = () => {
     >
       <>
         {/* Replace with your actual Certificates component */}
-        <div>Certificates Content</div>
+        <CertificationList model={defaultMenuItem?.model || ''} professionalId={id as string} typeId={typeId as string} />
       </>
     </ResourceLayout>
   );

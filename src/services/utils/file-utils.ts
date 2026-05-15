@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios, { AxiosResponse } from 'axios';
 import authConfig from 'src/configs/auth';
@@ -23,6 +24,13 @@ export interface FileType {
   upload: File;
   description?: string | null;
 }
+
+export const getImageViewUrl = (id: string) => {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_API_URL || 'http://localhost:3010/';
+  // Ensure we don't have double slashes if baseUrl has trailing slash
+  const normalizedBase = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+  return `${normalizedBase}/generics/view-image/${id}`;
+};
 
 export const customAxios = axios.create({
   baseURL
@@ -237,6 +245,49 @@ const resolvePublicUrl = (pathOrUrl: string) => {
 export const getStaticPhoto = (pathOrUrl: string) => resolvePublicUrl(pathOrUrl);
 export const getStaticFile = (pathOrUrl: string) => resolvePublicUrl(pathOrUrl);
 
+/**
+ * Hook to load an authenticated image by fetching with a Bearer token
+ * and converting the response to a blob URL safe for <img src>.
+ */
+export const useAuthenticatedImage = (url: string | null | undefined): string | null => {
+  const [blobUrl, setBlobUrl] = useState<string | null>(null);
+  const previousBlobUrl = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (!url) {
+      setBlobUrl(null);
+      return;
+    }
+    const fullUrl = resolvePublicUrl(url);
+    const token = getAccessToken();
+
+    let cancelled = false;
+    fetch(fullUrl, {
+      headers: token ? { Authorization: token } : undefined
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('Image fetch failed');
+        return res.blob();
+      })
+      .then((blob) => {
+        if (cancelled) return;
+        const objectUrl = URL.createObjectURL(blob);
+        if (previousBlobUrl.current) URL.revokeObjectURL(previousBlobUrl.current);
+        previousBlobUrl.current = objectUrl;
+        setBlobUrl(objectUrl);
+      })
+      .catch(() => {
+        if (!cancelled) setBlobUrl(null);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [url]);
+
+  return blobUrl;
+};
+
 export const downloadStaticFile = async (pathOrUrl: string, fileName?: string) => {
   const url = resolvePublicUrl(pathOrUrl);
   if (!url) return;
@@ -391,7 +442,8 @@ export const uploadableResourceFileTypes = {
   studyField: 'RESOURCE_STUDY_FIELD',
   studyLevel: 'RESOURCE_STUDY_LEVEL',
   workExperience: 'RESOURCE_WORK_EXPERIENCE',
-  salary: 'RESOURCE_SALARY'
+  salary: 'RESOURCE_SALARY',
+  resourceQuantity: 'RESOURCE_QUANTITY'
 } as const;
 
 // Uploadable document file types

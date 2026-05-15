@@ -33,7 +33,7 @@ const validationSchema = yup.object().shape({
 const ResourceDrawer = (props: ResourceDrawerType) => {
 
   // ** Props
-  const { open, toggle, refetch, resource, typeId,type } = props;
+  const { open, toggle, refetch, resource, typeId, type } = props;
 
   const { t } = useTranslation();
   const isEdit = resource?.id ? true : false;
@@ -64,19 +64,19 @@ const ResourceDrawer = (props: ResourceDrawerType) => {
     refetch();
     handleClose();
   };
-    const translatedTitle = t(`common.${isEdit ? 'edit' : 'create'}`)+" "+ type?.title+" "+t('resource.title');
+  const translatedTitle = t(`common.${isEdit ? 'edit' : 'create'}`) + " " + type?.title + " " + t('resource.title');
 
   return (
-    <CustomSideDrawer 
+    <CustomSideDrawer
       translatedTitle={translatedTitle}
-     handleClose={handleClose} open={open}>
+      handleClose={handleClose} open={open}>
       {() => (
         <FormPageWrapper
           edit={isEdit}
-      translatedTitle={translatedTitle}
+          translatedTitle={translatedTitle}
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={resource}
+          initialValues={resource ?? { resourcetype_id: typeId, resourcecategory_id: '', resourcesubcategory_id: '', name: '', quantity_measurement_unit_id: '', quality_measurement_unit_id: '', remark: '' } as any}
           createActionFunc={isEdit ? editResource : createResource}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

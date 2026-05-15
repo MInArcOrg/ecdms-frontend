@@ -4,7 +4,7 @@ import { resourceMenuIds } from 'src/views/pages/resources/details/layout/resour
 import ResourcePriceList from 'src/views/pages/resources/details/resource-price/resource-price-list';
 import subMenuItems, { findSubMenuItem, resourcePriceMenuIds } from '../(sub-menu-items)';
 
-const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), resourceMenuIds.price);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), resourcePriceMenuIds.resourcePrice.resourcePrice);
 
 const ResourcePricePage = () => {
   const router = useRouter();

@@ -625,7 +625,6 @@
       "female": "Female",
       "single": "Single",
       "married": "Married",
-
       "edit-user": "Edit Expert",
       "create-user": "Add Expert",
       "education": {
@@ -777,7 +776,17 @@
       "resourcecategory_id": "Resource Category",
       "resourcesubcategory_id": "Resource Subcategory",
       "quantity_measurement_unit_id": "Quantity Measurement Unit",
-      "quality_measurement_unit_id": "Quality Measurement Unit"
+      "quality_measurement_unit_id": "Quality Measurement Unit",
+      "specification": "Specification",
+      "brand": "Brand",
+      "resourcetype": "Resourcetype",
+      "resourcequantityandprice": "Resourcequantityandprice",
+      "studyfield": "Studyfield",
+      "studylevel": "Studylevel",
+      "workexperience": "Workexperience",
+      "salary": "Salary",
+      "description": "Description",
+      "reference_files": "Reference_files"
     },
     "form": {
       "name": "Name",
@@ -790,7 +799,9 @@
       "category": "Category",
       "sub-category": "Sub Category",
       "type": "Type",
-      "center": "Center"
+      "center": "Center",
+      "upload_image": "Upload_image",
+      "title": "Title"
     },
     "navigation": {
       "menu": {
@@ -858,6 +869,52 @@
         }
       }
     },
+    "resource-price": {
+      "title": "Resource Price",
+      "create-resource-price": "Add Resource Price",
+      "edit-resource-price": "Edit Resource Price",
+      "form": {
+        "validation": {
+          "brand": "Brand is required",
+          "specification": "Specification is required",
+          "supplier-name": "Supplier Name is required",
+          "supplier-address": "Supplier Address is required",
+          "quality": "Quality is required"
+        },
+        "supplier-name": "Supplier Name",
+        "brand": "Brand",
+        "specification": "Specification",
+        "total-quantity-available": "Total Quantity Available",
+        "price-date": "Price Date",
+        "supplier-address": "Supplier Address",
+        "quality": "Quality",
+        "unit-price": "Unit Price",
+        "remark": "Remark"
+      }
+    },
+    "resource-quantity": {
+      "title": "Resource Quantity",
+      "create-resource-quantity": "Add Resource Quantity",
+      "edit-resource-quantity": "Edit Resource Quantity",
+      "form": {
+        "validation": {
+          "brand": "Brand is required",
+          "specification": "Specification is required",
+          "supplier-name": "Supplier Name is required",
+          "supplier-address": "Supplier Address is required",
+          "quality": "Quality is required"
+        },
+        "supplier-name": "Supplier Name",
+        "brand": "Brand",
+        "specification": "Specification",
+        "total-quantity-available": "Total Quantity Available",
+        "price-date": "Price Date",
+        "supplier-address": "Supplier Address",
+        "quality": "Quality",
+        "unit-price": "Unit Price",
+        "remark": "Remark"
+      }
+    },
     "resource-specification": {
       "title": "Resource Specification",
       "create-resource-specification": "Add Resource Specification",
@@ -865,7 +922,8 @@
       "form": {
         "title": "Title",
         "description": "Description",
-        "datasource": "Data Source"
+        "datasource": "Data Source",
+        "name": "Name"
       }
     },
     "resource-brand": {
@@ -875,7 +933,9 @@
       "form": {
         "title": "Title",
         "description": "Description",
-        "datasource": "Data Source"
+        "datasource": "Data Source",
+        "name": "Name",
+        "manufacturer": "Manufacturer"
       }
     },
     "resource-study-field": {
@@ -1360,7 +1420,6 @@
             "ballast-drainage-water-management": "Ballast Drainage & Water Management",
             "ballast-environmental-factors": "Ballast Environmental Factors"
           },
-
           "sub-ballast-systems": {
             "title": "Sub-Ballast Systems",
             "sub-ballast-materials": "Sub-Ballast Materials",
@@ -1794,7 +1853,6 @@
         "source-of-finance": "Source of Finance"
       }
     },
-
     "project-contact-person": {
       "create": "Add Contact Person",
       "edit": "Edit Contact Person",
@@ -3005,7 +3063,6 @@
         "create": "Add Safety Status",
         "edit": "Edit Safety Status"
       },
-
       "weather-condition": {
         "title": "Weather Condition",
         "weather-type": "Weather Type",
@@ -3985,7 +4042,6 @@
           "remark": "Remark"
         }
       },
-
       "railway-sub-ballast-material": {
         "title": "Railway Sub-Ballast Material",
         "edit": "Edit Railway Sub-Ballast Material",
@@ -4433,7 +4489,6 @@
           "remark": "Remark"
         }
       },
-
       "railway-vehicle-maintenance-and-inspection": {
         "title": "Vehicle Maintenance and Inspection",
         "detail": "Maintenance and Inspection Details",
@@ -4915,7 +4970,6 @@
     "create": "Add",
     "active": "Active",
     "inactive": "InActive",
-
     "meters": "Meters",
     "inches": "Inches",
     "created-at": "Created At",
@@ -4969,7 +5023,8 @@
       "attachment": "Attachment",
       "file-upload": "File Upload",
       "success-created": "Successfully Addd!",
-      "success-updated": "Successfully updated!"
+      "success-updated": "Successfully updated!",
+      "image-upload": "Image Upload"
     },
     "listing": {
       "no-items-available": "No items available."
@@ -5812,5 +5867,47 @@
       "phone": "+1 (234) 567-890",
       "hours": "We’re available Monday–Friday, 9:00 AM–6:00 PM (GMT)."
     }
-  }
+  },
+  "professional": {
+    "address": {
+      "country": "Country",
+      "region": "Region",
+      "city": "City",
+      "sub_city": "Sub_city",
+      "woreda": "Woreda",
+      "street": "Street",
+      "block_no": "Block_no",
+      "website": "Website",
+      "northing": "Northing",
+      "easting": "Easting",
+      "details": "Details",
+      "title": "Title"
+    }
+  },
+  "T": "T",
+  "Machinery": "Machinery",
+  "Type": "Type",
+  "Owner Name": "Owner Name",
+  "Make / Model": "Make / Model",
+  "Plate No": "Plate No",
+  "Engine No": "Engine No",
+  "Serial No": "Serial No",
+  "Title Certificate No": "Title Certificate No",
+  "Registration Date": "Registration Date",
+  "Make": "Make",
+  "Model": "Model",
+  "Capacity": "Capacity",
+  "Engine Power (HP)": "Engine Power (HP)",
+  "Manufacture Year": "Manufacture Year",
+  "Tel": "Tel",
+  "TS No": "TS No",
+  "Date": "Date",
+  "Duty": "Duty",
+  "Data": "Data",
+  "Remark": "Remark",
+  "Edesate": "Edesate",
+  "Eged": "Eged",
+  "Eged Date": "Eged Date",
+  "Eged No": "Eged No",
+  "Year": "Year"
 }

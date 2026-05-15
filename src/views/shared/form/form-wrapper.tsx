@@ -133,7 +133,7 @@ const FormPageWrapper = <T extends FormikValues>({
     <Page titleId={title}
       title={translatedTitle}
     >
-      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+      <Formik enableReinitialize initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
         {(formik: FormikProps<T>) => (
           <>
             {/* 🌟 Confirmation Dialog Rendering 🌟 */}

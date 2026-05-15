@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
 import ResourceLayout from 'src/views/pages/resources/details/layout/resource-layout';
+import ResourceQuantityList from 'src/views/pages/resources/details/resource-quantity/resource-quantity-list';
 import { resourceMenuIds } from 'src/views/pages/resources/details/layout/resource-menu-items';
 import subMenuItems, { findSubMenuItem, resourceQuantityMenuIds } from '../(sub-menu-items)';
 
-const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), resourceMenuIds.quantity);
+const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), resourceQuantityMenuIds.resourceQuantity.resourceQuantity);
 
 const ResourceQuantityPage = () => {
   const router = useRouter();
@@ -16,7 +17,7 @@ const ResourceQuantityPage = () => {
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <>
-        <>Resource Quantity List</>
+        <ResourceQuantityList resourceId={id as string} />
       </>
     </ResourceLayout>
   );

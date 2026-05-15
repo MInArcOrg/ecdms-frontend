@@ -6,7 +6,7 @@ export const resourceMasterModels = {
     createTitle: 'create-quality',
     editTitle: 'edit-quality',
     fileType: 'QUALITY',
-    flag: 'COMMON'
+    flag: 'MATERIAL'
   },
   quantityMeasurementUnit: {
     model: 'QuantityMeasurementUnit',
@@ -33,7 +33,7 @@ export const resourceMasterModels = {
     createTitle: 'create-supplier-address',
     editTitle: 'edit-supplier-address',
     fileType: 'SUPPLIER_ADDRESS',
-    flag: 'RESOURCE'
+    flag: 'MATERIAL'
   },
   supplierName: {
     model: 'SupplierName',
@@ -42,7 +42,7 @@ export const resourceMasterModels = {
     createTitle: 'create-supplier-name',
     editTitle: 'edit-supplier-name',
     fileType: 'SUPPLIER_NAME',
-    flag: 'RESOURCE'
+    flag: 'MATERIAL'
   },
   unitPrice: {
     model: 'UnitPrice',
@@ -51,7 +51,7 @@ export const resourceMasterModels = {
     createTitle: 'create-unit-price',
     editTitle: 'edit-unit-price',
     fileType: 'UNIT_PRICE',
-    flag: 'RESOURCE'
+    flag: 'MATERIAL'
   }
 };
 export type ResourceMasterModelKey = keyof typeof resourceMasterModels;

@@ -17,7 +17,8 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: resourceQuantityMenuIds.resourceQuantity.resourceQuantity,
         title: 'resource.navigation.submenu.resource-quantity.resource-quantity', // locale key
-        path: `/resources/${typeId}/details/${id}/resource-quantity/resource-quantity`
+        path: `/resources/${typeId}/details/${id}/resource-quantity/resource-quantity`,
+        model: 'resourcequantity'
       }
     ]
   }

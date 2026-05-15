@@ -10,6 +10,7 @@ import type { IApiResponse } from 'src/types/requests';
 import { uploadFile } from 'src/services/utils/file-utils';
 import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
 import { useState } from 'react';
+import { pastDateRule } from 'src/utils/validator/age';
 
 interface ExperienceDrawerType {
   open: boolean;
@@ -27,7 +28,7 @@ const ExperienceDrawer = (props: ExperienceDrawerType) => {
     company_name: yup.string().required('Company name is required'),
     position: yup.string().required('Position is required'),
     task_description: yup.string().required('Task description is required'),
-    start_date: yup.date().required('Start date is required'),
+    start_date: pastDateRule().required('Start date is required'),
     end_date: yup.date().required('End date is required')
   });
 
@@ -65,7 +66,7 @@ const ExperienceDrawer = (props: ExperienceDrawerType) => {
       }
       refetch();
       handleClose();
-    } catch (error) {}
+    } catch (error) { }
   };
 
   return (

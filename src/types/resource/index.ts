@@ -18,6 +18,7 @@ export interface ResourceSpecification {
   parent_id: string | null;
   resource_id: string;
   title: string;
+  name: string;
   description: string;
   image: string;
   datasource: string;
@@ -30,6 +31,7 @@ export interface ResourceBrand {
   parent_id: string | null;
   resource_id: string;
   title: string;
+  name: string;
   description: string;
   image: string;
   datasource: string;
@@ -265,6 +267,28 @@ export interface MachineryInformation {
 }
 
 export interface ResourcePrice {
+  id?: string;
+  resource_id: string;
+  resource_brand_id: string;
+  resource_specification_id: string;
+  resourceSpecification?: ResourceSpecification;
+  resourceBrand?: ResourceBrand;
+  unit_price_id?: string;
+  unitPrice?: ResourceGeneralMaster;
+  total_quantity_available?: number;
+  price_date?: string;
+  supplier_name_id: string;
+  supplierName?: ResourceGeneralMaster;
+  supplier_address_id: string;
+  supplierAddress?: ResourceGeneralMaster;
+  quality_id: string;
+  quality?: ResourceGeneralMaster;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface ResourceQuantity {
   id?: string;
   resource_id: string;
   resource_brand_id: string;
