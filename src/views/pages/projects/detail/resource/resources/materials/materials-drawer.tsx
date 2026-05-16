@@ -30,7 +30,6 @@ const MaterialsDrawer: React.FC<MaterialsDrawerProps> = ({ open, toggle, refetch
   const isEdit = Boolean(material?.id);
 
   const emptyValues: Resource = {
-    id: '',
     resourcetype_id: resourceTypeId,
     resourcecategory_id: '',
     resourcesubcategory_id: '',

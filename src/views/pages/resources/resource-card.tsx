@@ -39,11 +39,11 @@ const ResourceCard = ({
             <CardActions style={{ justifyContent: 'flex-end' }}>
               <Fragment>
                 <Box>
-                  <FileDrawer id={resource.id} type={'RESOURCE'} /> &nbsp;
+                  <FileDrawer id={resource.id || ''} type={'RESOURCE'} /> &nbsp;
                   <Box sx={{ display: 'flex' }}>
                     <ModelActionComponent
                       model="Resource"
-                      model_id={resource.id}
+                      model_id={resource.id || ''}
                       refetchModel={refetch}
                       resubmit={function (): void {
                         throw new Error('Function not implemented.');
@@ -53,7 +53,7 @@ const ResourceCard = ({
                         throw new Error('Function not implemented.');
                       }}
                     />
-                    <RowOptions onEdit={onEdit} onDelete={() => onDelete(resource.id)} item={resource} options={[]}
+                    <RowOptions onEdit={onEdit} onDelete={() => onDelete(resource.id || '')} item={resource} options={[]}
                       deletePermissionRule={{
                         action: 'delete',
                         subject: 'resource'

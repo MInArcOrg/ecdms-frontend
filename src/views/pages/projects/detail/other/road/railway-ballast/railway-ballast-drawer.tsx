@@ -3,6 +3,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import RailwayBallastForm from './railway-ballast-form';
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
@@ -25,7 +26,7 @@ const RailwayBallastDrawer = ({ open, toggle, refetch, railwayBallast, projectId
     railway_line_section_name: yup.string().required('Railway line section name is required'),
     railway_ballast_name: yup.string().required('Railway ballast name is required'),
     ballast_id_no: yup.string().nullable(),
-    ballast_construction_cost: yup.number().nullable().typeError('Ballast construction cost must be a number'),
+    ballast_construction_cost: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     remark: yup.string().nullable()
   });
 

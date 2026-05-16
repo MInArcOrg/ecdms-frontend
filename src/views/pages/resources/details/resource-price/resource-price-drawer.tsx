@@ -7,6 +7,7 @@ import { ResourcePrice } from 'src/types/resource';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import ResourcePriceForm from './resource-price-form';
 
 interface ResourcePriceDrawerType {
@@ -23,7 +24,7 @@ const validationSchema = yup.object().shape({
   supplier_name_id: yup.string().required('Supplier Name is required'),
   supplier_address_id: yup.string().required('Supplier Address is required'),
   quality_id: yup.string().required('Quality is required'),
-  total_quantity_available: yup.number().nullable(),
+  total_quantity_available: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
   price_date: yup.date().nullable(),
   unit_price_id: yup.string().nullable(),
   remark: yup.string().nullable()

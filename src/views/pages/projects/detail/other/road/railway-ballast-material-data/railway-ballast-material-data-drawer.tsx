@@ -3,6 +3,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import RailwayBallastMaterialDataForm from './railway-ballast-material-data-form';
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
@@ -34,9 +35,9 @@ const RailwayBallastMaterialDataDrawer = ({
     ballast_source_id: yup.string().required('Ballast source is required'),
     compaction_method_id: yup.string().required('Compaction method is required'),
     particle_size_distribution_grading: yup.string().nullable(),
-    ballast_used_quantity: yup.number().nullable().typeError('Ballast used quantity must be a number'),
-    ballast_material_size: yup.number().nullable().typeError('Ballast material size must be a number'),
-    ballast_layer_thickness: yup.number().nullable().typeError('Ballast layer thickness must be a number'),
+    ballast_used_quantity: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    ballast_material_size: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    ballast_layer_thickness: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     remark: yup.string().nullable()
   });
 

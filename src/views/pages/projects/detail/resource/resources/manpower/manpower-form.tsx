@@ -19,14 +19,9 @@ const ManpowerForm: React.FC<ManpowerFormProps> = ({ formik }) => {
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('resources.professional.firstName')} name="first_name" formatAsName={true} size="small" />
+        <CustomTextBox fullWidth label={t('resources.professional.fullName')} name="full_name" formatAsName={true} size="small" />
       </Grid>
-      <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('resources.professional.middleName')} name="middle_name" formatAsName={true} size="small" />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <CustomTextBox fullWidth label={t('resources.professional.lastName')} name="last_name" formatAsName={true} size="small" />
-      </Grid>
+
       <Grid item xs={12} sm={6}>
         <CustomTextBox fullWidth label={t('resources.professional.nationalIdNo')} name="national_id_no" size="small" />
       </Grid>

@@ -3,6 +3,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import AccessoryForm from './accessory-form';
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
@@ -25,12 +26,12 @@ const AccessoryDrawer = (props: AccessoryDrawerType) => {
     parent_id: yup.string().length(36).nullable(),
     project_id: yup.string().length(36).required('Project is required'),
     name: yup.string().max(255).required('Name is required'),
-    under_passes: yup.number().integer().nullable(),
-    ramps: yup.number().integer().nullable(),
-    traffic_signals: yup.number().integer().nullable(),
-    repair_stations: yup.number().integer().nullable(),
+    under_passes: nullableIntegerSchema(),
+    ramps: nullableIntegerSchema(),
+    traffic_signals: nullableIntegerSchema(),
+    repair_stations: nullableIntegerSchema(),
     bicycle_lanes: yup.boolean().nullable(),
-    bicycle_signals: yup.number().integer().nullable(),
+    bicycle_signals: nullableIntegerSchema(),
     culvert: yup.boolean().nullable(),
     bridge: yup.boolean().nullable()
   });

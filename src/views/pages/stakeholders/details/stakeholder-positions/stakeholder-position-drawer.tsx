@@ -3,6 +3,7 @@ import type { IApiPayload } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import PositionForm from './stakeholder-position-form';
 import stakeholderPositionApiService from 'src/services/stakeholder/stakeholder-position-service';
 import type { StakeholderPosition } from 'src/types/stakeholder/stakeholder-positions';
@@ -28,8 +29,8 @@ const PositionDrawer = (props: PositionDrawerType) => {
     parent_id: yup.string().length(36).nullable(),
     required_education: yup.string().max(255).nullable(),
     required_work_experience: yup.string().max(255).nullable(),
-    salary: yup.number().nullable(),
-    no_of_professionals: yup.number().integer('Number of professionals must be an integer').nullable(),
+    salary: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    no_of_professionals: nullableIntegerSchema(),
     reference: yup.string().max(255).nullable()
   });
 

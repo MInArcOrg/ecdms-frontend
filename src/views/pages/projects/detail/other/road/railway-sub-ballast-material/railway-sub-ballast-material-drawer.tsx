@@ -1,5 +1,6 @@
 import type { FormikProps } from 'formik';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 
 import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import type { RailwaySubBallastMaterial } from 'src/types/project/other'; // Updated import
@@ -34,12 +35,12 @@ const RailwaySubBallastMaterialDrawer = ({
   const validationSchema = yup.object().shape({
     railway_line_section_name: yup.string().required('Railway line section name is required'),
     sub_ballast_material_type_id: yup.string().required('Sub-ballast material type is required'), // New field, assuming it's required
-    layer_thickness: yup.number().nullable().optional(),
-    layer_depth: yup.number().nullable().optional(),
-    density: yup.number().nullable().optional(),
-    moisture_content: yup.number().nullable().optional(),
+    layer_thickness: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    layer_depth: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    density: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    moisture_content: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     method_used_for_compaction: yup.string().nullable().optional(),
-    compaction_density: yup.number().nullable().optional(),
+    compaction_density: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     remark: yup.string().nullable().optional()
   });
 

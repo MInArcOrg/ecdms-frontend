@@ -5,6 +5,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import RailwayFasteningSystemConditionAssessmentForm from './railway-fastening-system-condition-assessment-form';
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
@@ -41,8 +42,8 @@ const RailwayFasteningSystemConditionAssessmentDrawer = ({
     defect_presence: yup.string().nullable(),
     fastening_system_stability_and_alignment: yup.string().nullable(),
     rail_fastening_model_number: yup.string().nullable(),
-    rail_fastening_needed_quantity: yup.number().nullable().min(0, 'Quantity cannot be negative'),
-    rail_fastening_expected_lifespan: yup.number().nullable().min(0, 'Lifespan cannot be negative'),
+    rail_fastening_needed_quantity: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    rail_fastening_expected_lifespan: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     rail_fastening_availability: yup.boolean().nullable(),
     remark: yup.string().nullable()
   });

@@ -3,6 +3,7 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import HydroElectricDamForm from './hydro-electric-dam-form';
 
 import { useState } from 'react';
@@ -35,8 +36,8 @@ const HydroElectricDamDrawer = (props: HydroElectricDamDrawerType) => {
     elevation_from_ngl: yup.number().max(10000, 'Elevation from NGL must be at most 10000').nullable(),
     dam_type: yup.string().max(100).nullable(),
     dam_volume: yup.string().max(100).nullable(),
-    gated_spillway_no: yup.number().integer('Gated spillway number must be an integer').nullable(),
-    none_gated_spillway_no: yup.number().integer('None-gated spillway number must be an integer').nullable()
+    gated_spillway_no: nullableIntegerSchema(),
+    none_gated_spillway_no: nullableIntegerSchema()
   });
 
   const isEdit = Boolean(hydroElectricDam?.id);

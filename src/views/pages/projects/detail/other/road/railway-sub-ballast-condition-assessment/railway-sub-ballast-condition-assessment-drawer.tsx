@@ -1,5 +1,6 @@
 import type { FormikProps } from 'formik';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 
 import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import type { RailwaySubBallastConditionAssessment } from 'src/types/project/other';
@@ -39,7 +40,7 @@ const RailwaySubBallastConditionAssessmentDrawer = ({
     cracking_observations: yup.string().nullable().optional(),
     erosion_issues: yup.string().nullable().optional(),
     unwanted_vegetation_presence: yup.string().nullable().optional(),
-    testing_frequency_per_year: yup.number().nullable().optional(),
+    testing_frequency_per_year: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     sub_ballast_resistance: yup.string().nullable().optional(),
     sub_ballast_degradation_rate: yup.string().nullable().optional(),
     drainage_performance: yup.string().nullable().optional(),

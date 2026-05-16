@@ -30,49 +30,49 @@ const HydrologicalInformationDrawer = (props: HydrologicalInformationDrawerType)
   };
 
   const validationSchema = yup.object().shape({
-    water_source: yup.string().nullable(),
-    catchment_area:  limitNumberDigits(
-          yup
-            .number()
-            .nullable()
-            .transform((value) => (isNaN(value) ? null : value)),
-          { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
-        ),
+    water_source: yup.string().required(),
+    catchment_area: limitNumberDigits(
+      yup
+        .number()
+        .required()
+        .transform((value) => (isNaN(value) ? null : value)),
+      { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
+    ),
     elevation_change: limitNumberDigits(
-          yup
-            .number()
-            .nullable()
-            .transform((value) => (isNaN(value) ? null : value)),
-          { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
-        ),
+      yup
+        .number()
+        .nullable()
+        .transform((value) => (isNaN(value) ? null : value)),
+      { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
+    ),
     head: limitNumberDigits(
-          yup
-            .number()
-            .nullable()
-            .transform((value) => (isNaN(value) ? null : value)),
-          { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
-        ),
+      yup
+        .number()
+        .nullable()
+        .transform((value) => (isNaN(value) ? null : value)),
+      { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
+    ),
     total_inflow: limitNumberDigits(
-          yup
-            .number()
-            .nullable()
-            .transform((value) => (isNaN(value) ? null : value)),
-          { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
-        ),
+      yup
+        .number()
+        .nullable()
+        .transform((value) => (isNaN(value) ? null : value)),
+      { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
+    ),
     active_storage_volume: limitNumberDigits(
-          yup
-            .number()
-            .nullable()
-            .transform((value) => (isNaN(value) ? null : value)),
-          { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
-        ),
+      yup
+        .number()
+        .nullable()
+        .transform((value) => (isNaN(value) ? null : value)),
+      { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
+    ),
     water_stored: limitNumberDigits(
-          yup
-            .number()
-            .nullable()
-            .transform((value) => (isNaN(value) ? null : value)),
-          { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
-        ),
+      yup
+        .number()
+        .nullable()
+        .transform((value) => (isNaN(value) ? null : value)),
+      { maxIntegerDigits: 12, maxDecimalPlaces: 2 }
+    ),
     remark: yup.string().nullable()
   });
 

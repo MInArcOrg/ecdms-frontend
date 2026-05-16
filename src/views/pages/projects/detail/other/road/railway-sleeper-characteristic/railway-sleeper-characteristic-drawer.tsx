@@ -3,6 +3,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import RailwaySleeperCharacteristicForm from './railway-sleeper-characteristic-form';
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
@@ -31,11 +32,11 @@ const RailwaySleeperCharacteristicDrawer = ({
   const validationSchema = yup.object().shape({
     railway_line_section_name: yup.string().required('Railway line section name is required'),
     sleeper_type: yup.string().nullable(),
-    sleeper_size_and_dimensions: yup.number().nullable().typeError('Sleeper size and dimensions must be a number'),
+    sleeper_size_and_dimensions: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     sleeper_distance_between_pairs: yup.string().nullable(),
     sleeper_material_specification: yup.string().nullable(),
     sleeper_spacing: yup.string().nullable(),
-    spacing_between: yup.number().nullable().typeError('Spacing between must be a number'),
+    spacing_between: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     sleeper_shape: yup.string().nullable(),
     remark: yup.string().nullable()
   });

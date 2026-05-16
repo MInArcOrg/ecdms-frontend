@@ -5,6 +5,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import type { RailwayVehicleSpecification } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
@@ -36,8 +37,8 @@ const RailwayVehicleSpecificationDrawer = ({
     railway_vehicle_identification_id: yup.string().required('Vehicle Identification ID is required'),
     vehicle_dimensions: yup.string().nullable(),
     vehicle_weight_and_load_capacity: yup.string().nullable(),
-    maximum_speed: yup.number().nullable().typeError('Maximum speed must be a number (Double)'),
-    braking_system_type: yup.string().nullable(),
+    maximum_speed: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    braking_system_type_id: yup.string().nullable(),
     remark: yup.string().nullable()
   });
 

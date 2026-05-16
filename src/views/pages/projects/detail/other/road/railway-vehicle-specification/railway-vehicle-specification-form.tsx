@@ -11,6 +11,9 @@ import CustomSelectBox from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
+
 interface RailwayVehicleSpecificationFormProps {
   formik: FormikProps<RailwayVehicleSpecification>;
   defaultFile: File | null;
@@ -23,6 +26,19 @@ const RailwayVehicleSpecificationForm: React.FC<RailwayVehicleSpecificationFormP
     queryKey: ['vehicle-identifications'],
     queryFn: () => projectOtherApiSecondService<RailwayVehicleIdentification>().getAll('railway-vehicle-identifications', dropDownConfig())
   });
+
+  const { data: brakingSystemTypes } = useQuery({
+    queryKey: [projectMasterModels.brakingSystemType.model],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll(
+        dropDownConfig({
+          filter: {
+            model: projectMasterModels.brakingSystemType.model
+          }
+        })
+      )
+  });
+
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -73,14 +89,19 @@ const RailwayVehicleSpecificationForm: React.FC<RailwayVehicleSpecificationFormP
           type="number"
         />
 
-        <CustomTextBox
+        <CustomSelectBox
           fullWidth
           label={t('project.other.railway-vehicle-specification.details.braking_system_type')}
-          placeholder="e.g. Air brake, Hydraulic brake"
-          name="braking_system_type"
-          value={formik.values.braking_system_type}
+          name="braking_system_type_id"
+          value={formik.values.braking_system_type_id}
           size="small"
           sx={{ mb: 2 }}
+          options={
+            brakingSystemTypes?.payload.map((type) => ({
+              label: type.title,
+              value: type.id
+            })) || []
+          }
         />
 
         <CustomTextBox

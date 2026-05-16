@@ -3,6 +3,7 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import GeothermalPowerInfrastructureForm from './geothermal-power-infrastructure-form';
 
 import { useState } from 'react';
@@ -33,7 +34,7 @@ const GeothermalPowerInfrastructureDrawer = (props: GeothermalPowerInfrastructur
     turbine_manufacturer: yup.string().max(100).nullable(),
     turbine_model: yup.string().max(100).nullable(),
     turbine_type_id: yup.string().uuid().required('Turbine type is required'),
-    each_turbine_capacity: yup.number().nullable(),
+    each_turbine_capacity: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     remark: yup.string().max(100).nullable()
   });
 

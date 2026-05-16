@@ -3,6 +3,7 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import MaintenanceHistoryForm from './maintenance-history-form';
 
 import { useState } from 'react';
@@ -35,7 +36,7 @@ const MaintenanceHistoryDrawer = (props: MaintenanceHistoryDrawerType) => {
     severity_level_id: yup.string().uuid().required('Severity level is required'),
     suggested_repair_id: yup.string().uuid().required('Suggested repair is required'),
     recommended_action_urgency_id: yup.string().uuid().required('Recommended action urgency is required'),
-    maintenance_cost: yup.number().nullable().typeError('Maintenance cost must be a number'),
+    maintenance_cost: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     remark: yup.string().nullable()
   });
 

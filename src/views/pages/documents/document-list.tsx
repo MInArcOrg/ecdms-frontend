@@ -87,7 +87,7 @@ function DocumentList() {
           toggle={toggleDrawer}
           document={selectedRow as Document}
           refetch={refetch}
-          typeId={String(typeId)}
+          typeId={typeId as string || ''}
           type={type?.payload}
         />
       )}
@@ -116,7 +116,7 @@ function DocumentList() {
                   subject: 'document'
                 }
               },
-               search: {
+              search: {
                 enabled: true,
                 permission: {
                   action: "read",
@@ -158,7 +158,7 @@ function DocumentList() {
         />
       </Card>
       {showDetailDrawer && (
-        <DocumentDetail documentId={String(selectedRow?.id)} show={showDetailDrawer} toggleDetail={toggleDetailDrawer} />
+        <DocumentDetail documentId={selectedRow?.id || ''} show={showDetailDrawer} toggleDetail={toggleDetailDrawer} />
       )}
     </Box>
   );

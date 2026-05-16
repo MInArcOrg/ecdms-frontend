@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 
 import { FormikProps } from 'formik';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
@@ -40,9 +41,9 @@ const validationSchema = yup.object().shape({
   legal_status: yup.string().nullable().max(50),
   confidentiality_level: yup.string().nullable().max(50),
   file_format: yup.string().nullable().max(20),
-  file_size_mb: yup.number().nullable(),
+  file_size_mb: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
   document_link: yup.string().nullable().max(100),
-  version_no: yup.number().integer().nullable(),
+  version_no: nullableIntegerSchema(),
   remark: yup.string().nullable()
 });
 

@@ -9,6 +9,7 @@ import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/format
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import EducationForm from './user-education-form';
 
 interface EducationDrawerType {
@@ -31,7 +32,7 @@ const EducationDrawer = (props: EducationDrawerType) => {
     program_type: yup.string().max(255).required('Program type is required'),
     start_date: yup.date().required('Start date is required'),
     end_date: yup.date().required('End date is required'),
-    gpa: yup.number().required('GPA is required').min(0, 'GPA must be positive').max(4, 'GPA must be 4 or less')
+    gpa: limitNumberDigits(nullableNumberSchema().required('GPA is required'), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }).min(0, 'GPA must be positive').max(4, 'GPA must be 4 or less')
   });
 
   const isEdit = Boolean(education?.id);

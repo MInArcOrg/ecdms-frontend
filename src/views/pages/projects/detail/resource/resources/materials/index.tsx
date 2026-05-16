@@ -31,11 +31,7 @@ const ProjectMaterialsList = ({ projectId }: { projectId: string }) => {
   const fetchMaterials = (params: GetRequestParam): Promise<IApiResponse<Resource[]>> => {
     return resourceApiService.getAll({
       ...params,
-      filter: {
-        ...params.filter,
-        parent: projectId,
-        resourcetype_id: materialTypeId
-      }
+
     });
   };
 

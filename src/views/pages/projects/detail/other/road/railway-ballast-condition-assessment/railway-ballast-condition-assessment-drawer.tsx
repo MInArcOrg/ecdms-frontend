@@ -1,5 +1,6 @@
 import type { FormikProps } from 'formik';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 
 import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import type { RailwayBallastConditionAssessment } from 'src/types/project/other';
@@ -37,7 +38,7 @@ const RailwayBallastConditionAssessmentDrawer = ({
     fouling_presence: yup.string().required('Fouling presence is required'),
     ballast_degradation_indicators: yup.string().required('Ballast degradation indicators are required'),
     ballast_quality_testing_method: yup.string().required('Ballast quality testing method is required'),
-    testing_frequency: yup.number().nullable().typeError('Testing frequency must be a number'),
+    testing_frequency: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     ballast_resistance: yup.string().nullable(),
     ballast_degradation_rate: yup.string().required('Ballast degradation rate is required'),
     drainage_performance: yup.string().required('Drainage performance is required'),

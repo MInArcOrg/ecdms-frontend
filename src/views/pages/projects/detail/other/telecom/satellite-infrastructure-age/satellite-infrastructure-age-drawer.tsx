@@ -5,6 +5,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import SatelliteInfrastructureAgeForm from './satellite-infrastructure-age-form';
 
 import { useState } from 'react';
@@ -35,11 +36,11 @@ const SatelliteInfrastructureAgeDrawer = (props: SatelliteInfrastructureAgeDrawe
   const validationSchema = yup.object().shape({
     parent_id: yup.string().nullable(),
     satellite_network_id: yup.string().required('Satellite network is required'),
-    cell_towers: yup.number().integer().nullable().min(0, 'Age must be a positive number').transform((value) => (isNaN(value) ? null : value)),
-    antennas: yup.number().integer().nullable().min(0, 'Age must be a positive number').transform((value) => (isNaN(value) ? null : value)),
-    base_stations: yup.number().integer().nullable().min(0, 'Age must be a positive number').transform((value) => (isNaN(value) ? null : value)),
-    repeaters: yup.number().integer().nullable().min(0, 'Age must be a positive number').transform((value) => (isNaN(value) ? null : value)),
-    switches: yup.number().integer().nullable().min(0, 'Age must be a positive number').transform((value) => (isNaN(value) ? null : value)),
+    cell_towers: nullableIntegerSchema().min(0, 'Age must be a positive number').transform((value) => (isNaN(value) ? null : value)),
+    antennas: nullableIntegerSchema().min(0, 'Age must be a positive number').transform((value) => (isNaN(value) ? null : value)),
+    base_stations: nullableIntegerSchema().min(0, 'Age must be a positive number').transform((value) => (isNaN(value) ? null : value)),
+    repeaters: nullableIntegerSchema().min(0, 'Age must be a positive number').transform((value) => (isNaN(value) ? null : value)),
+    switches: nullableIntegerSchema().min(0, 'Age must be a positive number').transform((value) => (isNaN(value) ? null : value)),
     others: yup.string().nullable()
   });
 

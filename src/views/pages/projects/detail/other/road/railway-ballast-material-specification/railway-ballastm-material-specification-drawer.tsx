@@ -1,5 +1,6 @@
 import type { FormikProps } from 'formik';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 
 import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import type { RailwayBallastMaterialSpecification } from 'src/types/project/other';
@@ -37,9 +38,9 @@ const RailwayBallastMaterialSpecificationDrawer = ({
     ballast_material_type_id: yup
       .string()
       .required('project.other.railway-ballast-material-specification.validation.ballast_material_type_id'),
-    specific_gravity: yup.number().nullable().typeError('project.other.railway-ballast-material-specification.validation.specific_gravity'),
-    porosity: yup.number().nullable().typeError('project.other.railway-ballast-material-specification.validation.porosity'),
-    water_absorption: yup.number().nullable().typeError('project.other.railway-ballast-material-specification.validation.water_absorption'),
+    specific_gravity: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    porosity: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    water_absorption: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     shape: yup.string().nullable(),
     average_particle_length: yup
       .number()

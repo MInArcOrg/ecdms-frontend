@@ -54,7 +54,7 @@ const RailwaySignalingSystemCard: React.FC<RailwaySignalingSystemCardProps> = ({
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-signaling-system.details.signaling_system_type')}:{' '}
-            {railwaySignalingSystem.signaling_system_type || 'N/A'}
+            {railwaySignalingSystem.signalingSystemType?.title || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-signaling-system.details.signaling_system_manufacturer_or_supplier_name')}:{' '}

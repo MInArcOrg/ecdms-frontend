@@ -10,6 +10,7 @@ import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/format
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import ProjectTimeForm from './project-time-form'; // Import your projectTime form component
 
 interface ProjectTimeDrawerType {
@@ -30,10 +31,10 @@ const validationSchema = yup.object().shape({
       return moment(value).isSameOrBefore(moment(site_handover_date), 'day');
     }),
   site_handover_date: yup.string().nullable(),
-  mobilization_days_no: yup.number().integer().nullable(),
+  mobilization_days_no: nullableIntegerSchema(),
   commencement_date: yup.string().nullable(),
-  original_contract_duration: yup.number().integer().nullable(),
-  revision_no: yup.number().integer().nullable()
+  original_contract_duration: nullableIntegerSchema(),
+  revision_no: nullableIntegerSchema()
 });
 
 const ProjectTimeDrawer = (props: ProjectTimeDrawerType) => {

@@ -5,6 +5,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableIntegerSchema, nullableNumberSchema } from 'src/utils/validator/number';
 import GeothermalPowerWellForm from './geothermal-power-well-form';
 
 import { useState } from 'react';
@@ -35,29 +36,12 @@ const GeothermalPowerWellDrawer = (props: GeothermalPowerWellDrawerType) => {
   const validationSchema = yup.object().shape({
     parent_id: yup.string().uuid().nullable(),
     wells_name: yup.string().max(100).required(),
-    wells_number: yup
-      .number()
-      .required('Wells number is required.')
-      .integer('Must be an integer')
-      .transform((value) => (isNaN(value) ? null : value)),
-    depth: yup
-      .number()
-      .nullable()
-      .transform((value) => (isNaN(value) ? null : value)),
-    well_diameter: yup
-      .number()
-      .nullable()
-      .transform((value) => (isNaN(value) ? null : value)),
+    wells_number: nullableIntegerSchema().required('Wells number is required.'),
+    depth: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    well_diameter: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     drilling_period: yup.string().nullable(),
-    temperature_at_bottom_hole: yup
-      .number()
-      .nullable()
-      .transform((value) => (isNaN(value) ? null : value)),
-    plant_life: yup
-      .number()
-      .nullable()
-      .integer('Must be an integer')
-      .transform((value) => (isNaN(value) ? null : value)),
+    temperature_at_bottom_hole: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    plant_life: nullableIntegerSchema(),
     remark: yup.string().max(100).nullable()
   });
 

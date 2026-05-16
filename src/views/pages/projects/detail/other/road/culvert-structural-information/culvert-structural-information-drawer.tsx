@@ -3,6 +3,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import CulvertStructuralInformationForm from './culvert-structural-information-form';
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
@@ -26,20 +27,20 @@ const CulvertStructuralInformationDrawer = (props: CulvertStructuralInformationD
     project_id: yup.string().length(36).required('Project is required'),
     culvert_id: yup.string().length(36).required('Culvert is required'),
     culvertTypeId: yup.string().length(36).nullable(),
-    culvert_barrel_length: yup.number().nullable(),
-    culvert_height: yup.number().nullable(),
-    opening_number: yup.number().integer().nullable(),
-    opening_width: yup.number().nullable(),
-    total_culvert_width: yup.number().nullable(),
-    distance_between_barrels: yup.number().nullable(),
-    head_wall_length: yup.number().nullable(),
+    culvert_barrel_length: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    culvert_height: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    opening_number: nullableIntegerSchema(),
+    opening_width: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    total_culvert_width: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    distance_between_barrels: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    head_wall_length: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     pier_type_id: yup.string().length(36).required('Pier type is required'),
-    pier_height: yup.number().nullable(),
+    pier_height: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     abutment_type_id: yup.string().length(36).required('Abutment type is required'),
-    abutment_average_height: yup.number().nullable(),
+    abutment_average_height: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     endwall_type_inlet_id: yup.string().length(36).required('Endwall type inlet is required'),
     endwall_type_outlet_id: yup.string().length(36).required('Endwall type outlet is required'),
-    wingwall_average_length: yup.number().nullable(),
+    wingwall_average_length: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     paved_water_way_type_id: yup.string().length(36).required('Paved water way type is required'),
     soil_type_id: yup.string().length(36).required('Soil type is required')
   });

@@ -225,7 +225,7 @@ export const projectMasterModels = {
     fileType: 'ROAD_SAFETY_FEATURE',
     flag: 'ROAD'
   },
-  culvertType:{
+  culvertType: {
     model: 'CulvertType',
     dbModel: 'culverttype',
     title: 'culvert-types',
@@ -1169,6 +1169,33 @@ export const projectMasterModels = {
     editTitle: 'edit-construction-type',
     fileType: 'CONSTRUCTION_TYPE',
     flag: 'COMMON'
+  },
+  signalingSystemType: {
+    model: 'SignalingSystemType',
+    dbModel: 'signalingsystemtype',
+    title: 'signaling-system-types',
+    createTitle: 'create-signaling-system-type',
+    editTitle: 'edit-signaling-system-type',
+    fileType: 'SIGNALING_SYSTEM_TYPE',
+    flag: 'RAILWAY'
+  },
+  communicationSystemType: {
+    model: 'CommunicationSystemType',
+    dbModel: 'communicationsystemtype',
+    title: 'communication-system-types',
+    createTitle: 'create-communication-system-type',
+    editTitle: 'edit-communication-system-type',
+    fileType: 'COMMUNICATION_SYSTEM_TYPE',
+    flag: 'RAILWAY'
+  },
+  brakingSystemType: {
+    model: 'BrakingSystemType',
+    dbModel: 'brakingsystemtype',
+    title: 'braking-system-types',
+    createTitle: 'create-braking-system-type',
+    editTitle: 'edit-braking-system-type',
+    fileType: 'BRAKING_SYSTEM_TYPE',
+    flag: 'RAILWAY'
   },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;

@@ -3,6 +3,7 @@ import type { IApiPayload } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import DepartmentForm from './stakeholder-department-form';
 import stakeholderDepartmentApiService from 'src/services/stakeholder/stakeholder-department-service';
 import type { StakeholderDepartment } from 'src/types/stakeholder/stakeholder-department';
@@ -26,8 +27,8 @@ const DepartmentDrawer = (props: DepartmentDrawerType) => {
     stakeholder_department_id: yup.string().length(36).nullable(),
     required_education: yup.string().max(255).nullable(),
     required_work_experience: yup.string().max(255).nullable(),
-    salary: yup.number().nullable(),
-    no_of_professionals: yup.number().integer().nullable(),
+    salary: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    no_of_professionals: nullableIntegerSchema(),
     reference: yup.string().nullable()
   });
 

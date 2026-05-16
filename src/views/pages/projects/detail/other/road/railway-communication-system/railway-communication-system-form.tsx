@@ -7,6 +7,12 @@ import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import type { RailwayCommunicationSystem } from 'src/types/project/other';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
 
+import { useQuery } from '@tanstack/react-query';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
+import CustomSelectBox from 'src/views/shared/form/custom-select';
+import { dropDownConfig } from 'src/configs/api-constants';
+
 interface RailwayCommunicationSystemFormProps {
   formik: FormikProps<RailwayCommunicationSystem>;
 
@@ -21,6 +27,18 @@ const RailwayCommunicationSystemForm: React.FC<RailwayCommunicationSystemFormPro
   onDefaultFileChange
 }) => {
   const { t } = useTranslation();
+
+  const { data: communicationSystemTypes } = useQuery({
+    queryKey: [projectMasterModels.communicationSystemType.model],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll(
+        dropDownConfig({
+          filter: {
+            model: projectMasterModels.communicationSystemType.model
+          }
+        })
+      )
+  });
 
   return (
     <Grid container spacing={gridSpacing}>
@@ -37,16 +55,19 @@ const RailwayCommunicationSystemForm: React.FC<RailwayCommunicationSystemFormPro
           sx={{ mb: 2 }}
         />
 
-        <CustomTextBox
+        <CustomSelectBox
           fullWidth
           label={t('project.other.railway-communication-system.details.communication_system_type')}
-          placeholder={t('project.other.railway-communication-system.details.communication_system_type')}
-          name="communication_system_type"
-          value={formik.values.communication_system_type}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
+          name="communication_system_type_id"
+          value={formik.values.communication_system_type_id}
           size="small"
           sx={{ mb: 2 }}
+          options={
+            communicationSystemTypes?.payload.map((type) => ({
+              label: type.title,
+              value: type.id
+            })) || []
+          }
         />
 
         <CustomTextBox

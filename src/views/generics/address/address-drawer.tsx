@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import { FormikProps } from 'formik';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
@@ -20,8 +21,8 @@ const AddressDrawer = (props: AddressDrawerType) => {
     country: yup.string().max(255).required('Country is required'),
     region: yup.string().max(255).nullable(),
     city: yup.string().max(255),
-    northing: yup.number().required('Northing is required'),
-    easting: yup.number().required('Easting is required'),
+    northing: limitNumberDigits(nullableNumberSchema().required('Northing is required'), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    easting: limitNumberDigits(nullableNumberSchema().required('Easting is required'), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     subcity: yup.string().max(255).nullable(),
     street: yup.string().max(255).nullable(),
     block_number: yup
@@ -36,7 +37,7 @@ const AddressDrawer = (props: AddressDrawerType) => {
       .nullable(),
     hq: yup.boolean().nullable(),
     
-    revision_no: yup.number().integer().nullable()
+    revision_no: nullableIntegerSchema()
   });
   // ** Props
   const { open, toggle, refetch, address, modelId } = props;

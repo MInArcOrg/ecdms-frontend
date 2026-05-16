@@ -37,13 +37,6 @@ export const manpowerColumns = (
     },
     {
       flex: 0.15,
-      minWidth: 180,
-      field: 'email',
-      headerName: t('resources.professional.email'),
-      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row.email || t('common.not-available')}</Typography>
-    },
-    {
-      flex: 0.15,
       minWidth: 160,
       field: 'phone_no',
       headerName: t('resources.professional.phoneNo'),

@@ -3,6 +3,7 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import MobileNetworkComponentAgeForm from './mobile-network-component-age-form';
 
 import { useState } from 'react';
@@ -31,12 +32,12 @@ const MobileNetworkComponentAgeDrawer = (props: MobileNetworkComponentAgeDrawerT
   const validationSchema = yup.object().shape({
     parent_id: yup.string().nullable(),
     mobile_network_id: yup.string().required('Mobile network ID is required'),
-    cell: yup.number().nullable().min(0, 'Age must be a positive number'),
-    towers: yup.number().nullable().min(0, 'Age must be a positive number'),
-    antennas: yup.number().nullable().min(0, 'Age must be a positive number'),
-    base_stations: yup.number().nullable().min(0, 'Age must be a positive number'),
-    repeaters: yup.number().nullable().min(0, 'Age must be a positive number'),
-    switches: yup.number().nullable().min(0, 'Age must be a positive number'),
+    cell: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    towers: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    antennas: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    base_stations: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    repeaters: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    switches: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     others: yup.string().nullable()
   });
 

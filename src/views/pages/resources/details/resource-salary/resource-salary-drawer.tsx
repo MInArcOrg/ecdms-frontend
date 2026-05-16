@@ -7,6 +7,7 @@ import { ResourceSalary } from 'src/types/resource';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import ResourceSalaryForm from './resource-salary-form';
 import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
 
@@ -20,8 +21,8 @@ interface ResourceSalaryDrawerType {
 
 const validationSchema = yup.object().shape({
   year: yup.string().required(),
-  min_pay: yup.number().required(),
-  max_pay: yup.number().required(),
+  min_pay: limitNumberDigits(nullableNumberSchema().required(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+  max_pay: limitNumberDigits(nullableNumberSchema().required(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
   salary_type: yup.string().required()
 });
 

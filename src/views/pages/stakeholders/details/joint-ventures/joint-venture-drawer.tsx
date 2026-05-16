@@ -3,6 +3,7 @@ import type { IApiPayload } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import JointVentureForm from './joint-venture-form';
 import jointVentureApiService from 'src/services/stakeholder/joint-venture-service';
 import type { JointVenture } from 'src/types/stakeholder/joint-venture';
@@ -28,7 +29,7 @@ const JointVentureDrawer = (props: JointVentureDrawerType) => {
   };
   const validationSchema = yup.object().shape({
     name: nameRule.required('Name is required'),
-    member_companies_no: yup.number().required('Number of member companies is required').positive().integer(),
+    member_companies_no: limitNumberDigits(nullableNumberSchema().required('Number of member companies is required'), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }).positive().integer(),
     description: yup.string().required('Description is required'),
     reference: yup.string().nullable()
   });

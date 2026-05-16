@@ -18,8 +18,7 @@ interface ManpowerDrawerProps {
 }
 
 const validationSchema = yup.object().shape({
-  first_name: yup.string().required('First name is required'),
-  last_name: yup.string().required('Last name is required'),
+  full_name: yup.string().required('Full name is required'),
   national_id_no: nationalIdRule.required('National ID number is required'),
   date_of_birth: yup.date().required('Date of birth is required'),
   gender: yup.string().required('Gender is required'),
@@ -34,6 +33,7 @@ const ManpowerDrawer: React.FC<ManpowerDrawerProps> = ({ open, toggle, refetch, 
     first_name: '',
     middle_name: '',
     last_name: '',
+    full_name: '',
     national_id_no: '',
     date_of_birth: '',
     gender: '',
@@ -53,7 +53,8 @@ const ManpowerDrawer: React.FC<ManpowerDrawerProps> = ({ open, toggle, refetch, 
     data: {
       ...values,
       id: manpower?.id,
-      parentId: projectId
+      parentId: projectId,
+      parent: projectId,
     },
     files: []
   });

@@ -5,6 +5,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import type { RailwayVehicleInteriorAndPassengerAmenity } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
@@ -34,7 +35,7 @@ const RailwayVehicleInteriorAndPassengerAmenityDrawer = ({
 
   const validationSchema = yup.object().shape({
     railway_vehicle_identification_id: yup.string().required('Vehicle Identification ID is required'),
-    seating_capacity: yup.number().integer('Must be a whole number').nullable().typeError('Seating capacity must be a number'),
+    seating_capacity: nullableIntegerSchema(),
     passenger_amenities_availability: yup.string().nullable(),
     accessibility_features_for_passengers_with_disabilities: yup.boolean().nullable(),
     remark: yup.string().nullable()

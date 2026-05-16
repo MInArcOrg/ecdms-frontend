@@ -11,6 +11,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import SatelliteNetworkCoverageForm from './satellite-network-coverage-form';
 
 interface SatelliteNetworkCoverageDrawerProps {
@@ -41,7 +42,7 @@ const SatelliteNetworkCoverageDrawer = ({
   const validationSchema = yup.object().shape({
     satellite_network_id: yup.string().required('Satellite network is required'),
     network_infrastructure_type_id: yup.string().required('Network infrastructure type is required'),
-    total_coverage_area: yup.number().nullable().transform((value) => (isNaN(value) ? null : value)),
+    total_coverage_area: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }).transform((value) => (isNaN(value) ? null : value)),
     coverage_population_no: yup
       .number()
       .nullable()
@@ -52,9 +53,9 @@ const SatelliteNetworkCoverageDrawer = ({
       .nullable()
       .integer('Must be an integer')
       .transform((value) => (isNaN(value) ? null : value)),
-    average_download_speed: yup.number().nullable().transform((value) => (isNaN(value) ? null : value)),
-    average_upload_speed: yup.number().nullable().transform((value) => (isNaN(value) ? null : value)),
-    signal_strength: yup.number().nullable().transform((value) => (isNaN(value) ? null : value)),
+    average_download_speed: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }).transform((value) => (isNaN(value) ? null : value)),
+    average_upload_speed: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }).transform((value) => (isNaN(value) ? null : value)),
+    signal_strength: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }).transform((value) => (isNaN(value) ? null : value)),
     others: yup.string().nullable()
   });
 

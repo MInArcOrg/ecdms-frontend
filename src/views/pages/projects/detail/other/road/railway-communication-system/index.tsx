@@ -76,43 +76,43 @@ const RailwayCommunicationSystemList: React.FC<RailwayCommunicationSystemListPro
   const mapRailwayCommunicationSystemToDetailItems = (
     communicationSystem: RailwayCommunicationSystem
   ): { title: string; value: string }[] => [
-    {
-      title: t('common.table-columns.id'),
-      value: communicationSystem?.id || 'N/A'
-    },
-    {
-      title: t('project.other.railway-communication-system.details.railway_line_section_name'),
-      value: communicationSystem?.railway_line_section_name || 'N/A'
-    },
-    {
-      title: t('project.other.railway-communication-system.details.communication_system_type'),
-      value: communicationSystem?.communication_system_type || 'N/A'
-    },
-    {
-      title: t('project.other.railway-communication-system.details.communication_system_protocols_or_standards'),
-      value: communicationSystem?.communication_system_protocols_or_standards || 'N/A'
-    },
-    {
-      title: t('project.other.railway-communication-system.details.communication_system_components'),
-      value: communicationSystem?.communication_system_components || 'N/A'
-    },
-    {
-      title: t('project.other.railway-communication-system.details.signaling_system_components'),
-      value: communicationSystem?.signaling_system_components || 'N/A'
-    },
-    {
-      title: t('project.other.railway-communication-system.details.remark'),
-      value: communicationSystem?.remark || 'N/A'
-    },
-    {
-      title: t('common.table-columns.created-at'),
-      value: communicationSystem?.created_at ? formatCreatedAt(communicationSystem.created_at) : 'N/A'
-    },
-    {
-      title: t('common.table-columns.updated-at'),
-      value: communicationSystem?.updated_at ? formatCreatedAt(communicationSystem.updated_at) : 'N/A'
-    }
-  ];
+      {
+        title: t('common.table-columns.id'),
+        value: communicationSystem?.id || 'N/A'
+      },
+      {
+        title: t('project.other.railway-communication-system.details.railway_line_section_name'),
+        value: communicationSystem?.railway_line_section_name || 'N/A'
+      },
+      {
+        title: t('project.other.railway-communication-system.details.communication_system_type'),
+        value: communicationSystem?.communicationSystemType?.title || 'N/A'
+      },
+      {
+        title: t('project.other.railway-communication-system.details.communication_system_protocols_or_standards'),
+        value: communicationSystem?.communication_system_protocols_or_standards || 'N/A'
+      },
+      {
+        title: t('project.other.railway-communication-system.details.communication_system_components'),
+        value: communicationSystem?.communication_system_components || 'N/A'
+      },
+      {
+        title: t('project.other.railway-communication-system.details.signaling_system_components'),
+        value: communicationSystem?.signaling_system_components || 'N/A'
+      },
+      {
+        title: t('project.other.railway-communication-system.details.remark'),
+        value: communicationSystem?.remark || 'N/A'
+      },
+      {
+        title: t('common.table-columns.created-at'),
+        value: communicationSystem?.created_at ? formatCreatedAt(communicationSystem.created_at) : 'N/A'
+      },
+      {
+        title: t('common.table-columns.updated-at'),
+        value: communicationSystem?.updated_at ? formatCreatedAt(communicationSystem.updated_at) : 'N/A'
+      }
+    ];
 
   return (
     <Box>

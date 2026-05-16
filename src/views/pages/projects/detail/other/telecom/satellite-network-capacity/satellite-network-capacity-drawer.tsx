@@ -11,6 +11,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import SatelliteNetworkCapacityForm from './satellite-network-capacity-form';
 
 interface SatelliteNetworkCapacityDrawerProps {
@@ -41,7 +42,7 @@ const SatelliteNetworkCapacityDrawer = ({
   const validationSchema = yup.object().shape({
     satellite_network_id: yup.string().required('Satellite network is required'),
     network_type_id: yup.string().required('Network type is required'),
-    total_bandwidth: yup.number().nullable().transform((value) => (isNaN(value) ? null : value)),
+    total_bandwidth: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }).transform((value) => (isNaN(value) ? null : value)),
     users_number: yup
       .number()
       .nullable()

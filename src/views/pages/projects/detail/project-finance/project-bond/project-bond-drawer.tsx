@@ -10,6 +10,7 @@ import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/format
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import ProjectBondForm from './project-bond-form';
 import { phoneRule } from 'src/utils/validator/phone';
 import { birthDateRule, pastDateRule } from 'src/utils/validator/age';
@@ -49,7 +50,7 @@ const ProjectBondDrawer = (props: ProjectBondDrawerType) => {
     institution_type: yup.string().max(50).nullable(),
     phone: phoneRule.nullable(),
     remark: yup.string().nullable(),
-    revision_no: yup.number().integer().nullable(),
+    revision_no: nullableIntegerSchema(),
     amount: yup
       .number()
       .nullable()

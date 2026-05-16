@@ -9,6 +9,7 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import ProjectStakeholderForm from './project-stakeholder-form';
 
 interface ProjectStakeholderDrawerType {
@@ -34,7 +35,7 @@ const ProjectStakeholderDrawer = (props: ProjectStakeholderDrawerType) => {
     description: yup.string().nullable(),
     remark: yup.string().max(255).nullable(),
     parent_id: yup.string().length(36).nullable(),
-    revision_no: yup.number().integer().nullable()
+    revision_no: nullableIntegerSchema()
   });
 
   const isEdit = Boolean(projectStakeholder?.id);

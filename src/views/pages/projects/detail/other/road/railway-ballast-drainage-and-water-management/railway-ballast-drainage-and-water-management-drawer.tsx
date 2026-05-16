@@ -1,5 +1,6 @@
 import type { FormikProps } from 'formik';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 
 import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import type { RailwayBallastDrainageAndWaterManagement } from 'src/types/project/other'; // Updated type import
@@ -36,7 +37,7 @@ const RailwayBallastDrainageAndWaterManagementDrawer = ({
     drainage_condition_assessment: yup.string().required('Drainage condition assessment is required'),
     drainage_infrastructure_type: yup.string().required('Drainage infrastructure type is required'),
     water_management_measures: yup.string().nullable().optional(),
-    drainage_infrastructure_length: yup.number().nullable().typeError('Drainage infrastructure length must be a number').optional(),
+    drainage_infrastructure_length: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     remark: yup.string().nullable().optional()
   });
 

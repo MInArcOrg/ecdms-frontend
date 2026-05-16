@@ -8,6 +8,12 @@ import type { RailwaySignalingSystem } from 'src/types/project/other';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector'; // Using the updated import path from your example
 import CustomPhoneInput from 'src/views/shared/form/custom-phone-box';
 
+import { useQuery } from '@tanstack/react-query';
+import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
+import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
+import CustomSelectBox from 'src/views/shared/form/custom-select';
+import { dropDownConfig } from 'src/configs/api-constants';
+
 interface RailwaySignalingSystemFormProps {
   formik: FormikProps<RailwaySignalingSystem>;
   defaultFile: File | null; // This will receive otherSubMenu?.id as its file type
@@ -22,6 +28,18 @@ const RailwaySignalingSystemForm: React.FC<RailwaySignalingSystemFormProps> = ({
 }) => {
   const { t } = useTranslation();
 
+  const { data: signalingSystemTypes } = useQuery({
+    queryKey: [projectMasterModels.signalingSystemType.model],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll(
+        dropDownConfig({
+          filter: {
+            model: projectMasterModels.signalingSystemType.model
+          }
+        })
+      )
+  });
+
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -35,13 +53,19 @@ const RailwaySignalingSystemForm: React.FC<RailwaySignalingSystemFormProps> = ({
           sx={{ mb: 2 }}
         />
 
-        <CustomTextBox
+        <CustomSelectBox
           fullWidth
           label={t('project.other.railway-signaling-system.details.signaling_system_type')}
-          name="signaling_system_type"
-          value={formik.values.signaling_system_type}
+          name="signaling_system_type_id"
+          value={formik.values.signaling_system_type_id}
           size="small"
           sx={{ mb: 2 }}
+          options={
+            signalingSystemTypes?.payload.map((type) => ({
+              label: type.title,
+              value: type.id
+            })) || []
+          }
         />
 
         <CustomTextBox

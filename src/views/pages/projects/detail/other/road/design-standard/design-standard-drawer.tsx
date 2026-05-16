@@ -6,6 +6,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import DesignStandardForm from './design-standard-form';
 import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
 import { uploadFile } from 'src/services/utils/file-utils';
@@ -27,8 +28,8 @@ const DesignStandardDrawer = (props: DesignStandardDrawerType) => {
     design_classification_id: yup.string().required('Design Classification is required'),
     design_standard_id: yup.string().required('Design Standard is required'),
     design_traffic_flow_id: yup.string().required('Design Traffic Flow is required'),
-    design_life_time_years: yup.number().nullable().required('Design Life Time Years is required'),
-    segment_number: yup.number().nullable().required('Segment Number is required')
+    design_life_time_years: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }).required('Design Life Time Years is required'),
+    segment_number: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }).required('Segment Number is required')
   });
 
   const isEdit = Boolean(designStandard?.id);

@@ -10,6 +10,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import RailwayTrackDataForm from './railway-track-data-form';
 
 interface RailwayTrackDataDrawerType {
@@ -43,7 +44,7 @@ const RailwayTrackDataDrawer = (props: RailwayTrackDataDrawerType) => {
     railway_track_infrastructure_type_id: yup.string().required(),
     track_type_id: yup.string().required(),
     track_gauge_id: yup.string().required(),
-    track_length: yup.number().nullable(),
+    track_length: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     rail_type_and_size: yup.string().nullable(),
     sleepers_type_and_spacing: yup.string().nullable(),
     fastening_systems: yup.string().nullable(),

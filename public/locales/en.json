@@ -516,7 +516,16 @@
       "edit-culvert-type": "Edit Culvert Type",
       "construction-types": "Construction Types",
       "create-construction-type": "Add Construction Type",
-      "edit-construction-type": "Edit Construction Type"
+      "edit-construction-type": "Edit Construction Type",
+      "signaling-system-types": "Signaling System Types",
+      "create-signaling-system-type": "Add Signaling System Type",
+      "edit-signaling-system-type": "Edit Signaling System Type",
+      "communication-system-types": "Communication System Types",
+      "create-communication-system-type": "Add Communication System Type",
+      "edit-communication-system-type": "Edit Communication System Type",
+      "braking-system-types": "Braking System Types",
+      "create-braking-system-type": "Add Braking System Type",
+      "edit-braking-system-type": "Edit Braking System Type"
     },
     "form": {
       "title": "Title",

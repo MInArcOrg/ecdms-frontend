@@ -3,6 +3,7 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import DataCenterComponentAgeForm from './data-center-component-age-form';
 
 import { useState } from 'react';
@@ -30,11 +31,11 @@ const DataCenterComponentAgeDrawer = (props: DataCenterComponentAgeDrawerType) =
 
   const validationSchema = yup.object().shape({
     data_center_id: yup.string().required('Data Center ID is required'),
-    servers: yup.number().integer('Servers age must be an integer').nullable(),
-    storage_devices: yup.number().integer('Storage devices age must be an integer').nullable(),
-    networking_equipment: yup.number().integer('Networking equipment age must be an integer').nullable(),
-    cooling_systems: yup.number().integer('Cooling systems age must be an integer').nullable(),
-    backup_generators: yup.number().integer('Backup generators age must be an integer').nullable(),
+    servers: nullableIntegerSchema(),
+    storage_devices: nullableIntegerSchema(),
+    networking_equipment: nullableIntegerSchema(),
+    cooling_systems: nullableIntegerSchema(),
+    backup_generators: nullableIntegerSchema(),
     others: yup.string().nullable()
   });
 

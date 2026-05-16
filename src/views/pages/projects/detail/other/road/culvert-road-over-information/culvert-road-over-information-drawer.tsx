@@ -3,6 +3,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import CulvertRoadOverInformationForm from './culvert-road-over-information-form';
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
@@ -24,13 +25,13 @@ const CulvertRoadOverInformationDrawer = (props: CulvertRoadOverInformationDrawe
   const validationSchema = yup.object().shape({
     project_id: yup.string().length(36).required('Project is required'),
     culvert_id: yup.string().length(36).required('Culvert is required'),
-    carriage_way_width: yup.number().nullable(),
-    side_walk_width: yup.number().nullable(),
-    lane_number: yup.number().integer().nullable(),
-    head_wall_to_head_wall: yup.number().nullable(),
-    average_fill_height: yup.number().nullable(),
+    carriage_way_width: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    side_walk_width: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    lane_number: nullableIntegerSchema(),
+    head_wall_to_head_wall: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    average_fill_height: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     guard_rail_type_id: yup.string().length(36).required('Guard rail type is required'),
-    parapet_length: yup.number().nullable()
+    parapet_length: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 })
   });
 
   const isEdit = Boolean(culvertRoadOverInformation?.id);

@@ -70,7 +70,7 @@ export const resourceColumns = (
         <Fragment>
           <ModelAction
             model="Resource"
-            model_id={row.id}
+            model_id={row.id || ''}
             refetchModel={refetch}
             resubmit={function (): void {
               throw new Error('Function not implemented.');
@@ -80,7 +80,7 @@ export const resourceColumns = (
               throw new Error('Function not implemented.');
             }}
           />
-          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
+          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id || '')} item={row} options={[]} />
         </Fragment>
       )
     }

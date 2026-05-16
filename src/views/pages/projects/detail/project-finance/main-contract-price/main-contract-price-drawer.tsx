@@ -8,6 +8,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import MainContractPriceForm from './main-contract-price-form';
 
 interface MainContractPriceDrawerProps {
@@ -24,11 +25,11 @@ const MainContractPriceDrawer = (props: MainContractPriceDrawerProps) => {
 
   const validationSchema = yup.object().shape({
     parent_id: yup.string().length(36).nullable(),
-    main_contract_price_amount: yup.number().required(),
-    rebate: yup.number().required(),
+    main_contract_price_amount: limitNumberDigits(nullableNumberSchema().required(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    rebate: limitNumberDigits(nullableNumberSchema().required(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     remark: yup.string().nullable(),
     source_of_finance: yup.string().max(255).nullable(),
-    revision_no: yup.number().integer().nullable()
+    revision_no: nullableIntegerSchema()
   });
 
   const isEdit = Boolean(projectFinance?.id);

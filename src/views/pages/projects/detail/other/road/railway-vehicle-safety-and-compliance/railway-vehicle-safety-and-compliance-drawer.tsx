@@ -5,6 +5,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import type { RailwayVehicleSafetyAndCompliance } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
@@ -36,7 +37,7 @@ const RailwayVehicleSafetyAndComplianceDrawer = ({
     railway_vehicle_identification_id: yup.string().required('Vehicle Identification ID is required'),
     safety_features_and_systems: yup.string().nullable(),
     comply_with_regulatory_standards_and_certifications: yup.boolean().nullable(),
-    incident_records_number: yup.number().integer('Must be a whole number').nullable().typeError('Incident count must be a number'),
+    incident_records_number: nullableIntegerSchema(),
     action_taken_to_accidents: yup.string().nullable(),
     remark: yup.string().nullable()
   });

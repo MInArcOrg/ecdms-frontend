@@ -54,7 +54,7 @@ const RailwayCommunicationSystemCard: React.FC<RailwayCommunicationSystemCardPro
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-communication-system.details.communication_system_type')}:{' '}
-            {railwayCommunicationSystem.communication_system_type || 'N/A'}
+            {railwayCommunicationSystem.communicationSystemType?.title || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-communication-system.details.communication_system_protocols_or_standards')}:{' '}

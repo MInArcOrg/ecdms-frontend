@@ -2317,11 +2317,13 @@ export interface RailwayFasteningSystemEnvironmentalFactor {
   created_at?: string;
   updated_at?: string;
 }
+
 export interface RailwaySignalingSystem {
   id: string;
   project_id: string;
   railway_line_section_name: string;
-  signaling_system_type?: string | null;
+  signaling_system_type_id?: string | null;
+  signalingSystemType?: ProjectGeneralMaster;
   signaling_system_manufacturer_or_supplier_name?: string | null;
   signaling_system_manufacturer_or_supplier_phone?: string | null;
   signaling_system_components?: string | null;
@@ -2333,7 +2335,8 @@ export interface RailwayCommunicationSystem {
   id?: string;
   project_id: string; //
   railway_line_section_name: string; //
-  communication_system_type?: string | null; //
+  communication_system_type_id?: string | null; //
+  communicationSystemType?: ProjectGeneralMaster;
   communication_system_protocols_or_standards?: string | null; //
   communication_system_components?: string | null; //
   signaling_system_components?: string | null; //
@@ -2413,7 +2416,8 @@ export interface RailwayVehicleSpecification {
   vehicle_dimensions?: string | null;
   vehicle_weight_and_load_capacity?: string | null;
   maximum_speed?: number | null;
-  braking_system_type?: string | null;
+  braking_system_type_id?: string | null;
+  brakingSystemType?: ProjectGeneralMaster;
   remark?: string | null;
   created_at?: string;
   updated_at?: string;
@@ -2427,7 +2431,8 @@ export interface RailwayVehicleMaintenanceAndInspection {
   maintenance_history_records?: string | null;
   vehicle_weight_and_load_capacity?: string | null;
   maximum_speed?: number | null;
-  braking_system_type?: string | null;
+  braking_system_type_id?: string | null;
+  brakingSystemType?: ProjectGeneralMaster;
   remark?: string | null;
   created_at?: string;
   updated_at?: string;

@@ -3,6 +3,7 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import ProjectExtensionTimeForm from './project-extension-time-form';
 
 import { useState } from 'react';
@@ -30,7 +31,7 @@ const ProjectExtensionTimeDrawer = (props: ProjectExtensionTimeDrawerType) => {
     title: yup.string().max(36).nullable(),
     parent_id: yup.string().length(36).nullable(),
     project_id: yup.string().length(36).required('Project is required'),
-    number_of_days: yup.number().integer().required('Number of days is required'),
+    number_of_days: nullableIntegerSchema().required('Number of days is required'),
     reason: yup.string().max(255).required('Reason is required')
   });
 

@@ -8,6 +8,7 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import MasterTypeForm from './master-type-form';
 import ModelSpecificMenus from './model-specific-menus';
 
@@ -23,7 +24,7 @@ const validationSchema = yup.object().shape({
   title: yup.string().max(36).required('Title is required'),
   description: yup.string().nullable(),
   flag: yup.string().max(255).required('Flag is required'),
-  revision_no: yup.number().integer().nullable()
+  revision_no: nullableIntegerSchema()
 });
 
 const MasterTypeDrawer = (props: MasterTypeDrawerType) => {

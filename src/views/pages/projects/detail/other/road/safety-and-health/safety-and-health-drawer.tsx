@@ -3,6 +3,7 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import SafetyAndHealthForm from './safety-and-health-form';
 
 import { useState } from 'react';
@@ -36,15 +37,15 @@ const SafetyAndHealthDrawer = (props: SafetyAndHealthDrawerType) => {
     risk_level_id: yup.string().required('Risk level is required'),
     immediate_action_taken: yup.string(),
     incident_type_id: yup.string().required('Incident type is required'),
-    total_injury_number: yup.number().min(0, 'Total injuries must be non-negative'),
+    total_injury_number: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }).min(0, 'Total injuries must be non-negative'),
     incident_reported_by: yup.string(),
     personal_protective_equipment_type_id: yup.string().required('PPE type is required'),
     personal_protective_equipment_condition_id: yup.string().required('PPE condition is required'),
     trained_on_equipment_usage: yup.boolean(),
-    training_hours_number: yup.number().min(0, 'Training hours must be non-negative'),
+    training_hours_number: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }).min(0, 'Training hours must be non-negative'),
     weather_condition_during_incident_id: yup.string().required('Weather condition is required'),
     injury_severity_id: yup.string().required('Injury severity is required'),
-    fatality_number: yup.number().min(0, 'Fatality number must be non-negative'),
+    fatality_number: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }).min(0, 'Fatality number must be non-negative'),
     recommendation: yup.string(),
     remark: yup.string().nullable()
   });

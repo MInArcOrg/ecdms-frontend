@@ -1,5 +1,6 @@
 import type { FormikProps } from 'formik';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 
 import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import type { RailwaySubBallastMaterialTest } from 'src/types/project/other';
@@ -36,7 +37,7 @@ const RailwaySubBallastMaterialTestDrawer = ({
     sub_ballast_material_type_id: yup.string().required('Sub-ballast material type is required'),
     testing_method_used: yup.string().nullable().optional(),
     sampling_method: yup.string().nullable().optional(),
-    sample_size: yup.number().nullable().optional(),
+    sample_size: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     material_source: yup.string().nullable().optional(),
     sieve_analysis_results: yup.string().nullable().optional(),
     supplier: yup.string().nullable().optional(),

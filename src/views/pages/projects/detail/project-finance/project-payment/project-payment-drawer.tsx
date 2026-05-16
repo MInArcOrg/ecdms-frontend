@@ -8,6 +8,7 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import ProjectPaymentForm from './project-payment-form';
 
 interface ProjectPaymentDrawerType {
@@ -31,8 +32,8 @@ const ProjectPaymentDrawer = (props: ProjectPaymentDrawerType) => {
     parent_id: yup.string().length(36).nullable(),
     type: yup.string().max(255).nullable(),
     description: yup.string().nullable(),
-    amount: yup.number().nullable(),
-    retention: yup.number().nullable(),
+    amount: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    retention: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     reference_number: yup.string().max(255).nullable().max(16)
   });
 

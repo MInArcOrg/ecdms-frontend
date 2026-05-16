@@ -11,6 +11,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import RoadDrainageForm from './road-drainage-form';
 
 interface RoadDrainageDrawerType {
@@ -33,13 +34,13 @@ const RoadDrainageDrawer = (props: RoadDrainageDrawerType) => {
   const validationSchema = yup.object().shape({
     name: yup.string().max(255).required('Name is required'),
     current_condition_id: yup.string().length(36).required('Current condition is required'),
-    length: yup.number().nullable().typeError('Length must be a number'),
-    height: yup.number().nullable().typeError('Height must be a number'),
-    width: yup.number().nullable().typeError('Width must be a number'),
-    weight_limit: yup.number().nullable().typeError('Weight limit must be a number'),
-    design_life_span: yup.number().integer().nullable().typeError('Design life span must be a number'),
-    inspection_frequency: yup.number().integer().nullable().typeError('Inspection frequency must be a number'),
-    construction_completion_year: yup.number().integer().nullable().typeError('Construction completion year must be a number'),
+    length: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    height: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    width: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    weight_limit: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    design_life_span: nullableIntegerSchema(),
+    inspection_frequency: nullableIntegerSchema(),
+    construction_completion_year: nullableIntegerSchema(),
     remark: yup.string().nullable()
   });
 

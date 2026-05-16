@@ -1,7 +1,7 @@
 import { GeneralMaster, ResourceGeneralMaster, StudyField } from '../general/general-master';
 
 export interface Resource {
-  id: string;
+  id?: string;
   resourcetype_id: string;
   parent?: string;
   resourcecategory_id: string;

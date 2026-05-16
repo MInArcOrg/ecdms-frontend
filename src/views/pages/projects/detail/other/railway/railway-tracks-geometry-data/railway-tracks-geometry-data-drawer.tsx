@@ -10,6 +10,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import RailwayTracksGeometryDataForm from './railway-tracks-geometry-data-form';
 
 interface RailwayTracksGeometryDataDrawerType {
@@ -44,8 +45,8 @@ const RailwayTracksGeometryDataDrawer = (props: RailwayTracksGeometryDataDrawerT
 
   const validationSchema = yup.object().shape({
     alignment: yup.string().nullable(),
-    gradient: yup.number().nullable(),
-    curvature_radius: yup.number().nullable(),
+    gradient: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    curvature_radius: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     cant: yup.string().nullable(),
     track_gauge: yup.string().nullable(),
     cross_level: yup.string().nullable(),

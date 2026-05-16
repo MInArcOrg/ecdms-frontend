@@ -7,6 +7,7 @@ import { ResourceQuantityPrice } from 'src/types/resource';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import ResourceQuantityPriceForm from './resource-quantity-price-form';
 import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
 
@@ -21,8 +22,8 @@ interface ResourceQuantityPriceDrawerType {
 const validationSchema = yup.object().shape({
   detailresourcetype_id: yup.string().required(),
   resourcebrand_id: yup.string().required(),
-  quantity: yup.number().required(),
-  unit_price: yup.number().required(),
+  quantity: limitNumberDigits(nullableNumberSchema().required(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+  unit_price: limitNumberDigits(nullableNumberSchema().required(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
   store_address: yup.string().required(),
   datasource: yup.string().required()
 });

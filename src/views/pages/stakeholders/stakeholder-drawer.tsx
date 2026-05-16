@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 
 import * as yup from "yup";
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 
 import { FormikProps } from "formik";
 import moment from "moment";
@@ -69,7 +70,7 @@ const validationSchema = yup.object().shape({
 
   ownership_id: yup.string().max(36).required("Ownership is required"),
   businessfield_id: yup.string().max(36).nullable(),
-  revision_no: yup.number().integer().nullable(),
+  revision_no: nullableIntegerSchema(),
 });
 
 const StakeholderDrawer = (props: StakeholderDrawerType) => {

@@ -5,6 +5,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import type { RailwayStationPlatformLayout } from 'src/types/project/other';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
@@ -41,8 +42,8 @@ const RailwayStationPlatformLayoutDrawer = ({
       .nullable()
       .typeError('Platform number must be a number'),
     platform_configuration: yup.string().nullable(),
-    platform_length: yup.number().nullable().min(0, 'Cannot be negative').typeError('Platform length must be a number'),
-    platform_width: yup.number().nullable().min(0, 'Cannot be negative').typeError('Platform width must be a number'),
+    platform_length: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    platform_width: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     accessibility_features: yup.string().nullable(),
     remark: yup.string().nullable()
   });

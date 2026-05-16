@@ -84,7 +84,7 @@ const RailwaySignalingSystemList: React.FC<RailwaySignalingSystemListProps> = ({
     },
     {
       title: t('project.other.railway-signaling-system.details.signaling_system_type'),
-      value: signalingSystem?.signaling_system_type || 'N/A'
+      value: signalingSystem?.signalingSystemType?.title || 'N/A'
     },
     {
       title: t('project.other.railway-signaling-system.details.signaling_system_manufacturer_or_supplier_name'),

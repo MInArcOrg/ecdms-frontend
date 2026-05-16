@@ -3,6 +3,7 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import InternetConnectionInfrastructureAgeForm from './internet-connection-infrastructure-age-form';
 
 import { useState } from 'react';
@@ -30,10 +31,10 @@ const InternetConnectionInfrastructureAgeDrawer = (props: InternetConnectionInfr
 
   const validationSchema = yup.object().shape({
     internet_connection_id: yup.string().required('Internet Connection ID is required'),
-    routers: yup.number().nullable(),
-    switches: yup.number().nullable(),
-    modems: yup.number().nullable(),
-    cables: yup.number().nullable(),
+    routers: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    switches: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    modems: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    cables: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     others: yup.string().nullable()
   });
 

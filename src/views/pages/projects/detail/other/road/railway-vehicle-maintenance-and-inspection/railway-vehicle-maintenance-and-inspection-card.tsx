@@ -53,10 +53,10 @@ const RailwayVehicleMaintenanceAndInspectionCard: React.FC<RailwayVehicleMainten
             {t('project.other.railway-vehicle-maintenance-and-inspection.details.railway_vehicle_identification_id')}:{' '}
             {railwayVehicleMaintenanceAndInspection?.railwayVehicleIndentification
               ? railwayVehicleMaintenanceAndInspection?.railwayVehicleIndentification +
-                ' - ' +
-                railwayVehicleMaintenanceAndInspection?.railwayVehicleIndentification.manufacturer_supplier_name +
-                ' - ' +
-                railwayVehicleMaintenanceAndInspection?.railwayVehicleIndentification.manufacture_year
+              ' - ' +
+              railwayVehicleMaintenanceAndInspection?.railwayVehicleIndentification.manufacturer_supplier_name +
+              ' - ' +
+              railwayVehicleMaintenanceAndInspection?.railwayVehicleIndentification.manufacture_year
               : railwayVehicleMaintenanceAndInspection?.railway_vehicle_identification_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -73,7 +73,7 @@ const RailwayVehicleMaintenanceAndInspectionCard: React.FC<RailwayVehicleMainten
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-vehicle-maintenance-and-inspection.details.braking_system_type')}:{' '}
-            {railwayVehicleMaintenanceAndInspection.braking_system_type || 'N/A'}
+            {railwayVehicleMaintenanceAndInspection.brakingSystemType?.title || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-vehicle-maintenance-and-inspection.details.remark')}:{' '}

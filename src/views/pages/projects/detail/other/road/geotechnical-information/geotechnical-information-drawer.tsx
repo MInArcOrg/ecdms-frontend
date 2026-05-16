@@ -5,6 +5,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import GeotechnicalInformationForm from './geotechnical-information-form';
 
 import { useState } from 'react';
@@ -43,7 +44,7 @@ const GeotechnicalInformationDrawer = (props: GeotechnicalInformationDrawerType)
     soil_type_id: yup.string().required('Soil type is required'),
     ground_water_impact_id: yup.string().required('Ground water impact is required'),
     slope_stability_id: yup.string().required('Slope stability is required'),
-    soil_bearing_capacity: yup.number().nullable(),
+    soil_bearing_capacity: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     retaining_walls: yup.boolean().nullable(),
     geological_hazard: yup.string().nullable(),
     remark: yup.string().nullable()

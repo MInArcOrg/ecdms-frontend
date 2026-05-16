@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 
 import { FormikProps } from 'formik';
 import projectApiService from 'src/services/project/project-service';
@@ -35,13 +36,13 @@ const validationSchema = yup.object().shape({
   contract_no: yup.string().max(255).nullable(),
   budget_code: yup.string().max(255).nullable(),
   procurement_no: yup.string().max(255).nullable(),
-  main_contract_price_amount: yup.number().nullable(),
+  main_contract_price_amount: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
   source_of_fund_id: yup.string().max(255).nullable(),
   status_id: yup.string().length(36).required(),
   commencement_date: yup.mixed().nullable(),
   completion_date: yup.mixed().nullable(),
-  original_contract_duration: yup.number().integer().nullable(),
-  revision_no: yup.number().integer().nullable()
+  original_contract_duration: nullableIntegerSchema(),
+  revision_no: nullableIntegerSchema()
 });
 
 const ProjectDrawer = (props: ProjectDrawerType) => {

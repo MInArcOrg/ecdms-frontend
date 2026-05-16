@@ -34,7 +34,7 @@ const RailwayCommunicationSystemDrawer = ({
 
   const validationSchema = yup.object().shape({
     railway_line_section_name: yup.string().required('Railway line section name is required'),
-    communication_system_type: yup.string().nullable(),
+    communication_system_type_id: yup.string().nullable(),
     communication_system_protocols_or_standards: yup.string().nullable(),
     communication_system_components: yup.string().nullable(),
     signaling_system_components: yup.string().nullable(),

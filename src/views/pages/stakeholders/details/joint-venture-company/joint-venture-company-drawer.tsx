@@ -3,6 +3,7 @@ import type { IApiPayload } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import JointVentureCompanyForm from './joint-venture-company-form';
 import jointVentureCompanyApiService from 'src/services/stakeholder/joint-venture-company-service';
 import type { JointVentureCompany } from 'src/types/stakeholder/joint-venture-company';
@@ -31,7 +32,7 @@ const JointVentureCompanyDrawer = (props: JointVentureCompanyDrawerType) => {
     company_name: yup.string().required('Company name is required'),
     specialization: yup.string(),
     roles_and_responsibilities: yup.string(),
-    ownership_percentage: yup.number().min(0).max(100),
+    ownership_percentage: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }).min(0).max(100),
     description: yup.string().required('Description is required'),
     reference: yup.string().required('Reference is required')
   });

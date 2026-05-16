@@ -14,6 +14,7 @@ import { getDynamicDate } from 'src/views/components/custom/ethio-calendar/ethio
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import ProjectVariationForm from './project-variation-form';
 
 interface ProjectVariationDrawerType {
@@ -64,7 +65,7 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
     parent_id: yup.string().length(36).nullable(),
     type: yup.string().max(255).nullable(),
     approval_date: yup.date().required(`${t('Approval Date')} ${t('is required')}`),
-    extension_time: yup.number().integer().nullable(),
+    extension_time: nullableIntegerSchema(),
     extension_time_id: yup.string().length(36).nullable(),
     justification: yup.string().nullable(),
     remark: yup.string().nullable(),
@@ -84,7 +85,7 @@ const ProjectVariationDrawer = (props: ProjectVariationDrawerType) => {
         is: (value: string) => value === variationConstants.SUPPLEMENT.value || value === variationConstants.VARIATION.value,
         then: (schema) => schema.max(remainingVariationPercent)
       }),
-    revision_no: yup.number().integer().nullable()
+    revision_no: nullableIntegerSchema()
   });
 
   const isEdit = Boolean(projectVariation?.id);

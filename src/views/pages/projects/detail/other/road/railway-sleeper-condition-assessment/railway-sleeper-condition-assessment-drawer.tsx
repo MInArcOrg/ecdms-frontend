@@ -3,6 +3,7 @@ import type { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
 import { DetailSubMenuItemChild } from 'src/types/layouts/detail-layout';
@@ -39,7 +40,7 @@ const RailwaySleeperConditionAssessmentDrawer = ({
     sleeper_condition_rating: yup.string().nullable(),
     defect_presence: yup.string().nullable(),
     sleeper_stability_and_alignment: yup.string().nullable(),
-    sleepers_required_number: yup.number().nullable().typeError('Sleepers required number must be a number'),
+    sleepers_required_number: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     supplier_name: yup.string().nullable(),
     supplier_phone: phoneRule.nullable(),
     remark: yup.string().nullable()

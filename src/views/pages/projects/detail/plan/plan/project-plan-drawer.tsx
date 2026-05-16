@@ -12,6 +12,7 @@ import { getQuarterStartDate } from 'src/utils/genertor/date';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import ProjectPlanForm from './project-plan-form';
 
 interface ProjectPlanDrawerType {
@@ -45,24 +46,24 @@ const ProjectPlanDrawer = (props: ProjectPlanDrawerType) => {
     start: yup.string().nullable(),
     end: yup.string().nullable(),
     type: yup.string().max(255).nullable(),
-    project_expense: yup.number().nullable(),
-    manpower: yup.number().nullable(),
-    direct_labour: viewSections.manpower ? yup.number().required('Direct Labour is required') : yup.number().nullable(),
-    indirect_labour: viewSections.manpower ? yup.number().required('Indirect Labour is required') : yup.number().nullable(),
-    material: viewSections.subtotal ? yup.number().required('Material is required') : yup.number().nullable(),
-    machinery: viewSections.subtotal ? yup.number().required('Machinery is required') : yup.number().nullable(),
-    other_expense: viewSections.subtotal ? yup.number().required('Other Expense is required') : yup.number().nullable(),
-    sub_contractor_cost: viewSections.subtotal ? yup.number().required('Subcontractor Cost is required') : yup.number().nullable(),
-    cost_due_to_rework: viewSections.subtotal ? yup.number().required('Cost due to rework is required') : yup.number().nullable(),
-    financial_performance: yup.number().nullable(),
-    physical_performance: yup.number().nullable(),
-    over_head_cost: yup.number().nullable(),
-    profit: yup.number().nullable(),
+    project_expense: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    manpower: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    direct_labour: viewSections.manpower ? limitNumberDigits(nullableNumberSchema().required('Direct Labour is required'), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }) : limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    indirect_labour: viewSections.manpower ? limitNumberDigits(nullableNumberSchema().required('Indirect Labour is required'), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }) : limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    material: viewSections.subtotal ? limitNumberDigits(nullableNumberSchema().required('Material is required'), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }) : limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    machinery: viewSections.subtotal ? limitNumberDigits(nullableNumberSchema().required('Machinery is required'), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }) : limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    other_expense: viewSections.subtotal ? limitNumberDigits(nullableNumberSchema().required('Other Expense is required'), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }) : limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    sub_contractor_cost: viewSections.subtotal ? limitNumberDigits(nullableNumberSchema().required('Subcontractor Cost is required'), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }) : limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    cost_due_to_rework: viewSections.subtotal ? limitNumberDigits(nullableNumberSchema().required('Cost due to rework is required'), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }) : limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    financial_performance: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    physical_performance: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    over_head_cost: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    profit: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     year: yup.string().max(255).nullable(),
     quarter: yup.string().max(255).nullable(),
     is_summary: yup.boolean().nullable(),
     remark: yup.string().nullable(),
-    revision_no: yup.number().integer().nullable()
+    revision_no: nullableIntegerSchema()
   });
 
   const isEdit = Boolean(projectPlan?.id);

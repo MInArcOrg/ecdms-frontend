@@ -3,6 +3,7 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import RoadSurfaceConditionForm from './road-surface-condition-form';
 
 import { useState } from 'react';
@@ -37,7 +38,7 @@ const RoadSurfaceConditionDrawer = (props: RoadSurfaceConditionDrawerType) => {
     drainage_problems: yup.string().required('Drainage problems information is required'),
     action_taken_date: yup.string().nullable(),
     action_taken: yup.string().nullable(),
-    action_taken_cost: yup.number().nullable().min(0, 'Cost must be a positive number'),
+    action_taken_cost: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
     assessment_condition_id: yup.string().required('Assessment condition is required'),
     surface_type_id: yup.string().required('Surface type is required'),
     remark: yup.string().nullable()

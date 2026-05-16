@@ -3,6 +3,7 @@ import { IApiPayload, IApiResponse } from 'src/types/requests';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
+import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import TransmissionLineInformationForm from './transmission-line-information-form';
 
 import { useState } from 'react';
@@ -30,14 +31,14 @@ const TransmissionLineInformationDrawer = (props: TransmissionLineInformationDra
 
   const validationSchema = yup.object().shape({
     name: yup.string().required('Name is required'),
-    transmission_voltage: yup.number().nullable(),
-    transmission_line_route_length: yup.number().nullable(),
-    circuit_number: yup.number().integer().nullable(),
-    starting_point_northing: yup.number().nullable(),
-    starting_point_easting: yup.number().nullable(),
-    ending_point_northing: yup.number().nullable(),
-    ending_point_easting: yup.number().nullable(),
-    lifetime: yup.number().integer().nullable(),
+    transmission_voltage: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    transmission_line_route_length: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    circuit_number: nullableIntegerSchema(),
+    starting_point_northing: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    starting_point_easting: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    ending_point_northing: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    ending_point_easting: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
+    lifetime: nullableIntegerSchema(),
     remark: yup.string().nullable()
   });
 

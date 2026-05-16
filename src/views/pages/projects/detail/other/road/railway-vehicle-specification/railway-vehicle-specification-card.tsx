@@ -53,10 +53,10 @@ const RailwayVehicleSpecificationCard: React.FC<RailwayVehicleSpecificationCardP
             {t('project.other.railway-vehicle-specification.details.railway_vehicle_identification_id')}:{' '}
             {railwayVehicleSpecification?.railwayVehicleIndentification
               ? railwayVehicleSpecification?.railwayVehicleIndentification +
-                ' - ' +
-                railwayVehicleSpecification?.railwayVehicleIndentification.manufacturer_supplier_name +
-                ' - ' +
-                railwayVehicleSpecification?.railwayVehicleIndentification.manufacture_year
+              ' - ' +
+              railwayVehicleSpecification?.railwayVehicleIndentification.manufacturer_supplier_name +
+              ' - ' +
+              railwayVehicleSpecification?.railwayVehicleIndentification.manufacture_year
               : railwayVehicleSpecification?.id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -72,7 +72,7 @@ const RailwayVehicleSpecificationCard: React.FC<RailwayVehicleSpecificationCardP
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-vehicle-specification.details.braking_system_type')}:{' '}
-            {railwayVehicleSpecification.braking_system_type || 'N/A'}
+            {railwayVehicleSpecification.brakingSystemType?.title || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-vehicle-specification.details.remark')}: {railwayVehicleSpecification.remark || 'N/A'}
