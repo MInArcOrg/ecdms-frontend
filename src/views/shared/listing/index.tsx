@@ -1,5 +1,5 @@
 import { Container, GridProps, Typography, useMediaQuery } from '@mui/material';
-import { GridColDef } from '@mui/x-data-grid';
+import { GridColDef, GridSortModel } from '@mui/x-data-grid';
 import { isArray } from 'lodash';
 import { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -27,6 +27,7 @@ const ItemsListing = <T extends object>({
   isLoading = false,
   type = ITEMS_LISTING_TYPE.grid.value,
   onPaginationChange,
+  onSortChange,
   additionalParams = {},
   tableProps,
   hasListHeader = true,
@@ -47,6 +48,7 @@ const ItemsListing = <T extends object>({
   isLoading?: boolean;
   type?: string;
   onPaginationChange?: (pageSize: any, page: any) => void;
+  onSortChange?: (sorting: { property: string; direction: string } | null) => void;
   additionalParams?: any | null;
   onCreateClick?: () => void;
   tableProps?: {
@@ -119,6 +121,25 @@ const ItemsListing = <T extends object>({
     fetchDataFunction({ ...fetchRequestParams, filter: values });
   };
 
+  const handleSort = (model: GridSortModel) => {
+    let sorting = null;
+    if (model.length > 0) {
+      const sortDirection = model[0].sort ? model[0].sort.toUpperCase() : 'ASC';
+      sorting = { property: model[0].field, direction: sortDirection };
+    }
+    
+    const fetchParam: GetRequestParam = {
+      ...fetchRequestParams,
+      sorting
+    };
+    setFetchRequestParams(fetchParam);
+    if (onSortChange) {
+      onSortChange(sorting);
+    } else {
+      fetchDataFunction(fetchParam);
+    }
+  };
+
   const adjustedType = getAdjustedListingType(type, isSmallScreen);
   const listingComponents = {
     [ITEMS_LISTING_TYPE.masonry.value]: ItemViewComponent && <MasonryListing ItemViewComponent={ItemViewComponent} items={items} />,
@@ -131,6 +152,7 @@ const ItemsListing = <T extends object>({
         isLoading={isLoading}
         pagination={pagination as Pagination}
         onPagination={onPagination}
+        onSort={handleSort}
         items={items}
         columns={tableProps?.headers}
       />

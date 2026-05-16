@@ -46,6 +46,13 @@ const usePaginatedFetch = <T,>({ queryKey, fetchFunction, exportApiCall, initial
             filter: cleanedFilterValues
         }));
     };
+
+    const handleSort = (sorting: { property: string; direction: string } | null) => {
+        setQueryParams((prevParams: GetRequestParam): GetRequestParam => ({
+            ...prevParams,
+            sorting
+        }));
+    };
     const handleExport = async (exportConfig: { export: ExportConfigValues }): Promise<void> => {
         if (!exportApiCall) {
             console.warn('Export API call is not provided. Skipping export.');
@@ -138,17 +145,26 @@ const usePaginatedFetch = <T,>({ queryKey, fetchFunction, exportApiCall, initial
     //     refetch();
     // }, [queryParams]);
 
+    const customRefetch = (optionsOrParams?: any) => {
+        if (optionsOrParams && typeof optionsOrParams === 'object' && 'sorting' in optionsOrParams) {
+            setQueryParams((prev) => ({ ...prev, sorting: optionsOrParams.sorting }));
+            return Promise.resolve();
+        }
+        return refetch(optionsOrParams);
+    };
+
     return {
         data,
         isLoading,
         error,
-        refetch,
+        refetch: customRefetch,
         pagination,
         handlePageChange,
         handlePageSizeChange,
         invalidateQuery,
         handleSearch,
         handleFilter,
+        handleSort,
         handleExport
     };
 };

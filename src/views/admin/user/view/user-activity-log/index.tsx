@@ -21,7 +21,10 @@ const UserActivityLogList: React.FC<UserActivityLogListProps> = ({ userId }) => 
 
   const fetchUserActivityLog = (params: GetRequestParam): Promise<IApiResponse<UserActivityLog[]>> => {
     return userActivityLogApiService.getAll({
-      ...params
+      ...params,
+      filter:{
+        user_id:userId
+      }
     });
   };
 

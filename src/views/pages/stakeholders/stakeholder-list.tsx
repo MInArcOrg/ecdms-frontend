@@ -31,7 +31,6 @@ function StakholdersList() {
     return stakeholderApiService.getAll({
       ...params,
       filter: { ...params.filter, stakeholdertype_id: typeId },
-      sorting: { property: 'trade_name', direction: 'DESC' }
     });
   };
 

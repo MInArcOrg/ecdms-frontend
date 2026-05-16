@@ -1,5 +1,5 @@
 import { Box, Card } from '@mui/material';
-import { DataGrid, GridColDef, GridPaginationModel, GridRowId } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridPaginationModel, GridRowId, GridSortModel } from '@mui/x-data-grid';
 import React, { useState } from 'react';
 import { Pagination } from 'src/types/requests/pagination';
 
@@ -10,9 +10,10 @@ interface TableListingProps<T> {
   pagination: Pagination;
   isLoading: boolean;
   onPagination?: (pageSize: number, page: number) => void;
+  onSort?: (sortModel: GridSortModel) => void;
 }
 
-const TableListing = <T,>({ columns, items, pagination, onPagination, isLoading }: TableListingProps<T>) => {
+const TableListing = <T,>({ columns, items, pagination, onPagination, onSort, isLoading }: TableListingProps<T>) => {
   const [, setSelectedRows] = useState<GridRowId[]>([]);
   const [paginationModel, setPaginationModel] = useState<GridPaginationModel>({
     page: pagination?.page - 1,
@@ -35,6 +36,8 @@ const TableListing = <T,>({ columns, items, pagination, onPagination, isLoading 
           rowHeight={62}
           rowCount={pagination?.total}
           columns={columns}
+          sortingMode="server"
+          onSortModelChange={(model) => onSort && onSort(model)}
           paginationMode="server"
           disableRowSelectionOnClick
           paginationModel={paginationModel}
