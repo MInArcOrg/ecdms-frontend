@@ -55,6 +55,22 @@ const BridgeComponentsAncillariesForm: React.FC<BridgeComponentsAncillariesFormP
       })
   });
 
+  const { data: abutmentBearingTypes } = useQuery({
+    queryKey: ['abutment-bearing-types'],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.abutmentBearingType.model }
+      })
+  });
+
+  const { data: piersBearingTypes } = useQuery({
+    queryKey: ['piers-bearing-types'],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll({
+        filter: { model: projectMasterModels.piersBearingType.model }
+      })
+  });
+
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -103,22 +119,34 @@ const BridgeComponentsAncillariesForm: React.FC<BridgeComponentsAncillariesFormP
           }
         />
 
-        <CustomTextBox
+        <CustomSelect
           fullWidth
           label="Abutment Bearing Type"
           placeholder="Abutment Bearing Type"
           name="abutment_bearing_type_id"
           size="small"
           sx={{ mb: 2 }}
+          options={
+            abutmentBearingTypes?.payload.map((type) => ({
+              label: type.title,
+              value: type.id
+            })) || []
+          }
         />
 
-        <CustomTextBox
+        <CustomSelect
           fullWidth
           label="Piers Bearing Type"
           placeholder="Piers Bearing Type"
           name="piers_bearing_type_id"
           size="small"
           sx={{ mb: 2 }}
+          options={
+            piersBearingTypes?.payload.map((type) => ({
+              label: type.title,
+              value: type.id
+            })) || []
+          }
         />
 
         <CustomSelect

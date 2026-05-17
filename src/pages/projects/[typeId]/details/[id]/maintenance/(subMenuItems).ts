@@ -63,13 +63,13 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         model: 'maintenancehistory',
         apiRoute: 'maintenance-histories'
       },
-      {
-        id: projectMaintenanceIds.maintenance.trafficMaintenance,
-        title: 'project.navigation.submenu.maintenance.maintenance.traffic-maintenance',
-        path: `/projects/${typeId}/details/${id}/maintenance/maintenance/traffic-maintenance`,
-        model: 'trafficmaintenance',
-        apiRoute: 'traffic-maintenance'
-      },
+      // {
+      //   id: projectMaintenanceIds.maintenance.trafficMaintenance,
+      //   title: 'project.navigation.submenu.maintenance.maintenance.traffic-maintenance',
+      //   path: `/projects/${typeId}/details/${id}/maintenance/maintenance/traffic-maintenance`,
+      //   model: 'trafficmaintenance',
+      //   apiRoute: 'traffic-maintenance'
+      // },
       {
         id: projectMaintenanceIds.maintenance.drainageMaintenanceData,
         title: 'project.navigation.submenu.maintenance.maintenance.drainage-maintenance-data',

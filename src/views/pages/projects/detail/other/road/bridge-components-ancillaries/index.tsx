@@ -71,7 +71,7 @@ const BridgeComponentsAncillariesList: React.FC<BridgeComponentsAncillariesListP
   const mapToDetailItems = (item: BridgeComponentAndAncillaries): { title: string; value: string }[] => [
     {
       title: 'Bridge Name',
-      value: item?.bridgeBasicData?.name || item?.bridge_id || 'N/A'
+      value: item?.bridge?.name || item?.bridge_id || 'N/A'
     },
     {
       title: 'Expansion Joint Type',
@@ -79,15 +79,15 @@ const BridgeComponentsAncillariesList: React.FC<BridgeComponentsAncillariesListP
     },
     {
       title: 'Guard Railing Type',
-      value: item?.guardRailType?.title || item?.guard_railing_type_id || 'N/A'
+      value: item?.guardRailingType?.title || item?.guardRailType?.title || item?.guard_railing_type_id || 'N/A'
     },
     {
       title: 'Abutment Bearing Type',
-      value: item?.abutment_bearing_type_id || 'N/A'
+      value: item?.abutmentBearingType?.title || item?.abutment_bearing_type_id || 'N/A'
     },
     {
       title: 'Piers Bearing Type',
-      value: item?.piers_bearing_type_id || 'N/A'
+      value: item?.piersBearingType?.title || item?.piers_bearing_type_id || 'N/A'
     },
     {
       title: 'Surface Type',

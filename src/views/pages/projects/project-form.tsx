@@ -35,29 +35,36 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId, module }) => 
     setFieldValue(field, Number.isNaN(v as number) ? null : v);
   };
 
-  const toGregorian = useCallback((dateValue?: string | Date | EthiopianDate | null) => {
-    if (!dateValue) return null;
-    if (i18n.language === 'am' && dateValue instanceof EthiopianDate) return convertToGC(dateValue);
-    return dateValue instanceof Date ? dateValue : new Date(dateValue as any);
-  }, [i18n.language]);
+  const toGregorian = useCallback(
+    (dateValue?: string | Date | EthiopianDate | null) => {
+      if (!dateValue) return null;
+      if (dateValue instanceof EthiopianDate) return convertToGC(dateValue);
+      const date = new Date(dateValue as any);
+      return isNaN(date.getTime()) ? null : date;
+    },
+    []
+  );
 
   const isSameDay = useCallback(
     (a?: string | Date | EthiopianDate | null, b?: string | Date | EthiopianDate | null) => {
       const dateA = toGregorian(a);
       const dateB = toGregorian(b);
-      if (!dateA || !dateB) return false;
+      if (!dateA || !dateB) return !dateA && !dateB;
       return moment(dateA).isSame(dateB, 'day');
     },
     [toGregorian]
   );
 
   const { data: projectStatus } = useQuery({
-    queryKey: ["projectTypes", projectMasterModels.projectStatus.model],
-    queryFn: () => projectGeneralMasterDataApiService.getAll(dropDownConfig({
-      filter: {
-        model: projectMasterModels.projectStatus.model,
-      }
-    })),
+    queryKey: ['projectTypes', projectMasterModels.projectStatus.model],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll(
+        dropDownConfig({
+          filter: {
+            model: projectMasterModels.projectStatus.model
+          }
+        })
+      )
   });
 
   const infrastructureDefaultStatusId =
@@ -65,31 +72,41 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId, module }) => 
       ? projectStatus?.payload?.find((status) => status?.title?.toString().trim().toLowerCase() === 'completed')?.id
       : undefined;
   const { data: sourceOffunds } = useQuery({
-    queryKey: ["sourceOfFunds", projectMasterModels.sourceOfFund.model],
-    queryFn: () => projectGeneralMasterDataApiService.getAll(dropDownConfig({
-      filter: {
-        model: projectMasterModels.sourceOfFund.model,
-      }
-    })),
+    queryKey: ['sourceOfFunds', projectMasterModels.sourceOfFund.model],
+    queryFn: () =>
+      projectGeneralMasterDataApiService.getAll(
+        dropDownConfig({
+          filter: {
+            model: projectMasterModels.sourceOfFund.model
+          }
+        })
+      )
   });
   const { data: projectCategories } = useQuery({
-    queryKey: ['masterCategory', 'project'],
+    queryKey: ['masterCategory', 'project', typeId],
     queryFn: () =>
-      masterCategoryApiService.getAll('project', dropDownConfig({
-        filter: {
-          projecttype_id: typeId
-        }
-      }))
+      masterCategoryApiService.getAll(
+        'project',
+        dropDownConfig({
+          filter: {
+            projecttype_id: typeId
+          }
+        })
+      ),
+    enabled: !!typeId
   });
 
   const { data: projectSubCategories, refetch: refetchSubCategories } = useQuery({
-    queryKey: ['masterSubCategory', 'project'],
+    queryKey: ['masterSubCategory', 'project', values.projectcategory_id],
     queryFn: () =>
-      masterSubCategoryApiService.getAll('project', dropDownConfig({
-        filter: {
-          projectcategory_id: values.projectcategory_id
-        }
-      })),
+      masterSubCategoryApiService.getAll(
+        'project',
+        dropDownConfig({
+          filter: {
+            projectcategory_id: values.projectcategory_id
+          }
+        })
+      ),
     enabled: !!values.projectcategory_id // Only fetch subcategories when a category is selected
   });
 
@@ -99,37 +116,38 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ formik, typeId, module }) => 
     }
   }, [values.projectcategory_id, refetchSubCategories]);
 
+  // Handle auto-calculation of completion date from commencement + duration
   useEffect(() => {
     const commencementDate = toGregorian(values.commencement_date);
     const duration = values.original_contract_duration;
+
     if (!commencementDate || duration === undefined || duration === null) return;
 
-    const computedCompletion = moment(commencementDate).add(duration || 0, 'days').toDate();
+    const computedCompletion = moment(commencementDate).add(duration, 'days').toDate();
     const dynamicCompletion = getDynamicDate(i18n, computedCompletion);
 
     if (!isSameDay(values.completion_date, dynamicCompletion)) {
       setFieldValue('completion_date', dynamicCompletion, false);
     }
-  }, [
-    i18n,
-    isSameDay,
-    setFieldValue,
-    toGregorian,
-    values.commencement_date,
-    values.completion_date,
-    values.original_contract_duration
-  ]);
+  }, [i18n, isSameDay, setFieldValue, toGregorian, values.commencement_date, values.original_contract_duration]);
 
+  // Handle auto-calculation of duration from commencement + completion
   useEffect(() => {
     const commencementDate = toGregorian(values.commencement_date);
     const completionDate = toGregorian(values.completion_date);
+
     if (!commencementDate || !completionDate) return;
 
     const computedDuration = moment(completionDate).diff(moment(commencementDate), 'days');
+
     if (values.original_contract_duration !== computedDuration) {
-      setFieldValue('original_contract_duration', computedDuration, false);
+      // Check if this update would trigger a loop by re-calculating the same completion date
+      const recalculatedCompletion = moment(commencementDate).add(computedDuration, 'days').toDate();
+      if (isSameDay(completionDate, recalculatedCompletion)) {
+        setFieldValue('original_contract_duration', computedDuration, false);
+      }
     }
-  }, [setFieldValue, toGregorian, values.commencement_date, values.completion_date, values.original_contract_duration]);
+  }, [isSameDay, setFieldValue, toGregorian, values.commencement_date, values.completion_date]);
 
   useEffect(() => {
     if (!isInfrastructure) return;

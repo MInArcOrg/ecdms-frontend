@@ -37,7 +37,7 @@ export const bridgeComponentsAncillariesColumns = (
           '&:hover': { color: 'primary.main' }
         }}
       >
-        {row?.bridgeBasicData?.name || row?.bridge_id || t('common.not-available')}
+        {row?.bridge?.name || row?.bridge_id || t('common.not-available')}
       </Typography>
     )
   },
@@ -59,7 +59,7 @@ export const bridgeComponentsAncillariesColumns = (
     headerName: 'Guard Railing Type',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.guardRailType?.title || row?.guard_railing_type_id || t('common.not-available')}
+        {row?.guardRailingType?.title || row?.guardRailType?.title || row?.guard_railing_type_id || t('common.not-available')}
       </Typography>
     )
   },
@@ -70,7 +70,7 @@ export const bridgeComponentsAncillariesColumns = (
     headerName: 'Abutment Bearing Type',
     renderCell: ({ row }: CellType) => (
       <Typography sx={{ color: 'text.secondary' }}>
-        {row?.abutment_bearing_type_id || t('common.not-available')}
+        {row?.abutmentBearingType?.title || row?.abutment_bearing_type_id || t('common.not-available')}
       </Typography>
     )
   },
@@ -80,7 +80,7 @@ export const bridgeComponentsAncillariesColumns = (
     field: 'piers_bearing_type_id',
     headerName: 'Piers Bearing Type',
     renderCell: ({ row }: CellType) => (
-      <Typography sx={{ color: 'text.secondary' }}>{row?.piers_bearing_type_id || t('common.not-available')}</Typography>
+      <Typography sx={{ color: 'text.secondary' }}>{row?.piersBearingType?.title || row?.piers_bearing_type_id || t('common.not-available')}</Typography>
     )
   },
   {

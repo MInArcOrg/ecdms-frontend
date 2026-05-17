@@ -738,13 +738,16 @@ export interface BridgeComponentAndAncillaries {
   project_id: string;
   parent_id?: string | null;
   bridge_id: string;
-  bridgeBasicData?: BridgeBasicData;
+  bridge?: BridgeBasicData;
   expansion_joint_type_id: string;
   expansionJointType?: ProjectGeneralMaster;
   guard_railing_type_id: string;
+  guardRailingType?: ProjectGeneralMaster;
   guardRailType?: ProjectGeneralMaster;
   abutment_bearing_type_id: string;
+  abutmentBearingType?: ProjectGeneralMaster;
   piers_bearing_type_id: string;
+  piersBearingType?: ProjectGeneralMaster;
   surface_type_id: string;
   surfaceType?: ProjectGeneralMaster;
   remark?: string | null;

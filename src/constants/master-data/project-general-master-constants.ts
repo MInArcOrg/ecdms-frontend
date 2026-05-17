@@ -1197,6 +1197,24 @@ export const projectMasterModels = {
     fileType: 'BRAKING_SYSTEM_TYPE',
     flag: 'RAILWAY'
   },
+  abutmentBearingType:{
+    model: 'AbutmentBearingType',
+    dbModel: 'abutmentbearingtype',
+    title: 'abutment-bearing-types',
+    createTitle: 'create-abutment-bearing-type',
+    editTitle: 'edit-abutment-bearing-type',
+    fileType: 'ABUTMENT_BEARING_TYPE',
+    flag: 'ROAD'
+  },
+  piersBearingType:{
+    model: 'PiersBearingType',
+    dbModel: 'piersbearingtype',
+    title: 'piers-bearing-types',
+    createTitle: 'create-piers-bearing-type',
+    editTitle: 'edit-piers-bearing-type',
+    fileType: 'PIERS_BEARING_TYPE',
+    flag: 'ROAD'
+  },
 };
 export type ProjectMasterModelKey = keyof typeof projectMasterModels;
 

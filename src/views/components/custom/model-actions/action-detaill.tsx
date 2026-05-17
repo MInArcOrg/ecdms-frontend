@@ -1,9 +1,8 @@
 import { Box, CardContent, Drawer, Typography } from '@mui/material';
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import Icon from 'src/@core/components/icon';
 import {
-
   ACTION_STATUS,
   isAllowedToApprove,
   isAllowedToAuthorize,
@@ -14,6 +13,7 @@ import ActionForm from './action-form';
 import ActionItem from './action-item';
 import { ActionReply, AuthorizationResponse } from 'src/types/general/model-action';
 import User from 'src/types/admin/user';
+import { AbilityContext } from 'src/layouts/components/acl/Can';
 
 interface StatusSidebarProps {
   actions: AuthorizationResponse;
@@ -28,6 +28,26 @@ interface StatusSidebarProps {
 
 function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchModel, refetchAction, title }: StatusSidebarProps) {
   const { t } = useTranslation();
+  const ability = useContext(AbilityContext);
+
+  const actionType = isAllowedToCheck(actions?.status, actions?.authorization_data?.registered_data?.user_id)
+    ? REQUESTS.CHECK
+    : isAllowedToApprove(
+        actions?.status,
+        actions?.authorization_data?.registered_data?.user_id,
+        actions?.authorization_data?.checked_data?.user_id
+      )
+      ? REQUESTS.APPROVE
+      : isAllowedToAuthorize(
+          actions?.status,
+          actions?.authorization_data?.registered_data?.user_id,
+          actions?.authorization_data?.checked_data?.user_id,
+          actions?.authorization_data?.approved_data?.user_id
+        )
+        ? REQUESTS.AUTHORIZE
+        : null;
+
+  const canPerformAction = actionType && ability.can(actionType, model.toLocaleLowerCase());
 
   return (
     <Fragment>
@@ -157,42 +177,15 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
               )
             }
             <Box sx={{ marginTop: '10px' }}>
-              {isAllowedToCheck(actions?.status, actions?.authorization_data?.registered_data?.user_id) && (
+              {canPerformAction && (
                 <ActionForm
-                  actionType={REQUESTS.CHECK}
+                  actionType={actionType}
                   toggleDrawer={toggleDrawer}
                   model_id={model_id}
                   model={model}
                   refetchAction={refetchAction}
                 />
               )}
-              {isAllowedToApprove(
-                actions?.status,
-                actions?.authorization_data?.registered_data?.user_id,
-                actions?.authorization_data?.checked_data?.user_id
-              ) && (
-                  <ActionForm
-                    actionType={REQUESTS.APPROVE}
-                    toggleDrawer={toggleDrawer}
-                    model_id={model_id}
-                    model={model}
-                    refetchAction={refetchAction}
-                  />
-                )}
-              {isAllowedToAuthorize(
-                actions?.status,
-                actions?.authorization_data?.registered_data?.user_id,
-                actions?.authorization_data?.checked_data?.user_id,
-                actions?.authorization_data?.approved_data?.user_id
-              ) && (
-                  <ActionForm
-                    actionType={REQUESTS.AUTHORIZE}
-                    toggleDrawer={toggleDrawer}
-                    model_id={model_id}
-                    model={model}
-                    refetchAction={refetchAction}
-                  />
-                )}
             </Box>
           </CardContent>
         </Box>

@@ -37,7 +37,7 @@ const BridgeComponentsAncillariesCard: React.FC<BridgeComponentsAncillariesCardP
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {item?.bridgeBasicData?.name || item?.bridge_id || item?.id.slice(0, 8) + '...'}
+              {item?.bridge?.name || item?.bridgeBasicData?.name || item?.bridge_id || item?.id.slice(0, 8) + '...'}
             </Typography>
           </Typography>
         </Box>
@@ -45,19 +45,19 @@ const BridgeComponentsAncillariesCard: React.FC<BridgeComponentsAncillariesCardP
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            Bridge Name: {item?.bridgeBasicData?.name || item?.bridge_id || 'N/A'}
+            Bridge Name: {item?.bridge?.name || item?.bridgeBasicData?.name || item?.bridge_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Expansion Joint Type: {item?.expansionJointType?.title || item?.expansion_joint_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Guard Railing Type: {item?.guardRailType?.title || item?.guard_railing_type_id || 'N/A'}
+            Guard Railing Type: {item?.guardRailingType?.title || item?.guardRailType?.title || item?.guard_railing_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Abutment Bearing Type: {item?.abutment_bearing_type_id || 'N/A'}
+            Abutment Bearing Type: {item?.abutmentBearingType?.title || item?.abutment_bearing_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Piers Bearing Type: {item?.piers_bearing_type_id || 'N/A'}
+            Piers Bearing Type: {item?.piersBearingType?.title || item?.piers_bearing_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Surface Type: {item?.surfaceType?.title || item?.surface_type_id || 'N/A'}

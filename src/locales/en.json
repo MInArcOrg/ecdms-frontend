@@ -525,7 +525,13 @@
       "edit-communication-system-type": "Edit Communication System Type",
       "braking-system-types": "Braking System Types",
       "create-braking-system-type": "Add Braking System Type",
-      "edit-braking-system-type": "Edit Braking System Type"
+      "edit-braking-system-type": "Edit Braking System Type",
+      "abutment-bearing-types": "Abutment Bearing Types",
+      "create-abutment-bearing-type": "Add Abutment Bearing Type",
+      "edit-abutment-bearing-type": "Edit Abutment Bearing Type",
+      "piers-bearing-types": "Piers Bearing Types",
+      "create-piers-bearing-type": "Add Piers Bearing Type",
+      "edit-piers-bearing-type": "Edit Piers Bearing Type"
     },
     "form": {
       "title": "Title",
