@@ -7,7 +7,8 @@ export const certificatesMenuIds = {
   section: 'CERTIFICATES_SECTION',
   certificates: 'CERTIFICATES',
   recommendations: 'RECOMMENDATIONS',
-  license: 'LICENSE'
+  license: 'LICENSE',
+  professionalLicense: 'PROFESSIONAL_LICENSE'
 };
 
 const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
@@ -30,8 +31,9 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
       {
         id: certificatesMenuIds.license,
         title: 'resource.navigation.submenu.certificates.license',
-        path: `/resources/${typeId}/details/${id}/certificates/license`
-      }
+        path: `/resources/${typeId}/details/${id}/certificates/license`,
+        model: 'professionallicense'
+      },
     ]
   }
 ];

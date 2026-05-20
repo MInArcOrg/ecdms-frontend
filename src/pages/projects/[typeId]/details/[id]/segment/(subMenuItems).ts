@@ -36,7 +36,7 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: projectSegmentIds.segment.segmentCoordinates,
         title: 'project.navigation.submenu.segment.segment.segment-coordinates',
         path: `/projects/${typeId}/details/${id}/segment/segment/segment-coordinates`,
-        model: 'segmentcoordinates',
+        model: 'segmentcoordinate',
         apiRoute: 'segment-coordinates'
       },
       {

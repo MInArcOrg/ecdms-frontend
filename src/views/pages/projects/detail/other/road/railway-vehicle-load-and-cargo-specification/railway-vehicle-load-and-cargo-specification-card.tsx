@@ -51,12 +51,12 @@ const RailwayVehicleLoadAndCargoSpecificationCard: React.FC<RailwayVehicleLoadAn
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-vehicle-load-and-cargo-specification.details.railway_vehicle_identification_id')}:{' '}
-            {railwayVehicleLoadAndCargoSpecification?.railwayVehicleIndentification
-              ? railwayVehicleLoadAndCargoSpecification?.railwayVehicleIndentification +
-                ' - ' +
-                railwayVehicleLoadAndCargoSpecification?.railwayVehicleIndentification.manufacturer_supplier_name +
-                ' - ' +
-                railwayVehicleLoadAndCargoSpecification?.railwayVehicleIndentification.manufacture_year
+            {railwayVehicleLoadAndCargoSpecification?.railwayVehicleIdentification
+              ? railwayVehicleLoadAndCargoSpecification?.railwayVehicleIdentification +
+              ' - ' +
+              railwayVehicleLoadAndCargoSpecification?.railwayVehicleIdentification.manufacturer_supplier_name +
+              ' - ' +
+              railwayVehicleLoadAndCargoSpecification?.railwayVehicleIdentification.manufacture_year
               : railwayVehicleLoadAndCargoSpecification?.railway_vehicle_identification_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">

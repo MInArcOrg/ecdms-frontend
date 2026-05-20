@@ -84,7 +84,7 @@ const RailwayCommunicationSystemMaintenanceAndTestingDrawer = ({
       }
 
       if (maintenanceContractsFile) {
-        await uploadFile(maintenanceContractsFile, 'MAINTENANCE_AND_TESTING_CONTRACTS_AGREEMENT', recordId, '', '');
+        await uploadFile(maintenanceContractsFile, otherSubMenu?.fileType || 'MAINTENANCE_AND_TESTING_CONTRACTS_AGREEMENT', recordId, '', '');
       }
 
       refetch();

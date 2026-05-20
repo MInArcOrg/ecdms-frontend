@@ -70,11 +70,11 @@ const ProfessionalContactPersonCard: React.FC<ProfessionalContactPersonCardProps
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'professionalcontactperson'
+            subject: 'professionalcontactpeople'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'professionalcontactperson'
+            subject: 'professionalcontactpeople'
           }}
           onEdit={() => onEdit(contactPerson)}
           onDelete={() => onDelete(contactPerson?.id || '')}

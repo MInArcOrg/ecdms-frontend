@@ -9,6 +9,7 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import ResourcePriceForm from './resource-price-form';
+import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
 interface ResourcePriceDrawerType {
   open: boolean;
@@ -26,7 +27,7 @@ const validationSchema = yup.object().shape({
   quality_id: yup.string().required('Quality is required'),
   total_quantity_available: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
   price_date: yup.date().nullable(),
-  unit_price_id: yup.string().nullable(),
+  unit_price: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
   remark: yup.string().nullable()
 });
 
@@ -51,7 +52,8 @@ const ResourcePriceDrawer: React.FC<ResourcePriceDrawerType> = (props) => {
     data: {
       ...values,
       id: resourcePrice?.id,
-      resource_id: resourceId
+      resource_id: resourceId,
+      price_date: convertDateToLocaleDate(values.price_date)
     },
     files: uploadableFile ? [uploadableFile] : []
   });
@@ -81,7 +83,10 @@ const ResourcePriceDrawer: React.FC<ResourcePriceDrawerType> = (props) => {
           title="resource.resource-price.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={resourcePrice}
+          initialValues={{
+            ...resourcePrice,
+            price_date: formatInitialDateDate(resourcePrice?.price_date)
+          }}
           createActionFunc={isEdit ? editResourcePrice : createResourcePrice}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

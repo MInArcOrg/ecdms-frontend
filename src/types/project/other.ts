@@ -107,6 +107,18 @@ export interface RoadSegment {
   created_at: Date;
   updated_at: Date;
 }
+export interface SegmentCoordinate {
+  id: string;
+  project_id: string;
+  road_segment_id: string;
+  roadSegment?: RoadSegment;
+  start_x?: number;
+  start_y?: number;
+  end_x?: number;
+  end_y?: number;
+  created_at?: string;
+  updated_at?: string;
+}
 export interface RoadLayer {
   id: string;
   parent_id?: string;
@@ -122,6 +134,24 @@ export interface RoadLayer {
   revision_no?: number;
   created_at?: Date;
   updated_at?: Date;
+}
+export interface DrainageMaintenance {
+  id: string;
+  project_id: string;
+  road_segment_id: string;
+  roadSegment?: RoadSegment;
+  soil_type_id: string;
+  soilType?: ProjectGeneralMaster;
+  ground_water_impact_id: string;
+  groundWaterImpact?: ProjectGeneralMaster;
+  soil_bearing_capacity?: string;
+  slope_stability_id: string;
+  slopeStability?: ProjectGeneralMaster;
+  retaining_walls?: boolean;
+  geological_hazard?: string;
+  remark?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 export interface GeneratingCapacity {
   id: string;
@@ -2415,7 +2445,7 @@ export interface RailwayVehicleSpecification {
   id: string;
   project_id: string;
   railway_vehicle_identification_id: string;
-  railwayVehicleIndentification?: RailwayVehicleIdentification;
+  railwayVehicleIdentification?: RailwayVehicleIdentification;
   vehicle_dimensions?: string | null;
   vehicle_weight_and_load_capacity?: string | null;
   maximum_speed?: number | null;
@@ -2430,7 +2460,7 @@ export interface RailwayVehicleMaintenanceAndInspection {
   id: string;
   project_id: string;
   railway_vehicle_identification_id: string;
-  railwayVehicleIndentification?: RailwayVehicleIdentification;
+  railwayVehicleIdentification?: RailwayVehicleIdentification;
   maintenance_history_records?: string | null;
   vehicle_weight_and_load_capacity?: string | null;
   maximum_speed?: number | null;
@@ -2445,7 +2475,7 @@ export interface RailwayVehicleOperationalPerformance {
   project_id: string;
   railway_vehicle_identification_id: string;
   fuel_or_energy_consumption?: string | null;
-  railwayVehicleIndentification: RailwayVehicleIdentification;
+  railwayVehicleIdentification: RailwayVehicleIdentification;
   mileage_or_operating_hours?: string | null;
   reliability_and_availability?: string | null;
   performance_indicators?: string | null;
@@ -2462,7 +2492,7 @@ export interface RailwayVehicleSafetyAndCompliance {
   comply_with_regulatory_standards_and_certifications?: boolean | null;
   incident_records_number?: number | null; // Integer is represented as a number
   action_taken_to_accidents?: string | null;
-  railwayVehicleIndentification?: RailwayVehicleIdentification; // Optional: Include related RailwayVehicleIdentification
+  railwayVehicleIdentification?: RailwayVehicleIdentification; // Optional: Include related RailwayVehicleIdentification
   remark?: string | null;
   created_at?: string;
   updated_at?: string;
@@ -2475,7 +2505,7 @@ export interface RailwayVehicleInteriorAndPassengerAmenity {
   seating_capacity?: number | null; // Integer as number
   passenger_amenities_availability?: string | null;
   accessibility_features_for_passengers_with_disabilities?: boolean | null;
-  railwayVehicleIndentification?: RailwayVehicleIdentification; // Optional: Include related RailwayVehicleIdentification
+  railwayVehicleIdentification?: RailwayVehicleIdentification; // Optional: Include related RailwayVehicleIdentification
   remark?: string | null;
   created_at?: string;
   updated_at?: string;
@@ -2484,7 +2514,7 @@ export interface RailwayVehicleLoadAndCargoSpecification {
   id: string;
   project_id: string;
   railway_vehicle_identification_id: string;
-  railwayVehicleIndentification?: RailwayVehicleIdentification; // Optional: Include related RailwayVehicleIdentification
+  railwayVehicleIdentification?: RailwayVehicleIdentification; // Optional: Include related RailwayVehicleIdentification
   load_capacity_and_weight_limits?: string | null;
   cargo_restrictions_or_special_requirements?: string | null;
   coupling_and_uncoupling_procedures?: boolean | null;

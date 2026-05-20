@@ -79,7 +79,7 @@ const RailwayCommunicationSystemMaintenanceAndTestingCard: React.FC<RailwayCommu
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-communication-system-maintenance-and-testing.details.maintenance-contracts-file-upload')}:{' '}
-            {<FileDrawer id={railwayCommunicationSystemMaintenanceAndTesting.id} type={otherSubMenu?.fileType || ''} /> || 'N/A'}
+            {railwayCommunicationSystemMaintenanceAndTesting.id ? <FileDrawer id={railwayCommunicationSystemMaintenanceAndTesting.id} type={otherSubMenu?.fileType || 'MAINTENANCE_AND_TESTING_CONTRACTS_AGREEMENT'} /> : 'N/A'}
           </Typography>
           {railwayCommunicationSystemMaintenanceAndTesting.created_at && (
             <Typography variant="body2" color="text.secondary">

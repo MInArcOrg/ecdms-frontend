@@ -37,7 +37,7 @@ export const railwayVehicleMaintenanceAndInspectionColumns = (
             '&:hover': { color: 'primary.main' }
           }}
         >
-          {row?.id?.toString().slice(0, 5) || 'N/A'}
+          {t('common.table-columns.details') || 'N/A'}
         </Typography>
       )
     },
@@ -48,12 +48,12 @@ export const railwayVehicleMaintenanceAndInspectionColumns = (
       headerName: t('project.other.railway-vehicle-maintenance-and-inspection.details.railway_vehicle_identification_id'),
       renderCell: ({ row }: CellType) => (
         <Typography sx={{ color: 'text.secondary' }}>
-          {row?.railwayVehicleIndentification
-            ? row?.railwayVehicleIndentification +
+          {row?.railwayVehicleIdentification
+            ? row?.railwayVehicleIdentification +
             ' - ' +
-            row?.railwayVehicleIndentification.manufacturer_supplier_name +
+            row?.railwayVehicleIdentification.manufacturer_supplier_name +
             ' - ' +
-            row?.railwayVehicleIndentification.manufacture_year
+            row?.railwayVehicleIdentification.manufacture_year
             : row?.railway_vehicle_identification_id || 'N/A'}
         </Typography>
       )

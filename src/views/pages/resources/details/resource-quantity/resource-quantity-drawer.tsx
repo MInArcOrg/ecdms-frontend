@@ -9,6 +9,7 @@ import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import * as yup from 'yup';
 import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 import ResourceQuantityForm from './resource-quantity-form';
+import { formatInitialDateDate } from 'src/utils/formatter/date';
 
 interface ResourceQuantityDrawerType {
   open: boolean;
@@ -26,7 +27,7 @@ const validationSchema = yup.object().shape({
   quality_id: yup.string().required('Quality is required'),
   total_quantity_available: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
   price_date: yup.date().nullable(),
-  unit_price_id: yup.string().nullable(),
+  unit_price: limitNumberDigits(nullableNumberSchema(), { maxIntegerDigits: 15, maxDecimalPlaces: 2 }),
   remark: yup.string().nullable()
 });
 
@@ -81,7 +82,7 @@ const ResourceQuantityDrawer: React.FC<ResourceQuantityDrawerType> = (props) => 
           title="resource.resource-quantity.title"
           getPayload={getPayload}
           validationSchema={validationSchema}
-          initialValues={resourceQuantity}
+          initialValues={{ ...resourceQuantity, price_date: formatInitialDateDate(resourceQuantity.price_date) }}
           createActionFunc={isEdit ? editResourceQuantity : createResourceQuantity}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}

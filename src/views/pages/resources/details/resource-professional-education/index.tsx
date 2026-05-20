@@ -6,7 +6,7 @@ import usePaginatedFetch from 'src/hooks/use-paginated-fetch';
 import professionalEducationApiService from 'src/services/resource/professional-education-service';
 import { defaultCreateActionConfig } from 'src/types/general/listing';
 import type { GetRequestParam, IApiResponse } from 'src/types/requests';
-import { formatCreatedAt } from 'src/utils/formatter/date';
+import { formatCreatedAt, formatDynamicDate } from 'src/utils/formatter/date';
 import ItemsListing from 'src/views/shared/listing';
 import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-drawer';
 import EducationCard from './professional-education-card';
@@ -70,14 +70,10 @@ const ResourceEducationList: React.FC<ResourceEducationListProps> = ({ professio
     setSelectedRow(education);
   };
 
-  const getStudyFieldTitle = (education: ProfessionalEducation) => {
-    return education.studyfield ? education.studyfield.title : education.study_field || 'N/A';
-  };
-
   const mapEducationToDetailItems = (education: ProfessionalEducation): { title: string; value: string }[] => [
     {
       title: t('resources.professional.education.study-field'),
-      value: getStudyFieldTitle(education)
+      value: education.studyField?.title || education.study_field_id || 'N/A'
     },
     {
       title: t('resources.professional.education.school-name'),
@@ -89,15 +85,15 @@ const ResourceEducationList: React.FC<ResourceEducationListProps> = ({ professio
     },
     {
       title: t('resources.professional.education.program-type'),
-      value: education?.program_type || 'N/A'
+      value: education?.programType?.title || 'N/A'
     },
     {
       title: t('resources.professional.education.start-date'),
-      value: education?.start_date || 'N/A'
+      value: formatDynamicDate(education?.start_date) || 'N/A'
     },
     {
       title: t('resources.professional.education.end-date'),
-      value: education?.end_date || 'N/A'
+      value: formatDynamicDate(education?.end_date) || 'N/A'
     },
     {
       title: t('resources.professional.education.gpa'),

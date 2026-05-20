@@ -1,3 +1,4 @@
+import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
 import { GeneralMaster, ResourceGeneralMaster, StudyField } from '../general/general-master';
 
 export interface Resource {
@@ -143,17 +144,19 @@ export interface ProfessionalAdditionalInfo {
 
 export interface ProfessionalEducation {
   id?: string;
+  parent_id?: string | null;
   professional_id: string;
-  study_field: string;
+  study_field_id: string;
   school_name?: string;
   education_level?: string;
-  program_type: string;
+  program_type_id: string;
   start_date: string;
   end_date: string;
   gpa: number;
   created_at?: Date;
   updated_at?: Date;
-  studyfield?: StudyField;
+  studyField?: ResourceGeneralMaster;
+  programType?: ResourceGeneralMaster;
 }
 
 export interface ProfessionalWorkExperience {
@@ -268,15 +271,16 @@ export interface MachineryInformation {
 
 export interface ResourcePrice {
   id?: string;
+  parent_id?: string | null;
+  department_id?: string | null;
   resource_id: string;
   resource_brand_id: string;
   resource_specification_id: string;
   resourceSpecification?: ResourceSpecification;
   resourceBrand?: ResourceBrand;
-  unit_price_id?: string;
-  unitPrice?: ResourceGeneralMaster;
+  unit_price?: number;
   total_quantity_available?: number;
-  price_date?: string;
+  price_date?: string | Date | EthiopianDate;
   supplier_name_id: string;
   supplierName?: ResourceGeneralMaster;
   supplier_address_id: string;
@@ -290,15 +294,16 @@ export interface ResourcePrice {
 
 export interface ResourceQuantity {
   id?: string;
+  parent_id?: string | null;
+  department_id?: string | null;
   resource_id: string;
   resource_brand_id: string;
   resource_specification_id: string;
   resourceSpecification?: ResourceSpecification;
   resourceBrand?: ResourceBrand;
-  unit_price_id?: string;
-  unitPrice?: ResourceGeneralMaster;
+  unit_price?: number;
   total_quantity_available?: number;
-  price_date?: string;
+  price_date?: string | Date | EthiopianDate;
   supplier_name_id: string;
   supplierName?: ResourceGeneralMaster;
   supplier_address_id: string;
@@ -308,4 +313,32 @@ export interface ResourceQuantity {
   remark?: string;
   created_at?: string;
   updated_at?: string;
+}
+
+export interface ProfessionalLicense {
+  id?: string;
+  professional_id: string;
+  license_type_id: string;
+  license_category_id: string;
+  license_number: string;
+  license_name: string;
+  license_scope?: string;
+  licensing_body?: string;
+  issue_date?: Date | string | EthiopianDate;
+  expire_date?: Date | string | EthiopianDate;
+  remark?: string;
+  licenseType?: { id: string; title: string };
+  licenseCategory?: { id: string; title: string };
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface ProfessionalRecommendation {
+  id?: string;
+  professional_id: string;
+  title: string;
+  description?: string;
+  file_type?: string;
+  created_at?: Date | string;
+  updated_at?: Date | string;
 }

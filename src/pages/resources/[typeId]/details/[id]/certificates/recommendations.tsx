@@ -3,7 +3,7 @@ import ResourceLayout from 'src/views/pages/resources/details/layout/resource-la
 import { resourceMenuIds } from 'src/views/pages/resources/details/layout/resource-menu-items';
 import { certificatesMenuIds } from './(sub-menu-items)';
 import subMenuItems, { findSubMenuItem } from './(sub-menu-items)';
-
+import ProfessionalRecommendationList from 'src/views/pages/resources/details/resource-professional-recommendation';
 const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), certificatesMenuIds.recommendations);
 
 const RecommendationsPage = () => {
@@ -16,10 +16,7 @@ const RecommendationsPage = () => {
       activeSubMenuId={certificatesMenuIds.recommendations}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <>
-        {/* Replace with your actual Recommendations component */}
-        <div>Recommendations Content</div>
-      </>
+      <ProfessionalRecommendationList professionalId={id as string} />
     </ResourceLayout>
   );
 };

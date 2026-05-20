@@ -168,6 +168,8 @@ export const uploadableProjectFileTypes = {
     electric_grid_control_center_cyber_security_data: 'ELECTRIC_GRID_CONTROL_CENTER_CYBER_SECURITY_DATA',
     tracksGeometryData: 'TRACKS_GEOMETRY_DATA',
     designStandard: 'DESIGN_STANDARD',
+    segmentCoordinate: 'SEGMENT_COORDINATE',
+    drainageMaintenance: 'DRAINAGE_MAINTENANCE',
   }
 } as const;
 export const uploadableStakeholderFileTypes = {

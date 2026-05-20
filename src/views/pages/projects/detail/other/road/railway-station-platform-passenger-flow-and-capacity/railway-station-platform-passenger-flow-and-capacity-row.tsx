@@ -37,7 +37,7 @@ export const railwayStationPlatformPassengerFlowAndCapacityColumns = (
             "&:hover": { color: "primary.main" },
           }}
         >
-          {row?.id?.toString().slice(0, 5) || "N/A"}
+          {t('common.table-columns.details') || "N/A"}
         </Typography>
       ),
     },

@@ -13,7 +13,7 @@ export const projectMaintenanceIds = {
     roadMaintenance: 'ROAD_MAINTENANCE_ACTIVITIES',
     maintenanceHistory: 'MAINTENANCE_HISTORY',
     trafficMaintenance: 'TRAFFIC_MAINTENANCE',
-    drainageMaintenanceData: 'DRAINAGE_MAINTENANCE_DATA'
+    drainageMaintenance: 'DRAINAGE_MAINTENANCE'
   }
 };
 
@@ -71,11 +71,11 @@ const subMenuItems = (id: string, typeId: string, module: string = "projects"): 
       //   apiRoute: 'traffic-maintenance'
       // },
       {
-        id: projectMaintenanceIds.maintenance.drainageMaintenanceData,
-        title: 'project.navigation.submenu.maintenance.maintenance.drainage-maintenance-data',
-        path: `/${module}/${typeId}/details/${id}/maintenance/maintenance/drainage-maintenance-data`,
-        model: 'drainagemaintenancedata',
-        apiRoute: 'drainage-maintenance-data'
+        id: projectMaintenanceIds.maintenance.drainageMaintenance,
+        title: 'project.navigation.submenu.maintenance.maintenance.drainage-maintenance',
+        path: `/${module}/${typeId}/details/${id}/maintenance/maintenance/drainage-maintenance`,
+        model: 'drainagemaintenance',
+        apiRoute: 'drainage-maintenances'
       }
     ]
   }

@@ -145,7 +145,7 @@ const ProfessionalContactPersonList: React.FC<ProfessionalContactPersonListProps
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'professionalcontact'
+            subject: 'professionalcontactpeople'
           }
         }}
         fetchDataFunction={refetch}

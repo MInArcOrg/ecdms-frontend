@@ -51,12 +51,12 @@ const RailwayVehicleOperationalPerformanceCard: React.FC<RailwayVehicleOperation
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-vehicle-operational-performance.details.railway_vehicle_identification_id')}:{' '}
-            {railwayVehicleOperationalPerformance?.railwayVehicleIndentification
-              ? railwayVehicleOperationalPerformance?.railwayVehicleIndentification +
-                ' - ' +
-                railwayVehicleOperationalPerformance?.railwayVehicleIndentification.manufacturer_supplier_name +
-                ' - ' +
-                railwayVehicleOperationalPerformance?.railwayVehicleIndentification.manufacture_year
+            {railwayVehicleOperationalPerformance?.railwayVehicleIdentification
+              ? railwayVehicleOperationalPerformance?.railwayVehicleIdentification +
+              ' - ' +
+              railwayVehicleOperationalPerformance?.railwayVehicleIdentification.manufacturer_supplier_name +
+              ' - ' +
+              railwayVehicleOperationalPerformance?.railwayVehicleIdentification.manufacture_year
               : railwayVehicleOperationalPerformance?.id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">

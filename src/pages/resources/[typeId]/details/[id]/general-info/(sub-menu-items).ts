@@ -28,16 +28,7 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: generalInfoMenuIds.generalInfo.generalInfo,
         title: 'resource.navigation.submenu.general-info.general-info', // locale key
         path: `/resources/${typeId}/details/${id}/general-info/general-info/general-info`,
-        type: [resourceTypesMaster.material, resourceTypesMaster.machineryAndEquipment],
-        subject: 'resource',
-        action: 'view',
-        model: 'resource'
-      },
-      {
-        id: generalInfoMenuIds.generalInfo.professionalRegistration,
-        title: 'resource.navigation.submenu.general-info.professional-registration',
-        path: `/resources/${typeId}/details/${id}/general-info/general-info/professional-registration`,
-        type: [resourceTypesMaster.professional],
+        type: [resourceTypesMaster.material, resourceTypesMaster.machineryAndEquipment, resourceTypesMaster.professional],
         subject: 'resource',
         action: 'view',
         model: 'resource'
@@ -65,7 +56,9 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         title: 'resource.navigation.submenu.general-info.contact-person',
         path: `/resources/${typeId}/details/${id}/general-info/general-info/contact-person`,
         type: [resourceTypesMaster.professional],
-        model: 'professionalcontactperson'
+        model: 'professionalcontactpeople',
+        subject: 'professionalcontactpeople',
+        action: 'view'
       },
       {
         id: generalInfoMenuIds.generalInfo.additionalInfo,

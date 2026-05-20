@@ -52,6 +52,24 @@ export const resourceMasterModels = {
     editTitle: 'edit-unit-price',
     fileType: 'UNIT_PRICE',
     flag: 'MATERIAL'
+  },
+  licenseCategory: {
+    model: 'LicenseCategory',
+    dbModel: 'licensecategory',
+    title: 'license-category',
+    createTitle: 'create-license-category',
+    editTitle: 'edit-license-category',
+    fileType: 'LICENSE_CATEGORY',
+    flag: 'PROFESSIONAL'
+  },
+  licenseType: {
+    model: 'LicenseType',
+    dbModel: 'licensetype',
+    title: 'license-type',
+    createTitle: 'create-license-type',
+    editTitle: 'edit-license-type',
+    fileType: 'LICENSE_TYPE',
+    flag: 'PROFESSIONAL'
   }
 };
 export type ResourceMasterModelKey = keyof typeof resourceMasterModels;

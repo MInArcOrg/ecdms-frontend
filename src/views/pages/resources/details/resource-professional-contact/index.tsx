@@ -133,7 +133,7 @@ const ProfessionalContactList: React.FC<ProfessionalContactListProps> = ({ profe
           onlyIcon: false,
           permission: {
             action: 'create',
-            subject: 'professionalcontact'
+            subject: 'professionalcontactpeople'
           }
         }}
         fetchDataFunction={refetch}

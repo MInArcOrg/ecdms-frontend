@@ -81,7 +81,7 @@ const RailwayVehicleSpecificationList: React.FC<RailwayVehicleSpecificationListP
     },
     {
       title: t('project.other.railway-vehicle-specification.details.railway_vehicle_identification_id'),
-      value: specs?.railway_vehicle_identification_id || 'N/A'
+      value: specs?.railwayVehicleIdentification?.vehicle_identification_number || specs?.railway_vehicle_identification_id || 'N/A'
     },
     {
       title: t('project.other.railway-vehicle-specification.details.vehicle_dimensions'),
@@ -97,7 +97,7 @@ const RailwayVehicleSpecificationList: React.FC<RailwayVehicleSpecificationListP
     },
     {
       title: t('project.other.railway-vehicle-specification.details.braking_system_type'),
-      value: specs?.braking_system_type || 'N/A'
+      value: specs?.brakingSystemType?.title || specs?.braking_system_type_id || 'N/A'
     },
     {
       title: t('project.other.railway-vehicle-specification.details.remark'),

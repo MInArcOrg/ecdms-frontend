@@ -51,12 +51,12 @@ const RailwayVehicleMaintenanceAndInspectionCard: React.FC<RailwayVehicleMainten
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-vehicle-maintenance-and-inspection.details.railway_vehicle_identification_id')}:{' '}
-            {railwayVehicleMaintenanceAndInspection?.railwayVehicleIndentification
-              ? railwayVehicleMaintenanceAndInspection?.railwayVehicleIndentification +
+            {railwayVehicleMaintenanceAndInspection?.railwayVehicleIdentification
+              ? railwayVehicleMaintenanceAndInspection?.railwayVehicleIdentification +
               ' - ' +
-              railwayVehicleMaintenanceAndInspection?.railwayVehicleIndentification.manufacturer_supplier_name +
+              railwayVehicleMaintenanceAndInspection?.railwayVehicleIdentification.manufacturer_supplier_name +
               ' - ' +
-              railwayVehicleMaintenanceAndInspection?.railwayVehicleIndentification.manufacture_year
+              railwayVehicleMaintenanceAndInspection?.railwayVehicleIdentification.manufacture_year
               : railwayVehicleMaintenanceAndInspection?.railway_vehicle_identification_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">

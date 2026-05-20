@@ -19,7 +19,7 @@ const EducationCard: React.FC<EducationCardProps> = ({ education, refetch, onEdi
   const { t } = useTranslation();
 
   const getStudyFieldTitle = () => {
-    return education.studyfield ? education.studyfield.title : education.study_field || 'N/A';
+    return education.studyField ? education.studyField.title : education.study_field_id || 'N/A';
   };
 
   return (
@@ -53,7 +53,7 @@ const EducationCard: React.FC<EducationCardProps> = ({ education, refetch, onEdi
             {t('resources.professional.education.education-level')}: {education?.education_level || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('resources.professional.education.program-type')}: {education?.program_type || 'N/A'}
+            {t('resources.professional.education.program-type')}: {education?.programType?.title || education?.program_type_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('resources.professional.education.gpa')}: {education?.gpa || 'N/A'}

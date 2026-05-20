@@ -2,18 +2,17 @@ import { Grid } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { FormikProps } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { gridSpacing } from 'src/configs/app-constants';
 import { dropDownConfig } from 'src/configs/api-constants';
+import { gridSpacing } from 'src/configs/app-constants';
+import { resourceMasterModels } from 'src/constants/master-data/resource-general-master-constants';
+import resourceGeneralMasterDataApiService from 'src/services/general/resource-general-master-data-service';
 import resourceBrandApiService from 'src/services/resource/resource-brand-service';
 import resourceSpecificationApiService from 'src/services/resource/resource-specification-service';
-import generalMasterDataApiService from 'src/services/general/general-master-data-service';
-import { resourceMasterModels } from 'src/constants/master-data/resource-general-master-constants';
 import { ResourcePrice } from 'src/types/resource';
-import CustomDateSelector from 'src/views/shared/form/custom-date-box';
+import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomFileUpload from 'src/views/shared/form/custome-file-selector';
-import resourceGeneralMasterDataApiService from 'src/services/general/resource-general-master-data-service';
 
 interface ResourcePriceFormProps {
   formik: FormikProps<ResourcePrice>;
@@ -75,10 +74,7 @@ const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
     queryFn: () => fetchMasterData(resourceMasterModels.supplierAddress.model)
   });
 
-  const { data: unitPrices } = useQuery({
-    queryKey: ['master-data', resourceMasterModels.unitPrice.model],
-    queryFn: () => fetchMasterData(resourceMasterModels.unitPrice.model)
-  });
+
   console.log('unit prices', resourceBrands)
   return (
     <Grid container spacing={gridSpacing}>
@@ -153,17 +149,12 @@ const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomSelect
+        <CustomTextBox
           fullWidth
           size="small"
-          name="unit_price_id"
+          type="number"
+          name="unit_price"
           label={t('resource.resource-price.form.unit-price')}
-          options={
-            unitPrices?.payload?.map((item) => ({
-              value: item.id,
-              label: item.title
-            })) || []
-          }
         />
       </Grid>
       <Grid item xs={12} sm={6}>
@@ -176,7 +167,7 @@ const ResourcePriceForm: React.FC<ResourcePriceFormProps> = ({
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomDateSelector
+        <CustomDynamicDatePicker
           fullWidth
           size="small"
           name="price_date"

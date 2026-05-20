@@ -117,7 +117,7 @@ const RailwayVehicleSpecificationForm: React.FC<RailwayVehicleSpecificationFormP
         />
       </Grid>
       <Grid item xs={12}>
-        <CustomFileUpload label={t('common.form.technical-document-upload')} file={defaultFile} onFileChange={onDefaultFileChange} />
+        <CustomFileUpload label={t('common.form.attachment')} file={defaultFile} onFileChange={onDefaultFileChange} />
       </Grid>
     </Grid>
   );

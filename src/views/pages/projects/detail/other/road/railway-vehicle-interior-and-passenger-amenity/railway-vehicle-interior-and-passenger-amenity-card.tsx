@@ -51,12 +51,12 @@ const RailwayVehicleInteriorAndPassengerAmenityCard: React.FC<RailwayVehicleInte
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-vehicle-interior-and-passenger-amenity.details.railway_vehicle_identification_id')}:{' '}
-            {railwayVehicleInteriorAndPassengerAmenity?.railwayVehicleIndentification
-              ? railwayVehicleInteriorAndPassengerAmenity?.railwayVehicleIndentification +
-                ' - ' +
-                railwayVehicleInteriorAndPassengerAmenity?.railwayVehicleIndentification.manufacturer_supplier_name +
-                ' - ' +
-                railwayVehicleInteriorAndPassengerAmenity?.railwayVehicleIndentification.manufacture_year
+            {railwayVehicleInteriorAndPassengerAmenity?.railwayVehicleIdentification
+              ? railwayVehicleInteriorAndPassengerAmenity?.railwayVehicleIdentification +
+              ' - ' +
+              railwayVehicleInteriorAndPassengerAmenity?.railwayVehicleIdentification.manufacturer_supplier_name +
+              ' - ' +
+              railwayVehicleInteriorAndPassengerAmenity?.railwayVehicleIdentification.manufacture_year
               : railwayVehicleInteriorAndPassengerAmenity?.railway_vehicle_identification_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">

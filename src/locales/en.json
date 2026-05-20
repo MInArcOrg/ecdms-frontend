@@ -414,6 +414,12 @@
       "unit-price": "Unit Price",
       "create-unit-price": "Add Unit Price",
       "edit-unit-price": "Edit Unit Price",
+      "license-category": "License Category",
+      "create-license-category": "Add License Category",
+      "edit-license-category": "Edit License Category",
+      "license-type": "License Type",
+      "create-license-type": "Add License Type",
+      "edit-license-type": "Edit License Type",
       "supplier-name": "Supplier Name",
       "create-supplier-name": "Add Supplier Name",
       "edit-supplier-name": "Edit Supplier Name",
@@ -880,7 +886,8 @@
           "certificates-section": "Certificates",
           "certificates": "Certificates",
           "recommendations": "Recommendations",
-          "license": "License"
+          "license": "License",
+          "professional-license": "Professional License"
         }
       }
     },
@@ -1236,7 +1243,8 @@
             "road-maintenance-activities": "Road Maintenance Activities",
             "maintenance-history": "Maintenance History",
             "traffic-maintenance": "Traffic Maintenance",
-            "drainage-maintenance-data": "Drainage Maintenance Data"
+            "drainage-maintenance-data": "Drainage Maintenance Data",
+            "drainage-maintenance": "Drainage Maintenance"
           }
         },
         "telecom-infrastructure": {
@@ -2241,6 +2249,19 @@
           "design-standard-id": "Design Standard"
         }
       },
+      "segment-coordinate": {
+        "title": "Segment Coordinates",
+        "create-segment-coordinate": "Add Segment Coordinate",
+        "edit-segment-coordinate": "Edit Segment Coordinate",
+        "segment-coordinate-details": "Segment Coordinate Details",
+        "details": {
+          "road-segment-id": "Road Segment",
+          "start-x": "Start X",
+          "start-y": "Start Y",
+          "end-x": "End X",
+          "end-y": "End Y"
+        }
+      },
       "road-layer": {
         "title": "Road Layers",
         "create-road-layer": "Add Road Layer",
@@ -2254,6 +2275,22 @@
           "thickness": "Thickness",
           "material": "Material",
           "description": "Description"
+        }
+      },
+      "drainage-maintenance": {
+        "title": "Drainage Maintenance",
+        "create-drainage-maintenance": "Add Drainage Maintenance",
+        "edit-drainage-maintenance": "Edit Drainage Maintenance",
+        "drainage-maintenance-details": "Drainage Maintenance Details",
+        "details": {
+          "road-segment-id": "Road Segment",
+          "soil-type-id": "Soil Type",
+          "ground-water-impact-id": "Ground Water Impact",
+          "soil-bearing-capacity": "Soil Bearing Capacity",
+          "slope-stability-id": "Slope Stability",
+          "retaining-walls": "Retaining Walls",
+          "geological-hazard": "Geological Hazard",
+          "remark": "Remark"
         }
       },
       "traffic-parameter": {
@@ -5036,6 +5073,8 @@
     },
     "form": {
       "attachment": "Attachment",
+      "remark": "Remark",
+      "remark-placeholder": "Enter remark",
       "file-upload": "File Upload",
       "success-created": "Successfully Addd!",
       "success-updated": "Successfully updated!",
@@ -5775,6 +5814,21 @@
         "phoneNo": "Phone Number",
         "email": "Email",
         "name": "Name"
+      },
+      "license": {
+        "title": "Professional Licenses",
+        "details": "License Details",
+        "create-license": "Add License",
+        "edit-license": "Edit License",
+        "license-number": "License Number",
+        "license-name": "License Name",
+        "license-type": "License Type",
+        "license-category": "License Category",
+        "license-scope": "License Scope",
+        "licensing-body": "Licensing Body",
+        "issue-date": "Issue Date",
+        "expire-date": "Expiry Date",
+        "remark": "Remark"
       }
     },
     "education": {

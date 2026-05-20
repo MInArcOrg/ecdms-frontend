@@ -75,10 +75,7 @@ const ResourceQuantityForm: React.FC<ResourceQuantityFormProps> = ({
     queryFn: () => fetchMasterData(resourceMasterModels.supplierAddress.model)
   });
 
-  const { data: unitPrices } = useQuery({
-    queryKey: ['master-data', resourceMasterModels.unitPrice.model],
-    queryFn: () => fetchMasterData(resourceMasterModels.unitPrice.model)
-  });
+
   console.log('unit prices', resourceBrands)
   return (
     <Grid container spacing={gridSpacing}>
@@ -153,17 +150,12 @@ const ResourceQuantityForm: React.FC<ResourceQuantityFormProps> = ({
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <CustomSelect
+        <CustomTextBox
           fullWidth
           size="small"
-          name="unit_price_id"
+          type="number"
+          name="unit_price"
           label={t('resource.resource-quantity.form.unit-price')}
-          options={
-            unitPrices?.payload?.map((item) => ({
-              value: item.id,
-              label: item.title
-            })) || []
-          }
         />
       </Grid>
       <Grid item xs={12} sm={6}>
