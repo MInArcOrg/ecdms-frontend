@@ -106,7 +106,7 @@ const RailwayVehicleMaintenanceAndInspectionList: React.FC<RailwayVehicleMainten
     },
     {
       title: t('project.other.railway-vehicle-maintenance-and-inspection.details.braking_system_type'),
-      value: specs?.braking_system_type || 'N/A'
+      value: specs?.brakingSystemType?.title || 'N/A'
     },
     {
       title: t('project.other.railway-vehicle-maintenance-and-inspection.details.remark'),

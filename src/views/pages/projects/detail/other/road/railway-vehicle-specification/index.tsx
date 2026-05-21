@@ -97,7 +97,7 @@ const RailwayVehicleSpecificationList: React.FC<RailwayVehicleSpecificationListP
     },
     {
       title: t('project.other.railway-vehicle-specification.details.braking_system_type'),
-      value: specs?.braking_system_type || 'N/A'
+      value: specs?.brakingSystemType?.title || 'N/A'
     },
     {
       title: t('project.other.railway-vehicle-specification.details.remark'),

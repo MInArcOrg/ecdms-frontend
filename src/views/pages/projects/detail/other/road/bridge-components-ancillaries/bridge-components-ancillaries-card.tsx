@@ -37,7 +37,7 @@ const BridgeComponentsAncillariesCard: React.FC<BridgeComponentsAncillariesCardP
                 '&:hover': { color: 'primary.main' }
               }}
             >
-              {item?.bridge?.name || item?.bridgeBasicData?.name || item?.bridge_id || item?.id.slice(0, 8) + '...'}
+              {item?.bridge?.name ||  item?.bridge_id || item?.id.slice(0, 8) + '...'}
             </Typography>
           </Typography>
         </Box>
@@ -45,7 +45,7 @@ const BridgeComponentsAncillariesCard: React.FC<BridgeComponentsAncillariesCardP
         <Divider sx={{ my: 1 }} />
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            Bridge Name: {item?.bridge?.name || item?.bridgeBasicData?.name || item?.bridge_id || 'N/A'}
+            Bridge Name: {item?.bridge?.name ||  item?.bridge_id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Expansion Joint Type: {item?.expansionJointType?.title || item?.expansion_joint_type_id || 'N/A'}

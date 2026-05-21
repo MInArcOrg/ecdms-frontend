@@ -82,7 +82,8 @@ const StakeholderProjectDrawer = (props: StakeholderProjectDrawerType) => {
         },
         files: []
       };
-      await projectStakeholderApiService.create(stakeholderPayload);
+      // The create service will auto-generate the id, so the payload doesn't need to include it
+      await projectStakeholderApiService.create(stakeholderPayload as IApiPayload<any>);
     }
     
     return res;
