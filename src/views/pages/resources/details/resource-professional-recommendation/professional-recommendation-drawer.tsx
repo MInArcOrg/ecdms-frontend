@@ -54,14 +54,14 @@ const RecommendationDrawer: React.FC<RecommendationDrawerProps> = (props) => {
     };
     const onActionSuccess = async (response: IApiResponse<ProfessionalRecommendation>, payload: IApiPayload<ProfessionalRecommendation>) => {
         if (payload.files.length > 0) {
-            await uploadFile(payload.files[0], uploadableResourceFileTypes.resource, response?.payload?.id || '', '', '');
+            await uploadFile(payload.files[0], uploadableResourceFileTypes.resourceProfessionalRecommendation, response?.payload?.id || '', '', '');
         }
         refetch();
         handleClose();
     };
     return (
         <CustomSideDrawer
-            title={`resources.professional.recommendation.${isEdit ? 'edit-recommendation' : 'create-recommendation'}`}
+            title={`resources.professional.recommendation.${isEdit ? 'edit' : 'create'}`}
             handleClose={handleClose}
             open={open}
         >

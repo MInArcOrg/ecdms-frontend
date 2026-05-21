@@ -26,7 +26,7 @@ const menuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         id: certificatesMenuIds.recommendations,
         title: 'resource.navigation.submenu.certificates.recommendations',
         path: `/resources/${typeId}/details/${id}/certificates/recommendations`,
-        model: 'professionalrecommendation'
+        model: 'recommendation'
       },
       {
         id: certificatesMenuIds.license,

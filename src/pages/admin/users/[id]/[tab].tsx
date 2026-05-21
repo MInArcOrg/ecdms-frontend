@@ -14,4 +14,9 @@ const UserView = () => {
   return <UserViewPage isLoading={isLoading} tab={String(tab)} user={user} />;
 };
 
+UserView.acl = {
+  subject: 'user',
+  action: 'view'
+};
+
 export default UserView;

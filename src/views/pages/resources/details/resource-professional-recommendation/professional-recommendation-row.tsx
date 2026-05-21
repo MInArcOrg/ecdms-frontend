@@ -49,13 +49,6 @@ export const recommendationColumns = (
         },
         {
             flex: 0.15,
-            minWidth: 150,
-            field: 'file_type',
-            headerName: t('resources.professional.recommendation.file-type'),
-            renderCell: ({ row }: CellType) => row.file_type || t('common.not-available')
-        },
-        {
-            flex: 0.15,
             minWidth: 120,
             field: 'created_at',
             headerName: t('common.created-at'),
@@ -82,11 +75,11 @@ export const recommendationColumns = (
                         item={row}
                         deletePermissionRule={{
                             action: 'delete',
-                            subject: 'professionalrecommendation'
+                            subject: 'recommendation'
                         }}
                         editPermissionRule={{
                             action: 'update',
-                            subject: 'professionalrecommendation'
+                            subject: 'recommendation'
                         }}
                         options={[]}
                     />

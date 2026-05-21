@@ -278,7 +278,7 @@ export interface ResourcePrice {
   resource_specification_id: string;
   resourceSpecification?: ResourceSpecification;
   resourceBrand?: ResourceBrand;
-  unit_price?: number;
+  unit_price: number;
   total_quantity_available?: number;
   price_date?: string | Date | EthiopianDate;
   supplier_name_id: string;
@@ -301,7 +301,7 @@ export interface ResourceQuantity {
   resource_specification_id: string;
   resourceSpecification?: ResourceSpecification;
   resourceBrand?: ResourceBrand;
-  unit_price?: number;
+  unit_price: number;
   total_quantity_available?: number;
   price_date?: string | Date | EthiopianDate;
   supplier_name_id: string;

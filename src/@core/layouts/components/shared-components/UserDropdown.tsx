@@ -89,7 +89,7 @@ const UserDropdown = (props: Props) => {
     handleDropdownClose();
   };
 
-  const [openSetting,setOpenSetting] = useState(false);
+  const [openSetting, setOpenSetting] = useState(false);
   const toggleSettingDrawer = () => {
     setOpenSetting(!openSetting);
   }
@@ -122,11 +122,11 @@ const UserDropdown = (props: Props) => {
         }}
       >
         <Box sx={{ py: 1.75, px: 6 }}>
-          <UserProfileSmall user={user as User} />
+          <UserProfileSmall user={user as User} isMyProfile={true} />
         </Box>
         <Divider sx={{ my: (theme) => `${theme.spacing(2)} !important` }} />
-       
-         <MenuItemStyled sx={{ p: 0 }} onClick={toggleSettingDrawer}>
+
+        <MenuItemStyled sx={{ p: 0 }} onClick={toggleSettingDrawer}>
           <Box sx={styles}>
             <Icon icon="tabler:settings" />
             Settings

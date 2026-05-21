@@ -874,7 +874,8 @@
         },
         "membership": {
           "association": "Association",
-          "membership": "Membership"
+          "membership": "Membership",
+          "recommendations": "Recommendations"
         },
         "achievements": {
           "certificates": "Certificates"
@@ -5797,6 +5798,13 @@
         "type-professional": "Professional",
         "type-technical": "Technical",
         "type-safety": "Safety"
+      },
+      "recommendation": {
+        "title": "Recommendations Title",
+        "description": "Description",
+        "create": "Add Recommendation",
+        "edit": "Edit Recommendation",
+        "details": "Recommendation Details"
       },
       "contact-person": {
         "title": "Professional Contact Persons",

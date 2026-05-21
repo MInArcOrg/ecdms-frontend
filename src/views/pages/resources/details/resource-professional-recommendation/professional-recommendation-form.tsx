@@ -33,9 +33,6 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ formik, file, o
                 />
             </Grid>
             <Grid item xs={12}>
-                <CustomTextBox fullWidth label={t('resources.professional.recommendation.file-type')} name="file_type" size="small" sx={{ mb: 2 }} />
-            </Grid>
-            <Grid item xs={12}>
                 <CustomFileUpload label={t('common.form.file-upload')} file={file} onFileChange={onFileChange} />
             </Grid>
         </Grid>

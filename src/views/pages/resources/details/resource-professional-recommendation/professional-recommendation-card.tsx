@@ -67,11 +67,11 @@ const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommendation,
                 <RowOptions
                     deletePermissionRule={{
                         action: 'delete',
-                        subject: 'professionalrecommendation'
+                        subject: 'recommendation'
                     }}
                     editPermissionRule={{
                         action: 'update',
-                        subject: 'professionalrecommendation'
+                        subject: 'recommendation'
                     }}
                     onEdit={() => onEdit(recommendation)}
                     onDelete={() => onDelete(recommendation?.id || '')}

@@ -13,6 +13,7 @@ import OtherDetailSidebar from 'src/views/shared/layouts/other/other-detail-draw
 import RecommendationCard from './professional-recommendation-card';
 import RecommendationDrawer from './professional-recommendation-drawer';
 import { recommendationColumns } from './professional-recommendation-row';
+import { uploadableResourceFileTypes } from 'src/services/utils/file-utils';
 
 function ProfessionalRecommendationList({ professionalId }: { professionalId: string }) {
     const [showDrawer, setShowDrawer] = useState(false);
@@ -64,10 +65,6 @@ function ProfessionalRecommendationList({ professionalId }: { professionalId: st
         {
             title: t('resources.professional.recommendation.description'),
             value: recommendation.description || 'N/A'
-        },
-        {
-            title: t('resources.professional.recommendation.file-type'),
-            value: recommendation.file_type || 'N/A'
         }
     ];
 
@@ -91,17 +88,20 @@ function ProfessionalRecommendationList({ professionalId }: { professionalId: st
 
             {sidebarOpen && (
                 <OtherDetailSidebar
-                    open={sidebarOpen}
-                    toggle={() => setSidebarOpen(!sidebarOpen)}
+                    show={sidebarOpen}
+                    toggleDrawer={() => setSidebarOpen(!sidebarOpen)}
                     title={t('resources.professional.recommendation.title')}
-                    items={detailItems}
+                    data={detailItems}
+                    id={selectedRow?.id || ''}
+                    fileType={uploadableResourceFileTypes.resourceProfessionalRecommendation}
+                    hasReference={true}
                 />
             )}
 
             <Container>
                 <ItemsListing
                     pagination={pagination}
-                    type={ITEMS_LISTING_TYPE.grid.value}
+                    type={ITEMS_LISTING_TYPE.table.value}
                     isLoading={isLoading}
                     ItemViewComponent={({ data }) => (
                         <RecommendationCard
@@ -118,10 +118,12 @@ function ProfessionalRecommendationList({ professionalId }: { professionalId: st
                         onlyIcon: false,
                         permission: {
                             action: 'create',
-                            subject: 'professionalrecommendation'
+                            subject: 'recommendation'
                         }
                     }}
-                    columns={recommendationColumns(handleDetail, handleEdit, handleDelete, t)}
+                    tableProps={{
+                        headers: recommendationColumns(handleDetail, handleEdit, handleDelete, t)
+                    }}
                     fetchDataFunction={refetch}
                     items={recommendations || []}
                     onPaginationChange={handlePageChange}
