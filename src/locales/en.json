@@ -5660,6 +5660,16 @@
       "file-types": {
         "document-file": "Document File Attachment"
       }
+    },
+    "stakeholder-accreditation": {
+      "title": "Stakeholder Accreditations",
+      "create": "Create Accreditation",
+      "edit": "Edit Accreditation",
+      "form": {
+        "title": "Title",
+        "file-type": "File Type",
+        "description": "Description"
+      }
     }
   },
   "address": {

@@ -7,8 +7,7 @@ import StakeholderCertificateForm from './stakeholder-certificate-form';
 
 import { useState } from 'react';
 import stakeholderCertificateApiService from 'src/services/stakeholder/stakeholder-certificate-service';
-import { uploadableProjectFileTypes } from 'src/services/utils/file-constants';
-import { uploadableDocumentFileTypes, uploadableStakeholderFileTypes, uploadFile } from 'src/services/utils/file-utils';
+import { uploadableStakeholderFileTypes, uploadFile } from 'src/services/utils/file-utils';
 import { StakeholderCertificate } from 'src/types/stakeholder/stakeholder-certificate';
 import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 import { futureDateRule, pastDateRule } from 'src/utils/validator/age';

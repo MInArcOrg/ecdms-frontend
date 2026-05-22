@@ -74,13 +74,13 @@ const JointVentureProjectDrawer = (props: JointVentureProjectDrawerType) => {
                     project_id: newProjectId,
                     joint_venture_company_id: body.data.joint_venture_company_id,
                     title: body.data.joint_venture_title,
-                    description: body.data.joint_venture_description
+                    description: body.data.joint_venture_description,
+                    stakeholder_id: stakeholderId
                 },
                 files: []
             };
             await jointVentureProjectApiService.create(jvPayload);
         }
-
         return res;
     };
 

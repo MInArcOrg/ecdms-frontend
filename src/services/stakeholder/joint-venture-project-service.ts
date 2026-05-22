@@ -7,8 +7,8 @@ import { buildPutRequest } from 'src/utils/requests/put-request';
 import axiosServices from 'src/utils/axios';
 
 const jointVentureProjectApiService = {
-    getAll: (jointVentureCompanyId: string, params: GetRequestParam): Promise<IApiResponse<Project[]>> =>
-        buildGetRequest(`/projects/project-joint-venture-companies/${jointVentureCompanyId}`, params)
+    getAll: (params: GetRequestParam): Promise<IApiResponse<Project[]>> =>
+        buildGetRequest(`/projects/project-joint-venture-companies`, params)
             .then((response: AxiosResponse<IApiResponse>) => response.data)
             .catch((error: any) => {
                 throw error;
@@ -38,6 +38,12 @@ const jointVentureProjectApiService = {
 
     update: (id: string, body: IApiPayload<any>): Promise<IApiResponse> =>
         buildPutRequest(`/projects/project-joint-venture-companies/${id}`, body)
+            .then((response: AxiosResponse<IApiResponse>) => response.data)
+            .catch((error: any) => {
+                throw error;
+            }),
+    getProjectsByStakeholderId: (stakeholderId: string, params: GetRequestParam): Promise<IApiResponse<Project[]>> =>
+        buildGetRequest(`/stakeholders/joint-venture-company-projects/${stakeholderId}`, params)
             .then((response: AxiosResponse<IApiResponse>) => response.data)
             .catch((error: any) => {
                 throw error;

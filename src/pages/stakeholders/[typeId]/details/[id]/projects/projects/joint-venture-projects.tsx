@@ -20,7 +20,7 @@ function JointVentureProjectsIndex() {
 }
 
 JointVentureProjectsIndex.acl = {
-  subject: 'stakeholder',
+  subject: 'projectjointventurecompany',
   action: 'view'
 };
 

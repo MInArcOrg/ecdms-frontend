@@ -5,6 +5,7 @@ import { Fragment } from 'react';
 import { Document } from 'src/types/document';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import FileDrawer from 'src/views/components/custom/files-drawer';
+import PhotoDrawer from 'src/views/components/custom/photo-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
@@ -68,6 +69,15 @@ export const documentColumns = (
       field: 'files',
       renderCell: ({ row }: CellType) => {
         return <FileDrawer id={row.id} type='DOCUMENT' />
+      }
+    },
+    {
+      flex: 0.1,
+      minWidth: 100,
+      headerName: t('common.table-columns.photos') || 'Photos',
+      field: 'photos',
+      renderCell: ({ row }: CellType) => {
+        return <PhotoDrawer id={row.id} />
       }
     },
 

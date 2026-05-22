@@ -4,6 +4,7 @@ import { Formik, FormikProps, FormikHelpers, FormikValues, FormikErrors } from '
 import { useRouter } from 'next/router';
 import { toast } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
+import { useQueryClient } from '@tanstack/react-query';
 import RequiredFieldsContext from 'src/context/required-fields-context';
 import Translations from 'src/layouts/components/Translations';
 import { IApiPayload, IApiResponse } from 'src/types/requests';
@@ -39,7 +40,7 @@ interface FormPageWrapperProps<T extends FormikValues> {
   fullLayout?: boolean;
   baseUrl?: string;
   headerActions?: any[];
-  onActionSuccess?: (response: IApiResponse<T>, payload: { data: T; files: any[] }) => void;
+  onActionSuccess?: (response: IApiResponse<T>, payload: { data: T; files: any[] }) => void | Promise<void>;
 }
 
 const FormPageWrapper = <T extends FormikValues>({
@@ -60,6 +61,7 @@ const FormPageWrapper = <T extends FormikValues>({
 }: FormPageWrapperProps<T>) => {
   const { t: intl } = useTranslation();
   const router = useRouter();
+  const queryClient = useQueryClient();
   const requiredFields = getRequiredFields(validationSchema);
   // 🌟 NEW STATE for Confirmation Dialog 🌟
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
@@ -73,7 +75,21 @@ const FormPageWrapper = <T extends FormikValues>({
     try {
       const res = await createActionFunc(payload);
       setStatus({ success: true });
-      if (onActionSuccess) onActionSuccess(res, payload);
+      if (onActionSuccess) await onActionSuccess(res, payload);
+
+      // Invalidate file/photo queries for the specific saved record only
+      const savedId = res?.payload?.id;
+      if (savedId) {
+        queryClient.invalidateQueries({
+          predicate: (query) => {
+            const key = query.queryKey;
+            if (key[0] === 'model-file' && key[1] === savedId) return true;
+            if (key[0] === 'multiple-photo' && typeof key[1] === 'object' && (key[1] as any)?.filter?.model_id === savedId) return true;
+            if (key[0] === 'multiple-file' && typeof key[1] === 'object' && (key[1] as any)?.filter?.reference_id === savedId) return true;
+            return false;
+          }
+        });
+      }
       if (onCancel) {
         onCancel();
       } else {

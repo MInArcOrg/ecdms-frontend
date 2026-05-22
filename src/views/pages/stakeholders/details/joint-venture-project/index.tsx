@@ -21,9 +21,7 @@ const JointVentureProjectList = ({ stakeholderId, typeId }: { stakeholderId: str
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
     const fetchProjects = (params: GetRequestParam): Promise<IApiResponse<Project[]>> => {
-        return jointVentureProjectApiService.getAll(stakeholderId, {
-            ...params
-        });
+        return jointVentureProjectApiService.getProjectsByStakeholderId(stakeholderId, params);
     };
 
     const {
@@ -66,7 +64,7 @@ const JointVentureProjectList = ({ stakeholderId, typeId }: { stakeholderId: str
                     show: true,
                     permission: {
                         action: 'create',
-                        subject: 'stakeholder'
+                        subject: 'projectjointventurecompany'
                     }
                 }}
                 fetchDataFunction={refetch}

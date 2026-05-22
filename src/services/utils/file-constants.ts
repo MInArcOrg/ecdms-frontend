@@ -176,6 +176,7 @@ export const uploadableStakeholderFileTypes = {
   stakeholder: 'STAKEHOLDER',
   stakeholderInfo: 'STAKEHOLDER_INFO',
   stakeholderCertificate: 'STAKEHOLDER_CERTIFICATE',
+  stakeholderAccreditation: 'STAKEHOLDER_ACCREDITATION',
   stakeholderTotalEmp: 'STAKEHOLDER_TOTAL_EMP',
   stakeholderTraining: 'STAKEHOLDER_TRAINING',
   stakeholderRegulation: 'STAKEHOLDER_REGULATION',

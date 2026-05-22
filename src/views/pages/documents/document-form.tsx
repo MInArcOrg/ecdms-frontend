@@ -8,8 +8,9 @@ import masterCategoryApiService from 'src/services/master-data/master-category-s
 import masterSubCategoryApiService from 'src/services/master-data/master-sub-category-service';
 import { Document } from 'src/types/document';
 import { FileWithId } from 'src/types/general/file';
-import CustomDateSelector from 'src/views/shared/form/custom-date-box';
+import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
 import CustomMultiFileUpload from 'src/views/shared/form/custom-multi-file-selector';
+import CustomMultiImageSelector from 'src/views/shared/form/custom-multi-image-selector';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 
@@ -17,10 +18,12 @@ interface DocumentFormProps {
   formik: FormikProps<Document>;
   files: FileWithId[];
   onFilesChange: (files: FileWithId[]) => void;
+  images: FileWithId[];
+  onImagesChange: (images: FileWithId[]) => void;
   typeId: string;
 }
 
-const DocumentForm: React.FC<DocumentFormProps> = ({ formik, typeId, files, onFilesChange }) => {
+const DocumentForm: React.FC<DocumentFormProps> = ({ formik, typeId, files, onFilesChange, images, onImagesChange }) => {
   const { t: transl } = useTranslation();
 
   const { data: documentCategories } = useQuery({
@@ -131,9 +134,8 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, typeId, files, onFi
         size="small"
         sx={{ mb: 2 }}
       />
-      <CustomDateSelector
+      <CustomDynamicDatePicker
         fullWidth
-        type="date"
         label={transl('document.form.publication_date')}
         placeholder={transl('document.form.publication_date')}
         name="publication_date"
@@ -141,6 +143,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, typeId, files, onFi
         sx={{ mb: 2 }}
       />
       <CustomMultiFileUpload label={transl('common.form.file-upload')} files={files} onFilesChange={onFilesChange} />
+      <CustomMultiImageSelector label={transl('common.form.image-upload')} images={images} onImagesChange={onImagesChange} />
     </>
   );
 };

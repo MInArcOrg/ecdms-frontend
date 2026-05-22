@@ -97,7 +97,10 @@ export const jointVentureProjectColumns = (
                             throw new Error('Function not implemented.');
                         }}
                     />
-                    <RowOptions onDelete={() => onDelete(row.id)} item={row} options={[]} />
+                    <RowOptions onDelete={() => onDelete(row.id)} item={row} options={[]}
+                        deletePermissionRule={{ subject: 'projectjointventurecompany', action: 'delete' }}
+                        editPermissionRule={{ subject: 'projectjointventurecompany', action: 'update' }}
+                    />
                 </Fragment>
             )
         }

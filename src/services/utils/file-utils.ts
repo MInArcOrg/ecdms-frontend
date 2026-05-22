@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import { useQuery } from '@tanstack/react-query';
 import axios, { AxiosResponse } from 'axios';
 import authConfig from 'src/configs/auth';
@@ -361,6 +362,18 @@ export const downloadFileById = async (fileId: string, fileName?: string, fallba
   if (fallbackPathOrUrl) {
     await downloadStaticFile(fallbackPathOrUrl, fileName);
   }
+};
+
+// Surgical per-row query invalidation helper
+export const useInvalidateFileQueries = () => {
+  const queryClient = useQueryClient();
+  return (id: string, type: string) => {
+    queryClient.invalidateQueries({ queryKey: ['model-file', id, type] });
+    queryClient.invalidateQueries({ queryKey: ['multiple-photo', { filter: { model_id: id } }] });
+    queryClient.invalidateQueries({ queryKey: ['multiple-photo', { filter: { model_id: id, type } }] });
+    queryClient.invalidateQueries({ queryKey: ['multiple-file', { filter: { reference_id: id } }] });
+    queryClient.invalidateQueries({ queryKey: ['multiple-file', { filter: { reference_id: id, type } }] });
+  };
 };
 
 // Get multiple photos

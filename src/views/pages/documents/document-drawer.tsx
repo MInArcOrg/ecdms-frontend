@@ -11,9 +11,10 @@ import { Document } from 'src/types/document';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { MasterType } from 'src/types/master/master-types';
-import { deleteFile, uploadFile, useGetMultiplePhotos } from 'src/services/utils/file-utils';
+import { deleteFile, uploadFile, useGetMultiplePhotos, uploadImage, deletePhoto, useGetMultipleFiles } from 'src/services/utils/file-utils';
 import { useEffect, useState } from 'react';
 import { FileWithId } from 'src/types/general/file';
+import { convertDateToLocaleDate, formatDynamicDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
 interface DocumentDrawerType {
   open: boolean;
@@ -53,9 +54,17 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
 
   const { t } = useTranslation();
 
-  const { data: fetchedFiles } = useGetMultiplePhotos({
-    filter: { model_id: document?.id || '' }
-  });
+  const { data: fetchedImages } = useGetMultiplePhotos(
+    { filter: { model_id: document?.id, type: 'DOCUMENT' } },
+    { enabled: !!document?.id }
+  );
+  const { data: fetchedFiles } = useGetMultipleFiles(
+    { filter: { reference_id: document?.id, type: 'DOCUMENT' } },
+    { enabled: !!document?.id }
+  );
+
+  const [uploadableImages, setUploadableImages] = useState<FileWithId[]>([]);
+  const [fetchedImageIds, setFetchedImageIds] = useState<string[]>([]);
   const [uploadableFiles, setUploadableFiles] = useState<FileWithId[]>([]);
   const [fetchedFileIds, setFetchedFileIds] = useState<string[]>([]);
   const isEdit = document?.id ? true : false;
@@ -66,9 +75,26 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
     return await documentApiService.update(document?.id || '', body);
   };
   useEffect(() => {
+    const fetchAndConvertImages = async () => {
+      if (fetchedImages) {
+        const _fetchedImages = fetchedImages.payload.map(async (file: any) => {
+          const response = await fetch(file.url);
+          const blob = await response.blob();
+          return {
+            id: file.id,
+            file: new File([blob], file.title || 'image', { type: blob.type }),
+            isFetched: true,
+          };
+        });
+        const convertedImages = await Promise.all(_fetchedImages);
+        setUploadableImages(convertedImages);
+        setFetchedImageIds(fetchedImages.payload.map((img: any) => img.id));
+      }
+    };
+
     const fetchAndConvertFiles = async () => {
       if (fetchedFiles) {
-        const _fetchedFiles = fetchedFiles.payload.map(async (file) => {
+        const _fetchedFiles = fetchedFiles.payload.map(async (file: any) => {
           const response = await fetch(file.url);
           const blob = await response.blob();
           return {
@@ -79,19 +105,22 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
         });
         const convertedFiles = await Promise.all(_fetchedFiles);
         setUploadableFiles(convertedFiles);
-        setFetchedFileIds(fetchedFiles.payload.map((file) => file.id));
+        setFetchedFileIds(fetchedFiles.payload.map((f: any) => f.id));
       }
     };
 
     if (open) {
+      fetchAndConvertImages();
       fetchAndConvertFiles();
     }
-  }, [fetchedFiles, open]);
+  }, [fetchedImages, fetchedFiles, open]);
 
   const onFilesChange = (files: FileWithId[] | null) => {
-    if (files) {
-      setUploadableFiles(files);
-    }
+    if (files) setUploadableFiles(files);
+  };
+
+  const onImagesChange = (images: FileWithId[] | null) => {
+    if (images) setUploadableImages(images);
   };
 
   const getPayload = (values: Document) => {
@@ -99,7 +128,8 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
       data: {
         ...values,
         id: document?.id,
-        documenttype_id: typeId
+        documenttype_id: typeId,
+        publication_date: convertDateToLocaleDate(values.publication_date)
       },
       files: []
     };
@@ -110,8 +140,21 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
     toggle();
   };
   const onActionSuccess = async (response: IApiResponse<Document>, payload: IApiPayload<Document>) => {
+    const targetId = response?.payload?.id || document?.id || '';
+
+    // Process Images
+    const imagesToUpload = uploadableImages.filter((img) => !img.isFetched);
+    const imgUploadPromises = imagesToUpload.map((img) => uploadImage(img.file, 'DOCUMENT', targetId));
+    await Promise.all(imgUploadPromises);
+
+    const activeImageIds = uploadableImages.map((img) => img.id);
+    const imgIdsToRemove = fetchedImageIds.filter((id) => !activeImageIds.includes(id));
+    const imgRemovePromises = imgIdsToRemove.map((id) => deletePhoto(id));
+    await Promise.all(imgRemovePromises);
+
+    // Process Files
     const uploadableFilesToUpload = uploadableFiles.filter((file) => !file.isFetched);
-    const uploadPromises = uploadableFilesToUpload.map((file) => uploadFile(file.file, 'DOCUMENT', response.payload.id));
+    const uploadPromises = uploadableFilesToUpload.map((file) => uploadFile(file.file, 'DOCUMENT', targetId));
     await Promise.all(uploadPromises);
 
     const uploadableFileIds = uploadableFiles.map((file) => file.id);
@@ -136,14 +179,21 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
           validationSchema={validationSchema}
           initialValues={{
             ...document,
-            publication_date: moment(document.publication_date).toDate()
+            publication_date: formatInitialDateDate(document.publication_date)
           }}
           createActionFunc={isEdit ? editDocument : createDocument}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
           {(formik: FormikProps<Document>) => {
-            return <DocumentForm onFilesChange={onFilesChange} typeId={typeId} formik={formik} files={uploadableFiles} />;
+            return <DocumentForm
+              onFilesChange={onFilesChange}
+              typeId={typeId}
+              formik={formik}
+              files={uploadableFiles}
+              images={uploadableImages}
+              onImagesChange={onImagesChange}
+            />;
           }}
         </FormPageWrapper>
       )}

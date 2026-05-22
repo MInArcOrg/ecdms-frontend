@@ -1,8 +1,10 @@
 import { Button, Typography } from '@mui/material';
 import type { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
+import { uploadableResourceFileTypes } from 'src/services/utils/file-constants';
 import type { ConstructionMethod } from 'src/types/project/construction-method';
 import { formatCreatedAt } from 'src/utils/formatter/date';
+import FileDrawer from 'src/views/components/custom/files-drawer';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
@@ -52,6 +54,15 @@ export const constructionMethodColumns = (
       )
     },
     {
+      flex: 0.1,
+      minWidth: 100,
+      headerName: t('common.table-columns.files'),
+      field: 'files',
+      renderCell: ({ row }: CellType) => {
+        return <FileDrawer id={row.id} type={uploadableResourceFileTypes.constructionMethod} />
+      }
+    },
+    {
       flex: 0.15,
       minWidth: 120,
       field: 'created_at',
@@ -79,14 +90,14 @@ export const constructionMethodColumns = (
             item={row}
             editPermissionRule={
               {
-                action:'update',
-                subject:'constructionmethod'
+                action: 'update',
+                subject: 'constructionmethod'
               }
             }
             deletePermissionRule={
               {
-                action:'delete',
-                subject:'constructionmethod'
+                action: 'delete',
+                subject: 'constructionmethod'
               }
             }
             options={[]}

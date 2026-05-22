@@ -22,7 +22,7 @@ function FileDrawer({ id, type, onRefetch }: { id: string; type: string; onRefet
   return (
     <Fragment>
       {data?.payload && data?.payload?.length > 0 && (
-        <FileDetail show={show} toggleDrawer={() => setShow(!show)} data={data?.payload} refetch={refetch} dataLoading={isLoading} />
+        <FileDetail show={show} toggleDrawer={() => setShow(!show)} data={data?.payload} refetch={refetch} dataLoading={isLoading} modelId={id} type={type} />
       )}
       {isLoading ? (
         <CircularProgress size={10} />

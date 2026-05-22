@@ -56,5 +56,6 @@ export interface StakeholderInfo {
   file_id?: string; // Optional UUID
   revision_no?: number; // Optional integer
   created_at?: Date; // Optional date for the created_at field
-  updated_at?: Date; // Optional date for the updated_at field
 }
+
+export * from './stakeholder-accreditation';

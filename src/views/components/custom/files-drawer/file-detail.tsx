@@ -18,7 +18,7 @@ import {
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getDynamicDate } from '../ethio-calendar/ethio-calendar-utils';
-import { deleteFile, downloadFileById } from 'src/services/utils/file-utils';
+import { deleteFile, downloadFileById, useInvalidateFileQueries } from 'src/services/utils/file-utils';
 import { FileModel } from 'src/types/general/file';
 import RowOptions from 'src/views/shared/listing/row-options';
 
@@ -28,11 +28,14 @@ interface FileDetailProps {
   data: FileModel[];
   refetch: () => void;
   dataLoading: boolean;
+  modelId?: string;
+  type?: string;
 }
 
-function FileDetail({ show, toggleDrawer, data, refetch, dataLoading }: FileDetailProps) {
+function FileDetail({ show, toggleDrawer, data, refetch, dataLoading, modelId, type }: FileDetailProps) {
   const { t, i18n } = useTranslation();
   const [loading, setLoading] = useState<boolean>();
+  const invalidateFileQueries = useInvalidateFileQueries();
 
   const normalizeExtension = (value: string) => {
     const raw = (value || '').trim();
@@ -80,6 +83,7 @@ function FileDetail({ show, toggleDrawer, data, refetch, dataLoading }: FileDeta
     setLoading(true);
     await deleteFile(String(masterSubCategoryId));
     refetch();
+    if (modelId && type) invalidateFileQueries(modelId, type);
     setLoading(false);
   };
 
