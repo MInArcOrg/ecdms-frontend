@@ -43,7 +43,7 @@ function DocumentList() {
     handleFilter,
     handleSearch
   } = usePaginatedFetch<Document[]>({
-    queryKey: ['documents', typeId],
+    queryKey: ['documents', String(typeId)],
     fetchFunction: fetchDocuments,
     exportApiCall(exportParams) {
       return documentApiService.export({ ...exportParams });

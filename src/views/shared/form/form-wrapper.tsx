@@ -78,14 +78,15 @@ const FormPageWrapper = <T extends FormikValues>({
       if (onActionSuccess) await onActionSuccess(res, payload);
 
       // Invalidate file/photo queries for the specific saved record only
-      const savedId = res?.payload?.id;
+      const savedId = res?.payload?.id || payload?.data?.id || (initialValues as any)?.id;
       if (savedId) {
         queryClient.invalidateQueries({
           predicate: (query) => {
             const key = query.queryKey;
-            if (key[0] === 'model-file' && key[1] === savedId) return true;
-            if (key[0] === 'multiple-photo' && typeof key[1] === 'object' && (key[1] as any)?.filter?.model_id === savedId) return true;
-            if (key[0] === 'multiple-file' && typeof key[1] === 'object' && (key[1] as any)?.filter?.reference_id === savedId) return true;
+            // Use loose equality (==) to handle string/number mismatches
+            if (key[0] === 'model-file' && key[1] == savedId) return true;
+            if (key[0] === 'multiple-photo' && typeof key[1] === 'object' && (key[1] as any)?.filter?.model_id == savedId) return true;
+            if (key[0] === 'multiple-file' && typeof key[1] === 'object' && (key[1] as any)?.filter?.reference_id == savedId) return true;
             return false;
           }
         });
