@@ -13,7 +13,8 @@ export const projectMaintenanceIds = {
     roadMaintenance: 'ROAD_MAINTENANCE_ACTIVITIES',
     maintenanceHistory: 'MAINTENANCE_HISTORY',
     trafficMaintenance: 'TRAFFIC_MAINTENANCE',
-    drainageMaintenanceData: 'DRAINAGE_MAINTENANCE_DATA'
+    drainageMaintenanceData: 'DRAINAGE_MAINTENANCE_DATA',
+    drainageMaintenance: 'DRAINAGE_MAINTENANCE'
   }
 };
 
@@ -63,19 +64,12 @@ const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] => [
         model: 'maintenancehistory',
         apiRoute: 'maintenance-histories'
       },
-      // {
-      //   id: projectMaintenanceIds.maintenance.trafficMaintenance,
-      //   title: 'project.navigation.submenu.maintenance.maintenance.traffic-maintenance',
-      //   path: `/projects/${typeId}/details/${id}/maintenance/maintenance/traffic-maintenance`,
-      //   model: 'trafficmaintenance',
-      //   apiRoute: 'traffic-maintenance'
-      // },
       {
-        id: projectMaintenanceIds.maintenance.drainageMaintenanceData,
-        title: 'project.navigation.submenu.maintenance.maintenance.drainage-maintenance-data',
-        path: `/projects/${typeId}/details/${id}/maintenance/maintenance/drainage-maintenance-data`,
-        model: 'drainagemaintenancedata',
-        apiRoute: 'drainage-maintenance-data'
+        id: projectMaintenanceIds.maintenance.drainageMaintenance,
+        title: 'project.navigation.submenu.maintenance.maintenance.drainage-maintenance',
+        path: `/projects/${typeId}/details/${id}/maintenance/maintenance/drainage-maintenance`,
+        model: 'drainagemaintenance',
+        apiRoute: 'drainage-maintenances'
       }
     ]
   }

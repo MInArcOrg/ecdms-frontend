@@ -37,17 +37,17 @@ export const railwayVehicleSpecificationColumns = (
             '&:hover': { color: 'primary.main' }
           }}
         >
-          {row?.id?.toString().slice(0, 5) || 'N/A'}
+          {t('common.table-columns.details') || 'N/A'}
         </Typography>
       )
     },
     {
       flex: 0.2,
       minWidth: 150,
-      field: 'railway_vehicle_identification_id',
+      field: 'railwayVehicleIdentification.vehicle_identification_number',
       headerName: t('project.other.railway-vehicle-specification.details.railway_vehicle_identification_id'),
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>{row?.railway_vehicle_identification_id?.slice(0, 8) || 'N/A'}...</Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{row?.railwayVehicleIdentification?.vehicle_identification_number || row?.railway_vehicle_identification_id?.slice(0, 8) || 'N/A'}</Typography>
       )
     },
     {

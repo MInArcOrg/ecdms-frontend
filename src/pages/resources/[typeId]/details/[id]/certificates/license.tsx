@@ -3,6 +3,7 @@ import ResourceLayout from 'src/views/pages/resources/details/layout/resource-la
 import { resourceMenuIds } from 'src/views/pages/resources/details/layout/resource-menu-items';
 import { certificatesMenuIds } from './(sub-menu-items)';
 import subMenuItems, { findSubMenuItem } from './(sub-menu-items)';
+import ProfessionalLicenseList from 'src/views/pages/resources/details/resource-professional-license';
 
 const defaultMenuItem = findSubMenuItem(subMenuItems('', ''), certificatesMenuIds.license);
 
@@ -17,8 +18,8 @@ const LicensePage = () => {
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
       <>
-        {/* Replace with your actual License component */}
-        <div>License Content</div>
+        <ProfessionalLicenseList model={defaultMenuItem?.model || ''} professionalId={id as string} />
+
       </>
     </ResourceLayout>
   );

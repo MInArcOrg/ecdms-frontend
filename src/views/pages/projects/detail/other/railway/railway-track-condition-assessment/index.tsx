@@ -19,6 +19,7 @@ import OtherDetailSidebar from '../../../../../../shared/layouts/other/other-det
 import RailwayTrackConditionAssessmentCard from './railway-track-condition-assessment-card';
 import RailwayTrackDataDrawer from './railway-track-condition-assessment-drawer';
 import { railwayTrackConditionAssessmentColumns } from './railway-track-condition-assessment-row';
+import { formatDynamicDate } from 'src/utils/formatter/date';
 
 interface RailwayTrackConditionAssesmentListProps {
   otherSubMenu?: DetailSubMenuItemChild;
@@ -73,16 +74,12 @@ const RailwayTrackConditionAssesmentList: React.FC<RailwayTrackConditionAssesmen
 
   const mapAssessmentToDetailItems = (assessment: RailwayTrackConditionAssessment): { title: string; value: string }[] => [
     {
-      title: t('project.other.railway-track-condition-assessment.details.project-id'),
-      value: assessment?.project_id || 'N/A'
-    },
-    {
       title: t('project.other.railway-track-condition-assessment.details.railway-track-data-id'),
       value: assessment?.railwayTrackData?.name || assessment?.railway_track_data_id || 'N/A'
     },
     {
       title: t('project.other.railway-track-condition-assessment.details.inspection-dates'),
-      value: assessment?.inspection_dates?.toLocaleString() || 'N/A'
+      value: formatDynamicDate(assessment?.inspection_dates) || 'N/A'
     },
     {
       title: t('project.other.railway-track-condition-assessment.details.track-condition-rating-id'),

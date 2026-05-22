@@ -81,12 +81,12 @@ const RailwayVehicleOperationalPerformanceList: React.FC<RailwayVehicleOperation
     },
     {
       title: t('project.other.railway-vehicle-operational-performance.details.railway_vehicle_identification_id'),
-      value: specs?.railwayVehicleIndentification
-        ? specs?.railwayVehicleIndentification +
-          ' - ' +
-          specs?.railwayVehicleIndentification.manufacturer_supplier_name +
-          ' - ' +
-          specs?.railwayVehicleIndentification.manufacture_year
+      value: specs?.railwayVehicleIdentification
+        ? specs?.railwayVehicleIdentification +
+        ' - ' +
+        specs?.railwayVehicleIdentification.manufacturer_supplier_name +
+        ' - ' +
+        specs?.railwayVehicleIdentification.manufacture_year
         : specs?.railway_vehicle_identification_id || 'N/A'
     },
     {

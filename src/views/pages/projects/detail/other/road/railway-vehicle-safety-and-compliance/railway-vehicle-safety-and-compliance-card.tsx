@@ -51,12 +51,12 @@ const RailwayVehicleSafetyAndComplianceCard: React.FC<RailwayVehicleSafetyAndCom
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
             {t('project.other.railway-vehicle-safety-and-compliance.details.railway_vehicle_identification_id')}:{' '}
-            {railwayVehicleSafetyAndCompliance?.railwayVehicleIndentification
-              ? railwayVehicleSafetyAndCompliance?.railwayVehicleIndentification +
-                ' - ' +
-                railwayVehicleSafetyAndCompliance?.railwayVehicleIndentification.manufacturer_supplier_name +
-                ' - ' +
-                railwayVehicleSafetyAndCompliance?.railwayVehicleIndentification.manufacture_year
+            {railwayVehicleSafetyAndCompliance?.railwayVehicleIdentification
+              ? railwayVehicleSafetyAndCompliance?.railwayVehicleIdentification +
+              ' - ' +
+              railwayVehicleSafetyAndCompliance?.railwayVehicleIdentification.manufacturer_supplier_name +
+              ' - ' +
+              railwayVehicleSafetyAndCompliance?.railwayVehicleIdentification.manufacture_year
               : railwayVehicleSafetyAndCompliance?.id || 'N/A'}
           </Typography>
           <Typography variant="body2" color="text.secondary">

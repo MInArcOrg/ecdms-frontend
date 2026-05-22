@@ -76,11 +76,14 @@ const UserViewRight = ({ tab, user, isLoading }: Props) => {
 
   const handleChange = (event: SyntheticEvent, value: string) => {
     setActiveTab(value);
+    const isMyProfile = router.pathname.includes('/my-profile');
+    const basePath = isMyProfile ? '/my-profile' : `/admin/users/${user.id}`;
+
     router
       .push({
-        pathname: `/admin/users/${user.id}/${value.toLowerCase()}`
+        pathname: `${basePath}/${value.toLowerCase()}`
       })
-      .then(() => {});
+      .then(() => { });
   };
 
   useEffect(() => {

@@ -13,9 +13,23 @@ const GuestGuard = ({ children, fallback }: GuestGuardProps) => {
 
   useEffect(() => {
     if (!router.isReady) return;
-    // If user is authenticated, redirect to dashboard (or home)
+    // If user is authenticated, redirect to return URL or dashboard (home)
     if (auth.user && window.localStorage.getItem('userData')) {
-      router.replace('/');
+      const returnUrlQuery = router.query.returnUrl;
+      const returnUrlFromQuery = Array.isArray(returnUrlQuery) ? returnUrlQuery[0] : returnUrlQuery;
+      const returnUrlFromStorage = typeof window !== 'undefined' ? localStorage.getItem('returnUrl') : null;
+
+      const rawReturnUrl = returnUrlFromQuery || returnUrlFromStorage || '/';
+      const redirectURL = (() => {
+        try {
+          const decoded = decodeURIComponent(rawReturnUrl);
+          return decoded && decoded !== '/' ? decoded : '/';
+        } catch {
+          return rawReturnUrl && rawReturnUrl !== '/' ? rawReturnUrl : '/';
+        }
+      })();
+
+      router.replace(redirectURL as string);
     }
   }, [auth.user, router]);
 

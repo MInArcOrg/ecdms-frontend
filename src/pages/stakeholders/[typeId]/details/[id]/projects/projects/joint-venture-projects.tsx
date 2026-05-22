@@ -2,8 +2,9 @@ import { useRouter } from 'next/router';
 import StakeholderLayout from 'src/views/pages/stakeholders/details/layout/stakeholder-layout';
 import { stakeholderMenuIds } from 'src/views/pages/stakeholders/details/layout/stakeholder-menu-items';
 import subMenuItems, { stakeholderProjectIds } from '../(sub-menu-items)';
+import JointVentureProjectList from 'src/views/pages/stakeholders/details/joint-venture-project';
 
-function BranchAdditionalInformationIndex() {
+function JointVentureProjectsIndex() {
   const router = useRouter();
   const { id, typeId } = router.query;
 
@@ -13,14 +14,14 @@ function BranchAdditionalInformationIndex() {
       activeSubMenuId={stakeholderProjectIds.projects.jointVentureProjects}
       subMenuItems={subMenuItems(id as string, typeId as string)}
     >
-      <>Joint venture projects goes here</>
+      <JointVentureProjectList stakeholderId={String(id)} typeId={String(typeId)} />
     </StakeholderLayout>
   );
 }
 
-BranchAdditionalInformationIndex.acl = {
+JointVentureProjectsIndex.acl = {
   subject: 'stakeholder',
   action: 'view'
 };
 
-export default BranchAdditionalInformationIndex;
+export default JointVentureProjectsIndex;

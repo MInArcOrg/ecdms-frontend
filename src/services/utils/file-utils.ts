@@ -443,7 +443,8 @@ export const uploadableResourceFileTypes = {
   studyLevel: 'RESOURCE_STUDY_LEVEL',
   workExperience: 'RESOURCE_WORK_EXPERIENCE',
   salary: 'RESOURCE_SALARY',
-  resourceQuantity: 'RESOURCE_QUANTITY'
+  resourceQuantity: 'RESOURCE_QUANTITY',
+  resourceProfessionalRecommendation: 'RESOURCE_PROFESSIONAL_RECOMMENDATION'
 } as const;
 
 // Uploadable document file types

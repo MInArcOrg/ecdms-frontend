@@ -4,7 +4,7 @@ import Link from 'next/link';
 import User from 'src/types/admin/user';
 import UserAvatar from './user-avatar';
 
-const UserProfileSmall = ({ user }: { user: User }) => {
+const UserProfileSmall = ({ user, isMyProfile = false }: { user: User; isMyProfile?: boolean }) => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <UserAvatar user={user} />
@@ -19,7 +19,7 @@ const UserProfileSmall = ({ user }: { user: User }) => {
         <Typography
           noWrap
           component={Link}
-          href={`/admin/users/${user.id}/account`}
+          href={isMyProfile ? `/my-profile/account` : `/admin/users/${user.id}/account`}
           sx={{
             fontWeight: 500,
             textDecoration: 'none',

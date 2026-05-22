@@ -22,19 +22,28 @@ const ResourceQuantityCard: React.FC<ResourceQuantityCardProps> = ({ resourceQua
           <Grid item xs={12}>
             <Box display="flex" flexDirection="column" gap={1}>
               <Typography variant="subtitle1">
-                <strong>{t('resource.resource-quantity.form.supplier-name')}:</strong> {(resourceQuantity as any).supplier_name?.title || 'N/A'}
+                <strong>{t('resource.resource-quantity.form.supplier-name')}:</strong> {resourceQuantity.supplierName?.title || 'N/A'}
               </Typography>
               <Typography variant="subtitle1">
-                <strong>{t('resource.resource-quantity.form.brand')}:</strong> {(resourceQuantity as any).resource_brand?.name || 'N/A'}
+                <strong>{t('resource.resource-quantity.form.brand')}:</strong> {resourceQuantity.resourceBrand?.name || 'N/A'}
               </Typography>
               <Typography variant="subtitle1">
-                <strong>{t('resource.resource-quantity.form.specification')}:</strong> {(resourceQuantity as any).resource_specification?.title || 'N/A'}
+                <strong>{t('resource.resource-quantity.form.specification')}:</strong> {resourceQuantity.resourceSpecification?.name || 'N/A'}
+              </Typography>
+              <Typography variant="subtitle1">
+                <strong>{t('resource.resource-quantity.form.unit-price')}:</strong> {resourceQuantity.unit_price || 'N/A'}
               </Typography>
               <Typography variant="subtitle1">
                 <strong>{t('resource.resource-quantity.form.total-quantity-available')}:</strong> {resourceQuantity.total_quantity_available || 'N/A'}
               </Typography>
               <Typography variant="subtitle1">
+                <strong>{t('resource.resource-quantity.form.quality')}:</strong> {resourceQuantity.quality?.title || 'N/A'}
+              </Typography>
+              <Typography variant="subtitle1">
                 <strong>{t('resource.resource-quantity.form.price-date')}:</strong> {formatDate(resourceQuantity.price_date) || 'N/A'}
+              </Typography>
+              <Typography variant="subtitle1">
+                <strong>{t('resource.resource-quantity.form.remark')}:</strong> {resourceQuantity.remark || 'N/A'}
               </Typography>
             </Box>
           </Grid>

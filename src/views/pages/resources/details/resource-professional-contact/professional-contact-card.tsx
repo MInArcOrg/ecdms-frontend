@@ -54,7 +54,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact, refetch, onEdit, onD
       <CardActions sx={{ justifyContent: 'flex-end' }}>
         <FileDrawer id={contact?.id || ''} type={uploadableResourceFileTypes.resource} />
         <ModelAction
-          model="ProfessionalContact"
+          model="ProfessionalContactPerson"
           model_id={contact?.id || ''}
           refetchModel={refetch}
           resubmit={() => refetch()}
@@ -64,11 +64,11 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact, refetch, onEdit, onD
         <RowOptions
           deletePermissionRule={{
             action: 'delete',
-            subject: 'professionalcontact'
+            subject: 'professionalcontactpeople'
           }}
           editPermissionRule={{
             action: 'update',
-            subject: 'professionalcontact'
+            subject: 'professionalcontactpeople'
           }}
           onEdit={() => onEdit(contact)}
           onDelete={() => onDelete(contact?.id || '')}

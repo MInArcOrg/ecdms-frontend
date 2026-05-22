@@ -26,7 +26,7 @@ const EducationForm: React.FC<EducationFormProps> = ({ formik, file, onFileChang
   const { data: studyFields } = useQuery({
     queryKey: ['study-fields', stakeholderMasterModels.studyfield.model],
     queryFn: () =>
-          stakeholderGeneralMasterDataApiService.getAll(
+      stakeholderGeneralMasterDataApiService.getAll(
         dropDownConfig({
           filter: {
             model: stakeholderMasterModels.studyfield.model
@@ -34,7 +34,7 @@ const EducationForm: React.FC<EducationFormProps> = ({ formik, file, onFileChang
         })
       )
   });
-  
+
 
   return (
     <Grid container spacing={gridSpacing}>
@@ -42,7 +42,7 @@ const EducationForm: React.FC<EducationFormProps> = ({ formik, file, onFileChang
         <CustomSelect
           fullWidth
           label={t('resources.professional.education.study-field')}
-          name="study_field"
+          name="study_field_id"
           options={
             studyFields?.payload?.map((field) => ({
               value: field.id,
@@ -69,7 +69,7 @@ const EducationForm: React.FC<EducationFormProps> = ({ formik, file, onFileChang
         <CustomSelectBox
           fullWidth
           label={t('resources.professional.education.program-type')}
-          name="program_type"
+          name="program_type_id"
           size="small"
           sx={{ mb: 2 }}
           options={
