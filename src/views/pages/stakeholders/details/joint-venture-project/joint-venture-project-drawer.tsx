@@ -44,9 +44,9 @@ const validationSchema = yup.object().shape({
     completion_date: yup.mixed().nullable(),
     original_contract_duration: nullableIntegerSchema(),
     revision_no: nullableIntegerSchema(),
+    joint_venture_company_id: yup.string().length(36).required('Joint venture company is required'),
     joint_venture_title: yup.string().max(255).required('Joint venture assignment title is required'),
-    joint_venture_description: yup.string().nullable(),
-    joint_venture_remark: yup.string().nullable()
+    joint_venture_description: yup.string().nullable()
 });
 
 const JointVentureProjectDrawer = (props: JointVentureProjectDrawerType) => {
@@ -61,9 +61,9 @@ const JointVentureProjectDrawer = (props: JointVentureProjectDrawerType) => {
         };
 
         // Remove joint venture specific fields from project payload
+        delete projectBody.data.joint_venture_company_id;
         delete projectBody.data.joint_venture_title;
         delete projectBody.data.joint_venture_description;
-        delete projectBody.data.joint_venture_remark;
 
         const res = await projectApiService.create(projectBody);
         const newProjectId = res?.payload?.id;
@@ -72,10 +72,9 @@ const JointVentureProjectDrawer = (props: JointVentureProjectDrawerType) => {
             const jvPayload = {
                 data: {
                     project_id: newProjectId,
-                    stakeholder_id: stakeholderId,
+                    joint_venture_company_id: body.data.joint_venture_company_id,
                     title: body.data.joint_venture_title,
-                    description: body.data.joint_venture_description,
-                    remark: body.data.joint_venture_remark
+                    description: body.data.joint_venture_description
                 },
                 files: []
             };
@@ -87,9 +86,9 @@ const JointVentureProjectDrawer = (props: JointVentureProjectDrawerType) => {
 
     const editProject = async (body: IApiPayload<any>) => {
         const projectBody = { ...body, data: { ...body.data } };
+        delete projectBody.data.joint_venture_company_id;
         delete projectBody.data.joint_venture_title;
         delete projectBody.data.joint_venture_description;
-        delete projectBody.data.joint_venture_remark;
 
         return await projectApiService.update(project?.id || '', projectBody);
     };
@@ -147,16 +146,16 @@ const JointVentureProjectDrawer = (props: JointVentureProjectDrawerType) => {
                         commencement_date: formatInitialDateDate(project?.commencement_date),
                         completion_date: formatInitialDateDate(project?.completion_date),
                         projecttype_id: project?.projecttype_id || '',
+                        joint_venture_company_id: project?.joint_venture_company_id || '',
                         joint_venture_title: project?.joint_venture_title || '',
-                        joint_venture_description: project?.joint_venture_description || '',
-                        joint_venture_remark: project?.joint_venture_remark || ''
+                        joint_venture_description: project?.joint_venture_description || ''
                     }}
                     createActionFunc={isEdit ? editProject : createProject}
                     onActionSuccess={onActionSuccess}
                     onCancel={handleClose}
                 >
                     {(formik: FormikProps<any>) => {
-                        return <JointVentureProjectForm typeId={typeId} formik={formik} />;
+                        return <JointVentureProjectForm typeId={typeId} formik={formik} stakeholderId={stakeholderId} />;
                     }}
                 </FormPageWrapper>
             )}

@@ -4,6 +4,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from '@tanstack/react-query';
 import masterTypeApiService from 'src/services/master-data/master-type-service';
+import jointVentureCompanyApiService from 'src/services/stakeholder/joint-venture-company-service';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import ProjectForm from 'src/views/pages/projects/project-form';
@@ -11,14 +12,25 @@ import ProjectForm from 'src/views/pages/projects/project-form';
 interface JointVentureProjectFormProps {
     formik: FormikProps<any>;
     typeId?: string;
+    stakeholderId?: string;
 }
 
-const JointVentureProjectForm: React.FC<JointVentureProjectFormProps> = ({ formik }) => {
+const JointVentureProjectForm: React.FC<JointVentureProjectFormProps> = ({ formik, stakeholderId }) => {
     const { t: transl } = useTranslation();
 
     const { data: projectTypes } = useQuery({
         queryKey: ['projectTypes'],
         queryFn: () => masterTypeApiService.getAll('project', {})
+    });
+
+    const { data: jointVentureCompanies } = useQuery({
+        queryKey: ['jointVentureCompanies', stakeholderId],
+        queryFn: () => jointVentureCompanyApiService.getAll({
+            filter: {
+                stakeholder_id: stakeholderId
+            }
+        }),
+        enabled: !!stakeholderId
     });
 
     return (
@@ -63,6 +75,20 @@ const JointVentureProjectForm: React.FC<JointVentureProjectFormProps> = ({ formi
                             </Typography>
                             <Divider sx={{ my: 2 }} />
                             <Grid container spacing={3}>
+                                <Grid item xs={12} md={12}>
+                                    <CustomSelect
+                                        fullWidth
+                                        name="joint_venture_company_id"
+                                        label={transl('project.joint-venture.form.company', 'Joint Venture Company')}
+                                        size="small"
+                                        options={
+                                            jointVentureCompanies?.payload?.map((jv) => ({
+                                                label: jv.company_name,
+                                                value: jv.id
+                                            })) || []
+                                        }
+                                    />
+                                </Grid>
                                 <Grid item xs={12} md={6}>
                                     <CustomTextBox
                                         fullWidth

@@ -7,15 +7,15 @@ import { buildPutRequest } from 'src/utils/requests/put-request';
 import axiosServices from 'src/utils/axios';
 
 const jointVentureProjectApiService = {
-    getAll: (stakeholderId: string, params: GetRequestParam): Promise<IApiResponse<Project[]>> =>
-        buildGetRequest(`/stakeholders/stakeholder-joint-venture-projects/${stakeholderId}`, params)
+    getAll: (jointVentureCompanyId: string, params: GetRequestParam): Promise<IApiResponse<Project[]>> =>
+        buildGetRequest(`/projects/project-joint-venture-companies/${jointVentureCompanyId}`, params)
             .then((response: AxiosResponse<IApiResponse>) => response.data)
             .catch((error: any) => {
                 throw error;
             }),
 
     getOne: (id: string, params: GetRequestParam): Promise<IApiResponse> =>
-        buildGetRequest(`/stakeholders/stakeholder-joint-venture-projects/detail/${id}`, params)
+        buildGetRequest(`/projects/project-joint-venture-companies/detail/${id}`, params)
             .then((response: AxiosResponse<IApiResponse>) => response.data)
             .catch((error: any) => {
                 throw error;
@@ -23,21 +23,21 @@ const jointVentureProjectApiService = {
 
     delete: (id: string): Promise<IApiResponse> =>
         axiosServices
-            .delete(`/stakeholders/stakeholder-joint-venture-projects/${id}`)
+            .delete(`/projects/project-joint-venture-companies/${id}`)
             .then((response: AxiosResponse<IApiResponse>) => response.data)
             .catch((error: any) => {
                 throw error;
             }),
 
     create: (body: IApiPayload<any>): Promise<IApiResponse> =>
-        buildPostRequest('/stakeholders/stakeholder-joint-venture-projects', body, false)
+        buildPostRequest('/projects/project-joint-venture-companies', body, false)
             .then((response: AxiosResponse<IApiResponse>) => response.data)
             .catch((error: any) => {
                 throw error;
             }),
 
     update: (id: string, body: IApiPayload<any>): Promise<IApiResponse> =>
-        buildPutRequest(`/stakeholders/stakeholder-joint-venture-projects/${id}`, body)
+        buildPutRequest(`/projects/project-joint-venture-companies/${id}`, body)
             .then((response: AxiosResponse<IApiResponse>) => response.data)
             .catch((error: any) => {
                 throw error;
