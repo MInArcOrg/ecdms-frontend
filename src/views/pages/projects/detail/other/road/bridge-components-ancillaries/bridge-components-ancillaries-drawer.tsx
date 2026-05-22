@@ -81,7 +81,7 @@ const BridgeComponentsAncillariesDrawer = (props: BridgeComponentsAncillariesDra
           initialValues={{
             ...item,
             project_id: projectId,
-            bridge_id: item?.bridge_id || item?.bridgeBasicData?.id || '',
+            bridge_id: item?.bridge_id  || '',
             expansion_joint_type_id: item?.expansion_joint_type_id || item?.expansionJointType?.id || '',
             guard_railing_type_id: item?.guard_railing_type_id || item?.guardRailType?.id || '',
             surface_type_id: item?.surface_type_id || item?.surfaceType?.id || ''
