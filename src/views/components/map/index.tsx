@@ -26,7 +26,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ center = [defaultCord.lat, 
     <MapContainer center={defaultCenter} zoom={zoom} style={{ height: '400px' }}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        url={process.env.NEXT_PUBLIC_MAP_TILE_URL || 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'}
       />
       {Array.isArray(markers) &&
         markers.length > 0 &&

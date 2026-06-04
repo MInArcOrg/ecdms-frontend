@@ -20,7 +20,7 @@ const customIcon = new L.Icon({
 const MapView: React.FC<MapViewProps> = ({ position, width = '100%', height = '300px' }) => {
   return (
     <MapContainer center={position} zoom={13} scrollWheelZoom={true} style={{ height, width }}>
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <TileLayer url={process.env.NEXT_PUBLIC_MAP_TILE_URL || 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'} />
       <Marker position={position} icon={customIcon}>
         <Popup>
           <span>

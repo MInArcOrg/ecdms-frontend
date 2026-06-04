@@ -29,25 +29,26 @@ const ActionsCell: React.FC<ActionsCellProps> = ({ row, onEdit, onDelete, t, ref
     queryKey: ['model-action', row.id],
     queryFn: () => modelActionApiService.getByModelId(row.id, {})
   });
-
   const status = actions?.payload?.status;
 
   // Only include activate/deactivate option if status is not DEFAULT
-  const statusOptions = status !== ACTION_STATUS.DEFAULT ? [
+  row?.role?.is_deactivatable && status !== ACTION_STATUS.DEFAULT
+  const statusOptions = row?.role?.is_deactivatable && status !== ACTION_STATUS.DEFAULT ? [
     row?.is_activated
       ? {
         name: t('common.status.deactivate'),
         onClick: () => hanldeStatusChange(row, 'DEACTIVATE'),
         icon: "tabler:x",
-        permission: { action: 'update', subject: 'user' }
+        permission: { action: 'activate_user', subject: 'user' }
       }
       : {
         name: t('common.status.activate'),
         onClick: () => hanldeStatusChange(row, 'ACTIVATE'),
         icon: "tabler:check",
-        permission: { action: 'update', subject: 'user' }
+        permission: { action: 'activate_user', subject: 'user' }
       }
   ] : [];
+
 
   return (
     <Fragment>

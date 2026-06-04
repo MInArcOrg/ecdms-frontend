@@ -184,7 +184,7 @@ const MapView: React.FC<MapViewProps> = ({
         </Box>
       ) : (
         <MapContainer center={position} zoom={6} scrollWheelZoom style={{ height, width }}>
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <TileLayer url={process.env.NEXT_PUBLIC_MAP_TILE_URL || 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'} />
           {markers.map((marker, index) => (
             <Marker key={marker.id || index} position={marker.p} icon={marker.icon} />
           ))}

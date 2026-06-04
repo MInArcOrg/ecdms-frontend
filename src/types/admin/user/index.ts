@@ -2,6 +2,7 @@ import Department from 'src/types/department/department';
 import Position from 'src/types/department/position';
 import { GeneralMaster } from 'src/types/general/general-master';
 import EthiopianDate from 'src/views/components/custom/ethio-calendar/ethiopian-date';
+import Role from '../role';
 
 // src/types/users.ts
 type User = {
@@ -30,6 +31,7 @@ type User = {
   created_at: string;
   updatedAt: string;
   access_token?: string; // Include access_token for JWT
+  role: Role;
 };
 export interface UserEducation {
   id?: string;
