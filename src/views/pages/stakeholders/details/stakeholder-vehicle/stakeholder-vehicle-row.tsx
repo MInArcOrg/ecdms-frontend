@@ -124,7 +124,7 @@ export const vehicleColumns = (
       renderCell: ({ row }: CellType) => (
         <Fragment>
           <ModelAction
-            model="StakeholderVehicle"
+            model="Vehicle"
             model_id={row?.id || ''}
             refetchModel={() => { }}
             resubmit={() => { }}

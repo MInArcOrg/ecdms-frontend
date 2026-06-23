@@ -33,20 +33,20 @@ function StatusSidebar({ actions, show, toggleDrawer, model_id, model, refetchMo
   const actionType = isAllowedToCheck(actions?.status, actions?.authorization_data?.registered_data?.user_id)
     ? REQUESTS.CHECK
     : isAllowedToApprove(
-        actions?.status,
-        actions?.authorization_data?.registered_data?.user_id,
-        actions?.authorization_data?.checked_data?.user_id
-      )
+      actions?.status,
+      actions?.authorization_data?.registered_data?.user_id,
+      actions?.authorization_data?.checked_data?.user_id
+    )
       ? REQUESTS.APPROVE
       : isAllowedToAuthorize(
-          actions?.status,
-          actions?.authorization_data?.registered_data?.user_id,
-          actions?.authorization_data?.checked_data?.user_id,
-          actions?.authorization_data?.approved_data?.user_id
-        )
+        actions?.status,
+        actions?.authorization_data?.registered_data?.user_id,
+        actions?.authorization_data?.checked_data?.user_id,
+        actions?.authorization_data?.approved_data?.user_id
+      )
         ? REQUESTS.AUTHORIZE
         : null;
-
+  console.log('actionType', actionType, model.toLocaleLowerCase());
   const canPerformAction = actionType && ability.can(actionType, model.toLocaleLowerCase());
 
   return (

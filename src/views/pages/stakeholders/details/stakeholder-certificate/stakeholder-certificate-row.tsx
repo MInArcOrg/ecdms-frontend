@@ -145,7 +145,10 @@ export const stakeholderCertificateColumns = (
               throw new Error('Function not implemented.');
             }}
           />
-          <RowOptions onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
+          <RowOptions
+            deletePermissionRule={{ action: "delete", subject: "certificate" }}
+            editPermissionRule={{ action: "update", subject: "certificate" }}
+            onEdit={onEdit} onDelete={() => onDelete(row.id)} item={row} options={[]} />
         </Fragment>
       )
     }
