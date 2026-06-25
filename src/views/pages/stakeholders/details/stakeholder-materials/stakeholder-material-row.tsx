@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
 import type { StakeholderMaterial } from 'src/types/stakeholder/stackholder-material';
+import type { StakeholderGeneralMaster } from 'src/types/general/general-master';
 import { formatCreatedAt } from 'src/utils/formatter/date';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
@@ -16,7 +17,8 @@ export const materialColumns = (
   onEdit: (material: StakeholderMaterial) => void,
   onDelete: (id: string) => void,
   t: any,
-  materialCategories: StakeholderMaterial[]
+  materialCategories: StakeholderGeneralMaster[],
+  materialSubcategories: StakeholderGeneralMaster[]
 ): GridColDef[] => [
   {
     flex: 0.2,
@@ -42,19 +44,24 @@ export const materialColumns = (
   {
     flex: 0.15,
     minWidth: 120,
-    field: 'material_category',
+    field: 'material_category_id',
     headerName: t('stakeholder.material.category'),
     renderCell: ({ row }: CellType) => {
-      const category = materialCategories.find((cat) => cat.id === row.material_category);
-      return category ? category.name : t('common.not-available');
+      const categoryId = row.material_category_id || row.material_category || '';
+      const category = materialCategories.find((cat) => cat.id === categoryId);
+      return category?.title || t('common.not-available');
     }
   },
   {
     flex: 0.15,
     minWidth: 120,
-    field: 'material_subcategory',
+    field: 'material_subcategory_id',
     headerName: t('stakeholder.material.subcategory'),
-    renderCell: ({ row }: CellType) => row.material_subcategory || t('common.not-available')
+    renderCell: ({ row }: CellType) => {
+      const subCategoryId = row.material_subcategory_id || row.material_subcategory || '';
+      const subCategory = materialSubcategories.find((cat) => cat.id === subCategoryId);
+      return subCategory?.title || t('common.not-available');
+    }
   },
   {
     flex: 0.1,

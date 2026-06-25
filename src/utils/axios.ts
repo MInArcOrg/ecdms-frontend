@@ -7,29 +7,31 @@ const axiosServices = axios.create({
   baseURL
 });
 
-// Function to retrieve the token (implementation depends on your storage mechanism)
-const getToken = () => {
-  // Replace with your logic to retrieve the token from local storage, cookies, etc.
-  // This example assumes a `token` key in local storage
-  const storedToken = `Bearer ${window.localStorage.getItem(authConfig.storageTokenKeyName)!}`;
+const isBrowser = () => typeof window !== 'undefined' && !!window.localStorage;
 
-  return storedToken;
+const normalizeBearer = (rawToken: string | null | undefined): string | null => {
+  if (!rawToken) return null;
+  return rawToken.startsWith('Bearer ') ? rawToken : `Bearer ${rawToken}`;
 };
 
-// Request interceptor to add authorization header with token (if available)
+const getStoredAccessToken = (): string | null => {
+  if (!isBrowser()) return null;
+  return normalizeBearer(window.localStorage.getItem(authConfig.storageTokenKeyName));
+};
+
 axiosServices.interceptors.request.use(
   (config) => {
-    const token = getToken();
-    if (token) {
-      config.headers.Authorization = `${token}`;
-    }
+    if (!isBrowser()) return config;
+    if (config.headers?.Authorization) return config;
 
-    // Optional: Log request details for debugging
-    // console.debug('Making request:', config);
+    const token = getStoredAccessToken();
+    if (token) {
+      config.headers = config.headers ?? {};
+      config.headers.Authorization = token;
+    }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
+
 export default axiosServices;

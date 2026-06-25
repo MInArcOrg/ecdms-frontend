@@ -2,6 +2,7 @@ import { Box, Button, Card, CardActions, CardContent, Divider, Typography } from
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import type { StakeholderMaterial } from 'src/types/stakeholder/stackholder-material';
+import type { StakeholderGeneralMaster } from 'src/types/general/general-master';
 import ModelAction from 'src/views/components/custom/model-actions';
 import RowOptions from 'src/views/shared/listing/row-options';
 
@@ -11,15 +12,29 @@ interface MaterialCardProps {
   onEdit: (material: StakeholderMaterial) => void;
   onDelete: (id: string) => void;
   onDetail: (material: StakeholderMaterial) => void;
-  materialCategories: StakeholderMaterial[];
+  materialCategories: StakeholderGeneralMaster[];
+  materialSubcategories: StakeholderGeneralMaster[];
 }
 
-const MaterialCard: React.FC<MaterialCardProps> = ({ material, refetch, onEdit, onDelete, onDetail, materialCategories }) => {
+const MaterialCard: React.FC<MaterialCardProps> = ({
+  material,
+  refetch,
+  onEdit,
+  onDelete,
+  onDetail,
+  materialCategories,
+  materialSubcategories
+}) => {
   const { t } = useTranslation();
 
   const getCategoryName = (categoryId: string) => {
     const category = materialCategories.find((cat) => cat.id === categoryId);
-    return category ? category.name : 'N/A';
+    return category?.title || t('common.not-available');
+  };
+
+  const getSubCategoryName = (subcategoryId: string) => {
+    const subcategory = materialSubcategories.find((cat) => cat.id === subcategoryId);
+    return subcategory?.title || t('common.not-available');
   };
 
   return (
@@ -47,10 +62,14 @@ const MaterialCard: React.FC<MaterialCardProps> = ({ material, refetch, onEdit, 
 
         <Box display="flex" flexDirection="column" gap={1} mt={2}>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.material.category')}: {getCategoryName(material.material_category)}
+            {t('stakeholder.material.category')}:{' '}
+            {getCategoryName(material.material_category_id || material.material_category || '')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('stakeholder.material.subcategory')}: {material.material_subcategory || t('common.not-available')}
+            {t('stakeholder.material.subcategory')}:{' '}
+            {material.material_subcategory_id || material.material_subcategory
+              ? getSubCategoryName(material.material_subcategory_id || material.material_subcategory || '')
+              : t('common.not-available')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('stakeholder.material.quantity')}: {material.quantity || t('common.not-available')}

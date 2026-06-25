@@ -7,6 +7,7 @@ import { buildPostRequest } from 'src/utils/requests/post-request';
 import { IApiResponse } from 'src/types/requests';
 import { AxiosResponse } from 'axios';
 import { buildGetRequest } from 'src/utils/requests/get-request';
+import axiosServices from 'src/utils/axios';
 
 const defaultProvider: AuthValuesType = {
   user: null,
@@ -40,7 +41,7 @@ const AuthProvider = ({ children }: Props) => {
   const handleTokenExpiration = () => {
     localStorage.removeItem(authConfig.storageUserKeyName);
     localStorage.removeItem(authConfig.storageTokenKeyName);
-    localStorage.removeItem('refreshToken'); // if using refresh token
+    localStorage.removeItem((authConfig as any).storageRefreshTokenKeyName || 'refreshToken');
     setUser(null);
 
     if (authConfig.onTokenExpiration === 'logout' && !isGuestGuard) {
@@ -54,8 +55,10 @@ const AuthProvider = ({ children }: Props) => {
 
   useEffect(() => {
     const initAuth = async (): Promise<void> => {
-      const storedToken = localStorage.getItem(authConfig.storageTokenKeyName);
-      if (!storedToken) {
+      const refreshTokenKey = (authConfig as any).storageRefreshTokenKeyName || 'refreshToken';
+      const refreshToken = localStorage.getItem(refreshTokenKey);
+
+      if (!refreshToken) {
         setLoading(false);
         return;
       }
@@ -63,8 +66,25 @@ const AuthProvider = ({ children }: Props) => {
       setLoading(true);
 
       try {
-        const response: AxiosResponse<IApiResponse> = await buildGetRequest(authConfig.meEndpoint, {});
-        setUser({ ...response.data.payload.user_data });
+        const refreshEndpoint = (authConfig as any).refreshTokenEndpoint || '/auth/refresh-token';
+        const response: AxiosResponse<IApiResponse> = await axiosServices.get(refreshEndpoint, {
+          headers: { Authorization: refreshToken.startsWith('Bearer ') ? refreshToken : `Bearer ${refreshToken}` }
+        });
+
+        const payload = response.data?.payload;
+        const accessToken = payload?.access_token ?? payload?.accessToken;
+        const nextRefreshToken = payload?.refresh_token ?? payload?.refreshToken;
+        const userData = payload?.user_data ?? payload?.userData;
+
+        if (accessToken) localStorage.setItem(authConfig.storageTokenKeyName, accessToken);
+        if (nextRefreshToken) localStorage.setItem(refreshTokenKey, nextRefreshToken);
+        if (userData) {
+          localStorage.setItem(authConfig.storageUserKeyName, JSON.stringify(userData));
+          setUser({ ...userData });
+        } else {
+          const meResponse: AxiosResponse<IApiResponse> = await buildGetRequest(authConfig.meEndpoint, {});
+          setUser({ ...(meResponse.data.payload.user_data as any) });
+        }
       } catch (error) {
         handleTokenExpiration();
       } finally {
@@ -81,12 +101,16 @@ const AuthProvider = ({ children }: Props) => {
     buildPostRequest(authConfig.loginEndpoint, { data: params })
       .then((response: AxiosResponse<IApiResponse>) => {
         const loginResponse = response.data;
+        const accessToken = loginResponse?.payload?.access_token ?? loginResponse?.payload?.accessToken;
+        const refreshToken = loginResponse?.payload?.refresh_token ?? loginResponse?.payload?.refreshToken;
+        const userData = loginResponse?.payload?.user_data ?? loginResponse?.payload?.userData;
 
         // Store token and user
-        localStorage.setItem(authConfig.storageTokenKeyName, loginResponse.payload.access_token);
-        localStorage.setItem(authConfig.storageUserKeyName, JSON.stringify(loginResponse.payload.user_data));
+        if (accessToken) localStorage.setItem(authConfig.storageTokenKeyName, accessToken);
+        if (refreshToken) localStorage.setItem((authConfig as any).storageRefreshTokenKeyName || 'refreshToken', refreshToken);
+        if (userData) localStorage.setItem(authConfig.storageUserKeyName, JSON.stringify(userData));
 
-        setUser({ ...loginResponse.payload.user_data });
+        if (userData) setUser({ ...userData });
 
         const returnUrlQuery = router.query.returnUrl;
         const returnUrlFromQuery = Array.isArray(returnUrlQuery) ? returnUrlQuery[0] : returnUrlQuery;
@@ -119,7 +143,7 @@ const AuthProvider = ({ children }: Props) => {
 
     localStorage.removeItem(authConfig.storageUserKeyName);
     localStorage.removeItem(authConfig.storageTokenKeyName);
-    localStorage.removeItem('refreshToken');
+    localStorage.removeItem((authConfig as any).storageRefreshTokenKeyName || 'refreshToken');
     setUser(null);
     if (currentUrl.includes('login') || currentUrl.includes('check-profile')) {
       router.replace('/auth/login');

@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import MaterialForm from './stakeholder-material-form';
 import stakeholderMaterialApiService from 'src/services/stakeholder/stakeholder-material-service';
 import type { StakeholderMaterial } from 'src/types/stakeholder/stackholder-material';
+import type { StakeholderGeneralMaster } from 'src/types/general/general-master';
 
 interface MaterialDrawerType {
   open: boolean;
@@ -13,16 +14,26 @@ interface MaterialDrawerType {
   refetch: () => void;
   material: StakeholderMaterial;
   stakeholderId: string;
-  materialCategories: StakeholderMaterial[];
+  materialCategories: StakeholderGeneralMaster[];
+  materialSubcategories: StakeholderGeneralMaster[];
 }
 
 const MaterialDrawer = (props: MaterialDrawerType) => {
-  const { open, toggle, refetch, material, stakeholderId, materialCategories } = props;
+  const { open, toggle, refetch, material, stakeholderId, materialCategories, materialSubcategories } = props;
+
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
   const validationSchema = yup.object().shape({
     name: yup.string().required('Name is required'),
-    material_category: yup.string().required('Material category is required'),
-    material_subcategory: yup.string(),
+    material_category_id: yup
+      .string()
+      .required('Material category is required')
+      .matches(uuidRegex, 'Material category must be a valid UUID'),
+    material_subcategory_id: yup
+      .string()
+      .nullable()
+      .transform((value) => (value === '' ? null : value))
+      .matches(uuidRegex, { message: 'Material subcategory must be a valid UUID', excludeEmptyString: true }),
     description: yup.string(),
     purpose: yup.string(),
     quantity: yup.number().integer('Quantity must be an integer').positive('Quantity must be positive'),
@@ -37,14 +48,19 @@ const MaterialDrawer = (props: MaterialDrawerType) => {
 
   const editMaterial = async (body: IApiPayload<StakeholderMaterial>) => stakeholderMaterialApiService.update(material?.id || '', body);
 
-  const getPayload = (values: StakeholderMaterial) => ({
-    data: {
-      ...values,
-      id: material?.id,
-      stakeholder_id: stakeholderId
-    },
-    files: []
-  });
+  const getPayload = (values: StakeholderMaterial) => {
+    const { material_category, material_subcategory, ...rest } = values;
+
+    return {
+      data: {
+        ...rest,
+        id: material?.id,
+        stakeholder_id: stakeholderId,
+        material_subcategory_id: values.material_subcategory_id === '' ? null : values.material_subcategory_id
+      },
+      files: []
+    };
+  };
 
   const handleClose = () => toggle();
 
@@ -62,13 +78,17 @@ const MaterialDrawer = (props: MaterialDrawerType) => {
           getPayload={getPayload}
           validationSchema={validationSchema}
           initialValues={{
-            ...(material as StakeholderMaterial)
+            ...(material as StakeholderMaterial),
+            material_category_id: material.material_category_id || material.material_category || '',
+            material_subcategory_id: material.material_subcategory_id || material.material_subcategory || ''
           }}
           createActionFunc={isEdit ? editMaterial : createMaterial}
           onActionSuccess={onActionSuccess}
           onCancel={handleClose}
         >
-          {(formik: FormikProps<StakeholderMaterial>) => <MaterialForm formik={formik} materialCategories={materialCategories} />}
+          {(formik: FormikProps<StakeholderMaterial>) => (
+            <MaterialForm formik={formik} materialCategories={materialCategories} materialSubcategories={materialSubcategories} />
+          )}
         </FormPageWrapper>
       )}
     </CustomSideDrawer>

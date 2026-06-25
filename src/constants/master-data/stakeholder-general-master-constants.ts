@@ -8,6 +8,24 @@ export const stakeholderMasterModels = {
         fileType: 'OWNERSHIP_TYPE',
         flag: 'COMMON'
     },
+    materialcategory: {
+        model: 'MaterialCategory',
+        dbModel: 'materialcategory',
+        title: 'material-categories',
+        createTitle: 'create-material-category',
+        editTitle: 'edit-material-category',
+        fileType: 'MATERIAL_CATEGORY',
+        flag: 'COMMON'
+    },
+    materialsubcategory: {
+        model: 'MaterialSubCategory',
+        dbModel: 'materialsubcategory',
+        title: 'material-subcategories',
+        createTitle: 'create-material-subcategory',
+        editTitle: 'edit-material-subcategory',
+        fileType: 'MATERIAL_SUBCATEGORY',
+        flag: 'COMMON'
+    },
     businessfield: {
         model: 'BusinessField',
         dbModel: 'businessfield',

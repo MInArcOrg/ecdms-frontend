@@ -230,7 +230,7 @@ const resolvePublicUrl = (pathOrUrl: string) => {
   if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
 
   const base =
-    process.env.NEXT_PUBLIC_BASE_API_URL || process.env.NEXT_PUBLIC_API_URL || (typeof window !== 'undefined' ? window.location.origin : '');
+    process.env.NEXT_PUBLIC_API_URL || (typeof window !== 'undefined' ? window.location.origin : '');
   const safeBase = (base || '').replace(/\/+$/g, '');
   let safePath = pathOrUrl.startsWith('/') ? pathOrUrl : `/${pathOrUrl}`;
 
