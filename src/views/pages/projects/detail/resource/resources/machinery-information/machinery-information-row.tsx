@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
@@ -11,6 +12,7 @@ interface CellType {
 }
 
 export const machineryInformationColumns = (
+  onDetail: (item: MachineryInformation) => void,
   onEdit: (item: MachineryInformation) => void,
   onDelete: (id: string) => void,
   t: any,
@@ -21,7 +23,24 @@ export const machineryInformationColumns = (
     minWidth: 180,
     field: 'plate_no',
     headerName: t('Plate No'),
-    renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row.plate_no || t('common.not-available')}</Typography>
+    renderCell: ({ row }: CellType) => (
+      <Typography
+        component={Button}
+        onClick={() => onDetail(row)}
+        sx={{
+          color: 'text.secondary',
+          fontWeight: 500,
+          justifyContent: 'flex-start',
+          p: 0,
+          textAlign: 'left',
+          textDecoration: 'none',
+          textTransform: 'none',
+          '&:hover': { color: 'primary.main', backgroundColor: 'transparent' }
+        }}
+      >
+        {row.plate_no || t('common.not-available')}
+      </Typography>
+    )
   },
   {
     flex: 0.15,

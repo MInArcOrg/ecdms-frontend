@@ -30,6 +30,7 @@ const validationSchema = yup.object().shape({
   documentcategory_id: yup.string().required('Document category is required'),
   documentsubcategory_id: yup.string().nullable(),
   description: yup.string().nullable(),
+  isbn: yup.string().nullable().max(13),
   author: yup.string().nullable().max(36),
   publishing_organization: yup.string().nullable().max(36),
   publication_date: yup.date().nullable(),

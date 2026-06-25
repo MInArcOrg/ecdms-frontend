@@ -132,6 +132,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ formik, typeId, files, onFi
         placeholder={transl('document.form.isbn')}
         name="isbn"
         size="small"
+        type="number"
         sx={{ mb: 2 }}
       />
       <CustomDynamicDatePicker

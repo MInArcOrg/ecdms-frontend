@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
@@ -11,6 +12,7 @@ interface CellType {
 }
 
 export const materialColumns = (
+  onDetail: (material: Resource) => void,
   onEdit: (material: Resource) => void,
   onDelete: (id: string) => void,
   t: any,
@@ -21,7 +23,24 @@ export const materialColumns = (
       minWidth: 220,
       field: 'name',
       headerName: t('resource.columns.name'),
-      renderCell: ({ row }: CellType) => <Typography sx={{ color: 'text.secondary' }}>{row.name || t('common.not-available')}</Typography>
+      renderCell: ({ row }: CellType) => (
+        <Typography
+          component={Button}
+          onClick={() => onDetail(row)}
+          sx={{
+            color: 'text.secondary',
+            fontWeight: 500,
+            justifyContent: 'flex-start',
+            p: 0,
+            textAlign: 'left',
+            textDecoration: 'none',
+            textTransform: 'none',
+            '&:hover': { color: 'primary.main', backgroundColor: 'transparent' }
+          }}
+        >
+          {row.name || t('common.not-available')}
+        </Typography>
+      )
     },
     {
       flex: 0.2,

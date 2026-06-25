@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { GridColDef } from '@mui/x-data-grid';
 import { Fragment } from 'react';
@@ -11,6 +12,7 @@ interface CellType {
 }
 
 export const manpowerColumns = (
+  onDetail: (manpower: Professional) => void,
   onEdit: (manpower: Professional) => void,
   onDelete: (id: string) => void,
   t: any,
@@ -23,7 +25,20 @@ export const manpowerColumns = (
       headerName: t('resources.professional.name'),
       valueGetter: ({ row }) => row.full_name || `${row.first_name || ''} ${row.middle_name || ''} ${row.last_name || ''}`.trim(),
       renderCell: ({ row }: CellType) => (
-        <Typography sx={{ color: 'text.secondary' }}>
+        <Typography
+          component={Button}
+          onClick={() => onDetail(row)}
+          sx={{
+            color: 'text.secondary',
+            fontWeight: 500,
+            justifyContent: 'flex-start',
+            p: 0,
+            textAlign: 'left',
+            textDecoration: 'none',
+            textTransform: 'none',
+            '&:hover': { color: 'primary.main', backgroundColor: 'transparent' }
+          }}
+        >
           {row.full_name || `${row.first_name || ''} ${row.middle_name || ''} ${row.last_name || ''}`.trim()}
         </Typography>
       )

@@ -70,7 +70,6 @@ const StakehlderProjectList = ({ stakeholderId, typeId }: { stakeholderId: strin
             action: 'create',
             subject: 'stakeholder'
           }
-
         }}
         fetchDataFunction={refetch}
         tableProps={{
@@ -79,7 +78,7 @@ const StakehlderProjectList = ({ stakeholderId, typeId }: { stakeholderId: strin
         items={projects || []}
         onPaginationChange={handlePageChange}
       />
-      
+
       {drawerOpen && (
         <StakeholderProjectDrawer
           open={drawerOpen}

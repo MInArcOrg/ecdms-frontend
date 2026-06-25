@@ -5701,6 +5701,7 @@
       "edit": "Edit Professional",
       "details": "Professional Details",
       "firstName": "First Name",
+      "fullName": "Full Name",
       "middleName": "Middle Name",
       "lastName": "Last Name",
       "nationalIdNo": "National ID Number",
