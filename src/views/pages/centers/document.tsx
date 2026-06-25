@@ -145,8 +145,8 @@ function CenterDocuments({ parentDepartment }: { parentDepartment: Department })
               await centerDocumentApiService.delete(row.id);
               refetch();
             }}
-            editPermissionRule={{ action: 'update', subject: 'department' }}
-            deletePermissionRule={{ action: 'delete', subject: 'department' }}
+            editPermissionRule={{ action: 'update', subject: 'centerdocument' }}
+            deletePermissionRule={{ action: 'delete', subject: 'centerdocument' }}
           />
         )
       }
@@ -262,8 +262,8 @@ function CenterDocuments({ parentDepartment }: { parentDepartment: Department })
                       await centerDocumentApiService.delete(data.id);
                       refetch();
                     }}
-                    editPermissionRule={{ action: 'update', subject: 'department' }}
-                    deletePermissionRule={{ action: 'delete', subject: 'department' }}
+                    editPermissionRule={{ action: 'update', subject: 'centerdocument' }}
+                    deletePermissionRule={{ action: 'delete', subject: 'centerdocument' }}
                   />
                 </>
               }
@@ -283,7 +283,7 @@ function CenterDocuments({ parentDepartment }: { parentDepartment: Department })
             ...defaultCreateActionConfig,
             onClick: handleCreate,
             onlyIcon: false,
-            permission: { action: 'create', subject: 'department' }
+            permission: { action: 'create', subject: 'centerdocument' }
           }}
         />
       </Container>

@@ -73,7 +73,16 @@ const ResourceBrandCard: React.FC<ResourceBrandCardProps> = ({ resourceBrand, on
               title=""
               postAction={() => { }}
             />
-            <RowOptions onEdit={onEdit} onDelete={() => onDelete(resourceBrand.id)} item={resourceBrand} options={[]} />
+            <RowOptions 
+            deletePermissionRule={{
+              action:"delete",
+              subject:"resourcebrand"
+            }}
+            editPermissionRule={{
+              action:"update",
+              subject:"resourcebrand"
+            }}
+            onEdit={onEdit} onDelete={() => onDelete(resourceBrand.id)} item={resourceBrand} options={[]} />
           </Box>
         </Box>
       </CardActions>

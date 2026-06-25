@@ -1603,7 +1603,7 @@
         "site-handover-date": "Site Handover Date",
         "mobilization-days-no": "Number of Mobilization Days",
         "commencement-date": "Commencement Date",
-        "original-contract-duration": "Original Contract Duration",
+        "original-contract-duration": "Original Contract Duration (Days)",
         "project-completion-date": "Project Completion Date",
         "remark": "Remark"
       }

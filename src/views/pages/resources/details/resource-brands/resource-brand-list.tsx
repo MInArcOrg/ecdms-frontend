@@ -83,7 +83,8 @@ function ResourceBrandList({ resourceId }: { resourceId: string }) {
           isLoading={isLoading}
           breakpoints={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 4 }}
           ItemViewComponent={({ data }) => (
-            <ResourceBrandCard resourceBrand={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch}>
+            <ResourceBrandCard 
+            resourceBrand={data} onDelete={handleDelete} onEdit={handleEdit} t={t} refetch={refetch}>
               <ImageSwiper id={data.id} refetch={refetchImages} />
             </ResourceBrandCard>
           )}

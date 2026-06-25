@@ -71,7 +71,8 @@ export const appModulesWithIds: { id: string; name: string; flags: { id: string;
       { id: 'USER', name: 'User' },
       { id: 'DEPARTMENT', name: 'Department' },
       { id: 'ROLE', name: 'Role' },
-      { id: 'POSITION', name: 'Position' }
+      { id: 'POSITION', name: 'Position' },
+      { id: 'CENTERDOCUMENT', name: 'Document' }
     ]
   },
   {
