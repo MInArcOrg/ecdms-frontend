@@ -1,20 +1,20 @@
+import { limitNumberDigits, nullableIntegerSchema, nullableNumberSchema } from 'src/utils/validator/number';
 import * as yup from 'yup';
-import { limitNumberDigits, nullableNumberSchema, nullableIntegerSchema } from 'src/utils/validator/number';
 
 import { FormikProps } from 'formik';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
+import documentApiService from 'src/services/document/document-service';
+import { deleteFile, deletePhoto, uploadFile, uploadImage, useGetMultipleFiles, useGetMultiplePhotos } from 'src/services/utils/file-utils';
+import { Document } from 'src/types/document';
+import { FileWithId } from 'src/types/general/file';
+import { MasterType } from 'src/types/master/master-types';
+import { IApiPayload, IApiResponse } from 'src/types/requests';
+import { convertDateToLocaleDate, formatInitialDateDate } from 'src/utils/formatter/date';
 import CustomSideDrawer from 'src/views/shared/drawer/side-drawer';
 import FormPageWrapper from 'src/views/shared/form/form-wrapper';
 import DocumentForm from './document-form';
-import { IApiPayload, IApiResponse } from 'src/types/requests';
-import documentApiService from 'src/services/document/document-service';
-import { Document } from 'src/types/document';
-import moment from 'moment';
-import { useTranslation } from 'react-i18next';
-import { MasterType } from 'src/types/master/master-types';
-import { deleteFile, uploadFile, useGetMultiplePhotos, uploadImage, deletePhoto, useGetMultipleFiles } from 'src/services/utils/file-utils';
-import { useEffect, useState } from 'react';
-import { FileWithId } from 'src/types/general/file';
-import { convertDateToLocaleDate, formatDynamicDate, formatInitialDateDate } from 'src/utils/formatter/date';
 
 interface DocumentDrawerType {
   open: boolean;
@@ -48,6 +48,17 @@ const validationSchema = yup.object().shape({
   version_no: nullableIntegerSchema(),
   remark: yup.string().nullable()
 });
+
+const resolveDocumentId = (response: IApiResponse<Document>, fallbackId?: string) => {
+  return (
+    response?.payload?.id ||
+    response?.payload?.data?.id ||
+    response?.payload?.document?.id ||
+    response?.data?.id ||
+    fallbackId ||
+    ''
+  );
+};
 
 const DocumentDrawer = (props: DocumentDrawerType) => {
   // ** Props
@@ -141,7 +152,14 @@ const DocumentDrawer = (props: DocumentDrawerType) => {
     toggle();
   };
   const onActionSuccess = async (response: IApiResponse<Document>, payload: IApiPayload<Document>) => {
-    const targetId = response?.payload?.id || document?.id || '';
+    const targetId = resolveDocumentId(response, document?.id);
+
+    if (!targetId) {
+      toast.error('Document saved, but upload reference id is missing.');
+      refetch();
+      handleClose();
+      return;
+    }
 
     // Process Images
     const imagesToUpload = uploadableImages.filter((img) => !img.isFetched);

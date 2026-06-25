@@ -144,10 +144,14 @@ export const uploadFile = (
   file_description: string | null = null
 ): Promise<AxiosResponse<FileUploadResponse>> => {
   assertSafeUploadFile(file, 'file');
+  if (ownerObjectID === '' || ownerObjectID === null || ownerObjectID === undefined) {
+    throw new Error('Missing file reference id for upload');
+  }
 
   const formData = new FormData();
   formData.append('type', type);
   formData.append('reference_id', ownerObjectID.toString());
+  formData.append('model_id', ownerObjectID.toString());
   formData.append('upload', file);
   formData.append('description', file_description ?? '');
 
@@ -159,10 +163,14 @@ export const uploadFile = (
 };
 export const uploadImage = (file: File, type: string, ownerObjectID: string | number): Promise<AxiosResponse<FileUploadResponse>> => {
   assertSafeUploadFile(file, 'image');
+  if (ownerObjectID === '' || ownerObjectID === null || ownerObjectID === undefined) {
+    throw new Error('Missing image reference id for upload');
+  }
 
   const formData = new FormData();
   formData.append('type', type);
   formData.append('model_id', ownerObjectID.toString());
+  formData.append('reference_id', ownerObjectID.toString());
   formData.append('upload', file);
 
   return customAxios.post('/generics/photos', formData, {
