@@ -2433,6 +2433,7 @@
         "details": {
           "culvert-basic-data-id": "Culvert",
           "name": "Name",
+          "road-segment-id": "Road Segment",
           "structure-type-id": "Structure Type",
           "north-id": "North",
           "east-id": "East",
