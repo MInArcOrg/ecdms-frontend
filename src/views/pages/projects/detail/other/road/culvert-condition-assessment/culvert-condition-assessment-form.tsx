@@ -10,8 +10,9 @@ import { dropDownConfig } from 'src/configs/api-constants';
 import { gridSpacing } from 'src/configs/app-constants';
 import { projectMasterModels } from 'src/constants/master-data/project-general-master-constants';
 import projectGeneralMasterDataApiService from 'src/services/general/project-general-master-data-service';
+import projectOtherApiService from 'src/services/project/project-other-service';
 import projectOtherApiSecondService from 'src/services/project/project-other-second-service';
-import type { CulvertBasicData, CulvertConditionAssessment } from 'src/types/project/other';
+import type { CulvertBasicData, CulvertConditionAssessment, RoadSegment } from 'src/types/project/other';
 import CustomDynamicDatePicker from 'src/views/shared/form/custom-dynamic-date-box';
 import CustomSelect from 'src/views/shared/form/custom-select';
 import CustomTextBox from 'src/views/shared/form/custom-text-box';
@@ -23,7 +24,6 @@ interface CulvertConditionAssessmentFormProps {
 
 const CulvertConditionAssessmentForm: React.FC<CulvertConditionAssessmentFormProps> = ({ formik, projectId }) => {
   const { t } = useTranslation();
-  console.log('formik errors',formik.errors);
   const { data: culverts } = useQuery({
     queryKey: ['culvert-basic-datas', projectId],
     queryFn: () =>
@@ -33,6 +33,14 @@ const CulvertConditionAssessmentForm: React.FC<CulvertConditionAssessmentFormPro
           filter: { project_id: projectId }
         })
       )
+  });
+
+  const { data: roadSegments } = useQuery({
+    queryKey: ['road-segments', projectId],
+    queryFn: () =>
+      projectOtherApiService<RoadSegment>().getAll('roadsegment', {
+        filter: { project_id: projectId }
+      })
   });
 
   const { data: structureTypes } = useQuery({
@@ -60,12 +68,22 @@ const CulvertConditionAssessmentForm: React.FC<CulvertConditionAssessmentFormPro
       label: item.title,
       value: item.id
     })) || [];
+
   useEffect(() => {
-    if(!formik.values.culvert_id) return;
-       if(!formik.values.culvert_id) return;
-    formik.setFieldValue('road_segment_id', culverts?.payload?.find((item) => item.id === formik.values.culvert_id)?.road_segment_id || '');
-  }, [formik.values.culvert_id]);
-  console.log('formik errors', formik.errors)
+    const selectedCulvertBasicDataId = formik.values.culvert_basic_data_id;
+
+    if (!selectedCulvertBasicDataId) {
+      formik.setFieldValue('culvert_id', '');
+      formik.setFieldValue('road_segment_id', '');
+      return;
+    }
+
+    const selectedCulvert = culverts?.payload?.find((item) => item.id === selectedCulvertBasicDataId);
+
+    formik.setFieldValue('culvert_id', selectedCulvertBasicDataId);
+    formik.setFieldValue('road_segment_id', selectedCulvert?.road_segment_id || '');
+  }, [formik.values.culvert_basic_data_id, culverts?.payload]);
+
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -84,13 +102,19 @@ const CulvertConditionAssessmentForm: React.FC<CulvertConditionAssessmentFormPro
           }
         />
 
-        <CustomTextBox
+        <CustomSelect
           fullWidth
-          label={t('project.other.culvert-condition-assessment.details.name')}
-          placeholder={t('project.other.culvert-condition-assessment.details.name')}
-          name="name"
+          label={t('project.other.culvert-condition-assessment.details.road-segment-id')}
+          placeholder={t('project.other.culvert-condition-assessment.details.road-segment-id')}
+          name="road_segment_id"
           size="small"
           sx={{ mb: 2 }}
+          options={
+            roadSegments?.payload?.map((segment) => ({
+              label: segment.name,
+              value: segment.id
+            })) || []
+          }
         />
 
         <CustomSelect
@@ -172,4 +196,3 @@ const CulvertConditionAssessmentForm: React.FC<CulvertConditionAssessmentFormPro
 };
 
 export default CulvertConditionAssessmentForm;
-

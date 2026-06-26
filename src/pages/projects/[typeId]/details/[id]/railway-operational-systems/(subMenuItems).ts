@@ -83,7 +83,7 @@ export const subMenuItems = (id: string, typeId: string): DetailSubMenuItem[] =>
         title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-environmental-and-other-factors',
         path: `/projects/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-environmental-and-other-factors`,
         apiRoute: 'railway-environmental-and-other-factors',
-        model: 'railwayenvironmentalandotherfactors'
+        model: 'railwayenvironmentalandotherfactor'
       }
     ]
   },

@@ -52,6 +52,22 @@ const blockedMimeTypes = new Set([
   'application/javascript'
 ]);
 
+const ALLOWED_EXTENSIONS = ['.pdf', '.jpg', '.jpeg', '.png', '.docx', '.doc', '.xlsx', '.xls', '.csv', '.ods'];
+const ALLOWED_MIMES = [
+  'application/pdf',
+  'image/jpeg',
+  'image/png',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  'application/vnd.ms-excel',
+  'text/csv',
+  'application/vnd.oasis.opendocument.spreadsheet'
+];
+
+const allowedExtensionsSet = new Set(ALLOWED_EXTENSIONS.map((e) => e.toLowerCase()));
+const allowedMimesSet = new Set(ALLOWED_MIMES.map((m) => m.toLowerCase()));
+
 const getFileExtension = (name: string) => {
   const value = (name || '').trim();
   if (!value) return '';
@@ -60,12 +76,27 @@ const getFileExtension = (name: string) => {
   return value.slice(idx + 1).toLowerCase();
 };
 
+const getFileDotExtension = (name: string) => {
+  const ext = getFileExtension(name);
+  return ext ? `.${ext}` : '';
+};
+
 const isUnsafeFile = (file: File) => {
   const ext = getFileExtension(file?.name || '');
   const mime = (file?.type || '').toLowerCase().trim();
   if (mime && blockedMimeTypes.has(mime)) return true;
   if (ext && blockedFileExtensions.has(ext)) return true;
   return false;
+};
+
+const isAllowedFile = (file: File) => {
+  const dotExt = getFileDotExtension(file?.name || '').toLowerCase();
+  const mime = (file?.type || '').toLowerCase().trim();
+
+  const extAllowed = dotExt ? allowedExtensionsSet.has(dotExt) : false;
+  const mimeAllowed = mime ? allowedMimesSet.has(mime) : false;
+
+  return extAllowed || mimeAllowed;
 };
 
 const CustomFileUpload: React.FC<CustomFileUploadProps> = ({ label, file, onFileChange }) => {
@@ -85,11 +116,17 @@ const CustomFileUpload: React.FC<CustomFileUploadProps> = ({ label, file, onFile
         <input
           type="file"
           hidden
+          accept={ALLOWED_EXTENSIONS.join(',')}
           onChange={(e) => {
             if (e.target.files && e.target.files[0]) {
               const selectedFile = e.target.files[0];
               if (isUnsafeFile(selectedFile)) {
                 toast.error('Unsupported or unsafe file type');
+                e.target.value = '';
+                return;
+              }
+              if (!isAllowedFile(selectedFile)) {
+                toast.error('Only PDF, images (JPG/PNG), Word, Excel, CSV, and ODS files are allowed');
                 e.target.value = '';
                 return;
               }

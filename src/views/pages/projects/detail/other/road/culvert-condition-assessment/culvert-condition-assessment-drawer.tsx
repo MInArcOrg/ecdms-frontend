@@ -23,13 +23,13 @@ const CulvertConditionAssessmentDrawer = (props: CulvertConditionAssessmentDrawe
 
   const validationSchema = yup.object().shape({
     project_id: yup.string().length(36).required('Project is required'),
-    name: yup.string().max(255).required('Name is required'),
     structure_type_id: yup.string().uuid().required('Structure type is required'),
     north_id: yup.string().uuid().required('North is required'),
     east_id: yup.string().uuid().required('East is required'),
     west_id: yup.string().uuid().required('West is required'),
     south_id: yup.string().uuid().required('South is required'),
     central_id: yup.string().uuid().required('Central is required'),
+    road_segment_id: yup.string().uuid().required('Road segment is required'),
     assessment_date: yup.mixed().nullable()
   });
 
@@ -45,7 +45,6 @@ const CulvertConditionAssessmentDrawer = (props: CulvertConditionAssessmentDrawe
     data: {
       project_id: projectId,
       culvert_basic_data_id: values.culvert_basic_data_id,
-      name: values.name,
       structure_type_id: values.structure_type_id,
       north_id: values.north_id,
       east_id: values.east_id,
@@ -54,7 +53,7 @@ const CulvertConditionAssessmentDrawer = (props: CulvertConditionAssessmentDrawe
       central_id: values.central_id,
       assessment_date: values.assessment_date,
       id: culvertConditionAssessment?.id,
-      culvert_id: values.culvert_id,
+      culvert_id: values.culvert_id || values.culvert_basic_data_id,
       road_segment_id: values.road_segment_id,
       created_at: values.created_at,
       updated_at: values.updated_at
@@ -85,6 +84,7 @@ const CulvertConditionAssessmentDrawer = (props: CulvertConditionAssessmentDrawe
             ...culvertConditionAssessment,
             culvert_basic_data_id:
               culvertConditionAssessment?.culvert_basic_data_id || culvertConditionAssessment?.culvertBasicData?.id || '',
+            culvert_id: culvertConditionAssessment?.culvert_id || culvertConditionAssessment?.culvertBasicData?.id || '',
             structure_type_id:
               culvertConditionAssessment?.structure_type_id || culvertConditionAssessment?.structureType?.id || '',
             north_id: culvertConditionAssessment?.north_id || culvertConditionAssessment?.north?.id || '',
@@ -92,6 +92,10 @@ const CulvertConditionAssessmentDrawer = (props: CulvertConditionAssessmentDrawe
             west_id: culvertConditionAssessment?.west_id || culvertConditionAssessment?.west?.id || '',
             south_id: culvertConditionAssessment?.south_id || culvertConditionAssessment?.south?.id || '',
             central_id: culvertConditionAssessment?.central_id || culvertConditionAssessment?.central?.id || '',
+            road_segment_id:
+              culvertConditionAssessment?.road_segment_id ||
+              (culvertConditionAssessment as unknown as { roadSegment?: { id?: string } })?.roadSegment?.id ||
+              '',
             project_id: projectId
           }}
           createActionFunc={isEdit ? editCulvertConditionAssessment : createCulvertConditionAssessment}
@@ -106,4 +110,3 @@ const CulvertConditionAssessmentDrawer = (props: CulvertConditionAssessmentDrawe
 };
 
 export default CulvertConditionAssessmentDrawer;
-

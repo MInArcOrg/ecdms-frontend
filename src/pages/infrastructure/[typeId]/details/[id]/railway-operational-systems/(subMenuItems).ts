@@ -1,4 +1,4 @@
-import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';
+import { DetailSubMenuItem } from 'src/types/layouts/detail-layout';                                                                                                    
 
 export const railwayOperationalSystemsIds = {
   communicationAndSignaling: {
@@ -83,7 +83,7 @@ export const subMenuItems = (id: string, typeId: string, module: string = "infra
         title: 'project.navigation.submenu.railway-operational-systems.communication-and-signaling.railway-environmental-and-other-factors',
         path: `/${module}/${typeId}/details/${id}/railway-operational-systems/communication-and-signaling/railway-environmental-and-other-factors`,
         apiRoute: 'railway-environmental-and-other-factors',
-        model: 'railwayenvironmentalandotherfactors'
+        model: 'railwayenvironmentalandotherfactor'
       }
     ]
   },
